@@ -8,14 +8,11 @@ export const checklistTemplates: Checklist[] = [
     name: 'Wedding - Haldi Ceremony',
     category: 'Events',
     items: [
-      { task: 'Book venue & seating', status: 'pending' },
-      { task: 'Arrange turmeric & essentials', status: 'pending' },
-      { task: 'Hire photographer', status: 'pending' },
-      { task: 'Set up decoration (flowers, yellow theme)', status: 'pending' },
-      { task: 'Organize traditional music/dhol', status: 'pending' },
-      { task: 'Arrange catering/snacks', status: 'pending' },
-      { task: 'Set up guest welcome area', status: 'pending' },
-      { task: 'Confirm priest/pandit availability', status: 'pending' },
+      { task: 'Venue setup (flowers, haldi bowl, seating mats)', status: 'pending' },
+      { task: 'Bride/groom outfits + backup outfits', status: 'pending' },
+      { task: 'Mehendi artist (if combined event)', status: 'pending' },
+      { task: 'Snacks & beverages', status: 'pending' },
+      { task: 'Photographer booking', status: 'pending' },
     ],
     pricing: {
         free: "true",
@@ -28,14 +25,13 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     items: [
       {
-        task: 'Hire mehndi artists',
+        task: 'Guest list & RSVP tracking',
         status: 'pending',
-        subtasks: ['Finalize artist for bride', 'Arrange artists for guests', 'Confirm designs & pricing'],
       },
-      { task: 'Book DJ/music', status: 'pending' },
-      { task: 'Set up seating (low seating with bolsters)', status: 'pending' },
-      { task: 'Provide mehndi cones & oils', status: 'pending' },
-      { task: 'Plan catering menu (finger foods)', status: 'pending' },
+      { task: 'Mehndi artists & assistants', status: 'pending' },
+      { task: 'Seating, décor, lighting', status: 'pending' },
+      { task: 'Music playlist (Bollywood, traditional)', status: 'pending' },
+      { task: 'Caterer setup', status: 'pending' },
     ],
   },
   {
@@ -43,23 +39,63 @@ export const checklistTemplates: Checklist[] = [
     name: 'Wedding - Sangeet',
     category: 'Events',
     items: [
-      { task: 'Stage setup & sound check', status: 'pending' },
-      { task: 'Choreography rehearsals', status: 'pending' },
-      { task: 'Lighting decoration', status: 'pending' },
-      { task: 'Food & beverages', status: 'pending' },
-      { task: 'Guest welcome desk', status: 'pending' },
+      { task: 'Stage & sound system check', status: 'pending' },
+      { task: 'Family performance rehearsals', status: 'pending' },
+      { task: 'Outfit coordination (bride, groom, family)', status: 'pending' },
+      { task: 'DJ/band booking', status: 'pending' },
+      { task: 'Alcohol & snacks arrangements', status: 'pending' },
     ],
   },
   {
-    id: 'event_wedding_day',
-    name: 'Wedding Day',
+    id: 'event_wedding_day_hindu',
+    name: 'Hindu Wedding Day',
     category: 'Events',
     items: [
-        { task: 'Book mandap & seating', status: 'pending' },
-        { task: 'Confirm pandit/priest', status: 'pending' },
-        { task: 'Arrange varmala & garlands', status: 'pending' },
-        { task: 'Sound system for rituals', status: 'pending' },
-        { task: 'Bride/groom entry planning', status: 'pending' },
+        { task: 'Priest / Purohit confirmation', status: 'pending' },
+        { task: 'Wedding mandap decoration', status: 'pending' },
+        { task: 'Baraat arrangements (music, horse/car)', status: 'pending' },
+        { task: 'Wedding garlands & ritual items', status: 'pending' },
+        { task: 'Bridal entry coordination', status: 'pending' },
+        { task: 'Videography & livestream (for NRIs)', status: 'pending' },
+    ]
+  },
+   {
+    id: 'event_wedding_day_christian',
+    name: 'Christian Wedding Day',
+    category: 'Events',
+    items: [
+        { task: 'Church booking confirmation', status: 'pending' },
+        { task: 'Priest availability check', status: 'pending' },
+        { task: 'Bridal gown + tux + bridesmaids/groomsmen outfits', status: 'pending' },
+        { task: 'Choir/music team coordination', status: 'pending' },
+        { task: 'Wedding cake & catering', status: 'pending' },
+        { task: 'Reception hall booking', status: 'pending' },
+        { task: 'Return gifts preparation', status: 'pending' },
+    ]
+  },
+   {
+    id: 'event_wedding_day_muslim',
+    name: 'Muslim Wedding (Nikaah)',
+    category: 'Events',
+    items: [
+        { task: 'Qazi / Maulana booking', status: 'pending' },
+        { task: 'Nikah Nama printing', status: 'pending' },
+        { task: 'Venue with women/men seating arrangements', status: 'pending' },
+        { task: 'Bridal trousseau check', status: 'pending' },
+        { task: 'Mehendi & Dholki function planning', status: 'pending' },
+        { task: 'Walima arrangements', status: 'pending' },
+    ]
+  },
+   {
+    id: 'event_wedding_day_sikh',
+    name: 'Sikh Wedding (Anand Karaj)',
+    category: 'Events',
+    items: [
+        { task: 'Gurdwara booking', status: 'pending' },
+        { task: 'Langar preparation coordination', status: 'pending' },
+        { task: 'Palki Sahib arrangement', status: 'pending' },
+        { task: 'Shabad Kirtan performers booking', status: 'pending' },
+        { task: 'Dhol for baraat arrangement', status: 'pending' },
     ]
   },
   {
@@ -67,11 +103,11 @@ export const checklistTemplates: Checklist[] = [
       name: "Wedding Reception",
       category: "Events",
       items: [
-          { task: "Stage decoration", status: "pending" },
-          { task: "Buffet arrangement", status: "pending" },
-          { task: "Lighting & seating", status: "pending" },
-          { task: "Live band/DJ", status: "pending" },
-          { task: "Photo booth setup", status: "pending" },
+          { task: "Guest seating chart finalization", status: "pending" },
+          { task: "Catering menu finalization", status: "pending" },
+          { task: "Couple entry sequence planning", status: "pending" },
+          { task: "Thank-you speeches preparation", status: "pending" },
+          { task: "Return gifts / souvenirs distribution", status: "pending" },
       ]
   },
   {
@@ -79,13 +115,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Engagement Ceremony',
     category: 'Events',
     items: [
-      { task: 'Book venue', status: 'pending' },
-      { task: 'Finalize guest list', status: 'pending' },
-      { task: 'Order rings', status: 'pending' },
-      { task: 'Hire photographer/videographer', status: 'pending' },
-      { task: 'Plan decorations', status: 'pending' },
-      { task: 'Arrange catering', status: 'pending' },
-      { task: 'Send invitations', status: 'pending' },
+      { task: 'Ring exchange planning', status: 'pending' },
+      { task: 'Décor planning', status: 'pending' },
+      { task: 'Photographers booking', status: 'pending' },
+      { task: 'Gift registry setup', status: 'pending' },
     ],
   },
   {
@@ -93,12 +126,11 @@ export const checklistTemplates: Checklist[] = [
     name: 'Baby Naming Ceremony',
     category: 'Events',
     items: [
-      { task: 'Choose and finalize baby name', status: 'pending' },
-      { task: 'Book priest/officiant', status: 'pending' },
-      { task: 'Decorate venue', status: 'pending' },
-      { task: 'Arrange for religious rituals/prayers', status: 'pending' },
-      { task: 'Plan lunch/dinner menu', status: 'pending' },
-      { task: 'Arrange return gifts for guests', status: 'pending' },
+      { task: 'Priest booking', status: 'pending' },
+      { task: 'Baby clothes selection', status: 'pending' },
+      { task: 'Silver items purchase', status: 'pending' },
+      { task: 'Puja items arrangement', status: 'pending' },
+      { task: 'Food menu planning', status: 'pending' },
     ],
   },
   {
@@ -132,12 +164,11 @@ export const checklistTemplates: Checklist[] = [
     name: 'Product Launch Event',
     category: 'Events',
     items: [
-      { task: 'Finalize product demo', status: 'pending' },
-      { task: 'Invite media and influencers', status: 'pending' },
-      { task: 'Prepare press kits', status: 'pending' },
-      { task: 'Set up AV and technical equipment', status: 'pending' },
-      { task: 'Plan for Q&A session', status: 'pending' },
-      { task: 'Arrange for product samples/giveaways', status: 'pending' },
+      { task: 'Stage setup', status: 'pending' },
+      { task: 'AV testing', status: 'pending' },
+      { task: 'Press kits preparation', status: 'pending' },
+      { task: 'Influencer outreach', status: 'pending' },
+      { task: 'Live demo rehearsal', status: 'pending' },
     ],
   },
   {
@@ -145,12 +176,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Corporate Conference Setup',
     category: 'Events',
     items: [
-      { task: 'Finalize agenda and speakers', status: 'pending' },
-      { task: 'Set up registration desk', status: 'pending' },
-      { task: 'Arrange seating and stage setup', status: 'pending' },
-      { task: 'Test projectors, screens, and microphones', status: 'pending' },
-      { task: 'Coordinate with catering for breaks and lunch', status: 'pending' },
-      { task: 'Prepare name badges and conference materials', status: 'pending' },
+      { task: 'Registration desk setup', status: 'pending' },
+      { task: 'Delegate badges preparation', status: 'pending' },
+      { task: 'Sponsor booths setup', status: 'pending' },
+      { task: 'Speaker green room setup', status: 'pending' },
     ],
   },
   {
@@ -163,7 +192,7 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Set up product displays', status: 'pending' },
       { task: 'Ensure proper lighting', status: 'pending' },
       { task: 'Train booth staff', status: 'pending' },
-      { task: 'Have lead capture mechanism ready (e.g., forms, scanner)', status: 'pending' },
+      { task: 'Have lead capture mechanism ready', status: 'pending' },
     ],
   },
   {
@@ -175,8 +204,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Order trophies/plaques', status: 'pending' },
       { task: 'Book a host/emcee', status: 'pending' },
       { task: 'Prepare scripts for presenters', status: 'pending' },
-      { task: 'Plan seating arrangement for nominees and guests', status: 'pending' },
-      { task: 'Coordinate with AV team for winner announcements', status: 'pending' },
     ],
   },
   {
@@ -188,8 +215,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Secure venue and all necessary permits', status: 'pending' },
       { task: 'Set up stage, sound, and lighting rigs', status: 'pending' },
       { task: 'Arrange for security and crowd control', status: 'pending' },
-      { task: 'Manage ticketing and entry', status: 'pending' },
-      { task: 'Set up merchandise stalls', status: 'pending' },
     ],
   },
   {
@@ -200,45 +225,7 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Get college administration permissions', status: 'pending' },
       { task: 'Form student committees for various tasks', status: 'pending' },
       { task: 'Secure sponsorships', status: 'pending' },
-      { task: 'Plan and schedule various events and competitions', status: 'pending' },
       { task: 'Promote the fest on social media and campus', status: 'pending' },
-      { task: 'Coordinate with security and volunteers', status: 'pending' },
-    ],
-  },
-  {
-    id: 'event_religious_ceremony',
-    name: 'Religious Ceremony (Pooja/Havan)',
-    category: 'Events',
-    items: [
-      { task: 'Book priest/pandit', status: 'pending' },
-      { task: 'Purchase all required pooja materials', status: 'pending' },
-      { task: 'Clean and prepare the designated ceremony area', status: 'pending' },
-      { task: 'Inform guests of the date and time', status: 'pending' },
-      { task: 'Arrange for prasad/food distribution', status: 'pending' },
-    ],
-  },
-  {
-    id: 'event_housewarming',
-    name: 'Housewarming',
-    category: 'Events',
-    items: [
-      { task: 'Complete any remaining moving-in tasks', status: 'pending' },
-      { task: 'Clean and decorate the house', status: 'pending' },
-      { task: 'Plan a menu for food and drinks', status: 'pending' },
-      { task: 'Create a music playlist', status: 'pending' },
-      { task: 'Give guests a tour of the new home', status: 'pending' },
-    ],
-  },
-  {
-    id: 'event_farewell_party',
-    name: 'Farewell Party',
-    category: 'Events',
-    items: [
-      { task: 'Arrange for a farewell gift', status: 'pending' },
-      { task: 'Collect messages from colleagues/friends', status: 'pending' },
-      { task: 'Prepare speeches or a presentation', status: 'pending' },
-      { task: 'Book a venue or arrange in-office setup', status: 'pending' },
-      { task: 'Order a cake and refreshments', status: 'pending' },
     ],
   },
   {
@@ -249,10 +236,7 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Finalize contracts with all vendors', status: 'pending' },
       { task: 'Create a master contact sheet for all vendors', status: 'pending' },
       { task: 'Confirm arrival and setup times with each vendor', status: 'pending' },
-      { task: 'Share event schedule and floor plan with vendors', status: 'pending' },
       { task: 'Process advance payments', status: 'pending' },
-      { task: 'Plan for vendor meals and breaks', status: 'pending' },
-      { task: 'Schedule final payments post-event', status: 'pending' },
     ],
     pricing: {
         free: "",
@@ -268,8 +252,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Track venue costs', status: 'pending' },
       { task: 'Log catering expenses', status: 'pending' },
       { task: 'Track decor and rental costs', status: 'pending' },
-      { task: 'Log entertainment and vendor fees', status: 'pending' },
-      { task: 'Keep a record of all miscellaneous expenses', status: 'pending' },
       { task: 'Compare actual spending against estimates', status: 'pending' },
     ],
   },
@@ -280,12 +262,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Hotel Housekeeping (Daily)',
     category: 'Hospitality Ops',
     items: [
-      { task: 'Change bedsheets & pillow covers', status: 'pending' },
-      { task: 'Clean and sanitize bathrooms', status: 'pending' },
-      { task: 'Dust all surfaces', status: 'pending' },
-      { task: 'Vacuum carpet / Mop floor', status: 'pending' },
-      { task: 'Restock toiletries and towels', status: 'pending' },
-      { task: 'Empty trash bins', status: 'pending' },
+      { task: 'Front desk: check reservation list, welcome kits ready', status: 'pending' },
+      { task: 'Housekeeping: room cleaning, mini-bar refill, laundry requests', status: 'pending' },
+      { task: 'Security: CCTV check, fire exits clear', status: 'pending' },
+      { task: 'Restaurant: breakfast buffet setup, staff briefing', status: 'pending' },
     ],
     pricing: {
         free: "true",
@@ -293,15 +273,25 @@ export const checklistTemplates: Checklist[] = [
     }
   },
   {
-    id: 'hosp_housekeeping_deep_clean',
-    name: 'Hotel Housekeeping (Deep Clean)',
+    id: 'hosp_housekeeping_weekly',
+    name: 'Hotel Housekeeping (Weekly)',
     category: 'Hospitality Ops',
     items: [
-      { task: 'Shampoo carpets and upholstery', status: 'pending' },
-      { task: 'Wash windows and mirrors', status: 'pending' },
-      { task: 'Clean inside all closets and drawers', status: 'pending' },
-      { task: 'Disinfect light switches, remote controls, and door handles', status: 'pending' },
-      { task: 'Descale bathroom fixtures', status: 'pending' },
+      { task: 'Deep cleaning of lobby, elevators, banquet halls', status: 'pending' },
+      { task: 'Linen stock audit', status: 'pending' },
+      { task: 'Pest control check', status: 'pending' },
+      { task: 'Staff roster planning', status: 'pending' },
+    ],
+  },
+    {
+    id: 'hosp_housekeeping_monthly',
+    name: 'Hotel Housekeeping (Monthly)',
+    category: 'Hospitality Ops',
+    items: [
+      { task: 'Staff training (grooming, service etiquette)', status: 'pending' },
+      { task: 'Energy efficiency audit', status: 'pending' },
+      { task: 'Kitchen hygiene audit (food storage, expiry checks)', status: 'pending' },
+      { task: 'Guest feedback review meeting', status: 'pending' },
     ],
   },
   {
@@ -325,7 +315,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Prepare for VIP arrivals', status: 'pending' },
       { task: 'Handle check-ins and check-outs efficiently', status: 'pending' },
       { task: 'Answer phone calls and emails promptly', status: 'pending' },
-      { task: 'Reconcile cash and credit card transactions', status: 'pending' },
     ],
   },
   {
@@ -337,7 +326,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Verify proper food labeling and dating', status: 'pending' },
       { task: 'Ensure separation of raw and cooked foods', status: 'pending' },
       { task: 'Check for signs of pests', status: 'pending' },
-      { task: 'Confirm staff are following hygiene protocols', status: 'pending' },
     ],
   },
   {
@@ -349,9 +337,30 @@ export const checklistTemplates: Checklist[] = [
         { task: "Gloves, masks, caps available", status: "pending"},
         { task: "Food storage at correct temperatures", status: "pending"},
         { task: "Raw vs cooked food separation", status: "pending"},
-        { task: "Expiry dates checked", status: "pending"},
-        { task: "Surfaces sanitized hourly", status: "pending"},
-        { task: "Pest control log updated", status: "pending"}
+    ],
+  },
+    {
+    id: 'hosp_restaurant_opening',
+    name: 'Restaurant Opening Checklist',
+    category: 'Hospitality Ops',
+    items: [
+        { task: "Kitchen equipment switched on", status: "pending"},
+        { task: "Ingredients stocked & checked for expiry", status: "pending"},
+        { task: "Dining area cleaned & set up", status: "pending"},
+        { task: "POS & billing system check", status: "pending"},
+        { task: "Music/ambience ready", status: "pending"},
+    ],
+  },
+    {
+    id: 'hosp_restaurant_closing',
+    name: 'Restaurant Closing Checklist',
+    category: 'Hospitality Ops',
+    items: [
+        { task: "Cash & sales reconciliation", status: "pending"},
+        { task: "Kitchen cleaning & waste disposal", status: "pending"},
+        { task: "Leftover food storage log", status: "pending"},
+        { task: "Lights & AC off", status: "pending"},
+        { task: "Lockdown security check", status: "pending"},
     ],
   },
   {
@@ -363,7 +372,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Place orders with suppliers', status: 'pending' },
       { task: 'Receive and inspect deliveries', status: 'pending' },
       { task: 'Update inventory management system', status: 'pending' },
-      { task: 'Monitor for spoilage and waste', status: 'pending' },
     ],
   },
   {
@@ -371,11 +379,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Guest Experience Feedback Checklist',
     category: 'Hospitality Ops',
     items: [
-      { task: 'Monitor online reviews (Google, TripAdvisor, etc.)', status: 'pending' },
+      { task: 'Monitor online reviews', status: 'pending' },
       { task: 'Collect and analyze guest feedback forms', status: 'pending' },
       { task: 'Follow up on negative feedback personally', status: 'pending' },
       { task: 'Share positive feedback with the team', status: 'pending' },
-      { task: 'Identify trends and areas for improvement', status: 'pending' },
     ],
   },
   {
@@ -384,10 +391,9 @@ export const checklistTemplates: Checklist[] = [
     category: 'Hospitality Ops',
     items: [
       { task: 'Arrange tables and chairs as per floor plan', status: 'pending' },
-      { task: 'Set up AV equipment (projector, microphones)', status: 'pending' },
+      { task: 'Set up AV equipment', status: 'pending' },
       { task: 'Lay out linens, cutlery, and glassware', status: 'pending' },
       { task: 'Coordinate with kitchen for buffet setup and timing', status: 'pending' },
-      { task: 'Check lighting and temperature', status: 'pending' },
     ],
   },
   {
@@ -399,7 +405,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Ensure all treatment rooms are clean and stocked', status: 'pending' },
       { task: 'Maintain hygiene of steam, sauna, and jacuzzi areas', status: 'pending' },
       { task: 'Check inventory of oils, lotions, and towels', status: 'pending' },
-      { task: 'Ensure therapists are aware of their appointments', status: 'pending' },
     ],
   },
   {
@@ -409,45 +414,8 @@ export const checklistTemplates: Checklist[] = [
     items: [
       { task: 'Test water quality (pH, chlorine levels)', status: 'pending' },
       { task: 'Clean pool and surrounding area', status: 'pending' },
-      { task: 'Ensure life-saving equipment is accessible and in good condition', status: 'pending' },
-      { task: 'Check that safety signs are clearly visible', status: 'pending' },
+      { task: 'Ensure life-saving equipment is accessible', status: 'pending' },
       { task: 'Ensure lifeguard is on duty during operational hours', status: 'pending' },
-    ],
-  },
-  {
-    id: 'hosp_kitchen_equipment_maintenance',
-    name: 'Kitchen Equipment Maintenance',
-    category: 'Hospitality Ops',
-    items: [
-      { task: 'Clean ovens, grills, and fryers daily', status: 'pending' },
-      { task: 'Check and clean exhaust hoods and filters weekly', status: 'pending' },
-      { task: 'Calibrate thermometers monthly', status: 'pending' },
-      { task: 'Schedule professional servicing for major equipment annually', status: 'pending' },
-      { task: 'Keep a log of all maintenance activities', status: 'pending' },
-    ],
-  },
-  {
-    id: 'hosp_night_audit',
-    name: 'Night Audit Checklist',
-    category: 'Hospitality Ops',
-    items: [
-      { task: 'Post all room charges and taxes', status: 'pending' },
-      { task: 'Reconcile all departmental revenues', status: 'pending' },
-      { task: 'Process credit card settlements', status: 'pending' },
-      { task: 'Generate end-of-day reports', status: 'pending' },
-      { task: 'Prepare for the next business day (e.g., check-in reports)', status: 'pending' },
-    ],
-  },
-  {
-    id: 'hosp_restaurant_opening_closing',
-    name: 'Restaurant Opening & Closing Checklist',
-    category: 'Hospitality Ops',
-    items: [
-      { task: 'Opening: Set up tables and stations', status: 'pending' },
-      { task: 'Opening: Brief staff on specials and reservations', status: 'pending' },
-      { task: 'Closing: Clean all areas and equipment', status: 'pending' },
-      { task: 'Closing: Reconcile cash and sales reports', status: 'pending' },
-      { task: 'Closing: Secure premises and set alarm', status: 'pending' },
     ],
   },
   {
@@ -458,7 +426,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Review evacuation routes and assembly points', status: 'pending' },
       { task: 'Check fire alarm and sprinkler system functionality', status: 'pending' },
       { task: 'Ensure first aid kits are fully stocked', status: 'pending' },
-      { task: 'Have emergency contact numbers clearly displayed', status: 'pending' },
       { task: 'Conduct regular drills for staff', status: 'pending' },
     ],
     pricing: {
@@ -477,23 +444,22 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Tour of the property and introduction to department heads', status: 'pending' },
       { task: 'Review of employee handbook and HR policies', status: 'pending' },
       { task: 'Uniform issuance and grooming standards overview', status: 'pending' },
-      { task: 'Basic safety and security procedures', status: 'pending' },
     ],
     pricing: {
         free: "true",
         premium: ""
     }
   },
-  {
-    id: 'train_restaurant_wait_staff',
-    name: 'Restaurant Wait Staff Training',
+    {
+    id: 'train_restaurant_staff_training',
+    name: 'Restaurant Staff Training',
     category: 'Training',
     items: [
-      { task: 'Menu knowledge test (ingredients, allergens)', status: 'pending' },
-      { task: 'Steps of service role-play (from greeting to farewell)', status: 'pending' },
-      { task: 'POS system operation practice', status: 'pending' },
-      { task: 'Upselling and recommendation techniques', status: 'pending' },
-      { task: 'Handling guest complaints gracefully', status: 'pending' },
+      { task: 'Grooming check (uniforms, hygiene)', status: 'pending' },
+      { task: 'Greeting & seating practice', status: 'pending' },
+      { task: 'Menu knowledge quiz', status: 'pending' },
+      { task: 'Fire safety drill', status: 'pending' },
+      { task: 'Complaint handling role-play', status: 'pending' },
     ],
   },
   {
@@ -505,7 +471,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Station setup and mise en place standards', status: 'pending' },
       { task: 'Recipe and plating standards for all menu items', status: 'pending' },
       { task: 'Food safety and HACCP principles', status: 'pending' },
-      { task: 'Kitchen cleaning and equipment maintenance procedures', status: 'pending' },
     ],
   },
   {
@@ -517,7 +482,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Proper use of cleaning chemicals and equipment', status: 'pending' },
       { task: 'Bed making and linen folding techniques', status: 'pending' },
       { task: 'Handling guest laundry and lost & found items', status: 'pending' },
-      { task: 'Guest interaction and privacy protocols', status: 'pending' },
     ],
   },
   {
@@ -527,9 +491,8 @@ export const checklistTemplates: Checklist[] = [
     items: [
       { task: 'Mastering the Property Management System (PMS)', status: 'pending' },
       { task: 'Check-in/check-out procedure role-play', status: 'pending' },
-      { task: 'Handling different types of reservations (corporate, group, OTA)', status: 'pending' },
+      { task: 'Handling different types of reservations', status: 'pending' },
       { task: 'Cash handling and credit card security procedures', status: 'pending' },
-      { task: 'Concierge skills and local area knowledge', status: 'pending' },
     ],
   },
   {
@@ -541,7 +504,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Role-playing common complaint scenarios', status: 'pending' },
       { task: 'Empowerment levels for service recovery', status: 'pending' },
       { task: 'Documentation and follow-up procedures', status: 'pending' },
-      { task: 'Knowing when to escalate to a manager', status: 'pending' },
     ],
   },
   {
@@ -549,11 +511,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Cross-selling & Upselling Training',
     category: 'Training',
     items: [
-      { task: 'Identifying upselling opportunities (e.g., room upgrades, packages)', status: 'pending' },
-      { task: 'Identifying cross-selling opportunities (e.g., spa, restaurant)', status: 'pending' },
+      { task: 'Identifying upselling opportunities', status: 'pending' },
+      { task: 'Identifying cross-selling opportunities', status: 'pending' },
       { task: 'Language and techniques for making offers', status: 'pending' },
       { task: 'Product knowledge across all departments', status: 'pending' },
-      { task: 'Tracking and incentive programs', status: 'pending' },
     ],
   },
   {
@@ -561,11 +522,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Fire Safety & Evacuation Training',
     category: 'Training',
     items: [
-      { task: 'Identifying fire extinguisher types and uses (P.A.S.S. method)', status: 'pending' },
+      { task: 'Identifying fire extinguisher types and uses', status: 'pending' },
       { task: 'Understanding the fire alarm panel', status: 'pending' },
-      { task: 'Evacuation routes and assembly points from different areas', status: 'pending' },
+      { task: 'Evacuation routes and assembly points', status: 'pending' },
       { task: 'Procedures for assisting guests with special needs', status: 'pending' },
-      { task: 'Annual fire drill participation and review', status: 'pending' },
     ],
   },
   {
@@ -575,9 +535,8 @@ export const checklistTemplates: Checklist[] = [
     items: [
       { task: 'Proper handwashing techniques', status: 'pending' },
       { task: 'Understanding the temperature danger zone', status: 'pending' },
-      { task: 'Cross-contamination prevention (color-coded boards)', status: 'pending' },
+      { task: 'Cross-contamination prevention', status: 'pending' },
       { task: 'Allergen awareness and communication protocols', status: 'pending' },
-      { task: 'Receiving and storage procedures for food supplies', status: 'pending' },
     ],
   },
   {
@@ -589,7 +548,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Delegation and empowerment techniques', status: 'pending' },
       { task: 'Conflict resolution and mediation skills', status: 'pending' },
       { task: 'Performance management and appraisal process', status: 'pending' },
-      { task: 'Time management and prioritization for managers', status: 'pending' },
     ],
     pricing: {
         free: "",
@@ -603,16 +561,28 @@ export const checklistTemplates: Checklist[] = [
     name: 'Hotel Energy Saving Checklist',
     category: 'Sustainability',
     items: [
-      { task: 'Switch to 100% LED lighting', status: 'pending' },
-      { task: 'Install motion sensors for lights in common areas', status: 'pending' },
-      { task: 'Perform regular maintenance on HVAC systems', status: 'pending' },
-      { task: 'Use energy-efficient appliances', status: 'pending' },
-      { task: 'Track and analyze monthly energy consumption', status: 'pending' },
+      { task: 'Daily energy usage log', status: 'pending' },
+      { task: 'Laundry water recycling system check', status: 'pending' },
+      { task: 'Linen reuse policy cards in rooms check', status: 'pending' },
+      { task: 'Kitchen oil recycling process check', status: 'pending' },
+      { task: 'Plastic-free toiletries check', status: 'pending' },
     ],
     pricing: {
         free: "true",
         premium: ""
     }
+  },
+    {
+    id: 'sustain_restaurant_sustainability',
+    name: 'Restaurant Sustainability Checklist',
+    category: 'Sustainability',
+    items: [
+      { task: 'Buy from local farms weekly', status: 'pending' },
+      { task: 'Track food wastage per day', status: 'pending' },
+      { task: 'Compost setup for kitchen waste', status: 'pending' },
+      { task: 'Ban plastic straws / bottles', status: 'pending' },
+      { task: 'Menu redesign for seasonal produce', status: 'pending' },
+    ],
   },
   {
     id: 'sustain_water_conservation',
@@ -623,7 +593,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Implement a linen and towel reuse program for guests', status: 'pending' },
       { task: 'Check for and repair any water leaks regularly', status: 'pending' },
       { task: 'Use drought-resistant plants for landscaping', status: 'pending' },
-      { task: 'Harvest rainwater for non-potable uses', status: 'pending' },
     ],
   },
   {
@@ -635,7 +604,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Train staff on proper waste segregation', status: 'pending' },
       { task: 'Partner with a reliable recycling vendor', status: 'pending' },
       { task: 'Compost food waste', status: 'pending' },
-      { task: 'Minimize use of single-use plastics', status: 'pending' },
     ],
   },
   {
@@ -643,11 +611,11 @@ export const checklistTemplates: Checklist[] = [
     name: 'Eco-friendly Event Checklist',
     category: 'Sustainability',
     items: [
-      { task: 'Choose a venue with green certifications', status: 'pending' },
-      { task: 'Use digital invitations instead of paper', status: 'pending' },
-      { task: 'Source food from local and sustainable suppliers', status: 'pending' },
-      { task: 'Avoid single-use plastics for catering', status: 'pending' },
-      { task: 'Arrange for waste segregation and recycling at the event', status: 'pending' },
+      { task: 'Digital invites instead of paper', status: 'pending' },
+      { task: 'Reusable décor (cloth backdrops, LED lights)', status: 'pending' },
+      { task: 'Local & seasonal food menu', status: 'pending' },
+      { task: 'Waste segregation bins placed visibly', status: 'pending' },
+      { task: 'Partner with NGOs for leftover food donation', status: 'pending' },
     ],
   },
   {
@@ -657,9 +625,8 @@ export const checklistTemplates: Checklist[] = [
     items: [
       { task: 'Measure electricity consumption', status: 'pending' },
       { task: 'Track water usage', status: 'pending' },
-      { task: 'Calculate emissions from transportation (company vehicles)', status: 'pending' },
+      { task: 'Calculate emissions from transportation', status: 'pending' },
       { task: 'Monitor waste generation and disposal', status: 'pending' },
-      { task: 'Set reduction targets and review progress quarterly', status: 'pending' },
     ],
   },
   {
@@ -671,7 +638,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Purchase products made from recycled materials', status: 'pending' },
       { task: 'Choose energy-efficient electronics and appliances', status: 'pending' },
       { task: 'Buy in bulk to reduce packaging waste', status: 'pending' },
-      { task: 'Source from local suppliers to reduce transportation emissions', status: 'pending' },
     ],
   },
   {
@@ -681,9 +647,8 @@ export const checklistTemplates: Checklist[] = [
     items: [
       { task: 'Prioritize seasonal and locally sourced ingredients', status: 'pending' },
       { task: 'Offer more plant-based options', status: 'pending' },
-      { task: 'Minimize food waste through portion control and creative use of leftovers', status: 'pending' },
-      { task: 'Choose seafood from sustainable sources (e.g., MSC certified)', status: 'pending' },
-      { task: 'Communicate your sustainable sourcing to guests', status: 'pending' },
+      { task: 'Minimize food waste through portion control', status: 'pending' },
+      { task: 'Choose seafood from sustainable sources', status: 'pending' },
     ],
   },
   {
@@ -691,23 +656,10 @@ export const checklistTemplates: Checklist[] = [
     name: 'Composting & Food Waste Management',
     category: 'Sustainability',
     items: [
-      { task: 'Set up a system for segregating food scraps in the kitchen', status: 'pending' },
-      { task: 'Establish a composting site or partner with a composting service', status: 'pending' },
-      { task: 'Train kitchen staff on what can and cannot be composted', status: 'pending' },
-      { task: 'Track the amount of food waste diverted from landfills', status: 'pending' },
-      { task: 'Use compost for on-site gardens or offer to the community', status: 'pending' },
-    ],
-  },
-  {
-    id: 'sustain_guest_awareness_program',
-    name: 'Guest Awareness Sustainability Program',
-    category: 'Sustainability',
-    items: [
-      { task: 'Create in-room signage about water and energy saving options', status: 'pending' },
-      { task: 'Highlight sustainable practices on the hotel website and social media', status: 'pending' },
-      { task: 'Offer incentives for guests who participate in green initiatives', status: 'pending' },
-      { task: 'Inform guests about local eco-tourism activities', status: 'pending' },
-      { task: 'Collect guest feedback on sustainability efforts', status: 'pending' },
+      { task: 'Set up a system for segregating food scraps', status: 'pending' },
+      { task: 'Establish a composting site or partner with a service', status: 'pending' },
+      { task: 'Train kitchen staff on what can be composted', status: 'pending' },
+      { task: 'Track food waste diverted from landfills', status: 'pending' },
     ],
   },
   {
@@ -718,7 +670,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Review energy and water consumption data', status: 'pending' },
       { task: 'Assess waste and recycling volumes', status: 'pending' },
       { task: 'Check compliance with green procurement policies', status: 'pending' },
-      { task: 'Identify areas for improvement', status: 'pending' },
       { task: 'Share audit results with all departments', status: 'pending' },
     ],
     pricing: {
