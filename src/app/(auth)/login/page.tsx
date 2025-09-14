@@ -10,7 +10,6 @@ import { signInWithEmail, signInWithGoogle } from "@/app/auth";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { GoogleIcon } from "@/components/icons";
-import { Separator } from "@/components/ui/separator";
 import { getAuth, getRedirectResult } from "firebase/auth";
 import firebase_app from "@/lib/firebase";
 
@@ -25,6 +24,7 @@ export default function LoginPage() {
     getRedirectResult(auth)
       .then((result) => {
         if (result) {
+          // This means the user has just signed in via redirect.
           router.push('/dashboard');
         }
       })
@@ -57,7 +57,7 @@ export default function LoginPage() {
   };
 
   const handleGoogleSignIn = async () => {
-    const { result, error } = await signInWithGoogle();
+    const { error } = await signInWithGoogle();
     if (error) {
       console.error("Error during Google sign-in: ", error);
       toast({
@@ -67,6 +67,7 @@ export default function LoginPage() {
       });
       return;
     }
+    // No need to do anything here, useEffect will handle the redirect result.
   }
 
   return (

@@ -27,6 +27,7 @@ export default function SignupPage() {
     getRedirectResult(auth)
       .then((result) => {
         if (result) {
+          // This means the user has just signed in via redirect.
           router.push('/dashboard');
         }
       })

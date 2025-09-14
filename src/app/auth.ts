@@ -37,14 +37,11 @@ export async function signInWithEmail(email: string, password: string): Promise<
 
 export async function signInWithGoogle(): Promise<{result?: UserCredential, error?: string}> {
   try {
+    // We initiate the redirect here. The result is handled on the page
+    // where the user lands after the redirect.
     await signInWithRedirect(auth, googleProvider);
-    // After the redirect, the result needs to be handled on page load.
-    // The following code may not be reached if the redirect is successful.
-    const result = await getRedirectResult(auth);
-    if (result) {
-        return { result };
-    }
-    return {}; // No error, but no immediate result either.
+    // This function will not return a result directly, as the page will redirect.
+    return {};
   } catch (error: any) {
     return { error: error.message };
   }
