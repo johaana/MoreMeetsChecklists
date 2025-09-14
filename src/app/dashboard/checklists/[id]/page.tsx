@@ -1,17 +1,19 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { checklistTemplates } from '@/lib/templates';
-import type { Checklist, Task, Status } from '@/lib/types';
+import type { Checklist, Task, Status, Priority } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Share2, Edit, ChevronLeft } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
+import type { User } from '@/lib/users';
+import { users } from '@/lib/users';
 
 export default function ChecklistDetailPage() {
   const params = useParams();
@@ -30,16 +32,44 @@ export default function ChecklistDetailPage() {
     }
   }, [id]);
 
-  const handleTaskStatusChange = (taskTitle: string, status: Status) => {
+  const updateTask = useCallback((taskTitle: string, updatedProperties: Partial<Task>) => {
     setChecklist((prev) => {
       if (!prev) return null;
       const newTasks = prev.tasks.map((task) => {
         if (task.task === taskTitle) {
-          return { ...task, status: status };
+          return { ...task, ...updatedProperties };
         }
         return task;
       });
       return { ...prev, tasks: newTasks };
+    });
+  }, []);
+
+  const handleTaskStatusChange = (taskTitle: string, status: Status) => {
+    updateTask(taskTitle, { status });
+  };
+  
+  const handleAssignUser = (taskTitle: string, user: User | null) => {
+    updateTask(taskTitle, { assignedTo: user?.id || null });
+  };
+
+  const handleSetDueDate = (taskTitle: string, dueDate: Date | undefined) => {
+    updateTask(taskTitle, { dueDate: dueDate ? dueDate.toISOString() : undefined });
+  };
+  
+  const handleSetPriority = (taskTitle: string, priority: Priority) => {
+    updateTask(taskTitle, { priority });
+  };
+
+  const handleDeleteTask = (taskTitle: string) => {
+    setChecklist((prev) => {
+      if (!prev) return null;
+      const newTasks = prev.tasks.filter((task) => task.task !== taskTitle);
+      return { ...prev, tasks: newTasks };
+    });
+    toast({
+        title: "Task Deleted",
+        description: `"${taskTitle}" has been removed from your checklist.`,
     });
   };
 
@@ -49,6 +79,8 @@ export default function ChecklistDetailPage() {
       task: taskText,
       status: 'pending',
       subtasks: [],
+      assignedTo: null,
+      priority: 'low',
     };
     setChecklist((prev) => {
       if (!prev) return null;
@@ -135,7 +167,12 @@ export default function ChecklistDetailPage() {
           <TaskItem 
             key={`${task.task}-${index}`} 
             task={task}
+            users={users}
             onStatusChange={handleTaskStatusChange}
+            onAssignUser={handleAssignUser}
+            onSetDueDate={handleSetDueDate}
+            onSetPriority={handleSetPriority}
+            onDeleteTask={handleDeleteTask}
             />
         ))}
       </div>
