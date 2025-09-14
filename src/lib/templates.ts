@@ -180,6 +180,86 @@ export const checklistTemplates: Checklist[] = [
       { id: '12', text: 'Follow up with attendees with a thank-you note and press kit', completed: false },
     ],
   },
+  {
+    id: 'evt-birthday-party',
+    title: 'Kids Birthday Party',
+    category: 'Events',
+    type: 'Birthday Party',
+    tasks: [
+      { id: '1', text: 'Set Budget and Theme', completed: false, subtasks: [
+        { id: '1-1', text: 'Decide on a total party budget', completed: false },
+        { id: '1-2', text: 'Choose a theme with the birthday child', completed: false },
+        { id: '1-3', text: 'Create a guest list to estimate headcount', completed: false },
+      ]},
+      { id: '2', text: 'Book Venue & Entertainment', completed: false, subtasks: [
+        { id: '2-1', text: 'Select and book party venue (if not at home)', completed: false },
+        { id: '2-2', text: 'Book entertainer (e.g., magician, character)', completed: false },
+        { id: '2-3', text: 'Arrange for any large rentals (e.g., bouncy castle)', completed: false },
+      ]},
+      { id: '3', text: 'Send Invitations', completed: false, subtasks: [
+        { id: '3-1', text: 'Design/purchase invitations matching the theme', completed: false },
+        { id: '3-2', text: 'Send out invitations 3-4 weeks in advance', completed: false },
+        { id: '3-3', text: 'Track RSVPs and follow up with non-responders', completed: false },
+      ]},
+      { id: '4', text: 'Plan Menu & Order Cake', completed: false, subtasks: [
+        { id: '4-1', text: 'Plan a kid-friendly menu (pizza, nuggets, etc.)', completed: false },
+        { id: '4-2', text: 'Check for guest allergies or dietary restrictions', completed: false },
+        { id: '4-3', text: 'Order a themed birthday cake and candles', completed: false },
+        { id: '4-4', text: 'Purchase drinks, snacks, and paper goods', completed: false },
+      ]},
+      { id: '5', text: 'Shop for Decorations & Supplies', completed: false, subtasks: [
+        { id: '5-1', text: 'Purchase decorations (balloons, streamers, banners)', completed: false },
+        { id: '5-2', text: 'Buy tableware (plates, cups, napkins, cutlery)', completed: false },
+        { id: '5-3', text: 'Get party game supplies and prizes', completed: false },
+      ]},
+      { id: '6', text: 'Prepare Party Favors', completed: false, subtasks: [
+        { id: '6-1', text: 'Choose age-appropriate party favors', completed: false },
+        { id: '6-2', text: 'Purchase items for goody bags', completed: false },
+        { id: '6-3', text: 'Assemble and pack party favors', completed: false },
+      ]},
+      { id: '7', text: 'Final Preparations (Week of Party)', completed: false, subtasks: [
+        { id: '7-1', text: 'Confirm bookings with venue and entertainer', completed: false },
+        { id: '7-2', text: 'Create a party day schedule and playlist', completed: false },
+        { id: '7-3', text: 'Buy any remaining food items', completed: false },
+        { id: '7-4', text: 'Prepare a space for gifts', completed: false },
+      ]},
+    ],
+  },
+  {
+    id: 'evt-destination-wedding',
+    title: 'Destination Wedding Planning',
+    category: 'Events',
+    type: 'Wedding - Destination',
+    tasks: [
+      { id: '1', text: 'Initial Planning (12-18 Months Out)', completed: false, subtasks: [
+        { id: '1-1', text: 'Set overall wedding budget', completed: false },
+        { id: '1-2', text: 'Choose a destination and time of year', completed: false },
+        { id: '1-3', text: 'Create initial guest list', completed: false },
+        { id: '1-4', text: 'Research local marriage requirements and legalities', completed: false },
+        { id: '1-5', text: 'Hire a wedding planner specializing in the destination', completed: false },
+      ]},
+      { id: '2', text: 'Vendor & Venue Booking (9-12 Months Out)', completed: false, subtasks: [
+        { id: '2-1', text: 'Visit destination to scout venues (if possible)', completed: false },
+        { id: '2-2', text: 'Book ceremony and reception venues', completed: false },
+        { id: '2-3', text: 'Book photographer, videographer, and officiant', completed: false },
+        { id: '2-4', text: 'Send out "Save the Dates" to guests', completed: false },
+        { id: '2-5', text: 'Launch wedding website with travel info', completed: false },
+      ]},
+      { id: '3', text: 'Guest & Travel Logistics (6-9 Months Out)', completed: false, subtasks: [
+        { id: '3-1', text: 'Reserve a block of hotel rooms for guests', completed: false },
+        { id: '3-2', text: 'Send formal invitations', completed: false },
+        { id: '3-3', text: 'Finalize menu with caterer and book florist/decor', completed: false },
+        { id: '3-4', text: 'Arrange transportation for guests (e.g., airport to hotel)', completed: false },
+      ]},
+      { id: '4', text: 'Final Details (1-3 Months Out)', completed: false, subtasks: [
+        { id: '4-1', text: 'Obtain marriage license and any necessary documents', completed: false },
+        { id: '4-2', text: 'Confirm all vendor details and timelines', completed: false },
+        { id: '4-3', text: 'Finalize seating chart and event flow', completed: false },
+        { id: '4-4', text: 'Assemble welcome bags for guests', completed: false },
+        { id: '4-5', text: 'Confirm travel arrangements and pack your bags', completed: false },
+      ]},
+    ]
+  },
   // Hospitality
   {
     id: 'hosp-hk-daily',
@@ -256,6 +336,47 @@ export const checklistTemplates: Checklist[] = [
       { id: '9', text: 'Set security alarm and lock all entrance doors', completed: false },
       { id: '10', text: 'Properly store any leftover prepared food with date labels', completed: false },
     ],
+  },
+  {
+    id: 'hosp-catering-event',
+    title: 'Catering Event Management',
+    category: 'Hospitality',
+    type: 'Catering Event',
+    tasks: [
+      { id: '1', text: 'Initial Client Consultation', completed: false, subtasks: [
+        { id: '1-1', text: 'Discuss event date, time, and location', completed: false },
+        { id: '1-2', text: 'Determine estimated guest count', completed: false },
+        { id: '1-3', text: 'Understand client\'s vision, style, and budget', completed: false },
+      ]},
+      { id: '2', text: 'Proposal and Menu Planning', completed: false, subtasks: [
+        { id: '2-1', text: 'Create a custom menu proposal with pricing', completed: false },
+        { id: '2-2', text: 'Schedule a menu tasting with the client', completed: false },
+        { id: '2-3', text: 'Finalize menu and sign catering contract', completed: false },
+      ]},
+      { id: '3', text: 'Logistics and Rentals', completed: false, subtasks: [
+        { id: '3-1', text: 'Conduct a site visit to plan layout and logistics', completed: false },
+        { id: '3-2', text: 'Order all necessary rentals (tables, chairs, linens, etc.)', completed: false },
+        { id: '3-3', text: 'Plan for kitchen/prep area setup if off-site', completed: false },
+        { id: '3-4', text: 'Arrange for necessary permits and licenses', completed: false },
+      ]},
+      { id: '4', text: 'Food and Staffing', completed: false, subtasks: [
+        { id: '4-1', text: 'Order all food and beverage ingredients', completed: false },
+        { id: '4-2', text: 'Schedule kitchen staff, servers, and bartenders', completed: false },
+        { id: '4-3', text: 'Hold a pre-event briefing with all staff', completed: false },
+      ]},
+      { id: '5', text: 'Event Day Execution', completed: false, requiresPhoto: true, subtasks: [
+        { id: '5-1', text: 'Transport all equipment, food, and supplies to venue', completed: false },
+        { id: '5-2', text: 'Set up prep areas and serving stations', completed: false },
+        { id: '5-3', text: 'Execute food and beverage service according to timeline', completed: false },
+        { id: '5-4', text: 'Manage on-site staff and troubleshoot any issues', completed: false },
+      ]},
+      { id: '6', text: 'Post-Event Wrap-Up', completed: false, subtasks: [
+        { id: '6-1', text: 'Break down and clean all event areas', completed: false },
+        { id: '6-2', text: 'Pack and inventory all equipment and leftover supplies', completed: false },
+        { id: '6-3', text: 'Manage return of all rental items', completed: false },
+        { id: '6-4', text: 'Send final invoice and thank you note to client', completed: false },
+      ]},
+    ]
   },
   // Training (Example)
   {
