@@ -12,15 +12,20 @@ import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
 
 export default function ChecklistDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const [checklist, setChecklist] = useState<Checklist | null>(null);
 
   useEffect(() => {
-    const foundChecklist = checklistTemplates.find((c) => c.id === params.id);
+    const foundChecklist = checklistTemplates.find((c) => c.id === id);
     if (foundChecklist) {
       // Deep copy to prevent modifying the original template
       setChecklist(JSON.parse(JSON.stringify(foundChecklist)));
+    } else {
+      // In a real app, you might want to redirect to a 404 page
+      // For now, we can just log an error or handle it gracefully.
+      console.error(`Checklist with id ${id} not found.`);
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!checklist) {
     // This will be caught by useEffect on the client,
