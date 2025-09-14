@@ -13,12 +13,14 @@ import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import type { User } from '@/lib/users';
-import { users } from '@/lib/users';
+import { users as initialUsers } from '@/lib/users';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ChecklistDetailPage() {
   const params = useParams();
   const id = params.id as string;
   const [checklist, setChecklist] = useState<Checklist | null>(null);
+  const [users, setUsers] = useState<User[]>(initialUsers);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -86,6 +88,16 @@ export default function ChecklistDetailPage() {
       if (!prev) return null;
       return { ...prev, tasks: [...prev.tasks, newTask] };
     });
+  };
+  
+  const handleAddUser = (userData: Omit<User, 'id' | 'avatar'>) => {
+    const newUser: User = {
+        ...userData,
+        id: uuidv4(),
+        avatar: `https://picsum.photos/seed/${Math.random()}/100/100`,
+    };
+    setUsers(prev => [...prev, newUser]);
+    return newUser;
   };
 
   const handleShare = async () => {
@@ -173,9 +185,12 @@ export default function ChecklistDetailPage() {
             onSetDueDate={handleSetDueDate}
             onSetPriority={handleSetPriority}
             onDeleteTask={handleDeleteTask}
+            onAddUser={handleAddUser}
             />
         ))}
       </div>
     </div>
   );
 }
+
+    
