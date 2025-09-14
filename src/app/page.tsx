@@ -137,16 +137,18 @@ export default function Home() {
                   { title: "Sustainability Officers", icon: <Leaf />, image: forSustainabilityImg },
                 ].map(({ title, icon, image }) => (
                   image && (
-                  <Card key={title} className="overflow-hidden group">
-                    <div className="relative h-48">
-                      <Image src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} fill className="object-cover group-hover:scale-105 transition-transform duration-300"/>
-                    </div>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        {icon} {title}
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
+                    <Link key={title} href="/signup" className="block">
+                      <Card className="overflow-hidden group h-full hover:shadow-lg transition-shadow">
+                        <div className="relative h-48">
+                          <Image src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} fill className="object-cover group-hover:scale-105 transition-transform duration-300"/>
+                        </div>
+                        <CardHeader>
+                          <CardTitle className="flex items-center gap-2">
+                            {icon} {title}
+                          </CardTitle>
+                        </CardHeader>
+                      </Card>
+                    </Link>
                   )
                 ))}
             </div>
@@ -382,7 +384,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-5xl mx-auto">
-              <Card>
+              <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="pt-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
@@ -399,7 +401,7 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-               <Card>
+               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="pt-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
@@ -416,7 +418,7 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-               <Card>
+               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="pt-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
