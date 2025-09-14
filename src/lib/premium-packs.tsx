@@ -14,52 +14,52 @@ export const premiumPacks = [
         ],
         icon: <Star className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Wedding Reception", "Naming Ceremony"]
+        relatedFreeTemplates: ["Wedding Reception", "Destination Wedding Planning"]
     },
     {
         title: "Hospitality Excellence Suite",
         price: "49.99",
         description: "The complete operational toolkit for hotel and restaurant managers. Standardize procedures, improve guest satisfaction, and ensure 5-star quality across every department.",
         features: [
-            "Flawless Front Desk Operations: Standardize guest greetings, check-ins, and inquiries.",
-            "5-Star Concierge Services: Checklists for managing guest requests and local bookings.",
-            "Efficient Banquet Event Setup & Teardown: For seamless weddings, conferences, and events.",
-            "Kitchen Deep Cleaning & Hygiene Audits: Maintain impeccable standards of cleanliness.",
-            "Guest Complaint Resolution Protocol: Turn negative experiences into positive reviews.",
+            "Flawless Hotel Housekeeping & Front Desk Operations.",
+            "Restaurant Opening, Closing, and Hygiene Audits.",
+            "New Staff Onboarding & Training Protocols.",
+            "Efficient Banquet Event Setup & Teardown.",
+            "Guest Complaint Resolution Protocol.",
         ],
         icon: <Building className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Hotel Housekeeping", "Restaurant Opening"]
+        relatedFreeTemplates: ["Hotel Daily Housekeeping", "Restaurant Daily Opening"]
     },
     {
         title: "Corporate & Startup Launchkit",
         price: "24.99",
         description: "Execute flawless corporate events and streamlined startup launches. This pack is designed for founders and event managers who need to project professionalism and precision.",
         features: [
-            "New Office Setup & Inauguration: From infrastructure to launch party, get it done right.",
-            "AGM & Investor Pitch Prep: Impress stakeholders with meticulous planning.",
-            "Product Launch Event Marketing: A complete timeline of marketing and PR tasks.",
-            "Press Conference Coordination: Manage media and messaging like a pro.",
-            "Corporate Retreat & Team Offsite Planning: Foster team spirit with perfectly planned events.",
+            "New Office Setup & Inauguration.",
+            "AGM & Investor Pitch Prep checklists.",
+            "Product Launch Event Marketing timelines.",
+            "Press Conference Coordination guides.",
+            "Corporate Retreat & Team Offsite Planning templates.",
         ],
         icon: <Briefcase className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Startup Launch Party", "Conference"]
+        relatedFreeTemplates: ["Startup Launch Party"]
     },
     {
         title: "Sustainability Starter Kit",
         price: "19.99",
         description: "For the eco-conscious business or individual. Turn green intentions into measurable action with these simple, effective checklists for waste reduction, energy efficiency, and more.",
         features: [
-            "Office & Hotel Energy Audit: Simple steps to reduce consumption and save money.",
-            "Waste Reduction & Recycling Program: Implement a comprehensive waste management system.",
-            "Sustainable Commuting Plan: Encourage greener transport options for your team.",
-            "Eco-Friendly Event Planning: Reduce the environmental impact of your events.",
-            "Community Green Initiative Planner: Organize local clean-up drives or tree planting events.",
+            "Office & Hotel Energy Audits.",
+            "Waste Reduction & Recycling Programs.",
+            "Sustainable Commuting Plans for your team.",
+            "Eco-Friendly Event Planning guide.",
+            "Community Green Initiative Planner.",
         ],
         icon: <Leaf className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Hotel Energy Audit", "Eco-Friendly Events"]
+        relatedFreeTemplates: ["Hotel Energy Efficiency"]
     }
 ];
 

@@ -2,7 +2,7 @@ import type { Checklist } from './types';
 
 export const checklistTemplates: Checklist[] = [
   // =================================================
-  // 1. Events Checklists - FREE
+  // 1. Events Checklists - FREE (B2C Focus)
   // =================================================
   {
     id: 'event-wedding-reception-free',
@@ -46,41 +46,26 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Arrange for Return Gifts/Goodie Bags', status: 'pending', subtasks: ['Select age-appropriate items', 'Pack the bags', 'Personalize with thank-you notes'] },
     ],
   },
-
-  // =================================================
-  // 2. Events Checklists - PREMIUM
-  // =================================================
   {
-    id: 'event-sangeet-night-premium',
-    name: 'Sangeet Night',
+    id: 'event-destination-wedding-free',
+    name: 'Destination Wedding Planning',
     category: 'Events',
     subcategory: 'Weddings',
-    premium: true,
-    premiumPack: 'The Ultimate Wedding Planner Pack',
+    premium: false,
     tasks: [
-      { task: 'Book Professional Choreographer', status: 'pending', subtasks: ['Audition local choreographers', 'Negotiate rates for group and solo dances', 'Schedule practice sessions based on availability'] },
-      { task: 'Finalize Family & Friends Performances', status: 'pending', subtasks: ['Create a sign-up sheet with performance type', 'Set time limits (e.g., 3-4 minutes per act)', 'Collect music files in required format (MP3, WAV)'] },
-      { task: 'Set up Stage, Sound & Lighting', status: 'pending', subtasks: ['Design stage layout with backdrop', 'Rent professional audio system and microphones', 'Plan for dynamic lighting effects for each performance'] },
-      { task: 'Hire Live Band or DJ', status: 'pending', subtasks: ['Review portfolios and attend a live performance if possible', 'Finalize playlist for dance floor sections', 'Sign contract with rider'] },
-      { task: 'Plan a Themed Decor', status: 'pending', subtasks: ['Bollywood movie theme', 'Royal Rajasthani theme', 'Modern floral theme', 'Photo booth with props'] },
-      { task: 'Arrange for a skilled Emcee/Host', status: 'pending', subtasks: ['Write a script with introductions for each act', 'Plan engaging audience games between performances', 'Confirm host a week prior'] },
+      { task: 'Research and Select a Destination', status: 'pending', subtasks: ['Check legal marriage requirements in the country', 'Consider weather and travel time for guests', 'Scout locations online and create a shortlist'] },
+      { task: 'Hire a Local Wedding Planner', status: 'pending', subtasks: ['Interview at least 3 planners', 'Check references and past work', 'Sign a detailed contract'] },
+      { task: 'Arrange Guest Accommodations', status: 'pending', subtasks: ['Block hotel rooms at a discounted rate', 'Provide guests with a list of recommended hotels', 'Create a wedding website with travel info'] },
+      { task: 'Plan Welcome Party and Pre-Wedding Activities', status: 'pending', subtasks: ['Arrange a welcome dinner for arriving guests', 'Plan a group excursion (e.g., city tour, beach day)', 'Distribute welcome bags with local goodies'] },
+      { task: 'Coordinate with Local Vendors', status: 'pending', subtasks: ['Florists, caterers, and entertainers', 'Arrange for transportation for all guests', 'Confirm all bookings and timelines one week prior'] },
     ],
   },
-  {
-    id: 'event-product-launch-premium',
-    name: 'Product Launch Event',
-    category: 'Events',
-    subcategory: 'Corporate',
-    premium: true,
-    premiumPack: 'Corporate & Startup Launchkit',
-    tasks: [
-        { task: 'Define event goals & KPIs', status: 'pending', subtasks: ['Set targets for media mentions (e.g., 10+ articles)', 'Define lead generation goals (e.g., 500 new leads)', 'Establish social media engagement metrics (# of mentions, hashtag usage)'] },
-        { task: 'Develop a comprehensive event marketing plan', status: 'pending', subtasks: ['Pre-event email campaign to build hype', 'Social media countdown posts', 'Paid ad strategy for target audience', 'Create event landing page with registration'] },
-        { task: 'Create engaging product demos & presentations', status: 'pending', subtasks: ['Set up live demo stations with trained staff', 'Create interactive displays or touchscreens', 'Finalize keynote presentation slides and script'] },
-        { task: 'Secure keynote speakers & industry influencers', status: 'pending', subtasks: ['Identify and outreach to relevant figures', 'Negotiate speaking fees and terms', 'Coordinate travel, accommodation, and itineraries'] },
-        { task: 'Coordinate with PR agency for media coverage', status: 'pending', subtasks: ['Prepare detailed press kits (press release, high-res images)', 'Schedule pre-event briefings with key journalists', 'Manage on-site media interviews and photo ops'] },
-    ],
-  },
+
+  // =================================================
+  // 2. B2B Premium Checklists
+  // =================================================
+
+  // Events - Corporate (Premium)
   {
     id: 'event-corporate-awards-night-premium',
     name: 'Corporate Awards Night',
@@ -111,6 +96,8 @@ export const checklistTemplates: Checklist[] = [
         { task: 'Post-show press conference logistics', status: 'pending', subtasks: ['Set up press room with proper lighting and audio', 'Prepare moderator notes and potential questions', 'Coordinate with security for smooth entry and exit of talent'] },
     ],
   },
+
+  // Events - Wedding (Premium)
   {
     id: 'event-haldi-ceremony-premium',
     name: 'Haldi Ceremony',
@@ -124,6 +111,35 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Coordinate Bride/Groom Outfits', status: 'pending', subtasks: ['Simple matching yellow outfits', 'Floral jewelry (gajras)', 'Arrange for comfortable, older clothing as it will get stained'] },
       { task: 'Book Photographer for candid shots', status: 'pending', subtasks: ['Brief photographer to focus on expressions and fun', 'Capture the playful atmosphere of applying haldi'] },
       { task: 'Plan a light, festive music playlist', status: 'pending', subtasks: ['Traditional folk songs related to weddings', 'Shehnai music for ambiance'] },
+    ],
+  },
+  {
+    id: 'event-mehndi-night-premium',
+    name: 'Mehndi Night',
+    category: 'Events',
+    subcategory: 'Weddings',
+    premium: true,
+    premiumPack: 'The Ultimate Wedding Planner Pack',
+    tasks: [
+        { task: 'Book professional Mehndi artists', status: 'pending', subtasks: ['Finalize designs for the bride', 'Arrange for additional artists for guests', 'Confirm hourly rates and booking duration'] },
+        { task: 'Set up comfortable seating for the bride', status: 'pending', subtasks: ['Cushions, bolsters, and a raised platform', 'Ensure good lighting for the artists'] },
+        { task: 'Plan entertainment and music', status: 'pending', subtasks: ['DJ with a mix of traditional and Bollywood songs', 'Dhol players for a festive entry', 'Open mic for family performances'] },
+        { task: 'Organize food and drinks', status: 'pending', subtasks: ['Focus on easy-to-eat finger foods', 'Themed cocktails and mocktails'] },
+    ]
+  },
+  {
+    id: 'event-sangeet-night-premium',
+    name: 'Sangeet Night',
+    category: 'Events',
+    subcategory: 'Weddings',
+    premium: true,
+    premiumPack: 'The Ultimate Wedding Planner Pack',
+    tasks: [
+      { task: 'Book Professional Choreographer', status: 'pending', subtasks: ['Audition local choreographers', 'Negotiate rates for group and solo dances', 'Schedule practice sessions based on availability'] },
+      { task: 'Finalize Family & Friends Performances', status: 'pending', subtasks: ['Create a sign-up sheet with performance type', 'Set time limits (e.g., 3-4 minutes per act)', 'Collect music files in required format (MP3, WAV)'] },
+      { task: 'Set up Stage, Sound & Lighting', status: 'pending', subtasks: ['Design stage layout with backdrop', 'Rent professional audio system and microphones', 'Plan for dynamic lighting effects for each performance'] },
+      { task: 'Hire Live Band or DJ', status: 'pending', subtasks: ['Review portfolios and attend a live performance if possible', 'Finalize playlist for dance floor sections', 'Sign contract with rider'] },
+      { task: 'Arrange for a skilled Emcee/Host', status: 'pending', subtasks: ['Write a script with introductions for each act', 'Plan engaging audience games between performances', 'Confirm host a week prior'] },
     ],
   },
   {
@@ -157,15 +173,14 @@ export const checklistTemplates: Checklist[] = [
     ],
   },
 
-  // =================================================
-  // 3. Hospitality Checklists - FREE
-  // =================================================
+  // Hospitality - B2B Premium
   {
-    id: 'hosp-hotel-daily-housekeeping-free',
+    id: 'hosp-hotel-daily-housekeeping-premium',
     name: 'Hotel Daily Housekeeping',
     category: 'Hospitality',
     subcategory: 'Operations',
-    premium: false,
+    premium: true,
+    premiumPack: 'Hospitality Excellence Suite',
     tasks: [
       { task: 'Change Bed Linens & Make Bed', status: 'pending', subtasks: ['Check for any stains or damage', 'Ensure crisp, tight corners on sheets'] },
       { task: 'Clean Bathroom & Replenish Toiletries', status: 'completed', subtasks: ['Clean mirror and counter surfaces', 'Scrub toilet and shower area', 'Replenish towels, soap, and shampoo'] },
@@ -175,11 +190,12 @@ export const checklistTemplates: Checklist[] = [
     ],
   },
   {
-    id: 'hosp-restaurant-daily-opening-free',
+    id: 'hosp-restaurant-daily-opening-premium',
     name: 'Restaurant Daily Opening',
     category: 'Restaurants',
     subcategory: 'Operations',
-    premium: false,
+    premium: true,
+    premiumPack: 'Hospitality Excellence Suite',
     tasks:      [
       { task: 'Check Reservation System for Bookings', status: 'completed', subtasks: ['Note any special requests (birthdays, allergies)', 'Plan table allocation for large groups'] },
       { task: 'Set Tables with Clean Linens & Cutlery', status: 'completed', subtasks: ['Polish all silverware and glassware', 'Fold napkins according to standard', 'Set centerpieces'] },
@@ -188,10 +204,6 @@ export const checklistTemplates: Checklist[] = [
       { task: 'Brief Front of House Staff', status: 'pending', subtasks: ['Discuss specials and 86\'d items', 'Assign server sections', 'Review service standards and upsell opportunities'] },
     ],
   },
-
-  // =================================================
-  // 4. Hospitality Checklists - PREMIUM
-  // =================================================
   {
     id: 'hosp-restaurant-daily-closing-premium',
     name: 'Restaurant Daily Closing',
@@ -222,8 +234,10 @@ export const checklistTemplates: Checklist[] = [
         { task: 'Post-event breakdown and cleanup checklist', status: 'pending', subtasks: ['Pack all leftover food safely for client or disposal', 'Thoroughly clean the service and prep areas', 'Account for all rental equipment before leaving the venue'] },
     ],
   },
+  
+  // Training - B2B Premium
   {
-    id: 'hosp-new-hotel-staff-onboarding-premium',
+    id: 'training-new-hotel-staff-onboarding-premium',
     name: 'New Hotel Staff Onboarding',
     category: 'Training',
     subcategory: 'Hospitality',
@@ -237,9 +251,11 @@ export const checklistTemplates: Checklist[] = [
         { task: 'Shadow an experienced staff member for one week', status: 'pending', subtasks: ['Observe guest interactions and daily tasks', 'Practice procedures under direct supervision', 'Receive daily feedback and a final review'] },
     ],
   },
+
+  // Sustainability - B2B Premium
   {
-    id: 'sustain-hotel-energy-efficiency-premium',
-    name: 'Hotel Energy Audit',
+    id: 'sustainability-hotel-energy-efficiency-premium',
+    name: 'Hotel Energy Efficiency',
     category: 'Sustainability',
     subcategory: 'Hospitality',
     premium: true,
