@@ -68,6 +68,7 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
   const [isAssignUserOpen, setIsAssignUserOpen] = useState(false);
   const [newUserName, setNewUserName] = useState('');
   const [newUserEmail, setNewUserEmail] = useState('');
+  const [newUserContactNumber, setNewUserContactNumber] = useState('');
   const [newUserRole, setNewUserRole] = useState<User['role']>('Team Member');
   const { toast } = useToast();
   
@@ -91,9 +92,10 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
         });
         return;
     }
-    const newUser = onAddUser({ name: newUserName, role: newUserRole, email: newUserEmail });
+    const newUser = onAddUser({ name: newUserName, role: newUserRole, email: newUserEmail, contactNumber: newUserContactNumber });
     setNewUserName('');
     setNewUserEmail('');
+    setNewUserContactNumber('');
     onAssignUser(task.task, newUser);
     setIsAssignUserOpen(false);
     toast({
@@ -343,6 +345,10 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
                     <div className="space-y-2">
                         <Label htmlFor="new-user-email">Email</Label>
                         <Input id="new-user-email" type="email" placeholder="e.g. maria@example.com" value={newUserEmail} onChange={(e) => setNewUserEmail(e.target.value)} />
+                    </div>
+                     <div className="space-y-2">
+                        <Label htmlFor="new-user-contact">Contact Number (Optional)</Label>
+                        <Input id="new-user-contact" placeholder="e.g. 9876543210" value={newUserContactNumber} onChange={(e) => setNewUserContactNumber(e.target.value)} />
                     </div>
                      <div className="space-y-2">
                         <Label htmlFor="new-user-role">Role</Label>
