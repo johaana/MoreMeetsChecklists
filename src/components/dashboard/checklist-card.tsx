@@ -25,6 +25,8 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
   }, [checklist.tasks]);
 
   const isPremium = checklist.premium;
+  const linkHref = isPremium ? '/dashboard/premium-packs' : `/dashboard/checklists/${checklist.id}`;
+  const buttonText = isPremium ? 'Unlock Premium' : 'View Checklist';
 
   return (
     <Card className='flex flex-col'>
@@ -49,8 +51,8 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
       </CardContent>
       <CardFooter>
         <Button asChild variant="outline" className="w-full">
-          <Link href={isPremium ? `/dashboard/premium-packs` : `/dashboard/checklists/${checklist.id}`}>
-            {isPremium ? 'Unlock Premium' : 'View Checklist'} <ArrowRight className="ml-2 h-4 w-4" />
+          <Link href={linkHref}>
+            {buttonText} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </CardFooter>
