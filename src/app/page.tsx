@@ -135,10 +135,9 @@ export default function Home() {
                   { title: "Sustainability Officers", icon: <Leaf />, image: forSustainabilityImg },
                 ].map(({ title, icon, image }) => (
                   image && (
-                    <Link key={title} href="/signup" className="block">
-                      <Card className="overflow-hidden group h-full hover:shadow-lg transition-shadow">
+                      <Card key={title} className="overflow-hidden group h-full">
                         <div className="relative h-48">
-                          <Image src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} fill className="object-cover group-hover:scale-105 transition-transform duration-300"/>
+                          <Image src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} fill className="object-cover"/>
                         </div>
                         <CardHeader>
                           <CardTitle className="flex items-center gap-2">
@@ -146,7 +145,6 @@ export default function Home() {
                           </CardTitle>
                         </CardHeader>
                       </Card>
-                    </Link>
                   )
                 ))}
             </div>
