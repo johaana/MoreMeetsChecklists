@@ -22,7 +22,10 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
   const { purchasedPacks } = useContext(PremiumPacksContext);
 
   const isUnlocked = useMemo(() => {
-    if (!checklist.premium) return true;
+    if (!checklist.premium) {
+        return true; // Free checklists are always unlocked
+    }
+    // Premium checklists are unlocked if their pack title is in the purchasedPacks array
     return checklist.premiumPack ? purchasedPacks.includes(checklist.premiumPack) : false;
   }, [checklist, purchasedPacks]);
 
@@ -32,11 +35,11 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
     return (completedItems / checklist.tasks.length) * 100;
   }, [checklist.tasks]);
 
-  const isPremiumButUnlocked = checklist.premium && isUnlocked;
   const isPremiumAndLocked = checklist.premium && !isUnlocked;
   
   const linkHref = isPremiumAndLocked ? '/dashboard/premium-packs' : `/dashboard/checklists/${checklist.id}`;
   const buttonText = isPremiumAndLocked ? 'Unlock Premium' : 'View Checklist';
+  const buttonVariant = isPremiumAndLocked ? "outline" : "default";
 
   return (
     <Card className='flex flex-col'>
@@ -60,7 +63,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button asChild variant={isPremiumButUnlocked ? 'default' : 'outline'} className="w-full">
+        <Button asChild variant={buttonVariant} className="w-full">
           <Link href={linkHref}>
             {buttonText} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
