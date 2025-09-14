@@ -121,7 +121,7 @@ export default function DashboardPage() {
             
             {Object.entries(groupedChecklists).map(([category, subcategories]) => (
                 <TabsContent key={category} value={category} className="mt-6">
-                    <Accordion type="multiple" className="w-full space-y-4" defaultValue={Object.keys(subcategories)}>
+                    <Accordion type="single" collapsible className="w-full space-y-4" defaultValue={Object.keys(subcategories)[0]}>
                         {Object.entries(subcategories).map(([subcategory, checklists]) => (
                             <AccordionItem key={subcategory} value={subcategory} className="border rounded-lg">
                                 <AccordionTrigger className="text-lg font-semibold px-6 py-4 hover:no-underline">
