@@ -16,7 +16,8 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { premiumPacks } from "@/lib/premium-packs";
 import type { PremiumPack } from "@/lib/premium-packs";
-import { Check, CreditCard, PartyPopper } from "lucide-react";
+import { Check, CreditCard, PartyPopper, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 
 export default function PremiumPacksPage() {
@@ -56,7 +57,7 @@ export default function PremiumPacksPage() {
                 </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
                 {premiumPacks.map((pack) => (
                     <Card key={pack.title} className={`flex flex-col border-2 ${pack.color}`}>
                         <CardHeader className="items-center text-center">
@@ -77,6 +78,16 @@ export default function PremiumPacksPage() {
                                 ))}
                             </ul>
                         </CardContent>
+                         <div className="p-6 pt-0">
+                            <h4 className="text-sm font-semibold mb-2">Related Free Templates:</h4>
+                            <div className="flex gap-2">
+                            {pack.relatedFreeTemplates.map(templateName => (
+                                <Button asChild variant="outline" size="sm" key={templateName}>
+                                    <Link href="/dashboard">{templateName}</Link>
+                                </Button>
+                            ))}
+                            </div>
+                        </div>
                         <CardFooter>
                             <Button className="w-full" onClick={() => handlePurchaseClick(pack)}>
                                 <CreditCard className="mr-2 h-4 w-4" />
