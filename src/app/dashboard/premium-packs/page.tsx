@@ -16,7 +16,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { premiumPacks } from "@/lib/premium-packs";
 import type { PremiumPack } from "@/lib/premium-packs";
-import { Check } from "lucide-react";
+import { Check, CreditCard } from "lucide-react";
 
 
 export default function PremiumPacksPage() {
@@ -31,10 +31,8 @@ export default function PremiumPacksPage() {
 
     const handleConfirmPurchase = () => {
         setIsDialogOpen(false);
-        toast({
-            title: "Purchase Successful!",
-            description: `Thank you for purchasing the ${selectedPack?.title}. The checklists are now available in your dashboard.`,
-        });
+        // In a real application, you would handle the Stripe checkout flow here.
+        // For now, we'll just close the dialog.
         setSelectedPack(null);
     };
 
@@ -69,7 +67,10 @@ export default function PremiumPacksPage() {
                             </ul>
                         </CardContent>
                         <CardFooter>
-                            <Button className="w-full" onClick={() => handlePurchaseClick(pack)}>Purchase Pack</Button>
+                            <Button className="w-full" onClick={() => handlePurchaseClick(pack)}>
+                                <CreditCard className="mr-2 h-4 w-4" />
+                                Purchase Pack
+                            </Button>
                         </CardFooter>
                     </Card>
                 ))}
@@ -78,15 +79,17 @@ export default function PremiumPacksPage() {
             <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                    <AlertDialogTitle>Confirm Your Purchase</AlertDialogTitle>
+                    <AlertDialogTitle>Payment Integration Next</AlertDialogTitle>
                     <AlertDialogDescription>
-                        You are about to purchase the <strong>{selectedPack?.title}</strong> for <strong>${selectedPack?.price}</strong>.
+                        You're ready to purchase the <strong>{selectedPack?.title}</strong> for <strong>${selectedPack?.price}</strong>.
+                        <br/><br/>
+                        The next step would be to integrate a payment provider like Stripe to handle this transaction securely.
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel onClick={() => setSelectedPack(null)}>Cancel</AlertDialogCancel>
                     <AlertDialogAction onClick={handleConfirmPurchase}>
-                        Confirm & Pay
+                        Understood
                     </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
