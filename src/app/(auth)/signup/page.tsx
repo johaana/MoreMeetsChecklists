@@ -6,13 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signUpWithEmail, signInWithGoogle } from "@/app/auth";
-import { useState, useEffect } from "react";
+import { signUpWithEmail } from "@/app/auth";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { GoogleIcon } from "@/components/icons";
-import { getAuth, getRedirectResult } from "firebase/auth";
-import firebase_app from "@/lib/firebase";
-
 
 export default function SignupPage() {
   const router = useRouter();
@@ -21,25 +17,6 @@ export default function SignupPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const { toast } = useToast();
-
-  useEffect(() => {
-    const auth = getAuth(firebase_app);
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          // This means the user has just signed in via redirect.
-          router.push('/dashboard');
-        }
-      })
-      .catch((error) => {
-        console.error("Error during Google sign-in redirect: ", error);
-        toast({
-          variant: "destructive",
-          title: "Google Sign-In Failed",
-          description: error.message || "Could not sign in with Google. Please try again.",
-        });
-      });
-  }, [router, toast]);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,22 +35,6 @@ export default function SignupPage() {
     // You can also save the first name and last name to Firestore or user profile here
     router.push('/dashboard');
   };
-
-  const handleGoogleSignIn = async () => {
-    const { error } = await signInWithGoogle();
-    if (error) {
-      console.error("Error during Google sign-in: ", error);
-      toast({
-        variant: "destructive",
-        title: "Google Sign-In Failed",
-        description: error || "Could not sign in with Google. Please try again.",
-      });
-      return;
-    }
-    
-    // On redirect, the useEffect will handle routing to the dashboard.
-  }
-
 
   return (
     <Card className="mx-auto max-w-sm">
@@ -132,18 +93,6 @@ export default function SignupPage() {
             Create an account
           </Button>
         </form>
-         <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
-            </div>
-        </div>
-         <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
-            <GoogleIcon className="mr-2 h-4 w-4" />
-            Sign up with Google
-        </Button>
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
           <Link href="/login" className="underline">
