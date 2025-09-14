@@ -127,6 +127,76 @@ export const checklistTemplates: Checklist[] = [
     ],
   },
   {
+    id: 'evt-wd-south-indian',
+    title: 'South Indian Wedding',
+    category: 'Events',
+    type: 'Wedding - South Indian',
+    tasks: [
+      { id: '1', text: 'Pre-Wedding Rituals', completed: false, subtasks: [
+        { id: '1-1', text: 'Finalize details for Nischayathartham (Engagement)', completed: false },
+        { id: '1-2', text: 'Arrange Sumangali Prarthanai (prayers for married women)', completed: false },
+        { id: '1-3', text: 'Plan for Pandh Kaal Muhurtham (erecting the wedding canopy)', completed: false },
+        { id: '1-4', text: 'Coordinate travel and accommodation for visiting relatives', completed: false },
+      ]},
+      { id: '2', text: 'Wedding Day - Morning', completed: false, subtasks: [
+        { id: '2-1', text: 'Arrange items for Kashi Yatra ritual (umbrella, book, walking stick)', completed: false },
+        { id: '2-2', text: 'Prepare for Maalai Maatral (garland exchange)', completed: false },
+        { id: '2-3', text: 'Set up Oonjal (swing) and decorate it', completed: false },
+        { id: '2-4', text: 'Coordinate with priest for Muhurtham timings', completed: false },
+      ]},
+      { id: '3', text: 'Main Ceremony', completed: false, subtasks: [
+        { id: '3-1', text: 'Arrange for Kanyadaanam essentials', completed: false },
+        { id: '3-2', text: 'Procure the Mangalyam (Thali) and get it blessed', completed: false },
+        { id: '3-3', text: 'Arrange for Saptapadi (seven steps) ritual items', completed: false },
+        { id: '3-4', text: 'Confirm traditional musicians (Nadaswaram and Thavil)', completed: false },
+      ]},
+      { id: '4', text: 'Attire & Jewelry', completed: false, subtasks: [
+        { id: '4-1', text: 'Purchase Koorai Pudavai (9-yard saree) for the bride', completed: false },
+        { id: '4-2', text: 'Purchase Veshti and Angavastram for the groom', completed: false },
+        { id: '4-3', text: 'Finalize traditional gold jewelry (e.g., Manga Maalai, Vanki)', completed: false },
+      ]},
+      { id: '5', text: 'Feast (Kalyana Sappadu)', completed: false, subtasks: [
+        { id: '5-1', text: 'Hire caterer specialized in South Indian wedding feasts', completed: false },
+        { id: '5-2', text: 'Finalize menu to be served on banana leaves', completed: false },
+        { id: '5-3', text: 'Arrange seating for panthi (communal seating for feast)', completed: false },
+      ]},
+    ],
+  },
+  {
+    id: 'evt-wd-sikh',
+    title: 'Sikh Wedding (Anand Karaj)',
+    category: 'Events',
+    type: 'Wedding - Sikh (Anand Karaj)',
+    tasks: [
+      { id: '1', text: 'Pre-Wedding Ceremonies', completed: false, subtasks: [
+        { id: '1-1', text: 'Plan for Roka and Thaka (engagement ceremonies)', completed: false },
+        { id: '1-2', text: 'Arrange Akhand Paath (reading of Guru Granth Sahib)', completed: false },
+        { id: '1-3', text: 'Organize Sangeet/Jaggo night', completed: false },
+      ]},
+      { id: '2', text: 'Anand Karaj Ceremony', completed: false, subtasks: [
+        { id: '2-1', text: 'Book Gurdwara for the ceremony', completed: false },
+        { id: '2-2', text: 'Arrange for Kirtani Jatha (hymn singers)', completed: false },
+        { id: '2-3', text: 'Procure Palla (sash for the ceremony)', completed: false },
+        { id: '2-4', text: 'Arrange Karah Prasad (sacred pudding)', completed: false },
+        { id: '2-5', text: 'Ensure all guests have head coverings (Ramal)', completed: false },
+      ]},
+      { id: '3', text: 'Wedding Day Logistics', completed: false, subtasks: [
+        { id: '3-1', text: 'Arrange Baraat procession (horses, band)', completed: false },
+        { id: '3-2', text: 'Organize Milni ceremony (meeting of the families)', completed: false },
+        { id: '3-3', text: 'Plan for Langar (communal meal) post-ceremony', completed: false },
+      ]},
+      { id: '4', text: 'Post-Wedding Traditions', completed: false, subtasks: [
+        { id: '4-1', text: 'Plan Doli (bride\'s departure)', completed: false },
+        { id: '4-2', text: 'Arrange for Paani Varna (welcome ritual for the bride)', completed: false },
+        { id: '4-3', text: 'Organize the wedding reception', completed: false },
+      ]},
+      { id: '5', text: 'Attire', completed: false, subtasks: [
+        { id: '5-1', text: 'Select wedding attire for bride (e.g., Salwar Kameez, Lehenga)', completed: false },
+        { id: '5-2', text: 'Select Sherwani and Kirpan for the groom', completed: false },
+      ]},
+    ],
+  },
+  {
     id: 'evt-prod-launch',
     title: 'Product Launch Event',
     category: 'Events',
