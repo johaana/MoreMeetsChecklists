@@ -283,7 +283,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-12">
-              <Tabs defaultValue="Events" className="w-full">
+              <Tabs defaultValue={Object.keys(groupedChecklists)[0]} className="w-full">
                 <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
                   {Object.keys(groupedChecklists).map(category => (
                      <TabsTrigger key={category} value={category}>{category}</TabsTrigger>

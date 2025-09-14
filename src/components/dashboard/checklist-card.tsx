@@ -36,7 +36,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
             {categoryIcons[checklist.category]}
           </div>
         </div>
-        <CardDescription>{checklist.tasks.length} tasks</CardDescription>
+        <CardDescription>{checklist.subcategory} - {checklist.tasks.length} tasks</CardDescription>
       </CardHeader>
       <CardContent className="flex-1">
         <div className="space-y-2">
