@@ -7,7 +7,8 @@ import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Checklist } from '@/lib/types';
 import { PartyPopper, Hotel, Users, Leaf, ArrowRight, Lock, BookOpen, HeartPulse } from 'lucide-react';
-import { useMemo } from 'react';
+import { useMemo, useContext } from 'react';
+import { PremiumPacksContext } from '@/contexts/premium-packs-context';
 
 const categoryIcons: Record<Checklist['category'], React.ReactNode> = {
   "Events": <PartyPopper className="w-6 h-6 text-sky-500" />,
@@ -18,15 +19,24 @@ const categoryIcons: Record<Checklist['category'], React.ReactNode> = {
 };
 
 export function ChecklistCard({ checklist }: { checklist: Checklist }) {
+  const { purchasedPacks } = useContext(PremiumPacksContext);
+
+  const isUnlocked = useMemo(() => {
+    if (!checklist.premium) return true;
+    return checklist.premiumPack ? purchasedPacks.includes(checklist.premiumPack) : false;
+  }, [checklist, purchasedPacks]);
+
   const completionPercentage = useMemo(() => {
     if (checklist.tasks.length === 0) return 0;
     const completedItems = checklist.tasks.filter((item) => item.status === 'completed').length;
     return (completedItems / checklist.tasks.length) * 100;
   }, [checklist.tasks]);
 
-  const isPremium = checklist.premium;
-  const linkHref = isPremium ? '/dashboard/premium-packs' : `/dashboard/checklists/${checklist.id}`;
-  const buttonText = isPremium ? 'Unlock Premium' : 'View Checklist';
+  const isPremiumButUnlocked = checklist.premium && isUnlocked;
+  const isPremiumAndLocked = checklist.premium && !isUnlocked;
+  
+  const linkHref = isPremiumAndLocked ? '/dashboard/premium-packs' : `/dashboard/checklists/${checklist.id}`;
+  const buttonText = isPremiumAndLocked ? 'Unlock Premium' : 'View Checklist';
 
   return (
     <Card className='flex flex-col'>
@@ -34,7 +44,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
         <div className="flex items-start justify-between gap-4">
           <CardTitle className="text-lg flex-1">{checklist.name}</CardTitle>
           <div className='flex items-center gap-2'>
-            {isPremium && <Lock className="w-4 h-4 text-accent" />}
+            {isPremiumAndLocked && <Lock className="w-4 h-4 text-accent" />}
             {categoryIcons[checklist.category]}
           </div>
         </div>
@@ -50,7 +60,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button asChild variant="outline" className="w-full">
+        <Button asChild variant={isPremiumButUnlocked ? 'default' : 'outline'} className="w-full">
           <Link href={linkHref}>
             {buttonText} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

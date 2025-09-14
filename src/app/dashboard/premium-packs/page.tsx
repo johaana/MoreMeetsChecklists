@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -18,12 +18,14 @@ import { premiumPacks } from "@/lib/premium-packs";
 import type { PremiumPack } from "@/lib/premium-packs";
 import { Check, CreditCard, PartyPopper, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { PremiumPacksContext } from "@/contexts/premium-packs-context";
 
 
 export default function PremiumPacksPage() {
     const [selectedPack, setSelectedPack] = useState<PremiumPack | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const { toast } = useToast();
+    const { addPurchasedPack } = useContext(PremiumPacksContext);
 
     const handlePurchaseClick = (pack: PremiumPack) => {
         setSelectedPack(pack);
@@ -32,6 +34,8 @@ export default function PremiumPacksPage() {
 
     const handleConfirmPurchase = () => {
         if (!selectedPack) return;
+        
+        addPurchasedPack(selectedPack.title);
 
         setIsDialogOpen(false);
         // In a real application, you would handle the Stripe checkout flow here.

@@ -20,6 +20,7 @@ export type Checklist = {
   category: ChecklistCategory;
   subcategory: string;
   premium: boolean;
+  premiumPack?: string; // e.g., "The Ultimate Wedding Planner Pack"
   tasks: Task[];
 };
 

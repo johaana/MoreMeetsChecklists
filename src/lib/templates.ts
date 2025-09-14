@@ -70,6 +70,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Weddings',
     premium: true,
+    premiumPack: 'The Ultimate Wedding Planner Pack',
     tasks: [
       { task: 'Book Professional Choreographer', status: 'pending', subtasks: ['Audition local choreographers', 'Negotiate rates', 'Schedule practice sessions'] },
       { task: 'Finalize Family & Friends Performances', status: 'pending', subtasks: ['Create a sign-up sheet', 'Set time limits for each performance', 'Collect music files'] },
@@ -85,6 +86,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Corporate',
     premium: true,
+    premiumPack: 'Corporate & Startup Launchkit',
     tasks: [
         { task: 'Define event goals & KPIs', status: 'pending', subtasks: ['Set targets for media mentions', 'Define lead generation goals', 'Establish social media engagement metrics'] },
         { task: 'Develop a comprehensive event marketing plan', status: 'pending', subtasks: ['Pre-event email campaign', 'Social media countdown', 'Paid ad strategy'] },
@@ -99,6 +101,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Corporate',
     premium: true,
+    premiumPack: 'Corporate & Startup Launchkit',
     tasks: [
         { task: 'Establish award categories and nomination criteria', status: 'pending', subtasks: ['Define judging panel', 'Open nominations to employees', 'Set deadline for submissions'] },
         { task: 'Design and procure trophies/awards', status: 'pending', subtasks: ['Get design mockups', 'Select vendor', 'Confirm engraving details'] },
@@ -113,6 +116,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Corporate',
     premium: true,
+    premiumPack: 'Corporate & Startup Launchkit',
     tasks: [
         { task: 'Red carpet setup and management', status: 'pending', subtasks: ['Step-and-repeat banner design', 'Hire celebrity interviewers', 'Manage photographer pits'] },
         { task: 'Multi-camera broadcast coordination', status: 'pending', subtasks: ['Create a detailed show flow', 'Plan camera angles', 'Coordinate with broadcast director'] },
@@ -127,6 +131,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Weddings',
     premium: true,
+    premiumPack: 'The Ultimate Wedding Planner Pack',
     tasks: [
       { task: 'Venue Setup with Yellow Theme', status: 'pending', subtasks: ['Marigold flower decorations', 'Seating mats for guests', 'Low seating for bride/groom', 'Haldi mixture bowls'] },
       { task: 'Arrange for Haldi Paste Ingredients', status: 'pending', subtasks: ['Turmeric, sandalwood, gram flour, rose water', 'Prepare fresh paste'] },
@@ -142,6 +147,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Weddings',
     premium: true,
+    premiumPack: 'The Ultimate Wedding Planner Pack',
     tasks: [
         { task: 'Book temple or mandapam for ceremony', status: 'pending', subtasks: ['Check availability', 'Understand temple rules'] },
         { task: 'Arrange for traditional nadaswaram & thavil musicians', status: 'pending', subtasks: [] },
@@ -156,6 +162,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Events',
     subcategory: 'Weddings',
     premium: true,
+    premiumPack: 'The Ultimate Wedding Planner Pack',
     tasks: [
         { task: 'Confirm booking at the Gurdwara', status: 'pending', subtasks: ['Finalize date and time', 'Discuss protocols with Granthi'] },
         { task: 'Arrange for Raagi Jatha for kirtan', status: 'pending', subtasks: ['Select shabads to be sung', 'Confirm timings'] },
@@ -203,6 +210,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Hospitality',
     subcategory: 'Restaurant',
     premium: true,
+    premiumPack: 'Hospitality Excellence Suite',
     tasks: [
         { task: 'Complete end-of-day financial reconciliation', status: 'pending', subtasks: ['Cash drawer count', 'Credit card sales report', 'Tip-out calculations'] },
         { task: 'Deep clean all kitchen surfaces and equipment', status: 'pending', subtasks: ['Clean grills and fryers', 'Wipe down all stainless steel', 'Sanitize prep areas'] },
@@ -217,6 +225,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Hospitality',
     subcategory: 'Restaurant',
     premium: true,
+    premiumPack: 'Hospitality Excellence Suite',
     tasks: [
         { task: 'Finalize menu with client, noting all dietary needs', status: 'pending', subtasks: ['Get final headcount', 'Confirm service style (buffet vs. plated)', 'Label dishes for allergens'] },
         { task: 'Plan for staffing: chefs, servers, and bartenders', status: 'pending', subtasks: ['Create work schedule', 'Brief team on event flow and menu'] },
@@ -231,6 +240,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Training',
     subcategory: 'Hospitality',
     premium: true,
+    premiumPack: 'Hospitality Excellence Suite',
     tasks: [
         { task: 'Complete HR paperwork and issue uniform', status: 'pending', subtasks: ['Tax forms', 'Employment contract', 'Uniform fitting and issue'] },
         { task: 'Tour of the property and introduction to department heads', status: 'pending', subtasks: ['Front office, housekeeping, F&B, security', 'Show emergency exits and assembly points'] },
@@ -245,6 +255,7 @@ export const checklistTemplates: Checklist[] = [
     category: 'Sustainability',
     subcategory: 'Hospitality',
     premium: true,
+    premiumPack: 'Sustainability Starter Kit',
     tasks: [
         { task: 'Conduct a weekly energy audit of all departments', status: 'pending', subtasks: ['Read meters', 'Identify areas of high consumption', 'Log findings'] },
         { task: 'Install smart thermostats and key-card activated power in rooms', status: 'pending', subtasks: [] },
