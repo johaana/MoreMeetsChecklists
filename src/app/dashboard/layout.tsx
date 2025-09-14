@@ -6,6 +6,7 @@ import {
   Settings,
   ListChecks,
   Package,
+  MessageSquare,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -25,11 +26,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Logo } from "@/components/icons";
-import Image from "next/image";
 
 export default function DashboardLayout({
   children,
@@ -60,21 +59,25 @@ export default function DashboardLayout({
                 Dashboard
               </Link>
               <Link
-                href="#"
+                href="/dashboard"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <ListChecks className="h-4 w-4" />
                 Checklists
               </Link>
               <Link
-                href="#"
+                href="/dashboard/premium-packs"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
                 <Package className="h-4 w-4" />
                 Premium Packs{" "}
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  3
-                </Badge>
+              </Link>
+               <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Community
               </Link>
               <Link
                 href="/dashboard/profile"
@@ -82,6 +85,13 @@ export default function DashboardLayout({
               >
                 <Users className="h-4 w-4" />
                 Profile
+              </Link>
+               <Link
+                href="/dashboard/settings"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Settings className="h-4 w-4" />
+                Settings
               </Link>
             </nav>
           </div>
@@ -133,14 +143,25 @@ export default function DashboardLayout({
                   Dashboard
                 </Link>
                 <Link
-                  href="#"
+                  href="/dashboard"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                 >
                   <ListChecks className="h-5 w-5" />
                   Checklists
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    6
-                  </Badge>
+                </Link>
+                 <Link
+                  href="/dashboard/premium-packs"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <Package className="h-5 w-5" />
+                  Premium Packs
+                </Link>
+                 <Link
+                  href="#"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <MessageSquare className="h-5 w-5" />
+                  Community
                 </Link>
                 <Link
                   href="/dashboard/profile"
@@ -150,7 +171,7 @@ export default function DashboardLayout({
                   Profile
                 </Link>
                 <Link
-                  href="#"
+                  href="/dashboard/settings"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <Settings className="h-5 w-5" />
@@ -192,6 +213,7 @@ export default function DashboardLayout({
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild><Link href="/dashboard/profile">Profile</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link href="/dashboard/settings">Settings</Link></DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild><Link href="/">Logout</Link></DropdownMenuItem>
