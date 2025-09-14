@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Check, Zap, Users, Leaf, Hotel, PartyPopper, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/icons";
 import Image from 'next/image';

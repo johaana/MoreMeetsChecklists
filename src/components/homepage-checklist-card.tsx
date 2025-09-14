@@ -3,14 +3,14 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checklist } from '@/lib/types';
-import { PartyPopper, Hotel, Users, Leaf, ListChecks } from 'lucide-react';
+import { PartyPopper, Hotel, Users, Leaf, ListChecks, Check } from 'lucide-react';
 import { useMemo } from 'react';
 
 const categoryIcons: Record<Checklist['category'], React.ReactNode> = {
   Events: <PartyPopper className="w-5 h-5 text-sky-500" />,
   Hospitality: <Hotel className="w-5 h-5 text-blue-800" />,
   Training: <Users className="w-5 h-5 text-purple-600" />,
-  Sustainability: <Leaf className="w-5 h-5 text-green-600" />,
+  Sustainability: <Leaf className="w-6 h-6 text-green-600" />,
 };
 
 export function HomepageChecklistCard({ checklist }: { checklist: Checklist }) {
