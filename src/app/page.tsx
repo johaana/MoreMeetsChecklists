@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { Check, Zap, Users, Leaf, Hotel, PartyPopper, ArrowRight } from "lucide-react";
+import { Check, Zap, Users, Leaf, Hotel, PartyPopper, ArrowRight, Rocket } from "lucide-react";
 import { Logo } from "@/components/icons";
 import Image from 'next/image';
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -11,11 +11,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { checklistTemplates } from "@/lib/templates";
 import { HomepageChecklistCard } from "@/components/homepage-checklist-card";
 import { premiumPacks } from "@/lib/premium-packs";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export default function Home() {
   
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
-  const featureImage1 = PlaceHolderImages.find(p => p.id === 'feature1');
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-wedding');
+  const featureImage = PlaceHolderImages.find(p => p.id === 'feature-ai');
   const testimonialAvatar1 = PlaceHolderImages.find(p => p.id === 'testimonial1');
   const testimonialAvatar2 = PlaceHolderImages.find(p => p.id === 'testimonial2');
   const testimonialAvatar3 = PlaceHolderImages.find(p => p.id === 'testimonial3');
@@ -24,6 +25,22 @@ export default function Home() {
   const hospitality = checklistTemplates.filter((c) => c.category === 'Hospitality');
   const training = checklistTemplates.filter((c) => c.category === 'Training');
   const sustainability = checklistTemplates.filter((c) => c.category === 'Sustainability');
+  
+  const forEventPlannersImg = PlaceHolderImages.find(p => p.id === 'for-event-planners');
+  const forHospitalityImg = PlaceHolderImages.find(p => p.id === 'for-hospitality');
+  const forStartupsImg = PlaceHolderImages.find(p => p.id === 'for-startups');
+  const forSustainabilityImg = PlaceHolderImages.find(p => p.id === 'for-sustainability');
+
+  const galleryImages = [
+    PlaceHolderImages.find(p => p.id === 'showcase-award-ceremony'),
+    PlaceHolderImages.find(p => p.id === 'showcase-umaid-bhawan'),
+    PlaceHolderImages.find(p => p.id === 'showcase-product-launch-speaker'),
+    PlaceHolderImages.find(p => p.id === 'showcase-taj-mahal-palace'),
+    PlaceHolderImages.find(p => p.id === 'showcase-wedding-ritual'),
+    PlaceHolderImages.find(p => p.id === 'showcase-oberoi-udaivilas'),
+    PlaceHolderImages.find(p => p.id === 'showcase-food'),
+  ].filter(Boolean) as typeof PlaceHolderImages;
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -69,40 +86,74 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full py-20 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 text-center lg:text-left">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 pb-2">
-                Stop Forgetting. Start Finishing.
-              </h1>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl mx-auto lg:mx-0">
-                The smart AI-driven checklist platform for events, hospitality, training, and sustainability. Never miss a detail again.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button asChild size="lg">
-                  <Link href="/signup" prefetch={false}>
-                    Get Started for Free
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                   <Link href="#templates" prefetch={false}>
-                    Explore Templates
-                  </Link>
-                </Button>
-              </div>
+        <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-center">
+          {heroImage && (
+            <Image
+              src={heroImage.imageUrl}
+              alt={heroImage.description}
+              fill
+              className="object-cover object-center brightness-50"
+              data-ai-hint={heroImage.imageHint}
+              priority
+            />
+          )}
+          <div className="relative z-10 container px-4 md:px-6 space-y-6">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
+              Stop Forgetting. Start Finishing.
+            </h1>
+            <p className="max-w-[600px] text-primary-foreground/90 md:text-xl mx-auto drop-shadow-sm">
+              The smart AI-driven checklist platform for events, hospitality, training, and sustainability. Never miss a detail again.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg">
+                <Link href="/signup" prefetch={false}>
+                  Get Started for Free
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                 <Link href="#templates" prefetch={false}>
+                  Explore Templates
+                </Link>
+              </Button>
             </div>
-            {heroImage && <Image 
-                src={heroImage.imageUrl} 
-                alt={heroImage.description} 
-                width={600}
-                height={600}
-                className="rounded-xl shadow-2xl mx-auto aspect-square object-cover"
-                data-ai-hint={heroImage.imageHint}
-              />}
+          </div>
+        </section>
+
+        <section id="for-who" className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <div className="space-y-2">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">The Professional's Choice for Perfection</h2>
+                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                      MoreMeets is built for professionals who can't afford to miss a single detail.
+                    </p>
+                </div>
+            </div>
+             <div className="mx-auto grid max-w-7xl items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+                {[
+                  { title: "Event Planners", icon: <PartyPopper />, image: forEventPlannersImg },
+                  { title: "Hospitality Managers", icon: <Hotel />, image: forHospitalityImg },
+                  { title: "Startup Founders", icon: <Rocket />, image: forStartupsImg },
+                  { title: "Sustainability Officers", icon: <Leaf />, image: forSustainabilityImg },
+                ].map(({ title, icon, image }) => (
+                  image && (
+                  <Card key={title} className="overflow-hidden group">
+                    <div className="relative h-48">
+                      <Image src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} fill className="object-cover group-hover:scale-105 transition-transform duration-300"/>
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        {icon} {title}
+                      </CardTitle>
+                    </CardHeader>
+                  </Card>
+                  )
+                ))}
+            </div>
           </div>
         </section>
         
-        <section id="why" className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
+        <section id="why" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
@@ -113,15 +164,15 @@ export default function Home() {
                 </div>
             </div>
              <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 mt-12">
-                <div className="grid gap-2 text-center p-4 rounded-lg hover:bg-background transition-all">
+                <div className="grid gap-2 text-center p-4 rounded-lg hover:bg-muted/50 transition-all">
                     <h3 className="text-lg font-bold">Reduce Stress</h3>
                     <p className="text-sm text-muted-foreground">Offload your mental checklist into a reliable system. Focus on execution, not on trying to remember every detail.</p>
                 </div>
-                <div className="grid gap-2 text-center p-4 rounded-lg hover:bg-background transition-all">
+                <div className="grid gap-2 text-center p-4 rounded-lg hover:bg-muted/50 transition-all">
                     <h3 className="text-lg font-bold">Ensure Quality</h3>
                     <p className="text-sm text-muted-foreground">Standardize your processes. Ensure every task is completed to the highest standard, every single time.</p>
                 </div>
-                <div className="grid gap-2 text-center p-4 rounded-lg hover:bg-background transition-all">
+                <div className="grid gap-2 text-center p-4 rounded-lg hover:bg-muted/50 transition-all">
                     <h3 className="text-lg font-bold">Save Money</h3>
                     <p className="text-sm text-muted-foreground">Prevent costly mistakes and last-minute emergencies that arise from missed details and poor planning.</p>
                 </div>
@@ -141,12 +192,12 @@ export default function Home() {
               </div>
             </div>
             <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20 mt-16">
-               {featureImage1 && <Image
-                src={featureImage1.imageUrl}
+               {featureImage && <Image
+                src={featureImage.imageUrl}
                 width={600}
                 height={400}
-                alt={featureImage1.description}
-                data-ai-hint={featureImage1.imageHint}
+                alt={featureImage.description}
+                data-ai-hint={featureImage.imageHint}
                 className="rounded-xl shadow-lg mx-auto"
               />}
               <div className="space-y-8">
@@ -182,7 +233,45 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="templates" className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
+          <div className="container px-4 md:px-6">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {galleryImages.map((image, index) => (
+                  image && (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <Card className="overflow-hidden">
+                          <CardContent className="p-0">
+                            <Image
+                              src={image.imageUrl}
+                              alt={image.description}
+                              width={600}
+                              height={400}
+                              className="aspect-video w-full object-cover"
+                              data-ai-hint={image.imageHint}
+                            />
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  )
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        </section>
+
+
+        <section id="templates" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -234,7 +323,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -284,7 +373,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
+        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 text-center">
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">Loved by Professionals Worldwide</h2>
@@ -348,7 +437,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 dark:bg-muted/10">
           <div className="container px-4 md:px-6">
              <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
