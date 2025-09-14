@@ -7,16 +7,36 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signInWithEmail, signInWithGoogle } from "@/app/auth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { GoogleIcon } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
+import { getAuth, getRedirectResult } from "firebase/auth";
+import firebase_app from "@/lib/firebase";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { toast } = useToast();
+
+  useEffect(() => {
+    const auth = getAuth(firebase_app);
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          router.push('/dashboard');
+        }
+      })
+      .catch((error) => {
+        console.error("Error during Google sign-in redirect: ", error);
+        toast({
+          variant: "destructive",
+          title: "Google Sign-In Failed",
+          description: error.message || "Could not sign in with Google. Please try again.",
+        });
+      });
+  }, [router, toast]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,9 +67,6 @@ export default function LoginPage() {
       });
       return;
     }
-    
-    // else successful
-    router.push('/dashboard');
   }
 
   return (

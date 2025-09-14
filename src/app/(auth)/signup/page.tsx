@@ -7,9 +7,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signUpWithEmail, signInWithGoogle } from "@/app/auth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { GoogleIcon } from "@/components/icons";
+import { getAuth, getRedirectResult } from "firebase/auth";
+import firebase_app from "@/lib/firebase";
 
 
 export default function SignupPage() {
@@ -19,6 +21,24 @@ export default function SignupPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const { toast } = useToast();
+
+  useEffect(() => {
+    const auth = getAuth(firebase_app);
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          router.push('/dashboard');
+        }
+      })
+      .catch((error) => {
+        console.error("Error during Google sign-in redirect: ", error);
+        toast({
+          variant: "destructive",
+          title: "Google Sign-In Failed",
+          description: error.message || "Could not sign in with Google. Please try again.",
+        });
+      });
+  }, [router, toast]);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +59,7 @@ export default function SignupPage() {
   };
 
   const handleGoogleSignIn = async () => {
-    const { result, error } = await signInWithGoogle();
+    const { error } = await signInWithGoogle();
     if (error) {
       console.error("Error during Google sign-in: ", error);
       toast({
@@ -50,7 +70,7 @@ export default function SignupPage() {
       return;
     }
     
-    router.push('/dashboard');
+    // On redirect, the useEffect will handle routing to the dashboard.
   }
 
 

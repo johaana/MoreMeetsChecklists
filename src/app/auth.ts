@@ -7,7 +7,8 @@ import {
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithRedirect,
+  getRedirectResult
 } from "firebase/auth";
 import firebase_app from "@/lib/firebase";
 import { redirect } from 'next/navigation';
@@ -36,8 +37,14 @@ export async function signInWithEmail(email: string, password: string): Promise<
 
 export async function signInWithGoogle(): Promise<{result?: UserCredential, error?: string}> {
   try {
-    const result = await signInWithPopup(auth, googleProvider);
-    return { result };
+    await signInWithRedirect(auth, googleProvider);
+    // After the redirect, the result needs to be handled on page load.
+    // The following code may not be reached if the redirect is successful.
+    const result = await getRedirectResult(auth);
+    if (result) {
+        return { result };
+    }
+    return {}; // No error, but no immediate result either.
   } catch (error: any) {
     return { error: error.message };
   }
