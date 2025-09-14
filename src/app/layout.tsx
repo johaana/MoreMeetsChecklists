@@ -2,15 +2,23 @@ import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { Inter } from 'next/font/google';
+import { PT_Sans } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: 'MoreMeets: Smart Checklists',
   description: 'More Meets. More Organized.',
 };
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-body' });
-const headlineFont = Inter({ subsets: ['latin'], weight: ['700'], variable: '--font-headline' });
+const mainFont = PT_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-body'
+});
+const headlineFont = PT_Sans({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-headline'
+});
 
 
 export default function RootLayout({
@@ -22,7 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
-        inter.variable,
+        mainFont.variable,
         headlineFont.variable,
       )}>
         {children}

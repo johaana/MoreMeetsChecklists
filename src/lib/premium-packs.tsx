@@ -1,4 +1,4 @@
-import { Star, Zap, Leaf } from "lucide-react";
+import { Briefcase, Building, Leaf, Star } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -13,8 +13,8 @@ export const premiumPacks = [
             "Full Wedding Day Coordination Checklist",
             "Honeymoon Packing Checklist",
         ],
-        icon: <Star className="w-8 h-8 text-yellow-500" />,
-        color: "bg-yellow-500/10 border-yellow-500/20"
+        icon: <Star className="w-8 h-8 text-accent" />,
+        color: "border-accent/20"
     },
     {
         title: "Hospitality Excellence Suite",
@@ -28,8 +28,8 @@ export const premiumPacks = [
             "Monthly Maintenance Checks",
             "Guest Complaint Resolution Protocol",
         ],
-        icon: <Zap className="w-8 h-8 text-blue-500" />,
-        color: "bg-blue-500/10 border-blue-500/20"
+        icon: <Building className="w-8 h-8 text-accent" />,
+        color: "border-accent/20"
     },
     {
         title: "Corporate & Startup Launchkit",
@@ -43,8 +43,8 @@ export const premiumPacks = [
             "Product Launch Marketing Plan",
             "Press Conference Checklist",
         ],
-        icon: <Star className="w-8 h-8 text-purple-500" />,
-        color: "bg-purple-500/10 border-purple-500/20"
+        icon: <Briefcase className="w-8 h-8 text-accent" />,
+        color: "border-accent/20"
     },
     {
         title: "Sustainability Starter Kit",
@@ -58,8 +58,8 @@ export const premiumPacks = [
             "Green Cleaning Checklist",
             "Community Garden Planner",
         ],
-        icon: <Leaf className="w-8 h-8 text-green-500" />,
-        color: "bg-green-500/10 border-green-500/20"
+        icon: <Leaf className="w-8 h-8 text-accent" />,
+        color: "border-accent/20"
     }
 ];
 
