@@ -1,3 +1,7 @@
+
+'use client';
+
+import { useState } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -13,8 +17,25 @@ import { HomepageChecklistCard } from "@/components/homepage-checklist-card";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { groupByCategoryAndSubcategory } from "@/lib/utils";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
+type RoleInfo = {
+  title: string;
+  icon: React.ReactNode;
+  image: (typeof PlaceHolderImages)[0] | undefined;
+  description: string;
+};
 
 export default function Home() {
+  const [selectedRole, setSelectedRole] = useState<RoleInfo | null>(null);
+  const [isRoleDialogOpen, setIsRoleDialogOpen] = useState(false);
   
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero-wedding');
   const featureImage = PlaceHolderImages.find(p => p.id === 'feature-ai');
@@ -38,6 +59,38 @@ export default function Home() {
     PlaceHolderImages.find(p => p.id === 'showcase-oberoi-udaivilas'),
     PlaceHolderImages.find(p => p.id === 'showcase-food'),
   ].filter(Boolean) as typeof PlaceHolderImages;
+
+  const roles: RoleInfo[] = [
+    {
+      title: "Event Planners",
+      icon: <PartyPopper />,
+      image: forEventPlannersImg,
+      description: "From grand weddings to corporate launches, MoreMeets ensures every detail is perfect. Use our templates for Haldi, Sangeet, corporate conferences, and more to coordinate vendors, manage timelines, and execute flawless events that leave a lasting impression."
+    },
+    {
+      title: "Hospitality Managers",
+      icon: <Hotel />,
+      image: forHospitalityImg,
+      description: "Standardize excellence across your property. MoreMeets provides checklists for daily hotel operations, housekeeping, guest check-in/out procedures, and even emergency preparedness, helping you deliver a consistent 5-star experience."
+    },
+    {
+      title: "Startup Founders",
+      icon: <Rocket />,
+      image: forStartupsImg,
+      description: "Move fast without breaking things. Our checklists for product launches, investor pitches, and new office setups help you stay organized and professional. Focus on growth while we handle the operational details."
+    },
+    {
+      title: "Sustainability Officers",
+      icon: <Leaf />,
+      image: forSustainabilityImg,
+      description: "Drive your green initiatives forward. Use our checklists to implement energy efficiency programs, manage waste, conserve water, and organize eco-friendly events. Turn sustainability goals into actionable, trackable steps."
+    },
+  ];
+
+  const handleRoleClick = (role: RoleInfo) => {
+    setSelectedRole(role);
+    setIsRoleDialogOpen(true);
+  };
 
 
   return (
@@ -128,20 +181,15 @@ export default function Home() {
                 </div>
             </div>
              <div className="mx-auto grid max-w-7xl items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
-                {[
-                  { title: "Event Planners", icon: <PartyPopper />, image: forEventPlannersImg },
-                  { title: "Hospitality Managers", icon: <Hotel />, image: forHospitalityImg },
-                  { title: "Startup Founders", icon: <Rocket />, image: forStartupsImg },
-                  { title: "Sustainability Officers", icon: <Leaf />, image: forSustainabilityImg },
-                ].map(({ title, icon, image }) => (
-                  image && (
-                      <Card key={title} className="overflow-hidden group h-full">
+                {roles.map((role) => (
+                  role.image && (
+                      <Card key={role.title} className="overflow-hidden group h-full cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleRoleClick(role)}>
                         <div className="relative h-48">
-                          <Image src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} fill className="object-cover"/>
+                          <Image src={role.image.imageUrl} alt={role.image.description} data-ai-hint={role.image.imageHint} fill className="object-cover"/>
                         </div>
                         <CardHeader>
                           <CardTitle className="flex items-center gap-2">
-                            {icon} {title}
+                            {role.icon} {role.title}
                           </CardTitle>
                         </CardHeader>
                       </Card>
@@ -495,6 +543,24 @@ export default function Home() {
           </Link>
         </nav>
       </footer>
+
+      <AlertDialog open={isRoleDialogOpen} onOpenChange={setIsRoleDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              {selectedRole?.icon} For {selectedRole?.title}
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              {selectedRole?.description}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogAction onClick={() => setIsRoleDialogOpen(false)}>
+            Got it
+          </AlertDialogAction>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </div>
   );
-}
+
+    
