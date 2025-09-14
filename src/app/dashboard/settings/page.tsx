@@ -1,7 +1,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
@@ -21,7 +20,7 @@ export default function SettingsPage() {
               <Label htmlFor="email-notifications" className="flex flex-col space-y-1">
                 <span>Email Notifications</span>
                 <span className="font-normal leading-snug text-muted-foreground">
-                  Receive emails about task deadlines and checklist updates.
+                  Receive emails about task deadlines and updates.
                 </span>
               </Label>
               <Switch id="email-notifications" defaultChecked />
@@ -69,31 +68,6 @@ export default function SettingsPage() {
                 </SelectContent>
               </Select>
             </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>Manage your account settings.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" defaultValue="user@example.com" disabled />
-            </div>
-            <div className="space-y-2">
-              <Label>Password</Label>
-              <Button variant="outline">Change Password</Button>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Delete Account</CardTitle>
-            <CardDescription>Permanently delete your account and all of your data.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button variant="destructive">Delete My Account</Button>
           </CardContent>
         </Card>
       </div>
