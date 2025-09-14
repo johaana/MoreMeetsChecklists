@@ -29,12 +29,26 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Logo } from "@/components/icons";
+import { signOut } from "@/app/auth";
+import { usePathname } from "next/navigation";
+
+
+function LogoutMenuItem() {
+    const handleLogout = async () => {
+        await signOut();
+    };
+
+    return (
+        <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+    );
+}
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
@@ -105,8 +119,8 @@ export default function DashboardLayout({
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                <Button size="sm" className="w-full">
-                  Upgrade
+                <Button size="sm" className="w-full" asChild>
+                  <Link href="/dashboard/premium-packs">Upgrade</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -188,8 +202,8 @@ export default function DashboardLayout({
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button size="sm" className="w-full">
-                      Upgrade
+                    <Button size="sm" className="w-full" asChild>
+                        <Link href="/dashboard/premium-packs">Upgrade</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -216,7 +230,7 @@ export default function DashboardLayout({
               <DropdownMenuItem asChild><Link href="/dashboard/settings">Settings</Link></DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild><Link href="/">Logout</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><form action={signOut}><button type="submit" className="w-full text-left">Logout</button></form></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

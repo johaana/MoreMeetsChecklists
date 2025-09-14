@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { checklistTemplates } from '@/lib/templates';
 import type { Checklist, Task, Status, Priority } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Share2, Edit, ChevronLeft } from 'lucide-react';
+import { Share2, Edit, ChevronLeft, Save } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
@@ -15,19 +15,24 @@ import { useToast } from '@/hooks/use-toast';
 import type { User } from '@/lib/users';
 import { users as initialUsers } from '@/lib/users';
 import { v4 as uuidv4 } from 'uuid';
+import { Input } from '@/components/ui/input';
 
 export default function ChecklistDetailPage() {
   const params = useParams();
   const id = params.id as string;
   const [checklist, setChecklist] = useState<Checklist | null>(null);
   const [users, setUsers] = useState<User[]>(initialUsers);
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
   const { toast } = useToast();
 
   useEffect(() => {
     if (id) {
       const foundChecklist = checklistTemplates.find((c) => c.id === id);
       if (foundChecklist) {
-        setChecklist(JSON.parse(JSON.stringify(foundChecklist)));
+        const checklistCopy = JSON.parse(JSON.stringify(foundChecklist));
+        setChecklist(checklistCopy);
+        setNewTitle(checklistCopy.name);
       } else {
         console.error(`Checklist with id ${id} not found.`);
       }
@@ -129,6 +134,16 @@ export default function ChecklistDetailPage() {
     }
   };
 
+  const handleTitleSave = () => {
+    if (newTitle.trim() === '') {
+        toast({ variant: 'destructive', title: 'Title cannot be empty.' });
+        return;
+    }
+    setChecklist(prev => prev ? { ...prev, name: newTitle } : null);
+    setIsEditingTitle(false);
+    toast({ title: "Checklist renamed", description: `Your checklist is now named "${newTitle}".` });
+  };
+
 
   if (!checklist) {
     return (
@@ -150,7 +165,14 @@ export default function ChecklistDetailPage() {
         </Button>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className='flex-1'>
-            <h1 className="text-2xl md:text-3xl font-bold font-headline">{checklist.name}</h1>
+            {isEditingTitle ? (
+              <div className='flex items-center gap-2'>
+                <Input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} className="text-2xl md:text-3xl font-bold font-headline h-auto p-0 border-0 shadow-none focus-visible:ring-0"/>
+                <Button size="icon" onClick={handleTitleSave}><Save className="h-4 w-4"/></Button>
+              </div>
+            ) : (
+                <h1 className="text-2xl md:text-3xl font-bold font-headline">{checklist.name}</h1>
+            )}
             <p className="text-muted-foreground">{checklist.category} / {checklist.subcategory}</p>
           </div>
           <div className="flex items-center gap-2">
@@ -158,7 +180,7 @@ export default function ChecklistDetailPage() {
             <Button variant="outline" onClick={handleShare}>
               <Share2 className="mr-2 h-4 w-4" /> Share
             </Button>
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" onClick={() => setIsEditingTitle(prev => !prev)}>
               <Edit className="h-4 w-4" />
               <span className="sr-only">Edit Checklist</span>
             </Button>

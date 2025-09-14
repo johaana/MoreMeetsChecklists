@@ -16,7 +16,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { premiumPacks } from "@/lib/premium-packs";
 import type { PremiumPack } from "@/lib/premium-packs";
-import { Check, CreditCard } from "lucide-react";
+import { Check, CreditCard, PartyPopper } from "lucide-react";
 
 
 export default function PremiumPacksPage() {
@@ -30,9 +30,20 @@ export default function PremiumPacksPage() {
     };
 
     const handleConfirmPurchase = () => {
+        if (!selectedPack) return;
+
         setIsDialogOpen(false);
         // In a real application, you would handle the Stripe checkout flow here.
-        // For now, we'll just close the dialog.
+        // For now, we'll just show a success toast.
+        toast({
+          title: "Purchase Successful!",
+          description: `You've unlocked the ${selectedPack.title}.`,
+          action: (
+            <div className="p-2 bg-primary/20 rounded-full">
+                <PartyPopper className="h-5 w-5 text-primary" />
+            </div>
+          )
+        });
         setSelectedPack(null);
     };
 
@@ -79,17 +90,17 @@ export default function PremiumPacksPage() {
             <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                    <AlertDialogTitle>Payment Integration Next</AlertDialogTitle>
+                    <AlertDialogTitle>Confirm Your Purchase</AlertDialogTitle>
                     <AlertDialogDescription>
-                        You're ready to purchase the <strong>{selectedPack?.title}</strong> for <strong>${selectedPack?.price}</strong>.
+                        You are about to purchase the <strong>{selectedPack?.title}</strong> for <strong>${selectedPack?.price}</strong>.
                         <br/><br/>
-                        The next step would be to integrate a payment provider like Stripe to handle this transaction securely.
+                        In a real application, this would redirect you to a secure payment gateway like Stripe. For this demo, clicking "Confirm" will simulate a successful purchase.
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                     <AlertDialogCancel onClick={() => setSelectedPack(null)}>Cancel</AlertDialogCancel>
                     <AlertDialogAction onClick={handleConfirmPurchase}>
-                        Understood
+                        Confirm Purchase
                     </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
