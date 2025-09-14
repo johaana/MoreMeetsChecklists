@@ -1,8 +1,13 @@
+'use client';
+
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import firebase_app from "@/lib/firebase";
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
@@ -28,6 +33,19 @@ function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   }
 
 export default function LoginPage() {
+  const router = useRouter();
+  const auth = getAuth(firebase_app);
+  const provider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/dashboard');
+    } catch (error) {
+      console.error("Error during Google login: ", error);
+    }
+  };
+
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
@@ -62,7 +80,7 @@ export default function LoginPage() {
           <Button type="submit" className="w-full" asChild>
             <Link href="/dashboard">Login</Link>
           </Button>
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full" onClick={handleGoogleLogin}>
             <GoogleIcon className="mr-2 h-4 w-4" />
             Login with Google
           </Button>

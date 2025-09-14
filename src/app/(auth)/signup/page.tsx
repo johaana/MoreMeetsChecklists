@@ -1,8 +1,14 @@
+'use client';
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import firebase_app from "@/lib/firebase";
+
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
@@ -28,6 +34,20 @@ function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   }
 
 export default function SignupPage() {
+  const router = useRouter();
+  const auth = getAuth(firebase_app);
+  const provider = new GoogleAuthProvider();
+
+  const handleGoogleSignup = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/dashboard');
+    } catch (error) {
+      console.error("Error during Google signup: ", error);
+    }
+  };
+
+
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
@@ -64,7 +84,7 @@ export default function SignupPage() {
           <Button type="submit" className="w-full" asChild>
             <Link href="/dashboard">Create an account</Link>
           </Button>
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full" onClick={handleGoogleSignup}>
             <GoogleIcon className="mr-2 h-4 w-4" />
             Sign up with Google
           </Button>
