@@ -347,8 +347,8 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
                         <Input id="new-user-email" type="email" placeholder="e.g. maria@example.com" value={newUserEmail} onChange={(e) => setNewUserEmail(e.target.value)} />
                     </div>
                      <div className="space-y-2">
-                        <Label htmlFor="new-user-contact">Contact Number (Optional)</Label>
-                        <Input id="new-user-contact" placeholder="e.g. 9876543210" value={newUserContactNumber} onChange={(e) => setNewUserContactNumber(e.target.value)} />
+                        <Label htmlFor="new-user-contact">WhatsApp Number (Optional)</Label>
+                        <Input id="new-user-contact" placeholder="For reminders via WhatsApp" value={newUserContactNumber} onChange={(e) => setNewUserContactNumber(e.target.value)} />
                     </div>
                      <div className="space-y-2">
                         <Label htmlFor="new-user-role">Role</Label>
