@@ -3,31 +3,32 @@
 
 import { 
   getAuth, 
-  signInWithPopup, 
-  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut as firebaseSignOut
 } from "firebase/auth";
 import firebase_app from "@/lib/firebase";
 import { redirect } from 'next/navigation';
+import type { UserCredential } from "firebase/auth";
 
 const auth = getAuth(firebase_app);
-const provider = new GoogleAuthProvider();
 
-export async function signInWithGoogle() {
+export async function signUpWithEmail(email: string, password: string): Promise<{result?: UserCredential, error?: string}> {
   try {
-    // The signInWithPopup function returns a promise that resolves with a UserCredential object.
-    // We are not using the result here, but it's available if you need user information.
-    // const result = await signInWithPopup(auth, provider);
-    // const user = result.user;
-    // console.log(user);
-  } catch (error) {
-    console.error("Error signing in with Google: ", error);
-    return { error: "Failed to sign in with Google." };
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    return { result };
+  } catch (error: any) {
+    return { error: error.message };
   }
+}
 
-  // After successful sign-in, redirect to the dashboard.
-  // Note: This server-side redirect might not work as expected in a client component event handler.
-  // The redirection is handled on the client side in the component itself.
+export async function signInWithEmail(email: string, password: string): Promise<{result?: UserCredential, error?: string}> {
+  try {
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    return { result };
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
 
 export async function signOut() {
