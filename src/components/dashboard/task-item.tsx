@@ -1,10 +1,10 @@
+
 'use client';
 
-import { useState } from 'react';
-import { Task, Subtask } from '@/lib/types';
+import { Item } from '@/lib/types';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
-import { Camera, MoreVertical, ChevronDown } from 'lucide-react';
+import { MoreVertical, ChevronDown, Camera } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 interface TaskItemProps {
-    task: Task;
+    task: Item;
     onTaskToggle: (taskId: string) => void;
     onSubtaskToggle: (taskId: string, subtaskId: string) => void;
 }
@@ -39,12 +39,7 @@ export function TaskItem({ task, onTaskToggle, onSubtaskToggle }: TaskItemProps)
             >
                 {task.text}
             </Label>
-             {task.requiresPhoto && (
-                <Button variant="outline" size="sm">
-                <Camera className="mr-2 h-4 w-4" />
-                Upload
-                </Button>
-            )}
+             
             {hasSubtasks && (
                 <CollapsibleTrigger asChild>
                      <Button variant="ghost" size="icon" className="h-8 w-8">

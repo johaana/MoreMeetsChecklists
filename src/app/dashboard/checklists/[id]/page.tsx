@@ -1,12 +1,13 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { checklistTemplates } from '@/lib/templates';
-import type { Checklist, Subtask, Task } from '@/lib/types';
+import type { Checklist, Item } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Share2, Edit, ChevronLeft } from 'lucide-react';
+import { Share2, Edit, ChevronLeft, Camera } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
@@ -27,48 +28,48 @@ export default function ChecklistDetailPage() {
     }
   }, [id]);
 
-  const handleTaskToggle = (taskId: string) => {
+  const handleTaskToggle = (itemId: string) => {
     setChecklist((prev) => {
       if (!prev) return null;
-      const newTasks = prev.tasks.map((task) => {
-        if (task.id === taskId) {
-          const newCompleted = !task.completed;
-          const newSubtasks = task.subtasks?.map(sub => ({...sub, completed: newCompleted}));
-          return { ...task, completed: newCompleted, subtasks: newSubtasks };
+      const newItems = prev.items.map((item) => {
+        if (item.id === itemId) {
+          const newCompleted = !item.completed;
+          const newSubtasks = item.subtasks?.map(sub => ({...sub, completed: newCompleted}));
+          return { ...item, completed: newCompleted, subtasks: newSubtasks };
         }
-        return task;
+        return item;
       });
-      return { ...prev, tasks: newTasks };
+      return { ...prev, items: newItems };
     });
   };
 
-  const handleSubtaskToggle = (taskId: string, subtaskId: string) => {
+  const handleSubtaskToggle = (itemId: string, subtaskId: string) => {
     setChecklist(prev => {
         if (!prev) return null;
-        const newTasks = prev.tasks.map(task => {
-            if (task.id === taskId && task.subtasks) {
-                const newSubtasks = task.subtasks.map(sub => 
+        const newItems = prev.items.map(item => {
+            if (item.id === itemId && item.subtasks) {
+                const newSubtasks = item.subtasks.map(sub => 
                     sub.id === subtaskId ? { ...sub, completed: !sub.completed } : sub
                 );
                 const allSubtasksCompleted = newSubtasks.every(sub => sub.completed);
-                return { ...task, subtasks: newSubtasks, completed: allSubtasksCompleted };
+                return { ...item, subtasks: newSubtasks, completed: allSubtasksCompleted };
             }
-            return task;
+            return item;
         });
-        return { ...prev, tasks: newTasks };
+        return { ...prev, items: newItems };
     });
   };
 
   const handleAddTask = (taskText: string) => {
     if (!checklist) return;
-    const newTask: Task = {
-      id: `${checklist.tasks.length + 1}-${Date.now()}`,
+    const newItem: Item = {
+      id: `${checklist.items.length + 1}-${Date.now()}`,
       text: taskText,
       completed: false,
     };
     setChecklist((prev) => {
       if (!prev) return null;
-      return { ...prev, tasks: [...prev.tasks, newTask] };
+      return { ...prev, items: [...prev.items, newItem] };
     });
   };
 
@@ -80,12 +81,12 @@ export default function ChecklistDetailPage() {
     );
   }
   
-  const totalTasks = checklist.tasks.reduce((acc, task) => acc + (task.subtasks?.length || 1), 0);
-  const completedTasks = checklist.tasks.reduce((acc, task) => {
-    if (task.subtasks && task.subtasks.length > 0) {
-      return acc + task.subtasks.filter(st => st.completed).length;
+  const totalTasks = checklist.items.reduce((acc, item) => acc + (item.subtasks?.length || 1), 0);
+  const completedTasks = checklist.items.reduce((acc, item) => {
+    if (item.subtasks && item.subtasks.length > 0) {
+      return acc + item.subtasks.filter(st => st.completed).length;
     }
-    return acc + (task.completed ? 1 : 0);
+    return acc + (item.completed ? 1 : 0);
   }, 0);
   const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
@@ -122,10 +123,10 @@ export default function ChecklistDetailPage() {
       </div>
 
       <div className="space-y-3">
-        {checklist.tasks.map((task) => (
+        {checklist.items.map((item) => (
           <TaskItem 
-            key={task.id} 
-            task={task}
+            key={item.id} 
+            task={item}
             onTaskToggle={handleTaskToggle}
             onSubtaskToggle={handleSubtaskToggle}
             />

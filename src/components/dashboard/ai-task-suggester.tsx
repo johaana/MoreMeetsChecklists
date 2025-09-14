@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -31,7 +32,7 @@ export function AITaskSuggester({ checklist, onAddTask }: AISuggestionsProps) {
     setIsLoading(true);
     setSuggestions([]);
 
-    const existingTasks = checklist.tasks.map((t) => t.text);
+    const existingTasks = checklist.items.map((t) => t.text);
     const result = await getAISuggestions({
       checklistType: checklist.type,
       existingTasks,

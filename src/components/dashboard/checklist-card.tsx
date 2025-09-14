@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -17,9 +18,10 @@ const categoryIcons: Record<Checklist['category'], React.ReactNode> = {
 
 export function ChecklistCard({ checklist }: { checklist: Checklist }) {
   const completionPercentage = useMemo(() => {
-    const completedTasks = checklist.tasks.filter((task) => task.completed).length;
-    return (completedTasks / checklist.tasks.length) * 100;
-  }, [checklist.tasks]);
+    if (checklist.items.length === 0) return 0;
+    const completedItems = checklist.items.filter((item) => item.completed).length;
+    return (completedItems / checklist.items.length) * 100;
+  }, [checklist.items]);
 
   return (
     <Card>
@@ -28,7 +30,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
           <CardTitle className="text-lg">{checklist.title}</CardTitle>
           {categoryIcons[checklist.category]}
         </div>
-        <CardDescription>{checklist.tasks.length} tasks</CardDescription>
+        <CardDescription>{checklist.items.length} tasks</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">

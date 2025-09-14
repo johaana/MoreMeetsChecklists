@@ -1,18 +1,14 @@
+
 export type Subtask = {
   id: string;
   text: string;
   completed: boolean;
 };
 
-export type Task = {
+export type Item = {
   id: string;
   text: string;
   completed: boolean;
-  dueDate?: string;
-  assignee?: string;
-  priority?: 'Low' | 'Medium' | 'High';
-  requiresPhoto?: boolean;
-  photoUrl?: string;
   subtasks?: Subtask[];
 };
 
@@ -22,6 +18,10 @@ export type Checklist = {
   id: string;
   title: string;
   category: ChecklistCategory;
-  tasks: Task[];
+  items: Item[];
   type: string; // e.g., 'Wedding - Haldi'
+  pricing?: {
+    free: string;
+    premium: string;
+  }
 };

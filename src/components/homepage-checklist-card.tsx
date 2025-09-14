@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -16,8 +17,8 @@ const categoryIcons: Record<Checklist['category'], React.ReactNode> = {
 export function HomepageChecklistCard({ checklist }: { checklist: Checklist }) {
 
   const totalTasks = useMemo(() => {
-    return checklist.tasks.reduce((acc, task) => acc + 1 + (task.subtasks?.length || 0), 0);
-  }, [checklist.tasks]);
+    return checklist.items.reduce((acc, item) => acc + 1 + (item.subtasks?.length || 0), 0);
+  }, [checklist.items]);
 
 
   return (
@@ -35,16 +36,16 @@ export function HomepageChecklistCard({ checklist }: { checklist: Checklist }) {
           </CardHeader>
           <CardContent className="flex-1">
               <ul className='space-y-1.5'>
-                  {checklist.tasks.slice(0, 3).map(task => (
-                      <li key={task.id} className='flex items-start gap-2'>
+                  {checklist.items.slice(0, 3).map(item => (
+                      <li key={item.id} className='flex items-start gap-2'>
                           <Check className='h-4 w-4 mt-0.5 text-muted-foreground shrink-0' />
-                          <span className='text-sm text-muted-foreground truncate'>{task.text}</span>
+                          <span className='text-sm text-muted-foreground truncate'>{item.text}</span>
                       </li>
                   ))}
-                  {checklist.tasks.length > 3 && (
+                  {checklist.items.length > 3 && (
                        <li className='flex items-start gap-2'>
                           <Check className='h-4 w-4 mt-0.5 text-muted-foreground shrink-0' />
-                          <span className='text-sm text-muted-foreground'>and {checklist.tasks.length - 3} more...</span>
+                          <span className='text-sm text-muted-foreground'>and {checklist.items.length - 3} more...</span>
                       </li>
                   )}
               </ul>
