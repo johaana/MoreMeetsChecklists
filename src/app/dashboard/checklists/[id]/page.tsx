@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { checklistTemplates } from '@/lib/templates';
 import type { Checklist, Subtask, Task } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -10,16 +11,19 @@ import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
 
-export default function ChecklistDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function ChecklistDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
   const [checklist, setChecklist] = useState<Checklist | null>(null);
 
   useEffect(() => {
-    const foundChecklist = checklistTemplates.find((c) => c.id === id);
-    if (foundChecklist) {
-      setChecklist(JSON.parse(JSON.stringify(foundChecklist)));
-    } else {
-      console.error(`Checklist with id ${id} not found.`);
+    if (id) {
+      const foundChecklist = checklistTemplates.find((c) => c.id === id);
+      if (foundChecklist) {
+        setChecklist(JSON.parse(JSON.stringify(foundChecklist)));
+      } else {
+        console.error(`Checklist with id ${id} not found.`);
+      }
     }
   }, [id]);
 
