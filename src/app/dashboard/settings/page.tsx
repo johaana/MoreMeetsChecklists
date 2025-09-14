@@ -1,56 +1,97 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 export default function SettingsPage() {
+  // State for forms
+  const [email, setEmail] = useState("");
+  const [checklistName, setChecklistName] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("card");
+
   return (
     <div className="space-y-6">
       {/* Page Title */}
-      <h1 className="text-2xl font-semibold md:text-3xl font-headline">
-        Settings
-      </h1>
+      <h1 className="text-2xl font-semibold md:text-3xl font-headline">Settings</h1>
 
-      {/* Grid Layout for Settings Sections */}
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* Example Card 1 */}
+        {/* General Settings */}
         <Card>
-          <div className="p-4">
+          <div className="p-6 space-y-4">
             <h2 className="text-lg font-medium">General Settings</h2>
-            <p className="text-sm text-muted-foreground">
-              Manage account preferences, notifications, and more.
-            </p>
+            <div className="space-y-2">
+              <Label>Email</Label>
+              <Input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label>Enable Notifications</Label>
+              <Switch />
+            </div>
+            <Button className="w-full">Save Settings</Button>
           </div>
         </Card>
 
-        {/* Example Card 2 */}
+        {/* Billing & Payments */}
         <Card>
-          <div className="p-4">
+          <div className="p-6 space-y-4">
             <h2 className="text-lg font-medium">Billing & Payments</h2>
-            <p className="text-sm text-muted-foreground">
-              View invoices, update payment methods, and track usage.
-            </p>
+            <div className="space-y-2">
+              <Label>Payment Method</Label>
+              <Select value={paymentMethod} onValueChange={setPaymentMethod}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select payment method" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="card">Credit / Debit Card</SelectItem>
+                  <SelectItem value="upi">UPI</SelectItem>
+                  <SelectItem value="paypal">PayPal</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Button className="w-full">Update Payment Method</Button>
           </div>
         </Card>
 
-        {/* Example Card 3 */}
+        {/* Checklist Creation */}
         <Card>
-          <div className="p-4">
-            <h2 className="text-lg font-medium">Checklists</h2>
-            <p className="text-sm text-muted-foreground">
-              Create and manage event, hospitality, training, and sustainability
-              checklists.
-            </p>
+          <div className="p-6 space-y-4">
+            <h2 className="text-lg font-medium">Checklist Builder</h2>
+            <div className="space-y-2">
+              <Label>Checklist Name</Label>
+              <Input
+                placeholder="e.g. Wedding - Haldi Ceremony"
+                value={checklistName}
+                onChange={(e) => setChecklistName(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Checklist Items</Label>
+              <Textarea placeholder="Add checklist items, one per line" />
+            </div>
+            <Button className="w-full">Save Checklist</Button>
           </div>
         </Card>
 
-        {/* Example Card 4 */}
+        {/* User Management */}
         <Card>
-          <div className="p-4">
+          <div className="p-6 space-y-4">
             <h2 className="text-lg font-medium">User Management</h2>
-            <p className="text-sm text-muted-foreground">
-              Add, remove, or assign roles to team members.
-            </p>
+            <div className="space-y-2">
+              <Label>Add Team Member</Label>
+              <Input type="email" placeholder="team@example.com" />
+            </div>
+            <Button className="w-full">Invite User</Button>
           </div>
         </Card>
       </div>
