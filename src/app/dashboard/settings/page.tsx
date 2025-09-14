@@ -60,7 +60,7 @@ export default function SettingsPage() {
                          <Select defaultValue="en">
                             <SelectTrigger>
                                 <SelectValue placeholder="Select language" />
-                            </SelectTrigger>
+                            </Trigger>
                             <SelectContent>
                                 <SelectItem value="en">English</SelectItem>
                                 <SelectItem value="es">Español</SelectItem>
