@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { checklistTemplates } from '@/lib/templates';
-import type { Checklist, Task } from '@/lib/types';
+import type { Checklist, Subtask, Task } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Share2, Edit, ChevronLeft } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
@@ -18,27 +17,46 @@ export default function ChecklistDetailPage({ params }: { params: { id: string }
   useEffect(() => {
     const foundChecklist = checklistTemplates.find((c) => c.id === id);
     if (foundChecklist) {
-      // Deep copy to prevent modifying the original template
       setChecklist(JSON.parse(JSON.stringify(foundChecklist)));
     } else {
-      // In a real app, you might want to redirect to a 404 page
-      // For now, we can just log an error or handle it gracefully.
       console.error(`Checklist with id ${id} not found.`);
     }
   }, [id]);
 
-  if (!checklist) {
-    // This will be caught by useEffect on the client,
-    // but in a real app with server-side fetching, this would handle not found cases.
-    // For now, let's show a loading state until the checklist is found.
-    return (
-      <div className="flex items-center justify-center h-full">
-        <p>Loading checklist...</p>
-      </div>
-    );
-  }
+  const handleTaskToggle = (taskId: string) => {
+    setChecklist((prev) => {
+      if (!prev) return null;
+      const newTasks = prev.tasks.map((task) => {
+        if (task.id === taskId) {
+          const newCompleted = !task.completed;
+          const newSubtasks = task.subtasks?.map(sub => ({...sub, completed: newCompleted}));
+          return { ...task, completed: newCompleted, subtasks: newSubtasks };
+        }
+        return task;
+      });
+      return { ...prev, tasks: newTasks };
+    });
+  };
+
+  const handleSubtaskToggle = (taskId: string, subtaskId: string) => {
+    setChecklist(prev => {
+        if (!prev) return null;
+        const newTasks = prev.tasks.map(task => {
+            if (task.id === taskId && task.subtasks) {
+                const newSubtasks = task.subtasks.map(sub => 
+                    sub.id === subtaskId ? { ...sub, completed: !sub.completed } : sub
+                );
+                const allSubtasksCompleted = newSubtasks.every(sub => sub.completed);
+                return { ...task, subtasks: newSubtasks, completed: allSubtasksCompleted };
+            }
+            return task;
+        });
+        return { ...prev, tasks: newTasks };
+    });
+  };
 
   const handleAddTask = (taskText: string) => {
+    if (!checklist) return;
     const newTask: Task = {
       id: `${checklist.tasks.length + 1}-${Date.now()}`,
       text: taskText,
@@ -50,8 +68,22 @@ export default function ChecklistDetailPage({ params }: { params: { id: string }
     });
   };
 
-  const completedTasks = checklist.tasks.filter(t => t.completed).length;
-  const progress = (completedTasks / checklist.tasks.length) * 100;
+  if (!checklist) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <p>Loading checklist...</p>
+      </div>
+    );
+  }
+  
+  const totalTasks = checklist.tasks.reduce((acc, task) => acc + (task.subtasks?.length || 1), 0);
+  const completedTasks = checklist.tasks.reduce((acc, task) => {
+    if (task.subtasks && task.subtasks.length > 0) {
+      return acc + task.subtasks.filter(st => st.completed).length;
+    }
+    return acc + (task.completed ? 1 : 0);
+  }, 0);
+  const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
     <div className="space-y-6">
@@ -80,14 +112,19 @@ export default function ChecklistDetailPage({ params }: { params: { id: string }
       <div className="space-y-2">
         <div className="flex justify-between text-sm text-muted-foreground">
             <span>Progress</span>
-            <span>{completedTasks} / {checklist.tasks.length} tasks</span>
+            <span>{completedTasks} / {totalTasks} tasks</span>
         </div>
         <Progress value={progress} />
       </div>
 
       <div className="space-y-3">
         {checklist.tasks.map((task) => (
-          <TaskItem key={task.id} task={task} />
+          <TaskItem 
+            key={task.id} 
+            task={task}
+            onTaskToggle={handleTaskToggle}
+            onSubtaskToggle={handleSubtaskToggle}
+            />
         ))}
       </div>
     </div>

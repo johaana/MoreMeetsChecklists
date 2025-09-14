@@ -1,3 +1,9 @@
+export type Subtask = {
+  id: string;
+  text: string;
+  completed: boolean;
+};
+
 export type Task = {
   id: string;
   text: string;
@@ -7,6 +13,7 @@ export type Task = {
   priority?: 'Low' | 'Medium' | 'High';
   requiresPhoto?: boolean;
   photoUrl?: string;
+  subtasks?: Subtask[];
 };
 
 export type ChecklistCategory = 'Events' | 'Hospitality' | 'Training' | 'Sustainability';
