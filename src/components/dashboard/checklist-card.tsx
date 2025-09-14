@@ -26,7 +26,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
         return true; // Free checklists are always unlocked
     }
     // Premium checklists are unlocked if their pack title is in the purchasedPacks array
-    return checklist.premiumPack ? purchasedPacks.includes(checklist.premiumPack) : false;
+    return purchasedPacks.includes(checklist.premiumPack);
   }, [checklist, purchasedPacks]);
 
   const completionPercentage = useMemo(() => {

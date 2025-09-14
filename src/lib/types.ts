@@ -1,5 +1,6 @@
 
 
+
 export type Status = 'pending' | 'in-progress' | 'completed';
 export type Priority = 'low' | 'medium' | 'high';
 
@@ -19,9 +20,11 @@ export type Checklist = {
   name: string;
   category: ChecklistCategory;
   subcategory: string;
-  premium: boolean;
-  premiumPack?: string; // e.g., "The Ultimate Wedding Planner Pack"
   tasks: Task[];
-};
-
-    
+} & ({
+  premium: false;
+  premiumPack?: never;
+} | {
+  premium: true;
+  premiumPack: string;
+});
