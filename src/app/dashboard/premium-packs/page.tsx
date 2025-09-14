@@ -1,6 +1,20 @@
+'use client';
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, Zap } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Check, Leaf, Star, Zap } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const premiumPacks = [
     {
@@ -15,7 +29,8 @@ const premiumPacks = [
             "Full Wedding Day Coordination Checklist",
             "Honeymoon Packing Checklist",
         ],
-        icon: <Star className="w-8 h-8 text-accent" />
+        icon: <Star className="w-8 h-8 text-yellow-500" />,
+        color: "bg-yellow-500/10 border-yellow-500/20"
     },
     {
         title: "Hospitality Excellence Suite",
@@ -29,7 +44,8 @@ const premiumPacks = [
             "Monthly Maintenance Checks",
             "Guest Complaint Resolution Protocol",
         ],
-        icon: <Zap className="w-8 h-8 text-accent" />
+        icon: <Zap className="w-8 h-8 text-blue-500" />,
+        color: "bg-blue-500/10 border-blue-500/20"
     },
     {
         title: "Corporate & Startup Launchkit",
@@ -43,11 +59,47 @@ const premiumPacks = [
             "Product Launch Marketing Plan",
             "Press Conference Checklist",
         ],
-        icon: <Star className="w-8 h-8 text-accent" />
+        icon: <Star className="w-8 h-8 text-purple-500" />,
+        color: "bg-purple-500/10 border-purple-500/20"
+    },
+    {
+        title: "Sustainability Starter Kit",
+        price: "29.99",
+        description: "Implement green practices in your home or office with these easy-to-follow checklists.",
+        features: [
+            "Home Energy Audit",
+            "Office Recycling Program",
+            "Sustainable Commuting Plan",
+            "Waste Reduction Challenge",
+            "Green Cleaning Checklist",
+            "Community Garden Planner",
+        ],
+        icon: <Leaf className="w-8 h-8 text-green-500" />,
+        color: "bg-green-500/10 border-green-500/20"
     }
 ];
 
+type PremiumPack = typeof premiumPacks[0];
+
 export default function PremiumPacksPage() {
+    const [selectedPack, setSelectedPack] = useState<PremiumPack | null>(null);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const { toast } = useToast();
+
+    const handlePurchaseClick = (pack: PremiumPack) => {
+        setSelectedPack(pack);
+        setIsDialogOpen(true);
+    };
+
+    const handleConfirmPurchase = () => {
+        setIsDialogOpen(false);
+        toast({
+            title: "Purchase Successful!",
+            description: `Thank you for purchasing the ${selectedPack?.title}. The checklists are now available in your dashboard.`,
+        });
+        setSelectedPack(null);
+    };
+
     return (
         <div className="space-y-8">
             <div className="text-center">
@@ -57,12 +109,14 @@ export default function PremiumPacksPage() {
                 </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 {premiumPacks.map((pack) => (
-                    <Card key={pack.title} className="flex flex-col">
-                        <CardHeader className="items-center">
-                            {pack.icon}
-                            <CardTitle className="text-xl text-center">{pack.title}</CardTitle>
+                    <Card key={pack.title} className={`flex flex-col border-2 ${pack.color}`}>
+                        <CardHeader className="items-center text-center">
+                            <div className="p-4 bg-background rounded-full mb-2">
+                                {pack.icon}
+                            </div>
+                            <CardTitle className="text-xl">{pack.title}</CardTitle>
                              <p className="text-4xl font-bold">${pack.price}</p>
                         </CardHeader>
                         <CardContent className="flex-1 flex flex-col">
@@ -70,18 +124,35 @@ export default function PremiumPacksPage() {
                             <ul className="space-y-3 text-sm flex-1">
                                 {pack.features.map((feature) => (
                                     <li key={feature} className="flex items-start">
-                                        <Check className="w-4 h-4 mr-2 mt-1 shrink-0 text-green-500" />
+                                        <Check className="w-4 h-4 mr-2 mt-1 shrink-0 text-primary" />
                                         <span className="text-muted-foreground">{feature}</span>
                                     </li>
                                 ))}
                             </ul>
                         </CardContent>
-                        <div className="p-6 pt-0">
-                            <Button className="w-full">Purchase Pack</Button>
-                        </div>
+                        <CardFooter>
+                            <Button className="w-full" onClick={() => handlePurchaseClick(pack)}>Purchase Pack</Button>
+                        </CardFooter>
                     </Card>
                 ))}
             </div>
+
+            <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                    <AlertDialogTitle>Confirm Your Purchase</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        You are about to purchase the <strong>{selectedPack?.title}</strong> for <strong>${selectedPack?.price}</strong>.
+                    </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleConfirmPurchase}>
+                        Confirm & Pay
+                    </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     )
 }
