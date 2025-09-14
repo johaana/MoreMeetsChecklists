@@ -14,7 +14,7 @@ export const premiumPacks = [
         ],
         icon: <Star className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Wedding Reception (Sample)", "Naming Ceremony"]
+        relatedFreeTemplates: ["Wedding Reception", "Naming Ceremony"]
     },
     {
         title: "Hospitality Excellence Suite",
@@ -29,7 +29,7 @@ export const premiumPacks = [
         ],
         icon: <Building className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Daily Opening Checklist", "Daily Closing Checklist"]
+        relatedFreeTemplates: ["Hotel Housekeeping", "Restaurant Opening"]
     },
     {
         title: "Corporate & Startup Launchkit",
@@ -44,7 +44,7 @@ export const premiumPacks = [
         ],
         icon: <Briefcase className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Product Launch", "Conference"]
+        relatedFreeTemplates: ["Startup Launch Party", "Conference"]
     },
     {
         title: "Sustainability Starter Kit",
@@ -59,7 +59,7 @@ export const premiumPacks = [
         ],
         icon: <Leaf className="w-8 h-8 text-accent" />,
         color: "border-accent",
-        relatedFreeTemplates: ["Energy Efficiency", "Eco-Friendly Events"]
+        relatedFreeTemplates: ["Hotel Energy Audit", "Eco-Friendly Events"]
     }
 ];
 

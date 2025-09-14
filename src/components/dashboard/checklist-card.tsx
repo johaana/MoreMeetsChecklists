@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import { Checklist } from '@/lib/types';
+import type { Checklist } from '@/lib/types';
 import { PartyPopper, Hotel, Users, Leaf, ArrowRight, Lock, BookOpen, HeartPulse } from 'lucide-react';
 import { useMemo, useContext } from 'react';
 import { PremiumPacksContext } from '@/contexts/premium-packs-context';
@@ -22,8 +22,9 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
   const { purchasedPacks } = useContext(PremiumPacksContext);
 
   const isUnlocked = useMemo(() => {
+    // Free checklists are always unlocked
     if (!checklist.premium) {
-        return true; // Free checklists are always unlocked
+      return true;
     }
     // Premium checklists are unlocked if their pack title is in the purchasedPacks array
     return purchasedPacks.includes(checklist.premiumPack);
@@ -72,5 +73,3 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
     </Card>
   );
 }
-
-    
