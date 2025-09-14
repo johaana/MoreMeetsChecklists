@@ -1,44 +1,73 @@
 
 'use client';
 
-import { Item } from '@/lib/types';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Item, Status } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { MoreVertical, ChevronDown, Camera } from 'lucide-react';
+import { MoreVertical, ChevronDown, CheckCircle, Circle, Radio } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Badge } from '@/components/ui/badge';
+
 
 interface TaskItemProps {
     task: Item;
-    onTaskToggle: (taskId: string) => void;
-    onSubtaskToggle: (taskId: string, subtaskId: string) => void;
+    onStatusChange: (taskId: string, status: Status) => void;
 }
 
-export function TaskItem({ task, onTaskToggle, onSubtaskToggle }: TaskItemProps) {
-  const hasSubtasks = task.subtasks && task.subtasks.length > 0;
+const statusConfig: Record<Status, { icon: React.ReactNode; label: string; color: string; badgeVariant: "default" | "secondary" | "destructive" | "outline" }> = {
+    pending: { icon: <Circle className="h-4 w-4 text-muted-foreground" />, label: 'Pending', color: 'text-muted-foreground', badgeVariant: 'outline' },
+    'in-progress': { icon: <Radio className="h-4 w-4 text-blue-500" />, label: 'In Progress', color: 'text-blue-500', badgeVariant: 'secondary' },
+    completed: { icon: <CheckCircle className="h-4 w-4 text-green-500" />, label: 'Completed', color: 'text-green-500', badgeVariant: 'default' },
+};
 
+
+export function TaskItem({ task, onStatusChange }: TaskItemProps) {
+  const hasSubtasks = task.subtasks && task.subtasks.length > 0;
+  const currentStatus = statusConfig[task.status];
+  
   return (
-    <Collapsible defaultOpen className="bg-card rounded-lg border">
+    <Collapsible defaultOpen={hasSubtasks} className="bg-card rounded-lg border">
         <div className="flex items-center gap-4 p-3 hover:bg-muted/50 transition-colors rounded-t-lg">
-            <Checkbox
-                id={`task-${task.id}`}
-                checked={task.completed}
-                onCheckedChange={() => onTaskToggle(task.id)}
-                aria-label={`Mark task "${task.text}" as ${task.completed ? 'incomplete' : 'complete'}`}
-            />
-            <Label
-                htmlFor={`task-${task.id}`}
-                className={cn('flex-1 text-sm cursor-pointer', task.completed && 'line-through text-muted-foreground')}
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0">
+                  {currentStatus.icon}
+                  <span className="sr-only">Change status</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>Set Status</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                  value={task.status}
+                  onValueChange={(value) => onStatusChange(task.task, value as Status)}
+                >
+                  <DropdownMenuRadioItem value="pending">Pending</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="in-progress">In Progress</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="completed">Completed</DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <div
+                className={cn('flex-1 text-sm', task.status === 'completed' && 'line-through text-muted-foreground')}
             >
-                {task.text}
-            </Label>
+                {task.task}
+            </div>
+            
+            <Badge variant={currentStatus.badgeVariant} className="hidden md:inline-flex">{currentStatus.label}</Badge>
              
             {hasSubtasks && (
                 <CollapsibleTrigger asChild>
@@ -56,30 +85,24 @@ export function TaskItem({ task, onTaskToggle, onSubtaskToggle }: TaskItemProps)
                 </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                <DropdownMenuItem>Assign User</DropdownMenuItem>
-                <DropdownMenuItem>Set Due Date</DropdownMenuItem>
-                <DropdownMenuItem>Set Priority</DropdownMenuItem>
-                <DropdownMenuItem className="text-destructive">Delete Task</DropdownMenuItem>
+                  <DropdownMenuItem>Assign User</DropdownMenuItem>
+                  <DropdownMenuItem>Set Due Date</DropdownMenuItem>
+                  <DropdownMenuItem>Set Priority</DropdownMenuItem>
+                  <DropdownMenuItem className="text-destructive">Delete Task</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
 
        {hasSubtasks && (
          <CollapsibleContent>
-            <div className="border-t py-2 px-4 pl-12 space-y-2">
-                {task.subtasks?.map(subtask => (
-                    <div key={subtask.id} className="flex items-center gap-3">
-                         <Checkbox
-                            id={`subtask-${subtask.id}`}
-                            checked={subtask.completed}
-                            onCheckedChange={() => onSubtaskToggle(task.id, subtask.id)}
-                            aria-label={`Mark subtask "${subtask.text}" as ${subtask.completed ? 'incomplete' : 'complete'}`}
-                        />
+            <div className="border-t py-2 px-4 pl-16 space-y-2">
+                {task.subtasks?.map((subtask, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                         <Circle className="h-2.5 w-2.5 text-muted-foreground" />
                         <Label
-                             htmlFor={`subtask-${subtask.id}`}
-                            className={cn('text-sm flex-1 cursor-pointer', subtask.completed && 'line-through text-muted-foreground')}
+                            className={cn('text-sm flex-1')}
                         >
-                            {subtask.text}
+                            {subtask}
                         </Label>
                     </div>
                 ))}

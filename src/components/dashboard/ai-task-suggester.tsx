@@ -32,9 +32,9 @@ export function AITaskSuggester({ checklist, onAddTask }: AISuggestionsProps) {
     setIsLoading(true);
     setSuggestions([]);
 
-    const existingTasks = checklist.items.map((t) => t.text);
+    const existingTasks = checklist.items.map((t) => t.task);
     const result = await getAISuggestions({
-      checklistType: checklist.type,
+      checklistType: checklist.name,
       existingTasks,
     });
 
@@ -75,7 +75,7 @@ export function AITaskSuggester({ checklist, onAddTask }: AISuggestionsProps) {
           <DialogHeader>
             <DialogTitle>AI Task Suggestions</DialogTitle>
             <DialogDescription>
-              Here are some tasks you might be missing from your '{checklist.title}' checklist.
+              Here are some tasks you might be missing from your '{checklist.name}' checklist.
             </DialogDescription>
           </DialogHeader>
           <div className="py-4">

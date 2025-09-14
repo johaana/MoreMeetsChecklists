@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { checklistTemplates } from '@/lib/templates';
-import type { Checklist, Item } from '@/lib/types';
+import type { Checklist, Item, Status } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Share2, Edit, ChevronLeft, Camera } from 'lucide-react';
+import { Share2, Edit, ChevronLeft } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
@@ -28,14 +28,12 @@ export default function ChecklistDetailPage() {
     }
   }, [id]);
 
-  const handleTaskToggle = (itemId: string) => {
+  const handleTaskStatusChange = (itemId: string, status: Status) => {
     setChecklist((prev) => {
       if (!prev) return null;
       const newItems = prev.items.map((item) => {
-        if (item.id === itemId) {
-          const newCompleted = !item.completed;
-          const newSubtasks = item.subtasks?.map(sub => ({...sub, completed: newCompleted}));
-          return { ...item, completed: newCompleted, subtasks: newSubtasks };
+        if (item.task === itemId) { // Assuming task text is unique for now
+          return { ...item, status: status };
         }
         return item;
       });
@@ -43,29 +41,11 @@ export default function ChecklistDetailPage() {
     });
   };
 
-  const handleSubtaskToggle = (itemId: string, subtaskId: string) => {
-    setChecklist(prev => {
-        if (!prev) return null;
-        const newItems = prev.items.map(item => {
-            if (item.id === itemId && item.subtasks) {
-                const newSubtasks = item.subtasks.map(sub => 
-                    sub.id === subtaskId ? { ...sub, completed: !sub.completed } : sub
-                );
-                const allSubtasksCompleted = newSubtasks.every(sub => sub.completed);
-                return { ...item, subtasks: newSubtasks, completed: allSubtasksCompleted };
-            }
-            return item;
-        });
-        return { ...prev, items: newItems };
-    });
-  };
-
   const handleAddTask = (taskText: string) => {
     if (!checklist) return;
     const newItem: Item = {
-      id: `${checklist.items.length + 1}-${Date.now()}`,
-      text: taskText,
-      completed: false,
+      task: taskText,
+      status: 'pending',
     };
     setChecklist((prev) => {
       if (!prev) return null;
@@ -81,13 +61,8 @@ export default function ChecklistDetailPage() {
     );
   }
   
-  const totalTasks = checklist.items.reduce((acc, item) => acc + (item.subtasks?.length || 1), 0);
-  const completedTasks = checklist.items.reduce((acc, item) => {
-    if (item.subtasks && item.subtasks.length > 0) {
-      return acc + item.subtasks.filter(st => st.completed).length;
-    }
-    return acc + (item.completed ? 1 : 0);
-  }, 0);
+  const totalTasks = checklist.items.length;
+  const completedTasks = checklist.items.filter(item => item.status === 'completed').length;
   const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
@@ -98,8 +73,8 @@ export default function ChecklistDetailPage() {
         </Button>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className='flex-1'>
-            <h1 className="text-2xl md:text-3xl font-bold font-headline">{checklist.title}</h1>
-            <p className="text-muted-foreground">{checklist.type}</p>
+            <h1 className="text-2xl md:text-3xl font-bold font-headline">{checklist.name}</h1>
+            <p className="text-muted-foreground">{checklist.category}</p>
           </div>
           <div className="flex items-center gap-2">
             <AITaskSuggester checklist={checklist} onAddTask={handleAddTask} />
@@ -123,12 +98,11 @@ export default function ChecklistDetailPage() {
       </div>
 
       <div className="space-y-3">
-        {checklist.items.map((item) => (
+        {checklist.items.map((item, index) => (
           <TaskItem 
-            key={item.id} 
+            key={`${item.task}-${index}`} 
             task={item}
-            onTaskToggle={handleTaskToggle}
-            onSubtaskToggle={handleSubtaskToggle}
+            onStatusChange={handleTaskStatusChange}
             />
         ))}
       </div>

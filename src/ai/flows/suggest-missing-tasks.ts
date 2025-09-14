@@ -33,7 +33,7 @@ export type SuggestMissingTasksInput = z.infer<
 const SuggestMissingTasksOutputSchema = z.object({
   suggestedTasks: z
     .array(z.string())
-    .describe('A list of suggested tasks that are likely missing.'),
+    .describe('A list of 3-5 suggested tasks that are likely missing. Be concise and actionable.'),
 });
 export type SuggestMissingTasksOutput = z.infer<
   typeof SuggestMissingTasksOutputSchema
@@ -51,8 +51,8 @@ const suggestMissingTasksPrompt = ai.definePrompt({
   output: {schema: SuggestMissingTasksOutputSchema},
   prompt: `You are an AI assistant designed to suggest missing tasks for checklists.
 
-  Given the type of checklist and the existing tasks, identify any important tasks that are likely missing.
-  Be concise and only suggest tasks that are highly relevant to the checklist type.
+  Given the type of checklist and the existing tasks, identify important tasks that are likely missing.
+  Be concise and only suggest tasks that are highly relevant to the checklist type. Provide 3-5 suggestions.
 
   Checklist Type: {{{checklistType}}}
   Existing Tasks:

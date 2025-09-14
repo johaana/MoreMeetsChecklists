@@ -8,7 +8,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function DashboardPage() {
   const events = checklistTemplates.filter((c) => c.category === 'Events');
-  const hospitality = checklistTemplates.filter((c) => c.category === 'Hospitality');
+  const hospitality = checklistTemplates.filter((c) => c.category === 'Hospitality Ops');
   const training = checklistTemplates.filter((c) => c.category === 'Training');
   const sustainability = checklistTemplates.filter((c) => c.category === 'Sustainability');
 
