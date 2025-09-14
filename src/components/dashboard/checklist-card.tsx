@@ -32,7 +32,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
         <div className="flex items-start justify-between gap-4">
           <CardTitle className="text-lg flex-1">{checklist.name}</CardTitle>
           <div className='flex items-center gap-2'>
-            {isPremium && <Lock className="w-4 h-4 text-amber-500" />}
+            {isPremium && <Lock className="w-4 h-4 text-accent" />}
             {categoryIcons[checklist.category]}
           </div>
         </div>
@@ -48,8 +48,8 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button asChild variant="outline" className="w-full" disabled={isPremium && !['Events - Baby Ceremony - Naming Ceremony', 'Restaurants - Daily Opening Checklist', 'Events - Wedding Reception (Sample)'].includes(checklist.name) }>
-          <Link href={`/dashboard/checklists/${checklist.id}`}>
+        <Button asChild variant="outline" className="w-full">
+          <Link href={isPremium ? `/dashboard/premium-packs` : `/dashboard/checklists/${checklist.id}`}>
             {isPremium ? 'Unlock Premium' : 'View Checklist'} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
