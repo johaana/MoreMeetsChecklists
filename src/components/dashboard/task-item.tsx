@@ -36,6 +36,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 
 interface TaskItemProps {
@@ -66,6 +67,7 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
   const [open, setOpen] = useState(true);
   const [isAssignUserOpen, setIsAssignUserOpen] = useState(false);
   const [newUserName, setNewUserName] = useState('');
+  const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserRole, setNewUserRole] = useState<User['role']>('Team Member');
   const { toast } = useToast();
   
@@ -81,16 +83,17 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
   }
 
   const handleCreateUser = () => {
-    if (!newUserName.trim()) {
+    if (!newUserName.trim() || !newUserEmail.trim()) {
         toast({
             variant: "destructive",
-            title: "Invalid Name",
-            description: "Please enter a name for the new user.",
+            title: "Invalid Input",
+            description: "Please enter a name and email for the new user.",
         });
         return;
     }
-    const newUser = onAddUser({ name: newUserName, role: newUserRole });
+    const newUser = onAddUser({ name: newUserName, role: newUserRole, email: newUserEmail });
     setNewUserName('');
+    setNewUserEmail('');
     onAssignUser(task.task, newUser);
     setIsAssignUserOpen(false);
     toast({
@@ -337,6 +340,10 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
                         <Label htmlFor="new-user-name">Name</Label>
                         <Input id="new-user-name" placeholder="e.g. Maria Garcia" value={newUserName} onChange={(e) => setNewUserName(e.target.value)} />
                     </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="new-user-email">Email</Label>
+                        <Input id="new-user-email" type="email" placeholder="e.g. maria@example.com" value={newUserEmail} onChange={(e) => setNewUserEmail(e.target.value)} />
+                    </div>
                      <div className="space-y-2">
                         <Label htmlFor="new-user-role">Role</Label>
                         <Select value={newUserRole} onValueChange={(value) => setNewUserRole(value as User['role'])}>
@@ -361,5 +368,3 @@ export function TaskItem({ task, users, onStatusChange, onAssignUser, onSetDueDa
     </Collapsible>
   );
 }
-
-    
