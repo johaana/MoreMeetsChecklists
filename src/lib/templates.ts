@@ -213,8 +213,8 @@ export const checklistTemplates: Checklist[] = [
         { id: '3-2', text: 'Test all hardware and software components thoroughly', completed: false },
         { id: '3-3', text: 'Have a pre-recorded video of the demo as backup', completed: false },
       ] },
-      { id: '4', text: 'Arrange catering, including snacks and beverages', completed: false },
-      { id: '5', text: 'Manage guest list and track RSVPs online', completed: false },
+      { id: '4-Kalyana', text: 'Arrange catering, including snacks and beverages', completed: false },
+      { id: '5-Sappadu', text: 'Manage guest list and track RSVPs online', completed: false },
       { id: '6', text: 'Media and PR', completed: false, subtasks: [
         { id: '6-1', text: 'Draft and schedule press release distribution', completed: false },
         { id: '6-2', text: 'Prepare digital press kits with high-res images', completed: false },
@@ -327,6 +327,86 @@ export const checklistTemplates: Checklist[] = [
         { id: '4-3', text: 'Finalize seating chart and event flow', completed: false },
         { id: '4-4', text: 'Assemble welcome bags for guests', completed: false },
         { id: '4-5', text: 'Confirm travel arrangements and pack your bags', completed: false },
+      ]},
+    ]
+  },
+  {
+    id: 'evt-corp-awards',
+    title: 'Corporate Awards Night',
+    category: 'Events',
+    type: 'Corporate Awards',
+    tasks: [
+      { id: '1', text: 'Planning & Strategy', completed: false, subtasks: [
+        { id: '1-1', text: 'Define event objectives and success metrics', completed: false },
+        { id: '1-2', text: 'Set a detailed budget', completed: false },
+        { id: '1-3', text: 'Form an event planning committee', completed: false },
+        { id: '1-4', text: 'Choose an event theme and format (virtual, hybrid, in-person)', completed: false },
+      ]},
+      { id: '2', text: 'Nominations & Judging', completed: false, subtasks: [
+        { id: '2-1', text: 'Define award categories and criteria', completed: false },
+        { id: '2-2', text: 'Open call for nominations', completed: false },
+        { id: '2-3', text: 'Assemble a judging panel', completed: false },
+        { id: '2-4', text: 'Finalize and notify winners confidentially', completed: false },
+      ]},
+      { id: '3', text: 'Venue & Logistics', completed: false, subtasks: [
+        { id: '3-1', text: 'Select and book venue', completed: false },
+        { id: '3-2', text: 'Arrange for catering and beverage service', completed: false },
+        { id: '3-3', text: 'Book AV equipment and technical support', completed: false },
+        { id: '3-4', text: 'Plan seating arrangements', completed: false },
+      ]},
+      { id: '4', text: 'Event Programming & Content', completed: false, subtasks: [
+        { id: '4-1', text: 'Design and order trophies/awards', completed: false },
+        { id: '4-2', text: 'Book a host/Master of Ceremonies (MC)', completed: false },
+        { id: '4-3', text: 'Script speeches and presentations', completed: false },
+        { id: '4-4', text: 'Create video clips or presentations for nominees', completed: false },
+      ]},
+      { id: '5', text: 'Marketing & Invitations', completed: false, subtasks: [
+        { id: '5-1', text: 'Create event branding and promotional materials', completed: false },
+        { id: '5-2', text: 'Send out invitations and manage RSVPs', completed: false },
+        { id: '5-3', text: 'Coordinate with press and media partners', completed: false },
+      ]},
+    ]
+  },
+  {
+    id: 'evt-award-show',
+    title: 'Major Award Show Production',
+    category: 'Events',
+    type: 'Award Show',
+    tasks: [
+      { id: '1', text: 'Pre-Production & Planning', completed: false, subtasks: [
+        { id: '1-1', text: 'Finalize overall budget and secure sponsorships', completed: false },
+        { id: '1-2', text: 'Book a large-scale venue (theater, arena)', completed: false },
+        { id: '1-3', text: 'Hire key production heads (Director, Producer, Showrunner)', completed: false },
+        { id: '1-4', text: 'Obtain all necessary permits and insurance', completed: false },
+      ]},
+      { id: '2', text: 'Talent & Presenters', completed: false, subtasks: [
+        { id: '2-1', text: 'Book celebrity host and co-hosts', completed: false },
+        { id: '2-2', text: 'Confirm award presenters and performers', completed: false },
+        { id: '2-3', text: 'Manage travel, accommodation, and contracts for all talent', completed: false },
+        { id: '2-4', text: 'Arrange green rooms and talent riders', completed: false },
+      ]},
+      { id: '3', text: 'Show Flow & Content Creation', completed: false, subtasks: [
+        { id: '3-1', text: 'Develop a minute-by-minute run of show', completed: false },
+        { id: '3-2', text: 'Write scripts for hosts, presenters, and voice-over', completed: false },
+        { id: '3-3', text: 'Produce nominee packages and show graphics', completed: false },
+        { id: '3-4', text: 'Plan and rehearse musical performances', completed: false },
+      ]},
+      { id: '4', text: 'Technical Production', completed: false, subtasks: [
+        { id: '4-1', text: 'Finalize stage and scenic design', completed: false },
+        { id: '4-2', text: 'Design lighting and sound plots', completed: false },
+        { id: '4-3', text: 'Plan multi-camera setup for live broadcast/streaming', completed: false },
+        { id: '4-4', text: 'Schedule and run technical rehearsals (cue-to-cue)', completed: false },
+      ]},
+      { id: '5', text: 'Red Carpet & Press', completed: false, subtasks: [
+        { id: '5-1', text: 'Design and layout the red carpet arrival area', completed: false },
+        { id: '5-2', text: 'Manage press and photographer credentials', completed: false },
+        { id: '5-3', text: 'Schedule red carpet interviews and photo calls', completed: false },
+      ]},
+      { id: '6', text: 'Live Show & Post-Show', completed: false, subtasks: [
+        { id: '6-1', text: 'Execute live show according to the run of show', completed: false },
+        { id: '6-2', text: 'Coordinate stage transitions and talent movements', completed: false },
+        { id: '6-3', text: 'Manage the official after-party', completed: false },
+        { id: '6-4', text: 'Distribute press release with the official winners list', completed: false },
       ]},
     ]
   },
