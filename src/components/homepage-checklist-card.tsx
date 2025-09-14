@@ -1,0 +1,53 @@
+'use client';
+
+import Link from 'next/link';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checklist } from '@/lib/types';
+import { PartyPopper, Hotel, Users, Leaf, ListChecks } from 'lucide-react';
+import { useMemo } from 'react';
+
+const categoryIcons: Record<Checklist['category'], React.ReactNode> = {
+  Events: <PartyPopper className="w-5 h-5 text-sky-500" />,
+  Hospitality: <Hotel className="w-5 h-5 text-blue-800" />,
+  Training: <Users className="w-5 h-5 text-purple-600" />,
+  Sustainability: <Leaf className="w-5 h-5 text-green-600" />,
+};
+
+export function HomepageChecklistCard({ checklist }: { checklist: Checklist }) {
+
+  const totalTasks = useMemo(() => {
+    return checklist.tasks.reduce((acc, task) => acc + 1 + (task.subtasks?.length || 0), 0);
+  }, [checklist.tasks]);
+
+
+  return (
+    <Card className='hover:shadow-md hover:-translate-y-1 transition-transform'>
+        <CardHeader>
+            <div className="flex items-start justify-between gap-4">
+                <CardTitle className="text-base font-semibold">{checklist.title}</CardTitle>
+                {categoryIcons[checklist.category]}
+            </div>
+            <CardDescription className='flex items-center gap-2 text-xs'>
+                <ListChecks className='h-3 w-3' />
+                <span>{totalTasks} items</span>
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <ul className='space-y-1.5'>
+                {checklist.tasks.slice(0, 3).map(task => (
+                    <li key={task.id} className='flex items-start gap-2'>
+                        <Check className='h-4 w-4 mt-0.5 text-muted-foreground shrink-0' />
+                        <span className='text-sm text-muted-foreground truncate'>{task.text}</span>
+                    </li>
+                ))}
+                {checklist.tasks.length > 3 && (
+                     <li className='flex items-start gap-2'>
+                        <Check className='h-4 w-4 mt-0.5 text-muted-foreground shrink-0' />
+                        <span className='text-sm text-muted-foreground'>and {checklist.tasks.length - 3} more...</span>
+                    </li>
+                )}
+            </ul>
+        </CardContent>
+    </Card>
+  );
+}

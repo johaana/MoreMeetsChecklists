@@ -2,21 +2,15 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "A person working on a laptop with checklists in the background",
-      "imageUrl": "https://picsum.photos/seed/hero/1920/1080",
-      "imageHint": "organized workspace"
+      "description": "A person working on a laptop with checklists in the background, looking focused and organized.",
+      "imageUrl": "https://picsum.photos/seed/hero2/600/600",
+      "imageHint": "organized workspace professional"
     },
     {
       "id": "feature1",
       "description": "AI bot suggesting tasks on a screen",
       "imageUrl": "https://picsum.photos/seed/feature1/600/400",
       "imageHint": "AI assistant"
-    },
-    {
-      "id": "feature2",
-      "description": "Team collaborating over a table with documents",
-      "imageUrl": "https://picsum.photos/seed/feature2/600/400",
-      "imageHint": "team collaboration"
     },
     {
       "id": "testimonial1",
