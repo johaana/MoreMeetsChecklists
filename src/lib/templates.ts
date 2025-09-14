@@ -191,8 +191,8 @@ export const checklistTemplates: Checklist[] = [
   {
     id: 'hosp-restaurant-daily-opening',
     name: 'Restaurant Daily Opening',
-    category: 'Hospitality',
-    subcategory: 'Restaurant',
+    category: 'Restaurants',
+    subcategory: 'Operations',
     premium: false,
     tasks:      [
       { task: 'Check Reservation System for Bookings', status: 'completed', subtasks: ['Note any special requests', 'Plan table allocation'] },
@@ -207,8 +207,8 @@ export const checklistTemplates: Checklist[] = [
   {
     id: 'hosp-restaurant-daily-closing-premium',
     name: 'Restaurant Daily Closing',
-    category: 'Hospitality',
-    subcategory: 'Restaurant',
+    category: 'Restaurants',
+    subcategory: 'Operations',
     premium: true,
     premiumPack: 'Hospitality Excellence Suite',
     tasks: [
@@ -223,7 +223,7 @@ export const checklistTemplates: Checklist[] = [
     id: 'hosp-catering-event-management-premium',
     name: 'Catering Event Management',
     category: 'Hospitality',
-    subcategory: 'Restaurant',
+    subcategory: 'Events',
     premium: true,
     premiumPack: 'Hospitality Excellence Suite',
     tasks: [
@@ -265,3 +265,5 @@ export const checklistTemplates: Checklist[] = [
     ],
   }
 ];
+
+    
