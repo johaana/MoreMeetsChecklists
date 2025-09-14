@@ -10,8 +10,7 @@ import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
 
-export default function ChecklistDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function ChecklistDetailPage({ params: { id } }: { params: { id: string } }) {
   const [checklist, setChecklist] = useState<Checklist | null>(null);
 
   useEffect(() => {
