@@ -3,7 +3,7 @@ import { Briefcase, Building, Leaf, Star } from "lucide-react";
 export const premiumPacks = [
     {
         title: "The Ultimate Wedding Planner Pack",
-        price: "49.99",
+        price: "29.99",
         description: "For the professional planner or the hands-on couple, this pack ensures no detail is missed. Go from 'Yes!' to 'I Do' to the perfect honeymoon with confidence and complete organization.",
         features: [
             "Engagement Party Planning: Kick off the celebration flawlessly.",
@@ -18,7 +18,7 @@ export const premiumPacks = [
     },
     {
         title: "Hospitality Excellence Suite",
-        price: "79.99",
+        price: "49.99",
         description: "The complete operational toolkit for hotel and restaurant managers. Standardize procedures, improve guest satisfaction, and ensure 5-star quality across every department.",
         features: [
             "Flawless Front Desk Operations: Standardize guest greetings, check-ins, and inquiries.",
@@ -33,7 +33,7 @@ export const premiumPacks = [
     },
     {
         title: "Corporate & Startup Launchkit",
-        price: "39.99",
+        price: "24.99",
         description: "Execute flawless corporate events and streamlined startup launches. This pack is designed for founders and event managers who need to project professionalism and precision.",
         features: [
             "New Office Setup & Inauguration: From infrastructure to launch party, get it done right.",
@@ -48,7 +48,7 @@ export const premiumPacks = [
     },
     {
         title: "Sustainability Starter Kit",
-        price: "29.99",
+        price: "19.99",
         description: "For the eco-conscious business or individual. Turn green intentions into measurable action with these simple, effective checklists for waste reduction, energy efficiency, and more.",
         features: [
             "Office & Hotel Energy Audit: Simple steps to reduce consumption and save money.",
