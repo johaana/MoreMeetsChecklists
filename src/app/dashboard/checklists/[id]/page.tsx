@@ -11,11 +11,13 @@ import { Share2, Edit, ChevronLeft } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
 import { AITaskSuggester } from '@/components/dashboard/ai-task-suggester';
 import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/hooks/use-toast';
 
 export default function ChecklistDetailPage() {
   const params = useParams();
   const id = params.id as string;
   const [checklist, setChecklist] = useState<Checklist | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (id) {
@@ -54,6 +56,36 @@ export default function ChecklistDetailPage() {
     });
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Checklist: ${checklist?.name}`,
+          text: `Check out the "${checklist?.name}" checklist on MoreMeets!`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: 'Link Copied!',
+          description: 'The checklist link has been copied to your clipboard.',
+        });
+      } catch (error) {
+        console.error('Error copying to clipboard:', error);
+        toast({
+          variant: 'destructive',
+          title: 'Failed to Copy',
+          description: 'Could not copy the link to your clipboard.',
+        });
+      }
+    }
+  };
+
+
   if (!checklist) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -79,7 +111,7 @@ export default function ChecklistDetailPage() {
           </div>
           <div className="flex items-center gap-2">
             <AITaskSuggester checklist={checklist} onAddTask={handleAddTask} />
-            <Button variant="outline">
+            <Button variant="outline" onClick={handleShare}>
               <Share2 className="mr-2 h-4 w-4" /> Share
             </Button>
             <Button variant="outline" size="icon">
