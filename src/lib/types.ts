@@ -1,26 +1,19 @@
 
 export type Status = 'pending' | 'in-progress' | 'completed';
 
-export type Subtask = {
-  text: string;
-  status: Status;
-};
-
-export type Item = {
+export type Task = {
   task: string;
   status: Status;
-  subtasks?: string[];
+  subtasks: string[];
 };
 
-export type ChecklistCategory = 'Events' | 'Hospitality Ops' | 'Training' | 'Sustainability';
+export type ChecklistCategory = 'Events' | 'Hospitality' | 'Restaurants' | 'Training' | 'Sustainability';
 
 export type Checklist = {
   id: string;
   name: string;
   category: ChecklistCategory;
-  items: Item[];
-  pricing?: {
-    free: string;
-    premium: string;
-  }
+  subcategory: string;
+  premium: boolean;
+  tasks: Task[];
 };

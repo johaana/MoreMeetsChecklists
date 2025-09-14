@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { checklistTemplates } from '@/lib/templates';
-import type { Checklist, Item, Status } from '@/lib/types';
+import type { Checklist, Task, Status } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Share2, Edit, ChevronLeft } from 'lucide-react';
 import { TaskItem } from '@/components/dashboard/task-item';
@@ -28,28 +28,29 @@ export default function ChecklistDetailPage() {
     }
   }, [id]);
 
-  const handleTaskStatusChange = (itemId: string, status: Status) => {
+  const handleTaskStatusChange = (taskTitle: string, status: Status) => {
     setChecklist((prev) => {
       if (!prev) return null;
-      const newItems = prev.items.map((item) => {
-        if (item.task === itemId) { // Assuming task text is unique for now
-          return { ...item, status: status };
+      const newTasks = prev.tasks.map((task) => {
+        if (task.task === taskTitle) {
+          return { ...task, status: status };
         }
-        return item;
+        return task;
       });
-      return { ...prev, items: newItems };
+      return { ...prev, tasks: newTasks };
     });
   };
 
   const handleAddTask = (taskText: string) => {
     if (!checklist) return;
-    const newItem: Item = {
+    const newTask: Task = {
       task: taskText,
       status: 'pending',
+      subtasks: [],
     };
     setChecklist((prev) => {
       if (!prev) return null;
-      return { ...prev, items: [...prev.items, newItem] };
+      return { ...prev, tasks: [...prev.tasks, newTask] };
     });
   };
 
@@ -61,8 +62,8 @@ export default function ChecklistDetailPage() {
     );
   }
   
-  const totalTasks = checklist.items.length;
-  const completedTasks = checklist.items.filter(item => item.status === 'completed').length;
+  const totalTasks = checklist.tasks.length;
+  const completedTasks = checklist.tasks.filter(task => task.status === 'completed').length;
   const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
@@ -74,7 +75,7 @@ export default function ChecklistDetailPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className='flex-1'>
             <h1 className="text-2xl md:text-3xl font-bold font-headline">{checklist.name}</h1>
-            <p className="text-muted-foreground">{checklist.category}</p>
+            <p className="text-muted-foreground">{checklist.category} / {checklist.subcategory}</p>
           </div>
           <div className="flex items-center gap-2">
             <AITaskSuggester checklist={checklist} onAddTask={handleAddTask} />
@@ -98,10 +99,10 @@ export default function ChecklistDetailPage() {
       </div>
 
       <div className="space-y-3">
-        {checklist.items.map((item, index) => (
+        {checklist.tasks.map((task, index) => (
           <TaskItem 
-            key={`${item.task}-${index}`} 
-            task={item}
+            key={`${task.task}-${index}`} 
+            task={task}
             onStatusChange={handleTaskStatusChange}
             />
         ))}

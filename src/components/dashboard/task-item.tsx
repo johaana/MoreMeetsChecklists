@@ -1,9 +1,9 @@
 
 'use client';
 
-import { Item, Status } from '@/lib/types';
+import { Task, Status } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { MoreVertical, ChevronDown, CheckCircle, Circle, Radio } from 'lucide-react';
+import { MoreVertical, ChevronDown, CheckCircle, Circle, Radio, Check } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,15 +14,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Badge } from '@/components/ui/badge';
+import { useState } from 'react';
 
 
 interface TaskItemProps {
-    task: Item;
-    onStatusChange: (taskId: string, status: Status) => void;
+    task: Task;
+    onStatusChange: (taskTitle: string, status: Status) => void;
 }
 
 const statusConfig: Record<Status, { icon: React.ReactNode; label: string; color: string; badgeVariant: "default" | "secondary" | "destructive" | "outline" }> = {
@@ -33,11 +35,12 @@ const statusConfig: Record<Status, { icon: React.ReactNode; label: string; color
 
 
 export function TaskItem({ task, onStatusChange }: TaskItemProps) {
+  const [open, setOpen] = useState(true);
   const hasSubtasks = task.subtasks && task.subtasks.length > 0;
   const currentStatus = statusConfig[task.status];
   
   return (
-    <Collapsible defaultOpen={hasSubtasks} className="bg-card rounded-lg border">
+    <Collapsible open={open} onOpenChange={setOpen} className="bg-card rounded-lg border">
         <div className="flex items-center gap-4 p-3 hover:bg-muted/50 transition-colors rounded-t-lg">
             
             <DropdownMenu>
@@ -62,7 +65,7 @@ export function TaskItem({ task, onStatusChange }: TaskItemProps) {
             </DropdownMenu>
 
             <div
-                className={cn('flex-1 text-sm', task.status === 'completed' && 'line-through text-muted-foreground')}
+                className={cn('flex-1 text-sm font-medium', task.status === 'completed' && 'line-through text-muted-foreground')}
             >
                 {task.task}
             </div>
@@ -98,8 +101,9 @@ export function TaskItem({ task, onStatusChange }: TaskItemProps) {
             <div className="border-t py-2 px-4 pl-16 space-y-2">
                 {task.subtasks?.map((subtask, index) => (
                     <div key={index} className="flex items-center gap-3">
-                         <Circle className="h-2.5 w-2.5 text-muted-foreground" />
+                         <Checkbox id={`subtask-${task.task}-${index}`} />
                         <Label
+                            htmlFor={`subtask-${task.task}-${index}`}
                             className={cn('text-sm flex-1')}
                         >
                             {subtask}

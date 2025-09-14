@@ -12,6 +12,7 @@ import { checklistTemplates } from "@/lib/templates";
 import { HomepageChecklistCard } from "@/components/homepage-checklist-card";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { groupByCategoryAndSubcategory } from "@/lib/utils";
 
 export default function Home() {
   
@@ -21,11 +22,8 @@ export default function Home() {
   const testimonialAvatar2 = PlaceHolderImages.find(p => p.id === 'testimonial2');
   const testimonialAvatar3 = PlaceHolderImages.find(p => p.id === 'testimonial3');
 
-  const events = checklistTemplates.filter((c) => c.category === 'Events');
-  const hospitality = checklistTemplates.filter((c) => c.category === 'Hospitality');
-  const training = checklistTemplates.filter((c) => c.category === 'Training');
-  const sustainability = checklistTemplates.filter((c) => c.category === 'Sustainability');
-  
+  const groupedChecklists = groupByCategoryAndSubcategory(checklistTemplates);
+
   const forEventPlannersImg = PlaceHolderImages.find(p => p.id === 'for-event-planners');
   const forHospitalityImg = PlaceHolderImages.find(p => p.id === 'for-hospitality');
   const forStartupsImg = PlaceHolderImages.find(p => p.id === 'for-startups');
@@ -285,41 +283,30 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-12">
-              <Tabs defaultValue="events" className="w-full">
+              <Tabs defaultValue="Events" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
-                  <TabsTrigger value="events">Events</TabsTrigger>
-                  <TabsTrigger value="hospitality">Hospitality</TabsTrigger>
-                  <TabsTrigger value="training">Training</TabsTrigger>
-                  <TabsTrigger value="sustainability">Sustainability</TabsTrigger>
+                  {Object.keys(groupedChecklists).map(category => (
+                     <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+                  ))}
                 </TabsList>
-                <TabsContent value="events" className="mt-6">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {events.map((checklist) => (
-                      <HomepageChecklistCard key={checklist.id} checklist={checklist} />
-                    ))}
-                  </div>
-                </TabsContent>
-                <TabsContent value="hospitality" className="mt-6">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {hospitality.map((checklist) => (
-                      <HomepageChecklistCard key={checklist.id} checklist={checklist} />
-                    ))}
-                  </div>
-                </TabsContent>
-                <TabsContent value="training" className="mt-6">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {training.map((checklist) => (
-                      <HomepageChecklistCard key={checklist.id} checklist={checklist} />
-                    ))}
-                  </div>
-                </TabsContent>
-                <TabsContent value="sustainability" className="mt-6">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {sustainability.map((checklist) => (
-                      <HomepageChecklistCard key={checklist.id} checklist={checklist} />
-                    ))}
-                  </div>
-                </TabsContent>
+                {Object.entries(groupedChecklists).map(([category, subcategories]) => (
+                    <TabsContent key={category} value={category} className="mt-6">
+                         <Accordion type="single" collapsible className="w-full space-y-4" defaultValue={Object.keys(subcategories)[0]}>
+                            {Object.entries(subcategories).map(([subcategory, checklists]) => (
+                                <AccordionItem key={subcategory} value={subcategory} className="border-b-0">
+                                    <AccordionTrigger className="text-xl font-semibold py-4 hover:no-underline">{subcategory}</AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                            {checklists.map((checklist) => (
+                                                <HomepageChecklistCard key={checklist.id} checklist={checklist} />
+                                            ))}
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </TabsContent>
+                ))}
               </Tabs>
             </div>
           </div>
@@ -418,7 +405,7 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-               <Card className="hover:shadow-md transition-shadow">
+               <Card className="hover-shadow-md transition-shadow">
                 <CardContent className="pt-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
@@ -455,7 +442,7 @@ export default function Home() {
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Is there a free plan?</AccordionTrigger>
                   <AccordionContent>
-                    Yes, absolutely. Our free plan is designed for individuals and small teams to use for as long as they like. It includes all our core features, including the ability to create unlimited custom checklists and use all our free templates.
+                    Yes, absolutely. Our free plan is designed for individuals and small teams to use for as long as they like. It includes a limited selection of our free templates to get you started.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
@@ -467,7 +454,7 @@ export default function Home() {
                 <AccordionItem value="item-3">
                   <AccordionTrigger>How does the AI Task Suggester work?</AccordionTrigger>
                   <AccordionContent>
-                    Our AI analyzes the type of checklist you're building and the tasks you've already added. It then compares your list against a vast database of common and critical tasks for that specific project type to suggest important items you may have overlooked.
+                    Our AI analyzes the type of checklist you're building and the tasks you've already added. It then compares your list against a vast database of common and critical tasks for that specific project type to suggest important items you may have overlooked. The custom AI Generator for Pro users can even build entire checklists from a simple prompt.
                   </AccordionContent>
                 </AccordionItem>
                  <AccordionItem value="item-4">

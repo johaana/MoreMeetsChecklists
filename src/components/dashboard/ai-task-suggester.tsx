@@ -32,7 +32,7 @@ export function AITaskSuggester({ checklist, onAddTask }: AISuggestionsProps) {
     setIsLoading(true);
     setSuggestions([]);
 
-    const existingTasks = checklist.items.map((t) => t.task);
+    const existingTasks = checklist.tasks.map((t) => t.task);
     const result = await getAISuggestions({
       checklistType: checklist.name,
       existingTasks,

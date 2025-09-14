@@ -14,7 +14,7 @@ export const premiumPacks = [
             "Honeymoon Packing Checklist",
         ],
         icon: <Star className="w-8 h-8 text-accent" />,
-        color: "border-accent/20"
+        color: "border-accent"
     },
     {
         title: "Hospitality Excellence Suite",
@@ -29,7 +29,7 @@ export const premiumPacks = [
             "Guest Complaint Resolution Protocol",
         ],
         icon: <Building className="w-8 h-8 text-accent" />,
-        color: "border-accent/20"
+        color: "border-accent"
     },
     {
         title: "Corporate & Startup Launchkit",
@@ -44,7 +44,7 @@ export const premiumPacks = [
             "Press Conference Checklist",
         ],
         icon: <Briefcase className="w-8 h-8 text-accent" />,
-        color: "border-accent/20"
+        color: "border-accent"
     },
     {
         title: "Sustainability Starter Kit",
@@ -59,7 +59,7 @@ export const premiumPacks = [
             "Community Garden Planner",
         ],
         icon: <Leaf className="w-8 h-8 text-accent" />,
-        color: "border-accent/20"
+        color: "border-accent"
     }
 ];
 

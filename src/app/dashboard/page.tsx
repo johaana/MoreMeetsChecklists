@@ -1,16 +1,16 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { checklistTemplates } from "@/lib/templates";
 import { ChecklistCard } from "@/components/dashboard/checklist-card";
 import { Button } from "@/components/ui/button";
 import { PlusCircle, Info } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { groupByCategoryAndSubcategory } from "@/lib/utils";
+
 
 export default function DashboardPage() {
-  const events = checklistTemplates.filter((c) => c.category === 'Events');
-  const hospitality = checklistTemplates.filter((c) => c.category === 'Hospitality Ops');
-  const training = checklistTemplates.filter((c) => c.category === 'Training');
-  const sustainability = checklistTemplates.filter((c) => c.category === 'Sustainability');
+  const groupedChecklists = groupByCategoryAndSubcategory(checklistTemplates);
 
   return (
     <div className="space-y-6">
@@ -39,41 +39,34 @@ export default function DashboardPage() {
             <CardDescription>All your checklists organized by category.</CardDescription>
         </CardHeader>
         <CardContent>
-           <Tabs defaultValue="events" className="w-full">
+           <Tabs defaultValue={Object.keys(groupedChecklists)[0]} className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
-              <TabsTrigger value="events">Events</TabsTrigger>
-              <TabsTrigger value="hospitality">Hospitality</TabsTrigger>
-              <TabsTrigger value="training">Training</TabsTrigger>
-              <TabsTrigger value="sustainability">Sustainability</TabsTrigger>
+              {Object.keys(groupedChecklists).map(category => (
+                <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+              ))}
             </TabsList>
-            <TabsContent value="events" className="mt-6">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {events.map((checklist) => (
-                  <ChecklistCard key={checklist.id} checklist={checklist} />
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="hospitality" className="mt-6">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {hospitality.map((checklist) => (
-                  <ChecklistCard key={checklist.id} checklist={checklist} />
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="training" className="mt-6">
-               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {training.map((checklist) => (
-                  <ChecklistCard key={checklist.id} checklist={checklist} />
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="sustainability" className="mt-6">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {sustainability.map((checklist) => (
-                  <ChecklistCard key={checklist.id} checklist={checklist} />
-                ))}
-              </div>
-            </TabsContent>
+            
+            {Object.entries(groupedChecklists).map(([category, subcategories]) => (
+                <TabsContent key={category} value={category} className="mt-6">
+                    <Accordion type="single" collapsible className="w-full space-y-4" defaultValue={Object.keys(subcategories)[0]}>
+                        {Object.entries(subcategories).map(([subcategory, checklists]) => (
+                            <AccordionItem key={subcategory} value={subcategory} className="border rounded-lg">
+                                <AccordionTrigger className="text-lg font-semibold px-6 py-4 hover:no-underline">
+                                    {subcategory}
+                                </AccordionTrigger>
+                                <AccordionContent className="p-6 pt-0">
+                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                        {checklists.map((checklist) => (
+                                        <ChecklistCard key={checklist.id} checklist={checklist} />
+                                        ))}
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </TabsContent>
+            ))}
+
           </Tabs>
         </CardContent>
       </Card>
