@@ -16,7 +16,7 @@ import { checklistTemplates } from "@/lib/templates";
 import { HomepageChecklistCard } from "@/components/homepage-checklist-card";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { groupByCategoryAndSubcategory } from "@/lib/utils";
+import { groupByCategory } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,6 +25,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import type { GroupedChecklists } from '@/lib/utils';
 
 type RoleInfo = {
   title: string;
@@ -43,7 +44,7 @@ export default function Home() {
   const testimonialAvatar2 = PlaceHolderImages.find(p => p.id === 'testimonial2');
   const testimonialAvatar3 = PlaceHolderImages.find(p => p.id === 'testimonial3');
 
-  const groupedChecklists = groupByCategoryAndSubcategory(checklistTemplates);
+  const groupedChecklists: GroupedChecklists = groupByCategory(checklistTemplates.filter(c => c.visibility === 'free'));
 
   const forEventPlannersImg = PlaceHolderImages.find(p => p.id === 'for-event-planners');
   const forHospitalityImg = PlaceHolderImages.find(p => p.id === 'for-hospitality');
@@ -335,22 +336,13 @@ export default function Home() {
                      <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
                   ))}
                 </TabsList>
-                {Object.entries(groupedChecklists).map(([category, subcategories]) => (
+                {Object.entries(groupedChecklists).map(([category, checklists]) => (
                     <TabsContent key={category} value={category} className="mt-6">
-                         <Accordion type="single" collapsible className="w-full space-y-4" defaultValue={Object.keys(subcategories)[0]}>
-                            {Object.entries(subcategories).map(([subcategory, checklists]) => (
-                                <AccordionItem key={subcategory} value={subcategory} className="border-b-0">
-                                    <AccordionTrigger className="text-xl font-semibold py-4 hover:no-underline">{subcategory}</AccordionTrigger>
-                                    <AccordionContent>
-                                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                            {checklists.map((checklist) => (
-                                                <HomepageChecklistCard key={checklist.id} checklist={checklist} />
-                                            ))}
-                                        </div>
-                                    </AccordionContent>
-                                </AccordionItem>
+                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {checklists.map((checklist) => (
+                                <HomepageChecklistCard key={checklist.id} checklist={checklist} />
                             ))}
-                        </Accordion>
+                        </div>
                     </TabsContent>
                 ))}
               </Tabs>

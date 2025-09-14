@@ -1,271 +1,230 @@
+
 import type { Checklist } from './types';
 
 export const checklistTemplates: Checklist[] = [
-  // =================================================
-  // 1. Events Checklists - FREE (B2C Focus)
-  // =================================================
+  // == FREE (B2C) CHECKLISTS ==
   {
-    id: 'event-wedding-reception-free',
-    name: 'Wedding Reception',
+    id: 'wedding_haldi',
     category: 'Events',
-    subcategory: 'Weddings',
-    premium: false,
-    tasks: [
-      { task: 'Finalize Guest List & Seating Chart', status: 'pending', subtasks: ['Get final RSVPs', 'Assign table numbers', 'Create physical seating chart display'] },
-      { task: 'Confirm Catering & Menu', status: 'pending', subtasks: ['Final meal counts to caterer', 'Confirm dietary restrictions', 'Finalize beverage selection and bar service'] },
-      { task: 'Book Band/DJ & Finalize Playlist', status: 'completed', subtasks: ['Send do-not-play list', 'Confirm first dance song', 'Confirm final dance song'] },
-      { task: 'Coordinate with Photographer/Videographer', status: 'in-progress', subtasks: ['Provide must-have shot list', 'Confirm timeline for arrivals and key moments', 'Share venue photo restrictions'] },
-      { task: 'Arrange for Wedding Cake', status: 'completed', subtasks: ['Confirm delivery time and location at venue', 'Arrange for cake cutting utensils', 'Designate a person to save the top tier'] },
-    ],
-  },
-  {
-    id: 'event-startup-launch-party-free',
-    name: 'Startup Launch Party',
-    category: 'Events',
-    subcategory: 'Corporate',
-    premium: false,
-    tasks: [
-      { task: 'Set a Budget and Track Expenses', status: 'completed', subtasks: ['Estimate costs for venue, F&B, marketing', 'Use a spreadsheet to track actuals'] },
-      { task: 'Book a Venue', status: 'completed', subtasks: ['Check capacity and insurance', 'Check A/V capabilities', 'Confirm booking dates and times'] },
-      { task: 'Invite Key Press, Investors & Influencers', status: 'in-progress', subtasks: ['Draft personalized invitations', 'Send invites via preferred channel', 'Follow up with a call or personal message'] },
-      { task: 'Prepare a Short, Engaging Product Demo', status: 'pending', subtasks: ['Script the demo (max 5 minutes)', 'Rehearse timing and flow', 'Prepare for potential Q&A'] },
-      { task: 'Order Branded Swag/Merchandise', status: 'pending', subtasks: ['Design swag items (t-shirts, stickers)', 'Get quotes from multiple vendors', 'Confirm delivery date well before event'] },
-    ],
-  },
-   {
-    id: 'event-kids-birthday-party-free',
-    name: 'Kids Birthday Party',
-    category: 'Events',
-    subcategory: 'Social',
-    premium: false,
-    tasks: [
-      { task: 'Choose a Theme', status: 'completed', subtasks: ['Superheroes', 'Princesses', 'Dinosaurs', 'Space'] },
-      { task: 'Send out Invitations', status: 'in-progress', subtasks: ['Include RSVP details (phone/email, date)', 'Mention theme for dress-up', 'Add map or clear directions to venue'] },
-      { task: 'Order Birthday Cake & Food', status: 'pending', subtasks: ['Confirm cake flavor and design', 'Order kid-friendly snacks (pizza, sandwiches)', 'Check for guest allergies'] },
-      { task: 'Plan Games & Activities', status: 'pending', subtasks: ['Musical chairs', 'Treasure hunt', 'Face painting', 'Prizes for winners'] },
-      { task: 'Arrange for Return Gifts/Goodie Bags', status: 'pending', subtasks: ['Select age-appropriate items', 'Pack the bags', 'Personalize with thank-you notes'] },
-    ],
-  },
-  {
-    id: 'event-destination-wedding-free',
-    name: 'Destination Wedding Planning',
-    category: 'Events',
-    subcategory: 'Weddings',
-    premium: false,
-    tasks: [
-      { task: 'Research and Select a Destination', status: 'pending', subtasks: ['Check legal marriage requirements in the country', 'Consider weather and travel time for guests', 'Scout locations online and create a shortlist'] },
-      { task: 'Hire a Local Wedding Planner', status: 'pending', subtasks: ['Interview at least 3 planners', 'Check references and past work', 'Sign a detailed contract'] },
-      { task: 'Arrange Guest Accommodations', status: 'pending', subtasks: ['Block hotel rooms at a discounted rate', 'Provide guests with a list of recommended hotels', 'Create a wedding website with travel info'] },
-      { task: 'Plan Welcome Party and Pre-Wedding Activities', status: 'pending', subtasks: ['Arrange a welcome dinner for arriving guests', 'Plan a group excursion (e.g., city tour, beach day)', 'Distribute welcome bags with local goodies'] },
-      { task: 'Coordinate with Local Vendors', status: 'pending', subtasks: ['Florists, caterers, and entertainers', 'Arrange for transportation for all guests', 'Confirm all bookings and timelines one week prior'] },
-    ],
-  },
-
-  // =================================================
-  // 2. B2B Premium Checklists
-  // =================================================
-
-  // Events - Corporate (Premium)
-  {
-    id: 'event-corporate-awards-night-premium',
-    name: 'Corporate Awards Night',
-    category: 'Events',
-    subcategory: 'Corporate',
-    premium: true,
-    premiumPack: 'Corporate & Startup Launchkit',
-    tasks: [
-        { task: 'Establish award categories and nomination criteria', status: 'pending', subtasks: ['Define a judging panel of senior leaders', 'Open nominations to all employees via a form', 'Set a clear deadline for submissions'] },
-        { task: 'Design and procure trophies/awards', status: 'pending', subtasks: ['Get 3-4 design mockups from vendors', 'Select vendor based on quality and price', 'Confirm engraving details and check for typos'] },
-        { task: 'Book an elegant venue and catering', status: 'pending', subtasks: ['Formal dinner setting with round tables', 'Plan a cocktail reception before the ceremony', 'Select themed decor that matches corporate branding'] },
-        { task: 'Hire a professional host/MC', status: 'pending', subtasks: ['Review host reels and past event footage', 'Brief host on company culture and key people', 'Write and finalize the event script with the host'] },
-        { task: 'Prepare scripts and multimedia presentations', status: 'pending', subtasks: ['Create short video clips for each major nominee', 'Design winner announcement graphics and animations', 'Select appropriate background music for walk-ups'] },
-    ],
-  },
-  {
-    id: 'event-major-award-show-production-premium',
-    name: 'Major Award Show Production',
-    category: 'Events',
-    subcategory: 'Corporate',
-    premium: true,
-    premiumPack: 'Corporate & Startup Launchkit',
-    tasks: [
-        { task: 'Red carpet setup and management', status: 'pending', subtasks: ['Design and print step-and-repeat banner', 'Hire celebrity interviewers and hosts', 'Manage and allocate space for photographer pits'] },
-        { task: 'Multi-camera broadcast coordination', status: 'pending', subtasks: ['Create a detailed show flow document (minute-by-minute)', 'Plan all camera angles and shots', 'Coordinate with broadcast director and technical crew'] },
-        { task: 'Teleprompter script finalization for presenters', status: 'pending', subtasks: ['Load all scripts into the teleprompter system', 'Conduct rehearsals with presenters to check pacing', 'Have hard-copy backup scripts on hand'] },
-        { task: 'Backstage management and celebrity handling', status: 'pending', subtasks: ['Set up green rooms with specific amenities', 'Create a detailed talent movement schedule', 'Assign dedicated talent liaisons for high-profile guests'] },
-        { task: 'Post-show press conference logistics', status: 'pending', subtasks: ['Set up press room with proper lighting and audio', 'Prepare moderator notes and potential questions', 'Coordinate with security for smooth entry and exit of talent'] },
-    ],
-  },
-
-  // Events - Wedding (Premium)
-  {
-    id: 'event-haldi-ceremony-premium',
-    name: 'Haldi Ceremony',
-    category: 'Events',
-    subcategory: 'Weddings',
-    premium: true,
-    premiumPack: 'The Ultimate Wedding Planner Pack',
-    tasks: [
-      { task: 'Venue Setup with Yellow Theme', status: 'pending', subtasks: ['Marigold flower decorations', 'Seating mats for guests', 'Low seating for bride/groom', 'Designate a clean area for the ceremony'] },
-      { task: 'Arrange for Haldi Paste Ingredients', status: 'pending', subtasks: ['Turmeric, sandalwood, gram flour, rose water', 'Prepare fresh paste on the morning of the event', 'Arrange small bowls for guests to apply'] },
-      { task: 'Coordinate Bride/Groom Outfits', status: 'pending', subtasks: ['Simple matching yellow outfits', 'Floral jewelry (gajras)', 'Arrange for comfortable, older clothing as it will get stained'] },
-      { task: 'Book Photographer for candid shots', status: 'pending', subtasks: ['Brief photographer to focus on expressions and fun', 'Capture the playful atmosphere of applying haldi'] },
-      { task: 'Plan a light, festive music playlist', status: 'pending', subtasks: ['Traditional folk songs related to weddings', 'Shehnai music for ambiance'] },
-    ],
-  },
-  {
-    id: 'event-mehndi-night-premium',
-    name: 'Mehndi Night',
-    category: 'Events',
-    subcategory: 'Weddings',
-    premium: true,
-    premiumPack: 'The Ultimate Wedding Planner Pack',
-    tasks: [
-        { task: 'Book professional Mehndi artists', status: 'pending', subtasks: ['Finalize designs for the bride', 'Arrange for additional artists for guests', 'Confirm hourly rates and booking duration'] },
-        { task: 'Set up comfortable seating for the bride', status: 'pending', subtasks: ['Cushions, bolsters, and a raised platform', 'Ensure good lighting for the artists'] },
-        { task: 'Plan entertainment and music', status: 'pending', subtasks: ['DJ with a mix of traditional and Bollywood songs', 'Dhol players for a festive entry', 'Open mic for family performances'] },
-        { task: 'Organize food and drinks', status: 'pending', subtasks: ['Focus on easy-to-eat finger foods', 'Themed cocktails and mocktails'] },
+    name: 'Wedding Haldi Ceremony',
+    visibility: 'free',
+    importance: 'Ensures traditional rituals and guest arrangements are not missed during Haldi.',
+    items: [
+      'Arrange haldi paste and bowls',
+      'Set up seating for bride/groom',
+      'Decorate with yellow flowers/drapes',
+      'Organize music & dhol',
+      'Prepare simple outfits for rituals',
+      'Photography arrangements',
+      'Arrange towels and water for cleanup'
     ]
   },
   {
-    id: 'event-sangeet-night-premium',
-    name: 'Sangeet Night',
+    id: 'wedding_mehndi',
     category: 'Events',
-    subcategory: 'Weddings',
-    premium: true,
-    premiumPack: 'The Ultimate Wedding Planner Pack',
-    tasks: [
-      { task: 'Book Professional Choreographer', status: 'pending', subtasks: ['Audition local choreographers', 'Negotiate rates for group and solo dances', 'Schedule practice sessions based on availability'] },
-      { task: 'Finalize Family & Friends Performances', status: 'pending', subtasks: ['Create a sign-up sheet with performance type', 'Set time limits (e.g., 3-4 minutes per act)', 'Collect music files in required format (MP3, WAV)'] },
-      { task: 'Set up Stage, Sound & Lighting', status: 'pending', subtasks: ['Design stage layout with backdrop', 'Rent professional audio system and microphones', 'Plan for dynamic lighting effects for each performance'] },
-      { task: 'Hire Live Band or DJ', status: 'pending', subtasks: ['Review portfolios and attend a live performance if possible', 'Finalize playlist for dance floor sections', 'Sign contract with rider'] },
-      { task: 'Arrange for a skilled Emcee/Host', status: 'pending', subtasks: ['Write a script with introductions for each act', 'Plan engaging audience games between performances', 'Confirm host a week prior'] },
-    ],
+    name: 'Wedding Mehndi Ceremony',
+    visibility: 'free',
+    importance: 'Smooth flow of functions and proper guest engagement for Mehndi celebration.',
+    items: [
+      'Book mehndi artist(s)',
+      'Prepare comfortable seating for bride',
+      'Organize lighting and music',
+      'Arrange snacks & drinks',
+      'Prepare guest mehndi cones/kits',
+      'Finalize decorations (e.g., drapes, cushions)'
+    ]
   },
   {
-    id: 'event-south-indian-wedding-premium',
-    name: 'South Indian Wedding',
+    id: 'birthday_party',
     category: 'Events',
-    subcategory: 'Weddings',
-    premium: true,
-    premiumPack: 'The Ultimate Wedding Planner Pack',
-    tasks: [
-        { task: 'Book temple or mandapam for ceremony', status: 'pending', subtasks: ['Check availability for auspicious dates', 'Understand temple rules regarding decor and timing'] },
-        { task: 'Arrange for traditional nadaswaram & thavil musicians', status: 'pending', subtasks: ['Book artists well in advance', 'Confirm their arrival time'] },
-        { task: 'Procure all items for rituals', status: 'pending', subtasks: ['Kanyadaanam ritual items', 'Mangalsutra and toe rings', 'Garlands for exchange'] },
-        { task: 'Plan a traditional South Indian feast (Sadhya)', status: 'pending', subtasks: ['Arrange for serving on banana leaves', 'Confirm number of dishes (e.g., 21-course sadhya)', 'Hire a specialized caterer'] },
-        { task: 'Coordinate silk sarees and veshtis for the family', status: 'pending', subtasks: ['Choose color themes for bride and groom sides', 'Arrange for tailoring and blouse stitching'] },
-    ],
+    name: 'Kids Birthday Party',
+    visibility: 'free',
+    importance: 'Ensures a fun and well-organized party for a child\'s special day.',
+    items: [
+        'Choose a theme',
+        'Send out invitations (digital/physical)',
+        'Order birthday cake & candles',
+        'Arrange food and drinks for kids and adults',
+        'Plan games & activities',
+        'Arrange for return gifts/goodie bags'
+    ]
   },
   {
-    id: 'event-sikh-wedding-anand-karaj-premium',
-    name: 'Sikh Wedding (Anand Karaj)',
+    id: 'housewarming_party',
     category: 'Events',
-    subcategory: 'Weddings',
-    premium: true,
-    premiumPack: 'The Ultimate Wedding Planner Pack',
-    tasks: [
-        { task: 'Confirm booking at the Gurdwara', status: 'pending', subtasks: ['Finalize date and time (usually in the morning)', 'Discuss protocols and etiquette with the Granthi (ceremonial reader)'] },
-        { task: 'Arrange for Raagi Jatha for kirtan', status: 'pending', subtasks: ['Select the shabads (hymns) to be sung during the ceremony', 'Confirm timings for their performance'] },
-        { task: 'Organize the Laavan Pheras ceremony', status: 'pending', subtasks: ['Distribute pallas (sashes) to the key family members', 'Brief family on the significance and their roles during the four rounds'] },
-        { task: 'Prepare Karah Prasad for distribution', status: 'pending', subtasks: ['Arrange for its preparation in the Gurdwara kitchen', 'Organize volunteers for respectful distribution after the ceremony'] },
-        { task: 'Plan and organize the post-ceremony Langar', status: 'pending', subtasks: ['Plan a simple, vegetarian menu', 'Arrange for volunteers (sewadars) for cooking and cleaning', 'Organize seating arrangements for all guests'] },
-    ],
+    name: 'Housewarming Party',
+    visibility: 'free',
+    importance: 'Helps new homeowners celebrate their new space with friends and family smoothly.',
+    items: [
+      'Set a date and create a guest list',
+      'Send out invitations with the new address',
+      'Plan a simple menu (e.g., finger foods, BBQ)',
+      'Organize drinks and glassware',
+      'Set up a music playlist or system',
+      'Arrange a small tour of the house'
+    ]
   },
 
-  // Hospitality - B2B Premium
+  // == PAID (B2B) CHECKLISTS ==
+
+  // Hospitality
   {
-    id: 'hosp-hotel-daily-housekeeping-premium',
-    name: 'Hotel Daily Housekeeping',
+    id: 'hotel_daily_cleaning',
     category: 'Hospitality',
-    subcategory: 'Operations',
-    premium: true,
+    name: 'Hotel Daily Room Cleaning',
+    visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
-    tasks: [
-      { task: 'Change Bed Linens & Make Bed', status: 'pending', subtasks: ['Check for any stains or damage', 'Ensure crisp, tight corners on sheets'] },
-      { task: 'Clean Bathroom & Replenish Toiletries', status: 'completed', subtasks: ['Clean mirror and counter surfaces', 'Scrub toilet and shower area', 'Replenish towels, soap, and shampoo'] },
-      { task: 'Vacuum, Dust & Mop the Room', status: 'in-progress', subtasks: ['Dust all surfaces including tables and headboard', 'Vacuum entire carpet area', 'Mop any hard floors'] },
-      { task: 'Restock Mini-Bar & Coffee/Tea Station', status: 'pending', subtasks: ['Check inventory against consumption sheet', 'Refill used items and charge to room', 'Clean coffee maker and cups'] },
-      { task: 'Empty All Trash Bins', status: 'pending', subtasks: ['Replace liners in all trash bins'] },
-    ],
+    importance: 'Maintains hygiene standards, ensures guest satisfaction, and avoids negative reviews.',
+    items: [
+      'Change bed linens & make bed to standard',
+      'Clean bathroom, disinfect toilet, and wipe mirrors',
+      'Replenish all toiletries (soap, shampoo, etc.)',
+      'Replace used towels',
+      'Vacuum, dust all surfaces, and mop floors',
+      'Restock mini-bar and coffee/tea station',
+      'Empty all trash bins',
+      'Log room as cleaned in the Property Management System (PMS)'
+    ]
   },
   {
-    id: 'hosp-restaurant-daily-opening-premium',
-    name: 'Restaurant Daily Opening',
-    category: 'Restaurants',
-    subcategory: 'Operations',
-    premium: true,
-    premiumPack: 'Hospitality Excellence Suite',
-    tasks:      [
-      { task: 'Check Reservation System for Bookings', status: 'completed', subtasks: ['Note any special requests (birthdays, allergies)', 'Plan table allocation for large groups'] },
-      { task: 'Set Tables with Clean Linens & Cutlery', status: 'completed', subtasks: ['Polish all silverware and glassware', 'Fold napkins according to standard', 'Set centerpieces'] },
-      { task: 'Review Daily Specials with Kitchen Staff', status: 'in-progress', subtasks: ['Understand ingredients and preparation', 'Note any 86\'d items to inform servers'] },
-      { task: 'Turn on Music & Adjust Lighting', status: 'pending', subtasks: ['Set music to appropriate volume and genre', 'Ensure lighting is warm and inviting'] },
-      { task: 'Brief Front of House Staff', status: 'pending', subtasks: ['Discuss specials and 86\'d items', 'Assign server sections', 'Review service standards and upsell opportunities'] },
-    ],
-  },
-  {
-    id: 'hosp-restaurant-daily-closing-premium',
-    name: 'Restaurant Daily Closing',
-    category: 'Restaurants',
-    subcategory: 'Operations',
-    premium: true,
-    premiumPack: 'Hospitality Excellence Suite',
-    tasks: [
-        { task: 'Complete end-of-day financial reconciliation', status: 'pending', subtasks: ['Count and balance cash drawer', 'Generate and verify credit card sales report', 'Calculate and distribute server tip-outs'] },
-        { task: 'Deep clean all kitchen surfaces and equipment', status: 'pending', subtasks: ['Clean grills, fryers, and ovens', 'Wipe down all stainless steel surfaces', 'Sanitize all prep areas and cutting boards'] },
-        { task: 'Take inventory of perishable and non-perishable goods', status: 'pending', subtasks: ['Update stock sheets for all key items', 'Prepare an order list for the next day\'s deliveries'] },
-        { task: 'Ensure all gas lines are off and equipment is powered down', status: 'pending', subtasks: ['Double check that all ovens and stoves are off', 'Turn off coffee machines and other small appliances'] },
-        { task: 'Set security alarm and lock all entrances', status: 'pending', subtasks: ['Check that all windows and back doors are secure', 'Activate the main alarm system'] },
-    ],
-  },
-  {
-    id: 'hosp-catering-event-management-premium',
-    name: 'Catering Event Management',
+    id: 'restaurant_opening',
     category: 'Hospitality',
-    subcategory: 'Events',
-    premium: true,
+    name: 'Restaurant Opening',
+    visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
-    tasks: [
-        { task: 'Finalize menu with client, noting all dietary needs', status: 'pending', subtasks: ['Get final headcount 48 hours prior', 'Confirm service style (buffet, plated, stations)', 'Create labels for all dishes, highlighting allergens'] },
-        { task: 'Plan for staffing: chefs, servers, and bartenders', status: 'pending', subtasks: ['Create a detailed work schedule and roles', 'Brief team on event flow, menu, and special requests'] },
-        { task: 'Rent and confirm delivery of all necessary equipment', status: 'pending', subtasks: ['Tables, chairs, linens, and glassware', 'Serving platters, chafing dishes, and utensils', 'Portable cooking equipment and power sources'] },
-        { task: 'Coordinate logistics for food transport and on-site setup', status: 'pending', subtasks: ['Use temperature-controlled containers for food safety', 'Create a setup diagram for the venue kitchen/prep area'] },
-        { task: 'Post-event breakdown and cleanup checklist', status: 'pending', subtasks: ['Pack all leftover food safely for client or disposal', 'Thoroughly clean the service and prep areas', 'Account for all rental equipment before leaving the venue'] },
-    ],
+    importance: 'Ensures the restaurant is perfectly prepared for service, preventing delays and ensuring a quality guest experience.',
+    items: [
+      'Turn on all lights, signage, and music',
+      'Check reservation system for bookings and special requests',
+      'Set all tables with clean linens, cutlery, and glassware',
+      'Brief front-of-house staff on daily specials and 86\'d items',
+      'Check cleanliness of restrooms and restock supplies',
+      'Verify Point of Sale (POS) system is online and functioning',
+      'Ensure kitchen is prepped for first orders'
+    ]
   },
-  
-  // Training - B2B Premium
   {
-    id: 'training-new-hotel-staff-onboarding-premium',
-    name: 'New Hotel Staff Onboarding',
+    id: 'restaurant_closing',
+    category: 'Hospitality',
+    name: 'Restaurant Closing',
+    visibility: 'paid',
+    premiumPack: 'Hospitality Excellence Suite',
+    importance: 'Ensures the restaurant is properly shut down, secure, and ready for the next day.',
+    items: [
+      'Complete end-of-day financial reconciliation (cash, credit cards)',
+      'Deep clean all kitchen surfaces and equipment',
+      'Take inventory of key perishable goods',
+      'Ensure all gas lines are off and equipment is powered down',
+      'Clean and sanitize all dining areas and restrooms',
+      'Set security alarm and lock all entrances'
+    ]
+  },
+
+  // Training
+  {
+    id: 'staff_training_hotel',
     category: 'Training',
-    subcategory: 'Hospitality',
-    premium: true,
+    name: 'Hotel New Staff Onboarding',
+    visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
-    tasks: [
-        { task: 'Complete HR paperwork and issue uniform', status: 'pending', subtasks: ['Collect tax forms and identification', 'Sign employment contract', 'Provide uniform and explain dress code'] },
-        { task: 'Tour of the property and introduction to department heads', status: 'pending', subtasks: ['Front office, housekeeping, F&B, security, engineering', 'Show emergency exits, fire extinguishers, and assembly points'] },
-        { task: 'Training on Property Management System (PMS)', status: 'pending', subtasks: ['Practice check-in/check-out process', 'Learn billing and payment procedures', 'Understand how to manage reservations and room status'] },
-        { task: 'Review brand standards and customer service protocols', status: 'pending', subtasks: ['Role-play greeting guests', 'Train on the L.E.A.R.N. model for handling complaints', 'Practice upselling services and amenities'] },
-        { task: 'Shadow an experienced staff member for one week', status: 'pending', subtasks: ['Observe guest interactions and daily tasks', 'Practice procedures under direct supervision', 'Receive daily feedback and a final review'] },
-    ],
+    importance: 'Helps onboard new staff quickly while maintaining consistent service quality.',
+    items: [
+      'Complete HR paperwork and issue uniform',
+      'Conduct a full tour of the property',
+      'Train on Property Management System (PMS)',
+      'Review brand standards and customer service protocols',
+      'Provide safety & emergency evacuation training',
+      'Schedule one week of shadowing a senior staff member'
+    ]
   },
 
-  // Sustainability - B2B Premium
+  // Sustainability
   {
-    id: 'sustainability-hotel-energy-efficiency-premium',
-    name: 'Hotel Energy Efficiency',
+    id: 'sustainability_hotel',
     category: 'Sustainability',
-    subcategory: 'Hospitality',
-    premium: true,
+    name: 'Hotel Sustainability Audit',
+    visibility: 'paid',
     premiumPack: 'Sustainability Starter Kit',
-    tasks: [
-        { task: 'Conduct a weekly energy audit of all departments', status: 'pending', subtasks: ['Read gas, water, and electric meters', 'Identify and log areas of high consumption', 'Compare week-over-week usage'] },
-        { task: 'Install smart thermostats and key-card activated power in rooms', status: 'pending', subtasks: ['Create an installation schedule for all rooms', 'Train maintenance staff on the new systems'] },
-        { task: 'Switch all lighting to high-efficiency LED bulbs', status: 'pending', subtasks: ['Inventory all bulb types across the property', 'Schedule phased replacement for lobby, hallways, guest rooms, and back-of-house'] },
-        { task: 'Implement a "turn off" policy for unused areas and equipment', status: 'pending', subtasks: ['Create signage for meeting rooms and offices', 'Train kitchen staff to power down equipment during off-peak hours'] },
-        { task: 'Train staff on energy-saving practices', status: 'pending', subtasks: ['Incorporate energy efficiency modules into onboarding', 'Run monthly awareness campaigns with incentives for the best department'] },
-    ],
+    importance: 'Helps hotels comply with eco-friendly practices, reduce costs, and attract conscious guests.',
+    items: [
+      'Conduct weekly energy audit of all departments',
+      'Verify that all lighting is high-efficiency (LED)',
+      'Check for and report any water leaks',
+      'Ensure recycling and composting bins are correctly used',
+      'Audit single-use plastic usage in rooms and restaurants',
+      'Log carbon footprint data for monthly review'
+    ]
+  },
+
+  // Airport
+  {
+    id: 'airport_runway_inspection',
+    category: 'Airport',
+    name: 'Airport Daily Runway Inspection',
+    visibility: 'paid',
+    premiumPack: 'Airport Operations Pack',
+    importance: 'Critical for aviation safety and compliance with regulatory bodies like FAA/EASA.',
+    items: [
+      'Check for Foreign Object Debris (FOD)',
+      'Verify runway and taxiway lighting systems are operational',
+      'Inspect runway surface for cracks or damage',
+      'Confirm markings (e.g., numbers, centerlines) are visible',
+      'Check for wildlife presence near the runway',
+      'Log inspection completion in the airport\'s official logbook'
+    ]
+  },
+
+  // Manufacturing
+  {
+    id: 'manufacturing_safety',
+    category: 'Manufacturing',
+    name: 'Manufacturing Plant Safety',
+    visibility: 'paid',
+    premiumPack: 'Manufacturing & Compliance Pack',
+    importance: 'Prevents workplace accidents and ensures compliance with OSHA and other safety regulations.',
+    items: [
+      'Check that all fire extinguishers are accessible and charged',
+      'Verify all employees are using required Personal Protective Equipment (PPE)',
+      'Inspect machine guards to ensure they are in place and functional',
+      'Confirm emergency exits and pathways are clear of obstructions',
+      'Conduct daily pre-shift safety briefing',
+      'Ensure spill kits are stocked and accessible'
+    ]
+  },
+
+  // Security
+  {
+    id: 'security_guard_patrol',
+    category: 'Security',
+    name: 'Security Guard Hourly Patrol',
+    visibility: 'paid',
+    premiumPack: 'Security & Compliance Pack',
+    importance: 'Ensures regular security monitoring and reduces risks of theft, vandalism, or intrusion.',
+    items: [
+      'Inspect all designated entry/exit points',
+      'Check perimeter fencing for breaches',
+      'Verify all CCTV cameras are operational and recording',
+      'Patrol parking areas and sensitive zones',
+      'Check that all secure doors are properly locked',
+      'Log patrol start and end times, noting any incidents'
+    ]
+  },
+
+  // Compliance
+  {
+    id: 'compliance_fire_safety',
+    category: 'Compliance',
+    name: 'Workplace Fire Safety Compliance',
+    visibility: 'paid',
+    premiumPack: 'Security & Compliance Pack',
+    importance: 'Mandatory for business licenses, insurance, and reduces the risk of fire-related incidents.',
+    items: [
+      'Inspect and test all fire alarms monthly',
+      'Test sprinkler system functionality quarterly',
+      'Ensure all fire exits are clearly marked and unobstructed',
+      'Check that all fire extinguishers are inspected and tagged annually',
+      'Conduct and log a full evacuation drill semi-annually',
+      'Verify emergency lighting is operational'
+    ]
   }
 ];

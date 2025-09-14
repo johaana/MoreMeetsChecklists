@@ -2,65 +2,56 @@
 'use client';
 
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { checklistTemplates } from "@/lib/templates";
 import { ChecklistCard } from "@/components/dashboard/checklist-card";
 import { Button } from "@/components/ui/button";
 import { PlusCircle, Info } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { groupByCategoryAndSubcategory } from "@/lib/utils";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import type { Checklist } from '@/lib/types';
+
+
+// Helper to group checklists by category
+function groupByCategory(checklists: Checklist[]): { [category: string]: Checklist[] } {
+  return checklists.reduce((acc, checklist) => {
+    const { category } = checklist;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(checklist);
+    return acc;
+  }, {} as { [category: string]: Checklist[] });
+}
 
 
 export default function DashboardPage() {
-  const groupedChecklists = groupByCategoryAndSubcategory(checklistTemplates);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
 
   const handleCreateChecklist = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const checklistName = formData.get('checklistName') as string;
-    const checklistItems = (formData.get('checklistItems') as string)
-      .split('\n')
-      .filter(item => item.trim() !== '');
-
-    if (!checklistName || checklistItems.length === 0) {
-        toast({
-            variant: 'destructive',
-            title: 'Incomplete Checklist',
-            description: 'Please provide a name and at least one item.',
-        });
-        return;
-    }
-    
-    // In a real app, you would save this to the database.
-    // For this demo, we'll just show a success message.
-    console.log({
-        name: checklistName,
-        items: checklistItems,
-    });
-    
+    // This functionality is for creating custom checklists, which is a future feature.
+    // For now, we show a toast message.
     setIsCreateOpen(false);
     toast({
-        title: 'Checklist Created!',
-        description: `Your new checklist "${checklistName}" has been created.`,
+        title: 'Feature Coming Soon!',
+        description: `Custom checklist creation is on our roadmap. For now, enjoy our templates!`,
     });
-
-    // You could optionally redirect to a new page for the created checklist
-    // router.push(`/dashboard/checklists/new-id`);
   };
 
+  const freeChecklists = checklistTemplates.filter(c => c.visibility === 'free');
+  const premiumChecklists = checklistTemplates.filter(c => c.visibility === 'paid');
+  const groupedPremiumChecklists = groupByCategory(premiumChecklists);
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
             <h1 className="text-2xl font-semibold md:text-3xl font-headline">Your Dashboard</h1>
@@ -106,41 +97,38 @@ export default function DashboardPage() {
           </AlertDescription>
         </Alert>
 
+      {/* Free Checklists Section */}
       <Card>
         <CardHeader>
-            <CardTitle>My Checklists</CardTitle>
-            <CardDescription>All your checklists organized by category.</CardDescription>
+            <CardTitle>Free Checklists</CardTitle>
+            <CardDescription>Your personal checklists for events and daily life.</CardDescription>
         </CardHeader>
         <CardContent>
-           <Tabs defaultValue={Object.keys(groupedChecklists)[0]} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
-              {Object.keys(groupedChecklists).map(category => (
-                <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {freeChecklists.map((checklist) => (
+                <ChecklistCard key={checklist.id} checklist={checklist} />
               ))}
-            </TabsList>
-            
-            {Object.entries(groupedChecklists).map(([category, subcategories]) => (
-                <TabsContent key={category} value={category} className="mt-6">
-                    <Accordion type="single" collapsible className="w-full space-y-4" defaultValue={Object.keys(subcategories)[0]}>
-                        {Object.entries(subcategories).map(([subcategory, checklists]) => (
-                            <AccordionItem key={subcategory} value={subcategory} className="border rounded-lg">
-                                <AccordionTrigger className="text-lg font-semibold px-6 py-4 hover:no-underline">
-                                    {subcategory}
-                                </AccordionTrigger>
-                                <AccordionContent className="p-6 pt-0">
-                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                        {checklists.map((checklist) => (
-                                        <ChecklistCard key={checklist.id} checklist={checklist} />
-                                        ))}
-                                    </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </TabsContent>
-            ))}
+            </div>
+        </CardContent>
+      </Card>
 
-          </Tabs>
+      {/* Premium Checklists Section */}
+      <Card>
+        <CardHeader>
+            <CardTitle>Premium B2B Checklists</CardTitle>
+            <CardDescription>Industry-standard checklists for professional operations and compliance.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+            {Object.entries(groupedPremiumChecklists).map(([category, checklists]) => (
+              <div key={category}>
+                <h3 className="text-lg font-semibold mb-4 font-headline">{category}</h3>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {checklists.map((checklist) => (
+                    <ChecklistCard key={checklist.id} checklist={checklist} />
+                  ))}
+                </div>
+              </div>
+            ))}
         </CardContent>
       </Card>
     </div>
