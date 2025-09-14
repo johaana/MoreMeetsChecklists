@@ -6,15 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import firebase_app from "@/lib/firebase";
+import { signUpWithEmail, signInWithGoogle } from "@/app/auth";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { GoogleIcon } from "@/components/icons";
 
 
 export default function SignupPage() {
   const router = useRouter();
-  const auth = getAuth(firebase_app);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -23,19 +22,36 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      // You can also save the first name and last name to Firestore or user profile here
-      router.push('/dashboard');
-    } catch (error: any) {
+    const { result, error } = await signUpWithEmail(email, password);
+
+    if (error) {
       console.error("Error during signup: ", error);
       toast({
         variant: "destructive",
         title: "Signup Failed",
-        description: error.message || "An error occurred. Please try again.",
+        description: error || "An error occurred. Please try again.",
       });
+      return;
     }
+    
+    // You can also save the first name and last name to Firestore or user profile here
+    router.push('/dashboard');
   };
+
+  const handleGoogleSignIn = async () => {
+    const { result, error } = await signInWithGoogle();
+    if (error) {
+      console.error("Error during Google sign-in: ", error);
+      toast({
+        variant: "destructive",
+        title: "Google Sign-In Failed",
+        description: error || "Could not sign in with Google. Please try again.",
+      });
+      return;
+    }
+    
+    router.push('/dashboard');
+  }
 
 
   return (
@@ -95,6 +111,18 @@ export default function SignupPage() {
             Create an account
           </Button>
         </form>
+         <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+            </div>
+        </div>
+         <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
+            <GoogleIcon className="mr-2 h-4 w-4" />
+            Sign up with Google
+        </Button>
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
           <Link href="/login" className="underline">
