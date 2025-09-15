@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState } from 'react';
@@ -331,7 +332,7 @@ export default function Home() {
             </div>
             <div className="mt-12">
               <Tabs defaultValue={Object.keys(groupedChecklists)[0]} className="w-full">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+                <TabsList className="grid w-full grid-cols-1 md:grid-cols-2">
                   {Object.keys(groupedChecklists).map(category => (
                      <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
                   ))}
@@ -369,10 +370,13 @@ export default function Home() {
                                 {pack.icon}
                             </div>
                             <CardTitle className="text-xl">{pack.title}</CardTitle>
-                             <p className="text-4xl font-bold">${pack.price}</p>
+                             <p className="text-4xl font-bold">
+                                ₹{pack.price_inr} / ${pack.price_usd}
+                             </p>
+                             <CardDescription>One-time purchase</CardDescription>
                         </CardHeader>
                         <CardContent className="flex-1 flex flex-col">
-                            <CardDescription className="text-center mb-6">{pack.description}</CardDescription>
+                            <p className="text-center mb-6 text-muted-foreground">{pack.description}</p>
                             <ul className="space-y-3 text-sm flex-1">
                                 {pack.features.map((feature) => (
                                     <li key={feature} className="flex items-start">

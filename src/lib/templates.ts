@@ -6,7 +6,7 @@ export const checklistTemplates: Checklist[] = [
   {
     id: 'wedding_haldi',
     category: 'Events',
-    name: 'Wedding Haldi Ceremony',
+    name: 'Wedding - Haldi Ceremony',
     visibility: 'free',
     importance: 'Ensures traditional rituals and guest arrangements are not missed during Haldi.',
     items: [
@@ -22,7 +22,7 @@ export const checklistTemplates: Checklist[] = [
   {
     id: 'wedding_mehndi',
     category: 'Events',
-    name: 'Wedding Mehndi Ceremony',
+    name: 'Wedding - Mehndi Night',
     visibility: 'free',
     importance: 'Smooth flow of functions and proper guest engagement for Mehndi celebration.',
     items: [
@@ -32,6 +32,36 @@ export const checklistTemplates: Checklist[] = [
       'Arrange snacks & drinks',
       'Prepare guest mehndi cones/kits',
       'Finalize decorations (e.g., drapes, cushions)'
+    ]
+  },
+  {
+    id: 'product_launch_event',
+    category: 'Events',
+    name: 'Product Launch Event',
+    visibility: 'free',
+    importance: 'Critical for creating market buzz and making a strong first impression.',
+    items: [
+      'Finalize product messaging and USP',
+      'Book venue and arrange AV equipment',
+      'Send invites to media and influencers',
+      'Prepare product demo stations',
+      'Plan event flow and speaker schedule',
+      'Arrange for event photography and videography'
+    ]
+  },
+   {
+    id: 'startup_launch_party',
+    category: 'Events',
+    name: 'Startup Launch Party',
+    visibility: 'free',
+    importance: 'Celebrates a new venture and helps in networking with investors and early adopters.',
+    items: [
+        'Set a budget and guest list',
+        'Choose a theme and venue',
+        'Send out digital invitations',
+        'Arrange for catering and drinks',
+        'Plan a short founder\'s speech or presentation',
+        'Organize some light entertainment or music'
     ]
   },
   {
@@ -50,28 +80,79 @@ export const checklistTemplates: Checklist[] = [
     ]
   },
   {
-    id: 'housewarming_party',
+    id: 'destination_wedding',
     category: 'Events',
-    name: 'Housewarming Party',
+    name: 'Destination Wedding Planning',
     visibility: 'free',
-    importance: 'Helps new homeowners celebrate their new space with friends and family smoothly.',
+    importance: 'Manages the unique complexities of a wedding away from home.',
     items: [
-      'Set a date and create a guest list',
-      'Send out invitations with the new address',
-      'Plan a simple menu (e.g., finger foods, BBQ)',
-      'Organize drinks and glassware',
-      'Set up a music playlist or system',
-      'Arrange a small tour of the house'
+        'Select and book destination/venue',
+        'Arrange travel and accommodation for guests',
+        'Hire local vendors (planner, photographer, etc.)',
+        'Plan pre-wedding events and local activities',
+        'Understand local marriage legalities',
+        'Communicate travel details clearly to all guests'
     ]
   },
 
-  // == PAID (B2B) CHECKLISTS ==
+  // == PREMIUM (B2B & Detailed Wedding) CHECKLISTS ==
 
-  // Hospitality
+  // Wedding Pack
   {
-    id: 'hotel_daily_cleaning',
+    id: 'wedding_sangeet_premium',
+    category: 'Events',
+    name: 'Wedding - Sangeet (Premium)',
+    visibility: 'paid',
+    premiumPack: 'The Ultimate Wedding Planner Pack',
+    importance: 'A vibrant celebration of music and dance before the wedding.',
+    items: [
+      'Book venue and arrange for a large dance floor',
+      'Hire a choreographer for family performances',
+      'Finalize a playlist with a DJ or live band',
+      'Arrange for professional stage lighting and sound',
+      'Plan a detailed schedule of performances',
+      'Organize a special anchor or MC for the evening',
+      'Set up a photo booth with fun props'
+    ]
+  },
+  {
+    id: 'south_indian_wedding_premium',
+    category: 'Events',
+    name: 'South Indian Wedding (Premium)',
+    visibility: 'paid',
+    premiumPack: 'The Ultimate Wedding Planner Pack',
+    importance: 'Covers all the unique rituals of a traditional South Indian wedding.',
+    items: [
+      'Arrange for \'Kashi Yatra\' items (umbrella, walking stick)',
+      'Set up the \'Oonjal\' (swing) and decorate it',
+      'Prepare the \'Mangalsutra\' and \'Koorai\' saree',
+      'Coordinate the \'Sapthapadi\' (seven steps) ritual',
+      'Organize the traditional plantain leaf feast',
+      'Book Nadaswaram and Thavil musicians'
+    ]
+  },
+   {
+    id: 'sikh_wedding_premium',
+    category: 'Events',
+    name: 'Sikh Wedding (Anand Karaj) (Premium)',
+    visibility: 'paid',
+    premiumPack: 'The Ultimate Wedding Planner Pack',
+    importance: 'Ensures all aspects of the Anand Karaj ceremony at the Gurdwara are respected and organized.',
+    items: [
+        'Confirm booking with the Gurdwara',
+        'Arrange for Palki for Guru Granth Sahib Ji',
+        'Organize head coverings for all guests',
+        'Arrange for Karah Prasad',
+        'Coordinate the Laavan Phere timings',
+        'Organize Langar (community meal) post-ceremony'
+    ]
+  },
+
+  // Hospitality Pack
+  {
+    id: 'hotel_daily_housekeeping',
     category: 'Hospitality',
-    name: 'Hotel Daily Room Cleaning',
+    name: 'Hotel Daily Housekeeping',
     visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
     importance: 'Maintains hygiene standards, ensures guest satisfaction, and avoids negative reviews.',
@@ -87,9 +168,9 @@ export const checklistTemplates: Checklist[] = [
     ]
   },
   {
-    id: 'restaurant_opening',
+    id: 'restaurant_daily_opening',
     category: 'Hospitality',
-    name: 'Restaurant Opening',
+    name: 'Restaurant Daily Opening',
     visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
     importance: 'Ensures the restaurant is perfectly prepared for service, preventing delays and ensuring a quality guest experience.',
@@ -104,9 +185,9 @@ export const checklistTemplates: Checklist[] = [
     ]
   },
   {
-    id: 'restaurant_closing',
+    id: 'restaurant_daily_closing',
     category: 'Hospitality',
-    name: 'Restaurant Closing',
+    name: 'Restaurant Daily Closing',
     visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
     importance: 'Ensures the restaurant is properly shut down, secure, and ready for the next day.',
@@ -119,12 +200,28 @@ export const checklistTemplates: Checklist[] = [
       'Set security alarm and lock all entrances'
     ]
   },
-
-  // Training
   {
-    id: 'staff_training_hotel',
+    id: 'catering_event_management',
+    category: 'Hospitality',
+    name: 'Catering Event Management',
+    visibility: 'paid',
+    premiumPack: 'Hospitality Excellence Suite',
+    importance: 'Critical for flawless off-site food and beverage service.',
+    items: [
+        'Finalize menu with client and confirm dietary restrictions',
+        'Arrange logistics: transport, equipment, and staff',
+        'Conduct a site visit to plan setup (kitchen, buffet)',
+        'Ensure all food safety and handling permits are in order',
+        'Brief serving staff on menu and service standards',
+        'Plan for waste disposal and site cleanup post-event'
+    ]
+  },
+
+  // Training Pack (Part of Hospitality Suite)
+  {
+    id: 'hotel_staff_onboarding',
     category: 'Training',
-    name: 'Hotel New Staff Onboarding',
+    name: 'New Hotel Staff Onboarding',
     visibility: 'paid',
     premiumPack: 'Hospitality Excellence Suite',
     importance: 'Helps onboard new staff quickly while maintaining consistent service quality.',
@@ -138,11 +235,11 @@ export const checklistTemplates: Checklist[] = [
     ]
   },
 
-  // Sustainability
+  // Sustainability Pack
   {
-    id: 'sustainability_hotel',
+    id: 'hotel_energy_efficiency',
     category: 'Sustainability',
-    name: 'Hotel Sustainability Audit',
+    name: 'Hotel Energy Efficiency Audit',
     visibility: 'paid',
     premiumPack: 'Sustainability Starter Kit',
     importance: 'Helps hotels comply with eco-friendly practices, reduce costs, and attract conscious guests.',
@@ -155,76 +252,38 @@ export const checklistTemplates: Checklist[] = [
       'Log carbon footprint data for monthly review'
     ]
   },
-
-  // Airport
+  
+  // Corporate & Startup Launchkit
   {
-    id: 'airport_runway_inspection',
-    category: 'Airport',
-    name: 'Airport Daily Runway Inspection',
+    id: 'corporate_awards_night',
+    category: 'Events',
+    name: 'Corporate Awards Night',
     visibility: 'paid',
-    premiumPack: 'Airport Operations Pack',
-    importance: 'Critical for aviation safety and compliance with regulatory bodies like FAA/EASA.',
+    premiumPack: 'Corporate & Startup Launchkit',
+    importance: 'Recognizes employee achievement and boosts company morale.',
     items: [
-      'Check for Foreign Object Debris (FOD)',
-      'Verify runway and taxiway lighting systems are operational',
-      'Inspect runway surface for cracks or damage',
-      'Confirm markings (e.g., numbers, centerlines) are visible',
-      'Check for wildlife presence near the runway',
-      'Log inspection completion in the airport\'s official logbook'
+        'Finalize award categories and nominee list',
+        'Procure trophies and certificates',
+        'Book a formal venue and catering',
+        'Hire an MC and arrange for entertainment',
+        'Prepare presentations for each award',
+        'Coordinate photography and live streaming'
     ]
   },
-
-  // Manufacturing
   {
-    id: 'manufacturing_safety',
-    category: 'Manufacturing',
-    name: 'Manufacturing Plant Safety',
+    id: 'major_award_show_production',
+    category: 'Events',
+    name: 'Major Award Show Production',
     visibility: 'paid',
-    premiumPack: 'Manufacturing & Compliance Pack',
-    importance: 'Prevents workplace accidents and ensures compliance with OSHA and other safety regulations.',
+    premiumPack: 'Corporate & Startup Launchkit',
+    importance: 'Manages the immense complexity of a large-scale, televised awards ceremony.',
     items: [
-      'Check that all fire extinguishers are accessible and charged',
-      'Verify all employees are using required Personal Protective Equipment (PPE)',
-      'Inspect machine guards to ensure they are in place and functional',
-      'Confirm emergency exits and pathways are clear of obstructions',
-      'Conduct daily pre-shift safety briefing',
-      'Ensure spill kits are stocked and accessible'
-    ]
-  },
-
-  // Security
-  {
-    id: 'security_guard_patrol',
-    category: 'Security',
-    name: 'Security Guard Hourly Patrol',
-    visibility: 'paid',
-    premiumPack: 'Security & Compliance Pack',
-    importance: 'Ensures regular security monitoring and reduces risks of theft, vandalism, or intrusion.',
-    items: [
-      'Inspect all designated entry/exit points',
-      'Check perimeter fencing for breaches',
-      'Verify all CCTV cameras are operational and recording',
-      'Patrol parking areas and sensitive zones',
-      'Check that all secure doors are properly locked',
-      'Log patrol start and end times, noting any incidents'
-    ]
-  },
-
-  // Compliance
-  {
-    id: 'compliance_fire_safety',
-    category: 'Compliance',
-    name: 'Workplace Fire Safety Compliance',
-    visibility: 'paid',
-    premiumPack: 'Security & Compliance Pack',
-    importance: 'Mandatory for business licenses, insurance, and reduces the risk of fire-related incidents.',
-    items: [
-      'Inspect and test all fire alarms monthly',
-      'Test sprinkler system functionality quarterly',
-      'Ensure all fire exits are clearly marked and unobstructed',
-      'Check that all fire extinguishers are inspected and tagged annually',
-      'Conduct and log a full evacuation drill semi-annually',
-      'Verify emergency lighting is operational'
+        'Coordinate with broadcast partner on technical requirements',
+        'Manage celebrity arrivals and red carpet logistics',
+        'Run detailed rehearsals with presenters and performers',
+        'Secure all necessary permits and security clearances',
+        'Manage backstage area: green rooms, hair & makeup',
+        'Plan post-show press conferences'
     ]
   }
 ];

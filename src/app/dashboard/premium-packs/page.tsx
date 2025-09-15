@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useContext } from "react";
@@ -39,7 +40,7 @@ export default function PremiumPacksPage() {
 
         setIsDialogOpen(false);
         // In a real application, you would handle the Stripe checkout flow here.
-        // For now, we'll just show a success toast.
+        // For this demo, we'll just show a success toast.
         toast({
           title: "Purchase Successful!",
           description: `You've unlocked the ${selectedPack.title}.`,
@@ -57,7 +58,7 @@ export default function PremiumPacksPage() {
             <div className="text-center">
                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl font-headline">Premium Checklist Packs</h1>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                    Upgrade your planning with our expertly crafted, comprehensive checklist packs designed for professionals.
+                    Upgrade your planning with our expertly crafted, comprehensive checklist packs. One-time purchase, lifetime access.
                 </p>
             </div>
 
@@ -69,10 +70,13 @@ export default function PremiumPacksPage() {
                                 {pack.icon}
                             </div>
                             <CardTitle className="text-xl">{pack.title}</CardTitle>
-                             <p className="text-4xl font-bold">${pack.price}</p>
+                             <p className="text-4xl font-bold">
+                                ₹{pack.price_inr} / ${pack.price_usd}
+                             </p>
+                             <CardDescription>One-time purchase</CardDescription>
                         </CardHeader>
                         <CardContent className="flex-1 flex flex-col">
-                            <CardDescription className="text-center mb-6">{pack.description}</CardDescription>
+                            <p className="text-center mb-6 text-muted-foreground">{pack.description}</p>
                             <ul className="space-y-3 text-sm flex-1">
                                 {pack.features.map((feature) => (
                                     <li key={feature} className="flex items-start">
@@ -84,7 +88,7 @@ export default function PremiumPacksPage() {
                         </CardContent>
                          <div className="p-6 pt-0">
                             <h4 className="text-sm font-semibold mb-2">Related Free Templates:</h4>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 flex-wrap">
                             {pack.relatedFreeTemplates.map(templateName => (
                                 <Button asChild variant="outline" size="sm" key={templateName}>
                                     <Link href="/dashboard">{templateName}</Link>
@@ -107,9 +111,9 @@ export default function PremiumPacksPage() {
                     <AlertDialogHeader>
                     <AlertDialogTitle>Confirm Your Purchase</AlertDialogTitle>
                     <AlertDialogDescription>
-                        You are about to purchase the <strong>{selectedPack?.title}</strong> for <strong>${selectedPack?.price}</strong>.
+                        You are about to purchase the <strong>{selectedPack?.title}</strong> for <strong>₹{selectedPack?.price_inr} / ${selectedPack?.price_usd}</strong>.
                         <br/><br/>
-                        In a real application, this would redirect you to a secure payment gateway like Stripe. For this demo, clicking "Confirm" will simulate a successful purchase.
+                        This is a one-time purchase for lifetime access. In a real application, this would redirect you to a secure payment gateway. For this demo, clicking "Confirm" will simulate a successful purchase.
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
