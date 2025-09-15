@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -65,6 +65,187 @@ export const premiumPacks = [
                     "Analyze guest feedback trends from the past month and create a formal action plan",
                     "Run mandatory staff training (e.g., emergency procedures, data privacy)",
                     "Review and update the hotel's emergency response and evacuation plan"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'commercial_kitchen_ops',
+        title: "Commercial Kitchen & Food Safety",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Hospitality",
+        description: "The essential HACCP-based toolkit for any restaurant focused on safety, quality, and efficiency.",
+        icon: <Utensils className="w-8 h-8 text-primary" />,
+        mostPopular: true,
+        sampleItems: [
+            "Kitchen Opening & Closing SOPs",
+            "Daily Temperature & HACCP Logs",
+            "Deep Cleaning & Sanitization Schedules",
+            "Food Receiving & Storage Protocols"
+        ],
+        checklists: [
+            {
+                title: "Kitchen Opening Checklist",
+                tasks: [
+                    "Calibrate food thermometers using ice water and boiling water methods. Log results.",
+                    "Check and log temperatures of all refrigerators and walk-in coolers/freezers.",
+                    "Turn on all cooking equipment (fryers, ovens, grills) and check for proper function.",
+                    "Sanitize all food preparation surfaces, cutting boards, and slicers.",
+                    "Verify dishwashing machine has adequate detergent and sanitizer, run a test cycle.",
+                    "Check for any signs of pests from overnight and report immediately."
+                ]
+            },
+            {
+                title: "Food Receiving & Storage",
+                tasks: [
+                    "Inspect all incoming deliveries for signs of damage, pests, or temperature abuse. Reject non-compliant items.",
+                    "Check temperatures of all incoming refrigerated and frozen goods. Log temperatures.",
+                    "Verify that the delivery matches the invoice. Note any shortages or incorrect items.",
+                    "Immediately move all perishable items into appropriate cold storage.",
+                    "Apply the FIFO (First-In, First-Out) principle, placing new stock behind existing stock.",
+                    "Ensure all food items are stored at least 6 inches off the floor."
+                ]
+            },
+            {
+                title: "Daily HACCP & Line Check",
+                tasks: [
+                    "Before each service, check temperatures of all hot-holding and cold-holding foods on the line.",
+                    "Taste and visually inspect all sauces, dressings, and prepped ingredients for quality and freshness.",
+                    "Ensure each station is fully stocked with utensils, sanitized cloths, and necessary ingredients.",
+                    "Check that all allergen information is readily available for service staff.",
+                    "Ensure handwashing stations are stocked with soap, paper towels, and hot water."
+                ]
+            },
+            {
+                title: "Kitchen Closing & Cleaning Checklist",
+                tasks: [
+                    "Properly cool and store all leftover food, labeling each container with item name and date.",
+                    "Clean all cooking equipment: grills, flattops, fryers (including filtration), and ovens.",
+                    "Break down, clean, and sanitize all prep stations, cutting boards, and slicers.",
+                    "Empty, clean, and sanitize all trash and recycling bins.",
+                    "Sweep and mop all floors, including under equipment and in storage areas.",
+                    "Turn off all equipment, gas lines, and lights. Secure the kitchen."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'resort_spa_management',
+        title: "Resort & Spa Management Suite",
+        priceUSD: 69.99,
+        priceINR: 5499,
+        category: "Hospitality",
+        description: "A specialized toolkit for luxury resorts, covering grounds, pools, spas, and guest activities.",
+        icon: <Plane className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Pool & Water Quality Checks",
+            "Groundskeeping & Landscaping Schedule",
+            "Spa Opening & Therapist Readiness",
+            "Guest Activity & Equipment Safety"
+        ],
+        checklists: [
+            {
+                title: "Daily Pool & Recreational Area Safety",
+                tasks: [
+                    "Test and log pool water chemistry (pH, chlorine, alkalinity) before opening. Adjust as per health codes.",
+                    "Physically inspect pool surfaces, drains, and ladders for any damage or hazards.",
+                    "Ensure all safety equipment (life rings, shepherd's hooks) is present, visible, and in good condition.",
+                    "Walk through all recreational areas (tennis courts, gym) to check for cleanliness and equipment safety.",
+                    "Verify that all poolside and outdoor furniture is clean and arranged safely.",
+                    "Check that lifeguard stations are properly equipped and staffed according to schedule."
+                ]
+            },
+            {
+                title: "Weekly Grounds & Landscaping Maintenance",
+                tasks: [
+                    "Conduct a full property walk-through to identify areas needing immediate attention (e.g., pruning, weeding).",
+                    "Inspect irrigation systems for leaks or malfunctions and adjust watering schedules based on weather.",
+                    "Check all outdoor lighting and pathways for safety and functionality.",
+                    "Schedule and oversee mowing, fertilization, and pest control activities.",
+                    "Ensure all water features (fountains, ponds) are clean and operating correctly."
+                ]
+            },
+            {
+                title: "Daily Spa Operations Checklist",
+                tasks: [
+                    "Verify all treatment rooms are immaculately clean, stocked, and at a comfortable temperature.",
+                    "Check that all spa equipment (steam rooms, saunas, hydrotherapy tubs) is operational and at the correct temperature.",
+                    "Review therapist schedules and confirm appointments for the day.",
+                    "Ensure reception is stocked with towels, robes, slippers, and refreshments.",
+                    "Conduct a brief morning meeting with spa staff to discuss the day's bookings and any VIP guests."
+                ]
+            },
+            {
+                title: "Guest Activity Planning & Execution",
+                tasks: [
+                    "Post the daily/weekly activity schedule in highly visible guest areas and on digital platforms.",
+                    "Inspect all equipment for guest activities (e.g., bicycles, kayaks, kids' club toys) for safety.",
+                    "Ensure staff leading activities are prepared with all necessary supplies and a sign-up sheet.",
+                    "Brief the concierge and front desk on the day's activities so they can inform guests.",
+                    "Gather feedback from guests after activities to inform future planning."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'waterpark_pool_safety',
+        title: "Waterpark & Pool Safety Standards",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Hospitality",
+        description: "An essential safety and maintenance toolkit for any public aquatic facility.",
+        icon: <Waves className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Lifeguard & First Aid Readiness",
+            "Water Quality & Chemical Log",
+            "Waterslide & Attraction Inspection",
+            "Emergency Action Plan (EAP) Drills"
+        ],
+        checklists: [
+            {
+                title: "Pre-Opening Safety Inspection",
+                tasks: [
+                    "Test and log water chemistry (Free Chlorine, pH, Combined Chlorine, Alkalinity) for ALL pools. Must be within health code limits.",
+                    "Physically walk every slide and attraction, checking for surface damage, loose bolts, or foreign objects.",
+                    "Run water pumps for all attractions to ensure proper flow and function before public access.",
+                    "Inspect all lifeguard towers/stations for required safety equipment (rescue tubes, backboards, first aid kits).",
+                    "Verify two-way radios and emergency whistles are fully functional.",
+                    "Conduct a 'surprise' mock rescue drill with the lifeguard team and time their response."
+                ]
+            },
+            {
+                title: "Ongoing Operational Safety",
+                tasks: [
+                    "Re-test and log water chemistry every 2 hours of operation.",
+                    "Rotate lifeguard positions every 20-30 minutes to prevent vigilance decrement.",
+                    "Supervisors must conduct periodic audits of lifeguards to ensure they are scanning their zone of responsibility effectively.",
+                    "Check and clean restrooms and changing areas hourly.",
+                    "Monitor weather conditions and follow clear protocols for lightning or high winds.",
+                    "Ensure height and safety rule signage is visible and enforced at every attraction."
+                ]
+            },
+            {
+                title: "Closing Procedures",
+                tasks: [
+                    "Clear all swimmers from the pools at the designated time.",
+                    "Perform a final sweep of all pools and attractions to ensure no one is left behind.",
+                    "Shock or super-chlorinate pools as per the weekly chemical schedule.",
+                    "Clean all filters and backwash systems as required.",
+                    "Secure all entry points and store all loose equipment.",
+                    "Complete the daily operations log, noting any incidents, rescues, or maintenance issues."
+                ]
+            },
+            {
+                title: "Weekly & Monthly Checks",
+                tasks: [
+                    "Perform a full inventory of the first aid station and restock all supplies.",
+                    "Conduct mandatory in-service training for all lifeguard staff (4 hours per month minimum).",
+                    "Test emergency shut-off buttons for all pumps and water features.",
+                    "Inspect and lubricate all moving parts on water attractions.",
+                    "Review all incident and rescue reports from the past week/month to identify trends or problem areas."
                 ]
             }
         ]
@@ -137,68 +318,67 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'school_safety_operations',
-        title: "School Safety & Operations",
-        priceUSD: 49.99,
-        priceINR: 3999,
-        category: "Education",
-        description: "A complete operational toolkit for principals and administrators to ensure a safe and efficient school environment.",
-        icon: <School className="w-8 h-8 text-primary" />,
+        id: 'mall_operations_blueprint',
+        title: "Mall Operations & Safety Blueprint",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        category: "Corporate",
+        description: "A complete operational guide for shopping mall management, focusing on safety, cleanliness, and tenant relations.",
+        icon: <ShoppingCart className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Campus Security Walkthrough",
-            "Monthly Fire & Emergency Drill",
-            "Student Arrival & Dismissal Procedure",
-            "Classroom & Facility Safety Audit"
+            "Daily Security & Patrol Checklist",
+            "Housekeeping & Common Area Audits",
+            "Tenant Communication Protocol",
+            "Emergency Response Drills (Fire, Active Shooter)"
         ],
         checklists: [
             {
-                "title": "Daily Opening & Campus Security Checklist",
-                "tasks": [
-                    "Conduct a full perimeter walk to check for vandalism, unsecured gates, or suspicious items",
-                    "Test a random sample of communication systems (PA system, walkie-talkies, emergency buttons)",
-                    "Verify all primary security cameras are operational and recording with correct timestamps",
-                    "Ensure all visitor entry points are staffed and sign-in/ID verification procedures are ready",
-                    "Check that all school buses have passed their morning safety inspection before departure",
-                    "Confirm that crossing guards are at their posts 15 minutes before student arrival time"
+                title: "Daily Opening & Security Protocol",
+                tasks: [
+                    "Conduct a full patrol of the mall interior and exterior before public entry, checking for hazards or vandalism.",
+                    "Test a random selection of security cameras and emergency exit alarms. Log results.",
+                    "Brief the security team on daily events, expected high-traffic periods, and any specific security alerts.",
+                    "Ensure all public entrances are unlocked on schedule and free of obstructions.",
+                    "Verify that the customer service/information desk is staffed and stocked with mall directories.",
+                    "Check that all escalators, elevators, and automatic doors are functioning correctly. Report any faults."
                 ]
             },
             {
-                "title": "Classroom & Common Area Safety",
-                "tasks": [
-                    "Ensure first aid kits in each classroom are fully stocked and items are not expired",
-                    "Verify that emergency exit paths, hallways, and doorways are clear and unblocked",
-                    "Check that fire extinguishers are visible, accessible, and have a valid inspection tag",
-                    "Confirm that all hazardous materials in science labs are securely stored and inventoried",
-                    "Check that student allergy and medical emergency information is easily accessible to the teacher",
-                    "Inspect nurse's office for adequate supplies and cleanliness"
+                title: "Ongoing Operations & Housekeeping",
+                tasks: [
+                    "Conduct hourly patrols, focusing on restrooms, food courts, and high-traffic common areas.",
+                    "Ensure housekeeping staff are actively managing spills, overflowing bins, and restroom cleanliness.",
+                    "Monitor parking areas for traffic flow, safety issues, or unauthorized vehicles.",
+                    "Log and respond to any tenant complaints or maintenance requests within a 1-hour timeframe.",
+                    "Check food court seating areas for cleanliness and table availability.",
+                    "Ensure all mall signage and digital directories are accurate and functional."
                 ]
             },
             {
-                "title": "Student Dismissal & Lost-and-Found Protocol",
-                "tasks": [
-                    "Verify that only authorized guardians are picking up students, checking IDs for any unfamiliar faces",
-                    "Manage bus loading zones to ensure students board the correct bus safely and in an orderly manner",
-                    "Supervise walker and car-rider dismissal areas to maintain order and traffic flow",
-                    "Conduct a final sweep of common areas (library, cafeteria, playground) to ensure no students are left behind",
-                    "Log any late pick-ups and follow the school's parent communication protocol",
-                    "Photograph, log, and store any items left behind in a designated Lost and Found area"
+                title: "Daily Closing Protocol",
+                tasks: [
+                    "Broadcast standardized closing announcements 30, 15, and 5 minutes before closing.",
+                    "Security personnel conduct a sweep of all common areas to ensure all patrons have exited.",
+                    "Verify with each tenant that their premises are secure before they depart.",
+                    "Secure all public entrances at the designated time.",
+                    "Consolidate daily incident reports from security, housekeeping, and maintenance teams.",
+                    "Activate night-time lighting and security alarm protocols."
                 ]
             },
             {
-                "title": "Monthly Emergency Preparedness & Drills",
-                "tasks": [
-                    "Conduct a scheduled fire, earthquake, or lockdown drill and record the time taken to evacuate/secure",
-                    "Test the functionality of all emergency alarms, backup generators, and strobe lights",
-                    "Review and update the school's emergency response plan with staff, noting any procedure changes",
-                    "Inspect all playground equipment for safety hazards (loose bolts, sharp edges) and report for repair",
-                    "Update and verify emergency contact lists for all students and staff",
-                    "Restock all emergency supply kits (e.g., water, non-perishable food, blankets)"
+                title: "Weekly Maintenance & Tenant Relations",
+                tasks: [
+                    "Test the public announcement (PA) system and fire alarm system (after hours).",
+                    "Inspect the roof and parking structures for any required maintenance.",
+                    "Send out a weekly newsletter or email to all tenants with updates on mall events, maintenance schedules, etc.",
+                    "Conduct a spot-check on a few tenants to ensure they are complying with mall operational guidelines.",
+                    "Review and analyze weekly footfall data to identify trends."
                 ]
             }
         ]
     },
-     {
+    {
         id: 'iso_9001_audit_prep',
         title: "ISO 9001 Compliance Audit Prep",
         priceUSD: 99.99,
@@ -260,135 +440,64 @@ export const premiumPacks = [
             }
         ]
     },
-     {
-        id: 'jewellery_store_ops',
-        title: "Jewellery Store Operations & Security",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        category: "Retail",
-        description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
-        icon: <Gem className="w-8 h-8 text-primary" />,
+    {
+        id: 'school_safety_operations',
+        title: "School & College Operations",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Education",
+        description: "A complete operational toolkit for principals and administrators to ensure a safe and efficient campus environment.",
+        icon: <School className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Vault Opening & Closing Protocol",
-            "Daily Inventory & Display Audit",
-            "Advanced Anti-Robbery Procedures",
-            "Customer Vetting & Suspicion Triggers",
+            "Daily Campus Security Walkthrough",
+            "Monthly Fire & Emergency Drill",
+            "Student Arrival & Dismissal Procedure",
+            "Classroom & Facility Safety Audit"
         ],
         checklists: [
             {
-                "title": "Daily Opening Procedure (Dual Control)",
+                "title": "Daily Opening & Campus Security Checklist",
                 "tasks": [
-                    "First staff member arrives, inspects exterior for tampering (locks, windows), reports 'all clear' to manager off-site",
-                    "Second staff member arrives; both enter together. First action: disarm alarm within 30 seconds",
-                    "Immediately lock the door behind you",
-                    "Perform a check of all interior sensors, panic buttons, and CCTV cameras (ensure they are recording)",
-                    "Two staff members proceed to the vault. Use dual keys/codes simultaneously to open",
-                    "Inspect vault interior and log opening time. Remove day-display trays",
-                    "Set up displays, ensuring each piece is accounted for against the daily opening inventory sheet",
-                    "Test silent panic buttons and hold-up alarms before opening to the public"
+                    "Conduct a full perimeter walk to check for vandalism, unsecured gates, or suspicious items",
+                    "Test a random sample of communication systems (PA system, walkie-talkies, emergency buttons)",
+                    "Verify all primary security cameras are operational and recording with correct timestamps",
+                    "Ensure all visitor entry points are staffed and sign-in/ID verification procedures are ready",
+                    "Check that all school buses have passed their morning safety inspection before departure",
+                    "Confirm that crossing guards are at their posts 15 minutes before student arrival time"
                 ]
             },
             {
-                "title": "Daily Closing Procedure (Dual Control)",
+                "title": "Classroom & Common Area Safety",
                 "tasks": [
-                    "Lock main door 15 minutes prior to closing time. No new customers allowed",
-                    "Begin removing jewellery from displays, starting with highest value items",
-                    "Two staff members verify each item against the closing inventory sheet as it is placed in vault trays",
-                    "Place trays back in the vault in their designated, mapped locations",
-                    "Final inventory reconciliation and sign-off by both staff members",
-                    "Lock the vault using dual-key/code protocol. Physically check the handle",
-                    "Activate all alarm systems. Wait for confirmation call from security company",
-                    "Both staff members exit the premises at the same time. Never leave one person alone"
+                    "Ensure first aid kits in each classroom are fully stocked and items are not expired",
+                    "Verify that emergency exit paths, hallways, and doorways are clear and unblocked",
+                    "Check that fire extinguishers are visible, accessible, and have a valid inspection tag",
+                    "Confirm that all hazardous materials in science labs are securely stored and inventoried",
+                    "Check that student allergy and medical emergency information is easily accessible to the teacher",
+                    "Inspect nurse's office for adequate supplies and cleanliness"
                 ]
             },
             {
-                "title": "Ongoing Security & Sales Floor Protocol",
+                "title": "Student Dismissal & Lost-and-Found Protocol",
                 "tasks": [
-                    "Greet every customer and make direct eye contact. Acknowledge their presence immediately",
-                    "Never show more than one high-value item (or tray) at a time. One out, one in",
-                    "Observe for suspicious behavior: bulky clothing, nervous demeanor, questions about security",
-                    "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person",
-                    "Verify high-value credit card purchases with photo ID. For large cash purchases, follow AML regulations",
-                    "Regularly clean glass display cases to remove fingerprints",
-                    "Never turn your back on a customer who is handling merchandise"
+                    "Verify that only authorized guardians are picking up students, checking IDs for any unfamiliar faces",
+                    "Manage bus loading zones to ensure students board the correct bus safely and in an orderly manner",
+                    "Supervise walker and car-rider dismissal areas to maintain order and traffic flow",
+                    "Conduct a final sweep of common areas (library, cafeteria, playground) to ensure no students are left behind",
+                    "Log any late pick-ups and follow the school's parent communication protocol",
+                    "Photograph, log, and store any items left behind in a designated Lost and Found area"
                 ]
             },
             {
-                "title": "Weekly Security & Maintenance Audit",
+                "title": "Monthly Emergency Preparedness & Drills",
                 "tasks": [
-                    "Test all audible alarms (outside of business hours)",
-                    "Review a random 1-hour block of CCTV footage from the past week, checking for blind spots",
-                    "Inspect all locks, door hardware, and display case integrity",
-                    "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
-                    "Check batteries in all wireless security devices",
-                    "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
-                ]
-            }
-        ]
-    },
-     {
-        id: 'international_travel_planner',
-        title: "The Ultimate International Travel Planner",
-        priceUSD: 19.99,
-        priceINR: 1599,
-        category: "Personal",
-        description: "A comprehensive checklist for a stress-free international trip. Covers everything from documents and packing to safety.",
-        icon: <Plane className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Visa & Document Preparation",
-            "Financial & Health Checklist",
-            "Smart Packing & Luggage Strategy",
-            "Pre-Departure Home Checklist",
-        ],
-        checklists: [
-            {
-                "title": "Phase 1: Pre-Booking & Documentation (2-6 Months Out)",
-                "tasks": [
-                    "Check passport validity (must be valid for at least 6 months AFTER your return date)",
-                    "Research and confirm visa requirements for your destination AND any transit countries",
-                    "Apply for any necessary visas, allowing ample processing time",
-                    "Book flights. Consider time zones to minimize jet lag",
-                    "Book accommodation. Check reviews for safety and location",
-                    "Scan and create a digital copy of your passport, visas, and IDs. Save to cloud storage (Google Drive, Dropbox) and email to yourself",
-                    "Take a digital passport-style photo and save it to your phone/cloud"
-                ]
-            },
-            {
-                "title": "Phase 2: Health & Finance (1-2 Months Out)",
-                "tasks": [
-                    "Consult a doctor or travel clinic for required/recommended vaccinations and medications",
-                    "Purchase comprehensive travel insurance (covering medical, trip cancellation, and lost luggage)",
-                    "Notify your bank and credit card companies of your travel dates and destinations to avoid fraud alerts",
-                    "Order a small amount of foreign currency for immediate needs upon arrival (taxis, snacks)",
-                    "Check your mobile phone's international roaming plan or plan to buy a local SIM card",
-                    "Pay all important bills that will be due while you are away"
-                ]
-            },
-            {
-                "title": "Phase 3: Packing & Preparation (1 Week Out)",
-                "tasks": [
-                    "Check weather at destination and plan your wardrobe accordingly. Use packing cubes to organize",
-                    "Prepare a small medical kit (painkillers, band-aids, antiseptic wipes, personal medications)",
-                    "Pack all electronics, chargers, and a universal travel adapter",
-                    "Download offline maps (Google Maps), translation apps, and your airline's app",
-                    "Charge all electronic devices, including power banks",
-                    "Weigh your luggage to ensure it meets airline restrictions",
-                    "Leave a copy of your itinerary and passport with a family member or friend at home"
-                ]
-            },
-            {
-                "title": "Phase 4: Final 24 Hours",
-                "tasks": [
-                    "Check-in for your flight online and save your mobile boarding pass",
-                    "Put all essential documents (passport, visa, tickets, insurance details) in your carry-on bag",
-                    "Empty your refrigerator of perishable food",
-                    "Water your plants",
-                    "Inform your security system company (if applicable) of your absence",
-                    "Take out the trash",
-                    "Unplug unnecessary electronics",
-                    "Double check you have your wallet, passport, and phone. Then check again."
+                    "Conduct a scheduled fire, earthquake, or lockdown drill and record the time taken to evacuate/secure",
+                    "Test the functionality of all emergency alarms, backup generators, and strobe lights",
+                    "Review and update the school's emergency response plan with staff, noting any procedure changes",
+                    "Inspect all playground equipment for safety hazards (loose bolts, sharp edges) and report for repair",
+                    "Update and verify emergency contact lists for all students and staff",
+                    "Restock all emergency supply kits (e.g., water, non-perishable food, blankets)"
                 ]
             }
         ]
@@ -455,9 +564,206 @@ export const premiumPacks = [
                 ]
             }
         ]
+    },
+    {
+        id: 'muslim_wedding_planner',
+        title: "Complete Muslim Wedding Planner",
+        priceUSD: 34.99,
+        priceINR: 2799,
+        category: "Wedding",
+        description: "A detailed checklist covering Islamic wedding traditions, from the Nikah ceremony to the Walima reception.",
+        icon: <Heart className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Nikah ceremony planning",
+            "Mahr agreement and witnessing",
+            "Walima (reception) logistics",
+            "Rukhsati coordination"
+        ],
+        checklists: [
+            {
+                "title": "Pre-Wedding & Nikah Ceremony",
+                "tasks": [
+                    "Finalize the Mahr (dower) between both families and have it in writing.",
+                    "Book the Imam/Qazi to officiate the Nikah.",
+                    "Select and confirm the two adult Muslim witnesses (for the bride).",
+                    "Book the venue for the Nikah (Mosque or other location).",
+                    "Prepare the Nikah-nama (marriage contract) and review all clauses.",
+                    "Arrange for separate, comfortable seating for male and female guests if required.",
+                    "Plan the bride's and groom's entrances."
+                ]
+            },
+            {
+                "title": "Post-Nikah & Rukhsati",
+                "tasks": [
+                    "Organize the distribution of dates and sweets after the Nikah is pronounced.",
+                    "Arrange for a celebratory dinner or lunch following the ceremony.",
+                    "Plan the Rukhsati (sending off the bride). Designate family members to escort her.",
+                    "Decorate the groom's car for the Rukhsati.",
+                    "Coordinate the departure time to ensure a smooth transition from the bride's family home.",
+                    "Recite prayers or Quranic verses during the departure."
+                ]
+            },
+            {
+                "title": "Walima (Reception) Planning",
+                "tasks": [
+                    "Send out Walima invitations from the groom's family.",
+                    "Book the Walima venue and confirm catering (ensuring Halal food).",
+                    "Create a seating plan for the reception.",
+                    "Plan the stage decor for the bride and groom.",
+                    "Organize the timeline for the event: guest arrival, couple's entrance, dinner, speeches.",
+                    "Arrange for a photographer and videographer to cover the event."
+                ]
+            },
+            {
+                "title": "General Vendor & Guest Management",
+                "tasks": [
+                    "Book all vendors (catering, decor, photo/video) well in advance and sign contracts.",
+                    "Arrange accommodation for out-of-town guests.",
+                    "Create a detailed timeline of all events (Mehndi, Nikah, Walima) to share with guests and vendors.",
+                    "Prepare and pack the bride's trousseau to be moved to her new home.",
+                    "Designate a point person from each family to handle vendor payments on the day of the events."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'jewellery_store_ops',
+        title: "Jewellery Store Operations & Security",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Retail",
+        description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
+        icon: <Gem className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Vault Opening & Closing Protocol",
+            "Daily Inventory & Display Audit",
+            "Advanced Anti-Robbery Procedures",
+            "Customer Vetting & Suspicion Triggers",
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening Procedure (Dual Control)",
+                "tasks": [
+                    "First staff member arrives, inspects exterior for tampering (locks, windows), reports 'all clear' to manager off-site",
+                    "Second staff member arrives; both enter together. First action: disarm alarm within 30 seconds",
+                    "Immediately lock the door behind you",
+                    "Perform a check of all interior sensors, panic buttons, and CCTV cameras (ensure they are recording)",
+                    "Two staff members proceed to the vault. Use dual keys/codes simultaneously to open",
+                    "Inspect vault interior and log opening time. Remove day-display trays",
+                    "Set up displays, ensuring each piece is accounted for against the daily opening inventory sheet",
+                    "Test silent panic buttons and hold-up alarms before opening to the public"
+                ]
+            },
+            {
+                "title": "Daily Closing Procedure (Dual Control)",
+                "tasks": [
+                    "Lock main door 15 minutes prior to closing time. No new customers allowed",
+                    "Begin removing jewellery from displays, starting with highest value items",
+                    "Two staff members verify each item against the closing inventory sheet as it is placed in vault trays",
+                    "Place trays back in the vault in their designated, mapped locations",
+                    "Final inventory reconciliation and sign-off by both staff members",
+                    "Lock the vault using dual-key/code protocol. Physically check the handle",
+                    "Activate all alarm systems. Wait for confirmation call from security company",
+                    "Both staff members exit the premises at the same time. Never leave one person alone"
+                ]
+            },
+            {
+                "title": "Ongoing Security & Sales Floor Protocol",
+                "tasks": [
+                    "Greet every customer and make direct eye contact. Acknowledge their presence immediately",
+                    "Never show more than one high-value item (or tray) at a time. One out, one in",
+                    "Observe for suspicious behavior: bulky clothing, nervous demeanor, questions about security",
+                    "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person",
+                    "Verify high-value credit card purchases with photo ID. For large cash purchases, follow AML regulations",
+                    "Regularly clean glass display cases to remove fingerprints",
+                    "Never turn your back on a customer who is handling merchandise"
+                ]
+            },
+            {
+                "title": "Weekly Security & Maintenance Audit",
+                "tasks": [
+                    "Test all audible alarms (outside of business hours)",
+                    "Review a random 1-hour block of CCTV footage from the past week, checking for blind spots",
+                    "Inspect all locks, door hardware, and display case integrity",
+                    "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
+                    "Check batteries in all wireless security devices",
+                    "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'international_travel_planner',
+        title: "The Ultimate International Travel Planner",
+        priceUSD: 19.99,
+        priceINR: 1599,
+        category: "Personal",
+        description: "A comprehensive checklist for a stress-free international trip. Covers everything from documents and packing to safety.",
+        icon: <Plane className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Visa & Document Preparation",
+            "Financial & Health Checklist",
+            "Smart Packing & Luggage Strategy",
+            "Pre-Departure Home Checklist",
+        ],
+        checklists: [
+            {
+                "title": "Phase 1: Pre-Booking & Documentation (2-6 Months Out)",
+                "tasks": [
+                    "Check passport validity (must be valid for at least 6 months AFTER your return date)",
+                    "Research and confirm visa requirements for your destination AND any transit countries",
+                    "Apply for any necessary visas, allowing ample processing time",
+                    "Book flights. Consider time zones to minimize jet lag",
+                    "Book accommodation. Check reviews for safety and location",
+                    "Scan and create a digital copy of your passport, visas, and IDs. Save to cloud storage (Google Drive, Dropbox) and email to yourself",
+                    "Take a digital passport-style photo and save it to your phone/cloud"
+                ]
+            },
+            {
+                "title": "Phase 2: Health & Finance (1-2 Months Out)",
+                "tasks": [
+                    "Consult a doctor or travel clinic for required/recommended vaccinations and medications",
+                    "Purchase comprehensive travel insurance (covering medical, trip cancellation, and lost luggage)",
+                    "Notify your bank and credit card companies of your travel dates and destinations to avoid fraud alerts",
+                    "Order a small amount of foreign currency for immediate needs upon arrival (taxis, snacks)",
+                    "Check your mobile phone's international roaming plan or plan to buy a local SIM card",
+                    "Pay all important bills that will be due while you are away"
+                ]
+            },
+            {
+                "title": "Phase 3: Packing & Preparation (1 Week Out)",
+                "tasks": [
+                    "Check weather at destination and plan your wardrobe accordingly. Use packing cubes to organize",
+                    "Prepare a small medical kit (painkillers, band-aids, antiseptic wipes, personal medications)",
+                    "Pack all electronics, chargers, and a universal travel adapter",
+                    "Download offline maps (Google Maps), translation apps, and your airline's app",
+                    "Charge all electronic devices, including power banks",
+                    "Weigh your luggage to ensure it meets airline restrictions",
+                    "Leave a copy of your itinerary and passport with a family member or friend at home"
+                ]
+            },
+            {
+                "title": "Phase 4: Final 24 Hours",
+                "tasks": [
+                    "Check-in for your flight online and save your mobile boarding pass",
+                    "Put all essential documents (passport, visa, tickets, insurance details) in your carry-on bag",
+                    "Empty your refrigerator of perishable food",
+                    "Water your plants",
+                    "Inform your security system company (if applicable) of your absence",
+                    "Take out the trash",
+                    "Unplug unnecessary electronics",
+                    "Double check you have your wallet, passport, and phone. Then check again."
+                ]
+            }
+        ]
     }
 ];
 
 export type PremiumPack = typeof premiumPacks[0];
 
   
+
+    
