@@ -71,13 +71,13 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'facility_management_checklist',
-        title: "Facility Management Checklist",
+        id: 'facility_management_blueprint',
+        title: "Facility Management Operations Blueprint",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Corporate",
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment.",
-        icon: <Building2 className="w-8 h-8 text-primary" />,
+        icon: <Building2 className="w-8 h-8 text.primary" />,
         mostPopular: false,
         sampleItems: [
             "Preventive Maintenance Schedules",
@@ -133,8 +133,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'commercial_kitchen_ops',
-        title: "Commercial Kitchen & Food Safety",
+        id: 'commercial_kitchen_protocol',
+        title: "Commercial Kitchen & Food Safety Protocol",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Hospitality",
@@ -258,8 +258,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'hospital_management',
-        title: "Large Hospital Management",
+        id: 'hospital_administration_ops',
+        title: "Hospital Administration & Operations",
         priceUSD: 199.99,
         priceINR: 15999,
         category: "Healthcare",
@@ -387,7 +387,7 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'pharmacy_ops',
+        id: 'pharmacy_ops_compliance',
         title: "Pharmacy Operations & Compliance",
         priceUSD: 149.99,
         priceINR: 11999,
@@ -450,7 +450,7 @@ export const premiumPacks = [
     },
     {
         id: 'gym_fitness_center_ops',
-        title: "Gym & Fitness Center Management",
+        title: "Gym & Fitness Center Operations",
         priceUSD: 59.99,
         priceINR: 4799,
         category: "Wellness",
@@ -513,7 +513,7 @@ export const premiumPacks = [
     },
     {
         id: 'salon_spa_ops',
-        title: "Salon & Spa Operations",
+        title: "Salon & Day Spa Operations Playbook",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Wellness",
@@ -576,7 +576,7 @@ export const premiumPacks = [
     },
     {
         id: 'school_safety_operations',
-        title: "School & College Operations",
+        title: "School & College Safety Operations",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Education",
@@ -637,8 +637,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'supermarket_ops',
-        title: "Supermarket & Grocery Store Daily Ops",
+        id: 'supermarket_ops_blueprint',
+        title: "Supermarket Operations Blueprint",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Retail",
@@ -698,7 +698,7 @@ export const premiumPacks = [
     },
     {
         id: 'fashion_boutique_ops',
-        title: "Fashion Boutique Operations",
+        title: "Fashion Boutique Operations Playbook",
         priceUSD: 69.99,
         priceINR: 5599,
         category: "Retail",
@@ -760,7 +760,7 @@ export const premiumPacks = [
     },
     {
         id: 'electronics_showroom_ops',
-        title: "Electronics Showroom Daily Ops",
+        title: "Electronics Showroom Operations",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Retail",
@@ -797,8 +797,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Inventory & High-Value Security Protocol",
-                tasks: [
+                "title": "Inventory & High-Value Security Protocol",
+                "tasks": [
                     "Conduct a full, blind inventory count of all serialized high-value product categories (e.g., all iPhones) weekly. A second person must verify the count.",
                     "Review CCTV footage of cash counters, store exits, and the stockroom daily for any suspicious activity.",
                     "Implement a strict policy for handling returned goods, including a multi-point inspection for damage and completeness before issuing a refund.",
@@ -807,7 +807,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Staff & Training Drills",
+                "title": "Staff & Training Drills",
                 "tasks": [
                     "Conduct weekly 30-minute training sessions on new products. This must be completed before the product hits the sales floor.",
                     "Role-play customer scenarios, especially handling objections about price or competitors.",
@@ -818,8 +818,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'factory_ops',
-        title: "Factory Shift Handover & Safety",
+        id: 'factory_shift_playbook',
+        title: "Factory Shift Handover Playbook",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Manufacturing",
@@ -877,8 +877,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'wedding_hall_management',
-        title: "Wedding & Banquet Hall Management",
+        id: 'wedding_hall_playbook',
+        title: "Wedding & Banquet Hall Playbook",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Events",
@@ -938,8 +938,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'playschool_safety',
-        title: "Playschool Operations & Safety",
+        id: 'playschool_safety_protocol',
+        title: "Playschool & Daycare Safety Protocol",
         priceUSD: 59.99,
         priceINR: 4999,
         category: "Education",
@@ -999,8 +999,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'hindu_wedding_planner',
-        title: "The Ultimate Hindu Wedding Planner",
+        id: 'hindu_wedding_checklist',
+        title: "The Grand Hindu Wedding Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1062,8 +1062,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'muslim_wedding_planner',
-        title: "Complete Muslim Wedding Planner",
+        id: 'muslim_wedding_checklist',
+        title: "The Complete Muslim Wedding Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1124,8 +1124,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'auto_repair_shop_ops',
-        title: "Auto Repair Shop Workflow",
+        id: 'auto_repair_playbook',
+        title: "Auto Repair Shop Operations Playbook",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Automotive",
@@ -1187,7 +1187,7 @@ export const premiumPacks = [
     },
     {
         id: 'mall_operations_blueprint',
-        title: "Mall Operations & Safety Blueprint",
+        title: "Shopping Mall Operations Blueprint",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Retail",
@@ -1247,8 +1247,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'bpo_call_center_ops',
-        title: "BPO Call Center Daily Management",
+        id: 'call_center_playbook',
+        title: "Call Center Management Playbook",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Corporate",
@@ -1307,7 +1307,7 @@ export const premiumPacks = [
     },
     {
         id: 'waterpark_pool_safety',
-        title: "Waterpark & Pool Safety Standards",
+        title: "Waterpark & Pool Safety Protocol",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Hospitality",
@@ -1367,7 +1367,7 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'rental_property_management',
+        id: 'airbnb_host_toolkit',
         title: "Rental Property & Airbnb Host Toolkit",
         priceUSD: 49.99,
         priceINR: 3999,
@@ -1429,8 +1429,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'car_dealership_ops',
-        title: "Car Dealership Daily Operations",
+        id: 'car_dealership_playbook',
+        title: "Car Dealership Operations Playbook",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Automotive",
@@ -1620,23 +1620,12 @@ export const premiumPacks = [
                     "Plan how the report will be published and communicated to stakeholders. Create a summary presentation for the board and a press release.",
                     "Schedule a meeting with your top 3 investors to walk them through the report's findings."
                 ]
-            },
-            {
-                "title": "Reporting & Stakeholder Engagement",
-                "tasks": [
-                    "Conduct a materiality assessment to identify your company's most significant ESG issues. (Pro-Tip: Survey key investors, customers, and employees).",
-                    "Choose an ESG reporting framework to align with (e.g., GRI, SASB, TCFD). Map your collected data to the framework's requirements.",
-                    "Draft the ESG report, ensuring all data is accurate, verifiable, and presented with context. Use charts and graphs to visualize trends.",
-                    "Have the report reviewed by an internal committee (including legal and finance) and, for maximum credibility, a third-party assurance provider.",
-                    "Plan how the report will be published and communicated to stakeholders. Create a summary presentation for the board and a press release.",
-                    "Schedule a meeting with your top 3 investors to walk them through the report's findings."
-                ]
             }
         ]
     },
     {
         id: 'iso_9001_audit_prep',
-        title: "ISO 9001 Compliance Audit Prep",
+        title: "ISO 9001 Audit Preparation Guide",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Compliance",
@@ -1697,8 +1686,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'eco_friendly_ops',
-        title: "Eco-Friendly Business Operations",
+        id: 'eco_friendly_ops_playbook',
+        title: "Eco-Friendly Business Playbook",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Compliance",
@@ -1759,8 +1748,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'diagnostic_lab_ops',
-        title: "Diagnostic Lab Daily Protocol",
+        id: 'diagnostic_lab_protocol',
+        title: "Diagnostic Lab Operations Protocol",
         priceUSD: 159.99,
         priceINR: 12999,
         category: "Healthcare",
@@ -1819,7 +1808,7 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'cloud_kitchen_ops',
+        id: 'cloud_kitchen_launchkit',
         title: "Cloud Kitchen Launch & Ops Kit",
         priceUSD: 69.99,
         priceINR: 5499,
@@ -1946,7 +1935,7 @@ export const premiumPacks = [
     },
     {
         id: 'pet_travel_planner',
-        title: "Pet-Friendly Travel Planner",
+        title: "Pet-Friendly Travel & Relocation Planner",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Personal",
@@ -2021,5 +2010,7 @@ export type PremiumPack = typeof premiumPacks[0];
 
     
 
+
+    
 
     
