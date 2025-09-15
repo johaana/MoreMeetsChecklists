@@ -885,7 +885,7 @@ export const premiumPacks = [
         priceINR: 6999,
         category: "Retail",
         description: "A specialized playbook for managing high-value electronics retail, focusing on security, sales, and live demos.",
-        icon: <Ear className="w-8 h-8 text-primary" />,
+        icon: <Phone className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
             "Live Demo Unit & Security Checks",
