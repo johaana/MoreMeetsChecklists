@@ -15,7 +15,7 @@ export const premiumPacks = [
             "One-time purchase, lifetime access.",
         ],
         icon: <Heart className="w-8 h-8 text-pink-500" />,
-        color: "border-pink-500",
+        color: "border-pink-500/50",
         relatedFreeTemplates: ["Wedding Haldi Ceremony", "Wedding Mehndi Ceremony"]
     },
     {
@@ -30,8 +30,8 @@ export const premiumPacks = [
             "New Staff Onboarding & Training Protocols for Hospitality.",
             "One-time purchase, lifetime access.",
         ],
-        icon: <Building className="w-8 h-8 text-blue-500" />,
-        color: "border-blue-500",
+        icon: <Building className="w-8 h-8 text-sky-500" />,
+        color: "border-sky-500/50",
         relatedFreeTemplates: ["Hotel Daily Housekeeping", "Restaurant Daily Opening"]
     },
     {
@@ -47,7 +47,7 @@ export const premiumPacks = [
             "One-time purchase, lifetime access.",
         ],
         icon: <Briefcase className="w-8 h-8 text-indigo-500" />,
-        color: "border-indigo-500",
+        color: "border-indigo-500/50",
         relatedFreeTemplates: ["Startup Launch Party"]
     },
     {
@@ -63,7 +63,7 @@ export const premiumPacks = [
             "One-time purchase, lifetime access.",
         ],
         icon: <Leaf className="w-8 h-8 text-green-500" />,
-        color: "border-green-500",
+        color: "border-green-500/50",
         relatedFreeTemplates: ["Hotel Energy Efficiency"]
     }
 ];
