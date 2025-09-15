@@ -17,7 +17,7 @@ const mainFont = PT_Sans({
 
 const headlineFont = Montserrat({
   subsets: ['latin'],
-  weight: ['700'],
+  weight: ['700', '800'],
   variable: '--font-headline'
 });
 

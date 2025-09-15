@@ -2,13 +2,25 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, CheckCircle, Sparkles } from "lucide-react";
+import { Check, CheckCircle, Sparkles, Star } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Logo } from "@/components/icons";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
+import { testimonials } from "@/lib/testimonials";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+
+
+const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
+const testimonialImages = {
+    sarah: PlaceHolderImages.find(img => img.id === 'testimonial1'),
+    michael: PlaceHolderImages.find(img => img.id === 'testimonial2'),
+    anika: PlaceHolderImages.find(img => img.id === 'testimonial3'),
+};
+
 
 export default function Home() {
   return (
@@ -19,91 +31,172 @@ export default function Home() {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-          <Button asChild variant="ghost">
-            <Link href="#packs" prefetch={false}>
-              Get Started
+            <Link href="#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+                Packages
             </Link>
-          </Button>
+            <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+                Why Us
+            </Link>
+            <Button asChild>
+                <Link href="#packs" prefetch={false}>
+                    Get Started
+                </Link>
+            </Button>
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-foreground drop-shadow-md">
-                  Smart Checklists for Professionals
-                </h1>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto drop-shadow-sm">
-                  The simplest way for businesses and professionals to ensure quality, compliance, and perfection. One-time purchase, lifetime access.
-                </p>
-              </div>
+        <section className="w-full relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10" />
+            <div className="absolute inset-0 bg-black/30" />
+             {heroImage && (
+                <Image
+                    src={heroImage.imageUrl}
+                    alt="Luxury Hotel"
+                    layout="fill"
+                    objectFit="cover"
+                    className="z-[-1]"
+                    data-ai-hint={heroImage.imageHint}
+                />
+            )}
+            <div className="container px-4 md:px-6 relative z-20">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
+                <div className="space-y-4">
+                    <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
+                        <Sparkles className="w-4 h-4 mr-2 text-accent" />
+                        Trusted by Professionals in 12+ Industries
+                    </Badge>
+                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-lg">
+                        The World’s Most Complete Event & Operations Checklists
+                    </h1>
+                    <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-md">
+                         Never miss a task again — from weddings to hospitality to corporate launches.
+                    </p>
+                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
+                        Browse Packages
+                    </Button>
+                </div>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="packs" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/10">
-                    <Sparkles className="w-4 h-4 mr-2 text-accent" />
-                    One-Time Purchase. Lifetime Access.
-                </Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Industry-Ready Checklist Packages
-                </h2>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    Get comprehensive, expert-crafted checklists for your specific needs. Click any package to see what's inside.
-                </p>
+        <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        Industry-Ready Checklist Packages
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        Get comprehensive, expert-crafted checklists for your specific needs. Lifetime access, one-time purchase.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {premiumPacks.map((pack) => (
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 relative">
+                             {pack.mostPopular && (
+                                <Badge className="absolute top-0 right-0 -mr-4 mt-4 py-2 px-6 bg-accent text-accent-foreground rounded-l-full rounded-r-none font-bold z-10 transform rotate-45 translate-x-8 translate-y-2">
+                                   <Star className="w-4 h-4 mr-2" /> Most Popular
+                                </Badge>
+                             )}
+                            <CardHeader className="p-6">
+                                <div className="flex items-center gap-4 mb-2">
+                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20">
+                                        {pack.icon}
+                                    </div>
+                                    <CardTitle className="text-xl font-headline flex-1">{pack.title}</CardTitle>
+                                </div>
+                                <CardDescription>{pack.description}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="px-6 flex-1">
+                                <p className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</p>
+                                <ul className="space-y-2 text-muted-foreground">
+                                    {pack.sampleItems.map((item, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80"/>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="p-6 bg-secondary/30 mt-auto flex-col items-stretch gap-4">
+                                <div className="text-center">
+                                    <p className="text-3xl font-bold text-primary whitespace-nowrap">
+                                        {`$${pack.priceUSD} / ₹${pack.priceINR}`}
+                                    </p>
+                                    <p className="text-xs text-muted-foreground">One-Time Purchase</p>
+                                </div>
+                                <Button asChild size="lg" className="w-full font-bold">
+                                    <Link href={`/package/${pack.id}`}>
+                                        View Full Checklist & Purchase
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
             </div>
-            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
-              {premiumPacks.map((pack) => (
-                <AccordionItem value={pack.id} key={pack.id} className="border-2 border-primary/20 rounded-2xl mb-4 bg-card shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <AccordionTrigger className="p-6 text-left hover:no-underline">
-                    <div className="flex items-center gap-6 w-full">
-                      <div className="p-3 bg-primary/10 rounded-full border border-primary/20 hidden sm:block">
-                          {pack.icon}
-                      </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                        <CardDescription className="mt-1">{pack.description}</CardDescription>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-2xl font-bold text-primary whitespace-nowrap">
-                            {`$${pack.priceUSD} / ₹${pack.priceINR}`}
-                        </p>
-                        <p className="text-xs text-muted-foreground">One-Time Purchase</p>
-                      </div>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="bg-secondary/20">
-                    <div className="p-6">
-                      <h3 className="text-xl font-headline text-center mb-6">What's Included?</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-8">
-                          {pack.checklists.map((checklist, idx) => (
-                              <div key={idx} className="p-4 bg-background/50 rounded-lg border">
-                                  <h4 className="font-semibold text-lg mb-2">{checklist.title}</h4>
-                                  <ul className="space-y-1.5">
-                                      {checklist.tasks.map((task, i) => (
-                                          <li key={i} className="flex items-start">
-                                              <CheckCircle className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80" />
-                                              <span className="text-muted-foreground">{task}</span>
-                                          </li>
-                                      ))}
-                                  </ul>
-                              </div>
-                          ))}
-                      </div>
-                      <Button size="lg" className="w-full text-lg py-7 bg-accent text-accent-foreground hover:bg-accent/90">
-                          <CreditCard className="mr-3 h-5 w-5" />
-                          Purchase Now
-                      </Button>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+        </section>
+
+        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        Why Checklists Matter
+                    </h2>
+                </div>
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <Card className="p-6 border-0 shadow-none bg-transparent">
+                        <h3 className="text-xl font-bold font-headline mb-2">Avoid Last-Minute Stress</h3>
+                        <p className="text-muted-foreground">Our checklists ensure every detail is covered, preventing costly mistakes and last-minute chaos.</p>
+                    </Card>
+                     <Card className="p-6 border-0 shadow-none bg-transparent">
+                        <h3 className="text-xl font-bold font-headline mb-2">Ensure Compliance & Standards</h3>
+                        <p className="text-muted-foreground">Maintain quality and meet industry regulations with expertly crafted operational procedures.</p>
+                    </Card>
+                     <Card className="p-6 border-0 shadow-none bg-transparent">
+                        <h3 className="text-xl font-bold font-headline mb-2">Deliver Memorable Experiences</h3>
+                        <p className="text-muted-foreground">From weddings to corporate events, flawless execution leads to unforgettable moments.</p>
+                    </Card>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        Loved by Professionals Worldwide
+                    </h2>
+                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        Join over 5,000+ users who plan and operate with MoreMeets.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {testimonials.map((testimonial) => (
+                         <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
+                             <div className="mb-4 rounded-full overflow-hidden w-24 h-24">
+                                {testimonial.imageId && (
+                                    <Image 
+                                      src={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageUrl || ''}
+                                      alt={`Photo of ${testimonial.name}`}
+                                      width={100}
+                                      height={100}
+                                      className="object-cover"
+                                      data-ai-hint={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageHint || ''}
+                                    />
+                                )}
+                             </div>
+                            <CardContent className="p-0">
+                                <p className="text-muted-foreground italic">"{testimonial.quote}"</p>
+                            </CardContent>
+                             <CardFooter className="p-0 mt-4 flex-col">
+                                 <p className="font-bold font-headline">{testimonial.name}</p>
+                                 <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                             </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+            </div>
         </section>
 
       </main>

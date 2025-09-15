@@ -1,6 +1,4 @@
-
-
-import { Briefcase, Building, Leaf, Heart, ShieldCheck, Settings, Plane } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, ShieldCheck, Settings, Plane, Star } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -9,8 +7,15 @@ export const premiumPacks = [
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Wedding",
-        description: "The complete one-time purchase for planning a multi-day wedding. Unlocks our entire suite of detailed checklists for every ceremony.",
+        description: "The one-time purchase for planning a multi-day wedding, from pre-wedding rituals to the final reception.",
         icon: <Heart className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Haldi & Mehndi Ceremony Coordination",
+            "Sangeet Night Choreography & AV",
+            "Vendor Booking & Management",
+            "Guest Hospitality & Logistics",
+        ],
         checklists: [
             { "title": "Haldi Setup", "tasks": ["Venue decor", "Flowers", "Music", "Dress code", "Catering for snacks"] },
             { "title": "Mehndi Function", "tasks": ["Artist booking", "Stage setup", "Snacks & Drinks", "DJ & Music", "Guest favors"] },
@@ -25,8 +30,15 @@ export const premiumPacks = [
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Hospitality",
-        description: "For Hotel & Restaurant Managers. A one-time purchase for the complete operational toolkit. Unlocks all checklists for daily, weekly, and monthly operations.",
+        description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
+        mostPopular: true,
+        sampleItems: [
+            "Daily Room Cleaning SOPs",
+            "Restaurant Opening/Closing",
+            "Weekly Kitchen Deep Clean",
+            "Monthly Staff Training Schedules",
+        ],
         checklists: [
             { "title": "Hotel Daily Room Cleaning", "tasks": ["Replace towels & linens", "Restock all toiletries", "Sanitize bathroom surfaces", "Vacuum carpets & mop floors", "Check and restock minibar"] },
             { "title": "Restaurant Opening", "tasks": ["Turn on lights & music", "Set and polish tables", "Check cutlery & crockery inventory", "Stock bar and kitchen stations", "Test POS system and printers"] },
@@ -41,8 +53,15 @@ export const premiumPacks = [
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Corporate",
-        description: "For Founders & Event Managers. A one-time purchase to execute flawless corporate events and streamlined startup launches.",
+        description: "For Founders & Event Managers. A one-time purchase for flawless corporate events and streamlined launches.",
         icon: <Briefcase className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Product Launch Event Plan",
+            "Annual General Meeting (AGM) Prep",
+            "New Staff Onboarding Process",
+            "Conference & Awards Night Schedule",
+        ],
         checklists: [
             { "title": "Product Launch Event", "tasks": ["Venue booking & AV setup", "Press release and media invites", "Stage branding and banners", "Product demo units preparation", "PR agency coordination"] },
             { "title": "Annual General Meeting (AGM)", "tasks": ["Send notices to shareholders", "Prepare annual reports", "Arrange for proxy voting", "Venue and seating arrangement", "Record meeting minutes"] },
@@ -57,8 +76,15 @@ export const premiumPacks = [
         priceUSD: 19.99,
         priceINR: 1599,
         category: "Sustainability",
-        description: "For Eco-conscious Businesses. A one-time purchase to turn green intentions into measurable action. Implement and track sustainability goals.",
+        description: "For Eco-conscious Businesses. Turn green intentions into measurable action and track sustainability goals.",
         icon: <Leaf className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Weekly Energy & Water Audits",
+            "Waste Management & Reduction",
+            "Plastic Usage Reduction Plan",
+            "Green Supply Chain Verification",
+        ],
         checklists: [
             { "title": "Weekly Energy Audit", "tasks": ["Check for energy-efficient lighting (LEDs)", "Ensure all idle equipment is switched off", "Monitor HVAC temperature settings", "Read and log meter readings", "Identify energy leakage points"] },
             { "title": "Waste Management Audit", "tasks": ["Check segregation of waste (wet, dry, recyclable)", "Ensure recycling bins are correctly used", "Monitor daily food waste (restaurants)", "Implement a composting plan for organic waste", "Track reduction in landfill waste"] },
