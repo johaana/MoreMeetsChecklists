@@ -33,7 +33,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                "title": "Daily Housekeeping SOP",
+                "title": "Daily Housekeeping Standard Operating Procedures (SOPs)",
                 "tasks": [
                     "Prepare and assign room blocks and specific cleaning tasks to housekeeping staff using a digital assignment tool like Hotelogix or a printed, signed-off sheet.",
                     "Inspect a set percentage (e.g., 15%) of cleaned rooms using a detailed 50-point digital checklist (e.g., using GoAudits app). Photos must be attached for any failures.",
@@ -59,7 +59,7 @@ export const premiumPacks = [
             {
                 "title": "Monthly Hotel Maintenance & Audit",
                 "tasks": [
-                    "Perform and document preventive maintenance on HVAC, plumbing, and electrical systems as per the annual schedule in your CMMS (e.g., eMaint).",
+                    "Perform and document preventive maintenance on HVAC, plumbing, and electrical systems as per the annual schedule in your Computerized Maintenance Management System (CMMS) (e.g., eMaint).",
                     "Conduct and record a full fire safety equipment check (extinguishers, alarms, exit lights, sprinklers). A second person must witness and co-sign the report.",
                     "Perform a full property walk-through with all department heads to identify aesthetic and functional issues. Assign action items with deadlines to each HOD.",
                     "Audit petty cash, float, and all departmental financial records for discrepancies. The Financial Controller must sign off on the audit.",
@@ -101,7 +101,7 @@ export const premiumPacks = [
                 title: "Weekly Maintenance & Safety Audit",
                 tasks: [
                     "Test a random sample of fire alarms and emergency exit lights. Log which specific units were tested.",
-                    "Inspect all first-aid kits and AEDs. Restock and check battery life. Document the inspection on a tag on the kit itself.",
+                    "Inspect all first-aid kits and Automated External Defibrillators (AEDs). Restock and check battery life. Document the inspection on a tag on the kit itself.",
                     "Walk all emergency exit routes to ensure they are clear of obstructions. Take photos of any blocked routes and email them to the responsible department head.",
                     "Check functioning of all access control systems (key cards, biometric scanners) by testing a random selection of doors.",
                     "Coordinate with the housekeeping vendor for a joint walk-through to review cleaning standards and address any issues. Both parties must sign the walk-through report.",
@@ -112,7 +112,7 @@ export const premiumPacks = [
                 title: "Monthly Vendor & Compliance Review",
                 tasks: [
                     "Conduct a formal review meeting with key vendors (security, housekeeping, catering) using a standardized performance scorecard.",
-                    "Audit vendor performance against their service level agreement (SLA). Document any deviations and agree on a corrective action plan.",
+                    "Audit vendor performance against their Service Level Agreement (SLA). Document any deviations and agree on a corrective action plan.",
                     "Review and update the master list of all service contracts and their renewal dates. Set calendar alerts for 90 days before renewal.",
                     "Schedule and oversee all preventive maintenance for HVAC, electrical, and plumbing systems. Get signed service reports from the vendor.",
                     "Ensure all statutory compliance posters (health & safety, employment law) are up-to-date and displayed. Take a dated photo for records.",
@@ -151,7 +151,7 @@ export const premiumPacks = [
             {
                 title: "Kitchen Opening Checklist (HACCP Focus)",
                 tasks: [
-                    "Calibrate food thermometers using ice water and boiling water methods. Log results in the daily HACCP log.",
+                    "Calibrate food thermometers using ice water and boiling water methods. Log results in the daily Hazard Analysis and Critical Control Points (HACCP) log.",
                     "Check and log temperatures of all refrigerators and walk-in coolers/freezers. Any unit out of range requires immediate corrective action documentation.",
                     "Turn on all cooking equipment (fryers, ovens, grills) and check for proper function. Report any issues to the maintenance log.",
                     "Sanitize all food preparation surfaces, cutting boards, and slicers. Use test strips to verify sanitizer concentration and log the result.",
@@ -306,7 +306,7 @@ export const premiumPacks = [
                     "Never show more than one high-value item (or tray) at a time. One out, one in. The item not being shown must be back in a locked case.",
                     "Observe for suspicious behavior: bulky clothing, nervous demeanor, filming on phones, questions about security rather than jewellery. Log any such instance.",
                     "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person. Practice these monthly.",
-                    "For high-value purchases, verify credit card with photo ID. For large cash purchases, follow all AML regulations and file necessary reports.",
+                    "For high-value purchases, verify credit card with photo ID. For large cash purchases, follow all Anti-Money Laundering (AML) regulations and file necessary reports.",
                     "Regularly clean glass display cases to remove fingerprints, which also allows staff to discreetly monitor the area.",
                     "Never turn your back on a customer who is handling merchandise. Always maintain a clear line of sight."
                 ]
@@ -356,8 +356,8 @@ export const premiumPacks = [
                 "tasks": [
                     "Verify patient identity using two identifiers (e.g., name and DOB) for new prescriptions.",
                     "Check prescription for completeness and legality (doctor's signature, date, DEA number for controlled substances). Call prescriber to clarify any ambiguity.",
-                    "Perform a drug utilization review (DUR) in the pharmacy software to check for allergies, interactions, or duplicate therapies. Document any overrides.",
-                    "Follow the 'Right Drug, Right Patient, Right Dose, Right Route, Right Time' protocol during filling. (Pro-Tip: Use barcode scanners to verify the NDC of the stock bottle against the prescription).",
+                    "Perform a Drug Utilization Review (DUR) in the pharmacy software to check for allergies, interactions, or duplicate therapies. Document any overrides.",
+                    "Follow the 'Right Drug, Right Patient, Right Dose, Right Route, Right Time' protocol during filling. (Pro-Tip: Use barcode scanners to verify the National Drug Code (NDC) of the stock bottle against the prescription).",
                     "A second pharmacist must perform a final check on all high-risk, compounded, and pediatric medications before dispensing. This check must be logged.",
                     "Counsel every patient on new medications, covering side effects, administration, and importance of adherence. Offer printed information.",
                     "For refills, ask the patient if they have any questions or if anything has changed with their health."
@@ -380,7 +380,7 @@ export const premiumPacks = [
                     "File all of the day's hard-copy prescriptions sequentially.",
                     "Complete all required logs (refrigerator temps, controlled substance counts, cleaning logs). The lead pharmacist must review and sign them.",
                     "Secure all medications and patient records. The narcotics safe must be physically checked to be locked.",
-                    "Ensure all workstations are logged off to protect patient data (HIPAA/privacy compliance).",
+                    "Ensure all workstations are logged off to protect patient data (Health Insurance Portability and Accountability Act - HIPAA compliance).",
                     "Activate security system and lock all entrances. Confirm the alarm is set with the monitoring company."
                 ]
             }
@@ -388,7 +388,7 @@ export const premiumPacks = [
     },
     {
         id: 'hospital_administration_ops',
-        title: "Hospital Administration & Operations Checklist",
+        title: "Hospital Administration Checklist",
         priceUSD: 199.99,
         priceINR: 15999,
         category: "Healthcare",
@@ -405,7 +405,7 @@ export const premiumPacks = [
             {
                 "title": "Patient Admission & Discharge",
                 "tasks": [
-                    "Verify patient identification with two identifiers and cross-check with the hospital information system (HIS).",
+                    "Verify patient identification with two identifiers and cross-check with the Hospital Information System (HIS).",
                     "Ensure all consent forms are explained, signed, and witnessed. A digital copy must be stored in the patient's file immediately.",
                     "Conduct a nursing assessment upon admission, documenting allergies, current medications, and baseline vital signs.",
                     "Prepare a detailed discharge plan at least 24 hours in advance, including follow-up appointments, medication prescriptions, and patient education materials.",
@@ -427,7 +427,7 @@ export const premiumPacks = [
             {
                 "title": "Emergency Room (ER) Management",
                 "tasks": [
-                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., ESI).",
+                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., Emergency Severity Index - ESI).",
                     "Ensure resuscitation bays are checked at the start of every shift and are fully stocked (e.g., intubation trays, crash cart with charged defibrillator).",
                     "Monitor ER wait times in real-time. A hospital administrator must be alerted if wait times for high-acuity patients exceed a set threshold.",
                     "Facilitate rapid transfer of admitted patients from the ER to inpatient beds to prevent ER boarding and overcrowding.",
@@ -443,7 +443,7 @@ export const premiumPacks = [
                     "Ensure terminal cleaning procedures are followed for rooms of patients who were on isolation precautions.",
                     "Verify that all staff have up-to-date vaccinations (e.g., for influenza).",
                     "Ensure proper disposal of all biomedical waste according to regulatory standards. Check that disposal bins are not overfilled.",
-                    "Prepare for regulatory audits (e.g., JCI, NABH) by conducting regular mock surveys."
+                    "Prepare for regulatory audits (e.g., Joint Commission International - JCI, National Accreditation Board for Hospitals & Healthcare Providers - NABH) by conducting regular mock surveys."
                 ]
             }
         ]
@@ -491,7 +491,7 @@ export const premiumPacks = [
                 "tasks": [
                     "For dental/procedural clinics: Follow a strict, documented protocol for sterilizing all instruments using an autoclave. Daily spore testing is mandatory.",
                     "Dispose of all sharps and biomedical waste in designated, puncture-proof containers. Check that containers are not overfilled.",
-                    "Ensure all staff are trained on and have access to appropriate PPE.",
+                    "Ensure all staff are trained on and have access to appropriate Personal Protective Equipment (PPE).",
                     "Maintain an up-to-date crash cart or emergency kit. Check the defibrillator and oxygen tank monthly. Log the check.",
                     "Conduct a quarterly emergency drill (e.g., a mock medical emergency like syncope or an allergic reaction) and review the team's response."
                 ]
@@ -503,7 +503,7 @@ export const premiumPacks = [
                     "Submit all insurance claims within 48 hours of the service being rendered. Use a clearinghouse to reduce errors.",
                     "Review and follow up on any denied or rejected claims within 72 hours. Assign one person to be the 'claims champion'.",
                     "Reconcile daily payments against appointment records. The office manager must sign off on the daily financial report.",
-                    "Maintain strict patient data confidentiality in compliance with HIPAA or local regulations. All staff must complete annual privacy training."
+                    "Maintain strict patient data confidentiality in compliance with Health Insurance Portability and Accountability Act (HIPAA) or local regulations. All staff must complete annual privacy training."
                 ]
             }
         ]
@@ -528,7 +528,7 @@ export const premiumPacks = [
                 title: "Morning Setup & Calibration (Zero-Error Start)",
                 tasks: [
                     "Log temperatures of all refrigerators, freezers, and incubators using a calibrated digital thermometer. The log must be co-signed by a second staff member.",
-                    "Run daily quality control (QC) samples on all analyzers before processing any patient samples. Results must be within acceptable limits (Levey-Jennings chart). Document any corrective action.",
+                    "Run daily Quality Control (QC) samples on all analyzers before processing any patient samples. Results must be within acceptable limits (Levey-Jennings chart). Document any corrective action.",
                     "Calibrate pipettes and other measurement instruments as per the weekly schedule. Document in the equipment log.",
                     "Check inventory of reagents and consumables. Note any items approaching minimum stock levels in the ordering system.",
                     "Ensure all workstations are clean and disinfected with an approved solution. Document the cleaning.",
@@ -542,7 +542,7 @@ export const premiumPacks = [
                     "Inspect samples for proper collection (e.g., correct tube type, sufficient volume, no hemolysis). Reject and log any unsuitable samples, and immediately notify the collection center.",
                     "Assign a unique lab ID (accession number) to each sample and log it into the Laboratory Information System (LIS). Use barcode scanners to prevent manual entry errors.",
                     "Prioritize and process STAT samples within the defined turnaround time. A visual flag (e.g., a red rack) should be used.",
-                    "Ensure proper PPE (gloves, lab coat, eye protection) is worn at all times. Conduct a random PPE check on one staff member daily."
+                    "Ensure proper Personal Protective Equipment (PPE) is worn at all times. Conduct a random PPE check on one staff member daily."
                 ]
             },
             {
@@ -590,7 +590,7 @@ export const premiumPacks = [
                     "Walk the entire gym floor. Inspect all cardio and strength equipment for frayed cables, loose bolts, or malfunctions. Tag any faulty equipment 'Out of Order' and log it in the maintenance book.",
                     "Ensure all free weights are correctly racked and organized. No weights on the floor.",
                     "Check that all emergency exits are clear, unblocked, and the alarms are armed.",
-                    "Verify first aid kits and AEDs are present, fully stocked, and accessible. Check AED battery status indicator. Log this check.",
+                    "Verify first aid kits and Automated External Defibrillators (AEDs) are present, fully stocked, and accessible. Check AED battery status indicator. Log this check.",
                     "Post emergency contact list (Ambulance, Police, nearest Hospital) visibly at reception.",
                     "Wipe down all equipment handles, benches, and mats with disinfectant.",
                     "Check locker rooms and showers for cleanliness, stock (soap, paper towels), and any hazards like wet floors."
@@ -600,7 +600,7 @@ export const premiumPacks = [
                 "title": "Member Management & Customer Experience",
                 "tasks": [
                     "Provide a comprehensive, hands-on orientation for all new members, demonstrating proper form for 3 key exercises.",
-                    "Follow up with new leads within 12 hours. (Pro-tip: Use a CRM like 'GymMaster' or 'Mindbody' to automate this).",
+                    "Follow up with new leads within 12 hours. (Pro-tip: Use a Customer Relationship Management (CRM) tool like 'GymMaster' or 'Mindbody' to automate this).",
                     "Have a clear and consistent sales script for staff, focusing on member goals, not just price.",
                     "Ensure membership agreements are filled out completely and a digital copy is sent to the member immediately.",
                     "Actively engage with current members on the floor. Task staff to have at least 5 positive interactions per shift.",
@@ -651,7 +651,7 @@ export const premiumPacks = [
                 "title": "Daily Opening & Hygiene Checklist",
                 "tasks": [
                     "Disinfect all high-touch surfaces: reception desk, styling stations, manicure tables, pedicure chairs, door handles.",
-                    "Ensure all tools (scissors, combs, brushes) are sterilized using an autoclave or EPA-approved disinfectant. Check that sterilized tool pouches are sealed and dated.",
+                    "Ensure all tools (scissors, combs, brushes) are sterilized using an autoclave or Environmental Protection Agency (EPA)-approved disinfectant. Check that sterilized tool pouches are sealed and dated.",
                     "Check and restock all stations with fresh, clean towels, capes, and necessary supplies.",
                     "Verify that autoclaves and other sterilization equipment are functioning correctly. Log the first cycle of the day.",
                     "Prepare fresh disinfectant solutions as per health code regulations. Use test strips to verify concentration.",
@@ -789,7 +789,7 @@ export const premiumPacks = [
                     "Inspect all incoming deliveries for quality and check temperatures for perishable goods *before* they are unloaded from the truck. Reject any shipment outside the safe temperature zone.",
                     "Verify deliveries against invoices, noting any shortages or damages. Get a signed credit note from the driver on the spot.",
                     "Immediately move perishable items to cold storage, following the FIFO (First-In, First-Out) principle. The goal is 'dock to stock' in under 20 minutes.",
-                    "Use a handheld scanner to update inventory levels in the POS system as stock is received. This prevents 'phantom stock' issues.",
+                    "Use a handheld scanner to update inventory levels in the Point-of-Sale (POS) system as stock is received. This prevents 'phantom stock' issues.",
                     "Keep the receiving area clean and organized. Nothing should be left on the floor."
                 ]
             },
@@ -850,7 +850,7 @@ export const premiumPacks = [
                     "Ensure fitting rooms are always clean, well-lit, and mirrors are smudge-free. Check them every hour.",
                     "Train staff to 'service' the fitting rooms: check on customers, offer different sizes, and clear out unwanted items immediately to be re-hung.",
                     "Inspect items returned from the fitting room for damage (makeup, tears) before returning to the sales floor.",
-                    "Actively engage in 'clienteling': building relationships and tracking preferences. Task each staff member to record notes on 3 clients per day in your CRM or notebook.",
+                    "Actively engage in 'clienteling': building relationships and tracking preferences. Task each staff member to record notes on 3 clients per day in your Customer Relationship Management (CRM) or notebook.",
                     "Greet every customer within 30 seconds of entry. This is both good service and a major loss prevention technique."
                 ]
             },
@@ -862,7 +862,7 @@ export const premiumPacks = [
                     "Tag all new items with price and security tags before bringing them to the sales floor.",
                     "Steam and prep all new stock before merchandising.",
                     "Conduct weekly 'cycle counts' of best-selling categories to maintain inventory accuracy. (Pro-Tip: Use an app like 'Sortly' to manage inventory on your phone).",
-                    "Plan and execute markdowns. Update the POS system first, then change the tags. A second person should verify a sample of the new prices."
+                    "Plan and execute markdowns. Update the Point of Sale (POS) system first, then change the tags. A second person should verify a sample of the new prices."
                 ]
             },
             {
@@ -902,7 +902,7 @@ export const premiumPacks = [
                     "Conduct a spot-check of 5-10 high-value SKUs (e.g., latest iPhone model) against the inventory system. The count must be exact.",
                     "Check that all promotional signage and price tags are accurate and aligned with current offers. Remove outdated promotions.",
                     "Lead a 15-minute sales team huddle: Review daily targets, run a quick quiz on a new product's key features, and discuss a sales technique.",
-                    "Ensure all sales staff are logged into the POS and CRM systems."
+                    "Ensure all sales staff are logged into the Point of Sale (POS) and Customer Relationship Management (CRM) systems."
                 ]
             },
             {
@@ -956,7 +956,7 @@ export const premiumPacks = [
             {
                 "title": "Outgoing Shift: End-of-Shift Duties (30 mins before end)",
                 "tasks": [
-                    "Complete the production log: units produced vs. target, scrap/reject count, and detailed reasons for any shortfalls. This must be entered into the MES/ERP system.",
+                    "Complete the production log: units produced vs. target, scrap/reject count, and detailed reasons for any shortfalls. This must be entered into the Manufacturing Execution System (MES) or Enterprise Resource Planning (ERP) system.",
                     "Document any machine malfunctions, alarms, or near-misses that occurred during the shift in the maintenance log, even if resolved. Include timestamps and actions taken.",
                     "Log any quality control issues, holds, or deviations from the standard. Physically tag any non-conforming product.",
                     "Conduct a final walk-through of the work area to ensure it is clean, organized, and free of hazards (5S). Take a photo of the cleared workspace.",
@@ -981,7 +981,7 @@ export const premiumPacks = [
                     "Lead the team on a walk-through of the work area, visually verifying the status of key machines and safety equipment (e.g., guards in place, E-stops clear).",
                     "Confirm raw material levels and ensure there is enough stock for at least the first 4 hours of production. Escalate any shortages immediately.",
                     "Verify that the first-piece quality check for the new shift is completed and signed off before starting full production.",
-                    "Ensure all operators are at their assigned stations, have the correct PPE, and have the correct work instructions for the scheduled job."
+                    "Ensure all operators are at their assigned stations, have the correct Personal Protective Equipment (PPE), and have the correct work instructions for the scheduled job."
                 ]
             },
             {
@@ -1015,7 +1015,7 @@ export const premiumPacks = [
             {
                 "title": "Initial Client Inquiry & Booking",
                 "tasks": [
-                    "Respond to new inquiries within 2 business hours. Send digital brochure and a link to a virtual tour. (Pro-Tip: Use a CRM like HoneyBook to automate this).",
+                    "Respond to new inquiries within 2 business hours. Send digital brochure and a link to a virtual tour. (Pro-Tip: Use a Customer Relationship Management (CRM) tool like HoneyBook to automate this).",
                     "Conduct a thorough site visit, showcasing different setup possibilities and upselling opportunities (e.g., in-house AV, decor).",
                     "Provide a detailed, itemized quotation within 24 hours of the visit. Clearly state what's included and what's extra.",
                     "Issue a formal contract upon confirmation. Ensure clauses for payment schedule, cancellation, liabilities, and insurance are clear. Have your lawyer review the template annually.",
@@ -1286,14 +1286,14 @@ export const premiumPacks = [
                 tasks: [
                     "Technician follows the work order, documenting all steps and parts used. All torque specs for critical components must be met and logged.",
                     "All replaced parts must be kept in a clean box for the customer to inspect at pickup.",
-                    "After repairs are complete, a different technician or a dedicated QC person must perform a final inspection and test drive, following a set route.",
+                    "After repairs are complete, a different technician or a dedicated Quality Control (QC) person must perform a final inspection and test drive, following a set route.",
                     "The QC checklist must include checking for grease marks on the interior/exterior, ensuring all dashboard lights are off, and verifying the original complaint is resolved.",
                     "Top off washer fluid and perform a courtesy cleaning of the front windshield.",
                     "The QC inspector must sign off on the work order before the customer is notified."
                 ]
             },
             {
-                title: "Billing & Vehicle Handover Experience",
+                "title": "Billing & Vehicle Handover Experience",
                 "tasks": [
                     "Inform the customer that their vehicle is ready for pickup, sending a link to the final invoice for them to review beforehand.",
                     "When the customer arrives, the service advisor should walk them through the repairs made, showing them the old parts if requested.",
@@ -1384,7 +1384,7 @@ export const premiumPacks = [
             {
                 "title": "Pre-Shift & Team Huddle Checklist (15 mins)",
                 "tasks": [
-                    "Review previous shift's performance dashboard (AHT, FCR, CSAT, SL). Note any top performers and bottom outliers for coaching.",
+                    "Review previous shift's performance dashboard (Average Handle Time - AHT, First Call Resolution - FCR, Customer Satisfaction - CSAT, Service Level - SL). Note any top performers and bottom outliers for coaching.",
                     "Check for any system outages or client updates from the central operations team. Prepare to communicate them clearly.",
                     "Lead a 15-minute team huddle: Discuss daily targets, share a 'call of the week' (good example), run a quick quiz on product knowledge, and end with recognition.",
                     "Ensure all agents are logged into the phone system and necessary software 5 minutes before the shift starts. No late logins.",
@@ -1570,7 +1570,7 @@ export const premiumPacks = [
                     "Check that all price stickers and feature sheets are accurate, aligned, and correctly placed. Remove any from sold vehicles.",
                     "Lead a 15-minute sales team huddle: discuss daily targets, new inventory, current promotions, and role-play one objection.",
                     "Verify the reception and customer lounge are clean, stocked with fresh coffee/refreshments, and presentable.",
-                    "Ensure all sales staff are logged into the CRM (e.g., Salesforce, DealerSocket) and ready to receive leads.",
+                    "Ensure all sales staff are logged into the Customer Relationship Management (CRM) system (e.g., Salesforce, DealerSocket) and ready to receive leads.",
                     "Check the dealership website for any errors or outdated information."
                 ]
             },
@@ -1589,7 +1589,7 @@ export const premiumPacks = [
             {
                 "title": "Vehicle Handover & Delivery Experience",
                 "tasks": [
-                    "Ensure the sold vehicle has undergone a full pre-delivery inspection (PDI), has a full tank of gas, and is detailed to perfection. The sales manager must sign off.",
+                    "Ensure the sold vehicle has undergone a full Pre-Delivery Inspection (PDI), has a full tank of gas, and is detailed to perfection. The sales manager must sign off.",
                     "Prepare all paperwork in a professional, branded folder: final sales agreement, registration documents, warranty information.",
                     "Schedule a specific, one-hour delivery appointment with the customer. Don't make them wait.",
                     "Perform a comprehensive feature explanation with the new owner in the vehicle, connecting their phone to Bluetooth and setting basic preferences.",
@@ -1629,7 +1629,7 @@ export const premiumPacks = [
             {
                 "title": "Product Launch Event Planning",
                 "tasks": [
-                    "Define launch goals and KPIs (e.g., 50 media mentions, 500 qualified leads, 10,000 sign-ups).",
+                    "Define launch goals and Key Performance Indicators (KPIs) (e.g., 50 media mentions, 500 qualified leads, 10,000 sign-ups).",
                     "Set a detailed budget with line items for venue, A/V, marketing, PR, and staffing. Have a 10% contingency fund.",
                     "Select and book a venue with appropriate tech (high-speed streaming Wi-Fi, good acoustics) and capacity. Test the Wi-Fi under load.",
                     "Draft and distribute press releases and embargoed media kits to targeted journalists. Schedule pre-briefings with key analysts.",
@@ -1699,7 +1699,7 @@ export const premiumPacks = [
             {
                 "title": "Environmental Data Gathering",
                 "tasks": [
-                    "Collect all utility bills (electricity, natural gas) for the reporting period to calculate Scope 2 GHG emissions.",
+                    "Collect all utility bills (electricity, natural gas) for the reporting period to calculate Scope 2 Greenhouse Gas (GHG) emissions.",
                     "Gather fuel consumption data from all company-owned vehicles and generators to calculate Scope 1 GHG emissions.",
                     "Measure total water consumption and track waste generation, including the percentage of waste that is recycled.",
                     "Document any environmental policies (e.g., sustainable procurement, remote work policy) already in place.",
@@ -1711,9 +1711,9 @@ export const premiumPacks = [
                 "title": "Social Metrics Data Gathering",
                 "tasks": [
                     "Compile workforce data: gender diversity ratios at different levels (staff, management, board), employee turnover rate, and new hire rate.",
-                    "Gather data on health and safety incidents: number of accidents, lost time injury rate (LTIR).",
+                    "Gather data on health and safety incidents: number of accidents, Lost Time Injury Rate (LTIR).",
                     "Document total employee training hours, categorized by type (e.g., compliance, professional development, safety).",
-                    "Summarize community engagement activities and corporate social responsibility (CSR) investments in both hours and dollars.",
+                    "Summarize community engagement activities and Corporate Social Responsibility (CSR) investments in both hours and dollars.",
                     "Verify you have a formal, confidential employee grievance mechanism. Log the number and types of complaints received and their resolution status.",
                     "Conduct a voluntary, anonymous employee satisfaction survey and include the overall score in your report."
                 ]
@@ -1723,7 +1723,7 @@ export const premiumPacks = [
                 "tasks": [
                     "Verify you have a documented, board-approved policy for anti-corruption and bribery. Check when it was last updated.",
                     "Confirm the existence of a confidential whistleblower policy that ensures non-retaliation. Verify it is easily accessible to all employees.",
-                    "Document the board of directors' structure, independence (percentage of independent directors), and specific oversight of ESG issues.",
+                    "Document the board of directors' structure, independence (percentage of independent directors), and specific oversight of Environmental, Social, and Governance (ESG) issues.",
                     "Ensure a code of business ethics is in place and that all employees have completed a signed acknowledgement of reading it within the last 12 months.",
                     "Review and document the company's data privacy and security policies. Note any data breaches and the response.",
                     "Create a matrix of which board members have expertise in ESG-related areas."
@@ -1733,7 +1733,7 @@ export const premiumPacks = [
                 "title": "Reporting & Stakeholder Engagement",
                 "tasks": [
                     "Conduct a materiality assessment to identify your company's most significant ESG issues. (Pro-Tip: Survey key investors, customers, and employees).",
-                    "Choose an ESG reporting framework to align with (e.g., GRI, SASB, TCFD). Map your collected data to the framework's requirements.",
+                    "Choose an ESG reporting framework to align with (e.g., Global Reporting Initiative - GRI, Sustainability Accounting Standards Board - SASB, Task Force on Climate-related Financial Disclosures - TCFD). Map your collected data to the framework's requirements.",
                     "Draft the ESG report, ensuring all data is accurate, verifiable, and presented with context. Use charts and graphs to visualize trends.",
                     "Have the report reviewed by an internal committee (including legal and finance) and, for maximum credibility, a third-party assurance provider.",
                     "Plan how the report will be published and communicated to stakeholders. Create a summary presentation for the board and a press release.",
@@ -1796,7 +1796,7 @@ export const premiumPacks = [
                 "tasks": [
                     "Verify a formal internal audit schedule is in place and that auditors are trained and independent of the area being audited.",
                     "Check that customer satisfaction is being monitored via multiple methods (surveys, feedback calls, review analysis).",
-                    "Review the log for corrective and preventive actions (CAPA). Ensure root cause analysis was performed for the last 5 major issues, not just a quick fix.",
+                    "Review the log for Corrective and Preventive Actions (CAPA). Ensure root cause analysis was performed for the last 5 major issues, not just a quick fix.",
                     "Ensure CAPAs are being closed out in a timely manner and that their effectiveness is verified (i.e., the problem has not reoccurred).",
                     "Analyze quality data (e.g., defect rates, on-time delivery) to identify trends. Check for evidence of at least one improvement project initiated based on this data.",
                     "Confirm that internal audit results and improvement data are reported to top management as a mandatory input for management review."
@@ -1910,7 +1910,7 @@ export const premiumPacks = [
                     "Fire orders to the correct kitchen station based on preparation time (Kitchen Order Ticket - KOT).",
                     "The 'expo' or final checker must double-check each packed item against the order ticket before sealing the bag with tamper-evident tape.",
                     "Attach the correct bill to the sealed package. The order number must be clearly visible.",
-                    "Hand over the package to the correct delivery rider. Make them confirm the order number or OTP.",
+                    "Hand over the package to the correct delivery rider. Make them confirm the order number or One-Time Password (OTP).",
                     "Mark the order as 'Ready for Pickup'. Monitor and manage rider wait times. Report any rude or delayed riders to the aggregator's support team."
                 ]
             },
@@ -2014,7 +2014,7 @@ export const premiumPacks = [
                     "Research and confirm the airline's specific pet policy (in-cabin vs. cargo, breed restrictions, carrier size and type). This is the most critical step.",
                     "Visit your vet to ensure all vaccinations are up-to-date. Get a signed health certificate dated within 10 days of travel.",
                     "Check destination country's import requirements (e.g., microchip, rabies titer test, quarantine). Start this process early as it can take months.",
-                    "Purchase an IATA-compliant travel carrier. Acclimate your pet to it by feeding them meals inside and leaving it open in the house with treats.",
+                    "Purchase an International Air Transport Association (IATA)-compliant travel carrier. Acclimate your pet to it by feeding them meals inside and leaving it open in the house with treats.",
                     "Get a proper ID tag for your pet's collar with your mobile number and destination address. A GPS tracker (like Tractive or Fi) is highly recommended."
                 ]
             },
@@ -2075,5 +2075,6 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
 
 
