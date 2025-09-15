@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 import { PT_Sans } from 'next/font/google';
 
 export const metadata: Metadata = {
-  title: 'MoreMeets: Smart Checklists',
-  description: 'More Meets. More Organized.',
+  title: 'MoreMeets: Smart Checklists for Professionals',
+  description: 'The simplest way for businesses and professionals to ensure quality, compliance, and perfection. One-time purchase, lifetime access.',
 };
 
 const mainFont = PT_Sans({

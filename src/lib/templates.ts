@@ -2,12 +2,15 @@
 import type { Checklist } from './types';
 
 export const checklistTemplates: Checklist[] = [
-  // == FREE (B2C) CHECKLISTS ==
+  // == PREMIUM (B2B & Detailed Wedding) CHECKLISTS ==
+
+  // Wedding Pack
   {
     id: 'wedding_haldi',
     category: 'Events',
     name: 'Wedding - Haldi Ceremony',
-    visibility: 'free',
+    visibility: 'paid',
+    premiumPack: 'The Ultimate Wedding Planner Pack',
     importance: 'Ensures traditional rituals and guest arrangements are not missed during Haldi.',
     items: [
       'Arrange haldi paste and bowls',
@@ -23,7 +26,8 @@ export const checklistTemplates: Checklist[] = [
     id: 'wedding_mehndi',
     category: 'Events',
     name: 'Wedding - Mehndi Night',
-    visibility: 'free',
+    visibility: 'paid',
+    premiumPack: 'The Ultimate Wedding Planner Pack',
     importance: 'Smooth flow of functions and proper guest engagement for Mehndi celebration.',
     items: [
       'Book mehndi artist(s)',
@@ -35,73 +39,9 @@ export const checklistTemplates: Checklist[] = [
     ]
   },
   {
-    id: 'product_launch_event',
-    category: 'Events',
-    name: 'Product Launch Event',
-    visibility: 'free',
-    importance: 'Critical for creating market buzz and making a strong first impression.',
-    items: [
-      'Finalize product messaging and USP',
-      'Book venue and arrange AV equipment',
-      'Send invites to media and influencers',
-      'Prepare product demo stations',
-      'Plan event flow and speaker schedule',
-      'Arrange for event photography and videography'
-    ]
-  },
-   {
-    id: 'startup_launch_party',
-    category: 'Events',
-    name: 'Startup Launch Party',
-    visibility: 'free',
-    importance: 'Celebrates a new venture and helps in networking with investors and early adopters.',
-    items: [
-        'Set a budget and guest list',
-        'Choose a theme and venue',
-        'Send out digital invitations',
-        'Arrange for catering and drinks',
-        'Plan a short founder\'s speech or presentation',
-        'Organize some light entertainment or music'
-    ]
-  },
-  {
-    id: 'birthday_party',
-    category: 'Events',
-    name: 'Kids Birthday Party',
-    visibility: 'free',
-    importance: 'Ensures a fun and well-organized party for a child\'s special day.',
-    items: [
-        'Choose a theme',
-        'Send out invitations (digital/physical)',
-        'Order birthday cake & candles',
-        'Arrange food and drinks for kids and adults',
-        'Plan games & activities',
-        'Arrange for return gifts/goodie bags'
-    ]
-  },
-  {
-    id: 'destination_wedding',
-    category: 'Events',
-    name: 'Destination Wedding Planning',
-    visibility: 'free',
-    importance: 'Manages the unique complexities of a wedding away from home.',
-    items: [
-        'Select and book destination/venue',
-        'Arrange travel and accommodation for guests',
-        'Hire local vendors (planner, photographer, etc.)',
-        'Plan pre-wedding events and local activities',
-        'Understand local marriage legalities',
-        'Communicate travel details clearly to all guests'
-    ]
-  },
-
-  // == PREMIUM (B2B & Detailed Wedding) CHECKLISTS ==
-
-  // Wedding Pack
-  {
     id: 'wedding_sangeet_premium',
     category: 'Events',
-    name: 'Wedding - Sangeet (Premium)',
+    name: 'Wedding - Sangeet',
     visibility: 'paid',
     premiumPack: 'The Ultimate Wedding Planner Pack',
     importance: 'A vibrant celebration of music and dance before the wedding.',
@@ -118,7 +58,7 @@ export const checklistTemplates: Checklist[] = [
   {
     id: 'south_indian_wedding_premium',
     category: 'Events',
-    name: 'South Indian Wedding (Premium)',
+    name: 'South Indian Wedding',
     visibility: 'paid',
     premiumPack: 'The Ultimate Wedding Planner Pack',
     importance: 'Covers all the unique rituals of a traditional South Indian wedding.',
@@ -134,7 +74,7 @@ export const checklistTemplates: Checklist[] = [
    {
     id: 'sikh_wedding_premium',
     category: 'Events',
-    name: 'Sikh Wedding (Anand Karaj) (Premium)',
+    name: 'Sikh Wedding (Anand Karaj)',
     visibility: 'paid',
     premiumPack: 'The Ultimate Wedding Planner Pack',
     importance: 'Ensures all aspects of the Anand Karaj ceremony at the Gurdwara are respected and organized.',
@@ -145,6 +85,22 @@ export const checklistTemplates: Checklist[] = [
         'Arrange for Karah Prasad',
         'Coordinate the Laavan Phere timings',
         'Organize Langar (community meal) post-ceremony'
+    ]
+  },
+  {
+    id: 'destination_wedding',
+    category: 'Events',
+    name: 'Destination Wedding Planning',
+    visibility: 'paid',
+    premiumPack: 'The Ultimate Wedding Planner Pack',
+    importance: 'Manages the unique complexities of a wedding away from home.',
+    items: [
+        'Select and book destination/venue',
+        'Arrange travel and accommodation for guests',
+        'Hire local vendors (planner, photographer, etc.)',
+        'Plan pre-wedding events and local activities',
+        'Understand local marriage legalities',
+        'Communicate travel details clearly to all guests'
     ]
   },
 
@@ -216,8 +172,6 @@ export const checklistTemplates: Checklist[] = [
         'Plan for waste disposal and site cleanup post-event'
     ]
   },
-
-  // Training Pack (Part of Hospitality Suite)
   {
     id: 'hotel_staff_onboarding',
     category: 'Training',
@@ -254,6 +208,22 @@ export const checklistTemplates: Checklist[] = [
   },
   
   // Corporate & Startup Launchkit
+   {
+    id: 'product_launch_event',
+    category: 'Events',
+    name: 'Product Launch Event',
+    visibility: 'paid',
+    premiumPack: 'Corporate & Startup Launchkit',
+    importance: 'Critical for creating market buzz and making a strong first impression.',
+    items: [
+      'Finalize product messaging and USP',
+      'Book venue and arrange AV equipment',
+      'Send invites to media and influencers',
+      'Prepare product demo stations',
+      'Plan event flow and speaker schedule',
+      'Arrange for event photography and videography'
+    ]
+  },
   {
     id: 'corporate_awards_night',
     category: 'Events',
@@ -284,6 +254,36 @@ export const checklistTemplates: Checklist[] = [
         'Secure all necessary permits and security clearances',
         'Manage backstage area: green rooms, hair & makeup',
         'Plan post-show press conferences'
+    ]
+  },
+   {
+    id: 'startup_launch_party',
+    category: 'Events',
+    name: 'Startup Launch Party',
+    visibility: 'free',
+    importance: 'Celebrates a new venture and helps in networking with investors and early adopters.',
+    items: [
+        'Set a budget and guest list',
+        'Choose a theme and venue',
+        'Send out digital invitations',
+        'Arrange for catering and drinks',
+        'Plan a short founder\'s speech or presentation',
+        'Organize some light entertainment or music'
+    ]
+  },
+  {
+    id: 'birthday_party',
+    category: 'Events',
+    name: 'Kids Birthday Party',
+    visibility: 'free',
+    importance: 'Ensures a fun and well-organized party for a child\'s special day.',
+    items: [
+        'Choose a theme',
+        'Send out invitations (digital/physical)',
+        'Order birthday cake & candles',
+        'Arrange food and drinks for kids and adults',
+        'Plan games & activities',
+        'Arrange for return gifts/goodie bags'
     ]
   }
 ];
