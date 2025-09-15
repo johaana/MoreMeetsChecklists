@@ -437,7 +437,74 @@ export const premiumPacks = [
             }
         ]
     },
-     {
+    {
+        id: 'jewellery_store_ops',
+        title: "Jewellery Store Operations & Security",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Retail",
+        description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
+        icon: <Gem className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Vault Opening & Closing Protocol",
+            "Daily Inventory & Display Audit",
+            "Advanced Anti-Robbery Procedures",
+            "Customer Vetting & Suspicion Triggers",
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening Procedure (Dual Control)",
+                "tasks": [
+                    "First staff member arrives, inspects exterior for tampering (locks, windows), reports 'all clear' to manager off-site",
+                    "Second staff member arrives; both enter together. First action: disarm alarm within 30 seconds",
+                    "Immediately lock the door behind you",
+                    "Perform a check of all interior sensors, panic buttons, and CCTV cameras (ensure they are recording)",
+                    "Two staff members proceed to the vault. Use dual keys/codes simultaneously to open",
+                    "Inspect vault interior and log opening time. Remove day-display trays",
+                    "Set up displays, ensuring each piece is accounted for against the daily opening inventory sheet",
+                    "Test silent panic buttons and hold-up alarms before opening to the public"
+                ]
+            },
+            {
+                "title": "Daily Closing Procedure (Dual Control)",
+                "tasks": [
+                    "Lock main door 15 minutes prior to closing time. No new customers allowed",
+                    "Begin removing jewellery from displays, starting with highest value items",
+                    "Two staff members verify each item against the closing inventory sheet as it is placed in vault trays",
+                    "Place trays back in the vault in their designated, mapped locations",
+                    "Final inventory reconciliation and sign-off by both staff members",
+                    "Lock the vault using dual-key/code protocol. Physically check the handle",
+                    "Activate all alarm systems. Wait for confirmation call from security company",
+                    "Both staff members exit the premises at the same time. Never leave one person alone"
+                ]
+            },
+            {
+                "title": "Ongoing Security & Sales Floor Protocol",
+                "tasks": [
+                    "Greet every customer and make direct eye contact. Acknowledge their presence immediately",
+                    "Never show more than one high-value item (or tray) at a time. One out, one in",
+                    "Observe for suspicious behavior: bulky clothing, nervous demeanor, questions about security",
+                    "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person",
+                    "Verify high-value credit card purchases with photo ID. For large cash purchases, follow AML regulations",
+                    "Regularly clean glass display cases to remove fingerprints",
+                    "Never turn your back on a customer who is handling merchandise"
+                ]
+            },
+            {
+                "title": "Weekly Security & Maintenance Audit",
+                "tasks": [
+                    "Test all audible alarms (outside of business hours)",
+                    "Review a random 1-hour block of CCTV footage from the past week, checking for blind spots",
+                    "Inspect all locks, door hardware, and display case integrity",
+                    "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
+                    "Check batteries in all wireless security devices",
+                    "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
+                ]
+            }
+        ]
+    },
+    {
         id: 'eco_friendly_ops',
         title: "Eco-Friendly Business Operations",
         priceUSD: 49.99,
@@ -553,6 +620,127 @@ export const premiumPacks = [
                     "Ensure CAPAs are being closed out in a timely manner and their effectiveness is verified",
                     "Analyze quality data (e.g., defect rates, on-time delivery) to identify trends and areas for improvement",
                     "Confirm that internal audit results and improvement data are reported to top management"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'salon_spa_ops',
+        title: "Salon & Spa Operations",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Wellness",
+        description: "A complete toolkit for running a successful and hygienic salon or day spa, from client booking to staff management.",
+        icon: <PersonStanding className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Hygiene & Sterilization SOPs",
+            "Client Appointment & CRM",
+            "Inventory Management for Products",
+            "Staff Training & Service Quality"
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening & Hygiene Checklist",
+                "tasks": [
+                    "Disinfect all surfaces: reception desk, styling stations, manicure tables, pedicure chairs.",
+                    "Ensure all tools (scissors, combs, brushes) are sterilized and stored in clean, closed containers.",
+                    "Check and restock all stations with clean towels, capes, and necessary supplies.",
+                    "Verify that autoclaves and other sterilization equipment are functioning correctly.",
+                    "Prepare fresh disinfectant solutions as per health code regulations.",
+                    "Confirm reception has the day's appointment schedule and client notes."
+                ]
+            },
+            {
+                "title": "Client Experience & Service",
+                "tasks": [
+                    "Greet clients warmly and offer a beverage upon arrival.",
+                    "Conduct a thorough consultation before any service to understand client expectations.",
+                    "Keep detailed client records: service history, color formulas, allergies, and preferences.",
+                    "Ensure all staff follow service protocols for consistent quality.",
+                    "Politely confirm the next appointment at the end of the service.",
+                    "Actively manage online and phone bookings to minimize client wait times."
+                ]
+            },
+            {
+                "title": "Inventory & Retail Management",
+                "tasks": [
+                    "Conduct a weekly inventory count of all professional-use and retail products.",
+                    "Place orders for low-stock items.",
+                    "Ensure retail displays are clean, well-stocked, and visually appealing.",
+                    "Train staff on product knowledge to effectively recommend and sell retail items.",
+                    "Track product sales to identify best-sellers and slow-moving items."
+                ]
+            },
+            {
+                "title": "Closing & End-of-Day Tasks",
+                "tasks": [
+                    "Properly dispose of all single-use items (cotton pads, wax strips).",
+                    "Collect all used tools for sterilization.",
+                    "Clean all stations, chairs, and sinks thoroughly.",
+                    "Sweep and mop all floors.",
+                    "Reconcile the day's sales and cash register.",
+                    "Secure the premises and set the alarm."
+                ]
+            }
+        ]
+    },
+     {
+        id: 'gym_fitness_center_ops',
+        title: "Gym & Fitness Center Management",
+        priceUSD: 59.99,
+        priceINR: 4799,
+        category: "Wellness",
+        description: "An essential toolkit for gym owners to ensure member safety, equipment maintenance, and operational excellence.",
+        icon: <Dumbbell className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Equipment Safety & Cleaning",
+            "Member Onboarding & Sales Process",
+            "Class Scheduling & Instructor Mgt.",
+            "Emergency & First Aid Protocols"
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening & Safety Inspection",
+                "tasks": [
+                    "Walk the entire gym floor. Inspect all cardio and strength equipment for frayed cables, loose bolts, or malfunctions. Tag any faulty equipment 'Out of Order'.",
+                    "Ensure all free weights are correctly racked and organized.",
+                    "Check that all emergency exits are clear and accessible.",
+                    "Verify first aid kits and AEDs are present, fully stocked, and accessible.",
+                    "Wipe down all equipment handles, benches, and mats with disinfectant.",
+                    "Check locker rooms and showers for cleanliness and stock (soap, paper towels)."
+                ]
+            },
+            {
+                "title": "Member Management & Sales",
+                "tasks": [
+                    "Provide a comprehensive orientation for all new members, demonstrating proper equipment use.",
+                    "Follow up with new leads within 24 hours.",
+                    "Have a clear and consistent sales script for staff to use.",
+                    "Ensure membership agreements are filled out completely and filed securely.",
+                    "Actively engage with current members on the floor to build community and reduce churn.",
+                    "Track key metrics: new members, cancellations, member attendance."
+                ]
+            },
+            {
+                "title": "Class & Staff Management",
+                "tasks": [
+                    "Publish class schedules at least one month in advance.",
+                    "Ensure all instructors are certified and insured.",
+                    "Have a system for instructors to find substitutes if they are unable to teach.",
+                    "Regularly attend classes to ensure quality and consistency.",
+                    "Schedule regular staff meetings and training sessions."
+                ]
+            },
+            {
+                "title": "Closing Procedures",
+                "tasks": [
+                    "Give closing announcements 15 and 5 minutes before closing.",
+                    "Do a final walkthrough of the entire facility, including locker rooms, to ensure all members have left.",
+                    "Perform a final clean and wipe-down of all equipment.",
+                    "Secure all cash and valuables.",
+                    "Lock all doors and set the alarm system."
                 ]
             }
         ]
@@ -867,194 +1055,6 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'jewellery_store_ops',
-        title: "Jewellery Store Operations & Security",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        category: "Retail",
-        description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
-        icon: <Gem className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Vault Opening & Closing Protocol",
-            "Daily Inventory & Display Audit",
-            "Advanced Anti-Robbery Procedures",
-            "Customer Vetting & Suspicion Triggers",
-        ],
-        checklists: [
-            {
-                "title": "Daily Opening Procedure (Dual Control)",
-                "tasks": [
-                    "First staff member arrives, inspects exterior for tampering (locks, windows), reports 'all clear' to manager off-site",
-                    "Second staff member arrives; both enter together. First action: disarm alarm within 30 seconds",
-                    "Immediately lock the door behind you",
-                    "Perform a check of all interior sensors, panic buttons, and CCTV cameras (ensure they are recording)",
-                    "Two staff members proceed to the vault. Use dual keys/codes simultaneously to open",
-                    "Inspect vault interior and log opening time. Remove day-display trays",
-                    "Set up displays, ensuring each piece is accounted for against the daily opening inventory sheet",
-                    "Test silent panic buttons and hold-up alarms before opening to the public"
-                ]
-            },
-            {
-                "title": "Daily Closing Procedure (Dual Control)",
-                "tasks": [
-                    "Lock main door 15 minutes prior to closing time. No new customers allowed",
-                    "Begin removing jewellery from displays, starting with highest value items",
-                    "Two staff members verify each item against the closing inventory sheet as it is placed in vault trays",
-                    "Place trays back in the vault in their designated, mapped locations",
-                    "Final inventory reconciliation and sign-off by both staff members",
-                    "Lock the vault using dual-key/code protocol. Physically check the handle",
-                    "Activate all alarm systems. Wait for confirmation call from security company",
-                    "Both staff members exit the premises at the same time. Never leave one person alone"
-                ]
-            },
-            {
-                "title": "Ongoing Security & Sales Floor Protocol",
-                "tasks": [
-                    "Greet every customer and make direct eye contact. Acknowledge their presence immediately",
-                    "Never show more than one high-value item (or tray) at a time. One out, one in",
-                    "Observe for suspicious behavior: bulky clothing, nervous demeanor, questions about security",
-                    "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person",
-                    "Verify high-value credit card purchases with photo ID. For large cash purchases, follow AML regulations",
-                    "Regularly clean glass display cases to remove fingerprints",
-                    "Never turn your back on a customer who is handling merchandise"
-                ]
-            },
-            {
-                "title": "Weekly Security & Maintenance Audit",
-                "tasks": [
-                    "Test all audible alarms (outside of business hours)",
-                    "Review a random 1-hour block of CCTV footage from the past week, checking for blind spots",
-                    "Inspect all locks, door hardware, and display case integrity",
-                    "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
-                    "Check batteries in all wireless security devices",
-                    "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
-                ]
-            }
-        ]
-    },
-    {
-        id: 'salon_spa_ops',
-        title: "Salon & Spa Operations",
-        priceUSD: 49.99,
-        priceINR: 3999,
-        category: "Wellness",
-        description: "A complete toolkit for running a successful and hygienic salon or day spa, from client booking to staff management.",
-        icon: <PersonStanding className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Daily Hygiene & Sterilization SOPs",
-            "Client Appointment & CRM",
-            "Inventory Management for Products",
-            "Staff Training & Service Quality"
-        ],
-        checklists: [
-            {
-                "title": "Daily Opening & Hygiene Checklist",
-                "tasks": [
-                    "Disinfect all surfaces: reception desk, styling stations, manicure tables, pedicure chairs.",
-                    "Ensure all tools (scissors, combs, brushes) are sterilized and stored in clean, closed containers.",
-                    "Check and restock all stations with clean towels, capes, and necessary supplies.",
-                    "Verify that autoclaves and other sterilization equipment are functioning correctly.",
-                    "Prepare fresh disinfectant solutions as per health code regulations.",
-                    "Confirm reception has the day's appointment schedule and client notes."
-                ]
-            },
-            {
-                "title": "Client Experience & Service",
-                "tasks": [
-                    "Greet clients warmly and offer a beverage upon arrival.",
-                    "Conduct a thorough consultation before any service to understand client expectations.",
-                    "Keep detailed client records: service history, color formulas, allergies, and preferences.",
-                    "Ensure all staff follow service protocols for consistent quality.",
-                    "Politely confirm the next appointment at the end of the service.",
-                    "Actively manage online and phone bookings to minimize client wait times."
-                ]
-            },
-            {
-                "title": "Inventory & Retail Management",
-                "tasks": [
-                    "Conduct a weekly inventory count of all professional-use and retail products.",
-                    "Place orders for low-stock items.",
-                    "Ensure retail displays are clean, well-stocked, and visually appealing.",
-                    "Train staff on product knowledge to effectively recommend and sell retail items.",
-                    "Track product sales to identify best-sellers and slow-moving items."
-                ]
-            },
-            {
-                "title": "Closing & End-of-Day Tasks",
-                "tasks": [
-                    "Properly dispose of all single-use items (cotton pads, wax strips).",
-                    "Collect all used tools for sterilization.",
-                    "Clean all stations, chairs, and sinks thoroughly.",
-                    "Sweep and mop all floors.",
-                    "Reconcile the day's sales and cash register.",
-                    "Secure the premises and set the alarm."
-                ]
-            }
-        ]
-    },
-     {
-        id: 'gym_fitness_center_ops',
-        title: "Gym & Fitness Center Management",
-        priceUSD: 59.99,
-        priceINR: 4799,
-        category: "Wellness",
-        description: "An essential toolkit for gym owners to ensure member safety, equipment maintenance, and operational excellence.",
-        icon: <Dumbbell className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Daily Equipment Safety & Cleaning",
-            "Member Onboarding & Sales Process",
-            "Class Scheduling & Instructor Mgt.",
-            "Emergency & First Aid Protocols"
-        ],
-        checklists: [
-            {
-                "title": "Daily Opening & Safety Inspection",
-                "tasks": [
-                    "Walk the entire gym floor. Inspect all cardio and strength equipment for frayed cables, loose bolts, or malfunctions. Tag any faulty equipment 'Out of Order'.",
-                    "Ensure all free weights are correctly racked and organized.",
-                    "Check that all emergency exits are clear and accessible.",
-                    "Verify first aid kits and AEDs are present, fully stocked, and accessible.",
-                    "Wipe down all equipment handles, benches, and mats with disinfectant.",
-                    "Check locker rooms and showers for cleanliness and stock (soap, paper towels)."
-                ]
-            },
-            {
-                "title": "Member Management & Sales",
-                "tasks": [
-                    "Provide a comprehensive orientation for all new members, demonstrating proper equipment use.",
-                    "Follow up with new leads within 24 hours.",
-                    "Have a clear and consistent sales script for staff to use.",
-                    "Ensure membership agreements are filled out completely and filed securely.",
-                    "Actively engage with current members on the floor to build community and reduce churn.",
-                    "Track key metrics: new members, cancellations, member attendance."
-                ]
-            },
-            {
-                "title": "Class & Staff Management",
-                "tasks": [
-                    "Publish class schedules at least one month in advance.",
-                    "Ensure all instructors are certified and insured.",
-                    "Have a system for instructors to find substitutes if they are unable to teach.",
-                    "Regularly attend classes to ensure quality and consistency.",
-                    "Schedule regular staff meetings and training sessions."
-                ]
-            },
-            {
-                "title": "Closing Procedures",
-                "tasks": [
-                    "Give closing announcements 15 and 5 minutes before closing.",
-                    "Do a final walkthrough of the entire facility, including locker rooms, to ensure all members have left.",
-                    "Perform a final clean and wipe-down of all equipment.",
-                    "Secure all cash and valuables.",
-                    "Lock all doors and set the alarm system."
-                ]
-            }
-        ]
-    },
-    {
         id: 'international_travel_planner',
         title: "The Ultimate International Travel Planner",
         priceUSD: 19.99,
@@ -1187,3 +1187,4 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
