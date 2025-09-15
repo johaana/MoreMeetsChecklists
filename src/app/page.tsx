@@ -41,8 +41,7 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="w-full relative">
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-background to-transparent" />
-            <div className="absolute inset-0 bg-black/50 z-0" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-background/80 to-transparent" />
              {heroImage && (
                 <Image
                     src={heroImage.imageUrl}
@@ -58,10 +57,10 @@ export default function Home() {
                     <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
                         Trusted by Professionals in 12+ Industries
                     </Badge>
-                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-lg">
+                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-foreground">
                         The World’s Most Complete Event & Operations Checklists
                     </h1>
-                    <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-md">
+                    <p className="max-w-[700px] text-primary md:text-xl/relaxed mx-auto">
                          From weddings to hospitality to corporate launches, a single missed detail can cost you everything. Never miss a task again.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
