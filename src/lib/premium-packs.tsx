@@ -5,7 +5,7 @@ import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Fa
 export const premiumPacks = [
     {
         id: 'hospitality_excellence_suite',
-        title: "Hospitality Excellence Suite",
+        title: "The 5-Star Hotel & Resort Operations Playbook",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Hospitality",
@@ -72,7 +72,7 @@ export const premiumPacks = [
     },
     {
         id: 'facility_management_blueprint',
-        title: "Facility Management Operations Blueprint",
+        title: "The Complete Corporate Facility Management Guide",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Corporate",
@@ -134,7 +134,7 @@ export const premiumPacks = [
     },
     {
         id: 'commercial_kitchen_protocol',
-        title: "Commercial Kitchen & Food Safety Protocol",
+        title: "The Essential Commercial Kitchen & Food Safety Guide",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Hospitality",
@@ -198,7 +198,7 @@ export const premiumPacks = [
     },
      {
         id: 'resort_spa_management',
-        title: "Resort & Spa Management Suite",
+        title: "The Ultimate Resort & Spa Management Toolkit",
         priceUSD: 69.99,
         priceINR: 5499,
         category: "Hospitality",
@@ -258,70 +258,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'hospital_administration_ops',
-        title: "Hospital Administration & Operations",
-        priceUSD: 199.99,
-        priceINR: 15999,
-        category: "Healthcare",
-        description: "A comprehensive operational toolkit for hospital administrators covering patient care, safety, and departmental coordination.",
-        icon: <Cross className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Patient Admission & Discharge Protocol",
-            "Surgical Suite & OT Readiness",
-            "Emergency Room (ER) Triage & Flow",
-            "Inter-Departmental Coordination"
-        ],
-        checklists: [
-            {
-                "title": "Patient Admission & Discharge",
-                "tasks": [
-                    "Verify patient identification with two identifiers and cross-check with the hospital information system (HIS).",
-                    "Ensure all consent forms are explained, signed, and witnessed. A digital copy must be stored in the patient's file immediately.",
-                    "Conduct a nursing assessment upon admission, documenting allergies, current medications, and baseline vital signs.",
-                    "Prepare a detailed discharge plan at least 24 hours in advance, including follow-up appointments, medication prescriptions, and patient education materials.",
-                    "A pharmacist must review and reconcile the patient's discharge medications. The nurse must explain each medication to the patient/family.",
-                    "Arrange post-discharge transport or care coordination as needed. Confirm the arrangement with the patient's family."
-                ]
-            },
-            {
-                "title": "Surgical Suite / Operating Theatre (OT) Readiness",
-                "tasks": [
-                    "Perform a daily 'first case of the day' check to ensure all OT equipment (anesthesia machine, monitors, lights) has passed its self-test and is functional.",
-                    "Verify that the correct sterile instrument sets are available for each scheduled surgery, with sterilization indicators checked and logged.",
-                    "Conduct a 'surgical time-out' immediately before incision for EVERY case: the entire team must verbally confirm patient identity, surgical site, and procedure.",
-                    "Maintain a strict surgical count of all sponges, needles, and instruments. The count must be performed and reconciled audibly before closing the patient.",
-                    "Ensure the OT is cleaned and disinfected to sterile standards between each case. Log the cleaning time.",
-                    "Check and log temperature and humidity in the OT to ensure they are within the required range for infection control."
-                ]
-            },
-            {
-                "title": "Emergency Room (ER) Management",
-                "tasks": [
-                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., ESI).",
-                    "Ensure resuscitation bays are checked at the start of every shift and are fully stocked (e.g., intubation trays, crash cart with charged defibrillator).",
-                    "Monitor ER wait times in real-time. A hospital administrator must be alerted if wait times for high-acuity patients exceed a set threshold.",
-                    "Facilitate rapid transfer of admitted patients from the ER to inpatient beds to prevent ER boarding and overcrowding.",
-                    "Conduct a daily inventory of all critical ER supplies and medications.",
-                    "Debrief with the ER team after any major trauma or critical event to discuss what went well and what could be improved."
-                ]
-            },
-            {
-                "title": "Infection Control & Compliance",
-                "tasks": [
-                    "Conduct hand hygiene audits by observing staff in different departments. Provide immediate feedback.",
-                    "Track rates of hospital-acquired infections (HAIs) and present the data at a monthly quality control meeting.",
-                    "Ensure terminal cleaning procedures are followed for rooms of patients who were on isolation precautions.",
-                    "Verify that all staff have up-to-date vaccinations (e.g., for influenza).",
-                    "Ensure proper disposal of all biomedical waste according to regulatory standards. Check that disposal bins are not overfilled.",
-                    "Prepare for regulatory audits (e.g., JCI, NABH) by conducting regular mock surveys."
-                ]
-            }
-        ]
-    },
-    {
         id: 'jewellery_store_ops',
-        title: "Jewellery Store Operations & Security",
+        title: "The Zero-Error Guide to Jewellery Store Operations",
         priceUSD: 149.99,
         priceINR: 11999,
         category: "Retail",
@@ -388,7 +326,7 @@ export const premiumPacks = [
     },
     {
         id: 'pharmacy_ops_compliance',
-        title: "Pharmacy Operations & Compliance",
+        title: "The Essential Guide to Pharmacy Operations & Compliance",
         priceUSD: 149.99,
         priceINR: 11999,
         category: "Healthcare",
@@ -450,7 +388,7 @@ export const premiumPacks = [
     },
     {
         id: 'gym_fitness_center_ops',
-        title: "Gym & Fitness Center Operations",
+        title: "The Complete Gym & Fitness Center Operations Guide",
         priceUSD: 59.99,
         priceINR: 4799,
         category: "Wellness",
@@ -513,7 +451,7 @@ export const premiumPacks = [
     },
     {
         id: 'salon_spa_ops',
-        title: "Salon & Day Spa Operations Playbook",
+        title: "The Ultimate Salon & Day Spa Operations Playbook",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Wellness",
@@ -536,7 +474,7 @@ export const premiumPacks = [
                     "Verify that autoclaves and other sterilization equipment are functioning correctly. Log the first cycle of the day.",
                     "Prepare fresh disinfectant solutions as per health code regulations. Use test strips to verify concentration.",
                     "Confirm reception has the day's appointment schedule and has reviewed the client notes for any allergies or special requests.",
-                    "Send automated appointment reminders to all of today's clients. (Pro-tip: Use a system like Fresha or Vagaro)."
+                    "Send automated appointment reminders to all of today's clients. (Pro-Tip: Use a system like Fresha or Vagaro)."
                 ]
             },
             {
@@ -576,7 +514,7 @@ export const premiumPacks = [
     },
     {
         id: 'school_safety_operations',
-        title: "School & College Safety Operations",
+        title: "The Essential School & College Safety Guide",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Education",
@@ -638,7 +576,7 @@ export const premiumPacks = [
     },
     {
         id: 'supermarket_ops_blueprint',
-        title: "Supermarket Operations Blueprint",
+        title: "The Complete Supermarket Operations Playbook",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Retail",
@@ -698,7 +636,7 @@ export const premiumPacks = [
     },
     {
         id: 'fashion_boutique_ops',
-        title: "Fashion Boutique Operations Playbook",
+        title: "The Ultimate Fashion Boutique Operations Playbook",
         priceUSD: 69.99,
         priceINR: 5599,
         category: "Retail",
@@ -760,7 +698,7 @@ export const premiumPacks = [
     },
     {
         id: 'electronics_showroom_ops',
-        title: "Electronics Showroom Operations",
+        title: "The Complete Electronics Showroom Operations Guide",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Retail",
@@ -786,8 +724,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Sales Floor & Customer Experience",
-                "tasks": [
+                "title": "Sales Floor & Customer Experience",
+                tasks: [
                     "Train staff to approach customers with open-ended, feature-based questions (e.g., 'Are you looking for a great camera or longer battery life?'), not just 'Can I help you?'.",
                     "Insist on a structured demo process for key products, highlighting at least 3 unique features.",
                     "Have a clear and transparent process for handling customer trade-ins, using a checklist to assess the device's condition.",
@@ -819,7 +757,7 @@ export const premiumPacks = [
     },
     {
         id: 'factory_shift_playbook',
-        title: "Factory Shift Handover Playbook",
+        title: "The Essential Factory Shift Handover Playbook",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Manufacturing",
@@ -878,7 +816,7 @@ export const premiumPacks = [
     },
     {
         id: 'wedding_hall_playbook',
-        title: "Wedding & Banquet Hall Playbook",
+        title: "The Complete Wedding & Banquet Hall Operations Guide",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Events",
@@ -939,7 +877,7 @@ export const premiumPacks = [
     },
     {
         id: 'playschool_safety_protocol',
-        title: "Playschool & Daycare Safety Protocol",
+        title: "The Essential Playschool & Daycare Safety Checklist",
         priceUSD: 59.99,
         priceINR: 4999,
         category: "Education",
@@ -1000,7 +938,7 @@ export const premiumPacks = [
     },
     {
         id: 'hindu_wedding_checklist',
-        title: "The Grand Hindu Wedding Checklist",
+        title: "The Complete Hindu Wedding Planning Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1063,7 +1001,7 @@ export const premiumPacks = [
     },
     {
         id: 'muslim_wedding_checklist',
-        title: "The Complete Muslim Wedding Checklist",
+        title: "The Complete Muslim Wedding Planning Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1125,7 +1063,7 @@ export const premiumPacks = [
     },
     {
         id: 'auto_repair_playbook',
-        title: "Auto Repair Shop Operations Playbook",
+        title: "The Complete Auto Repair Shop Operations Playbook",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Automotive",
@@ -1187,7 +1125,7 @@ export const premiumPacks = [
     },
     {
         id: 'mall_operations_blueprint',
-        title: "Shopping Mall Operations Blueprint",
+        title: "The Complete Shopping Mall Operations Guide",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Retail",
@@ -1248,7 +1186,7 @@ export const premiumPacks = [
     },
     {
         id: 'call_center_playbook',
-        title: "Call Center Management Playbook",
+        title: "The High-Performance Call Center Management Guide",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Corporate",
@@ -1273,8 +1211,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Live Operations & Quality Assurance (QA)",
-                "tasks": [
+                "title": "Live Operations & Quality Assurance (QA)",
+                tasks: [
                     "Monitor the live call queue dashboard in real-time. If Service Level (SL) drops below target, adjust agent skills or deploy backup agents.",
                     "Perform a minimum of 2 'live silent monitoring' sessions per agent per week. Document scores in a QA system (e.g., Scorebuddy).",
                     "Conduct at least 1 'side-by-side' coaching session per agent per month, providing immediate feedback.",
@@ -1307,7 +1245,7 @@ export const premiumPacks = [
     },
     {
         id: 'waterpark_pool_safety',
-        title: "Waterpark & Pool Safety Protocol",
+        title: "The Complete Waterpark & Public Pool Safety Guide",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Hospitality",
@@ -1368,7 +1306,7 @@ export const premiumPacks = [
     },
     {
         id: 'airbnb_host_toolkit',
-        title: "Rental Property & Airbnb Host Toolkit",
+        title: "The Complete Airbnb & Rental Property Host Toolkit",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Real Estate",
@@ -1430,7 +1368,7 @@ export const premiumPacks = [
     },
     {
         id: 'car_dealership_playbook',
-        title: "Car Dealership Operations Playbook",
+        title: "The Complete Car Dealership Operations Playbook",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Automotive",
@@ -1456,7 +1394,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Sales & Customer Interaction Process",
+                "title": "Sales & Customer Interaction Process",
                 "tasks": [
                     "Greet all customers within 2 minutes of their arrival on the lot with a warm, non-aggressive opening.",
                     "Log every new customer interaction into the CRM immediately, capturing contact info and vehicle of interest. This is non-negotiable.",
@@ -1468,7 +1406,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Vehicle Handover & Delivery Experience",
+                "title": "Vehicle Handover & Delivery Experience",
                 "tasks": [
                     "Ensure the sold vehicle has undergone a full pre-delivery inspection (PDI), has a full tank of gas, and is detailed to perfection. The sales manager must sign off.",
                     "Prepare all paperwork in a professional, branded folder: final sales agreement, registration documents, warranty information.",
@@ -1493,7 +1431,7 @@ export const premiumPacks = [
     },
     {
         id: 'corporate_launchkit',
-        title: "Corporate & Startup Launchkit",
+        title: "The Founder's Startup & Corporate Event Launchkit",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Corporate",
@@ -1563,7 +1501,7 @@ export const premiumPacks = [
     },
     {
         id: 'esg_reporting_framework',
-        title: "Corporate ESG Reporting Framework",
+        title: "The Essential ESG Reporting & Compliance Guide",
         priceUSD: 199.99,
         priceINR: 15999,
         category: "Compliance",
@@ -1625,7 +1563,7 @@ export const premiumPacks = [
     },
     {
         id: 'iso_9001_audit_prep',
-        title: "ISO 9001 Audit Preparation Guide",
+        title: "The Complete Guide to Passing Your ISO 9001 Audit",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Compliance",
@@ -1687,7 +1625,7 @@ export const premiumPacks = [
     },
     {
         id: 'eco_friendly_ops_playbook',
-        title: "Eco-Friendly Business Playbook",
+        title: "The Sustainable Business Handbook: An Eco-Friendly Guide",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Compliance",
@@ -1749,7 +1687,7 @@ export const premiumPacks = [
     },
     {
         id: 'diagnostic_lab_protocol',
-        title: "Diagnostic Lab Operations Protocol",
+        title: "The Zero-Error Guide to Diagnostic Lab Operations",
         priceUSD: 159.99,
         priceINR: 12999,
         category: "Healthcare",
@@ -1809,7 +1747,7 @@ export const premiumPacks = [
     },
     {
         id: 'cloud_kitchen_launchkit',
-        title: "Cloud Kitchen Launch & Ops Kit",
+        title: "The Complete Cloud Kitchen Launch & Operations Kit",
         priceUSD: 69.99,
         priceINR: 5499,
         category: "Hospitality",
@@ -1935,7 +1873,7 @@ export const premiumPacks = [
     },
     {
         id: 'pet_travel_planner',
-        title: "Pet-Friendly Travel & Relocation Planner",
+        title: "The Complete Guide to Pet-Friendly Travel",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Personal",
@@ -1990,6 +1928,68 @@ export const premiumPacks = [
                 ]
             }
         ]
+    },
+    {
+        id: 'hospital_administration_ops',
+        title: "The Essential Hospital Administration & Operations Guide",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Healthcare",
+        description: "A comprehensive operational toolkit for hospital administrators covering patient care, safety, and departmental coordination.",
+        icon: <Cross className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Patient Admission & Discharge Protocol",
+            "Surgical Suite & OT Readiness",
+            "Emergency Room (ER) Triage & Flow",
+            "Inter-Departmental Coordination"
+        ],
+        checklists: [
+            {
+                "title": "Patient Admission & Discharge",
+                "tasks": [
+                    "Verify patient identification with two identifiers and cross-check with the hospital information system (HIS).",
+                    "Ensure all consent forms are explained, signed, and witnessed. A digital copy must be stored in the patient's file immediately.",
+                    "Conduct a nursing assessment upon admission, documenting allergies, current medications, and baseline vital signs.",
+                    "Prepare a detailed discharge plan at least 24 hours in advance, including follow-up appointments, medication prescriptions, and patient education materials.",
+                    "A pharmacist must review and reconcile the patient's discharge medications. The nurse must explain each medication to the patient/family.",
+                    "Arrange post-discharge transport or care coordination as needed. Confirm the arrangement with the patient's family."
+                ]
+            },
+            {
+                "title": "Surgical Suite / Operating Theatre (OT) Readiness",
+                "tasks": [
+                    "Perform a daily 'first case of the day' check to ensure all OT equipment (anesthesia machine, monitors, lights) has passed its self-test and is functional.",
+                    "Verify that the correct sterile instrument sets are available for each scheduled surgery, with sterilization indicators checked and logged.",
+                    "Conduct a 'surgical time-out' immediately before incision for EVERY case: the entire team must verbally confirm patient identity, surgical site, and procedure.",
+                    "Maintain a strict surgical count of all sponges, needles, and instruments. The count must be performed and reconciled audibly before closing the patient.",
+                    "Ensure the OT is cleaned and disinfected to sterile standards between each case. Log the cleaning time.",
+                    "Check and log temperature and humidity in the OT to ensure they are within the required range for infection control."
+                ]
+            },
+            {
+                "title": "Emergency Room (ER) Management",
+                "tasks": [
+                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., ESI).",
+                    "Ensure resuscitation bays are checked at the start of every shift and are fully stocked (e.g., intubation trays, crash cart with charged defibrillator).",
+                    "Monitor ER wait times in real-time. A hospital administrator must be alerted if wait times for high-acuity patients exceed a set threshold.",
+                    "Facilitate rapid transfer of admitted patients from the ER to inpatient beds to prevent ER boarding and overcrowding.",
+                    "Conduct a daily inventory of all critical ER supplies and medications.",
+                    "Debrief with the ER team after any major trauma or critical event to discuss what went well and what could be improved."
+                ]
+            },
+            {
+                "title": "Infection Control & Compliance",
+                "tasks": [
+                    "Conduct hand hygiene audits by observing staff in different departments. Provide immediate feedback.",
+                    "Track rates of hospital-acquired infections (HAIs) and present the data at a monthly quality control meeting.",
+                    "Ensure terminal cleaning procedures are followed for rooms of patients who were on isolation precautions.",
+                    "Verify that all staff have up-to-date vaccinations (e.g., for influenza).",
+                    "Ensure proper disposal of all biomedical waste according to regulatory standards. Check that disposal bins are not overfilled.",
+                    "Prepare for regulatory audits (e.g., JCI, NABH) by conducting regular mock surveys."
+                ]
+            }
+        ]
     }
 ];
 
@@ -2010,6 +2010,8 @@ export type PremiumPack = typeof premiumPacks[0];
 
     
 
+
+    
 
     
 
