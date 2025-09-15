@@ -1,5 +1,5 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -82,78 +82,149 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'wedding_bliss_planner',
-        title: "The Ultimate Wedding Planner",
-        priceUSD: 24.99,
-        priceINR: 1999,
+        id: 'hindu_wedding_planner',
+        title: "The Ultimate Hindu Wedding Planner",
+        priceUSD: 34.99,
+        priceINR: 2799,
         category: "Wedding",
-        description: "The one-time purchase for planning a multi-day wedding, from pre-wedding rituals to the final reception.",
+        description: "A comprehensive, multi-day checklist for planning a traditional Hindu wedding, from pre-wedding rituals to the final reception.",
         icon: <Heart className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Venue & Vendor Coordination",
-            "Detailed Guest Management",
-            "Multi-Day Event Scheduling",
-            "Budget & Payment Tracking",
+            "Detailed Sangeet, Mehndi & Haldi planning",
+            "Baraat & Varmala coordination",
+            "Mandap ceremony logistics",
+            "Vendor management for rituals",
         ],
         checklists: [
             { 
-                "title": "Initial Planning & Budgeting (12-18 Months Out)", 
+                "title": "Initial Planning & Vendor Booking (9-12 Months Out)", 
                 "tasks": [
-                    "Define wedding vision, style, and theme (e.g., traditional, modern, rustic)", 
-                    "Set a realistic budget and create a detailed tracking spreadsheet", 
-                    "Create a preliminary guest list to estimate headcount",
-                    "Select a wedding date and at least two alternative dates",
-                    "Research, interview, and book a professional wedding planner",
-                    "Explore and book ceremony and reception venues",
-                    "Purchase wedding insurance to cover unforeseen circumstances"
+                    "Finalize budget with both families", 
+                    "Create guest list and estimate final count",
+                    "Book Pandit/Priest for all ceremonies",
+                    "Book main wedding venue and reception hall",
+                    "Book caterer specializing in required cuisine",
+                    "Book photographer & videographer",
+                    "Book makeup artist & hair stylist"
                 ] 
             },
             { 
-                "title": "Vendor Booking & Contracts (8-12 Months Out)", 
+                "title": "Sangeet Ceremony Checklist", 
                 "tasks": [
-                    "Book photographer and videographer; align on style", 
-                    "Hire caterer and schedule a menu tasting session",
-                    "Book DJ/band and any other entertainment (e.g., photo booth, live performers)",
-                    "Select and order the wedding cake",
-                    "Hire a florist and discuss floral designs for venues and bridal party",
-                    "Book the officiant or priest for the ceremony",
-                    "Arrange transportation for the wedding party and guests if needed"
+                    "Book Sangeet venue (if different from main venue)",
+                    "Hire DJ or live band",
+                    "Choreograph and practice family dance performances",
+                    "Plan Sangeet decor, theme, and lighting",
+                    "Organize food and beverage menu for the event",
+                    "Rent or set up a dance floor and stage"
+                ]
+            },
+            {
+                "title": "Mehndi Ceremony Checklist",
+                "tasks": [
+                    "Book professional Mehndi artists for the bride and guests",
+                    "Finalize Mehndi designs for the bride",
+                    "Arrange comfortable seating and lighting for the artists and guests",
+                    "Organize music and entertainment for the event",
+                    "Plan a specific menu for the Mehndi (often finger foods and drinks)",
+                    "Purchase or arrange Mehndi party favors for guests"
+                ]
+            },
+            {
+                "title": "Haldi Ceremony Checklist",
+                "tasks": [
+                    "Prepare or purchase the Haldi paste",
+                    "Arrange a designated area for the ceremony with proper seating",
+                    "Organize traditional attire (usually yellow) for family members",
+                    "Arrange for floral jewelry (phoolon ka gehna) for the bride",
+                    "Plan for music (Dholki or recorded) during the ceremony",
+                    "Ensure a changing/shower area is available post-ceremony"
+                ]
+            },
+            { 
+                "title": "Wedding Day: Baraat, Varmala & Mandap", 
+                "tasks": [
+                    "Coordinate Baraat assembly point and route",
+                    "Arrange horse/vintage car for the groom",
+                    "Organize Baraat welcome (Milni) by the bride's family",
+                    "Ensure Varmalas (garlands) are ready and fresh",
+                    "Check Mandap setup, decor, and sacred fire (havan kund) arrangements",
+                    "Verify all items for the ceremony (puja samagri) are present",
+                    "Coordinate bride's entry (phoolon ki chaadar)",
+                    "Finalize Kanyadaan and Saptapadi ceremony logistics"
                 ] 
             },
             { 
-                "title": "Pre-Wedding Events & Attire (6-8 Months Out)", 
+                "title": "Post-Wedding: Reception & Vidaai", 
                 "tasks": [
-                    "Plan and book venues for pre-wedding events (e.g., Haldi, Mehndi, Sangeet, Bridal Shower)",
-                    "Shop for and order wedding dress/attire for all main ceremonies",
-                    "Select and order outfits for the bridesmaids and groomsmen",
-                    "Send out 'Save the Date' notifications via email or post",
-                    "Create a wedding website with event details, travel information, and RSVP link",
-                    "Book hair and makeup artists and schedule trial sessions"
+                    "Plan reception stage, seating chart, and decor",
+                    "Coordinate couple's grand entrance",
+                    "Schedule cake-cutting ceremony and first dance",
+                    "Arrange for guest book or photo booth",
+                    "Plan the Vidaai ceremony and prepare the decorated car",
+                    "Settle final payments with all vendors"
+                ] 
+            }
+        ]
+    },
+    {
+        id: 'christian_wedding_planner',
+        title: "The Complete Christian Wedding Planner",
+        priceUSD: 29.99,
+        priceINR: 2399,
+        category: "Wedding",
+        description: "From the engagement party to the final send-off, a detailed checklist for a modern Christian wedding ceremony and reception.",
+        icon: <Cross className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Church ceremony coordination",
+            "Bridal party management",
+            "Reception planning and timeline",
+            "Legal documentation and registration",
+        ],
+        checklists: [
+            { 
+                "title": "Initial Planning & Legalities (9-12 Months Out)", 
+                "tasks": [
+                    "Set a budget", 
+                    "Book the Church and Officiant/Priest",
+                    "Complete pre-cana or marriage preparation course",
+                    "Book reception venue",
+                    "Finalize guest list",
+                    "Book key vendors: photographer, caterer, DJ/band"
+                ] 
+            },
+            {
+                "title": "Bridal & Groom's Party",
+                "tasks": [
+                    "Select Maid of Honor, Best Man, bridesmaids, and groomsmen",
+                    "Shop for and order wedding gown and groom's tuxedo/suit",
+                    "Coordinate and order attire for the entire bridal party",
+                    "Plan and book bridal shower and bachelor/bachelorette parties",
+                    "Purchase gifts for the bridal party and parents"
+                ]
+            },
+            { 
+                "title": "The Ceremony", 
+                "tasks": [
+                    "Plan the order of service (processional, readings, vows, recessional)",
+                    "Print wedding programs/service sheets for guests",
+                    "Book ceremony musicians (organist, string quartet, vocalist)",
+                    "Plan and decorate the church (altar flowers, pew decorations)",
+                    "Conduct a wedding rehearsal with the full bridal party and officiant",
+                    "Appoint ushers to seat guests"
                 ] 
             },
             { 
-                "title": "Final Details & Logistics (2-4 Months Out)", 
+                "title": "The Reception", 
                 "tasks": [
-                    "Send out official invitations with detailed inserts for each event",
-                    "Finalize guest list and meticulously track RSVPs",
-                    "Create a detailed seating chart for the reception and other seated events",
-                    "Purchase wedding rings and get them insured",
-                    "Apply for the marriage license within the legal timeframe",
-                    "Create a comprehensive timeline for all wedding events, from makeup to send-off",
-                    "Confirm all vendor arrival times, contact details, and final requirements"
-                ] 
-            },
-            { 
-                "title": "Wedding Week & Day-Of Coordination", 
-                "tasks": [
-                    "Prepare and distribute welcome baskets for out-of-town guests",
-                    "Confirm and prepare final payments to be given to all vendors on the day",
-                    "Assign specific roles and responsibilities to wedding party members (e.g., gift collection)",
-                    "Conduct a final walk-through of the venue(s) with the planner/coordinator",
-                    "Pack an overnight bag for the wedding night and honeymoon luggage",
-                    "Prepare an emergency kit (sewing supplies, first aid, stain remover, etc.)",
-                    "Ensure all personal items, decor, and props are delivered to the venue"
+                    "Finalize menu and cake details with the caterer",
+                    "Create a detailed seating chart",
+                    "Plan the reception timeline: grand entrance, first dance, speeches/toasts, cake cutting",
+                    "Choose and order wedding favors for guests",
+                    "Confirm final guest count with the venue and caterer",
+                    "Arrange transportation for the couple's final send-off"
                 ] 
             }
         ]
@@ -225,64 +296,64 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'sustainability_starter_kit',
-        title: "Sustainability Starter Kit",
-        priceUSD: 19.99,
-        priceINR: 1599,
+        id: 'esg_reporting_framework',
+        title: "Corporate ESG Reporting Framework",
+        priceUSD: 89.99,
+        priceINR: 7199,
         category: "Sustainability",
-        description: "For Eco-conscious Businesses. Turn green intentions into measurable action and track sustainability goals.",
+        description: "A comprehensive checklist for gathering data and creating an annual ESG (Environmental, Social, Governance) report.",
         icon: <Leaf className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Comprehensive Energy & Water Audits",
-            "Sustainable Waste Management",
-            "Green Procurement & Supply Chain",
-            "Employee Engagement Programs",
+            "Greenhouse Gas (GHG) Emissions Tracking",
+            "Diversity, Equity & Inclusion (DEI) Metrics",
+            "Board Governance & Ethics Policies",
+            "Supply Chain Due Diligence"
         ],
         checklists: [
-            { 
-                "title": "Monthly Energy Audit", 
+            {
+                "title": "Environmental Data Collection",
                 "tasks": [
-                    "Log electricity, gas, and any other utility meter readings on the 1st of each month", 
-                    "Identify and quantify sources of energy waste (e.g., equipment left on, poor insulation)",
-                    "Ensure all facility lighting has been upgraded to energy-efficient LEDs",
-                    "Check HVAC systems for optimal performance, clean filters, and verify thermostat scheduling",
-                    "Promote a 'switch off' campaign among staff for computers and lights",
-                    "Evaluate the feasibility and ROI of installing renewable energy sources (e.g., solar panels)"
-                ] 
+                    "Collect utility bills to calculate Scope 1 & 2 GHG emissions",
+                    "Track total water consumption and recycling rates",
+                    "Measure total waste generated, breaking it down by landfill, recycled, and composted",
+                    "Document energy conservation initiatives implemented during the year",
+                    "Report any environmental fines or non-compliance incidents",
+                    "Gather data on business travel to estimate Scope 3 emissions"
+                ]
             },
-            { 
-                "title": "Waste Management & Reduction", 
+            {
+                "title": "Social Metrics & Employee Data",
                 "tasks": [
-                    "Conduct a comprehensive waste audit to identify main waste streams (organic, recyclable, landfill)",
-                    "Ensure clear, consistent labeling for all recycling, compost, and general waste bins",
-                    "Set up a program to compost food scraps from the canteen or pantry",
-                    "Implement a 'zero single-use plastic' policy for all office supplies and events",
-                    "Track and report on waste-to-landfill reduction percentage monthly",
-                    "Partner with certified recycling and waste management services that provide reporting"
-                ] 
+                    "Compile workforce data: gender, age, ethnicity ratios at all levels",
+                    "Report on Diversity, Equity, and Inclusion (DEI) programs and their impact",
+                    "Track and report employee turnover rate (voluntary and involuntary)",
+                    "Document total hours and average cost of employee training",
+                    "Report on health and safety metrics (e.g., incident rates, lost time)",
+                    "Summarize community engagement and corporate volunteering programs"
+                ]
             },
-            { 
-                "title": "Water Conservation Program", 
+            {
+                "title": "Governance & Ethics",
                 "tasks": [
-                    "Install low-flow aerators on all taps and water-efficient toilet flushing systems",
-                    "Conduct regular checks for and immediately repair any water leaks in plumbing and fixtures",
-                    "Monitor water meter readings to track consumption and identify anomalies",
-                    "Use drought-resistant, native plants for all corporate landscaping",
-                    "Implement a rainwater harvesting system for non-potable uses like gardening or cleaning",
-                    "Educate staff on water-saving practices in kitchens and restrooms"
-                ] 
+                    "Verify and describe board independence and oversight of ESG issues",
+                    "Document executive compensation policies and link to ESG performance",
+                    "Report on whistleblower policies and number of cases reported",
+                    "Confirm that anti-corruption and anti-bribery training has been conducted",
+                    "Describe the company's data privacy and cybersecurity policies",
+                    "Disclose any political contributions or lobbying activities"
+                ]
             },
-            { 
-                "title": "Green Procurement Policy", 
+            {
+                "title": "Report Drafting & Verification",
                 "tasks": [
-                    "Create and enforce a policy to prioritize sustainable, local, and ethical suppliers",
-                    "Verify eco-certifications of suppliers and their products (e.g., Fair Trade, FSC, Energy Star)",
-                    "Request that all suppliers minimize packaging or use returnable packaging",
-                    "Choose office supplies and materials made from recycled or renewable content",
-                    "Regularly audit key suppliers for compliance with your company's sustainability standards",
-                    "Favor renting or leasing equipment over purchasing to promote a circular economy"
-                ] 
+                    "Choose a reporting framework to follow (e.g., GRI, SASB, TCFD)",
+                    "Draft the narrative for each section of the ESG report",
+                    "Create data visualizations (charts, graphs) for key metrics",
+                    "Conduct an internal review of the report for accuracy and completeness",
+                    "Engage a third-party auditor for external assurance of ESG data (optional but recommended)",
+                    "Design and publish the final report on the company website"
+                ]
             }
         ]
     },
@@ -479,68 +550,6 @@ export const premiumPacks = [
                     "Ensure a corrective and preventive action (CAPA) process is being used effectively",
                     "Analyze data to identify trends and areas for improvement",
                     "Confirm that internal audit results are reported to management"
-                ]
-            }
-        ]
-    },
-    {
-        id: 'esg_reporting_framework',
-        title: "Corporate ESG Reporting Framework",
-        priceUSD: 89.99,
-        priceINR: 7199,
-        category: "Sustainability",
-        description: "A comprehensive checklist for gathering data and creating an annual ESG (Environmental, Social, Governance) report.",
-        icon: <Leaf className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Greenhouse Gas (GHG) Emissions Tracking",
-            "Diversity, Equity & Inclusion (DEI) Metrics",
-            "Board Governance & Ethics Policies",
-            "Supply Chain Due Diligence"
-        ],
-        checklists: [
-            {
-                "title": "Environmental Data Collection",
-                "tasks": [
-                    "Collect utility bills to calculate Scope 1 & 2 GHG emissions",
-                    "Track total water consumption and recycling rates",
-                    "Measure total waste generated, breaking it down by landfill, recycled, and composted",
-                    "Document energy conservation initiatives implemented during the year",
-                    "Report any environmental fines or non-compliance incidents",
-                    "Gather data on business travel to estimate Scope 3 emissions"
-                ]
-            },
-            {
-                "title": "Social Metrics & Employee Data",
-                "tasks": [
-                    "Compile workforce data: gender, age, ethnicity ratios at all levels",
-                    "Report on Diversity, Equity, and Inclusion (DEI) programs and their impact",
-                    "Track and report employee turnover rate (voluntary and involuntary)",
-                    "Document total hours and average cost of employee training",
-                    "Report on health and safety metrics (e.g., incident rates, lost time)",
-                    "Summarize community engagement and corporate volunteering programs"
-                ]
-            },
-            {
-                "title": "Governance & Ethics",
-                "tasks": [
-                    "Verify and describe board independence and oversight of ESG issues",
-                    "Document executive compensation policies and link to ESG performance",
-                    "Report on whistleblower policies and number of cases reported",
-                    "Confirm that anti-corruption and anti-bribery training has been conducted",
-                    "Describe the company's data privacy and cybersecurity policies",
-                    "Disclose any political contributions or lobbying activities"
-                ]
-            },
-            {
-                "title": "Report Drafting & Verification",
-                "tasks": [
-                    "Choose a reporting framework to follow (e.g., GRI, SASB, TCFD)",
-                    "Draft the narrative for each section of the ESG report",
-                    "Create data visualizations (charts, graphs) for key metrics",
-                    "Conduct an internal review of the report for accuracy and completeness",
-                    "Engage a third-party auditor for external assurance of ESG data (optional but recommended)",
-                    "Design and publish the final report on the company website"
                 ]
             }
         ]
