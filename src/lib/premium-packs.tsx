@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -497,6 +497,180 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'electronics_showroom_ops',
+        title: "Electronics Showroom Daily Ops",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Retail",
+        description: "A specialized playbook for managing high-value electronics retail, focusing on security, sales, and live demos.",
+        icon: <Ear className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Live Demo Unit & Security Checks",
+            "Inventory & High-Value Stock Audit",
+            "Sales Staff Product Training",
+            "Trade-in & Exchange Process"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening & Merchandising",
+                tasks: [
+                    "Ensure all live demo units (phones, laptops, TVs) are charged, clean, and fully functional.",
+                    "Verify all security tethers and alarms on high-value items are active.",
+                    "Conduct a spot-check of 5-10 high-value SKUs against the inventory system.",
+                    "Check that all promotional signage and price tags are accurate and aligned with current offers.",
+                    "Brief the sales team on daily targets, new products, and special promotions.",
+                    "Ensure all sales staff are logged into the POS and CRM systems."
+                ]
+            },
+            {
+                title: "Sales Floor & Customer Service",
+                tasks: [
+                    "Train staff to approach customers using feature-based questions, not just 'Can I help you?'.",
+                    "Insist on a structured demo process for key products.",
+                    "Have a clear and transparent process for handling customer trade-ins.",
+                    "Ensure financing and extended warranty options are offered to every eligible customer.",
+                    "Maintain a clean and organized accessories section, a key driver of high-margin sales."
+                ]
+            },
+            {
+                title: "Inventory & Security Protocol",
+                tasks: [
+                    "Conduct a full inventory count of all high-value product categories weekly.",
+                    "Review CCTV footage of cash counters and store exits daily.",
+                    "Implement a strict policy for handling returned goods, including inspection for damage and completeness.",
+                    "Reconcile physical cash and credit card transactions against POS reports at the end of every shift.",
+                    "Store high-value, low-volume items in a locked stockroom, not on the open sales floor."
+                ]
+            },
+            {
+                title: "Staff & Training",
+                tasks: [
+                    "Conduct weekly 30-minute training sessions on new products.",
+                    "Role-play customer scenarios to improve sales techniques.",
+                    "Track individual sales performance and provide regular coaching.",
+                    "Ensure all staff are familiar with the store's emergency and security procedures."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'fashion_boutique_ops',
+        title: "Fashion Boutique Operations",
+        priceUSD: 69.99,
+        priceINR: 5599,
+        category: "Retail",
+        description: "The complete guide to running a successful apparel store, from visual merchandising to fitting room management.",
+        icon: <Shirt className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Visual Merchandising & Display",
+            "Fitting Room & Loss Prevention",
+            "New Stock & Inventory Management",
+            "Clienteling & Personal Styling"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening & Merchandising",
+                tasks: [
+                    "Refresh the window display. Ensure it's clean, well-lit, and features new arrivals.",
+                    "Walk the floor and restock any items sold the previous day. Ensure all sizes are represented.",
+                    "Steam and prep any wrinkled garments on the sales floor.",
+                    "Check that all mannequins are styled correctly according to the current collection's theme.",
+                    "Ensure all signage and price tags are correct and presentable."
+                ]
+            },
+            {
+                title: "Fitting Room & Customer Service",
+                tasks: [
+                    "Implement a strict fitting room policy (e.g., limit of 5 items per customer).",
+                    "Ensure fitting rooms are always clean, well-lit, and mirrors are smudge-free.",
+                    "Train staff to 'service' the fitting rooms: check on customers, offer different sizes, and clear out unwanted items immediately.",
+                    "Inspect items returned from the fitting room for damage or signs of wear before returning to the sales floor.",
+                    "Actively engage in 'clienteling' - building relationships with repeat customers and tracking their preferences."
+                ]
+            },
+            {
+                title: "New Stock & Inventory Management",
+                tasks: [
+                    "Receive and check new shipments against the packing slip. Report any discrepancies immediately.",
+                    "Tag all new items with price and security tags before bringing them to the sales floor.",
+                    "Steam and prep all new stock before merchandising.",
+                    "Conduct weekly 'cycle counts' of best-selling categories to maintain inventory accuracy.",
+                    "Plan and execute markdowns and sales promotions. Ensure POS system is updated accordingly."
+                ]
+            },
+            {
+                title: "Closing & Daily Reporting",
+                tasks: [
+                    "Complete a full floor recovery: re-hang, re-fold, and organize all merchandise.",
+                    "Clear all fitting rooms of any remaining items.",
+                    "Reconcile daily sales reports from the POS system.",
+                    "Prepare the bank deposit.",
+                    "Secure the premises, lock all doors, and set the alarm."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'supermarket_ops',
+        title: "Supermarket & Grocery Store Daily Ops",
+        priceUSD: 129.99,
+        priceINR: 9999,
+        category: "Retail",
+        description: "The essential operational playbook for managing a grocery store, focusing on fresh produce, inventory, and daily operations.",
+        icon: <ShoppingCart className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Fresh Produce & Quality Control",
+            "Cold Chain & Dairy Management",
+            "Daily Restocking & Shelf Presentation",
+            "Cashier & Front-End Operations"
+        ],
+        checklists: [
+            {
+                title: "Morning Opening & Freshness Check",
+                tasks: [
+                    "Inspect the fresh produce section. Remove any spoiled or wilted items. Rotate stock.",
+                    "Check 'sell-by' dates in the dairy, meat, and bakery sections. Remove and log any expired items.",
+                    "Verify temperatures of all refrigerators, freezers, and hot-food holding units. Log results.",
+                    "Walk the aisles to identify any restocking needs for the day.",
+                    "Ensure the entrance and checkout areas are clean and clutter-free."
+                ]
+            },
+            {
+                title: "Receiving & Inventory",
+                tasks: [
+                    "Inspect all incoming deliveries for quality and check temperatures for perishable goods.",
+                    "Verify deliveries against invoices, noting any shortages or damages.",
+                    "Immediately move perishable items to cold storage, following the FIFO (First-In, First-Out) principle.",
+                    "Use a handheld scanner to update inventory levels in the POS system as stock is received.",
+                    "Keep the receiving area clean and organized."
+                ]
+            },
+            {
+                title: "During the Day: Floor Operations",
+                tasks: [
+                    "Continuously restock shelves, especially for fast-moving items.",
+                    "Perform 'facing' of shelves to ensure products are neat and pulled to the front.",
+                    "Conduct regular freshness checks in the produce and bakery departments throughout the day.",
+                    "Address any spills or hazards on the floor immediately.",
+                    "Monitor checkout queues and open additional counters as needed to manage wait times."
+                ]
+            },
+            {
+                title: "Closing & Financial Reconciliation",
+                tasks: [
+                    "Perform a final sweep of the aisles for restocking and tidying.",
+                    "Consolidate and remove near-expiry items for markdown or disposal.",
+                    "Reconcile each cashier's drawer against their POS sales report.",
+                    "Prepare the daily bank deposit.",
+                    "Secure the store, lock all entrances, and set the alarm system."
+                ]
+            }
+        ]
+    },
+    {
         id: 'jewellery_store_ops',
         title: "Jewellery Store Operations & Security",
         priceUSD: 149.99,
@@ -801,62 +975,117 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'private_clinic_ops',
-        title: "Private Medical Clinic Operations",
-        priceUSD: 119.99,
-        priceINR: 9499,
+        id: 'pharmacy_ops',
+        title: "Pharmacy Operations & Compliance",
+        priceUSD: 149.99,
+        priceINR: 11999,
         category: "Healthcare",
-        description: "A critical daily operations and compliance toolkit for clinic managers, focusing on patient safety, hygiene, and data privacy.",
+        description: "A specialized, compliance-focused toolkit for retail pharmacies to ensure patient safety and operational accuracy.",
         icon: <Cross className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Opening & Sterilization Protocol",
-            "Patient Data & Privacy (HIPAA)",
-            "Medical Supply Inventory Check",
-            "End-of-Day Closing & Data Backup"
+            "Prescription Verification Protocol",
+            "Controlled Substance Inventory",
+            "Patient Counseling Checklist",
+            "Daily Compliance & Logs"
         ],
         checklists: [
             {
-                title: "Clinic Opening & Morning Prep",
+                title: "Daily Opening & Security",
                 tasks: [
-                    "Disinfect all high-touch surfaces: reception counter, door handles, waiting room chairs.",
-                    "Turn on all necessary medical equipment and check for error messages. Run diagnostic tests on key machines.",
-                    "Verify that all examination rooms are clean, stocked with disposables (gloves, masks, paper), and ready for the first patient.",
-                    "Check and log the temperature of the vaccine/medication refrigerator.",
-                    "Run the autoclave/sterilizer for the first batch of instruments. Verify it reached the correct temperature and pressure.",
-                    "Reception to review the day's appointment schedule, flagging any new patients or special cases."
+                    "Disarm security system. Check for any overnight alerts.",
+                    "Log temperatures of medication and vaccine refrigerators. Ensure they are within range.",
+                    "Calibrate pill counting machines.",
+                    "Check and restock supplies for prescription filling (bottles, labels, bags).",
+                    "Verify that the contact list for emergency services (Police, Poison Control) is visible."
                 ]
             },
             {
-                title: "Patient Management & Data Privacy",
+                title: "Prescription Filling & Verification",
                 tasks: [
-                    "Ensure all new patients sign the required privacy policy (HIPAA/GDPR) and consent forms before being seen.",
-                    "Verify patient identity and insurance information at every visit.",
-                    "Ensure all computer screens are angled away from public view or have privacy filters.",
-                    "Never leave patient files or charts unattended in public areas.",
-                    "Use a secure, compliant messaging system for any communication containing Patient Health Information (PHI).",
-                    "Shred all paper documents containing PHI that are no longer needed."
+                    "Verify patient identity (2 points of identification for new patients).",
+                    "Check prescription for completeness and legality (doctor's signature, date, DEA number for controlled substances).",
+                    "Perform a drug utilization review (DUR) to check for allergies, interactions, or duplicate therapies.",
+                    "Follow the 'Right Drug, Right Patient, Right Dose, Right Route, Right Time' protocol.",
+                    "A second pharmacist must double-check all high-risk and compounded medications before dispensing.",
+                    "Counsel every new patient on their medication, its side effects, and how to take it."
                 ]
             },
             {
-                title: "During the Day: Operations & Supply",
+                title: "Inventory & Controlled Substances",
                 tasks: [
-                    "After each patient, disinfect the examination room surfaces and change the paper on the exam table.",
-                    "Properly sterilize all used medical instruments according to protocol.",
-                    "Keep an accurate log of all dispensed medications and samples.",
-                    "Conduct a mid-day check of restrooms and waiting areas for cleanliness.",
-                    "Monitor the stock of critical supplies (gloves, masks, needles) and re-order when they hit the minimum level."
+                    "Conduct a daily count of all Schedule II controlled substances. Reconcile with the perpetual inventory log.",
+                    "Check for expiring medications on a monthly basis and remove them from stock.",
+                    "Receive new drug shipments, verify against the invoice, and immediately secure any controlled substances.",
+                    "Process and log all returned medications according to regulatory guidelines."
                 ]
             },
             {
-                title: "End of Day Closing Procedures",
+                title: "Closing Procedures",
                 tasks: [
-                    "Reconcile all payments and co-pays received during the day.",
-                    "Ensure all patient charts and records for the day are completed and filed correctly.",
-                    "Run a full data backup of the clinic's electronic health record (EHR) system to a secure, off-site location.",
-                    "Properly dispose of all bio-hazardous waste in designated containers.",
-                    "Turn off all non-essential equipment, lock all medication cabinets, and secure the premises.",
-                    "Log out of all computer systems and activate the security alarm."
+                    "Reconcile cash registers.",
+                    "File all of the day's prescriptions.",
+                    "Complete all required logs (refrigerator temps, controlled substance counts).",
+                    "Secure all medications and patient records.",
+                    "Activate security system and lock all entrances."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'diagnostic_lab_ops',
+        title: "Diagnostic Lab Daily Protocol",
+        priceUSD: 159.99,
+        priceINR: 12999,
+        category: "Healthcare",
+        description: "A zero-error tolerance playbook for pathology and diagnostic labs focusing on accuracy, safety, and compliance.",
+        icon: <TestTube className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Sample Receiving & Accessioning",
+            "Daily Equipment Calibration Logs",
+            "Quality Control (QC) Run Protocol",
+            "Biohazard Waste Management"
+        ],
+        checklists: [
+            {
+                title: "Morning Setup & Calibration",
+                tasks: [
+                    "Log temperatures of all refrigerators, freezers, and incubators.",
+                    "Run daily quality control (QC) samples on all analyzers before processing patient samples. Results must be within acceptable limits.",
+                    "Calibrate pipettes and other measurement instruments as per the weekly schedule.",
+                    "Check inventory of reagents and consumables. Note any items approaching minimum stock levels.",
+                    "Ensure all workstations are clean and disinfected."
+                ]
+            },
+            {
+                title: "Sample Management & Processing",
+                tasks: [
+                    "Verify patient information on the sample tube matches the requisition form (at least two identifiers).",
+                    "Inspect samples for proper collection (e.g., correct tube type, sufficient volume, no hemolysis). Reject and log any unsuitable samples.",
+                    "Assign a unique lab ID (accession number) to each sample and log it into the Laboratory Information System (LIS).",
+                    "Prioritize and process STAT samples within the defined turnaround time.",
+                    "Ensure proper PPE (gloves, lab coat, eye protection) is worn at all times."
+                ]
+            },
+            {
+                title: "Data & Reporting",
+                tasks: [
+                    "Have a second technologist review all critical or abnormal results before release.",
+                    "Ensure reports are delivered to the correct physician/clinic via secure methods.",
+                    "Handle any STAT or critical value call-backs to physicians, documenting the time and person spoken to.",
+                    "Perform daily backups of the LIS and all instrument data.",
+                    "Shred all paper documents containing patient information."
+                ]
+            },
+            {
+                title: "End of Day & Waste Management",
+                tasks: [
+                    "Properly dispose of all biohazardous materials in designated red bags/sharps containers.",
+                    "Perform end-of-day maintenance on all analyzers as per manufacturer guidelines.",
+                    "Decontaminate all work surfaces.",
+                    "Securely store any pending samples.",
+                    "Ensure all patient data is secured and log off all computer systems."
                 ]
             }
         ]
@@ -915,6 +1144,64 @@ export const premiumPacks = [
                     "Choose vendors who use minimal and recyclable packaging.",
                     "Encourage teleconferencing to reduce travel-related emissions.",
                     "Offer incentives for employees who use public transport, carpool, or cycle to work."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'esg_reporting_framework',
+        title: "Corporate ESG Reporting Framework",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Compliance",
+        description: "A step-by-step framework for companies to gather data and prepare for modern ESG reporting standards.",
+        icon: <Shield className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Environmental Data Collection (Scope 1 & 2)",
+            "Social Metrics & Employee Data",
+            "Governance Policy Verification",
+            "Stakeholder Engagement Plan"
+        ],
+        checklists: [
+            {
+                title: "Environmental Data Gathering",
+                tasks: [
+                    "Collect all utility bills (electricity, natural gas) to calculate Scope 2 GHG emissions.",
+                    "Gather fuel consumption data from company-owned vehicles to calculate Scope 1 GHG emissions.",
+                    "Measure total water consumption and track recycling rates for waste.",
+                    "Document any environmental policies (e.g., sustainable procurement) already in place.",
+                    "Log any environmental incidents or fines."
+                ]
+            },
+            {
+                title: "Social Metrics Data Gathering",
+                tasks: [
+                    "Compile workforce data: gender diversity, employee turnover, new hires.",
+                    "Gather data on health and safety incidents (e.g., number of accidents, lost time injury rate).",
+                    "Document employee training hours, focusing on compliance and professional development.",
+                    "Summarize community engagement activities and corporate social responsibility (CSR) investments.",
+                    "Ensure you have a formal employee grievance mechanism and log any complaints."
+                ]
+            },
+            {
+                title: "Governance Policy & Verification",
+                tasks: [
+                    "Verify you have documented policies for anti-corruption and bribery.",
+                    "Confirm the existence of a whistleblower policy.",
+                    "Document the board of directors' structure, independence, and oversight of ESG issues.",
+                    "Ensure a code of business ethics is in place and has been communicated to all employees.",
+                    "Review and document the company's data privacy and security policies."
+                ]
+            },
+            {
+                title: "Reporting & Stakeholder Engagement",
+                tasks: [
+                    "Identify your key stakeholders (investors, employees, customers, community).",
+                    "Choose an ESG reporting framework to align with (e.g., GRI, SASB, TCFD).",
+                    "Draft the ESG report, ensuring all data is accurate and verifiable.",
+                    "Have the report reviewed by an internal committee and ideally a third-party verifier.",
+                    "Plan how the report will be published and communicated to stakeholders."
                 ]
             }
         ]
@@ -1064,7 +1351,8 @@ export const premiumPacks = [
                     "Walk the entire gym floor. Inspect all cardio and strength equipment for frayed cables, loose bolts, or malfunctions. Tag any faulty equipment 'Out of Order'.",
                     "Ensure all free weights are correctly racked and organized.",
                     "Check that all emergency exits are clear and accessible.",
-                    "Verify first aid kits and AEDs are present, fully stocked, and accessible.",
+                    "Verify first aid kits and AEDs are present, fully stocked, and accessible. Check AED battery status.",
+                    "Post emergency contact list (Ambulance, Police, nearest Hospital) visibly at reception.",
                     "Wipe down all equipment handles, benches, and mats with disinfectant.",
                     "Check locker rooms and showers for cleanliness and stock (soap, paper towels)."
                 ]
@@ -1544,3 +1832,4 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
