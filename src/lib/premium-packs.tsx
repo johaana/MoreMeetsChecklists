@@ -131,6 +131,65 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'cloud_kitchen_ops',
+        title: "Cloud Kitchen Launch & Ops Kit",
+        priceUSD: 69.99,
+        priceINR: 5499,
+        category: "Hospitality",
+        description: "A complete toolkit for launching and running a successful delivery-only kitchen operation.",
+        icon: <Truck className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Aggregator Onboarding & Menu Sync",
+            "Packaging Station & Inventory Setup",
+            "Order Fulfillment & Handoff Protocol",
+            "Rider Management & Reconciliation"
+        ],
+        checklists: [
+            {
+                title: "Aggregator Setup & Menu Engineering",
+                tasks: [
+                    "Complete all paperwork and FSSAI registration for Zomato, Swiggy, etc.",
+                    "Set up online menus on all platforms. Ensure high-quality photos are used.",
+                    "Engineer menu for delivery: prioritize items that travel well. Create delivery-friendly combos.",
+                    "Sync all aggregator platforms with a single POS or order management dashboard.",
+                    "Run test orders on all platforms to ensure correct pricing, taxes, and item mapping."
+                ]
+            },
+            {
+                title: "Packaging & Dispatch Station Setup",
+                tasks: [
+                    "Designate a specific area for packaging and dispatch, separate from the cooking line.",
+                    "Stock the station with all necessary packaging materials: containers, bags, cutlery, tissues, tape.",
+                    "Create a checklist for each order: Main dish, side, drink, cutlery, condiments. Staff must tick off each item.",
+                    "Install a screen or printer at the station to display order details clearly.",
+                    "Ensure packaging is designed to maintain food temperature and prevent spills."
+                ]
+            },
+            {
+                title: "Live Operations & Order Fulfillment",
+                tasks: [
+                    "Acknowledge incoming orders on the dashboard within 60 seconds.",
+                    "Fire orders to the correct kitchen station based on preparation time.",
+                    "Double-check each packed item against the order ticket before sealing the bag.",
+                    "Attach the correct bill to the sealed package.",
+                    "Hand over the package to the correct delivery rider and mark the order as 'Ready for Pickup'.",
+                    "Monitor and manage rider wait times. Report any issues to the aggregator's support team."
+                ]
+            },
+            {
+                title: "End-of-Day Reconciliation",
+                tasks: [
+                    "Reconcile orders between your POS and each aggregator's dashboard.",
+                    "Calculate total sales, discounts, and commissions for each platform.",
+                    "Verify online payments received against the settlement reports.",
+                    "Conduct a closing inventory count of key ingredients and packaging materials.",
+                    "Shut down all systems and securely store any sensitive data."
+                ]
+            }
+        ]
+    },
+    {
         id: 'resort_spa_management',
         title: "Resort & Spa Management Suite",
         priceUSD: 69.99,
@@ -503,6 +562,128 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'wedding_hall_management',
+        title: "Wedding & Banquet Hall Management",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Events",
+        description: "An operational toolkit for venue managers to streamline bookings, events, and facility maintenance.",
+        icon: <Building className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "New Client Booking & Contract Process",
+            "Pre-Event Facility Readiness Audit",
+            "Event Day Vendor Coordination",
+            "Post-Event Breakdown & Settlement"
+        ],
+        checklists: [
+            {
+                title: "Initial Client Inquiry & Booking",
+                tasks: [
+                    "Respond to new inquiries within 2 hours. Send digital brochure and availability.",
+                    "Conduct a thorough site visit, showcasing different setup possibilities.",
+                    "Provide a detailed, itemized quotation. Clearly state what's included (venue, tables) and what's extra (decor, AV).",
+                    "Issue a formal contract upon confirmation. Ensure clauses for payment schedule, cancellation, and liabilities are clear.",
+                    "Block the date on all internal calendars upon receipt of the deposit.",
+                    "Send a welcome kit with a list of preferred vendors and a timeline of next steps."
+                ]
+            },
+            {
+                title: "Pre-Event Coordination (1 Month Out)",
+                tasks: [
+                    "Hold a final walkthrough meeting with the client and their event planner.",
+                    "Finalize the floor plan, seating arrangement, and event flow.",
+                    "Collect a list of all external vendors (caterer, DJ, decorator) and their contact information.",
+                    "Obtain necessary permits or licenses if applicable (e.g., music license, fire permit).",
+                    "Schedule and test all in-house AV equipment (projectors, microphones, lighting).",
+                    "Conduct a deep clean of the entire facility, including restrooms and kitchens."
+                ]
+            },
+            {
+                title: "Event Day Execution",
+                tasks: [
+                    "Venue manager on-site 3 hours before event start time.",
+                    "Supervise vendor setup to ensure it matches the agreed-upon floor plan.",
+                    "Conduct a final check of lighting, air conditioning, and restroom cleanliness 1 hour before guest arrival.",
+                    "Serve as the single point of contact for the client and all vendors throughout the event.",
+                    "Monitor staff levels and ensure service standards are met.",
+                    "Be prepared to handle unforeseen issues (e.g., power fluctuation, medical emergency)."
+                ]
+            },
+            {
+                title: "Post-Event Wrap-Up & Settlement",
+                tasks: [
+                    "Supervise the breakdown and cleanup process. Check for any damages to the property.",
+                    "Ensure the client collects all their personal belongings and wedding gifts.",
+                    "Reconcile any extra charges incurred during the event (e.g., extended hours, additional services).",
+                    "Issue the final invoice and process the final payment within 48 hours.",
+                    "Send a thank-you note to the client and request a review for your website/social media."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'play_area_safety',
+        title: "Indoor Play Area Safety & Ops",
+        priceUSD: 59.99,
+        priceINR: 4999,
+        category: "Events",
+        description: "The essential daily, weekly, and monthly checklist for running a safe and clean children's indoor play center.",
+        icon: <Home className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Opening Safety Inspection",
+            "Hourly & Post-Session Sanitization",
+            "Staff & Child Supervision Protocol",
+            "Weekly Deep Clean & Maintenance"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening Safety Inspection",
+                tasks: [
+                    "Visually inspect every piece of play equipment (slides, ball pit, trampolines) for damage, loose parts, or sharp edges.",
+                    "Check all safety netting for holes or tears. Log any findings.",
+                    "Ensure all padded surfaces and floor mats are secure and have no gaps.",
+                    "Test all electronic gates and access control systems.",
+                    "Sanitize all high-touch surfaces: door handles, benches, check-in counters.",
+                    "Conduct a morning briefing with staff on safety rules and emergency procedures."
+                ]
+            },
+            {
+                title: "During-Session Operations",
+                tasks: [
+                    "Ensure staff are actively monitoring zones, not just standing in one spot.",
+                    "Enforce height/age restrictions for different play areas.",
+                    "Address and document any rule-breaking or unsafe behavior immediately.",
+                    "Perform a quick sanitization of high-touch areas between play sessions.",
+                    "Monitor the capacity of the play area and manage entry to prevent overcrowding.",
+                    "Check restrooms for cleanliness and supplies every hour."
+                ]
+            },
+            {
+                title: "Closing & Deep Cleaning",
+                tasks: [
+                    "Do a final sweep of the play area to ensure no children are left behind.",
+                    "Remove all balls from the ball pit and sanitize them using an approved method.",
+                    "Vacuum and sanitize the base of the ball pit before returning the balls.",
+                    "Wipe down all surfaces of the play structures with child-safe disinfectant.",
+                    "Mop all floors.",
+                    "Log any maintenance issues that need to be addressed before the next day."
+                ]
+            },
+            {
+                title: "Weekly Maintenance",
+                tasks: [
+                    "Tighten all bolts and connections on the play structures.",
+                    "Deep clean and shampoo all carpets and soft play areas.",
+                    "Take down and wash any removable fabric components.",
+                    "Inspect the first-aid kit and restock any used items.",
+                    "Review any incident reports from the past week and identify any trends or problem areas."
+                ]
+            }
+        ]
+    },
+    {
         id: 'hindu_wedding_planner',
         title: "The Ultimate Hindu Wedding Planner",
         priceUSD: 34.99,
@@ -765,5 +946,7 @@ export const premiumPacks = [
 export type PremiumPack = typeof premiumPacks[0];
 
   
+
+    
 
     
