@@ -11,6 +11,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -63,8 +64,8 @@ export default function Home() {
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-md">
                          Never miss a task again — from weddings to hospitality to corporate launches.
                     </p>
-                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
-                        Browse Packages
+                    <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
+                        <Link href="#packs">Browse Packages</Link>
                     </Button>
                 </div>
                 </div>
@@ -82,26 +83,28 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {premiumPacks.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 relative border-2 border-transparent hover:border-primary">
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-primary">
                              {pack.mostPopular && (
                                 <Badge className="absolute top-4 right-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10">
                                    <Star className="w-4 h-4 mr-2" /> Most Popular
                                 </Badge>
                              )}
                             <CardHeader className="p-6">
-                                <div className="flex items-center gap-4 mb-2">
-                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20">
+                                <div className="flex items-start gap-4 mb-2">
+                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20 shrink-0">
                                         {pack.icon}
                                     </div>
-                                    <CardTitle className="text-xl font-headline flex-1">{pack.title}</CardTitle>
+                                    <div className="flex-1">
+                                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                                    </div>
                                 </div>
-                                <CardDescription>{pack.description}</CardDescription>
                             </CardHeader>
                             <CardContent className="px-6 flex-1">
                                 <p className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</p>
-                                <ul className="space-y-2 text-muted-foreground">
+                                <ul className="space-y-2 text-muted-foreground text-sm">
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
                                             <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80"/>
@@ -109,20 +112,36 @@ export default function Home() {
                                         </li>
                                     ))}
                                 </ul>
+                                <Accordion type="single" collapsible className="w-full mt-4">
+                                  <AccordionItem value="item-1" className="border-b-0">
+                                    <AccordionTrigger className="text-sm font-semibold hover:no-underline text-accent">View Full Checklist & Purchase</AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className="space-y-4 pt-4">
+                                            {pack.checklists.map((checklist, index) => (
+                                                <div key={index}>
+                                                    <h4 className="font-semibold text-foreground">{checklist.title}</h4>
+                                                    <ul className="list-disc list-inside text-muted-foreground mt-2 text-sm space-y-1">
+                                                        {checklist.tasks.map((task, i) => (
+                                                            <li key={i}>{task}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                            <div className="text-center pt-4">
+                                                <p className="text-3xl font-bold text-primary whitespace-nowrap">
+                                                    ${pack.priceUSD} / ₹{pack.priceINR}
+                                                </p>
+                                                <p className="text-xs text-muted-foreground">One-Time Purchase</p>
+                                            </div>
+                                            <Button size="lg" className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                                Buy Now & Get Instant Access
+                                            </Button>
+                                        </div>
+                                    </AccordionContent>
+                                  </AccordionItem>
+                                </Accordion>
+
                             </CardContent>
-                            <CardFooter className="p-6 bg-secondary/30 mt-auto flex-col items-stretch gap-4">
-                                <div className="text-center">
-                                    <p className="text-3xl font-bold text-primary whitespace-nowrap">
-                                        ${pack.priceUSD} / ₹{pack.priceINR}
-                                    </p>
-                                    <p className="text-xs text-muted-foreground">One-Time Purchase</p>
-                                </div>
-                                <Button asChild size="lg" className="w-full font-bold">
-                                    <Link href={`/package/${pack.id}`}>
-                                        View Full Checklist & Purchase
-                                    </Link>
-                                </Button>
-                            </CardFooter>
                         </Card>
                     ))}
                 </div>
