@@ -198,7 +198,7 @@ export default function Home() {
                                 )}
                              </div>
                             <CardContent className="p-0">
-                                <p className="text-muted-foreground italic">"{testimonial.quote}"</p>
+                                <p className="text-muted-foreground italic">"{testimonial.quote}"</p>                            
                             </CardContent>
                              <CardFooter className="p-0 mt-4 flex-col">
                                  <p className="font-bold font-headline">{testimonial.name}</p>
