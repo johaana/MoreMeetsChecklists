@@ -71,8 +71,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'facility_management_ops',
-        title: "Facility & Admin Management",
+        id: 'facility_management_checklist',
+        title: "Facility Management Checklist",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Corporate",
@@ -253,6 +253,68 @@ export const premiumPacks = [
                     "Ensure staff leading activities are prepared with all necessary supplies, a sign-up sheet, and a first-aid kit.",
                     "Brief the concierge and front desk on the day's activities so they can proactively inform and upsell to guests.",
                     "After each activity, ask participants for verbal feedback and make a note of it. Send a personalized thank-you note to one participating family each day."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'hospital_management',
+        title: "Large Hospital Management",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Healthcare",
+        description: "A comprehensive operational toolkit for hospital administrators covering patient care, safety, and departmental coordination.",
+        icon: <Cross className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Patient Admission & Discharge Protocol",
+            "Surgical Suite & OT Readiness",
+            "Emergency Room (ER) Triage & Flow",
+            "Inter-Departmental Coordination"
+        ],
+        checklists: [
+            {
+                "title": "Patient Admission & Discharge",
+                "tasks": [
+                    "Verify patient identification with two identifiers and cross-check with the hospital information system (HIS).",
+                    "Ensure all consent forms are explained, signed, and witnessed. A digital copy must be stored in the patient's file immediately.",
+                    "Conduct a nursing assessment upon admission, documenting allergies, current medications, and baseline vital signs.",
+                    "Prepare a detailed discharge plan at least 24 hours in advance, including follow-up appointments, medication prescriptions, and patient education materials.",
+                    "A pharmacist must review and reconcile the patient's discharge medications. The nurse must explain each medication to the patient/family.",
+                    "Arrange post-discharge transport or care coordination as needed. Confirm the arrangement with the patient's family."
+                ]
+            },
+            {
+                "title": "Surgical Suite / Operating Theatre (OT) Readiness",
+                "tasks": [
+                    "Perform a daily 'first case of the day' check to ensure all OT equipment (anesthesia machine, monitors, lights) has passed its self-test and is functional.",
+                    "Verify that the correct sterile instrument sets are available for each scheduled surgery, with sterilization indicators checked and logged.",
+                    "Conduct a 'surgical time-out' immediately before incision for EVERY case: the entire team must verbally confirm patient identity, surgical site, and procedure.",
+                    "Maintain a strict surgical count of all sponges, needles, and instruments. The count must be performed and reconciled audibly before closing the patient.",
+                    "Ensure the OT is cleaned and disinfected to sterile standards between each case. Log the cleaning time.",
+                    "Check and log temperature and humidity in the OT to ensure they are within the required range for infection control."
+                ]
+            },
+            {
+                "title": "Emergency Room (ER) Management",
+                "tasks": [
+                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., ESI).",
+                    "Ensure resuscitation bays are checked at the start of every shift and are fully stocked (e.g., intubation trays, crash cart with charged defibrillator).",
+                    "Monitor ER wait times in real-time. A hospital administrator must be alerted if wait times for high-acuity patients exceed a set threshold.",
+                    "Facilitate rapid transfer of admitted patients from the ER to inpatient beds to prevent ER boarding and overcrowding.",
+                    "Conduct a daily inventory of all critical ER supplies and medications.",
+                    "Debrief with the ER team after any major trauma or critical event to discuss what went well and what could be improved."
+                ]
+            },
+            {
+                "title": "Infection Control & Compliance",
+                "tasks": [
+                    "Conduct hand hygiene audits by observing staff in different departments. Provide immediate feedback.",
+                    "Track rates of hospital-acquired infections (HAIs) and present the data at a monthly quality control meeting.",
+                    "Ensure terminal cleaning procedures are followed for rooms of patients who were on isolation precautions.",
+                    "Verify that all staff have up-to-date vaccinations (e.g., for influenza).",
+                    "Ensure proper disposal of all biomedical waste according to regulatory standards. Check that disposal bins are not overfilled.",
+                    "Prepare for regulatory audits (e.g., JCI, NABH) by conducting regular mock surveys."
                 ]
             }
         ]
@@ -714,7 +776,7 @@ export const premiumPacks = [
         checklists: [
             {
                 title: "Daily Opening & Merchandising",
-                tasks: [
+                "tasks": [
                     "Ensure all live demo units (phones, laptops, TVs) are charged, clean, and fully functional. Wipe down all screens.",
                     "Verify all security tethers and alarms on high-value items are active. Physically tug on 5 random units to test.",
                     "Conduct a spot-check of 5-10 high-value SKUs (e.g., latest iPhone model) against the inventory system. The count must be exact.",
@@ -746,7 +808,7 @@ export const premiumPacks = [
             },
             {
                 title: "Staff & Training Drills",
-                tasks: [
+                "tasks": [
                     "Conduct weekly 30-minute training sessions on new products. This must be completed before the product hits the sales floor.",
                     "Role-play customer scenarios, especially handling objections about price or competitors.",
                     "Track individual sales performance (units sold, attachment rate for accessories/warranties) and provide regular coaching.",
@@ -1283,7 +1345,7 @@ export const premiumPacks = [
             },
             {
                 title: "Closing Procedures",
-                "tasks": [
+                tasks: [
                     "Clear all swimmers from the pools at the designated time using whistles and verbal announcements.",
                     "Perform a final sweep of all pools, including running hands along the bottom, to ensure no one is left behind. Two lifeguards must perform this check.",
                     "Shock or super-chlorinate pools as per the daily/weekly chemical schedule. Log the time and amount.",
@@ -1955,6 +2017,9 @@ export type PremiumPack = typeof premiumPacks[0];
 
 
 
+
+
+    
 
 
     
