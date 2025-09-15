@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -433,6 +433,64 @@ export const premiumPacks = [
                     "Send out a weekly newsletter or email to all tenants with updates on mall events, maintenance schedules, etc.",
                     "Conduct a spot-check on a few tenants to ensure they are complying with mall operational guidelines.",
                     "Review and analyze weekly footfall data to identify trends."
+                ]
+            }
+        ]
+    },
+     {
+        id: 'eco_friendly_ops',
+        title: "Eco-Friendly Business Operations",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Compliance",
+        description: "A practical guide for any business to implement sustainable, eco-friendly practices and reduce their carbon footprint.",
+        icon: <Leaf className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Waste Reduction & Recycling Program",
+            "Energy & Water Conservation Audit",
+            "Sustainable Procurement Policy",
+            "Green Employee Engagement"
+        ],
+        checklists: [
+            {
+                "title": "Waste Management & Reduction",
+                "tasks": [
+                    "Conduct a waste audit to identify major sources of trash.",
+                    "Set up clearly labeled recycling bins for paper, plastic, glass, and metals.",
+                    "Implement a composting program for food scraps in the breakroom/cafeteria.",
+                    "Switch to recycled paper for printing and office use.",
+                    "Set printer defaults to double-sided printing.",
+                    "Eliminate single-use plastics (water bottles, cutlery, coffee pods)."
+                ]
+            },
+            {
+                "title": "Energy Conservation",
+                "tasks": [
+                    "Replace all conventional light bulbs with energy-efficient LEDs.",
+                    "Install motion sensors or timers for lights in low-traffic areas (restrooms, storage rooms).",
+                    "Create a 'last one out' checklist to ensure all lights and electronics are turned off at night.",
+                    "Perform regular maintenance on HVAC systems to ensure efficiency.",
+                    "Use smart power strips that cut off power to devices in standby mode."
+                ]
+            },
+            {
+                "title": "Water Conservation",
+                "tasks": [
+                    "Install low-flow faucets and toilets in all restrooms.",
+                    "Regularly check for and repair any water leaks, no matter how small.",
+                    "If applicable, use drought-resistant plants for landscaping to reduce watering needs.",
+                    "Use environmentally friendly cleaning products that are biodegradable."
+                ]
+            },
+            {
+                "title": "Sustainable Procurement & Supply Chain",
+                "tasks": [
+                    "Develop a sustainable procurement policy that prioritizes local and eco-friendly suppliers.",
+                    "Purchase office supplies made from recycled materials.",
+                    "Choose vendors who use minimal and recyclable packaging.",
+                    "Encourage teleconferencing to reduce travel-related emissions.",
+                    "Offer incentives for employees who use public transport, carpool, or cycle to work."
                 ]
             }
         ]
@@ -876,6 +934,127 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'salon_spa_ops',
+        title: "Salon & Spa Operations",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Wellness",
+        description: "A complete toolkit for running a successful and hygienic salon or day spa, from client booking to staff management.",
+        icon: <PersonStanding className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Hygiene & Sterilization SOPs",
+            "Client Appointment & CRM",
+            "Inventory Management for Products",
+            "Staff Training & Service Quality"
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening & Hygiene Checklist",
+                "tasks": [
+                    "Disinfect all surfaces: reception desk, styling stations, manicure tables, pedicure chairs.",
+                    "Ensure all tools (scissors, combs, brushes) are sterilized and stored in clean, closed containers.",
+                    "Check and restock all stations with clean towels, capes, and necessary supplies.",
+                    "Verify that autoclaves and other sterilization equipment are functioning correctly.",
+                    "Prepare fresh disinfectant solutions as per health code regulations.",
+                    "Confirm reception has the day's appointment schedule and client notes."
+                ]
+            },
+            {
+                "title": "Client Experience & Service",
+                "tasks": [
+                    "Greet clients warmly and offer a beverage upon arrival.",
+                    "Conduct a thorough consultation before any service to understand client expectations.",
+                    "Keep detailed client records: service history, color formulas, allergies, and preferences.",
+                    "Ensure all staff follow service protocols for consistent quality.",
+                    "Politely confirm the next appointment at the end of the service.",
+                    "Actively manage online and phone bookings to minimize client wait times."
+                ]
+            },
+            {
+                "title": "Inventory & Retail Management",
+                "tasks": [
+                    "Conduct a weekly inventory count of all professional-use and retail products.",
+                    "Place orders for low-stock items.",
+                    "Ensure retail displays are clean, well-stocked, and visually appealing.",
+                    "Train staff on product knowledge to effectively recommend and sell retail items.",
+                    "Track product sales to identify best-sellers and slow-moving items."
+                ]
+            },
+            {
+                "title": "Closing & End-of-Day Tasks",
+                "tasks": [
+                    "Properly dispose of all single-use items (cotton pads, wax strips).",
+                    "Collect all used tools for sterilization.",
+                    "Clean all stations, chairs, and sinks thoroughly.",
+                    "Sweep and mop all floors.",
+                    "Reconcile the day's sales and cash register.",
+                    "Secure the premises and set the alarm."
+                ]
+            }
+        ]
+    },
+     {
+        id: 'gym_fitness_center_ops',
+        title: "Gym & Fitness Center Management",
+        priceUSD: 59.99,
+        priceINR: 4799,
+        category: "Wellness",
+        description: "An essential toolkit for gym owners to ensure member safety, equipment maintenance, and operational excellence.",
+        icon: <Dumbbell className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Equipment Safety & Cleaning",
+            "Member Onboarding & Sales Process",
+            "Class Scheduling & Instructor Mgt.",
+            "Emergency & First Aid Protocols"
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening & Safety Inspection",
+                "tasks": [
+                    "Walk the entire gym floor. Inspect all cardio and strength equipment for frayed cables, loose bolts, or malfunctions. Tag any faulty equipment 'Out of Order'.",
+                    "Ensure all free weights are correctly racked and organized.",
+                    "Check that all emergency exits are clear and accessible.",
+                    "Verify first aid kits and AEDs are present, fully stocked, and accessible.",
+                    "Wipe down all equipment handles, benches, and mats with disinfectant.",
+                    "Check locker rooms and showers for cleanliness and stock (soap, paper towels)."
+                ]
+            },
+            {
+                "title": "Member Management & Sales",
+                "tasks": [
+                    "Provide a comprehensive orientation for all new members, demonstrating proper equipment use.",
+                    "Follow up with new leads within 24 hours.",
+                    "Have a clear and consistent sales script for staff to use.",
+                    "Ensure membership agreements are filled out completely and filed securely.",
+                    "Actively engage with current members on the floor to build community and reduce churn.",
+                    "Track key metrics: new members, cancellations, member attendance."
+                ]
+            },
+            {
+                "title": "Class & Staff Management",
+                "tasks": [
+                    "Publish class schedules at least one month in advance.",
+                    "Ensure all instructors are certified and insured.",
+                    "Have a system for instructors to find substitutes if they are unable to teach.",
+                    "Regularly attend classes to ensure quality and consistency.",
+                    "Schedule regular staff meetings and training sessions."
+                ]
+            },
+            {
+                "title": "Closing Procedures",
+                "tasks": [
+                    "Give closing announcements 15 and 5 minutes before closing.",
+                    "Do a final walkthrough of the entire facility, including locker rooms, to ensure all members have left.",
+                    "Perform a final clean and wipe-down of all equipment.",
+                    "Secure all cash and valuables.",
+                    "Lock all doors and set the alarm system."
+                ]
+            }
+        ]
+    },
+    {
         id: 'international_travel_planner',
         title: "The Ultimate International Travel Planner",
         priceUSD: 19.99,
@@ -937,6 +1116,64 @@ export const premiumPacks = [
                     "Take out the trash",
                     "Unplug unnecessary electronics",
                     "Double check you have your wallet, passport, and phone. Then check again."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'pet_travel_planner',
+        title: "Pet-Friendly Travel Planner",
+        priceUSD: 24.99,
+        priceINR: 1999,
+        category: "Personal",
+        description: "The essential checklist for safely and comfortably travelling with your furry companion, by air or by road.",
+        icon: <PawPrint className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Airline & Vet Requirement Checklist",
+            "Pet-Friendly Accommodation Booking",
+            "Packing Your Pet's Go-Bag",
+            "Travel Day Health & Safety",
+        ],
+        checklists: [
+            {
+                "title": "Veterinary & Airline Prep (1-3 Months Out)",
+                "tasks": [
+                    "Research and confirm the airline's specific pet policy (in-cabin vs. cargo, breed restrictions, carrier size).",
+                    "Visit your vet to ensure all vaccinations are up-to-date. Get a signed health certificate dated within 10 days of travel.",
+                    "Check destination country's import requirements (e.g., microchip, rabies titer test, quarantine).",
+                    "Purchase an IATA-compliant travel carrier. Acclimate your pet to it by leaving it open in the house with treats inside.",
+                    "Get a proper ID tag for your pet's collar with your mobile number and destination address."
+                ]
+            },
+            {
+                "title": "Booking & Packing",
+                "tasks": [
+                    "Book your flight and your pet's spot on the same call. Confirm pet reservation.",
+                    "Book pet-friendly hotels or accommodations. Confirm their pet policy in writing.",
+                    "Pack a 'go-bag' for your pet: food for a few days, collapsible bowls, leash, waste bags, a favorite toy, and any medications.",
+                    "Include a document folder with your pet's health certificate, vaccination records, and a recent photo.",
+                    "Pack cleaning supplies like paper towels and pet-safe wet wipes for accidents."
+                ]
+            },
+            {
+                "title": "The Day Before Travel",
+                "tasks": [
+                    "Freeze a small bowl of water in the carrier's dish. It will melt slowly for them to drink without spilling.",
+                    "Feed your pet a light meal 4-6 hours before the flight. Do not sedate your pet unless specifically advised by your vet.",
+                    "Line the carrier with an absorbent puppy pad.",
+                    "Affix 'Live Animal' stickers and your contact information clearly on the outside of the carrier.",
+                    "Take your pet for a long walk or play session to burn off excess energy."
+                ]
+            },
+            {
+                "title": "Travel Day & Arrival",
+                "tasks": [
+                    "Arrive at the airport earlier than usual for pet check-in procedures.",
+                    "Find a pet relief area at the airport before going through security.",
+                    "Once you arrive at your destination, immediately offer your pet water and a short walk.",
+                    "Stick to your pet's normal feeding and walking schedule as much as possible to reduce stress.",
+                    "Inspect your hotel room for any potential hazards before letting your pet off-leash."
                 ]
             }
         ]

@@ -62,7 +62,7 @@ export default function Home() {
                         The World’s Most Complete Event & Operations Checklists
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-md">
-                         Never miss a task again — from weddings to hospitality to corporate launches.
+                         From weddings to hospitality to corporate launches, a single missed detail can cost you everything. Never miss a task again.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
                         <Link href="#packs">Browse Packages</Link>
@@ -76,10 +76,10 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Industry-Ready Checklist Packages
+                        Ready-to-Use, Downloadable Checklists
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Get comprehensive, expert-crafted checklists for your specific needs. Lifetime access, one-time purchase.
+                        Get instant access to expert-crafted operational playbooks. One-time purchase, lifetime access. Downloadable in PDF, Excel, and more.
                     </p>
                 </div>
 
@@ -152,21 +152,21 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Why Checklists Matter
+                        Why Every Detail Matters
                     </h2>
                 </div>
                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Avoid Last-Minute Stress</h3>
-                        <p className="text-muted-foreground">Our checklists ensure every detail is covered, preventing costly mistakes and last-minute chaos.</p>
+                        <h3 className="text-xl font-bold font-headline mb-2">Prevent Costly Failures</h3>
+                        <p className="text-muted-foreground">In business, one forgotten task—a missed permit, an uncalibrated machine, a security oversight—can lead to catastrophic financial loss and reputational damage.</p>
                     </Card>
                      <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Ensure Compliance & Standards</h3>
-                        <p className="text-muted-foreground">Maintain quality and meet industry regulations with expertly crafted operational procedures.</p>
+                        <h3 className="text-xl font-bold font-headline mb-2">Standardize Excellence</h3>
+                        <p className="text-muted-foreground">Our checklists are more than lists; they are expert-written Standard Operating Procedures (SOPs) that empower your team to perform flawlessly, every single time.</p>
                     </Card>
                      <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Deliver Memorable Experiences</h3>
-                        <p className="text-muted-foreground">From weddings to corporate events, flawless execution leads to unforgettable moments.</p>
+                        <h3 className="text-xl font-bold font-headline mb-2">Build Unshakeable Trust</h3>
+                        <p className="text-muted-foreground">Whether it's a client, a customer, or a guest, demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust and loyalty.</p>
                     </Card>
                 </div>
             </div>
