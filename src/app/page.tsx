@@ -5,8 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, CheckCircle, Sparkles, Star } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Check, Star } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -15,11 +14,6 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
-const testimonialImages = {
-    sarah: PlaceHolderImages.find(img => img.id === 'testimonial1'),
-    michael: PlaceHolderImages.find(img => img.id === 'testimonial2'),
-    anika: PlaceHolderImages.find(img => img.id === 'testimonial3'),
-};
 
 
 export default function Home() {
@@ -37,7 +31,7 @@ export default function Home() {
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Why Us
             </Link>
-            <Button asChild>
+            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link href="#packs" prefetch={false}>
                     Get Started
                 </Link>
@@ -47,14 +41,13 @@ export default function Home() {
       <main className="flex-1">
         <section className="w-full relative">
             <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10" />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/50" />
              {heroImage && (
                 <Image
                     src={heroImage.imageUrl}
                     alt="Luxury Hotel"
-                    layout="fill"
-                    objectFit="cover"
-                    className="z-[-1]"
+                    fill
+                    className="z-[-1] object-cover"
                     data-ai-hint={heroImage.imageHint}
                 />
             )}
@@ -62,7 +55,6 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                 <div className="space-y-4">
                     <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 mr-2 text-accent" />
                         Trusted by Professionals in 12+ Industries
                     </Badge>
                     <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-lg">
@@ -92,9 +84,9 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {premiumPacks.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 relative">
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 relative border-2 border-transparent hover:border-primary">
                              {pack.mostPopular && (
-                                <Badge className="absolute top-0 right-0 -mr-4 mt-4 py-2 px-6 bg-accent text-accent-foreground rounded-l-full rounded-r-none font-bold z-10 transform rotate-45 translate-x-8 translate-y-2">
+                                <Badge className="absolute top-4 right-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10">
                                    <Star className="w-4 h-4 mr-2" /> Most Popular
                                 </Badge>
                              )}
@@ -121,7 +113,7 @@ export default function Home() {
                             <CardFooter className="p-6 bg-secondary/30 mt-auto flex-col items-stretch gap-4">
                                 <div className="text-center">
                                     <p className="text-3xl font-bold text-primary whitespace-nowrap">
-                                        {`$${pack.priceUSD} / ₹${pack.priceINR}`}
+                                        ${pack.priceUSD} / ₹{pack.priceINR}
                                     </p>
                                     <p className="text-xs text-muted-foreground">One-Time Purchase</p>
                                 </div>
