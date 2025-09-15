@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -203,7 +203,7 @@ export const premiumPacks = [
         priceINR: 5499,
         category: "Hospitality",
         description: "A specialized toolkit for luxury resorts, covering grounds, pools, spas, and guest activities.",
-        icon: <Plane className="w-8 h-8 text-primary" />,
+        icon: <TreePalm className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
             "Daily Pool & Water Quality Checks",
@@ -2079,3 +2079,6 @@ export type PremiumPack = typeof premiumPacks[0];
 
 
 
+
+
+    
