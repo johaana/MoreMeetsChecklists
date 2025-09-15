@@ -1,21 +1,22 @@
+
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { PT_Sans, Montserrat } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: 'MoreMeets: Smart Checklists for Professionals',
   description: 'The simplest way for businesses and professionals to ensure quality, compliance, and perfection. One-time purchase, lifetime access.',
 };
 
-const mainFont = PT_Sans({
+const mainFont = Inter({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-body'
 });
 
-const headlineFont = Montserrat({
+const headlineFont = Poppins({
   subsets: ['latin'],
   weight: ['700', '800'],
   variable: '--font-headline'
