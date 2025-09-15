@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -438,6 +438,65 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'bpo_call_center_ops',
+        title: "BPO Call Center Daily Management",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Corporate",
+        description: "A complete operational playbook for call center managers to drive team performance, quality, and efficiency.",
+        icon: <Phone className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Shift Start-Up & Team Huddle",
+            "Live Call Quality Assurance (QA)",
+            "Agent Performance Coaching",
+            "End-of-Shift Reporting & Handoff"
+        ],
+        checklists: [
+            {
+                title: "Pre-Shift & Team Huddle Checklist",
+                tasks: [
+                    "Review previous shift's performance dashboard (AHT, FCR, CSAT). Note any outliers.",
+                    "Check for any system outages or updates from IT. Communicate to the team.",
+                    "Prepare and lead a 15-minute team huddle: discuss daily targets, share a 'tip of the day', and run a quick Q&A.",
+                    "Ensure all agents are logged into the phone system and necessary software 5 minutes before the shift starts.",
+                    "Verify that the scheduling software (WFM) is aligned with the actual agents present on the floor."
+                ]
+            },
+            {
+                title: "Live Operations & Quality Assurance",
+                tasks: [
+                    "Monitor the live call queue dashboard. Adjust agent skills or priorities as needed to manage wait times.",
+                    "Perform a minimum of 2 'live silent monitoring' sessions per agent per week. Document scores.",
+                    "Conduct at least 1 'side-by-side' coaching session per agent per month.",
+                    "Listen for and flag any critical compliance errors in real-time.",
+                    "Handle escalated calls from agents, ensuring customer resolution and agent de-briefing afterwards.",
+                    "Send out hourly performance updates to the team to maintain momentum."
+                ]
+            },
+            {
+                title: "Agent Performance & Coaching",
+                tasks: [
+                    "Schedule and conduct weekly 1-on-1 meetings with each agent to discuss their performance scorecard.",
+                    "Create and assign a documented action plan for any agent in the bottom quartile.",
+                    "Publicly recognize top performers for the day/week on a team board or group chat.",
+                    "Review QA scores with agents, playing back specific calls to illustrate coaching points.",
+                    "Ensure all agents have completed their mandatory recurrent training for the month."
+                ]
+            },
+            {
+                title: "End-of-Shift & Reporting",
+                tasks: [
+                    "Analyze the day's performance against targets. Document reasons for any significant variance.",
+                    "Compile a 'Shift Handover Report' for the next manager, highlighting major issues, pending escalations, and system status.",
+                    "Ensure all agents properly log their end-of-day dispositions and sign out of all systems.",
+                    "Conduct a brief end-of-shift huddle to summarize the day's wins and challenges.",
+                    "Email the final shift performance report to senior management."
+                ]
+            }
+        ]
+    },
+    {
         id: 'jewellery_store_ops',
         title: "Jewellery Store Operations & Security",
         priceUSD: 149.99,
@@ -500,6 +559,304 @@ export const premiumPacks = [
                     "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
                     "Check batteries in all wireless security devices",
                     "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'car_dealership_ops',
+        title: "Car Dealership Daily Operations",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        category: "Automotive",
+        description: "A complete playbook for car showroom managers to optimize sales, service, and customer experience.",
+        icon: <Briefcase className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Showroom Opening & Vehicle Prep",
+            "Sales Process & CRM Management",
+            "Test Drive Protocol & Safety",
+            "Vehicle Handover & Delivery Experience"
+        ],
+        checklists: [
+            {
+                title: "Morning Showroom Preparation",
+                tasks: [
+                    "Walk the lot and showroom floor. Ensure all display vehicles are clean, unlocked, and have charged batteries.",
+                    "Check that all price stickers and feature sheets are accurate and correctly placed.",
+                    "Lead a 15-minute sales team huddle: discuss daily targets, new inventory, and current promotions.",
+                    "Verify the reception and customer lounge areas are clean, stocked with refreshments, and presentable.",
+                    "Ensure all sales staff are logged into the CRM and ready to receive leads."
+                ]
+            },
+            {
+                title: "Sales & Customer Interaction Process",
+                tasks: [
+                    "Greet all customers within 2 minutes of their arrival on the lot.",
+                    "Log every new customer interaction into the CRM immediately, capturing contact info and vehicle of interest.",
+                    "Conduct a thorough needs analysis before recommending a vehicle.",
+                    "Follow a structured 'walkaround' presentation for every vehicle.",
+                    "Adhere to the dealership's test drive protocol: copy driver's license, confirm insurance, and follow the designated route.",
+                    "Present all financing and add-on options clearly and transparently."
+                ]
+            },
+            {
+                title: "Vehicle Handover & Delivery",
+                tasks: [
+                    "Ensure the sold vehicle has undergone a full pre-delivery inspection (PDI) and is detailed to perfection.",
+                    "Prepare all paperwork: final sales agreement, registration documents, warranty information.",
+                    "Schedule a specific delivery appointment with the customer.",
+                    "Perform a comprehensive feature explanation with the new owner, connecting their phone to Bluetooth and setting basic preferences.",
+                    "Personally introduce the new owner to the service department manager.",
+                    "Follow up with the customer within 72 hours to ensure satisfaction and ask for a review."
+                ]
+            },
+            {
+                title: "End of Day & Reporting",
+                tasks: [
+                    "Update the CRM with the status of all leads and deals from the day.",
+                    "Reconcile all cash, check, and credit card transactions.",
+                    "Secure all keys in the key vault.",
+                    "Lock down all display vehicles and secure the showroom and lot.",
+                    "Sales manager to compile and email a daily sales report to the general manager."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'auto_repair_shop_ops',
+        title: "Auto Repair Shop Workflow",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Automotive",
+        description: "A step-by-step guide for service advisors and garage owners to standardize operations from check-in to delivery.",
+        icon: <Wrench className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Vehicle Intake & Inspection Process",
+            "Customer Approval & Work Order",
+            "Quality Control & Final Checks",
+            "Parts Management & Inventory"
+        ],
+        checklists: [
+            {
+                title: "Vehicle Check-In & Service Advising",
+                tasks: [
+                    "Greet the customer and confirm their appointment.",
+                    "Perform a 'walkaround' inspection with the customer, noting any pre-existing damage on a standard form.",
+                    "Use a tablet to document the customer's concerns and vehicle symptoms accurately.",
+                    "Place a protective cover on the driver's seat, floor, and steering wheel.",
+                    "Provide an estimated time for diagnosis and a preliminary cost estimate.",
+                    "Tag the keys with the customer's name, vehicle details, and job number."
+                ]
+            },
+            {
+                title: "Diagnosis, Quoting & Work Order",
+                tasks: [
+                    "Assign the job to a technician based on skill set and availability.",
+                    "Technician performs diagnosis and reports findings back to the service advisor.",
+                    "Service advisor prepares a detailed quote, including parts, labor, and taxes.",
+                    "Contact the customer to explain the required repairs and get explicit approval before starting any work. Document approval in the system.",
+                    "Once approved, convert the quote to a formal work order and assign it to the technician."
+                ]
+            },
+            {
+                title: "Repair & Quality Control",
+                tasks: [
+                    "Technician follows the work order, documenting all steps and parts used.",
+                    "All replaced parts must be kept aside for the customer to inspect if requested.",
+                    "After repairs are complete, a different technician or a dedicated QC person must perform a final inspection and test drive.",
+                    "The QC checklist must include checking for grease marks, ensuring all dashboard lights are off, and verifying the original complaint is resolved.",
+                    "Clean the vehicle before notifying the customer."
+                ]
+            },
+            {
+                title: "Billing & Vehicle Handover",
+                tasks: [
+                    "Inform the customer that their vehicle is ready for pickup.",
+                    "Prepare the final invoice, ensuring it matches the approved quote plus any additions.",
+                    "When the customer arrives, the service advisor should walk them through the repairs made and the charges.",
+                    "Hand over the keys, the invoice, and any replaced parts.",
+                    "Schedule a follow-up call in 2 days to check on the vehicle's performance and customer satisfaction."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'rental_property_management',
+        title: "Rental Property Management",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Real Estate",
+        description: "The essential toolkit for landlords and property managers to streamline tenant relations, maintenance, and compliance.",
+        icon: <Building2 className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Tenant Move-In & Move-Out Inspection",
+            "Routine Property Maintenance Schedule",
+            "Rent Collection & Arrears Protocol",
+            "Vendor & Contractor Management"
+        ],
+        checklists: [
+            {
+                title: "New Tenant Onboarding & Move-In",
+                tasks: [
+                    "Conduct a thorough background and credit check on the applicant.",
+                    "Prepare and sign the rental agreement, ensuring all clauses are legally compliant.",
+                    "Collect the security deposit and first month's rent in cleared funds.",
+                    "Conduct a detailed move-in inspection with the tenant, taking photos/videos of the property's condition. Both parties sign the report.",
+                    "Hand over keys, access cards, and provide information on utility connections.",
+                    "Provide a welcome packet with emergency contact numbers and building rules."
+                ]
+            },
+            {
+                title: "Rent Collection & Financials",
+                tasks: [
+                    "Send a rent reminder 3 days before the due date.",
+                    "Log all rent payments on the day they are received.",
+                    "Immediately follow the legal protocol for late rent, starting with a formal late notice.",
+                    "Track all property-related expenses and keep receipts for tax purposes.",
+                    "Provide tenants with a formal receipt for all payments."
+                ]
+            },
+            {
+                title: "Maintenance & Inspections",
+                tasks: [
+                    "Maintain a list of approved and insured vendors (plumbers, electricians, etc.).",
+                    "Respond to all maintenance requests within 24 hours.",
+                    "Schedule and conduct bi-annual property inspections, providing proper notice to the tenant.",
+                    "Keep a log of all repairs and maintenance carried out on the property.",
+                    "Schedule preventative maintenance for HVAC, plumbing, and other systems."
+                ]
+            },
+            {
+                title: "Tenant Move-Out & Turnover",
+                tasks: [
+                    "Upon receiving notice to vacate, confirm the move-out date and send a cleaning checklist to the tenant.",
+                    "Conduct a final move-out inspection, comparing the property's condition to the initial move-in report.",
+                    "Document any damages with photos and estimate repair costs.",
+                    "Calculate any deductions from the security deposit and return the balance within the legally required timeframe, along with an itemized statement.",
+                    "Change the locks and schedule professional cleaning and repairs to prepare the property for the next tenant."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'factory_ops',
+        title: "Factory Shift Handover & Safety",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        category: "Manufacturing",
+        description: "The essential playbook for shift supervisors to ensure a safe and seamless transition, minimizing downtime and errors.",
+        icon: <Factory className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "End-of-Shift Production Report",
+            "Machine Status & Maintenance Handover",
+            "Safety & Quality Control Briefing",
+            "Incoming Shift Walk-through"
+        ],
+        checklists: [
+            {
+                title: "Outgoing Shift: End-of-Shift Duties",
+                tasks: [
+                    "Complete the production log: units produced vs. target, scrap/reject count, and reasons for any shortfalls.",
+                    "Document any machine malfunctions or alarms that occurred during the shift, even if resolved.",
+                    "Log any quality control issues, holds, or deviations from the standard.",
+                    "Conduct a final walk-through of the work area to ensure it is clean, organized, and free of hazards (5S).",
+                    "Compile a 'Shift Handover Report' summarizing all key information.",
+                    "Ensure all tools and equipment are returned to their designated storage locations."
+                ]
+            },
+            {
+                title: "Joint Handover Meeting (5-10 mins)",
+                tasks: [
+                    "Outgoing and incoming supervisors meet face-to-face.",
+                    "The outgoing supervisor verbally briefs the incoming supervisor using the Handover Report as a guide.",
+                    "Specifically discuss any ongoing safety concerns, maintenance issues, or quality alerts.",
+                    "Review the production schedule for the upcoming shift.",
+                    "Both supervisors must physically sign the handover log, confirming the transfer of responsibility."
+                ]
+            },
+            {
+                title: "Incoming Shift: Start-up Procedures",
+                tasks: [
+                    "The incoming supervisor conducts a pre-shift huddle with their team, relaying key information from the handover.",
+                    "Lead the team on a walk-through of the work area, visually verifying the status of key machines and safety equipment.",
+                    "Confirm raw material levels and ensure there is enough stock for at least the first few hours of production.",
+                    "Verify that the first-piece quality check is completed and signed off before starting full production.",
+                    "Ensure all operators are at their assigned stations and have the correct work instructions."
+                ]
+            },
+            {
+                title: "Weekly Safety & Maintenance Review",
+                tasks: [
+                    "Review all shift handover logs from the past week to identify recurring problems.",
+                    "Conduct a weekly safety audit, checking that machine guards are in place, emergency stops are functional, and PPE is being worn correctly.",
+                    "Check that all safety incident or near-miss reports have been properly investigated.",
+                    "Verify that scheduled preventative maintenance was completed on time.",
+                    "Update the team's safety communication board with new alerts or information."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'private_clinic_ops',
+        title: "Private Medical Clinic Operations",
+        priceUSD: 119.99,
+        priceINR: 9499,
+        category: "Healthcare",
+        description: "A critical daily operations and compliance toolkit for clinic managers, focusing on patient safety, hygiene, and data privacy.",
+        icon: <Cross className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Opening & Sterilization Protocol",
+            "Patient Data & Privacy (HIPAA)",
+            "Medical Supply Inventory Check",
+            "End-of-Day Closing & Data Backup"
+        ],
+        checklists: [
+            {
+                title: "Clinic Opening & Morning Prep",
+                tasks: [
+                    "Disinfect all high-touch surfaces: reception counter, door handles, waiting room chairs.",
+                    "Turn on all necessary medical equipment and check for error messages. Run diagnostic tests on key machines.",
+                    "Verify that all examination rooms are clean, stocked with disposables (gloves, masks, paper), and ready for the first patient.",
+                    "Check and log the temperature of the vaccine/medication refrigerator.",
+                    "Run the autoclave/sterilizer for the first batch of instruments. Verify it reached the correct temperature and pressure.",
+                    "Reception to review the day's appointment schedule, flagging any new patients or special cases."
+                ]
+            },
+            {
+                title: "Patient Management & Data Privacy",
+                tasks: [
+                    "Ensure all new patients sign the required privacy policy (HIPAA/GDPR) and consent forms before being seen.",
+                    "Verify patient identity and insurance information at every visit.",
+                    "Ensure all computer screens are angled away from public view or have privacy filters.",
+                    "Never leave patient files or charts unattended in public areas.",
+                    "Use a secure, compliant messaging system for any communication containing Patient Health Information (PHI).",
+                    "Shred all paper documents containing PHI that are no longer needed."
+                ]
+            },
+            {
+                title: "During the Day: Operations & Supply",
+                tasks: [
+                    "After each patient, disinfect the examination room surfaces and change the paper on the exam table.",
+                    "Properly sterilize all used medical instruments according to protocol.",
+                    "Keep an accurate log of all dispensed medications and samples.",
+                    "Conduct a mid-day check of restrooms and waiting areas for cleanliness.",
+                    "Monitor the stock of critical supplies (gloves, masks, needles) and re-order when they hit the minimum level."
+                ]
+            },
+            {
+                title: "End of Day Closing Procedures",
+                tasks: [
+                    "Reconcile all payments and co-pays received during the day.",
+                    "Ensure all patient charts and records for the day are completed and filed correctly.",
+                    "Run a full data backup of the clinic's electronic health record (EHR) system to a secure, off-site location.",
+                    "Properly dispose of all bio-hazardous waste in designated containers.",
+                    "Turn off all non-essential equipment, lock all medication cabinets, and secure the premises.",
+                    "Log out of all computer systems and activate the security alarm."
                 ]
             }
         ]
@@ -887,7 +1244,7 @@ export const premiumPacks = [
             {
                 title: "Daily Opening Safety Inspection",
                 tasks: [
-                    "Visually inspect every piece of play equipment (slides, ball pit, trampolines) for damage, loose parts, or sharp edges.",
+                    "Visually inspect every piece of play equipment (slides, ball pit, trampolines) for damage, loose parts, or sharp edges. Log any findings.",
                     "Check all safety netting for holes or tears. Log any findings.",
                     "Ensure all padded surfaces and floor mats are secure and have no gaps.",
                     "Test all electronic gates and access control systems.",
@@ -1187,4 +1544,3 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
-
