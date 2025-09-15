@@ -14,12 +14,12 @@ const mainFont = PT_Sans({
   weight: ['400', '700'],
   variable: '--font-body'
 });
+
 const headlineFont = Montserrat({
   subsets: ['latin'],
   weight: ['700'],
   variable: '--font-headline'
 });
-
 
 export default function RootLayout({
   children,
