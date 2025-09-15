@@ -187,7 +187,7 @@ export default function Home() {
                          <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
                              <div className="mb-4 rounded-full overflow-hidden w-24 h-24">
                                 {testimonial.imageId && (
-                                    <Image 
+                                    <Image
                                       src={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageUrl || ''}
                                       alt={`Photo of ${testimonial.name}`}
                                       width={100}
@@ -225,5 +225,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
