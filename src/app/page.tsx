@@ -332,7 +332,7 @@ export default function Home() {
             </div>
             <div className="mt-12">
               <Tabs defaultValue={Object.keys(groupedChecklists)[0]} className="w-full">
-                <TabsList className="grid w-full grid-cols-1 md:grid-cols-2">
+                <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                   {Object.keys(groupedChecklists).map(category => (
                      <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
                   ))}
@@ -362,7 +362,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+            <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 mt-12">
                 {premiumPacks.map((pack) => (
                     <Card key={pack.title} className={`flex flex-col border-2 ${pack.color} hover:shadow-xl hover:-translate-y-1 transition-all`}>
                         <CardHeader className="items-center text-center">
