@@ -1,66 +1,73 @@
 
-import { Briefcase, Building, Leaf, Heart } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+
+import { Briefcase, Building, Leaf, Heart, ShieldCheck, Settings, Plane } from "lucide-react";
 
 export const premiumPacks = [
     {
-        title: "The Ultimate Wedding Planner Pack",
-        price_usd: "USD $24.99",
-        price_inr: "INR ₹1999",
-        description: "The complete one-time purchase for planning a multi-day wedding. Unlocks our entire suite of detailed checklists for every ceremony, from Haldi to Reception.",
-        sampleItems: [
-            "Mehndi: Book artist and confirm designs.",
-            "Sangeet: Arrange for professional stage lighting and sound.",
-            "South Indian Wedding: Coordinate 'Kashi Yatra' items (umbrella, walking stick).",
-            "Sikh Wedding: Organize head coverings for all guests at the Gurdwara.",
-            "Destination Wedding: Manage celebrity arrivals and red carpet logistics.",
-        ],
+        id: 'wedding_bliss_planner',
+        title: "The Ultimate Wedding Planner",
+        priceUSD: 24.99,
+        priceINR: 1999,
+        category: "Wedding",
+        description: "The complete one-time purchase for planning a multi-day wedding. Unlocks our entire suite of detailed checklists for every ceremony.",
         icon: <Heart className="w-8 h-8 text-primary" />,
-        color: "border-pink-500/50",
+        items: [
+            { "title": "Haldi Setup", "tasks": ["Venue decor", "Flowers", "Music", "Dress code", "Catering for snacks"] },
+            { "title": "Mehndi Function", "tasks": ["Artist booking", "Stage setup", "Snacks & Drinks", "DJ & Music", "Guest favors"] },
+            { "title": "Sangeet Night", "tasks": ["Choreographer coordination", "Lighting & special effects", "Speeches & toasts schedule", "Rehearsal dinner", "AV check"] },
+            { "title": "Wedding Ceremony", "tasks": ["Mandap decor", "Puja samagri checklist", "Guest seating chart", "Photography shot list", "Varmala exchange coordination"] },
+            { "title": "Reception", "tasks": ["Cake cutting ceremony", "Couple's grand entry", "Buffet layout and management", "Live band or DJ performance", "Guest book and photo booth"] }
+        ]
     },
     {
+        id: 'hospitality_excellence_suite',
         title: "Hospitality Excellence Suite",
-        price_usd: "USD $49.99",
-        price_inr: "INR ₹3999",
-        description: "For Hotel & Restaurant Managers. A one-time purchase for the complete operational toolkit. Unlocks all checklists for daily, weekly, and monthly operations, plus compliance.",
-        sampleItems: [
-            "Daily Housekeeping: Replenish all toiletries in guest rooms.",
-            "Restaurant Opening: Brief staff on daily specials and 86'd items.",
-            "Restaurant Closing: Deep clean all kitchen surfaces and equipment.",
-            "Catering Event: Conduct a site visit to plan setup for catering event.",
-            "Staff Onboarding: Train new staff on Property Management System (PMS).",
-        ],
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Hospitality",
+        description: "For Hotel & Restaurant Managers. A one-time purchase for the complete operational toolkit. Unlocks all checklists for daily, weekly, and monthly operations.",
         icon: <Building className="w-8 h-8 text-primary" />,
-        color: "border-blue-500/50",
+        items: [
+            { "title": "Hotel Daily Room Cleaning", "tasks": ["Replace towels & linens", "Restock all toiletries", "Sanitize bathroom surfaces", "Vacuum carpets & mop floors", "Check and restock minibar"] },
+            { "title": "Restaurant Opening", "tasks": ["Turn on lights & music", "Set and polish tables", "Check cutlery & crockery inventory", "Stock bar and kitchen stations", "Test POS system and printers"] },
+            { "title": "Weekly Kitchen Deep Clean", "tasks": ["Clean exhaust hoods and filters", "Degrease all cooking equipment", "Sanitize walk-in coolers and freezers", "Pest control inspection", "Sharpen knives"] },
+            { "title": "Monthly Staff Training", "tasks": ["Fire safety and evacuation drill", "Customer service workshop", "Upselling techniques training", "Food safety and handling review", "Complaint resolution practice"] },
+            { "title": "Front Desk Operations", "tasks": ["Check reservation system for special requests", "Prepare check-in/check-out documents", "Audit cash and credit card transactions", "Brief team on VIP arrivals", "Handle guest complaints log"] }
+        ]
     },
     {
+        id: 'corporate_launchkit',
         title: "Corporate & Startup Launchkit",
-        price_usd: "USD $24.99",
-        price_inr: "INR ₹1999",
-        description: "For Founders & Event Managers. A one-time purchase to execute flawless corporate events and streamlined startup launches. Stay organized and professional.",
-        sampleItems: [
-            "Product Launch: Finalize product messaging and USP for launch.",
-            "Awards Night: Procure trophies and certificates.",
-            "Major Award Show: Manage celebrity arrivals and red carpet logistics.",
-            "Startup Party: Set a budget and guest list for launch party.",
-        ],
+        priceUSD: 24.99,
+        priceINR: 1999,
+        category: "Corporate",
+        description: "For Founders & Event Managers. A one-time purchase to execute flawless corporate events and streamlined startup launches.",
         icon: <Briefcase className="w-8 h-8 text-primary" />,
-        color: "border-indigo-500/50",
+        items: [
+            { "title": "Product Launch Event", "tasks": ["Venue booking & AV setup", "Press release and media invites", "Stage branding and banners", "Product demo units preparation", "PR agency coordination"] },
+            { "title": "Annual General Meeting (AGM)", "tasks": ["Send notices to shareholders", "Prepare annual reports", "Arrange for proxy voting", "Venue and seating arrangement", "Record meeting minutes"] },
+            { "title": "Staff Onboarding", "tasks": ["Prepare offer letter and documents", "Set up workstation and accounts", "Assign a buddy/mentor", "Company policy and culture briefing", "Initial 30-day goal setting"] },
+            { "title": "Conference Planning", "tasks": ["Finalize speaker list and bios", "Projectors, mics, and screens check", "Registration desk setup and staffing", "Delegate kits (notepads, pens)", "Coordinate lunch and coffee breaks"] },
+            { "title": "Awards Night", "tasks": ["Procure trophies and certificates", "Finalize award categories and nominees", "Guest speaker confirmation", "Red carpet and photo wall setup", "Post-event press release"] }
+        ]
     },
     {
+        id: 'sustainability_starter_kit',
         title: "Sustainability Starter Kit",
-        price_usd: "USD $19.99",
-        price_inr: "INR ₹1599",
-        description: "For Eco-conscious Businesses. A one-time purchase to turn green intentions into measurable action. Implement and track sustainability goals with simple checklists.",
-        sampleItems: [
-            "Weekly energy audit of all departments.",
-            "Verify that all lighting is high-efficiency (LED).",
-            "Audit single-use plastic usage in rooms and restaurants.",
-            "Ensure recycling and composting bins are correctly used.",
-        ],
+        priceUSD: 19.99,
+        priceINR: 1599,
+        category: "Sustainability",
+        description: "For Eco-conscious Businesses. A one-time purchase to turn green intentions into measurable action. Implement and track sustainability goals.",
         icon: <Leaf className="w-8 h-8 text-primary" />,
-        color: "border-green-500/50",
+        items: [
+            { "title": "Weekly Energy Audit", "tasks": ["Check for energy-efficient lighting (LEDs)", "Ensure all idle equipment is switched off", "Monitor HVAC temperature settings", "Read and log meter readings", "Identify energy leakage points"] },
+            { "title": "Waste Management Audit", "tasks": ["Check segregation of waste (wet, dry, recyclable)", "Ensure recycling bins are correctly used", "Monitor daily food waste (restaurants)", "Implement a composting plan for organic waste", "Track reduction in landfill waste"] },
+            { "title": "Water Conservation", "tasks": ["Check for leaking taps and pipes", "Install water-saving aerators", "Monitor daily water consumption", "Use collected rainwater for gardening", "Educate staff on water-saving practices"] },
+            { "title": "Plastic Reduction", "tasks": ["Audit single-use plastic usage", "Replace plastic cutlery with reusable options", "Source suppliers with plastic-free packaging", "Introduce water refill stations", "Eliminate plastic water bottles"] },
+            { "title": "Green Supply Chain", "tasks": ["Verify suppliers' eco-friendly certifications", "Prioritize local and seasonal produce", "Assess supplier packaging and transport emissions", "Establish a sustainable procurement policy", "Review supplier performance quarterly"] }
+        ]
     }
 ];
 
 export type PremiumPack = typeof premiumPacks[0];
+

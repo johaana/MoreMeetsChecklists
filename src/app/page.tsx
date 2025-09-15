@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, CreditCard, Sparkles } from "lucide-react";
+import { CreditCard, Sparkles, Check } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -37,11 +37,6 @@ export default function Home() {
                   The simplest way for businesses and professionals to ensure quality, compliance, and perfection. One-time purchase, lifetime access.
                 </p>
               </div>
-              <Button size="lg" className="mt-4" asChild>
-                <Link href="#packs" prefetch={false}>
-                  Browse Packages
-                </Link>
-              </Button>
             </div>
           </div>
         </section>
@@ -60,41 +55,41 @@ export default function Home() {
                     Get comprehensive, expert-crafted checklists for your specific needs.
                 </p>
             </div>
-            <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                 {premiumPacks.map((pack) => {
                     return (
-                        <Card key={pack.title} className="flex flex-col border-2 border-primary/20 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl">
-                            <CardHeader className="items-center text-center p-8">
-                                <div className="p-4 bg-primary/10 rounded-full mb-4 border border-primary/20">
+                        <Card key={pack.id} className="flex flex-col border-2 border-primary/20 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl">
+                            <CardHeader className="items-start text-left p-6">
+                                <div className="p-3 bg-primary/10 rounded-full mb-4 border border-primary/20">
                                     {pack.icon}
                                 </div>
-                                <CardTitle className="text-2xl font-headline">{pack.title}</CardTitle>
-                                <p className="text-4xl font-bold mt-2">
-                                    {pack.price_inr} <span className="text-lg font-medium text-muted-foreground">/ {pack.price_usd}</span>
-                                </p>
-                                <CardDescription>One-Time Purchase</CardDescription>
+                                <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                                <CardDescription>{pack.description}</CardDescription>
+                                
                             </CardHeader>
-                            <CardContent className="flex-1 flex flex-col space-y-6 px-8">
-                                <div>
-                                    <h3 className="font-semibold text-lg mb-2 text-center">Why It's Important</h3>
-                                    <p className="text-muted-foreground text-center">{pack.description}</p>
-                                </div>
-                                 <div>
-                                    <h3 className="font-semibold text-lg mb-4 text-center">Sample Inclusions</h3>
-                                    <ul className="space-y-3 text-sm">
-                                        {pack.sampleItems.map((item, index) => (
-                                            <li key={index} className="flex items-start">
-                                                <Check className="w-4 h-4 mr-3 mt-1 shrink-0 text-primary" />
-                                                <span className="text-muted-foreground">{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                            <CardContent className="flex-1 flex flex-col space-y-4 px-6">
+                                <p className="text-3xl font-bold">
+                                    {`₹${pack.priceINR} / $${pack.priceUSD}`}
+                                </p>
+                                <ul className="space-y-2 text-sm text-muted-foreground">
+                                    {pack.items.slice(0, 3).map((item, index) => (
+                                        <li key={index} className="flex items-center">
+                                            <Check className="w-4 h-4 mr-2 shrink-0 text-primary" />
+                                            <span>{item.title}</span>
+                                        </li>
+                                    ))}
+                                    <li className="flex items-center">
+                                        <Check className="w-4 h-4 mr-2 shrink-0 text-primary" />
+                                        <span>And much more...</span>
+                                    </li>
+                                </ul>
                             </CardContent>
-                            <CardFooter className="p-8 mt-4">
-                                <Button className="w-full" size="lg">
-                                    <CreditCard className="mr-2 h-4 w-4" />
-                                    Purchase Pack
+                            <CardFooter className="p-6 mt-4">
+                                <Button className="w-full" size="lg" asChild>
+                                    <Link href={`/package/${pack.id}`}>
+                                        <CreditCard className="mr-2 h-4 w-4" />
+                                        View Details & Purchase
+                                    </Link>
                                 </Button>
                             </CardFooter>
                         </Card>
