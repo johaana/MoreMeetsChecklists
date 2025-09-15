@@ -52,7 +52,7 @@ export const premiumPacks = [
                     "Finalize and publish staff rotas for the upcoming week, ensuring fair shift distribution and managing leave requests.",
                     "Analyze weekly sales data to identify top/poor-performing dishes. Plan a tasting session to decide on menu adjustments or specials.",
                     "Conduct mandatory 30-minute training session (e.g., new dish, upselling techniques, allergen handling). Follow up with a short quiz to verify understanding.",
-                    "Verify and document compliance with food safety standards (HACCP, FSSAI). Perform a mock health inspection and document findings.",
+                    "Verify and document compliance with food safety standards (HACCP - Hazard Analysis and Critical Control Points, FSSAI). Perform a mock health inspection and document findings.",
                     "Review supplier performance and pricing; flag any issues (e.g., late deliveries, poor quality) and communicate with them formally via email."
                 ]
             },
@@ -87,8 +87,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Workplace Readiness",
-                tasks: [
+                "title": "Daily Workplace Readiness",
+                "tasks": [
                     "Conduct a morning walk-through of the entire office using a digital checklist app. Check cleanliness, lighting, and temperature in all zones.",
                     "Ensure all meeting rooms are clean, tidy, and equipment (projectors, webcams, conference phones) is functional. Run a 1-minute test on the AV in the main boardroom.",
                     "Check pantry/kitchen supplies (coffee, milk, snacks) and restock. Post a QR code for employees to report low supplies directly to the admin team.",
@@ -98,8 +98,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Weekly Maintenance & Safety Audit",
-                tasks: [
+                "title": "Weekly Maintenance & Safety Audit",
+                "tasks": [
                     "Test a random sample of fire alarms and emergency exit lights. Log which specific units were tested.",
                     "Inspect all first-aid kits and Automated External Defibrillators (AEDs). Restock and check battery life. Document the inspection on a tag on the kit itself.",
                     "Walk all emergency exit routes to ensure they are clear of obstructions. Take photos of any blocked routes and email them to the responsible department head.",
@@ -109,8 +109,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Monthly Vendor & Compliance Review",
-                tasks: [
+                "title": "Monthly Vendor & Compliance Review",
+                "tasks": [
                     "Conduct a formal review meeting with key vendors (security, housekeeping, catering) using a standardized performance scorecard.",
                     "Audit vendor performance against their Service Level Agreement (SLA). Document any deviations and agree on a corrective action plan.",
                     "Review and update the master list of all service contracts and their renewal dates. Set calendar alerts for 90 days before renewal.",
@@ -121,8 +121,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Admin & Employee Services",
-                tasks: [
+                "title": "Admin & Employee Services",
+                "tasks": [
                     "Manage the process for issuing and revoking employee access cards. Conduct a quarterly audit of active cards against the current employee list.",
                     "Coordinate office events, celebrations, and town halls. Send a feedback survey after each event to measure success.",
                     "Oversee the mailroom and courier services. Track monthly courier spending to identify cost-saving opportunities.",
@@ -149,8 +149,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Kitchen Opening Checklist (HACCP Focus)",
-                tasks: [
+                "title": "Kitchen Opening Checklist (HACCP Focus)",
+                "tasks": [
                     "Calibrate food thermometers using ice water and boiling water methods. Log results in the daily Hazard Analysis and Critical Control Points (HACCP) log.",
                     "Check and log temperatures of all refrigerators and walk-in coolers/freezers. Any unit out of range requires immediate corrective action documentation.",
                     "Turn on all cooking equipment (fryers, ovens, grills) and check for proper function. Report any issues to the maintenance log.",
@@ -161,8 +161,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Food Receiving & Storage Protocol",
-                tasks: [
+                "title": "Food Receiving & Storage Protocol",
+                "tasks": [
                     "Inspect all incoming deliveries for signs of damage, pests, or temperature abuse. Reject and photograph any non-compliant items.",
                     "Check and log temperatures of all incoming refrigerated and frozen goods. The receiving clerk and delivery driver must both sign the log.",
                     "Verify that the delivery matches the invoice. Note any shortages or incorrect items and get a credit note from the driver.",
@@ -341,8 +341,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Opening & Compliance Check",
-                tasks: [
+                "title": "Daily Opening & Compliance Check",
+                "tasks": [
                     "Disarm security system. Check for any overnight alerts. Document in the security log.",
                     "Log temperatures of medication and vaccine refrigerators using a calibrated digital thermometer. Log must be co-signed by a second staff member.",
                     "Calibrate pill counting machines and document the calibration in the equipment log.",
@@ -465,8 +465,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Opening & Patient Readiness",
-                tasks: [
+                "title": "Daily Opening & Patient Readiness",
+                "tasks": [
                     "Review the day's appointment schedule. Flag any new patients or complex procedures that may require extra time.",
                     "Ensure all patient consultation and examination rooms are clean, stocked, and ready for the first patient. Use a room-readiness checklist.",
                     "Verify all diagnostic equipment (e.g., ECG, ultrasound, dental X-ray) passes its daily calibration and self-tests. Log the results.",
@@ -476,7 +476,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Patient Flow & Experience",
+                "title": "Patient Flow & Experience",
                 "tasks": [
                     "Greet patients warmly upon arrival. Verify their identity and insurance information at check-in.",
                     "Ensure new patient paperwork is completed digitally or physically before they see the doctor. (Pro-Tip: Use a tablet-based intake form like 'Phreesia').",
@@ -487,7 +487,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Clinical Safety & Sterilization",
+                "title": "Clinical Safety & Sterilization",
                 "tasks": [
                     "For dental/procedural clinics: Follow a strict, documented protocol for sterilizing all instruments using an autoclave. Daily spore testing is mandatory.",
                     "Dispose of all sharps and biomedical waste in designated, puncture-proof containers. Check that containers are not overfilled.",
@@ -497,7 +497,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Billing & Administration",
+                "title": "Billing & Administration",
                 "tasks": [
                     "Verify each patient's insurance eligibility and benefits *before* their appointment to avoid billing surprises.",
                     "Submit all insurance claims within 48 hours of the service being rendered. Use a clearinghouse to reduce errors.",
@@ -525,8 +525,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Morning Setup & Calibration (Zero-Error Start)",
-                tasks: [
+                "title": "Morning Setup & Calibration (Zero-Error Start)",
+                "tasks": [
                     "Log temperatures of all refrigerators, freezers, and incubators using a calibrated digital thermometer. The log must be co-signed by a second staff member.",
                     "Run daily Quality Control (QC) samples on all analyzers before processing any patient samples. Results must be within acceptable limits (Levey-Jennings chart). Document any corrective action.",
                     "Calibrate pipettes and other measurement instruments as per the weekly schedule. Document in the equipment log.",
@@ -536,8 +536,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Sample Management & Processing (Patient Safety First)",
-                tasks: [
+                "title": "Sample Management & Processing (Patient Safety First)",
+                "tasks": [
                     "Verify patient information on the sample tube matches the requisition form using at least two identifiers (e.g., Full Name and DOB). No match, no process.",
                     "Inspect samples for proper collection (e.g., correct tube type, sufficient volume, no hemolysis). Reject and log any unsuitable samples, and immediately notify the collection center.",
                     "Assign a unique lab ID (accession number) to each sample and log it into the Laboratory Information System (LIS). Use barcode scanners to prevent manual entry errors.",
@@ -546,8 +546,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Data, Reporting & Critical Value Communication",
-                tasks: [
+                "title": "Data, Reporting & Critical Value Communication",
+                "tasks": [
                     "A senior technologist or pathologist must review and verify all critical or abnormal results before release. This must be logged in the LIS.",
                     "Ensure reports are delivered to the correct physician/clinic via secure, encrypted methods (HIPAA compliance).",
                     "Handle any STAT or critical value call-backs to physicians immediately. Document the time, the person spoken to, and a read-back confirmation of the results.",
@@ -556,8 +556,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "End of Day & Biohazard Management",
-                tasks: [
+                "title": "End of Day & Biohazard Management",
+                "tasks": [
                     "Properly dispose of all biohazardous materials in designated, sealed red bags/sharps containers. The containers must not be overfilled.",
                     "Perform end-of-day maintenance on all analyzers as per manufacturer guidelines. Log the maintenance.",
                     "Decontaminate all work surfaces with an approved biocide.",
@@ -773,8 +773,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Morning Opening & Freshness Check",
-                tasks: [
+                "title": "Morning Opening & Freshness Check",
+                "tasks": [
                     "Inspect the fresh produce section. Remove any spoiled or wilted items. Rotate stock using FIFO. The department head must sign off on the 'culling' log.",
                     "Check 'sell-by' and 'use-by' dates in the dairy, meat, and bakery sections. Remove and log any items expiring within 24 hours for quick sale or disposal.",
                     "Verify and log temperatures of all refrigerators, freezers, and hot-food holding units. A second manager must verify any out-of-range readings.",
@@ -784,8 +784,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Receiving & Cold Chain Integrity",
-                tasks: [
+                "title": "Receiving & Cold Chain Integrity",
+                "tasks": [
                     "Inspect all incoming deliveries for quality and check temperatures for perishable goods *before* they are unloaded from the truck. Reject any shipment outside the safe temperature zone.",
                     "Verify deliveries against invoices, noting any shortages or damages. Get a signed credit note from the driver on the spot.",
                     "Immediately move perishable items to cold storage, following the FIFO (First-In, First-Out) principle. The goal is 'dock to stock' in under 20 minutes.",
@@ -794,8 +794,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "During the Day: Floor Operations & Customer Service",
-                tasks: [
+                "title": "During the Day: Floor Operations & Customer Service",
+                "tasks": [
                     "Continuously restock shelves, especially for fast-moving items ('power alley'). Prioritize 'holes' on the shelves.",
                     "Perform 'facing' of shelves hourly to ensure products are neat, pulled to the front, and look abundant.",
                     "Conduct regular freshness checks in the produce and bakery departments. Remove any poor-quality items.",
@@ -805,8 +805,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Closing & Financial Reconciliation",
-                tasks: [
+                "title": "Closing & Financial Reconciliation",
+                "tasks": [
                     "Perform a final sweep of the aisles for restocking and tidying ('recovery').",
                     "Consolidate and remove near-expiry items for markdown or disposal. Log all wastage.",
                     "Reconcile each cashier's drawer against their POS sales report. Any variance over a set amount must be documented and co-signed by a manager.",
@@ -833,8 +833,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Opening & Merchandising",
-                tasks: [
+                "title": "Daily Opening & Merchandising",
+                "tasks": [
                     "Refresh the window display. Ensure it's clean, well-lit, and features new arrivals or a compelling story. Take a photo for your social media.",
                     "Walk the floor and restock any items sold the previous day. Ensure all sizes are represented on the floor, not just in the back room.",
                     "Steam and prep any wrinkled garments on the sales floor. Perfect presentation is key.",
@@ -844,8 +844,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Fitting Room, Customer Service & Loss Prevention",
-                tasks: [
+                "title": "Fitting Room, Customer Service & Loss Prevention",
+                "tasks": [
                     "Implement a strict fitting room policy (e.g., limit of 6 items, staff member checks items in and out). This dramatically reduces shrink.",
                     "Ensure fitting rooms are always clean, well-lit, and mirrors are smudge-free. Check them every hour.",
                     "Train staff to 'service' the fitting rooms: check on customers, offer different sizes, and clear out unwanted items immediately to be re-hung.",
@@ -855,8 +855,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "New Stock & Inventory Management",
-                tasks: [
+                "title": "New Stock & Inventory Management",
+                "tasks": [
                     "Receive and check new shipments against the packing slip in a designated backroom area, away from customers.",
                     "Report any discrepancies (shortages, damages) to the supplier with photos within 24 hours.",
                     "Tag all new items with price and security tags before bringing them to the sales floor.",
@@ -866,8 +866,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Closing & Daily Reporting",
-                tasks: [
+                "title": "Closing & Daily Reporting",
+                "tasks": [
                     "Complete a full floor recovery: re-hang, re-fold, and organize all merchandise to be 'perfect' for the morning.",
                     "Clear all fitting rooms of any remaining items.",
                     "Reconcile daily sales reports from the POS system against cash and credit card terminal reports. The manager must sign off.",
@@ -1074,8 +1074,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Opening Safety Inspection",
-                tasks: [
+                "title": "Daily Opening Safety Inspection",
+                "tasks": [
                     "Visually inspect every piece of play equipment (slides, climbers, swings) for damage, loose parts, or sharp edges. Document findings with photos in a daily log.",
                     "Check all safety netting for holes or tears. No opening should be larger than a child's head.",
                     "Ensure all padded surfaces and floor mats are secure, with no gaps or trip hazards.",
@@ -1260,8 +1260,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Vehicle Check-In & Service Advising",
-                tasks: [
+                "title": "Vehicle Check-In & Service Advising",
+                "tasks": [
                     "Greet the customer by name if they have an appointment.",
                     "Perform a 'walkaround' inspection with the customer using a digital tablet, noting any pre-existing damage. Both parties should sign the digital form.",
                     "Use a tablet to document the customer's concerns and vehicle symptoms accurately. Record a short video of the issue if possible (e.g., a strange noise).",
@@ -1272,8 +1272,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Diagnosis, Quoting & Work Order",
-                tasks: [
+                "title": "Diagnosis, Quoting & Work Order",
+                "tasks": [
                     "Assign the job to a technician based on skill set and availability in your shop management software (e.g., Shop-Ware, Tekmetric).",
                     "Technician performs diagnosis and reports findings back to the service advisor with photos or videos of the faulty parts.",
                     "Service advisor prepares a detailed digital quote, prioritizing repairs ('Immediate Safety Need', 'Recommended Maintenance'). Include photos/videos.",
@@ -1282,8 +1282,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Repair & Quality Control",
-                tasks: [
+                "title": "Repair & Quality Control",
+                "tasks": [
                     "Technician follows the work order, documenting all steps and parts used. All torque specs for critical components must be met and logged.",
                     "All replaced parts must be kept in a clean box for the customer to inspect at pickup.",
                     "After repairs are complete, a different technician or a dedicated Quality Control (QC) person must perform a final inspection and test drive, following a set route.",
@@ -1321,8 +1321,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Opening & Security Protocol",
-                tasks: [
+                "title": "Daily Opening & Security Protocol",
+                "tasks": [
                     "Conduct a full patrol of the mall interior and exterior before public entry, checking for hazards, vandalism, or homeless encampments. Document with photos.",
                     "Test a random selection of security cameras and emergency exit door alarms. Log results in the security portal.",
                     "Brief the security team on daily events, expected high-traffic periods, any specific security alerts, or BOLO (Be On the Lookout) notices.",
@@ -1332,8 +1332,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Ongoing Operations & Housekeeping",
-                tasks: [
+                "title": "Ongoing Operations & Housekeeping",
+                "tasks": [
                     "Conduct hourly patrols. Vary the route. Focus on restrooms, food courts, and 'dead' corridors.",
                     "Ensure housekeeping staff are actively managing spills, overflowing bins, and restroom cleanliness using a real-time task management app (e.g., Sweeply).",
                     "Monitor parking areas for traffic flow, safety issues, or unauthorized vehicles. Issue warnings or tow as per mall policy.",
@@ -1343,8 +1343,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Daily Closing Protocol",
-                tasks: [
+                "title": "Daily Closing Protocol",
+                "tasks": [
                     "Broadcast standardized closing announcements 30, 15, and 5 minutes before closing.",
                     "Security personnel conduct a sweep of all common areas, restrooms, and corridors to ensure all patrons have exited.",
                     "Verify with each tenant's closing staff that their premises are secure before they depart. Maintain a sign-out log for late-closing tenants (e.g., cinemas, restaurants).",
@@ -1403,7 +1403,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Agent Performance & Coaching",
+                "title": "Agent Performance & Coaching",
                 "tasks": [
                     "Schedule and conduct weekly 1-on-1 meetings with each agent to discuss their performance scorecard. The meeting should be data-driven but coaching-focused.",
                     "Create and assign a documented, time-bound Performance Improvement Plan (PIP) for any agent in the bottom 10% for two consecutive weeks.",
@@ -1413,7 +1413,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "End-of-Shift & Reporting",
+                "title": "End-of-Shift & Reporting",
                 "tasks": [
                     "Analyze the day's performance against targets. Document detailed reasons for any significant variance in the official shift report.",
                     "Compile a 'Shift Handover Report' for the next manager, highlighting major outages, pending escalations, system status, and any agent issues.",
@@ -1441,8 +1441,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Pre-Opening Safety Inspection",
-                tasks: [
+                "title": "Pre-Opening Safety Inspection",
+                "tasks": [
                     "Test and log water chemistry (Free Chlorine, pH, Combined Chlorine, Alkalinity) for ALL pools before opening. The log must be co-signed by a second, certified pool operator.",
                     "Physically walk every slide and attraction, checking for surface damage, loose bolts, or foreign objects. Document the walk with a signed checklist.",
                     "Run water pumps for all attractions for at least 30 minutes to ensure proper flow and function before public access.",
@@ -1452,7 +1452,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Ongoing Operational Safety",
+                "title": "Ongoing Operational Safety",
                 "tasks": [
                     "Re-test and log water chemistry in the main pools every hour of operation. This is non-negotiable.",
                     "Rotate lifeguard positions every 20-30 minutes to combat vigilance decrement (losing focus). The rotation path must be documented.",
@@ -1463,8 +1463,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Closing Procedures",
-                tasks: [
+                "title": "Closing Procedures",
+                "tasks": [
                     "Clear all swimmers from the pools at the designated time using whistles and verbal announcements.",
                     "Perform a final sweep of all pools, including running hands along the bottom, to ensure no one is left behind. Two lifeguards must perform this check.",
                     "Shock or super-chlorinate pools as per the daily/weekly chemical schedule. Log the time and amount.",
@@ -1474,7 +1474,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Weekly & Monthly Checks",
+                "title": "Weekly & Monthly Checks",
                 "tasks": [
                     "Perform a full inventory of the first aid station, restock all supplies, and check expiration dates on all items.",
                     "Conduct mandatory in-service training for all lifeguard staff (minimum 4 hours per month), covering rescue skills, CPR, and first aid. Document attendance and topics covered.",
@@ -1502,8 +1502,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Pre-Guest Arrival / New Tenant Move-In",
-                tasks: [
+                "title": "Pre-Guest Arrival / New Tenant Move-In",
+                "tasks": [
                     "Confirm booking and send a welcome message with check-in instructions, address, Wi-Fi password, and contact info 48 hours prior.",
                     "Professionally clean the entire property. Use a detailed cleaning checklist that is signed and dated by the cleaner.",
                     "Take time-stamped photos/videos of the property's condition, focusing on high-value items and surfaces prone to damage. (Pro-Tip: Use the Timestamp Camera app).",
@@ -1514,8 +1514,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Guest Check-Out / Tenant Move-Out",
-                tasks: [
+                "title": "Guest Check-Out / Tenant Move-Out",
+                "tasks": [
                     "Send a check-out reminder the evening before, with clear instructions (e.g., where to leave keys, trash disposal, locking up).",
                     "Immediately after check-out, inspect the property for any new damages, comparing against the pre-arrival photos. This must be done before the cleaner starts.",
                     "Document any damages with photos and detailed notes to support a security deposit claim if necessary. Report it to the platform (e.g., Airbnb) immediately.",
@@ -1525,8 +1525,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Routine Maintenance & Compliance",
-                tasks: [
+                "title": "Routine Maintenance & Compliance",
+                "tasks": [
                     "Test smoke and carbon monoxide detectors monthly by pressing the 'test' button. Change batteries every 6 months, regardless of usage.",
                     "Inspect and clean HVAC filters quarterly. A clogged filter is a common cause of AC failure.",
                     "Check for any leaks under all sinks and around all toilets monthly.",
@@ -1536,8 +1536,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Guest Communication & Experience",
-                tasks: [
+                "title": "Guest Communication & Experience",
+                "tasks": [
                     "Respond to all guest inquiries within 1 hour (within reasonable waking hours). Using saved replies for common questions helps.",
                     "After a guest checks in, send a follow-up message: 'Just wanted to make sure you got in okay and everything is to your satisfaction!'",
                     "Address any guest complaints immediately and professionally. Document the issue and the resolution in the platform messaging system.",
@@ -1564,8 +1564,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Morning Showroom & Lot Preparation",
-                tasks: [
+                "title": "Morning Showroom & Lot Preparation",
+                "tasks": [
                     "Walk the lot and showroom floor. Ensure all display vehicles are clean (no dust/fingerprints), unlocked, and have charged batteries.",
                     "Check that all price stickers and feature sheets are accurate, aligned, and correctly placed. Remove any from sold vehicles.",
                     "Lead a 15-minute sales team huddle: discuss daily targets, new inventory, current promotions, and role-play one objection.",
@@ -1599,7 +1599,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "End of Day & Reporting",
+                "title": "End of Day & Reporting",
                 "tasks": [
                     "Update the CRM with the status of all leads and deals from the day. Add detailed notes for follow-up.",
                     "Reconcile all deposits and transactions with the finance office.",
@@ -1883,8 +1883,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Aggregator Setup & Menu Engineering",
-                tasks: [
+                "title": "Aggregator Setup & Menu Engineering",
+                "tasks": [
                     "Complete all paperwork and FSSAI/local health department registration for Zomato, Swiggy, Uber Eats, etc.",
                     "Set up online menus on all platforms. Use high-quality, professional photos for every single item.",
                     "Engineer the menu for delivery: prioritize items that travel well. Create delivery-friendly combos with high-margin drinks. Remove items that get soggy.",
@@ -1893,8 +1893,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Packaging & Dispatch Station Setup",
-                tasks: [
+                "title": "Packaging & Dispatch Station Setup",
+                "tasks": [
                     "Designate a specific area for packaging and dispatch, separate from the cooking line to prevent congestion.",
                     "Stock the station with all necessary packaging materials: leak-proof containers, branded bags, cutlery, tissues, and tamper-evident tape.",
                     "Create a visual checklist (with pictures) for each order: Main dish, side, drink, cutlery, condiments. Staff must physically tick off each item.",
@@ -1904,8 +1904,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Live Operations & Order Fulfillment (KOT to Handoff)",
-                tasks: [
+                "title": "Live Operations & Order Fulfillment (KOT to Handoff)",
+                "tasks": [
                     "Acknowledge incoming orders on the dashboard within 45 seconds. This heavily impacts your ranking on aggregator apps.",
                     "Fire orders to the correct kitchen station based on preparation time (Kitchen Order Ticket - KOT).",
                     "The 'expo' or final checker must double-check each packed item against the order ticket before sealing the bag with tamper-evident tape.",
@@ -1915,8 +1915,8 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "End-of-Day Reconciliation & Analysis",
-                tasks: [
+                "title": "End-of-Day Reconciliation & Analysis",
+                "tasks": [
                     "Reconcile orders between your POS and each aggregator's dashboard. Document any discrepancies.",
                     "Calculate total sales, discounts, and commissions for each platform. Track your profitability per platform.",
                     "Verify online payments received against the settlement reports from the aggregators.",
@@ -2075,6 +2075,7 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
 
 
 
