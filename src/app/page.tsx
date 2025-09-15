@@ -42,7 +42,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="w-full relative">
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-background to-transparent" />
-            <div className="absolute inset-0 z-5 bg-black/50" />
+            <div className="absolute inset-0 bg-black/50 z-0" />
              {heroImage && (
                 <Image
                     src={heroImage.imageUrl}
