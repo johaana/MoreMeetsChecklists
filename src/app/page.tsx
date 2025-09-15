@@ -4,7 +4,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, CheckCircle, ArrowLeft, Sparkles } from "lucide-react";
+import { CreditCard, CheckCircle, Sparkles } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Logo } from "@/components/icons";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -52,50 +53,56 @@ export default function Home() {
                     Industry-Ready Checklist Packages
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    Get comprehensive, expert-crafted checklists for your specific needs.
+                    Get comprehensive, expert-crafted checklists for your specific needs. Click any package to see what's inside.
                 </p>
             </div>
-            <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                {premiumPacks.map((pack) => {
-                    return (
-                        <Card key={pack.id} className="flex flex-col border-2 border-primary/20 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl bg-card">
-                            <CardHeader className="items-start text-left p-6">
-                                <div className="p-3 bg-primary/10 rounded-full mb-4 border border-primary/20">
-                                    {pack.icon}
-                                </div>
-                                <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                                <CardDescription>{pack.description}</CardDescription>
-                                
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col space-y-4 px-6">
-                                <p className="text-3xl font-bold text-primary">
-                                    {`$${pack.priceUSD} / ₹${pack.priceINR}`}
-                                </p>
-                                <ul className="space-y-2 text-sm text-muted-foreground">
-                                    {pack.items.slice(0, 3).map((item, index) => (
-                                        <li key={index} className="flex items-center">
-                                            <CheckCircle className="w-4 h-4 mr-2 shrink-0 text-primary" />
-                                            <span>{item.title}</span>
-                                        </li>
-                                    ))}
-                                    <li className="flex items-center">
-                                        <CheckCircle className="w-4 h-4 mr-2 shrink-0 text-primary" />
-                                        <span>And much more...</span>
-                                    </li>
-                                </ul>
-                            </CardContent>
-                            <CardFooter className="p-6 mt-4">
-                                <Button className="w-full" size="lg" asChild>
-                                    <Link href={`/package/${pack.id}`}>
-                                        <CreditCard className="mr-2 h-4 w-4" />
-                                        View Details & Purchase
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    );
-                })}
-            </div>
+            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
+              {premiumPacks.map((pack) => (
+                <AccordionItem value={pack.id} key={pack.id} className="border-2 border-primary/20 rounded-2xl mb-4 bg-card shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <AccordionTrigger className="p-6 text-left hover:no-underline">
+                    <div className="flex items-center gap-6 w-full">
+                      <div className="p-3 bg-primary/10 rounded-full border border-primary/20 hidden sm:block">
+                          {pack.icon}
+                      </div>
+                      <div className="flex-1">
+                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-2xl font-bold text-primary whitespace-nowrap">
+                            {`$${pack.priceUSD} / ₹${pack.priceINR}`}
+                        </p>
+                        <p className="text-xs text-muted-foreground">One-Time Purchase</p>
+                      </div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="bg-secondary/20">
+                    <div className="p-6">
+                      <h3 className="text-xl font-headline text-center mb-6">What's Included?</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-8">
+                          {pack.checklists.map((checklist, idx) => (
+                              <div key={idx} className="p-4 bg-background/50 rounded-lg border">
+                                  <h4 className="font-semibold text-lg mb-2">{checklist.title}</h4>
+                                  <ul className="space-y-1.5">
+                                      {checklist.tasks.map((task, i) => (
+                                          <li key={i} className="flex items-start">
+                                              <CheckCircle className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80" />
+                                              <span className="text-muted-foreground">{task}</span>
+                                          </li>
+                                      ))}
+                                  </ul>
+                              </div>
+                          ))}
+                      </div>
+                      <Button size="lg" className="w-full text-lg py-7 bg-accent text-accent-foreground hover:bg-accent/90">
+                          <CreditCard className="mr-3 h-5 w-5" />
+                          Purchase Now
+                      </Button>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 

@@ -11,7 +11,7 @@ export const premiumPacks = [
         category: "Wedding",
         description: "The complete one-time purchase for planning a multi-day wedding. Unlocks our entire suite of detailed checklists for every ceremony.",
         icon: <Heart className="w-8 h-8 text-primary" />,
-        items: [
+        checklists: [
             { "title": "Haldi Setup", "tasks": ["Venue decor", "Flowers", "Music", "Dress code", "Catering for snacks"] },
             { "title": "Mehndi Function", "tasks": ["Artist booking", "Stage setup", "Snacks & Drinks", "DJ & Music", "Guest favors"] },
             { "title": "Sangeet Night", "tasks": ["Choreographer coordination", "Lighting & special effects", "Speeches & toasts schedule", "Rehearsal dinner", "AV check"] },
@@ -27,7 +27,7 @@ export const premiumPacks = [
         category: "Hospitality",
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete operational toolkit. Unlocks all checklists for daily, weekly, and monthly operations.",
         icon: <Building className="w-8 h-8 text-primary" />,
-        items: [
+        checklists: [
             { "title": "Hotel Daily Room Cleaning", "tasks": ["Replace towels & linens", "Restock all toiletries", "Sanitize bathroom surfaces", "Vacuum carpets & mop floors", "Check and restock minibar"] },
             { "title": "Restaurant Opening", "tasks": ["Turn on lights & music", "Set and polish tables", "Check cutlery & crockery inventory", "Stock bar and kitchen stations", "Test POS system and printers"] },
             { "title": "Weekly Kitchen Deep Clean", "tasks": ["Clean exhaust hoods and filters", "Degrease all cooking equipment", "Sanitize walk-in coolers and freezers", "Pest control inspection", "Sharpen knives"] },
@@ -43,7 +43,7 @@ export const premiumPacks = [
         category: "Corporate",
         description: "For Founders & Event Managers. A one-time purchase to execute flawless corporate events and streamlined startup launches.",
         icon: <Briefcase className="w-8 h-8 text-primary" />,
-        items: [
+        checklists: [
             { "title": "Product Launch Event", "tasks": ["Venue booking & AV setup", "Press release and media invites", "Stage branding and banners", "Product demo units preparation", "PR agency coordination"] },
             { "title": "Annual General Meeting (AGM)", "tasks": ["Send notices to shareholders", "Prepare annual reports", "Arrange for proxy voting", "Venue and seating arrangement", "Record meeting minutes"] },
             { "title": "Staff Onboarding", "tasks": ["Prepare offer letter and documents", "Set up workstation and accounts", "Assign a buddy/mentor", "Company policy and culture briefing", "Initial 30-day goal setting"] },
@@ -59,7 +59,7 @@ export const premiumPacks = [
         category: "Sustainability",
         description: "For Eco-conscious Businesses. A one-time purchase to turn green intentions into measurable action. Implement and track sustainability goals.",
         icon: <Leaf className="w-8 h-8 text-primary" />,
-        items: [
+        checklists: [
             { "title": "Weekly Energy Audit", "tasks": ["Check for energy-efficient lighting (LEDs)", "Ensure all idle equipment is switched off", "Monitor HVAC temperature settings", "Read and log meter readings", "Identify energy leakage points"] },
             { "title": "Waste Management Audit", "tasks": ["Check segregation of waste (wet, dry, recyclable)", "Ensure recycling bins are correctly used", "Monitor daily food waste (restaurants)", "Implement a composting plan for organic waste", "Track reduction in landfill waste"] },
             { "title": "Water Conservation", "tasks": ["Check for leaking taps and pipes", "Install water-saving aerators", "Monitor daily water consumption", "Use collected rainwater for gardening", "Educate staff on water-saving practices"] },
@@ -70,4 +70,3 @@ export const premiumPacks = [
 ];
 
 export type PremiumPack = typeof premiumPacks[0];
-
