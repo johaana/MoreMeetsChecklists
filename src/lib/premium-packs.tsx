@@ -5,7 +5,7 @@ import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Fa
 export const premiumPacks = [
     {
         id: 'hospitality_excellence_suite',
-        title: "The 5-Star Hotel & Resort Operations Checklist",
+        title: "Hotel & Resort Operations Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Hospitality",
@@ -72,7 +72,7 @@ export const premiumPacks = [
     },
     {
         id: 'facility_management_blueprint',
-        title: "The Corporate Facility Management Checklist",
+        title: "Facility Management Checklist",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Corporate",
@@ -134,7 +134,7 @@ export const premiumPacks = [
     },
     {
         id: 'commercial_kitchen_protocol',
-        title: "The Commercial Kitchen & Food Safety Checklist",
+        title: "Commercial Kitchen Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Hospitality",
@@ -198,7 +198,7 @@ export const premiumPacks = [
     },
      {
         id: 'resort_spa_management',
-        title: "The Resort & Spa Management Checklist",
+        title: "Resort & Spa Management Checklist",
         priceUSD: 69.99,
         priceINR: 5499,
         category: "Hospitality",
@@ -259,7 +259,7 @@ export const premiumPacks = [
     },
     {
         id: 'jewellery_store_ops',
-        title: "The Jewellery Store Operations Checklist",
+        title: "Jewellery Store Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
         category: "Retail",
@@ -326,7 +326,7 @@ export const premiumPacks = [
     },
     {
         id: 'pharmacy_ops_compliance',
-        title: "The Pharmacy Operations & Compliance Checklist",
+        title: "Pharmacy Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
         category: "Healthcare",
@@ -387,8 +387,190 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'hospital_administration_ops',
+        title: "Hospital Administration & Operations Checklist",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Healthcare",
+        description: "A comprehensive operational toolkit for hospital administrators covering patient care, safety, and departmental coordination.",
+        icon: <Cross className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Patient Admission & Discharge Protocol",
+            "Surgical Suite & OT Readiness",
+            "Emergency Room (ER) Triage & Flow",
+            "Inter-Departmental Coordination"
+        ],
+        checklists: [
+            {
+                "title": "Patient Admission & Discharge",
+                "tasks": [
+                    "Verify patient identification with two identifiers and cross-check with the hospital information system (HIS).",
+                    "Ensure all consent forms are explained, signed, and witnessed. A digital copy must be stored in the patient's file immediately.",
+                    "Conduct a nursing assessment upon admission, documenting allergies, current medications, and baseline vital signs.",
+                    "Prepare a detailed discharge plan at least 24 hours in advance, including follow-up appointments, medication prescriptions, and patient education materials.",
+                    "A pharmacist must review and reconcile the patient's discharge medications. The nurse must explain each medication to the patient/family.",
+                    "Arrange post-discharge transport or care coordination as needed. Confirm the arrangement with the patient's family."
+                ]
+            },
+            {
+                "title": "Surgical Suite / Operating Theatre (OT) Readiness",
+                "tasks": [
+                    "Perform a daily 'first case of the day' check to ensure all OT equipment (anesthesia machine, monitors, lights) has passed its self-test and is functional.",
+                    "Verify that the correct sterile instrument sets are available for each scheduled surgery, with sterilization indicators checked and logged.",
+                    "Conduct a 'surgical time-out' immediately before incision for EVERY case: the entire team must verbally confirm patient identity, surgical site, and procedure.",
+                    "Maintain a strict surgical count of all sponges, needles, and instruments. The count must be performed and reconciled audibly before closing the patient.",
+                    "Ensure the OT is cleaned and disinfected to sterile standards between each case. Log the cleaning time.",
+                    "Check and log temperature and humidity in the OT to ensure they are within the required range for infection control."
+                ]
+            },
+            {
+                "title": "Emergency Room (ER) Management",
+                "tasks": [
+                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., ESI).",
+                    "Ensure resuscitation bays are checked at the start of every shift and are fully stocked (e.g., intubation trays, crash cart with charged defibrillator).",
+                    "Monitor ER wait times in real-time. A hospital administrator must be alerted if wait times for high-acuity patients exceed a set threshold.",
+                    "Facilitate rapid transfer of admitted patients from the ER to inpatient beds to prevent ER boarding and overcrowding.",
+                    "Conduct a daily inventory of all critical ER supplies and medications.",
+                    "Debrief with the ER team after any major trauma or critical event to discuss what went well and what could be improved."
+                ]
+            },
+            {
+                "title": "Infection Control & Compliance",
+                "tasks": [
+                    "Conduct hand hygiene audits by observing staff in different departments. Provide immediate feedback.",
+                    "Track rates of hospital-acquired infections (HAIs) and present the data at a monthly quality control meeting.",
+                    "Ensure terminal cleaning procedures are followed for rooms of patients who were on isolation precautions.",
+                    "Verify that all staff have up-to-date vaccinations (e.g., for influenza).",
+                    "Ensure proper disposal of all biomedical waste according to regulatory standards. Check that disposal bins are not overfilled.",
+                    "Prepare for regulatory audits (e.g., JCI, NABH) by conducting regular mock surveys."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'private_clinic_ops',
+        title: "Private Clinic & Outpatient Facility Checklist",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Healthcare",
+        description: "The essential operations checklist for private medical and dental clinics, focusing on patient flow, safety, and billing.",
+        icon: <Cross className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Patient Appointment & Registration",
+            "Clinical Room Turnover & Sterilization",
+            "Medical Billing & Insurance Claims",
+            "Emergency Preparedness for Clinics"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening & Patient Readiness",
+                tasks: [
+                    "Review the day's appointment schedule. Flag any new patients or complex procedures that may require extra time.",
+                    "Ensure all patient consultation and examination rooms are clean, stocked, and ready for the first patient. Use a room-readiness checklist.",
+                    "Verify all diagnostic equipment (e.g., ECG, ultrasound, dental X-ray) passes its daily calibration and self-tests. Log the results.",
+                    "Check and log temperatures of medication and vaccine refrigerators.",
+                    "Conduct a 10-minute morning huddle with all staff (clinical and admin) to review the schedule and discuss any operational issues.",
+                    "Send automated appointment reminders to all patients scheduled for the next business day."
+                ]
+            },
+            {
+                title: "Patient Flow & Experience",
+                "tasks": [
+                    "Greet patients warmly upon arrival. Verify their identity and insurance information at check-in.",
+                    "Ensure new patient paperwork is completed digitally or physically before they see the doctor. (Pro-Tip: Use a tablet-based intake form like 'Phreesia').",
+                    "Keep waiting times to a minimum. A staff member should provide an update to any patient waiting more than 15 minutes past their appointment time.",
+                    "Ensure clinical rooms are cleaned and prepped within 5 minutes of a patient leaving to maintain flow.",
+                    "At checkout, clearly explain any payments due, provide a detailed receipt, and schedule their next follow-up appointment.",
+                    "Send a patient satisfaction survey (e.g., via SMS) within 24 hours of their visit."
+                ]
+            },
+            {
+                title: "Clinical Safety & Sterilization",
+                "tasks": [
+                    "For dental/procedural clinics: Follow a strict, documented protocol for sterilizing all instruments using an autoclave. Daily spore testing is mandatory.",
+                    "Dispose of all sharps and biomedical waste in designated, puncture-proof containers. Check that containers are not overfilled.",
+                    "Ensure all staff are trained on and have access to appropriate PPE.",
+                    "Maintain an up-to-date crash cart or emergency kit. Check the defibrillator and oxygen tank monthly. Log the check.",
+                    "Conduct a quarterly emergency drill (e.g., a mock medical emergency like syncope or an allergic reaction) and review the team's response."
+                ]
+            },
+            {
+                title: "Billing & Administration",
+                "tasks": [
+                    "Verify each patient's insurance eligibility and benefits *before* their appointment to avoid billing surprises.",
+                    "Submit all insurance claims within 48 hours of the service being rendered. Use a clearinghouse to reduce errors.",
+                    "Review and follow up on any denied or rejected claims within 72 hours. Assign one person to be the 'claims champion'.",
+                    "Reconcile daily payments against appointment records. The office manager must sign off on the daily financial report.",
+                    "Maintain strict patient data confidentiality in compliance with HIPAA or local regulations. All staff must complete annual privacy training."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'diagnostic_lab_ops',
+        title: "Diagnostic Lab Checklist",
+        priceUSD: 159.99,
+        priceINR: 12999,
+        category: "Healthcare",
+        description: "A zero-error tolerance playbook for pathology and diagnostic labs focusing on accuracy, safety, and compliance.",
+        icon: <TestTube className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Sample Receiving & Accessioning",
+            "Daily Equipment Calibration Logs",
+            "Quality Control (QC) Run Protocol",
+            "Biohazard Waste Management"
+        ],
+        checklists: [
+            {
+                title: "Morning Setup & Calibration (Zero-Error Start)",
+                tasks: [
+                    "Log temperatures of all refrigerators, freezers, and incubators using a calibrated digital thermometer. The log must be co-signed by a second staff member.",
+                    "Run daily quality control (QC) samples on all analyzers before processing any patient samples. Results must be within acceptable limits (Levey-Jennings chart). Document any corrective action.",
+                    "Calibrate pipettes and other measurement instruments as per the weekly schedule. Document in the equipment log.",
+                    "Check inventory of reagents and consumables. Note any items approaching minimum stock levels in the ordering system.",
+                    "Ensure all workstations are clean and disinfected with an approved solution. Document the cleaning.",
+                    "Conduct a 5-minute huddle to discuss any instrument issues or pending critical samples from the previous shift."
+                ]
+            },
+            {
+                title: "Sample Management & Processing (Patient Safety First)",
+                tasks: [
+                    "Verify patient information on the sample tube matches the requisition form using at least two identifiers (e.g., Full Name and DOB). No match, no process.",
+                    "Inspect samples for proper collection (e.g., correct tube type, sufficient volume, no hemolysis). Reject and log any unsuitable samples, and immediately notify the collection center.",
+                    "Assign a unique lab ID (accession number) to each sample and log it into the Laboratory Information System (LIS). Use barcode scanners to prevent manual entry errors.",
+                    "Prioritize and process STAT samples within the defined turnaround time. A visual flag (e.g., a red rack) should be used.",
+                    "Ensure proper PPE (gloves, lab coat, eye protection) is worn at all times. Conduct a random PPE check on one staff member daily."
+                ]
+            },
+            {
+                title: "Data, Reporting & Critical Value Communication",
+                tasks: [
+                    "A senior technologist or pathologist must review and verify all critical or abnormal results before release. This must be logged in the LIS.",
+                    "Ensure reports are delivered to the correct physician/clinic via secure, encrypted methods (HIPAA compliance).",
+                    "Handle any STAT or critical value call-backs to physicians immediately. Document the time, the person spoken to, and a read-back confirmation of the results.",
+                    "Perform daily backups of the LIS and all instrument data to a secure, off-site location.",
+                    "Shred all paper documents containing patient information using a cross-cut shredder at the end of each day."
+                ]
+            },
+            {
+                title: "End of Day & Biohazard Management",
+                tasks: [
+                    "Properly dispose of all biohazardous materials in designated, sealed red bags/sharps containers. The containers must not be overfilled.",
+                    "Perform end-of-day maintenance on all analyzers as per manufacturer guidelines. Log the maintenance.",
+                    "Decontaminate all work surfaces with an approved biocide.",
+                    "Securely store any pending samples in the appropriate temperature-controlled environment.",
+                    "Ensure all patient data is secured. All computer systems must be logged off, not just locked.",
+                    "The lab supervisor must do a final walkthrough, sign the daily log, and secure the lab."
+                ]
+            }
+        ]
+    },
+    {
         id: 'gym_fitness_center_ops',
-        title: "The Gym & Fitness Center Operations Checklist",
+        title: "Gym & Fitness Center Checklist",
         priceUSD: 59.99,
         priceINR: 4799,
         category: "Wellness",
@@ -451,7 +633,7 @@ export const premiumPacks = [
     },
     {
         id: 'salon_spa_ops',
-        title: "The Salon & Day Spa Operations Checklist",
+        title: "Salon & Day Spa Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Wellness",
@@ -514,7 +696,7 @@ export const premiumPacks = [
     },
     {
         id: 'school_safety_operations',
-        title: "The School & College Safety Checklist",
+        title: "School & College Safety Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Education",
@@ -576,7 +758,7 @@ export const premiumPacks = [
     },
     {
         id: 'supermarket_ops_blueprint',
-        title: "The Supermarket Operations Checklist",
+        title: "Supermarket Checklist",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Retail",
@@ -636,7 +818,7 @@ export const premiumPacks = [
     },
     {
         id: 'fashion_boutique_ops',
-        title: "The Fashion Boutique Operations Checklist",
+        title: "Fashion Boutique Checklist",
         priceUSD: 69.99,
         priceINR: 5599,
         category: "Retail",
@@ -698,7 +880,7 @@ export const premiumPacks = [
     },
     {
         id: 'electronics_showroom_ops',
-        title: "The Electronics Showroom Operations Checklist",
+        title: "Electronics Showroom Checklist",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Retail",
@@ -713,7 +895,7 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Daily Opening & Merchandising",
+                "title": "Daily Opening & Merchandising",
                 "tasks": [
                     "Ensure all live demo units (phones, laptops, TVs) are charged, clean, and fully functional. Wipe down all screens.",
                     "Verify all security tethers and alarms on high-value items are active. Physically tug on 5 random units to test.",
@@ -757,7 +939,7 @@ export const premiumPacks = [
     },
     {
         id: 'factory_shift_playbook',
-        title: "The Factory Shift Handover Checklist",
+        title: "Factory Shift Handover Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Manufacturing",
@@ -816,7 +998,7 @@ export const premiumPacks = [
     },
     {
         id: 'wedding_hall_playbook',
-        title: "The Wedding & Banquet Hall Operations Checklist",
+        title: "Wedding & Banquet Hall Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Events",
@@ -877,7 +1059,7 @@ export const premiumPacks = [
     },
     {
         id: 'playschool_safety_protocol',
-        title: "The Playschool & Daycare Safety Checklist",
+        title: "Playschool & Daycare Checklist",
         priceUSD: 59.99,
         priceINR: 4999,
         category: "Education",
@@ -938,7 +1120,7 @@ export const premiumPacks = [
     },
     {
         id: 'hindu_wedding_checklist',
-        title: "The Complete Hindu Wedding Checklist",
+        title: "Hindu Wedding Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1001,7 +1183,7 @@ export const premiumPacks = [
     },
     {
         id: 'muslim_wedding_checklist',
-        title: "The Complete Muslim Wedding Checklist",
+        title: "Muslim Wedding Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1063,7 +1245,7 @@ export const premiumPacks = [
     },
     {
         id: 'auto_repair_playbook',
-        title: "The Auto Repair Shop Operations Checklist",
+        title: "Auto Repair Shop Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Automotive",
@@ -1114,7 +1296,6 @@ export const premiumPacks = [
                 title: "Billing & Vehicle Handover Experience",
                 "tasks": [
                     "Inform the customer that their vehicle is ready for pickup, sending a link to the final invoice for them to review beforehand.",
-                    "Prepare the final invoice, ensuring it matches the approved quote plus any additions. Attach the technician's notes.",
                     "When the customer arrives, the service advisor should walk them through the repairs made, showing them the old parts if requested.",
                     "Hand over the keys, the invoice, and thank them for their business.",
                     "Schedule their next recommended maintenance appointment in the system and place a reminder sticker on the windshield.",
@@ -1125,7 +1306,7 @@ export const premiumPacks = [
     },
     {
         id: 'mall_operations_blueprint',
-        title: "The Shopping Mall Operations Checklist",
+        title: "Shopping Mall Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Retail",
@@ -1186,7 +1367,7 @@ export const premiumPacks = [
     },
     {
         id: 'call_center_playbook',
-        title: "The Call Center Management Checklist",
+        title: "Call Center Checklist",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Corporate",
@@ -1201,8 +1382,8 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "Pre-Shift & Team Huddle Checklist (15 mins)",
-                tasks: [
+                "title": "Pre-Shift & Team Huddle Checklist (15 mins)",
+                "tasks": [
                     "Review previous shift's performance dashboard (AHT, FCR, CSAT, SL). Note any top performers and bottom outliers for coaching.",
                     "Check for any system outages or client updates from the central operations team. Prepare to communicate them clearly.",
                     "Lead a 15-minute team huddle: Discuss daily targets, share a 'call of the week' (good example), run a quick quiz on product knowledge, and end with recognition.",
@@ -1245,7 +1426,7 @@ export const premiumPacks = [
     },
     {
         id: 'waterpark_pool_safety',
-        title: "The Waterpark & Public Pool Safety Checklist",
+        title: "Waterpark & Public Pool Safety Checklist",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Hospitality",
@@ -1306,7 +1487,7 @@ export const premiumPacks = [
     },
     {
         id: 'airbnb_host_toolkit',
-        title: "The Airbnb & Rental Property Host Checklist",
+        title: "Airbnb Host Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Real Estate",
@@ -1368,7 +1549,7 @@ export const premiumPacks = [
     },
     {
         id: 'car_dealership_playbook',
-        title: "The Car Dealership Operations Checklist",
+        title: "Car Dealership Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Automotive",
@@ -1431,7 +1612,7 @@ export const premiumPacks = [
     },
     {
         id: 'corporate_launchkit',
-        title: "The Startup & Corporate Event Checklist",
+        title: "Corporate Event Checklist",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Corporate",
@@ -1501,7 +1682,7 @@ export const premiumPacks = [
     },
     {
         id: 'esg_reporting_framework',
-        title: "The ESG Reporting & Compliance Checklist",
+        title: "ESG Reporting Checklist",
         priceUSD: 199.99,
         priceINR: 15999,
         category: "Compliance",
@@ -1563,7 +1744,7 @@ export const premiumPacks = [
     },
     {
         id: 'iso_9001_audit_prep',
-        title: "The ISO 9001 Audit Preparation Checklist",
+        title: "ISO 9001 Audit Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Compliance",
@@ -1625,7 +1806,7 @@ export const premiumPacks = [
     },
     {
         id: 'eco_friendly_ops_playbook',
-        title: "The Sustainable Business Checklist",
+        title: "Sustainable Business Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Compliance",
@@ -1686,68 +1867,8 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'diagnostic_lab_protocol',
-        title: "The Diagnostic Lab Operations Checklist",
-        priceUSD: 159.99,
-        priceINR: 12999,
-        category: "Healthcare",
-        description: "A zero-error tolerance playbook for pathology and diagnostic labs focusing on accuracy, safety, and compliance.",
-        icon: <TestTube className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Sample Receiving & Accessioning",
-            "Daily Equipment Calibration Logs",
-            "Quality Control (QC) Run Protocol",
-            "Biohazard Waste Management"
-        ],
-        checklists: [
-            {
-                title: "Morning Setup & Calibration (Zero-Error Start)",
-                tasks: [
-                    "Log temperatures of all refrigerators, freezers, and incubators using a calibrated digital thermometer. The log must be co-signed by a second staff member.",
-                    "Run daily quality control (QC) samples on all analyzers before processing any patient samples. Results must be within acceptable limits (Levey-Jennings chart). Document any corrective action.",
-                    "Calibrate pipettes and other measurement instruments as per the weekly schedule. Document in the equipment log.",
-                    "Check inventory of reagents and consumables. Note any items approaching minimum stock levels in the ordering system.",
-                    "Ensure all workstations are clean and disinfected with an approved solution. Document the cleaning.",
-                    "Conduct a 5-minute huddle to discuss any instrument issues or pending critical samples from the previous shift."
-                ]
-            },
-            {
-                title: "Sample Management & Processing (Patient Safety First)",
-                tasks: [
-                    "Verify patient information on the sample tube matches the requisition form using at least two identifiers (e.g., Full Name and DOB). No match, no process.",
-                    "Inspect samples for proper collection (e.g., correct tube type, sufficient volume, no hemolysis). Reject and log any unsuitable samples, and immediately notify the collection center.",
-                    "Assign a unique lab ID (accession number) to each sample and log it into the Laboratory Information System (LIS). Use barcode scanners to prevent manual entry errors.",
-                    "Prioritize and process STAT samples within the defined turnaround time. A visual flag (e.g., a red rack) should be used.",
-                    "Ensure proper PPE (gloves, lab coat, eye protection) is worn at all times. Conduct a random PPE check on one staff member daily."
-                ]
-            },
-            {
-                title: "Data, Reporting & Critical Value Communication",
-                tasks: [
-                    "A senior technologist or pathologist must review and verify all critical or abnormal results before release. This must be logged in the LIS.",
-                    "Ensure reports are delivered to the correct physician/clinic via secure, encrypted methods (HIPAA compliance).",
-                    "Handle any STAT or critical value call-backs to physicians immediately. Document the time, the person spoken to, and a read-back confirmation of the results.",
-                    "Perform daily backups of the LIS and all instrument data to a secure, off-site location.",
-                    "Shred all paper documents containing patient information using a cross-cut shredder at the end of each day."
-                ]
-            },
-            {
-                title: "End of Day & Biohazard Management",
-                tasks: [
-                    "Properly dispose of all biohazardous materials in designated, sealed red bags/sharps containers. The containers must not be overfilled.",
-                    "Perform end-of-day maintenance on all analyzers as per manufacturer guidelines. Log the maintenance.",
-                    "Decontaminate all work surfaces with an approved biocide.",
-                    "Securely store any pending samples in the appropriate temperature-controlled environment.",
-                    "Ensure all patient data is secured. All computer systems must be logged off, not just locked.",
-                    "The lab supervisor must do a final walkthrough, sign the daily log, and secure the lab."
-                ]
-            }
-        ]
-    },
-    {
         id: 'cloud_kitchen_launchkit',
-        title: "The Cloud Kitchen Launch & Operations Checklist",
+        title: "Cloud Kitchen Checklist",
         priceUSD: 69.99,
         priceINR: 5499,
         category: "Hospitality",
@@ -1807,7 +1928,7 @@ export const premiumPacks = [
     },
     {
         id: 'international_travel_planner',
-        title: "The International Travel Checklist",
+        title: "International Travel Checklist",
         priceUSD: 19.99,
         priceINR: 1599,
         category: "Personal",
@@ -1873,7 +1994,7 @@ export const premiumPacks = [
     },
     {
         id: 'pet_travel_planner',
-        title: "The Pet-Friendly Travel Checklist",
+        title: "Pet-Friendly Travel Checklist",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Personal",
@@ -1928,68 +2049,6 @@ export const premiumPacks = [
                 ]
             }
         ]
-    },
-    {
-        id: 'hospital_administration_ops',
-        title: "The Hospital Administration & Operations Checklist",
-        priceUSD: 199.99,
-        priceINR: 15999,
-        category: "Healthcare",
-        description: "A comprehensive operational toolkit for hospital administrators covering patient care, safety, and departmental coordination.",
-        icon: <Cross className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Patient Admission & Discharge Protocol",
-            "Surgical Suite & OT Readiness",
-            "Emergency Room (ER) Triage & Flow",
-            "Inter-Departmental Coordination"
-        ],
-        checklists: [
-            {
-                "title": "Patient Admission & Discharge",
-                "tasks": [
-                    "Verify patient identification with two identifiers and cross-check with the hospital information system (HIS).",
-                    "Ensure all consent forms are explained, signed, and witnessed. A digital copy must be stored in the patient's file immediately.",
-                    "Conduct a nursing assessment upon admission, documenting allergies, current medications, and baseline vital signs.",
-                    "Prepare a detailed discharge plan at least 24 hours in advance, including follow-up appointments, medication prescriptions, and patient education materials.",
-                    "A pharmacist must review and reconcile the patient's discharge medications. The nurse must explain each medication to the patient/family.",
-                    "Arrange post-discharge transport or care coordination as needed. Confirm the arrangement with the patient's family."
-                ]
-            },
-            {
-                "title": "Surgical Suite / Operating Theatre (OT) Readiness",
-                "tasks": [
-                    "Perform a daily 'first case of the day' check to ensure all OT equipment (anesthesia machine, monitors, lights) has passed its self-test and is functional.",
-                    "Verify that the correct sterile instrument sets are available for each scheduled surgery, with sterilization indicators checked and logged.",
-                    "Conduct a 'surgical time-out' immediately before incision for EVERY case: the entire team must verbally confirm patient identity, surgical site, and procedure.",
-                    "Maintain a strict surgical count of all sponges, needles, and instruments. The count must be performed and reconciled audibly before closing the patient.",
-                    "Ensure the OT is cleaned and disinfected to sterile standards between each case. Log the cleaning time.",
-                    "Check and log temperature and humidity in the OT to ensure they are within the required range for infection control."
-                ]
-            },
-            {
-                "title": "Emergency Room (ER) Management",
-                "tasks": [
-                    "Triage every patient within 10 minutes of arrival, assigning them a priority level based on a standardized scale (e.g., ESI).",
-                    "Ensure resuscitation bays are checked at the start of every shift and are fully stocked (e.g., intubation trays, crash cart with charged defibrillator).",
-                    "Monitor ER wait times in real-time. A hospital administrator must be alerted if wait times for high-acuity patients exceed a set threshold.",
-                    "Facilitate rapid transfer of admitted patients from the ER to inpatient beds to prevent ER boarding and overcrowding.",
-                    "Conduct a daily inventory of all critical ER supplies and medications.",
-                    "Debrief with the ER team after any major trauma or critical event to discuss what went well and what could be improved."
-                ]
-            },
-            {
-                "title": "Infection Control & Compliance",
-                "tasks": [
-                    "Conduct hand hygiene audits by observing staff in different departments. Provide immediate feedback.",
-                    "Track rates of hospital-acquired infections (HAIs) and present the data at a monthly quality control meeting.",
-                    "Ensure terminal cleaning procedures are followed for rooms of patients who were on isolation precautions.",
-                    "Verify that all staff have up-to-date vaccinations (e.g., for influenza).",
-                    "Ensure proper disposal of all biomedical waste according to regulatory standards. Check that disposal bins are not overfilled.",
-                    "Prepare for regulatory audits (e.g., JCI, NABH) by conducting regular mock surveys."
-                ]
-            }
-        ]
     }
 ];
 
@@ -2016,3 +2075,5 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
+
