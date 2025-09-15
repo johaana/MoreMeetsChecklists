@@ -77,7 +77,7 @@ export const premiumPacks = [
         category: "Hospitality",
         description: "The essential HACCP-based toolkit for any restaurant focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
-        mostPopular: true,
+        mostPopular: false,
         sampleItems: [
             "Kitchen Opening & Closing SOPs",
             "Daily Temperature & HACCP Logs",
@@ -126,185 +126,6 @@ export const premiumPacks = [
                     "Empty, clean, and sanitize all trash and recycling bins.",
                     "Sweep and mop all floors, including under equipment and in storage areas.",
                     "Turn off all equipment, gas lines, and lights. Secure the kitchen."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'cloud_kitchen_ops',
-        title: "Cloud Kitchen Launch & Ops Kit",
-        priceUSD: 69.99,
-        priceINR: 5499,
-        category: "Hospitality",
-        description: "A complete toolkit for launching and running a successful delivery-only kitchen operation.",
-        icon: <Truck className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Aggregator Onboarding & Menu Sync",
-            "Packaging Station & Inventory Setup",
-            "Order Fulfillment & Handoff Protocol",
-            "Rider Management & Reconciliation"
-        ],
-        checklists: [
-            {
-                title: "Aggregator Setup & Menu Engineering",
-                tasks: [
-                    "Complete all paperwork and FSSAI registration for Zomato, Swiggy, etc.",
-                    "Set up online menus on all platforms. Ensure high-quality photos are used.",
-                    "Engineer menu for delivery: prioritize items that travel well. Create delivery-friendly combos.",
-                    "Sync all aggregator platforms with a single POS or order management dashboard.",
-                    "Run test orders on all platforms to ensure correct pricing, taxes, and item mapping."
-                ]
-            },
-            {
-                title: "Packaging & Dispatch Station Setup",
-                tasks: [
-                    "Designate a specific area for packaging and dispatch, separate from the cooking line.",
-                    "Stock the station with all necessary packaging materials: containers, bags, cutlery, tissues, tape.",
-                    "Create a checklist for each order: Main dish, side, drink, cutlery, condiments. Staff must tick off each item.",
-                    "Install a screen or printer at the station to display order details clearly.",
-                    "Ensure packaging is designed to maintain food temperature and prevent spills."
-                ]
-            },
-            {
-                title: "Live Operations & Order Fulfillment",
-                tasks: [
-                    "Acknowledge incoming orders on the dashboard within 60 seconds.",
-                    "Fire orders to the correct kitchen station based on preparation time.",
-                    "Double-check each packed item against the order ticket before sealing the bag.",
-                    "Attach the correct bill to the sealed package.",
-                    "Hand over the package to the correct delivery rider and mark the order as 'Ready for Pickup'.",
-                    "Monitor and manage rider wait times. Report any issues to the aggregator's support team."
-                ]
-            },
-            {
-                title: "End-of-Day Reconciliation",
-                tasks: [
-                    "Reconcile orders between your POS and each aggregator's dashboard.",
-                    "Calculate total sales, discounts, and commissions for each platform.",
-                    "Verify online payments received against the settlement reports.",
-                    "Conduct a closing inventory count of key ingredients and packaging materials.",
-                    "Shut down all systems and securely store any sensitive data."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'resort_spa_management',
-        title: "Resort & Spa Management Suite",
-        priceUSD: 69.99,
-        priceINR: 5499,
-        category: "Hospitality",
-        description: "A specialized toolkit for luxury resorts, covering grounds, pools, spas, and guest activities.",
-        icon: <Plane className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Daily Pool & Water Quality Checks",
-            "Groundskeeping & Landscaping Schedule",
-            "Spa Opening & Therapist Readiness",
-            "Guest Activity & Equipment Safety"
-        ],
-        checklists: [
-            {
-                title: "Daily Pool & Recreational Area Safety",
-                tasks: [
-                    "Test and log pool water chemistry (pH, chlorine, alkalinity) before opening. Adjust as per health codes.",
-                    "Physically inspect pool surfaces, drains, and ladders for any damage or hazards.",
-                    "Ensure all safety equipment (life rings, shepherd's hooks) is present, visible, and in good condition.",
-                    "Walk through all recreational areas (tennis courts, gym) to check for cleanliness and equipment safety.",
-                    "Verify that all poolside and outdoor furniture is clean and arranged safely.",
-                    "Check that lifeguard stations are properly equipped and staffed according to schedule."
-                ]
-            },
-            {
-                title: "Weekly Grounds & Landscaping Maintenance",
-                tasks: [
-                    "Conduct a full property walk-through to identify areas needing immediate attention (e.g., pruning, weeding).",
-                    "Inspect irrigation systems for leaks or malfunctions and adjust watering schedules based on weather.",
-                    "Check all outdoor lighting and pathways for safety and functionality.",
-                    "Schedule and oversee mowing, fertilization, and pest control activities.",
-                    "Ensure all water features (fountains, ponds) are clean and operating correctly."
-                ]
-            },
-            {
-                title: "Daily Spa Operations Checklist",
-                tasks: [
-                    "Verify all treatment rooms are immaculately clean, stocked, and at a comfortable temperature.",
-                    "Check that all spa equipment (steam rooms, saunas, hydrotherapy tubs) is operational and at the correct temperature.",
-                    "Review therapist schedules and confirm appointments for the day.",
-                    "Ensure reception is stocked with towels, robes, slippers, and refreshments.",
-                    "Conduct a brief morning meeting with spa staff to discuss the day's bookings and any VIP guests."
-                ]
-            },
-            {
-                title: "Guest Activity Planning & Execution",
-                tasks: [
-                    "Post the daily/weekly activity schedule in highly visible guest areas and on digital platforms.",
-                    "Inspect all equipment for guest activities (e.g., bicycles, kayaks, kids' club toys) for safety.",
-                    "Ensure staff leading activities are prepared with all necessary supplies and a sign-up sheet.",
-                    "Brief the concierge and front desk on the day's activities so they can inform guests.",
-                    "Gather feedback from guests after activities to inform future planning."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'waterpark_pool_safety',
-        title: "Waterpark & Pool Safety Standards",
-        priceUSD: 89.99,
-        priceINR: 6999,
-        category: "Hospitality",
-        description: "An essential safety and maintenance toolkit for any public aquatic facility.",
-        icon: <Waves className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Daily Lifeguard & First Aid Readiness",
-            "Water Quality & Chemical Log",
-            "Waterslide & Attraction Inspection",
-            "Emergency Action Plan (EAP) Drills"
-        ],
-        checklists: [
-            {
-                title: "Pre-Opening Safety Inspection",
-                tasks: [
-                    "Test and log water chemistry (Free Chlorine, pH, Combined Chlorine, Alkalinity) for ALL pools. Must be within health code limits.",
-                    "Physically walk every slide and attraction, checking for surface damage, loose bolts, or foreign objects.",
-                    "Run water pumps for all attractions to ensure proper flow and function before public access.",
-                    "Inspect all lifeguard towers/stations for required safety equipment (rescue tubes, backboards, first aid kits).",
-                    "Verify two-way radios and emergency whistles are fully functional.",
-                    "Conduct a 'surprise' mock rescue drill with the lifeguard team and time their response."
-                ]
-            },
-            {
-                title: "Ongoing Operational Safety",
-                tasks: [
-                    "Re-test and log water chemistry every 2 hours of operation.",
-                    "Rotate lifeguard positions every 20-30 minutes to prevent vigilance decrement.",
-                    "Supervisors must conduct periodic audits of lifeguards to ensure they are scanning their zone of responsibility effectively.",
-                    "Check and clean restrooms and changing areas hourly.",
-                    "Monitor weather conditions and follow clear protocols for lightning or high winds.",
-                    "Ensure height and safety rule signage is visible and enforced at every attraction."
-                ]
-            },
-            {
-                title: "Closing Procedures",
-                tasks: [
-                    "Clear all swimmers from the pools at the designated time.",
-                    "Perform a final sweep of all pools and attractions to ensure no one is left behind.",
-                    "Shock or super-chlorinate pools as per the weekly chemical schedule.",
-                    "Clean all filters and backwash systems as required.",
-                    "Secure all entry points and store all loose equipment.",
-                    "Complete the daily operations log, noting any incidents, rescues, or maintenance issues."
-                ]
-            },
-            {
-                title: "Weekly & Monthly Checks",
-                tasks: [
-                    "Perform a full inventory of the first aid station and restock all supplies.",
-                    "Conduct mandatory in-service training for all lifeguard staff (4 hours per month minimum).",
-                    "Test emergency shut-off buttons for all pumps and water features.",
-                    "Inspect and lubricate all moving parts on water attractions.",
-                    "Review all incident and rescue reports from the past week/month to identify trends or problem areas."
                 ]
             }
         ]
@@ -377,237 +198,62 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'mall_operations_blueprint',
-        title: "Mall Operations & Safety Blueprint",
-        priceUSD: 99.99,
-        priceINR: 7999,
+        id: 'facility_management_ops',
+        title: "Facility & Admin Management",
+        priceUSD: 129.99,
+        priceINR: 9999,
         category: "Corporate",
-        description: "A complete operational guide for shopping mall management, focusing on safety, cleanliness, and tenant relations.",
-        icon: <ShoppingCart className="w-8 h-8 text-primary" />,
+        description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment.",
+        icon: <Building2 className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Security & Patrol Checklist",
-            "Housekeeping & Common Area Audits",
-            "Tenant Communication Protocol",
-            "Emergency Response Drills (Fire, Active Shooter)"
+            "Preventive Maintenance Schedules",
+            "Vendor & Contract Management",
+            "Office Safety & Compliance Audits",
+            "Admin & Workplace Services"
         ],
         checklists: [
             {
-                title: "Daily Opening & Security Protocol",
+                title: "Daily Workplace Readiness",
                 tasks: [
-                    "Conduct a full patrol of the mall interior and exterior before public entry, checking for hazards or vandalism.",
-                    "Test a random selection of security cameras and emergency exit alarms. Log results.",
-                    "Brief the security team on daily events, expected high-traffic periods, and any specific security alerts.",
-                    "Ensure all public entrances are unlocked on schedule and free of obstructions.",
-                    "Verify that the customer service/information desk is staffed and stocked with mall directories.",
-                    "Check that all escalators, elevators, and automatic doors are functioning correctly. Report any faults."
+                    "Conduct a morning walk-through of the entire office. Check for cleanliness, lighting, and temperature.",
+                    "Ensure all meeting rooms are clean, tidy, and equipment (projectors, webcams) is functional.",
+                    "Check pantry/kitchen supplies (coffee, milk, snacks) and restock as needed.",
+                    "Verify that all restrooms are clean, stocked, and free of plumbing issues.",
+                    "Check that reception area is clean and ready for visitors.",
+                    "Review any overnight maintenance or security reports."
                 ]
             },
             {
-                title: "Ongoing Operations & Housekeeping",
+                title: "Weekly Maintenance & Safety Audit",
                 tasks: [
-                    "Conduct hourly patrols, focusing on restrooms, food courts, and high-traffic common areas.",
-                    "Ensure housekeeping staff are actively managing spills, overflowing bins, and restroom cleanliness.",
-                    "Monitor parking areas for traffic flow, safety issues, or unauthorized vehicles.",
-                    "Log and respond to any tenant complaints or maintenance requests within a 1-hour timeframe.",
-                    "Check food court seating areas for cleanliness and table availability.",
-                    "Ensure all mall signage and digital directories are accurate and functional."
+                    "Test a random sample of fire alarms and emergency exit lights.",
+                    "Inspect all first-aid kits and AEDs. Restock and check battery life.",
+                    "Walk all emergency exit routes to ensure they are clear of obstructions.",
+                    "Check functioning of all access control systems (key cards, biometric scanners).",
+                    "Coordinate with housekeeping vendor to review cleaning standards and address any issues.",
+                    "Review and approve all vendor invoices from the previous week."
                 ]
             },
             {
-                title: "Daily Closing Protocol",
+                title: "Monthly Vendor & Compliance Review",
                 tasks: [
-                    "Broadcast standardized closing announcements 30, 15, and 5 minutes before closing.",
-                    "Security personnel conduct a sweep of all common areas to ensure all patrons have exited.",
-                    "Verify with each tenant that their premises are secure before they depart.",
-                    "Secure all public entrances at the designated time.",
-                    "Consolidate daily incident reports from security, housekeeping, and maintenance teams.",
-                    "Activate night-time lighting and security alarm protocols."
+                    "Conduct a formal review meeting with key vendors (security, housekeeping, catering).",
+                    "Audit vendor performance against their service level agreement (SLA).",
+                    "Review and update the master list of all service contracts and their renewal dates.",
+                    "Schedule and oversee all preventive maintenance for HVAC, electrical, and plumbing systems.",
+                    "Ensure all statutory compliance posters (health & safety, employment law) are up-to-date and displayed.",
+                    "Review office supply inventory and budget."
                 ]
             },
             {
-                title: "Weekly Maintenance & Tenant Relations",
+                title: "Admin & Employee Services",
                 tasks: [
-                    "Test the public announcement (PA) system and fire alarm system (after hours).",
-                    "Inspect the roof and parking structures for any required maintenance.",
-                    "Send out a weekly newsletter or email to all tenants with updates on mall events, maintenance schedules, etc.",
-                    "Conduct a spot-check on a few tenants to ensure they are complying with mall operational guidelines.",
-                    "Review and analyze weekly footfall data to identify trends."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'bpo_call_center_ops',
-        title: "BPO Call Center Daily Management",
-        priceUSD: 89.99,
-        priceINR: 6999,
-        category: "Corporate",
-        description: "A complete operational playbook for call center managers to drive team performance, quality, and efficiency.",
-        icon: <Phone className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Shift Start-Up & Team Huddle",
-            "Live Call Quality Assurance (QA)",
-            "Agent Performance Coaching",
-            "End-of-Shift Reporting & Handoff"
-        ],
-        checklists: [
-            {
-                title: "Pre-Shift & Team Huddle Checklist",
-                tasks: [
-                    "Review previous shift's performance dashboard (AHT, FCR, CSAT). Note any outliers.",
-                    "Check for any system outages or updates from IT. Communicate to the team.",
-                    "Prepare and lead a 15-minute team huddle: discuss daily targets, share a 'tip of the day', and run a quick Q&A.",
-                    "Ensure all agents are logged into the phone system and necessary software 5 minutes before the shift starts.",
-                    "Verify that the scheduling software (WFM) is aligned with the actual agents present on the floor."
-                ]
-            },
-            {
-                title: "Live Operations & Quality Assurance",
-                tasks: [
-                    "Monitor the live call queue dashboard. Adjust agent skills or priorities as needed to manage wait times.",
-                    "Perform a minimum of 2 'live silent monitoring' sessions per agent per week. Document scores.",
-                    "Conduct at least 1 'side-by-side' coaching session per agent per month.",
-                    "Listen for and flag any critical compliance errors in real-time.",
-                    "Handle escalated calls from agents, ensuring customer resolution and agent de-briefing afterwards.",
-                    "Send out hourly performance updates to the team to maintain momentum."
-                ]
-            },
-            {
-                title: "Agent Performance & Coaching",
-                tasks: [
-                    "Schedule and conduct weekly 1-on-1 meetings with each agent to discuss their performance scorecard.",
-                    "Create and assign a documented action plan for any agent in the bottom quartile.",
-                    "Publicly recognize top performers for the day/week on a team board or group chat.",
-                    "Review QA scores with agents, playing back specific calls to illustrate coaching points.",
-                    "Ensure all agents have completed their mandatory recurrent training for the month."
-                ]
-            },
-            {
-                title: "End-of-Shift & Reporting",
-                tasks: [
-                    "Analyze the day's performance against targets. Document reasons for any significant variance.",
-                    "Compile a 'Shift Handover Report' for the next manager, highlighting major issues, pending escalations, and system status.",
-                    "Ensure all agents properly log their end-of-day dispositions and sign out of all systems.",
-                    "Conduct a brief end-of-shift huddle to summarize the day's wins and challenges.",
-                    "Email the final shift performance report to senior management."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'electronics_showroom_ops',
-        title: "Electronics Showroom Daily Ops",
-        priceUSD: 89.99,
-        priceINR: 6999,
-        category: "Retail",
-        description: "A specialized playbook for managing high-value electronics retail, focusing on security, sales, and live demos.",
-        icon: <Ear className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Live Demo Unit & Security Checks",
-            "Inventory & High-Value Stock Audit",
-            "Sales Staff Product Training",
-            "Trade-in & Exchange Process"
-        ],
-        checklists: [
-            {
-                title: "Daily Opening & Merchandising",
-                tasks: [
-                    "Ensure all live demo units (phones, laptops, TVs) are charged, clean, and fully functional.",
-                    "Verify all security tethers and alarms on high-value items are active.",
-                    "Conduct a spot-check of 5-10 high-value SKUs against the inventory system.",
-                    "Check that all promotional signage and price tags are accurate and aligned with current offers.",
-                    "Brief the sales team on daily targets, new products, and special promotions.",
-                    "Ensure all sales staff are logged into the POS and CRM systems."
-                ]
-            },
-            {
-                title: "Sales Floor & Customer Service",
-                tasks: [
-                    "Train staff to approach customers using feature-based questions, not just 'Can I help you?'.",
-                    "Insist on a structured demo process for key products.",
-                    "Have a clear and transparent process for handling customer trade-ins.",
-                    "Ensure financing and extended warranty options are offered to every eligible customer.",
-                    "Maintain a clean and organized accessories section, a key driver of high-margin sales."
-                ]
-            },
-            {
-                title: "Inventory & Security Protocol",
-                tasks: [
-                    "Conduct a full inventory count of all high-value product categories weekly.",
-                    "Review CCTV footage of cash counters and store exits daily.",
-                    "Implement a strict policy for handling returned goods, including inspection for damage and completeness.",
-                    "Reconcile physical cash and credit card transactions against POS reports at the end of every shift.",
-                    "Store high-value, low-volume items in a locked stockroom, not on the open sales floor."
-                ]
-            },
-            {
-                title: "Staff & Training",
-                tasks: [
-                    "Conduct weekly 30-minute training sessions on new products.",
-                    "Role-play customer scenarios to improve sales techniques.",
-                    "Track individual sales performance and provide regular coaching.",
-                    "Ensure all staff are familiar with the store's emergency and security procedures."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'fashion_boutique_ops',
-        title: "Fashion Boutique Operations",
-        priceUSD: 69.99,
-        priceINR: 5599,
-        category: "Retail",
-        description: "The complete guide to running a successful apparel store, from visual merchandising to fitting room management.",
-        icon: <Shirt className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Visual Merchandising & Display",
-            "Fitting Room & Loss Prevention",
-            "New Stock & Inventory Management",
-            "Clienteling & Personal Styling"
-        ],
-        checklists: [
-            {
-                title: "Daily Opening & Merchandising",
-                tasks: [
-                    "Refresh the window display. Ensure it's clean, well-lit, and features new arrivals.",
-                    "Walk the floor and restock any items sold the previous day. Ensure all sizes are represented.",
-                    "Steam and prep any wrinkled garments on the sales floor.",
-                    "Check that all mannequins are styled correctly according to the current collection's theme.",
-                    "Ensure all signage and price tags are correct and presentable."
-                ]
-            },
-            {
-                title: "Fitting Room & Customer Service",
-                tasks: [
-                    "Implement a strict fitting room policy (e.g., limit of 5 items per customer).",
-                    "Ensure fitting rooms are always clean, well-lit, and mirrors are smudge-free.",
-                    "Train staff to 'service' the fitting rooms: check on customers, offer different sizes, and clear out unwanted items immediately.",
-                    "Inspect items returned from the fitting room for damage or signs of wear before returning to the sales floor.",
-                    "Actively engage in 'clienteling' - building relationships with repeat customers and tracking their preferences."
-                ]
-            },
-            {
-                title: "New Stock & Inventory Management",
-                tasks: [
-                    "Receive and check new shipments against the packing slip. Report any discrepancies immediately.",
-                    "Tag all new items with price and security tags before bringing them to the sales floor.",
-                    "Steam and prep all new stock before merchandising.",
-                    "Conduct weekly 'cycle counts' of best-selling categories to maintain inventory accuracy.",
-                    "Plan and execute markdowns and sales promotions. Ensure POS system is updated accordingly."
-                ]
-            },
-            {
-                title: "Closing & Daily Reporting",
-                tasks: [
-                    "Complete a full floor recovery: re-hang, re-fold, and organize all merchandise.",
-                    "Clear all fitting rooms of any remaining items.",
-                    "Reconcile daily sales reports from the POS system.",
-                    "Prepare the bank deposit.",
-                    "Secure the premises, lock all doors, and set the alarm."
+                    "Manage the process for issuing and revoking employee access cards.",
+                    "Coordinate office events, celebrations, and town halls.",
+                    "Oversee the mailroom and courier services.",
+                    "Manage parking allocation and address any employee concerns.",
+                    "Gather employee feedback on workplace facilities and create an action plan for improvements."
                 ]
             }
         ]
@@ -666,251 +312,6 @@ export const premiumPacks = [
                     "Reconcile each cashier's drawer against their POS sales report.",
                     "Prepare the daily bank deposit.",
                     "Secure the store, lock all entrances, and set the alarm system."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'jewellery_store_ops',
-        title: "Jewellery Store Operations & Security",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        category: "Retail",
-        description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
-        icon: <Gem className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Vault Opening & Closing Protocol",
-            "Daily Inventory & Display Audit",
-            "Advanced Anti-Robbery Procedures",
-            "Customer Vetting & Suspicion Triggers",
-        ],
-        checklists: [
-            {
-                "title": "Daily Opening Procedure (Dual Control)",
-                "tasks": [
-                    "First staff member arrives, inspects exterior for tampering (locks, windows), reports 'all clear' to manager off-site",
-                    "Second staff member arrives; both enter together. First action: disarm alarm within 30 seconds",
-                    "Immediately lock the door behind you",
-                    "Perform a check of all interior sensors, panic buttons, and CCTV cameras (ensure they are recording)",
-                    "Two staff members proceed to the vault. Use dual keys/codes simultaneously to open",
-                    "Inspect vault interior and log opening time. Remove day-display trays",
-                    "Set up displays, ensuring each piece is accounted for against the daily opening inventory sheet",
-                    "Test silent panic buttons and hold-up alarms before opening to the public"
-                ]
-            },
-            {
-                "title": "Daily Closing Procedure (Dual Control)",
-                "tasks": [
-                    "Lock main door 15 minutes prior to closing time. No new customers allowed",
-                    "Begin removing jewellery from displays, starting with highest value items",
-                    "Two staff members verify each item against the closing inventory sheet as it is placed in vault trays",
-                    "Place trays back in the vault in their designated, mapped locations",
-                    "Final inventory reconciliation and sign-off by both staff members",
-                    "Lock the vault using dual-key/code protocol. Physically check the handle",
-                    "Activate all alarm systems. Wait for confirmation call from security company",
-                    "Both staff members exit the premises at the same time. Never leave one person alone"
-                ]
-            },
-            {
-                "title": "Ongoing Security & Sales Floor Protocol",
-                "tasks": [
-                    "Greet every customer and make direct eye contact. Acknowledge their presence immediately",
-                    "Never show more than one high-value item (or tray) at a time. One out, one in",
-                    "Observe for suspicious behavior: bulky clothing, nervous demeanor, questions about security",
-                    "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person",
-                    "Verify high-value credit card purchases with photo ID. For large cash purchases, follow AML regulations",
-                    "Regularly clean glass display cases to remove fingerprints",
-                    "Never turn your back on a customer who is handling merchandise"
-                ]
-            },
-            {
-                "title": "Weekly Security & Maintenance Audit",
-                "tasks": [
-                    "Test all audible alarms (outside of business hours)",
-                    "Review a random 1-hour block of CCTV footage from the past week, checking for blind spots",
-                    "Inspect all locks, door hardware, and display case integrity",
-                    "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
-                    "Check batteries in all wireless security devices",
-                    "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
-                ]
-            }
-        ]
-    },
-    {
-        id: 'car_dealership_ops',
-        title: "Car Dealership Daily Operations",
-        priceUSD: 99.99,
-        priceINR: 7999,
-        category: "Automotive",
-        description: "A complete playbook for car showroom managers to optimize sales, service, and customer experience.",
-        icon: <Briefcase className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Showroom Opening & Vehicle Prep",
-            "Sales Process & CRM Management",
-            "Test Drive Protocol & Safety",
-            "Vehicle Handover & Delivery Experience"
-        ],
-        checklists: [
-            {
-                title: "Morning Showroom Preparation",
-                tasks: [
-                    "Walk the lot and showroom floor. Ensure all display vehicles are clean, unlocked, and have charged batteries.",
-                    "Check that all price stickers and feature sheets are accurate and correctly placed.",
-                    "Lead a 15-minute sales team huddle: discuss daily targets, new inventory, and current promotions.",
-                    "Verify the reception and customer lounge areas are clean, stocked with refreshments, and presentable.",
-                    "Ensure all sales staff are logged into the CRM and ready to receive leads."
-                ]
-            },
-            {
-                title: "Sales & Customer Interaction Process",
-                tasks: [
-                    "Greet all customers within 2 minutes of their arrival on the lot.",
-                    "Log every new customer interaction into the CRM immediately, capturing contact info and vehicle of interest.",
-                    "Conduct a thorough needs analysis before recommending a vehicle.",
-                    "Follow a structured 'walkaround' presentation for every vehicle.",
-                    "Adhere to the dealership's test drive protocol: copy driver's license, confirm insurance, and follow the designated route.",
-                    "Present all financing and add-on options clearly and transparently."
-                ]
-            },
-            {
-                title: "Vehicle Handover & Delivery",
-                tasks: [
-                    "Ensure the sold vehicle has undergone a full pre-delivery inspection (PDI) and is detailed to perfection.",
-                    "Prepare all paperwork: final sales agreement, registration documents, warranty information.",
-                    "Schedule a specific delivery appointment with the customer.",
-                    "Perform a comprehensive feature explanation with the new owner, connecting their phone to Bluetooth and setting basic preferences.",
-                    "Personally introduce the new owner to the service department manager.",
-                    "Follow up with the customer within 72 hours to ensure satisfaction and ask for a review."
-                ]
-            },
-            {
-                title: "End of Day & Reporting",
-                tasks: [
-                    "Update the CRM with the status of all leads and deals from the day.",
-                    "Reconcile all cash, check, and credit card transactions.",
-                    "Secure all keys in the key vault.",
-                    "Lock down all display vehicles and secure the showroom and lot.",
-                    "Sales manager to compile and email a daily sales report to the general manager."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'auto_repair_shop_ops',
-        title: "Auto Repair Shop Workflow",
-        priceUSD: 79.99,
-        priceINR: 6499,
-        category: "Automotive",
-        description: "A step-by-step guide for service advisors and garage owners to standardize operations from check-in to delivery.",
-        icon: <Wrench className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Vehicle Intake & Inspection Process",
-            "Customer Approval & Work Order",
-            "Quality Control & Final Checks",
-            "Parts Management & Inventory"
-        ],
-        checklists: [
-            {
-                title: "Vehicle Check-In & Service Advising",
-                tasks: [
-                    "Greet the customer and confirm their appointment.",
-                    "Perform a 'walkaround' inspection with the customer, noting any pre-existing damage on a standard form.",
-                    "Use a tablet to document the customer's concerns and vehicle symptoms accurately.",
-                    "Place a protective cover on the driver's seat, floor, and steering wheel.",
-                    "Provide an estimated time for diagnosis and a preliminary cost estimate.",
-                    "Tag the keys with the customer's name, vehicle details, and job number."
-                ]
-            },
-            {
-                title: "Diagnosis, Quoting & Work Order",
-                tasks: [
-                    "Assign the job to a technician based on skill set and availability.",
-                    "Technician performs diagnosis and reports findings back to the service advisor.",
-                    "Service advisor prepares a detailed quote, including parts, labor, and taxes.",
-                    "Contact the customer to explain the required repairs and get explicit approval before starting any work. Document approval in the system.",
-                    "Once approved, convert the quote to a formal work order and assign it to the technician."
-                ]
-            },
-            {
-                title: "Repair & Quality Control",
-                tasks: [
-                    "Technician follows the work order, documenting all steps and parts used.",
-                    "All replaced parts must be kept aside for the customer to inspect if requested.",
-                    "After repairs are complete, a different technician or a dedicated QC person must perform a final inspection and test drive.",
-                    "The QC checklist must include checking for grease marks, ensuring all dashboard lights are off, and verifying the original complaint is resolved.",
-                    "Clean the vehicle before notifying the customer."
-                ]
-            },
-            {
-                title: "Billing & Vehicle Handover",
-                tasks: [
-                    "Inform the customer that their vehicle is ready for pickup.",
-                    "Prepare the final invoice, ensuring it matches the approved quote plus any additions.",
-                    "When the customer arrives, the service advisor should walk them through the repairs made and the charges.",
-                    "Hand over the keys, the invoice, and any replaced parts.",
-                    "Schedule a follow-up call in 2 days to check on the vehicle's performance and customer satisfaction."
-                ]
-            }
-        ]
-    },
-    {
-        id: 'rental_property_management',
-        title: "Rental Property Management",
-        priceUSD: 49.99,
-        priceINR: 3999,
-        category: "Real Estate",
-        description: "The essential toolkit for landlords and property managers to streamline tenant relations, maintenance, and compliance.",
-        icon: <Building2 className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Tenant Move-In & Move-Out Inspection",
-            "Routine Property Maintenance Schedule",
-            "Rent Collection & Arrears Protocol",
-            "Vendor & Contractor Management"
-        ],
-        checklists: [
-            {
-                title: "New Tenant Onboarding & Move-In",
-                tasks: [
-                    "Conduct a thorough background and credit check on the applicant.",
-                    "Prepare and sign the rental agreement, ensuring all clauses are legally compliant.",
-                    "Collect the security deposit and first month's rent in cleared funds.",
-                    "Conduct a detailed move-in inspection with the tenant, taking photos/videos of the property's condition. Both parties sign the report.",
-                    "Hand over keys, access cards, and provide information on utility connections.",
-                    "Provide a welcome packet with emergency contact numbers and building rules."
-                ]
-            },
-            {
-                title: "Rent Collection & Financials",
-                tasks: [
-                    "Send a rent reminder 3 days before the due date.",
-                    "Log all rent payments on the day they are received.",
-                    "Immediately follow the legal protocol for late rent, starting with a formal late notice.",
-                    "Track all property-related expenses and keep receipts for tax purposes.",
-                    "Provide tenants with a formal receipt for all payments."
-                ]
-            },
-            {
-                title: "Maintenance & Inspections",
-                tasks: [
-                    "Maintain a list of approved and insured vendors (plumbers, electricians, etc.).",
-                    "Respond to all maintenance requests within 24 hours.",
-                    "Schedule and conduct bi-annual property inspections, providing proper notice to the tenant.",
-                    "Keep a log of all repairs and maintenance carried out on the property.",
-                    "Schedule preventative maintenance for HVAC, plumbing, and other systems."
-                ]
-            },
-            {
-                title: "Tenant Move-Out & Turnover",
-                tasks: [
-                    "Upon receiving notice to vacate, confirm the move-out date and send a cleaning checklist to the tenant.",
-                    "Conduct a final move-out inspection, comparing the property's condition to the initial move-in report.",
-                    "Document any damages with photos and estimate repair costs.",
-                    "Calculate any deductions from the security deposit and return the balance within the legally required timeframe, along with an itemized statement.",
-                    "Change the locks and schedule professional cleaning and repairs to prepare the property for the next tenant."
                 ]
             }
         ]
@@ -1453,6 +854,669 @@ export const premiumPacks = [
         ]
     },
     {
+        id: 'cloud_kitchen_ops',
+        title: "Cloud Kitchen Launch & Ops Kit",
+        priceUSD: 69.99,
+        priceINR: 5499,
+        category: "Hospitality",
+        description: "A complete toolkit for launching and running a successful delivery-only kitchen operation.",
+        icon: <Truck className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Aggregator Onboarding & Menu Sync",
+            "Packaging Station & Inventory Setup",
+            "Order Fulfillment & Handoff Protocol",
+            "Rider Management & Reconciliation"
+        ],
+        checklists: [
+            {
+                title: "Aggregator Setup & Menu Engineering",
+                tasks: [
+                    "Complete all paperwork and FSSAI registration for Zomato, Swiggy, etc.",
+                    "Set up online menus on all platforms. Ensure high-quality photos are used.",
+                    "Engineer menu for delivery: prioritize items that travel well. Create delivery-friendly combos.",
+                    "Sync all aggregator platforms with a single POS or order management dashboard.",
+                    "Run test orders on all platforms to ensure correct pricing, taxes, and item mapping."
+                ]
+            },
+            {
+                title: "Packaging & Dispatch Station Setup",
+                tasks: [
+                    "Designate a specific area for packaging and dispatch, separate from the cooking line.",
+                    "Stock the station with all necessary packaging materials: containers, bags, cutlery, tissues, tape.",
+                    "Create a checklist for each order: Main dish, side, drink, cutlery, condiments. Staff must tick off each item.",
+                    "Install a screen or printer at the station to display order details clearly.",
+                    "Ensure packaging is designed to maintain food temperature and prevent spills."
+                ]
+            },
+            {
+                title: "Live Operations & Order Fulfillment",
+                tasks: [
+                    "Acknowledge incoming orders on the dashboard within 60 seconds.",
+                    "Fire orders to the correct kitchen station based on preparation time.",
+                    "Double-check each packed item against the order ticket before sealing the bag.",
+                    "Attach the correct bill to the sealed package.",
+                    "Hand over the package to the correct delivery rider and mark the order as 'Ready for Pickup'.",
+                    "Monitor and manage rider wait times. Report any issues to the aggregator's support team."
+                ]
+            },
+            {
+                title: "End-of-Day Reconciliation",
+                tasks: [
+                    "Reconcile orders between your POS and each aggregator's dashboard.",
+                    "Calculate total sales, discounts, and commissions for each platform.",
+                    "Verify online payments received against the settlement reports.",
+                    "Conduct a closing inventory count of key ingredients and packaging materials.",
+                    "Shut down all systems and securely store any sensitive data."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'resort_spa_management',
+        title: "Resort & Spa Management Suite",
+        priceUSD: 69.99,
+        priceINR: 5499,
+        category: "Hospitality",
+        description: "A specialized toolkit for luxury resorts, covering grounds, pools, spas, and guest activities.",
+        icon: <Plane className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Pool & Water Quality Checks",
+            "Groundskeeping & Landscaping Schedule",
+            "Spa Opening & Therapist Readiness",
+            "Guest Activity & Equipment Safety"
+        ],
+        checklists: [
+            {
+                title: "Daily Pool & Recreational Area Safety",
+                tasks: [
+                    "Test and log pool water chemistry (pH, chlorine, alkalinity) before opening. Adjust as per health codes.",
+                    "Physically inspect pool surfaces, drains, and ladders for any damage or hazards.",
+                    "Ensure all safety equipment (life rings, shepherd's hooks) is present, visible, and in good condition.",
+                    "Walk through all recreational areas (tennis courts, gym) to check for cleanliness and equipment safety.",
+                    "Verify that all poolside and outdoor furniture is clean and arranged safely.",
+                    "Check that lifeguard stations are properly equipped and staffed according to schedule."
+                ]
+            },
+            {
+                title: "Weekly Grounds & Landscaping Maintenance",
+                tasks: [
+                    "Conduct a full property walk-through to identify areas needing immediate attention (e.g., pruning, weeding).",
+                    "Inspect irrigation systems for leaks or malfunctions and adjust watering schedules based on weather.",
+                    "Check all outdoor lighting and pathways for safety and functionality.",
+                    "Schedule and oversee mowing, fertilization, and pest control activities.",
+                    "Ensure all water features (fountains, ponds) are clean and operating correctly."
+                ]
+            },
+            {
+                title: "Daily Spa Operations Checklist",
+                tasks: [
+                    "Verify all treatment rooms are immaculately clean, stocked, and at a comfortable temperature.",
+                    "Check that all spa equipment (steam rooms, saunas, hydrotherapy tubs) is operational and at the correct temperature.",
+                    "Review therapist schedules and confirm appointments for the day.",
+                    "Ensure reception is stocked with towels, robes, slippers, and refreshments.",
+                    "Conduct a brief morning meeting with spa staff to discuss the day's bookings and any VIP guests."
+                ]
+            },
+            {
+                title: "Guest Activity Planning & Execution",
+                tasks: [
+                    "Post the daily/weekly activity schedule in highly visible guest areas and on digital platforms.",
+                    "Inspect all equipment for guest activities (e.g., bicycles, kayaks, kids' club toys) for safety.",
+                    "Ensure staff leading activities are prepared with all necessary supplies and a sign-up sheet.",
+                    "Brief the concierge and front desk on the day's activities so they can inform guests.",
+                    "Gather feedback from guests after activities to inform future planning."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'mall_operations_blueprint',
+        title: "Mall Operations & Safety Blueprint",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        category: "Retail",
+        description: "A complete operational guide for shopping mall management, focusing on safety, cleanliness, and tenant relations.",
+        icon: <ShoppingCart className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Security & Patrol Checklist",
+            "Housekeeping & Common Area Audits",
+            "Tenant Communication Protocol",
+            "Emergency Response Drills (Fire, Active Shooter)"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening & Security Protocol",
+                tasks: [
+                    "Conduct a full patrol of the mall interior and exterior before public entry, checking for hazards or vandalism.",
+                    "Test a random selection of security cameras and emergency exit alarms. Log results.",
+                    "Brief the security team on daily events, expected high-traffic periods, and any specific security alerts.",
+                    "Ensure all public entrances are unlocked on schedule and free of obstructions.",
+                    "Verify that the customer service/information desk is staffed and stocked with mall directories.",
+                    "Check that all escalators, elevators, and automatic doors are functioning correctly. Report any faults."
+                ]
+            },
+            {
+                title: "Ongoing Operations & Housekeeping",
+                tasks: [
+                    "Conduct hourly patrols, focusing on restrooms, food courts, and high-traffic common areas.",
+                    "Ensure housekeeping staff are actively managing spills, overflowing bins, and restroom cleanliness.",
+                    "Monitor parking areas for traffic flow, safety issues, or unauthorized vehicles.",
+                    "Log and respond to any tenant complaints or maintenance requests within a 1-hour timeframe.",
+                    "Check food court seating areas for cleanliness and table availability.",
+                    "Ensure all mall signage and digital directories are accurate and functional."
+                ]
+            },
+            {
+                title: "Daily Closing Protocol",
+                tasks: [
+                    "Broadcast standardized closing announcements 30, 15, and 5 minutes before closing.",
+                    "Security personnel conduct a sweep of all common areas to ensure all patrons have exited.",
+                    "Verify with each tenant that their premises are secure before they depart.",
+                    "Secure all public entrances at the designated time.",
+                    "Consolidate daily incident reports from security, housekeeping, and maintenance teams.",
+                    "Activate night-time lighting and security alarm protocols."
+                ]
+            },
+            {
+                title: "Weekly Maintenance & Tenant Relations",
+                tasks: [
+                    "Test the public announcement (PA) system and fire alarm system (after hours).",
+                    "Inspect the roof and parking structures for any required maintenance.",
+                    "Send out a weekly newsletter or email to all tenants with updates on mall events, maintenance schedules, etc.",
+                    "Conduct a spot-check on a few tenants to ensure they are complying with mall operational guidelines.",
+                    "Review and analyze weekly footfall data to identify trends."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'bpo_call_center_ops',
+        title: "BPO Call Center Daily Management",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Corporate",
+        description: "A complete operational playbook for call center managers to drive team performance, quality, and efficiency.",
+        icon: <Phone className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Shift Start-Up & Team Huddle",
+            "Live Call Quality Assurance (QA)",
+            "Agent Performance Coaching",
+            "End-of-Shift Reporting & Handoff"
+        ],
+        checklists: [
+            {
+                title: "Pre-Shift & Team Huddle Checklist",
+                tasks: [
+                    "Review previous shift's performance dashboard (AHT, FCR, CSAT). Note any outliers.",
+                    "Check for any system outages or updates from IT. Communicate to the team.",
+                    "Prepare and lead a 15-minute team huddle: discuss daily targets, share a 'tip of the day', and run a quick Q&A.",
+                    "Ensure all agents are logged into the phone system and necessary software 5 minutes before the shift starts.",
+                    "Verify that the scheduling software (WFM) is aligned with the actual agents present on the floor."
+                ]
+            },
+            {
+                title: "Live Operations & Quality Assurance",
+                tasks: [
+                    "Monitor the live call queue dashboard. Adjust agent skills or priorities as needed to manage wait times.",
+                    "Perform a minimum of 2 'live silent monitoring' sessions per agent per week. Document scores.",
+                    "Conduct at least 1 'side-by-side' coaching session per agent per month.",
+                    "Listen for and flag any critical compliance errors in real-time.",
+                    "Handle escalated calls from agents, ensuring customer resolution and agent de-briefing afterwards.",
+                    "Send out hourly performance updates to the team to maintain momentum."
+                ]
+            },
+            {
+                title: "Agent Performance & Coaching",
+                tasks: [
+                    "Schedule and conduct weekly 1-on-1 meetings with each agent to discuss their performance scorecard.",
+                    "Create and assign a documented action plan for any agent in the bottom quartile.",
+                    "Publicly recognize top performers for the day/week on a team board or group chat.",
+                    "Review QA scores with agents, playing back specific calls to illustrate coaching points.",
+                    "Ensure all agents have completed their mandatory recurrent training for the month."
+                ]
+            },
+            {
+                title: "End-of-Shift & Reporting",
+                tasks: [
+                    "Analyze the day's performance against targets. Document reasons for any significant variance.",
+                    "Compile a 'Shift Handover Report' for the next manager, highlighting major issues, pending escalations, and system status.",
+                    "Ensure all agents properly log their end-of-day dispositions and sign out of all systems.",
+                    "Conduct a brief end-of-shift huddle to summarize the day's wins and challenges.",
+                    "Email the final shift performance report to senior management."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'auto_repair_shop_ops',
+        title: "Auto Repair Shop Workflow",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Automotive",
+        description: "A step-by-step guide for service advisors and garage owners to standardize operations from check-in to delivery.",
+        icon: <Wrench className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Vehicle Intake & Inspection Process",
+            "Customer Approval & Work Order",
+            "Quality Control & Final Checks",
+            "Parts Management & Inventory"
+        ],
+        checklists: [
+            {
+                title: "Vehicle Check-In & Service Advising",
+                tasks: [
+                    "Greet the customer and confirm their appointment.",
+                    "Perform a 'walkaround' inspection with the customer, noting any pre-existing damage on a standard form.",
+                    "Use a tablet to document the customer's concerns and vehicle symptoms accurately.",
+                    "Place a protective cover on the driver's seat, floor, and steering wheel.",
+                    "Provide an estimated time for diagnosis and a preliminary cost estimate.",
+                    "Tag the keys with the customer's name, vehicle details, and job number."
+                ]
+            },
+            {
+                title: "Diagnosis, Quoting & Work Order",
+                tasks: [
+                    "Assign the job to a technician based on skill set and availability.",
+                    "Technician performs diagnosis and reports findings back to the service advisor.",
+                    "Service advisor prepares a detailed quote, including parts, labor, and taxes.",
+                    "Contact the customer to explain the required repairs and get explicit approval before starting any work. Document approval in the system.",
+                    "Once approved, convert the quote to a formal work order and assign it to the technician."
+                ]
+            },
+            {
+                title: "Repair & Quality Control",
+                tasks: [
+                    "Technician follows the work order, documenting all steps and parts used.",
+                    "All replaced parts must be kept aside for the customer to inspect if requested.",
+                    "After repairs are complete, a different technician or a dedicated QC person must perform a final inspection and test drive.",
+                    "The QC checklist must include checking for grease marks, ensuring all dashboard lights are off, and verifying the original complaint is resolved.",
+                    "Clean the vehicle before notifying the customer."
+                ]
+            },
+            {
+                title: "Billing & Vehicle Handover",
+                tasks: [
+                    "Inform the customer that their vehicle is ready for pickup.",
+                    "Prepare the final invoice, ensuring it matches the approved quote plus any additions.",
+                    "When the customer arrives, the service advisor should walk them through the repairs made and the charges.",
+                    "Hand over the keys, the invoice, and any replaced parts.",
+                    "Schedule a follow-up call in 2 days to check on the vehicle's performance and customer satisfaction."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'electronics_showroom_ops',
+        title: "Electronics Showroom Daily Ops",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Retail",
+        description: "A specialized playbook for managing high-value electronics retail, focusing on security, sales, and live demos.",
+        icon: <Ear className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Live Demo Unit & Security Checks",
+            "Inventory & High-Value Stock Audit",
+            "Sales Staff Product Training",
+            "Trade-in & Exchange Process"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening & Merchandising",
+                tasks: [
+                    "Ensure all live demo units (phones, laptops, TVs) are charged, clean, and fully functional.",
+                    "Verify all security tethers and alarms on high-value items are active.",
+                    "Conduct a spot-check of 5-10 high-value SKUs against the inventory system.",
+                    "Check that all promotional signage and price tags are accurate and aligned with current offers.",
+                    "Brief the sales team on daily targets, new products, and special promotions.",
+                    "Ensure all sales staff are logged into the POS and CRM systems."
+                ]
+            },
+            {
+                title: "Sales Floor & Customer Service",
+                tasks: [
+                    "Train staff to approach customers using feature-based questions, not just 'Can I help you?'.",
+                    "Insist on a structured demo process for key products.",
+                    "Have a clear and transparent process for handling customer trade-ins.",
+                    "Ensure financing and extended warranty options are offered to every eligible customer.",
+                    "Maintain a clean and organized accessories section, a key driver of high-margin sales."
+                ]
+            },
+            {
+                title: "Inventory & Security Protocol",
+                tasks: [
+                    "Conduct a full inventory count of all high-value product categories weekly.",
+                    "Review CCTV footage of cash counters and store exits daily.",
+                    "Implement a strict policy for handling returned goods, including inspection for damage and completeness.",
+                    "Reconcile physical cash and credit card transactions against POS reports at the end of every shift.",
+                    "Store high-value, low-volume items in a locked stockroom, not on the open sales floor."
+                ]
+            },
+            {
+                title: "Staff & Training",
+                tasks: [
+                    "Conduct weekly 30-minute training sessions on new products.",
+                    "Role-play customer scenarios to improve sales techniques.",
+                    "Track individual sales performance and provide regular coaching.",
+                    "Ensure all staff are familiar with the store's emergency and security procedures."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'fashion_boutique_ops',
+        title: "Fashion Boutique Operations",
+        priceUSD: 69.99,
+        priceINR: 5599,
+        category: "Retail",
+        description: "The complete guide to running a successful apparel store, from visual merchandising to fitting room management.",
+        icon: <Shirt className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Visual Merchandising & Display",
+            "Fitting Room & Loss Prevention",
+            "New Stock & Inventory Management",
+            "Clienteling & Personal Styling"
+        ],
+        checklists: [
+            {
+                title: "Daily Opening & Merchandising",
+                tasks: [
+                    "Refresh the window display. Ensure it's clean, well-lit, and features new arrivals.",
+                    "Walk the floor and restock any items sold the previous day. Ensure all sizes are represented.",
+                    "Steam and prep any wrinkled garments on the sales floor.",
+                    "Check that all mannequins are styled correctly according to the current collection's theme.",
+                    "Ensure all signage and price tags are correct and presentable."
+                ]
+            },
+            {
+                title: "Fitting Room & Customer Service",
+                tasks: [
+                    "Implement a strict fitting room policy (e.g., limit of 5 items per customer).",
+                    "Ensure fitting rooms are always clean, well-lit, and mirrors are smudge-free.",
+                    "Train staff to 'service' the fitting rooms: check on customers, offer different sizes, and clear out unwanted items immediately.",
+                    "Inspect items returned from the fitting room for damage or signs of wear before returning to the sales floor.",
+                    "Actively engage in 'clienteling' - building relationships with repeat customers and tracking their preferences."
+                ]
+            },
+            {
+                title: "New Stock & Inventory Management",
+                tasks: [
+                    "Receive and check new shipments against the packing slip. Report any discrepancies immediately.",
+                    "Tag all new items with price and security tags before bringing them to the sales floor.",
+                    "Steam and prep all new stock before merchandising.",
+                    "Conduct weekly 'cycle counts' of best-selling categories to maintain inventory accuracy.",
+                    "Plan and execute markdowns and sales promotions. Ensure POS system is updated accordingly."
+                ]
+            },
+            {
+                title: "Closing & Daily Reporting",
+                tasks: [
+                    "Complete a full floor recovery: re-hang, re-fold, and organize all merchandise.",
+                    "Clear all fitting rooms of any remaining items.",
+                    "Reconcile daily sales reports from the POS system.",
+                    "Prepare the bank deposit.",
+                    "Secure the premises, lock all doors, and set the alarm."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'jewellery_store_ops',
+        title: "Jewellery Store Operations & Security",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Retail",
+        description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
+        icon: <Gem className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Vault Opening & Closing Protocol",
+            "Daily Inventory & Display Audit",
+            "Advanced Anti-Robbery Procedures",
+            "Customer Vetting & Suspicion Triggers",
+        ],
+        checklists: [
+            {
+                "title": "Daily Opening Procedure (Dual Control)",
+                "tasks": [
+                    "First staff member arrives, inspects exterior for tampering (locks, windows), reports 'all clear' to manager off-site",
+                    "Second staff member arrives; both enter together. First action: disarm alarm within 30 seconds",
+                    "Immediately lock the door behind you",
+                    "Perform a check of all interior sensors, panic buttons, and CCTV cameras (ensure they are recording)",
+                    "Two staff members proceed to the vault. Use dual keys/codes simultaneously to open",
+                    "Inspect vault interior and log opening time. Remove day-display trays",
+                    "Set up displays, ensuring each piece is accounted for against the daily opening inventory sheet",
+                    "Test silent panic buttons and hold-up alarms before opening to the public"
+                ]
+            },
+            {
+                "title": "Daily Closing Procedure (Dual Control)",
+                "tasks": [
+                    "Lock main door 15 minutes prior to closing time. No new customers allowed",
+                    "Begin removing jewellery from displays, starting with highest value items",
+                    "Two staff members verify each item against the closing inventory sheet as it is placed in vault trays",
+                    "Place trays back in the vault in their designated, mapped locations",
+                    "Final inventory reconciliation and sign-off by both staff members",
+                    "Lock the vault using dual-key/code protocol. Physically check the handle",
+                    "Activate all alarm systems. Wait for confirmation call from security company",
+                    "Both staff members exit the premises at the same time. Never leave one person alone"
+                ]
+            },
+            {
+                "title": "Ongoing Security & Sales Floor Protocol",
+                "tasks": [
+                    "Greet every customer and make direct eye contact. Acknowledge their presence immediately",
+                    "Never show more than one high-value item (or tray) at a time. One out, one in",
+                    "Observe for suspicious behavior: bulky clothing, nervous demeanor, questions about security",
+                    "Use code words (e.g., 'Can you help me with the 'Omega' watch?') to discreetly alert staff to a suspicious person",
+                    "Verify high-value credit card purchases with photo ID. For large cash purchases, follow AML regulations",
+                    "Regularly clean glass display cases to remove fingerprints",
+                    "Never turn your back on a customer who is handling merchandise"
+                ]
+            },
+            {
+                "title": "Weekly Security & Maintenance Audit",
+                "tasks": [
+                    "Test all audible alarms (outside of business hours)",
+                    "Review a random 1-hour block of CCTV footage from the past week, checking for blind spots",
+                    "Inspect all locks, door hardware, and display case integrity",
+                    "Conduct a role-play drill of a robbery scenario with staff to test panic button use",
+                    "Check batteries in all wireless security devices",
+                    "Ensure contact list for police, fire, and security monitoring company is up-to-date and accessible"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'car_dealership_ops',
+        title: "Car Dealership Daily Operations",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        category: "Automotive",
+        description: "A complete playbook for car showroom managers to optimize sales, service, and customer experience.",
+        icon: <Briefcase className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Showroom Opening & Vehicle Prep",
+            "Sales Process & CRM Management",
+            "Test Drive Protocol & Safety",
+            "Vehicle Handover & Delivery Experience"
+        ],
+        checklists: [
+            {
+                title: "Morning Showroom Preparation",
+                tasks: [
+                    "Walk the lot and showroom floor. Ensure all display vehicles are clean, unlocked, and have charged batteries.",
+                    "Check that all price stickers and feature sheets are accurate and correctly placed.",
+                    "Lead a 15-minute sales team huddle: discuss daily targets, new inventory, and current promotions.",
+                    "Verify the reception and customer lounge areas are clean, stocked with refreshments, and presentable.",
+                    "Ensure all sales staff are logged into the CRM and ready to receive leads."
+                ]
+            },
+            {
+                title: "Sales & Customer Interaction Process",
+                tasks: [
+                    "Greet all customers within 2 minutes of their arrival on the lot.",
+                    "Log every new customer interaction into the CRM immediately, capturing contact info and vehicle of interest.",
+                    "Conduct a thorough needs analysis before recommending a vehicle.",
+                    "Follow a structured 'walkaround' presentation for every vehicle.",
+                    "Adhere to the dealership's test drive protocol: copy driver's license, confirm insurance, and follow the designated route.",
+                    "Present all financing and add-on options clearly and transparently."
+                ]
+            },
+            {
+                title: "Vehicle Handover & Delivery",
+                tasks: [
+                    "Ensure the sold vehicle has undergone a full pre-delivery inspection (PDI) and is detailed to perfection.",
+                    "Prepare all paperwork: final sales agreement, registration documents, warranty information.",
+                    "Schedule a specific delivery appointment with the customer.",
+                    "Perform a comprehensive feature explanation with the new owner, connecting their phone to Bluetooth and setting basic preferences.",
+                    "Personally introduce the new owner to the service department manager.",
+                    "Follow up with the customer within 72 hours to ensure satisfaction and ask for a review."
+                ]
+            },
+            {
+                title: "End of Day & Reporting",
+                tasks: [
+                    "Update the CRM with the status of all leads and deals from the day.",
+                    "Reconcile all cash, check, and credit card transactions.",
+                    "Secure all keys in the key vault.",
+                    "Lock down all display vehicles and secure the showroom and lot.",
+                    "Sales manager to compile and email a daily sales report to the general manager."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'rental_property_management',
+        title: "Rental Property & Airbnb Host Toolkit",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Real Estate",
+        description: "The essential toolkit for landlords and short-term rental hosts to streamline guest turnover, maintenance, and compliance.",
+        icon: <Building2 className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Guest Check-in & Check-out Inspection",
+            "Cleaning & Restocking Between Stays",
+            "Routine Property Maintenance Schedule",
+            "Guest Communication Templates"
+        ],
+        checklists: [
+            {
+                title: "Pre-Guest Arrival / New Tenant Move-In",
+                tasks: [
+                    "Confirm booking and send a welcome message with check-in instructions, address, and contact info.",
+                    "Professionally clean the entire property (bathrooms, kitchen, floors, surfaces).",
+                    "Take time-stamped photos/videos of the property's condition before the guest arrives.",
+                    "Restock all supplies: fresh linens, towels, toilet paper, soap, coffee, welcome snacks.",
+                    "Test all appliances, Wi-Fi, and TV to ensure they are working.",
+                    "Set thermostat to a comfortable temperature.",
+                    "For long-term tenants, conduct a detailed move-in inspection with the tenant and have both parties sign."
+                ]
+            },
+            {
+                title: "Guest Check-Out / Tenant Move-Out",
+                tasks: [
+                    "Send a check-out reminder with instructions (e.g., where to leave keys, trash disposal).",
+                    "Immediately after check-out, inspect the property for any new damages, comparing against the pre-arrival photos.",
+                    "Document any damages with photos to support a security deposit claim if necessary.",
+                    "Strip all linens and start the laundry.",
+                    "Begin the cleaning process for the next guest.",
+                    "For long-term tenants, formally return the security deposit within the legally required timeframe, providing an itemized list for any deductions."
+                ]
+            },
+            {
+                title: "Routine Maintenance & Compliance",
+                tasks: [
+                    "Test smoke and carbon monoxide detectors monthly. Change batteries every 6 months.",
+                    "Inspect and clean HVAC filters quarterly.",
+                    "Check for any leaks under sinks or around toilets monthly.",
+                    "Maintain a list of approved and insured vendors (plumbers, electricians, etc.).",
+                    "Ensure your property is compliant with all local short-term rental regulations and licenses.",
+                    "Schedule annual pest control and exterior maintenance (e.g., gutter cleaning)."
+                ]
+            },
+            {
+                title: "Guest Communication & Management",
+                tasks: [
+                    "Respond to all guest inquiries within 1 hour.",
+                    "Create and use template messages for common questions (check-in, Wi-Fi password, local recommendations).",
+                    "After a guest checks in, send a follow-up message to ensure everything is okay.",
+                    "Address any guest complaints immediately and professionally. Document the resolution.",
+                    "After check-out, request a review from the guest."
+                ]
+            }
+        ]
+    },
+    {
+        id: 'waterpark_pool_safety',
+        title: "Waterpark & Pool Safety Standards",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Hospitality",
+        description: "An essential safety and maintenance toolkit for any public aquatic facility.",
+        icon: <Waves className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Daily Lifeguard & First Aid Readiness",
+            "Water Quality & Chemical Log",
+            "Waterslide & Attraction Inspection",
+            "Emergency Action Plan (EAP) Drills"
+        ],
+        checklists: [
+            {
+                title: "Pre-Opening Safety Inspection",
+                tasks: [
+                    "Test and log water chemistry (Free Chlorine, pH, Combined Chlorine, Alkalinity) for ALL pools. Must be within health code limits.",
+                    "Physically walk every slide and attraction, checking for surface damage, loose bolts, or foreign objects.",
+                    "Run water pumps for all attractions to ensure proper flow and function before public access.",
+                    "Inspect all lifeguard towers/stations for required safety equipment (rescue tubes, backboards, first aid kits).",
+                    "Verify two-way radios and emergency whistles are fully functional.",
+                    "Conduct a 'surprise' mock rescue drill with the lifeguard team and time their response."
+                ]
+            },
+            {
+                title: "Ongoing Operational Safety",
+                tasks: [
+                    "Re-test and log water chemistry every 2 hours of operation.",
+                    "Rotate lifeguard positions every 20-30 minutes to prevent vigilance decrement.",
+                    "Supervisors must conduct periodic audits of lifeguards to ensure they are scanning their zone of responsibility effectively.",
+                    "Check and clean restrooms and changing areas hourly.",
+                    "Monitor weather conditions and follow clear protocols for lightning or high winds.",
+                    "Ensure height and safety rule signage is visible and enforced at every attraction."
+                ]
+            },
+            {
+                title: "Closing Procedures",
+                tasks: [
+                    "Clear all swimmers from the pools at the designated time.",
+                    "Perform a final sweep of all pools and attractions to ensure no one is left behind.",
+                    "Shock or super-chlorinate pools as per the weekly chemical schedule.",
+                    "Clean all filters and backwash systems as required.",
+                    "Secure all entry points and store all loose equipment.",
+                    "Complete the daily operations log, noting any incidents, rescues, or maintenance issues."
+                ]
+            },
+            {
+                title: "Weekly & Monthly Checks",
+                tasks: [
+                    "Perform a full inventory of the first aid station and restock all supplies.",
+                    "Conduct mandatory in-service training for all lifeguard staff (4 hours per month minimum).",
+                    "Test emergency shut-off buttons for all pumps and water features.",
+                    "Inspect and lubricate all moving parts on water attractions.",
+                    "Review all incident and rescue reports from the past week/month to identify trends or problem areas."
+                ]
+            }
+        ]
+    },
+    {
         id: 'wedding_hall_management',
         title: "Wedding & Banquet Hall Management",
         priceUSD: 79.99,
@@ -1832,4 +1896,5 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
 
