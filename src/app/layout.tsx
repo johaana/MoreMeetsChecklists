@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { PT_Sans } from 'next/font/google';
+import { PT_Sans, Montserrat } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: 'MoreMeets: Smart Checklists for Professionals',
@@ -14,7 +14,7 @@ const mainFont = PT_Sans({
   weight: ['400', '700'],
   variable: '--font-body'
 });
-const headlineFont = PT_Sans({
+const headlineFont = Montserrat({
   subsets: ['latin'],
   weight: ['700'],
   variable: '--font-headline'

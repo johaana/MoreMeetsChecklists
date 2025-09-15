@@ -18,7 +18,7 @@ export default function PackageDetailsPage() {
   if (!pack) {
     return (
         <div className="flex flex-col min-h-screen items-center justify-center text-center p-4">
-            <h1 className="text-4xl font-bold mb-4">Package not found</h1>
+            <h1 className="text-4xl font-bold mb-4 font-headline">Package not found</h1>
             <p className="text-muted-foreground mb-8">The checklist package you're looking for doesn't exist.</p>
             <Button asChild>
                 <Link href="/">
@@ -49,7 +49,7 @@ export default function PackageDetailsPage() {
 
       <main className="flex-1 py-12 md:py-16 lg:py-20">
         <div className="container px-4 md:px-6">
-            <Card className="max-w-4xl mx-auto shadow-2xl rounded-2xl border-2 border-primary/20">
+            <Card className="max-w-4xl mx-auto shadow-2xl rounded-2xl border-2 border-primary/20 bg-card">
                 <CardHeader className="p-8 text-center bg-secondary/30 rounded-t-2xl">
                     <div className="mx-auto p-4 bg-primary/10 rounded-full w-fit mb-4 border border-primary/20">
                         {pack.icon}
@@ -60,7 +60,7 @@ export default function PackageDetailsPage() {
                 <CardContent className="p-8">
                     <div className="text-center mb-8">
                         <p className="text-4xl font-bold text-primary">
-                            {`₹${pack.priceINR} / $${pack.priceUSD}`}
+                            {`$${pack.priceUSD} / ₹${pack.priceINR}`}
                         </p>
                         <p className="text-muted-foreground">One-Time Purchase, Lifetime Access</p>
                     </div>
@@ -84,7 +84,7 @@ export default function PackageDetailsPage() {
                         </div>
                     </div>
 
-                    <Button size="lg" className="w-full text-lg py-7">
+                    <Button size="lg" className="w-full text-lg py-7 bg-accent text-accent-foreground hover:bg-accent/90">
                         <CreditCard className="mr-3 h-5 w-5" />
                         Purchase Now
                     </Button>
@@ -107,4 +107,3 @@ export default function PackageDetailsPage() {
     </div>
   );
 }
-
