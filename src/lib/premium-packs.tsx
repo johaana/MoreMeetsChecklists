@@ -5,7 +5,7 @@ import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Fa
 export const premiumPacks = [
     {
         id: 'hospitality_excellence_suite',
-        title: "The 5-Star Hotel & Resort Operations Playbook",
+        title: "The 5-Star Hotel & Resort Operations Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Hospitality",
@@ -72,7 +72,7 @@ export const premiumPacks = [
     },
     {
         id: 'facility_management_blueprint',
-        title: "The Complete Corporate Facility Management Guide",
+        title: "The Corporate Facility Management Checklist",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Corporate",
@@ -134,7 +134,7 @@ export const premiumPacks = [
     },
     {
         id: 'commercial_kitchen_protocol',
-        title: "The Essential Commercial Kitchen & Food Safety Guide",
+        title: "The Commercial Kitchen & Food Safety Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Hospitality",
@@ -198,7 +198,7 @@ export const premiumPacks = [
     },
      {
         id: 'resort_spa_management',
-        title: "The Ultimate Resort & Spa Management Toolkit",
+        title: "The Resort & Spa Management Checklist",
         priceUSD: 69.99,
         priceINR: 5499,
         category: "Hospitality",
@@ -259,7 +259,7 @@ export const premiumPacks = [
     },
     {
         id: 'jewellery_store_ops',
-        title: "The Zero-Error Guide to Jewellery Store Operations",
+        title: "The Jewellery Store Operations Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
         category: "Retail",
@@ -326,7 +326,7 @@ export const premiumPacks = [
     },
     {
         id: 'pharmacy_ops_compliance',
-        title: "The Essential Guide to Pharmacy Operations & Compliance",
+        title: "The Pharmacy Operations & Compliance Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
         category: "Healthcare",
@@ -388,7 +388,7 @@ export const premiumPacks = [
     },
     {
         id: 'gym_fitness_center_ops',
-        title: "The Complete Gym & Fitness Center Operations Guide",
+        title: "The Gym & Fitness Center Operations Checklist",
         priceUSD: 59.99,
         priceINR: 4799,
         category: "Wellness",
@@ -451,7 +451,7 @@ export const premiumPacks = [
     },
     {
         id: 'salon_spa_ops',
-        title: "The Ultimate Salon & Day Spa Operations Playbook",
+        title: "The Salon & Day Spa Operations Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Wellness",
@@ -514,7 +514,7 @@ export const premiumPacks = [
     },
     {
         id: 'school_safety_operations',
-        title: "The Essential School & College Safety Guide",
+        title: "The School & College Safety Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Education",
@@ -576,7 +576,7 @@ export const premiumPacks = [
     },
     {
         id: 'supermarket_ops_blueprint',
-        title: "The Complete Supermarket Operations Playbook",
+        title: "The Supermarket Operations Checklist",
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Retail",
@@ -636,7 +636,7 @@ export const premiumPacks = [
     },
     {
         id: 'fashion_boutique_ops',
-        title: "The Ultimate Fashion Boutique Operations Playbook",
+        title: "The Fashion Boutique Operations Checklist",
         priceUSD: 69.99,
         priceINR: 5599,
         category: "Retail",
@@ -698,7 +698,7 @@ export const premiumPacks = [
     },
     {
         id: 'electronics_showroom_ops',
-        title: "The Complete Electronics Showroom Operations Guide",
+        title: "The Electronics Showroom Operations Checklist",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Retail",
@@ -725,7 +725,7 @@ export const premiumPacks = [
             },
             {
                 "title": "Sales Floor & Customer Experience",
-                tasks: [
+                "tasks": [
                     "Train staff to approach customers with open-ended, feature-based questions (e.g., 'Are you looking for a great camera or longer battery life?'), not just 'Can I help you?'.",
                     "Insist on a structured demo process for key products, highlighting at least 3 unique features.",
                     "Have a clear and transparent process for handling customer trade-ins, using a checklist to assess the device's condition.",
@@ -757,7 +757,7 @@ export const premiumPacks = [
     },
     {
         id: 'factory_shift_playbook',
-        title: "The Essential Factory Shift Handover Playbook",
+        title: "The Factory Shift Handover Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Manufacturing",
@@ -816,7 +816,7 @@ export const premiumPacks = [
     },
     {
         id: 'wedding_hall_playbook',
-        title: "The Complete Wedding & Banquet Hall Operations Guide",
+        title: "The Wedding & Banquet Hall Operations Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Events",
@@ -877,7 +877,7 @@ export const premiumPacks = [
     },
     {
         id: 'playschool_safety_protocol',
-        title: "The Essential Playschool & Daycare Safety Checklist",
+        title: "The Playschool & Daycare Safety Checklist",
         priceUSD: 59.99,
         priceINR: 4999,
         category: "Education",
@@ -938,7 +938,7 @@ export const premiumPacks = [
     },
     {
         id: 'hindu_wedding_checklist',
-        title: "The Complete Hindu Wedding Planning Checklist",
+        title: "The Complete Hindu Wedding Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1001,7 +1001,7 @@ export const premiumPacks = [
     },
     {
         id: 'muslim_wedding_checklist',
-        title: "The Complete Muslim Wedding Planning Checklist",
+        title: "The Complete Muslim Wedding Checklist",
         priceUSD: 34.99,
         priceINR: 2799,
         category: "Wedding",
@@ -1063,7 +1063,7 @@ export const premiumPacks = [
     },
     {
         id: 'auto_repair_playbook',
-        title: "The Complete Auto Repair Shop Operations Playbook",
+        title: "The Auto Repair Shop Operations Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Automotive",
@@ -1125,7 +1125,7 @@ export const premiumPacks = [
     },
     {
         id: 'mall_operations_blueprint',
-        title: "The Complete Shopping Mall Operations Guide",
+        title: "The Shopping Mall Operations Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Retail",
@@ -1186,7 +1186,7 @@ export const premiumPacks = [
     },
     {
         id: 'call_center_playbook',
-        title: "The High-Performance Call Center Management Guide",
+        title: "The Call Center Management Checklist",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Corporate",
@@ -1212,7 +1212,7 @@ export const premiumPacks = [
             },
             {
                 "title": "Live Operations & Quality Assurance (QA)",
-                tasks: [
+                "tasks": [
                     "Monitor the live call queue dashboard in real-time. If Service Level (SL) drops below target, adjust agent skills or deploy backup agents.",
                     "Perform a minimum of 2 'live silent monitoring' sessions per agent per week. Document scores in a QA system (e.g., Scorebuddy).",
                     "Conduct at least 1 'side-by-side' coaching session per agent per month, providing immediate feedback.",
@@ -1245,7 +1245,7 @@ export const premiumPacks = [
     },
     {
         id: 'waterpark_pool_safety',
-        title: "The Complete Waterpark & Public Pool Safety Guide",
+        title: "The Waterpark & Public Pool Safety Checklist",
         priceUSD: 89.99,
         priceINR: 6999,
         category: "Hospitality",
@@ -1306,7 +1306,7 @@ export const premiumPacks = [
     },
     {
         id: 'airbnb_host_toolkit',
-        title: "The Complete Airbnb & Rental Property Host Toolkit",
+        title: "The Airbnb & Rental Property Host Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Real Estate",
@@ -1368,7 +1368,7 @@ export const premiumPacks = [
     },
     {
         id: 'car_dealership_playbook',
-        title: "The Complete Car Dealership Operations Playbook",
+        title: "The Car Dealership Operations Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Automotive",
@@ -1431,7 +1431,7 @@ export const premiumPacks = [
     },
     {
         id: 'corporate_launchkit',
-        title: "The Founder's Startup & Corporate Event Launchkit",
+        title: "The Startup & Corporate Event Checklist",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Corporate",
@@ -1501,7 +1501,7 @@ export const premiumPacks = [
     },
     {
         id: 'esg_reporting_framework',
-        title: "The Essential ESG Reporting & Compliance Guide",
+        title: "The ESG Reporting & Compliance Checklist",
         priceUSD: 199.99,
         priceINR: 15999,
         category: "Compliance",
@@ -1563,7 +1563,7 @@ export const premiumPacks = [
     },
     {
         id: 'iso_9001_audit_prep',
-        title: "The Complete Guide to Passing Your ISO 9001 Audit",
+        title: "The ISO 9001 Audit Preparation Checklist",
         priceUSD: 99.99,
         priceINR: 7999,
         category: "Compliance",
@@ -1625,7 +1625,7 @@ export const premiumPacks = [
     },
     {
         id: 'eco_friendly_ops_playbook',
-        title: "The Sustainable Business Handbook: An Eco-Friendly Guide",
+        title: "The Sustainable Business Checklist",
         priceUSD: 49.99,
         priceINR: 3999,
         category: "Compliance",
@@ -1687,7 +1687,7 @@ export const premiumPacks = [
     },
     {
         id: 'diagnostic_lab_protocol',
-        title: "The Zero-Error Guide to Diagnostic Lab Operations",
+        title: "The Diagnostic Lab Operations Checklist",
         priceUSD: 159.99,
         priceINR: 12999,
         category: "Healthcare",
@@ -1747,7 +1747,7 @@ export const premiumPacks = [
     },
     {
         id: 'cloud_kitchen_launchkit',
-        title: "The Complete Cloud Kitchen Launch & Operations Kit",
+        title: "The Cloud Kitchen Launch & Operations Checklist",
         priceUSD: 69.99,
         priceINR: 5499,
         category: "Hospitality",
@@ -1807,7 +1807,7 @@ export const premiumPacks = [
     },
     {
         id: 'international_travel_planner',
-        title: "The Ultimate International Travel Planner",
+        title: "The International Travel Checklist",
         priceUSD: 19.99,
         priceINR: 1599,
         category: "Personal",
@@ -1873,7 +1873,7 @@ export const premiumPacks = [
     },
     {
         id: 'pet_travel_planner',
-        title: "The Complete Guide to Pet-Friendly Travel",
+        title: "The Pet-Friendly Travel Checklist",
         priceUSD: 24.99,
         priceINR: 1999,
         category: "Personal",
@@ -1931,7 +1931,7 @@ export const premiumPacks = [
     },
     {
         id: 'hospital_administration_ops',
-        title: "The Essential Hospital Administration & Operations Guide",
+        title: "The Hospital Administration & Operations Checklist",
         priceUSD: 199.99,
         priceINR: 15999,
         category: "Healthcare",
