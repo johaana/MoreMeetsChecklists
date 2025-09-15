@@ -1,5 +1,5 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -118,7 +118,7 @@ export const premiumPacks = [
                     "Plan Sangeet decor, theme, and lighting",
                     "Organize food and beverage menu for the event",
                     "Rent or set up a dance floor and stage"
-                ]
+                ] 
             },
             {
                 "title": "Mehndi Ceremony Checklist",
@@ -291,6 +291,194 @@ export const premiumPacks = [
                     "Schedule meetings with key prospects, partners, and media contacts in advance",
                     "Arrange all logistics for booth setup, shipping, and takedown",
                     "Plan a post-show follow-up email campaign for all leads generated"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'uae_real_estate_deal_accelerator',
+        title: "UAE Real Estate Deal Accelerator",
+        priceUSD: 129.99,
+        priceINR: 10499,
+        category: "Real Estate",
+        description: "The definitive checklist for navigating property transactions in the UAE (Dubai & Abu Dhabi) for buyers, sellers, and agents.",
+        icon: <Home className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Buyer & Seller Documentation",
+            "MOU & NOC Processes",
+            "Dubai Land Department (DLD) Transfer Steps",
+            "Handover & Utility Connection",
+        ],
+        checklists: [
+            {
+                "title": "Phase 1: Pre-Agreement & Due Diligence",
+                "tasks": [
+                    "Buyer: Obtain mortgage pre-approval from a UAE bank",
+                    "Buyer: Verify property details on DLD's Dubai REST app (Title Deed, size, layout)",
+                    "Seller: Ensure property service charges are fully paid and obtain statement",
+                    "Both: Appoint a RERA-registered real estate agent",
+                    "Both: Agree on final price, payment schedule, and key conditions",
+                    "Agent: Prepare and verify all required documents (Passport, Emirates ID, Title Deed copy)"
+                ]
+            },
+            {
+                "title": "Phase 2: Memorandum of Understanding (MOU) & NOC",
+                "tasks": [
+                    "Agent: Draft the MOU (Form F) detailing the terms of the sale",
+                    "Buyer: Pay the security deposit (typically 10% of purchase price) to the agent's escrow or registration trustee office",
+                    "Both: Sign the MOU at the registration trustee office",
+                    "Seller: Apply for the No Objection Certificate (NOC) from the property developer",
+                    "Seller: Pay any outstanding developer fees to obtain the NOC",
+                    "Seller: Settle final utility bills (DEWA/ADDC, District Cooling) and obtain clearance"
+                ]
+            },
+            {
+                "title": "Phase 3: DLD Transfer & Financial Settlement",
+                "tasks": [
+                    "Buyer's Bank: Issue final offer letter after property valuation",
+                    "Both: Schedule an appointment at a Dubai Land Department (DLD) trustee office for the transfer",
+                    "Buyer: Prepare manager's cheques for the seller, DLD fees (4% of property price), and trustee fees",
+                    "Seller: Prepare manager's cheque for agency commission",
+                    "Both: Attend the transfer meeting with all original documents",
+                    "DLD: Issue the new Title Deed in the buyer's name"
+                ]
+            },
+            {
+                "title": "Phase 4: Handover and Post-Transfer",
+                "tasks": [
+                    "Seller: Hand over all keys, access cards, and relevant documents to the buyer",
+                    "Buyer: Register the new Title Deed with DEWA/ADDC to connect utilities",
+                    "Buyer: Register for district cooling (Empower/Tabreed) and gas services",
+                    "Buyer: Obtain a 'Move-In Permit' from the building/community management",
+                    "Agent: Release the security deposit to the seller upon successful transfer",
+                    "Both: Confirm closure of the deal and settle any final outstanding items"
+                ]
+            }
+        ]
+    },
+    {
+        id: 'courier_delivery_playbook',
+        title: "Courier & Delivery Service Playbook",
+        priceUSD: 59.99,
+        priceINR: 4799,
+        category: "Logistics",
+        description: "The complete operational toolkit for starting and scaling a courier and last-mile delivery business.",
+        icon: <Truck className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "Driver Onboarding & Training",
+            "Package Handling & Sorting SOPs",
+            "Fleet Management & Maintenance",
+            "Customer Service Protocols"
+        ],
+        checklists: [
+            {
+                "title": "Driver Onboarding & Vetting",
+                "tasks": [
+                    "Verify driver's license, Emirates ID, and visa status",
+                    "Conduct a background check and review driving history",
+                    "Provide training on the delivery software/app",
+                    "Train on customer service standards and proof-of-delivery procedures",
+                    "Issue uniforms, ID badges, and necessary equipment (phone, charger)",
+                    "Set up driver payment and performance bonus structure"
+                ]
+            },
+            {
+                "title": "Daily Hub Operations (Morning)",
+                "tasks": [
+                    "Receive and scan all incoming shipments into the system",
+                    "Sort packages by delivery zone and route",
+                    "Assign routes and packages to drivers in the app",
+                    "Conduct pre-departure vehicle checks (tires, fuel, lights)",
+                    "Ensure all drivers have handheld scanners and they are fully charged",
+                    "Dispatch drivers and monitor initial route progress"
+                ]
+            },
+            {
+                "title": "Package Handling & Delivery",
+                "tasks": [
+                    "Follow special handling instructions (e.g., fragile, refrigerated)",
+                    "Update package status in real-time at each step (picked up, out for delivery)",
+                    "Attempt delivery and follow protocol for non-serviceable areas or absent customers",
+                    "Capture clear and accurate proof of delivery (photo, signature, location stamp)",
+                    "Handle cash-on-delivery (COD) collections and reconciliation",
+                    "Manage returns and failed delivery attempts, and schedule redelivery"
+                ]
+            },
+            {
+                "title": "Fleet & Safety Management",
+                "tasks": [
+                    "Schedule weekly and monthly vehicle maintenance",
+                    "Monitor fuel consumption and driver behavior using telematics",
+                    "Ensure all vehicles have required safety equipment (first aid kit, fire extinguisher)",
+                    "Conduct regular safety briefings and training sessions",
+                    "Maintain vehicle registration and insurance documents",
+                    "Investigate and document any accidents or incidents immediately"
+                ]
+            }
+        ]
+    },
+     {
+        id: 'coaching_centre_operations',
+        title: "Coaching Centre Operations Kit",
+        priceUSD: 49.99,
+        priceINR: 3999,
+        category: "Education",
+        description: "An essential toolkit for efficiently managing a tutoring or coaching center for academic excellence.",
+        icon: <GraduationCap className="w-8 h-8 text-primary" />,
+        mostPopular: false,
+        sampleItems: [
+            "New Student Admission & Onboarding",
+            "Daily Class Scheduling & Admin",
+            "Faculty Management & Training",
+            "Monthly Performance Reviews"
+        ],
+        checklists: [
+            {
+                "title": "Student Admissions & Onboarding",
+                "tasks": [
+                    "Respond to new inquiries via phone, email, or walk-in",
+                    "Conduct assessment tests to determine student's level",
+                    "Explain course structure, fee details, and class schedules to parents",
+                    "Complete registration form and collect necessary documents",
+                    "Process admission fee and first installment payment",
+                    "Create student profile in the management system",
+                    "Provide welcome kit (ID card, timetable, book list)"
+                ]
+            },
+            {
+                "title": "Daily Centre Operations",
+                "tasks": [
+                    "Ensure classrooms are clean and ready before classes begin",
+                    "Check that all teaching aids (whiteboards, markers, projectors) are functional",
+                    "Take student attendance for every class and update system",
+                    "Monitor CCTV cameras for safety and discipline",
+                    "Manage front desk inquiries and parent-teacher meeting requests",
+                    "Supervise student dispersal and ensure their safety",
+                    "Collect and file daily homework or test papers"
+                ]
+            },
+            {
+                "title": "Faculty & Staff Management",
+                "tasks": [
+                    "Track faculty attendance and punctuality",
+                    "Conduct periodic classroom observations to assess teaching quality",
+                    "Organize monthly faculty meetings to discuss curriculum and student progress",
+                    "Arrange for professional development and training sessions",
+                    "Review and approve lesson plans submitted by teachers",
+                    "Manage faculty leave requests and arrange for substitute teachers"
+                ]
+            },
+            {
+                "title": "Academics & Performance Tracking",
+                "tasks": [
+                    "Schedule and conduct weekly and monthly tests",
+                    "Ensure timely evaluation and distribution of test papers",
+                    "Prepare and send monthly progress reports to parents",
+                    "Schedule and conduct parent-teacher meetings to discuss student performance",
+                    "Identify weak students and arrange for doubt-clearing or remedial sessions",
+                    "Maintain a complete record of student academic performance"
                 ]
             }
         ]
@@ -681,5 +869,7 @@ export const premiumPacks = [
 ];
 
 export type PremiumPack = typeof premiumPacks[0];
+
+    
 
     
