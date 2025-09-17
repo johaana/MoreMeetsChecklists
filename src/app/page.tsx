@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -310,6 +311,7 @@ export default function Home() {
                                 {testimonial.imageId && (
                                     <Image
                                       src={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageUrl || ''}
+                                      alt={testimonial.name}
                                       width={100}
                                       height={100}
                                       className="object-cover"
