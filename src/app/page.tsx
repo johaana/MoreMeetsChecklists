@@ -108,8 +108,8 @@ const handleDownload = (pack: PremiumPack) => {
             }
         }
 
-        // Apply autofilter to the entire range
-        ws['!autofilter'] = { ref: utils.encode_range(range) };
+        // Apply autofilter to the entire range of the data
+        ws['!autofilter'] = { ref: ws['!ref'] };
     };
     
     applyStylesAndFilter(masterWorksheet);
@@ -380,3 +380,6 @@ export default function Home() {
 
 
 
+
+
+    
