@@ -41,12 +41,11 @@ const handleDownload = (pack: PremiumPack) => {
     const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
         if(!data || data.length === 0) return;
         
-        const range = { s: { c: 0, r: 0 }, e: { c: data[0].length - 1, r: data.length - 1 } };
-        ws['!ref'] = utils.encode_range(range);
-        ws['!autofilter'] = { ref: ws['!ref'] };
+        const range = utils.decode_range(ws['!ref']!);
+        ws['!autofilter'] = { ref: utils.encode_range(range) };
         ws['!views'] = [{state: 'frozen', ySplit: 1}];
 
-        const headers = data[0].map(h => (typeof h === 'object' && h !== null && 'v' in h) ? h.v as string : '');
+        const headers = data[0];
         const priorityColIndex = headers.indexOf('Priority');
         const riskLevelColIndex = headers.indexOf('Risk Level');
 
@@ -93,13 +92,15 @@ const handleDownload = (pack: PremiumPack) => {
         ])
     );
     
-    const masterDataForSheet = [
-        masterHeaders.map(h => ({ v: h, t: 's', s: headerStyle })),
-        ...masterSheetData
-    ];
-
-    const masterWorksheet = utils.aoa_to_sheet(masterDataForSheet);
-    applyStylesAndFilter(masterWorksheet, masterDataForSheet);
+    const masterDataWithHeader = [masterHeaders, ...masterSheetData];
+    const masterWorksheet = utils.aoa_to_sheet(masterDataWithHeader.map((row, r_idx) => {
+        return row.map((cell, c_idx) => {
+            if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
+            return cell;
+        })
+    }));
+    
+    applyStylesAndFilter(masterWorksheet, masterDataWithHeader);
 
     masterWorksheet['!cols'] = [
         { wch: 40 }, { wch: 20 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, 
@@ -125,13 +126,16 @@ const handleDownload = (pack: PremiumPack) => {
           ''
         ]);
 
-        const checklistDataForSheet = [
-            checklistHeaders.map(h => ({ v: h, t: 's', s: headerStyle })),
-            ...tasksForSheet
-        ];
+        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
         
-        const worksheet = utils.aoa_to_sheet(checklistDataForSheet);
-        applyStylesAndFilter(worksheet, checklistDataForSheet);
+        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader.map((row, r_idx) => {
+            return row.map((cell) => {
+                if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
+                return cell;
+            })
+        }));
+        
+        applyStylesAndFilter(worksheet, checklistDataWithHeader);
         
         worksheet['!cols'] = [
           { wch: 15 }, { wch: 50 }, { wch: 15 }, { wch: 15 }, 
@@ -349,5 +353,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
