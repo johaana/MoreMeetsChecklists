@@ -97,7 +97,14 @@ const handleDownload = (pack: PremiumPack) => {
         { wch: 40 }, { wch: 20 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, 
         { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }, { wch: 15 },
     ];
-    utils.book_append_sheet(workbook, masterWorksheet, "Master View");
+    const masterSheetName = "Master View";
+    utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
+
+    // Highlight the Master View sheet tab
+    if (workbook.Sheets[masterSheetName]) {
+        workbook.Sheets[masterSheetName]['!props'] = { tabColor: { rgb: "FFC000" } };
+    }
+
 
     // Individual Checklists
     pack.checklists.forEach(checklist => {
@@ -327,4 +334,3 @@ export default function Page({ params }: { params: { id: string } }) {
       </footer>
     </div>
   );
-}
