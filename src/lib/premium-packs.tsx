@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain } from "lucide-react";
 
 export const premiumPacks = [
     {
@@ -952,14 +952,14 @@ export const premiumPacks = [
         priceUSD: 129.99,
         priceINR: 9999,
         category: "Corporate",
-        description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment.",
+        description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment across multiple locations.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Preventive Maintenance Schedules",
-            "Vendor & Contract Management",
-            "Office Safety & Compliance Audits",
-            "Admin & Workplace Services"
+            "Daily Operations & Preventive Maintenance",
+            "Site Commissioning & Decommissioning",
+            "Business Continuity & Disaster Recovery",
+            "ESG, Vendor & Capital Asset Management"
         ],
         checklists: [
             {
@@ -1107,39 +1107,183 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "🤝 Quarterly Vendor Performance Review",
-                department: "Admin",
-                frequency: "Quarterly",
-                role: "Facility Manager",
+                title: "🏢 New Office Site Commissioning Checklist",
+                department: "Projects",
+                frequency: "As-Needed",
+                role: "Projects Manager",
                 tasks: [
-                    { description: "Schedule a formal meeting with each key vendor (Housekeeping, Security, M&E)." },
-                    { description: "Review performance against the Service Level Agreement (SLA) for the past quarter." },
-                    { description: "Discuss all non-compliances and failures logged during the period." },
-                    { description: "Review the vendor's staffing levels, training records, and compliance documents." },
-                    { description: "Discuss any feedback received from employees about the vendor's services." },
-                    { description: "Negotiate any penalties for SLA breaches or incentives for good performance." },
-                    { description: "Review invoices and payments to ensure they are aligned with the contract." },
-                    { description: "Discuss upcoming events or changes in the facility that may impact the vendor's scope." },
-                    { description: "Set goals and expectations for the upcoming quarter." },
-                    { description: "Document the meeting with formal Minutes of Meeting and share with the vendor." }
+                    { description: "Verify final snag list from builder/landlord is cleared." },
+                    { description: "Confirm all legal permits and 'No Objection' certificates (NOCs) are received (Fire, Occupancy, etc.)." },
+                    { description: "Oversee installation of IT networking, servers, and access points." },
+                    { description: "Supervise installation of security systems (CCTV, Access Control)." },
+                    { description: "Test all critical equipment (Genset, UPS, HVAC) under full load." },
+                    { description: "Ensure workstations, chairs, and other furniture are installed as per layout." },
+                    { description: "Verify pantry and cafeteria equipment is installed and tested." },
+                    { description: "Arrange for a deep clean of the entire site before employee move-in." },
+                    { description: "Conduct a final joint walkthrough with all stakeholders (IT, HR, Admin) before go-live." },
+                    { description: "Prepare a 'Welcome Kit' for employees with site-specific information." }
                 ]
             },
             {
-                title: "🏢 Office Move / Reconfiguration Checklist",
+                title: "📦 Office Decommissioning & Handover Checklist",
                 department: "Projects",
                 frequency: "As-Needed",
+                role: "Projects Manager",
+                tasks: [
+                    { description: "Communicate move-out plan and timeline to all employees and stakeholders." },
+                    { description: "Coordinate with IT to backup all data and dismantle servers and network equipment." },
+                    { description: "Arrange for professional movers to pack and transfer all assets (furniture, equipment)." },
+                    { description: "Terminate all vendor contracts specific to the site (e.g., ISP, housekeeping, security)." },
+                    { description: "Ensure the office is restored to the condition required by the lease agreement." },
+                    { description: "Take final readings of all utility meters (electricity, water)." },
+                    { description: "Conduct a final walkthrough with the landlord to formally handover the premises." },
+                    { description: "Obtain clearance certificate and return of security deposit from the landlord." },
+                    { description: "Update company address records and redirect mail." },
+                    { description: "Archive all documents related to the decommissioned site." }
+                ]
+            },
+            {
+                title: "🌧️ Annual Monsoon Preparedness Audit",
+                department: "Business Continuity",
+                frequency: "Annually",
                 role: "Facility Manager",
                 tasks: [
-                    { description: "Finalize the new seating plan and get approval from stakeholders." },
-                    { description: "Coordinate with the IT department for network and power port requirements." },
-                    { description: "Engage a moving vendor and finalize the schedule (usually over a weekend)." },
-                    { description: "Communicate the move plan and schedule to all affected employees." },
-                    { description: "Arrange for packing crates and labels to be distributed to employees." },
-                    { description: "Supervise the dismantling and moving of furniture and equipment." },
-                    { description: "Ensure the new location is thoroughly cleaned before assets are moved in." },
-                    { description: "Oversee the setup of workstations, chairs, and pedestals at the new location." },
-                    { description: "Coordinate with IT to ensure all systems are live and tested before employees arrive." },
-                    { description: "Conduct a post-move walkthrough to create a snag list and ensure a smooth 'Day 1' experience." }
+                    { description: "Inspect all rooftops and terraces for waterproofing and clear drainage." },
+                    { description: "Clean all storm-water drains and gutters around the building perimeter." },
+                    { description: "Check all basement areas for potential water ingress points and seal them." },
+                    { description: "Test all sump pumps in basements and ensure they have a power backup." },
+                    { description: "Inspect the condition of exterior walls and windows for cracks or gaps." },
+                    { description: "Stockpile emergency supplies like sandbags, tarps, and portable pumps." },
+                    { description: "Review the Emergency Response Plan (ERP) with the security and facility teams." },
+                    { description: "Ensure all critical equipment on lower floors is raised or protected." },
+                    { description: "Verify contact lists for emergency services (Fire, Medical, NDRF) are up to date." },
+                    { description: "Conduct a mock drill for a flooding scenario." }
+                ]
+            },
+            {
+                title: "🚨 Site Emergency Response Plan (ERP) Drill Checklist",
+                department: "Business Continuity",
+                frequency: "Bi-Annually",
+                role: "Safety Officer",
+                tasks: [
+                    { description: "Plan the drill scenario (e.g., fire, earthquake, security threat) and define objectives." },
+                    { description: "Inform all employees about the upcoming drill without revealing the exact time." },
+                    { description: "Activate the emergency alarm system." },
+                    { description: "Monitor evacuation routes to ensure they are used correctly and are clear." },
+                    { description: "Time the total evacuation and assembly of all personnel at the designated safe assembly points." },
+                    { description: "Conduct a head count at the assembly point to ensure everyone is accounted for." },
+                    { description: "Test the response time of the internal Emergency Response Team (ERT)." },
+                    { description: "Observe the actions of fire wardens and first aiders." },
+                    { description: "Conduct a post-drill review meeting to discuss observations and areas for improvement." },
+                    { description: "Document the drill report and update the ERP based on learnings." }
+                ]
+            },
+            {
+                title: "🔩 Quarterly Critical Equipment Audit",
+                department: "Asset Management",
+                frequency: "Quarterly",
+                role: "Chief Engineer",
+                tasks: [
+                    { description: "Review maintenance logs for the Generator, UPS, HVAC Chillers, and Elevators for the past quarter." },
+                    { description: "Conduct a physical inspection of each critical asset for any signs of wear, leaks, or corrosion." },
+                    { description: "Verify that all preventive maintenance has been completed as per the annual schedule." },
+                    { description: "Check runtime hours and fuel/energy consumption against benchmarks." },
+                    { description: "Review the stock of critical spare parts for this equipment." },
+                    { description: "Ensure the area around critical equipment is clean, dry, and free of obstructions." },
+                    { description: "Check that all safety warnings and operational instructions are clearly displayed." },
+                    { description: "Review any breakdown reports from the past quarter and the root cause analysis." },
+                    { description: "Plan for any upcoming major services or overhauls." },
+                    { description: "Update the asset register with the latest audit findings." }
+                ]
+            },
+            {
+                title: "💵 Annual Asset Lifecycle & Budgeting Review",
+                department: "Asset Management",
+                frequency: "Annually",
+                role: "Head of Facilities",
+                tasks: [
+                    { description: "Review the entire asset register, including purchase date and warranty status for all major equipment." },
+                    { description: "Analyze the total cost of ownership (TCO) for aging assets, including maintenance and energy costs." },
+                    { description: "Identify assets nearing their end-of-life (EOL) and schedule them for replacement." },
+                    { description: "Prepare a business case for capital expenditure (CAPEX) for asset replacement." },
+                    { description: "Develop the annual budget for operational expenditure (OPEX) for maintenance and repairs." },
+                    { description: "Evaluate new technologies that could offer better efficiency or lower TCO." },
+                    { description: "Present the lifecycle plan and budget to senior management for approval." },
+                    { description: "Update the 5-year rolling plan for capital asset management." },
+                    { description: "Ensure asset disposal is done as per company policy and environmental regulations." },
+                    { description: "Log all decisions and plans in the central asset management system." }
+                ]
+            },
+            {
+                title: "🧑‍⚖️ Vendor Labor & Statutory Compliance Audit",
+                department: "Vendor Management",
+                frequency: "Quarterly",
+                role: "Facility Manager",
+                tasks: [
+                    { description: "Randomly check ID cards of vendor staff (housekeeping, security) to ensure they are registered." },
+                    { description: "Verify that the vendor is providing payslips to their staff as per law." },
+                    { description: "Check vendor records for PF (Provident Fund) and ESI (Employee State Insurance) contributions for their staff." },
+                    { description: "Ensure the vendor has a valid contract and labor license for the site." },
+                    { description: "Interview a few vendor staff members confidentially to check for issues like delayed payments or excessive work hours." },
+                    { description: "Review the vendor's attendance records." },
+                    { description: "Ensure the vendor provides their staff with proper uniforms and PPE (Personal Protective Equipment)." },
+                    { description: "Check that the vendor has conducted police verification for their security staff." },
+                    { description: "Verify that the vendor is adhering to minimum wage laws." },
+                    { description: "Document any non-compliance and issue a formal notice to the vendor for corrective action." }
+                ]
+            },
+            {
+                title: "📊 Monthly SLA & KPI Scorecard Review",
+                department: "Vendor Management",
+                frequency: "Monthly",
+                role: "Facility Manager",
+                tasks: [
+                    { description: "Gather all performance data for the month (helpdesk tickets, audit scores, uptime reports)." },
+                    { description: "Calculate the performance against each Key Performance Indicator (KPI) defined in the Service Level Agreement (SLA)." },
+                    { description: "Score each vendor (Housekeeping, Security, M&E) on a pre-defined matrix." },
+                    { description: "Identify any SLA breaches and calculate applicable penalties." },
+                    { description: "Identify areas of excellent performance for potential rewards or recognition." },
+                    { description: "Schedule and conduct a formal monthly performance review meeting with each vendor." },
+                    { description: "Present the scorecard to the vendor and discuss reasons for any poor performance." },
+                    { description: "Develop a joint action plan with the vendor to address any shortcomings." },
+                    { description: "Track the closure of all action items from the previous month's review." },
+                    { description: "Share the final scorecard and minutes of the meeting with stakeholders." }
+                ]
+            },
+            {
+                title: "♻️ Annual Waste Management & Recycling Audit",
+                department: "Sustainability (ESG)",
+                frequency: "Annually",
+                role: "Green Officer",
+                tasks: [
+                    { description: "Review the process of waste segregation at source (e.g., wet, dry, e-waste bins)." },
+                    { description: "Inspect the central waste collection area for proper labeling and storage." },
+                    { description: "Check the credentials and licenses of the waste disposal vendor." },
+                    { description: "Analyze waste generation data for the past year to identify trends." },
+                    { description: "Verify that e-waste is being disposed of through a certified e-waste recycler." },
+                    { description: "Audit the recycling program to measure its effectiveness (e.g., percentage of waste recycled)." },
+                    { description: "Explore opportunities to reduce overall waste generation (e.g., reducing paper, eliminating single-use plastics)." },
+                    { description: "Ensure compliance with all local environmental regulations for waste disposal." },
+                    { description: "Run an awareness campaign for employees on proper waste segregation." },
+                    { description: "Set new targets for waste reduction and recycling for the upcoming year." }
+                ]
+            },
+            {
+                title: "💡 Monthly Utility Data Collection & Analysis",
+                department: "Sustainability (ESG)",
+                frequency: "Monthly",
+                role: "Energy Manager",
+                tasks: [
+                    { description: "Collect electricity, water, and generator fuel consumption data for the month." },
+                    { description: "Enter the data into the central ESG tracking dashboard." },
+                    { description: "Compare the month's consumption with the previous month and the same month last year." },
+                    { description: "Analyze any significant spikes or dips in consumption to find the root cause." },
+                    { description: "Calculate the building's energy performance indicators (e.g., kWh per square foot)." },
+                    { description: "Review after-hours energy consumption to identify wastage." },
+                    { description: "Identify opportunities for energy or water savings." },
+                    { description: "Prepare a monthly utility consumption report for management." },
+                    { description: "Ensure data is accurate and ready for annual ESG reporting." },
+                    { description: "Check utility bills for any errors or penalties." }
                 ]
             }
         ]
@@ -2612,3 +2756,6 @@ export type Checklist = PremiumPack['checklists'][0];
 
     
 
+
+
+    
