@@ -184,10 +184,10 @@ export default function Home() {
                         Trusted by Professionals in 12+ Industries
                     </Badge>
                     <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                        The World’s Most Complete & Effective Event & Operations Checklists
+                        The World’s Most Complete & Effective Compliance & Operations Checklists
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                        Our professional-grade checklists help you meet and exceed standards. Ensure compliance, guarantee quality, and turn operational excellence into your competitive advantage.
+                        Meet More Standards & Compliance. Our professional-grade checklists help you meet and exceed standards, guarantee quality, and turn operational excellence into your competitive advantage.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
                         <Link href="#packs">Browse Packages</Link>
