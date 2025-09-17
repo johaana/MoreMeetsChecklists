@@ -923,28 +923,64 @@ export const premiumPacks = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "Head Chef",
-                tasks: [ { id: 'CK-KO-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-KO-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-KO-001', description: "Verify all surfaces (prep tables, cutting boards) are sanitized.", priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Kitchen' },
+                    { id: 'CK-KO-002', description: "Check temperatures of all refrigerators and freezers; log readings.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
+                    { id: 'CK-KO-003', description: "Ensure handwashing stations are stocked with soap, paper towels, and hot water.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-KO-004', description: "Calibrate food thermometers.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Kitchen' },
+                    { id: 'CK-KO-005', description: "Review prep list and conduct a quick check of yesterday's stored prep items for quality.", priority: 'Medium', riskLevel: 'Medium', proof: 'Prep List Sign-off', location: 'Walk-in' },
+                    { id: 'CK-KO-006', description: "Turn on and pre-heat all cooking equipment (ovens, grills, fryers).", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-KO-007', description: "Check for any signs of pests from overnight and report immediately.", priority: 'High', riskLevel: 'High', proof: 'Pest Log', location: 'Kitchen' },
+                    { id: 'CK-KO-008', description: "Brief the team on daily specials, 86'd items, and any special instructions.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Kitchen' }
+                ]
             },
             {
                 title: "📦 Food Receiving & Storage Protocol",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Store Keeper",
-                tasks: [ { id: 'CK-FRS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Receiving' }, { id: 'CK-FRS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Receiving' } ]
+                tasks: [
+                    { id: 'CK-FRS-001', description: "Check temperature of refrigerated/frozen delivery truck upon arrival.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
+                    { id: 'CK-FRS-002', description: "Inspect all incoming products for signs of spoilage, damage, or pest infestation.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
+                    { id: 'CK-FRS-003', description: "Verify that deliveries match the purchase order and invoice.", priority: 'High', riskLevel: 'Medium', proof: 'Invoice Sign-off', location: 'Receiving Area' },
+                    { id: 'CK-FRS-004', description: "Check 'use-by' or expiry dates of all items and reject any that are expired.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
+                    { id: 'CK-FRS-005', description: "Move all cold/frozen items to their respective storage areas immediately.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Storage' },
+                    { id: 'CK-FRS-006', description: "Implement FIFO (First-In, First-Out) principle when storing new stock.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' },
+                    { id: 'CK-FRS-007', description: "Store raw meat, poultry, and fish on the lowest shelves of the refrigerator.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Walk-in' },
+                    { id: 'CK-FRS-008', description: "Ensure all stored food items are covered, labeled, and dated.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' }
+                ]
             },
             {
                 title: "🌡️ Daily HACCP & Line Check",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Sous Chef",
-                tasks: [ { id: 'CK-HLC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-HLC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-HLC-001', description: "Check and log temperatures of all hot and cold holding units on the line.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
+                    { id: 'CK-HLC-002', description: "Use a calibrated thermometer to check internal temperatures of food items on the line.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
+                    { id: 'CK-HLC-003', description: "Ensure all stations are stocked with sanitized utensils and cutting boards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Service Line' },
+                    { id: 'CK-HLC-004', description: "Verify sanitizer bucket concentrations are correct and test strips are available.", priority: 'High', riskLevel: 'Medium', proof: 'Sanitizer Log', location: 'Service Line' },
+                    { id: 'CK-HLC-005', description: "Check that all staff are following proper hygiene practices (handwashing, glove use).", priority: 'High', riskLevel: 'High', proof: 'Visual Observation', location: 'Kitchen' },
+                    { id: 'CK-HLC-006', description: "Ensure food is being protected from cross-contamination (e.g., separate cutting boards for raw/cooked food).", priority: 'High', riskLevel: 'High', proof: 'Visual Observation', location: 'Kitchen' },
+                    { id: 'CK-HLC-007', description: "Check that all food items are correctly labeled and dated in line coolers.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Service Line' },
+                    { id: 'CK-HLC-008', description: "Correct any deviations immediately and document corrective actions taken.", priority: 'High', riskLevel: 'High', proof: 'Corrective Action Log', location: 'Kitchen' }
+                ]
             },
             {
                 title: "🧽 Kitchen Closing & Cleaning Checklist",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Closing Chef",
-                tasks: [ { id: 'CK-KCC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-KCC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-KCC-001', description: "Properly cool, cover, label, and store all leftover food.", priority: 'High', riskLevel: 'High', proof: 'Storage Log', location: 'Kitchen' },
+                    { id: 'CK-KCC-002', description: "Turn off all cooking equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-KCC-003', description: "Clean and sanitize all food prep surfaces, cutting boards, and slicers.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'CK-KCC-004', description: "Empty and clean all fryers; filter oil as required.", priority: 'Medium', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'CK-KCC-005', description: "Clean grills, ovens, and stovetops.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'CK-KCC-006', description: "Break down, clean, and sanitize all service line stations.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Service Line' },
+                    { id: 'CK-KCC-007', description: "Sweep and mop all kitchen floors, including under equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-KCC-008', description: "Empty all trash and recycling bins, and take them to the dumpster.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' }
+                ]
             }
         ]
     },
@@ -1061,28 +1097,64 @@ export const premiumPacks = [
                 department: "Admissions",
                 frequency: "As-Needed",
                 role: "Admissions Officer",
-                tasks: [ { id: 'HOS-PAD-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Admissions' }, { id: 'HOS-PAD-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Admissions' } ]
+                tasks: [
+                    { id: 'HOS-PAD-001', description: "Verify patient identity and insurance details.", priority: 'High', riskLevel: 'High', proof: 'ID/Insurance Card Copy', location: 'Admissions Desk' },
+                    { id: 'HOS-PAD-002', description: "Obtain all necessary consent forms, signed and witnessed.", priority: 'High', riskLevel: 'High', proof: 'Signed Consent Forms', location: 'Admissions Desk' },
+                    { id: 'HOS-PAD-003', description: "Assign a Unique Patient Identification Number (UPID).", priority: 'High', riskLevel: 'Medium', proof: 'System Entry', location: 'Admissions Desk' },
+                    { id: 'HOS-PAD-004', description: "Coordinate with the ward to ensure bed availability.", priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'Admissions Desk' },
+                    { id: 'HOS-PAD-005', description: "Explain hospital policies, visiting hours, and charges to the patient/family.", priority: 'Medium', riskLevel: 'Low', proof: 'Signed Acknowledgement', location: 'Admissions Desk' },
+                    { id: 'HOS-PAD-006', description: "For discharge, confirm 'fit for discharge' from the treating doctor.", priority: 'High', riskLevel: 'High', proof: 'Discharge Summary', location: 'Ward' },
+                    { id: 'HOS-PAD-007', description: "Ensure final bill is cleared and all required documents are handed over.", priority: 'High', riskLevel: 'High', proof: 'Final Bill Receipt', location: 'Billing Desk' },
+                    { id: 'HOS-PAD-008', description: "Provide post-discharge instructions and follow-up appointment details.", priority: 'High', riskLevel: 'Medium', proof: 'Discharge Summary', location: 'Ward' }
+                ]
             },
             {
                 title: "🔪 Surgical Suite / Operating Theatre (OT) Readiness",
                 department: "Surgery",
                 frequency: "Daily",
                 role: "OT Nurse",
-                tasks: [ { id: 'HOS-OTR-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'OT' }, { id: 'HOS-OTR-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'OT' } ]
+                tasks: [
+                    { id: 'HOS-OTR-001', description: "Verify OT is terminally cleaned and sanitized.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Operating Theatre' },
+                    { id: 'HOS-OTR-002', description: "Check functionality of all equipment (anesthesia machine, monitors, surgical lights).", priority: 'High', riskLevel: 'High', proof: 'Equipment Checklist', location: 'Operating Theatre' },
+                    { id: 'HOS-OTR-003', description: "Ensure all sterile instrument sets for the day's surgeries are available and have passed sterility tests.", priority: 'High', riskLevel: 'High', proof: 'Sterility Indicator Check', location: 'OT' },
+                    { id: 'HOS-OTR-004', description: "Confirm availability of all required medicines, sutures, and disposables.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'OT' },
+                    { id: 'HOS-OTR-005', description: "Check OT temperature, humidity, and positive pressure levels.", priority: 'High', riskLevel: 'Medium', proof: 'Environment Log', location: 'OT' },
+                    { id: 'HOS-OTR-006', description: "Conduct WHO Surgical Safety Checklist (Sign In, Time Out, Sign Out) for every case.", priority: 'High', riskLevel: 'High', proof: 'Signed Checklist', location: 'OT' },
+                    { id: 'HOS-OTR-007', description: "Ensure emergency crash cart is fully stocked and defibrillator is functional.", priority: 'High', riskLevel: 'High', proof: 'Crash Cart Checklist', location: 'OT' },
+                    { id: 'HOS-OTR-008', description: "Verify patient identity, surgical site marking, and consent before shifting patient in.", priority: 'High', riskLevel: 'High', proof: 'Patient File', location: 'Pre-op Area' }
+                ]
             },
             {
                 title: "🚑 Emergency Room (ER) Management",
                 department: "Emergency",
                 frequency: "Daily",
                 role: "ER Manager",
-                tasks: [ { id: 'HOS-ERM-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'ER' }, { id: 'HOS-ERM-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'ER' } ]
+                tasks: [
+                    { id: 'HOS-ERM-001', description: "Check that the triage area is clear and ready for patient arrival.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Triage Area' },
+                    { id: 'HOS-ERM-002', description: "Ensure all ER beds are clean, stocked, and ready.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'ER Bays' },
+                    { id: 'HOS-ERM-003', description: "Verify crash cart, intubation kits, and other life-saving equipment are checked and ready.", priority: 'High', riskLevel: 'High', proof: 'ER Equipment Log', location: 'ER' },
+                    { id: 'HOS-ERM-004', description: "Confirm communication systems (phones, pagers, ambulance hotline) are working.", priority: 'High', riskLevel: 'High', proof: 'System Test Log', location: 'ER' },
+                    { id: 'HOS-ERM-005', description: "Review staffing levels for the shift and make adjustments as needed.", priority: 'High', riskLevel: 'Medium', proof: 'Roster Check', location: 'ER' },
+                    { id: 'HOS-ERM-006', description: "Ensure security personnel are present and briefed.", priority: 'High', riskLevel: 'Medium', proof: 'Security Briefing Log', location: 'ER' },
+                    { id: 'HOS-ERM-007', description: "Check stock levels of critical medicines and consumables.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'ER Pharmacy' },
+                    { id: 'HOS-ERM-008', description: "Review any pending cases or handovers from the previous shift.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Log', location: 'ER' }
+                ]
             },
             {
                 title: "🦠 Infection Control & Compliance",
                 department: "Compliance",
                 frequency: "Daily",
                 role: "Infection Control Nurse",
-                tasks: [ { id: 'HOS-ICC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'All Wards' }, { id: 'HOS-ICC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'All Wards' } ]
+                tasks: [
+                    { id: 'HOS-ICC-001', description: "Conduct hand hygiene audits in various departments.", priority: 'High', riskLevel: 'High', proof: 'Audit Form', location: 'All Wards' },
+                    { id: 'HOS-ICC-002', description: "Monitor biomedical waste segregation and disposal processes.", priority: 'High', riskLevel: 'High', proof: 'Observation Checklist', location: 'All Wards' },
+                    { id: 'HOS-ICC-003', description: "Check adherence to PPE protocols in high-risk areas (ICU, OT, ER).", priority: 'High', riskLevel: 'High', proof: 'Observation Checklist', location: 'High-Risk Areas' },
+                    { id: 'HOS-ICC-004', description: "Review sterilization records from the Central Sterile Supply Department (CSSD).", priority: 'High', riskLevel: 'High', proof: 'CSSD Log Review', location: 'CSSD' },
+                    { id: 'HOS-ICC-005', description: "Investigate any reported instances of hospital-acquired infections (HAI).", priority: 'High', riskLevel: 'High', proof: 'Investigation Report', location: 'All Wards' },
+                    { id: 'HOS-ICC-006', description: "Ensure environmental cleaning and disinfection protocols are being followed.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log Review', location: 'All Wards' },
+                    { id: 'HOS-ICC-007', description: "Provide just-in-time training on infection control practices to staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'All Wards' },
+                    { id: 'HOS-ICC-008', description: "Check isolation precautions are being correctly implemented for infectious patients.", priority: 'High', riskLevel: 'High', proof: 'Isolation Room Audit', location: 'Isolation Ward' }
+                ]
             }
         ]
     },
@@ -1291,28 +1363,54 @@ export const premiumPacks = [
                 department: "Security",
                 frequency: "Daily",
                 role: "Security Supervisor",
-                tasks: [ { id: 'EDU-DOC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Campus' }, { id: 'EDU-DOC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Campus' } ]
+                tasks: [
+                    { id: 'EDU-DOC-001', description: "Patrol perimeter fence and check all gates are secure before staff/student arrival.", priority: 'High', riskLevel: 'High', proof: 'Patrol Log', location: 'Campus Perimeter' },
+                    { id: 'EDU-DOC-002', description: "Test all communication systems (PA system, walkie-talkies).", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Security Office' },
+                    { id: 'EDU-DOC-003', description: "Check all CCTV cameras are operational and recording.", priority: 'High', riskLevel: 'High', proof: 'System Check', location: 'Security Office' },
+                    { id: 'EDU-DOC-004', description: "Brief security guards on their posts and any specific alerts for the day.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Security Office' },
+                    { id: 'EDU-DOC-005', description: "Ensure all fire exits are unlocked and clear of obstructions.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'All Buildings' },
+                    { id: 'EDU-DOC-006', description: "Inspect playgrounds and sports fields for any hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Playgrounds' }
+                ]
             },
             {
                 title: " classroomsafety Classroom & Common Area Safety",
                 department: "Admin",
                 frequency: "Daily",
                 role: "Admin Officer",
-                tasks: [ { id: 'EDU-CAS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Campus' }, { id: 'EDU-CAS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Campus' } ]
+                tasks: [
+                    { id: 'EDU-CAS-001', description: "Check classrooms for any broken furniture, sharp edges, or electrical hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Classrooms' },
+                    { id: 'EDU-CAS-002', description: "Ensure hallways and staircases are clear of bags or other obstructions.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'EDU-CAS-003', description: "Verify that all fire extinguishers are in place and their pressure gauges are in the green.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Checklist', location: 'All Buildings' },
+                    { id: 'EDU-CAS-004', description: "Check that first aid kits in all designated areas are fully stocked.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Admin Office, Labs' },
+                    { id: 'EDU-CAS-005', description: "Inspect science labs to ensure chemicals are stored correctly and safety equipment is available.", priority: 'High', riskLevel: 'High', proof: 'Lab Safety Log', location: 'Science Labs' },
+                    { id: 'EDU-CAS-006', description: "Ensure restrooms are clean, hygienic, and have adequate supplies.", priority: 'Medium', riskLevel: 'Low', proof: 'Housekeeping Log', location: 'Restrooms' }
+                ]
             },
             {
                 title: "👋 Student Dismissal & Lost-and-Found Protocol",
                 department: "Admin",
                 frequency: "Daily",
                 role: "Teacher",
-                tasks: [ { id: 'EDU-SDP-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Campus' }, { id: 'EDU-SDP-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Campus' } ]
+                tasks: [
+                    { id: 'EDU-SDP-001', description: "Ensure authorized personnel are present at bus bays and parent pick-up zones.", priority: 'High', riskLevel: 'High', proof: 'Roster Check', location: 'Dismissal Areas' },
+                    { id: 'EDU-SDP-002', description: "Verify student ID cards or parent authorization for pick-up.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Pick-up Zone' },
+                    { id: 'EDU-SDP-003', description: "Conduct a final sweep of classrooms and playgrounds for any remaining students.", priority: 'High', riskLevel: 'Medium', proof: 'Sweep Log', location: 'Campus' },
+                    { id: 'EDU-SDP-004', description: "Log any found items in the lost-and-found register with details.", priority: 'Medium', riskLevel: 'Low', proof: 'Lost & Found Log', location: 'Admin Office' },
+                    { id: 'EDU-SDP-005', description: "Manage traffic flow to ensure a safe and orderly dismissal process.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Observation', location: 'Dismissal Areas' }
+                ]
             },
             {
                 title: "🔥 Monthly Emergency Preparedness & Drills",
                 department: "Security",
                 frequency: "Monthly",
                 role: "Principal",
-                tasks: [ { id: 'EDU-MEP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Campus' }, { id: 'EDU-MEP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Campus' } ]
+                tasks: [
+                    { id: 'EDU-MEP-001', description: "Conduct a fire drill or other emergency drill (e.g., earthquake, lockdown).", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Campus' },
+                    { id: 'EDU-MEP-002', description: "Review the effectiveness of the evacuation and the time taken.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Campus' },
+                    { id: 'EDU-MEP-003', description: "Check the functionality of the fire alarm system and public address system.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Campus' },
+                    { id: 'EDU-MEP-004', description: "Ensure all staff are aware of their roles during an emergency.", priority: 'High', riskLevel: 'Medium', proof: 'Quiz/Survey', location: 'Staff Room' },
+                    { id: 'EDU-MEP-005', description: "Update emergency contact lists for staff, parents, and local authorities.", priority: 'High', riskLevel: 'Medium', proof: 'Updated List', location: 'Admin Office' }
+                ]
             }
         ]
     },
@@ -2286,3 +2384,5 @@ export const premiumPacks = [
 
 export type PremiumPack = (typeof premiumPacks)[0];
 export type Checklist = PremiumPack['checklists'][0];
+
+    
