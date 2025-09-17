@@ -1,5 +1,4 @@
 
-
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain } from "lucide-react";
 
 export const premiumPacks = [
@@ -322,7 +321,18 @@ export const premiumPacks = [
                 department: "F&B",
                 frequency: "As-Needed",
                 role: "Banquet Manager",
-                tasks: [ { id: 'FB-BHP-001', description: "Check cleanliness of hall, stage, and entrance", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Banquet Hall' } ]
+                tasks: [
+                    { id: 'FB-BHP-001', description: "Confirm final guest count and seating arrangement with the client", priority: 'High', riskLevel: 'Medium', proof: 'Client Sign-off' , location: 'Banquet Office'},
+                    { id: 'FB-BHP-002', description: "Ensure hall is cleaned and set up as per the event order", priority: 'High', riskLevel: 'Low', proof: 'Photo' , location: 'Banquet Hall'},
+                    { id: 'FB-BHP-003', description: "Test all audio-visual equipment (mics, projectors, screens)", priority: 'High', riskLevel: 'High', proof: 'AV Test Log' , location: 'Banquet Hall'},
+                    { id: 'FB-BHP-004', description: "Check lighting and temperature controls", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check' , location: 'Banquet Hall'},
+                    { id: 'FB-BHP-005', description: "Coordinate with kitchen for menu and service timing", priority: 'High', riskLevel: 'Medium', proof: 'BEO Review' , location: 'Kitchen'},
+                    { id: 'FB-BHP-006', description: "Brief all banquet staff on the event flow and their specific roles", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log' , location: 'Banquet Hall'},
+                    { id: 'FB-BHP-007', description: "Set up registration desk, signage, and any required branding", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check' , location: 'Entrance'},
+                    { id: 'FB-BHP-008', description: "Ensure restrooms are clean and fully stocked", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log' , location: 'Restrooms'},
+                    { id: 'FB-BHP-009', description: "Verify floral arrangements and decor are as per client's request", priority: 'Medium', riskLevel: 'Low', proof: 'Photo' , location: 'Banquet Hall'},
+                    { id: 'FB-BHP-010', description: "Keep standby supplies ready (extra chairs, cutlery)", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check' , location: 'Banquet Store'}
+                ]
             },
             {
                 title: "🔪 Kitchen Hygiene & Food Safety Checklist",
@@ -893,12 +903,12 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'commercial_kitchen_protocol',
-        title: "Commercial Kitchen Checklist",
+        id: 'restaurant_operations_checklist',
+        title: "Restaurant Operations Checklist",
         priceUSD: 79.99,
         priceINR: 6499,
         category: "Hospitality",
-        description: "The essential HACCP-based toolkit for any restaurant focused on safety, quality, and efficiency.",
+        description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
@@ -935,52 +945,6 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Chef",
                 tasks: [ { id: 'CK-KCC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-KCC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
-            }
-        ]
-    },
-     {
-        id: 'resort_spa_management',
-        title: "Resort & Spa Management Checklist",
-        priceUSD: 69.99,
-        priceINR: 5499,
-        category: "Hospitality",
-        description: "A specialized toolkit for luxury resorts, covering grounds, pools, spas, and guest activities.",
-        icon: <TreePalm className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Daily Pool & Water Quality Checks",
-            "Groundskeeping & Landscaping Schedule",
-            "Spa Opening & Therapist Readiness",
-            "Guest Activity & Equipment Safety"
-        ],
-        checklists: [
-            {
-                title: "🏊 Daily Pool & Recreational Area Safety",
-                department: "Maintenance",
-                frequency: "Daily",
-                role: "Pool Technician",
-                tasks: [ { id: 'RSM-PRS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pool' }, { id: 'RSM-PRS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pool' } ]
-            },
-            {
-                title: "🌳 Weekly Grounds & Landscaping Maintenance",
-                department: "Maintenance",
-                frequency: "Weekly",
-                role: "Gardener",
-                tasks: [ { id: 'RSM-GLM-001', description: "Task 1", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Grounds' }, { id: 'RSM-GLM-002', description: "Task 2", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Grounds' } ]
-            },
-            {
-                title: "🧖‍♀️ Daily Spa Operations Checklist",
-                department: "Wellness",
-                frequency: "Daily",
-                role: "Spa Manager",
-                tasks: [ { id: 'RSM-SOC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Spa' }, { id: 'RSM-SOC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Spa' } ]
-            },
-            {
-                title: "🤸 Guest Activity Planning & Execution",
-                department: "Front Office",
-                frequency: "Daily",
-                role: "Activity Coordinator",
-                tasks: [ { id: 'RSM-APE-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Activities Desk' }, { id: 'RSM-APE-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Activities Desk' } ]
             }
         ]
     },
