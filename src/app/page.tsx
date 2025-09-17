@@ -115,7 +115,9 @@ const handleDownload = (pack: PremiumPack) => {
         { wch: 15 }, // Status
     ];
 
-    masterWorksheet['!autofilter'] = { ref: utils.encode_range(utils.decode_range(masterWorksheet['!ref']!)) };
+    if (masterWorksheet['!ref']) {
+        masterWorksheet['!autofilter'] = { ref: masterWorksheet['!ref'] };
+    }
     masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
 
 
@@ -148,7 +150,9 @@ const handleDownload = (pack: PremiumPack) => {
           { wch: 20 }, // Assigned To
           { wch: 30 }  // Notes
         ];
-        worksheet['!autofilter'] = { ref: utils.encode_range(utils.decode_range(worksheet['!ref']!)) };
+        if (worksheet['!ref']) {
+            worksheet['!autofilter'] = { ref: worksheet['!ref'] };
+        }
         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
@@ -364,4 +368,5 @@ export default function Home() {
 }
 
     
+
 
