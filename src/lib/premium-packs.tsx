@@ -963,32 +963,184 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "🏢 Daily Workplace Readiness",
-                department: "Admin",
+                title: "🌅 Daily Facility Opening Checklist",
+                department: "Operations",
                 frequency: "Daily",
-                role: "Facility Manager",
-                tasks: [ { description: "Task 1" }, { description: "Task 2" } ]
+                role: "Facility Coordinator",
+                tasks: [
+                    { description: "Conduct a full walkthrough of all common areas (lobbies, hallways, pantries)." },
+                    { description: "Verify all lights are operational and replace any fused bulbs." },
+                    { description: "Check that HVAC systems are running and temperature is set to the standard (e.g., 22°C)." },
+                    { description: "Inspect restrooms for cleanliness, stocking of supplies (toilet paper, soap, paper towels), and functionality." },
+                    { description: "Ensure all access control doors are functioning correctly." },
+                    { description: "Check that pantry equipment (coffee machines, microwaves, water dispensers) is clean and operational." },
+                    { description: "Review the helpdesk portal for any overnight or urgent requests." },
+                    { description: "Verify that the housekeeping staff have completed their morning cleaning duties as per SLA." },
+                    { description: "Ensure meeting rooms are clean, tidy, and ready for the first bookings." },
+                    { description: "Check that all fire exits are clear and unobstructed." }
+                ]
             },
             {
-                title: "🔧 Weekly Maintenance & Safety Audit",
-                department: "Maintenance",
+                title: "🌙 Daily Facility Closing Checklist",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Facility Coordinator",
+                tasks: [
+                    { description: "Conduct a final walkthrough after all employees have left." },
+                    { description: "Turn off all non-essential lights in office areas and meeting rooms." },
+                    { description: "Ensure all pantry equipment is switched off and cleaned." },
+                    { description: "Check that all windows are closed and locked." },
+                    { description: "Secure all main entry/exit points of the facility." },
+                    { description: "Arm the building's security alarm system." },
+                    { description: "Verify that the housekeeping staff are commencing their night shift cleaning." },
+                    { description: "Log any issues observed during the final round (e.g., leaks, damages) for action the next day." },
+                    { description: "Ensure all sensitive areas (server rooms, store rooms) are locked." },
+                    { description: "Compile a daily closing report for the Facility Manager." }
+                ]
+            },
+            {
+                title: "🧹 Weekly Housekeeping Audit",
+                department: "Soft Services",
                 frequency: "Weekly",
                 role: "Facility Manager",
-                tasks: [ { description: "Task 1" }, { description: "Task 2" } ]
+                tasks: [
+                    { description: "Inspect the quality of dusting on all surfaces, including hard-to-reach areas." },
+                    { description: "Check for stains or dirt on carpets and upholstery; schedule shampooing if needed." },
+                    { description: "Audit restroom cleanliness, including mirrors, fixtures, and grout." },
+                    { description: "Verify the cleanliness of glass doors, windows, and partitions." },
+                    { description: "Check the state of waste segregation and disposal by the housekeeping vendor." },
+                    { description: "Review housekeeping staff's grooming and use of PPE." },
+                    { description: "Inspect the housekeeping storage room for organization and correct chemical storage." },
+                    { description: "Check inventory levels of housekeeping supplies." },
+                    { description: "Get feedback from a few employees on the cleanliness of the office." },
+                    { description: "Provide formal feedback to the housekeeping vendor supervisor based on the audit." }
+                ]
             },
             {
-                title: "📝 Monthly Vendor & Compliance Review",
-                department: "Admin",
+                title: "🛡️ Weekly Security Audit",
+                department: "Security",
+                frequency: "Weekly",
+                role: "Security Manager",
+                tasks: [
+                    { description: "Review CCTV footage from the past week for any incidents or blind spots." },
+                    { description: "Test a random selection of access control readers and boom barriers." },
+                    { description: "Inspect the physical condition of all security cameras, ensuring clean lenses and proper angles." },
+                    { description: "Review the visitor management system logs for any discrepancies." },
+                    { description: "Check the logbooks and registers maintained by security personnel for completeness." },
+                    { description: "Conduct a brief quiz with security guards on emergency procedures (e.g., fire, medical emergency)." },
+                    { description: "Inspect the perimeter fencing and lighting for any vulnerabilities." },
+                    { description: "Test the functionality of panic alarms and the duress system." },
+                    { description: "Ensure all security personnel are in proper uniform and carrying required equipment." },
+                    { description: "Audit the key management system to ensure all keys are accounted for." }
+                ]
+            },
+            {
+                title: "💨 Monthly HVAC System Checklist",
+                department: "Engineering",
                 frequency: "Monthly",
-                role: "Facility Manager",
-                tasks: [ { description: "Task 1" }, { description: "Task 2" } ]
+                role: "HVAC Technician",
+                tasks: [
+                    { description: "Clean or replace air filters in all Air Handling Units (AHUs) and Fan Coil Units (FCUs)." },
+                    { description: "Inspect and clean condenser and evaporator coils." },
+                    { description: "Check and clean drain lines and pans to prevent water overflow." },
+                    { description: "Inspect ductwork for any visible leaks or damage." },
+                    { description: "Check refrigerant levels and look for signs of leaks." },
+                    { description: "Verify thermostat calibration and functionality across different zones." },
+                    { description: "Inspect all belts and pulleys for wear and tear." },
+                    { description: "Listen for any unusual noises from motors or fans." },
+                    { description: "Check the operation of ventilation fans in restrooms and pantries." },
+                    { description: "Log all readings and maintenance activities in the system." }
+                ]
             },
             {
-                title: "🤝 Admin & Employee Services",
+                title: "⚡ Monthly Electrical System Checklist",
+                department: "Engineering",
+                frequency: "Monthly",
+                role: "Electrician",
+                tasks: [
+                    { description: "Visually inspect all main electrical panels for signs of overheating or loose connections." },
+                    { description: "Test all Ground Fault Circuit Interrupters (GFCIs) and Earth Leakage Circuit Breakers (ELCBs)." },
+                    { description: "Check the functionality of all emergency lights and exit signs." },
+                    { description: "Conduct a load test on the Uninterruptible Power Supply (UPS) system." },
+                    { description: "Start the backup generator and run it under load for at least 30 minutes." },
+                    { description: "Check fuel levels in the backup generator." },
+                    { description: "Inspect a sample of power outlets and switches for damage." },
+                    { description: "Use a thermal scanner on main distribution boards to detect hot spots." },
+                    { description: "Review the previous month's electricity bills for any unusual consumption patterns." },
+                    { description: "Ensure all electrical rooms are clean, dry, and free of stored materials." }
+                ]
+            },
+            {
+                title: "🔥 Monthly Fire & Life Safety Checklist",
+                department: "Safety",
+                frequency: "Monthly",
+                role: "Safety Officer",
+                tasks: [
+                    { description: "Visually inspect all fire extinguishers to ensure they are in place, charged, and not expired." },
+                    { description: "Check that all fire exits and evacuation routes are completely clear." },
+                    { description: "Test the main fire alarm panel by activating a manual call point." },
+                    { description: "Inspect smoke detectors and heat detectors for visible damage or obstruction." },
+                    { description: "Check the water pressure in the fire sprinkler system's pressure gauges." },
+                    { description: "Inspect fire hose reels and cabinets." },
+                    { description: "Verify that the public address (PA) system is clear and audible." },
+                    { description: "Check the stock and expiry date of items in all first aid kits." },
+                    { description: "Ensure emergency evacuation maps are displayed and up to date." },
+                    { description: "Log all inspection findings and schedule corrective actions." }
+                ]
+            },
+            {
+                title: "💧 Monthly Plumbing System Checklist",
+                department: "Engineering",
+                frequency: "Monthly",
+                role: "Plumber",
+                tasks: [
+                    { description: "Inspect all restrooms for leaking faucets, toilets, or pipes." },
+                    { description: "Check water pressure in various parts of the building." },
+                    { description: "Clean the filters on all main water inlets." },
+                    { description: "Inspect water pumps for proper operation and any leaks." },
+                    { description: "Check the water level and cleanliness of overhead and underground water tanks." },
+                    { description: "Test the functionality of sump pumps in basement areas." },
+                    { description: "Inspect cafeteria and pantry sinks and grease traps." },
+                    { description: "Check the temperature of hot water at various points." },
+                    { description: "Inspect the irrigation system for the landscape area." },
+                    { description: "Log all maintenance and inspection details." }
+                ]
+            },
+            {
+                title: "🤝 Quarterly Vendor Performance Review",
                 department: "Admin",
+                frequency: "Quarterly",
+                role: "Facility Manager",
+                tasks: [
+                    { description: "Schedule a formal meeting with each key vendor (Housekeeping, Security, M&E)." },
+                    { description: "Review performance against the Service Level Agreement (SLA) for the past quarter." },
+                    { description: "Discuss all non-compliances and failures logged during the period." },
+                    { description: "Review the vendor's staffing levels, training records, and compliance documents." },
+                    { description: "Discuss any feedback received from employees about the vendor's services." },
+                    { description: "Negotiate any penalties for SLA breaches or incentives for good performance." },
+                    { description: "Review invoices and payments to ensure they are aligned with the contract." },
+                    { description: "Discuss upcoming events or changes in the facility that may impact the vendor's scope." },
+                    { description: "Set goals and expectations for the upcoming quarter." },
+                    { description: "Document the meeting with formal Minutes of Meeting and share with the vendor." }
+                ]
+            },
+            {
+                title: "🏢 Office Move / Reconfiguration Checklist",
+                department: "Projects",
                 frequency: "As-Needed",
-                role: "Admin Executive",
-                tasks: [ { description: "Task 1" }, { description: "Task 2" } ]
+                role: "Facility Manager",
+                tasks: [
+                    { description: "Finalize the new seating plan and get approval from stakeholders." },
+                    { description: "Coordinate with the IT department for network and power port requirements." },
+                    { description: "Engage a moving vendor and finalize the schedule (usually over a weekend)." },
+                    { description: "Communicate the move plan and schedule to all affected employees." },
+                    { description: "Arrange for packing crates and labels to be distributed to employees." },
+                    { description: "Supervise the dismantling and moving of furniture and equipment." },
+                    { description: "Ensure the new location is thoroughly cleaned before assets are moved in." },
+                    { description: "Oversee the setup of workstations, chairs, and pedestals at the new location." },
+                    { description: "Coordinate with IT to ensure all systems are live and tested before employees arrive." },
+                    { description: "Conduct a post-move walkthrough to create a snag list and ensure a smooth 'Day 1' experience." }
+                ]
             }
         ]
     },
@@ -2459,3 +2611,4 @@ export type Checklist = PremiumPack['checklists'][0];
 
 
     
+
