@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { writeFile, utils, WorkSheet, CellObject } from 'xlsx-js-style';
+import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -56,14 +56,16 @@ const handleDownload = (pack: PremiumPack) => {
                 const priorityValue = row[priorityColIndex] as string;
                 if (priorityColors[priorityValue]) {
                     const cellAddress = utils.encode_cell({r: R, c: priorityColIndex});
-                    if (ws[cellAddress]) ws[cellAddress].s = { fill: { fgColor: priorityColors[priorityValue] } };
+                    if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: priorityValue };
+                    ws[cellAddress].s = { fill: { fgColor: priorityColors[priorityValue] } };
                 }
             }
             if (riskLevelColIndex !== -1) {
                 const riskLevelValue = row[riskLevelColIndex] as string;
                 if (riskLevelColors[riskLevelValue]) {
                     const cellAddress = utils.encode_cell({r: R, c: riskLevelColIndex});
-                    if (ws[cellAddress]) ws[cellAddress].s = { fill: { fgColor: riskLevelColors[riskLevelValue] } };
+                    if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: riskLevelValue };
+                    ws[cellAddress].s = { fill: { fgColor: riskLevelColors[riskLevelValue] } };
                 }
             }
         }
@@ -94,7 +96,7 @@ const handleDownload = (pack: PremiumPack) => {
     
     const masterDataWithHeader = [masterHeaders, ...masterSheetData];
     const masterWorksheet = utils.aoa_to_sheet(masterDataWithHeader.map((row, r_idx) => {
-        return row.map((cell, c_idx) => {
+        return row.map((cell) => {
             if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
             return cell;
         })
