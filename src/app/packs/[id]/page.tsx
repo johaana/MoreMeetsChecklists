@@ -26,43 +26,37 @@ const handleDownload = (pack: PremiumPack) => {
       fill: { fgColor: { rgb: "0A2540" } }
     };
     
-    const highPriorityColor = { rgb: "F8BBD0" }; // Light Pink/Red for High priority/risk
+    const highPriorityColor = { rgb: "FFD1D1" }; 
 
     const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
         if(!data || data.length === 0) return;
         
-        const safeHeader = (h: any) => typeof h === 'string' ? h : (h && h.v) || '';
-        const headers = data[0].map(safeHeader);
+        const headers = data[0];
         const priorityColIndex = headers.indexOf('Priority');
         const riskLevelColIndex = headers.indexOf('Risk Level');
 
         for (let R = 1; R < data.length; ++R) {
             const row = data[R];
             
-            if (priorityColIndex !== -1) {
-                const priorityValue = row[priorityColIndex] as string;
-                if (priorityValue === 'High') {
-                    for(let C = 0; C < headers.length; ++C) {
-                        const cellAddress = utils.encode_cell({r: R, c: C});
-                        if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: row[C] };
-                        ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
+            const applyHighlight = (colIndex: number) => {
+                if (colIndex !== -1) {
+                    const value = row[colIndex] as string;
+                    if (value === 'High') {
+                        for(let C = 0; C < headers.length; ++C) {
+                            const cellAddress = utils.encode_cell({r: R, c: C});
+                            if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: row[C] };
+                             ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
+                        }
                     }
                 }
             }
-             if (riskLevelColIndex !== -1) {
-                const riskLevelValue = row[riskLevelColIndex] as string;
-                if (riskLevelValue === 'High') {
-                     for(let C = 0; C < headers.length; ++C) {
-                        const cellAddress = utils.encode_cell({r: R, c: C});
-                        if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: row[C] };
-                        ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
-                    }
-                }
-            }
+            applyHighlight(priorityColIndex);
+            applyHighlight(riskLevelColIndex);
         }
         
-        const range = utils.decode_range(ws['!ref'] || "A1");
-        ws['!autofilter'] = { ref: utils.encode_range(range) };
+        const range = utils.decode_range(ws['!ref'] || "A1:A1");
+        const filterRange = utils.encode_range({s: range.s, e: {c: range.e.c, r: data.length - 1}});
+        ws['!autofilter'] = { ref: filterRange };
         ws['!views'] = [{state: 'frozen', ySplit: 1}];
     };
 
@@ -293,19 +287,8 @@ export default function Page({ params }: { params: { id: string } }) {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="p-6 text-sm">
-                                <ul className="space-y-2 text-muted-foreground">
-                                    {checklist.tasks.slice(0, 5).map((task, taskIndex) => (
-                                        <li key={taskIndex} className="flex items-start">
-                                            <div className="mr-2 mt-1">
-                                                {task.priority === 'High' ? <XCircle className="w-4 h-4 text-red-500" /> : task.priority === 'Medium' ? <AlertTriangle className="w-4 h-4 text-amber-500" /> : <CheckCircle2 className="w-4 h-4 text-green-500" />}
-                                            </div>
-                                            <span><strong>{task.description}</strong> - (Priority: {task.priority}, Risk: {task.riskLevel})</span>
-                                        </li>
-                                    ))}
-                                    {checklist.tasks.length > 5 && (
-                                        <li className="font-semibold text-primary/80">...and {checklist.tasks.length - 5} more tasks.</li>
-                                    )}
-                                </ul>
+                                <p className="text-muted-foreground">{checklist.summary}</p>
+                                <p className="font-semibold text-primary/80 mt-2">Contains {checklist.tasks.length} detailed tasks.</p>
                             </CardContent>
                         </Card>
                     ))}
