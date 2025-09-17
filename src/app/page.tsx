@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -7,14 +8,36 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star } from "lucide-react";
 import { Logo } from "@/components/icons";
-import { premiumPacks } from "@/lib/premium-packs";
+import { premiumPacks, PremiumPack, Checklist as ChecklistType } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { writeFile, utils } from 'xlsx';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
+
+const handleDownload = (pack: PremiumPack) => {
+    // For now, we'll generate a sample Excel file on the client side.
+    // In a real app, this would be a secure, server-generated file.
+    const workbook = utils.book_new();
+
+    pack.checklists.forEach(checklist => {
+        // Since the full tasks aren't in the data, we'll create a placeholder
+        const placeholderTasks = [
+            { Task: "This is a sample task 1", Status: "Pending" },
+            { Task: "This is a sample task 2", Status: "Pending" },
+            { Task: "This is a sample task 3", Status pending: "Pending" },
+        ];
+        const worksheet = utils.json_to_sheet(placeholderTasks);
+        // Clean up the title for the sheet name (max 31 chars, no special chars)
+        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+        utils.book_append_sheet(workbook, worksheet, sheetName);
+    });
+
+    writeFile(workbook, `${pack.id}.xlsx`);
+}
 
 
 export default function Home() {
@@ -41,7 +64,7 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="w-full relative">
-            <div className="absolute inset-0 z-10 bg-black/50" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/80 via-background/50 to-transparent" />
              {heroImage && (
                 <Image
                     src={heroImage.imageUrl}
@@ -57,10 +80,10 @@ export default function Home() {
                     <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
                         Trusted by Professionals in 12+ Industries
                     </Badge>
-                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
+                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-foreground drop-shadow-md">
                         The World’s Most Complete Event & Operations Checklists
                     </h1>
-                    <p className="max-w-[700px] text-gray-200 md:text-xl/relaxed mx-auto drop-shadow-sm">
+                    <p className="max-w-[700px] text-primary md:text-xl/relaxed mx-auto drop-shadow-sm">
                          From weddings to hospitality to corporate launches, a single missed detail can cost you everything. Never miss a task again.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
@@ -128,7 +151,7 @@ export default function Home() {
                                                 </p>
                                                 <p className="text-xs text-muted-foreground">One-Time Purchase</p>
                                             </div>
-                                            <Button size="lg" className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                            <Button size="lg" className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => handleDownload(pack)}>
                                                 Buy Now & Get Instant Access
                                             </Button>
                                         </div>
@@ -220,3 +243,4 @@ export default function Home() {
     </div>
   );
 }
+

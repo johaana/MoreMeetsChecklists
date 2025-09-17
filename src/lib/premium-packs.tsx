@@ -6,8 +6,8 @@ export const premiumPacks = [
     {
         id: 'hospitality_excellence_suite',
         title: "Hotel & Resort Operations Checklist",
-        priceUSD: 49.99,
-        priceINR: 3999,
+        priceUSD: 79.99,
+        priceINR: 6499,
         category: "Hospitality",
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
@@ -320,12 +320,6 @@ export const premiumPacks = [
                 "role": "Admin Manager"
             },
             {
-                "title": "🎮 Kids Play Area / Kids Club Checklist",
-                "department": "Wellness",
-                "frequency": "Daily",
-                "role": "Kids Club Supervisor"
-            },
-            {
                 "title": "🚗 Valet Parking Checklist",
                 "department": "Security",
                 "frequency": "Daily",
@@ -350,25 +344,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Workplace Readiness",
+                "title": "🏢 Daily Workplace Readiness",
                 "department": "Admin",
                 "frequency": "Daily",
                 "role": "Facility Manager"
             },
             {
-                "title": "Weekly Maintenance & Safety Audit",
+                "title": "🔧 Weekly Maintenance & Safety Audit",
                 "department": "Maintenance",
                 "frequency": "Weekly",
                 "role": "Facility Manager"
             },
             {
-                "title": "Monthly Vendor & Compliance Review",
+                "title": "📝 Monthly Vendor & Compliance Review",
                 "department": "Admin",
                 "frequency": "Monthly",
                 "role": "Facility Manager"
             },
             {
-                "title": "Admin & Employee Services",
+                "title": "🤝 Admin & Employee Services",
                 "department": "Admin",
                 "frequency": "As-Needed",
                 "role": "Admin Executive"
@@ -392,25 +386,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Kitchen Opening Checklist (HACCP Focus)",
+                "title": "🍳 Kitchen Opening Checklist (HACCP Focus)",
                 "department": "F&B",
                 "frequency": "Daily",
                 "role": "Head Chef"
             },
             {
-                "title": "Food Receiving & Storage Protocol",
+                "title": "📦 Food Receiving & Storage Protocol",
                 "department": "F&B",
                 "frequency": "Daily",
                 "role": "Store Keeper"
             },
             {
-                "title": "Daily HACCP & Line Check",
+                "title": "🌡️ Daily HACCP & Line Check",
                 "department": "F&B",
                 "frequency": "Daily",
                 "role": "Sous Chef"
             },
             {
-                "title": "Kitchen Closing & Cleaning Checklist",
+                "title": "🧽 Kitchen Closing & Cleaning Checklist",
                 "department": "F&B",
                 "frequency": "Daily",
                 "role": "Closing Chef"
@@ -434,25 +428,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Pool & Recreational Area Safety",
+                "title": "🏊 Daily Pool & Recreational Area Safety",
                 "department": "Maintenance",
                 "frequency": "Daily",
                 "role": "Pool Technician"
             },
             {
-                "title": "Weekly Grounds & Landscaping Maintenance",
+                "title": "🌳 Weekly Grounds & Landscaping Maintenance",
                 "department": "Maintenance",
                 "frequency": "Weekly",
                 "role": "Gardener"
             },
             {
-                "title": "Daily Spa Operations Checklist",
+                "title": "🧖‍♀️ Daily Spa Operations Checklist",
                 "department": "Wellness",
                 "frequency": "Daily",
                 "role": "Spa Manager"
             },
             {
-                "title": "Guest Activity Planning & Execution",
+                "title": "🤸 Guest Activity Planning & Execution",
                 "department": "Front Office",
                 "frequency": "Daily",
                 "role": "Activity Coordinator"
@@ -476,25 +470,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening Procedure (Dual Control)",
+                "title": "🔓 Daily Opening Procedure (Dual Control)",
                 "department": "Security",
                 "frequency": "Daily",
                 "role": "Store Manager"
             },
             {
-                "title": "Daily Closing Procedure (Dual Control)",
+                "title": "🔒 Daily Closing Procedure (Dual Control)",
                 "department": "Security",
                 "frequency": "Daily",
                 "role": "Store Manager"
             },
             {
-                "title": "Ongoing Security & Sales Floor Protocol",
+                "title": "🛍️ Ongoing Security & Sales Floor Protocol",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Sales Associate"
             },
             {
-                "title": "Weekly Security & Maintenance Audit",
+                "title": "🛡️ Weekly Security & Maintenance Audit",
                 "department": "Security",
                 "frequency": "Weekly",
                 "role": "Store Manager"
@@ -518,25 +512,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Compliance Check",
+                "title": "☀️ Daily Opening & Compliance Check",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Pharmacist"
             },
             {
-                "title": "Prescription Filling & Verification (The 'Five Rights')",
+                "title": "💊 Prescription Filling & Verification (The 'Five Rights')",
                 "department": "Operations",
                 "frequency": "As-Needed",
                 "role": "Pharmacist"
             },
             {
-                "title": "Inventory & Controlled Substances (Zero-Error Protocol)",
+                "title": "📦 Inventory & Controlled Substances (Zero-Error Protocol)",
                 "department": "Inventory",
                 "frequency": "Daily",
                 "role": "Pharmacist"
             },
             {
-                "title": "Closing Procedures & Data Security",
+                "title": "🌙 Closing Procedures & Data Security",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Pharmacist"
@@ -560,25 +554,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Patient Admission & Discharge",
+                "title": "📋 Patient Admission & Discharge",
                 "department": "Admissions",
                 "frequency": "As-Needed",
                 "role": "Admissions Officer"
             },
             {
-                "title": "Surgical Suite / Operating Theatre (OT) Readiness",
+                "title": "🔪 Surgical Suite / Operating Theatre (OT) Readiness",
                 "department": "Surgery",
                 "frequency": "Daily",
                 "role": "OT Nurse"
             },
             {
-                "title": "Emergency Room (ER) Management",
+                "title": "🚑 Emergency Room (ER) Management",
                 "department": "Emergency",
                 "frequency": "Daily",
                 "role": "ER Manager"
             },
             {
-                "title": "Infection Control & Compliance",
+                "title": "🦠 Infection Control & Compliance",
                 "department": "Compliance",
                 "frequency": "Daily",
                 "role": "Infection Control Nurse"
@@ -602,25 +596,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Patient Readiness",
+                "title": "☀️ Daily Opening & Patient Readiness",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Clinic Manager"
             },
             {
-                "title": "Patient Flow & Experience",
+                "title": "➡️ Patient Flow & Experience",
                 "department": "Front Office",
                 "frequency": "Daily",
                 "role": "Receptionist"
             },
             {
-                "title": "Clinical Safety & Sterilization",
+                "title": "🧼 Clinical Safety & Sterilization",
                 "department": "Clinical",
                 "frequency": "Daily",
                 "role": "Nurse"
             },
             {
-                "title": "Billing & Administration",
+                "title": "💵 Billing & Administration",
                 "department": "Finance",
                 "frequency": "Daily",
                 "role": "Billing Executive"
@@ -644,25 +638,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Morning Setup & Calibration (Zero-Error Start)",
+                "title": "🔬 Morning Setup & Calibration (Zero-Error Start)",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Lab Technician"
             },
             {
-                "title": "Sample Management & Processing (Patient Safety First)",
+                "title": "🩸 Sample Management & Processing (Patient Safety First)",
                 "department": "Operations",
                 "frequency": "As-Needed",
                 "role": "Lab Technician"
             },
             {
-                "title": "Data, Reporting & Critical Value Communication",
+                "title": "📈 Data, Reporting & Critical Value Communication",
                 "department": "Reporting",
                 "frequency": "Daily",
                 "role": "Senior Technician"
             },
             {
-                "title": "End of Day & Biohazard Management",
+                "title": "🗑️ End of Day & Biohazard Management",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Lab Supervisor"
@@ -686,25 +680,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Safety Inspection",
+                "title": "🌅 Daily Opening & Safety Inspection",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Gym Manager"
             },
             {
-                "title": "Member Management & Customer Experience",
+                "title": "🤝 Member Management & Customer Experience",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Sales Associate"
             },
             {
-                "title": "Class & Staff Management",
+                "title": "📅 Class & Staff Management",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Gym Manager"
             },
             {
-                "title": "Closing Procedures & Security",
+                "title": "🌙 Closing Procedures & Security",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Closing Staff"
@@ -728,25 +722,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Hygiene Checklist",
+                "title": "✨ Daily Opening & Hygiene Checklist",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Salon Manager"
             },
             {
-                "title": "Client Experience & Service",
+                "title": "😊 Client Experience & Service",
                 "department": "Customer Service",
                 "frequency": "Daily",
                 "role": "Stylist"
             },
             {
-                "title": "Inventory & Retail Management",
+                "title": "📦 Inventory & Retail Management",
                 "department": "Inventory",
                 "frequency": "Weekly",
                 "role": "Salon Manager"
             },
             {
-                "title": "Closing & End-of-Day Tasks",
+                "title": "🌙 Closing & End-of-Day Tasks",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Closing Staff"
@@ -770,25 +764,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Campus Security Checklist",
+                "title": "🏫 Daily Opening & Campus Security Checklist",
                 "department": "Security",
                 "frequency": "Daily",
                 "role": "Security Supervisor"
             },
             {
-                "title": "Classroom & Common Area Safety",
+                "title": " classroomsafety Classroom & Common Area Safety",
                 "department": "Admin",
                 "frequency": "Daily",
                 "role": "Admin Officer"
             },
             {
-                "title": "Student Dismissal & Lost-and-Found Protocol",
+                "title": "👋 Student Dismissal & Lost-and-Found Protocol",
                 "department": "Admin",
                 "frequency": "Daily",
                 "role": "Teacher"
             },
             {
-                "title": "Monthly Emergency Preparedness & Drills",
+                "title": "🔥 Monthly Emergency Preparedness & Drills",
                 "department": "Security",
                 "frequency": "Monthly",
                 "role": "Principal"
@@ -812,25 +806,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Morning Opening & Freshness Check",
+                "title": "☀️ Morning Opening & Freshness Check",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Store Manager"
             },
             {
-                "title": "Receiving & Cold Chain Integrity",
+                "title": "🚚 Receiving & Cold Chain Integrity",
                 "department": "Inventory",
                 "frequency": "Daily",
                 "role": "Receiving Clerk"
             },
             {
-                "title": "During the Day: Floor Operations & Customer Service",
+                "title": "🛒 During the Day: Floor Operations & Customer Service",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Floor Manager"
             },
             {
-                "title": "Closing & Financial Reconciliation",
+                "title": "💰 Closing & Financial Reconciliation",
                 "department": "Finance",
                 "frequency": "Daily",
                 "role": "Closing Manager"
@@ -854,25 +848,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Merchandising",
+                "title": "✨ Daily Opening & Merchandising",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Store Manager"
             },
             {
-                "title": "Fitting Room, Customer Service & Loss Prevention",
+                "title": "👗 Fitting Room, Customer Service & Loss Prevention",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Sales Associate"
             },
             {
-                "title": "New Stock & Inventory Management",
+                "title": "📦 New Stock & Inventory Management",
                 "department": "Inventory",
                 "frequency": "Weekly",
                 "role": "Store Manager"
             },
             {
-                "title": "Closing & Daily Reporting",
+                "title": "🌙 Closing & Daily Reporting",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Closing Staff"
@@ -896,25 +890,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Merchandising",
+                "title": "🔌 Daily Opening & Merchandising",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Store Manager"
             },
             {
-                "title": "Sales Floor & Customer Experience",
+                "title": "💡 Sales Floor & Customer Experience",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Sales Associate"
             },
             {
-                "title": "Inventory & High-Value Security Protocol",
+                "title": "🔐 Inventory & High-Value Security Protocol",
                 "department": "Security",
                 "frequency": "Weekly",
                 "role": "Store Manager"
             },
             {
-                "title": "Staff & Training Drills",
+                "title": "🧠 Staff & Training Drills",
                 "department": "HR",
                 "frequency": "Weekly",
                 "role": "Store Manager"
@@ -938,25 +932,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Outgoing Shift: End-of-Shift Duties (30 mins before end)",
+                "title": "📈 Outgoing Shift: End-of-Shift Duties",
                 "department": "Production",
                 "frequency": "Daily",
                 "role": "Shift Supervisor"
             },
             {
-                "title": "Joint Handover Meeting (5-10 mins)",
+                "title": "🤝 Joint Handover Meeting",
                 "department": "Production",
                 "frequency": "Daily",
                 "role": "Shift Supervisor"
             },
             {
-                "title": "Incoming Shift: Start-up Procedures (First 15 mins)",
+                "title": "▶️ Incoming Shift: Start-up Procedures",
                 "department": "Production",
                 "frequency": "Daily",
                 "role": "Shift Supervisor"
             },
             {
-                "title": "Weekly Safety & Audit Drill",
+                "title": "🦺 Weekly Safety & Audit Drill",
                 "department": "Safety",
                 "frequency": "Weekly",
                 "role": "Safety Officer"
@@ -980,25 +974,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Initial Client Inquiry & Booking",
+                "title": "✍️ Initial Client Inquiry & Booking",
                 "department": "Sales",
                 "frequency": "As-Needed",
                 "role": "Sales Manager"
             },
             {
-                "title": "Pre-Event Coordination (T-30 Days)",
+                "title": "📋 Pre-Event Coordination (T-30 Days)",
                 "department": "Operations",
                 "frequency": "Monthly",
                 "role": "Event Coordinator"
             },
             {
-                "title": "Event Day Execution",
+                "title": "🎉 Event Day Execution",
                 "department": "Operations",
                 "frequency": "As-Needed",
                 "role": "Venue Manager"
             },
             {
-                "title": "Post-Event Wrap-Up & Settlement",
+                "title": "💸 Post-Event Wrap-Up & Settlement",
                 "department": "Finance",
                 "frequency": "As-Needed",
                 "role": "Accounts Manager"
@@ -1022,25 +1016,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening Safety Inspection",
+                "title": "☀️ Daily Opening Safety Inspection",
                 "department": "Safety",
                 "frequency": "Daily",
                 "role": "Supervisor"
             },
             {
-                "title": "During-Session Operations & Supervision",
+                "title": "👀 During-Session Operations & Supervision",
                 "department": "Operations",
                 "frequency": "Hourly",
                 "role": "Staff"
             },
             {
-                "title": "Closing & Deep Cleaning",
+                "title": "🧽 Closing & Deep Cleaning",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Closing Staff"
             },
             {
-                "title": "Weekly Maintenance & Emergency Drills",
+                "title": " drills Weekly Maintenance & Emergency Drills",
                 "department": "Maintenance",
                 "frequency": "Weekly",
                 "role": "Supervisor"
@@ -1064,25 +1058,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Sangeet Ceremony Checklist",
+                "title": "💃 Sangeet Ceremony Checklist",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
             },
             {
-                "title": "Mehndi Ceremony Checklist",
+                "title": "💅 Mehndi Ceremony Checklist",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
             },
             {
-                "title": "Wedding Day: Baraat, Varmala & Mandap",
+                "title": "💒 Wedding Day: Baraat, Varmala & Mandap",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
             },
             {
-                "title": "Post-Wedding: Reception & Vidaai",
+                "title": "👋 Post-Wedding: Reception & Vidaai",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
@@ -1106,25 +1100,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Pre-Wedding & Nikah Ceremony",
+                "title": "📜 Pre-Wedding & Nikah Ceremony",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
             },
             {
-                "title": "Post-Nikah & Rukhsati",
+                "title": "🚗 Post-Nikah & Rukhsati",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
             },
             {
-                "title": "Walima (Groom's Reception) Planning",
+                "title": "🍽️ Walima (Groom's Reception) Planning",
                 "department": "Events",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
             },
             {
-                "title": "General Vendor & Guest Management",
+                "title": "🤝 General Vendor & Guest Management",
                 "department": "Admin",
                 "frequency": "As-Needed",
                 "role": "Event Planner"
@@ -1148,25 +1142,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Vehicle Check-In & Service Advising",
+                "title": "📋 Vehicle Check-In & Service Advising",
                 "department": "Customer Service",
                 "frequency": "As-Needed",
                 "role": "Service Advisor"
             },
             {
-                "title": "Diagnosis, Quoting & Work Order",
+                "title": "💰 Diagnosis, Quoting & Work Order",
                 "department": "Operations",
                 "frequency": "As-Needed",
                 "role": "Service Advisor"
             },
             {
-                "title": "Repair & Quality Control",
+                "title": "🛠️ Repair & Quality Control",
                 "department": "Operations",
                 "frequency": "As-Needed",
                 "role": "Technician"
             },
             {
-                "title": "Billing & Vehicle Handover Experience",
+                "title": " handover Vehicle Handover Experience",
                 "department": "Customer Service",
                 "frequency": "As-Needed",
                 "role": "Service Advisor"
@@ -1190,25 +1184,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Daily Opening & Security Protocol",
+                "title": "👮 Daily Opening & Security Protocol",
                 "department": "Security",
                 "frequency": "Daily",
                 "role": "Security Supervisor"
             },
             {
-                "title": "Ongoing Operations & Housekeeping",
+                "title": "🧹 Ongoing Operations & Housekeeping",
                 "department": "Operations",
                 "frequency": "Hourly",
                 "role": "Duty Manager"
             },
             {
-                "title": "Daily Closing Protocol",
+                "title": "🌙 Daily Closing Protocol",
                 "department": "Security",
                 "frequency": "Daily",
                 "role": "Closing Manager"
             },
             {
-                "title": "Weekly Maintenance & Tenant Relations",
+                "title": "🤝 Weekly Maintenance & Tenant Relations",
                 "department": "Admin",
                 "frequency": "Weekly",
                 "role": "Mall Manager"
@@ -1232,25 +1226,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Pre-Shift & Team Huddle Checklist (15 mins)",
+                "title": "☀️ Pre-Shift & Team Huddle Checklist (15 mins)",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Team Lead"
             },
             {
-                "title": "Live Operations & Quality Assurance (QA)",
+                "title": "🎧 Live Operations & Quality Assurance (QA)",
                 "department": "QA",
                 "frequency": "Daily",
                 "role": "QA Analyst"
             },
             {
-                "title": "Agent Performance & Coaching",
+                "title": "📈 Agent Performance & Coaching",
                 "department": "Operations",
                 "frequency": "Weekly",
                 "role": "Team Lead"
             },
             {
-                "title": "End-of-Shift & Reporting",
+                "title": "🌙 End-of-Shift & Reporting",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Team Lead"
@@ -1274,25 +1268,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Pre-Opening Safety Inspection",
+                "title": " lifeguard Pre-Opening Safety Inspection",
                 "department": "Safety",
                 "frequency": "Daily",
                 "role": "Head Lifeguard"
             },
             {
-                "title": "Ongoing Operational Safety",
+                "title": "🌊 Ongoing Operational Safety",
                 "department": "Operations",
                 "frequency": "Hourly",
                 "role": "Lifeguard Supervisor"
             },
             {
-                "title": "Closing Procedures",
+                "title": "🌙 Closing Procedures",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Closing Manager"
             },
             {
-                "title": "Weekly & Monthly Checks",
+                "title": "🔧 Weekly & Monthly Checks",
                 "department": "Maintenance",
                 "frequency": "Weekly",
                 "role": "Facility Manager"
@@ -1316,25 +1310,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Pre-Guest Arrival / New Tenant Move-In",
+                "title": "👋 Pre-Guest Arrival / New Tenant Move-In",
                 "department": "Operations",
                 "frequency": "As-Needed",
                 "role": "Host"
             },
             {
-                "title": "Guest Check-Out / Tenant Move-Out",
+                "title": "🚪 Guest Check-Out / Tenant Move-Out",
                 "department": "Operations",
-                "frequency": "As-Needed",
+                "frequency": "As-Needed",                
                 "role": "Host"
             },
             {
-                "title": "Routine Maintenance & Compliance",
+                "title": "🛠️ Routine Maintenance & Compliance",
                 "department": "Maintenance",
                 "frequency": "Monthly",
                 "role": "Host"
             },
             {
-                "title": "Guest Communication & Experience",
+                "title": "💬 Guest Communication & Experience",
                 "department": "Customer Service",
                 "frequency": "Daily",
                 "role": "Host"
@@ -1358,25 +1352,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Morning Showroom & Lot Preparation",
+                "title": " showroom Morning Showroom & Lot Preparation",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Sales Manager"
             },
             {
-                "title": "Sales & Customer Interaction Process",
+                "title": "🤝 Sales & Customer Interaction Process",
                 "department": "Sales",
                 "frequency": "Daily",
                 "role": "Sales Associate"
             },
             {
-                "title": "Vehicle Handover & Delivery Experience",
+                "title": "🔑 Vehicle Handover & Delivery Experience",
                 "department": "Customer Service",
                 "frequency": "As-Needed",
                 "role": "Sales Associate"
             },
             {
-                "title": "End of Day & Reporting",
+                "title": "📊 End of Day & Reporting",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Sales Manager"
@@ -1400,25 +1394,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Product Launch Event Planning",
+                "title": "🚀 Product Launch Event Planning",
                 "department": "Marketing",
                 "frequency": "As-Needed",
                 "role": "Event Manager"
             },
             {
-                "title": "New Employee Onboarding (First Week)",
+                "title": "🧑‍💼 New Employee Onboarding (First Week)",
                 "department": "HR",
                 "frequency": "As-Needed",
                 "role": "HR Manager"
             },
             {
-                "title": "Annual General Meeting (AGM) Preparation",
+                "title": " boardroom Annual General Meeting (AGM) Preparation",
                 "department": "Admin",
                 "frequency": "Annually",
                 "role": "Corporate Secretary"
             },
             {
-                "title": "Trade Show & Conference Participation",
+                "title": "🎪 Trade Show & Conference Participation",
                 "department": "Marketing",
                 "frequency": "As-Needed",
                 "role": "Marketing Manager"
@@ -1442,25 +1436,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Environmental Data Gathering",
+                "title": "🌍 Environmental Data Gathering",
                 "department": "Compliance",
                 "frequency": "Quarterly",
                 "role": "ESG Officer"
             },
             {
-                "title": "Social Metrics Data Gathering",
+                "title": "🧑‍🤝‍🧑 Social Metrics Data Gathering",
                 "department": "HR",
                 "frequency": "Quarterly",
                 "role": "HR Manager"
             },
             {
-                "title": "Governance Policy & Verification",
+                "title": "⚖️ Governance Policy & Verification",
                 "department": "Legal",
                 "frequency": "Annually",
                 "role": "General Counsel"
             },
             {
-                "title": "Reporting & Stakeholder Engagement",
+                "title": "📢 Reporting & Stakeholder Engagement",
                 "department": "Investor Relations",
                 "frequency": "Annually",
                 "role": "IR Manager"
@@ -1484,25 +1478,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Document Control & Records",
+                "title": "📂 Document Control & Records",
                 "department": "QA",
                 "frequency": "Monthly",
                 "role": "Document Controller"
             },
             {
-                "title": "Management & Leadership",
+                "title": "👑 Management & Leadership",
                 "department": "Management",
                 "frequency": "Quarterly",
                 "role": "Quality Manager"
             },
             {
-                "title": "Product Realization & Service Delivery",
+                "title": "📦 Product Realization & Service Delivery",
                 "department": "Operations",
                 "frequency": "Weekly",
                 "role": "Operations Manager"
             },
             {
-                "title": "Measurement, Analysis, and Improvement",
+                "title": "✅ Measurement, Analysis, and Improvement",
                 "department": "QA",
                 "frequency": "Monthly",
                 "role": "Quality Manager"
@@ -1526,25 +1520,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Waste Management & Reduction",
+                "title": "🗑️ Waste Management & Reduction",
                 "department": "Admin",
                 "frequency": "Monthly",
                 "role": "Facility Manager"
             },
             {
-                "title": "Energy Conservation",
+                "title": "💡 Energy Conservation",
                 "department": "Admin",
                 "frequency": "Monthly",
                 "role": "Facility Manager"
             },
             {
-                "title": "Water Conservation",
+                "title": "💧 Water Conservation",
                 "department": "Admin",
                 "frequency": "Monthly",
                 "role": "Facility Manager"
             },
             {
-                "title": "Sustainable Procurement & Employee Engagement",
+                "title": "💚 Sustainable Procurement & Employee Engagement",
                 "department": "HR",
                 "frequency": "Quarterly",
                 "role": "HR Manager"
@@ -1568,25 +1562,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Aggregator Setup & Menu Engineering",
+                "title": "🔄 Aggregator Setup & Menu Engineering",
                 "department": "Sales",
                 "frequency": "As-Needed",
                 "role": "Kitchen Manager"
             },
             {
-                "title": "Packaging & Dispatch Station Setup",
+                "title": "🥡 Packaging & Dispatch Station Setup",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Kitchen Manager"
             },
             {
-                "title": "Live Operations & Order Fulfillment (KOT to Handoff)",
+                "title": "🔥 Live Operations & Order Fulfillment (KOT to Handoff)",
                 "department": "Operations",
                 "frequency": "Daily",
                 "role": "Expo"
             },
             {
-                "title": "End-of-Day Reconciliation & Analysis",
+                "title": "💰 End-of-Day Reconciliation & Analysis",
                 "department": "Finance",
                 "frequency": "Daily",
                 "role": "Kitchen Manager"
@@ -1610,25 +1604,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Phase 1: Pre-Booking & Documentation (2-6 Months Out)",
+                "title": "🛂 Phase 1: Pre-Booking & Documentation (2-6 Months Out)",
                 "department": "Planning",
                 "frequency": "One-Time",
                 "role": "Traveler"
             },
             {
-                "title": "Phase 2: Health & Finance (1-2 Months Out)",
+                "title": "🩺 Phase 2: Health & Finance (1-2 Months Out)",
                 "department": "Planning",
                 "frequency": "One-Time",
                 "role": "Traveler"
             },
             {
-                "title": "Phase 3: Packing & Preparation (1 Week Out)",
+                "title": "🧳 Phase 3: Packing & Preparation (1 Week Out)",
                 "department": "Packing",
                 "frequency": "One-Time",
                 "role": "Traveler"
             },
             {
-                "title": "Phase 4: Final 24 Hours",
+                "title": "✈️ Phase 4: Final 24 Hours",
                 "department": "Final Checks",
                 "frequency": "One-Time",
                 "role": "Traveler"
@@ -1652,25 +1646,25 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                "title": "Veterinary & Airline Prep (1-3 Months Out)",
+                "title": "🐾 Veterinary & Airline Prep (1-3 Months Out)",
                 "department": "Planning",
                 "frequency": "One-Time",
                 "role": "Pet Owner"
             },
             {
-                "title": "Booking & Packing",
+                "title": "🏨 Booking & Packing",
                 "department": "Planning",
                 "frequency": "One-Time",
                 "role": "Pet Owner"
             },
             {
-                "title": "The Day Before Travel",
+                "title": "📝 The Day Before Travel",
                 "department": "Preparation",
                 "frequency": "One-Time",
                 "role": "Pet Owner"
             },
             {
-                "title": "Travel Day & Arrival",
+                "title": "🚗 Travel Day & Arrival",
                 "department": "Travel",
                 "frequency": "One-Time",
                 "role": "Pet Owner"
@@ -1679,7 +1673,8 @@ export const premiumPacks = [
     }
 ];
 
-export type PremiumPack = typeof premiumPacks[0];
+export type PremiumPack = (typeof premiumPacks)[0];
+export type Checklist = PremiumPack['checklists'][0];
 
   
 
@@ -1711,4 +1706,5 @@ export type PremiumPack = typeof premiumPacks[0];
     
 
     
+
 
