@@ -26,23 +26,11 @@ const handleDownload = (pack: PremiumPack) => {
       fill: { fgColor: { rgb: "0A2540" } }
     };
     
-    const priorityColors: { [key:string]: {rgb: string} } = {
-        'High': { rgb: "F8BBD0" },   // Light Pink
-        'Medium': { rgb: "FFE0B2" }, // Light Orange
-        'Low': { rgb: "C8E6C9" },    // Light Green
-    };
-
-    const riskLevelColors: { [key:string]: {rgb: string} } = {
-        'High': { rgb: "FFAB91" },   // Light Red-Orange
-        'Medium': { rgb: "FFE0B2" }, // Light Orange
-        'Low': { rgb: "A5D6A7" },    // Muted Green
-    };
+    const highPriorityColor = { rgb: "F8BBD0" }; // Light Pink/Red for High priority/risk
 
     const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
         if(!data || data.length === 0) return;
         
-        const range = utils.decode_range(ws['!ref']!);
-        ws['!autofilter'] = { ref: utils.encode_range(range) };
         ws['!views'] = [{state: 'frozen', ySplit: 1}];
 
         const headers = data[0];
@@ -54,18 +42,18 @@ const handleDownload = (pack: PremiumPack) => {
             
             if (priorityColIndex !== -1) {
                 const priorityValue = row[priorityColIndex] as string;
-                if (priorityColors[priorityValue]) {
+                if (priorityValue === 'High') {
                     const cellAddress = utils.encode_cell({r: R, c: priorityColIndex});
                     if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: priorityValue };
-                    ws[cellAddress].s = { fill: { fgColor: priorityColors[priorityValue] } };
+                    ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
                 }
             }
             if (riskLevelColIndex !== -1) {
                 const riskLevelValue = row[riskLevelColIndex] as string;
-                if (riskLevelColors[riskLevelValue]) {
+                if (riskLevelValue === 'High') {
                     const cellAddress = utils.encode_cell({r: R, c: riskLevelColIndex});
                     if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: riskLevelValue };
-                    ws[cellAddress].s = { fill: { fgColor: riskLevelColors[riskLevelValue] } };
+                    ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
                 }
             }
         }
@@ -96,7 +84,7 @@ const handleDownload = (pack: PremiumPack) => {
     
     const masterDataWithHeader = [masterHeaders, ...masterSheetData];
     const masterWorksheet = utils.aoa_to_sheet(masterDataWithHeader.map((row, r_idx) => {
-        return row.map((cell, c_idx) => {
+        return row.map((cell) => {
             if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
             return cell;
         })
@@ -359,3 +347,4 @@ export default function Home() {
     
 
     
+
