@@ -26,7 +26,7 @@ const handleDownload = (pack: PremiumPack) => {
       fill: { fgColor: { rgb: "0A2540" } }
     };
     
-    const highPriorityColor = { rgb: "FFD1D1" }; 
+    const highPriorityColor = { rgb: "FFC7CE" }; 
 
     const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
         if(!data || data.length === 0) return;
@@ -38,20 +38,21 @@ const handleDownload = (pack: PremiumPack) => {
         for (let R = 1; R < data.length; ++R) {
             const row = data[R];
             
-            const applyHighlight = (colIndex: number) => {
-                if (colIndex !== -1) {
-                    const value = row[colIndex] as string;
-                    if (value === 'High') {
-                        for(let C = 0; C < headers.length; ++C) {
-                            const cellAddress = utils.encode_cell({r: R, c: C});
-                            if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: row[C] };
-                             ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
-                        }
+            const applyHighlight = (colIndex: number, value: string) => {
+                if (colIndex !== -1 && value === 'High') {
+                    for(let C = 0; C < headers.length; ++C) {
+                        const cellAddress = utils.encode_cell({r: R, c: C});
+                        if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: row[C] };
+                         ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
                     }
                 }
             }
-            applyHighlight(priorityColIndex);
-            applyHighlight(riskLevelColIndex);
+            if (priorityColIndex !== -1) {
+                applyHighlight(priorityColIndex, row[priorityColIndex]);
+            }
+             if (riskLevelColIndex !== -1) {
+                applyHighlight(riskLevelColIndex, row[riskLevelColIndex]);
+            }
         }
         
         const range = utils.decode_range(ws['!ref'] || "A1:A1");
@@ -334,3 +335,4 @@ export default function Page({ params }: { params: { id: string } }) {
       </footer>
     </div>
   );
+}
