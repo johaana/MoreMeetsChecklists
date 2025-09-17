@@ -21,7 +21,6 @@ const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-pa
 const handleDownload = (pack: PremiumPack) => {
     const workbook = utils.book_new();
 
-    // 1. Create the Master Sheet data
     const masterSheetData = pack.checklists.flatMap(checklist => 
         checklist.tasks.map(task => ({
             'Checklist': checklist.title,
@@ -52,10 +51,17 @@ const handleDownload = (pack: PremiumPack) => {
     };
 
     const priorityColors: { [key:string]: string } = {
-        'High': "FFFFD1D1", // Light Pink/Red
-        'Medium': "FFFFE0B2", // Light Orange
-        'Low': "FFD4EDD4", // Pale Green
+        'High': "FFFF6666",
+        'Medium': "FFFFD966",
+        'Low': "FFA9D08E",
     };
+
+    const riskLevelColors: { [key:string]: string } = {
+        'High': "FFE26B0A",
+        'Medium': "FFFFD966",
+        'Low': "FF92D050",
+    };
+
 
     const applyStylesAndFilter = (ws: WorkSheet) => {
         if(!ws['!ref']) return;
@@ -79,7 +85,7 @@ const handleDownload = (pack: PremiumPack) => {
         }
         const statusColIndex = headers.indexOf('Status');
         const priorityColIndex = headers.indexOf('Priority');
-
+        const riskLevelColIndex = headers.indexOf('Risk Level');
 
         // Style data rows
         for (let R = range.s.r + 1; R <= range.e.r; ++R) {
@@ -106,15 +112,24 @@ const handleDownload = (pack: PremiumPack) => {
                     }
                 }
             }
+            if (riskLevelColIndex !== -1) {
+                const riskLevelCellAddress = utils.encode_cell({r: R, c: riskLevelColIndex});
+                const riskLevelCell = ws[riskLevelCellAddress];
+                if (riskLevelCell && riskLevelCell.v) {
+                    const riskLevelValue = riskLevelCell.v as string;
+                    if (riskLevelColors[riskLevelValue]) {
+                        if(!riskLevelCell.s) riskLevelCell.s = {};
+                        riskLevelCell.s.fill = { fgColor: { rgb: riskLevelColors[riskLevelValue] } };
+                    }
+                }
+            }
         }
 
-        // Apply autofilter to the entire range of the data
         ws['!autofilter'] = { ref: ws['!ref'] };
     };
     
     applyStylesAndFilter(masterWorksheet);
 
-    // Set column widths for the master sheet
     masterWorksheet['!cols'] = [
         { wch: 40 }, // Checklist
         { wch: 20 }, // Department
@@ -133,7 +148,6 @@ const handleDownload = (pack: PremiumPack) => {
     utils.book_append_sheet(workbook, masterWorksheet, "Master View");
 
 
-    // 2. Create Individual Sheets
     pack.checklists.forEach(checklist => {
         const tasksForSheet = checklist.tasks.map(task => ({
           'Task ID': task.id,
@@ -374,12 +388,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-
-
-
-
-
-    
