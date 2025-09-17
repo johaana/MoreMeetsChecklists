@@ -66,19 +66,32 @@ const handleDownload = (pack: PremiumPack) => {
             ws[address].s = headerStyle;
         }
 
+        // Find column indices
+        const headers: string[] = [];
+        for (let C = range.s.c; C <= range.e.c; ++C) {
+            const address = utils.encode_cell({ r: 0, c: C });
+            headers.push(ws[address]?.v);
+        }
+        const statusColIndex = headers.indexOf('Status');
+        const priorityColIndex = headers.indexOf('Priority');
+
+
         // Style data rows
         for (let R = range.s.r + 1; R <= range.e.r; ++R) {
-            const statusCellAddress = utils.encode_cell({r: R, c: 10}); // Status is 11th column (index 10)
-            const priorityCellAddress = utils.encode_cell({r: R, c: 6}); // Priority is 7th column (index 6)
-            
-            const statusValue = ws[statusCellAddress]?.v;
-            if (statusValue && statusColors[statusValue]) {
-                ws[statusCellAddress].s = { fill: { fgColor: { rgb: statusColors[statusValue] } } };
+            if (statusColIndex !== -1) {
+                const statusCellAddress = utils.encode_cell({r: R, c: statusColIndex});
+                const statusValue = ws[statusCellAddress]?.v;
+                if (statusValue && statusColors[statusValue as string]) {
+                    ws[statusCellAddress].s = { fill: { fgColor: { rgb: statusColors[statusValue as string] } } };
+                }
             }
 
-            const priorityValue = ws[priorityCellAddress]?.v;
-            if (priorityValue && priorityColors[priorityValue]) {
-                ws[priorityCellAddress].s = { fill: { fgColor: { rgb: priorityColors[priorityValue] } } };
+            if (priorityColIndex !== -1) {
+                const priorityCellAddress = utils.encode_cell({r: R, c: priorityColIndex});
+                const priorityValue = ws[priorityCellAddress]?.v;
+                if (priorityValue && priorityColors[priorityValue as string]) {
+                    ws[priorityCellAddress].s = { fill: { fgColor: { rgb: priorityColors[priorityValue as string] } } };
+                }
             }
         }
     };
