@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { writeFile, utils, WorkSheet } from 'xlsx';
+import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -46,19 +46,21 @@ const handleDownload = (pack: PremiumPack) => {
     };
     
     const statusColors: { [key: string]: string } = {
-        'Pending': "FFFFFF00", // Soft Yellow
+        'Pending': "FFFFF0C0", // Soft Yellow
         'In Progress': "FFADD8E6", // Light Blue
-        'Completed': "FF90EE90", // Light Green
+        'Completed': "FFC8E6C9", // Light Green
     };
 
     const priorityColors: { [key:string]: string } = {
-        'High': "FFFFC0CB", // Light Pink/Red
-        'Medium': "FFFFD700", // Gold/Light Orange
-        'Low': "FF98FB98", // Pale Green
+        'High': "FFFFD1D1", // Light Pink/Red
+        'Medium': "FFFFE0B2", // Light Orange
+        'Low': "FFD4EDD4", // Pale Green
     };
 
     const applyStyles = (ws: WorkSheet) => {
-        const range = utils.decode_range(ws['!ref'] || 'A1');
+        if(!ws['!ref']) return;
+        const range = utils.decode_range(ws['!ref']);
+        
         // Style Header
         for (let C = range.s.c; C <= range.e.c; ++C) {
             const address = utils.encode_cell({ r: 0, c: C });
@@ -70,7 +72,10 @@ const handleDownload = (pack: PremiumPack) => {
         const headers: string[] = [];
         for (let C = range.s.c; C <= range.e.c; ++C) {
             const cellAddress = utils.encode_cell({ r: 0, c: C });
-            headers.push(ws[cellAddress]?.v as string);
+            const cell = ws[cellAddress];
+            if(cell && cell.v) {
+                headers.push(cell.v as string);
+            }
         }
         const statusColIndex = headers.indexOf('Status');
         const priorityColIndex = headers.indexOf('Priority');
@@ -80,19 +85,25 @@ const handleDownload = (pack: PremiumPack) => {
         for (let R = range.s.r + 1; R <= range.e.r; ++R) {
             if (statusColIndex !== -1) {
                 const statusCellAddress = utils.encode_cell({r: R, c: statusColIndex});
-                const statusValue = ws[statusCellAddress]?.v;
-                if (statusValue && statusColors[statusValue as string]) {
-                    if(!ws[statusCellAddress].s) ws[statusCellAddress].s = {};
-                    ws[statusCellAddress].s.fill = { fgColor: { rgb: statusColors[statusValue as string] } };
+                const statusCell = ws[statusCellAddress];
+                if (statusCell && statusCell.v) {
+                    const statusValue = statusCell.v as string;
+                    if (statusColors[statusValue]) {
+                        if(!statusCell.s) statusCell.s = {};
+                        statusCell.s.fill = { fgColor: { rgb: statusColors[statusValue] } };
+                    }
                 }
             }
 
             if (priorityColIndex !== -1) {
                 const priorityCellAddress = utils.encode_cell({r: R, c: priorityColIndex});
-                const priorityValue = ws[priorityCellAddress]?.v;
-                if (priorityValue && priorityColors[priorityValue as string]) {
-                    if(!ws[priorityCellAddress].s) ws[priorityCellAddress].s = {};
-                    ws[priorityCellAddress].s.fill = { fgColor: { rgb: priorityColors[priorityValue as string] } };
+                const priorityCell = ws[priorityCellAddress];
+                if (priorityCell && priorityCell.v) {
+                    const priorityValue = priorityCell.v as string;
+                    if (priorityColors[priorityValue]) {
+                        if(!priorityCell.s) priorityCell.s = {};
+                        priorityCell.s.fill = { fgColor: { rgb: priorityColors[priorityValue] } };
+                    }
                 }
             }
         }
@@ -368,5 +379,6 @@ export default function Home() {
 }
 
     
+
 
 
