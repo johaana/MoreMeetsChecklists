@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -28,7 +27,7 @@ const handleDownload = (pack: PremiumPack) => {
         const placeholderTasks = [
             { Task: "This is a sample task 1", Status: "Pending" },
             { Task: "This is a sample task 2", Status: "Pending" },
-            { Task: "This is a sample task 3", Status pending: "Pending" },
+            { Task: "This is a sample task 3", Status: "Pending" },
         ];
         const worksheet = utils.json_to_sheet(placeholderTasks);
         // Clean up the title for the sheet name (max 31 chars, no special chars)
@@ -64,7 +63,7 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="w-full relative">
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/80 via-background/50 to-transparent" />
+            <div className="absolute inset-0 z-10 bg-black/50" />
              {heroImage && (
                 <Image
                     src={heroImage.imageUrl}
@@ -80,10 +79,10 @@ export default function Home() {
                     <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
                         Trusted by Professionals in 12+ Industries
                     </Badge>
-                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-foreground drop-shadow-md">
+                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
                         The World’s Most Complete Event & Operations Checklists
                     </h1>
-                    <p className="max-w-[700px] text-primary md:text-xl/relaxed mx-auto drop-shadow-sm">
+                    <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
                          From weddings to hospitality to corporate launches, a single missed detail can cost you everything. Never miss a task again.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
@@ -244,3 +243,4 @@ export default function Home() {
   );
 }
 
+    
