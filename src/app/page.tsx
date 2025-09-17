@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -23,7 +24,7 @@ const handleDownload = (pack: PremiumPack) => {
     pack.checklists.forEach(checklist => {
         // Map tasks to the desired Excel format
         const tasksForSheet = checklist.tasks.map(task => ({
-          'Task': task,
+          'Task': task.description,
           'Status': 'Pending', // Default status
           'Assigned To': '',
           'Notes': ''
