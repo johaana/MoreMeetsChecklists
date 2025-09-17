@@ -18,24 +18,33 @@ import { writeFile, utils } from 'xlsx';
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 
 const handleDownload = (pack: PremiumPack) => {
-    // For now, we'll generate a sample Excel file on the client side.
-    // In a real app, this would be a secure, server-generated file.
     const workbook = utils.book_new();
 
     pack.checklists.forEach(checklist => {
-        // Since the full tasks aren't in the data, we'll create a placeholder
-        const placeholderTasks = [
-            { Task: "This is a sample task 1", Status: "Pending" },
-            { Task: "This is a sample task 2", Status: "Pending" },
-            { Task: "This is a sample task 3", Status: "Pending" },
+        // Map tasks to the desired Excel format
+        const tasksForSheet = checklist.tasks.map(task => ({
+          'Task': task,
+          'Status': 'Pending', // Default status
+          'Assigned To': '',
+          'Notes': ''
+        }));
+
+        const worksheet = utils.json_to_sheet(tasksForSheet);
+
+        // Optional: Set column widths for better readability
+        const columnWidths = [
+          { wch: 50 }, // Task
+          { wch: 15 }, // Status
+          { wch: 20 }, // Assigned To
+          { wch: 30 }  // Notes
         ];
-        const worksheet = utils.json_to_sheet(placeholderTasks);
-        // Clean up the title for the sheet name (max 31 chars, no special chars)
+        worksheet['!cols'] = columnWidths;
+
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(workbook, worksheet, sheetName);
     });
 
-    writeFile(workbook, `${pack.id}.xlsx`);
+    writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
 }
 
 
@@ -242,5 +251,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
