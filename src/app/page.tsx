@@ -51,15 +51,15 @@ const handleDownload = (pack: PremiumPack) => {
     };
 
     const priorityColors: { [key:string]: string } = {
-        'High': "FFFF6666",
-        'Medium': "FFFFD966",
-        'Low': "FFA9D08E",
+        'High': "FF6666",
+        'Medium': "FFD966",
+        'Low': "A9D08E",
     };
 
     const riskLevelColors: { [key:string]: string } = {
-        'High': "FFE26B0A",
-        'Medium': "FFFFD966",
-        'Low': "FF92D050",
+        'High': "E26B0A",
+        'Medium': "FFD966",
+        'Low': "92D050",
     };
 
 
