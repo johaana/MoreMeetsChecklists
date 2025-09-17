@@ -21,8 +21,34 @@ const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-pa
 const handleDownload = (pack: PremiumPack) => {
     const workbook = utils.book_new();
 
+    // 1. Create the Master Sheet data
+    const masterSheetData = pack.checklists.flatMap(checklist => 
+        checklist.tasks.map(task => ({
+            'Checklist': checklist.title,
+            'Department': checklist.department,
+            'Frequency': checklist.frequency,
+            'Role Responsible': checklist.role,
+            'Task': task.description,
+            'Status': 'Pending',
+        }))
+    );
+
+    const masterWorksheet = utils.json_to_sheet(masterSheetData);
+    // Set column widths for the master sheet
+    masterWorksheet['!cols'] = [
+        { wch: 40 }, // Checklist
+        { wch: 20 }, // Department
+        { wch: 15 }, // Frequency
+        { wch: 20 }, // Role Responsible
+        { wch: 60 }, // Task
+        { wch: 15 }, // Status
+    ];
+    utils.book_append_sheet(workbook, masterWorksheet, "Master View");
+
+
+    // 2. Create Individual Sheets
     pack.checklists.forEach(checklist => {
-        // Map tasks to the desired Excel format
+        // Map tasks to the desired Excel format for individual sheets
         const tasksForSheet = checklist.tasks.map(task => ({
           'Task': task.description,
           'Status': 'Pending', // Default status
@@ -40,7 +66,8 @@ const handleDownload = (pack: PremiumPack) => {
           { wch: 30 }  // Notes
         ];
         worksheet['!cols'] = columnWidths;
-
+        
+        // Clean up the title for the sheet name (max 31 chars, no special chars)
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(workbook, worksheet, sheetName);
     });
@@ -256,3 +283,4 @@ export default function Home() {
     
 
     
+
