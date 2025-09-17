@@ -13,59 +13,797 @@ export const premiumPacks = [
         icon: <Building className="w-8 h-8 text-primary" />,
         mostPopular: true,
         sampleItems: [
-            "Daily Front & Back of House SOPs",
-            "Weekly Maintenance Schedules",
-            "Monthly Audits & Staff Training",
-            "Guest Experience Enhancement Protocol",
+            "Over 30+ Checklists for every department.",
+            "Covers Housekeeping, F&B, Maintenance & more.",
+            "Daily, Weekly, and Monthly SOPs.",
+            "Guest Experience & Safety Protocols."
         ],
         checklists: [
             {
-                "title": "Daily Hotel Front Office SOP",
+                "title": "Daily Room Cleaning Checklist",
                 "tasks": [
-                    "Audit nightly revenue reports from the Property Management System (PMS), reconcile any payment discrepancies, and have a second person verify the final figures before distributing the summary.",
-                    "Review shift handover log; brief team on outstanding tasks, VIP arrivals, daily events, and promotions. Ensure all staff sign the briefing acknowledgement sheet.",
-                    "Verify VIP list for the next 24 hours; coordinate with housekeeping and room service for pre-arrival amenities and personalized welcome notes.",
-                    "Inspect lobby, concierge desk, and all public areas for pristine condition (lighting, temperature, cleanliness, scent). Log inspection in the duty manager's report.",
-                    "Manage check-ins/check-outs, ensuring rapid service. Proactively ask departing guests about their stay and immediately log any negative feedback for follow-up.",
-                    "Respond to all guest reviews from the previous day (TripAdvisor, Google, Booking.com) within 12 hours. Use guest's name and reference a specific positive point they made.",
-                    "Check and restock front desk supplies (key cards, registration forms, pens, maps).",
-                    "Conduct a 5-minute role-play drill on handling a difficult guest complaint (e.g., room not ready on time)."
+                    "Knock and announce before entering",
+                    "Check room occupancy status",
+                    "Open curtains and windows for ventilation",
+                    "Empty trash bins and replace liners",
+                    "Dust all surfaces including tables, lamps, and shelves",
+                    "Wipe mirrors and glass surfaces",
+                    "Clean and sanitize bathroom (toilet, sink, shower, bathtub)",
+                    "Replace used towels with fresh ones",
+                    "Replenish toiletries (soap, shampoo, conditioner, etc.)",
+                    "Vacuum carpet or mop floors",
+                    "Check under bed and furniture for lost items",
+                    "Replace bed linen and make the bed neatly",
+                    "Check minibar and restock if required",
+                    "Wipe remote controls, switches, and handles",
+                    "Check lighting and report any issues",
+                    "Ensure AC/heater is functioning",
+                    "Place welcome amenities (water bottles, coffee, tea)",
+                    "Final inspection before leaving the room"
                 ]
             },
             {
-                "title": "Daily Housekeeping Standard Operating Procedures (SOPs)",
+                "title": "Turn-down Service Checklist",
                 "tasks": [
-                    "Prepare and assign room blocks and specific cleaning tasks to housekeeping staff using a digital assignment tool like Hotelogix or a printed, signed-off sheet.",
-                    "Inspect a set percentage (e.g., 15%) of cleaned rooms using a detailed 50-point digital checklist (e.g., using GoAudits app). Photos must be attached for any failures.",
-                    "Check and restock all linen closets and supply trolleys; report shortages immediately via team communication app (e.g., WhatsApp Business, Slack).",
-                    "Immediately log any maintenance issues (leaks, broken items) with photos in the engineering portal (e.g., UpKeep, Fiix).",
-                    "Manage laundry operations flow, ensuring clean linen availability for peak times. Log laundry turnaround times to identify bottlenecks.",
-                    "Log, tag, and securely store all lost and found items. Use a system that photographs the item and automatically notifies the guest if their contact info is known.",
-                    "Conduct a 15-minute pre-shift briefing on safety (e.g., handling chemicals), any special guest requirements, and rooms requiring extra attention."
+                    "Knock and announce before entering",
+                    "Close curtains and adjust lighting",
+                    "Turn down bed linen neatly",
+                    "Place slippers by bedside",
+                    "Arrange bedside table with water and glass",
+                    "Check and replenish toiletries if needed",
+                    "Refresh towels if used",
+                    "Empty trash bins",
+                    "Check temperature settings",
+                    "Leave turn-down amenity (chocolate, cookie, or note)"
                 ]
             },
             {
-                "title": "Weekly Restaurant Operations",
+                "title": "Laundry Operations Checklist",
                 "tasks": [
-                    "Conduct full inventory of all stock (food, beverages, chemicals) using a digital inventory system (e.g., MarketMan, Orca) and place new orders based on par levels.",
-                    "Deep clean kitchen equipment: vents, grease traps, walk-in freezers/chillers. The kitchen supervisor must sign off on the cleaning log.",
-                    "Finalize and publish staff rotas for the upcoming week, ensuring fair shift distribution and managing leave requests.",
-                    "Analyze weekly sales data to identify top/poor-performing dishes. Plan a tasting session to decide on menu adjustments or specials.",
-                    "Conduct mandatory 30-minute training session (e.g., new dish, upselling techniques, allergen handling). Follow up with a short quiz to verify understanding.",
-                    "Verify and document compliance with food safety standards (HACCP - Hazard Analysis and Critical Control Points, FSSAI). Perform a mock health inspection and document findings.",
-                    "Review supplier performance and pricing; flag any issues (e.g., late deliveries, poor quality) and communicate with them formally via email."
+                    "Collect laundry from guest rooms at scheduled times",
+                    "Sort laundry by type (linen, towels, uniforms, guest clothing)",
+                    "Check for stains and treat before washing",
+                    "Load washing machines without overloading",
+                    "Select proper wash cycle and detergent",
+                    "Dry laundry as per fabric requirements",
+                    "Iron uniforms and linen as needed",
+                    "Fold and organize laundry",
+                    "Return guest laundry within promised time",
+                    "Record laundry movements in logbook"
                 ]
             },
             {
-                "title": "Monthly Hotel Maintenance & Audit",
+                "title": "Linen Room Management Checklist",
                 "tasks": [
-                    "Perform and document preventive maintenance on HVAC, plumbing, and electrical systems as per the annual schedule in your Computerized Maintenance Management System (CMMS) (e.g., eMaint).",
-                    "Conduct and record a full fire safety equipment check (extinguishers, alarms, exit lights, sprinklers). A second person must witness and co-sign the report.",
-                    "Perform a full property walk-through with all department heads to identify aesthetic and functional issues. Assign action items with deadlines to each HOD.",
-                    "Audit petty cash, float, and all departmental financial records for discrepancies. The Financial Controller must sign off on the audit.",
-                    "Analyze guest feedback trends from the past month. Create a formal action plan with assigned responsibilities and present it in the monthly management meeting.",
-                    "Run a mandatory, unannounced emergency drill (e.g., fire evacuation, medical emergency) and critique the team's response.",
-                    "Review and update the hotel's emergency response and evacuation plan. Distribute the updated plan and get signed acknowledgements from all staff."
+                    "Maintain record of linen issued and received",
+                    "Sort linen by type and usage",
+                    "Check for damaged or stained linen",
+                    "Ensure shelves are clean and organized",
+                    "Store clean linen separately from soiled linen",
+                    "Label shelves clearly for easy access",
+                    "Conduct daily count of linen stock",
+                    "Report shortages to housekeeping supervisor",
+                    "Maintain emergency reserve stock"
+                ]
+            },
+            {
+                "title": "Public Area Cleaning Checklist",
+                "tasks": [
+                    "Clean and mop lobby floors",
+                    "Dust furniture and decorative items",
+                    "Wipe mirrors and glass doors",
+                    "Clean elevators and sanitize buttons",
+                    "Empty trash bins and replace liners",
+                    "Sanitize door handles and switches",
+                    "Clean restrooms and restock supplies",
+                    "Vacuum carpets and rugs",
+                    "Check for cobwebs or dust in corners",
+                    "Polish metal surfaces (railings, handles)"
+                ]
+            },
+            {
+                "title": "Deep Cleaning Checklist",
+                "tasks": [
+                    "Move furniture for full floor cleaning",
+                    "Clean behind and under beds, sofas, and cabinets",
+                    "Wash curtains and drapes",
+                    "Shampoo carpets and rugs",
+                    "Polish wooden furniture",
+                    "Clean light fixtures and ceiling fans",
+                    "Scrub bathroom tiles and grout",
+                    "Disinfect high-touch areas thoroughly",
+                    "Check for wall stains and clean/paint if needed",
+                    "Air freshen all rooms after cleaning"
+                ]
+            },
+            {
+                "title": "Pest Control Checklist",
+                "tasks": [
+                    "Inspect rooms and public areas for signs of pests",
+                    "Check kitchen and storage areas daily",
+                    "Use approved pest control chemicals",
+                    "Seal entry points (cracks, vents, gaps)",
+                    "Empty garbage bins regularly",
+                    "Clean food spills immediately",
+                    "Log all pest control activities",
+                    "Schedule monthly professional pest control",
+                    "Keep records of chemicals used",
+                    "Train staff to report sightings immediately"
+                ]
+            },
+            {
+                "title": "Lost & Found Documentation Checklist",
+                "tasks": [
+                    "Log date, time, and location of found item",
+                    "Describe the item in detail",
+                    "Record name of finder",
+                    "Store item securely in lost & found room",
+                    "Tag item with reference number",
+                    "Notify guest if identifiable",
+                    "Obtain guest acknowledgment on return",
+                    "Keep unclaimed items for policy duration (e.g., 90 days)",
+                    "Dispose of unclaimed items as per policy",
+                    "Maintain lost & found register"
+                ]
+            },
+            {
+                "title": "Reception Daily Operations Checklist",
+                "tasks": [
+                    "Open reception desk and switch on all equipment",
+                    "Ensure front desk is clean and organized",
+                    "Check reservation system for arrivals and departures",
+                    "Prepare key cards and welcome kits for new arrivals",
+                    "Answer phones and emails promptly",
+                    "Update guest information in PMS (Property Management System)",
+                    "Maintain guest logbook",
+                    "Monitor lobby cleanliness and coordinate with housekeeping",
+                    "Handle guest inquiries courteously",
+                    "Prepare shift handover notes for next team"
+                ]
+            },
+            {
+                "title": "Guest Check-In Process Checklist",
+                "tasks": [
+                    "Greet guest warmly upon arrival",
+                    "Verify guest identity with ID proof",
+                    "Confirm reservation details",
+                    "Collect payment or block deposit if required",
+                    "Issue key card and explain room location",
+                    "Provide hotel information (breakfast timing, facilities)",
+                    "Offer assistance with luggage",
+                    "Update PMS with check-in details",
+                    "Inform housekeeping of room occupancy",
+                    "Log any special guest requests"
+                ]
+            },
+            {
+                "title": "Guest Check-Out Process Checklist",
+                "tasks": [
+                    "Greet guest and confirm room number",
+                    "Check PMS for outstanding charges",
+                    "Generate and review final bill with guest",
+                    "Collect payment and issue receipt",
+                    "Check room status with housekeeping before closing account",
+                    "Ask for feedback on stay experience",
+                    "Arrange luggage assistance or transport if needed",
+                    "Deactivate key card",
+                    "Update PMS with check-out details",
+                    "Log departure in guest register"
+                ]
+            },
+            {
+                "title": "Complaint Resolution Process Checklist",
+                "tasks": [
+                    "Acknowledge guest complaint immediately",
+                    "Listen carefully and note details",
+                    "Apologize sincerely for inconvenience",
+                    "Identify type of issue (housekeeping, F&B, maintenance)",
+                    "Inform relevant department promptly",
+                    "Follow up to ensure resolution",
+                    "Update guest about progress",
+                    "Offer goodwill gesture if needed",
+                    "Log complaint and action taken in register",
+                    "Report recurring complaints to management"
+                ]
+            },
+            {
+                "title": "Restaurant Opening Checklist",
+                "tasks": [
+                    "Switch on lights, AC, and music system",
+                    "Check cleanliness of dining area and furniture",
+                    "Set tables with clean linen, cutlery, and glassware",
+                    "Check reservation list and prepare table arrangements",
+                    "Stock condiments and napkins",
+                    "Ensure POS system is operational",
+                    "Check restrooms near restaurant for cleanliness",
+                    "Inspect buffet counters (if applicable)",
+                    "Brief staff about menu specials and reservations",
+                    "Conduct final walkthrough before opening doors"
+                ]
+            },
+            {
+                "title": "Restaurant Closing Checklist",
+                "tasks": [
+                    "Clear and reset tables",
+                    "Turn off lights, AC, and music system",
+                    "Clean and sanitize dining tables and chairs",
+                    "Vacuum/mop floors",
+                    "Dispose of garbage and replace liners",
+                    "Store leftover food as per safety standards",
+                    "Clean buffet counters and service areas",
+                    "Check all equipment is switched off",
+                    "Lock storage and liquor cabinets",
+                    "Complete cash reconciliation at POS"
+                ]
+            },
+            {
+                "title": "Buffet Service Setup Checklist",
+                "tasks": [
+                    "Check buffet counters and sneeze guards are clean",
+                    "Arrange hot and cold stations",
+                    "Label all food items with name cards",
+                    "Place serving spoons and tongs at each dish",
+                    "Stock plates, bowls, and cutlery",
+                    "Check food warmers and chillers are functioning",
+                    "Prepare beverage station",
+                    "Refill condiments and accompaniments",
+                    "Brief staff on replenishment plan",
+                    "Conduct hygiene check of serving staff"
+                ]
+            },
+            {
+                "title": "Bar Opening Checklist",
+                "tasks": [
+                    "Clean and sanitize bar counter and stools",
+                    "Check stock of liquor, beer, and wine",
+                    "Replenish garnishes (lemons, olives, cherries)",
+                    "Prepare cocktail syrups and mixers",
+                    "Check glassware is clean and polished",
+                    "Ensure ice machine is filled",
+                    "Switch on POS system",
+                    "Check music system and lighting",
+                    "Arrange bar tools (shaker, strainer, jigger, etc.)",
+                    "Brief bartenders on special promotions"
+                ]
+            },
+            {
+                "title": "Bar Closing Checklist",
+                "tasks": [
+                    "Dispose of used garnishes",
+                    "Clean and sanitize bar counter and equipment",
+                    "Wash and polish glassware",
+                    "Check liquor stock and update inventory",
+                    "Store open bottles with pour spouts covered",
+                    "Switch off ice machine and clean trays",
+                    "Dispose of trash and replace liners",
+                    "Lock liquor cabinet",
+                    "Switch off lights and POS system",
+                    "Complete cash reconciliation"
+                ]
+            },
+            {
+                "title": "Room Service Delivery Checklist",
+                "tasks": [
+                    "Check order slip for accuracy",
+                    "Ensure food is plated attractively",
+                    "Pack condiments, cutlery, and napkins",
+                    "Cover dishes with cloches or lids",
+                    "Arrange items neatly on tray or trolley",
+                    "Knock and announce before entering guest room",
+                    "Set food as per guest preference",
+                    "Confirm order satisfaction with guest",
+                    "Clear tray/trolley after guest finishes",
+                    "Log delivery details in register"
+                ]
+            },
+            {
+                "title": "Banquet Hall Preparation Checklist",
+                "tasks": [
+                    "Check cleanliness of hall and stage",
+                    "Arrange tables and chairs as per event plan",
+                    "Set up AV equipment (mics, speakers, projectors)",
+                    "Test lighting and air conditioning",
+                    "Decorate as per client request",
+                    "Set up buffet or dining service stations",
+                    "Stock water bottles and glasses",
+                    "Coordinate with event planner for final touches",
+                    "Conduct staff briefing on event flow",
+                    "Keep standby supplies ready (extra chairs, cutlery)"
+                ]
+            },
+            {
+                "title": "Kitchen Hygiene & Food Safety Checklist",
+                "tasks": [
+                    "Ensure kitchen floors are clean and dry",
+                    "Check personal hygiene of staff (uniform, gloves, caps)",
+                    "Sanitize cutting boards and knives",
+                    "Check refrigerator and freezer temperatures",
+                    "Label and date all stored food",
+                    "Discard expired or spoiled items",
+                    "Clean cooking equipment (stoves, ovens, fryers)",
+                    "Check pest control measures in place",
+                    "Wash and sanitize utensils after each use",
+                    "Log daily hygiene checks"
+                ]
+            },
+            {
+                "title": "Inventory & Stock Check Checklist",
+                "tasks": [
+                    "Check stock levels of raw materials daily",
+                    "Inspect perishable items for freshness",
+                    "Record quantities in stock register",
+                    "Check liquor and beverage stocks",
+                    "Rotate stock using FIFO method",
+                    "Highlight shortages to purchase department",
+                    "Check cleaning supplies availability",
+                    "Secure high-value items in locked storage",
+                    "Conduct weekly reconciliation with purchase orders",
+                    "Report discrepancies immediately"
+                ]
+            },
+            {
+                "title": "Daily Maintenance Rounds Checklist",
+                "tasks": [
+                    "Inspect all guest room corridors for damages",
+                    "Check lobby lights, fans, and AC functioning",
+                    "Inspect elevators for smooth operation",
+                    "Check public restroom plumbing (taps, flush)",
+                    "Inspect fire extinguishers and emergency exits",
+                    "Monitor generator fuel levels",
+                    "Check boiler pressure and temperature",
+                    "Inspect signage lights and emergency lighting",
+                    "Note down all maintenance complaints from departments",
+                    "Log daily round completion in register"
+                ]
+            },
+            {
+                "title": "Electrical Systems Inspection Checklist",
+                "tasks": [
+                    "Check main electrical panel for abnormalities",
+                    "Test backup generator functionality",
+                    "Inspect UPS systems for charge levels",
+                    "Check lighting in all public areas",
+                    "Test outdoor lighting and signage",
+                    "Inspect wiring for visible damage",
+                    "Check guest room electrical sockets",
+                    "Test kitchen equipment connections",
+                    "Ensure proper earthing/grounding",
+                    "Log findings in electrical maintenance register"
+                ]
+            },
+            {
+                "title": "Plumbing & Water Systems Checklist",
+                "tasks": [
+                    "Inspect guest bathrooms for leaks",
+                    "Check water pressure in guest rooms and public areas",
+                    "Ensure hot water systems are working",
+                    "Inspect water tanks for cleanliness",
+                    "Check swimming pool water pipelines",
+                    "Inspect kitchen sinks and drainage",
+                    "Test fire hydrants and hoses",
+                    "Check water treatment plant operation",
+                    "Ensure no foul odor from drainage lines",
+                    "Log any plumbing issues in register"
+                ]
+            },
+            {
+                "title": "HVAC & AC Systems Checklist",
+                "tasks": [
+                    "Check AC filters for cleanliness",
+                    "Inspect HVAC units for unusual noise",
+                    "Check thermostat functioning in guest rooms",
+                    "Inspect ducting for dust accumulation",
+                    "Ensure central cooling systems are operational",
+                    "Check refrigerant levels",
+                    "Inspect outdoor condenser units",
+                    "Test heating system (if applicable)",
+                    "Log preventive maintenance tasks",
+                    "Schedule servicing if due"
+                ]
+            },
+            {
+                "title": "Elevator & Escalator Safety Checklist",
+                "tasks": [
+                    "Check elevator car interior cleanliness",
+                    "Test emergency alarm and intercom",
+                    "Inspect door operation and sensors",
+                    "Check floor indicators and buttons",
+                    "Test emergency stop button",
+                    "Inspect escalator handrails for damage",
+                    "Check escalator step alignment",
+                    "Test load capacity sensors",
+                    "Lubricate elevator rails if required",
+                    "Log maintenance report"
+                ]
+            },
+            {
+                "title": "Swimming Pool Maintenance Checklist",
+                "tasks": [
+                    "Check chlorine and pH levels of pool water",
+                    "Backwash filter and record pressure",
+                    "Inspect pumps and motors",
+                    "Clean pool tiles and remove debris",
+                    "Check ladders and railings for stability",
+                    "Ensure lifebuoys and safety equipment are available",
+                    "Inspect underwater lighting",
+                    "Test water circulation system",
+                    "Log pool water test results",
+                    "Coordinate with housekeeping for deck cleaning"
+                ]
+            },
+            {
+                "title": "Landscaping & Outdoor Areas Checklist",
+                "tasks": [
+                    "Inspect lawns and trim grass",
+                    "Check health of plants and trees",
+                    "Water plants as per schedule",
+                    "Check garden lighting systems",
+                    "Inspect fountains and water features",
+                    "Remove weeds and dead plants",
+                    "Clean pathways and outdoor furniture",
+                    "Apply fertilizer/pesticide if needed",
+                    "Check irrigation system functioning",
+                    "Log landscaping activities"
+                ]
+            },
+            {
+                "title": "CCTV & Security Monitoring Checklist",
+                "tasks": [
+                    "Check all CCTV cameras are operational",
+                    "Verify recording system is functioning",
+                    "Ensure storage backup is active",
+                    "Inspect blind spots for coverage",
+                    "Check camera angles and clarity",
+                    "Test security alarm systems",
+                    "Verify security guards are at posts",
+                    "Log visitor entries and exits",
+                    "Inspect access control systems",
+                    "Update daily security logbook"
+                ]
+            },
+            {
+                "title": "Fire Safety Checklist",
+                "tasks": [
+                    "Inspect fire extinguishers for pressure levels",
+                    "Check smoke detectors and alarms",
+                    "Ensure emergency exits are unobstructed",
+                    "Test fire alarm system functionality",
+                    "Inspect fire hydrants and hoses",
+                    "Check sprinkler system operation",
+                    "Verify emergency lighting is functional",
+                    "Conduct evacuation drill (scheduled)",
+                    "Check signage visibility",
+                    "Log fire safety inspection details"
+                ]
+            },
+            {
+                "title": "Parking & Valet Operations Checklist",
+                "tasks": [
+                    "Check parking lot cleanliness and lighting",
+                    "Verify valet staff uniforms and ID badges",
+                    "Inspect ticketing/valet slips availability",
+                    "Ensure CCTV coverage in parking area",
+                    "Inspect signage for parking directions",
+                    "Check vehicles for any prior damages",
+                    "Record vehicle entry and exit times",
+                    "Monitor guest waiting times",
+                    "Ensure emergency access paths are clear",
+                    "Log daily valet operations"
+                ]
+            },
+            {
+                "title": "Emergency Preparedness Checklist",
+                "tasks": [
+                    "Ensure first aid kits are fully stocked",
+                    "Check availability of emergency contact list",
+                    "Inspect stretchers and wheelchairs",
+                    "Verify staff trained in CPR and first aid",
+                    "Conduct random evacuation readiness check",
+                    "Ensure generators are fueled and ready",
+                    "Inspect safe assembly points",
+                    "Check satellite phones/radios (if available)",
+                    "Review disaster management SOP",
+                    "Log daily emergency preparedness status"
+                ]
+            },
+            {
+                "title": "Night Security Patrol Checklist",
+                "tasks": [
+                    "Inspect all entry and exit points",
+                    "Check locks of storage and liquor cabinets",
+                    "Patrol guest room corridors",
+                    "Inspect staff-only areas",
+                    "Check perimeter fencing and gates",
+                    "Inspect outdoor areas and parking lot",
+                    "Ensure fire exits are secured but not blocked",
+                    "Note suspicious activity (if any)",
+                    "Verify all lights are functioning",
+                    "Update night patrol logbook"
+                ]
+            },
+            {
+                "title": "🧖‍♀️ Spa Daily Operations Checklist",
+                "tasks": [
+                    "Check cleanliness of treatment rooms",
+                    "Inspect spa equipment and massage beds",
+                    "Stock essential oils, towels, robes, and candles",
+                    "Verify appointment schedule and guest bookings",
+                    "Ensure music, fragrance, and lighting are set",
+                    "Check staff uniforms, grooming, and hygiene",
+                    "Inspect restroom and shower areas for cleanliness",
+                    "Sanitize tools (stones, brushes, steamers) after each use",
+                    "Review guest preferences and allergies before treatments",
+                    "Log spa operations in daily register"
+                ]
+            },
+            {
+                "title": "🏋️ Gym & Fitness Center Checklist",
+                "tasks": [
+                    "Inspect all gym equipment for safety and wear",
+                    "Wipe down and sanitize cardio and strength machines",
+                    "Check mirrors, flooring, and mats for cleanliness",
+                    "Stock towels, water bottles, and sanitizing wipes",
+                    "Inspect air conditioning and ventilation systems",
+                    "Verify music system and TVs are working",
+                    "Ensure certified trainers are present and on duty",
+                    "Check first aid kit availability and accessibility",
+                    "Record guest usage and trainer assignments",
+                    "Update equipment maintenance schedule"
+                ]
+            },
+            {
+                "title": "🎟 Concierge Desk Checklist",
+                "tasks": [
+                    "Review and update tour and transport schedules",
+                    "Check availability of brochures, maps, and guides",
+                    "Update details of local attractions and events",
+                    "Verify ticketing and booking services are functional",
+                    "Confirm guest bookings for restaurants and activities",
+                    "Ensure concierge staff uniforms and grooming are proper",
+                    "Maintain updated list of local emergency contacts",
+                    "Track guest requests and follow-ups in system",
+                    "Verify computers, phones, and internet are functional",
+                    "Log daily concierge desk activities in register"
+                ]
+            },
+            {
+                "title": "👶 Kids Club / Play Area Checklist",
+                "tasks": [
+                    "Inspect play equipment and toys for safety",
+                    "Clean and sanitize toys, books, and play mats",
+                    "Stock art, craft, and activity supplies",
+                    "Verify staff-to-child ratio compliance",
+                    "Ensure CCTV monitoring is active in play area",
+                    "Check restroom cleanliness and hygiene",
+                    "Verify emergency contact details for each child",
+                    "Stock and check kids-specific first aid kit",
+                    "Plan daily activity and meal schedule",
+                    "Log kids club attendance and incidents"
+                ]
+            },
+            {
+                "title": "⭐ Guest Feedback & Experience Checklist",
+                "tasks": [
+                    "Collect and review guest feedback forms daily",
+                    "Monitor online reviews (TripAdvisor, Google, OTA sites)",
+                    "Log guest complaints and suggestions in system",
+                    "Assign corrective actions to relevant departments",
+                    "Track VIP guest preferences and requests",
+                    "Update guest loyalty program records",
+                    "Maintain detailed guest history in PMS",
+                    "Acknowledge guest feedback with appreciation",
+                    "Escalate unresolved complaints to management",
+                    "Summarize guest experience in daily report"
+                ]
+            },
+            {
+                "title": "🧾 Night Audit Checklist",
+                "tasks": [
+                    "Reconcile all guest folios with POS systems",
+                    "Verify room revenue matches occupancy",
+                    "Match credit card transactions with batch settlement",
+                    "Reconcile cash transactions and deposits",
+                    "Verify discounts and complimentary items are authorized",
+                    "Print and file financial reports",
+                    "Update occupancy and revenue statistics",
+                    "Review pending guest check-ins and check-outs",
+                    "Close the day in PMS system",
+                    "Submit audit summary to management"
+                ]
+            },
+            {
+                "title": "📦 Procurement Checklist",
+                "tasks": [
+                    "Review purchase requisitions from all departments",
+                    "Verify available stock before approving order",
+                    "Check supplier list and approved vendors",
+                    "Get quotations and compare pricing",
+                    "Verify quality standards of incoming goods",
+                    "Ensure purchase orders are properly authorized",
+                    "Track pending deliveries and expected timelines",
+                    "Update procurement records daily",
+                    "Verify supplier compliance (licenses, certifications)",
+                    "Submit procurement summary to accounts department"
+                ]
+            },
+            {
+                "title": "🛒 Vendor Management Checklist",
+                "tasks": [
+                    "Review contracts with current vendors",
+                    "Verify vendor performance against SLAs",
+                    "Check delivery punctuality and accuracy",
+                    "Track vendor complaints or issues raised by staff",
+                    "Verify pricing and any agreed discounts",
+                    "Review vendor compliance with safety standards",
+                    "Maintain updated contact and agreement records",
+                    "Approve/reject new vendor applications",
+                    "Conduct vendor evaluation quarterly",
+                    "Update vendor rating logbook"
+                ]
+            },
+            {
+                "title": "📊 Payroll Processing Checklist",
+                "tasks": [
+                    "Verify staff attendance records from biometric or registers",
+                    "Approve overtime and extra duty claims",
+                    "Deduct advances, loans, and penalties where applicable",
+                    "Calculate tips and service charge distribution",
+                    "Apply statutory deductions (PF, ESI, TDS)",
+                    "Verify payroll sheet against HR records",
+                    "Generate payslips for all staff",
+                    "Approve payroll disbursement by finance head",
+                    "Ensure bank transfers are completed",
+                    "File payroll reports securely"
+                ]
+            },
+            {
+                "title": "🗂 Inventory Control Checklist",
+                "tasks": [
+                    "Review daily consumption reports from all outlets",
+                    "Conduct spot checks of store inventory",
+                    "Verify FIFO (First In, First Out) method used",
+                    "Record stock movements in inventory software",
+                    "Check for expired or damaged stock",
+                    "Compare physical vs. system stock daily",
+                    "Monitor liquor and cigarette inventory strictly",
+                    "Approve store requisitions from departments",
+                    "Conduct weekly reconciliation with purchase orders",
+                    "Escalate discrepancies to management"
+                ]
+            },
+            {
+                "title": "🧮 Accounts Payable Checklist",
+                "tasks": [
+                    "Verify all supplier invoices against purchase orders",
+                    "Match invoice quantities with goods received note (GRN)",
+                    "Check approval from relevant department head",
+                    "Verify applicable taxes on invoices",
+                    "Record payable entries in accounting software",
+                    "Approve payments as per credit terms",
+                    "Ensure no duplicate invoices are paid",
+                    "Update supplier ledger daily",
+                    "Schedule vendor payments on due dates",
+                    "File invoices for audit purposes"
+                ]
+            },
+            {
+                "title": "💵 Cash Handling Checklist",
+                "tasks": [
+                    "Verify opening cash float at each POS counter",
+                    "Record all cash receipts with receipts issued",
+                    "Track tips and petty cash usage separately",
+                    "Deposit excess cash to cashier desk periodically",
+                    "Verify no unauthorized staff handle cash",
+                    "Count cash at end of shift with witness",
+                    "Reconcile cash balance with POS reports",
+                    "Deposit daily cash at hotel safe/bank",
+                    "Record discrepancies immediately",
+                    "Submit daily cash handling report"
+                ]
+            },
+            {
+                "title": "🌆 Rooftop / Terrace Restaurant Checklist",
+                "tasks": [
+                    "Check cleanliness of terrace flooring and furniture",
+                    "Inspect lighting and decorative elements",
+                    "Verify safety barriers/railings are secure",
+                    "Test sound system and ambiance setup",
+                    "Ensure tables are set with proper linen, cutlery, menus",
+                    "Confirm terrace umbrellas/shades are in good condition",
+                    "Inspect outdoor heaters or fans (if applicable)",
+                    "Ensure fire extinguishers are accessible",
+                    "Stock bar/beverage station with essentials",
+                    "Check terrace restrooms (if separate)"
+                ]
+            },
+            {
+                "title": "🖥 Business Center Checklist",
+                "tasks": [
+                    "Ensure all computers are functioning with internet access",
+                    "Check printers, scanners, and copiers for paper & ink",
+                    "Verify working telephone lines and conference tools",
+                    "Stock office supplies (pens, paper, staplers)",
+                    "Clean and sanitize desks, chairs, and keyboards",
+                    "Test Wi-Fi speed for guest use",
+                    "Ensure signage with instructions is visible",
+                    "Verify operating hours signage is displayed",
+                    "Monitor guest bookings and usage log",
+                    "Restock complimentary refreshments (water, coffee/tea)"
+                ]
+            },
+            {
+                "title": "🎤 Conference & Banquet Hall Checklist",
+                "tasks": [
+                    "Inspect seating arrangement per booking requirements",
+                    "Check sound system, microphone, and projectors",
+                    "Verify lighting and air conditioning settings",
+                    "Ensure stage and podium are clean and stable",
+                    "Stock water bottles and notepads at tables",
+                    "Inspect table skirting and linen for stains",
+                    "Confirm fire exits are unobstructed",
+                    "Test emergency backup generator",
+                    "Coordinate with catering team for food setup",
+                    "Review hall booking checklist with banquet manager"
+                ]
+            },
+            {
+                "title": "🧺 Laundry Plant Checklist",
+                "tasks": [
+                    "Inspect washing machines and dryers for functionality",
+                    "Verify detergent and cleaning supplies availability",
+                    "Check pressing/ironing equipment",
+                    "Monitor water temperature and quality for washing",
+                    "Inspect cleanliness of laundry carts and bins",
+                    "Ensure linen is separated (white, colored, staff uniforms)",
+                    "Verify timely pickup and delivery schedules",
+                    "Check staff protective gear (gloves, aprons)",
+                    "Record machine maintenance schedule",
+                    "Monitor rejected/damaged linen logs"
+                ]
+            },
+            {
+                "title": "🍴 Staff Canteen Checklist",
+                "tasks": [
+                    "Check food quality and hygiene before service",
+                    "Verify cleanliness of tables, trays, and cutlery",
+                    "Monitor food temperature (hot/cold)",
+                    "Ensure drinking water dispensers are clean and filled",
+                    "Inspect waste disposal and dustbins",
+                    "Confirm staff meal timings are displayed",
+                    "Record meal counts daily",
+                    "Verify staff washrooms attached are clean",
+                    "Monitor stock of staples (rice, flour, oil, spices)",
+                    "Conduct weekly feedback survey with staff"
+                ]
+            },
+            {
+                "title": "🎮 Kids Play Area / Kids Club Checklist",
+                "tasks": [
+                    "Inspect toys and play equipment for safety hazards",
+                    "Ensure soft flooring/mats are clean",
+                    "Verify no sharp or broken toys are present",
+                    "Check child registration log before entry",
+                    "Sanitize toys and play items daily",
+                    "Monitor staff-child ratio for safety",
+                    "Ensure CCTV coverage is active",
+                    "Stock first-aid kit in kids club",
+                    "Provide drinking water and safe snacks (if allowed)",
+                    "Record daily attendance and incidents"
+                ]
+            },
+            {
+                "title": "🚗 Valet Parking Checklist",
+                "tasks": [
+                    "Verify valet staff uniforms and ID badges",
+                    "Ensure valet counter signage is visible",
+                    "Inspect parking tickets and numbering system",
+                    "Check parking lot for cleanliness and safety",
+                    "Verify CCTV coverage in parking area",
+                    "Ensure no unauthorized persons enter valet zones",
+                    "Record incoming and outgoing vehicle details",
+                    "Check key storage cabinet is secure",
+                    "Monitor parking space availability",
+                    "Maintain accident/incident register"
                 ]
             }
         ]
@@ -77,7 +815,7 @@ export const premiumPacks = [
         priceINR: 9999,
         category: "Corporate",
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment.",
-        icon: <Building2 className="w-8 h-8 text.primary" />,
+        icon: <Building2 className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
             "Preventive Maintenance Schedules",
@@ -1386,7 +2124,7 @@ export const premiumPacks = [
                 "tasks": [
                     "Review previous shift's performance dashboard (Average Handle Time - AHT, First Call Resolution - FCR, Customer Satisfaction - CSAT, Service Level - SL). Note any top performers and bottom outliers for coaching.",
                     "Check for any system outages or client updates from the central operations team. Prepare to communicate them clearly.",
-                    "Lead a 15-minute team huddle: Discuss daily targets, share a 'call of the week' (good example), run a quick quiz on product knowledge, and end with recognition.",
+                    "Lead a 15-minute team huddle: discuss daily targets, share a 'call of the week' (good example), run a quick quiz on product knowledge, and end with recognition.",
                     "Ensure all agents are logged into the phone system and necessary software 5 minutes before the shift starts. No late logins.",
                     "Verify that the Workforce Management (WFM) schedule is aligned with the actual agents present on the floor. Update any absences."
                 ]
@@ -2080,5 +2818,7 @@ export type PremiumPack = typeof premiumPacks[0];
 
 
 
+
+    
 
     
