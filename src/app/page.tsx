@@ -18,128 +18,6 @@ import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 
-const handleDownload = (pack: PremiumPack) => {
-    const workbook = utils.book_new();
-
-    const headerStyle = {
-      font: { bold: true, color: { rgb: "FFFFFF" } },
-      fill: { fgColor: { rgb: "0A2540" } }
-    };
-    
-    const highPriorityColor = { rgb: "F8BBD0" }; // Light Pink/Red for High priority/risk
-
-    const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
-        if(!data || data.length === 0) return;
-        
-        ws['!views'] = [{state: 'frozen', ySplit: 1}];
-
-        const headers = data[0];
-        const priorityColIndex = headers.indexOf('Priority');
-        const riskLevelColIndex = headers.indexOf('Risk Level');
-
-        for (let R = 1; R < data.length; ++R) {
-            const row = data[R];
-            
-            if (priorityColIndex !== -1) {
-                const priorityValue = row[priorityColIndex] as string;
-                if (priorityValue === 'High') {
-                    const cellAddress = utils.encode_cell({r: R, c: priorityColIndex});
-                    if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: priorityValue };
-                    ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
-                }
-            }
-            if (riskLevelColIndex !== -1) {
-                const riskLevelValue = row[riskLevelColIndex] as string;
-                if (riskLevelValue === 'High') {
-                    const cellAddress = utils.encode_cell({r: R, c: riskLevelColIndex});
-                    if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: riskLevelValue };
-                    ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
-                }
-            }
-        }
-    };
-
-    // Master Sheet
-    const masterHeaders = [
-      'Checklist', 'Department', 'Frequency', 'Role Responsible', 
-      'Task ID', 'Task', 'Priority', 'Risk Level', 'Proof / Evidence', 
-      'Location / Site', 'Status'
-    ];
-    
-    const masterSheetData = pack.checklists.flatMap(checklist => 
-        checklist.tasks.map(task => [
-            checklist.title,
-            checklist.department,
-            checklist.frequency,
-            checklist.role,
-            task.id,
-            task.description,
-            task.priority,
-            task.riskLevel,
-            task.proof,
-            task.location,
-            'Pending'
-        ])
-    );
-    
-    const masterDataWithHeader = [masterHeaders, ...masterSheetData];
-    const masterWorksheet = utils.aoa_to_sheet(masterDataWithHeader.map((row, r_idx) => {
-        return row.map((cell) => {
-            if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
-            return cell;
-        })
-    }));
-    
-    applyStylesAndFilter(masterWorksheet, masterDataWithHeader);
-
-    masterWorksheet['!cols'] = [
-        { wch: 40 }, { wch: 20 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, 
-        { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }, { wch: 15 },
-    ];
-    utils.book_append_sheet(workbook, masterWorksheet, "Master View");
-
-    // Individual Checklists
-    pack.checklists.forEach(checklist => {
-        const checklistHeaders = [
-          'Task ID', 'Task', 'Priority', 'Risk Level', 
-          'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-        ];
-        
-        const tasksForSheet = checklist.tasks.map(task => [
-          task.id,
-          task.description,
-          task.priority,
-          task.riskLevel,
-          task.proof,
-          'Pending',
-          '',
-          ''
-        ]);
-
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader.map((row, r_idx) => {
-            return row.map((cell) => {
-                if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
-                return cell;
-            })
-        }));
-        
-        applyStylesAndFilter(worksheet, checklistDataWithHeader);
-        
-        worksheet['!cols'] = [
-          { wch: 15 }, { wch: 50 }, { wch: 15 }, { wch: 15 }, 
-          { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-        ];
-        
-        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
-    });
-
-    writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
-}
-
-
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -201,7 +79,7 @@ export default function Home() {
                         Ready-to-Use, Downloadable Checklists
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Get instant access to expert-crafted operational playbooks. One-time purchase, lifetime access. Downloadable in PDF, Excel, and more.
+                        Get instant access to expert-crafted operational playbooks. One-time purchase, lifetime access. Downloadable in Excel.
                     </p>
                 </div>
 
@@ -234,32 +112,14 @@ export default function Home() {
                                         </li>
                                     ))}
                                 </ul>
-                                <Accordion type="single" collapsible className="w-full mt-4">
-                                  <AccordionItem value="item-1" className="border-b-0">
-                                    <AccordionTrigger className="text-sm font-semibold hover:no-underline text-accent">View Full Checklist & Purchase</AccordionTrigger>
-                                    <AccordionContent>
-                                        <div className="space-y-4 pt-4">
-                                            <p className="font-semibold text-foreground">This pack includes the following checklists:</p>
-                                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 list-disc list-inside text-muted-foreground mt-2 text-sm space-y-1">
-                                                {pack.checklists.map((checklist, index) => (
-                                                    <li key={index}>{checklist.title}</li>
-                                                ))}
-                                            </ul>
-                                            <div className="text-center pt-4">
-                                                <p className="text-3xl font-bold text-primary whitespace-nowrap">
-                                                    ${pack.priceUSD} / ₹{pack.priceINR}
-                                                </p>
-                                                <p className="text-xs text-muted-foreground">One-Time Purchase</p>
-                                            </div>
-                                            <Button size="lg" className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => handleDownload(pack)}>
-                                                Buy Now & Get Instant Access
-                                            </Button>
-                                        </div>
-                                    </AccordionContent>
-                                  </AccordionItem>
-                                </Accordion>
-
                             </CardContent>
+                             <CardFooter className="p-6 pt-2">
+                                <Button asChild className="w-full font-bold bg-accent/20 text-accent hover:bg-accent/30" variant="secondary">
+                                    <Link href={`/packs/${pack.id}`}>
+                                        View Full Checklist & Purchase
+                                    </Link>
+                                </Button>
+                            </CardFooter>
                         </Card>
                     ))}
                 </div>
@@ -343,8 +203,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-    
-
