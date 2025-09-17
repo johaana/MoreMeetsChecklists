@@ -46,15 +46,15 @@ const handleDownload = (pack: PremiumPack) => {
     };
     
     const statusColors: { [key: string]: string } = {
-        'Pending': "FFFF00", // Yellow
-        'In Progress': "ADD8E6", // Light Blue
-        'Completed': "90EE90", // Light Green
+        'Pending': "FFFFFF00", // Soft Yellow
+        'In Progress': "FFADD8E6", // Light Blue
+        'Completed': "FF90EE90", // Light Green
     };
 
-    const priorityColors: { [key: string]: string } = {
-        'High': "FFC0CB", // Red/Pink
-        'Medium': "FFA500", // Orange
-        'Low': "90EE90", // Light Green
+    const priorityColors: { [key:string]: string } = {
+        'High': "FFFFC0CB", // Light Pink/Red
+        'Medium': "FFFFD700", // Gold/Light Orange
+        'Low': "FF98FB98", // Pale Green
     };
 
     const applyStyles = (ws: WorkSheet) => {
@@ -69,8 +69,8 @@ const handleDownload = (pack: PremiumPack) => {
         // Find column indices
         const headers: string[] = [];
         for (let C = range.s.c; C <= range.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            headers.push(ws[address]?.v);
+            const cellAddress = utils.encode_cell({ r: 0, c: C });
+            headers.push(ws[cellAddress]?.v as string);
         }
         const statusColIndex = headers.indexOf('Status');
         const priorityColIndex = headers.indexOf('Priority');
@@ -82,7 +82,8 @@ const handleDownload = (pack: PremiumPack) => {
                 const statusCellAddress = utils.encode_cell({r: R, c: statusColIndex});
                 const statusValue = ws[statusCellAddress]?.v;
                 if (statusValue && statusColors[statusValue as string]) {
-                    ws[statusCellAddress].s = { fill: { fgColor: { rgb: statusColors[statusValue as string] } } };
+                    if(!ws[statusCellAddress].s) ws[statusCellAddress].s = {};
+                    ws[statusCellAddress].s.fill = { fgColor: { rgb: statusColors[statusValue as string] } };
                 }
             }
 
@@ -90,7 +91,8 @@ const handleDownload = (pack: PremiumPack) => {
                 const priorityCellAddress = utils.encode_cell({r: R, c: priorityColIndex});
                 const priorityValue = ws[priorityCellAddress]?.v;
                 if (priorityValue && priorityColors[priorityValue as string]) {
-                    ws[priorityCellAddress].s = { fill: { fgColor: { rgb: priorityColors[priorityValue as string] } } };
+                    if(!ws[priorityCellAddress].s) ws[priorityCellAddress].s = {};
+                    ws[priorityCellAddress].s.fill = { fgColor: { rgb: priorityColors[priorityValue as string] } };
                 }
             }
         }
@@ -362,3 +364,4 @@ export default function Home() {
 }
 
     
+
