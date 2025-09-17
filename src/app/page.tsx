@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
+import { writeFile, utils, WorkSheet, CellObject } from 'xlsx-js-style';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -21,161 +21,122 @@ const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-pa
 const handleDownload = (pack: PremiumPack) => {
     const workbook = utils.book_new();
 
-    const masterSheetData = pack.checklists.flatMap(checklist => 
-        checklist.tasks.map(task => ({
-            'Checklist': checklist.title,
-            'Department': checklist.department,
-            'Frequency': checklist.frequency,
-            'Role Responsible': checklist.role,
-            'Task ID': task.id,
-            'Task': task.description,
-            'Priority': task.priority,
-            'Risk Level': task.riskLevel,
-            'Proof / Evidence': task.proof,
-            'Location / Site': task.location,
-            'Status': 'Pending',
-        }))
-    );
-
-    const masterWorksheet = utils.json_to_sheet(masterSheetData);
-    
     const headerStyle = {
       font: { bold: true, color: { rgb: "FFFFFF" } },
       fill: { fgColor: { rgb: "0A2540" } }
     };
     
-    const statusColors: { [key: string]: string } = {
-        'Pending': "FFFFF0C0", // Soft Yellow
-        'In Progress': "FFADD8E6", // Light Blue
-        'Completed': "FFC8E6C9", // Light Green
+    const priorityColors: { [key:string]: {rgb: string} } = {
+        'High': { rgb: "FF6666" },
+        'Medium': { rgb: "FFD966" },
+        'Low': { rgb: "A9D08E" },
     };
 
-    const priorityColors: { [key:string]: string } = {
-        'High': "FF6666",
-        'Medium': "FFD966",
-        'Low': "A9D08E",
+    const riskLevelColors: { [key:string]: {rgb: string} } = {
+        'High': { rgb: "E26B0A" },
+        'Medium': { rgb: "FFD966" },
+        'Low': { rgb: "92D050" },
     };
 
-    const riskLevelColors: { [key:string]: string } = {
-        'High': "E26B0A",
-        'Medium': "FFD966",
-        'Low': "92D050",
-    };
-
-
-    const applyStylesAndFilter = (ws: WorkSheet) => {
-        if(!ws['!ref']) return;
-        const range = utils.decode_range(ws['!ref']);
+    const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
+        if(!data || data.length === 0) return;
         
-        // Style Header
-        for (let C = range.s.c; C <= range.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if (!ws[address]) continue;
-            ws[address].s = headerStyle;
-        }
+        const range = { s: { c: 0, r: 0 }, e: { c: data[0].length - 1, r: data.length - 1 } };
+        ws['!ref'] = utils.encode_range(range);
+        ws['!autofilter'] = { ref: ws['!ref'] };
+        ws['!views'] = [{state: 'frozen', ySplit: 1}];
 
-        // Find column indices
-        const headers: string[] = [];
-        for (let C = range.s.c; C <= range.e.c; ++C) {
-            const cellAddress = utils.encode_cell({ r: 0, c: C });
-            const cell = ws[cellAddress];
-            if(cell && cell.v) {
-                headers.push(cell.v as string);
-            }
-        }
-        const statusColIndex = headers.indexOf('Status');
+        const headers = data[0].map(h => (typeof h === 'object' && h !== null && 'v' in h) ? h.v as string : '');
         const priorityColIndex = headers.indexOf('Priority');
         const riskLevelColIndex = headers.indexOf('Risk Level');
 
-        // Style data rows
-        for (let R = range.s.r + 1; R <= range.e.r; ++R) {
-            if (statusColIndex !== -1) {
-                const statusCellAddress = utils.encode_cell({r: R, c: statusColIndex});
-                const statusCell = ws[statusCellAddress];
-                if (statusCell && statusCell.v) {
-                    const statusValue = statusCell.v as string;
-                    if (statusColors[statusValue]) {
-                        if(!statusCell.s) statusCell.s = {};
-                        statusCell.s.fill = { fgColor: { rgb: statusColors[statusValue] } };
-                    }
-                }
-            }
-
+        for (let R = 1; R < data.length; ++R) {
+            const row = data[R];
+            
             if (priorityColIndex !== -1) {
-                const priorityCellAddress = utils.encode_cell({r: R, c: priorityColIndex});
-                const priorityCell = ws[priorityCellAddress];
-                if (priorityCell && priorityCell.v) {
-                    const priorityValue = priorityCell.v as string;
-                    if (priorityColors[priorityValue]) {
-                        if(!priorityCell.s) priorityCell.s = {};
-                        priorityCell.s.fill = { fgColor: { rgb: priorityColors[priorityValue] } };
-                    }
+                const priorityValue = row[priorityColIndex] as string;
+                if (priorityColors[priorityValue]) {
+                    const cellAddress = utils.encode_cell({r: R, c: priorityColIndex});
+                    if (ws[cellAddress]) ws[cellAddress].s = { fill: { fgColor: priorityColors[priorityValue] } };
                 }
             }
             if (riskLevelColIndex !== -1) {
-                const riskLevelCellAddress = utils.encode_cell({r: R, c: riskLevelColIndex});
-                const riskLevelCell = ws[riskLevelCellAddress];
-                if (riskLevelCell && riskLevelCell.v) {
-                    const riskLevelValue = riskLevelCell.v as string;
-                    if (riskLevelColors[riskLevelValue]) {
-                        if(!riskLevelCell.s) riskLevelCell.s = {};
-                        riskLevelCell.s.fill = { fgColor: { rgb: riskLevelColors[riskLevelValue] } };
-                    }
+                const riskLevelValue = row[riskLevelColIndex] as string;
+                if (riskLevelColors[riskLevelValue]) {
+                    const cellAddress = utils.encode_cell({r: R, c: riskLevelColIndex});
+                    if (ws[cellAddress]) ws[cellAddress].s = { fill: { fgColor: riskLevelColors[riskLevelValue] } };
                 }
             }
         }
-
-        ws['!autofilter'] = { ref: ws['!ref'] };
     };
-    
-    applyStylesAndFilter(masterWorksheet);
 
-    masterWorksheet['!cols'] = [
-        { wch: 40 }, // Checklist
-        { wch: 20 }, // Department
-        { wch: 15 }, // Frequency
-        { wch: 20 }, // Role Responsible
-        { wch: 15 }, // Task ID
-        { wch: 60 }, // Task
-        { wch: 15 }, // Priority
-        { wch: 15 }, // Risk Level
-        { wch: 25 }, // Proof / Evidence
-        { wch: 20 }, // Location / Site
-        { wch: 15 }, // Status
+    // Master Sheet
+    const masterHeaders = [
+      'Checklist', 'Department', 'Frequency', 'Role Responsible', 
+      'Task ID', 'Task', 'Priority', 'Risk Level', 'Proof / Evidence', 
+      'Location / Site', 'Status'
+    ];
+    
+    const masterSheetData = pack.checklists.flatMap(checklist => 
+        checklist.tasks.map(task => [
+            checklist.title,
+            checklist.department,
+            checklist.frequency,
+            checklist.role,
+            task.id,
+            task.description,
+            task.priority,
+            task.riskLevel,
+            task.proof,
+            task.location,
+            'Pending'
+        ])
+    );
+    
+    const masterDataForSheet = [
+        masterHeaders.map(h => ({ v: h, t: 's', s: headerStyle })),
+        ...masterSheetData
     ];
 
-    masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+    const masterWorksheet = utils.aoa_to_sheet(masterDataForSheet);
+    applyStylesAndFilter(masterWorksheet, masterDataForSheet);
+
+    masterWorksheet['!cols'] = [
+        { wch: 40 }, { wch: 20 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, 
+        { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }, { wch: 15 },
+    ];
     utils.book_append_sheet(workbook, masterWorksheet, "Master View");
 
-
+    // Individual Checklists
     pack.checklists.forEach(checklist => {
-        const tasksForSheet = checklist.tasks.map(task => ({
-          'Task ID': task.id,
-          'Task': task.description,
-          'Priority': task.priority,
-          'Risk Level': task.riskLevel,
-          'Proof / Evidence': task.proof,
-          'Status': 'Pending',
-          'Assigned To': '',
-          'Notes': ''
-        }));
+        const checklistHeaders = [
+          'Task ID', 'Task', 'Priority', 'Risk Level', 
+          'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+        ];
+        
+        const tasksForSheet = checklist.tasks.map(task => [
+          task.id,
+          task.description,
+          task.priority,
+          task.riskLevel,
+          task.proof,
+          'Pending',
+          '',
+          ''
+        ]);
 
-        const worksheet = utils.json_to_sheet(tasksForSheet);
-
-        applyStylesAndFilter(worksheet)
+        const checklistDataForSheet = [
+            checklistHeaders.map(h => ({ v: h, t: 's', s: headerStyle })),
+            ...tasksForSheet
+        ];
+        
+        const worksheet = utils.aoa_to_sheet(checklistDataForSheet);
+        applyStylesAndFilter(worksheet, checklistDataForSheet);
         
         worksheet['!cols'] = [
-          { wch: 15 }, // Task ID
-          { wch: 50 }, // Task
-          { wch: 15 }, // Priority
-          { wch: 15 }, // Risk Level
-          { wch: 25 }, // Proof / Evidence
-          { wch: 15 }, // Status
-          { wch: 20 }, // Assigned To
-          { wch: 30 }  // Notes
+          { wch: 15 }, { wch: 50 }, { wch: 15 }, { wch: 15 }, 
+          { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
         ];
-
-        worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(workbook, worksheet, sheetName);
@@ -388,3 +349,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
