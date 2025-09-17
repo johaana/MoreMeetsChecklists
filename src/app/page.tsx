@@ -27,15 +27,15 @@ const handleDownload = (pack: PremiumPack) => {
     };
     
     const priorityColors: { [key:string]: {rgb: string} } = {
-        'High': { rgb: "FF6666" },
-        'Medium': { rgb: "FFD966" },
-        'Low': { rgb: "A9D08E" },
+        'High': { rgb: "F8BBD0" },   // Light Pink
+        'Medium': { rgb: "FFE0B2" }, // Light Orange
+        'Low': { rgb: "C8E6C9" },    // Light Green
     };
 
     const riskLevelColors: { [key:string]: {rgb: string} } = {
-        'High': { rgb: "E26B0A" },
-        'Medium': { rgb: "FFD966" },
-        'Low': { rgb: "92D050" },
+        'High': { rgb: "FFAB91" },   // Light Red-Orange
+        'Medium': { rgb: "FFE0B2" }, // Light Orange
+        'Low': { rgb: "A5D6A7" },    // Muted Green
     };
 
     const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
@@ -96,7 +96,7 @@ const handleDownload = (pack: PremiumPack) => {
     
     const masterDataWithHeader = [masterHeaders, ...masterSheetData];
     const masterWorksheet = utils.aoa_to_sheet(masterDataWithHeader.map((row, r_idx) => {
-        return row.map((cell) => {
+        return row.map((cell, c_idx) => {
             if (r_idx === 0) return { v: cell, t: 's', s: headerStyle };
             return cell;
         })
