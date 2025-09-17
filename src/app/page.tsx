@@ -116,16 +116,12 @@ export default function Home() {
                                     <AccordionTrigger className="text-sm font-semibold hover:no-underline text-accent">View Full Checklist & Purchase</AccordionTrigger>
                                     <AccordionContent>
                                         <div className="space-y-4 pt-4">
-                                            {pack.checklists.map((checklist, index) => (
-                                                <div key={index}>
-                                                    <h4 className="font-semibold text-foreground">{checklist.title}</h4>
-                                                    <ul className="list-disc list-inside text-muted-foreground mt-2 text-sm space-y-1">
-                                                        {checklist.tasks.map((task, i) => (
-                                                            <li key={i}>{task}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            ))}
+                                            <p className="font-semibold text-foreground">This pack includes the following checklists:</p>
+                                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 list-disc list-inside text-muted-foreground mt-2 text-sm space-y-1">
+                                                {pack.checklists.map((checklist, index) => (
+                                                    <li key={index}>{checklist.title}</li>
+                                                ))}
+                                            </ul>
                                             <div className="text-center pt-4">
                                                 <p className="text-3xl font-bold text-primary whitespace-nowrap">
                                                     ${pack.priceUSD} / ₹{pack.priceINR}

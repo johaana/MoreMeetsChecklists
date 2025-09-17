@@ -13,14 +13,17 @@ export const premiumPacks = [
         icon: <Building className="w-8 h-8 text-primary" />,
         mostPopular: true,
         sampleItems: [
-            "Over 30+ Checklists for every department.",
-            "Covers Housekeeping, F&B, Maintenance & more.",
+            "Over 50+ Checklists for every department.",
+            "Covers Housekeeping, F&B, Maintenance, Security & more.",
             "Daily, Weekly, and Monthly SOPs.",
             "Guest Experience & Safety Protocols."
         ],
         checklists: [
             {
                 "title": "Daily Room Cleaning Checklist",
+                "department": "Housekeeping",
+                "frequency": "Daily",
+                "role": "Housekeeper",
                 "tasks": [
                     "Knock and announce before entering",
                     "Check room occupancy status",
@@ -44,6 +47,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Turn-down Service Checklist",
+                "department": "Housekeeping",
+                "frequency": "Daily",
+                "role": "Housekeeper",
                 "tasks": [
                     "Knock and announce before entering",
                     "Close curtains and adjust lighting",
@@ -59,6 +65,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Laundry Operations Checklist",
+                "department": "Housekeeping",
+                "frequency": "Daily",
+                "role": "Laundry Attendant",
                 "tasks": [
                     "Collect laundry from guest rooms at scheduled times",
                     "Sort laundry by type (linen, towels, uniforms, guest clothing)",
@@ -74,6 +83,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Linen Room Management Checklist",
+                "department": "Housekeeping",
+                "frequency": "Daily",
+                "role": "Linen Keeper",
                 "tasks": [
                     "Maintain record of linen issued and received",
                     "Sort linen by type and usage",
@@ -88,6 +100,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Public Area Cleaning Checklist",
+                "department": "Housekeeping",
+                "frequency": "Daily",
+                "role": "Public Area Attendant",
                 "tasks": [
                     "Clean and mop lobby floors",
                     "Dust furniture and decorative items",
@@ -103,6 +118,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Deep Cleaning Checklist",
+                "department": "Housekeeping",
+                "frequency": "Weekly",
+                "role": "Housekeeping Supervisor",
                 "tasks": [
                     "Move furniture for full floor cleaning",
                     "Clean behind and under beds, sofas, and cabinets",
@@ -118,6 +136,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Pest Control Checklist",
+                "department": "Maintenance",
+                "frequency": "Daily",
+                "role": "Maintenance Supervisor",
                 "tasks": [
                     "Inspect rooms and public areas for signs of pests",
                     "Check kitchen and storage areas daily",
@@ -133,6 +154,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Lost & Found Documentation Checklist",
+                "department": "Security",
+                "frequency": "As-Needed",
+                "role": "Security Officer",
                 "tasks": [
                     "Log date, time, and location of found item",
                     "Describe the item in detail",
@@ -148,6 +172,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Reception Daily Operations Checklist",
+                "department": "Front Office",
+                "frequency": "Daily",
+                "role": "Front Desk Agent",
                 "tasks": [
                     "Open reception desk and switch on all equipment",
                     "Ensure front desk is clean and organized",
@@ -163,6 +190,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Guest Check-In Process Checklist",
+                "department": "Front Office",
+                "frequency": "As-Needed",
+                "role": "Front Desk Agent",
                 "tasks": [
                     "Greet guest warmly upon arrival",
                     "Verify guest identity with ID proof",
@@ -178,6 +208,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Guest Check-Out Process Checklist",
+                "department": "Front Office",
+                "frequency": "As-Needed",
+                "role": "Front Desk Agent",
                 "tasks": [
                     "Greet guest and confirm room number",
                     "Check PMS for outstanding charges",
@@ -193,6 +226,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Complaint Resolution Process Checklist",
+                "department": "Front Office",
+                "frequency": "As-Needed",
+                "role": "Duty Manager",
                 "tasks": [
                     "Acknowledge guest complaint immediately",
                     "Listen carefully and note details",
@@ -208,6 +244,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Restaurant Opening Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "Restaurant Manager",
                 "tasks": [
                     "Switch on lights, AC, and music system",
                     "Check cleanliness of dining area and furniture",
@@ -223,6 +262,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Restaurant Closing Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "Restaurant Manager",
                 "tasks": [
                     "Clear and reset tables",
                     "Turn off lights, AC, and music system",
@@ -238,6 +280,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Buffet Service Setup Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "F&B Supervisor",
                 "tasks": [
                     "Check buffet counters and sneeze guards are clean",
                     "Arrange hot and cold stations",
@@ -253,6 +298,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Bar Opening Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "Bartender",
                 "tasks": [
                     "Clean and sanitize bar counter and stools",
                     "Check stock of liquor, beer, and wine",
@@ -268,6 +316,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Bar Closing Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "Bartender",
                 "tasks": [
                     "Dispose of used garnishes",
                     "Clean and sanitize bar counter and equipment",
@@ -283,6 +334,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Room Service Delivery Checklist",
+                "department": "F&B",
+                "frequency": "As-Needed",
+                "role": "Room Service Waiter",
                 "tasks": [
                     "Check order slip for accuracy",
                     "Ensure food is plated attractively",
@@ -298,6 +352,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Banquet Hall Preparation Checklist",
+                "department": "F&B",
+                "frequency": "As-Needed",
+                "role": "Banquet Manager",
                 "tasks": [
                     "Check cleanliness of hall and stage",
                     "Arrange tables and chairs as per event plan",
@@ -313,6 +370,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Kitchen Hygiene & Food Safety Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "Head Chef",
                 "tasks": [
                     "Ensure kitchen floors are clean and dry",
                     "Check personal hygiene of staff (uniform, gloves, caps)",
@@ -328,6 +388,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Inventory & Stock Check Checklist",
+                "department": "Finance",
+                "frequency": "Daily",
+                "role": "Store Keeper",
                 "tasks": [
                     "Check stock levels of raw materials daily",
                     "Inspect perishable items for freshness",
@@ -343,6 +406,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Daily Maintenance Rounds Checklist",
+                "department": "Maintenance",
+                "frequency": "Daily",
+                "role": "Technician",
                 "tasks": [
                     "Inspect all guest room corridors for damages",
                     "Check lobby lights, fans, and AC functioning",
@@ -358,6 +424,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Electrical Systems Inspection Checklist",
+                "department": "Maintenance",
+                "frequency": "Weekly",
+                "role": "Electrician",
                 "tasks": [
                     "Check main electrical panel for abnormalities",
                     "Test backup generator functionality",
@@ -373,6 +442,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Plumbing & Water Systems Checklist",
+                "department": "Maintenance",
+                "frequency": "Weekly",
+                "role": "Plumber",
                 "tasks": [
                     "Inspect guest bathrooms for leaks",
                     "Check water pressure in guest rooms and public areas",
@@ -388,6 +460,9 @@ export const premiumPacks = [
             },
             {
                 "title": "HVAC & AC Systems Checklist",
+                "department": "Maintenance",
+                "frequency": "Monthly",
+                "role": "HVAC Technician",
                 "tasks": [
                     "Check AC filters for cleanliness",
                     "Inspect HVAC units for unusual noise",
@@ -403,6 +478,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Elevator & Escalator Safety Checklist",
+                "department": "Maintenance",
+                "frequency": "Daily",
+                "role": "Maintenance Supervisor",
                 "tasks": [
                     "Check elevator car interior cleanliness",
                     "Test emergency alarm and intercom",
@@ -418,6 +496,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Swimming Pool Maintenance Checklist",
+                "department": "Maintenance",
+                "frequency": "Daily",
+                "role": "Pool Technician",
                 "tasks": [
                     "Check chlorine and pH levels of pool water",
                     "Backwash filter and record pressure",
@@ -433,6 +514,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Landscaping & Outdoor Areas Checklist",
+                "department": "Maintenance",
+                "frequency": "Daily",
+                "role": "Gardener",
                 "tasks": [
                     "Inspect lawns and trim grass",
                     "Check health of plants and trees",
@@ -448,6 +532,9 @@ export const premiumPacks = [
             },
             {
                 "title": "CCTV & Security Monitoring Checklist",
+                "department": "Security",
+                "frequency": "Daily",
+                "role": "Security Officer",
                 "tasks": [
                     "Check all CCTV cameras are operational",
                     "Verify recording system is functioning",
@@ -463,6 +550,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Fire Safety Checklist",
+                "department": "Security",
+                "frequency": "Weekly",
+                "role": "Security Supervisor",
                 "tasks": [
                     "Inspect fire extinguishers for pressure levels",
                     "Check smoke detectors and alarms",
@@ -478,6 +568,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Parking & Valet Operations Checklist",
+                "department": "Security",
+                "frequency": "Daily",
+                "role": "Valet Supervisor",
                 "tasks": [
                     "Check parking lot cleanliness and lighting",
                     "Verify valet staff uniforms and ID badges",
@@ -493,6 +586,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Emergency Preparedness Checklist",
+                "department": "Security",
+                "frequency": "Monthly",
+                "role": "Security Supervisor",
                 "tasks": [
                     "Ensure first aid kits are fully stocked",
                     "Check availability of emergency contact list",
@@ -508,6 +604,9 @@ export const premiumPacks = [
             },
             {
                 "title": "Night Security Patrol Checklist",
+                "department": "Security",
+                "frequency": "Daily",
+                "role": "Security Officer",
                 "tasks": [
                     "Inspect all entry and exit points",
                     "Check locks of storage and liquor cabinets",
@@ -523,6 +622,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🧖‍♀️ Spa Daily Operations Checklist",
+                "department": "Wellness",
+                "frequency": "Daily",
+                "role": "Spa Manager",
                 "tasks": [
                     "Check cleanliness of treatment rooms",
                     "Inspect spa equipment and massage beds",
@@ -538,6 +640,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🏋️ Gym & Fitness Center Checklist",
+                "department": "Wellness",
+                "frequency": "Daily",
+                "role": "Gym Manager",
                 "tasks": [
                     "Inspect all gym equipment for safety and wear",
                     "Wipe down and sanitize cardio and strength machines",
@@ -552,7 +657,10 @@ export const premiumPacks = [
                 ]
             },
             {
-                "title": "🎟 Concierge Desk Checklist",
+                "title": "🎟️ Concierge Desk Checklist",
+                "department": "Front Office",
+                "frequency": "Daily",
+                "role": "Concierge",
                 "tasks": [
                     "Review and update tour and transport schedules",
                     "Check availability of brochures, maps, and guides",
@@ -568,6 +676,9 @@ export const premiumPacks = [
             },
             {
                 "title": "👶 Kids Club / Play Area Checklist",
+                "department": "Wellness",
+                "frequency": "Daily",
+                "role": "Kids Club Supervisor",
                 "tasks": [
                     "Inspect play equipment and toys for safety",
                     "Clean and sanitize toys, books, and play mats",
@@ -583,6 +694,9 @@ export const premiumPacks = [
             },
             {
                 "title": "⭐ Guest Feedback & Experience Checklist",
+                "department": "Management",
+                "frequency": "Daily",
+                "role": "Duty Manager",
                 "tasks": [
                     "Collect and review guest feedback forms daily",
                     "Monitor online reviews (TripAdvisor, Google, OTA sites)",
@@ -598,6 +712,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🧾 Night Audit Checklist",
+                "department": "Finance",
+                "frequency": "Daily",
+                "role": "Night Auditor",
                 "tasks": [
                     "Reconcile all guest folios with POS systems",
                     "Verify room revenue matches occupancy",
@@ -613,6 +730,9 @@ export const premiumPacks = [
             },
             {
                 "title": "📦 Procurement Checklist",
+                "department": "Finance",
+                "frequency": "Daily",
+                "role": "Procurement Officer",
                 "tasks": [
                     "Review purchase requisitions from all departments",
                     "Verify available stock before approving order",
@@ -628,6 +748,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🛒 Vendor Management Checklist",
+                "department": "Finance",
+                "frequency": "Weekly",
+                "role": "Procurement Manager",
                 "tasks": [
                     "Review contracts with current vendors",
                     "Verify vendor performance against SLAs",
@@ -643,6 +766,9 @@ export const premiumPacks = [
             },
             {
                 "title": "📊 Payroll Processing Checklist",
+                "department": "Finance",
+                "frequency": "Monthly",
+                "role": "HR Manager",
                 "tasks": [
                     "Verify staff attendance records from biometric or registers",
                     "Approve overtime and extra duty claims",
@@ -658,6 +784,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🗂 Inventory Control Checklist",
+                "department": "Finance",
+                "frequency": "Daily",
+                "role": "Store Keeper",
                 "tasks": [
                     "Review daily consumption reports from all outlets",
                     "Conduct spot checks of store inventory",
@@ -673,6 +802,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🧮 Accounts Payable Checklist",
+                "department": "Finance",
+                "frequency": "Daily",
+                "role": "Accountant",
                 "tasks": [
                     "Verify all supplier invoices against purchase orders",
                     "Match invoice quantities with goods received note (GRN)",
@@ -688,6 +820,9 @@ export const premiumPacks = [
             },
             {
                 "title": "💵 Cash Handling Checklist",
+                "department": "Finance",
+                "frequency": "Daily",
+                "role": "Cashier",
                 "tasks": [
                     "Verify opening cash float at each POS counter",
                     "Record all cash receipts with receipts issued",
@@ -703,6 +838,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🌆 Rooftop / Terrace Restaurant Checklist",
+                "department": "F&B",
+                "frequency": "Daily",
+                "role": "Restaurant Manager",
                 "tasks": [
                     "Check cleanliness of terrace flooring and furniture",
                     "Inspect lighting and decorative elements",
@@ -718,6 +856,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🖥 Business Center Checklist",
+                "department": "Front Office",
+                "frequency": "Daily",
+                "role": "Front Desk Agent",
                 "tasks": [
                     "Ensure all computers are functioning with internet access",
                     "Check printers, scanners, and copiers for paper & ink",
@@ -733,6 +874,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🎤 Conference & Banquet Hall Checklist",
+                "department": "F&B",
+                "frequency": "As-Needed",
+                "role": "Banquet Manager",
                 "tasks": [
                     "Inspect seating arrangement per booking requirements",
                     "Check sound system, microphone, and projectors",
@@ -748,6 +892,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🧺 Laundry Plant Checklist",
+                "department": "Housekeeping",
+                "frequency": "Daily",
+                "role": "Laundry Supervisor",
                 "tasks": [
                     "Inspect washing machines and dryers for functionality",
                     "Verify detergent and cleaning supplies availability",
@@ -763,6 +910,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🍴 Staff Canteen Checklist",
+                "department": "HR",
+                "frequency": "Daily",
+                "role": "Admin Manager",
                 "tasks": [
                     "Check food quality and hygiene before service",
                     "Verify cleanliness of tables, trays, and cutlery",
@@ -778,6 +928,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🎮 Kids Play Area / Kids Club Checklist",
+                "department": "Wellness",
+                "frequency": "Daily",
+                "role": "Kids Club Supervisor",
                 "tasks": [
                     "Inspect toys and play equipment for safety hazards",
                     "Ensure soft flooring/mats are clean",
@@ -793,6 +946,9 @@ export const premiumPacks = [
             },
             {
                 "title": "🚗 Valet Parking Checklist",
+                "department": "Security",
+                "frequency": "Daily",
+                "role": "Valet Supervisor",
                 "tasks": [
                     "Verify valet staff uniforms and ID badges",
                     "Ensure valet counter signage is visible",
