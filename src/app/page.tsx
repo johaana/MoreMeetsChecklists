@@ -57,7 +57,7 @@ const handleDownload = (pack: PremiumPack) => {
         'Low': "FFD4EDD4", // Pale Green
     };
 
-    const applyStyles = (ws: WorkSheet) => {
+    const applyStylesAndFilter = (ws: WorkSheet) => {
         if(!ws['!ref']) return;
         const range = utils.decode_range(ws['!ref']);
         
@@ -107,9 +107,12 @@ const handleDownload = (pack: PremiumPack) => {
                 }
             }
         }
+
+        // Apply autofilter to the entire range
+        ws['!autofilter'] = { ref: utils.encode_range(range) };
     };
     
-    applyStyles(masterWorksheet);
+    applyStylesAndFilter(masterWorksheet);
 
     // Set column widths for the master sheet
     masterWorksheet['!cols'] = [
@@ -126,12 +129,7 @@ const handleDownload = (pack: PremiumPack) => {
         { wch: 15 }, // Status
     ];
 
-    if (masterWorksheet['!ref']) {
-        masterWorksheet['!autofilter'] = { ref: masterWorksheet['!ref'] };
-    }
     masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
-
     utils.book_append_sheet(workbook, masterWorksheet, "Master View");
 
 
@@ -150,7 +148,8 @@ const handleDownload = (pack: PremiumPack) => {
 
         const worksheet = utils.json_to_sheet(tasksForSheet);
 
-        applyStyles(worksheet)
+        applyStylesAndFilter(worksheet)
+        
         worksheet['!cols'] = [
           { wch: 15 }, // Task ID
           { wch: 50 }, // Task
@@ -161,9 +160,7 @@ const handleDownload = (pack: PremiumPack) => {
           { wch: 20 }, // Assigned To
           { wch: 30 }  // Notes
         ];
-        if (worksheet['!ref']) {
-            worksheet['!autofilter'] = { ref: worksheet['!ref'] };
-        }
+
         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
@@ -379,6 +376,7 @@ export default function Home() {
 }
 
     
+
 
 
 
