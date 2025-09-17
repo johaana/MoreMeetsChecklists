@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star } from "lucide-react";
 import { Logo } from "@/components/icons";
-import { premiumPacks, PremiumPack, Checklist as ChecklistType } from "@/lib/premium-packs";
+import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { writeFile, utils } from 'xlsx';
+import { writeFile, utils, WorkSheet } from 'xlsx';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -28,46 +28,114 @@ const handleDownload = (pack: PremiumPack) => {
             'Department': checklist.department,
             'Frequency': checklist.frequency,
             'Role Responsible': checklist.role,
+            'Task ID': task.id,
             'Task': task.description,
+            'Priority': task.priority,
+            'Risk Level': task.riskLevel,
+            'Proof / Evidence': task.proof,
+            'Location / Site': task.location,
             'Status': 'Pending',
         }))
     );
 
     const masterWorksheet = utils.json_to_sheet(masterSheetData);
+    
+    const headerStyle = {
+      font: { bold: true, color: { rgb: "FFFFFF" } },
+      fill: { fgColor: { rgb: "0A2540" } }
+    };
+    
+    const statusColors: { [key: string]: string } = {
+        'Pending': "FFFF00", // Yellow
+        'In Progress': "ADD8E6", // Light Blue
+        'Completed': "90EE90", // Light Green
+    };
+
+    const priorityColors: { [key: string]: string } = {
+        'High': "FFC0CB", // Red/Pink
+        'Medium': "FFA500", // Orange
+        'Low': "90EE90", // Light Green
+    };
+
+    const applyStyles = (ws: WorkSheet) => {
+        const range = utils.decode_range(ws['!ref'] || 'A1');
+        // Style Header
+        for (let C = range.s.c; C <= range.e.c; ++C) {
+            const address = utils.encode_cell({ r: 0, c: C });
+            if (!ws[address]) continue;
+            ws[address].s = headerStyle;
+        }
+
+        // Style data rows
+        for (let R = range.s.r + 1; R <= range.e.r; ++R) {
+            const statusCellAddress = utils.encode_cell({r: R, c: 10}); // Status is 11th column (index 10)
+            const priorityCellAddress = utils.encode_cell({r: R, c: 6}); // Priority is 7th column (index 6)
+            
+            const statusValue = ws[statusCellAddress]?.v;
+            if (statusValue && statusColors[statusValue]) {
+                ws[statusCellAddress].s = { fill: { fgColor: { rgb: statusColors[statusValue] } } };
+            }
+
+            const priorityValue = ws[priorityCellAddress]?.v;
+            if (priorityValue && priorityColors[priorityValue]) {
+                ws[priorityCellAddress].s = { fill: { fgColor: { rgb: priorityColors[priorityValue] } } };
+            }
+        }
+    };
+    
+    applyStyles(masterWorksheet);
+
     // Set column widths for the master sheet
     masterWorksheet['!cols'] = [
         { wch: 40 }, // Checklist
         { wch: 20 }, // Department
         { wch: 15 }, // Frequency
         { wch: 20 }, // Role Responsible
+        { wch: 15 }, // Task ID
         { wch: 60 }, // Task
+        { wch: 15 }, // Priority
+        { wch: 15 }, // Risk Level
+        { wch: 25 }, // Proof / Evidence
+        { wch: 20 }, // Location / Site
         { wch: 15 }, // Status
     ];
+
+    masterWorksheet['!autofilter'] = { ref: utils.encode_range(utils.decode_range(masterWorksheet['!ref']!)) };
+    masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+
+
     utils.book_append_sheet(workbook, masterWorksheet, "Master View");
 
 
     // 2. Create Individual Sheets
     pack.checklists.forEach(checklist => {
-        // Map tasks to the desired Excel format for individual sheets
         const tasksForSheet = checklist.tasks.map(task => ({
+          'Task ID': task.id,
           'Task': task.description,
-          'Status': 'Pending', // Default status
+          'Priority': task.priority,
+          'Risk Level': task.riskLevel,
+          'Proof / Evidence': task.proof,
+          'Status': 'Pending',
           'Assigned To': '',
           'Notes': ''
         }));
 
         const worksheet = utils.json_to_sheet(tasksForSheet);
 
-        // Optional: Set column widths for better readability
-        const columnWidths = [
+        applyStyles(worksheet)
+        worksheet['!cols'] = [
+          { wch: 15 }, // Task ID
           { wch: 50 }, // Task
+          { wch: 15 }, // Priority
+          { wch: 15 }, // Risk Level
+          { wch: 25 }, // Proof / Evidence
           { wch: 15 }, // Status
           { wch: 20 }, // Assigned To
           { wch: 30 }  // Notes
         ];
-        worksheet['!cols'] = columnWidths;
+        worksheet['!autofilter'] = { ref: utils.encode_range(utils.decode_range(worksheet['!ref']!)) };
+        worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
-        // Clean up the title for the sheet name (max 31 chars, no special chars)
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(workbook, worksheet, sheetName);
     });
@@ -279,8 +347,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-    
-
