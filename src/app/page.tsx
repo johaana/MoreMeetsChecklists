@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -188,7 +187,7 @@ export default function Home() {
                         The World’s Most Complete Event & Operations Checklists
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                         From weddings to hospitality to corporate launches, a single missed detail can cost you everything. Never miss a task again.
+                        Our professional-grade checklists help you meet and exceed standards. Ensure compliance, guarantee quality, and turn operational excellence into your competitive advantage.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
                         <Link href="#packs">Browse Packages</Link>
@@ -311,7 +310,6 @@ export default function Home() {
                                 {testimonial.imageId && (
                                     <Image
                                       src={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageUrl || ''}
-                                      alt={`Photo of ${testimonial.name}`}
                                       width={100}
                                       height={100}
                                       className="object-cover"
