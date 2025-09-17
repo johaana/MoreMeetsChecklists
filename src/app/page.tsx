@@ -185,7 +185,7 @@ export default function Home() {
                         Trusted by Professionals in 12+ Industries
                     </Badge>
                     <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                        The World’s Most Complete Compliance & Operations Checklists
+                        The Professional Standard for Compliance & Operations Checklists
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
                         Meet More Standards & Compliance. Our professional-grade checklists help you meet and exceed standards, guarantee quality, and turn operational excellence into your competitive advantage.
