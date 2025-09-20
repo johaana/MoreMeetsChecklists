@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star } from "lucide-react";
+import { Check, Star, Users } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -55,9 +55,15 @@ export default function Home() {
             <div className="container px-4 md:px-6 relative z-20">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                 <div className="space-y-4">
-                    <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
-                        Trusted by Professionals in 12+ Industries
-                    </Badge>
+                    <div className="flex flex-wrap justify-center items-center gap-4">
+                        <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
+                            Trusted by Professionals in 12+ Industries
+                        </Badge>
+                         <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-primary/50 text-white bg-primary/20 backdrop-blur-sm">
+                            Curated by 200+ Industry Experts
+                        </Badge>
+                    </div>
+
                     <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
                         The Professional Standard for Compliance & Operations Checklists
                     </h1>
@@ -133,18 +139,22 @@ export default function Home() {
                         Why Every Detail Matters
                     </h2>
                 </div>
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                     <Card className="p-6 border-0 shadow-none bg-transparent">
                         <h3 className="text-xl font-bold font-headline mb-2">Prevent Costly Failures</h3>
-                        <p className="text-muted-foreground">In business, one forgotten task—a missed permit, an uncalibrated machine, a security oversight—can lead to catastrophic financial loss and reputational damage.</p>
+                        <p className="text-muted-foreground">One missed step—a forgotten permit, an uncalibrated machine—can lead to catastrophic financial and reputational damage.</p>
                     </Card>
                      <Card className="p-6 border-0 shadow-none bg-transparent">
                         <h3 className="text-xl font-bold font-headline mb-2">Standardize Excellence</h3>
-                        <p className="text-muted-foreground">Our checklists are more than lists; they are expert-written Standard Operating Procedures (SOPs) that empower your team to perform flawlessly, every single time.</p>
+                        <p className="text-muted-foreground">Our checklists are expert-written SOPs that empower your team to perform flawlessly, every single time.</p>
                     </Card>
                      <Card className="p-6 border-0 shadow-none bg-transparent">
                         <h3 className="text-xl font-bold font-headline mb-2">Build Unshakeable Trust</h3>
-                        <p className="text-muted-foreground">Whether it's a client, a customer, or a guest, demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust and loyalty.</p>
+                        <p className="text-muted-foreground">Demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust with clients and customers.</p>
+                    </Card>
+                     <Card className="p-6 border-0 shadow-none bg-transparent">
+                        <h3 className="text-xl font-bold font-headline mb-2">Forged by Experience</h3>
+                        <p className="text-muted-foreground">Our playbooks are codified knowledge from 200+ industry veterans—not academics. Distilled experience you can use today.</p>
                     </Card>
                 </div>
             </div>
@@ -203,3 +213,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

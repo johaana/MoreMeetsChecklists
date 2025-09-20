@@ -1,6 +1,3 @@
-
-'use client';
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -55,9 +52,11 @@ const handleDownload = (pack: PremiumPack) => {
             }
         }
         
-        const range = utils.decode_range(ws['!ref'] || "A1:A1");
-        const filterRange = utils.encode_range({s: range.s, e: {c: range.e.c, r: data.length - 1}});
-        ws['!autofilter'] = { ref: filterRange };
+        ws['!ref'] = utils.encode_range(utils.decode_range(ws['!ref'] || "A1:A1"));
+        if (data.length > 1) {
+            const filterRange = utils.encode_range({s: {r: 0, c: 0}, e: {r: data.length - 1, c: headers.length - 1}});
+            ws['!autofilter'] = { ref: filterRange };
+        }
         ws['!views'] = [{state: 'frozen', ySplit: 1}];
     };
 
@@ -223,6 +222,16 @@ export default function Page({ params }: { params: { id: string } }) {
   if (!pack) {
     notFound();
   }
+  
+  const curationMap: Record<string, string> = {
+    "Hospitality": "Veteran General Managers, F&B Directors, and Heads of Security from leading 5-star hotel chains.",
+    "Corporate": "Senior Facility Managers from Fortune 500 companies and Heads of Engineering overseeing large-scale corporate campuses.",
+    "Retail": "Retail Operations Heads, District Managers, and Loss Prevention experts from major global brands.",
+    "Healthcare": "Hospital Administrators, Chief Medical Officers, and NABH/JCI Compliance Consultants.",
+    "Education": "School Principals, Senior Administrators, and Campus Security Heads from reputable institutions."
+  };
+
+  const curatedBy = curationMap[pack.category] || "a diverse group of over 200+ seasoned industry professionals.";
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -254,6 +263,10 @@ export default function Page({ params }: { params: { id: string } }) {
                             <p className="text-muted-foreground mt-2 md:text-lg">
                                 {pack.description}
                             </p>
+                             <div className="mt-4 bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
+                                <p className="text-sm font-semibold text-primary">Curated By:</p>
+                                <p className="text-sm text-foreground/80">{curatedBy}</p>
+                            </div>
                         </div>
                     </div>
                      <div className="text-center bg-primary/5 border border-primary/20 rounded-2xl p-6">
@@ -336,3 +349,4 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+    
