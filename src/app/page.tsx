@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -17,6 +16,56 @@ import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
+
+const FaqSection = () => (
+    <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+        <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                    Frequently Asked Questions
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    Everything you need to know before you buy.
+                </p>
+            </div>
+            <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger className="text-lg font-semibold">What format do the checklists come in?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            All our checklist packs are delivered as professionally formatted Microsoft Excel files (.xlsx). This makes them universally accessible, easy to use, and fully customizable to fit your specific operational needs.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger className="text-lg font-semibold">Is this a one-time purchase?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes, absolutely. Every purchase is a one-time payment that grants you lifetime access to the checklist pack. There are no recurring subscriptions, hidden fees, or user limits. Buy it once, own it forever.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger className="text-lg font-semibold">How do I receive the files after purchase?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Instantly. Once your payment is successfully processed, you will be able to download the files immediately from the purchase confirmation page.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                        <AccordionTrigger className="text-lg font-semibold">Can I edit and customize the checklists?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes. They are fully editable. You can add, remove, or modify any tasks, change department names, and tailor the entire playbook to match your organization's unique workflow and branding.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-5">
+                        <AccordionTrigger className="text-lg font-semibold">Who creates these checklists?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Our checklists are not created by academics; they are forged by experience. Each pack is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
+        </div>
+    </section>
+);
+
 
 export default function Home() {
   return (
@@ -197,6 +246,8 @@ export default function Home() {
                 </div>
             </div>
         </section>
+
+        <FaqSection />
 
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t mt-16">
