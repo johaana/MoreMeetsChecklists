@@ -1,19 +1,14 @@
+
+'use client';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { premiumPacks, PremiumPack, Checklist } from '@/lib/premium-packs';
+import { premiumPacks } from '@/lib/premium-packs';
+import type { PremiumPack } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, CheckCircle2, AlertTriangle, XCircle, FileCheck2 } from 'lucide-react';
+import { ArrowLeft, FileCheck2 } from 'lucide-react';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
-
-const PainPoint = ({ title, description }: { title: string, description: string }) => (
-    <div className="bg-background rounded-lg p-4">
-        <h4 className="font-semibold text-foreground">{title}</h4>
-        <p className="text-sm text-muted-foreground">{description}</p>
-    </div>
-);
-
 
 const handleDownload = (pack: PremiumPack) => {
     const workbook = utils.book_new();
@@ -146,6 +141,13 @@ const handleDownload = (pack: PremiumPack) => {
 
     writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
 }
+
+const PainPoint = ({ title, description }: { title: string, description: string }) => (
+    <div className="bg-background rounded-lg p-4">
+        <h4 className="font-semibold text-foreground">{title}</h4>
+        <p className="text-sm text-muted-foreground">{description}</p>
+    </div>
+);
 
 const PainPointsSection = ({ category }: { category: string }) => {
     const content = {
@@ -322,7 +324,7 @@ export default function Page({ params }: { params: { id: string } }) {
                         <p className="text-4xl font-bold text-primary whitespace-nowrap">
                             ${pack.priceUSD} / ₹{pack.priceINR}
                         </p>
-                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase</p>
+                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Access</p>
                         <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => handleDownload(pack)}>
                             Download Now
                         </Button>
@@ -349,4 +351,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
     
