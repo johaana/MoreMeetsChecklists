@@ -114,9 +114,11 @@ export default function Home() {
                             <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
                                 <Link href="#packs">Browse Packages</Link>
                             </Button>
-                            <p className="text-xs text-white/60">
-                                Curated by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
-                            </p>
+                            <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
+                                <p className="text-xs text-white/80">
+                                    Curated by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,3 +266,4 @@ export default function Home() {
     
 
     
+
