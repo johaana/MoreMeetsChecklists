@@ -117,7 +117,7 @@ export default function Home() {
                         The Professional Standard for Compliance & Operations Checklists
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                        Meet More Standards & Compliance. Our professional-grade checklists help you meet and exceed standards, guarantee quality, and turn operational excellence into your competitive advantage.
+                        Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
                     </p>
                     <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
                         <Link href="#packs">Browse Packages</Link>
@@ -264,5 +264,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
