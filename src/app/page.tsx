@@ -103,26 +103,22 @@ export default function Home() {
             )}
             <div className="container px-4 md:px-6 relative z-20">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
-                <div className="space-y-4">
-                    <div className="flex flex-wrap justify-center items-center gap-4">
-                        <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-accent/50 text-accent-foreground bg-accent/20 backdrop-blur-sm">
-                            Trusted by Professionals in 12+ Industries
-                        </Badge>
-                         <Badge variant="outline" className="py-2 px-4 rounded-full text-sm font-semibold border-primary/50 text-white bg-primary/20 backdrop-blur-sm">
-                            Curated by 200+ Industry Experts
-                        </Badge>
+                    <div className="space-y-6">
+                        <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
+                            The Professional Standard for Compliance & Operations Checklists
+                        </h1>
+                        <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
+                           Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
+                        </p>
+                        <div className="flex flex-col items-center justify-center gap-4">
+                            <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
+                                <Link href="#packs">Browse Packages</Link>
+                            </Button>
+                            <p className="text-xs text-white/60">
+                                Curated by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                            </p>
+                        </div>
                     </div>
-
-                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                        The Professional Standard for Compliance & Operations Checklists
-                    </h1>
-                    <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                        Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
-                    </p>
-                    <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
-                        <Link href="#packs">Browse Packages</Link>
-                    </Button>
-                </div>
                 </div>
             </div>
         </section>
