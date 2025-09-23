@@ -129,8 +129,8 @@ function PackList() {
                             <ArrowRight className="w-5 h-5 ml-2" />
                         </Link>
                     </Button>
-                    <p className="max-w-2xl mx-auto text-muted-foreground mt-4">
-                        Our library covers every aspect of your operations, from the granular details of hotel housekeeping to the strategic planning of manufacturing plant safety.
+                    <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
+                        Our comprehensive library is the codified knowledge of over 200 seasoned industry professionals. We've distilled decades of real-world experience—from the high-stakes precision of a hospital's surgical safety protocol to the detailed logistics of a retail store's inventory management, and the rigorous safety standards of a manufacturing plant. Whether you're managing a 5-star hotel, a corporate high-rise, or a school campus, our packs provide the framework to standardize excellence and ensure compliance.
                     </p>
                 </div>
             </div>
