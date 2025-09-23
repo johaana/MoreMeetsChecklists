@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [heroImageUrl],
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 const mainFont = Inter({

@@ -1,5 +1,4 @@
 
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -8,6 +7,46 @@ import { ArrowLeft, FileCheck2, Hand, LifeBuoy, Zap, Users, Shield, TrendingUp, 
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: { id: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.id;
+  const pack = premiumPacks.find((p) => p.id === id);
+
+  if (!pack) {
+    return {
+      title: 'Package Not Found | MoreMeets',
+      description: 'The requested checklist package could not be found.',
+    };
+  }
+
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `${pack.title} | MoreMeets`,
+    description: pack.description,
+    openGraph: {
+      title: `${pack.title} | MoreMeets`,
+      description: pack.description,
+      images: [
+        ...previousImages,
+      ],
+    },
+     twitter: {
+      card: 'summary_large_image',
+      title: `${pack.title} | MoreMeets`,
+      description: pack.description,
+      images: [...previousImages],
+    },
+  }
+}
 
 const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
     <div className="flex items-start gap-6 rounded-lg border bg-background p-6 transition-shadow hover:shadow-md">
