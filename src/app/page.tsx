@@ -119,7 +119,7 @@ function PackList() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                <Button asChild className="w-full font-bold" variant="accent">
                                     <Link href={`/packs/${pack.id}`}>
                                         View Full Checklist & Purchase
                                     </Link>
@@ -176,11 +176,6 @@ export default function Home() {
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Why Us
             </Link>
-            <Button asChild>
-                <Link href="/packs" prefetch={false}>
-                    View All Packages
-                </Link>
-            </Button>
         </nav>
       </header>
       <main className="flex-1">
@@ -335,3 +330,4 @@ export default function Home() {
   );
 
     
+
