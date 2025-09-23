@@ -123,28 +123,26 @@ export default function Page({ params }: { params: { id: string } }) {
       </header>
 
       <main className="flex-1">
-        <section className="w-full py-12">
+        <section className="w-full py-8">
             <div className="container px-4 md:px-6">
-                <div className="max-w-4xl mx-auto">
-                    <div className="grid md:grid-cols-[auto_1fr] gap-8 items-start mb-8">
-                        <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block">
-                            {pack.icon}
-                        </div>
-                        <div className="space-y-4">
-                            <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                                {pack.title}
-                            </h1>
-                            <p className="text-muted-foreground md:text-lg">
-                                {pack.description}
-                            </p>
-                             <div className="mt-4 bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
-                                <p className="text-sm font-semibold text-primary">Perfect For:</p>
-                                <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
-                            </div>
+                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-4 items-start mb-8">
+                    <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block">
+                        {pack.icon}
+                    </div>
+                    <div className="space-y-4">
+                        <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                            {pack.title}
+                        </h1>
+                        <p className="text-muted-foreground md:text-lg">
+                            {pack.description}
+                        </p>
+                         <div className="mt-4 bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
+                            <p className="text-sm font-semibold text-primary">Perfect For:</p>
+                            <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
                         </div>
                     </div>
-                    <PricingClient pack={pack} />
                 </div>
+                <PricingClient pack={pack} />
             </div>
         </section>
 
@@ -209,4 +207,3 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-
