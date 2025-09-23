@@ -123,7 +123,7 @@ export default function Page({ params }: { params: { id: string } }) {
       </header>
 
       <main className="flex-1">
-        <section className="w-full py-12 md:py-20 lg:py-24">
+        <section className="w-full py-12">
             <div className="container px-4 md:px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="grid md:grid-cols-[auto_1fr] gap-8 items-start mb-8">
@@ -150,7 +150,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
         <PainPointsSection category={pack.category} />
 
-        <section id="checklists" className="w-full py-12 md:py-20 lg:py-24">
+        <section id="checklists" className="w-full py-12">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
@@ -209,3 +209,4 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+
