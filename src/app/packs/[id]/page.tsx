@@ -255,10 +255,10 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
-                    <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                    <Link href="/terms" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Terms of Service
                     </Link>
-                    <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                    <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Privacy Policy
                     </Link>
                     <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
