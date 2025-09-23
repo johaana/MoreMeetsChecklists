@@ -26,23 +26,26 @@ export async function generateMetadata(
       description: 'The requested checklist package could not be found.',
     };
   }
+  
+  const title = `${pack.title} Pack | MoreMeets`;
+  const description = `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
 
   const previousImages = (await parent).openGraph?.images || []
 
   return {
-    title: `${pack.title} | MoreMeets`,
-    description: pack.description,
+    title: title,
+    description: description,
     openGraph: {
-      title: `${pack.title} | MoreMeets`,
-      description: pack.description,
+      title: title,
+      description: description,
       images: [
         ...previousImages,
       ],
     },
      twitter: {
       card: 'summary_large_image',
-      title: `${pack.title} | MoreMeets`,
-      description: pack.description,
+      title: title,
+      description: description,
       images: [...previousImages],
     },
   }

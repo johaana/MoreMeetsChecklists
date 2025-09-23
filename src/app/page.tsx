@@ -169,7 +169,8 @@ export default function Home() {
         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
           <Logo className="h-6 w-6 text-primary" />
           <span className="font-headline text-lg font-bold">MoreMeets</span>
-        </Link>        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Packages
             </Link>
@@ -194,10 +195,10 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                            The Professional Standard for Compliance & Operations Checklists
+                            Unlock World-Class Operational Standards
                         </h1>
                         <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                           Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
+                           Instantly download professional operational checklists and SOPs. Cover every base—daily tasks, security protocols, compliance audits—with frameworks built by 200+ industry experts.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
                             <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -342,3 +343,4 @@ export default function Home() {
     
 
     
+

@@ -7,8 +7,8 @@ import { Inter, Poppins } from 'next/font/google';
 
 const siteUrl = 'https://www.moremeets.com';
 const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
-const siteTitle = 'MoreMeets: Smart Checklists for Professionals';
-const siteDescription = 'The simplest way for businesses and professionals to ensure quality, compliance, and perfection. One-time purchase, lifetime access.';
+const siteTitle = 'MoreMeets: Professional Operational Checklists & SOPs';
+const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
 
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: heroImageUrl,
         width: 1200,
         height: 630,
-        alt: 'MoreMeets Hero Image',
+        alt: 'MoreMeets Hero Image: Operational Excellence Checklists',
       },
     ],
   },
