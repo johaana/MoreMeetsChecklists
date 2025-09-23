@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -122,7 +123,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/#packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+            <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
                 <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
                 All Packages
             </Link>

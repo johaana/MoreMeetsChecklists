@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -66,7 +66,7 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const packsToShow = premiumPacks;
+    const packsToShow = premiumPacks.filter(p => p.mostPopular).slice(0, 3);
     const title = "Ready-to-Use, Downloadable Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
@@ -122,6 +122,14 @@ function PackList() {
                         </Card>
                     ))}
                 </div>
+                 <div className="text-center mt-16">
+                    <Button asChild size="lg" className="text-lg py-7 px-10">
+                        <Link href="/packs">
+                            Explore All Packages
+                            <ArrowRight className="w-5 h-5 ml-2" />
+                        </Link>
+                    </Button>
+                </div>
             </div>
         </section>
     )
@@ -159,14 +167,14 @@ export default function Home() {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            <Link href="/packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 All Packages
             </Link>
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Why Us
             </Link>
             <Button asChild>
-                <Link href="#packs" prefetch={false}>
+                <Link href="/packs" prefetch={false}>
                     View All Packages
                 </Link>
             </Button>
@@ -195,7 +203,7 @@ export default function Home() {
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
                             <Button size="lg" asChild className="text-lg py-7 px-10">
-                                <Link href="#packs">Browse All Packages</Link>
+                                <Link href="/packs">Browse All Packages</Link>
                             </Button>
                             <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                                 <p className="text-xs text-white/80">
@@ -304,7 +312,7 @@ export default function Home() {
                 </div>
                  <div className="flex flex-col gap-2 items-center text-sm">
                     <p className="font-semibold">Quick Links</p>
-                    <Link href="#packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
+                    <Link href="/packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
                     <Link href="#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
                     <Link href="#faq" className="text-muted-foreground hover:text-foreground">FAQ</Link>
                 </div>

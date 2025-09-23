@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next'
 import { premiumPacks } from '@/lib/premium-packs'
 
@@ -11,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 1,
+    },
+    {
+      url: `${siteUrl}/packs`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
     }
   ];
 
