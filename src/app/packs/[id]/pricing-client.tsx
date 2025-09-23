@@ -1,6 +1,7 @@
 
 'use client';
 
+import * as React from 'react';
 import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { writeFile, utils } from 'xlsx-js-style';
