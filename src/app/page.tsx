@@ -212,7 +212,7 @@ export default function Home() {
             <PackList />
         </React.Suspense>
         
-        <section className="w-full py-16 bg-secondary/30 border-t">
+         <section className="w-full py-16 bg-secondary/30 border-t">
             <div className="container text-center">
                 <Button asChild size="lg" className="text-lg py-7 px-10">
                     <Link href="/packs">
