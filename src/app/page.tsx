@@ -59,6 +59,12 @@ const FaqSection = () => (
                             Our checklists are not created by academics; they are forged by experience. Each pack is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
                         </AccordionContent>
                     </AccordionItem>
+                    <AccordionItem value="item-6">
+                        <AccordionTrigger className="text-lg font-semibold">Do you have checklists for ESG or sustainability?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes. Many of our packs, like the **Facility Management** and **Manufacturing** checklists, contain specific SOPs for energy efficiency, waste reduction, and responsible sourcing. We also have checklists focused on social aspects like labor law compliance and ethical vendor management to help you meet your ESG goals.
+                        </AccordionContent>
+                    </AccordionItem>
                 </Accordion>
             </div>
         </div>
@@ -342,5 +348,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
