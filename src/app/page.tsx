@@ -56,7 +56,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-5">
                         <AccordionTrigger className="text-lg font-semibold">Who creates these checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Our checklists aren't created by academics; they are forged by experience. Our complete library is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
+                            Our checklists are forged by experience, not theory. Our complete library is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-6">
@@ -158,7 +158,7 @@ export default function Home() {
     },
     {
       title: "Forged by Experience",
-      description: "Our packs are the codified knowledge from over 200 industry veterans—not academics. It's distilled experience you can use today.",
+      description: "Our packs are built on the codified knowledge of over 200 industry veterans, translating real-world experience into checklists you can use today.",
       imageId: "for-event-planners"
     }
   ];
