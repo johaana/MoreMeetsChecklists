@@ -145,6 +145,11 @@ export default function Home() {
       description: "Demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust with clients and customers.",
       imageId: "showcase-corporate-hospitality"
     },
+     {
+      title: "Drive Sustainability",
+      description: "Implement checklists for waste reduction, energy efficiency, and responsible sourcing to meet your ESG goals and build a sustainable brand.",
+      imageId: "for-sustainability"
+    },
     {
       title: "Forged by Experience",
       description: "Our packs are codified knowledge from 200+ industry veterans—not academics. Distilled experience you can use today.",
@@ -213,17 +218,17 @@ export default function Home() {
         </React.Suspense>
         
         <section className="w-full py-16 bg-secondary/30 border-t">
-          <div className="container text-center">
-            <Button asChild size="lg" className="text-lg py-7 px-10 bg-accent text-accent-foreground hover:bg-accent/90">
-                <Link href="/packs">
-                    Explore All Packages
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-            </Button>
-            <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
-                Unlock world-class operational standards across your entire organization. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the 'Lock-Out Tag-Out' (LOTO) procedure for manufacturing plants, the 'HACCP Kitchen Opening' protocol for restaurants, and detailed student safety checklists for <strong>Education</strong>.
-            </p>
-        </div>
+            <div className="container text-center">
+                <Button asChild size="lg" className="text-lg py-7 px-10">
+                    <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                </Button>
+                <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
+                    Unlock world-class operational standards across your entire organization. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the 'Lock-Out Tag-Out' (LOTO) procedure for manufacturing plants, the 'HACCP Kitchen Opening' protocol for restaurants, and detailed student safety checklists for <strong>Education</strong>.
+                </p>
+            </div>
         </section>
 
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
