@@ -25,14 +25,42 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             ws['!views'] = [{state: 'frozen', ySplit: 1}];
         };
 
-        // Master Sheet with Links
+        // New Cover Page with Hyperlinks
+        const coverPageName = "Cover Page";
+        const coverPageHeader = [[pack.title]];
+        const coverPageData = [
+            ...pack.checklists.map((checklist) => {
+                const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+                return [
+                    { v: checklist.title, l: { Target: `'${sheetName}'!A1`, Tooltip: `Go to ${checklist.title}` } }
+                ];
+            })
+        ];
+
+        const coverWorksheet = utils.aoa_to_sheet([...coverPageHeader, [" "], ["Click to navigate:"], ...coverPageData]);
+        coverWorksheet['!cols'] = [{ wch: 80 }];
+        
+        // Style header
+        coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
+
+        // Style hyperlinks
+        const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
+        for (let R = 3; R <= rangeLinks.e.r; ++R) { // Start from row 4 (index 3)
+            const address = utils.encode_cell({ r: R, c: 0 });
+            if (coverWorksheet[address] && coverWorksheet[address].l) {
+                 coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+            }
+        }
+        
+        utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
+
+        // Master Sheet with all data (no links)
         const masterSheetName = "Master View";
         const masterSheetData = [
             ["Checklist Title", "Department", "Summary"],
-            ...pack.checklists.map((checklist, index) => {
-                const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            ...pack.checklists.map((checklist) => {
                 return [
-                    { v: checklist.title, l: { Target: `'${sheetName}'!A1`, Tooltip: `Go to ${checklist.title}` } },
+                    checklist.title,
                     checklist.department,
                     checklist.summary
                 ];
@@ -42,18 +70,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         const masterWorksheet = utils.aoa_to_sheet(masterSheetData);
         masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 25 }, { wch: 80 }];
         
-        // Style header and add hyperlinks
-        const range = utils.decode_range(masterWorksheet['!ref']!);
-        for (let C = range.s.c; C <= range.e.c; ++C) {
+        const rangeMaster = utils.decode_range(masterWorksheet['!ref']!);
+        for (let C = rangeMaster.s.c; C <= rangeMaster.e.c; ++C) {
             const address = utils.encode_cell({ r: 0, c: C });
             if (masterWorksheet[address]) {
                 masterWorksheet[address].s = headerStyle;
-            }
-        }
-        for (let R = 1; R <= range.e.r; ++R) {
-            const address = utils.encode_cell({ r: R, c: 0 });
-            if (masterWorksheet[address] && masterWorksheet[address].l) {
-                 masterWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
             }
         }
         
@@ -117,7 +138,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     
                     <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border">
                         <CardHeader className="p-6 relative">
-                             <Badge className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary/20 text-primary-foreground font-bold z-10 border-2 border-background">
+                             <Badge className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary/20 text-primary font-bold z-10 border-2 border-background">
                                 <Star className="w-4 h-4 mr-2" /> Most Popular
                              </Badge>
                             <CardTitle className="font-headline text-2xl pt-4">Professional Pack</CardTitle>
@@ -125,10 +146,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardHeader>
                         <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
-                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access & free updates.</span></p>
                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                              <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No custom priority action plan.</span></p>
+                             <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No location-specific compliance checklists.</span></p>
                         </CardContent>
                         <CardFooter className="p-6 mt-auto">
                             <Button size="lg" className="w-full font-bold text-lg" onClick={handleDownload}>
