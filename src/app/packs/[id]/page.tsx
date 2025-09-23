@@ -23,7 +23,7 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
 const PainPointsSection = ({ category }: { category: string }) => {
     const content = {
         Hospitality: {
-            title: "Why This Checklist Is Your New Competitive Advantage",
+            title: "The Business Case for Operational Excellence",
             points: [
                 { icon: <Users />, title: "Inconsistent Guest Experience", description: "Standardize every touchpoint, from check-in to room service, ensuring every guest receives the same 5-star treatment, every time. This builds loyalty and drives positive reviews." },
                 { icon: <HandCoins />, title: "Revenue Leakage & Cost Overruns", description: "Plug financial leaks by tracking minibar consumption accurately, preventing wastage in F&B, and implementing preventative maintenance to avoid costly emergency repairs." },
@@ -99,7 +99,7 @@ export default function Page({ params }: { params: { id: string } }) {
   
   const whoIsItForMap: Record<string, string[]> = {
     "Hospitality": ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
-    "Corporate": ["Founders", "COOs", "VPs of Operations", "Heads of Admin", "Corporate Real Estate (CRE) Heads", "Chief Engineers"],
+    "Corporate": ["Founders", "COOs", "VPs of Operations", "Heads of Administration", "Heads of Facilities", "Chief Engineers"],
     "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
     "Healthcare": ["Hospital Owners", "COOs", "Heads of Quality & Compliance", "Lab Owners", "and their teams"],
     "Education": ["School Owners", "Trustees", "Principals", "Heads of Administration", "and their teams"],
@@ -230,3 +230,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
     
 
+
+
+
+    
