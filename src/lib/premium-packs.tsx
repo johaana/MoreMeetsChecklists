@@ -974,8 +974,8 @@ export const premiumPacks = [
     {
         id: 'restaurant_operations_checklist',
         title: "Restaurant Operations Checklist",
-        priceUSD: 99.99,
-        priceINR: 7999,
+        priceUSD: 89.99,
+        priceINR: 6999,
         category: "Hospitality",
         description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,

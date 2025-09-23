@@ -227,7 +227,6 @@ const PersonalizationDialog = ({ pack, onConfirm }: { pack: PremiumPack, onConfi
         <AlertDialogContent className="max-w-2xl">
             <AlertDialogHeader>
                 <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
-                    <Sparkles className="w-6 h-6 text-accent" />
                     Personalize Your Checklist Pack
                 </AlertDialogTitle>
                 <AlertDialogDescription>
@@ -259,9 +258,9 @@ const PersonalizationDialog = ({ pack, onConfirm }: { pack: PremiumPack, onConfi
                 </div>
             </div>
             <AlertDialogFooter>
-                <AlertDialogCancel onClick={() => handleDownload(pack)}>Skip &amp; Download Standard</AlertDialogCancel>
+                <AlertDialogCancel onClick={() => handleDownload(pack)}>Skip &amp; Download</AlertDialogCancel>
                 <AlertDialogAction onClick={onConfirm}>
-                    Add Personalization &amp; Proceed
+                    Proceed to Purchase
                 </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
@@ -355,7 +354,6 @@ export default function Page({ params }: { params: { id: string } }) {
                                         <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 py-1 px-4 bg-accent text-accent-foreground font-bold z-10">Best Value</Badge>
                                         <CardHeader className="p-6">
                                             <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                                                <Sparkles className="w-6 h-6 text-accent" />
                                                 Personalized Pack
                                             </CardTitle>
                                             <p className="text-3xl font-bold text-primary">
