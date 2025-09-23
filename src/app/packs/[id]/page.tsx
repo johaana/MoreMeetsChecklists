@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { premiumPacks } from '@/lib/premium-packs';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2, Sparkles } from 'lucide-react';
+import { ArrowLeft, FileCheck2, Sparkles, Check, X } from 'lucide-react';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
@@ -258,9 +258,9 @@ const PersonalizationDialog = ({ onConfirm }: { onConfirm: () => void }) => {
                 </div>
             </div>
             <AlertDialogFooter>
-                <AlertDialogCancel>Skip Personalization</AlertDialogCancel>
+                <AlertDialogCancel onClick={() => handleDownload(pack)}>Skip &amp; Download Standard</AlertDialogCancel>
                 <AlertDialogAction onClick={onConfirm}>
-                    Add Personalization & Proceed
+                    Add Personalization &amp; Proceed
                 </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
@@ -284,6 +284,8 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   const curatedBy = curationMap[pack.category] || "a diverse group of over 200+ seasoned industry professionals.";
+  const personalizationPriceUSD = 29;
+  const personalizationPriceINR = 2299;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -322,21 +324,58 @@ export default function Page({ params }: { params: { id: string } }) {
                         </div>
                     </div>
                      <div className="text-center bg-primary/5 border border-primary/20 rounded-2xl p-6">
-                        <p className="text-4xl font-bold text-primary whitespace-nowrap">
-                            ${pack.priceUSD} / ₹{pack.priceINR}
-                        </p>
-                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Updates</p>
-                        <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                                    Buy Now & Get Instant Access
-                                </Button>
-                            </AlertDialogTrigger>
-                            <PersonalizationDialog onConfirm={() => handleDownload(pack)} />
-                        </AlertDialog>
+                        <h2 className="text-2xl font-bold font-headline mb-4">Choose Your Playbook</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto">
+                           
+                           {/* Standard Pack Option */}
+                            <Card className="flex flex-col text-left">
+                                <CardHeader>
+                                    <CardTitle>Standard Pack</CardTitle>
+                                    <p className="text-2xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
+                                </CardHeader>
+                                <CardContent className="flex-1 space-y-2 text-sm">
+                                    <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete, expert-curated playbook.</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access and free updates.</span></p>
+                                     <p className="flex items-start gap-2"><X className="w-4 h-4 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">Custom Priority Action Plan.</span></p>
+                                </CardContent>
+                                <CardFooter>
+                                    <Button size="lg" className="w-full font-bold" variant="outline" onClick={() => handleDownload(pack)}>
+                                        Get Standard
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+
+                            {/* Personalized Pack Option */}
+                             <AlertDialog>
+                                <AlertDialogTrigger asChild>
+                                     <Card className="flex flex-col text-left border-2 border-accent cursor-pointer hover:shadow-lg transition-shadow">
+                                        <CardHeader>
+                                            <CardTitle className="flex items-center gap-2">
+                                                <Sparkles className="w-5 h-5 text-accent" />
+                                                Personalized Pack
+                                            </CardTitle>
+                                            <p className="text-2xl font-bold text-primary">
+                                                ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
+                                            </p>
+                                        </CardHeader>
+                                        <CardContent className="flex-1 space-y-2 text-sm">
+                                             <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete, expert-curated playbook.</span></p>
+                                             <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access and free updates.</span></p>
+                                             <p className="flex items-start gap-2 font-semibold"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan.</span></p>
+                                        </CardContent>
+                                        <CardFooter>
+                                            <Button size="lg" className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                                Personalize Now
+                                            </Button>
+                                        </CardFooter>
+                                    </Card>
+                                </AlertDialogTrigger>
+                                <PersonalizationDialog onConfirm={() => handleDownload(pack)} />
+                            </AlertDialog>
+
+                        </div>
                          <div className="mt-4 text-xs text-muted-foreground space-y-1">
-                            <p>✅ Lifetime Access & Unlimited Updates</p>
-                            <p>✅ 24/7 Priority Support</p>
+                            <p>One-Time Purchase, Lifetime Updates & 24/7 Priority Support</p>
                         </div>
                     </div>
                 </div>
@@ -375,27 +414,6 @@ export default function Page({ params }: { params: { id: string } }) {
                         </Card>
                     ))}
                 </div>
-
-                 <div className="text-center mt-16">
-                     <div className="text-center bg-primary/5 border border-primary/20 rounded-2xl p-8 max-w-2xl mx-auto">
-                        <h3 className="text-2xl font-bold font-headline mb-2">Ready to Standardize Your Operations?</h3>
-                        <p className="text-muted-foreground mb-6">Get instant, lifetime access to this complete playbook and start running a more efficient, compliant, and profitable business today.</p>
-                        <p className="text-4xl font-bold text-primary whitespace-nowrap">
-                            ${pack.priceUSD} / ₹{pack.priceINR}
-                        </p>
-                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Updates</p>
-                        <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                                    Download Now
-                                </Button>
-                            </AlertDialogTrigger>
-                            <PersonalizationDialog onConfirm={() => handleDownload(pack)} />
-                        </AlertDialog>
-                    </div>
-                </div>
-
-
             </div>
         </section>
 
@@ -415,3 +433,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
