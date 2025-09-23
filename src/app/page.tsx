@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, Users, Briefcase, Leaf, Shield, Hospital, ShoppingBasket, GraduationCap, Factory, Building2, Utensils } from "lucide-react";
+import { Check, Star, Users, Briefcase, Leaf, Shield, Hospital, ShoppingBasket, GraduationCap, Factory, Building2, Utensils, Wrench, Dumbbell, PawPrint, Plane, Gem, Truck, Building } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -28,12 +28,20 @@ const OtherIndustriesSection = () => (
                     We have a growing library of specialized checklist packs for a variety of professional fields.
                 </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {[
+                    { icon: <Building2 className="w-8 h-8 text-primary" />, name: 'Corporate', href: '#packs', sub: 'Facilities, Admin, HR' },
                     { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/packs/healthcare_compliance_suite', sub: 'Hospitals, Clinics, Labs' },
                     { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/packs/retail_operations_pack', sub: 'Jewellery, Malls, Stores' },
-                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/packs/education_sector_pack', sub: 'Schools, Colleges, Universities' },
+                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/packs/education_sector_pack', sub: 'Schools, Colleges' },
                     { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/packs/manufacturing_plant_pack', sub: 'Plants, Factories, EHS' },
+                    { icon: <Utensils className="w-8 h-8 text-primary" />, name: 'Events', href: '#packs', sub: 'Weddings, Corporate' },
+                    { icon: <Truck className="w-8 h-8 text-primary" />, name: 'Automotive', href: '#packs', sub: 'Workshops, Dealerships' },
+                    { icon: <Building className="w-8 h-8 text-primary" />, name: 'Real Estate', href: '#packs', sub: 'Landlords, REITs' },
+                    { icon: <Shield className="w-8 h-8 text-primary" />, name: 'Compliance', href: '#packs', sub: 'ESG, ISO, CCOs' },
+                    { icon: <Dumbbell className="w-8 h-8 text-primary" />, name: 'Wellness', href: '#packs', sub: 'Gyms, Spas, Salons' },
+                    { icon: <PawPrint className="w-8 h-8 text-primary" />, name: 'Personal', href: '#packs', sub: 'Pets, Travel' },
+
                 ].map((item) => (
                     <Link href={item.href} key={item.name} className="group">
                         <div className="flex flex-col items-center justify-center gap-2 p-6 border rounded-xl bg-secondary/30 hover:bg-secondary/60 transition-colors h-full">
@@ -351,7 +359,5 @@ export default function Home() {
     </div>
   );
 }
-
-    
 
     
