@@ -194,12 +194,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <div className="container px-4 md:px-6">
                  <div className="max-w-2xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
-                    <p className="text-muted-foreground md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
+                    <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     
-                    <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border">
-                        <CardHeader className="p-6">
+                    <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border relative">
+                        <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
+                        <CardHeader className="p-6 pt-8">
                             <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                             <p className="text-4xl font-bold text-foreground">₹{pack.priceINR}</p>
                         </CardHeader>
@@ -345,5 +346,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     )
 }
-
-    

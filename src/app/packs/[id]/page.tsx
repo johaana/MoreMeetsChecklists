@@ -127,8 +127,8 @@ export default function Page({ params }: { params: { id: string } }) {
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-6 items-center max-w-5xl mx-auto">
-                    <div className="w-24 h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0 hidden md:block">
+                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-6 items-start max-w-5xl mx-auto">
+                     <div className="w-24 h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0">
                         {React.cloneElement(pack.icon, { className: "w-12 h-12 text-primary" })}
                     </div>
                     <div className="space-y-4">
@@ -200,5 +200,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
