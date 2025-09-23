@@ -221,7 +221,7 @@ export default function Home() {
                     </Link>
                 </Button>
                 <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
-                    Our comprehensive library is the codified knowledge of over 200 seasoned industry professionals. We've distilled decades of real-world experience—from the high-stakes precision of a hospital's surgical safety protocol to the detailed logistics of a retail store's inventory management, and the rigorous safety standards of a manufacturing plant. Whether you're managing a 5-star hotel, a corporate high-rise, or a school campus, our packs provide the framework to standardize excellence and ensure compliance.
+                    Move beyond firefighting and start standardizing excellence. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, ensure child safety with <strong>Education</strong> campus protocols, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the &apos;Lock-Out Tag-Out&apos; (LOTO) procedure for manufacturing plants, the &apos;HACCP Kitchen Opening&apos; protocol for restaurants, and detailed student safety checklists for schools.
                 </p>
             </div>
         </section>
