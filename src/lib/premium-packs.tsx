@@ -717,8 +717,7 @@ export const premiumPacks = [
                     { id: 'FIN-IC-005', description: "Ensure proper storage conditions to prevent spoilage or damage", priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Stores' }
                 ]
             },
-            { id: "FIN-AP-005", description: "Reconcile vendor statements with accounts payable records", priority: "High", riskLevel: "Medium", proof: "Reconciliation Statement", location: "Accounts" },
-{ id: "FIN-CH-005", description: "Report any cash shortages or overages immediately", priority: "High", riskLevel: "High", proof: "Discrepancy Report", location: "Accounts" } ,{ id: "FB-RTR-005", description: "Have a plan for quickly securing furniture in case of high winds or rain", priority: "High", riskLevel: "High", proof: "Emergency Plan", location: "Rooftop" } ,{ id: "FO-BC-005", description: "Keep a stock of basic stationery for guest use", priority: "Low", riskLevel: "Low", proof: "Inventory Check", location: "Business Center" } ,{ id: "FB-CBH-005", description: "Brief all staff on their roles and the event timeline", priority: "High", riskLevel: "Medium", proof: "Briefing Log", location: "Banquet Hall" } ,{ id: "HK-LP-005", description: "Track the volume of linen processed and report any major deviations", priority: "Medium", riskLevel: "Low", proof: "Production Report", location: "Laundry Plant" } ,{ id: "HR-SC-005", description: "Collect feedback from staff on food quality and variety", priority: "Medium", riskLevel: "Low", proof: "Feedback Box/Survey", location: "Staff Canteen" } ,{ id: "WEL-KPA-005", description: "Have a first-aid kit readily available and checked regularly", priority: "High", riskLevel: "High", proof: "First-Aid Log", location: "Kids Club" } ,{
+            {
                 title: "🧮 Accounts Payable Checklist",
                 department: "Finance",
                 frequency: "Daily",
@@ -729,6 +728,7 @@ export const premiumPacks = [
                     { id: 'FIN-AP-002', description: "Check invoices for accuracy in pricing and calculations", priority: 'High', riskLevel: 'High', proof: 'Invoice Audit', location: 'Accounts' },
                     { id: 'FIN-AP-003', description: "Get approval from the relevant department head for payment", priority: 'High', riskLevel: 'High', proof: 'Signed Invoice', location: 'Accounts' },
                     { id: 'FIN-AP-004', description: "Process payments to vendors within the agreed credit period", priority: 'High', riskLevel: 'Medium', proof: 'Payment Vouchers', location: 'Accounts' },
+                    { id: "FIN-AP-005", description: "Reconcile vendor statements with accounts payable records", priority: "High", riskLevel: "Medium", proof: "Reconciliation Statement", location: "Accounts" }
                 ]
             },
             {
@@ -742,6 +742,7 @@ export const premiumPacks = [
                     { id: 'FIN-CH-002', description: "Ensure all cash transactions are recorded accurately in the POS system", priority: 'High', riskLevel: 'High', proof: 'POS Transaction Log', location: 'POS Counters' },
                     { id: 'FIN-CH-003', description: "Reconcile cash collected with the POS report at the end of the shift", priority: 'High', riskLevel: 'High', proof: 'Cash Reconciliation Sheet', location: 'POS Counters' },
                     { id: 'FIN-CH-004', description: "Deposit the day's cash collection into the main safe or bank drop", priority: 'High', riskLevel: 'High', proof: 'Deposit Slip', location: 'Accounts' },
+                    { id: "FIN-CH-005", description: "Report any cash shortages or overages immediately", priority: "High", riskLevel: "High", proof: "Discrepancy Report", location: "Accounts" }
                 ]
             },
             {
@@ -755,6 +756,7 @@ export const premiumPacks = [
                     { id: 'FB-RTR-002', description: "Inspect railings and barriers for safety and stability", priority: 'High', riskLevel: 'High', proof: 'Safety Log', location: 'Rooftop' },
                     { id: 'FB-RTR-003', description: "Check weather forecast and prepare accordingly (e.g., umbrellas, heaters)", priority: 'High', riskLevel: 'Medium', proof: 'Weather Report', location: 'Rooftop' },
                     { id: 'FB-RTR-004', description: "Ensure outdoor lighting is functional", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Rooftop' },
+                    { id: "FB-RTR-005", description: "Have a plan for quickly securing furniture in case of high winds or rain", priority: "High", riskLevel: "High", proof: "Emergency Plan", location: "Rooftop" }
                 ]
             },
             {
@@ -768,7 +770,7 @@ export const premiumPacks = [
                     { id: 'FO-BC-002', description: "Check printer for paper and ink/toner levels", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Business Center' },
                     { id: 'FO-BC-003', description: "Clean and sanitize keyboards, mice, and desk surfaces", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Business Center' },
                     { id: 'FO-BC-004', description: "Ensure the area is quiet and presentable", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Business Center' },
-                    { id: 'FO-BC-005', description: "Keep a stock of basic stationery for guest use", priority: 'Low', riskLevel: 'Low', proof: 'Inventory Check', location: 'Business Center' }
+                    { id: "FO-BC-005", description: "Keep a stock of basic stationery for guest use", priority: "Low", riskLevel: "Low", proof: "Inventory Check", location: "Business Center" }
                 ]
             },
             {
@@ -782,7 +784,7 @@ export const premiumPacks = [
                     { id: 'FB-CBH-002', description: "Test all audio-visual equipment (microphones, projectors, screens)", priority: 'High', riskLevel: 'High', proof: 'AV Test Log', location: 'Banquet Hall' },
                     { id: 'FB-CBH-003', description: "Check temperature and lighting controls", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Banquet Hall' },
                     { id: 'FB-CBH-004', description: "Coordinate with catering based on the Banquet Event Order (BEO)", priority: 'High', riskLevel: 'High', proof: 'BEO Review', location: 'Banquet Hall' },
-                    { id: 'FB-CBH-005', description: "Brief all staff on their roles and the event timeline", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Banquet Hall' }
+                    { id: "FB-CBH-005", description: "Brief all staff on their roles and the event timeline", priority: "High", riskLevel: "Medium", proof: "Briefing Log", location: "Banquet Hall" }
                 ]
             },
             {
@@ -796,7 +798,7 @@ export const premiumPacks = [
                     { id: 'HK-LP-002', description: "Check levels of all detergents, softeners, and other chemicals", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Laundry Plant' },
                     { id: 'HK-LP-003', description: "Monitor the workflow for any bottlenecks in sorting, washing, or folding", priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Laundry Plant' },
                     { id: 'HK-LP-004', description: "Ensure all safety procedures are being followed by staff", priority: 'High', riskLevel: 'High', proof: 'Safety Audit', location: 'Laundry Plant' },
-                    { id: 'HK-LP-005', description: "Track the volume of linen processed and report any major deviations", priority: 'Medium', riskLevel: 'Low', proof: 'Production Report', location: 'Laundry Plant' }
+                    { id: "HK-LP-005", description: "Track the volume of linen processed and report any major deviations", priority: "Medium", riskLevel: "Low", proof: "Production Report", location: "Laundry Plant" }
                 ]
             },
             {
@@ -810,7 +812,7 @@ export const premiumPacks = [
                     { id: 'HR-SC-002', description: "Ensure the dining area is clean and seating is adequate", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Staff Canteen' },
                     { id: 'HR-SC-003', description: "Check that the kitchen and food storage areas are clean and compliant with safety norms", priority: 'High', riskLevel: 'High', proof: 'Kitchen Audit', location: 'Staff Canteen' },
                     { id: 'HR-SC-004', description: "Monitor food wastage and implement measures to reduce it", priority: 'Medium', riskLevel: 'Medium', proof: 'Wastage Log', location: 'Staff Canteen' },
-                    { id: 'HR-SC-005', description: "Collect feedback from staff on food quality and variety", priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Box/Survey', location: 'Staff Canteen' }
+                    { id: "HR-SC-005", description: "Collect feedback from staff on food quality and variety", priority: "Medium", riskLevel: "Low", proof: "Feedback Box/Survey", location: "Staff Canteen" }
                 ]
             },
             {
@@ -824,7 +826,7 @@ export const premiumPacks = [
                     { id: 'WEL-KPA-002', description: "Clean and sanitize the play area before opening", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kids Club' },
                     { id: 'WEL-KPA-003', description: "Ensure adequate supervision based on the number of children present", priority: 'High', riskLevel: 'High', proof: 'Roster Check', location: 'Kids Club' },
                     { id: 'WEL-KPA-004', description: "Maintain a sign-in and sign-out register for all children", priority: 'High', riskLevel: 'High', proof: 'Register', location: 'Kids Club' },
-                    { id: 'WEL-KPA-005', description: "Have a first-aid kit readily available and checked regularly", priority: 'High', riskLevel: 'High', proof: 'First-Aid Log', location: 'Kids Club' }
+                    { id: "WEL-KPA-005", description: "Have a first-aid kit readily available and checked regularly", priority: "High", riskLevel: "High", proof: "First-Aid Log", location: "Kids Club" }
                 ]
             }
         ]
@@ -1319,7 +1321,8 @@ export const premiumPacks = [
                     { id: 'CK-OVF-001', description: "Check sales data for patterns", priority: 'High', riskLevel: 'Medium', proof: 'Data check', location: 'marketing'},
                     { id: 'CK-OVF-002', description: "Check holiday and season for impact", priority: 'Medium', riskLevel: 'Low', proof: 'Seasonal Data', location: 'Marketing'},
                     { id: 'CK-OVF-003', description: "Check if promotions have impacted order levels.", priority: 'Medium', riskLevel: 'Low', proof: 'Data', location: 'Marketing'},
-                    { id: 'CK-OVF-004', description: "Staff to meet anticipated demand", priority: 'Medium', riskLevel: 'Medium', proof: 'Staff Allocation', location: 'Marketing'}
+                    { id: 'CK-OVF-004', description: "Staff to meet anticipated demand", priority: 'Medium', riskLevel: 'Medium', proof: 'Staff Allocation', location: 'Marketing'},
+                    { id: 'CK-OVF-005', description: "Adjust inventory based on forecast", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Log', location: 'Marketing'}
                 ]
             },
              {
@@ -1333,7 +1336,7 @@ export const premiumPacks = [
                     { id: 'CK-DOO-002', description: "Are communications prompt and clear?", priority: 'Medium', riskLevel: 'Low', proof: 'Communications Log', location: 'Operations' },
                     { id: 'CK-DOO-003', description: "Optimize routes as necessary", priority: 'Medium', riskLevel: 'Low', proof: 'Route map', location: 'Operations' },
                     { id: 'CK-DOO-004', description: "Are there sufficient personnel to support fast order handoffs?", priority: 'Medium', riskLevel: 'Low', proof: 'Staffing', location: 'Operations' },
-                    { id: 'CK-DOO-005', description: "Monitor and adjust fleet based on volume trends", priority: 'Medium', riskLevel: 'Medium', proof: 'Data', location: 'Operations' },
+                    { id: 'CK-DOO-005', description: "Monitor and adjust fleet based on volume trends", priority: 'Medium', riskLevel: 'Medium', proof: 'Data', location: 'Operations' }
                 ]
             },
             {
@@ -1347,7 +1350,7 @@ export const premiumPacks = [
                     { id: 'CK-MO-002', description: "Are there ingredients that are not being used? ", priority: 'High', riskLevel: 'Medium', proof: 'Waste and Inventory Log', location: 'Head Chef' },
                     { id: 'CK-MO-003', description: "Is the menu balanced? ", priority: 'Medium', riskLevel: 'Medium', proof: 'Menu Audit', location: 'Head Chef' },
                     { id: 'CK-MO-004', description: "Is waste impacting menu creation?", priority: 'Medium', riskLevel: 'Medium', proof: 'Waste and Inventory Log', location: 'Head Chef' },
-                    { id: 'CK-MO-005', description: "What dishes have high input cost and low sales volume?", priority: 'High', riskLevel: 'Medium', proof: 'Profitability Data', location: 'Head Chef' },
+                    { id: 'CK-MO-005', description: "What dishes have high input cost and low sales volume?", priority: 'High', riskLevel: 'Medium', proof: 'Profitability Data', location: 'Head Chef' }
                 ]
             },
              {
@@ -1410,5 +1413,3 @@ export type PremiumPack = {
     checklists: Checklist[];
     previewScenario?: PreviewScenario;
 };
-
-    
