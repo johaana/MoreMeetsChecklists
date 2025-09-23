@@ -324,13 +324,13 @@ export default function Page({ params }: { params: { id: string } }) {
                         </div>
                     </div>
                      <div className="text-center bg-primary/5 border border-primary/20 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold font-headline mb-4">Choose Your Download</h2>
+                        <h2 className="text-2xl font-bold font-headline mb-4">Select Your Package</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto">
                            
-                           {/* Standard Pack Option */}
+                           {/* Professional Pack Option */}
                             <Card className="flex flex-col text-left">
                                 <CardHeader>
-                                    <CardTitle>Standard Pack</CardTitle>
+                                    <CardTitle>Professional Pack</CardTitle>
                                     <p className="text-2xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
                                 </CardHeader>
                                 <CardContent className="flex-1 space-y-2 text-sm">
@@ -340,19 +340,19 @@ export default function Page({ params }: { params: { id: string } }) {
                                 </CardContent>
                                 <CardFooter>
                                     <Button size="lg" className="w-full font-bold" variant="outline" onClick={() => handleDownload(pack)}>
-                                        Get Standard
+                                        Get Professional
                                     </Button>
                                 </CardFooter>
                             </Card>
 
-                            {/* Personalized Pack Option */}
+                            {/* Bespoke Pack Option */}
                              <AlertDialog>
                                 <AlertDialogTrigger asChild>
                                      <Card className="flex flex-col text-left border-2 border-accent cursor-pointer hover:shadow-lg transition-shadow">
                                         <CardHeader>
                                             <CardTitle className="flex items-center gap-2">
                                                 <Sparkles className="w-5 h-5 text-accent" />
-                                                Personalized Pack
+                                                Bespoke Pack
                                             </CardTitle>
                                             <p className="text-2xl font-bold text-primary">
                                                 ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
