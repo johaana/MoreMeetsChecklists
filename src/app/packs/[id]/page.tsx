@@ -98,16 +98,16 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   
   const whoIsItForMap: Record<string, string[]> = {
-    "Hospitality": ["Hotel Owners", "COOs", "F&B Directors", "Heads of Security", "Cluster GMs", "General Managers", "Restaurant Owners"],
+    "Hospitality": ["Hotel Owners", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
     "Corporate": ["Founders", "COOs", "VPs of Operations", "Heads of Admin", "Corporate Real Estate (CRE) Heads", "Chief Engineers"],
     "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
-    "Healthcare": ["Hospital Owners", "COOs", "Hospital Administrators", "Heads of Quality & Compliance", "NABH/JCI Coordinators", "Lab Owners"],
-    "Education": ["School Owners", "Trustees", "Principals", "Heads of Administration", "Heads of Campus Security"],
+    "Healthcare": ["Hospital Owners", "COOs", "Heads of Quality & Compliance", "Lab Owners"],
+    "Education": ["School Owners", "Trustees", "Principals", "Heads of Administration", "and their teams"],
     "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety"],
-    "Events": ["Event Management Company Owners", "Senior Event Planners", "Banquet Directors"],
+    "Events": ["Event Company Owners", "and their teams"],
     "Personal": ["Frequent Travelers", "Pet Owners"],
     "Automotive": ["Dealership Owners", "Workshop Owners", "Service Directors"],
-    "Real Estate": ["Property Management Firm Owners", "Landlords", "Heads of Operations (REITs)"],
+    "Real Estate": ["Property Firm Owners", "Landlords", "Heads of Operations (REITs)"],
     "Compliance": ["Chief Compliance Officers (CCOs)", "Heads of ESG", "Heads of Quality (ISO)"],
     "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors"]
   };
