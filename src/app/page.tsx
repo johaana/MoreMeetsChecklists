@@ -325,6 +325,9 @@ export default function Home() {
                     <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Privacy Policy
                     </Link>
+                    <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Sitemap
+                    </Link>
                      <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
                 </div>
             </div>
