@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { writeFile, utils } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -41,8 +41,8 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {scenario.tasks.map((task) => (
-                                <TableRow key={task.id}>
+                            {scenario.tasks.map((task, index) => (
+                                <TableRow key={index}>
                                     <TableCell>{task.description}</TableCell>
                                     <TableCell className="text-muted-foreground">{task.sourceChecklist}</TableCell>
                                     <TableCell>
@@ -190,13 +190,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const enterprisePriceINR = 49999;
 
     return (
-        <div className="w-full">
-            <div className="text-center bg-secondary py-16 rounded-2xl">
+        <div className="w-full py-12 md:py-16">
+            <div className="container px-4 md:px-6">
                  <div className="max-w-2xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-muted-foreground md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     
                     <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border">
                         <CardHeader className="p-6">

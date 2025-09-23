@@ -123,9 +123,9 @@ export default function Page({ params }: { params: { id: string } }) {
       </header>
 
       <main className="flex-1">
-        <section className="w-full py-8">
+        <section className="w-full bg-secondary/30 py-12 md:py-16">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-4 items-start mb-8">
+                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-6 items-start max-w-5xl mx-auto">
                     <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block">
                         {pack.icon}
                     </div>
@@ -136,19 +136,20 @@ export default function Page({ params }: { params: { id: string } }) {
                         <p className="text-muted-foreground md:text-lg">
                             {pack.description}
                         </p>
-                         <div className="mt-4 bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
-                            <p className="text-sm font-semibold text-primary">Perfect For:</p>
+                         <div className="mt-6 bg-background/50 border p-4 rounded-lg">
+                            <p className="text-sm font-semibold text-primary mb-2">Perfect For:</p>
                             <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
                         </div>
                     </div>
                 </div>
-                <PricingClient pack={pack} />
             </div>
         </section>
 
+        <PricingClient pack={pack} />
+
         <PainPointsSection category={pack.category} />
 
-        <section id="checklists" className="w-full py-12">
+        <section id="checklists" className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
