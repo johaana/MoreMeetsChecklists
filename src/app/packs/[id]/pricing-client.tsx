@@ -5,7 +5,7 @@ import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
 import { writeFile, utils } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye } from 'lucide-react';
+import { Check, X, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -205,11 +205,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <p className="text-4xl font-bold text-foreground">₹{pack.priceINR}</p>
                         </CardHeader>
                         <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
-                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
+                             <p className="flex items-start gap-2"><Package className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
+                             <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
-                             <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No custom priority action plan.</span></p>
-                             <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No location-specific compliance checklists.</span></p>
                         </CardContent>
                         <CardFooter className="p-6 mt-auto">
                             <Button size="lg" className="w-full font-bold text-lg" onClick={handleDownload}>
@@ -327,7 +325,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
     )
 }
-
-    
 
     
