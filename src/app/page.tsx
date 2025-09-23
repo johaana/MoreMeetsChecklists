@@ -87,7 +87,7 @@ function PackList() {
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary">
                             <CardHeader className="p-6 relative">
                                 {pack.badgeText && (
-                                    <Badge variant={pack.badgeVariant} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
+                                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
                                     <Star className="w-4 h-4" /> {pack.badgeText}
                                     </Badge>
                                 )}
@@ -221,7 +221,7 @@ export default function Home() {
                     </Link>
                 </Button>
                 <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
-                    Move beyond firefighting and start standardizing excellence. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, ensure child safety with <strong>Education</strong> campus protocols, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the &apos;Lock-Out Tag-Out&apos; (LOTO) procedure for manufacturing plants, the &apos;HACCP Kitchen Opening&apos; protocol for restaurants, and detailed student safety checklists for schools.
+                    Unlock world-class operational standards across your entire organization. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, ensure child safety with <strong>Education</strong> campus protocols, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the &apos;Lock-Out Tag-Out&apos; (LOTO) procedure for manufacturing plants, the &apos;HACCP Kitchen Opening&apos; protocol for restaurants, and detailed student safety checklists for schools.
                 </p>
             </div>
         </section>
