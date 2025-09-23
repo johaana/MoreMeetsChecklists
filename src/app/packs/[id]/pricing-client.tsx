@@ -5,12 +5,9 @@ import * as React from 'react';
 import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { writeFile, utils } from 'xlsx-js-style';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText, Loader2 } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -19,8 +16,6 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useToast } from '@/hooks/use-toast';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
     return (
@@ -296,8 +291,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardFooter>
             </Card>
 
-             <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border">
-                <CardHeader className="p-6">
+             <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
+                 <Badge variant="destructive" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">For Teams</Badge>
+                <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                         <Building className="w-6 h-6 text-primary" />
                         Enterprise
