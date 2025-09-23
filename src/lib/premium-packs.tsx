@@ -5,8 +5,8 @@ export const premiumPacks = [
     {
         id: 'hospitality_excellence_suite',
         title: "Hotel & Resort Operations Checklist",
-        priceUSD: 79.99,
-        priceINR: 6499,
+        priceUSD: 99.99,
+        priceINR: 7999,
         category: "Hospitality",
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
@@ -614,8 +614,8 @@ export const premiumPacks = [
     {
         id: 'facility_management_blueprint',
         title: "Facility Management Checklist",
-        priceUSD: 129.99,
-        priceINR: 9999,
+        priceUSD: 169.99,
+        priceINR: 12999,
         category: "Corporate",
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment across multiple locations.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
@@ -974,8 +974,8 @@ export const premiumPacks = [
     {
         id: 'restaurant_operations_checklist',
         title: "Restaurant Operations Checklist",
-        priceUSD: 79.99,
-        priceINR: 6499,
+        priceUSD: 99.99,
+        priceINR: 7999,
         category: "Hospitality",
         description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
@@ -1060,8 +1060,8 @@ export const premiumPacks = [
     {
         id: 'jewellery_store_ops',
         title: "Jewellery Store Checklist",
-        priceUSD: 149.99,
-        priceINR: 11999,
+        priceUSD: 189.99,
+        priceINR: 14999,
         category: "Retail",
         description: "The definitive security and operations manual for high-value jewellery retail. Protect your assets, staff, and customers.",
         icon: <Gem className="w-8 h-8 text-primary" />,
@@ -1110,8 +1110,8 @@ export const premiumPacks = [
     {
         id: 'pharmacy_ops_compliance',
         title: "Pharmacy Checklist",
-        priceUSD: 149.99,
-        priceINR: 11999,
+        priceUSD: 189.99,
+        priceINR: 14999,
         category: "Healthcare",
         description: "A specialized, compliance-focused toolkit for retail pharmacies to ensure patient safety and operational accuracy.",
         icon: <Cross className="w-8 h-8 text-primary" />,
@@ -1160,8 +1160,8 @@ export const premiumPacks = [
     {
         id: 'hospital_administration_ops',
         title: "Hospital Administration Checklist",
-        priceUSD: 199.99,
-        priceINR: 15999,
+        priceUSD: 249.99,
+        priceINR: 19999,
         category: "Healthcare",
         description: "A comprehensive operational toolkit for hospital administrators covering patient care, safety, and departmental coordination.",
         icon: <Cross className="w-8 h-8 text-primary" />,
@@ -1246,8 +1246,8 @@ export const premiumPacks = [
     {
         id: 'private_clinic_ops',
         title: "Private Clinic & Outpatient Facility Checklist",
-        priceUSD: 149.99,
-        priceINR: 11999,
+        priceUSD: 189.99,
+        priceINR: 14999,
         category: "Healthcare",
         description: "The essential operations checklist for private medical and dental clinics, focusing on patient flow, safety, and billing.",
         icon: <Cross className="w-8 h-8 text-primary" />,
@@ -1296,8 +1296,8 @@ export const premiumPacks = [
     {
         id: 'diagnostic_lab_ops',
         title: "Diagnostic Lab Checklist",
-        priceUSD: 159.99,
-        priceINR: 12999,
+        priceUSD: 199.99,
+        priceINR: 15999,
         category: "Healthcare",
         description: "A zero-error tolerance playbook for pathology and diagnostic labs focusing on accuracy, safety, and compliance.",
         icon: <TestTube className="w-8 h-8 text-primary" />,
@@ -1346,8 +1346,8 @@ export const premiumPacks = [
     {
         id: 'gym_fitness_center_ops',
         title: "Gym & Fitness Center Checklist",
-        priceUSD: 59.99,
-        priceINR: 4799,
+        priceUSD: 79.99,
+        priceINR: 5999,
         category: "Wellness",
         description: "An essential toolkit for gym owners to ensure member safety, equipment maintenance, and operational excellence.",
         icon: <Dumbbell className="w-8 h-8 text-primary" />,
@@ -1396,8 +1396,8 @@ export const premiumPacks = [
     {
         id: 'salon_spa_ops',
         title: "Salon & Day Spa Checklist",
-        priceUSD: 49.99,
-        priceINR: 3999,
+        priceUSD: 69.99,
+        priceINR: 5499,
         category: "Wellness",
         description: "A complete toolkit for running a successful and hygienic salon or day spa, from client booking to staff management.",
         icon: <PersonStanding className="w-8 h-8 text-primary" />,
@@ -1446,8 +1446,8 @@ export const premiumPacks = [
     {
         id: 'school_safety_operations',
         title: "School & College Safety Checklist",
-        priceUSD: 49.99,
-        priceINR: 3999,
+        priceUSD: 69.99,
+        priceINR: 5499,
         category: "Education",
         description: "A complete operational toolkit for principals and administrators to ensure a safe and efficient campus environment.",
         icon: <School className="w-8 h-8 text-primary" />,
@@ -1522,8 +1522,8 @@ export const premiumPacks = [
     {
         id: 'supermarket_ops_blueprint',
         title: "Supermarket Checklist",
-        priceUSD: 129.99,
-        priceINR: 9999,
+        priceUSD: 169.99,
+        priceINR: 12999,
         category: "Retail",
         description: "The essential operational playbook for managing a grocery store, focusing on fresh produce, inventory, and daily operations.",
         icon: <ShoppingCart className="w-8 h-8 text-primary" />,
@@ -1564,7 +1564,7 @@ export const premiumPacks = [
                 department: "Finance",
                 frequency: "Daily",
                 role: "Closing Manager",
-                summary: "A systematic process for closing the store, including cashing out all registers, securing the premises, and preparing the store for the morning cleaning crew.",
+                summary: "A systematic process for closing the store, including cashing out all registers, securing all premises, and preparing the store for the morning cleaning crew.",
                 tasks: [ { id: 'SM-CFR-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'SM-CFR-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
             }
         ]
@@ -1572,8 +1572,8 @@ export const premiumPacks = [
     {
         id: 'fashion_boutique_ops',
         title: "Fashion Boutique Checklist",
-        priceUSD: 69.99,
-        priceINR: 5599,
+        priceUSD: 89.99,
+        priceINR: 6999,
         category: "Retail",
         description: "The complete guide to running a successful apparel store, from visual merchandising to fitting room management.",
         icon: <Shirt className="w-8 h-8 text-primary" />,
@@ -1622,8 +1622,8 @@ export const premiumPacks = [
     {
         id: 'electronics_showroom_ops',
         title: "Electronics Showroom Checklist",
-        priceUSD: 89.99,
-        priceINR: 6999,
+        priceUSD: 119.99,
+        priceINR: 8999,
         category: "Retail",
         description: "A specialized playbook for managing high-value electronics retail, focusing on security, sales, and live demos.",
         icon: <Phone className="w-8 h-8 text-primary" />,
@@ -1672,8 +1672,8 @@ export const premiumPacks = [
     {
         id: 'factory_shift_playbook',
         title: "Factory Shift Handover Checklist",
-        priceUSD: 99.99,
-        priceINR: 7999,
+        priceUSD: 129.99,
+        priceINR: 9999,
         category: "Manufacturing",
         description: "The essential playbook for shift supervisors to ensure a safe and seamless transition, minimizing downtime and errors.",
         icon: <Factory className="w-8 h-8 text-primary" />,
@@ -1722,8 +1722,8 @@ export const premiumPacks = [
     {
         id: 'wedding_hall_playbook',
         title: "Wedding & Banquet Hall Checklist",
-        priceUSD: 79.99,
-        priceINR: 6499,
+        priceUSD: 99.99,
+        priceINR: 7999,
         category: "Events",
         description: "An operational toolkit for venue managers to streamline bookings, events, and facility maintenance.",
         icon: <Building className="w-8 h-8 text-primary" />,
@@ -1772,8 +1772,8 @@ export const premiumPacks = [
     {
         id: 'playschool_safety_protocol',
         title: "Playschool & Daycare Checklist",
-        priceUSD: 59.99,
-        priceINR: 4999,
+        priceUSD: 79.99,
+        priceINR: 6499,
         category: "Education",
         description: "The essential daily, weekly, and monthly checklist for running a safe, clean, and engaging playschool or daycare.",
         icon: <Home className="w-8 h-8 text-primary" />,
@@ -1822,8 +1822,8 @@ export const premiumPacks = [
     {
         id: 'hindu_wedding_checklist',
         title: "Hindu Wedding Checklist",
-        priceUSD: 34.99,
-        priceINR: 2799,
+        priceUSD: 49.99,
+        priceINR: 3999,
         category: "Wedding",
         description: "A comprehensive, multi-day checklist for planning a traditional Hindu wedding, from pre-wedding rituals to the final reception.",
         icon: <Heart className="w-8 h-8 text-primary" />,
@@ -1872,8 +1872,8 @@ export const premiumPacks = [
     {
         id: 'muslim_wedding_checklist',
         title: "Muslim Wedding Checklist",
-        priceUSD: 34.99,
-        priceINR: 2799,
+        priceUSD: 49.99,
+        priceINR: 3999,
         category: "Wedding",
         description: "A detailed checklist covering Islamic wedding traditions, from the Nikah ceremony to the Walima reception.",
         icon: <Heart className="w-8 h-8 text-primary" />,
@@ -1922,8 +1922,8 @@ export const premiumPacks = [
     {
         id: 'auto_repair_playbook',
         title: "Auto Repair Shop Checklist",
-        priceUSD: 79.99,
-        priceINR: 6499,
+        priceUSD: 99.99,
+        priceINR: 7999,
         category: "Automotive",
         description: "A step-by-step guide for service advisors and garage owners to standardize operations from check-in to delivery.",
         icon: <Wrench className="w-8 h-8 text-primary" />,
@@ -1972,8 +1972,8 @@ export const premiumPacks = [
     {
         id: 'mall_operations_blueprint',
         title: "Shopping Mall Checklist",
-        priceUSD: 99.99,
-        priceINR: 7999,
+        priceUSD: 129.99,
+        priceINR: 9999,
         category: "Retail",
         description: "A complete operational guide for shopping mall management, focusing on safety, cleanliness, and tenant relations.",
         icon: <ShoppingCart className="w-8 h-8 text-primary" />,
@@ -2022,8 +2022,8 @@ export const premiumPacks = [
     {
         id: 'call_center_playbook',
         title: "Call Center Checklist",
-        priceUSD: 89.99,
-        priceINR: 6999,
+        priceUSD: 119.99,
+        priceINR: 8999,
         category: "Corporate",
         description: "A complete operational playbook for call center managers to drive team performance, quality, and efficiency.",
         icon: <Phone className="w-8 h-8 text-primary" />,
@@ -2072,8 +2072,8 @@ export const premiumPacks = [
     {
         id: 'waterpark_pool_safety',
         title: "Waterpark & Public Pool Safety Checklist",
-        priceUSD: 89.99,
-        priceINR: 6999,
+        priceUSD: 119.99,
+        priceINR: 8999,
         category: "Hospitality",
         description: "An essential safety and maintenance toolkit for any public aquatic facility.",
         icon: <Waves className="w-8 h-8 text-primary" />,
@@ -2122,8 +2122,8 @@ export const premiumPacks = [
     {
         id: 'airbnb_host_toolkit',
         title: "Airbnb Host Checklist",
-        priceUSD: 49.99,
-        priceINR: 3999,
+        priceUSD: 69.99,
+        priceINR: 5499,
         category: "Real Estate",
         description: "The essential toolkit for landlords and short-term rental hosts to streamline guest turnover, maintenance, and compliance.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
@@ -2172,8 +2172,8 @@ export const premiumPacks = [
     {
         id: 'car_dealership_playbook',
         title: "Car Dealership Checklist",
-        priceUSD: 99.99,
-        priceINR: 7999,
+        priceUSD: 129.99,
+        priceINR: 9999,
         category: "Automotive",
         description: "A complete playbook for car showroom managers to optimize sales, service, and customer experience.",
         icon: <Briefcase className="w-8 h-8 text-primary" />,
@@ -2222,8 +2222,8 @@ export const premiumPacks = [
     {
         id: 'corporate_launchkit',
         title: "Corporate Event Checklist",
-        priceUSD: 24.99,
-        priceINR: 1999,
+        priceUSD: 39.99,
+        priceINR: 2999,
         category: "Corporate",
         description: "For Founders & Event Managers. A one-time purchase for flawless corporate events and streamlined launches.",
         icon: <Briefcase className="w-8 h-8 text-primary" />,
@@ -2272,8 +2272,8 @@ export const premiumPacks = [
     {
         id: 'esg_reporting_framework',
         title: "ESG Reporting Checklist",
-        priceUSD: 199.99,
-        priceINR: 15999,
+        priceUSD: 249.99,
+        priceINR: 19999,
         category: "Compliance",
         description: "A step-by-step framework for companies to gather data and prepare for modern ESG reporting standards.",
         icon: <Shield className="w-8 h-8 text-primary" />,
@@ -2322,8 +2322,8 @@ export const premiumPacks = [
     {
         id: 'iso_9001_audit_prep',
         title: "ISO 9001 Audit Checklist",
-        priceUSD: 99.99,
-        priceINR: 7999,
+        priceUSD: 129.99,
+        priceINR: 9999,
         category: "Compliance",
         description: "A complete toolkit to prepare your organization for a successful ISO 9001 quality management audit.",
         icon: <Shield className="w-8 h-8 text-primary" />,
@@ -2372,8 +2372,8 @@ export const premiumPacks = [
     {
         id: 'eco_friendly_ops_playbook',
         title: "Sustainable Business Checklist",
-        priceUSD: 49.99,
-        priceINR: 3999,
+        priceUSD: 69.99,
+        priceINR: 5499,
         category: "Compliance",
         description: "A practical guide for any business to implement sustainable, eco-friendly practices and reduce their carbon footprint.",
         icon: <Leaf className="w-8 h-8 text-primary" />,
@@ -2422,8 +2422,8 @@ export const premiumPacks = [
     {
         id: 'cloud_kitchen_launchkit',
         title: "Cloud Kitchen Checklist",
-        priceUSD: 69.99,
-        priceINR: 5499,
+        priceUSD: 89.99,
+        priceINR: 6999,
         category: "Hospitality",
         description: "A complete toolkit for launching and running a successful delivery-only kitchen operation.",
         icon: <Truck className="w-8 h-8 text-primary" />,
@@ -2472,8 +2472,8 @@ export const premiumPacks = [
     {
         id: 'international_travel_planner',
         title: "International Travel Checklist",
-        priceUSD: 19.99,
-        priceINR: 1599,
+        priceUSD: 24.99,
+        priceINR: 1999,
         category: "Personal",
         description: "A comprehensive checklist for a stress-free international trip. Covers everything from documents and packing to safety.",
         icon: <Plane className="w-8 h-8 text-primary" />,
@@ -2522,8 +2522,8 @@ export const premiumPacks = [
     {
         id: 'pet_travel_planner',
         title: "Pet-Friendly Travel Checklist",
-        priceUSD: 24.99,
-        priceINR: 1999,
+        priceUSD: 29.99,
+        priceINR: 2499,
         category: "Personal",
         description: "The essential checklist for safely and comfortably travelling with your furry companion, by air or by road.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
@@ -2573,5 +2573,7 @@ export const premiumPacks = [
 
 export type PremiumPack = (typeof premiumPacks)[0];
 export type Checklist = (typeof premiumPacks)[0]['checklists'][0];
+
+    
 
     

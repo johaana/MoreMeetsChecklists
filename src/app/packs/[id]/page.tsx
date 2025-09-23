@@ -7,10 +7,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { premiumPacks } from '@/lib/premium-packs';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2 } from 'lucide-react';
+import { ArrowLeft, FileCheck2, Sparkles } from 'lucide-react';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const handleDownload = (pack: PremiumPack) => {
+    // This function will be updated to handle the checkout process
+    // For now, it will continue to trigger the direct download
     const workbook = utils.book_new();
 
     const headerStyle = {
@@ -95,13 +101,10 @@ const handleDownload = (pack: PremiumPack) => {
     const masterSheetName = "Master View";
     utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
 
-    // Highlight the Master View sheet tab
     if (workbook.Sheets[masterSheetName]) {
         workbook.Sheets[masterSheetName]['!props'] = { tabColor: { rgb: "FFC000" } };
     }
 
-
-    // Individual Checklists
     pack.checklists.forEach(checklist => {
         const checklistHeaders = [
           'Task ID', 'Task', 'Priority', 'Risk Level', 
@@ -218,6 +221,53 @@ const PainPointsSection = ({ category }: { category: string }) => {
     );
 }
 
+const PersonalizationDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+    return (
+        <AlertDialogContent className="max-w-2xl">
+            <AlertDialogHeader>
+                <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
+                    <Sparkles className="w-6 h-6 text-accent" />
+                    Personalize Your Playbook
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                    Answer a few questions to help us tailor this playbook to your exact needs. This will add a customized 'Priority Action Plan' to your download.
+                </AlertDialogDescription>
+            </AlertDialogHeader>
+            <div className="space-y-4 py-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="q1">What is your primary business focus?</Label>
+                        <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q2">Which department needs the most improvement?</Label>
+                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
+                    </div>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
+                    <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
+                </div>
+                 <div className="space-y-2">
+                    <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
+                    <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
+                </div>
+                 <div className="space-y-2">
+                    <Label htmlForq5">Anything else you'd like us to know?</Label>
+                    <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH, or any other unique challenges." />
+                </div>
+            </div>
+            <AlertDialogFooter>
+                <AlertDialogCancel>Skip Personalization</AlertDialogCancel>
+                <AlertDialogAction onClick={onConfirm}>
+                    Add Personalization & Proceed
+                </AlertDialogAction>
+            </AlertDialogFooter>
+        </AlertDialogContent>
+    );
+}
+
+
 export default function Page({ params }: { params: { id: string } }) {
   const pack = premiumPacks.find((p) => p.id === params.id);
 
@@ -275,10 +325,19 @@ export default function Page({ params }: { params: { id: string } }) {
                         <p className="text-4xl font-bold text-primary whitespace-nowrap">
                             ${pack.priceUSD} / ₹{pack.priceINR}
                         </p>
-                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Access</p>
-                        <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => handleDownload(pack)}>
-                            Buy Now & Get Instant Access
-                        </Button>
+                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Updates</p>
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                    Buy Now & Get Instant Access
+                                </Button>
+                            </AlertDialogTrigger>
+                            <PersonalizationDialog onConfirm={() => handleDownload(pack)} />
+                        </AlertDialog>
+                         <div className="mt-4 text-xs text-muted-foreground space-y-1">
+                            <p>✅ Lifetime Access & Unlimited Updates</p>
+                            <p>✅ 24/7 Priority Support</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -324,10 +383,15 @@ export default function Page({ params }: { params: { id: string } }) {
                         <p className="text-4xl font-bold text-primary whitespace-nowrap">
                             ${pack.priceUSD} / ₹{pack.priceINR}
                         </p>
-                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Access</p>
-                        <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => handleDownload(pack)}>
-                            Download Now
-                        </Button>
+                        <p className="text-sm text-muted-foreground mb-4">One-Time Purchase, Lifetime Updates</p>
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button size="lg" className="w-full max-w-sm font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                    Download Now
+                                </Button>
+                            </AlertDialogTrigger>
+                            <PersonalizationDialog onConfirm={() => handleDownload(pack)} />
+                        </AlertDialog>
                     </div>
                 </div>
 

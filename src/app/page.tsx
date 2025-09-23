@@ -39,7 +39,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-2">
                         <AccordionTrigger className="text-lg font-semibold">Is this a one-time purchase?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes, absolutely. Every purchase is a one-time payment that grants you lifetime access to the checklist pack. There are no recurring subscriptions, hidden fees, or user limits. Buy it once, own it forever.
+                            Yes, absolutely. Every purchase is a one-time payment that grants you lifetime access to the checklist pack and all future updates. There are no recurring subscriptions, hidden fees, or user limits. Buy it once, own it forever.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
@@ -51,7 +51,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-4">
                         <AccordionTrigger className="text-lg font-semibold">Can I edit and customize the checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes. They are fully editable. You can add, remove, or modify any tasks, change department names, and tailor the entire playbook to match your organization's unique workflow and branding.
+                            Yes. They are fully editable. You can add, remove, or modify any tasks, change department names, and tailor the entire playbook to match your organization's unique workflow and branding. We also offer a personalization service for an additional fee.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">
@@ -132,7 +132,7 @@ export default function Home() {
                         Ready-to-Use, Downloadable Checklists
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Get instant access to expert-crafted operational playbooks. One-time purchase, lifetime access. Downloadable in Excel.
+                        Get instant access to expert-crafted operational playbooks. One-time purchase, lifetime updates. Downloadable in Excel.
                     </p>
                 </div>
 
@@ -264,6 +264,3 @@ export default function Home() {
 }
 
     
-
-    
-
