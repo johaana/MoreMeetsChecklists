@@ -74,26 +74,37 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
         // --- Cover Page ---
         const coverPageName = "Cover Page";
-        const coverPageHeader = [[pack.title]];
+        const coverPageHeader = [pack.title];
         const coverPageData = [
             [" "],
             ["Click to navigate:"],
-            ...pack.checklists.map((checklist) => {
+            ["Checklist Title", "Department", "Frequency", "Role"],
+             ...pack.checklists.map((checklist) => {
                 const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
                 const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [{ v: checklist.title, f: formula }];
+                return [
+                    { v: checklist.title, f: formula },
+                    checklist.department,
+                    checklist.frequency,
+                    checklist.role
+                ];
             })
         ];
 
-        const coverWorksheet = utils.aoa_to_sheet([...coverPageHeader, ...coverPageData]);
-        coverWorksheet['!cols'] = [{ wch: 80 }];
+        const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
+        coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
         
         // Style header
         coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
         
+        // Style table headers
+        ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
+            if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
+        });
+
         // Style hyperlinks
         const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-        for (let R = 2; R <= rangeLinks.e.r; ++R) { // Start from row 3 (index 2)
+        for (let R = 4; R <= rangeLinks.e.r; ++R) { // Start from row 5 (index 4)
             const address = utils.encode_cell({ r: R, c: 0 });
             if (coverWorksheet[address] && coverWorksheet[address].f) {
                  coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
@@ -105,7 +116,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         // --- Master View ---
         const masterSheetName = "Master View";
         const masterSheetData = [
-            ["Checklist Title", "Task ID", "Task", "Priority", "Risk Level"],
+            ["Checklist Title", "Task ID", "Task Description", "Priority", "Risk Level"],
             ...pack.checklists.flatMap((checklist) => 
                 checklist.tasks.map(task => [
                     checklist.title,
@@ -317,3 +328,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
     )
 }
+
+    
