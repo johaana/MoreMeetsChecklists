@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, Users, Briefcase, Leaf, Shield, Hospital, ShoppingBasket, GraduationCap, Factory } from "lucide-react";
+import { Check, Star, Users, Briefcase, Leaf, Shield, Hospital, ShoppingBasket, GraduationCap, Factory, Building2, Utensils } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -28,15 +28,15 @@ const OtherIndustriesSection = () => (
                     We have a growing library of specialized checklist packs for a variety of professional fields.
                 </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
                 {[
-                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare' },
-                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail' },
-                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education' },
-                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing' },
+                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/packs/healthcare_compliance_suite' },
+                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/packs/retail_operations_pack' },
+                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/packs/education_sector_pack' },
+                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/packs/manufacturing_plant_pack' },
                 ].map((item) => (
-                    <Link href="#packs" key={item.name} className="group">
-                        <div className="flex flex-col items-center justify-center gap-4 p-6 border rounded-xl bg-secondary/30 hover:bg-secondary/60 transition-colors">
+                    <Link href={item.href} key={item.name} className="group">
+                        <div className="flex flex-col items-center justify-center gap-4 p-6 border rounded-xl bg-secondary/30 hover:bg-secondary/60 transition-colors h-full">
                             {item.icon}
                             <h3 className="font-semibold text-center group-hover:text-primary">{item.name}</h3>
                         </div>
@@ -193,7 +193,7 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {premiumPacks.map((pack) => (
+                    {premiumPacks.slice(0, 3).map((pack) => (
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-primary">
                              {pack.mostPopular && (
                                 <Badge className="absolute top-4 right-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10">
