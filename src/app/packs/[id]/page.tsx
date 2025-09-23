@@ -98,18 +98,18 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   
   const whoIsItForMap: Record<string, string[]> = {
-    "Hospitality": ["Hotel Owners", "COOs", "Cluster GMs", "General Managers", "F&B Directors", "Heads of Security", "Housekeeping Managers", "Restaurant Owners"],
-    "Corporate": ["Facility Managers", "Chief Engineers", "Admin Heads", "Corporate Real Estate (CRE) Heads", "Founders"],
-    "Retail": ["Store Managers", "District Managers", "Loss Prevention Heads", "Retail Operations Leaders", "Jewellery Store Owners"],
-    "Healthcare": ["Hospital Administrators", "Clinic Managers", "Quality & Compliance Officers", "NABH/JCI Coordinators", "Lab Owners"],
-    "Education": ["School Principals", "Senior Administrators", "Campus Security Heads", "Daycare Owners"],
-    "Manufacturing": ["Plant Heads", "Shift Supervisors", "Production Managers", "Safety Officers"],
-    "Events": ["Event Planners", "Banquet Managers", "Wedding Planners"],
+    "Hospitality": ["Hotel Owners", "COOs", "F&B Directors", "Heads of Security", "Cluster GMs", "General Managers", "Restaurant Owners"],
+    "Corporate": ["Founders", "COOs", "VPs of Operations", "Heads of Admin", "Corporate Real Estate (CRE) Heads", "Chief Engineers"],
+    "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
+    "Healthcare": ["Hospital Owners", "COOs", "Hospital Administrators", "Heads of Quality & Compliance", "NABH/JCI Coordinators", "Lab Owners"],
+    "Education": ["School Owners", "Trustees", "Principals", "Heads of Administration", "Heads of Campus Security"],
+    "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety"],
+    "Events": ["Event Management Company Owners", "Senior Event Planners", "Banquet Directors"],
     "Personal": ["Frequent Travelers", "Pet Owners"],
-    "Automotive": ["Service Advisors", "Workshop Managers", "Dealership Owners"],
-    "Real Estate": ["Property Managers", "Landlords", "Airbnb Hosts"],
-    "Compliance": ["ESG Officers", "Quality Managers (ISO)", "Compliance Officers"],
-    "Wellness": ["Gym Owners", "Salon Managers", "Spa Directors"]
+    "Automotive": ["Dealership Owners", "Workshop Owners", "Service Directors"],
+    "Real Estate": ["Property Management Firm Owners", "Landlords", "Heads of Operations (REITs)"],
+    "Compliance": ["Chief Compliance Officers (CCOs)", "Heads of ESG", "Heads of Quality (ISO)"],
+    "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors"]
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
@@ -226,4 +226,6 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 }
     
+    
+
     
