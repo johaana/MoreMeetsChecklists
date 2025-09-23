@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, Users } from "lucide-react";
+import { Check, Star, Users, Briefcase, Leaf, Shield } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +18,7 @@ import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 
 const FaqSection = () => (
-    <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+    <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
@@ -68,6 +68,29 @@ const FaqSection = () => (
 
 
 export default function Home() {
+  const whyUsData = [
+    {
+      title: "Prevent Costly Failures",
+      description: "One missed step—a forgotten permit, an uncalibrated machine—can lead to catastrophic financial and reputational damage.",
+      imageId: "for-startups"
+    },
+    {
+      title: "Standardize Excellence",
+      description: "Our checklists are expert-written SOPs that empower your team to perform flawlessly, every single time, delighting customers and clients.",
+      imageId: "for-hospitality"
+    },
+     {
+      title: "Build Unshakeable Trust",
+      description: "Demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust with clients and customers.",
+      imageId: "showcase-corporate-hospitality"
+    },
+    {
+      title: "Forged by Experience",
+      description: "Our packs are codified knowledge from 200+ industry veterans—not academics. Distilled experience you can use today.",
+      imageId: "for-event-planners"
+    }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
@@ -116,7 +139,7 @@ export default function Home() {
                             </Button>
                             <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                                 <p className="text-xs text-white/80">
-                                    Curated by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                                    Not AI-generated. Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
                                 </p>
                             </div>
                         </div>
@@ -179,32 +202,42 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-            <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Why Every Detail Matters
-                    </h2>
-                </div>
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Prevent Costly Failures</h3>
-                        <p className="text-muted-foreground">One missed step—a forgotten permit, an uncalibrated machine—can lead to catastrophic financial and reputational damage.</p>
-                    </Card>
-                     <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Standardize Excellence</h3>
-                        <p className="text-muted-foreground">Our checklists are expert-written SOPs that empower your team to perform flawlessly, every single time.</p>
-                    </Card>
-                     <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Build Unshakeable Trust</h3>
-                        <p className="text-muted-foreground">Demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust with clients and customers.</p>
-                    </Card>
-                     <Card className="p-6 border-0 shadow-none bg-transparent">
-                        <h3 className="text-xl font-bold font-headline mb-2">Forged by Experience</h3>
-                        <p className="text-muted-foreground">Our packs are codified knowledge from 200+ industry veterans—not academics. Distilled experience you can use today.</p>
-                    </Card>
-                </div>
+        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                Why Every Detail Matters
+              </h2>
+              <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                Our checklists are more than just lists. They are operational frameworks forged by real-world experience to protect and grow your business.
+              </p>
             </div>
+            <div className="grid gap-12 max-w-6xl mx-auto">
+              {whyUsData.map((item, index) => {
+                const image = PlaceHolderImages.find(img => img.id === item.imageId);
+                return (
+                  <div key={item.title} className="grid md:grid-cols-2 gap-8 items-center">
+                    <div className={index % 2 === 1 ? 'md:order-2' : ''}>
+                      <h3 className="text-2xl font-bold font-headline mb-4">{item.title}</h3>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </div>
+                    <div className={index % 2 === 1 ? 'md:order-1' : ''}>
+                      {image && (
+                        <Image
+                          src={image.imageUrl}
+                          alt={item.title}
+                          width={600}
+                          height={400}
+                          className="rounded-xl object-cover shadow-lg"
+                          data-ai-hint={image.imageHint}
+                        />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </section>
 
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32">
@@ -262,7 +295,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-    
