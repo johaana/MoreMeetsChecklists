@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { premiumPacks } from '@/lib/premium-packs';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2, Sparkles, Check, X, ShieldCheck, Zap, HelpCircle } from 'lucide-react';
+import { ArrowLeft, FileCheck2, Sparkles, Check, X, ShieldCheck, Zap, HelpCircle, BadgeCheck, Repeat, Clock } from 'lucide-react';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
@@ -227,6 +227,7 @@ const PersonalizationDialog = ({ pack, onConfirm }: { pack: PremiumPack, onConfi
         <AlertDialogContent className="max-w-2xl">
             <AlertDialogHeader>
                 <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
+                    <Sparkles className="w-6 h-6 text-accent" />
                     Personalize Your Checklist Pack
                 </AlertDialogTitle>
                 <AlertDialogDescription>
@@ -258,9 +259,9 @@ const PersonalizationDialog = ({ pack, onConfirm }: { pack: PremiumPack, onConfi
                 </div>
             </div>
             <AlertDialogFooter>
-                <AlertDialogCancel onClick={() => handleDownload(pack)}>Skip &amp; Download</AlertDialogCancel>
+                <AlertDialogCancel onClick={() => handleDownload(pack)}>Skip &amp; Download Standard</AlertDialogCancel>
                 <AlertDialogAction onClick={onConfirm}>
-                    Proceed to Purchase
+                    Generate &amp; Proceed to Purchase
                 </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
@@ -323,8 +324,11 @@ export default function Page({ params }: { params: { id: string } }) {
                             </div>
                         </div>
                     </div>
-                     <div className="text-center bg-secondary/10 border-t border-b border-border/50 py-10 rounded-2xl">
-                        <h2 className="text-2xl font-bold font-headline mb-8">Select Your Package</h2>
+                     <div className="text-center bg-secondary/10 border-t border-b border-border/50 py-16 rounded-2xl">
+                        <div className="max-w-md mx-auto mb-10 text-center">
+                            <h2 className="text-2xl font-bold font-headline mb-2">Special Launch Offer: Lock In Your Lifetime Price.</h2>
+                            <p className="text-muted-foreground">Select your package. One-time payment, forever yours.</p>
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4">
                            
                            {/* Professional Pack Option */}
@@ -335,13 +339,13 @@ export default function Page({ params }: { params: { id: string } }) {
                                 </CardHeader>
                                 <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
-                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access & free updates.</span></p>
-                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Access to bonus templates (Audit, SOP, F&B).</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel file.</span></p>
                                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>24/7 customer support.</span></p>
                                     <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No custom priority action plan.</span></p>
                                 </CardContent>
-                                <CardFooter className="p-6">
-                                    <Button size="lg" className="w-full font-bold text-lg" variant="outline" onClick={() => handleDownload(pack)}>
+                                <CardFooter className="p-6 mt-auto">
+                                    <Button size="lg" className="w-full font-bold text-lg" onClick={() => handleDownload(pack)}>
                                         Get Professional
                                     </Button>
                                 </CardFooter>
@@ -356,17 +360,22 @@ export default function Page({ params }: { params: { id: string } }) {
                                             <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                                                 Personalized Pack
                                             </CardTitle>
-                                            <p className="text-3xl font-bold text-primary">
-                                                ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
-                                            </p>
+                                             <div className="flex items-baseline gap-2">
+                                                <p className="text-3xl font-bold text-primary">
+                                                    ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
+                                                </p>
+                                                 <p className="text-lg font-medium text-muted-foreground line-through">
+                                                    ${pack.priceUSD + personalizationPriceUSD + 30} / ₹{pack.priceINR + personalizationPriceINR + 2701}
+                                                </p>
+                                            </div>
                                         </CardHeader>
                                         <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                                             <p className="flex items-start gap-2 font-semibold"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Everything in Professional Pack.</span></p>
-                                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan tailored for you.</span></p>
+                                             <p className="flex items-start gap-2 font-semibold text-primary"><Check className="w-5 h-5 mt-0.5 text-primary shrink-0" /> <span>Everything in Professional Pack, plus:</span></p>
+                                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan based on your needs.</span></p>
                                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Extra templates & location-specific checklists.</span></p>
                                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                                         </CardContent>
-                                        <CardFooter className="p-6">
+                                        <CardFooter className="p-6 mt-auto">
                                             <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
                                                 Personalize Now
                                             </Button>
@@ -377,20 +386,34 @@ export default function Page({ params }: { params: { id: string } }) {
                             </AlertDialog>
 
                         </div>
-                         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto text-sm text-muted-foreground">
-                            <div className="flex items-center gap-2">
-                                <ShieldCheck className="w-5 h-5 text-primary" />
-                                <span>Secure Checkout</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Zap className="w-5 h-5 text-primary" />
-                                <span>Lifetime Updates</span>
-                            </div>
-                             <div className="flex items-center gap-2">
-                                <HelpCircle className="w-5 h-5 text-primary" />
-                                <span>24/7 Support</span>
+
+                        <div className="mt-12 bg-primary/5 p-6 rounded-2xl max-w-4xl mx-auto border border-primary/10">
+                            <h3 className="text-center font-headline text-xl font-bold mb-4 flex items-center justify-center gap-2"><BadgeCheck className="w-6 h-6 text-primary" /> The MoreMeets Promise</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                <div className="flex flex-col items-center gap-2">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                        <DollarSign className="w-6 h-6"/>
+                                    </div>
+                                    <p className="font-semibold">One-Time Payment</p>
+                                    <p className="text-xs text-muted-foreground">No recurring subscriptions. Ever. Buy it once, own it forever.</p>
+                                </div>
+                                <div className="flex flex-col items-center gap-2">
+                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                        <Repeat className="w-6 h-6"/>
+                                    </div>
+                                    <p className="font-semibold">Lifetime Updates</p>
+                                    <p className="text-xs text-muted-foreground">Receive all future enhancements and additions to your pack, for free.</p>
+                                </div>
+                                <div className="flex flex-col items-center gap-2">
+                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                        <Clock className="w-6 h-6"/>
+                                    </div>
+                                    <p className="font-semibold">Instant Access</p>
+                                    <p className="text-xs text-muted-foreground">Download your fully editable Excel file immediately after purchase.</p>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -449,5 +472,7 @@ export default function Page({ params }: { params: { id: string } }) {
 }
 
 
+
+    
 
     
