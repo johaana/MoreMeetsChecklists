@@ -35,14 +35,14 @@ export default function AllPacksPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {premiumPacks.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-primary">
-                             {pack.badgeText && (
-                                <Badge className="absolute top-4 left-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 flex items-center gap-1.5">
-                                   <Star className="w-4 h-4" /> {pack.badgeText}
-                                </Badge>
-                             )}
-                            <CardHeader className="p-6">
-                                <div className="flex items-start gap-4 mb-2">
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary">
+                            <CardHeader className="p-6 relative">
+                                {pack.badgeText && (
+                                    <Badge className="py-1 px-3 bg-accent text-accent-foreground font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
+                                    <Star className="w-4 h-4" /> {pack.badgeText}
+                                    </Badge>
+                                )}
+                                <div className="flex items-start gap-4">
                                     <div className="p-3 bg-primary/10 rounded-full border border-primary/20 shrink-0">
                                         {pack.icon}
                                     </div>
