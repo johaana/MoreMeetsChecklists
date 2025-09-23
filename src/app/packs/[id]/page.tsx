@@ -7,12 +7,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { premiumPacks } from '@/lib/premium-packs';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2, Sparkles, Check, X } from 'lucide-react';
+import { ArrowLeft, FileCheck2, Sparkles, Check, X, ShieldCheck, Zap, HelpCircle } from 'lucide-react';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
 
 const handleDownload = (pack: PremiumPack) => {
     // This function will be updated to handle the checkout process
@@ -285,7 +286,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const curatedBy = curationMap[pack.category] || "a diverse group of over 200+ seasoned industry professionals.";
   const personalizationPriceUSD = 29;
-  const personalizationPriceINR = 2299;
+  const personalizationPriceINR = 2300;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -305,8 +306,8 @@ export default function Page({ params }: { params: { id: string } }) {
       <main className="flex-1">
         <section className="w-full py-12 md:py-20 lg:py-24">
             <div className="container px-4 md:px-6">
-                <div className="max-w-3xl mx-auto">
-                    <div className="flex items-start gap-6 mb-6">
+                <div className="max-w-4xl mx-auto">
+                    <div className="flex items-start gap-6 mb-8">
                         <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block">
                             {pack.icon}
                         </div>
@@ -323,23 +324,25 @@ export default function Page({ params }: { params: { id: string } }) {
                             </div>
                         </div>
                     </div>
-                     <div className="text-center bg-primary/5 border border-primary/20 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold font-headline mb-4">Select Your Package</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto">
+                     <div className="text-center bg-secondary/10 border-t border-b border-border/50 py-10 rounded-2xl">
+                        <h2 className="text-2xl font-bold font-headline mb-8">Select Your Package</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4">
                            
                            {/* Professional Pack Option */}
-                            <Card className="flex flex-col text-left">
-                                <CardHeader>
-                                    <CardTitle>Professional Pack</CardTitle>
-                                    <p className="text-2xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
+                            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                                <CardHeader className="p-6">
+                                    <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
+                                    <p className="text-3xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
                                 </CardHeader>
-                                <CardContent className="flex-1 space-y-2 text-sm">
-                                    <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete, expert-curated checklist pack.</span></p>
-                                    <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access and free updates.</span></p>
-                                     <p className="flex items-start gap-2"><X className="w-4 h-4 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">Custom Priority Action Plan.</span></p>
+                                <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access & free updates.</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Access to bonus templates (Audit, SOP, F&B).</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>24/7 customer support.</span></p>
+                                    <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No custom priority action plan.</span></p>
                                 </CardContent>
-                                <CardFooter>
-                                    <Button size="lg" className="w-full font-bold" variant="outline" onClick={() => handleDownload(pack)}>
+                                <CardFooter className="p-6">
+                                    <Button size="lg" className="w-full font-bold text-lg" variant="outline" onClick={() => handleDownload(pack)}>
                                         Get Professional
                                     </Button>
                                 </CardFooter>
@@ -348,23 +351,25 @@ export default function Page({ params }: { params: { id: string } }) {
                             {/* Personalized Pack Option */}
                              <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                     <Card className="flex flex-col text-left border-2 border-accent cursor-pointer hover:shadow-lg transition-shadow">
-                                        <CardHeader>
-                                            <CardTitle className="flex items-center gap-2">
-                                                <Sparkles className="w-5 h-5 text-accent" />
+                                    <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative cursor-pointer">
+                                        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 py-1 px-4 bg-accent text-accent-foreground font-bold z-10">Best Value</Badge>
+                                        <CardHeader className="p-6">
+                                            <CardTitle className="flex items-center gap-2 font-headline text-2xl">
+                                                <Sparkles className="w-6 h-6 text-accent" />
                                                 Personalized Pack
                                             </CardTitle>
-                                            <p className="text-2xl font-bold text-primary">
+                                            <p className="text-3xl font-bold text-primary">
                                                 ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
                                             </p>
                                         </CardHeader>
-                                        <CardContent className="flex-1 space-y-2 text-sm">
-                                             <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete expert-curated checklist pack.</span></p>
-                                             <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access and free updates.</span></p>
-                                             <p className="flex items-start gap-2 font-semibold"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan.</span></p>
+                                        <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+                                             <p className="flex items-start gap-2 font-semibold"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Everything in Professional Pack.</span></p>
+                                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan tailored for you.</span></p>
+                                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Extra templates & location-specific checklists.</span></p>
+                                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                                         </CardContent>
-                                        <CardFooter>
-                                            <Button size="lg" className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                        <CardFooter className="p-6">
+                                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
                                                 Personalize Now
                                             </Button>
                                         </CardFooter>
@@ -374,8 +379,19 @@ export default function Page({ params }: { params: { id: string } }) {
                             </AlertDialog>
 
                         </div>
-                         <div className="mt-4 text-xs text-muted-foreground space-y-1">
-                            <p>One-Time Purchase, Lifetime Updates & 24/7 Priority Support</p>
+                         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto text-sm text-muted-foreground">
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck className="w-5 h-5 text-primary" />
+                                <span>Secure Checkout</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Zap className="w-5 h-5 text-primary" />
+                                <span>Lifetime Updates</span>
+                            </div>
+                             <div className="flex items-center gap-2">
+                                <HelpCircle className="w-5 h-5 text-primary" />
+                                <span>24/7 Support</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -420,7 +436,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t mt-16 bg-secondary/50">
-        <p className="text-xs text-muted-foreground">&copy; 24 MoreMeets. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">&copy; 2024 MoreMeets. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
             Terms of Service
@@ -433,3 +449,4 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
