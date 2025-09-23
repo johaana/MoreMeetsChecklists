@@ -150,7 +150,7 @@ export const premiumPacks = [
         category: "Corporate",
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment across multiple locations.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
-        mostPopular: false,
+        mostPopular: true,
         sampleItems: [
             "Master crucial 'Site Commissioning' & 'Decommissioning' protocols.",
             "Implement a robust 'Business Continuity Plan' (BCP) with emergency drills.",
