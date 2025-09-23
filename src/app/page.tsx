@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -66,7 +67,7 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const packsToShow = premiumPacks.filter(p => p.mostPopular).slice(0, 3);
+    const packsToShow = premiumPacks.filter(p => p.mostPopular);
     const title = "Ready-to-Use, Downloadable Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
@@ -129,6 +130,9 @@ function PackList() {
                             <ArrowRight className="w-5 h-5 ml-2" />
                         </Link>
                     </Button>
+                    <p className="max-w-2xl mx-auto text-muted-foreground mt-4">
+                        Our library covers every aspect of your operations, from the granular details of hotel housekeeping to the strategic planning of manufacturing plant safety.
+                    </p>
                 </div>
             </div>
         </section>
