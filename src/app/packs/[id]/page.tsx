@@ -253,7 +253,7 @@ const PersonalizationDialog = ({ onConfirm }: { onConfirm: () => void }) => {
                     <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
                 </div>
                  <div className="space-y-2">
-                    <Label htmlForq5">Anything else you'd like us to know?</Label>
+                    <Label htmlFor="q5">Anything else you'd like us to know?</Label>
                     <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH, or any other unique challenges." />
                 </div>
             </div>
@@ -415,5 +415,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
