@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -88,7 +87,7 @@ function PackList() {
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary">
                             <CardHeader className="p-6 relative">
                                 {pack.badgeText && (
-                                    <Badge className="py-1 px-3 bg-accent text-accent-foreground font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
+                                    <Badge variant={pack.badgeVariant} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
                                     <Star className="w-4 h-4" /> {pack.badgeText}
                                     </Badge>
                                 )}
@@ -169,8 +168,7 @@ export default function Home() {
         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
           <Logo className="h-6 w-6 text-primary" />
           <span className="font-headline text-lg font-bold">MoreMeets</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
+        </Link>        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="/packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 All Packages
             </Link>

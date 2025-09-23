@@ -11,6 +11,7 @@ export const premiumPacks = [
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
+        badgeVariant: "default" as const,
         sampleItems: [
             "Master the 'Lost & Found' protocol to ensure guest trust and minimize liability.",
             "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
@@ -151,6 +152,7 @@ export const premiumPacks = [
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment across multiple locations.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
         badgeText: "Best for Corporate",
+        badgeVariant: "accent" as const,
         sampleItems: [
             "Master crucial 'Site Commissioning' & 'Decommissioning' protocols.",
             "Implement a robust 'Business Continuity Plan' (BCP) with emergency drills.",
@@ -291,6 +293,7 @@ export const premiumPacks = [
         description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
+        badgeVariant: "secondary" as const,
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
@@ -1018,6 +1021,7 @@ export type PremiumPack = {
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
+    badgeVariant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'accent';
     sampleItems: string[];
     checklists: Checklist[];
     previewScenario?: PreviewScenario;
