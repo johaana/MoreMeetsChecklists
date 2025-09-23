@@ -20,21 +20,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             font: { bold: true, color: { rgb: "FFFFFF" } },
             fill: { fgColor: { rgb: "0A2540" } }
         };
-        
-        const applyStyles = (ws: WorkSheet) => {
-             // This function is kept for potential future styling needs
-        };
 
-        // New Cover Page with Hyperlinks
+        // Cover Page with Hyperlinks
         const coverPageName = "Cover Page";
         const coverPageHeader = [[pack.title]];
         const coverPageData = [
             ...pack.checklists.map((checklist) => {
                 const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-                 // The hyperlink formula must be in this exact format.
-                return [
-                    { v: checklist.title, l: { Target: `#_xlnm.sheet_by_name('${sheetName}')!A1`, Tooltip: `Go to ${checklist.title}` } }
-                ];
+                // Use the HYPERLINK formula for internal links
+                const formula = `HYPERLINK("#'${sheetName}'!A1", "${checklist.title}")`;
+                return [{ f: formula, v: checklist.title }];
             })
         ];
 
@@ -48,7 +43,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
         for (let R = 3; R <= rangeLinks.e.r; ++R) { // Start from row 4 (index 3)
             const address = utils.encode_cell({ r: R, c: 0 });
-            if (coverWorksheet[address] && coverWorksheet[address].l) {
+            if (coverWorksheet[address] && coverWorksheet[address].f) {
                  coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
             }
         }
@@ -80,7 +75,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 masterWorksheet[address].s = headerStyle;
             }
         }
-        masterWorksheet['!autofilter'] = { ref: utils.encode_range(rangeMaster) };
+        // Freeze the header row, remove autofilter
         masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
         utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
@@ -119,6 +114,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     worksheet[address].s = headerStyle;
                 }
              }
+             // Freeze the header row
              worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
 
             const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
