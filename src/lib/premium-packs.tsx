@@ -1151,7 +1151,18 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Store Manager",
                 summary: "A high-security protocol for opening the store and vault, requiring two authorized individuals to prevent internal theft and ensure a safe start to the day.",
-                tasks: [ { id: 'JWL-DOP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'JWL-DOP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'JWL-DOP-001', description: "Two authorized keyholders arrive at the store at separate, staggered times.", priority: 'High', riskLevel: 'High', proof: 'CCTV/Access Log', location: 'Store Entrance' },
+                    { id: 'JWL-DOP-002', description: "First keyholder performs an external perimeter check for any signs of tampering.", priority: 'High', riskLevel: 'High', proof: 'Visual Check Log', location: 'Store Exterior' },
+                    { id: 'JWL-DOP-003', description: "First keyholder enters, disarms the initial alarm, and performs an internal check.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Store Interior' },
+                    { id: 'JWL-DOP-004', description: "Second keyholder enters after receiving an 'all-clear' signal.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Store Entrance' },
+                    { id: 'JWL-DOP-005', description: "Both keyholders proceed to the vault together.", priority: 'High', riskLevel: 'High', proof: 'CCTV Review', location: 'To Vault' },
+                    { id: 'JWL-DOP-006', description: "Use dual keys/codes to open the vault. One person should not have access to both.", priority: 'High', riskLevel: 'High', proof: 'CCTV/Access Log', location: 'Vault' },
+                    { id: 'JWL-DOP-007', description: "Inspect vault interior for any signs of tampering before removing merchandise.", priority: 'High', riskLevel: 'High', proof: 'Visual Check Log', location: 'Vault' },
+                    { id: 'JWL-DOP-008', description: "Remove merchandise trays for display and log the removal.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Log', location: 'Vault' },
+                    { id: 'JWL-DOP-009', description: "Test all silent panic alarms and hold-up buttons.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Store Interior' },
+                    { id: 'JWL-DOP-010', description: "Activate all display case lighting and check for functioning CCTV cameras on the sales floor.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' }
+                ]
             },
             {
                 title: "🔒 Daily Closing Procedure (Dual Control)",
@@ -1159,7 +1170,18 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Store Manager",
                 summary: "A rigorous process for inventory reconciliation and securing all high-value items in the vault at the end of the day, again using a two-person integrity system.",
-                tasks: [ { id: 'JWL-DCP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'JWL-DCP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'JWL-DCP-001', description: "Announce store closing to any remaining customers 15 minutes prior.", priority: 'Low', riskLevel: 'Low', proof: 'Verbal', location: 'Sales Floor' },
+                    { id: 'JWL-DCP-002', description: "Lock main entrance. No new customers allowed in.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Store Entrance' },
+                    { id: 'JWL-DCP-003', description: "Reconcile physical inventory in display cases against the daily sales record.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Sales Floor' },
+                    { id: 'JWL-DCP-004', description: "Return all merchandise trays to the vault under dual supervision.", priority: 'High', riskLevel: 'High', proof: 'CCTV/Inventory Log', location: 'Vault' },
+                    { id: 'JWL-DCP-005', description: "Conduct a final count/check of items inside the vault against the log.", priority: 'High', riskLevel: 'High', proof: 'Vault Log', location: 'Vault' },
+                    { id: 'JWL-DCP-006', description: "Lock the vault using dual-control procedures.", priority: 'High', riskLevel: 'High', proof: 'CCTV/Access Log', location: 'Vault' },
+                    { id: 'JWL-DCP-007', description: "Clear all cash from registers and secure in a safe or deposit bag as per policy.", priority: 'High', riskLevel: 'High', proof: 'Cash Reconciliation Log', location: 'Cash Office' },
+                    { id: 'JWL-DCP-008', description: "Perform a final walkthrough of the store to ensure no one is left inside.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Store Interior' },
+                    { id: 'JWL-DCP-009', description: "Set the main alarm system. Both keyholders exit.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Store Exit' },
+                    { id: 'JWL-DCP-010', description: "Confirm the alarm is set by checking the app or monitoring service.", priority: 'High', riskLevel: 'High', proof: 'System Check', location: 'Off-site' }
+                ]
             },
             {
                 title: "🛍️ Ongoing Security & Sales Floor Protocol",
@@ -1167,7 +1189,16 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Associate",
                 summary: "Defines rules for handling jewellery on the sales floor, such as showing one item at a time, managing displays, and identifying suspicious behavior to prevent grab-and-run theft.",
-                tasks: [ { id: 'JWL-SFP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Sales Floor' }, { id: 'JWL-SFP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Sales Floor' } ]
+                tasks: [
+                    { id: 'JWL-SFP-001', description: "Greet every customer who enters the store to establish presence.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Sales Floor' },
+                    { id: 'JWL-SFP-002', description: "Show only one high-value item (or one tray) at a time.", priority: 'High', riskLevel: 'High', proof: 'CCTV Review', location: 'Sales Counter' },
+                    { id: 'JWL-SFP-003', description: "Always return one item to the display/case before showing the next.", priority: 'High', riskLevel: 'High', proof: 'CCTV Review', location: 'Sales Counter' },
+                    { id: 'JWL-SFP-004', description: "Keep display cases locked when not actively showing merchandise.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'JWL-SFP-005', description: "Be aware of customers creating distractions or working in groups.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Sales Floor' },
+                    { id: 'JWL-SFP-006', description: "Use a code word or signal to alert other staff/security of suspicious behavior.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Sales Floor' },
+                    { id: 'JWL-SFP-007', description: "For high-value sales, require a second staff member to be present.", priority: 'Medium', riskLevel: 'High', proof: 'CCTV Review', location: 'Sales Counter' },
+                    { id: 'JWL-SFP-008', description: "Verify authenticity of large cash payments and check ID for large credit card transactions.", priority: 'High', riskLevel: 'High', proof: 'Transaction Log', location: 'POS' }
+                ]
             },
             {
                 title: "🛡️ Weekly Security & Maintenance Audit",
@@ -1175,7 +1206,15 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Store Manager",
                 summary: "A weekly audit of all security systems, including CCTV, panic buttons, and alarms, to ensure they are fully functional and to schedule any necessary maintenance.",
-                tasks: [ { id: 'JWL-WSA-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'JWL-WSA-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'JWL-WSA-001', description: "Test all panic buttons (silent and audible) and verify they trigger a response from the monitoring company.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Security Office' },
+                    { id: 'JWL-WSA-002', description: "Review CCTV footage from all cameras to check for blind spots, correct angles, and clear images.", priority: 'High', riskLevel: 'High', proof: 'Footage Review Log', location: 'Security Office' },
+                    { id: 'JWL-WSA-003', description: "Inspect all door and window sensors and magnetic locks for functionality.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Perimeter' },
+                    { id: 'JWL-WSA-004', description: "Check the health and battery backup of the main alarm panel and DVR/NVR.", priority: 'High', riskLevel: 'High', proof: 'System Check Log', location: 'Security Office' },
+                    { id: 'JWL-WSA-005', description: "Inspect physical security of display cases (locks, glass integrity).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection Log', location: 'Sales Floor' },
+                    { id: 'JWL-WSA-006', description: "Conduct a brief security drill or review a 'what-if' scenario with staff (e.g., grab-and-run).", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Sales Floor' },
+                    { id: 'JWL-WSA-007', description: "Verify that the security monitoring company has up-to-date contact information for keyholders.", priority: 'High', riskLevel: 'Medium', proof: 'Confirmation Email', location: 'Security Office' }
+                ]
             }
         ]
     },
@@ -1201,7 +1240,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Pharmacist",
                 summary: "Ensures the pharmacy is ready for safe operation, covering temperature logs for medicines, equipment calibration, and checks of controlled substance records.",
-                tasks: [ { id: 'PH-DO-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' }, { id: 'PH-DO-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' } ]
+                tasks: [
+                    { id: 'PH-DO-001', description: "Record refrigerator and freezer temperatures. Ensure they are within range (2-8°C for fridge).", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Dispensary' },
+                    { id: 'PH-DO-002', description: "Check and clear any pending tasks or messages from the pharmacy software system.", priority: 'Medium', riskLevel: 'Low', proof: 'System Check', location: 'Dispensary' },
+                    { id: 'PH-DO-003', description: "Ensure all workstations are clean, sanitized, and free of clutter.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dispensary' },
+                    { id: 'PH-DO-004', description: "Calibrate pill counting machine if applicable.", priority: 'Medium', riskLevel: 'Medium', proof: 'Calibration Log', location: 'Dispensary' },
+                    { id: 'PH-DO-005', description: "Review handover notes from the previous shift for any pending issues.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Log', location: 'Dispensary' },
+                    { id: 'PH-DO-006', description: "Check that all prescription pads, labels, and bags are adequately stocked.", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Dispensary' }
+                ]
             },
             {
                 title: "💊 Prescription Filling & Verification (The 'Five Rights')",
@@ -1209,7 +1255,15 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Pharmacist",
                 summary: "A zero-error protocol for dispensing medication, verifying the 'Five Rights': Right Patient, Right Drug, Right Dose, Right Route, and Right Time.",
-                tasks: [ { id: 'PH-PFV-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' }, { id: 'PH-PFV-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' } ]
+                tasks: [
+                    { id: 'PH-PFV-001', description: "Right Patient: Verify patient identity using two identifiers (e.g., name and date of birth).", priority: 'High', riskLevel: 'High', proof: 'System/Verbal Check', location: 'Counter' },
+                    { id: 'PH-PFV-002', description: "Right Drug: Check prescription against the drug label three times (when picking, dispensing, and giving).", priority: 'High', riskLevel: 'High', proof: 'Dispensing Log', location: 'Dispensary' },
+                    { id: 'PH-PFV-003', description: "Right Dose: Double-check the dosage calculation, especially for pediatric or high-risk medications.", priority: 'High', riskLevel: 'High', proof: 'Calculation Sheet', location: 'Dispensary' },
+                    { id: 'PH-PFV-004', description: "Right Route: Confirm the route of administration (oral, topical, etc.) as per the prescription.", priority: 'High', riskLevel: 'Medium', proof: 'Prescription Check', location: 'Dispensary' },
+                    { id: 'PH-PFV-005', description: "Right Time: Check the frequency and timing of the medication.", priority: 'High', riskLevel: 'Medium', proof: 'Prescription Check', location: 'Dispensary' },
+                    { id: 'PH-PFV-006', description: "Check for potential drug interactions or allergies in the patient's profile.", priority: 'High', riskLevel: 'High', proof: 'System Alert Review', location: 'Dispensary' },
+                    { id: 'PH-PFV-007', description: "Ensure a final check by a second person (pharmacist) before handing over the medication.", priority: 'High', riskLevel: 'High', proof: 'Second Sign-off', location: 'Dispensary' }
+                ]
             },
             {
                 title: "📦 Inventory & Controlled Substances (Zero-Error Protocol)",
@@ -1217,7 +1271,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Pharmacist",
                 summary: "A rigorous checklist for managing narcotics and other controlled substances, covering inventory counts, discrepancy reporting, and secure storage to prevent diversion.",
-                tasks: [ { id: 'PH-ICS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' }, { id: 'PH-ICS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' } ]
+                tasks: [
+                    { id: 'PH-ICS-001', description: "Conduct a daily physical count of all Schedule H/X or narcotic drugs.", priority: 'High', riskLevel: 'High', proof: 'Narcotics Register', location: 'Safe' },
+                    { id: 'PH-ICS-002', description: "Reconcile the physical count with the perpetual inventory records in the software.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Log', location: 'Dispensary' },
+                    { id: 'PH-ICS-003', description: "Report any discrepancies immediately to the pharmacist-in-charge and document.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Dispensary' },
+                    { id: 'PH-ICS-004', description: "Ensure all controlled substances are stored in a securely locked, dedicated safe or cabinet.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Safe' },
+                    { id: 'PH-ICS-005', description: "Check for expired drugs in the inventory monthly and segregate them for disposal/return.", priority: 'High', riskLevel: 'Medium', proof: 'Expiry Log', location: 'Stock Room' },
+                    { id: 'PH-ICS-006', description: "Receive and document incoming controlled substance orders, verifying against purchase orders.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Dispensary' }
+                ]
             },
             {
                 title: "🌙 Closing Procedures & Data Security",
@@ -1225,7 +1286,15 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Pharmacist",
                 summary: "A secure process for closing the pharmacy, including end-of-day reports, data backups for patient records, and securing all medications and confidential information.",
-                tasks: [ { id: 'PH-CP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' }, { id: 'PH-CP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Pharmacy' } ]
+                tasks: [
+                    { id: 'PH-CP-001', description: "Complete end-of-day financial reconciliation and close the cash register.", priority: 'High', riskLevel: 'Medium', proof: 'POS Report', location: 'Counter' },
+                    { id: 'PH-CP-002', description: "Ensure all filled but uncollected prescriptions are stored securely.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dispensary' },
+                    { id: 'PH-CP-003', description: "Log off all computer terminals and secure patient data.", priority: 'High', riskLevel: 'High', proof: 'System Log-off', location: 'Dispensary' },
+                    { id: 'PH-CP-004', description: "Run a daily backup of the pharmacy management software.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'Server' },
+                    { id: 'PH-CP-005', description: "Secure all physical documents containing patient information (prescriptions, records).", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Dispensary' },
+                    { id: 'PH-CP-006', description: "Lock the controlled substance safe.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Safe' },
+                    { id: 'PH-CP-007', description: "Set the pharmacy's security alarm and lock all doors.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Exit' }
+                ]
             }
         ]
     },
@@ -1337,7 +1406,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Clinic Manager",
                 summary: "Ensures the clinic is prepared for patients, covering everything from appointment schedules and equipment checks to ensuring the waiting area is clean and welcoming.",
-                tasks: [ { id: 'PC-DOP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Clinic' }, { id: 'PC-DOP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Clinic' } ]
+                tasks: [
+                    { id: 'PC-DOP-001', description: "Review the day's appointment schedule and flag any special cases.", priority: 'High', riskLevel: 'Medium', proof: 'Appointment System', location: 'Reception' },
+                    { id: 'PC-DOP-002', description: "Ensure waiting area is clean, tidy, and has reading material.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Waiting Area' },
+                    { id: 'PC-DOP-003', description: "Check that all clinical equipment is functional (e.g., BP machine, dental chair).", priority: 'High', riskLevel: 'High', proof: 'Equipment Log', location: 'Consultation Rooms' },
+                    { id: 'PC-DOP-004', description: "Verify all consultation and procedure rooms are clean and stocked with consumables.", priority: 'High', riskLevel: 'Medium', proof: 'Room Checklist', location: 'Consultation Rooms' },
+                    { id: 'PC-DOP-005', description: "Boot up all computers and ensure billing and EMR software is running.", priority: 'High', riskLevel: 'Medium', proof: 'System Check', location: 'Reception' },
+                    { id: 'PC-DOP-006', description: "Check that emergency first aid kit is stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Reception' }
+                ]
             },
             {
                 title: "➡️ Patient Flow & Experience",
@@ -1345,7 +1421,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Receptionist",
                 summary: "Manages the patient journey from registration to check-out, aiming to minimize wait times, handle paperwork efficiently, and ensure a positive patient experience.",
-                tasks: [ { id: 'PC-PFE-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Reception' }, { id: 'PC-PFE-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Reception' } ]
+                tasks: [
+                    { id: 'PC-PFE-001', description: "Greet patients warmly upon arrival.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Reception' },
+                    { id: 'PC-PFE-002', description: "Verify patient details and update any changes in the EMR.", priority: 'High', riskLevel: 'Medium', proof: 'System Entry', location: 'Reception' },
+                    { id: 'PC-PFE-003', description: "Efficiently manage new patient registration and form filling.", priority: 'High', riskLevel: 'Medium', proof: 'Completed Forms', location: 'Reception' },
+                    { id: 'PC-PFE-004', description: "Inform patients of any potential delays and manage waiting times effectively.", priority: 'High', riskLevel: 'Medium', proof: 'Verbal Communication', location: 'Waiting Area' },
+                    { id: 'PC-PFE-005', description: "Schedule follow-up appointments accurately.", priority: 'Medium', riskLevel: 'Medium', proof: 'Appointment System', location: 'Reception' },
+                    { id: 'PC-PFE-006', description: "Handle patient inquiries and phone calls professionally.", priority: 'High', riskLevel: 'Medium', proof: 'Call Log', location: 'Reception' }
+                ]
             },
             {
                 title: "🧼 Clinical Safety & Sterilization",
@@ -1353,7 +1436,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Nurse",
                 summary: "A critical checklist for maintaining a sterile environment, covering instrument sterilization, surface disinfection, and proper disposal of biomedical waste between patients.",
-                tasks: [ { id: 'PC-CSS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Clinical Rooms' }, { id: 'PC-CSS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Clinical Rooms' } ]
+                tasks: [
+                    { id: 'PC-CSS-001', description: "Ensure all used instruments are sent for sterilization after each patient.", priority: 'High', riskLevel: 'High', proof: 'Sterilization Log', location: 'Sterilization Room' },
+                    { id: 'PC-CSS-002', description: "Disinfect all surfaces in the consultation/procedure room between patients (chair, counters).", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Consultation Rooms' },
+                    { id: 'PC-CSS-003', description: "Run and document daily checks on the autoclave/sterilizer machine.", priority: 'High', riskLevel: 'High', proof: 'Autoclave Log', location: 'Sterilization Room' },
+                    { id: 'PC-CSS-004', description: "Properly segregate and dispose of biomedical waste (sharps, contaminated items).", priority: 'High', riskLevel: 'High', proof: 'Waste Log', location: 'Clinical Rooms' },
+                    { id: 'PC-CSS-005', description: "Adhere to hand hygiene protocols before and after patient contact.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Clinical Rooms' }
+                ]
             },
             {
                 title: "💵 Billing & Administration",
@@ -1361,7 +1450,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Billing Executive",
                 summary: "Ensures accurate and timely billing, from generating invoices and processing payments to handling insurance claims and end-of-day financial reconciliation.",
-                tasks: [ { id: 'PC-BA-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Accounts' }, { id: 'PC-BA-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Accounts' } ]
+                tasks: [
+                    { id: 'PC-BA-001', description: "Generate accurate invoices for all consultations and procedures.", priority: 'High', riskLevel: 'High', proof: 'Invoice Copy', location: 'Billing Desk' },
+                    { id: 'PC-BA-002', description: "Process payments (cash, card, insurance) and issue receipts.", priority: 'High', riskLevel: 'High', proof: 'Payment Receipt', location: 'Billing Desk' },
+                    { id: 'PC-BA-003', description: "Prepare and submit insurance claim forms with all necessary documentation.", priority: 'High', riskLevel: 'High', proof: 'Claim Submission Log', location: 'Billing Desk' },
+                    { id: 'PC-BA-004', description: "Perform end-of-day reconciliation of all cash and card transactions.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Billing Desk' },
+                    { id: 'PC-BA-005', description: "Follow up on any outstanding payments or rejected insurance claims.", priority: 'Medium', riskLevel: 'High', proof: 'Follow-up Log', location: 'Billing Desk' }
+                ]
             }
         ]
     },
@@ -1387,7 +1482,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Lab Technician",
                 summary: "Ensures all diagnostic equipment is precisely calibrated and quality control checks are performed before processing any patient samples, guaranteeing result accuracy.",
-                tasks: [ { id: 'DL-MSC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' }, { id: 'DL-MSC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' } ]
+                tasks: [
+                    { id: 'DL-MSC-001', description: "Run daily quality control (QC) samples for all analyzers.", priority: 'High', riskLevel: 'High', proof: 'QC Log', location: 'Lab' },
+                    { id: 'DL-MSC-002', description: "Verify that QC results are within acceptable ranges before releasing any patient results.", priority: 'High', riskLevel: 'High', proof: 'QC Log', location: 'Lab' },
+                    { id: 'DL-MSC-003', description: "Calibrate instruments as per manufacturer's guidelines or if QC fails.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Lab' },
+                    { id: 'DL-MSC-004', description: "Check and record temperatures of all refrigerators, freezers, and incubators.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Lab' },
+                    { id: 'DL-MSC-005', description: "Ensure adequate stock of reagents and consumables for the day's workload.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Lab' }
+                ]
             },
             {
                 title: "🩸 Sample Management & Processing (Patient Safety First)",
@@ -1395,7 +1496,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Lab Technician",
                 summary: "A rigorous protocol for handling patient samples, from receiving and labeling (accessioning) to processing, to eliminate the risk of mix-ups or contamination.",
-                tasks: [ { id: 'DL-SMP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' }, { id: 'DL-SMP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' } ]
+                tasks: [
+                    { id: 'DL-SMP-001', description: "Verify patient identification on sample container matches the test requisition form.", priority: 'High', riskLevel: 'High', proof: 'Accessioning Log', location: 'Sample Receiving' },
+                    { id: 'DL-SMP-002', description: "Check sample for acceptability (e.g., correct container, sufficient volume, no hemolysis).", priority: 'High', riskLevel: 'High', proof: 'Sample Rejection Log', location: 'Sample Receiving' },
+                    { id: 'DL-SMP-003', description: "Assign a unique lab number to each sample (Accessioning).", priority: 'High', riskLevel: 'High', proof: 'LIS Entry', location: 'Sample Receiving' },
+                    { id: 'DL-SMP-004', description: "Follow specific processing instructions for each test (e.g., centrifugation, separation).", priority: 'High', riskLevel: 'Medium', proof: 'SOP Manual', location: 'Lab' },
+                    { id: 'DL-SMP-005', description: "Ensure proper personal protective equipment (PPE) is used when handling all samples.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Lab' }
+                ]
             },
             {
                 title: "📈 Data, Reporting & Critical Value Communication",
@@ -1403,7 +1510,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Senior Technician",
                 summary: "Defines the process for accurate data entry, report generation, and—most importantly—the immediate communication of critical or life-threatening results to doctors.",
-                tasks: [ { id: 'DL-DRC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' }, { id: 'DL-DRC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' } ]
+                tasks: [
+                    { id: 'DL-DRC-001', description: "Ensure patient results are accurately entered into the Laboratory Information System (LIS).", priority: 'High', riskLevel: 'High', proof: 'Data Entry Review', location: 'Lab' },
+                    { id: 'DL-DRC-002', description: "Review and approve reports before printing or digital release.", priority: 'High', riskLevel: 'High', proof: 'LIS Approval Stamp', location: 'Lab' },
+                    { id: 'DL-DRC-003', description: "Immediately notify the referring physician of any 'critical value' results by phone.", priority: 'High', riskLevel: 'High', proof: 'Critical Value Log', location: 'Lab' },
+                    { id: 'DL-DRC-004', description: "Document the time of notification and the person notified for all critical values.", priority: 'High', riskLevel: 'High', proof: 'Critical Value Log', location: 'Lab' },
+                    { id: 'DL-DRC-005', description: "Ensure reports are dispatched to patients/clinics within the stated turnaround time.", priority: 'Medium', riskLevel: 'Medium', proof: 'Dispatch Log', location: 'Reporting' }
+                ]
             },
             {
                 title: "🗑️ End of Day & Biohazard Management",
@@ -1411,7 +1524,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Lab Supervisor",
                 summary: "Ensures the lab is safely shut down, all samples are properly stored or disposed of, and all biohazardous waste is managed according to strict regulatory standards.",
-                tasks: [ { id: 'DL-EBM-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' }, { id: 'DL-EBM-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Lab' } ]
+                tasks: [
+                    { id: 'DL-EBM-001', description: "Archive or properly store all tested samples for the required duration.", priority: 'High', riskLevel: 'Medium', proof: 'Storage Log', location: 'Storage' },
+                    { id: 'DL-EBM-002', description: "Safely dispose of all biohazardous waste in designated, color-coded bags/containers.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Lab' },
+                    { id: 'DL-EBM-003', description: "Decontaminate all work surfaces and equipment at the end of the day.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Lab' },
+                    { id: 'DL-EBM-004', description: "Turn off all analyzers and equipment as per shutdown procedures.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Lab' },
+                    { id: 'DL-EBM-005', description: "Secure the lab premises, ensuring all doors are locked.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Lab' }
+                ]
             }
         ]
     },
@@ -1437,7 +1556,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Gym Manager",
                 summary: "A daily walkthrough to ensure the gym is safe and ready for members, covering equipment functionality, cleanliness of all areas, and stocking of amenities.",
-                tasks: [ { id: 'GYM-DOS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Gym' }, { id: 'GYM-DOS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Gym' } ]
+                tasks: [
+                    { id: 'GYM-DOS-001', description: "Inspect all cardio and strength equipment for visible signs of wear, tear, or damage.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Gym Floor' },
+                    { id: 'GYM-DOS-002', description: "Place 'Out of Order' signs on any malfunctioning equipment and log for maintenance.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'Gym Floor' },
+                    { id: 'GYM-DOS-003', description: "Ensure gym floor is clean, dry, and free of hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Gym Floor' },
+                    { id: 'GYM-DOS-004', description: "Check that locker rooms, showers, and restrooms are clean and fully stocked.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Locker Rooms' },
+                    { id: 'GYM-DOS-005', description: "Verify first aid stations are stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Reception' },
+                    { id: 'GYM-DOS-006', description: "Check that music and TV systems are operational.", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Gym Floor' }
+                ]
             },
             {
                 title: "🤝 Member Management & Customer Experience",
@@ -1445,7 +1571,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Associate",
                 summary: "Standardizes the process for new member sign-ups, orientations, and addressing existing member feedback to improve retention and satisfaction.",
-                tasks: [ { id: 'GYM-MM-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Gym' }, { id: 'GYM-MM-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Gym' } ]
+                tasks: [
+                    { id: 'GYM-MM-001', description: "Provide tours to prospective members, explaining facilities and membership options.", priority: 'High', riskLevel: 'Low', proof: 'CRM Log', location: 'Gym' },
+                    { id: 'GYM-MM-002', description: "Efficiently process new member sign-ups and payments.", priority: 'High', riskLevel: 'Medium', proof: 'Membership Form', location: 'Reception' },
+                    { id: 'GYM-MM-003', description: "Offer a basic orientation to new members on how to use key equipment safely.", priority: 'Medium', riskLevel: 'Medium', proof: 'Orientation Sign-off', location: 'Gym Floor' },
+                    { id: 'GYM-MM-004', description: "Actively solicit and log member feedback or complaints.", priority: 'Medium', riskLevel: 'Medium', proof: 'Feedback Log', location: 'Reception' },
+                    { id: 'GYM-MM-005', description: "Manage membership freezes, cancellations, and renewals.", priority: 'Medium', riskLevel: 'Medium', proof: 'System Entry', location: 'Reception' }
+                ]
             },
             {
                 title: "📅 Class & Staff Management",
@@ -1453,7 +1585,12 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Gym Manager",
                 summary: "Manages group fitness classes and staff schedules, ensuring classes start on time, instructors are prepared, and staffing levels are adequate for peak hours.",
-                tasks: [ { id: 'GYM-CSM-001', description: "Task 1", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Gym' }, { id: 'GYM-CSM-002', description: "Task 2", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Gym' } ]
+                tasks: [
+                    { id: 'GYM-CSM-001', description: "Confirm group fitness schedule for the day and check for any instructor changes.", priority: 'High', riskLevel: 'Medium', proof: 'Schedule Review', location: 'Manager Office' },
+                    { id: 'GYM-CSM-002', description: "Ensure group fitness studio is clean and set up for the first class (mats, weights, etc.).", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Studio' },
+                    { id: 'GYM-CSM-003', description: "Review staff roster to ensure adequate coverage on the gym floor and at reception.", priority: 'High', riskLevel: 'Medium', proof: 'Roster Check', location: 'Manager Office' },
+                    { id: 'GYM-CSM-004', description: "Conduct a brief daily huddle with staff to discuss goals and member feedback.", priority: 'Medium', riskLevel: 'Low', proof: 'Huddle Log', location: 'Manager Office' }
+                ]
             },
             {
                 title: "🌙 Closing Procedures & Security",
@@ -1461,7 +1598,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Staff",
                 summary: "A systematic process for closing the gym, including final cleaning sweeps, securing the premises, and end-of-day financial reconciliation.",
-                tasks: [ { id: 'GYM-CPS-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Gym' }, { id: 'GYM-CPS-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Gym' } ]
+                tasks: [
+                    { id: 'GYM-CPS-001', description: "Announce closing time to members 15 minutes prior.", priority: 'Low', riskLevel: 'Low', proof: 'Verbal', location: 'Gym Floor' },
+                    { id: 'GYM-CPS-002', description: "Perform a final walkthrough to ensure all members have left.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Entire Facility' },
+                    { id: 'GYM-CPS-003', description: "Re-rack all weights and tidy up the gym floor.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Gym Floor' },
+                    { id: 'GYM-CPS-004', description: "Turn off music, TVs, and non-essential lights.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Entire Facility' },
+                    { id: 'GYM-CPS-005', description: "Complete end-of-day cash reconciliation.", priority: 'High', riskLevel: 'High', proof: 'POS Report', location: 'Reception' },
+                    { id: 'GYM-CPS-006', description: "Lock all doors and set the security alarm.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Exit' }
+                ]
             }
         ]
     },
@@ -1487,7 +1631,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Salon Manager",
                 summary: "Ensures the salon meets health and safety standards before the first client arrives, covering sterilization of tools, cleanliness of stations, and fresh linen.",
-                tasks: [ { id: 'SPA-DOH-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Salon' }, { id: 'SPA-DOH-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Salon' } ]
+                tasks: [
+                    { id: 'SPA-DOH-001', description: "Disinfect all workstations, chairs, and basins.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Salon Floor' },
+                    { id: 'SPA-DOH-002', description: "Ensure all tools (scissors, combs, brushes) are properly sterilized and stored.", priority: 'High', riskLevel: 'High', proof: 'Sterilization Log', location: 'Workstations' },
+                    { id: 'SPA-DOH-003', description: "Check that all towels and capes are clean and freshly laundered.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' },
+                    { id: 'SPA-DOH-004', description: "Ensure treatment rooms are clean, tidy, and have fresh linen.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Treatment Rooms' },
+                    { id: 'SPA-DOH-005', description: "Review appointment book for the day.", priority: 'Medium', riskLevel: 'Low', proof: 'Appointment System', location: 'Reception' },
+                    { id: 'SPA-DOH-006', description: "Check inventory of professional and retail products.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Stock Room' }
+                ]
             },
             {
                 title: "😊 Client Experience & Service",
@@ -1495,7 +1646,14 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Stylist",
                 summary: "Focuses on providing a premium client experience, from a warm welcome and consultation to service delivery and post-service care recommendations.",
-                tasks: [ { id: 'SPA-CES-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Salon' }, { id: 'SPA-CES-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Salon' } ]
+                tasks: [
+                    { id: 'SPA-CES-001', description: "Greet client by name and offer a beverage.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Reception' },
+                    { id: 'SPA-CES-002', description: "Conduct a thorough consultation before starting any service.", priority: 'High', riskLevel: 'Medium', proof: 'Consultation Form', location: 'Workstation' },
+                    { id: 'SPA-CES-003', description: "Explain the service process and products being used.", priority: 'Medium', riskLevel: 'Low', proof: 'Verbal Communication', location: 'Workstation' },
+                    { id: 'SPA-CES-004', description: "Ensure client comfort throughout the service (temperature, music).", priority: 'Medium', riskLevel: 'Low', proof: 'Verbal Check', location: 'Salon' },
+                    { id: 'SPA-CES-005', description: "Recommend retail products for at-home care based on the service provided.", priority: 'Medium', riskLevel: 'Low', proof: 'Sales Log', location: 'Workstation' },
+                    { id: 'SPA-CES-006', description: "Update client record card with details of the service performed.", priority: 'High', riskLevel: 'Medium', proof: 'Client Card', location: 'Reception' }
+                ]
             },
             {
                 title: "📦 Inventory & Retail Management",
@@ -1503,7 +1661,13 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Salon Manager",
                 summary: "A weekly checklist to manage professional and retail product stock, preventing stockouts, tracking usage, and maximizing retail sales opportunities.",
-                tasks: [ { id: 'SPA-IRM-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Salon' }, { id: 'SPA-IRM-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Salon' } ]
+                tasks: [
+                    { id: 'SPA-IRM-001', description: "Conduct a physical count of all retail products.", priority: 'High', riskLevel: 'Medium', proof: 'Stock Count Sheet', location: 'Stock Room' },
+                    { id: 'SPA-IRM-002', description: "Compare physical count with sales data to identify any discrepancies.", priority: 'High', riskLevel: 'Medium', proof: 'Reconciliation Report', location: 'Manager Office' },
+                    { id: 'SPA-IRM-003', description: "Check stock levels of professional-use products and place new orders as needed.", priority: 'High', riskLevel: 'High', proof: 'Order Forms', location: 'Manager Office' },
+                    { id: 'SPA-IRM-004', description: "Ensure retail shelves are clean, well-organized, and fully stocked.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Retail Area' },
+                    { id: 'SPA-IRM-005', description: "Check for and remove any expired products from shelves.", priority: 'High', riskLevel: 'Medium', proof: 'Expiry Log', location: 'Stock Room' }
+                ]
             },
             {
                 title: "🌙 Closing & End-of-Day Tasks",
@@ -1511,7 +1675,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Staff",
                 summary: "A systematic process for closing the salon, including cleaning and sterilizing all tools and stations, cashing out, and preparing for the next business day.",
-                tasks: [ { id: 'SPA-CED-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Salon' }, { id: 'SPA-CED-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Salon' } ]
+                tasks: [
+                    { id: 'SPA-CED-001', description: "Clean and sanitize all workstations and tools.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Salon Floor' },
+                    { id: 'SPA-CED-002', description: "Dispose of all waste, including hair and used consumables.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Salon Floor' },
+                    { id: 'SPA-CED-003', description: "Send all used towels and linens for laundry.", priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Utility Area' },
+                    { id: 'SPA-CED-004', description: "Reconcile daily cash and card payments.", priority: 'High', riskLevel: 'High', proof: 'POS Report', location: 'Reception' },
+                    { id: 'SPA-CED-005', description: "Turn off all electronics, lights, and secure the premises.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Salon' }
+                ]
             }
         ]
     },
@@ -1613,7 +1783,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Store Manager",
                 summary: "Ensures the store is ready for customers, with a strong focus on checking the quality and presentation of fresh produce, baked goods, and meat sections.",
-                tasks: [ { id: 'SM-MOF-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'SM-MOF-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'SM-MOF-001', description: "Inspect fresh produce section; remove any wilted or spoiled items.", priority: 'High', riskLevel: 'High', proof: 'Waste Log', location: 'Produce Section' },
+                    { id: 'SM-MOF-002', description: "Check 'use by' dates in the dairy, meat, and bakery sections.", priority: 'High', riskLevel: 'High', proof: 'Date Check Log', location: 'All Fresh Sections' },
+                    { id: 'SM-MOF-003', description: "Ensure all shelves are fully stocked, fronted, and look appealing.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'SM-MOF-004', description: "Verify all pricing and promotional signage is accurate and in place.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'SM-MOF-005', description: "Ensure floors are clean and shopping carts are available at the entrance.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Entrance' }
+                ]
             },
             {
                 title: "🚚 Receiving & Cold Chain Integrity",
@@ -1621,7 +1797,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Receiving Clerk",
                 summary: "A critical food safety checklist for receiving goods, focusing on temperature checks for frozen/chilled items and ensuring cold chain is never broken.",
-                tasks: [ { id: 'SM-RCI-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Receiving' }, { id: 'SM-RCI-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Receiving' } ]
+                tasks: [
+                    { id: 'SM-RCI-001', description: "Check and log the temperature of refrigerated and frozen delivery trucks.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Bay' },
+                    { id: 'SM-RCI-002', description: "Reject any chilled or frozen goods delivered above the acceptable temperature.", priority: 'High', riskLevel: 'High', proof: 'Rejection Log', location: 'Receiving Bay' },
+                    { id: 'SM-RCI-003', description: "Inspect products for signs of damage, tampering, or pest activity.", priority: 'High', riskLevel: 'Medium', proof: 'Receiving Log', location: 'Receiving Bay' },
+                    { id: 'SM-RCI-004', description: "Move received cold chain items to their respective storage areas immediately.", priority: 'High', riskLevel: 'High', proof: 'CCTV Review', location: 'Receiving Bay' },
+                    { id: 'SM-RCI-005', description: "Rotate stock using FIFO (First-In, First-Out) principle.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Stock Room' }
+                ]
             },
             {
                 title: "🛒 During the Day: Floor Operations & Customer Service",
@@ -1629,7 +1811,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Floor Manager",
                 summary: "Covers ongoing tasks like restocking shelves, ensuring price accuracy, managing spills or hazards, and monitoring checkout lines for efficiency.",
-                tasks: [ { id: 'SM-FOCS-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Sales Floor' }, { id: 'SM-FOCS-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Sales Floor' } ]
+                tasks: [
+                    { id: 'SM-FOCS-001', description: "Conduct regular walkthroughs to identify and restock low-stock items.", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Log', location: 'Sales Floor' },
+                    { id: 'SM-FOCS-002', description: "Clean up any spills or breakages immediately to prevent accidents.", priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Sales Floor' },
+                    { id: 'SM-FOCS-003', description: "Monitor checkout queues and open additional counters during peak hours.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Checkout Area' },
+                    { id: 'SM-FOCS-004', description: "Ensure shopping carts and baskets are collected from the parking lot and returned.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Exterior' },
+                    { id: 'SM-FOCS-005', description: "Assist customers with product location and inquiries.", priority: 'Medium', riskLevel: 'Low', proof: 'Observation', location: 'Sales Floor' }
+                ]
             },
             {
                 title: "💰 Closing & Financial Reconciliation",
@@ -1637,7 +1825,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Manager",
                 summary: "A systematic process for closing the store, including cashing out all registers, securing all premises, and preparing the store for the morning cleaning crew.",
-                tasks: [ { id: 'SM-CFR-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'SM-CFR-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'SM-CFR-001', description: "Reconcile cash and card sales from all POS terminals.", priority: 'High', riskLevel: 'High', proof: 'POS Report', location: 'Cash Office' },
+                    { id: 'SM-CFR-002', description: "Secure all cash in the safe.", priority: 'High', riskLevel: 'High', proof: 'Safe Log', location: 'Cash Office' },
+                    { id: 'SM-CFR-003', description: "Perform a final walkthrough to face and tidy shelves for the next day.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'SM-CFR-004', description: "Ensure all refrigeration and freezer units are closed and running at the correct temperature.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Sales Floor' },
+                    { id: 'SM-CFR-005', description: "Lock all entrances and set the security alarm.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Exit' }
+                ]
             }
         ]
     },
@@ -1663,7 +1857,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Store Manager",
                 summary: "Sets the stage for sales by ensuring the store is perfectly presented, including clean displays, correct lighting, and visually appealing mannequin setups.",
-                tasks: [ { id: 'FBQ-DOM-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Store' }, { id: 'FBQ-DOM-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'FBQ-DOM-001', description: "Ensure storefront and window displays are clean and inviting.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
+                    { id: 'FBQ-DOM-002', description: "Check that all lighting is functional and focused on key merchandise.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'FBQ-DOM-003', description: "Update or refresh mannequin outfits based on new arrivals or promotions.", priority: 'High', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'FBQ-DOM-004', description: "Steam and prep any wrinkled merchandise on the floor.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'FBQ-DOM-005', description: "Brief team on daily sales targets and promotional activities.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Back Office' }
+                ]
             },
             {
                 title: "👗 Fitting Room, Customer Service & Loss Prevention",
@@ -1671,7 +1871,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Associate",
                 summary: "A combined checklist for managing the critical fitting room area to enhance service (suggesting items) and prevent theft (item counts, tag checks).",
-                tasks: [ { id: 'FBQ-FCSLP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' }, { id: 'FBQ-FCSLP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'FBQ-FCSLP-001', description: "Limit the number of items a customer can take into the fitting room at one time.", priority: 'High', riskLevel: 'High', proof: 'Policy Signage', location: 'Fitting Rooms' },
+                    { id: 'FBQ-FCSLP-002', description: "Check items going in and out of the fitting room, confirming counts.", priority: 'High', riskLevel: 'High', proof: 'Fitting Room Log', location: 'Fitting Rooms' },
+                    { id: 'FBQ-FCSLP-003', description: "Clear and tidy fitting rooms immediately after a customer leaves.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Fitting Rooms' },
+                    { id: 'FBQ-FCSLP-004', description: "Check for any detached security tags or hidden merchandise left in rooms.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Fitting Rooms' },
+                    { id: 'FBQ-FCSLP-005', description: "Offer styling advice and suggest alternative sizes or items to customers.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Fitting Rooms' }
+                ]
             },
             {
                 title: "📦 New Stock & Inventory Management",
@@ -1679,7 +1885,13 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Store Manager",
                 summary: "Standardizes the process of receiving new apparel, from checking deliveries against packing slips to tagging, steaming, and merchandising items on the floor.",
-                tasks: [ { id: 'FBQ-NSIM-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Store' }, { id: 'FBQ-NSIM-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'FBQ-NSIM-001', description: "Verify incoming shipments against purchase orders.", priority: 'High', riskLevel: 'Medium', proof: 'PO/Invoice Match', location: 'Stock Room' },
+                    { id: 'FBQ-NSIM-002', description: "Inspect new stock for any damages or defects.", priority: 'High', riskLevel: 'Medium', proof: 'Damage Log', location: 'Stock Room' },
+                    { id: 'FBQ-NSIM-003', description: "Attach security tags and price tags to all new merchandise.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Stock Room' },
+                    { id: 'FBQ-NSIM-004', description: "Update inventory system with new stock received.", priority: 'High', riskLevel: 'Medium', proof: 'System Entry', location: 'Back Office' },
+                    { id: 'FBQ-NSIM-005', description: "Plan and execute floor set for new merchandise.", priority: 'High', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' }
+                ]
             },
             {
                 title: "🌙 Closing & Daily Reporting",
@@ -1687,7 +1899,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Staff",
                 summary: "Ensures the store is reset for the next day, including tidying merchandise, processing returns, and completing end-of-day sales reports.",
-                tasks: [ { id: 'FBQ-CDR-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Store' }, { id: 'FBQ-CDR-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Store' } ]
+                tasks: [
+                    { id: 'FBQ-CDR-001', description: "Fold and re-hang all merchandise on the sales floor.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'FBQ-CDR-002', description: "Process any customer returns from the day.", priority: 'Medium', riskLevel: 'Medium', proof: 'System Log', location: 'Back Office' },
+                    { id: 'FBQ-CDR-003', description: "Reconcile daily sales and close out the POS system.", priority: 'High', riskLevel: 'High', proof: 'POS Report', location: 'Back Office' },
+                    { id: 'FBQ-CDR-004', description: "Secure cash and prepare bank deposit.", priority: 'High', riskLevel: 'High', proof: 'Deposit Slip', location: 'Back Office' },
+                    { id: 'FBQ-CDR-005', description: "Perform a final walkthrough and secure the premises.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Store' }
+                ]
             }
         ]
     },
@@ -1713,7 +1931,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Store Manager",
                 summary: "Ensures all live demo units are clean, charged, and functional, and that all security tethers and alarms for high-value items are active.",
-                tasks: [ { id: 'ESR-DOM-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Showroom' }, { id: 'ESR-DOM-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Showroom' } ]
+                tasks: [
+                    { id: 'ESR-DOM-001', description: "Turn on and check all live demo units (phones, laptops, TVs).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Showroom' },
+                    { id: 'ESR-DOM-002', description: "Verify all security tethers and alarms on demo units are active.", priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Showroom' },
+                    { id: 'ESR-DOM-003', description: "Clean screens and surfaces of all demo products.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Showroom' },
+                    { id: 'ESR-DOM-004', description: "Ensure all price tags and specification sheets are accurate and up-to-date.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Showroom' },
+                    { id: 'ESR-DOM-005', description: "Conduct daily team briefing on promotions, stock levels, and sales targets.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Back Office' }
+                ]
             },
             {
                 title: "💡 Sales Floor & Customer Experience",
@@ -1721,7 +1945,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Associate",
                 summary: "Focuses on the sales process, ensuring staff are knowledgeable, can provide effective demonstrations, and accurately explain financing and warranty options.",
-                tasks: [ { id: 'ESR-SFCE-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Showroom' }, { id: 'ESR-SFCE-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Showroom' } ]
+                tasks: [
+                    { id: 'ESR-SFCE-001', description: "Engage with customers to understand their needs and recommend suitable products.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Showroom' },
+                    { id: 'ESR-SFCE-002', description: "Provide clear and accurate demonstrations of product features.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Showroom' },
+                    { id: 'ESR-SFCE-003', description: "Explain warranty, return policies, and financing options clearly.", priority: 'High', riskLevel: 'High', proof: 'Verbal Check', location: 'Sales Desk' },
+                    { id: 'ESR-SFCE-004', description: "Process sales accurately through the POS system.", priority: 'High', riskLevel: 'High', proof: 'Transaction Log', location: 'Sales Desk' },
+                    { id: 'ESR-SFCE-005', description: "Manage customer queues and waiting times effectively.", priority: 'Medium', riskLevel: 'Low', proof: 'Observation', location: 'Showroom' }
+                ]
             },
             {
                 title: "🔐 Inventory & High-Value Security Protocol",
@@ -1729,7 +1959,12 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Store Manager",
                 summary: "A weekly audit of high-value inventory (e.g., flagship phones, laptops), reconciling physical stock against system records to quickly identify any shrinkage.",
-                tasks: [ { id: 'ESR-IHVSP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Showroom' }, { id: 'ESR-IHVSP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Showroom' } ]
+                tasks: [
+                    { id: 'ESR-IHVSP-001', description: "Conduct a cycle count of top 10 high-value SKUs.", priority: 'High', riskLevel: 'High', proof: 'Count Sheet', location: 'Stock Room' },
+                    { id: 'ESR-IHVSP-002', description: "Reconcile physical count with inventory system records and investigate discrepancies.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Back Office' },
+                    { id: 'ESR-IHVSP-003', description: "Review CCTV footage of stock room and high-value areas.", priority: 'High', riskLevel: 'Medium', proof: 'Footage Review Log', location: 'Back Office' },
+                    { id: 'ESR-IHVSP-004', description: "Ensure high-value stock is stored in a secure, access-controlled area.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Stock Room' }
+                ]
             },
             {
                 title: "🧠 Staff & Training Drills",
@@ -1737,7 +1972,12 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Store Manager",
                 summary: "A checklist for conducting regular product knowledge training and sales technique role-playing sessions to keep the team sharp and effective.",
-                tasks: [ { id: 'ESR-STD-001', description: "Task 1", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Showroom' }, { id: 'ESR-STD-002', description: "Task 2", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Showroom' } ]
+                tasks: [
+                    { id: 'ESR-STD-001', description: "Conduct a 15-minute training session on a new product or feature.", priority: 'High', riskLevel: 'Low', proof: 'Training Log', location: 'Back Office' },
+                    { id: 'ESR-STD-002', description: "Role-play a customer interaction scenario (e.g., handling an objection).", priority: 'Medium', riskLevel: 'Low', proof: 'Observation', location: 'Back Office' },
+                    { id: 'ESR-STD-003', description: "Review and discuss a competitor's product or promotion.", priority: 'Medium', riskLevel: 'Low', proof: 'Discussion Log', location: 'Back Office' },
+                    { id: 'ESR-STD-004', description: "Administer a short quiz on product specifications.", priority: 'Low', riskLevel: 'Low', proof: 'Quiz Results', location: 'Back Office' }
+                ]
             }
         ]
     },
@@ -1763,7 +2003,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Shift Supervisor",
                 summary: "Standardizes the reporting process for the outgoing shift, covering production numbers, downtime, quality issues, and any safety incidents.",
-                tasks: [ { id: 'FSH-EOSD-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Factory' }, { id: 'FSH-EOSD-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Factory' } ]
+                tasks: [
+                    { id: 'FSH-EOSD-001', description: "Complete the production log with units produced vs. target.", priority: 'High', riskLevel: 'Medium', proof: 'Production Log', location: 'Control Room' },
+                    { id: 'FSH-EOSD-002', description: "Document any machine downtime, including reason and duration.", priority: 'High', riskLevel: 'High', proof: 'Downtime Log', location: 'Control Room' },
+                    { id: 'FSH-EOSD-003', description: "Report any quality control failures or rejected batches.", priority: 'High', riskLevel: 'High', proof: 'QC Report', location: 'Control Room' },
+                    { id: 'FSH-EOSD-004', description: "Log any near misses, safety incidents, or injuries that occurred during the shift.", priority: 'High', riskLevel: 'High', proof: 'Safety Log', location: 'Control Room' },
+                    { id: 'FSH-EOSD-005', description: "Ensure all workstations are cleaned and tools are returned to their designated places.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Production Floor' }
+                ]
             },
             {
                 title: "🤝 Joint Handover Meeting",
@@ -1771,7 +2017,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Shift Supervisor",
                 summary: "A structured meeting between outgoing and incoming supervisors to discuss the status of all machines, pending maintenance, and priorities for the next shift.",
-                tasks: [ { id: 'FSH-JHM-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Factory' }, { id: 'FSH-JHM-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Factory' } ]
+                tasks: [
+                    { id: 'FSH-JHM-001', description: "Outgoing supervisor briefs incoming supervisor on production status.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Meeting', location: 'Control Room' },
+                    { id: 'FSH-JHM-002', description: "Discuss any machine issues or pending maintenance tasks.", priority: 'High', riskLevel: 'High', proof: 'Handover Meeting', location: 'Control Room' },
+                    { id: 'FSH-JHM-003', description: "Review any quality or safety concerns from the previous shift.", priority: 'High', riskLevel: 'High', proof: 'Handover Meeting', location: 'Control Room' },
+                    { id: 'FSH-JHM-004', description: "Discuss any personnel issues or staffing changes.", priority: 'Medium', riskLevel: 'Medium', proof: 'Handover Meeting', location: 'Control Room' },
+                    { id: 'FSH-JHM-005', description: "Incoming supervisor signs off on the handover log, accepting responsibility.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Log', location: 'Control Room' }
+                ]
             },
             {
                 title: "▶️ Incoming Shift: Start-up Procedures",
@@ -1779,7 +2031,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Shift Supervisor",
                 summary: "Ensures the incoming shift conducts a full walk-through, verifies machine settings, and briefs their team based on the handover information before starting production.",
-                tasks: [ { id: 'FSH-ISSP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Factory' }, { id: 'FSH-ISSP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Factory' } ]
+                tasks: [
+                    { id: 'FSH-ISSP-001', description: "Incoming supervisor conducts a physical walk-through of the production floor.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Production Floor' },
+                    { id: 'FSH-ISSP-002', description: "Verify machine settings are correct for the day's production run.", priority: 'High', riskLevel: 'High', proof: 'Machine Settings Log', location: 'Production Floor' },
+                    { id: 'FSH-ISSP-003', description: "Conduct a pre-shift safety huddle with the new team.", priority: 'High', riskLevel: 'High', proof: 'Huddle Log', location: 'Production Floor' },
+                    { id: 'FSH-ISSP-004', description: "Assign operators to their workstations.", priority: 'Medium', riskLevel: 'Low', proof: 'Roster', location: 'Control Room' },
+                    { id: 'FSH-ISSP-005', description: "Initiate the start of the production line.", priority: 'High', riskLevel: 'Medium', proof: 'System Log', location: 'Control Room' }
+                ]
             },
             {
                 title: "🦺 Weekly Safety & Audit Drill",
@@ -1787,7 +2045,13 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Safety Officer",
                 summary: "A weekly safety audit covering machine guards, emergency stops, PPE compliance, and clear pathways to prevent workplace accidents.",
-                tasks: [ { id: 'FSH-WSAD-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Factory' }, { id: 'FSH-WSAD-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Factory' } ]
+                tasks: [
+                    { id: 'FSH-WSAD-001', description: "Check that all machine safety guards are in place and functional.", priority: 'High', riskLevel: 'High', proof: 'Safety Audit Form', location: 'Production Floor' },
+                    { id: 'FSH-WSAD-002', description: "Test emergency stop buttons on a sample of machines.", priority: 'High', riskLevel: 'High', proof: 'Safety Audit Form', location: 'Production Floor' },
+                    { id: 'FSH-WSAD-003', description: "Audit staff for correct use of Personal Protective Equipment (PPE).", priority: 'High', riskLevel: 'High', proof: 'Safety Audit Form', location: 'Production Floor' },
+                    { id: 'FSH-WSAD-004', description: "Ensure all walkways and fire exits are clear of obstructions.", priority: 'High', riskLevel: 'High', proof: 'Safety Audit Form', location: 'Production Floor' },
+                    { id: 'FSH-WSAD-005', description: "Check that fire extinguishers and first aid stations are accessible and inspected.", priority: 'High', riskLevel: 'High', proof: 'Safety Audit Form', location: 'Production Floor' }
+                ]
             }
         ]
     },
@@ -1813,7 +2077,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Sales Manager",
                 summary: "Standardizes the sales process from the first inquiry to signing the contract, ensuring all client requirements, dates, and costs are clearly documented.",
-                tasks: [ { id: 'WBH-ICB-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'WBH-ICB-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'WBH-ICB-001', description: "Respond to client inquiry within a specified timeframe (e.g., 24 hours).", priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'Sales Office' },
+                    { id: 'WBH-ICB-002', description: "Conduct a venue tour, highlighting key features and options.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Venue' },
+                    { id: 'WBH-ICB-003', description: "Provide a clear, itemized quotation based on client requirements.", priority: 'High', riskLevel: 'High', proof: 'Quotation Copy', location: 'Sales Office' },
+                    { id: 'WBH-ICB-004', description: "Finalize and sign the contract, collecting the initial deposit.", priority: 'High', riskLevel: 'High', proof: 'Signed Contract', location: 'Sales Office' },
+                    { id: 'WBH-ICB-005', description: "Create an event file and a Banquet Event Order (BEO).", priority: 'High', riskLevel: 'Medium', proof: 'BEO Document', location: 'Sales Office' }
+                ]
             },
             {
                 title: "📋 Pre-Event Coordination (T-30 Days)",
@@ -1821,7 +2091,13 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Event Coordinator",
                 summary: "The master planning checklist for coordinating with the client and all vendors (catering, decor, DJ) in the weeks leading up to the event.",
-                tasks: [ { id: 'WBH-PEC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'WBH-PEC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'WBH-PEC-001', description: "Finalize the event timeline and floor plan with the client.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Timeline', location: 'Operations Office' },
+                    { id: 'WBH-PEC-002', description: "Coordinate with catering on the final menu and guest count.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Operations Office' },
+                    { id: 'WBH-PEC-003', description: "Confirm arrival times and setup requirements with all external vendors (decor, AV, etc.).", priority: 'High', riskLevel: 'High', proof: 'Vendor Confirmation Sheet', location: 'Operations Office' },
+                    { id: 'WBH-PEC-004', description: "Arrange for any necessary permits or licenses (e.g., music license).", priority: 'High', riskLevel: 'High', proof: 'Permit Copy', location: 'Operations Office' },
+                    { id: 'WBH-PEC-005', description: "Schedule and brief all internal staff (banquet, security, housekeeping).", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Operations Office' }
+                ]
             },
             {
                 title: "🎉 Event Day Execution",
@@ -1829,7 +2105,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Venue Manager",
                 summary: "The day-of-event playbook, covering vendor arrivals, setup supervision, client communication, and ensuring the event timeline is followed flawlessly.",
-                tasks: [ { id: 'WBH-EDE-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' }, { id: 'WBH-EDE-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'WBH-EDE-001', description: "Conduct a final walkthrough of the venue to ensure setup matches the BEO.", priority: 'High', riskLevel: 'High', proof: 'BEO Checklist', location: 'Venue' },
+                    { id: 'WBH-EDE-002', description: "Supervise vendor setup and ensure they adhere to venue rules.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Venue' },
+                    { id: 'WBH-EDE-003', description: "Test all AV equipment one final time before the event starts.", priority: 'High', riskLevel: 'High', proof: 'AV Test Log', location: 'Venue' },
+                    { id: 'WBH-EDE-004', description: "Be the main point of contact for the client and vendors throughout the event.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Venue' },
+                    { id: 'WBH-EDE-005', description: "Monitor the event flow and timeline, making adjustments as needed.", priority: 'High', riskLevel: 'Medium', proof: 'Timeline Check', location: 'Venue' }
+                ]
             },
             {
                 title: "💸 Post-Event Wrap-Up & Settlement",
@@ -1837,7 +2119,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Accounts Manager",
                 summary: "Ensures a smooth post-event process, including final walkthroughs, damage assessment, breakdown coordination, and final bill settlement with the client.",
-                tasks: [ { id: 'WBH-PEWUS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' }, { id: 'WBH-PEWUS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'WBH-PEWUS-001', description: "Conduct a post-event walkthrough with the client to check for any damages.", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Sign-off', location: 'Venue' },
+                    { id: 'WBH-PEWUS-002', description: "Supervise the breakdown and exit of all external vendors.", priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Venue' },
+                    { id: 'WBH-PEWUS-003', description: "Generate the final invoice, including any additional charges.", priority: 'High', riskLevel: 'High', proof: 'Final Invoice', location: 'Accounts' },
+                    { id: 'WBH-PEWUS-004', description: "Collect final payment from the client.", priority: 'High', riskLevel: 'High', proof: 'Payment Receipt', location: 'Accounts' },
+                    { id: 'WBH-PEWUS-005', description: "Collect feedback from the client on their experience.", priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Form', location: 'Accounts' }
+                ]
             }
         ]
     },
@@ -1863,7 +2151,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Supervisor",
                 summary: "A critical safety sweep before any children arrive, checking for hazards like sharp objects, unsafe toys, and ensuring all areas are clean and secure.",
-                tasks: [ { id: 'PD-DOSI-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'School' }, { id: 'PD-DOSI-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'School' } ]
+                tasks: [
+                    { id: 'PD-DOSI-001', description: "Inspect all indoor and outdoor play areas for hazards (sharp edges, broken equipment).", priority: 'High', riskLevel: 'High', proof: 'Safety Log', location: 'Play Areas' },
+                    { id: 'PD-DOSI-002', description: "Check that all gates and doors are securely latched.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Perimeter' },
+                    { id: 'PD-DOSI-003', description: "Ensure all electrical outlets are covered.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classrooms' },
+                    { id: 'PD-DOSI-004', description: "Confirm that first aid kits are fully stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Office' },
+                    { id: 'PD-DOSI-005', description: "Sanitize all high-touch surfaces, toys, and eating areas.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'All Areas' }
+                ]
             },
             {
                 title: "👀 During-Session Operations & Supervision",
@@ -1871,7 +2165,13 @@ export const premiumPacks = [
                 frequency: "Hourly",
                 role: "Staff",
                 summary: "Focuses on maintaining staff-to-child ratios, active supervision in all play zones, and documenting activities, meals, and nap times.",
-                tasks: [ { id: 'PD-DSOS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'School' }, { id: 'PD-DSOS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'School' } ]
+                tasks: [
+                    { id: 'PD-DSOS-001', description: "Maintain mandated staff-to-child ratios at all times.", priority: 'High', riskLevel: 'High', proof: 'Headcount Log', location: 'All Areas' },
+                    { id: 'PD-DSOS-002', description: "Practice 'active supervision' by constantly scanning and being present with children.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'All Areas' },
+                    { id: 'PD-DSOS-003', description: "Log diaper changes, meals, and nap times for each child.", priority: 'High', riskLevel: 'Medium', proof: 'Daily Report Card', location: 'Classrooms' },
+                    { id: 'PD-DSOS-004', description: "Handle and document any minor incidents (bumps, scrapes) and inform parents.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Office' },
+                    { id: 'PD-DSOS-005', description: "Ensure children are washing hands before meals and after using the restroom.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Classrooms' }
+                ]
             },
             {
                 title: "🧽 Closing & Deep Cleaning",
@@ -1879,7 +2179,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Staff",
                 summary: "A thorough cleaning and sanitization protocol for the end of the day, ensuring all toys, surfaces, and restrooms are disinfected and ready for the next day.",
-                tasks: [ { id: 'PD-CDC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'School' }, { id: 'PD-CDC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'School' } ]
+                tasks: [
+                    { id: 'PD-CDC-001', description: "Collect, wash, and sanitize all used toys.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'All Areas' },
+                    { id: 'PD-CDC-002', description: "Disinfect all tables, chairs, and sleeping mats.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Classrooms' },
+                    { id: 'PD-CDC-003', description: "Clean and sanitize restrooms thoroughly.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Restrooms' },
+                    { id: 'PD-CDC-004', description: "Empty all trash cans and dispose of waste properly.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Areas' },
+                    { id: 'PD-CDC-005', description: "Secure the premises, lock all doors and windows.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Perimeter' }
+                ]
             },
             {
                 title: " drills Weekly Maintenance & Emergency Drills",
@@ -1887,7 +2193,12 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Supervisor",
                 summary: "A weekly check of fire alarms, first aid kits, and emergency exits, plus conducting simple, age-appropriate emergency drills with the children.",
-                tasks: [ { id: 'PD-WMED-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'School' }, { id: 'PD-WMED-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'School' } ]
+                tasks: [
+                    { id: 'PD-WMED-001', description: "Test fire alarms and smoke detectors.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'All Areas' },
+                    { id: 'PD-WMED-002', description: "Inspect outdoor play equipment for structural integrity and safety.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Playground' },
+                    { id: 'PD-WMED-003', description: "Restock first aid kits with any used supplies.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Office' },
+                    { id: 'PD-WMED-004', description: "Conduct a simple fire or evacuation drill with staff and children.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Report', location: 'All Areas' }
+                ]
             }
         ]
     },
@@ -1913,7 +2224,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "Plan the perfect Sangeet night, from coordinating dance performances and DJ playlists to managing food, drinks, and guest flow for a night of celebration.",
-                tasks: [ { id: 'HW-SCC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'HW-SCC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'HW-SCC-001', description: "Finalize DJ and playlist.", priority: 'High', riskLevel: 'Medium', proof: 'Contract', location: 'Venue' },
+                    { id: 'HW-SCC-002', description: "Coordinate family dance practice schedules.", priority: 'Medium', riskLevel: 'Low', proof: 'Schedule', location: 'Home' },
+                    { id: 'HW-SCC-003', description: "Arrange for choreographer if needed.", priority: 'Medium', riskLevel: 'Low', proof: 'Contract', location: 'Venue' },
+                    { id: 'HW-SCC-004', description: "Finalize food and beverage menu.", priority: 'High', riskLevel: 'Medium', proof: 'BEO', location: 'Venue' },
+                    { id: 'HW-SCC-005', description: "Plan stage setup, lighting, and sound.", priority: 'High', riskLevel: 'High', proof: 'Layout Plan', location: 'Venue' }
+                ]
             },
             {
                 title: "💅 Mehndi Ceremony Checklist",
@@ -1921,7 +2238,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "Organize a vibrant Mehndi event, including booking artists, arranging comfortable seating for the bride and guests, and planning for music and catering.",
-                tasks: [ { id: 'HW-MCC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'HW-MCC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'HW-MCC-001', description: "Book Mehndi artists for the bride and guests.", priority: 'High', riskLevel: 'Medium', proof: 'Contract', location: 'Venue' },
+                    { id: 'HW-MCC-002', description: "Arrange comfortable seating for the bride.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Venue' },
+                    { id: 'HW-MCC-003', description: "Plan decor and theme (e.g., floral, colorful drapes).", priority: 'Medium', riskLevel: 'Low', proof: 'Mood Board', location: 'Venue' },
+                    { id: 'HW-MCC-004', description: "Organize music and entertainment.", priority: 'Medium', riskLevel: 'Low', proof: 'Playlist', location: 'Venue' },
+                    { id: 'HW-MCC-005', description: "Arrange for snacks and beverages for guests.", priority: 'High', riskLevel: 'Medium', proof: 'BEO', location: 'Venue' }
+                ]
             },
             {
                 title: "💒 Wedding Day: Baraat, Varmala & Mandap",
@@ -1929,7 +2252,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "The master checklist for the wedding day itself, managing the timing and logistics of the groom's procession (Baraat), the floral exchange (Varmala), and the ceremony (Mandap).",
-                tasks: [ { id: 'HW-WD-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' }, { id: 'HW-WD-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'HW-WD-001', description: "Coordinate Baraat assembly point and route.", priority: 'High', riskLevel: 'High', proof: 'Timeline', location: 'Venue' },
+                    { id: 'HW-WD-002', description: "Arrange for horse/vehicle for the groom and music band.", priority: 'High', riskLevel: 'Medium', proof: 'Contract', location: 'Venue' },
+                    { id: 'HW-WD-003', description: "Ensure Varmalas (garlands) are ready and fresh.", priority: 'High', riskLevel: 'High', proof: 'Vendor Confirmation', location: 'Venue' },
+                    { id: 'HW-WD-004', description: "Check Mandap setup, including seating for family and priest.", priority: 'High', riskLevel: 'High', proof: 'Layout Plan', location: 'Venue' },
+                    { id: 'HW-WD-005', description: "Ensure all ceremony items (puja samagri) are ready as per priest's list.", priority: 'High', riskLevel: 'High', proof: 'Checklist', location: 'Venue' }
+                ]
             },
             {
                 title: "👋 Post-Wedding: Reception & Vidaai",
@@ -1937,7 +2266,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "Covers the flow of the wedding reception, from guest seating and speeches to dinner service, and coordinates the bride's emotional farewell ceremony (Vidaai).",
-                tasks: [ { id: 'HW-PW-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'HW-PW-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'HW-PW-001', description: "Finalize reception seating chart.", priority: 'High', riskLevel: 'Medium', proof: 'Seating Chart', location: 'Venue' },
+                    { id: 'HW-PW-002', description: "Coordinate couple's grand entrance.", priority: 'High', riskLevel: 'Low', proof: 'Timeline', location: 'Venue' },
+                    { id: 'HW-PW-003', description: "Schedule speeches, cake cutting, and first dance.", priority: 'Medium', riskLevel: 'Low', proof: 'Timeline', location: 'Venue' },
+                    { id: 'HW-PW-004', description: "Manage dinner service and bar operations.", priority: 'High', riskLevel: 'Medium', proof: 'BEO', location: 'Venue' },
+                    { id: 'HW-PW-005', description: "Prepare for the Vidaai ceremony, including decorating the car.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Venue' }
+                ]
             }
         ]
     },
@@ -1963,7 +2298,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "Covers the essential preparations for the Nikah, including coordinating with the officiant (Qazi), ensuring witnesses are present, and managing the Mahr agreement.",
-                tasks: [ { id: 'MW-PNC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' }, { id: 'MW-PNC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'MW-PNC-001', description: "Confirm date, time, and location with the Qazi/Imam.", priority: 'High', riskLevel: 'High', proof: 'Confirmation', location: 'Office' },
+                    { id: 'MW-PNC-002', description: "Ensure the Mahr (dower) is agreed upon by both families.", priority: 'High', riskLevel: 'High', proof: 'Agreement', location: 'Home' },
+                    { id: 'MW-PNC-003', description: "Arrange for the required number of witnesses.", priority: 'High', riskLevel: 'High', proof: 'Witness List', location: 'Office' },
+                    { id: 'MW-PNC-004', description: "Prepare the Nikah-nama (marriage contract).", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Office' },
+                    { id: 'MW-PNC-005', description: "Plan seating arrangements, often with segregation for men and women.", priority: 'Medium', riskLevel: 'Medium', proof: 'Layout Plan', location: 'Venue' }
+                ]
             },
             {
                 title: "🚗 Post-Nikah & Rukhsati",
@@ -1971,7 +2312,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "Manages the events immediately following the Nikah, including the bride's formal departure from her family's home (Rukhsati).",
-                tasks: [ { id: 'MW-PNR-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'MW-PNR-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'MW-PNR-001', description: "Coordinate prayers and blessings after the Nikah is signed.", priority: 'High', riskLevel: 'Low', proof: 'Timeline', location: 'Venue' },
+                    { id: 'MW-PNR-002', description: "Arrange for the groom to meet the bride's family.", priority: 'Medium', riskLevel: 'Low', proof: 'Timeline', location: 'Venue' },
+                    { id: 'MW-PNR-003', description: "Plan the timing and logistics of the Rukhsati.", priority: 'High', riskLevel: 'Medium', proof: 'Timeline', location: 'Venue' },
+                    { id: 'MW-PNR-004', description: "Coordinate transportation for the couple.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmation', location: 'Venue' },
+                    { id: 'MW-PNR-005', description: "Ensure the bride's luggage is transferred to the groom's home.", priority: 'Medium', riskLevel: 'Medium', proof: 'Confirmation', location: 'Home' }
+                ]
             },
             {
                 title: "🍽️ Walima (Groom's Reception) Planning",
@@ -1979,7 +2326,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "A complete checklist for planning the Walima, the celebratory feast hosted by the groom's family, covering venue, catering, guest list, and decor.",
-                tasks: [ { id: 'MW-WRP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' }, { id: 'MW-WRP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'MW-WRP-001', description: "Book venue for the Walima.", priority: 'High', riskLevel: 'Medium', proof: 'Contract', location: 'Office' },
+                    { id: 'MW-WRP-002', description: "Finalize guest list and send out invitations.", priority: 'High', riskLevel: 'Medium', proof: 'Guest List', location: 'Office' },
+                    { id: 'MW-WRP-003', description: "Select catering and menu (ensuring Halal compliance).", priority: 'High', riskLevel: 'High', proof: 'BEO', location: 'Office' },
+                    { id: 'MW-WRP-004', description: "Plan stage setup for the couple.", priority: 'High', riskLevel: 'Low', proof: 'Layout Plan', location: 'Venue' },
+                    { id: 'MW-WRP-005', description: "Arrange for photography and videography.", priority: 'Medium', riskLevel: 'Low', proof: 'Contract', location: 'Office' }
+                ]
             },
             {
                 title: "🤝 General Vendor & Guest Management",
@@ -1987,7 +2340,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Planner",
                 summary: "A general checklist for managing common wedding tasks like vendor contracts, payments, guest RSVPs, and creating a master timeline for all events.",
-                tasks: [ { id: 'MW-GVGM-001', description: "Task 1", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Venue' }, { id: 'MW-GVGM-002', description: "Task 2", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'Venue' } ]
+                tasks: [
+                    { id: 'MW-GVGM-001', description: "Create a master contact sheet for all vendors.", priority: 'High', riskLevel: 'Medium', proof: 'Contact Sheet', location: 'Office' },
+                    { id: 'MW-GVGM-002', description: "Track payments and due dates for all vendors.", priority: 'High', riskLevel: 'High', proof: 'Payment Schedule', location: 'Office' },
+                    { id: 'MW-GVGM-003', description: "Manage guest RSVPs and dietary restrictions.", priority: 'Medium', riskLevel: 'Medium', proof: 'RSVP List', location: 'Office' },
+                    { id: 'MW-GVGM-004', description: "Arrange accommodation for out-of-town guests.", priority: 'Medium', riskLevel: 'Low', proof: 'Booking Confirmations', location: 'Office' },
+                    { id: 'MW-GVGM-005', description: "Create a detailed run-of-show timeline for all wedding events.", priority: 'High', riskLevel: 'High', proof: 'Timeline Document', location: 'Office' }
+                ]
             }
         ]
     },
@@ -2013,7 +2372,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Service Advisor",
                 summary: "Standardizes the customer interaction at drop-off, ensuring all complaints are accurately documented and a thorough vehicle inspection is performed.",
-                tasks: [ { id: 'ARS-VCISA-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Shop' }, { id: 'ARS-VCISA-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Shop' } ]
+                tasks: [
+                    { id: 'ARS-VCISA-001', description: "Greet the customer and record their primary complaints.", priority: 'High', riskLevel: 'Medium', proof: 'Job Card', location: 'Reception' },
+                    { id: 'ARS-VCISA-002', description: "Perform a walk-around inspection of the vehicle, noting any pre-existing damage.", priority: 'High', riskLevel: 'High', proof: 'Inspection Form/Photos', location: 'Reception' },
+                    { id: 'ARS-VCISA-003', description: "Confirm customer contact details and preferred method of communication.", priority: 'High', riskLevel: 'Low', proof: 'Job Card', location: 'Reception' },
+                    { id: 'ARS-VCISA-004', description: "Provide an estimated time for diagnosis.", priority: 'Medium', riskLevel: 'Medium', proof: 'Verbal/Written', location: 'Reception' },
+                    { id: 'ARS-VCISA-005', description: "Tag keys and place protective covers on seat and steering wheel.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Reception' }
+                ]
             },
             {
                 title: "💰 Diagnosis, Quoting & Work Order",
@@ -2021,7 +2386,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Service Advisor",
                 summary: "A process to ensure accurate diagnosis, clear quotation communication to the customer, and obtaining formal approval before any work begins.",
-                tasks: [ { id: 'ARS-DQWO-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Shop' }, { id: 'ARS-DQWO-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Shop' } ]
+                tasks: [
+                    { id: 'ARS-DQWO-001', description: "Assign the vehicle to a technician for diagnosis.", priority: 'High', riskLevel: 'Medium', proof: 'System Entry', location: 'Workshop' },
+                    { id: 'ARS-DQWO-002', description: "Technician performs diagnosis and reports required repairs and parts.", priority: 'High', riskLevel: 'High', proof: 'Diagnostic Report', location: 'Workshop' },
+                    { id: 'ARS-DQWO-003', description: "Create a detailed quote, including parts and labor costs.", priority: 'High', riskLevel: 'High', proof: 'Quotation Document', location: 'Office' },
+                    { id: 'ARS-DQWO-004', description: "Contact the customer to explain the required work and get approval.", priority: 'High', riskLevel: 'High', proof: 'Recorded Call/Email', location: 'Office' },
+                    { id: 'ARS-DQWO-005', description: "Once approved, convert the quote into a formal work order for the technician.", priority: 'High', riskLevel: 'Medium', proof: 'Work Order', location: 'Office' }
+                ]
             },
             {
                 title: "🛠️ Repair & Quality Control",
@@ -2029,7 +2400,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Technician",
                 summary: "Ensures all repairs are performed to standard and a final quality control check (including a test drive) is completed to verify the issue is resolved.",
-                tasks: [ { id: 'ARS-RQC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Shop' }, { id: 'ARS-RQC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Shop' } ]
+                tasks: [
+                    { id: 'ARS-RQC-001', description: "Order necessary parts from the parts department.", priority: 'High', riskLevel: 'Medium', proof: 'Parts Requisition Form', location: 'Workshop' },
+                    { id: 'ARS-RQC-002', description: "Perform all repairs as per the work order.", priority: 'High', riskLevel: 'High', proof: 'Technician Notes', location: 'Workshop' },
+                    { id: 'ARS-RQC-003', description: "Once repairs are complete, a different technician or a supervisor performs a quality control check.", priority: 'High', riskLevel: 'High', proof: 'QC Checklist', location: 'Workshop' },
+                    { id: 'ARS-RQC-004', description: "Conduct a test drive to ensure the initial complaint has been resolved.", priority: 'High', riskLevel: 'High', proof: 'Test Drive Log', location: 'Road Test' },
+                    { id: 'ARS-RQC-005', description: "Clean the vehicle before notifying the customer.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Workshop' }
+                ]
             },
             {
                 title: " handover Vehicle Handover Experience",
@@ -2037,7 +2414,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Service Advisor",
                 summary: "A checklist for a professional vehicle handover, including explaining the work done, reviewing the invoice, and ensuring the vehicle is clean.",
-                tasks: [ { id: 'ARS-VHE-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Shop' }, { id: 'ARS-VHE-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Shop' } ]
+                tasks: [
+                    { id: 'ARS-VHE-001', description: "Notify the customer that their vehicle is ready for pickup.", priority: 'High', riskLevel: 'Low', proof: 'Communication Log', location: 'Office' },
+                    { id: 'ARS-VHE-002', description: "Prepare the final invoice.", priority: 'High', riskLevel: 'High', proof: 'Invoice', location: 'Office' },
+                    { id: 'ARS-VHE-003', description: "When the customer arrives, explain the repairs performed and show any replaced parts if requested.", priority: 'High', riskLevel: 'Medium', proof: 'Verbal Communication', location: 'Reception' },
+                    { id: 'ARS-VHE-004', description: "Process the final payment.", priority: 'High', riskLevel: 'High', proof: 'Payment Receipt', location: 'Reception' },
+                    { id: 'ARS-VHE-005', description: "Hand over keys and thank the customer for their business.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Reception' }
+                ]
             }
         ]
     },
@@ -2063,7 +2446,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Security Supervisor",
                 summary: "A top-to-bottom security and safety sweep of the entire mall before opening to the public, covering all entrances, service corridors, and parking areas.",
-                tasks: [ { id: 'MALL-DOS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Mall' }, { id: 'MALL-DOS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Mall' } ]
+                tasks: [
+                    { id: 'MALL-DOS-001', description: "Conduct a full patrol of the mall perimeter and parking lots.", priority: 'High', riskLevel: 'High', proof: 'Patrol Log', location: 'Exterior' },
+                    { id: 'MALL-DOS-002', description: "Check that all CCTV cameras are online and recording correctly.", priority: 'High', riskLevel: 'High', proof: 'System Check', location: 'Control Room' },
+                    { id: 'MALL-DOS-003', description: "Test communication systems (walkie-talkies, PA system).", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Control Room' },
+                    { id: 'MALL-DOS-004', description: "Unlock public entrances at the scheduled time.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Entrances' },
+                    { id: 'MALL-DOS-005', description: "Brief the security team on daily events, VIP visits, or specific threats.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Control Room' }
+                ]
             },
             {
                 title: "🧹 Ongoing Operations & Housekeeping",
@@ -2071,7 +2460,13 @@ export const premiumPacks = [
                 frequency: "Hourly",
                 role: "Duty Manager",
                 summary: "Manages the mall during operational hours, with hourly checks on restroom cleanliness, food court hygiene, and common area safety.",
-                tasks: [ { id: 'MALL-OOH-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Mall' }, { id: 'MALL-OOH-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Mall' } ]
+                tasks: [
+                    { id: 'MALL-OOH-001', description: "Conduct hourly checks of all public restrooms for cleanliness and supplies.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms' },
+                    { id: 'MALL-OOH-002', description: "Patrol common areas for spills, hazards, or maintenance issues.", priority: 'High', riskLevel: 'High', proof: 'Patrol Log', location: 'Common Areas' },
+                    { id: 'MALL-OOH-003', description: "Monitor food court tables and waste bins, coordinating with cleaning staff.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Food Court' },
+                    { id: 'MALL-OOH-004', description: "Check functionality of elevators, escalators, and automatic doors.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'Common Areas' },
+                    { id: 'MALL-OOH-005', description: "Respond to any tenant or customer complaints.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Log', location: 'Operations Office' }
+                ]
             },
             {
                 title: "🌙 Daily Closing Protocol",
@@ -2079,7 +2474,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Manager",
                 summary: "A systematic process for closing the mall, ensuring all patrons have exited, tenants have secured their stores, and the facility is locked down.",
-                tasks: [ { id: 'MALL-DCP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Mall' }, { id: 'MALL-DCP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Mall' } ]
+                tasks: [
+                    { id: 'MALL-DCP-001', description: "Make public announcements regarding mall closing times.", priority: 'Medium', riskLevel: 'Low', proof: 'PA Log', location: 'Control Room' },
+                    { id: 'MALL-DCP-002', description: "Ensure all customers have exited the mall after closing time.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Sweep', location: 'Common Areas' },
+                    { id: 'MALL-DCP-003', description: "Confirm all tenant stores have closed and secured their shutters/doors.", priority: 'High', riskLevel: 'Medium', proof: 'Tenant Check Log', location: 'Common Areas' },
+                    { id: 'MALL-DCP-004', description: "Lock down all public entrances and service corridors.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Entrances' },
+                    { id: 'MALL-DCP-005', description: "Switch to night lighting and security protocols.", priority: 'High', riskLevel: 'Medium', proof: 'System Log', location: 'Control Room' }
+                ]
             },
             {
                 title: "🤝 Weekly Maintenance & Tenant Relations",
@@ -2087,7 +2488,12 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Mall Manager",
                 summary: "A weekly review of technical systems (HVAC, elevators) and a structured process for communicating with tenant store managers about sales, events, and operational issues.",
-                tasks: [ { id: 'MALL-WMTR-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Mall' }, { id: 'MALL-WMTR-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Mall' } ]
+                tasks: [
+                    { id: 'MALL-WMTR-001', description: "Review reports on HVAC, elevator, and escalator performance.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Reports', location: 'Manager Office' },
+                    { id: 'MALL-WMTR-002', description: "Send out a weekly newsletter or memo to all tenants with operational updates.", priority: 'Medium', riskLevel: 'Low', proof: 'Email Copy', location: 'Manager Office' },
+                    { id: 'MALL-WMTR-003', description: "Walk the mall with the head of housekeeping and head of security to identify issues.", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Log', location: 'Common Areas' },
+                    { id: 'MALL-WMTR-004', description: "Review upcoming marketing events and coordinate with relevant tenants.", priority: 'High', riskLevel: 'Medium', proof: 'Marketing Calendar', location: 'Manager Office' }
+                ]
             }
         ]
     },
@@ -2113,7 +2519,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Team Lead",
                 summary: "A structured 15-minute huddle to energize the team, discuss targets for the day, and share critical updates before agents start taking calls.",
-                tasks: [ { id: 'CC-PSTH-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Call Center' }, { id: 'CC-PSTH-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Call Center' } ]
+                tasks: [
+                    { id: 'CC-PSTH-001', description: "Review previous shift's performance and any outstanding issues.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Report', location: 'Huddle Area' },
+                    { id: 'CC-PSTH-002', description: "Share daily targets (e.g., AHT, FCR, CSAT goals).", priority: 'High', riskLevel: 'Low', proof: 'Whiteboard/Screen', location: 'Huddle Area' },
+                    { id: 'CC-PSTH-003', description: "Provide updates on any new products, processes, or promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Document', location: 'Huddle Area' },
+                    { id: 'CC-PSTH-004', description: "Recognize top performers from the previous day.", priority: 'Medium', riskLevel: 'Low', proof: 'Verbal Announcement', location: 'Huddle Area' },
+                    { id: 'CC-PSTH-005', description: "Conduct a quick Q&A session to address agent queries.", priority: 'Medium', riskLevel: 'Low', proof: 'Observation', location: 'Huddle Area' }
+                ]
             },
             {
                 title: "🎧 Live Operations & Quality Assurance (QA)",
@@ -2121,7 +2533,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "QA Analyst",
                 summary: "Defines the process for live call monitoring and provides a scoring rubric to ensure agents are adhering to scripts, showing empathy, and resolving issues effectively.",
-                tasks: [ { id: 'CC-LOQA-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Call Center' }, { id: 'CC-LOQA-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Call Center' } ]
+                tasks: [
+                    { id: 'CC-LOQA-001', description: "Monitor a set number of live calls per agent per week.", priority: 'High', riskLevel: 'Medium', proof: 'Monitoring Schedule', location: 'QA Desk' },
+                    { id: 'CC-LOQA-002', description: "Score calls based on a standardized QA form (e.g., greeting, issue resolution, closing).", priority: 'High', riskLevel: 'High', proof: 'QA Scorecard', location: 'QA Desk' },
+                    { id: 'CC-LOQA-003', description: "Provide real-time feedback to agents for critical errors via 'call whispering' or chat.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'QA Desk' },
+                    { id: 'CC-LOQA-004', description: "Identify trends in agent performance and report to team leads.", priority: 'High', riskLevel: 'Medium', proof: 'Trend Report', location: 'QA Desk' },
+                    { id: 'CC-LOQA-005', description: "Calibrate scoring with other QA analysts to ensure consistency.", priority: 'Medium', riskLevel: 'Medium', proof: 'Calibration Session Log', location: 'QA Desk' }
+                ]
             },
             {
                 title: "📈 Agent Performance & Coaching",
@@ -2129,7 +2547,13 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Team Lead",
                 summary: "A checklist for conducting effective one-on-one coaching sessions, using QA scores and performance data to provide targeted, constructive feedback.",
-                tasks: [ { id: 'CC-APC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Call Center' }, { id: 'CC-APC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Call Center' } ]
+                tasks: [
+                    { id: 'CC-APC-001', description: "Schedule and conduct weekly one-on-one coaching sessions with each agent.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Calendar', location: 'Meeting Room' },
+                    { id: 'CC-APC-002', description: "Review agent's performance metrics (AHT, CSAT, QA scores) before the session.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Dashboard', location: 'Meeting Room' },
+                    { id: 'CC-APC-003', description: "Play back a positive call and a call needing improvement.", priority: 'High', riskLevel: 'Medium', proof: 'Call Recordings', location: 'Meeting Room' },
+                    { id: 'CC-APC-004', description: "Jointly create an action plan for improvement.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan Document', location: 'Meeting Room' },
+                    { id: 'CC-APC-005', description: "Document the coaching session and follow up on the action plan in the next session.", priority: 'High', riskLevel: 'Medium', proof: 'Coaching Log', location: 'Meeting Room' }
+                ]
             },
             {
                 title: "🌙 End-of-Shift & Reporting",
@@ -2137,7 +2561,12 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Team Lead",
                 summary: "Ensures a smooth handover between shifts, including reporting on team performance, escalating unresolved issues, and preparing for the next shift.",
-                tasks: [ { id: 'CC-EOSR-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Call Center' }, { id: 'CC-EOSR-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Call Center' } ]
+                tasks: [
+                    { id: 'CC-EOSR-001', description: "Generate end-of-shift report showing team's performance against targets.", priority: 'High', riskLevel: 'Medium', proof: 'Shift Report', location: 'Team Lead Desk' },
+                    { id: 'CC-EOSR-002', description: "Document and escalate any major customer issues or system outages.", priority: 'High', riskLevel: 'High', proof: 'Escalation Log', location: 'Team Lead Desk' },
+                    { id: 'CC-EOSR-003', description: "Prepare a handover document for the next shift's team lead.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Document', location: 'Team Lead Desk' },
+                    { id: 'CC-EOSR-004', description: "Ensure all agents have logged out of systems correctly.", priority: 'Medium', riskLevel: 'Low', proof: 'System Check', location: 'Floor' }
+                ]
             }
         ]
     },
@@ -2163,7 +2592,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Head Lifeguard",
                 summary: "A comprehensive safety sweep before opening, covering waterslide structures, pool clarity, deck hazards, and readiness of all lifeguard stations.",
-                tasks: [ { id: 'WP-POSI-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Waterpark' }, { id: 'WP-POSI-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Waterpark' } ]
+                tasks: [
+                    { id: 'WP-POSI-001', description: "Walk the entire perimeter of each pool, checking for slip/trip hazards.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Pool Deck' },
+                    { id: 'WP-POSI-002', description: "Inspect all waterslides and play structures for visible damage or loose parts.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Attractions' },
+                    { id: 'WP-POSI-003', description: "Check that all lifeguard chairs are secure and have unobstructed views.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Lifeguard Stations' },
+                    { id: 'WP-POSI-004', description: "Ensure all rescue equipment (rescue tubes, backboards) is in place and in good condition.", priority: 'High', riskLevel: 'High', proof: 'Equipment Checklist', location: 'Lifeguard Stations' },
+                    { id: 'WP-POSI-005', description: "Test emergency communication systems (whistles, PA system).", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Control Room' }
+                ]
             },
             {
                 title: "🌊 Ongoing Operational Safety",
@@ -2171,7 +2606,13 @@ export const premiumPacks = [
                 frequency: "Hourly",
                 role: "Lifeguard Supervisor",
                 summary: "An hourly checklist to ensure safety standards are maintained, including water quality testing, lifeguard rotation and vigilance checks, and monitoring of attraction queues.",
-                tasks: [ { id: 'WP-OOS-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Waterpark' }, { id: 'WP-OOS-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Waterpark' } ]
+                tasks: [
+                    { id: 'WP-OOS-001', description: "Test and log water chemistry (chlorine, pH) every hour.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Pump Room' },
+                    { id: 'WP-OOS-002', description: "Ensure lifeguards are rotating stations as per schedule to maintain vigilance.", priority: 'High', riskLevel: 'High', proof: 'Rotation Schedule', location: 'Pool Deck' },
+                    { id: 'WP-OOS-003', description: "Conduct random vigilance tests (e.g., using a silhouette dummy) to check lifeguard attentiveness.", priority: 'High', riskLevel: 'High', proof: 'Vigilance Test Log', location: 'Pool Deck' },
+                    { id: 'WP-OOS-004', description: "Monitor attraction queues and enforce height/safety requirements.", priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Attractions' },
+                    { id: 'WP-OOS-005', description: "Respond to and document any first aid incidents.", priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'First Aid Station' }
+                ]
             },
             {
                 title: "🌙 Closing Procedures",
@@ -2179,7 +2620,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Closing Manager",
                 summary: "Ensures the facility is safely closed, including clearing all pools, shutting down pumps and attractions, and securing the premises.",
-                tasks: [ { id: 'WP-CP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Waterpark' }, { id: 'WP-CP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Waterpark' } ]
+                tasks: [
+                    { id: 'WP-CP-001', description: "Make closing announcements and clear all patrons from the water.", priority: 'High', riskLevel: 'Medium', proof: 'PA Log', location: 'Pool Deck' },
+                    { id: 'WP-CP-002', description: "Perform a final sweep of all pools and attractions to ensure they are empty.", priority: 'High', riskLevel: 'High', proof: 'Sweep Log', location: 'Entire Facility' },
+                    { id: 'WP-CP-003', description: "Shut down pumps, slides, and other attractions as per procedure.", priority: 'High', riskLevel: 'Medium', proof: 'Shutdown Checklist', location: 'Pump Room' },
+                    { id: 'WP-CP-004', description: "Store all loose rescue equipment securely.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Storage' },
+                    { id: 'WP-CP-005', description: "Lock all gates and secure the facility perimeter.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Perimeter' }
+                ]
             },
             {
                 title: "🔧 Weekly & Monthly Checks",
@@ -2187,7 +2634,13 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Facility Manager",
                 summary: "A schedule for deeper maintenance checks, including inspection of filtration systems, structural integrity of slides, and functionality of emergency alarms.",
-                tasks: [ { id: 'WP-WMC-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Waterpark' }, { id: 'WP-WMC-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Waterpark' } ]
+                tasks: [
+                    { id: 'WP-WMC-001', description: "Backwash all pool filters.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Pump Room' },
+                    { id: 'WP-WMC-002', description: "Inspect slide structures, bolts, and seams for any signs of stress or wear.", priority: 'High', riskLevel: 'High', proof: 'Structural Inspection Log', location: 'Attractions' },
+                    { id: 'WP-WMC-003', description: "Test emergency shut-off buttons for all attractions.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Attractions' },
+                    { id: 'WP-WMC-004', description: "Conduct a full inventory and inspection of the first aid station.", priority: 'High', riskLevel: 'High', proof: 'Inventory Sheet', location: 'First Aid Station' },
+                    { id: 'WP-WMC-005', description: "Run a full emergency action plan (EAP) drill with the entire staff monthly.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Entire Facility' }
+                ]
             }
         ]
     },
@@ -2213,7 +2666,14 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Host",
                 summary: "A comprehensive checklist to ensure the property is perfect for the next guest, covering deep cleaning, restocking essentials, and checking all appliances.",
-                tasks: [ { id: 'ABNB-PGA-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Property' }, { id: 'ABNB-PGA-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Property' } ]
+                tasks: [
+                    { id: 'ABNB-PGA-001', description: "Professionally clean the entire property (floors, bathroom, kitchen).", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Receipt/Photo', location: 'Property' },
+                    { id: 'ABNB-PGA-002', description: "Change and wash all linens (bed sheets, towels).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Property' },
+                    { id: 'ABNB-PGA-003', description: "Restock all consumables (toilet paper, soap, coffee, tea).", priority: 'High', riskLevel: 'Low', proof: 'Inventory Check', location: 'Property' },
+                    { id: 'ABNB-PGA-004', description: "Check that all appliances and electronics are working (Wi-Fi, TV, AC).", priority: 'High', riskLevel: 'Medium', proof: 'Function Test', location: 'Property' },
+                    { id: 'ABNB-PGA-005', description: "Set the smart lock code for the new guest.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Property' },
+                    { id: 'ABNB-PGA-006', description: "Send check-in instructions to the guest 24 hours before arrival.", priority: 'High', riskLevel: 'Low', proof: 'Message Screenshot', location: 'Host System' }
+                ]
             },
             {
                 title: "🚪 Guest Check-Out / Tenant Move-Out",
@@ -2221,7 +2681,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",                
                 role: "Host",
                 summary: "A systematic process for inspecting the property for damages, managing the security deposit, and preparing for the cleaning and turnover process.",
-                tasks: [ { id: 'ABNB-GCO-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Property' }, { id: 'ABNB-GCO-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Property' } ]
+                tasks: [
+                    { id: 'ABNB-GCO-001', description: "Inspect the property for any new damages immediately after guest checkout.", priority: 'High', riskLevel: 'High', proof: 'Photo/Video Evidence', location: 'Property' },
+                    { id: 'ABNB-GCO-002', description: "Check for any missing items.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Checklist', location: 'Property' },
+                    { id: 'ABNB-GCO-003', description: "Report and claim for any damages through the rental platform if necessary.", priority: 'High', riskLevel: 'High', proof: 'Claim Submission', location: 'Host System' },
+                    { id: 'ABNB-GCO-004', description: "Leave a review for the guest.", priority: 'Medium', riskLevel: 'Low', proof: 'Review Submission', location: 'Host System' },
+                    { id: 'ABNB-GCO-005', description: "Schedule the cleaning crew for turnover.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmation', location: 'Host System' }
+                ]
             },
             {
                 title: "🛠️ Routine Maintenance & Compliance",
@@ -2229,7 +2695,13 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Host",
                 summary: "A monthly checklist for proactive property maintenance, including checking smoke detectors, cleaning AC filters, and ensuring compliance with local regulations.",
-                tasks: [ { id: 'ABNB-RMC-001', description: "Task 1", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Property' }, { id: 'ABNB-RMC-002', description: "Task 2", priority: 'Medium', riskLevel: 'Medium', proof: 'Log', location: 'Property' } ]
+                tasks: [
+                    { id: 'ABNB-RMC-001', description: "Test all smoke and carbon monoxide detectors.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Property' },
+                    { id: 'ABNB-RMC-002', description: "Clean AC filters.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Log', location: 'Property' },
+                    { id: 'ABNB-RMC-003', description: "Check for any leaks under sinks or around toilets.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Property' },
+                    { id: 'ABNB-RMC-004', description: "Ensure fire extinguisher is accessible and not expired.", priority: 'High', riskLevel: 'High', proof: 'Inspection Tag', location: 'Property' },
+                    { id: 'ABNB-RMC-005', description: "Review and ensure compliance with local short-term rental laws.", priority: 'High', riskLevel: 'High', proof: 'Compliance Certificate', location: 'Host System' }
+                ]
             },
             {
                 title: "💬 Guest Communication & Experience",
@@ -2237,7 +2709,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Host",
                 summary: "Provides templates and a schedule for communicating with guests, from booking confirmation and check-in instructions to mid-stay check-ups and check-out reminders.",
-                tasks: [ { id: 'ABNB-GCE-001', description: "Task 1", priority: 'High', riskLevel: 'Low', proof: 'Log', location: 'Property' }, { id: 'ABNB-GCE-002', description: "Task 2", priority: 'High', riskLevel: 'Low', proof: 'Log', location: 'Property' } ]
+                tasks: [
+                    { id: 'ABNB-GCE-001', description: "Send booking confirmation message immediately after booking.", priority: 'High', riskLevel: 'Low', proof: 'Template', location: 'Host System' },
+                    { id: 'ABNB-GCE-002', description: "Send check-in instructions and access codes 24 hours prior to arrival.", priority: 'High', riskLevel: 'Medium', proof: 'Template', location: 'Host System' },
+                    { id: 'ABNB-GCE-003', description: "Send a 'Welcome' message a few hours after check-in to ensure everything is okay.", priority: 'High', riskLevel: 'Low', proof: 'Template', location: 'Host System' },
+                    { id: 'ABNB-GCE-004', description: "Send check-out instructions the evening before departure.", priority: 'High', riskLevel: 'Low', proof: 'Template', location: 'Host System' },
+                    { id: 'ABNB-GCE-005', description: "Send a 'Thank You' message after checkout and request a review.", priority: 'Medium', riskLevel: 'Low', proof: 'Template', location: 'Host System' }
+                ]
             }
         ]
     },
@@ -2263,7 +2741,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Manager",
                 summary: "Ensures the dealership is ready for customers, covering vehicle cleaning and placement on the lot, showroom tidiness, and preparing for the day's appointments.",
-                tasks: [ { id: 'CD-MSLP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Dealership' }, { id: 'CD-MSLP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Dealership' } ]
+                tasks: [
+                    { id: 'CD-MSLP-001', description: "Ensure all display cars in the showroom are clean and polished.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Showroom' },
+                    { id: 'CD-MSLP-002', description: "Check that all cars on the lot are clean and properly arranged.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Lot' },
+                    { id: 'CD-MSLP-003', description: "Verify that all price stickers and promotional materials are accurate and displayed correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Lot' },
+                    { id: 'CD-MSLP-004', description: "Review daily appointment schedule and assign sales staff.", priority: 'High', riskLevel: 'Medium', proof: 'CRM System', location: 'Sales Office' },
+                    { id: 'CD-MSLP-005', description: "Conduct a morning huddle to discuss sales targets and promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Huddle Log', location: 'Sales Office' }
+                ]
             },
             {
                 title: "🤝 Sales & Customer Interaction Process",
@@ -2271,7 +2755,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Associate",
                 summary: "A step-by-step guide for the sales process, from greeting the customer and needs analysis to test drives and negotiation, ensuring a consistent and professional experience.",
-                tasks: [ { id: 'CD-SCIP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Dealership' }, { id: 'CD-SCIP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Dealership' } ]
+                tasks: [
+                    { id: 'CD-SCIP-001', description: "Greet customer within a set time of arrival (e.g., 2 minutes).", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Showroom' },
+                    { id: 'CD-SCIP-002', description: "Conduct a needs analysis to understand customer requirements and budget.", priority: 'High', riskLevel: 'High', proof: 'CRM Entry', location: 'Sales Desk' },
+                    { id: 'CD-SCIP-003', description: "Present suitable vehicle options and explain their features and benefits.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Showroom' },
+                    { id: 'CD-SCIP-004', description: "Follow the test drive protocol (e.g., copy driver's license, pre-defined route).", priority: 'High', riskLevel: 'High', proof: 'Test Drive Form', location: 'Sales Desk' },
+                    { id: 'CD-SCIP-005', description: "Log all customer interactions and follow-ups in the CRM system.", priority: 'High', riskLevel: 'High', proof: 'CRM Log', location: 'Sales Desk' }
+                ]
             },
             {
                 title: "🔑 Vehicle Handover & Delivery Experience",
@@ -2279,7 +2769,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Sales Associate",
                 summary: "A checklist to create a memorable delivery experience, including final vehicle detailing, explaining features to the new owner, and completing all paperwork.",
-                tasks: [ { id: 'CD-VHDE-001', description: "Task 1", priority: 'High', riskLevel: 'Low', proof: 'Log', location: 'Dealership' }, { id: 'CD-VHDE-002', description: "Task 2", priority: 'High', riskLevel: 'Low', proof: 'Log', location: 'Dealership' } ]
+                tasks: [
+                    { id: 'CD-VHDE-001', description: "Ensure the vehicle has been detailed and is in pristine condition.", priority: 'High', riskLevel: 'Medium', proof: 'Detailing Sign-off', location: 'Delivery Bay' },
+                    { id: 'CD-VHDE-002', description: "Verify all paperwork (registration, insurance, loan documents) is complete and signed.", priority: 'High', riskLevel: 'High', proof: 'Document Checklist', location: 'Sales Desk' },
+                    { id: 'CD-VHDE-003', description: "Conduct a feature presentation, explaining key functions of the car to the customer.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Delivery Bay' },
+                    { id: 'CD-VHDE-004', description: "Schedule the first service appointment.", priority: 'Medium', riskLevel: 'Low', proof: 'Service Booking', location: 'Sales Desk' },
+                    { id: 'CD-VHDE-005', description: "Follow up with the customer a few days after delivery to ensure satisfaction.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'Sales Desk' }
+                ]
             },
             {
                 title: "📊 End of Day & Reporting",
@@ -2287,7 +2783,12 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Sales Manager",
                 summary: "A process for closing the dealership, including securing all vehicles, end-of-day financial reporting, and preparing lead sheets for the next day.",
-                tasks: [ { id: 'CD-EODR-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Dealership' }, { id: 'CD-EODR-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Dealership' } ]
+                tasks: [
+                    { id: 'CD-EODR-001', description: "Ensure all vehicles are locked and keys are securely stored.", priority: 'High', riskLevel: 'High', proof: 'Key Log', location: 'Key Room' },
+                    { id: 'CD-EODR-002', description: "Reconcile daily sales and deposits.", priority: 'High', riskLevel: 'High', proof: 'Finance Report', location: 'Sales Office' },
+                    { id: 'CD-EODR-003', description: "Review daily CRM entries for completeness and follow-up tasks.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Dashboard', location: 'Sales Office' },
+                    { id: 'CD-EODR-004', description: "Secure the showroom and lot, and arm the security system.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Dealership' }
+                ]
             }
         ]
     },
@@ -2313,7 +2814,14 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Event Manager",
                 summary: "A comprehensive playbook for planning a product launch, from setting goals and budget to venue selection, media invitations, and post-event analysis.",
-                tasks: [ { id: 'CE-PLEP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Event' }, { id: 'CE-PLEP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Event' } ]
+                tasks: [
+                    { id: 'CE-PLEP-001', description: "Define event goals, KPIs, and budget.", priority: 'High', riskLevel: 'High', proof: 'Strategy Document', location: 'Marketing' },
+                    { id: 'CE-PLEP-002', description: "Select and book the venue.", priority: 'High', riskLevel: 'High', proof: 'Venue Contract', location: 'Marketing' },
+                    { id: 'CE-PLEP-003', description: "Develop a guest list (media, influencers, clients) and send invitations.", priority: 'High', riskLevel: 'Medium', proof: 'Guest List', location: 'Marketing' },
+                    { id: 'CE-PLEP-004', description: "Plan the event agenda, including speakers and product demos.", priority: 'High', riskLevel: 'Medium', proof: 'Agenda Document', location: 'Marketing' },
+                    { id: 'CE-PLEP-005', description: "Coordinate with AV, catering, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Vendor Contracts', location: 'Marketing' },
+                    { id: 'CE-PLEP-006', description: "Prepare press kits and promotional materials.", priority: 'Medium', riskLevel: 'Medium', proof: 'Press Kit', location: 'Marketing' }
+                ]
             },
             {
                 title: "🧑‍💼 New Employee Onboarding (First Week)",
@@ -2321,7 +2829,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "HR Manager",
                 summary: "A structured plan for a new hire's first week, ensuring they get their equipment, meet key team members, and understand the company culture and their role.",
-                tasks: [ { id: 'CE-NEO-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Office' }, { id: 'CE-NEO-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Office' } ]
+                tasks: [
+                    { id: 'CE-NEO-001', description: "Ensure workstation, laptop, and accounts are set up before Day 1.", priority: 'High', riskLevel: 'Medium', proof: 'IT Checklist', location: 'HR' },
+                    { id: 'CE-NEO-002', description: "Schedule introductory meetings with their manager and key team members.", priority: 'High', riskLevel: 'Low', proof: 'Calendar Invites', location: 'HR' },
+                    { id: 'CE-NEO-003', description: "Provide a welcome kit and company handbook.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'HR' },
+                    { id: 'CE-NEO-004', description: "Conduct an HR orientation session covering policies and benefits.", priority: 'High', riskLevel: 'Medium', proof: 'Orientation Sign-off', location: 'HR' },
+                    { id: 'CE-NEO-005', description: "Assign an onboarding buddy.", priority: 'Medium', riskLevel: 'Low', proof: 'Email Confirmation', location: 'HR' }
+                ]
             },
             {
                 title: " boardroom Annual General Meeting (AGM) Preparation",
@@ -2329,7 +2843,13 @@ export const premiumPacks = [
                 frequency: "Annually",
                 role: "Corporate Secretary",
                 summary: "A compliance and logistics checklist for preparing an AGM, covering shareholder notices, agenda preparation, minutes, and voting procedures.",
-                tasks: [ { id: 'CE-AGM-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Office' }, { id: 'CE-AGM-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Office' } ]
+                tasks: [
+                    { id: 'CE-AGM-001', description: "Finalize and send out the Notice of AGM to all shareholders within the statutory timeline.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Record', location: 'Legal' },
+                    { id: 'CE-AGM-002', description: "Prepare and print the Annual Report.", priority: 'High', riskLevel: 'High', proof: 'Final Document', location: 'Legal' },
+                    { id: 'CE-AGM-003', description: "Book the venue and arrange for AV equipment and catering.", priority: 'High', riskLevel: 'Medium', proof: 'Venue Contract', location: 'Admin' },
+                    { id: 'CE-AGM-004', description: "Prepare the attendance register and ballot papers.", priority: 'High', riskLevel: 'High', proof: 'Documents', location: 'Admin' },
+                    { id: 'CE-AGM-005', description: "Draft the script for the Chairman and prepare for potential Q&A.", priority: 'Medium', riskLevel: 'Medium', proof: 'Script Document', location: 'Legal' }
+                ]
             },
             {
                 title: "🎪 Trade Show & Conference Participation",
@@ -2337,7 +2857,14 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Marketing Manager",
                 summary: "A checklist for maximizing ROI from trade shows, including booth design, logistics, lead capture strategies, and pre-show and post-show marketing.",
-                tasks: [ { id: 'CE-TSCP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Event' }, { id: 'CE-TSCP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Event' } ]
+                tasks: [
+                    { id: 'CE-TSCP-001', description: "Book booth space and sponsorships.", priority: 'High', riskLevel: 'High', proof: 'Contract', location: 'Marketing' },
+                    { id: 'CE-TSCP-002', description: "Design and produce booth graphics and materials.", priority: 'High', riskLevel: 'Medium', proof: 'Design Files', location: 'Marketing' },
+                    { id: 'CE-TSCP-003', description: "Plan logistics for shipping, travel, and accommodation for staff.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmations', location: 'Marketing' },
+                    { id: 'CE-TSCP-004', description: "Set up a lead capture system (e.g., badge scanner, app).", priority: 'High', riskLevel: 'High', proof: 'System Test', location: 'Marketing' },
+                    { id: 'CE-TSCP-005', description: "Schedule pre-show meetings with key prospects and media.", priority: 'Medium', riskLevel: 'Medium', proof: 'Calendar Invites', location: 'Marketing' },
+                    { id: 'CE-TSCP-006', description: "Plan post-show lead nurturing email campaigns.", priority: 'High', riskLevel: 'Medium', proof: 'Campaign Draft', location: 'Marketing' }
+                ]
             }
         ]
     },
@@ -2363,7 +2890,12 @@ export const premiumPacks = [
                 frequency: "Quarterly",
                 role: "ESG Officer",
                 summary: "A guide for collecting and verifying environmental data, including utility bills (Scope 2) and fuel consumption (Scope 1) for greenhouse gas emissions reporting.",
-                tasks: [ { id: 'ESG-EDG-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'All Sites' }, { id: 'ESG-EDG-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'All Sites' } ]
+                tasks: [
+                    { id: 'ESG-EDG-001', description: "Collect electricity bills from all facilities.", priority: 'High', riskLevel: 'High', proof: 'Utility Bills', location: 'All Sites' },
+                    { id: 'ESG-EDG-002', description: "Collect data on fuel consumption from company vehicles and generators.", priority: 'High', riskLevel: 'High', proof: 'Fuel Logs', location: 'All Sites' },
+                    { id: 'ESG-EDG-003', description: "Collect water usage data from all facilities.", priority: 'High', riskLevel: 'Medium', proof: 'Water Bills', location: 'All Sites' },
+                    { id: 'ESG-EDG-004', description: "Track and quantify total waste generated and recycled.", priority: 'Medium', riskLevel: 'Medium', proof: 'Waste Management Reports', location: 'All Sites' }
+                ]
             },
             {
                 title: "🧑‍🤝‍🧑 Social Metrics Data Gathering",
@@ -2371,7 +2903,12 @@ export const premiumPacks = [
                 frequency: "Quarterly",
                 role: "HR Manager",
                 summary: "A checklist for collecting key social metrics, such as employee turnover, diversity statistics, health and safety incidents, and training hours.",
-                tasks: [ { id: 'ESG-SMDG-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' }, { id: 'ESG-SMDG-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' } ]
+                tasks: [
+                    { id: 'ESG-SMDG-001', description: "Calculate employee turnover rate.", priority: 'High', riskLevel: 'Medium', proof: 'HRIS Data', location: 'HR' },
+                    { id: 'ESG-SMDG-002', description: "Gather data on workforce diversity (gender, age, etc.).", priority: 'High', riskLevel: 'Medium', proof: 'HRIS Data', location: 'HR' },
+                    { id: 'ESG-SMDG-003', description: "Compile records of all workplace health and safety incidents.", priority: 'High', riskLevel: 'High', proof: 'Safety Reports', location: 'HR/Safety' },
+                    { id: 'ESG-SMDG-004', description: "Track total hours and spend on employee training.", priority: 'Medium', riskLevel: 'Low', proof: 'Training Records', location: 'HR' }
+                ]
             },
             {
                 title: "⚖️ Governance Policy & Verification",
@@ -2379,7 +2916,12 @@ export const premiumPacks = [
                 frequency: "Annually",
                 role: "General Counsel",
                 summary: "An audit checklist to verify the existence and implementation of key governance policies, such as anti-corruption, data privacy, and board oversight.",
-                tasks: [ { id: 'ESG-GPV-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'HQ' }, { id: 'ESG-GPV-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'HQ' } ]
+                tasks: [
+                    { id: 'ESG-GPV-001', description: "Verify that an anti-corruption and bribery policy is in place and has been communicated.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'Legal' },
+                    { id: 'ESG-GPV-002', description: "Confirm a whistleblower policy exists and is accessible to all employees.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'Legal' },
+                    { id: 'ESG-GPV-003', description: "Review board meeting minutes for evidence of ESG oversight.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Legal' },
+                    { id: 'ESG-GPV-004', description: "Ensure a data privacy policy is in place and compliant with regulations like GDPR.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'Legal' }
+                ]
             },
             {
                 title: "📢 Reporting & Stakeholder Engagement",
@@ -2387,7 +2929,12 @@ export const premiumPacks = [
                 frequency: "Annually",
                 role: "IR Manager",
                 summary: "A process for drafting the annual ESG report, engaging with stakeholders for feedback, and ensuring alignment with reporting frameworks like GRI or SASB.",
-                tasks: [ { id: 'ESG-RSE-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'HQ' }, { id: 'ESG-RSE-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'HQ' } ]
+                tasks: [
+                    { id: 'ESG-RSE-001', description: "Conduct a materiality assessment to identify key ESG topics for stakeholders.", priority: 'High', riskLevel: 'High', proof: 'Assessment Report', location: 'IR' },
+                    { id: 'ESG-RSE-002', description: "Draft the ESG report in accordance with a chosen framework (e.g., GRI, SASB).", priority: 'High', riskLevel: 'High', proof: 'Draft Report', location: 'IR' },
+                    { id: 'ESG-RSE-003', description: "Obtain third-party assurance for ESG data, if required.", priority: 'Medium', riskLevel: 'High', proof: 'Assurance Statement', location: 'IR' },
+                    { id: 'ESG-RSE-004', description: "Publish the report on the company website.", priority: 'High', riskLevel: 'Medium', proof: 'Website Link', location: 'IR' }
+                ]
             }
         ]
     },
@@ -2413,7 +2960,12 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Document Controller",
                 summary: "Ensures all quality management system (QMS) documents are current, approved, and accessible, and that all quality records are properly maintained.",
-                tasks: [ { id: 'ISO-DCR-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'All Depts' }, { id: 'ISO-DCR-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'All Depts' } ]
+                tasks: [
+                    { id: 'ISO-DCR-001', description: "Verify that the Quality Manual is updated and reflects current processes.", priority: 'High', riskLevel: 'High', proof: 'Quality Manual', location: 'QA' },
+                    { id: 'ISO-DCR-002', description: "Check that there is a master list of all controlled documents.", priority: 'High', riskLevel: 'Medium', proof: 'Master Document List', location: 'QA' },
+                    { id: 'ISO-DCR-003', description: "Ensure obsolete documents are removed from points of use.", priority: 'High', riskLevel: 'High', proof: 'Audit Trail', location: 'QA' },
+                    { id: 'ISO-DCR-004', description: "Confirm that records are legible, identifiable, and retrievable.", priority: 'Medium', riskLevel: 'Medium', proof: 'Sample Record Review', location: 'All Depts' }
+                ]
             },
             {
                 title: "👑 Management & Leadership",
@@ -2421,7 +2973,12 @@ export const premiumPacks = [
                 frequency: "Quarterly",
                 role: "Quality Manager",
                 summary: "A checklist for preparing the mandatory Management Review Meeting, covering quality policy, objectives, and commitment from top leadership.",
-                tasks: [ { id: 'ISO-ML-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Management' }, { id: 'ISO-ML-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Management' } ]
+                tasks: [
+                    { id: 'ISO-ML-001', description: "Schedule and prepare the agenda for the Management Review meeting.", priority: 'High', riskLevel: 'High', proof: 'Meeting Agenda', location: 'Management' },
+                    { id: 'ISO-ML-002', description: "Ensure quality objectives are defined and tracked.", priority: 'High', riskLevel: 'High', proof: 'Objectives Matrix', location: 'Management' },
+                    { id: 'ISO-ML-003', description: "Document minutes from the Management Review, including action items.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Management' },
+                    { id: 'ISO-ML-004', description: "Verify that top management communicates the importance of meeting customer and regulatory requirements.", priority: 'Medium', riskLevel: 'Medium', proof: 'Internal Communications', location: 'Management' }
+                ]
             },
             {
                 title: "📦 Product Realization & Service Delivery",
@@ -2429,7 +2986,12 @@ export const premiumPacks = [
                 frequency: "Weekly",
                 role: "Operations Manager",
                 summary: "Audits the entire process from customer requirements and design to production and delivery, ensuring quality is maintained at every step.",
-                tasks: [ { id: 'ISO-PRSD-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Operations' }, { id: 'ISO-PRSD-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Operations' } ]
+                tasks: [
+                    { id: 'ISO-PRSD-001', description: "Review a sample of customer orders to ensure requirements are clearly defined.", priority: 'High', riskLevel: 'High', proof: 'Order Review Log', location: 'Sales' },
+                    { id: 'ISO-PRSD-002', description: "Check that purchasing information clearly describes the product to be procured.", priority: 'High', riskLevel: 'Medium', proof: 'Sample Purchase Order', location: 'Procurement' },
+                    { id: 'ISO-PRSD-003', description: "Verify that production processes are carried out under controlled conditions.", priority: 'High', riskLevel: 'High', proof: 'Work Instructions', location: 'Production' },
+                    { id: 'ISO-PRSD-004', description: "Ensure monitoring and measuring equipment is calibrated.", priority: 'High', riskLevel: 'High', proof: 'Calibration Records', location: 'Production/QC' }
+                ]
             },
             {
                 title: "✅ Measurement, Analysis, and Improvement",
@@ -2437,7 +2999,12 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Quality Manager",
                 summary: "Focuses on the core of ISO 9001: continuous improvement. This covers internal audits, handling non-conformities, and implementing corrective actions.",
-                tasks: [ { id: 'ISO-MAI-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'QA' }, { id: 'ISO-MAI-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'QA' } ]
+                tasks: [
+                    { id: 'ISO-MAI-001', description: "Ensure an internal audit schedule is in place and being followed.", priority: 'High', riskLevel: 'High', proof: 'Audit Schedule', location: 'QA' },
+                    { id: 'ISO-MAI-002', description: "Review internal audit reports and check the status of findings.", priority: 'High', riskLevel: 'High', proof: 'Audit Reports', location: 'QA' },
+                    { id: 'ISO-MAI-003', description: "Verify that non-conforming products are identified and controlled.", priority: 'High', riskLevel: 'High', proof: 'Non-conformance Reports', location: 'QC' },
+                    { id: 'ISO-MAI-004', description: "Check that corrective actions are taken to eliminate the cause of non-conformities.", priority: 'High', riskLevel: 'High', proof: 'Corrective Action Reports', location: 'QA' }
+                ]
             }
         ]
     },
@@ -2463,7 +3030,12 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Facility Manager",
                 summary: "A checklist for implementing a robust waste segregation program, auditing disposal vendors, and finding opportunities to reduce overall waste.",
-                tasks: [ { id: 'SB-WMR-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' }, { id: 'SB-WMR-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' } ]
+                tasks: [
+                    { id: 'SB-WMR-001', description: "Ensure clearly labeled bins for different waste types (paper, plastic, organic) are available.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Sites' },
+                    { id: 'SB-WMR-002', description: "Track monthly waste generation and recycling rates.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Vendor Reports', location: 'Admin' },
+                    { id: 'SB-WMR-003', description: "Conduct a waste audit to identify major sources of waste.", priority: 'Medium', riskLevel: 'Low', proof: 'Audit Report', location: 'Admin' },
+                    { id: 'SB-WMR-004', description: "Implement a program to reduce single-use plastics in the office.", priority: 'Medium', riskLevel: 'Low', proof: 'Policy Document', location: 'Admin' }
+                ]
             },
             {
                 title: "💡 Energy Conservation",
@@ -2471,7 +3043,12 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Facility Manager",
                 summary: "Provides actionable steps for reducing electricity consumption, from simple behavioral changes to auditing equipment for energy efficiency.",
-                tasks: [ { id: 'SB-EC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' }, { id: 'SB-EC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' } ]
+                tasks: [
+                    { id: 'SB-EC-001', description: "Analyze monthly electricity bills to track consumption trends.", priority: 'High', riskLevel: 'Medium', proof: 'Utility Bills', location: 'Admin' },
+                    { id: 'SB-EC-002', description: "Promote energy-saving behaviors like turning off lights and computers.", priority: 'Medium', riskLevel: 'Low', proof: 'Internal Communication', location: 'Admin' },
+                    { id: 'SB-EC-003', description: "Conduct a walkthrough to identify energy wastage (e.g., lights left on).", priority: 'Medium', riskLevel: 'Low', proof: 'Walkthrough Log', location: 'All Sites' },
+                    { id: 'SB-EC-004', description: "Explore upgrading to energy-efficient lighting (LEDs) or appliances.", priority: 'Low', riskLevel: 'Medium', proof: 'Proposal Document', location: 'Admin' }
+                ]
             },
             {
                 title: "💧 Water Conservation",
@@ -2479,7 +3056,12 @@ export const premiumPacks = [
                 frequency: "Monthly",
                 role: "Facility Manager",
                 summary: "A guide to auditing water usage, checking for leaks, and implementing water-saving fixtures and practices throughout the facility.",
-                tasks: [ { id: 'SB-WC-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' }, { id: 'SB-WC-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'All Sites' } ]
+                tasks: [
+                    { id: 'SB-WC-001', description: "Analyze monthly water bills.", priority: 'High', riskLevel: 'Medium', proof: 'Water Bills', location: 'Admin' },
+                    { id: 'SB-WC-002', description: "Conduct regular checks for leaks in restrooms and pantry areas.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'All Sites' },
+                    { id: 'SB-WC-003', description: "Install water-saving aerators on taps.", priority: 'Medium', riskLevel: 'Low', proof: 'Installation Report', location: 'All Sites' },
+                    { id: 'SB-WC-004', description: "Promote water conservation awareness among employees.", priority: 'Low', riskLevel: 'Low', proof: 'Awareness Campaign', location: 'Admin' }
+                ]
             },
             {
                 title: "💚 Sustainable Procurement & Employee Engagement",
@@ -2487,7 +3069,12 @@ export const premiumPacks = [
                 frequency: "Quarterly",
                 role: "HR Manager",
                 summary: "Focuses on creating a green culture by establishing a sustainable procurement policy and running campaigns to engage employees in eco-friendly initiatives.",
-                tasks: [ { id: 'SB-SPEE-001', description: "Task 1", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'All Sites' }, { id: 'SB-SPEE-002', description: "Task 2", priority: 'Medium', riskLevel: 'Low', proof: 'Log', location: 'All Sites' } ]
+                tasks: [
+                    { id: 'SB-SPEE-001', description: "Develop a sustainable procurement policy that favors recycled or eco-friendly products.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Document', location: 'Procurement' },
+                    { id: 'SB-SPEE-002', description: "Organize an employee engagement activity related to sustainability (e.g., tree planting, cleanup drive).", priority: 'Medium', riskLevel: 'Low', proof: 'Event Photos', location: 'HR' },
+                    { id: 'SB-SPEE-003', description: "Share sustainability performance and goals with all employees.", priority: 'Medium', riskLevel: 'Low', proof: 'Internal Newsletter', location: 'HR' },
+                    { id: 'SB-SPEE-004', description: "Create a 'Green Team' of employee volunteers to drive initiatives.", priority: 'Medium', riskLevel: 'Low', proof: 'Team Charter', location: 'HR' }
+                ]
             }
         ]
     },
@@ -2513,7 +3100,13 @@ export const premiumPacks = [
                 frequency: "As-Needed",
                 role: "Kitchen Manager",
                 summary: "A guide to onboarding with food delivery platforms like Zomato/Swiggy, including menu setup, pricing strategy, and photo guidelines.",
-                tasks: [ { id: 'CK-ASME-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-ASME-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-ASME-001', description: "Complete documentation for aggregator onboarding (FSSAI, GST, etc.).", priority: 'High', riskLevel: 'High', proof: 'Document Submission', location: 'Office' },
+                    { id: 'CK-ASME-002', description: "Design a delivery-friendly menu with optimal pricing.", priority: 'High', riskLevel: 'High', proof: 'Menu Document', location: 'Office' },
+                    { id: 'CK-ASME-003', description: "Arrange for a professional food photoshoot.", priority: 'High', riskLevel: 'Medium', proof: 'Photos', location: 'Kitchen' },
+                    { id: 'CK-ASME-004', description: "Upload menu, photos, and pricing to all aggregator platforms.", priority: 'High', riskLevel: 'Medium', proof: 'Platform Screenshot', location: 'Office' },
+                    { id: 'CK-ASME-005', description: "Ensure menu items are synced across all platforms.", priority: 'High', riskLevel: 'Medium', proof: 'System Check', location: 'Office' }
+                ]
             },
             {
                 title: "🥡 Packaging & Dispatch Station Setup",
@@ -2521,7 +3114,12 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Kitchen Manager",
                 summary: "Focuses on designing an efficient packaging station with the right materials to ensure food quality and temperature are maintained during delivery.",
-                tasks: [ { id: 'CK-PDSS-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Kitchen' }, { id: 'CK-PDSS-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-PDSS-001', description: "Source high-quality, leak-proof, and insulated packaging materials.", priority: 'High', riskLevel: 'High', proof: 'Vendor Invoice', location: 'Kitchen' },
+                    { id: 'CK-PDSS-002', description: "Set up a dedicated packaging station with all necessary supplies (containers, bags, cutlery, tape).", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Kitchen' },
+                    { id: 'CK-PDSS-003', description: "Train staff on correct packaging procedures for each dish.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Kitchen' },
+                    { id: 'CK-PDSS-004', description: "Create a system for labeling orders clearly with customer details.", priority: 'High', riskLevel: 'High', proof: 'Label Template', location: 'Kitchen' }
+                ]
             },
             {
                 title: "🔥 Live Operations & Order Fulfillment (KOT to Handoff)",
@@ -2529,7 +3127,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Expo",
                 summary: "The core operational checklist, managing the flow from when an order ticket (KOT) is printed to the final handoff to the delivery rider, minimizing mistakes and delays.",
-                tasks: [ { id: 'CK-LOOF-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-LOOF-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-LOOF-001', description: "Acknowledge new orders on aggregator tablets immediately.", priority: 'High', riskLevel: 'High', proof: 'Tablet Log', location: 'Expo Station' },
+                    { id: 'CK-LOOF-002', description: "Ensure KOTs (Kitchen Order Tickets) are printed and communicated clearly to the kitchen.", priority: 'High', riskLevel: 'Medium', proof: 'KOT Printout', location: 'Expo Station' },
+                    { id: 'CK-LOOF-003', description: "Double-check the contents of each order against the KOT before sealing the bag.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Expo Station' },
+                    { id: 'CK-LOOF-004', description: "Hand over the correct order to the correct delivery rider.", priority: 'High', riskLevel: 'High', proof: 'Rider App Check', location: 'Dispatch Area' },
+                    { id: 'CK-LOOF-005', description: "Mark order as 'Food Ready' on the aggregator tablet to track prep time.", priority: 'High', riskLevel: 'Medium', proof: 'Tablet Log', location: 'Expo Station' }
+                ]
             },
             {
                 title: "💰 End-of-Day Reconciliation & Analysis",
@@ -2537,7 +3141,13 @@ export const premiumPacks = [
                 frequency: "Daily",
                 role: "Kitchen Manager",
                 summary: "A process for reconciling daily orders and payments from all aggregator platforms, identifying discrepancies, and analyzing sales data.",
-                tasks: [ { id: 'CK-EODRA-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' }, { id: 'CK-EODRA-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Kitchen' } ]
+                tasks: [
+                    { id: 'CK-EODRA-001', description: "Download daily sales reports from all aggregator platforms.", priority: 'High', riskLevel: 'High', proof: 'Sales Reports', location: 'Office' },
+                    { id: 'CK-EODRA-002', description: "Reconcile platform sales with internal POS data.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Office' },
+                    { id: 'CK-EODRA-003', description: "Investigate and report any payment discrepancies to aggregators.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Office' },
+                    { id: 'CK-EODRA-004', description: "Analyze top-selling and slow-moving menu items.", priority: 'Medium', riskLevel: 'Medium', proof: 'Analysis Report', location: 'Office' },
+                    { id: 'CK-EODRA-005', description: "Track key metrics like order rejection rate and average prep time.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Dashboard', location: 'Office' }
+                ]
             }
         ]
     },
@@ -2563,7 +3173,12 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Traveler",
                 summary: "Covers the critical first steps of international travel, including passport validity checks, visa applications, and booking flights and accommodation.",
-                tasks: [ { id: 'ITP-P1-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Home' }, { id: 'ITP-P1-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Home' } ]
+                tasks: [
+                    { id: 'ITP-P1-001', description: "Check passport validity (must be valid for at least 6 months beyond travel dates).", priority: 'High', riskLevel: 'High', proof: 'Passport', location: 'Home' },
+                    { id: 'ITP-P1-002', description: "Research and apply for necessary visas.", priority: 'High', riskLevel: 'High', proof: 'Visa Application', location: 'Home' },
+                    { id: 'ITP-P1-003', description: "Book flights and accommodation.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmations', location: 'Home' },
+                    { id: 'ITP-P1-004', description: "Make photocopies and digital copies of all important documents (passport, visa, tickets).", priority: 'High', riskLevel: 'Medium', proof: 'Copies', location: 'Home' }
+                ]
             },
             {
                 title: "🩺 Phase 2: Health & Finance (1-2 Months Out)",
@@ -2571,7 +3186,12 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Traveler",
                 summary: "Prepares you for health and money matters, including necessary vaccinations, travel insurance, and setting up international currency/cards.",
-                tasks: [ { id: 'ITP-P2-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Home' }, { id: 'ITP-P2-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Home' } ]
+                tasks: [
+                    { id: 'ITP-P2-001', description: "Consult a doctor for any required vaccinations or medications.", priority: 'High', riskLevel: 'High', proof: 'Doctor\'s Prescription', location: 'Home' },
+                    { id: 'ITP-P2-002', description: "Purchase comprehensive travel insurance.", priority: 'High', riskLevel: 'High', proof: 'Insurance Policy', location: 'Home' },
+                    { id: 'ITP-P2-003', description: "Inform your bank/credit card companies of your travel dates.", priority: 'High', riskLevel: 'Medium', proof: 'Bank Notification', location: 'Home' },
+                    { id: 'ITP-P2-004', description: "Arrange for foreign currency or a multi-currency travel card.", priority: 'Medium', riskLevel: 'Medium', proof: 'Currency/Card', location: 'Home' }
+                ]
             },
             {
                 title: "🧳 Phase 3: Packing & Preparation (1 Week Out)",
@@ -2579,7 +3199,12 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Traveler",
                 summary: "A smart packing guide, covering everything from clothes and electronics to medications and travel documents, ensuring you don't forget any essentials.",
-                tasks: [ { id: 'ITP-P3-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' }, { id: 'ITP-P3-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' } ]
+                tasks: [
+                    { id: 'ITP-P3-001', description: "Pack appropriate clothing for the destination's climate.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Home' },
+                    { id: 'ITP-P3-002', description: "Pack all necessary electronics and universal travel adapters.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' },
+                    { id: 'ITP-P3-003', description: "Pack a small medical kit with personal medications.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Home' },
+                    { id: 'ITP-P3-004', description: "Weigh your luggage to ensure it meets airline limits.", priority: 'Medium', riskLevel: 'Medium', proof: 'Weight Check', location: 'Home' }
+                ]
             },
             {
                 title: "✈️ Phase 4: Final 24 Hours",
@@ -2587,7 +3212,13 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Traveler",
                 summary: "The final countdown checklist for the day of travel, including online check-in, final document checks, charging devices, and home security.",
-                tasks: [ { id: 'ITP-P4-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Home' }, { id: 'ITP-P4-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Home' } ]
+                tasks: [
+                    { id: 'ITP-P4-001', description: "Check-in for your flight online.", priority: 'High', riskLevel: 'Medium', proof: 'Boarding Pass', location: 'Home' },
+                    { id: 'ITP-P4-002', description: "Charge all electronic devices.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Home' },
+                    { id: 'ITP-P4-003', description: "Confirm airport transfer arrangements.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmation', location: 'Home' },
+                    { id: 'ITP-P4-004', description: "Double-check you have your passport, visa, tickets, and wallet.", priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Home' },
+                    { id: 'ITP-P4-005', description: "Secure your home (lock doors/windows, stop mail, etc.).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' }
+                ]
             }
         ]
     },
@@ -2613,7 +3244,12 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Pet Owner",
                 summary: "Covers the critical first steps, including checking airline pet policies, getting required health certificates from the vet, and microchipping.",
-                tasks: [ { id: 'PTP-VAP-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Home' }, { id: 'PTP-VAP-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Document', location: 'Home' } ]
+                tasks: [
+                    { id: 'PTP-VAP-001', description: "Check airline's pet policy and book your pet's spot (in-cabin or cargo).", priority: 'High', riskLevel: 'High', proof: 'Booking Confirmation', location: 'Home' },
+                    { id: 'PTP-VAP-002', description: "Visit the vet to get a health certificate and ensure all vaccinations are up to date.", priority: 'High', riskLevel: 'High', proof: 'Health Certificate', location: 'Vet Clinic' },
+                    { id: 'PTP-VAP-003', description: "Microchip your pet if they aren't already.", priority: 'High', riskLevel: 'Medium', proof: 'Microchip Certificate', location: 'Vet Clinic' },
+                    { id: 'PTP-VAP-004', description: "Purchase an IATA-compliant travel carrier.", priority: 'High', riskLevel: 'Medium', proof: 'Purchase Receipt', location: 'Home' }
+                ]
             },
             {
                 title: "🏨 Booking & Packing",
@@ -2621,7 +3257,13 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Pet Owner",
                 summary: "A guide to finding and confirming pet-friendly accommodation and a comprehensive packing list for your pet's 'go-bag' (food, water, toys, medication).",
-                tasks: [ { id: 'PTP-BP-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmation', location: 'Home' }, { id: 'PTP-BP-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' } ]
+                tasks: [
+                    { id: 'PTP-BP-001', description: "Book pet-friendly hotels or accommodations and confirm their policies.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmation', location: 'Home' },
+                    { id: 'PTP-BP-002', description: "Pack enough food and treats for the entire trip.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' },
+                    { id: 'PTP-BP-003', description: "Pack any necessary medications, along with prescriptions.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Home' },
+                    { id: 'PTP-BP-004', description: "Include familiar items like a favorite toy or blanket to reduce stress.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Home' },
+                    { id: 'PTP-BP-005', description: "Pack a portable water bowl, waste bags, and a first-aid kit.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' }
+                ]
             },
             {
                 title: "📝 The Day Before Travel",
@@ -2629,7 +3271,12 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Pet Owner",
                 summary: "Prepares your pet for the journey, including feeding guidelines, exercise, and getting them comfortable with their travel carrier.",
-                tasks: [ { id: 'PTP-DBT-001', description: "Task 1", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' }, { id: 'PTP-DBT-002', description: "Task 2", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' } ]
+                tasks: [
+                    { id: 'PTP-DBT-001', description: "Feed your pet a light meal a few hours before travel; do not feed right before leaving.", priority: 'High', riskLevel: 'Medium', proof: 'Verbal Confirmation', location: 'Home' },
+                    { id: 'PTP-DBT-002', description: "Provide plenty of exercise to help them relax during travel.", priority: 'High', riskLevel: 'Low', proof: 'Verbal Confirmation', location: 'Home' },
+                    { id: 'PTP-DBT-003', description: "Line the carrier with an absorbent pad and place a familiar item inside.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Home' },
+                    { id: 'PTP-DBT-004', description: "Attach a 'Live Animal' sticker and your contact information to the carrier.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Home' }
+                ]
             },
             {
                 title: "🚗 Travel Day & Arrival",
@@ -2637,7 +3284,13 @@ export const premiumPacks = [
                 frequency: "One-Time",
                 role: "Pet Owner",
                 summary: "A checklist for the day of travel to ensure your pet's safety and comfort, whether in-cabin or in the car, and tips for settling them in at the new location.",
-                tasks: [ { id: 'PTP-TDA-001', description: "Task 1", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'On the Go' }, { id: 'PTP-TDA-002', description: "Task 2", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'On the Go' } ]
+                tasks: [
+                    { id: 'PTP-TDA-001', description: "Arrive at the airport early to complete pet check-in procedures.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Airport' },
+                    { id: 'PTP-TDA-002', description: "For car travel, secure the carrier so it cannot move around.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Car' },
+                    { id: 'PTP-TDA-003', description: "Offer water at regular intervals but avoid large meals.", priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'On the Go' },
+                    { id: 'PTP-TDA-004', description: "Upon arrival, set up a familiar space for your pet with their bed, food, and water.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Destination' },
+                    { id: 'PTP-TDA-005', description: "Take your pet for a walk to let them relieve themselves and explore the new surroundings.", priority: 'High', riskLevel: 'Low', proof: 'Observation', location: 'Destination' }
+                ]
             }
         ]
     }
@@ -2653,3 +3306,4 @@ export type Checklist = (typeof premiumPacks)[0]['checklists'][0];
     
 
   
+
