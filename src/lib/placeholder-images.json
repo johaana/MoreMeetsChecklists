@@ -14,13 +14,13 @@
   {
     "id": "testimonial-elena",
     "description": "Professional headshot of Elena Petrova.",
-    "imageUrl": "https://picsum.photos/seed/woman-ceo/100/100",
+    "imageUrl": "https://picsum.photos/seed/professional-woman/100/100",
     "imageHint": "professional woman"
   },
   {
     "id": "testimonial-marcus",
     "description": "Professional headshot of Marcus Thorne.",
-    "imageUrl": "https://picsum.photos/seed/man-ceo/100/100",
+    "imageUrl": "https://picsum.photos/seed/professional-man/100/100",
     "imageHint": "professional man"
   },
   {
