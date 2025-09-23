@@ -30,21 +30,24 @@ const OtherIndustriesSection = () => (
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
                 {[
-                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/packs/healthcare_compliance_suite' },
-                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/packs/retail_operations_pack' },
-                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/packs/education_sector_pack' },
-                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/packs/manufacturing_plant_pack' },
+                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/packs/healthcare_compliance_suite', sub: 'Hospitals, Clinics, Labs' },
+                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/packs/retail_operations_pack', sub: 'Jewellery, Malls, Stores' },
+                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/packs/education_sector_pack', sub: 'Schools, Colleges, Universities' },
+                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/packs/manufacturing_plant_pack', sub: 'Plants, Factories, EHS' },
                 ].map((item) => (
                     <Link href={item.href} key={item.name} className="group">
-                        <div className="flex flex-col items-center justify-center gap-4 p-6 border rounded-xl bg-secondary/30 hover:bg-secondary/60 transition-colors h-full">
+                        <div className="flex flex-col items-center justify-center gap-2 p-6 border rounded-xl bg-secondary/30 hover:bg-secondary/60 transition-colors h-full">
                             {item.icon}
                             <h3 className="font-semibold text-center group-hover:text-primary">{item.name}</h3>
+                            <p className="text-xs text-muted-foreground text-center">{item.sub}</p>
                         </div>
                     </Link>
                 ))}
             </div>
-             <div className="text-center mt-8">
-                <p className="text-muted-foreground">...and many more coming soon!</p>
+             <div className="text-center mt-12">
+                 <Button asChild size="lg">
+                    <Link href="#packs">View All Packages</Link>
+                </Button>
             </div>
         </div>
     </section>
@@ -133,7 +136,7 @@ export default function Home() {
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-                Packages
+                All Packages
             </Link>
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Why Us
@@ -348,5 +351,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     

@@ -99,10 +99,10 @@ export default function Page({ params }: { params: { id: string } }) {
   
   const whoIsItForMap: Record<string, string[]> = {
     "Hospitality": ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
-    "Corporate": ["Founders", "COOs", "VPs of Operations", "Heads of Administration", "Heads of Facilities", "Chief Engineers"],
+    "Corporate": ["Founders", "COOs", "VPs of Operations", "Head of Administration", "Head of Facilities", "Chief Engineers"],
     "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
     "Healthcare": ["Hospital Owners", "COOs", "Heads of Quality & Compliance", "Lab Owners", "and their teams"],
-    "Education": ["School Owners", "Trustees", "Principals", "Heads of Administration", "and their teams"],
+    "Education": ["School Owners", "Trustees", "Principals", "Head of Administration", "and their teams"],
     "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety"],
     "Events": ["Event Company Owners", "and their teams"],
     "Personal": ["Frequent Travelers", "Pet Owners"],
@@ -122,9 +122,9 @@ export default function Page({ params }: { params: { id: string } }) {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+            <Link href="/#packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
                 <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
-                All Packs
+                All Packages
             </Link>
         </nav>
       </header>
@@ -232,5 +232,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 
 
+
+    
 
     
