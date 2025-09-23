@@ -628,345 +628,338 @@ export const premiumPacks = [
         ],
         checklists: [
             {
-                title: "🌅 Daily Facility Opening Checklist",
+                title: "✔️ Daily Site Operations",
                 department: "Operations",
                 frequency: "Daily",
                 role: "Facility Coordinator",
                 summary: "A comprehensive walkthrough to ensure the facility is ready for employees, covering lighting, HVAC, restrooms, and access control systems.",
                 tasks: [
-                    { id: 'FM-DO-001', description: "Conduct a full walkthrough of all common areas (lobbies, hallways, pantries).", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Log', location: 'All Common Areas' },
-                    { id: 'FM-DO-002', description: "Verify all lights are operational and replace any fused bulbs.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Log', location: 'All Common Areas' },
-                    { id: 'FM-DO-003', description: "Check that HVAC systems are running and temperature is set to the standard (e.g., 22°C).", priority: 'High', riskLevel: 'Medium', proof: 'BMS Reading', location: 'All Office Areas' },
-                    { id: 'FM-DO-004', description: "Inspect restrooms for cleanliness, stocking of supplies (toilet paper, soap, paper towels), and functionality.", priority: 'High', riskLevel: 'High', proof: 'Housekeeping Log', location: 'All Restrooms' },
-                    { id: 'FM-DO-005', description: "Ensure all access control doors are functioning correctly.", priority: 'High', riskLevel: 'High', proof: 'Access Control Log', location: 'All Access Doors' },
-                    { id: 'FM-DO-006', description: "Check that pantry equipment (coffee machines, microwaves, water dispensers) is clean and operational.", priority: 'Medium', riskLevel: 'Low', proof: 'Housekeeping Log', location: 'All Pantries' },
-                    { id: 'FM-DO-007', description: "Review the helpdesk portal for any overnight or urgent requests.", priority: 'High', riskLevel: 'Medium', proof: 'Helpdesk Screenshot', location: 'Facility Office' },
-                    { id: 'FM-DO-008', description: "Verify that the housekeeping staff have completed their morning cleaning duties as per SLA.", priority: 'High', riskLevel: 'Medium', proof: 'Supervisor Sign-off', location: 'All Office Areas' },
-                    { id: 'FM-DO-009', description: "Ensure meeting rooms are clean, tidy, and ready for the first bookings.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'All Meeting Rooms' },
-                    { id: 'FM-DO-010', description: "Check that all fire exits are clear and unobstructed.", priority: 'High', riskLevel: 'High', proof: 'Photo', location: 'All Fire Exits' }
+                    { id: 'DSO-001', description: "Validate Housekeeping Service Delivery", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'DSO-002', description: "Check Front Desk Operations", priority: 'Medium', riskLevel: 'Low', proof: 'Log / Register', location: 'Front Office' },
+                    { id: 'DSO-003', description: "Inspect general office area", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office Area' },
+                    { id: 'DSO-004', description: "Check and verify meeting rooms", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Meeting Rooms' },
+                    { id: 'DSO-005', description: "Verify Cafeteria / Pantry Readiness", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Cafeteria' },
+                    { id: 'DSO-006', description: "Check office equipment functionality", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Office Area' },
+                    { id: 'DSO-007', description: "Manage mailroom and courier services", priority: 'Medium', riskLevel: 'Low', proof: 'Log / Register', location: 'Mailroom' }
                 ]
             },
             {
-                title: "🌙 Daily Facility Closing Checklist",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Facility Coordinator",
-                summary: "A security and energy-saving checklist for shutting down the facility, ensuring all non-essential equipment is off and all access points are secure.",
-                tasks: [
-                    { id: 'FM-DC-001', description: "Conduct a final walkthrough after all employees have left.", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Log', location: 'All Office Areas' },
-                    { id: 'FM-DC-002', description: "Turn off all non-essential lights in office areas and meeting rooms.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'All Office Areas' },
-                    { id: 'FM-DC-003', description: "Ensure all pantry equipment is switched off and cleaned.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'All Pantries' },
-                    { id: 'FM-DC-004', description: "Check that all windows are closed and locked.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Perimeter' },
-                    { id: 'FM-DC-005', description: "Secure all main entry/exit points of the facility.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Main Entrances' },
-                    { id: 'FM-DC-006', description: "Arm the building's security alarm system.", priority: 'High', riskLevel: 'High', proof: 'Alarm System Log', location: 'Security Control Room' },
-                    { id: 'FM-DC-007', description: "Verify that the housekeeping staff are commencing their night shift cleaning.", priority: 'Medium', riskLevel: 'Low', proof: 'Supervisor Sign-off', location: 'All Office Areas' },
-                    { id: 'FM-DC-008', description: "Log any issues observed during the final round (e.g., leaks, damages) for action the next day.", priority: 'High', riskLevel: 'Medium', proof: 'Closing Report', location: 'Facility Office' },
-                    { id: 'FM-DC-009', description: "Ensure all sensitive areas (server rooms, store rooms) are locked.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Sensitive Areas' },
-                    { id: 'FM-DC-010', description: "Compile a daily closing report for the Facility Manager.", priority: 'Medium', riskLevel: 'Low', proof: 'Email/Report', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "🧹 Weekly Housekeeping Audit",
-                department: "Soft Services",
+                title: "🔧 Weekly Maintenance & Safety",
+                department: "Maintenance",
                 frequency: "Weekly",
+                role: "Maintenance Supervisor",
+                summary: "A systematic review of all critical systems and safety protocols to identify and close vulnerabilities before they become incidents.",
+                tasks: [
+                    { id: 'WMS-001', description: "Test generator and power backup systems", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'WMS-002', description: "Inspect HVAC system and air quality", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'WMS-003', description: "Review water management systems", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'WMS-004', description: "Check elevator and escalator functionality", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'WMS-005', description: "Inspect fire safety equipment", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' },
+                    { id: 'WMS-006', description: "Test security and access control systems", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Security Room' },
+                    { id: 'WMS-007', description: "Review pest control effectiveness", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'WMS-008', description: "Sample waste management and disposal", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Waste Yard' },
+                    { id: 'WMS-009', description: "Test building management system (BMS)", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'BMS Room' }
+                ]
+            },
+            {
+                title: "📋 Monthly Vendor & Compliance",
+                department: "Admin",
+                frequency: "Monthly",
                 role: "Facility Manager",
-                summary: "A quality control checklist to audit the performance of housekeeping vendors, ensuring cleanliness standards are met across the entire facility.",
+                summary: "Ensures all third-party vendors meet their contractual obligations and comply with all statutory and legal requirements, minimizing company risk.",
                 tasks: [
-                    { id: 'FM-WHA-001', description: "Inspect the quality of dusting on all surfaces, including hard-to-reach areas.", priority: 'Medium', riskLevel: 'Low', proof: 'White Glove Test', location: 'Random Office Areas' },
-                    { id: 'FM-WHA-002', description: "Check for stains or dirt on carpets and upholstery; schedule shampooing if needed.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Common Areas' },
-                    { id: 'FM-WHA-003', description: "Audit restroom cleanliness, including mirrors, fixtures, and grout.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Scorecard', location: 'All Restrooms' },
-                    { id: 'FM-WHA-004', description: "Verify the cleanliness of glass doors, windows, and partitions.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Perimeter/Cabins' },
-                    { id: 'FM-WHA-005', description: "Check the state of waste segregation and disposal by the housekeeping vendor.", priority: 'High', riskLevel: 'Medium', proof: 'Bin Inspection', location: 'Waste Area' },
-                    { id: 'FM-WHA-006', description: "Review housekeeping staff's grooming and use of PPE.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Random Staff' },
-                    { id: 'FM-WHA-007', description: "Inspect the housekeeping storage room for organization and correct chemical storage.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'HK Store' },
-                    { id: 'FM-WHA-008', description: "Check inventory levels of housekeeping supplies.", priority: 'Medium', riskLevel: 'Low', proof: 'Inventory Log', location: 'HK Store' },
-                    { id: 'FM-WHA-009', description: "Get feedback from a few employees on the cleanliness of the office.", priority: 'Low', riskLevel: 'Low', proof: 'Email Feedback', location: 'Random Employees' },
-                    { id: 'FM-WHA-010', description: "Provide formal feedback to the housekeeping vendor supervisor based on the audit.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Facility Office' }
+                    { id: 'MVC-001', description: "Audit vendor service level agreements (SLAs)", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'MVC-002', description: "Review vendor invoices and payments", priority: 'High', riskLevel: 'Medium', proof: 'Invoice', location: 'Facility Office' },
+                    { id: 'MVC-003', description: "Schedule vendor performance review meetings", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Facility Office' },
+                    { id: 'MVC-004', description: "Update vendor documentation and contracts", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'MVC-005', description: "Conduct a labor law compliance audit", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Facility Office' },
+                    { id: 'MVC-006', description: "Review all statutory licenses and renewals", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' }
                 ]
             },
             {
-                title: "🛡️ Weekly Security Audit",
-                department: "Security",
-                frequency: "Weekly",
-                role: "Security Manager",
-                summary: "A systematic review of all security systems and protocols, including CCTV, access control, and guard performance, to identify and close vulnerabilities.",
+                title: "📈 Quarterly & Annual Tasks",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Head of Facilities",
+                summary: "High-level strategic tasks focusing on budget management, long-term asset planning, and comprehensive operational reviews.",
                 tasks: [
-                    { id: 'FM-WSA-001', description: "Review CCTV footage from the past week for any incidents or blind spots.", priority: 'High', riskLevel: 'High', proof: 'Footage Review Log', location: 'Security Control Room' },
-                    { id: 'FM-WSA-002', description: "Test a random selection of access control readers and boom barriers.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Entrances/Exits' },
-                    { id: 'FM-WSA-003', description: "Inspect the physical condition of all security cameras, ensuring clean lenses and proper angles.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Cameras' },
-                    { id: 'FM-WSA-004', description: "Review the visitor management system logs for any discrepancies.", priority: 'Medium', riskLevel: 'Low', proof: 'VMS Log Review', location: 'Security Control Room' },
-                    { id: 'FM-WSA-005', description: "Check the logbooks and registers maintained by security personnel for completeness.", priority: 'Medium', riskLevel: 'Low', proof: 'Logbook Review', location: 'Gates/Reception' },
-                    { id: 'FM-WSA-006', description: "Conduct a brief quiz with security guards on emergency procedures (e.g., fire, medical emergency).", priority: 'High', riskLevel: 'High', proof: 'Quiz Score', location: 'Random Guards' },
-                    { id: 'FM-WSA-007', description: "Inspect the perimeter fencing and lighting for any vulnerabilities.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Perimeter' },
-                    { id: 'FM-WSA-008', description: "Test the functionality of panic alarms and the duress system.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Sensitive Areas' },
-                    { id: 'FM-WSA-009', description: "Ensure all security personnel are in proper uniform and carrying required equipment.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'All Posts' },
-                    { id: 'FM-WSA-010', description: "Audit the key management system to ensure all keys are accounted for.", priority: 'High', riskLevel: 'High', proof: 'Key Register Audit', location: 'Security Office' }
+                    { id: 'QAT-001', description: "Conduct quarterly business reviews", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Facility Office' },
+                    { id: 'QAT-002', description: "Develop and review capex and opex budgets", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'QAT-003', description: "Assess space utilization and planning", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Office Area' },
+                    { id: 'QAT-004', description: "Perform an asset condition audit", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'QAT-005', description: "Review and update insurance policies", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'QAT-006', description: "Execute emergency response and BCP drills", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' }
                 ]
             },
             {
-                title: "💨 Monthly HVAC System Checklist",
-                department: "Engineering",
-                frequency: "Monthly",
-                role: "HVAC Technician",
-                summary: "Preventive maintenance for heating, ventilation, and air conditioning systems to ensure employee comfort, air quality, and energy efficiency.",
+                title: "🧹 Housekeeping & Cleaning",
+                department: "Housekeeping",
+                frequency: "Daily",
+                role: "Housekeeping Supervisor",
+                summary: "Detailed cleaning protocols to maintain a pristine and hygienic workplace environment, from daily tasks to periodic deep cleaning schedules.",
                 tasks: [
-                    { id: 'FM-MHVAC-001', description: "Clean or replace air filters in all Air Handling Units (AHUs) and Fan Coil Units (FCUs).", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'AHU/FCU Rooms' },
-                    { id: 'FM-MHVAC-002', description: "Inspect and clean condenser and evaporator coils.", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo', location: 'Outdoor Units' },
-                    { id: 'FM-MHVAC-003', description: "Check and clean drain lines and pans to prevent water overflow.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'AHU/FCU Rooms' },
-                    { id: 'FM-MHVAC-004', description: "Inspect ductwork for any visible leaks or damage.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Inspection Log', location: 'Above False Ceiling' },
-                    { id: 'FM-MHVAC-005', description: "Check refrigerant levels and look for signs of leaks.", priority: 'High', riskLevel: 'High', proof: 'Pressure Gauge Reading', location: 'Outdoor Units' },
-                    { id: 'FM-MHVAC-006', description: "Verify thermostat calibration and functionality across different zones.", priority: 'Medium', riskLevel: 'Low', proof: 'Test Log', location: 'Random Office Areas' },
-                    { id: 'FM-MHVAC-007', description: "Inspect all belts and pulleys for wear and tear.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'AHU Rooms' },
-                    { id: 'FM-MHVAC-008', description: "Listen for any unusual noises from motors or fans.", priority: 'High', riskLevel: 'Medium', proof: 'Auditory Check Log', location: 'AHU Rooms' },
-                    { id: 'FM-MHVAC-009', description: "Check the operation of ventilation fans in restrooms and pantries.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Restrooms/Pantries' },
-                    { id: 'FM-MHVAC-010', description: "Log all readings and maintenance activities in the Computerized Maintenance Management System (CMMS).", priority: 'High', riskLevel: 'Low', proof: 'CMMS Entry', location: 'Facility Office' }
+                    { id: 'HKC-001', description: "Daily Deep Cleaning", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'HKC-002', description: "High-level and Façade Cleaning", priority: 'Medium', riskLevel: 'High', proof: 'Photo / Log', location: 'Exterior' },
+                    { id: 'HKC-003', description: "Washroom and Restroom Cleaning", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Restrooms' },
+                    { id: 'HKC-004', description: "Floor Care and Maintenance", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'HKC-005', description: "Carpet and Upholstery Care", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Office Area' },
+                    { id: 'HKC-006', description: "Laundry Management", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Laundry Room' },
+                    { id: 'HKC-007', description: "Waste Management Services", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Waste Yard' },
+                    { id: 'HKC-008', description: "Consumables and Supplies Mgt.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Store Room' },
+                    { id: 'HKC-009', description: "Vendor Staff Grooming and Training", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' }
                 ]
             },
             {
-                title: "⚡ Monthly Electrical System Checklist",
-                department: "Engineering",
-                frequency: "Monthly",
-                role: "Electrician",
-                summary: "A critical safety inspection of all electrical infrastructure, from main panels to backup generators, to prevent outages and electrical hazards.",
-                tasks: [
-                    { id: 'FM-MES-001', description: "Visually inspect all main electrical panels for signs of overheating or loose connections.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Electrical Rooms' },
-                    { id: 'FM-MES-002', description: "Test all Ground Fault Circuit Interrupters (GFCIs) and Earth Leakage Circuit Breakers (ELCBs).", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'All Panels' },
-                    { id: 'FM-MES-003', description: "Check the functionality of all emergency lights and exit signs on battery backup.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'All Areas' },
-                    { id: 'FM-MES-004', description: "Conduct a load test on the Uninterruptible Power Supply (UPS) system.", priority: 'High', riskLevel: 'High', proof: 'UPS Log', location: 'UPS Room' },
-                    { id: 'FM-MES-005', description: "Start the backup generator and run it under load for at least 30 minutes.", priority: 'High', riskLevel: 'High', proof: 'Genset Log', location: 'Generator Room' },
-                    { id: 'FM-MES-006', description: "Check fuel levels in the backup generator.", priority: 'High', riskLevel: 'Medium', proof: 'Fuel Log', location: 'Generator Room' },
-                    { id: 'FM-MES-007', description: "Inspect a sample of power outlets and switches for damage.", priority: 'Low', riskLevel: 'Low', proof: 'Inspection Log', location: 'Random Office Areas' },
-                    { id: 'FM-MES-008', description: "Use a thermal scanner on main distribution boards to detect hot spots.", priority: 'High', riskLevel: 'High', proof: 'Thermal Image', location: 'Electrical Rooms' },
-                    { id: 'FM-MES-009', description: "Review the previous month's electricity bills for any unusual consumption patterns.", priority: 'Medium', riskLevel: 'Low', proof: 'Bill Analysis Report', location: 'Facility Office' },
-                    { id: 'FM-MES-010', description: "Ensure all electrical rooms are clean, dry, and free of stored materials.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Electrical Rooms' }
-                ]
-            },
-            {
-                title: "🔥 Monthly Fire & Life Safety Checklist",
-                department: "Safety",
+                title: "🐜 Pest Control & Waste Mgmt.",
+                department: "Health & Safety",
                 frequency: "Monthly",
                 role: "Safety Officer",
-                summary: "Ensures compliance and readiness for fire emergencies by systematically inspecting extinguishers, alarms, sprinklers, and evacuation routes.",
+                summary: "Integrated pest and waste management protocols to ensure a clean, safe, and environmentally compliant facility.",
                 tasks: [
-                    { id: 'FM-MFLS-001', description: "Visually inspect all fire extinguishers to ensure they are in place, charged (needle in green), and not expired.", priority: 'High', riskLevel: 'High', proof: 'Inspection Tag Sign-off', location: 'All Areas' },
-                    { id: 'FM-MFLS-002', description: "Check that all fire exits and evacuation routes are completely clear of obstructions.", priority: 'High', riskLevel: 'High', proof: 'Photo', location: 'All Fire Exits' },
-                    { id: 'FM-MFLS-003', description: "Test the main fire alarm panel by activating a manual call point.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Security Control Room' },
-                    { id: 'FM-MFLS-004', description: "Inspect smoke detectors and heat detectors for visible damage or obstruction.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Areas' },
-                    { id: 'FM-MFLS-005', description: "Check the water pressure in the fire sprinkler system's pressure gauges.", priority: 'High', riskLevel: 'High', proof: 'Pressure Log', location: 'Pump Room' },
-                    { id: 'FM-MFLS-006', description: "Inspect fire hose reels and cabinets for accessibility and condition.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Hose Reels' },
-                    { id: 'FM-MFLS-007', description: "Verify that the public address (PA) system is clear and audible throughout the facility.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'All Areas' },
-                    { id: 'FM-MFLS-008', description: "Check the stock and expiry date of items in all first aid kits.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Log', location: 'First Aid Stations' },
-                    { id: 'FM-MFLS-009', description: "Ensure emergency evacuation maps are displayed, up to date, and clearly visible.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' },
-                    { id: 'FM-MFLS-010', description: "Log all inspection findings and schedule corrective actions in the CMMS.", priority: 'High', riskLevel: 'Low', proof: 'CMMS Entry', location: 'Facility Office' }
+                    { id: 'PCW-001', description: "General Pest Control", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'PCW-002', description: "Rodent Control Management", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' },
+                    { id: 'PCW-003', description: "Termite Control Management", priority: 'Medium', riskLevel: 'High', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'PCW-004', description: "Segregation and Disposal Protocol", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Waste Yard' },
+                    { id: 'PCW-005', description: "Implement Organic Waste Composting", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Waste Yard' }
                 ]
             },
             {
-                title: "💧 Monthly Plumbing System Checklist",
+                title: "💡 Electrical Systems",
                 department: "Engineering",
-                frequency: "Monthly",
-                role: "Plumber",
-                summary: "A preventive maintenance checklist for all water systems, aimed at preventing leaks, blockages, and ensuring water quality and pressure.",
+                frequency: "Weekly",
+                role: "Electrician",
+                summary: "Critical safety inspections of all electrical infrastructure to prevent outages, ensure equipment longevity, and mitigate fire hazards.",
                 tasks: [
-                    { id: 'FM-MPS-001', description: "Inspect all restrooms for leaking faucets, toilets, or pipes.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'All Restrooms' },
-                    { id: 'FM-MPS-002', description: "Check water pressure in various parts of the building to ensure it's adequate.", priority: 'Medium', riskLevel: 'Low', proof: 'Pressure Gauge Reading', location: 'Random Taps' },
-                    { id: 'FM-MPS-003', description: "Clean the filters on all main water inlets.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Log', location: 'Water Inlet' },
-                    { id: 'FM-MPS-004', description: "Inspect water pumps for proper operation, unusual noises, and any leaks.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Pump Room' },
-                    { id: 'FM-MPS-005', description: "Check the water level and cleanliness of overhead and underground water tanks.", priority: 'High', riskLevel: 'High', proof: 'Photo/Log', location: 'Water Tanks' },
-                    { id: 'FM-MPS-006', description: "Test the functionality of sump pumps in basement areas.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Basement' },
-                    { id: 'FM-MPS-007', description: "Inspect cafeteria and pantry sinks and clean grease traps.", priority: 'Medium', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Pantries/Cafeteria' },
-                    { id: 'FM-MPS-008', description: "Check the temperature of hot water at various points to ensure it meets standards.", priority: 'Low', riskLevel: 'Low', proof: 'Temperature Log', location: 'Random Taps' },
-                    { id: 'FM-MPS-009', description: "Inspect the irrigation system for the landscape area for leaks or malfunctions.", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Landscaped Areas' },
-                    { id: 'FM-MPS-010', description: "Log all maintenance and inspection details in the CMMS.", priority: 'Medium', riskLevel: 'Low', proof: 'CMMS Entry', location: 'Facility Office' }
+                    { id: 'ELS-001', description: "Daily Shared Electrical Loads Check", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-002', description: "Daily DG set and Fuel Management", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'ELS-003', description: "Test functionality of Transformers", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-004', description: "UPS Health and Load Test", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-005', description: "Inspect LT & HT Panel Maintenance", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-006', description: "Check all APFC Panel Maintenance", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-007', description: "Validate Lightning Arrestor Efficacy", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Rooftop' },
+                    { id: 'ELS-008', description: "Check Earthing Pits and Conduction", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Exterior' }
                 ]
             },
             {
-                title: "🏢 New Office Site Commissioning Checklist",
+                title: "💧 Plumbing & Water Systems",
+                department: "Engineering",
+                frequency: "Weekly",
+                role: "Plumber",
+                summary: "Preventive maintenance for all water-related systems, including plumbing, sewage, and water treatment, to ensure hygiene and prevent disruptions.",
+                tasks: [
+                    { id: 'PWS-001', description: "Maintain all Water Supply & Plumbing", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'PWS-002', description: "Weekly Hydro-Pneumatic System Check", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'PWS-003', description: "Manage all Drainage & Sewage Systems", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'PWS-004', description: "Operate and Maintain WTP and STP", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'PWS-005', description: "Ensure Irrigation System Health", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Exterior' }
+                ]
+            },
+            {
+                title: "💨 HVAC & BMS",
+                department: "Engineering",
+                frequency: "Weekly",
+                role: "HVAC Technician",
+                summary: "Ensures optimal performance of HVAC and Building Management Systems for employee comfort, air quality, and energy efficiency.",
+                tasks: [
+                    { id: 'HVB-001', description: "Daily HVAC System Operation", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'HVB-002', description: "Weekly Chiller Plant Maintenance", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'HVB-003', description: "Quarterly AHUs & FCUs Maintenance", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'HVB-004', description: "Calibrate and Maintain VFDs", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'HVB-005', description: "Check all Pumps, Motors and Valves", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'HVB-006', description: "Ensure Cooling Tower Functionality", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Rooftop' },
+                    { id: 'HVB-007', description: "Daily BMS Operation and Monitoring", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'BMS Room' },
+                    { id: 'HVB-008', description: "Schedule PPM for all HVAC Equipment", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' }
+                ]
+            },
+            {
+                title: "🔥 Fire Safety & Emergency",
+                department: "Safety",
+                frequency: "Weekly",
+                role: "Safety Officer",
+                summary: "A comprehensive compliance and readiness checklist for all fire and life safety systems, ensuring the facility is prepared for any emergency.",
+                tasks: [
+                    { id: 'FSE-001', description: "Weekly Fire Pump Inspection and Testing", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'FSE-002', description: "Verify Fire Hydrant System Integrity", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Exterior' },
+                    { id: 'FSE-003', description: "Monthly Fire Extinguisher Checks", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' },
+                    { id: 'FSE-004', description: "Quarterly Fire Alarm System Testing", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Security Room' },
+                    { id: 'FSE-005', description: "Ensure PA System and Talkback Clarity", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Security Room' },
+                    { id: 'FSE-006', description: "Check all Fire Doors and Exit Signages", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' },
+                    { id: 'FSE-007', description: "Test Emergency Lights and Power Backup", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'FSE-008', description: "Quarterly Fire and Evacuation Drills", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' }
+                ]
+            },
+            {
+                title: "🛡️ Security & Access Control",
+                department: "Security",
+                frequency: "Daily",
+                role: "Security Supervisor",
+                summary: "Protocols for managing physical security, access control systems, and surveillance to protect company assets and personnel.",
+                tasks: [
+                    { id: 'SAC-001', description: "Daily Manned Guarding and Patrolling", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Common Areas' },
+                    { id: 'SAC-002', description: "Weekly CCTV and Surveillance Audit", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Security Room' },
+                    { id: 'SAC-003', description: "Test Intrusion and Burglar Alarm Systems", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Security Room' },
+                    { id: 'SAC-004', description: "Review Visitor and Vehicle Management", priority: 'Medium', riskLevel: 'Medium', proof: 'Log / Register', location: 'Front Office' },
+                    { id: 'SAC-005', description: "Check Boom Barriers and Turnstiles", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Entrances' },
+                    { id: 'SAC-006', description: "Verify Under-Vehicle Surveillance (UVSS)", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Entrances' },
+                    { id: 'SAC-007', description: "Test Baggage Scanners and HHMDs", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Entrances' },
+                    { id: 'SAC-008', description: "Manage Key and Access Card Protocols", priority: 'High', riskLevel: 'High', proof: 'Log / Register', location: 'Security Room' },
+                    { id: 'SAC-009', description: "Review Parking Management System", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Parking Area' }
+                ]
+            },
+            {
+                title: " Cafeteria - F&B - Canteen",
+                department: "Admin",
+                frequency: "Daily",
+                role: "Admin Manager",
+                summary: "Ensures the staff cafeteria or food court is managed to the highest standards of hygiene, quality, and service.",
+                tasks: [
+                    { id: 'CAF-001', description: "Daily Meal Quality and Service Audit", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Cafeteria' },
+                    { id: 'CAF-002', description: "Labor and Staff Hygiene Checks", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Cafeteria' },
+                    { id: 'CAF-003', description: "Review Kitchen and Pantry Audits", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Cafeteria' },
+                    { id: 'CAF-004', description: "Validate Food and Water Testing", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Cafeteria' },
+                    { id: 'CAF-005', description: "Check all Crockery and Cutlery", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Cafeteria' }
+                ]
+            },
+            {
+                title: " Events & Drives",
+                department: "HR",
+                frequency: "As-Needed",
+                role: "HR Manager",
+                summary: "A planning and execution checklist for internal company events, from town halls to special occasion celebrations.",
+                tasks: [
+                    { id: 'EVD-001', description: "Pre-event planning and coordination", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office Area' },
+                    { id: 'EVD-002', description: "Audiovisual equipment setup", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office Area' },
+                    { id: 'EVD-003', description: "Catering and F&B arrangements", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Cafeteria' },
+                    { id: 'EVD-004', description: "Seating and decor setup", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Office Area' },
+                    { id: 'EVD-005', description: "Post-event clean-up and feedback", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Office Area' }
+                ]
+            },
+            {
+                title: "💻 IT - Data Room",
+                department: "IT",
+                frequency: "Daily",
+                role: "IT Manager",
+                summary: "Maintains the physical environment of critical IT infrastructure, focusing on cooling, power, and physical security.",
+                tasks: [
+                    { id: 'ITD-001', description: "Daily Server Room Temp and Humidity", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Data Center' },
+                    { id: 'ITD-002', description: "UPS and Power Supply Monitoring", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Data Center' },
+                    { id: 'ITD-003', description: "Access Control and Physical Security", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Data Center' },
+                    { id: 'ITD-004', description: "Network Rack and Cable Management", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Data Center' },
+                    { id: 'ITD-005', description: "Quarterly Fire Suppression System Test", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Data Center' },
+                    { id: 'ITD-006', description: "Test Water Leak Detection System", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Data Center' }
+                ]
+            },
+            {
+                title: "📦 Procurement & Vendor Mgmt",
+                department: "Finance",
+                frequency: "Weekly",
+                role: "Procurement Officer",
+                summary: "Standardizes the entire procurement lifecycle, from raising purchase orders to vendor selection and payment processing.",
+                tasks: [
+                    { id: 'PVM-001', description: "Weekly PR to PO Process Review", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'PVM-002', description: "Quarterly Vendor Sourcing and Onboarding", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Facility Office' },
+                    { id: 'PVM-003', description: "Weekly Invoice Processing and Payments", priority: 'High', riskLevel: 'Medium', proof: 'Invoice', location: 'Facility Office' },
+                    { id: 'PVM-004', description: "Track Contract Renewals and Expiries", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'PVM-005', description: "Maintain a Vendor Master Database", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Facility Office' }
+                ]
+            },
+            {
+                title: "🌿 Sustainability & Energy Mgmt",
+                department: "Sustainability",
+                frequency: "Monthly",
+                role: "Energy Manager",
+                summary: "Core ESG checklist for tracking energy and water consumption, identifying savings opportunities, and reducing environmental impact.",
+                tasks: [
+                    { id: 'SEM-001', description: "Monthly Energy & Water Bill Analysis", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'SEM-002', description: "Weekly Energy Saving Initiatives Check", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Common Areas' },
+                    { id: 'SEM-003', description: "Implement Water Conservation Measures", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'SEM-004', description: "Explore Renewable Energy Opportunities", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'SEM-005', description: "Quarterly Carbon Footprint Reporting", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Facility Office' }
+                ]
+            },
+            {
+                title: "🚗 Fleet - Parking - Transport",
+                department: "Admin",
+                frequency: "Daily",
+                role: "Transport Manager",
+                summary: "Manages all aspects of corporate transport, from fleet maintenance to parking management and shuttle services.",
+                tasks: [
+                    { id: 'FPT-001', description: "Daily Vehicle and Driver Fitness Check", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Parking Area' },
+                    { id: 'FPT-002', description: "Weekly Fuel and Mileage Reconciliation", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Parking Area' },
+                    { id: 'FPT-003', description: "Maintain Vehicle Service and Documents", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Parking Area' },
+                    { id: 'FPT-004', description: "Manage Employee Shuttle and Transport", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Parking Area' },
+                    { id: 'FPT-005', description: "Optimize Parking and Traffic Flow", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Parking Area' }
+                ]
+            },
+            {
+                title: "🧘 Health - Ergonomics - Employee Experience",
+                department: "HR",
+                frequency: "Monthly",
+                role: "HR Manager",
+                summary: "Focuses on employee well-being, from ergonomic workspace design to managing wellness programs and gathering feedback.",
+                tasks: [
+                    { id: 'HEE-001', description: "Quarterly Ergonomic Risk Assessment", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office Area' },
+                    { id: 'HEE-002', description: "Provide Ergonomic Chairs and Desks", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Office Area' },
+                    { id: 'HEE-003', description: "Monthly Employee Wellness Programs", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'HEE-004', description: "Conduct Temperature and IAQ checks", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Office Area' },
+                    { id: 'HEE-005', description: "Track and analyze helpdesk tickets", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Facility Office' }
+                ]
+            },
+            {
+                title: "🏗️ Projects & CapEx",
                 department: "Projects",
                 frequency: "As-Needed",
                 role: "Projects Manager",
                 summary: "The master plan for launching a new office, from clearing the builder's final snag list to IT/security setup and a final deep clean before go-live.",
                 tasks: [
-                    { id: 'FM-NSC-001', description: "Verify final snag list from builder/landlord is cleared and documented.", priority: 'High', riskLevel: 'High', proof: 'Signed Snag List', location: 'New Site' },
-                    { id: 'FM-NSC-002', description: "Confirm all legal permits and 'No Objection' certificates (NOCs) are received (Fire, Occupancy, etc.).", priority: 'High', riskLevel: 'High', proof: 'Permit Files', location: 'New Site' },
-                    { id: 'FM-NSC-003', description: "Oversee installation of IT networking, servers, and access points.", priority: 'High', riskLevel: 'High', proof: 'IT Sign-off', location: 'New Site' },
-                    { id: 'FM-NSC-004', description: "Supervise installation and testing of security systems (CCTV, Access Control).", priority: 'High', riskLevel: 'High', proof: 'Security Sign-off', location: 'New Site' },
-                    { id: 'FM-NSC-005', description: "Test all critical equipment (Genset, UPS, HVAC) under full load for 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'New Site' },
-                    { id: 'FM-NSC-006', description: "Ensure workstations, chairs, and other furniture are installed as per the approved layout.", priority: 'High', riskLevel: 'Medium', proof: 'Layout Verification', location: 'New Site' },
-                    { id: 'FM-NSC-007', description: "Verify pantry and cafeteria equipment is installed and tested.", priority: 'Medium', riskLevel: 'Low', proof: 'Equipment Sign-off', location: 'New Site' },
-                    { id: 'FM-NSC-008', description: "Arrange for a professional deep clean of the entire site before employee move-in.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Certificate', location: 'New Site' },
-                    { id: 'FM-NSC-009', description: "Conduct a final joint walkthrough with all stakeholders (IT, HR, Admin) before go-live.", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Minutes', location: 'New Site' },
-                    { id: 'FM-NSC-010', description: "Prepare a 'Welcome Kit' and site manual for all employees.", priority: 'Medium', riskLevel: 'Low', proof: 'Welcome Kit Sample', location: 'New Site' }
+                    { id: 'PNC-001', description: "Fresh fit-out project management", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'New Site' },
+                    { id: 'PNC-002', description: "Site commissioning and handover", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'New Site' },
+                    { id: 'PNC-003', description: "Legacy site decommissioning", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Old Site' },
+                    { id: 'PNC-004', description: "Move and relocation management", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'New Site' },
+                    { id: 'PNC-005', description: "Snagging and de-snagging process", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'New Site' }
                 ]
             },
             {
-                title: "📦 Office Decommissioning & Handover Checklist",
-                department: "Projects",
+                title: "⚖️ Compliance & Legal",
+                department: "Legal",
+                frequency: "Quarterly",
+                role: "Legal Counsel",
+                summary: "Ensures the facility adheres to all local, state, and national regulations, minimizing legal risk for the organization.",
+                tasks: [
+                    { id: 'CAL-001', description: "Maintain a Master Compliance Tracker", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'CAL-002', description: "Adherence to building codes and norms", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Facility Office' },
+                    { id: 'CAL-003', description: "Track all licenses and certifications", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' },
+                    { id: 'CAL-004', description: "Validate Insurance and coverage", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' }
+                ]
+            },
+            {
+                title: "🏢 Multi-site Ops & Reporting",
+                department: "Operations",
+                frequency: "Weekly",
+                role: "Regional FM",
+                summary: "Provides a framework for regional managers to oversee multiple facilities, standardize reporting, and compare performance across sites.",
+                tasks: [
+                    { id: 'MOR-001', description: "Standardize daily MIS and reporting", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Regional Office' },
+                    { id: 'MOR-002', description: "Implement a Centralized Helpdesk", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Regional Office' },
+                    { id: 'MOR-003', description: "National and Regional command centers", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Regional Office' },
+                    { id: 'MOR-004', description: "Deploy a remote site management tool", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Regional Office' },
+                    { id: 'MOR-005', description: "Unified Vendor and SLA Management", priority: 'High', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Regional Office' }
+                ]
+            },
+            {
+                title: "💡 Special & Innovation Services",
+                department: "Admin",
                 frequency: "As-Needed",
-                role: "Projects Manager",
-                summary: "A step-by-step process for smoothly closing down an office, covering asset transfer, contract termination, and handing the premises back to the landlord.",
+                role: "Innovation Manager",
+                summary: "Focuses on adopting new technologies and services to enhance the workplace experience and improve operational efficiency.",
                 tasks: [
-                    { id: 'FM-ODH-001', description: "Communicate move-out plan and timeline to all employees and stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'Communication Email', location: 'Old Site' },
-                    { id: 'FM-ODH-002', description: "Coordinate with IT to backup all data and dismantle servers and network equipment.", priority: 'High', riskLevel: 'High', proof: 'IT Sign-off', location: 'Old Site' },
-                    { id: 'FM-ODH-003', description: "Arrange for professional movers to pack and transfer all assets (furniture, equipment).", priority: 'High', riskLevel: 'Medium', proof: 'Mover Contract', location: 'Old Site' },
-                    { id: 'FM-ODH-004', description: "Terminate all vendor contracts specific to the site (e.g., ISP, housekeeping, security) with proper notice.", priority: 'High', riskLevel: 'High', proof: 'Termination Letters', location: 'Old Site' },
-                    { id: 'FM-ODH-005', description: "Ensure the office is restored to the condition required by the lease agreement (e.g., repainting, repairs).", priority: 'High', riskLevel: 'High', proof: 'Photo Evidence', location: 'Old Site' },
-                    { id: 'FM-ODH-006', description: "Take final readings of all utility meters (electricity, water) with landlord's representative.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Reading Sheet', location: 'Old Site' },
-                    { id: 'FM-ODH-007', description: "Conduct a final walkthrough with the landlord to formally handover the premises.", priority: 'High', riskLevel: 'High', proof: 'Handover Document', location: 'Old Site' },
-                    { id: 'FM-ODH-008', description: "Obtain clearance certificate and secure the return of the security deposit from the landlord.", priority: 'High', riskLevel: 'High', proof: 'Bank Statement', location: 'Old Site' },
-                    { id: 'FM-ODH-009', description: "Update company address records and set up mail forwarding.", priority: 'Medium', riskLevel: 'Low', proof: 'System Screenshot', location: 'Old Site' },
-                    { id: 'FM-ODH-010', description: "Archive all documents related to the decommissioned site.", priority: 'Medium', riskLevel: 'Low', proof: 'Archive Log', location: 'Old Site' }
-                ]
-            },
-            {
-                title: "🌧️ Annual Monsoon Preparedness Audit",
-                department: "Business Continuity",
-                frequency: "Annually",
-                role: "Facility Manager",
-                summary: "A pre-monsoon readiness checklist to protect the facility from flooding and water damage, covering drains, sump pumps, and waterproofing.",
-                tasks: [
-                    { id: 'FM-AMP-001', description: "Inspect all rooftops and terraces for waterproofing integrity and clear drainage paths.", priority: 'High', riskLevel: 'High', proof: 'Photo/Report', location: 'Rooftops' },
-                    { id: 'FM-AMP-002', description: "Clean all storm-water drains and gutters around the building perimeter.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Perimeter' },
-                    { id: 'FM-AMP-003', description: "Check all basement areas for potential water ingress points and seal them.", priority: 'High', riskLevel: 'High', proof: 'Inspection Report', location: 'Basement' },
-                    { id: 'FM-AMP-004', description: "Test all sump pumps in basements and ensure they have a power backup.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Basement' },
-                    { id: 'FM-AMP-005', description: "Inspect the condition of exterior walls and windows for cracks or gaps.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Inspection Log', location: 'Exterior' },
-                    { id: 'FM-AMP-006', description: "Stockpile emergency supplies like sandbags, tarps, and portable pumps.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Store Room' },
-                    { id: 'FM-AMP-007', description: "Review the Emergency Response Plan (ERP) for flooding with the security and facility teams.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Facility Office' },
-                    { id: 'FM-AMP-008', description: "Ensure all critical equipment on lower floors is raised or protected.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Ground Floor/Basement' },
-                    { id: 'FM-AMP-009', description: "Verify contact lists for emergency services (Fire, Medical, NDRF) are up to date.", priority: 'High', riskLevel: 'Medium', proof: 'Contact List Copy', location: 'Security Control Room' },
-                    { id: 'FM-AMP-010', description: "Conduct a mock drill for a flooding scenario.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Report', location: 'All Site' }
-                ]
-            },
-            {
-                title: "🚨 Site Emergency Response Plan (ERP) Drill Checklist",
-                department: "Business Continuity",
-                frequency: "Bi-Annually",
-                role: "Safety Officer",
-                summary: "A guide for planning, executing, and evaluating emergency drills (fire, earthquake, etc.) to ensure the entire site responds effectively in a crisis.",
-                tasks: [
-                    { id: 'FM-ERP-001', description: "Plan the drill scenario (e.g., fire, earthquake, security threat) and define clear objectives.", priority: 'High', riskLevel: 'High', proof: 'Drill Plan', location: 'Facility Office' },
-                    { id: 'FM-ERP-002', description: "Inform all employees about the upcoming drill without revealing the exact time.", priority: 'Medium', riskLevel: 'Low', proof: 'Communication Email', location: 'All Employees' },
-                    { id: 'FM-ERP-003', description: "Activate the emergency alarm system.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Security Control Room' },
-                    { id: 'FM-ERP-004', description: "Monitor evacuation routes to ensure they are used correctly and are clear.", priority: 'High', riskLevel: 'High', proof: 'Observer Notes', location: 'Evacuation Routes' },
-                    { id: 'FM-ERP-005', description: "Time the total evacuation and assembly of all personnel at the designated safe assembly points.", priority: 'High', riskLevel: 'Medium', proof: 'Time Log', location: 'Assembly Point' },
-                    { id: 'FM-ERP-006', description: "Conduct a head count at the assembly point to ensure everyone is accounted for.", priority: 'High', riskLevel: 'High', proof: 'Head Count Sheet', location: 'Assembly Point' },
-                    { id: 'FM-ERP-007', description: "Test the response time and effectiveness of the internal Emergency Response Team (ERT).", priority: 'High', riskLevel: 'High', proof: 'Observer Notes', location: 'Incident Scene' },
-                    { id: 'FM-ERP-008', description: "Observe the actions of fire wardens and first aiders during the drill.", priority: 'High', riskLevel: 'Medium', proof: 'Observer Notes', location: 'All Areas' },
-                    { id: 'FM-ERP-009', description: "Conduct a post-drill review meeting to discuss observations and areas for improvement.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Facility Office' },
-                    { id: 'FM-ERP-010', description: "Document the drill report and update the ERP based on learnings.", priority: 'High', riskLevel: 'Medium', proof: 'Updated ERP Document', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "🔩 Quarterly Critical Equipment Audit",
-                department: "Asset Management",
-                frequency: "Quarterly",
-                role: "Chief Engineer",
-                summary: "A high-level audit of the facility's most important assets (Generator, UPS, HVAC) to review maintenance logs, performance, and spare parts inventory.",
-                tasks: [
-                    { id: 'FM-QCEA-001', description: "Review maintenance logs for the Generator, UPS, HVAC Chillers, and Elevators for the past quarter.", priority: 'High', riskLevel: 'High', proof: 'CMMS Report', location: 'Facility Office' },
-                    { id: 'FM-QCEA-002', description: "Conduct a physical inspection of each critical asset for any signs of wear, leaks, or corrosion.", priority: 'High', riskLevel: 'High', proof: 'Inspection Report', location: 'Utility Rooms' },
-                    { id: 'FM-QCEA-003', description: "Verify that all preventive maintenance has been completed as per the annual schedule.", priority: 'High', riskLevel: 'Medium', proof: 'CMMS Report', location: 'Utility Rooms' },
-                    { id: 'FM-QCEA-004', description: "Check runtime hours and fuel/energy consumption against benchmarks.", priority: 'Medium', riskLevel: 'Low', proof: 'Log Analysis', location: 'Utility Rooms' },
-                    { id: 'FM-QCEA-005', description: "Review the stock of critical spare parts for this equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Log', location: 'Store Room' },
-                    { id: 'FM-QCEA-006', description: "Ensure the area around critical equipment is clean, dry, and free of obstructions.", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo', location: 'Utility Rooms' },
-                    { id: 'FM-QCEA-007', description: "Check that all safety warnings and operational instructions are clearly displayed.", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Utility Rooms' },
-                    { id: 'FM-QCEA-008', description: "Review any breakdown reports from the past quarter and the root cause analysis (RCA).", priority: 'High', riskLevel: 'Medium', proof: 'RCA Documents', location: 'Facility Office' },
-                    { id: 'FM-QCEA-009', description: "Plan for any upcoming major services or overhauls.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Plan', location: 'Facility Office' },
-                    { id: 'FM-QCEA-010', description: "Update the asset register with the latest audit findings.", priority: 'Medium', riskLevel: 'Low', proof: 'Asset Register Screenshot', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "💵 Annual Asset Lifecycle & Budgeting Review",
-                department: "Asset Management",
-                frequency: "Annually",
-                role: "Head of Facilities",
-                summary: "A strategic checklist for planning long-term capital expenditure by analyzing asset age, total cost of ownership, and end-of-life replacement needs.",
-                tasks: [
-                    { id: 'FM-AALB-001', description: "Review the entire asset register, including purchase date and warranty status for all major equipment.", priority: 'High', riskLevel: 'High', proof: 'Asset Register', location: 'Facility Office' },
-                    { id: 'FM-AALB-002', description: "Analyze the total cost of ownership (TCO) for aging assets, including maintenance and energy costs.", priority: 'High', riskLevel: 'High', proof: 'TCO Analysis Report', location: 'Facility Office' },
-                    { id: 'FM-AALB-003', description: "Identify assets nearing their end-of-life (EOL) and schedule them for replacement.", priority: 'High', riskLevel: 'High', proof: 'EOL Plan', location: 'Facility Office' },
-                    { id: 'FM-AALB-004', description: "Prepare a business case for capital expenditure (CAPEX) for asset replacement.", priority: 'High', riskLevel: 'High', proof: 'CAPEX Proposal', location: 'Facility Office' },
-                    { id: 'FM-AALB-005', description: "Develop the annual budget for operational expenditure (OPEX) for maintenance and repairs.", priority: 'High', riskLevel: 'High', proof: 'OPEX Budget', location: 'Facility Office' },
-                    { id: 'FM-AALB-006', description: "Evaluate new technologies that could offer better efficiency or lower TCO.", priority: 'Medium', riskLevel: 'Low', proof: 'Technology Evaluation Report', location: 'Facility Office' },
-                    { id: 'FM-AALB-007', description: "Present the lifecycle plan and budget to senior management for approval.", priority: 'High', riskLevel: 'High', proof: 'Presentation Deck', location: 'Facility Office' },
-                    { id: 'FM-AALB-008', description: "Update the 5-year rolling plan for capital asset management.", priority: 'Medium', riskLevel: 'Medium', proof: '5-Year Plan Document', location: 'Facility Office' },
-                    { id: 'FM-AALB-009', description: "Ensure asset disposal is done as per company policy and environmental regulations.", priority: 'Medium', riskLevel: 'Medium', proof: 'Disposal Certificate', location: 'Facility Office' },
-                    { id: 'FM-AALB-010', description: "Log all decisions and plans in the central asset management system.", priority: 'High', riskLevel: 'Low', proof: 'System Entry', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "🧑‍⚖️ Vendor Labor & Statutory Compliance Audit",
-                department: "Vendor Management",
-                frequency: "Quarterly",
-                role: "Facility Manager",
-                summary: "A crucial checklist to ensure all outsourced vendors (security, housekeeping) are compliant with labor laws, protecting the company from legal and reputational risk.",
-                tasks: [
-                    { id: 'FM-VLSC-001', description: "Randomly check ID cards of vendor staff (housekeeping, security) to ensure they are registered and authorized.", priority: 'High', riskLevel: 'High', proof: 'ID Card Photo', location: 'All Areas' },
-                    { id: 'FM-VLSC-002', description: "Verify that the vendor is providing payslips to their staff as per law.", priority: 'High', riskLevel: 'High', proof: 'Sample Payslips', location: 'Vendor Office' },
-                    { id: 'FM-VLSC-003', description: "Check vendor records for PF (Provident Fund) and ESI (Employee State Insurance) contributions for their staff.", priority: 'High', riskLevel: 'High', proof: 'Contribution Challans', location: 'Vendor Office' },
-                    { id: 'FM-VLSC-004', description: "Ensure the vendor has a valid contract and labor license for the site.", priority: 'High', riskLevel: 'High', proof: 'License Copy', location: 'Facility Office' },
-                    { id: 'FM-VLSC-005', description: "Interview a few vendor staff members confidentially to check for issues like delayed payments or excessive work hours.", priority: 'High', riskLevel: 'Medium', proof: 'Interview Notes', location: 'All Areas' },
-                    { id: 'FM-VLSC-006', description: "Review the vendor's attendance records to check for double shifts or inadequate staffing.", priority: 'Medium', riskLevel: 'Medium', proof: 'Attendance Register', location: 'Vendor Office' },
-                    { id: 'FM-VLSC-007', description: "Ensure the vendor provides their staff with proper uniforms and PPE (Personal Protective Equipment).", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Areas' },
-                    { id: 'FM-VLSC-008', description: "Check that the vendor has conducted police verification for their security staff.", priority: 'High', riskLevel: 'High', proof: 'Police Verification Report', location: 'Vendor Office' },
-                    { id: 'FM-VLSC-009', description: "Verify that the vendor is adhering to minimum wage laws.", priority: 'High', riskLevel: 'High', proof: 'Wage Sheet Review', location: 'Vendor Office' },
-                    { id: 'FM-VLSC-010', description: "Document any non-compliance and issue a formal notice to the vendor for corrective action.", priority: 'High', riskLevel: 'High', proof: 'Notice Copy', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "📊 Monthly SLA & KPI Scorecard Review",
-                department: "Vendor Management",
-                frequency: "Monthly",
-                role: "Facility Manager",
-                summary: "A data-driven checklist to formally review vendor performance against the contract, calculate penalties, and create action plans for improvement.",
-                tasks: [
-                    { id: 'FM-MSKR-001', description: "Gather all performance data for the month (helpdesk tickets, audit scores, uptime reports).", priority: 'High', riskLevel: 'Medium', proof: 'Data Reports', location: 'Facility Office' },
-                    { id: 'FM-MSKR-002', description: "Calculate the performance against each Key Performance Indicator (KPI) defined in the Service Level Agreement (SLA).", priority: 'High', riskLevel: 'Medium', proof: 'Scorecard Document', location: 'Facility Office' },
-                    { id: 'FM-MSKR-003', description: "Score each vendor (Housekeeping, Security, M&E) on a pre-defined matrix.", priority: 'High', riskLevel: 'Medium', proof: 'Scorecard Document', location: 'Facility Office' },
-                    { id: 'FM-MSKR-004', description: "Identify any SLA breaches and calculate applicable penalties as per the contract.", priority: 'Medium', riskLevel: 'Medium', proof: 'Penalty Calculation', location: 'Facility Office' },
-                    { id: 'FM-MSKR-005', description: "Identify areas of excellent performance for potential rewards or recognition.", priority: 'Low', riskLevel: 'Low', proof: 'Scorecard Document', location: 'Facility Office' },
-                    { id: 'FM-MSKR-006', description: "Schedule and conduct a formal monthly performance review meeting with each vendor.", priority: 'High', riskLevel: 'Medium', proof: 'Calendar Invite', location: 'Facility Office' },
-                    { id: 'FM-MSKR-007', description: "Present the scorecard to the vendor and discuss reasons for any poor performance.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Facility Office' },
-                    { id: 'FM-MSKR-008', description: "Develop a joint action plan with the vendor to address any shortcomings.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan Document', location: 'Facility Office' },
-                    { id: 'FM-MSKR-009', description: "Track the closure of all action items from the previous month's review.", priority: 'High', riskLevel: 'Medium', proof: 'Action Tracker', location: 'Facility Office' },
-                    { id: 'FM-MSKR-010', description: "Share the final scorecard and minutes of the meeting with stakeholders.", priority: 'Medium', riskLevel: 'Low', proof: 'Email Report', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "♻️ Annual Waste Management & Recycling Audit",
-                department: "Sustainability (ESG)",
-                frequency: "Annually",
-                role: "Green Officer",
-                summary: "A checklist to audit the company's waste management practices, measure recycling effectiveness, and ensure compliance with environmental regulations.",
-                tasks: [
-                    { id: 'FM-AWMRA-001', description: "Review the process of waste segregation at source (e.g., wet, dry, e-waste bins).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'All Areas' },
-                    { id: 'FM-AWMRA-002', description: "Inspect the central waste collection area for proper labeling, storage, and hygiene.", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo', location: 'Waste Yard' },
-                    { id: 'FM-AWMRA-003', description: "Check the credentials and licenses of the waste disposal vendor.", priority: 'High', riskLevel: 'High', proof: 'License Copy', location: 'Facility Office' },
-                    { id: 'FM-AWMRA-004', description: "Analyze waste generation data for the past year to identify trends and opportunities for reduction.", priority: 'High', riskLevel: 'Low', proof: 'Data Analysis Report', location: 'Facility Office' },
-                    { id: 'FM-AWMRA-005', description: "Verify that e-waste is being disposed of through a certified e-waste recycler.", priority: 'High', riskLevel: 'High', proof: 'Disposal Certificate', location: 'Facility Office' },
-                    { id: 'FM-AWMRA-006', description: "Audit the recycling program to measure its effectiveness (e.g., percentage of waste recycled).", priority: 'Medium', riskLevel: 'Low', proof: 'Recycling Report', location: 'Facility Office' },
-                    { id: 'FM-AWMRA-007', description: "Explore opportunities to reduce overall waste generation (e.g., reducing paper, eliminating single-use plastics).", priority: 'Medium', riskLevel: 'Low', proof: 'Proposal Document', location: 'Facility Office' },
-                    { id: 'FM-AWMRA-008', description: "Ensure compliance with all local environmental regulations for waste disposal.", priority: 'High', riskLevel: 'High', proof: 'Compliance Checklist', location: 'Facility Office' },
-                    { id: 'FM-AWMRA-009', description: "Run an awareness campaign for employees on proper waste segregation.", priority: 'Low', riskLevel: 'Low', proof: 'Campaign Material', location: 'All Employees' },
-                    { id: 'FM-AWMRA-010', description: "Set new targets for waste reduction and recycling for the upcoming year.", priority: 'High', riskLevel: 'Medium', proof: 'Management Goals', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "💡 Monthly Utility Data Collection & Analysis",
-                department: "Sustainability (ESG)",
-                frequency: "Monthly",
-                role: "Energy Manager",
-                summary: "A core ESG checklist for tracking and analyzing consumption of electricity, water, and fuel to identify savings opportunities and reduce environmental impact.",
-                tasks: [
-                    { id: 'FM-MUDCA-001', description: "Collect electricity, water, and generator fuel consumption data for the month.", priority: 'High', riskLevel: 'Medium', proof: 'Meter Readings/Bills', location: 'Utility Rooms' },
-                    { id: 'FM-MUDCA-002', description: "Enter the data into the central ESG tracking dashboard.", priority: 'High', riskLevel: 'Low', proof: 'Dashboard Screenshot', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-003', description: "Compare the month's consumption with the previous month and the same month last year.", priority: 'Medium', riskLevel: 'Low', proof: 'Comparison Chart', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-004', description: "Analyze any significant spikes or dips in consumption to find the root cause.", priority: 'High', riskLevel: 'Medium', proof: 'Analysis Report', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-005', description: "Calculate the building's energy performance indicators (e.g., kWh per square foot).", priority: 'Medium', riskLevel: 'Low', proof: 'Report', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-006', description: "Review after-hours energy consumption to identify wastage.", priority: 'High', riskLevel: 'Medium', proof: 'BMS Data', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-007', description: "Identify and propose opportunities for energy or water savings.", priority: 'High', riskLevel: 'Medium', proof: 'Proposal Document', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-008', description: "Prepare a monthly utility consumption report for management.", priority: 'Medium', riskLevel: 'Low', proof: 'Management Report', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-009', description: "Ensure data is accurate and ready for annual ESG reporting.", priority: 'High', riskLevel: 'Medium', proof: 'Data Validation Sheet', location: 'Facility Office' },
-                    { id: 'FM-MUDCA-010', description: "Check utility bills for any errors, penalties, or tariff changes.", priority: 'High', riskLevel: 'Medium', proof: 'Bill Verification Log', location: 'Facility Office' }
+                    { id: 'SIS-001', description: "Robotics in housekeeping and security", priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'SIS-002', description: "IoT for predictive maintenance", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'SIS-003', description: "Smart building and automation", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'BMS Room' },
+                    { id: 'SIS-004', description: "AI in security and surveillance", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Security Room' },
+                    { id: 'SIS-005', description: "Contactless and touchless solutions", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' },
+                    { id: 'SIS-006', description: "Workplace experience apps", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Office Area' },
+                    { id: 'SIS-007', description: "Drone-based facade cleaning", priority: 'Low', riskLevel: 'High', proof: 'Photo / Log', location: 'Exterior' }
                 ]
             }
         ]
@@ -997,11 +990,13 @@ export const premiumPacks = [
                     { id: 'CK-KO-001', description: "Verify all surfaces (prep tables, cutting boards) are sanitized.", priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Kitchen' },
                     { id: 'CK-KO-002', description: "Check temperatures of all refrigerators and freezers; log readings.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
                     { id: 'CK-KO-003', description: "Ensure handwashing stations are stocked with soap, paper towels, and hot water.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
-                    { id: 'CK-KO-004', description: "Calibrate food thermometers.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Kitchen' },
-                    { id: 'CK-KO-005', description: "Review prep list and conduct a quick check of yesterday's stored prep items for quality.", priority: 'Medium', riskLevel: 'Medium', proof: 'Prep List Sign-off', location: 'Walk-in' },
+                    { id: 'CK-KO-004', description: "Calibrate food thermometers using ice-water method.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Kitchen' },
+                    { id: 'CK-KO-005', description: "Review prep list and conduct a quick check of yesterday's stored prep items for quality and date labels.", priority: 'Medium', riskLevel: 'Medium', proof: 'Prep List Sign-off', location: 'Walk-in' },
                     { id: 'CK-KO-006', description: "Turn on and pre-heat all cooking equipment (ovens, grills, fryers).", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Kitchen' },
                     { id: 'CK-KO-007', description: "Check for any signs of pests from overnight and report immediately.", priority: 'High', riskLevel: 'High', proof: 'Pest Log', location: 'Kitchen' },
-                    { id: 'CK-KO-008', description: "Brief the team on daily specials, 86'd items, and any special instructions.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Kitchen' }
+                    { id: 'CK-KO-008', description: "Brief the team on daily specials, 86'd items, and any special instructions.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Kitchen' },
+                    { id: 'CK-KO-009', description: "Ensure sanitizer buckets are filled with correct concentration (check with test strips).", priority: 'High', riskLevel: 'Medium', proof: 'Sanitizer Log', location: 'Kitchen'},
+                    { id: 'CK-KO-010', description: "Check that all cooking ventilation systems are operational.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen'}
                 ]
             },
             {
@@ -1017,8 +1012,10 @@ export const premiumPacks = [
                     { id: 'CK-FRS-004', description: "Check 'use-by' or expiry dates of all items and reject any that are expired.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
                     { id: 'CK-FRS-005', description: "Move all cold/frozen items to their respective storage areas immediately.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Storage' },
                     { id: 'CK-FRS-006', description: "Implement FIFO (First-In, First-Out) principle when storing new stock.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' },
-                    { id: 'CK-FRS-007', description: "Store raw meat, poultry, and fish on the lowest shelves of the refrigerator.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Walk-in' },
-                    { id: 'CK-FRS-008', description: "Ensure all stored food items are covered, labeled, and dated.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' }
+                    { id: 'CK-FRS-007', description: "Store raw meat, poultry, and fish on the lowest shelves of the refrigerator to prevent cross-contamination.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Walk-in' },
+                    { id: 'CK-FRS-008', description: "Ensure all stored food items are covered, labeled, and dated.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' },
+                    { id: 'CK-FRS-009', description: "Keep receiving area clean and clear of clutter.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Receiving Area'},
+                    { id: 'CK-FRS-010', description: "Reject any packaged goods that are dented, leaking, or damaged.", priority: 'High', riskLevel: 'Medium', proof: 'Receiving Log', location: 'Receiving Area'}
                 ]
             },
             {
@@ -1028,14 +1025,16 @@ export const premiumPacks = [
                 role: "Sous Chef",
                 summary: "An ongoing check during service to ensure food safety is maintained on the service line. It covers holding temperatures, staff hygiene, and prevention of cross-contamination.",
                 tasks: [
-                    { id: 'CK-HLC-001', description: "Check and log temperatures of all hot and cold holding units on the line.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
+                    { id: 'CK-HLC-001', description: "Check and log temperatures of all hot and cold holding units on the line every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
                     { id: 'CK-HLC-002', description: "Use a calibrated thermometer to check internal temperatures of food items on the line.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
-                    { id: 'CK-HLC-003', description: "Ensure all stations are stocked with sanitized utensils and cutting boards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Service Line' },
+                    { id: 'CK-HLC-003', description: "Ensure each station is stocked with sanitized utensils and separate cutting boards for raw/cooked food.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Service Line' },
                     { id: 'CK-HLC-004', description: "Verify sanitizer bucket concentrations are correct and test strips are available.", priority: 'High', riskLevel: 'Medium', proof: 'Sanitizer Log', location: 'Service Line' },
                     { id: 'CK-HLC-005', description: "Check that all staff are following proper hygiene practices (handwashing, glove use).", priority: 'High', riskLevel: 'High', proof: 'Visual Observation', location: 'Kitchen' },
-                    { id: 'CK-HLC-006', description: "Ensure food is being protected from cross-contamination (e.g., separate cutting boards for raw/cooked food).", priority: 'High', riskLevel: 'High', proof: 'Visual Observation', location: 'Kitchen' },
+                    { id: 'CK-HLC-006', description: "Ensure food is being protected from cross-contamination (e.g., using separate tongs for different items).", priority: 'High', riskLevel: 'High', proof: 'Visual Observation', location: 'Kitchen' },
                     { id: 'CK-HLC-007', description: "Check that all food items are correctly labeled and dated in line coolers.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Service Line' },
-                    { id: 'CK-HLC-008', description: "Correct any deviations immediately and document corrective actions taken.", priority: 'High', riskLevel: 'High', proof: 'Corrective Action Log', location: 'Kitchen' }
+                    { id: 'CK-HLC-008', description: "Correct any deviations immediately (e.g., reheating food that falls below temp) and document corrective actions taken.", priority: 'High', riskLevel: 'High', proof: 'Corrective Action Log', location: 'Kitchen' },
+                    { id: 'CK-HLC-009', description: "Wipe and sanitize spills on the line immediately.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Service Line'},
+                    { id: 'CK-HLC-010', description: "Monitor for any staff working while ill and report to manager.", priority: 'High', riskLevel: 'High', proof: 'Manager Notification', location: 'Kitchen'}
                 ]
             },
             {
@@ -1046,13 +1045,86 @@ export const premiumPacks = [
                 summary: "A detailed protocol for cleaning and shutting down the kitchen to ensure hygiene and safety. It covers food storage, equipment cleaning, surface sanitization, and waste disposal.",
                 tasks: [
                     { id: 'CK-KCC-001', description: "Properly cool, cover, label, and store all leftover food.", priority: 'High', riskLevel: 'High', proof: 'Storage Log', location: 'Kitchen' },
-                    { id: 'CK-KCC-002', description: "Turn off all cooking equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-KCC-002', description: "Turn off all cooking equipment (fryers, ovens, grills).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
                     { id: 'CK-KCC-003', description: "Clean and sanitize all food prep surfaces, cutting boards, and slicers.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
                     { id: 'CK-KCC-004', description: "Empty and clean all fryers; filter oil as required.", priority: 'Medium', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kitchen' },
                     { id: 'CK-KCC-005', description: "Clean grills, ovens, and stovetops.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kitchen' },
                     { id: 'CK-KCC-006', description: "Break down, clean, and sanitize all service line stations.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Service Line' },
                     { id: 'CK-KCC-007', description: "Sweep and mop all kitchen floors, including under equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
-                    { id: 'CK-KCC-008', description: "Empty all trash and recycling bins, and take them to the dumpster.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' }
+                    { id: 'CK-KCC-008', description: "Empty all trash and recycling bins, and take them to the dumpster.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-KCC-009', description: "Run all floor mats through the dishwasher or hose them down.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Dish Pit'},
+                    { id: 'CK-KCC-010', description: "Ensure all soiled linens are placed in the designated laundry bins.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Kitchen'}
+                ]
+            },
+            {
+                title: "🧑‍🍳 Staff Personal Hygiene Checklist",
+                department: "Compliance",
+                frequency: "Daily",
+                role: "Manager",
+                summary: "A checklist to ensure all food handlers are adhering to strict personal hygiene standards to prevent foodborne illness.",
+                tasks: [
+                    { id: 'CK-SPH-001', description: "Staff are in clean, proper uniform at the start of shift.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-SPH-002', description: "Fingernails are short, clean, and free of nail polish.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-SPH-003', description: "Hair is properly restrained (hat, hairnet).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-SPH-004', description: "No jewelry (except plain wedding band) is worn on hands or wrists.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'CK-SPH-005', description: "Staff wash hands thoroughly at designated times (e.g., after touching face, before starting new task).", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Kitchen' },
+                    { id: 'CK-SPH-006', description: "Cuts or wounds on hands are covered with a bandage and a single-use glove.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen' }
+                ]
+            },
+            {
+                title: "🍽️ Dining Room Opening Checklist",
+                department: "Front of House",
+                frequency: "Daily",
+                role: "F&B Manager",
+                summary: "Ensures the dining area is perfectly set for service, covering everything from cleanliness and table settings to staff briefings and POS system readiness.",
+                tasks: [
+                    { id: 'CK-DRO-001', description: "Check cleanliness of entire dining area (floors, windows, furniture).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dining Room' },
+                    { id: 'CK-DRO-002', description: "Set all tables with polished cutlery, clean glassware, and napkins.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dining Room' },
+                    { id: 'CK-DRO-003', description: "Check reservation list and prepare any special table arrangements.", priority: 'Medium', riskLevel: 'Medium', proof: 'Reservation System', location: 'Host Stand' },
+                    { id: 'CK-DRO-004', description: "Ensure POS system is operational and menus are correct.", priority: 'High', riskLevel: 'High', proof: 'System Check', location: 'POS Station' },
+                    { id: 'CK-DRO-005', description: "Conduct pre-shift briefing with service staff about specials and service standards.", priority: 'High', riskLevel: 'Medium', proof: 'Briefing Log', location: 'Dining Room' }
+                ]
+            },
+            {
+                title: "🧹 Weekly Deep Cleaning Checklist",
+                department: "Hygiene",
+                frequency: "Weekly",
+                role: "Head Chef",
+                summary: "Goes beyond daily cleaning to tackle areas that need periodic, intensive sanitation, such as cleaning hoods, drains, and behind equipment.",
+                tasks: [
+                    { id: 'CK-WDC-001', description: "Clean and degrease all cooking equipment hoods and filters.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'CK-WDC-002', description: "Pull out all equipment and clean walls and floors behind them.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Kitchen' },
+                    { id: 'CK-WDC-003', description: "Delime and sanitize ice machine.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'CK-WDC-004', description: "Clean and sanitize all walk-in refrigerator and freezer shelves and floors.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Storage' },
+                    { id: 'CK-WDC-005', description: "Boil out and clean deep fryers.", priority: 'Medium', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'CK-WDC-006', description: "Clean and sanitize all floor drains.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' }
+                ]
+            },
+            {
+                title: "🛡️ Monthly Pest Control & Safety Audit",
+                department: "Compliance",
+                frequency: "Monthly",
+                role: "Manager",
+                summary: "A proactive audit to prevent pests and ensure key safety equipment is functional and compliant.",
+                tasks: [
+                    { id: 'CK-MPC-001', description: "Inspect for any signs of pest activity (droppings, gnaw marks) and review pest control operator's report.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Log', location: 'All Areas' },
+                    { id: 'CK-MPC-002', description: "Check that all exterior doors are self-closing and have proper seals.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Perimeter' },
+                    { id: 'CK-MPC-003', description: "Test fire suppression system in kitchen hoods (if applicable).", priority: 'High', riskLevel: 'High', proof: 'Safety Log', location: 'Kitchen' },
+                    { id: 'CK-MPC-004', description: "Check all fire extinguishers for charge and accessibility.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Tags', location: 'All Areas' },
+                    { id: 'CK-MPC-005', description: "Ensure first aid kits are fully stocked and accessible.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Kitchen' }
+                ]
+            },
+            {
+                title: "⚠️ Emergency Preparedness Checklist",
+                department: "Safety",
+                frequency: "Quarterly",
+                role: "Manager",
+                summary: "Ensures the restaurant and staff are prepared to handle common emergencies like fires or medical incidents.",
+                tasks: [
+                    { id: 'CK-EP-001', description: "Review fire evacuation plan with all staff.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'All Staff' },
+                    { id: 'CK-EP-002', description: "Ensure emergency contact numbers (Fire, Police, Ambulance) are posted clearly.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen/Office' },
+                    { id: 'CK-EP-003', description: "Review procedures for handling a customer medical emergency.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'All Staff' },
+                    { id: 'CK-EP-004', description: "Check functionality of emergency lighting.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'All Areas' }
                 ]
             }
         ]
@@ -2579,3 +2651,5 @@ export type Checklist = (typeof premiumPacks)[0]['checklists'][0];
     
 
     
+
+  
