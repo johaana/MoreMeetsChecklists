@@ -170,8 +170,8 @@ export default function Home() {
           <Logo className="h-6 w-6 text-primary" />
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-                All Packages
+            <Link href="#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+                Packages
             </Link>
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Why Us
@@ -205,7 +205,7 @@ export default function Home() {
                            Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <Button size="lg" asChild className="text-lg py-7 px-10">
+                            <Button size="lg" asChild className="text-lg py-7 px-10" variant="accent">
                                 <Link href="/packs">Browse All Packages</Link>
                             </Button>
                             <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
