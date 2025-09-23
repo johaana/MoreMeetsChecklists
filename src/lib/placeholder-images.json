@@ -12,22 +12,22 @@
     "imageHint": "corporate event"
   },
   {
-    "id": "testimonial1",
-    "description": "Profile picture of Sarah P.",
-    "imageUrl": "https://picsum.photos/seed/sarah/100/100",
+    "id": "testimonial-elena",
+    "description": "Professional headshot of Elena Petrova.",
+    "imageUrl": "https://picsum.photos/seed/elena/100/100",
     "imageHint": "professional woman"
   },
   {
-    "id": "testimonial2",
-    "description": "Profile picture of Michael J.",
-    "imageUrl": "https://picsum.photos/seed/michael/100/100",
+    "id": "testimonial-marcus",
+    "description": "Professional headshot of Marcus Thorne.",
+    "imageUrl": "https://picsum.photos/seed/marcus/100/100",
     "imageHint": "professional man"
   },
   {
-    "id": "testimonial3",
-    "description": "Profile picture of Anika D.",
-    "imageUrl": "https://picsum.photos/seed/anika/100/100",
-    "imageHint": "smiling woman"
+    "id": "testimonial-priya",
+    "description": "Professional headshot of Priya Singh.",
+    "imageUrl": "https://picsum.photos/seed/priya/100/100",
+    "imageHint": "business woman"
   },
   {
     "id": "showcase-award-ceremony",
