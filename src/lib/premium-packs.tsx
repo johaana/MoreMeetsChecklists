@@ -12,10 +12,10 @@ export const premiumPacks = [
         icon: <Building className="w-8 h-8 text-primary" />,
         mostPopular: true,
         sampleItems: [
-            "Over 50+ Checklists for every department.",
-            "Covers Housekeeping, F&B, Maintenance, Security & more.",
-            "Daily, Weekly, and Monthly SOPs.",
-            "Guest Experience & Safety Protocols."
+            "Master the 'Lost & Found' protocol to ensure guest trust and minimize liability.",
+            "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
+            "Standardize the critical 'Night Audit' process for financial accuracy.",
+            "Includes often-overlooked SOPs for 'Pest Control' and 'HVAC Systems'."
         ],
         checklists: [
             {
@@ -621,10 +621,10 @@ export const premiumPacks = [
         icon: <Building2 className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Operations & Preventive Maintenance",
-            "Site Commissioning & Decommissioning",
-            "Business Continuity & Disaster Recovery",
-            "ESG, Vendor & Capital Asset Management"
+            "Master crucial 'Site Commissioning' & 'Decommissioning' protocols.",
+            "Implement a robust 'Business Continuity Plan' (BCP) with emergency drills.",
+            "Manage 'Capital Asset Lifecycle' and operational budgets effectively.",
+            "Includes vendor 'Labor Law Compliance' and 'SLA Audits'."
         ],
         checklists: [
             {
@@ -974,10 +974,10 @@ export const premiumPacks = [
         icon: <Utensils className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Kitchen Opening & Closing SOPs",
-            "Daily Temperature & HACCP Logs",
-            "Deep Cleaning & Sanitization Schedules",
-            "Food Receiving & Storage Protocols"
+            "Master the 'Five Rights' of medication dispensing with the 'Prescription Verification' checklist.",
+            "Implement a zero-error 'Controlled Substance Inventory' protocol.",
+            "Ensure compliance with a detailed 'Daily Temperature & HACCP Logs' checklist.",
+            "Prepare for emergencies with a dedicated 'First Aid & Incident Response' SOP."
         ],
         checklists: [
             {
@@ -1139,10 +1139,10 @@ export const premiumPacks = [
         icon: <Gem className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Vault Opening & Closing Protocol",
-            "Daily Inventory & Display Audit",
-            "Advanced Anti-Robbery Procedures",
-            "Customer Vetting & Suspicion Triggers",
+            "Master the 'Dual-Control' vault opening and closing protocol to prevent internal theft.",
+            "Implement a 'One-at-a-Time' display rule for high-value items to deter grab-and-run theft.",
+            "Use the 'Suspicious Behavior Triggers' checklist for early threat detection.",
+            "Conduct weekly 'Silent Panic Alarm' and 'CCTV Blind Spot' audits."
         ],
         checklists: [
             {
@@ -1228,10 +1228,10 @@ export const premiumPacks = [
         icon: <Cross className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Prescription Verification Protocol",
-            "Controlled Substance Inventory",
-            "Patient Counseling Checklist",
-            "Daily Compliance & Logs"
+            "Master the 'Five Rights' of medication dispensing with the 'Prescription Verification' checklist.",
+            "Implement a zero-error 'Controlled Substance Inventory' protocol.",
+            "Ensure compliance with a detailed 'Daily Temperature & HACCP Logs' checklist.",
+            "Prepare for emergencies with a dedicated 'First Aid & Incident Response' SOP."
         ],
         checklists: [
             {
@@ -1308,10 +1308,10 @@ export const premiumPacks = [
         icon: <Cross className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Patient Admission & Discharge Protocol",
-            "Surgical Suite & OT Readiness",
-            "Emergency Room (ER) Triage & Flow",
-            "Inter-Departmental Coordination"
+            "Implement the 'Surgical Safety Checklist' to reduce errors in the OT.",
+            "Streamline ER patient flow with the 'Emergency Room Triage' checklist.",
+            "Prevent hospital-acquired infections with the 'Infection Control Audit' SOP.",
+            "Ensure compliance with NABH/JCI standards for patient admission and discharge."
         ],
         checklists: [
             {
@@ -1394,10 +1394,10 @@ export const premiumPacks = [
         icon: <Cross className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Patient Appointment & Registration",
-            "Clinical Room Turnover & Sterilization",
-            "Medical Billing & Insurance Claims",
-            "Emergency Preparedness for Clinics"
+            "Optimize wait times with the 'Patient Flow & Experience' checklist.",
+            "Ensure 100% compliance with the 'Clinical Safety & Sterilization' protocol between patients.",
+            "Streamline revenue cycle with the 'Medical Billing & Insurance Claims' checklist.",
+            "Includes critical SOPs for 'Emergency Preparedness' in a clinic setting."
         ],
         checklists: [
             {
@@ -1470,10 +1470,10 @@ export const premiumPacks = [
         icon: <TestTube className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Sample Receiving & Accessioning",
-            "Daily Equipment Calibration Logs",
-            "Quality Control (QC) Run Protocol",
-            "Biohazard Waste Management"
+            "Implement a 'Zero-Error Start' with the 'Morning Setup & Calibration' checklist.",
+            "Ensure patient safety with the 'Sample Management & Accessioning' protocol.",
+            "Master the 'Critical Value Communication' process to protect patients and doctors.",
+            "Stay compliant with NABL standards for 'Biohazard Management' and 'Quality Control'."
         ],
         checklists: [
             {
@@ -1544,10 +1544,10 @@ export const premiumPacks = [
         icon: <Dumbbell className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Equipment Safety & Cleaning",
-            "Member Onboarding & Sales Process",
-            "Class Scheduling & Instructor Mgt.",
-            "Emergency & First Aid Protocols"
+            "Implement a 'Daily Equipment Safety Inspection' to reduce liability and prevent injuries.",
+            "Standardize your 'New Member Onboarding' process to improve retention.",
+            "Use the 'Class & Staff Management' checklist to optimize instructor schedules.",
+            "Includes a crucial 'Emergency & First Aid Protocol' for handling incidents."
         ],
         checklists: [
             {
@@ -1619,10 +1619,10 @@ export const premiumPacks = [
         icon: <PersonStanding className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Hygiene & Sterilization SOPs",
-            "Client Appointment & CRM",
-            "Inventory Management for Products",
-            "Staff Training & Service Quality"
+            "Ensure client safety with the 'Hygiene & Tool Sterilization' checklist.",
+            "Improve client retention with the 'Consultation & Service Experience' protocol.",
+            "Maximize profitability with the 'Inventory & Retail Management' checklist.",
+            "Includes staff training schedules and service quality audit forms."
         ],
         checklists: [
             {
@@ -1695,10 +1695,10 @@ export const premiumPacks = [
         icon: <School className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Campus Security Walkthrough",
-            "Monthly Fire & Emergency Drill",
-            "Student Arrival & Dismissal Procedure",
-            "Classroom & Facility Safety Audit"
+            "Master the 'Daily Campus Security Walkthrough' to identify and mitigate risks before students arrive.",
+            "Implement a 'Student Dismissal & Lost-and-Found Protocol' to ensure child safety.",
+            "Run effective 'Monthly Fire & Emergency Drills' that prepare staff and students.",
+            "Includes detailed 'Classroom & Facility Safety Audits' for proactive maintenance."
         ],
         checklists: [
             {
@@ -1771,10 +1771,10 @@ export const premiumPacks = [
         icon: <ShoppingCart className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Fresh Produce & Quality Control",
-            "Cold Chain & Dairy Management",
-            "Daily Restocking & Shelf Presentation",
-            "Cashier & Front-End Operations"
+            "Master 'Cold Chain Integrity' during goods receiving to reduce spoilage.",
+            "Use the 'Freshness Check' protocol to maintain high quality in produce and dairy.",
+            "Optimize checkout flow with the 'Front-End Operations' checklist.",
+            "Includes detailed 'Cash Reconciliation' and 'Daily Restocking' procedures."
         ],
         checklists: [
             {
@@ -1845,10 +1845,10 @@ export const premiumPacks = [
         icon: <Shirt className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Visual Merchandising & Display",
-            "Fitting Room & Loss Prevention",
-            "New Stock & Inventory Management",
-            "Clienteling & Personal Styling"
+            "Implement a 'Fitting Room Loss Prevention' protocol to reduce shrinkage.",
+            "Use the 'Visual Merchandising' checklist to create compelling window and in-store displays.",
+            "Master the 'New Stock & Inventory Management' process for seamless collection launches.",
+            "Includes a 'Clienteling & Personal Styling' guide to boost customer loyalty and sales."
         ],
         checklists: [
             {
@@ -1919,10 +1919,10 @@ export const premiumPacks = [
         icon: <Phone className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Live Demo Unit & Security Checks",
-            "Inventory & High-Value Stock Audit",
-            "Sales Staff Product Training",
-            "Trade-in & Exchange Process"
+            "Secure high-value items with the 'Live Demo Unit & Security Tether' checklist.",
+            "Prevent theft with the 'High-Value Stock Audit' and cycle count protocol.",
+            "Use the 'Sales Staff Product Training' drills to keep your team sharp.",
+            "Standardize your 'Trade-in & Exchange' process for a better customer experience."
         ],
         checklists: [
             {
@@ -1991,10 +1991,10 @@ export const premiumPacks = [
         icon: <Factory className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "End-of-Shift Production Report",
-            "Machine Status & Maintenance Handover",
-            "Safety & Quality Control Briefing",
-            "Incoming Shift Walk-through"
+            "Use the 'End-of-Shift' report to document production numbers, downtime, and quality issues.",
+            "Conduct a structured 'Joint Handover Meeting' to ensure nothing is missed between shifts.",
+            "Implement a 'Weekly Safety Audit' covering machine guards, emergency stops, and PPE compliance.",
+            "Includes pre-shift huddle guides and start-up procedures."
         ],
         checklists: [
             {
@@ -2065,10 +2065,10 @@ export const premiumPacks = [
         icon: <Building className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "New Client Booking & Contract Process",
-            "Pre-Event Facility Readiness Audit",
-            "Event Day Vendor Coordination",
-            "Post-Event Breakdown & Settlement"
+            "Standardize your 'Initial Client Inquiry & Booking' process to close deals faster.",
+            "Use the 'Pre-Event Coordination' checklist to manage clients, caterers, and decorators.",
+            "Ensure flawless 'Event Day Execution' with a step-by-step run-of-show.",
+            "Simplify 'Post-Event Wrap-Up' with checklists for damages, billing, and vendor settlement."
         ],
         checklists: [
             {
@@ -2130,79 +2130,6 @@ export const premiumPacks = [
         ]
     },
     {
-        id: 'playschool_safety_protocol',
-        title: "Playschool & Daycare Checklist",
-        priceUSD: 79.99,
-        priceINR: 7999,
-        category: "Education",
-        description: "The essential daily, weekly, and monthly checklist for running a safe, clean, and engaging playschool or daycare.",
-        icon: <Home className="w-8 h-8 text-primary" />,
-        mostPopular: false,
-        sampleItems: [
-            "Daily Opening Safety Inspection",
-            "Hourly & Post-Session Sanitization",
-            "Staff & Child Supervision Protocol",
-            "Weekly Deep Clean & Maintenance"
-        ],
-        checklists: [
-            {
-                title: "☀️ Daily Opening Safety Inspection",
-                department: "Safety",
-                frequency: "Daily",
-                role: "Supervisor",
-                summary: "A critical safety sweep before any children arrive, checking for hazards like sharp objects, unsafe toys, and ensuring all areas are clean and secure.",
-                tasks: [
-                    { id: 'PD-DOSI-001', description: "Inspect all indoor and outdoor play areas for hazards (sharp edges, broken equipment).", priority: 'High', riskLevel: 'High', proof: 'Safety Log', location: 'Play Areas' },
-                    { id: 'PD-DOSI-002', description: "Check that all gates and doors are securely latched.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Perimeter' },
-                    { id: 'PD-DOSI-003', description: "Ensure all electrical outlets are covered.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classrooms' },
-                    { id: 'PD-DOSI-004', description: "Confirm that first aid kits are fully stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Office' },
-                    { id: 'PD-DOSI-005', description: "Sanitize all high-touch surfaces, toys, and eating areas.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'All Areas' }
-                ]
-            },
-            {
-                title: "👀 During-Session Operations & Supervision",
-                department: "Operations",
-                frequency: "Hourly",
-                role: "Staff",
-                summary: "Focuses on maintaining staff-to-child ratios, active supervision in all play zones, and documenting activities, meals, and nap times.",
-                tasks: [
-                    { id: 'PD-DSOS-001', description: "Maintain mandated staff-to-child ratios at all times.", priority: 'High', riskLevel: 'High', proof: 'Headcount Log', location: 'All Areas' },
-                    { id: 'PD-DSOS-002', description: "Practice 'active supervision' by constantly scanning and being present with children.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'All Areas' },
-                    { id: 'PD-DSOS-003', description: "Log diaper changes, meals, and nap times for each child.", priority: 'High', riskLevel: 'Medium', proof: 'Daily Report Card', location: 'Classrooms' },
-                    { id: 'PD-DSOS-004', description: "Handle and document any minor incidents (bumps, scrapes) and inform parents.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Office' },
-                    { id: 'PD-DSOS-005', description: "Ensure children are washing hands before meals and after using the restroom.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Classrooms' }
-                ]
-            },
-            {
-                title: "🧽 Closing & Deep Cleaning",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Closing Staff",
-                summary: "A thorough cleaning and sanitization protocol for the end of the day, ensuring all toys, surfaces, and restrooms are disinfected and ready for the next day.",
-                tasks: [
-                    { id: 'PD-CDC-001', description: "Collect, wash, and sanitize all used toys.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'All Areas' },
-                    { id: 'PD-CDC-002', description: "Disinfect all tables, chairs, and sleeping mats.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Classrooms' },
-                    { id: 'PD-CDC-003', description: "Clean and sanitize restrooms thoroughly.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Restrooms' },
-                    { id: 'PD-CDC-004', description: "Empty all trash cans and dispose of waste properly.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Areas' },
-                    { id: 'PD-CDC-005', description: "Secure the premises, lock all doors and windows.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Perimeter' }
-                ]
-            },
-            {
-                title: " drills Weekly Maintenance & Emergency Drills",
-                department: "Maintenance",
-                frequency: "Weekly",
-                role: "Supervisor",
-                summary: "A weekly check of fire alarms, first aid kits, and emergency exits, plus conducting simple, age-appropriate emergency drills with the children.",
-                tasks: [
-                    { id: 'PD-WMED-001', description: "Test fire alarms and smoke detectors.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'All Areas' },
-                    { id: 'PD-WMED-002', description: "Inspect outdoor play equipment for structural integrity and safety.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Playground' },
-                    { id: 'PD-WMED-003', description: "Restock first aid kits with any used supplies.", priority: 'High', riskLevel: 'High', proof: 'Inventory Check', location: 'Office' },
-                    { id: 'PD-WMED-004', description: "Conduct a simple fire or evacuation drill with staff and children.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Report', location: 'All Areas' }
-                ]
-            }
-        ]
-    },
-    {
         id: 'hindu_wedding_checklist',
         title: "Hindu Wedding Checklist",
         priceUSD: 49.99,
@@ -2212,10 +2139,10 @@ export const premiumPacks = [
         icon: <Heart className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Detailed Sangeet, Mehndi & Haldi planning",
-            "Baraat & Varmala coordination",
-            "Mandap ceremony logistics",
-            "Vendor management for rituals",
+            "Coordinate a vibrant 'Sangeet Ceremony' with DJ, choreography, and catering.",
+            "Plan a flawless 'Baraat & Varmala' procession with detailed logistics.",
+            "Ensure the 'Mandap Ceremony' is perfect with a checklist for all 'puja samagri'.",
+            "Manage the 'Reception & Vidaai' with a structured timeline and vendor coordination."
         ],
         checklists: [
             {
@@ -2286,10 +2213,10 @@ export const premiumPacks = [
         icon: <Heart className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Nikah ceremony planning",
-            "Mahr agreement and witnessing",
-            "Walima (reception) logistics",
-            "Rukhsati coordination"
+            "Ensure a compliant 'Nikah Ceremony' with checklists for the Mahr agreement and witnesses.",
+            "Coordinate the 'Rukhsati' (bride's farewell) with grace and precision.",
+            "Plan a memorable 'Walima' (groom's reception) from venue selection to catering.",
+            "Includes vendor management and guest management protocols for a seamless event."
         ],
         checklists: [
             {
@@ -2360,10 +2287,10 @@ export const premiumPacks = [
         icon: <Wrench className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Vehicle Intake & Inspection Process",
-            "Customer Approval & Work Order",
-            "Quality Control & Final Checks",
-            "Parts Management & Inventory"
+            "Use the 'Vehicle Intake & Inspection' process to prevent disputes over pre-existing damage.",
+            "Get documented 'Customer Approval' on all work orders before starting repairs.",
+            "Implement a 'Final Quality Control' check, including a test drive, to reduce comebacks.",
+            "Includes a 'Vehicle Handover' checklist for a professional customer experience."
         ],
         checklists: [
             {
@@ -2434,10 +2361,10 @@ export const premiumPacks = [
         icon: <ShoppingCart className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Security & Patrol Checklist",
-            "Housekeeping & Common Area Audits",
-            "Tenant Communication Protocol",
-            "Emergency Response Drills (Fire, Active Shooter)"
+            "Master the 'Daily Security & Patrol' checklist for comprehensive threat prevention.",
+            "Use the 'Housekeeping & Common Area Audits' to maintain a pristine environment.",
+            "Implement a structured 'Tenant Communication Protocol' to improve relationships.",
+            "Prepare for the worst with 'Emergency Response Drills' for fire and other crises."
         ],
         checklists: [
             {
@@ -2507,10 +2434,10 @@ export const premiumPacks = [
         icon: <Phone className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Shift Start-Up & Team Huddle",
-            "Live Call Quality Assurance (QA)",
-            "Agent Performance Coaching",
-            "End-of-Shift Reporting & Handoff"
+            "Run an effective 'Pre-Shift Team Huddle' to align your team on daily goals.",
+            "Use the 'Live Call Quality Assurance (QA)' scorecard to standardize performance.",
+            "Implement a structured 'Agent Performance & Coaching' framework.",
+            "Includes templates for 'End-of-Shift Reporting' and shift handovers."
         ],
         checklists: [
             {
@@ -2580,10 +2507,10 @@ export const premiumPacks = [
         icon: <Waves className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Daily Lifeguard & First Aid Readiness",
-            "Water Quality & Chemical Log",
-            "Waterslide & Attraction Inspection",
-            "Emergency Action Plan (EAP) Drills"
+            "Use the 'Pre-Opening Safety Inspection' for waterslides, pools, and lifeguard stations.",
+            "Maintain water purity with the 'Hourly Water Quality & Chemical Log'.",
+            "Test lifeguard readiness with 'Vigilance Audits' and 'Emergency Action Plan (EAP)' drills.",
+            "Covers weekly and monthly checks for filtration systems and slide structures."
         ],
         checklists: [
             {
@@ -2654,10 +2581,10 @@ export const premiumPacks = [
         icon: <Building2 className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Guest Check-in & Check-out Inspection",
-            "Cleaning & Restocking Between Stays",
-            "Routine Property Maintenance Schedule",
-            "Guest Communication Templates"
+            "Use the 'Pre-Guest Arrival' checklist to ensure a 5-star ready property every time.",
+            "Protect yourself with the 'Guest Check-Out & Damage Inspection' protocol.",
+            "Stay compliant with the 'Routine Maintenance & Local Laws' checklist.",
+            "Includes 'Guest Communication Templates' for the entire journey, from booking to review."
         ],
         checklists: [
             {
@@ -2729,10 +2656,10 @@ export const premiumPacks = [
         icon: <Briefcase className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Showroom Opening & Vehicle Prep",
-            "Sales Process & CRM Management",
-            "Test Drive Protocol & Safety",
-            "Vehicle Handover & Delivery Experience"
+            "Perfect the 'Vehicle Handover & Delivery Experience' to create happy customers.",
+            "Use the 'Sales & Customer Interaction Process' to standardize your team's pitch.",
+            "Includes a 'Test Drive Protocol' to ensure safety and compliance.",
+            "Master showroom readiness with the 'Morning Lot Preparation' checklist."
         ],
         checklists: [
             {
@@ -2802,10 +2729,10 @@ export const premiumPacks = [
         icon: <Briefcase className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Product Launch Event Plan",
-            "AGM & Board Meeting Prep",
-            "New Employee Onboarding",
-            "Trade Show & Conference Planning",
+            "Execute a flawless 'Product Launch Event' from venue selection to media invites.",
+            "Standardize your 'New Employee Onboarding' for a great first-week experience.",
+            "Prepare for your 'Annual General Meeting (AGM)' with a detailed compliance checklist.",
+            "Maximize ROI from a 'Trade Show & Conference' with a complete planning guide."
         ],
         checklists: [
             {
@@ -2878,10 +2805,10 @@ export const premiumPacks = [
         icon: <Shield className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Environmental Data Collection (Scope 1 & 2)",
-            "Social Metrics & Employee Data",
-            "Governance Policy Verification",
-            "Stakeholder Engagement Plan"
+            "Use the 'Environmental Data Gathering' checklist for Scope 1 & 2 emissions reporting.",
+            "Track key 'Social Metrics' like employee turnover and diversity statistics.",
+            "Verify key corporate policies with the 'Governance Policy Verification' audit.",
+            "Includes a guide for conducting a 'Materiality Assessment' to engage stakeholders."
         ],
         checklists: [
             {
@@ -2948,10 +2875,10 @@ export const premiumPacks = [
         icon: <Shield className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Quality Manual & Document Control",
-            "Management Responsibility Review",
-            "Internal Audit & Corrective Actions",
-            "Resource Management & Competency"
+            "Master 'Document Control & Records' to satisfy Clause 7.5.",
+            "Prepare for the 'Management & Leadership' review meeting as per Clause 5.",
+            "Use the 'Internal Audit & Corrective Actions' checklist (Clause 9.2 & 10.2).",
+            "Covers 'Product Realization' (Clause 8) from customer requirements to delivery."
         ],
         checklists: [
             {
@@ -3018,10 +2945,10 @@ export const premiumPacks = [
         icon: <Leaf className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Waste Reduction & Recycling Program",
-            "Energy & Water Conservation Audit",
-            "Sustainable Procurement Policy",
-            "Green Employee Engagement"
+            "Implement a 'Waste Management & Reduction' program with clear segregation protocols.",
+            "Use the 'Energy & Water Conservation Audit' to identify and eliminate wastage.",
+            "Develop a 'Sustainable Procurement Policy' to make your supply chain greener.",
+            "Boost company culture with 'Green Employee Engagement' initiatives."
         ],
         checklists: [
             {
@@ -3088,10 +3015,10 @@ export const premiumPacks = [
         icon: <Truck className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Aggregator Onboarding & Menu Sync",
-            "Packaging Station & Inventory Setup",
-            "Order Fulfillment & Handoff Protocol",
-            "Rider Management & Reconciliation"
+            "Master 'Aggregator Onboarding & Menu Sync' for platforms like Zomato and Swiggy.",
+            "Design a high-efficiency 'Packaging & Dispatch Station' to maintain food quality.",
+            "Implement the 'Order Fulfillment Protocol' from KOT to rider handoff to minimize errors.",
+            "Use the 'End-of-Day Reconciliation' checklist to analyze sales and track payments."
         ],
         checklists: [
             {
@@ -3161,10 +3088,10 @@ export const premiumPacks = [
         icon: <Plane className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Visa & Document Preparation",
-            "Financial & Health Checklist",
-            "Smart Packing & Luggage Strategy",
-            "Pre-Departure Home Checklist",
+            "Navigate the 'Visa & Documentation' phase with a step-by-step guide.",
+            "Use the 'Health & Finance' checklist for vaccinations and currency exchange.",
+            "Pack smart with a detailed 'Packing & Luggage' strategy for all essentials.",
+            "Includes a 'Pre-Departure Home Checklist' so you can travel with peace of mind."
         ],
         checklists: [
             {
@@ -3232,10 +3159,10 @@ export const premiumPacks = [
         icon: <PawPrint className="w-8 h-8 text-primary" />,
         mostPopular: false,
         sampleItems: [
-            "Airline & Vet Requirement Checklist",
-            "Pet-Friendly Accommodation Booking",
-            "Packing Your Pet's Go-Bag",
-            "Travel Day Health & Safety",
+            "Navigate the 'Veterinary & Airline Prep' checklist for health certificates and booking.",
+            "Use the 'Booking & Packing' guide to find pet-friendly hotels and pack a 'go-bag'.",
+            "Ensure a calm journey with 'The Day Before Travel' checklist for feeding and exercise.",
+            "Includes a 'Travel Day & Arrival' SOP for both car and air travel."
         ],
         checklists: [
             {
@@ -3306,4 +3233,5 @@ export type Checklist = (typeof premiumPacks)[0]['checklists'][0];
     
 
   
+
 
