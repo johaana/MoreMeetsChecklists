@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2 } from 'lucide-react';
+import { ArrowLeft, FileCheck2, Hand, LifeBuoy, Zap } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -127,11 +127,13 @@ export default function Page({ params }: { params: { id: string } }) {
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-8">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 items-start max-w-5xl mx-auto">
-                     <div className="w-24 h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0">
-                        {React.cloneElement(pack.icon, { className: "w-12 h-12 text-primary" })}
-                    </div>
-                    <div className="space-y-4">
+                <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
+                     <div className="row-start-1 md:col-start-1 flex items-center gap-4">
+                        <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0">
+                           {React.cloneElement(pack.icon, { className: "w-8 h-8 md:w-12 md:h-12 text-primary" })}
+                       </div>
+                     </div>
+                    <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-4">
                         <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                             {pack.title}
                         </h1>
@@ -151,7 +153,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
         <PainPointsSection category={pack.category} />
 
-        <section id="checklists" className="w-full py-8 md:py-12">
+        <section id="checklists" className="w-full py-12">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
@@ -186,17 +188,35 @@ export default function Page({ params }: { params: { id: string } }) {
 
 
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t mt-12 bg-secondary/50">
-        <p className="text-xs text-muted-foreground">&copy; 2024 MoreMeets. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Terms of Service
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+       <footer className="w-full border-t bg-secondary/50 mt-12">
+            <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
+                <div className="flex flex-col items-center md:items-start gap-2">
+                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+                        <Logo className="h-6 w-6 text-primary" />
+                        <span className="font-headline text-lg font-bold">MoreMeets</span>
+                    </Link>
+                    <p className="text-sm text-muted-foreground max-w-xs">
+                        The Professional Standard for Compliance & Operations Checklists.
+                    </p>
+                </div>
+                 <div className="flex flex-col gap-2 items-center text-sm">
+                    <p className="font-semibold">Quick Links</p>
+                    <Link href="#pricing" className="text-muted-foreground hover:text-foreground">Pricing</Link>
+                    <Link href="#checklists" className="text-muted-foreground hover:text-foreground">What's Included</Link>
+                    <Link href="#why" className="text-muted-foreground hover:text-foreground">Why Us</Link>
+                </div>
+                <div className="flex flex-col gap-2 items-center md:items-end text-sm">
+                     <p className="font-semibold">Legal</p>
+                    <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Terms of Service
+                    </Link>
+                    <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Privacy Policy
+                    </Link>
+                     <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
   );
 }

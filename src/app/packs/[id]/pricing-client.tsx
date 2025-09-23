@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
     return (
@@ -189,6 +190,123 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
     const enterprisePriceINR = 49999;
 
+    const pricingCards = (
+        <>
+            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border relative">
+                <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
+                <CardHeader className="p-6 pt-8">
+                    <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
+                    <p className="text-4xl font-bold text-foreground">₹{pack.priceINR}</p>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+                     <p className="flex items-start gap-2"><Package className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
+                     <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
+                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
+                </CardContent>
+                <CardFooter className="p-6 mt-auto">
+                    <Button size="lg" className="w-full font-bold text-lg" onClick={handleDownload}>
+                        Get Professional Pack
+                    </Button>
+                </CardFooter>
+            </Card>
+
+            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
+                <Badge className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">Best Value</Badge>
+                <CardHeader className="p-6">
+                    <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
+                        Personalized Pack
+                    </CardTitle>
+                    <div className="flex items-baseline gap-2">
+                        <p className="text-4xl font-bold text-foreground">
+                            ₹{personalizedPackPrice}
+                        </p>
+                        <p className="text-xl font-medium text-muted-foreground line-through">
+                            ₹{personalizedPackPrice + 2000}
+                        </p>
+                    </div>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+                        <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Professional, plus:</span></p>
+                        <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan tailored for you.</span></p>
+                        <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Your branding automatically added.</span></p>
+                        <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
+                </CardContent>
+                <CardFooter className="p-6 mt-auto">
+                     <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
+                                Personalize Now
+                            </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="max-w-2xl">
+                            <AlertDialogHeader>
+                                <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
+                                    <Sparkles className="w-6 h-6 text-accent" />
+                                    Personalize Your Checklist Pack
+                                </AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    Answer a few questions to help us tailor this pack to your exact needs. This will add a customized 'Priority Action Plan' to your download.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <div className="space-y-4 py-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="q1">What is your primary business focus?</Label>
+                                        <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="q2">Which department needs the most improvement?</Label>
+                                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
+                                    <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
+                                </div>
+                                    <div className="space-y-2">
+                                    <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
+                                    <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
+                                </div>
+                                    <div className="space-y-2">
+                                    <Label htmlFor="q5">Anything else you'd like us to know?</Label>
+                                    <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH, or any other unique challenges." />
+                                </div>
+                            </div>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel onClick={() => handleDownload()}>Skip & Download Standard</AlertDialogCancel>
+                                <AlertDialogAction onClick={() => handleDownload()}>
+                                    Generate & Proceed to Purchase
+                                </AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </CardFooter>
+            </Card>
+
+             <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border">
+                <CardHeader className="p-6">
+                     <CardTitle className="flex items-center gap-2 font-headline text-2xl">
+                        <Building className="w-6 h-6 text-primary" />
+                        Enterprise
+                    </CardTitle>
+                    <p className="text-4xl font-bold text-foreground">₹{enterprisePriceINR}</p>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+                    <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Personalized, plus:</span></p>
+                    <p className="flex items-start gap-2"><FileText className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Full SOP manual creation from checklists.</span></p>
+                    <p className="flex items-start gap-2"><Users className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Dedicated account manager for support.</span></p>
+                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Training for your team.</span></p>
+                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
+                </CardContent>
+                <CardFooter className="p-6 mt-auto">
+                    <Button size="lg" className="w-full font-bold text-lg" variant="outline" asChild>
+                        <Link href="https://wa.me/919545997111" target="_blank">Contact Us</Link>
+                    </Button>
+                </CardFooter>
+            </Card>
+        </>
+    );
+
     return (
         <section className="w-full py-8 md:py-12 bg-secondary/30" id="pricing">
             <div className="container px-4 md:px-6">
@@ -196,122 +314,30 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    
-                    <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border relative">
-                        <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
-                        <CardHeader className="p-6 pt-8">
-                            <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                            <p className="text-4xl font-bold text-foreground">₹{pack.priceINR}</p>
-                        </CardHeader>
-                        <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                             <p className="flex items-start gap-2"><Package className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
-                             <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
-                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
-                        </CardContent>
-                        <CardFooter className="p-6 mt-auto">
-                            <Button size="lg" className="w-full font-bold text-lg" onClick={handleDownload}>
-                                Get Professional Pack
-                            </Button>
-                        </CardFooter>
-                    </Card>
-
-                    <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
-                        <Badge className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">Best Value</Badge>
-                        <CardHeader className="p-6">
-                            <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
-                                Personalized Pack
-                            </CardTitle>
-                            <div className="flex items-baseline gap-2">
-                                <p className="text-4xl font-bold text-foreground">
-                                    ₹{personalizedPackPrice}
-                                </p>
-                                <p className="text-xl font-medium text-muted-foreground line-through">
-                                    ₹{personalizedPackPrice + 2000}
-                                </p>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                                <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Professional, plus:</span></p>
-                                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan tailored for you.</span></p>
-                                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Your branding automatically added.</span></p>
-                                <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
-                        </CardContent>
-                        <CardFooter className="p-6 mt-auto">
-                             <AlertDialog>
-                                <AlertDialogTrigger asChild>
-                                    <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
-                                        Personalize Now
-                                    </Button>
-                                </AlertDialogTrigger>
-                                <AlertDialogContent className="max-w-2xl">
-                                    <AlertDialogHeader>
-                                        <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
-                                            <Sparkles className="w-6 h-6 text-accent" />
-                                            Personalize Your Checklist Pack
-                                        </AlertDialogTitle>
-                                        <AlertDialogDescription>
-                                            Answer a few questions to help us tailor this pack to your exact needs. This will add a customized 'Priority Action Plan' to your download.
-                                        </AlertDialogDescription>
-                                    </AlertDialogHeader>
-                                    <div className="space-y-4 py-4">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <Label htmlFor="q1">What is your primary business focus?</Label>
-                                                <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="q2">Which department needs the most improvement?</Label>
-                                                <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
-                                            <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
-                                        </div>
-                                            <div className="space-y-2">
-                                            <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
-                                            <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
-                                        </div>
-                                            <div className="space-y-2">
-                                            <Label htmlFor="q5">Anything else you'd like us to know?</Label>
-                                            <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH, or any other unique challenges." />
-                                        </div>
-                                    </div>
-                                    <AlertDialogFooter>
-                                        <AlertDialogCancel onClick={() => handleDownload()}>Skip & Download Standard</AlertDialogCancel>
-                                        <AlertDialogAction onClick={() => handleDownload()}>
-                                            Generate & Proceed to Purchase
-                                        </AlertDialogAction>
-                                    </AlertDialogFooter>
-                                </AlertDialogContent>
-                            </AlertDialog>
-                        </CardFooter>
-                    </Card>
-
-                     <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border">
-                        <CardHeader className="p-6">
-                             <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                                <Building className="w-6 h-6 text-primary" />
-                                Enterprise
-                            </CardTitle>
-                            <p className="text-4xl font-bold text-foreground">₹{enterprisePriceINR}</p>
-                        </CardHeader>
-                        <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                            <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Personalized, plus:</span></p>
-                            <p className="flex items-start gap-2"><FileText className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Full SOP manual creation from checklists.</span></p>
-                            <p className="flex items-start gap-2"><Users className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Dedicated account manager for support.</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Training for your team.</span></p>
-                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
-                        </CardContent>
-                        <CardFooter className="p-6 mt-auto">
-                            <Button size="lg" className="w-full font-bold text-lg" variant="outline" asChild>
-                                <Link href="https://wa.me/919545997111" target="_blank">Contact Us</Link>
-                            </Button>
-                        </CardFooter>
-                    </Card>
-
+                
+                {/* Desktop View */}
+                <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {pricingCards}
                 </div>
+
+                {/* Mobile View */}
+                <div className="lg:hidden">
+                    <Carousel
+                        opts={{
+                            align: "start",
+                        }}
+                        className="w-full"
+                    >
+                        <CarouselContent>
+                            {React.Children.map(pricingCards, (child, index) => (
+                                <CarouselItem key={index} className="basis-full md:basis-1/2">
+                                    <div className="p-1">{child}</div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                    </Carousel>
+                </div>
+
 
                 {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
 
