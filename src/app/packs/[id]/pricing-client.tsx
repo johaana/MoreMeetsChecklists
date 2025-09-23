@@ -4,7 +4,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, BadgeCheck, Repeat, Clock, Download, DollarSign, Sparkles } from 'lucide-react';
+import { Check, X, BadgeCheck, Repeat, Download, DollarSign, Sparkles } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -14,57 +14,25 @@ import { Badge } from '@/components/ui/badge';
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const handleDownload = () => {
-        // This function will be updated to handle the checkout process
-        // For now, it will continue to trigger the direct download
         const workbook = utils.book_new();
 
         const headerStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" } },
-        fill: { fgColor: { rgb: "0A2540" } }
+            font: { bold: true, color: { rgb: "FFFFFF" } },
+            fill: { fgColor: { rgb: "0A2540" } }
         };
         
-        const highPriorityColor = { rgb: "FFC7CE" }; 
-
-        const applyStylesAndFilter = (ws: WorkSheet, data: any[][]) => {
+        const applyStyles = (ws: WorkSheet, data: any[][]) => {
             if(!data || data.length === 0) return;
             
-            const headers = data[0];
-            const priorityColIndex = headers.indexOf('Priority');
-            const riskLevelColIndex = headers.indexOf('Risk Level');
-
-            for (let R = 1; R < data.length; ++R) {
-                const row = data[R];
-                
-                const applyHighlight = (colIndex: number, value: string) => {
-                    if (colIndex !== -1 && value === 'High') {
-                        for(let C = 0; C < headers.length; ++C) {
-                            const cellAddress = utils.encode_cell({r: R, c: C});
-                            if (!ws[cellAddress]) ws[cellAddress] = { t: 's', v: row[C] };
-                            ws[cellAddress].s = { fill: { fgColor: highPriorityColor } };
-                        }
-                    }
-                }
-                if (priorityColIndex !== -1) {
-                    applyHighlight(priorityColIndex, row[priorityColIndex]);
-                }
-                if (riskLevelColIndex !== -1) {
-                    applyHighlight(riskLevelColIndex, row[riskLevelColIndex]);
-                }
-            }
-            
             ws['!ref'] = utils.encode_range(utils.decode_range(ws['!ref'] || "A1:A1"));
-            if (data.length > 1) {
-                const filterRange = utils.encode_range({s: {r: 0, c: 0}, e: {r: data.length - 1, c: headers.length - 1}});
-                ws['!autofilter'] = { ref: filterRange };
-            }
             ws['!views'] = [{state: 'frozen', ySplit: 1}];
         };
 
         // Master Sheet
         const masterHeaders = [
-        'Checklist', 'Department', 'Frequency', 'Role Responsible', 
-        'Task ID', 'Task', 'Priority', 'Risk Level', 'Proof / Evidence', 
-        'Location / Site', 'Status'
+            'Checklist', 'Department', 'Frequency', 'Role Responsible', 
+            'Task ID', 'Task', 'Priority', 'Risk Level', 'Proof / Evidence', 
+            'Location / Site', 'Status'
         ];
         
         const masterSheetData = pack.checklists.flatMap(checklist => 
@@ -91,7 +59,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             })
         }));
         
-        applyStylesAndFilter(masterWorksheet, masterDataWithHeader);
+        applyStyles(masterWorksheet, masterDataWithHeader);
 
         masterWorksheet['!cols'] = [
             { wch: 40 }, { wch: 20 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, 
@@ -130,7 +98,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 })
             }));
             
-            applyStylesAndFilter(worksheet, checklistDataWithHeader);
+            applyStyles(worksheet, checklistDataWithHeader);
             
             worksheet['!cols'] = [
             { wch: 15 }, { wch: 50 }, { wch: 15 }, { wch: 15 }, 
@@ -159,7 +127,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                         <CardHeader className="p-6">
                             <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                            <p className="text-3xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
+                            <p className="text-3xl font-bold text-primary">₹{pack.priceINR}</p>
                         </CardHeader>
                         <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                              <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
@@ -185,10 +153,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </CardTitle>
                                         <div className="flex items-baseline gap-2">
                                         <p className="text-3xl font-bold text-primary">
-                                            ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
+                                            ₹{pack.priceINR + personalizationPriceINR}
                                         </p>
                                             <p className="text-lg font-medium text-muted-foreground line-through">
-                                            ${pack.priceUSD + personalizationPriceUSD + 30} / ₹{pack.priceINR + personalizationPriceINR + 2701}
+                                            ₹{pack.priceINR + personalizationPriceINR + 2701}
                                         </p>
                                     </div>
                                 </CardHeader>
@@ -280,5 +248,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
     )
 }
-
-    
