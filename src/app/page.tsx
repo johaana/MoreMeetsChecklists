@@ -139,7 +139,7 @@ export default function Home() {
                             </Button>
                             <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                                 <p className="text-xs text-white/80">
-                                    Not AI-generated. Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                                    Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
                                 </p>
                             </div>
                         </div>
@@ -281,17 +281,37 @@ export default function Home() {
         <FaqSection />
 
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t mt-16">
-        <p className="text-xs text-muted-foreground">&copy; 2024 MoreMeets. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Terms of Service
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+       <footer className="w-full border-t bg-secondary/50 mt-12">
+            <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
+                <div className="flex flex-col items-center md:items-start gap-2">
+                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+                        <Logo className="h-6 w-6 text-primary" />
+                        <span className="font-headline text-lg font-bold">MoreMeets</span>
+                    </Link>
+                    <p className="text-sm text-muted-foreground max-w-xs">
+                        The Professional Standard for Compliance & Operations Checklists.
+                    </p>
+                </div>
+                 <div className="flex flex-col gap-2 items-center text-sm">
+                    <p className="font-semibold">Quick Links</p>
+                    <Link href="#packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
+                    <Link href="#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
+                    <Link href="#faq" className="text-muted-foreground hover:text-foreground">FAQ</Link>
+                </div>
+                <div className="flex flex-col gap-2 items-center md:items-end text-sm">
+                     <p className="font-semibold">Legal</p>
+                    <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Terms of Service
+                    </Link>
+                    <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Privacy Policy
+                    </Link>
+                     <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
   );
 }
+
+    

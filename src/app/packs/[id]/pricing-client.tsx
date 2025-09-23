@@ -5,9 +5,12 @@ import * as React from 'react';
 import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { writeFile, utils } from 'xlsx-js-style';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText, Loader2 } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -15,7 +18,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
+import { handleInquiry } from '@/ai/flows/inquiry-flow';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
     return (
@@ -65,8 +71,111 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
     );
 }
 
+const inquirySchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  company: z.string().min(2, { message: "Company name is required." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  locations: z.string().min(1, { message: "This field is required." }),
+  needs: z.string().optional(),
+});
+
+function EnterpriseInquiryDialog() {
+    const { toast } = useToast();
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [isSubmitted, setIsSubmitted] = React.useState(false);
+    
+    const form = useForm<z.infer<typeof inquirySchema>>({
+        resolver: zodResolver(inquirySchema),
+        defaultValues: {
+            name: "",
+            company: "",
+            email: "",
+            locations: "",
+            needs: "",
+        },
+    });
+
+    async function onSubmit(values: z.infer<typeof inquirySchema>) {
+        setIsSubmitting(true);
+        try {
+            await handleInquiry(values);
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error("Inquiry submission failed", error);
+            toast({
+                variant: 'destructive',
+                title: 'Submission Failed',
+                description: 'There was a problem submitting your inquiry. Please try again later.',
+            });
+            setIsSubmitting(false);
+        }
+    }
+
+    if (isSubmitted) {
+        return (
+             <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle className="font-headline text-2xl">Thank You!</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        Your request has been received. To expedite the process, you can book a 15-minute discovery call directly on our calendar.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Close</AlertDialogCancel>
+                    <AlertDialogAction asChild>
+                       <Link href="https://calendly.com/your-link" target="_blank">Book a Discovery Call</Link>
+                    </AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        )
+    }
+    
+    return (
+        <AlertDialogContent className="max-w-2xl">
+            <AlertDialogHeader>
+                <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
+                    <Building className="w-6 h-6 text-primary" />
+                    Enterprise Inquiry
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                    Please provide some details about your needs, and our team will get back to you.
+                </AlertDialogDescription>
+            </AlertDialogHeader>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField control={form.control} name="name" render={({ field }) => (
+                            <FormItem><FormLabel>Your Name</FormLabel><FormControl><Input placeholder="e.g., John Doe" {...field} /></FormControl><FormMessage /></FormItem>
+                        )} />
+                        <FormField control={form.control} name="company" render={({ field }) => (
+                           <FormItem><FormLabel>Company Name</FormLabel><FormControl><Input placeholder="e.g., Acme Hotels" {...field} /></FormControl><FormMessage /></FormItem>
+                        )} />
+                    </div>
+                     <FormField control={form.control} name="email" render={({ field }) => (
+                        <FormItem><FormLabel>Email Address</FormLabel><FormControl><Input placeholder="e.g., john.doe@acmehotels.com" {...field} /></FormControl><FormMessage /></FormItem>
+                    )} />
+                     <FormField control={form.control} name="locations" render={({ field }) => (
+                        <FormItem><FormLabel>Number of Locations / Stores</FormLabel><FormControl><Input placeholder="e.g., 15" {...field} /></FormControl><FormMessage /></FormItem>
+                    )} />
+                     <FormField control={form.control} name="needs" render={({ field }) => (
+                        <FormItem><FormLabel>What are your specific customization needs?</FormLabel><FormControl><Textarea placeholder="e.g., We need to integrate this with our internal audit software and require bespoke checklists for our security protocol." {...field} /></FormControl><FormMessage /></FormItem>
+                    )} />
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <Button type="submit" disabled={isSubmitting}>
+                            {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            Submit Inquiry
+                        </Button>
+                    </AlertDialogFooter>
+                </form>
+            </Form>
+        </AlertDialogContent>
+    );
+}
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
+    const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
+    const { toast } = useToast();
     
     const handleDownload = () => {
         const workbook = utils.book_new();
@@ -185,6 +294,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         });
 
         writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
+        setShowDownloadConfirm(true);
+    }
+    
+    const handlePersonalizedDownload = () => {
+        // Here you would capture the form data and generate a personalized file.
+        // For now, it just triggers the standard download.
+        handleDownload();
     }
 
     const personalizationPriceINR = 3000;
@@ -193,7 +309,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const pricingCards = (
         <>
-            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border relative">
+            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
                 <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
                 <CardHeader className="p-6 pt-8">
                     <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
@@ -274,8 +390,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
                             <AlertDialogFooter>
-                                <AlertDialogCancel onClick={() => handleDownload()}>Skip & Download Standard</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleDownload()}>
+                                <AlertDialogCancel onClick={handleDownload}>Skip & Download Standard</AlertDialogCancel>
+                                <AlertDialogAction onClick={handlePersonalizedDownload}>
                                     Generate & Proceed to Purchase
                                 </AlertDialogAction>
                             </AlertDialogFooter>
@@ -300,9 +416,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button size="lg" className="w-full font-bold text-lg" variant="outline" asChild>
-                        <Link href="https://wa.me/919545997111" target="_blank">Contact Us</Link>
-                    </Button>
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button size="lg" className="w-full font-bold text-lg" variant="outline">
+                                Inquire for Enterprise
+                            </Button>
+                        </AlertDialogTrigger>
+                        <EnterpriseInquiryDialog />
+                    </AlertDialog>
                 </CardFooter>
             </Card>
         </>
@@ -310,8 +431,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     return (
         <section className="w-full py-8 md:py-12 bg-secondary/30" id="pricing">
+             <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Your checklist pack has started downloading. Please check your downloads folder.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
             <div className="container px-4 md:px-6">
-                 <div className="max-w-2xl mx-auto mb-8 text-center">
+                 <div className="max-w-2xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
@@ -327,15 +461,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         opts={{
                             align: "start",
                         }}
-                        className="w-full"
+                        className="w-full max-w-sm mx-auto"
                     >
                         <CarouselContent>
                             {React.Children.map(pricingCards, (child, index) => (
-                                <CarouselItem key={index} className="basis-full md:basis-1/2">
+                                <CarouselItem key={index} className="basis-full">
                                     <div className="p-1">{child}</div>
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
+                         <CarouselPrevious className="left-[-0.5rem]" />
+                        <CarouselNext className="right-[-0.5rem]" />
                     </Carousel>
                 </div>
 
@@ -373,3 +509,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     )
 }
+
+    
