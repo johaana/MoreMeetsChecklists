@@ -13,6 +13,8 @@ import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
+import React from 'react';
+import { useSearchParams } from 'next/navigation';
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -30,11 +32,11 @@ const OtherIndustriesSection = () => (
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {[
-                    { icon: <Building2 className="w-8 h-8 text-primary" />, name: 'Corporate', href: '#packs', sub: 'Facilities, Admin, HR' },
-                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/packs/healthcare_compliance_suite', sub: 'Hospitals, Clinics, Labs' },
-                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/packs/retail_operations_pack', sub: 'Jewellery, Malls, Stores' },
-                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/packs/education_sector_pack', sub: 'Schools, Colleges' },
-                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/packs/manufacturing_plant_pack', sub: 'Plants, Factories, EHS' },
+                    { icon: <Building2 className="w-8 h-8 text-primary" />, name: 'Corporate', href: '/#packs?category=Corporate', sub: 'Facilities, Admin, HR' },
+                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/#packs?category=Healthcare', sub: 'Hospitals, Clinics, Labs' },
+                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/#packs?category=Retail', sub: 'Jewellery, Malls, Stores' },
+                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/#packs?category=Education', sub: 'Schools, Colleges' },
+                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/#packs?category=Manufacturing', sub: 'Plants, Factories, EHS' },
                     { icon: <Utensils className="w-8 h-8 text-primary" />, name: 'Events', href: '#packs', sub: 'Weddings, Corporate' },
                     { icon: <Truck className="w-8 h-8 text-primary" />, name: 'Automotive', href: '#packs', sub: 'Workshops, Dealerships' },
                     { icon: <Building className="w-8 h-8 text-primary" />, name: 'Real Estate', href: '#packs', sub: 'Landlords, REITs' },
@@ -110,6 +112,84 @@ const FaqSection = () => (
     </section>
 );
 
+function PackList() {
+    const searchParams = useSearchParams();
+    const category = searchParams.get('category');
+
+    const packsToShow = React.useMemo(() => {
+        if (category) {
+            return premiumPacks.filter(p => p.category === category);
+        }
+        return premiumPacks.slice(0, 3);
+    }, [category]);
+
+    const title = category ? `${category} Checklist Packs` : "Ready-to-Use, Downloadable Checklist Packs";
+    const description = category 
+        ? `Expert-crafted operational SOPs for the ${category.toLowerCase()} industry. One-time purchase, lifetime updates.`
+        : "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
+
+
+    return (
+         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        {title}
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        {description}
+                    </p>
+                    {category && (
+                        <Button asChild variant="outline">
+                            <Link href="/#packs">View All Featured Packs</Link>
+                        </Button>
+                    )}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {packsToShow.map((pack) => (
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-primary">
+                             {pack.mostPopular && (
+                                <Badge className="absolute top-4 right-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10">
+                                   <Star className="w-4 h-4 mr-2" /> Most Popular
+                                </Badge>
+                             )}
+                            <CardHeader className="p-6">
+                                <div className="flex items-start gap-4 mb-2">
+                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20 shrink-0">
+                                        {pack.icon}
+                                    </div>
+                                    <div className="flex-1">
+                                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                                    </div>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="px-6 flex-1">
+                                <p className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</p>
+                                <ul className="space-y-2 text-muted-foreground text-sm">
+                                    {pack.sampleItems.map((item, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80"/>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                             <CardFooter className="p-6 pt-2 mt-auto">
+                                <Button asChild className="w-full font-bold bg-accent/20 text-accent hover:bg-accent/30" variant="secondary">
+                                    <Link href={`/packs/${pack.id}`}>
+                                        View Full Checklist & Purchase
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
 
 export default function Home() {
   const whyUsData = [
@@ -192,59 +272,9 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
-            <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Ready-to-Use, Downloadable Checklist Packs
-                    </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {premiumPacks.slice(0, 3).map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-primary">
-                             {pack.mostPopular && (
-                                <Badge className="absolute top-4 right-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10">
-                                   <Star className="w-4 h-4 mr-2" /> Most Popular
-                                </Badge>
-                             )}
-                            <CardHeader className="p-6">
-                                <div className="flex items-start gap-4 mb-2">
-                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20 shrink-0">
-                                        {pack.icon}
-                                    </div>
-                                    <div className="flex-1">
-                                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                                        <CardDescription className="mt-1">{pack.description}</CardDescription>
-                                    </div>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="px-6 flex-1">
-                                <p className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</p>
-                                <ul className="space-y-2 text-muted-foreground text-sm">
-                                    {pack.sampleItems.map((item, index) => (
-                                        <li key={index} className="flex items-start">
-                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80"/>
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </CardContent>
-                             <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold bg-accent/20 text-accent hover:bg-accent/30" variant="secondary">
-                                    <Link href={`/packs/${pack.id}`}>
-                                        View Full Checklist & Purchase
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-        </section>
+        <React.Suspense fallback={<div>Loading packs...</div>}>
+            <PackList />
+        </React.Suspense>
 
         <OtherIndustriesSection />
 
