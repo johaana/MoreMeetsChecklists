@@ -17,6 +17,16 @@ export const premiumPacks = [
             "Standardize the critical 'Night Audit' process for financial accuracy.",
             "Includes often-overlooked SOPs for 'Pest Control' and 'HVAC Systems'."
         ],
+        previewScenario: {
+            title: "Executing a Flawless 5-Star Guest Check-In",
+            description: "This scenario shows how different departments work together to create a seamless guest arrival experience, from front desk to housekeeping. Here are a few key tasks from different checklists that make it happen:",
+            tasks: [
+                { id: 'FO-CI-002', description: "Verify the guest's identity with a valid government-issued ID proof.", sourceChecklist: "Guest Check-In Process", priority: 'High' },
+                { id: 'HK-DRC-018', description: "Perform final inspection of the room before leaving.", sourceChecklist: "Daily Room Cleaning", priority: 'High' },
+                { id: 'FO-DO-010', description: "Prepare detailed shift handover notes for the next team, highlighting any pending issues.", sourceChecklist: "Reception Daily Operations", priority: 'High' },
+                { id: 'SEC-CSM-001', description: "Check that all CCTV cameras are operational and recording.", sourceChecklist: "CCTV & Security Monitoring", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🧹 Daily Room Cleaning Checklist",
@@ -203,7 +213,7 @@ export const premiumPacks = [
                 role: "Front Desk Agent",
                 summary: "A step-by-step guide to create a welcoming and efficient check-in experience, covering identity verification, payment, key issuance, and providing essential information.",
                 tasks: [
-                    { id: 'FO-CI-001', description: "Greet the guest warmly upon arrival with a smile", priority: 'High', riskLevel: 'Medium', proof: 'CCTV Review', location: 'Front Desk' },
+                    { id: 'FO-CI-001', description: "Greet the guest warmly upon arrival with a smile", priority: 'High', riskLevel: 'Low', proof: 'CCTV Review', location: 'Front Desk' },
                     { id: 'FO-CI-002', description: "Verify the guest's identity with a valid government-issued ID proof", priority: 'High', riskLevel: 'High', proof: 'ID Copy', location: 'Front Desk' },
                     { id: 'FO-CI-003', description: "Confirm reservation details (name, room type, length of stay)", priority: 'High', riskLevel: 'High', proof: 'System Check', location: 'Front Desk' },
                     { id: 'FO-CI-004', description: "Collect advance payment or pre-authorize a credit card for the stay and incidentals", priority: 'High', riskLevel: 'High', proof: 'Payment Receipt', location: 'Front Desk' },
@@ -626,6 +636,16 @@ export const premiumPacks = [
             "Manage 'Capital Asset Lifecycle' and operational budgets effectively.",
             "Includes vendor 'Labor Law Compliance' and 'SLA Audits'."
         ],
+        previewScenario: {
+            title: "Managing a Critical Power Outage",
+            description: "This scenario shows how various facility management checklists work in concert to ensure business continuity during an unexpected power failure.",
+            tasks: [
+                { id: 'ELS-002', description: "Daily DG set and Fuel Management", sourceChecklist: "Electrical Systems", priority: 'High' },
+                { id: 'WMS-001', description: "Test generator and power backup systems", sourceChecklist: "Weekly Maintenance & Safety", priority: 'High' },
+                { id: 'QAT-006', description: "Execute emergency response and BCP drills", sourceChecklist: "Quarterly & Annual Tasks", priority: 'High' },
+                { id: 'FSE-007', description: "Test Emergency Lights and Power Backup", sourceChecklist: "Fire Safety & Emergency", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "✔️ Daily Site Operations",
@@ -979,6 +999,16 @@ export const premiumPacks = [
             "Ensure compliance with a detailed 'Daily Temperature & HACCP Logs' checklist.",
             "Prepare for emergencies with a dedicated 'First Aid & Incident Response' SOP."
         ],
+        previewScenario: {
+            title: "Ensuring Food Safety from Kitchen to Customer",
+            description: "This scenario highlights how multiple checklists work together to maintain food safety and prevent foodborne illness, a critical process for any restaurant.",
+            tasks: [
+                { id: 'CK-FRS-001', description: "Check temperature of refrigerated/frozen delivery truck upon arrival.", sourceChecklist: "Food Receiving & Storage Protocol", priority: 'High' },
+                { id: 'CK-KO-002', description: "Check temperatures of all refrigerators and freezers; log readings.", sourceChecklist: "Kitchen Opening Checklist (HACCP Focus)", priority: 'High' },
+                { id: 'CK-HLC-002', description: "Use a calibrated thermometer to check internal temperatures of food items on the line.", sourceChecklist: "Daily HACCP & Line Check", priority: 'High' },
+                { id: 'CK-SPH-005', description: "Staff wash hands thoroughly at designated times (e.g., after touching face, before starting new task).", sourceChecklist: "Staff Personal Hygiene Checklist", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🍳 Kitchen Opening Checklist (HACCP Focus)",
@@ -1144,6 +1174,16 @@ export const premiumPacks = [
             "Use the 'Suspicious Behavior Triggers' checklist for early threat detection.",
             "Conduct weekly 'Silent Panic Alarm' and 'CCTV Blind Spot' audits."
         ],
+        previewScenario: {
+            title: "Preventing a High-Value 'Grab-and-Run' Theft",
+            description: "This scenario shows how security, sales, and operational checklists work together to create multiple layers of protection against a common type of jewellery store theft.",
+            tasks: [
+                { id: 'JWL-SFP-002', description: "Show only one high-value item (or one tray) at a time.", sourceChecklist: "Ongoing Security & Sales Floor Protocol", priority: 'High' },
+                { id: 'JWL-DOP-009', description: "Test all silent panic alarms and hold-up buttons.", sourceChecklist: "Daily Opening Procedure (Dual Control)", priority: 'High' },
+                { id: 'JWL-WSA-002', description: "Review CCTV footage from all cameras to check for blind spots, correct angles, and clear images.", sourceChecklist: "Weekly Security & Maintenance Audit", priority: 'High' },
+                { id: 'JWL-SFP-006', description: "Use a code word or signal to alert other staff/security of suspicious behavior.", sourceChecklist: "Ongoing Security & Sales Floor Protocol", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🔓 Daily Opening Procedure (Dual Control)",
@@ -1233,6 +1273,16 @@ export const premiumPacks = [
             "Ensure compliance with a detailed 'Daily Temperature & HACCP Logs' checklist.",
             "Prepare for emergencies with a dedicated 'First Aid & Incident Response' SOP."
         ],
+        previewScenario: {
+            title: "Safely Dispensing a High-Risk Medication",
+            description: "This scenario shows how multiple checklists ensure a high-risk or controlled substance is dispensed with maximum safety and compliance, protecting both the patient and the pharmacy.",
+            tasks: [
+                { id: 'PH-PFV-002', description: "Right Drug: Check prescription against the drug label three times (when picking, dispensing, and giving).", sourceChecklist: "Prescription Filling & Verification", priority: 'High' },
+                { id: 'PH-ICS-001', description: "Conduct a daily physical count of all Schedule H/X or narcotic drugs.", sourceChecklist: "Inventory & Controlled Substances", priority: 'High' },
+                { id: 'PH-PFV-006', description: "Check for potential drug interactions or allergies in the patient's profile.", sourceChecklist: "Prescription Filling & Verification", priority: 'High' },
+                { id: 'PH-CP-004', description: "Run a daily backup of the pharmacy management software.", sourceChecklist: "Closing Procedures & Data Security", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "☀️ Daily Opening & Compliance Check",
@@ -1313,6 +1363,16 @@ export const premiumPacks = [
             "Prevent hospital-acquired infections with the 'Infection Control Audit' SOP.",
             "Ensure compliance with NABH/JCI standards for patient admission and discharge."
         ],
+        previewScenario: {
+            title: "Managing a High-Risk Emergency Surgery (NABH/JCI Focus)",
+            description: "This scenario shows how multiple hospital departments coordinate using checklists to ensure patient safety and compliance during a critical emergency surgery.",
+            tasks: [
+                { id: 'HOS-ERM-003', description: "Verify crash cart, intubation kits, and other life-saving equipment are checked and ready.", sourceChecklist: "Emergency Room (ER) Management", priority: 'High' },
+                { id: 'HOS-OTR-006', description: "Conduct WHO Surgical Safety Checklist (Sign In, Time Out, Sign Out) for every case.", sourceChecklist: "Surgical Suite / OT Readiness", priority: 'High' },
+                { id: 'HOS-ICC-003', description: "Check adherence to PPE protocols in high-risk areas (ICU, OT, ER).", sourceChecklist: "Infection Control & Compliance", priority: 'High' },
+                { id: 'HOS-PAD-002', description: "Obtain all necessary consent forms, signed and witnessed.", sourceChecklist: "Patient Admission & Discharge", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "📋 Patient Admission & Discharge",
@@ -1399,6 +1459,16 @@ export const premiumPacks = [
             "Streamline revenue cycle with the 'Medical Billing & Insurance Claims' checklist.",
             "Includes critical SOPs for 'Emergency Preparedness' in a clinic setting."
         ],
+        previewScenario: {
+            title: "Managing the Complete Patient Journey",
+            description: "This scenario shows how checklists for reception, clinical safety, and billing work together to create a smooth, safe, and efficient experience for an outpatient visit.",
+            tasks: [
+                { id: 'PC-PFE-002', description: "Verify patient details and update any changes in the EMR.", sourceChecklist: "Patient Flow & Experience", priority: 'High' },
+                { id: 'PC-CSS-002', description: "Disinfect all surfaces in the consultation/procedure room between patients (chair, counters).", sourceChecklist: "Clinical Safety & Sterilization", priority: 'High' },
+                { id: 'PC-BA-001', description: "Generate accurate invoices for all consultations and procedures.", sourceChecklist: "Billing & Administration", priority: 'High' },
+                { id: 'PC-DOP-006', description: "Check that emergency first aid kit is stocked and accessible.", sourceChecklist: "Daily Opening & Patient Readiness", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "☀️ Daily Opening & Patient Readiness",
@@ -1475,6 +1545,16 @@ export const premiumPacks = [
             "Master the 'Critical Value Communication' process to protect patients and doctors.",
             "Stay compliant with NABL standards for 'Biohazard Management' and 'Quality Control'."
         ],
+        previewScenario: {
+            title: "Processing a Critical Patient Sample (NABL Compliance)",
+            description: "This scenario shows how checklists ensure accuracy and safety from the moment a sample arrives to the urgent communication of a life-threatening result.",
+            tasks: [
+                { id: 'DL-SMP-001', description: "Verify patient identification on sample container matches the test requisition form.", sourceChecklist: "Sample Management & Processing", priority: 'High' },
+                { id: 'DL-MSC-002', description: "Verify that QC results are within acceptable ranges before releasing any patient results.", sourceChecklist: "Morning Setup & Calibration", priority: 'High' },
+                { id: 'DL-DRC-003', description: "Immediately notify the referring physician of any 'critical value' results by phone.", sourceChecklist: "Data, Reporting & Critical Value Communication", priority: 'High' },
+                { id: 'DL-EBM-002', description: "Safely dispose of all biohazardous waste in designated, color-coded bags/containers.", sourceChecklist: "End of Day & Biohazard Management", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🔬 Morning Setup & Calibration (Zero-Error Start)",
@@ -1549,6 +1629,16 @@ export const premiumPacks = [
             "Use the 'Class & Staff Management' checklist to optimize instructor schedules.",
             "Includes a crucial 'Emergency & First Aid Protocol' for handling incidents."
         ],
+        previewScenario: {
+            title: "Ensuring a Safe & Welcoming First Visit for a New Member",
+            description: "This scenario shows how operational, safety, and sales checklists work together to make a new member's first experience safe, positive, and informative.",
+            tasks: [
+                { id: 'GYM-DOS-001', description: "Inspect all cardio and strength equipment for visible signs of wear, tear, or damage.", sourceChecklist: "Daily Opening & Safety Inspection", priority: 'High' },
+                { id: 'GYM-MM-003', description: "Offer a basic orientation to new members on how to use key equipment safely.", sourceChecklist: "Member Management & Customer Experience", priority: 'Medium' },
+                { id: 'GYM-CSM-003', description: "Review staff roster to ensure adequate coverage on the gym floor and at reception.", sourceChecklist: "Class & Staff Management", priority: 'High' },
+                { id: 'GYM-DOS-005', description: "Verify first aid stations are stocked and accessible.", sourceChecklist: "Daily Opening & Safety Inspection", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🌅 Daily Opening & Safety Inspection",
@@ -1624,6 +1714,16 @@ export const premiumPacks = [
             "Maximize profitability with the 'Inventory & Retail Management' checklist.",
             "Includes staff training schedules and service quality audit forms."
         ],
+        previewScenario: {
+            title: "Delivering a Premium Spa Experience",
+            description: "This scenario shows how hygiene, customer service, and operational checklists work together to ensure a relaxing, safe, and professional experience for every client.",
+            tasks: [
+                { id: 'SPA-DOH-002', description: "Ensure all tools (scissors, combs, brushes) are properly sterilized and stored.", sourceChecklist: "Daily Opening & Hygiene Checklist", priority: 'High' },
+                { id: 'SPA-CES-002', description: "Conduct a thorough consultation before starting any service.", sourceChecklist: "Client Experience & Service", priority: 'High' },
+                { id: 'SPA-IRM-003', description: "Check stock levels of professional-use products and place new orders as needed.", sourceChecklist: "Inventory & Retail Management", priority: 'High' },
+                { id: 'SPA-CED-001', description: "Clean and sanitize all workstations and tools.", sourceChecklist: "Closing & End-of-Day Tasks", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "✨ Daily Opening & Hygiene Checklist",
@@ -1700,6 +1800,16 @@ export const premiumPacks = [
             "Run effective 'Monthly Fire & Emergency Drills' that prepare staff and students.",
             "Includes detailed 'Classroom & Facility Safety Audits' for proactive maintenance."
         ],
+        previewScenario: {
+            title: "Ensuring a Safe & Orderly School Day",
+            description: "This scenario shows how security, administration, and emergency preparedness checklists work together to create a safe learning environment from arrival to dismissal.",
+            tasks: [
+                { id: 'EDU-DOC-003', description: "Check all CCTV cameras are operational and recording.", sourceChecklist: "Daily Opening & Campus Security", priority: 'High' },
+                { id: 'EDU-CAS-001', description: "Check classrooms for any broken furniture, sharp edges, or electrical hazards.", sourceChecklist: "Classroom & Common Area Safety", priority: 'High' },
+                { id: 'EDU-SDP-002', description: "Verify student ID cards or parent authorization for pick-up.", sourceChecklist: "Student Dismissal Protocol", priority: 'High' },
+                { id: 'EDU-MEP-001', description: "Conduct a fire drill or other emergency drill (e.g., earthquake, lockdown).", sourceChecklist: "Monthly Emergency Preparedness", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🏫 Daily Opening & Campus Security Checklist",
@@ -1776,6 +1886,16 @@ export const premiumPacks = [
             "Optimize checkout flow with the 'Front-End Operations' checklist.",
             "Includes detailed 'Cash Reconciliation' and 'Daily Restocking' procedures."
         ],
+        previewScenario: {
+            title: "Maintaining Fresh Food Quality & Safety",
+            description: "This scenario shows how receiving, floor operations, and closing checklists work together to ensure the freshness and safety of perishable goods like produce and dairy.",
+            tasks: [
+                { id: 'SM-RCI-001', description: "Check and log the temperature of refrigerated and frozen delivery trucks.", sourceChecklist: "Receiving & Cold Chain Integrity", priority: 'High' },
+                { id: 'SM-MOF-002', description: "Check 'use by' dates in the dairy, meat, and bakery sections.", sourceChecklist: "Morning Opening & Freshness Check", priority: 'High' },
+                { id: 'SM-FOCS-002', description: "Clean up any spills or breakages immediately to prevent accidents.", sourceChecklist: "Floor Operations & Customer Service", priority: 'High' },
+                { id: 'SM-CFR-004', description: "Ensure all refrigeration and freezer units are closed and running at the correct temperature.", sourceChecklist: "Closing & Financial Reconciliation", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "☀️ Morning Opening & Freshness Check",
@@ -1850,6 +1970,16 @@ export const premiumPacks = [
             "Master the 'New Stock & Inventory Management' process for seamless collection launches.",
             "Includes a 'Clienteling & Personal Styling' guide to boost customer loyalty and sales."
         ],
+        previewScenario: {
+            title: "Launching a New Collection In-Store",
+            description: "This scenario shows how merchandising, inventory, and loss prevention checklists work together to launch a new clothing collection successfully and securely.",
+            tasks: [
+                { id: 'FBQ-NSIM-001', description: "Verify incoming shipments against purchase orders.", sourceChecklist: "New Stock & Inventory Management", priority: 'High' },
+                { id: 'FBQ-DOM-003', description: "Update or refresh mannequin outfits based on new arrivals or promotions.", sourceChecklist: "Daily Opening & Merchandising", priority: 'High' },
+                { id: 'FBQ-FCSLP-001', description: "Limit the number of items a customer can take into the fitting room at one time.", sourceChecklist: "Fitting Room & Loss Prevention", priority: 'High' },
+                { id: 'FBQ-NSIM-003', description: "Attach security tags and price tags to all new merchandise.", sourceChecklist: "New Stock & Inventory Management", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "✨ Daily Opening & Merchandising",
@@ -1924,6 +2054,16 @@ export const premiumPacks = [
             "Use the 'Sales Staff Product Training' drills to keep your team sharp.",
             "Standardize your 'Trade-in & Exchange' process for a better customer experience."
         ],
+        previewScenario: {
+            title: "Securing High-Value Electronics from Theft",
+            description: "This scenario shows how security, inventory, and sales floor checklists work together to protect high-value demo units and stock from theft.",
+            tasks: [
+                { id: 'ESR-DOM-002', description: "Verify all security tethers and alarms on demo units are active.", sourceChecklist: "Daily Opening & Merchandising", priority: 'High' },
+                { id: 'ESR-IHVSP-001', description: "Conduct a cycle count of top 10 high-value SKUs.", sourceChecklist: "Inventory & High-Value Security Protocol", priority: 'High' },
+                { id: 'ESR-IHVSP-003', description: "Review CCTV footage of stock room and high-value areas.", sourceChecklist: "Inventory & High-Value Security Protocol", priority: 'High' },
+                { id: 'ESR-STD-002', description: "Role-play a customer interaction scenario (e.g., handling an objection).", sourceChecklist: "Staff & Training Drills", priority: 'Medium' }
+            ]
+        },
         checklists: [
             {
                 title: "🔌 Daily Opening & Merchandising",
@@ -1996,6 +2136,16 @@ export const premiumPacks = [
             "Implement a 'Weekly Safety Audit' covering machine guards, emergency stops, and PPE compliance.",
             "Includes pre-shift huddle guides and start-up procedures."
         ],
+        previewScenario: {
+            title: "Ensuring a Safe & Seamless Shift Handover",
+            description: "This scenario shows how end-of-shift reporting, joint meetings, and start-up procedures work together to prevent miscommunication and accidents between shifts.",
+            tasks: [
+                { id: 'FSH-EOSD-002', description: "Document any machine downtime, including reason and duration.", sourceChecklist: "Outgoing Shift: End-of-Shift Duties", priority: 'High' },
+                { id: 'FSH-JHM-002', description: "Discuss any machine issues or pending maintenance tasks.", sourceChecklist: "Joint Handover Meeting", priority: 'High' },
+                { id: 'FSH-ISSP-002', description: "Verify machine settings are correct for the day's production run.", sourceChecklist: "Incoming Shift: Start-up Procedures", priority: 'High' },
+                { id: 'FSH-WSAD-001', description: "Check that all machine safety guards are in place and functional.", sourceChecklist: "Weekly Safety & Audit Drill", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "📈 Outgoing Shift: End-of-Shift Duties",
@@ -2070,6 +2220,16 @@ export const premiumPacks = [
             "Ensure flawless 'Event Day Execution' with a step-by-step run-of-show.",
             "Simplify 'Post-Event Wrap-Up' with checklists for damages, billing, and vendor settlement."
         ],
+        previewScenario: {
+            title: "Executing a Flawless Wedding Reception",
+            description: "This scenario shows how sales, operations, and finance checklists coordinate to deliver a perfect event, from the initial booking to the final settlement.",
+            tasks: [
+                { id: 'WBH-ICB-005', description: "Create an event file and a Banquet Event Order (BEO).", sourceChecklist: "Initial Client Inquiry & Booking", priority: 'High' },
+                { id: 'WBH-PEC-003', description: "Confirm arrival times and setup requirements with all external vendors (decor, AV, etc.).", sourceChecklist: "Pre-Event Coordination (T-30 Days)", priority: 'High' },
+                { id: 'WBH-EDE-001', description: "Conduct a final walkthrough of the venue to ensure setup matches the BEO.", sourceChecklist: "Event Day Execution", priority: 'High' },
+                { id: 'WBH-PEWUS-004', description: "Collect final payment from the client.", sourceChecklist: "Post-Event Wrap-Up & Settlement", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "✍️ Initial Client Inquiry & Booking",
@@ -2144,6 +2304,16 @@ export const premiumPacks = [
             "Ensure the 'Mandap Ceremony' is perfect with a checklist for all 'puja samagri'.",
             "Manage the 'Reception & Vidaai' with a structured timeline and vendor coordination."
         ],
+        previewScenario: {
+            title: "Planning the Main Wedding Day",
+            description: "This scenario shows how checklists for the Sangeet, Baraat, Mandap, and Reception work together to create a seamless and traditional wedding day.",
+            tasks: [
+                { id: 'HW-SCC-005', description: "Plan stage setup, lighting, and sound.", sourceChecklist: "Sangeet Ceremony Checklist", priority: 'High' },
+                { id: 'HW-WD-003', description: "Ensure Varmalas (garlands) are ready and fresh.", sourceChecklist: "Wedding Day: Baraat, Varmala & Mandap", priority: 'High' },
+                { id: 'HW-WD-005', description: "Ensure all ceremony items (puja samagri) are ready as per priest's list.", sourceChecklist: "Wedding Day: Baraat, Varmala & Mandap", priority: 'High' },
+                { id: 'HW-PW-001', description: "Finalize reception seating chart.", sourceChecklist: "Post-Wedding: Reception & Vidaai", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "💃 Sangeet Ceremony Checklist",
@@ -2218,6 +2388,16 @@ export const premiumPacks = [
             "Plan a memorable 'Walima' (groom's reception) from venue selection to catering.",
             "Includes vendor management and guest management protocols for a seamless event."
         ],
+        previewScenario: {
+            title: "Ensuring a Compliant & Joyful Nikah Ceremony",
+            description: "This scenario shows how checklists for the Nikah, post-ceremony events, and vendor management work together to ensure the core wedding ceremony is both compliant and beautiful.",
+            tasks: [
+                { id: 'MW-PNC-003', description: "Arrange for the required number of witnesses.", sourceChecklist: "Pre-Wedding & Nikah Ceremony", priority: 'High' },
+                { id: 'MW-PNC-004', description: "Prepare the Nikah-nama (marriage contract).", sourceChecklist: "Pre-Wedding & Nikah Ceremony", priority: 'High' },
+                { id: 'MW-PNR-004', description: "Coordinate transportation for the couple.", sourceChecklist: "Post-Nikah & Rukhsati", priority: 'High' },
+                { id: 'MW-GVGM-001', description: "Create a master contact sheet for all vendors.", sourceChecklist: "General Vendor & Guest Management", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "📜 Pre-Wedding & Nikah Ceremony",
@@ -2292,6 +2472,16 @@ export const premiumPacks = [
             "Implement a 'Final Quality Control' check, including a test drive, to reduce comebacks.",
             "Includes a 'Vehicle Handover' checklist for a professional customer experience."
         ],
+        previewScenario: {
+            title: "Ensuring a High-Quality & Transparent Repair",
+            description: "This scenario shows how checklists for check-in, work orders, quality control, and handover work together to build customer trust and reduce errors.",
+            tasks: [
+                { id: 'ARS-VCISA-002', description: "Perform a walk-around inspection of the vehicle, noting any pre-existing damage.", sourceChecklist: "Vehicle Check-In & Service Advising", priority: 'High' },
+                { id: 'ARS-DQWO-004', description: "Contact the customer to explain the required work and get approval.", sourceChecklist: "Diagnosis, Quoting & Work Order", priority: 'High' },
+                { id: 'ARS-RQC-004', description: "Conduct a test drive to ensure the initial complaint has been resolved.", sourceChecklist: "Repair & Quality Control", priority: 'High' },
+                { id: 'ARS-VHE-003', description: "When the customer arrives, explain the repairs performed and show any replaced parts if requested.", sourceChecklist: "Vehicle Handover Experience", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "📋 Vehicle Check-In & Service Advising",
@@ -2366,6 +2556,16 @@ export const premiumPacks = [
             "Implement a structured 'Tenant Communication Protocol' to improve relationships.",
             "Prepare for the worst with 'Emergency Response Drills' for fire and other crises."
         ],
+        previewScenario: {
+            title: "Managing a Safe & Clean Shopping Environment",
+            description: "This scenario shows how security, housekeeping, and tenant relations checklists work together to ensure a safe, clean, and positive experience for shoppers.",
+            tasks: [
+                { id: 'MALL-DOS-002', description: "Check that all CCTV cameras are online and recording correctly.", sourceChecklist: "Daily Opening & Security Protocol", priority: 'High' },
+                { id: 'MALL-OOH-001', description: "Conduct hourly checks of all public restrooms for cleanliness and supplies.", sourceChecklist: "Ongoing Operations & Housekeeping", priority: 'High' },
+                { id: 'MALL-OOH-002', description: "Patrol common areas for spills, hazards, or maintenance issues.", sourceChecklist: "Ongoing Operations & Housekeeping", priority: 'High' },
+                { id: 'MALL-WMTR-002', description: "Send out a weekly newsletter or memo to all tenants with operational updates.", sourceChecklist: "Weekly Maintenance & Tenant Relations", priority: 'Medium' }
+            ]
+        },
         checklists: [
             {
                 title: "👮 Daily Opening & Security Protocol",
@@ -2439,6 +2639,16 @@ export const premiumPacks = [
             "Implement a structured 'Agent Performance & Coaching' framework.",
             "Includes templates for 'End-of-Shift Reporting' and shift handovers."
         ],
+        previewScenario: {
+            title: "Improving Agent Quality & Performance",
+            description: "This scenario shows how checklists for team huddles, quality assurance, and coaching work together to create a cycle of continuous improvement for call center agents.",
+            tasks: [
+                { id: 'CC-PSTH-002', description: "Share daily targets (e.g., AHT, FCR, CSAT goals).", sourceChecklist: "Pre-Shift & Team Huddle Checklist", priority: 'High' },
+                { id: 'CC-LOQA-002', description: "Score calls based on a standardized QA form (e.g., greeting, issue resolution, closing).", sourceChecklist: "Live Operations & Quality Assurance (QA)", priority: 'High' },
+                { id: 'CC-APC-003', description: "Play back a positive call and a call needing improvement.", sourceChecklist: "Agent Performance & Coaching", priority: 'High' },
+                { id: 'CC-EOSR-001', description: "Generate end-of-shift report showing team's performance against targets.", sourceChecklist: "End-of-Shift & Reporting", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "☀️ Pre-Shift & Team Huddle Checklist (15 mins)",
@@ -2512,6 +2722,16 @@ export const premiumPacks = [
             "Test lifeguard readiness with 'Vigilance Audits' and 'Emergency Action Plan (EAP)' drills.",
             "Covers weekly and monthly checks for filtration systems and slide structures."
         ],
+        previewScenario: {
+            title: "Responding to a Medical Emergency in the Pool",
+            description: "This scenario shows how safety, operations, and maintenance checklists ensure a rapid and coordinated response to a medical incident, protecting guests and staff.",
+            tasks: [
+                { id: 'WP-POSI-004', description: "Ensure all rescue equipment (rescue tubes, backboards) is in place and in good condition.", sourceChecklist: "Pre-Opening Safety Inspection", priority: 'High' },
+                { id: 'WP-OOS-002', description: "Ensure lifeguards are rotating stations as per schedule to maintain vigilance.", sourceChecklist: "Ongoing Operational Safety", priority: 'High' },
+                { id: 'WP-WMC-004', description: "Conduct a full inventory and inspection of the first aid station.", sourceChecklist: "Weekly & Monthly Checks", priority: 'High' },
+                { id: 'WP-WMC-005', description: "Run a full emergency action plan (EAP) drill with the entire staff monthly.", sourceChecklist: "Weekly & Monthly Checks", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: " lifeguard Pre-Opening Safety Inspection",
@@ -2586,6 +2806,16 @@ export const premiumPacks = [
             "Stay compliant with the 'Routine Maintenance & Local Laws' checklist.",
             "Includes 'Guest Communication Templates' for the entire journey, from booking to review."
         ],
+        previewScenario: {
+            title: "Achieving a 5-Star Guest Review",
+            description: "This scenario shows how checklists for communication, preparation, and maintenance work together to create a seamless and positive experience that earns 5-star reviews.",
+            tasks: [
+                { id: 'ABNB-GCE-002', description: "Send check-in instructions and access codes 24 hours prior to arrival.", sourceChecklist: "Guest Communication & Experience", priority: 'High' },
+                { id: 'ABNB-PGA-001', description: "Professionally clean the entire property (floors, bathroom, kitchen).", sourceChecklist: "Pre-Guest Arrival / New Tenant Move-In", priority: 'High' },
+                { id: 'ABNB-PGA-004', description: "Check that all appliances and electronics are working (Wi-Fi, TV, AC).", sourceChecklist: "Pre-Guest Arrival / New Tenant Move-In", priority: 'High' },
+                { id: 'ABNB-GCO-004', description: "Leave a review for the guest.", sourceChecklist: "Guest Check-Out / Tenant Move-Out", priority: 'Medium' }
+            ]
+        },
         checklists: [
             {
                 title: "👋 Pre-Guest Arrival / New Tenant Move-In",
@@ -2661,6 +2891,16 @@ export const premiumPacks = [
             "Includes a 'Test Drive Protocol' to ensure safety and compliance.",
             "Master showroom readiness with the 'Morning Lot Preparation' checklist."
         ],
+        previewScenario: {
+            title: "Delivering a 5-Star Car Buying Experience",
+            description: "This scenario shows how checklists for sales, test drives, and vehicle handover work together to create a seamless and professional customer journey from showroom entry to driving away.",
+            tasks: [
+                { id: 'CD-MSLP-001', description: "Ensure all display cars in the showroom are clean and polished.", sourceChecklist: "Morning Showroom & Lot Preparation", priority: 'High' },
+                { id: 'CD-SCIP-002', description: "Conduct a needs analysis to understand customer requirements and budget.", sourceChecklist: "Sales & Customer Interaction Process", priority: 'High' },
+                { id: 'CD-SCIP-004', description: "Follow the test drive protocol (e.g., copy driver's license, pre-defined route).", sourceChecklist: "Sales & Customer Interaction Process", priority: 'High' },
+                { id: 'CD-VHDE-003', description: "Conduct a feature presentation, explaining key functions of the car to the customer.", sourceChecklist: "Vehicle Handover & Delivery Experience", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: " showroom Morning Showroom & Lot Preparation",
@@ -2734,6 +2974,16 @@ export const premiumPacks = [
             "Prepare for your 'Annual General Meeting (AGM)' with a detailed compliance checklist.",
             "Maximize ROI from a 'Trade Show & Conference' with a complete planning guide."
         ],
+        previewScenario: {
+            title: "Executing a Flawless Product Launch Event",
+            description: "This scenario shows how checklists for event planning, HR, and marketing coordinate to ensure a successful product launch, from internal readiness to external execution.",
+            tasks: [
+                { id: 'CE-PLEP-002', description: "Select and book the venue.", sourceChecklist: "Product Launch Event Planning", priority: 'High' },
+                { id: 'CE-PLEP-003', description: "Develop a guest list (media, influencers, clients) and send invitations.", sourceChecklist: "Product Launch Event Planning", priority: 'High' },
+                { id: 'CE-NEO-001', description: "Ensure workstation, laptop, and accounts are set up before Day 1.", sourceChecklist: "New Employee Onboarding (First Week)", priority: 'High' },
+                { id: 'CE-TSCP-004', description: "Set up a lead capture system (e.g., badge scanner, app).", sourceChecklist: "Trade Show & Conference Participation", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🚀 Product Launch Event Planning",
@@ -2810,6 +3060,16 @@ export const premiumPacks = [
             "Verify key corporate policies with the 'Governance Policy Verification' audit.",
             "Includes a guide for conducting a 'Materiality Assessment' to engage stakeholders."
         ],
+        previewScenario: {
+            title: "Preparing Your Annual ESG Report",
+            description: "This scenario shows how checklists for Environmental, Social, and Governance (ESG) data collection come together to help you build a comprehensive and defensible annual report.",
+            tasks: [
+                { id: 'ESG-EDG-001', description: "Collect electricity bills from all facilities.", sourceChecklist: "Environmental Data Gathering", priority: 'High' },
+                { id: 'ESG-SMDG-001', description: "Calculate employee turnover rate.", sourceChecklist: "Social Metrics Data Gathering", priority: 'High' },
+                { id: 'ESG-GPV-001', description: "Verify that an anti-corruption and bribery policy is in place and has been communicated.", sourceChecklist: "Governance Policy & Verification", priority: 'High' },
+                { id: 'ESG-RSE-001', description: "Conduct a materiality assessment to identify key ESG topics for stakeholders.", sourceChecklist: "Reporting & Stakeholder Engagement", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🌍 Environmental Data Gathering",
@@ -2880,6 +3140,16 @@ export const premiumPacks = [
             "Use the 'Internal Audit & Corrective Actions' checklist (Clause 9.2 & 10.2).",
             "Covers 'Product Realization' (Clause 8) from customer requirements to delivery."
         ],
+        previewScenario: {
+            title: "Preparing for an ISO 9001 Certification Audit",
+            description: "This scenario shows how checklists for document control, leadership, operations, and improvement work together to ensure you are fully prepared for a certification audit.",
+            tasks: [
+                { id: 'ISO-DCR-002', description: "Check that there is a master list of all controlled documents.", sourceChecklist: "Document Control & Records", priority: 'High' },
+                { id: 'ISO-ML-003', description: "Document minutes from the Management Review, including action items.", sourceChecklist: "Management & Leadership", priority: 'High' },
+                { id: 'ISO-PRSD-003', description: "Verify that production processes are carried out under controlled conditions.", sourceChecklist: "Product Realization & Service Delivery", priority: 'High' },
+                { id: 'ISO-MAI-004', description: "Check that corrective actions are taken to eliminate the cause of non-conformities.", sourceChecklist: "Measurement, Analysis, and Improvement", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "📂 Document Control & Records",
@@ -2950,6 +3220,16 @@ export const premiumPacks = [
             "Develop a 'Sustainable Procurement Policy' to make your supply chain greener.",
             "Boost company culture with 'Green Employee Engagement' initiatives."
         ],
+        previewScenario: {
+            title: "Implementing a Workplace Sustainability Program",
+            description: "This scenario shows how checklists for waste, energy, water, and procurement work together to create a comprehensive and effective sustainability program.",
+            tasks: [
+                { id: 'SB-WMR-001', description: "Ensure clearly labeled bins for different waste types (paper, plastic, organic) are available.", sourceChecklist: "Waste Management & Reduction", priority: 'High' },
+                { id: 'SB-EC-002', description: "Promote energy-saving behaviors like turning off lights and computers.", sourceChecklist: "Energy Conservation", priority: 'Medium' },
+                { id: 'SB-WC-002', description: "Conduct regular checks for leaks in restrooms and pantry areas.", sourceChecklist: "Water Conservation", priority: 'High' },
+                { id: 'SB-SPEE-001', description: "Develop a sustainable procurement policy that favors recycled or eco-friendly products.", sourceChecklist: "Sustainable Procurement & Employee Engagement", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🗑️ Waste Management & Reduction",
@@ -3020,6 +3300,16 @@ export const premiumPacks = [
             "Implement the 'Order Fulfillment Protocol' from KOT to rider handoff to minimize errors.",
             "Use the 'End-of-Day Reconciliation' checklist to analyze sales and track payments."
         ],
+        previewScenario: {
+            title: "Fulfilling an Online Order Quickly & Accurately",
+            description: "This scenario shows how checklists for order processing, packaging, and dispatch work together to ensure every online order is correct, high-quality, and delivered on time.",
+            tasks: [
+                { id: 'CK-ASME-005', description: "Ensure menu items are synced across all platforms.", sourceChecklist: "Aggregator Setup & Menu Engineering", priority: 'High' },
+                { id: 'CK-LOOF-003', description: "Double-check the contents of each order against the KOT before sealing the bag.", sourceChecklist: "Live Operations & Order Fulfillment", priority: 'High' },
+                { id: 'CK-PDSS-002', description: "Set up a dedicated packaging station with all necessary supplies (containers, bags, cutlery, tape).", sourceChecklist: "Packaging & Dispatch Station Setup", priority: 'High' },
+                { id: 'CK-LOOF-004', description: "Hand over the correct order to the correct delivery rider.", sourceChecklist: "Live Operations & Order Fulfillment", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🔄 Aggregator Setup & Menu Engineering",
@@ -3093,6 +3383,16 @@ export const premiumPacks = [
             "Pack smart with a detailed 'Packing & Luggage' strategy for all essentials.",
             "Includes a 'Pre-Departure Home Checklist' so you can travel with peace of mind."
         ],
+        previewScenario: {
+            title: "Preparing for a Smooth International Departure",
+            description: "This scenario shows how checklists for documentation, finance, packing, and final checks work together to ensure you arrive at the airport fully prepared and stress-free.",
+            tasks: [
+                { id: 'ITP-P1-004', description: "Make photocopies and digital copies of all important documents (passport, visa, tickets).", sourceChecklist: "Pre-Booking & Documentation", priority: 'High' },
+                { id: 'ITP-P2-003', description: "Inform your bank/credit card companies of your travel dates.", sourceChecklist: "Health & Finance", priority: 'High' },
+                { id: 'ITP-P3-004', description: "Weigh your luggage to ensure it meets airline limits.", sourceChecklist: "Packing & Preparation", priority: 'Medium' },
+                { id: 'ITP-P4-001', description: "Check-in for your flight online.", sourceChecklist: "Final 24 Hours", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🛂 Phase 1: Pre-Booking & Documentation (2-6 Months Out)",
@@ -3164,6 +3464,16 @@ export const premiumPacks = [
             "Ensure a calm journey with 'The Day Before Travel' checklist for feeding and exercise.",
             "Includes a 'Travel Day & Arrival' SOP for both car and air travel."
         ],
+        previewScenario: {
+            title: "Ensuring a Safe & Stress-Free Flight for Your Pet",
+            description: "This scenario shows how vet prep, packing, and travel day checklists work together to ensure your pet's journey is as safe and comfortable as possible.",
+            tasks: [
+                { id: 'PTP-VAP-002', description: "Visit the vet to get a health certificate and ensure all vaccinations are up to date.", sourceChecklist: "Veterinary & Airline Prep", priority: 'High' },
+                { id: 'PTP-BP-004', description: "Include familiar items like a favorite toy or blanket to reduce stress.", sourceChecklist: "Booking & Packing", priority: 'Medium' },
+                { id: 'PTP-DBT-004', description: "Attach a 'Live Animal' sticker and your contact information to the carrier.", sourceChecklist: "The Day Before Travel", priority: 'High' },
+                { id: 'PTP-TDA-001', description: "Arrive at the airport early to complete pet check-in procedures.", sourceChecklist: "Travel Day & Arrival", priority: 'High' }
+            ]
+        },
         checklists: [
             {
                 title: "🐾 Veterinary & Airline Prep (1-3 Months Out)",
@@ -3223,15 +3533,47 @@ export const premiumPacks = [
     }
 ];
 
-export type PremiumPack = (typeof premiumPacks)[0];
-export type Checklist = (typeof premiumPacks)[0]['checklists'][0];
+export type Task = {
+    id: string;
+    description: string;
+    priority: 'High' | 'Medium' | 'Low';
+    riskLevel: 'High' | 'Medium' | 'Low';
+    proof: string;
+    location: string;
+};
+
+export type Checklist = {
+    title: string;
+    department: string;
+    frequency: string;
+    role: string;
+    summary: string;
+    tasks: Task[];
+};
+
+export type PreviewScenario = {
+    title: string;
+    description: string;
+    tasks: Array<{
+        id: string;
+        description: string;
+        sourceChecklist: string;
+        priority: 'High' | 'Medium' | 'Low';
+    }>;
+};
+
+export type PremiumPack = {
+    id: string;
+    title: string;
+    priceUSD: number;
+    priceINR: number;
+    category: string;
+    description: string;
+    icon: React.ReactElement;
+    mostPopular: boolean;
+    sampleItems: string[];
+    checklists: Checklist[];
+    previewScenario?: PreviewScenario;
+};
 
     
-
-    
-
-    
-
-  
-
-

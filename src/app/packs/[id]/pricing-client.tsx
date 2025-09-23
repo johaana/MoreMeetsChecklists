@@ -1,7 +1,7 @@
 
 'use client';
 
-import type { PremiumPack, Checklist } from '@/lib/premium-packs';
+import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
 import { writeFile, utils } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,7 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-function SamplePreviewDialog({ sampleChecklist }: { sampleChecklist: Checklist }) {
+function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -25,25 +25,25 @@ function SamplePreviewDialog({ sampleChecklist }: { sampleChecklist: Checklist }
             </AlertDialogTrigger>
             <AlertDialogContent className="max-w-4xl">
                 <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline">Sample: {sampleChecklist.title}</AlertDialogTitle>
+                    <AlertDialogTitle className="font-headline">Scenario: {scenario.title}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This is a preview of one of the {sampleChecklist.tasks.length} tasks included in this checklist. The full download is a fully editable Excel file.
+                        {scenario.description} The full download is a fully editable Excel file.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <ScrollArea className="max-h-[60vh] pr-6">
                     <Table className="mt-4 border rounded-lg">
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-[100px]">Task ID</TableHead>
                                 <TableHead>Task Description</TableHead>
+                                <TableHead>Source Checklist</TableHead>
                                 <TableHead>Priority</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {sampleChecklist.tasks.map((task) => (
+                            {scenario.tasks.map((task) => (
                                 <TableRow key={task.id}>
-                                    <TableCell className="font-medium">{task.id}</TableCell>
                                     <TableCell>{task.description}</TableCell>
+                                    <TableCell className="text-muted-foreground">{task.sourceChecklist}</TableCell>
                                     <TableCell>
                                         <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
                                             {task.priority}
@@ -186,7 +186,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const personalizationPriceINR = 3000;
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
-    const sampleChecklist = pack.checklists[0];
 
     return (
         <div className="w-full">
@@ -295,7 +294,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 </div>
 
-                {sampleChecklist && <SamplePreviewDialog sampleChecklist={sampleChecklist} />}
+                {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
@@ -328,5 +327,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
     )
 }
+
+    
 
     
