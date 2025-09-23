@@ -5,63 +5,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, Users, Briefcase, Leaf, Shield, Hospital, ShoppingBasket, GraduationCap, Factory, Building2, Utensils, Wrench, Dumbbell, PawPrint, Plane, Gem, Truck, Building } from "lucide-react";
+import { Check, Star } from "lucide-react";
 import { Logo } from "@/components/icons";
-import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
+import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 import React from 'react';
-import { useSearchParams } from 'next/navigation';
-
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
-
-const OtherIndustriesSection = () => (
-    <section id="more-industries" className="w-full py-12 md:py-24 lg:py-32 bg-background">
-        <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Solutions for Every Industry
-                </h2>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    We have a growing library of specialized checklist packs for a variety of professional fields.
-                </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                {[
-                    { icon: <Building2 className="w-8 h-8 text-primary" />, name: 'Corporate', href: '/#packs?category=Corporate', sub: 'Facilities, Admin, HR' },
-                    { icon: <Hospital className="w-8 h-8 text-primary" />, name: 'Healthcare', href: '/#packs?category=Healthcare', sub: 'Hospitals, Clinics, Labs' },
-                    { icon: <ShoppingBasket className="w-8 h-8 text-primary" />, name: 'Retail', href: '/#packs?category=Retail', sub: 'Jewellery, Malls, Stores' },
-                    { icon: <GraduationCap className="w-8 h-8 text-primary" />, name: 'Education', href: '/#packs?category=Education', sub: 'Schools, Colleges' },
-                    { icon: <Factory className="w-8 h-8 text-primary" />, name: 'Manufacturing', href: '/#packs?category=Manufacturing', sub: 'Plants, Factories, EHS' },
-                    { icon: <Utensils className="w-8 h-8 text-primary" />, name: 'Events', href: '#packs', sub: 'Weddings, Corporate' },
-                    { icon: <Truck className="w-8 h-8 text-primary" />, name: 'Automotive', href: '#packs', sub: 'Workshops, Dealerships' },
-                    { icon: <Building className="w-8 h-8 text-primary" />, name: 'Real Estate', href: '#packs', sub: 'Landlords, REITs' },
-                    { icon: <Shield className="w-8 h-8 text-primary" />, name: 'Compliance', href: '#packs', sub: 'ESG, ISO, CCOs' },
-                    { icon: <Dumbbell className="w-8 h-8 text-primary" />, name: 'Wellness', href: '#packs', sub: 'Gyms, Spas, Salons' },
-                    { icon: <PawPrint className="w-8 h-8 text-primary" />, name: 'Personal', href: '#packs', sub: 'Pets, Travel' },
-
-                ].map((item) => (
-                    <Link href={item.href} key={item.name} className="group">
-                        <div className="flex flex-col items-center justify-center gap-2 p-6 border rounded-xl bg-secondary/30 hover:bg-secondary/60 transition-colors h-full">
-                            {item.icon}
-                            <h3 className="font-semibold text-center group-hover:text-primary">{item.name}</h3>
-                            <p className="text-xs text-muted-foreground text-center">{item.sub}</p>
-                        </div>
-                    </Link>
-                ))}
-            </div>
-             <div className="text-center mt-12">
-                 <Button asChild size="lg">
-                    <Link href="#packs">View All Packages</Link>
-                </Button>
-            </div>
-        </div>
-    </section>
-);
 
 const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
@@ -113,21 +66,9 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const searchParams = useSearchParams();
-    const category = searchParams.get('category');
-
-    const packsToShow = React.useMemo(() => {
-        if (category) {
-            return premiumPacks.filter(p => p.category === category);
-        }
-        return premiumPacks.slice(0, 3);
-    }, [category]);
-
-    const title = category ? `${category} Checklist Packs` : "Ready-to-Use, Downloadable Checklist Packs";
-    const description = category 
-        ? `Expert-crafted operational SOPs for the ${category.toLowerCase()} industry. One-time purchase, lifetime updates.`
-        : "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
-
+    const packsToShow = premiumPacks;
+    const title = "Ready-to-Use, Downloadable Checklist Packs";
+    const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
     return (
          <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
@@ -139,11 +80,6 @@ function PackList() {
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
                         {description}
                     </p>
-                    {category && (
-                        <Button asChild variant="outline">
-                            <Link href="/#packs">View All Featured Packs</Link>
-                        </Button>
-                    )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -223,15 +159,15 @@ export default function Home() {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            <Link href="/#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 All Packages
             </Link>
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Why Us
             </Link>
-            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild>
                 <Link href="#packs" prefetch={false}>
-                    Get Started
+                    View All Packages
                 </Link>
             </Button>
         </nav>
@@ -258,8 +194,8 @@ export default function Home() {
                            Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-10">
-                                <Link href="#packs">Browse Packages</Link>
+                            <Button size="lg" asChild className="text-lg py-7 px-10">
+                                <Link href="#packs">Browse All Packages</Link>
                             </Button>
                             <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                                 <p className="text-xs text-white/80">
@@ -275,8 +211,6 @@ export default function Home() {
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
         </React.Suspense>
-
-        <OtherIndustriesSection />
 
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
           <div className="container px-4 md:px-6">
@@ -389,5 +323,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
