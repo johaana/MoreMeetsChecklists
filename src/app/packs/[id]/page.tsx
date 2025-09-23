@@ -98,10 +98,10 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   
   const whoIsItForMap: Record<string, string[]> = {
-    "Hospitality": ["Hotel Owners", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
+    "Hospitality": ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
     "Corporate": ["Founders", "COOs", "VPs of Operations", "Heads of Admin", "Corporate Real Estate (CRE) Heads", "Chief Engineers"],
     "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
-    "Healthcare": ["Hospital Owners", "COOs", "Heads of Quality & Compliance", "Lab Owners"],
+    "Healthcare": ["Hospital Owners", "COOs", "Heads of Quality & Compliance", "Lab Owners", "and their teams"],
     "Education": ["School Owners", "Trustees", "Principals", "Heads of Administration", "and their teams"],
     "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety"],
     "Events": ["Event Company Owners", "and their teams"],
@@ -229,3 +229,4 @@ export default function Page({ params }: { params: { id: string } }) {
     
 
     
+
