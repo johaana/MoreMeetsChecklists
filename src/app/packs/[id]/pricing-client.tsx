@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { PremiumPack } from '@/lib/premium-packs';
@@ -163,11 +162,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <p className="text-3xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
                         </CardHeader>
                         <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                            <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel file.</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>24/7 customer support.</span></p>
-                            <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No custom priority action plan.</span></p>
+                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack.</span></p>
+                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access & free updates.</span></p>
+                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Access to bonus templates (Audit, SOP, F&B).</span></p>
+                             <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>24/7 customer support.</span></p>
+                             <p className="flex items-start gap-2"><X className="w-5 h-5 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">No custom priority action plan.</span></p>
                         </CardContent>
                         <CardFooter className="p-6 mt-auto">
                             <Button size="lg" className="w-full font-bold text-lg" onClick={handleDownload}>
@@ -195,8 +194,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </CardHeader>
                                 <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                                         <p className="flex items-start gap-2 font-semibold text-primary"><Check className="w-5 h-5 mt-0.5 text-primary shrink-0" /> <span>Everything in Professional Pack, plus:</span></p>
-                                        <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan based on your needs.</span></p>
-                                        <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Extra templates & location-specific checklists.</span></p>
+                                        <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan tailored for your property.</span></p>
+                                        <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Extra templates & location-specific compliance checklists.</span></p>
                                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                                 </CardContent>
                                 <CardFooter className="p-6 mt-auto">
@@ -281,3 +280,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
     )
 }
+
+    
