@@ -10,7 +10,7 @@ export const premiumPacks = [
         category: "Hospitality",
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
-        mostPopular: true,
+        badgeText: "Most Popular",
         sampleItems: [
             "Master the 'Lost & Found' protocol to ensure guest trust and minimize liability.",
             "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
@@ -150,7 +150,7 @@ export const premiumPacks = [
         category: "Corporate",
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment across multiple locations.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
-        mostPopular: true,
+        badgeText: "Best for Corporate",
         sampleItems: [
             "Master crucial 'Site Commissioning' & 'Decommissioning' protocols.",
             "Implement a robust 'Business Continuity Plan' (BCP) with emergency drills.",
@@ -290,7 +290,7 @@ export const premiumPacks = [
         category: "Hospitality",
         description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
-        mostPopular: false,
+        badgeText: "Essential for F&B",
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
@@ -430,7 +430,6 @@ export const premiumPacks = [
         category: "Healthcare",
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
-        mostPopular: false,
         sampleItems: [
             "Implement a 'Medication Error Prevention' protocol for zero mistakes.",
             "Master the 'Surgical Safety Checklist' based on WHO guidelines.",
@@ -570,7 +569,6 @@ export const premiumPacks = [
         category: "Retail",
         description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
-        mostPopular: false,
         sampleItems: [
             "Implement a 'Cash Handling & Reconciliation' protocol to eliminate discrepancies.",
             "Standardize 'Store Opening & Closing' procedures for security and readiness.",
@@ -710,7 +708,6 @@ export const premiumPacks = [
         category: "Education",
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
-        mostPopular: false,
         sampleItems: [
             "Implement a 'Student Dismissal & Handover' protocol to ensure child safety.",
             "Standardize 'School Bus Safety' checks for drivers and vehicles.",
@@ -850,7 +847,6 @@ export const premiumPacks = [
         category: "Manufacturing",
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
-        mostPopular: false,
         sampleItems: [
             "Implement a 'Lock-Out Tag-Out' (LOTO) procedure for machinery maintenance.",
             "Standardize 'Personal Protective Equipment (PPE)' compliance checks.",
@@ -1021,7 +1017,7 @@ export type PremiumPack = {
     category: string;
     description: string;
     icon: React.ReactElement;
-    mostPopular: boolean;
+    badgeText?: string;
     sampleItems: string[];
     checklists: Checklist[];
     previewScenario?: PreviewScenario;

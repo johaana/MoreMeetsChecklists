@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -67,7 +66,7 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const packsToShow = premiumPacks.filter(p => p.mostPopular);
+    const packsToShow = premiumPacks.filter(p => p.badgeText);
     const title = "Ready-to-Use, Downloadable Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
@@ -86,9 +85,9 @@ function PackList() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {packsToShow.map((pack) => (
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-primary">
-                             {pack.mostPopular && (
-                                <Badge className="absolute top-4 right-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10">
-                                   <Star className="w-4 h-4 mr-2" /> Most Popular
+                             {pack.badgeText && (
+                                <Badge className="absolute top-4 left-4 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 flex items-center gap-1.5">
+                                   <Star className="w-4 h-4" /> {pack.badgeText}
                                 </Badge>
                              )}
                             <CardHeader className="p-6">
