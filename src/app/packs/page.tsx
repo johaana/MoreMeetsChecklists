@@ -64,7 +64,7 @@ export default function AllPacksPage() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold bg-accent/20 text-accent hover:bg-accent/30" variant="secondary">
+                                <Button asChild className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
                                     <Link href={`/packs/${pack.id}`}>
                                         View Full Checklist & Purchase
                                     </Link>
@@ -79,3 +79,5 @@ export default function AllPacksPage() {
     </div>
   );
 }
+
+    

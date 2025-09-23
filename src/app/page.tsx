@@ -56,7 +56,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-5">
                         <AccordionTrigger className="text-lg font-semibold">Who creates these checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Our checklists are forged by experience, not theory. Our complete library is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
+                           Our checklists are forged by experience, not theory. Our complete library is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-6">
@@ -119,7 +119,7 @@ function PackList() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold bg-accent/20 text-accent hover:bg-accent/30" variant="secondary">
+                                <Button asChild className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
                                     <Link href={`/packs/${pack.id}`}>
                                         View Full Checklist & Purchase
                                     </Link>
@@ -225,15 +225,17 @@ export default function Home() {
         
         <section className="w-full py-16 bg-secondary/30 border-t">
           <div className="container text-center px-4 md:px-6">
-              <Button asChild size="lg" className="text-lg py-7 px-10">
-                  <Link href="/packs">
-                      Explore All Packages
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-              </Button>
-               <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
-                  Unlock world-class operational standards across your entire organization. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the 'Lock-Out Tag-Out' (LOTO) procedure for manufacturing plants, the 'HACCP Kitchen Opening' protocol for restaurants, and detailed student safety checklists for <strong>Education</strong>.
-              </p>
+              <div className="flex flex-col items-center justify-center">
+                  <Button asChild size="lg" className="text-lg py-7 px-10">
+                      <Link href="/packs">
+                          Explore All Packages
+                          <ArrowRight className="w-5 h-5 ml-2" />
+                      </Link>
+                  </Button>
+                   <p className="max-w-3xl text-muted-foreground mt-4 text-center">
+                      Unlock world-class operational standards across your entire organization. Our full library includes toolkits to implement rigorous HACCP standards in <strong>Hospitality</strong>, master inventory cycle counts in <strong>Retail</strong>, and achieve NABH/JCI compliance in <strong>Healthcare</strong>. Discover specific guides like the 'Lock-Out Tag-Out' (LOTO) procedure for manufacturing plants, the 'HACCP Kitchen Opening' protocol for restaurants, and detailed student safety checklists for <strong>Education</strong>.
+                  </p>
+              </div>
           </div>
         </section>
 
@@ -347,5 +349,8 @@ export default function Home() {
         </footer>
     </div>
   );
+
+    
+
 
     
