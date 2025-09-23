@@ -51,7 +51,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-4">
                         <AccordionTrigger className="text-lg font-semibold">Can I edit and customize the checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes. They are fully editable. You can add, remove, or modify any tasks, change department names, and tailor the entire playbook to match your organization's unique workflow and branding. We also offer a personalization service for an additional fee.
+                            Yes. They are fully editable. You can add, remove, or modify any tasks, change department names, and tailor the entire pack to match your organization's unique workflow and branding. We also offer a personalization service for an additional fee.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">
@@ -129,10 +129,10 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Ready-to-Use, Downloadable Checklists
+                        Ready-to-Use, Downloadable Checklist Packs
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Get instant access to expert-crafted operational playbooks. One-time purchase, lifetime updates. Downloadable in Excel.
+                        Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.
                     </p>
                 </div>
 
@@ -201,7 +201,7 @@ export default function Home() {
                     </Card>
                      <Card className="p-6 border-0 shadow-none bg-transparent">
                         <h3 className="text-xl font-bold font-headline mb-2">Forged by Experience</h3>
-                        <p className="text-muted-foreground">Our playbooks are codified knowledge from 200+ industry veterans—not academics. Distilled experience you can use today.</p>
+                        <p className="text-muted-foreground">Our packs are codified knowledge from 200+ industry veterans—not academics. Distilled experience you can use today.</p>
                     </Card>
                 </div>
             </div>
@@ -262,5 +262,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     

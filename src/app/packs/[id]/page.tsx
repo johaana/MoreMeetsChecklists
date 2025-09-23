@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
@@ -221,16 +221,16 @@ const PainPointsSection = ({ category }: { category: string }) => {
     );
 }
 
-const PersonalizationDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+const PersonalizationDialog = ({ pack, onConfirm }: { pack: PremiumPack, onConfirm: () => void }) => {
     return (
         <AlertDialogContent className="max-w-2xl">
             <AlertDialogHeader>
                 <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
                     <Sparkles className="w-6 h-6 text-accent" />
-                    Personalize Your Playbook
+                    Personalize Your Checklist Pack
                 </AlertDialogTitle>
                 <AlertDialogDescription>
-                    Answer a few questions to help us tailor this playbook to your exact needs. This will add a customized 'Priority Action Plan' to your download.
+                    Answer a few questions to help us tailor this pack to your exact needs. This will add a customized 'Priority Action Plan' to your download.
                 </AlertDialogDescription>
             </AlertDialogHeader>
             <div className="space-y-4 py-4">
@@ -324,7 +324,7 @@ export default function Page({ params }: { params: { id: string } }) {
                         </div>
                     </div>
                      <div className="text-center bg-primary/5 border border-primary/20 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold font-headline mb-4">Choose Your Playbook</h2>
+                        <h2 className="text-2xl font-bold font-headline mb-4">Choose Your Download</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto">
                            
                            {/* Standard Pack Option */}
@@ -334,7 +334,7 @@ export default function Page({ params }: { params: { id: string } }) {
                                     <p className="text-2xl font-bold text-primary">${pack.priceUSD} / ₹{pack.priceINR}</p>
                                 </CardHeader>
                                 <CardContent className="flex-1 space-y-2 text-sm">
-                                    <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete, expert-curated playbook.</span></p>
+                                    <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete, expert-curated checklist pack.</span></p>
                                     <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access and free updates.</span></p>
                                      <p className="flex items-start gap-2"><X className="w-4 h-4 mt-0.5 text-red-500 shrink-0" /> <span className="text-muted-foreground">Custom Priority Action Plan.</span></p>
                                 </CardContent>
@@ -359,7 +359,7 @@ export default function Page({ params }: { params: { id: string } }) {
                                             </p>
                                         </CardHeader>
                                         <CardContent className="flex-1 space-y-2 text-sm">
-                                             <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete, expert-curated playbook.</span></p>
+                                             <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>The complete expert-curated checklist pack.</span></p>
                                              <p className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime access and free updates.</span></p>
                                              <p className="flex items-start gap-2 font-semibold"><Check className="w-4 h-4 mt-0.5 text-green-500 shrink-0" /> <span>Custom Priority Action Plan.</span></p>
                                         </CardContent>
@@ -370,7 +370,7 @@ export default function Page({ params }: { params: { id: string } }) {
                                         </CardFooter>
                                     </Card>
                                 </AlertDialogTrigger>
-                                <PersonalizationDialog onConfirm={() => handleDownload(pack)} />
+                                <PersonalizationDialog pack={pack} onConfirm={() => handleDownload(pack)} />
                             </AlertDialog>
 
                         </div>
@@ -388,7 +388,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                        What's Included: A Complete Operational Playbook
+                        What's Included: A Complete Operational Toolkit
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
                         This pack contains {pack.checklists.length} professional checklists, covering every aspect of your operation.
@@ -433,5 +433,7 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
 
     
