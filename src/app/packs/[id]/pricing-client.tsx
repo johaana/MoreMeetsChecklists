@@ -1,47 +1,99 @@
+
 'use client';
 
-import type { PremiumPack } from '@/lib/premium-packs';
-import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
+import type { PremiumPack, Checklist } from '@/lib/premium-packs';
+import { writeFile, utils } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, Repeat, DollarSign, Sparkles, ShieldCheck, Star } from 'lucide-react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, X, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+function SamplePreviewDialog({ sampleChecklist }: { sampleChecklist: Checklist }) {
+    return (
+        <AlertDialog>
+            <AlertDialogTrigger asChild>
+                <Button variant="outline" className="w-full mt-4">
+                    <Eye className="w-4 h-4 mr-2" />
+                    See a Sample
+                </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="max-w-4xl">
+                <AlertDialogHeader>
+                    <AlertDialogTitle className="font-headline">Sample: {sampleChecklist.title}</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        This is a preview of one of the {sampleChecklist.tasks.length} tasks included in this checklist. The full download is a fully editable Excel file.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <ScrollArea className="max-h-[60vh] pr-6">
+                    <Table className="mt-4 border rounded-lg">
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[100px]">Task ID</TableHead>
+                                <TableHead>Task Description</TableHead>
+                                <TableHead>Priority</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {sampleChecklist.tasks.map((task) => (
+                                <TableRow key={task.id}>
+                                    <TableCell className="font-medium">{task.id}</TableCell>
+                                    <TableCell>{task.description}</TableCell>
+                                    <TableCell>
+                                        <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
+                                            {task.priority}
+                                        </Badge>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </ScrollArea>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Close Preview</AlertDialogCancel>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+    );
+}
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const handleDownload = () => {
         const workbook = utils.book_new();
-
         const headerStyle = {
             font: { bold: true, color: { rgb: "FFFFFF" } },
             fill: { fgColor: { rgb: "0A2540" } }
         };
 
-        // Cover Page with Hyperlinks
+        // --- Cover Page ---
         const coverPageName = "Cover Page";
         const coverPageHeader = [[pack.title]];
         const coverPageData = [
+            [" "],
+            ["Click to navigate:"],
             ...pack.checklists.map((checklist) => {
-                const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-                // Use the HYPERLINK formula for internal links
-                const formula = `HYPERLINK("#'${sheetName}'!A1", "${checklist.title}")`;
-                return [{ f: formula, v: checklist.title }];
+                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+                return [{ v: checklist.title, f: formula }];
             })
         ];
 
-        const coverWorksheet = utils.aoa_to_sheet([...coverPageHeader, [" "], ["Click to navigate:"], ...coverPageData]);
+        const coverWorksheet = utils.aoa_to_sheet([...coverPageHeader, ...coverPageData]);
         coverWorksheet['!cols'] = [{ wch: 80 }];
         
         // Style header
         coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-
+        
         // Style hyperlinks
         const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-        for (let R = 3; R <= rangeLinks.e.r; ++R) { // Start from row 4 (index 3)
+        for (let R = 2; R <= rangeLinks.e.r; ++R) { // Start from row 3 (index 2)
             const address = utils.encode_cell({ r: R, c: 0 });
             if (coverWorksheet[address] && coverWorksheet[address].f) {
                  coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
@@ -50,7 +102,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         
         utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
 
-        // Master Sheet with all tasks
+        // --- Master View ---
         const masterSheetName = "Master View";
         const masterSheetData = [
             ["Checklist Title", "Task ID", "Task", "Priority", "Risk Level"],
@@ -75,12 +127,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 masterWorksheet[address].s = headerStyle;
             }
         }
-        // Freeze the header row, remove autofilter
         masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
         utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
 
-        // Add individual checklist sheets
+        // --- Individual Checklist Sheets ---
         pack.checklists.forEach(checklist => {
             const checklistHeaders = [
                 'Task ID', 'Task', 'Priority', 'Risk Level', 
@@ -99,7 +150,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             ]);
 
             const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-            
             const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
             
             worksheet['!cols'] = [
@@ -114,7 +164,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     worksheet[address].s = headerStyle;
                 }
              }
-             // Freeze the header row
              worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
 
             const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
@@ -125,7 +174,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }
 
     const personalizationPriceINR = 3000;
-    const personalizedPackPrice = pack.priceINR + personalizationPriceINR;
+    const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
+    const sampleChecklist = pack.checklists[0];
 
     return (
         <div className="w-full">
@@ -233,6 +283,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </AlertDialog>
 
                 </div>
+
+                {sampleChecklist && <SamplePreviewDialog sampleChecklist={sampleChecklist} />}
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>

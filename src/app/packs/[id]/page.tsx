@@ -91,15 +91,21 @@ export default function Page({ params }: { params: { id: string } }) {
     notFound();
   }
   
-  const curationMap: Record<string, string> = {
-    "Hospitality": "Veteran General Managers, F&B Directors, and Heads of Security from leading 5-star hotel chains.",
-    "Corporate": "Senior Facility Managers from Fortune 500 companies and Heads of Engineering overseeing large-scale corporate campuses.",
-    "Retail": "Retail Operations Heads, District Managers, and Loss Prevention experts from major global brands.",
-    "Healthcare": "Hospital Administrators, Chief Medical Officers, and NABH/JCI Compliance Consultants.",
-    "Education": "School Principals, Senior Administrators, and Campus Security Heads from reputable institutions."
+  const whoIsItForMap: Record<string, string[]> = {
+    "Hospitality": ["General Managers", "F&B Directors", "Heads of Security", "Housekeeping Managers"],
+    "Corporate": ["Facility Managers", "Chief Engineers", "Admin Heads", "Corporate Real Estate (CRE) Heads"],
+    "Retail": ["Store Managers", "District Managers", "Loss Prevention Heads", "Retail Operations Leaders"],
+    "Healthcare": ["Hospital Administrators", "Clinic Managers", "Quality & Compliance Officers", "NABH/JCI Coordinators"],
+    "Education": ["School Principals", "Senior Administrators", "Campus Security Heads", "Daycare Owners"],
+    "Manufacturing": ["Plant Heads", "Shift Supervisors", "Production Managers", "Safety Officers"],
+    "Events": ["Event Planners", "Banquet Managers", "Wedding Planners"],
+    "Personal": ["Frequent Travelers", "Pet Owners"],
+    "Automotive": ["Service Advisors", "Workshop Managers", "Dealership Owners"],
+    "Real Estate": ["Property Managers", "Landlords", "Airbnb Hosts"],
+    "Compliance": ["ESG Officers", "Quality Managers (ISO)", "Compliance Officers"]
   };
 
-  const curatedBy = curationMap[pack.category] || "a diverse group of over 200+ seasoned industry professionals.";
+  const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -120,20 +126,20 @@ export default function Page({ params }: { params: { id: string } }) {
         <section className="w-full py-12 md:py-20 lg:py-24">
             <div className="container px-4 md:px-6">
                 <div className="max-w-4xl mx-auto">
-                    <div className="flex items-start gap-6 mb-8">
+                    <div className="grid md:grid-cols-[auto_1fr] gap-8 items-start mb-8">
                         <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block">
                             {pack.icon}
                         </div>
-                        <div>
+                        <div className="space-y-4">
                             <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                                 {pack.title}
                             </h1>
-                            <p className="text-muted-foreground mt-2 md:text-lg">
+                            <p className="text-muted-foreground md:text-lg">
                                 {pack.description}
                             </p>
                              <div className="mt-4 bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
-                                <p className="text-sm font-semibold text-primary">Curated By:</p>
-                                <p className="text-sm text-foreground/80">{curatedBy}</p>
+                                <p className="text-sm font-semibold text-primary">Perfect For:</p>
+                                <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
                             </div>
                         </div>
                     </div>
