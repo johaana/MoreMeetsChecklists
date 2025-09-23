@@ -345,14 +345,14 @@ export default function Page({ params }: { params: { id: string } }) {
                                 </CardFooter>
                             </Card>
 
-                            {/* Bespoke Pack Option */}
+                            {/* Personalized Pack Option */}
                              <AlertDialog>
                                 <AlertDialogTrigger asChild>
                                      <Card className="flex flex-col text-left border-2 border-accent cursor-pointer hover:shadow-lg transition-shadow">
                                         <CardHeader>
                                             <CardTitle className="flex items-center gap-2">
                                                 <Sparkles className="w-5 h-5 text-accent" />
-                                                Bespoke Pack
+                                                Personalized Pack
                                             </CardTitle>
                                             <p className="text-2xl font-bold text-primary">
                                                 ${pack.priceUSD + personalizationPriceUSD} / ₹{pack.priceINR + personalizationPriceINR}
@@ -437,3 +437,4 @@ export default function Page({ params }: { params: { id: string } }) {
     
 
     
+
