@@ -122,17 +122,7 @@ function PackList() {
                         </Card>
                     ))}
                 </div>
-                 <div className="text-center mt-16">
-                    <Button asChild size="lg" className="text-lg py-7 px-10">
-                        <Link href="/packs">
-                            Explore All Packages
-                            <ArrowRight className="w-5 h-5 ml-2" />
-                        </Link>
-                    </Button>
-                    <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
-                        Our comprehensive library is the codified knowledge of over 200 seasoned industry professionals. We've distilled decades of real-world experience—from the high-stakes precision of a hospital's surgical safety protocol to the detailed logistics of a retail store's inventory management, and the rigorous safety standards of a manufacturing plant. Whether you're managing a 5-star hotel, a corporate high-rise, or a school campus, our packs provide the framework to standardize excellence and ensure compliance.
-                    </p>
-                </div>
+                 
             </div>
         </section>
     )
@@ -221,6 +211,20 @@ export default function Home() {
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
         </React.Suspense>
+        
+        <section className="w-full py-16 bg-secondary/30 border-t">
+            <div className="container text-center">
+                <Button asChild size="lg" className="text-lg py-7 px-10">
+                    <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                </Button>
+                <p className="max-w-3xl mx-auto text-muted-foreground mt-4">
+                    Our comprehensive library is the codified knowledge of over 200 seasoned industry professionals. We've distilled decades of real-world experience—from the high-stakes precision of a hospital's surgical safety protocol to the detailed logistics of a retail store's inventory management, and the rigorous safety standards of a manufacturing plant. Whether you're managing a 5-star hotel, a corporate high-rise, or a school campus, our packs provide the framework to standardize excellence and ensure compliance.
+                </p>
+            </div>
+        </section>
 
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
           <div className="container px-4 md:px-6">
@@ -333,3 +337,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
