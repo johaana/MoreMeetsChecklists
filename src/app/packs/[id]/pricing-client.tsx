@@ -305,7 +305,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                         <CardFooter className="p-6 mt-auto">
                             <Button size="lg" className="w-full font-bold text-lg" variant="outline" asChild>
-                                <Link href="https://wa.me/910000000000" target="_blank">Contact Us</Link>
+                                <Link href="https://wa.me/919545997111" target="_blank">Contact Us</Link>
                             </Button>
                         </CardFooter>
                     </Card>
