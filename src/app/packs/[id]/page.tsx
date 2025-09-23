@@ -125,9 +125,9 @@ export default function Page({ params }: { params: { id: string } }) {
       </header>
 
       <main className="flex-1">
-        <section className="w-full bg-secondary/30 py-12 md:py-16">
+        <section className="w-full bg-secondary/30 py-8">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-6 items-start max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 items-start max-w-5xl mx-auto">
                      <div className="w-24 h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0">
                         {React.cloneElement(pack.icon, { className: "w-12 h-12 text-primary" })}
                     </div>
@@ -151,7 +151,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
         <PainPointsSection category={pack.category} />
 
-        <section id="checklists" className="w-full py-12 md:py-16">
+        <section id="checklists" className="w-full py-8 md:py-12">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
@@ -186,7 +186,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t mt-16 bg-secondary/50">
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t mt-12 bg-secondary/50">
         <p className="text-xs text-muted-foreground">&copy; 2024 MoreMeets. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
