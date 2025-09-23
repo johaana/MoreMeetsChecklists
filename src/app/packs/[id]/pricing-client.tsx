@@ -4,7 +4,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import { writeFile, utils, WorkSheet } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, BadgeCheck, Repeat, Download, DollarSign, Sparkles, ShieldCheck, Star } from 'lucide-react';
+import { Check, X, Repeat, DollarSign, Sparkles, ShieldCheck, Star } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -22,7 +22,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         };
         
         const applyStyles = (ws: WorkSheet) => {
-            ws['!views'] = [{state: 'frozen', ySplit: 1}];
+             // This function is kept for potential future styling needs
         };
 
         // New Cover Page with Hyperlinks
@@ -31,8 +31,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         const coverPageData = [
             ...pack.checklists.map((checklist) => {
                 const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+                 // The hyperlink formula must be in this exact format.
                 return [
-                    { v: checklist.title, l: { Target: `'${sheetName}'!A1`, Tooltip: `Go to ${checklist.title}` } }
+                    { v: checklist.title, l: { Target: `#_xlnm.sheet_by_name('${sheetName}')!A1`, Tooltip: `Go to ${checklist.title}` } }
                 ];
             })
         ];
@@ -54,21 +55,23 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         
         utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
 
-        // Master Sheet with all data (no links)
+        // Master Sheet with all tasks
         const masterSheetName = "Master View";
         const masterSheetData = [
-            ["Checklist Title", "Department", "Summary"],
-            ...pack.checklists.map((checklist) => {
-                return [
+            ["Checklist Title", "Task ID", "Task", "Priority", "Risk Level"],
+            ...pack.checklists.flatMap((checklist) => 
+                checklist.tasks.map(task => [
                     checklist.title,
-                    checklist.department,
-                    checklist.summary
-                ];
-            })
+                    task.id,
+                    task.description,
+                    task.priority,
+                    task.riskLevel
+                ])
+            )
         ];
         
         const masterWorksheet = utils.aoa_to_sheet(masterSheetData);
-        masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 25 }, { wch: 80 }];
+        masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }];
         
         const rangeMaster = utils.decode_range(masterWorksheet['!ref']!);
         for (let C = rangeMaster.s.c; C <= rangeMaster.e.c; ++C) {
@@ -77,6 +80,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 masterWorksheet[address].s = headerStyle;
             }
         }
+        masterWorksheet['!autofilter'] = { ref: utils.encode_range(rangeMaster) };
+        masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
         
         utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
 
@@ -102,8 +107,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             
             const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
             
-            applyStyles(worksheet);
-            
             worksheet['!cols'] = [
                 { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
                 { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
@@ -116,6 +119,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     worksheet[address].s = headerStyle;
                 }
              }
+             worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
 
             const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             utils.book_append_sheet(workbook, worksheet, sheetName);
@@ -130,7 +134,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     return (
         <div className="w-full">
             <div className="text-center bg-background py-16 rounded-2xl">
-                <div className="max-w-2xl mx-auto mb-10 text-center">
+                 <div className="max-w-2xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-muted-foreground md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
