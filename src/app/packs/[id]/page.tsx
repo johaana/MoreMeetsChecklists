@@ -6,6 +6,7 @@ import { Logo } from '@/components/icons';
 import { ArrowLeft, FileCheck2 } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const PainPoint = ({ title, description }: { title: string, description: string }) => (
     <div className="bg-background rounded-lg p-4">
@@ -66,7 +67,7 @@ const PainPointsSection = ({ category }: { category: string }) => {
     const selected = content[category as keyof typeof content] || content.Hospitality;
 
     return (
-        <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
+        <section id="why" className="w-full py-12 md:py-16 bg-secondary">
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
@@ -92,17 +93,18 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   
   const whoIsItForMap: Record<string, string[]> = {
-    "Hospitality": ["General Managers", "F&B Directors", "Heads of Security", "Housekeeping Managers"],
-    "Corporate": ["Facility Managers", "Chief Engineers", "Admin Heads", "Corporate Real Estate (CRE) Heads"],
-    "Retail": ["Store Managers", "District Managers", "Loss Prevention Heads", "Retail Operations Leaders"],
-    "Healthcare": ["Hospital Administrators", "Clinic Managers", "Quality & Compliance Officers", "NABH/JCI Coordinators"],
+    "Hospitality": ["Hotel Owners", "COOs", "Cluster GMs", "General Managers", "F&B Directors", "Heads of Security", "Housekeeping Managers", "Restaurant Owners"],
+    "Corporate": ["Facility Managers", "Chief Engineers", "Admin Heads", "Corporate Real Estate (CRE) Heads", "Founders"],
+    "Retail": ["Store Managers", "District Managers", "Loss Prevention Heads", "Retail Operations Leaders", "Jewellery Store Owners"],
+    "Healthcare": ["Hospital Administrators", "Clinic Managers", "Quality & Compliance Officers", "NABH/JCI Coordinators", "Lab Owners"],
     "Education": ["School Principals", "Senior Administrators", "Campus Security Heads", "Daycare Owners"],
     "Manufacturing": ["Plant Heads", "Shift Supervisors", "Production Managers", "Safety Officers"],
     "Events": ["Event Planners", "Banquet Managers", "Wedding Planners"],
     "Personal": ["Frequent Travelers", "Pet Owners"],
     "Automotive": ["Service Advisors", "Workshop Managers", "Dealership Owners"],
     "Real Estate": ["Property Managers", "Landlords", "Airbnb Hosts"],
-    "Compliance": ["ESG Officers", "Quality Managers (ISO)", "Compliance Officers"]
+    "Compliance": ["ESG Officers", "Quality Managers (ISO)", "Compliance Officers"],
+    "Wellness": ["Gym Owners", "Salon Managers", "Spa Directors"]
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
@@ -115,9 +117,9 @@ export default function Page({ params }: { params: { id: string } }) {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/" className="text-sm font-medium hover:underline underline-offset-4 flex items-center gap-1" prefetch={false}>
-                <ArrowLeft className="w-4 h-4" />
-                Back to All Packs
+            <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+                <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
+                All Packs
             </Link>
         </nav>
       </header>
@@ -125,9 +127,9 @@ export default function Page({ params }: { params: { id: string } }) {
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-6 items-start max-w-5xl mx-auto">
-                    <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block">
-                        {pack.icon}
+                <div className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-6 items-center max-w-5xl mx-auto">
+                    <div className="p-4 bg-primary/10 rounded-full border-2 border-primary/20 shrink-0 hidden md:block w-24 h-24 flex items-center justify-center">
+                        {React.cloneElement(pack.icon, { className: "w-12 h-12 text-primary" })}
                     </div>
                     <div className="space-y-4">
                         <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
@@ -162,7 +164,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
                 <div className="space-y-8 max-w-4xl mx-auto">
                     {pack.checklists.map((checklist, index) => (
-                        <Card key={index} className="rounded-xl overflow-hidden shadow-sm">
+                        <Card key={index} className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
                             <CardHeader className="bg-muted/30">
                                 <CardTitle className="flex items-center gap-3">
                                     <FileCheck2 className="w-6 h-6 text-primary"/>
@@ -201,7 +203,6 @@ export default function Page({ params }: { params: { id: string } }) {
 
 // Keeping Card and other UI imports used by child components in the main page file
 // to avoid bundling them in the client-side JavaScript.
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';

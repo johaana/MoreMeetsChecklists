@@ -190,7 +190,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const enterprisePriceINR = 49999;
 
     return (
-        <div className="w-full py-12 md:py-16">
+        <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
             <div className="container px-4 md:px-6">
                  <div className="max-w-2xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
@@ -342,6 +342,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
