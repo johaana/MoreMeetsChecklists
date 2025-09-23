@@ -123,7 +123,7 @@ function EnterpriseInquiryDialog() {
                 <AlertDialogFooter>
                     <AlertDialogCancel>Close</AlertDialogCancel>
                     <AlertDialogAction asChild>
-                       <Link href="https://calendly.com/your-link" target="_blank">Book a Discovery Call</Link>
+                       <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
@@ -430,7 +430,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 
     return (
-        <section className="w-full py-8 md:py-12 bg-secondary/30" id="pricing">
+        <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
              <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
@@ -445,7 +445,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </AlertDialogContent>
             </AlertDialog>
             <div className="container px-4 md:px-6">
-                 <div className="max-w-2xl mx-auto mb-10 text-center">
+                 <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
