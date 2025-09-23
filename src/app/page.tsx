@@ -200,8 +200,11 @@ export default function Home() {
                            Meet More Standards & Compliance. Cover every base—daily tasks, security protocols, compliance audits—with checklists created from the distilled knowledge of 200+ industry experts.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <Button size="lg" asChild className="text-lg py-7 px-10" variant="accent">
-                                <Link href="/packs">Browse All Packages</Link>
+                            <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                                <Link href="/packs">
+                                    Browse All Packages
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </Link>
                             </Button>
                             <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                                 <p className="text-xs text-white/80">
@@ -331,3 +334,6 @@ export default function Home() {
 
     
 
+
+
+    
