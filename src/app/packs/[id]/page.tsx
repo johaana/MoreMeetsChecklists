@@ -3,15 +3,20 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2, Hand, LifeBuoy, Zap } from 'lucide-react';
+import { ArrowLeft, FileCheck2, Hand, LifeBuoy, Zap, Users, Shield, TrendingUp, HandCoins } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-const PainPoint = ({ title, description }: { title: string, description: string }) => (
-    <div className="bg-background rounded-lg p-4">
-        <h4 className="font-semibold text-foreground">{title}</h4>
-        <p className="text-sm text-muted-foreground">{description}</p>
+const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
+    <div className="flex items-start gap-6 rounded-lg border bg-background p-6 transition-shadow hover:shadow-md">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 shrink-0 mt-1">
+            {React.cloneElement(icon as React.ReactElement, { className: "w-8 h-8 text-primary" })}
+        </div>
+        <div>
+            <h4 className="text-lg font-bold text-primary">{title}</h4>
+            <p className="text-muted-foreground mt-1">{description}</p>
+        </div>
     </div>
 );
 
@@ -20,46 +25,46 @@ const PainPointsSection = ({ category }: { category: string }) => {
         Hospitality: {
             title: "Why This Checklist Is Your New Competitive Advantage",
             points: [
-                { title: "Inconsistent Guest Experience", description: "Standardize every touchpoint, from check-in to room service, ensuring every guest receives the same 5-star treatment, every time. This builds loyalty and drives positive reviews." },
-                { title: "Revenue Leakage & Cost Overruns", description: "Plug financial leaks by tracking minibar consumption accurately, preventing wastage in F&B, and implementing preventative maintenance to avoid costly emergency repairs." },
-                { title: "Compliance Nightmares & Safety Risks", description: "Navigate complex safety regulations with ease. Our checklists ensure you're always compliant with fire safety, food hygiene (HACCP), and security protocols, protecting you from fines and reputational damage." },
-                { title: "Inefficient Operations & Staff Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
+                { icon: <Users />, title: "Inconsistent Guest Experience", description: "Standardize every touchpoint, from check-in to room service, ensuring every guest receives the same 5-star treatment, every time. This builds loyalty and drives positive reviews." },
+                { icon: <HandCoins />, title: "Revenue Leakage & Cost Overruns", description: "Plug financial leaks by tracking minibar consumption accurately, preventing wastage in F&B, and implementing preventative maintenance to avoid costly emergency repairs." },
+                { icon: <Shield />, title: "Compliance Nightmares & Safety Risks", description: "Navigate complex safety regulations with ease. Our checklists ensure you're always compliant with fire safety, food hygiene (HACCP), and security protocols, protecting you from fines and reputational damage." },
+                { icon: <TrendingUp />, title: "Inefficient Operations & Staff Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
             ]
         },
         Corporate: {
             title: "Why This Checklist Is Your New Strategic Asset",
             points: [
-                { title: "Inefficient Use of Company Resources", description: "Our facility management checklists optimize everything from energy consumption to vendor contracts, cutting operational costs and improving your bottom line." },
-                { title: "Unproductive Meetings & Wasted Time", description: "Standardize your meeting prep, from board meetings to AGMs, ensuring every session is focused, productive, and achieves its objectives." },
-                { title: "Failed Product Launches & Messy Events", description: "Execute flawless product launches and corporate events by managing every detail, from venue booking and AV checks to press kits and social media campaigns." },
-                { title: "Poor Employee Onboarding & Early Turnover", description: "Create a structured and welcoming onboarding experience. Our checklists ensure new hires have the access, information, and support they need to become productive members of the team from day one." }
+                { icon: <TrendingUp />, title: "Inefficient Use of Company Resources", description: "Our facility management checklists optimize everything from energy consumption to vendor contracts, cutting operational costs and improving your bottom line." },
+                { icon: <HandCoins />, title: "Unproductive Meetings & Wasted Time", description: "Standardize your meeting prep, from board meetings to AGMs, ensuring every session is focused, productive, and achieves its objectives." },
+                { icon: <Users />, title: "Failed Product Launches & Messy Events", description: "Execute flawless product launches and corporate events by managing every detail, from venue booking and AV checks to press kits and social media campaigns." },
+                { icon: <Shield />, title: "Poor Employee Onboarding & Early Turnover", description: "Create a structured and welcoming onboarding experience. Our checklists ensure new hires have the access, information, and support they need to become productive members of the team from day one." }
             ]
         },
         Retail: {
             title: "Why This Checklist Is Your Key to Retail Dominance",
             points: [
-                { title: "Inventory Shrinkage & Theft", description: "Implement ironclad security protocols for high-value items, from dual-control vault procedures to fitting room management, directly protecting your bottom line." },
-                { title: "Inconsistent Customer Experience", description: "Standardize your sales process, visual merchandising, and customer service to ensure every shopper receives the same high-quality experience, building brand loyalty." },
-                { title: "Lost Sales Due to Stockouts", description: "Streamline your inventory management, from receiving and stocking to daily audits, ensuring popular items are always available and reducing lost sales opportunities." },
-                { title: "Poor Staff Performance & Product Knowledge", description: "Use our checklists for regular staff training on product features, sales techniques, and operational procedures, turning your team into expert brand ambassadors." }
+                { icon: <Shield />, title: "Inventory Shrinkage & Theft", description: "Implement ironclad security protocols for high-value items, from dual-control vault procedures to fitting room management, directly protecting your bottom line." },
+                { icon: <Users />, title: "Inconsistent Customer Experience", description: "Standardize your sales process, visual merchandising, and customer service to ensure every shopper receives the same high-quality experience, building brand loyalty." },
+                { icon: <TrendingUp />, title: "Lost Sales Due to Stockouts", description: "Streamline your inventory management, from receiving and stocking to daily audits, ensuring popular items are always available and reducing lost sales opportunities." },
+                { icon: <HandCoins />, title: "Poor Staff Performance & Product Knowledge", description: "Use our checklists for regular staff training on product features, sales techniques, and operational procedures, turning your team into expert brand ambassadors." }
             ]
         },
         Healthcare: {
              title: "Why This Checklist is Critical for Patient Safety & Compliance",
              points: [
-                { title: "Risk of Medication Errors", description: "Our pharmacy checklists enforce the 'Five Rights' of medication dispensing and include strict verification protocols to minimize the risk of dangerous errors and protect your patients." },
-                { title: "Compliance & Audit Failures", description: "Navigate complex healthcare regulations with confidence. Our checklists for hospitals and labs ensure you are always prepared for audits from bodies like NABH, JCI, and NABL, covering everything from infection control to documentation." },
-                { title: "Patient Data & Confidentiality Breaches", description: "Implement robust protocols for handling patient information, from admission to billing, ensuring HIPAA/data privacy compliance and building patient trust." },
-                { title: "Operational Inefficiencies & Delays in Care", description: "Standardize critical workflows in your ER, OT, and diagnostic labs. This reduces bottlenecks, minimizes errors, and ensures patients receive timely, high-quality care." }
+                { icon: <Shield />, title: "Risk of Medication Errors", description: "Our pharmacy checklists enforce the 'Five Rights' of medication dispensing and include strict verification protocols to minimize the risk of dangerous errors and protect your patients." },
+                { icon: <TrendingUp />, title: "Compliance & Audit Failures", description: "Navigate complex healthcare regulations with confidence. Our checklists for hospitals and labs ensure you are always prepared for audits from bodies like NABH, JCI, and NABL, covering everything from infection control to documentation." },
+                { icon: <Users />, title: "Patient Data & Confidentiality Breaches", description: "Implement robust protocols for handling patient information, from admission to billing, ensuring HIPAA/data privacy compliance and building patient trust." },
+                { icon: <HandCoins />, title: "Operational Inefficiencies & Delays in Care", description: "Standardize critical workflows in your ER, OT, and diagnostic labs. This reduces bottlenecks, minimizes errors, and ensures patients receive timely, high-quality care." }
              ]
         },
          Education: {
              title: "Why This Checklist is Essential for a Safe & Modern Campus",
              points: [
-                { title: "Student Safety & Security Risks", description: "Implement a robust safety framework covering everything from daily campus patrols and visitor verification to student dismissal and emergency drills, ensuring a secure environment for students and staff." },
-                { title: "Liability & Compliance Issues", description: "Proactively manage risks by ensuring all safety equipment is functional, playgrounds are hazard-free, and emergency procedures are regularly practiced, protecting your institution from legal and financial liability." },
-                { title: "Operational Chaos & Inefficiency", description: "Standardize daily operations, from opening procedures to classroom safety checks, freeing up administrative time to focus on educational outcomes rather than firefighting daily issues." },
-                { title: "Negative Parent Perception", description: "Demonstrate a clear commitment to safety and organization. A well-run, secure campus builds trust and confidence with parents, a key factor in school choice and reputation." }
+                { icon: <Shield />, title: "Student Safety & Security Risks", description: "Implement a robust safety framework covering everything from daily campus patrols and visitor verification to student dismissal and emergency drills, ensuring a secure environment for students and staff." },
+                { icon: <TrendingUp />, title: "Liability & Compliance Issues", description: "Proactively manage risks by ensuring all safety equipment is functional, playgrounds are hazard-free, and emergency procedures are regularly practiced, protecting your institution from legal and financial liability." },
+                { icon: <HandCoins />, title: "Operational Chaos & Inefficiency", description: "Standardize daily operations, from opening procedures to classroom safety checks, freeing up administrative time to focus on educational outcomes rather than firefighting daily issues." },
+                { icon: <Users />, title: "Negative Parent Perception", description: "Demonstrate a clear commitment to safety and organization. A well-run, secure campus builds trust and confidence with parents, a key factor in school choice and reputation." }
              ]
         },
     };
@@ -74,9 +79,9 @@ const PainPointsSection = ({ category }: { category: string }) => {
                         {selected.title}
                     </h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     {selected.points.map((point, index) => (
-                        <PainPoint key={index} title={point.title} description={point.description} />
+                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
                     ))}
                 </div>
             </div>
@@ -128,19 +133,19 @@ export default function Page({ params }: { params: { id: string } }) {
         <section className="w-full bg-secondary/30 py-8">
             <div className="container px-4 md:px-6">
                 <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
-                     <div className="row-start-1 md:col-start-1 flex items-center gap-4">
+                     <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
                         <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0">
                            {React.cloneElement(pack.icon, { className: "w-8 h-8 md:w-12 md:h-12 text-primary" })}
                        </div>
                      </div>
-                    <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-4">
+                    <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-2">
                         <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                             {pack.title}
                         </h1>
                         <p className="text-muted-foreground md:text-lg">
                             {pack.description}
                         </p>
-                         <div className="mt-6 bg-background/50 border p-4 rounded-lg">
+                         <div className="mt-4 bg-background/50 border p-4 rounded-lg">
                             <p className="text-sm font-semibold text-primary mb-2">Perfect For:</p>
                             <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
                         </div>
@@ -220,3 +225,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
