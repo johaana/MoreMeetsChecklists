@@ -16,76 +16,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import RazorpayButton from '@/components/ui/razorpay-button';
-import { writeFile, utils } from 'xlsx-js-style';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
-    const handleDownload = (pack: PremiumPack | undefined) => {
-        if (!pack) {
-            alert("Could not find the pack to download.");
-            return;
-        }
-        
-        const workbook = utils.book_new();
-        const headerStyle = {
-            font: { bold: true, color: { rgb: "FFFFFF" } },
-            fill: { fgColor: { rgb: "0A2540" } }
-        };
-
-        const coverPageName = "Cover Page";
-        const coverPageData = [
-            [pack.title],
-            [" "],
-            ["Click to navigate:"],
-            ["Checklist Title", "Department", "Frequency", "Role"],
-             ...pack.checklists.map((checklist) => {
-                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [
-                    { v: checklist.title, f: formula },
-                    checklist.department,
-                    checklist.frequency,
-                    checklist.role
-                ];
-            })
-        ];
-
-        const coverWorksheet = utils.aoa_to_sheet(coverPageData);
-        coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
-        coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-        ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-            if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-        });
-        const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-        for (let R = 4; R <= rangeLinks.e.r; ++R) {
-            const address = utils.encode_cell({ r: R, c: 0 });
-            if (coverWorksheet[address] && coverWorksheet[address].f) {
-                 coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
-            }
-        }
-        utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
-
-        // Individual Checklist Sheets
-        pack.checklists.forEach(checklist => {
-            const worksheet = utils.aoa_to_sheet([
-                ['Task ID', 'Task', 'Priority', 'Risk Level', 'Proof / Evidence', 'Status', 'Assigned To', 'Notes'],
-                ...checklist.tasks.map(task => [
-                    task.id, task.description, task.priority, task.riskLevel, task.proof, 'Pending', '', ''
-                ])
-            ]);
-            worksheet['!cols'] = [{ wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }];
-            const headerRange = utils.decode_range(worksheet['!ref']!);
-             for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-                const address = utils.encode_cell({ r: 0, c: C });
-                if(worksheet[address]) worksheet[address].s = headerStyle;
-             }
-             worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-            const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-            utils.book_append_sheet(workbook, worksheet, sheetName);
-        });
-
-        writeFile(workbook, `${pack.title.replace(/ /g, '_')}_Sample.xlsx`);
-    }
-
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -141,6 +73,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
     const enterprisePriceINR = 49999;
 
+    const handlePersonalizeClick = () => {
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem('purchasedPackId', pack.id);
+        }
+    };
+
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
                 <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
@@ -182,7 +120,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <CardFooter className="p-6 mt-auto">
                      <AlertDialog>
                         <AlertDialogTrigger asChild>
-                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
+                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90" onClick={handlePersonalizeClick}>
                                 Personalize Now
                             </Button>
                         </AlertDialogTrigger>
