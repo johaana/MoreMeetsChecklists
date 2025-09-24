@@ -13,7 +13,9 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import RazorpayButton from '@/components/ui/razorpay-button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
@@ -65,6 +67,56 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
+function PersonalizationForm({ onComplete }: { onComplete: () => void }) {
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log("Personalization data submitted.");
+        onComplete();
+    };
+
+    return (
+        <div className="w-full max-w-2xl mx-auto py-12">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+                <Sparkles className="h-16 w-16 text-accent" />
+                <div className="space-y-2">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline">
+                        Personalize Your Pack
+                    </h1>
+                    <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        This helps us create your Custom Priority Action Plan. Your download will be ready after payment.
+                    </p>
+                </div>
+                <form onSubmit={handleSubmit} className="w-full text-left space-y-4 pt-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="q1">What is your primary business focus?</Label>
+                            <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="q2">Which department needs the most improvement?</Label>
+                            <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
+                        <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
+                        <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q5">Anything else you'd like us to know?</Label>
+                        <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH..." />
+                    </div>
+                    <Button type="submit" className="w-full" variant="accent">
+                        Proceed to Payment
+                    </Button>
+                </form>
+            </div>
+        </div>
+    );
+}
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
@@ -93,8 +145,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('professional')}>
-                    <RazorpayButton buttonId={professionalPackButtonId} />
+                <CardFooter className="p-6 mt-auto">
+                    <RazorpayButton buttonId={professionalPackButtonId}>
+                        <Button className="w-full font-bold" variant="accent" onClick={() => handlePurchaseClick('professional')}>Purchase Now</Button>
+                    </RazorpayButton>
                 </CardFooter>
             </Card>,
 
@@ -119,8 +173,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Your branding automatically added.</span></p>
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('personalized')}>
-                    <RazorpayButton buttonId={personalizedPackButtonId} />
+                <CardFooter className="p-6 mt-auto">
+                     <RazorpayButton buttonId={personalizedPackButtonId}>
+                        <Button className="w-full font-bold" variant="accent" onClick={() => handlePurchaseClick('personalized')}>Purchase Now</Button>
+                    </RazorpayButton>
                 </CardFooter>
             </Card>,
 
@@ -215,5 +271,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    

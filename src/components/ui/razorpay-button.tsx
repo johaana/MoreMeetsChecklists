@@ -2,13 +2,14 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { Button } from './button';
 
-const RazorpayButton: React.FC<{ buttonId: string }> = ({ buttonId }) => {
+const RazorpayButton: React.FC<{ buttonId: string, children: React.ReactNode }> = ({ buttonId, children }) => {
   const formRef = useRef<HTMLFormElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (formRef.current) {
-        // Clear any existing scripts to prevent duplicates during development hot-reloads
         while (formRef.current.firstChild) {
             formRef.current.removeChild(formRef.current.firstChild);
         }
@@ -22,7 +23,21 @@ const RazorpayButton: React.FC<{ buttonId: string }> = ({ buttonId }) => {
     }
   }, [buttonId]);
 
-  return <form ref={formRef}></form>;
+  const handleCustomButtonClick = () => {
+    const razorpayButton = formRef.current?.querySelector('.razorpay-payment-button') as HTMLElement | null;
+    if (razorpayButton) {
+      razorpayButton.click();
+    }
+  };
+
+  return (
+    <div ref={wrapperRef} onClick={handleCustomButtonClick} className="w-full">
+      {children}
+      <div style={{ display: 'none' }}>
+        <form ref={formRef}></form>
+      </div>
+    </div>
+  );
 };
 
 export default RazorpayButton;
