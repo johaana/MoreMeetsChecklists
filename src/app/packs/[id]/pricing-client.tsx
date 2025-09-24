@@ -12,35 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-
-
-// A simple component to load the Razorpay script
-const RazorpayScriptLoader = ({ buttonId }: { buttonId: string }) => {
-    const formRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-        script.async = true;
-        script.dataset.payment_button_id = buttonId;
-
-        const form = document.createElement('form');
-        form.appendChild(script);
-        
-        const currentRef = formRef.current;
-        if (currentRef) {
-            currentRef.appendChild(form);
-        }
-
-        return () => {
-            if (currentRef && currentRef.firstChild) {
-                currentRef.removeChild(currentRef.firstChild);
-            }
-        };
-    }, [buttonId]);
-
-    return <div ref={formRef} className="w-full"></div>;
-};
+import RazorpayPaymentButton from '@/components/ui/razorpay-payment-button';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -111,7 +83,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
-                <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Most Popular</Badge>
+                <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Most Popular</Badge>
                 <CardHeader className="p-6 pt-8">
                     <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                     <p className="text-4xl font-bold text-foreground">₹{basePrice}</p>
@@ -121,8 +93,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('professional')}>
-                     <RazorpayScriptLoader buttonId={professionalPackButtonId} />
+                <CardFooter className="p-6 mt-auto">
+                     <RazorpayPaymentButton 
+                        buttonId={professionalPackButtonId}
+                        onClick={() => handlePurchaseClick('professional')}
+                     >
+                        Purchase Now
+                     </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
 
@@ -147,12 +124,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Your branding automatically added.</span></p>
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('personalized')}>
-                    <RazorpayScriptLoader buttonId={personalizedPackButtonId} />
+                <CardFooter className="p-6 mt-auto">
+                    <RazorpayPaymentButton 
+                        buttonId={personalizedPackButtonId}
+                        onClick={() => handlePurchaseClick('personalized')}
+                        className="bg-accent hover:bg-accent/90"
+                    >
+                        Purchase Personalized
+                    </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
 
-             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
+             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover  :shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
                  <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">For Teams</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
@@ -242,5 +225,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </div>
         </section>
     );
-
-    
+}

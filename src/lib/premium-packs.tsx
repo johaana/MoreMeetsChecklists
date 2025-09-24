@@ -1,4 +1,5 @@
 
+
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket } from "lucide-react";
 
 export const premiumPacks = [
@@ -11,7 +12,7 @@ export const premiumPacks = [
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
-        badgeVariant: "accent" as const,
+        badgeVariant: "default" as const,
         sampleItems: [
             "Master the 'Lost & Found' protocol to ensure guest trust and minimize liability.",
             "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
