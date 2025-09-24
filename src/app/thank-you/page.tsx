@@ -153,8 +153,8 @@ function ThankYouContent() {
       if (packId) {
         const pack = premiumPacks.find(p => p.id === packId);
         setPurchasedPack(pack);
-        // Clean up session storage after retrieving the ID
-        // sessionStorage.removeItem('purchasedPackId');
+        // Clean up session storage after retrieving the ID for security
+        sessionStorage.removeItem('purchasedPackId');
       }
       setIsLoading(false);
     }
@@ -170,9 +170,10 @@ function ThankYouContent() {
   const PageLayout = ({ children }: { children: React.ReactNode }) => (
        <div className="flex flex-col min-h-screen bg-background">
          <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-           <Link href="/" className="flex items-center justify-center" prefetch={false}>
-             <Logo className="h-10 w-auto" />
-           </Link>
+           <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+            <Logo className="h-6 w-6 text-primary" />
+            <span className="font-headline text-lg font-bold">MoreMeets</span>
+          </Link>
            <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
              <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
                All Packages
@@ -187,8 +188,9 @@ function ThankYouContent() {
          <footer className="w-full border-t bg-secondary/50 mt-auto">
            <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
              <div className="flex flex-col items-center md:items-start gap-2">
-               <Link href="/" className="flex items-center justify-center" prefetch={false}>
-                 <Logo className="h-10 w-auto" />
+               <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+                 <Logo className="h-6 w-6 text-primary" />
+                 <span className="font-headline text-lg font-bold">MoreMeets</span>
                </Link>
                <p className="text-sm text-muted-foreground max-w-xs">
                  The Professional Standard for Compliance & Operations Checklists.
@@ -294,5 +296,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
-    

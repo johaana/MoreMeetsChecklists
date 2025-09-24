@@ -73,7 +73,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
     const enterprisePriceINR = 49999;
 
-    const handlePersonalizeClick = () => {
+    const handlePurchaseClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('purchasedPackId', pack.id);
         }
@@ -91,7 +91,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto">
+                <CardFooter className="p-6 mt-auto" onClick={handlePurchaseClick}>
                     <RazorpayButton buttonId={professionalPackButtonId} />
                 </CardFooter>
             </Card>,
@@ -120,7 +120,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <CardFooter className="p-6 mt-auto">
                      <AlertDialog>
                         <AlertDialogTrigger asChild>
-                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90" onClick={handlePersonalizeClick}>
+                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
                                 Personalize Now
                             </Button>
                         </AlertDialogTrigger>
@@ -159,7 +159,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
                             <AlertDialogFooter>
-                                <div className='mx-auto'>
+                                <div className='mx-auto' onClick={handlePurchaseClick}>
                                     <RazorpayButton buttonId={personalizedPackButtonId} />
                                 </div>
                             </AlertDialogFooter>
@@ -259,5 +259,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
