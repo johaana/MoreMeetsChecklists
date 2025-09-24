@@ -16,8 +16,8 @@
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 14 90% 65%; /* Coral/Orange #F76C5E */
-    --accent-foreground: 0 0% 100%;
+    --accent: 43 65% 52%; /* Muted Gold */
+    --accent-foreground: 224 71% 4%; /* Deep Blue for contrast */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 214.3 31.8% 91.4%;
@@ -25,7 +25,7 @@
     --ring: 195 85% 41%;
     --radius: 0.75rem;
     --chart-1: 195 85% 41%;
-    --chart-2: 14 90% 65%;
+    --chart-2: 43 65% 52%;
     --chart-3: 173 58% 39%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
@@ -43,15 +43,15 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 210 40% 10%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 14 90% 70%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 43 65% 62%;
+    --accent-foreground: 224 71% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 214.3 31.8% 21.4%;
     --input: 214.3 31.8% 21.4%;
     --ring: 195 85% 51%;
     --chart-1: 195 85% 51%;
-    --chart-2: 14 90% 70%;
+    --chart-2: 43 65% 62%;
     --chart-3: 173 60% 50%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
