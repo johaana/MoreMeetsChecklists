@@ -70,43 +70,30 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 function RazorpayButton({ buttonId, children, onClick }: { buttonId: string; children: React.ReactNode; onClick: () => void }) {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const { toast } = useToast();
-
+  
   React.useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
     script.async = true;
     script.dataset.payment_button_id = buttonId;
     
-    if (formRef.current) {
-      formRef.current.innerHTML = '';
-      formRef.current.appendChild(script);
+    const currentForm = formRef.current;
+    if (currentForm) {
+      currentForm.innerHTML = '';
+      currentForm.appendChild(script);
     }
     
+    return () => {
+      if (currentForm) {
+        currentForm.innerHTML = '';
+      }
+    }
   }, [buttonId]);
 
-  const handleCustomButtonClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onClick();
-    
-    const razorpayButton = formRef.current?.querySelector('.razorpay-payment-button') as HTMLElement | null;
-    if (razorpayButton) {
-      razorpayButton.click();
-    } else {
-        toast({
-            variant: "destructive",
-            title: "Checkout Error",
-            description: "Could not initialize the payment gateway. Please try again or contact support.",
-        });
-    }
-  };
-
   return (
-    <div onClick={handleCustomButtonClick} className="w-full">
-      {children}
-      <div style={{ display: 'none' }}>
+    <div onClick={onClick} className="w-full">
+        {children}
         <form ref={formRef}></form>
-      </div>
     </div>
   );
 }
@@ -142,13 +129,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <RazorpayButton buttonId={professionalPackButtonId} onClick={() => handlePurchaseClick('professional')}>
-                        <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
+                         <div style={{ display: 'none' }}>
+                            <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
+                        </div>
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
 
             <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
-                <Badge className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">Best Value</Badge>
+                <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
                 <CardHeader className="p-6">
                     <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
                         Personalized Pack
@@ -170,7 +159,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                      <RazorpayButton buttonId={personalizedPackButtonId} onClick={() => handlePurchaseClick('personalized')}>
-                        <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
+                         <div style={{ display: 'none' }}>
+                            <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
+                        </div>
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
