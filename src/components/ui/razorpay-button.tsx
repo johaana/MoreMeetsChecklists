@@ -3,10 +3,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
 import type { VariantProps } from 'class-variance-authority';
+import { buttonVariants } from '@/components/ui/button';
 
-interface RazorpayButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+interface RazorpayButtonProps extends React.HTMLAttributes<HTMLFormElement> {
   buttonId: string;
   onPurchase: () => void;
   children: React.ReactNode;
@@ -17,12 +17,9 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   children,
   onPurchase,
   className,
-  variant,
-  size,
   ...props
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const buttonWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -32,7 +29,7 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
 
     const form = formRef.current;
     if (form) {
-      // Clear previous script to avoid duplicates
+      // Clear previous script to avoid duplicates when the buttonId changes
       while (form.firstChild) {
         form.removeChild(form.firstChild);
       }
@@ -46,13 +43,16 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
 
   return (
     <div
-      ref={buttonWrapperRef}
       onClick={handleWrapperClick}
-      className={cn(buttonVariants({ variant, size, className }), 'w-full font-bold relative cursor-pointer')}
+      className={cn(buttonVariants({ variant: 'default', size: 'default' }), 'w-full font-bold relative cursor-pointer')}
     >
       {children}
-      <form ref={formRef} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-        {/* The script will inject the button here. The form's opacity is 0, making it invisible but clickable. */}
+      <form
+        ref={formRef}
+        {...props}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+      >
+        {/* Razorpay script will inject the button here */}
       </form>
     </div>
   );
