@@ -4,7 +4,6 @@
 import * as React from 'react';
 import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
 import Link from 'next/link';
-import { writeFile, utils } from 'xlsx-js-style';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
@@ -66,131 +65,9 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
 }
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
-    
     const professionalPackLink = "https://rzp.io/rzp/9WsK9ML";
     const personalizedPackLink = "https://rzp.io/rzp/JFmUeMms";
-
-    const handleDownload = () => {
-        const workbook = utils.book_new();
-        const headerStyle = {
-            font: { bold: true, color: { rgb: "FFFFFF" } },
-            fill: { fgColor: { rgb: "0A2540" } }
-        };
-
-        // --- Cover Page ---
-        const coverPageName = "Cover Page";
-        const coverPageHeader = [pack.title];
-        const coverPageData = [
-            [" "],
-            ["Click to navigate:"],
-            ["Checklist Title", "Department", "Frequency", "Role"],
-             ...pack.checklists.map((checklist) => {
-                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [
-                    { v: checklist.title, f: formula },
-                    checklist.department,
-                    checklist.frequency,
-                    checklist.role
-                ];
-            })
-        ];
-
-        const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
-        coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
-        
-        // Style header
-        coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-        
-        // Style table headers
-        ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-            if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-        });
-
-        // Style hyperlinks
-        const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-        for (let R = 4; R <= rangeLinks.e.r; ++R) { // Start from row 5 (index 4)
-            const address = utils.encode_cell({ r: R, c: 0 });
-            if (coverWorksheet[address] && coverWorksheet[address].f) {
-                 coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
-            }
-        }
-        
-        utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
-
-        // --- Master View ---
-        const masterSheetName = "Master View";
-        const masterSheetData = [
-            ["Checklist Title", "Task ID", "Task Description", "Priority", "Risk Level"],
-            ...pack.checklists.flatMap((checklist) => 
-                checklist.tasks.map(task => [
-                    checklist.title,
-                    task.id,
-                    task.description,
-                    task.priority,
-                    task.riskLevel
-                ])
-            )
-        ];
-        
-        const masterWorksheet = utils.aoa_to_sheet(masterSheetData);
-        masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }];
-        
-        const rangeMaster = utils.decode_range(masterWorksheet['!ref']!);
-        for (let C = rangeMaster.s.c; C <= rangeMaster.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if (masterWorksheet[address]) {
-                masterWorksheet[address].s = headerStyle;
-            }
-        }
-        masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-        
-        utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
-
-        // --- Individual Checklist Sheets ---
-        pack.checklists.forEach(checklist => {
-            const checklistHeaders = [
-                'Task ID', 'Task', 'Priority', 'Risk Level', 
-                'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-            ];
-            
-            const tasksForSheet = checklist.tasks.map(task => [
-                task.id,
-                task.description,
-                task.priority,
-                task.riskLevel,
-                task.proof,
-                'Pending',
-                '',
-                ''
-            ]);
-
-            const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-            const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-            
-            worksheet['!cols'] = [
-                { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-                { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-            ];
-
-             const headerRange = utils.decode_range(worksheet['!ref']!);
-             for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-                const address = utils.encode_cell({ r: 0, c: C });
-                if(worksheet[address]) {
-                    worksheet[address].s = headerStyle;
-                }
-             }
-             worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
-            const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-            utils.book_append_sheet(workbook, worksheet, sheetName);
-        });
-
-        writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
-        setShowDownloadConfirm(true);
-    }
-
+    
     const personalizationPriceINR = 3000;
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
     const enterprisePriceINR = 49999;
@@ -262,7 +139,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="q2">Which department needs the most improvement?</Label>
-                                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&amp;B..." />
+                                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
@@ -281,12 +158,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <AlertDialogFooter>
                                 <AlertDialogCancel asChild>
                                     <Link href={personalizedPackLink} target="_blank">
-                                        Skip &amp; Proceed to Purchase
+                                        Skip & Proceed to Purchase
                                     </Link>
                                 </AlertDialogCancel>
                                 <AlertDialogAction asChild>
                                      <Link href={personalizedPackLink} target="_blank">
-                                        Generate &amp; Proceed to Purchase
+                                        Generate & Proceed to Purchase
                                     </Link>
                                 </AlertDialogAction>
                             </AlertDialogFooter>
@@ -321,19 +198,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     return (
         <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
-             <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
-                <AlertDialogContent>
-                    <AlertDialogHeader>
-                        <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
-                        <AlertDialogDescription>
-                            Your checklist pack has started downloading. Please check your downloads folder.
-                        </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                        <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-            </AlertDialog>
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
@@ -399,5 +263,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    

@@ -1,16 +1,185 @@
 
+'use client';
+
 import Link from "next/link";
+import * as React from 'react';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, Download } from "lucide-react";
+import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
+import { writeFile, utils } from 'xlsx-js-style';
+import { useSearchParams } from 'next/navigation';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
-export default function ThankYouPage() {
+
+const handleDownload = (pack: PremiumPack | undefined) => {
+    if (!pack) {
+        // In a real app, you'd want better error handling here.
+        alert("Could not find the purchased pack. Please contact support.");
+        return;
+    }
+    
+    const workbook = utils.book_new();
+    const headerStyle = {
+        font: { bold: true, color: { rgb: "FFFFFF" } },
+        fill: { fgColor: { rgb: "0A2540" } }
+    };
+
+    // --- Cover Page ---
+    const coverPageName = "Cover Page";
+    const coverPageHeader = [pack.title];
+    const coverPageData = [
+        [" "],
+        ["Click to navigate:"],
+        ["Checklist Title", "Department", "Frequency", "Role"],
+         ...pack.checklists.map((checklist) => {
+            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+            return [
+                { v: checklist.title, f: formula },
+                checklist.department,
+                checklist.frequency,
+                checklist.role
+            ];
+        })
+    ];
+
+    const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
+    coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
+    
+    // Style header
+    coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
+    
+    // Style table headers
+    ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
+        if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
+    });
+
+    // Style hyperlinks
+    const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
+    for (let R = 4; R <= rangeLinks.e.r; ++R) { // Start from row 5 (index 4)
+        const address = utils.encode_cell({ r: R, c: 0 });
+        if (coverWorksheet[address] && coverWorksheet[address].f) {
+             coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+        }
+    }
+    
+    utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
+
+    // --- Master View ---
+    const masterSheetName = "Master View";
+    const masterSheetData = [
+        ["Checklist Title", "Task ID", "Task Description", "Priority", "Risk Level"],
+        ...pack.checklists.flatMap((checklist) => 
+            checklist.tasks.map(task => [
+                checklist.title,
+                task.id,
+                task.description,
+                task.priority,
+                task.riskLevel
+            ])
+        )
+    ];
+    
+    const masterWorksheet = utils.aoa_to_sheet(masterSheetData);
+    masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }];
+    
+    const rangeMaster = utils.decode_range(masterWorksheet['!ref']!);
+    for (let C = rangeMaster.s.c; C <= rangeMaster.e.c; ++C) {
+        const address = utils.encode_cell({ r: 0, c: C });
+        if (masterWorksheet[address]) {
+            masterWorksheet[address].s = headerStyle;
+        }
+    }
+    masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+    
+    utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
+
+    // --- Individual Checklist Sheets ---
+    pack.checklists.forEach(checklist => {
+        const checklistHeaders = [
+            'Task ID', 'Task', 'Priority', 'Risk Level', 
+            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+        ];
+        
+        const tasksForSheet = checklist.tasks.map(task => [
+            task.id,
+            task.description,
+            task.priority,
+            task.riskLevel,
+            task.proof,
+            'Pending',
+            '',
+            ''
+        ]);
+
+        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+        
+        worksheet['!cols'] = [
+            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
+            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
+        ];
+
+         const headerRange = utils.decode_range(worksheet['!ref']!);
+         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+            const address = utils.encode_cell({ r: 0, c: C });
+            if(worksheet[address]) {
+                worksheet[address].s = headerStyle;
+            }
+         }
+         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+
+        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+        utils.book_append_sheet(workbook, worksheet, sheetName);
+    });
+
+    writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
+}
+
+
+function ThankYouContent() {
+  const searchParams = useSearchParams();
+  const packId = searchParams.get('pack_id');
+  const pack = premiumPacks.find(p => p.id === packId);
+
+  // For now, as a placeholder, we'll hardcode the hotel pack if no ID is found
+  const fallbackPack = premiumPacks.find(p => p.id === 'hospitality_excellence_suite');
+  const purchasedPack = pack || fallbackPack;
+
+  const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
+
+  const onDownload = () => {
+    handleDownload(purchasedPack);
+    setShowDownloadConfirm(true);
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
+          <AlertDialogContent>
+              <AlertDialogHeader>
+                  <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
+                  <AlertDialogDescription>
+                      Your checklist pack has started downloading. Please check your downloads folder.
+                  </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                  <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
+              </AlertDialogFooter>
+          </AlertDialogContent>
+      </AlertDialog>
+
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-          <Logo className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-bold">MoreMeets</span>
+        <Link href="/" className="flex items-center justify-center" prefetch={false}>
+          <Logo className="h-10 w-auto" />
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
           <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
@@ -28,9 +197,13 @@ export default function ThankYouPage() {
                     Thank You for Your Purchase!
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    Your download should begin automatically. Please check your downloads folder. An email confirmation has also been sent to you.
+                    Your payment was successful. Click the button below to download your checklist pack. An email confirmation has also been sent to you.
                 </p>
             </div>
+             <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
+                <Download className="mr-2 h-5 w-5" />
+                Download Your Pack
+              </Button>
             <Button size="lg" asChild className="group mt-4 text-lg py-7 px-10" variant="accent">
               <Link href="/packs">
                 Explore More Packages
@@ -44,9 +217,8 @@ export default function ThankYouPage() {
       <footer className="w-full border-t bg-secondary/50 mt-auto">
         <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
           <div className="flex flex-col items-center md:items-start gap-2">
-            <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-              <Logo className="h-6 w-6 text-primary" />
-              <span className="font-headline text-lg font-bold">MoreMeets</span>
+            <Link href="/" className="flex items-center justify-center" prefetch={false}>
+              <Logo className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
               The Professional Standard for Compliance & Operations Checklists.
@@ -74,5 +246,14 @@ export default function ThankYouPage() {
         </div>
       </footer>
     </div>
+  );
+}
+
+
+export default function ThankYouPage() {
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <ThankYouContent />
+    </React.Suspense>
   );
 }
