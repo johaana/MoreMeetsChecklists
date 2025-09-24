@@ -68,6 +68,8 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
     
+    const razorpayLink = "https://rzp.io/rzp/9WsK9ML";
+
     const handleDownload = () => {
         const workbook = utils.book_new();
         const headerStyle = {
@@ -187,12 +189,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
         setShowDownloadConfirm(true);
     }
-    
-    const handlePersonalizedDownload = () => {
-        // Here you would capture the form data and generate a personalized file.
-        // For now, it just triggers the standard download.
-        handleDownload();
-    }
 
     const personalizationPriceINR = 3000;
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
@@ -212,8 +208,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button size="lg" className="w-full font-bold text-lg" onClick={handleDownload}>
-                        Get Professional Pack
+                     <Button size="lg" className="w-full font-bold text-lg" asChild>
+                        <Link href={razorpayLink} target="_blank">
+                           Get Professional Pack
+                        </Link>
                     </Button>
                 </CardFooter>
             </Card>
@@ -264,7 +262,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="q2">Which department needs the most improvement?</Label>
-                                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
+                                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&amp;B..." />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
@@ -281,9 +279,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
                             <AlertDialogFooter>
-                                <AlertDialogCancel onClick={handleDownload}>Skip & Download Standard</AlertDialogCancel>
-                                <AlertDialogAction onClick={handlePersonalizedDownload}>
-                                    Generate & Proceed to Purchase
+                                <AlertDialogCancel asChild>
+                                    <Link href={razorpayLink} target="_blank">
+                                        Skip &amp; Proceed to Purchase
+                                    </Link>
+                                </AlertDialogCancel>
+                                <AlertDialogAction asChild>
+                                     <Link href={razorpayLink} target="_blank">
+                                        Generate &amp; Proceed to Purchase
+                                    </Link>
                                 </AlertDialogAction>
                             </AlertDialogFooter>
                         </AlertDialogContent>
@@ -394,7 +398,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
             </div>
         </section>
-    )
+    );
 }
-
-    
