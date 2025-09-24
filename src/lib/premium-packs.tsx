@@ -293,7 +293,7 @@ export const premiumPacks = [
         description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
-        badgeVariant: "secondary" as const,
+        badgeVariant: "accent" as const,
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",

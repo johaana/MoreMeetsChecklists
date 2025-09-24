@@ -35,7 +35,7 @@ export default function AllPacksPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {premiumPacks.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary">
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                             <CardHeader className="p-6 relative">
                                 {pack.badgeText && (
                                     <Badge variant={pack.badgeVariant} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
@@ -43,7 +43,7 @@ export default function AllPacksPage() {
                                     </Badge>
                                 )}
                                 <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20 shrink-0">
+                                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
                                         {pack.icon}
                                     </div>
                                     <div className="flex-1">
@@ -57,16 +57,16 @@ export default function AllPacksPage() {
                                 <ul className="space-y-2 text-muted-foreground text-sm">
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80"/>
+                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
                                             <span>{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                                <Button asChild className="w-full font-bold">
                                     <Link href={`/packs/${pack.id}`}>
-                                        View Full Checklist & Purchase
+                                        View Full Checklist &amp; Purchase
                                     </Link>
                                 </Button>
                             </CardFooter>
@@ -84,7 +84,7 @@ export default function AllPacksPage() {
                         <span className="font-headline text-lg font-bold">MoreMeets</span>
                     </Link>
                     <p className="text-sm text-muted-foreground max-w-xs">
-                        The Professional Standard for Compliance & Operations Checklists.
+                        The Professional Standard for Compliance &amp; Operations Checklists.
                     </p>
                 </div>
                  <div className="flex flex-col gap-2 items-center text-sm">
@@ -104,7 +104,7 @@ export default function AllPacksPage() {
                     <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Refund Policy
                     </Link>
-                     <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
+                     <p className="text-xs text-muted-foreground mt-4">&amp;copy; 2024 MoreMeets. All rights reserved.</p>
                 </div>
             </div>
         </footer>

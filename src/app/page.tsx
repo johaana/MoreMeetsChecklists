@@ -62,7 +62,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-6">
                         <AccordionTrigger className="text-lg font-semibold">Do you have checklists for ESG or sustainability?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes. Many of our packs, like the <strong>Facility Management</strong> and <strong>Manufacturing</strong> checklists, contain specific SOPs for energy efficiency, waste reduction, and responsible sourcing. We also have checklists focused on social aspects like labor law compliance and ethical vendor management to help you meet your ESG goals.
+                            Yes. Many of our packs, like the &lt;strong&gt;Facility Management&lt;/strong&gt; and &lt;strong&gt;Manufacturing&lt;/strong&gt; checklists, contain specific SOPs for energy efficiency, waste reduction, and responsible sourcing. We also have checklists focused on social aspects like labor law compliance and ethical vendor management to help you meet your ESG goals.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
@@ -90,7 +90,7 @@ function PackList() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {packsToShow.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary">
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                             <CardHeader className="p-6 relative">
                                 {pack.badgeText && (
                                     <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
@@ -98,7 +98,7 @@ function PackList() {
                                     </Badge>
                                 )}
                                 <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-primary/10 rounded-full border border-primary/20 shrink-0">
+                                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
                                         {pack.icon}
                                     </div>
                                     <div className="flex-1">
@@ -112,16 +112,16 @@ function PackList() {
                                 <ul className="space-y-2 text-muted-foreground text-sm">
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-primary/80"/>
+                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
                                             <span>{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold" variant="accent">
+                                <Button asChild className="w-full font-bold">
                                     <Link href={`/packs/${pack.id}`}>
-                                        View Full Checklist & Purchase
+                                        View Full Checklist &amp; Purchase
                                     </Link>
                                 </Button>
                             </CardFooter>
@@ -195,13 +195,13 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                           The Professional Standard for Compliance & Operations Checklists.
+                           The Professional Standard for Compliance &amp; Operations Checklists.
                         </h1>
                         <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
                            Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                            <Button size="lg" asChild className="group text-lg py-7 px-10">
                                 <Link href="/packs">
                                     Browse All Packages
                                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -309,7 +309,7 @@ export default function Home() {
                         <span className="font-headline text-lg font-bold">MoreMeets</span>
                     </Link>
                     <p className="text-sm text-muted-foreground max-w-xs">
-                        The Professional Standard for Compliance & Operations Checklists.
+                        The Professional Standard for Compliance &amp; Operations Checklists.
                     </p>
                 </div>
                  <div className="flex flex-col gap-2 items-center text-sm">
@@ -329,7 +329,7 @@ export default function Home() {
                     <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Refund Policy
                     </Link>
-                     <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
+                     <p className="text-xs text-muted-foreground mt-4">&amp;copy; 2024 MoreMeets. All rights reserved.</p>
                 </div>
             </div>
         </footer>
