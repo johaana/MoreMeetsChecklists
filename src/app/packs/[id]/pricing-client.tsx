@@ -2,22 +2,22 @@
 'use client';
 
 import * as React from 'react';
-import type { PremiumPack, PreviewScenario } from '@/lib/premium-packs';
+import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import RazorpayButton from '@/components/ui/razorpay-button';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
-function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
+
+function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
+    if (!scenario) return null;
+
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -64,6 +64,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
         </AlertDialog>
     );
 }
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
@@ -140,8 +141,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button size="lg" className="w-full font-bold text-lg" variant="accent" asChild>
-                        <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
+                    <Button asChild className="w-full font-bold">
+                      <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
                     </Button>
                 </CardFooter>
             </Card>
@@ -214,7 +215,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
 
     
