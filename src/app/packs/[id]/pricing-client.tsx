@@ -12,11 +12,35 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import RazorpayButton from '@/components/ui/razorpay-button';
+
+
+// A simple component to load the Razorpay script
+const RazorpayScriptLoader = ({ buttonId }: { buttonId: string }) => {
+    const formRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.async = true;
+        script.dataset.payment_button_id = buttonId;
+
+        const form = document.createElement('form');
+        form.appendChild(script);
+        
+        const currentRef = formRef.current;
+        if (currentRef) {
+            currentRef.appendChild(form);
+        }
+
+        return () => {
+            if (currentRef && currentRef.firstChild) {
+                currentRef.removeChild(currentRef.firstChild);
+            }
+        };
+    }, [buttonId]);
+
+    return <div ref={formRef} className="w-full"></div>;
+};
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -74,9 +98,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackButtonId = "pl_RLWZWUcvyLCF1a";
     
     const basePrice = pack.priceINR || 0;
-    // The Personalized pack has a fixed plan price in Razorpay, so we use a constant.
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 39999;
+
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
         if (typeof window !== 'undefined') {
@@ -97,10 +121,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto">
-                    <RazorpayButton buttonId={professionalPackButtonId} onPurchase={() => handlePurchaseClick('professional')}>
-                        Purchase Now
-                    </RazorpayButton>
+                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('professional')}>
+                     <RazorpayScriptLoader buttonId={professionalPackButtonId} />
                 </CardFooter>
             </Card>,
 
@@ -114,8 +136,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="text-4xl font-bold text-foreground">
                             ₹{personalizedPackPrice}
                         </p>
-                        <p className="text-xl font-medium text-muted-foreground line-through">
-                            ₹{personalizedPackPrice + 2000}
+                         <p className="text-xl font-medium text-muted-foreground line-through">
+                           ₹{basePrice + 3000}
                         </p>
                     </div>
                 </CardHeader>
@@ -125,10 +147,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Your branding automatically added.</span></p>
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto">
-                     <RazorpayButton buttonId={personalizedPackButtonId} onPurchase={() => handlePurchaseClick('personalized')} variant="accent">
-                        Purchase Now
-                    </RazorpayButton>
+                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('personalized')}>
+                    <RazorpayScriptLoader buttonId={personalizedPackButtonId} />
                 </CardFooter>
             </Card>,
 
@@ -222,4 +242,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </div>
         </section>
     );
-}
+
+    
