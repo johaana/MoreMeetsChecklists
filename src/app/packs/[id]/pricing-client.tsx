@@ -11,11 +11,11 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import RazorpayButton from '@/components/ui/razorpay-button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
@@ -67,64 +67,59 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-function PersonalizationForm({ onComplete }: { onComplete: () => void }) {
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log("Personalization data submitted.");
-        onComplete();
-    };
 
-    return (
-        <div className="w-full max-w-2xl mx-auto py-12">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <Sparkles className="h-16 w-16 text-accent" />
-                <div className="space-y-2">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline">
-                        Personalize Your Pack
-                    </h1>
-                    <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        This helps us create your Custom Priority Action Plan. Your download will be ready after payment.
-                    </p>
-                </div>
-                <form onSubmit={handleSubmit} className="w-full text-left space-y-4 pt-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="q1">What is your primary business focus?</Label>
-                            <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="q2">Which department needs the most improvement?</Label>
-                            <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
-                        <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
-                        <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="q5">Anything else you'd like us to know?</Label>
-                        <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH..." />
-                    </div>
-                    <Button type="submit" className="w-full" variant="accent">
-                        Proceed to Payment
-                    </Button>
-                </form>
-            </div>
-        </div>
-    );
+function RazorpayButton({ buttonId, children, onClick }: { buttonId: string; children: React.ReactNode; onClick: () => void }) {
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const { toast } = useToast();
+
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+    script.async = true;
+    script.dataset.payment_button_id = buttonId;
+    
+    if (formRef.current) {
+      formRef.current.innerHTML = '';
+      formRef.current.appendChild(script);
+    }
+    
+  }, [buttonId]);
+
+  const handleCustomButtonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onClick();
+    
+    const razorpayButton = formRef.current?.querySelector('.razorpay-payment-button') as HTMLElement | null;
+    if (razorpayButton) {
+      razorpayButton.click();
+    } else {
+        toast({
+            variant: "destructive",
+            title: "Checkout Error",
+            description: "Could not initialize the payment gateway. Please try again or contact support.",
+        });
+    }
+  };
+
+  return (
+    <div onClick={handleCustomButtonClick} className="w-full">
+      {children}
+      <div style={{ display: 'none' }}>
+        <form ref={formRef}></form>
+      </div>
+    </div>
+  );
 }
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedPackButtonId = "pl_RLWZWUcvyLCF1a";
     
     const personalizationPriceINR = 3000;
-    const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
-    const enterprisePriceINR = 49999;
+    const basePrice = pack.priceINR || 0;
+    const personalizedPackPrice = basePrice + personalizationPriceINR;
+    const enterprisePriceINR = basePrice * 5;
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
         if (typeof window !== 'undefined') {
@@ -135,10 +130,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
-                <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
+                <Badge variant="secondary" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
                 <CardHeader className="p-6 pt-8">
                     <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                    <p className="text-4xl font-bold text-foreground">₹{pack.priceINR}</p>
+                    <p className="text-4xl font-bold text-foreground">₹{basePrice}</p>
                 </CardHeader>
                 <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                      <p className="flex items-start gap-2"><Package className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
@@ -146,8 +141,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <RazorpayButton buttonId={professionalPackButtonId}>
-                        <Button className="w-full font-bold" variant="accent" onClick={() => handlePurchaseClick('professional')}>Purchase Now</Button>
+                    <RazorpayButton buttonId={professionalPackButtonId} onClick={() => handlePurchaseClick('professional')}>
+                        <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
@@ -174,14 +169,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayButton buttonId={personalizedPackButtonId}>
-                        <Button className="w-full font-bold" variant="accent" onClick={() => handlePurchaseClick('personalized')}>Purchase Now</Button>
+                     <RazorpayButton buttonId={personalizedPackButtonId} onClick={() => handlePurchaseClick('personalized')}>
+                        <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
 
              <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
-                 <Badge variant="destructive" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">For Teams</Badge>
+                 <Badge variant="secondary" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">For Teams</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                         <Building className="w-6 h-6 text-primary" />
@@ -271,3 +266,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+    
