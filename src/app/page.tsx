@@ -195,10 +195,10 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                            It's More Than Just A Meeting
+                           The Professional Standard for Compliance & Operations Checklists.
                         </h1>
                         <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                           From destination weddings to corporate offsites, we master the art of unforgettable experiences. We handle the details, so you can focus on the moments that matter.
+                           Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
                             <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -260,7 +260,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
@@ -336,4 +336,4 @@ export default function Home() {
     </div>
   );
 
-    
+}
