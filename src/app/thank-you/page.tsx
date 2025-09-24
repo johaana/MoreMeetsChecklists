@@ -5,7 +5,7 @@ import Link from "next/link";
 import * as React from 'react';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Download, AlertTriangle } from "lucide-react";
+import { CheckCircle, ArrowRight, Download, AlertTriangle, Sparkles } from "lucide-react";
 import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { writeFile, utils } from 'xlsx-js-style';
 import {
@@ -16,6 +16,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 
 const handleDownload = (pack: PremiumPack | undefined) => {
@@ -143,18 +146,80 @@ const handleDownload = (pack: PremiumPack | undefined) => {
 }
 
 
+function PersonalizationForm({ onComplete }: { onComplete: () => void }) {
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Here you would typically send the form data to your backend
+        console.log("Personalization data submitted.");
+        onComplete();
+    };
+
+    return (
+        <div className="w-full max-w-2xl mx-auto py-12">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+                <Sparkles className="h-16 w-16 text-accent" />
+                <div className="space-y-2">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline">
+                        Personalize Your Pack
+                    </h1>
+                    <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        Your download will begin after you submit this form. This helps us create your Custom Priority Action Plan.
+                    </p>
+                </div>
+                <form onSubmit={handleSubmit} className="w-full text-left space-y-4 pt-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="q1">What is your primary business focus?</Label>
+                            <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="q2">Which department needs the most improvement?</Label>
+                            <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
+                        <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
+                        <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="q5">Anything else you'd like us to know?</Label>
+                        <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH..." />
+                    </div>
+                    <Button type="submit" className="w-full" variant="accent">
+                        Submit & Prepare Download
+                    </Button>
+                </form>
+            </div>
+        </div>
+    );
+}
+
 function ThankYouContent() {
   const [purchasedPack, setPurchasedPack] = React.useState<PremiumPack | undefined>(undefined);
+  const [packType, setPackType] = React.useState<'professional' | 'personalized' | null>(null);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [showPersonalization, setShowPersonalization] = React.useState(false);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       const packId = sessionStorage.getItem('purchasedPackId');
-      if (packId) {
+      const type = sessionStorage.getItem('purchasedPackType') as 'professional' | 'personalized' | null;
+
+      if (packId && type) {
         const pack = premiumPacks.find(p => p.id === packId);
         setPurchasedPack(pack);
-        // Clean up session storage after retrieving the ID for security
+        setPackType(type);
+
+        if (type === 'personalized') {
+            setShowPersonalization(true);
+        }
+        
         sessionStorage.removeItem('purchasedPackId');
+        sessionStorage.removeItem('purchasedPackType');
       }
       setIsLoading(false);
     }
@@ -165,6 +230,10 @@ function ThankYouContent() {
   const onDownload = () => {
     handleDownload(purchasedPack);
     setShowDownloadConfirm(true);
+  }
+
+  const handlePersonalizationComplete = () => {
+    setShowPersonalization(false);
   }
   
   const PageLayout = ({ children }: { children: React.ReactNode }) => (
@@ -242,27 +311,31 @@ function ThankYouContent() {
 
       <section className="w-full max-w-2xl mx-auto py-12 md:py-24 lg:py-32 px-4 md:px-6">
         {purchasedPack ? (
-          <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <CheckCircle className="h-20 w-20 text-green-500" />
-            <div className="space-y-2">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                    Thank You for Your Purchase!
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    Your payment was successful. Click the button below to download your <strong>{purchasedPack.title}</strong> pack.
-                </p>
-            </div>
-             <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
-                <Download className="mr-2 h-5 w-5" />
-                Download Your Pack
-              </Button>
-            <Button size="lg" asChild className="group mt-4 text-lg py-7 px-10" variant="accent">
-              <Link href="/packs">
-                Explore More Packages
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
+            showPersonalization ? (
+                <PersonalizationForm onComplete={handlePersonalizationComplete} />
+            ) : (
+                <div className="flex flex-col items-center justify-center space-y-6 text-center">
+                    <CheckCircle className="h-20 w-20 text-green-500" />
+                    <div className="space-y-2">
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
+                            Thank You for Your Purchase!
+                        </h1>
+                        <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                            Your payment was successful. Click the button below to download your <strong>{purchasedPack.title}</strong> pack.
+                        </p>
+                    </div>
+                    <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
+                        <Download className="mr-2 h-5 w-5" />
+                        Download Your Pack
+                    </Button>
+                    <Button size="lg" asChild className="group mt-4" variant="outline">
+                        <Link href="/packs">
+                            Explore More Packages
+                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
+            )
         ) : (
            <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <AlertTriangle className="h-20 w-20 text-yellow-500" />
@@ -296,3 +369,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    

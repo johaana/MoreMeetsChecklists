@@ -73,9 +73,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
     const enterprisePriceINR = 49999;
 
-    const handlePurchaseClick = () => {
+    const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('purchasedPackId', pack.id);
+            sessionStorage.setItem('purchasedPackType', packType);
         }
     };
 
@@ -91,7 +92,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Download className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto" onClick={handlePurchaseClick}>
+                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('professional')}>
                     <RazorpayButton buttonId={professionalPackButtonId} />
                 </CardFooter>
             </Card>,
@@ -117,54 +118,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Your branding automatically added.</span></p>
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
-                <CardFooter className="p-6 mt-auto">
-                     <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Button size="lg" className="w-full font-bold text-lg" variant="accent">
-                                Personalize & Purchase
-                            </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent className="max-w-2xl">
-                            <AlertDialogHeader>
-                                <AlertDialogTitle className="flex items-center gap-2 font-headline text-2xl">
-                                    <Sparkles className="w-6 h-6 text-accent" />
-                                    Personalize Your Checklist Pack
-                                </AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    Answer a few questions to help us tailor this pack to your exact needs. This will add a customized 'Priority Action Plan' to your download. After purchase, you will receive your pack instantly.
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <div className="space-y-4 py-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="q1">What is your primary business focus?</Label>
-                                        <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="q2">Which department needs the most improvement?</Label>
-                                        <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
-                                    <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
-                                </div>
-                                    <div className="space-y-2">
-                                    <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
-                                    <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
-                                </div>
-                                    <div className="space-y-2">
-                                    <Label htmlFor="q5">Anything else you'd like us to know?</Label>
-                                    <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH, or any other unique challenges." />
-                                </div>
-                            </div>
-                            <AlertDialogFooter>
-                                <div className='mx-auto' onClick={handlePurchaseClick}>
-                                    <RazorpayButton buttonId={personalizedPackButtonId} />
-                                </div>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
+                <CardFooter className="p-6 mt-auto" onClick={() => handlePurchaseClick('personalized')}>
+                    <RazorpayButton buttonId={personalizedPackButtonId} />
                 </CardFooter>
             </Card>,
 
@@ -259,5 +214,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
