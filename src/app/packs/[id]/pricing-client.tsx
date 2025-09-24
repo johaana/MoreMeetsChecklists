@@ -194,9 +194,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
     const enterprisePriceINR = 49999;
 
-    const pricingCards = (
-        <>
-            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
+    const pricingCards = [
+            <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
                 <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-primary text-primary-foreground font-bold z-10 border-2 border-background">Most Popular</Badge>
                 <CardHeader className="p-6 pt-8">
                     <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
@@ -214,9 +213,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </Link>
                     </Button>
                 </CardFooter>
-            </Card>
+            </Card>,
 
-            <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
+            <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
                 <Badge className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">Best Value</Badge>
                 <CardHeader className="p-6">
                     <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
@@ -293,9 +292,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </AlertDialogContent>
                     </AlertDialog>
                 </CardFooter>
-            </Card>
+            </Card>,
 
-             <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
+             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
                  <Badge variant="destructive" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 bg-accent text-accent-foreground font-bold z-10 border-2 border-background">For Teams</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
@@ -317,8 +316,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </Button>
                 </CardFooter>
             </Card>
-        </>
-    );
+    ];
 
     return (
         <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
@@ -343,7 +341,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 
                 {/* Desktop View */}
                 <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {pricingCards}
+                    {pricingCards.map(card => card)}
                 </div>
 
                 {/* Mobile View */}
