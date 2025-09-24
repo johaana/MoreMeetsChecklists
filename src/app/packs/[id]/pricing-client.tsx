@@ -16,8 +16,76 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import RazorpayButton from '@/components/ui/razorpay-button';
+import { writeFile, utils } from 'xlsx-js-style';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
+    const handleDownload = (pack: PremiumPack | undefined) => {
+        if (!pack) {
+            alert("Could not find the pack to download.");
+            return;
+        }
+        
+        const workbook = utils.book_new();
+        const headerStyle = {
+            font: { bold: true, color: { rgb: "FFFFFF" } },
+            fill: { fgColor: { rgb: "0A2540" } }
+        };
+
+        const coverPageName = "Cover Page";
+        const coverPageData = [
+            [pack.title],
+            [" "],
+            ["Click to navigate:"],
+            ["Checklist Title", "Department", "Frequency", "Role"],
+             ...pack.checklists.map((checklist) => {
+                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+                return [
+                    { v: checklist.title, f: formula },
+                    checklist.department,
+                    checklist.frequency,
+                    checklist.role
+                ];
+            })
+        ];
+
+        const coverWorksheet = utils.aoa_to_sheet(coverPageData);
+        coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
+        coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
+        ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
+            if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
+        });
+        const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
+        for (let R = 4; R <= rangeLinks.e.r; ++R) {
+            const address = utils.encode_cell({ r: R, c: 0 });
+            if (coverWorksheet[address] && coverWorksheet[address].f) {
+                 coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+            }
+        }
+        utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
+
+        // Individual Checklist Sheets
+        pack.checklists.forEach(checklist => {
+            const worksheet = utils.aoa_to_sheet([
+                ['Task ID', 'Task', 'Priority', 'Risk Level', 'Proof / Evidence', 'Status', 'Assigned To', 'Notes'],
+                ...checklist.tasks.map(task => [
+                    task.id, task.description, task.priority, task.riskLevel, task.proof, 'Pending', '', ''
+                ])
+            ]);
+            worksheet['!cols'] = [{ wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }];
+            const headerRange = utils.decode_range(worksheet['!ref']!);
+             for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+                const address = utils.encode_cell({ r: 0, c: C });
+                if(worksheet[address]) worksheet[address].s = headerStyle;
+             }
+             worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+            const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            utils.book_append_sheet(workbook, worksheet, sheetName);
+        });
+
+        writeFile(workbook, `${pack.title.replace(/ /g, '_')}_Sample.xlsx`);
+    }
+
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -67,7 +135,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
-    const personalizedPackLink = "https://rzp.io/rzp/JFmUeMms";
+    const personalizedPackButtonId = "pl_RLWZWUcvyLCF1a";
     
     const personalizationPriceINR = 3000;
     const personalizedPackPrice = (pack.priceINR || 7999) + personalizationPriceINR;
@@ -125,7 +193,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     Personalize Your Checklist Pack
                                 </AlertDialogTitle>
                                 <AlertDialogDescription>
-                                    Answer a few questions to help us tailor this pack to your exact needs. This will add a customized 'Priority Action Plan' to your download.
+                                    Answer a few questions to help us tailor this pack to your exact needs. This will add a customized 'Priority Action Plan' to your download. After purchase, you will receive your pack instantly.
                                 </AlertDialogDescription>
                             </AlertDialogHeader>
                             <div className="space-y-4 py-4">
@@ -153,16 +221,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
                             <AlertDialogFooter>
-                                <AlertDialogCancel asChild>
-                                    <Link href={personalizedPackLink} target="_blank">
-                                        Skip & Proceed to Purchase
-                                    </Link>
-                                </AlertDialogCancel>
-                                <AlertDialogAction asChild>
-                                     <Link href={personalizedPackLink} target="_blank">
-                                        Generate & Proceed to Purchase
-                                    </Link>
-                                </AlertDialogAction>
+                                <div className='mx-auto'>
+                                    <RazorpayButton buttonId={personalizedPackButtonId} />
+                                </div>
                             </AlertDialogFooter>
                         </AlertDialogContent>
                     </AlertDialog>
@@ -260,3 +321,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
