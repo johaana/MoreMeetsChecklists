@@ -68,7 +68,8 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
     
-    const razorpayLink = "https://rzp.io/rzp/9WsK9ML";
+    const professionalPackLink = "https://rzp.io/rzp/9WsK9ML";
+    const personalizedPackLink = "https://rzp.io/rzp/JFmUeMms";
 
     const handleDownload = () => {
         const workbook = utils.book_new();
@@ -208,7 +209,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                      <Button size="lg" className="w-full font-bold text-lg" asChild>
-                        <Link href={razorpayLink} target="_blank">
+                        <Link href={professionalPackLink} target="_blank">
                            Get Professional Pack
                         </Link>
                     </Button>
@@ -279,12 +280,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                             <AlertDialogFooter>
                                 <AlertDialogCancel asChild>
-                                    <Link href={razorpayLink} target="_blank">
+                                    <Link href={personalizedPackLink} target="_blank">
                                         Skip &amp; Proceed to Purchase
                                     </Link>
                                 </AlertDialogCancel>
                                 <AlertDialogAction asChild>
-                                     <Link href={razorpayLink} target="_blank">
+                                     <Link href={personalizedPackLink} target="_blank">
                                         Generate &amp; Proceed to Purchase
                                     </Link>
                                 </AlertDialogAction>
@@ -398,3 +399,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
