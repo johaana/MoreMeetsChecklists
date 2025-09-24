@@ -195,10 +195,10 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                            Unlock World-Class Operational Standards
+                            It's More Than Just A Meeting
                         </h1>
                         <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                           Instantly download professional operational checklists and SOPs. Cover every base—daily tasks, security protocols, compliance audits—with frameworks built by 200+ industry experts.
+                           From destination weddings to corporate offsites, we master the art of unforgettable experiences. We handle the details, so you can focus on the moments that matter.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
                             <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -335,3 +335,5 @@ export default function Home() {
         </footer>
     </div>
   );
+
+    
