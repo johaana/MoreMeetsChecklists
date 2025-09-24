@@ -1,70 +1,59 @@
 
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import type { VariantProps } from 'class-variance-authority';
 
-interface RazorpayButtonProps extends React.FormHTMLAttributes<HTMLFormElement>, VariantProps<typeof buttonVariants> {
+interface RazorpayButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   buttonId: string;
-  onClick: () => void;
+  onPurchase: () => void;
   children: React.ReactNode;
 }
 
 const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   buttonId,
   children,
-  onClick,
+  onPurchase,
   className,
   variant,
   size,
   ...props
 }) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
     script.async = true;
     script.dataset.payment_button_id = buttonId;
 
-    const form = document.getElementById(`razorpay-form-${buttonId}`);
+    const form = formRef.current;
     if (form) {
-      // Clear previous script if any
+      // Clear previous script to avoid duplicates
       while (form.firstChild) {
         form.removeChild(form.firstChild);
       }
       form.appendChild(script);
     }
-    
-    // Add custom styles to make the razorpay button look like our button
-    const style = document.createElement('style');
-    style.innerHTML = `
-      .razorpay-payment-button {
-        display: none !important;
-      }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
-
   }, [buttonId]);
 
   const handleWrapperClick = () => {
-    onClick();
-    const razorpayButton = document.querySelector(
-      `#razorpay-form-${buttonId} .razorpay-payment-button`
-    ) as HTMLElement | null;
-    if (razorpayButton) {
-      razorpayButton.click();
-    }
+    onPurchase();
   };
 
   return (
-    <div onClick={handleWrapperClick} className={cn(buttonVariants({ variant, size, className }), 'w-full font-bold')}>
-        {children}
-      <form id={`razorpay-form-${buttonId}`} {...props} style={{ display: 'none' }}></form>
+    <div
+      ref={buttonWrapperRef}
+      onClick={handleWrapperClick}
+      className={cn(buttonVariants({ variant, size, className }), 'w-full font-bold relative cursor-pointer')}
+    >
+      {children}
+      <form ref={formRef} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+        {/* The script will inject the button here. The form's opacity is 0, making it invisible but clickable. */}
+      </form>
     </div>
   );
 };

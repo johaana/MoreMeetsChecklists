@@ -73,9 +73,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedPackButtonId = "pl_RLWZWUcvyLCF1a";
     
-    const personalizationPriceINR = 3000;
     const basePrice = pack.priceINR || 0;
-    const personalizedPackPrice = basePrice + personalizationPriceINR;
+    // The Personalized pack has a fixed plan price in Razorpay, so we use a constant.
+    const personalizedPackPrice = 10999;
     const enterprisePriceINR = 39999;
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
@@ -87,7 +87,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
-                <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Most Popular</Badge>
+                <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Most Popular</Badge>
                 <CardHeader className="p-6 pt-8">
                     <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                     <p className="text-4xl font-bold text-foreground">₹{basePrice}</p>
@@ -98,7 +98,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <RazorpayButton buttonId={professionalPackButtonId} onClick={() => handlePurchaseClick('professional')}>
+                    <RazorpayButton buttonId={professionalPackButtonId} onPurchase={() => handlePurchaseClick('professional')}>
                         Purchase Now
                     </RazorpayButton>
                 </CardFooter>
@@ -126,14 +126,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayButton buttonId={personalizedPackButtonId} onClick={() => handlePurchaseClick('personalized')} variant="accent">
+                     <RazorpayButton buttonId={personalizedPackButtonId} onPurchase={() => handlePurchaseClick('personalized')} variant="accent">
                         Purchase Now
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
 
              <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
-                 <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">For Teams</Badge>
+                 <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">For Teams</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                         <Building className="w-6 h-6 text-primary" />
@@ -223,6 +223,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-    
-
-    
