@@ -1,42 +1,70 @@
 
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { Button } from './button';
+import React, { useEffect } from 'react';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
+import type { VariantProps } from 'class-variance-authority';
 
-const RazorpayButton: React.FC<{ buttonId: string, children: React.ReactNode, onClick: () => void }> = ({ buttonId, children, onClick }) => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+interface RazorpayButtonProps extends React.FormHTMLAttributes<HTMLFormElement>, VariantProps<typeof buttonVariants> {
+  buttonId: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}
 
+const RazorpayButton: React.FC<RazorpayButtonProps> = ({
+  buttonId,
+  children,
+  onClick,
+  className,
+  variant,
+  size,
+  ...props
+}) => {
   useEffect(() => {
-    if (formRef.current) {
-        while (formRef.current.firstChild) {
-            formRef.current.removeChild(formRef.current.firstChild);
-        }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+    script.async = true;
+    script.dataset.payment_button_id = buttonId;
 
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-        script.async = true;
-        script.dataset.payment_button_id = buttonId;
-        
-        formRef.current.appendChild(script);
+    const form = document.getElementById(`razorpay-form-${buttonId}`);
+    if (form) {
+      // Clear previous script if any
+      while (form.firstChild) {
+        form.removeChild(form.firstChild);
+      }
+      form.appendChild(script);
     }
+    
+    // Add custom styles to make the razorpay button look like our button
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .razorpay-payment-button {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+
   }, [buttonId]);
 
-  const handleCustomButtonClick = () => {
+  const handleWrapperClick = () => {
     onClick();
-    const razorpayButton = formRef.current?.querySelector('.razorpay-payment-button') as HTMLElement | null;
+    const razorpayButton = document.querySelector(
+      `#razorpay-form-${buttonId} .razorpay-payment-button`
+    ) as HTMLElement | null;
     if (razorpayButton) {
       razorpayButton.click();
     }
   };
 
   return (
-    <div ref={wrapperRef} onClick={handleCustomButtonClick} className="w-full">
-      {children}
-      <div style={{ display: 'none' }}>
-        <form ref={formRef}></form>
-      </div>
+    <div onClick={handleWrapperClick} className={cn(buttonVariants({ variant, size, className }), 'w-full font-bold')}>
+        {children}
+      <form id={`razorpay-form-${buttonId}`} {...props} style={{ display: 'none' }}></form>
     </div>
   );
 };

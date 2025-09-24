@@ -99,7 +99,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <RazorpayButton buttonId={professionalPackButtonId} onClick={() => handlePurchaseClick('professional')}>
-                        <Button className="w-full font-bold">Purchase Now</Button>
+                        Purchase Now
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
@@ -126,8 +126,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Star className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayButton buttonId={personalizedPackButtonId} onClick={() => handlePurchaseClick('personalized')}>
-                        <Button className="w-full font-bold" variant="accent">Purchase Now</Button>
+                     <RazorpayButton buttonId={personalizedPackButtonId} onClick={() => handlePurchaseClick('personalized')} variant="accent">
+                        Purchase Now
                     </RazorpayButton>
                 </CardFooter>
             </Card>,
