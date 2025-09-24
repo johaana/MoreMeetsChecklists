@@ -4,7 +4,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from './button';
 
-const RazorpayButton: React.FC<{ buttonId: string, children: React.ReactNode }> = ({ buttonId, children }) => {
+const RazorpayButton: React.FC<{ buttonId: string, children: React.ReactNode, onClick: () => void }> = ({ buttonId, children, onClick }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -24,6 +24,7 @@ const RazorpayButton: React.FC<{ buttonId: string, children: React.ReactNode }> 
   }, [buttonId]);
 
   const handleCustomButtonClick = () => {
+    onClick();
     const razorpayButton = formRef.current?.querySelector('.razorpay-payment-button') as HTMLElement | null;
     if (razorpayButton) {
       razorpayButton.click();
