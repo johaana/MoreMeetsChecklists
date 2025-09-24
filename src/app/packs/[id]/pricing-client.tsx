@@ -120,8 +120,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <CardFooter className="p-6 mt-auto">
                      <AlertDialog>
                         <AlertDialogTrigger asChild>
-                            <Button size="lg" className="w-full font-bold text-lg bg-accent text-accent-foreground hover:bg-accent/90">
-                                Personalize Now
+                            <Button size="lg" className="w-full font-bold text-lg" variant="accent">
+                                Personalize & Purchase
                             </Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent className="max-w-2xl">
@@ -185,7 +185,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button size="lg" className="w-full font-bold text-lg" variant="outline" asChild>
+                    <Button size="lg" className="w-full font-bold text-lg" variant="accent" asChild>
                         <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
                     </Button>
                 </CardFooter>
@@ -259,3 +259,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
