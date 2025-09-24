@@ -315,8 +315,8 @@ export default function Home() {
                  <div className="flex flex-col gap-2 items-center text-sm">
                     <p className="font-semibold">Quick Links</p>
                     <Link href="/packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
-                    <Link href="#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
-                    <Link href="#faq" className="text-muted-foreground hover:text-foreground">FAQ</Link>
+                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
@@ -326,8 +326,8 @@ export default function Home() {
                     <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Privacy Policy
                     </Link>
-                    <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Sitemap
+                    <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Refund Policy
                     </Link>
                      <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
                 </div>
@@ -335,13 +335,3 @@ export default function Home() {
         </footer>
     </div>
   );
-
-    
-
-
-
-    
-
-    
-
-

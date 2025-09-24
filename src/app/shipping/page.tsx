@@ -1,0 +1,122 @@
+
+import Link from "next/link";
+import { Logo } from "@/components/icons";
+
+const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
+    <div className="space-y-4">
+        <h2 className="text-2xl font-bold font-headline text-primary">{title}</h2>
+        <div className="space-y-4 text-muted-foreground">
+            {children}
+        </div>
+    </div>
+);
+
+export default function ShippingPolicyPage() {
+  return (
+    <div className="flex flex-col min-h-screen bg-background">
+       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
+        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+          <Logo className="h-6 w-6 text-primary" />
+          <span className="font-headline text-lg font-bold">MoreMeets</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
+            <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+                All Packages
+            </Link>
+        </nav>
+      </header>
+
+      <main className="flex-1">
+        <section className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
+                        Shipping & Delivery Policy
+                    </h1>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        Last Updated: July 28, 2024
+                    </p>
+                </div>
+
+                <div className="max-w-3xl mx-auto space-y-8">
+                    <LegalSection title="Product Format">
+                        <p>
+                           All products available on MoreMeets are digital files (Microsoft Excel .xlsx format). There are no physical products, and nothing will be shipped to your physical address.
+                        </p>
+                    </LegalSection>
+
+                    <LegalSection title="Instant Delivery">
+                        <p>
+                           Delivery of our digital products is instant and automatic.
+                        </p>
+                        <p>
+                           Upon successful completion of your payment, you will be immediately redirected to a confirmation page that includes a secure link to download your purchased checklist pack(s).
+                        </p>
+                        <p>
+                           Additionally, a confirmation email with the same download link will be sent to the email address you provided during checkout. Please ensure your email address is correct to avoid any delays.
+                        </p>
+                    </LegalSection>
+
+                     <LegalSection title="Accessing Your Files">
+                        <p>
+                           Your download link will remain active so you can access your files in the future. We recommend downloading and saving your files to your computer or cloud storage service as soon as you receive them.
+                        </p>
+                    </LegalSection>
+                    
+                     <LegalSection title="Troubleshooting">
+                        <p>
+                           <strong>Did not receive an email?</strong> Please check your spam or junk folder. If you still cannot find the email, contact our support team, and we will resend it to you.
+                        </p>
+                        <p>
+                           <strong>Download link not working?</strong> If you encounter any issues with the download link, please try a different web browser or device. If the problem persists, contact us immediately for assistance.
+                        </p>
+                    </LegalSection>
+
+                     <LegalSection title="Contact Us">
+                        <p>
+                           For any issues related to the delivery or download of your files, please contact our support team.
+                        </p>
+                        <p>
+                            You can reach us via our <Link href="/contact" className="text-primary underline">Contact Us</Link> page or by emailing us directly at <a href="mailto:support@moremeets.com" className="text-primary underline">support@moremeets.com</a>.
+                        </p>
+                    </LegalSection>
+                </div>
+            </div>
+        </section>
+      </main>
+
+       <footer className="w-full border-t bg-secondary/50 mt-12">
+            <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
+                <div className="flex flex-col items-center md:items-start gap-2">
+                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+                        <Logo className="h-6 w-6 text-primary" />
+                        <span className="font-headline text-lg font-bold">MoreMeets</span>
+                    </Link>
+                    <p className="text-sm text-muted-foreground max-w-xs">
+                        The Professional Standard for Compliance & Operations Checklists.
+                    </p>
+                </div>
+                 <div className="flex flex-col gap-2 items-center text-sm">
+                    <p className="font-semibold">Quick Links</p>
+                    <Link href="/packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
+                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
+                </div>
+                <div className="flex flex-col gap-2 items-center md:items-end text-sm">
+                     <p className="font-semibold">Legal</p>
+                    <Link href="/terms" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Terms of Service
+                    </Link>
+                    <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Privacy Policy
+                    </Link>
+                    <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Refund Policy
+                    </Link>
+                     <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+  );
+}

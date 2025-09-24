@@ -34,21 +34,22 @@ export default function PrivacyPolicyPage() {
                         Privacy Policy
                     </h1>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Last Updated: July 27, 2024
+                        Last Updated: July 28, 2024
                     </p>
                 </div>
 
                 <div className="max-w-3xl mx-auto space-y-8">
                     <p className="text-muted-foreground">
-                        MoreMeets ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.moremeets.com (the "Site"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
+                        MoreMeets ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.moremeets.com (the "Site") and purchase our digital products. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
                     </p>
 
                     <LegalSection title="Collection of Your Information">
                         <p>
                             We may collect information about you in a variety of ways. The information we may collect on the Site includes:
                         </p>
-                        <p><strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you purchase our products or when you choose to participate in various activities related to the Site. You are under no obligation to provide us with personal information of any kind; however, your refusal to do so may prevent you from using certain features of the Site.</p>
-                        <p><strong>Financial Data:</strong> Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, or exchange from the Site. We store only very limited, if any, financial information that we collect. Otherwise, all financial information is stored by our payment processor, and you are encouraged to review their privacy policy and contact them directly for responses to your questions.</p>
+                        <p><strong>Personal Data:</strong> Personally identifiable information, such as your name, billing address, email address, and telephone number, that you voluntarily give to us when you purchase our Products. You are under no obligation to provide us with personal information of any kind; however, your refusal to do so may prevent you from making purchases.</p>
+                        <p><strong>Financial Data:</strong> Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) is collected and stored by our payment processor (e.g., Razorpay, Stripe). We do not store any financial information on our servers. We encourage you to review the privacy policy of our payment processor and contact them directly for responses to your questions.</p>
+                         <p><strong>Personalization Data:</strong> If you use our personalization service, we collect the information you provide about your business challenges and goals to create a customized action plan. This data is used solely for the purpose of generating your personalized document and is not used for any other purpose.</p>
                     </LegalSection>
 
                     <LegalSection title="Use of Your Information">
@@ -56,16 +57,17 @@ export default function PrivacyPolicyPage() {
                             Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:
                         </p>
                          <ul className="list-disc pl-6 space-y-2">
-                            <li>Process payments and refunds.</li>
+                            <li>Create and manage your account.</li>
                             <li>Fulfill and manage purchases, orders, payments, and other transactions related to the Site.</li>
+                            <li>Deliver your digital products.</li>
                             <li>Email you regarding your account or order.</li>
-                            <li>Improve our products and services.</li>
+                            <li>Generate a personalized version of a product based on your inputs.</li>
                             <li>Monitor and analyze usage and trends to improve your experience with the Site.</li>
                         </ul>
                     </LegalSection>
 
                     <LegalSection title="Disclosure of Your Information">
-                        <p>We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you (such as payment processors), so long as those parties agree to keep this information confidential.</p>
+                        <p>We do not sell, trade, or rent your personally identifiable information to others. We may share your information with trusted third parties who assist us in operating our website, conducting our business, or servicing you, such as our payment processor, so long as those parties agree to keep this information confidential.</p>
                     </LegalSection>
                     
                     <LegalSection title="Security of Your Information">
@@ -73,20 +75,20 @@ export default function PrivacyPolicyPage() {
                     </LegalSection>
 
                     <LegalSection title="Policy for Children">
-                        <p>We do not knowingly solicit information from or market to children under the age of 13. If you become aware of any data we have collected from children under age 13, please contact us using the contact information provided below.</p>
+                        <p>We do not knowingly solicit information from or market to children under the age of 18. If you become aware of any data we have collected from children under age 18, please contact us using the contact information provided below.</p>
                     </LegalSection>
 
-                    <LegalSection title="Changes to This Privacy Policy">
+                     <LegalSection title="Changes to This Privacy Policy">
                         <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
                     </LegalSection>
                     
                      <LegalSection title="Disclaimer">
-                        <p>This Privacy Policy was generated by an AI language model. While it is based on common privacy principles, it is not a substitute for professional legal advice. You should consult with a qualified legal professional to ensure that this policy meets the specific needs and legal requirements of your business and jurisdiction.</p>
+                        <p><strong>This Privacy Policy was generated by an AI language model. While it is based on common privacy principles, it is not a substitute for professional legal advice.</strong> You should consult with a qualified legal professional to ensure that this policy meets the specific needs and legal requirements of your business and jurisdiction.</p>
                     </LegalSection>
 
                     <LegalSection title="Contact Us">
                         <p>
-                            If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:legal@moremeets.com" className="text-primary underline">legal@moremeets.com</a>
+                            If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:legal@moremeets.com" className="text-primary underline">legal@moremeets.com</a> or visit our <Link href="/contact" className="text-primary underline">Contact Us</Link> page.
                         </p>
                     </LegalSection>
                 </div>
@@ -109,7 +111,7 @@ export default function PrivacyPolicyPage() {
                     <p className="font-semibold">Quick Links</p>
                     <Link href="/packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
                     <Link href="/#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
-                    <Link href="/#faq" className="text-muted-foreground hover:text-foreground">FAQ</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
@@ -119,8 +121,8 @@ export default function PrivacyPolicyPage() {
                     <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Privacy Policy
                     </Link>
-                    <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Sitemap
+                    <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Refund Policy
                     </Link>
                      <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
                 </div>

@@ -251,7 +251,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     <p className="font-semibold">Quick Links</p>
                     <Link href="#pricing" className="text-muted-foreground hover:text-foreground">Pricing</Link>
                     <Link href="#checklists" className="text-muted-foreground hover:text-foreground">What's Included</Link>
-                    <Link href="#why" className="text-muted-foreground hover:text-foreground">Why Us</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
@@ -261,8 +261,8 @@ export default function Page({ params }: { params: { id: string } }) {
                     <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Privacy Policy
                     </Link>
-                    <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Sitemap
+                    <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+                        Refund Policy
                     </Link>
                      <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
                 </div>
