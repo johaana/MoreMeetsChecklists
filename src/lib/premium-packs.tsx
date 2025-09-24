@@ -11,7 +11,7 @@ export const premiumPacks = [
         description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
-        badgeVariant: "default" as const,
+        badgeVariant: "accent" as const,
         sampleItems: [
             "Master the 'Lost & Found' protocol to ensure guest trust and minimize liability.",
             "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
