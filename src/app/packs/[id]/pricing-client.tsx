@@ -15,6 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+import RazorpayButton from '@/components/ui/razorpay-button';
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
     return (
@@ -65,7 +66,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PreviewScenario }) {
 }
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const professionalPackLink = "https://rzp.io/rzp/9WsK9ML";
+    const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedPackLink = "https://rzp.io/rzp/JFmUeMms";
     
     const personalizationPriceINR = 3000;
@@ -85,11 +86,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <Button size="lg" className="w-full font-bold text-lg" asChild>
-                        <Link href={professionalPackLink} target="_blank">
-                           Get Professional Pack
-                        </Link>
-                    </Button>
+                    <RazorpayButton buttonId={professionalPackButtonId} />
                 </CardFooter>
             </Card>,
 
