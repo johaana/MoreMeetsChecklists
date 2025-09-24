@@ -119,7 +119,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizationPriceINR = 3000;
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = basePrice + personalizationPriceINR;
-    const enterprisePriceINR = basePrice * 5;
+    const enterprisePriceINR = 39999;
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
         if (typeof window !== 'undefined') {
@@ -266,4 +266,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+    
+
     
