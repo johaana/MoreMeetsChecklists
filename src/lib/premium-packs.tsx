@@ -566,145 +566,6 @@ const allPacks = [
         ]
     },
     {
-        id: 'retail_operations_pack',
-        title: "Retail Store Operations Checklist",
-        priceUSD: 79.99,
-        priceINR: 6499,
-        category: "Retail",
-        description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
-        icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Implement a 'Cash Handling & Reconciliation' protocol to eliminate discrepancies.",
-            "Standardize 'Store Opening & Closing' procedures for security and readiness.",
-            "Master 'Inventory Management' from receiving to cycle counts.",
-            "Includes 'Visual Merchandising' and 'Customer Service Standards' checklists."
-        ],
-        previewScenario: {
-            title: "Preventing End-of-Day Cash Shortage",
-            description: "This scenario shows how checklists ensure financial accuracy and prevent loss. A single missed step can lead to hours of recounting or financial loss.",
-            tasks: [
-                { id: 'CASH-002', description: "At shift change, incoming and outgoing cashiers count the float together and sign off.", sourceChecklist: "Cash Handling & Reconciliation", priority: 'High' },
-                { id: 'CLOSE-003', description: "Reconcile daily sales report from POS with total cash, card, and digital payments.", sourceChecklist: "Store Closing Procedure", priority: 'High' },
-                { id: 'CASH-004', description: "All 'No Sale' or 'Void' transactions must be approved and initialed by the manager on duty.", sourceChecklist: "Cash Handling & Reconciliation", priority: 'High' },
-                { id: 'SEC-005', description: "Deposit the day's earnings in the drop safe in a tamper-proof bag, witnessed by a second staff member.", sourceChecklist: "Security & Loss Prevention", priority: 'High' }
-            ]
-        },
-        checklists: [
-            {
-                title: "🌅 Store Opening Procedure",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensures the store is perfectly prepared for business, covering security, cleanliness, systems readiness, and staff briefing.",
-                tasks: [
-                    { id: 'OPEN-001', description: "Perform a security check of the premises perimeter before entry.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Exterior' },
-                    { id: 'OPEN-002', description: "Deactivate alarm system and check for any overnight alerts.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Interior' },
-                    { id: 'OPEN-003', description: "Turn on all lights, displays, and music.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'OPEN-004', description: "Boot up POS systems, check network connectivity, and verify opening cash float.", priority: 'High', riskLevel: 'High', proof: 'POS Log', location: 'Cash Counter' },
-                    { id: 'OPEN-005', description: "Conduct a quick floor walk to ensure cleanliness and tidiness.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' }
-                ]
-            },
-            {
-                title: "🌃 Store Closing Procedure",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Closing Manager",
-                summary: "A systematic checklist for securely closing the store, covering cash reconciliation, cleaning, securing inventory, and end-of-day reporting.",
-                tasks: [
-                    { id: 'CLOSE-001', description: "Complete all end-of-day cleaning tasks for the sales floor and backroom.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'All Areas' },
-                    { id: 'CLOSE-002', description: "Face and front all merchandise for a fresh look the next day.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'CLOSE-003', description: "Reconcile daily sales report from POS with total cash, card, and digital payments.", priority: 'High', riskLevel: 'High', proof: 'EOD Report', location: 'Back Office' },
-                    { id: 'CLOSE-004', description: "Prepare bank deposit and secure cash in the safe.", priority: 'High', riskLevel: 'High', proof: 'Deposit Slip/Safe Log', location: 'Back Office' },
-                    { id: 'CLOSE-005', description: "Ensure all doors, windows, and gates are locked and set the alarm system.", priority: 'High', riskLevel: 'High', proof: 'Security Checklist', location: 'All Areas' }
-                ]
-            },
-            {
-                title: "💵 Cash Handling & Reconciliation",
-                department: "Finance",
-                frequency: "Daily",
-                role: "Cashier/Manager",
-                summary: "A critical financial control checklist to prevent cash discrepancies, covering float verification, transaction accuracy, and end-of-shift balancing.",
-                tasks: [
-                    { id: 'CASH-001', description: "Verify opening float amount with a manager or second person.", priority: 'High', riskLevel: 'High', proof: 'Float Log', location: 'Cash Counter' },
-                    { id: 'CASH-002', description: "Perform cash drops when the amount in the drawer exceeds the set limit.", priority: 'High', riskLevel: 'Medium', proof: 'Drop Log', location: 'Cash Counter' },
-                    { id: 'CASH-003', description: "Count the drawer at the end of the shift and balance against the POS sales report.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Back Office' },
-                    { id: 'CASH-004', description: "All 'No Sale' or 'Void' transactions must be approved and initialed by the manager on duty.", priority: 'High', riskLevel: 'Medium', proof: 'POS Audit Trail', location: 'Cash Counter' },
-                    { id: 'CASH-005', description: "Report any cash shortage or overage immediately as per company policy.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Back Office' }
-                ]
-            },
-            {
-                title: "📦 Inventory Receiving & Stocking",
-                department: "Inventory",
-                frequency: "Per Delivery",
-                role: "Stock Associate",
-                summary: "Ensures accuracy in inventory from the moment it arrives. Covers verifying deliveries, checking for damages, and updating stock levels.",
-                tasks: [
-                    { id: 'INV-REC-001', description: "Verify delivered quantity and item codes against the packing slip or invoice.", priority: 'High', riskLevel: 'High', proof: 'Signed Packing Slip', location: 'Receiving Area' },
-                    { id: 'INV-REC-002', description: "Inspect all cartons for signs of damage or tampering.", priority: 'High', riskLevel: 'Medium', proof: 'Receiving Log', location: 'Receiving Area' },
-                    { id: 'INV-REC-003', description: "Report any discrepancies or damages to the vendor and store manager immediately.", priority: 'High', riskLevel: 'Medium', proof: 'Discrepancy Report', location: 'Receiving Area' },
-                    { id: 'INV-REC-004', description: "Update inventory management system with received stock.", priority: 'High', riskLevel: 'High', proof: 'System Entry Log', location: 'Back Office' },
-                    { id: 'INV-REC-005', description: "Move received stock to the designated backroom or sales floor location promptly.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Stock Room/Sales Floor' }
-                ]
-            },
-            {
-                title: "🔄 Cycle Count & Inventory Audit",
-                department: "Inventory",
-                frequency: "Weekly",
-                role: "Inventory Manager",
-                summary: "A proactive approach to maintaining inventory accuracy. This checklist details the process for regular, systematic counting of product categories.",
-                tasks: [
-                    { id: 'INV-AUD-001', description: "Select a specific product category or section to count based on the weekly schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Count Schedule', location: 'Sales Floor/Stock Room' },
-                    { id: 'INV-AUD-002', description: "Physically count all items in the selected category.", priority: 'High', riskLevel: 'Medium', proof: 'Count Sheets', location: 'Sales Floor/Stock Room' },
-                    { id: 'INV-AUD-003', description: "Compare the physical count against the system inventory records.", priority: 'High', riskLevel: 'High', proof: 'Variance Report', location: 'Back Office' },
-                    { id: 'INV-AUD-004', description: "Investigate significant discrepancies to find the root cause (e.g., theft, receiving error).", priority: 'High', riskLevel: 'High', proof: 'Investigation Notes', location: 'Back Office' },
-                    { id: 'INV-AUD-005', description: "Adjust system inventory to reflect the physical count, with manager approval.", priority: 'High', riskLevel: 'High', proof: 'Adjustment Log', location: 'Back Office' }
-                ]
-            },
-            {
-                title: "🎨 Visual Merchandising Standards",
-                department: "Marketing",
-                frequency: "Weekly",
-                role: "Visual Merchandiser",
-                summary: "Ensures the store is visually appealing and aligns with brand standards. Covers window displays, mannequin styling, and in-store signage.",
-                tasks: [
-                    { id: 'VM-001', description: "Ensure window displays are clean, well-lit, and feature current promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
-                    { id: 'VM-002', description: "Check that all mannequins are styled according to the current season's lookbook.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
-                    { id: 'VM-003', description: "Verify that all promotional signage and price tickets are accurate and correctly placed.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
-                    { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
-                ]
-            },
-            {
-                title: "🛡️ Security & Loss Prevention",
-                department: "Security",
-                frequency: "Daily",
-                role: "Security / Manager",
-                summary: "A daily checklist of proactive measures to deter theft and reduce inventory shrinkage, covering CCTV, EAS systems, and high-risk areas.",
-                tasks: [
-                    { id: 'SEC-001', description: "Check that all CCTV cameras are operational and recording.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Security Office' },
-                    { id: 'SEC-002', description: "Test the Electronic Article Surveillance (EAS) gates at the entrance.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Entrance' },
-                    { id: 'SEC-003', description: "Ensure high-value items are secured in locked cabinets or have security tags.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'SEC-004', description: "Monitor fitting rooms to prevent tag removal and concealment.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Observation', location: 'Fitting Rooms' },
-                    { id: 'SEC-005', description: "Ensure back doors and receiving areas are kept locked and secure.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Back of House' }
-                ]
-            },
-            {
-                title: "🤝 Customer Service Standards",
-                department: "Sales",
-                frequency: "Ongoing",
-                role: "Store Manager",
-                summary: "A framework for training and auditing staff on providing an exceptional customer experience, from greeting to handling complaints.",
-                tasks: [
-                    { id: 'CS-001', description: "Ensure every customer is greeted within 30 seconds of entering the store.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
-                    { id: 'CS-002', description: "Staff are actively approaching and offering assistance to customers.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
-                    { id: 'CS-003', description: "Staff demonstrate good product knowledge when asked questions.", priority: 'High', riskLevel: 'Medium', proof: 'Mystery Shopper Report', location: 'Sales Floor' },
-                    { id: 'CS-004', description: "Check that checkout process is efficient and friendly.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Cash Counter' },
-                    { id: 'CS-005', description: "Review any customer complaints and ensure they are resolved as per policy.", priority: 'High', riskLevel: 'High', proof: 'Complaint Log', location: 'Back Office' }
-                ]
-            }
-        ]
-    },
-    {
         id: 'education_sector_pack',
         title: "School & Campus Operations Checklist",
         priceUSD: 79.99,
@@ -978,6 +839,145 @@ const allPacks = [
                     { id: '5S-003', description: "(Shine) Clean the work area, tools, and equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Workstation' },
                     { id: '5S-004', description: "(Standardize) Ensure standardized procedures and work instructions are being followed.", priority: 'High', riskLevel: 'Medium', proof: 'Process Audit', location: 'Workstation' },
                     { id: '5S-005', description: "(Sustain) Review previous audit findings and ensure improvements have been sustained.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Review', location: 'Workstation' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'retail_operations_pack',
+        title: "Retail Store Operations Checklist",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Retail",
+        description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
+        icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Cash Handling & Reconciliation' protocol to eliminate discrepancies.",
+            "Standardize 'Store Opening & Closing' procedures for security and readiness.",
+            "Master 'Inventory Management' from receiving to cycle counts.",
+            "Includes 'Visual Merchandising' and 'Customer Service Standards' checklists."
+        ],
+        previewScenario: {
+            title: "Preventing End-of-Day Cash Shortage",
+            description: "This scenario shows how checklists ensure financial accuracy and prevent loss. A single missed step can lead to hours of recounting or financial loss.",
+            tasks: [
+                { id: 'CASH-002', description: "At shift change, incoming and outgoing cashiers count the float together and sign off.", sourceChecklist: "Cash Handling & Reconciliation", priority: 'High' },
+                { id: 'CLOSE-003', description: "Reconcile daily sales report from POS with total cash, card, and digital payments.", sourceChecklist: "Store Closing Procedure", priority: 'High' },
+                { id: 'CASH-004', description: "All 'No Sale' or 'Void' transactions must be approved and initialed by the manager on duty.", sourceChecklist: "Cash Handling & Reconciliation", priority: 'High' },
+                { id: 'SEC-005', description: "Deposit the day's earnings in the drop safe in a tamper-proof bag, witnessed by a second staff member.", sourceChecklist: "Security & Loss Prevention", priority: 'High' }
+            ]
+        },
+        checklists: [
+            {
+                title: "🌅 Store Opening Procedure",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Store Manager",
+                summary: "Ensures the store is perfectly prepared for business, covering security, cleanliness, systems readiness, and staff briefing.",
+                tasks: [
+                    { id: 'OPEN-001', description: "Perform a security check of the premises perimeter before entry.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Exterior' },
+                    { id: 'OPEN-002', description: "Deactivate alarm system and check for any overnight alerts.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Interior' },
+                    { id: 'OPEN-003', description: "Turn on all lights, displays, and music.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'OPEN-004', description: "Boot up POS systems, check network connectivity, and verify opening cash float.", priority: 'High', riskLevel: 'High', proof: 'POS Log', location: 'Cash Counter' },
+                    { id: 'OPEN-005', description: "Conduct a quick floor walk to ensure cleanliness and tidiness.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' }
+                ]
+            },
+            {
+                title: "🌃 Store Closing Procedure",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Closing Manager",
+                summary: "A systematic checklist for securely closing the store, covering cash reconciliation, cleaning, securing inventory, and end-of-day reporting.",
+                tasks: [
+                    { id: 'CLOSE-001', description: "Complete all end-of-day cleaning tasks for the sales floor and backroom.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'All Areas' },
+                    { id: 'CLOSE-002', description: "Face and front all merchandise for a fresh look the next day.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'CLOSE-003', description: "Reconcile daily sales report from POS with total cash, card, and digital payments.", priority: 'High', riskLevel: 'High', proof: 'EOD Report', location: 'Back Office' },
+                    { id: 'CLOSE-004', description: "Prepare bank deposit and secure cash in the safe.", priority: 'High', riskLevel: 'High', proof: 'Deposit Slip/Safe Log', location: 'Back Office' },
+                    { id: 'CLOSE-005', description: "Ensure all doors, windows, and gates are locked and set the alarm system.", priority: 'High', riskLevel: 'High', proof: 'Security Checklist', location: 'All Areas' }
+                ]
+            },
+            {
+                title: "💵 Cash Handling & Reconciliation",
+                department: "Finance",
+                frequency: "Daily",
+                role: "Cashier/Manager",
+                summary: "A critical financial control checklist to prevent cash discrepancies, covering float verification, transaction accuracy, and end-of-shift balancing.",
+                tasks: [
+                    { id: 'CASH-001', description: "Verify opening float amount with a manager or second person.", priority: 'High', riskLevel: 'High', proof: 'Float Log', location: 'Cash Counter' },
+                    { id: 'CASH-002', description: "Perform cash drops when the amount in the drawer exceeds the set limit.", priority: 'High', riskLevel: 'Medium', proof: 'Drop Log', location: 'Cash Counter' },
+                    { id: 'CASH-003', description: "Count the drawer at the end of the shift and balance against the POS sales report.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Back Office' },
+                    { id: 'CASH-004', description: "All 'No Sale' or 'Void' transactions must be approved and initialed by the manager on duty.", priority: 'High', riskLevel: 'Medium', proof: 'POS Audit Trail', location: 'Cash Counter' },
+                    { id: 'CASH-005', description: "Report any cash shortage or overage immediately as per company policy.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Back Office' }
+                ]
+            },
+            {
+                title: "📦 Inventory Receiving & Stocking",
+                department: "Inventory",
+                frequency: "Per Delivery",
+                role: "Stock Associate",
+                summary: "Ensures accuracy in inventory from the moment it arrives. Covers verifying deliveries, checking for damages, and updating stock levels.",
+                tasks: [
+                    { id: 'INV-REC-001', description: "Verify delivered quantity and item codes against the packing slip or invoice.", priority: 'High', riskLevel: 'High', proof: 'Signed Packing Slip', location: 'Receiving Area' },
+                    { id: 'INV-REC-002', description: "Inspect all cartons for signs of damage or tampering.", priority: 'High', riskLevel: 'Medium', proof: 'Receiving Log', location: 'Receiving Area' },
+                    { id: 'INV-REC-003', description: "Report any discrepancies or damages to the vendor and store manager immediately.", priority: 'High', riskLevel: 'Medium', proof: 'Discrepancy Report', location: 'Receiving Area' },
+                    { id: 'INV-REC-004', description: "Update inventory management system with received stock.", priority: 'High', riskLevel: 'High', proof: 'System Entry Log', location: 'Back Office' },
+                    { id: 'INV-REC-005', description: "Move received stock to the designated backroom or sales floor location promptly.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Stock Room/Sales Floor' }
+                ]
+            },
+            {
+                title: "🔄 Cycle Count & Inventory Audit",
+                department: "Inventory",
+                frequency: "Weekly",
+                role: "Inventory Manager",
+                summary: "A proactive approach to maintaining inventory accuracy. This checklist details the process for regular, systematic counting of product categories.",
+                tasks: [
+                    { id: 'INV-AUD-001', description: "Select a specific product category or section to count based on the weekly schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Count Schedule', location: 'Sales Floor/Stock Room' },
+                    { id: 'INV-AUD-002', description: "Physically count all items in the selected category.", priority: 'High', riskLevel: 'Medium', proof: 'Count Sheets', location: 'Sales Floor/Stock Room' },
+                    { id: 'INV-AUD-003', description: "Compare the physical count against the system inventory records.", priority: 'High', riskLevel: 'High', proof: 'Variance Report', location: 'Back Office' },
+                    { id: 'INV-AUD-004', description: "Investigate significant discrepancies to find the root cause (e.g., theft, receiving error).", priority: 'High', riskLevel: 'High', proof: 'Investigation Notes', location: 'Back Office' },
+                    { id: 'INV-AUD-005', description: "Adjust system inventory to reflect the physical count, with manager approval.", priority: 'High', riskLevel: 'High', proof: 'Adjustment Log', location: 'Back Office' }
+                ]
+            },
+            {
+                title: "🎨 Visual Merchandising Standards",
+                department: "Marketing",
+                frequency: "Weekly",
+                role: "Visual Merchandiser",
+                summary: "Ensures the store is visually appealing and aligns with brand standards. Covers window displays, mannequin styling, and in-store signage.",
+                tasks: [
+                    { id: 'VM-001', description: "Ensure window displays are clean, well-lit, and feature current promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
+                    { id: 'VM-002', description: "Check that all mannequins are styled according to the current season's lookbook.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'VM-003', description: "Verify that all promotional signage and price tickets are accurate and correctly placed.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
+                ]
+            },
+            {
+                title: "🛡️ Security & Loss Prevention",
+                department: "Security",
+                frequency: "Daily",
+                role: "Security / Manager",
+                summary: "A daily checklist of proactive measures to deter theft and reduce inventory shrinkage, covering CCTV, EAS systems, and high-risk areas.",
+                tasks: [
+                    { id: 'SEC-001', description: "Check that all CCTV cameras are operational and recording.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Security Office' },
+                    { id: 'SEC-002', description: "Test the Electronic Article Surveillance (EAS) gates at the entrance.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Entrance' },
+                    { id: 'SEC-003', description: "Ensure high-value items are secured in locked cabinets or have security tags.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'SEC-004', description: "Monitor fitting rooms to prevent tag removal and concealment.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Observation', location: 'Fitting Rooms' },
+                    { id: 'SEC-005', description: "Ensure back doors and receiving areas are kept locked and secure.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Back of House' }
+                ]
+            },
+            {
+                title: "🤝 Customer Service Standards",
+                department: "Sales",
+                frequency: "Ongoing",
+                role: "Store Manager",
+                summary: "A framework for training and auditing staff on providing an exceptional customer experience, from greeting to handling complaints.",
+                tasks: [
+                    { id: 'CS-001', description: "Ensure every customer is greeted within 30 seconds of entering the store.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
+                    { id: 'CS-002', description: "Staff are actively approaching and offering assistance to customers.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
+                    { id: 'CS-003', description: "Staff demonstrate good product knowledge when asked questions.", priority: 'High', riskLevel: 'Medium', proof: 'Mystery Shopper Report', location: 'Sales Floor' },
+                    { id: 'CS-004', description: "Check that checkout process is efficient and friendly.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Cash Counter' },
+                    { id: 'CS-005', description: "Review any customer complaints and ensure they are resolved as per policy.", priority: 'High', riskLevel: 'High', proof: 'Complaint Log', location: 'Back Office' }
                 ]
             }
         ]
