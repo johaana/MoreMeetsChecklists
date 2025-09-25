@@ -83,7 +83,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
-                <Badge variant="default" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Introductory Offer</Badge>
                 <CardHeader className="p-6 pt-8">
                     <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                     <p className="text-4xl font-bold text-foreground">₹{basePrice}</p>
@@ -114,7 +113,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             ₹{personalizedPackPrice}
                         </p>
                          <p className="text-xl font-medium text-muted-foreground line-through">
-                           ₹{basePrice + 3000}
+                           ₹{personalizedPackPrice + 4000}
                         </p>
                     </div>
                 </CardHeader>
@@ -136,7 +135,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </Card>,
 
              <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
-                 <Badge variant="secondary" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Introductory Offer</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                         <Building className="w-6 h-6 text-primary" />
@@ -226,3 +224,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
