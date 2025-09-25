@@ -8,6 +8,10 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Download, AlertTriangle, Sparkles } from "lucide-react";
 import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { writeFile, utils } from 'xlsx-js-style';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,7 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { Label } from "@/components/ui/label";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -146,13 +150,32 @@ const handleDownload = (pack: PremiumPack | undefined) => {
 }
 
 
+const personalizationSchema = z.object({
+    companyName: z.string().min(2, { message: "Company name must be at least 2 characters." }),
+    locations: z.string().min(1, { message: "Please enter the number of locations." }),
+    biggestChallenge: z.string().min(10, { message: "Please describe your challenge in at least 10 characters." }),
+    primaryGoal: z.string().min(10, { message: "Please describe your goal in at least 10 characters." }),
+    department: z.string().optional(),
+});
+
+
 function PersonalizationForm({ onComplete }: { onComplete: () => void }) {
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    const form = useForm<z.infer<typeof personalizationSchema>>({
+        resolver: zodResolver(personalizationSchema),
+        defaultValues: {
+            companyName: "",
+            locations: "",
+            biggestChallenge: "",
+            primaryGoal: "",
+            department: "",
+        },
+    });
+
+    function onSubmit(values: z.infer<typeof personalizationSchema>) {
         // Here you would typically send the form data to your backend
-        console.log("Personalization data submitted.");
+        console.log("Personalization data submitted:", values);
         onComplete();
-    };
+    }
 
     return (
         <div className="w-full max-w-2xl mx-auto py-12">
@@ -163,36 +186,83 @@ function PersonalizationForm({ onComplete }: { onComplete: () => void }) {
                         Personalize Your Pack
                     </h1>
                     <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Your download will begin after you submit this form. This helps us create your Custom Priority Action Plan.
+                        Your download will begin after you submit this form. This is required to create your Custom Priority Action Plan.
                     </p>
                 </div>
-                <form onSubmit={handleSubmit} className="w-full text-left space-y-4 pt-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="q1">What is your primary business focus?</Label>
-                            <Input id="q1" placeholder="e.g., 5-Star Luxury Hotel, Business Hotel..." />
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="w-full text-left space-y-4 pt-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <FormField
+                                control={form.control}
+                                name="companyName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Company Name</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="e.g., Acme Hotels Inc." {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="locations"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Number of Locations</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="e.g., 1, 5, 20+" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                         </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="q2">Which department needs the most improvement?</Label>
-                            <Input id="q2" placeholder="e.g., Housekeeping, Front Office, F&B..." />
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="q3">What is the single biggest challenge you are facing?</Label>
-                        <Input id="q3" placeholder="e.g., Inconsistent guest service, high costs..." />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="q4">What is your primary goal for the next quarter?</Label>
-                        <Input id="q4" placeholder="e.g., Increase positive reviews, reduce costs..." />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="q5">Anything else you'd like us to know?</Label>
-                        <Textarea id="q5" placeholder="e.g., Specific compliance needs like JCI, NABH..." />
-                    </div>
-                    <Button type="submit" className="w-full" variant="accent">
-                        Submit & Prepare Download
-                    </Button>
-                </form>
+                        <FormField
+                            control={form.control}
+                            name="biggestChallenge"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>What is your single biggest operational challenge?</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder="e.g., Inconsistent guest service across properties, high staff turnover..." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="primaryGoal"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>What is your primary goal for the next 90 days?</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="e.g., Improve online reviews, reduce operational costs by 15%..." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                         <FormField
+                            control={form.control}
+                            name="department"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Which department needs the most urgent improvement? (Optional)</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="e.g., Housekeeping, Front Office, F&B..." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type="submit" className="w-full" variant="accent">
+                            Submit & Prepare Download
+                        </Button>
+                    </form>
+                </Form>
             </div>
         </div>
     );
@@ -218,8 +288,10 @@ function ThankYouContent() {
             setShowPersonalization(true);
         }
         
-        sessionStorage.removeItem('purchasedPackId');
-        sessionStorage.removeItem('purchasedPackType');
+        // Clear the session storage items after retrieving them
+        // This prevents the user from seeing this page again on refresh
+        // sessionStorage.removeItem('purchasedPackId');
+        // sessionStorage.removeItem('purchasedPackType');
       }
       setIsLoading(false);
     }
