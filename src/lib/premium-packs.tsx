@@ -925,7 +925,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: " forklift Safety Operations",
+                title: "Forklift Safety Operations",
                 department: "Logistics",
                 frequency: "Daily",
                 role: "Forklift Operator",
@@ -1027,3 +1027,5 @@ export type PremiumPack = {
     checklists: Checklist[];
     previewScenario?: PreviewScenario;
 };
+
+    
