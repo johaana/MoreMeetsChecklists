@@ -201,7 +201,7 @@ export default function Home() {
                            Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <Button size="lg" asChild className="group text-lg py-7 px-10">
+                            <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
                                 <Link href="/packs">
                                     Browse All Packages
                                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -337,3 +337,5 @@ export default function Home() {
   );
 
 }
+
+    
