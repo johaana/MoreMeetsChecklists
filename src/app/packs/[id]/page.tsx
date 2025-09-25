@@ -8,7 +8,7 @@ import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
-import { painPointsContent } from '@/lib/pain-points-content';
+import { painPointsContent } from '@/lib/pain-points-content.tsx';
 
 type Props = {
   params: { id: string }
@@ -71,7 +71,7 @@ const PainPointsSection = ({ category }: { category: string }) => {
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline whitespace-nowrap">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         {selected.title}
                     </h2>
                 </div>
@@ -224,3 +224,5 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 
     
+
+
