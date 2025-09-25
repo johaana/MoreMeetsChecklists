@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2, Hand, LifeBuoy, Zap, Users, Shield, TrendingUp, HandCoins } from 'lucide-react';
+import { ArrowLeft, FileCheck2, HandCoins, Shield, TrendingUp, Users } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -270,3 +270,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
