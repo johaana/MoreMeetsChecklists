@@ -38,7 +38,7 @@ export default function AllPacksPage() {
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                             <CardHeader className="p-6 relative">
                                 {pack.badgeText && (
-                                    <Badge variant={pack.badgeVariant} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
+                                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
                                     <Star className="w-4 h-4" /> {pack.badgeText}
                                     </Badge>
                                 )}
