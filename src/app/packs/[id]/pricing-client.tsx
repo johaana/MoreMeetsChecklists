@@ -128,14 +128,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <RazorpayPaymentButton 
                         buttonId={personalizedPackButtonId}
                         onClick={() => handlePurchaseClick('personalized')}
-                        className="bg-accent hover:bg-accent/90"
+                        variant="accent"
                     >
                         Purchase Personalized
                     </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
 
-             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover  :shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
+             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
                  <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">For Teams</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
