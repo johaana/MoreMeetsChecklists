@@ -708,7 +708,7 @@ export const premiumPacks = [
         id: 'education_sector_pack',
         title: "School & Campus Operations Checklist",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         category: "Education",
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
