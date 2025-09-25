@@ -72,8 +72,8 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const packsToShow = premiumPacks.filter(p => p.badgeText);
-    const title = "Ready-to-Use, Downloadable Checklist Packs";
+    const featuredPacks = premiumPacks.filter(p => p.badgeText);
+    const title = "Featured Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
     return (
@@ -89,7 +89,7 @@ function PackList() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {packsToShow.map((pack) => (
+                    {featuredPacks.map((pack) => (
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                             <CardHeader className="p-6 relative">
                                 {pack.badgeText && (
@@ -171,7 +171,7 @@ export default function Home() {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="#packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            <Link href="/packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                 Packages
             </Link>
             <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
@@ -314,9 +314,9 @@ export default function Home() {
                 </div>
                  <div className="flex flex-col gap-2 items-center text-sm">
                     <p className="font-semibold">Quick Links</p>
-                    <Link href="/packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
-                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
-                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
+                    <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>Packages</Link>
+                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why Us</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
@@ -335,7 +335,6 @@ export default function Home() {
         </footer>
     </div>
   );
-
 }
 
     

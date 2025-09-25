@@ -109,9 +109,9 @@ export default function PrivacyPolicyPage() {
                 </div>
                  <div className="flex flex-col gap-2 items-center text-sm">
                     <p className="font-semibold">Quick Links</p>
-                    <Link href="/packs" className="text-muted-foreground hover:text-foreground">Packages</Link>
-                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground">Why Us</Link>
-                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
+                    <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>Packages</Link>
+                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why Us</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
@@ -131,3 +131,5 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
+
+    
