@@ -99,7 +99,7 @@ function PackList() {
                                 )}
                                 <div className="flex items-start gap-4">
                                     <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                                        {pack.icon}
+                                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
                                     </div>
                                     <div className="flex-1">
                                         <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
@@ -171,10 +171,10 @@ export default function Home() {
           <span className="font-headline text-lg font-bold">MoreMeets</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/packs" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
                 Packages
             </Link>
-            <Link href="#why-us" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            <Link href="#why-us" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
                 Why Us
             </Link>
         </nav>
@@ -336,5 +336,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

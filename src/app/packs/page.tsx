@@ -1,5 +1,8 @@
 
+'use client';
+
 import Link from "next/link";
+import * as React from "react";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +10,27 @@ import { Button } from "@/components/ui/button";
 import { Check, Star } from "lucide-react";
 import { Logo } from "@/components/icons";
 
+const categoryColors: { [key: string]: string } = {
+    "Hospitality": "bg-blue-100 text-blue-800 border-blue-200",
+    "Corporate": "bg-indigo-100 text-indigo-800 border-indigo-200",
+    "Retail": "bg-pink-100 text-pink-800 border-pink-200",
+    "Healthcare": "bg-red-100 text-red-800 border-red-200",
+    "Education": "bg-green-100 text-green-800 border-green-200",
+    "Manufacturing": "bg-gray-100 text-gray-800 border-gray-200",
+    "Events": "bg-purple-100 text-purple-800 border-purple-200",
+    "Personal": "bg-yellow-100 text-yellow-800 border-yellow-200",
+    "Automotive": "bg-orange-100 text-orange-800 border-orange-200",
+    "Real Estate": "bg-teal-100 text-teal-800 border-teal-200",
+    "Compliance": "bg-cyan-100 text-cyan-800 border-cyan-200",
+    "Wellness": "bg-lime-100 text-lime-800 border-lime-200",
+};
+
 export default function AllPacksPage() {
+  const [filter, setFilter] = React.useState('All');
+  const categories = ['All', ...Array.from(new Set(premiumPacks.map(p => p.category)))];
+
+  const filteredPacks = filter === 'All' ? premiumPacks : premiumPacks.filter(p => p.category === filter);
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
        <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
@@ -33,18 +56,36 @@ export default function AllPacksPage() {
                     </p>
                 </div>
 
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+                    {categories.map(category => (
+                        <Button
+                            key={category}
+                            variant={filter === category ? 'default' : 'outline'}
+                            onClick={() => setFilter(category)}
+                            className="rounded-full"
+                        >
+                            {category}
+                        </Button>
+                    ))}
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {premiumPacks.map((pack) => (
+                    {filteredPacks.map((pack) => (
                         <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                             <CardHeader className="p-6 relative">
-                                {pack.badgeText && (
-                                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
-                                    <Star className="w-4 h-4" /> {pack.badgeText}
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                     <Badge className={`${categoryColors[pack.category] || 'bg-gray-100 text-gray-800'}`}>
+                                        {pack.category}
                                     </Badge>
-                                )}
+                                    {pack.badgeText && (
+                                        <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 w-fit">
+                                        <Star className="w-4 h-4" /> {pack.badgeText}
+                                        </Badge>
+                                    )}
+                                </div>
                                 <div className="flex items-start gap-4">
                                     <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                                        {pack.icon}
+                                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
                                     </div>
                                     <div className="flex-1">
                                         <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
@@ -64,7 +105,7 @@ export default function AllPacksPage() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold">
+                                <Button asChild className="w-full font-bold" variant="default">
                                     <Link href={`/packs/${pack.id}`}>
                                         View Full Checklist &amp; Purchase
                                     </Link>

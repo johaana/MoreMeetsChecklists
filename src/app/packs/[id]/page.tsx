@@ -173,12 +173,12 @@ export default function Page({ params }: { params: { id: string } }) {
       </header>
 
       <main className="flex-1">
-        <section className="w-full bg-secondary/30 py-8">
+        <section className="w-full bg-secondary/30 py-12 md:py-16">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-[auto_1fr] items-start gap-6 md:gap-x-8 max-w-5xl mx-auto">
                      <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
-                        <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary/20 shrink-0">
-                           {React.cloneElement(pack.icon, { className: "w-8 h-8 md:w-12 md:h-12 text-primary" })}
+                        <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
+                           {React.cloneElement(pack.icon, { className: "w-10 h-10 md:w-14 md:h-14 text-primary" })}
                        </div>
                      </div>
                     <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-2">
@@ -201,7 +201,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
         <PainPointsSection category={pack.category} />
 
-        <section id="checklists" className="w-full py-12">
+        <section id="checklists" className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
