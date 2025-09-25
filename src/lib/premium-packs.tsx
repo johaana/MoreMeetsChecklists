@@ -2,7 +2,7 @@
 
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket } from "lucide-react";
 
-export const premiumPacks = [
+const allPacks = [
     {
         id: 'hospitality_excellence_suite',
         title: "Hotel & Resort Operations Checklist",
@@ -925,7 +925,7 @@ export const premiumPacks = [
                 ]
             },
             {
-                title: "Forklift Safety Operations",
+                title: "🚚 Forklift Safety Operations",
                 department: "Logistics",
                 frequency: "Daily",
                 role: "Forklift Operator",
@@ -984,6 +984,9 @@ export const premiumPacks = [
     }
 ];
 
+export const premiumPacks = allPacks;
+
+
 export type Task = {
     id: string;
     description: string;
@@ -1027,5 +1030,3 @@ export type PremiumPack = {
     checklists: Checklist[];
     previewScenario?: PreviewScenario;
 };
-
-    
