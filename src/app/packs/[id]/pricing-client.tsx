@@ -98,7 +98,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         buttonId={professionalPackButtonId}
                         onClick={() => handlePurchaseClick('professional')}
                      >
-                        Purchase Professional
+                        Purchase Now
                      </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
@@ -130,7 +130,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         onClick={() => handlePurchaseClick('personalized')}
                         variant="accent"
                     >
-                        Purchase Personalized
+                        Purchase Now
                     </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
@@ -226,5 +226,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
