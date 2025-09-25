@@ -135,8 +135,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardFooter>
             </Card>,
 
-             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary relative">
-                 <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">For Teams</Badge>
+             <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
+                 <Badge variant="secondary" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">For Teams</Badge>
                 <CardHeader className="p-6 pt-8">
                      <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                         <Building className="w-6 h-6 text-primary" />
@@ -152,7 +152,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button asChild className="w-full font-bold">
+                    <Button asChild className="w-full font-bold" variant="outline">
                       <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
                     </Button>
                 </CardFooter>
