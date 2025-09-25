@@ -981,11 +981,331 @@ const allPacks = [
                 ]
             }
         ]
+    },
+    {
+        id: 'events_management_playbook',
+        title: "Event Management Playbook",
+        priceUSD: 129.99,
+        priceINR: 9999,
+        category: "Events",
+        description: "For event planners and agencies. A comprehensive toolkit for flawless execution of corporate events, weddings, and conferences.",
+        icon: <Trophy className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Master 'Venue Selection & Contracting' to protect your clients and budget.",
+            "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
+            "Standardize 'Guest Registration & Welcome' for a seamless arrival experience.",
+            "Includes 'Post-Event Feedback' and 'Vendor Payout' checklists."
+        ],
+        checklists: [] 
+    },
+    {
+        id: 'automotive_workshop_pack',
+        title: "Automotive Workshop & Service Center Checklist",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Automotive",
+        description: "For workshop owners and service directors. A toolkit to standardize vehicle servicing, improve quality control, and enhance customer trust.",
+        icon: <Wrench className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Multi-Point Vehicle Inspection' for thorough diagnostics.",
+            "Standardize the 'Job Card & Spares Management' process.",
+            "Ensure 'Final Quality Control' before vehicle handover.",
+            "Includes 'Customer Service & Post-Service Feedback' protocols."
+        ],
+        checklists: []
+    },
+    {
+        id: 'jewelry_retail_pack',
+        title: "Jewelry Store Security & Operations",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Retail",
+        description: "For jewelry store owners and heads of security. A high-security toolkit for managing high-value inventory and preventing loss.",
+        icon: <Gem className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Master the 'Vault Opening & Closing' dual-control procedure.",
+            "Implement a 'Display Counter & Item Handling' protocol to prevent grab-and-run theft.",
+            "Standardize 'Customer Verification' for high-value purchases.",
+            "Includes 'Silent Alarm Tests' and 'Staff Security Training' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'logistics_warehouse_pack',
+        title: "Logistics & Warehouse Operations",
+        priceUSD: 119.99,
+        priceINR: 8999,
+        category: "Manufacturing",
+        description: "For warehouse managers and logistics heads. A comprehensive toolkit for optimizing storage, shipping, and inventory accuracy.",
+        icon: <Warehouse className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Goods Receiving & GRN' protocol for 100% accuracy.",
+            "Standardize 'Binning & Stock Location Management' for fast retrieval.",
+            "Master the 'Picking, Packing & Dispatch' process for error-free shipping.",
+            "Includes 'Forklift Safety' and 'Cycle Count' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'call_center_pack',
+        title: "Call Center & BPO Operations",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        category: "Corporate",
+        description: "For call center managers and QA leads. A toolkit to improve agent performance, ensure data security, and enhance customer satisfaction.",
+        icon: <Phone className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Standardize 'Call Quality Monitoring & Feedback' using a structured scorecard.",
+            "Implement a 'Data Security & PCI-DSS Compliance' checklist for agents.",
+            "Master 'Shift Handover' and 'System Readiness' checks.",
+            "Includes 'Agent Onboarding' and 'Workforce Management' protocols."
+        ],
+        checklists: []
+    },
+    {
+        id: 'diagnostic_lab_pack',
+        title: "Diagnostic Lab & Pathology Checklist",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Healthcare",
+        description: "For lab owners and quality managers. An NABL-aligned toolkit for ensuring accuracy, safety, and compliance in laboratory operations.",
+        icon: <TestTube className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Sample Collection, Handling & Transport' protocol.",
+            "Standardize 'Reagent & Equipment Calibration' logs.",
+            "Master 'Panic Value Reporting' and clinician communication.",
+            "Includes 'Lab Safety & Bio-waste Management' checklists."
+        ],
+
+        checklists: []
+    },
+    {
+        id: 'apparel_store_pack',
+        title: "Apparel & Fashion Retail Checklist",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Retail",
+        description: "For fashion retail owners. A specialized toolkit for managing apparel stores, focusing on fitting rooms, visual merchandising, and stock management.",
+        icon: <Shirt className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Fitting Room Control' procedure to prevent theft.",
+            "Standardize 'Visual Merchandising' for seasonal collections.",
+            "Master 'Stock Consolidation' and size availability checks.",
+            "Includes 'End-of-Season Sale' and 'New Arrival' launch checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'audiology_clinic_pack',
+        title: "Audiology & Hearing Aid Clinic Checklist",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Healthcare",
+        description: "For audiologists and clinic owners. A toolkit to standardize patient care, equipment maintenance, and clinic operations.",
+        icon: <Ear className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Standardize the 'Audiometry & Diagnostic Test' procedure.",
+            "Implement a 'Hearing Aid Trial & Fitting' protocol.",
+            "Master 'Equipment Calibration & Maintenance' for audiometers and tympanometers.",
+            "Includes 'Patient Counseling' and 'Follow-up Scheduling' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'spa_wellness_pack',
+        title: "Spa & Wellness Center Checklist",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Wellness",
+        description: "For spa owners and managers. A toolkit to ensure a serene, hygienic, and luxurious guest experience.",
+        icon: <TreePalm className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Therapy Room Setup & Hygiene' protocol.",
+            "Standardize 'Guest Consultation & Contraindication' checks.",
+            "Master 'Product & Linen Inventory' management.",
+            "Includes 'Therapist Training & Performance' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'esg_compliance_pack',
+        title: "ESG & Sustainability Compliance Checklist",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Compliance",
+        description: "For CCOs and Heads of ESG. A comprehensive toolkit to implement, track, and report on Environmental, Social, and Governance metrics.",
+        icon: <Recycle className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement an 'Energy & Water Consumption Audit' checklist.",
+            "Standardize 'Waste Management & Recycling' protocols.",
+            "Master 'Ethical Sourcing & Vendor Audits'.",
+            "Includes 'Employee Health & Safety' and 'Community Engagement' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'iso_compliance_pack',
+        title: "ISO Compliance & Audit Checklist",
+        priceUSD: 199.99,
+        priceINR: 15999,
+        category: "Compliance",
+        description: "For Heads of Quality and Management Representatives. A toolkit to prepare for and pass ISO 9001, 14001, and 45001 certification audits.",
+        icon: <FileCheck className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Standardize 'Document Control & Record Keeping' as per ISO standards.",
+            "Implement a 'Corrective & Preventive Action (CAPA)' process.",
+            "Master the 'Internal Audit & Management Review' cycle.",
+            "Includes checklists for 'Risk Assessment' and 'Objective Setting'."
+        ],
+        checklists: []
+    },
+    {
+        id: 'maritime_shipping_pack',
+        title: "Maritime Shipping & Port Operations",
+        priceUSD: 249.99,
+        priceINR: 19999,
+        category: "Manufacturing",
+        description: "For port captains and shipping line managers. A high-stakes toolkit for ensuring safety, security, and efficiency in port and vessel operations.",
+        icon: <LifeBuoy className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement the 'ISPS Code' security protocols for port facilities and vessels.",
+            "Standardize 'Vessel Mooring & Berthing' operations.",
+            "Master 'Cargo Loading & Discharge' safety checklists.",
+            "Includes 'Bunkering Operations' and 'Ballast Water Management' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'finance_accounting_pack',
+        title: "Finance & Accounting Ops Checklist",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Corporate",
+        description: "For CFOs and finance controllers. A toolkit to ensure accuracy, compliance, and efficiency in financial operations.",
+        icon: <DollarSign className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Standardize the 'Month-End Closing' process.",
+            "Implement a robust 'Accounts Payable & Vendor Payment' protocol.",
+            "Master 'Expense Report & Reimbursement' audits.",
+            "Includes 'Statutory Compliance' (GST, TDS) and 'Bank Reconciliation' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'agritech_pack',
+        title: "Agriculture & Farm Operations",
+        priceUSD: 89.99,
+        priceINR: 6999,
+        category: "Manufacturing",
+        description: "For farm managers and agronomists. A toolkit for optimizing crop management, resource usage, and harvest operations.",
+        icon: <Sprout className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Soil Health & irrigation' management checklist.",
+            "Standardize 'Pest & Disease Control' application logs.",
+            "Master the 'Pre-Harvest & Post-Harvest' handling process.",
+            "Includes 'Farm Equipment Maintenance' and 'Worker Safety' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'cloud_kitchen_pack',
+        title: "Cloud Kitchen & Food Delivery Checklist",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Hospitality",
+        description: "For cloud kitchen owners. A HACCP-based toolkit optimized for delivery-only food businesses, focusing on speed, safety, and packaging.",
+        icon: <CloudRain className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Master 'Order to Dispatch' time with a streamlined workflow.",
+            "Implement a 'Tamper-Proof Packaging & Handover' protocol.",
+            "Standardize 'Ingredient Batch Management' for consistency.",
+            "Includes 'Rider Management' and 'Online Review Management' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'construction_site_pack',
+        title: "Construction Site Safety (EHS) Checklist",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        category: "Manufacturing",
+        description: "For site engineers and safety officers. A comprehensive EHS toolkit to ensure worker safety and regulatory compliance on construction sites.",
+        icon: <HardHat className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Work-at-Height & Scaffolding' safety protocol.",
+            "Standardize 'Excavation & Trenching' safety checks.",
+            "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
+            "Includes 'Tool & Tackles Inspection' and 'First Aid' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'personal_travel_pack',
+        title: "Personal Travel & Vacation Checklist",
+        priceUSD: 19.99,
+        priceINR: 1499,
+        category: "Personal",
+        description: "For frequent travelers. A personal toolkit to ensure you never forget the essentials, from packing to pre-departure home checks.",
+        icon: <Plane className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Use the 'Ultimate Packing List' categorized by item type.",
+            "Implement the 'Pre-Departure Home Security' checklist.",
+            "Standardize your 'Digital Document & Currency' preparation.",
+            "Includes a 'Return Home' checklist for a smooth re-entry."
+        ],
+        checklists: []
+    },
+    {
+        id: 'pet_care_pack',
+        title: "Pet Care & Pet Sitter Checklist",
+        priceUSD: 19.99,
+        priceINR: 1499,
+        category: "Personal",
+        description: "For pet owners. A comprehensive guide for leaving your pet with a sitter, ensuring their safety, health, and happiness.",
+        icon: <PawPrint className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Standardize the 'Feeding Schedule & Diet' instructions.",
+            "Implement the 'Medication & Emergency Contact' list.",
+            "Master the 'Daily Routine & Exercise' plan.",
+            "Includes a 'House Rules for Pet Sitter' checklist."
+        ],
+        checklists: []
+    },
+    {
+        id: 'gym_fitness_pack',
+        title: "Gym & Fitness Center Operations",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        category: "Wellness",
+        description: "For gym owners and managers. A toolkit to ensure member safety, equipment maintenance, and a clean, motivating environment.",
+        icon: <Dumbbell className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Daily Equipment Safety & Cleaning' protocol.",
+            "Standardize the 'New Member Onboarding & Induction' process.",
+            "Master 'Locker Room & Shower Hygiene' checklists.",
+            "Includes 'Personal Trainer Performance' and 'Class Scheduling' checklists."
+        ],
+        checklists: []
+    },
+    {
+        id: 'real_estate_pack',
+        title: "Real Estate & Property Management",
+        priceUSD: 119.99,
+        priceINR: 8999,
+        category: "Real Estate",
+        description: "For property managers and landlords. A toolkit for managing residential and commercial properties, focusing on maintenance, tenant relations, and compliance.",
+        icon: <Home className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Standardize the 'Tenant Move-In & Move-Out' inspection process.",
+            "Implement a 'Preventive Maintenance' schedule for building systems.",
+            "Master 'Rent Collection & Arrears Management'.",
+            "Includes 'Lease Agreement & Renewal' and 'Vendor Management' checklists."
+        ],
+        checklists: []
     }
 ];
 
 export const premiumPacks = allPacks;
-
 
 export type Task = {
     id: string;
@@ -1030,5 +1350,3 @@ export type PremiumPack = {
     checklists: Checklist[];
     previewScenario?: PreviewScenario;
 };
-
-    
