@@ -115,7 +115,7 @@ const PainPointsSection = ({ category }: { category: string }) => {
     const selected = content[category as keyof typeof content] || content.Hospitality;
 
     return (
-        <section id="why" className="w-full py-12 md:py-16 bg-secondary">
+        <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
@@ -133,8 +133,7 @@ const PainPointsSection = ({ category }: { category: string }) => {
 }
 
 export default function Page({ params }: { params: { id: string } }) {
-  const resolvedParams = React.use(params);
-  const pack = premiumPacks.find((p) => p.id === resolvedParams.id);
+  const pack = premiumPacks.find((p) => p.id === params.id);
 
   if (!pack) {
     notFound();
@@ -251,7 +250,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     <p className="font-semibold">Quick Links</p>
                     <Link href="#pricing" className="text-muted-foreground hover:text-foreground">Pricing</Link>
                     <Link href="#checklists" className="text-muted-foreground hover:text-foreground">What's Included</Link>
-                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact Us</Link>
+                    <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
                      <p className="font-semibold">Legal</p>
@@ -271,5 +270,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
