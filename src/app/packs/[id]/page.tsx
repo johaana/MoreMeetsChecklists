@@ -3,12 +3,13 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Logo } from '@/components/icons';
-import { ArrowLeft, FileCheck2, HandCoins, Shield, TrendingUp, Users } from 'lucide-react';
+import { ArrowLeft, FileCheck2 } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
-import { painPointsContent } from '@/lib/pain-points-content.tsx';
+import { painPointsContent } from '@/lib/pain-points-content';
+import { Footer } from '@/components/layout/footer';
 
 type Props = {
   params: { id: string }
@@ -188,41 +189,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 
       </main>
-       <footer className="w-full border-t bg-secondary/50 mt-12">
-            <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
-                <div className="flex flex-col items-center md:items-start gap-2">
-                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-                        <Logo className="h-6 w-6 text-primary" />
-                        <span className="font-headline text-lg font-bold">MoreMeets</span>
-                    </Link>
-                    <p className="text-sm text-muted-foreground max-w-xs">
-                        The Professional Standard for Compliance & Operations Checklists.
-                    </p>
-                </div>
-                 <div className="flex flex-col gap-2 items-center text-sm">
-                    <p className="font-semibold">Quick Links</p>
-                    <Link href="#pricing" className="text-muted-foreground hover:text-foreground">Pricing</Link>
-                    <Link href="#checklists" className="text-muted-foreground hover:text-foreground">What's Included</Link>
-                    <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
-                </div>
-                <div className="flex flex-col gap-2 items-center md:items-end text-sm">
-                     <p className="font-semibold">Legal</p>
-                    <Link href="/terms" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Terms of Service
-                    </Link>
-                    <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Privacy Policy
-                    </Link>
-                    <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Refund Policy
-                    </Link>
-                     <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+       <Footer />
     </div>
   );
-
-    
-
-
+}
