@@ -13,7 +13,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import RazorpayPaymentButton from '@/components/ui/razorpay-payment-button';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -83,7 +82,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
-        if (typeof window !== 'undefined') {
+        if (typeof window !== 'undefined' && window.Razorpay) {
             sessionStorage.setItem('purchasedPackId', pack.id);
             sessionStorage.setItem('purchasedPackType', packType);
             
@@ -95,6 +94,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                  }
             });
             rzp.open();
+        } else {
+            console.error("Razorpay script not loaded or is still loading.");
+            alert("Payment gateway is not ready yet. Please try again in a moment.");
         }
     };
 

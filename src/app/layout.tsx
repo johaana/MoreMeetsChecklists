@@ -4,7 +4,6 @@ import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Inter, Poppins } from 'next/font/google';
-import Script from 'next/script';
 
 
 const siteUrl = 'https://www.moremeets.com';
@@ -64,6 +63,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
       </head>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
@@ -72,10 +72,6 @@ export default function RootLayout({
       )}>
         {children}
         <Toaster />
-        <Script
-            id="razorpay-checkout-js"
-            src="https://checkout.razorpay.com/v1/checkout.js"
-        />
       </body>
     </html>
   );
