@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -12,7 +11,40 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import RazorpayPaymentButton from '@/components/ui/razorpay-payment-button';
+
+
+// A simple, reliable component to render the Razorpay button form.
+const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        // This ensures the component only renders on the client, avoiding hydration errors.
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        // Render a placeholder or nothing on the server.
+        return <div className="w-full h-11 rounded-md bg-primary animate-pulse" />;
+    }
+
+    const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async> </script> </form>`;
+    
+    return (
+        <div 
+          className={`
+            [&>form]:w-full 
+            [&>form>div]:w-full 
+            [&_.razorpay-payment-button]:w-full
+            [&_.razorpay-payment-button]:h-11
+            [&_.razorpay-payment-button]:rounded-md
+            [&_.razorpay-payment-button]:font-bold
+            [&_.razorpay-payment-button]:transition-opacity
+            hover:[&_.razorpay-payment-button]:opacity-90
+          `}
+          dangerouslySetInnerHTML={{ __html: formHtml }} 
+        />
+    );
+};
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -70,6 +102,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
 
+    const professionalButtonId = "pl_OLn9g4IMJdJ3H1";
+    const personalizedButtonId = "pl_RLWZWUcvyLCF1a";
+
+
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
                 <CardHeader className="p-6 pt-8">
@@ -82,14 +118,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <RazorpayPaymentButton
-                        amount={basePrice}
-                        variant="default"
-                        packId={pack.id}
-                        packType="professional"
-                    >
-                        Purchase Now
-                    </RazorpayPaymentButton>
+                    <div className="flex items-center w-full">
+                       <RazorpayButton paymentButtonId={professionalButtonId} />
+                    </div>
                 </CardFooter>
             </Card>,
 
@@ -115,14 +146,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayPaymentButton
-                        amount={personalizedPackPrice}
-                        variant="accent"
-                        packId={pack.id}
-                        packType="personalized"
-                    >
-                        Purchase Now
-                    </RazorpayPaymentButton>
+                     <div className="flex items-center w-full">
+                       <RazorpayButton paymentButtonId={personalizedButtonId} />
+                    </div>
                 </CardFooter>
             </Card>,
 
@@ -216,3 +242,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
