@@ -17,10 +17,9 @@ export default function ContactUsPage() {
     const [email, setEmail] = React.useState('');
     const [message, setMessage] = React.useState('');
 
-    const recipientEmail = 'more@moremeets.com';
-    const subject = `Message from ${name} via MoreMeets Contact Form`;
+    const recipientWhatsApp = '919545997111';
     const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const whatsappLink = `https://wa.me/${recipientWhatsApp}?text=${encodeURIComponent(body)}`;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -98,7 +97,7 @@ export default function ContactUsPage() {
                                     <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} />
                                 </div>
                                 <Button asChild className="w-full" variant="accent">
-                                    <a href={mailtoLink}>Send Message</a>
+                                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Send Message on WhatsApp</a>
                                 </Button>
                             </form>
                         </div>
