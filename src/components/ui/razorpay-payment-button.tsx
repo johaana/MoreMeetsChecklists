@@ -3,92 +3,74 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import { Button, ButtonProps } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import { Button, type ButtonProps } from '@/components/ui/button';
 
 interface RazorpayPaymentButtonProps extends ButtonProps {
   buttonId: string;
   onClick: () => void;
 }
 
-const RazorpayPaymentButton = ({ 
-    buttonId, 
-    className, 
-    children, 
-    onClick,
-    variant,
-    ...props
+const RazorpayPaymentButton = ({
+  buttonId,
+  className,
+  children,
+  onClick,
+  variant,
+  size = 'lg',
+  ...props
 }: RazorpayPaymentButtonProps) => {
   const formRef = React.useRef<HTMLFormElement>(null);
-  // Generate a unique ID for the form input to connect the label
-  const inputId = React.useId();
 
   React.useEffect(() => {
     const form = formRef.current;
     if (!form) return;
 
-    // Clear previous script if any to prevent duplicates on re-render
-    const existingScript = form.querySelector('script');
-    if (existingScript) {
-      form.removeChild(existingScript);
+    // To prevent script duplication on re-renders, check if it's already there
+    if (form.querySelector('script')) {
+      return;
     }
-    
-    // The Razorpay script will look for this form and inject its button/input
+
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
     script.async = true;
     script.dataset.payment_button_id = buttonId;
-    
+
     form.appendChild(script);
 
-    return () => {
-        // Clean up the script when the component unmounts
-        if (form && script.parentNode === form) {
-            try {
-                form.removeChild(script);
-            } catch (e) {
-                // Ignore errors during cleanup
-            }
-        }
-    };
+    // No cleanup function needed, as we want the script to persist
   }, [buttonId]);
 
-  const handleWrapperClick = () => {
-    // This function is now only responsible for the side-effect (saving to session storage)
-    onClick();
-  };
-
   return (
-    <div 
-        className={cn('relative w-full', className)} 
-        onClick={handleWrapperClick}
+    <div
+      className={cn('relative w-full', className)}
+      // The side-effect onClick (e.g., sessionStorage) is attached here
+      onClick={onClick}
     >
-        {/* Our styled button is now a Label pointing to the Razorpay input */}
-        <Label
-            htmlFor={inputId}
-            className={cn(
-                'w-full font-bold',
-                // We manually apply button styles to the Label
-                'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-                variant === 'accent' ? 'bg-accent text-accent-foreground hover:bg-accent/90' : 'bg-primary text-primary-foreground hover:bg-primary/90',
-                'h-11 rounded-md px-8', // Match "lg" size from original Button
-                'cursor-pointer' // Make it look clickable
-            )}
-        >
-            {children}
-        </Label>
-        
-        {/* The form where Razorpay script injects its button. It remains hidden. */}
-        <form ref={formRef} className="absolute inset-0 w-full h-full z-[-1] opacity-0 pointer-events-none">
-            {/* The script will inject an input here. We give it an ID so our Label can target it. */}
-             <input type="hidden" id={inputId} />
-             {/* This style ensures the injected button from Razorpay remains invisible */}
-             <style jsx global>{`
-                .razorpay-payment-button {
-                    display: none !important;
-                }
-            `}</style>
-        </form>
+      {/* 1. The Decoy Button: This is what the user sees. It has no click event of its own. */}
+      <Button
+        variant={variant}
+        size={size}
+        className="w-full font-bold pointer-events-none" // pointer-events-none ensures clicks go "through" to the element behind it
+        aria-hidden="true" // Hide from screen readers as it's not the interactive element
+        tabIndex={-1} // Not focusable
+        {...props}
+      >
+        {children}
+      </Button>
+
+      {/* 2. The Real Button (Invisible): This form is stretched over the decoy button. */}
+      {/* It's transparent, but it's what the user ACTUALLY clicks. */}
+      <form
+        ref={formRef}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+        aria-label={`Purchase ${children}`}
+      >
+        {/*
+          The Razorpay script will inject its own button inside this form.
+          By making the form itself a positioned, zero-opacity overlay, we ensure
+          the user is clicking the real, functional element without seeing it.
+        */}
+      </form>
     </div>
   );
 };
