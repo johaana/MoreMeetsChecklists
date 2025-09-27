@@ -70,8 +70,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const enterprisePriceINR = 49999;
 
     React.useEffect(() => {
-        const professionalPaymentId = pack.paymentId || 'pl_RLWVPvVoJfcCEU'; // Fallback
-        const personalizedPaymentId = 'pl_RLWZWUcvyLCF1a'; // Static for now
+        const professionalPaymentId = 'pl_RLWVPvVoJfcCEU';
+        const personalizedPaymentId = 'pl_RLWZWUcvyLCF1a';
 
         const buttons = [
           { id: "professional-pack-button-desktop", paymentId: professionalPaymentId },
