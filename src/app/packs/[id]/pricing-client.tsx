@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -73,7 +72,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
 
     React.useEffect(() => {
-        const professionalPaymentId = pack.paymentId; // Use the ID from the pack prop
+        const professionalPaymentId = pack.paymentId; 
     
         const buttons = [
           { id: "professional-pack-button-desktop", paymentId: professionalPaymentId },
@@ -84,16 +83,20 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
         buttons.forEach(({ id, paymentId }) => {
           if (!paymentId) return; // Don't create a button if the ID is missing
-          const form = document.getElementById(id);
+          const form = document.getElementById(id) as HTMLFormElement | null;
           if (form && !form.querySelector("script")) {
+            // Clear previous content
+            form.innerHTML = '';
+            
             const script = document.createElement("script");
             script.src = "https://checkout.razorpay.com/v1/payment-button.js";
             script.async = true;
             script.dataset.payment_button_id = paymentId;
+            
             form.appendChild(script);
           }
         });
-      }, [pack.paymentId, personalizedPaymentId]); // Rerun when pack data changes
+      }, [pack.paymentId, personalizedPaymentId]);
 
 
     const pricingCards = [
@@ -109,7 +112,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <div className="w-full">
-                     <form id="professional-pack-button-desktop" className="w-full"></form>
+                     <form id="professional-pack-button-desktop" action={`/thank-you?pack_id=${pack.id}`}></form>
                    </div>
                 </CardFooter>
             </Card>,
@@ -137,7 +140,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <div className="w-full">
-                       <form id="personalized-pack-button-desktop" className="w-full"></form>
+                       <form id="personalized-pack-button-desktop" action={`/thank-you?type=personalized`}></form>
                     </div>
                 </CardFooter>
             </Card>,
@@ -198,7 +201,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                         ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
                                                         <CardFooter key="footer" className="p-6 mt-auto">
                                                             <div className="w-full">
-                                                                <form id="professional-pack-button-mobile" className="w-full"></form>
+                                                                <form id="professional-pack-button-mobile" action={`/thank-you?pack_id=${pack.id}`}></form>
                                                             </div>
                                                         </CardFooter>
                                                     ]
@@ -216,7 +219,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                         ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
                                                         <CardFooter key="footer" className="p-6 mt-auto">
                                                             <div className="w-full">
-                                                                <form id="personalized-pack-button-mobile" className="w-full"></form>
+                                                                <form id="personalized-pack-button-mobile" action={`/thank-you?type=personalized`}></form>
                                                             </div>
                                                         </CardFooter>
                                                     ]
@@ -271,5 +274,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    

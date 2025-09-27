@@ -158,7 +158,7 @@ function ThankYouContent() {
   };
   
   const onDownload = () => {
-    handleDownload(pack);
+    handleDownload(pack as PremiumPack);
     setShowDownloadConfirm(true);
   }
 
