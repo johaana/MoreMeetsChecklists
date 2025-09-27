@@ -29,27 +29,45 @@ const RazorpayPaymentButton = ({
   ...props
 }: RazorpayPaymentButtonProps) => {
   const router = useRouter();
+  const [scriptLoaded, setScriptLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleClick = () => {
     if (typeof window !== 'undefined' && window.Razorpay) {
-      sessionStorage.setItem('purchasedPackId', packId);
-      sessionStorage.setItem('purchasedPackType', packType);
-
       const rzp = new window.Razorpay({
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Ensure you have this in your .env.local
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Use your test key
         button_id: buttonId,
         handler: function (response: any) {
-          // This function is called after a successful payment
-          router.push('/thank-you');
+           // On successful payment, redirect to the thank-you page with params
+           router.push(`/thank-you?pack_id=${packId}&pack_type=${packType}`);
         },
       });
       
       rzp.open();
     } else {
-        console.error("Razorpay script not loaded");
+        console.error("Razorpay script not loaded or available");
         alert("Payment gateway is not available at the moment. Please try again later.");
     }
   };
+
+  if (!scriptLoaded) {
+    return (
+      <Button size={size} variant={variant} className={cn('w-full font-bold', className)} disabled>
+        Loading...
+      </Button>
+    );
+  }
 
   return (
     <Button

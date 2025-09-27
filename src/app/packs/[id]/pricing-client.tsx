@@ -1,9 +1,10 @@
+
 'use client';
 
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
-import { Button, type ButtonProps } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -11,51 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-
-
-const RazorpayButton = ({ 
-    paymentButtonId, 
-    variant, 
-    packId,
-    packType
-}: { 
-    paymentButtonId: string, 
-    variant: ButtonProps['variant'],
-    packId: string,
-    packType: 'professional' | 'personalized'
-}) => {
-    const [isClient, setIsClient] = React.useState(false);
-
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
-
-    const redirectUrl = `/thank-you?pack_id=${packId}&pack_type=${packType}`;
-    const formHtml = `<form action="${redirectUrl}"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async></script></form>`;
-
-    if (!isClient) {
-        return (
-             <Button size="lg" variant={variant} className="w-full font-bold" disabled>
-                Loading...
-            </Button>
-        );
-    }
-    
-    return (
-        <div className="w-full">
-            <div 
-              className={`
-                [&>form]:w-full 
-                [&>form>div]:w-full 
-                [&>form>div>button]:w-full 
-                [&>form>div>button]:font-bold
-                ${variant === 'accent' ? '[&>form>div>button]:bg-accent [&>form>div>button]:text-accent-foreground' : '[&>form>div>button]:bg-primary [&>form>div>button]:text-primary-foreground'}
-              `}
-              dangerouslySetInnerHTML={{ __html: formHtml }}
-            />
-        </div>
-    );
-};
+import RazorpayPaymentButton from '@/components/ui/razorpay-payment-button';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -125,16 +82,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <RazorpayButton 
-                        paymentButtonId="pl_OLn9g4I2N3gmjO"
+                    <RazorpayPaymentButton 
+                        buttonId="pl_OLn9g4I2N3gmjO"
                         variant="default"
                         packId={pack.id}
                         packType="professional"
-                    />
+                    >
+                        Purchase Now
+                    </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
 
-            <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
+            <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover*shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
                 <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
                 <CardHeader className="p-6">
                     <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
@@ -156,12 +115,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayButton 
-                        paymentButtonId="pl_OLnAWJ2kS7GjLq"
+                     <RazorpayPaymentButton 
+                        buttonId="pl_OLnAWJ2kS7GjLq"
                         variant="accent"
                         packId={pack.id}
                         packType="personalized"
-                    />
+                    >
+                        Get Your Personalized Pack
+                    </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
 
