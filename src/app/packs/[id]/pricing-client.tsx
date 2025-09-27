@@ -82,8 +82,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <RazorpayPaymentButton 
-                        buttonId="pl_OLn9g4I2N3gmjO"
+                    <RazorpayPaymentButton
+                        amount={basePrice}
                         variant="default"
                         packId={pack.id}
                         packType="professional"
@@ -115,13 +115,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayPaymentButton 
-                        buttonId="pl_OLnAWJ2kS7GjLq"
+                     <RazorpayPaymentButton
+                        amount={personalizedPackPrice}
                         variant="accent"
                         packId={pack.id}
                         packType="personalized"
                     >
-                        Get Your Personalized Pack
+                        Purchase Now
                     </RazorpayPaymentButton>
                 </CardFooter>
             </Card>,
