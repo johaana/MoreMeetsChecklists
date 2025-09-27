@@ -17,7 +17,6 @@ const virtualPersonalizedPack = {
   priceINR: 10999,
   category: "Personalized",
   description: "A custom pack tailored for you.",
-  icon: <></>,
   sampleItems: [],
 };
 
