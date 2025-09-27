@@ -12,12 +12,31 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import dynamic from 'next/dynamic';
 
-const RazorpayButton = dynamic(() => import('@/components/ui/razorpay-button'), {
-    ssr: false,
-    loading: () => <Button className="w-full font-bold" size="lg" disabled>Purchase Now</Button>
-});
+
+function RazorpayScriptInjector() {
+  React.useEffect(() => {
+    const buttons = [
+      { id: "professional-pack-button-desktop", paymentId: "pl_RLWVPvVoJfcCEU" },
+      { id: "personalized-pack-button-desktop", paymentId: "pl_RLWZWUcvyLCF1a" },
+      { id: "professional-pack-button-mobile", paymentId: "pl_RLWVPvVoJfcCEU" },
+      { id: "personalized-pack-button-mobile", paymentId: "pl_RLWZWUcvyLCF1a" },
+    ];
+
+    buttons.forEach(({ id, paymentId }) => {
+      const form = document.getElementById(id);
+      if (form && !form.querySelector("script")) {
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.async = true;
+        script.dataset.payment_button_id = paymentId;
+        form.appendChild(script);
+      }
+    });
+  }, []);
+
+  return null; // This component only handles script injection
+}
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -75,9 +94,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
 
-    const professionalButtonId = "pl_RLWVPvVoJfcCEU";
-    const personalizedButtonId = "pl_RLWZWUcvyLCF1a";
-
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
                 <CardHeader className="p-6 pt-8">
@@ -91,7 +107,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <div className="w-full">
-                     <RazorpayButton paymentButtonId={professionalButtonId} />
+                     <form id="professional-pack-button-desktop" className="w-full"></form>
                    </div>
                 </CardFooter>
             </Card>,
@@ -119,7 +135,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <div className="w-full">
-                       <RazorpayButton paymentButtonId={personalizedButtonId} />
+                       <form id="personalized-pack-button-desktop" className="w-full"></form>
                     </div>
                 </CardFooter>
             </Card>,
@@ -149,6 +165,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     return (
         <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
+            <RazorpayScriptInjector />
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
@@ -157,7 +174,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 
                 {/* Desktop View */}
                 <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {pricingCards}
+                   {pricingCards}
                 </div>
 
                 {/* Mobile View */}
@@ -169,14 +186,53 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         className="w-full max-w-sm mx-auto"
                     >
                         <CarouselContent>
-                            {React.Children.map(pricingCards, (child, index) => (
-                                <CarouselItem key={index} className="basis-full">
-                                    <div className="p-1">{child}</div>
-                                </CarouselItem>
-                            ))}
+                             {React.Children.map(pricingCards, (child, index) => {
+                                const card = child as React.ReactElement;
+                                if (card.key === 'professional') {
+                                    return (
+                                        <CarouselItem key={index} className="basis-full">
+                                            <div className="p-1">
+                                                {React.cloneElement(card, {
+                                                     children: [
+                                                        ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
+                                                        <CardFooter key="footer" className="p-6 mt-auto">
+                                                            <div className="w-full">
+                                                                <form id="professional-pack-button-mobile" className="w-full"></form>
+                                                            </div>
+                                                        </CardFooter>
+                                                    ]
+                                                })}
+                                            </div>
+                                        </CarouselItem>
+                                    );
+                                }
+                                if (card.key === 'personalized') {
+                                     return (
+                                        <CarouselItem key={index} className="basis-full">
+                                            <div className="p-1">
+                                                {React.cloneElement(card, {
+                                                     children: [
+                                                        ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
+                                                        <CardFooter key="footer" className="p-6 mt-auto">
+                                                            <div className="w-full">
+                                                                <form id="personalized-pack-button-mobile" className="w-full"></form>
+                                                            </div>
+                                                        </CardFooter>
+                                                    ]
+                                                })}
+                                            </div>
+                                        </CarouselItem>
+                                    );
+                                }
+                                return (
+                                    <CarouselItem key={index} className="basis-full">
+                                        <div className="p-1">{child}</div>
+                                    </CarouselItem>
+                                );
+                            })}
                         </CarouselContent>
                          <CarouselPrevious className="left-[-1.5rem]" />
-                        <CarouselNext className="right-[-1.pushrem]" />
+                        <CarouselNext className="right-[-1.5rem]" />
                     </Carousel>
                 </div>
 
@@ -214,7 +270,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
 
     
