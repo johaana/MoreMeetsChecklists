@@ -73,8 +73,6 @@ declare global {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const router = useRouter();
-    const professionalPackButtonId = process.env.NEXT_PUBLIC_RAZORPAY_PROFESSIONAL_BUTTON_ID;
-    const personalizedPackButtonId = process.env.NEXT_PUBLIC_RAZORPAY_PERSONALIZED_BUTTON_ID;
     
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
@@ -82,35 +80,54 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
-        const buttonId = packType === 'professional' ? professionalPackButtonId : personalizedPackButtonId;
-        
+        const amount = (packType === 'professional' ? basePrice : personalizedPackPrice) * 100; // Amount in paise
+
         if (!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID) {
             console.error("Razorpay Key ID is not configured.");
             alert("Payment gateway is not configured. Please contact support.");
             return;
         }
 
-        if (!buttonId) {
-             console.error("Razorpay Button ID is not configured for this pack type.");
-             alert("Payment option is not configured correctly. Please contact support.");
-             return;
-        }
-
         if (typeof window !== 'undefined' && window.Razorpay) {
             sessionStorage.setItem('purchasedPackId', pack.id);
             sessionStorage.setItem('purchasedPackType', packType);
             
-            const rzp = new window.Razorpay({
-                 key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                 button_id: buttonId,
-                 handler: function (response: any) {
-                    router.push('/thank-you');
-                 }
-            });
+            const options = {
+                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                amount: amount,
+                currency: "INR",
+                name: "MoreMeets",
+                description: `Purchase of ${pack.title} - ${packType} pack`,
+                image: "https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg", // A URL to your logo
+                handler: function (response: any) {
+                   // This function is called after a successful payment
+                   router.push('/thank-you');
+                },
+                prefill: {
+                    name: "",
+                    email: "",
+                    contact: ""
+                },
+                notes: {
+                    pack_id: pack.id,
+                    pack_type: packType
+                },
+                theme: {
+                    color: "#0A2540"
+                }
+            };
+            
+            const rzp = new window.Razorpay(options);
+            
             rzp.on('payment.failed', function (response: any){
                 alert("Oops! Something went wrong. Payment Failed");
-                console.error("Payment Failed:", response.error);
+                console.error("Payment Failed:", response.error.description);
+                console.error("Error Code:", response.error.code);
+                console.error("Error Source:", response.error.source);
+                console.error("Error Step:", response.error.step);
+                console.error("Error Reason:", response.error.reason);
             });
+
             rzp.open();
         } else {
             console.error("Razorpay script not loaded or is still loading.");
