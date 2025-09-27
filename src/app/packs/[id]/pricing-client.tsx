@@ -70,11 +70,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const enterprisePriceINR = 49999;
 
     React.useEffect(() => {
+        const professionalPaymentId = pack.paymentId || 'pl_RLWVPvVoJfcCEU'; // Fallback
+        const personalizedPaymentId = 'pl_RLWZWUcvyLCF1a'; // Static for now
+
         const buttons = [
-          { id: "professional-pack-button-desktop", paymentId: "pl_RLWVPvVoJfcCEU" },
-          { id: "personalized-pack-button-desktop", paymentId: "pl_RLWZWUcvyLCF1a" },
-          { id: "professional-pack-button-mobile", paymentId: "pl_RLWVPvVoJfcCEU" },
-          { id: "personalized-pack-button-mobile", paymentId: "pl_RLWZWUcvyLCF1a" },
+          { id: "professional-pack-button-desktop", paymentId: professionalPaymentId },
+          { id: "personalized-pack-button-desktop", paymentId: personalizedPaymentId },
+          { id: "professional-pack-button-mobile", paymentId: professionalPaymentId },
+          { id: "personalized-pack-button-mobile", paymentId: personalizedPaymentId },
         ];
 
         buttons.forEach(({ id, paymentId }) => {
@@ -87,7 +90,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             form.appendChild(script);
           }
         });
-      }, []);
+      }, [pack.paymentId]);
 
 
     const pricingCards = [
