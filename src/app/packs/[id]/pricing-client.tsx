@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -15,23 +16,14 @@ import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescript
 
 // A simple, reliable component to render the Razorpay button form.
 const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
-    const [isClient, setIsClient] = React.useState(false);
-
-    React.useEffect(() => {
-        // This ensures the component only renders on the client, avoiding hydration errors.
-        setIsClient(true);
-    }, []);
-
-    if (!isClient) {
-        // Render a placeholder or nothing on the server.
-        return <div className="w-full h-11 rounded-md bg-primary animate-pulse" />;
-    }
-
     const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async> </script> </form>`;
     
+    // This div wrapper and the dangerouslySetInnerHTML is the simplest way
+    // to embed Razorpay's required script and form.
     return (
         <div 
           className={`
+            w-full
             [&>form]:w-full 
             [&>form>div]:w-full 
             [&_.razorpay-payment-button]:w-full
@@ -40,6 +32,7 @@ const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
             [&_.razorpay-payment-button]:font-bold
             [&_.razorpay-payment-button]:transition-opacity
             hover:[&_.razorpay-payment-button]:opacity-90
+            bg-primary
           `}
           dangerouslySetInnerHTML={{ __html: formHtml }} 
         />
@@ -102,7 +95,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
 
-    const professionalButtonId = "pl_OLn9g4IMJdJ3H1";
+    const professionalButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedButtonId = "pl_RLWZWUcvyLCF1a";
 
 
@@ -118,9 +111,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <div className="flex items-center w-full">
-                       <RazorpayButton paymentButtonId={professionalButtonId} />
-                    </div>
+                   <div className="w-full">
+                     <RazorpayButton paymentButtonId={professionalButtonId} />
+                   </div>
                 </CardFooter>
             </Card>,
 
@@ -146,7 +139,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <div className="flex items-center w-full">
+                    <div className="w-full">
                        <RazorpayButton paymentButtonId={personalizedButtonId} />
                     </div>
                 </CardFooter>
@@ -204,7 +197,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             ))}
                         </CarouselContent>
                          <CarouselPrevious className="left-[-1.5rem]" />
-                        <CarouselNext className="right-[-1.5rem]" />
+                        <CarouselNext className="right-[-1.pushrem]" />
                     </Carousel>
                 </div>
 
