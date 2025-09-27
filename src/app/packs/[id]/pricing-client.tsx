@@ -68,15 +68,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
+    const personalizedPaymentId = 'pl_RLWZWUcvyLCF1a';
+
 
     React.useEffect(() => {
-        const professionalPaymentId = 'pl_RLWVPvVoJfcCEU';
-        const personalizedPaymentId = 'pl_RLWZWUcvyLCF1a';
-
         const buttons = [
-          { id: "professional-pack-button-desktop", paymentId: professionalPaymentId },
+          { id: "professional-pack-button-desktop", paymentId: pack.paymentId },
           { id: "personalized-pack-button-desktop", paymentId: personalizedPaymentId },
-          { id: "professional-pack-button-mobile", paymentId: professionalPaymentId },
+          { id: "professional-pack-button-mobile", paymentId: pack.paymentId },
           { id: "personalized-pack-button-mobile", paymentId: personalizedPaymentId },
         ];
 
