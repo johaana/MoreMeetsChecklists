@@ -6,12 +6,12 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -64,40 +64,65 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
+const PaymentButton = ({ id, action, paymentId }: { id: string, action: string, paymentId?: string }) => {
+    const formRef = React.useRef<HTMLFormElement>(null);
+
+    React.useEffect(() => {
+        if (!paymentId) return;
+        const form = formRef.current;
+        if (form && !form.querySelector("script")) {
+            form.innerHTML = ''; // Clear previous content
+            const script = document.createElement("script");
+            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+            script.async = true;
+            script.dataset.payment_button_id = paymentId;
+            form.appendChild(script);
+        }
+    }, [paymentId]);
+
+    return (
+        <AlertDialog>
+            <AlertDialogTrigger asChild>
+                <div id={`${id}-container`} className="w-full">
+                    {/* The form will be populated by the script */}
+                    <form id={id} action={action} ref={formRef} className="razorpay-form-placeholder">
+                        {/* This button will be replaced by Razorpay's, but we show it as a fallback */}
+                         <Button className="w-full h-12 text-lg">Buy Now</Button>
+                    </form>
+                </div>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Note Your Payment ID</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        After completing your payment, you will be redirected to our download page. To get your checklist pack, you will need to enter the **Payment ID** from your Razorpay confirmation screen or email.
+                        <br /><br />
+                        <strong>Example ID:</strong> `pay_xxxxxxxxxxxxxx`
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => {
+                        const btn = formRef.current?.querySelector('input[type="submit"]');
+                        if (btn instanceof HTMLElement) {
+                            btn.click();
+                        }
+                     }}>
+                        Proceed to Payment
+                    </AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+    );
+};
+
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
     const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
-
-
-    React.useEffect(() => {
-        const professionalPaymentId = pack.paymentId; 
-    
-        const buttons = [
-          { id: "professional-pack-button-desktop", paymentId: professionalPaymentId },
-          { id: "personalized-pack-button-desktop", paymentId: personalizedPaymentId },
-          { id: "professional-pack-button-mobile", paymentId: professionalPaymentId },
-          { id: "personalized-pack-button-mobile", paymentId: personalizedPaymentId },
-        ];
-
-        buttons.forEach(({ id, paymentId }) => {
-          if (!paymentId) return; // Don't create a button if the ID is missing
-          const form = document.getElementById(id) as HTMLFormElement | null;
-          if (form && !form.querySelector("script")) {
-            // Clear previous content
-            form.innerHTML = '';
-            
-            const script = document.createElement("script");
-            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-            script.async = true;
-            script.dataset.payment_button_id = paymentId;
-            
-            form.appendChild(script);
-          }
-        });
-      }, [pack.paymentId, personalizedPaymentId]);
-
+    const professionalPaymentId = pack.paymentId; 
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
@@ -112,7 +137,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <div className="w-full">
-                     <form id="professional-pack-button-desktop" action={`/thank-you?pack_id=${pack.id}`}></form>
+                     <PaymentButton 
+                        id="professional-pack-button-desktop" 
+                        action={`/thank-you?pack_id=${pack.id}`} 
+                        paymentId={professionalPaymentId} 
+                     />
                    </div>
                 </CardFooter>
             </Card>,
@@ -140,7 +169,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <div className="w-full">
-                       <form id="personalized-pack-button-desktop" action={`/thank-you?type=personalized`}></form>
+                       <PaymentButton 
+                         id="personalized-pack-button-desktop" 
+                         action={`/thank-you?type=personalized`} 
+                         paymentId={personalizedPaymentId} 
+                       />
                     </div>
                 </CardFooter>
             </Card>,
@@ -201,7 +234,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                         ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
                                                         <CardFooter key="footer" className="p-6 mt-auto">
                                                             <div className="w-full">
-                                                                <form id="professional-pack-button-mobile" action={`/thank-you?pack_id=${pack.id}`}></form>
+                                                                <PaymentButton 
+                                                                    id="professional-pack-button-mobile" 
+                                                                    action={`/thank-you?pack_id=${pack.id}`} 
+                                                                    paymentId={professionalPaymentId} 
+                                                                />
                                                             </div>
                                                         </CardFooter>
                                                     ]
@@ -219,7 +256,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                         ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
                                                         <CardFooter key="footer" className="p-6 mt-auto">
                                                             <div className="w-full">
-                                                                <form id="personalized-pack-button-mobile" action={`/thank-you?type=personalized`}></form>
+                                                                <PaymentButton 
+                                                                    id="personalized-pack-button-mobile" 
+                                                                    action={`/thank-you?type=personalized`} 
+                                                                    paymentId={personalizedPaymentId} 
+                                                                />
                                                             </div>
                                                         </CardFooter>
                                                     ]

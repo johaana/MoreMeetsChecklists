@@ -48,7 +48,7 @@ export default function ContactUsPage() {
                                     <CardTitle className="text-lg flex items-center gap-3"><Mail className="w-5 h-5 text-primary"/> General Inquiries</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <a href="mailto:support@moremeets.com" className="text-primary underline">support@moremeets.com</a>
+                                    <a href="mailto:more@moremeets.com" className="text-primary underline">more@moremeets.com</a>
                                 </CardContent>
                             </Card>
                              <Card>
@@ -56,7 +56,7 @@ export default function ContactUsPage() {
                                     <CardTitle className="text-lg flex items-center gap-3"><Phone className="w-5 h-5 text-primary"/> Phone</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <p className="text-muted-foreground">(+91) 123-456-7890</p>
+                                    <p className="text-muted-foreground">(+91) 9545997111</p>
                                 </CardContent>
                             </Card>
                              <Card>

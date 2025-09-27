@@ -15,13 +15,13 @@ export function Footer() {
                         The Professional Standard for Compliance &amp; Operations Checklists.
                     </p>
                      <div className="flex flex-col items-center md:items-start gap-2 mt-4 text-sm">
-                        <a href="mailto:support@moremeets.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+                        <a href="mailto:more@moremeets.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
                             <Mail className="w-4 h-4" />
-                            support@moremeets.com
+                            more@moremeets.com
                         </a>
                         <div className="flex items-center gap-2 text-muted-foreground">
                             <Phone className="w-4 h-4" />
-                            <span>(+91) 123-456-7890</span>
+                            <span>(+91) 9545997111</span>
                         </div>
                     </div>
                 </div>

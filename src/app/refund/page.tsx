@@ -75,7 +75,7 @@ export default function RefundPolicyPage() {
                             If you have any questions about our Cancellation and Refund Policy, or if you encounter any issues with downloading or accessing your purchased files, please do not hesitate to contact us.
                         </p>
                         <p>
-                            You can reach us via our <Link href="/contact" className="text-primary underline">Contact Us</Link> page or by emailing us directly at <a href="mailto:support@moremeets.com" className="text-primary underline">support@moremeets.com</a>. We are committed to ensuring you have a positive experience with our products.
+                            You can reach us via our <Link href="/contact" className="text-primary underline">Contact Us</Link> page or by emailing us directly at <a href="mailto:more@moremeets.com" className="text-primary underline">more@moremeets.com</a>. We are committed to ensuring you have a positive experience with our products.
                         </p>
                     </LegalSection>
                 </div>
