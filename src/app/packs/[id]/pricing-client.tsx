@@ -1,18 +1,16 @@
-
 'use client';
 
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { Button, type ButtonProps } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Building } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 
 const RazorpayButton = ({ 
@@ -32,9 +30,7 @@ const RazorpayButton = ({
         setIsClient(true);
     }, []);
 
-    const redirectUrl = `https://www.moremeets.com/thank-you?pack_id=${packId}&pack_type=${packType}`;
-    
-    // The form action needs to be set for the redirect_url to work with Razorpay Payment Buttons
+    const redirectUrl = `/thank-you?pack_id=${packId}&pack_type=${packType}`;
     const formHtml = `<form action="${redirectUrl}"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async></script></form>`;
 
     if (!isClient) {
@@ -44,7 +40,7 @@ const RazorpayButton = ({
             </Button>
         );
     }
-
+    
     return (
         <div className="w-full">
             <div 
@@ -202,7 +198,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 
                 {/* Desktop View */}
                 <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {pricingCards.map(card => card)}
+                    {pricingCards}
                 </div>
 
                 {/* Mobile View */}
@@ -259,5 +255,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
