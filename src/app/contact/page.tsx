@@ -51,7 +51,6 @@ export default function ContactUsPage() {
                     <div className="space-y-8">
                         <div className="space-y-4">
                             <h2 className="text-2xl font-bold font-headline text-primary">Get in Touch</h2>
-                            <p className="text-muted-foreground">Fill out the form and our team will get back to you within 24 hours.</p>
                         </div>
                         <div className="space-y-4">
                              <Card>
@@ -83,6 +82,7 @@ export default function ContactUsPage() {
                     <div className="space-y-8">
                          <div className="space-y-4">
                             <h2 className="text-2xl font-bold font-headline text-primary">Send a Message</h2>
+                             <p className="text-muted-foreground">Fill out the form and our team will get back to you within 24 hours.</p>
                             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                                 <div className="space-y-2">
                                     <Label htmlFor="name">Name</Label>
