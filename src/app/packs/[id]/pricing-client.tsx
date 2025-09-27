@@ -19,7 +19,6 @@ const RazorpayButton = dynamic(() => import('@/components/ui/razorpay-button'), 
     loading: () => <Button className="w-full" disabled>Purchase Now</Button>
 });
 
-
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
 
@@ -214,5 +213,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    

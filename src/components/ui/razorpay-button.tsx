@@ -20,6 +20,9 @@ const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
             [&_.razorpay-payment-button]:rounded-md
             [&_.razorpay-payment-button]:font-bold
             [&_.razorpay-payment-button]:transition-opacity
+            [&_.razorpay-payment-button]:text-lg
+            [&_.razorpay-payment-button]:py-7
+            [&_.razorpay-payment-button]:px-10
           `}
           dangerouslySetInnerHTML={{ __html: formHtml }} 
         />
@@ -27,5 +30,3 @@ const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
 };
 
 export default RazorpayButton;
-
-    
