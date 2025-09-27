@@ -12,33 +12,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import dynamic from 'next/dynamic';
 
-// Define the RazorpayButton component directly in this file for simplicity.
-const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
-    const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async> </script> </form>`;
-    
-    return (
-        <div 
-          className={`
-            w-full
-            [&>form]:w-full 
-            [&>form>div]:w-full 
-            [&_.razorpay-payment-button]:w-full
-            [&_.razorpay-payment-button]:h-11
-            [&_.razorpay-payment-button]:bg-accent
-            [&_.razorpay-payment-button]:text-accent-foreground
-            hover:[&_.razorpay-payment-button]:opacity-90
-            [&_.razorpay-payment-button]:rounded-md
-            [&_.razorpay-payment-button]:font-bold
-            [&_.razorpay-payment-button]:transition-opacity
-            [&_.razorpay-payment-button]:text-lg
-            [&_.razorpay-payment-button]:py-7
-            [&_.razorpay-payment-button]:px-10
-          `}
-          dangerouslySetInnerHTML={{ __html: formHtml }} 
-        />
-    );
-};
+const RazorpayButton = dynamic(() => import('@/components/ui/razorpay-button'), {
+    ssr: false,
+    loading: () => <Button className="w-full font-bold" size="lg" disabled>Purchase Now</Button>
+});
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -98,12 +77,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const professionalButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedButtonId = "pl_RLWZWUcvyLCF1a";
-    
-    const [isClient, setIsClient] = React.useState(false);
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
-
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
@@ -118,10 +91,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <div className="w-full">
-                     {isClient ? 
-                        <RazorpayButton paymentButtonId={professionalButtonId} /> : 
-                        <Button className="w-full font-bold" size="lg" disabled>Purchase Now</Button>
-                     }
+                     <RazorpayButton paymentButtonId={professionalButtonId} />
                    </div>
                 </CardFooter>
             </Card>,
@@ -149,10 +119,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <div className="w-full">
-                       {isClient ? 
-                          <RazorpayButton paymentButtonId={personalizedButtonId} /> : 
-                          <Button className="w-full font-bold" size="lg" disabled>Purchase Now</Button>
-                       }
+                       <RazorpayButton paymentButtonId={personalizedButtonId} />
                     </div>
                 </CardFooter>
             </Card>,
@@ -247,5 +214,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
