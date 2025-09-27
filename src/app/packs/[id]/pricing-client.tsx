@@ -151,7 +151,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <Button asChild className="w-full font-bold" variant="secondary">
-                      <Link href="https://calendly.com/d/cn3-33n-g38/30min" target="_blank">Book a Discovery Call</Link>
+                      <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
                     </Button>
                 </CardFooter>
             </Card>
