@@ -15,13 +15,13 @@ export function Footer() {
                         The Professional Standard for Compliance &amp; Operations Checklists.
                     </p>
                      <div className="flex flex-col items-center md:items-start gap-2 mt-4 text-sm">
-                        <a href="mailto:more@moremeets.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                            <Mail className="w-4 h-4" />
-                            more@moremeets.com
-                        </a>
                          <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
                             <WhatsAppIcon className="w-4 h-4" />
                             <span>Chat on WhatsApp</span>
+                        </a>
+                        <a href="mailto:more@moremeets.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+                            <Mail className="w-4 h-4" />
+                            more@moremeets.com
                         </a>
                     </div>
                 </div>

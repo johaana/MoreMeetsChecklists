@@ -43,20 +43,20 @@ export default function ContactUsPage() {
                             <p className="text-muted-foreground">Fill out the form and our team will get back to you within 24 hours.</p>
                         </div>
                         <div className="space-y-4">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-3"><Mail className="w-5 h-5 text-primary"/> General Inquiries</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <a href="mailto:more@moremeets.com" className="text-primary underline">more@moremeets.com</a>
-                                </CardContent>
-                            </Card>
                              <Card>
                                 <CardHeader>
                                     <CardTitle className="text-lg flex items-center gap-3"><WhatsAppIcon className="w-5 h-5"/> WhatsApp</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
+                                </CardContent>
+                            </Card>
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle className="text-lg flex items-center gap-3"><Mail className="w-5 h-5 text-primary"/> General Inquiries</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <a href="mailto:more@moremeets.com" className="text-primary underline">more@moremeets.com</a>
                                 </CardContent>
                             </Card>
                              <Card>
