@@ -1,4 +1,7 @@
 
+'use client';
+
+import * as React from 'react';
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +13,15 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 
 export default function ContactUsPage() {
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [message, setMessage] = React.useState('');
+
+    const recipientEmail = 'more@moremeets.com';
+    const subject = `Message from ${name} via MoreMeets Contact Form`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
        <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
@@ -72,20 +84,22 @@ export default function ContactUsPage() {
                     <div className="space-y-8">
                          <div className="space-y-4">
                             <h2 className="text-2xl font-bold font-headline text-primary">Send a Message</h2>
-                            <form className="space-y-4">
+                            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                                 <div className="space-y-2">
                                     <Label htmlFor="name">Name</Label>
-                                    <Input id="name" placeholder="Enter your name" />
+                                    <Input id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="email">Email</Label>
-                                    <Input id="email" type="email" placeholder="Enter your email" />
+                                    <Input id="email" type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="message">Message</Label>
-                                    <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" />
+                                    <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} />
                                 </div>
-                                <Button type="submit" className="w-full" variant="accent">Send Message</Button>
+                                <Button asChild className="w-full" variant="accent">
+                                    <a href={mailtoLink}>Send Message</a>
+                                </Button>
                             </form>
                         </div>
                     </div>
