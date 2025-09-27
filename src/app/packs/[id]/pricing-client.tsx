@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -72,14 +73,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
 
     React.useEffect(() => {
+        const professionalPaymentId = pack.paymentId; // Use the ID from the pack prop
+    
         const buttons = [
-          { id: "professional-pack-button-desktop", paymentId: pack.paymentId },
+          { id: "professional-pack-button-desktop", paymentId: professionalPaymentId },
           { id: "personalized-pack-button-desktop", paymentId: personalizedPaymentId },
-          { id: "professional-pack-button-mobile", paymentId: pack.paymentId },
+          { id: "professional-pack-button-mobile", paymentId: professionalPaymentId },
           { id: "personalized-pack-button-mobile", paymentId: personalizedPaymentId },
         ];
 
         buttons.forEach(({ id, paymentId }) => {
+          if (!paymentId) return; // Don't create a button if the ID is missing
           const form = document.getElementById(id);
           if (form && !form.querySelector("script")) {
             const script = document.createElement("script");
@@ -89,7 +93,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             form.appendChild(script);
           }
         });
-      }, [pack.paymentId]);
+      }, [pack.paymentId, personalizedPaymentId]); // Rerun when pack data changes
 
 
     const pricingCards = [
