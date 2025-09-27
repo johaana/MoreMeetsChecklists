@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import { Logo } from "@/components/icons";
+import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -53,10 +53,10 @@ export default function ContactUsPage() {
                             </Card>
                              <Card>
                                 <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-3"><Phone className="w-5 h-5 text-primary"/> Phone</CardTitle>
+                                    <CardTitle className="text-lg flex items-center gap-3"><WhatsAppIcon className="w-5 h-5 text-primary"/> WhatsApp</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <p className="text-muted-foreground">(+91) 9545997111</p>
+                                    <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
                                 </CardContent>
                             </Card>
                              <Card>

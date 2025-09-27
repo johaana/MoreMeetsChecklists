@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "@/components/icons";
+import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail, Phone } from "lucide-react";
 
 export function Footer() {
@@ -19,10 +19,10 @@ export function Footer() {
                             <Mail className="w-4 h-4" />
                             more@moremeets.com
                         </a>
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                            <Phone className="w-4 h-4" />
-                            <span>(+91) 9545997111</span>
-                        </div>
+                         <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+                            <WhatsAppIcon className="w-4 h-4" />
+                            <span>Chat on WhatsApp</span>
+                        </a>
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 items-center text-sm">
