@@ -73,8 +73,8 @@ declare global {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const router = useRouter();
-    const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
-    const personalizedPackButtonId = "pl_RLWZWUcvyLCF1a";
+    const professionalPackButtonId = process.env.NEXT_PUBLIC_RAZORPAY_PROFESSIONAL_BUTTON_ID;
+    const personalizedPackButtonId = process.env.NEXT_PUBLIC_RAZORPAY_PERSONALIZED_BUTTON_ID;
     
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
@@ -82,16 +82,34 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
 
     const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
+        const buttonId = packType === 'professional' ? professionalPackButtonId : personalizedPackButtonId;
+        
+        if (!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID) {
+            console.error("Razorpay Key ID is not configured.");
+            alert("Payment gateway is not configured. Please contact support.");
+            return;
+        }
+
+        if (!buttonId) {
+             console.error("Razorpay Button ID is not configured for this pack type.");
+             alert("Payment option is not configured correctly. Please contact support.");
+             return;
+        }
+
         if (typeof window !== 'undefined' && window.Razorpay) {
             sessionStorage.setItem('purchasedPackId', pack.id);
             sessionStorage.setItem('purchasedPackType', packType);
             
             const rzp = new window.Razorpay({
                  key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                 button_id: packType === 'professional' ? professionalPackButtonId : personalizedPackButtonId,
+                 button_id: buttonId,
                  handler: function (response: any) {
                     router.push('/thank-you');
                  }
+            });
+            rzp.on('payment.failed', function (response: any){
+                alert("Oops! Something went wrong. Payment Failed");
+                console.error("Payment Failed:", response.error);
             });
             rzp.open();
         } else {
