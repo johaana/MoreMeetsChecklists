@@ -14,31 +14,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 
-function RazorpayScriptInjector() {
-  React.useEffect(() => {
-    const buttons = [
-      { id: "professional-pack-button-desktop", paymentId: "pl_RLWVPvVoJfcCEU" },
-      { id: "personalized-pack-button-desktop", paymentId: "pl_RLWZWUcvyLCF1a" },
-      { id: "professional-pack-button-mobile", paymentId: "pl_RLWVPvVoJfcCEU" },
-      { id: "personalized-pack-button-mobile", paymentId: "pl_RLWZWUcvyLCF1a" },
-    ];
-
-    buttons.forEach(({ id, paymentId }) => {
-      const form = document.getElementById(id);
-      if (form && !form.querySelector("script")) {
-        const script = document.createElement("script");
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.async = true;
-        script.dataset.payment_button_id = paymentId;
-        form.appendChild(script);
-      }
-    });
-  }, []);
-
-  return null; // This component only handles script injection
-}
-
-
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
 
@@ -93,6 +68,27 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
+
+    React.useEffect(() => {
+        const buttons = [
+          { id: "professional-pack-button-desktop", paymentId: "pl_RLWVPvVoJfcCEU" },
+          { id: "personalized-pack-button-desktop", paymentId: "pl_RLWZWUcvyLCF1a" },
+          { id: "professional-pack-button-mobile", paymentId: "pl_RLWVPvVoJfcCEU" },
+          { id: "personalized-pack-button-mobile", paymentId: "pl_RLWZWUcvyLCF1a" },
+        ];
+
+        buttons.forEach(({ id, paymentId }) => {
+          const form = document.getElementById(id);
+          if (form && !form.querySelector("script")) {
+            const script = document.createElement("script");
+            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+            script.async = true;
+            script.dataset.payment_button_id = paymentId;
+            form.appendChild(script);
+          }
+        });
+      }, []);
+
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
@@ -165,7 +161,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     return (
         <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
-            <RazorpayScriptInjector />
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
