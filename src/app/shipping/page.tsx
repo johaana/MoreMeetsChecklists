@@ -73,6 +73,10 @@ export default function ShippingPolicyPage() {
                         </p>
                     </LegalSection>
 
+                     <LegalSection title="Legal Disclaimer">
+                        <p><strong>This document is for informational purposes and does not constitute legal advice.</strong> We recommend consulting with a legal professional to ensure your policies align with all applicable laws and regulations for digital commerce.</p>
+                    </LegalSection>
+
                      <LegalSection title="Contact Us">
                         <p>
                            For any issues related to the delivery or download of your files, please contact our support team.

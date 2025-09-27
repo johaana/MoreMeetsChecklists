@@ -90,6 +90,9 @@ export default function ContactUsPage() {
                         </div>
                     </div>
                 </div>
+                 <div className="max-w-4xl mx-auto mt-12 text-center text-xs text-muted-foreground p-4 border rounded-lg bg-secondary/50">
+                    <strong>Disclaimer:</strong> The legal documents and policies on this site are for informational purposes only and do not constitute legal advice. Please consult with a qualified legal professional for your specific needs.
+                </div>
             </div>
         </section>
       </main>

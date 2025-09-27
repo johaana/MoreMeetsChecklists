@@ -70,6 +70,10 @@ export default function RefundPolicyPage() {
                         </p>
                     </LegalSection>
 
+                     <LegalSection title="Legal Disclaimer">
+                        <p><strong>This document is based on standard templates and is intended for informational purposes only. It does not constitute legal advice.</strong> You should consult with a qualified legal professional to ensure this policy meets the specific legal requirements of your business and jurisdiction.</p>
+                    </LegalSection>
+
                      <LegalSection title="Contact Us">
                         <p>
                             If you have any questions about our Cancellation and Refund Policy, or if you encounter any issues with downloading or accessing your purchased files, please do not hesitate to contact us.
