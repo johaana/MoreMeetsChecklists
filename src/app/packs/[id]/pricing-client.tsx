@@ -96,6 +96,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <RazorpayPaymentButton 
                         buttonId={professionalPackButtonId}
                         onClick={() => handlePurchaseClick('professional')}
+                        size="lg"
                      >
                         Purchase Now
                      </RazorpayPaymentButton>
@@ -128,6 +129,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         buttonId={personalizedPackButtonId}
                         onClick={() => handlePurchaseClick('personalized')}
                         variant="accent"
+                        size="lg"
                     >
                         Purchase Now
                     </RazorpayPaymentButton>
@@ -150,7 +152,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button asChild className="w-full font-bold" variant="secondary">
+                    <Button asChild className="w-full font-bold" variant="secondary" size="lg">
                       <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
                     </Button>
                 </CardFooter>
@@ -224,7 +226,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
-
-    
