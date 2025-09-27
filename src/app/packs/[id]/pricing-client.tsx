@@ -4,7 +4,7 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Button, type ButtonProps } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Building } from 'lucide-react';
@@ -37,24 +37,26 @@ const RazorpayButton = ({
     // The form action needs to be set for the redirect_url to work with Razorpay Payment Buttons
     const formHtml = `<form action="${redirectUrl}"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async></script></form>`;
 
+    if (!isClient) {
+        return (
+             <Button size="lg" variant={variant} className="w-full font-bold" disabled>
+                Loading...
+            </Button>
+        );
+    }
+
     return (
         <div className="w-full">
-            {isClient ? (
-                <div 
-                  className={`
-                    [&>form]:w-full 
-                    [&>form>div]:w-full 
-                    [&>form>div>button]:w-full 
-                    [&>form>div>button]:font-bold
-                    ${variant === 'accent' ? '[&>form>div>button]:bg-accent [&>form>div>button]:text-accent-foreground' : '[&>form>div>button]:bg-primary [&>form>div>button]:text-primary-foreground'}
-                  `}
-                  dangerouslySetInnerHTML={{ __html: formHtml }}
-                />
-            ) : (
-                <Button size="lg" variant={variant} className="w-full font-bold" disabled>
-                    Loading...
-                </Button>
-            )}
+            <div 
+              className={`
+                [&>form]:w-full 
+                [&>form>div]:w-full 
+                [&>form>div>button]:w-full 
+                [&>form>div>button]:font-bold
+                ${variant === 'accent' ? '[&>form>div>button]:bg-accent [&>form>div>button]:text-accent-foreground' : '[&>form>div>button]:bg-primary [&>form>div>button]:text-primary-foreground'}
+              `}
+              dangerouslySetInnerHTML={{ __html: formHtml }}
+            />
         </div>
     );
 };
@@ -257,3 +259,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
