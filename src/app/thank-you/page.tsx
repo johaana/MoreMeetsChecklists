@@ -3,13 +3,15 @@
 
 import Link from "next/link";
 import * as React from 'react';
-import { useSearchParams } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Download, AlertTriangle } from "lucide-react";
-import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
-import { writeFile, utils } from 'xlsx-js-style';
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
+import { useRazorpayVerification } from "@/hooks/use-razorpay-verification";
+import { writeFile, utils } from 'xlsx-js-style';
+import type { PremiumPack } from "@/lib/premium-packs";
 
 import {
   AlertDialog,
@@ -146,126 +148,155 @@ const handleDownload = (pack: PremiumPack | undefined) => {
 }
 
 function ThankYouContent() {
-  const searchParams = useSearchParams();
-  const [purchasedPack, setPurchasedPack] = React.useState<PremiumPack | undefined>(undefined);
-  const [isLoading, setIsLoading] = React.useState(true);
-  
-  React.useEffect(() => {
-    // Since redirect is disabled, this page might be accessed directly.
-    // It's here for manual access or future use, but not part of the primary payment flow.
-    const packId = searchParams.get('pack_id');
-
-    if (packId) {
-      const pack = premiumPacks.find(p => p.id === packId);
-      setPurchasedPack(pack);
-    }
-    setIsLoading(false);
-  }, [searchParams]);
-  
+  const [paymentId, setPaymentId] = React.useState('');
+  const { isLoading, error, pack, verifyPayment } = useRazorpayVerification();
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    verifyPayment(paymentId);
+  };
+  
   const onDownload = () => {
-    handleDownload(purchasedPack);
+    handleDownload(pack);
     setShowDownloadConfirm(true);
   }
 
-  const PageLayout = ({ children }: { children: React.ReactNode }) => (
-       <div className="flex flex-col min-h-screen bg-background">
-         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-           <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-            <Logo className="h-6 w-6 text-primary" />
-            <span className="font-headline text-lg font-bold">MoreMeets</span>
-          </Link>
-           <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-             <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
-               All Packages
-             </Link>
-           </nav>
-         </header>
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="flex flex-col items-center justify-center space-y-4">
+          <Loader2 className="h-12 w-12 text-primary animate-spin" />
+          <p className="text-muted-foreground">Verifying your payment...</p>
+        </div>
+      );
+    }
 
-         <main className="flex-1 flex items-center justify-center">
-           {children}
-         </main>
-
-         <Footer />
-       </div>
-  )
-
-  if (isLoading) {
-    return <PageLayout><div>Loading...</div></PageLayout>;
-  }
-
-  return (
-    <PageLayout>
-      <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
-          <AlertDialogContent>
-              <AlertDialogHeader>
-                  <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
-                  <AlertDialogDescription>
-                      Your checklist pack has started downloading. Please check your downloads folder.
-                  </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                  <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
-              </AlertDialogFooter>
-          </AlertDialogContent>
-      </AlertDialog>
-
-      <section className="w-full max-w-2xl mx-auto py-12 md:py-24 lg:py-32 px-4 md:px-6">
-        {purchasedPack ? (
-            <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <CheckCircle className="h-20 w-20 text-green-500" />
-                <div className="space-y-2">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                        Thank You for Your Purchase!
-                    </h1>
-                    <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Your payment was successful. Click the button below to download your <strong>{purchasedPack.title}</strong> pack.
-                    </p>
-                </div>
-                <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Your Pack
-                </Button>
-                <Button size="lg" asChild className="group mt-4" variant="outline">
-                    <Link href="/packs">
-                        Explore More Packages
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
+    if (error) {
+       return (
+        <div className="w-full text-center">
+            <div className="flex items-center justify-center gap-2 text-red-500 mb-4">
+                <AlertTriangle className="h-6 w-6"/>
+                <span className="font-semibold text-lg">{error}</span>
             </div>
-        ) : (
-           <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            {renderVerificationForm()}
+        </div>
+       )
+    }
+
+    if (pack) {
+      return (
+         <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <CheckCircle className="h-20 w-20 text-green-500" />
+            <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                    Verification Successful!
+                </h1>
+                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    Click the button below to download your <strong>{pack.title}</strong> pack.
+                </p>
+            </div>
+            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
+                <Download className="mr-2 h-5 w-5" />
+                Download Your Pack
+            </Button>
+            <Button size="lg" asChild className="group mt-4" variant="outline">
+                <Link href="/packs">
+                    Explore More Packages
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+            </Button>
+        </div>
+      );
+    }
+    
+    return renderVerificationForm();
+  };
+
+  const renderVerificationForm = () => (
+      <div className="w-full">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
             <CheckCircle className="h-20 w-20 text-green-500" />
             <div className="space-y-2">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                    Thank You!
+                    Thank You for Your Purchase!
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                   Thank you for your purchase. Please check your email for the receipt. If you have any questions, feel free to contact our support team.
+                   To download your checklist pack, please enter the Payment ID from your Razorpay confirmation email.
                 </p>
             </div>
-            <Button size="lg" asChild className="group mt-4 text-lg py-7 px-10" variant="accent">
-              <Link href="/packs">
-                Explore All Packages
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="payment-id">Razorpay Payment ID</Label>
+            <Input
+              id="payment-id"
+              placeholder="pay_xxxxxxxxxxxxxx"
+              value={paymentId}
+              onChange={(e) => setPaymentId(e.target.value)}
+              required
+            />
           </div>
-        )}
-      </section>
-    </PageLayout>
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+            Verify & Download
+          </Button>
+        </form>
+         <div className="text-center mt-8">
+             <Button size="lg" asChild className="group mt-4" variant="outline">
+                <Link href="/packs">
+                    Explore All Packages
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+            </Button>
+        </div>
+      </div>
+  )
+
+  return (
+    <div className="flex flex-col min-h-screen bg-background">
+      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
+        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+          <Logo className="h-6 w-6 text-primary" />
+          <span className="font-headline text-lg font-bold">MoreMeets</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
+          <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+            All Packages
+          </Link>
+        </nav>
+      </header>
+
+      <main className="flex-1 flex items-center justify-center">
+         <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        Your checklist pack has started downloading. Please check your downloads folder.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+
+        <section className="w-full max-w-3xl mx-auto py-12 md:py-24 lg:py-32 px-4 md:px-6">
+          {renderContent()}
+        </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
 
-
 export default function ThankYouPage() {
-  // Wrap with Suspense to handle the client-side logic gracefully
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       <ThankYouContent />
     </React.Suspense>
   );
 }
-
-    
