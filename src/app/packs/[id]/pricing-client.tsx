@@ -99,7 +99,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedButtonId = "pl_RLWZWUcvyLCF1a";
     
-    // This is the correct way to prevent hydration errors with external scripts.
     const [isClient, setIsClient] = React.useState(false);
     React.useEffect(() => {
         setIsClient(true);
@@ -248,3 +247,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
