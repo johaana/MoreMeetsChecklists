@@ -151,7 +151,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <Button asChild className="w-full font-bold" variant="secondary">
-                      <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
+                      <Link href="https://calendly.com/d/cn3-33n-g38/30min" target="_blank">Book a Discovery Call</Link>
                     </Button>
                 </CardFooter>
             </Card>
@@ -185,8 +185,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                         <CarouselPrevious className="left-[-0.5rem]" />
-                        <CarouselNext className="right-[-0.5rem]" />
+                         <CarouselPrevious className="left-[-1.5rem]" />
+                        <CarouselNext className="right-[-1.5rem]" />
                     </Carousel>
                 </div>
 
@@ -224,5 +224,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
