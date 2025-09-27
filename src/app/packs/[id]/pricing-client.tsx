@@ -15,18 +15,6 @@ import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescript
 
 
 const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
-    const [isClient, setIsClient] = React.useState(false);
-
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
-    
-    if (!isClient) {
-        return (
-            <Button className="w-full" disabled>Loading...</Button>
-        );
-    }
-
     const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async> </script> </form>`;
     
     return (
@@ -105,6 +93,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const professionalButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedButtonId = "pl_RLWZWUcvyLCF1a";
+    
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
 
 
     const pricingCards = [
@@ -120,7 +114,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <div className="w-full">
-                     <RazorpayButton paymentButtonId={professionalButtonId} />
+                     {isClient ? <RazorpayButton paymentButtonId={professionalButtonId} /> : <Button className="w-full" disabled>Purchase Now</Button>}
                    </div>
                 </CardFooter>
             </Card>,
@@ -148,7 +142,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <div className="w-full">
-                       <RazorpayButton paymentButtonId={personalizedButtonId} />
+                       {isClient ? <RazorpayButton paymentButtonId={personalizedButtonId} /> : <Button className="w-full" disabled>Purchase Now</Button>}
                     </div>
                 </CardFooter>
             </Card>,
