@@ -68,7 +68,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
-    const personalizedPaymentId = 'pl_RLWZWUcvyLCF1a';
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
 
 
     React.useEffect(() => {
