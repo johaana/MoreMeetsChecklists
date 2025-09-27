@@ -53,7 +53,7 @@ export default function ContactUsPage() {
                             </Card>
                              <Card>
                                 <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-3"><WhatsAppIcon className="w-5 h-5 text-primary"/> WhatsApp</CardTitle>
+                                    <CardTitle className="text-lg flex items-center gap-3"><WhatsAppIcon className="w-5 h-5"/> WhatsApp</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
@@ -64,7 +64,7 @@ export default function ContactUsPage() {
                                     <CardTitle className="text-lg flex items-center gap-3"><MapPin className="w-5 h-5 text-primary"/> Office</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                     <p className="text-muted-foreground">123 Business Avenue, Mumbai, India</p>
+                                     <p className="text-muted-foreground">Borivali East, Mumbai 400066</p>
                                 </CardContent>
                             </Card>
                         </div>
