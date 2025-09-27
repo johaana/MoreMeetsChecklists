@@ -3,15 +3,16 @@
 
 import Link from "next/link";
 import * as React from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
-import { useRazorpayVerification } from "@/hooks/use-razorpay-verification";
 import { writeFile, utils } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
+import { verifyRazorpayPayment } from './actions';
 
 import {
   AlertDialog,
@@ -144,17 +145,37 @@ const handleDownload = (pack: PremiumPack | undefined) => {
         utils.book_append_sheet(workbook, worksheet, sheetName);
     });
 
-    writeFile(workbook, `${pack.title.replace(/ /g, '_')}.xlsx`);
+    const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
+    writeFile(workbook, fileName);
 }
 
+
 function ThankYouContent() {
+  const searchParams = useSearchParams();
   const [paymentId, setPaymentId] = React.useState('');
-  const { isLoading, error, pack, verifyPayment } = useRazorpayVerification();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+  const [pack, setPack] = React.useState<PremiumPack | null>(null);
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    verifyPayment(paymentId);
+    setIsLoading(true);
+    setError(null);
+    setPack(null);
+
+    const packId = searchParams.get('pack_id');
+    const isPersonalized = searchParams.get('type') === 'personalized';
+
+    const result = await verifyRazorpayPayment(paymentId, packId, !!isPersonalized);
+    
+    if (result.success) {
+      setPack(result.pack);
+    } else {
+      setError(result.error);
+    }
+    
+    setIsLoading(false);
   };
   
   const onDownload = () => {
