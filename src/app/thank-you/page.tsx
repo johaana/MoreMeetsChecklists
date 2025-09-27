@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import * as React from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Download, AlertTriangle, Sparkles } from "lucide-react";
@@ -270,33 +271,27 @@ function PersonalizationForm({ onComplete }: { onComplete: () => void }) {
 }
 
 function ThankYouContent() {
+  const searchParams = useSearchParams();
   const [purchasedPack, setPurchasedPack] = React.useState<PremiumPack | undefined>(undefined);
   const [packType, setPackType] = React.useState<'professional' | 'personalized' | null>(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [showPersonalization, setShowPersonalization] = React.useState(false);
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const packId = sessionStorage.getItem('purchasedPackId');
-      const type = sessionStorage.getItem('purchasedPackType') as 'professional' | 'personalized' | null;
+    const packId = searchParams.get('pack_id');
+    const type = searchParams.get('pack_type') as 'professional' | 'personalized' | null;
 
-      if (packId && type) {
-        const pack = premiumPacks.find(p => p.id === packId);
-        setPurchasedPack(pack);
-        setPackType(type);
+    if (packId && type) {
+      const pack = premiumPacks.find(p => p.id === packId);
+      setPurchasedPack(pack);
+      setPackType(type);
 
-        if (type === 'personalized') {
-            setShowPersonalization(true);
-        }
-        
-        // Clear the session storage items after retrieving them
-        // This prevents the user from seeing this page again on refresh
-        // sessionStorage.removeItem('purchasedPackId');
-        // sessionStorage.removeItem('purchasedPackType');
+      if (type === 'personalized') {
+          setShowPersonalization(true);
       }
-      setIsLoading(false);
     }
-  }, []);
+    setIsLoading(false);
+  }, [searchParams]);
   
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 

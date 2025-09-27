@@ -5,14 +5,59 @@ import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
+import { Button, type ButtonProps } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Building } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+
+
+const RazorpayButton = ({ 
+    paymentButtonId, 
+    variant, 
+    packId,
+    packType
+}: { 
+    paymentButtonId: string, 
+    variant: ButtonProps['variant'],
+    packId: string,
+    packType: 'professional' | 'personalized'
+}) => {
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    const redirectUrl = `https://www.moremeets.com/thank-you?pack_id=${packId}&pack_type=${packType}`;
+    
+    // The form action needs to be set for the redirect_url to work with Razorpay Payment Buttons
+    const formHtml = `<form action="${redirectUrl}"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async></script></form>`;
+
+    return (
+        <div className="w-full">
+            {isClient ? (
+                <div 
+                  className={`
+                    [&>form]:w-full 
+                    [&>form>div]:w-full 
+                    [&>form>div>button]:w-full 
+                    [&>form>div>button]:font-bold
+                    ${variant === 'accent' ? '[&>form>div>button]:bg-accent [&>form>div>button]:text-accent-foreground' : '[&>form>div>button]:bg-primary [&>form>div>button]:text-primary-foreground'}
+                  `}
+                  dangerouslySetInnerHTML={{ __html: formHtml }}
+                />
+            ) : (
+                <Button size="lg" variant={variant} className="w-full font-bold" disabled>
+                    Loading...
+                </Button>
+            )}
+        </div>
+    );
+};
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -65,75 +110,10 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
-}
-
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const router = useRouter();
-    
     const basePrice = pack.priceINR || 0;
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
-
-
-    const handlePurchaseClick = (packType: 'professional' | 'personalized') => {
-        const amount = (packType === 'professional' ? basePrice : personalizedPackPrice) * 100; // Amount in paise
-
-        if (!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID) {
-            console.error("Razorpay Key ID is not configured.");
-            alert("Payment gateway is not configured. Please contact support.");
-            return;
-        }
-
-        if (typeof window !== 'undefined' && window.Razorpay) {
-            sessionStorage.setItem('purchasedPackId', pack.id);
-            sessionStorage.setItem('purchasedPackType', packType);
-            
-            const options = {
-                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                amount: amount,
-                currency: "INR",
-                name: "MoreMeets",
-                description: `Purchase of ${pack.title} - ${packType} pack`,
-                image: "https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg", // A URL to your logo
-                handler: function (response: any) {
-                   // This function is called after a successful payment
-                   router.push('/thank-you');
-                },
-                prefill: {
-                    name: "",
-                    email: "",
-                    contact: ""
-                },
-                notes: {
-                    pack_id: pack.id,
-                    pack_type: packType
-                },
-                theme: {
-                    color: "#0A2540"
-                }
-            };
-            
-            const rzp = new window.Razorpay(options);
-            
-            rzp.on('payment.failed', function (response: any){
-                alert("Oops! Something went wrong. Payment Failed");
-                console.error("Payment Failed:", response.error.description);
-                console.error("Error Code:", response.error.code);
-                console.error("Error Source:", response.error.source);
-                console.error("Error Step:", response.error.step);
-                console.error("Error Reason:", response.error.reason);
-            });
-
-            rzp.open();
-        } else {
-            console.error("Razorpay script not loaded or is still loading.");
-            alert("Payment gateway is not ready yet. Please try again in a moment.");
-        }
-    };
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
@@ -147,13 +127,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <Button 
-                        onClick={() => handlePurchaseClick('professional')}
-                        size="lg"
-                        className="w-full font-bold"
-                     >
-                        Purchase Now
-                     </Button>
+                    <RazorpayButton 
+                        paymentButtonId="pl_OLn9g4I2N3gmjO"
+                        variant="default"
+                        packId={pack.id}
+                        packType="professional"
+                    />
                 </CardFooter>
             </Card>,
 
@@ -179,14 +158,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button 
-                        onClick={() => handlePurchaseClick('personalized')}
+                     <RazorpayButton 
+                        paymentButtonId="pl_OLnAWJ2kS7GjLq"
                         variant="accent"
-                        size="lg"
-                        className="w-full font-bold"
-                    >
-                        Purchase Now
-                    </Button>
+                        packId={pack.id}
+                        packType="personalized"
+                    />
                 </CardFooter>
             </Card>,
 
