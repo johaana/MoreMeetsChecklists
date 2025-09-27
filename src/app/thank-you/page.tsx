@@ -151,6 +151,8 @@ function ThankYouContent() {
   const [isLoading, setIsLoading] = React.useState(true);
   
   React.useEffect(() => {
+    // Since redirect is disabled, this page might be accessed directly.
+    // It's here for manual access or future use, but not part of the primary payment flow.
     const packId = searchParams.get('pack_id');
 
     if (packId) {
@@ -234,13 +236,13 @@ function ThankYouContent() {
             </div>
         ) : (
            <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <AlertTriangle className="h-20 w-20 text-yellow-500" />
+            <CheckCircle className="h-20 w-20 text-green-500" />
             <div className="space-y-2">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                    Purchase Information Not Found
+                    Thank You!
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    We couldn't find your recent purchase details. If you have just completed a payment, please check your email for a download link. If you need assistance, please contact support.
+                   Thank you for your purchase. Please check your email for the receipt. If you have any questions, feel free to contact our support team.
                 </p>
             </div>
             <Button size="lg" asChild className="group mt-4 text-lg py-7 px-10" variant="accent">
@@ -265,3 +267,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    

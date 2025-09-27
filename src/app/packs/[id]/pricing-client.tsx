@@ -14,12 +14,21 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 
-// A simple, reliable component to render the Razorpay button form.
 const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+    
+    if (!isClient) {
+        return (
+            <Button className="w-full" disabled>Loading...</Button>
+        );
+    }
+
     const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentButtonId}" async> </script> </form>`;
     
-    // This div wrapper and the dangerouslySetInnerHTML is the simplest way
-    // to embed Razorpay's required script and form.
     return (
         <div 
           className={`
@@ -32,7 +41,6 @@ const RazorpayButton = ({ paymentButtonId }: { paymentButtonId: string }) => {
             [&_.razorpay-payment-button]:font-bold
             [&_.razorpay-payment-button]:transition-opacity
             hover:[&_.razorpay-payment-button]:opacity-90
-            bg-primary
           `}
           dangerouslySetInnerHTML={{ __html: formHtml }} 
         />
