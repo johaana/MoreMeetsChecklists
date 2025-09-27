@@ -4,6 +4,7 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Star, Eye, Package, Download, Building, Users, FileText } from 'lucide-react';
@@ -65,7 +66,14 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
+    const router = useRouter();
     const professionalPackButtonId = "pl_RLWVPvVoJfcCEU";
     const personalizedPackButtonId = "pl_RLWZWUcvyLCF1a";
     
@@ -78,6 +86,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('purchasedPackId', pack.id);
             sessionStorage.setItem('purchasedPackType', packType);
+            
+            const rzp = new window.Razorpay({
+                 key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                 button_id: packType === 'professional' ? professionalPackButtonId : personalizedPackButtonId,
+                 handler: function (response: any) {
+                    router.push('/thank-you');
+                 }
+            });
+            rzp.open();
         }
     };
 
@@ -93,13 +110,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                     <RazorpayPaymentButton 
-                        buttonId={professionalPackButtonId}
+                     <Button 
                         onClick={() => handlePurchaseClick('professional')}
                         size="lg"
+                        className="w-full font-bold"
                      >
                         Purchase Now
-                     </RazorpayPaymentButton>
+                     </Button>
                 </CardFooter>
             </Card>,
 
@@ -125,14 +142,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <RazorpayPaymentButton 
-                        buttonId={personalizedPackButtonId}
+                    <Button 
                         onClick={() => handlePurchaseClick('personalized')}
                         variant="accent"
                         size="lg"
+                        className="w-full font-bold"
                     >
                         Purchase Now
-                    </RazorpayPaymentButton>
+                    </Button>
                 </CardFooter>
             </Card>,
 
