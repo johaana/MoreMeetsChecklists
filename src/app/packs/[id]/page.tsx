@@ -119,9 +119,41 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
+
+  const categoryImageMap: Record<string, string | undefined> = {
+    "Hospitality": PlaceHolderImages.find(img => img.id === 'for-hospitality')?.imageUrl,
+    "Corporate": PlaceHolderImages.find(img => img.id === 'showcase-corporate-hospitality')?.imageUrl,
+    "Retail": PlaceHolderImages.find(img => img.id === 'for-startups')?.imageUrl,
+    "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
+    "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
+    "Manufacturing": PlaceHolderImages.find(img => img.id === 'for-sustainability')?.imageUrl,
+  };
+  const packImage = categoryImageMap[pack.category];
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: pack.title,
+    description: pack.description,
+    image: packImage,
+    offers: {
+      '@type': 'Offer',
+      price: pack.priceINR.toString(),
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+    },
+    brand: {
+      '@type': 'Brand',
+      name: 'MoreMeets',
+    },
+  };
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
        <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
           <Logo className="h-6 w-6 text-primary" />
