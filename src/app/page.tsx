@@ -191,19 +191,13 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full relative">
-            <div className="absolute inset-0">
-                {heroImage && (
-                    <Image
-                        src={heroImage.imageUrl}
-                        alt="Luxury Hotel"
-                        fill
-                        className="object-cover"
-                        data-ai-hint={heroImage.imageHint}
-                    />
-                )}
-                <div className="absolute inset-0 bg-black/50" />
-            </div>
+        <section
+            className="w-full relative bg-cover bg-center"
+            style={{
+                backgroundImage: heroImage ? `url(${heroImage.imageUrl})` : 'none',
+            }}
+        >
+            <div className="absolute inset-0 bg-black/50" />
             <div className="container px-4 md:px-6 relative z-10">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                     <div className="space-y-6">
@@ -318,5 +312,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
