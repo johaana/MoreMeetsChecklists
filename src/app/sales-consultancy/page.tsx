@@ -93,11 +93,12 @@ export default function SalesConsultancyPage() {
                 </div>
                  <div className="flex justify-center">
                     <Image
-                      src="https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg"
+                      src="https://picsum.photos/seed/sales-office/600/400"
                       alt="A professional sales consultant in a modern office"
                       width={600}
                       height={400}
                       className="rounded-3xl object-cover shadow-2xl"
+                      data-ai-hint="modern office"
                     />
                 </div>
             </div>
@@ -127,11 +128,12 @@ export default function SalesConsultancyPage() {
                     </div>
                      <div className="flex justify-center">
                         <Image
-                            src="https://i.postimg.cc/FRbyKVLp/Hero-Feature-Cold-calling-photo-Alamy-Hero-Images-F7-JH8-B.webp"
+                            src="https://picsum.photos/seed/sales-call/600/400"
                             alt="A smiling sales professional on a call"
                             width={600}
                             height={400}
                             className="rounded-3xl object-cover shadow-2xl"
+                            data-ai-hint="sales professional"
                         />
                     </div>
                  </div>
@@ -310,5 +312,3 @@ export default function SalesConsultancyPage() {
     </div>
   );
 }
-
-    
