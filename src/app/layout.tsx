@@ -53,6 +53,8 @@ const headlineFont = Poppins({
   variable: '--font-headline'
 });
 
+const faviconSvg = `<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z%22/><path d=%22m9 12 2 2 4-4%22/></svg>`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
       </head>
