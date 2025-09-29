@@ -2,6 +2,12 @@
 import Link from "next/link";
 import { Logo } from "@/components/icons";
 import { Footer } from "@/components/layout/footer";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Cancellation & Refund Policy | MoreMeets',
+  description: 'Read the MoreMeets cancellation and refund policy for our instantly downloadable digital checklist products.',
+};
 
 const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
     <div className="space-y-4">

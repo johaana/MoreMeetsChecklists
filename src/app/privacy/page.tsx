@@ -2,6 +2,12 @@
 import Link from "next/link";
 import { Logo } from "@/components/icons";
 import { Footer } from "@/components/layout/footer";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | MoreMeets',
+  description: 'Learn how MoreMeets collects, uses, and protects your personal information when you use our website and purchase our products.',
+};
 
 const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
     <div className="space-y-4">

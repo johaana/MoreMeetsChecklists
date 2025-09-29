@@ -11,6 +11,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us | MoreMeets',
+  description: 'Get in touch with the MoreMeets team for any questions or inquiries about our operational checklists and SOPs.',
+};
+
 
 export default function ContactUsPage() {
     const [name, setName] = React.useState('');
@@ -36,9 +43,9 @@ export default function ContactUsPage() {
       </header>
 
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full pt-12">
             <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
                         Contact Us
                     </h1>
@@ -47,31 +54,31 @@ export default function ContactUsPage() {
                     </p>
                 </div>
 
-                <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="space-y-8">
-                        <div className="space-y-4">
+                <div className="max-w-4xl mx-auto space-y-12">
+                     <div className="space-y-8">
+                        <div className="space-y-4 text-center">
                             <h2 className="text-2xl font-bold font-headline text-primary">Get in Touch</h2>
                         </div>
-                        <div className="space-y-4">
-                             <Card>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <Card className="text-center">
                                 <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-3"><WhatsAppIcon className="w-5 h-5"/> WhatsApp</CardTitle>
+                                    <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><WhatsAppIcon className="w-8 h-8"/> WhatsApp</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
                                 </CardContent>
                             </Card>
-                            <Card>
+                            <Card className="text-center">
                                 <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-3"><Mail className="w-5 h-5 text-primary"/> General Inquiries</CardTitle>
+                                    <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><Mail className="w-8 h-8 text-primary"/> General Inquiries</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <a href="mailto:more@moremeets.com" className="text-primary underline">more@moremeets.com</a>
                                 </CardContent>
                             </Card>
-                             <Card>
+                             <Card className="text-center">
                                 <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-3"><MapPin className="w-5 h-5 text-primary"/> Office</CardTitle>
+                                    <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><MapPin className="w-8 h-8 text-primary"/> Office</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                      <p className="text-muted-foreground">Borivali East, Mumbai 400066</p>
@@ -79,31 +86,31 @@ export default function ContactUsPage() {
                             </Card>
                         </div>
                     </div>
-                    <div className="space-y-8">
-                         <div className="space-y-4">
+                     <div className="space-y-8">
+                         <div className="space-y-4 text-center">
                             <h2 className="text-2xl font-bold font-headline text-primary">Send a Message</h2>
-                             <p className="text-muted-foreground">Fill out the form and our team will get back to you within 24 hours.</p>
-                            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                                <div className="space-y-2">
-                                    <Label htmlFor="name">Name</Label>
-                                    <Input id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="email">Email</Label>
-                                    <Input id="email" type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="message">Message</Label>
-                                    <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} />
-                                </div>
-                                <Button asChild className="w-full" variant="accent">
-                                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Send Message on WhatsApp</a>
-                                </Button>
-                            </form>
-                        </div>
+                             <p className="text-muted-foreground max-w-md mx-auto">Fill out the form and our team will get back to you within 24 hours.</p>
+                         </div>
+                        <form className="max-w-xl mx-auto space-y-4" onSubmit={(e) => e.preventDefault()}>
+                            <div className="space-y-2">
+                                <Label htmlFor="name">Name</Label>
+                                <Input id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email</Label>
+                                <Input id="email" type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="message">Message</Label>
+                                <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} />
+                            </div>
+                            <Button asChild className="w-full" variant="accent">
+                                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Send Message on WhatsApp</a>
+                            </Button>
+                        </form>
                     </div>
                 </div>
-                 <div className="max-w-4xl mx-auto mt-12 text-center text-xs text-muted-foreground p-4 border rounded-lg bg-secondary/50">
+                 <div className="max-w-4xl mx-auto mt-16 text-center text-xs text-muted-foreground p-4 border rounded-lg bg-secondary/50">
                     <strong>Disclaimer:</strong> The legal documents and policies on this site are for informational purposes only and do not constitute legal advice. Please consult with a qualified legal professional for your specific needs.
                 </div>
             </div>

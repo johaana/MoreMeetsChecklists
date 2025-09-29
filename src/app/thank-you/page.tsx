@@ -13,6 +13,7 @@ import { Footer } from "@/components/layout/footer";
 import { writeFile, utils } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { verifyRazorpayPayment } from './actions';
+import type { Metadata } from 'next';
 
 import {
   AlertDialog,
@@ -22,6 +23,17 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+
+// Note: We cannot set dynamic metadata here because this is a Client Component.
+// The metadata will be the same as the root layout.
+export const metadata: Metadata = {
+  title: 'Thank You for Your Purchase | MoreMeets',
+  description: 'Download your purchased operational checklists from MoreMeets.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 
 const handleDownload = (pack: PremiumPack | undefined) => {

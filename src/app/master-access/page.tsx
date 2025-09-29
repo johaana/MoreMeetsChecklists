@@ -12,6 +12,16 @@ import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { writeFile, utils } from 'xlsx-js-style';
 import { Logo } from '@/components/icons';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Master Access',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 
 // The download logic is copied from the thank-you page.
 const handleDownload = (pack: PremiumPack) => {

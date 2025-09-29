@@ -10,6 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Check, Star } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Footer } from "@/components/layout/footer";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'All Checklist Packages | MoreMeets',
+  description: 'Browse all professional operational checklists and SOPs. One-time purchase, lifetime updates. Available for Hospitality, Retail, Healthcare, and more.',
+};
 
 const categoryColors: { [key: string]: string } = {
     "Hospitality": "bg-blue-100 text-blue-800 border-blue-200",
