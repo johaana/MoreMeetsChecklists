@@ -2,7 +2,6 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star, ArrowRight } from "lucide-react";
@@ -274,18 +273,17 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial) => (
+                    {testimonials.map((testimonial) => {
+                        const image = PlaceHolderImages.find(img => img.id === testimonial.imageId);
+                        return (
                          <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
                              <div className="mb-4 rounded-full overflow-hidden w-24 h-24">
-                                {testimonial.imageId && (
-                                    <Image
-                                      src={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageUrl || ''}
-                                      alt={testimonial.name}
-                                      width={96}
-                                      height={96}
-                                      className="object-cover"
-                                      data-ai-hint={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageHint || ''}
-                                    />
+                                {image && (
+                                    <div
+                                      className="w-full h-full bg-cover bg-center"
+                                      style={{ backgroundImage: `url(${image.imageUrl})` }}
+                                      data-ai-hint={image.imageHint}
+                                    ></div>
                                 )}
                              </div>
                             <CardContent className="p-0">
@@ -296,7 +294,7 @@ export default function Home() {
                                  <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                              </CardFooter>
                         </Card>
-                    ))}
+                    )})}
                 </div>
             </div>
         </section>
