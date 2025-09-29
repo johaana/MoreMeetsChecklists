@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import type { Metadata, ResolvingMetadata } from 'next';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 type Props = {
   params: { id: string }
@@ -32,7 +33,18 @@ export async function generateMetadata(
   const title = `${pack.title} Pack | MoreMeets`;
   const description = `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
 
-  const previousImages = (await parent).openGraph?.images || []
+  const categoryImageMap: Record<string, string | undefined> = {
+    "Hospitality": PlaceHolderImages.find(img => img.id === 'for-hospitality')?.imageUrl,
+    "Corporate": PlaceHolderImages.find(img => img.id === 'showcase-corporate-hospitality')?.imageUrl,
+    "Retail": PlaceHolderImages.find(img => img.id === 'for-startups')?.imageUrl,
+    "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
+    "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
+    "Manufacturing": PlaceHolderImages.find(img => img.id === 'for-sustainability')?.imageUrl,
+  };
+  
+  const ogImageUrl = categoryImageMap[pack.category] || (await parent).openGraph?.images?.[0]?.url;
+
+  const openGraphImages = ogImageUrl ? [{ url: ogImageUrl, width: 1200, height: 630, alt: `${pack.title} Preview` }] : [];
 
   return {
     title: title,
@@ -40,15 +52,13 @@ export async function generateMetadata(
     openGraph: {
       title: title,
       description: description,
-      images: [
-        ...previousImages,
-      ],
+      images: openGraphImages,
     },
      twitter: {
       card: 'summary_large_image',
       title: title,
       description: description,
-      images: [...previousImages],
+      images: openGraphImages.map(img => img.url),
     },
   }
 }
