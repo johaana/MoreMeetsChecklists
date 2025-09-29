@@ -191,17 +191,12 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full relative">
-          {heroImage && (
-            <Image
-              alt="Hero background"
-              src={heroImage.imageUrl}
-              fill
-              className="object-cover -z-10"
-              priority
-            />
-          )}
-          <div className="relative z-10 bg-black/50">
+      <section 
+          className="w-full relative bg-cover bg-center"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroImage?.imageUrl})`
+          }}
+        >
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                   <div className="space-y-6">
@@ -227,7 +222,6 @@ export default function Home() {
                   </div>
                 </div>
             </div>
-          </div>
         </section>
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
