@@ -284,8 +284,8 @@ export default function Home() {
                                     <Image
                                       src={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageUrl || ''}
                                       alt={testimonial.name}
-                                      width={100}
-                                      height={100}
+                                      width={96}
+                                      height={96}
                                       className="object-cover"
                                       data-ai-hint={PlaceHolderImages.find(img => img.id === testimonial.imageId)?.imageHint || ''}
                                     />
