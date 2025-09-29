@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -36,6 +37,37 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/demo-booking',
+        destination: '/sales-consultancy',
+        permanent: true,
+      },
+      {
+        source: '/coaching',
+        destination: '/sales-consultancy',
+        permanent: true,
+      },
+       {
+        source: '/blog',
+        destination: '/sales-consultancy',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/sales-consultancy',
+        permanent: true,
+      },
+      {
+        source: '/why-us',
+        destination: '/#why-us',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;
+
+    
