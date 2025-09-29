@@ -147,12 +147,12 @@ export default function Home() {
     {
       title: "Prevent Costly Failures",
       description: "One missed step—a forgotten permit, an uncalibrated machine—can lead to catastrophic financial and reputational damage.",
-      imageId: "for-startups"
+      imageId: "showcase-product-launch-event"
     },
     {
       title: "Standardize Excellence",
       description: "Our checklists are expert-written SOPs that empower your team to perform flawlessly, every single time, delighting customers and clients.",
-      imageId: "for-hospitality"
+      imageId: "showcase-corporate-hospitality"
     },
      {
       title: "Build Unshakeable Trust",
