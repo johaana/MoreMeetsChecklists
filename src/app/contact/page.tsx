@@ -11,12 +11,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Contact Us | MoreMeets',
-  description: 'Get in touch with the MoreMeets team for any questions or inquiries about our operational checklists and SOPs.',
-};
 
 
 export default function ContactUsPage() {
