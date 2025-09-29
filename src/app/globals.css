@@ -65,6 +65,19 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  .sales-consultancy-page {
+    --background: 210 20% 98%;
+    --foreground: 194 65% 15%;
+    --primary: 194 65% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 194 20% 90%;
+    --accent: 14 83% 58%;
+    --accent-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --border: 194 20% 85%;
+    --muted-foreground: 194 30% 35%;
+  }
 }
 
 html {
