@@ -193,12 +193,22 @@ export default function Home() {
       <main className="flex-1">
       <section 
           className="w-full relative bg-cover bg-center"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroImage?.imageUrl})`
-          }}
         >
+          <div className="absolute inset-0 -z-10">
+            {heroImage && (
+              <Image
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                fill
+                className="object-cover"
+                priority
+                data-ai-hint={heroImage.imageHint}
+              />
+            )}
+             <div className="absolute inset-0 bg-black/50" />
+          </div>
             <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
+                <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                   <div className="space-y-6">
                     <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
                       The Professional Standard for Compliance &amp; Operations Checklists.
@@ -311,3 +321,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
