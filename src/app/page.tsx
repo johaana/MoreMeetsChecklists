@@ -151,12 +151,12 @@ export default function Home() {
     {
       title: "Standardize Excellence",
       description: "Our checklists are expert-written SOPs that empower your team to perform flawlessly, every single time, delighting customers and clients.",
-      imageId: "showcase-corporate-hospitality"
+      imageId: "showcase-emirates-palace"
     },
      {
       title: "Build Unshakeable Trust",
       description: "Demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust with clients and customers.",
-      imageId: "showcase-chauffeur"
+      imageId: "showcase-taj-mahal-palace"
     },
      {
       title: "Drive Sustainability",
@@ -166,7 +166,7 @@ export default function Home() {
     {
       title: "Forged by Experience",
       description: "Our packs are built on the codified knowledge of over 200 industry veterans, translating real-world experience into checklists you can use today.",
-      imageId: "showcase-product-launch-speaker"
+      imageId: "showcase-leela-palace"
     }
   ];
 
