@@ -26,13 +26,13 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 items-center text-sm">
-                    <p className="font-semibold">Quick Links</p>
-                    <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>Packages</Link>
-                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why Us</Link>
+                    <h3 className="font-semibold">Quick Links</h3>
+                    <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>All Packages</Link>
+                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why MoreMeets</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">
-                    <p className="font-semibold">Legal</p>
+                    <h3 className="font-semibold">Legal</h3>
                     <Link href="/terms" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Terms of Service
                     </Link>
