@@ -130,7 +130,7 @@ function PackList() {
                     ))}
                 </div>
                  <div className="text-center mt-16">
-                    <Button asChild size="lg" className="group bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                    <Button asChild size="lg" className="group border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-accent-foreground">
                         <Link href="/packs">
                             View All Packages
                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -191,38 +191,42 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section
-            className="w-full relative bg-cover bg-center"
-            style={{
-                backgroundImage: heroImage ? `url(${heroImage.imageUrl})` : 'none',
-            }}
-        >
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="container px-4 md:px-6 relative z-10">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
-                    <div className="space-y-6">
-                        <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
-                           The Professional Standard for Compliance &amp; Operations Checklists.
-                        </h1>
-                        <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                           Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
-                        </p>
-                        <div className="flex flex-col items-center justify-center gap-4">
-                            <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                                <Link href="/packs">
-                                    Browse All Packages
-                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </Button>
-                            <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                                <p className="text-xs text-white/80">
-                                    Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+        <section className="w-full relative">
+          {heroImage && (
+            <Image
+              alt="Hero background"
+              src={heroImage.imageUrl}
+              fill
+              className="object-cover -z-10"
+              priority
+            />
+          )}
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="container px-4 md:px-6 relative z-10">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
+              <div className="space-y-6">
+                <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
+                  The Professional Standard for Compliance &amp; Operations Checklists.
+                </h1>
+                <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
+                  Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
+                </p>
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                      Browse All Packages
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
+                    <p className="text-xs text-white/80">
+                      Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                    </p>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </section>
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
