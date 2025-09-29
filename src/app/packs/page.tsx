@@ -95,7 +95,7 @@ export default function AllPacksPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="px-6 flex-1">
-                                <p className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</p>
+                                <h2 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h2>
                                 <ul className="space-y-2 text-muted-foreground text-sm">
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">

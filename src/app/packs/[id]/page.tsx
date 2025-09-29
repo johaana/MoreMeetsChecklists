@@ -69,7 +69,7 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
             {React.cloneElement(icon as React.ReactElement, { className: "w-8 h-8 text-primary" })}
         </div>
         <div>
-            <h4 className="text-lg font-bold text-primary">{title}</h4>
+            <h3 className="text-lg font-bold text-primary">{title}</h3>
             <p className="text-muted-foreground mt-1">{description}</p>
         </div>
     </div>
@@ -184,7 +184,7 @@ export default function Page({ params }: { params: { id: string } }) {
                             {pack.description}
                         </p>
                          <div className="mt-4 bg-background/50 border p-4 rounded-lg">
-                            <p className="text-sm font-semibold text-primary mb-2">Perfect For:</p>
+                            <h2 className="text-sm font-semibold text-primary mb-2">Perfect For:</h2>
                             <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ export default function Page({ params }: { params: { id: string } }) {
                             </CardHeader>
                             <CardContent className="p-6 text-sm">
                                 <p className="text-muted-foreground">{checklist.summary}</p>
-                                <p className="font-semibold text-primary/80 mt-2">Contains {checklist.tasks.length} detailed tasks.</p>
+                                <h3 className="font-semibold text-primary/80 mt-2">Contains {checklist.tasks.length} detailed tasks.</h3>
                             </CardContent>
                         </Card>
                     ))}

@@ -292,21 +292,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
                                 <DollarSign className="w-6 h-6"/>
                             </div>
-                            <p className="font-semibold">One-Time Payment</p>
+                            <h4 className="font-semibold">One-Time Payment</h4>
                             <p className="text-xs text-muted-foreground">No recurring subscriptions. Ever. Your single purchase is valid for life.</p>
                         </div>
                         <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background border">
                                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
                                 <Repeat className="w-6 h-6"/>
                             </div>
-                            <p className="font-semibold">Lifetime Updates</p>
+                            <h4 className="font-semibold">Lifetime Updates</h4>
                             <p className="text-xs text-muted-foreground">Receive all future enhancements and additions to your pack, for free.</p>
                         </div>
                         <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background border">
                                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
                                 <ShieldCheck className="w-6 h-6"/>
                             </div>
-                            <p className="font-semibold">Secure Checkout</p>
+                            <h4 className="font-semibold">Secure Checkout</h4>
                             <p className="text-xs text-muted-foreground">Your payment is processed securely. Download your files instantly after purchase.</p>
                         </div>
                     </div>

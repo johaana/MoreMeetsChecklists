@@ -63,7 +63,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-6">
                         <AccordionTrigger className="text-lg font-semibold">Do you have checklists for ESG or sustainability?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes. Many of our packs, like the &lt;strong&gt;Facility Management&lt;/strong&gt; and &lt;strong&gt;Manufacturing&lt;/strong&gt; checklists, contain specific SOPs for energy efficiency, waste reduction, and responsible sourcing. We also have checklists focused on social aspects like labor law compliance and ethical vendor management to help you meet your ESG goals.
+                            Yes. Many of our packs, like the <strong>Facility Management</strong> and <strong>Manufacturing</strong> checklists, contain specific SOPs for energy efficiency, waste reduction, and responsible sourcing. We also have checklists focused on social aspects like labor law compliance and ethical vendor management to help you meet your ESG goals.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
@@ -109,7 +109,7 @@ function PackList() {
                                 </div>
                             </CardHeader>
                             <CardContent className="px-6 flex-1">
-                                <p className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</p>
+                                <h3 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h3>
                                 <ul className="space-y-2 text-muted-foreground text-sm">
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
