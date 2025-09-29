@@ -93,7 +93,7 @@ export default function SalesConsultancyPage() {
                 </div>
                  <div className="flex justify-center">
                     <Image
-                      src="https://picsum.photos/seed/sales-office/600/400"
+                      src="https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg"
                       alt="A professional sales consultant in a modern office"
                       width={600}
                       height={400}
@@ -128,7 +128,7 @@ export default function SalesConsultancyPage() {
                     </div>
                      <div className="flex justify-center">
                         <Image
-                            src="https://picsum.photos/seed/sales-call/600/400"
+                            src="https://i.postimg.cc/6q9d44rV/cold-call1.jpg"
                             alt="A smiling sales professional on a call"
                             width={600}
                             height={400}
@@ -266,7 +266,7 @@ export default function SalesConsultancyPage() {
          <section className="w-full py-12 md:py-24 bg-secondary">
              <div className="container px-4 md:px-6 max-w-4xl mx-auto">
                  <div className="text-center">
-                    <Image src="https://picsum.photos/seed/ceo-headshot/100/100" alt="Testimonial" width={100} height={100} className="mx-auto rounded-full mb-4" data-ai-hint="male ceo headshot"/>
+                    <Image src="https://i.postimg.cc/BbqxPPTK/pie-chart-for-sales-script.webp" alt="Testimonial" width={100} height={100} className="mx-auto rounded-full mb-4" data-ai-hint="male ceo headshot"/>
                     <p className="text-lg italic text-muted-foreground">"Working with MoreMeets was a game-changer. They didn't just give us a plan; they rolled up their sleeves and helped us execute. Our meeting bookings are up 300% in just one quarter."</p>
                     <p className="font-bold mt-4 font-headline">Sameer Shah</p>
                     <p className="text-sm text-muted-foreground">Founder & CEO, TechMinds Inc.</p>
