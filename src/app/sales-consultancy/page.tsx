@@ -129,8 +129,8 @@ export default function SalesConsultancyPage() {
                         <Image
                             src="https://i.postimg.cc/FRbyKVLp/Hero-Feature-Cold-calling-photo-Alamy-Hero-Images-F7-JH8-B.webp"
                             alt="A smiling sales professional on a call"
-                            width={550}
-                            height={550}
+                            width={600}
+                            height={400}
                             className="rounded-3xl object-cover shadow-2xl"
                         />
                     </div>
@@ -205,7 +205,7 @@ export default function SalesConsultancyPage() {
                         <CardHeader>
                             <CardTitle>Sales Audit & Strategy</CardTitle>
                             <CardDescription>A one-time deep dive to give you a clear, actionable roadmap.</CardDescription>
-                            <p className="text-4xl font-bold pt-4">₹49,999</p>
+                            <p className="text-4xl font-bold pt-4">₹24,999</p>
                         </CardHeader>
                         <CardContent className="flex-1">
                             <ul className="space-y-3 text-muted-foreground">
@@ -223,7 +223,7 @@ export default function SalesConsultancyPage() {
                         <CardHeader>
                             <CardTitle>Team Coaching Intensive</CardTitle>
                             <CardDescription>A 3-month program to upskill your entire sales team.</CardDescription>
-                             <p className="text-4xl font-bold pt-4">₹99,999<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
+                             <p className="text-4xl font-bold pt-4">₹59,999<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
                         </CardHeader>
                         <CardContent className="flex-1">
                              <p className="font-semibold mb-3">Everything in Strategy, plus:</p>
@@ -264,7 +264,7 @@ export default function SalesConsultancyPage() {
          <section className="w-full py-12 md:py-24 bg-secondary">
              <div className="container px-4 md:px-6 max-w-4xl mx-auto">
                  <div className="text-center">
-                    <Image src="https://picsum.photos/seed/testimonial-ceo/100/100" alt="Testimonial" width={100} height={100} className="mx-auto rounded-full mb-4" data-ai-hint="male ceo"/>
+                    <Image src="https://picsum.photos/seed/ceo-headshot/100/100" alt="Testimonial" width={100} height={100} className="mx-auto rounded-full mb-4" data-ai-hint="male ceo headshot"/>
                     <p className="text-lg italic text-muted-foreground">"Working with MoreMeets was a game-changer. They didn't just give us a plan; they rolled up their sleeves and helped us execute. Our meeting bookings are up 300% in just one quarter."</p>
                     <p className="font-bold mt-4 font-headline">Sameer Shah</p>
                     <p className="text-sm text-muted-foreground">Founder & CEO, TechMinds Inc.</p>
