@@ -192,17 +192,19 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="w-full relative">
-            <div className="absolute inset-0 z-10 bg-black/50" />
-             {heroImage && (
-                <Image
-                    src={heroImage.imageUrl}
-                    alt="Luxury Hotel"
-                    fill
-                    className="object-cover"
-                    data-ai-hint={heroImage.imageHint}
-                />
-            )}
-            <div className="container px-4 md:px-6 relative z-20">
+            <div className="absolute inset-0">
+                {heroImage && (
+                    <Image
+                        src={heroImage.imageUrl}
+                        alt="Luxury Hotel"
+                        fill
+                        className="object-cover"
+                        data-ai-hint={heroImage.imageHint}
+                    />
+                )}
+                <div className="absolute inset-0 bg-black/50" />
+            </div>
+            <div className="container px-4 md:px-6 relative z-10">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white drop-shadow-md">
