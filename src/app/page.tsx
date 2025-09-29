@@ -129,7 +129,14 @@ function PackList() {
                         </Card>
                     ))}
                 </div>
-                 
+                 <div className="text-center mt-16">
+                    <Button asChild variant="outline" size="lg" className="group">
+                        <Link href="/packs">
+                            View All Packages
+                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
             </div>
         </section>
     )
@@ -177,6 +184,9 @@ export default function Home() {
             </Link>
             <Link href="#why-us" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
                 Why Us
+            </Link>
+             <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
+                Contact
             </Link>
         </nav>
       </header>
@@ -306,3 +316,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
