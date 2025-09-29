@@ -83,7 +83,7 @@ export default function SalesConsultancyPage() {
                         More Meetings. More Sales. Less Hassle.
                     </h1>
                     <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                        We help ambitious B2B companies build scalable sales engines that drive predictable revenue growth.
+                        We build scalable sales engines for ambitious B2B companies, driving predictable revenue growth.
                     </p>
                     <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
                         <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
@@ -93,12 +93,11 @@ export default function SalesConsultancyPage() {
                 </div>
                  <div className="flex justify-center">
                     <Image
-                      src="https://picsum.photos/seed/sales-team/600/400"
-                      alt="Sales team celebrating success"
+                      src="https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg"
+                      alt="A professional sales consultant in a modern office"
                       width={600}
                       height={400}
                       className="rounded-3xl object-cover shadow-2xl"
-                      data-ai-hint="sales team success"
                     />
                 </div>
             </div>
@@ -128,12 +127,11 @@ export default function SalesConsultancyPage() {
                     </div>
                      <div className="flex justify-center">
                         <Image
-                            src="https://picsum.photos/seed/modern-office/600/400"
-                            alt="Modern office interior"
+                            src="https://i.postimg.cc/FRbyKVLp/Hero-Feature-Cold-calling-photo-Alamy-Hero-Images-F7-JH8-B.webp"
+                            alt="A smiling sales professional on a call"
                             width={550}
                             height={550}
                             className="rounded-3xl object-cover shadow-2xl"
-                            data-ai-hint="modern office"
                         />
                     </div>
                  </div>
@@ -312,3 +310,5 @@ export default function SalesConsultancyPage() {
     </div>
   );
 }
+
+    
