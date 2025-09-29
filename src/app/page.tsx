@@ -157,7 +157,7 @@ export default function Home() {
      {
       title: "Build Unshakeable Trust",
       description: "Demonstrating perfect execution and attention to detail is the ultimate way to build lasting trust with clients and customers.",
-      imageId: "showcase-corporate-hospitality"
+      imageId: "showcase-emirates-palace"
     },
      {
       title: "Drive Sustainability",
