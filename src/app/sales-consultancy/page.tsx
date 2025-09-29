@@ -3,7 +3,6 @@
 
 import * as React from 'react';
 import Link from "next/link";
-import Image from "next/image";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -92,14 +91,11 @@ export default function SalesConsultancyPage() {
                     </Button>
                 </div>
                  <div className="flex justify-center">
-                    <Image
-                      src="https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg"
-                      alt="A professional sales consultant in a modern office"
-                      width={600}
-                      height={400}
-                      className="rounded-3xl object-cover shadow-2xl"
+                    <div
+                      className="w-[600px] h-[400px] rounded-3xl bg-cover bg-center shadow-2xl"
+                      style={{ backgroundImage: "url('https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg')" }}
                       data-ai-hint="modern office"
-                    />
+                    ></div>
                 </div>
             </div>
           </div>
@@ -127,14 +123,11 @@ export default function SalesConsultancyPage() {
                         </div>
                     </div>
                      <div className="flex justify-center">
-                        <Image
-                            src="https://i.postimg.cc/6q9d44rV/cold-call1.jpg"
-                            alt="A smiling sales professional on a call"
-                            width={600}
-                            height={400}
-                            className="rounded-3xl object-cover shadow-2xl"
+                        <div
+                            className="w-[600px] h-[400px] rounded-3xl bg-cover bg-center shadow-2xl"
+                            style={{ backgroundImage: "url('https://i.postimg.cc/6q9d44rV/cold-call1.jpg')" }}
                             data-ai-hint="sales professional"
-                        />
+                        ></div>
                     </div>
                  </div>
             </div>
@@ -266,7 +259,11 @@ export default function SalesConsultancyPage() {
          <section className="w-full py-12 md:py-24 bg-secondary">
              <div className="container px-4 md:px-6 max-w-4xl mx-auto">
                  <div className="text-center">
-                    <Image src="https://i.postimg.cc/BbqxPPTK/pie-chart-for-sales-script.webp" alt="Testimonial" width={100} height={100} className="mx-auto rounded-full mb-4" data-ai-hint="male ceo headshot"/>
+                    <div 
+                        className="w-[100px] h-[100px] bg-cover bg-center rounded-full mx-auto mb-4"
+                        style={{ backgroundImage: "url('https://i.postimg.cc/BbqxPPTK/pie-chart-for-sales-script.webp')" }}
+                        data-ai-hint="male ceo headshot"
+                    ></div>
                     <p className="text-lg italic text-muted-foreground">"Working with MoreMeets was a game-changer. They didn't just give us a plan; they rolled up their sleeves and helped us execute. Our meeting bookings are up 300% in just one quarter."</p>
                     <p className="font-bold mt-4 font-headline">Sameer Shah</p>
                     <p className="text-sm text-muted-foreground">Founder & CEO, TechMinds Inc.</p>
@@ -312,5 +309,3 @@ export default function SalesConsultancyPage() {
     </div>
   );
 }
-
-    
