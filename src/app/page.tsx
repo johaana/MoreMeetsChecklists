@@ -173,7 +173,7 @@ export default function Home() {
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
-                Packages
+                All Packages
             </Link>
             <Link href="#why-us" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
                 Why Us
