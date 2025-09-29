@@ -205,7 +205,7 @@ export default function SalesConsultancyPage() {
                         <CardHeader>
                             <CardTitle>Sales Audit & Strategy</CardTitle>
                             <CardDescription>A one-time deep dive to give you a clear, actionable roadmap.</CardDescription>
-                            <p className="text-4xl font-bold pt-4">₹1,49,999</p>
+                            <p className="text-4xl font-bold pt-4">₹49,999</p>
                         </CardHeader>
                         <CardContent className="flex-1">
                             <ul className="space-y-3 text-muted-foreground">
@@ -223,7 +223,7 @@ export default function SalesConsultancyPage() {
                         <CardHeader>
                             <CardTitle>Team Coaching Intensive</CardTitle>
                             <CardDescription>A 3-month program to upskill your entire sales team.</CardDescription>
-                             <p className="text-4xl font-bold pt-4">₹2,99,999<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
+                             <p className="text-4xl font-bold pt-4">₹99,999<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
                         </CardHeader>
                         <CardContent className="flex-1">
                              <p className="font-semibold mb-3">Everything in Strategy, plus:</p>
@@ -310,5 +310,3 @@ export default function SalesConsultancyPage() {
     </div>
   );
 }
-
-    
