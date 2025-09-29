@@ -167,7 +167,7 @@ export default function Home() {
     {
       title: "Forged by Experience",
       description: "Our packs are built on the codified knowledge of over 200 industry veterans, translating real-world experience into checklists you can use today.",
-      imageId: "for-event-planners"
+      imageId: "showcase-product-launch-event"
     }
   ];
 
