@@ -192,15 +192,13 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="w-full relative">
-          {heroImage && (
-            <Image
-              alt="Hero background"
-              src={heroImage.imageUrl}
-              fill
-              className="object-cover -z-10"
-              priority
-            />
-          )}
+          <Image
+            alt="Hero background"
+            src="/assets/hero-background.jpg"
+            fill
+            className="object-cover -z-10"
+            priority
+          />
           <div className="absolute inset-0 bg-black/50" />
           <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
@@ -316,3 +314,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
