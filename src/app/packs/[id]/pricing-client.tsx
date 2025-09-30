@@ -81,7 +81,7 @@ const PaymentDisclaimerDialog = () => (
                             <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the thank you page to download your pack.
                         </div>
                         <div>
-                            <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as MoreMeets or our Founder's name due to banking compliance. Both are verified.
+                            <strong>2. Beneficiary Name:</strong> The beneficiary name may appear as MoreMeets or our Founder's name due to banking compliance. Both are verified.
                         </div>
                         <div>
                             <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify your payment ID and download your pack.
@@ -97,24 +97,24 @@ const PaymentDisclaimerDialog = () => (
 );
 
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
-  const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script> </form>`;
-  return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
-};
-
-const ClientOnlyRazorpayButton = ({ paymentId }: { paymentId: string }) => {
-    const [isClient, setIsClient] = React.useState(false);
+    const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        setIsClient(true);
-    }, []);
+        if (ref.current && ref.current.children.length === 0) {
+            const script = document.createElement('script');
+            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+            script.async = true;
+            script.setAttribute('data-payment_button_id', paymentId);
+            
+            const form = document.createElement('form');
+            form.appendChild(script);
 
-    if (!isClient) {
-        return null; // Render nothing on the server
-    }
+            ref.current.appendChild(form);
+        }
+    }, [paymentId]);
 
-    return <RazorpayButton paymentId={paymentId} />;
+    return <div ref={ref}></div>;
 };
-
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
@@ -136,7 +136,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <ClientOnlyRazorpayButton paymentId={professionalPaymentId} />
+                 <RazorpayButton paymentId={professionalPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -163,7 +163,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <ClientOnlyRazorpayButton paymentId={personalizedPaymentId} />
+                 <RazorpayButton paymentId={personalizedPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -261,5 +261,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
