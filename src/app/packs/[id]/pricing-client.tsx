@@ -101,9 +101,10 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
     return (
         <form>
             <Script
+                id="razorpay-checkout-script"
                 src="https://checkout.razorpay.com/v1/payment-button.js"
                 data-payment_button_id={paymentId}
-                async
+                strategy="lazyOnload"
             />
         </form>
     );
