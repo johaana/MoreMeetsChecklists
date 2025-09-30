@@ -23,6 +23,7 @@ import {
   AlertDialogDescription,
   AlertDialogHeader,
   AlertDialogTitle,
+  AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
 
 
@@ -340,5 +341,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
-    
