@@ -4,11 +4,11 @@
 import Link from "next/link";
 import * as React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Logo } from "@/components/icons";
+import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
+import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2, ArrowLeft, Mail } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { writeFile, utils } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
@@ -160,14 +160,15 @@ function ThankYouContent() {
   const [paymentId, setPaymentId] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
-  const [pack, setPack] = React.useState<any | null>(null); // Changed to any to handle virtual pack
+  const [pack, setPack] = React.useState<any | null>(null);
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
+  const [view, setView] = React.useState<'initial' | 'enterId' | 'findId'>('initial');
 
   React.useEffect(() => {
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
     if (rzpPaymentId) {
         setPaymentId(rzpPaymentId);
-        // Automatically trigger verification if the payment ID is in the URL
+        setView('enterId'); // Go directly to verification
         handleSubmit(null, rzpPaymentId);
     }
   }, [searchParams]);
@@ -192,8 +193,10 @@ function ThankYouContent() {
     
     if (result.success) {
       setPack(result.pack);
+      setView('enterId'); // Keep the view on the form/success message
     } else {
       setError(result.error);
+      setView('enterId'); // Show error within the form view
     }
     
     setIsLoading(false);
@@ -204,7 +207,60 @@ function ThankYouContent() {
     setShowDownloadConfirm(true);
   }
 
-  const renderContent = () => {
+  const renderInitialView = () => (
+    <div className="text-center">
+        <div className="flex flex-col items-center justify-center space-y-4 mb-8">
+            <CheckCircle className="h-20 w-20 text-green-500" />
+            <div className="space-y-2">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
+                    Thank You for Your Purchase!
+                </h1>
+                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                   How would you like to get your files?
+                </p>
+            </div>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" onClick={() => setView('enterId')}>
+                Enter Payment ID
+            </Button>
+            <Button size="lg" variant="outline" onClick={() => setView('findId')}>
+                Can't find your ID?
+            </Button>
+        </div>
+    </div>
+  );
+
+  const renderFindIdView = () => (
+     <div className="text-center">
+        <div className="space-y-4">
+            <h2 className="text-2xl font-bold font-headline text-primary">No Worries, We're Here to Help!</h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+                If you missed noting your Payment ID, please send a screenshot of your payment confirmation to us, along with the name of the checklist pack you purchased. We'll send you the files directly.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Button asChild>
+                    <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <WhatsAppIcon className="w-5 h-5"/>
+                        Send on WhatsApp
+                    </a>
+                </Button>
+                 <Button asChild variant="secondary">
+                     <a href="mailto:more@moremeets.com" className="flex items-center gap-2">
+                         <Mail className="w-5 h-5"/>
+                        Send an Email
+                    </a>
+                </Button>
+            </div>
+             <Button variant="link" onClick={() => setView('initial')} className="mt-4">
+                <ArrowLeft className="w-4 h-4 mr-2"/>
+                Back
+            </Button>
+        </div>
+    </div>
+  );
+  
+  const renderVerificationView = () => {
     if (isLoading) {
       return (
         <div className="flex flex-col items-center justify-center space-y-4">
@@ -212,18 +268,6 @@ function ThankYouContent() {
           <p className="text-muted-foreground">Verifying your payment...</p>
         </div>
       );
-    }
-
-    if (error) {
-       return (
-        <div className="w-full text-center">
-            <div className="flex items-center justify-center gap-2 text-red-500 mb-4">
-                <AlertTriangle className="h-6 w-6"/>
-                <span className="font-semibold text-lg">{error}</span>
-            </div>
-            {renderVerificationForm()}
-        </div>
-       )
     }
 
     if (pack) {
@@ -252,21 +296,24 @@ function ThankYouContent() {
       );
     }
     
-    return renderVerificationForm();
-  };
-
-  const renderVerificationForm = () => (
-      <div className="w-full">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
-            <CheckCircle className="h-20 w-20 text-green-500" />
-            <div className="space-y-2">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                    Thank You for Your Purchase!
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                   To download your checklist pack, please enter the Payment ID from your Razorpay receipt. If you've just paid, it may already be filled in.
-                </p>
+    return (
+       <div className="w-full">
+        {error && (
+            <div className="w-full text-center mb-6">
+                <div className="flex items-center justify-center gap-2 text-red-500 p-3 bg-destructive/10 rounded-md border border-destructive/50">
+                    <AlertTriangle className="h-6 w-6"/>
+                    <span className="font-semibold">{error}</span>
+                </div>
             </div>
+        )}
+
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                Verify Your Purchase
+            </h1>
+            <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+               Enter the Payment ID from your Razorpay receipt to download your checklist pack.
+            </p>
         </div>
 
         <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto space-y-4">
@@ -283,17 +330,27 @@ function ThankYouContent() {
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Verify & Download'}
           </Button>
-        </form>
-         <div className="text-center mt-8">
-             <Button size="lg" asChild className="group mt-4" variant="outline">
-                <Link href="/packs">
-                    Explore All Packages
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
+           <Button variant="link" onClick={() => setView('initial')} className="w-full">
+                <ArrowLeft className="w-4 h-4 mr-2"/>
+                Back
             </Button>
-        </div>
+        </form>
       </div>
-  )
+    );
+  }
+
+  const renderContent = () => {
+    switch (view) {
+        case 'enterId':
+            return renderVerificationView();
+        case 'findId':
+            return renderFindIdView();
+        case 'initial':
+        default:
+            return renderInitialView();
+    }
+  }
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
