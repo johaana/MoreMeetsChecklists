@@ -40,6 +40,12 @@ export async function generateMetadata(
     "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
     "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
     "Manufacturing": PlaceHolderImages.find(img => img.id === 'for-sustainability')?.imageUrl,
+    "Events": PlaceHolderImages.find(img => img.id === 'for-event-planners')?.imageUrl,
+    "Personal": PlaceHolderImages.find(img => img.id === 'hero-wedding')?.imageUrl,
+    "Automotive": PlaceHolderImages.find(img => img.id === 'break-chauffeur')?.imageUrl,
+    "Real Estate": PlaceHolderImages.find(img => img.id === 'showcase-hotel-exterior')?.imageUrl,
+    "Compliance": PlaceHolderImages.find(img => img.id === 'showcase-corporate-hospitality')?.imageUrl,
+    "Wellness": PlaceHolderImages.find(img => img.id === 'showcase-food')?.imageUrl,
   };
   
   const ogImageUrl = categoryImageMap[pack.category] || (await parent).openGraph?.images?.[0]?.url;
