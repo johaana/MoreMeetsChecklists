@@ -35,7 +35,7 @@ export async function generateMetadata(
 
   const categoryImageMap: Record<string, string | undefined> = {
     "Hospitality": PlaceHolderImages.find(img => img.id === 'for-hospitality')?.imageUrl,
-    "Corporate": PlaceHolderImages.find(img => img.id === 'showcase-corporate-hospitality')?.imageUrl,
+    "Corporate": PlaceHolderImages.find(img => img.id === 'break-facility')?.imageUrl,
     "Retail": PlaceHolderImages.find(img => img.id === 'for-startups')?.imageUrl,
     "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
     "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
@@ -122,7 +122,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const categoryImageMap: Record<string, string | undefined> = {
     "Hospitality": PlaceHolderImages.find(img => img.id === 'for-hospitality')?.imageUrl,
-    "Corporate": PlaceHolderImages.find(img => img.id === 'showcase-corporate-hospitality')?.imageUrl,
+    "Corporate": PlaceHolderImages.find(img => img.id === 'break-facility')?.imageUrl,
     "Retail": PlaceHolderImages.find(img => img.id === 'for-startups')?.imageUrl,
     "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
     "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
