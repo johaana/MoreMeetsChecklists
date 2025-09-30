@@ -13,6 +13,8 @@ import { Footer } from "@/components/layout/footer";
 import { writeFile, utils } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { verifyRazorpayPayment } from './actions';
+import { premiumPacks } from '@/lib/premium-packs';
+
 
 import {
   AlertDialog,
@@ -30,6 +32,11 @@ const handleDownload = (pack: PremiumPack | undefined) => {
         return;
     }
     
+    // For personalized pack, we need to gather all checklists
+    const allChecklists = pack.id === 'personalized_pack' 
+      ? premiumPacks.flatMap(p => p.checklists)
+      : pack.checklists;
+
     const workbook = utils.book_new();
     const headerStyle = {
         font: { bold: true, color: { rgb: "FFFFFF" } },
@@ -43,7 +50,7 @@ const handleDownload = (pack: PremiumPack | undefined) => {
         [" "],
         ["Click to navigate:"],
         ["Checklist Title", "Department", "Frequency", "Role"],
-         ...pack.checklists.map((checklist) => {
+         ...allChecklists.map((checklist) => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
             return [
@@ -58,17 +65,14 @@ const handleDownload = (pack: PremiumPack | undefined) => {
     const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
     coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
     
-    // Style header
     coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
     
-    // Style table headers
     ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
         if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
     });
 
-    // Style hyperlinks
     const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-    for (let R = 4; R <= rangeLinks.e.r; ++R) { // Start from row 5 (index 4)
+    for (let R = 4; R <= rangeLinks.e.r; ++R) {
         const address = utils.encode_cell({ r: R, c: 0 });
         if (coverWorksheet[address] && coverWorksheet[address].f) {
              coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
@@ -81,7 +85,7 @@ const handleDownload = (pack: PremiumPack | undefined) => {
     const masterSheetName = "Master View";
     const masterSheetData = [
         ["Checklist Title", "Task ID", "Task Description", "Priority", "Risk Level"],
-        ...pack.checklists.flatMap((checklist) => 
+        ...allChecklists.flatMap((checklist) => 
             checklist.tasks.map(task => [
                 checklist.title,
                 task.id,
@@ -107,7 +111,7 @@ const handleDownload = (pack: PremiumPack | undefined) => {
     utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
 
     // --- Individual Checklist Sheets ---
-    pack.checklists.forEach(checklist => {
+    allChecklists.forEach(checklist => {
         const checklistHeaders = [
             'Task ID', 'Task', 'Priority', 'Risk Level', 
             'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
@@ -155,11 +159,27 @@ function ThankYouContent() {
   const [paymentId, setPaymentId] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
-  const [pack, setPack] = React.useState<PremiumPack | null>(null);
+  const [pack, setPack] = React.useState<any | null>(null); // Changed to any to handle virtual pack
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  React.useEffect(() => {
+    const rzpPaymentId = searchParams.get('razorpay_payment_id');
+    if (rzpPaymentId) {
+        setPaymentId(rzpPaymentId);
+        // Automatically trigger verification if the payment ID is in the URL
+        handleSubmit(null, rzpPaymentId);
+    }
+  }, [searchParams]);
+
+  const handleSubmit = async (e: React.FormEvent | null, id?: string) => {
+    if (e) e.preventDefault();
+    
+    const finalPaymentId = id || paymentId;
+    if (!finalPaymentId) {
+        setError("Please enter a Payment ID.");
+        return;
+    }
+
     setIsLoading(true);
     setError(null);
     setPack(null);
@@ -167,7 +187,7 @@ function ThankYouContent() {
     const packId = searchParams.get('pack_id');
     const isPersonalized = searchParams.get('type') === 'personalized';
 
-    const result = await verifyRazorpayPayment(paymentId, packId, !!isPersonalized);
+    const result = await verifyRazorpayPayment(finalPaymentId, packId, !!isPersonalized);
     
     if (result.success) {
       setPack(result.pack);
@@ -243,7 +263,7 @@ function ThankYouContent() {
                     Thank You for Your Purchase!
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                   To download your checklist pack, please enter the Payment ID from your Razorpay confirmation email.
+                   To download your checklist pack, please enter the Payment ID from your Razorpay receipt. If you've just paid, it may already be filled in.
                 </p>
             </div>
         </div>
@@ -260,8 +280,7 @@ function ThankYouContent() {
             />
           </div>
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            Verify & Download
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Verify & Download'}
           </Button>
         </form>
          <div className="text-center mt-8">
@@ -321,3 +340,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    

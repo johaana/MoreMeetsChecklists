@@ -64,37 +64,47 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-const PaymentButton = ({ action, paymentId, buttonText = "Buy Now" }: { action: string, paymentId?: string, buttonText?: string }) => {
-    const formRef = React.useRef<HTMLFormElement>(null);
+const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise = false }: { packId: string, paymentId?: string, buttonText?: string, isEnterprise?: boolean }) => {
+    const paymentUrl = paymentId ? `https://rzp.io/l/${paymentId}` : "https://calendly.com/aditi-imran-khan/30min";
+    const finalActionUrl = isEnterprise ? paymentUrl : `/thank-you?pack_id=${packId}${packId === 'personalized_pack' ? '&type=personalized' : ''}`;
 
-    React.useEffect(() => {
-        if (!paymentId || !formRef.current) return;
-
-        const form = formRef.current;
-        // Prevent adding multiple scripts
-        if (form.querySelector('script')) return;
-
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-        script.async = true;
-        script.dataset.payment_button_id = paymentId;
-        
-        form.appendChild(script);
-
-    }, [paymentId]);
-
-    if (!paymentId) {
-        return (
-            <Button asChild className="w-full h-12 text-lg font-bold" variant="secondary">
-                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">{buttonText}</Link>
+    if (isEnterprise) {
+         return (
+            <Button asChild className="w-full h-12 text-lg font-bold">
+                <Link href={paymentUrl} target="_blank">{buttonText}</Link>
             </Button>
         );
     }
     
     return (
-      <form ref={formRef} action={action} className="w-full">
-         {/* This form will be replaced by the Razorpay button */}
-      </form>
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button className="w-full h-12 text-lg font-bold" variant={paymentId ? 'default' : 'secondary'}>
+            {buttonText}
+          </Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
+            <AlertDialogDescription asChild>
+                <div className="space-y-4 pt-4 text-sm text-muted-foreground">
+                    <div>
+                        <strong>1. Note Your Payment ID:</strong> After paying on Razorpay, you'll need the Payment ID from your receipt to download your pack on the next page.
+                    </div>
+                    <div>
+                        <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance, but rest assured it is our verified account.
+                    </div>
+                </div>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Link href={finalActionUrl}>Proceed to Payment</Link>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     );
 };
 
@@ -119,8 +129,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <PaymentButton 
-                        action={`/thank-you?pack_id=${pack.id}`} 
+                        packId={pack.id}
                         paymentId={professionalPaymentId} 
+                        buttonText="Buy Now"
                      />
                 </CardFooter>
             </Card>,
@@ -148,8 +159,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <PaymentButton 
-                        action={`/thank-you?type=personalized`} 
+                        packId="personalized_pack"
                         paymentId={personalizedPaymentId}
+                        buttonText="Buy Personalized Pack"
                     />
                 </CardFooter>
             </Card>,
@@ -171,8 +183,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                      <PaymentButton 
-                        action="#"
+                        packId="enterprise"
                         buttonText="Book a Discovery Call"
+                        isEnterprise={true}
                     />
                 </CardFooter>
             </Card>
@@ -255,3 +268,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+
+    
