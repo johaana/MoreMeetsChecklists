@@ -94,13 +94,16 @@ const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise
                     <div>
                         <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance, but rest assured it is our verified account.
                     </div>
+                     <div>
+                        <strong>3. Proceed to Thank You Page:</strong> After a successful payment, you must manually proceed to the <Link href={finalActionUrl} className="text-primary underline">Thank You page</Link> to verify and download your pack.
+                    </div>
                 </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction asChild>
-              <Link href={finalActionUrl}>Proceed to Payment</Link>
+               <Link href={paymentUrl} target="_blank">Proceed to Payment</Link>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -192,7 +195,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     ];
 
     return (
-        <section className="w-full py-12 md:py-16 bg-secondary/30" id="pricing">
+        <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-4 md:px-6">
                  <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
