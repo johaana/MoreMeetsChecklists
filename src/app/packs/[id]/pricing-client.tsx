@@ -78,7 +78,7 @@ const PaymentDisclaimerDialog = () => (
                 <AlertDialogDescription asChild>
                     <div className="space-y-4 pt-4 text-sm text-muted-foreground">
                         <div>
-                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the next page to download your pack.
+                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the thank you page to download your pack.
                         </div>
                         <div>
                             <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance.
@@ -259,3 +259,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
