@@ -101,6 +101,20 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
   return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
 
+const ClientOnlyRazorpayButton = ({ paymentId }: { paymentId: string }) => {
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        return null; // Render nothing on the server
+    }
+
+    return <RazorpayButton paymentId={paymentId} />;
+};
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
@@ -122,7 +136,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <RazorpayButton paymentId={professionalPaymentId} />
+                 <ClientOnlyRazorpayButton paymentId={professionalPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -149,7 +163,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <RazorpayButton paymentId={personalizedPaymentId} />
+                 <ClientOnlyRazorpayButton paymentId={personalizedPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
