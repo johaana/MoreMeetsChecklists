@@ -21,6 +21,32 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 
 
+const HowWeAreDifferentSection = () => (
+    <section id="how-we-are-different" className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+            <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
+                <div className="text-center mb-8">
+                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                        How We're Different
+                    </h2>
+                </div>
+                <div className="space-y-6 text-center text-muted-foreground md:text-lg">
+                    <p>
+                        Most SOP platforms sell software subscriptions that help you manage or automate SOPs—but <strong>they don’t actually provide the SOP checklists themselves.</strong> You still have to create the content on your own.
+                    </p>
+                    <p>
+                        MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates.</strong>
+                    </p>
+                     <p className="text-foreground font-semibold">
+                        In short: <strong>we don’t sell software. We sell the actual operational checklists</strong> that managers and teams can start using from day one.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
+
 const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6">
@@ -394,6 +420,8 @@ export default function Home() {
                 </div>
             </div>
         </section>
+        
+        <HowWeAreDifferentSection />
 
         <FaqSection />
 
