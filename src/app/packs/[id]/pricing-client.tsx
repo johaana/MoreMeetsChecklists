@@ -4,6 +4,7 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
+import Script from 'next/script';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
@@ -68,7 +69,7 @@ const PaymentDisclaimerDialog = () => (
     <AlertDialog>
         <AlertDialogTrigger asChild>
             <Button variant="link" className="text-xs text-muted-foreground h-auto p-0 mt-2 flex items-center gap-1">
-                <AlertCircle className="w-3 h-3" /> Important Info
+                <AlertCircle className="w-3 h-3" /> Read Before Paying
             </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -77,13 +78,13 @@ const PaymentDisclaimerDialog = () => (
                 <AlertDialogDescription asChild>
                     <div className="space-y-4 pt-4 text-sm text-muted-foreground">
                         <div>
-                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID. You will need this to download your pack on the next page.
+                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the next page to download your pack.
                         </div>
                         <div>
                             <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance.
                         </div>
                         <div>
-                            <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify and download your pack.
+                            <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify your payment ID and download your pack.
                         </div>
                     </div>
                 </AlertDialogDescription>
@@ -97,6 +98,18 @@ const PaymentDisclaimerDialog = () => (
 
 
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
+    // This component will only render on the client-side, where the form can be created.
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        // Render nothing on the server to prevent hydration errors.
+        return null; 
+    }
+
     const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script> </form>`;
     return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
@@ -121,7 +134,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                <RazorpayButton paymentId={professionalPaymentId} />
+                 <RazorpayButton paymentId={professionalPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -148,7 +161,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                <RazorpayButton paymentId={personalizedPaymentId} />
+                 <RazorpayButton paymentId={personalizedPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
