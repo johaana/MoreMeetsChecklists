@@ -356,9 +356,18 @@ export default function Home() {
         <WhyDetailMatters />
         
         {breakEventImage && (
-            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakEventImage.imageUrl})` }}>
-                <div className="container h-32 md:h-48" />
-            </section>
+             <div className="w-full py-12 md:py-16">
+                <div className="container">
+                    <Image 
+                        src={breakEventImage.imageUrl} 
+                        alt={breakEventImage.description}
+                        width={1200}
+                        height={400}
+                        className="w-full h-auto rounded-2xl object-cover"
+                        data-ai-hint={breakEventImage.imageHint}
+                    />
+                </div>
+            </div>
         )}
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
@@ -366,9 +375,18 @@ export default function Home() {
         </React.Suspense>
         
         {breakFacilityImage && (
-            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakFacilityImage.imageUrl})` }}>
-                <div className="container h-32 md:h-48" />
-            </section>
+             <div className="w-full py-12 md:py-16">
+                <div className="container">
+                    <Image 
+                        src={breakFacilityImage.imageUrl} 
+                        alt={breakFacilityImage.description}
+                        width={1200}
+                        height={400}
+                        className="w-full h-auto rounded-2xl object-cover"
+                        data-ai-hint={breakFacilityImage.imageHint}
+                    />
+                </div>
+            </div>
         )}
 
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
@@ -411,16 +429,19 @@ export default function Home() {
             </div>
         </section>
 
-        {breakReceptionImage && (
-            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakReceptionImage.imageUrl})` }}>
-                <div className="container h-32 md:h-48" />
-            </section>
-        )}
-
-        {breakChauffeurImage && (
-            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakChauffeurImage.imageUrl})` }}>
-                <div className="container h-32 md:h-48" />
-            </section>
+         {breakReceptionImage && (
+             <div className="w-full py-12 md:py-16">
+                <div className="container">
+                     <Image 
+                        src={breakReceptionImage.imageUrl} 
+                        alt={breakReceptionImage.description}
+                        width={1200}
+                        height={400}
+                        className="w-full h-auto rounded-2xl object-cover"
+                        data-ai-hint={breakReceptionImage.imageHint}
+                    />
+                </div>
+            </div>
         )}
 
         <FaqSection />
@@ -430,3 +451,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
