@@ -4,7 +4,6 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
@@ -102,9 +101,20 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
     return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
 
-const DynamicRazorpayButton = dynamic(() => Promise.resolve(RazorpayButton), {
-  ssr: false,
-});
+// This wrapper ensures the RazorpayButton is only rendered on the client side.
+const RazorpayButtonWrapper = ({ paymentId }: { paymentId: string }) => {
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return null; // Render nothing on the server
+    }
+
+    return <RazorpayButton paymentId={paymentId} />;
+};
 
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
@@ -127,7 +137,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <DynamicRazorpayButton paymentId={professionalPaymentId} />
+                 <RazorpayButtonWrapper paymentId={professionalPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -154,7 +164,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <DynamicRazorpayButton paymentId={personalizedPaymentId} />
+                 <RazorpayButtonWrapper paymentId={personalizedPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -252,5 +262,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
