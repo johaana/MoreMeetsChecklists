@@ -140,20 +140,20 @@
   {
     "id": "for-event-planners",
     "description": "An image of a grand wedding event.",
-    "imageUrl": "https://i.postimg.cc/FsnVpL6h/Wedding-Event.webp",
-    "imageHint": "wedding event"
+    "imageUrl": "https://i.postimg.cc/Gp2zyKfP/event.webp",
+    "imageHint": "grand event"
   },
   {
     "id": "for-hospitality",
     "description": "An image of the luxurious Taj Lake Palace.",
-    "imageUrl": "https://i.postimg.cc/C1yvNqzR/Taj-Lake.jpg",
-    "imageHint": "luxury hotel"
+    "imageUrl": "https://i.postimg.cc/XvzLcFSZ/hotel-reception.webp",
+    "imageHint": "hotel reception"
   },
   {
     "id": "for-startups",
     "description": "A dynamic product launch event.",
-    "imageUrl": "https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp",
-    "imageHint": "product launch"
+    "imageUrl": "https://i.postimg.cc/YS98WRVB/operational-excellence-colleagues-collaborating-at-laptop.webp",
+    "imageHint": "team collaboration"
   },
   {
     "id": "for-sustainability",

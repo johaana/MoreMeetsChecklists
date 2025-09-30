@@ -1,10 +1,11 @@
 
+
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -13,6 +14,8 @@ import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
+import Image from 'next/image';
+
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 
@@ -37,6 +40,18 @@ const FaqSection = () => (
                 
                 <h3 className="text-2xl font-bold font-headline mb-4 mt-12 text-center">The Details That Matter</h3>
                 <Accordion type="single" collapsible className="w-full">
+                     <AccordionItem value="item-expertise">
+                        <AccordionTrigger className="text-lg font-semibold">What's the expertise behind your checklists?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                           Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-ai-alt">
+                        <AccordionTrigger className="text-lg font-semibold">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                           Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 200 industry veterans who have managed these high-stakes environments.
+                        </AccordionContent>
+                    </AccordionItem>
                     <AccordionItem value="item-1">
                         <AccordionTrigger className="text-lg font-semibold">How will I receive the checklists after purchase?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
@@ -66,18 +81,6 @@ const FaqSection = () => (
                         <AccordionTrigger className="text-lg font-semibold">Is my payment secure?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-expertise">
-                        <AccordionTrigger className="text-lg font-semibold">What's the expertise behind your checklists?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                           Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-ai-alt">
-                        <AccordionTrigger className="text-lg font-semibold">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                           Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 200 industry veterans who have managed these high-stakes environments.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-8">
@@ -187,35 +190,74 @@ function PackList() {
     )
 }
 
-const WhyUsCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-    <div className="flex flex-col items-center text-center p-6 bg-background rounded-lg border shadow-sm">
-        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-            {icon}
-        </div>
-        <h3 className="text-lg font-bold font-headline mb-2">{title}</h3>
-        <p className="text-sm text-muted-foreground">{description}</p>
-    </div>
-);
+const WhyDetailMatters = () => {
+    const points = [
+        {
+            icon: <HandCoins className="w-8 h-8 text-accent" />,
+            title: "Stop Profit Leaks",
+            description: "A little wasted inventory here, a minor service complaint there. Individually, they seem small. Together, they drain your profitability. Our checklists are designed to find and plug these leaks, driving efficiency that shows up on your bottom line.",
+            imageUrl: "https://i.postimg.cc/YS98WRVB/operational-excellence-colleagues-collaborating-at-laptop.webp",
+            imageHint: "professionals collaborating"
+        },
+        {
+            icon: <Shield className="w-8 h-8 text-accent" />,
+            title: "Prevent Compliance Nightmares",
+            description: "An auditor's visit shouldn't be a panic attack. Our checklists provide a clear, documented trail of diligence for safety, hygiene, and legal standards, turning inspections into an opportunity to showcase your excellence.",
+            imageUrl: "https://i.postimg.cc/43SPbtkN/facility-management.jpg",
+            imageHint: "facility management"
+        },
+        {
+            icon: <TrendingUp className="w-8 h-8 text-accent" />,
+            title: "Deliver Consistent Quality",
+            description: "Is every customer getting your 5-star treatment, or is it a gamble? Our SOPs standardize your service, ensuring every guest touchpoint is executed to the same high standard, turning quality from an accident into a reliable promise.",
+            imageUrl: "https://i.postimg.cc/xT3QdjMc/customer-service.jpg",
+            imageHint: "customer service"
+        }
+    ];
+
+    return (
+        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        The Smallest Details Have the Biggest Impact
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        In any professional operation, the difference between success and failure lies in the details. Here’s why it matters.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {points.map((point, index) => (
+                        <div key={index} className="grid grid-rows-[auto_1fr] gap-6 items-start">
+                             <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                                <Image
+                                    src={point.imageUrl}
+                                    alt={point.title}
+                                    fill
+                                    className="object-cover"
+                                    data-ai-hint={point.imageHint}
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <div className="flex items-center gap-4 mb-3">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-background border text-primary">
+                                        {point.icon}
+                                    </div>
+                                    <h3 className="text-xl font-bold font-headline">{point.title}</h3>
+                                </div>
+                                <p className="text-muted-foreground">{point.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
 
 
 export default function Home() {
-  const whyUsData = [
-    {
-      icon: <FileText className="w-6 h-6" />,
-      title: "We Sell Expertise, Not Software",
-      description: "Most platforms sell you a subscription to manage checklists you still have to write yourself. We provide the actual, ready-to-use, expert-written operational checklists from day one.",
-    },
-    {
-      icon: <DownloadCloud className="w-6 h-6" />,
-      title: "One-Time Purchase, Lifetime Value",
-      description: "No recurring fees. You buy a checklist pack once and own it forever. This includes all future updates and additions to that pack, free of charge.",
-    },
-    {
-      icon: <Layers className="w-6 h-6" />,
-      title: "Built by Veterans, Not Just Prompts",
-      description: "Our content is forged from the real-world experience of over 200 industry veterans—not generated by an AI. You get the nuanced, hard-won wisdom that prevents costly failures.",
-    },
-  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -253,34 +295,13 @@ export default function Home() {
                 </div>
             </div>
         </section>
+        
+        <WhyDetailMatters />
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
         </React.Suspense>
         
-        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                Why MoreMeets?
-              </h2>
-              <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                In a world of subscriptions and software, we provide what actually matters: The Expertise.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {whyUsData.map((item) => (
-                <WhyUsCard
-                  key={item.title}
-                  icon={item.icon}
-                  title={item.title}
-                  description={item.description}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -325,4 +346,5 @@ export default function Home() {
     </div>
   );
 }
+
 
