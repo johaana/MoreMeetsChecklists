@@ -160,5 +160,11 @@
     "description": "A lush, green, sustainable resort in Fiji.",
     "imageUrl": "https://i.postimg.cc/PrfS2hrQ/Laucala-Island-Fiji.jpg",
     "imageHint": "sustainability eco-friendly"
+  },
+  {
+    "id": "break-reception",
+    "description": "A clean, modern hotel reception area.",
+    "imageUrl": "https://i.postimg.cc/XvzLcFSZ/hotel-reception.webp",
+    "imageHint": "hotel reception"
   }
 ]

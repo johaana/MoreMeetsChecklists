@@ -19,6 +19,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
+const breakImage = PlaceHolderImages.find(img => img.id === 'break-reception');
 
 const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
@@ -393,6 +394,12 @@ export default function Home() {
                 </div>
             </div>
         </section>
+
+        {breakImage && (
+            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakImage.imageUrl})` }}>
+                <div className="container h-48" />
+            </section>
+        )}
 
         <FaqSection />
 
