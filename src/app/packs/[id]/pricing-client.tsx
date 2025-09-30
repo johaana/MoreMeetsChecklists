@@ -104,10 +104,10 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
-                         <AlertDialogDescription className="space-y-3">
-                            <p><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay **Payment ID** to download your pack.</p>
+                         <AlertDialogDescription className="space-y-3 pt-4">
+                            <p><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay Payment ID to download your pack.</p>
                             
-                            <p><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Imran Khan" or a similar variation due to banking compliance, but rest assured it is our verified account.</p>
+                            <p><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Aditi Imran Khan" (our Founder) due to banking compliance, but rest assured it is our verified account.</p>
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
