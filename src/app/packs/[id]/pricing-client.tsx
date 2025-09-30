@@ -65,12 +65,24 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 }
 
 const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise = false }: { packId: string, paymentId?: string, buttonText?: string, isEnterprise?: boolean }) => {
-    const paymentUrl = isEnterprise ? "https://calendly.com/aditi-imran-khan/30min" : `https://rzp.io/l/${paymentId}`;
     
+    if (isEnterprise) {
+        return (
+             <Button asChild className="w-full h-12 text-lg font-bold">
+                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                    {buttonText}
+                </Link>
+             </Button>
+        );
+    }
+    
+    // The raw HTML form code provided by Razorpay
+    const razorpayForm = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script> </form>`;
+
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button className="w-full h-12 text-lg font-bold" variant={paymentId || isEnterprise ? 'default' : 'secondary'}>
+          <Button className="w-full h-12 text-lg font-bold" variant={'default'}>
             {buttonText}
           </Button>
         </AlertDialogTrigger>
@@ -92,10 +104,11 @@ const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction asChild>
-               <Link href={paymentUrl} target="_blank">Proceed to Payment</Link>
-            </AlertDialogAction>
+             <div className="flex items-center justify-between w-full">
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                {/* This div will render the actual Razorpay button from the script */}
+                <div dangerouslySetInnerHTML={{ __html: razorpayForm }} />
+            </div>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -111,10 +124,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     // Use the correct payment IDs provided by the user
     const professionalPaymentId = 'pl_RMnYKoxjfq5XCx';
     const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
-    
-    // Fallback to the pack's paymentId if it exists, otherwise use the correct one for the professional pack
-    const finalProfessionalPaymentId = pack.id === 'hospitality_excellence_suite' || pack.id === 'facility_management_blueprint' || pack.id === 'restaurant_operations_checklist' ? professionalPaymentId : pack.paymentId;
-
 
     const pricingCards = [
             <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
@@ -130,7 +139,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <CardFooter className="p-6 mt-auto">
                    <PaymentButton 
                         packId={pack.id}
-                        paymentId={finalProfessionalPaymentId} 
+                        paymentId={professionalPaymentId} 
                         buttonText="Buy Now"
                      />
                 </CardFooter>
