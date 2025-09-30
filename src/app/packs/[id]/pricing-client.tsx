@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -66,10 +66,9 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: string, action: string, paymentId?: string, buttonText?: string }) => {
     const formRef = React.useRef<HTMLFormElement>(null);
-     const [isMounted, setIsMounted] = React.useState(false);
+    const [isMounted, setIsMounted] = React.useState(false);
 
     React.useEffect(() => {
-        // The script can only be loaded on the client side.
         setIsMounted(true);
     }, []);
 
@@ -114,23 +113,12 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <Button
-                            onClick={() => {
-                                const rzpButton = formRef.current?.querySelector('input[type="submit"]');
-                                if (rzpButton instanceof HTMLElement) {
-                                    rzpButton.click();
-                                }
-                            }}
-                        >
-                            Proceed to Payment
-                        </Button>
+                        <form ref={formRef} action={action}>
+                            {/* The Razorpay script will inject its button here, which will be visible inside the dialog */}
+                        </form>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
-            {/* This form is hidden and contains the actual Razorpay button, which we trigger programmatically */}
-            <form ref={formRef} className="hidden" action={action}>
-                {/* The Razorpay script will inject its button here */}
-            </form>
         </>
     );
 };
@@ -285,4 +273,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+    
+
     
