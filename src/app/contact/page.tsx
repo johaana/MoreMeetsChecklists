@@ -3,14 +3,15 @@
 
 import * as React from 'react';
 import Link from "next/link";
-import { Logo, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppIcon } from "@/components/icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
+import { SiteHeader } from '@/components/layout/header';
 
 
 export default function ContactUsPage() {
@@ -24,17 +25,7 @@ export default function ContactUsPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-          <Logo className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-bold">MoreMeets</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
-                All Packages
-            </Link>
-        </nav>
-      </header>
+       <SiteHeader />
 
       <main className="flex-1">
         <section className="w-full pt-12">

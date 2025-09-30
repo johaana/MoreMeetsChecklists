@@ -4,7 +4,7 @@
 import Link from "next/link";
 import * as React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Logo, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,7 +14,7 @@ import { writeFile, utils } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { verifyRazorpayPayment } from './actions';
 import { premiumPacks } from '@/lib/premium-packs';
-
+import { SiteHeader } from "@/components/layout/header";
 
 import {
   AlertDialog,
@@ -253,7 +253,7 @@ function ThankYouContent() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button asChild>
-                    <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <a href="https://wa.me/919545997111?text=Hi!%20I%20can't%20find%20my%20Payment%20ID." target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                         <WhatsAppIcon className="w-5 h-5"/>
                         Send on WhatsApp
                     </a>
@@ -367,17 +367,7 @@ function ThankYouContent() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-          <Logo className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-bold">MoreMeets</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-          <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
-            All Packages
-          </Link>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1 flex items-center justify-center">
          <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>

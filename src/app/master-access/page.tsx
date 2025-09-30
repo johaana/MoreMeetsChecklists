@@ -10,8 +10,8 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { writeFile, utils } from 'xlsx-js-style';
-import { Logo } from '@/components/icons';
 import Link from 'next/link';
+import { SiteHeader } from '@/components/layout/header';
 
 
 // The download logic is copied from the thank-you page.
@@ -171,12 +171,7 @@ export default function MasterAccessPage() {
     if (!isAuthenticated) {
         return (
              <div className="flex flex-col min-h-screen bg-background">
-                 <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-                    <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-                    <Logo className="h-6 w-6 text-primary" />
-                    <span className="font-headline text-lg font-bold">MoreMeets</span>
-                    </Link>
-                </header>
+                <SiteHeader />
                 <main className="flex-1 flex items-center justify-center">
                     <Card className="w-full max-w-sm mx-auto">
                         <CardHeader>
@@ -215,11 +210,8 @@ export default function MasterAccessPage() {
 
     return (
          <div className="flex flex-col min-h-screen bg-background">
-             <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-                <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-                <Logo className="h-6 w-6 text-primary" />
-                <span className="font-headline text-lg font-bold">MoreMeets</span>
-                </Link>
+            <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
+                <SiteHeader />
                  <div className="ml-auto">
                     <Button variant="outline" onClick={() => setIsAuthenticated(false)}>Logout</Button>
                 </div>
@@ -258,7 +250,3 @@ export default function MasterAccessPage() {
         </div>
     );
 }
-
-    
-
-    

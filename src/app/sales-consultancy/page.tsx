@@ -3,11 +3,11 @@
 
 import * as React from 'react';
 import Link from "next/link";
-import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Check, ArrowRight, TrendingUp, Target, Users, Bot, Zap, Rocket, Search, Edit, BarChart, FileText, Star } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
+import { SiteHeader } from '@/components/layout/header';
 
 const benefits = [
     {
@@ -58,20 +58,7 @@ const processSteps = [
 export default function SalesConsultancyPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background sales-consultancy-page">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background sticky top-0 z-50 border-b">
-        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-          <Logo className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-bold text-primary">MoreMeets</span>
-        </Link>
-        <nav className="ml-auto">
-             <Button variant="ghost" asChild>
-                <Link href="/" prefetch={false}>
-                    Back to Main Site
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-            </Button>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">

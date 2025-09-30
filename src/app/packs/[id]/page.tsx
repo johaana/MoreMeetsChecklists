@@ -2,7 +2,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { Logo } from '@/components/icons';
 import { ArrowLeft, FileCheck2 } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
@@ -11,6 +10,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { SiteHeader } from '@/components/layout/header';
 
 type Props = {
   params: { id: string }
@@ -154,11 +154,8 @@ export default function Page({ params }: { params: { id: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-          <Logo className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-bold">MoreMeets</span>
-        </Link>
+      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
+        <SiteHeader />
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
                 <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
