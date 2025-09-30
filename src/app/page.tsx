@@ -201,8 +201,8 @@ const WhyDetailMatters = () => {
         },
         {
             icon: <GitBranch />,
-            title: "Are You Operating on Expertise or Guesswork?",
-            description: "Running a complex operation on memory is a recipe for decline. Our checklists codify the hard-won wisdom of over 200 industry experts, making best practices your standard practice.",
+            title: "How Do You Enforce Standards Across Multiple Locations?",
+            description: "When your brand is spread across multiple sites, consistency is everything. Our checklists provide a centralized, replicable blueprint for excellence, ensuring that your customer in one city gets the exact same high-quality experience as a customer a thousand miles away.",
         },
         {
             icon: <HandCoins />,
@@ -366,6 +366,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
