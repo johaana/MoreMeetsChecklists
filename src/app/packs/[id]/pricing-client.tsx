@@ -66,31 +66,12 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise = false }: { packId: string, paymentId?: string, buttonText?: string, isEnterprise?: boolean }) => {
     
-    React.useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-        script.async = true;
-        document.body.appendChild(script);
-    }, []);
+    const razorpayFormHtml = `
+      <form>
+        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script>
+      </form>
+    `;
 
-    const handleProceedToPayment = () => {
-        if (!paymentId) {
-            console.error("Payment ID is not defined.");
-            return;
-        }
-
-        const options = {
-            "key": process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
-            "payment_button_id": paymentId,
-            "callback_url": `/thank-you?pack_id=${packId}${packId === 'personalized_pack' ? '&type=personalized' : ''}`,
-            "redirect": true
-        };
-        
-        // @ts-ignore
-        const rzp = new window.Razorpay(options);
-        rzp.open();
-    }
-    
     if (isEnterprise) {
         return (
              <Button asChild className="w-full h-12 text-lg font-bold">
@@ -127,9 +108,7 @@ const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise
           </AlertDialogHeader>
           <AlertDialogFooter>
              <AlertDialogCancel>Cancel</AlertDialogCancel>
-             <AlertDialogAction onClick={handleProceedToPayment}>
-                Proceed to Payment
-             </AlertDialogAction>
+             <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -288,3 +267,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
