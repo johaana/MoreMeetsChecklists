@@ -97,17 +97,17 @@ const PaymentDisclaimerDialog = () => (
 );
 
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
+  const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async></script></form>`;
+  
   const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  if (!isMounted) {
-    return null;
-  }
   
-  const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async></script></form>`;
+  if (!isMounted) {
+    return null; 
+  }
 
   return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
@@ -258,5 +258,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
