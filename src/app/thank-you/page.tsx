@@ -43,9 +43,14 @@ const handleDownload = (pack: PremiumPack | undefined) => {
         font: { bold: true, color: { rgb: "FFFFFF" } },
         fill: { fgColor: { rgb: "0A2540" } }
     };
+    const footerStyle = {
+        font: { italic: true, sz: 10 }
+    };
 
     // --- Cover Page ---
     const coverPageName = "Cover Page";
+    const footerText = "Provided by MoreMeets | www.moremeets.com";
+
     const coverPageHeader = [pack.title];
     const coverPageData = [
         [" "],
@@ -60,7 +65,9 @@ const handleDownload = (pack: PremiumPack | undefined) => {
                 checklist.frequency,
                 checklist.role
             ];
-        })
+        }),
+        [" "],
+        [footerText]
     ];
 
     const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
@@ -78,6 +85,12 @@ const handleDownload = (pack: PremiumPack | undefined) => {
         if (coverWorksheet[address] && coverWorksheet[address].f) {
              coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
         }
+    }
+    
+    const footerRowIndex = rangeLinks.e.r;
+    const footerCellAddress = `A${footerRowIndex + 1}`;
+    if(coverWorksheet[footerCellAddress]) {
+      coverWorksheet[footerCellAddress].s = footerStyle;
     }
     
     utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
@@ -398,3 +411,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    

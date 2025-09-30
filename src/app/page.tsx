@@ -68,12 +68,6 @@ const FaqSection = () => (
                             Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-6">
-                        <AccordionTrigger className="text-lg font-semibold">Why does the payment page sometimes show a personal or alternate name?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            This is normal. Payments are processed securely via Razorpay, but depending on your UPI app or bank, the beneficiary name may sometimes appear differently due to banking regulations. Rest assured, it is our verified account and your purchase is safe.
-                        </AccordionContent>
-                    </AccordionItem>
 
                     <AccordionItem value="item-7">
                         <AccordionTrigger className="text-lg font-semibold">Who creates these checklists?</AccordionTrigger>
@@ -354,3 +348,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

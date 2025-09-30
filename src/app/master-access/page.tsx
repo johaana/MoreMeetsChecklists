@@ -26,9 +26,14 @@ const handleDownload = (pack: PremiumPack) => {
         font: { bold: true, color: { rgb: "FFFFFF" } },
         fill: { fgColor: { rgb: "0A2540" } }
     };
+    const footerStyle = {
+        font: { italic: true, sz: 10 }
+    };
 
     // --- Cover Page ---
     const coverPageName = "Cover Page";
+    const footerText = "Provided by MoreMeets | www.moremeets.com";
+
     const coverPageHeader = [pack.title];
     const coverPageData = [
         [" "],
@@ -43,27 +48,32 @@ const handleDownload = (pack: PremiumPack) => {
                 checklist.frequency,
                 checklist.role
             ];
-        })
+        }),
+        [" "], 
+        [footerText] 
     ];
 
     const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
     coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
     
-    // Style header
     coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
     
-    // Style table headers
     ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
         if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
     });
 
-    // Style hyperlinks
     const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-    for (let R = 4; R <= rangeLinks.e.r; ++R) { // Start from row 5 (index 4)
+    for (let R = 4; R <= rangeLinks.e.r; ++R) { 
         const address = utils.encode_cell({ r: R, c: 0 });
         if (coverWorksheet[address] && coverWorksheet[address].f) {
              coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
         }
+    }
+    
+    const footerRowIndex = rangeLinks.e.r;
+    const footerCellAddress = `A${footerRowIndex + 1}`;
+    if (coverWorksheet[footerCellAddress]) {
+        coverWorksheet[footerCellAddress].s = footerStyle;
     }
     
     utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
@@ -248,5 +258,7 @@ export default function MasterAccessPage() {
         </div>
     );
 }
+
+    
 
     
