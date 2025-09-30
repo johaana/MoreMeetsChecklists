@@ -66,6 +66,13 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise = false }: { packId: string, paymentId?: string, buttonText?: string, isEnterprise?: boolean }) => {
     
+    React.useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.async = true;
+        document.body.appendChild(script);
+    }, []);
+
     const handleProceedToPayment = () => {
         if (!paymentId) {
             console.error("Payment ID is not defined.");
@@ -281,5 +288,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    

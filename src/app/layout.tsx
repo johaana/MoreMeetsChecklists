@@ -65,7 +65,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
       </head>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
