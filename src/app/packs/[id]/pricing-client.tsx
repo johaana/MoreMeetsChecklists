@@ -68,8 +68,8 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 const PaymentDisclaimerDialog = () => (
     <AlertDialog>
         <AlertDialogTrigger asChild>
-            <Button variant="link" className="text-xs text-muted-foreground h-auto p-0 mt-2 flex items-center gap-1">
-                <AlertCircle className="w-3 h-3" /> Read Before Paying
+             <Button variant="link" className="text-xs text-accent h-auto p-0 mt-2 flex items-center gap-1">
+                <Sparkles className="w-3 h-3" /> Read Before Paying
             </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -206,24 +206,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     {pricingCards}
                 </div>
 
-                {/* Mobile View */}
-                <div className="lg:hidden">
-                    <Carousel
-                        opts={{
-                            align: "start",
-                        }}
-                        className="w-full max-w-sm mx-auto"
-                    >
-                        <CarouselContent>
-                            {React.Children.map(pricingCards, (child, index) => (
-                                <CarouselItem key={index} className="basis-full">
-                                    <div className="p-1">{child}</div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="left-[-1.5rem]" />
-                        <CarouselNext className="right-[-1.5rem]" />
-                    </Carousel>
+                {/* Mobile View - Now a vertical stack */}
+                <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:hidden">
+                   {pricingCards.map((card, index) => (
+                        <div key={index}>{card}</div>
+                    ))}
                 </div>
 
 
