@@ -14,19 +14,19 @@
   {
     "id": "testimonial-elena",
     "description": "Professional headshot of Elena Petrova.",
-    "imageUrl": "https://picsum.photos/seed/testimonial-woman/100/100",
+    "imageUrl": "https://picsum.photos/seed/woman-ceo/100/100",
     "imageHint": "woman ceo"
   },
   {
     "id": "testimonial-marcus",
     "description": "Professional headshot of Marcus Thorne.",
-    "imageUrl": "https://picsum.photos/seed/testimonial-man/100/100",
+    "imageUrl": "https://picsum.photos/seed/male-professional/100/100",
     "imageHint": "male professional"
   },
   {
     "id": "testimonial-priya",
     "description": "Professional headshot of Priya Singh.",
-    "imageUrl": "https://picsum.photos/seed/testimonial-founder/100/100",
+    "imageUrl": "https://picsum.photos/seed/female-founder/100/100",
     "imageHint": "female founder"
   },
   {

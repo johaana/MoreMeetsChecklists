@@ -108,7 +108,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-12">
                         <AccordionTrigger className="text-lg font-semibold">How can I get support if I have an issue?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            You can reach us anytime at `more@moremeets.com` or via the chat link on our website. We are committed to helping you and typically respond within 24 hours.
+                            You can reach us anytime at `more@moremeets.com` or via the <Link href="/contact" className="text-primary underline">contact page</Link> on our website. We are committed to helping you and typically respond within 24 hours.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
@@ -230,7 +230,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                   <div className="space-y-6">
-                    <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl lg:text-6xl font-headline text-white drop-shadow-md">
+                    <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                       The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
@@ -288,7 +288,7 @@ export default function Home() {
                         Loved by Professionals Worldwide
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Join over 5,000+ users who plan and operate with MoreMeets.
+                        Trusted by managers from world-leading organizations.
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -296,7 +296,7 @@ export default function Home() {
                         const image = PlaceHolderImages.find(img => img.id === testimonial.imageId);
                         return (
                          <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
-                             <div className="mb-4 rounded-full overflow-hidden w-24 h-24">
+                             <div className="mb-4 rounded-full overflow-hidden w-24 h-24 border-2 border-primary/10">
                                 {image && (
                                     <div
                                       className="w-full h-full bg-cover bg-center"
