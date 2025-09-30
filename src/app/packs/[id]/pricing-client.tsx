@@ -97,18 +97,7 @@ const PaymentDisclaimerDialog = () => (
 );
 
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
-  const [isClient, setIsClient] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script> </form>`;
-
-  if (!isClient) {
-    return null;
-  }
-
   return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
 
@@ -257,5 +246,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </div>
         </section>
     );
+}
 
     
