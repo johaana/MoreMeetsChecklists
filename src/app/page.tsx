@@ -30,9 +30,9 @@ const FaqSection = () => (
             <div className="max-w-4xl mx-auto">
                  <div className="bg-background/80 p-6 rounded-lg shadow-sm mb-8">
                     <h3 className="text-xl font-bold font-headline text-primary mb-2">Q: There are many SOP platforms out there — how is MoreMeets different?</h3>
-                    <p className="text-muted-foreground">A: Most SOP platforms sell software subscriptions that help you manage or automate SOPs — but they don’t actually provide the SOP checklists themselves. You still have to create the content on your own.</p>
-                    <p className="text-muted-foreground mt-2">MoreMeets is different. We provide ready-to-use, expert-written checklists built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a one-time purchase with lifetime updates.</p>
-                    <p className="text-muted-foreground mt-2 font-medium">In short: we don’t sell software. We sell the actual operational checklists that managers and teams can start using from day one.</p>
+                    <p className="text-muted-foreground">A: Most SOP platforms sell software subscriptions that help you manage or automate SOPs — but they <strong>don’t actually provide the SOP checklists themselves</strong>. You still have to create the content on your own.</p>
+                    <p className="text-muted-foreground mt-2">MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates</strong>.</p>
+                    <p className="text-muted-foreground mt-2 font-medium">In short: <strong>we don’t sell software. We sell the actual operational checklists</strong> that managers and teams can start using from day one.</p>
                 </div>
                 
                 <h3 className="text-2xl font-bold font-headline mb-4 mt-12 text-center">The Details That Matter</h3>
