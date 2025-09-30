@@ -77,14 +77,13 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
 
         const form = formRef.current;
         if (form && !form.querySelector("script")) {
-            form.innerHTML = ''; // Clear previous content
             const script = document.createElement("script");
             script.src = "https://checkout.razorpay.com/v1/payment-button.js";
             script.async = true;
             script.dataset.payment_button_id = paymentId;
             form.appendChild(script);
         }
-    }, [isMounted, paymentId]);
+    }, [isMounted, paymentId, id]);
     
      if (!paymentId) {
         return (
@@ -93,9 +92,24 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
              </Button>
         );
     }
+    
+    const handleProceedToPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      const rzpButton = formRef.current?.querySelector<HTMLInputElement>('input[type="submit"]');
+      if (rzpButton) {
+        rzpButton.click();
+      } else {
+        console.error("Razorpay button not found.");
+        // Optionally show an error to the user
+      }
+    };
+
 
     return (
         <>
+            <div className="hidden">
+                 <form ref={formRef} action={action}></form>
+            </div>
             <AlertDialog>
                 <AlertDialogTrigger asChild>
                     <Button className="w-full h-12 text-lg">{buttonText}</Button>
@@ -106,16 +120,13 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
                          <AlertDialogDescription asChild>
                            <div className="space-y-3 pt-4 text-sm text-muted-foreground">
                             <div><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay Payment ID to download your pack.</div>
-                            
                             <div><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Aditi Imran Khan" (our Founder) due to banking compliance, but rest assured it is our verified account.</div>
                            </div>
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <form ref={formRef} action={action}>
-                            {/* The Razorpay script will inject its button here, which will be visible inside the dialog */}
-                        </form>
+                        <Button onClick={handleProceedToPayment}>Proceed to Payment</Button>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
