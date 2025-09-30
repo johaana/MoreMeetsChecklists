@@ -64,65 +64,37 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: string, action: string, paymentId?: string, buttonText?: string }) => {
+const PaymentButton = ({ action, paymentId, buttonText = "Buy Now" }: { action: string, paymentId?: string, buttonText?: string }) => {
     const formRef = React.useRef<HTMLFormElement>(null);
-    
+
     React.useEffect(() => {
-        if (!paymentId) return;
+        if (!paymentId || !formRef.current) return;
 
         const form = formRef.current;
-        if (form && !form.querySelector("script")) {
-            const script = document.createElement("script");
-            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-            script.async = true;
-            script.dataset.payment_button_id = paymentId;
-            form.appendChild(script);
-        }
+        // Prevent adding multiple scripts
+        if (form.querySelector('script')) return;
+
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.async = true;
+        script.dataset.payment_button_id = paymentId;
+        
+        form.appendChild(script);
+
     }, [paymentId]);
 
-    const handleProceedToPayment = () => {
-      const rzpButton = formRef.current?.querySelector('input[type="submit"]');
-      if (rzpButton instanceof HTMLElement) {
-        rzpButton.click();
-      } else {
-        console.error("Razorpay button not found.");
-      }
-    };
-    
-     if (!paymentId) {
+    if (!paymentId) {
         return (
-             <Button asChild className="w-full font-bold" variant="secondary" size="lg">
-                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
-             </Button>
+            <Button asChild className="w-full h-12 text-lg font-bold" variant="secondary">
+                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">{buttonText}</Link>
+            </Button>
         );
     }
-
+    
     return (
-        <>
-            <AlertDialog>
-                <AlertDialogTrigger asChild>
-                    <Button className="w-full h-12 text-lg">{buttonText}</Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                    <AlertDialogHeader>
-                        <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
-                        <AlertDialogDescription asChild>
-                           <div className="space-y-3 pt-4 text-sm text-muted-foreground">
-                            <div><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay Payment ID to download your pack.</div>
-                            <div><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Aditi Imran Khan" (our Founder) due to banking compliance, but rest assured it is our verified account.</div>
-                           </div>
-                        </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                         <Button onClick={handleProceedToPayment}>Proceed to Payment</Button>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-            </AlertDialog>
-            <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
-                <form ref={formRef} action={action}></form>
-            </div>
-        </>
+      <form ref={formRef} action={action} className="w-full">
+         {/* This form will be replaced by the Razorpay button */}
+      </form>
     );
 };
 
@@ -147,7 +119,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                    <PaymentButton 
-                        id="professional-pack-button" 
                         action={`/thank-you?pack_id=${pack.id}`} 
                         paymentId={professionalPaymentId} 
                      />
@@ -177,7 +148,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                     <PaymentButton 
-                        id="personalized-pack-button" 
                         action={`/thank-you?type=personalized`} 
                         paymentId={personalizedPaymentId}
                     />
@@ -201,7 +171,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
                      <PaymentButton 
-                        id="enterprise-pack-button" 
                         action="#"
                         buttonText="Book a Discovery Call"
                     />
@@ -245,6 +214,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
 
+                 <div className="mt-12 max-w-4xl mx-auto text-center p-4 bg-background border border-dashed rounded-lg">
+                    <div className="flex items-center justify-center gap-2 font-semibold">
+                        <AlertCircle className="w-5 h-5 text-accent"/>
+                        <span>Important Payment Information</span>
+                    </div>
+                     <p className="text-sm text-muted-foreground mt-2">
+                        You'll need the Razorpay Payment ID from your receipt to download your files. Payments are processed via Razorpay and the beneficiary name will appear as **'Aditi Imran Khan' (our Founder)** due to banking compliance. Rest assured it is our verified account.
+                    </p>
+                </div>
+
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
                     <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">This is a one-time payment. No subscriptions. No hidden fees. You get lifetime access to your checklist pack and all future updates, guaranteed.</p>
@@ -276,5 +255,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
