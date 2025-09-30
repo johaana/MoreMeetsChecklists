@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail, Phone } from "lucide-react";
@@ -29,6 +30,7 @@ export function Footer() {
                     <h3 className="font-semibold">Quick Links</h3>
                     <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>All Packages</Link>
                     <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why MoreMeets</Link>
+                    <Link href="/#faq" className="text-muted-foreground hover:text-foreground" prefetch={false}>FAQ</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-sm">

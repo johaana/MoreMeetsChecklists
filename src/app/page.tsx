@@ -68,21 +68,18 @@ const FaqSection = () => (
                             Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
                         </AccordionContent>
                     </AccordionItem>
-
                     <AccordionItem value="item-expertise">
                         <AccordionTrigger className="text-lg font-semibold">What's the expertise behind your checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Our checklists are forged by experience, not theory. They have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
+                           Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
                         </AccordionContent>
                     </AccordionItem>
-
-                     <AccordionItem value="item-ai-alt">
+                    <AccordionItem value="item-ai-alt">
                         <AccordionTrigger className="text-lg font-semibold">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                            Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 200 industry veterans who have managed these high-stakes environments.
                         </AccordionContent>
                     </AccordionItem>
-
                     <AccordionItem value="item-8">
                         <AccordionTrigger className="text-lg font-semibold">Can I share the checklists with my team or across multiple locations?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
@@ -232,6 +229,9 @@ export default function Home() {
             </Link>
             <Link href="#why-us" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
                 Why Us
+            </Link>
+             <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
+                FAQ
             </Link>
              <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground" prefetch={false}>
                 Contact

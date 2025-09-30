@@ -83,7 +83,7 @@ export default function ContactUsPage() {
                      <div className="space-y-8">
                          <div className="space-y-4 text-center">
                             <h2 className="text-2xl font-bold font-headline text-primary">Send a Message</h2>
-                             <p className="text-muted-foreground max-w-md mx-auto">Fill out the form and our team will get back to you within 24 hours.</p>
+                             <p className="text-muted-foreground max-w-md mx-auto">For the fastest response, send your message on WhatsApp.</p>
                          </div>
                         <form className="max-w-xl mx-auto space-y-4" onSubmit={(e) => e.preventDefault()}>
                             <div className="space-y-2">

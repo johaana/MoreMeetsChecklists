@@ -411,5 +411,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
-    
