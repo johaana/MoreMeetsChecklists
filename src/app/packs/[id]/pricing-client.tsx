@@ -99,11 +99,11 @@ const PaymentDisclaimerDialog = () => (
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
   return (
     <form>
-      <script
+      <Script
         src="https://checkout.razorpay.com/v1/payment-button.js"
         data-payment_button_id={paymentId}
         async
-      ></script>
+      ></Script>
     </form>
   );
 };
@@ -188,11 +188,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
-            <Script
-                id="razorpay-checkout-js"
-                src="https://checkout.razorpay.com/v1/payment-button.js"
-                strategy="afterInteractive"
-            />
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
