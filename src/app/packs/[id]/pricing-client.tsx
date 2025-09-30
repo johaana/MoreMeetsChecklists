@@ -66,6 +66,24 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise = false }: { packId: string, paymentId?: string, buttonText?: string, isEnterprise?: boolean }) => {
     
+    const handleProceedToPayment = () => {
+        if (!paymentId) {
+            console.error("Payment ID is not defined.");
+            return;
+        }
+
+        const options = {
+            "key": process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+            "payment_button_id": paymentId,
+            "callback_url": `/thank-you?pack_id=${packId}${packId === 'personalized_pack' ? '&type=personalized' : ''}`,
+            "redirect": true
+        };
+        
+        // @ts-ignore
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+    }
+    
     if (isEnterprise) {
         return (
              <Button asChild className="w-full h-12 text-lg font-bold">
@@ -76,9 +94,6 @@ const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise
         );
     }
     
-    // The raw HTML form code provided by Razorpay
-    const razorpayForm = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script> </form>`;
-
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
@@ -92,23 +107,22 @@ const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise
             <AlertDialogDescription asChild>
                 <div className="space-y-4 pt-4 text-sm text-muted-foreground">
                     <div>
-                        <strong>1. Note Your Payment ID:</strong> After paying on Razorpay, you'll need the Payment ID from your receipt to download your pack on the next page.
+                        <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID. You will need this to download your pack on the next page.
                     </div>
                     <div>
-                        <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance, but rest assured it is our verified account.
+                        <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance.
                     </div>
                      <div>
-                        <strong>3. Proceed to Thank You Page:</strong> After a successful payment, you must manually proceed to the Thank You page to verify and download your pack.
+                        <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify and download your pack.
                     </div>
                 </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-             <div className="flex items-center justify-between w-full">
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                {/* This div will render the actual Razorpay button from the script */}
-                <div dangerouslySetInnerHTML={{ __html: razorpayForm }} />
-            </div>
+             <AlertDialogCancel>Cancel</AlertDialogCancel>
+             <AlertDialogAction onClick={handleProceedToPayment}>
+                Proceed to Payment
+             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -121,8 +135,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPackPrice = 10999;
     const enterprisePriceINR = 49999;
 
-    // Use the correct payment IDs provided by the user
-    const professionalPaymentId = 'pl_RMnYKoxjfq5XCx';
+    const professionalPaymentId = 'pl_RMnYKoxjfq5XCx'; 
     const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
 
     const pricingCards = [
@@ -268,3 +281,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
