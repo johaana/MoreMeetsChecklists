@@ -227,15 +227,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
 
-                 <div className="mt-12 max-w-4xl mx-auto text-center p-4 bg-background border border-dashed rounded-lg">
-                    <div className="flex items-center justify-center gap-2 font-semibold">
-                        <AlertCircle className="w-5 h-5 text-accent"/>
-                        <span>Important Payment Information</span>
-                    </div>
-                     <p className="text-sm text-muted-foreground mt-2">
-                        You'll need the Razorpay Payment ID from your receipt to download your files. Payments are processed via Razorpay and the beneficiary name will appear as **'Aditi Imran Khan' (our Founder)** due to banking compliance. Rest assured it is our verified account.
-                    </p>
-                </div>
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
@@ -268,6 +259,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-
-    
