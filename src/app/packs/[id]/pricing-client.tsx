@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -114,15 +114,16 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={(e) => {
-                            e.preventDefault();
-                            const rzpButton = formRef.current?.querySelector('input[type="submit"]');
-                            if (rzpButton instanceof HTMLElement) {
-                                rzpButton.click();
-                            }
-                        }}>
+                        <Button
+                            onClick={() => {
+                                const rzpButton = formRef.current?.querySelector('input[type="submit"]');
+                                if (rzpButton instanceof HTMLElement) {
+                                    rzpButton.click();
+                                }
+                            }}
+                        >
                             Proceed to Payment
-                        </AlertDialogAction>
+                        </Button>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
@@ -284,3 +285,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+    
