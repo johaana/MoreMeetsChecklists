@@ -64,11 +64,18 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-const PaymentButton = ({ id, action, paymentId }: { id: string, action: string, paymentId?: string }) => {
+const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: string, action: string, paymentId?: string, buttonText?: string }) => {
     const formRef = React.useRef<HTMLFormElement>(null);
+     const [isMounted, setIsMounted] = React.useState(false);
 
     React.useEffect(() => {
-        if (!paymentId) return;
+        // The script can only be loaded on the client side.
+        setIsMounted(true);
+    }, []);
+
+    React.useEffect(() => {
+        if (!isMounted || !paymentId) return;
+
         const form = formRef.current;
         if (form && !form.querySelector("script")) {
             form.innerHTML = ''; // Clear previous content
@@ -78,41 +85,49 @@ const PaymentButton = ({ id, action, paymentId }: { id: string, action: string, 
             script.dataset.payment_button_id = paymentId;
             form.appendChild(script);
         }
-    }, [paymentId]);
+    }, [isMounted, paymentId]);
+    
+     if (!paymentId) {
+        return (
+             <Button asChild className="w-full font-bold" variant="secondary" size="lg">
+                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
+             </Button>
+        );
+    }
 
     return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
-                <div id={`${id}-container`} className="w-full">
-                    {/* The form will be populated by the script */}
-                    <form id={id} action={action} ref={formRef} className="razorpay-form-placeholder">
-                        {/* This button will be replaced by Razorpay's, but we show it as a fallback */}
-                         <Button className="w-full h-12 text-lg">Buy Now</Button>
-                    </form>
-                </div>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Note Your Payment ID</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        After completing your payment, you will be redirected to our download page. To get your checklist pack, you will need to enter the **Payment ID** from your Razorpay confirmation.
-                        <br /><br />
-                        <strong>Please Note:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear differently due to banking compliance, but rest assured it is our verified account.
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => {
-                        const btn = formRef.current?.querySelector('input[type="submit"]');
-                        if (btn instanceof HTMLElement) {
-                            btn.click();
-                        }
-                     }}>
-                        Proceed to Payment
-                    </AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
+        <>
+            <AlertDialog>
+                <AlertDialogTrigger asChild>
+                    <Button className="w-full h-12 text-lg">{buttonText}</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
+                         <AlertDialogDescription className="space-y-3">
+                            <p><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay **Payment ID** to download your pack.</p>
+                            
+                            <p><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Imran Khan" or a similar variation due to banking compliance, but rest assured it is our verified account.</p>
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => {
+                            const rzpButton = formRef.current?.querySelector('input[type="submit"]');
+                            if (rzpButton instanceof HTMLElement) {
+                                rzpButton.click();
+                            }
+                        }}>
+                            Proceed to Payment
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+            {/* This form is hidden and contains the actual Razorpay button, which we trigger programmatically */}
+            <form ref={formRef} className="hidden" action={action}>
+                {/* The Razorpay script will inject its button here */}
+            </form>
+        </>
     );
 };
 
@@ -136,13 +151,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                   <div className="w-full">
-                     <PaymentButton 
-                        id="professional-pack-button-desktop" 
+                   <PaymentButton 
+                        id="professional-pack-button" 
                         action={`/thank-you?pack_id=${pack.id}`} 
                         paymentId={professionalPaymentId} 
                      />
-                   </div>
                 </CardFooter>
             </Card>,
 
@@ -168,13 +181,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <div className="w-full">
-                       <PaymentButton 
-                         id="personalized-pack-button-desktop" 
-                         action={`/thank-you?type=personalized`} 
-                         paymentId={personalizedPaymentId} 
-                       />
-                    </div>
+                    <PaymentButton 
+                        id="personalized-pack-button" 
+                        action={`/thank-you?type=personalized`} 
+                        paymentId={personalizedPaymentId}
+                    />
                 </CardFooter>
             </Card>,
 
@@ -194,9 +205,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                      <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
                 </CardContent>
                 <CardFooter className="p-6 mt-auto">
-                    <Button asChild className="w-full font-bold" variant="secondary" size="lg">
-                      <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book a Discovery Call</Link>
-                    </Button>
+                     <PaymentButton 
+                        id="enterprise-pack-button" 
+                        action="#"
+                        buttonText="Book a Discovery Call"
+                    />
                 </CardFooter>
             </Card>
     ];
@@ -223,58 +236,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         className="w-full max-w-sm mx-auto"
                     >
                         <CarouselContent>
-                             {React.Children.map(pricingCards, (child, index) => {
-                                const card = child as React.ReactElement;
-                                if (card.key === 'professional') {
-                                    return (
-                                        <CarouselItem key={index} className="basis-full">
-                                            <div className="p-1">
-                                                {React.cloneElement(card, {
-                                                     children: [
-                                                        ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
-                                                        <CardFooter key="footer" className="p-6 mt-auto">
-                                                            <div className="w-full">
-                                                                <PaymentButton 
-                                                                    id="professional-pack-button-mobile" 
-                                                                    action={`/thank-you?pack_id=${pack.id}`} 
-                                                                    paymentId={professionalPaymentId} 
-                                                                />
-                                                            </div>
-                                                        </CardFooter>
-                                                    ]
-                                                })}
-                                            </div>
-                                        </CarouselItem>
-                                    );
-                                }
-                                if (card.key === 'personalized') {
-                                     return (
-                                        <CarouselItem key={index} className="basis-full">
-                                            <div className="p-1">
-                                                {React.cloneElement(card, {
-                                                     children: [
-                                                        ...React.Children.toArray(card.props.children).filter((c: any) => c.type !== CardFooter),
-                                                        <CardFooter key="footer" className="p-6 mt-auto">
-                                                            <div className="w-full">
-                                                                <PaymentButton 
-                                                                    id="personalized-pack-button-mobile" 
-                                                                    action={`/thank-you?type=personalized`} 
-                                                                    paymentId={personalizedPaymentId} 
-                                                                />
-                                                            </div>
-                                                        </CardFooter>
-                                                    ]
-                                                })}
-                                            </div>
-                                        </CarouselItem>
-                                    );
-                                }
-                                return (
-                                    <CarouselItem key={index} className="basis-full">
-                                        <div className="p-1">{child}</div>
-                                    </CarouselItem>
-                                );
-                            })}
+                             {React.Children.map(pricingCards, (child, index) => (
+                                <CarouselItem key={index} className="basis-full">
+                                    <div className="p-1">{child}</div>
+                                </CarouselItem>
+                            ))}
                         </CarouselContent>
                          <CarouselPrevious className="left-[-1.5rem]" />
                         <CarouselNext className="right-[-1.5rem]" />
