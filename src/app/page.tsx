@@ -19,7 +19,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
-const breakImage = PlaceHolderImages.find(img => img.id === 'break-reception');
+const breakReceptionImage = PlaceHolderImages.find(img => img.id === 'break-reception');
+const breakEventImage = PlaceHolderImages.find(img => img.id === 'for-event-planners');
+const breakFacilityImage = PlaceHolderImages.find(img => img.id === 'break-facility');
+const breakChauffeurImage = PlaceHolderImages.find(img => img.id === 'break-chauffeur');
+
 
 const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
@@ -350,11 +354,23 @@ export default function Home() {
         </section>
         
         <WhyDetailMatters />
+        
+        {breakEventImage && (
+            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakEventImage.imageUrl})` }}>
+                <div className="container h-32 md:h-48" />
+            </section>
+        )}
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
         </React.Suspense>
         
+        {breakFacilityImage && (
+            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakFacilityImage.imageUrl})` }}>
+                <div className="container h-32 md:h-48" />
+            </section>
+        )}
+
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -395,9 +411,15 @@ export default function Home() {
             </div>
         </section>
 
-        {breakImage && (
-            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakImage.imageUrl})` }}>
-                <div className="container h-48" />
+        {breakReceptionImage && (
+            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakReceptionImage.imageUrl})` }}>
+                <div className="container h-32 md:h-48" />
+            </section>
+        )}
+
+        {breakChauffeurImage && (
+            <section className="w-full py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${breakChauffeurImage.imageUrl})` }}>
+                <div className="container h-32 md:h-48" />
             </section>
         )}
 

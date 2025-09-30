@@ -166,5 +166,17 @@
     "description": "A clean, modern hotel reception area.",
     "imageUrl": "https://i.postimg.cc/XvzLcFSZ/hotel-reception.webp",
     "imageHint": "hotel reception"
+  },
+  {
+    "id": "break-facility",
+    "description": "A modern facility management setting.",
+    "imageUrl": "https://i.postimg.cc/9fnbtT36/facility-management.webp",
+    "imageHint": "facility management"
+  },
+  {
+    "id": "break-chauffeur",
+    "description": "A luxury chauffeur opening a car door.",
+    "imageUrl": "https://i.postimg.cc/8c4tNXwv/ece1655a-4b93-4c83-bf9e-48cf9402b991-burh-chauffers.jpg",
+    "imageHint": "luxury chauffeur"
   }
 ]
