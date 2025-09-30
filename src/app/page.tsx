@@ -129,7 +129,7 @@ function PackList() {
                     ))}
                 </div>
                  <div className="text-center mt-16">
-                    <Button asChild size="lg" variant="outline" className="group">
+                    <Button asChild size="lg" variant="outline" className="group border-primary/50">
                         <Link href="/packs">
                             View All Packages
                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -306,5 +306,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
