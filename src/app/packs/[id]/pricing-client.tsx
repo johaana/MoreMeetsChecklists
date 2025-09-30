@@ -66,8 +66,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise = false }: { packId: string, paymentId?: string, buttonText?: string, isEnterprise?: boolean }) => {
     const paymentUrl = paymentId ? `https://rzp.io/l/${paymentId}` : "https://calendly.com/aditi-imran-khan/30min";
-    const finalActionUrl = isEnterprise ? paymentUrl : `/thank-you?pack_id=${packId}${packId === 'personalized_pack' ? '&type=personalized' : ''}`;
-
+    
     if (isEnterprise) {
          return (
             <Button asChild className="w-full h-12 text-lg font-bold">
@@ -95,7 +94,7 @@ const PaymentButton = ({ packId, paymentId, buttonText = "Buy Now", isEnterprise
                         <strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name will appear as <strong>"Aditi Imran Khan" (our Founder)</strong> due to banking compliance, but rest assured it is our verified account.
                     </div>
                      <div>
-                        <strong>3. Proceed to Thank You Page:</strong> After a successful payment, you must manually proceed to the <Link href={finalActionUrl} className="text-primary underline">Thank You page</Link> to verify and download your pack.
+                        <strong>3. Proceed to Thank You Page:</strong> After a successful payment, you must manually proceed to the Thank You page to verify and download your pack.
                     </div>
                 </div>
             </AlertDialogDescription>
