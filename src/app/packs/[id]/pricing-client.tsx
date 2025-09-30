@@ -114,7 +114,8 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => {
+                        <AlertDialogAction onClick={(e) => {
+                            e.preventDefault();
                             const rzpButton = formRef.current?.querySelector('input[type="submit"]');
                             if (rzpButton instanceof HTMLElement) {
                                 rzpButton.click();
