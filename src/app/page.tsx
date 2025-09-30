@@ -377,6 +377,8 @@ export default function Home() {
         
         <WhyDetailMatters />
 
+        <HowWeAreDifferentSection />
+
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
         </React.Suspense>
@@ -421,8 +423,6 @@ export default function Home() {
             </div>
         </section>
         
-        <HowWeAreDifferentSection />
-
         <FaqSection />
 
       </main>
