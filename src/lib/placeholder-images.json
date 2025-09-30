@@ -178,5 +178,11 @@
     "description": "A luxury chauffeur opening a car door.",
     "imageUrl": "https://i.postimg.cc/8c4tNXwv/ece1655a-4b93-4c83-bf9e-48cf9402b991-burh-chauffers.jpg",
     "imageHint": "luxury chauffeur"
+  },
+  {
+    "id": "break-event",
+    "description": "A well-organized corporate event or conference.",
+    "imageUrl": "https://i.postimg.cc/Gp2zyKfP/event.webp",
+    "imageHint": "corporate event"
   }
 ]

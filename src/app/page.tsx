@@ -20,7 +20,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 const breakReceptionImage = PlaceHolderImages.find(img => img.id === 'break-reception');
-const breakEventImage = PlaceHolderImages.find(img => img.id === 'for-event-planners');
+const breakEventImage = PlaceHolderImages.find(img => img.id === 'break-event');
 const breakFacilityImage = PlaceHolderImages.find(img => img.id === 'break-facility');
 const breakChauffeurImage = PlaceHolderImages.find(img => img.id === 'break-chauffeur');
 
@@ -329,7 +329,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
                   <div className="space-y-6">
-                    <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                    <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                       The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
@@ -356,14 +356,14 @@ export default function Home() {
         <WhyDetailMatters />
         
         {breakEventImage && (
-             <div className="w-full py-12 md:py-16">
+             <div className="w-full py-6 md:py-8">
                 <div className="container">
                     <Image 
                         src={breakEventImage.imageUrl} 
                         alt={breakEventImage.description}
                         width={1200}
                         height={400}
-                        className="w-full h-auto rounded-2xl object-cover"
+                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
                         data-ai-hint={breakEventImage.imageHint}
                     />
                 </div>
@@ -375,14 +375,14 @@ export default function Home() {
         </React.Suspense>
         
         {breakFacilityImage && (
-             <div className="w-full py-12 md:py-16">
+             <div className="w-full py-6 md:py-8">
                 <div className="container">
                     <Image 
                         src={breakFacilityImage.imageUrl} 
                         alt={breakFacilityImage.description}
                         width={1200}
                         height={400}
-                        className="w-full h-auto rounded-2xl object-cover"
+                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
                         data-ai-hint={breakFacilityImage.imageHint}
                     />
                 </div>
@@ -430,14 +430,14 @@ export default function Home() {
         </section>
 
          {breakReceptionImage && (
-             <div className="w-full py-12 md:py-16">
+             <div className="w-full py-6 md:py-8">
                 <div className="container">
                      <Image 
                         src={breakReceptionImage.imageUrl} 
                         alt={breakReceptionImage.description}
                         width={1200}
                         height={400}
-                        className="w-full h-auto rounded-2xl object-cover"
+                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
                         data-ai-hint={breakReceptionImage.imageHint}
                     />
                 </div>
@@ -446,10 +446,23 @@ export default function Home() {
 
         <FaqSection />
 
+         {breakChauffeurImage && (
+             <div className="w-full py-6 md:py-8">
+                <div className="container">
+                     <Image 
+                        src={breakChauffeurImage.imageUrl} 
+                        alt={breakChauffeurImage.description}
+                        width={1200}
+                        height={400}
+                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
+                        data-ai-hint={breakChauffeurImage.imageHint}
+                    />
+                </div>
+            </div>
+        )}
+
       </main>
       <Footer />
     </div>
   );
 }
-
-    
