@@ -35,7 +35,7 @@ const FaqSection = () => (
                     <p className="text-muted-foreground mt-2 font-medium">In short: we don’t sell software. We sell the actual operational checklists that managers and teams can start using from day one.</p>
                 </div>
                 
-                <h3 className="text-2xl font-bold font-headline mb-4 mt-12 text-center">Product, Trust &amp; Support</h3>
+                <h3 className="text-2xl font-bold font-headline mb-4 mt-12 text-center">The Details That Matter</h3>
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
                         <AccordionTrigger className="text-lg font-semibold">How will I receive the checklists after purchase?</AccordionTrigger>
