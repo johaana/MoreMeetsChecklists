@@ -95,9 +95,9 @@ const PaymentButton = ({ id, action, paymentId }: { id: string, action: string, 
                 <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Note Your Payment ID</AlertDialogTitle>
                     <AlertDialogDescription>
-                        After completing your payment, you will be redirected to our download page. To get your checklist pack, you will need to enter the **Payment ID** from your Razorpay confirmation screen or email.
+                        After completing your payment, you will be redirected to our download page. To get your checklist pack, you will need to enter the **Payment ID** from your Razorpay confirmation.
                         <br /><br />
-                        <strong>Example ID:</strong> `pay_xxxxxxxxxxxxxx`
+                        <strong>Please Note:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear differently due to banking compliance, but rest assured it is our verified account.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
