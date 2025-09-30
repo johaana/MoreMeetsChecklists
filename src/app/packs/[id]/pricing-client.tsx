@@ -79,6 +79,15 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
             form.appendChild(script);
         }
     }, [paymentId]);
+
+    const handleProceedToPayment = () => {
+      const rzpButton = formRef.current?.querySelector('input[type="submit"]');
+      if (rzpButton instanceof HTMLElement) {
+        rzpButton.click();
+      } else {
+        console.error("Razorpay button not found.");
+      }
+    };
     
      if (!paymentId) {
         return (
@@ -89,34 +98,31 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
     }
 
     return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
-                <Button className="w-full h-12 text-lg">{buttonText}</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
-                     <AlertDialogDescription asChild>
-                       <div className="space-y-3 pt-4 text-sm text-muted-foreground">
-                        <div><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay Payment ID to download your pack.</div>
-                        <div><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Aditi Imran Khan" (our Founder) due to banking compliance, but rest assured it is our verified account.</div>
-                       </div>
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                     <AlertDialogAction onClick={(e) => {
-                         const rzpButton = formRef.current?.querySelector('input[type="submit"]');
-                         if (rzpButton instanceof HTMLElement) {
-                            e.preventDefault();
-                            rzpButton.click();
-                         }
-                     }}>Proceed to Payment</AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-             {/* This form is now hidden but available in the DOM for the script to find */}
-            <form ref={formRef} action={action} style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}></form>
-        </AlertDialog>
+        <>
+            <AlertDialog>
+                <AlertDialogTrigger asChild>
+                    <Button className="w-full h-12 text-lg">{buttonText}</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
+                        <AlertDialogDescription asChild>
+                           <div className="space-y-3 pt-4 text-sm text-muted-foreground">
+                            <div><strong>1. Note Your Payment ID:</strong> After paying, you'll need the Razorpay Payment ID to download your pack.</div>
+                            <div><strong>2. Beneficiary Name:</strong> Payments are processed securely via Razorpay. The beneficiary name may appear as "Aditi Imran Khan" (our Founder) due to banking compliance, but rest assured it is our verified account.</div>
+                           </div>
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                         <Button onClick={handleProceedToPayment}>Proceed to Payment</Button>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+            <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+                <form ref={formRef} action={action}></form>
+            </div>
+        </>
     );
 };
 
@@ -271,3 +277,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 }
 
+    
