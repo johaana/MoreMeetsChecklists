@@ -4,7 +4,7 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
-import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
@@ -98,21 +98,14 @@ const PaymentDisclaimerDialog = () => (
 
 
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
-    // This component will only render on the client-side, where the form can be created.
-    const [isMounted, setIsMounted] = React.useState(false);
-
-    React.useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    if (!isMounted) {
-        // Render nothing on the server to prevent hydration errors.
-        return null; 
-    }
-
     const formHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${paymentId}" async> </script> </form>`;
     return <div dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
+
+const DynamicRazorpayButton = dynamic(() => Promise.resolve(RazorpayButton), {
+  ssr: false,
+});
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
@@ -134,7 +127,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <RazorpayButton paymentId={professionalPaymentId} />
+                 <DynamicRazorpayButton paymentId={professionalPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -161,7 +154,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <RazorpayButton paymentId={personalizedPaymentId} />
+                 <DynamicRazorpayButton paymentId={personalizedPaymentId} />
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
