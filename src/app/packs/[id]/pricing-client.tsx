@@ -95,19 +95,19 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
     
     const handleProceedToPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      const rzpButton = formRef.current?.querySelector<HTMLInputElement>('input[type="submit"]');
-      if (rzpButton) {
+      const rzpButton = formRef.current?.querySelector('.razorpay-payment-button');
+      if (rzpButton instanceof HTMLElement) {
         rzpButton.click();
       } else {
         console.error("Razorpay button not found.");
-        // Optionally show an error to the user
+        alert("Could not initiate payment. Please try again or contact support.");
       }
     };
 
 
     return (
         <>
-            <div className="hidden">
+            <div style={{ position: 'absolute', left: '-9999px' }}>
                  <form ref={formRef} action={action}></form>
             </div>
             <AlertDialog>
@@ -284,6 +284,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-    
-
-    
