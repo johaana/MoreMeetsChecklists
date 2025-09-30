@@ -19,10 +19,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
-const breakReceptionImage = PlaceHolderImages.find(img => img.id === 'break-reception');
-const breakEventImage = PlaceHolderImages.find(img => img.id === 'break-event');
-const breakFacilityImage = PlaceHolderImages.find(img => img.id === 'break-facility');
-const breakChauffeurImage = PlaceHolderImages.find(img => img.id === 'break-chauffeur');
 
 
 const FaqSection = () => (
@@ -354,41 +350,11 @@ export default function Home() {
         </section>
         
         <WhyDetailMatters />
-        
-        {breakEventImage && (
-             <div className="w-full py-6 md:py-8">
-                <div className="container">
-                    <Image 
-                        src={breakEventImage.imageUrl} 
-                        alt={breakEventImage.description}
-                        width={1200}
-                        height={400}
-                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
-                        data-ai-hint={breakEventImage.imageHint}
-                    />
-                </div>
-            </div>
-        )}
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
         </React.Suspense>
         
-        {breakFacilityImage && (
-             <div className="w-full py-6 md:py-8">
-                <div className="container">
-                    <Image 
-                        src={breakFacilityImage.imageUrl} 
-                        alt={breakFacilityImage.description}
-                        width={1200}
-                        height={400}
-                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
-                        data-ai-hint={breakFacilityImage.imageHint}
-                    />
-                </div>
-            </div>
-        )}
-
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -429,37 +395,7 @@ export default function Home() {
             </div>
         </section>
 
-         {breakReceptionImage && (
-             <div className="w-full py-6 md:py-8">
-                <div className="container">
-                     <Image 
-                        src={breakReceptionImage.imageUrl} 
-                        alt={breakReceptionImage.description}
-                        width={1200}
-                        height={400}
-                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
-                        data-ai-hint={breakReceptionImage.imageHint}
-                    />
-                </div>
-            </div>
-        )}
-
         <FaqSection />
-
-         {breakChauffeurImage && (
-             <div className="w-full py-6 md:py-8">
-                <div className="container">
-                     <Image 
-                        src={breakChauffeurImage.imageUrl} 
-                        alt={breakChauffeurImage.description}
-                        width={1200}
-                        height={400}
-                        className="w-full h-auto max-h-[250px] rounded-2xl object-cover"
-                        data-ai-hint={breakChauffeurImage.imageHint}
-                    />
-                </div>
-            </div>
-        )}
 
       </main>
       <Footer />
