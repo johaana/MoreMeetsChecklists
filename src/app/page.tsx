@@ -27,42 +27,90 @@ const FaqSection = () => (
                     Everything you need to know before you buy.
                 </p>
             </div>
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+                 <div className="bg-background/80 p-6 rounded-lg shadow-sm mb-8">
+                    <h3 className="text-xl font-bold font-headline text-primary mb-2">Q: There are many SOP platforms out there — how is MoreMeets different?</h3>
+                    <p className="text-muted-foreground">A: Most SOP platforms sell software subscriptions that help you manage or automate SOPs — but they don’t actually provide the SOP checklists themselves. You still have to create the content on your own.</p>
+                    <p className="text-muted-foreground mt-2">MoreMeets is different. We provide ready-to-use, expert-written checklists built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a one-time purchase with lifetime updates.</p>
+                    <p className="text-muted-foreground mt-2 font-medium">In short: we don’t sell software. We sell the actual operational checklists that managers and teams can start using from day one.</p>
+                </div>
+                
+                <h3 className="text-2xl font-bold font-headline mb-4 mt-12 text-center">Product, Trust &amp; Support</h3>
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
-                        <AccordionTrigger className="text-lg font-semibold">What format do the checklists come in?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold">How will I receive the checklists after purchase?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            All our checklist packs are delivered as professionally formatted Microsoft Excel files (.xlsx). This makes them universally accessible, easy to use, and fully customizable to fit your specific operational needs.
+                            Instantly. You’ll get access to download the Excel file directly from the confirmation page after payment. A copy of the download link is also sent to your email for safekeeping.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger className="text-lg font-semibold">Is this a one-time purchase?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold">Are these checklists editable?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes, absolutely. Every purchase is a one-time payment that grants you lifetime access to the checklist pack and all future updates. There are no recurring subscriptions, hidden fees, or user limits. Buy it once, own it forever.
+                            Yes, completely. All checklists come in a standard Microsoft Excel file (.xlsx), so you can fully customize them to fit your organization’s specific needs, branding, and workflow.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-3">
-                        <AccordionTrigger className="text-lg font-semibold">How do I receive the files after purchase?</AccordionTrigger>
+                     <AccordionItem value="item-3">
+                        <AccordionTrigger className="text-lg font-semibold">Do I need any special software to use these?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Instantly. Once your payment is successfully processed, you will be able to download the files immediately from the purchase confirmation page.
+                            No. The files open in Microsoft Excel, Google Sheets, Apple Numbers, or any compatible spreadsheet software.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-4">
-                        <AccordionTrigger className="text-lg font-semibold">Can I edit and customize the checklists?</AccordionTrigger>
+                     <AccordionItem value="item-4">
+                        <AccordionTrigger className="text-lg font-semibold">Will I get future updates?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes. They are fully editable. You can add, remove, or modify any tasks, change department names, and tailor the entire pack to match your organization's unique workflow and branding. We also offer a personalization service for an additional fee.
+                            Absolutely. Each purchase includes lifetime updates. Whenever we improve or add new SOPs to a pack you've purchased, you’ll receive the updated version for free.
                         </AccordionContent>
                     </AccordionItem>
+
                      <AccordionItem value="item-5">
-                        <AccordionTrigger className="text-lg font-semibold">Who creates these checklists?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold">Is my payment secure?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                           Our checklists are forged by experience, not theory. Our complete library is meticulously curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers, and heads of security from world-leading organizations.
+                            Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-6">
-                        <AccordionTrigger className="text-lg font-semibold">Do you have checklists for ESG or sustainability?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold">Why does the payment page sometimes show a personal or alternate name?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes. Many of our packs, like the <strong>Facility Management</strong> and <strong>Manufacturing</strong> checklists, contain specific SOPs for energy efficiency, waste reduction, and responsible sourcing. We also have checklists focused on social aspects like labor law compliance and ethical vendor management to help you meet your ESG goals.
+                            This is normal. Payments are processed securely via Razorpay, but depending on your UPI app or bank, the beneficiary name may sometimes appear differently due to banking regulations. Rest assured, it is our verified account and your purchase is safe.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-7">
+                        <AccordionTrigger className="text-lg font-semibold">Who creates these checklists?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                          Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals, including veteran general managers, compliance officers (NABH, JCI, ISO), and heads of security from world-leading organizations. They are forged by experience, not theory.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-8">
+                        <AccordionTrigger className="text-lg font-semibold">Can I share the checklists with my team or across multiple locations?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes. Your one-time purchase grants you a license to use and replicate the checklists across all teams, branches, and locations within your single organization.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-9">
+                        <AccordionTrigger className="text-lg font-semibold">Can I use these for client projects if I am a consultant?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes, consultants often use our packs as a foundational framework for their client engagements. However, the license does not permit reselling, rebranding for resale, or public redistribution of the files.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                     <AccordionItem value="item-10">
+                        <AccordionTrigger className="text-lg font-semibold">What is your refund policy?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                           Due to the nature of instantly downloadable digital products, all sales are final and we do not offer refunds. However, if you face any technical issues with accessing or downloading your files, our support team will resolve it for you immediately.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-11">
+                        <AccordionTrigger className="text-lg font-semibold">Can I request a custom checklist for my business?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Absolutely. We provide custom checklist and SOP creation services. Please <a href="https://calendly.com/aditi-imran-khan/30min" target="_blank" rel="noopener noreferrer" className="text-primary underline">contact us with your requirements</a>, and our experts will tailor a package specifically for you.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-12">
+                        <AccordionTrigger className="text-lg font-semibold">How can I get support if I have an issue?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            You can reach us anytime at `more@moremeets.com` or via the chat link on our website. We are committed to helping you and typically respond within 24 hours.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
