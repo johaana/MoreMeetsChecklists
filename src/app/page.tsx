@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -31,16 +31,8 @@ const FaqSection = () => (
                 </p>
             </div>
             <div className="max-w-4xl mx-auto">
-                 <div className="bg-background/80 p-6 rounded-lg shadow-sm mb-8">
-                    <h3 className="text-xl font-bold font-headline text-primary mb-2">Q: There are many SOP platforms out there — how is MoreMeets different?</h3>
-                    <p className="text-muted-foreground">A: Most SOP platforms sell software subscriptions that help you manage or automate SOPs — but they <strong>don’t actually provide the SOP checklists themselves</strong>. You still have to create the content on your own.</p>
-                    <p className="text-muted-foreground mt-2">MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates</strong>.</p>
-                    <p className="text-muted-foreground mt-2 font-medium">In short: <strong>we don’t sell software. We sell the actual operational checklists</strong> that managers and teams can start using from day one.</p>
-                </div>
-                
-                <h3 className="text-2xl font-bold font-headline mb-4 mt-12 text-center">The Details That Matter</h3>
                 <Accordion type="single" collapsible className="w-full">
-                     <AccordionItem value="item-expertise">
+                    <AccordionItem value="item-expertise">
                         <AccordionTrigger className="text-lg font-semibold">What's the expertise behind your checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                            Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
@@ -193,26 +185,60 @@ function PackList() {
 const WhyDetailMatters = () => {
     const points = [
         {
-            icon: <HandCoins className="w-8 h-8 text-accent" />,
-            title: "Stop Profit Leaks",
-            description: "A little wasted inventory here, a minor service complaint there. Individually, they seem small. Together, they drain your profitability. Our checklists are designed to find and plug these leaks, driving efficiency that shows up on your bottom line.",
-            imageUrl: "https://i.postimg.cc/YS98WRVB/operational-excellence-colleagues-collaborating-at-laptop.webp",
-            imageHint: "professionals collaborating"
+            icon: <AlertTriangle />,
+            title: "One Missed Step Can Cost Everything",
+            description: "A forgotten safety check, an uncalibrated instrument, an insecure access point. These small mistakes lead to compliance fines, reputational damage, and lost revenue. Our checklists are your defense.",
         },
         {
-            icon: <Shield className="w-8 h-8 text-accent" />,
-            title: "Prevent Compliance Nightmares",
-            description: "An auditor's visit shouldn't be a panic attack. Our checklists provide a clear, documented trail of diligence for safety, hygiene, and legal standards, turning inspections into an opportunity to showcase your excellence.",
-            imageUrl: "https://i.postimg.cc/43SPbtkN/facility-management.jpg",
-            imageHint: "facility management"
+            icon: <Users />,
+            title: "Your Team Can't Read Your Mind",
+            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality. Our checklists translate your standards into actionable steps for everyone.",
         },
         {
-            icon: <TrendingUp className="w-8 h-8 text-accent" />,
-            title: "Deliver Consistent Quality",
-            description: "Is every customer getting your 5-star treatment, or is it a gamble? Our SOPs standardize your service, ensuring every guest touchpoint is executed to the same high standard, turning quality from an accident into a reliable promise.",
-            imageUrl: "https://i.postimg.cc/xT3QdjMc/customer-service.jpg",
-            imageHint: "customer service"
-        }
+            icon: <Shield />,
+            title: "An Auditor's Visit Shouldn't Be a Panic Attack",
+            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside and out, providing a clear, documented trail of diligence.",
+        },
+        {
+            icon: <GitBranch />,
+            title: "Are You Operating on Expertise or Guesswork?",
+            description: "Running a complex operation on memory is a recipe for decline. Our checklists codify the hard-won wisdom of over 200 industry experts, making best practices your standard practice.",
+        },
+        {
+            icon: <HandCoins />,
+            title: "It's the Small Leaks That Sink the Ship",
+            description: "A little wasted inventory, a minor service complaint—together, they drain profitability. Our checklists are designed to find and plug these leaks, driving efficiency that shows up on your bottom line.",
+        },
+        {
+            icon: <Award />,
+            title: "Don't Let Your Business Rely on One Hero",
+            description: "What happens if your one indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone on your team can operate at a high standard.",
+        },
+        {
+            icon: <Briefcase />,
+            title: "A Flawless Launch or a Public Failure?",
+            description: "For any grand opening or product launch, success hinges on hundreds of details. Our checklists are the playbook for flawless execution, ensuring your big day is remembered for the right reasons.",
+        },
+        {
+            icon: <Star />,
+            title: "Is Every Guest Getting 5-Star Treatment?",
+            description: "Inconsistency is the enemy of a great reputation. Our hospitality checklists ensure every guest touchpoint is executed to the same high standard, every time.",
+        },
+        {
+            icon: <HardHat />,
+            title: "The Most Dangerous Risks Are Hiding in Plain Sight",
+            description: "Daily repetition can lead to complacency. Our checklists force a fresh, systematic review of your environment, catching safety blind spots before they become tragic accidents.",
+        },
+        {
+            icon: <BarChart />,
+            title: "Stop Managing Problems. Start Building Profit.",
+            description: "Every minute your team spends fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your best people to focus on innovation.",
+        },
+        {
+            icon: <FileText />,
+            title: "You Know You Need SOPs. But Where Do You Start?",
+            description: "The task of creating SOPs from scratch is daunting. We've done the work for you. Our checklists provide an expert-built foundation that is 90% of the way there.",
+        },
     ];
 
     return (
@@ -220,35 +246,26 @@ const WhyDetailMatters = () => {
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        The Smallest Details Have the Biggest Impact
+                        Why Every Detail Matters
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        In any professional operation, the difference between success and failure lies in the details. Here’s why it matters.
+                    <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {points.map((point, index) => (
-                        <div key={index} className="grid grid-rows-[auto_1fr] gap-6 items-start">
-                             <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                                <Image
-                                    src={point.imageUrl}
-                                    alt={point.title}
-                                    fill
-                                    className="object-cover"
-                                    data-ai-hint={point.imageHint}
-                                />
-                            </div>
-                            <div className="flex flex-col">
-                                <div className="flex items-center gap-4 mb-3">
-                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-background border text-primary">
-                                        {point.icon}
-                                    </div>
-                                    <h3 className="text-xl font-bold font-headline">{point.title}</h3>
+                         <Card key={index} className="flex flex-col">
+                            <CardHeader className="flex flex-row items-center gap-4">
+                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0">
+                                    {React.cloneElement(point.icon, { className: "w-6 h-6" })}
                                 </div>
-                                <p className="text-muted-foreground">{point.description}</p>
-                            </div>
-                        </div>
+                                <CardTitle className="text-lg">{point.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm text-muted-foreground">{point.description}</p>
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
             </div>
@@ -319,11 +336,14 @@ export default function Home() {
                          <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
                              <div className="mb-4 rounded-full overflow-hidden w-24 h-24 border-2 border-primary/10">
                                 {image && (
-                                    <div
-                                      className="w-full h-full bg-cover bg-center"
-                                      style={{ backgroundImage: `url(${image.imageUrl})` }}
-                                      data-ai-hint={image.imageHint}
-                                    ></div>
+                                    <Image
+                                        src={image.imageUrl}
+                                        alt={testimonial.name}
+                                        width={96}
+                                        height={96}
+                                        className="w-full h-full object-cover"
+                                        data-ai-hint={image.imageHint}
+                                    />
                                 )}
                              </div>
                             <CardContent className="p-0">
@@ -346,5 +366,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
