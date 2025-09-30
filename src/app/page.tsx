@@ -166,7 +166,7 @@ export default function Home() {
     {
       title: "Forged by Experience",
       description: "Our packs are built on the codified knowledge of over 200 industry veterans, translating real-world experience into checklists you can use today.",
-      imageId: "showcase-corporate-hospitality"
+      imageId: "showcase-product-launch-speaker"
     }
   ];
 
@@ -306,5 +306,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
