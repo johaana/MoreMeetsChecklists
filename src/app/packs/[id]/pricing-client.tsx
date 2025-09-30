@@ -66,14 +66,10 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: string, action: string, paymentId?: string, buttonText?: string }) => {
     const formRef = React.useRef<HTMLFormElement>(null);
-    const [isMounted, setIsMounted] = React.useState(false);
+    const [showPaymentDialog, setShowPaymentDialog] = React.useState(false);
 
     React.useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    React.useEffect(() => {
-        if (!isMounted || !paymentId) return;
+        if (!showPaymentDialog || !paymentId) return;
 
         const form = formRef.current;
         if (form && !form.querySelector("script")) {
@@ -83,7 +79,7 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
             script.dataset.payment_button_id = paymentId;
             form.appendChild(script);
         }
-    }, [isMounted, paymentId, id]);
+    }, [showPaymentDialog, paymentId]);
     
      if (!paymentId) {
         return (
@@ -92,28 +88,11 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
              </Button>
         );
     }
-    
-    const handleProceedToPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      const rzpButton = formRef.current?.querySelector('.razorpay-payment-button');
-      if (rzpButton instanceof HTMLElement) {
-        rzpButton.click();
-      } else {
-        console.error("Razorpay button not found.");
-        alert("Could not initiate payment. Please try again or contact support.");
-      }
-    };
-
 
     return (
         <>
-            <div style={{ position: 'absolute', left: '-9999px' }}>
-                 <form ref={formRef} action={action}></form>
-            </div>
-            <AlertDialog>
-                <AlertDialogTrigger asChild>
-                    <Button className="w-full h-12 text-lg">{buttonText}</Button>
-                </AlertDialogTrigger>
+            <Button className="w-full h-12 text-lg" onClick={() => setShowPaymentDialog(true)}>{buttonText}</Button>
+            <AlertDialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent"/> Important: Before You Pay</AlertDialogTitle>
@@ -126,7 +105,7 @@ const PaymentButton = ({ id, action, paymentId, buttonText = "Buy Now" }: { id: 
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <Button onClick={handleProceedToPayment}>Proceed to Payment</Button>
+                        <form ref={formRef} action={action}></form>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
@@ -284,3 +263,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
