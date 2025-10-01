@@ -3,7 +3,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Check, FileCheck2, Sparkles } from 'lucide-react';
+import { ArrowLeft, Check, FileCheck2, Sparkles, AlertTriangle } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Footer } from '@/components/layout/footer';
@@ -87,7 +87,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
 };
 
 const RazorpayButton = ({ paymentId, price }: { paymentId: string, price: number }) => {
-    const ref = React.useRef<HTMLFormElement>(null);
+    const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
         if (ref.current && ref.current.children.length === 0) {
@@ -96,32 +96,38 @@ const RazorpayButton = ({ paymentId, price }: { paymentId: string, price: number
             script.async = true;
             script.setAttribute('data-payment_button_id', paymentId);
             
-            ref.current.appendChild(script);
+            const form = document.createElement('form');
+            form.appendChild(script);
+
+            ref.current.appendChild(form);
         }
     }, [paymentId]);
 
     const buttonContainer = (
-        <div className="w-full">
-             <div ref={ref}></div>
-        </div>
+         <div ref={ref} className="w-full"></div>
     );
     
     // The Razorpay script creates a button, but we want our own styled button.
     // So we render the Razorpay button off-screen and trigger it from our button.
-    // This is a common workaround for custom styling.
     return (
-        <div className="w-full">
+        <div className="w-full relative">
             <Button 
                 onClick={() => {
                     const rzpButton = ref.current?.querySelector('button');
-                    rzpButton?.click();
+                    if (rzpButton) {
+                        rzpButton.click();
+                    } else {
+                        // Fallback in case the button isn't rendered yet
+                        const form = ref.current?.querySelector('form');
+                        form?.submit();
+                    }
                 }}
                 className="w-full font-bold group flex-col h-auto py-3 text-lg"
             >
                 <span>Own It Forever</span>
                 <span className="text-2xl font-bold">₹{price}</span>
             </Button>
-            <div className="absolute opacity-0 pointer-events-none">
+            <div className="absolute opacity-0 pointer-events-none -z-10 w-full top-0 left-0">
                  {buttonContainer}
             </div>
         </div>
@@ -212,9 +218,25 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="container">
             <UpsellBanner packId={checklist.relatedPackId} />
         </div>
+        
+        <div className="container max-w-4xl mx-auto mt-16">
+            <div className="bg-destructive/10 border-l-4 border-destructive text-destructive-foreground p-6 rounded-r-lg">
+                 <div className="flex items-start gap-4">
+                    <AlertTriangle className="w-8 h-8 text-destructive mt-1 shrink-0"/>
+                    <div>
+                        <h3 className="font-bold text-lg">Important Disclaimer</h3>
+                        <p className="text-sm opacity-90 mt-1">
+                            The documents and checklists provided by MoreMeets are intended for informational and guidance purposes only. They are not a substitute for professional legal, financial, medical, or safety advice. You should consult with a qualified and certified professional for your specific needs to ensure compliance with all applicable laws and regulations. Use of these materials is at your own risk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
       </main>
        <Footer />
     </div>
   );
 }
+
+    
