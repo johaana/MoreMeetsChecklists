@@ -66,6 +66,21 @@ const FaqSection = () => (
                            Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
                         </AccordionContent>
                     </AccordionItem>
+                    <AccordionItem value="item-free-comparison">
+                        <AccordionTrigger className="text-lg font-semibold">How are your checklists different from the free templates I find online?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground space-y-4">
+                           <p>That's a crucial question. Free templates are typically simple lists of what to check, designed as lead magnets for expensive software. They give you a starting point, but the hard work of building an operational system is still on you.</p>
+                           <p className="font-semibold text-foreground">MoreMeets is different. We sell the system itself.</p>
+                           <p>Our blueprints are not just lists; they are complete, expert-built operational plans in an editable Excel format. Each task is structured with the critical details free templates miss:</p>
+                           <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Who is responsible</strong> (Role & Department)</li>
+                                <li><strong>When it needs to be done</strong> (Frequency)</li>
+                                <li><strong>How important it is</strong> (Priority & Risk Level)</li>
+                                <li><strong>How to prove it's done</strong> (Proof & Audit Trail)</li>
+                           </ul>
+                            <p>In short, free templates ask the questions. Our blueprints give your team the actionable answers. You're not buying a document; you're buying a ready-to-deploy system that saves you weeks of work and gives you the confidence that every detail is covered from day one.</p>
+                        </AccordionContent>
+                    </AccordionItem>
                     <AccordionItem value="item-ai-alt">
                         <AccordionTrigger className="text-lg font-semibold">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
@@ -430,3 +445,4 @@ export default function Home() {
     </div>
   );
 }
+
