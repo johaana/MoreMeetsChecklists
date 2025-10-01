@@ -51,7 +51,11 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'KO-05', description: 'Check sanitizer concentration using test strips and log the result.', priority: 'High', riskLevel: 'High', proof: 'Sanitizer Log', location: 'Kitchen' },
             { id: 'KO-06', description: 'Visually inspect for any signs of pests (droppings, etc.) and report if found.', priority: 'High', riskLevel: 'High', proof: 'Pest Log', location: 'Kitchen' },
             { id: 'KO-07', description: 'Ensure all cooking equipment is clean and in working order.', priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
-            { id: 'KO-08', description: 'Check that the dishwashing machine is reaching correct sanitation temperatures.', priority: 'High', riskLevel: 'High', proof: 'Temp Log', location: 'Dishwashing Area' }
+            { id: 'KO-08', description: 'Check that the dishwashing machine is reaching correct sanitation temperatures.', priority: 'High', riskLevel: 'High', proof: 'Temp Log', location: 'Dishwashing Area' },
+            { id: 'KO-09', description: 'Verify proper FIFO (First-In, First-Out) rotation in all storage areas.', priority: 'High', riskLevel: 'Medium', proof: 'Date Check', location: 'Walk-in/Pantry' },
+            { id: 'KO-10', description: 'Confirm all previously prepared food items are properly labeled with date and time.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Walk-in' },
+            { id: 'KO-11', description: 'Check that the 3-compartment sink is set up correctly (wash, rinse, sanitize).', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dishwashing Area' },
+            { id: 'KO-12', description: 'Confirm with all kitchen staff that they are fit for duty (no illness).', priority: 'High', riskLevel: 'High', proof: 'Staff Confirmation Log', location: 'Kitchen' }
         ]
     },
     {
@@ -83,13 +87,19 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'SS-SI-01', description: '[Sign In] Patient has confirmed identity, site, procedure, and consent.', priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Anesthesia Area' },
             { id: 'SS-SI-02', description: '[Sign In] Site is marked.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Anesthesia Area' },
             { id: 'SS-SI-03', description: '[Sign In] Anesthesia safety check completed.', priority: 'High', riskLevel: 'High', proof: 'Machine Checklist', location: 'Anesthesia Area' },
+            { id: 'SS-SI-04', description: '[Sign In] Pulse oximeter is on the patient and functioning.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Anesthesia Area' },
+            { id: 'SS-SI-05', description: '[Sign In] Does the patient have a known allergy?', priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Anesthesia Area' },
+            { id: 'SS-SI-06', description: '[Sign In] Difficult airway or aspiration risk?', priority: 'High', riskLevel: 'High', proof: 'Discussion', location: 'Anesthesia Area' },
             { id: 'SS-TO-01', description: '[Time Out] All team members have introduced themselves by name and role.', priority: 'High', riskLevel: 'Medium', proof: 'Verbal Confirmation', location: 'Operating Room' },
             { id: 'SS-TO-02', description: '[Time Out] Surgeon, Anesthesia Professional, and Nurse verbally confirm patient, site, and procedure.', priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Operating Room' },
             { id: 'SS-TO-03', description: '[Time Out] Anticipated critical events (blood loss, duration, etc.) are discussed.', priority: 'High', riskLevel: 'High', proof: 'Discussion', location: 'Operating Room' },
+            { id: 'SS-TO-04', description: '[Time Out] Has antibiotic prophylaxis been given within the last 60 minutes?', priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Operating Room' },
+            { id: 'SS-TO-05', description: '[Time Out] Is essential imaging displayed?', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Operating Room' },
             { id: 'SS-SO-01', description: '[Sign Out] Nurse verbally confirms the name of the procedure.', priority: 'High', riskLevel: 'Medium', proof: 'Verbal Confirmation', location: 'Operating Room' },
             { id: 'SS-SO-02', description: '[Sign Out] Completion of instrument, sponge, and needle counts is confirmed.', priority: 'High', riskLevel: 'High', proof: 'Count Sheet', location: 'Operating Room' },
             { id: 'SS-SO-03', description: '[Sign Out] Specimen is correctly labeled (including patient name).', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Operating Room' },
-            { id: 'SS-SO-04', description: '[Sign Out] Key concerns for recovery and management of this patient are reviewed.', priority: 'High', riskLevel: 'Medium', proof: 'Discussion', location: 'Operating Room' }
+            { id: 'SS-SO-04', description: '[Sign Out] Are there any equipment problems to be addressed?', priority: 'Medium', riskLevel: 'Medium', proof: 'Discussion', location: 'Operating Room' },
+            { id: 'SS-SO-05', description: '[Sign Out] Key concerns for recovery and management of this patient are reviewed.', priority: 'High', riskLevel: 'Medium', proof: 'Discussion', location: 'Operating Room' }
         ]
     },
     {
@@ -118,15 +128,18 @@ export const individualChecklists: IndividualChecklist[] = [
             }
         ],
         tasks: [
-            { id: 'LOTO-01', description: 'Identify all energy sources for the machine (electrical, pneumatic, hydraulic).', priority: 'High', riskLevel: 'High', proof: 'Energy Source List', location: 'Machine' },
-            { id: 'LOTO-02', description: 'Inform all affected employees that a LOTO procedure is being initiated.', priority: 'High', riskLevel: 'Medium', proof: 'Verbal Confirmation', location: 'Area' },
-            { id: 'LOTO-03', description: 'Shut down the machine using the normal stopping procedure.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Machine' },
-            { id: 'LOTO-04', description: 'Isolate machine from its energy sources.', priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Energy Source' },
-            { id: 'LOTO-05', description: 'Apply lock and tag to the energy isolating device.', priority: 'High', riskLevel: 'High', proof: 'Photo', location: 'Energy Source' },
-            { id: 'LOTO-06', description: 'Dissipate any stored or residual energy (e.g., bleed pneumatic lines).', priority: 'High', riskLevel: 'High', proof: 'Verification', location: 'Machine' },
-            { id: 'LOTO-07', description: 'Attempt to start the machine to verify that isolation is effective.', priority: 'High', riskLevel: 'High', proof: 'Test Attempt Log', location: 'Machine' },
-            { id: 'LOTO-08', description: 'After service, ensure all tools are removed and guards are replaced.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Machine' },
-            { id: 'LOTO-09', description: 'Only the employee who placed the lock is authorized to remove it.', priority: 'High', riskLevel: 'High', proof: 'Policy Adherence', location: 'Energy Source' }
+            { id: 'LOTO-01', description: 'Conduct a pre-job briefing to discuss the scope of work and energy sources.', priority: 'High', riskLevel: 'High', proof: 'Briefing Sign-off', location: 'Machine' },
+            { id: 'LOTO-02', description: 'Identify all energy sources for the machine (electrical, pneumatic, hydraulic).', priority: 'High', riskLevel: 'High', proof: 'Energy Source List', location: 'Machine' },
+            { id: 'LOTO-03', description: 'Inform all affected employees that a LOTO procedure is being initiated.', priority: 'High', riskLevel: 'Medium', proof: 'Verbal Confirmation', location: 'Area' },
+            { id: 'LOTO-04', description: 'Shut down the machine using the normal stopping procedure.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Machine' },
+            { id: 'LOTO-05', description: 'Isolate machine from its energy sources.', priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Energy Source' },
+            { id: 'LOTO-06', description: 'Apply lock and tag to the energy isolating device.', priority: 'High', riskLevel: 'High', proof: 'Photo', location: 'Energy Source' },
+            { id: 'LOTO-07', description: 'For group LOTO, ensure every worker applies their personal lock.', priority: 'High', riskLevel: 'High', proof: 'Lock Count Verification', location: 'Lockbox' },
+            { id: 'LOTO-08', description: 'Dissipate any stored or residual energy (e.g., bleed pneumatic lines).', priority: 'High', riskLevel: 'High', proof: 'Verification', location: 'Machine' },
+            { id: 'LOTO-09', description: 'Attempt to start the machine to verify that isolation is effective.', priority: 'High', riskLevel: 'High', proof: 'Test Attempt Log', location: 'Machine' },
+            { id: 'LOTO-10', description: 'After service, ensure all tools are removed and guards are replaced.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Machine' },
+            { id: 'LOTO-11', description: 'Inspect the area and account for all personnel.', priority: 'High', riskLevel: 'Medium', proof: 'Headcount', location: 'Area' },
+            { id: 'LOTO-12', description: 'Only the employee who placed the lock is authorized to remove it.', priority: 'High', riskLevel: 'High', proof: 'Policy Adherence', location: 'Energy Source' }
         ]
     },
     {
@@ -162,7 +175,11 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'LP-05', description: 'Ensure back doors and receiving areas are kept locked and secure at all times.', priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Back of House' },
             { id: 'LP-06', description: 'Verify that staff are greeting customers, a known theft deterrent.', priority: 'Medium', riskLevel: 'Low', proof: 'Observation', location: 'Sales Floor' },
             { id: 'LP-07', description: 'Review daily POS void/refund reports for any unusual activity.', priority: 'High', riskLevel: 'Medium', proof: 'Report Audit', location: 'Back Office' },
-            { id: 'LP-08', description: 'Conduct random staff bag checks as per company policy.', priority: 'Medium', riskLevel: 'Medium', proof: 'Bag Check Log', location: 'Staff Exit' }
+            { id: 'LP-08', description: 'Conduct random staff bag checks as per company policy.', priority: 'Medium', riskLevel: 'Medium', proof: 'Bag Check Log', location: 'Staff Exit' },
+            { id: 'LP-09', description: 'Ensure cash registers are locked when not in use.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Cash Desk' },
+            { id: 'LP-10', description: 'Audit high-value item count against sales records daily.', priority: 'High', riskLevel: 'High', proof: 'Count Sheet', location: 'Sales Floor/Back Office' },
+            { id: 'LP-11', description: 'Monitor trash removal to prevent merchandise concealment.', priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Waste Disposal Area' },
+            { id: 'LP-12', description: 'Change locks and access codes after employee terminations.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'All Access Points' }
         ]
     },
     {
@@ -198,7 +215,11 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'CS-05', description: 'Ensure all non-essential gates are locked during school hours.', priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Gates' },
             { id: 'CS-06', description: 'Check functionality of all boom barriers and access control systems.', priority: 'Medium', riskLevel: 'Medium', proof: 'Test Log', location: 'Gates' },
             { id: 'CS-07', description: 'During dispersal, monitor for any unauthorized persons or vehicles.', priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Dispersal Area' },
-            { id: 'CS-08', description: 'Report any security breaches or concerns immediately to the admin head.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Security Room' }
+            { id: 'CS-08', description: 'Report any security breaches or concerns immediately to the admin head.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Security Room' },
+            { id: 'CS-09', description: 'Patrol sensitive areas like science labs, server rooms, and admin offices.', priority: 'Medium', riskLevel: 'High', proof: 'Patrol Log', location: 'Internal Buildings' },
+            { id: 'CS-10', description: 'Test emergency communication systems (e.g., PA system, walkie-talkies).', priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Security Room' },
+            { id: 'CS-11', description: 'Monitor parking areas during arrival and dismissal for traffic flow and safety.', priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Parking Lot' },
+            { id: 'CS-12', description: 'Ensure security lighting is functional during evening hours.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Campus-wide' }
         ]
     }
 ];
