@@ -10,7 +10,6 @@ import { Menu, ArrowRight } from "lucide-react";
 import React from 'react';
 
 const mainNavLinks = [
-    { href: "/home-preview", label: "Home Preview", isPreview: true },
     { href: "/packs", label: "All Packages" },
     { href: "/#why-us", label: "Why Us" },
     { href: "/#faq", label: "FAQ" },
@@ -59,7 +58,7 @@ export function SiteHeader() {
                      <Link 
                         key={link.href} 
                         href={link.href} 
-                        className={`text-sm font-medium transition-colors ${link.isPreview ? 'text-accent hover:text-accent/80' : 'text-muted-foreground hover:text-foreground'}`}
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                         prefetch={false}
                      >
                         {link.label}
@@ -87,7 +86,7 @@ export function SiteHeader() {
                                     <Link
                                         key={link.href}
                                         href={link.href}
-                                        className={`text-lg font-medium transition-colors ${link.isPreview ? 'text-accent hover:text-accent/80' : 'text-muted-foreground hover:text-foreground'}`}
+                                        className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                                         prefetch={false}
                                     >
                                         {link.label}
@@ -101,4 +100,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
