@@ -19,47 +19,6 @@ import { cn } from "@/lib/utils";
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
 
-const AnnouncementBar = () => {
-  const slogans = [
-    "Meet More Standards.",
-    "Meet More Compliance.",
-    "Meet More Efficiency."
-  ];
-  const [currentSlogan, setCurrentSlogan] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlogan((prev) => (prev + 1) % slogans.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [slogans.length]);
-
-  return (
-    <div className="bg-accent text-accent-foreground py-2 text-center text-sm font-semibold">
-      <div className="relative h-5 overflow-hidden">
-        {slogans.map((slogan, index) => (
-          <span
-            key={index}
-            className={cn(
-              "absolute w-full transition-all duration-1000 ease-in-out",
-              index === currentSlogan
-                ? "transform-none opacity-100"
-                : "opacity-0 -translate-y-full"
-            )}
-            style={{
-              transform:
-                index === currentSlogan ? "translateY(0)" : "translateY(100%)",
-              transitionDelay: index === currentSlogan ? "500ms" : "0ms",
-            }}
-          >
-            {slogan}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const RotatingHeroText = () => {
     const rotatingWords = [
         "5-Star Hospitality.",
@@ -94,6 +53,44 @@ const RotatingHeroText = () => {
         </span>
     );
 }
+
+const RotatingSubtitle = () => {
+  const subtitles = [
+    "Meet More Standards.",
+    "Meet More Compliance.",
+    "Meet More Efficiency."
+  ];
+  const [currentSubtitle, setCurrentSubtitle] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSubtitle((prev) => (prev + 1) % subtitles.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [subtitles.length]);
+
+  return (
+      <div className="relative h-7 overflow-hidden text-lg md:text-xl text-white/90 font-semibold drop-shadow-sm">
+        {subtitles.map((subtitle, index) => (
+          <span
+            key={index}
+            className={cn(
+              "absolute w-full transition-all duration-700 ease-in-out",
+               currentSubtitle === index
+                ? "opacity-100 transform-none"
+                : "opacity-0 -translate-y-full"
+            )}
+             style={{
+                transform:
+                currentSubtitle === index ? "translateY(0)" : "translateY(100%)",
+            }}
+          >
+            {subtitle}
+          </span>
+        ))}
+      </div>
+  );
+};
 
 
 const HowWeAreDifferentSection = () => (
@@ -430,7 +427,6 @@ export default function HomePreviewPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <AnnouncementBar />
       <SiteHeader />
       <main className="flex-1">
       <section 
@@ -446,6 +442,7 @@ export default function HomePreviewPage() {
                       The Professional Standard for <br />
                       <RotatingHeroText />
                     </h1>
+                     <RotatingSubtitle />
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
                       Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                     </p>
@@ -522,3 +519,4 @@ export default function HomePreviewPage() {
     </div>
   );
 }
+
