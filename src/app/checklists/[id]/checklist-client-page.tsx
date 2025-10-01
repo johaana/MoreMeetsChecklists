@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, Check, FileCheck2, Sparkles, AlertTriangle, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Check, FileCheck2, Sparkles, AlertTriangle, AlertCircle, Layers } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Footer } from '@/components/layout/footer';
@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { premiumPacks } from '@/lib/premium-packs';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import type { IndividualChecklist } from '@/lib/individual-checklists';
+import { individualChecklists } from '@/lib/individual-checklists';
 
 
 const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
@@ -30,15 +31,27 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
     if (!pack) return null;
 
-    const totalValue = pack.checklists.length * 1299; // Assume a base price for calculation if individual price isn't consistent
+    const relatedIndividualChecklists = individualChecklists.filter(ic => ic.relatedPackId === packId);
+    
+    // To calculate savings, we need a representative price for an individual checklist.
+    // We'll take the price of the first related one we find.
+    const representativeIndividualPrice = relatedIndividualChecklists[0]?.priceINR || 1299;
+    
+    // Total value if all checklists in the pack were bought individually.
+    const totalValue = pack.checklists.length * representativeIndividualPrice;
     const savings = totalValue - pack.priceINR;
 
     if (savings <= 0) {
          return (
-             <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
-                <h3 className="text-3xl font-bold font-headline text-primary mb-2">Loved this checklist?</h3>
-                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong>!</p>
-                <Button asChild size="lg">
+             <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl my-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shrink-0">
+                    <Layers className="w-8 h-8" />
+                </div>
+                <div className='text-center md:text-left flex-1'>
+                    <h3 className="text-2xl font-bold font-headline text-primary mb-1">Loved this checklist?</h3>
+                    <p className="text-muted-foreground">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong>!</p>
+                </div>
+                <Button asChild size="lg" className="shrink-0 mt-4 md:mt-0">
                     <Link href={`/packs/${pack.id}`}>Explore The Full Pack</Link>
                 </Button>
             </div>
@@ -48,10 +61,15 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
     const savingsPercentage = Math.floor((savings / totalValue) * 100);
 
     return (
-        <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold font-headline text-primary mb-2">Loved this checklist?</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Get this checklist plus <strong>{pack.checklists.length -1} more</strong> in the full <strong>{pack.title}</strong> and save over {savingsPercentage}%!</p>
-            <Button asChild size="lg">
+        <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl my-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shrink-0">
+                <Layers className="w-8 h-8" />
+            </div>
+            <div className='text-center md:text-left flex-1'>
+                 <h3 className="text-2xl font-bold font-headline text-primary mb-1">Loved this checklist?</h3>
+                 <p className="text-muted-foreground">Get this checklist plus <strong>{pack.checklists.length -1} more</strong> in the full <strong>{pack.title}</strong> and <strong className="text-primary">save over {savingsPercentage}%</strong>!</p>
+            </div>
+            <Button asChild size="lg" className="shrink-0 mt-4 md:mt-0">
                 <Link href={`/packs/${pack.id}`}>Explore The Full Pack</Link>
             </Button>
         </div>
