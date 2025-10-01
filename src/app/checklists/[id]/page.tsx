@@ -141,16 +141,9 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
             ref.current.appendChild(form);
         }
     }, [paymentId]);
-
-    const buttonContainer = (
-         <div ref={ref} className="w-full"></div>
-    );
     
-    return (
-        <div className="w-full relative opacity-0 pointer-events-none -z-10 top-0 left-0">
-             {buttonContainer}
-        </div>
-    );
+    // This div will be hidden and the form will be programmatically clicked
+    return <div ref={ref} className="hidden"></div>;
 };
 
 
@@ -225,12 +218,15 @@ export default function Page({ params }: { params: { id: string } }) {
                             <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
-                        <CardContent className="text-center relative">
+                        <CardContent className="text-center">
+                             <RazorpayButton paymentId={checklist.paymentId} />
                             <Button
                                 onClick={() => {
                                     const rzpButton = document.querySelector(`form[data-payment_button_id="${checklist.paymentId}"]`);
-                                    if (rzpButton) {
-                                      (rzpButton.firstChild as HTMLElement)?.click();
+                                    if (rzpButton && rzpButton.firstChild) {
+                                      (rzpButton.firstChild as HTMLElement).click();
+                                    } else {
+                                        console.error("Razorpay button not found");
                                     }
                                 }}
                                 className="w-full font-bold group flex-col h-auto py-3 text-lg"
@@ -239,7 +235,6 @@ export default function Page({ params }: { params: { id: string } }) {
                                 <span className="group-hover:scale-105 transition-transform">Own It Forever</span>
                                 <span className="text-3xl font-bold group-hover:scale-110 transition-transform">₹{checklist.priceINR}</span>
                             </Button>
-                            <RazorpayButton paymentId={checklist.paymentId} />
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                             <PaymentDisclaimerDialog />
                         </CardContent>
