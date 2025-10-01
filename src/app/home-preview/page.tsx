@@ -37,29 +37,24 @@ const AnnouncementBar = () => {
   return (
     <div className="bg-accent text-accent-foreground py-2 text-center text-sm font-semibold">
       <div className="relative h-5 overflow-hidden">
-        {slogans.map((slogan, index) => {
-          const isCurrent = index === currentSlogan;
-          const isPrevious = index === (currentSlogan - 1 + slogans.length) % slogans.length;
-
-          let transformClass = 'translate-y-full opacity-0';
-          if (isCurrent) {
-            transformClass = 'translate-y-0 opacity-100';
-          } else if (isPrevious) {
-            transformClass = '-translate-y-full opacity-0';
-          }
-
-          return (
-            <span
-              key={index}
-              className={cn(
-                "absolute w-full transition-transform transform duration-500 ease-in-out",
-                transformClass
-              )}
-            >
-              {slogan}
-            </span>
-          );
-        })}
+        {slogans.map((slogan, index) => (
+          <span
+            key={index}
+            className={cn(
+              "absolute w-full transition-all duration-1000 ease-in-out",
+              index === currentSlogan
+                ? "transform-none opacity-100"
+                : "opacity-0 -translate-y-full"
+            )}
+            style={{
+              transform:
+                index === currentSlogan ? "translateY(0)" : "translateY(100%)",
+              transitionDelay: index === currentSlogan ? "500ms" : "0ms",
+            }}
+          >
+            {slogan}
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -74,33 +69,30 @@ const RotatingHeroText = () => {
         "Operational Excellence."
     ];
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [displayedText, setDisplayedText] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-
+    
     useEffect(() => {
-        const handleTyping = () => {
-            const fullWord = rotatingWords[currentIndex];
-            if (isDeleting) {
-                setDisplayedText(fullWord.substring(0, displayedText.length - 1));
-            } else {
-                setDisplayedText(fullWord.substring(0, displayedText.length + 1));
-            }
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % rotatingWords.length);
+        }, 2500);
+        return () => clearInterval(timer);
+    }, [rotatingWords.length]);
 
-            if (!isDeleting && displayedText === fullWord) {
-                setTimeout(() => setIsDeleting(true), 2000);
-            } else if (isDeleting && displayedText === "") {
-                setIsDeleting(false);
-                setCurrentIndex((prev) => (prev + 1) % rotatingWords.length);
-            }
-        };
 
-        const typingSpeed = isDeleting ? 40 : 120; // Faster speeds
-        const timer = setTimeout(handleTyping, typingSpeed);
-
-        return () => clearTimeout(timer);
-    }, [displayedText, isDeleting, currentIndex, rotatingWords]);
-
-    return <span className="text-accent min-h-[80px] sm:min-h-[90px] md:min-h-[110px]">{displayedText}</span>;
+    return (
+        <span className="text-accent min-h-[80px] sm:min-h-[90px] md:min-h-[110px] inline-block relative w-full">
+            {rotatingWords.map((word, index) => (
+                <span 
+                    key={index}
+                    className={cn(
+                        "absolute left-0 w-full transition-all duration-500 ease-in-out",
+                        currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    )}
+                >
+                    {word}
+                </span>
+            ))}
+        </span>
+    );
 }
 
 
@@ -530,5 +522,3 @@ export default function HomePreviewPage() {
     </div>
   );
 }
-
-    
