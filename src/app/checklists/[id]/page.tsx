@@ -20,6 +20,8 @@ type Props = {
   params: { id: string }
 }
 
+const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
@@ -42,11 +44,20 @@ export async function generateMetadata(
     openGraph: {
       title: title,
       description: description,
+      images: [
+        {
+          url: heroImageUrl,
+          width: 1200,
+          height: 630,
+          alt: 'MoreMeets Hero Image: Operational Excellence Checklists',
+        },
+      ],
     },
      twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: title,
       description: description,
+      images: [heroImageUrl],
     },
   }
 }
@@ -225,8 +236,8 @@ export default function Page({ params }: { params: { id: string } }) {
                             <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
                             <Button
                                 onClick={() => {
-                                    const rzpForm = document.querySelector(`form[data-payment_button_id*="${checklist.paymentId}"]`);
-                                    if (rzpForm && rzpForm.firstChild && rzpForm.firstChild instanceof HTMLElement) {
+                                    const rzpForm = document.querySelector(`form input[name='checklist_id'][value='${checklist.id}']`)?.parentElement;
+                                    if (rzpForm && rzpForm.firstChild instanceof HTMLElement) {
                                       rzpForm.firstChild.click();
                                     } else {
                                         console.error("Razorpay button or form not found to click.");
@@ -240,7 +251,7 @@ export default function Page({ params }: { params: { id: string } }) {
                                 <span className="text-3xl font-bold group-hover:scale-110 transition-transform">₹{checklist.priceINR}</span>
                             </Button>
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
-                            <PaymentDisclaimerDialog />
+                             <PaymentDisclaimerDialog />
                         </CardContent>
                     </Card>
                 </div>

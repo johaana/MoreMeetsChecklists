@@ -5,11 +5,10 @@ import { premiumPacks } from '@/lib/premium-packs';
 import { ArrowLeft, FileCheck2 } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SiteHeader } from '@/components/layout/header';
 import { individualChecklists } from '@/lib/individual-checklists';
 import { Button } from '@/components/ui/button';
@@ -17,6 +16,8 @@ import { Button } from '@/components/ui/button';
 type Props = {
   params: { id: string }
 }
+
+const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
 
 export async function generateMetadata(
   { params }: Props,
@@ -35,24 +36,7 @@ export async function generateMetadata(
   const title = `${pack.title} Pack | MoreMeets`;
   const description = `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
 
-  const categoryImageMap: Record<string, string | undefined> = {
-    "Hospitality": PlaceHolderImages.find(img => img.id === 'for-hospitality')?.imageUrl,
-    "Corporate": PlaceHolderImages.find(img => img.id === 'break-facility')?.imageUrl,
-    "Retail": PlaceHolderImages.find(img => img.id === 'for-startups')?.imageUrl,
-    "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
-    "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
-    "Manufacturing": PlaceHolderImages.find(img => img.id === 'for-sustainability')?.imageUrl,
-    "Events": PlaceHolderImages.find(img => img.id === 'for-event-planners')?.imageUrl,
-    "Personal": PlaceHolderImages.find(img => img.id === 'hero-wedding')?.imageUrl,
-    "Automotive": PlaceHolderImages.find(img => img.id === 'break-chauffeur')?.imageUrl,
-    "Real Estate": PlaceHolderImages.find(img => img.id === 'showcase-hotel-exterior')?.imageUrl,
-    "Compliance": PlaceHolderImages.find(img => img.id === 'showcase-corporate-hospitality')?.imageUrl,
-    "Wellness": PlaceHolderImages.find(img => img.id === 'showcase-food')?.imageUrl,
-  };
-  
-  const ogImageUrl = categoryImageMap[pack.category] || (await parent).openGraph?.images?.[0]?.url;
-
-  const openGraphImages = ogImageUrl ? [{ url: ogImageUrl, width: 1200, height: 630, alt: `${pack.title} Preview` }] : [];
+  const openGraphImages = heroImageUrl ? [{ url: heroImageUrl, width: 1200, height: 630, alt: `${pack.title} Preview` }] : [];
 
   return {
     title: title,
@@ -178,22 +162,12 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
 
-  const categoryImageMap: Record<string, string | undefined> = {
-    "Hospitality": PlaceHolderImages.find(img => img.id === 'for-hospitality')?.imageUrl,
-    "Corporate": PlaceHolderImages.find(img => img.id === 'break-facility')?.imageUrl,
-    "Retail": PlaceHolderImages.find(img => img.id === 'for-startups')?.imageUrl,
-    "Healthcare": PlaceHolderImages.find(img => img.id === 'testimonial-elena')?.imageUrl,
-    "Education": PlaceHolderImages.find(img => img.id === 'testimonial-marcus')?.imageUrl,
-    "Manufacturing": PlaceHolderImages.find(img => img.id === 'for-sustainability')?.imageUrl,
-  };
-  const packImage = categoryImageMap[pack.category];
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: pack.title,
     description: pack.description,
-    image: packImage,
+    image: heroImageUrl,
     offers: {
       '@type': 'Offer',
       price: pack.priceINR.toString(),
@@ -292,5 +266,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
