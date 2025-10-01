@@ -124,8 +124,7 @@ const PaymentDisclaimerDialog = () => (
     </AlertDialog>
 );
 
-
-const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
+const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checklistId: string }) => {
     const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
@@ -136,16 +135,20 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
             script.setAttribute('data-payment_button_id', paymentId);
             
             const form = document.createElement('form');
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'checklist_id';
+            input.value = checklistId;
+            form.appendChild(input);
             form.appendChild(script);
 
             ref.current.appendChild(form);
         }
-    }, [paymentId]);
-    
+    }, [paymentId, checklistId]);
+
     // This div will be hidden and the form will be programmatically clicked
     return <div ref={ref} className="hidden"></div>;
 };
-
 
 export default function Page({ params }: { params: { id: string } }) {
   const checklist = individualChecklists.find((c) => c.id === params.id);
@@ -161,7 +164,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="/checklists" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
                 <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
-                All Bestselling Checklists
+                All Bestselling Individual Checklists
             </Link>
         </nav>
       </header>
@@ -219,7 +222,7 @@ export default function Page({ params }: { params: { id: string } }) {
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center">
-                             <RazorpayButton paymentId={checklist.paymentId} />
+                             <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
                             <Button
                                 onClick={() => {
                                     const rzpButton = document.querySelector(`form[data-payment_button_id="${checklist.paymentId}"]`);

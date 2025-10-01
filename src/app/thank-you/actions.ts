@@ -1,6 +1,8 @@
+
 'use server';
 
 import { premiumPacks, PremiumPack } from '@/lib/premium-packs';
+import { individualChecklists, IndividualChecklist } from '@/lib/individual-checklists';
 
 const virtualPersonalizedPack = {
   id: 'personalized_pack',
@@ -13,15 +15,23 @@ const virtualPersonalizedPack = {
   sampleItems: [],
 };
 
+type FoundItem = PremiumPack | (typeof virtualPersonalizedPack) | IndividualChecklist;
+
 type VerificationResult = {
     success: true;
-    pack: PremiumPack | (typeof virtualPersonalizedPack);
+    item: FoundItem;
+    type: 'pack' | 'individual'
 } | {
     success: false;
     error: string;
 };
 
-export async function verifyRazorpayPayment(paymentId: string, packId: string | null, isPersonalized: boolean): Promise<VerificationResult> {
+export async function verifyRazorpayPayment(
+    paymentId: string, 
+    packId: string | null,
+    checklistId: string | null, 
+    isPersonalized: boolean
+): Promise<VerificationResult> {
     if (!paymentId || !paymentId.startsWith('pay_')) {
         return { success: false, error: 'Invalid Payment ID format.' };
     }
@@ -44,7 +54,7 @@ export async function verifyRazorpayPayment(paymentId: string, packId: string | 
         if (!response.ok) {
             const errorData = await response.json();
             console.error("Razorpay API Error:", errorData);
-            return { success: false, error: `Payment verification failed: ${errorData.error.description}` };
+            return { success: false, error: `Payment verification failed. Please check your Payment ID or contact support.` };
         }
 
         const payment = await response.json();
@@ -53,25 +63,30 @@ export async function verifyRazorpayPayment(paymentId: string, packId: string | 
             return { success: false, error: `Payment not completed. Status: ${payment.status}` };
         }
         
-        let foundPack: PremiumPack | (typeof virtualPersonalizedPack) | null = null;
-        
+        let foundItem: FoundItem | null = null;
+        let itemType: 'pack' | 'individual' | null = null;
+
         if (isPersonalized) {
-             foundPack = virtualPersonalizedPack;
+             foundItem = virtualPersonalizedPack;
+             itemType = 'pack';
         } else if (packId) {
-             foundPack = premiumPacks.find(p => p.id === packId) || null;
+             foundItem = premiumPacks.find(p => p.id === packId) || null;
+             itemType = 'pack';
+        } else if (checklistId) {
+             foundItem = individualChecklists.find(c => c.id === checklistId) || null;
+             itemType = 'individual';
         }
 
-        if (!foundPack) {
-            return { success: false, error: 'Could not find the purchased pack associated with your order.' };
+        if (!foundItem) {
+            return { success: false, error: 'Could not find the purchased item associated with your order.' };
         }
         
-        // Final check on amount. Razorpay amount is in paise.
-        const expectedAmount = foundPack.priceINR * 100;
+        const expectedAmount = foundItem.priceINR * 100;
         if (payment.amount !== expectedAmount) {
-             return { success: false, error: `Payment amount mismatch. Expected ${expectedAmount}, got ${payment.amount}.` };
+             return { success: false, error: `Payment amount mismatch. Please contact support for assistance.` };
         }
 
-        return { success: true, pack: foundPack };
+        return { success: true, item: foundItem, type: itemType! };
 
     } catch (err) {
         console.error("Network or other error during Razorpay verification:", err);

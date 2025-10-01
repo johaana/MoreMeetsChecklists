@@ -11,7 +11,8 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2, ArrowLeft, Mail } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { writeFile, utils } from 'xlsx-js-style';
-import type { PremiumPack } from "@/lib/premium-packs";
+import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
+import type { IndividualChecklist } from "@/lib/individual-checklists";
 import { verifyRazorpayPayment } from './actions';
 import { premiumPacks } from '@/lib/premium-packs';
 import { SiteHeader } from "@/components/layout/header";
@@ -26,145 +27,78 @@ import {
   AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
 
-
-const handleDownload = (pack: PremiumPack | undefined) => {
-    if (!pack) {
-        alert("Could not find the purchased pack. Please contact support.");
+const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
+    if (!item) {
+        alert("Could not find the purchased item data. Please contact support.");
         return;
     }
     
-    // For personalized pack, we need to gather all checklists
-    const allChecklists = pack.id === 'personalized_pack' 
-      ? premiumPacks.flatMap(p => p.checklists)
-      : pack.checklists;
-
     const workbook = utils.book_new();
     const headerStyle = {
         font: { bold: true, color: { rgb: "FFFFFF" } },
         fill: { fgColor: { rgb: "0A2540" } }
     };
-    const footerStyle = {
-        font: { italic: true, sz: 10 }
-    };
 
-    // --- Cover Page ---
-    const coverPageName = "Cover Page";
-    const footerText = "Provided by MoreMeets | www.moremeets.com";
+    if (type === 'pack') {
+        const pack = item as PremiumPack;
+        const allChecklists = pack.id === 'personalized_pack' 
+          ? premiumPacks.flatMap(p => p.checklists)
+          : pack.checklists;
 
-    const coverPageHeader = [pack.title];
-    const coverPageData = [
-        [" "],
-        ["Click to navigate:"],
-        ["Checklist Title", "Department", "Frequency", "Role"],
-         ...allChecklists.map((checklist) => {
-            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-            const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-            return [
-                { v: checklist.title, f: formula },
-                checklist.department,
-                checklist.frequency,
-                checklist.role
-            ];
-        }),
-        [" "],
-        [footerText]
-    ];
-
-    const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
-    coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
-    
-    coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-    
-    ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-        if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-    });
-
-    const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-    for (let R = 4; R <= rangeLinks.e.r; ++R) {
-        const address = utils.encode_cell({ r: R, c: 0 });
-        if (coverWorksheet[address] && coverWorksheet[address].f) {
-             coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
-        }
-    }
-    
-    const footerRowIndex = rangeLinks.e.r;
-    const footerCellAddress = `A${footerRowIndex + 1}`;
-    if(coverWorksheet[footerCellAddress]) {
-      coverWorksheet[footerCellAddress].s = footerStyle;
-    }
-    
-    utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
-
-    // --- Master View ---
-    const masterSheetName = "Master View";
-    const masterSheetData = [
-        ["Checklist Title", "Task ID", "Task Description", "Priority", "Risk Level"],
-        ...allChecklists.flatMap((checklist) => 
-            checklist.tasks.map(task => [
-                checklist.title,
-                task.id,
-                task.description,
-                task.priority,
-                task.riskLevel
-            ])
-        )
-    ];
-    
-    const masterWorksheet = utils.aoa_to_sheet(masterSheetData);
-    masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }];
-    
-    const rangeMaster = utils.decode_range(masterWorksheet['!ref']!);
-    for (let C = rangeMaster.s.c; C <= rangeMaster.e.c; ++C) {
-        const address = utils.encode_cell({ r: 0, c: C });
-        if (masterWorksheet[address]) {
-            masterWorksheet[address].s = headerStyle;
-        }
-    }
-    masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-    
-    utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
-
-    // --- Individual Checklist Sheets ---
-    allChecklists.forEach(checklist => {
-        const checklistHeaders = [
-            'Task ID', 'Task', 'Priority', 'Risk Level', 
-            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-        ];
+        allChecklists.forEach(checklist => addChecklistSheet(workbook, checklist, headerStyle));
         
-        const tasksForSheet = checklist.tasks.map(task => [
-            task.id,
-            task.description,
-            task.priority,
-            task.riskLevel,
-            task.proof,
-            'Pending',
-            '',
-            ''
-        ]);
+    } else if (type === 'individual') {
+        const checklist = item as IndividualChecklist;
+        addChecklistSheet(workbook, {
+            title: checklist.title,
+            tasks: checklist.tasks,
+            department: checklist.category, // fallback
+            frequency: 'N/A',
+            role: 'N/A',
+            summary: checklist.longDescription
+        }, headerStyle);
+    }
 
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-        
-        worksheet['!cols'] = [
-            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-        ];
-
-         const headerRange = utils.decode_range(worksheet['!ref']!);
-         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if(worksheet[address]) {
-                worksheet[address].s = headerStyle;
-            }
-         }
-         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
-        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
-    });
-
-    const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
+    const fileName = item.title.replace(/ /g, '_') + '.xlsx';
     writeFile(workbook, fileName);
+};
+
+const addChecklistSheet = (workbook: any, checklist: PackChecklist, headerStyle: any) => {
+    const checklistHeaders = [
+        'Task ID', 'Task Description', 'Priority', 'Risk Level', 
+        'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+    ];
+    
+    const tasksForSheet = checklist.tasks.map(task => [
+        task.id,
+        task.description,
+        task.priority,
+        task.riskLevel,
+        task.proof,
+        'Pending',
+        '',
+        ''
+    ]);
+
+    const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+    const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+    
+    worksheet['!cols'] = [
+        { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
+        { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
+    ];
+
+     const headerRange = utils.decode_range(worksheet['!ref']!);
+     for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+        const address = utils.encode_cell({ r: 0, c: C });
+        if(worksheet[address]) {
+            worksheet[address].s = headerStyle;
+        }
+     }
+     worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+
+    const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+    utils.book_append_sheet(workbook, worksheet, sheetName);
 }
 
 
@@ -173,7 +107,8 @@ function ThankYouContent() {
   const [paymentId, setPaymentId] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
-  const [pack, setPack] = React.useState<any | null>(null);
+  const [verifiedItem, setVerifiedItem] = React.useState<any | null>(null);
+  const [itemType, setItemType] = React.useState<'pack' | 'individual' | null>(null);
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
   const [view, setView] = React.useState<'initial' | 'enterId' | 'findId'>('initial');
 
@@ -181,7 +116,7 @@ function ThankYouContent() {
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
     if (rzpPaymentId) {
         setPaymentId(rzpPaymentId);
-        setView('enterId'); // Go directly to verification
+        setView('enterId');
         handleSubmit(null, rzpPaymentId);
     }
   }, [searchParams]);
@@ -197,26 +132,28 @@ function ThankYouContent() {
 
     setIsLoading(true);
     setError(null);
-    setPack(null);
+    setVerifiedItem(null);
 
     const packId = searchParams.get('pack_id');
+    const checklistId = searchParams.get('checklist_id');
     const isPersonalized = searchParams.get('type') === 'personalized';
 
-    const result = await verifyRazorpayPayment(finalPaymentId, packId, !!isPersonalized);
+    const result = await verifyRazorpayPayment(finalPaymentId, packId, checklistId, !!isPersonalized);
     
     if (result.success) {
-      setPack(result.pack);
-      setView('enterId'); // Keep the view on the form/success message
+      setVerifiedItem(result.item);
+      setItemType(result.type);
+      setView('enterId');
     } else {
       setError(result.error);
-      setView('enterId'); // Show error within the form view
+      setView('enterId');
     }
     
     setIsLoading(false);
   };
   
   const onDownload = () => {
-    handleDownload(pack as PremiumPack);
+    handleDownload(verifiedItem, itemType!);
     setShowDownloadConfirm(true);
   }
 
@@ -249,7 +186,7 @@ function ThankYouContent() {
         <div className="space-y-4">
             <h2 className="text-2xl font-bold font-headline text-primary">No Worries, We're Here to Help!</h2>
             <p className="text-muted-foreground max-w-lg mx-auto">
-                If you missed noting your Payment ID, please send a screenshot of your payment confirmation to us, along with the name of the checklist pack you purchased. We'll send you the files directly.
+                If you missed noting your Payment ID, please send a screenshot of your payment confirmation to us, along with the name of the checklist you purchased. We'll send you the files directly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button asChild>
@@ -283,7 +220,7 @@ function ThankYouContent() {
       );
     }
 
-    if (pack) {
+    if (verifiedItem) {
       return (
          <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <CheckCircle className="h-20 w-20 text-green-500" />
@@ -292,12 +229,12 @@ function ThankYouContent() {
                     Verification Successful!
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    Click the button below to download your <strong>{pack.title}</strong> pack.
+                    Click the button below to download your <strong>{verifiedItem.title}</strong>.
                 </p>
             </div>
             <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
                 <Download className="mr-2 h-5 w-5" />
-                Download Your Pack
+                Download Your Checklist
             </Button>
             <Button size="lg" asChild className="group mt-4" variant="outline">
                 <Link href="/packs">
@@ -325,7 +262,7 @@ function ThankYouContent() {
                 Verify Your Purchase
             </h1>
             <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-               Enter the Payment ID from your Razorpay receipt to download your checklist pack.
+               Enter the Payment ID from your Razorpay receipt to download your purchased item.
             </p>
         </div>
 
@@ -375,7 +312,7 @@ function ThankYouContent() {
                 <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
                     <AlertDialogDescription>
-                        Your checklist pack has started downloading. Please check your downloads folder.
+                        Your checklist has started downloading. Please check your downloads folder.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
