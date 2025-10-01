@@ -3,7 +3,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Check, FileCheck2, Sparkles, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Check, FileCheck2, Sparkles, AlertTriangle, AlertCircle } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Footer } from '@/components/layout/footer';
@@ -13,6 +13,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { Metadata } from 'next';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+
 
 type Props = {
   params: { id: string }
@@ -65,8 +67,13 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
     if (!pack) return null;
+    
+    const individualChecklist = individualChecklists.find(ic => ic.relatedPackId === packId);
+    if (!individualChecklist) return null;
 
-    const totalValue = pack.checklists.length * 1299; // Approximate value
+    const totalValue = (pack.checklists.length * individualChecklist.priceINR); 
+    const savingsPercentage = Math.floor(100 - (pack.priceINR / totalValue) * 100);
+
 
     return (
         <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
@@ -76,7 +83,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
             <h3 className="text-3xl font-bold font-headline text-primary mb-2">Get The Complete System</h3>
             <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">This is a powerful checklist. But true operational excellence comes from an integrated system. Get this checklist plus <strong>{pack.checklists.length -1} more</strong> in the full <strong>{pack.title}</strong>.</p>
             <p className="text-xl font-bold text-primary mb-1">
-                Save over <span className="underline">{(100 - (pack.priceINR / totalValue) * 100).toFixed(0)}%</span> by bundling!
+                Save over <span className="underline">{savingsPercentage}%</span> by bundling!
             </p>
             <p className="text-muted-foreground mb-6">Total Individual Value: <span className="line-through">₹{totalValue.toLocaleString()}</span>. Pack Price: ₹{pack.priceINR.toLocaleString()}</p>
             <Button asChild size="lg">
@@ -86,7 +93,39 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
     );
 };
 
-const RazorpayButton = ({ paymentId, price }: { paymentId: string, price: number }) => {
+const PaymentDisclaimerDialog = () => (
+    <AlertDialog>
+        <AlertDialogTrigger asChild>
+             <Button variant="link" className="text-xs text-accent h-auto p-0 mt-2 flex items-center gap-1">
+                <Sparkles className="w-3 h-3" /> Read Before Paying
+            </Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+            <AlertDialogHeader>
+                <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent" /> Important: Before You Pay</AlertDialogTitle>
+                <AlertDialogDescription asChild>
+                    <div className="space-y-4 pt-4 text-sm text-muted-foreground">
+                        <div>
+                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the thank you page to download your checklist.
+                        </div>
+                        <div>
+                            <strong>2. Beneficiary Name:</strong> The beneficiary name may appear as MoreMeets or our Founder's name due to banking compliance. Both are verified.
+                        </div>
+                        <div>
+                            <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify your payment ID and download your file.
+                        </div>
+                    </div>
+                </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+                <AlertDialogCancel>Close</AlertDialogCancel>
+            </AlertDialogFooter>
+        </AlertDialogContent>
+    </AlertDialog>
+);
+
+
+const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
     const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
@@ -107,29 +146,9 @@ const RazorpayButton = ({ paymentId, price }: { paymentId: string, price: number
          <div ref={ref} className="w-full"></div>
     );
     
-    // The Razorpay script creates a button, but we want our own styled button.
-    // So we render the Razorpay button off-screen and trigger it from our button.
     return (
-        <div className="w-full relative">
-            <Button 
-                onClick={() => {
-                    const rzpButton = ref.current?.querySelector('button');
-                    if (rzpButton) {
-                        rzpButton.click();
-                    } else {
-                        // Fallback in case the button isn't rendered yet
-                        const form = ref.current?.querySelector('form');
-                        form?.submit();
-                    }
-                }}
-                className="w-full font-bold group flex-col h-auto py-3 text-lg"
-            >
-                <span>Own It Forever</span>
-                <span className="text-2xl font-bold">₹{price}</span>
-            </Button>
-            <div className="absolute opacity-0 pointer-events-none -z-10 w-full top-0 left-0">
-                 {buttonContainer}
-            </div>
+        <div className="w-full relative opacity-0 pointer-events-none -z-10 top-0 left-0">
+             {buttonContainer}
         </div>
     );
 };
@@ -207,8 +226,22 @@ export default function Page({ params }: { params: { id: string } }) {
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center relative">
-                             <RazorpayButton paymentId={checklist.paymentId} price={checklist.priceINR} />
-                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+                            <Button
+                                onClick={() => {
+                                    const rzpButton = document.querySelector(`form[data-payment_button_id="${checklist.paymentId}"]`);
+                                    if (rzpButton) {
+                                      (rzpButton.firstChild as HTMLElement)?.click();
+                                    }
+                                }}
+                                className="w-full font-bold group flex-col h-auto py-3 text-lg"
+                                size="lg"
+                            >
+                                <span className="group-hover:scale-105 transition-transform">Own It Forever</span>
+                                <span className="text-3xl font-bold group-hover:scale-110 transition-transform">₹{checklist.priceINR}</span>
+                            </Button>
+                            <RazorpayButton paymentId={checklist.paymentId} />
+                            <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+                            <PaymentDisclaimerDialog />
                         </CardContent>
                     </Card>
                 </div>
@@ -238,5 +271,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
