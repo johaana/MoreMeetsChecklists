@@ -29,13 +29,33 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
     if (!pack) return null;
-    
-    const individualChecklist = pack.checklists.find(ic => ic.relatedPackId === packId);
-    if (!individualChecklist) return null;
 
-    const totalValue = (pack.checklists.length * individualChecklist.priceINR); 
+    const individualChecklistsInPack = pack.checklists.filter(ic => ic.tasks.length > 0);
+    const relatedIndividualChecklist = individualChecklistsInPack.find(ic => ic.relatedPackId === packId);
+
+    if (!relatedIndividualChecklist) {
+         const firstChecklist = pack.checklists[0];
+         if (!firstChecklist) return null;
+         
+         const individualChecklistFromAll = premiumPacks.flatMap(p => p.checklists).find(c => c.title === firstChecklist.title);
+         if (!individualChecklistFromAll) return null;
+
+         const totalValue = pack.checklists.length * 1299;
+         const savingsPercentage = Math.floor(100 - (pack.priceINR / totalValue) * 100);
+
+         return (
+             <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
+                <h3 className="text-3xl font-bold font-headline text-primary mb-2">Loved this checklist?</h3>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong> and save over {savingsPercentage}%!</p>
+                <Button asChild size="lg">
+                    <Link href={`/packs/${pack.id}`}>Explore The Full Pack</Link>
+                </Button>
+            </div>
+         )
+    }
+
+    const totalValue = (pack.checklists.length * relatedIndividualChecklist.priceINR); 
     const savingsPercentage = Math.floor(100 - (pack.priceINR / totalValue) * 100);
-
 
     return (
         <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
