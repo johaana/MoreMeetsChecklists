@@ -15,7 +15,7 @@ const allPacks = [
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
         sampleItems: [
-            "Master the 'Lost & Found' protocol to ensure guest trust and minimize liability.",
+            "Master crucial security protocols for 'CCTV Monitoring' and 'Key Control'.",
             "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
             "Standardize the critical 'Night Audit' process for financial accuracy.",
             "Includes often-overlooked SOPs for 'Pest Control' and 'HVAC Systems'."
@@ -134,9 +134,9 @@ const allPacks = [
                 department: "Security",
                 frequency: "As-Needed",
                 role: "Security Officer",
-                summary: "Provides a standardized, secure process for handling guest property, from logging and storage to returning items, ensuring guest trust and minimizing liability.",
+                summary: "A standardized, secure process to ensure guest trust and minimize hotel liability. Covers logging, storage, and returning items.",
                 tasks: [
-                    { id: 'SEC-LF-001', description: "Log the date, time, and exact location where the item was found", priority: 'High', riskLevel: 'Medium', proof: 'Logbook Entry', location: 'Security Office' },
+                    { id: 'SEC-LF-001', description: "Log the date, time, and exact location where the item was found to create a clear chain of custody.", priority: 'High', riskLevel: 'Medium', proof: 'Logbook Entry', location: 'Security Office' },
                     { id: 'SEC-LF-002', description: "Describe the found item in detail, including brand, color, and any unique marks", priority: 'High', riskLevel: 'Medium', proof: 'Logbook Entry', location: 'Security Office' },
                     { id: 'SEC-LF-003', description: "Record the name and department of the person who found the item", priority: 'Medium', riskLevel: 'Low', proof: 'Logbook Entry', location: 'Security Office' },
                     { id: 'SEC-LF-004', description: "Store the item securely in a locked lost & found room or cabinet", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Security Office' },
@@ -160,7 +160,7 @@ const allPacks = [
             "Master crucial 'Site Commissioning' & 'Decommissioning' protocols.",
             "Implement a robust 'Business Continuity Plan' (BCP) with emergency drills.",
             "Manage 'Capital Asset Lifecycle' and operational budgets effectively.",
-            "Includes vendor 'Labor Law Compliance' and 'SLA Audits'."
+            "Includes often-missed vendor 'Labor Law Compliance' and 'SLA Audits'."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -579,10 +579,10 @@ const allPacks = [
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Student Dismissal & Handover' protocol to ensure child safety.",
+            "Implement a robust 'Visitor Management' and campus security protocol.",
             "Standardize 'School Bus Safety' checks for drivers and vehicles.",
             "Manage 'Classroom Safety & Hygiene' with daily and weekly audits.",
-            "Includes 'Visitor Management' and 'Emergency Drill' protocols."
+            "Includes 'Playground Safety' and 'Emergency Drill' protocols."
         ],
         previewScenario: {
             title: "Executing a Safe Student Dismissal",
