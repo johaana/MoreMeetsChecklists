@@ -108,7 +108,7 @@ const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checkli
         }
     }, [paymentId, checklistId]);
 
-    return <div ref={ref} className="hidden"></div>;
+    return <div ref={ref}></div>;
 };
 
 export default function ChecklistClientPage({ checklist }: { checklist: IndividualChecklist }) {
@@ -178,23 +178,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center">
-                            <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
-                            <Button
-                                onClick={() => {
-                                    const rzpForm = document.querySelector(`form input[name='checklist_id'][value='${checklist.id}']`)?.parentElement;
-                                    if (rzpForm && rzpForm.firstChild instanceof HTMLElement) {
-                                      rzpForm.firstChild.click();
-                                    } else {
-                                        console.error("Razorpay button or form not found to click.");
-                                        alert("Could not initiate payment. Please contact support.");
-                                    }
-                                }}
-                                className="w-full font-bold group flex-col h-auto py-3 text-lg"
-                                size="lg"
-                            >
-                                <span className="group-hover:scale-105 transition-transform">Own It Forever</span>
-                                <span className="text-3xl font-bold group-hover:scale-110 transition-transform">₹{checklist.priceINR}</span>
-                            </Button>
+                           <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
+                           <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
