@@ -1,0 +1,521 @@
+
+'use client';
+
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat } from "lucide-react";
+import { testimonials } from "@/lib/testimonials";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import React, { useState, useEffect } from 'react';
+import { Footer } from "@/components/layout/footer";
+import { SiteHeader } from "@/components/layout/header";
+import { premiumPacks } from "@/lib/premium-packs";
+import { Badge } from "@/components/ui/badge";
+import Image from 'next/image';
+import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+
+const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
+
+const AnnouncementBar = () => {
+  const slogans = [
+    "Meet More Standards.",
+    "Meet More Compliance.",
+    "Meet More Efficiency."
+  ];
+  const [currentSlogan, setCurrentSlogan] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlogan((prev) => (prev + 1) % slogans.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [slogans.length]);
+
+  return (
+    <div className="bg-accent text-accent-foreground py-2 text-center text-sm font-semibold">
+      <div className="relative h-5 overflow-hidden">
+        {slogans.map((slogan, index) => (
+          <span
+            key={index}
+            className={cn(
+              "absolute w-full transition-transform duration-500 ease-in-out",
+              index === currentSlogan ? "transform-none" : "translate-y-full",
+              (index < currentSlogan || (currentSlogan === 0 && index === slogans.length -1)) ? "-translate-y-full" : ""
+            )}
+          >
+            {slogan}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const RotatingHeroText = () => {
+    const rotatingWords = [
+        "5-Star Hospitality.",
+        "Audit-Ready Healthcare.",
+        "Efficient Manufacturing.",
+        "Secure Retail Operations.",
+        "Operational Excellence."
+    ];
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [displayedText, setDisplayedText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        const handleTyping = () => {
+            const fullWord = rotatingWords[currentIndex];
+            if (isDeleting) {
+                setDisplayedText(fullWord.substring(0, displayedText.length - 1));
+            } else {
+                setDisplayedText(fullWord.substring(0, displayedText.length + 1));
+            }
+
+            if (!isDeleting && displayedText === fullWord) {
+                setTimeout(() => setIsDeleting(true), 2000);
+            } else if (isDeleting && displayedText === "") {
+                setIsDeleting(false);
+                setCurrentIndex((prev) => (prev + 1) % rotatingWords.length);
+            }
+        };
+
+        const typingSpeed = isDeleting ? 50 : 150;
+        const timer = setTimeout(handleTyping, typingSpeed);
+
+        return () => clearTimeout(timer);
+    }, [displayedText, isDeleting, currentIndex, rotatingWords]);
+
+    return <span className="text-accent min-h-[80px] sm:min-h-[90px] md:min-h-[110px]">{displayedText}</span>;
+}
+
+
+const HowWeAreDifferentSection = () => (
+    <section id="how-we-are-different" className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+            <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
+                <div className="text-center mb-8">
+                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                        How We're Different
+                    </h2>
+                </div>
+                <div className="space-y-6 text-center text-muted-foreground md:text-lg">
+                    <p>
+                        Most SOP platforms sell software subscriptions that help you manage or automate SOPs—but <strong>they don’t actually provide the SOP checklists themselves.</strong> You still have to create the content on your own.
+                    </p>
+                    <p>
+                        MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates.</strong>
+                    </p>
+                     <p className="text-foreground font-semibold">
+                        In short: <strong>we don’t sell software. We sell the actual operational checklists</strong> that managers and teams can start using from day one.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
+
+const FaqSection = () => (
+    <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+        <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                    Frequently Asked Questions
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    Everything you need to know before you buy.
+                </p>
+            </div>
+            <div className="max-w-4xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-expertise">
+                        <AccordionTrigger className="text-lg font-semibold">What's the expertise behind your checklists?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                           Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-free-comparison">
+                        <AccordionTrigger className="text-lg font-semibold">How are your checklists different from the free templates I find online?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground space-y-4">
+                           <p>That's a crucial question. Free templates are typically simple lists of what to check, designed as lead magnets for expensive software. They give you a starting point, but the hard work of building an operational system is still on you.</p>
+                           <p className="font-semibold text-foreground">MoreMeets is different. We sell the system itself.</p>
+                           <p>Our blueprints are not just lists; they are complete, expert-built operational plans in an editable Excel format. Each task is structured with the critical details free templates miss:</p>
+                           <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Who is responsible</strong> (Role & Department)</li>
+                                <li><strong>When it needs to be done</strong> (Frequency)</li>
+                                <li><strong>How important it is</strong> (Priority & Risk Level)</li>
+                                <li><strong>How to prove it's done</strong> (Proof & Audit Trail)</li>
+                           </ul>
+                            <p>In short, free templates ask the questions. Our blueprints give your team the actionable answers. You're not buying a document; you're buying a ready-to-deploy system that saves you weeks of work and gives you the confidence that every detail is covered from day one.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-ai-alt">
+                        <AccordionTrigger className="text-lg font-semibold">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                           Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 200 industry veterans who have managed these high-stakes environments.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger className="text-lg font-semibold">How will I receive the checklists after purchase?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Instantly. You’ll get access to download the Excel file directly from the confirmation page after payment. A copy of the download link is also sent to your email for safekeeping.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger className="text-lg font-semibold">Are these checklists editable?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes, completely. All checklists come in a standard Microsoft Excel file (.xlsx), so you can fully customize them to fit your organization’s specific needs, branding, and workflow.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-3">
+                        <AccordionTrigger className="text-lg font-semibold">Do I need any special software to use these?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            No. The files open in Microsoft Excel, Google Sheets, Apple Numbers, or any compatible spreadsheet software.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-4">
+                        <AccordionTrigger className="text-lg font-semibold">Will I get future updates?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Absolutely. Each purchase includes lifetime updates. Whenever we improve or add new SOPs to a pack you've purchased, you’ll receive the updated version for free.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                     <AccordionItem value="item-5">
+                        <AccordionTrigger className="text-lg font-semibold">Is my payment secure?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-8">
+                        <AccordionTrigger className="text-lg font-semibold">Can I share the checklists with my team or across multiple locations?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes. Your one-time purchase grants you a license to use and replicate the checklists across all teams, branches, and locations within your single organization.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-9">
+                        <AccordionTrigger className="text-lg font-semibold">Can I use these for client projects if I am a consultant?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Yes, consultants often use our packs as a foundational framework for their client engagements. However, the license does not permit reselling, rebranding for resale, or public redistribution of the files.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                     <AccordionItem value="item-10">
+                        <AccordionTrigger className="text-lg font-semibold">What is your refund policy?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                           Due to the nature of instantly downloadable digital products, all sales are final and we do not offer refunds. However, if you face any technical issues with accessing or downloading your files, our support team will resolve it for you immediately.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-11">
+                        <AccordionTrigger className="text-lg font-semibold">Can I request a custom checklist for my business?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            Absolutely. We provide custom checklist and SOP creation services. Please <a href="https://calendly.com/aditi-imran-khan/30min" target="_blank" rel="noopener noreferrer" className="text-primary underline">contact us with your requirements</a>, and our experts will tailor a package specifically for you.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-12">
+                        <AccordionTrigger className="text-lg font-semibold">How can I get support if I have an issue?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            You can reach us anytime at `more@moremeets.com` or via the <Link href="/contact" className="text-primary underline">contact page</Link> on our website. We are committed to helping you and typically respond within 24 hours.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
+        </div>
+    </section>
+);
+
+function PackList() {
+    const featuredPacks = premiumPacks.filter(p => p.badgeText);
+    const title = "Featured Checklist Packs";
+    const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
+
+    return (
+         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                        {title}
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        {description}
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {featuredPacks.map((pack) => (
+                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                            <CardHeader className="p-6 relative">
+                                {pack.badgeText && (
+                                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
+                                    <Star className="w-4 h-4" /> {pack.badgeText}
+                                    </Badge>
+                                )}
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
+                                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                                    </div>
+                                    <div className="flex-1">
+                                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                                    </div>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="px-6 flex-1">
+                                <h3 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h3>
+                                <ul className="space-y-2 text-muted-foreground text-sm">
+                                    {pack.sampleItems.map((item, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                             <CardFooter className="p-6 pt-2 mt-auto">
+                                <Button asChild className="w-full font-bold">
+                                    <Link href={`/packs/${pack.id}`}>
+                                        View Full Checklist &amp; Purchase
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+                 <div className="text-center mt-16">
+                    <Button asChild size="lg" variant="outline" className="group border-primary/50">
+                        <Link href="/packs">
+                            View All Packages
+                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+const WhyDetailMatters = () => {
+    const isMobile = useIsMobile();
+
+    const points = [
+        {
+            icon: <AlertTriangle />,
+            title: "One Missed Step Can Cost Everything",
+            description: "A forgotten safety check, an uncalibrated instrument, an insecure access point. These small mistakes lead to compliance fines, reputational damage, and lost revenue. Our checklists are your defense.",
+        },
+        {
+            icon: <Users />,
+            title: "Your Team Can't Read Your Mind",
+            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality. Our checklists translate your standards into actionable steps for everyone.",
+        },
+        {
+            icon: <Shield />,
+            title: "An Auditor's Visit Shouldn't Be a Panic Attack",
+            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside and out, providing a clear, documented trail of diligence.",
+        },
+        {
+            icon: <GitBranch />,
+            title: "How Do You Enforce Standards Across Multiple Locations?",
+            description: "When your brand is spread across multiple sites, consistency is everything. Our checklists provide a centralized, replicable blueprint for excellence, ensuring that your customer in one city gets the exact same high-quality experience as a customer a thousand miles away.",
+        },
+        {
+            icon: <HandCoins />,
+            title: "It's the Small Leaks That Sink the Ship",
+            description: "A little wasted inventory, a minor service complaint—together, they drain profitability. Our checklists are designed to find and plug these leaks, driving efficiency that shows up on your bottom line.",
+        },
+        {
+            icon: <Award />,
+            title: "Don't Let Your Business Rely on One Hero",
+            description: "What happens if your one indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone on your team can operate at a high standard.",
+        },
+        {
+            icon: <Briefcase />,
+            title: "A Flawless Launch or a Public Failure?",
+            description: "For any grand opening or product launch, success hinges on hundreds of details. Our checklists are the playbook for flawless execution, ensuring your big day is remembered for the right reasons.",
+        },
+        {
+            icon: <Star />,
+            title: "Is Every Guest Getting 5-Star Treatment?",
+            description: "Inconsistency is the enemy of a great reputation. Our hospitality checklists ensure every guest touchpoint is executed to the same high standard, every time.",
+        },
+        {
+            icon: <HardHat />,
+            title: "The Most Dangerous Risks Are Hiding in Plain Sight",
+            description: "Daily repetition can lead to complacency. Our checklists force a fresh, systematic review of your environment, catching safety blind spots before they become tragic accidents.",
+        },
+        {
+            icon: <BarChart />,
+            title: "Stop Managing Problems. Start Building Profit.",
+            description: "Every minute your team spends fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your best people to focus on innovation.",
+        },
+        {
+            icon: <FileText />,
+            title: "You Know You Need SOPs. But Where Do You Start?",
+            description: "The task of creating SOPs from scratch is daunting. We've done the work for you. Our checklists provide an expert-built foundation that is 90% of the way there.",
+        },
+    ];
+
+    if (isMobile) {
+        return (
+            <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+                <div className="container px-4 md:px-6">
+                    <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                        <h2 className="text-2xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                            Why Every Detail Matters
+                        </h2>
+                        <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                            In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
+                        </p>
+                    </div>
+                    <Accordion type="single" collapsible className="w-full">
+                        {points.map((point, index) => (
+                            <AccordionItem key={index} value={`item-${index}`}>
+                                <AccordionTrigger className="text-base font-semibold">
+                                    <div className="flex items-center gap-3">
+                                        <div className="shrink-0 text-primary">{React.cloneElement(point.icon, { className: "w-5 h-5" })}</div>
+                                        {point.title}
+                                    </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground">
+                                    {point.description}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </div>
+            </section>
+        );
+    }
+
+    return (
+        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                        Why Every Detail Matters
+                    </h2>
+                    <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {points.map((point, index) => (
+                         <Card key={index} className="flex flex-col">
+                            <CardHeader className="flex flex-row items-center gap-4">
+                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0">
+                                    {React.cloneElement(point.icon, { className: "w-6 h-6" })}
+                                </div>
+                                <CardTitle className="text-lg">{point.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm text-muted-foreground">{point.description}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+
+export default function HomePreviewPage() {
+
+  return (
+    <div className="flex flex-col min-h-screen bg-background">
+      <AnnouncementBar />
+      <SiteHeader />
+      <main className="flex-1">
+      <section 
+          className="w-full relative bg-cover bg-center"
+           style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImage?.imageUrl})`,
+          }}
+        >
+            <div className="container px-4 md:px-6">
+                <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
+                  <div className="space-y-6">
+                    <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                      The Professional Standard for <br />
+                      <RotatingHeroText />
+                    </h1>
+                    <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
+                      Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
+                    </p>
+                    <div className="flex flex-col items-center justify-center gap-4">
+                      <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                        <Link href="/packs">
+                          Browse All Packages
+                          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </Button>
+                      <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
+                        <p className="text-xs text-white/80">
+                          Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+        
+        <WhyDetailMatters />
+
+        <HowWeAreDifferentSection />
+
+        <React.Suspense fallback={<div>Loading packs...</div>}>
+            <PackList />
+        </React.Suspense>
+        
+        <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                        Loved by Professionals Worldwide
+                    </h2>
+                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        Trusted by managers from world-leading organizations.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {testimonials.map((testimonial) => {
+                        const image = PlaceHolderImages.find(img => img.id === testimonial.imageId);
+                        return (
+                         <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
+                             <div className="mb-4 rounded-full overflow-hidden w-24 h-24 border-2 border-primary/10">
+                                {image && (
+                                    <Image
+                                        src={image.imageUrl}
+                                        alt={testimonial.name}
+                                        width={96}
+                                        height={96}
+                                        className="w-full h-full object-cover"
+                                        data-ai-hint={image.imageHint}
+                                    />
+                                )}
+                             </div>
+                            <CardContent className="p-0">
+                                <p className="text-muted-foreground italic">"{testimonial.quote}"</p>                            
+                            </CardContent>
+                             <CardFooter className="p-0 mt-4 flex-col">
+                                 <p className="font-bold font-headline">{testimonial.name}</p>
+                                 <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                             </CardFooter>
+                        </Card>
+                    )})}
+                </div>
+            </div>
+        </section>
+        
+        <FaqSection />
+
+      </main>
+      <Footer />
+    </div>
+  );
+}
