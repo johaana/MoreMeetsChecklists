@@ -107,7 +107,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
 const PaymentDisclaimerDialog = () => (
     <AlertDialog>
         <AlertDialogTrigger asChild>
-             <Button variant="link" className="text-xs text-accent h-auto p-0 mt-2 flex items-center gap-1">
+             <Button variant="link" className="text-xs text-accent h-auto p-0 flex items-center gap-1">
                 <Sparkles className="w-3 h-3" /> Read Before Paying
             </Button>
         </AlertDialogTrigger>
@@ -157,7 +157,6 @@ const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checkli
         }
     }, [paymentId, checklistId]);
 
-    // This div will contain the razorpay form, but it will be hidden.
     return <div ref={ref} className="hidden"></div>;
 };
 
@@ -251,8 +250,10 @@ export default function Page({ params }: { params: { id: string } }) {
                                 <span className="text-3xl font-bold group-hover:scale-110 transition-transform">₹{checklist.priceINR}</span>
                             </Button>
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
-                             <PaymentDisclaimerDialog />
                         </CardContent>
+                         <CardFooter className="flex-col gap-2 pt-2">
+                            <PaymentDisclaimerDialog />
+                         </CardFooter>
                     </Card>
                 </div>
             </div>
@@ -281,5 +282,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
