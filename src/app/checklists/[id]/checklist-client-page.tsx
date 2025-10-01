@@ -30,23 +30,14 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
     if (!pack) return null;
 
-    const individualChecklistsInPack = pack.checklists.filter(ic => ic.tasks.length > 0);
-    const relatedIndividualChecklist = individualChecklistsInPack.find(ic => ic.relatedPackId === packId);
+    const totalValue = pack.checklists.length * 1299; // Assume a base price for calculation if individual price isn't consistent
+    const savings = totalValue - pack.priceINR;
 
-    if (!relatedIndividualChecklist) {
-         const firstChecklist = pack.checklists[0];
-         if (!firstChecklist) return null;
-         
-         const individualChecklistFromAll = premiumPacks.flatMap(p => p.checklists).find(c => c.title === firstChecklist.title);
-         if (!individualChecklistFromAll) return null;
-
-         const totalValue = pack.checklists.length * 1299;
-         const savingsPercentage = Math.floor(100 - (pack.priceINR / totalValue) * 100);
-
+    if (savings <= 0) {
          return (
              <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
                 <h3 className="text-3xl font-bold font-headline text-primary mb-2">Loved this checklist?</h3>
-                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong> and save over {savingsPercentage}%!</p>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong>!</p>
                 <Button asChild size="lg">
                     <Link href={`/packs/${pack.id}`}>Explore The Full Pack</Link>
                 </Button>
@@ -54,8 +45,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
          )
     }
 
-    const totalValue = (pack.checklists.length * relatedIndividualChecklist.priceINR); 
-    const savingsPercentage = Math.floor(100 - (pack.priceINR / totalValue) * 100);
+    const savingsPercentage = Math.floor((savings / totalValue) * 100);
 
     return (
         <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl text-center my-12 max-w-4xl mx-auto">
@@ -123,22 +113,6 @@ const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checkli
 
     return <div ref={ref}></div>;
 };
-
-const DisclaimerSection = () => (
-    <div className="container max-w-4xl mx-auto mt-16">
-        <div className="bg-destructive/10 border-l-4 border-destructive text-destructive-foreground p-6 rounded-r-lg">
-            <div className="flex items-start gap-4">
-                <AlertTriangle className="w-8 h-8 text-destructive mt-1 shrink-0"/>
-                <div>
-                    <h3 className="font-bold text-lg">Important Disclaimer</h3>
-                    <p className="text-sm opacity-90 mt-1">
-                        The documents and checklists provided by MoreMeets are intended for informational and guidance purposes only. They are not a substitute for professional legal, financial, medical, or safety advice. You should consult with a qualified and certified professional for your specific needs to ensure compliance with all applicable laws and regulations. Use of these materials is at your own risk.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-);
 
 
 export default function ChecklistClientPage({ checklist }: { checklist: IndividualChecklist }) {
@@ -223,8 +197,6 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
         <div className="container">
             <UpsellBanner packId={checklist.relatedPackId} />
         </div>
-        
-        <DisclaimerSection />
 
       </main>
        <Footer />
