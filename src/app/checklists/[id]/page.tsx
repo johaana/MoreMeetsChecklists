@@ -146,6 +146,7 @@ const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checkli
         }
     }, [paymentId, checklistId]);
 
+    // This div will contain the razorpay form, but it will be hidden.
     return <div ref={ref} className="hidden"></div>;
 };
 
@@ -221,20 +222,15 @@ export default function Page({ params }: { params: { id: string } }) {
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center">
-                             <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
+                            <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
                             <Button
                                 onClick={() => {
-                                    const rzpForm = document.querySelector(`form[data-payment_button_id="${checklist.paymentId}"]`);
+                                    const rzpForm = document.querySelector(`form[data-payment_button_id*="${checklist.paymentId}"]`);
                                     if (rzpForm && rzpForm.firstChild && rzpForm.firstChild instanceof HTMLElement) {
                                       rzpForm.firstChild.click();
                                     } else {
-                                        const rzpButton = document.querySelector(`div.razorpay-embed-btn[data-url*="${checklist.paymentId}"]`);
-                                        if (rzpButton instanceof HTMLElement) {
-                                            rzpButton.click();
-                                        } else {
-                                            console.error("Razorpay button or form not found");
-                                            alert("Could not initiate payment. Please contact support.");
-                                        }
+                                        console.error("Razorpay button or form not found to click.");
+                                        alert("Could not initiate payment. Please contact support.");
                                     }
                                 }}
                                 className="w-full font-bold group flex-col h-auto py-3 text-lg"
@@ -274,5 +270,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
