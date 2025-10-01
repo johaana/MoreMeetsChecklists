@@ -37,18 +37,29 @@ const AnnouncementBar = () => {
   return (
     <div className="bg-accent text-accent-foreground py-2 text-center text-sm font-semibold">
       <div className="relative h-5 overflow-hidden">
-        {slogans.map((slogan, index) => (
-          <span
-            key={index}
-            className={cn(
-              "absolute w-full transition-transform duration-500 ease-in-out",
-              index === currentSlogan ? "transform-none" : "translate-y-full",
-              (index < currentSlogan || (currentSlogan === 0 && index === slogans.length -1)) ? "-translate-y-full" : ""
-            )}
-          >
-            {slogan}
-          </span>
-        ))}
+        {slogans.map((slogan, index) => {
+          const isCurrent = index === currentSlogan;
+          const isPrevious = index === (currentSlogan - 1 + slogans.length) % slogans.length;
+
+          let transformClass = 'translate-y-full opacity-0';
+          if (isCurrent) {
+            transformClass = 'translate-y-0 opacity-100';
+          } else if (isPrevious) {
+            transformClass = '-translate-y-full opacity-0';
+          }
+
+          return (
+            <span
+              key={index}
+              className={cn(
+                "absolute w-full transition-transform transform duration-500 ease-in-out",
+                transformClass
+              )}
+            >
+              {slogan}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
@@ -83,7 +94,7 @@ const RotatingHeroText = () => {
             }
         };
 
-        const typingSpeed = isDeleting ? 50 : 150;
+        const typingSpeed = isDeleting ? 40 : 120; // Faster speeds
         const timer = setTimeout(handleTyping, typingSpeed);
 
         return () => clearTimeout(timer);
@@ -519,3 +530,5 @@ export default function HomePreviewPage() {
     </div>
   );
 }
+
+    
