@@ -5,13 +5,14 @@ import { premiumPacks } from '@/lib/premium-packs';
 import { ArrowLeft, FileCheck2 } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SiteHeader } from '@/components/layout/header';
 import { individualChecklists } from '@/lib/individual-checklists';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   params: { id: string }
@@ -109,6 +110,11 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
     if (relatedChecklists.length === 0) {
         return null;
     }
+    
+    const individualPrice = relatedChecklists[0]?.priceINR || 0;
+    const packPrice = premiumPacks.find(p => p.id === packId)?.priceINR || 0;
+    const savings = (relatedChecklists.length * individualPrice) - packPrice;
+
 
     return (
         <section className="w-full py-12 md:py-16">
@@ -118,7 +124,7 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
                         Just Need a Specific Solution?
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
-                        Start with one of our high-impact individual checklists.
+                        This pack is the best value, but you can also start with one of our high-impact individual checklists.
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -132,10 +138,10 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
                                 <p className="text-sm text-muted-foreground">{checklist.description}</p>
                             </CardContent>
                              <CardFooter className="flex-col items-center gap-2 pt-4">
-                                <p className="text-xl font-bold">₹{checklist.priceINR}</p>
-                                <Button asChild variant="secondary" className="w-full">
+                                <Button asChild variant="secondary" className="w-full font-bold flex-col h-auto py-2 text-base">
                                     <Link href={`/checklists/${checklist.id}`}>
-                                        View Details
+                                        <span className="text-sm font-medium">Own It Forever</span>
+                                        <span className="text-2xl font-bold">₹{checklist.priceINR}</span>
                                     </Link>
                                 </Button>
                             </CardFooter>
@@ -286,3 +292,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
