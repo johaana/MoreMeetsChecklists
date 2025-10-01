@@ -10,6 +10,7 @@ import { Menu, ArrowRight } from "lucide-react";
 import React from 'react';
 
 const mainNavLinks = [
+    { href: "/home-preview", label: "Home Preview", isPreview: true },
     { href: "/packs", label: "All Packages" },
     { href: "/#why-us", label: "Why Us" },
     { href: "/#faq", label: "FAQ" },
@@ -55,7 +56,12 @@ export function SiteHeader() {
             {/* Desktop Navigation */}
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 {mainNavLinks.map(link => (
-                     <Link key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+                     <Link 
+                        key={link.href} 
+                        href={link.href} 
+                        className={`text-sm font-medium transition-colors ${link.isPreview ? 'text-accent hover:text-accent/80' : 'text-muted-foreground hover:text-foreground'}`}
+                        prefetch={false}
+                     >
                         {link.label}
                     </Link>
                 ))}
@@ -81,7 +87,7 @@ export function SiteHeader() {
                                     <Link
                                         key={link.href}
                                         href={link.href}
-                                        className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                        className={`text-lg font-medium transition-colors ${link.isPreview ? 'text-accent hover:text-accent/80' : 'text-muted-foreground hover:text-foreground'}`}
                                         prefetch={false}
                                     >
                                         {link.label}
