@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -16,6 +16,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
+import { individualChecklists } from "@/lib/individual-checklists";
 
 
 const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
@@ -225,6 +226,56 @@ function PackList() {
     )
 }
 
+const IndividualChecklistsSection = () => {
+    const bestsellers = individualChecklists.slice(0, 5);
+
+    return (
+        <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                        Solve a Specific Problem, Instantly
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        Not ready for a full pack? Start with one of our most popular, high-impact checklists. The perfect way to see the MoreMeets standard in action.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    {bestsellers.map((checklist) => (
+                        <Card key={checklist.id} className="flex flex-col text-center rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border">
+                            <CardHeader className="p-6">
+                                {React.cloneElement(checklist.icon, { className: "w-10 h-10 text-accent mx-auto mb-3" })}
+                                <CardTitle className="text-lg font-headline">{checklist.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent className="px-6 flex-1">
+                                <p className="text-sm text-muted-foreground">{checklist.description}</p>
+                            </CardContent>
+                             <CardFooter className="p-6 pt-4 mt-auto flex-col items-center gap-4">
+                                <p className="text-2xl font-bold">₹{checklist.priceINR}</p>
+                                <Button asChild className="w-full font-bold" variant="secondary">
+                                    <Link href={`/checklists/${checklist.id}`}>
+                                        Learn More &amp; Buy
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+                 <div className="text-center mt-16">
+                    <Button asChild size="lg" className="group">
+                        <Link href="/checklists">
+                            View All Individual Checklists
+                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+
 const WhyDetailMatters = () => {
     const isMobile = useIsMobile();
 
@@ -398,6 +449,8 @@ export default function Home() {
             <PackList />
         </React.Suspense>
         
+        <IndividualChecklistsSection />
+
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">

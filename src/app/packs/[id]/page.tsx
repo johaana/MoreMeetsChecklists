@@ -11,6 +11,7 @@ import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SiteHeader } from '@/components/layout/header';
+import { individualChecklists } from '@/lib/individual-checklists';
 
 type Props = {
   params: { id: string }
@@ -101,6 +102,51 @@ const PainPointsSection = ({ category }: { category: string }) => {
         </section>
     );
 }
+
+const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
+    const relatedChecklists = individualChecklists.filter(ic => ic.relatedPackId === packId);
+
+    if (relatedChecklists.length === 0) {
+        return null;
+    }
+
+    return (
+        <section className="w-full py-12 md:py-16">
+            <div className="container px-4 md:px-6">
+                <div className="max-w-3xl mx-auto text-center mb-10">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                        Just Need a Specific Solution?
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
+                        Start with one of our high-impact individual checklists.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    {relatedChecklists.map((checklist) => (
+                        <Card key={checklist.id} className="flex flex-col text-center rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                             <CardHeader>
+                                {React.cloneElement(checklist.icon, { className: "w-8 h-8 text-accent mx-auto mb-2" })}
+                                <CardTitle className="text-base font-headline leading-snug">{checklist.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <p className="text-sm text-muted-foreground">{checklist.description}</p>
+                            </CardContent>
+                             <CardFooter className="flex-col items-center gap-2 pt-4">
+                                <p className="text-xl font-bold">₹{checklist.priceINR}</p>
+                                <Button asChild variant="secondary" className="w-full">
+                                    <Link href={`/checklists/${checklist.id}`}>
+                                        View Details
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 
 export default function Page({ params }: { params: { id: string } }) {
   const pack = premiumPacks.find((p) => p.id === params.id);
@@ -231,6 +277,8 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
             </div>
         </section>
+
+        <IndividualChecklistsTeaser packId={pack.id} />
 
 
       </main>
