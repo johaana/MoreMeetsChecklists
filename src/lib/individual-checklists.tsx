@@ -28,7 +28,7 @@ export const individualChecklists: IndividualChecklist[] = [
         description: "The critical daily checklist to ensure your kitchen is safe, sanitary, and ready for service, aligned with HACCP principles.",
         longDescription: "This checklist is the foundation of a safe food service operation. It goes beyond simple cleaning tasks to cover critical control points like equipment temperature verification, sanitizer concentration checks, and staff hygiene readiness. By using this checklist daily, you create a verifiable record of due diligence, protecting your business from compliance issues and your customers from foodborne illness.",
         relatedPackId: "restaurant_operations_checklist",
-        whoIsItFor: ["Head Chefs", "Restaurant Owners", "Kitchen Managers", "Food Safety Officers"],
+        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "Food Safety Officers"],
         painPoints: [
             {
                 title: "Prevent Food Safety Violations",
@@ -68,7 +68,7 @@ export const individualChecklists: IndividualChecklist[] = [
         description: "A life-saving, three-phase protocol (Sign In, Time Out, Sign Out) based on WHO guidelines to prevent surgical errors.",
         longDescription: "In the high-stakes environment of an operating room, there is no margin for error. This checklist operationalizes the globally recognized WHO Surgical Safety guidelines into a clear, actionable protocol for your team. It covers the critical pre-operative 'Sign In', the pre-incision 'Time Out', and the post-operative 'Sign Out', ensuring that every member of the surgical team is aligned on patient identity, surgical site, and procedural details. Implementing this checklist is one of the most effective single actions a hospital can take to improve patient safety and reduce surgical complications.",
         relatedPackId: "healthcare_compliance_suite",
-        whoIsItFor: ["Hospital COOs", "Heads of Quality & Compliance", "Chief Medical Officers", "OT In-charges"],
+        whoIsItFor: ["Hospital COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "OT In-charges"],
         painPoints: [
             {
                 title: "Prevent 'Never Events'",
@@ -112,7 +112,7 @@ export const individualChecklists: IndividualChecklist[] = [
         description: "A crucial safety protocol to ensure machinery is properly de-energized and cannot be restarted during maintenance or repair.",
         longDescription: "The unexpected startup of machinery during service is one of the most severe industrial hazards. This checklist provides a step-by-step procedure for isolating and de-energizing equipment, covering the identification of energy sources, application of locks and tags, verification of zero-energy state, and the safe re-energizing process. This is not just a best practice; it's a life-saving system that is essential for OSHA/EHS compliance and protecting your most valuable asset: your employees.",
         relatedPackId: "manufacturing_plant_pack",
-        whoIsItFor: ["Plant Heads", "EHS Officers", "Maintenance Supervisors", "Production Managers"],
+        whoIsItFor: ["Plant Heads", "Production Managers", "EHS Officers", "Maintenance Supervisors"],
         painPoints: [
             {
                 title: "Prevent Fatal Accidents",
@@ -152,7 +152,7 @@ export const individualChecklists: IndividualChecklist[] = [
         description: "A proactive checklist to deter theft, reduce inventory shrinkage, and protect your store's bottom line.",
         longDescription: "Inventory shrinkage can be a silent killer of profitability. This checklist provides a multi-layered security framework for your retail store. It covers daily operational checks for CCTV systems and EAS gates, protocols for high-value merchandise, fitting room monitoring procedures to prevent tag removal, and secure opening/closing procedures. It turns your entire staff into active participants in loss prevention, directly protecting your profits.",
         relatedPackId: "retail_operations_pack",
-        whoIsItFor: ["Retail Store Owners", "Heads of Loss Prevention", "Store Managers", "District Managers"],
+        whoIsItFor: ["Retail Store Owners", "Heads of Loss Prevention", "District Managers", "Store Managers"],
         painPoints: [
             {
                 title: "Reduce Inventory Shrinkage",
@@ -192,7 +192,7 @@ export const individualChecklists: IndividualChecklist[] = [
         description: "A foundational checklist for ensuring a safe campus, from gate management and visitor verification to perimeter patrols.",
         longDescription: "For any educational institution, the safety of students is the number one priority. This checklist provides a comprehensive framework for your daily security operations. It covers the essential duties of security personnel, including access control at gates, a strict protocol for visitor and vendor management, scheduled patrols of the campus perimeter and buildings, and CCTV monitoring. Implementing this system demonstrates a clear and robust commitment to safety, providing peace of mind to parents, staff, and students.",
         relatedPackId: "education_sector_pack",
-        whoIsItFor: ["School Principals", "Head of Administration", "Security Supervisors", "School Trustees"],
+        whoIsItFor: ["School Trustees", "School Principals", "Head of Administration", "Security Supervisors"],
         painPoints: [
             {
                 title: "Prevent Unauthorized Access",
