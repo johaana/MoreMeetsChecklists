@@ -1,12 +1,14 @@
 
+'use client';
+
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Check, Hospital } from 'lucide-react';
+import { ArrowLeft, Check } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Footer } from '@/components/layout/footer';
 import { SiteHeader } from '@/components/layout/header';
-import { individualChecklists, IndividualChecklist } from '@/lib/individual-checklists';
+import { individualChecklists } from '@/lib/individual-checklists';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -43,7 +45,25 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
             </Button>
         </div>
     );
-}
+};
+
+const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
+    const ref = React.useRef<HTMLFormElement>(null);
+
+    React.useEffect(() => {
+        if (ref.current && ref.current.children.length === 0) {
+            const script = document.createElement('script');
+            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+            script.async = true;
+            script.setAttribute('data-payment_button_id', paymentId);
+            
+            ref.current.appendChild(script);
+        }
+    }, [paymentId]);
+
+    return <form ref={ref}></form>;
+};
+
 
 export default function Page() {
   const checklist = individualChecklists.find((c) => c.id === checklistId);
@@ -59,7 +79,7 @@ export default function Page() {
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
             <Link href="/checklists" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
                 <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
-                All Individual Checklists
+                All Bestselling Checklists
             </Link>
         </nav>
       </header>
@@ -109,16 +129,15 @@ export default function Page() {
                 </div>
                  <div className="sticky top-24">
                      <Card className="shadow-2xl border-2 border-primary/20">
-                        <CardHeader className="text-center">
+                        <CardHeader className="text-center pb-2">
                             <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center">
-                            <p className="text-5xl font-bold mb-4">₹{checklist.priceINR}</p>
-                            <Button size="lg" className="w-full h-12 text-lg font-bold">
-                                {/* Razorpay button will be added here */}
-                                Buy Now
-                            </Button>
+                            <div className="my-4">
+                                <span className="text-5xl font-bold">₹{checklist.priceINR}</span>
+                            </div>
+                            <RazorpayButton paymentId={checklist.paymentId} />
                              <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                         </CardContent>
                     </Card>

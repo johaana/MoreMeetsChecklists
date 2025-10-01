@@ -21,7 +21,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'haccp-kitchen-opening',
         title: "Kitchen Opening Checklist (HACCP Focus)",
         priceINR: 1299,
-        paymentId: "pl_test_1299_id", // Replace with actual 1299 ID
+        paymentId: "pl_1299_placeholder",
         category: "Restaurant",
         icon: <CookingPot />,
         description: "The critical daily checklist to ensure your kitchen is safe, sanitary, and ready for service, aligned with HACCP principles.",
@@ -47,7 +47,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'surgical-safety',
         title: "Surgical Safety Checklist (WHO Aligned)",
         priceINR: 1999,
-        paymentId: "pl_test_1999_id", // Replace with actual 1999 ID
+        paymentId: "pl_1999_placeholder",
         category: "Healthcare",
         icon: <Hospital />,
         description: "A life-saving, three-phase protocol (Sign In, Time Out, Sign Out) based on WHO guidelines to prevent surgical errors.",
@@ -73,7 +73,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'lock-out-tag-out',
         title: "Lock-Out Tag-Out (LOTO) Procedure",
         priceINR: 1999,
-        paymentId: "pl_test_1999_id", // Replace with actual 1999 ID
+        paymentId: "pl_1999_placeholder",
         category: "Manufacturing",
         icon: <Lock />,
         description: "A crucial safety protocol to ensure machinery is properly de-energized and cannot be restarted during maintenance or repair.",
@@ -99,7 +99,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'retail-loss-prevention',
         title: "Retail Security & Loss Prevention",
         priceINR: 1299,
-        paymentId: "pl_test_1299_id", // Replace with actual 1299 ID
+        paymentId: "pl_1299_placeholder",
         category: "Retail",
         icon: <Shield />,
         description: "A proactive checklist to deter theft, reduce inventory shrinkage, and protect your store's bottom line.",
@@ -125,7 +125,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'campus-security',
         title: "Campus Security & Patrolling",
         priceINR: 1299,
-        paymentId: "pl_test_1299_id", // Replace with actual 1299 ID
+        paymentId: "pl_1299_placeholder",
         category: "Education",
         icon: <HardHat />,
         description: "A foundational checklist for ensuring a safe campus, from gate management and visitor verification to perimeter patrols.",

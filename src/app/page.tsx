@@ -252,10 +252,10 @@ const IndividualChecklistsSection = () => {
                                 <p className="text-sm text-muted-foreground">{checklist.description}</p>
                             </CardContent>
                              <CardFooter className="p-6 pt-4 mt-auto flex-col items-center gap-4">
-                                <p className="text-2xl font-bold">₹{checklist.priceINR}</p>
-                                <Button asChild className="w-full font-bold" variant="secondary">
+                                <Button asChild className="w-full font-bold flex-col h-auto" variant="secondary">
                                     <Link href={`/checklists/${checklist.id}`}>
-                                        Learn More &amp; Buy
+                                        <span>Own It Forever</span>
+                                        <span className="text-xl font-bold">₹{checklist.priceINR}</span>
                                     </Link>
                                 </Button>
                             </CardFooter>
@@ -265,7 +265,7 @@ const IndividualChecklistsSection = () => {
                  <div className="text-center mt-16">
                     <Button asChild size="lg" className="group">
                         <Link href="/checklists">
-                            View All Individual Checklists
+                            View All Bestselling Checklists
                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>

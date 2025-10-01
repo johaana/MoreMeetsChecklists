@@ -1,6 +1,7 @@
 
 import { MetadataRoute } from 'next'
 import { premiumPacks } from '@/lib/premium-packs'
+import { individualChecklists } from '@/lib/individual-checklists'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://www.moremeets.com'; // Replace with your actual domain
@@ -24,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/checklists`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
     },
     {
       url: `${siteUrl}/contact`,
@@ -77,5 +84,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...packRoutes];
+  // Dynamic pages for individual checklists
+  const checklistRoutes = individualChecklists.map((checklist) => ({
+    url: `${siteUrl}/checklists/${checklist.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...packRoutes, ...checklistRoutes];
 }

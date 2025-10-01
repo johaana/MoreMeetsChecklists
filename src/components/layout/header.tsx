@@ -11,7 +11,7 @@ import React from 'react';
 
 const mainNavLinks = [
     { href: "/packs", label: "All Packages" },
-    { href: "/checklists", label: "Individual Checklists" },
+    { href: "/checklists", label: "Bestselling Checklists" },
     { href: "/#why-us", label: "Why Us" },
     { href: "/#faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
