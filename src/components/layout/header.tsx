@@ -26,6 +26,16 @@ export function SiteHeader() {
     }, [pathname]);
 
 
+    const BrandLogo = () => (
+         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+            <Logo className="h-6 w-6 text-primary" />
+            <div className="flex flex-col">
+                <span className="font-headline text-lg font-bold leading-tight">MoreMeets</span>
+                <span className="text-xs text-muted-foreground leading-tight -mt-0.5">Less misses.</span>
+            </div>
+        </Link>
+    );
+
     if (pathname === '/sales-consultancy') {
         return (
              <header className="px-4 lg:px-6 h-16 flex items-center bg-background sticky top-0 z-50 border-b">
@@ -48,10 +58,9 @@ export function SiteHeader() {
     // All other pages get the standard header
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-            <Link href="/" className="flex items-center justify-center gap-2 mr-6" prefetch={false}>
-                <Logo className="h-6 w-6 text-primary" />
-                <span className="font-headline text-lg font-bold">MoreMeets</span>
-            </Link>
+            <div className="mr-6">
+                <BrandLogo />
+            </div>
             
             {/* Desktop Navigation */}
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
@@ -78,10 +87,9 @@ export function SiteHeader() {
                     </SheetTrigger>
                     <SheetContent side="right">
                         <div className="flex flex-col gap-4 p-4">
-                            <Link href="/" className="flex items-center justify-center gap-2 mb-4" prefetch={false}>
-                                <Logo className="h-6 w-6 text-primary" />
-                                <span className="font-headline text-lg font-bold">MoreMeets</span>
-                            </Link>
+                            <div className="mb-4">
+                                <BrandLogo />
+                            </div>
                             <nav className="flex flex-col gap-3">
                                 {mainNavLinks.map(link => (
                                     <Link

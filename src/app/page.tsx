@@ -204,7 +204,7 @@ function PackList() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold">
+                                <Button asChild className="w-full font-bold" variant="default">
                                     <Link href={`/packs/${pack.id}`}>
                                         View Full Checklist &amp; Purchase
                                     </Link>
@@ -420,6 +420,9 @@ export default function Home() {
                     <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                       The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
+                    <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
+                      Meet More Standards. More Compliance. More Consistency.
+                    </h2>
                     <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
                       Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                     </p>
@@ -498,4 +501,5 @@ export default function Home() {
     </div>
   );
 }
+
 
