@@ -76,7 +76,7 @@ export default function AllIndividualChecklistsPage() {
                                 <p className="text-sm text-muted-foreground">{checklist.description}</p>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto flex flex-col items-start gap-4">
-                                <Button asChild className="w-full font-bold group flex-col h-auto py-2">
+                                <Button asChild className="w-full font-bold group flex-col h-auto py-2" variant="secondary">
                                     <Link href={`/checklists/${checklist.id}`}>
                                         <span className="text-sm font-medium">Own It Forever</span>
                                         <span className="text-2xl font-bold">₹{checklist.priceINR}</span>
@@ -105,3 +105,5 @@ export default function AllIndividualChecklistsPage() {
     </div>
   );
 }
+
+    

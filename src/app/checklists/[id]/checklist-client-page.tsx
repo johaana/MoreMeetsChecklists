@@ -43,7 +43,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
 
     if (savings <= 0) {
          return (
-             <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl my-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+             <div className="bg-secondary/50 border border-dashed border-accent/50 p-8 rounded-2xl my-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shrink-0">
                     <Layers className="w-8 h-8" />
                 </div>
@@ -61,7 +61,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
     const savingsPercentage = Math.floor((savings / totalValue) * 100);
 
     return (
-        <div className="bg-accent/10 border-2 border-dashed border-accent/50 p-8 rounded-2xl my-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+        <div className="bg-secondary/50 border border-dashed border-accent/50 p-8 rounded-2xl my-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shrink-0">
                 <Layers className="w-8 h-8" />
             </div>
@@ -108,28 +108,31 @@ const PaymentDisclaimerDialog = () => (
 );
 
 const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checklistId: string }) => {
-    const ref = React.useRef<HTMLDivElement>(null);
+    const formRef = React.useRef<HTMLFormElement>(null);
 
     React.useEffect(() => {
-        if (ref.current && ref.current.children.length === 0) {
-            const script = document.createElement('script');
-            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-            script.async = true;
-            script.setAttribute('data-payment_button_id', paymentId);
-            
-            const form = document.createElement('form');
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'checklist_id';
-            input.value = checklistId;
-            form.appendChild(input);
-            form.appendChild(script);
-
-            ref.current.appendChild(form);
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.async = true;
+        script.setAttribute('data-payment_button_id', paymentId);
+        
+        if (formRef.current) {
+            formRef.current.appendChild(script);
         }
-    }, [paymentId, checklistId]);
 
-    return <div ref={ref}></div>;
+        return () => {
+            // Clean up the script when the component unmounts
+            if (formRef.current && script.parentNode === formRef.current) {
+                formRef.current.removeChild(script);
+            }
+        };
+    }, [paymentId]);
+
+    return (
+        <form ref={formRef} className="razorpay-form">
+            <input type="hidden" name="checklist_id" value={checklistId} />
+        </form>
+    );
 };
 
 
@@ -201,7 +204,9 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         </CardHeader>
                         <CardContent className="text-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
+                           <div className="[&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full">
+                                <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
+                           </div>
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
@@ -221,3 +226,5 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </div>
   );
 }
+
+    
