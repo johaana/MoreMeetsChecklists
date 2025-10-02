@@ -33,11 +33,8 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
 
     const relatedIndividualChecklists = individualChecklists.filter(ic => ic.relatedPackId === packId);
     
-    // To calculate savings, we need a representative price for an individual checklist.
-    // We'll take the price of the first related one we find.
     const representativeIndividualPrice = relatedIndividualChecklists[0]?.priceINR || 1299;
     
-    // Total value if all checklists in the pack were bought individually.
     const totalValue = pack.checklists.length * representativeIndividualPrice;
     const savings = totalValue - pack.priceINR;
 
@@ -121,7 +118,6 @@ const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checkli
         }
 
         return () => {
-            // Clean up the script when the component unmounts
             if (formRef.current && script.parentNode === formRef.current) {
                 formRef.current.removeChild(script);
             }
@@ -204,7 +200,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         </CardHeader>
                         <CardContent className="text-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <div className="[&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full">
+                           <div className="[&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
                                 <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
                            </div>
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>

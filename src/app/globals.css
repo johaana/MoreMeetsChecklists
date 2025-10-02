@@ -12,11 +12,11 @@
     --popover-foreground: 212 88% 13%;
     --primary: 212 88% 13%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 45 35% 95%;
+    --secondary: 35 92% 95%;
     --secondary-foreground: 212 88% 13%;
     --muted: 45 35% 91%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 38 92% 56%;
+    --accent: 35 92% 56%;
     --accent-foreground: 212 88% 13%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -83,5 +83,3 @@
 html {
   scroll-behavior: smooth;
 }
-
-    
