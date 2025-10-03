@@ -59,11 +59,11 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
         sampleItems: [
-            "NEW: Manage your digital guest experience with a 'Guest-Facing Technology Audit'.",
-            "NEW: Implement a 'Pre-Arrival Personalization Protocol' to drive ancillary revenue.",
-            "NEW: Track your environmental goals with a 'Weekly Sustainability & Utility Audit'.",
-            "Prevent social media crises with a 'Guest Complaint Escalation' protocol.",
-            "Secure your assets with a 'Valet & Vehicle Key Management' system."
+            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
+            "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
+            "Ensure 'Critical Test Result Communication' is timely and logged.",
+            "Master the 'High-Risk Patient Handover' to prevent information loss.",
+            "NEW: Includes a 'CSSD Audit' and 'Unidentified Patient Intake' protocol."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -677,9 +677,9 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "A critical public health checklist to prevent sick employees from handling food and causing a foodborne illness outbreak.",
                 tasks: [
                     { id: 'FIT-001', description: "Before each shift, conduct a brief, confidential huddle where each team member gives a verbal 'fit to work' confirmation.", priority: 'High', riskLevel: 'High', proof: 'Shift Huddle Log', location: 'Kitchen/Staff Area' },
-                    { id: 'FIT-002', description: "Any staff reporting symptoms of GI illness (vomiting, diarrhea) are immediately sent home.", priority: 'High', riskLevel: 'High', proof: 'Illness Log', location: "Manager's Office" },
-                    { id: 'FIT-003', description: "Shifts for sick employees must be covered from a pre-approved 'on-call' list, not by pressuring other staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Roster Change Log', location: "Manager's Office" },
-                    { id: 'FIT-004', description: "An employee sent home cannot return to work until they have been symptom-free for at least 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Return to Work Form', location: "Manager's Office" },
+                    { id: 'FIT-002', description: "Any staff reporting symptoms of GI illness (vomiting, diarrhea) are immediately sent home.", priority: 'High', riskLevel: 'High', proof: 'Illness Log', location: 'Manager\'s Office' },
+                    { id: 'FIT-003', description: "Shifts for sick employees must be covered from a pre-approved 'on-call' list, not by pressuring other staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Roster Change Log', location: 'Manager\'s Office' },
+                    { id: 'FIT-004', description: "An employee sent home cannot return to work until they have been symptom-free for at least 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Return to Work Form', location: 'Manager\'s Office' },
                 ]
             },
             {
@@ -2151,7 +2151,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'personal_travel_pack',
         title: "Personal Travel & Vacation Checklist",
         priceUSD: 19.99,
-        priceINR: 1499,
+        priceINR: 1299,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Personal",
         description: "For frequent travelers. A personal toolkit to ensure you never forget the essentials, from packing to pre-departure home checks.",

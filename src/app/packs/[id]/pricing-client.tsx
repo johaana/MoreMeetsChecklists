@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import Script from 'next/script';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -123,6 +123,33 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     const professionalPaymentId = 'pl_RMnYKoxjfq5XCx';
     const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
+
+    if (pack.id === 'personal_travel_pack') {
+        return (
+             <section className="w-full py-12 md:py-16" id="pricing">
+                <div className="container px-4 md:px-6">
+                     <div className="max-w-md mx-auto">
+                        <Card className="shadow-2xl border-2 border-primary/20">
+                            <CardHeader className="text-center pb-4">
+                                <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
+                                <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="text-center">
+                               <p className="text-4xl font-extrabold mb-4">₹{pack.priceINR}</p>
+                               <div className="[&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                                    <RazorpayButton paymentId={pack.paymentId} />
+                               </div>
+                                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+                            </CardContent>
+                             <CardFooter className="flex-col gap-2 pt-2 items-center">
+                                <PaymentDisclaimerDialog />
+                             </CardFooter>
+                        </Card>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     const pricingCards = [
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
