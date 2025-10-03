@@ -28,7 +28,7 @@ const HowWeAreDifferentSection = () => (
             <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
                 <div className="text-center mb-8">
                      <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
-                        From Crisis Prevention to AI-Powered Audits, Our Checklists Turn Best Practices into Daily Habits.
+                        We Don't Sell Software. We Sell The System.
                     </h2>
                 </div>
                 <div className="space-y-6 text-center text-muted-foreground md:text-lg">
@@ -38,8 +38,8 @@ const HowWeAreDifferentSection = () => (
                     <p>
                         MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates.</strong>
                     </p>
-                     <p className="text-foreground font-semibold">
-                        In short: <strong>we don’t sell software. We sell the actual operational checklists</strong> that managers and teams can start using from day one.
+                     <p className="text-foreground font-semibold italic">
+                        From Crisis Prevention to AI-Powered Audits, our checklists turn best practices into daily habits.
                     </p>
                 </div>
             </div>
@@ -501,5 +501,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
