@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign } from "lucide-react";
 
 const allPacks = [
     {
@@ -15,10 +15,9 @@ const allPacks = [
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
         sampleItems: [
-            "Master 'Guest Complaint Escalation' to prevent social media crises.",
-            "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety.",
-            "Standardize the critical 'Night Audit' process for financial accuracy.",
-            "NEW: Includes 'Sustainability & ESG', 'Social Media Crisis Drills', and 'Guest Tech' audits."
+            "Prevent social media crises with a 'Guest Complaint Escalation' protocol.",
+            "Secure your assets with a 'Valet & Vehicle Key Management' system.",
+            "NEW: Includes 'Sustainability & ESG', 'Social Media Crisis Drills', and a 'Minibar Auditing' checklist to prevent charge disputes."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -85,6 +84,32 @@ const allPacks = [
                     { id: 'HK-LRM-003', description: "Inspect returned linen for damages or stubborn stains; segregate for repair or discard", priority: 'High', riskLevel: 'Medium', proof: 'Damage Log', location: 'Linen Room' },
                     { id: 'HK-LRM-004', description: "Ensure all shelves and storage areas are clean, dry, and organized", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Linen Room' },
                     { id: 'HK-LRM-005', description: "Maintain a clear separation between clean and soiled linen storage", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Linen Room' }
+                ]
+            },
+            {
+                title: "🍸 Minibar Restocking & Auditing Protocol",
+                department: "F&B/Housekeeping",
+                frequency: "Daily",
+                role: "Minibar Attendant",
+                summary: "A revenue-protection checklist to accurately track minibar consumption, prevent charge disputes, and ensure proper restocking.",
+                tasks: [
+                    { id: 'MBAR-001', description: "Before restocking, take a timestamped photo of the minibar's current contents.", priority: 'High', riskLevel: 'Medium', proof: 'Photo Log', location: 'Guest Room' },
+                    { id: 'MBAR-002', description: "Scan the barcode of each item being restocked to add it to the guest's bill in the PMS.", priority: 'High', riskLevel: 'High', proof: 'PMS Log', location: 'Guest Room' },
+                    { id: 'MBAR-003', description: "Both the restocking attendant and the floor supervisor must co-sign the daily minibar consumption report.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Report', location: 'Floor Pantry' },
+                    { id: 'MBAR-004', description: "Check expiry dates of all items in the minibar and replace any items nearing expiry.", priority: 'Medium', riskLevel: 'Medium', proof: 'Expiry Log', location: 'Guest Room' },
+                ]
+            },
+            {
+                title: "🔑 Valet & Guest Vehicle Key Management",
+                department: "Security/Front Office",
+                frequency: "Per Vehicle",
+                role: "Valet/Bell Captain",
+                summary: "A high-stakes protocol to prevent key misplacement and vehicle theft, ensuring a secure and auditable chain of custody for all guest vehicles.",
+                tasks: [
+                    { id: 'VALET-001', description: "Log all vehicle keys into a key-tracking system with a timestamp upon guest arrival.", priority: 'High', riskLevel: 'High', proof: 'Key System Log', location: 'Valet Desk' },
+                    { id: 'VALET-002', description: "The key must be physically scanned by both the valet receiving the car and the valet retrieving the car.", priority: 'High', riskLevel: 'High', proof: 'Scan Log', location: 'Valet Desk' },
+                    { id: 'VALET-003', description: "Store all keys in a locked, access-controlled key cabinet.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Key Cabinet' },
+                    { id: 'VALET-004', description: "Perform a random daily audit of 5 physical keys against the system log to ensure accuracy.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Log', location: 'Key Cabinet' },
                 ]
             },
             {
@@ -226,10 +251,9 @@ const allPacks = [
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
         sampleItems: [
-            "Implement a 'Business Continuity Plan' and 'Critical Systems Alert Response'.",
-            "Master 'Site Commissioning' & 'Decommissioning' protocols.",
-            "Manage 'Capital Asset Lifecycle' and operational budgets effectively.",
-            "NEW: Manage the 'Hybrid Workplace' and 'Smart Building IoT Systems'."
+            "Implement a 'Business Continuity Plan' and a 'Critical Systems Alert Response' protocol.",
+            "Manage 'Capital Asset Lifecycle' and prevent catastrophic failures.",
+            "NEW: Manage the 'Hybrid Workplace', 'Smart Building IoT Systems', and prevent 'Clean Desk' data breaches."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -254,6 +278,32 @@ const allPacks = [
                     { id: 'DSO-003', description: "Inspect general office area", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office Area' },
                     { id: 'DSO-004', description: "Check and verify meeting rooms", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Meeting Rooms' },
                     { id: 'DSO-005', description: "Verify Cafeteria / Pantry Readiness", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Cafeteria' }
+                ]
+            },
+            {
+                title: "🧹 Clean Desk & Visual Data Security Policy",
+                department: "Security/Compliance",
+                frequency: "Daily",
+                role: "Floor Warden",
+                summary: "A crucial daily sweep to prevent data breaches caused by sensitive information being left visible in the office.",
+                tasks: [
+                    { id: 'CDP-001', description: "At end of day, ensure all whiteboards in meeting rooms and common areas are erased.", priority: 'High', riskLevel: 'Medium', proof: 'Photo Log', location: 'Office Area' },
+                    { id: 'CDP-002', description: "Check that no documents containing sensitive information are left on desks.", priority: 'High', riskLevel: 'High', proof: 'Visual Sweep Log', location: 'Office Area' },
+                    { id: 'CDP-003', description: "Verify no sensitive documents are left in printer trays.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Printer Area' },
+                    { id: 'CDP-004', description: "Ensure all visitors are using privacy screens on laptops in common areas.", priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Lobby' },
+                ]
+            },
+            {
+                title: "🚪 Employee & Vendor Offboarding Protocol",
+                department: "HR/IT/Security",
+                frequency: "Per Offboarding",
+                role: "HR Manager",
+                summary: "A security-critical checklist to ensure that terminated employees or vendors cannot access company systems or premises, preventing data theft and sabotage.",
+                tasks: [
+                    { id: 'OFFB-001', description: "Deactivate all of the user's network and system access credentials within one hour of termination.", priority: 'High', riskLevel: 'High', proof: 'IT Ticket', location: 'IT Department' },
+                    { id: 'OFFB-002', description: "Revoke physical access by deactivating their access card.", priority: 'High', riskLevel: 'High', proof: 'Access Control Log', location: 'Security Office' },
+                    { id: 'OFFB-003', description: "Retrieve all company assets (laptop, phone, ID card) and get a signed acknowledgement.", priority: 'High', riskLevel: 'Medium', proof: 'Asset Return Form', location: 'HR Department' },
+                    { id: 'OFFB-004', description: "Forward user's email to their manager and set up an auto-reply.", priority: 'Medium', riskLevel: 'Low', proof: 'IT Ticket', location: 'IT Department' },
                 ]
             },
             {
@@ -296,20 +346,6 @@ const allPacks = [
                     { id: 'QAT-003', description: "Assess space utilization and planning", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Office Area' },
                     { id: 'QAT-004', description: "Perform an asset condition audit", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
                     { id: 'QAT-005', description: "Review and update insurance policies", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Facility Office' }
-                ]
-            },
-            {
-                title: "🧹 Housekeeping & Cleaning",
-                department: "Housekeeping",
-                frequency: "Daily",
-                role: "Housekeeping Supervisor",
-                summary: "Detailed cleaning protocols to maintain a pristine and hygienic workplace environment, from daily tasks to periodic deep cleaning schedules.",
-                tasks: [
-                    { id: 'HKC-001', description: "Daily Deep Cleaning", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
-                    { id: 'HKC-002', description: "High-level and Façade Cleaning", priority: 'Medium', riskLevel: 'High', proof: 'Photo / Log', location: 'Exterior' },
-                    { id: 'HKC-003', description: "Washroom and Restroom Cleaning", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Restrooms' },
-                    { id: 'HKC-004', description: "Floor Care and Maintenance", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' },
-                    { id: 'HKC-005', description: "Carpet and Upholstery Care", priority: 'Medium', riskLevel: 'Low', proof: 'Photo / Log', location: 'Office Area' }
                 ]
             },
             {
@@ -411,8 +447,8 @@ const allPacks = [
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
-            "Ensure compliance with a detailed 'Daily Temperature & HACCP Logs' checklist.",
-            "Standardize staff hygiene to prevent cross-contamination and illness."
+            "NEW: Prevent cross-contamination with a dedicated 'Kitchen Allergy Handling' protocol.",
+            "Standardize staff hygiene to prevent foodborne illness."
         ],
         previewScenario: {
             title: "Ensuring Food Safety from Kitchen to Customer",
@@ -451,6 +487,20 @@ const allPacks = [
                     { id: 'CK-FRS-003', description: "Verify that deliveries match the purchase order and invoice.", priority: 'High', riskLevel: 'Medium', proof: 'Invoice Sign-off', location: 'Receiving Area' },
                     { id: 'CK-FRS-004', description: "Check 'use-by' or expiry dates of all items and reject any that are expired.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
                     { id: 'CK-FRS-005', description: "Move all cold/frozen items to their respective storage areas immediately.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Storage' }
+                ]
+            },
+            {
+                title: "🥜 Kitchen Allergy Handling Protocol",
+                department: "F&B",
+                frequency: "Per Allergy Order",
+                role: "Head Chef/Line Cook",
+                summary: "A life-saving checklist to prevent cross-contamination and ensure guests with allergies can dine safely.",
+                tasks: [
+                    { id: 'ALLERGY-001', description: "Upon receiving an allergy-flagged order, the Head Chef must verbally confirm the allergy with the server.", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Kitchen' },
+                    { id: 'ALLERGY-002', description: "The station handling the order must be completely wiped down and sanitized.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen Station' },
+                    { id: 'ALLERGY-003', description: "A new set of designated, purple-colored utensils (tongs, spoons) and a separate cutting board must be used.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen Station' },
+                    { id: 'ALLERGY-004', description: "The cook must change their gloves before preparing the allergy-safe meal.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen Station' },
+                    { id: 'ALLERGY-005', description: "The finished allergy-safe dish must be clearly marked (e.g., with a purple pick) before it leaves the kitchen.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen Pass' },
                 ]
             },
             {
@@ -549,10 +599,10 @@ const allPacks = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Ensure 'High-Risk Patient Handovers' are error-free.",
-            "Master the 'Surgical Safety Checklist' based on WHO guidelines.",
-            "Ensure 'Infection Control' with rigorous ward and ICU sanitation SOPs.",
-            "NEW: Includes 'Telemedicine Protocol' and 'EMR Data Integrity' checklists."
+            "Prevent errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
+            "Ensure 'Critical Test Result Communication' is timely and logged.",
+            "Master the WHO-aligned 'Surgical Safety Checklist'.",
+            "NEW: Includes a 'Telemedicine Protocol' and an 'MRI Suite Safety' checklist to prevent projectile incidents."
         ],
         previewScenario: {
             title: "Preventing a Medication Error",
@@ -560,7 +610,7 @@ const allPacks = [
             tasks: [
                 { id: 'PH-PV-001', description: "Verify patient identity using at least two identifiers (e.g., name and MRN).", sourceChecklist: "Prescription Verification", priority: 'High' },
                 { id: 'PH-PV-002', description: "Check prescription for legibility, completeness, and for any contraindications.", sourceChecklist: "Prescription Verification", priority: 'High' },
-                { id: 'PH-CSI-003', description: "Perform double-check with another pharmacist for all high-risk medication dispensing.", sourceChecklist: "Controlled Substance Inventory", priority: 'High' },
+                { id: 'LASA-001', description: "For designated LASA drugs, store them in separate, labeled bins with 'TALL-man' lettering.", sourceChecklist: "Look-Alike, Sound-Alike Drug Protocol", priority: 'High' },
                 { id: 'NUR-MA-002', description: "Cross-verify medication label against the patient's chart at the bedside before administration.", sourceChecklist: "Medication Administration", priority: 'High' }
             ]
         },
@@ -577,6 +627,19 @@ const allPacks = [
                     { id: 'PH-PV-003', description: "Accurately dispense the correct medication, dosage, and quantity.", priority: 'High', riskLevel: 'High', proof: 'Dispensing Log', location: 'Pharmacy' },
                     { id: 'PH-PV-004', description: "Label the medication clearly with patient name, drug name, strength, and instructions.", priority: 'High', riskLevel: 'High', proof: 'Label Check', location: 'Pharmacy' },
                     { id: 'PH-PV-005', description: "Provide counseling to the patient or caregiver on how to take the medication.", priority: 'Medium', riskLevel: 'Medium', proof: 'Counseling Log', location: 'Pharmacy' }
+                ]
+            },
+            {
+                title: "💊 Look-Alike, Sound-Alike (LASA) Drug Protocol",
+                department: "Pharmacy/Quality",
+                frequency: "Ongoing",
+                role: "Pharmacist",
+                summary: "A critical safety checklist to prevent medication errors caused by confusing drug names or packaging.",
+                tasks: [
+                    { id: 'LASA-001', description: "For designated LASA drugs, store them in separate, distinctively labeled bins with 'TALL-man' lettering (e.g., hydrOXYzine vs. hydrALAZINE).", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Pharmacy' },
+                    { id: 'LASA-002', description: "Require a 'two-person sign-off' for the dispensing of any LASA drug.", priority: 'High', riskLevel: 'High', proof: 'Dispensing Log', location: 'Pharmacy' },
+                    { id: 'LASA-003', description: "Place visual alerts in the EMR/pharmacy system to flag LASA drugs during order entry.", priority: 'High', riskLevel: 'Medium', proof: 'System Screenshot', location: 'EMR/Pharmacy System' },
+                    { id: 'LASA-004', description: "Conduct a monthly audit of LASA drug storage and labeling.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Log', location: 'Pharmacy' },
                 ]
             },
             {
@@ -622,6 +685,19 @@ const allPacks = [
                 ]
             },
             {
+                title: "🧪 Critical Test Result Communication",
+                department: "Quality/Nursing",
+                frequency: "Per Critical Result",
+                role: "Lab Tech/Nurse",
+                summary: "A closed-loop communication protocol to ensure that life-threatening lab results are acted upon immediately.",
+                tasks: [
+                    { id: 'CTR-001', description: "Lab technician must verbally call the patient's ward/unit to report any 'panic value' result.", priority: 'High', riskLevel: 'High', proof: 'Call Log', location: 'Laboratory' },
+                    { id: 'CTR-002', description: "The receiving nurse must document the result and perform a 'read-back' to the lab tech to confirm accuracy.", priority: 'High', riskLevel: 'High', proof: 'EMR/Log Note', location: 'Nursing Station' },
+                    { id: 'CTR-003', description: "The nurse must notify the responsible physician of the critical result within 15 minutes.", priority: 'High', riskLevel: 'High', proof: 'Physician Communication Log', location: 'Nursing Station' },
+                    { id: 'CTR-004', description: "The lab system must flag the result as 'acknowledged' only after the read-back is complete.", priority: 'High', riskLevel: 'Medium', proof: 'System Log', location: 'LIS' },
+                ]
+            },
+            {
                 title: "🧪 Laboratory Sample Handling & Labeling",
                 department: "Laboratory",
                 frequency: "Per Sample",
@@ -661,6 +737,19 @@ const allPacks = [
                     { id: 'PH-CSI-003', description: "Reconcile the physical count with the perpetual inventory record in the system.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Pharmacy' },
                     { id: 'PH-CSI-004', description: "Investigate and report any discrepancies immediately to the pharmacy head.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Pharmacy' },
                     { id: 'PH-CSI-005', description: "Ensure all controlled substances are stored in a securely locked, dedicated vault or cabinet.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Pharmacy Vault' }
+                ]
+            },
+            {
+                title: "🧲 MRI Suite Safety & Access Control",
+                department: "Radiology/Safety",
+                frequency: "Per Patient/Entry",
+                role: "MRI Technician",
+                summary: "A critical protocol to prevent dangerous 'projectile effect' incidents by ensuring no metallic objects enter the magnet room.",
+                tasks: [
+                    { id: 'MRI-001', description: "Before any patient or staff enters Zone IV (the magnet room), they must pass through a ferromagnetic detector.", priority: 'High', riskLevel: 'High', proof: 'Detector Log', location: 'MRI Suite Entrance' },
+                    { id: 'MRI-002', description: "A second, verbal checklist must be completed by the MRI tech confirming the removal of all metal objects (jewelry, phones, belts, etc.).", priority: 'High', riskLevel: 'High', proof: 'Verbal Checklist Log', location: 'MRI Suite Zone III' },
+                    { id: 'MRI-003', description: "For in-patients on gurneys or wheelchairs, a physical search for metal objects (e.g., oxygen tanks) must be performed.", priority: 'High', riskLevel: 'High', proof: 'Search Confirmation', location: 'MRI Suite Zone III' },
+                    { id: 'MRI-004', description: "Ensure the 'Magnet is Always On' sign is clearly visible at all entry points to Zone IV.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'MRI Suite Entrance' },
                 ]
             },
             {
@@ -731,19 +820,19 @@ const allPacks = [
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a robust 'Visitor Management' and campus security protocol.",
+            "Prevent unauthorized access with a 'Non-Standard Student Pickup Verification' protocol.",
+            "Manage medical emergencies with a 'Student Emergency Response' plan.",
             "Standardize 'School Bus Safety' checks for drivers and vehicles.",
-            "Manage 'Classroom Safety & Hygiene' with daily and weekly audits.",
-            "Includes 'Playground Safety' and 'Emergency Drill' protocols."
+            "Includes 'Playground Safety' and 'End-of-Day Campus Clearing' procedures."
         ],
         previewScenario: {
             title: "Executing a Safe Student Dismissal",
             description: "A chaotic dismissal is a major safety and reputational risk. This scenario shows how checklists ensure every child is handed over safely and accounted for.",
             tasks: [
-                { id: 'DIS-001', description: "Verify identity of the person picking up the child against the authorized pick-up list.", sourceChecklist: "Student Dismissal & Handover", priority: 'High' },
+                { id: 'NSPU-001', description: "Any change to a student's regular pickup plan must be submitted in writing and then verbally confirmed by calling the custodial parent on the number listed in the school's official records.", sourceChecklist: "Non-Standard Student Pickup Verification", priority: 'High' },
                 { id: 'BUS-003', description: "Ensure a staff member takes attendance as children board the bus.", sourceChecklist: "School Bus Safety & Operations", priority: 'High' },
                 { id: 'SEC-004', description: "Monitor the gate and surrounding area for any unauthorized or suspicious persons during dispersal.", sourceChecklist: "Campus Security & Patrolling", priority: 'High' },
-                { id: 'VIS-002', description: "Issue a temporary visitor pass only after verifying the purpose of visit and identity for anyone entering during dismissal.", sourceChecklist: "Visitor & Vendor Management", priority: 'High' }
+                { id: 'EOD-001', description: "A designated staff member must perform a final sweep of all common areas 30 minutes after the final bell to ensure no child is left behind.", sourceChecklist: "End-of-Day Campus Clearing Procedure", priority: 'High' }
             ]
         },
         checklists: [
@@ -776,6 +865,18 @@ const allPacks = [
                 ]
             },
             {
+                title: "📞 Non-Standard Student Pickup Verification",
+                department: "Security/Admin",
+                frequency: "Per Instance",
+                role: "Front Desk/Guard",
+                summary: "A high-stakes protocol to prevent unauthorized pickup of a child by ensuring strict verification.",
+                tasks: [
+                    { id: 'NSPU-001', description: "Any change to a student's regular pickup plan must be submitted in writing (email) and then verbally confirmed by calling the custodial parent on the number listed in the school's official records.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Front Office' },
+                    { id: 'NSPU-002', description: "The person making the non-standard pickup must present a photo ID that matches the name provided by the parent.", priority: 'High', riskLevel: 'High', proof: 'ID Verification', location: 'Gate' },
+                    { id: 'NSPU-003', description: "Log the details of the non-standard pickup, including the name of the person and the time.", priority: 'High', riskLevel: 'Medium', proof: 'Pickup Log', location: 'Gate' },
+                ]
+            },
+            {
                 title: "🚶 Student Dismissal & Handover",
                 department: "Academics/Security",
                 frequency: "Daily",
@@ -787,6 +888,18 @@ const allPacks = [
                     { id: 'DIS-003', description: "Maintain an orderly line and prevent crowding at the gate.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Observation', location: 'Gate' },
                     { id: 'DIS-004', description: "Do not release a child to an unauthorized person without explicit permission from the parent.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Dismissal Area' },
                     { id: 'DIS-005', description: "Account for all children before the final staff member leaves the dispersal point.", priority: 'High', riskLevel: 'High', proof: 'Final Count Log', location: 'Dismissal Area' }
+                ]
+            },
+            {
+                title: "🧹 End-of-Day Campus Clearing Procedure",
+                department: "Admin/Security",
+                frequency: "Daily",
+                role: "Admin Supervisor",
+                summary: "A liability-prevention checklist to ensure no students are left unsupervised on campus after school hours.",
+                tasks: [
+                    { id: 'EOD-001', description: "A designated staff member must perform a final sweep of all common areas (playground, library, hallways) 30 minutes after the final bell.", priority: 'High', riskLevel: 'High', proof: 'Sweep Log', location: 'Campus-wide' },
+                    { id: 'EOD-002', description: "Check all restrooms to ensure no student is left behind.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Restrooms' },
+                    { id: 'EOD-003', description: "Ensure all remaining students are moved to the official after-care program or the front office for supervised waiting.", priority: 'High', riskLevel: 'High', proof: 'Supervision Log', location: 'Designated Areas' },
                 ]
             },
             {
@@ -815,6 +928,19 @@ const allPacks = [
                     { id: 'CSH-003', description: "Verify that fire extinguisher and first-aid kit are present and accessible.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Classroom' },
                     { id: 'CSH-004', description: "Ensure electrical sockets are safe and not overloaded.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Classroom' },
                     { id: 'CSH-005', description: "Confirm proper ventilation and lighting in the classroom.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Classroom' }
+                ]
+            },
+            {
+                title: "🚑 Student Medical Emergency Response",
+                department: "Admin/Health",
+                frequency: "Per Incident/Drill",
+                role: "School Nurse/Admin",
+                summary: "A critical protocol to ensure a swift and correct response to a student medical emergency, such as an allergic reaction.",
+                tasks: [
+                    { id: 'SMER-001', description: "For any student with a documented life-threatening allergy, their photo and emergency action plan must be posted in the staff room.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Staff Room' },
+                    { id: 'SMER-002', description: "The location of the student's EpiPen (or other emergency medication) must be clearly labeled and known to all relevant staff.", priority: 'High', riskLevel: 'High', proof: 'Location Log', location: "Nurse's Office/Classroom" },
+                    { id: 'SMER-003', description: "Conduct a drill at the start of each semester on the procedure for responding to an anaphylactic shock.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Log', location: 'Campus-wide' },
+                    { id: 'SMER-004', description: "After administering emergency medication, immediately call emergency services and then the parent/guardian.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
                 ]
             },
             {
@@ -871,10 +997,10 @@ const allPacks = [
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Lock-Out Tag-Out' (LOTO) procedure for machinery maintenance.",
-            "Standardize 'Personal Protective Equipment (PPE)' compliance checks.",
-            "Master 'Predictive Maintenance' analysis to reduce downtime.",
-            "NEW: Includes 'Supply Chain Disruption Drills' and 'Predictive Maintenance' checklists."
+            "Implement a life-saving 'Lock-Out Tag-Out' (LOTO) procedure.",
+            "Prevent accidents with an 'Electrical Permit to Work' protocol.",
+            "Master 'Predictive Maintenance' to reduce downtime.",
+            "NEW: Includes a 'Loading Dock Safety' protocol to prevent drive-off incidents and 'Non-Conforming Material Control' to stop quality escapes."
         ],
         previewScenario: {
             title: "Performing Safe Machine Maintenance",
@@ -882,7 +1008,7 @@ const allPacks = [
             tasks: [
                 { id: 'LOTO-001', description: "Identify all energy sources for the machine to be serviced (electrical, pneumatic, hydraulic).", sourceChecklist: "Lock-Out Tag-Out (LOTO) Procedure", priority: 'High' },
                 { id: 'LOTO-002', description: "De-energize and lock out all power sources using an approved lock and tag.", sourceChecklist: "Lock-Out Tag-Out (LOTO) Procedure", priority: 'High' },
-                { id: 'LOTO-004', description: "Attempt to start the machine to verify that it is fully de-energized (verification step).", sourceChecklist: "Lock-Out Tag-Out (LOTO) Procedure", priority: 'High' },
+                { id: 'EPTW-001', description: "For electrical work, include a mandatory 'Arc Flash Hazard Analysis' that defines the required PPE level.", sourceChecklist: "Electrical Permit to Work (PTW)", priority: 'High' },
                 { id: 'MAINT-001', description: "Obtain a 'Permit to Work' before starting any non-routine maintenance task.", sourceChecklist: "Machine Maintenance & Safety", priority: 'High' }
             ]
         },
@@ -913,6 +1039,32 @@ const allPacks = [
                     { id: 'PPE-003', description: "Ensure workers have and are using the correct type of gloves for their task.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Workstations' },
                     { id: 'PPE-004', description: "Check for correct use of safety footwear across the plant floor.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Shop Floor' },
                     { id: 'PPE-005', description: "Confirm that high-visibility vests are worn in areas with vehicle movement.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Yard/Loading Bays' }
+                ]
+            },
+            {
+                title: "⚡ Electrical Permit to Work (PTW)",
+                department: "EHS/Maintenance",
+                frequency: "Per Electrical Job",
+                role: "Safety Officer",
+                summary: "A specialized permit to prevent electrocution and arc flash incidents during work on live electrical panels.",
+                tasks: [
+                    { id: 'EPTW-001', description: "The Electrical PTW must include a mandatory 'Arc Flash Hazard Analysis' section that calculates the incident energy.", priority: 'High', riskLevel: 'High', proof: 'PTW Form', location: 'Job Site' },
+                    { id: 'EPTW-002', description: "Define the required PPE level (e.g., arc-rated face shield, balaclava, gloves) for that specific task based on the analysis.", priority: 'High', riskLevel: 'High', proof: 'PTW Form', location: 'Job Site' },
+                    { id: 'EPTW-003', description: "Ensure the area is barricaded and warning signs are posted before work begins.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Job Site' },
+                    { id: 'EPTW-004', description: "Verify that the electrician is using insulated tools and equipment.", priority: 'High', riskLevel: 'High', proof: 'Tool Inspection', location: 'Job Site' },
+                ]
+            },
+            {
+                title: "🚚 Loading Dock & Trailer Safety",
+                department: "Logistics/EHS",
+                frequency: "Per Truck",
+                role: "Loading Supervisor",
+                summary: "Prevents catastrophic falls and crushing incidents by ensuring trailers are completely secured before forklift entry.",
+                tasks: [
+                    { id: 'LDS-001', description: "The truck's wheels must be chocked before any loading or unloading begins.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Loading Dock' },
+                    { id: 'LDS-002', description: "An external 'dock lock' must be engaged, physically preventing the truck from pulling away.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Loading Dock' },
+                    { id: 'LDS-003', description: "The key for the dock lock is given to the forklift operator and only returned to the driver once operations are complete.", priority: 'High', riskLevel: 'High', proof: 'Key Handover Log', location: 'Loading Dock' },
+                    { id: 'LDS-004', description: "Inspect the trailer floor for stability and holes before the forklift enters.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Loading Dock' },
                 ]
             },
             {
@@ -969,6 +1121,19 @@ const allPacks = [
                     { id: 'HAZMAT-003', description: "Check that Safety Data Sheets (SDS) are available for all hazardous chemicals on site.", priority: 'High', riskLevel: 'High', proof: 'SDS Binder Check', location: 'Supervisor Office' },
                     { id: 'HAZMAT-004', description: "Inspect for and clean up any leaks or spills immediately.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Chemical Store' },
                     { id: 'HAZMAT-005', description: "Ensure spill kits and emergency eyewash/shower stations are accessible and functional.", priority: 'High', riskLevel: 'High', proof: 'Weekly Test Log', location: 'Near Chemical Store' }
+                ]
+            },
+            {
+                title: "📦 Non-Conforming Material Control",
+                department: "Quality",
+                frequency: "Per Non-conformance",
+                role: "QC Inspector",
+                summary: "A crucial protocol to prevent defective products or raw materials from being accidentally used or shipped.",
+                tasks: [
+                    { id: 'NCM-001', description: "All non-conforming or quarantined material must be physically moved to a separate, red-taped 'Quarantine Cage' or area.", priority: 'High', riskLevel: 'High', proof: 'Photo', location: 'Quarantine Area' },
+                    { id: 'NCM-002', description: "The material must be digitally flagged in the inventory system to make it impossible to generate a shipping label or work order for it.", priority: 'High', riskLevel: 'High', proof: 'System Screenshot', location: 'Inventory System' },
+                    { id: 'NCM-003', description: "A Non-Conformance Report (NCR) must be raised and attached to the physical material.", priority: 'High', riskLevel: 'Medium', proof: 'NCR Form', location: 'Quarantine Area' },
+                    { id: 'NCM-004', description: "Disposition of the material (scrap, rework, return to vendor) must be decided by the Material Review Board and documented.", priority: 'High', riskLevel: 'Medium', proof: 'MRB Minutes', location: 'Office' },
                 ]
             },
             {
@@ -1039,10 +1204,10 @@ const allPacks = [
         description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Prevent loss with a 'Returns & Damaged Goods' chain of custody.",
-            "Implement a 'Cash Handling & Reconciliation' protocol to eliminate discrepancies.",
-            "Standardize 'Store Opening & Closing' for security and readiness.",
-            "Includes 'Visual Merchandising' and 'Customer Service Standards' checklists."
+            "Prevent return fraud with a 'High-Value Item Return Verification' protocol.",
+            "Implement a 'Cash Handling & Reconciliation' process to eliminate discrepancies.",
+            "Prepare for worst-case scenarios with an 'Unusual Crowd & Disturbance' drill.",
+            "NEW: Includes a 'Fitting Room Security' checklist to combat a major source of theft."
         ],
         previewScenario: {
             title: "Preventing End-of-Day Cash Shortage",
@@ -1140,6 +1305,45 @@ const allPacks = [
                 ]
             },
             {
+                title: "👕 Fitting Room Security & Monitoring",
+                department: "Loss Prevention",
+                frequency: "Ongoing",
+                role: "Fitting Room Attendant/Staff",
+                summary: "A critical protocol to prevent theft in fitting rooms, a major source of retail shrinkage.",
+                tasks: [
+                    { id: 'FIT-001', description: "Count and document the number of items a customer takes into the fitting room.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
+                    { id: 'FIT-002', description: "Count the items returned by the customer and ensure it matches the initial count.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
+                    { id: 'FIT-003', description: "Check the fitting room for any removed tags, packaging, or concealed merchandise after each use.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Fitting Room' },
+                    { id: 'FIT-004', description: "Perform a weekly line-of-sight audit to ensure CCTV cameras have full, unobstructed coverage of the fitting room entrance and exit areas.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Log', location: 'Security Office' },
+                ]
+            },
+            {
+                title: "📦 High-Value Item Return Verification",
+                department: "Operations/Loss Prevention",
+                frequency: "Per High-Value Return",
+                role: "Store Manager",
+                summary: "A fraud-prevention protocol to stop customers from returning counterfeit or old goods for a full refund.",
+                tasks: [
+                    { id: 'HVIR-001', description: "For any return over a set value (e.g., $200), the item's SKU/barcode must be scanned.", priority: 'High', riskLevel: 'High', proof: 'POS Scan Log', location: 'Cash Counter' },
+                    { id: 'HVIR-002', description: "The item must be visually verified against the product image in the POS or inventory system by a manager.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off', location: 'Cash Counter' },
+                    { id: 'HVIR-003', description: "Check the item for signs of wear, use, or tampering that would disqualify it from being returned.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Cash Counter' },
+                    { id: 'HVIR-004', description: "If the return is approved, the item is placed in a designated 'Verified Returns' bin, not back on the sales floor.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Back Office' },
+                ]
+            },
+            {
+                title: "🚨 Unusual Crowd & Disturbance Protocol",
+                department: "Security/Operations",
+                frequency: "As Needed/Drill",
+                role: "All Staff",
+                summary: "A safety and loss prevention protocol for dealing with potential 'flash mob' or coordinated theft events.",
+                tasks: [
+                    { id: 'UCD-001', description: "If more than 10 individuals enter in a single, coordinated group, any staff member can use a designated code word ('Code Orange') to alert management.", priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Sales Floor' },
+                    { id: 'UCD-002', description: "Upon hearing the code word, the manager on duty is to press a silent alarm button linked to local law enforcement.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Back Office' },
+                    { id: 'UCD-003', description: "All available staff will engage in a 'customer service swarm,' where every member of the large group is immediately approached and offered assistance, disrupting their coordination.", priority: 'High', riskLevel: 'Medium', proof: 'Observation/Drill Report', location: 'Sales Floor' },
+                    { id: 'UCD-004', description: "Staff should not physically confront or block individuals but should maintain observation and provide detailed descriptions to law enforcement.", priority: 'High', riskLevel: 'High', proof: 'Training Record', location: 'All Staff' },
+                ]
+            },
+            {
                 title: "🛡️ Security & Loss Prevention",
                 department: "Security",
                 frequency: "Daily",
@@ -1194,10 +1398,24 @@ const allPacks = [
         sampleItems: [
             "Master 'Venue Selection & Contracting' to protect your clients and budget.",
             "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
-            "Standardize 'Guest Registration & Welcome' for a seamless arrival experience.",
+            "NEW: Includes a 'Sales-to-Operations Handover' checklist to ensure promises made are promises kept.",
             "Includes 'Post-Event Feedback' and 'Vendor Payout' checklists."
         ],
-        checklists: [] 
+        checklists: [
+             {
+                title: "🤝 Sales-to-Operations Handover for Events",
+                department: "Management",
+                frequency: "Per Event",
+                role: "Sales/Ops Manager",
+                summary: "A critical checklist to ensure that what the sales team promised the client is achievable and clearly understood by the operations team that has to deliver it.",
+                tasks: [
+                    { id: 'S2O-001', description: "The sales and operations heads must jointly review the signed client contract and Banquet Event Order (BEO).", priority: 'High', riskLevel: 'High', proof: 'Signed BEO', location: 'Office' },
+                    { id: 'S2O-002', description: "The Operations Manager must physically sign off on the 'Special Requests' section of the BEO, confirming that every specific brand, dietary need, or setup requirement is achievable and has been sourced.", priority: 'High', riskLevel: 'High', proof: 'Signed BEO Section', location: 'Office' },
+                    { id: 'S2O-003', description: "Discuss and document potential operational challenges and contingency plans (e.g., weather backup for outdoor event).", priority: 'High', riskLevel: 'Medium', proof: 'Handover Document', location: 'Office' },
+                    { id: 'S2O-004', description: "Finalize the budget allocation for operations based on the sold contract.", priority: 'High', riskLevel: 'Medium', proof: 'Budget Sheet', location: 'Office' },
+                ]
+            }
+        ] 
     },
     {
         id: 'automotive_workshop_pack',
@@ -1402,7 +1620,21 @@ const allPacks = [
             "Master 'Expense Report & Reimbursement' audits.",
             "Includes 'Statutory Compliance' (GST, TDS) and 'Bank Reconciliation' checklists."
         ],
-        checklists: []
+        checklists: [
+            {
+                title: "💸 Out-of-Band Payment Verification",
+                department: "Finance",
+                frequency: "Per Request",
+                role: "Controller/Finance Manager",
+                summary: "A critical anti-fraud checklist to prevent Business Email Compromise (BEC) and other scams leading to fraudulent wire transfers.",
+                tasks: [
+                    { id: 'PAYV-001', description: "Any email request for an urgent or non-standard wire transfer, regardless of the sender, must be verbally confirmed.", priority: 'High', riskLevel: 'High', proof: 'Call Log', location: 'Office' },
+                    { id: 'PAYV-002', description: "The verbal confirmation must be made via a phone call to a known, pre-verified number, not a number listed in the email.", priority: 'High', riskLevel: 'High', proof: 'Call Log', location: 'Office' },
+                    { id: 'PAYV-003', description: "Any request to change vendor bank details must be confirmed with the vendor via a video call or in-person meeting.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Office' },
+                    { id: 'PAYV-004', description: "Implement a dual-approval system for all payments over a certain threshold.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Accounting System' },
+                ]
+            }
+        ]
     },
     {
         id: 'agritech_pack',
@@ -1573,3 +1805,7 @@ export type PremiumPack = {
 };
 
 
+
+
+
+    
