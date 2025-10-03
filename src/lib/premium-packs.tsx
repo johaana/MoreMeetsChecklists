@@ -295,7 +295,6 @@ const allPacks = [
             "NEW: Manage flexible work with a 'Hybrid Workplace Readiness' checklist.",
             "NEW: Leverage smart technology with a 'Smart Building & IoT Systems Check'.",
             "Implement a 'Critical Systems Alert Response' protocol to prevent outages.",
-            "Manage 'Capital Asset Lifecycle' and prevent catastrophic failures.",
             "NEW: Includes 'Third-Party Vendor Network Access Policy' to prevent cyber threats."
         ],
         previewScenario: {
@@ -557,7 +556,8 @@ const allPacks = [
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
-            "NEW: Includes a 'Thawing Protocol' and a 'Kitchen Allergy Handling' protocol to prevent critical safety failures."
+            "Prevent cross-contamination with a 'Kitchen Allergy Handling' protocol.",
+            "Ensure staff readiness with a 'Fit to Work & Illness Reporting' checklist."
         ],
         previewScenario: {
             title: "Ensuring Food Safety from Kitchen to Customer",
@@ -734,7 +734,7 @@ const allPacks = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' & audit your 'LIS-HIS-EMR Data Integrity'.",
+            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
@@ -1033,7 +1033,7 @@ const allPacks = [
                 tasks: [
                     { id: 'OPEN-001', description: "Unlock all required gates and classroom doors.", priority: 'High', riskLevel: 'Medium', proof: 'Physical Check', location: 'Campus-wide' },
                     { id: 'OPEN-002', description: "Perform a safety sweep of playgrounds and common areas for any hazards.", priority: 'High', riskLevel: 'High', proof: 'Sweep Log', location: 'Outdoor Areas' },
-                    { id: 'OPEN-003', description: "Ensure all lights and fans are working in classrooms and corridors.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Indoor Areas' },
+                    { id: 'OPEN-003', description: "Ensure all lights are working and set to energy-efficient schedules.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Indoor Areas' },
                     { id: 'OPEN-004', description: "Check that restrooms are clean and stocked with soap and toilet paper.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms' },
                     { id: 'OPEN-005', description: "Verify that the security guard and support staff are at their posts.", priority: 'High', riskLevel: 'Medium', proof: 'Attendance Register', location: 'Gate/Office' }
                 ]
@@ -1180,7 +1180,7 @@ const allPacks = [
                 tasks: [
                     { id: 'DRILL-001', description: "Pre-plan the drill scenario (e.g., fire, earthquake) and inform key staff.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Plan', location: 'Office' },
                     { id: 'DRILL-002', description: "Sound the emergency alarm and observe reaction time.", priority: 'High', riskLevel: 'High', proof: 'Time Log', location: 'Campus-wide' },
-                    { id: 'DRILL-003', description: "Ensure teachers lead students out in an orderly fashion using designated escape routes.", priority: 'High', riskLevel: 'High', proof: 'Drill Observation', location: 'Campus-wide' },
+                    { id: 'DRIill-003', description: "Ensure teachers lead students out in an orderly fashion using designated escape routes.", priority: 'High', riskLevel: 'High', proof: 'Drill Observation', location: 'Campus-wide' },
                     { id: 'DRILL-004', description: "Conduct a head count at the designated assembly point to ensure everyone is evacuated.", priority: 'High', riskLevel: 'High', proof: 'Head Count Sheet', location: 'Assembly Point' },
                     { id: 'DRILL-005', description: "Conduct a post-drill review to identify gaps and areas for improvement.", priority: 'High', riskLevel: 'Medium', proof: 'Review Minutes', location: 'Office' }
                 ]
@@ -1455,7 +1455,7 @@ const allPacks = [
         description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Includes a 'Daily Pre-Shift Huddle' checklist to align team and boost sales.",
+            "NEW: Includes a 'Daily Pre-Shift Huddle' to align team and boost sales.",
             "Prevent return fraud with a 'High-Value Item Return Verification' protocol.",
             "Implement a 'Cash Handling & Reconciliation' process to eliminate discrepancies.",
             "NEW: Includes 'Weekend Receiving Protocol' and 'Fitting Room Security' to prevent errors and theft."
@@ -1480,7 +1480,7 @@ const allPacks = [
                 tasks: [
                     { id: 'OPEN-001', description: "Perform a security check of the premises perimeter before entry.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Exterior' },
                     { id: 'OPEN-002', description: "Deactivate alarm system and check for any overnight alerts.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Interior' },
-                    { id: 'OPEN-003', description: "Turn on all lights, displays, and music.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'OPEN-003', description: "Turn on all lights and displays, ensuring they adhere to the energy-saving schedule.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'OPEN-004', description: "Boot up POS systems, check network connectivity, and verify opening cash float.", priority: 'High', riskLevel: 'High', proof: 'POS Log', location: 'Cash Counter' },
                     { id: 'OPEN-005', description: "Conduct a quick floor walk to ensure cleanliness and tidiness.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' }
                 ]

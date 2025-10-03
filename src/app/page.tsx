@@ -28,7 +28,7 @@ const HowWeAreDifferentSection = () => (
             <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
                 <div className="text-center mb-8">
                      <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
-                        How We're Different
+                        From Crisis Prevention to AI-Powered Audits, Our Checklists Turn Best Practices into Daily Habits.
                     </h2>
                 </div>
                 <div className="space-y-6 text-center text-muted-foreground md:text-lg">
