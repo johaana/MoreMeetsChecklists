@@ -59,11 +59,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
-            "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
-            "Ensure 'Critical Test Result Communication' is timely and logged.",
-            "Master the 'High-Risk Patient Handover' to prevent information loss.",
-            "NEW: Includes a 'CSSD Audit' and 'Unidentified Patient Intake' protocol."
+            "NEW: Manage your 'EV Fleet & Charging Infrastructure' to cater to modern guests.",
+            "Prevent slip-and-fall incidents with a specialized 'Floor Care & Safety Audit'.",
+            "Secure your revenue with a fraud-proof 'Minibar Auditing' protocol.",
+            "NEW: Includes 'Guest-Facing Technology Audit' and 'Pre-Arrival Personalization' for a modern guest experience."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -677,9 +676,9 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "A critical public health checklist to prevent sick employees from handling food and causing a foodborne illness outbreak.",
                 tasks: [
                     { id: 'FIT-001', description: "Before each shift, conduct a brief, confidential huddle where each team member gives a verbal 'fit to work' confirmation.", priority: 'High', riskLevel: 'High', proof: 'Shift Huddle Log', location: 'Kitchen/Staff Area' },
-                    { id: 'FIT-002', description: "Any staff reporting symptoms of GI illness (vomiting, diarrhea) are immediately sent home.", priority: 'High', riskLevel: 'High', proof: 'Illness Log', location: 'Manager\'s Office' },
-                    { id: 'FIT-003', description: "Shifts for sick employees must be covered from a pre-approved 'on-call' list, not by pressuring other staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Roster Change Log', location: 'Manager\'s Office' },
-                    { id: 'FIT-004', description: "An employee sent home cannot return to work until they have been symptom-free for at least 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Return to Work Form', location: 'Manager\'s Office' },
+                    { id: 'FIT-002', description: "Any staff reporting symptoms of GI illness (vomiting, diarrhea) are immediately sent home.", priority: 'High', riskLevel: 'High', proof: 'Illness Log', location: "Manager's Office" },
+                    { id: 'FIT-003', description: "Shifts for sick employees must be covered from a pre-approved 'on-call' list, not by pressuring other staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Roster Change Log', location: "Manager's Office" },
+                    { id: 'FIT-004', description: "An employee sent home cannot return to work until they have been symptom-free for at least 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Return to Work Form', location: "Manager's Office" },
                 ]
             },
             {
@@ -778,7 +777,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
+            "NEW: Ensure secure 'Telemedicine Consultations' &amp; audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
@@ -1730,8 +1729,8 @@ export const premiumPacks: PremiumPack[] = [
         description: "For event planners and agencies. A comprehensive toolkit for flawless execution of corporate events, weddings, and conferences.",
         icon: <Trophy className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Master 'Venue Selection & Contracting' to protect your clients and budget.",
-            "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
+            "Master 'Venue Selection &amp; Contracting' to protect your clients and budget.",
+            "Implement a 'Pre-Event AV &amp; Tech Check' to avoid on-stage disasters.",
             "NEW: Includes a 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
         ],
         checklists: [
@@ -1827,9 +1826,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For jewelry store owners and heads of security. A high-security toolkit for managing high-value inventory and preventing loss.",
         icon: <Gem className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Master the 'Vault Opening & Closing' dual-control procedure.",
+            "Master the 'Vault Opening &amp; Closing' dual-control procedure.",
             "Implement a 'High-Value Gemstone Verification' protocol to prevent swapping.",
-            "NEW: Includes a 'Show-Me & Distraction Theft Prevention' protocol."
+            "NEW: Includes a 'Show-Me &amp; Distraction Theft Prevention' protocol."
         ],
         checklists: [
             {
@@ -1870,9 +1869,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For warehouse managers and logistics heads. A comprehensive toolkit for optimizing storage, shipping, and inventory accuracy.",
         icon: <Warehouse className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Goods Receiving & GRN' protocol for 100% accuracy.",
-            "Standardize 'Binning & Stock Location Management' for fast retrieval.",
-            "NEW: Includes a 'New Product Master Data Entry' protocol to prevent costly shipping errors before they start."
+            "Implement a 'Goods Receiving &amp; GRN' protocol for 100% accuracy.",
+            "Standardize 'Binning &amp; Stock Location Management' for fast retrieval.",
+            "NEW: Includes a 'New Product Master Data Entry' protocol to prevent costly shipping errors before they start.",
+            "NEW: Added 'Reverse Logistics &amp; Returns Processing' to manage the full product lifecycle."
         ],
         checklists: [
              {
@@ -1885,6 +1885,21 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MDM-001', description: "All new product data (SKU, weight, dimensions, customs code) is entered into the system by a 'Maker'.", priority: 'High', riskLevel: 'High', proof: 'System Entry Log', location: 'Office' },
                     { id: 'MDM-002', description: "The entered data must be independently verified against the product spec sheet by a separate 'Checker'.", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'Office' },
                     { id: 'MDM-003', description: "The SKU cannot be activated for ordering or shipping until the 'Checker' has digitally signed off in the system.", priority: 'High', riskLevel: 'High', proof: 'System Status', location: 'System' },
+                ]
+            },
+            {
+                title: "📦 Reverse Logistics & Returns Processing Center Protocol",
+                department: "Logistics/Operations",
+                frequency: "Daily",
+                role: "Returns Center Supervisor",
+                summary: "A systematic process for handling product returns, from receipt and triage to final disposition (restock, refurbish, recycle), optimizing recovery value and ensuring data accuracy.",
+                tasks: [
+                    { id: 'RL-001', description: "Upon receipt of a returned product, scan its serial number to pull up the original purchase record and reason for return.", priority: 'High', riskLevel: 'Medium', proof: 'System Scan Log', location: 'Receiving Station' },
+                    { id: 'RL-002', description: "Triage the item into one of four streams: 'Restock,' 'Refurbish,' 'Recycle,' or 'Dispose,' and move it to the corresponding physical zone.", priority: 'High', riskLevel: 'High', proof: 'Triage Log', location: 'Triage Station' },
+                    { id: 'RL-003', description: "For 'Restock' items, inspect packaging and product condition to ensure it meets 'as new' standards before returning to active inventory.", priority: 'High', riskLevel: 'Medium', proof: 'QC Checklist', location: 'QC Bench' },
+                    { id: 'RL-004', description: "For 'Refurbish' items, generate a specific repair work order detailing the customer's reported fault.", priority: 'Medium', riskLevel: 'Medium', proof: 'Work Order', location: 'System' },
+                    { id: 'RL-005', description: "For 'Recycle' items, ensure hazardous components (like batteries) are removed and handled according to environmental regulations.", priority: 'High', riskLevel: 'High', proof: 'Recycling Log', location: 'Recycling Zone' },
+                    { id: 'RL-006', description: "Reconcile the physical inventory in the returns center with the digital returns database daily to prevent loss.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Supervisor Office' }
                 ]
             }
         ]
@@ -1899,8 +1914,8 @@ export const premiumPacks: PremiumPack[] = [
         description: "For call center managers and QA leads. A toolkit to improve agent performance, ensure data security, and enhance customer satisfaction.",
         icon: <Phone className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize 'Call Quality Monitoring & Feedback' using a structured scorecard.",
-            "Implement a 'Data Security & PCI-DSS Compliance' checklist for agents.",
+            "Standardize 'Call Quality Monitoring &amp; Feedback' using a structured scorecard.",
+            "Implement a 'Data Security &amp; PCI-DSS Compliance' checklist for agents.",
             "NEW: Includes a 'Customer Identity Verification' protocol to prevent SIM-swapping and other account takeover frauds."
         ],
         checklists: [
@@ -1929,10 +1944,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For lab owners and quality managers. An NABL-aligned toolkit for ensuring accuracy, safety, and compliance in laboratory operations.",
         icon: <TestTube className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Sample Collection, Handling & Transport' protocol.",
-            "Standardize 'Reagent & Equipment Calibration' logs.",
+            "Implement a 'Sample Collection, Handling &amp; Transport' protocol.",
+            "Standardize 'Reagent &amp; Equipment Calibration' logs.",
             "Master 'Panic Value Reporting' and clinician communication.",
-            "Includes 'Lab Safety & Bio-waste Management' checklists."
+            "Includes 'Lab Safety &amp; Bio-waste Management' checklists."
         ],
 
         checklists: []
@@ -1964,9 +1979,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For audiologists and clinic owners. A toolkit to standardize patient care, equipment maintenance, and clinic operations.",
         icon: <Ear className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Audiometry & Diagnostic Test' procedure.",
-            "Implement a 'Hearing Aid Trial & Fitting' protocol.",
-            "Master 'Equipment Calibration & Maintenance' for audiometers and tympanometers.",
+            "Standardize the 'Audiometry &amp; Diagnostic Test' procedure.",
+            "Implement a 'Hearing Aid Trial &amp; Fitting' protocol.",
+            "Master 'Equipment Calibration &amp; Maintenance' for audiometers and tympanometers.",
             "Includes 'Patient Counseling' and 'Follow-up Scheduling' checklists."
         ],
         checklists: []
@@ -1981,10 +1996,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For spa owners and managers. A toolkit to ensure a serene, hygienic, and luxurious guest experience.",
         icon: <TreePalm className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Therapy Room Setup & Hygiene' protocol.",
-            "Standardize 'Guest Consultation & Contraindication' checks.",
-            "Master 'Product & Linen Inventory' management.",
-            "Includes 'Therapist Training & Performance' checklists."
+            "Implement a 'Therapy Room Setup &amp; Hygiene' protocol.",
+            "Standardize 'Guest Consultation &amp; Contraindication' checks.",
+            "Master 'Product &amp; Linen Inventory' management.",
+            "Includes 'Therapist Training &amp; Performance' checklists."
         ],
         checklists: []
     },
@@ -1998,10 +2013,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For CCOs and Heads of ESG. A comprehensive toolkit to implement, track, and report on Environmental, Social, and Governance metrics.",
         icon: <Recycle className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement an 'Energy & Water Consumption Audit' checklist.",
-            "Standardize 'Waste Management & Recycling' protocols.",
-            "Master 'Ethical Sourcing & Vendor Audits'.",
-            "Includes 'Employee Health & Safety' and 'Community Engagement' checklists."
+            "Implement an 'Energy &amp; Water Consumption Audit' checklist.",
+            "Standardize 'Waste Management &amp; Recycling' protocols.",
+            "Master 'Ethical Sourcing &amp; Vendor Audits'.",
+            "Includes 'Employee Health &amp; Safety' and 'Community Engagement' checklists."
         ],
         checklists: []
     },
@@ -2015,9 +2030,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Heads of Quality and Management Representatives. A toolkit to prepare for and pass ISO 9001, 14001, and 45001 certification audits.",
         icon: <FileCheck className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize 'Document Control & Record Keeping' as per ISO standards.",
-            "Implement a 'Corrective & Preventive Action (CAPA)' process.",
-            "Master the 'Internal Audit & Management Review' cycle.",
+            "Standardize 'Document Control &amp; Record Keeping' as per ISO standards.",
+            "Implement a 'Corrective &amp; Preventive Action (CAPA)' process.",
+            "Master the 'Internal Audit &amp; Management Review' cycle.",
             "Includes checklists for 'Risk Assessment' and 'Objective Setting'."
         ],
         checklists: []
@@ -2033,8 +2048,8 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Anchor className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Implement the 'ISPS Code' security protocols for port facilities and vessels.",
-            "Standardize 'Vessel Mooring & Berthing' operations.",
-            "Master 'Cargo Loading & Discharge' safety checklists.",
+            "Standardize 'Vessel Mooring &amp; Berthing' operations.",
+            "Master 'Cargo Loading &amp; Discharge' safety checklists.",
             "Includes 'Bunkering Operations' and 'Ballast Water Management' checklists."
         ],
         checklists: []
@@ -2050,7 +2065,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <DollarSign className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Standardize the 'Month-End Closing' process.",
-            "Implement a robust 'Accounts Payable & Vendor Payment' protocol.",
+            "Implement a robust 'Accounts Payable &amp; Vendor Payment' protocol.",
             "NEW: Includes a 'Critical Payment Authorization' protocol to prevent payroll delays and fraud."
         ],
         checklists: [
@@ -2091,9 +2106,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For farm managers and agronomists. A toolkit for optimizing crop management, resource usage, and harvest operations.",
         icon: <Sprout className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Soil Health & irrigation' management checklist.",
-            "Standardize 'Pest & Disease Control' application logs.",
-            "Master the 'Pre-Harvest & Post-Harvest' handling process.",
+            "Implement a 'Soil Health &amp; irrigation' management checklist.",
+            "Standardize 'Pest &amp; Disease Control' application logs.",
+            "Master the 'Pre-Harvest &amp; Post-Harvest' handling process.",
             "Includes 'Farm Equipment Maintenance' and 'Worker Safety' checklists."
         ],
         checklists: []
@@ -2109,7 +2124,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <CloudRain className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Master 'Order to Dispatch' time with a streamlined workflow.",
-            "Implement a 'Tamper-Proof Packaging & Handover' protocol.",
+            "Implement a 'Tamper-Proof Packaging &amp; Handover' protocol.",
             "Standardize 'Ingredient Batch Management' for consistency.",
             "Includes 'Rider Management' and 'Online Review Management' checklists."
         ],
@@ -2125,10 +2140,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For site engineers and safety officers. A comprehensive EHS toolkit to ensure worker safety and regulatory compliance on construction sites.",
         icon: <HardHat className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Work-at-Height & Scaffolding' safety protocol.",
-            "NEW: Includes a mandatory 'Excavation & Trenching Safety Permit' to prevent collapses.",
+            "Implement a 'Work-at-Height &amp; Scaffolding' safety protocol.",
+            "NEW: Includes a mandatory 'Excavation &amp; Trenching Safety Permit' to prevent collapses.",
             "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
-            "Includes 'Tool & Tackles Inspection' and 'First Aid' checklists."
+            "Includes 'Tool &amp; Tackles Inspection' and 'First Aid' checklists."
         ],
         checklists: [
             {
@@ -2159,7 +2174,7 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             "Use the 'Ultimate Packing List' categorized by item type.",
             "Implement the 'Pre-Departure Home Security' checklist.",
-            "Standardize your 'Digital Document & Currency' preparation.",
+            "Standardize your 'Digital Document &amp; Currency' preparation.",
             "Includes a 'Return Home' checklist for a smooth re-entry."
         ],
         checklists: []
@@ -2174,9 +2189,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For pet owners. A comprehensive guide for leaving your pet with a sitter, ensuring their safety, health, and happiness.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Feeding Schedule & Diet' instructions.",
-            "Implement the 'Medication & Emergency Contact' list.",
-            "Master the 'Daily Routine & Exercise' plan.",
+            "Standardize the 'Feeding Schedule &amp; Diet' instructions.",
+            "Implement the 'Medication &amp; Emergency Contact' list.",
+            "Master the 'Daily Routine &amp; Exercise' plan.",
             "Includes a 'House Rules for Pet Sitter' checklist."
         ],
         checklists: []
@@ -2191,9 +2206,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For gym owners and managers. A toolkit to ensure member safety, equipment maintenance, and a clean, motivating environment.",
         icon: <Dumbbell className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Daily Equipment Safety & Cleaning' protocol.",
-            "Standardize the 'New Member Onboarding & Induction' process.",
-            "Master 'Locker Room & Shower Hygiene' checklists.",
+            "Implement a 'Daily Equipment Safety &amp; Cleaning' protocol.",
+            "Standardize the 'New Member Onboarding &amp; Induction' process.",
+            "Master 'Locker Room &amp; Shower Hygiene' checklists.",
             "Includes 'Personal Trainer Performance' and 'Class Scheduling' checklists."
         ],
         checklists: []
@@ -2208,10 +2223,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For property managers and landlords. A toolkit for managing residential and commercial properties, focusing on maintenance, tenant relations, and compliance.",
         icon: <Home className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Tenant Move-In & Move-Out' inspection process.",
+            "Standardize the 'Tenant Move-In &amp; Move-Out' inspection process.",
             "Implement a 'Preventive Maintenance' schedule for building systems.",
-            "Master 'Rent Collection & Arrears Management'.",
-            "Includes 'Lease Agreement & Renewal' and 'Vendor Management' checklists."
+            "Master 'Rent Collection &amp; Arrears Management'.",
+            "Includes 'Lease Agreement &amp; Renewal' and 'Vendor Management' checklists."
         ],
         checklists: []
     },
@@ -2228,9 +2243,9 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         sampleItems: [
             "Master the 'Field/Court of Play Pre-Event Handover' to ensure athlete safety.",
-            "Prevent broadcast failures with the 'Broadcast Compound & Tech Integration Audit'.",
+            "Prevent broadcast failures with the 'Broadcast Compound &amp; Tech Integration Audit'.",
             "Manage risk with the 'Real-Time Crowd Density' and 'Drone Incursion' protocols.",
-            "NEW: Includes a 'Zero Waste & Post-Event Sorting' checklist for sustainability goals."
+            "NEW: Includes a 'Zero Waste &amp; Post-Event Sorting' checklist for sustainability goals."
         ],
         checklists: [
             {
@@ -2304,7 +2319,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "⏱️ Halftime Turnaround Protocol",
+                title: "⏱️ Mid-Game & Halftime Turnaround Protocol",
                 department: "Operations",
                 frequency: "Halftime",
                 role: "Operations Director",
@@ -2318,17 +2333,17 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📡 Real-Time Crowd Density Monitoring",
+                title: "📡 Real-Time Crowd Density & Flow Management",
                 department: "Security/Operations",
                 frequency: "In-Game",
                 role: "Operations Director",
-                summary: "Monitors crowd flow and density to prevent overcrowding and potential safety hazards.",
+                summary: "Uses live data to manage crowd flow, preventing overcrowding and potential safety hazards.",
                 tasks: [
-                    { id: 'STAD-CROWD-01', description: "Monitor CCTV cameras and analyze crowd density in key areas.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Security Control Room' },
-                    { id: 'STAD-CROWD-02', description: "Use sensor data (if available) to identify areas of high congestion.", priority: 'High', riskLevel: 'High', proof: 'Sensor Data Log', location: 'Security Control Room' },
-                    { id: 'STAD-CROWD-03', description: "Communicate with security personnel on the ground to redirect crowd flow as needed.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Security Control Room' },
-                    { id: 'STAD-CROWD-04', description: "Open additional gates or exits if necessary to relieve congestion.", priority: 'High', riskLevel: 'High', proof: 'Gate Opening Log', location: 'Security Control Room' },
-                    { id: 'STAD-CROWD-05', description: "Update fans with real-time information on alternative routes and shorter lines.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Update Log', location: 'Security Control Room' }
+                    { id: 'STAD-CROWD-01', description: "If crowd density in Concourse B exceeds 'Yellow Alert' threshold (e.g., 2 people/sq meter), update digital wayfinding signs to direct fans to Concourse C.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Command Center' },
+                    { id: 'STAD-CROWD-02', description: "Use sensor data (if available) to identify areas of high congestion.", priority: 'High', riskLevel: 'High', proof: 'Sensor Data Log', location: 'Command Center' },
+                    { id: 'STAD-CROWD-03', description: "For a 'Red Alert', dispatch security personnel to temporarily manage entry to the congested area.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Log', location: 'Command Center' },
+                    { id: 'STAD-CROWD-04', description: "Open additional gates or exits if necessary to relieve congestion.", priority: 'High', riskLevel: 'High', proof: 'Gate Opening Log', location: 'Command Center' },
+                    { id: 'STAD-CROWD-05', description: "Log all crowd alerts and the actions taken for post-event analysis.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Command Center' }
                 ]
             },
             {
@@ -2336,12 +2351,12 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security",
                 frequency: "In-Game",
                 role: "Security Chief",
-                summary: "Defines the response to a rogue drone entering the stadium's airspace, a potential security risk.",
+                summary: "Defines the response to a rogue drone entering the stadium's airspace, a potential security and broadcast disruption risk.",
                 tasks: [
-                    { id: 'STAD-DRONE-01', description: "Upon visual confirmation of a drone, immediately notify local law enforcement and air traffic control.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Security Command Center' },
-                    { id: 'STAD-DRONE-02', description: "Test drone detection system (radar/RF) prior to the event.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Security Command Center' },
-                    { id: 'STAD-DRONE-03', description: "Direct security personnel to visually track the drone and identify its operator, if possible.", priority: 'High', riskLevel: 'High', proof: 'Tracking Log', location: 'Security Personnel' },
-                    { id: 'STAD-DRONE-04', description: "If drone poses an immediate threat, activate pre-approved drone countermeasures and initiate controlled evacuation of the affected area.", priority: 'High', riskLevel: 'High', proof: 'Evacuation Plan', location: 'Security Command Center' },
+                    { id: 'STAD-DRONE-01', description: "Test drone detection system (radar/RF) prior to the event.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Security Command Center' },
+                    { id: 'STAD-DRONE-02', description: "Upon visual confirmation or system alert of a drone, immediately notify local law enforcement and air traffic control.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Security Command Center' },
+                    { id: 'STAD-DRONE-03', description: "Direct security personnel to visually track the drone and attempt to identify its operator on the ground.", priority: 'High', riskLevel: 'High', proof: 'Tracking Log', location: 'Security Personnel' },
+                    { id: 'STAD-DRONE-04', description: "If drone poses an immediate threat, activate pre-approved drone countermeasures and initiate controlled evacuation of the affected area if necessary.", priority: 'High', riskLevel: 'High', proof: 'Action Log', location: 'Security Command Center' },
                     { id: 'STAD-DRONE-05', description: "Log all detection events, even false alarms, for post-event analysis.", priority: 'Medium', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Command Center' }
                 ]
             },
@@ -2353,7 +2368,7 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "Ensures the reliability of digital payment systems, a critical component of modern, cashless venues.",
                 tasks: [
                     { id: 'STAD-PAY-01', description: "Process a test transaction at one POS terminal in each concession stand and retail outlet.", priority: 'High', riskLevel: 'High', proof: 'Test Transaction Log', location: 'Venue-wide' },
-                    { id: 'STAD-PAY-02', description: "Verify that all 'tap-to-pay' readers are functional.", priority: 'High', riskLevel: 'High', proof: 'Device Check Log', location: 'Venue-wide' },
+                    { id: 'STAD-PAY-02', description: "Verify that all 'tap-to-pay' readers are functional and clean.", priority: 'High', riskLevel: 'High', proof: 'Device Check Log', location: 'Venue-wide' },
                     { id: 'STAD-PAY-03', description: "Confirm that the system's offline processing mode is functional in case of a network outage.", priority: 'High', riskLevel: 'High', proof: 'Offline Test Log', location: 'IT Office' },
                     { id: 'STAD-PAY-04', description: "Ensure that backup cellular data connections for the payment gateways are active and have sufficient bandwidth.", priority: 'High', riskLevel: 'High', proof: 'Network Test Log', location: 'IT Office' },
                     { id: 'STAD-PAY-05', description: "Brief concession managers on troubleshooting steps for common payment terminal errors.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Concession Offices' }
@@ -2366,11 +2381,11 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Sustainability Manager",
                 summary: "Ensures all waste is properly sorted, recycled, or composted, moving towards a zero-waste event.",
                 tasks: [
-                    { id: 'STAD-WASTE-01', description: "Deploy clearly labeled recycling and compost bins throughout the venue.", priority: 'High', riskLevel: 'Medium', proof: 'Bin Placement Map', location: 'Venue' },
-                    { id: 'STAD-WASTE-02', description: "Station waste sorting personnel at strategic locations to guide fans.", priority: 'High', riskLevel: 'Medium', proof: 'Personnel Location Map', location: 'Venue' },
+                    { id: 'STAD-WASTE-01', description: "Deploy clearly labeled recycling, compost, and landfill bins throughout the venue.", priority: 'High', riskLevel: 'Medium', proof: 'Bin Placement Map', location: 'Venue' },
+                    { id: 'STAD-WASTE-02', description: "Station 'waste sorting' volunteers at strategic locations to guide fans.", priority: 'High', riskLevel: 'Medium', proof: 'Personnel Location Map', location: 'Venue' },
                     { id: 'STAD-WASTE-03', description: "Post-event, collect all waste bags and transport them to the designated sorting area.", priority: 'High', riskLevel: 'High', proof: 'Collection Route Map', location: 'Venue' },
-                    { id: 'STAD-WASTE-04', description: "Sort all waste into recyclable, compostable, and landfill-bound streams.", priority: 'High', riskLevel: 'High', proof: 'Sorting Log', location: 'Sorting Area' },
-                    { id: 'STAD-WASTE-05', description: "Track waste diversion rates and report them to relevant stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Diversion Report', location: 'Sustainability Office' }
+                    { id: 'STAD-WASTE-04', description: "Sort all waste into recyclable, compostable, and landfill-bound streams and weigh each stream.", priority: 'High', riskLevel: 'High', proof: 'Sorting Log', location: 'Sorting Area' },
+                    { id: 'STAD-WASTE-05', description: "Track waste diversion rates and report them to relevant stakeholders and for public-facing ESG goals.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Diversion Report', location: 'Sustainability Office' }
                 ]
             },
             {
@@ -2378,13 +2393,13 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security",
                 frequency: "Post-Game",
                 role: "Security Chief",
-                summary: "Secures the venue after fans have departed, preventing theft and unauthorized access.",
+                summary: "Secures the venue after fans have departed, preventing theft, vandalism, and unauthorized access.",
                 tasks: [
-                    { id: 'STAD-POST-SEC-01', description: "Perform a comprehensive security sweep of all public areas to ensure no one remains inside.", priority: 'High', riskLevel: 'High', proof: 'Sweep Completion Log', location: 'Entire Venue' },
-                    { id: 'STAD-POST-SEC-02', description: "Lock all doors, gates, and access points.", priority: 'High', riskLevel: 'High', proof: 'Lockdown Checklist', location: 'Entire Venue' },
-                    { id: 'STAD-POST-SEC-03', description: "Activate the alarm system and verify it is functioning properly.", priority: 'High', riskLevel: 'High', proof: 'Alarm System Log', location: 'Security Control Room' },
-                    { id: 'STAD-POST-SEC-04', description: "Review CCTV footage for any suspicious activity during the event.", priority: 'High', riskLevel: 'Medium', proof: 'CCTV Review Log', location: 'Security Control Room' },
-                    { id: 'STAD-POST-SEC-05', description: "Prepare an incident report summarizing any security-related events.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Control Room' }
+                    { id: 'STAD-POST-SEC-01', description: "Perform a comprehensive security sweep of all public areas, restrooms, and suites to ensure no one remains inside.", priority: 'High', riskLevel: 'High', proof: 'Sweep Completion Log', location: 'Entire Venue' },
+                    { id: 'STAD-POST-SEC-02', description: "Lock all doors, gates, and access points as per the lockdown sequence.", priority: 'High', riskLevel: 'High', proof: 'Lockdown Checklist', location: 'Entire Venue' },
+                    { id: 'STAD-POST-SEC-03', description: "Activate the full alarm system and verify it is functioning correctly.", priority: 'High', riskLevel: 'High', proof: 'Alarm System Log', location: 'Security Control Room' },
+                    { id: 'STAD-POST-SEC-04', description: "Review CCTV footage of the egress phase for any incidents.", priority: 'High', riskLevel: 'Medium', proof: 'CCTV Review Log', location: 'Security Control Room' },
+                    { id: 'STAD-POST-SEC-05', description: "Prepare an incident report summarizing any security-related events during the entire event lifecycle.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Control Room' }
                 ]
             },
             {
