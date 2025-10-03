@@ -39,7 +39,7 @@ const HowWeAreDifferentSection = () => (
                         MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates.</strong>
                     </p>
                      <p className="text-foreground font-semibold italic">
-                        From Crisis Prevention to AI-Powered Audits, our checklists turn best practices into daily habits.
+                        From Ensuring Compliance to Unlocking Excellence, Our Checklists Turn Best Practices into Daily Habits.
                     </p>
                 </div>
             </div>
@@ -501,6 +501,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
