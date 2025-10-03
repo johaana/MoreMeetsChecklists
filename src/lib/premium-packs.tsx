@@ -15,9 +15,11 @@ const allPacks = [
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
         sampleItems: [
+            "NEW: Manage your digital guest experience with a 'Guest-Facing Technology Audit'.",
+            "NEW: Implement a 'Pre-Arrival Personalization Protocol' to drive ancillary revenue.",
+            "NEW: Track your environmental goals with a 'Weekly Sustainability & Utility Audit'.",
             "Prevent social media crises with a 'Guest Complaint Escalation' protocol.",
-            "Secure your assets with a 'Valet & Vehicle Key Management' system.",
-            "NEW: Includes 'Keycard Security', 'Floor Care & Slip Prevention', and a 'Minibar Auditing' checklist to prevent charge disputes."
+            "Secure your assets with a 'Valet & Vehicle Key Management' system."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -208,6 +210,33 @@ const allPacks = [
                 ]
             },
             {
+                title: "😡 Guest Complaint Escalation & Resolution",
+                department: "Guest Relations",
+                frequency: "As-Needed",
+                role: "Duty Manager",
+                summary: "A crisis management protocol for a single guest issue to ensure rapid and effective resolution, preventing escalation and reputational damage.",
+                tasks: [
+                    { id: 'GCER-001', description: "Upon receiving a 'Severity 1' complaint (e.g., ruined special occasion, safety concern), immediately notify the Duty Manager and Guest Relations Head.", priority: 'High', riskLevel: 'High', proof: 'Escalation Log', location: 'Front Office' },
+                    { id: 'GCER-002', description: "Empower front-line staff to offer immediate service recovery up to a pre-approved limit (e.g., complimentary dinner) without needing multiple approvals.", priority: 'High', riskLevel: 'Medium', proof: 'Service Recovery Log', location: 'Front Office' },
+                    { id: 'GCER-003', description: "Log every step of the resolution process with timestamps in the guest's CRM profile to create a single source of truth.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Entry', location: 'Front Office' },
+                    { id: 'GCER-004', description: "After resolution, the Guest Relations Head must personally follow up with the guest within 24 hours.", priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Call Log', location: 'Guest Relations Office' }
+                ]
+            },
+            {
+                title: "📢 Social Media Crisis Response Drill",
+                department: "Marketing/PR",
+                frequency: "Quarterly",
+                role: "Marketing Head",
+                summary: "A simulation to test the hotel's readiness to handle a viral negative review or social media crisis, ensuring a swift, coordinated, and brand-safe response.",
+                tasks: [
+                    { id: 'SMCR-001', description: "Simulate a negative viral post (e.g., TikTok video of a dirty room) and activate the crisis response team.", priority: 'High', riskLevel: 'High', proof: 'Drill Scenario Document', location: 'Marketing Office' },
+                    { id: 'SMCR-002', description: "Draft and get approval for a public-facing holding statement within 30 minutes.", priority: 'High', riskLevel: 'High', proof: 'Drafted Statement', location: 'Marketing Office' },
+                    { id: 'SMCR-003', description: "Activate the social listening team to monitor mentions, sentiment, and the spread of the issue.", priority: 'High', riskLevel: 'Medium', proof: 'Social Listening Report', location: 'Marketing Office' },
+                    { id: 'SMCR-004', description: "Prepare internal communication for all staff on how to respond if asked by guests.", priority: 'Medium', riskLevel: 'Medium', proof: 'Internal Memo Draft', location: 'HR/Internal Comms' },
+                    { id: 'SMCR-005', description: "Conduct a post-drill debrief to identify weaknesses in the response plan.", priority: 'High', riskLevel: 'Medium', proof: 'Debrief Minutes', location: 'Conference Room' }
+                ]
+            },
+            {
                 title: "📱 Guest-Facing Technology Audit",
                 department: "IT/Operations",
                 frequency: "Weekly",
@@ -248,33 +277,6 @@ const allPacks = [
                     { id: 'SUST-WUA-004', description: "Inspect a sample of guest rooms for water leaks (taps, toilets) or inefficient lighting.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Guest Rooms' },
                     { id: 'SUST-WUA-005', description: "Review food wastage logs from F&B to identify trends and opportunities for reduction.", priority: 'High', riskLevel: 'Medium', proof: 'Wastage Log Analysis', location: 'F&B Office' }
                 ]
-            },
-            {
-                title: "😡 Guest Complaint Escalation & Resolution",
-                department: "Guest Relations",
-                frequency: "As-Needed",
-                role: "Duty Manager",
-                summary: "A crisis management protocol for a single guest issue to ensure rapid and effective resolution, preventing escalation and reputational damage.",
-                tasks: [
-                    { id: 'GCER-001', description: "Upon receiving a 'Severity 1' complaint (e.g., ruined special occasion, safety concern), immediately notify the Duty Manager and Guest Relations Head.", priority: 'High', riskLevel: 'High', proof: 'Escalation Log', location: 'Front Office' },
-                    { id: 'GCER-002', description: "Empower front-line staff to offer immediate service recovery up to a pre-approved limit (e.g., complimentary dinner) without needing multiple approvals.", priority: 'High', riskLevel: 'Medium', proof: 'Service Recovery Log', location: 'Front Office' },
-                    { id: 'GCER-003', description: "Log every step of the resolution process with timestamps in the guest's CRM profile to create a single source of truth.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Entry', location: 'Front Office' },
-                    { id: 'GCER-004', description: "After resolution, the Guest Relations Head must personally follow up with the guest within 24 hours.", priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Call Log', location: 'Guest Relations Office' }
-                ]
-            },
-            {
-                title: "📢 Social Media Crisis Response Drill",
-                department: "Marketing/PR",
-                frequency: "Quarterly",
-                role: "Marketing Head",
-                summary: "A simulation to test the hotel's readiness to handle a viral negative review or social media crisis, ensuring a swift, coordinated, and brand-safe response.",
-                tasks: [
-                    { id: 'SMCR-001', description: "Simulate a negative viral post (e.g., TikTok video of a dirty room) and activate the crisis response team.", priority: 'High', riskLevel: 'High', proof: 'Drill Scenario Document', location: 'Marketing Office' },
-                    { id: 'SMCR-002', description: "Draft and get approval for a public-facing holding statement within 30 minutes.", priority: 'High', riskLevel: 'High', proof: 'Drafted Statement', location: 'Marketing Office' },
-                    { id: 'SMCR-003', description: "Activate the social listening team to monitor mentions, sentiment, and the spread of the issue.", priority: 'High', riskLevel: 'Medium', proof: 'Social Listening Report', location: 'Marketing Office' },
-                    { id: 'SMCR-004', description: "Prepare internal communication for all staff on how to respond if asked by guests.", priority: 'Medium', riskLevel: 'Medium', proof: 'Internal Memo Draft', location: 'HR/Internal Comms' },
-                    { id: 'SMCR-005', description: "Conduct a post-drill debrief to identify weaknesses in the response plan.", priority: 'High', riskLevel: 'Medium', proof: 'Debrief Minutes', location: 'Conference Room' }
-                ]
             }
         ]
     },
@@ -290,9 +292,11 @@ const allPacks = [
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
         sampleItems: [
-            "Implement a 'Business Continuity Plan' and a 'Critical Systems Alert Response' protocol.",
+            "NEW: Manage flexible work with a 'Hybrid Workplace Readiness' checklist.",
+            "NEW: Leverage smart technology with a 'Smart Building & IoT Systems Check'.",
+            "Implement a 'Critical Systems Alert Response' protocol to prevent outages.",
             "Manage 'Capital Asset Lifecycle' and prevent catastrophic failures.",
-            "NEW: Includes 'Third-Party Vendor Network Access Policy' and 'Remote Work Device Security' to prevent cyber threats."
+            "NEW: Includes 'Third-Party Vendor Network Access Policy' to prevent cyber threats."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -522,6 +526,20 @@ const allPacks = [
                     { id: 'CSAR-003', description: "Update the central incident log every 15 minutes with status updates ('Technician on-site,' 'Root cause identified') until the issue is resolved.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Log', location: 'BMS' },
                     { id: 'CSAR-004', description: "Conduct a post-incident review within 24 hours to analyze the root cause of the alert, not just the fix.", priority: 'High', riskLevel: 'Medium', proof: 'Post-Incident Report', location: 'Conference Room' }
                 ]
+            },
+            {
+                title: "🌿 Weekly Sustainability & Utility Audit",
+                department: "Engineering/Sustainability",
+                frequency: "Weekly",
+                role: "Chief Engineer",
+                summary: "Tracks and audits the facility's environmental footprint, ensuring compliance with ESG goals and identifying cost-saving opportunities.",
+                tasks: [
+                    { id: 'SUST-WUA-001', description: "Log water and energy meter readings; compare against previous week and benchmarks.", priority: 'High', riskLevel: 'Medium', proof: 'Utility Logbook', location: 'Utility Rooms' },
+                    { id: 'SUST-WUA-002', description: "Audit waste segregation in pantries and back-of-house areas to ensure proper recycling.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Form', location: 'Back of House' },
+                    { id: 'SUST-WUA-003', description: "Check for compliance with 'green' purchasing policies for office supplies and cleaning materials.", priority: 'Medium', riskLevel: 'Low', proof: 'Purchase Order Review', location: 'Stores' },
+                    { id: 'SUST-WUA-004', description: "Inspect a sample of workstations and common areas for energy wastage (e.g., lights left on, inefficient equipment).", priority: 'Medium', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Office Floors' },
+                    { id: 'SUST-WUA-005', description: "Review and optimize HVAC schedules to align with current occupancy patterns.", priority: 'High', riskLevel: 'Medium', proof: 'BMS Schedule Review', location: 'BMS Room' }
+                ]
             }
         ]
     },
@@ -716,9 +734,11 @@ const allPacks = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Prevent errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
+            "NEW: Ensure secure 'Telemedicine Consultations' & audit your 'LIS-HIS-EMR Data Integrity'.",
+            "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
-            "NEW: Includes a 'CSSD Audit', 'Patient Repositioning', and 'Unidentified Patient Intake' protocol to prevent common but critical failures."
+            "Master the 'High-Risk Patient Handover' to prevent information loss.",
+            "NEW: Includes a 'CSSD Audit' and 'Unidentified Patient Intake' protocol."
         ],
         previewScenario: {
             title: "Preventing a Medication Error",
@@ -935,6 +955,20 @@ const allPacks = [
                 ]
             },
             {
+                title: "🗣️ High-Risk Patient Handover (Nursing)",
+                department: "Nursing",
+                frequency: "Per Shift Change",
+                role: "Nurse",
+                summary: "A mandatory, verbal checklist performed at every shift change at the patient's bedside to ensure critical risk information is never missed.",
+                tasks: [
+                    { id: 'HRPH-001', description: "Verbally confirm the patient's identity and wristband with the incoming nurse.", priority: 'High', riskLevel: 'High', proof: 'Handover Log', location: 'Bedside' },
+                    { id: 'HRPH-002', description: "Explicitly state the patient's 'High-Risk' status (e.g., 'This is Mr. Smith, he is a high fall risk and has a severe allergy to penicillin').", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Bedside' },
+                    { id: 'HRPH-003', description: "Physically point out any visual cues in the room indicating this risk (e.g., the red 'Fall Risk' sticker, 'Allergy' wristband).", priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Bedside' },
+                    { id: 'HRPH-004', description: "Review any critical events or changes from the previous shift.", priority: 'High', riskLevel: 'High', proof: 'Chart Review', location: 'Bedside' },
+                    { id: 'HRPH-005', description: "Both outgoing and incoming nurses sign off on the handover in the patient's chart or a dedicated log.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Log', location: 'Bedside' }
+                ]
+            },
+            {
                 title: "💻 Telemedicine Consultation Protocol",
                 department: "OPD",
                 frequency: "Per Consultation",
@@ -961,20 +995,6 @@ const allPacks = [
                     { id: 'DATA-004', description: "Verify that critical/panic value alerts from the LIS are being successfully flagged in the EMR for clinicians.", priority: 'High', riskLevel: 'High', proof: 'Test Patient Record', location: 'IT Office' },
                     { id: 'DATA-005', description: "Confirm that nightly data backups for all clinical systems have completed successfully.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'Server' }
                 ]
-            },
-            {
-                title: "🗣️ High-Risk Patient Handover (Nursing)",
-                department: "Nursing",
-                frequency: "Per Shift Change",
-                role: "Nurse",
-                summary: "A mandatory, verbal checklist performed at every shift change at the patient's bedside to ensure critical risk information is never missed.",
-                tasks: [
-                    { id: 'HRPH-001', description: "Verbally confirm the patient's identity and wristband with the incoming nurse.", priority: 'High', riskLevel: 'High', proof: 'Handover Log', location: 'Bedside' },
-                    { id: 'HRPH-002', description: "Explicitly state the patient's 'High-Risk' status (e.g., 'This is Mr. Smith, he is a high fall risk and has a severe allergy to penicillin').", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Bedside' },
-                    { id: 'HRPH-003', description: "Physically point out any visual cues in the room indicating this risk (e.g., the red 'Fall Risk' sticker, 'Allergy' wristband).", priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Bedside' },
-                    { id: 'HRPH-004', description: "Review any critical events or changes from the previous shift.", priority: 'High', riskLevel: 'High', proof: 'Chart Review', location: 'Bedside' },
-                    { id: 'HRPH-005', description: "Both outgoing and incoming nurses sign off on the handover in the patient's chart or a dedicated log.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Log', location: 'Bedside' }
-                ]
             }
         ]
     },
@@ -988,9 +1008,10 @@ const allPacks = [
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
         sampleItems: [
+            "NEW: Includes a 'Student Digital Safety Audit' and 'Off-Campus Field Trip' protocol.",
             "Prevent unauthorized access with a 'Non-Standard Student Pickup Verification' protocol.",
-            "Manage medical emergencies with an 'Off-Campus Trip & Field Trip Protocol'.",
-            "NEW: Includes a 'Student Digital Safety Audit' and 'Playground Safety' checks."
+            "Manage medical emergencies with a 'Student Medical Emergency Response' checklist.",
+            "Ensure a safe campus with 'Playground Safety' and 'Bus Safety' checks."
         ],
         previewScenario: {
             title: "Executing a Safe Student Dismissal",
@@ -1190,9 +1211,10 @@ const allPacks = [
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
         sampleItems: [
+            "NEW: Test your resilience with a 'Supply Chain Disruption Drill'.",
             "Implement a life-saving 'Lock-Out Tag-Out' (LOTO) procedure.",
             "Prevent accidents with an 'Electrical Permit to Work' protocol.",
-            "NEW: Includes 'Critical Spares Verification' and 'Fitness-for-Duty' checks to prevent common but severe accidents."
+            "NEW: Includes 'Critical Spares Verification' and 'Fitness-for-Duty' checks."
         ],
         previewScenario: {
             title: "Performing Safe Machine Maintenance",
@@ -1433,9 +1455,10 @@ const allPacks = [
         description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         sampleItems: [
+            "NEW: Includes a 'Daily Pre-Shift Huddle' checklist to align team and boost sales.",
             "Prevent return fraud with a 'High-Value Item Return Verification' protocol.",
             "Implement a 'Cash Handling & Reconciliation' process to eliminate discrepancies.",
-            "NEW: Includes 'Weekend Receiving Protocol' and 'Daily Pre-Shift Huddle' to boost sales and prevent errors."
+            "NEW: Includes 'Weekend Receiving Protocol' and 'Fitting Room Security' to prevent errors and theft."
         ],
         previewScenario: {
             title: "Preventing End-of-Day Cash Shortage",
@@ -1665,7 +1688,7 @@ const allPacks = [
         sampleItems: [
             "Master 'Venue Selection & Contracting' to protect your clients and budget.",
             "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
-            "NEW: Includes 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
+            "NEW: Includes a 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
         ],
         checklists: [
              {
