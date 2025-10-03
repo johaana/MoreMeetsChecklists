@@ -1,6 +1,6 @@
 
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap } from "lucide-react";
 
 const allPacks = [
     {
@@ -18,7 +18,7 @@ const allPacks = [
             "Master crucial security protocols for 'CCTV Monitoring' and 'Key Control'.",
             "Implement the HACCP-based 'Kitchen Hygiene' checklist for food safety compliance.",
             "Standardize the critical 'Night Audit' process for financial accuracy.",
-            "Includes often-overlooked SOPs for 'Pest Control' and 'HVAC Systems'."
+            "NEW: Audit 'Guest-Facing Technology' and 'Sustainability & ESG' compliance."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -142,6 +142,48 @@ const allPacks = [
                     { id: 'SEC-LF-004', description: "Store the item securely in a locked lost & found room or cabinet", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Security Office' },
                     { id: 'SEC-LF-005', description: "Tag the item with a unique reference number corresponding to the log entry", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Security Office' }
                 ]
+            },
+            {
+                title: "📱 Guest-Facing Technology Audit",
+                department: "IT/Operations",
+                frequency: "Weekly",
+                role: "Duty Manager",
+                summary: "Ensures all modern guest-facing technology is functional, providing a seamless and frustration-free digital experience for guests.",
+                tasks: [
+                    { id: 'TECH-GFT-001', description: "Verify mobile key functionality for a test room.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Front Office' },
+                    { id: 'TECH-GFT-002', description: "Test in-room tablet/smart hub for ordering, room control, and information.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Guest Room' },
+                    { id: 'TECH-GFT-003', description: "Confirm hotel's guest-facing chatbot/messaging platform is online and check response time.", priority: 'Medium', riskLevel: 'Medium', proof: 'Test Interaction Log', location: 'Front Office' },
+                    { id: 'TECH-GFT-004', description: "Check OTA booking channel integration for new reservations; ensure they appear correctly in PMS.", priority: 'High', riskLevel: 'High', proof: 'System Sync Check', location: 'Reservations' },
+                    { id: 'TECH-GFT-005', description: "Verify that the guest Wi-Fi network is stable and provides adequate speed in various locations (lobby, room, restaurant).", priority: 'High', riskLevel: 'Medium', proof: 'Speed Test Log', location: 'Campus-wide' }
+                ]
+            },
+            {
+                title: "📊 Pre-Arrival Personalization Protocol",
+                department: "Front Office",
+                frequency: "Daily",
+                role: "Guest Relations Manager",
+                summary: "Proactively uses guest data to personalize stays, enhance guest experience, and drive ancillary revenue before the guest even arrives.",
+                tasks: [
+                    { id: 'FO-PAP-001', description: "Review incoming guest profiles (next 48 hours) for loyalty status, past preferences, and special requests.", priority: 'High', riskLevel: 'Medium', proof: 'PMS Review Log', location: 'Front Office' },
+                    { id: 'FO-PAP-002', description: "Send pre-arrival email with targeted offers (e.g., spa package, restaurant reservation, room upgrade).", priority: 'Medium', riskLevel: 'Low', proof: 'CRM Send Log', location: 'Front Office' },
+                    { id: 'FO-PAP-003', description: "Flag VIP, repeat guest, and special occasion arrivals for a personal welcome note or amenity.", priority: 'High', riskLevel: 'Medium', proof: 'PMS Alert/Note', location: 'Front Office' },
+                    { id: 'FO-PAP-004', description: "Coordinate with housekeeping and F&B for any pre-stocked minibar preferences or special amenities.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inter-departmental Memo', location: 'Front Office' },
+                    { id: 'FO-PAP-005', description: "Check if any pre-arrival requests (e.g., extra pillows, crib) have been actioned.", priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Coordination Log', location: 'Front Office' }
+                ]
+            },
+            {
+                title: "🌿 Weekly Sustainability & Utility Audit",
+                department: "Engineering/Sustainability",
+                frequency: "Weekly",
+                role: "Chief Engineer",
+                summary: "Tracks and audits the hotel's environmental footprint, ensuring compliance with ESG goals and identifying cost-saving opportunities.",
+                tasks: [
+                    { id: 'SUST-WUA-001', description: "Log water and energy meter readings; compare against previous week and benchmarks.", priority: 'High', riskLevel: 'Medium', proof: 'Utility Logbook', location: 'Utility Rooms' },
+                    { id: 'SUST-WUA-002', description: "Audit waste segregation in kitchens and back-of-house areas to ensure proper recycling.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Form', location: 'Back of House' },
+                    { id: 'SUST-WUA-003', description: "Check for compliance with 'green' purchasing policies (e.g., no single-use plastics in service areas).", priority: 'Medium', riskLevel: 'Low', proof: 'Purchase Order Review', location: 'Stores' },
+                    { id: 'SUST-WUA-004', description: "Inspect a sample of guest rooms for water leaks (taps, toilets) or inefficient lighting.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Guest Rooms' },
+                    { id: 'SUST-WUA-005', description: "Review food wastage logs from F&B to identify trends and opportunities for reduction.", priority: 'High', riskLevel: 'Medium', proof: 'Wastage Log Analysis', location: 'F&B Office' }
+                ]
             }
         ]
     },
@@ -160,7 +202,7 @@ const allPacks = [
             "Master crucial 'Site Commissioning' & 'Decommissioning' protocols.",
             "Implement a robust 'Business Continuity Plan' (BCP) with emergency drills.",
             "Manage 'Capital Asset Lifecycle' and operational budgets effectively.",
-            "Includes often-missed vendor 'Labor Law Compliance' and 'SLA Audits'."
+            "NEW: Manage the 'Hybrid Workplace' and 'Smart Building IoT Systems'."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -283,6 +325,34 @@ const allPacks = [
                     { id: 'HVB-003', description: "Quarterly AHUs & FCUs Maintenance", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' },
                     { id: 'HVB-004', description: "Calibrate and Maintain VFDs", priority: 'Medium', riskLevel: 'Medium', proof: 'Photo / Log', location: 'Utility Rooms' },
                     { id: 'HVB-005', description: "Check all Pumps, Motors and Valves", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Utility Rooms' }
+                ]
+            },
+            {
+                title: "🏢 Hybrid Workplace Readiness",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Facility Coordinator",
+                summary: "A modern checklist to manage the complexities of a flexible, hybrid work environment, ensuring both technology and space are ready for employees.",
+                tasks: [
+                    { id: 'HWR-001', description: "Audit hot desk booking system; resolve any discrepancies between bookings and actual usage.", priority: 'High', riskLevel: 'Medium', proof: 'System Audit Log', location: 'Office Area' },
+                    { id: 'HWR-002', description: "Test AV and video conferencing equipment in all reservable meeting rooms.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Meeting Rooms' },
+                    { id: 'HWR-003', description: "Review occupancy sensor data to identify underutilized areas for potential reconfiguration.", priority: 'Medium', riskLevel: 'Low', proof: 'Occupancy Report', location: 'Facility Office' },
+                    { id: 'HWR-004', description: "Ensure 'collaboration zones' are clean, fully stocked with supplies (whiteboards, markers), and properly configured.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Collaboration Zones' },
+                    { id: 'HWR-005', description: "Check that lockers and personal storage areas are clear and available for daily users.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Common Areas' }
+                ]
+            },
+            {
+                title: "🤖 Smart Building & IoT Systems Check",
+                department: "Engineering/IT",
+                frequency: "Weekly",
+                role: "BMS Engineer",
+                summary: "A technical checklist to ensure all smart building systems are online, calibrated, and providing accurate data for efficient facility management.",
+                tasks: [
+                    { id: 'IOT-001', description: "Review BMS/IoT dashboard for critical alerts, including predictive maintenance flags for HVAC and electrical systems.", priority: 'High', riskLevel: 'High', proof: 'Dashboard Screenshot', location: 'BMS Room' },
+                    { id: 'IOT-002', description: "Verify data accuracy from a sample of occupancy sensors by comparing with a physical headcount.", priority: 'Medium', riskLevel: 'Medium', proof: 'Calibration Log', location: 'Office Area' },
+                    { id: 'IOT-003', description: "Test automated lighting and HVAC responses to sensor triggers in a designated zone.", priority: 'Medium', riskLevel: 'Medium', proof: 'Test Log', location: 'Test Zone' },
+                    { id: 'IOT-004', description: "Check network connectivity and health of all IoT gateways and endpoints.", priority: 'High', riskLevel: 'High', proof: 'Network Health Report', location: 'Server Room' },
+                    { id: 'IOT-005', description: "Ensure the automated fault detection and diagnostics (FDD) system is running and analyze top 5 recurring faults.", priority: 'High', riskLevel: 'Medium', proof: 'FDD Report', location: 'BMS Room' }
                 ]
             }
         ]
@@ -442,7 +512,7 @@ const allPacks = [
             "Implement a 'Medication Error Prevention' protocol for zero mistakes.",
             "Master the 'Surgical Safety Checklist' based on WHO guidelines.",
             "Ensure 'Infection Control' with rigorous ward and ICU sanitation SOPs.",
-            "Includes 'Patient Data Privacy' and 'Discharge Process' checklists."
+            "NEW: Includes 'Telemedicine Protocol' and 'EMR Data Integrity' checklists."
         ],
         previewScenario: {
             title: "Preventing a Medication Error",
@@ -565,6 +635,34 @@ const allPacks = [
                     { id: 'ER-CB-003', description: "Assign roles clearly at the start of the event (e.g., compressor, airway, recorder).", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Bedside' },
                     { id: 'ER-CB-004', description: "Document all interventions, medications, and timings accurately on the Code Blue record.", priority: 'High', riskLevel: 'High', proof: 'Code Blue Form', location: 'Bedside' },
                     { id: 'ER-CB-005', description: "Conduct a post-event debrief to identify areas for improvement.", priority: 'Medium', riskLevel: 'Medium', proof: 'Debrief Minutes', location: 'Conference Room' }
+                ]
+            },
+            {
+                title: "💻 Telemedicine Consultation Protocol",
+                department: "OPD",
+                frequency: "Per Consultation",
+                role: "Clinician",
+                summary: "Ensures quality, security, and compliance in virtual patient consultations, a growing part of modern healthcare.",
+                tasks: [
+                    { id: 'TELE-001', description: "Verify patient identity via video using at least two unique identifiers.", priority: 'High', riskLevel: 'High', proof: 'EMR Note', location: 'Virtual' },
+                    { id: 'TELE-002', description: "Obtain and document patient's verbal consent for the virtual consultation.", priority: 'High', riskLevel: 'Medium', proof: 'EMR Note', location: 'Virtual' },
+                    { id: 'TELE-003', description: "Ensure a secure, private, and stable internet connection before beginning the consultation.", priority: 'High', riskLevel: 'Medium', proof: 'Platform Check', location: 'Clinician Office' },
+                    { id: 'TELE-004', description: "Provide clear instructions for post-consultation follow-up and e-prescription access.", priority: 'Medium', riskLevel: 'Medium', proof: 'Verbal Confirmation', location: 'Virtual' },
+                    { id: 'TELE-005', description: "Document the consultation fully in the EMR, using a specific 'telemedicine' tag for audit purposes.", priority: 'High', riskLevel: 'Medium', proof: 'EMR Entry', location: 'EMR' }
+                ]
+            },
+            {
+                title: "🔄 Daily Data Integrity Audit (LIS-HIS-EMR)",
+                department: "IT/Quality",
+                frequency: "Daily",
+                role: "IT Analyst",
+                summary: "A crucial back-end check to prevent medical errors caused by data inconsistencies between different hospital information systems.",
+                tasks: [
+                    { id: 'DATA-001', description: "Run a daily script to identify and reconcile any demographic mismatches between HIS and EMR for new admissions.", priority: 'High', riskLevel: 'High', proof: 'Script Log', location: 'Server' },
+                    { id: 'DATA-002', description: "Audit a random sample of 10 lab reports to ensure results in LIS match what is displayed in the EMR.", priority: 'High', riskLevel: 'High', proof: 'Audit Log', location: 'IT Office' },
+                    { id: 'DATA-003', description: "Check the system interface message queue for any failed or unprocessed data transfers between systems.", priority: 'High', riskLevel: 'High', proof: 'Queue Monitoring Tool', location: 'Server' },
+                    { id: 'DATA-004', description: "Verify that critical/panic value alerts from the LIS are being successfully flagged in the EMR for clinicians.", priority: 'High', riskLevel: 'High', proof: 'Test Patient Record', location: 'IT Office' },
+                    { id: 'DATA-005', description: "Confirm that nightly data backups for all clinical systems have completed successfully.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'Server' }
                 ]
             }
         ]
@@ -721,8 +819,8 @@ const allPacks = [
         sampleItems: [
             "Implement a 'Lock-Out Tag-Out' (LOTO) procedure for machinery maintenance.",
             "Standardize 'Personal Protective Equipment (PPE)' compliance checks.",
-            "Manage 'Raw Material Quality Control' from receiving to production line.",
-            "Includes 'Forklift Safety' and 'Hazardous Material Handling' SOPs."
+            "Master 'Predictive Maintenance' analysis to reduce downtime.",
+            "NEW: Includes 'Supply Chain Disruption Drills' and 'Predictive Maintenance' checklists."
         ],
         previewScenario: {
             title: "Performing Safe Machine Maintenance",
@@ -845,6 +943,34 @@ const allPacks = [
                     { id: '5S-003', description: "(Shine) Clean the work area, tools, and equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Workstation' },
                     { id: '5S-004', description: "(Standardize) Ensure standardized procedures and work instructions are being followed.", priority: 'High', riskLevel: 'Medium', proof: 'Process Audit', location: 'Workstation' },
                     { id: '5S-005', description: "(Sustain) Review previous audit findings and ensure improvements have been sustained.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Review', location: 'Workstation' }
+                ]
+            },
+            {
+                title: "🔗 Supply Chain Disruption Drill",
+                department: "Logistics/Planning",
+                frequency: "Quarterly",
+                role: "Supply Chain Manager",
+                summary: "A simulation checklist to test and improve the plant's resilience to supply chain shocks, such as a primary supplier failing.",
+                tasks: [
+                    { id: 'SCD-001', description: "Simulate primary supplier failure for a critical raw material.", priority: 'High', riskLevel: 'High', proof: 'Drill Scenario Document', location: 'Planning Office' },
+                    { id: 'SCD-002', description: "Identify and contact pre-approved secondary/backup suppliers.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Planning Office' },
+                    { id: 'SCD-003', description: "Calculate the impact on the production schedule based on the alternate supplier's lead times.", priority: 'High', riskLevel: 'Medium', proof: 'Revised Schedule', location: 'Planning Office' },
+                    { id: 'SCD-004', description: "Test the emergency raw material release protocol from buffer stock.", priority: 'High', riskLevel: 'Medium', proof: 'Stock Release Form', location: 'Warehouse' },
+                    { id: 'SCD-005', description: "Conduct a post-drill review to identify weaknesses in the contingency plan.", priority: 'High', riskLevel: 'Medium', proof: 'Post-Drill Report', location: 'Conference Room' }
+                ]
+            },
+            {
+                title: "📈 Predictive Maintenance Analysis",
+                department: "Maintenance",
+                frequency: "Weekly",
+                role: "Maintenance Head",
+                summary: "Shifts maintenance from a reactive/preventive model to a data-driven predictive model, reducing downtime and costs.",
+                tasks: [
+                    { id: 'PDM-001', description: "Review vibration, temperature, and power consumption sensor data from critical machinery.", priority: 'High', riskLevel: 'High', proof: 'Sensor Data Dashboard', location: 'Maintenance Office' },
+                    { id: 'PDM-002', description: "Analyze trends and identify any anomalies that deviate from baseline performance.", priority: 'High', riskLevel: 'Medium', proof: 'Trend Analysis Report', location: 'Maintenance Office' },
+                    { id: 'PDM-003', description: "Create maintenance work orders based on predictive alerts, not just fixed schedules.", priority: 'High', riskLevel: 'Medium', proof: 'Work Order System', location: 'Maintenance Office' },
+                    { id: 'PDM-004', description: "Analyze recent failure data to update and refine the predictive models.", priority: 'Medium', riskLevel: 'Medium', proof: 'Model Update Log', location: 'Maintenance Office' },
+                    { id: 'PDM-005', description: "Present a summary of predictive alerts and averted failures in the weekly production meeting.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Presentation', location: 'Conference Room' }
                 ]
             }
         ]
@@ -1378,3 +1504,4 @@ export type PremiumPack = {
     checklists: Checklist[];
     previewScenario?: PreviewScenario;
 };
+
