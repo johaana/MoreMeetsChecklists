@@ -1,8 +1,52 @@
 
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Video, LandPlot, Trash, Aperture, Sailboat, Anchor } from "lucide-react";
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock } from "lucide-react";
+export type Checklist = {
+    title: string;
+    department: string;
+    frequency: string;
+    role: string;
+    summary: string;
+    tasks: {
+        id: string;
+        description: string;
+        priority: 'High' | 'Medium' | 'Low';
+        riskLevel: 'High' | 'Medium' | 'Low';
+        proof: string;
+        location: string;
+    }[];
+};
 
-const allPacks = [
+export type PreviewScenario = {
+    title: string;
+    description: string;
+    tasks: {
+        id: string;
+        description: string;
+        sourceChecklist: string;
+        priority: 'High' | 'Medium' | 'Low';
+    }[];
+};
+
+
+export type PremiumPack = {
+    id: string;
+    title: string;
+    priceUSD: number;
+    priceINR: number;
+    paymentId: string;
+    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime";
+    description: string;
+    icon: React.ReactElement;
+    badgeText?: string;
+    badgeVariant?: "default" | "secondary" | "destructive" | "outline" | "accent";
+    sampleItems: string[];
+    previewScenario?: PreviewScenario;
+    checklists: Checklist[];
+}
+
+
+export const premiumPacks: PremiumPack[] = [
     {
         id: 'hospitality_excellence_suite',
         title: "Hotel & Resort Operations Checklist",
@@ -633,9 +677,9 @@ const allPacks = [
                 summary: "A critical public health checklist to prevent sick employees from handling food and causing a foodborne illness outbreak.",
                 tasks: [
                     { id: 'FIT-001', description: "Before each shift, conduct a brief, confidential huddle where each team member gives a verbal 'fit to work' confirmation.", priority: 'High', riskLevel: 'High', proof: 'Shift Huddle Log', location: 'Kitchen/Staff Area' },
-                    { id: 'FIT-002', description: "Any staff reporting symptoms of GI illness (vomiting, diarrhea) are immediately sent home.", priority: 'High', riskLevel: 'High', proof: 'Illness Log', location: 'Manager\'s Office' },
-                    { id: 'FIT-003', description: "Shifts for sick employees must be covered from a pre-approved 'on-call' list, not by pressuring other staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Roster Change Log', location: 'Manager\'s Office' },
-                    { id: 'FIT-004', description: "An employee sent home cannot return to work until they have been symptom-free for at least 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Return to Work Form', location: 'Manager\'s Office' },
+                    { id: 'FIT-002', description: "Any staff reporting symptoms of GI illness (vomiting, diarrhea) are immediately sent home.", priority: 'High', riskLevel: 'High', proof: 'Illness Log', location: "Manager's Office" },
+                    { id: 'FIT-003', description: "Shifts for sick employees must be covered from a pre-approved 'on-call' list, not by pressuring other staff.", priority: 'Medium', riskLevel: 'Medium', proof: 'Roster Change Log', location: "Manager's Office" },
+                    { id: 'FIT-004', description: "An employee sent home cannot return to work until they have been symptom-free for at least 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Return to Work Form', location: "Manager's Office" },
                 ]
             },
             {
@@ -1033,7 +1077,7 @@ const allPacks = [
                 tasks: [
                     { id: 'OPEN-001', description: "Unlock all required gates and classroom doors.", priority: 'High', riskLevel: 'Medium', proof: 'Physical Check', location: 'Campus-wide' },
                     { id: 'OPEN-002', description: "Perform a safety sweep of playgrounds and common areas for any hazards.", priority: 'High', riskLevel: 'High', proof: 'Sweep Log', location: 'Outdoor Areas' },
-                    { id: 'OPEN-003', description: "Ensure all lights are working and set to energy-efficient schedules.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Indoor Areas' },
+                    { id: 'OPEN-003', description: "Ensure all lights are working and set to energy-efficient schedules to reduce consumption.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Indoor Areas' },
                     { id: 'OPEN-004', description: "Check that restrooms are clean and stocked with soap and toilet paper.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms' },
                     { id: 'OPEN-005', description: "Verify that the security guard and support staff are at their posts.", priority: 'High', riskLevel: 'Medium', proof: 'Attendance Register', location: 'Gate/Office' }
                 ]
@@ -1180,7 +1224,7 @@ const allPacks = [
                 tasks: [
                     { id: 'DRILL-001', description: "Pre-plan the drill scenario (e.g., fire, earthquake) and inform key staff.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Plan', location: 'Office' },
                     { id: 'DRILL-002', description: "Sound the emergency alarm and observe reaction time.", priority: 'High', riskLevel: 'High', proof: 'Time Log', location: 'Campus-wide' },
-                    { id: 'DRIill-003', description: "Ensure teachers lead students out in an orderly fashion using designated escape routes.", priority: 'High', riskLevel: 'High', proof: 'Drill Observation', location: 'Campus-wide' },
+                    { id: 'DRILL-003', description: "Ensure teachers lead students out in an orderly fashion using designated escape routes.", priority: 'High', riskLevel: 'High', proof: 'Drill Observation', location: 'Campus-wide' },
                     { id: 'DRILL-004', description: "Conduct a head count at the designated assembly point to ensure everyone is evacuated.", priority: 'High', riskLevel: 'High', proof: 'Head Count Sheet', location: 'Assembly Point' },
                     { id: 'DRILL-005', description: "Conduct a post-drill review to identify gaps and areas for improvement.", priority: 'High', riskLevel: 'Medium', proof: 'Review Minutes', location: 'Office' }
                 ]
@@ -1480,7 +1524,7 @@ const allPacks = [
                 tasks: [
                     { id: 'OPEN-001', description: "Perform a security check of the premises perimeter before entry.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Exterior' },
                     { id: 'OPEN-002', description: "Deactivate alarm system and check for any overnight alerts.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Interior' },
-                    { id: 'OPEN-003', description: "Turn on all lights and displays, ensuring they adhere to the energy-saving schedule.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'OPEN-003', description: "Turn on all lights and displays, ensuring they adhere to energy-saving schedules.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'OPEN-004', description: "Boot up POS systems, check network connectivity, and verify opening cash float.", priority: 'High', riskLevel: 'High', proof: 'POS Log', location: 'Cash Counter' },
                     { id: 'OPEN-005', description: "Conduct a quick floor walk to ensure cleanliness and tidiness.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' }
                 ]
@@ -1984,9 +2028,9 @@ const allPacks = [
         priceUSD: 249.99,
         priceINR: 19999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Manufacturing",
+        category: "Maritime",
         description: "For port captains and shipping line managers. A high-stakes toolkit for ensuring safety, security, and efficiency in port and vessel operations.",
-        icon: <LifeBuoy className="w-8 h-8 text-primary" />,
+        icon: <Anchor className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Implement the 'ISPS Code' security protocols for port facilities and vessels.",
             "Standardize 'Vessel Mooring & Berthing' operations.",
@@ -2170,58 +2214,193 @@ const allPacks = [
             "Includes 'Lease Agreement & Renewal' and 'Vendor Management' checklists."
         ],
         checklists: []
+    },
+    {
+        id: 'sports_stadium_arena_pack',
+        title: "Sports Stadium & Arena Management",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Events",
+        description: "For stadium managers and event directors. A comprehensive toolkit for managing large-scale sporting events, focusing on safety, broadcast readiness, and fan experience.",
+        icon: <Trophy className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent" as const,
+        sampleItems: [
+            "Master the 'Field/Court of Play Pre-Event Handover' to ensure athlete safety.",
+            "Prevent broadcast failures with the 'Broadcast Compound & Tech Integration Audit'.",
+            "Manage risk with the 'Real-Time Crowd Density' and 'Drone Incursion' protocols.",
+            "NEW: Includes a 'Zero Waste & Post-Event Sorting' checklist for sustainability goals."
+        ],
+        checklists: [
+            {
+                title: "🛡️ Pre-Game Security & Crowd Control Setup",
+                department: "Security",
+                frequency: "Pre-Game",
+                role: "Security Chief",
+                summary: "The essential protocol for preparing the venue. Covers security sweeps, testing magnetometers, setting up queues, and briefing staff on threat levels for the specific event.",
+                tasks: [
+                    { id: 'STAD-SEC-01', description: "Perform a comprehensive sweep of all public areas for unattended bags or suspicious items.", priority: 'High', riskLevel: 'High', proof: 'Sweep Completion Log', location: 'Entire Venue' },
+                    { id: 'STAD-SEC-02', description: "Test all magnetometers and bag-check X-ray machines at every entry gate.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Entry Gates' },
+                    { id: 'STAD-SEC-03', description: "Position barricades and stanchions for queue management as per the event's specific plan.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Entry Gates' },
+                    { id: 'STAD-SEC-04', description: "Brief all security staff on the event's specific threat intelligence and code words.", priority: 'High', riskLevel: 'High', proof: 'Briefing Sign-off Sheet', location: 'Command Center' },
+                    { id: 'STAD-SEC-05', description: "Verify communication links (radios, earpieces) between central command and all security posts.", priority: 'High', riskLevel: 'High', proof: 'Comms Check Log', location: 'Command Center' }
+                ]
+            },
+            {
+                title: "⚽ Field/Court of Play Pre-Event Handover",
+                department: "Groundskeeping/Operations",
+                frequency: "Pre-Game",
+                role: "Head Groundskeeper",
+                summary: "Ensures the playing surface is safe for high-value athletes. Involves inspecting for hazards, verifying markings, and a formal sign-off between the groundskeeping crew and team officials.",
+                tasks: [
+                    { id: 'STAD-FIELD-01', description: "Inspect the entire playing surface for any hazards (e.g., divots, debris, sprinkler heads).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Field of Play' },
+                    { id: 'STAD-FIELD-02', description: "Verify that all game markings are accurate, visible, and meet league specifications.", priority: 'High', riskLevel: 'Medium', proof: 'Measurement Check', location: 'Field of Play' },
+                    { id: 'STAD-FIELD-03', description: "Check field/court hardness and moisture levels to ensure they are within safe parameters for athletes.", priority: 'High', riskLevel: 'High', proof: 'Test Reading Log', location: 'Field of Play' },
+                    { id: 'STAD-FIELD-04', description: "Ensure all equipment (goalposts, nets, etc.) is securely installed and free from defects.", priority: 'High', riskLevel: 'High', proof: 'Physical Inspection', location: 'Field of Play' },
+                    { id: 'STAD-FIELD-05', description: "The Head Groundskeeper and a representative from the home team must co-sign the handover form confirming the field is safe and ready.", priority: 'High', riskLevel: 'High', proof: 'Signed Handover Form', location: 'Field of Play' }
+                ]
+            },
+            {
+                title: "🎫 Ticketing System & Access Control Audit",
+                department: "IT/Box Office",
+                frequency: "Pre-Game",
+                role: "Box Office Manager",
+                summary: "Prevents fraud and ensures smooth entry. Covers testing scanners at all gates, real-time reconciliation of scans vs. sales, and procedures for handling counterfeit tickets.",
+                tasks: [
+                    { id: 'STAD-TICKET-01', description: "Test a sample of valid barcodes, QR codes, and NFC tickets at every entry turnstile to ensure scanners are working.", priority: 'High', riskLevel: 'High', proof: 'Scanner Test Log', location: 'All Gates' },
+                    { id: 'STAD-TICKET-02', description: "Confirm that the access control system is correctly programmed with the event's specific date, time, and gate authorizations.", priority: 'High', riskLevel: 'Medium', proof: 'System Configuration Screenshot', location: 'Server Room' },
+                    { id: 'STAD-TICKET-03', description: "Brief gate staff on procedures for handling fraudulent tickets and re-entry policies.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Briefing Log', location: 'Gate Supervisor Office' },
+                    { id: 'STAD-TICKET-04', description: "Ensure 'problem ticket' windows are staffed and equipped to handle customer service issues.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Box Office' },
+                    { id: 'STAD-TICKET-05', description: "Set up real-time monitoring to reconcile 'scans in' against tickets sold to spot anomalies.", priority: 'High', riskLevel: 'Medium', proof: 'Dashboard Setup', location: 'Command Center' }
+                ]
+            },
+            {
+                title: "📡 Broadcast Compound & Tech Integration Audit",
+                department: "Broadcast/IT",
+                frequency: "Pre-Game",
+                role: "Broadcast Liaison",
+                summary: "Ensures a flawless broadcast by coordinating access, power, and connectivity for all media partners.",
+                tasks: [
+                    { id: 'STAD-BROADCAST-01', description: "Verify all broadcast partners have proper credentials and access to the compound.", priority: 'High', riskLevel: 'Medium', proof: 'Credential Log', location: 'Broadcast Compound' },
+                    { id: 'STAD-BROADCAST-02', description: "Confirm adequate power supply and backup generators for all broadcast trucks and equipment.", priority: 'High', riskLevel: 'High', proof: 'Power Load Test Log', location: 'Broadcast Compound' },
+                    { id: 'STAD-BROADCAST-03', description: "Test all fiber and internet connections for broadcast feeds.", priority: 'High', riskLevel: 'High', proof: 'Connection Test Log', location: 'Broadcast Compound' },
+                    { id: 'STAD-BROADCAST-04', description: "Coordinate camera positions and ensure they have clear, unobstructed views.", priority: 'High', riskLevel: 'Medium', proof: 'Camera Placement Map', location: 'Venue' },
+                    { id: 'STAD-BROADCAST-05', description: "Test the PA system and ensure announcers have clear audio feeds.", priority: 'High', riskLevel: 'Medium', proof: 'Audio Test Log', location: 'Venue' }
+                ]
+            },
+            {
+                title: "🍻 Concessions & Hawkers Operations Readiness",
+                department: "F&B",
+                frequency: "Pre-Game",
+                role: "Concession Manager",
+                summary: "Maximizes revenue and ensures food safety during the intense, short bursts of game-time demand.",
+                tasks: [
+                    { id: 'STAD-CONC-01', description: "Stock all concession stands to 'peak demand' levels based on ticket sales data and opponent.", priority: 'High', riskLevel: 'Medium', proof: 'Stocking Sheets', location: 'Concession Stands' },
+                    { id: 'STAD-CONC-02', description: "Verify functionality of all POS systems, credit card readers, and backup cashless payment devices.", priority: 'High', riskLevel: 'High', proof: 'POS Test Log', location: 'Concession Stands' },
+                    { id: 'STAD-CONC-03', description: "Log food safety temperatures for all hot-holding units (e.g., hot dogs, nachos) before gates open.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Concession Stands' },
+                    { id: 'STAD-CONC-04', description: "Conduct a pre-game huddle with all cashiers and hawkers to review menu, pricing, and upsell targets.", priority: 'Medium', riskLevel: 'Low', proof: 'Huddle Notes', location: 'Concession Area' },
+                    { id: 'STAD-CONC-05', description: "Ensure mobile hawkers are equipped with fully charged handheld POS devices and sufficient starting inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Issue Log', location: 'F&B Office' }
+                ]
+            },
+            {
+                title: "⏱️ Halftime Turnaround Protocol",
+                department: "Operations",
+                frequency: "Halftime",
+                role: "Operations Director",
+                summary: "A time-critical checklist to manage the intense operational surge during halftime, covering cleaning, restocking, and entertainment setup.",
+                tasks: [
+                    { id: 'STAD-HALF-01', description: "Dispatch 'strike teams' to clean and restock high-traffic restrooms the moment the halftime whistle blows.", priority: 'High', riskLevel: 'Medium', proof: 'Dispatch Log', location: 'Command Center' },
+                    { id: 'STAD-HALF-02', description: "Monitor crowd flow to concession stands and redirect fans to less busy locations via the stadium app.", priority: 'High', riskLevel: 'Medium', proof: 'App Notification Log', location: 'Command Center' },
+                    { id: 'STAD-HALF-03', description: "Deploy staff to restock 'grab-and-go' beverage coolers.", priority: 'High', riskLevel: 'Low', proof: 'Restocking Log', location: 'Concession Areas' },
+                    { id: 'STAD-HALF-04', description: "Coordinate with the entertainment team to set up and tear down the halftime show within the allotted time.", priority: 'High', riskLevel: 'Medium', proof: 'Show Schedule', location: 'Field of Play' },
+                    { id: 'STAD-HALF-05', description: "Perform a quick inspection of the playing surface for any debris after the halftime show concludes.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Field of Play' }
+                ]
+            },
+            {
+                title: "📡 Real-Time Crowd Density Monitoring",
+                department: "Security/Operations",
+                frequency: "In-Game",
+                role: "Operations Director",
+                summary: "Monitors crowd flow and density to prevent overcrowding and potential safety hazards.",
+                tasks: [
+                    { id: 'STAD-CROWD-01', description: "Monitor CCTV cameras and analyze crowd density in key areas.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Security Control Room' },
+                    { id: 'STAD-CROWD-02', description: "Use sensor data (if available) to identify areas of high congestion.", priority: 'High', riskLevel: 'High', proof: 'Sensor Data Log', location: 'Security Control Room' },
+                    { id: 'STAD-CROWD-03', description: "Communicate with security personnel on the ground to redirect crowd flow as needed.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Security Control Room' },
+                    { id: 'STAD-CROWD-04', description: "Open additional gates or exits if necessary to relieve congestion.", priority: 'High', riskLevel: 'High', proof: 'Gate Opening Log', location: 'Security Control Room' },
+                    { id: 'STAD-CROWD-05', description: "Update fans with real-time information on alternative routes and shorter lines.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Update Log', location: 'Security Control Room' }
+                ]
+            },
+            {
+                title: "🚁 Drone Incursion & Countermeasure Protocol",
+                department: "Security",
+                frequency: "In-Game",
+                role: "Security Chief",
+                summary: "Defines the response to a rogue drone entering the stadium's airspace, a potential security risk.",
+                tasks: [
+                    { id: 'STAD-DRONE-01', description: "Upon visual confirmation of a drone, immediately notify local law enforcement and air traffic control.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Security Command Center' },
+                    { id: 'STAD-DRONE-02', description: "Test drone detection system (radar/RF) prior to the event.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Security Command Center' },
+                    { id: 'STAD-DRONE-03', description: "Direct security personnel to visually track the drone and identify its operator, if possible.", priority: 'High', riskLevel: 'High', proof: 'Tracking Log', location: 'Security Personnel' },
+                    { id: 'STAD-DRONE-04', description: "If drone poses an immediate threat, activate pre-approved drone countermeasures and initiate controlled evacuation of the affected area.", priority: 'High', riskLevel: 'High', proof: 'Evacuation Plan', location: 'Security Command Center' },
+                    { id: 'STAD-DRONE-05', description: "Log all detection events, even false alarms, for post-event analysis.", priority: 'Medium', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Command Center' }
+                ]
+            },
+            {
+                title: "💳 Cashless & Contactless Payment System Audit",
+                department: "IT/Finance",
+                frequency: "Pre-Game",
+                role: "IT Manager",
+                summary: "Ensures the reliability of digital payment systems, a critical component of modern, cashless venues.",
+                tasks: [
+                    { id: 'STAD-PAY-01', description: "Process a test transaction at one POS terminal in each concession stand and retail outlet.", priority: 'High', riskLevel: 'High', proof: 'Test Transaction Log', location: 'Venue-wide' },
+                    { id: 'STAD-PAY-02', description: "Verify that all 'tap-to-pay' readers are functional.", priority: 'High', riskLevel: 'High', proof: 'Device Check Log', location: 'Venue-wide' },
+                    { id: 'STAD-PAY-03', description: "Confirm that the system's offline processing mode is functional in case of a network outage.", priority: 'High', riskLevel: 'High', proof: 'Offline Test Log', location: 'IT Office' },
+                    { id: 'STAD-PAY-04', description: "Ensure that backup cellular data connections for the payment gateways are active and have sufficient bandwidth.", priority: 'High', riskLevel: 'High', proof: 'Network Test Log', location: 'IT Office' },
+                    { id: 'STAD-PAY-05', description: "Brief concession managers on troubleshooting steps for common payment terminal errors.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Concession Offices' }
+                ]
+            },
+            {
+                title: "♻️ Zero Waste & Post-Event Sorting Protocol",
+                department: "Operations/Sustainability",
+                frequency: "Post-Game",
+                role: "Sustainability Manager",
+                summary: "Ensures all waste is properly sorted, recycled, or composted, moving towards a zero-waste event.",
+                tasks: [
+                    { id: 'STAD-WASTE-01', description: "Deploy clearly labeled recycling and compost bins throughout the venue.", priority: 'High', riskLevel: 'Medium', proof: 'Bin Placement Map', location: 'Venue' },
+                    { id: 'STAD-WASTE-02', description: "Station waste sorting personnel at strategic locations to guide fans.", priority: 'High', riskLevel: 'Medium', proof: 'Personnel Location Map', location: 'Venue' },
+                    { id: 'STAD-WASTE-03', description: "Post-event, collect all waste bags and transport them to the designated sorting area.", priority: 'High', riskLevel: 'High', proof: 'Collection Route Map', location: 'Venue' },
+                    { id: 'STAD-WASTE-04', description: "Sort all waste into recyclable, compostable, and landfill-bound streams.", priority: 'High', riskLevel: 'High', proof: 'Sorting Log', location: 'Sorting Area' },
+                    { id: 'STAD-WASTE-05', description: "Track waste diversion rates and report them to relevant stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Diversion Report', location: 'Sustainability Office' }
+                ]
+            },
+            {
+                title: "🧹 Post-Event Security Sweep & Lockdown",
+                department: "Security",
+                frequency: "Post-Game",
+                role: "Security Chief",
+                summary: "Secures the venue after fans have departed, preventing theft and unauthorized access.",
+                tasks: [
+                    { id: 'STAD-POST-SEC-01', description: "Perform a comprehensive security sweep of all public areas to ensure no one remains inside.", priority: 'High', riskLevel: 'High', proof: 'Sweep Completion Log', location: 'Entire Venue' },
+                    { id: 'STAD-POST-SEC-02', description: "Lock all doors, gates, and access points.", priority: 'High', riskLevel: 'High', proof: 'Lockdown Checklist', location: 'Entire Venue' },
+                    { id: 'STAD-POST-SEC-03', description: "Activate the alarm system and verify it is functioning properly.", priority: 'High', riskLevel: 'High', proof: 'Alarm System Log', location: 'Security Control Room' },
+                    { id: 'STAD-POST-SEC-04', description: "Review CCTV footage for any suspicious activity during the event.", priority: 'High', riskLevel: 'Medium', proof: 'CCTV Review Log', location: 'Security Control Room' },
+                    { id: 'STAD-POST-SEC-05', description: "Prepare an incident report summarizing any security-related events.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Control Room' }
+                ]
+            },
+            {
+                title: "🚇 Tunnel & Back-of-House Security",
+                department: "Security",
+                frequency: "Pre/Post Game",
+                role: "Security Supervisor",
+                summary: "Secures sensitive 'backstage' areas to protect players, officials, and media, preventing unauthorized access and altercations.",
+                tasks: [
+                    { id: 'STAD-BOH-01', description: "Clear the athlete tunnel of all non-essential personnel 10 minutes before the team is scheduled to enter or exit.", priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Athlete Tunnel' },
+                    { id: 'STAD-BOH-02', description: "Position dedicated security personnel at the entry and exit points of the tunnel.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster', location: 'Athlete Tunnel' },
+                    { id: 'STAD-BOH-03', description: "Verify credentials for all individuals in the 'mixed zone' where media interact with players.", priority: 'High', riskLevel: 'Medium', proof: 'Credential Check Log', location: 'Mixed Zone' },
+                    { id: 'STAD-BOH-04', description: "Ensure locker rooms are secure and only accessible to authorized team personnel.", priority: 'High', riskLevel: 'High', proof: 'Access Log Check', location: 'Locker Rooms' },
+                    { id: 'STAD-BOH-05', description: "Escort referees and officials from their dressing rooms to the field and back.", priority: 'High', riskLevel: 'Medium', proof: 'Escort Log', location: 'Back of House Corridors' }
+                ]
+            }
+        ]
     }
 ];
-
-export const premiumPacks = allPacks;
-
-export type Task = {
-    id: string;
-    description: string;
-    priority: 'High' | 'Medium' | 'Low';
-    riskLevel: 'High' | 'Medium' | 'Low';
-    proof: string;
-    location: string;
-};
-
-export type Checklist = {
-    title: string;
-    department: string;
-    frequency: string;
-    role: string;
-    summary: string;
-    tasks: Task[];
-};
-
-export type PreviewScenario = {
-    title: string;
-    description: string;
-    tasks: Array<{
-        id: string;
-        description: string;
-        sourceChecklist: string;
-        priority: 'High' | 'Medium' | 'Low';
-    }>;
-};
-
-export type PremiumPack = {
-    id: string;
-    title: string;
-    priceUSD: number;
-    priceINR: number;
-    paymentId?: string;
-    category: string;
-    description: string;
-    icon: React.ReactElement;
-    badgeText?: string;
-    badgeVariant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'accent';
-    sampleItems: string[];
-    checklists: Checklist[];
-    previewScenario?: PreviewScenario;
-};
-
-
-
-
-
-    
