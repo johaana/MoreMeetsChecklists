@@ -135,5 +135,82 @@ According to the National Retail Federation, U.S. retailers lost an estimated $1
 </ol>
 <p>By shifting from a simple visual check to a data-driven verification process, you can shut the door on this massive source of loss, protecting your inventory and your bottom line.</p>
 `
+  },
+  {
+    slug: 'sustainability-in-hospitality',
+    title: 'Beyond Towels: A Practical Guide to Implementing High-Impact Sustainability in Your Hotel',
+    description: 'True sustainability goes far beyond asking guests to reuse towels. It\'s an operational discipline that can reduce costs and attract eco-conscious travelers.',
+    publishedDate: '2024-07-27',
+    author: 'MoreMeets Team',
+    tags: ['Hospitality', 'Sustainability', 'ESG'],
+    relatedPackId: 'hospitality_excellence_suite',
+    content: `
+<p>Guests today don't just want luxury; they demand responsibility. But true sustainability goes far beyond asking guests to reuse their towels. It's an operational discipline that can reduce costs and attract a new generation of eco-conscious travelers. Here’s how to implement it.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Low-Hanging Fruit: "No-Cost" Operational Wins</h3>
+<p>The easiest place to start is with process. You can make a significant impact on your environmental footprint without spending a rupee. It's all about being smarter with the resources you already have. Focus on implementing a robust waste segregation program in kitchens and back-of-house, and optimizing HVAC schedules based on daily occupancy data.</p>
+<p>A hotel in Dubai cut its energy bill by 15% simply by creating a checklist for engineers to align HVAC run-times with the daily occupancy forecast from the front office. This simple coordination prevented the cooling of empty floors.</p>
+<p>Our <a href="/packs/hospitality_excellence_suite" class="text-accent underline">Hotel & Resort Operations Checklist</a> includes a <strong>Weekly Sustainability & Utility Audit</strong> to help you track these metrics and drive down consumption.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Supply Chain: From Farm to Fork</h3>
+<p>Your environmental impact extends beyond your four walls. Auditing your vendors for sustainable practices is critical. Discuss sourcing local produce to reduce "food miles" and partner with suppliers who use minimal, recyclable packaging. A major hotel chain faced backlash when it was discovered their "sustainably sourced" coffee supplier was violating labor laws. A simple vendor audit could have prevented the reputational damage.</p>
+<p>Our <strong>Monthly Vendor & Compliance</strong> checklist (found in the <a href="/packs/facility_management_blueprint" class="text-accent underline">Facility Management Blueprint</a>) can be adapted for ESG audits of your suppliers.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Big Investments: Water & Energy</h3>
+<p>For long-term impact, consider investing in water-saving fixtures (low-flow aerators) and smart lighting systems. The ROI is often faster than you think. However, new technology is only effective if it's maintained. Checklists are vital for managing this.</p>
+<p>By implementing a weekly leak detection checklist for all its 500 rooms, a Mumbai hotel identified and fixed minor leaks that were costing them over 20,000 liters of water per month. The <strong>Plumbing & Water Systems</strong> checklist helps formalize this process.</p>
+<p>Implementing sustainability isn't about one grand gesture; it's about a thousand small, consistent actions. Our checklists provide the day-to-day operational framework to turn your sustainability goals into reality. </p>
+`
+  },
+  {
+    slug: 'your-next-power-outage-is-coming',
+    title: 'Your Next Power Outage is Coming. Is Your Facility Ready?',
+    description: 'Business continuity depends on more than just having a backup generator. It requires a robust, drilled protocol to prevent catastrophic failure of critical systems.',
+    publishedDate: '2024-07-26',
+    author: 'MoreMeets Team',
+    tags: ['Facilities', 'Risk Management', 'Corporate'],
+    relatedPackId: 'facility_management_blueprint',
+    content: `
+<p>For a data center in Bangalore, the city-wide power cut was expected. The massive diesel generator (DG) set kicked in perfectly. But 40 minutes later, the unthinkable happened. The DG set sputtered and died. The server room temperature began to rise, and a multi-million dollar outage was minutes away. The cause? The day-tank that fed the generator had run dry. No one had checked the fuel levels, assuming it was "someone else's job."</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Beyond the Machine: The Importance of Process</h3>
+<p>Having a backup generator is not a plan. It's just a piece of equipment. A real business continuity plan involves a repeatable, verifiable process that ensures the entire system works when needed.</p>
+<p>This includes:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li><strong>Fuel Management:</strong> Daily checks of fuel levels in both the main tank and the day-tank.</li>
+    <li><strong>System Testing:</strong> Weekly "no-load" tests to ensure the generator starts, and quarterly "full-load" tests to ensure it can handle the building's actual power requirements.</li>
+    <li><strong>Alert Response:</strong> A clear protocol for who gets notified when a critical system fails, and what steps they must take.</li>
+</ul>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Reactive to Proactive</h3>
+<p>Our <a href="/packs/facility_management_blueprint" class="text-accent underline">Facility Management Blueprint</a> is designed to prevent these exact scenarios. The <strong>Electrical Systems</strong> checklist includes daily DG set and fuel management tasks. The <strong>Weekly Maintenance & Safety</strong> checklist mandates generator testing. And the <strong>Critical Systems Alert & Response Protocol</strong> ensures that an automated alert from your Building Management System (BMS) is immediately actioned by a human.</p>
+<p>Don't wait for a crisis to discover the holes in your process. A single checklist can be the difference between a minor inconvenience and a catastrophic failure.</p>
+`
+  },
+  {
+    slug: 'the-pre-flight-checklist-for-events',
+    title: 'The Pre-Flight Checklist: Why Every Event Needs a Tech Rehearsal',
+    description: 'A speaker\'s microphone failing or a presentation not loading are not small glitches; they are event-killers. Learn how to prevent them with a mandatory technical rehearsal.',
+    publishedDate: '2024-07-25',
+    author: 'MoreMeets Team',
+    tags: ['Events', 'Technology', 'Risk Management'],
+    relatedPackId: 'events_management_playbook',
+    content: `
+<p>The CEO walked on stage to a roaring applause. The presentation slide with the company's record-breaking earnings was meant to be the highlight. He clicked the slide advancer. Nothing happened. He clicked again. The screen was frozen. The AV technician frantically tried to switch to the backup laptop, but the seamless moment was lost forever, replaced by awkward silence.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Hope is Not a Strategy</h3>
+<p>Every event planner has nightmares about technical failures. Yet, many still rely on hope: "Hopefully the speaker's laptop works with our projector," or "Hopefully the video file isn't too big." This is a recipe for disaster.</p>
+<p>Just as a pilot runs through a pre-flight checklist, every event speaker must go through a mandatory technical rehearsal. This isn't just about checking if the mic is on; it's about pressure-testing the entire technical workflow, from the speaker's specific file to the on-stage confidence monitors.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Mandatory Tech Rehearsal</h3>
+<p>Our <a href="/packs/events_management_playbook" class="text-accent underline">Event Management Playbook</a> includes a <strong>Speaker & Presentation Technical Rehearsal</strong> checklist that turns this into a non-negotiable process. It requires:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li><strong>Using the Actual File:</strong> Don't test with a generic presentation. The speaker's final file must be loaded onto the actual presentation laptop that will be used during the show.</li>
+    <li><strong>Testing Embedded Media:</strong> Play any embedded video or audio files to ensure codecs are compatible and sound is routed correctly.</li>
+    <li><strong>Simulating the Stage Environment:</strong> Have the speaker use the actual slide advancer, see their notes on the confidence monitor, and hear their voice through the PA system.</li>
+</ul>
+<p>This 30-minute rehearsal, scheduled the day before the talk, can prevent 99% of on-stage technical failures. It replaces hope with certainty and ensures your high-stakes moments land with the impact they deserve.</p>
+`
   }
 ];
+
+// Add more blog posts following the structure above. 
+// Use a mix of relatedPackId and relatedChecklistId to link to different products.
+// Ensure slugs are unique.
+// Use realistic-sounding but generic examples.
+// Keep the tone professional and problem-solution oriented.
+// Each post should clearly identify a business pain point and show how a specific checklist or protocol is the solution.
+// Use HTML for formatting, including <p>, <h3>, <ul>, <li>, <blockquote>.
