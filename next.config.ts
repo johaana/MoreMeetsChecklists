@@ -49,16 +49,6 @@ const nextConfig: NextConfig = {
         destination: '/sales-consultancy',
         permanent: true,
       },
-       {
-        source: '/blog',
-        destination: '/sales-consultancy',
-        permanent: true,
-      },
-      {
-        source: '/blog/:slug',
-        destination: '/sales-consultancy',
-        permanent: true,
-      },
       {
         source: '/why-us',
         destination: '/#why-us',
