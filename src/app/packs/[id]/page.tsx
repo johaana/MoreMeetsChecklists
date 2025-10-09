@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2 } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -88,6 +88,40 @@ const PainPointsSection = ({ category }: { category: string }) => {
     );
 }
 
+const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) => {
+    if (!pack.globalStandards) {
+        return null;
+    }
+
+    return (
+        <section className="w-full py-12 md:py-16">
+            <div className="container px-4 md:px-6">
+                <div className="max-w-3xl mx-auto text-center mb-10">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                        {pack.globalStandards.title}
+                    </h2>
+                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
+                        Our checklists are built upon globally recognized standards to ensure you're operating at a world-class level.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                    {pack.globalStandards.standards.map((standard, index) => (
+                        <Card key={index} className="flex flex-col text-center p-6">
+                            <CardHeader className="p-0">
+                                <CheckCircle className="w-10 h-10 text-accent mx-auto mb-3" />
+                                <CardTitle className="text-lg font-headline">{standard.name}</CardTitle>
+                            </CardHeader>
+                            <CardContent className="p-0 mt-2 flex-1">
+                                <p className="text-sm text-muted-foreground">{standard.description}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
     const relatedChecklists = individualChecklists.filter(ic => ic.relatedPackId === packId);
 
@@ -157,7 +191,9 @@ export default function Page({ params }: { params: { id: string } }) {
     "Automotive": ["Dealership Owners", "Workshop Owners", "Service Directors"],
     "Real Estate": ["Property Firm Owners", "Landlords", "Heads of Operations (REITs)"],
     "Compliance": ["Chief Compliance Officers (CCOs)", "Heads of ESG", "Heads of Quality (ISO)"],
-    "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors"]
+    "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors"],
+    "E-commerce": ["E-commerce Founders", "Heads of Operations", "Warehouse Managers"],
+    "Agency": ["Travel Agency Owners", "Tour Operators", "IATA Compliance Managers"]
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
@@ -257,6 +293,8 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
             </div>
         </section>
+
+        <GlobalStandardsSection pack={pack} />
 
         <IndividualChecklistsTeaser packId={pack.id} />
 

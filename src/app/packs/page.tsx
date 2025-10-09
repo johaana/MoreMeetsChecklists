@@ -24,6 +24,8 @@ const categoryColors: { [key: string]: string } = {
     "Real Estate": "bg-teal-100 text-teal-800 border-teal-200",
     "Compliance": "bg-cyan-100 text-cyan-800 border-cyan-200",
     "Wellness": "bg-lime-100 text-lime-800 border-lime-200",
+    "E-commerce": "bg-sky-100 text-sky-800 border-sky-200",
+    "Agency": "bg-amber-100 text-amber-800 border-amber-200",
 };
 
 export default function AllPacksPage() {
@@ -90,7 +92,7 @@ export default function AllPacksPage() {
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
                                             <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
-                                            <span>{item}</span>
+                                            <span dangerouslySetInnerHTML={{ __html: item }} />
                                         </li>
                                     ))}
                                 </ul>

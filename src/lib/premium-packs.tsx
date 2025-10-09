@@ -1,5 +1,5 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Video, LandPlot, Trash, Aperture, Sailboat, Anchor } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Video, LandPlot, Trash, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime";
+    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -43,6 +43,10 @@ export type PremiumPack = {
     sampleItems: string[];
     previewScenario?: PreviewScenario;
     checklists: Checklist[];
+    globalStandards?: {
+        title: string;
+        standards: { name: string; description: string; }[];
+    }
 }
 
 
@@ -72,6 +76,15 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'HK-DRC-018', description: "Perform final inspection of the room before leaving.", sourceChecklist: "Daily Room Cleaning", priority: 'High' },
                 { id: 'FO-DO-010', description: "Prepare detailed shift handover notes for the next team, highlighting any pending issues.", sourceChecklist: "Reception Daily Operations", priority: 'High' },
                 { id: 'SEC-CSM-001', description: "Check that all CCTV cameras are operational and recording.", sourceChecklist: "CCTV & Security Monitoring", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Global Hospitality Standards",
+            standards: [
+                { name: "Health & Safety", description: "HACCP, ISO 22000 for food safety; NFPA for fire safety; local health department regulations." },
+                { name: "Guest Experience", description: "ISO 9001 for quality management; star-rating criteria; brand-specific Standard Operating Procedures." },
+                { name: "Security & Data", description: "PCI DSS for payment card security; GDPR/CCPA for guest data privacy." },
+                { name: "Environmental", description: "ISO 14001 for environmental management; LEED for green building standards." }
             ]
         },
         checklists: [
@@ -350,6 +363,15 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'FSE-007', description: "Test Emergency Lights and Power Backup", sourceChecklist: "Fire Safety & Emergency", priority: 'High' }
             ]
         },
+        globalStandards: {
+            title: "Aligned with Global Facility Management Standards",
+            standards: [
+                { name: "Safety", description: "OSHA (US), NEBOSH/IOSH (UK) for workplace safety; NFPA for fire safety." },
+                { name: "Quality & Process", description: "ISO 9001 for quality management; ISO 41001 for Facility Management standards." },
+                { name: "Security", description: "ISO 27001 for information security (IT/Data); Physical access control best practices." },
+                { name: "Energy & Environment", description: "ISO 50001 for energy management; ISO 14001 for environmental impact." }
+            ]
+        },
         checklists: [
             {
                 title: "✔️ Daily Site Operations",
@@ -612,6 +634,14 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'CK-SPH-005', description: "Staff wash hands thoroughly at designated times (e.g., after touching face, before starting new task).", sourceChecklist: "Staff Personal Hygiene Checklist", priority: 'High' }
             ]
         },
+        globalStandards: {
+            title: "Aligned with Global Food & Safety Standards",
+            standards: [
+                { name: "Food Safety", description: "HACCP principles, ISO 22000, local regulations (FDA, FSSAI, EFSA)." },
+                { name: "Quality Management", description: "ISO 9001 for consistent service and quality." },
+                { name: "Occupational Health", description: "OSHA and local workplace safety standards for kitchen environments." }
+            ]
+        },
         checklists: [
             {
                 title: "🍳 Kitchen Opening Checklist (HACCP Focus)",
@@ -791,6 +821,15 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'PH-PV-002', description: "Check prescription for legibility, completeness, and for any contraindications.", sourceChecklist: "Prescription Verification", priority: 'High' },
                 { id: 'LASA-001', description: "For designated LASA drugs, store them in separate, labeled bins with 'TALL-man' lettering.", sourceChecklist: "Look-Alike, Sound-Alike Drug Protocol", priority: 'High' },
                 { id: 'NUR-MA-002', description: "Cross-verify medication label against the patient's chart at the bedside before administration.", sourceChecklist: "Medication Administration", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Global Healthcare Standards",
+            standards: [
+                { name: "Clinical Quality", description: "JCI (Joint Commission International), NABH (India) for hospital accreditation." },
+                { name: "Patient Safety", description: "WHO Surgical Safety Guidelines, protocols for medication safety and infection control." },
+                { name: "Laboratory", description: "ISO 15189, NABL (India) for quality and competence in medical laboratories." },
+                { name: "Data Privacy", description: "HIPAA (US), GDPR (EU), and local data protection laws for patient information." }
             ]
         },
         checklists: [
@@ -1066,6 +1105,15 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'EOD-001', description: "A designated staff member must perform a final sweep of all common areas 30 minutes after the final bell to ensure no child is left behind.", sourceChecklist: "End-of-Day Campus Clearing Procedure", priority: 'High' }
             ]
         },
+        globalStandards: {
+            title: "Aligned with Global Education & Safety Standards",
+            standards: [
+                { name: "Child Safety", description: "Protocols aligned with child protection policies and safe transportation guidelines." },
+                { name: "Health & Safety", description: "EHS guidelines for facilities, including fire drills, playground safety, and medical emergency response." },
+                { name: "Security", description: "Best practices for access control, visitor management, and campus security." },
+                { name: "Digital Safety", description: "Standards for protecting students online and ensuring data privacy on school-issued devices." }
+            ]
+        },
         checklists: [
             {
                 title: "🌅 School Opening Procedure",
@@ -1267,6 +1315,15 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'LOTO-002', description: "De-energize and lock out all power sources using an approved lock and tag.", sourceChecklist: "Lock-Out Tag-Out (LOTO) Procedure", priority: 'High' },
                 { id: 'EPTW-001', description: "For electrical work, include a mandatory 'Arc Flash Hazard Analysis' that defines the required PPE level.", sourceChecklist: "Electrical Permit to Work (PTW)", priority: 'High' },
                 { id: 'MAINT-001', description: "Obtain a 'Permit to Work' before starting any non-routine maintenance task.", sourceChecklist: "Machine Maintenance & Safety", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Global Manufacturing & Safety Standards",
+            standards: [
+                { name: "Safety", description: "OSHA (US), IOSH (UK), local factory acts, and protocols for LOTO, PTW, and hazardous materials." },
+                { name: "Quality Management", description: "ISO 9001, principles of lean manufacturing (5S), and quality control for raw materials." },
+                { name: "Environmental", description: "ISO 14001 for environmental management and waste control." },
+                { name: "Energy Management", description: "ISO 50001 for optimizing energy consumption of plant and machinery." }
             ]
         },
         checklists: [
@@ -1489,237 +1546,6 @@ export const premiumPacks: PremiumPack[] = [
         ]
     },
     {
-        id: 'retail_operations_pack',
-        title: "Retail Store Operations Checklist",
-        priceUSD: 79.99,
-        priceINR: 6499,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Retail",
-        description: "For retail owners and COOs. A complete toolkit to standardize store operations, reduce shrinkage, and enhance customer experience.",
-        icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "NEW: Includes a 'Daily Pre-Shift Huddle' to align team and boost sales.",
-            "Prevent return fraud with a 'High-Value Item Return Verification' protocol.",
-            "Implement a 'Cash Handling & Reconciliation' process to eliminate discrepancies.",
-            "NEW: Includes 'Weekend Receiving Protocol' and 'Fitting Room Security' to prevent errors and theft."
-        ],
-        previewScenario: {
-            title: "Preventing End-of-Day Cash Shortage",
-            description: "This scenario shows how checklists ensure financial accuracy and prevent loss. A single missed step can lead to hours of recounting or financial loss.",
-            tasks: [
-                { id: 'CASH-002', description: "At shift change, incoming and outgoing cashiers count the float together and sign off.", sourceChecklist: "Cash Handling & Reconciliation", priority: 'High' },
-                { id: 'CLOSE-003', description: "Reconcile daily sales report from POS with total cash, card, and digital payments.", sourceChecklist: "Store Closing Procedure", priority: 'High' },
-                { id: 'CASH-004', description: "All 'No Sale' or 'Void' transactions must be approved and initialed by the manager on duty.", sourceChecklist: "Cash Handling & Reconciliation", priority: 'High' },
-                { id: 'SEC-005', description: "Deposit the day's earnings in the drop safe in a tamper-proof bag, witnessed by a second staff member.", sourceChecklist: "Security & Loss Prevention", priority: 'High' }
-            ]
-        },
-        checklists: [
-            {
-                title: "🌅 Store Opening Procedure",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensures the store is perfectly prepared for business, covering security, cleanliness, systems readiness, and staff briefing.",
-                tasks: [
-                    { id: 'OPEN-001', description: "Perform a security check of the premises perimeter before entry.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Exterior' },
-                    { id: 'OPEN-002', description: "Deactivate alarm system and check for any overnight alerts.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Interior' },
-                    { id: 'OPEN-003', description: "Turn on all lights and displays, ensuring they adhere to energy-saving schedules.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'OPEN-004', description: "Boot up POS systems, check network connectivity, and verify opening cash float.", priority: 'High', riskLevel: 'High', proof: 'POS Log', location: 'Cash Counter' },
-                    { id: 'OPEN-005', description: "Conduct a quick floor walk to ensure cleanliness and tidiness.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' }
-                ]
-            },
-            {
-                title: "🤝 Daily Pre-Shift Huddle & Team Alignment",
-                department: "Sales",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "A 10-minute briefing to align the team, set daily goals, and boost morale and sales performance.",
-                tasks: [
-                    { id: 'HUDDLE-001', description: "Review and share the day's sales targets and current promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Huddle Notes', location: 'Backroom/Floor' },
-                    { id: 'HUDDLE-002', description: "Highlight 1-2 new product arrivals or key items to focus on.", priority: 'Medium', riskLevel: 'Low', proof: 'Huddle Notes', location: 'Backroom/Floor' },
-                    { id: 'HUDDLE-003', description: "Discuss any expected VIP customers or special appointments for the day.", priority: 'Medium', riskLevel: 'Medium', proof: 'Huddle Notes', location: 'Backroom/Floor' },
-                    { id: 'HUDDLE-004', description: "Conduct a quick role-play of a common customer objection or sales scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Huddle Notes', location: 'Backroom/Floor' },
-                ]
-            },
-            {
-                title: "📦 Weekend & Off-Hours Receiving Protocol",
-                department: "Inventory",
-                frequency: "Per Off-Hour Delivery",
-                role: "Manager/Supervisor",
-                summary: "A strict protocol to prevent receiving errors and theft during shifts with less experienced staff.",
-                tasks: [
-                    { id: 'W-REC-001', description: "Any delivery arriving after 5 PM Friday or on a weekend requires a 'two-person count' verification.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
-                    { id: 'W-REC-002', description: "The truck driver must wait until the physical item count is reconciled against the packing slip.", priority: 'High', riskLevel: 'High', proof: 'Driver Wait Log', location: 'Receiving Area' },
-                    { id: 'W-REC-003', description: "A 'clean' proof of delivery is only signed after the physical count is confirmed to be accurate.", priority: 'High', riskLevel: 'High', proof: 'Signed POD', location: 'Receiving Area' },
-                    { id: 'W-REC-004', description: "All received goods must be moved to a secure backroom area, not left on the receiving dock.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Receiving Area' },
-                ]
-            },
-            {
-                title: "🌡️ Automated Temperature Monitoring & Alert Response",
-                department: "Operations/IT",
-                frequency: "As-Needed",
-                role: "Store Manager",
-                summary: "A checklist for responding to digital alerts from temperature sensors in refrigerators and freezers to prevent stock loss.",
-                tasks: [
-                    { id: 'TEMP-ALERT-001', description: "Any automated temperature alert must be acknowledged in the system by the manager-on-duty within 15 minutes.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Manager PC/Mobile' },
-                    { id: 'TEMP-ALERT-002', description: "Physically check the unit's temperature with a calibrated thermometer to confirm the alert.", priority: 'High', riskLevel: 'High', proof: 'Manual Temp Log', location: 'Cooler/Freezer Unit' },
-                    { id: 'TEMP-ALERT-003', description: "If alert is confirmed, follow the troubleshooting sequence (e.g., check for blocked vents, ensure door is closed).", priority: 'High', riskLevel: 'Medium', proof: 'Troubleshooting Log', location: 'Cooler/Freezer Unit' },
-                    { id: 'TEMP-ALERT-004', description: "If issue persists, log a high-priority service call with the maintenance vendor and move stock if necessary.", priority: 'High', riskLevel: 'High', proof: 'Service Call Log', location: 'Manager Office' },
-                ]
-            },
-            {
-                title: "🌃 Store Closing Procedure",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Closing Manager",
-                summary: "A systematic checklist for securely closing the store, covering cash reconciliation, cleaning, securing inventory, and end-of-day reporting.",
-                tasks: [
-                    { id: 'CLOSE-001', description: "Complete all end-of-day cleaning tasks for the sales floor and backroom.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'All Areas' },
-                    { id: 'CLOSE-002', description: "Face and front all merchandise for a fresh look the next day.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'CLOSE-003', description: "Reconcile daily sales report from POS with total cash, card, and digital payments.", priority: 'High', riskLevel: 'High', proof: 'EOD Report', location: 'Back Office' },
-                    { id: 'CLOSE-004', description: "Prepare bank deposit and secure cash in the safe.", priority: 'High', riskLevel: 'High', proof: 'Deposit Slip/Safe Log', location: 'Back Office' },
-                    { id: 'CLOSE-005', description: "Ensure all doors, windows, and gates are locked and set the alarm system.", priority: 'High', riskLevel: 'High', proof: 'Security Checklist', location: 'All Areas' }
-                ]
-            },
-            {
-                title: "💵 Cash Handling & Reconciliation",
-                department: "Finance",
-                frequency: "Daily",
-                role: "Cashier/Manager",
-                summary: "A critical financial control checklist to prevent cash discrepancies, covering float verification, transaction accuracy, and end-of-shift balancing.",
-                tasks: [
-                    { id: 'CASH-001', description: "Verify opening float amount with a manager or second person.", priority: 'High', riskLevel: 'High', proof: 'Float Log', location: 'Cash Counter' },
-                    { id: 'CASH-002', description: "Perform cash drops when the amount in the drawer exceeds the set limit.", priority: 'High', riskLevel: 'Medium', proof: 'Drop Log', location: 'Cash Counter' },
-                    { id: 'CASH-003', description: "Count the drawer at the end of the shift and balance against the POS sales report.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Back Office' },
-                    { id: 'CASH-004', description: "All 'No Sale' or 'Void' transactions must be approved and initialed by the manager on duty.", priority: 'High', riskLevel: 'Medium', proof: 'POS Audit Trail', location: 'Cash Counter' },
-                    { id: 'CASH-005', description: "Report any cash shortage or overage immediately as per company policy.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Back Office' }
-                ]
-            },
-            {
-                title: "📦 Inventory Receiving & Stocking",
-                department: "Inventory",
-                frequency: "Per Delivery",
-                role: "Stock Associate",
-                summary: "Ensures accuracy in inventory from the moment it arrives. Covers verifying deliveries, checking for damages, and updating stock levels.",
-                tasks: [
-                    { id: 'INV-REC-001', description: "Verify delivered quantity and item codes against the packing slip or invoice.", priority: 'High', riskLevel: 'High', proof: 'Signed Packing Slip', location: 'Receiving Area' },
-                    { id: 'INV-REC-002', description: "Inspect all cartons for signs of damage or tampering.", priority: 'High', riskLevel: 'Medium', proof: 'Receiving Log', location: 'Receiving Area' },
-                    { id: 'INV-REC-003', description: "Report any discrepancies or damages to the vendor and store manager immediately.", priority: 'High', riskLevel: 'Medium', proof: 'Discrepancy Report', location: 'Receiving Area' },
-                    { id: 'INV-REC-004', description: "Update inventory management system with received stock.", priority: 'High', riskLevel: 'High', proof: 'System Entry Log', location: 'Back Office' },
-                    { id: 'INV-REC-005', description: "Move received stock to the designated backroom or sales floor location promptly.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Stock Room/Sales Floor' }
-                ]
-            },
-            {
-                title: "🔄 Cycle Count & Inventory Audit",
-                department: "Inventory",
-                frequency: "Weekly",
-                role: "Inventory Manager",
-                summary: "A proactive approach to maintaining inventory accuracy. This checklist details the process for regular, systematic counting of product categories.",
-                tasks: [
-                    { id: 'INV-AUD-001', description: "Select a specific product category or section to count based on the weekly schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Count Schedule', location: 'Sales Floor/Stock Room' },
-                    { id: 'INV-AUD-002', description: "Physically count all items in the selected category.", priority: 'High', riskLevel: 'Medium', proof: 'Count Sheets', location: 'Sales Floor/Stock Room' },
-                    { id: 'INV-AUD-003', description: "Compare the physical count against the system inventory records.", priority: 'High', riskLevel: 'High', proof: 'Variance Report', location: 'Back Office' },
-                    { id: 'INV-AUD-004', description: "Investigate significant discrepancies to find the root cause (e.g., theft, receiving error).", priority: 'High', riskLevel: 'High', proof: 'Investigation Notes', location: 'Back Office' },
-                    { id: 'INV-AUD-005', description: "Adjust system inventory to reflect the physical count, with manager approval.", priority: 'High', riskLevel: 'High', proof: 'Adjustment Log', location: 'Back Office' }
-                ]
-            },
-            {
-                title: "🎨 Visual Merchandising Standards",
-                department: "Marketing",
-                frequency: "Weekly",
-                role: "Visual Merchandiser",
-                summary: "Ensures the store is visually appealing and aligns with brand standards. Covers window displays, mannequin styling, and in-store signage.",
-                tasks: [
-                    { id: 'VM-001', description: "Ensure window displays are clean, well-lit, and feature current promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
-                    { id: 'VM-002', description: "Check that all mannequins are styled according to the current season's lookbook.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
-                    { id: 'VM-003', description: "Verify that all promotional signage and price tickets are accurate and correctly placed.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
-                    { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
-                ]
-            },
-            {
-                title: "👕 Fitting Room Security & Monitoring",
-                department: "Loss Prevention",
-                frequency: "Ongoing",
-                role: "Fitting Room Attendant/Staff",
-                summary: "A critical protocol to prevent theft in fitting rooms, a major source of retail shrinkage.",
-                tasks: [
-                    { id: 'FIT-001', description: "Count and document the number of items a customer takes into the fitting room.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
-                    { id: 'FIT-002', description: "Count the items returned by the customer and ensure it matches the initial count.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
-                    { id: 'FIT-003', description: "Check the fitting room for any removed tags, packaging, or concealed merchandise after each use.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Fitting Room' },
-                    { id: 'FIT-004', description: "Perform a weekly line-of-sight audit to ensure CCTV cameras have full, unobstructed coverage of the fitting room entrance and exit areas.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Log', location: 'Security Office' },
-                ]
-            },
-            {
-                title: "📦 High-Value Item Return Verification",
-                department: "Operations/Loss Prevention",
-                frequency: "Per High-Value Return",
-                role: "Store Manager",
-                summary: "A fraud-prevention protocol to stop customers from returning counterfeit or old goods for a full refund.",
-                tasks: [
-                    { id: 'HVIR-001', description: "For any return over a set value (e.g., $200), the item's SKU/barcode must be scanned.", priority: 'High', riskLevel: 'High', proof: 'POS Scan Log', location: 'Cash Counter' },
-                    { id: 'HVIR-002', description: "The item must be visually verified against the product image in the POS or inventory system by a manager.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off', location: 'Cash Counter' },
-                    { id: 'HVIR-003', description: "Check the item for signs of wear, use, or tampering that would disqualify it from being returned.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Cash Counter' },
-                    { id: 'HVIR-004', description: "If the return is approved, the item is placed in a designated 'Verified Returns' bin, not back on the sales floor.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Back Office' },
-                ]
-            },
-            {
-                title: "🚨 Unusual Crowd & Disturbance Protocol",
-                department: "Security/Operations",
-                frequency: "As Needed/Drill",
-                role: "All Staff",
-                summary: "A safety and loss prevention protocol for dealing with potential 'flash mob' or coordinated theft events.",
-                tasks: [
-                    { id: 'UCD-001', description: "If more than 10 individuals enter in a single, coordinated group, any staff member can use a designated code word ('Code Orange') to alert management.", priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Sales Floor' },
-                    { id: 'UCD-002', description: "Upon hearing the code word, the manager on duty is to press a silent alarm button linked to local law enforcement.", priority: 'High', riskLevel: 'High', proof: 'Alarm Log', location: 'Back Office' },
-                    { id: 'UCD-003', description: "All available staff will engage in a 'customer service swarm,' where every member of the large group is immediately approached and offered assistance, disrupting their coordination.", priority: 'High', riskLevel: 'Medium', proof: 'Observation/Drill Report', location: 'Sales Floor' },
-                    { id: 'UCD-004', description: "Staff should not physically confront or block individuals but should maintain observation and provide detailed descriptions to law enforcement.", priority: 'High', riskLevel: 'High', proof: 'Training Record', location: 'All Staff' },
-                ]
-            },
-            {
-                title: "🛡️ Security & Loss Prevention",
-                department: "Security",
-                frequency: "Daily",
-                role: "Security / Manager",
-                summary: "A daily checklist of proactive measures to deter theft and reduce inventory shrinkage, covering CCTV, EAS systems, and high-risk areas.",
-                tasks: [
-                    { id: 'SEC-001', description: "Check that all CCTV cameras are operational and recording.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Security Office' },
-                    { id: 'SEC-002', description: "Test the Electronic Article Surveillance (EAS) gates at the entrance.", priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Entrance' },
-                    { id: 'SEC-003', description: "Ensure high-value items are secured in locked cabinets or have security tags.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'SEC-004', description: "Monitor fitting rooms to prevent tag removal and concealment.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Observation', location: 'Fitting Rooms' },
-                    { id: 'SEC-005', description: "Ensure back doors and receiving areas are kept locked and secure.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Back of House' }
-                ]
-            },
-            {
-                title: "🤝 Customer Service Standards",
-                department: "Sales",
-                frequency: "Ongoing",
-                role: "Store Manager",
-                summary: "A framework for training and auditing staff on providing an exceptional customer experience, from greeting to handling complaints.",
-                tasks: [
-                    { id: 'CS-001', description: "Ensure every customer is greeted within 30 seconds of entering the store.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
-                    { id: 'CS-002', description: "Staff are actively approaching and offering assistance to customers.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
-                    { id: 'CS-003', description: "Staff demonstrate good product knowledge when asked questions.", priority: 'High', riskLevel: 'Medium', proof: 'Mystery Shopper Report', location: 'Sales Floor' },
-                    { id: 'CS-004', description: "Check that checkout process is efficient and friendly.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Cash Counter' },
-                    { id: 'CS-005', description: "Review any customer complaints and ensure they are resolved as per policy.", priority: 'High', riskLevel: 'High', proof: 'Complaint Log', location: 'Back Office' }
-                ]
-            },
-            {
-                title: "📦 Returns & Damaged Goods Management",
-                department: "Inventory/Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Creates a clear chain of custody for non-saleable inventory, preventing a major and often overlooked source of financial loss.",
-                tasks: [
-                    { id: 'RDG-001', description: "When a customer returns an item, immediately generate a unique return tracking number in the POS system.", priority: 'High', riskLevel: 'High', proof: 'POS Log', location: 'Cash Counter' },
-                    { id: 'RDG-002', description: "Place the returned item in a designated, sealed 'Returns Tote' for the backroom—not back on the shelf.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Cash Counter' },
-                    { id: 'RDG-003', description: "At end of day, the manager must reconcile the physical items in the Returns Tote against the POS return report.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Log', location: 'Back Office' },
-                    { id: 'RDG-004', description: "For damaged goods, take a photo and log the item in the 'Damaged & Defective' register before moving it to the locked damage-claim area.", priority: 'High', riskLevel: 'High', proof: 'Damage Log with Photo', location: 'Sales Floor' }
-                ]
-            }
-        ]
-    },
-    {
         id: 'events_management_playbook',
         title: "Event Management Playbook",
         priceUSD: 129.99,
@@ -1733,6 +1559,15 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'Pre-Event AV &amp; Tech Check' to avoid on-stage disasters.",
             "NEW: Includes a 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Global Event Management Standards",
+            standards: [
+                { name: "Safety & Risk", description: "Event safety protocols (e.g., UK's Purple Guide), crowd management best practices, and risk assessment frameworks." },
+                { name: "Technical Production", description: "Best practices for audio-visual (AV) setup, power management, and broadcast integration." },
+                { name: "Project Management", description: "Principles of project management for timelines, budgets, and vendor coordination." },
+                { name: "Sustainability", description: "ISO 20121 for sustainable event management, focusing on waste reduction and responsible sourcing." }
+            ]
+        },
         checklists: [
              {
                 title: "🤝 Sales-to-Operations Handover for Events",
@@ -1788,6 +1623,14 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'Multi-Point Vehicle Inspection' for thorough diagnostics.",
             "NEW: Includes a 'Post-Repair QC Test Drive' and 'Specialized Tool Authorization' to prevent customer comebacks and expensive mistakes."
         ],
+        globalStandards: {
+            title: "Aligned with Automotive Service Standards",
+            standards: [
+                { name: "Service Quality", description: "Best practices for vehicle inspection, diagnostics, and repair verification." },
+                { name: "Safety", description: "Occupational safety guidelines for workshop environments, including tool handling and vehicle lifts." },
+                { name: "Technical", description: "Protocols for using OEM-approved tools and handling specialized vehicle systems (EVs, ADAS)." }
+            ]
+        },
         checklists: [
             {
                 title: "🚗 Post-Repair Quality Control & Test Drive",
@@ -1830,6 +1673,14 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'High-Value Gemstone Verification' protocol to prevent swapping.",
             "NEW: Includes a 'Show-Me &amp; Distraction Theft Prevention' protocol."
         ],
+        globalStandards: {
+            title: "Aligned with High-Value Retail Security Standards",
+            standards: [
+                { name: "Inventory Security", description: "Protocols for vault management, dual-control procedures, and gemstone verification." },
+                { name: "Loss Prevention", description: "Best practices for deterring theft, including surveillance, display case management, and staff training." },
+                { name: "Compliance", description: "Adherence to regulations regarding anti-money laundering (AML) and responsible sourcing." }
+            ]
+        },
         checklists: [
             {
                 title: "💎 High-Value Gemstone & Inventory Verification",
@@ -1874,6 +1725,15 @@ export const premiumPacks: PremiumPack[] = [
             "NEW: Includes a 'New Product Master Data Entry' protocol to prevent costly shipping errors before they start.",
             "NEW: Added 'Reverse Logistics &amp; Returns Processing' to manage the full product lifecycle."
         ],
+        globalStandards: {
+            title: "Aligned with Global Logistics & Supply Chain Standards",
+            standards: [
+                { name: "Warehouse Management", description: "Best practices for inventory accuracy (cycle counting), storage optimization, and goods receiving." },
+                { name: "Safety", description: "OSHA/EHS guidelines for forklift operations, loading dock safety, and manual handling." },
+                { name: "Shipping & Transport", description: "Protocols for international shipping (customs), hazardous materials, and temperature-controlled logistics." },
+                { name: "Quality & Data", description: "ISO 9001 for process quality and protocols for master data management." }
+            ]
+        },
         checklists: [
              {
                 title: "📝 New Product Master Data Entry Protocol",
@@ -1901,6 +1761,32 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RL-005', description: "For 'Recycle' items, ensure hazardous components (like batteries) are removed and handled according to environmental regulations.", priority: 'High', riskLevel: 'High', proof: 'Recycling Log', location: 'Recycling Zone' },
                     { id: 'RL-006', description: "Reconcile the physical inventory in the returns center with the digital returns database daily to prevent loss.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Supervisor Office' }
                 ]
+            },
+            {
+                title: "✈️ International Shipping & Customs Declaration",
+                department: "Logistics",
+                frequency: "Per Shipment",
+                role: "Logistics Coordinator",
+                summary: "Ensures all international shipments have accurate documentation to prevent costly delays, fines, or seizure by customs authorities.",
+                tasks: [
+                    { id: 'INTL-001', description: "Verify the Harmonized System (HS) code for every item in the shipment.", priority: 'High', riskLevel: 'High', proof: 'HS Code Verification Log', location: 'Office' },
+                    { id: 'INTL-002', description: "Ensure the commercial invoice accurately reflects the contents, value, and country of origin.", priority: 'High', riskLevel: 'High', proof: 'Invoice Review Checklist', location: 'Office' },
+                    { id: 'INTL-003', description: "Prepare and attach all required documentation (e.g., certificate of origin, packing list, import/export licenses).", priority: 'High', riskLevel: 'High', proof: 'Document Packet Checklist', location: 'Office' },
+                    { id: 'INTL-004', description: "Use a 'dual-check' system where a second coordinator reviews the final paperwork before the shipment is dispatched.", priority: 'High', riskLevel: 'Medium', proof: 'Dual-Check Sign-off', location: 'Office' },
+                ]
+            },
+            {
+                title: "🧊 Cold Chain & Temperature-Controlled Shipping",
+                department: "Logistics/Quality",
+                frequency: "Per Shipment",
+                role: "Warehouse Supervisor",
+                summary: "Maintains the integrity of temperature-sensitive products (e.g., pharmaceuticals, fresh food) throughout the shipping process.",
+                tasks: [
+                    { id: 'COLD-001', description: "Pre-cool the shipping container or vehicle to the required temperature before loading begins.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Loading Dock' },
+                    { id: 'COLD-002', description: "Verify that the temperature data logger for the shipment is activated and placed correctly within the cargo.", priority: 'High', riskLevel: 'High', proof: 'Data Logger Activation Log', location: 'Loading Dock' },
+                    { id: 'COLD-003', description: "Inspect insulated packaging for any damage before use.", priority: 'High', riskLevel: 'Medium', proof: 'Packaging Inspection Log', location: 'Packing Station' },
+                    { id: 'COLD-004', description: "Upon arrival at the destination, download and review the data logger information *before* accepting the shipment to confirm no temperature excursions occurred.", priority: 'High', riskLevel: 'High', proof: 'Data Logger Report', location: 'Receiving Dock' },
+                ]
             }
         ]
     },
@@ -1918,6 +1804,14 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'Data Security &amp; PCI-DSS Compliance' checklist for agents.",
             "NEW: Includes a 'Customer Identity Verification' protocol to prevent SIM-swapping and other account takeover frauds."
         ],
+        globalStandards: {
+            title: "Aligned with Global Contact Center Standards",
+            standards: [
+                { name: "Quality Management", description: "ISO 9001 and COPC standards for customer experience and quality." },
+                { name: "Data Security", description: "PCI DSS for handling payment card information; GDPR/CCPA for customer data privacy." },
+                { name: "Information Security", description: "ISO 27001 for managing information security risks." }
+            ]
+        },
         checklists: [
              {
                 title: "🕵️ Customer Identity Verification for Account Changes",
@@ -1949,24 +1843,164 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Panic Value Reporting' and clinician communication.",
             "Includes 'Lab Safety &amp; Bio-waste Management' checklists."
         ],
-
+        globalStandards: {
+            title: "Aligned with Laboratory Accreditation Standards",
+            standards: [
+                { name: "Quality & Competence", description: "ISO 15189 (Medical Laboratories), NABL 112 (India)." },
+                { name: "Safety", description: "Bio-safety level (BSL) protocols, chemical handling, and waste management guidelines." },
+                { name: "Information Management", description: "Protocols for Laboratory Information System (LIS) data integrity and patient confidentiality." }
+            ]
+        },
         checklists: []
     },
     {
-        id: 'apparel_store_pack',
-        title: "Apparel & Fashion Retail Checklist",
+        id: 'apparel_fashion_retail_pack',
+        title: "Apparel & Fashion Store Operations",
         priceUSD: 79.99,
         priceINR: 6499,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
-        description: "For fashion retail owners. A specialized toolkit for managing apparel stores, focusing on fitting rooms, visual merchandising, and stock management.",
+        description: "A specialized toolkit for managing apparel stores, focusing on fitting rooms, visual merchandising, and stock management.",
         icon: <Shirt className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
         sampleItems: [
             "Implement a 'Fitting Room Control' procedure to prevent theft.",
             "Standardize 'Visual Merchandising' for seasonal collections.",
             "Master 'Stock Consolidation' and size availability checks.",
             "Includes 'End-of-Season Sale' and 'New Arrival' launch checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Fashion Retail Best Practices",
+            standards: [
+                { name: "Loss Prevention", description: "Specific strategies for fitting room control, tag management, and preventing apparel-related shrinkage." },
+                { name: "Inventory Management", description: "Techniques for managing size/color variants, stock consolidation, and seasonal turnover." },
+                { name: "Visual Merchandising", description: "Brand standards for mannequin styling, window displays, and in-store presentation." }
+            ]
+        },
+        checklists: [
+             {
+                title: "👕 Fitting Room Security & Monitoring",
+                department: "Loss Prevention",
+                frequency: "Ongoing",
+                role: "Fitting Room Attendant/Staff",
+                summary: "A critical protocol to prevent theft in fitting rooms, a major source of retail shrinkage.",
+                tasks: [
+                    { id: 'FIT-001', description: "Count and document the number of items a customer takes into the fitting room.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
+                    { id: 'FIT-002', description: "Count the items returned by the customer and ensure it matches the initial count.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
+                    { id: 'FIT-003', description: "Check the fitting room for any removed tags, packaging, or concealed merchandise after each use.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Fitting Room' },
+                    { id: 'FIT-004', description: "Perform a weekly line-of-sight audit to ensure CCTV cameras have full, unobstructed coverage of the fitting room entrance and exit areas.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Log', location: 'Security Office' },
+                ]
+            },
+            {
+                title: "🎨 Visual Merchandising Standards",
+                department: "Marketing",
+                frequency: "Weekly",
+                role: "Visual Merchandiser",
+                summary: "Ensures the store is visually appealing and aligns with brand standards. Covers window displays, mannequin styling, and in-store signage.",
+                tasks: [
+                    { id: 'VM-001', description: "Ensure window displays are clean, well-lit, and feature current promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
+                    { id: 'VM-002', description: "Check that all mannequins are styled according to the current season's lookbook.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'VM-003', description: "Verify that all promotional signage and price tickets are accurate and correctly placed.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
+                ]
+            }
+        ]
+    },
+     {
+        id: 'electronics_store_pack',
+        title: "Electronics & Gadget Store Operations",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Retail",
+        description: "For electronics retailers. Manage high-value inventory, prevent fraud, and standardize technical customer service.",
+        icon: <Computer className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        sampleItems: [
+            "Implement a 'Serial Number Tracking' protocol from receiving to sale.",
+            "Standardize the 'Open-Box & Demo Unit' management process.",
+            "Master the 'High-Value Return & Counterfeit Verification' checklist.",
+            "Includes 'Technical Support & Troubleshooting' triage for staff."
+        ],
+        globalStandards: {
+            title: "Aligned with Electronics Retail Standards",
+            standards: [
+                { name: "Loss Prevention", description: "Protocols for serial number tracking, high-value inventory control, and return fraud prevention." },
+                { name: "Customer Service", description: "Best practices for technical support triage, product demonstrations, and managing open-box items." },
+                { name: "Inventory Management", description: "Procedures for handling fragile, high-value electronics and managing demo units." }
+            ]
+        },
+        checklists: [
+            {
+                title: "📦 High-Value Item Return Verification",
+                department: "Operations/Loss Prevention",
+                frequency: "Per High-Value Return",
+                role: "Store Manager",
+                summary: "A fraud-prevention protocol to stop customers from returning counterfeit or old goods for a full refund.",
+                tasks: [
+                    { id: 'HVIR-001', description: "For any return over a set value (e.g., $200), the item's SKU/barcode must be scanned.", priority: 'High', riskLevel: 'High', proof: 'POS Scan Log', location: 'Cash Counter' },
+                    { id: 'HVIR-002', description: "The item must be visually verified against the product image in the POS or inventory system by a manager.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off', location: 'Cash Counter' },
+                    { id: 'HVIR-003', description: "Check the item for signs of wear, use, or tampering that would disqualify it from being returned.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Cash Counter' },
+                    { id: 'HVIR-004', description: "For electronics, verify the serial number of the returned item matches the serial number on the original sales receipt.", priority: 'High', riskLevel: 'High', proof: 'Serial Number Match Log', location: 'Cash Counter' },
+                ]
+            },
+        ]
+    },
+    {
+        id: 'furniture_home_goods_pack',
+        title: "Furniture & Home Goods Store Operations",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Retail",
+        description: "For furniture retailers. A toolkit to manage large inventory, coordinate delivery & assembly, and handle damaged goods.",
+        icon: <Landmark className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        sampleItems: [
+            "Implement a 'Damaged Goods & Showpiece' management protocol.",
+            "Standardize the 'Home Delivery & Assembly Scheduling' process.",
+            "Master 'Warehouse to Floor' stock movement and tracking.",
+            "Includes 'Customer Order & Customization' management."
+        ],
+        globalStandards: {
+            title: "Aligned with Large-Format Retail Standards",
+            standards: [
+                { name: "Inventory Logistics", description: "Best practices for managing bulky inventory, coordinating home delivery, and handling assembly services." },
+                { name: "Damage Control", description: "Protocols for managing damaged items, processing claims, and managing showpiece/floor models." },
+                { name: "Customer Management", description: "Procedures for handling custom orders, managing delivery expectations, and post-sale support." }
+            ]
+        },
+        checklists: []
+    },
+    {
+        id: 'supermarket_grocery_pack',
+        title: "Supermarket & Grocery Operations",
+        priceUSD: 79.99,
+        priceINR: 6499,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Retail",
+        description: "For grocery store managers. A toolkit focused on fresh produce management, cold chain integrity, and high-volume checkout efficiency.",
+        icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        sampleItems: [
+            "Implement a 'Fresh Produce Quality & Culling' daily checklist.",
+            "Standardize 'Cold Chain & Refrigeration Temperature' logs (HACCP).",
+            "Master 'Spill Response & Slip Prevention' for customer safety.",
+            "Includes 'Front-End Checkout Efficiency' and 'Shelf Stocking & FIFO' protocols."
+        ],
+        globalStandards: {
+            title: "Aligned with Grocery & Food Retail Standards",
+            standards: [
+                { name: "Food Safety", description: "HACCP principles for temperature control, fresh produce handling, and sanitation." },
+                { name: "Inventory Management", description: "First-In-First-Out (FIFO) rotation, managing perishables, and reducing spoilage." },
+                { name: "Safety", description: "Protocols for slip prevention, spill response, and customer safety in a high-traffic environment." }
+            ]
+        },
         checklists: []
     },
     {
@@ -1984,6 +2018,14 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Equipment Calibration &amp; Maintenance' for audiometers and tympanometers.",
             "Includes 'Patient Counseling' and 'Follow-up Scheduling' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Audiology Practice Standards",
+            standards: [
+                { name: "Clinical Practice", description: "Guidelines from ASHA and AAA for diagnostic testing and hearing aid fitting." },
+                { name: "Equipment & Calibration", description: "ANSI standards for audiometer calibration and maintenance." },
+                { name: "Patient Care", description: "Protocols for patient counseling, documentation, and follow-up care." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2001,6 +2043,14 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Product &amp; Linen Inventory' management.",
             "Includes 'Therapist Training &amp; Performance' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Global Wellness & Spa Standards",
+            standards: [
+                { name: "Hygiene & Sanitation", description: "Best practices for sanitation of treatment rooms, tools, and linens." },
+                { name: "Guest Safety", description: "Protocols for client consultation, identifying contraindications, and incident response." },
+                { name: "Service Quality", description: "Standards for therapist training, treatment consistency, and maintaining a serene environment." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2018,6 +2068,14 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Ethical Sourcing &amp; Vendor Audits'.",
             "Includes 'Employee Health &amp; Safety' and 'Community Engagement' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Global ESG Frameworks",
+            standards: [
+                { name: "Environmental", description: "ISO 14001, GHG Protocol for carbon accounting, GRI Standards for reporting." },
+                { name: "Social", description: "SA8000 for social accountability, labor laws, diversity & inclusion metrics." },
+                { name: "Governance", description: "Anti-bribery (FCPA, UK Bribery Act), corporate governance codes, whistleblower policies." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2035,6 +2093,15 @@ export const premiumPacks: PremiumPack[] = [
             "Master the 'Internal Audit &amp; Management Review' cycle.",
             "Includes checklists for 'Risk Assessment' and 'Objective Setting'."
         ],
+        globalStandards: {
+            title: "Aligned with ISO Certification Standards",
+            standards: [
+                { name: "ISO 9001", description: "Quality Management Systems." },
+                { name: "ISO 14001", description: "Environmental Management Systems." },
+                { name: "ISO 45001", description: "Occupational Health and Safety Management Systems." },
+                { name: "ISO 27001", description: "Information Security Management Systems." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2052,6 +2119,15 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Cargo Loading &amp; Discharge' safety checklists.",
             "Includes 'Bunkering Operations' and 'Ballast Water Management' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with International Maritime Standards",
+            standards: [
+                { name: "Safety", description: "SOLAS (Safety of Life at Sea), ISM Code (International Safety Management)." },
+                { name: "Security", description: "ISPS Code (International Ship and Port Facility Security)." },
+                { name: "Environmental", description: "MARPOL for pollution prevention, Ballast Water Management Convention." },
+                { name: "Labor", description: "MLC (Maritime Labour Convention) for seafarer welfare." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2068,6 +2144,14 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a robust 'Accounts Payable &amp; Vendor Payment' protocol.",
             "NEW: Includes a 'Critical Payment Authorization' protocol to prevent payroll delays and fraud."
         ],
+        globalStandards: {
+            title: "Aligned with Financial & Accounting Standards",
+            standards: [
+                { name: "Reporting", description: "GAAP (Generally Accepted Accounting Principles), IFRS (International Financial Reporting Standards)." },
+                { name: "Internal Controls", description: "COSO framework, Sarbanes-Oxley (SOX) compliance for public companies." },
+                { name: "Security", description: "Protocols to prevent fraud, including Business Email Compromise (BEC) and payment verification." }
+            ]
+        },
         checklists: [
             {
                 title: "💸 Out-of-Band Payment Verification",
@@ -2111,6 +2195,14 @@ export const premiumPacks: PremiumPack[] = [
             "Master the 'Pre-Harvest &amp; Post-Harvest' handling process.",
             "Includes 'Farm Equipment Maintenance' and 'Worker Safety' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Agricultural Best Practices",
+            standards: [
+                { name: "Good Agricultural Practices (GAP)", description: "Frameworks for safe and sustainable food production." },
+                { name: "Safety", description: "Worker protection standards (WPS) for pesticide handling and equipment safety." },
+                { name: "Environmental", description: "Protocols for water management, soil conservation, and integrated pest management (IPM)." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2128,6 +2220,14 @@ export const premiumPacks: PremiumPack[] = [
             "Standardize 'Ingredient Batch Management' for consistency.",
             "Includes 'Rider Management' and 'Online Review Management' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Food Delivery & Safety Standards",
+            standards: [
+                { name: "Food Safety", description: "HACCP principles adapted for a delivery-first model, focusing on cook-chill-reheat cycles." },
+                { name: "Delivery & Packaging", description: "Protocols for tamper-evident packaging and safe handovers to third-party delivery riders." },
+                { name: "Efficiency", description: "Lean principles to minimize order-to-dispatch time and maximize order throughput." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2145,6 +2245,14 @@ export const premiumPacks: PremiumPack[] = [
             "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
             "Includes 'Tool &amp; Tackles Inspection' and 'First Aid' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Global Construction Safety Standards",
+            standards: [
+                { name: "Occupational Safety", description: "OSHA (Construction), NEBOSH International Construction Certificate standards." },
+                { name: "High-Risk Work", description: "Permit-to-Work (PTW) systems for hot work, confined space entry, and excavation." },
+                { name: "Equipment Safety", description: "LOLER for lifting equipment, protocols for scaffolding and power tools." }
+            ]
+        },
         checklists: [
             {
                 title: "⛏️ Excavation & Trenching Safety Permit",
@@ -2211,6 +2319,14 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Locker Room &amp; Shower Hygiene' checklists.",
             "Includes 'Personal Trainer Performance' and 'Class Scheduling' checklists."
         ],
+        globalStandards: {
+            title: "Aligned with Fitness Industry Standards",
+            standards: [
+                { name: "Safety", description: "Protocols for equipment maintenance, user safety, and emergency response." },
+                { name: "Hygiene", description: "Standards for facility cleaning, locker room sanitation, and infection control." },
+                { name: "Member Service", description: "Best practices for new member induction, personal training quality, and class management." }
+            ]
+        },
         checklists: []
     },
     {
@@ -2228,7 +2344,56 @@ export const premiumPacks: PremiumPack[] = [
             "Master 'Rent Collection &amp; Arrears Management'.",
             "Includes 'Lease Agreement &amp; Renewal' and 'Vendor Management' checklists."
         ],
-        checklists: []
+        globalStandards: {
+            title: "Aligned with Property Management Best Practices",
+            standards: [
+                { name: "Leasing & Tenancy", description: "Protocols for tenant screening, lease agreements, and move-in/move-out procedures." },
+                { name: "Maintenance", description: "Best practices for preventive maintenance, vendor management, and safety inspections." },
+                { name: "Financial", description: "Procedures for rent collection, arrears management, and financial reporting." },
+                { name: "Legal", description: "Adherence to local landlord-tenant laws and fair housing regulations." }
+            ]
+        },
+        checklists: [
+             {
+                title: "🏢 Commercial Lease Onboarding",
+                department: "Property Management",
+                frequency: "Per New Lease",
+                role: "Property Manager",
+                summary: "Manages the complex process of onboarding a new commercial tenant, from legal review to fit-out approvals and security deposits.",
+                tasks: [
+                    { id: 'CLO-001', description: "Verify receipt of signed lease agreement and security deposit.", priority: 'High', riskLevel: 'High', proof: 'Financial Statement', location: 'Office' },
+                    { id: 'CLO-002', description: "Review tenant's proposed fit-out plans for compliance with building codes and regulations.", priority: 'High', riskLevel: 'High', proof: 'Plan Review Sign-off', location: 'Office' },
+                    { id: 'CLO-003', description: "Provide tenant with building rules, emergency procedures, and access card request forms.", priority: 'High', riskLevel: 'Medium', proof: 'Welcome Packet Handover', location: 'Office' },
+                    { id: 'CLO-004', description: "Conduct a pre-occupancy inspection of the premises with the tenant and document the initial condition.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Inspection Form', location: 'Leased Premises' },
+                ]
+            },
+            {
+                title: "🔑 Property Sale & Handover Protocol",
+                department: "Real Estate Sales",
+                frequency: "Per Sale",
+                role: "Agent/Manager",
+                summary: "Ensures a smooth and legally sound transfer of property to a new owner, covering documentation, keys, and final inspections.",
+                tasks: [
+                    { id: 'PSH-001', description: "Confirm receipt of all final payments and legal clearances.", priority: 'High', riskLevel: 'High', proof: 'Closing Statement', location: 'Office' },
+                    { id: 'PSH-002', description: "Assemble a handover package including all keys, warranties, and original property documents.", priority: 'High', riskLevel: 'High', proof: 'Handover Package Checklist', location: 'Office' },
+                    { id: 'PSH-003', description: "Conduct a final walkthrough with the new owner to demonstrate systems and confirm property condition.", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Sign-off', location: 'Property' },
+                    { id: 'PSH-004', description: "Transfer all utility accounts and property management responsibilities to the new owner.", priority: 'High', riskLevel: 'Medium', proof: 'Utility Transfer Confirmations', location: 'Office' },
+                ]
+            },
+            {
+                title: "🔄 Rental Property Turnaround",
+                department: "Property Management",
+                frequency: "Per Vacancy",
+                role: "Property Manager",
+                summary: "A time-sensitive checklist to manage the period between tenants, minimizing vacancy and preparing the unit for the next resident.",
+                tasks: [
+                    { id: 'RPT-001', description: "Conduct a move-out inspection with the outgoing tenant and document any damages against the security deposit.", priority: 'High', riskLevel: 'High', proof: 'Move-out Inspection Report', location: 'Rental Unit' },
+                    { id: 'RPT-002', description: "Schedule and coordinate all necessary repairs, painting, and professional cleaning.", priority: 'High', riskLevel: 'Medium', proof: 'Work Orders', location: 'Office' },
+                    { id: 'RPT-003', description: "Change all locks and security codes.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'Rental Unit' },
+                    { id: 'RPT-004', description: "Perform a final 'rent-ready' inspection before listing the property or handing it over to the new tenant.", priority: 'High', riskLevel: 'Medium', proof: 'Rent-Ready Checklist', location: 'Rental Unit' },
+                ]
+            }
+        ]
     },
     {
         id: 'sports_stadium_arena_pack',
@@ -2243,10 +2408,19 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         sampleItems: [
             "Master the 'Field/Court of Play Pre-Event Handover' to ensure athlete safety.",
-            "Prevent broadcast failures with the 'Broadcast Compound &amp; Tech Integration Audit'.",
+            "Prevent broadcast failures with the 'Broadcast Compound & Tech Integration Audit'.",
             "Manage risk with the 'Real-Time Crowd Density' and 'Drone Incursion' protocols.",
-            "NEW: Includes a 'Zero Waste &amp; Post-Event Sorting' checklist for sustainability goals."
+            "NEW: Includes a 'Zero Waste & Post-Event Sorting' checklist for sustainability goals."
         ],
+        globalStandards: {
+            title: "Aligned with Global Stadium & Event Safety Standards",
+            standards: [
+                { name: "Safety & Security", description: "Crowd management (UK's Green Guide), counter-terrorism protocols, and emergency medical response." },
+                { name: "Broadcast & Technical", description: "Best practices for broadcast compound management, power redundancy, and data connectivity." },
+                { name: "Fan Experience", description: "Standards for ticketing, concessions, and access control for large-scale public events." },
+                { name: "Athlete Safety", description: "Protocols for ensuring the field of play is safe and meets regulatory standards." }
+            ]
+        },
         checklists: [
             {
                 title: "🛡️ Pre-Game Security & Crowd Control Setup",

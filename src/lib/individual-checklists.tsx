@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { CookingPot, HardHat, Hospital, Lock, Shield } from 'lucide-react';
+import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase } from 'lucide-react';
 
 export type IndividualChecklist = {
     id: string;
     title: string;
     priceINR: number;
     paymentId: string;
-    category: "Restaurant" | "Healthcare" | "Manufacturing" | "Retail" | "Education";
+    category: "Restaurant" | "Healthcare" | "Manufacturing" | "Retail" | "Education" | "Marketing" | "Startup";
     description: string;
     longDescription: string;
     icon: React.ReactElement;
@@ -151,7 +151,7 @@ export const individualChecklists: IndividualChecklist[] = [
         icon: <Shield />,
         description: "A proactive checklist to deter theft, reduce inventory shrinkage, and protect your store's bottom line.",
         longDescription: "Inventory shrinkage can be a silent killer of profitability. This checklist provides a multi-layered security framework for your retail store. It covers daily operational checks for CCTV systems and EAS gates, protocols for high-value merchandise, fitting room monitoring procedures to prevent tag removal, and secure opening/closing procedures. It turns your entire staff into active participants in loss prevention, directly protecting your profits.",
-        relatedPackId: "retail_operations_pack",
+        relatedPackId: "apparel_fashion_retail_pack",
         whoIsItFor: ["Retail Store Owners", "Heads of Loss Prevention", "District Managers", "Store Managers"],
         painPoints: [
             {
@@ -220,6 +220,74 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'CS-10', description: 'Test emergency communication systems (e.g., PA system, walkie-talkies).', priority: 'High', riskLevel: 'Medium', proof: 'Test Log', location: 'Security Room' },
             { id: 'CS-11', description: 'Monitor parking areas during arrival and dismissal for traffic flow and safety.', priority: 'Medium', riskLevel: 'Medium', proof: 'Observation', location: 'Parking Lot' },
             { id: 'CS-12', description: 'Ensure security lighting is functional during evening hours.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Campus-wide' }
+        ]
+    },
+    {
+        id: 'investor-due-diligence',
+        title: "Investor Due Diligence & Funding Readiness",
+        priceINR: 1999,
+        paymentId: "pl_ROLoY3TADa4J2S",
+        category: "Startup",
+        icon: <Briefcase />,
+        description: "A comprehensive checklist for founders to prepare their company for the rigorous investor due diligence process.",
+        longDescription: "Getting a 'yes' from an investor is only the beginning. The due diligence process that follows is intense and can make or break a funding round. This checklist prepares you for every aspect, ensuring your legal, financial, technical, and team-related documentation is in perfect order. It helps you anticipate investor questions and present a professional, organized front, dramatically increasing your chances of a smooth and successful closing.",
+        relatedPackId: "",
+        whoIsItFor: ["Startup Founders", "CFOs", "Venture Capital Associates", "Angel Investors"],
+        painPoints: [
+            {
+                title: "Avoid 'Deal Fatigue'",
+                description: "Prevent your funding round from collapsing due to slow or incomplete responses during due diligence. Be prepared for every request."
+            },
+            {
+                title: "Build Investor Confidence",
+                description: "A well-organized data room and proactive preparation signal competence and professionalism, building deep trust with your potential investors."
+            },
+            {
+                title: "Identify Red Flags Early",
+                description: "This checklist forces you to examine your own business from an investor's perspective, helping you identify and fix potential issues before they become deal-breakers."
+            }
+        ],
+        tasks: [
+            { id: 'DD-LG-01', description: 'Verify company incorporation and registration documents are complete and up-to-date.', priority: 'High', riskLevel: 'High', proof: 'Certificate of Incorporation', location: 'Legal Docs' },
+            { id: 'DD-LG-02', description: 'Ensure all founder and key employee contracts are signed and include IP assignment clauses.', priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Legal Docs' },
+            { id: 'DD-FN-01', description: 'Prepare historical financial statements (P&L, Balance Sheet, Cash Flow) for the last 3 years.', priority: 'High', riskLevel: 'High', proof: 'Financial Statements', location: 'Finance Docs' },
+            { id: 'DD-FN-02', description: 'Create a detailed 5-year financial projection model with clear assumptions.', priority: 'High', riskLevel: 'High', proof: 'Financial Model (XLSX)', location: 'Finance Docs' },
+            { id: 'DD-TC-01', description: 'Document the full technology stack and architecture.', priority: 'High', riskLevel: 'Medium', proof: 'Architecture Diagram', location: 'Tech Docs' },
+            { id: 'DD-TM-01', description: 'Update cap table with all current shareholders, option holders, and convertible notes.', priority: 'High', riskLevel: 'High', proof: 'Cap Table', location: 'Legal/Finance' }
+        ]
+    },
+    {
+        id: 'seo-audit-checklist',
+        title: "SEO On-Page & Technical Audit",
+        priceINR: 1399,
+        paymentId: "pl_ROLp814NJrM8pZ",
+        category: "Marketing",
+        icon: <Search />,
+        description: "A comprehensive checklist for marketers and developers to audit and optimize a website for search engine visibility.",
+        longDescription: "Ranking on Google requires getting hundreds of small details right. This checklist provides a systematic framework to audit your website's technical and on-page SEO. It covers everything from site speed and mobile-friendliness to meta tags, structured data, and internal linking. Use it to identify critical issues, create a clear action plan, and build a strong foundation for your search engine optimization strategy.",
+        relatedPackId: "",
+        whoIsItFor: ["Marketing Managers", "SEO Specialists", "Web Developers", "Small Business Owners"],
+        painPoints: [
+            {
+                title: "Fix Hidden Technical Issues",
+                description: "Uncover and resolve technical problems like slow page speed, crawl errors, or poor mobile experience that are hurting your rankings."
+            },
+            {
+                title: "Optimize Every Page",
+                description: "Provides a clear, step-by-step guide to ensure every important page on your site is perfectly optimized for its target keywords."
+            },
+            {
+                title: "Create a Strategic Action Plan",
+                description: "Stop doing random acts of SEO. This audit will give you a prioritized list of actions to take for the biggest impact on your organic traffic."
+            }
+        ],
+        tasks: [
+            { id: 'SEO-TC-01', description: 'Ensure an XML sitemap exists and is submitted to Google Search Console.', priority: 'High', riskLevel: 'High', proof: 'Search Console Screenshot', location: 'Website' },
+            { id: 'SEO-TC-02', description: 'Check for and fix any crawl errors reported in Google Search Console.', priority: 'High', riskLevel: 'High', proof: 'Search Console Report', location: 'Website' },
+            { id: 'SEO-OP-01', description: 'Verify that every important page has a unique, descriptive title tag under 60 characters.', priority: 'High', riskLevel: 'Medium', proof: 'Content Audit Spreadsheet', location: 'Website' },
+            { id: 'SEO-OP-02', description: 'Ensure every page has a compelling meta description that encourages clicks.', priority: 'High', riskLevel: 'Medium', proof: 'Content Audit Spreadsheet', location: 'Website' },
+            { id: 'SEO-SP-01', description: 'Test website performance with Google PageSpeed Insights and aim for a score above 80.', priority: 'High', riskLevel: 'High', proof: 'PageSpeed Report', location: 'Website' },
+            { id: 'SEO-MB-01', description: 'Use Google\'s Mobile-Friendly Test to ensure the site provides a good user experience on mobile devices.', priority: 'High', riskLevel: 'High', proof: 'Mobile-Friendly Test Result', location: 'Website' }
         ]
     }
 ];
