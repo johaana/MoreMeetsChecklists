@@ -77,23 +77,25 @@ export function SiteHeader() {
                     <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                         Browse by Industry <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                     </Link>
-                    <div className="absolute top-full -left-1/2 mt-2 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
-                        <div className="bg-background rounded-lg shadow-2xl border p-6 grid grid-cols-3 gap-x-8 gap-y-4">
-                            {Object.entries(packsByCategory).map(([category, packs]) => (
-                                <div key={category}>
-                                    <h3 className="font-headline text-sm font-bold text-primary mb-3 px-2">{category}</h3>
-                                    <ul className="space-y-2">
-                                        {packs.map(pack => (
-                                            <li key={pack.id}>
-                                                <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3 group/item p-2 rounded-md hover:bg-secondary">
-                                                   <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span> 
-                                                   <span className="flex-1 leading-snug">{pack.title}</span>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                        <div className="bg-background rounded-lg shadow-2xl border p-6">
+                            <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+                                {Object.entries(packsByCategory).map(([category, packs]) => (
+                                    <div key={category}>
+                                        <h3 className="font-headline text-sm font-bold text-primary mb-3 px-2">{category}</h3>
+                                        <ul className="space-y-1">
+                                            {packs.map(pack => (
+                                                <li key={pack.id}>
+                                                    <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span> 
+                                                    <span className="flex-1 leading-snug">{pack.title}</span>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
