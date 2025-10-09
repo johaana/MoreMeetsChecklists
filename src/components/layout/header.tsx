@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 const mainNavLinks = [
     { href: "/checklists", label: "Bestselling Checklists" },
     { href: "/#why-us", label: "Why Us" },
-    { href: "/#faq", label: "FAQ" },
     { href: "/blog", label: "Blog" },
+    { href: "/#faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
 ];
 
