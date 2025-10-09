@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -47,20 +47,43 @@ const HowWeAreDifferentSection = () => (
     </section>
 );
 
-const MissedTaskSection = () => (
-    <section className="w-full py-12 md:py-24">
-        <div className="container px-4 md:px-6">
-            <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
-                    Your Team Can't Read Your Mind.
-                </h2>
-                <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
-                    A single forgotten instruction can lead to a compliance failure, a safety incident, or a lost customer. Our checklists replace reliance on memory with a proven, documented system, ensuring that every critical task is performed correctly, every single time, by every single employee.
-                </p>
+const GlobalStandardsSection = () => {
+    const standards = [
+        { name: "ISO 9001", description: "Quality Management" },
+        { name: "HACCP", description: "Food Safety" },
+        { name: "JCI", description: "Healthcare Quality" },
+        { name: "OSHA", description: "Workplace Safety" },
+        { name: "NFPA", description: "Fire Safety" },
+        { name: "ISPS", description: "Maritime Security" },
+        { name: "PCI DSS", description: "Payment Security" },
+        { name: "NABH", description: "Hospital Accreditation" }
+    ];
+
+    return (
+        <section className="w-full py-12 md:py-24">
+            <div className="container px-4 md:px-6">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                        Audit-Ready. Globally Compliant. Operationally Excellent.
+                    </h2>
+                    <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+                        Our checklists are more than just best practices; they are frameworks built upon the globally recognized standards that govern your industry. This ensures you're not just organized, but compliant and operating at a world-class level.
+                    </p>
+                </div>
+                <div className="max-w-5xl mx-auto mt-12">
+                    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+                        {standards.map(standard => (
+                            <div key={standard.name} className="flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg border border-primary/10 text-center">
+                                <p className="font-bold text-lg text-primary">{standard.name}</p>
+                                <p className="text-xs text-muted-foreground">{standard.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
 
 
 const FaqSection = () => (
@@ -461,9 +484,9 @@ export default function Home() {
         
         <WhyDetailMatters />
 
-        <MissedTaskSection />
-
         <HowWeAreDifferentSection />
+
+        <GlobalStandardsSection />
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList />
@@ -518,5 +541,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

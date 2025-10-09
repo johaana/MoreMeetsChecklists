@@ -65,36 +65,36 @@ export function SiteHeader() {
         );
     }
     
-    // All other pages get the standard header
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
             <div className="mr-6">
                 <BrandLogo />
             </div>
             
-            {/* Desktop Navigation */}
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                  <div className="group relative">
-                    <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                    <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                         Browse by Industry <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
-                    </Link>
-                    <div className="absolute top-full -left-8 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-4">
-                        <div className="bg-background rounded-lg shadow-2xl border p-6 grid grid-cols-3 gap-6">
-                            {Object.entries(packsByCategory).map(([category, packs]) => (
-                                <div key={category}>
-                                    <h3 className="font-headline text-base font-bold text-primary mb-3">{category}</h3>
-                                    <ul className="space-y-2">
-                                        {packs.map(pack => (
-                                            <li key={pack.id}>
-                                                <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item">
-                                                   <span className="shrink-0">{pack.icon}</span> 
-                                                   <span className="flex-1">{pack.title}</span>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
+                    </button>
+                    <div className="absolute top-full -left-1/2 mt-2 w-screen max-w-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                        <div className="bg-background rounded-lg shadow-2xl border p-4">
+                            <div className="flex flex-col space-y-2">
+                                {Object.entries(packsByCategory).map(([category, packs]) => (
+                                    <div key={category}>
+                                        <h3 className="font-headline text-sm font-bold text-primary mb-2 px-2 pt-1">{category}</h3>
+                                        <ul className="space-y-1">
+                                            {packs.map(pack => (
+                                                <li key={pack.id}>
+                                                    <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3 group/item p-2 rounded-md hover:bg-secondary">
+                                                       <span className="shrink-0 w-4 h-4">{pack.icon}</span> 
+                                                       <span className="flex-1">{pack.title}</span>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,5 +147,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
-    
