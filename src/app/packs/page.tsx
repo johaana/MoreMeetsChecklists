@@ -26,6 +26,8 @@ const categoryColors: { [key: string]: string } = {
     "Wellness": "bg-lime-100 text-lime-800 border-lime-200",
     "E-commerce": "bg-sky-100 text-sky-800 border-sky-200",
     "Agency": "bg-amber-100 text-amber-800 border-amber-200",
+    "Logistics": "bg-gray-100 text-gray-800 border-gray-200",
+    "Maritime": "bg-blue-100 text-blue-800 border-blue-200",
 };
 
 export default function AllPacksPage() {
@@ -42,7 +44,7 @@ export default function AllPacksPage() {
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        All Checklist Packages
+                        Professional Checklist Packs
                     </h1>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
                         Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.
@@ -114,3 +116,5 @@ export default function AllPacksPage() {
     </div>
   );
 }
+
+    

@@ -1,13 +1,14 @@
 
+
 import React from 'react';
-import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase } from 'lucide-react';
+import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase, Home } from 'lucide-react';
 
 export type IndividualChecklist = {
     id: string;
     title: string;
     priceINR: number;
     paymentId: string;
-    category: "Restaurant" | "Healthcare" | "Manufacturing" | "Retail" | "Education" | "Marketing" | "Startup";
+    category: "Restaurant" | "Healthcare" | "Manufacturing" | "Retail" | "Education" | "Marketing" | "Startup" | "Personal";
     description: string;
     longDescription: string;
     icon: React.ReactElement;
@@ -289,7 +290,45 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'SEO-SP-01', description: 'Test website performance with Google PageSpeed Insights and aim for a score above 80.', priority: 'High', riskLevel: 'High', proof: 'PageSpeed Report', location: 'Website' },
             { id: 'SEO-MB-01', description: 'Use Google\'s Mobile-Friendly Test to ensure the site provides a good user experience on mobile devices.', priority: 'High', riskLevel: 'High', proof: 'Mobile-Friendly Test Result', location: 'Website' }
         ]
+    },
+    {
+        id: 'home-relocation-checklist',
+        title: "Home Relocation & Moving Checklist",
+        priceINR: 499,
+        paymentId: "pl_ROsCmjg3mG2E7Y", 
+        category: "Personal",
+        icon: <Home />,
+        description: "The ultimate stress-saving checklist for a smooth move. Covers tasks from one month out to moving day and settling in.",
+        longDescription: "Moving is one of life's most stressful events. This detailed checklist turns chaos into an organized process. It breaks down everything you need to do into manageable weekly tasks, starting from 4 weeks before your move. It covers decluttering, booking movers, notifying utilities, packing strategies, and the critical tasks for moving day itself, ensuring you don't forget anything important.",
+        relatedPackId: "",
+        whoIsItFor: ["Renters", "Homeowners", "Families relocating", "First-time movers"],
+        painPoints: [
+            {
+                title: "Overcome the Feeling of Being Overwhelmed",
+                description: "Provides a clear, step-by-step plan so you know exactly what to do and when, reducing stress and anxiety."
+            },
+            {
+                title: "Avoid Costly 'Forgot-to-Do' Mistakes",
+                description: "Ensures you don't forget critical tasks like mail forwarding or utility transfers that can cause major headaches after you move."
+            },
+            {
+                title: "Streamline Your Packing and Unpacking",
+                description: "Includes strategies for smart packing, labeling, and an 'essentials box' to make your first night in your new home comfortable."
+            }
+        ],
+        tasks: [
+            { id: 'MOV-W4-01', description: "Sort through belongings: create 'Keep', 'Donate', 'Sell', and 'Discard' piles.", priority: 'High', riskLevel: 'Medium', proof: 'Sorted Piles', location: 'Home' },
+            { id: 'MOV-W3-01', description: "Get quotes from and book a moving company.", priority: 'High', riskLevel: 'High', proof: 'Booking Confirmation', location: 'Phone/Online' },
+            { id: 'MOV-W2-01', description: "Arrange for mail forwarding with the post office.", priority: 'High', riskLevel: 'High', proof: 'Confirmation Email', location: 'Online' },
+            { id: 'MOV-W2-02', description: "Schedule utility disconnections at your old home and connections at your new one.", priority: 'High', riskLevel: 'High', proof: 'Utility Service Orders', location: 'Phone/Online' },
+            { id: 'MOV-W1-01', description: "Pack a 'Day 1 Essentials' box with toiletries, medications, chargers, and basic kitchen supplies.", priority: 'High', riskLevel: 'High', proof: 'Packed Box', location: 'Home' },
+            { id: 'MOV-DAY-01', description: "Take photos of your empty, clean old home to document its condition.", priority: 'High', riskLevel: 'Medium', proof: 'Photos', location: 'Old Home' },
+            { id: 'MOV-DAY-02', description: "Perform a final walkthrough to ensure nothing is left behind.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Old Home' },
+            { id: 'MOV-DAY-03', description: "Take meter readings for gas, water, and electricity at both old and new homes.", priority: 'High', riskLevel: 'Medium', proof: 'Photo of Meters', location: 'Both Homes' }
+        ]
     }
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
+
+    

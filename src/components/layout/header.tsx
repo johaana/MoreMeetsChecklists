@@ -6,16 +6,26 @@ import { usePathname } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ArrowRight } from "lucide-react";
+import { Menu, ArrowRight, ChevronDown } from "lucide-react";
 import React from 'react';
+import { premiumPacks } from "@/lib/premium-packs";
+import { cn } from "@/lib/utils";
 
 const mainNavLinks = [
-    { href: "/packs", label: "All Packages" },
     { href: "/checklists", label: "Bestselling Checklists" },
     { href: "/#why-us", label: "Why Us" },
     { href: "/#faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
 ];
+
+const packsByCategory: Record<string, typeof premiumPacks> = premiumPacks.reduce((acc, pack) => {
+    if (!acc[pack.category]) {
+        acc[pack.category] = [];
+    }
+    acc[pack.category].push(pack);
+    return acc;
+}, {} as Record<string, typeof premiumPacks>);
+
 
 export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
@@ -64,6 +74,31 @@ export function SiteHeader() {
             
             {/* Desktop Navigation */}
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
+                 <div className="group relative">
+                    <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                        Browse by Industry <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                    </Link>
+                    <div className="absolute top-full -left-8 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-4">
+                        <div className="bg-background rounded-lg shadow-2xl border p-6 grid grid-cols-3 gap-6">
+                            {Object.entries(packsByCategory).map(([category, packs]) => (
+                                <div key={category}>
+                                    <h3 className="font-headline text-base font-bold text-primary mb-3">{category}</h3>
+                                    <ul className="space-y-2">
+                                        {packs.map(pack => (
+                                            <li key={pack.id}>
+                                                <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item">
+                                                   <span className="shrink-0">{pack.icon}</span> 
+                                                   <span className="flex-1">{pack.title}</span>
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
                 {mainNavLinks.map(link => (
                      <Link 
                         key={link.href} 
@@ -91,6 +126,9 @@ export function SiteHeader() {
                                 <BrandLogo />
                             </div>
                             <nav className="flex flex-col gap-3">
+                                 <Link href="/packs" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">
+                                    All Packages
+                                </Link>
                                 {mainNavLinks.map(link => (
                                     <Link
                                         key={link.href}
@@ -109,3 +147,5 @@ export function SiteHeader() {
         </header>
     );
 }
+
+    

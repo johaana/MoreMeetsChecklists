@@ -47,6 +47,21 @@ const HowWeAreDifferentSection = () => (
     </section>
 );
 
+const MissedTaskSection = () => (
+    <section className="w-full py-12 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                    Your Team Can't Read Your Mind.
+                </h2>
+                <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+                    A single forgotten instruction can lead to a compliance failure, a safety incident, or a lost customer. Our checklists replace reliance on memory with a proven, documented system, ensuring that every critical task is performed correctly, every single time, by every single employee.
+                </p>
+            </div>
+        </div>
+    </section>
+);
+
 
 const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
@@ -446,6 +461,8 @@ export default function Home() {
         
         <WhyDetailMatters />
 
+        <MissedTaskSection />
+
         <HowWeAreDifferentSection />
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
@@ -502,7 +519,4 @@ export default function Home() {
   );
 }
 
-
-
-
-
+    
