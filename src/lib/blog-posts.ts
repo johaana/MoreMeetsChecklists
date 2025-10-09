@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     publishedDate: '2024-07-31',
     author: 'MoreMeets Team',
     tags: ['Operations', 'Compliance', 'Risk Management'],
-    relatedPackId: 'facility_management_blueprint',
+    relatedPackId: 'manufacturing_plant_pack',
     content: `
 <p>In any high-stakes environment—be it a manufacturing plant, a hospital operating room, or a five-star hotel kitchen—the difference between success and catastrophic failure often comes down to one thing: a single, missed step.</p>
 <p>A manager briefs the morning shift, but forgets to mention a new safety protocol. A maintenance engineer, under pressure, verbally confirms a machine is de-energized but doesn't physically check the lock-out tag. A server takes a guest's allergy instruction but fails to enter the specific "Allergy Alert" modifier into the POS system.</p>
@@ -493,7 +493,7 @@ According to a 2023 report, 66% of organizations have experienced a data breach 
 `
   },
   {
-    slug: 'critical-spares-and-the-plane-crash',
+    slug: 'the-wrong-bolt-and-the-plane-crash',
     title: 'The Wrong Bolt: How a Critical Spares Checklist Prevents Catastrophe',
     description: 'In 1990, a plane\'s cockpit window blew out because a technician used the wrong bolts. This is a "critical spares" failure. Learn the two-person protocol that prevents it.',
     publishedDate: '2024-07-12',
