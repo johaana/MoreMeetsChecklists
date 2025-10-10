@@ -63,7 +63,7 @@ export function SiteHeader() {
                                 Browse by Industry <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </Link>
                             <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
-                                <div className="bg-background rounded-lg shadow-2xl border p-6">
+                                <div className="bg-background rounded-lg shadow-2xl border p-6 max-h-[70vh] overflow-y-auto">
                                     <div className="max-w-5xl gap-x-8 gap-y-4 columns-4">
                                         {Object.entries(packsByCategory).map(([category, packs]) => (
                                             <div key={category} className="break-inside-avoid mb-4">
