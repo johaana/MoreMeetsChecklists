@@ -64,9 +64,9 @@ export function SiteHeader() {
                             </Link>
                             <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border p-6">
-                                    <div className="grid grid-flow-row-dense grid-cols-4 gap-x-8 gap-y-4 max-w-5xl">
+                                    <div className="max-w-5xl gap-x-8 gap-y-4 columns-4">
                                         {Object.entries(packsByCategory).map(([category, packs]) => (
-                                            <div key={category} className="break-inside-avoid">
+                                            <div key={category} className="break-inside-avoid mb-4">
                                                 <h3 className="font-headline text-sm font-bold text-primary mb-3 px-2">{category}</h3>
                                                 <ul className="space-y-1">
                                                     {packs.map(pack => (
