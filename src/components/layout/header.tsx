@@ -11,6 +11,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 const mainNavLinks = [
     { href: "/blog", label: "Blog" },
@@ -74,7 +75,7 @@ export function SiteHeader() {
                                 <div className="bg-background rounded-lg shadow-2xl border">
                                     <ScrollArea className="h-[70vh] w-full">
                                         <div className="grid grid-cols-12 p-6">
-                                            <div className="col-span-4 space-y-4 border-r pr-6">
+                                            <div className="col-span-4 space-y-4 pr-6">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
                                                 <ul className="space-y-1">
                                                     {individualChecklists.map(checklist => (
@@ -87,9 +88,10 @@ export function SiteHeader() {
                                                     ))}
                                                 </ul>
                                             </div>
-                                            <div className="col-span-8 pl-6">
+
+                                            <div className="col-span-8 pl-6 border-l">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
-                                                <div className="grid grid-cols-2 gap-x-6 mt-2">
+                                                <div className="grid grid-cols-3 gap-x-6 mt-2">
                                                     {Object.entries(packsByCategory).map(([category, packs]) => (
                                                         <div key={category} className="break-inside-avoid mb-4">
                                                             <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
