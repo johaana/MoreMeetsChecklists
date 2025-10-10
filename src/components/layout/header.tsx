@@ -25,14 +25,6 @@ const packsByCategory: Record<string, typeof premiumPacks> = premiumPacks.reduce
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
 
-const checklistsByCategory: Record<string, (typeof individualChecklists)> = individualChecklists.reduce((acc, checklist) => {
-    if (!acc[checklist.category]) {
-        acc[checklist.category] = [];
-    }
-    acc[checklist.category].push(checklist);
-    return acc;
-}, {} as Record<string, (typeof individualChecklists)>);
-
 
 export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
@@ -78,14 +70,14 @@ export function SiteHeader() {
                             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto min-w-[700px] max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border">
                                     <ScrollArea className="max-h-[70vh] w-full">
-                                        <div className="grid grid-cols-12 gap-x-6 p-6">
-                                            <div className="col-span-4 space-y-4">
+                                        <div className="grid grid-cols-12 p-6">
+                                            <div className="col-span-4 space-y-4 border-r pr-6">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
                                                 <ul className="space-y-1">
-                                                    {individualChecklists.slice(0, 8).map(checklist => (
+                                                    {individualChecklists.map(checklist => (
                                                         <li key={checklist.id}>
                                                             <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
                                                                 <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
@@ -95,9 +87,9 @@ export function SiteHeader() {
                                                     ))}
                                                 </ul>
                                             </div>
-                                            <div className="col-span-8">
+                                            <div className="col-span-8 pl-6">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
-                                                <div className="columns-3 mt-2">
+                                                <div className="grid grid-cols-2 gap-x-6 mt-2">
                                                     {Object.entries(packsByCategory).map(([category, packs]) => (
                                                         <div key={category} className="break-inside-avoid mb-4">
                                                             <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
