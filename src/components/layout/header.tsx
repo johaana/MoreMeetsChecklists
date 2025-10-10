@@ -9,6 +9,8 @@ import { Menu, ArrowRight, ChevronDown } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 const mainNavLinks = [
     { href: "/blog", label: "Blog" },
@@ -55,15 +57,18 @@ export function SiteHeader() {
     
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-            <Link href="/" className="mr-6 hidden md:flex items-center gap-2" prefetch={false}>
-                <Logo className="h-6 w-6 text-primary" />
-                <div className="flex flex-col">
-                    <span className="font-headline text-lg font-bold leading-tight">MoreMeets</span>
-                    <span className="text-xs text-muted-foreground leading-tight -mt-0.5">Less misses.</span>
-                </div>
-            </Link>
-            <div className="md:hidden mr-auto">
-                <BrandLogo />
+            <div className="flex items-center">
+                <Link href="/" className="mr-6 hidden md:flex items-center gap-2" prefetch={false}>
+                    <Logo className="h-6 w-6 text-primary" />
+                    <div className="flex flex-col">
+                        <span className="font-headline text-lg font-bold leading-tight">MoreMeets</span>
+                        <span className="text-xs text-muted-foreground leading-tight -mt-0.5">Less misses.</span>
+                    </div>
+                </Link>
+            </div>
+            
+            <div className="md:hidden flex-1">
+                 <BrandLogo />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
@@ -73,9 +78,9 @@ export function SiteHeader() {
                             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-5xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border">
-                                    <div className="max-h-[60vh] overflow-y-auto">
+                                    <ScrollArea className="max-h-[70vh] w-full">
                                         <div className="grid grid-cols-12 gap-x-6 p-6">
                                             <div className="col-span-4 space-y-4">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
@@ -111,7 +116,7 @@ export function SiteHeader() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </ScrollArea>
                                     <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
                                         <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
                                             View All Bestselling Checklists &rarr;
@@ -147,7 +152,7 @@ export function SiteHeader() {
             </nav>
 
             {/* Mobile Navigation */}
-            <div className="md:hidden">
+            <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
