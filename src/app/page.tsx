@@ -50,13 +50,13 @@ const HowWeAreDifferentSection = () => (
 const GlobalStandardsSection = () => {
     const standards = [
         { name: "ISO 9001", description: "Quality Management" },
-        { name: "HACCP", description: "Food Safety" },
+        { name: "HACCP / FSSAI", description: "Food Safety" },
         { name: "JCI & NABH", description: "Healthcare Quality" },
-        { name: "OSHA", description: "Workplace Safety" },
-        { name: "ISO 14001", description: "ESG & Environment" },
-        { name: "ISPS", description: "Maritime Security" },
-        { name: "PCI DSS", description: "Payment Security" },
-        { name: "ISO 45001", description: "Occupational Health"}
+        { name: "OSHA / ISO 45001", description: "Workplace Safety" },
+        { name: "ISO 14001 & ESG", description: "Sustainability" },
+        { name: "ISPS / IATA", description: "Maritime & Aviation" },
+        { name: "PCI DSS / GDPR", description: "Data & Payment Security" },
+        { name: "SOX", description: "Financial Governance" }
     ];
 
     return (

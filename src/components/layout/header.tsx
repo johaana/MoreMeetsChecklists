@@ -9,7 +9,6 @@ import { Menu, ArrowRight, ChevronDown } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
-import { cn } from "@/lib/utils";
 
 const mainNavLinks = [
     { href: "/blog", label: "Blog" },
@@ -74,32 +73,25 @@ export function SiteHeader() {
                             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
-                                <div className="bg-background rounded-lg shadow-2xl border p-6 max-h-[70vh] overflow-y-auto">
-                                    <div className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-4">
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-5xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                                <div className="bg-background rounded-lg shadow-2xl border">
+                                    <div className="grid grid-cols-4 gap-x-6 p-6">
                                         <div className="col-span-1 space-y-4">
-                                            <div>
-                                                <h4 className="font-semibold text-sm text-muted-foreground mb-2 px-2">Bestselling Checklists</h4>
-                                                <ul className="space-y-1">
-                                                    {individualChecklists.slice(0, 8).map(checklist => (
-                                                        <li key={checklist.id}>
-                                                            <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                                                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                                                                <span className="flex-1 leading-snug">{checklist.title}</span>
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                     <li>
-                                                        <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                                                            <span className="flex-1 leading-snug">View All Bestsellers...</span>
+                                            <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
+                                            <ul className="space-y-1">
+                                                {individualChecklists.slice(0, 8).map(checklist => (
+                                                    <li key={checklist.id}>
+                                                        <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                            <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+                                                            <span className="flex-1 leading-snug">{checklist.title}</span>
                                                         </Link>
                                                     </li>
-                                                </ul>
-                                            </div>
+                                                ))}
+                                            </ul>
                                         </div>
                                         <div className="col-span-3">
-                                            <h4 className="font-semibold text-sm text-muted-foreground mb-2 px-2">Premium Packs by Industry</h4>
-                                            <div className="columns-3">
+                                            <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
+                                            <div className="columns-3 mt-2">
                                                 {Object.entries(packsByCategory).map(([category, packs]) => (
                                                     <div key={category} className="break-inside-avoid mb-4">
                                                         <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
@@ -116,12 +108,15 @@ export function SiteHeader() {
                                                     </div>
                                                 ))}
                                             </div>
-                                             <div className="mt-4 border-t pt-4">
-                                                <Link href="/packs" className="font-semibold text-primary hover:underline">
-                                                    View All Premium Packs &rarr;
-                                                </Link>
-                                            </div>
                                         </div>
+                                    </div>
+                                    <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
+                                        <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
+                                            View All Bestselling Checklists &rarr;
+                                        </Link>
+                                        <Link href="/packs" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
+                                            View All Premium Packs &rarr;
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
