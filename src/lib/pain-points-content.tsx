@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle } from 'lucide-react';
 
 export const painPointsContent = {
     Hospitality: {
@@ -16,9 +16,9 @@ export const painPointsContent = {
         title: "Why This Checklist Is Your New Strategic Asset",
         points: [
             { icon: <TrendingUp />, title: "Inefficient Use of Company Resources", description: "Our facility management checklists optimize everything from energy consumption to vendor contracts, cutting operational costs and improving your bottom line." },
-            { icon: <HandCoins />, title: "Unproductive Meetings & Wasted Time", description: "Standardize your meeting prep, from board meetings to AGMs, ensuring every session is focused, productive, and achieves its objectives." },
+            { icon: <Shield />, title: "Cybersecurity & Data Breach Risks", description: "Prevent data breaches with protocols for vendor network access, remote work device security, and proper employee offboarding, closing critical security gaps." },
             { icon: <Users />, title: "Failed Product Launches & Messy Events", description: "Execute flawless product launches and corporate events by managing every detail, from venue booking and AV checks to press kits and social media campaigns." },
-            { icon: <Shield />, title: "Poor Employee Onboarding & Early Turnover", description: "Create a structured and welcoming onboarding experience. Our checklists ensure new hires have the access, information, and support they need to become productive members of the team from day one." }
+            { icon: <HandCoins />, title: "Poor Employee Onboarding & Early Turnover", description: "Create a structured and welcoming onboarding experience. Our checklists ensure new hires have the access, information, and support they need to become productive members of the team from day one." }
         ]
     },
     Retail: {
@@ -96,10 +96,10 @@ export const painPointsContent = {
     Compliance: {
         title: "The Business Case for Proactive Compliance",
         points: [
-            { icon: <Shield />, title: "Pass Audits with Confidence", description: "Our checklists are built around major global standards (ISO, ESG, etc.). They turn audit preparation from a last-minute scramble into a continuous, controlled process." },
+            { icon: <FileCheck />, title: "Pass Audits with Confidence", description: "Our checklists are built around major global standards (ISO, ESG, etc.). They turn audit preparation from a last-minute scramble into a continuous, controlled process." },
             { icon: <TrendingUp />, title: "Move from Reactive to Preventive", description: "Implement a structured system for document control, internal audits, and Corrective/Preventive Actions (CAPA) to identify and fix issues before they become major non-conformities." },
-            { icon: '📚', title: "Simplify Complex Regulations", description: "We distill complex regulations into clear, actionable tasks for your team, making it easier to implement and sustain compliance across your entire organization." },
-            { icon: <HandCoins />, title: "Reduce Risk of Fines & Reputational Damage", description: "Demonstrate due diligence and build a robust, auditable trail of compliance activities, protecting your organization from costly fines and the damage of a failed audit." }
+            { icon: <Briefcase />, title: "Simplify Complex Regulations", description: "We distill complex regulations into clear, actionable tasks for your team, making it easier to implement and sustain compliance across your entire organization." },
+            { icon: <Shield />, title: "Reduce Risk of Fines & Reputational Damage", description: "Demonstrate due diligence and build a robust, auditable trail of compliance activities, protecting your organization from costly fines and the damage of a failed audit." }
         ]
     },
     Wellness: {

@@ -2407,10 +2407,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent" as const,
         sampleItems: [
-            "Master the 'Field/Court of Play Pre-Event Handover' to ensure athlete safety.",
+            "Master the 'Field of Play Pre-Event Handover' to ensure athlete safety.",
             "Prevent broadcast failures with the 'Broadcast Compound & Tech Integration Audit'.",
-            "Manage risk with the 'Real-Time Crowd Density' and 'Drone Incursion' protocols.",
-            "NEW: Includes a 'Zero Waste & Post-Event Sorting' checklist for sustainability goals."
+            "Manage risk with 'Real-Time Crowd Density' and 'Drone Incursion' protocols.",
+            "NEW: Includes a 'Zero Waste & Post-Event Sorting' checklist for sustainability."
         ],
         globalStandards: {
             title: "Aligned with Global Stadium & Event Safety Standards",
@@ -2591,5 +2591,73 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 'corporate_legal_compliance_starter_kit',
+        title: "Corporate Legal & Compliance Starter Kit",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Compliance",
+        description: "For founders and managers. A foundational toolkit to ensure your business operations are legally sound and compliant.",
+        icon: <Briefcase className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent" as const,
+        sampleItems: [
+            "Standardize your 'New Employee Onboarding' from a legal perspective.",
+            "Implement a 'Vendor Contract Review' checklist for non-lawyers.",
+            "Ensure your website is compliant with a 'Website Legal Health Check'.",
+            "NEW: Includes a 'Basic Anti-Harassment Policy' implementation guide."
+        ],
+        globalStandards: {
+            title: "Aligned with Foundational Legal & HR Best Practices",
+            standards: [
+                { name: "Employment Law", description: "Basics of hiring, contracts, and HR policy deployment." },
+                { name: "Contract Law", description: "Fundamentals of reviewing vendor agreements for key risks." },
+                { name: "Data Privacy", description: "Basics of website compliance including terms of service and privacy policies." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🧑‍⚖️ New Employee Legal Onboarding",
+                department: "HR/Legal",
+                frequency: "Per Hire",
+                role: "HR Manager",
+                summary: "Ensures every new hire is onboarded in a legally compliant manner, protecting the company from future disputes.",
+                tasks: [
+                    { id: 'LEGAL-HR-01', description: "Ensure the signed offer letter is on file, including start date, compensation, and position.", priority: 'High', riskLevel: 'High', proof: 'Signed Offer Letter', location: 'Employee File' },
+                    { id: 'LEGAL-HR-02', description: "Verify a signed Non-Disclosure and Confidentiality Agreement is executed.", priority: 'High', riskLevel: 'High', proof: 'Signed NDA', location: 'Employee File' },
+                    { id: 'LEGAL-HR-03', description: "Confirm the new hire has received and acknowledged the company's employee handbook.", priority: 'High', riskLevel: 'Medium', proof: 'Acknowledgement Form', location: 'Employee File' },
+                    { id: 'LEGAL-HR-04', description: "Complete all required statutory paperwork (e.g., tax forms, social security).", priority: 'High', riskLevel: 'High', proof: 'Completed Forms', location: 'Employee File' }
+                ]
+            },
+            {
+                title: "✍️ Vendor Contract Review (For Non-Lawyers)",
+                department: "Procurement/Management",
+                frequency: "Per Contract",
+                role: "Manager",
+                summary: "A basic checklist for managers to spot red flags in standard vendor contracts before escalating to legal.",
+                tasks: [
+                    { id: 'LEGAL-VEND-01', description: "Check the 'Term' and 'Termination' clauses. Can we exit the contract if needed?", priority: 'High', riskLevel: 'High', proof: 'Contract Review Notes', location: 'Contract Doc' },
+                    { id: 'LEGAL-VEND-02', description: "Review the 'Limitation of Liability' clause. Is their liability capped at an unreasonably low amount?", priority: 'High', riskLevel: 'High', proof: 'Contract Review Notes', location: 'Contract Doc' },
+                    { id: 'LEGAL-VEND-03', description: "Identify the 'Payment Terms'. Are they aligned with our company's payment cycle?", priority: 'High', riskLevel: 'Medium', proof: 'Contract Review Notes', location: 'Contract Doc' },
+                    { id: 'LEGAL-VEND-04', description: "Check the 'Confidentiality' clause to ensure it protects our company's data.", priority: 'High', riskLevel: 'Medium', proof: 'Contract Review Notes', location: 'Contract Doc' }
+                ]
+            },
+            {
+                title: "🌐 Website Legal Health Check",
+                department: "Marketing/Legal",
+                frequency: "Quarterly",
+                role: "Marketing Manager",
+                summary: "Ensures your public-facing website has the necessary legal notices to comply with data privacy and other regulations.",
+                tasks: [
+                    { id: 'LEGAL-WEB-01', description: "Verify that a 'Privacy Policy' link is clearly visible in the website footer.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website Footer' },
+                    { id: 'LEGAL-WEB-02', description: "Ensure a 'Terms of Service' link is present in the website footer.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website Footer' },
+                    { id: 'LEGAL-WEB-03', description: "Check that any form collecting user data links to the Privacy Policy and includes a consent checkbox.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Contact/Signup Forms' },
+                    { id: 'LEGAL-WEB-04', description: "If using cookies, ensure a cookie consent banner is active and functional.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website Homepage' }
+                ]
+            }
+        ]
     }
 ];
+
