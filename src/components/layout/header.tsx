@@ -62,11 +62,11 @@ export function SiteHeader() {
                             <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                                 Browse by Industry <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </Link>
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-5xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border p-6">
-                                    <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+                                    <div className="grid grid-flow-col auto-cols-max gap-x-8 gap-y-4">
                                         {Object.entries(packsByCategory).map(([category, packs]) => (
-                                            <div key={category}>
+                                            <div key={category} className="break-inside-avoid">
                                                 <h3 className="font-headline text-sm font-bold text-primary mb-3 px-2">{category}</h3>
                                                 <ul className="space-y-1">
                                                     {packs.map(pack => (
