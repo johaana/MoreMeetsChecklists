@@ -70,9 +70,9 @@ export function SiteHeader() {
                             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto min-w-[700px] max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
+                            <div className="absolute top-full right-0 mt-2 w-screen max-w-5xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border">
-                                    <ScrollArea className="max-h-[70vh] w-full">
+                                    <ScrollArea className="h-[70vh] w-full">
                                         <div className="grid grid-cols-12 p-6">
                                             <div className="col-span-4 space-y-4 border-r pr-6">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
