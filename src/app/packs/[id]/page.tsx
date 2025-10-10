@@ -194,7 +194,8 @@ export default function Page({ params }: { params: { id: string } }) {
     "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors", "Clinic Managers", "Salon Owners"],
     "E-commerce": ["E-commerce Founders", "Heads of Operations", "Warehouse Managers"],
     "Agency": ["Travel Agency Owners", "Tour Operators", "IATA Compliance Managers"],
-    "Maritime": ["Port Captains", "Shipping Line Managers", "Vessel Masters", "Designated Person Ashore (DPA)"]
+    "Maritime": ["Port Captains", "Shipping Line Managers", "Vessel Masters", "Designated Person Ashore (DPA)"],
+    "Aviation": ["Airport Directors", "Heads of Facility", "Heads of Airside Operations", "Heads of Security (Aviation)"],
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];

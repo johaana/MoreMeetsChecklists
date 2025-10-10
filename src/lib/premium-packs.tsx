@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency";
+    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency" | "Aviation";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -52,6 +52,151 @@ export type PremiumPack = {
 
 export const premiumPacks: PremiumPack[] = [
     {
+        id: 'airport_operations_pack',
+        title: "Airport Operations & Facility Management",
+        priceUSD: 249.99,
+        priceINR: 14999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Aviation",
+        description: "For Airport Heads of Facilities & Operations. A comprehensive toolkit for ensuring safety, compliance, and efficiency in a high-stakes airport environment.",
+        icon: <Plane className="w-8 h-8 text-primary" />,
+        badgeText: "New & Comprehensive",
+        badgeVariant: "accent" as const,
+        sampleItems: [
+            "Master 'Airside Operations & FOD Prevention' to ensure runway safety.",
+            "Implement 'Terminal Housekeeping' and 'Passenger Flow Management'.",
+            "Manage 'Specialized Vehicle & Equipment' including baggage tugs and AWPs.",
+            "Includes 'Central Stores & Inventory Control' and 'Solid Waste Management' for sustainable operations."
+        ],
+        previewScenario: {
+            title: "Handling an Airside Emergency",
+            description: "An airside emergency requires flawless coordination between multiple departments. This scenario shows how checklists for security, facility maintenance, and airside ops come together.",
+            tasks: [
+                { id: 'AIR-FOD-001', description: "Conduct an immediate FOD (Foreign Object Debris) walk of the affected runway/taxiway.", sourceChecklist: "Airside Safety & FOD Prevention", priority: 'High' },
+                { id: 'ELEC-002', description: "Daily DG set and Fuel Management", sourceChecklist: "Electrical Systems", priority: 'High' },
+                { id: 'SEC-ACM-001', description: "Verify access control at all airside entry points is functional.", sourceChecklist: "Security & Access Control", priority: 'High' },
+                { id: 'FLEET-HEM-001', description: "Conduct pre-use safety checks on all required response vehicles.", sourceChecklist: "Fleet & Heavy Equipment Management", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Global Aviation Standards",
+            standards: [
+                { name: "Safety & Security", description: "ICAO Annex 14, Airport Council International (ACI) best practices, and local DGCA regulations." },
+                { name: "Ground Handling", description: "IATA Ground Operations Manual (IGOM) for safety and efficiency." },
+                { name: "Facility Management", description: "ISO 41001 for facility management, ISO 50001 for energy, and NFPA for fire safety." },
+                { name: "Environmental", description: "ISO 14001 and ACI Airport Carbon Accreditation for sustainability." }
+            ]
+        },
+        checklists: [
+            {
+                title: "✈️ Airside Safety & FOD Prevention",
+                department: "Airside Operations",
+                frequency: "Daily/Per Flight",
+                role: "Airside Officer",
+                summary: "Critical daily checks to prevent Foreign Object Debris (FOD) from causing catastrophic damage to aircraft engines, and to ensure overall airside safety.",
+                tasks: [
+                    { id: 'AIR-FOD-001', description: "Conduct scheduled runway and taxiway sweeps for Foreign Object Debris (FOD).", priority: 'High', riskLevel: 'High', proof: 'Sweep Log', location: 'Airside' },
+                    { id: 'AIR-FOD-002', description: "Inspect parking stands for oil spills or leaks after aircraft departure.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Photo', location: 'Apron' },
+                    { id: 'AIR-FOD-003', description: "Ensure all ground service equipment is parked in designated areas and chocked.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Apron' },
+                    { id: 'AIR-FOD-004', description: "Verify that all personnel operating airside have valid permits and are wearing high-visibility jackets.", priority: 'High', riskLevel: 'High', proof: 'Random Spot Check', location: 'Airside' }
+                ]
+            },
+            {
+                title: " terminal_housekeeping",
+                department: "Housekeeping",
+                frequency: "Hourly/Daily",
+                role: "Housekeeping Supervisor",
+                summary: "Maintains a high standard of cleanliness and hygiene in high-traffic terminal buildings, focusing on passenger experience and health.",
+                tasks: [
+                    { id: 'TERM-HK-001', description: "Conduct hourly cleaning and sanitation of all passenger restrooms.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Terminal Restrooms' },
+                    { id: 'TERM-HK-002', description: "Ensure floors in check-in and security hold areas are clean and free of hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Terminal' },
+                    { id: 'TERM-HK-003', description: "Empty waste bins regularly to prevent overflow.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Terminal' },
+                    { id: 'TERM-HK-004', description: "Check and restock hand sanitizer stations throughout the terminal.", priority: 'High', riskLevel: 'Medium', proof: 'Restocking Log', location: 'Terminal' }
+                ]
+            },
+            {
+                title: "🚚 Fleet & Heavy Equipment Management",
+                department: "Engineering/Maintenance",
+                frequency: "Daily/Weekly",
+                role: "Fleet Manager",
+                summary: "Manages the maintenance and operational readiness of all airport vehicles, from baggage tugs to aerial work platforms (AWPs), ensuring safety and reliability.",
+                tasks: [
+                    { id: 'FLEET-HEM-001', description: "Conduct mandatory pre-use safety checks for all specialized vehicles (e.g., baggage tugs, loaders, AWPs).", priority: 'High', riskLevel: 'High', proof: 'Pre-use Checklist Form', location: 'Vehicle Depot' },
+                    { id: 'FLEET-HEM-002', description: "Track and schedule preventive maintenance based on vehicle running hours or calendar dates.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Schedule', location: 'Workshop' },
+                    { id: 'FLEET-HEM-003', description: "Verify operator licenses and certifications for all specialized equipment.", priority: 'High', riskLevel: 'High', proof: 'License Audit Log', location: 'Fleet Office' },
+                    { id: 'FLEET-HEM-004', description: "Maintain a log of all vehicle breakdowns and repairs to identify recurring issues.", priority: 'Medium', riskLevel: 'Medium', proof: 'Breakdown Log', location: 'Workshop' }
+                ]
+            },
+            {
+                title: "🧳 Passenger Baggage Trolley Fleet Management",
+                department: "Terminal Operations",
+                frequency: "Daily",
+                role: "Terminal Supervisor",
+                summary: "Ensures a sufficient supply of functional baggage trolleys are always available to passengers in key locations.",
+                tasks: [
+                    { id: 'TROLLEY-001', description: "Conduct regular sweeps to retrieve and redistribute trolleys from parking areas and drop-off points back to arrivals and check-in.", priority: 'High', riskLevel: 'Low', proof: 'Retrieval Log', location: 'Landside' },
+                    { id: 'TROLLEY-002', description: "Inspect a sample of trolleys daily for defects (e.g., broken wheels, bent frames) and remove them from service for repair.", priority: 'Medium', riskLevel: 'Medium', proof: 'Defect Log', location: 'Terminal' },
+                    { id: 'TROLLEY-003', description: "Ensure trolley vending machines or dispensing systems are functional and stocked.", priority: 'High', riskLevel: 'Medium', proof: 'System Check', location: 'Terminal' },
+                    { id: 'TROLLEY-004', description: "Analyze flight schedules to anticipate peak demand and pre-position trolleys accordingly.", priority: 'High', riskLevel: 'Low', proof: 'Positioning Plan', location: 'Terminal' }
+                ]
+            },
+            {
+                title: "♻️ Solid Waste & Sustainability Management",
+                department: "Environment/Facilities",
+                frequency: "Daily/Weekly",
+                role: "Sustainability Officer",
+                summary: "Manages the airport's waste streams to maximize recycling, ensure compliance with environmental regulations, and support sustainability goals.",
+                tasks: [
+                    { id: 'WASTE-001', description: "Audit waste segregation at source (e.g., food courts, offices) to ensure correct sorting into recyclables, compostables, and landfill.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Form', location: 'Terminal/Offices' },
+                    { id: 'WASTE-002', description: "Track daily waste and recycling volumes to monitor diversion rates.", priority: 'High', riskLevel: 'Medium', proof: 'Weight Log', location: 'Waste Management Facility' },
+                    { id: 'WASTE-003', description: "Ensure hazardous waste (e.g., batteries, oils) is stored and disposed of according to regulations.", priority: 'High', riskLevel: 'High', proof: 'Hazardous Waste Log', location: 'Central Store' },
+                    { id: 'WASTE-004', description: "Verify compliance of waste management vendors with all contractual and legal requirements.", priority: 'High', riskLevel: 'High', proof: 'Vendor Audit', location: 'Office' }
+                ]
+            },
+            {
+                title: "💡 Electrical Systems",
+                department: "Engineering",
+                frequency: "Weekly",
+                role: "Electrician",
+                summary: "Critical safety inspections of all electrical infrastructure to prevent outages, ensure equipment longevity, and mitigate fire hazards.",
+                tasks: [
+                    { id: 'ELS-001', description: "Daily Shared Electrical Loads Check", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-002', description: "Daily DG set and Fuel Management", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Utility Rooms' },
+                    { id: 'ELS-003', description: "Test functionality of Transformers", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-004', description: "UPS Health and Load Test", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' },
+                    { id: 'ELS-005', description: "Inspect LT & HT Panel Maintenance", priority: 'High', riskLevel: 'High', proof: 'Photo / Log', location: 'Utility Rooms' }
+                ]
+            },
+             {
+                title: "🌳 Landscaping & Grounds Maintenance",
+                department: "Facilities",
+                frequency: "Weekly",
+                role: "Horticulturist/Grounds Manager",
+                summary: "Maintains all airport green spaces, ensuring they are aesthetically pleasing, safe, and managed sustainably.",
+                tasks: [
+                    { id: 'LAND-001', description: "Inspect irrigation systems for leaks and correct operation, adjusting schedules based on weather.", priority: 'High', riskLevel: 'Medium', proof: 'Irrigation Log', location: 'Landside/Grounds' },
+                    { id: 'LAND-002', description: "Check landscaped areas for plant health, signs of pests, or disease, and take corrective action.", priority: 'Medium', riskLevel: 'Low', proof: 'Horticulture Log', location: 'Grounds' },
+                    { id: 'LAND-003', description: "Ensure pedestrian pathways are clear of overgrowth, debris, or any tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Safety Sweep Log', location: 'Grounds' },
+                    { id: 'LAND-004', description: "Manage mowing, pruning, and fertilization schedules for lawns and gardens.", priority: 'Medium', riskLevel: 'Low', proof: 'Work Schedule', location: 'Grounds' }
+                ]
+            },
+            {
+                title: "📦 Central Stores & Inventory Control",
+                department: "Procurement/Logistics",
+                frequency: "Daily/Weekly",
+                role: "Store Keeper/Manager",
+                summary: "Manages the central warehouse for all airport operational supplies, from critical engineering spares to housekeeping consumables, ensuring accuracy and availability.",
+                tasks: [
+                    { id: 'STORE-001', description: "Receive incoming goods, verifying them against purchase orders and checking for damage (GRN process).", priority: 'High', riskLevel: 'High', proof: 'Signed GRN', location: 'Receiving Bay' },
+                    { id: 'STORE-002', description: "Ensure all received items are correctly binned to their designated storage location.", priority: 'High', riskLevel: 'Medium', proof: 'Binning Log', location: 'Warehouse' },
+                    { id: 'STORE-003', description: "Conduct daily cycle counts for a designated section of inventory to ensure system accuracy.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse' },
+                    { id: 'STORE-004', description: "Process material requisitions from departments, ensuring proper authorization.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Requisition Form', location: 'Stores Counter' },
+                    { id: 'STORE-005', description: "Maintain a log and secure storage for critical spares with a 'two-person sign-out' rule.", priority: 'High', riskLevel: 'High', proof: 'Critical Spares Log', location: 'Secure Area' }
+                ]
+            },
+        ]
+    },
+    {
         id: 'hospitality_excellence_suite',
         title: "Hotel & Resort Operations Checklist",
         priceUSD: 99.99,
@@ -66,7 +211,7 @@ export const premiumPacks: PremiumPack[] = [
             "NEW: Manage your 'EV Fleet & Charging Infrastructure' to cater to modern guests.",
             "Prevent slip-and-fall incidents with a specialized 'Floor Care & Safety Audit'.",
             "Secure your revenue with a fraud-proof 'Minibar Auditing' protocol.",
-            "NEW: Includes 'Guest-Facing Technology Audit' and 'Pre-Arrival Personalization' for a modern guest experience."
+            "NEW: Includes 'Landscaping & Grounds Maintenance' for resort-style properties."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -333,6 +478,19 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SUST-WUA-004', description: "Inspect a sample of guest rooms for water leaks (taps, toilets) or inefficient lighting.", priority: 'Medium', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Guest Rooms' },
                     { id: 'SUST-WUA-005', description: "Review food wastage logs from F&B to identify trends and opportunities for reduction.", priority: 'High', riskLevel: 'Medium', proof: 'Wastage Log Analysis', location: 'F&B Office' }
                 ]
+            },
+            {
+                title: "🌳 Landscaping & Grounds Maintenance",
+                department: "Facilities",
+                frequency: "Weekly",
+                role: "Horticulturist/Grounds Manager",
+                summary: "Maintains all hotel green spaces, ensuring they are aesthetically pleasing, safe, and managed sustainably, crucial for resorts.",
+                tasks: [
+                    { id: 'LAND-001', description: "Inspect irrigation systems for leaks and correct operation, adjusting schedules based on weather.", priority: 'High', riskLevel: 'Medium', proof: 'Irrigation Log', location: 'Grounds' },
+                    { id: 'LAND-002', description: "Check landscaped areas for plant health, signs of pests, or disease, and take corrective action.", priority: 'Medium', riskLevel: 'Low', proof: 'Horticulture Log', location: 'Grounds' },
+                    { id: 'LAND-003', description: "Ensure pedestrian pathways are clear of overgrowth, debris, or any tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Safety Sweep Log', location: 'Grounds' },
+                    { id: 'LAND-004', description: "Manage mowing, pruning, and fertilization schedules for lawns and gardens.", priority: 'Medium', riskLevel: 'Low', proof: 'Work Schedule', location: 'Grounds' }
+                ]
             }
         ]
     },
@@ -348,10 +506,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
         sampleItems: [
-            "NEW: Manage flexible work with a 'Hybrid Workplace Readiness' checklist.",
-            "NEW: Leverage smart technology with a 'Smart Building & IoT Systems Check'.",
+            "NEW: Manage 'Fleet & Heavy Equipment' including operator fitness checks.",
+            "NEW: Implement 'Central Stores & Inventory Control' with GRN processes.",
             "Implement a 'Critical Systems Alert Response' protocol to prevent outages.",
-            "NEW: Includes 'Third-Party Vendor Network Access Policy' to prevent cyber threats."
+            "Includes a 'Third-Party Vendor Network Access Policy' to prevent cyber threats."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -604,6 +762,59 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SUST-WUA-004', description: "Inspect a sample of workstations and common areas for energy wastage (e.g., lights left on, inefficient equipment).", priority: 'Medium', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Office Floors' },
                     { id: 'SUST-WUA-005', description: "Review and optimize HVAC schedules to align with current occupancy patterns.", priority: 'High', riskLevel: 'Medium', proof: 'BMS Schedule Review', location: 'BMS Room' }
                 ]
+            },
+            {
+                title: "🚚 Fleet & Heavy Equipment Management",
+                department: "Engineering/Maintenance",
+                frequency: "Daily/Weekly",
+                role: "Fleet Manager",
+                summary: "Manages the maintenance and operational readiness of all company vehicles and heavy equipment, ensuring safety and reliability.",
+                tasks: [
+                    { id: 'FLEET-HEM-001', description: "Conduct mandatory pre-use safety checks for all specialized vehicles (e.g., forklifts, aerial work platforms).", priority: 'High', riskLevel: 'High', proof: 'Pre-use Checklist Form', location: 'Vehicle Depot' },
+                    { id: 'FLEET-HEM-002', description: "Track and schedule preventive maintenance based on vehicle running hours or calendar dates.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Schedule', location: 'Workshop' },
+                    { id: 'FLEET-HEM-003', description: "Verify operator licenses and certifications for all specialized equipment.", priority: 'High', riskLevel: 'High', proof: 'License Audit Log', location: 'Fleet Office' },
+                    { id: 'FLEET-HEM-004', description: "Maintain a log of all vehicle breakdowns and repairs to identify recurring issues.", priority: 'Medium', riskLevel: 'Medium', proof: 'Breakdown Log', location: 'Workshop' }
+                ]
+            },
+            {
+                title: "📦 Central Stores & Inventory Control",
+                department: "Procurement/Logistics",
+                frequency: "Daily/Weekly",
+                role: "Store Keeper/Manager",
+                summary: "Manages the central warehouse for all operational supplies, from critical engineering spares to office consumables, ensuring accuracy and availability.",
+                tasks: [
+                    { id: 'STORE-001', description: "Receive incoming goods, verifying them against purchase orders and checking for damage (GRN process).", priority: 'High', riskLevel: 'High', proof: 'Signed GRN', location: 'Receiving Bay' },
+                    { id: 'STORE-002', description: "Ensure all received items are correctly binned to their designated storage location.", priority: 'High', riskLevel: 'Medium', proof: 'Binning Log', location: 'Warehouse' },
+                    { id: 'STORE-003', description: "Conduct daily cycle counts for a designated section of inventory to ensure system accuracy.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse' },
+                    { id: 'STORE-004', description: "Process material requisitions from departments, ensuring proper authorization.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Requisition Form', location: 'Stores Counter' },
+                    { id: 'STORE-005', description: "Maintain a log and secure storage for critical spares with a 'two-person sign-out' rule.", priority: 'High', riskLevel: 'High', proof: 'Critical Spares Log', location: 'Secure Area' }
+                ]
+            },
+            {
+                title: "🌳 Landscaping & Grounds Maintenance",
+                department: "Facilities",
+                frequency: "Weekly",
+                role: "Horticulturist/Grounds Manager",
+                summary: "Maintains all company green spaces, ensuring they are aesthetically pleasing, safe, and managed sustainably.",
+                tasks: [
+                    { id: 'LAND-001', description: "Inspect irrigation systems for leaks and correct operation, adjusting schedules based on weather.", priority: 'High', riskLevel: 'Medium', proof: 'Irrigation Log', location: 'Grounds' },
+                    { id: 'LAND-002', description: "Check landscaped areas for plant health, signs of pests, or disease, and take corrective action.", priority: 'Medium', riskLevel: 'Low', proof: 'Horticulture Log', location: 'Grounds' },
+                    { id: 'LAND-003', description: "Ensure pedestrian pathways are clear of overgrowth, debris, or any tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Safety Sweep Log', location: 'Grounds' },
+                    { id: 'LAND-004', description: "Manage mowing, pruning, and fertilization schedules for lawns and gardens.", priority: 'Medium', riskLevel: 'Low', proof: 'Work Schedule', location: 'Grounds' }
+                ]
+            },
+            {
+                title: "🍽️ Pantry & Cafeteria Management",
+                department: "Admin/HR",
+                frequency: "Daily",
+                role: "Admin Manager",
+                summary: "Ensures the office pantry and cafeteria are clean, well-stocked, and comply with food safety standards.",
+                tasks: [
+                    { id: 'PANTRY-001', description: "Check hygiene and cleanliness of the pantry/cafeteria area, including countertops and equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Pantry/Cafeteria' },
+                    { id: 'PANTRY-002', description: "Verify that food and beverage vending machines are stocked and functional.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Pantry/Cafeteria' },
+                    { id: 'PANTRY-003', description: "Audit the cafeteria vendor for food quality, hygiene, and service standards.", priority: 'High', riskLevel: 'High', proof: 'Vendor Audit Form', location: 'Cafeteria' },
+                    { id: 'PANTRY-004', description: "Ensure water dispensers are clean and have sufficient supply.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Pantry/Cafeteria' }
+                ]
             }
         ]
     },
@@ -807,7 +1018,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' &amp; audit 'LIS-HIS-EMR Data Integrity'.",
+            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
@@ -1302,10 +1513,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Test your resilience with a 'Supply Chain Disruption Drill'.",
             "Implement a life-saving 'Lock-Out Tag-Out' (LOTO) procedure.",
-            "Prevent accidents with an 'Electrical Permit to Work' protocol.",
-            "NEW: Includes 'Critical Spares Verification' and 'Fitness-for-Duty' checks."
+            "NEW: Manage your 'Fleet & Heavy Equipment' including forklifts and cranes.",
+            "NEW: Systematize your 'Central Stores & Inventory Control'.",
+            "Prevent accidents with an 'Electrical Permit to Work' protocol."
         ],
         previewScenario: {
             title: "Performing Safe Machine Maintenance",
@@ -1542,6 +1753,33 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PDM-004', description: "Analyze recent failure data to update and refine the predictive models.", priority: 'Medium', riskLevel: 'Medium', proof: 'Model Update Log', location: 'Maintenance Office' },
                     { id: 'PDM-005', description: "Present a summary of predictive alerts and averted failures in the weekly production meeting.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Presentation', location: 'Conference Room' }
                 ]
+            },
+            {
+                title: "🚚 Fleet & Heavy Equipment Management",
+                department: "Engineering/Maintenance",
+                frequency: "Daily/Weekly",
+                role: "Fleet Manager",
+                summary: "Manages the maintenance and operational readiness of all company vehicles and heavy equipment, ensuring safety and reliability.",
+                tasks: [
+                    { id: 'FLEET-HEM-001', description: "Conduct mandatory pre-use safety checks for all specialized vehicles (e.g., forklifts, aerial work platforms).", priority: 'High', riskLevel: 'High', proof: 'Pre-use Checklist Form', location: 'Vehicle Depot' },
+                    { id: 'FLEET-HEM-002', description: "Track and schedule preventive maintenance based on vehicle running hours or calendar dates.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Schedule', location: 'Workshop' },
+                    { id: 'FLEET-HEM-003', description: "Verify operator licenses and certifications for all specialized equipment.", priority: 'High', riskLevel: 'High', proof: 'License Audit Log', location: 'Fleet Office' },
+                    { id: 'FLEET-HEM-004', description: "Maintain a log of all vehicle breakdowns and repairs to identify recurring issues.", priority: 'Medium', riskLevel: 'Medium', proof: 'Breakdown Log', location: 'Workshop' }
+                ]
+            },
+            {
+                title: "📦 Central Stores & Inventory Control",
+                department: "Procurement/Logistics",
+                frequency: "Daily/Weekly",
+                role: "Store Keeper/Manager",
+                summary: "Manages the central warehouse for all operational supplies, from critical engineering spares to office consumables, ensuring accuracy and availability.",
+                tasks: [
+                    { id: 'STORE-001', description: "Receive incoming goods, verifying them against purchase orders and checking for damage (GRN process).", priority: 'High', riskLevel: 'High', proof: 'Signed GRN', location: 'Receiving Bay' },
+                    { id: 'STORE-002', description: "Ensure all received items are correctly binned to their designated storage location.", priority: 'High', riskLevel: 'Medium', proof: 'Binning Log', location: 'Warehouse' },
+                    { id: 'STORE-003', description: "Conduct daily cycle counts for a designated section of inventory to ensure system accuracy.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse' },
+                    { id: 'STORE-004', description: "Process material requisitions from departments, ensuring proper authorization.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Requisition Form', location: 'Stores Counter' },
+                    { id: 'STORE-005', description: "Maintain a log and secure storage for critical spares with a 'two-person sign-out' rule.", priority: 'High', riskLevel: 'High', proof: 'Critical Spares Log', location: 'Secure Area' }
+                ]
             }
         ]
     },
@@ -1555,8 +1793,8 @@ export const premiumPacks: PremiumPack[] = [
         description: "For event planners and agencies. A comprehensive toolkit for flawless execution of corporate events, weddings, and conferences.",
         icon: <Trophy className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Master 'Venue Selection &amp; Contracting' to protect your clients and budget.",
-            "Implement a 'Pre-Event AV &amp; Tech Check' to avoid on-stage disasters.",
+            "Master 'Venue Selection & Contracting' to protect your clients and budget.",
+            "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
             "NEW: Includes a 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
         ],
         globalStandards: {
@@ -1669,9 +1907,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For jewelry store owners and heads of security. A high-security toolkit for managing high-value inventory and preventing loss.",
         icon: <Gem className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Master the 'Vault Opening &amp; Closing' dual-control procedure.",
+            "Master the 'Vault Opening & Closing' dual-control procedure.",
             "Implement a 'High-Value Gemstone Verification' protocol to prevent swapping.",
-            "NEW: Includes a 'Show-Me &amp; Distraction Theft Prevention' protocol."
+            "NEW: Includes a 'Show-Me & Distraction Theft Prevention' protocol."
         ],
         globalStandards: {
             title: "Aligned with High-Value Retail Security Standards",
@@ -1720,10 +1958,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For warehouse managers and logistics heads. A comprehensive toolkit for optimizing storage, shipping, and inventory accuracy.",
         icon: <Warehouse className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Goods Receiving &amp; GRN' protocol for 100% accuracy.",
-            "Standardize 'Binning &amp; Stock Location Management' for fast retrieval.",
+            "Implement a 'Goods Receiving & GRN' protocol for 100% accuracy.",
+            "Standardize 'Binning & Stock Location Management' for fast retrieval.",
             "NEW: Includes a 'New Product Master Data Entry' protocol to prevent costly shipping errors before they start.",
-            "NEW: Added 'Reverse Logistics &amp; Returns Processing' to manage the full product lifecycle."
+            "NEW: Added 'Central Stores & Inventory Control' and 'Reverse Logistics' protocols."
         ],
         globalStandards: {
             title: "Aligned with Global Logistics & Supply Chain Standards",
@@ -1787,6 +2025,20 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'COLD-003', description: "Inspect insulated packaging for any damage before use.", priority: 'High', riskLevel: 'Medium', proof: 'Packaging Inspection Log', location: 'Packing Station' },
                     { id: 'COLD-004', description: "Upon arrival at the destination, download and review the data logger information *before* accepting the shipment to confirm no temperature excursions occurred.", priority: 'High', riskLevel: 'High', proof: 'Data Logger Report', location: 'Receiving Dock' },
                 ]
+            },
+            {
+                title: "📦 Central Stores & Inventory Control",
+                department: "Procurement/Logistics",
+                frequency: "Daily/Weekly",
+                role: "Store Keeper/Manager",
+                summary: "Manages the central warehouse for all operational supplies, from critical engineering spares to office consumables, ensuring accuracy and availability.",
+                tasks: [
+                    { id: 'STORE-001', description: "Receive incoming goods, verifying them against purchase orders and checking for damage (GRN process).", priority: 'High', riskLevel: 'High', proof: 'Signed GRN', location: 'Receiving Bay' },
+                    { id: 'STORE-002', description: "Ensure all received items are correctly binned to their designated storage location.", priority: 'High', riskLevel: 'Medium', proof: 'Binning Log', location: 'Warehouse' },
+                    { id: 'STORE-003', description: "Conduct daily cycle counts for a designated section of inventory to ensure system accuracy.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse' },
+                    { id: 'STORE-004', description: "Process material requisitions from departments, ensuring proper authorization.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Requisition Form', location: 'Stores Counter' },
+                    { id: 'STORE-005', description: "Maintain a log and secure storage for critical spares with a 'two-person sign-out' rule.", priority: 'High', riskLevel: 'High', proof: 'Critical Spares Log', location: 'Secure Area' }
+                ]
             }
         ]
     },
@@ -1800,8 +2052,8 @@ export const premiumPacks: PremiumPack[] = [
         description: "For call center managers and QA leads. A toolkit to improve agent performance, ensure data security, and enhance customer satisfaction.",
         icon: <Phone className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize 'Call Quality Monitoring &amp; Feedback' using a structured scorecard.",
-            "Implement a 'Data Security &amp; PCI-DSS Compliance' checklist for agents.",
+            "Standardize 'Call Quality Monitoring & Feedback' using a structured scorecard.",
+            "Implement a 'Data Security & PCI-DSS Compliance' checklist for agents.",
             "NEW: Includes a 'Customer Identity Verification' protocol to prevent SIM-swapping and other account takeover frauds."
         ],
         globalStandards: {
@@ -1838,10 +2090,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For lab owners and quality managers. An NABL-aligned toolkit for ensuring accuracy, safety, and compliance in laboratory operations.",
         icon: <TestTube className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Sample Collection, Handling &amp; Transport' protocol.",
-            "Standardize 'Reagent &amp; Equipment Calibration' logs.",
+            "Implement a 'Sample Collection, Handling & Transport' protocol.",
+            "Standardize 'Reagent & Equipment Calibration' logs.",
             "Master 'Panic Value Reporting' and clinician communication.",
-            "Includes 'Lab Safety &amp; Bio-waste Management' checklists."
+            "Includes 'Lab Safety & Bio-waste Management' checklists."
         ],
         globalStandards: {
             title: "Aligned with Laboratory Accreditation Standards",
@@ -2247,7 +2499,7 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'Work-at-Height & Scaffolding' safety protocol.",
             "NEW: Includes a mandatory 'Excavation & Trenching Safety Permit' to prevent collapses.",
             "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
-            "Includes 'Tool & Tackles Inspection' and 'First Aid' checklists."
+            "NEW: Added 'Fleet & Heavy Equipment Management' for cranes and excavators."
         ],
         globalStandards: {
             title: "Aligned with Global Construction Safety Standards",
@@ -2270,6 +2522,19 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'EXCAV-003', description: "Test atmospheric conditions inside the trench for adequate oxygen levels and absence of toxic gases.", priority: 'High', riskLevel: 'High', proof: 'Gas Monitor Reading Log', location: 'Site' },
                     { id: 'EXCAV-004', description: "Ensure safe access and egress, such as ladders, are within 25 feet of all workers in the trench.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Site' },
                     { id: 'EXCAV-005', description: "The permit must be signed by the safety officer and the site engineer before any entry is allowed.", priority: 'High', riskLevel: 'High', proof: 'Signed Permit', location: 'Site' },
+                ]
+            },
+            {
+                title: "🚚 Fleet & Heavy Equipment Management",
+                department: "Engineering/Maintenance",
+                frequency: "Daily/Weekly",
+                role: "Fleet Manager",
+                summary: "Manages the maintenance and operational readiness of all company vehicles and heavy equipment, ensuring safety and reliability.",
+                tasks: [
+                    { id: 'FLEET-HEM-001', description: "Conduct mandatory pre-use safety checks for all specialized vehicles (e.g., cranes, excavators).", priority: 'High', riskLevel: 'High', proof: 'Pre-use Checklist Form', location: 'Vehicle Depot' },
+                    { id: 'FLEET-HEM-002', description: "Track and schedule preventive maintenance based on vehicle running hours or calendar dates.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Schedule', location: 'Workshop' },
+                    { id: 'FLEET-HEM-003', description: "Verify operator licenses and certifications for all specialized equipment.", priority: 'High', riskLevel: 'High', proof: 'License Audit Log', location: 'Fleet Office' },
+                    { id: 'FLEET-HEM-004', description: "Maintain a log of all vehicle breakdowns and repairs to identify recurring issues.", priority: 'Medium', riskLevel: 'Medium', proof: 'Breakdown Log', location: 'Workshop' }
                 ]
             }
         ]
@@ -2346,7 +2611,7 @@ export const premiumPacks: PremiumPack[] = [
             "Standardize the 'Tenant Move-In & Move-Out' inspection process.",
             "Implement a 'Preventive Maintenance' schedule for building systems.",
             "Master 'Rent Collection & Arrears Management'.",
-            "Includes 'Lease Agreement & Renewal' and 'Vendor Management' checklists."
+            "NEW: Includes 'Landscaping & Grounds Maintenance'."
         ],
         globalStandards: {
             title: "Aligned with Property Management Best Practices",
@@ -2396,202 +2661,18 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RPT-003', description: "Change all locks and security codes.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'Rental Unit' },
                     { id: 'RPT-004', description: "Perform a final 'rent-ready' inspection before listing the property or handing it over to the new tenant.", priority: 'High', riskLevel: 'Medium', proof: 'Rent-Ready Checklist', location: 'Rental Unit' },
                 ]
-            }
-        ]
-    },
-    {
-        id: 'sports_stadium_arena_pack',
-        title: "Sports Stadium & Arena Management",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Events",
-        description: "For stadium managers and event directors. A comprehensive toolkit for managing large-scale sporting events, focusing on safety, broadcast readiness, and fan experience.",
-        icon: <Trophy className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
-        badgeVariant: "accent" as const,
-        sampleItems: [
-            "Master the 'Field of Play Pre-Event Handover' to ensure athlete safety.",
-            "Prevent broadcast failures with the 'Broadcast Compound & Tech Integration Audit'.",
-            "Manage risk with 'Real-Time Crowd Density' and 'Drone Incursion' protocols.",
-            "NEW: Includes a 'Zero Waste & Post-Event Sorting' checklist for sustainability."
-        ],
-        globalStandards: {
-            title: "Aligned with Global Stadium & Event Safety Standards",
-            standards: [
-                { name: "Safety & Security", description: "Crowd management (UK's Green Guide), counter-terrorism protocols, and emergency medical response." },
-                { name: "Broadcast & Technical", description: "Best practices for broadcast compound management, power redundancy, and data connectivity." },
-                { name: "Fan Experience", description: "Standards for ticketing, concessions, and access control for large-scale public events." },
-                { name: "Athlete Safety", description: "Protocols for ensuring the field of play is safe and meets regulatory standards." }
-            ]
-        },
-        checklists: [
-            {
-                title: "🛡️ Pre-Game Security & Crowd Control Setup",
-                department: "Security",
-                frequency: "Pre-Game",
-                role: "Security Chief",
-                summary: "The essential protocol for preparing the venue. Covers security sweeps, testing magnetometers, setting up queues, and briefing staff on threat levels for the specific event.",
-                tasks: [
-                    { id: 'STAD-SEC-01', description: "Perform a comprehensive sweep of all public areas for unattended bags or suspicious items.", priority: 'High', riskLevel: 'High', proof: 'Sweep Completion Log', location: 'Entire Venue' },
-                    { id: 'STAD-SEC-02', description: "Test all magnetometers and bag-check X-ray machines at every entry gate.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Entry Gates' },
-                    { id: 'STAD-SEC-03', description: "Position barricades and stanchions for queue management as per the event's specific plan.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Entry Gates' },
-                    { id: 'STAD-SEC-04', description: "Brief all security staff on the event's specific threat intelligence and code words.", priority: 'High', riskLevel: 'High', proof: 'Briefing Sign-off Sheet', location: 'Command Center' },
-                    { id: 'STAD-SEC-05', description: "Verify communication links (radios, earpieces) between central command and all security posts.", priority: 'High', riskLevel: 'High', proof: 'Comms Check Log', location: 'Command Center' }
-                ]
             },
             {
-                title: "⚽ Field/Court of Play Pre-Event Handover",
-                department: "Groundskeeping/Operations",
-                frequency: "Pre-Game",
-                role: "Head Groundskeeper",
-                summary: "Ensures the playing surface is safe for high-value athletes. Involves inspecting for hazards, verifying markings, and a formal sign-off between the groundskeeping crew and team officials.",
+                title: "🌳 Landscaping & Grounds Maintenance",
+                department: "Facilities",
+                frequency: "Weekly",
+                role: "Horticulturist/Grounds Manager",
+                summary: "Maintains all property green spaces, ensuring they are aesthetically pleasing, safe, and managed sustainably.",
                 tasks: [
-                    { id: 'STAD-FIELD-01', description: "Inspect the entire playing surface for any hazards (e.g., divots, debris, sprinkler heads).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Field of Play' },
-                    { id: 'STAD-FIELD-02', description: "Verify that all game markings are accurate, visible, and meet league specifications.", priority: 'High', riskLevel: 'Medium', proof: 'Measurement Check', location: 'Field of Play' },
-                    { id: 'STAD-FIELD-03', description: "Check field/court hardness and moisture levels to ensure they are within safe parameters for athletes.", priority: 'High', riskLevel: 'High', proof: 'Test Reading Log', location: 'Field of Play' },
-                    { id: 'STAD-FIELD-04', description: "Ensure all equipment (goalposts, nets, etc.) is securely installed and free from defects.", priority: 'High', riskLevel: 'High', proof: 'Physical Inspection', location: 'Field of Play' },
-                    { id: 'STAD-FIELD-05', description: "The Head Groundskeeper and a representative from the home team must co-sign the handover form confirming the field is safe and ready.", priority: 'High', riskLevel: 'High', proof: 'Signed Handover Form', location: 'Field of Play' }
-                ]
-            },
-            {
-                title: "🎫 Ticketing System & Access Control Audit",
-                department: "IT/Box Office",
-                frequency: "Pre-Game",
-                role: "Box Office Manager",
-                summary: "Prevents fraud and ensures smooth entry. Covers testing scanners at all gates, real-time reconciliation of scans vs. sales, and procedures for handling counterfeit tickets.",
-                tasks: [
-                    { id: 'STAD-TICKET-01', description: "Test a sample of valid barcodes, QR codes, and NFC tickets at every entry turnstile to ensure scanners are working.", priority: 'High', riskLevel: 'High', proof: 'Scanner Test Log', location: 'All Gates' },
-                    { id: 'STAD-TICKET-02', description: "Confirm that the access control system is correctly programmed with the event's specific date, time, and gate authorizations.", priority: 'High', riskLevel: 'Medium', proof: 'System Configuration Screenshot', location: 'Server Room' },
-                    { id: 'STAD-TICKET-03', description: "Brief gate staff on procedures for handling fraudulent tickets and re-entry policies.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Briefing Log', location: 'Gate Supervisor Office' },
-                    { id: 'STAD-TICKET-04', description: "Ensure 'problem ticket' windows are staffed and equipped to handle customer service issues.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Box Office' },
-                    { id: 'STAD-TICKET-05', description: "Set up real-time monitoring to reconcile 'scans in' against tickets sold to spot anomalies.", priority: 'High', riskLevel: 'Medium', proof: 'Dashboard Setup', location: 'Command Center' }
-                ]
-            },
-            {
-                title: "📡 Broadcast Compound & Tech Integration Audit",
-                department: "Broadcast/IT",
-                frequency: "Pre-Game",
-                role: "Broadcast Liaison",
-                summary: "Ensures a flawless broadcast by coordinating access, power, and connectivity for all media partners.",
-                tasks: [
-                    { id: 'STAD-BROADCAST-01', description: "Verify all broadcast partners have proper credentials and access to the compound.", priority: 'High', riskLevel: 'Medium', proof: 'Credential Log', location: 'Broadcast Compound' },
-                    { id: 'STAD-BROADCAST-02', description: "Confirm adequate power supply and backup generators for all broadcast trucks and equipment.", priority: 'High', riskLevel: 'High', proof: 'Power Load Test Log', location: 'Broadcast Compound' },
-                    { id: 'STAD-BROADCAST-03', description: "Test all fiber and internet connections for broadcast feeds.", priority: 'High', riskLevel: 'High', proof: 'Connection Test Log', location: 'Broadcast Compound' },
-                    { id: 'STAD-BROADCAST-04', description: "Coordinate camera positions and ensure they have clear, unobstructed views.", priority: 'High', riskLevel: 'Medium', proof: 'Camera Placement Map', location: 'Venue' },
-                    { id: 'STAD-BROADCAST-05', description: "Test the PA system and ensure announcers have clear audio feeds.", priority: 'High', riskLevel: 'Medium', proof: 'Audio Test Log', location: 'Venue' }
-                ]
-            },
-            {
-                title: "🍻 Concessions & Hawkers Operations Readiness",
-                department: "F&B",
-                frequency: "Pre-Game",
-                role: "Concession Manager",
-                summary: "Maximizes revenue and ensures food safety during the intense, short bursts of game-time demand.",
-                tasks: [
-                    { id: 'STAD-CONC-01', description: "Stock all concession stands to 'peak demand' levels based on ticket sales data and opponent.", priority: 'High', riskLevel: 'Medium', proof: 'Stocking Sheets', location: 'Concession Stands' },
-                    { id: 'STAD-CONC-02', description: "Verify functionality of all POS systems, credit card readers, and backup cashless payment devices.", priority: 'High', riskLevel: 'High', proof: 'POS Test Log', location: 'Concession Stands' },
-                    { id: 'STAD-CONC-03', description: "Log food safety temperatures for all hot-holding units (e.g., hot dogs, nachos) before gates open.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Concession Stands' },
-                    { id: 'STAD-CONC-04', description: "Conduct a pre-game huddle with all cashiers and hawkers to review menu, pricing, and upsell targets.", priority: 'Medium', riskLevel: 'Low', proof: 'Huddle Notes', location: 'Concession Area' },
-                    { id: 'STAD-CONC-05', description: "Ensure mobile hawkers are equipped with fully charged handheld POS devices and sufficient starting inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Issue Log', location: 'F&B Office' }
-                ]
-            },
-            {
-                title: "⏱️ Mid-Game & Halftime Turnaround Protocol",
-                department: "Operations",
-                frequency: "Halftime",
-                role: "Operations Director",
-                summary: "A time-critical checklist to manage the intense operational surge during halftime, covering cleaning, restocking, and entertainment setup.",
-                tasks: [
-                    { id: 'STAD-HALF-01', description: "Dispatch 'strike teams' to clean and restock high-traffic restrooms the moment the halftime whistle blows.", priority: 'High', riskLevel: 'Medium', proof: 'Dispatch Log', location: 'Command Center' },
-                    { id: 'STAD-HALF-02', description: "Monitor crowd flow to concession stands and redirect fans to less busy locations via the stadium app.", priority: 'High', riskLevel: 'Medium', proof: 'App Notification Log', location: 'Command Center' },
-                    { id: 'STAD-HALF-03', description: "Deploy staff to restock 'grab-and-go' beverage coolers.", priority: 'High', riskLevel: 'Low', proof: 'Restocking Log', location: 'Concession Areas' },
-                    { id: 'STAD-HALF-04', description: "Coordinate with the entertainment team to set up and tear down the halftime show within the allotted time.", priority: 'High', riskLevel: 'Medium', proof: 'Show Schedule', location: 'Field of Play' },
-                    { id: 'STAD-HALF-05', description: "Perform a quick inspection of the playing surface for any debris after the halftime show concludes.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Field of Play' }
-                ]
-            },
-            {
-                title: "📡 Real-Time Crowd Density & Flow Management",
-                department: "Security/Operations",
-                frequency: "In-Game",
-                role: "Operations Director",
-                summary: "Uses live data to manage crowd flow, preventing overcrowding and potential safety hazards.",
-                tasks: [
-                    { id: 'STAD-CROWD-01', description: "If crowd density in Concourse B exceeds 'Yellow Alert' threshold (e.g., 2 people/sq meter), update digital wayfinding signs to direct fans to Concourse C.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Command Center' },
-                    { id: 'STAD-CROWD-02', description: "Use sensor data (if available) to identify areas of high congestion.", priority: 'High', riskLevel: 'High', proof: 'Sensor Data Log', location: 'Command Center' },
-                    { id: 'STAD-CROWD-03', description: "For a 'Red Alert', dispatch security personnel to temporarily manage entry to the congested area.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Log', location: 'Command Center' },
-                    { id: 'STAD-CROWD-04', description: "Open additional gates or exits if necessary to relieve congestion.", priority: 'High', riskLevel: 'High', proof: 'Gate Opening Log', location: 'Command Center' },
-                    { id: 'STAD-CROWD-05', description: "Log all crowd alerts and the actions taken for post-event analysis.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Command Center' }
-                ]
-            },
-            {
-                title: "🚁 Drone Incursion & Countermeasure Protocol",
-                department: "Security",
-                frequency: "In-Game",
-                role: "Security Chief",
-                summary: "Defines the response to a rogue drone entering the stadium's airspace, a potential security and broadcast disruption risk.",
-                tasks: [
-                    { id: 'STAD-DRONE-01', description: "Test drone detection system (radar/RF) prior to the event.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Security Command Center' },
-                    { id: 'STAD-DRONE-02', description: "Upon visual confirmation or system alert of a drone, immediately notify local law enforcement and air traffic control.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Security Command Center' },
-                    { id: 'STAD-DRONE-03', description: "Direct security personnel to visually track the drone and attempt to identify its operator on the ground.", priority: 'High', riskLevel: 'High', proof: 'Tracking Log', location: 'Security Personnel' },
-                    { id: 'STAD-DRONE-04', description: "If drone poses an immediate threat, activate pre-approved drone countermeasures and initiate controlled evacuation of the affected area if necessary.", priority: 'High', riskLevel: 'High', proof: 'Action Log', location: 'Security Command Center' },
-                    { id: 'STAD-DRONE-05', description: "Log all detection events, even false alarms, for post-event analysis.", priority: 'Medium', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Command Center' }
-                ]
-            },
-            {
-                title: "💳 Cashless & Contactless Payment System Audit",
-                department: "IT/Finance",
-                frequency: "Pre-Game",
-                role: "IT Manager",
-                summary: "Ensures the reliability of digital payment systems, a critical component of modern, cashless venues.",
-                tasks: [
-                    { id: 'STAD-PAY-01', description: "Process a test transaction at one POS terminal in each concession stand and retail outlet.", priority: 'High', riskLevel: 'High', proof: 'Test Transaction Log', location: 'Venue-wide' },
-                    { id: 'STAD-PAY-02', description: "Verify that all 'tap-to-pay' readers are functional and clean.", priority: 'High', riskLevel: 'High', proof: 'Device Check Log', location: 'Venue-wide' },
-                    { id: 'STAD-PAY-03', description: "Confirm that the system's offline processing mode is functional in case of a network outage.", priority: 'High', riskLevel: 'High', proof: 'Offline Test Log', location: 'IT Office' },
-                    { id: 'STAD-PAY-04', description: "Ensure that backup cellular data connections for the payment gateways are active and have sufficient bandwidth.", priority: 'High', riskLevel: 'High', proof: 'Network Test Log', location: 'IT Office' },
-                    { id: 'STAD-PAY-05', description: "Brief concession managers on troubleshooting steps for common payment terminal errors.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Concession Offices' }
-                ]
-            },
-            {
-                title: "♻️ Zero Waste & Post-Event Sorting Protocol",
-                department: "Operations/Sustainability",
-                frequency: "Post-Game",
-                role: "Sustainability Manager",
-                summary: "Ensures all waste is properly sorted, recycled, or composted, moving towards a zero-waste event.",
-                tasks: [
-                    { id: 'STAD-WASTE-01', description: "Deploy clearly labeled recycling, compost, and landfill bins throughout the venue.", priority: 'High', riskLevel: 'Medium', proof: 'Bin Placement Map', location: 'Venue' },
-                    { id: 'STAD-WASTE-02', description: "Station 'waste sorting' volunteers at strategic locations to guide fans.", priority: 'High', riskLevel: 'Medium', proof: 'Personnel Location Map', location: 'Venue' },
-                    { id: 'STAD-WASTE-03', description: "Post-event, collect all waste bags and transport them to the designated sorting area.", priority: 'High', riskLevel: 'High', proof: 'Collection Route Map', location: 'Venue' },
-                    { id: 'STAD-WASTE-04', description: "Sort all waste into recyclable, compostable, and landfill-bound streams and weigh each stream.", priority: 'High', riskLevel: 'High', proof: 'Sorting Log', location: 'Sorting Area' },
-                    { id: 'STAD-WASTE-05', description: "Track waste diversion rates and report them to relevant stakeholders and for public-facing ESG goals.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Diversion Report', location: 'Sustainability Office' }
-                ]
-            },
-            {
-                title: "🧹 Post-Event Security Sweep & Lockdown",
-                department: "Security",
-                frequency: "Post-Game",
-                role: "Security Chief",
-                summary: "Secures the venue after fans have departed, preventing theft, vandalism, and unauthorized access.",
-                tasks: [
-                    { id: 'STAD-POST-SEC-01', description: "Perform a comprehensive security sweep of all public areas, restrooms, and suites to ensure no one remains inside.", priority: 'High', riskLevel: 'High', proof: 'Sweep Completion Log', location: 'Entire Venue' },
-                    { id: 'STAD-POST-SEC-02', description: "Lock all doors, gates, and access points as per the lockdown sequence.", priority: 'High', riskLevel: 'High', proof: 'Lockdown Checklist', location: 'Entire Venue' },
-                    { id: 'STAD-POST-SEC-03', description: "Activate the full alarm system and verify it is functioning correctly.", priority: 'High', riskLevel: 'High', proof: 'Alarm System Log', location: 'Security Control Room' },
-                    { id: 'STAD-POST-SEC-04', description: "Review CCTV footage of the egress phase for any incidents.", priority: 'High', riskLevel: 'Medium', proof: 'CCTV Review Log', location: 'Security Control Room' },
-                    { id: 'STAD-POST-SEC-05', description: "Prepare an incident report summarizing any security-related events during the entire event lifecycle.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Control Room' }
-                ]
-            },
-            {
-                title: "🚇 Tunnel & Back-of-House Security",
-                department: "Security",
-                frequency: "Pre/Post Game",
-                role: "Security Supervisor",
-                summary: "Secures sensitive 'backstage' areas to protect players, officials, and media, preventing unauthorized access and altercations.",
-                tasks: [
-                    { id: 'STAD-BOH-01', description: "Clear the athlete tunnel of all non-essential personnel 10 minutes before the team is scheduled to enter or exit.", priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Athlete Tunnel' },
-                    { id: 'STAD-BOH-02', description: "Position dedicated security personnel at the entry and exit points of the tunnel.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster', location: 'Athlete Tunnel' },
-                    { id: 'STAD-BOH-03', description: "Verify credentials for all individuals in the 'mixed zone' where media interact with players.", priority: 'High', riskLevel: 'Medium', proof: 'Credential Check Log', location: 'Mixed Zone' },
-                    { id: 'STAD-BOH-04', description: "Ensure locker rooms are secure and only accessible to authorized team personnel.", priority: 'High', riskLevel: 'High', proof: 'Access Log Check', location: 'Locker Rooms' },
-                    { id: 'STAD-BOH-05', description: "Escort referees and officials from their dressing rooms to the field and back.", priority: 'High', riskLevel: 'Medium', proof: 'Escort Log', location: 'Back of House Corridors' }
+                    { id: 'LAND-001', description: "Inspect irrigation systems for leaks and correct operation, adjusting schedules based on weather.", priority: 'High', riskLevel: 'Medium', proof: 'Irrigation Log', location: 'Grounds' },
+                    { id: 'LAND-002', description: "Check landscaped areas for plant health, signs of pests, or disease, and take corrective action.", priority: 'Medium', riskLevel: 'Low', proof: 'Horticulture Log', location: 'Grounds' },
+                    { id: 'LAND-003', description: "Ensure pedestrian pathways are clear of overgrowth, debris, or any tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Safety Sweep Log', location: 'Grounds' },
+                    { id: 'LAND-004', description: "Manage mowing, pruning, and fertilization schedules for lawns and gardens.", priority: 'Medium', riskLevel: 'Low', proof: 'Work Schedule', location: 'Grounds' }
                 ]
             }
         ]
@@ -2664,5 +2745,6 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ];
+
 
 
