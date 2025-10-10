@@ -118,11 +118,12 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
-    const personalizedPackPrice = basePrice + 4000;
+    // Ensure personalized price is a premium
+    const personalizedPackPrice = basePrice < 12000 ? 11999 : basePrice + 4000;
     const enterprisePriceINR = 49999;
 
     const professionalPaymentId = pack.paymentId; // Use the pack's specific payment ID
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Assuming a generic upsell button ID for now
+    const personalizedPaymentId = 'pl_RMnYKoxjfq5XCx'; // A generic higher-tier payment button
 
     if (pack.id === 'personal_travel_pack') {
         return (

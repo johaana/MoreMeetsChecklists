@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -51,12 +51,12 @@ const GlobalStandardsSection = () => {
     const standards = [
         { name: "ISO 9001", description: "Quality Management" },
         { name: "HACCP", description: "Food Safety" },
-        { name: "JCI", description: "Healthcare Quality" },
+        { name: "JCI & NABH", description: "Healthcare Quality" },
         { name: "OSHA", description: "Workplace Safety" },
-        { name: "NFPA", description: "Fire Safety" },
+        { name: "ISO 14001", description: "ESG & Environment" },
         { name: "ISPS", description: "Maritime Security" },
         { name: "PCI DSS", description: "Payment Security" },
-        { name: "NABH", description: "Hospital Accreditation" }
+        { name: "ISO 45001", description: "Occupational Health"}
     ];
 
     return (
@@ -195,7 +195,7 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const featuredPacks = premiumPacks.filter(p => p.badgeText);
+    const featuredPacks = premiumPacks.filter(p => p.badgeText && p.badgeText.toLowerCase().includes('popular'));
     const title = "Featured Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 

@@ -181,19 +181,20 @@ export default function Page({ params }: { params: { id: string } }) {
   
   const whoIsItForMap: Record<string, string[]> = {
     "Hospitality": ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
-    "Corporate": ["Founders", "COOs", "VPs of Operations", "Head of Administration", "Head of Facilities", "Chief Engineers"],
+    "Corporate": ["Founders", "COOs", "VPs of Operations", "Head of Administration", "Chief Engineers", "IT Directors"],
     "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
-    "Healthcare": ["Hospital Owners", "COOs", "Heads of Quality & Compliance", "Lab Owners", "and their teams"],
+    "Healthcare": ["Hospital Owners", "COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "Lab Owners", "and their teams"],
     "Education": ["School Owners", "Trustees", "Principals", "Head of Administration", "and their teams"],
-    "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety"],
-    "Events": ["Event Company Owners", "and their teams"],
+    "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety", "EHS Officers"],
+    "Events": ["Event Company Owners", "Production Heads", "Sports Venue Operators", "and their teams"],
     "Personal": ["Frequent Travelers", "Pet Owners"],
     "Automotive": ["Dealership Owners", "Workshop Owners", "Service Directors"],
-    "Real Estate": ["Property Firm Owners", "Landlords", "Heads of Operations (REITs)"],
-    "Compliance": ["Chief Compliance Officers (CCOs)", "Heads of ESG", "Heads of Quality (ISO)"],
-    "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors"],
+    "Real Estate": ["Property Firm Owners", "Landlords", "Heads of Operations (REITs)", "Property Managers"],
+    "Compliance": ["Chief Compliance Officers (CCOs)", "Heads of ESG", "Heads of Quality (ISO)", "Legal Heads"],
+    "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors", "Clinic Managers", "Salon Owners"],
     "E-commerce": ["E-commerce Founders", "Heads of Operations", "Warehouse Managers"],
-    "Agency": ["Travel Agency Owners", "Tour Operators", "IATA Compliance Managers"]
+    "Agency": ["Travel Agency Owners", "Tour Operators", "IATA Compliance Managers"],
+    "Maritime": ["Port Captains", "Shipping Line Managers", "Vessel Masters", "Designated Person Ashore (DPA)"]
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
@@ -222,15 +223,7 @@ export default function Page({ params }: { params: { id: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <SiteHeader />
-        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
-                <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
-                All Packages
-            </Link>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">

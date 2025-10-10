@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -57,10 +56,17 @@ export function SiteHeader() {
     
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-            <div className="mr-6">
+            <Link href="/" className="mr-6 hidden md:flex items-center gap-2" prefetch={false}>
+                <Logo className="h-6 w-6 text-primary" />
+                <div className="flex flex-col">
+                    <span className="font-headline text-lg font-bold leading-tight">MoreMeets</span>
+                    <span className="text-xs text-muted-foreground leading-tight -mt-0.5">Less misses.</span>
+                </div>
+            </Link>
+            <div className="md:hidden mr-auto">
                 <BrandLogo />
             </div>
-            
+
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 {!isSalesPage && (
                     <>
@@ -75,7 +81,7 @@ export function SiteHeader() {
                                             <div>
                                                 <h4 className="font-semibold text-sm text-muted-foreground mb-2 px-2">Bestselling Checklists</h4>
                                                 <ul className="space-y-1">
-                                                    {individualChecklists.map(checklist => (
+                                                    {individualChecklists.slice(0, 8).map(checklist => (
                                                         <li key={checklist.id}>
                                                             <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
                                                                 <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
@@ -83,6 +89,11 @@ export function SiteHeader() {
                                                             </Link>
                                                         </li>
                                                     ))}
+                                                     <li>
+                                                        <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                            <span className="flex-1 leading-snug">View All Bestsellers...</span>
+                                                        </Link>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -104,6 +115,11 @@ export function SiteHeader() {
                                                         </ul>
                                                     </div>
                                                 ))}
+                                            </div>
+                                             <div className="mt-4 border-t pt-4">
+                                                <Link href="/packs" className="font-semibold text-primary hover:underline">
+                                                    View All Premium Packs &rarr;
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +150,7 @@ export function SiteHeader() {
             </nav>
 
             {/* Mobile Navigation */}
-            <div className="ml-auto md:hidden">
+            <div className="md:hidden">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
@@ -142,7 +158,7 @@ export function SiteHeader() {
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right">
+                    <SheetContent side="right" className="w-full max-w-sm">
                         <div className="flex flex-col gap-4 p-4">
                             <div className="mb-4">
                                 <BrandLogo />

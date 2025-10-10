@@ -136,16 +136,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <SiteHeader />
-        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-            <Link href="/checklists" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
-                <ArrowLeft className="w-4 h-4 mr-1 inline-block" />
-                All Bestselling Individual Checklists
-            </Link>
-        </nav>
-      </header>
-
+      <SiteHeader />
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">
             <div className="container px-4 md:px-6">
@@ -222,5 +213,3 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </div>
   );
 }
-
-    
