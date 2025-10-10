@@ -7,9 +7,9 @@ import { individualChecklists, IndividualChecklist } from '@/lib/individual-chec
 const virtualPersonalizedPack = {
   id: 'personalized_pack',
   title: 'Personalized Pack',
-  checklists: premiumPacks[0]?.checklists || [], 
+  checklists: premiumPacks.flatMap(p => p.checklists), 
   priceUSD: 0,
-  priceINR: 10999,
+  priceINR: 11999,
   category: "Personalized",
   description: "A custom pack tailored for you.",
   sampleItems: [],

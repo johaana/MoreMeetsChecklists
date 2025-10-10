@@ -118,12 +118,11 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const basePrice = pack.priceINR || 0;
-    // Ensure personalized price is a premium
-    const personalizedPackPrice = basePrice < 12000 ? 11999 : basePrice + 4000;
+    const personalizedPackPrice = 11999;
     const enterprisePriceINR = 49999;
 
-    const professionalPaymentId = pack.paymentId; // Use the pack's specific payment ID
-    const personalizedPaymentId = 'pl_RMnYKoxjfq5XCx'; // A generic higher-tier payment button
+    const professionalPaymentId = pack.paymentId; 
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Correct, fixed button ID for the higher tier
 
     if (pack.id === 'personal_travel_pack') {
         return (
@@ -179,9 +178,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-4xl font-bold text-foreground">
                         ₹{personalizedPackPrice}
                     </p>
-                    <p className="text-xl font-medium text-muted-foreground line-through">
-                        ₹{personalizedPackPrice + 4000}
-                    </p>
+                    { basePrice < personalizedPackPrice &&
+                        <p className="text-xl font-medium text-muted-foreground line-through">
+                            ₹{personalizedPackPrice + 4000}
+                        </p>
+                    }
                 </div>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
