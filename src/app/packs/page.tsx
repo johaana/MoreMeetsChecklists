@@ -95,7 +95,7 @@ export default function AllPacksPage() {
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
                                             <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
-                                            <span dangerouslySetInnerHTML={{ __html: item }} />
+                                            <span dangerouslySetInnerHTML={{ __html: item.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
                                         </li>
                                     ))}
                                 </ul>
@@ -119,3 +119,4 @@ export default function AllPacksPage() {
 }
 
     
+

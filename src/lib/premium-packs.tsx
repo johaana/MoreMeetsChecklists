@@ -203,15 +203,15 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Hospitality",
-        description: "For Hotel & Restaurant Managers. A one-time purchase for the complete daily, weekly, and monthly operational toolkit.",
+        description: "For GMs & Dept. Heads. A one-time purchase for a complete toolkit covering operations, finance, and leadership.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
         sampleItems: [
-            "NEW: Manage your 'EV Fleet & Charging Infrastructure' to cater to modern guests.",
-            "Prevent slip-and-fall incidents with a specialized 'Floor Care & Safety Audit'.",
-            "Secure your revenue with a fraud-proof 'Minibar Auditing' protocol.",
-            "NEW: Includes 'Landscaping & Grounds Maintenance' for resort-style properties."
+            "NEW: Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
+            "NEW: Implement a 'Managerial Performance Review' and 'New Hire Onboarding' system.",
+            "NEW: Includes a 'Brand Standards Audit' and 'Hotel Pre-Opening' checklist.",
+            "Prevent slip-and-fall incidents with a specialized 'Floor Care & Safety Audit'."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -233,6 +233,84 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+            {
+                title: "🏨 Hotel Pre-Opening Checklist",
+                department: "Management",
+                frequency: "Project-Based",
+                role: "General Manager",
+                summary: "A master checklist for launching a new hotel, covering everything from construction handover and licensing to staff recruitment and marketing launch.",
+                tasks: [
+                    { id: 'PRE-OPEN-01', description: "Secure all necessary operational licenses and permits (food, liquor, building).", priority: 'High', riskLevel: 'High', proof: 'License Certificates', location: 'Admin Office' },
+                    { id: 'PRE-OPEN-02', description: "Finalize and sign contracts with all key vendors (linen, F&B supplies, security).", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Admin Office' },
+                    { id: 'PRE-OPEN-03', description: "Recruit and train all Heads of Department.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'PRE-OPEN-04', description: "Conduct a full 'snagging' walkthrough of the property to identify and fix construction defects.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'Entire Property' },
+                ]
+            },
+            {
+                title: "📊 Annual Budgeting & Forecasting",
+                department: "Finance",
+                frequency: "Annually/Quarterly",
+                role: "Financial Controller",
+                summary: "A strategic checklist for preparing the hotel's annual budget, focusing on revenue forecasting, departmental cost allocation, and capital expenditure planning.",
+                tasks: [
+                    { id: 'FIN-BUD-01', description: "Analyze previous year's performance and market trends to establish revenue targets.", priority: 'High', riskLevel: 'High', proof: 'Analysis Report', location: 'Finance Office' },
+                    { id: 'FIN-BUD-02', description: "Collect and review budget proposals from all department heads.", priority: 'High', riskLevel: 'Medium', proof: 'Departmental Budgets', location: 'Finance Office' },
+                    { id: 'FIN-BUD-03', description: "Prepare a consolidated master budget (P&L, Balance Sheet, Cash Flow).", priority: 'High', riskLevel: 'High', proof: 'Master Budget File', location: 'Finance Office' },
+                    { id: 'FIN-BUD-04', description: "Present the final budget to ownership or the board for approval.", priority: 'High', riskLevel: 'High', proof: 'Presentation Deck', location: 'Board Room' },
+                ]
+            },
+            {
+                title: "📈 Monthly P&L Review & Cost Control",
+                department: "Management",
+                frequency: "Monthly",
+                role: "General Manager",
+                summary: "A checklist for the monthly meeting with department heads to review financial performance against budget, analyze variances, and implement corrective cost-saving measures.",
+                tasks: [
+                    { id: 'FIN-PNL-01', description: "Distribute departmental P&L statements to all HODs 3 days before the meeting.", priority: 'High', riskLevel: 'Medium', proof: 'Email Log', location: 'Finance Office' },
+                    { id: 'FIN-PNL-02', description: "In the meeting, each HOD must explain significant variances in their department's revenue and costs.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Conference Room' },
+                    { id: 'FIN-PNL-03', description: "Identify and agree upon specific action items for cost control for the upcoming month.", priority: 'High', riskLevel: 'High', proof: 'Action Plan', location: 'Conference Room' },
+                    { id: 'FIN-PNL-04', description: "Update the rolling forecast based on the month's performance and future bookings.", priority: 'High', riskLevel: 'Medium', proof: 'Updated Forecast', location: 'Finance Office' },
+                ]
+            },
+            {
+                title: "⭐ Brand Standards & Guest Experience Audit",
+                department: "Quality/Management",
+                frequency: "Quarterly",
+                role: "Quality Manager",
+                summary: "An internal audit to ensure the hotel is consistently meeting the brand's specific standards for service, cleanliness, and guest interaction.",
+                tasks: [
+                    { id: 'BRAND-01', description: "Audit the check-in process against brand standards for greeting, speed, and efficiency.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Scorecard', location: 'Front Desk' },
+                    { id: 'BRAND-02', description: "Inspect a random selection of guest rooms for compliance with brand standards on linen quality, amenity placement, and cleanliness.", priority: 'High', riskLevel: 'High', proof: 'Room Inspection Form', location: 'Guest Rooms' },
+                    { id: 'BRAND-03', description: "Review guest feedback from all channels (surveys, online reviews) and identify recurring themes related to brand standards.", priority: 'High', riskLevel: 'High', proof: 'Feedback Analysis Report', location: 'Office' },
+                    { id: 'BRAND-04', description: "Create and implement a corrective action plan for any identified gaps in brand standards.", priority: 'High', riskLevel: 'High', proof: 'Action Plan', location: 'Office' },
+                ]
+            },
+            {
+                title: "🧑‍🏫 New Hire Onboarding & Training Plan",
+                department: "HR",
+                frequency: "Per New Hire",
+                role: "HR Manager",
+                summary: "A structured 30-day plan to ensure new employees are properly onboarded, trained, and integrated into the hotel's culture and operational standards.",
+                tasks: [
+                    { id: 'HR-ONBOARD-01', description: "Day 1: Conduct company orientation, issue handbook, and complete all legal paperwork.", priority: 'High', riskLevel: 'Medium', proof: 'Onboarding Checklist', location: 'HR Office' },
+                    { id: 'HR-ONBOARD-02', description: "Week 1: Assign a 'buddy' or mentor and complete departmental orientation and initial job-specific training.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Department' },
+                    { id: 'HR-ONBOARD-03', description: "Week 2: Schedule brief introductory meetings with key department heads.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Schedule', location: 'Various' },
+                    { id: 'HR-ONBOARD-04', description: "Day 30: Conduct a 30-day check-in meeting to discuss progress, answer questions, and get feedback.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'HR Office' },
+                ]
+            },
+            {
+                title: "👔 Managerial Performance Review",
+                department: "HR/Management",
+                frequency: "Quarterly/Annually",
+                role: "General Manager",
+                summary: "A framework for conducting fair and effective performance reviews for department heads, focusing on KPIs, leadership skills, and goal setting.",
+                tasks: [
+                    { id: 'HR-PERF-01', description: "Review the manager's performance against their pre-set KPIs (e.g., departmental profit, guest satisfaction scores, employee turnover).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Office' },
+                    { id: 'HR-PERF-02', description: "Gather 360-degree feedback from the manager's direct reports and peers.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Summary', location: 'Office' },
+                    { id: 'HR-PERF-03', description: "Discuss strengths, areas for development, and set clear, measurable goals for the next review period.", priority: 'High', riskLevel: 'Medium', proof: 'Review Form', location: 'Office' },
+                    { id: 'HR-PERF-04', description: "Identify and agree upon any necessary training or professional development plans.", priority: 'Medium', riskLevel: 'Low', proof: 'Development Plan', location: 'Office' },
+                ]
+            },
             {
                 title: "🧹 Daily Room Cleaning Checklist",
                 department: "Housekeeping",
@@ -506,8 +584,8 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
         sampleItems: [
-            "NEW: Manage 'Fleet & Heavy Equipment' including operator fitness checks.",
-            "NEW: Implement 'Central Stores & Inventory Control' with GRN processes.",
+            "NEW: Implement a 'Quarterly Business Review (QBR)' and 'Annual Strategic Planning' framework.",
+            "NEW: Includes 'Fleet & Heavy Equipment Management' for corporate campuses.",
             "Implement a 'Critical Systems Alert Response' protocol to prevent outages.",
             "Includes a 'Third-Party Vendor Network Access Policy' to prevent cyber threats."
         ],
@@ -531,6 +609,58 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+            {
+                title: "📊 Quarterly Business Review (QBR) Framework",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Head of Facilities",
+                summary: "A structured agenda to conduct a quarterly review of facility operations, focusing on performance against KPIs, budget variance, and strategic goals.",
+                tasks: [
+                    { id: 'QBR-01', description: "Review performance against key KPIs (e.g., uptime, energy cost per sq ft, ticket resolution time).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Meeting' },
+                    { id: 'QBR-02', description: "Analyze budget vs. actual spend for the quarter and explain variances.", priority: 'High', riskLevel: 'High', proof: 'Financial Report', location: 'Meeting' },
+                    { id: 'QBR-03', description: "Present a summary of major incidents or achievements from the quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Presentation', location: 'Meeting' },
+                    { id: 'QBR-04', description: "Set strategic priorities and objectives for the upcoming quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Meeting' },
+                ]
+            },
+            {
+                title: "🎯 Annual Strategic Planning & Objective Setting",
+                department: "Management",
+                frequency: "Annually",
+                role: "Head of Facilities",
+                summary: "A checklist to guide the annual strategic planning process for the facility management department, aligning its goals with the broader company objectives.",
+                tasks: [
+                    { id: 'STRAT-01', description: "Review the company's overall strategic goals for the upcoming year.", priority: 'High', riskLevel: 'Medium', proof: 'Company Strategy Doc', location: 'Office' },
+                    { id: 'STRAT-02', description: "Conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for the facilities department.", priority: 'High', riskLevel: 'Medium', proof: 'SWOT Analysis Document', location: 'Office' },
+                    { id: 'STRAT-03', description: "Define clear, measurable objectives (e.g., reduce energy costs by 10%, achieve ISO 41001 certification).", priority: 'High', riskLevel: 'High', proof: 'Objectives List', location: 'Office' },
+                    { id: 'STRAT-04', description: "Develop a high-level budget and resource plan to support the defined objectives.", priority: 'High', riskLevel: 'High', proof: 'Budget Plan', location: 'Office' },
+                ]
+            },
+            {
+                title: "🏢 Corporate Asset Lifecycle Management",
+                department: "Admin/Finance",
+                frequency: "Ongoing",
+                role: "Asset Manager",
+                summary: "A checklist to track and manage critical company assets (e.g., laptops, furniture, equipment) from procurement to disposal.",
+                tasks: [
+                    { id: 'ASSET-01', description: "Assign a unique asset tag and log all new assets into the central asset register.", priority: 'High', riskLevel: 'Medium', proof: 'Asset Register', location: 'Office' },
+                    { id: 'ASSET-02', description: "Conduct a physical audit of all assets on a semi-annual basis to verify existence and condition.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Report', location: 'Company-wide' },
+                    { id: 'ASSET-03', description: "Implement a process for managing the transfer of assets between employees or departments.", priority: 'Medium', riskLevel: 'Low', proof: 'Transfer Form', location: 'Office' },
+                    { id: 'ASSET-04', description: "Follow a formal disposal process for retired assets, including data wiping for IT equipment and documenting disposal certificates.", priority: 'High', riskLevel: 'High', proof: 'Disposal Certificate', location: 'Office' },
+                ]
+            },
+            {
+                title: "🧑‍⚖️ Employee Disciplinary Action Protocol",
+                department: "HR",
+                frequency: "Per Incident",
+                role: "HR Manager",
+                summary: "A legally sound checklist to ensure a fair and consistent process for managing employee disciplinary issues, from verbal warnings to termination.",
+                tasks: [
+                    { id: 'HR-DISC-01', description: "Document the specific policy violation and gather all relevant evidence (e.g., emails, witness statements).", priority: 'High', riskLevel: 'High', proof: 'Investigation File', location: 'HR Office' },
+                    { id: 'HR-DISC-02', description: "Conduct a formal meeting with the employee, ensuring a witness is present, and clearly explain the issue.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'HR Office' },
+                    { id: 'HR-DISC-03', description: "Issue the appropriate level of warning (verbal, written, final) and have the employee sign an acknowledgment.", priority: 'High', riskLevel: 'High', proof: 'Signed Warning Letter', location: 'HR Office' },
+                    { id: 'HR-DISC-04', description: "Clearly document the required improvement and the consequences of further violations.", priority: 'High', riskLevel: 'High', proof: 'Performance Improvement Plan', location: 'HR Office' },
+                ]
+            },
             {
                 title: "✔️ Daily Site Operations",
                 department: "Operations",
@@ -1904,9 +2034,10 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 11999,
         paymentId: 'pl_RMncDLAlms69Pd',
         category: "Retail",
-        description: "For jewelry store owners and heads of security. A high-security toolkit for managing high-value inventory and preventing loss.",
+        description: "For jewelry store owners and security heads. A toolkit for managing high-value inventory, preventing fraud, and training staff.",
         icon: <Gem className="w-8 h-8 text-primary" />,
         sampleItems: [
+            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
             "Master the 'Vault Opening & Closing' dual-control procedure.",
             "Implement a 'High-Value Gemstone Verification' protocol to prevent swapping.",
             "NEW: Includes a 'Show-Me & Distraction Theft Prevention' protocol."
@@ -1944,6 +2075,45 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SHOW-ME-002', description: "To show a second item, the first must be returned to the display case and locked before the second is removed.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Sales Floor' },
                     { id: 'SHOW-ME-003', description: "The 'Zone Defense' Rule: A single staff member is never alone on the sales floor with two or more customers. If necessary, lock the main door until another staff member is available.", priority: 'High', riskLevel: 'High', proof: 'Training Record', location: 'Sales Floor' },
                     { id: 'SHOW-ME-004', description: "Verbally greet every customer who enters, making eye contact. This signals to potential thieves that they have been seen.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Sales Floor' },
+                ]
+            },
+            {
+                title: "🧑‍💼 Retail Sales Associate Performance Review",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Store Manager",
+                summary: "A structured checklist to review sales staff performance, covering sales targets, customer service quality, and product knowledge.",
+                tasks: [
+                    { id: 'RETAIL-PERF-01', description: "Review sales data for the associate, including total sales, conversion rate, and average transaction value.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Office' },
+                    { id: 'RETAIL-PERF-02', description: "Review customer feedback scores or comments related to the associate.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback System', location: 'Office' },
+                    { id: 'RETAIL-PERF-03', description: "Assess product knowledge through a brief quiz or role-play scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Assessment Score', location: 'Office' },
+                    { id: 'RETAIL-PERF-04', description: "Set clear and measurable goals for the next quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Sheet', location: 'Office' },
+                ]
+            },
+            {
+                title: "🌟 Customer Experience Audit",
+                department: "Management",
+                frequency: "Monthly",
+                role: "Store Manager",
+                summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
+                tasks: [
+                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                ]
+            },
+            {
+                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                department: "Management",
+                frequency: "Weekly",
+                role: "Store Manager",
+                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                tasks: [
+                    { id: 'RETAIL-MEETING-01', description: "Review previous week's sales performance against target.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-02', description: "Recognize top-performing staff for sales, customer feedback, or teamwork.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-03', description: "Discuss key product movers and slow-moving inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
                 ]
             }
         ]
@@ -2117,10 +2287,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
+            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
             "Implement a 'Fitting Room Control' procedure to prevent theft.",
             "Standardize 'Visual Merchandising' for seasonal collections.",
-            "Master 'Stock Consolidation' and size availability checks.",
-            "Includes 'End-of-Season Sale' and 'New Arrival' launch checklists."
+            "Master 'Stock Consolidation' and size availability checks."
         ],
         globalStandards: {
             title: "Aligned with Fashion Retail Best Practices",
@@ -2157,6 +2327,45 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
                     { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
                 ]
+            },
+            {
+                title: "🧑‍💼 Retail Sales Associate Performance Review",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Store Manager",
+                summary: "A structured checklist to review sales staff performance, covering sales targets, customer service quality, and product knowledge.",
+                tasks: [
+                    { id: 'RETAIL-PERF-01', description: "Review sales data for the associate, including total sales, conversion rate, and average transaction value.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Office' },
+                    { id: 'RETAIL-PERF-02', description: "Review customer feedback scores or comments related to the associate.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback System', location: 'Office' },
+                    { id: 'RETAIL-PERF-03', description: "Assess product knowledge through a brief quiz or role-play scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Assessment Score', location: 'Office' },
+                    { id: 'RETAIL-PERF-04', description: "Set clear and measurable goals for the next quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Sheet', location: 'Office' },
+                ]
+            },
+            {
+                title: "🌟 Customer Experience Audit",
+                department: "Management",
+                frequency: "Monthly",
+                role: "Store Manager",
+                summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
+                tasks: [
+                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                ]
+            },
+            {
+                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                department: "Management",
+                frequency: "Weekly",
+                role: "Store Manager",
+                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                tasks: [
+                    { id: 'RETAIL-MEETING-01', description: "Review previous week's sales performance against target.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-02', description: "Recognize top-performing staff for sales, customer feedback, or teamwork.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-03', description: "Discuss key product movers and slow-moving inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
+                ]
             }
         ]
     },
@@ -2172,10 +2381,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
+            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
             "Implement a 'Serial Number Tracking' protocol from receiving to sale.",
             "Standardize the 'Open-Box & Demo Unit' management process.",
-            "Master the 'High-Value Return & Counterfeit Verification' checklist.",
-            "Includes 'Technical Support & Troubleshooting' triage for staff."
+            "Master the 'High-Value Return & Counterfeit Verification' checklist."
         ],
         globalStandards: {
             title: "Aligned with Electronics Retail Standards",
@@ -2199,6 +2408,45 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'HVIR-004', description: "For electronics, verify the serial number of the returned item matches the serial number on the original sales receipt.", priority: 'High', riskLevel: 'High', proof: 'Serial Number Match Log', location: 'Cash Counter' },
                 ]
             },
+            {
+                title: "🧑‍💼 Retail Sales Associate Performance Review",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Store Manager",
+                summary: "A structured checklist to review sales staff performance, covering sales targets, customer service quality, and product knowledge.",
+                tasks: [
+                    { id: 'RETAIL-PERF-01', description: "Review sales data for the associate, including total sales, conversion rate, and average transaction value.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Office' },
+                    { id: 'RETAIL-PERF-02', description: "Review customer feedback scores or comments related to the associate.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback System', location: 'Office' },
+                    { id: 'RETAIL-PERF-03', description: "Assess product knowledge through a brief quiz or role-play scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Assessment Score', location: 'Office' },
+                    { id: 'RETAIL-PERF-04', description: "Set clear and measurable goals for the next quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Sheet', location: 'Office' },
+                ]
+            },
+            {
+                title: "🌟 Customer Experience Audit",
+                department: "Management",
+                frequency: "Monthly",
+                role: "Store Manager",
+                summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
+                tasks: [
+                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                ]
+            },
+            {
+                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                department: "Management",
+                frequency: "Weekly",
+                role: "Store Manager",
+                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                tasks: [
+                    { id: 'RETAIL-MEETING-01', description: "Review previous week's sales performance against target.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-02', description: "Recognize top-performing staff for sales, customer feedback, or teamwork.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-03', description: "Discuss key product movers and slow-moving inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
+                ]
+            }
         ]
     },
     {
@@ -2213,10 +2461,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
+            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
             "Implement a 'Damaged Goods & Showpiece' management protocol.",
             "Standardize the 'Home Delivery & Assembly Scheduling' process.",
-            "Master 'Warehouse to Floor' stock movement and tracking.",
-            "Includes 'Customer Order & Customization' management."
+            "Master 'Warehouse to Floor' stock movement and tracking."
         ],
         globalStandards: {
             title: "Aligned with Large-Format Retail Standards",
@@ -2226,7 +2474,47 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "Customer Management", description: "Procedures for handling custom orders, managing delivery expectations, and post-sale support." }
             ]
         },
-        checklists: []
+        checklists: [
+            {
+                title: "🧑‍💼 Retail Sales Associate Performance Review",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Store Manager",
+                summary: "A structured checklist to review sales staff performance, covering sales targets, customer service quality, and product knowledge.",
+                tasks: [
+                    { id: 'RETAIL-PERF-01', description: "Review sales data for the associate, including total sales, conversion rate, and average transaction value.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Office' },
+                    { id: 'RETAIL-PERF-02', description: "Review customer feedback scores or comments related to the associate.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback System', location: 'Office' },
+                    { id: 'RETAIL-PERF-03', description: "Assess product knowledge through a brief quiz or role-play scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Assessment Score', location: 'Office' },
+                    { id: 'RETAIL-PERF-04', description: "Set clear and measurable goals for the next quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Sheet', location: 'Office' },
+                ]
+            },
+            {
+                title: "🌟 Customer Experience Audit",
+                department: "Management",
+                frequency: "Monthly",
+                role: "Store Manager",
+                summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
+                tasks: [
+                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                ]
+            },
+            {
+                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                department: "Management",
+                frequency: "Weekly",
+                role: "Store Manager",
+                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                tasks: [
+                    { id: 'RETAIL-MEETING-01', description: "Review previous week's sales performance against target.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-02', description: "Recognize top-performing staff for sales, customer feedback, or teamwork.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-03', description: "Discuss key product movers and slow-moving inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
+                ]
+            }
+        ]
     },
     {
         id: 'supermarket_grocery_pack',
@@ -2240,10 +2528,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
+            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
             "Implement a 'Fresh Produce Quality & Culling' daily checklist.",
             "Standardize 'Cold Chain & Refrigeration Temperature' logs (HACCP).",
-            "Master 'Spill Response & Slip Prevention' for customer safety.",
-            "Includes 'Front-End Checkout Efficiency' and 'Shelf Stocking & FIFO' protocols."
+            "Master 'Spill Response & Slip Prevention' for customer safety."
         ],
         globalStandards: {
             title: "Aligned with Grocery & Food Retail Standards",
@@ -2253,7 +2541,47 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "Safety", description: "Protocols for slip prevention, spill response, and customer safety in a high-traffic environment." }
             ]
         },
-        checklists: []
+        checklists: [
+            {
+                title: "🧑‍💼 Retail Sales Associate Performance Review",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Store Manager",
+                summary: "A structured checklist to review sales staff performance, covering sales targets, customer service quality, and product knowledge.",
+                tasks: [
+                    { id: 'RETAIL-PERF-01', description: "Review sales data for the associate, including total sales, conversion rate, and average transaction value.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Office' },
+                    { id: 'RETAIL-PERF-02', description: "Review customer feedback scores or comments related to the associate.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback System', location: 'Office' },
+                    { id: 'RETAIL-PERF-03', description: "Assess product knowledge through a brief quiz or role-play scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Assessment Score', location: 'Office' },
+                    { id: 'RETAIL-PERF-04', description: "Set clear and measurable goals for the next quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Sheet', location: 'Office' },
+                ]
+            },
+            {
+                title: "🌟 Customer Experience Audit",
+                department: "Management",
+                frequency: "Monthly",
+                role: "Store Manager",
+                summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
+                tasks: [
+                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                ]
+            },
+            {
+                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                department: "Management",
+                frequency: "Weekly",
+                role: "Store Manager",
+                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                tasks: [
+                    { id: 'RETAIL-MEETING-01', description: "Review previous week's sales performance against target.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-02', description: "Recognize top-performing staff for sales, customer feedback, or teamwork.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-03', description: "Discuss key product movers and slow-moving inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'Meeting Room' },
+                    { id: 'RETAIL-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
+                ]
+            }
+        ]
     },
     {
         id: 'audiology_clinic_pack',
@@ -2689,10 +3017,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent" as const,
         sampleItems: [
+            "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "Standardize your 'New Employee Onboarding' from a legal perspective.",
             "Implement a 'Vendor Contract Review' checklist for non-lawyers.",
-            "Ensure your website is compliant with a 'Website Legal Health Check'.",
-            "NEW: Includes a 'Basic Anti-Harassment Policy' implementation guide."
+            "Ensure your website is compliant with a 'Website Legal Health Check'."
         ],
         globalStandards: {
             title: "Aligned with Foundational Legal & HR Best Practices",
@@ -2741,10 +3069,63 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LEGAL-WEB-03', description: "Check that any form collecting user data links to the Privacy Policy and includes a consent checkbox.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Contact/Signup Forms' },
                     { id: 'LEGAL-WEB-04', description: "If using cookies, ensure a cookie consent banner is active and functional.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website Homepage' }
                 ]
+            },
+            {
+                title: "📊 Quarterly Business Review (QBR) Framework",
+                department: "Management",
+                frequency: "Quarterly",
+                role: "Head of Department",
+                summary: "A structured agenda to conduct a quarterly review of departmental performance, focusing on performance against KPIs, budget variance, and strategic goals.",
+                tasks: [
+                    { id: 'QBR-01', description: "Review performance against key KPIs.", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Meeting' },
+                    { id: 'QBR-02', description: "Analyze budget vs. actual spend for the quarter and explain variances.", priority: 'High', riskLevel: 'High', proof: 'Financial Report', location: 'Meeting' },
+                    { id: 'QBR-03', description: "Present a summary of major incidents or achievements from the quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Presentation', location: 'Meeting' },
+                    { id: 'QBR-04', description: "Set strategic priorities and objectives for the upcoming quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Meeting' },
+                ]
+            },
+            {
+                title: "🎯 Annual Strategic Planning & Objective Setting",
+                department: "Management",
+                frequency: "Annually",
+                role: "Head of Department",
+                summary: "A checklist to guide the annual strategic planning process, aligning its goals with the broader company objectives.",
+                tasks: [
+                    { id: 'STRAT-01', description: "Review the company's overall strategic goals for the upcoming year.", priority: 'High', riskLevel: 'Medium', proof: 'Company Strategy Doc', location: 'Office' },
+                    { id: 'STRAT-02', description: "Conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for the department.", priority: 'High', riskLevel: 'Medium', proof: 'SWOT Analysis Document', location: 'Office' },
+                    { id: 'STRAT-03', description: "Define clear, measurable objectives for the department.", priority: 'High', riskLevel: 'High', proof: 'Objectives List', location: 'Office' },
+                    { id: 'STRAT-04', description: "Develop a high-level budget and resource plan to support the defined objectives.", priority: 'High', riskLevel: 'High', proof: 'Budget Plan', location: 'Office' },
+                ]
+            },
+            {
+                title: "🏢 Corporate Asset Lifecycle Management",
+                department: "Admin/Finance",
+                frequency: "Ongoing",
+                role: "Asset Manager",
+                summary: "A checklist to track and manage critical company assets (e.g., laptops, furniture, equipment) from procurement to disposal.",
+                tasks: [
+                    { id: 'ASSET-01', description: "Assign a unique asset tag and log all new assets into the central asset register.", priority: 'High', riskLevel: 'Medium', proof: 'Asset Register', location: 'Office' },
+                    { id: 'ASSET-02', description: "Conduct a physical audit of all assets on a semi-annual basis to verify existence and condition.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Report', location: 'Company-wide' },
+                    { id: 'ASSET-03', description: "Implement a process for managing the transfer of assets between employees or departments.", priority: 'Medium', riskLevel: 'Low', proof: 'Transfer Form', location: 'Office' },
+                    { id: 'ASSET-04', description: "Follow a formal disposal process for retired assets, including data wiping for IT equipment and documenting disposal certificates.", priority: 'High', riskLevel: 'High', proof: 'Disposal Certificate', location: 'Office' },
+                ]
+            },
+            {
+                title: "🧑‍⚖️ Employee Disciplinary Action Protocol",
+                department: "HR",
+                frequency: "Per Incident",
+                role: "HR Manager",
+                summary: "A legally sound checklist to ensure a fair and consistent process for managing employee disciplinary issues, from verbal warnings to termination.",
+                tasks: [
+                    { id: 'HR-DISC-01', description: "Document the specific policy violation and gather all relevant evidence (e.g., emails, witness statements).", priority: 'High', riskLevel: 'High', proof: 'Investigation File', location: 'HR Office' },
+                    { id: 'HR-DISC-02', description: "Conduct a formal meeting with the employee, ensuring a witness is present, and clearly explain the issue.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'HR Office' },
+                    { id: 'HR-DISC-03', description: "Issue the appropriate level of warning (verbal, written, final) and have the employee sign an acknowledgment.", priority: 'High', riskLevel: 'High', proof: 'Signed Warning Letter', location: 'HR Office' },
+                    { id: 'HR-DISC-04', description: "Clearly document the required improvement and the consequences of further violations.", priority: 'High', riskLevel: 'High', proof: 'Performance Improvement Plan', location: 'HR Office' },
+                ]
             }
         ]
     }
 ];
+
 
 
 
