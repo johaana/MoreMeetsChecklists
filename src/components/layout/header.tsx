@@ -75,38 +75,40 @@ export function SiteHeader() {
                             </button>
                             <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-screen max-w-5xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border">
-                                    <div className="grid grid-cols-4 gap-x-6 p-6">
-                                        <div className="col-span-1 space-y-4">
-                                            <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
-                                            <ul className="space-y-1">
-                                                {individualChecklists.slice(0, 8).map(checklist => (
-                                                    <li key={checklist.id}>
-                                                        <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                                                            <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                                                            <span className="flex-1 leading-snug">{checklist.title}</span>
-                                                        </Link>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="col-span-3">
-                                            <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
-                                            <div className="columns-3 mt-2">
-                                                {Object.entries(packsByCategory).map(([category, packs]) => (
-                                                    <div key={category} className="break-inside-avoid mb-4">
-                                                        <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
-                                                        <ul className="space-y-1">
-                                                            {packs.map(pack => (
-                                                                <li key={pack.id}>
-                                                                    <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                                                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span> 
-                                                                    <span className="flex-1 leading-snug">{pack.title}</span>
-                                                                    </Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                ))}
+                                    <div className="max-h-[60vh] overflow-y-auto">
+                                        <div className="grid grid-cols-12 gap-x-6 p-6">
+                                            <div className="col-span-4 space-y-4">
+                                                <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
+                                                <ul className="space-y-1">
+                                                    {individualChecklists.slice(0, 8).map(checklist => (
+                                                        <li key={checklist.id}>
+                                                            <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+                                                                <span className="flex-1 leading-snug">{checklist.title}</span>
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                            <div className="col-span-8">
+                                                <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
+                                                <div className="columns-3 mt-2">
+                                                    {Object.entries(packsByCategory).map(([category, packs]) => (
+                                                        <div key={category} className="break-inside-avoid mb-4">
+                                                            <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
+                                                            <ul className="space-y-1">
+                                                                {packs.map(pack => (
+                                                                    <li key={pack.id}>
+                                                                        <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                                        <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span> 
+                                                                        <span className="flex-1 leading-snug">{pack.title}</span>
+                                                                        </Link>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
