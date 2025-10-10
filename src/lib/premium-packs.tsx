@@ -802,7 +802,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Healthcare & Hospital Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Healthcare",
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
@@ -1297,7 +1297,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Manufacturing Plant Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Manufacturing",
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
@@ -1549,7 +1549,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'events_management_playbook',
         title: "Event Management Playbook",
         priceUSD: 129.99,
-        priceINR: 9999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Events",
         description: "For event planners and agencies. A comprehensive toolkit for flawless execution of corporate events, weddings, and conferences.",
@@ -1563,7 +1563,7 @@ export const premiumPacks: PremiumPack[] = [
             title: "Aligned with Global Event Management Standards",
             standards: [
                 { name: "Safety & Risk", description: "Event safety protocols (e.g., UK's Purple Guide), crowd management best practices, and risk assessment frameworks." },
-                { name: "Technical Production", description: "Best practices for audio-visual (AV) setup, power management, and broadcast integration." },
+                { name: "Technical Production", description: "Best practices for audio-visual (AV) setup, power redundancy, and broadcast integration." },
                 { name: "Project Management", description: "Principles of project management for timelines, budgets, and vendor coordination." },
                 { name: "Sustainability", description: "ISO 20121 for sustainable event management, focusing on waste reduction and responsible sourcing." }
             ]
@@ -1614,7 +1614,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'automotive_workshop_pack',
         title: "Automotive Workshop & Service Center Checklist",
         priceUSD: 89.99,
-        priceINR: 6999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Automotive",
         description: "For workshop owners and service directors. A toolkit to standardize vehicle servicing, improve quality control, and enhance customer trust.",
@@ -1663,8 +1663,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'jewelry_retail_pack',
         title: "Jewelry Store Security & Operations",
         priceUSD: 199.99,
-        priceINR: 15999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Retail",
         description: "For jewelry store owners and heads of security. A high-security toolkit for managing high-value inventory and preventing loss.",
         icon: <Gem className="w-8 h-8 text-primary" />,
@@ -1714,7 +1714,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'logistics_warehouse_pack',
         title: "Logistics & Warehouse Operations",
         priceUSD: 119.99,
-        priceINR: 8999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Manufacturing",
         description: "For warehouse managers and logistics heads. A comprehensive toolkit for optimizing storage, shipping, and inventory accuracy.",
@@ -1833,7 +1833,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Diagnostic Lab & Pathology Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Healthcare",
         description: "For lab owners and quality managers. An NABL-aligned toolkit for ensuring accuracy, safety, and compliance in laboratory operations.",
         icon: <TestTube className="w-8 h-8 text-primary" />,
@@ -1857,7 +1857,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'apparel_fashion_retail_pack',
         title: "Apparel & Fashion Store Operations",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
         description: "A specialized toolkit for managing apparel stores, focusing on fitting rooms, visual merchandising, and stock management.",
@@ -1912,7 +1912,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'electronics_store_pack',
         title: "Electronics & Gadget Store Operations",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
         description: "For electronics retailers. Manage high-value inventory, prevent fraud, and standardize technical customer service.",
@@ -1953,7 +1953,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'furniture_home_goods_pack',
         title: "Furniture & Home Goods Store Operations",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
         description: "For furniture retailers. A toolkit to manage large inventory, coordinate delivery & assembly, and handle damaged goods.",
@@ -1980,7 +1980,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'supermarket_grocery_pack',
         title: "Supermarket & Grocery Operations",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
         description: "For grocery store managers. A toolkit focused on fresh produce management, cold chain integrity, and high-volume checkout efficiency.",
@@ -2007,7 +2007,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'audiology_clinic_pack',
         title: "Audiology & Hearing Aid Clinic Checklist",
         priceUSD: 89.99,
-        priceINR: 6999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Healthcare",
         description: "For audiologists and clinic owners. A toolkit to standardize patient care, equipment maintenance, and clinic operations.",
@@ -2029,44 +2029,48 @@ export const premiumPacks: PremiumPack[] = [
         checklists: []
     },
     {
-        id: 'spa_wellness_pack',
-        title: "Spa & Wellness Center Checklist",
+        id: 'salon_wellness_pack',
+        title: "Salon & Wellness Operations",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Wellness",
-        description: "For spa owners and managers. A toolkit to ensure a serene, hygienic, and luxurious guest experience.",
-        icon: <TreePalm className="w-8 h-8 text-primary" />,
+        description: "For salon, spa, and wellness center owners. A toolkit to ensure a serene, hygienic, and luxurious guest experience.",
+        icon: <Dumbbell className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
         sampleItems: [
-            "Implement a 'Therapy Room Setup &amp; Hygiene' protocol.",
-            "Standardize 'Guest Consultation &amp; Contraindication' checks.",
-            "Master 'Product &amp; Linen Inventory' management.",
-            "Includes 'Therapist Training &amp; Performance' checklists."
+            "Implement a 'Therapy Room & Tool Sterilization' protocol.",
+            "Standardize 'Guest Consultation & Contraindication' checks to ensure client safety.",
+            "Master 'Professional Product & Linen Inventory' management.",
+            "Includes 'Therapist Training & Performance' and 'Appointment Scheduling' checklists."
         ],
         globalStandards: {
             title: "Aligned with Global Wellness & Spa Standards",
             standards: [
-                { name: "Hygiene & Sanitation", description: "Best practices for sanitation of treatment rooms, tools, and linens." },
-                { name: "Guest Safety", description: "Protocols for client consultation, identifying contraindications, and incident response." },
-                { name: "Service Quality", description: "Standards for therapist training, treatment consistency, and maintaining a serene environment." }
+                { name: "Hygiene & Sanitation", description: "Best practices for sanitation of treatment rooms, tools, and linens to prevent infections." },
+                { name: "Guest Safety", description: "Protocols for client consultation, identifying contraindications, and managing adverse reactions." },
+                { name: "Service Quality", description: "Standards for therapist training, treatment consistency, and maintaining a high-end client experience." }
             ]
         },
         checklists: []
     },
     {
         id: 'esg_compliance_pack',
-        title: "ESG & Sustainability Compliance Checklist",
+        title: "ESG & Sustainability Compliance",
         priceUSD: 199.99,
-        priceINR: 15999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Compliance",
         description: "For CCOs and Heads of ESG. A comprehensive toolkit to implement, track, and report on Environmental, Social, and Governance metrics.",
         icon: <Recycle className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
         sampleItems: [
-            "Implement an 'Energy &amp; Water Consumption Audit' checklist.",
-            "Standardize 'Waste Management &amp; Recycling' protocols.",
-            "Master 'Ethical Sourcing &amp; Vendor Audits'.",
-            "Includes 'Employee Health &amp; Safety' and 'Community Engagement' checklists."
+            "Implement an 'Energy & Water Consumption Audit' checklist.",
+            "Standardize 'Waste Management & Recycling' protocols.",
+            "Master 'Ethical Sourcing & Vendor Audits' for your supply chain.",
+            "Includes 'Employee Health & Safety' and 'Community Engagement' reporting checklists."
         ],
         globalStandards: {
             title: "Aligned with Global ESG Frameworks",
@@ -2082,15 +2086,15 @@ export const premiumPacks: PremiumPack[] = [
         id: 'iso_compliance_pack',
         title: "ISO Compliance & Audit Checklist",
         priceUSD: 199.99,
-        priceINR: 15999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Compliance",
         description: "For Heads of Quality and Management Representatives. A toolkit to prepare for and pass ISO 9001, 14001, and 45001 certification audits.",
         icon: <FileCheck className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize 'Document Control &amp; Record Keeping' as per ISO standards.",
-            "Implement a 'Corrective &amp; Preventive Action (CAPA)' process.",
-            "Master the 'Internal Audit &amp; Management Review' cycle.",
+            "Standardize 'Document Control & Record Keeping' as per ISO standards.",
+            "Implement a 'Corrective & Preventive Action (CAPA)' process.",
+            "Master the 'Internal Audit & Management Review' cycle.",
             "Includes checklists for 'Risk Assessment' and 'Objective Setting'."
         ],
         globalStandards: {
@@ -2108,15 +2112,15 @@ export const premiumPacks: PremiumPack[] = [
         id: 'maritime_shipping_pack',
         title: "Maritime Shipping & Port Operations",
         priceUSD: 249.99,
-        priceINR: 19999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Maritime",
         description: "For port captains and shipping line managers. A high-stakes toolkit for ensuring safety, security, and efficiency in port and vessel operations.",
         icon: <Anchor className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Implement the 'ISPS Code' security protocols for port facilities and vessels.",
-            "Standardize 'Vessel Mooring &amp; Berthing' operations.",
-            "Master 'Cargo Loading &amp; Discharge' safety checklists.",
+            "Standardize 'Vessel Mooring & Berthing' operations.",
+            "Master 'Cargo Loading & Discharge' safety checklists.",
             "Includes 'Bunkering Operations' and 'Ballast Water Management' checklists."
         ],
         globalStandards: {
@@ -2134,14 +2138,14 @@ export const premiumPacks: PremiumPack[] = [
         id: 'finance_accounting_pack',
         title: "Finance & Accounting Ops Checklist",
         priceUSD: 149.99,
-        priceINR: 11999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Corporate",
         description: "For CFOs and finance controllers. A toolkit to ensure accuracy, compliance, and efficiency in financial operations.",
         icon: <DollarSign className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Standardize the 'Month-End Closing' process.",
-            "Implement a robust 'Accounts Payable &amp; Vendor Payment' protocol.",
+            "Implement a robust 'Accounts Payable & Vendor Payment' protocol.",
             "NEW: Includes a 'Critical Payment Authorization' protocol to prevent payroll delays and fraud."
         ],
         globalStandards: {
@@ -2184,15 +2188,15 @@ export const premiumPacks: PremiumPack[] = [
         id: 'agritech_pack',
         title: "Agriculture & Farm Operations",
         priceUSD: 89.99,
-        priceINR: 6999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Manufacturing",
         description: "For farm managers and agronomists. A toolkit for optimizing crop management, resource usage, and harvest operations.",
         icon: <Sprout className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Soil Health &amp; irrigation' management checklist.",
-            "Standardize 'Pest &amp; Disease Control' application logs.",
-            "Master the 'Pre-Harvest &amp; Post-Harvest' handling process.",
+            "Implement a 'Soil Health & irrigation' management checklist.",
+            "Standardize 'Pest & Disease Control' application logs.",
+            "Master the 'Pre-Harvest & Post-Harvest' handling process.",
             "Includes 'Farm Equipment Maintenance' and 'Worker Safety' checklists."
         ],
         globalStandards: {
@@ -2209,14 +2213,14 @@ export const premiumPacks: PremiumPack[] = [
         id: 'cloud_kitchen_pack',
         title: "Cloud Kitchen & Food Delivery Checklist",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Hospitality",
         description: "For cloud kitchen owners. A HACCP-based toolkit optimized for delivery-only food businesses, focusing on speed, safety, and packaging.",
         icon: <CloudRain className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Master 'Order to Dispatch' time with a streamlined workflow.",
-            "Implement a 'Tamper-Proof Packaging &amp; Handover' protocol.",
+            "Implement a 'Tamper-Proof Packaging & Handover' protocol.",
             "Standardize 'Ingredient Batch Management' for consistency.",
             "Includes 'Rider Management' and 'Online Review Management' checklists."
         ],
@@ -2235,15 +2239,15 @@ export const premiumPacks: PremiumPack[] = [
         title: "Construction Site Safety (EHS) Checklist",
         priceUSD: 149.99,
         priceINR: 11999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Manufacturing",
         description: "For site engineers and safety officers. A comprehensive EHS toolkit to ensure worker safety and regulatory compliance on construction sites.",
         icon: <HardHat className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Work-at-Height &amp; Scaffolding' safety protocol.",
-            "NEW: Includes a mandatory 'Excavation &amp; Trenching Safety Permit' to prevent collapses.",
+            "Implement a 'Work-at-Height & Scaffolding' safety protocol.",
+            "NEW: Includes a mandatory 'Excavation & Trenching Safety Permit' to prevent collapses.",
             "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
-            "Includes 'Tool &amp; Tackles Inspection' and 'First Aid' checklists."
+            "Includes 'Tool & Tackles Inspection' and 'First Aid' checklists."
         ],
         globalStandards: {
             title: "Aligned with Global Construction Safety Standards",
@@ -2275,14 +2279,14 @@ export const premiumPacks: PremiumPack[] = [
         title: "Personal Travel & Vacation Checklist",
         priceUSD: 19.99,
         priceINR: 1299,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_ROLjNNiQa8G8XJ',
         category: "Personal",
         description: "For frequent travelers. A personal toolkit to ensure you never forget the essentials, from packing to pre-departure home checks.",
         icon: <Plane className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Use the 'Ultimate Packing List' categorized by item type.",
             "Implement the 'Pre-Departure Home Security' checklist.",
-            "Standardize your 'Digital Document &amp; Currency' preparation.",
+            "Standardize your 'Digital Document & Currency' preparation.",
             "Includes a 'Return Home' checklist for a smooth re-entry."
         ],
         checklists: []
@@ -2291,15 +2295,15 @@ export const premiumPacks: PremiumPack[] = [
         id: 'pet_care_pack',
         title: "Pet Care & Pet Sitter Checklist",
         priceUSD: 19.99,
-        priceINR: 1499,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 1299,
+        paymentId: 'pl_ROLjNNiQa8G8XJ',
         category: "Personal",
         description: "For pet owners. A comprehensive guide for leaving your pet with a sitter, ensuring their safety, health, and happiness.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Feeding Schedule &amp; Diet' instructions.",
-            "Implement the 'Medication &amp; Emergency Contact' list.",
-            "Master the 'Daily Routine &amp; Exercise' plan.",
+            "Standardize the 'Feeding Schedule & Diet' instructions.",
+            "Implement the 'Medication & Emergency Contact' list.",
+            "Master the 'Daily Routine & Exercise' plan.",
             "Includes a 'House Rules for Pet Sitter' checklist."
         ],
         checklists: []
@@ -2308,15 +2312,15 @@ export const premiumPacks: PremiumPack[] = [
         id: 'gym_fitness_pack',
         title: "Gym & Fitness Center Operations",
         priceUSD: 79.99,
-        priceINR: 6499,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Wellness",
         description: "For gym owners and managers. A toolkit to ensure member safety, equipment maintenance, and a clean, motivating environment.",
         icon: <Dumbbell className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Daily Equipment Safety &amp; Cleaning' protocol.",
-            "Standardize the 'New Member Onboarding &amp; Induction' process.",
-            "Master 'Locker Room &amp; Shower Hygiene' checklists.",
+            "Implement a 'Daily Equipment Safety & Cleaning' protocol.",
+            "Standardize the 'New Member Onboarding & Induction' process.",
+            "Master 'Locker Room & Shower Hygiene' checklists.",
             "Includes 'Personal Trainer Performance' and 'Class Scheduling' checklists."
         ],
         globalStandards: {
@@ -2333,16 +2337,16 @@ export const premiumPacks: PremiumPack[] = [
         id: 'real_estate_pack',
         title: "Real Estate & Property Management",
         priceUSD: 119.99,
-        priceINR: 8999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Real Estate",
         description: "For property managers and landlords. A toolkit for managing residential and commercial properties, focusing on maintenance, tenant relations, and compliance.",
         icon: <Home className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Tenant Move-In &amp; Move-Out' inspection process.",
+            "Standardize the 'Tenant Move-In & Move-Out' inspection process.",
             "Implement a 'Preventive Maintenance' schedule for building systems.",
-            "Master 'Rent Collection &amp; Arrears Management'.",
-            "Includes 'Lease Agreement &amp; Renewal' and 'Vendor Management' checklists."
+            "Master 'Rent Collection & Arrears Management'.",
+            "Includes 'Lease Agreement & Renewal' and 'Vendor Management' checklists."
         ],
         globalStandards: {
             title: "Aligned with Property Management Best Practices",
@@ -2400,7 +2404,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Sports Stadium & Arena Management",
         priceUSD: 149.99,
         priceINR: 11999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Events",
         description: "For stadium managers and event directors. A comprehensive toolkit for managing large-scale sporting events, focusing on safety, broadcast readiness, and fan experience.",
         icon: <Trophy className="w-8 h-8 text-primary" />,
@@ -2596,7 +2600,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'corporate_legal_compliance_starter_kit',
         title: "Corporate Legal & Compliance Starter Kit",
         priceUSD: 149.99,
-        priceINR: 11999,
+        priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Compliance",
         description: "For founders and managers. A foundational toolkit to ensure your business operations are legally sound and compliant.",
@@ -2660,4 +2664,5 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ];
+
 

@@ -117,12 +117,11 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const basePrice = pack.priceINR || 0;
-    const personalizedPackPrice = 11999;
-    const enterprisePriceINR = 49999;
-
+    const professionalPrice = pack.priceINR;
+    const personalizedPrice = 10999;
+    
     const professionalPaymentId = pack.paymentId; 
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Correct, fixed button ID for the higher tier
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
 
     if (pack.id === 'personal_travel_pack') {
         return (
@@ -155,7 +154,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                <p className="text-4xl font-bold text-foreground">₹{basePrice}</p>
+                <p className="text-4xl font-bold text-foreground">₹{professionalPrice}</p>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
@@ -176,11 +175,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardTitle>
                 <div className="flex items-baseline gap-2">
                     <p className="text-4xl font-bold text-foreground">
-                        ₹{personalizedPackPrice}
+                        ₹{personalizedPrice}
                     </p>
-                    { basePrice < personalizedPackPrice &&
+                     { professionalPrice < personalizedPrice &&
                         <p className="text-xl font-medium text-muted-foreground line-through">
-                            ₹{personalizedPackPrice + 4000}
+                            ₹{personalizedPrice + 4000}
                         </p>
                     }
                 </div>
@@ -203,7 +202,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Building className="w-6 h-6 text-primary" />
                     Enterprise
                 </CardTitle>
-                <p className="text-4xl font-bold text-foreground">₹{enterprisePriceINR}</p>
+                <p className="text-4xl font-bold text-foreground">Custom</p>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Personalized, plus:</span></p>
