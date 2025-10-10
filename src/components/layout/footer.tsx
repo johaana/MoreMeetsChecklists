@@ -29,7 +29,7 @@ export function Footer() {
                 <div className="flex flex-col gap-2 items-center text-sm">
                     <h3 className="font-semibold">Quick Links</h3>
                     <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>All Packages</Link>
-                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why MoreMeets</Link>
+                    <Link href="/#why-us" className="text-muted-foreground hover:text-foreground" prefetch={false}>Why Us</Link>
                     <Link href="/#faq" className="text-muted-foreground hover:text-foreground" prefetch={false}>FAQ</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>

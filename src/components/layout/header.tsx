@@ -14,8 +14,6 @@ import { cn } from "@/lib/utils";
 const mainNavLinks = [
     { href: "/checklists", label: "Bestselling Checklists" },
     { href: "/blog", label: "Blog" },
-    { href: "/#why-us", label: "Why Us" },
-    { href: "/#faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
 ];
 
@@ -60,7 +58,7 @@ export function SiteHeader() {
                     <>
                         <div className="group relative">
                             <Link href="/packs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-                                Browse by Industry <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                                Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </Link>
                             <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border p-6 max-h-[70vh] overflow-y-auto">
