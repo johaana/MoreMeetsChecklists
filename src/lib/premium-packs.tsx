@@ -586,8 +586,8 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             "NEW: Implement a 'Quarterly Business Review (QBR)' and 'Annual Strategic Planning' framework.",
             "NEW: Includes 'Fleet & Heavy Equipment Management' for corporate campuses.",
-            "Implement a 'Critical Systems Alert Response' protocol to prevent outages.",
-            "Includes a 'Third-Party Vendor Network Access Policy' to prevent cyber threats."
+            "NEW: Added a 'New Office Build-Out & Project Management' checklist for expansions.",
+            "NEW: Includes a 'Corporate Social Responsibility (CSR) Program Management' framework."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -609,6 +609,34 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+             {
+                title: "🏗️ New Office Build-Out & Project Management",
+                department: "Projects/Admin",
+                frequency: "Per Project",
+                role: "Project Manager",
+                summary: "A master checklist for managing the complex process of building out a new office space, from site selection to final handover.",
+                tasks: [
+                    { id: 'BUILD-001', description: "Develop a detailed project budget and timeline.", priority: 'High', riskLevel: 'High', proof: 'Project Plan', location: 'Office' },
+                    { id: 'BUILD-002', description: "Select and contract with architects, contractors, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
+                    { id: 'BUILD-003', description: "Conduct weekly progress meetings with all stakeholders and track milestones against the plan.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Site/Office' },
+                    { id: 'BUILD-004', description: "Manage the procurement and installation of furniture, fixtures, and equipment (FF&E).", priority: 'High', riskLevel: 'Medium', proof: 'Procurement Log', location: 'Office' },
+                    { id: 'BUILD-005', description: "Perform a final 'snagging' list and ensure all defects are rectified before final payment and handover.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'New Site' },
+                ]
+            },
+            {
+                title: "🤝 Corporate Social Responsibility (CSR) Program Management",
+                department: "CSR/HR",
+                frequency: "Quarterly/Annually",
+                role: "CSR Manager",
+                summary: "A framework for planning, executing, and reporting on the company's social and community engagement initiatives.",
+                tasks: [
+                    { id: 'CSR-001', description: "Align CSR initiatives with the company's values and business goals.", priority: 'High', riskLevel: 'Medium', proof: 'Strategy Document', location: 'Office' },
+                    { id: 'CSR-002', description: "Identify and vet potential NGO or community partners.", priority: 'High', riskLevel: 'Medium', proof: 'Partner Assessment Report', location: 'Office' },
+                    { id: 'CSR-003', description: "Develop a budget and resource plan for each CSR activity.", priority: 'High', riskLevel: 'Medium', proof: 'Budget Plan', location: 'Office' },
+                    { id: 'CSR-004', description: "Track key metrics (e.g., volunteer hours, funds raised, community impact) for each program.", priority: 'High', riskLevel: 'Medium', proof: 'Impact Report', location: 'Office' },
+                    { id: 'CSR-005', description: "Prepare an annual CSR report for internal and external stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'CSR Report', location: 'Office' },
+                ]
+            },
             {
                 title: "📊 Quarterly Business Review (QBR) Framework",
                 department: "Management",
@@ -962,7 +990,7 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
-            "Prevent cross-contamination with a 'Kitchen Allergy Handling' protocol.",
+            "NEW: Includes a 'New Site Feasibility Study' for expansion planning.",
             "Ensure staff readiness with a 'Fit to Work & Illness Reporting' checklist."
         ],
         previewScenario: {
@@ -984,6 +1012,20 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+            {
+                title: "📍 New Site/Location Feasibility Study",
+                department: "Management/Strategy",
+                frequency: "Per Potential Site",
+                role: "Owner/Director",
+                summary: "A structured framework to de-risk the process of selecting a new location, ensuring it aligns with brand, operational, and financial requirements.",
+                tasks: [
+                    { id: 'FEAS-001', description: "Conduct a demographic analysis of the target area (e.g., population density, average income).", priority: 'High', riskLevel: 'High', proof: 'Demographic Report', location: 'Office' },
+                    { id: 'FEAS-002', description: "Perform a competitive analysis: map all direct and indirect competitors within a 3km radius.", priority: 'High', riskLevel: 'High', proof: 'Competitor Map', location: 'Office' },
+                    { id: 'FEAS-003', description: "Analyze foot traffic and visibility of the potential site at different times of day.", priority: 'High', riskLevel: 'High', proof: 'Foot Traffic Report', location: 'Site' },
+                    { id: 'FEAS-004', description: "Create a preliminary financial projection (P&L) for the new site, including estimated rent, build-out costs, and revenue forecasts.", priority: 'High', riskLevel: 'High', proof: 'Financial Model', location: 'Office' },
+                    { id: 'FEAS-005', description: "Verify zoning regulations and necessary permits for the proposed business type at the location.", priority: 'High', riskLevel: 'High', proof: 'Zoning Report', location: 'Office' },
+                ]
+            },
             {
                 title: "🍳 Kitchen Opening Checklist (HACCP Focus)",
                 department: "F&B",
@@ -1134,6 +1176,48 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BAR-OC-003', description: "Clean and sanitize bar surfaces, tools, and glassware.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Bar' },
                     { id: 'BAR-OC-004', description: "Conduct cash count and reconcile with POS at end of shift.", priority: 'High', riskLevel: 'High', proof: 'POS Report', location: 'Bar' },
                     { id: 'BAR-OC-005', description: "Secure all liquor inventory and lock coolers at close.", priority: 'High', riskLevel: 'High', proof: 'Security Check', location: 'Bar' }
+                ]
+            }
+        ]
+    },
+     {
+        id: 'cinema_operations_pack',
+        title: "Cinema & Multiplex Operations",
+        priceUSD: 119.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Events",
+        description: "For cinema managers and regional heads. A comprehensive toolkit for ensuring a seamless movie-goer experience, from box office to end credits.",
+        icon: <Ticket className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent" as const,
+        sampleItems: [
+            "NEW: Includes a 'New Site Feasibility Study' for expansion planning.",
+            "Master the 'Film Projection & AV Systems' pre-show checklist.",
+            "Standardize 'Box Office & Concessions' management.",
+            "Implement a 'Theatre Cleaning & Sanitization' protocol between shows."
+        ],
+        globalStandards: {
+            title: "Aligned with Cinema & Entertainment Industry Standards",
+            standards: [
+                { name: "Technical", description: "Best practices for digital cinema projection (DCI), sound calibration, and AV system maintenance." },
+                { name: "Guest Experience", description: "Protocols for ticketing, crowd flow, concessions management, and theatre cleanliness." },
+                { name: "Safety", description: "Procedures for crowd management, emergency evacuations, and health/sanitation." }
+            ]
+        },
+        checklists: [
+            {
+                title: "📍 New Site/Location Feasibility Study",
+                department: "Management/Strategy",
+                frequency: "Per Potential Site",
+                role: "Owner/Director",
+                summary: "A structured framework to de-risk the process of selecting a new location, ensuring it aligns with brand, operational, and financial requirements.",
+                tasks: [
+                    { id: 'FEAS-001', description: "Conduct a demographic analysis of the target area (e.g., population density, average income).", priority: 'High', riskLevel: 'High', proof: 'Demographic Report', location: 'Office' },
+                    { id: 'FEAS-002', description: "Perform a competitive analysis: map all direct and indirect competitors within a 3km radius.", priority: 'High', riskLevel: 'High', proof: 'Competitor Map', location: 'Office' },
+                    { id: 'FEAS-003', description: "Analyze foot traffic and visibility of the potential site at different times of day.", priority: 'High', riskLevel: 'High', proof: 'Foot Traffic Report', location: 'Site' },
+                    { id: 'FEAS-004', description: "Create a preliminary financial projection (P&L) for the new site, including estimated rent, build-out costs, and revenue forecasts.", priority: 'High', riskLevel: 'High', proof: 'Financial Model', location: 'Office' },
+                    { id: 'FEAS-005', description: "Verify zoning regulations and necessary permits for the proposed business type at the location.", priority: 'High', riskLevel: 'High', proof: 'Zoning Report', location: 'Office' },
                 ]
             }
         ]
@@ -2528,7 +2612,7 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
-            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
+            "NEW: Includes a 'New Site Feasibility Study' for expansion planning.",
             "Implement a 'Fresh Produce Quality & Culling' daily checklist.",
             "Standardize 'Cold Chain & Refrigeration Temperature' logs (HACCP).",
             "Master 'Spill Response & Slip Prevention' for customer safety."
@@ -2542,6 +2626,20 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+            {
+                title: "📍 New Site/Location Feasibility Study",
+                department: "Management/Strategy",
+                frequency: "Per Potential Site",
+                role: "Owner/Director",
+                summary: "A structured framework to de-risk the process of selecting a new location, ensuring it aligns with brand, operational, and financial requirements.",
+                tasks: [
+                    { id: 'FEAS-001', description: "Conduct a demographic analysis of the target area (e.g., population density, average income).", priority: 'High', riskLevel: 'High', proof: 'Demographic Report', location: 'Office' },
+                    { id: 'FEAS-002', description: "Perform a competitive analysis: map all direct and indirect competitors within a 3km radius.", priority: 'High', riskLevel: 'High', proof: 'Competitor Map', location: 'Office' },
+                    { id: 'FEAS-003', description: "Analyze foot traffic and visibility of the potential site at different times of day.", priority: 'High', riskLevel: 'High', proof: 'Foot Traffic Report', location: 'Site' },
+                    { id: 'FEAS-004', description: "Create a preliminary financial projection (P&L) for the new site, including estimated rent, build-out costs, and revenue forecasts.", priority: 'High', riskLevel: 'High', proof: 'Financial Model', location: 'Office' },
+                    { id: 'FEAS-005', description: "Verify zoning regulations and necessary permits for the proposed business type at the location.", priority: 'High', riskLevel: 'High', proof: 'Zoning Report', location: 'Office' },
+                ]
+            },
             {
                 title: "🧑‍💼 Retail Sales Associate Performance Review",
                 department: "Management",
@@ -2649,8 +2747,8 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             "Implement an 'Energy & Water Consumption Audit' checklist.",
             "Standardize 'Waste Management & Recycling' protocols.",
-            "Master 'Ethical Sourcing & Vendor Audits' for your supply chain.",
-            "Includes 'Employee Health & Safety' and 'Community Engagement' reporting checklists."
+            "NEW: Includes a 'Corporate Social Responsibility (CSR) Program Management' framework.",
+            "Master 'Ethical Sourcing & Vendor Audits' for your supply chain."
         ],
         globalStandards: {
             title: "Aligned with Global ESG Frameworks",
@@ -2660,7 +2758,22 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "Governance", description: "Anti-bribery (FCPA, UK Bribery Act), corporate governance codes, whistleblower policies." }
             ]
         },
-        checklists: []
+        checklists: [
+             {
+                title: "🤝 Corporate Social Responsibility (CSR) Program Management",
+                department: "CSR/HR",
+                frequency: "Quarterly/Annually",
+                role: "CSR Manager",
+                summary: "A framework for planning, executing, and reporting on the company's social and community engagement initiatives.",
+                tasks: [
+                    { id: 'CSR-001', description: "Align CSR initiatives with the company's values and business goals.", priority: 'High', riskLevel: 'Medium', proof: 'Strategy Document', location: 'Office' },
+                    { id: 'CSR-002', description: "Identify and vet potential NGO or community partners.", priority: 'High', riskLevel: 'Medium', proof: 'Partner Assessment Report', location: 'Office' },
+                    { id: 'CSR-003', description: "Develop a budget and resource plan for each CSR activity.", priority: 'High', riskLevel: 'Medium', proof: 'Budget Plan', location: 'Office' },
+                    { id: 'CSR-004', description: "Track key metrics (e.g., volunteer hours, funds raised, community impact) for each program.", priority: 'High', riskLevel: 'Medium', proof: 'Impact Report', location: 'Office' },
+                    { id: 'CSR-005', description: "Prepare an annual CSR report for internal and external stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'CSR Report', location: 'Office' },
+                ]
+            }
+        ]
     },
     {
         id: 'iso_compliance_pack',
@@ -3018,9 +3131,9 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
+            "NEW: Added a 'New Office Build-Out & Project Management' checklist.",
             "Standardize your 'New Employee Onboarding' from a legal perspective.",
-            "Implement a 'Vendor Contract Review' checklist for non-lawyers.",
-            "Ensure your website is compliant with a 'Website Legal Health Check'."
+            "Implement a 'Vendor Contract Review' checklist for non-lawyers."
         ],
         globalStandards: {
             title: "Aligned with Foundational Legal & HR Best Practices",
@@ -3031,6 +3144,20 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+            {
+                title: "🏗️ New Office Build-Out & Project Management",
+                department: "Projects/Admin",
+                frequency: "Per Project",
+                role: "Project Manager",
+                summary: "A master checklist for managing the complex process of building out a new office space, from site selection to final handover.",
+                tasks: [
+                    { id: 'BUILD-001', description: "Develop a detailed project budget and timeline.", priority: 'High', riskLevel: 'High', proof: 'Project Plan', location: 'Office' },
+                    { id: 'BUILD-002', description: "Select and contract with architects, contractors, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
+                    { id: 'BUILD-003', description: "Conduct weekly progress meetings with all stakeholders and track milestones against the plan.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Site/Office' },
+                    { id: 'BUILD-004', description: "Manage the procurement and installation of furniture, fixtures, and equipment (FF&E).", priority: 'High', riskLevel: 'Medium', proof: 'Procurement Log', location: 'Office' },
+                    { id: 'BUILD-005', description: "Perform a final 'snagging' list and ensure all defects are rectified before final payment and handover.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'New Site' },
+                ]
+            },
             {
                 title: "🧑‍⚖️ New Employee Legal Onboarding",
                 department: "HR/Legal",
@@ -3125,6 +3252,7 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ];
+
 
 
 
