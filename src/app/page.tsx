@@ -473,7 +473,7 @@ export default function Home() {
                       </Button>
                       <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                         <p className="text-xs text-white/80">
-                          Forged by veteran GMs, NABH/JCI consultants, and Fortune 500 facility managers.
+                          Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA for uncompromising operational excellence.
                         </p>
                       </div>
                     </div>
