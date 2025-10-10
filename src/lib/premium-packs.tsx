@@ -211,7 +211,7 @@ export const premiumPacks: PremiumPack[] = [
             "NEW: Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
             "NEW: Implement a 'Managerial Performance Review' and 'New Hire Onboarding' system.",
             "NEW: Includes a 'Brand Standards Audit' and 'Hotel Pre-Opening' checklist.",
-            "Prevent slip-and-fall incidents with a specialized 'Floor Care & Safety Audit'."
+            "NEW: Manage your brand's online presence with an 'Online Review & Reputation Management' checklist."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -305,10 +305,23 @@ export const premiumPacks: PremiumPack[] = [
                 role: "General Manager",
                 summary: "A framework for conducting fair and effective performance reviews for department heads, focusing on KPIs, leadership skills, and goal setting.",
                 tasks: [
-                    { id: 'HR-PERF-01', description: "Review the manager's performance against their pre-set KPIs (e.g., departmental profit, guest satisfaction scores, employee turnover).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Office' },
-                    { id: 'HR-PERF-02', description: "Gather 360-degree feedback from the manager's direct reports and peers.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Summary', location: 'Office' },
-                    { id: 'HR-PERF-03', description: "Discuss strengths, areas for development, and set clear, measurable goals for the next review period.", priority: 'High', riskLevel: 'Medium', proof: 'Review Form', location: 'Office' },
-                    { id: 'HR-PERF-04', description: "Identify and agree upon any necessary training or professional development plans.", priority: 'Medium', riskLevel: 'Low', proof: 'Development Plan', location: 'Office' },
+                    { id: 'HR-PERF-001', description: "Review the manager's performance against their pre-set KPIs (e.g., departmental profit, guest satisfaction scores, employee turnover).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Office' },
+                    { id: 'HR-PERF-002', description: "Gather 360-degree feedback from the manager's direct reports and peers.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Summary', location: 'Office' },
+                    { id: 'HR-PERF-003', description: "Discuss strengths, areas for development, and set clear, measurable goals for the next review period.", priority: 'High', riskLevel: 'Medium', proof: 'Review Form', location: 'Office' },
+                    { id: 'HR-PERF-004', description: "Identify and agree upon any necessary training or professional development plans.", priority: 'Medium', riskLevel: 'Low', proof: 'Development Plan', location: 'Office' },
+                ]
+            },
+            {
+                title: "🗣️ Online Review & Reputation Management",
+                department: "Marketing/Guest Relations",
+                frequency: "Daily",
+                role: "Marketing Manager",
+                summary: "A daily protocol to monitor and manage the hotel's online reputation across all major review platforms and social media.",
+                tasks: [
+                    { id: 'ORM-001', description: "Monitor all major review platforms (TripAdvisor, Google Reviews, OTAs) for new reviews.", priority: 'High', riskLevel: 'Medium', proof: 'Monitoring Tool Screenshot', location: 'Office' },
+                    { id: 'ORM-002', description: "Respond to all negative reviews within 24 hours with empathy and a clear action plan.", priority: 'High', riskLevel: 'High', proof: 'Response Log', location: 'Office' },
+                    { id: 'ORM-003', description: "Respond to a selection of positive reviews to show engagement.", priority: 'Medium', riskLevel: 'Low', proof: 'Response Log', location: 'Office' },
+                    { id: 'ORM-004', description: "Escalate recurring negative themes to the relevant department head for root cause analysis.", priority: 'High', riskLevel: 'High', proof: 'Escalation Email', location: 'Office' },
                 ]
             },
             {
@@ -584,10 +597,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
         sampleItems: [
-            "NEW: Implement a 'Quarterly Business Review (QBR)' and 'Annual Strategic Planning' framework.",
-            "NEW: Includes 'Fleet & Heavy Equipment Management' for corporate campuses.",
+            "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "NEW: Added a 'New Office Build-Out & Project Management' checklist for expansions.",
-            "NEW: Includes a 'Corporate Social Responsibility (CSR) Program Management' framework."
+            "NEW: Includes a 'Corporate Social Responsibility (CSR) Program Management' framework.",
+            "NEW: Added a 'Contractor EHS Management & Onboarding' protocol to ensure vendor safety."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -901,7 +914,7 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Chief Engineer",
                 summary: "Defines the human response to an automated critical alert (e.g., from a BMS), ensuring rapid acknowledgement, escalation, and resolution to prevent catastrophic failures.",
                 tasks: [
-                    { id: 'CSAR-001', description: "For any 'Red' alert from the BMS (e.g., server room temp > 25°C), the system must trigger an SMS and a phone call to the on-duty Chief Engineer, not just an email.", priority: 'High', riskLevel: 'High', proof: 'System Alert Configuration', location: 'BMS Room' },
+                    { id: 'CSAR-001', description: "For any 'Red' alert from the BMS (e.g., server room temp &gt; 25°C), the system must trigger an SMS and a phone call to the on-duty Chief Engineer, not just an email.", priority: 'High', riskLevel: 'High', proof: 'System Alert Configuration', location: 'BMS Room' },
                     { id: 'CSAR-002', description: "Acknowledge the critical alert within 5 minutes via the system. If no acknowledgement, the system automatically escalates to the Head of Facilities.", priority: 'High', riskLevel: 'High', proof: 'Acknowledgement Log', location: 'BMS/Mobile' },
                     { id: 'CSAR-003', description: "Update the central incident log every 15 minutes with status updates ('Technician on-site,' 'Root cause identified') until the issue is resolved.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Log', location: 'BMS' },
                     { id: 'CSAR-004', description: "Conduct a post-incident review within 24 hours to analyze the root cause of the alert, not just the fix.", priority: 'High', riskLevel: 'Medium', proof: 'Post-Incident Report', location: 'Conference Room' }
@@ -973,7 +986,20 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PANTRY-003', description: "Audit the cafeteria vendor for food quality, hygiene, and service standards.", priority: 'High', riskLevel: 'High', proof: 'Vendor Audit Form', location: 'Cafeteria' },
                     { id: 'PANTRY-004', description: "Ensure water dispensers are clean and have sufficient supply.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Pantry/Cafeteria' }
                 ]
-            }
+            },
+            {
+                title: "👷 Contractor EHS Management & Onboarding",
+                department: "EHS/Procurement",
+                frequency: "Per Contract",
+                role: "EHS Officer",
+                summary: "A critical protocol to ensure that third-party contractors do not introduce safety risks to your site.",
+                tasks: [
+                    { id: 'CON-EHS-001', description: "Verify that the contractor has provided their company safety policy and relevant insurance certificates.", priority: 'High', riskLevel: 'High', proof: 'Document Review Log', location: 'Office' },
+                    { id: 'CON-EHS-002', description: "Conduct a mandatory safety induction for all contractor staff before they begin work on site.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Site' },
+                    { id: 'CON-EHS-003', description: "Review and approve the contractor's risk assessment and method statement (RAMS) for their scope of work.", priority: 'High', riskLevel: 'High', proof: 'Approved RAMS', location: 'Office' },
+                    { id: 'CON-EHS-004', description: "Perform random daily spot-checks on the contractor's work area to ensure compliance with safety rules.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Site' }
+                ]
+            },
         ]
     },
     {
@@ -991,7 +1017,7 @@ export const premiumPacks: PremiumPack[] = [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
             "NEW: Includes a 'New Site Feasibility Study' for expansion planning.",
-            "Ensure staff readiness with a 'Fit to Work & Illness Reporting' checklist."
+            "NEW: Boost sales with a 'Weekly Sales & Revenue Meeting Agenda'."
         ],
         previewScenario: {
             title: "Ensuring Food Safety from Kitchen to Customer",
@@ -1024,6 +1050,19 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FEAS-003', description: "Analyze foot traffic and visibility of the potential site at different times of day.", priority: 'High', riskLevel: 'High', proof: 'Foot Traffic Report', location: 'Site' },
                     { id: 'FEAS-004', description: "Create a preliminary financial projection (P&L) for the new site, including estimated rent, build-out costs, and revenue forecasts.", priority: 'High', riskLevel: 'High', proof: 'Financial Model', location: 'Office' },
                     { id: 'FEAS-005', description: "Verify zoning regulations and necessary permits for the proposed business type at the location.", priority: 'High', riskLevel: 'High', proof: 'Zoning Report', location: 'Office' },
+                ]
+            },
+            {
+                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                department: "Management",
+                frequency: "Weekly",
+                role: "Restaurant Manager",
+                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                tasks: [
+                    { id: 'REST-MEETING-01', description: "Review previous week's sales performance against target (by day, by meal period).", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'REST-MEETING-02', description: "Recognize top-performing staff for sales, upselling, or positive customer mentions.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
+                    { id: 'REST-MEETING-03', description: "Discuss top-selling and slow-moving menu items; plan for specials or 86-ing items.", priority: 'High', riskLevel: 'Medium', proof: 'POS Data Report', location: 'Meeting Room' },
+                    { id: 'REST-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week (e.g., push a specific high-margin cocktail).", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
                 ]
             },
             {
@@ -1232,7 +1271,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
+            "NEW: Ensure secure 'Telemedicine Consultations' &amp; audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
@@ -1728,20 +1767,10 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Factory className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Implement a life-saving 'Lock-Out Tag-Out' (LOTO) procedure.",
-            "NEW: Manage your 'Fleet & Heavy Equipment' including forklifts and cranes.",
-            "NEW: Systematize your 'Central Stores & Inventory Control'.",
-            "Prevent accidents with an 'Electrical Permit to Work' protocol."
+            "Master 'Fleet & Heavy Equipment' management, including forklifts and cranes.",
+            "Systematize your 'Central Stores & Inventory Control'.",
+            "NEW: Ensure vendor safety with a 'Contractor EHS Management' protocol."
         ],
-        previewScenario: {
-            title: "Performing Safe Machine Maintenance",
-            description: "An unplanned machine startup during maintenance is a catastrophic, often fatal, risk. This scenario shows how checklists ensure a machine is safely isolated before work begins.",
-            tasks: [
-                { id: 'LOTO-001', description: "Identify all energy sources for the machine to be serviced (electrical, pneumatic, hydraulic).", sourceChecklist: "Lock-Out Tag-Out (LOTO) Procedure", priority: 'High' },
-                { id: 'LOTO-002', description: "De-energize and lock out all power sources using an approved lock and tag.", sourceChecklist: "Lock-Out Tag-Out (LOTO) Procedure", priority: 'High' },
-                { id: 'EPTW-001', description: "For electrical work, include a mandatory 'Arc Flash Hazard Analysis' that defines the required PPE level.", sourceChecklist: "Electrical Permit to Work (PTW)", priority: 'High' },
-                { id: 'MAINT-001', description: "Obtain a 'Permit to Work' before starting any non-routine maintenance task.", sourceChecklist: "Machine Maintenance & Safety", priority: 'High' }
-            ]
-        },
         globalStandards: {
             title: "Aligned with Global Manufacturing & Safety Standards",
             standards: [
@@ -1994,6 +2023,33 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'STORE-004', description: "Process material requisitions from departments, ensuring proper authorization.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Requisition Form', location: 'Stores Counter' },
                     { id: 'STORE-005', description: "Maintain a log and secure storage for critical spares with a 'two-person sign-out' rule.", priority: 'High', riskLevel: 'High', proof: 'Critical Spares Log', location: 'Secure Area' }
                 ]
+            },
+            {
+                title: "👷 Contractor EHS Management & Onboarding",
+                department: "EHS/Procurement",
+                frequency: "Per Contract",
+                role: "EHS Officer",
+                summary: "A critical protocol to ensure that third-party contractors do not introduce safety risks to your site.",
+                tasks: [
+                    { id: 'CON-EHS-001', description: "Verify that the contractor has provided their company safety policy and relevant insurance certificates.", priority: 'High', riskLevel: 'High', proof: 'Document Review Log', location: 'Office' },
+                    { id: 'CON-EHS-002', description: "Conduct a mandatory safety induction for all contractor staff before they begin work on site.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Site' },
+                    { id: 'CON-EHS-003', description: "Review and approve the contractor's risk assessment and method statement (RAMS) for their scope of work.", priority: 'High', riskLevel: 'High', proof: 'Approved RAMS', location: 'Office' },
+                    { id: 'CON-EHS-004', description: "Perform random daily spot-checks on the contractor's work area to ensure compliance with safety rules.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Site' }
+                ]
+            },
+            {
+                title: "🔍 Incident Investigation & Root Cause Analysis",
+                department: "EHS/Quality",
+                frequency: "Per Incident",
+                role: "Investigator/Manager",
+                summary: "A systematic approach to investigate incidents, identify root causes using methods like '5 Whys', and implement effective corrective and preventive actions (CAPA).",
+                tasks: [
+                    { id: 'INC-INV-001', description: "Secure the incident scene and preserve evidence.", priority: 'High', riskLevel: 'High', proof: 'Scene Photos/Log', location: 'Incident Site' },
+                    { id: 'INC-INV-002', description: "Gather information through witness interviews and document review.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'INC-INV-003', description: "Use a structured method (e.g., 5 Whys, Fishbone Diagram) to determine the root cause(s).", priority: 'High', riskLevel: 'High', proof: 'Root Cause Analysis Report', location: 'Office' },
+                    { id: 'INC-INV-004', description: "Develop and assign Corrective and Preventive Actions (CAPA) with clear deadlines.", priority: 'High', riskLevel: 'High', proof: 'CAPA Plan', location: 'Office' },
+                    { id: 'INC-INV-005', description: "Track CAPA implementation to closure and verify effectiveness.", priority: 'High', riskLevel: 'Medium', proof: 'CAPA Tracker', location: 'Office' }
+                ]
             }
         ]
     },
@@ -2007,8 +2063,8 @@ export const premiumPacks: PremiumPack[] = [
         description: "For event planners and agencies. A comprehensive toolkit for flawless execution of corporate events, weddings, and conferences.",
         icon: <Trophy className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Master 'Venue Selection & Contracting' to protect your clients and budget.",
-            "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
+            "Master 'Venue Selection &amp; Contracting' to protect your clients and budget.",
+            "Implement a 'Pre-Event AV &amp; Tech Check' to avoid on-stage disasters.",
             "NEW: Includes a 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
         ],
         globalStandards: {
@@ -2202,257 +2258,6 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-    {
-        id: 'logistics_warehouse_pack',
-        title: "Logistics & Warehouse Operations",
-        priceUSD: 119.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Manufacturing",
-        description: "For warehouse managers and logistics heads. A comprehensive toolkit for optimizing storage, shipping, and inventory accuracy.",
-        icon: <Warehouse className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Implement a 'Goods Receiving & GRN' protocol for 100% accuracy.",
-            "Standardize 'Binning & Stock Location Management' for fast retrieval.",
-            "NEW: Includes a 'New Product Master Data Entry' protocol to prevent costly shipping errors before they start.",
-            "NEW: Added 'Central Stores & Inventory Control' and 'Reverse Logistics' protocols."
-        ],
-        globalStandards: {
-            title: "Aligned with Global Logistics & Supply Chain Standards",
-            standards: [
-                { name: "Warehouse Management", description: "Best practices for inventory accuracy (cycle counting), storage optimization, and goods receiving." },
-                { name: "Safety", description: "OSHA/EHS guidelines for forklift operations, loading dock safety, and manual handling." },
-                { name: "Shipping & Transport", description: "Protocols for international shipping (customs), hazardous materials, and temperature-controlled logistics." },
-                { name: "Quality & Data", description: "ISO 9001 for process quality and protocols for master data management." }
-            ]
-        },
-        checklists: [
-             {
-                title: "📝 New Product Master Data Entry Protocol",
-                department: "Inventory/Data Management",
-                frequency: "Per New SKU",
-                role: "Data Manager",
-                summary: "A two-person rule to ensure product master data is perfect from day one, preventing massive downstream shipping and billing errors.",
-                tasks: [
-                    { id: 'MDM-001', description: "All new product data (SKU, weight, dimensions, customs code) is entered into the system by a 'Maker'.", priority: 'High', riskLevel: 'High', proof: 'System Entry Log', location: 'Office' },
-                    { id: 'MDM-002', description: "The entered data must be independently verified against the product spec sheet by a separate 'Checker'.", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'Office' },
-                    { id: 'MDM-003', description: "The SKU cannot be activated for ordering or shipping until the 'Checker' has digitally signed off in the system.", priority: 'High', riskLevel: 'High', proof: 'System Status', location: 'System' },
-                ]
-            },
-            {
-                title: "📦 Reverse Logistics & Returns Processing Center Protocol",
-                department: "Logistics/Operations",
-                frequency: "Daily",
-                role: "Returns Center Supervisor",
-                summary: "A systematic process for handling product returns, from receipt and triage to final disposition (restock, refurbish, recycle), optimizing recovery value and ensuring data accuracy.",
-                tasks: [
-                    { id: 'RL-001', description: "Upon receipt of a returned product, scan its serial number to pull up the original purchase record and reason for return.", priority: 'High', riskLevel: 'Medium', proof: 'System Scan Log', location: 'Receiving Station' },
-                    { id: 'RL-002', description: "Triage the item into one of four streams: 'Restock,' 'Refurbish,' 'Recycle,' or 'Dispose,' and move it to the corresponding physical zone.", priority: 'High', riskLevel: 'High', proof: 'Triage Log', location: 'Triage Station' },
-                    { id: 'RL-003', description: "For 'Restock' items, inspect packaging and product condition to ensure it meets 'as new' standards before returning to active inventory.", priority: 'High', riskLevel: 'Medium', proof: 'QC Checklist', location: 'QC Bench' },
-                    { id: 'RL-004', description: "For 'Refurbish' items, generate a specific repair work order detailing the customer's reported fault.", priority: 'Medium', riskLevel: 'Medium', proof: 'Work Order', location: 'System' },
-                    { id: 'RL-005', description: "For 'Recycle' items, ensure hazardous components (like batteries) are removed and handled according to environmental regulations.", priority: 'High', riskLevel: 'High', proof: 'Recycling Log', location: 'Recycling Zone' },
-                    { id: 'RL-006', description: "Reconcile the physical inventory in the returns center with the digital returns database daily to prevent loss.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Supervisor Office' }
-                ]
-            },
-            {
-                title: "✈️ International Shipping & Customs Declaration",
-                department: "Logistics",
-                frequency: "Per Shipment",
-                role: "Logistics Coordinator",
-                summary: "Ensures all international shipments have accurate documentation to prevent costly delays, fines, or seizure by customs authorities.",
-                tasks: [
-                    { id: 'INTL-001', description: "Verify the Harmonized System (HS) code for every item in the shipment.", priority: 'High', riskLevel: 'High', proof: 'HS Code Verification Log', location: 'Office' },
-                    { id: 'INTL-002', description: "Ensure the commercial invoice accurately reflects the contents, value, and country of origin.", priority: 'High', riskLevel: 'High', proof: 'Invoice Review Checklist', location: 'Office' },
-                    { id: 'INTL-003', description: "Prepare and attach all required documentation (e.g., certificate of origin, packing list, import/export licenses).", priority: 'High', riskLevel: 'High', proof: 'Document Packet Checklist', location: 'Office' },
-                    { id: 'INTL-004', description: "Use a 'dual-check' system where a second coordinator reviews the final paperwork before the shipment is dispatched.", priority: 'High', riskLevel: 'Medium', proof: 'Dual-Check Sign-off', location: 'Office' },
-                ]
-            },
-            {
-                title: "🧊 Cold Chain & Temperature-Controlled Shipping",
-                department: "Logistics/Quality",
-                frequency: "Per Shipment",
-                role: "Warehouse Supervisor",
-                summary: "Maintains the integrity of temperature-sensitive products (e.g., pharmaceuticals, fresh food) throughout the shipping process.",
-                tasks: [
-                    { id: 'COLD-001', description: "Pre-cool the shipping container or vehicle to the required temperature before loading begins.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Loading Dock' },
-                    { id: 'COLD-002', description: "Verify that the temperature data logger for the shipment is activated and placed correctly within the cargo.", priority: 'High', riskLevel: 'High', proof: 'Data Logger Activation Log', location: 'Loading Dock' },
-                    { id: 'COLD-003', description: "Inspect insulated packaging for any damage before use.", priority: 'High', riskLevel: 'Medium', proof: 'Packaging Inspection Log', location: 'Packing Station' },
-                    { id: 'COLD-004', description: "Upon arrival at the destination, download and review the data logger information *before* accepting the shipment to confirm no temperature excursions occurred.", priority: 'High', riskLevel: 'High', proof: 'Data Logger Report', location: 'Receiving Dock' },
-                ]
-            },
-            {
-                title: "📦 Central Stores & Inventory Control",
-                department: "Procurement/Logistics",
-                frequency: "Daily/Weekly",
-                role: "Store Keeper/Manager",
-                summary: "Manages the central warehouse for all operational supplies, from critical engineering spares to office consumables, ensuring accuracy and availability.",
-                tasks: [
-                    { id: 'STORE-001', description: "Receive incoming goods, verifying them against purchase orders and checking for damage (GRN process).", priority: 'High', riskLevel: 'High', proof: 'Signed GRN', location: 'Receiving Bay' },
-                    { id: 'STORE-002', description: "Ensure all received items are correctly binned to their designated storage location.", priority: 'High', riskLevel: 'Medium', proof: 'Binning Log', location: 'Warehouse' },
-                    { id: 'STORE-003', description: "Conduct daily cycle counts for a designated section of inventory to ensure system accuracy.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse' },
-                    { id: 'STORE-004', description: "Process material requisitions from departments, ensuring proper authorization.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Requisition Form', location: 'Stores Counter' },
-                    { id: 'STORE-005', description: "Maintain a log and secure storage for critical spares with a 'two-person sign-out' rule.", priority: 'High', riskLevel: 'High', proof: 'Critical Spares Log', location: 'Secure Area' }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'call_center_pack',
-        title: "Call Center & BPO Operations",
-        priceUSD: 99.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Corporate",
-        description: "For call center managers and QA leads. A toolkit to improve agent performance, ensure data security, and enhance customer satisfaction.",
-        icon: <Phone className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Standardize 'Call Quality Monitoring & Feedback' using a structured scorecard.",
-            "Implement a 'Data Security & PCI-DSS Compliance' checklist for agents.",
-            "NEW: Includes a 'Customer Identity Verification' protocol to prevent SIM-swapping and other account takeover frauds."
-        ],
-        globalStandards: {
-            title: "Aligned with Global Contact Center Standards",
-            standards: [
-                { name: "Quality Management", description: "ISO 9001 and COPC standards for customer experience and quality." },
-                { name: "Data Security", description: "PCI DSS for handling payment card information; GDPR/CCPA for customer data privacy." },
-                { name: "Information Security", description: "ISO 27001 for managing information security risks." }
-            ]
-        },
-        checklists: [
-             {
-                title: "🕵️ Customer Identity Verification for Account Changes",
-                department: "Operations/Security",
-                frequency: "Per Sensitive Transaction",
-                role: "Agent",
-                summary: "A multi-factor protocol to prevent account takeover fraud for high-risk transactions like SIM swaps or password resets.",
-                tasks: [
-                    { id: 'IDV-001', description: "For a sensitive request, the agent must verify the customer's government ID (if in person) or ask for at least two pieces of PII (e.g., DOB, last 4 of ID).", priority: 'High', riskLevel: 'High', proof: 'Call Log/System Prompt', location: 'Workstation' },
-                    { id: 'IDV-002', description: "Send a one-time passcode (OTP) to the registered mobile number or email address on file.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Workstation' },
-                    { id: 'IDV-003', description: "Ask a pre-set security question (e.g., 'What is your mother's maiden name?') that was established when the account was opened.", priority: 'High', riskLevel: 'High', proof: 'System Prompt', location: 'Workstation' },
-                    { id: 'IDV-004', description: "Log the successful completion of all verification steps before proceeding with the account change.", priority: 'High', riskLevel: 'Medium', proof: 'System Log', location: 'Workstation' },
-                ]
-            }
-        ]
-    },
-    {
-        id: 'diagnostic_lab_pack',
-        title: "Diagnostic Lab & Pathology Checklist",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Healthcare",
-        description: "For lab owners and quality managers. An NABL-aligned toolkit for ensuring accuracy, safety, and compliance in laboratory operations.",
-        icon: <TestTube className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Implement a 'Sample Collection, Handling & Transport' protocol.",
-            "Standardize 'Reagent & Equipment Calibration' logs.",
-            "Master 'Panic Value Reporting' and clinician communication.",
-            "Includes 'Lab Safety & Bio-waste Management' checklists."
-        ],
-        globalStandards: {
-            title: "Aligned with Laboratory Accreditation Standards",
-            standards: [
-                { name: "Quality & Competence", description: "ISO 15189 (Medical Laboratories), NABL 112 (India)." },
-                { name: "Safety", description: "Bio-safety level (BSL) protocols, chemical handling, and waste management guidelines." },
-                { name: "Information Management", description: "Protocols for Laboratory Information System (LIS) data integrity and patient confidentiality." }
-            ]
-        },
-        checklists: []
-    },
-    {
-        id: 'apparel_fashion_retail_pack',
-        title: "Apparel & Fashion Store Operations",
-        priceUSD: 79.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Retail",
-        description: "A specialized toolkit for managing apparel stores, focusing on fitting rooms, visual merchandising, and stock management.",
-        icon: <Shirt className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
-        badgeVariant: "accent",
-        sampleItems: [
-            "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
-            "Implement a 'Fitting Room Control' procedure to prevent theft.",
-            "Standardize 'Visual Merchandising' for seasonal collections.",
-            "Master 'Stock Consolidation' and size availability checks."
-        ],
-        globalStandards: {
-            title: "Aligned with Fashion Retail Best Practices",
-            standards: [
-                { name: "Loss Prevention", description: "Specific strategies for fitting room control, tag management, and preventing apparel-related shrinkage." },
-                { name: "Inventory Management", description: "Techniques for managing size/color variants, stock consolidation, and seasonal turnover." },
-                { name: "Visual Merchandising", description: "Brand standards for mannequin styling, window displays, and in-store presentation." }
-            ]
-        },
-        checklists: [
-             {
-                title: "👕 Fitting Room Security & Monitoring",
-                department: "Loss Prevention",
-                frequency: "Ongoing",
-                role: "Fitting Room Attendant/Staff",
-                summary: "A critical protocol to prevent theft in fitting rooms, a major source of retail shrinkage.",
-                tasks: [
-                    { id: 'FIT-001', description: "Count and document the number of items a customer takes into the fitting room.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
-                    { id: 'FIT-002', description: "Count the items returned by the customer and ensure it matches the initial count.", priority: 'High', riskLevel: 'High', proof: 'Item Tag/Count Log', location: 'Fitting Room Entrance' },
-                    { id: 'FIT-003', description: "Check the fitting room for any removed tags, packaging, or concealed merchandise after each use.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Fitting Room' },
-                    { id: 'FIT-004', description: "Perform a weekly line-of-sight audit to ensure CCTV cameras have full, unobstructed coverage of the fitting room entrance and exit areas.", priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Log', location: 'Security Office' },
-                ]
-            },
-            {
-                title: "🎨 Visual Merchandising Standards",
-                department: "Marketing",
-                frequency: "Weekly",
-                role: "Visual Merchandiser",
-                summary: "Ensures the store is visually appealing and aligns with brand standards. Covers window displays, mannequin styling, and in-store signage.",
-                tasks: [
-                    { id: 'VM-001', description: "Ensure window displays are clean, well-lit, and feature current promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
-                    { id: 'VM-002', description: "Check that all mannequins are styled according to the current season's lookbook.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
-                    { id: 'VM-003', description: "Verify that all promotional signage and price tickets are accurate and correctly placed.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
-                    { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
-                ]
-            },
-            {
-                title: "🧑‍💼 Retail Sales Associate Performance Review",
-                department: "Management",
-                frequency: "Quarterly",
-                role: "Store Manager",
-                summary: "A structured checklist to review sales staff performance, covering sales targets, customer service quality, and product knowledge.",
-                tasks: [
-                    { id: 'RETAIL-PERF-01', description: "Review sales data for the associate, including total sales, conversion rate, and average transaction value.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Office' },
-                    { id: 'RETAIL-PERF-02', description: "Review customer feedback scores or comments related to the associate.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback System', location: 'Office' },
-                    { id: 'RETAIL-PERF-03', description: "Assess product knowledge through a brief quiz or role-play scenario.", priority: 'Medium', riskLevel: 'Low', proof: 'Assessment Score', location: 'Office' },
-                    { id: 'RETAIL-PERF-04', description: "Set clear and measurable goals for the next quarter.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Sheet', location: 'Office' },
-                ]
-            },
-            {
-                title: "🌟 Customer Experience Audit",
-                department: "Management",
-                frequency: "Monthly",
-                role: "Store Manager",
-                summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
-                tasks: [
-                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
-                ]
-            },
-            {
-                title: "📅 Weekly Sales & Revenue Meeting Agenda",
-                department: "Management",
-                frequency: "Weekly",
-                role: "Store Manager",
-                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
-                tasks: [
-                    { id: 'RETAIL-MEETING-01', description: "Review previous week's sales performance against target.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
-                    { id: 'RETAIL-MEETING-02', description: "Recognize top-performing staff for sales, customer feedback, or teamwork.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
-                    { id: 'RETAIL-MEETING-03', description: "Discuss key product movers and slow-moving inventory.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'Meeting Room' },
-                    { id: 'RETAIL-MEETING-04', description: "Set sales focus and promotional strategy for the upcoming week.", priority: 'High', riskLevel: 'Medium', proof: 'Action Plan', location: 'Meeting Room' },
-                ]
-            }
-        ]
-    },
      {
         id: 'electronics_store_pack',
         title: "Electronics & Gadget Store Operations",
@@ -2548,7 +2353,7 @@ export const premiumPacks: PremiumPack[] = [
             "NEW: Implement a 'Customer Experience Audit' and 'Sales Performance Review' for staff.",
             "Implement a 'Damaged Goods & Showpiece' management protocol.",
             "Standardize the 'Home Delivery & Assembly Scheduling' process.",
-            "Master 'Warehouse to Floor' stock movement and tracking."
+            "NEW: Includes a 'Visual Merchandising Standards Audit' for store layout."
         ],
         globalStandards: {
             title: "Aligned with Large-Format Retail Standards",
@@ -2559,6 +2364,20 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         checklists: [
+             {
+                title: "🎨 Visual Merchandising Standards Audit",
+                department: "Management/VM",
+                frequency: "Weekly",
+                role: "Store Manager/VM Lead",
+                summary: "Ensures the store is visually appealing and aligns with brand standards. Covers window displays, mannequin styling, and in-store signage.",
+                tasks: [
+                    { id: 'VM-001', description: "Ensure window displays are clean, well-lit, and feature current promotions or seasonal themes.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Storefront' },
+                    { id: 'VM-002', description: "Check that all mannequins are styled according to the current season's lookbook and are in good condition.", priority: 'Medium', riskLevel: 'Low', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'VM-003', description: "Verify that all promotional signage and price tickets are accurate, correctly placed, and not damaged.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'VM-004', description: "Ensure feature tables and focus areas are styled to highlight key products and tell a cohesive story.", priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Sales Floor' },
+                    { id: 'VM-005', description: "Walk the store to identify and fix any messy or disorganized displays, ensuring size-blocking and folding standards are met.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' }
+                ]
+            },
             {
                 title: "🧑‍💼 Retail Sales Associate Performance Review",
                 department: "Management",
@@ -2718,10 +2537,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
-            "Implement a 'Therapy Room & Tool Sterilization' protocol.",
-            "Standardize 'Guest Consultation & Contraindication' checks to ensure client safety.",
-            "Master 'Professional Product & Linen Inventory' management.",
-            "Includes 'Therapist Training & Performance' and 'Appointment Scheduling' checklists."
+            "Implement a 'Therapy Room &amp; Tool Sterilization' protocol.",
+            "Standardize 'Guest Consultation &amp; Contraindication' checks to ensure client safety.",
+            "Master 'Professional Product &amp; Linen Inventory' management.",
+            "Includes 'Therapist Training &amp; Performance' and 'Appointment Scheduling' checklists."
         ],
         globalStandards: {
             title: "Aligned with Global Wellness & Spa Standards",
@@ -2745,16 +2564,16 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "New!",
         badgeVariant: "accent",
         sampleItems: [
-            "Implement an 'Energy & Water Consumption Audit' checklist.",
-            "Standardize 'Waste Management & Recycling' protocols.",
+            "Implement an 'Energy &amp; Water Consumption Audit' checklist.",
+            "Standardize 'Waste Management &amp; Recycling' protocols.",
             "NEW: Includes a 'Corporate Social Responsibility (CSR) Program Management' framework.",
-            "Master 'Ethical Sourcing & Vendor Audits' for your supply chain."
+            "Master 'Ethical Sourcing &amp; Vendor Audits' for your supply chain."
         ],
         globalStandards: {
             title: "Aligned with Global ESG Frameworks",
             standards: [
                 { name: "Environmental", description: "ISO 14001, GHG Protocol for carbon accounting, GRI Standards for reporting." },
-                { name: "Social", description: "SA8000 for social accountability, labor laws, diversity & inclusion metrics." },
+                { name: "Social", description: "SA8000 for social accountability, labor laws, diversity &amp; inclusion metrics." },
                 { name: "Governance", description: "Anti-bribery (FCPA, UK Bribery Act), corporate governance codes, whistleblower policies." }
             ]
         },
@@ -2785,10 +2604,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Heads of Quality and Management Representatives. A toolkit to prepare for and pass ISO 9001, 14001, and 45001 certification audits.",
         icon: <FileCheck className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize 'Document Control & Record Keeping' as per ISO standards.",
-            "Implement a 'Corrective & Preventive Action (CAPA)' process.",
-            "Master the 'Internal Audit & Management Review' cycle.",
-            "Includes checklists for 'Risk Assessment' and 'Objective Setting'."
+            "Standardize 'Document Control &amp; Record Keeping' as per ISO standards.",
+            "Implement a 'Corrective &amp; Preventive Action (CAPA)' process.",
+            "Master the 'Internal Audit &amp; Management Review' cycle.",
+            "NEW: Includes an 'Incident Investigation &amp; Root Cause Analysis' protocol."
         ],
         globalStandards: {
             title: "Aligned with ISO Certification Standards",
@@ -2799,7 +2618,22 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "ISO 27001", description: "Information Security Management Systems." }
             ]
         },
-        checklists: []
+        checklists: [
+            {
+                title: "🔍 Incident Investigation & Root Cause Analysis",
+                department: "EHS/Quality",
+                frequency: "Per Incident",
+                role: "Investigator/Manager",
+                summary: "A systematic approach to investigate incidents, identify root causes using methods like '5 Whys', and implement effective corrective and preventive actions (CAPA).",
+                tasks: [
+                    { id: 'INC-INV-001', description: "Secure the incident scene and preserve evidence.", priority: 'High', riskLevel: 'High', proof: 'Scene Photos/Log', location: 'Incident Site' },
+                    { id: 'INC-INV-002', description: "Gather information through witness interviews and document review.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'INC-INV-003', description: "Use a structured method (e.g., 5 Whys, Fishbone Diagram) to determine the root cause(s).", priority: 'High', riskLevel: 'High', proof: 'Root Cause Analysis Report', location: 'Office' },
+                    { id: 'INC-INV-004', description: "Develop and assign Corrective and Preventive Actions (CAPA) with clear deadlines.", priority: 'High', riskLevel: 'High', proof: 'CAPA Plan', location: 'Office' },
+                    { id: 'INC-INV-005', description: "Track CAPA implementation to closure and verify effectiveness.", priority: 'High', riskLevel: 'Medium', proof: 'CAPA Tracker', location: 'Office' }
+                ]
+            }
+        ]
     },
     {
         id: 'maritime_shipping_pack',
@@ -2812,8 +2646,8 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Anchor className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Implement the 'ISPS Code' security protocols for port facilities and vessels.",
-            "Standardize 'Vessel Mooring & Berthing' operations.",
-            "Master 'Cargo Loading & Discharge' safety checklists.",
+            "Standardize 'Vessel Mooring &amp; Berthing' operations.",
+            "Master 'Cargo Loading &amp; Discharge' safety checklists.",
             "Includes 'Bunkering Operations' and 'Ballast Water Management' checklists."
         ],
         globalStandards: {
@@ -2838,7 +2672,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <DollarSign className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Standardize the 'Month-End Closing' process.",
-            "Implement a robust 'Accounts Payable & Vendor Payment' protocol.",
+            "Implement a robust 'Accounts Payable &amp; Vendor Payment' protocol.",
             "NEW: Includes a 'Critical Payment Authorization' protocol to prevent payroll delays and fraud."
         ],
         globalStandards: {
@@ -2887,9 +2721,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For farm managers and agronomists. A toolkit for optimizing crop management, resource usage, and harvest operations.",
         icon: <Sprout className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Soil Health & irrigation' management checklist.",
-            "Standardize 'Pest & Disease Control' application logs.",
-            "Master the 'Pre-Harvest & Post-Harvest' handling process.",
+            "Implement a 'Soil Health &amp; irrigation' management checklist.",
+            "Standardize 'Pest &amp; Disease Control' application logs.",
+            "Master the 'Pre-Harvest &amp; Post-Harvest' handling process.",
             "Includes 'Farm Equipment Maintenance' and 'Worker Safety' checklists."
         ],
         globalStandards: {
@@ -2913,7 +2747,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <CloudRain className="w-8 h-8 text-primary" />,
         sampleItems: [
             "Master 'Order to Dispatch' time with a streamlined workflow.",
-            "Implement a 'Tamper-Proof Packaging & Handover' protocol.",
+            "Implement a 'Tamper-Proof Packaging &amp; Handover' protocol.",
             "Standardize 'Ingredient Batch Management' for consistency.",
             "Includes 'Rider Management' and 'Online Review Management' checklists."
         ],
@@ -2937,10 +2771,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For site engineers and safety officers. A comprehensive EHS toolkit to ensure worker safety and regulatory compliance on construction sites.",
         icon: <HardHat className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Work-at-Height & Scaffolding' safety protocol.",
-            "NEW: Includes a mandatory 'Excavation & Trenching Safety Permit' to prevent collapses.",
+            "Implement a 'Work-at-Height &amp; Scaffolding' safety protocol.",
+            "NEW: Includes a mandatory 'Excavation &amp; Trenching Safety Permit' to prevent collapses.",
             "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
-            "NEW: Added 'Fleet & Heavy Equipment Management' for cranes and excavators."
+            "NEW: Added 'Contractor EHS Management &amp; Onboarding' to ensure vendor safety."
         ],
         globalStandards: {
             title: "Aligned with Global Construction Safety Standards",
@@ -2958,7 +2792,7 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Site Engineer/Safety Officer",
                 summary: "A mandatory permit-to-work to be completed daily before any worker enters a trench or excavation, preventing collapses.",
                 tasks: [
-                    { id: 'EXCAV-001', description: "Verify that the excavated soil (spoil pile) is placed a minimum of 2 feet from the edge of the trench.", priority: 'High', riskLevel: 'High', proof: 'Visual Check & Photo', location: 'Site' },
+                    { id: 'EXCAV-001', description: "Verify that the excavated soil (spoil pile) is placed a minimum of 2 feet from the edge of the trench.", priority: 'High', riskLevel: 'High', proof: 'Visual Check &amp; Photo', location: 'Site' },
                     { id: 'EXCAV-002', description: "Inspect the integrity of shoring, sloping, or benching systems.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Site' },
                     { id: 'EXCAV-003', description: "Test atmospheric conditions inside the trench for adequate oxygen levels and absence of toxic gases.", priority: 'High', riskLevel: 'High', proof: 'Gas Monitor Reading Log', location: 'Site' },
                     { id: 'EXCAV-004', description: "Ensure safe access and egress, such as ladders, are within 25 feet of all workers in the trench.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Site' },
@@ -2977,6 +2811,19 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FLEET-HEM-003', description: "Verify operator licenses and certifications for all specialized equipment.", priority: 'High', riskLevel: 'High', proof: 'License Audit Log', location: 'Fleet Office' },
                     { id: 'FLEET-HEM-004', description: "Maintain a log of all vehicle breakdowns and repairs to identify recurring issues.", priority: 'Medium', riskLevel: 'Medium', proof: 'Breakdown Log', location: 'Workshop' }
                 ]
+            },
+            {
+                title: "👷 Contractor EHS Management & Onboarding",
+                department: "EHS/Procurement",
+                frequency: "Per Contract",
+                role: "EHS Officer",
+                summary: "A critical protocol to ensure that third-party contractors do not introduce safety risks to your site.",
+                tasks: [
+                    { id: 'CON-EHS-001', description: "Verify that the contractor has provided their company safety policy and relevant insurance certificates.", priority: 'High', riskLevel: 'High', proof: 'Document Review Log', location: 'Office' },
+                    { id: 'CON-EHS-002', description: "Conduct a mandatory safety induction for all contractor staff before they begin work on site.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Site' },
+                    { id: 'CON-EHS-003', description: "Review and approve the contractor's risk assessment and method statement (RAMS) for their scope of work.", priority: 'High', riskLevel: 'High', proof: 'Approved RAMS', location: 'Office' },
+                    { id: 'CON-EHS-004', description: "Perform random daily spot-checks on the contractor's work area to ensure compliance with safety rules.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Site' }
+                ]
             }
         ]
     },
@@ -2992,7 +2839,7 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             "Use the 'Ultimate Packing List' categorized by item type.",
             "Implement the 'Pre-Departure Home Security' checklist.",
-            "Standardize your 'Digital Document & Currency' preparation.",
+            "Standardize your 'Digital Document &amp; Currency' preparation.",
             "Includes a 'Return Home' checklist for a smooth re-entry."
         ],
         checklists: []
@@ -3007,9 +2854,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For pet owners. A comprehensive guide for leaving your pet with a sitter, ensuring their safety, health, and happiness.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Feeding Schedule & Diet' instructions.",
-            "Implement the 'Medication & Emergency Contact' list.",
-            "Master the 'Daily Routine & Exercise' plan.",
+            "Standardize the 'Feeding Schedule &amp; Diet' instructions.",
+            "Implement the 'Medication &amp; Emergency Contact' list.",
+            "Master the 'Daily Routine &amp; Exercise' plan.",
             "Includes a 'House Rules for Pet Sitter' checklist."
         ],
         checklists: []
@@ -3024,9 +2871,9 @@ export const premiumPacks: PremiumPack[] = [
         description: "For gym owners and managers. A toolkit to ensure member safety, equipment maintenance, and a clean, motivating environment.",
         icon: <Dumbbell className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement a 'Daily Equipment Safety & Cleaning' protocol.",
-            "Standardize the 'New Member Onboarding & Induction' process.",
-            "Master 'Locker Room & Shower Hygiene' checklists.",
+            "Implement a 'Daily Equipment Safety &amp; Cleaning' protocol.",
+            "Standardize the 'New Member Onboarding &amp; Induction' process.",
+            "Master 'Locker Room &amp; Shower Hygiene' checklists.",
             "Includes 'Personal Trainer Performance' and 'Class Scheduling' checklists."
         ],
         globalStandards: {
@@ -3049,10 +2896,10 @@ export const premiumPacks: PremiumPack[] = [
         description: "For property managers and landlords. A toolkit for managing residential and commercial properties, focusing on maintenance, tenant relations, and compliance.",
         icon: <Home className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Standardize the 'Tenant Move-In & Move-Out' inspection process.",
+            "Standardize the 'Tenant Move-In &amp; Move-Out' inspection process.",
             "Implement a 'Preventive Maintenance' schedule for building systems.",
-            "Master 'Rent Collection & Arrears Management'.",
-            "NEW: Includes 'Landscaping & Grounds Maintenance'."
+            "Master 'Rent Collection &amp; Arrears Management'.",
+            "NEW: Includes 'Landscaping &amp; Grounds Maintenance'."
         ],
         globalStandards: {
             title: "Aligned with Property Management Best Practices",
@@ -3131,7 +2978,7 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
-            "NEW: Added a 'New Office Build-Out & Project Management' checklist.",
+            "NEW: Added a 'New Office Build-Out &amp; Project Management' checklist.",
             "Standardize your 'New Employee Onboarding' from a legal perspective.",
             "Implement a 'Vendor Contract Review' checklist for non-lawyers."
         ],
@@ -3254,6 +3101,4 @@ export const premiumPacks: PremiumPack[] = [
 ];
 
 
-
-
-
+    
