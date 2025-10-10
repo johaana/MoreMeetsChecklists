@@ -11,7 +11,6 @@ import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
 import { cn } from "@/lib/utils";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const mainNavLinks = [
     { href: "/blog", label: "Blog" },
@@ -70,14 +69,13 @@ export function SiteHeader() {
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
                             <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
-                                <div className="bg-background rounded-lg shadow-2xl border p-6 max-w-7xl mx-auto">
-                                    <div className="max-h-[70vh] overflow-y-auto pr-4 -mr-4">
+                                <div className="bg-background rounded-lg shadow-2xl border p-6">
+                                     <div className="max-h-[70vh] overflow-y-auto pr-4 -mr-4">
                                         <div className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-4">
                                             <div className="space-y-4 col-span-1">
-                                                <h3 className="font-headline text-sm font-bold text-primary mb-3 px-2">Bestselling Checklists</h3>
                                                 {Object.entries(checklistsByCategory).map(([category, checklists]) => (
                                                     <div key={category} className="break-inside-avoid">
-                                                        <h4 className="font-semibold text-xs text-muted-foreground mb-2 px-2">{category}</h4>
+                                                        <h4 className="font-semibold text-sm text-muted-foreground mb-2 px-2">{category}</h4>
                                                         <ul className="space-y-1">
                                                             {checklists.map(checklist => (
                                                                 <li key={checklist.id}>
@@ -92,11 +90,10 @@ export function SiteHeader() {
                                                 ))}
                                             </div>
                                             <div className="space-y-4 col-span-3">
-                                                 <h3 className="font-headline text-sm font-bold text-primary mb-3 px-2">Premium Packs by Industry</h3>
                                                 <div className="columns-3">
                                                     {Object.entries(packsByCategory).map(([category, packs]) => (
                                                         <div key={category} className="break-inside-avoid mb-4">
-                                                            <h4 className="font-semibold text-xs text-muted-foreground mb-2 px-2">{category}</h4>
+                                                            <h4 className="font-semibold text-sm text-muted-foreground mb-2 px-2">{category}</h4>
                                                             <ul className="space-y-1">
                                                                 {packs.map(pack => (
                                                                     <li key={pack.id}>
@@ -153,54 +150,24 @@ export function SiteHeader() {
                             <div className="mb-4">
                                 <BrandLogo />
                             </div>
-                            <div className="flex flex-col gap-3">
+                             <div className="flex flex-col gap-3">
                                 {isSalesPage ? (
                                     <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Back to Main Site</Link>
                                 ) : (
-                                    <>
-                                        <Accordion type="multiple" className="w-full">
-                                            <AccordionItem value="explore-solutions">
-                                                <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline">Explore Solutions</AccordionTrigger>
-                                                <AccordionContent className="pl-4">
-                                                    <Accordion type="multiple" className="w-full">
-                                                         <AccordionItem value="bestsellers">
-                                                            <AccordionTrigger>Bestselling Checklists</AccordionTrigger>
-                                                            <AccordionContent className="pl-4 space-y-2">
-                                                                {individualChecklists.map(checklist => (
-                                                                    <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                                                                         {React.cloneElement(checklist.icon, { className: "w-4 h-4" })}
-                                                                         {checklist.title}
-                                                                    </Link>
-                                                                ))}
-                                                            </AccordionContent>
-                                                        </AccordionItem>
-                                                        <AccordionItem value="premium-packs">
-                                                            <AccordionTrigger>Premium Packs</AccordionTrigger>
-                                                            <AccordionContent className="pl-4 space-y-2">
-                                                                {premiumPacks.map(pack => (
-                                                                    <Link key={pack.id} href={`/packs/${pack.id}`} className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                                                                        {React.cloneElement(pack.icon, { className: "w-4 h-4" })}
-                                                                        {pack.title}
-                                                                    </Link>
-                                                                ))}
-                                                            </AccordionContent>
-                                                        </AccordionItem>
-                                                    </Accordion>
-                                                </AccordionContent>
-                                            </AccordionItem>
-                                        </Accordion>
-
-                                        {mainNavLinks.map(link => (
-                                            <Link
-                                                key={link.href}
-                                                href={link.href}
-                                                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-4 border-b"
-                                                prefetch={false}
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        ))}
-                                    </>
+                                <>
+                                    <Link href="/packs" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">All Packages</Link>
+                                    <Link href="/checklists" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Bestselling Checklists</Link>
+                                    {mainNavLinks.map(link => (
+                                        <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                            prefetch={false}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    ))}
+                                </>
                                 )}
                             </div>
                         </div>
@@ -210,3 +177,5 @@ export function SiteHeader() {
         </header>
     );
 }
+
+    
