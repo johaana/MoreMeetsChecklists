@@ -1218,7 +1218,7 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-     {
+    {
         id: 'cinema_operations_pack',
         title: "Cinema & Multiplex Operations",
         priceUSD: 119.99,
@@ -2397,10 +2397,10 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Store Manager",
                 summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
                 tasks: [
-                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                    { id: 'RETAIL-CUSTEX-001', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-002', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-003', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-004', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
                 ]
             },
             {
@@ -2561,7 +2561,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "For CCOs and Heads of ESG. A comprehensive toolkit to implement, track, and report on Environmental, Social, and Governance metrics.",
         icon: <Recycle className="w-8 h-8 text-primary" />,
         badgeText: "New!",
-        badgeVariant: "accent",
+        badgeVariant: "accent" as const,
         sampleItems: [
             "Implement an 'Energy &amp; Water Consumption Audit' checklist.",
             "Standardize 'Waste Management &amp; Recycling' protocols.",
