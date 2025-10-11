@@ -90,7 +90,7 @@ export function SiteHeader() {
                             {isDropdownOpen && (
                                 <div className="absolute top-full right-0 w-screen max-w-5xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                                     <div className="bg-background rounded-lg shadow-2xl border flex flex-col">
-                                         <ScrollArea className="max-h-[75vh]">
+                                         <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                             <div className="p-6">
                                                 <div className="flex flex-col md:flex-row gap-8">
                                                     <div className="md:w-1/4 space-y-4 pr-6 border-r">
