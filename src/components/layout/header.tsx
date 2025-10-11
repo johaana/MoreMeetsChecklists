@@ -73,7 +73,7 @@ export function SiteHeader() {
                             </button>
                             <div className="absolute top-full right-0 mt-2 w-screen max-w-5xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 z-20">
                                 <div className="bg-background rounded-lg shadow-2xl border flex flex-col">
-                                    <ScrollArea className="h-auto max-h-[75vh]">
+                                    <ScrollArea className="h-auto max-h-[70vh]">
                                         <div className="flex p-6">
                                             <div className="w-1/4 space-y-4 pr-6">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
