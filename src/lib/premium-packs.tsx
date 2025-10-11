@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency" | "Aviation" | "Entertainment";
+    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency" | "Aviation" | "Entertainment" | "Logistics" | "Construction";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -55,8 +55,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'airport_operations_pack',
         title: "Airport Operations & Facility Management",
         priceUSD: 249.99,
-        priceINR: 14999,
-        paymentId: 'pl_RMncDLAlms69Pd', // Placeholder for higher tier, matches Personalized
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
         category: "Aviation",
         description: "For Airport Heads of Facilities & Operations. A comprehensive toolkit for ensuring safety, compliance, and efficiency in a high-stakes airport environment.",
         icon: <Plane className="w-8 h-8 text-primary" />,
@@ -2398,10 +2398,10 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Store Manager",
                 summary: "An audit checklist to evaluate the end-to-end customer journey in the store, from initial greeting to post-sale follow-up.",
                 tasks: [
-                    { id: 'RETAIL-CUSTEX-001', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-002', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-003', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
-                    { id: 'RETAIL-CUSTEX-004', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
+                    { id: 'RETAIL-CUSTEX-01', description: "Observe and rate the customer greeting for warmth and professionalism.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-02', description: "Assess the quality of the sales consultation: Were needs properly understood? Was the presentation of products compelling?", priority: 'High', riskLevel: 'High', proof: 'Observation Scorecard', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-03', description: "Check the cleanliness and presentation of the sales floor, displays, and checkout counter.", priority: 'High', riskLevel: 'Medium', proof: 'Store Audit Form', location: 'Sales Floor' },
+                    { id: 'RETAIL-CUSTEX-04', description: "Review if post-sale follow-up procedures (e.g., thank you notes, care instructions) are being followed.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'Office' },
                 ]
             },
             {
@@ -2762,72 +2762,6 @@ export const premiumPacks: PremiumPack[] = [
         checklists: []
     },
     {
-        id: 'construction_site_pack',
-        title: "Construction Site Safety (EHS) Checklist",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Manufacturing",
-        description: "For site engineers and safety officers. A comprehensive EHS toolkit to ensure worker safety and regulatory compliance on construction sites.",
-        icon: <HardHat className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Implement a 'Work-at-Height &amp; Scaffolding' safety protocol.",
-            "NEW: Includes a mandatory 'Excavation &amp; Trenching Safety Permit' to prevent collapses.",
-            "Master the 'Permit-to-Work' system for hot work, confined space, etc.",
-            "NEW: Added 'Contractor EHS Management &amp; Onboarding' to ensure vendor safety."
-        ],
-        globalStandards: {
-            title: "Aligned with Global Construction Safety Standards",
-            standards: [
-                { name: "Occupational Safety", description: "OSHA (Construction), NEBOSH International Construction Certificate standards." },
-                { name: "High-Risk Work", description: "Permit-to-Work (PTW) systems for hot work, confined space entry, and excavation." },
-                { name: "Equipment Safety", description: "LOLER for lifting equipment, protocols for scaffolding and power tools." }
-            ]
-        },
-        checklists: [
-            {
-                title: "⛏️ Excavation & Trenching Safety Permit",
-                department: "EHS/Civil",
-                frequency: "Daily, Pre-Entry",
-                role: "Site Engineer/Safety Officer",
-                summary: "A mandatory permit-to-work to be completed daily before any worker enters a trench or excavation, preventing collapses.",
-                tasks: [
-                    { id: 'EXCAV-001', description: "Verify that the excavated soil (spoil pile) is placed a minimum of 2 feet from the edge of the trench.", priority: 'High', riskLevel: 'High', proof: 'Visual Check &amp; Photo', location: 'Site' },
-                    { id: 'EXCAV-002', description: "Inspect the integrity of shoring, sloping, or benching systems.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Site' },
-                    { id: 'EXCAV-003', description: "Test atmospheric conditions inside the trench for adequate oxygen levels and absence of toxic gases.", priority: 'High', riskLevel: 'High', proof: 'Gas Monitor Reading Log', location: 'Site' },
-                    { id: 'EXCAV-004', description: "Ensure safe access and egress, such as ladders, are within 25 feet of all workers in the trench.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Site' },
-                    { id: 'EXCAV-005', description: "The permit must be signed by the safety officer and the site engineer before any entry is allowed.", priority: 'High', riskLevel: 'High', proof: 'Signed Permit', location: 'Site' },
-                ]
-            },
-            {
-                title: "🚚 Fleet & Heavy Equipment Management",
-                department: "Engineering/Maintenance",
-                frequency: "Daily/Weekly",
-                role: "Fleet Manager",
-                summary: "Manages the maintenance and operational readiness of all company vehicles and heavy equipment, ensuring safety and reliability.",
-                tasks: [
-                    { id: 'FLEET-HEM-001', description: "Conduct mandatory pre-use safety checks for all specialized vehicles (e.g., cranes, excavators).", priority: 'High', riskLevel: 'High', proof: 'Pre-use Checklist Form', location: 'Vehicle Depot' },
-                    { id: 'FLEET-HEM-002', description: "Track and schedule preventive maintenance based on vehicle running hours or calendar dates.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Schedule', location: 'Workshop' },
-                    { id: 'FLEET-HEM-003', description: "Verify operator licenses and certifications for all specialized equipment.", priority: 'High', riskLevel: 'High', proof: 'License Audit Log', location: 'Fleet Office' },
-                    { id: 'FLEET-HEM-004', description: "Maintain a log of all vehicle breakdowns and repairs to identify recurring issues.", priority: 'Medium', riskLevel: 'Medium', proof: 'Breakdown Log', location: 'Workshop' }
-                ]
-            },
-            {
-                title: "👷 Contractor EHS Management & Onboarding",
-                department: "EHS/Procurement",
-                frequency: "Per Contract",
-                role: "EHS Officer",
-                summary: "A critical protocol to ensure that third-party contractors do not introduce safety risks to your site.",
-                tasks: [
-                    { id: 'CON-EHS-001', description: "Verify that the contractor has provided their company safety policy and relevant insurance certificates.", priority: 'High', riskLevel: 'High', proof: 'Document Review Log', location: 'Office' },
-                    { id: 'CON-EHS-002', description: "Conduct a mandatory safety induction for all contractor staff before they begin work on site.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Site' },
-                    { id: 'CON-EHS-003', description: "Review and approve the contractor's risk assessment and method statement (RAMS) for their scope of work.", priority: 'High', riskLevel: 'High', proof: 'Approved RAMS', location: 'Office' },
-                    { id: 'CON-EHS-004', description: "Perform random daily spot-checks on the contractor's work area to ensure compliance with safety rules.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Site' }
-                ]
-            }
-        ]
-    },
-    {
         id: 'personal_travel_pack',
         title: "Personal Travel & Vacation Checklist",
         priceUSD: 19.99,
@@ -2877,10 +2811,10 @@ export const premiumPacks: PremiumPack[] = [
             "Includes 'Personal Trainer Performance' and 'Class Scheduling' checklists."
         ],
         globalStandards: {
-            title: "Aligned with Fitness Industry Standards",
+            title: "Aligned with Health & Fitness Club Standards",
             standards: [
                 { name: "Safety", description: "Protocols for equipment maintenance, user safety, and emergency response." },
-                { name: "Hygiene", description: "Standards for facility cleaning, locker room sanitation, and infection control." },
+                { name: "Hygiene", description: "Standards for cleaning and sanitation of high-contact surfaces, locker rooms, and pools." },
                 { name: "Member Service", description: "Best practices for new member induction, personal training quality, and class management." }
             ]
         },
@@ -2961,6 +2895,116 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LAND-002', description: "Check landscaped areas for plant health, signs of pests, or disease, and take corrective action.", priority: 'Medium', riskLevel: 'Low', proof: 'Horticulture Log', location: 'Grounds' },
                     { id: 'LAND-003', description: "Ensure pedestrian pathways are clear of overgrowth, debris, or any tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Safety Sweep Log', location: 'Grounds' },
                     { id: 'LAND-004', description: "Manage mowing, pruning, and fertilization schedules for lawns and gardens.", priority: 'Medium', riskLevel: 'Low', proof: 'Work Schedule', location: 'Grounds' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'logistics_warehouse_pack',
+        title: "Logistics & Warehouse Operations",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Logistics",
+        description: "For warehouse managers and logistics heads. A comprehensive toolkit to optimize inventory, ensure safety, and improve fulfillment efficiency.",
+        icon: <Warehouse className="w-8 h-8 text-primary" />,
+        badgeText: "New & In-Depth",
+        badgeVariant: "accent" as const,
+        sampleItems: [
+            "Implement a 'Warehouse Safety & Housekeeping' daily audit.",
+            "Standardize 'Inbound & GRN' processes to prevent receiving errors.",
+            "Master 'Inventory & Cycle Counting' to ensure accuracy.",
+            "Includes 'Forklift Safety' and 'Fleet Maintenance' checklists."
+        ],
+        globalStandards: {
+            title: "Aligned with Global Logistics & Warehousing Standards",
+            standards: [
+                { name: "Safety", description: "OSHA guidelines for warehouse operations, including forklift safety, material handling, and loading dock procedures." },
+                { name: "Quality & Inventory", description: "ISO 9001 for quality management and best practices for inventory accuracy and cycle counting." },
+                { name: "Efficiency", description: "Principles of lean warehousing (5S) to improve flow and reduce waste." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🚚 Forklift Safety Operations",
+                department: "Logistics",
+                frequency: "Daily",
+                role: "Forklift Operator",
+                summary: "A pre-use checklist to ensure forklifts are safe to operate, preventing accidents and injuries in the warehouse and production areas.",
+                tasks: [
+                    { id: 'FORK-001', description: "Check tires, horn, lights, and brakes before first use of the shift.", priority: 'High', riskLevel: 'High', proof: 'Pre-use Checklist Form', location: 'Warehouse' },
+                    { id: 'FORK-002', description: "Inspect forks for cracks or damage.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Warehouse' },
+                    { id: 'FORK-003', description: "Ensure the operator is certified and authorized to use the forklift.", priority: 'High', riskLevel: 'High', proof: 'Certification Record', location: 'Supervisor Office' },
+                    { id: 'FORK-004', description: "Adhere to speed limits and use the horn at blind corners.", priority: 'High', riskLevel: 'Medium', proof: 'Observation', location: 'Plant-wide' },
+                    { id: 'FORK-005', description: "Ensure loads are stable, within capacity, and do not obstruct the operator's view.", priority: 'High', riskLevel: 'High', proof: 'Observation', location: 'Plant-wide' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'construction_site_pack',
+        title: "Construction Site Safety (EHS)",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Construction",
+        description: "For site managers and EHS officers. A crucial toolkit to ensure worker safety and regulatory compliance on construction sites.",
+        icon: <HardHat className="w-8 h-8 text-primary" />,
+        badgeText: "Safety Critical",
+        badgeVariant: "destructive" as const,
+        sampleItems: [
+            "Implement a daily 'Site Safety Audit'.",
+            "Standardize 'Scaffolding & Work-at-Height' safety checks.",
+            "Master 'Excavation & Trenching' permits to prevent collapses.",
+            "Includes 'Contractor Pre-Qualification' and 'Incident Reporting' checklists."
+        ],
+        globalStandards: {
+            title: "Aligned with Global Construction Safety Standards",
+            standards: [
+                { name: "Worker Safety", description: "OSHA (US), NEBOSH/IOSH (UK), and local building code authority safety regulations." },
+                { name: "Equipment Safety", description: "Protocols for heavy machinery, electrical systems, and scaffolding as per international best practices." },
+                { name: "Risk Management", description: "Frameworks for job hazard analysis (JHA), permit-to-work systems, and incident investigation." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🛠️ EHS Daily Site Audit",
+                department: "EHS",
+                frequency: "Daily",
+                role: "Safety Officer",
+                summary: "A comprehensive daily walkthrough to identify and mitigate hazards on the construction site.",
+                tasks: [
+                    { id: 'EHS-DSA-001', description: "Verify all workers are wearing appropriate PPE.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit Log', location: 'Entire Site' },
+                    { id: 'EHS-DSA-002', description: "Inspect scaffolding for stability, proper planking, and guardrails.", priority: 'High', riskLevel: 'High', proof: 'Scaffolding Tag', location: 'Scaffolds' },
+                    { id: 'EHS-DSA-003', description: "Check electrical connections for proper grounding and protection from water.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Entire Site' },
+                    { id: 'EHS-DSA-004', description: "Ensure good housekeeping practices are followed, with clear access routes and no tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Entire Site' }
+                ]
+            },
+            {
+                title: "📝 Contractor Pre-Qualification Checklist",
+                department: "Procurement/EHS",
+                frequency: "Per Contractor",
+                role: "EHS Manager",
+                summary: "A due diligence checklist to ensure that subcontractors have adequate safety policies and insurance before being allowed on site.",
+                tasks: [
+                    { id: 'EHS-CPQ-001', description: "Obtain and review contractor's written safety program/policy.", priority: 'High', riskLevel: 'High', proof: 'Document Review', location: 'Office' },
+                    { id: 'EHS-CPQ-002', description: "Verify contractor's insurance certificates (worker's compensation, general liability).", priority: 'High', riskLevel: 'High', proof: 'Certificate Copies', location: 'Office' },
+                    { id: 'EHS-CPQ-003', description: "Check contractor's safety record (e.g., OSHA 300 logs or equivalent).", priority: 'Medium', riskLevel: 'Medium', proof: 'Record Review', location: 'Office' },
+                    { id: 'EHS-CPQ-004', description: "Ensure contractor provides a list of competent persons for their scope of work.", priority: 'High', riskLevel: 'Medium', proof: 'List of Personnel', location: 'Office' }
+                ]
+            },
+             {
+                title: "🔍 Incident Investigation & Root Cause Analysis",
+                department: "EHS/Quality",
+                frequency: "Per Incident",
+                role: "Investigator/Manager",
+                summary: "A systematic approach to investigate incidents, identify root causes using methods like '5 Whys', and implement effective corrective and preventive actions (CAPA).",
+                tasks: [
+                    { id: 'INC-INV-001', description: "Secure the incident scene and preserve evidence.", priority: 'High', riskLevel: 'High', proof: 'Scene Photos/Log', location: 'Incident Site' },
+                    { id: 'INC-INV-002', description: "Gather information through witness interviews and document review.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'INC-INV-003', description: "Use a structured method (e.g., 5 Whys, Fishbone Diagram) to determine the root cause(s).", priority: 'High', riskLevel: 'High', proof: 'Root Cause Analysis Report', location: 'Office' },
+                    { id: 'INC-INV-004', description: "Develop and assign Corrective and Preventive Actions (CAPA) with clear deadlines.", priority: 'High', riskLevel: 'High', proof: 'CAPA Plan', location: 'Office' },
+                    { id: 'INC-INV-005', description: "Track CAPA implementation to closure and verify effectiveness.", priority: 'High', riskLevel: 'Medium', proof: 'CAPA Tracker', location: 'Office' }
                 ]
             }
         ]
@@ -3099,105 +3143,111 @@ export const premiumPacks: PremiumPack[] = [
         ]
     },
     {
-        id: 'sports_complex_operations_pack',
-        title: "Sports Complex & Arena Operations",
-        priceUSD: 199.99,
+        id: 'stadium_arena_operations_pack',
+        title: "Stadium & Arena Operations",
+        priceUSD: 249.99,
         priceINR: 11999,
         paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Entertainment",
-        description: "For stadium and arena managers. A complete toolkit for managing large-scale sports venues, focusing on safety, fan experience, and operational readiness.",
-        icon: <Trophy className="w-8 h-8 text-primary" />,
+        category: "Events",
+        description: "For stadium managers and event producers. An essential toolkit for managing large-scale public venues, focusing on crowd safety, structural integrity, and event readiness.",
+        icon: <Landmark className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent" as const,
         sampleItems: [
-            "Implement a 'Field of Play & Turf Management' checklist.",
-            "Standardize 'Crowd Management & Egress Planning' for large events.",
-            "Master 'Ticketing System & Access Control' audits.",
-            "Includes 'Broadcast & Media Operations' coordination."
+            "Master 'Crowd Control & Emergency Egress' planning.",
+            "Implement a 'Structural & Seating Inspection' protocol.",
+            "Standardize 'Event-Day Readiness' checks for vendors and staff.",
+            "Includes checklists for 'Waste Management' and 'Vendor Audits'."
         ],
         globalStandards: {
-            title: "Aligned with Global Venue Management Standards",
+            title: "Aligned with International Venue Management Standards",
             standards: [
-                { name: "Safety & Security", description: "Best practices for crowd management, emergency response, and venue security." },
-                { name: "Technical", description: "Protocols for turf management, broadcast infrastructure, and large-scale AV systems." },
-                { name: "Guest Experience", description: "Standards for ticketing, concessions, and creating a world-class fan experience." }
+                { name: "Public Safety", description: "Best practices for crowd management, emergency evacuation (e.g., NFPA 101), and security screening." },
+                { name: "Structural Safety", description: "Guidelines for regular inspection of seating, barricades, and public structures." },
+                { name: "Event Operations", description: "Protocols for vendor management, ticketing, and post-event cleanup." },
             ]
         },
-        checklists: []
+        checklists: [
+             {
+                title: "🏟️ Event-Day Readiness Checklist",
+                department: "Operations",
+                frequency: "Pre-Event",
+                role: "Event Manager",
+                summary: "A final readiness check on the day of the event to ensure all systems, staff, and vendors are in place for a successful event.",
+                tasks: [
+                    { id: 'STAD-EDR-01', description: "Confirm all security and stewarding staff are at their posts.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster Check', location: 'Venue-wide' },
+                    { id: 'STAD-EDR-02', description: "Test all public address (PA) systems and emergency announcement channels.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Control Room' },
+                    { id: 'STAD-EDR-03', description: "Verify all food and beverage vendors are operational and compliant with hygiene standards.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Audit', location: 'Concession Areas' },
+                    { id: 'STAD-EDR-04', description: "Ensure all emergency exits are unobstructed and clearly marked.", priority: 'High', riskLevel: 'High', proof: 'Exit Inspection Log', location: 'Venue-wide' },
+                ]
+            },
+            {
+                title: "🧹 Post-Event Cleanup & Waste Management",
+                department: "Facilities",
+                frequency: "Post-Event",
+                role: "Facility Manager",
+                summary: "A systematic approach to cleaning the venue after an event, focusing on efficiency and environmental compliance.",
+                tasks: [
+                    { id: 'STAD-PEC-01', description: "Deploy cleaning crews to all zones according to a pre-defined schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Deployment Plan', location: 'Venue-wide' },
+                    { id: 'STAD-PEC-02', description: "Segregate waste into recyclables, compostables, and general waste streams.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Log', location: 'Waste Management Area' },
+                    { id: 'STAD-PEC-03', description: "Conduct a final inspection of seating areas, restrooms, and common areas for cleanliness.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Report', location: 'Venue-wide' },
+                    { id: 'STAD-PEC-04', description: "Report any damages to seats, railings, or other infrastructure for repair.", priority: 'High', riskLevel: 'Medium', proof: 'Damage Report', location: 'Venue-wide' },
+                ]
+            }
+        ]
     },
     {
-        id: 'theme_park_operations_pack',
-        title: "Theme Park & Amusement Park Operations",
-        priceUSD: 249.99,
-        priceINR: 14999,
-        paymentId: 'pl_RMncDLAlms69Pd', // Placeholder for higher tier
-        category: "Entertainment",
-        description: "For theme park directors. A safety-critical toolkit for managing rides, attractions, performers, and large-scale guest services.",
-        icon: <FerrisWheel className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Implement a 'Daily Ride Safety & Maintenance' check based on ASTM standards.",
-            "Standardize 'Character Performer & Mascot' management protocols.",
-            "Master 'Queue Line Management & Guest Flow' to enhance experience.",
-            "Includes 'Park-Wide Emergency Response Drill' for crisis readiness."
-        ],
-        globalStandards: {
-            title: "Aligned with Amusement Park & Attraction Standards",
-            standards: [
-                { name: "Ride Safety", description: "ASTM International standards for amusement ride design and maintenance." },
-                { name: "Guest Safety", description: "Protocols for crowd management, emergency evacuation, and first aid." },
-                { name: "Operations", description: "Best practices for guest flow, character performance, and show quality." }
-            ]
-        },
-        checklists: []
-    },
-    {
-        id: 'museum_cultural_institution_pack',
-        title: "Museum & Cultural Institution Management",
+        id: 'sports_club_operations_pack',
+        title: "Sports Club & Complex Operations",
         priceUSD: 119.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Entertainment",
-        description: "For museum directors and curators. A specialized toolkit for managing exhibits, collections, and visitor experiences.",
-        icon: <GalleryVertical className="w-8 h-8 text-primary" />,
+        category: "Wellness",
+        description: "For club managers. A toolkit focused on member safety, equipment maintenance, and facility hygiene for gyms, pools, and sports courts.",
+        icon: <Dumbbell className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent" as const,
         sampleItems: [
-            "Implement a 'Collection & Artifact Handling' protocol.",
-            "Standardize the 'Exhibit Design & Installation' project plan.",
-            "Master 'Climate Control & Environmental Monitoring' for preservation.",
-            "Includes 'Visitor Flow Analysis' and 'Educational Program Management'."
+            "Implement a 'Gym Equipment Safety' inspection checklist.",
+            "Standardize 'Pool & Water Quality' testing logs.",
+            "Master 'Locker Room & Shower Hygiene' protocols.",
+            "Ensure 'Staff & Trainer Certification' is always up to date."
         ],
         globalStandards: {
-            title: "Aligned with Museum & Archival Standards",
+            title: "Aligned with Health & Fitness Club Standards",
             standards: [
-                { name: "Collection Care", description: "International Council of Museums (ICOM) standards for artifact preservation and handling." },
-                { name: "Exhibit Management", description: "Best practices for exhibit design, interpretation, and visitor engagement." },
-                { name: "Facility", description: "Standards for environmental control (temperature, humidity, light) and security." }
+                { name: "Equipment Safety", description: "Regular maintenance checks for gym machines, weights, and sports surfaces." },
+                { name: "Member Safety", description: "Protocols for first aid, emergency response, and ensuring trainer qualifications." },
+                { name: "Hygiene", description: "Standards for cleaning and sanitation of high-contact surfaces, locker rooms, and pools." },
             ]
         },
-        checklists: []
-    },
-    {
-        id: 'music_festival_production_pack',
-        title: "Concert & Music Festival Production",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Entertainment",
-        description: "For festival producers and production managers. A toolkit for executing large-scale music events, from stage production to artist liaison.",
-        icon: <Guitar className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Master 'Stage & Rigging Safety' checks.",
-            "Standardize 'Artist & Tour Manager Liaison' process.",
-            "Implement 'Sound & Lighting System' checks and balances.",
-            "Includes 'Multi-Day Camping & Sanitation' and 'Vendor Management' checklists."
-        ],
-        globalStandards: {
-            title: "Aligned with Live Event Production Standards",
-            standards: [
-                { name: "Safety", description: "Event Safety Alliance (ESA) guidelines for large-scale gatherings." },
-                { name: "Production", description: "Best practices for stage rigging, temporary power distribution, and audio engineering." },
-                { name: "Logistics", description: "Protocols for artist transport, multi-day site management, and vendor coordination." }
-            ]
-        },
-        checklists: []
+        checklists: [
+            {
+                title: "🏋️ Gym Equipment Safety Inspection",
+                department: "Maintenance",
+                frequency: "Weekly",
+                role: "Facility Manager",
+                summary: "A weekly check of all gym equipment to prevent injuries and ensure member safety.",
+                tasks: [
+                    { id: 'GYM-ESI-01', description: "Inspect all cables and pulleys on weight machines for fraying or wear.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Gym Floor' },
+                    { id: 'GYM-ESI-02', description: "Check that all treadmills, ellipticals, and bikes are functioning correctly and emergency stops work.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Cardio Area' },
+                    { id: 'GYM-ESI-03', description: "Wipe down and sanitize all equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Gym Floor' },
+                    { id: 'GYM-ESI-04', description: "Place 'Out of Order' signs on any faulty equipment and log for repair.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Request', location: 'Gym Floor' },
+                ]
+            },
+            {
+                title: "💧 Pool & Water Quality Management",
+                department: "Facilities",
+                frequency: "Daily",
+                role: "Pool Operator",
+                summary: "Ensures pool water is safe and hygienic for members by testing and logging key chemical levels.",
+                tasks: [
+                    { id: 'POOL-WQM-01', description: "Test and log chlorine and pH levels at least twice daily.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
+                    { id: 'POOL-WQM-02', description: "Check that all safety equipment (life rings, first aid kits) is present and in good condition.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Poolside' },
+                    { id: 'POOL-WQM-03', description: "Verify lifeguard certifications are current and posted.", priority: 'High', riskLevel: 'High', proof: 'Certification File', location: 'Office' },
+                    { id: 'POOL-WQM-04', description: "Clean pool filters and skimmer baskets as per schedule.", priority: 'Medium', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Pump Room' },
+                ]
+            }
+        ]
     }
 ];
-
-    
