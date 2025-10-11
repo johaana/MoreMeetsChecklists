@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency" | "Aviation";
+    category: "Hospitality" | "Corporate" | "Retail" | "Healthcare" | "Education" | "Manufacturing" | "Events" | "Personal" | "Automotive" | "Real Estate" | "Compliance" | "Wellness" | "Maritime" | "E-commerce" | "Agency" | "Aviation" | "Entertainment";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -914,7 +914,7 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Chief Engineer",
                 summary: "Defines the human response to an automated critical alert (e.g., from a BMS), ensuring rapid acknowledgement, escalation, and resolution to prevent catastrophic failures.",
                 tasks: [
-                    { id: 'CSAR-001', description: "For any 'Red' alert from the BMS (e.g., server room temp &gt; 25°C), the system must trigger an SMS and a phone call to the on-duty Chief Engineer, not just an email.", priority: 'High', riskLevel: 'High', proof: 'System Alert Configuration', location: 'BMS Room' },
+                    { id: 'CSAR-001', description: "For any 'Red' alert from the BMS (e.g., server room temp > 25°C), the system must trigger an SMS and a phone call to the on-duty Chief Engineer, not just an email.", priority: 'High', riskLevel: 'High', proof: 'System Alert Configuration', location: 'BMS Room' },
                     { id: 'CSAR-002', description: "Acknowledge the critical alert within 5 minutes via the system. If no acknowledgement, the system automatically escalates to the Head of Facilities.", priority: 'High', riskLevel: 'High', proof: 'Acknowledgement Log', location: 'BMS/Mobile' },
                     { id: 'CSAR-003', description: "Update the central incident log every 15 minutes with status updates ('Technician on-site,' 'Root cause identified') until the issue is resolved.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Log', location: 'BMS' },
                     { id: 'CSAR-004', description: "Conduct a post-incident review within 24 hours to analyze the root cause of the alert, not just the fix.", priority: 'High', riskLevel: 'Medium', proof: 'Post-Incident Report', location: 'Conference Room' }
@@ -1225,7 +1225,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 119.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Events",
+        category: "Entertainment",
         description: "For cinema managers and regional heads. A comprehensive toolkit for ensuring a seamless movie-goer experience, from box office to end credits.",
         icon: <Ticket className="w-8 h-8 text-primary" />,
         badgeText: "New!",

@@ -196,6 +196,7 @@ export default function Page({ params }: { params: { id: string } }) {
     "Agency": ["Travel Agency Owners", "Tour Operators", "IATA Compliance Managers"],
     "Maritime": ["Port Captains", "Shipping Line Managers", "Vessel Masters", "Designated Person Ashore (DPA)"],
     "Aviation": ["Airport Directors", "Heads of Facility", "Heads of Airside Operations", "Heads of Security (Aviation)"],
+    "Entertainment": ["Cinema Owners", "Multiplex Regional Heads", "Theme Park Directors"],
   };
 
   const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];

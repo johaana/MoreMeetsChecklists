@@ -29,6 +29,7 @@ const categoryColors: { [key: string]: string } = {
     "Logistics": "bg-gray-100 text-gray-800 border-gray-200",
     "Maritime": "bg-blue-100 text-blue-800 border-blue-200",
     "Aviation": "bg-sky-100 text-sky-800 border-sky-200",
+    "Entertainment": "bg-rose-100 text-rose-800 border-rose-200",
 };
 
 export default function AllPacksPage() {
@@ -119,5 +120,6 @@ export default function AllPacksPage() {
 }
 
     
+
 
 
