@@ -88,46 +88,48 @@ export function SiteHeader() {
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
                             {isDropdownOpen && (
-                                <div className="absolute top-full right-0 mt-2 w-screen max-w-5xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                                <div className="absolute top-full right-0 w-screen max-w-5xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                                     <div className="bg-background rounded-lg shadow-2xl border flex flex-col">
-                                        <div className="p-6 max-h-[75vh] overflow-y-auto">
-                                            <div className="flex flex-col md:flex-row gap-8">
-                                                <div className="md:w-1/4 space-y-4 pr-6 border-r">
-                                                    <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
-                                                    <ul className="space-y-1">
-                                                        {individualChecklists.map(checklist => (
-                                                            <li key={checklist.id}>
-                                                                <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                                                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                                                                    <span className="flex-1 leading-snug">{checklist.title}</span>
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
+                                         <ScrollArea className="max-h-[75vh]">
+                                            <div className="p-6">
+                                                <div className="flex flex-col md:flex-row gap-8">
+                                                    <div className="md:w-1/4 space-y-4 pr-6 border-r">
+                                                        <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
+                                                        <ul className="space-y-1">
+                                                            {individualChecklists.map(checklist => (
+                                                                <li key={checklist.id}>
+                                                                    <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                                        <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+                                                                        <span className="flex-1 leading-snug">{checklist.title}</span>
+                                                                    </Link>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
 
-                                                <div className="md:w-3/4 pl-6">
-                                                    <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
-                                                    <div className="mt-2" style={{ columnCount: 3, columnGap: '2rem' }}>
-                                                        {Object.entries(packsByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-                                                            <div key={category} className="mb-4 break-inside-avoid-column">
-                                                                <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
-                                                                <ul className="space-y-1">
-                                                                    {packs.map(pack => (
-                                                                        <li key={pack.id}>
-                                                                            <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                                                                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
-                                                                                <span className="flex-1 leading-snug">{pack.title}</span>
-                                                                            </Link>
-                                                                        </li>
-                                                                    ))}
-                                                                </ul>
-                                                            </div>
-                                                        ))}
+                                                    <div className="md:w-3/4 pl-6">
+                                                        <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
+                                                        <div className="mt-2" style={{ columnCount: 3, columnGap: '2rem' }}>
+                                                            {Object.entries(packsByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
+                                                                <div key={category} className="mb-4 break-inside-avoid-column">
+                                                                    <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
+                                                                    <ul className="space-y-1">
+                                                                        {packs.map(pack => (
+                                                                            <li key={pack.id}>
+                                                                                <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+                                                                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
+                                                                                    <span className="flex-1 leading-snug">{pack.title}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </ScrollArea>
                                         <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
                                             <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
                                                 View All Bestselling Checklists &rarr;
