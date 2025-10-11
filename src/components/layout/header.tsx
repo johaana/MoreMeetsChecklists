@@ -75,7 +75,7 @@ export function SiteHeader() {
                                 <div className="bg-background rounded-lg shadow-2xl border">
                                     <ScrollArea className="h-[70vh] w-full">
                                         <div className="grid grid-cols-12 p-6">
-                                            <div className="col-span-4 space-y-4 pr-6">
+                                            <div className="col-span-3 space-y-4 pr-6">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
                                                 <ul className="space-y-1">
                                                     {individualChecklists.map(checklist => (
@@ -89,11 +89,11 @@ export function SiteHeader() {
                                                 </ul>
                                             </div>
 
-                                            <div className="col-span-8 pl-6 border-l">
+                                            <div className="col-span-9 pl-6 border-l">
                                                 <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
-                                                <div className="grid grid-cols-3 gap-x-6 mt-2">
+                                                <div className="flex flex-col flex-wrap h-[65vh] gap-x-6 mt-2">
                                                     {Object.entries(packsByCategory).map(([category, packs]) => (
-                                                        <div key={category} className="break-inside-avoid mb-4">
+                                                        <div key={category} className="mb-4 w-[30%]">
                                                             <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
                                                             <ul className="space-y-1">
                                                                 {packs.map(pack => (
