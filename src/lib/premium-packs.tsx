@@ -1,3 +1,4 @@
+
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Video, LandPlot, Trash, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar } from "lucide-react";
 
 export type Checklist = {
@@ -55,7 +56,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Airport Operations & Facility Management",
         priceUSD: 249.99,
         priceINR: 14999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        paymentId: 'pl_RMncDLAlms69Pd', // Placeholder for higher tier, matches Personalized
         category: "Aviation",
         description: "For Airport Heads of Facilities & Operations. A comprehensive toolkit for ensuring safety, compliance, and efficiency in a high-stakes airport environment.",
         icon: <Plane className="w-8 h-8 text-primary" />,
@@ -3127,7 +3128,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Theme Park & Amusement Park Operations",
         priceUSD: 249.99,
         priceINR: 14999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        paymentId: 'pl_RMncDLAlms69Pd', // Placeholder for higher tier
         category: "Entertainment",
         description: "For theme park directors. A safety-critical toolkit for managing rides, attractions, performers, and large-scale guest services.",
         icon: <FerrisWheel className="w-8 h-8 text-primary" />,
@@ -3198,3 +3199,5 @@ export const premiumPacks: PremiumPack[] = [
         checklists: []
     }
 ];
+
+    

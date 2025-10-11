@@ -118,10 +118,10 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
-    const personalizedPrice = 10999;
+    const personalizedPrice = 11999; 
     
     const professionalPaymentId = pack.paymentId; 
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd';
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Correct ID for Personalized Pack
 
     if (pack.id === 'personal_travel_pack') {
         return (
@@ -276,3 +276,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    

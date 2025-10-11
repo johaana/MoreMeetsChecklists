@@ -329,3 +329,5 @@ export const individualChecklists: IndividualChecklist[] = [
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
+
+    
