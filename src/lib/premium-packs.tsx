@@ -1,5 +1,4 @@
-
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Video, LandPlot, Trash, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Video, LandPlot, Trash, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -73,7 +72,7 @@ export const premiumPacks: PremiumPack[] = [
             description: "An airside emergency requires flawless coordination between multiple departments. This scenario shows how checklists for security, facility maintenance, and airside ops come together.",
             tasks: [
                 { id: 'AIR-FOD-001', description: "Conduct an immediate FOD (Foreign Object Debris) walk of the affected runway/taxiway.", sourceChecklist: "Airside Safety & FOD Prevention", priority: 'High' },
-                { id: 'ELEC-002', description: "Daily DG set and Fuel Management", sourceChecklist: "Electrical Systems", priority: 'High' },
+                { id: 'ELS-002', description: "Daily DG set and Fuel Management", sourceChecklist: "Electrical Systems", priority: 'High' },
                 { id: 'SEC-ACM-001', description: "Verify access control at all airside entry points is functional.", sourceChecklist: "Security & Access Control", priority: 'High' },
                 { id: 'FLEET-HEM-001', description: "Conduct pre-use safety checks on all required response vehicles.", sourceChecklist: "Fleet & Heavy Equipment Management", priority: 'High' }
             ]
@@ -102,7 +101,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: " terminal_housekeeping",
+                title: " Terminal Housekeeping",
                 department: "Housekeeping",
                 frequency: "Hourly/Daily",
                 role: "Housekeeping Supervisor",
@@ -1271,7 +1270,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' &amp; audit 'LIS-HIS-EMR Data Integrity'.",
+            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
@@ -2063,8 +2062,8 @@ export const premiumPacks: PremiumPack[] = [
         description: "For event planners and agencies. A comprehensive toolkit for flawless execution of corporate events, weddings, and conferences.",
         icon: <Trophy className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Master 'Venue Selection &amp; Contracting' to protect your clients and budget.",
-            "Implement a 'Pre-Event AV &amp; Tech Check' to avoid on-stage disasters.",
+            "Master 'Venue Selection & Contracting' to protect your clients and budget.",
+            "Implement a 'Pre-Event AV & Tech Check' to avoid on-stage disasters.",
             "NEW: Includes a 'Speaker Rehearsal' and 'Critical Vendor Confirmation' checklists."
         ],
         globalStandards: {
@@ -2978,8 +2977,8 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
-            "NEW: Added a 'New Office Build-Out &amp; Project Management' checklist.",
-            "Standardize your 'New Employee Onboarding' from a legal perspective.",
+            "NEW: Added a 'New Office Build-Out & Project Management' checklist.",
+            "Standardize your 'New Employee Legal Onboarding' from a legal perspective.",
             "Implement a 'Vendor Contract Review' checklist for non-lawyers."
         ],
         globalStandards: {
@@ -3097,8 +3096,105 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 'sports_complex_operations_pack',
+        title: "Sports Complex & Arena Operations",
+        priceUSD: 199.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Entertainment",
+        description: "For stadium and arena managers. A complete toolkit for managing large-scale sports venues, focusing on safety, fan experience, and operational readiness.",
+        icon: <Trophy className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Field of Play & Turf Management' checklist.",
+            "Standardize 'Crowd Management & Egress Planning' for large events.",
+            "Master 'Ticketing System & Access Control' audits.",
+            "Includes 'Broadcast & Media Operations' coordination."
+        ],
+        globalStandards: {
+            title: "Aligned with Global Venue Management Standards",
+            standards: [
+                { name: "Safety & Security", description: "Best practices for crowd management, emergency response, and venue security." },
+                { name: "Technical", description: "Protocols for turf management, broadcast infrastructure, and large-scale AV systems." },
+                { name: "Guest Experience", description: "Standards for ticketing, concessions, and creating a world-class fan experience." }
+            ]
+        },
+        checklists: []
+    },
+    {
+        id: 'theme_park_operations_pack',
+        title: "Theme Park & Amusement Park Operations",
+        priceUSD: 249.99,
+        priceINR: 14999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Entertainment",
+        description: "For theme park directors. A safety-critical toolkit for managing rides, attractions, performers, and large-scale guest services.",
+        icon: <FerrisWheel className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Daily Ride Safety & Maintenance' check based on ASTM standards.",
+            "Standardize 'Character Performer & Mascot' management protocols.",
+            "Master 'Queue Line Management & Guest Flow' to enhance experience.",
+            "Includes 'Park-Wide Emergency Response Drill' for crisis readiness."
+        ],
+        globalStandards: {
+            title: "Aligned with Amusement Park & Attraction Standards",
+            standards: [
+                { name: "Ride Safety", description: "ASTM International standards for amusement ride design and maintenance." },
+                { name: "Guest Safety", description: "Protocols for crowd management, emergency evacuation, and first aid." },
+                { name: "Operations", description: "Best practices for guest flow, character performance, and show quality." }
+            ]
+        },
+        checklists: []
+    },
+    {
+        id: 'museum_cultural_institution_pack',
+        title: "Museum & Cultural Institution Management",
+        priceUSD: 119.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Entertainment",
+        description: "For museum directors and curators. A specialized toolkit for managing exhibits, collections, and visitor experiences.",
+        icon: <GalleryVertical className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Implement a 'Collection & Artifact Handling' protocol.",
+            "Standardize the 'Exhibit Design & Installation' project plan.",
+            "Master 'Climate Control & Environmental Monitoring' for preservation.",
+            "Includes 'Visitor Flow Analysis' and 'Educational Program Management'."
+        ],
+        globalStandards: {
+            title: "Aligned with Museum & Archival Standards",
+            standards: [
+                { name: "Collection Care", description: "International Council of Museums (ICOM) standards for artifact preservation and handling." },
+                { name: "Exhibit Management", description: "Best practices for exhibit design, interpretation, and visitor engagement." },
+                { name: "Facility", description: "Standards for environmental control (temperature, humidity, light) and security." }
+            ]
+        },
+        checklists: []
+    },
+    {
+        id: 'music_festival_production_pack',
+        title: "Concert & Music Festival Production",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Entertainment",
+        description: "For festival producers and production managers. A toolkit for executing large-scale music events, from stage production to artist liaison.",
+        icon: <Guitar className="w-8 h-8 text-primary" />,
+        sampleItems: [
+            "Master 'Stage & Rigging Safety' checks.",
+            "Standardize 'Artist & Tour Manager Liaison' process.",
+            "Implement 'Sound & Lighting System' checks and balances.",
+            "Includes 'Multi-Day Camping & Sanitation' and 'Vendor Management' checklists."
+        ],
+        globalStandards: {
+            title: "Aligned with Live Event Production Standards",
+            standards: [
+                { name: "Safety", description: "Event Safety Alliance (ESA) guidelines for large-scale gatherings." },
+                { name: "Production", description: "Best practices for stage rigging, temporary power distribution, and audio engineering." },
+                { name: "Logistics", description: "Protocols for artist transport, multi-day site management, and vendor coordination." }
+            ]
+        },
+        checklists: []
     }
 ];
-
-
-    
