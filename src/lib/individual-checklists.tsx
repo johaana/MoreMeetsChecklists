@@ -231,7 +231,7 @@ export const individualChecklists: IndividualChecklist[] = [
         icon: <Briefcase />,
         description: "A comprehensive checklist for founders to prepare their company for the rigorous investor due diligence process.",
         longDescription: "Getting a 'yes' from an investor is only the beginning. The due diligence process that follows is intense and can make or break a funding round. This checklist prepares you for every aspect, ensuring your legal, financial, technical, and team-related documentation is in perfect order. It helps you anticipate investor questions and present a professional, organized front, dramatically increasing your chances of a smooth and successful closing.",
-        relatedPackId: "",
+        relatedPackId: "corporate_legal_compliance_starter_kit",
         whoIsItFor: ["Startup Founders", "CFOs", "Venture Capital Associates", "Angel Investors"],
         painPoints: [
             {
@@ -293,13 +293,13 @@ export const individualChecklists: IndividualChecklist[] = [
     {
         id: 'home-relocation-checklist',
         title: "Home Relocation & Moving Checklist",
-        priceINR: 1299,
-        paymentId: "pl_ROLjNNiQa8G8XJ", 
+        priceINR: 499,
+        paymentId: "pl_RMjB52nF5Z2jG3", 
         category: "Personal",
         icon: <Home />,
         description: "The ultimate stress-saving checklist for a smooth move. Covers tasks from one month out to moving day and settling in.",
         longDescription: "Moving is one of life's most stressful events. This detailed checklist turns chaos into an organized process. It breaks down everything you need to do into manageable weekly tasks, starting from 4 weeks before your move. It covers decluttering, booking movers, notifying utilities, packing strategies, and the critical tasks for moving day itself, ensuring you don't forget anything important.",
-        relatedPackId: "",
+        relatedPackId: "personal_travel_pack",
         whoIsItFor: ["Renters", "Homeowners", "Families relocating", "First-time movers"],
         painPoints: [
             {
@@ -329,5 +329,3 @@ export const individualChecklists: IndividualChecklist[] = [
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
-
-    

@@ -118,10 +118,11 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
-    const personalizedPrice = 11999; 
-    
     const professionalPaymentId = pack.paymentId; 
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Correct ID for Personalized Pack
+
+    // Dynamic pricing for Personalized Pack
+    const personalizedPrice = professionalPrice === 7999 ? 11999 : professionalPrice + 4000;
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // The ID for the personalized/custom tier
 
     if (pack.id === 'personal_travel_pack') {
         return (
@@ -162,7 +163,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <RazorpayButton paymentId={professionalPaymentId} />
+                 <div className="[&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
+                    <RazorpayButton paymentId={professionalPaymentId} />
+                </div>
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -191,7 +194,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <RazorpayButton paymentId={personalizedPaymentId} />
+                 <div className="[&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                    <RazorpayButton paymentId={personalizedPaymentId} />
+                </div>
                 <PaymentDisclaimerDialog />
             </CardFooter>
         </Card>,
@@ -276,5 +281,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
