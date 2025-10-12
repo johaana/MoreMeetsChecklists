@@ -763,7 +763,7 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'film_production_pack',
         title: "Film & OTT Production Pack",
-        priceUSD: 199.99,
+        priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
@@ -3264,4 +3264,5 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
 
