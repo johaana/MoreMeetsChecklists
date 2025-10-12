@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice } from 'lucide-react';
 
 export const painPointsContent = {
     Hospitality: {
@@ -42,26 +42,26 @@ export const painPointsContent = {
      Education: {
          title: "The Business Case for a Safer, More Organized Campus",
          points: [
-            { icon: <Shield />, title: "Student Safety & Security Risks", description: "Implement a robust safety framework covering everything from daily campus patrols and visitor verification to student dismissal, bus safety, and emergency drills, ensuring a secure environment." },
-            { icon: <TrendingUp />, title: "Liability & Compliance Issues", description: "Proactively manage risks by ensuring all safety equipment is functional, playgrounds are hazard-free, and emergency procedures are regularly practiced, protecting your institution from legal and financial liability." },
-            { icon: <HandCoins />, title: "Operational Chaos & Inefficiency", description: "Standardize daily operations, from opening procedures and classroom safety checks to managing field trips, freeing up administrative time to focus on educational outcomes rather than daily issues." },
-            { icon: <Users />, title: "Negative Parent Perception & Trust", description: "Demonstrate a clear, verifiable commitment to safety and organization. A well-run, secure campus builds deep trust and confidence with parents, a key factor in school choice and reputation." }
+            { icon: <Shield />, title: "Student Safety & Security Risks", description: "Prevent a parent's worst nightmare. Implement a robust framework covering unauthorized pickups, bus safety, and emergency drills to ensure a secure environment." },
+            { icon: '🏫', title: "Compliance Failures (CBSE/ICSE)", description: "Stop scrambling for inspections. Our checklists ensure you are always compliant with education board requirements for fire safety, lab safety, and facilities, preventing penalties." },
+            { icon: <HandCoins />, title: "Operational Chaos & Inefficiency", description: "Standardize daily operations, from opening procedures and classroom safety checks to managing field trips, freeing up administrative time to focus on educational outcomes." },
+            { icon: <Users />, title: "Negative Parent Perception & Trust", description: "Demonstrate a clear, verifiable commitment to safety and organization. A well-run, secure campus builds deep trust and confidence with parents, a key factor in school choice." }
          ]
     },
     Manufacturing: {
         title: "The Business Case for a Safer, More Productive Plant",
         points: [
-            { icon: <Shield />, title: "Worker Safety & Catastrophic Accidents", description: "Implement life-saving protocols like Lock-Out Tag-Out (LOTO) and Permit-to-Work systems. Our checklists prevent injuries, ensure EHS compliance, and create a culture of safety." },
+            { icon: <Shield />, title: "Worker Safety & Catastrophic Accidents", description: "Prevent devastating injuries. Implement life-saving protocols like Lock-Out Tag-Out (LOTO) and Permit-to-Work systems to ensure EHS compliance and create a culture of safety." },
             { icon: <TrendingUp />, title: "Unplanned Downtime & Production Loss", description: "Shift from reactive repairs to data-driven predictive maintenance. Our checklists help you analyze sensor data, avert failures before they happen, and maximize machine uptime." },
-            { icon: <HandCoins />, title: "Quality Control Failures & Costly Rework", description: "Prevent defects at the source with robust protocols for raw material inspection, critical spares verification, and tool calibration, reducing waste and improving first-pass yield." },
-            { icon: <Users />, title: "Supply Chain Vulnerabilities", description: "Test your resilience with supply chain disruption drills. Our checklists help you identify weaknesses in your logistics and build a more robust, agile production plan." }
+            { icon: <HandCoins />, title: "Quality Control Failures & Costly Rework", description: "Prevent defects at the source. Use robust protocols for raw material inspection, critical spares verification, and tool calibration to reduce waste and improve first-pass yield." },
+            { icon: <Users />, title: "Supply Chain Vulnerabilities", description: "Build resilience. Test your supply chain with disruption drills and identify weaknesses in your logistics to create a more robust, agile production plan." }
         ]
     },
     Events: {
         title: "The Business Case for Flawless Event Execution",
         points: [
-            { icon: <Trophy />, title: "On-Stage Failures & Technical Glitches", description: "Avoid event-killing disasters. Our mandatory technical rehearsal and AV checklists ensure every microphone, presentation, and video works perfectly when the spotlight is on." },
-            { icon: <Shield />, title: "Crowd Safety & Security Risks", description: "Manage large crowds effectively with protocols for entry screening, real-time density monitoring, and emergency response, ensuring a safe experience for every attendee." },
+            { icon: <Trophy />, title: "On-Stage Failures & Technical Glitches", description: "Avoid event-killing disasters like the Indiana State Fair stage collapse. Our mandatory technical rehearsal and AV checklists ensure every microphone, presentation, and rigging works perfectly." },
+            { icon: <Shield />, title: "Crowd Safety & Security Risks", description: "Prevent tragedies like the Salt Lake Stadium stampede. Manage large crowds effectively with protocols for entry screening, real-time density monitoring, and emergency response." },
             { icon: <HandCoins />, title: "Vendor Miscommunication & Budget Overruns", description: "Our 'Sales-to-Ops Handover' and 'Critical Vendor Confirmation' checklists ensure what you promise the client is what gets delivered, preventing costly last-minute surprises." },
             { icon: <TrendingUp />, title: "Poor Fan & Athlete Experience", description: "From ensuring the field of play is safe for athletes to optimizing concession stand flow for fans, our checklists cover every detail that contributes to a world-class event." }
         ]
@@ -123,7 +123,7 @@ export const painPointsContent = {
     Maritime: {
         title: "The Business Case for Maritime Excellence",
         points: [
-            { icon: <Shield />, title: "Ensure ISPS & ISM Code Compliance", description: "Navigate complex international maritime regulations with confidence. Our checklists ensure you meet mandatory safety and security standards, preventing costly detentions." },
+            { icon: <Shield />, title: "Ensure ISPS & ISM Code Compliance", description: "Navigate complex international maritime regulations (SOLAS, MARPOL) with confidence. Our checklists ensure you meet mandatory safety and security standards, preventing costly detentions." },
             { icon: <Anchor />, title: "Prevent Catastrophic Incidents", description: "From 'Vessel Mooring' to 'Bunkering Operations,' our checklists systematize high-risk procedures to prevent accidents, spills, and injuries." },
             { icon: <TrendingUp />, title: "Improve Turnaround Efficiency", description: "Standardize cargo operations, customs clearance, and port communications to minimize time in port and maximize vessel utilization." },
             { icon: <Recycle />, title: "Manage Environmental Obligations", description: "Implement auditable processes for 'Ballast Water Management' and MARPOL compliance, protecting the environment and avoiding heavy fines." }
@@ -155,7 +155,43 @@ export const painPointsContent = {
             { icon: <Shield />, title: "Manage Compliance & Reduce Risk", description: "For travel agencies, our checklists help ensure IATA compliance and proper documentation, protecting you from costly errors and penalties." },
             { icon: <Users />, title: "Improve Project Management & Profitability", description: "Track project milestones, manage resources, and ensure client deliverables are met on time and on budget." }
         ]
-    }
+    },
+    Logistics: {
+        title: "The Business Case for Logistics Excellence",
+        points: [
+            { icon: <Shield />, title: "Prevent Costly Shipping Errors", description: "A single data entry mistake in dimensions can cost thousands in chargebacks. Our 'New Product Master Data Entry' checklist with a 'maker-checker' protocol prevents this." },
+            { icon: <TrendingUp />, title: "Optimize Warehouse Throughput", description: "Implement 5S housekeeping and systematic inventory control (cycle counting) to improve picking accuracy, reduce search time, and get orders out faster." },
+            { icon: <Truck />, title: "Ensure Fleet Safety & Uptime", description: "Reduce breakdowns and accidents with mandatory pre-trip inspections for all vehicles and a robust preventive maintenance schedule for your entire fleet." },
+            { icon: <Users />, title: "Improve Worker Safety", description: "Minimize accidents with checklists for forklift operations, loading dock safety, and hazardous material handling, creating a safer, more productive work environment." },
+        ]
+    },
+    Construction: {
+        title: "The Business Case for Construction Site Safety",
+        points: [
+            { icon: <Shield />, title: "Prevent Fatal Accidents", description: "A trench collapse is one of the deadliest construction accidents. Our daily 'Excavation & Trenching Permit' ensures protective systems are checked before any worker enters." },
+            { icon: <FileCheck />, title: "Ensure Subcontractor Compliance", description: "Don't inherit liability. Our 'Contractor Pre-Qualification' checklist verifies that all subcontractors have the required insurance and safety certifications before they step on site." },
+            { icon: <TrendingUp />, title: "Avoid Costly Project Delays", description: "Systematically manage high-risk tasks like scaffolding, electrical work, and work-at-height with 'Permit-to-Work' systems that prevent incidents and keep your project on schedule." },
+            { icon: <Users />, title: "Build a Culture of Safety", description: "Daily site audits and mandatory PPE checks transform safety from a binder on a shelf into a daily, verifiable habit for every worker on your site." },
+        ]
+    },
+    "Film Production": {
+        title: "Why Your Production Needs Professional SOPs",
+        points: [
+            { icon: <HandCoins />, title: "Prevent Crippling Budget Overruns", description: "A $2M film was halted for failing to secure life rights. Our pre-production checklists ensure all legal clearances, contracts, and permits are secured before the camera rolls." },
+            { icon: <Shield />, title: "Ensure On-Set Safety & Avoid Liability", description: "Accidents on set can be catastrophic. Our checklists for equipment handling, stunt coordination, and on-set safety (EHS) create a safer working environment for your cast and crew." },
+            { icon: <TrendingUp />, title: "Eliminate Costly Delays", description: "Standardize your entire workflow, from daily call sheets and location readiness to post-production handovers, to prevent miscommunication and keep your production on schedule." },
+            { icon: <Video />, title: "Guarantee Technical Quality", description: "Ensure your final product meets global distribution standards with checklists for equipment checks (SMPTE), data management, color grading, and final QC." },
+        ]
+    },
+    "OTT Platform": {
+        title: "Why Your Streaming Platform Needs Operational Rigor",
+        points: [
+            { icon: <Shield />, title: "Prevent Data Breaches & Ensure Compliance", description: "Protect your user data and avoid massive fines with checklists for GDPR/DPDP compliance, DRM implementation, and ISO 27001 security protocols." },
+            { icon: <TrendingUp />, title: "Reduce User Churn & Improve Engagement", description: "A major OTT outage during a live event highlights the need for robust infrastructure SOPs. Our checklists ensure platform stability, a great UX, and accessible content (WCAG 2.1)." },
+            { icon: <FileCheck />, title: "Stop Content Piracy & Licensing Issues", description: "Safeguard your most valuable assets. Implement checklists for copyright enforcement, content licensing verification, and secure content delivery networks." },
+            { icon: <Computer />, title: "Streamline Your Content Pipeline", description: "From data-driven content strategy and acquisition to automated QC, metadata tagging, and multi-language support, our checklists optimize your entire content lifecycle." },
+        ]
+    },
 };
 
 type PainPoints = typeof painPointsContent;
