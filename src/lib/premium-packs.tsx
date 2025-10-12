@@ -796,7 +796,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-EDU-001', description: "Inspect canteen, classrooms, and waste areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Campus-wide' },
                     { id: 'PEST-EDU-002', description: "Ensure food in the canteen is stored in sealed containers and practice good kitchen hygiene.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Canteen' },
                     { id: 'PEST-EDU-003', description: "Check that all garbage bins are covered and emptied daily, especially in food areas.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Campus-wide' },
-                    { id: 'PEST-EDU-004', description: "Review reports from the pest control vendor and ensure all recommendations are followed.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Review', location: 'Admin Office' },
+                    { id: 'PEST-EDU-004', description: "Review reports from the pest control vendor and ensure all recommended actions are followed.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Review', location: 'Admin Office' },
                     { id: 'PEST-EDU-005', description: "Seal cracks and holes in walls and around pipes to eliminate pest entry points.", priority: 'Medium', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Campus-wide' }
                 ]
             }
@@ -1647,8 +1647,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'film_production_pack',
         title: "Film Production & Studio Operations",
         priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Film Production",
         description: "For Producers & Studio Heads. A global-standard SOP toolkit for managing film production, focusing on safety, compliance, and budget control.",
         icon: <Video className="w-8 h-8 text-primary" />,
@@ -1806,7 +1806,7 @@ export const premiumPacks: PremiumPack[] = [
             standards: [
                 { name: "Security", description: "ISO 27001 for Information Security, PCI DSS for payments, DRM for content protection." },
                 { name: "Accessibility", description: "WCAG 2.1 guidelines to ensure content is accessible to users with disabilities." },
-                { name: "Data Privacy", description: "GDPR (EU), CCPA (California), and other regional data protection regulations." },
+                { name: "Data Privacy", description: "GDPR (EU), DPDP (India), CCPA (California) and other regional data protection regulations." },
                 { name: "Streaming Tech", description: "ISO/IEC 23009 (MPEG-DASH) for adaptive bitrate streaming." }
             ]
         },
