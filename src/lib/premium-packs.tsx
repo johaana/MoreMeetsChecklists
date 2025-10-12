@@ -3188,10 +3188,10 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Facility Manager",
                 summary: "A systematic approach to cleaning the venue after an event, focusing on efficiency and environmental compliance.",
                 tasks: [
-                    { id: 'STAD-PEC-01', description: "Deploy cleaning crews to all zones according to a pre-defined schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Deployment Plan', location: 'Venue-wide' },
-                    { id: 'STAD-PEC-02', description: "Segregate waste into recyclables, compostables, and general waste streams.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Log', location: 'Waste Management Area' },
-                    { id: 'STAD-PEC-03', description: "Conduct a final inspection of seating areas, restrooms, and common areas for cleanliness.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Report', location: 'Venue-wide' },
-                    { id: 'STAD-PEC-04', description: "Report any damages to seats, railings, or other infrastructure for repair.", priority: 'High', riskLevel: 'Medium', proof: 'Damage Report', location: 'Venue-wide' },
+                    { id: 'STAD-PEC-001', description: "Deploy cleaning crews to all zones according to a pre-defined schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Deployment Plan', location: 'Venue-wide' },
+                    { id: 'STAD-PEC-002', description: "Segregate waste into recyclables, compostables, and general waste streams.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Log', location: 'Waste Management Area' },
+                    { id: 'STAD-PEC-003', description: "Conduct a final inspection of seating areas, restrooms, and common areas for cleanliness.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Report', location: 'Venue-wide' },
+                    { id: 'STAD-PEC-004', description: "Report any damages to seats, railings, or other infrastructure for repair.", priority: 'High', riskLevel: 'Medium', proof: 'Damage Report', location: 'Venue-wide' },
                 ]
             }
         ]
