@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store } from 'lucide-react';
 
 export const painPointsContent = {
     Hospitality: {
@@ -12,6 +12,24 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Inefficient Operations & Staff Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
         ]
     },
+    Retail: {
+        title: "The Business Case for Retail Excellence",
+        points: [
+            { icon: <Shield />, title: "Inventory Shrinkage & Return Fraud", description: "Implement ironclad security protocols for high-value items, serial number tracking, and fitting room management to directly protect your bottom line from theft." },
+            { icon: <Store />, title: "Fresh Food Spoilage & Wastage", description: "For supermarkets, our HACCP-aligned checklists for fresh departments ensure proper temperature control and stock rotation, drastically reducing spoilage and protecting margins." },
+            { icon: <TrendingUp />, title: "Lost Sales Due to Stockouts or Inaccuracy", description: "Streamline your inventory management, from receiving and stocking to daily audits and master data accuracy, ensuring popular items are always available." },
+            { icon: <Users />, title: "Inconsistent Customer Experience", description: "Standardize your sales process, visual merchandising, and technical support to ensure every shopper receives the same high-quality experience, building brand loyalty." }
+        ]
+    },
+    "Entertainment & Events": {
+        title: "The Business Case for Flawless Event Execution",
+        points: [
+            { icon: <Shield />, title: "Prevent Crowd Disasters & Stampedes", description: "Tragedies like the Salt Lake Stadium stampede result from poor egress management. Our checklists for crowd flow, barricade placement, and emergency exits are critical for public safety." },
+            { icon: <TrendingUp />, title: "Avoid Show-Stopping Technical Failures", description: "Avoid event-killing disasters like the Indiana State Fair stage collapse. Our mandatory technical rehearsal, AV, and rigging checklists ensure every element works perfectly under pressure." },
+            { icon: <HandCoins />, title: "Eliminate Vendor Miscommunication & Budget Overruns", description: "Our 'Sales-to-Ops Handover' and 'Critical Vendor Confirmation' checklists ensure what you promise the client is what gets delivered, preventing costly last-minute surprises and disputes." },
+            { icon: <Users />, title: "Protect Your Reputation & Brand Image", description: "In the age of social media, any failure goes viral instantly. A systematic, checklist-driven approach is your best insurance against the negative press from safety lapses or vendor violations." }
+        ]
+    },
     "Corporate & Tech": {
         title: "The Business Case for a More Efficient & Secure Workplace",
         points: [
@@ -21,13 +39,13 @@ export const painPointsContent = {
             { icon: <HandCoins />, title: "Poor Employee Onboarding & Early Turnover", description: "Create a structured and welcoming onboarding experience. Our checklists ensure new hires have the access, information, and support they need to become productive members of the team from day one." }
         ]
     },
-    Retail: {
-        title: "The Business Case for Retail Excellence",
+    "Industrial & Transport": {
+        title: "The Business Case for a Safer, More Productive Plant",
         points: [
-            { icon: <Shield />, title: "Inventory Shrinkage & Return Fraud", description: "Implement ironclad security protocols for high-value items, serial number tracking, and fitting room management to directly protect your bottom line from theft." },
-            { icon: 'GROCERY', title: "Fresh Food Spoilage & Wastage", description: "For supermarkets, our HACCP-aligned checklists for fresh departments ensure proper temperature control and stock rotation, drastically reducing spoilage and protecting margins." },
-            { icon: <TrendingUp />, title: "Lost Sales Due to Stockouts or Inaccuracy", description: "Streamline your inventory management, from receiving and stocking to daily audits and master data accuracy, ensuring popular items are always available." },
-            { icon: <Users />, title: "Inconsistent Customer Experience", description: "Standardize your sales process, visual merchandising, and technical support to ensure every shopper receives the same high-quality experience, building brand loyalty." }
+            { icon: <Shield />, title: "Prevent Life-Altering Accidents", description: "A single LOTO failure can lead to a fatality. Our life-saving protocols for Lock-Out Tag-Out, Permit-to-Work, and Confined Space Entry are non-negotiable systems to protect your workforce." },
+            { icon: <TrendingUp />, title: "Eliminate Unplanned Downtime & Production Losses", description: "Shift from reactive repairs to data-driven predictive maintenance. Our checklists help you analyze sensor data, avert failures before they happen, and maximize machine uptime and profitability." },
+            { icon: <HandCoins />, title: "Stop Costly Quality Control Failures & Rework", description: "Prevent defects at the source. Use robust protocols for raw material inspection, critical spares verification, and tool calibration to reduce waste, improve first-pass yield, and protect your margins." },
+            { icon: <Users />, title: "Ensure Vendor & Contractor Safety Compliance", description: "Don't let a contractor's safety lapse become your liability. Our Contractor EHS Management checklist ensures all third-party vendors on your site adhere to your safety standards." }
         ]
     },
     Healthcare: {
@@ -48,22 +66,31 @@ export const painPointsContent = {
             { icon: <Users />, title: "Build Deep Parent Trust & Confidence", description: "A visible and systematic approach to safety and organization is the most powerful marketing tool. Demonstrate your commitment to safety and build the trust that is a key factor in school choice." }
          ]
     },
-    "Industrial & Transport": {
-        title: "The Business Case for a Safer, More Productive Plant",
+    "Wellness & Beauty": {
+        title: "The Business Case for a Premier Wellness Experience",
         points: [
-            { icon: <Shield />, title: "Prevent Life-Altering Accidents", description: "A single LOTO failure can lead to a fatality. Our life-saving protocols for Lock-Out Tag-Out, Permit-to-Work, and Confined Space Entry are non-negotiable systems to protect your workforce." },
-            { icon: <TrendingUp />, title: "Eliminate Unplanned Downtime & Production Losses", description: "Shift from reactive repairs to data-driven predictive maintenance. Our checklists help you analyze sensor data, avert failures before they happen, and maximize machine uptime and profitability." },
-            { icon: <HandCoins />, title: "Stop Costly Quality Control Failures & Rework", description: "Prevent defects at the source. Use robust protocols for raw material inspection, critical spares verification, and tool calibration to reduce waste, improve first-pass yield, and protect your margins." },
-            { icon: <Users />, title: "Ensure Vendor & Contractor Safety Compliance", description: "Don't let a contractor's safety lapse become your liability. Our Contractor EHS Management checklist ensures all third-party vendors on your site adhere to your safety standards." }
+            { icon: <Users />, title: "Ensure Client Safety & Build Trust", description: "A single adverse reaction can destroy your reputation. Our checklists for contraindication screening and equipment sterilization are critical for protecting your clients' safety and building deep, lasting trust." },
+            { icon: <TrendingUp />, title: "Deliver Consistent, High-Quality Services", description: "Standardize every aspect of the client journey, from the initial consultation to the post-treatment follow-up, ensuring every client receives the same 5-star experience that justifies premium pricing." },
+            { icon: <HandCoins />, title: "Optimize Inventory & Reduce Waste", description: "Implement protocols for managing professional products and supplies, reducing spoilage and ensuring you always have what you need for your services, directly impacting your bottom line." },
+            { icon: <Shield />, title: "Enhance Hygiene & Sanitation", description: "In a post-COVID world, visible and verifiable hygiene is paramount. Our cleaning and sanitation checklists provide peace of mind for both your clients and your staff, making them feel safe and cared for." }
         ]
     },
-    "Entertainment & Events": {
-        title: "The Business Case for Flawless Event Execution",
+    Agriculture: {
+        title: "The Business Case for Modern Farm Operations",
         points: [
-            { icon: <Shield />, title: "Prevent Crowd Disasters & Stampedes", description: "Tragedies like the Salt Lake Stadium stampede result from poor egress management. Our checklists for crowd flow, barricade placement, and emergency exits are critical for public safety." },
-            { icon: <TrendingUp />, title: "Avoid Show-Stopping Technical Failures", description: "Avoid event-killing disasters like the Indiana State Fair stage collapse. Our mandatory technical rehearsal, AV, and rigging checklists ensure every element works perfectly under pressure." },
-            { icon: <HandCoins />, title: "Eliminate Vendor Miscommunication & Budget Overruns", description: "Our 'Sales-to-Ops Handover' and 'Critical Vendor Confirmation' checklists ensure what you promise the client is what gets delivered, preventing costly last-minute surprises and disputes." },
-            { icon: <Users />, title: "Protect Your Reputation & Brand Image", description: "In the age of social media, any failure goes viral instantly. A systematic, checklist-driven approach is your best insurance against the negative press from safety lapses or vendor violations." }
+            { icon: <TrendingUp />, title: "Maximize Yield & Reduce Crop Loss", description: "Implement data-driven protocols for soil health, irrigation, and pest management to increase your yield and reduce losses from environmental factors." },
+            { icon: <Shield />, title: "Ensure Food Safety & Traceability", description: "From farm to fork, our checklists help you comply with global food safety standards (GlobalG.A.P.), ensuring your produce is safe and traceable, opening up premium markets." },
+            { icon: <HandCoins />, title: "Optimize Resource Use & Cut Costs", description: "Systematically manage your water, fertilizer, and energy consumption to reduce operational costs and improve the sustainability of your farm." },
+            { icon: <Users />, title: "Improve Worker Safety & Farm Efficiency", description: "Protect your most valuable asset—your people. Implement safety protocols for heavy machinery operation, pesticide handling, and daily farm tasks to create a safer and more efficient work environment." }
+        ]
+    },
+    "Specialized Production": {
+        title: "The Business Case for Professional Production Workflow",
+        points: [
+            { icon: <HandCoins />, title: "Prevent Crippling Budget Overruns & Delays", description: "A $2M film was halted for failing to secure life rights. Our pre-production checklists ensure all legal clearances, contracts, and permits are secured before the camera even rolls, saving you from catastrophic financial loss." },
+            { icon: <Shield />, title: "Ensure On-Set Safety & Avoid Liability", description: "Accidents on set can be career-ending. Our checklists for equipment handling, stunt coordination, and on-set safety (EHS) create a safer working environment and a clear audit trail of due diligence for your cast and crew." },
+            { icon: <TrendingUp />, title: "Eliminate Costly Post-Production Errors", description: "Standardize your entire workflow, from daily call sheets and data management to post-production handovers, to prevent miscommunication, lost footage, and expensive rework." },
+            { icon: <Video />, title: "Guarantee Technical Quality for Global Distribution", description: "Ensure your final product meets global distribution standards with checklists for equipment checks (SMPTE), data management, color grading, and final QC, preventing costly rejections from distributors." },
         ]
     },
     Personal: {
@@ -74,55 +101,9 @@ export const painPointsContent = {
             { icon: <Shield />, title: "Peace of Mind for Your Loved Ones", description: "Whether it's for a pet sitter or a family member, a clear set of instructions ensures the ones you care for are looked after exactly the way you want, giving you true peace of mind while you're away." },
             { icon: <Users />, title: "A Happier, More Present You", description: "When you're not worried about forgetting something, you're free to be more present and enjoy the moment—whether that's your vacation or the first night in your new home." }
         ]
-    },
-     "Specialized Production": {
-        title: "The Business Case for Professional Production Workflow",
-        points: [
-            { icon: <HandCoins />, title: "Prevent Crippling Budget Overruns & Delays", description: "A $2M film was halted for failing to secure life rights. Our pre-production checklists ensure all legal clearances, contracts, and permits are secured before the camera even rolls, saving you from catastrophic financial loss." },
-            { icon: <Shield />, title: "Ensure On-Set Safety & Avoid Liability", description: "Accidents on set can be career-ending. Our checklists for equipment handling, stunt coordination, and on-set safety (EHS) create a safer working environment and a clear audit trail of due diligence for your cast and crew." },
-            { icon: <TrendingUp />, title: "Eliminate Costly Post-Production Errors", description: "Standardize your entire workflow, from daily call sheets and data management to post-production handovers, to prevent miscommunication, lost footage, and expensive rework." },
-            { icon: <Video />, title: "Guarantee Technical Quality for Global Distribution", description: "Ensure your final product meets global distribution standards with checklists for equipment checks (SMPTE), data management, color grading, and final QC, preventing costly rejections from distributors." },
-        ]
-    },
-    "Wellness & Beauty": {
-        title: "The Business Case for a Premier Wellness Experience",
-        points: [
-            { icon: <Users />, title: "Ensure Client Safety & Build Trust", description: "A single adverse reaction can destroy your reputation. Our checklists for contraindication screening and equipment sterilization are critical for protecting your clients' safety and building deep, lasting trust." },
-            { icon: <TrendingUp />, title: "Deliver Consistent, High-Quality Services", description: "Standardize every aspect of the client journey, from the initial consultation to the post-treatment follow-up, ensuring every client receives the same 5-star experience that justifies premium pricing." },
-            { icon: <HandCoins />, title: "Optimize Inventory & Reduce Waste", description: "Implement protocols for managing professional products and supplies, reducing spoilage and ensuring you always have what you need for your services, directly impacting your bottom line." },
-            { icon: <Shield />, title: "Enhance Hygiene & Sanitation", description: "In a post-COVID world, visible and verifiable hygiene is paramount. Our cleaning and sanitation checklists provide peace of mind for both your clients and your staff, making them feel safe and cared for." }
-        ]
-    },
-    "Agriculture": {
-        title: "The Business Case for Modern Farm Operations",
-        points: [
-            { icon: <TrendingUp />, title: "Maximize Yield & Reduce Crop Loss", description: "Implement data-driven protocols for soil health, irrigation, and pest management to increase your yield and reduce losses from environmental factors." },
-            { icon: <Shield />, title: "Ensure Food Safety & Traceability", description: "From farm to fork, our checklists help you comply with global food safety standards (GlobalG.A.P.), ensuring your produce is safe and traceable, opening up premium markets." },
-            { icon: <HandCoins />, title: "Optimize Resource Use & Cut Costs", description: "Systematically manage your water, fertilizer, and energy consumption to reduce operational costs and improve the sustainability of your farm." },
-            { icon: <Users />, title: "Improve Worker Safety & Farm Efficiency", description: "Protect your most valuable asset—your people. Implement safety protocols for heavy machinery operation, pesticide handling, and daily farm tasks to create a safer and more efficient work environment." }
-        ]
-    },
-    "Real Estate": {
-        title: "The Business Case for Professional Property Management",
-        points: [
-            { icon: <TrendingUp />, title: "Maximize Asset Value & Reduce Vacancy", description: "Our 'Rental Property Turnaround' checklist helps you get properties rent-ready faster, while preventive maintenance protocols protect the long-term value of your assets." },
-            { icon: <Shield />, title: "Minimize Legal & Compliance Risks", description: "Navigate complex landlord-tenant laws with confidence. Our checklists for lease onboarding, move-out inspections, and safety compliance protect you from disputes and liability." },
-            { icon: <Users />, title: "Improve Tenant Satisfaction & Retention", description: "A professional, systematic approach to maintenance requests, communication, and property upkeep leads to happier tenants who stay longer." },
-            { icon: <HandCoins />, title: "Streamline Operations & Save Time", description: "Standardize everything from rent collection to vendor management, freeing up your time to focus on growing your portfolio instead of firefighting daily issues." }
-        ]
-    },
-    "Compliance": {
-        title: "The Business Case for a Culture of Compliance",
-        points: [
-            { icon: <Shield />, title: "Pass Audits with Confidence", description: "Our ISO-aligned checklists for internal audits, document control, and corrective actions ensure you are always prepared for certification and surveillance audits." },
-            { icon: <TrendingUp />, title: "Move from Reactive to Proactive", description: "Implement systematic processes like root cause analysis and risk assessment to prevent non-conformities before they happen, saving time and resources." },
-            { icon: <Users />, title: "Embed Compliance into Daily Operations", description: "Our checklists turn complex standards into simple, actionable steps for your team, making compliance a daily habit, not a once-a-year scramble." },
-            { icon: <Briefcase />, title: "Achieve & Maintain Certification", description: "Whether you're transitioning to a new standard or aiming for your first certification, our checklists provide a clear roadmap to success." }
-        ]
     }
 };
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
 
-    
