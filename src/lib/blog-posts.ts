@@ -113,5 +113,51 @@ A landmark study in The New England Journal of Medicine found that implementing 
 </ul>
 <p>A checklist doesn't just outline steps; it assigns responsibility and removes ambiguity. In a crisis, it's the single most important tool to ensure a safe outcome for your guests and crew.</p>
 `
+  },
+  {
+    slug: 'life-rights-film-budget-disaster',
+    title: 'The $2M Mistake: How a Pre-Production Checklist Prevents "Life Rights" Disasters',
+    description: 'A film with a $2 million budget was halted because producers failed to secure the life rights for its subjects. Learn how a simple pre-production checklist can save your film from legal catastrophe.',
+    publishedDate: '2024-08-05',
+    author: 'MoreMeets Team',
+    tags: ['Film Production', 'Legal', 'Compliance'],
+    relatedPackId: 'film_production_pack',
+    content: `
+<p>Imagine securing funding, hiring a cast, and building sets, only to have your entire film project shut down by a single legal letter. This nightmare became a reality for the producers of a $2 million biopic who failed to properly secure the life rights of the person their film was about. The result? A costly lawsuit and an abandoned project.</p>
+<p>This wasn't a creative failure; it was an operational one. In the excitement of pre-production, a critical legal step was overlooked—a step that a systematic checklist would have made impossible to miss.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Compliance Foundation of Creativity</h3>
+<p>Filmmaking is a creative endeavor, but it's built on a foundation of rigorous legal and financial compliance. A single crack in this foundation can bring the whole structure crashing down.</p>
+<p>Our <a href="/packs/film_production_pack" class="text-accent underline">Film & OTT Production Pack</a> includes a 'Pre-Production Planning' checklist with a mandatory line item for legal clearances, designed to prevent this exact scenario. It ensures that before any significant funds are spent, your team must verify:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li><strong>Copyright & Chain-of-Title:</strong> Is the script original, or are all underlying rights secured?</li>
+    <li><strong>Life Rights & Defamation Clearances:</strong> Have you obtained signed agreements from any living persons depicted?</li>
+    <li><strong>Errors & Omissions (E&O) Insurance:</strong> Is the project insured against potential lawsuits?</li>
+</ul>
+<p>By turning these critical legal requirements into a mandatory, sign-off-gated step in your workflow, you transform a potential blind spot into a verified checkpoint. It's not about stifling creativity; it's about building the secure foundation that allows creativity to flourish without the risk of a multi-million dollar legal disaster.</p>
+`
+  },
+  {
+    slug: 'ott-platform-outage-lessons',
+    title: 'Anatomy of an Outage: What a Live Sports Streaming Crash Teaches Us About SOPs',
+    description: 'When a major OTT platform crashed during a live cricket match, it infuriated millions of users. We break down how robust infrastructure SOPs for load testing and disaster recovery could have prevented it.',
+    publishedDate: '2024-08-06',
+    author: 'MoreMeets Team',
+    tags: ['OTT Platform', 'Tech', 'Infrastructure', 'SRE'],
+    relatedPackId: 'film_production_pack',
+    content: `
+<p>The year is 2023. A high-stakes international cricket match is in its final, thrilling overs. Millions of paying subscribers are glued to their screens on a major OTT platform. Suddenly, the screen freezes. The stream dies. The platform has buckled under the immense load, leading to a firestorm of angry social media posts and immediate user churn.</p>
+<p>This incident wasn't a bug in the video player; it was a catastrophic failure of infrastructure planning and operational readiness. The platform was not prepared for its own success, a classic sign that operational processes had not scaled with user growth.</p>
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Reactive Firefighting to Proactive Resilience</h3>
+<p>For a streaming service, "platform stability" is the entire product. A single major outage can destroy user trust and erase months of marketing efforts. Preventing this requires moving from a reactive "fix-it-when-it-breaks" mindset to a proactive, checklist-driven culture of Site Reliability Engineering (SRE).</p>
+<p>Our <a href="/packs/film_production_pack" class="text-accent underline">Film & OTT Production Pack</a> contains an 'Infrastructure & Live Event Readiness' checklist specifically designed to prevent such disasters. It mandates that before any major live event, the tech team must:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li><strong>Perform Load Testing:</strong> Simulate peak concurrent viewership in a staging environment to identify bottlenecks before they affect real users.</li>
+    <li><strong>Verify Auto-Scaling Policies:</strong> Ensure that your cloud infrastructure is configured to automatically add more servers as user load increases.</li>
+    <li><strong>Test CDN Configuration:</strong> Check that your Content Delivery Network is correctly configured to cache video segments and reduce load on origin servers.</li>
+    <li><strong>Conduct Disaster Recovery Drills:</strong> Intentionally fail a regional server cluster to ensure the system automatically and seamlessly reroutes traffic, proving your failover mechanisms work.</li>
+    <li><strong>Establish a "War Room" Protocol:</strong> Have a documented plan with on-call engineers, communication channels, and decision-making authority for the duration of the live event.</li>
+</ul>
+<p>Checklists like these turn wishful thinking ("we hope the servers hold up") into verifiable proof ("we have tested for 1.5x expected load and confirmed auto-scaling functions"). For an OTT platform, this isn't just an IT process; it's the core of protecting your brand and revenue.</p>
+`
   }
 ];

@@ -143,7 +143,7 @@ export const painPointsContent = {
         points: [
             { icon: <TrendingUp />, title: "Reduce Picking & Packing Errors", description: "Implement a systematic fulfillment process to ensure the right product gets to the right customer, every time, reducing costly returns." },
             { icon: <Shield />, title: "Prevent Shipping Chargebacks", description: "Our 'Master Data' checklists ensure product weights and dimensions are accurate from the start, preventing unexpected and expensive carrier fees." },
-            { icon: "sl", title: "Improve Inventory Accuracy", description: "Master your inventory with checklists for cycle counting, GRN processes, and managing non-conforming stock, ensuring your website reflects what's actually on the shelf." },
+            { icon: <Users />, title: "Improve Inventory Accuracy", description: "Master your inventory with checklists for cycle counting, GRN processes, and managing non-conforming stock, ensuring your website reflects what's actually on the shelf." },
             { icon: <HandCoins />, title: "Increase Warehouse Efficiency", description: "Optimize your warehouse layout, streamline returns processing (RMA), and improve overall logistics to get orders out the door faster." }
         ]
     },

@@ -1645,12 +1645,12 @@ export const premiumPacks: PremiumPack[] = [
     },
     {
         id: 'film_production_pack',
-        title: "Film Production & Studio Operations",
+        title: "Film & OTT Production Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Film Production",
-        description: "For Producers & Studio Heads. A global-standard SOP toolkit for managing film production, focusing on safety, compliance, and budget control.",
+        description: "For Producers & Studio Heads. A global-standard SOP toolkit for managing film & OTT production, focusing on safety, compliance, and budget control.",
         icon: <Video className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -1658,20 +1658,20 @@ export const premiumPacks: PremiumPack[] = [
             "Ensure legal compliance with 'Pre-Production Clearances' checklist.",
             "Implement 'Film Shoot Safety & Equipment Handling' protocols.",
             "Standardize your 'Post-Production Handover' for smooth workflows.",
-            "Includes 'Cast & Crew Compliance' for contracts and NDAs."
+            "Includes checklists for 'Cast & Crew Compliance' and 'OTT Platform Readiness'."
         ],
         globalStandards: {
-            title: "Aligned with Global Film Production Standards",
+            title: "Aligned with Global Production & Tech Standards",
             standards: [
-                { name: "Safety & Health", description: "ISO 45001 / OSHA for on-set occupational health and safety." },
-                { name: "Quality Management", description: "ISO 9001 for process standardization from pre-production to distribution." },
+                { name: "Safety & Quality", description: "ISO 45001/9001, OSHA for on-set safety and quality management." },
                 { name: "Technical Standards", description: "SMPTE guidelines for camera, audio, and post-production formats." },
+                { name: "Digital & Security", description: "WCAG 2.1 (Accessibility), ISO 27001 (Security), GDPR/DPDP (Privacy), PCI DSS (Payments)." },
                 { name: "Legal & Compliance", description: "Protocols for copyright, life rights, and union agreements (e.g., SAG-AFTRA, DGA)." }
             ]
         },
         checklists: [
             {
-                title: "📝 Pre-Production Planning",
+                title: "🎬 Film Pre-Production Planning",
                 department: "Production",
                 frequency: "Per Project",
                 role: "Producer",
@@ -1685,7 +1685,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🎬 Production Setup",
+                title: "📹 Film Production Setup",
                 department: "Production/Safety",
                 frequency: "Pre-Shoot",
                 role: "First AD/Safety Officer",
@@ -1699,120 +1699,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📹 Daily Shooting Protocol",
-                department: "Direction/Production",
-                frequency: "Daily",
-                role: "Director/First AD",
-                summary: "Maintain technical consistency and efficiency.",
-                tasks: [
-                    { id: 'FP-DS-01', description: "Distribute and confirm receipt of daily call sheet to all cast and crew. (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Confirmation Log', location: 'Set' },
-                    { id: 'FP-DS-02', description: "Conduct camera, lens, and sound equipment checks against technical specifications. (SMPTE)", priority: 'High', riskLevel: 'High', proof: 'Tech Log', location: 'Set' },
-                    { id: 'FP-DS-03', description: "Verify scene continuity (costume, props, makeup) before first shot. (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Continuity Photos', location: 'Set' },
-                    { id: 'FP-DS-04', description: "Log all shot footage with scene numbers, take numbers, and director's notes. (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Camera/Sound Reports', location: 'Set' },
-                    { id: 'FP-DS-05', description: "Backup all digital footage to at least two separate, secure locations at the end of the day. (Data Security)", priority: 'High', riskLevel: 'High', proof: 'Backup Verification Log', location: 'DIT Station' }
-                ]
-            },
-            {
-                title: "✂️ Post-Production",
-                department: "Post-Production",
-                frequency: "End of Shoot",
-                role: "Post-Production Supervisor",
-                summary: "Ensure globally compatible content quality.",
-                tasks: [
-                    { id: 'FP-POST-01', description: "Verify all footage, sound files, and production notes have been received and cataloged. (ISO 9001)", priority: 'High', riskLevel: 'High', proof: 'Handover Sign-off Sheet', location: 'Post-Production Suite' },
-                    { id: 'FP-POST-02', description: "Create low-resolution proxies for the editing process. (SMPTE)", priority: 'High', riskLevel: 'Medium', proof: 'Proxy Generation Log', location: 'Post-Production Suite' },
-                    { id: 'FP-POST-03', description: "Develop a post-production schedule with milestones for picture lock, sound mix, and color grading. (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Post Schedule', location: 'Post-Production Office' },
-                    { id: 'FP-POST-04', description: "Establish a clear review and feedback loop with the director and producers. (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Process Document', location: 'Post-Production Office' },
-                    { id: 'FP-POST-05', description: "Ensure the project is set up correctly for final delivery formats (e.g., DCP, broadcast). (SMPTE)", priority: 'High', riskLevel: 'High', proof: 'Project Setup Screenshot', location: 'Post-Production Suite' }
-                ]
-            },
-            {
-                title: "🌐 Distribution & Marketing",
-                department: "Distribution",
-                frequency: "Post-Completion",
-                role: "Distribution Manager",
-                summary: "Ensures all technical and marketing assets are prepared correctly for festival submission and global distribution.",
-                tasks: [
-                    { id: 'FP-DIST-01', description: "Create a Digital Cinema Package (DCP) for theatrical exhibition. (SMPTE)", priority: 'High', riskLevel: 'High', proof: 'DCP File', location: 'Post-Production Suite' },
-                    { id: 'FP-DIST-02', description: "Generate various video formats required by different streaming platforms and broadcasters.", priority: 'High', riskLevel: 'High', proof: 'Transcoding Log', location: 'Post-Production Suite' },
-                    { id: 'FP-DIST-03', description: "Prepare a complete press kit, including synopsis, cast/crew bios, and high-resolution stills.", priority: 'High', riskLevel: 'Medium', proof: 'Press Kit PDF', location: 'Marketing Office' },
-                    { id: 'FP-DIST-04', description: "Create and QC subtitles in multiple languages.", priority: 'High', riskLevel: 'Medium', proof: 'Subtitle Files (.srt)', location: 'Post-Production Suite' },
-                    { id: 'FP-DIST-05', description: "Archive all project files, including raw footage and final masters, in a secure long-term storage solution.", priority: 'High', riskLevel: 'High', proof: 'Archive Log', location: 'Data Center' }
-                ]
-            },
-            {
-                title: "🎨 VFX & Animation Pipeline",
-                department: "Post-Production",
-                frequency: "Per Project",
-                role: "VFX Supervisor",
-                summary: "A checklist to manage the complex workflow of visual effects and animation, from asset creation to final compositing.",
-                tasks: [
-                    { id: 'FP-VFX-01', description: "Break down the script into a detailed VFX shot list for bidding and scheduling.", priority: 'High', riskLevel: 'High', proof: 'VFX Shot List', location: 'VFX Office' },
-                    { id: 'FP-VFX-02', description: "Establish a version control system for all digital assets (models, textures, animations).", priority: 'High', riskLevel: 'High', proof: 'Version Control System Setup', location: 'VFX Office' },
-                    { id: 'FP-VFX-03', description: "Implement a daily/weekly review process for shots in progress with the Director and VFX team.", priority: 'High', riskLevel: 'Medium', proof: 'Review Schedule', location: 'VFX Office' },
-                    { id: 'FP-VFX-04', description: "Ensure final renders match the required color space and format for final compositing. (SMPTE)", priority: 'High', riskLevel: 'High', proof: 'Render QC Log', location: 'VFX Suite' },
-                    { id: 'FP-VFX-05', description: "Maintain a secure and efficient data transfer protocol with any external VFX vendors.", priority: 'High', riskLevel: 'High', proof: 'Data Transfer SOP', location: 'VFX Office' }
-                ]
-            },
-            {
-                title: "🔊 Sound Design & Mixing",
-                department: "Post-Production",
-                frequency: "Per Project",
-                role: "Sound Supervisor",
-                summary: "A workflow for creating and mixing the film's soundscape, including dialogue, effects, and music, for global distribution.",
-                tasks: [
-                    { id: 'FP-SND-01', description: "Perform dialogue cleaning and Automated Dialog Replacement (ADR) as needed.", priority: 'High', riskLevel: 'Medium', proof: 'ADR Schedule', location: 'Sound Studio' },
-                    { id: 'FP-SND-02', description: "Create and layer sound effects (Foley, ambiences).", priority: 'High', riskLevel: 'Medium', proof: 'Sound Effects Library Log', location: 'Sound Studio' },
-                    { id: 'FP-SND-03', description: "Mix all audio elements (dialogue, music, effects) to meet broadcast loudness standards (e.g., EBU R128).", priority: 'High', riskLevel: 'High', proof: 'Loudness Meter Report', location: 'Mixing Stage' },
-                    { id: 'FP-SND-04', description: "Create separate audio stems (dialogue, music, effects) for international distribution and dubbing.", priority: 'High', riskLevel: 'High', proof: 'Stem Export Log', location: 'Mixing Stage' },
-                    { id: 'FP-SND-05', description: "Conduct a final QC of the full sound mix in a calibrated theater environment.", priority: 'High', riskLevel: 'High', proof: 'QC Sign-off', location: 'Mixing Stage' }
-                ]
-            },
-            {
-                title: "🤝 Cast & Crew Compliance Management",
-                department: "HR/Legal",
-                frequency: "Per Project",
-                role: "Production Coordinator",
-                summary: "Manages all administrative and legal compliance for cast and crew, from contracts to on-set conduct.",
-                tasks: [
-                    { id: 'FP-COMP-01', description: "Verify that all cast and crew have signed contracts and release forms before their first day.", priority: 'High', riskLevel: 'High', proof: 'Signed Document Tracker', location: 'Production Office' },
-                    { id: 'FP-COMP-02', description: "Ensure compliance with all relevant union agreements (e.g., working hours, breaks, payments).", priority: 'High', riskLevel: 'High', proof: 'Union Compliance Report', location: 'Production Office' },
-                    { id: 'FP-COMP-03', description: "Conduct mandatory anti-harassment and on-set conduct training for all personnel. (ISO 45001)", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Production Office' },
-                    { id: 'FP-COMP-04', description: "Maintain accurate records of work hours and process payroll accordingly.", priority: 'High', riskLevel: 'High', proof: 'Timesheet and Payroll Records', location: 'Accounts' },
-                    { id: 'FP-COMP-05', description: "Manage visa and work permit requirements for any international cast or crew.", priority: 'High', riskLevel: 'High', proof: 'Visa Application Tracker', location: 'Production Office' }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'ott_platform_pack',
-        title: "OTT Platform Production & Compliance",
-        priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
-        category: "OTT Platform",
-        description: "For Content & Tech Heads at streaming services. A toolkit for managing the digital content pipeline, platform stability, and global compliance.",
-        icon: <Computer className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
-        badgeVariant: "accent",
-        sampleItems: [
-            "Ensure platform stability with 'Infrastructure & Load Testing' SOPs.",
-            "Protect content with a 'DRM & Anti-Piracy' checklist.",
-            "Comply with global standards using 'WCAG 2.1 Accessibility' audits.",
-            "Optimize user experience with a 'UI/UX & Device Compatibility' checklist."
-        ],
-        globalStandards: {
-            title: "Aligned with Global Digital Media & Security Standards",
-            standards: [
-                { name: "Security", description: "ISO 27001 for Information Security, PCI DSS for payments, DRM for content protection." },
-                { name: "Accessibility", description: "WCAG 2.1 guidelines to ensure content is accessible to users with disabilities." },
-                { name: "Data Privacy", description: "GDPR (EU), DPDP (India), CCPA (California) and other regional data protection regulations." },
-                { name: "Streaming Tech", description: "ISO/IEC 23009 (MPEG-DASH) for adaptive bitrate streaming." }
-            ]
-        },
-        checklists: [
-            {
-                title: "📈 Content Strategy",
+                title: "🖥️ OTT Content Strategy",
                 department: "Content",
                 frequency: "Quarterly",
                 role: "Content Strategist",
@@ -1826,7 +1713,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🖥️ Platform Development",
+                title: "☁️ OTT Platform Development",
                 department: "Tech",
                 frequency: "Per Sprint/Release",
                 role: "Product Manager",
@@ -1840,219 +1727,200 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "☁️ Content Upload & Management",
-                department: "Content Operations",
-                frequency: "Per Title",
-                role: "Content Ops Manager",
-                summary: "Ensure all uploaded content is high-quality, accessible, and compliant.",
-                tasks: [
-                    { id: 'OTT-CM-01', description: "Perform automated QC checks on incoming video files for technical specs (bitrate, resolution, audio).", priority: 'High', riskLevel: 'High', proof: 'QC Report', location: 'Content Ops System' },
-                    { id: 'OTT-CM-02', description: "Transcode video files into multiple bitrates for adaptive streaming. (MPEG-DASH)", priority: 'High', riskLevel: 'High', proof: 'Transcoding Log', location: 'Content Ops System' },
-                    { id: 'OTT-CM-03', description: "Add and review metadata, subtitles, and captions in all required languages. (WCAG 2.1)", priority: 'High', riskLevel: 'Medium', proof: 'Metadata Sign-off', location: 'Content Ops System' },
-                    { id: 'OTT-CM-04', description: "Apply DRM encryption to the content before making it available. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'DRM Log', location: 'Content Ops System' },
-                    { id: 'OTT-CM-05', description: "Schedule the content for release as per the content calendar and verify its visibility in all target regions.", priority: 'High', riskLevel: 'Medium', proof: 'Release Checklist', location: 'Content Ops System' }
+                "title": "✂️ Post-Production Workflow",
+                "department": "Post-Production",
+                "frequency": "End of Shoot",
+                "role": "Post-Production Supervisor",
+                "summary": "Ensures globally compatible content quality and smooth handovers.",
+                "tasks": [
+                    { "id": "FP-POST-01", "description": "Verify all footage, sound files, and production notes have been received and cataloged. (ISO 9001)", "priority": "High", "riskLevel": "High", "proof": "Handover Sign-off Sheet", "location": "Post-Production Suite" },
+                    { "id": "FP-POST-02", "description": "Create low-resolution proxies for the editing process. (SMPTE)", "priority": "High", "riskLevel": "Medium", "proof": "Proxy Generation Log", "location": "Post-Production Suite" },
+                    { "id": "FP-POST-03", "description": "Develop a post-production schedule with milestones for picture lock, sound mix, and color grading. (ISO 9001)", "priority": "High", "riskLevel": "Medium", "proof": "Post Schedule", "location": "Post-Production Office" },
+                    { "id": "FP-POST-04", "description": "Establish a clear review and feedback loop with the director and producers. (ISO 9001)", "priority": "High", "riskLevel": "Medium", "proof": "Feedback Process Document", "location": "Post-Production Office" },
+                    { "id": "FP-POST-05", "description": "Ensure the project is set up correctly for final delivery formats (e.g., DCP, broadcast). (SMPTE)", "priority": "High", "riskLevel": "High", "proof": "Project Setup Screenshot", "location": "Post-Production Suite" }
                 ]
             },
             {
-                title: "📢 Marketing & Engagement",
-                department: "Marketing/Data",
-                frequency: "Weekly",
-                role: "Data Analyst",
-                summary: "Increase reach, engagement, and retention.",
-                tasks: [
-                    { id: 'OTT-UA-01', description: "Analyze key metrics: Monthly Active Users (MAU), churn rate, and average watch time. (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Weekly Metrics Report', location: 'Analytics Dashboard' },
-                    { id: 'OTT-UA-02', description: "Identify content that is performing well and content that is underperforming.", priority: 'High', riskLevel: 'Medium', proof: 'Content Performance Report', location: 'Analytics Dashboard' },
-                    { id: 'OTT-UA-03', description: "Segment users who are at high risk of churning and target them with re-engagement campaigns.", priority: 'High', riskLevel: 'High', proof: 'Churn-Risk Segment List', location: 'Marketing Automation Tool' },
-                    { id: 'OTT-UA-04', description: "Generate reports on the effectiveness of personalized recommendations.", priority: 'High', riskLevel: 'Medium', proof: 'Recommendation ROI Report', location: 'Analytics Dashboard' },
-                    { id: 'OTT-UA-05', description: "Ensure all data collection and usage is compliant with the platform's privacy policy and GDPR. (GDPR)", priority: 'High', riskLevel: 'High', proof: 'Data Usage Audit', location: 'Data Office' }
+                "title": "📤 OTT Content Upload & Management",
+                "department": "Content Operations",
+                "frequency": "Per Title",
+                "role": "Content Ops Manager",
+                "summary": "Ensures all uploaded content is high-quality, accessible, and compliant.",
+                "tasks": [
+                    { "id": "OTT-CM-01", "description": "Perform automated QC checks on incoming video files for technical specs (bitrate, resolution, audio).", "priority": "High", "riskLevel": "High", "proof": "QC Report", "location": "Content Ops System" },
+                    { "id": "OTT-CM-02", "description": "Transcode video files into multiple bitrates for adaptive streaming. (MPEG-DASH)", "priority": "High", "riskLevel": "High", "proof": "Transcoding Log", "location": "Content Ops System" },
+                    { "id": "OTT-CM-03", "description": "Add and review metadata, subtitles, and captions in all required languages. (WCAG 2.1)", "priority": "High", "riskLevel": "Medium", "proof": "Metadata Sign-off", "location": "Content Ops System" },
+                    { "id": "OTT-CM-04", "description": "Apply DRM encryption to the content before making it available. (ISO 27001)", "priority": "High", "riskLevel": "High", "proof": "DRM Log", "location": "Content Ops System" },
+                    { "id": "OTT-CM-05", "description": "Schedule the content for release as per the content calendar and verify its visibility in all target regions.", "priority": "High", "riskLevel": "Medium", "proof": "Release Checklist", "location": "Content Ops System" }
                 ]
             },
             {
-                title: "🔒 Compliance & Security",
-                department: "Security/Tech",
-                frequency: "Quarterly",
-                role: "Security Lead",
-                summary: "Protect content, users, and platform integrity.",
-                tasks: [
-                    { id: 'OTT-DRM-01', description: "Audit DRM policies to ensure they are correctly applied to all premium content. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'DRM Policy Audit Report', location: 'Security Office' },
-                    { id: 'OTT-DRM-02', description: "Run automated scans on pirate websites and torrent trackers for your content.", priority: 'High', riskLevel: 'High', proof: 'Scanning Report', location: 'Security Office' },
-                    { id: 'OTT-DRM-03', description: "Issue DMCA takedown notices for all identified infringing links.", priority: 'High', riskLevel: 'Medium', proof: 'Takedown Log', location: 'Legal/Security' },
-                    { id: 'OTT-DRM-04', description: "Implement and test forensic watermarking to trace the source of leaks.", priority: 'High', riskLevel: 'High', proof: 'Watermarking Test Report', location: 'Tech Office' },
-                    { id: 'OTT-DRM-05', description: "Review and update concurrent stream limits per user account to prevent password sharing abuse.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Review Document', location: 'Product Office' }
+                "title": "📢 Film Distribution & Marketing",
+                "department": "Distribution",
+                "frequency": "Post-Completion",
+                "role": "Distribution Manager",
+                "summary": "Ensures all technical and marketing assets are prepared correctly for festival submission and global distribution.",
+                "tasks": [
+                    { "id": "FP-DIST-01", "description": "Create a Digital Cinema Package (DCP) for theatrical exhibition. (SMPTE)", "priority": "High", "riskLevel": "High", "proof": "DCP File", "location": "Post-Production Suite" },
+                    { "id": "FP-DIST-02", "description": "Generate various video formats required by different streaming platforms and broadcasters.", "priority": "High", "riskLevel": "High", "proof": "Transcoding Log", "location": "Post-Production Suite" },
+                    { "id": "FP-DIST-03", "description": "Prepare a complete press kit, including synopsis, cast/crew bios, and high-resolution stills.", "priority": "High", "riskLevel": "Medium", "proof": "Press Kit PDF", "location": "Marketing Office" },
+                    { "id": "FP-DIST-04", "description": "Create and QC subtitles in multiple languages.", "priority": "High", "riskLevel": "Medium", "proof": "Subtitle Files (.srt)", "location": "Post-Production Suite" },
+                    { "id": "FP-DIST-05", "description": "Archive all project files, including raw footage and final masters, in a secure long-term storage solution.", "priority": "High", "riskLevel": "High", "proof": "Archive Log", "location": "Data Center" }
                 ]
             },
             {
-                title: "⚙️ Infrastructure & Live Event Readiness",
-                department: "DevOps/SRE",
-                frequency: "Pre-Live Event",
-                role: "SRE Lead",
-                summary: "Prevents platform outages during high-traffic live events, like the incident that hit a major OTT service.",
-                tasks: [
-                    { id: 'OTT-INFRA-01', description: "Perform load testing on streaming servers to simulate peak concurrent viewership. (ISO 9001)", priority: 'High', riskLevel: 'High', proof: 'Load Test Report', location: 'Staging Environment' },
-                    { id: 'OTT-INFRA-02', description: "Verify that auto-scaling policies for servers are enabled and configured correctly.", priority: 'High', riskLevel: 'High', proof: 'Cloud Config Review', location: 'Cloud Console' },
-                    { id: 'OTT-INFRA-03', description: "Test Content Delivery Network (CDN) configuration and caching for the live stream.", priority: 'High', riskLevel: 'High', proof: 'CDN Test Report', location: 'Staging Environment' },
-                    { id: 'OTT-INFRA-04', description: "Conduct a disaster recovery drill by simulating a regional server failure. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'DR Drill Report', location: 'Staging Environment' },
-                    { id: 'OTT-INFRA-05', description: "Establish a 'war room' protocol with on-call engineers for the duration of the live event.", priority: 'High', riskLevel: 'High', proof: 'War Room SOP', location: 'DevOps Office' }
-                ]
-            },
-            {
-                title: "💳 Subscription & Billing Management",
-                department: "Finance/Product",
-                frequency: "Monthly",
-                role: "Finance Manager",
-                summary: "Ensures accurate and compliant management of user subscriptions, payments, and refunds.",
-                tasks: [
-                    { id: 'OTT-BILL-01', description: "Reconcile payments received from the payment gateway with subscription records in the database.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Finance Office' },
-                    { id: 'OTT-BILL-02', description: "Audit a sample of subscription renewals to ensure correct pricing and billing dates.", priority: 'High', riskLevel: 'Medium', proof: 'Subscription Audit Log', location: 'Finance Office' },
-                    { id: 'OTT-BILL-03', description: "Review and process refund requests according to the platform's terms of service.", priority: 'High', riskLevel: 'Medium', proof: 'Refund Tracker', location: 'Customer Support' },
-                    { id: 'OTT-BILL-04', description: "Monitor and analyze the reasons for failed payments and implement dunning strategies to recover revenue.", priority: 'High', riskLevel: 'High', proof: 'Failed Payment Report', location: 'Finance Office' },
-                    { id: 'OTT-BILL-05', description: "Ensure all invoices and billing communications are compliant with local tax laws. (Tax Compliance)", priority: 'High', riskLevel: 'High', proof: 'Invoice Template Review', location: 'Finance/Legal' }
-                ]
-            },
-            {
-                title: "🤝 Partnership & Integration Management",
-                department: "Business Development",
-                frequency: "Quarterly",
-                role: "Partnership Manager",
-                summary: "Manages technical and business relationships with partners like telcos, device manufacturers, and content providers.",
-                tasks: [
-                    { id: 'OTT-PARTNER-01', description: "Review performance and revenue share with content and distribution partners against contractual agreements.", priority: 'High', riskLevel: 'Medium', proof: 'Partner QBR Deck', location: 'BD Office' },
-                    { id: 'OTT-PARTNER-02', description: "Test API integrations with partners to ensure data is flowing correctly (e.g., for single sign-on or bundled subscriptions).", priority: 'High', riskLevel: 'High', proof: 'API Test Log', location: 'Tech Office' },
-                    { id: 'OTT-PARTNER-03', description: "Conduct a security review of all third-party integrations. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Third-Party Security Audit', location: 'Security Office' },
-                    { id: 'OTT-PARTNER-04', description: "Onboard new partners, providing them with technical documentation and support.", priority: 'High', riskLevel: 'Medium', proof: 'Partner Onboarding Checklist', location: 'BD Office' },
-                    { id: 'OTT-PARTNER-05', description: "Ensure co-marketing commitments with partners are being met.", priority: 'Medium', riskLevel: 'Low', proof: 'Marketing Activity Report', location: 'Marketing Office' }
+                "title": "🔒 OTT Compliance & Security",
+                "department": "Security/Tech",
+                "frequency": "Quarterly",
+                "role": "Security Lead",
+                "summary": "Protects content, users, and platform integrity through regular audits and enforcement.",
+                "tasks": [
+                    { "id": "OTT-DRM-01", "description": "Audit DRM policies to ensure they are correctly applied to all premium content. (ISO 27001)", "priority": "High", "riskLevel": "High", "proof": "DRM Policy Audit Report", "location": "Security Office" },
+                    { "id": "OTT-DRM-02", "description": "Run automated scans on pirate websites and torrent trackers for your content.", "priority": "High", "riskLevel": "High", "proof": "Scanning Report", "location": "Security Office" },
+                    { "id": "OTT-DRM-03", "description": "Issue DMCA takedown notices for all identified infringing links.", "priority": "High", "riskLevel": "Medium", "proof": "Takedown Log", "location": "Legal/Security" },
+                    { "id": "OTT-DRM-04", "description": "Implement and test forensic watermarking to trace the source of leaks.", "priority": "High", "riskLevel": "High", "proof": "Watermarking Test Report", "location": "Tech Office" },
+                    { "id": "OTT-DRM-05", "description": "Review and update concurrent stream limits per user account to prevent password sharing abuse.", "priority": "High", "riskLevel": "Medium", "proof": "Policy Review Document", "location": "Product Office" }
                 ]
             }
         ]
     },
     {
-        id: 'apparel_fashion_retail_pack',
-        title: "Apparel & Fashion Retail Operations",
-        priceUSD: 89.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Retail",
-        description: "For fashion retail managers. A toolkit to manage store operations, from visual merchandising to loss prevention.",
-        icon: <Shirt className="w-8 h-8 text-primary" />,
-        badgeText: "Popular",
-        badgeVariant: "default",
+        id: 'ai_cybersecurity_compliance_pack',
+        title: "AI, Data & Cybersecurity Compliance",
+        priceUSD: 199.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Corporate",
+        description: "For C-Suite, CISOs, and DPOs. A toolkit to manage AI ethics, data privacy (GDPR/DPDP), and cybersecurity risks in the modern enterprise.",
+        icon: <BrainCircuit className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
         sampleItems: [
-            "Ensure 'Visual Merchandising' consistency across all stores.",
-            "Implement a 'Fitting Room Control' protocol to reduce theft.",
-            "Standardize 'Daily Store Opening & Closing' procedures.",
-            "Manage 'Stock Transfer & IBT' accurately between stores."
+            "Implement an 'AI Ethics & Model Governance' framework.",
+            "Conduct 'GDPR/DPDP Data Privacy' audits.",
+            "Run 'Cybersecurity Incident Response Drills' to test readiness.",
+            "Includes checklists for 'Vendor Security Assessment' and 'Cloud Security'."
         ],
+        globalStandards: {
+            title: "Aligned with Global Tech & Security Standards",
+            standards: [
+                { name: "Info Security", description: "ISO 27001 for Information Security Management Systems." },
+                { name: "Data Privacy", description: "GDPR (EU), DPDP (India), CCPA (California) and other major data protection regulations." },
+                { name: "AI Ethics", description: "Principles from the OECD AI Principles and NIST AI Risk Management Framework." },
+                { name: "Cloud Security", description: "Best practices from the Cloud Security Alliance (CSA) and major cloud providers." }
+            ]
+        },
         checklists: [
-             {
-                title: "🏬 Daily Store Opening & Closing",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "A foundational checklist to ensure the store is ready for business and secure after closing.",
+            {
+                title: "🤖 AI Ethics & Model Governance",
+                department: "Data Science/Compliance",
+                frequency: "Per Model",
+                role: "AI Ethics Officer",
+                summary: "A framework to ensure AI models are developed and deployed responsibly, focusing on fairness, transparency, and accountability.",
                 tasks: [
-                    { id: 'AFR-OC-01', description: "Disable/enable alarm systems and verify all doors are locked.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Store Entrance' },
-                    { id: 'AFR-OC-02', description: "Check that all POS systems are online and cash floats are correct.", priority: 'High', riskLevel: 'High', proof: 'Cash Reconciliation Sheet', location: 'Cash Desk' },
-                    { id: 'AFR-OC-03', description: "Ensure all lighting, music, and digital displays are operational.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'AFR-OC-04', description: "Conduct a brief team huddle to discuss daily targets and promotions.", priority: 'Medium', riskLevel: 'Low', proof: 'Huddle Notes', location: 'Back Office' },
-                    { id: 'AFR-OC-05', description: "Secure all high-value items in the safe or designated secure area at closing.", priority: 'High', riskLevel: 'High', proof: 'Closing Log', location: 'Back Office' }
+                    { id: 'AI-ETHICS-01', description: "Conduct a bias assessment on the training data to check for demographic skews. (NIST AI RMF)", priority: 'High', riskLevel: 'High', proof: 'Data Bias Report', location: 'Data Science Team' },
+                    { id: 'AI-ETHICS-02', description: "Document the model's intended use, limitations, and potential risks in a 'Model Card'.", priority: 'High', riskLevel: 'High', proof: 'Model Card Document', location: 'Data Science Team' },
+                    { id: 'AI-ETHICS-03', description: "Establish a 'human-in-the-loop' review process for high-stakes AI decisions.", priority: 'High', riskLevel: 'High', proof: 'Review Process SOP', location: 'Operations Team' },
+                    { id: 'AI-ETHICS-04', description: "Test the model's explainability: can it provide a reason for its outputs? (Explainable AI - XAI)", priority: 'High', riskLevel: 'Medium', proof: 'Explainability Test Report', location: 'Data Science Team' },
+                    { id: 'AI-ETHICS-05', description: "Define and monitor key performance and fairness metrics for the model post-deployment.", priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'MLOps Team' }
                 ]
             },
             {
-                title: "🎨 Visual Merchandising Compliance",
-                department: "VM/Operations",
+                title: "⚖️ GDPR/DPDP Data Privacy Audit",
+                department: "Legal/Compliance",
+                frequency: "Quarterly",
+                role: "Data Protection Officer",
+                summary: "An audit to ensure the organization is compliant with major data protection regulations.",
+                tasks: [
+                    { id: 'PRIV-AUDIT-01', description: "Maintain a 'Record of Processing Activities' (ROPA) that details all personal data being processed.", priority: 'High', riskLevel: 'High', proof: 'ROPA Document', location: 'DPO Office' },
+                    { id: 'PRIV-AUDIT-02', description: "Review all public-facing forms to ensure they have clear consent language and link to the privacy policy.", priority: 'High', riskLevel: 'High', proof: 'Form Audit Screenshot', location: 'Website/App' },
+                    { id: 'PRIV-AUDIT-03', description: "Test the process for fulfilling Data Subject Access Requests (DSAR) within the legally mandated timeframe.", priority: 'High', riskLevel: 'High', proof: 'DSAR Test Log', location: 'DPO Office' },
+                    { id: 'PRIV-AUDIT-04', description: "Conduct a Data Protection Impact Assessment (DPIA) for any new high-risk processing activity. (GDPR Art. 35)", priority: 'High', riskLevel: 'High', proof: 'DPIA Report', location: 'DPO Office' },
+                    { id: 'PRIV-AUDIT-05', description: "Verify that data retention policies are being enforced and old data is being properly deleted.", priority: 'High', riskLevel: 'High', proof: 'Data Deletion Log', location: 'IT/Data Team' }
+                ]
+            },
+            {
+                title: "🚨 Cybersecurity Incident Response Drill",
+                department: "IT Security",
+                frequency: "Semi-Annually",
+                role: "CISO",
+                summary: "A simulation to test the company's readiness to respond to a major cybersecurity incident like a ransomware attack.",
+                tasks: [
+                    { id: 'CYBER-DRILL-01', description: "Simulate a specific threat scenario (e.g., ransomware detection, data breach alert).", priority: 'High', riskLevel: 'High', proof: 'Drill Scenario Document', location: 'Security Office' },
+                    { id: 'CYBER-DRILL-02', description: "Test the effectiveness of the initial detection and alerting systems. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Alert Timeliness Report', location: 'SOC' },
+                    { id: 'CYBER-DRILL-03', description: "Evaluate the response team's ability to follow the Incident Response Plan (containment, eradication, recovery).", priority: 'High', riskLevel: 'High', proof: 'Drill Observation Notes', location: 'War Room' },
+                    { id: 'CYBER-DRILL-04', description: "Test the communication plan: how are stakeholders (legal, execs, PR) informed?", priority: 'High', riskLevel: 'High', proof: 'Communication Test Log', location: 'War Room' },
+                    { id: 'CYBER-DRILL-05', description: "Conduct a post-drill review to identify weaknesses and create an action plan for improvement.", priority: 'High', riskLevel: 'High', proof: 'Post-Mortem Report', location: 'Security Office' }
+                ]
+            },
+            {
+                title: "🤝 Vendor & Third-Party Security Assessment",
+                department: "Procurement/Security",
+                frequency: "Per New Vendor",
+                role: "Security Analyst",
+                summary: "A due diligence checklist to assess the security posture of new vendors before granting them access to company data or systems.",
+                tasks: [
+                    { id: 'VEND-SEC-01', description: "Request and review the vendor's security certifications (e.g., SOC 2 Type II, ISO 27001).", priority: 'High', riskLevel: 'High', proof: 'Vendor Certificates', location: 'Procurement Office' },
+                    { id: 'VEND-SEC-02', description: "Issue a standardized security questionnaire (e.g., CAIQ, SIG Lite) to the vendor.", priority: 'High', riskLevel: 'High', proof: 'Completed Questionnaire', location: 'Procurement Office' },
+                    { id: 'VEND-SEC-03', description: "Review the vendor's data processing agreement to ensure it meets your company's privacy standards.", priority: 'High', riskLevel: 'High', proof: 'Signed DPA', location: 'Legal Office' },
+                    { id: 'VEND-SEC-04', description: "Assess the criticality of the data the vendor will access and apply a corresponding level of scrutiny.", priority: 'High', riskLevel: 'High', proof: 'Data Classification Matrix', location: 'Security Office' },
+                    { id: 'VEND-SEC-05', description: "Document a final risk assessment and recommendation (Accept, Accept with Conditions, Reject).", priority: 'High', riskLevel: 'High', proof: 'Risk Assessment Report', location: 'Security Office' }
+                ]
+            },
+            {
+                title: "☁️ Cloud Security Posture Management (CSPM)",
+                department: "Cloud Security/DevOps",
                 frequency: "Weekly",
-                role: "VM Specialist/Store Manager",
-                summary: "Ensures that the store's look and feel consistently aligns with the brand's marketing campaigns and aesthetic.",
+                role: "Cloud Security Engineer",
+                summary: "An audit to identify and remediate misconfigurations in your cloud environment (AWS, Azure, GCP).",
                 tasks: [
-                    { id: 'AFR-VM-01', description: "Verify that window displays are set up according to the current campaign directive.", priority: 'High', riskLevel: 'Medium', proof: 'Photo vs. Directive', location: 'Store Front' },
-                    { id: 'AFR-VM-02', description: "Check that all mannequins are dressed and styled as per the VM guide.", priority: 'High', riskLevel: 'Medium', proof: 'Photo Audit', location: 'Sales Floor' },
-                    { id: 'AFR-VM-03', description: "Ensure all sale and promotional signage is correctly placed and removed when expired.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'AFR-VM-04', description: "Audit product placement to ensure it matches the store layout plan (planogram).", priority: 'High', riskLevel: 'Medium', proof: 'Planogram Check', location: 'Sales Floor' },
-                    { id: 'AFR-VM-05', description: "Check for and replace any damaged or worn display fixtures.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Request', location: 'Sales Floor' }
+                    { id: 'CSPM-01', description: "Scan for publicly exposed storage buckets (e.g., S3 buckets) and restrict access. (CSA CCM)", priority: 'High', riskLevel: 'High', proof: 'Scan Report', location: 'Cloud Console' },
+                    { id: 'CSPM-02', description: "Check for overly permissive IAM roles and enforce the principle of least privilege. (CSA CCM)", priority: 'High', riskLevel: 'High', proof: 'IAM Role Audit', location: 'Cloud Console' },
+                    { id: 'CSPM-03', description: "Ensure logging and monitoring (e.g., CloudTrail, Azure Monitor) are enabled for all critical services.", priority: 'High', riskLevel: 'High', proof: 'Logging Config Screenshot', location: 'Cloud Console' },
+                    { id: 'CSPM-04', description: "Verify that encryption is enabled for all data at rest (e.g., EBS volumes, RDS databases).", priority: 'High', riskLevel: 'High', proof: 'Encryption Status Report', location: 'Cloud Console' },
+                    { id: 'CSPM-05', description: "Audit security group and network firewall rules for any open ports that are not required.", priority: 'High', riskLevel: 'High', proof: 'Firewall Rule Review', location: 'Cloud Console' }
                 ]
             },
             {
-                title: "🔒 Fitting Room Control & Loss Prevention",
-                department: "Loss Prevention/Sales",
-                frequency: "Ongoing",
-                role: "Sales Associate",
-                summary: "A protocol to manage fitting rooms effectively, a high-risk area for theft and merchandise damage.",
+                title: "💻 Employee Offboarding IT Security",
+                department: "IT/HR",
+                frequency: "Per Departure",
+                role: "IT Admin",
+                summary: "A checklist to securely deprovision an employee's access to all company systems, preventing data theft or unauthorized access.",
                 tasks: [
-                    { id: 'AFR-FR-01', description: "Greet every customer entering the fitting room area.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Fitting Rooms' },
-                    { id: 'AFR-FR-02', description: "Enforce a strict item limit for each customer entering a fitting room.", priority: 'High', riskLevel: 'High', proof: 'Policy Signage', location: 'Fitting Rooms' },
-                    { id: 'AFR-FR-03', description: "Check the fitting room for any left-behind items or removed security tags immediately after a customer leaves.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Fitting Rooms' },
-                    { id: 'AFR-FR-04', description: "Return cleared merchandise to the sales floor promptly.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Fitting Rooms' },
-                    { id: 'AFR-FR-05', description: "Report any suspicious behavior or found tags to the store manager immediately.", priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Fitting Rooms' }
+                    { id: 'IT-OFFBOARD-01', description: "Immediately disable the employee's primary account (e.g., Active Directory, Google Workspace) upon notification from HR.", priority: 'High', riskLevel: 'High', proof: 'Account Disable Log', location: 'IT Admin Console' },
+                    { id: 'IT-OFFBOARD-02', description: "Revoke access to all third-party SaaS applications via SSO or manual de-provisioning.", priority: 'High', riskLevel: 'High', proof: 'Access Revocation Checklist', location: 'IT Admin Console' },
+                    { id: 'IT-OFFBOARD-03', description: "Wipe all company data from the employee's corporate-issued devices (laptop, mobile).", priority: 'High', riskLevel: 'High', proof: 'Device Wipe Confirmation', location: 'MDM Software' },
+                    { id: 'IT-OFFBOARD-04', description: "Change any shared passwords the employee may have had access to.", priority: 'High', riskLevel: 'High', proof: 'Password Change Log', location: 'Password Manager' },
+                    { id: 'IT-OFFBOARD-05', description: "Archive the employee's email and data according to the company's data retention policy.", priority: 'High', riskLevel: 'Medium', proof: 'Archiving Job Log', location: 'IT Admin Console' }
                 ]
             },
             {
-                title: "🔄 Stock Transfer & IBT Management",
-                department: "Inventory",
-                frequency: "Per Transfer",
-                role: "Inventory Clerk",
-                summary: "A checklist to ensure accuracy and prevent loss during Inter-Store Transfers (IBT) of stock.",
+                title: "🔑 Access Control & Review",
+                department: "IT Security",
+                frequency: "Quarterly",
+                role: "Security Analyst",
+                summary: "A periodic review to ensure employees only have access to the data and systems they need to perform their jobs (Principle of Least Privilege).",
                 tasks: [
-                    { id: 'AFR-IBT-01', description: "Generate a transfer request and have it approved by both the sending and receiving store managers.", priority: 'High', riskLevel: 'High', proof: 'Approved Transfer Document', location: 'System' },
-                    { id: 'AFR-IBT-02', description: "Scan and pack the items, then have a second person verify the count against the transfer document.", priority: 'High', riskLevel: 'High', proof: 'Two-Person Sign-off', location: 'Sending Store' },
-                    { id: 'AFR-IBT-03', description: "Securely seal the transfer box with tamper-evident tape.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sending Store' },
-                    { id: 'AFR-IBT-04', description: "Upon receipt, the receiving store must verify the seal is intact before opening.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Store' },
-                    { id: 'AFR-IBT-05', description: "The receiving store must scan and count all items and report any discrepancies within 24 hours.", priority: 'High', riskLevel: 'High', proof: 'Goods Received Note', location: 'Receiving Store' }
+                    { id: 'ACR-01', description: "Generate a list of all users with administrator-level privileges. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Admin User Report', location: 'IT Systems' },
+                    { id: 'ACR-02', description: "Have the manager of each 'admin' user re-certify in writing that the access is still required.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off Emails', location: 'Security Office' },
+                    { id: 'ACR-03', description: "Review access logs for highly sensitive systems for any anomalous activity.", priority: 'High', riskLevel: 'High', proof: 'Log Review Report', location: 'SIEM' },
+                    { id: 'ACR-04', description: "Audit user access to critical financial and HR systems.", priority: 'High', riskLevel: 'High', proof: 'Access Audit Report', location: 'Security Office' },
+                    { id: 'ACR-05', description: "Remove any dormant accounts that have not been used in over 90 days.", priority: 'High', riskLevel: 'Medium', proof: 'Account Deletion Log', location: 'IT Systems' }
                 ]
             },
             {
-                title: "💰 End-of-Day Cash Reconciliation",
-                department: "Finance/Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "A detailed process for balancing the cash registers at the end of the day to ensure accuracy and prevent fraud.",
-                tasks: [
-                    { id: 'AFR-EOD-01', description: "Print the Z-report from the POS system showing total sales and payment types.", priority: 'High', riskLevel: 'High', proof: 'Z-Report Printout', location: 'Cash Office' },
-                    { id: 'AFR-EOD-02', description: "Count the physical cash in the drawer and record the amount.", priority: 'High', riskLevel: 'High', proof: 'Cash Count Sheet', location: 'Cash Office' },
-                    { id: 'AFR-EOD-03', description: "Match the credit card machine's batch total with the POS report.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Cash Office' },
-                    { id: 'AFR-EOD-04', description: "Investigate and document any variance between the POS report and the physical counts.", priority: 'High', riskLevel: 'High', proof: 'Variance Report', location: 'Cash Office' },
-                    { id: 'AFR-EOD-05', description: "Prepare the bank deposit and store it securely in the safe for collection.", priority: 'High', riskLevel: 'High', proof: 'Deposit Bag Log', location: 'Safe' }
-                ]
-            },
-            {
-                title: "🛍️ Customer Return & Exchange Process",
-                department: "Sales/Operations",
-                frequency: "Per Return",
-                role: "Sales Associate",
-                summary: "A standardized process for handling returns and exchanges to ensure policy compliance and prevent fraud.",
-                tasks: [
-                    { id: 'AFR-RET-01', description: "Verify the original purchase with a receipt or through the customer's purchase history in the CRM.", priority: 'High', riskLevel: 'High', proof: 'Receipt/CRM Lookup', location: 'Cash Desk' },
-                    { id: 'AFR-RET-02', description: "Inspect the returned item for wear, damage, or removed tags to ensure it is in a saleable condition.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Cash Desk' },
-                    { id: 'AFR-RET-03', description: "Process the return or exchange in the POS system, accurately noting the reason.", priority: 'High', riskLevel: 'Medium', proof: 'POS Transaction', location: 'Cash Desk' },
-                    { id: 'AFR-RET-04', description: "For high-value returns without a receipt, manager approval is required.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off', location: 'Cash Desk' },
-                    { id: 'AFR-RET-05', description: "Tag the returned item appropriately (e.g., 'To Sales Floor', 'Damaged', 'To Warehouse') and move it to the designated area.", priority: 'High', riskLevel: 'Medium', proof: 'Tagged Item', location: 'Back Office' }
-                ]
-            },
-             {
-                title: "📦 Stock Room Organization (5S)",
-                department: "Inventory/Operations",
-                frequency: "Weekly",
-                role: "Stock Controller",
-                summary: "Applies 5S principles (Sort, Set in Order, Shine, Standardize, Sustain) to maintain a highly efficient and organized stock room.",
-                tasks: [
-                    { id: 'AFR-5S-01', description: "Sort: Remove any old, damaged, or non-sellable stock from the main floor.", priority: 'Medium', riskLevel: 'Low', proof: 'Quarantine Area Log', location: 'Stock Room' },
-                    { id: 'AFR-5S-02', description: "Set in Order: Ensure all items are in their designated locations, with clear labels for category, size, and SKU.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Stock Room' },
-                    { id: 'AFR-5S-03', description: "Shine: Perform a weekly cleaning of all shelves, floors, and storage bins.", priority: 'High', riskLevel: 'Low', proof: 'Cleaning Log', location: 'Stock Room' },
-                    { id: 'AFR-5S-04', description: "Standardize: Ensure all staff are following the same procedures for receiving, storing, and picking stock.", priority: 'High', riskLevel: 'Medium', proof: 'Process Observation', location: 'Stock Room' },
-                    { id: 'AFR-5S-05', description: "Sustain: Conduct a weekly audit with a checklist to ensure 5S standards are being maintained.", priority: 'High', riskLevel: 'Medium', proof: '5S Audit Scorecard', location: 'Stock Room' }
-                ]
-            },
-            {
-                title: "🐜 Pest Control Management",
-                department: "Facilities",
+                title: "PATCH-01",
+                department: "IT Operations",
                 frequency: "Monthly",
-                role: "Store Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations in a retail environment to protect merchandise and brand image.",
+                role: "System Administrator",
+                summary: "A systematic process for identifying, testing, and deploying security patches to servers and endpoints to protect against known vulnerabilities.",
                 tasks: [
-                    { id: 'PEST-RETAIL-01', description: "Inspect stock rooms, break rooms, and waste areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Store-wide' },
-                    { id: 'PEST-RETAIL-02', description: "Ensure no food or drink is consumed or stored in the stock room or on the sales floor.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Reinforcement', location: 'Store-wide' },
-                    { id: 'PEST-RETAIL-03', description: "Check that external doors are kept closed and have proper seals to prevent entry.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Entrances/Exits' },
-                    { id: 'PEST-RETAIL-04', description: "Review pest control vendor reports and ensure all recommended actions are completed.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Tracker', location: 'Manager Office' },
-                    { id: 'PEST-RETAIL-05', description: "Keep all areas free of clutter and debris where pests could hide.", priority: 'Medium', riskLevel: 'Low', proof: 'Housekeeping Audit', location: 'Store-wide' }
+                    { id: 'PATCH-01', description: "Scan all systems for missing critical and high-severity patches.", priority: 'High', riskLevel: 'High', proof: 'Vulnerability Scan Report', location: 'Patch Management System' },
+                    { id: 'PATCH-02', description: "Test critical patches in a staging environment before deploying to production.", priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Staging Environment' },
+                    { id: 'PATCH-03', description: "Deploy patches to production systems within the timeframe defined by the company's SLA.", priority: 'High', riskLevel: 'High', proof: 'Deployment Log', location: 'Patch Management System' },
+                    { id: 'PATCH-04', description: "Verify that patches have been successfully installed and report on compliance.", priority: 'High', riskLevel: 'Medium', proof: 'Patch Compliance Report', location: 'Patch Management System' },
+                    { id: 'PATCH-05', description: "Document any exceptions for systems that cannot be patched and implement compensating controls.", priority: 'High', riskLevel: 'High', proof: 'Exception Document', location: 'IT Office' }
                 ]
             }
         ]
@@ -2339,273 +2207,141 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-    {
-        id: 'ai_cybersecurity_compliance_pack',
-        title: "AI, Data & Cybersecurity Compliance",
-        priceUSD: 199.99,
+     {
+        id: 'stadium_sports_operations_pack',
+        title: "Stadium & Sports Complex Operations",
+        priceUSD: 149.99,
         priceINR: 11999,
         paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Corporate",
-        description: "For C-Suite, CISOs, and DPOs. A toolkit to manage AI ethics, data privacy (GDPR/DPDP), and cybersecurity risks in the modern enterprise.",
-        icon: <BrainCircuit className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
-        badgeVariant: "accent",
+        category: "Events",
+        description: "For facility managers of sports complexes and stadiums. A toolkit for managing safety, equipment maintenance, and event day readiness.",
+        icon: <Trophy className="w-8 h-8 text-primary" />,
         sampleItems: [
-            "Implement an 'AI Ethics & Model Governance' framework.",
-            "Conduct 'GDPR/DPDP Data Privacy' audits.",
-            "Run 'Cybersecurity Incident Response Drills' to test readiness.",
-            "Includes checklists for 'Vendor Security Assessment' and 'Cloud Security'."
+            "Ensure athlete and spectator safety with a 'Facility Safety & Readiness' audit.",
+            "Standardize 'Gym & Fitness Equipment' maintenance to prevent injuries.",
+            "Manage 'Event Day Operations' from ticketing to crowd control.",
+            "Includes checklists for 'Pool Safety' and 'Emergency Medical Response'."
         ],
-        globalStandards: {
-            title: "Aligned with Global Tech & Security Standards",
+         globalStandards: {
+            title: "Aligned with Global Safety & Sports Standards",
             standards: [
-                { name: "Info Security", description: "ISO 27001 for Information Security Management Systems." },
-                { name: "Data Privacy", description: "GDPR (EU), DPDP (India), CCPA (California) and other major data protection regulations." },
-                { name: "AI Ethics", description: "Principles from the OECD AI Principles and NIST AI Risk Management Framework." },
-                { name: "Cloud Security", description: "Best practices from the Cloud Security Alliance (CSA) and major cloud providers." }
+                { name: "Public Safety", description: "NFPA 101 Life Safety Code for crowd management and emergency egress." },
+                { name: "Facility Safety", description: "OSHA and local EHS guidelines for worker and spectator safety." },
+                { name: "Equipment", description: "Best practices for maintenance of turf, fitness equipment, and stadium infrastructure." },
+                { name: "Medical", description: "Protocols for emergency medical response and first-aid readiness." }
             ]
         },
         checklists: [
             {
-                title: "🤖 AI Ethics & Model Governance",
-                department: "Data Science/Compliance",
-                frequency: "Per Model",
-                role: "AI Ethics Officer",
-                summary: "A framework to ensure AI models are developed and deployed responsibly, focusing on fairness, transparency, and accountability.",
-                tasks: [
-                    { id: 'AI-ETHICS-01', description: "Conduct a bias assessment on the training data to check for demographic skews. (NIST AI RMF)", priority: 'High', riskLevel: 'High', proof: 'Data Bias Report', location: 'Data Science Team' },
-                    { id: 'AI-ETHICS-02', description: "Document the model's intended use, limitations, and potential risks in a 'Model Card'.", priority: 'High', riskLevel: 'High', proof: 'Model Card Document', location: 'Data Science Team' },
-                    { id: 'AI-ETHICS-03', description: "Establish a 'human-in-the-loop' review process for high-stakes AI decisions.", priority: 'High', riskLevel: 'High', proof: 'Review Process SOP', location: 'Operations Team' },
-                    { id: 'AI-ETHICS-04', description: "Test the model's explainability: can it provide a reason for its outputs? (Explainable AI - XAI)", priority: 'High', riskLevel: 'Medium', proof: 'Explainability Test Report', location: 'Data Science Team' },
-                    { id: 'AI-ETHICS-05', description: "Define and monitor key performance and fairness metrics for the model post-deployment.", priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'MLOps Team' }
-                ]
-            },
-            {
-                title: "⚖️ GDPR/DPDP Data Privacy Audit",
-                department: "Legal/Compliance",
-                frequency: "Quarterly",
-                role: "Data Protection Officer",
-                summary: "An audit to ensure the organization is compliant with major data protection regulations.",
-                tasks: [
-                    { id: 'PRIV-AUDIT-01', description: "Maintain a 'Record of Processing Activities' (ROPA) that details all personal data being processed.", priority: 'High', riskLevel: 'High', proof: 'ROPA Document', location: 'DPO Office' },
-                    { id: 'PRIV-AUDIT-02', description: "Review all public-facing forms to ensure they have clear consent language and link to the privacy policy.", priority: 'High', riskLevel: 'High', proof: 'Form Audit Screenshot', location: 'Website/App' },
-                    { id: 'PRIV-AUDIT-03', description: "Test the process for fulfilling Data Subject Access Requests (DSAR) within the legally mandated timeframe.", priority: 'High', riskLevel: 'High', proof: 'DSAR Test Log', location: 'DPO Office' },
-                    { id: 'PRIV-AUDIT-04', description: "Conduct a Data Protection Impact Assessment (DPIA) for any new high-risk processing activity. (GDPR Art. 35)", priority: 'High', riskLevel: 'High', proof: 'DPIA Report', location: 'DPO Office' },
-                    { id: 'PRIV-AUDIT-05', description: "Verify that data retention policies are being enforced and old data is being properly deleted.", priority: 'High', riskLevel: 'High', proof: 'Data Deletion Log', location: 'IT/Data Team' }
-                ]
-            },
-            {
-                title: "🚨 Cybersecurity Incident Response Drill",
-                department: "IT Security",
-                frequency: "Semi-Annually",
-                role: "CISO",
-                summary: "A simulation to test the company's readiness to respond to a major cybersecurity incident like a ransomware attack.",
-                tasks: [
-                    { id: 'CYBER-DRILL-01', description: "Simulate a specific threat scenario (e.g., ransomware detection, data breach alert).", priority: 'High', riskLevel: 'High', proof: 'Drill Scenario Document', location: 'Security Office' },
-                    { id: 'CYBER-DRILL-02', description: "Test the effectiveness of the initial detection and alerting systems. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Alert Timeliness Report', location: 'SOC' },
-                    { id: 'CYBER-DRILL-03', description: "Evaluate the response team's ability to follow the Incident Response Plan (containment, eradication, recovery).", priority: 'High', riskLevel: 'High', proof: 'Drill Observation Notes', location: 'War Room' },
-                    { id: 'CYBER-DRILL-04', description: "Test the communication plan: how are stakeholders (legal, execs, PR) informed?", priority: 'High', riskLevel: 'High', proof: 'Communication Test Log', location: 'War Room' },
-                    { id: 'CYBER-DRILL-05', description: "Conduct a post-drill review to identify weaknesses and create an action plan for improvement.", priority: 'High', riskLevel: 'High', proof: 'Post-Mortem Report', location: 'Security Office' }
-                ]
-            },
-            {
-                title: "🤝 Vendor & Third-Party Security Assessment",
-                department: "Procurement/Security",
-                frequency: "Per New Vendor",
-                role: "Security Analyst",
-                summary: "A due diligence checklist to assess the security posture of new vendors before granting them access to company data or systems.",
-                tasks: [
-                    { id: 'VEND-SEC-01', description: "Request and review the vendor's security certifications (e.g., SOC 2 Type II, ISO 27001).", priority: 'High', riskLevel: 'High', proof: 'Vendor Certificates', location: 'Procurement Office' },
-                    { id: 'VEND-SEC-02', description: "Issue a standardized security questionnaire (e.g., CAIQ, SIG Lite) to the vendor.", priority: 'High', riskLevel: 'High', proof: 'Completed Questionnaire', location: 'Procurement Office' },
-                    { id: 'VEND-SEC-03', description: "Review the vendor's data processing agreement to ensure it meets your company's privacy standards.", priority: 'High', riskLevel: 'High', proof: 'Signed DPA', location: 'Legal Office' },
-                    { id: 'VEND-SEC-04', description: "Assess the criticality of the data the vendor will access and apply a corresponding level of scrutiny.", priority: 'High', riskLevel: 'High', proof: 'Data Classification Matrix', location: 'Security Office' },
-                    { id: 'VEND-SEC-05', description: "Document a final risk assessment and recommendation (Accept, Accept with Conditions, Reject).", priority: 'High', riskLevel: 'High', proof: 'Risk Assessment Report', location: 'Security Office' }
-                ]
-            },
-            {
-                title: "☁️ Cloud Security Posture Management (CSPM)",
-                department: "Cloud Security/DevOps",
-                frequency: "Weekly",
-                role: "Cloud Security Engineer",
-                summary: "An audit to identify and remediate misconfigurations in your cloud environment (AWS, Azure, GCP).",
-                tasks: [
-                    { id: 'CSPM-01', description: "Scan for publicly exposed storage buckets (e.g., S3 buckets) and restrict access. (CSA CCM)", priority: 'High', riskLevel: 'High', proof: 'Scan Report', location: 'Cloud Console' },
-                    { id: 'CSPM-02', description: "Check for overly permissive IAM roles and enforce the principle of least privilege. (CSA CCM)", priority: 'High', riskLevel: 'High', proof: 'IAM Role Audit', location: 'Cloud Console' },
-                    { id: 'CSPM-03', description: "Ensure logging and monitoring (e.g., CloudTrail, Azure Monitor) are enabled for all critical services.", priority: 'High', riskLevel: 'High', proof: 'Logging Config Screenshot', location: 'Cloud Console' },
-                    { id: 'CSPM-04', description: "Verify that encryption is enabled for all data at rest (e.g., EBS volumes, RDS databases).", priority: 'High', riskLevel: 'High', proof: 'Encryption Status Report', location: 'Cloud Console' },
-                    { id: 'CSPM-05', description: "Audit security group and network firewall rules for any open ports that are not required.", priority: 'High', riskLevel: 'High', proof: 'Firewall Rule Review', location: 'Cloud Console' }
-                ]
-            },
-            {
-                title: "💻 Employee Offboarding IT Security",
-                department: "IT/HR",
-                frequency: "Per Departure",
-                role: "IT Admin",
-                summary: "A checklist to securely deprovision an employee's access to all company systems, preventing data theft or unauthorized access.",
-                tasks: [
-                    { id: 'IT-OFFBOARD-01', description: "Immediately disable the employee's primary account (e.g., Active Directory, Google Workspace) upon notification from HR.", priority: 'High', riskLevel: 'High', proof: 'Account Disable Log', location: 'IT Admin Console' },
-                    { id: 'IT-OFFBOARD-02', description: "Revoke access to all third-party SaaS applications via SSO or manual de-provisioning.", priority: 'High', riskLevel: 'High', proof: 'Access Revocation Checklist', location: 'IT Admin Console' },
-                    { id: 'IT-OFFBOARD-03', description: "Wipe all company data from the employee's corporate-issued devices (laptop, mobile).", priority: 'High', riskLevel: 'High', proof: 'Device Wipe Confirmation', location: 'MDM Software' },
-                    { id: 'IT-OFFBOARD-04', description: "Change any shared passwords the employee may have had access to.", priority: 'High', riskLevel: 'High', proof: 'Password Change Log', location: 'Password Manager' },
-                    { id: 'IT-OFFBOARD-05', description: "Archive the employee's email and data according to the company's data retention policy.", priority: 'High', riskLevel: 'Medium', proof: 'Archiving Job Log', location: 'IT Admin Console' }
-                ]
-            },
-            {
-                title: "🔑 Access Control & Review",
-                department: "IT Security",
-                frequency: "Quarterly",
-                role: "Security Analyst",
-                summary: "A periodic review to ensure employees only have access to the data and systems they need to perform their jobs (Principle of Least Privilege).",
-                tasks: [
-                    { id: 'ACR-01', description: "Generate a list of all users with administrator-level privileges. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Admin User Report', location: 'IT Systems' },
-                    { id: 'ACR-02', description: "Have the manager of each 'admin' user re-certify in writing that the access is still required.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off Emails', location: 'Security Office' },
-                    { id: 'ACR-03', description: "Review access logs for highly sensitive systems for any anomalous activity.", priority: 'High', riskLevel: 'High', proof: 'Log Review Report', location: 'SIEM' },
-                    { id: 'ACR-04', description: "Audit user access to critical financial and HR systems.", priority: 'High', riskLevel: 'High', proof: 'Access Audit Report', location: 'Security Office' },
-                    { id: 'ACR-05', description: "Remove any dormant accounts that have not been used in over 90 days.", priority: 'High', riskLevel: 'Medium', proof: 'Account Deletion Log', location: 'IT Systems' }
-                ]
-            },
-            {
-                title: "PATCH-01",
-                department: "IT Operations",
-                frequency: "Monthly",
-                role: "System Administrator",
-                summary: "A systematic process for identifying, testing, and deploying security patches to servers and endpoints to protect against known vulnerabilities.",
-                tasks: [
-                    { id: 'PATCH-01', description: "Scan all systems for missing critical and high-severity patches.", priority: 'High', riskLevel: 'High', proof: 'Vulnerability Scan Report', location: 'Patch Management System' },
-                    { id: 'PATCH-02', description: "Test critical patches in a staging environment before deploying to production.", priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Staging Environment' },
-                    { id: 'PATCH-03', description: "Deploy patches to production systems within the timeframe defined by the company's SLA.", priority: 'High', riskLevel: 'High', proof: 'Deployment Log', location: 'Patch Management System' },
-                    { id: 'PATCH-04', description: "Verify that patches have been successfully installed and report on compliance.", priority: 'High', riskLevel: 'Medium', proof: 'Patch Compliance Report', location: 'Patch Management System' },
-                    { id: 'PATCH-05', description: "Document any exceptions for systems that cannot be patched and implement compensating controls.", priority: 'High', riskLevel: 'High', proof: 'Exception Document', location: 'IT Office' }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'cinema_operations_pack',
-        title: "Cinema & Multiplex Operations",
-        priceUSD: 89.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Entertainment",
-        description: "For cinema managers. A toolkit to ensure fire safety, a premium customer experience, and F&B hygiene.",
-        icon: <Popcorn className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Implement a 'Fire & Life Safety' audit based on the Uphaar Cinema tragedy.",
-            "Standardize 'Projector & Sound System' maintenance.",
-            "Ensure FSSAI compliance with 'Snack Counter Hygiene' checklists.",
-            "Improve guest experience with a 'Customer Area Inspection' checklist."
-        ],
-        checklists: [
-            {
-                title: "🔥 Fire & Life Safety Audit",
-                department: "Safety/Operations",
-                frequency: "Weekly",
-                role: "Duty Manager",
-                summary: "A critical audit to prevent tragedies like the Uphaar Cinema fire by ensuring all fire safety measures are functional and accessible.",
-                tasks: [
-                    { id: 'CINE-FS-01', description: "Physically inspect all emergency exits to ensure they are unlocked and unobstructed.", priority: 'High', riskLevel: 'High', proof: 'Exit Inspection Log', location: 'All Auditoriums & Lobbies' },
-                    { id: 'CINE-FS-02', description: "Test all emergency lights and exit signage to ensure they illuminate correctly.", priority: 'High', riskLevel: 'High', proof: 'Lighting Test Log', location: 'All Areas' },
-                    { id: 'CINE-FS-03', description: "Check that all fire extinguishers are in their designated locations, have not expired, and pressure gauges are in the green.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Inspection Tag', location: 'All Areas' },
-                    { id: 'CINE-FS-04', description: "Test the public address (PA) system to ensure announcements are clear in all auditoriums.", priority: 'High', riskLevel: 'High', proof: 'PA System Test Log', location: 'Control Room' },
-                    { id: 'CINE-FS-05', description: "Conduct a brief fire safety huddle with staff to review evacuation roles.", priority: 'Medium', riskLevel: 'Medium', proof: 'Huddle Log', location: 'Staff Area' }
-                ]
-            },
-            {
-                title: "🎬 Projector & Sound System Maintenance",
-                department: "Technical",
-                frequency: "Daily",
-                role: "Projectionist",
-                summary: "Ensures a flawless movie-watching experience by maintaining the core technical equipment of the cinema.",
-                tasks: [
-                    { id: 'CINE-TECH-01', description: "Clean projector lenses and check lamp life hours.", priority: 'High', riskLevel: 'Medium', proof: 'Projection Log', location: 'Projection Room' },
-                    { id: 'CINE-TECH-02', description: "Run a test pattern to check for image focus, brightness, and color accuracy.", priority: 'High', riskLevel: 'Medium', proof: 'Projection Log', location: 'Auditorium' },
-                    { id: 'CINE-TECH-03', description: "Conduct a sound check to ensure all surround sound channels are working correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Sound Check Log', location: 'Auditorium' },
-                    { id: 'CINE-TECH-04', description: "Verify that the show playlists are loaded correctly for the day's schedule.", priority: 'High', riskLevel: 'High', proof: 'Playlist Screenshot', location: 'Projection Room' },
-                    { id: 'CINE-TECH-05', description: "Check the temperature of the projection room to prevent equipment overheating.", priority: 'High', riskLevel: 'Medium', proof: 'Temperature Log', location: 'Projection Room' }
-                ]
-            },
-            {
-                title: "🍿 Snack Counter (F&B) Hygiene",
-                department: "F&B",
-                frequency: "Daily",
-                role: "F&B Manager",
-                summary: "A checklist aligned with FSSAI/HACCP to prevent food contamination and ensure hygiene at the snack counter.",
-                tasks: [
-                    { id: 'CINE-FB-01', description: "Check and log temperatures of all refrigerators and warmers.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Snack Counter' },
-                    { id: 'CINE-FB-02', description: "Verify that all food handlers are adhering to personal hygiene standards (gloves, hairnets).", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Snack Counter' },
-                    { id: 'CINE-FB-03', description: "Ensure all food items are correctly labeled with expiry dates and FIFO is being practiced.", priority: 'High', riskLevel: 'High', proof: 'Date Check Log', location: 'Storage/Counter' },
-                    { id: 'CINE-FB-04', description: "Check that popcorn machines, soda dispensers, and other equipment are cleaned and sanitized.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Snack Counter' },
-                    { id: 'CINE-FB-05', description: "Ensure waste bins are not overflowing and the area is free of pests.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Snack Counter/Waste Area' }
-                ]
-            },
-            {
-                title: "🛋️ Customer Area & Restroom Inspection",
-                department: "Housekeeping",
-                frequency: "Hourly",
-                role: "Housekeeping Supervisor",
-                summary: "An hourly checklist to maintain a clean and pleasant environment for guests in all public areas.",
-                tasks: [
-                    { id: 'CINE-HK-01', description: "Inspect lobbies, hallways, and auditoriums for cleanliness and any spills.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Public Areas' },
-                    { id: 'CINE-HK-02', description: "Check and clean restrooms, ensuring they are stocked with soap, paper towels, and toilet paper.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Cleaning Log', location: 'Restrooms' },
-                    { id: 'CINE-HK-03', description: "Empty trash bins in all public areas before they become full.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Public Areas' },
-                    { id: 'CINE-HK-04', description: "Report any damages (e.g., broken seats, faulty lights) to the maintenance team immediately.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Request Log', location: 'Public Areas' },
-                    { id: 'CINE-HK-05', description: "Ensure all posters and promotional materials are up-to-date and in good condition.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Lobby' }
-                ]
-            },
-            {
-                title: "🎟️ Ticketing & Box Office Operations",
+                title: "🏟️ Facility Safety & Readiness Audit",
                 department: "Operations",
                 frequency: "Daily",
-                role: "Box Office Manager",
-                summary: "A checklist to ensure smooth and accurate ticketing operations, from cash handling to customer service.",
+                role: "Duty Manager",
+                summary: "A daily walkthrough to ensure the entire complex is safe for members and guests, from turf condition to lighting.",
                 tasks: [
-                    { id: 'CINE-BO-01', description: "Perform cash reconciliation at the start and end of each shift.", priority: 'High', riskLevel: 'High', proof: 'Cash Count Sheet', location: 'Box Office' },
-                    { id: 'CINE-BO-02', description: "Ensure all ticketing equipment (printers, scanners) is functional.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Test Log', location: 'Box Office' },
-                    { id: 'CINE-BO-03', description: "Verify that show timings and pricing are correctly displayed on all channels (online and offline).", priority: 'High', riskLevel: 'Medium', proof: 'Display Audit', location: 'Box Office/Website' },
-                    { id: 'CINE-BO-04', description: "Review daily sales reports for any discrepancies or unusual patterns.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report Analysis', location: 'Back Office' },
-                    { id: 'CINE-BO-05', description: "Ensure staff are knowledgeable about current promotions, movie ratings, and loyalty programs.", priority: 'High', riskLevel: 'Low', proof: 'Staff Quiz/Observation', location: 'Box Office' }
+                    { id: 'SPORT-FS-01', description: "Inspect playing surfaces (turf, courts) for hazards like holes, debris, or water logging.", priority: 'High', riskLevel: 'High', proof: 'Field Inspection Log', location: 'Playing Fields/Courts' },
+                    { id: 'SPORT-FS-02', description: "Check all facility lighting (indoor and outdoor) to ensure proper illumination.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check Log', location: 'Facility-wide' },
+                    { id: 'SPORT-FS-03', description: "Ensure all spectator seating and railings are secure and free from damage.", priority: 'High', riskLevel: 'High', proof: 'Seating Inspection Log', location: 'Grandstands' },
+                    { id: 'SPORT-FS-04', description: "Verify that first-aid stations are stocked and automated external defibrillators (AEDs) are functional.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Log', location: 'Medical Rooms' },
+                    { id: 'SPORT-FS-05', description: "Check that all pathways and emergency exits are clear and accessible.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Facility-wide' }
                 ]
             },
             {
-                title: "♿ Accessibility Compliance Audit",
-                department: "Operations/Compliance",
-                frequency: "Quarterly",
-                role: "Facility Manager",
-                summary: "Ensures the cinema is accessible and compliant with standards for differently-abled patrons.",
-                tasks: [
-                    { id: 'CINE-ACC-01', description: "Verify that wheelchair ramps and accessible pathways are unobstructed.", priority: 'High', riskLevel: 'High', proof: 'Accessibility Path Audit', location: 'Venue-wide' },
-                    { id: 'CINE-ACC-02', description: "Check that designated wheelchair seating areas in auditoriums are clearly marked and accessible.", priority: 'High', riskLevel: 'High', proof: 'Auditorium Audit', location: 'Auditoriums' },
-                    { id: 'CINE-ACC-03', description: "Test assistive listening devices to ensure they are functional.", priority: 'High', riskLevel: 'Medium', proof: 'Device Test Log', location: 'Box Office' },
-                    { id: 'CINE-ACC-04', description: "Ensure accessible restrooms are clean, stocked, and all fixtures are in working order.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Inspection Log', location: 'Restrooms' },
-                    { id: 'CINE-ACC-05', description: "Review website and ticketing portal for accessibility compliance (e.g., screen reader compatibility).", priority: 'Medium', riskLevel: 'Low', proof: 'Web Accessibility Report', location: 'Online' }
-                ]
-            },
-            {
-                title: "💨 HVAC & Air Quality Management",
+                title: "🏋️ Gym & Fitness Equipment Maintenance",
                 department: "Maintenance",
                 frequency: "Weekly",
                 role: "Maintenance Supervisor",
-                summary: "A checklist to ensure a comfortable and healthy environment for guests by maintaining HVAC systems.",
+                summary: "A preventive maintenance checklist to prevent equipment-related injuries and ensure longevity.",
                 tasks: [
-                    { id: 'CINE-HVAC-01', description: "Check and clean HVAC filters to ensure proper airflow and air quality.", priority: 'High', riskLevel: 'Medium', proof: 'Filter Cleaning Log', location: 'HVAC Rooms' },
-                    { id: 'CINE-HVAC-02', description: "Monitor and log auditorium temperatures to ensure they are within a comfortable range.", priority: 'High', riskLevel: 'Low', proof: 'Temperature Log', location: 'Auditoriums' },
-                    { id: 'CINE-HVAC-03', description: "Inspect HVAC units for any unusual noises or leaks.", priority: 'High', riskLevel: 'Medium', proof: 'Unit Inspection Log', location: 'HVAC Rooms' },
-                    { id: 'CINE-HVAC-04', description: "Ensure that ventilation systems are operating correctly to provide fresh air exchange.", priority: 'High', riskLevel: 'Medium', proof: 'Ventilation Check', location: 'All Areas' },
-                    { id: 'CINE-HVAC-05', description: "Schedule and review preventive maintenance by the HVAC vendor.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Service Report', location: 'Back Office' }
+                    { id: 'SPORT-GYM-01', description: "Inspect all cardio machines (treadmills, bikes) for wear and tear on belts and pedals.", priority: 'High', riskLevel: 'Medium', proof: 'Cardio Equipment Log', location: 'Gym' },
+                    { id: 'SPORT-GYM-02', description: "Check all strength training machines for frayed cables, loose bolts, and proper operation.", priority: 'High', riskLevel: 'High', proof: 'Strength Equipment Log', location: 'Gym' },
+                    { id: 'SPORT-GYM-03', description: "Sanitize all equipment surfaces, grips, and pads.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Gym' },
+                    { id: 'SPORT-GYM-04', description: "Ensure free weights are stored correctly and not creating tripping hazards.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Gym' },
+                    { id: 'SPORT-GYM-05', description: "Place 'Out of Order' signs on any faulty equipment and log it for repair.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Request Log', location: 'Gym' }
+                ]
+            },
+            {
+                title: "🎟️ Event Day Operations",
+                department: "Events",
+                frequency: "Per Event",
+                role: "Event Manager",
+                summary: "A checklist to manage the complexities of hosting a sporting event, from pre-event setup to post-event cleanup.",
+                tasks: [
+                    { id: 'SPORT-EVENT-01', description: "Conduct a final walkthrough of the venue with security and operations heads.", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Sign-off', location: 'Venue' },
+                    { id: 'SPORT-EVENT-02', description: "Brief all event staff, security, and volunteers on their roles and emergency procedures.", priority: 'High', riskLevel: 'High', proof: 'Briefing Log', location: 'Briefing Area' },
+                    { id: 'SPORT-EVENT-03', description: "Test ticketing scanners, PA systems, and scoreboards.", priority: 'High', riskLevel: 'Medium', proof: 'Tech Check Log', location: 'Venue' },
+                    { id: 'SPORT-EVENT-04', description: "Manage crowd flow at entry points, concessions, and restrooms.", priority: 'High', riskLevel: 'High', proof: 'Live Observation', location: 'Venue' },
+                    { id: 'SPORT-EVENT-05', description: "Coordinate with waste management for post-event cleanup.", priority: 'High', riskLevel: 'Low', proof: 'Cleanup Plan', location: 'Office' }
+                ]
+            },
+            {
+                title: "💧 Swimming Pool Safety & Hygiene",
+                department: "Aquatics",
+                frequency: "Daily",
+                role: "Pool Manager",
+                summary: "Ensures the swimming pool is safe, hygienic, and properly supervised.",
+                tasks: [
+                    { id: 'SPORT-POOL-01', description: "Test and log water chemistry (chlorine, pH) every two hours.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
+                    { id: 'SPORT-POOL-02', description: "Ensure lifeguards are certified, on duty, and actively scanning the pool.", priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster & Certs', location: 'Poolside' },
+                    { id: 'SPORT-POOL-03', description: "Check that all rescue equipment (life rings, spine boards) is accessible and in good condition.", priority: 'High', riskLevel: 'High', proof: 'Rescue Equipment Log', location: 'Poolside' },
+                    { id: 'SPORT-POOL-04', description: "Ensure pool decks are clean and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
+                    { id: 'SPORT-POOL-05', description: "Verify that depth markings and safety rules are clearly visible.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Poolside' }
+                ]
+            },
+            {
+                title: "🪪 Member & Staff Verification",
+                department: "Security/Front Desk",
+                frequency: "Ongoing",
+                role: "Front Desk Staff",
+                summary: "A process to ensure that only authorized members and staff have access to the facility.",
+                tasks: [
+                    { id: 'SPORT-VER-01', description: "Verify the identity and membership status of every person entering the facility.", priority: 'High', riskLevel: 'Medium', proof: 'Access Control System Log', location: 'Front Desk' },
+                    { id: 'SPORT-VER-02', description: "Ensure all trainers and coaches have valid certifications and are authorized to conduct sessions.", priority: 'High', riskLevel: 'High', proof: 'Trainer Certification File', location: 'Office' },
+                    { id: 'SPORT-VER-03', description: "Issue and manage access cards or wristbands for members and staff.", priority: 'High', riskLevel: 'Medium', proof: 'Access Card Log', location: 'Front Desk' },
+                    { id: 'SPORT-VER-04', description: "Implement a guest pass policy with clear rules and tracking.", priority: 'High', riskLevel: 'Low', proof: 'Guest Register', location: 'Front Desk' },
+                    { id: 'SPORT-VER-05', description: "Immediately deactivate access for terminated staff or expired memberships.", priority: 'High', riskLevel: 'High', proof: 'Deactivation Log', location: 'System' }
+                ]
+            },
+            {
+                title: "🧼 Locker Room & Shower Hygiene",
+                department: "Housekeeping",
+                frequency: "Hourly",
+                role: "Housekeeping Staff",
+                summary: "Maintains high standards of hygiene in locker rooms and showers to prevent infections and improve member satisfaction.",
+                tasks: [
+                    { id: 'SPORT-LR-01', description: "Clean and disinfect all high-touch surfaces (lockers, benches, taps).", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Locker Rooms' },
+                    { id: 'SPORT-LR-02', description: "Mop floors to keep them dry and prevent slips.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Locker Rooms' },
+                    { id: 'SPORT-LR-03', description: "Restock soap, sanitizer, and paper towels.", priority: 'High', riskLevel: 'Low', proof: 'Restock Log', location: 'Locker Rooms' },
+                    { id: 'SPORT-LR-04', description: "Empty trash bins regularly.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Locker Rooms' },
+                    { id: 'SPORT-LR-05', description: "Report any plumbing issues or damages immediately.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Request', location: 'Locker Rooms' }
+                ]
+            },
+            {
+                title: "🚑 Emergency Medical Response Plan",
+                department: "Safety",
+                frequency: "Quarterly Drill",
+                role: "Safety Officer",
+                summary: "A plan to ensure swift and effective response to medical emergencies within the complex.",
+                tasks: [
+                    { id: 'SPORT-EMR-01', description: "Ensure all staff are trained in basic first aid and CPR.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'SPORT-EMR-02', description: "Establish clear protocols for contacting emergency services and providing directions.", priority: 'High', riskLevel: 'High', proof: 'Emergency Protocol Document', location: 'Office' },
+                    { id: 'SPORT-EMR-03', description: "Conduct drills for common scenarios like cardiac arrest or major injuries.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Facility-wide' },
+                    { id: 'SPORT-EMR-04', description: "Maintain a log of all medical incidents and review them to identify trends or prevention opportunities.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Logbook', location: 'Medical Room' },
+                    { id: 'SPORT-EMR-05', description: "Designate and clearly mark assembly points for evacuation.", priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Facility-wide' }
                 ]
             },
             {
                 title: "🐜 Pest Control Management",
-                department: "Housekeeping/Maintenance",
-                frequency: "Weekly",
-                role: "Duty Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations, crucial for hygiene and guest experience.",
+                department: "Facilities",
+                frequency: "Monthly",
+                role: "Facility Manager",
+                summary: "A proactive checklist for managing pests in a facility with high foot traffic and various environments like gyms, cafes, and locker rooms.",
                 tasks: [
-                    { id: 'PEST-CINE-01', description: "Inspect auditoriums, snack counter, and waste areas for signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'All Areas' },
-                    { id: 'PEST-CINE-02', description: "Ensure a strict cleaning schedule is followed after every show to remove food debris.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Auditoriums' },
-                    { id: 'PEST-CINE-03', description: "Check that all exterior doors have proper seals and are not left propped open.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Entrances/Exits' },
-                    { id: 'PEST-CINE-04', description: "Ensure garbage is stored in sealed bins and disposed of regularly.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Log', location: 'Waste Area' },
-                    { id: 'PEST-CINE-05', description: "Review reports from the pest control vendor and action any recommendations.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Review', location: 'Manager Office' }
+                    { id: 'PEST-SPORT-01', description: "Inspect locker rooms, cafes, and waste disposal areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'All Areas' },
+                    { id: 'PEST-SPORT-02', description: "Ensure any on-site food vendors adhere to strict hygiene and food storage standards.", priority: 'High', riskLevel: 'High', proof: 'Vendor Audit', location: 'F&B Outlets' },
+                    { id: 'PEST-SPORT-03', description: "Keep all areas, especially changing rooms and poolside, clean and free of standing water.", priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Logs', location: 'All Areas' },
+                    { id: 'PEST-SPORT-04', description: "Ensure waste is managed efficiently, with covered bins that are emptied regularly.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Plan', location: 'Waste Areas' },
+                    { id: 'PEST-SPORT-05', description: "Review and action all recommendations from the professional pest control vendor's report.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Follow-up', location: 'Office' }
                 ]
             }
         ]
@@ -2741,136 +2477,6 @@ export const premiumPacks: PremiumPack[] = [
         ]
     },
     {
-        id: 'sports_complex_stadium_pack',
-        title: "Sports Complex & Stadium Operations",
-        priceUSD: 149.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
-        category: "Events",
-        description: "For facility managers of sports complexes and stadiums. A toolkit for managing member safety, equipment maintenance, and event day readiness.",
-        icon: <Trophy className="w-8 h-8 text-primary" />,
-        sampleItems: [
-            "Ensure athlete and spectator safety with a 'Facility Safety & Readiness' audit.",
-            "Standardize 'Gym & Fitness Equipment' maintenance to prevent injuries.",
-            "Manage 'Event Day Operations' from ticketing to crowd control.",
-            "Includes checklists for 'Pool Safety' and 'Emergency Medical Response'."
-        ],
-        checklists: [
-            {
-                title: "🏟️ Facility Safety & Readiness Audit",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Duty Manager",
-                summary: "A daily walkthrough to ensure the entire complex is safe for members and guests, from turf condition to lighting.",
-                tasks: [
-                    { id: 'SPORT-FS-01', description: "Inspect playing surfaces (turf, courts) for hazards like holes, debris, or water logging.", priority: 'High', riskLevel: 'High', proof: 'Field Inspection Log', location: 'Playing Fields/Courts' },
-                    { id: 'SPORT-FS-02', description: "Check all facility lighting (indoor and outdoor) to ensure proper illumination.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check Log', location: 'Facility-wide' },
-                    { id: 'SPORT-FS-03', description: "Ensure all spectator seating and railings are secure and free from damage.", priority: 'High', riskLevel: 'High', proof: 'Seating Inspection Log', location: 'Grandstands' },
-                    { id: 'SPORT-FS-04', description: "Verify that first-aid stations are stocked and automated external defibrillators (AEDs) are functional.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Log', location: 'Medical Rooms' },
-                    { id: 'SPORT-FS-05', description: "Check that all pathways and emergency exits are clear and accessible.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Facility-wide' }
-                ]
-            },
-            {
-                title: "🏋️ Gym & Fitness Equipment Maintenance",
-                department: "Maintenance",
-                frequency: "Weekly",
-                role: "Maintenance Supervisor",
-                summary: "A preventive maintenance checklist to prevent equipment-related injuries and ensure longevity.",
-                tasks: [
-                    { id: 'SPORT-GYM-01', description: "Inspect all cardio machines (treadmills, bikes) for wear and tear on belts and pedals.", priority: 'High', riskLevel: 'Medium', proof: 'Cardio Equipment Log', location: 'Gym' },
-                    { id: 'SPORT-GYM-02', description: "Check all strength training machines for frayed cables, loose bolts, and proper operation.", priority: 'High', riskLevel: 'High', proof: 'Strength Equipment Log', location: 'Gym' },
-                    { id: 'SPORT-GYM-03', description: "Sanitize all equipment surfaces, grips, and pads.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Gym' },
-                    { id: 'SPORT-GYM-04', description: "Ensure free weights are stored correctly and not creating tripping hazards.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Gym' },
-                    { id: 'SPORT-GYM-05', description: "Place 'Out of Order' signs on any faulty equipment and log it for repair.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Request Log', location: 'Gym' }
-                ]
-            },
-            {
-                title: "🎟️ Event Day Operations",
-                department: "Events",
-                frequency: "Per Event",
-                role: "Event Manager",
-                summary: "A checklist to manage the complexities of hosting a sporting event, from pre-event setup to post-event cleanup.",
-                tasks: [
-                    { id: 'SPORT-EVENT-01', description: "Conduct a final walkthrough of the venue with security and operations heads.", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Sign-off', location: 'Venue' },
-                    { id: 'SPORT-EVENT-02', description: "Brief all event staff, security, and volunteers on their roles and emergency procedures.", priority: 'High', riskLevel: 'High', proof: 'Briefing Log', location: 'Briefing Area' },
-                    { id: 'SPORT-EVENT-03', description: "Test ticketing scanners, PA systems, and scoreboards.", priority: 'High', riskLevel: 'Medium', proof: 'Tech Check Log', location: 'Venue' },
-                    { id: 'SPORT-EVENT-04', description: "Manage crowd flow at entry points, concessions, and restrooms.", priority: 'High', riskLevel: 'High', proof: 'Live Observation', location: 'Venue' },
-                    { id: 'SPORT-EVENT-05', description: "Coordinate with waste management for post-event cleanup.", priority: 'High', riskLevel: 'Low', proof: 'Cleanup Plan', location: 'Office' }
-                ]
-            },
-            {
-                title: "💧 Swimming Pool Safety & Hygiene",
-                department: "Aquatics",
-                frequency: "Daily",
-                role: "Pool Manager",
-                summary: "Ensures the swimming pool is safe, hygienic, and properly supervised.",
-                tasks: [
-                    { id: 'SPORT-POOL-01', description: "Test and log water chemistry (chlorine, pH) every two hours.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
-                    { id: 'SPORT-POOL-02', description: "Ensure lifeguards are certified, on duty, and actively scanning the pool.", priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster & Certs', location: 'Poolside' },
-                    { id: 'SPORT-POOL-03', description: "Check that all rescue equipment (life rings, spine boards) is accessible and in good condition.", priority: 'High', riskLevel: 'High', proof: 'Rescue Equipment Log', location: 'Poolside' },
-                    { id: 'SPORT-POOL-04', description: "Ensure pool decks are clean and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
-                    { id: 'SPORT-POOL-05', description: "Verify that depth markings and safety rules are clearly visible.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Poolside' }
-                ]
-            },
-            {
-                title: "🪪 Member & Staff Verification",
-                department: "Security/Front Desk",
-                frequency: "Ongoing",
-                role: "Front Desk Staff",
-                summary: "A process to ensure that only authorized members and staff have access to the facility.",
-                tasks: [
-                    { id: 'SPORT-VER-01', description: "Verify the identity and membership status of every person entering the facility.", priority: 'High', riskLevel: 'Medium', proof: 'Access Control System Log', location: 'Front Desk' },
-                    { id: 'SPORT-VER-02', description: "Ensure all trainers and coaches have valid certifications and are authorized to conduct sessions.", priority: 'High', riskLevel: 'High', proof: 'Trainer Certification File', location: 'Office' },
-                    { id: 'SPORT-VER-03', description: "Issue and manage access cards or wristbands for members and staff.", priority: 'High', riskLevel: 'Medium', proof: 'Access Card Log', location: 'Front Desk' },
-                    { id: 'SPORT-VER-04', description: "Implement a guest pass policy with clear rules and tracking.", priority: 'High', riskLevel: 'Low', proof: 'Guest Register', location: 'Front Desk' },
-                    { id: 'SPORT-VER-05', description: "Immediately deactivate access for terminated staff or expired memberships.", priority: 'High', riskLevel: 'High', proof: 'Deactivation Log', location: 'System' }
-                ]
-            },
-            {
-                title: "🧼 Locker Room & Shower Hygiene",
-                department: "Housekeeping",
-                frequency: "Hourly",
-                role: "Housekeeping Staff",
-                summary: "Maintains high standards of hygiene in locker rooms and showers to prevent infections and improve member satisfaction.",
-                tasks: [
-                    { id: 'SPORT-LR-01', description: "Clean and disinfect all high-touch surfaces (lockers, benches, taps).", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Locker Rooms' },
-                    { id: 'SPORT-LR-02', description: "Mop floors to keep them dry and prevent slips.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Locker Rooms' },
-                    { id: 'SPORT-LR-03', description: "Restock soap, sanitizer, and paper towels.", priority: 'High', riskLevel: 'Low', proof: 'Restock Log', location: 'Locker Rooms' },
-                    { id: 'SPORT-LR-04', description: "Empty trash bins regularly.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Locker Rooms' },
-                    { id: 'SPORT-LR-05', description: "Report any plumbing issues or damages immediately.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Request', location: 'Locker Rooms' }
-                ]
-            },
-            {
-                title: "🚑 Emergency Medical Response Plan",
-                department: "Safety",
-                frequency: "Quarterly Drill",
-                role: "Safety Officer",
-                summary: "A plan to ensure swift and effective response to medical emergencies within the complex.",
-                tasks: [
-                    { id: 'SPORT-EMR-01', description: "Ensure all staff are trained in basic first aid and CPR.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
-                    { id: 'SPORT-EMR-02', description: "Establish clear protocols for contacting emergency services and providing directions.", priority: 'High', riskLevel: 'High', proof: 'Emergency Protocol Document', location: 'Office' },
-                    { id: 'SPORT-EMR-03', description: "Conduct drills for common scenarios like cardiac arrest or major injuries.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Facility-wide' },
-                    { id: 'SPORT-EMR-04', description: "Maintain a log of all medical incidents and review them to identify trends or prevention opportunities.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Logbook', location: 'Medical Room' },
-                    { id: 'SPORT-EMR-05', description: "Designate and clearly mark assembly points for evacuation.", priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Facility-wide' }
-                ]
-            },
-            {
-                title: "🐜 Pest Control Management",
-                department: "Facilities",
-                frequency: "Monthly",
-                role: "Facility Manager",
-                summary: "A proactive checklist for managing pests in a facility with high foot traffic and various environments like gyms, cafes, and locker rooms.",
-                tasks: [
-                    { id: 'PEST-SPORT-01', description: "Inspect locker rooms, cafes, and waste disposal areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'All Areas' },
-                    { id: 'PEST-SPORT-02', description: "Ensure any on-site food vendors adhere to strict hygiene and food storage standards.", priority: 'High', riskLevel: 'High', proof: 'Vendor Audit', location: 'F&B Outlets' },
-                    { id: 'PEST-SPORT-03', description: "Keep all areas, especially changing rooms and poolside, clean and free of standing water.", priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Logs', location: 'All Areas' },
-                    { id: 'PEST-SPORT-04', description: "Ensure waste is managed efficiently, with covered bins that are emptied regularly.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Plan', location: 'Waste Areas' },
-                    { id: 'PEST-SPORT-05', description: "Review and action all recommendations from the professional pest control vendor's report.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Follow-up', location: 'Office' }
-                ]
-            }
-        ]
-    },
-    {
         id: 'museum_cultural_center_pack',
         title: "Museum & Cultural Institution Management",
         priceUSD: 89.99,
@@ -2999,6 +2605,271 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 'entertainment_leisure_pack',
+        title: "Entertainment & Leisure Operations",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Entertainment",
+        description: "For owners and managers of gaming arcades, trampoline parks, and kids' play areas. A toolkit for safety, hygiene, and guest experience.",
+        icon: <Gamepad className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        sampleItems: [
+            "Implement a 'Daily Safety Audit' for all play equipment.",
+            "Standardize 'Hygiene & Sanitation' protocols for high-contact surfaces.",
+            "Manage 'Guest Check-in & Waiver' compliance.",
+            "Includes checklists for 'Arcade Machine Maintenance' and 'Party Booking Management'."
+        ],
+        checklists: [
+            {
+                title: "🤸 Daily Play Area Safety Inspection",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Duty Manager",
+                summary: "A pre-opening safety sweep of all play structures, trampolines, and equipment to prevent injuries.",
+                tasks: [
+                    { id: 'EL-SAFE-01', description: "Inspect all trampoline beds and springs for damage or wear.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Trampoline Zone' },
+                    { id: 'EL-SAFE-02', description: "Check all padding and safety nets for holes, tears, or secure attachment.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'All Play Areas' },
+                    { id: 'EL-SAFE-03', description: "Ensure foam pits are fluffed and have adequate depth.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Foam Pit Area' },
+                    { id: 'EL-SAFE-04', description: "Inspect climbing structures for loose bolts, sharp edges, or damage.", priority: 'High', riskLevel: 'High', proof: 'Structural Inspection Log', location: 'Play Structures' },
+                    { id: 'EL-SAFE-05', description: "Verify that all safety rules and height restrictions are clearly displayed at each attraction.", priority: 'High', riskLevel: 'Medium', proof: 'Signage Audit', location: 'All Attractions' }
+                ]
+            },
+            {
+                title: "🧼 Hygiene & Sanitation Protocol",
+                department: "Housekeeping",
+                frequency: "Hourly/Daily",
+                role: "Cleaning Staff",
+                summary: "A rigorous cleaning schedule for a high-touch environment to ensure guest health and confidence.",
+                tasks: [
+                    { id: 'EL-HYG-01', description: "Sanitize all high-contact surfaces (door handles, benches, water fountains) hourly.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Facility-wide' },
+                    { id: 'EL-HYG-02', description: "Perform a deep clean and disinfection of ball pits and foam pits on a regular schedule.", priority: 'High', riskLevel: 'High', proof: 'Deep Cleaning Schedule', location: 'Ball Pit/Foam Pit' },
+                    { id: 'EL-HYG-03', description: "Clean and sanitize restrooms hourly, checking for supplies.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms' },
+                    { id: 'EL-HYG-04', description: "Ensure hand sanitizer stations are available and refilled throughout the facility.", priority: 'High', riskLevel: 'Low', proof: 'Refill Log', location: 'Facility-wide' },
+                    { id: 'EL-HYG-05', description: "Use vacuums with HEPA filters to clean carpets and soft play areas daily.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Soft Play Areas' }
+                ]
+            },
+            {
+                title: "🎟️ Guest Check-in & Waiver Management",
+                department: "Front Desk",
+                frequency: "Per Guest",
+                role: "Front Desk Staff",
+                summary: "A compliance checklist to ensure every guest is checked in properly and has a valid liability waiver on file.",
+                tasks: [
+                    { id: 'EL-WAIVER-01', description: "Verify that every participant has a signed liability waiver on file before entry.", priority: 'High', riskLevel: 'High', proof: 'Waiver System Check', location: 'Front Desk' },
+                    { id: 'EL-WAIVER-02', description: "For minors, confirm the waiver is signed by a parent or legal guardian.", priority: 'High', riskLevel: 'High', proof: 'Guardian Verification', location: 'Front Desk' },
+                    { id: 'EL-WAIVER-03', description: "Issue the correct color-coded wristband for the session time and access level.", priority: 'High', riskLevel: 'Medium', proof: 'Wristband Check', location: 'Front Desk' },
+                    { id: 'EL-WAIVER-04', description: "Ensure all guests watch the mandatory safety briefing video before entering the play area.", priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Briefing Area' },
+                    { id: 'EL-WAIVER-05', description: "Politely enforce the requirement for specific grip socks or other required safety wear.", priority: 'High', riskLevel: 'Medium', proof: 'Guest Attire Check', location: 'Front Desk' }
+                ]
+            },
+            {
+                title: "🕹️ Gaming Arcade Machine Maintenance",
+                department: "Technical",
+                frequency: "Daily",
+                role: "Technician",
+                summary: "A checklist to keep all arcade games, ticket redemption machines, and prize counters operational and profitable.",
+                tasks: [
+                    { id: 'EL-ARCADE-01', description: "Test each arcade game to ensure controls, screens, and sound are working.", priority: 'High', riskLevel: 'Medium', proof: 'Game Test Log', location: 'Arcade Floor' },
+                    { id: 'EL-ARCADE-02', description: "Refill ticket rolls in all ticket redemption games.", priority: 'High', riskLevel: 'Low', proof: 'Refill Log', location: 'Arcade Floor' },
+                    { id: 'EL-ARCADE-03', description: "Calibrate ticket payout rates to ensure they are aligned with prize costs.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Back Office' },
+                    { id: 'EL-ARCADE-04', description: "Restock prizes in display cases and the redemption counter.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Redemption Counter' },
+                    { id: 'EL-ARCADE-05', description: "Clean all game surfaces, buttons, and joysticks.", priority: 'High', riskLevel: 'Low', proof: 'Cleaning Log', location: 'Arcade Floor' }
+                ]
+            },
+            {
+                title: "🎂 Party Booking & Management",
+                department: "Sales/Operations",
+                frequency: "Per Party",
+                role: "Party Host",
+                summary: "A checklist to ensure every birthday party or group event is a smooth, enjoyable, and profitable experience.",
+                tasks: [
+                    { id: 'EL-PARTY-01', description: "Confirm final guest count, food orders, and any special requests with the client 48 hours before the party.", priority: 'High', riskLevel: 'Medium', proof: 'Client Communication Log', location: 'Office' },
+                    { id: 'EL-PARTY-02', description: "Prepare the designated party room with decorations, table settings, and supplies before the guests arrive.", priority: 'High', riskLevel: 'Low', proof: 'Room Setup Photo', location: 'Party Room' },
+                    { id: 'EL-PARTY-03', description: "Greet the party host and guests upon arrival and explain the schedule for the event.", priority: 'High', riskLevel: 'Low', proof: 'Host Interaction', location: 'Entrance' },
+                    { id: 'EL-PARTY-04', description: "Coordinate with the kitchen to ensure food is served on time.", priority: 'High', riskLevel: 'Medium', proof: 'Coordination Log', location: 'Party Room/Kitchen' },
+                    { id: 'EL-PARTY-05', description: "Process the final payment and gather feedback from the host at the end of the party.", priority: 'High', riskLevel: 'High', proof: 'Payment Receipt', location: 'Front Desk' }
+                ]
+            },
+            {
+                title: "🩹 First Aid & Incident Response",
+                department: "Safety",
+                frequency: "Daily/Per Incident",
+                role: "Duty Manager",
+                summary: "Ensures the facility is prepared to handle minor injuries and documents all incidents correctly.",
+                tasks: [
+                    { id: 'EL-FAID-01', description: "Check that first aid stations are fully stocked with bandages, antiseptic wipes, ice packs, etc.", priority: 'High', riskLevel: 'High', proof: 'First Aid Kit Log', location: 'First Aid Station' },
+                    { id: 'EL-FAID-02', description: "Ensure all staff on duty are aware of the location of first aid kits and know who the designated first-aiders are.", priority: 'High', riskLevel: 'Medium', proof: 'Daily Briefing Log', location: 'Staff Area' },
+                    { id: 'EL-FAID-03', description: "For any injury, fill out an incident report form with details of what happened, the response, and witness information.", priority: 'High', riskLevel: 'High', proof: 'Completed Incident Report', location: 'Office' },
+                    { id: 'EL-FAID-04', description: "Review incident reports weekly to identify any trends or specific attractions causing frequent minor injuries.", priority: 'High', riskLevel: 'High', proof: 'Incident Trend Analysis', location: 'Office' },
+                    { id: 'EL-FAID-05', description: "Contact the parent/guardian for any injury involving a minor, regardless of severity.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' }
+                ]
+            },
+            {
+                title: "👮 Staff Training & Positioning",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Floor Supervisor",
+                summary: "Ensures that staff are correctly positioned and actively monitoring play areas to enforce rules and prevent accidents.",
+                tasks: [
+                    { id: 'EL-STAFF-01', description: "Deploy staff (court monitors) to all high-risk zones based on a pre-defined positioning map.", priority: 'High', riskLevel: 'High', proof: 'Staff Deployment Sheet', location: 'Facility-wide' },
+                    { id: 'EL-STAFF-02', description: "Ensure staff are actively scanning their zones and not distracted by phones or conversations.", priority: 'High', riskLevel: 'High', proof: 'Supervisor Observation', location: 'Facility-wide' },
+                    { id: 'EL-STAFF-03', description: "Observe staff interactions to ensure they are politely and effectively enforcing safety rules (e.g., no double bouncing, one person per trampoline).", priority: 'High', riskLevel: 'High', proof: 'Observation Checklist', location: 'Facility-wide' },
+                    { id: 'EL-STAFF-04', description: "Rotate staff between positions to maintain alertness.", priority: 'Medium', riskLevel: 'Low', proof: 'Rotation Schedule', location: 'Facility-wide' },
+                    { id: 'EL-STAFF-05', description: "Conduct a brief huddle at the start of the shift to review any specific safety concerns for the day.", priority: 'High', riskLevel: 'Medium', proof: 'Huddle Log', location: 'Staff Area' }
+                ]
+            },
+            {
+                title: "🐜 Pest Control Management",
+                department: "Facilities",
+                frequency: "Weekly",
+                role: "Facility Manager",
+                summary: "Manages pests in an environment with high foot traffic and potential food debris.",
+                tasks: [
+                    { id: 'PEST-EL-01', description: "Inspect party rooms, cafes, and waste disposal areas for signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'All Areas' },
+                    { id: 'PEST-EL-02', description: "Ensure a strict 'no outside food' policy is enforced outside of designated party areas.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Signage', location: 'Entrance' },
+                    { id: 'PEST-EL-03', description: "Check that all waste bins are covered and emptied regularly, especially after parties.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Log', location: 'All Areas' },
+                    { id: 'PEST-EL-04', description: "Inspect foam pits and ball pits for any hidden food debris during deep cleaning.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Play Areas' },
+                    { id: 'PEST-EL-05', description: "Review and action all recommendations from the professional pest control vendor's report.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Follow-up', location: 'Office' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'beauty_wellness_pack',
+        title: "Beauty & Wellness Operations",
+        priceUSD: 149.99,
+        priceINR: 11999,
+        paymentId: 'pl_RMncDLAlms69Pd',
+        category: "Wellness",
+        description: "For salon, spa, and fitness studio owners. A toolkit to ensure client safety, hygiene, and a premium, consistent experience.",
+        icon: <Dumbbell className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        sampleItems: [
+            "Standardize 'Salon Hygiene & Tool Sterilization' to prevent infections.",
+            "Implement a 'Client Consultation & Consent' process.",
+            "Ensure 'Fitness Studio Safety & Equipment Maintenance'.",
+            "Includes checklists for 'Spa Ambiance' and 'Product Inventory'."
+        ],
+        checklists: [
+            {
+                title: "💅 Salon Hygiene & Tool Sterilization",
+                department: "Operations",
+                frequency: "Per Client",
+                role: "Stylist/Technician",
+                summary: "A critical checklist to prevent cross-contamination and infections, ensuring client safety and trust.",
+                tasks: [
+                    { id: 'BW-HYG-01', description: "Sterilize all metal tools (clippers, tweezers, etc.) in an autoclave or with a hospital-grade disinfectant after each use.", priority: 'High', riskLevel: 'High', proof: 'Sterilization Log', location: 'Sterilization Station' },
+                    { id: 'BW-HYG-02', description: "Use a new, disposable file and buffer for each nail client.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Nail Station' },
+                    { id: 'BW-HYG-03', description: "Disinfect pedicure foot baths with an approved solution for the required contact time after every client.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Pedicure Station' },
+                    { id: 'BW-HYG-04', description: "Change towels and capes for every client.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Styling Station' },
+                    { id: 'BW-HYG-05', description: "Wipe down all work surfaces, chairs, and lamps with disinfectant between appointments.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Workstation' }
+                ]
+            },
+            {
+                title: "📋 Client Consultation & Consent",
+                department: "Client Services",
+                frequency: "Per New Client/Service",
+                role: "Therapist/Stylist",
+                summary: "A professional process to understand client needs, identify contraindications, and obtain informed consent.",
+                tasks: [
+                    { id: 'BW-CONSENT-01', description: "Have new clients fill out a detailed intake form covering medical history, allergies, and concerns.", priority: 'High', riskLevel: 'High', proof: 'Completed Intake Form', location: 'Reception/Consultation Room' },
+                    { id: 'BW-CONSENT-02', description: "For services like chemical peels or waxing, perform a patch test 24-48 hours prior.", priority: 'High', riskLevel: 'High', proof: 'Patch Test Log', location: 'Treatment Room' },
+                    { id: 'BW-CONSENT-03', description: "Discuss the procedure, expected results, and potential side effects with the client.", priority: 'High', riskLevel: 'Medium', proof: 'Consultation Notes', location: 'Consultation Room' },
+                    { id: 'BW-CONSENT-04', description: "Obtain signed consent for more invasive services, documenting that the client understands the risks.", priority: 'High', riskLevel: 'High', proof: 'Signed Consent Form', location: 'Consultation Room' },
+                    { id: 'BW-CONSENT-05', description: "Document all consultation notes and services provided in the client's record for future reference.", priority: 'High', riskLevel: 'Medium', proof: 'Client File Update', location: 'CRM/System' }
+                ]
+            },
+            {
+                title: "🏋️ Fitness Studio Safety & Equipment",
+                department: "Fitness/Operations",
+                frequency: "Daily",
+                role: "Studio Manager",
+                summary: "Ensures a safe workout environment by inspecting equipment and facilities.",
+                tasks: [
+                    { id: 'BW-FIT-01', description: "Inspect all fitness equipment (e.g., reformers, bikes, weights) for loose parts, frayed cables, or damage.", priority: 'High', riskLevel: 'High', proof: 'Equipment Inspection Log', location: 'Studio Floor' },
+                    { id: 'BW-FIT-02', description: "Ensure the studio is clean, well-ventilated, and free of tripping hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Opening Checklist', location: 'Studio Floor' },
+                    { id: 'BW-FIT-03', description: "Check that first-aid kits and any emergency equipment (like AEDs) are accessible and fully stocked.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Log', location: 'Studio' },
+                    { id: 'BW-FIT-04', description: "Verify that all instructors are certified and their certifications are up-to-date.", priority: 'High', riskLevel: 'High', proof: 'Certification File', location: 'Office' },
+                    { id: 'BW-FIT-05', description: "Provide disinfectant wipes and encourage members to clean equipment after use.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check & Signage', location: 'Studio Floor' }
+                ]
+            },
+            {
+                title: "🌿 Spa Ambiance & Readiness",
+                department: "Spa Operations",
+                frequency: "Daily",
+                role: "Spa Manager",
+                summary: "A checklist to create a serene and luxurious atmosphere that is consistent with the brand's promise.",
+                tasks: [
+                    { id: 'BW-SPA-01', description: "Set lighting, music, and temperature in all treatment rooms and common areas to the brand standard.", priority: 'High', riskLevel: 'Low', proof: 'Ambiance Checklist', location: 'Spa-wide' },
+                    { id: 'BW-SPA-02', description: "Check that aromatherapy diffusers are filled with the correct scent and are operational.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Spa-wide' },
+                    { id: 'BW-SPA-03', description: "Ensure relaxation areas are stocked with fresh water, herbal tea, and healthy snacks.", priority: 'High', riskLevel: 'Low', proof: 'Restock Log', location: 'Relaxation Lounge' },
+                    { id: 'BW-SPA-04', description: "Verify that all robes, towels, and slippers are clean, fresh, and neatly presented.", priority: 'High', riskLevel: 'Medium', proof: 'Linen Check', location: 'Locker Rooms' },
+                    { id: 'BW-SPA-05', description: "Conduct a sensory walkthrough to ensure there are no unpleasant odors or distracting noises.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Walkthrough Log', location: 'Spa-wide' }
+                ]
+            },
+            {
+                title: "📦 Product & Linen Inventory Control",
+                department: "Inventory/Operations",
+                frequency: "Weekly",
+                role: "Manager",
+                summary: "Manages the inventory of professional products, retail items, and linens to prevent stockouts and reduce waste.",
+                tasks: [
+                    { id: 'BW-INV-01', description: "Conduct a weekly count of key retail and professional-use products.", priority: 'High', riskLevel: 'Medium', proof: 'Inventory Count Sheet', location: 'Stock Room' },
+                    { id: 'BW-INV-02', description: "Check expiry dates on all products and implement a First-In, First-Out (FIFO) system.", priority: 'High', riskLevel: 'High', proof: 'FIFO Audit', location: 'Stock Room' },
+                    { id: 'BW-INV-03', description: "Track linen usage and send/receive counts to/from the laundry service to manage losses.", priority: 'High', riskLevel: 'Medium', proof: 'Linen Log', location: 'Linen Closet' },
+                    { id: 'BW-INV-04', description: "Place new orders for products and supplies based on par levels and upcoming promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Purchase Orders', location: 'Office' },
+                    { id: 'BW-INV-05', description: "Ensure all products are stored according to manufacturer guidelines (e.g., temperature, light exposure).", priority: 'High', riskLevel: 'Medium', proof: 'Storage Condition Check', location: 'Stock Room' }
+                ]
+            },
+            {
+                title: "📅 Appointment Booking & Staff Scheduling",
+                department: "Front Desk/Management",
+                frequency: "Daily",
+                role: "Receptionist/Manager",
+                summary: "A process to optimize staff schedules, maximize booking capacity, and provide excellent customer service.",
+                tasks: [
+                    { id: 'BW-SCHED-01', description: "Review the next day's appointments to ensure correct services are booked with the right practitioner and for the correct duration.", priority: 'High', riskLevel: 'Medium', proof: 'Appointment Book Audit', location: 'Front Desk' },
+                    { id: 'BW-SCHED-02', description: "Send automated appointment reminders to clients 24-48 hours in advance to reduce no-shows.", priority: 'High', riskLevel: 'Medium', proof: 'System Log', location: 'System' },
+                    { id: 'BW-SCHED-03', description: "Manage the waitlist and proactively contact clients if an opening becomes available.", priority: 'High', riskLevel: 'Low', proof: 'Waitlist Contact Log', location: 'Front Desk' },
+                    { id: 'BW-SCHED-04', description: "Optimize staff schedules based on demand patterns to reduce downtime.", priority: 'Medium', riskLevel: 'Low', proof: 'Staff Roster', location: 'Office' },
+                    { id: 'BW-SCHED-05', description: "Clearly communicate the cancellation policy to clients at the time of booking.", priority: 'High', riskLevel: 'Medium', proof: 'Booking Script', location: 'Front Desk' }
+                ]
+            },
+            {
+                title: "💰 Cash Handling & End-of-Day Reporting",
+                department: "Finance/Front Desk",
+                frequency: "Daily",
+                role: "Manager",
+                summary: "Ensures all daily revenue is accurately captured, reconciled, and secured.",
+                tasks: [
+                    { id: 'BW-CASH-01', description: "Reconcile cash, credit card, and digital payments against the appointment system's daily sales report.", priority: 'High', riskLevel: 'High', proof: 'Daily Sales Reconciliation Sheet', location: 'Back Office' },
+                    { id: 'BW-CASH-02', description: "Investigate and document any discrepancies immediately.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Back Office' },
+                    { id: 'BW-CASH-03', description: "Prepare the bank deposit and store cash in a secure safe.", priority: 'High', riskLevel: 'High', proof: 'Bank Deposit Slip', location: 'Safe' },
+                    { id: 'BW-CASH-04', description: "Review daily reports on key metrics like client retention, average bill size, and retail sales.", priority: 'High', riskLevel: 'Medium', proof: 'Daily Business Report', location: 'Office' },
+                    { id: 'BW-CASH-05', description: "Ensure all staff are trained on the correct procedures for processing payments and issuing receipts.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' }
+                ]
+            },
+            {
+                title: "🐜 Pest Control Management",
+                department: "Facilities",
+                frequency: "Monthly",
+                role: "Manager",
+                summary: "Maintains a pest-free environment, crucial for hygiene and client perception in a wellness setting.",
+                tasks: [
+                    { id: 'PEST-BW-01', description: "Inspect treatment rooms, relaxation areas, pantry, and waste disposal areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'Facility-wide' },
+                    { id: 'PEST-BW-02', description: "Ensure all food and beverage items are stored in sealed containers.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Pantry' },
+                    { id: 'PEST-BW-03', description: "Check that exterior doors and windows have proper seals to prevent pest entry.", priority: 'High', riskLevel: 'Medium', proof: 'Structural Check', location: 'Perimeter' },
+                    { id: 'PEST-BW-04', description: "Keep all areas clean and free of clutter, especially storage closets and wet areas.", priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Audit', location: 'Facility-wide' },
+                    { id: 'PEST-BW-05', description: "Review and action recommendations from the professional pest control vendor's report.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Action Log', location: 'Office' }
+                ]
+            }
+        ]
     }
 ]
+
 
