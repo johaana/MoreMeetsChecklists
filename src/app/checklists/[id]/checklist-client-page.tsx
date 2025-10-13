@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -76,7 +77,30 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
 
 export default function ChecklistClientPage({ checklist }: { checklist: IndividualChecklist }) {
 
+    const pricingSectionRef = React.useRef<HTMLDivElement>(null);
+    const [showStickyBar, setShowStickyBar] = React.useState(false);
+    
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setShowStickyBar(!entry.isIntersecting);
+            },
+            { rootMargin: "0px 0px -100% 0px" } 
+        );
+
+        if (pricingSectionRef.current) {
+            observer.observe(pricingSectionRef.current);
+        }
+
+        return () => {
+            if (pricingSectionRef.current) {
+                observer.unobserve(pricingSectionRef.current);
+            }
+        };
+    }, []);
+
   return (
+    <>
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
@@ -125,7 +149,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         <p className="text-muted-foreground">{checklist.whoIsItFor.join(' • ')}</p>
                     </div>
                 </div>
-                 <div className="sticky top-24">
+                 <div ref={pricingSectionRef} className="sticky top-24">
                      <Card className="shadow-2xl border-2 border-primary/20">
                         <CardHeader className="text-center pb-4">
                             <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
@@ -155,5 +179,23 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
       </main>
        <Footer />
     </div>
+     <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className='flex items-center justify-between gap-4'>
+             <div>
+                <p className='font-bold text-sm truncate'>{checklist.title}</p>
+                <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
+            </div>
+            <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                 <RazorpayButton 
+                    paymentId={checklist.paymentId} 
+                    params={{ checklist_id: checklist.id }}
+                />
+            </div>
+        </div>
+    </div>
+    </>
   );
 }
+
+
+    

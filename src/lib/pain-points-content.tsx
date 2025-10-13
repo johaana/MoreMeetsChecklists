@@ -223,3 +223,6 @@ export const painPointsContent = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
+
+
+    

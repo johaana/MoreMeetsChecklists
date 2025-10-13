@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -72,6 +73,28 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPrice = 10999;
     const personalizedStrikethroughPrice = 18999;
     const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // This ID corresponds to the personalized price point in Razorpay
+
+    const [showStickyBar, setShowStickyBar] = React.useState(false);
+    const pricingSectionRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setShowStickyBar(!entry.isIntersecting);
+            },
+            { rootMargin: "0px 0px -100% 0px" } 
+        );
+
+        if (pricingSectionRef.current) {
+            observer.observe(pricingSectionRef.current);
+        }
+
+        return () => {
+            if (pricingSectionRef.current) {
+                observer.unobserve(pricingSectionRef.current);
+            }
+        };
+    }, []);
 
 
     if (pack.id === 'personal_travel_pack') {
@@ -174,7 +197,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     ];
 
     return (
-        <section className="w-full py-12 md:py-16" id="pricing">
+        <>
+        <section ref={pricingSectionRef} className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
@@ -226,5 +250,20 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
             </div>
         </section>
+        <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
+            <div className='flex items-center justify-between gap-4'>
+                 <div>
+                    <p className='font-bold text-sm truncate'>{pack.title}</p>
+                    <p className='text-lg font-extrabold'>₹{professionalPrice}</p>
+                </div>
+                <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
+                    <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                </div>
+            </div>
+        </div>
+        </>
     );
 }
+
+
+    
