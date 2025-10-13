@@ -447,40 +447,20 @@ const WhyDetailMatters = () => {
 
 
 export default function Home() {
-
+  const heroImageUrl = 'https://i.postimg.cc/sQHHL4nm/office1.jpg';
+  
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
         <section className="relative w-full h-[60vh] lg:h-[70vh]">
-          <div className="absolute inset-0 w-full h-full">
-            <Carousel
-                opts={{ loop: true }}
-                plugins={[
-                    Autoplay({
-                        delay: 5000,
-                    }),
-                ]}
-                className="w-full h-full"
-            >
-                <CarouselContent className="-ml-0 h-full">
-                    {heroImages.map((image, index) => (
-                        <CarouselItem key={index} className="pl-0 h-full">
-                            <div className="h-full w-full relative">
-                               <div
-                                    aria-hidden="true"
-                                    className="absolute inset-0 bg-cover bg-center"
-                                    style={{
-                                        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${image.imageUrl})`,
-                                    }}
-                                />
-                            </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-            </Carousel>
-          </div>
-            
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImageUrl})`,
+            }}
+          />
             <div className="container relative z-10 px-4 md:px-6 h-full">
                 <div className="flex flex-col items-center justify-center space-y-6 text-center h-full">
                 <div className="space-y-4">
