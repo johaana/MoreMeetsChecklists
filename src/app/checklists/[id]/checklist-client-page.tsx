@@ -13,6 +13,7 @@ import { premiumPacks } from '@/lib/premium-packs';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import type { IndividualChecklist } from '@/lib/individual-checklists';
 import { individualChecklists } from '@/lib/individual-checklists';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
 
 
 const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
@@ -104,29 +105,6 @@ const PaymentDisclaimerDialog = () => (
     </AlertDialog>
 );
 
-const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checklistId: string }) => {
-    const formRef = React.useRef<HTMLFormElement>(null);
-
-    React.useEffect(() => {
-        if (formRef.current && formRef.current.children.length === 0 && !document.querySelector(`form[data-payment_button_id="${paymentId}"]`)) {
-            const script = document.createElement('script');
-            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-            script.async = true;
-            script.setAttribute('data-payment_button_id', paymentId);
-            
-            if (formRef.current) {
-                formRef.current.appendChild(script);
-            }
-        }
-    }, [paymentId]);
-
-    return (
-        <form ref={formRef} className="razorpay-form">
-            <input type="hidden" name="checklist_id" value={checklistId} />
-        </form>
-    );
-};
-
 
 export default function ChecklistClientPage({ checklist }: { checklist: IndividualChecklist }) {
 
@@ -187,8 +165,11 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         </CardHeader>
                         <CardContent className="text-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <div className="[&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                <RazorpayButton paymentId={checklist.paymentId} checklistId={checklist.id} />
+                           <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                                <RazorpayButton 
+                                    paymentId={checklist.paymentId} 
+                                    params={{ checklist_id: checklist.id }}
+                                />
                            </div>
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                         </CardContent>

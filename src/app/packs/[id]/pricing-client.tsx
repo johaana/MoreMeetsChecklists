@@ -4,15 +4,14 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
-import Script from 'next/script';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -96,36 +95,6 @@ const PaymentDisclaimerDialog = () => (
     </AlertDialog>
 );
 
-const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
-    const formRef = React.useRef<HTMLFormElement>(null);
-
-    React.useEffect(() => {
-        // Check if a form with this specific payment button ID already exists.
-        if (document.querySelector(`form[data-payment_button_id="${paymentId}"]`)) {
-            return;
-        }
-
-        if (formRef.current && formRef.current.children.length === 0) {
-            const script = document.createElement('script');
-            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-            script.async = true;
-            script.setAttribute('data-payment_button_id', paymentId);
-            
-            // Add the script to a form and then add the form to the ref.
-            // This is how Razorpay's script is designed to work.
-            const form = document.createElement('form');
-            form.setAttribute('data-payment_button_id', paymentId); // Add attribute to form for checking
-            form.appendChild(script);
-
-            if (formRef.current) {
-                formRef.current.appendChild(form);
-            }
-        }
-    }, [paymentId]);
-
-    return <div ref={formRef}></div>;
-};
-
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
@@ -151,8 +120,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="text-center">
                                <p className="text-4xl font-extrabold mb-4">₹{pack.priceINR}</p>
-                               <div className="[&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                    <RazorpayButton paymentId={pack.paymentId} />
+                               <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
                                </div>
                                 <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                             </CardContent>
@@ -178,8 +147,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <div className="[&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                    <RazorpayButton paymentId={professionalPaymentId} />
+                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
+                    <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
                 </div>
                 <PaymentDisclaimerDialog />
             </CardFooter>
@@ -209,8 +178,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority support (faster response time).</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <div className="[&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                    <RazorpayButton paymentId={personalizedPaymentId} />
+                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                    <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
                 </div>
                 <PaymentDisclaimerDialog />
             </CardFooter>
