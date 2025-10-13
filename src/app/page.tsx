@@ -193,7 +193,7 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const featuredPacks = premiumPacks.filter(p => p.badgeText && p.badgeText.toLowerCase().includes('popular'));
+    const featuredPacks = premiumPacks.filter(p => p.badgeText && (p.badgeText.toLowerCase().includes('popular') || p.badgeText.toLowerCase().includes('best for corporate') || p.badgeText.toLowerCase().includes('bestseller')));
     const title = "Featured Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
@@ -459,12 +459,14 @@ export default function Home() {
                     <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                     The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
-                    <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
-                    Meet More Standards. More Compliance. More Consistency.
-                    </h2>
-                    <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm">
-                    Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
-                    </p>
+                    <div className="hidden lg:block">
+                        <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
+                            Meet More Standards. More Compliance. More Consistency.
+                        </h2>
+                        <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
+                            Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
+                        </p>
+                    </div>
                     <div className="flex flex-col items-center justify-center gap-4 pt-4">
                     <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
                         <Link href="/packs">
@@ -480,6 +482,17 @@ export default function Home() {
                     </div>
                 </div>
                 </div>
+            </div>
+        </section>
+
+        <section className="w-full py-12 bg-secondary/30 lg:hidden">
+            <div className="container px-4 md:px-6 text-center">
+                 <h2 className="text-xl font-semibold text-foreground/90 max-w-3xl mx-auto">
+                    Meet More Standards. More Compliance. More Consistency.
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-lg/relaxed mx-auto mt-2">
+                    Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
+                </p>
             </div>
         </section>
         
