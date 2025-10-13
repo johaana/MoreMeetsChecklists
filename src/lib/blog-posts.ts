@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     publishedDate: '2024-08-07',
     author: 'MoreMeets Team',
     tags: ['Safety', 'Compliance', 'Risk Management', 'Case Study'],
-    relatedPackId: 'sports_complex_stadium_ops',
+    relatedPackId: 'sports_club_operations',
     imageUrl: 'https://i.postimg.cc/SRm0JZcS/sports-stadium-football1.jpg',
     content: `
 <p>Standard Operating Procedures (SOPs) and checklists are often seen as bureaucratic paperwork. In reality, they are the single most powerful tool for preventing catastrophic failure. Here are eight real-life incidents where a simple, documented checklist could have saved lives, reputations, and millions of dollars.</p>
