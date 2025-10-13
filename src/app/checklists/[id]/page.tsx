@@ -8,7 +8,11 @@ type Props = {
   params: { id: string }
 }
 
-const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+const checklistImageMap: Record<string, string> = {
+  'surgical-safety': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp'
+};
+
 
 export async function generateMetadata(
   { params }: Props
@@ -25,6 +29,7 @@ export async function generateMetadata(
   
   const title = `${checklist.title} | MoreMeets`;
   const description = checklist.description;
+  const heroImageUrl = checklistImageMap[id] || defaultHeroImageUrl;
 
   return {
     title: title,

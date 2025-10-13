@@ -11,6 +11,7 @@ export type BlogPost = {
   relatedPackId?: string;
   relatedChecklistId?: string;
   content: string;
+  imageUrl?: string;
 };
 
 export const blogPosts: BlogPost[] = [
@@ -52,6 +53,7 @@ A junior technician was tasked with replacing a faulty sensor on a hydraulic pre
     author: 'MoreMeets Team',
     tags: ['Healthcare', 'Patient Safety', 'Compliance'],
     relatedChecklistId: 'surgical-safety',
+    imageUrl: 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
     content: `
 <p>In 2007, a patient in Rhode Island underwent brain surgery. The veteran neurosurgeon opened the patient's skull on the wrong side. In the frantic moments that followed, the error was discovered, the patient was closed up, and then prepped again for a second surgery on the correct side. The cause was a series of small, cascading communication failures.</p>
 <p>This is a "never event." A medical error so serious, so preventable, that it should simply never happen. Yet, it does. And the root cause is almost always the same: a breakdown in process and communication under pressure.</p>
@@ -79,6 +81,7 @@ A landmark study in The New England Journal of Medicine found that implementing 
     author: 'MoreMeets Team',
     tags: ['Safety', 'Compliance', 'Entertainment'],
     relatedPackId: 'cinema_operations_pack',
+    imageUrl: 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
     content: `
 <p>On June 13, 1997, a fire broke out at the Uphaar Cinema in Delhi during a screening. The fire itself was containable, but what followed was a man-made disaster. Blocked exits, non-functional public address systems, and a lack of staff training turned the theater into a death trap, claiming 59 lives.</p>
 <p>The investigation revealed a horrifying list of systemic failures: gangways were blocked by extra seats, exit doors were locked, and there were no emergency lights. These were not complex issues; they were basic, fundamental safety requirements that had been ignored.</p>
@@ -101,6 +104,7 @@ A landmark study in The New England Journal of Medicine found that implementing 
     author: 'MoreMeets Team',
     tags: ['Events', 'Safety', 'Risk Management'],
     relatedPackId: 'events_management_playbook',
+    imageUrl: 'https://i.postimg.cc/0j9gbt7Q/sports-stadium.webp',
     content: `
 <p>On August 13, 2011, as a storm approached the Indiana State Fair, a gust of wind toppled the massive outdoor stage rigging, killing seven people and injuring 58. The investigation revealed a cascade of failures: the structure was not built to withstand the wind loads, there was no clear protocol for evacuation, and no single person had the authority to call off the show.</p>
 <p>This tragedy is a case study in why informal, "we've always done it this way" processes fail in high-stakes environments. The risk of severe weather was known, but there was no checklist, no formal process to trigger a specific safety action.</p>
@@ -122,6 +126,7 @@ A landmark study in The New England Journal of Medicine found that implementing 
     author: 'MoreMeets Team',
     tags: ['Film Production', 'Legal', 'Compliance'],
     relatedPackId: 'film_production_pack',
+    imageUrl: 'https://i.postimg.cc/kG7rBjWn/movie-production-3.jpg',
     content: `
 <p>Imagine securing funding, hiring a cast, and building sets, only to have your entire film project shut down by a single legal letter. This nightmare became a reality for the producers of a $2 million biopic who failed to properly secure the life rights of the person their film was about. The result? A costly lawsuit and an abandoned project.</p>
 <p>This wasn't a creative failure; it was an operational one. In the excitement of pre-production, a critical legal step was overlooked—a step that a systematic checklist would have made impossible to miss.</p>
@@ -143,13 +148,14 @@ A landmark study in The New England Journal of Medicine found that implementing 
     publishedDate: '2024-08-06',
     author: 'MoreMeets Team',
     tags: ['OTT Platform', 'Tech', 'Infrastructure', 'SRE'],
-    relatedPackId: 'film_production_pack',
+    relatedPackId: 'ott_platform_pack',
+    imageUrl: 'https://i.postimg.cc/90c3rxyh/ott-platforms.webp',
     content: `
 <p>The year is 2023. A high-stakes international cricket match is in its final, thrilling overs. Millions of paying subscribers are glued to their screens on a major OTT platform. Suddenly, the screen freezes. The stream dies. The platform has buckled under the immense load, leading to a firestorm of angry social media posts and immediate user churn.</p>
 <p>This incident wasn't a bug in the video player; it was a catastrophic failure of infrastructure planning and operational readiness. The platform was not prepared for its own success, a classic sign that operational processes had not scaled with user growth.</p>
 <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Reactive Firefighting to Proactive Resilience</h3>
 <p>For a streaming service, "platform stability" is the entire product. A single major outage can destroy user trust and erase months of marketing efforts. Preventing this requires moving from a reactive "fix-it-when-it-breaks" mindset to a proactive, checklist-driven culture of Site Reliability Engineering (SRE).</p>
-<p>Our <a href="/packs/film_production_pack" class="text-accent underline">Film & OTT Production Pack</a> contains an 'Infrastructure & Live Event Readiness' checklist specifically designed to prevent such disasters. It mandates that before any major live event, the tech team must:</p>
+<p>Our <a href="/packs/ott_platform_pack" class="text-accent underline">Film & OTT Production Pack</a> contains an 'Infrastructure & Live Event Readiness' checklist specifically designed to prevent such disasters. It mandates that before any major live event, the tech team must:</p>
 <ul class="list-disc pl-6 space-y-2 my-4">
     <li><strong>Perform Load Testing:</strong> Simulate peak concurrent viewership in a staging environment to identify bottlenecks before they affect real users.</li>
     <li><strong>Verify Auto-Scaling Policies:</strong> Ensure that your cloud infrastructure is configured to automatically add more servers as user load increases.</li>

@@ -19,7 +19,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { individualChecklists } from "@/lib/individual-checklists";
 
 
-const heroImage = PlaceHolderImages.find(img => img.id === "showcase-emirates-palace");
+const heroImage = { imageUrl: 'https://i.postimg.cc/sQHHL4nm/office1.jpg' };
 
 
 const HowWeAreDifferentSection = () => (

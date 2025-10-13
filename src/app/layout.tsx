@@ -7,7 +7,7 @@ import { Inter, Poppins } from 'next/font/google';
 
 
 const siteUrl = 'https://www.moremeets.com';
-const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+const heroImageUrl = 'https://i.postimg.cc/sQHHL4nm/office1.jpg';
 const siteTitle = 'MoreMeets: Professional Operational Checklists & SOPs';
 const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
 

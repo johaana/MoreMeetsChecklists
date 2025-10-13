@@ -17,7 +17,18 @@ type Props = {
   params: { id: string }
 }
 
-const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+
+const packImageMap: Record<string, string> = {
+  'film_production_pack': 'https://i.postimg.cc/zvqmVdT5/movie-production-1.jpg',
+  'ott_platform_pack': 'https://i.postimg.cc/90c3rxyh/ott-platforms.webp',
+  'sports_complex_stadium_ops': 'https://i.postimg.cc/SRm0JZcS/sports-stadium-football1.jpg',
+  'cinema_operations_pack': 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
+  'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
+  'healthcare_compliance_suite': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
+  'facility_management_blueprint': 'https://i.postimg.cc/sQHHL4nm/office1.jpg'
+};
+
 
 export async function generateMetadata(
   { params }: Props,
@@ -36,6 +47,7 @@ export async function generateMetadata(
   const title = `${pack.title} Pack | MoreMeets`;
   const description = `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
 
+  const heroImageUrl = packImageMap[id] || defaultHeroImageUrl;
   const openGraphImages = heroImageUrl ? [{ url: heroImageUrl, width: 1200, height: 630, alt: `${pack.title} Preview` }] : [];
 
   return {
@@ -179,6 +191,8 @@ export default function Page({ params }: { params: { id: string } }) {
     notFound();
   }
   
+  const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
+
   const whoIsItForMap: Record<string, string[]> = {
     "Hospitality": ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
     "Corporate": ["Founders", "COOs", "VPs of Operations", "Chief Engineers", "Heads of IT & Security", "Finance Controllers"],
