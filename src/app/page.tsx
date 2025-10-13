@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -17,10 +16,17 @@ import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
 import { individualChecklists } from "@/lib/individual-checklists";
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
 
 
-const heroImage = { imageUrl: 'https://i.postimg.cc/sQHHL4nm/office1.jpg' };
-
+const heroImages = [
+    { imageUrl: 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg', alt: 'Luxury hotel representing hospitality' },
+    { imageUrl: 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg', alt: 'Cinema hall representing entertainment' },
+    { imageUrl: 'https://i.postimg.cc/SRm0JZcS/sports-stadium-football1.jpg', alt: 'Sports stadium representing large venues' },
+    { imageUrl: 'https://i.postimg.cc/rsq6Khxv/hospital-2.webp', alt: 'Modern hospital representing healthcare' },
+    { imageUrl: 'https://i.postimg.cc/sQHHL4nm/office1.jpg', alt: 'Modern office representing corporate facility management' }
+];
 
 const HowWeAreDifferentSection = () => (
     <section id="how-we-are-different" className="w-full py-12 md:py-24 lg:py-32">
@@ -446,42 +452,59 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative w-full pt-12 md:pt-24 lg:pt-32">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImage?.imageUrl})`,
-            }}
-          />
-          <div className="container relative z-10 px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center min-h-[50vh] lg:min-h-[60vh]">
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                  The Professional Standard for Compliance &amp; Operations Checklists.
-                </h1>
-                <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
-                  Meet More Standards. More Compliance. More Consistency.
-                </h2>
-                <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm">
-                  Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
-                </p>
-                <div className="flex flex-col items-center justify-center gap-4 pt-4">
-                  <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                    <Link href="/packs">
-                      Browse All Packages
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                  <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                    <p className="text-xs text-white/80">
-                      Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA.
+         <section className="relative w-full pt-12 md:pt-24 lg:pt-32">
+            <Carousel
+                opts={{ loop: true }}
+                plugins={[
+                    Autoplay({
+                        delay: 5000,
+                    }),
+                ]}
+                className="w-full h-full absolute inset-0"
+            >
+                <CarouselContent className="-ml-0 h-full">
+                    {heroImages.map((image, index) => (
+                        <CarouselItem key={index} className="pl-0 h-full">
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+                                style={{
+                                    backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${image.imageUrl})`,
+                                }}
+                            />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+            </Carousel>
+            
+            <div className="container relative z-10 px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-6 text-center min-h-[50vh] lg:min-h-[60vh]">
+                <div className="space-y-4">
+                    <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                    The Professional Standard for Compliance &amp; Operations Checklists.
+                    </h1>
+                    <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
+                    Meet More Standards. More Compliance. More Consistency.
+                    </h2>
+                    <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm">
+                    Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                     </p>
-                  </div>
+                    <div className="flex flex-col items-center justify-center gap-4 pt-4">
+                    <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                        <Link href="/packs">
+                        Browse All Packages
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                    <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
+                        <p className="text-xs text-white/80">
+                        Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA.
+                        </p>
+                    </div>
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
-          </div>
         </section>
         
         <WhyDetailMatters />
