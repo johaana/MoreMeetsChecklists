@@ -74,38 +74,6 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
     );
 };
 
-const PaymentDisclaimerDialog = () => (
-    <AlertDialog>
-        <AlertDialogTrigger asChild>
-             <Button variant="link" className="text-xs text-accent h-auto p-0 flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> Read Before Paying
-            </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-            <AlertDialogHeader>
-                <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent" /> Important: Before You Pay</AlertDialogTitle>
-                <AlertDialogDescription asChild>
-                    <div className="space-y-4 pt-4 text-sm text-muted-foreground">
-                        <div>
-                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the thank you page to download your checklist.
-                        </div>
-                        <div>
-                            <strong>2. Beneficiary Name:</strong> The beneficiary name may appear as MoreMeets or our Founder's name due to banking compliance. Both are verified.
-                        </div>
-                        <div>
-                            <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify your payment ID and download your file.
-                        </div>
-                    </div>
-                </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-                <AlertDialogCancel>Close</AlertDialogCancel>
-            </AlertDialogFooter>
-        </AlertDialogContent>
-    </AlertDialog>
-);
-
-
 export default function ChecklistClientPage({ checklist }: { checklist: IndividualChecklist }) {
 
   return (
@@ -171,10 +139,9 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                                     params={{ checklist_id: checklist.id }}
                                 />
                            </div>
-                            <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
-                            <PaymentDisclaimerDialog />
+                            <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
                          </CardFooter>
                     </Card>
                 </div>

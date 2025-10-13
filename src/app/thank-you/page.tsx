@@ -4,11 +4,8 @@
 import Link from "next/link";
 import * as React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { WhatsAppIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2, ArrowLeft, Mail } from "lucide-react";
+import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { writeFile, utils } from 'xlsx-js-style';
 import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
@@ -104,118 +101,80 @@ const addChecklistSheet = (workbook: any, checklist: PackChecklist, headerStyle:
 
 function ThankYouContent() {
   const searchParams = useSearchParams();
-  const [paymentId, setPaymentId] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const [verifiedItem, setVerifiedItem] = React.useState<any | null>(null);
   const [itemType, setItemType] = React.useState<'pack' | 'individual' | null>(null);
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
-  const [view, setView] = React.useState<'initial' | 'enterId' | 'findId'>('initial');
 
   React.useEffect(() => {
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
-    if (rzpPaymentId) {
-        setPaymentId(rzpPaymentId);
-        setView('enterId');
-        handleSubmit(null, rzpPaymentId);
-    }
-  }, [searchParams]);
-
-  const handleSubmit = async (e: React.FormEvent | null, id?: string) => {
-    if (e) e.preventDefault();
-    
-    const finalPaymentId = id || paymentId;
-    if (!finalPaymentId) {
-        setError("Please enter a Payment ID.");
-        return;
-    }
-
-    setIsLoading(true);
-    setError(null);
-    setVerifiedItem(null);
-
     const packId = searchParams.get('pack_id');
     const checklistId = searchParams.get('checklist_id');
     const isPersonalized = searchParams.get('type') === 'personalized';
 
-    const result = await verifyRazorpayPayment(finalPaymentId, packId, checklistId, !!isPersonalized);
-    
-    if (result.success) {
-      setVerifiedItem(result.item);
-      setItemType(result.type);
-      setView('enterId');
-    } else {
-      setError(result.error);
-      setView('enterId');
+    if (!rzpPaymentId) {
+      setError("Payment ID not found. Please check your email from Razorpay or contact support.");
+      setIsLoading(false);
+      return;
     }
-    
-    setIsLoading(false);
-  };
-  
-  const onDownload = () => {
-    handleDownload(verifiedItem, itemType!);
-    setShowDownloadConfirm(true);
-  }
 
-  const renderInitialView = () => (
-    <div className="text-center">
-        <div className="flex flex-col items-center justify-center space-y-4 mb-8">
-            <CheckCircle className="h-20 w-20 text-green-500" />
-            <div className="space-y-2">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                    Thank You for Your Purchase!
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                   How would you like to get your files?
-                </p>
-            </div>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" onClick={() => setView('enterId')}>
-                Enter Payment ID
-            </Button>
-            <Button size="lg" variant="outline" onClick={() => setView('findId')}>
-                Can't find your ID?
-            </Button>
-        </div>
-    </div>
-  );
+    const verify = async () => {
+      setIsLoading(true);
+      setError(null);
+      setVerifiedItem(null);
 
-  const renderFindIdView = () => (
-     <div className="text-center">
-        <div className="space-y-4">
-            <h2 className="text-2xl font-bold font-headline text-primary">No Worries, We're Here to Help!</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">
-                If you missed noting your Payment ID, please send a screenshot of your payment confirmation to us, along with the name of the checklist you purchased. We'll send you the files directly.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button asChild>
-                    <a href="https://wa.me/919545997111?text=Hi!%20I%20can't%20find%20my%20Payment%20ID." target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <WhatsAppIcon className="w-5 h-5"/>
-                        Send on WhatsApp
-                    </a>
-                </Button>
-                 <Button asChild variant="secondary">
-                     <a href="mailto:more@moremeets.com" className="flex items-center gap-2">
-                         <Mail className="w-5 h-5"/>
-                        Send an Email
-                    </a>
-                </Button>
-            </div>
-             <Button variant="link" onClick={() => setView('initial')} className="mt-4">
-                <ArrowLeft className="w-4 h-4 mr-2"/>
-                Back
-            </Button>
-        </div>
-    </div>
-  );
-  
-  const renderVerificationView = () => {
+      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId, !!isPersonalized);
+      
+      if (result.success) {
+        setVerifiedItem(result.item);
+        setItemType(result.type);
+        handleDownload(result.item, result.type);
+        setShowDownloadConfirm(true);
+      } else {
+        setError(result.error);
+      }
+      
+      setIsLoading(false);
+    };
+
+    verify();
+  }, [searchParams]);
+
+  const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="h-12 w-12 text-primary animate-spin" />
-          <p className="text-muted-foreground">Verifying your payment...</p>
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <Loader2 className="h-16 w-16 text-primary animate-spin" />
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+            Verifying your payment...
+          </h1>
+          <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+            Please wait while we confirm your transaction.
+          </p>
+        </div>
+      );
+    }
+
+    if (error) {
+       return (
+         <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <AlertTriangle className="h-20 w-20 text-destructive" />
+            <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                    Verification Failed
+                </h1>
+                <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed mx-auto">
+                    There was an issue verifying your payment:
+                </p>
+                <p className="font-semibold text-destructive">{error}</p>
+                <p className="text-muted-foreground text-sm pt-4">
+                    Please contact our support team with your Payment ID for assistance.
+                </p>
+                 <Button asChild className="mt-4">
+                    <Link href="/contact">Contact Support</Link>
+                </Button>
+            </div>
         </div>
       );
     }
@@ -226,15 +185,15 @@ function ThankYouContent() {
             <CheckCircle className="h-20 w-20 text-green-500" />
             <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Verification Successful!
+                    Thank You! Your download has started.
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                    Click the button below to download your <strong>{verifiedItem.title}</strong>.
+                <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed mx-auto">
+                    Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder. If the download doesn't start automatically, use the button below.
                 </p>
             </div>
-            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={onDownload}>
+            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={() => handleDownload(verifiedItem, itemType!)}>
                 <Download className="mr-2 h-5 w-5" />
-                Download Your Checklist
+                Download Again
             </Button>
             <Button size="lg" asChild className="group mt-4" variant="outline">
                 <Link href="/packs">
@@ -245,62 +204,9 @@ function ThankYouContent() {
         </div>
       );
     }
-    
-    return (
-       <div className="w-full">
-        {error && (
-            <div className="w-full text-center mb-6">
-                <div className="flex items-center justify-center gap-2 text-red-500 p-3 bg-destructive/10 rounded-md border border-destructive/50">
-                    <AlertTriangle className="h-6 w-6"/>
-                    <span className="font-semibold">{error}</span>
-                </div>
-            </div>
-        )}
 
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                Verify Your Purchase
-            </h1>
-            <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
-               Enter the Payment ID from your Razorpay receipt to download your purchased item.
-            </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="payment-id">Razorpay Payment ID</Label>
-            <Input
-              id="payment-id"
-              placeholder="pay_xxxxxxxxxxxxxx"
-              value={paymentId}
-              onChange={(e) => setPaymentId(e.target.value)}
-              required
-            />
-          </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Verify & Download'}
-          </Button>
-           <Button variant="link" onClick={() => setView('initial')} className="w-full">
-                <ArrowLeft className="w-4 h-4 mr-2"/>
-                Back
-            </Button>
-        </form>
-      </div>
-    );
+    return null; // Should not be reached
   }
-
-  const renderContent = () => {
-    switch (view) {
-        case 'enterId':
-            return renderVerificationView();
-        case 'findId':
-            return renderFindIdView();
-        case 'initial':
-        default:
-            return renderInitialView();
-    }
-  }
-
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -333,7 +239,20 @@ function ThankYouContent() {
 
 export default function ThankYouPage() {
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={
+        <div className="flex flex-col min-h-screen bg-background">
+          <SiteHeader />
+           <main className="flex-1 flex items-center justify-center">
+               <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <Loader2 className="h-16 w-16 text-primary animate-spin" />
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    Loading...
+                </h1>
+                </div>
+           </main>
+          <Footer />
+        </div>
+    }>
       <ThankYouContent />
     </React.Suspense>
   );

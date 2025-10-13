@@ -64,38 +64,6 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-const PaymentDisclaimerDialog = () => (
-    <AlertDialog>
-        <AlertDialogTrigger asChild>
-             <Button variant="link" className="text-xs text-accent h-auto p-0 mt-2 flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> Read Before Paying
-            </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-            <AlertDialogHeader>
-                <AlertDialogTitle className="flex items-center gap-2"><AlertCircle className="text-accent" /> Important: Before You Pay</AlertDialogTitle>
-                <AlertDialogDescription asChild>
-                    <div className="space-y-4 pt-4 text-sm text-muted-foreground">
-                        <div>
-                            <strong>1. Note Your Payment ID:</strong> After paying, you'll get a Payment ID from Razorpay. You will need this on the thank you page to download your pack.
-                        </div>
-                        <div>
-                            <strong>2. Beneficiary Name:</strong> The beneficiary name may appear as MoreMeets or our Founder's name due to banking compliance. Both are verified.
-                        </div>
-                        <div>
-                            <strong>3. Thank You Page:</strong> After successful payment, you will be redirected to the Thank You page to verify your payment ID and download your pack.
-                        </div>
-                    </div>
-                </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-                <AlertDialogCancel>Close</AlertDialogCancel>
-            </AlertDialogFooter>
-        </AlertDialogContent>
-    </AlertDialog>
-);
-
-
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
     const professionalPaymentId = pack.paymentId; 
@@ -121,10 +89,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
                                     <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
                                </div>
-                                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                             </CardContent>
                              <CardFooter className="flex-col gap-2 pt-2 items-center">
-                                <PaymentDisclaimerDialog />
+                                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                              </CardFooter>
                         </Card>
                     </div>
@@ -148,7 +115,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                  <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
                     <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
                 </div>
-                <PaymentDisclaimerDialog />
+                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
             </CardFooter>
         </Card>,
 
@@ -177,7 +144,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                  <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
                     <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
                 </div>
-                <PaymentDisclaimerDialog />
+                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
             </CardFooter>
         </Card>,
 
