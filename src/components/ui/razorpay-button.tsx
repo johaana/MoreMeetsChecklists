@@ -1,8 +1,7 @@
 
 'use client';
 
-import React from 'react';
-import Script from 'next/script';
+import React, { useEffect, useRef } from 'react';
 
 interface RazorpayButtonProps {
     paymentId: string;
@@ -10,21 +9,30 @@ interface RazorpayButtonProps {
 }
 
 export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, params }) => {
-    return (
-        <>
-            <Script src="https://checkout.razorpay.com/v1/payment-button.js" strategy="lazyOnload" />
-            <form>
-                {params && Object.entries(params).map(([key, value]) => (
-                    <input key={key} type="hidden" name={key} value={value} />
-                ))}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                            var rzp_payment_button_id = "${paymentId}";
-                        `,
-                    }}
-                />
-            </form>
-        </>
-    );
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (formRef.current && formRef.current.children.length === 0) {
+            const script = document.createElement('script');
+            script.src = `https://checkout.razorpay.com/v1/payment-button.js`;
+            script.async = true;
+            script.setAttribute('data-payment_button_id', paymentId);
+            
+            const form = document.createElement('form');
+            if(params) {
+                for (const key in params) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = String(params[key]);
+                    form.appendChild(input);
+                }
+            }
+            form.appendChild(script);
+            
+            formRef.current.appendChild(form);
+        }
+    }, [paymentId, params]);
+
+    return <div ref={formRef}></div>;
 };

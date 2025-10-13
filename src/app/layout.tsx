@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Inter, Poppins } from 'next/font/google';
+import Script from 'next/script';
 
 
 const siteUrl = 'https://www.moremeets.com';
@@ -74,6 +75,7 @@ export default function RootLayout({
       )}>
         {children}
         <Toaster />
+        <Script src="https://checkout.razorpay.com/v1/payment-button.js" strategy="lazyOnload" />
       </body>
     </html>
   );
