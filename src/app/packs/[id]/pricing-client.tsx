@@ -100,12 +100,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
     const professionalPaymentId = pack.paymentId; 
 
-    // Corrected dynamic pricing for Personalized Pack
-    const personalizedPrice = professionalPrice === 7999 ? 10999 : professionalPrice + 3000;
-    
-    // Using a known button ID for the personalized tier. This might need to be updated
-    // in your Razorpay dashboard if you create a new button for the 10999 price.
-    let personalizedPaymentId = 'pl_RMncDLAlms69Pd'; 
+    // Standardized, fixed pricing for the premium personalized tier
+    const personalizedPrice = 14999;
+    const personalizedStrikethroughPrice = 18999;
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // This ID corresponds to the 14999 price point in Razorpay
 
 
     if (pack.id === 'personal_travel_pack') {
@@ -164,11 +162,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-4xl font-bold text-foreground">
                         ₹{personalizedPrice}
                     </p>
-                     { professionalPrice < personalizedPrice &&
-                        <p className="text-xl font-medium text-muted-foreground line-through">
-                            ₹{personalizedPrice + 4000}
-                        </p>
-                    }
+                    <p className="text-xl font-medium text-muted-foreground line-through">
+                        ₹{personalizedStrikethroughPrice}
+                    </p>
                 </div>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
