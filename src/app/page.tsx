@@ -26,7 +26,7 @@ const HowWeAreDifferentSection = () => (
         <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
                 <div className="text-center mb-8">
-                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         We Don't Sell Software. We Sell The System.
                     </h2>
                 </div>
@@ -62,7 +62,7 @@ const GlobalStandardsSection = () => {
         <section className="w-full py-12 md:py-24">
             <div className="container px-4 md:px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         Audit-Ready. Globally Compliant. Operationally Excellent.
                     </h2>
                     <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
@@ -70,10 +70,10 @@ const GlobalStandardsSection = () => {
                     </p>
                 </div>
                 <div className="max-w-5xl mx-auto mt-12">
-                    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                         {standards.map(standard => (
                             <div key={standard.name} className="flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg border border-primary/10 text-center">
-                                <p className="font-bold text-lg text-primary">{standard.name}</p>
+                                <p className="font-bold text-base md:text-lg text-primary">{standard.name}</p>
                                 <p className="text-xs text-muted-foreground">{standard.description}</p>
                             </div>
                         ))}
@@ -89,7 +89,7 @@ const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                     Frequently Asked Questions
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -195,7 +195,8 @@ const FaqSection = () => (
 
 function PackList() {
     const isMobile = useIsMobile();
-    const featuredPacks = premiumPacks.filter(p => ["hospitality_excellence_suite", "ai_cybersecurity_compliance_pack", "healthcare_compliance_suite"].includes(p.id));
+    const featuredPackIds = ["hospitality_excellence_suite", "healthcare_compliance_suite", "facility_management_blueprint"];
+    const featuredPacks = premiumPacks.filter(p => featuredPackIds.includes(p.id));
     const title = "Featured Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
@@ -242,7 +243,7 @@ function PackList() {
         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         {title}
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -289,13 +290,34 @@ function PackList() {
 }
 
 const IndividualChecklistsSection = () => {
+    const isMobile = useIsMobile();
     const bestsellers = individualChecklists.slice(0, 5);
+
+    const ChecklistCard = ({ checklist }: { checklist: (typeof bestsellers)[0] }) => (
+         <Card className="flex flex-col text-center rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border h-full">
+            <CardHeader className="p-6">
+                {React.cloneElement(checklist.icon, { className: "w-10 h-10 text-accent mx-auto mb-3" })}
+                <CardTitle className="text-lg font-headline">{checklist.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="px-6 flex-1">
+                <p className="text-sm text-muted-foreground">{checklist.description}</p>
+            </CardContent>
+                <CardFooter className="p-6 pt-4 mt-auto flex-col items-center gap-4">
+                <Button asChild className="w-full font-bold flex-col h-auto" variant="secondary">
+                    <Link href={`/checklists/${checklist.id}`}>
+                        <span>Own It Forever</span>
+                        <span className="text-xl font-bold">₹{checklist.priceINR}</span>
+                    </Link>
+                </Button>
+            </CardFooter>
+        </Card>
+    );
 
     return (
         <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         Solve a Specific Problem, Instantly
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -303,27 +325,33 @@ const IndividualChecklistsSection = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    {bestsellers.map((checklist) => (
-                        <Card key={checklist.id} className="flex flex-col text-center rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border">
-                            <CardHeader className="p-6">
-                                {React.cloneElement(checklist.icon, { className: "w-10 h-10 text-accent mx-auto mb-3" })}
-                                <CardTitle className="text-lg font-headline">{checklist.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="px-6 flex-1">
-                                <p className="text-sm text-muted-foreground">{checklist.description}</p>
-                            </CardContent>
-                             <CardFooter className="p-6 pt-4 mt-auto flex-col items-center gap-4">
-                                <Button asChild className="w-full font-bold flex-col h-auto" variant="secondary">
-                                    <Link href={`/checklists/${checklist.id}`}>
-                                        <span>Own It Forever</span>
-                                        <span className="text-xl font-bold">₹{checklist.priceINR}</span>
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </div>
+                 {isMobile ? (
+                     <Carousel 
+                        opts={{ align: "start", loop: true }}
+                        plugins={[Autoplay({ delay: 5500 })]}
+                        className="w-full max-w-sm mx-auto"
+                    >
+                        <CarouselContent>
+                            {bestsellers.map((checklist) => (
+                                <CarouselItem key={checklist.id} className="p-2">
+                                    <div className="p-1 h-full">
+                                       <ChecklistCard checklist={checklist} />
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="text-accent border-accent" />
+                        <CarouselNext className="text-accent border-accent" />
+                    </Carousel>
+                 ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        {bestsellers.map((checklist) => (
+                           <ChecklistCard key={checklist.id} checklist={checklist} />
+                        ))}
+                    </div>
+                 )}
+
+
                  <div className="text-center mt-16">
                     <Button asChild size="lg" className="group">
                         <Link href="/checklists">
@@ -404,7 +432,7 @@ const WhyDetailMatters = () => {
             <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
                 <div className="container px-4 md:px-6">
                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                             Why Every Detail Matters
                         </h2>
                         <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -435,7 +463,7 @@ const WhyDetailMatters = () => {
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         Why Every Detail Matters
                     </h2>
                     <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -486,7 +514,7 @@ export default function Home() {
                     The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <div className="hidden lg:block">
-                        <h2 className="text-2xl font-bold text-white/90 drop-shadow-sm max-w-3xl mx-auto font-headline">
+                         <h2 className="text-2xl font-bold text-white/90 drop-shadow-sm max-w-3xl mx-auto font-headline">
                             Meet More Standards. More Compliance. More Consistency.
                         </h2>
                         <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
@@ -511,10 +539,10 @@ export default function Home() {
             </div>
         </section>
 
-        <section className="w-full py-12 bg-secondary/30 lg:hidden">
+         <section className="w-full py-12 bg-secondary/30 lg:hidden">
             <div className="container px-4 md:px-6 text-center">
-                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter font-headline text-primary">
-                    Meet More Standards. More Compliance. More Consistency.
+                 <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
+                    Meet More Standards. <br/>More Compliance. <br/>More Consistency.
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
                     Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
@@ -537,7 +565,7 @@ export default function Home() {
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         Loved by Professionals Worldwide
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -581,5 +609,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
