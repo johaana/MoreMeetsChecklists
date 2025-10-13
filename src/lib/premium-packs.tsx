@@ -216,7 +216,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "and their teams"],
+        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors"],
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
@@ -1318,7 +1318,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Landmark className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Museum Directors", "Chief Curators", "Heads of Conservation", "Exhibition Managers"],
+        whoIsItFor: ["Museum Directors", "Chief Curators", "Heads of Conservation", "Exhibition Managers", "Heads of Facilities"],
         sampleItems: [
             "Implement an 'Artifact Handling & Conservation' protocol.",
             "Master 'Exhibit Installation & Deinstallation' processes.",
@@ -1452,7 +1452,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Building2 className="w-8 h-8 text-primary" />,
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers"],
+        whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers", "Founders"],
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "NEW: Added a 'New Office Build-Out & Project Management' checklist for expansions.",
@@ -1746,7 +1746,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <BrainCircuit className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["CISOs", "Data Protection Officers (DPOs)", "Heads of AI", "Legal & Compliance VPs", "CTOs"],
+        whoIsItFor: ["CISOs", "Data Protection Officers (DPOs)", "Heads of AI", "Legal & Compliance VPs", "CTOs", "Founders"],
         sampleItems: [
             "Implement an 'AI Ethics & Model Governance' framework.",
             "Conduct 'GDPR/DPDP Data Privacy' audits.",
@@ -2598,7 +2598,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Warehouse className="w-8 h-8 text-primary" />,
         badgeText: "New & In-Depth",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["Warehouse Directors", "Logistics Managers", "Supply Chain VPs", "Inventory Control Managers"],
+        whoIsItFor: ["Warehouse Directors", "Logistics Managers", "Supply Chain VPs", "Inventory Control Managers", "Heads of Facilities"],
         sampleItems: [
             "Implement a 'Warehouse Safety & Housekeeping' daily audit.",
             "Standardize 'Inbound & GRN' processes to prevent receiving errors.",
@@ -2740,7 +2740,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <HardHat className="w-8 h-8 text-primary" />,
         badgeText: "Safety Critical",
         badgeVariant: "destructive" as const,
-        whoIsItFor: ["Construction Company Owners", "Project Directors", "Site EHS Managers", "Construction Superintendents"],
+        whoIsItFor: ["Construction Company Owners", "Project Directors", "Site EHS Managers", "Construction Superintendents", "Heads of Facilities"],
         sampleItems: [
             "Implement a daily 'Site Safety Audit'.",
             "Standardize 'Scaffolding & Work-at-Height' safety checks.",
@@ -3288,6 +3288,7 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
 
 
 
