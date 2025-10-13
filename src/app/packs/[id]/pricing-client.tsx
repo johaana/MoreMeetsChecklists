@@ -100,7 +100,7 @@ const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
     const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (ref.current && ref.current.children.length === 0) {
+        if (ref.current && ref.current.children.length === 0 && !document.querySelector(`form[data-payment_button_id="${paymentId}"]`)) {
             const script = document.createElement('script');
             script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
             script.async = true;
@@ -122,7 +122,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     // Dynamic pricing for Personalized Pack
     const personalizedPrice = professionalPrice === 7999 ? 11999 : professionalPrice + 4000;
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // The ID for the personalized/custom tier
+    
+    let personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Default for 11999
+    if (personalizedPrice > 11999) { // This is a fallback, you might want more specific logic
+        personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // A different ID for a different custom amount if needed
+    }
+
 
     if (pack.id === 'personal_travel_pack') {
         return (

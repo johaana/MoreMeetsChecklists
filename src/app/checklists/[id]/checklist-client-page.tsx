@@ -108,20 +108,16 @@ const RazorpayButton = ({ paymentId, checklistId }: { paymentId: string, checkli
     const formRef = React.useRef<HTMLFormElement>(null);
 
     React.useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-        script.async = true;
-        script.setAttribute('data-payment_button_id', paymentId);
-        
-        if (formRef.current) {
-            formRef.current.appendChild(script);
-        }
-
-        return () => {
-            if (formRef.current && script.parentNode === formRef.current) {
-                formRef.current.removeChild(script);
+        if (formRef.current && formRef.current.children.length === 0 && !document.querySelector(`form[data-payment_button_id="${paymentId}"]`)) {
+            const script = document.createElement('script');
+            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+            script.async = true;
+            script.setAttribute('data-payment_button_id', paymentId);
+            
+            if (formRef.current) {
+                formRef.current.appendChild(script);
             }
-        };
+        }
     }, [paymentId]);
 
     return (
