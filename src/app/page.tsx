@@ -22,10 +22,10 @@ import Autoplay from "embla-carousel-autoplay";
 
 const heroImages = [
     { imageUrl: 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg', alt: 'Luxury hotel representing hospitality' },
-    { imageUrl: 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg', alt: 'Cinema hall representing entertainment' },
-    { imageUrl: 'https://i.postimg.cc/SRm0JZcS/sports-stadium-football1.jpg', alt: 'Sports stadium representing large venues' },
-    { imageUrl: 'https://i.postimg.cc/rsq6Khxv/hospital-2.webp', alt: 'Modern hospital representing healthcare' },
-    { imageUrl: 'https://i.postimg.cc/sQHHL4nm/office1.jpg', alt: 'Modern office representing corporate facility management' }
+    { imageUrl: 'https://i.postimg.cc/WbJRtvcy/cinema-hall-1.jpg', alt: 'Cinema hall representing entertainment' },
+    { imageUrl: 'https://i.postimg.cc/kMH3n5zk/sports-stadium.webp', alt: 'Sports stadium representing large venues' },
+    { imageUrl: 'https://i.postimg.cc/2jtRz5MF/hospital1.webp', alt: 'Modern hospital representing healthcare' },
+    { imageUrl: 'https://i.postimg.cc/D0Ht5C12/theme-park1.webp', alt: 'Vibrant theme park representing amusement' }
 ];
 
 const HowWeAreDifferentSection = () => (
