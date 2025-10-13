@@ -17,7 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
 import { individualChecklists } from "@/lib/individual-checklists";
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 
 
@@ -26,7 +26,7 @@ const HowWeAreDifferentSection = () => (
         <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
                 <div className="text-center mb-8">
-                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
                         We Don't Sell Software. We Sell The System.
                     </h2>
                 </div>
@@ -62,7 +62,7 @@ const GlobalStandardsSection = () => {
         <section className="w-full py-12 md:py-24">
             <div className="container px-4 md:px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
                         Audit-Ready. Globally Compliant. Operationally Excellent.
                     </h2>
                     <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
@@ -89,7 +89,7 @@ const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                     Frequently Asked Questions
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -194,15 +194,55 @@ const FaqSection = () => (
 );
 
 function PackList() {
-    const featuredPacks = premiumPacks.filter(p => p.badgeText && (p.badgeText.toLowerCase().includes('popular') || p.badgeText.toLowerCase().includes('best for corporate') || p.badgeText.toLowerCase().includes('bestseller')));
+    const isMobile = useIsMobile();
+    const featuredPacks = premiumPacks.filter(p => ["hospitality_excellence_suite", "ai_cybersecurity_compliance_pack", "healthcare_compliance_suite"].includes(p.id));
     const title = "Featured Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
 
+    const PackCard = ({ pack }: { pack: (typeof premiumPacks)[0] }) => (
+        <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+            <CardHeader className="p-6 relative">
+                {pack.badgeText && (
+                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
+                        <Star className="w-4 h-4" /> {pack.badgeText}
+                    </Badge>
+                )}
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
+                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                    </div>
+                    <div className="flex-1">
+                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                    </div>
+                </div>
+            </CardHeader>
+            <CardContent className="px-6 flex-1">
+                <h3 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h3>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                    {pack.sampleItems.map((item, index) => (
+                        <li key={index} className="flex items-start">
+                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
+                            <span dangerouslySetInnerHTML={{ __html: item.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                        </li>
+                    ))}
+                </ul>
+            </CardContent>
+            <CardFooter className="p-6 pt-2 mt-auto">
+                <Button asChild className="w-full font-bold" variant="default">
+                    <Link href={`/packs/${pack.id}`}>
+                        View Full Checklist &amp; Purchase
+                    </Link>
+                </Button>
+            </CardFooter>
+        </Card>
+    );
+
     return (
-         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                         {title}
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -210,46 +250,31 @@ function PackList() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {featuredPacks.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-                            <CardHeader className="p-6 relative">
-                                {pack.badgeText && (
-                                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
-                                    <Star className="w-4 h-4" /> {pack.badgeText}
-                                    </Badge>
-                                )}
-                                <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                {isMobile ? (
+                    <Carousel 
+                        opts={{ align: "start", loop: true }}
+                        plugins={[Autoplay({ delay: 5000 })]}
+                        className="w-full max-w-sm mx-auto"
+                    >
+                        <CarouselContent>
+                            {featuredPacks.map((pack) => (
+                                <CarouselItem key={pack.id} className="p-2">
+                                    <div className="p-1">
+                                        <PackCard pack={pack} />
                                     </div>
-                                    <div className="flex-1">
-                                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                                        <CardDescription className="mt-1">{pack.description}</CardDescription>
-                                    </div>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="px-6 flex-1">
-                                <h3 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h3>
-                                <ul className="space-y-2 text-muted-foreground text-sm">
-                                    {pack.sampleItems.map((item, index) => (
-                                        <li key={index} className="flex items-start">
-                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </CardContent>
-                             <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold" variant="default">
-                                    <Link href={`/packs/${pack.id}`}>
-                                        View Full Checklist &amp; Purchase
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="text-accent border-accent" />
+                        <CarouselNext className="text-accent border-accent" />
+                    </Carousel>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {featuredPacks.map((pack) => (
+                            <PackCard key={pack.id} pack={pack} />
+                        ))}
+                    </div>
+                )}
                  <div className="text-center mt-16">
                     <Button asChild size="lg" variant="outline" className="group border-primary/50">
                         <Link href="/packs">
@@ -270,7 +295,7 @@ const IndividualChecklistsSection = () => {
         <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
                         Solve a Specific Problem, Instantly
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -379,7 +404,7 @@ const WhyDetailMatters = () => {
             <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
                 <div className="container px-4 md:px-6">
                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                             Why Every Detail Matters
                         </h2>
                         <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -410,7 +435,7 @@ const WhyDetailMatters = () => {
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                         Why Every Detail Matters
                     </h2>
                     <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -461,7 +486,7 @@ export default function Home() {
                     The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <div className="hidden lg:block">
-                        <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
+                        <h2 className="text-2xl font-bold text-white/90 drop-shadow-sm max-w-3xl mx-auto font-headline">
                             Meet More Standards. More Compliance. More Consistency.
                         </h2>
                         <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
@@ -488,7 +513,7 @@ export default function Home() {
 
         <section className="w-full py-12 bg-secondary/30 lg:hidden">
             <div className="container px-4 md:px-6 text-center">
-                 <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
+                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter font-headline text-primary">
                     Meet More Standards. More Compliance. More Consistency.
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
@@ -512,7 +537,7 @@ export default function Home() {
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                         Loved by Professionals Worldwide
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -556,3 +581,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

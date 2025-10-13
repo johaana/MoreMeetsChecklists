@@ -1567,7 +1567,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Corporate & Tech",
         description: "The complete playbook for facility managers to ensure a safe, compliant, and efficient workplace environment across multiple locations.",
         icon: <Building2 className="w-8 h-8 text-primary" />,
-        badgeText: "Popular",
+        badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
         whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers", "Founders", "VPs", "Directors", "GMs"],
         sampleItems: [
@@ -1861,7 +1861,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Corporate & Tech",
         description: "For C-Suite, CISOs, and DPOs. A toolkit to manage AI ethics, data privacy (GDPR/DPDP), and cybersecurity risks in the modern enterprise.",
         icon: <BrainCircuit className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
+        badgeText: "Bestseller",
         badgeVariant: "accent",
         whoIsItFor: ["CISOs", "Data Protection Officers (DPOs)", "Heads of AI", "Legal & Compliance VPs", "CTOs", "Founders", "Directors", "GMs", "VPs"],
         sampleItems: [
@@ -3409,5 +3409,7 @@ export const premiumPacks: PremiumPack[] = [
 ]
 
 
+
+    
 
     
