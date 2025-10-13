@@ -439,13 +439,13 @@ const WhyDetailMatters = () => {
 
 
 export default function Home() {
-  const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+  const heroImageUrl = 'https://i.postimg.cc/sQHHL4nm/office1.jpg';
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative w-full h-[60vh] lg:h-[70vh]">
+        <section className="relative w-full h-[60vh] lg:h-[70vh] flex items-center justify-center">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
@@ -453,10 +453,10 @@ export default function Home() {
               backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImageUrl})`,
             }}
           />
-            <div className="container relative z-10 px-4 md:px-6 h-full">
-                <div className="flex flex-col items-center justify-center space-y-6 text-center h-full">
+            <div className="container relative z-10 px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-6 text-center">
                 <div className="space-y-4">
-                    <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                     The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">

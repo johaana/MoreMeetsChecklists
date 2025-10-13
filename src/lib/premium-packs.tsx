@@ -41,6 +41,7 @@ export type PremiumPack = {
     badgeText?: string;
     badgeVariant?: "default" | "secondary" | "destructive" | "outline" | "accent";
     sampleItems: string[];
+    whoIsItFor: string[];
     previewScenario?: PreviewScenario;
     checklists: Checklist[];
     globalStandards?: {
@@ -63,6 +64,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
+        whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "and their teams"],
         sampleItems: [
             "NEW: Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
             "NEW: Implement a 'Managerial Performance Review' and 'New Hire Onboarding' system.",
@@ -214,6 +216,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
         badgeVariant: "accent" as const,
+        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "and their teams"],
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
@@ -365,6 +368,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Gem className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors"],
         sampleItems: [
             "Implement a 'High-Value Inventory & Vault' security protocol.",
             "Standardize your 'White-Glove Customer Service' experience.",
@@ -506,6 +510,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Supermarket Owners", "Store Directors", "Heads of Retail Operations", "Fresh Food Department Heads"],
         sampleItems: [
             "Implement a 'Fresh Food Department' safety and quality checklist (HACCP).",
             "Standardize 'Goods Receiving & Staging' for high-volume inventory.",
@@ -638,6 +643,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Store className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Mall Owners", "Mall General Managers", "Heads of Operations", "Chief Security Officers", "Heads of Facilities"],
         sampleItems: [
             "Implement a 'Common Area Maintenance & Housekeeping' daily audit.",
             "Standardize 'Tenant Onboarding & Fit-Out' processes.",
@@ -771,6 +777,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Film className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Film Producers", "Studio Executives", "Line Producers", "Heads of Production", "OTT Platform Executives"],
         sampleItems: [
             "Ensure legal compliance with 'Pre-Production Clearances' checklist.",
             "Implement 'Film Shoot Safety & Equipment Handling' protocols.",
@@ -912,6 +919,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <MonitorPlay className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["OTT Founders", "CTOs", "Heads of Content", "Heads of Engineering", "Product Managers"],
         sampleItems: [
             "Develop a data-driven 'Content Strategy' and acquisition plan.",
             "Ensure a secure and scalable platform with 'Platform Development' checklists.",
@@ -1010,11 +1018,11 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Ops Manager",
                 summary: "Maintain platform stability and performance.",
                 tasks: [
-                    { id: 'OTT-OPS-01', description: "Monitor server health and load.", priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'NOC' },
-                    { id: 'OTT-OPS-02', description: "Check CDN performance and cache hit ratio.", priority: 'High', riskLevel: 'High', proof: 'CDN Dashboard', location: 'NOC' },
-                    { id: 'OTT-OPS-03', description: "Review application error logs for critical issues.", priority: 'High', riskLevel: 'High', proof: 'Log Management System', location: 'NOC' },
-                    { id: 'OTT-OPS-04', description: "Verify backup and disaster recovery jobs completed successfully.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'NOC' },
-                    { id: 'OTT-OPS-05', description: "Handle customer support escalations related to platform issues.", priority: 'High', riskLevel: 'Medium', proof: 'Support Ticket System', location: 'Support Dept' }
+                    { id: 'OTT-OPS-001', description: "Monitor server health and load.", priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'NOC' },
+                    { id: 'OTT-OPS-002', description: "Check CDN performance and cache hit ratio.", priority: 'High', riskLevel: 'High', proof: 'CDN Dashboard', location: 'NOC' },
+                    { id: 'OTT-OPS-003', description: "Review application error logs for critical issues.", priority: 'High', riskLevel: 'High', proof: 'Log Management System', location: 'NOC' },
+                    { id: 'OTT-OPS-004', description: "Verify backup and disaster recovery jobs completed successfully.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'NOC' },
+                    { id: 'OTT-OPS-005', description: "Handle customer support escalations related to platform issues.", priority: 'High', riskLevel: 'Medium', proof: 'Support Ticket System', location: 'Support Dept' }
                 ]
             },
             {
@@ -1044,6 +1052,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <FerrisWheel className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Theme Park GMs", "Directors of Operations", "Heads of Safety", "Chief Engineers"],
         sampleItems: [
             "Implement a 'Daily Ride Safety & Operations' checklist.",
             "Master 'Crowd Control & Emergency Evacuation' protocols.",
@@ -1176,6 +1185,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Trophy className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Stadium Directors", "COOs of Sports Franchises", "Event Directors", "Heads of Security"],
         sampleItems: [
             "Implement a 'Pre-Match Safety & Security Sweep' protocol.",
             "Master 'Crowd Management & Egress Planning' for large attendances.",
@@ -1308,6 +1318,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Landmark className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Museum Directors", "Chief Curators", "Heads of Conservation", "Exhibition Managers"],
         sampleItems: [
             "Implement an 'Artifact Handling & Conservation' protocol.",
             "Master 'Exhibit Installation & Deinstallation' processes.",
@@ -1441,6 +1452,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Building2 className="w-8 h-8 text-primary" />,
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
+        whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers"],
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "NEW: Added a 'New Office Build-Out & Project Management' checklist for expansions.",
@@ -1592,6 +1604,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Briefcase className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent" as const,
+        whoIsItFor: ["Founders", "COOs", "HR Managers", "Admin Heads", "First-time Managers"],
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "NEW: Added a 'New Office Build-Out & Project Management' checklist.",
@@ -1733,6 +1746,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <BrainCircuit className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["CISOs", "Data Protection Officers (DPOs)", "Heads of AI", "Legal & Compliance VPs", "CTOs"],
         sampleItems: [
             "Implement an 'AI Ethics & Model Governance' framework.",
             "Conduct 'GDPR/DPDP Data Privacy' audits.",
@@ -1873,6 +1887,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Healthcare",
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
+        whoIsItFor: ["Hospital Owners", "COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "Lab Directors"],
         sampleItems: [
             "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
@@ -2025,6 +2040,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <HeartPulse className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Dentists", "Clinic Owners", "Practice Managers", "Head Dental Assistants"],
         sampleItems: [
             "Master 'Dental Instrument Sterilization' with a step-by-step protocol.",
             "Implement a 'New Patient Intake & Medical History' process.",
@@ -2157,6 +2173,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Pill className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Pharmacy Owners", "Pharmacists-in-Charge", "Heads of Quality", "Compliance Officers"],
         sampleItems: [
             "Master a 'Prescription Verification & Dispensing' protocol.",
             "Implement a 'Controlled Substances & Narcotics' management system.",
@@ -2288,6 +2305,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Education",
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
+        whoIsItFor: ["School Owners & Trustees", "Principals", "Heads of Administration", "Security Supervisors"],
         sampleItems: [
             "NEW: Includes a 'Student Digital Safety Audit' and 'Off-Campus Field Trip' protocol.",
             "Prevent unauthorized access with a 'Non-Standard Student Pickup Verification' protocol.",
@@ -2438,6 +2456,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Industrial & Transport",
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
+        whoIsItFor: ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety & EHS", "Quality Control Managers"],
         sampleItems: [
             "Implement a life-saving 'Lock-Out Tag-Out' (LOTO) procedure.",
             "Master 'Fleet & Heavy Equipment' management, including forklifts and cranes.",
@@ -2579,6 +2598,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Warehouse className="w-8 h-8 text-primary" />,
         badgeText: "New & In-Depth",
         badgeVariant: "accent" as const,
+        whoIsItFor: ["Warehouse Directors", "Logistics Managers", "Supply Chain VPs", "Inventory Control Managers"],
         sampleItems: [
             "Implement a 'Warehouse Safety & Housekeeping' daily audit.",
             "Standardize 'Inbound & GRN' processes to prevent receiving errors.",
@@ -2720,6 +2740,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <HardHat className="w-8 h-8 text-primary" />,
         badgeText: "Safety Critical",
         badgeVariant: "destructive" as const,
+        whoIsItFor: ["Construction Company Owners", "Project Directors", "Site EHS Managers", "Construction Superintendents"],
         sampleItems: [
             "Implement a daily 'Site Safety Audit'.",
             "Standardize 'Scaffolding & Work-at-Height' safety checks.",
@@ -2862,6 +2883,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Sprout className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Wellness Center Owners", "Ayurvedic Doctors", "Yoga/Naturopathy Practitioners", "Spa Directors"],
         sampleItems: [
             "Ensure 'Client Intake & Contraindication' screening is thorough.",
             "Standardize 'Treatment Room & Equipment Hygiene' protocols.",
@@ -3003,6 +3025,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Dumbbell className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
+        whoIsItFor: ["Salon Owners", "Spa Directors", "Fitness Studio Managers", "Head Therapists/Stylists"],
         sampleItems: [
             "Standardize 'Salon Hygiene & Tool Sterilization' to prevent infections.",
             "Implement a 'Client Consultation & Consent' process.",
@@ -3136,6 +3159,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <PawPrint className="w-8 h-8 text-primary" />,
         badgeText: "Bestseller",
         badgeVariant: "default" as const,
+        whoIsItFor: ["Frequent Travelers", "Pet Owners", "Anyone planning a move"],
         sampleItems: [
             "A comprehensive 'Travel Packing & Prep' checklist.",
             "A detailed 'Pet Sitter Instructions' checklist.",
@@ -3264,6 +3288,7 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
 
 
 

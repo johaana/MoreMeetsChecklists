@@ -192,29 +192,8 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   
   const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
-
-  const whoIsItForMap: Record<string, string[]> = {
-    "Hospitality": ["Hotel Owners", "General Managers", "COOs", "Heads of Security", "Restaurant Owners", "and their teams"],
-    "Corporate": ["Founders", "COOs", "VPs of Operations", "Chief Engineers", "Heads of IT & Security", "Finance Controllers"],
-    "Retail": ["Store Owners", "Retail COOs/VPs", "Heads of Loss Prevention", "Heads of Retail Operations", "District/Area Heads"],
-    "Healthcare": ["Hospital Owners", "COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "Lab Directors", "and their teams"],
-    "Education": ["School Owners", "Trustees", "Principals", "Head of Administration", "and their teams"],
-    "Manufacturing": ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety & EHS", "Quality Control Managers"],
-    "Events": ["Event Company Owners", "Production Heads", "Sports Venue Operators", "Heads of Security", "and their teams"],
-    "Personal": ["Frequent Travelers", "Pet Owners"],
-    "Automotive": ["Dealership Owners", "Workshop Owners", "Service Directors", "QC Managers"],
-    "Real Estate": ["Property Firm Owners", "Landlords", "Heads of Operations (REITs)", "Property Managers"],
-    "Compliance": ["Chief Compliance Officers (CCOs)", "Heads of ESG", "Heads of Quality (ISO)", "Internal Auditors", "Legal Heads"],
-    "Wellness": ["Gym/Spa Chain Owners", "Wellness Directors", "Clinic Managers", "Salon Owners"],
-    "E-commerce": ["E-commerce Founders", "Heads of Operations", "Warehouse Managers"],
-    "Agency": ["Travel Agency Owners", "Tour Operators", "IATA Compliance Managers"],
-    "Maritime": ["Port Captains", "Shipping Line Managers", "Vessel Masters", "Designated Person Ashore (DPA)"],
-    "Aviation": ["Airport Directors", "Heads of Facility", "Heads of Airside Operations", "Heads of Security (Aviation)"],
-    "Entertainment": ["Cinema Owners", "Multiplex Regional Heads", "Theme Park Directors"],
-  };
-
-  const audience = whoIsItForMap[pack.category] || ["Industry Professionals"];
-
+  const audience = pack.whoIsItFor || ["Industry Professionals"];
+  
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -266,8 +245,6 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
         </section>
 
-        <PricingClient pack={pack} />
-
         <PainPointsSection category={pack.category} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
@@ -302,6 +279,8 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
             </div>
         </section>
+        
+        <PricingClient pack={pack} />
 
         <GlobalStandardsSection pack={pack} />
 
