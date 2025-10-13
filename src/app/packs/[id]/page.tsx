@@ -12,6 +12,10 @@ import { Footer } from '@/components/layout/footer';
 import { SiteHeader } from '@/components/layout/header';
 import { individualChecklists } from '@/lib/individual-checklists';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
+import { useIsMobile } from '@/hooks/use-mobile';
+
 
 type Props = {
   params: { id: string }
@@ -81,13 +85,14 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
+    const isMobile = useIsMobile();
     if (!content) return null;
 
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-4 md:px-6">
                  <div className="max-w-4xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-3xl md:text-4xl font-headline">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
                         {content.title}
                     </h2>
                 </div>
@@ -294,5 +299,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
