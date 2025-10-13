@@ -109,7 +109,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
         <section className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
                         {pack.globalStandards.title}
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
@@ -150,7 +150,7 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
         <section className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary">
                         Just Need a Specific Solution?
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
@@ -251,7 +251,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <section id="checklists" className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
                         What's Included: A Complete Operational Toolkit
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">

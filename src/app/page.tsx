@@ -439,7 +439,7 @@ const WhyDetailMatters = () => {
 
 
 export default function Home() {
-  const heroImageUrl = 'https://i.postimg.cc/sQHHL4nm/office1.jpg';
+  const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -456,7 +456,7 @@ export default function Home() {
             <div className="container relative z-10 px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-6 text-center">
                 <div className="space-y-4">
-                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                    <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                     The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
