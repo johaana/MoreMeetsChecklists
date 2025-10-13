@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv } from 'lucide-react';
 
 export const painPointsContent = {
     hospitality_excellence_suite: {
@@ -28,6 +28,15 @@ export const painPointsContent = {
             { icon: <Users />, title: "Uphold Brand Prestige with Every Interaction", description: "Standardize the 'white-glove' service experience, from clienteling and private viewings to store ambiance, ensuring your brand's luxury promise is always delivered." },
             { icon: <FileLock />, title: "Comply with Anti-Money Laundering (AML) Regulations", description: "Navigate complex regulations for high-value cash transactions with a clear protocol for identity verification and 'Source of Funds' documentation, protecting your business from legal risk." },
             { icon: <Shield />, title: "Protect Against Internal & External Threats", description: "From robust opening/closing security procedures to daily CCTV audits and secure cash handling, our checklists provide a multi-layered defense system for your store." }
+        ]
+    },
+    retail_electronics_showroom_pack: {
+        title: "The Business Case for a High-Performing Electronics Showroom",
+        points: [
+            { icon: <Tv />, title: "Prevent Demo Unit Failures & Inconsistent Displays", description: "A non-functional demo unit or a messy display is a lost sale. Our checklists ensure every product is perfectly presented and functional, maintaining brand standards and boosting customer confidence." },
+            { icon: <HandCoins />, title: "Stop Inventory & Cash Shrinkage", description: "Small, high-value electronics are prime targets for theft. Our protocols for inventory cycle counting, cash handling, and security audits protect your most valuable assets and your bottom line." },
+            { icon: <Bug />, title: "Eliminate Costly Data Entry & Shipping Errors", description: "One wrong digit in a product's weight or dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' data entry SOP prevents these expensive errors before they happen." },
+            { icon: <Shield />, title: "Reduce Compliance & Safety Risks", description: "Faulty wiring on displays is a fire hazard, and non-compliance with payment security (PCI DSS) can lead to crippling fines. Our safety and payment handling checklists mitigate these critical risks." }
         ]
     },
     supermarket_hypermarket_ops_pack: {
