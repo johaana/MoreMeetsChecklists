@@ -379,7 +379,7 @@ const WhyDetailMatters = () => {
             <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
                 <div className="container px-4 md:px-6">
                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-2xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
+                        <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline">
                             Why Every Detail Matters
                         </h2>
                         <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -488,10 +488,10 @@ export default function Home() {
 
         <section className="w-full py-12 bg-secondary/30 lg:hidden">
             <div className="container px-4 md:px-6 text-center">
-                 <h2 className="text-2xl font-bold text-primary max-w-3xl mx-auto font-headline">
+                 <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl font-headline text-primary">
                     Meet More Standards. More Compliance. More Consistency.
                 </h2>
-                <p className="max-w-[700px] text-muted-foreground md:text-lg/relaxed mx-auto mt-4">
+                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
                     Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                 </p>
             </div>
