@@ -72,7 +72,7 @@ export async function generateMetadata(
 }
 
 const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-    <div className="flex items-start gap-6 rounded-lg border bg-background p-6 transition-shadow hover:shadow-md">
+    <div className="flex items-start gap-6 rounded-lg border bg-background p-6 transition-shadow hover:shadow-md h-full">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 shrink-0 mt-1">
             {React.cloneElement(icon as React.ReactElement, { className: "w-8 h-8 text-primary" })}
         </div>
@@ -85,14 +85,13 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
-    const isMobile = useIsMobile();
     if (!content) return null;
 
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-4 md:px-6">
                  <div className="max-w-4xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         {content.title}
                     </h2>
                 </div>
@@ -257,7 +256,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <section id="checklists" className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         What's Included: A Complete Operational Toolkit
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
