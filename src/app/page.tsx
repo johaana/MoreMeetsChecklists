@@ -20,14 +20,6 @@ import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carouse
 import Autoplay from "embla-carousel-autoplay";
 
 
-const heroImages = [
-    { imageUrl: 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg', alt: 'Luxury hotel representing hospitality' },
-    { imageUrl: 'https://i.postimg.cc/WbJRtvcy/cinema-hall-1.jpg', alt: 'Cinema hall representing entertainment' },
-    { imageUrl: 'https://i.postimg.cc/kMH3n5zk/sports-stadium.webp', alt: 'Sports stadium representing large venues' },
-    { imageUrl: 'https://i.postimg.cc/2jtRz5MF/hospital1.webp', alt: 'Modern hospital representing healthcare' },
-    { imageUrl: 'https://i.postimg.cc/D0Ht5C12/theme-park1.webp', alt: 'Vibrant theme park representing amusement' }
-];
-
 const HowWeAreDifferentSection = () => (
     <section id="how-we-are-different" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
@@ -447,7 +439,7 @@ const WhyDetailMatters = () => {
 
 
 export default function Home() {
-  const heroImageUrl = 'https://i.postimg.cc/sQHHL4nm/office1.jpg';
+  const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
