@@ -446,40 +446,42 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-      <section 
-          className="w-full relative bg-cover bg-center"
-           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImage?.imageUrl})`,
-          }}
-        >
-            <div className="container px-4 md:px-6">
-                <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center min-h-[60vh] lg:min-h-[80vh]">
-                  <div className="space-y-6">
-                    <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                      The Professional Standard for Compliance &amp; Operations Checklists.
-                    </h1>
-                    <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
-                      Meet More Standards. More Compliance. More Consistency.
-                    </h2>
-                    <p className="max-w-[700px] text-white/90 md:text-xl/relaxed mx-auto drop-shadow-sm">
-                      Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
+        <section className="relative w-full pt-12 md:pt-24 lg:pt-32">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImage?.imageUrl})`,
+            }}
+          />
+          <div className="container relative z-10 px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center min-h-[50vh] lg:min-h-[60vh]">
+              <div className="space-y-4">
+                <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                  The Professional Standard for Compliance &amp; Operations Checklists.
+                </h1>
+                <h2 className="text-xl md:text-2xl font-semibold text-white/90 drop-shadow-sm max-w-3xl mx-auto">
+                  Meet More Standards. More Compliance. More Consistency.
+                </h2>
+                <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm">
+                  Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
+                </p>
+                <div className="flex flex-col items-center justify-center gap-4 pt-4">
+                  <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                      Browse All Packages
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
+                    <p className="text-xs text-white/80">
+                      Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA.
                     </p>
-                    <div className="flex flex-col items-center justify-center gap-4">
-                      <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                        <Link href="/packs">
-                          Browse All Packages
-                          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                      </Button>
-                      <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                        <p className="text-xs text-white/80">
-                          Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA for uncompromising operational excellence.
-                        </p>
-                      </div>
-                    </div>
                   </div>
                 </div>
+              </div>
             </div>
+          </div>
         </section>
         
         <WhyDetailMatters />
