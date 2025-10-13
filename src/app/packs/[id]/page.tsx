@@ -85,7 +85,7 @@ const PainPointsSection = ({ category }: { category: string }) => {
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-4 md:px-6">
-                 <div className="max-w-3xl mx-auto text-center mb-10">
+                 <div className="max-w-4xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         {selected.title}
                     </h2>
@@ -293,3 +293,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
