@@ -1,5 +1,5 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -64,7 +64,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
-        whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "Heads of Departments", "and their teams"],
+        whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "and their teams"],
         sampleItems: [
             "NEW: Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
             "NEW: Implement a 'Managerial Performance Review' and 'New Hire Onboarding' system.",
@@ -216,7 +216,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors"],
+        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "VPs"],
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
@@ -368,7 +368,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Gem className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors"],
+        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors", "GMs"],
         sampleItems: [
             "Implement a 'High-Value Inventory & Vault' security protocol.",
             "Standardize your 'White-Glove Customer Service' experience.",
@@ -510,7 +510,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Supermarket Owners", "Store Directors", "Heads of Retail Operations", "Fresh Food Department Heads"],
+        whoIsItFor: ["Supermarket Owners", "Store Directors", "Heads of Retail Operations", "Fresh Food Department Heads", "GMs"],
         sampleItems: [
             "Implement a 'Fresh Food Department' safety and quality checklist (HACCP).",
             "Standardize 'Goods Receiving & Staging' for high-volume inventory.",
@@ -643,7 +643,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Store className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Mall Owners", "Mall General Managers", "Heads of Operations", "Chief Security Officers", "Heads of Facilities"],
+        whoIsItFor: ["Mall Owners", "Mall General Managers", "Heads of Operations", "Chief Security Officers", "Heads of Facilities", "VPs", "Directors"],
         sampleItems: [
             "Implement a 'Common Area Maintenance & Housekeeping' daily audit.",
             "Standardize 'Tenant Onboarding & Fit-Out' processes.",
@@ -765,6 +765,123 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
+    {
+        id: 'retail_electronics_showroom_pack',
+        title: "Retail Electronics Showroom – Global SOP Checklist Pack",
+        priceUSD: 99.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Retail",
+        description: "A comprehensive SOP toolkit for managing retail electronics showrooms, focusing on inventory, customer experience, and operational compliance.",
+        icon: <Tv className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["Store Managers", "Regional Managers", "GMs", "VPs of Retail", "Directors of Operations"],
+        sampleItems: [
+            "Standardize Store Opening & Closing procedures for security and readiness.",
+            "Implement robust Inventory & Stock Management to prevent shrinkage.",
+            "Ensure perfect Product Display & Visual Merchandising compliance.",
+            "Master secure Cash & Payment Handling with PCI DSS standards.",
+            "Deliver exceptional Customer Experience from greeting to post-sale support."
+        ],
+        globalStandards: {
+            title: "Aligned with Global Retail & Electronics Standards",
+            standards: [
+                { name: "Quality & Process Control", description: "ISO 9001" },
+                { name: "Environmental & Sustainability", description: "ISO 14001, ESG" },
+                { name: "Safety & Workforce Protection", description: "ISO 45001, OSHA" },
+                { name: "Data & Privacy", description: "ISO 27001, GDPR" },
+                { name: "Payment Security", description: "PCI DSS" },
+                { name: "Accessibility", description: "WCAG 2.1 (for digital in-store kiosks)" },
+            ]
+        },
+        checklists: [
+            {
+                title: "Store Operations & Compliance",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Store Manager",
+                summary: "Core checklists for ensuring smooth, secure, and compliant daily store operations.",
+                tasks: [
+                    { id: 'ELEC-OPEN-01', description: "Verify store cleanliness, lighting, HVAC systems are optimal.", priority: 'High', riskLevel: 'Medium', proof: 'Opening Log', location: 'Store-wide' },
+                    { id: 'ELEC-OPEN-02', description: "Check security systems (CCTV, alarms) are operational.", priority: 'High', riskLevel: 'High', proof: 'Security System Log', location: 'Security Room' },
+                    { id: 'ELEC-OPEN-03', description: "Verify cash registers & POS terminals are functional.", priority: 'High', riskLevel: 'High', proof: 'POS Readiness Log', location: 'Cash Counters' },
+                    { id: 'ELEC-OPEN-04', description: "Conduct product display readiness check (all demos on, clean).", priority: 'High', riskLevel: 'Medium', proof: 'Display Audit', location: 'Sales Floor' },
+                    { id: 'ELEC-OPEN-05', description: "Lock/unlock entry points & log timings.", priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Entrances' }
+                ]
+            },
+            {
+                title: "Inventory & Stock Management",
+                department: "Inventory",
+                frequency: "Daily/Weekly",
+                role: "Inventory Manager",
+                summary: "Maintain optimal stock levels, prevent shrinkage, and ensure inventory accuracy.",
+                tasks: [
+                    { id: 'ELEC-INV-01', description: "Conduct daily cycle counts on high-value items.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse/Sales Floor' },
+                    { id: 'ELEC-INV-02', description: "Update ERP/POS systems with new stock arrivals.", priority: 'High', riskLevel: 'High', proof: 'ERP Update Log', location: 'System' },
+                    { id: 'ELEC-INV-03', description: "Verify and log all damaged or returned goods.", priority: 'High', riskLevel: 'Medium', proof: 'Damage/Return Log', location: 'Returns Desk' },
+                    { id: 'ELEC-INV-04', description: "Ensure safe handling and storage of high-value electronics.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log', location: 'Secure Storage' },
+                    { id: 'ELEC-INV-05', description: "Review reorder levels and supplier performance reports weekly.", priority: 'High', riskLevel: 'Medium', proof: 'Supplier Report', location: 'Office' }
+                ]
+            },
+            {
+                title: "Product Display & Visual Merchandising",
+                department: "Merchandising",
+                frequency: "Daily",
+                role: "Visual Merchandiser",
+                summary: "Maintain consistent brand presentation and ensure all demo units are functional.",
+                tasks: [
+                    { id: 'ELEC-VM-01', description: "Verify planogram adherence for all brands.", priority: 'High', riskLevel: 'Medium', proof: 'Planogram Compliance Photo', location: 'Sales Floor' },
+                    { id: 'ELEC-VM-02', description: "Ensure all demo units are functional, charged, and running correct software.", priority: 'High', riskLevel: 'High', proof: 'Demo Unit Checklist', location: 'Sales Floor' },
+                    { id: 'ELEC-VM-03', description: "Check product pricing labels and promotional offers for accuracy.", priority: 'High', riskLevel: 'High', proof: 'Price Audit Sheet', location: 'Sales Floor' },
+                    { id: 'ELEC-VM-04', description: "Inspect lighting and signage for proper alignment and function.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting Inspection Log', location: 'Sales Floor' },
+                    { id: 'ELEC-VM-05', description: "Clean screens and surfaces of all display devices.", priority: 'High', riskLevel: 'Low', proof: 'Cleaning Log', location: 'Sales Floor' }
+                ]
+            },
+            {
+                title: "Cash & Payment Handling",
+                department: "Finance",
+                frequency: "Per Shift",
+                role: "Head Cashier",
+                summary: "Ensure secure and compliant payment operations to prevent fraud and discrepancies.",
+                tasks: [
+                    { id: 'ELEC-CASH-01', description: "Calibrate POS and verify payment gateway functionality.", priority: 'High', riskLevel: 'High', proof: 'System Test Log', location: 'POS Terminal' },
+                    { id: 'ELEC-CASH-02', description: "Verify cash drawer balance before and after each shift.", priority: 'High', riskLevel: 'High', proof: 'Cash Reconciliation Sheet', location: 'Cash Office' },
+                    { id: 'ELEC-CASH-03', description: "Reconcile all credit card and digital payment transactions daily.", priority: 'High', riskLevel: 'High', proof: 'Payment Gateway Report', location: 'Cash Office' },
+                    { id: 'ELEC-CASH-04', description: "Secure cash transfers to vault or bank drop box with two-person integrity.", priority: 'High', riskLevel: 'High', proof: 'Cash Transfer Log', location: 'Cash Office' },
+                    { id: 'ELEC-CASH-05', description: "Log all refunds and cancellations with manager approval.", priority: 'High', riskLevel: 'Medium', proof: 'Refund Log', location: 'POS Terminal' }
+                ]
+            },
+            {
+                title: "Store Safety & Maintenance",
+                department: "Facilities/EHS",
+                frequency: "Weekly",
+                role: "Safety Officer",
+                summary: "Ensure a safe environment for both staff and customers through regular maintenance and safety checks.",
+                tasks: [
+                    { id: 'ELEC-SAFETY-01', description: "Inspect electrical fittings and display power points for signs of wear or damage.", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Report', location: 'Store-wide' },
+                    { id: 'ELEC-SAFETY-02', description: "Verify fire extinguishers are charged, accessible, and emergency exits are clear.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Log', location: 'Store-wide' },
+                    { id: 'ELEC-SAFETY-03', description: "Record maintenance of air conditioning, lighting, and digital signage.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Log', location: 'Facilities Office' },
+                    { id: 'ELEC-SAFETY-04', description: "Check safe storage of cleaning chemicals and other hazardous materials.", priority: 'High', riskLevel: 'Medium', proof: 'Chemical Storage Log', location: 'Storage' },
+                    { id: 'ELEC-SAFETY-05', description: "Conduct a weekly safety briefing with all staff.", priority: 'High', riskLevel: 'Medium', proof: 'Safety Meeting Minutes', location: 'Staff Room' }
+                ]
+            },
+            {
+                title: "Customer Experience & Store Standards",
+                department: "Sales",
+                frequency: "Ongoing",
+                role: "Sales Manager",
+                summary: "Checklists to ensure a consistently high-quality customer experience from greeting to checkout.",
+                tasks: [
+                    { id: 'ELEC-CUST-01', description: "Greet customers within 30 seconds of entry.", priority: 'High', riskLevel: 'Low', proof: 'Manager Observation', location: 'Entrance' },
+                    { id: 'ELEC-CUST-02', description: "Ensure staff are trained on key product SKUs and features.", priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
+                    { id: 'ELEC-CUST-03', description: "Confirm all items are scanned correctly and discounts applied at checkout.", priority: 'High', riskLevel: 'Medium', proof: 'Checkout Audit', location: 'POS' },
+                    { id: 'ELEC-CUST-04', description: "Handle returns and warranty claims transparently and efficiently.", priority: 'High', riskLevel: 'Medium', proof: 'Returns Log', location: 'Customer Service' },
+                    { id: 'ELEC-CUST-05', description: "Protect customer data under global privacy laws during transactions.", priority: 'High', riskLevel: 'High', proof: 'Privacy Compliance Audit', location: 'POS' }
+                ]
+            }
+        ]
+    },
     // --- Entertainment & Events ---
     {
         id: 'film_production_pack',
@@ -777,7 +894,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Film className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Film Producers", "Studio Executives", "Line Producers", "Heads of Production", "OTT Platform Executives"],
+        whoIsItFor: ["Film Producers", "Studio Executives", "Line Producers", "Heads of Production", "OTT Platform Executives", "Directors"],
         sampleItems: [
             "Ensure legal compliance with 'Pre-Production Clearances' checklist.",
             "Implement 'Film Shoot Safety & Equipment Handling' protocols.",
@@ -919,7 +1036,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <MonitorPlay className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["OTT Founders", "CTOs", "Heads of Content", "Heads of Engineering", "Product Managers"],
+        whoIsItFor: ["OTT Founders", "CTOs", "Heads of Content", "Heads of Engineering", "Product Managers", "VPs", "Directors"],
         sampleItems: [
             "Develop a data-driven 'Content Strategy' and acquisition plan.",
             "Ensure a secure and scalable platform with 'Platform Development' checklists.",
@@ -1185,7 +1302,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Trophy className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Stadium Directors", "COOs of Sports Franchises", "Event Directors", "Heads of Security"],
+        whoIsItFor: ["Stadium Directors", "COOs of Sports Franchises", "Event Directors", "Heads of Security", "VPs"],
         sampleItems: [
             "Implement a 'Pre-Match Safety & Security Sweep' protocol.",
             "Master 'Crowd Management & Egress Planning' for large attendances.",
@@ -1318,7 +1435,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Landmark className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Museum Directors", "Chief Curators", "Heads of Conservation", "Exhibition Managers", "Heads of Facilities"],
+        whoIsItFor: ["Museum Directors", "Chief Curators", "Heads of Conservation", "Exhibition Managers", "Heads of Facilities", "VPs"],
         sampleItems: [
             "Implement an 'Artifact Handling & Conservation' protocol.",
             "Master 'Exhibit Installation & Deinstallation' processes.",
@@ -1452,7 +1569,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Building2 className="w-8 h-8 text-primary" />,
         badgeText: "Best for Corporate",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers", "Founders"],
+        whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers", "Founders", "VPs", "Directors"],
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "NEW: Added a 'New Office Build-Out & Project Management' checklist for expansions.",
@@ -1604,7 +1721,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Briefcase className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["Founders", "COOs", "HR Managers", "Admin Heads", "First-time Managers"],
+        whoIsItFor: ["Founders", "COOs", "HR Managers", "Admin Heads", "First-time Managers", "VPs", "Directors"],
         sampleItems: [
             "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
             "NEW: Added a 'New Office Build-Out & Project Management' checklist.",
@@ -1746,7 +1863,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <BrainCircuit className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["CISOs", "Data Protection Officers (DPOs)", "Heads of AI", "Legal & Compliance VPs", "CTOs", "Founders"],
+        whoIsItFor: ["CISOs", "Data Protection Officers (DPOs)", "Heads of AI", "Legal & Compliance VPs", "CTOs", "Founders", "Directors"],
         sampleItems: [
             "Implement an 'AI Ethics & Model Governance' framework.",
             "Conduct 'GDPR/DPDP Data Privacy' audits.",
@@ -1887,7 +2004,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Healthcare",
         description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
-        whoIsItFor: ["Hospital Owners", "COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "Lab Directors"],
+        whoIsItFor: ["Hospital Owners", "COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "Lab Directors", "VPs", "GMs"],
         sampleItems: [
             "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
@@ -2305,7 +2422,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Education",
         description: "For School Principals and Admin Heads. A comprehensive toolkit for ensuring student safety, facility management, and operational excellence.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
-        whoIsItFor: ["School Owners & Trustees", "Principals", "Heads of Administration", "Security Supervisors"],
+        whoIsItFor: ["School Owners & Trustees", "Principals", "Heads of Administration", "Security Supervisors", "GMs", "Directors"],
         sampleItems: [
             "NEW: Includes a 'Student Digital Safety Audit' and 'Off-Campus Field Trip' protocol.",
             "Prevent unauthorized access with a 'Non-Standard Student Pickup Verification' protocol.",
@@ -2456,7 +2573,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Industrial & Transport",
         description: "For Plant Heads and Safety Officers. A toolkit for ensuring production efficiency, worker safety (EHS), and quality control.",
         icon: <Factory className="w-8 h-8 text-primary" />,
-        whoIsItFor: ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety & EHS", "Quality Control Managers"],
+        whoIsItFor: ["Plant Heads", "COOs", "VPs of Production", "Heads of Safety & EHS", "Quality Control Managers", "Directors"],
         sampleItems: [
             "Implement a life-saving 'Lock-Out Tag-Out' (LOTO) procedure.",
             "Master 'Fleet & Heavy Equipment' management, including forklifts and cranes.",
@@ -2740,7 +2857,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <HardHat className="w-8 h-8 text-primary" />,
         badgeText: "Safety Critical",
         badgeVariant: "destructive" as const,
-        whoIsItFor: ["Construction Company Owners", "Project Directors", "Site EHS Managers", "Construction Superintendents", "Heads of Facilities"],
+        whoIsItFor: ["Construction Company Owners", "Project Directors", "Site EHS Managers", "Construction Superintendents", "Heads of Facilities", "GMs", "VPs"],
         sampleItems: [
             "Implement a daily 'Site Safety Audit'.",
             "Standardize 'Scaffolding & Work-at-Height' safety checks.",
@@ -3288,10 +3405,4 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
-
-
-
-
-
-
 

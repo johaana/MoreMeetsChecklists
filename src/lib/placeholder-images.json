@@ -184,5 +184,23 @@
     "description": "A well-organized corporate event or conference.",
     "imageUrl": "https://i.postimg.cc/Gp2zyKfP/event.webp",
     "imageHint": "corporate event"
+  },
+  {
+    "id": "electronics1",
+    "description": "An electronics retail showroom.",
+    "imageUrl": "https://i.postimg.cc/TYQ4tm42/electronics1.jpg",
+    "imageHint": "electronics store"
+  },
+  {
+    "id": "mall-1",
+    "description": "The interior of a modern shopping mall.",
+    "imageUrl": "https://i.postimg.cc/NfbzdTz1/mall-1.jpg",
+    "imageHint": "shopping mall"
+  },
+  {
+    "id": "retail-electronic",
+    "description": "A retail display of electronic gadgets.",
+    "imageUrl": "https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg",
+    "imageHint": "retail electronics"
   }
 ]
