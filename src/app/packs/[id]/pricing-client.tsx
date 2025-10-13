@@ -97,36 +97,46 @@ const PaymentDisclaimerDialog = () => (
 );
 
 const RazorpayButton = ({ paymentId }: { paymentId: string }) => {
-    const ref = React.useRef<HTMLDivElement>(null);
+    const formRef = React.useRef<HTMLFormElement>(null);
 
     React.useEffect(() => {
-        if (ref.current && ref.current.children.length === 0 && !document.querySelector(`form[data-payment_button_id="${paymentId}"]`)) {
+        // Check if a form with this specific payment button ID already exists.
+        if (document.querySelector(`form[data-payment_button_id="${paymentId}"]`)) {
+            return;
+        }
+
+        if (formRef.current && formRef.current.children.length === 0) {
             const script = document.createElement('script');
             script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
             script.async = true;
             script.setAttribute('data-payment_button_id', paymentId);
             
+            // Add the script to a form and then add the form to the ref.
+            // This is how Razorpay's script is designed to work.
             const form = document.createElement('form');
+            form.setAttribute('data-payment_button_id', paymentId); // Add attribute to form for checking
             form.appendChild(script);
 
-            ref.current.appendChild(form);
+            if (formRef.current) {
+                formRef.current.appendChild(form);
+            }
         }
     }, [paymentId]);
 
-    return <div ref={ref}></div>;
+    return <div ref={formRef}></div>;
 };
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
     const professionalPaymentId = pack.paymentId; 
 
-    // Dynamic pricing for Personalized Pack
-    const personalizedPrice = professionalPrice === 7999 ? 11999 : professionalPrice + 4000;
+    // Corrected dynamic pricing for Personalized Pack
+    const personalizedPrice = professionalPrice === 7999 ? 10999 : professionalPrice + 3000;
     
-    let personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // Default for 11999
-    if (personalizedPrice > 11999) { // This is a fallback, you might want more specific logic
-        personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // A different ID for a different custom amount if needed
-    }
+    // Using a known button ID for the personalized tier. This might need to be updated
+    // in your Razorpay dashboard if you create a new button for the 10999 price.
+    let personalizedPaymentId = 'pl_RMncDLAlms69Pd'; 
 
 
     if (pack.id === 'personal_travel_pack') {
