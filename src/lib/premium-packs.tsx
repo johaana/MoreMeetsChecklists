@@ -361,8 +361,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'luxury_retail_pack',
         title: "Luxury Retail & Jewellery Operations",
         priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
         description: "For luxury brand managers and store owners. A premium toolkit for delivering impeccable customer experiences and ensuring ironclad security for high-value inventory.",
         icon: <Gem className="w-8 h-8 text-primary" />,
@@ -912,8 +912,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'ott_platform_pack',
         title: "OTT Platform Production Pack",
         priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
         description: "For tech leads and content strategists. A toolkit for managing the digital supply chain of a modern streaming service.",
         icon: <MonitorPlay className="w-8 h-8 text-primary" />,
@@ -1045,8 +1045,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'theme_park_ops_pack',
         title: "Theme Park & Amusement Park Operations",
         priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
         description: "For park managers and safety officers. A comprehensive toolkit for ensuring visitor safety, ride maintenance, and exceptional guest experiences.",
         icon: <FerrisWheel className="w-8 h-8 text-primary" />,
@@ -1311,8 +1311,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'museum_cultural_ops_pack',
         title: "Museum & Cultural Institution Management",
         priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
         description: "For museum directors and curators. A specialized toolkit for artifact preservation, exhibit management, and visitor services.",
         icon: <Landmark className="w-8 h-8 text-primary" />,
@@ -1739,8 +1739,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'ai_cybersecurity_compliance_pack',
         title: "AI, Data & Cybersecurity Compliance",
         priceUSD: 199.99,
-        priceINR: 11999,
-        paymentId: 'pl_RMncDLAlms69Pd',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Corporate & Tech",
         description: "For C-Suite, CISOs, and DPOs. A toolkit to manage AI ethics, data privacy (GDPR/DPDP), and cybersecurity risks in the modern enterprise.",
         icon: <BrainCircuit className="w-8 h-8 text-primary" />,
@@ -2157,7 +2157,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-DENT-02', description: "Ensure no food or drink is left out in staff or public areas.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Clinic-wide' },
                     { id: 'PEST-DENT-03', description: "Check that all external windows and doors are properly sealed.", priority: 'High', riskLevel: 'Medium', proof: 'Structural Check', location: 'Perimeter' },
                     { id: 'PEST-DENT-04', description: "Ensure waste, especially biomedical waste, is stored in sealed containers and disposed of regularly.", priority: 'High', riskLevel: 'High', proof: 'Waste Management Audit', location: 'Waste Area' },
-                    { id: 'PEST-DENT-05', description: "Review and action all recommendations from the professional pest control vendor's report.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Action Log', location: 'Office' }
+                    { id: 'PEST-DENT-05', description: "Review and action recommendations from the professional pest control vendor's report.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Action Log', location: 'Office' }
                 ]
             }
         ]
@@ -3152,8 +3152,8 @@ export const premiumPacks: PremiumPack[] = [
         id: 'personal_travel_pack',
         title: "Personal Travel & Pet Care Pack",
         priceUSD: 9.99,
-        priceINR: 1299,
-        paymentId: 'pl_ROLjNNiQa8G8XJ',
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Personal",
         description: "For the organized individual. A pack to manage your travels and ensure your pets are cared for while you're away.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
@@ -3288,6 +3288,7 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
 
 
 

@@ -293,8 +293,8 @@ export const individualChecklists: IndividualChecklist[] = [
     {
         id: 'home-relocation-checklist',
         title: "Home Relocation & Moving Checklist",
-        priceINR: 499,
-        paymentId: "pl_RMjB52nF5Z2jG3", 
+        priceINR: 1299,
+        paymentId: "pl_ROLjNNiQa8G8XJ", 
         category: "Personal",
         icon: <Home />,
         description: "The ultimate stress-saving checklist for a smooth move. Covers tasks from one month out to moving day and settling in.",

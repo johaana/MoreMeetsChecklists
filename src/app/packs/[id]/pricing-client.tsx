@@ -101,9 +101,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPaymentId = pack.paymentId; 
 
     // Standardized, fixed pricing for the premium personalized tier
-    const personalizedPrice = 14999;
+    const personalizedPrice = 10999;
     const personalizedStrikethroughPrice = 18999;
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // This ID corresponds to the 14999 price point in Razorpay
+    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // This ID corresponds to the personalized price point in Razorpay
 
 
     if (pack.id === 'personal_travel_pack') {
