@@ -79,19 +79,20 @@ const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title:
     </div>
 );
 
-const PainPointsSection = ({ category }: { category: string }) => {
-    const selected = painPointsContent[category as keyof typeof painPointsContent] || painPointsContent.Hospitality;
+const PainPointsSection = ({ packId }: { packId: string }) => {
+    const content = painPointsContent[packId as keyof typeof painPointsContent];
+    if (!content) return null;
 
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-4 md:px-6">
                  <div className="max-w-4xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                        {selected.title}
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-3xl md:text-4xl font-headline">
+                        {content.title}
                     </h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                    {selected.points.map((point, index) => (
+                    {content.points.map((point, index) => (
                         <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
                     ))}
                 </div>
@@ -246,7 +247,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
         </section>
 
-        <PainPointsSection category={pack.category} />
+        <PainPointsSection packId={pack.id} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
             <div className="container px-4 md:px-6">
