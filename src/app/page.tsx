@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -487,10 +488,10 @@ export default function Home() {
 
         <section className="w-full py-12 bg-secondary/30 lg:hidden">
             <div className="container px-4 md:px-6 text-center">
-                 <h2 className="text-xl font-semibold text-foreground/90 max-w-3xl mx-auto">
+                 <h2 className="text-2xl font-bold text-primary max-w-3xl mx-auto font-headline">
                     Meet More Standards. More Compliance. More Consistency.
                 </h2>
-                <p className="max-w-[700px] text-muted-foreground md:text-lg/relaxed mx-auto mt-2">
+                <p className="max-w-[700px] text-muted-foreground md:text-lg/relaxed mx-auto mt-4">
                     Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                 </p>
             </div>
