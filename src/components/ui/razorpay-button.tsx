@@ -1,7 +1,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface RazorpayButtonProps {
     paymentId: string;
@@ -9,28 +9,34 @@ interface RazorpayButtonProps {
 }
 
 export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, params }) => {
-    const scriptSrc = `https://checkout.razorpay.com/v1/payment-button.js`;
-    const scriptContent = `
-        var rzp = new Razorpay({
-            key: "${process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID}"
-        });
-        document.getElementById('rzp-button-${paymentId}').onclick = function(e){
-            rzp.open();
-            e.preventDefault();
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.async = true;
+        script.dataset.payment_button_id = paymentId;
+
+        if (formRef.current) {
+            // Clear any previous scripts to avoid duplicates on re-render
+            formRef.current.innerHTML = ''; 
+            formRef.current.appendChild(script);
         }
-    `;
+
+        // Cleanup function to remove the script when the component unmounts
+        return () => {
+            if (formRef.current) {
+                formRef.current.innerHTML = '';
+            }
+        };
+    }, [paymentId]); // Re-run the effect if the paymentId changes
 
     return (
-        <form>
+        <form ref={formRef}>
             {params && Object.entries(params).map(([key, value]) => (
                 <input key={key} type="hidden" name={key} value={String(value)} />
             ))}
-            <script
-                src={scriptSrc}
-                data-payment_button_id={paymentId}
-                async
-            >
-            </script>
+            {/* The Razorpay script will be appended here by the useEffect hook */}
         </form>
     );
 };
