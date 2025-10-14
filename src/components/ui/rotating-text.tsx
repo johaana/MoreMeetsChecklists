@@ -15,7 +15,7 @@ export const RotatingText: React.FC<RotatingTextProps> = ({ words, period = 2000
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
-  const [delta, setDelta] = useState(200 - Math.random() * 100);
+  const [delta, setDelta] = useState(150 - Math.random() * 75);
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -39,7 +39,7 @@ export const RotatingText: React.FC<RotatingTextProps> = ({ words, period = 2000
     setDisplayedText(newText);
 
     if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
+      setDelta(50); // Faster deleting
     }
 
     if (!isDeleting && newText === fullText) {
@@ -48,7 +48,7 @@ export const RotatingText: React.FC<RotatingTextProps> = ({ words, period = 2000
     } else if (isDeleting && newText === '') {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setDelta(300);
+      setDelta(150); // Faster typing
     }
   };
 

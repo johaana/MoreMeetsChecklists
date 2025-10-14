@@ -49,7 +49,7 @@ export async function generateMetadata(
     };
   }
   
-  const title = `${pack.title} Pack | MoreMeets`;
+  const title = `${pack.title} | MoreMeets`;
   const description = `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
 
   const heroImageUrl = packImageMap[id] || defaultHeroImageUrl;
@@ -299,5 +299,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    

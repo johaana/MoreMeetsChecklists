@@ -209,13 +209,17 @@ export const painPointsContent = {
             { icon: <HandCoins />, title: "Optimize Bookings & Reduce No-Shows", description: "Streamline your front desk with checklists for smart appointment scheduling, automated reminders, and waitlist management to maximize your capacity and revenue." },
             { icon: <FileCheck />, title: "Improve Staff Performance & Reduce Errors", description: "Empower your team with clear, step-by-step protocols for every service. This reduces training time, minimizes mistakes, and creates a less stressful, more professional work environment." }
         ]
+    },
+    animal_shelter_pack: {
+        title: "The Case for Operational Excellence in Animal Welfare",
+        points: [
+            { icon: <HeartPulse />, title: "Ensure Animal Health & Safety", description: "A systematic approach to daily health checks, medication logs, and hygiene protocols prevents the spread of disease and ensures every animal receives the care it deserves." },
+            { icon: <Users />, title: "Empower Volunteers & Staff", description: "Clear, simple checklists for cleaning, feeding, and enrichment empower your team and volunteers to provide consistent, high-quality care, even with limited resources." },
+            { icon: <Shield />, title: "Build Public Trust & Donor Confidence", description: "A well-run, transparent operation demonstrates that you are responsible stewards of donor funds, encouraging more adoptions, volunteers, and financial support." },
+            { icon: <Home />, title: "Improve Adoption & Foster Outcomes", description: "A structured process for vetting potential homes ensures that animals are placed in safe, loving environments, reducing the chance of returns and creating successful, lifelong matches." }
+        ]
     }
 };
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
-
-
-    
-
-    
