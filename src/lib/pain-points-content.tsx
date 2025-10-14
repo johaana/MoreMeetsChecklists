@@ -89,7 +89,7 @@ export const painPointsContent = {
         points: [
             { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "A snapped cable or unhygienic pool can lead to lawsuits. Our checklists for equipment maintenance and pool hygiene create a verifiable safety record, protecting your members and your business." },
             { icon: <Users />, title: "Deliver a Consistent, Premium Member Experience", description: "Inconsistent service leads to member churn. Standardize facility cleanliness, staff protocols, and class readiness to ensure every member has a 5-star experience on every visit." },
-            { icon: '🔥', title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers were key failures in the Uphaar tragedy. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and property." },
+            { icon: <TrendingUp />, title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers were key failures in the Uphaar tragedy. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and property." },
             { icon: <FileCheck />, title: "Optimize Facility Management & Vendor Performance", description: "Manage your facility efficiently with checklists for housekeeping, vendor SLAs, and energy management, reducing operational costs and improving the longevity of your assets." }
         ]
     },
