@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hotels & Resorts" | "Restaurants" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
+    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -54,13 +54,13 @@ export type PremiumPack = {
 export const premiumPacks: PremiumPack[] = [
     // --- Hospitality ---
     {
-        id: 'hospitality_excellence_suite',
-        title: "Hospitality Excellence Suite",
+        id: 'hotels_and_resorts',
+        title: "Hotels & Resorts",
         priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Hotels & Resorts",
-        description: "For GMs & Dept. Heads. A one-time purchase for a complete toolkit covering operations, finance, and leadership.",
+        category: "Hospitality",
+        description: "A complete toolkit for GMs & Dept. Heads covering operations, finance, and leadership in hotels and resorts.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
@@ -206,13 +206,13 @@ export const premiumPacks: PremiumPack[] = [
         ]
     },
     {
-        id: 'restaurant_operations_checklist',
-        title: "Restaurant Operations Checklist",
+        id: 'restaurants',
+        title: "Restaurants",
         priceUSD: 89.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Restaurants",
-        description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
+        category: "Hospitality",
+        description: "An essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
         badgeVariant: "accent" as const,

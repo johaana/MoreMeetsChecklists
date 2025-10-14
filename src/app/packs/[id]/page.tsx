@@ -32,7 +32,9 @@ const packImageMap: Record<string, string> = {
   'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
   'healthcare_compliance_suite': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
   'facility_management_blueprint': 'https://i.postimg.cc/sQHHL4nm/office1.jpg',
-  'animal_shelter_pack': 'https://i.postimg.cc/hPrThfgt/animal-shelter-1.jpg'
+  'animal_shelter_pack': 'https://i.postimg.cc/hPrThfgt/animal-shelter-1.jpg',
+  'hotels_and_resorts': defaultHeroImageUrl,
+  'restaurants': 'https://i.postimg.cc/9QRtnf3Z/food1.jpg',
 };
 
 

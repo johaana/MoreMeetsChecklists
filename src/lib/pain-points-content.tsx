@@ -3,7 +3,7 @@ import React from 'react';
 import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv } from 'lucide-react';
 
 export const painPointsContent = {
-    hospitality_excellence_suite: {
+    hotels_and_resorts: {
         title: "The Business Case for 5-Star Operational Excellence",
         points: [
             { icon: <Users />, title: "Inconsistent Guest Experience", description: "Standardize every touchpoint, from check-in to room service, ensuring every guest receives the same 5-star treatment, every time. This builds loyalty and drives positive reviews." },
@@ -12,7 +12,7 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Inefficient Operations & Staff Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
         ]
     },
-    restaurant_operations_checklist: {
+    restaurants: {
         title: "The Business Case for a More Profitable & Compliant Restaurant",
         points: [
             { icon: <Shield />, title: "Prevent Food Safety Violations", description: "A single food poisoning incident can destroy your reputation. Our HACCP-based checklists for opening, line checks, and closing create a verifiable system to prevent this." },
