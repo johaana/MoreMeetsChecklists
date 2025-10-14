@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase, Home, Building } from 'lucide-react';
+import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase, Home, Building, Leaf } from 'lucide-react';
 
 export type IndividualChecklist = {
     id: string;
@@ -88,6 +87,40 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'NEO-05', description: "Conduct and document background and reference checks as per company policy.", priority: 'High', riskLevel: 'High', proof: 'Background Check Report', location: 'HR File' },
             { id: 'NEO-06', description: "Issue and log all company assets (laptop, phone, access cards) provided to the employee.", priority: 'High', riskLevel: 'Medium', proof: 'Asset Issuance Form', location: 'IT/Admin File' },
             { id: 'NEO-07', description: "Add the new employee to the payroll and relevant insurance policies.", priority: 'High', riskLevel: 'Medium', proof: 'System Entry Confirmation', location: 'Finance/HR' }
+        ]
+    },
+    {
+        id: 'esg-sustainability-audit',
+        title: "ESG &amp; Sustainability Audit (Office)",
+        priceINR: 1299,
+        paymentId: "pl_ROLoCqYkE1kRkF",
+        category: "Corporate",
+        icon: <Leaf />,
+        description: "An actionable checklist for offices to measure and improve their environmental footprint, focusing on energy, water, and waste.",
+        longDescription: "This checklist provides a framework for any office to conduct an internal ESG and sustainability audit. It helps you identify key areas for improvement, from reducing energy consumption and managing waste streams to promoting sustainable procurement. This is the perfect starting point for any company looking to build a more environmentally responsible workplace.",
+        relatedPackId: "facility_management_blueprint",
+        whoIsItFor: ["Facility Managers", "Admin Heads", "HR Managers", "Founders"],
+        painPoints: [
+            {
+                title: "Reduce Utility Costs",
+                description: "Identify and eliminate energy and water wastage through systematic audits of lighting, HVAC, and plumbing, leading to direct cost savings."
+            },
+            {
+                title: "Enhance Brand Reputation",
+                description: "Demonstrate a tangible commitment to sustainability, which can improve your brand image for customers, employees, and investors."
+            },
+            {
+                title: "Improve Employee Engagement",
+                description: "Involve employees in sustainability initiatives like recycling programs, creating a more positive and purpose-driven company culture."
+            }
+        ],
+        tasks: [
+            { id: 'ESG-E-01', description: "Audit lighting: Identify all non-LED lights and create a replacement plan.", priority: 'High', riskLevel: 'Low', proof: 'Lighting Audit Report', location: 'Office-wide' },
+            { id: 'ESG-E-02', description: "Review HVAC settings and schedules. Ensure they are optimized for occupancy hours.", priority: 'High', riskLevel: 'Medium', proof: 'HVAC Schedule', location: 'Facility Office' },
+            { id: 'ESG-W-01', description: "Audit all waste bins to check for proper segregation of wet, dry, and recyclable waste.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Audit Report', location: 'Office-wide' },
+            { id: 'ESG-W-02', description: "Track monthly waste generation and set a target for reduction.", priority: 'Medium', riskLevel: 'Low', proof: 'Waste Log', location: 'Facility Office' },
+            { id: 'ESG-P-01', description: "Review procurement policy to prioritize vendors with sustainable practices and recycled products.", priority: 'Medium', riskLevel: 'Low', proof: 'Procurement Policy Document', location: 'Admin Office' },
+            { id: 'ESG-P-02', description: "Implement a 'no single-use plastic' policy in the office pantry.", priority: 'High', riskLevel: 'Low', proof: 'Policy Communication', location: 'Pantry' },
         ]
     }
 ];

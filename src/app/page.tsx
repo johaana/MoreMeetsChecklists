@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import Link from "next/link";
@@ -51,11 +49,11 @@ const GlobalStandardsSection = () => {
     const standards = [
         { name: "ISO 9001", description: "Quality Management" },
         { name: "HACCP / FSSAI", description: "Food Safety" },
-        { name: "JCI & NABH", description: "Healthcare Quality" },
+        { name: "JCI &amp; NABH", description: "Healthcare Quality" },
         { name: "OSHA / ISO 45001", description: "Workplace Safety" },
-        { name: "ISO 14001 & ESG", description: "Sustainability" },
-        { name: "ISPS / IATA", description: "Maritime & Aviation" },
-        { name: "PCI DSS / GDPR", description: "Data & Payment Security" },
+        { name: "ISO 14001 &amp; ESG", description: "Sustainability" },
+        { name: "ISPS / IATA", description: "Maritime &amp; Aviation" },
+        { name: "PCI DSS / GDPR", description: "Data &amp; Payment Security" },
         { name: "SOX", description: "Financial Governance" }
     ];
 
@@ -100,7 +98,7 @@ const FaqSection = () => (
             <div className="max-w-4xl mx-auto">
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-expertise">
-                        <AccordionTrigger className="text-lg font-semibold">What's the expertise behind your checklists?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">What's the expertise behind your checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                            Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
                         </AccordionContent>
@@ -112,10 +110,10 @@ const FaqSection = () => (
                            <p className="font-semibold text-foreground">MoreMeets is different. We sell the system itself.</p>
                            <p>Our blueprints are not just lists; they are complete, expert-built operational plans in an editable Excel format. Each task is structured with the critical details free templates miss:</p>
                            <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Who is responsible</strong> (Role & Department)</li>
+                                <li><strong>Who is responsible</strong> (Role &amp; Department)</li>
                                 <li><strong>When it needs to be done</strong> (Frequency)</li>
-                                <li><strong>How important it is</strong> (Priority & Risk Level)</li>
-                                <li><strong>How to prove it's done</strong> (Proof & Audit Trail)</li>
+                                <li><strong>How important it is</strong> (Priority &amp; Risk Level)</li>
+                                <li><strong>How to prove it's done</strong> (Proof &amp; Audit Trail)</li>
                            </ul>
                             <p>In short, free templates ask the questions. Our blueprints give your team the actionable answers. You're not buying a document; you're buying a ready-to-deploy system that saves you weeks of work and gives you the confidence that every detail is covered from day one.</p>
                         </AccordionContent>
@@ -127,63 +125,63 @@ const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-1">
-                        <AccordionTrigger className="text-lg font-semibold">How will I receive the checklists after purchase?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">How will I receive the checklists after purchase?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Instantly. You’ll get access to download the Excel file directly from the confirmation page after payment. A copy of the download link is also sent to your email for safekeeping.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger className="text-lg font-semibold">Are these checklists editable?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Are these checklists editable?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Yes, completely. All checklists come in a standard Microsoft Excel file (.xlsx), so you can fully customize them to fit your organization’s specific needs, branding, and workflow.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-3">
-                        <AccordionTrigger className="text-lg font-semibold">Do I need any special software to use these?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Do I need any special software to use these?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             No. The files open in Microsoft Excel, Google Sheets, Apple Numbers, or any compatible spreadsheet software.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-4">
-                        <AccordionTrigger className="text-lg font-semibold">Will I get future updates?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Will I get future updates?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Absolutely. Each purchase includes lifetime updates. Whenever we improve or add new SOPs to a pack you've purchased, you’ll receive the updated version for free.
                         </AccordionContent>
                     </AccordionItem>
 
                      <AccordionItem value="item-5">
-                        <AccordionTrigger className="text-lg font-semibold">Is my payment secure?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Is my payment secure?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-8">
-                        <AccordionTrigger className="text-lg font-semibold">Can I share the checklists with my team or across multiple locations?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Can I share the checklists with my team or across multiple locations?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Yes. Your one-time purchase grants you a license to use and replicate the checklists across all teams, branches, and locations within your single organization.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-9">
-                        <AccordionTrigger className="text-lg font-semibold">Can I use these for client projects if I am a consultant?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Can I use these for client projects if I am a consultant?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Yes, consultants often use our packs as a foundational framework for their client engagements. However, the license does not permit reselling, rebranding for resale, or public redistribution of the files.
                         </AccordionContent>
                     </AccordionItem>
 
                      <AccordionItem value="item-10">
-                        <AccordionTrigger className="text-lg font-semibold">What is your refund policy?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">What is your refund policy?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                            Due to the nature of instantly downloadable digital products, all sales are final and we do not offer refunds. However, if you face any technical issues with accessing or downloading your files, our support team will resolve it for you immediately.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-11">
-                        <AccordionTrigger className="text-lg font-semibold">Can I request a custom checklist for my business?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Can I request a custom checklist for my business?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             Absolutely. We provide custom checklist and SOP creation services. Please <a href="https://calendly.com/aditi-imran-khan/30min" target="_blank" rel="noopener noreferrer" className="text-primary underline">contact us with your requirements</a>, and our experts will tailor a package specifically for you.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-12">
-                        <AccordionTrigger className="text-lg font-semibold">How can I get support if I have an issue?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">How can I get support if I have an issue?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                             You can reach us anytime at `more@moremeets.com` or via the <Link href="/contact" className="text-primary underline">contact page</Link> on our website. We are committed to helping you and typically respond within 24 hours.
                         </AccordionContent>
@@ -196,7 +194,7 @@ const FaqSection = () => (
 
 function PackList() {
     const isMobile = useIsMobile();
-    const featuredPackIds = ["hospitality_excellence_suite", "healthcare_compliance_suite", "facility_management_blueprint"];
+    const featuredPackIds = ["hotels_and_resorts", "healthcare_and_hospital_operations", "facility_management_blueprint"];
     const featuredPacks = premiumPacks.filter(p => featuredPackIds.includes(p.id));
     const title = "Featured Checklist Packs";
     const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
@@ -255,13 +253,13 @@ function PackList() {
                 {isMobile ? (
                     <Carousel 
                         opts={{ align: "start", loop: true }}
-                        plugins={[Autoplay({ delay: 5000 })]}
+                        plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
                         className="w-full max-w-sm mx-auto"
                     >
                         <CarouselContent>
                             {featuredPacks.map((pack) => (
                                 <CarouselItem key={pack.id} className="p-2">
-                                    <div className="p-1">
+                                    <div className="p-1 h-full">
                                         <PackCard pack={pack} />
                                     </div>
                                 </CarouselItem>
@@ -329,7 +327,7 @@ const IndividualChecklistsSection = () => {
                  {isMobile ? (
                      <Carousel 
                         opts={{ align: "start", loop: true }}
-                        plugins={[Autoplay({ delay: 5500 })]}
+                        plugins={[Autoplay({ delay: 5500, stopOnInteraction: true })]}
                         className="w-full max-w-sm mx-auto"
                     >
                         <CarouselContent>
@@ -443,7 +441,7 @@ const WhyDetailMatters = () => {
                     <Accordion type="single" collapsible className="w-full">
                         {points.map((point, index) => (
                             <AccordionItem key={index} value={`item-${index}`}>
-                                <AccordionTrigger className="text-base font-semibold">
+                                <AccordionTrigger className="text-base font-semibold text-left">
                                     <div className="flex items-center gap-3">
                                         <div className="shrink-0 text-primary">{React.cloneElement(point.icon, { className: "w-5 h-5" })}</div>
                                         {point.title}
@@ -617,5 +615,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
