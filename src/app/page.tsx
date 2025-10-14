@@ -70,7 +70,7 @@ const GlobalStandardsSection = () => {
                         Our checklists are more than just best practices; they are frameworks built upon the globally recognized standards that govern your industry. This ensures you're not just organized, but compliant and operating at a world-class level.
                     </p>
                 </div>
-                <div className="max-w-5xl mx-auto mt-12">
+                 <div className="max-w-5xl mx-auto mt-12">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                         {standards.map(standard => (
                             <div key={standard.name} className="flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg border border-primary/10 text-center">
@@ -513,10 +513,10 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-6 text-center">
                 <div className="space-y-4">
                     <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                    The Professional Standard for Compliance &amp; Operations Checklists.
+                        The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <div className="hidden lg:block">
-                         <h2 className="text-4xl font-bold text-white/90 drop-shadow-sm max-w-3xl mx-auto font-headline">
+                         <h2 className="text-3xl font-bold text-white/90 drop-shadow-md max-w-full mx-auto font-headline">
                             Meet More Standards. More Compliance. More Consistency.
                         </h2>
                         <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
