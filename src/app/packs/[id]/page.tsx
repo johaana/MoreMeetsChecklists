@@ -30,11 +30,13 @@ const packImageMap: Record<string, string> = {
   'fitness_centers_gyms_pack': 'https://i.postimg.cc/mDyrvM7x/gym-2.jpg',
   'cinema_operations_pack': 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
   'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
-  'healthcare_compliance_suite': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
+  'healthcare_and_hospital_operations': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
   'facility_management_blueprint': 'https://i.postimg.cc/sQHHL4nm/office1.jpg',
   'animal_shelter_pack': 'https://i.postimg.cc/hPrThfgt/animal-shelter-1.jpg',
   'hotels_and_resorts': defaultHeroImageUrl,
   'restaurants': 'https://i.postimg.cc/9QRtnf3Z/food1.jpg',
+  'jewelry_and_luxury_retail': 'https://i.postimg.cc/JnbXpSjM/luxury-retail-2.jpg',
+  'fashion_and_apparel_retail': 'https://i.postimg.cc/d1G5M6T3/fashion-retail-1.jpg',
 };
 
 

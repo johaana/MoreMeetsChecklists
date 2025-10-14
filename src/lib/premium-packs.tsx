@@ -358,8 +358,8 @@ export const premiumPacks: PremiumPack[] = [
     },
     // --- Retail ---
     {
-        id: 'luxury_retail_pack',
-        title: "Luxury Retail & Jewellery Operations",
+        id: 'jewelry_and_luxury_retail',
+        title: "Jewelry & Luxury Retail",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -495,6 +495,106 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-PCI-03', description: "Physically inspect card terminals for any signs of tampering or skimmers.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Cash Desk' },
                     { id: 'LUX-PCI-04', description: "Ensure that full credit card numbers are never written down or stored in non-compliant systems.", priority: 'High', riskLevel: 'High', proof: 'Policy Training Log', location: 'HR' },
                     { id: 'LUX-PCI-05', description: "Restrict physical access to all network ports and payment system hardware.", priority: 'High', riskLevel: 'High', proof: 'Physical Access Log', location: 'Back Office' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'fashion_and_apparel_retail',
+        title: "Fashion & Apparel Retail",
+        priceUSD: 149.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnoKzQJm0tQ7g',
+        category: "Retail",
+        description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
+        icon: <Shirt className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail"],
+        sampleItems: [
+            "Master 'Seasonal Inventory Management' to reduce dead stock.",
+            "Implement a 'Visual Merchandising' checklist for stunning displays.",
+            "Secure your store with a 'Fitting Room Operations & Security' protocol.",
+            "Streamline 'Omni-Channel Operations' for click-and-collect and online returns."
+        ],
+        globalStandards: {
+            title: "Aligned with Global Fashion Retail Standards",
+            standards: [
+                { name: "Inventory Management", description: "Best practices for seasonal stock, markdowns, and omni-channel accuracy." },
+                { name: "Loss Prevention", description: "Techniques for shrinkage control, including fitting room monitoring and security tag audits." },
+                { name: "Customer Experience", description: "Principles of fashion retail service, including styling advice and fitting room service." },
+                { name: "Visual Merchandising", description: "Guidelines for creating compelling window and in-store displays that drive sales." }
+            ]
+        },
+        checklists: [
+            {
+                title: "👕 Store Opening & Daily Readiness",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Store Manager",
+                summary: "A morning checklist to ensure the store is perfectly presented, stocked, and ready for customers.",
+                tasks: [
+                    { id: 'FAS-OPEN-01', description: "Ensure all mannequins are dressed according to the current VM guide and are clean.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'FAS-OPEN-02', description: "Verify all lighting is functional and focused correctly on displays.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Sales Floor' },
+                    { id: 'FAS-OPEN-03', description: "Conduct a 'size sweep' to ensure all items on display have a full range of sizes available.", priority: 'High', riskLevel: 'Medium', proof: 'Size Sweep Log', location: 'Sales Floor' },
+                    { id: 'FAS-OPEN-04', description: "Check that fitting rooms are clean, mirrors are spotless, and lighting is flattering.", priority: 'High', riskLevel: 'High', proof: 'Fitting Room Log', location: 'Fitting Rooms' },
+                    { id: 'FAS-OPEN-05', description: "Hold a morning huddle to discuss daily sales targets, promotions, and new arrivals.", priority: 'High', riskLevel: 'Low', proof: 'Huddle Notes', location: 'Staff Area' }
+                ]
+            },
+            {
+                title: "📦 Seasonal Inventory Management",
+                department: "Inventory",
+                frequency: "Weekly",
+                role: "Merchandiser/Manager",
+                summary: "A checklist to manage the transition between seasons, minimizing markdowns and maximizing sell-through.",
+                tasks: [
+                    { id: 'FAS-INV-01', description: "Review sales data to identify fast and slow-moving items from the current season.", priority: 'High', riskLevel: 'High', proof: 'Sales Report', location: 'Office' },
+                    { id: 'FAS-INV-02', description: "Plan and execute timely markdowns for end-of-season stock.", priority: 'High', riskLevel: 'High', proof: 'Markdown Plan', location: 'System' },
+                    { id: 'FAS-INV-03', description: "Prepare storage for off-season stock, ensuring it's packed and labeled correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'Stockroom' },
+                    { id: 'FAS-INV-04', description: "Coordinate with the warehouse for the intake of new seasonal collections.", priority: 'High', riskLevel: 'Medium', proof: 'Delivery Schedule', location: 'Stockroom' },
+                    { id: 'FAS-INV-05', description: "Update all visual merchandising to reflect the new season's theme.", priority: 'High', riskLevel: 'Medium', proof: 'VM Directive', location: 'Sales Floor' }
+                ]
+            },
+            {
+                title: "✨ Visual Merchandising & Window Display",
+                department: "Merchandising",
+                frequency: "Weekly",
+                role: "Visual Merchandiser",
+                summary: "A creative and operational checklist to ensure window and in-store displays are compelling and drive foot traffic.",
+                tasks: [
+                    { id: 'FAS-VM-01', description: "Rotate the main window display according to the marketing calendar.", priority: 'High', riskLevel: 'Medium', proof: 'Photo of Display', location: 'Window' },
+                    { id: 'FAS-VM-02', description: "Ensure all displayed apparel is perfectly steamed, pinned, and accessorized.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'FAS-VM-03', description: "Check that 'hero' products are displayed prominently at the front of the store.", priority: 'High', riskLevel: 'Medium', proof: 'Store Layout Check', location: 'Entrance' },
+                    { id: 'FAS-VM-04', description: "Refresh and reorganize key displays (e.g., 'New Arrivals' table) mid-week to keep them looking fresh.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'FAS-VM-05', description: "Audit signage to ensure it is clean, current, and consistent with the brand's aesthetic.", priority: 'High', riskLevel: 'Low', proof: 'Signage Audit', location: 'Sales Floor' }
+                ]
+            },
+            {
+                title: "🔒 Fitting Room Operations & Security",
+                department: "Sales/Security",
+                frequency: "Ongoing",
+                role: "Sales Associate",
+                summary: "A protocol to provide excellent customer service in fitting rooms while preventing theft.",
+                tasks: [
+                    { id: 'FAS-FIT-01', description: "Log the number of items a customer takes into a fitting room.", priority: 'High', riskLevel: 'High', proof: 'Fitting Room Log/Tags', location: 'Fitting Room Entrance' },
+                    { id: 'FAS-FIT-02', description: "Check the fitting room for any left-behind items or discarded security tags immediately after a customer leaves.", priority: 'High', riskLevel: 'High', proof: 'Room Check Log', location: 'Fitting Rooms' },
+                    { id: 'FAS-FIT-03', description: "Offer styling assistance and suggest alternative sizes or items to customers in the fitting rooms.", priority: 'High', riskLevel: 'Low', proof: 'Manager Observation', location: 'Fitting Rooms' },
+                    { id: 'FAS-FIT-04', description: "Return unwanted items from the fitting room to the sales floor promptly.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Fitting Rooms' },
+                    { id: 'FAS-FIT-05', description: "Report any suspicious behavior to the store manager or security immediately.", priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Fitting Rooms' }
+                ]
+            },
+            {
+                title: "🔄 Omni-Channel Operations",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Omni-Channel Lead",
+                summary: "A checklist for seamlessly integrating online and in-store operations.",
+                tasks: [
+                    { id: 'FAS-OMNI-01', description: "Check for new 'Click and Collect' orders every hour.", priority: 'High', riskLevel: 'Medium', proof: 'Order System Log', location: 'System' },
+                    { id: 'FAS-OMNI-02', description: "Pick, pack, and stage 'Click and Collect' orders in a designated area within the SLA timeframe.", priority: 'High', riskLevel: 'High', proof: 'Order Fulfillment Log', location: 'Stockroom' },
+                    { id: 'FAS-OMNI-03', description: "Process online returns that are brought into the store, inspecting items and updating inventory.", priority: 'High', riskLevel: 'High', proof: 'Returns Log', location: 'POS' },
+                    { id: 'FAS-OMNI-04', description: "Perform a daily audit of store inventory levels to ensure they sync accurately with the online store.", priority: 'High', riskLevel: 'High', proof: 'Inventory Sync Report', location: 'System' },
+                    { id: 'FAS-OMNI-05', description: "Train all staff on how to handle online orders and returns professionally.", priority: 'High', riskLevel: 'Medium', proof: 'Training Record', location: 'HR' }
                 ]
             }
         ]
@@ -1578,8 +1678,8 @@ export const premiumPacks: PremiumPack[] = [
     },
     // --- Healthcare ---
     {
-        id: 'healthcare_compliance_suite',
-        title: "Healthcare & Hospital Checklist",
+        id: 'healthcare_and_hospital_operations',
+        title: "Healthcare & Hospital Operations",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -2365,7 +2465,7 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "A checklist to ensure all coaching staff are qualified and provide a safe training environment, per ISO 9001.",
                 tasks: [
                     { id: 'SC-COACH-01', description: "Verify all coaches have current, valid certifications for their sport.", priority: 'High', riskLevel: 'High', proof: 'Certification File', location: 'Office' },
-                    { id: 'SC-COACH-02', description: "Ensure all coaches have completed mandatory first-aid and child safety training.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'SC-COACH-02', description: "Confirm all coaches have completed mandatory first-aid and child safety training.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                     { id: 'SC-COACH-03', description: "Observe a sample of training sessions to ensure adherence to the club's code of conduct.", priority: 'High', riskLevel: 'Medium', proof: 'Observation Notes', location: 'Playing Areas' },
                     { id: 'SC-COACH-04', description: "Review training plans to ensure they are age and skill-level appropriate.", priority: 'High', riskLevel: 'Medium', proof: 'Training Plan Audit', location: 'Office' },
                     { id: 'SC-COACH-05', description: "Maintain a clear protocol for handling player injuries during training.", priority: 'High', riskLevel: 'High', proof: 'Injury Protocol Document', location: 'Office' }

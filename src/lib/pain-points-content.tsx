@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt } from 'lucide-react';
 
 export const painPointsContent = {
     hotels_and_resorts: {
@@ -21,13 +21,22 @@ export const painPointsContent = {
             { icon: <Users />, title: "Reduce Back-of-House Chaos", description: "Empower your kitchen staff with clear, repeatable processes for everything from receiving goods to closing down, reducing errors and staff stress." }
         ]
     },
-    luxury_retail_pack: {
+    jewelry_and_luxury_retail: {
         title: "The Business Case for Luxury Retail Excellence",
         points: [
             { icon: <Gem />, title: "Prevent High-Value Inventory Loss", description: "Implement ironclad, two-person protocols for vault access, daily counts, and client presentations to eliminate the risk of theft or loss of high-value items." },
             { icon: <Users />, title: "Uphold Brand Prestige with Every Interaction", description: "Standardize the 'white-glove' service experience, from clienteling and private viewings to store ambiance, ensuring your brand's luxury promise is always delivered." },
             { icon: <FileLock />, title: "Comply with Anti-Money Laundering (AML) Regulations", description: "Navigate complex regulations for high-value cash transactions with a clear protocol for identity verification and 'Source of Funds' documentation, protecting your business from legal risk." },
             { icon: <Shield />, title: "Protect Against Internal & External Threats", description: "From robust opening/closing security procedures to daily CCTV audits and secure cash handling, our checklists provide a multi-layered defense system for your store." }
+        ]
+    },
+    fashion_and_apparel_retail: {
+        title: "The Business Case for a More Profitable Fashion Store",
+        points: [
+            { icon: <TrendingUp />, title: "Reduce Seasonal Dead Stock", description: "Implement checklists for managing seasonal inventory, running timely markdowns, and analyzing sales data to prevent costly end-of-season write-offs." },
+            { icon: <Shirt />, title: "Master Omni-Channel Operations", description: "Seamlessly integrate your online and offline stores with protocols for 'Click and Collect', processing online returns in-store, and maintaining accurate cross-channel inventory." },
+            { icon: <Shield />, title: "Prevent Shrinkage in Fitting Rooms & on the Floor", description: "Use our checklists for fitting room monitoring, security tag audits, and daily cycle counts to significantly reduce losses from theft." },
+            { icon: <Users />, title: "Deliver a Consistent, High-Touch Customer Experience", description: "Standardize your sales process from greeting and style consultation to fitting room service and final sale, turning browsers into loyal customers." }
         ]
     },
     electronics_showroom_pack: {
@@ -120,7 +129,7 @@ export const painPointsContent = {
             { icon: <Users />, title: "Secure the Human Element", description: "Your biggest vulnerability is often your people. Implement secure employee offboarding and access control reviews to ensure departing employees don't become your next data breach." }
         ]
     },
-    healthcare_compliance_suite: {
+    healthcare_and_hospital_operations: {
         title: "The Business Case for Patient Safety & Compliance",
         points: [
             { icon: <Shield />, title: "Prevent 'Never Events' & Medication Errors", description: "A wrong-site surgery or medication error is catastrophic. Our WHO-aligned Surgical Safety and LASA Drug checklists create a safety net to prevent these devastating and legally perilous events." },
