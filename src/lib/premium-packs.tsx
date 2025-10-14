@@ -885,29 +885,29 @@ export const premiumPacks: PremiumPack[] = [
     // --- Entertainment & Events ---
     {
         id: 'film_production_pack',
-        title: "Film & OTT Production Pack",
+        title: "Film Production Pack",
         priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
-        description: "For Producers & Studio Heads. A global-standard SOP toolkit for managing film & OTT production, focusing on safety, compliance, and budget control.",
+        description: "For Producers & Studio Heads. A global-standard SOP toolkit for managing film production, focusing on safety, compliance, and budget control.",
         icon: <Film className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Film Producers", "Studio Executives", "Line Producers", "Heads of Production", "OTT Platform Executives", "Directors", "GMs", "VPs"],
+        whoIsItFor: ["Film Producers", "Studio Executives", "Line Producers", "Heads of Production", "Directors", "GMs", "VPs"],
         sampleItems: [
             "Ensure legal compliance with 'Pre-Production Clearances' checklist.",
             "Implement 'Film Shoot Safety & Equipment Handling' protocols.",
             "Standardize your 'Post-Production Handover' for smooth workflows.",
-            "Includes checklists for 'Cast & Crew Compliance' and 'OTT Platform Readiness'."
+            "Includes checklists for 'Cast & Crew Compliance'."
         ],
         globalStandards: {
-            title: "Aligned with Global Production & Tech Standards",
+            title: "Aligned with Global Production Standards",
             standards: [
                 { name: "Safety & Quality", description: "ISO 45001/9001, OSHA for on-set safety and quality management." },
                 { name: "Technical Standards", description: "SMPTE guidelines for camera, audio, and post-production formats." },
-                { name: "Digital & Security", description: "WCAG 2.1 (Accessibility), ISO 27001 (Security), GDPR/DPDP (Privacy), PCI DSS (Payments)." },
-                { name: "Legal & Compliance", description: "Protocols for copyright, life rights, and union agreements (e.g., SAG-AFTRA, DGA)." }
+                { name: "Legal & Compliance", description: "Protocols for copyright, E&O insurance, and union agreements (e.g., SAG-AFTRA, DGA)." },
+                { name: "Data Security", description: "Best practices for managing sensitive script and production data."}
             ]
         },
         checklists: [
@@ -926,7 +926,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📹 Production Setup",
+                title: "📹 Production Setup & Safety",
                 department: "Production/Safety",
                 frequency: "Pre-Shoot",
                 role: "First AD/Safety Officer",
@@ -940,11 +940,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "Shooting",
+                title: "🎥 Daily Shooting Protocol",
                 department: "Production",
                 frequency: "Daily",
                 role: "Director/First AD",
-                summary: "Maintain technical consistency and efficiency.",
+                summary: "Maintain technical consistency and efficiency on set.",
                 tasks: [
                     { id: 'FP-SHOOT-01', description: "Daily call sheets distributed and acknowledged (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Acknowledgment Log', location: 'Set' },
                     { id: 'FP-SHOOT-02', description: "Scene blocking & rehearsal verification (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Rehearsal Log', location: 'Set' },
@@ -994,40 +994,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-FILM-04', description: "Review reports from the pest control vendor and ensure all recommendations are actioned.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Review', location: 'Admin Office' },
                     { id: 'PEST-FILM-05', description: "On location shoots, assess pest-related risks and take appropriate preventive measures.", priority: 'High', riskLevel: 'High', proof: 'Location Risk Assessment', location: 'Location' }
                 ]
-            },
-             {
-                title: "Legal & Compliance",
-                department: "Legal",
-                frequency: "Quarterly",
-                role: "Compliance Officer",
-                summary: "Ensure adherence to all legal and regulatory requirements.",
-                tasks: [
-                    { id: 'OTT-LEGAL-01', description: "Review and update Terms of Service and Privacy Policy.", priority: 'High', riskLevel: 'High', proof: 'Updated Documents', location: 'Legal Dept' },
-                    { id: 'OTT-LEGAL-02', description: "Ensure compliance with regional content regulations.", priority: 'High', riskLevel: 'High', proof: 'Compliance Report', location: 'Legal Dept' },
-                    { id: 'OTT-LEGAL-03', description: "Conduct training on data privacy for all employees.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR Dept' },
-                    { id: 'OTT-LEGAL-04', description: "Manage and respond to legal notices and takedown requests.", priority: 'High', riskLevel: 'High', proof: 'Legal Case File', location: 'Legal Dept' },
-                    { id: 'OTT-LEGAL-05', description: "Audit third-party vendor contracts for compliance clauses.", priority: 'High', riskLevel: 'Medium', proof: 'Contract Audit Report', location: 'Legal Dept' }
-                ]
-            },
-            {
-                title: "Platform Operations",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Ops Manager",
-                summary: "Maintain platform stability and performance.",
-                tasks: [
-                    { id: 'OTT-OPS-01', description: "Monitor server health and load.", priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'NOC' },
-                    { id: 'OTT-OPS-02', description: "Check CDN performance and cache hit ratio.", priority: 'High', riskLevel: 'High', proof: 'CDN Dashboard', location: 'NOC' },
-                    { id: 'OTT-OPS-03', description: "Review application error logs for critical issues.", priority: 'High', riskLevel: 'High', proof: 'Log Management System', location: 'NOC' },
-                    { id: 'OTT-OPS-04', description: "Verify backup and disaster recovery jobs completed successfully.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'NOC' },
-                    { id: 'OTT-OPS-05', description: "Handle customer support escalations related to platform issues.", priority: 'High', riskLevel: 'Medium', proof: 'Support Ticket System', location: 'Support Dept' }
-                ]
-            },
+            }
         ]
     },
     {
         id: 'ott_platform_pack',
-        title: "OTT Platform Production Pack",
+        title: "OTT Platform Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -1043,6 +1015,15 @@ export const premiumPacks: PremiumPack[] = [
             "Standardize 'Content Upload & Management' for quality and efficiency.",
             "Implement 'Compliance & Security' protocols for data and content protection."
         ],
+         globalStandards: {
+            title: "Aligned with Global Streaming & Tech Standards",
+            standards: [
+                { name: "Digital & Security", description: "WCAG 2.1 (Accessibility), ISO 27001 (Security), GDPR/DPDP (Privacy), PCI DSS (Payments)." },
+                { name: "Content & Broadcast", description: "Technical standards for video encoding, delivery (e.g., HLS/DASH), and metadata." },
+                { name: "Cloud Infrastructure", description: "Best practices for scalability, reliability, and security on platforms like AWS, Azure, and GCP." },
+                { name: "Quality Management", description: "ISO 9001 for process standardization in content operations and customer support."}
+            ]
+        },
         checklists: [
             {
                 title: "Content Strategy",
