@@ -105,7 +105,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
       <SiteHeader />
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="grid md:grid-cols-[auto_1fr] items-start gap-6 md:gap-x-8 max-w-4xl mx-auto">
                      <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
                         <div className="w-24 h-24 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
@@ -126,7 +126,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
         </section>
 
         <section className="w-full py-12 md:py-16">
-            <div className="container grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
+            <div className="container grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start px-2 md:px-6">
                 <div className="space-y-8">
                      <div>
                         <h2 className="text-2xl font-bold font-headline text-primary mb-4 flex items-center gap-3">

@@ -112,7 +112,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1 py-12 md:py-20">
-        <div className="container max-w-4xl mx-auto px-4 md:px-6">
+        <div className="container max-w-4xl mx-auto px-2 md:px-6">
           <article>
             <header className="mb-8 text-center">
               <div className="flex justify-center gap-2 mb-4">

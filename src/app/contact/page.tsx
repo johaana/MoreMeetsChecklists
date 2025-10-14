@@ -29,7 +29,7 @@ export default function ContactUsPage() {
 
       <main className="flex-1">
         <section className="w-full pt-12">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                  <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
                         Contact Us

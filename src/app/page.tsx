@@ -429,7 +429,7 @@ const WhyDetailMatters = () => {
     if (isMobile) {
         return (
             <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-                <div className="container px-4 md:px-6">
+                <div className="container px-2 md:px-6">
                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                         <h2 className="text-3xl font-bold tracking-tighter font-headline">
                             Why Every Detail Matters
@@ -460,7 +460,7 @@ const WhyDetailMatters = () => {
 
     return (
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         Why Every Detail Matters
@@ -507,7 +507,7 @@ export default function Home() {
               backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImageUrl})`,
             }}
           />
-            <div className="container relative z-10 px-4 md:px-6">
+            <div className="container relative z-10 px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-6 text-center">
                 <div className="space-y-4">
                     <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
@@ -540,7 +540,7 @@ export default function Home() {
         </section>
 
          <section className="w-full py-12 bg-secondary/30 lg:hidden">
-            <div className="container px-4 md:px-6 text-center">
+            <div className="container px-2 md:px-6 text-center">
                  {isMobile ? (
                     <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
                         Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} period={1500} />
@@ -569,7 +569,7 @@ export default function Home() {
         <IndividualChecklistsSection />
 
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         Loved by Professionals Worldwide

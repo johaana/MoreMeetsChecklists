@@ -60,7 +60,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Hospitality",
-        description: "A complete toolkit for GMs & Dept. Heads covering operations, finance, and leadership in hotels and resorts.",
+        description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
@@ -96,7 +96,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Project-Based",
                 role: "General Manager",
-                summary: "A master checklist for launching a new hotel, covering everything from construction handover and licensing to staff recruitment and marketing launch.",
+                summary: "Launch your new property flawlessly. This master plan covers everything from construction handover and licensing to staff recruitment and launch marketing, ensuring a successful opening day.",
                 tasks: [
                     { id: 'PRE-OPEN-01', description: "Secure all necessary operational licenses and permits (food, liquor, building).", priority: 'High', riskLevel: 'High', proof: 'License Certificates', location: 'Admin Office' },
                     { id: 'PRE-OPEN-02', description: "Finalize and sign contracts with all key vendors (linen, F&B supplies, security).", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Admin Office' },
@@ -110,7 +110,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Finance",
                 frequency: "Annually/Quarterly",
                 role: "Financial Controller",
-                summary: "A strategic checklist for preparing the hotel's annual budget, focusing on revenue forecasting, departmental cost allocation, and capital expenditure planning.",
+                summary: "Drive profitability with a strategic framework for preparing the hotel's annual budget, focusing on accurate revenue forecasting, departmental cost control, and smart CAPEX planning.",
                 tasks: [
                     { id: 'FIN-BUD-01', description: "Analyze previous year's performance and market trends to establish revenue targets.", priority: 'High', riskLevel: 'High', proof: 'Analysis Report', location: 'Finance Office' },
                     { id: 'FIN-BUD-02', description: "Collect and review budget proposals from all department heads.", priority: 'High', riskLevel: 'Medium', proof: 'Departmental Budgets', location: 'Finance Office' },
@@ -124,7 +124,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Monthly",
                 role: "General Manager",
-                summary: "A checklist for the monthly meeting with department heads to review financial performance against budget, analyze variances, and implement corrective cost-saving measures.",
+                summary: "Turn financial data into action. This structured meeting agenda helps you review performance against budget, analyze variances, and implement effective cost-saving measures with your HODs.",
                 tasks: [
                     { id: 'FIN-PNL-01', description: "Distribute departmental P&L statements to all HODs 3 days before the meeting.", priority: 'High', riskLevel: 'Medium', proof: 'Email Log', location: 'Finance Office' },
                     { id: 'FIN-PNL-02', description: "In the meeting, each HOD must explain significant variances in their department's revenue and costs.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Conference Room' },
@@ -138,7 +138,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Quality/Management",
                 frequency: "Quarterly",
                 role: "Quality Manager",
-                summary: "An internal audit to ensure the hotel is consistently meeting the brand's specific standards for service, cleanliness, and guest interaction.",
+                summary: "Protect your brand's reputation with a rigorous internal audit. Ensure every guest touchpoint meets the highest standards for service, cleanliness, and experience.",
                 tasks: [
                     { id: 'BRAND-01', description: "Audit the check-in process against brand standards for greeting, speed, and efficiency.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Scorecard', location: 'Front Desk' },
                     { id: 'BRAND-02', description: "Inspect a random selection of guest rooms for compliance with brand standards on linen quality, amenity placement, and cleanliness.", priority: 'High', riskLevel: 'High', proof: 'Room Inspection Form', location: 'Guest Rooms' },
@@ -152,7 +152,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "HR",
                 frequency: "Per New Hire",
                 role: "HR Manager",
-                summary: "A structured 30-day plan to ensure new employees are properly onboarded, trained, and integrated into the hotel's culture and operational standards.",
+                summary: "Integrate new employees effectively. This 30-day plan ensures new hires are properly onboarded, trained, and aligned with your hotel's culture and operational standards from day one.",
                 tasks: [
                     { id: 'HR-ONBOARD-01', description: "Day 1: Conduct company orientation, issue handbook, and complete all legal paperwork.", priority: 'High', riskLevel: 'Medium', proof: 'Onboarding Checklist', location: 'HR Office' },
                     { id: 'HR-ONBOARD-02', description: "Week 1: Assign a 'buddy' or mentor and complete departmental orientation and initial job-specific training.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Department' },
@@ -166,7 +166,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "HR/Management",
                 frequency: "Quarterly/Annually",
                 role: "General Manager",
-                summary: "A framework for conducting fair and effective performance reviews for department heads, focusing on KPIs, leadership skills, and goal setting.",
+                summary: "Develop stronger leaders with a framework for fair and effective performance reviews, focusing on measurable KPIs, leadership skills, and clear goal setting.",
                 tasks: [
                     { id: 'HR-PERF-001', description: "Review the manager's performance against their pre-set KPIs (e.g., departmental profit, guest satisfaction scores, employee turnover).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Office' },
                     { id: 'HR-PERF-002', description: "Gather 360-degree feedback from the manager's direct reports and peers.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Summary', location: 'Office' },
@@ -180,7 +180,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Marketing/Guest Relations",
                 frequency: "Daily",
                 role: "Marketing Manager",
-                summary: "A daily protocol to monitor and manage the hotel's online reputation across all major review platforms and social media.",
+                summary: "Take control of your online brand. This daily protocol helps you monitor, manage, and respond to reviews across all platforms, protecting your reputation and driving bookings.",
                 tasks: [
                     { id: 'ORM-001', description: "Monitor all major review platforms (TripAdvisor, Google Reviews, OTAs) for new reviews.", priority: 'High', riskLevel: 'Medium', proof: 'Monitoring Tool Screenshot', location: 'Office' },
                     { id: 'ORM-002', description: "Respond to all negative reviews within 24 hours with empathy and a clear action plan.", priority: 'High', riskLevel: 'High', proof: 'Response Log', location: 'Office' },
@@ -194,7 +194,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Housekeeping/Maintenance",
                 frequency: "Weekly",
                 role: "Housekeeping Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations, crucial for guest satisfaction and health standards.",
+                summary: "Protect your guests and your reputation with a proactive checklist for preventing and managing pest infestations, crucial for health standards and guest satisfaction.",
                 tasks: [
                     { id: 'PEST-001', description: "Inspect F&B outlets, kitchens, and garbage areas for signs of pest activity (droppings, gnaw marks).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Back of House' },
                     { id: 'PEST-002', description: "Check that all external doors and windows have proper seals to prevent pest entry.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Perimeter' },
@@ -212,7 +212,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Hospitality",
-        description: "An essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
+        description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
         badgeVariant: "accent" as const,
@@ -247,7 +247,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management/Strategy",
                 frequency: "Per Potential Site",
                 role: "Owner/Director",
-                summary: "A structured framework to de-risk the process of selecting a new location, ensuring it aligns with brand, operational, and financial requirements.",
+                summary: "De-risk expansion with a structured framework for selecting a new location, ensuring it aligns with your brand, operational needs, and financial goals.",
                 tasks: [
                     { id: 'FEAS-001', description: "Conduct a demographic analysis of the target area (e.g., population density, average income).", priority: 'High', riskLevel: 'High', proof: 'Demographic Report', location: 'Office' },
                     { id: 'FEAS-002', description: "Perform a competitive analysis: map all direct and indirect competitors within a 3km radius.", priority: 'High', riskLevel: 'High', proof: 'Competitor Map', location: 'Office' },
@@ -261,7 +261,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Weekly",
                 role: "Restaurant Manager",
-                summary: "A structured agenda to run effective weekly sales meetings that focus on analyzing data, recognizing performance, and planning for the week ahead.",
+                summary: "Run effective weekly sales meetings that go beyond numbers. Analyze data, recognize top performers, and create actionable plans to boost revenue.",
                 tasks: [
                     { id: 'REST-MEETING-01', description: "Review previous week's sales performance against target (by day, by meal period).", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
                     { id: 'REST-MEETING-02', description: "Recognize top-performing staff for sales, upselling, or positive customer mentions.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Agenda', location: 'Meeting Room' },
@@ -275,7 +275,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "Head Chef",
-                summary: "A critical daily checklist to ensure the kitchen is safe, sanitary, and ready for service, focusing on temperature controls, sanitation, and equipment readiness as per HACCP guidelines.",
+                summary: "Prevent food safety violations and ensure a perfect start every day with this HACCP-aligned checklist for temperature, sanitation, and equipment readiness.",
                 tasks: [
                     { id: 'CK-KO-001', description: "Verify all surfaces (prep tables, cutting boards) are sanitized.", priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Kitchen' },
                     { id: 'CK-KO-002', description: "Check temperatures of all refrigerators and freezers; log readings.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
@@ -289,7 +289,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "Store Keeper",
-                summary: "Manages the first critical control point in food safety. This checklist covers temperature checks, quality inspection, and FIFO storage principles for all incoming goods.",
+                summary: "Secure the first critical control point in food safety. This checklist guarantees quality by managing temperature checks, quality inspection, and FIFO storage for all incoming goods.",
                 tasks: [
                     { id: 'CK-FRS-001', description: "Check temperature of refrigerated/frozen delivery truck upon arrival.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
                     { id: 'CK-FRS-002', description: "Inspect all incoming products for signs of spoilage, damage, or pest infestation.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
@@ -303,7 +303,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "Sous Chef",
-                summary: "An ongoing check during service to ensure food safety is maintained on the service line. It covers holding temperatures, staff hygiene, and prevention of cross-contamination.",
+                summary: "Maintain impeccable food safety during service. This ongoing check ensures correct holding temperatures, prevents cross-contamination, and reinforces staff hygiene on the line.",
                 tasks: [
                     { id: 'CK-HLC-001', description: "Check and log temperatures of all hot and cold holding units on the line every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
                     { id: 'CK-HLC-002', description: "Use a calibrated thermometer to check internal temperatures of food items on the line.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
@@ -317,7 +317,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "Closing Chef",
-                summary: "A detailed protocol for cleaning and shutting down the kitchen to ensure hygiene and safety. It covers food storage, equipment cleaning, surface sanitization, and waste disposal.",
+                summary: "Ensure a safe, sanitary, and efficient start for the next day. This detailed protocol covers food storage, equipment shutdown, surface sanitization, and waste disposal.",
                 tasks: [
                     { id: 'CK-KCC-001', description: "Properly cool, cover, label, and store all leftover food.", priority: 'High', riskLevel: 'High', proof: 'Storage Log', location: 'Kitchen' },
                     { id: 'CK-KCC-002', description: "Turn off all cooking equipment (fryers, ovens, grills).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
@@ -331,7 +331,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "Restaurant Manager",
-                summary: "Prepares the dining area for guests, ensuring cleanliness, correct table settings, and a welcoming ambiance.",
+                summary: "Create a perfect first impression. This checklist ensures your dining area is immaculate, correctly set, and has a welcoming ambiance before the first guest arrives.",
                 tasks: [
                     { id: 'FOH-O-001', description: "Check cleanliness of dining room, tables, chairs, and floors.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dining Room' },
                     { id: 'FOH-O-002', description: "Set tables with clean linen, polished cutlery, and glassware.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dining Room' },
@@ -345,7 +345,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Maintenance",
                 frequency: "Weekly",
                 role: "Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations, crucial for F&B hygiene standards.",
+                summary: "Protect your reputation and prevent health code violations with a proactive system for managing pests in a demanding F&B environment.",
                 tasks: [
                     { id: 'PEST-REST-001', description: "Inspect kitchen, storage, and dining areas for signs of pest activity (droppings, gnaw marks).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Entire Restaurant' },
                     { id: 'PEST-REST-002', description: "Ensure all food containers are sealed and stored off the floor.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Storage/Kitchen' },
@@ -364,7 +364,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
-        description: "For luxury brand managers and store owners. A premium toolkit for delivering impeccable customer experiences and ensuring ironclad security for high-value inventory.",
+        description: "A premium toolkit for luxury brand managers to deliver impeccable service and ensure ironclad security for high-value inventory.",
         icon: <Gem className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -390,7 +390,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "A rigorous protocol to ensure the store is secure at all times, preventing theft and ensuring staff safety.",
+                summary: "Establish an ironclad routine. This rigorous protocol ensures your store is secure, preventing theft and guaranteeing staff safety from open to close.",
                 tasks: [
                     { id: 'LUX-SEC-01', description: "Test all alarm systems (panic buttons, door sensors) before opening.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Store' },
                     { id: 'LUX-SEC-02', description: "Verify all CCTV cameras are recording and have unobstructed views, especially over cash counters and vaults.", priority: 'High', riskLevel: 'High', proof: 'CCTV Check Log', location: 'Security Room' },
@@ -404,7 +404,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory/Security",
                 frequency: "Daily",
                 role: "Inventory Manager",
-                summary: "A precise checklist for tracking and securing high-value items like jewelry and watches to prevent loss or theft.",
+                summary: "Protect your most valuable assets. This precise checklist tracks every high-value item with two-person sign-offs and daily counts to eliminate loss or theft.",
                 tasks: [
                     { id: 'LUX-INV-01', description: "Conduct a daily count of all items in the vault and high-security display cases.", priority: 'High', riskLevel: 'High', proof: 'Daily Count Sheet', location: 'Vault/Sales Floor' },
                     { id: 'LUX-INV-02', description: "Log every instance an item is removed from or returned to the vault, with two-person sign-off.", priority: 'High', riskLevel: 'High', proof: 'Movement Log', location: 'Vault' },
@@ -418,7 +418,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Marketing/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "Ensures the store's presentation meets the exacting standards of a luxury brand, creating a consistent and inviting atmosphere.",
+                summary: "Deliver a flawless brand experience. This checklist ensures your store's presentation meets the exacting standards of a luxury brand, from lighting and scent to display cleanliness.",
                 tasks: [
                     { id: 'LUX-VM-01', description: "Ensure all display cases are immaculately clean, fingerprint-free, and well-lit.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'LUX-VM-02', description: "Verify that all product displays adhere to the brand's global visual merchandising guidelines.", priority: 'High', riskLevel: 'Medium', proof: 'VM Guideline Checklist', location: 'Sales Floor' },
@@ -432,7 +432,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sales",
                 frequency: "Ongoing",
                 role: "Sales Associate",
-                summary: "A checklist for delivering an exceptional, personalized service experience to every client.",
+                summary: "Turn clients into brand advocates. This protocol guides your team in delivering an exceptional, personalized service experience that defines luxury.",
                 tasks: [
                     { id: 'LUX-CUST-01', description: "Greet every client within 30 seconds of entry and offer a beverage.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
                     { id: 'LUX-CUST-02', description: "For returning clients, review their purchase history and preferences in the CRM before engaging.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'Back Office/Tablet' },
@@ -446,7 +446,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Finance/Operations",
                 frequency: "Daily",
                 role: "Cashier/Manager",
-                summary: "A checklist to ensure secure cash handling and compliance with Anti-Money Laundering regulations for large transactions.",
+                summary: "Protect your business from financial crime. This checklist ensures secure cash handling and strict compliance with Anti-Money Laundering (AML) regulations for large transactions.",
                 tasks: [
                     { id: 'LUX-AML-01', description: "Perform cash reconciliation at the start and end of each shift with a two-person sign-off.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Cash Office' },
                     { id: 'LUX-AML-02', description: "For any cash transaction above the regulatory threshold (e.g., $10,000), complete a 'Source of Funds' declaration form.", priority: 'High', riskLevel: 'High', proof: 'AML Form', location: 'Cash Office' },
@@ -460,7 +460,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Per Item",
                 role: "Service Manager",
-                summary: "A detailed process for managing custom orders and repairs, a key part of the luxury customer experience.",
+                summary: "Elevate your after-sales service. This detailed process for managing custom orders and repairs builds client trust and loyalty, a key part of the luxury experience.",
                 tasks: [
                     { id: 'LUX-REPAIR-01', description: "Photograph and document the condition of any item received for repair, with client sign-off.", priority: 'High', riskLevel: 'High', proof: 'Intake Form with Photos', location: 'Service Desk' },
                     { id: 'LUX-REPAIR-02', description: "Provide the client with a detailed estimate and timeline for the repair or special order.", priority: 'High', riskLevel: 'Medium', proof: 'Estimate Document', location: 'Service Desk' },
@@ -474,7 +474,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Compliance",
                 frequency: "Quarterly",
                 role: "Compliance Officer",
-                summary: "Ensures the brand meets modern standards for ethical sourcing and sustainability, a key factor for international partners and discerning clients.",
+                summary: "Build a brand that customers can trust. This checklist ensures you meet modern standards for ethical sourcing and sustainability, a key factor for discerning clients.",
                 tasks: [
                     { id: 'LUX-ESG-01', description: "Verify that diamond and precious metal suppliers provide valid 'Kimberley Process' or other conflict-free sourcing certificates.", priority: 'High', riskLevel: 'High', proof: 'Supplier Certificates', location: 'Procurement Office' },
                     { id: 'LUX-ESG-02', description: "Audit the brand's packaging to ensure it meets sustainability goals (e.g., recycled materials, FSC certified).", priority: 'Medium', riskLevel: 'Low', proof: 'Packaging Audit Report', location: 'Marketing Office' },
@@ -488,7 +488,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT/Operations",
                 frequency: "Quarterly",
                 role: "Store Manager",
-                summary: "A checklist to ensure the store is compliant with PCI DSS standards to protect sensitive customer payment data.",
+                summary: "Protect your clients and your business. This checklist ensures your store is compliant with PCI DSS standards to safeguard sensitive customer payment data.",
                 tasks: [
                     { id: 'LUX-PCI-01', description: "Ensure the POS system and credit card terminals are running updated, patched software.", priority: 'High', riskLevel: 'High', proof: 'IT System Log', location: 'IT Office' },
                     { id: 'LUX-PCI-02', description: "Verify that the store's Wi-Fi network for payments is separate from the public guest Wi-Fi.", priority: 'High', riskLevel: 'High', proof: 'Network Diagram', location: 'IT Office' },
@@ -532,7 +532,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "A morning checklist to ensure the store is perfectly presented, stocked, and ready for customers.",
+                summary: "Ensure a flawless first impression. This morning checklist ensures your store is perfectly presented, stocked, and ready for customers the moment your doors open.",
                 tasks: [
                     { id: 'FAS-OPEN-01', description: "Ensure all mannequins are dressed according to the current VM guide and are clean.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'FAS-OPEN-02', description: "Verify all lighting is functional and focused correctly on displays.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Sales Floor' },
@@ -546,7 +546,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory",
                 frequency: "Weekly",
                 role: "Merchandiser/Manager",
-                summary: "A checklist to manage the transition between seasons, minimizing markdowns and maximizing sell-through.",
+                summary: "Maximize profitability and avoid costly write-offs. This checklist helps you manage the transition between seasons, optimizing sell-through and minimizing markdowns.",
                 tasks: [
                     { id: 'FAS-INV-01', description: "Review sales data to identify fast and slow-moving items from the current season.", priority: 'High', riskLevel: 'High', proof: 'Sales Report', location: 'Office' },
                     { id: 'FAS-INV-02', description: "Plan and execute timely markdowns for end-of-season stock.", priority: 'High', riskLevel: 'High', proof: 'Markdown Plan', location: 'System' },
@@ -560,7 +560,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Merchandising",
                 frequency: "Weekly",
                 role: "Visual Merchandiser",
-                summary: "A creative and operational checklist to ensure window and in-store displays are compelling and drive foot traffic.",
+                summary: "Create displays that stop traffic and drive sales. This creative and operational checklist ensures your window and in-store displays are compelling, fresh, and on-brand.",
                 tasks: [
                     { id: 'FAS-VM-01', description: "Rotate the main window display according to the marketing calendar.", priority: 'High', riskLevel: 'Medium', proof: 'Photo of Display', location: 'Window' },
                     { id: 'FAS-VM-02', description: "Ensure all displayed apparel is perfectly steamed, pinned, and accessorized.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
@@ -574,7 +574,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sales/Security",
                 frequency: "Ongoing",
                 role: "Sales Associate",
-                summary: "A protocol to provide excellent customer service in fitting rooms while preventing theft.",
+                summary: "Turn fitting rooms into a profit center, not a loss zone. This protocol helps you provide excellent customer service while implementing key security measures to prevent theft.",
                 tasks: [
                     { id: 'FAS-FIT-01', description: "Log the number of items a customer takes into a fitting room.", priority: 'High', riskLevel: 'High', proof: 'Fitting Room Log/Tags', location: 'Fitting Room Entrance' },
                     { id: 'FAS-FIT-02', description: "Check the fitting room for any left-behind items or discarded security tags immediately after a customer leaves.", priority: 'High', riskLevel: 'High', proof: 'Room Check Log', location: 'Fitting Rooms' },
@@ -588,7 +588,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Omni-Channel Lead",
-                summary: "A checklist for seamlessly integrating online and in-store operations.",
+                summary: "Create a seamless bridge between your online and physical stores. This checklist standardizes 'Click and Collect', in-store returns, and inventory syncing for a frustration-free customer experience.",
                 tasks: [
                     { id: 'FAS-OMNI-01', description: "Check for new 'Click and Collect' orders every hour.", priority: 'High', riskLevel: 'Medium', proof: 'Order System Log', location: 'System' },
                     { id: 'FAS-OMNI-02', description: "Pick, pack, and stage 'Click and Collect' orders in a designated area within the SLA timeframe.", priority: 'High', riskLevel: 'High', proof: 'Order Fulfillment Log', location: 'Stockroom' },
@@ -606,7 +606,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
-        description: "For store managers and department heads. A toolkit for managing high-volume retail, focusing on fresh food safety, inventory accuracy, and checkout efficiency.",
+        description: "A comprehensive toolkit for managing high-volume retail, focusing on fresh food safety, inventory accuracy, and checkout efficiency.",
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -623,7 +623,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "A comprehensive morning checklist to ensure the store is clean, safe, stocked, and ready for customers.",
+                summary: "Ensure your store is safe, stocked, and welcoming before the first customer walks in. This comprehensive morning checklist covers cleanliness, safety, and promotional readiness.",
                 tasks: [
                     { id: 'SM-OPEN-01', description: "Conduct a full store walkthrough to check for cleanliness, safety hazards, and lighting.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Log', location: 'Entire Store' },
                     { id: 'SM-OPEN-02', description: "Ensure all shopping carts and baskets are clean and available at the entrance.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Entrance' },
@@ -637,7 +637,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Fresh Produce/Meat/Dairy",
                 frequency: "Daily/Hourly",
                 role: "Department Head",
-                summary: "A food-safety critical checklist for managing produce, meat, and dairy departments, focusing on temperature, handling, and rotation.",
+                summary: "Protect customers and your bottom line with a food-safety critical checklist. Manage produce, meat, and dairy departments with rigorous controls for temperature, handling, and rotation.",
                 tasks: [
                     { id: 'SM-FRESH-01', description: "Log temperatures of all refrigerated display cases and walk-in coolers every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Fresh Depts' },
                     { id: 'SM-FRESH-02', description: "Inspect all fresh produce for spoilage and remove any substandard items from display.", priority: 'High', riskLevel: 'Medium', proof: 'Culling Log', location: 'Produce Section' },
@@ -651,7 +651,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Logistics/Receiving",
                 frequency: "Per Delivery",
                 role: "Receiving Manager",
-                summary: "A process for efficiently and accurately receiving dozens of daily deliveries, from pallet verification to staging for putaway.",
+                summary: "Handle dozens of daily deliveries with precision and efficiency. This process manages everything from pallet verification to staging for putaway, ensuring inventory accuracy from the dock.",
                 tasks: [
                     { id: 'SM-RECV-01', description: "Schedule all deliveries to avoid dock congestion.", priority: 'High', riskLevel: 'Medium', proof: 'Dock Schedule', location: 'Receiving Office' },
                     { id: 'SM-RECV-02', description: "Verify pallet count and check for visible damage before breaking the seal on a truck.", priority: 'High', riskLevel: 'High', proof: 'Delivery Note Sign-off', location: 'Receiving Dock' },
@@ -665,7 +665,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations/Merchandising",
                 frequency: "Weekly",
                 role: "Floor Manager",
-                summary: "Ensures shelves are stocked according to the corporate planogram to maximize sales and maintain brand consistency.",
+                summary: "Maximize sales and maintain brand consistency. This checklist ensures shelves are stocked according to the corporate planogram, driving sales and improving the shopping experience.",
                 tasks: [
                     { id: 'SM-PLANO-01', description: "Select a different aisle each week and audit product placement against the official planogram.", priority: 'High', riskLevel: 'Medium', proof: 'Planogram Audit Form', location: 'Aisles' },
                     { id: 'SM-PLANO-02', description: "Ensure shelf labels and pricing match the products on display.", priority: 'High', riskLevel: 'High', proof: 'Label Audit', location: 'Aisles' },
@@ -679,7 +679,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Front-End",
                 frequency: "Daily",
                 role: "Head Cashier",
-                summary: "A checklist to optimize checkout speed, ensure cash security, and improve the final customer touchpoint.",
+                summary: "Optimize the final and most important customer touchpoint. This checklist improves checkout speed, ensures cash security, and reduces transaction errors.",
                 tasks: [
                     { id: 'SM-CASH-01', description: "Ensure adequate number of checkout lanes are open based on customer traffic forecasts.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Roster', location: 'Checkout Area' },
                     { id: 'SM-CASH-02', description: "Perform cash float verification for each POS terminal at the start of the shift.", priority: 'High', riskLevel: 'High', proof: 'Float Count Sheet', location: 'Cash Office' },
@@ -693,7 +693,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security",
                 frequency: "Daily",
                 role: "Loss Prevention Officer",
-                summary: "A proactive checklist to deter theft, reduce shrinkage, and ensure a safe shopping environment.",
+                summary: "Protect your profits and create a safe shopping environment. This proactive checklist helps deter theft, reduce shrinkage, and manage security risks.",
                 tasks: [
                     { id: 'SM-LP-01', description: "Audit EAS (Electronic Article Surveillance) gates, deactivators, and security tags to ensure they are functional.", priority: 'High', riskLevel: 'High', proof: 'EAS Test Log', location: 'Entrance/Checkout' },
                     { id: 'SM-LP-02', description: "Review CCTV footage of 'sweethearting' hotspots like checkouts and receiving docks.", priority: 'High', riskLevel: 'High', proof: 'CCTV Review Log', location: 'Security Office' },
@@ -707,7 +707,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Daily",
                 role: "Facilities Coordinator",
-                summary: "Manages waste streams efficiently, focusing on recycling targets, food waste reduction, and sanitation.",
+                summary: "Manage waste streams efficiently to meet sustainability goals and comply with health codes, focusing on recycling, food waste, and sanitation.",
                 tasks: [
                     { id: 'SM-WASTE-01', description: "Ensure separate, clearly labeled bins are available for different waste streams (general, recyclable, food waste).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Back of House' },
                     { id: 'SM-WASTE-02', description: "Check that waste compactors and balers are operational and used correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Check Log', location: 'Waste Area' },
@@ -721,7 +721,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities/Compliance",
                 frequency: "Weekly",
                 role: "Store Manager",
-                summary: "A critical checklist for preventing pests in a large food-handling environment.",
+                summary: "Implement a critical checklist for preventing pests in a large food-handling environment, protecting both product and public health.",
                 tasks: [
                     { id: 'PEST-SM-01', description: "Inspect receiving docks, garbage areas, and food departments for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'Store-wide' },
                     { id: 'PEST-SM-02', description: "Ensure all food in storage and on display is properly covered or sealed.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Store-wide' },
@@ -768,7 +768,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "Core checklists for ensuring smooth, secure, and compliant daily store operations.",
+                summary: "Ensure smooth, secure, and compliant daily store operations with core checklists for readiness, security, and system checks.",
                 tasks: [
                     { id: 'ELEC-OPEN-01', description: "Verify store cleanliness, lighting, HVAC systems are optimal.", priority: 'High', riskLevel: 'Medium', proof: 'Opening Log', location: 'Store-wide' },
                     { id: 'ELEC-OPEN-02', description: "Check security systems (CCTV, alarms) are operational.", priority: 'High', riskLevel: 'High', proof: 'Security System Log', location: 'Security Room' },
@@ -782,7 +782,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory",
                 frequency: "Daily/Weekly",
                 role: "Inventory Manager",
-                summary: "Maintain optimal stock levels, prevent shrinkage, and ensure inventory accuracy.",
+                summary: "Achieve precise inventory control. This checklist helps you maintain optimal stock levels, prevent shrinkage through daily cycle counts, and ensure data accuracy.",
                 tasks: [
                     { id: 'ELEC-INV-01', description: "Conduct daily cycle counts on high-value items.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse/Sales Floor' },
                     { id: 'ELEC-INV-02', description: "Update ERP/POS systems with new stock arrivals.", priority: 'High', riskLevel: 'High', proof: 'ERP Update Log', location: 'System' },
@@ -796,7 +796,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Merchandising",
                 frequency: "Daily",
                 role: "Visual Merchandiser",
-                summary: "Maintain consistent brand presentation and ensure all demo units are functional.",
+                summary: "Create a compelling and consistent brand presentation. This checklist ensures all demo units are functional, displays are perfect, and pricing is accurate.",
                 tasks: [
                     { id: 'ELEC-VM-01', description: "Verify planogram adherence for all brands.", priority: 'High', riskLevel: 'Medium', proof: 'Planogram Compliance Photo', location: 'Sales Floor' },
                     { id: 'ELEC-VM-02', description: "Ensure all demo units are functional, charged, and running correct software.", priority: 'High', riskLevel: 'High', proof: 'Demo Unit Checklist', location: 'Sales Floor' },
@@ -810,7 +810,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Finance",
                 frequency: "Per Shift",
                 role: "Head Cashier",
-                summary: "Ensure secure and compliant payment operations to prevent fraud and discrepancies.",
+                summary: "Safeguard your revenue with secure and compliant payment operations. This protocol prevents fraud, ensures accurate reconciliation, and adheres to PCI DSS standards.",
                 tasks: [
                     { id: 'ELEC-CASH-01', description: "Calibrate POS and verify payment gateway functionality.", priority: 'High', riskLevel: 'High', proof: 'System Test Log', location: 'POS Terminal' },
                     { id: 'ELEC-CASH-02', description: "Verify cash drawer balance before and after each shift.", priority: 'High', riskLevel: 'High', proof: 'Cash Reconciliation Sheet', location: 'Cash Office' },
@@ -824,7 +824,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities/EHS",
                 frequency: "Weekly",
                 role: "Safety Officer",
-                summary: "Ensure a safe environment for both staff and customers through regular maintenance and safety checks.",
+                summary: "Create a safe and reliable environment for staff and customers. This checklist covers regular maintenance of electrical, fire, and safety systems to prevent accidents.",
                 tasks: [
                     { id: 'ELEC-SAFETY-01', description: "Inspect electrical fittings and display power points for signs of wear or damage.", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Report', location: 'Store-wide' },
                     { id: 'ELEC-SAFETY-02', description: "Verify fire extinguishers are charged, accessible, and emergency exits are clear.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Log', location: 'Store-wide' },
@@ -838,7 +838,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sales",
                 frequency: "Ongoing",
                 role: "Sales Manager",
-                summary: "Checklists to ensure a consistently high-quality customer experience from greeting to checkout.",
+                summary: "Deliver a consistently excellent customer experience. These checklists ensure every interaction, from greeting to checkout, is professional, efficient, and brand-aligned.",
                 tasks: [
                     { id: 'ELEC-CUST-01', description: "Greet customers within 30 seconds of entry.", priority: 'High', riskLevel: 'Low', proof: 'Manager Observation', location: 'Entrance' },
                     { id: 'ELEC-CUST-02', description: "Ensure staff are trained on key product SKUs and features.", priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
@@ -857,7 +857,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
-        description: "For Producers & Studio Heads. A global-standard SOP toolkit for managing film production, focusing on safety, compliance, and budget control.",
+        description: "A global-standard SOP toolkit for managing film production, focusing on safety, compliance, and budget control.",
         icon: <Film className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -883,7 +883,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Production",
                 frequency: "Per Project",
                 role: "Producer",
-                summary: "Ensure smooth planning and international compliance.",
+                summary: "Build a solid foundation for your film. This checklist ensures all legal, financial, and logistical elements are secured before the camera rolls, preventing costly delays.",
                 tasks: [
                     { id: 'FP-PP-01', description: "Verify script is locked and all copyright/chain-of-title documents are secured. (ISO 9001)", priority: 'High', riskLevel: 'High', proof: 'Legal Clearance Memo', location: 'Production Office' },
                     { id: 'FP-PP-02', description: "Secure 'Errors & Omissions' (E&O) insurance. (Legal Compliance)", priority: 'High', riskLevel: 'High', proof: 'Insurance Certificate', location: 'Production Office' },
@@ -897,7 +897,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Production/Safety",
                 frequency: "Pre-Shoot",
                 role: "First AD/Safety Officer",
-                summary: "Ensure safety, quality, and technical readiness.",
+                summary: "Create a safe and efficient set. This protocol covers mandatory safety briefings, structural checks, and stunt/FX testing to protect your cast and crew.",
                 tasks: [
                     { id: 'FP-PS-01', description: "Conduct a mandatory safety briefing for all cast and crew. (ISO 45001)", priority: 'High', riskLevel: 'High', proof: 'Safety Meeting Log', location: 'Set' },
                     { id: 'FP-PS-02', description: "Inspect all set constructions and rigging for structural integrity. (ISO 45001)", priority: 'High', riskLevel: 'High', proof: 'Structural Sign-off', location: 'Set' },
@@ -911,7 +911,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Production",
                 frequency: "Daily",
                 role: "Director/First AD",
-                summary: "Maintain technical consistency and efficiency on set.",
+                summary: "Run your set like a well-oiled machine. This daily checklist maintains technical consistency, continuity, and efficiency to keep your production on schedule and on budget.",
                 tasks: [
                     { id: 'FP-SHOOT-01', description: "Daily call sheets distributed and acknowledged (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Acknowledgment Log', location: 'Set' },
                     { id: 'FP-SHOOT-02', description: "Scene blocking & rehearsal verification (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Rehearsal Log', location: 'Set' },
@@ -925,7 +925,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Post-Production",
                 frequency: "End of Shoot",
                 role: "Post-Production Supervisor",
-                summary: "Ensures globally compatible content quality and smooth handovers.",
+                summary: "Ensure a seamless transition from set to suite. This checklist guarantees a smooth handover, quality control, and a final product that meets global technical standards.",
                 tasks: [
                     { id: "FP-POST-01", description: "Verify all footage, sound files, and production notes have been received and cataloged. (ISO 9001)", priority: "High", riskLevel: "High", proof: "Handover Sign-off Sheet", location: "Post-Production Suite" },
                     { id: "FP-POST-02", description: "Create low-resolution proxies for the editing process. (SMPTE)", priority: "High", riskLevel: "Medium", proof: "Proxy Generation Log", location: "Post-Production Suite" },
@@ -939,7 +939,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Distribution",
                 frequency: "Post-Completion",
                 role: "Distribution Manager",
-                summary: "Ensures all technical and marketing assets are prepared correctly for festival submission and global distribution.",
+                summary: "Prepare your film for the world stage. This checklist ensures all technical assets (DCP, subtitles) and marketing materials are prepared correctly for festivals and distributors.",
                 tasks: [
                     { id: "FP-DIST-01", description: "Create a Digital Cinema Package (DCP) for theatrical exhibition. (SMPTE)", priority: "High", riskLevel: "High", proof: "DCP File", location: "Post-Production Suite" },
                     { id: "FP-DIST-02", description: "Generate various video formats required by different streaming platforms and broadcasters.", priority: "High", riskLevel: "High", proof: "Transcoding Log", location: "Post-Production Suite" },
@@ -953,7 +953,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities/Admin",
                 frequency: "Monthly",
                 role: "Admin Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations in studios and on sets.",
+                summary: "Protect valuable equipment and ensure a healthy environment for your cast and crew with this proactive pest management protocol for studios and sets.",
                 tasks: [
                     { id: 'PEST-FILM-01', description: "Inspect studios, prop rooms, and craft service areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Studio-wide' },
                     { id: 'PEST-FILM-02', description: "Ensure all food and catering waste is disposed of in sealed bins and removed daily.", priority: 'High', riskLevel: 'High', proof: 'Waste Management Log', location: 'Catering Area' },
@@ -971,7 +971,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
-        description: "For tech leads and content strategists. A toolkit for managing the digital supply chain of a modern streaming service.",
+        description: "A complete toolkit for managing the digital supply chain of a modern streaming service, from content strategy to platform security.",
         icon: <MonitorPlay className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -997,7 +997,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Content",
                 frequency: "Quarterly",
                 role: "Content Strategist",
-                summary: "Ensure data-driven, compliant content planning.",
+                summary: "Build a content library that captivates and retains subscribers. This checklist ensures your content planning is data-driven, compliant, and strategically aligned.",
                 tasks: [
                     { id: 'OTT-CS-01', description: "Audience analysis & persona development (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Analysis Report', location: 'Office' },
                     { id: 'OTT-CS-02', description: "Content calendar & scheduling (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Content Calendar', location: 'Office' },
@@ -1011,7 +1011,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Tech",
                 frequency: "Per Sprint",
                 role: "Product Manager",
-                summary: "Build a secure, user-friendly, and compliant platform.",
+                summary: "Create a world-class streaming experience. This protocol guides you in building a platform that is secure, user-friendly, accessible, and compliant.",
                 tasks: [
                     { id: 'OTT-DEV-01', description: "UI/UX design & accessibility (WCAG 2.1)", priority: 'High', riskLevel: 'Medium', proof: 'Accessibility Audit', location: 'Dev Environment' },
                     { id: 'OTT-DEV-02', description: "Device & OS compatibility testing (ISO 9001)", priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'QA Lab' },
@@ -1025,7 +1025,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Content Ops",
                 frequency: "Per Title",
                 role: "Content Ops Manager",
-                summary: "Ensure all uploaded content is high-quality, accessible, and compliant.",
+                summary: "Streamline your content pipeline. This checklist ensures every piece of content you upload is high-quality, perfectly tagged, accessible, and ready for global audiences.",
                 tasks: [
                     { id: 'OTT-UPL-01', description: "Metadata tagging for search optimization (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Metadata Log', location: 'CMS' },
                     { id: 'OTT-UPL-02', description: "Subtitles, dubbing, and captions (WCAG 2.1)", priority: 'High', riskLevel: 'Medium', proof: 'Subtitle Files', location: 'CMS' },
@@ -1039,7 +1039,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Marketing",
                 frequency: "Per Campaign",
                 role: "Marketing Manager",
-                summary: "Increase reach, engagement, and retention.",
+                summary: "Grow your subscriber base and keep them engaged. This checklist helps you manage launch campaigns, analyze user feedback, and build a loyal community.",
                 tasks: [
                     { id: 'OTT-MKTG-01', description: "Launch promotional campaigns (ISO 9001)", priority: 'High', riskLevel: 'Medium', proof: 'Campaign Plan', location: 'Marketing Platform' },
                     { id: 'OTT-MKTG-02', description: "Collect & analyze user feedback (ISO 9001; GDPR compliance)", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Report', location: 'Analytics Platform' },
@@ -1053,7 +1053,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security",
                 frequency: "Quarterly",
                 role: "CISO",
-                summary: "Protect content, users, and platform integrity.",
+                summary: "Protect your content, users, and platform integrity. This comprehensive checklist covers everything from copyright enforcement and data protection to DRM and accessibility.",
                 tasks: [
                     { id: 'OTT-SEC-01', description: "Licensing & copyright enforcement (ISO 9001; Copyright laws)", priority: 'High', riskLevel: 'High', proof: 'Enforcement Log', location: 'Legal Dept' },
                     { id: 'OTT-SEC-02', description: "User data protection (ISO 27001; GDPR)", priority: 'High', riskLevel: 'High', proof: 'Data Protection Audit', location: 'IT Dept' },
@@ -1067,7 +1067,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Legal",
                 frequency: "Quarterly",
                 role: "Compliance Officer",
-                summary: "Ensure adherence to all legal and regulatory requirements.",
+                summary: "Navigate the complex legal landscape of global streaming. This checklist ensures you adhere to all legal and regulatory requirements, from ToS updates to content laws.",
                 tasks: [
                     { id: 'OTT-LEGAL-01', description: "Review and update Terms of Service and Privacy Policy.", priority: 'High', riskLevel: 'High', proof: 'Updated Documents', location: 'Legal Dept' },
                     { id: 'OTT-LEGAL-02', description: "Ensure compliance with regional content regulations.", priority: 'High', riskLevel: 'High', proof: 'Compliance Report', location: 'Legal Dept' },
@@ -1081,7 +1081,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Ops Manager",
-                summary: "Maintain platform stability and performance.",
+                summary: "Keep your platform running smoothly 24/7. This daily checklist focuses on maintaining stability and performance by monitoring servers, CDNs, and critical error logs.",
                 tasks: [
                     { id: 'OTT-OPS-001', description: "Monitor server health and load.", priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'NOC' },
                     { id: 'OTT-OPS-002', description: "Check CDN performance and cache hit ratio.", priority: 'High', riskLevel: 'High', proof: 'CDN Dashboard', location: 'NOC' },
@@ -1095,7 +1095,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Facility Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations in technical environments like data centers and offices.",
+                summary: "Protect sensitive electronics and maintain a professional work environment with this proactive pest management protocol for data centers and offices.",
                 tasks: [
                     { id: 'PEST-OTT-01', description: "Inspect data centers, offices, and break rooms for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'Facility-wide' },
                     { id: 'PEST-OTT-02', description: "Ensure a strict 'no food or drink' policy is enforced in data centers and server rooms.", priority: 'High', riskLevel: 'High', proof: 'Policy Signage & Audit', location: 'Data Centers' },
@@ -1113,7 +1113,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
-        description: "For park managers and safety officers. A comprehensive toolkit for ensuring visitor safety, ride maintenance, and exceptional guest experiences.",
+        description: "A comprehensive toolkit for ensuring visitor safety, ride maintenance, and exceptional guest experiences in a high-stakes environment.",
         icon: <FerrisWheel className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -1130,7 +1130,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Ride Operations",
                 frequency: "Daily",
                 role: "Ride Supervisor",
-                summary: "A critical pre-opening checklist to ensure all amusement rides are safe for public operation.",
+                summary: "Ensure zero-incident days with a critical pre-opening checklist that verifies all amusement rides are safe for public operation, from restraints to emergency stops.",
                 tasks: [
                     { id: 'TP-RIDE-01', description: "Conduct a full cycle test of each ride with no passengers.", priority: 'High', riskLevel: 'High', proof: 'Test Cycle Log', location: 'Each Ride' },
                     { id: 'TP-RIDE-02', description: "Inspect all safety restraints (harnesses, lap bars) for functionality and wear.", priority: 'High', riskLevel: 'High', proof: 'Restraint Inspection Log', location: 'Each Ride' },
@@ -1144,7 +1144,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security/Operations",
                 frequency: "Ongoing",
                 role: "Security Manager",
-                summary: "Protocols for managing large crowds safely and executing an orderly evacuation in case of an emergency.",
+                summary: "Prevent chaos and ensure safety during peak hours or emergencies. These protocols help you manage large crowds safely and execute orderly evacuations.",
                 tasks: [
                     { id: 'TP-CROWD-01', description: "Monitor crowd density in real-time via CCTV and on-ground staff.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring', location: 'Control Room' },
                     { id: 'TP-CROWD-02', description: "Ensure all emergency exit routes are clear, unobstructed, and well-lit.", priority: 'High', riskLevel: 'High', proof: 'Daily Path Inspection Log', location: 'Park-wide' },
@@ -1158,7 +1158,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "F&B",
                 frequency: "Daily",
                 role: "F&B Manager",
-                summary: "A checklist to ensure all food outlets in the park meet stringent food safety and hygiene standards.",
+                summary: "Uphold the highest food safety standards across all park outlets. This checklist ensures your F&B operations meet stringent HACCP guidelines, protecting guests and your brand.",
                 tasks: [
                     { id: 'TP-FB-01', description: "Log temperatures of all refrigerators, freezers, and hot-holding units at each outlet.", priority: 'High', riskLevel: 'High', proof: 'Temperature Logs', location: 'All F&B Outlets' },
                     { id: 'TP-FB-02', description: "Check for proper food labeling and dating (FIFO) in all storage areas.", priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'All F&B Outlets' },
@@ -1172,7 +1172,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Entertainment",
                 frequency: "Daily",
                 role: "Entertainment Manager",
-                summary: "A checklist to manage the welfare and performance quality of costumed characters and live performers.",
+                summary: "Protect your most valuable assets: your performers. This checklist manages the welfare, safety, and performance quality of costumed characters and live entertainers.",
                 tasks: [
                     { id: 'TP-PERF-01', description: "Inspect all costumes for cleanliness and damage before each shift.", priority: 'High', riskLevel: 'Medium', proof: 'Costume Inspection Log', location: 'Wardrobe' },
                     { id: 'TP-PERF-02', description: "Ensure performers take mandatory breaks in designated cool-down areas, especially in hot weather.", priority: 'High', riskLevel: 'High', proof: 'Break Schedule Log', location: 'Rest Areas' },
@@ -1186,7 +1186,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Aquatics",
                 frequency: "Daily/Hourly",
                 role: "Aquatics Manager",
-                summary: "A specialized checklist for water parks, focusing on water quality, lifeguard readiness, and slide safety.",
+                summary: "Ensure a safe and hygienic aquatic environment. This specialized checklist covers water chemistry, lifeguard readiness, and the structural integrity of slides and features.",
                 tasks: [
                     { id: 'TP-WATER-01', description: "Test and log water chemistry (chlorine, pH levels) in all pools and attractions hourly.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Pools' },
                     { id: 'TP-WATER-02', description: "Inspect all water slides and features for any structural damage or hazards before opening.", priority: 'High', riskLevel: 'High', proof: 'Slide Inspection Log', location: 'Water Park' },
@@ -1200,7 +1200,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Engineering",
                 frequency: "Daily/Weekly",
                 role: "Chief Engineer",
-                summary: "A checklist for the scheduled inspection and preventive maintenance of all amusement park rides.",
+                summary: "Go beyond basic checks with a professional-grade protocol for the scheduled inspection and preventive maintenance of every single ride, ensuring long-term safety and reliability.",
                 tasks: [
                     { id: 'TP-ENG-01', description: "Follow the manufacturer's daily/weekly maintenance schedule for each ride.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Records', location: 'Workshop' },
                     { id: 'TP-ENG-02', description: "Perform non-destructive testing (NDT) on critical ride components as per schedule.", priority: 'High', riskLevel: 'High', proof: 'NDT Report', location: 'Workshop' },
@@ -1214,7 +1214,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Health Services",
                 frequency: "Daily",
                 role: "Medical Chief",
-                summary: "Ensures the park's medical facilities are ready to handle everything from minor scrapes to major emergencies.",
+                summary: "Be prepared for any medical situation. This checklist ensures your park's medical facilities are ready to handle everything from minor scrapes to major emergencies.",
                 tasks: [
                     { id: 'TP-MED-01', description: "Check inventory of all first aid stations to ensure they are fully stocked.", priority: 'High', riskLevel: 'High', proof: 'Inventory Checklist', location: 'First Aid Stations' },
                     { id: 'TP-MED-02', description: "Verify all medical staff (nurses, paramedics) are on duty and their certifications are current.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster & Certs', location: 'Medical Center' },
@@ -1228,7 +1228,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Weekly",
                 role: "Facility Manager",
-                summary: "A proactive checklist for managing pests in a large park with numerous food outlets and high foot traffic.",
+                summary: "Maintain a clean and pleasant guest environment with a proactive pest management program designed for large parks with high foot traffic and numerous food outlets.",
                 tasks: [
                     { id: 'PEST-TP-01', description: "Inspect all F&B outlets, waste disposal areas, and gardens for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'Park-wide' },
                     { id: 'PEST-TP-02', description: "Ensure all food in storage and on display is properly covered or sealed.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Park-wide' },
@@ -1283,7 +1283,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Projects/Admin",
                 frequency: "Per Project",
                 role: "Project Manager",
-                summary: "A master checklist for managing the complex process of building out a new office space, from site selection to final handover.",
+                summary: "Manage complex office build-outs with confidence. This master checklist covers the entire lifecycle from site selection and budgeting to final handover, ensuring your project stays on time and on budget.",
                 tasks: [
                     { id: 'BUILD-001', description: "Develop a detailed project budget and timeline.", priority: 'High', riskLevel: 'High', proof: 'Project Plan', location: 'Office' },
                     { id: 'BUILD-002', description: "Select and contract with architects, contractors, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
@@ -1297,7 +1297,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "CSR/HR",
                 frequency: "Quarterly/Annually",
                 role: "CSR Manager",
-                summary: "A framework for planning, executing, and reporting on the company's social and community engagement initiatives.",
+                summary: "Build a CSR program that makes a real impact. This framework helps you plan, execute, and report on your company's social and community initiatives effectively.",
                 tasks: [
                     { id: 'CSR-001', description: "Align CSR initiatives with the company's values and business goals.", priority: 'High', riskLevel: 'Medium', proof: 'Strategy Document', location: 'Office' },
                     { id: 'CSR-002', description: "Identify and vet potential NGO or community partners.", priority: 'High', riskLevel: 'Medium', proof: 'Partner Assessment Report', location: 'Office' },
@@ -1311,7 +1311,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Quarterly",
                 role: "Head of Facilities",
-                summary: "A structured agenda to conduct a quarterly review of facility operations, focusing on performance against KPIs, budget variance, and strategic goals.",
+                summary: "Demonstrate the value of your department to leadership. This structured agenda helps you conduct a data-driven review of facility operations, focusing on KPIs, budget, and strategic goals.",
                 tasks: [
                     { id: 'QBR-01', description: "Review performance against key KPIs (e.g., uptime, energy cost per sq ft, ticket resolution time).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Meeting' },
                     { id: 'QBR-02', description: "Analyze budget vs. actual spend for the quarter and explain variances.", priority: 'High', riskLevel: 'High', proof: 'Financial Report', location: 'Meeting' },
@@ -1325,7 +1325,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Annually",
                 role: "Head of Facilities",
-                summary: "A checklist to guide the annual strategic planning process for the facility management department, aligning its goals with the broader company objectives.",
+                summary: "Align your facility goals with the company's vision. This checklist guides you through the annual strategic planning process, from SWOT analysis to creating a project roadmap.",
                 tasks: [
                     { id: 'STRAT-01', description: "Review the company's overall strategic goals for the upcoming year.", priority: 'High', riskLevel: 'Medium', proof: 'Company Strategy Doc', location: 'Office' },
                     { id: 'STRAT-02', description: "Conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for the facilities department.", priority: 'High', riskLevel: 'Medium', proof: 'SWOT Analysis Document', location: 'Office' },
@@ -1339,7 +1339,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Admin/Finance",
                 frequency: "Ongoing",
                 role: "Asset Manager",
-                summary: "A checklist to track and manage critical company assets (e.g., laptops, furniture, equipment) from procurement to disposal.",
+                summary: "Gain full control over your company's physical assets. This checklist helps you track everything from laptops to furniture, from procurement to secure disposal.",
                 tasks: [
                     { id: 'ASSET-01', description: "Assign a unique asset tag and log all new assets into the central asset register.", priority: 'High', riskLevel: 'Medium', proof: 'Asset Register', location: 'Office' },
                     { id: 'ASSET-02', description: "Conduct a physical audit of all assets on a semi-annual basis to verify existence and condition.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Report', location: 'Company-wide' },
@@ -1353,7 +1353,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "HR",
                 frequency: "Per Incident",
                 role: "HR Manager",
-                summary: "A legally sound checklist to ensure a fair and consistent process for managing employee disciplinary issues, from verbal warnings to termination.",
+                summary: "Navigate difficult conversations with a fair and legally sound process. This checklist ensures consistency and documentation when managing employee disciplinary issues.",
                 tasks: [
                     { id: 'HR-DISC-01', description: "Document the specific policy violation and gather all relevant evidence (e.g., emails, witness statements).", priority: 'High', riskLevel: 'High', proof: 'Investigation File', location: 'HR Office' },
                     { id: 'HR-DISC-02', description: "Conduct a formal meeting with the employee, ensuring a witness is present, and clearly explain the issue.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'HR Office' },
@@ -1367,7 +1367,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Facility Coordinator",
-                summary: "A comprehensive walkthrough to ensure the facility is ready for employees, covering lighting, HVAC, restrooms, and access control systems.",
+                summary: "Ensure your facility is perfectly prepared for a productive day. This comprehensive walkthrough covers everything from lighting and HVAC to restrooms and access control.",
                 tasks: [
                     { id: 'DSO-001', description: "Validate Housekeeping Service Delivery", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
                     { id: 'DSO-002', description: "Check Front Desk Operations", priority: 'Medium', riskLevel: 'Low', proof: 'Log / Register', location: 'Front Office' },
@@ -1381,7 +1381,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities/Admin",
                 frequency: "Weekly",
                 role: "Facility Coordinator",
-                summary: "A proactive checklist for preventing and managing pest infestations in a corporate environment.",
+                summary: "Maintain a healthy and professional workplace. This proactive checklist for preventing and managing pests is essential for employee well-being and facility hygiene.",
                 tasks: [
                     { id: 'PEST-CORP-001', description: "Inspect pantry, cafeteria, and waste disposal areas for signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Common Areas' },
                     { id: 'PEST-CORP-002', description: "Ensure all food waste bins are covered and emptied daily.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Common Areas' },
@@ -1399,7 +1399,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Corporate & Tech",
-        description: "For founders and managers. A foundational toolkit to ensure your business operations are legally sound and compliant.",
+        description: "A foundational toolkit for founders and managers to ensure business operations are legally sound, compliant, and ready for growth.",
         icon: <Briefcase className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent" as const,
@@ -1425,7 +1425,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Projects/Admin",
                 frequency: "Per Project",
                 role: "Project Manager",
-                summary: "A master checklist for managing the complex process of building out a new office space, from site selection to final handover.",
+                summary: "Manage complex office build-outs with confidence. This master checklist covers the entire lifecycle from site selection and budgeting to final handover, ensuring your project stays on time and on budget.",
                 tasks: [
                     { id: 'BUILD-001', description: "Develop a detailed project budget and timeline.", priority: 'High', riskLevel: 'High', proof: 'Project Plan', location: 'Office' },
                     { id: 'BUILD-002', description: "Select and contract with architects, contractors, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
@@ -1439,7 +1439,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "HR/Legal",
                 frequency: "Per Hire",
                 role: "HR Manager",
-                summary: "Ensures every new hire is onboarded in a legally compliant manner, protecting the company from future disputes.",
+                summary: "Protect your company from future disputes with a legally compliant onboarding process. This ensures every critical document is signed and filed from day one.",
                 tasks: [
                     { id: 'LEGAL-HR-01', description: "Ensure the signed offer letter is on file, including start date, compensation, and position.", priority: 'High', riskLevel: 'High', proof: 'Signed Offer Letter', location: 'Employee File' },
                     { id: 'LEGAL-HR-02', description: "Verify a signed Non-Disclosure and Confidentiality Agreement is executed.", priority: 'High', riskLevel: 'High', proof: 'Signed NDA', location: 'Employee File' },
@@ -1453,7 +1453,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Procurement/Management",
                 frequency: "Per Contract",
                 role: "Manager",
-                summary: "A basic checklist for managers to spot red flags in standard vendor contracts before escalating to legal.",
+                summary: "Empower your managers to be the first line of defense. This simple checklist helps non-lawyers spot major red flags in vendor contracts before they become legal problems.",
                 tasks: [
                     { id: 'LEGAL-VEND-01', description: "Check the 'Term' and 'Termination' clauses. Can we exit the contract if needed?", priority: 'High', riskLevel: 'High', proof: 'Contract Review Notes', location: 'Contract Doc' },
                     { id: 'LEGAL-VEND-02', description: "Review the 'Limitation of Liability' clause. Is their liability capped at an unreasonably low amount?", priority: 'High', riskLevel: 'High', proof: 'Contract Review Notes', location: 'Contract Doc' },
@@ -1467,7 +1467,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Marketing/Legal",
                 frequency: "Quarterly",
                 role: "Marketing Manager",
-                summary: "Ensures your public-facing website has the necessary legal notices to comply with data privacy and other regulations.",
+                summary: "Avoid easy-to-miss compliance fines. This checklist ensures your public website has the necessary legal notices (Privacy Policy, ToS, Cookies) to comply with data privacy laws.",
                 tasks: [
                     { id: 'LEGAL-WEB-01', description: "Verify that a 'Privacy Policy' link is clearly visible in the website footer.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website Footer' },
                     { id: 'LEGAL-WEB-02', description: "Ensure a 'Terms of Service' link is present in the website footer.", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website Footer' },
@@ -1481,7 +1481,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Quarterly",
                 role: "Head of Department",
-                summary: "A structured agenda to conduct a quarterly review of departmental performance, focusing on performance against KPIs, budget variance, and strategic goals.",
+                summary: "Lead data-driven performance reviews. This structured agenda helps you conduct quarterly reviews focusing on KPIs, budget variance, and strategic goal alignment.",
                 tasks: [
                     { id: 'QBR-01', description: "Review performance against key KPIs.", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Meeting' },
                     { id: 'QBR-02', description: "Analyze budget vs. actual spend for the quarter and explain variances.", priority: 'High', riskLevel: 'High', proof: 'Financial Report', location: 'Meeting' },
@@ -1495,7 +1495,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Management",
                 frequency: "Annually",
                 role: "Head of Department",
-                summary: "A checklist to guide the annual strategic planning process, aligning its goals with the broader company objectives.",
+                summary: "Align your department's goals with the company's vision. This checklist guides you through the annual strategic planning process, from SWOT analysis to creating a project roadmap.",
                 tasks: [
                     { id: 'STRAT-01', description: "Review the company's overall strategic goals for the upcoming year.", priority: 'High', riskLevel: 'Medium', proof: 'Company Strategy Doc', location: 'Office' },
                     { id: 'STRAT-02', description: "Conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for the department.", priority: 'High', riskLevel: 'Medium', proof: 'SWOT Analysis Document', location: 'Office' },
@@ -1509,7 +1509,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Admin/Finance",
                 frequency: "Ongoing",
                 role: "Asset Manager",
-                summary: "A checklist to track and manage critical company assets (e.g., laptops, furniture, equipment) from procurement to disposal.",
+                summary: "Gain full control over your company's physical assets. This checklist helps you track everything from laptops to furniture, from procurement to secure disposal.",
                 tasks: [
                     { id: 'ASSET-01', description: "Assign a unique asset tag and log all new assets into the central asset register.", priority: 'High', riskLevel: 'Medium', proof: 'Asset Register', location: 'Office' },
                     { id: 'ASSET-02', description: "Conduct a physical audit of all assets on a semi-annual basis to verify existence and condition.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Report', location: 'Company-wide' },
@@ -1523,7 +1523,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "HR",
                 frequency: "Per Incident",
                 role: "HR Manager",
-                summary: "A legally sound checklist to ensure a fair and consistent process for managing employee disciplinary issues, from verbal warnings to termination.",
+                summary: "Navigate difficult conversations with a fair and legally sound process. This checklist ensures consistency and documentation when managing employee disciplinary issues.",
                 tasks: [
                     { id: 'HR-DISC-001', description: "Document the specific policy violation and gather all relevant evidence (e.g., emails, witness statements).", priority: 'High', riskLevel: 'High', proof: 'Investigation File', location: 'HR Office' },
                     { id: 'HR-DISC-002', description: "Conduct a formal meeting with the employee, ensuring a witness is present, and clearly explain the issue.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'HR Office' },
@@ -1541,7 +1541,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Corporate & Tech",
-        description: "For C-Suite, CISOs, and DPOs. A toolkit to manage AI ethics, data privacy (GDPR/DPDP), and cybersecurity risks in the modern enterprise.",
+        description: "A C-suite level toolkit to manage AI ethics, data privacy (GDPR/DPDP), and cybersecurity risks in the modern enterprise.",
         icon: <BrainCircuit className="w-8 h-8 text-primary" />,
         badgeText: "Bestseller",
         badgeVariant: "accent",
@@ -1567,7 +1567,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Data Science/Compliance",
                 frequency: "Per Model",
                 role: "AI Ethics Officer",
-                summary: "A framework to ensure AI models are developed and deployed responsibly, focusing on fairness, transparency, and accountability.",
+                summary: "Deploy AI responsibly. This framework ensures your models are fair, transparent, and accountable, building trust with users and regulators before issues arise.",
                 tasks: [
                     { id: 'AI-ETHICS-01', description: "Conduct a bias assessment on the training data to check for demographic skews. (NIST AI RMF)", priority: 'High', riskLevel: 'High', proof: 'Data Bias Report', location: 'Data Science Team' },
                     { id: 'AI-ETHICS-02', description: "Document the model's intended use, limitations, and potential risks in a 'Model Card'.", priority: 'High', riskLevel: 'High', proof: 'Model Card Document', location: 'Data Science Team' },
@@ -1581,7 +1581,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Legal/Compliance",
                 frequency: "Quarterly",
                 role: "Data Protection Officer",
-                summary: "An audit to ensure the organization is compliant with major data protection regulations.",
+                summary: "Stay compliant and avoid crippling fines. This audit checklist helps you maintain your Record of Processing Activities (ROPA) and manage Data Subject Access Requests (DSARs) efficiently.",
                 tasks: [
                     { id: 'PRIV-AUDIT-01', description: "Maintain a 'Record of Processing Activities' (ROPA) that details all personal data being processed.", priority: 'High', riskLevel: 'High', proof: 'ROPA Document', location: 'DPO Office' },
                     { id: 'PRIV-AUDIT-02', description: "Review all public-facing forms to ensure they have clear consent language and link to the privacy policy.", priority: 'High', riskLevel: 'High', proof: 'Form Audit Screenshot', location: 'Website/App' },
@@ -1595,7 +1595,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT Security",
                 frequency: "Semi-Annually",
                 role: "CISO",
-                summary: "A simulation to test the company's readiness to respond to a major cybersecurity incident like a ransomware attack.",
+                summary: "Test your defenses before a real attack. This simulation checklist tests your company's readiness to respond to a major cybersecurity incident like a ransomware attack.",
                 tasks: [
                     { id: 'CYBER-DRILL-01', description: "Simulate a specific threat scenario (e.g., ransomware detection, data breach alert).", priority: 'High', riskLevel: 'High', proof: 'Drill Scenario Document', location: 'Security Office' },
                     { id: 'CYBER-DRILL-02', description: "Test the effectiveness of the initial detection and alerting systems. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Alert Timeliness Report', location: 'SOC' },
@@ -1609,7 +1609,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Procurement/Security",
                 frequency: "Per New Vendor",
                 role: "Security Analyst",
-                summary: "A due diligence checklist to assess the security posture of new vendors before granting them access to company data or systems.",
+                summary: "Don't let your vendors become your weakest link. This due diligence checklist assesses the security posture of new vendors before you grant them access to company data.",
                 tasks: [
                     { id: 'VEND-SEC-01', description: "Request and review the vendor's security certifications (e.g., SOC 2 Type II, ISO 27001).", priority: 'High', riskLevel: 'High', proof: 'Vendor Certificates', location: 'Procurement Office' },
                     { id: 'VEND-SEC-02', description: "Issue a standardized security questionnaire (e.g., CAIQ, SIG Lite) to the vendor.", priority: 'High', riskLevel: 'High', proof: 'Completed Questionnaire', location: 'Procurement Office' },
@@ -1623,7 +1623,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Cloud Security/DevOps",
                 frequency: "Weekly",
                 role: "Cloud Security Engineer",
-                summary: "An audit to identify and remediate misconfigurations in your cloud environment (AWS, Azure, GCP).",
+                summary: "Find and fix cloud misconfigurations before they're exploited. This audit identifies common but critical risks like public S3 buckets and overly permissive IAM roles.",
                 tasks: [
                     { id: 'CSPM-01', description: "Scan for publicly exposed storage buckets (e.g., S3 buckets) and restrict access. (CSA CCM)", priority: 'High', riskLevel: 'High', proof: 'Scan Report', location: 'Cloud Console' },
                     { id: 'CSPM-02', description: "Check for overly permissive IAM roles and enforce the principle of least privilege. (CSA CCM)", priority: 'High', riskLevel: 'High', proof: 'IAM Role Audit', location: 'Cloud Console' },
@@ -1637,7 +1637,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT/HR",
                 frequency: "Per Departure",
                 role: "IT Admin",
-                summary: "A checklist to securely deprovision an employee's access to all company systems, preventing data theft or unauthorized access.",
+                summary: "Secure your digital assets when an employee leaves. This checklist ensures all access is revoked immediately and company data is protected from theft or unauthorized use.",
                 tasks: [
                     { id: 'IT-OFFBOARD-01', description: "Immediately disable the employee's primary account (e.g., Active Directory, Google Workspace) upon notification from HR.", priority: 'High', riskLevel: 'High', proof: 'Account Disable Log', location: 'IT Admin Console' },
                     { id: 'IT-OFFBOARD-02', description: "Revoke access to all third-party SaaS applications via SSO or manual de-provisioning.", priority: 'High', riskLevel: 'High', proof: 'Access Revocation Checklist', location: 'IT Admin Console' },
@@ -1651,7 +1651,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT Security",
                 frequency: "Quarterly",
                 role: "Security Analyst",
-                summary: "A periodic review to ensure employees only have access to the data and systems they need to perform their jobs (Principle of Least Privilege).",
+                summary: "Enforce the Principle of Least Privilege. This periodic review ensures employees only have access to the data and systems they absolutely need, reducing your internal attack surface.",
                 tasks: [
                     { id: 'ACR-01', description: "Generate a list of all users with administrator-level privileges. (ISO 27001)", priority: 'High', riskLevel: 'High', proof: 'Admin User Report', location: 'IT Systems' },
                     { id: 'ACR-02', description: "Have the manager of each 'admin' user re-certify in writing that the access is still required.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off Emails', location: 'Security Office' },
@@ -1665,7 +1665,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT Operations",
                 frequency: "Monthly",
                 role: "System Administrator",
-                summary: "A systematic process for identifying, testing, and deploying security patches to servers and endpoints to protect against known vulnerabilities.",
+                summary: "Close security gaps before they can be exploited. This systematic process ensures you identify, test, and deploy critical security patches across all servers and endpoints.",
                 tasks: [
                     { id: 'PATCH-01', description: "Scan all systems for missing critical and high-severity patches.", priority: 'High', riskLevel: 'High', proof: 'Vulnerability Scan Report', location: 'Patch Management System' },
                     { id: 'PATCH-02', description: "Test critical patches in a staging environment before deploying to production.", priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Staging Environment' },
@@ -1684,7 +1684,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Healthcare",
-        description: "For Hospital COOs & Quality Heads. An NABH & JCI-aligned toolkit to ensure patient safety and compliance.",
+        description: "An NABH & JCI-aligned toolkit for Hospital COOs & Quality Heads to ensure the highest standards of patient safety and compliance.",
         icon: <Hospital className="w-8 h-8 text-primary" />,
         badgeText: "Popular",
         badgeVariant: "default" as const,
@@ -1721,7 +1721,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy",
                 frequency: "Per Prescription",
                 role: "Pharmacist",
-                summary: "Ensures adherence to the 'Five Rights' of medication dispensing to prevent errors. Covers verification, labeling, and patient counseling.",
+                summary: "Eliminate dispensing errors with a rigorous protocol that enforces the 'Five Rights' of medication safety, from prescription verification to patient counseling.",
                 tasks: [
                     { id: 'PH-PV-001', description: "Verify patient identity using at least two identifiers (e.g., name and MRN).", priority: 'High', riskLevel: 'High', proof: 'System Check', location: 'Pharmacy' },
                     { id: 'PH-PV-002', description: "Check prescription for legibility, completeness, and for any contraindications.", priority: 'High', riskLevel: 'High', proof: 'Prescription Review', location: 'Pharmacy' },
@@ -1735,7 +1735,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Quality/Infection Control",
                 frequency: "Weekly",
                 role: "Quality Officer",
-                summary: "Audits the sterilization process itself to prevent hospital-acquired infections from contaminated equipment.",
+                summary: "Prevent hospital-acquired infections (HAIs) at the source. This checklist audits your sterilization process, verifying cycle effectiveness, water quality, and sterile pack management.",
                 tasks: [
                     { id: 'CSSD-001', description: "Check autoclave printouts to verify that cycles reached the required temperature, pressure, and duration.", priority: 'High', riskLevel: 'High', proof: 'Autoclave Log Review', location: 'CSSD' },
                     { id: 'CSSD-002', description: "Use biological indicators (spore tests) in a sample load to confirm sterilization effectiveness.", priority: 'High', riskLevel: 'High', proof: 'Biological Indicator Log', location: 'CSSD' },
@@ -1749,7 +1749,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Nursing",
                 frequency: "Per Shift",
                 role: "Nurse",
-                summary: "A bedside protocol to ensure at-risk patients are turned regularly, preventing painful and costly pressure ulcers.",
+                summary: "Protect vulnerable patients from painful and costly pressure ulcers. This bedside protocol ensures at-risk patients are turned regularly and that the process is documented.",
                 tasks: [
                     { id: 'PU-PREV-001', description: "For at-risk patients, place a 'turning clock' or log sheet visibly at the bedside.", priority: 'High', riskLevel: 'High', proof: 'Log Sheet Presence', location: 'Bedside' },
                     { id: 'PU-PREV-002', description: "The nurse or aide who repositions the patient must initial the log every two hours.", priority: 'High', riskLevel: 'High', proof: 'Signed Log', location: 'Bedside' },
@@ -1763,7 +1763,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Emergency",
                 frequency: "Per Unidentified Patient",
                 role: "ER Nurse/Doctor",
-                summary: "A critical intake checklist for non-responsive patients to ensure life-saving information is not missed.",
+                summary: "Save a life in the critical first minutes. This intake checklist ensures that for non-responsive patients, every step is taken to find life-saving medical information.",
                 tasks: [
                     { id: 'UNID-001', description: "As part of the primary survey, physically check both wrists and neck for medical alert jewelry.", priority: 'High', riskLevel: 'High', proof: 'Primary Survey Form', location: 'ER Bay' },
                     { id: 'UNID-002', description: "Search wallet or purse specifically for a 'medical information' card.", priority: 'High', riskLevel: 'High', proof: 'Patient Belongings Log', location: 'ER Bay' },
@@ -1777,7 +1777,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Admin/Nursing",
                 frequency: "Per Discharge",
                 role: "Discharge Nurse",
-                summary: "Ensures no patient leaves without a clear follow-up plan, preventing readmissions and missed care.",
+                summary: "Reduce costly readmissions with a discharge process that works. This protocol ensures no patient leaves without a clear, scheduled follow-up plan.",
                 tasks: [
                     { id: 'DISCH-FU-001', description: "The patient's next follow-up appointment must be scheduled before they leave the clinic/hospital.", priority: 'High', riskLevel: 'High', proof: 'Appointment System Log', location: 'Discharge Lounge/Room' },
                     { id: 'DISCH-FU-002', description: "If an appointment cannot be made, the reason must be documented (e.g., 'Patient prefers to call later').", priority: 'High', riskLevel: 'Medium', proof: 'Discharge Form Note', location: 'Discharge Lounge/Room' },
@@ -1791,7 +1791,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy/Quality",
                 frequency: "Ongoing",
                 role: "Pharmacist",
-                summary: "A critical safety checklist to prevent medication errors caused by confusing drug names or packaging.",
+                summary: "Prevent one of the most common and dangerous types of medication errors. This critical safety checklist provides a system for managing drugs with confusing names or packaging.",
                 tasks: [
                     { id: 'LASA-001', description: "For designated LASA drugs, store them in separate, distinctively labeled bins with 'TALL-man' lettering (e.g., hydrOXYzine vs. hydrALAZINE).", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Pharmacy' },
                     { id: 'LASA-002', description: "Require a 'two-person sign-off' for the dispensing of any LASA drug.", priority: 'High', riskLevel: 'High', proof: 'Dispensing Log', location: 'Pharmacy' },
@@ -1805,7 +1805,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Nursing",
                 frequency: "Per Administration",
                 role: "Nurse",
-                summary: "The final safety check before a patient receives medication. Ensures the right patient gets the right drug at the right time at the bedside.",
+                summary: "Guarantee patient safety at the bedside. This checklist is the final, critical safety check before a patient receives medication, ensuring the 'Five Rights' are always followed.",
                 tasks: [
                     { id: 'NUR-MA-001', description: "Verify the 'Five Rights': Right Patient, Right Drug, Right Dose, Right Route, Right Time.", priority: 'High', riskLevel: 'High', proof: 'Chart Review', location: 'Bedside' },
                     { id: 'NUR-MA-002', description: "Cross-verify medication label against the patient's chart at the bedside before administration.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Bedside' },
@@ -1819,7 +1819,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Housekeeping/Facilities",
                 frequency: "Weekly",
                 role: "Facility Manager",
-                summary: "A proactive checklist for preventing and managing pest infestations in a sensitive healthcare environment.",
+                summary: "Maintain a sterile and safe healthcare environment. This proactive protocol prevents and manages pest infestations, which is critical for infection control and patient safety.",
                 tasks: [
                     { id: 'PEST-HEALTH-001', description: "Inspect patient rooms, kitchens, and waste disposal areas for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'All Areas' },
                     { id: 'PEST-HEALTH-002', description: "Ensure food in pantries and kitchens is stored in sealed, pest-proof containers.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'F&B Areas' },
@@ -1837,7 +1837,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Healthcare",
-        description: "For pharmacy owners and pharmacists-in-charge. A toolkit for ensuring dispensing accuracy, regulatory compliance, and patient safety.",
+        description: "A comprehensive toolkit for ensuring dispensing accuracy, regulatory compliance, and patient safety in a pharmacy setting.",
         icon: <Pill className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -1854,7 +1854,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy",
                 frequency: "Per Prescription",
                 role: "Pharmacist",
-                summary: "The first line of defense against medication errors, ensuring every prescription is valid, clear, and appropriate.",
+                summary: "Serve as the first line of defense against medication errors. This checklist ensures every prescription is valid, clear, and clinically appropriate before it's filled.",
                 tasks: [
                     { id: 'PHARM-RX-01', description: "Verify prescription is valid, dated, and signed by a licensed practitioner.", priority: 'High', riskLevel: 'High', proof: 'Prescription Review', location: 'Dispensing Counter' },
                     { id: 'PHARM-RX-02', description: "Confirm patient identity using two identifiers (e.g., name and date of birth).", priority: 'High', riskLevel: 'High', proof: 'ID Check', location: 'Dispensing Counter' },
@@ -1868,7 +1868,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy",
                 frequency: "Per Prescription",
                 role: "Dispensing Technician/Pharmacist",
-                summary: "A two-person or tech-assisted final check to ensure the right drug is in the right bottle for the right patient.",
+                summary: "Ensure zero-error dispensing with a two-person (or tech-assisted) final check, guaranteeing the right drug is in the right bottle for the right patient.",
                 tasks: [
                     { id: 'PHARM-DISP-01', description: "Select the correct medication from the shelf, verifying the NDC (National Drug Code) or equivalent.", priority: 'High', riskLevel: 'High', proof: 'Visual/Scan Check', location: 'Shelves' },
                     { id: 'PHARM-DISP-02', description: "Accurately count or measure the dosage.", priority: 'High', riskLevel: 'High', proof: 'Counting Tray/Scale', location: 'Dispensing Counter' },
@@ -1882,7 +1882,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Compliance/Pharmacy",
                 frequency: "Daily/Per Transaction",
                 role: "Pharmacist-in-Charge",
-                summary: "A rigorous protocol for managing high-risk medications to prevent diversion and ensure regulatory compliance.",
+                summary: "Prevent drug diversion and ensure 100% compliance. This rigorous protocol manages high-risk medications with perpetual inventory logs and shift-based reconciliations.",
                 tasks: [
                     { id: 'PHARM-NARC-01', description: "Store all controlled substances in a securely locked safe or cabinet with restricted access.", priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Safe' },
                     { id: 'PHARM-NARC-02', description: "Maintain a perpetual inventory log, documenting every dose dispensed and received.", priority: 'High', riskLevel: 'High', proof: 'Narcotics Register/Logbook', location: 'Safe' },
@@ -1896,7 +1896,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Compliance",
                 frequency: "Daily",
                 role: "Pharmacist",
-                summary: "Ensures vaccines and biologics are stored and handled correctly to maintain their efficacy, aligned with CDC/WHO guidelines.",
+                summary: "Protect the efficacy of temperature-sensitive vaccines and biologics. This checklist ensures your cold chain is unbroken, from temperature logging to emergency power planning.",
                 tasks: [
                     { id: 'PHARM-COLD-01', description: "Monitor refrigerator and freezer temperatures at least twice daily, logging the minimum and maximum readings.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Refrigerator/Freezer' },
                     { id: 'PHARM-COLD-02', description: "Use calibrated thermometers and document the calibration schedule.", priority: 'High', riskLevel: 'High', proof: 'Calibration Records', location: 'Office' },
@@ -1910,7 +1910,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Patient Care",
                 frequency: "Per Patient",
                 role: "Pharmacist",
-                summary: "Ensures patients understand how to take their medications correctly and safely, improving adherence and outcomes.",
+                summary: "Improve patient adherence and health outcomes. This checklist ensures patients leave not just with a prescription, but with a clear understanding of how to take it safely.",
                 tasks: [
                     { id: 'PHARM-COUNSEL-01', description: "Verify the patient understands the drug name, dosage, frequency, and route of administration.", priority: 'High', riskLevel: 'Medium', proof: 'Patient Questioning', location: 'Counseling Area' },
                     { id: 'PHARM-COUNSEL-02', description: "Explain the purpose of the medication and what the patient should expect.", priority: 'High', riskLevel: 'Medium', proof: 'Education Checklist', location: 'Counseling Area' },
@@ -1924,7 +1924,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Ongoing",
                 role: "Pharmacy Technician",
-                summary: "A perpetual system to prevent errors from drug name and packaging confusions, which are a leading cause of harm in pharmacies.",
+                summary: "Prevent dangerous medication errors with a perpetual system for managing drugs with confusing names or packaging—a leading cause of harm in pharmacies.",
                 tasks: [
                     { id: 'PHARM-LASA-01', description: "Maintain an updated list of all identified LASA drugs in the pharmacy.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office' },
                     { id: 'PHARM-LASA-02', description: "Store LASA drugs separately, using different shelf markers or bins.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Shelves' },
@@ -1938,7 +1938,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Quarterly",
                 role: "Compliance Officer",
-                summary: "Data-level SOP's to Protect the patient's information to comply with US HIPAA, PIPEDA or GDPR (As applicable)",
+                summary: "Protect patient information and ensure compliance with US HIPAA, PIPEDA, or GDPR (as applicable) with data-level SOPs.",
                 tasks: [
                     { id: 'PHARM-HIPAA-01', description: "Conduct a regular review of all physical and electronic access control mechanisms.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'All areas' },
                     { id: 'PHARM-HIPAA-02', description: "Review and Update data-sharing Agreements and ensure to use latest templates and version.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Office' },
@@ -1952,7 +1952,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory",
                 frequency: "Daily",
                 role: "Pharmacy Technician",
-                summary: "This action ensures strict supervision while automation is in place.",
+                summary: "Ensure strict supervision and accuracy even with automation. This checklist governs the management of automated dispensing cabinets.",
                 tasks: [
                     { id: 'PHARM-ADC-01', description: "Verify accuracy of stock that has been supplied.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Automated Dispensing Cabinet' },
                     { id: 'PHARM-ADC-02', description: "Ensure staff has been well trained and must demonstrate competence.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'All ADC users' },
@@ -1966,7 +1966,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Manager",
-                summary: "Control pests from biomedical or other outside threats by regular check and maintenance in the pharmacy.",
+                summary: "Protect your sterile environment from contamination. This checklist outlines regular inspections and preventive measures against pests.",
                 tasks: [
                     { id: 'PEST-PHARM-01', description: "Inspect the physical structure for entry points of pests or insects.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'All Areas' },
                     { id: 'PEST-PHARM-02', description: "Ensure to clean all the spills from water coolers or other resources.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Staff Areas' },
@@ -2002,7 +2002,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Quality Control",
                 frequency: "Per Shipment",
                 role: "QC Inspector",
-                summary: "The first line of defense in food safety, preventing contaminated or substandard ingredients from entering the facility.",
+                summary: "Prevent contamination at the source. This is your first line of defense, ensuring no substandard ingredients enter your facility, protecting your entire production line.",
                 tasks: [
                     { id: 'FOOD-RM-01', description: "Check delivery vehicle temperature and sanitation before unloading.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Receiving Dock' },
                     { id: 'FOOD-RM-02', description: "Verify supplier certificates for authenticity and compliance.", priority: 'High', riskLevel: 'High', proof: 'Certificate Log', location: 'Receiving Office' },
@@ -2016,7 +2016,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Maintenance",
                 frequency: "Daily/Weekly",
                 role: "Maintenance Technician",
-                summary: "A preventive maintenance checklist to ensure all production equipment operates accurately and reliably.",
+                summary: "Maximize uptime and ensure product consistency. This preventive maintenance checklist guarantees all production equipment operates accurately, reliably, and safely.",
                 tasks: [
                     { id: 'FOOD-EQ-01', description: "Calibrate weighing scales and check for accuracy.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Production Floor' },
                     { id: 'FOOD-EQ-02', description: "Inspect conveyor belts, gears, and other moving parts for wear and tear.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Production Floor' },
@@ -2030,7 +2030,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sanitation",
                 frequency: "Daily",
                 role: "Sanitation Technician",
-                summary: "A critical daily checklist to prevent cross-contamination and ensure all equipment and surfaces are sanitary before production.",
+                summary: "Achieve uncompromising hygiene with a HACCP-aligned protocol. This critical checklist prevents cross-contamination and ensures all surfaces are sanitary before production begins.",
                 tasks: [
                     { id: 'FOOD-SAN-01', description: "Remove all debris and food residue from equipment and surfaces.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
                     { id: 'FOOD-SAN-02', description: "Apply approved cleaning agents according to manufacturer instructions.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Agent Log', location: 'Production Floor' },
@@ -2044,7 +2044,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Quality Control",
                 frequency: "Per Batch",
                 role: "QC Technician",
-                summary: "A final QA check to ensure all finished products meet safety and quality specifications before release.",
+                summary: "Guarantee your product is safe and meets all specifications before it leaves the factory. This final QA check is your last chance to catch issues and protect your brand.",
                 tasks: [
                     { id: 'FOOD-FP-01', description: "Collect samples for lab testing (microbial, chemical, sensory) according to sampling plan.", priority: 'High', riskLevel: 'High', proof: 'Sampling Log', location: 'Production Line' },
                     { id: 'FOOD-FP-02', description: "Verify product meets specifications for weight, volume, or count.", priority: 'High', riskLevel: 'Medium', proof: 'Weight/Volume Check', location: 'Lab' },
@@ -2058,7 +2058,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Quality Assurance",
                 frequency: "Annually",
                 role: "HACCP Coordinator",
-                summary: "Confirms that the HACCP System has been correctly implemented and its working effectively",
+                summary: "Ensure your food safety system is not just implemented, but effective. This verification checklist confirms your HACCP plan is working as intended and protecting consumers.",
                 tasks: [
                     { id: 'HACCP-VE-01', description: "Review to confirm that the team involved has adequate knowledge and skillset.", priority: 'High', riskLevel: 'High', proof: 'Training Report', location: 'HR Department' },
                     { id: 'HACCP-VE-02', description: "Does the pre-requisite program has to be verified as being done effectively", priority: 'High', riskLevel: 'High', proof: 'Pest Control', location: 'All areas' },
@@ -2072,7 +2072,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Quality Assurance",
                 frequency: "Daily",
                 role: "Quality Coordinator",
-                summary: "Minimizes the risk of allergen cross-contamination, protecting sensitive consumers and complying with labeling regulations.",
+                summary: "Protect sensitive consumers and ensure regulatory compliance. This program minimizes the risk of allergen cross-contamination through strict separation, labeling, and cleaning protocols.",
                 tasks: [
                     { id: 'FOOD-ALLERGEN-001', description: "Designate separate equipment for allergen-containing and allergen-free products.", priority: 'High', riskLevel: 'High', proof: 'Equipment Designation List', location: 'All Areas' },
                     { id: 'FOOD-ALLERGEN-002', description: "Label all allergen-containing ingredients and products clearly and prominently.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Warehouse/ Production' },
@@ -2086,7 +2086,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Weekly",
                 role: "Production Supervisor",
-                summary: "A system to prevent glass or hard plastic from contaminating food products.",
+                summary: "Prevent dangerous physical contamination. This system provides a robust method to control, monitor, and manage any glass or hard plastic in the production environment.",
                 tasks: [
                     { id: 'FOOD-GLASS-01', description: "Prohibit glass containers in the production area unless absolutely necessary.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
                     { id: 'FOOD-GLASS-02', description: "Create a Glass Register to Log and Monitor the area.", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Production Floor' },
@@ -2100,7 +2100,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities/Compliance",
                 frequency: "Weekly",
                 role: "Facility Manager",
-                summary: "A program to deter insects and rodents from a very sensitive area.",
+                summary: "Safeguard your facility from contamination. This program establishes a comprehensive defense against insects and rodents, crucial for maintaining hygiene in a food-grade environment.",
                 tasks: [
                     { id: 'PEST-FOOD-001', description: "Inspect buildings, premises and equipment weekly for the sings of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection log', location: 'All Areas' },
                     { id: 'PEST-FOOD-002', description: "Waste and any byproducts must be disposed regularly.", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'All Areas' },
@@ -2119,7 +2119,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Education",
-        description: "For Deans & Operations Managers. A toolkit for managing a modern campus - from classrooms to labs and student safety.",
+        description: "A comprehensive toolkit for Deans and Operations Managers to manage a modern campus, from classroom readiness to student safety.",
         icon: <GraduationCap className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -2136,7 +2136,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Facility Manager",
-                summary: "A checklist to ensure classrooms are ready for instruction each day, with all technology working and the environment clean and conducive to learning.",
+                summary: "Create an optimal learning environment. This checklist ensures every classroom is ready for instruction, with working technology and a clean, comfortable space.",
                 tasks: [
                     { id: 'CLASS-01', description: "Verify that all desks and chairs are clean, undamaged, and properly arranged.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classrooms' },
                     { id: 'CLASS-02', description: "Test the projector, sound system, and lighting to ensure they are functional.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Test Log', location: 'Classrooms' },
@@ -2150,7 +2150,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Lab Operations",
                 frequency: "Weekly",
                 role: "Lab Manager",
-                summary: "Guarantees safe lab practice, ensuring the students safety.",
+                summary: "Ensure a safe and compliant laboratory environment. This checklist guarantees that all safety equipment is functional and students adhere to strict protocols.",
                 tasks: [
                     { id: 'LAB-01', description: "Verify that all safety equipment (eyewash stations, showers) is functional and accessible.", priority: 'High', riskLevel: 'High', proof: 'Equipment Test Log', location: 'Labs' },
                     { id: 'LAB-02', description: "Ensure that all chemicals are properly labeled, stored, and handled.", priority: 'High', riskLevel: 'High', proof: 'Chemical Inventory', location: 'Chemical Storage' },
@@ -2164,7 +2164,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Residence Life",
                 frequency: "Weekly",
                 role: "Residence Manager",
-                summary: "Provide a safe , secure, comfortable space that fosters community and provides student support.",
+                summary: "Foster a safe and supportive living environment. This protocol ensures dorms are clean, secure, and that student welfare issues are addressed promptly.",
                 tasks: [
                     { id: 'DORM-01', description: "Inspect all common areas (lounges, laundry rooms, kitchens) for cleanliness and safety.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Dorms' },
                     { id: 'DORM-02', description: "Check fire safety equipment (smoke detectors, extinguishers) to ensure they are functional.", priority: 'High', riskLevel: 'High', proof: 'Equipment Test Log', location: 'Dorms' },
@@ -2178,7 +2178,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security",
                 frequency: "Bi-Annually",
                 role: "Security Manager",
-                summary: "Provides emergency plans and quick reference for the team at times of potential threats.",
+                summary: "Prepare for the unexpected. This checklist provides a framework for creating and testing emergency plans for weather, violence, fire, and other threats.",
                 tasks: [
                     { id: 'UNIV-EMERG-01', description: "Conduct risk analyses for weather, violence, fire and other emergency scenarios.", priority: 'High', riskLevel: 'High', proof: 'Report', location: 'Security Head' },
                     { id: 'UNIV-EMERG-02', description: "Run tests and document if it needs improvement.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Security Head' },
@@ -2192,7 +2192,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security",
                 frequency: "Daily",
                 role: "Security Manager",
-                summary: "Securing student and faculty with security measures to prevent threats or harm.",
+                summary: "Protect your students and faculty with a multi-layered security approach, from perimeter checks to incident response protocols.",
                 tasks: [
                     { id: 'UNIV-SEC-01', description: "Test alarm systems and security equipment to ensure it functions properly", priority: 'High', riskLevel: 'High', proof: 'Record', location: 'Various location' },
                     { id: 'UNIV-SEC-02', description: "Report any suspicious or unusual activity.", priority: 'High', riskLevel: 'High', proof: 'Alerting all officials', location: 'Various location' },
@@ -2206,7 +2206,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Supervisor",
-                summary: "Provides a safe landscape on campus to ensure an aesthetic appeal.",
+                summary: "Maintain a safe, beautiful, and welcoming campus. This checklist covers everything from landscape aesthetics to irrigation and pest control.",
                 tasks: [
                     { id: 'UNIV-LAND-01', description: "Cleanliness and safe routes on campus. ", priority: 'High', riskLevel: 'Medium', proof: 'Pictures', location: 'Perimeter' },
                     { id: 'UNIV-LAND-02', description: "Equipment Inspection for all landscape tasks.", priority: 'High', riskLevel: 'High', proof: 'logs', location: 'Facility office' },
@@ -2220,7 +2220,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT",
                 frequency: "Bi Annually",
                 role: "IT administrator",
-                summary: "Ensure network connections, system integrity.",
+                summary: "Ensure a reliable and secure digital campus. This checklist helps you manage network integrity, apply security patches, and plan for disaster recovery.",
                 tasks: [
                     { id: 'UNIV-IT-01', description: "Apply security patches to servers and all network devices", priority: 'High', riskLevel: 'High', proof: 'Upgrade history', location: 'IT department' },
                     { id: 'UNIV-IT-02', description: "Enforce all safety data and information by reviewing security policy.", priority: 'High', riskLevel: 'Medium', proof: 'Approval of stakeholders', location: 'IT department' },
@@ -2234,7 +2234,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Daily",
                 role: "Facility Head",
-                summary: "Maintain clean campus premises.",
+                summary: "Maintain a clean and hygienic campus. This checklist ensures that all areas, from restrooms to common spaces, are consistently well-maintained.",
                 tasks: [
                     { id: 'UNIV-JAN-01', description: "Restrooms must be cleaned.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection logs', location: 'All bathrooms' },
                     { id: 'UNIV-JAN-02', description: "Garbage has to be emptied.", priority: 'High', riskLevel: 'Medium', proof: 'Schedule', location: 'All the Areas' },
@@ -2248,7 +2248,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Facility Manager",
-                summary: "Keep the campus free of any pests with preventive steps to ensure safety and comfort for staff",
+                summary: "Create a safe and comfortable environment for students and staff with a preventive pest control program designed for a large campus.",
                 tasks: [
                     { id: 'PEST-CAMP-01', description: "Inspect and monitor the buildings, gardens and campus weekly", priority: 'High', riskLevel: 'Medium', proof: 'Regular inspection logs', location: 'All Areas' },
                     { id: 'PEST-CAMP-02', description: "Clear the standing water and remove trash in an organised matter", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'All Areas' },
@@ -2259,152 +2259,96 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-    // --- Industrial & Transport ---
-        {
-        id: 'airport_ground_handling_operations',
-        title: "Airport Ground Handling Operations",
-        priceUSD: 149.99,
-        priceINR: 7999,
+    // --- Social Cause ---
+    {
+        id: 'animal_shelter_pack',
+        title: "Animal Shelter Operations",
+        priceUSD: 0,
+        priceINR: 0,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Industrial & Transport",
-        description: "For aviation professionals. A toolkit to improve safety, on-time performance, and customer satisfaction.",
-        icon: <Plane className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
+        category: "Social Cause",
+        description: "A comprehensive toolkit for non-profit animal shelters to ensure animal welfare, safety, and effective volunteer management.",
+        icon: <PawPrint className="w-8 h-8 text-primary" />,
+        badgeText: "Free",
         badgeVariant: "accent",
-        whoIsItFor: ["Ground Handling Managers", "Ramp Supervisors", "Safety Officers", "Customer Service Directors", "GMs", "VPs", "Directors"],
+        whoIsItFor: ["Shelter Managers", "Animal Welfare Officers", "Volunteer Coordinators", "Non-profit Founders", "Vets"],
         sampleItems: [
-            "Improve the On-Time Performance (OTP) with a 'Pre-Flight Checklist'.",
-            "Reduce GSE incidents with a 'Ramp Safety & Vehicle Inspection' protocol.",
-            "Ensure smooth 'Baggage Handling & Reconciliation'.",
-            "Implement checklists for 'Aircraft Marshalling' and 'De-Icing Operations'."
+            "Ensure 'Daily Animal Health & Wellness' checks are never missed.",
+            "Implement a 'Kennel & Facility Hygiene' protocol to prevent disease.",
+            "Standardize the 'Adoption & Foster Screening' process.",
+            "Includes checklists for 'Medication Administration' and 'Volunteer Onboarding'."
         ],
         checklists: [
-             {
-                title: " Pre-Flight Checklist",
-                department: "Ground Operations",
-                frequency: "Pre-Flight",
-                role: "Flight Dispatch",
-                summary: "Ensure efficient and safe Aircraft management before departure with the highest precision.",
-                tasks: [
-                    { id: 'PRE-FL-01', description: "Load the aircraft well within the center of gravity (CG) limits", priority: 'High', riskLevel: 'High', proof: 'Weight and Balance report', location: 'Flight control' },
-                    { id: 'PRE-FL-02', description: "Confirm aircraft is properly de-iced and checked for threats", priority: 'High', riskLevel: 'High', proof: 'Flight crew', location: 'Runway' },
-                    { id: 'PRE-FL-03', description: "Verify paperwork and notify flight control about it", priority: 'High', riskLevel: 'Medium', proof: 'Written confirmation', location: 'Flight control' },
-                    { id: 'PRE-FL-04', description: "Perform cabin check for items to ensure safety to the staff and passenger and take corrective measures if necessary", priority: 'High', riskLevel: 'Medium', proof: 'Cabin crew', location: 'Aircraft' },
-                    { id: 'PRE-FL-05', description: "Test the communications well before the departure", priority: 'High', riskLevel: 'Medium', proof: 'Confirmation with Crew', location: 'Aircraft' }
-                ]
-            },
             {
-                title: " 🦺 Ramp Safety & Vehicle Inspection",
-                department: "Ramp Operation",
+                title: "🐾 Daily Animal Health & Wellness",
+                department: "Animal Care",
                 frequency: "Daily",
-                role: "Ramp supervisor",
-                summary: "Prevent accidents, damages, injuries by regular monitoring on the ramp.",
+                role: "Animal Caretaker",
+                summary: "Provide the best possible care for every animal. This checklist ensures no animal's health needs are overlooked, from feeding to monitoring for signs of illness.",
                 tasks: [
-                    { id: 'GSE-SAFE-01', description: "Inspect the vehicle and ensure that the engine and other parts are working great", priority: 'High', riskLevel: 'High', proof: 'Inspection Logs', location: 'Ramp' },
-                    { id: 'GSE-SAFE-02', description: "Verify all aircraft's parking zones and inform flight team to not interfere", priority: 'High', riskLevel: 'High', proof: 'Visual check', location: 'Ramp' },
-                    { id: 'GSE-SAFE-03', description: "Establish signs and lines for vehicle movements", priority: 'High', riskLevel: 'High', proof: 'Signs', location: 'Ramp' },
-                    { id: 'GSE-SAFE-04', description: "Make safety protocol meeting with all the ground handling staff", priority: 'High', riskLevel: 'Medium', proof: 'Safety logs', location: 'Crew areas' },
-                    { id: 'GSE-SAFE-05', description: "Create barriers and zones around operation", priority: 'High', riskLevel: 'Medium', proof: 'Work order', location: 'Around Aircraft' }
+                    { id: 'AS-HEALTH-01', description: "Check every animal for signs of illness, injury, or distress.", priority: 'High', riskLevel: 'High', proof: 'Health Log', location: 'Kennels/Cages' },
+                    { id: 'AS-HEALTH-02', description: "Ensure every animal has access to fresh, clean water.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kennels/Cages' },
+                    { id: 'AS-HEALTH-03', description: "Feed every animal according to their specific dietary plan.", priority: 'High', riskLevel: 'High', proof: 'Feeding Log', location: 'Kennels/Cages' },
+                    { id: 'AS-HEALTH-04', description: "Administer any required medications and log the dosage and time.", priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Medical Room' },
+                    { id: 'AS-HEALTH-05', description: "Provide enrichment (e.g., toys, walks) for mental stimulation.", priority: 'Medium', riskLevel: 'Low', proof: 'Enrichment Log', location: 'Play Areas' }
                 ]
             },
             {
-                title: "🧳 Baggage Handling & Reconciliation",
-                department: "Luggage Operations",
-                frequency: "Post-Flight",
-                role: "Baggage Handler",
-                summary: "A checklist to prevent mis-handling of Luggage which causes significant losses to airport facilities",
-                tasks: [
-                    { id: 'LUGG-01', description: "Verify count of all Luggage pieces after upload and verify to have to write amount of baggage", priority: 'High', riskLevel: 'High', proof: 'Written Log', location: 'Luggage bay' },
-                    { id: 'LUGG-02', description: "Verify loading and safety", priority: 'High', riskLevel: 'High', proof: 'Supervision', location: 'Luggage bay' },
-                    { id: 'LUGG-03', description: "Handle all the equipment and monitor weight of the equipment.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Luggage bay' },
-                    { id: 'LUGG-04', description: "Communicate with internal team on luggage counts and confirm", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'Luggage bay' },
-                    { id: 'LUGG-05', description: "Communicate any loss and damage in order to be proactive", priority: 'High', riskLevel: 'Medium', proof: 'Written Log', location: 'Luggage bay' }
-                ]
-            },
-             {
-                title: "✈️ Aircraft Marshalling",
-                department: "Ground Ops",
+                title: "🧼 Kennel & Facility Hygiene",
+                department: "Facilities/Volunteers",
                 frequency: "Daily",
-                role: "Supervisor",
-                summary: "Prevent Aircraft damage and collision with a great aircraft handling system.",
+                role: "Kennel Manager",
+                summary: "Prevent the spread of disease with a rigorous cleaning protocol. This checklist ensures kennels, common areas, and equipment are properly sanitized every day.",
                 tasks: [
-                    { id: 'MRSHL-01', description: "Ensure marshaller is well trained and ensure that he is competent", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'HR Office' },
-                    { id: 'MRSHL-02', description: "Marshaller has the required equipment and should perform a visual check", priority: 'High', riskLevel: 'Medium', proof: 'Checklist for every equipment', location: 'Ramp' },
-                    { id: 'MRSHL-03', description: "Clear the pathway for any movement between aircraft", priority: 'High', riskLevel: 'High', proof: 'Crew members', location: 'Ramp' },
-                    { id: 'MRSHL-04', description: "Marshaller must be able to use signs", priority: 'High', riskLevel: 'Medium', proof: 'Hand gestures', location: 'Ramp' },
-                    { id: 'MRSHL-05', description: "Verify aircraft's stopping point", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Ramp' }
+                    { id: 'AS-HYGIENE-01', description: "Clean and disinfect all empty kennels/cages before a new animal is placed in them.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels/Cages' },
+                    { id: 'AS-HYGIENE-02', description: "Wash all food and water bowls with animal-safe disinfectant.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Cleaning Area' },
+                    { id: 'AS-HYGIENE-03', description: "Scoop all litter boxes and clean outdoor waste areas.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels/Outdoor Areas' },
+                    { id: 'AS-HYGIENE-04', description: "Wash and dry all soiled bedding and towels.", priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
+                    { id: 'AS-HYGIENE-05', description: "Mop and sanitize floors in all animal and public areas.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Entire Facility' }
                 ]
             },
             {
-                title: "🧊 De-Icing Operations",
-                department: "Ground Operations",
-                frequency: "Winter Months",
-                role: "De-Icing Crew",
-                summary: "Winter safety is vital and so the aircraft's must be properly de-iced",
+                title: "❤️ Adoption & Foster Screening",
+                department: "Adoptions",
+                frequency: "Per Application",
+                role: "Adoption Counselor",
+                summary: "Find the perfect forever home for every animal. This checklist provides a structured, fair, and thorough process for vetting potential adopters and fosters.",
                 tasks: [
-                    { id: 'DEICE-01', description: "All staff involved in the operation must know the safety guidelines", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Ground Crew' },
-                    { id: 'DEICE-02', description: "Inspect that the vehicle are working.  ", priority: 'High', riskLevel: 'High', proof: 'Maintenance Logs', location: 'Runway' },
-                    { id: 'DEICE-03', description: "Verify equipment have been tested and are well stored", priority: 'High', riskLevel: 'Medium', proof: 'Inspection checklist', location: 'De-Icing Station' },
-                    { id: 'DEICE-04', description: "After any inspection, confirm with the flight deck on deicing process", priority: 'High', riskLevel: 'High', proof: 'Comm from Flight Team', location: 'De-Icing Station' },
-                    { id: 'DEICE-05', description: "Document steps", priority: 'High', riskLevel: 'Medium', proof: 'Logs', location: 'De-Icing Station' }
+                    { id: 'AS-ADOPT-01', description: "Review the adoption/foster application for completeness and red flags.", priority: 'High', riskLevel: 'High', proof: 'Application Review Notes', location: 'Office' },
+                    { id: 'AS-ADOPT-02', description: "Conduct an interview with the potential adopter to understand their lifestyle and experience.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'AS-ADOPT-03', description: "If applicable, verify landlord approval for pets.", priority: 'High', riskLevel: 'High', proof: 'Landlord Contact Log', location: 'Office' },
+                    { id: 'AS-ADOPT-04', description: "Perform a home visit (or virtual home visit) to check for a safe and suitable environment.", priority: 'High', riskLevel: 'High', proof: 'Home Visit Report', location: 'Applicant Home' },
+                    { id: 'AS-ADOPT-05', description: "Check veterinary references for existing pets, if any.", priority: 'High', riskLevel: 'High', proof: 'Vet Reference Check Log', location: 'Office' }
                 ]
             },
             {
-                title: " 🔒 Airside Security ",
-                department: "Security",
-                frequency: "Daily",
-                role: "Security Manager",
-                summary: "Ensure that there isn't any threat that will bring harm to personnel or aircrafts",
+                title: "🤝 Volunteer Onboarding & Management",
+                department: "Volunteers",
+                frequency: "Per Volunteer",
+                role: "Volunteer Coordinator",
+                summary: "Empower your volunteers and keep them engaged. This checklist ensures every new volunteer is properly trained, onboarded, and understands their role.",
                 tasks: [
-                    { id: 'AIRSIDE-001', description: "Ensure to do Perimeter checks", priority: 'High', riskLevel: 'High', proof: 'Visual check', location: 'All perimeter zones' },
-                    { id: 'AIRSIDE-002', description: "Conduct audits for any suspicious activity", priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'All Areas' },
-                    { id: 'AIRSIDE-003', description: "Proper training for Airside operators", priority: 'High', riskLevel: 'High', proof: 'Training logs', location: 'HR Department' },
-                    { id: 'AIRSIDE-004', description: "Keep all entrances guarded and follow the access protocol", priority: 'High', riskLevel: 'High', proof: 'Visual check', location: 'Entrances' },
-                    { id: 'AIRSIDE-005', description: "Report the Incidents on all areas", priority: 'High', riskLevel: 'High', proof: 'Incident Form', location: 'Security Manager Office' }
+                    { id: 'AS-VOL-01', description: "Conduct a volunteer orientation session covering shelter policies and safety procedures.", priority: 'High', riskLevel: 'Medium', proof: 'Orientation Sign-in Sheet', location: 'Meeting Room' },
+                    { id: 'AS-VOL-02', description: "Provide hands-on training for specific tasks (e.g., animal handling, cleaning protocols).", priority: 'High', riskLevel: 'High', proof: 'Training Checklist', location: 'Kennels/Facility' },
+                    { id: 'AS-VOL-03', description: "Assign a mentor or experienced volunteer to the new recruit for their first few shifts.", priority: 'Medium', riskLevel: 'Low', proof: 'Mentor Assignment', location: 'Office' },
+                    { id: 'AS-VOL-04', description: "Ensure the volunteer has signed all necessary waivers and agreements.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Forms', location: 'Office' },
+                    { id: 'AS-VOL-05', description: "Schedule the volunteer's first few shifts and add them to the communication system (e.g., email list, WhatsApp group).", priority: 'High', riskLevel: 'Low', proof: 'System Entry', location: 'Office' }
                 ]
             },
             {
-                title: " 🔋 Ground Support Equipment (GSE) Maintenance",
-                department: "Engineering",
-                frequency: "Weekly",
-                role: "Maintenance Supervisor",
-                summary: "Uplift safety and performance with our maintenance of equipment.",
-                tasks: [
-                    { id: 'GSE-Main-01', description: "Set a schedule for the inspection and maintenance", priority: 'High', riskLevel: 'High', proof: 'Written Schedule', location: 'Engineering Office' },
-                    { id: 'GSE-Main-02', description: "Confirm engine, electrical and hydraulic issues are covered", priority: 'High', riskLevel: 'High', proof: 'Maintenance checklist', location: 'Engineering work place' },
-                    { id: 'GSE-Main-03', description: "Report all accidents in report to prevent them from happening in the future", priority: 'High', riskLevel: 'High', proof: 'Written form', location: 'Engineering office' },
-                    { id: 'GSE-Main-04', description: "Maintain well-stocked and good organization for all equipment", priority: 'High', riskLevel: 'High', proof: 'Visual check', location: 'Everywhere' },
-                    { id: 'GSE-Main-05', description: "Keep up with maintenance tasks and report the issues", priority: 'High', riskLevel: 'High', proof: 'Equipment log', location: 'Workplace' }
-                ]
-            },
-             {
-                title: " Customer Service & Assistance",
-                department: "Crew assistance",
-                frequency: "Daily",
-                role: "Head of assistance",
-                summary: "Help all passengers and address their needs with the highest customer service.",
-                tasks: [
-                    { id: 'CS-1', description: "Be trained well on customer service protocol and how to help passengers", priority: 'High', riskLevel: 'Medium', proof: 'Test', location: 'Training facility' },
-                    { id: 'CS-2', description: "Address all travel related info for passengers and show empathy", priority: 'High', riskLevel: 'Medium', proof: 'Staff Log', location: 'Work area' },
-                    { id: 'CS-3', description: "Handle any lost or damaged luggage requests", priority: 'High', riskLevel: 'Medium', proof: 'Logs', location: 'Claim office' },
-                    { id: 'CS-4', description: "Work with personnel with passengers that need special care, e.g. wheelchairs. ", priority: 'High', riskLevel: 'Medium', proof: 'Equipment available', location: 'Various' },
-                    { id: 'CS-5', description: "Help with passenger complaints or other issues or take notes to report", priority: 'High', riskLevel: 'Medium', proof: 'Records', location: 'Crew Lounge' }
-                ]
-            },
-             {
                 title: "🐜 Pest Control Management",
-                department: "Facilities",
+                department: "Facilities/Operations",
                 frequency: "Monthly",
-                role: "Hygiene Manager",
-                summary: "Make regular inspections to prevent pests and potential contamination in facilities.",
+                role: "Shelter Manager",
+                summary: "Protect vulnerable animals from fleas, ticks, and other pests. This checklist establishes a preventive and reactive pest control program that is safe for animals.",
                 tasks: [
-                    { id: 'Pest-Apt-01', description: "Make sure that the airport is free of any insects to create great customer experience", priority: 'High', riskLevel: 'High', proof: 'Visual check', location: 'All areas' },
-                    { id: 'Pest-Apt-02', description: "Ensure that trash storage units are cleaned by daily services and make sure that waste spillage is controlled", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'Storage areas' },
-                    { id: 'Pest-Apt-03', description: "Seal all the holes and apply rodent tape to have no insect access", priority: 'High', riskLevel: 'Medium', proof: 'Equipment used', location: 'Entry points' },
-                    { id: 'Pest-Apt-04', description: "All personnel must be educated for best practices", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Entire Staff' },
-                    { id: 'Pest-Apt-05', description: "Hire personnel to ensure all the guidelines have been well followed", priority: 'High', riskLevel: 'High', proof: 'Contract', location: 'Office' }
+                    { id: 'PEST-ANIMAL-01', description: "Inspect all kennel, quarantine, and food storage areas for signs of pests (e.g., fleas, rodents).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Facility-wide' },
+                    { id: 'PEST-ANIMAL-02', description: "Ensure all food is stored in sealed, chew-proof containers.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Storage Area' },
+                    { id: 'PEST-ANIMAL-03', description: "Maintain a regular cleaning schedule for all areas to eliminate food sources and breeding grounds for pests.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Logs', location: 'Facility-wide' },
+                    { id: 'PEST-ANIMAL-04', description: "Use only animal-safe pest control products and methods, as approved by a veterinarian.", priority: 'High', riskLevel: 'High', proof: 'Product Approval List', location: 'Manager Office' },
+                    { id: 'PEST-ANIMAL-05', description: "Coordinate with a professional pest control service for regular inspections and treatments, ensuring they are aware of the presence of animals.", priority: 'High', riskLevel: 'High', proof: 'Vendor Service Report', location: 'Manager Office' }
                 ]
             }
         ]
-    },
+    }
 ]

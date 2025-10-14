@@ -62,7 +62,7 @@ export default function SalesConsultancyPage() {
 
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-2 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
                 <div className="space-y-4">
                     <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
@@ -89,7 +89,7 @@ export default function SalesConsultancyPage() {
         </section>
 
          <section className="w-full py-12 md:py-24 bg-secondary">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                  <div className="grid gap-10 lg:grid-cols-2 items-center">
                     <div>
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary mb-6">
@@ -121,7 +121,7 @@ export default function SalesConsultancyPage() {
         </section>
 
         <section className="w-full py-12 md:py-24">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                  <div className="max-w-3xl mx-auto text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         Our Proven Process for Growth
@@ -143,7 +143,7 @@ export default function SalesConsultancyPage() {
         </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
-          <div className="container px-4 md:px-6">
+          <div className="container px-2 md:px-6">
              <div className="max-w-3xl mx-auto text-center mb-12">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                   What You Get
@@ -173,7 +173,7 @@ export default function SalesConsultancyPage() {
         </section>
         
         <section id="pricing" className="w-full py-12 md:py-24">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         Consultancy Packages
@@ -244,7 +244,7 @@ export default function SalesConsultancyPage() {
         </section>
 
          <section className="w-full py-12 md:py-24 bg-secondary">
-             <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+             <div className="container px-2 md:px-6 max-w-4xl mx-auto">
                  <div className="text-center">
                     <div 
                         className="w-[100px] h-[100px] bg-cover bg-center rounded-full mx-auto mb-4"
@@ -260,7 +260,7 @@ export default function SalesConsultancyPage() {
 
 
         <section className="w-full py-12 md:py-24">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="max-w-4xl mx-auto p-8 md:p-12 bg-background rounded-2xl shadow-lg border-2">
                     <div className="grid md:grid-cols-2 gap-8 items-center">
                         <div>

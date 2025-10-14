@@ -94,7 +94,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
 
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                  <div className="max-w-4xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         {content.title}
@@ -117,7 +117,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
 
     return (
         <section className="w-full py-12 md:py-16">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
                         {pack.globalStandards.title}
@@ -158,7 +158,7 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
 
     return (
         <section className="w-full py-12 md:py-16">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary">
                         Just Need a Specific Solution?
@@ -233,7 +233,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="grid md:grid-cols-[auto_1fr] items-start gap-6 md:gap-x-8 max-w-5xl mx-auto">
                      <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
                         <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
@@ -259,7 +259,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <PainPointsSection packId={pack.id} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         What's Included: A Complete Operational Toolkit
