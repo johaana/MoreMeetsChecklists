@@ -128,7 +128,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     // Standardized, fixed pricing for the premium personalized tier
     const personalizedPrice = 10999;
     const personalizedStrikethroughPrice = 18999;
-    const personalizedPaymentId = pack.paymentId; // Use the same base payment ID
+    const personalizedPaymentId = pack.paymentId; // Use a known working ID
 
     const [showStickyBar, setShowStickyBar] = React.useState(false);
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
@@ -321,3 +321,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
+
+    

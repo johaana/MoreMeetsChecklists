@@ -66,10 +66,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "default" as const,
         whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "GMs", "VPs", "and their teams"],
         sampleItems: [
-            "NEW: Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
-            "NEW: Implement a 'Managerial Performance Review' and 'New Hire Onboarding' system.",
-            "NEW: Includes a 'Brand Standards Audit' and 'Hotel Pre-Opening' checklist.",
-            "NEW: Manage your brand's online presence with an 'Online Review & Reputation Management' checklist."
+            "Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
+            "Implement a 'Managerial Performance Review' and 'New Hire Onboarding' system.",
+            "Includes a 'Brand Standards Audit' and 'Hotel Pre-Opening' checklist.",
+            "Manage your brand's online presence with an 'Online Review & Reputation Management' checklist."
         ],
         previewScenario: {
             title: "Executing a Flawless 5-Star Guest Check-In",
@@ -220,8 +220,8 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             "Master food safety with a HACCP-based 'Kitchen Opening' checklist.",
             "Implement a zero-error 'Food Receiving & Storage' protocol.",
-            "NEW: Includes a 'New Site Feasibility Study' for expansion planning.",
-            "NEW: Boost sales with a 'Weekly Sales & Revenue Meeting Agenda'."
+            "Includes a 'New Site Feasibility Study' for expansion planning.",
+            "Boost sales with a 'Weekly Sales & Revenue Meeting Agenda'."
         ],
         previewScenario: {
             title: "Ensuring Food Safety from Kitchen to Customer",
@@ -1253,10 +1253,10 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         whoIsItFor: ["Heads of Facilities", "COOs", "Admin Heads", "Corporate Real Estate Managers", "Founders", "VPs", "Directors", "GMs"],
         sampleItems: [
-            "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
-            "NEW: Added a 'New Office Build-Out & Project Management' checklist for expansions.",
-            "NEW: Includes a 'Corporate Social Responsibility (CSR) Program Management' framework.",
-            "NEW: Added a 'Contractor EHS Management & Onboarding' protocol to ensure vendor safety."
+            "Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
+            "Added a 'New Office Build-Out & Project Management' checklist for expansions.",
+            "Includes a 'Corporate Social Responsibility (CSR) Program Management' framework.",
+            "Added a 'Contractor EHS Management & Onboarding' protocol to ensure vendor safety."
         ],
         previewScenario: {
             title: "Managing a Critical Power Outage",
@@ -1405,8 +1405,8 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent" as const,
         whoIsItFor: ["Founders", "COOs", "HR Managers", "Admin Heads", "First-time Managers", "VPs", "Directors", "GMs"],
         sampleItems: [
-            "NEW: Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
-            "NEW: Added a 'New Office Build-Out & Project Management' checklist.",
+            "Includes 'Quarterly Business Review' and 'Annual Strategic Planning' frameworks.",
+            "Added a 'New Office Build-Out & Project Management' checklist.",
             "Standardize your 'New Employee Legal Onboarding' from a legal perspective.",
             "Implement a 'Vendor Contract Review' checklist for non-lawyers."
         ],
@@ -1690,11 +1690,11 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "default" as const,
         whoIsItFor: ["Hospital Owners", "COOs", "Chief Medical Officers", "Heads of Quality & Compliance", "Lab Directors", "VPs", "GMs", "Directors"],
         sampleItems: [
-            "NEW: Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
+            "Ensure secure 'Telemedicine Consultations' & audit 'LIS-HIS-EMR Data Integrity'.",
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
-            "NEW: Includes a 'CSSD Audit' and 'Unidentified Patient Intake' protocol."
+            "Includes a 'CSSD Audit' and 'Unidentified Patient Intake' protocol."
         ],
         previewScenario: {
             title: "Preventing a Medication Error",
@@ -1977,140 +1977,6 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-    // --- Industrial & Transport ---
-     {
-        id: 'food_manufacturing_ops',
-        title: "Food Manufacturing Operations",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Industrial & Transport",
-        description: "A HACCP & ISO 22000-aligned SOP toolkit to manage a modern food manufacturing facility, focusing on safety and throughput.",
-        icon: <Factory className="w-8 h-8 text-primary" />,
-        badgeText: "New!",
-        badgeVariant: "accent",
-        whoIsItFor: ["Plant Managers", "Quality Directors", "HACCP Coordinators", "Production Supervisors", "GMs", "VPs", "Directors"],
-        sampleItems: [
-            "Implement 'Raw Material Receiving & Inspection' to prevent substandard inputs.",
-            "Standardize 'Equipment Calibration & Maintenance' for accuracy and uptime.",
-            "Monitor and audit 'Cleaning & Sanitation (HACCP)'.",
-            "Includes checklists for 'Finished Product Testing' and 'Pest Control'."
-        ],
-        checklists: [
-            {
-                title: "🍎 Raw Material Receiving & Inspection",
-                department: "Quality Control",
-                frequency: "Per Shipment",
-                role: "QC Inspector",
-                summary: "Prevent contamination at the source. This is your first line of defense, ensuring no substandard ingredients enter your facility, protecting your entire production line.",
-                tasks: [
-                    { id: 'FOOD-RM-01', description: "Check delivery vehicle temperature and sanitation before unloading.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Receiving Dock' },
-                    { id: 'FOOD-RM-02', description: "Verify supplier certificates for authenticity and compliance.", priority: 'High', riskLevel: 'High', proof: 'Certificate Log', location: 'Receiving Office' },
-                    { id: 'FOOD-RM-03', description: "Visually inspect materials for damage, pests, or signs of spoilage.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Receiving Dock' },
-                    { id: 'FOOD-RM-04', description: "Collect samples for lab testing (microbial, chemical) according to sampling plan.", priority: 'High', riskLevel: 'High', proof: 'Sampling Log', location: 'Lab' },
-                    { id: 'FOOD-RM-05', description: "Approve or reject shipment based on inspection and test results.", priority: 'High', riskLevel: 'High', proof: 'Approval Form', location: 'Receiving Office' }
-                ]
-            },
-            {
-                title: "⚙️ Equipment Calibration & Maintenance",
-                department: "Maintenance",
-                frequency: "Daily/Weekly",
-                role: "Maintenance Technician",
-                summary: "Maximize uptime and ensure product consistency. This preventive maintenance checklist guarantees all production equipment operates accurately, reliably, and safely.",
-                tasks: [
-                    { id: 'FOOD-EQ-01', description: "Calibrate weighing scales and check for accuracy.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Production Floor' },
-                    { id: 'FOOD-EQ-02', description: "Inspect conveyor belts, gears, and other moving parts for wear and tear.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Production Floor' },
-                    { id: 'FOOD-EQ-03', description: "Lubricate equipment according to maintenance schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Lubrication Log', location: 'Production Floor' },
-                    { id: 'FOOD-EQ-04', description: "Verify functionality of safety guards and interlocks.", priority: 'High', riskLevel: 'High', proof: 'Safety Check Log', location: 'Production Floor' },
-                    { id: 'FOOD-EQ-05', description: "Record all maintenance activities in equipment log.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Log', location: 'Maintenance Office' }
-                ]
-            },
-             {
-                title: "🧼 Cleaning & Sanitation (HACCP)",
-                department: "Sanitation",
-                frequency: "Daily",
-                role: "Sanitation Technician",
-                summary: "Achieve uncompromising hygiene with a HACCP-aligned protocol. This critical checklist prevents cross-contamination and ensures all surfaces are sanitary before production begins.",
-                tasks: [
-                    { id: 'FOOD-SAN-01', description: "Remove all debris and food residue from equipment and surfaces.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
-                    { id: 'FOOD-SAN-02', description: "Apply approved cleaning agents according to manufacturer instructions.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Agent Log', location: 'Production Floor' },
-                    { id: 'FOOD-SAN-03', description: "Rinse equipment and surfaces thoroughly with potable water.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
-                    { id: 'FOOD-SAN-04', description: "Apply approved sanitizing agents according to manufacturer instructions.", priority: 'High', riskLevel: 'High', proof: 'Sanitizer Log', location: 'Production Floor' },
-                    { id: 'FOOD-SAN-05', description: "Allow equipment and surfaces to air dry before restarting production.", priority: 'High', riskLevel: 'High', proof: 'Air Dry Time Log', location: 'Production Floor' }
-                ]
-            },
-            {
-                title: "🧪 Finished Product Testing",
-                department: "Quality Control",
-                frequency: "Per Batch",
-                role: "QC Technician",
-                summary: "Guarantee your product is safe and meets all specifications before it leaves the factory. This final QA check is your last chance to catch issues and protect your brand.",
-                tasks: [
-                    { id: 'FOOD-FP-01', description: "Collect samples for lab testing (microbial, chemical, sensory) according to sampling plan.", priority: 'High', riskLevel: 'High', proof: 'Sampling Log', location: 'Production Line' },
-                    { id: 'FOOD-FP-02', description: "Verify product meets specifications for weight, volume, or count.", priority: 'High', riskLevel: 'Medium', proof: 'Weight/Volume Check', location: 'Lab' },
-                    { id: 'FOOD-FP-03', description: "Inspect packaging for proper sealing, labeling, and coding.", priority: 'High', riskLevel: 'High', proof: 'Packaging Inspection Log', location: 'Packaging Line' },
-                    { id: 'FOOD-FP-04', description: "Review all production and quality control records for completeness.", priority: 'High', riskLevel: 'High', proof: 'Record Review Log', location: 'QC Office' },
-                    { id: 'FOOD-FP-05', description: "Approve or reject product release based on test results and record review.", priority: 'High', riskLevel: 'High', proof: 'Release Form', location: 'QC Office' }
-                ]
-            },
-             {
-                title: "🌱 HACCP Plan Verification",
-                department: "Quality Assurance",
-                frequency: "Annually",
-                role: "HACCP Coordinator",
-                summary: "Ensure your food safety system is not just implemented, but effective. This verification checklist confirms your HACCP plan is working as intended and protecting consumers.",
-                tasks: [
-                    { id: 'HACCP-VE-01', description: "Review to confirm that the team involved has adequate knowledge and skillset.", priority: 'High', riskLevel: 'High', proof: 'Training Report', location: 'HR Department' },
-                    { id: 'HACCP-VE-02', description: "Does the pre-requisite program has to be verified as being done effectively", priority: 'High', riskLevel: 'High', proof: 'Pest Control', location: 'All areas' },
-                    { id: 'HACCP-VE-03', description: "Verify all the steps by process that is involved from raw to packaging.", priority: 'High', riskLevel: 'Medium', proof: 'Visual', location: 'Production Areas' },
-                    { id: 'HACCP-VE-04', description: "Set plan of corrections and do the calibration test frequently.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance logs', location: 'All Areas' },
-                    { id: 'HACCP-VE-05', description: "Keep data intact and perform the evaluation to enhance the HACCP plan.", priority: 'High', riskLevel: 'High', proof: 'Records', location: 'Office' }
-                ]
-            },
-            {
-                title: "🛡️ Allergen Control Program",
-                department: "Quality Assurance",
-                frequency: "Daily",
-                role: "Quality Coordinator",
-                summary: "Protect sensitive consumers and ensure regulatory compliance. This program minimizes the risk of allergen cross-contamination through strict separation, labeling, and cleaning protocols.",
-                tasks: [
-                    { id: 'FOOD-ALLERGEN-001', description: "Designate separate equipment for allergen-containing and allergen-free products.", priority: 'High', riskLevel: 'High', proof: 'Equipment Designation List', location: 'All Areas' },
-                    { id: 'FOOD-ALLERGEN-002', description: "Label all allergen-containing ingredients and products clearly and prominently.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Warehouse/ Production' },
-                    { id: 'FOOD-ALLERGEN-003', description: "Implement strict cleaning and sanitation procedures after processing any allergen-containing product.", priority: 'High', riskLevel: 'High', proof: 'Clearing Log', location: 'All areas' },
-                    { id: 'FOOD-ALLERGEN-004', description: "Verify that the product label accurately lists all ingredients, including allergens.", priority: 'High', riskLevel: 'High', proof: 'Verification', location: 'Production Area' },
-                    { id: 'FOOD-ALLERGEN-005', description: "Train employees on allergen awareness and control procedures.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'HR office' }
-                ]
-            },
-            {
-                title: "🧹 Glass & Brittle Plastic Control",
-                department: "Operations",
-                frequency: "Weekly",
-                role: "Production Supervisor",
-                summary: "Prevent dangerous physical contamination. This system provides a robust method to control, monitor, and manage any glass or hard plastic in the production environment.",
-                tasks: [
-                    { id: 'FOOD-GLASS-01', description: "Prohibit glass containers in the production area unless absolutely necessary.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
-                    { id: 'FOOD-GLASS-02', description: "Create a Glass Register to Log and Monitor the area.", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Production Floor' },
-                    { id: 'FOOD-GLASS-03', description: "Conduct frequent inspections of lighting fixtures, windows, and other glass/plastic objects for damage.", priority: 'High', riskLevel: 'High', proof: 'Audit/logs', location: 'Production Floor' },
-                    { id: 'FOOD-GLASS-04', description: "Maintain a log of any glass breakage incidents, including cleanup procedures and disposal.", priority: 'High', riskLevel: 'High', proof: 'Audit/logs', location: 'Office' },
-                    { id: 'FOOD-GLASS-05', description: "Ensure that all new equipments or tools are assessed and inspected.", priority: 'High', riskLevel: 'High', proof: 'Inspection form', location: 'Before procurement' }
-                ]
-            },
-            {
-                title: "🐜 Pest Control Management",
-                department: "Facilities/Compliance",
-                frequency: "Weekly",
-                role: "Facility Manager",
-                summary: "Safeguard your facility from contamination. This program establishes a comprehensive defense against insects and rodents, crucial for maintaining hygiene in a food-grade environment.",
-                tasks: [
-                    { id: 'PEST-FOOD-001', description: "Inspect buildings, premises and equipment weekly for the sings of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection log', location: 'All Areas' },
-                    { id: 'PEST-FOOD-002', description: "Waste and any byproducts must be disposed regularly.", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'All Areas' },
-                    { id: 'PEST-FOOD-003', description: "Ensure sealing is maintained for entries to reduce rodent attraction.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Work Order', location: 'Perimeter' },
-                    { id: 'PEST-FOOD-004', description: "Review regular pest reports and make the service based on the history.", priority: 'High', riskLevel: 'Medium', proof: 'Service order', location: 'All Areas' },
-                    { id: 'PEST-FOOD-005', description: "Train employees on clean work environment.", priority: 'High', riskLevel: 'Medium', proof: 'Training records', location: 'HR Office' }
-                ]
-            },
-        ]
-    },
     // --- Education ---
     {
         id: 'university_college_ops',
@@ -2259,6 +2125,140 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
+    // --- Industrial & Transport ---
+    {
+        id: 'food_manufacturing_ops',
+        title: "Food Manufacturing Operations",
+        priceUSD: 149.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Industrial & Transport",
+        description: "A HACCP & ISO 22000-aligned SOP toolkit to manage a modern food manufacturing facility, focusing on safety and throughput.",
+        icon: <Factory className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["Plant Managers", "Quality Directors", "HACCP Coordinators", "Production Supervisors", "GMs", "VPs", "Directors"],
+        sampleItems: [
+            "Implement 'Raw Material Receiving & Inspection' to prevent substandard inputs.",
+            "Standardize 'Equipment Calibration & Maintenance' for accuracy and uptime.",
+            "Monitor and audit 'Cleaning & Sanitation (HACCP)'.",
+            "Includes checklists for 'Finished Product Testing' and 'Pest Control'."
+        ],
+        checklists: [
+            {
+                title: "🍎 Raw Material Receiving & Inspection",
+                department: "Quality Control",
+                frequency: "Per Shipment",
+                role: "QC Inspector",
+                summary: "Prevent contamination at the source. This is your first line of defense, ensuring no substandard ingredients enter your facility, protecting your entire production line.",
+                tasks: [
+                    { id: 'FOOD-RM-01', description: "Check delivery vehicle temperature and sanitation before unloading.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Receiving Dock' },
+                    { id: 'FOOD-RM-02', description: "Verify supplier certificates for authenticity and compliance.", priority: 'High', riskLevel: 'High', proof: 'Certificate Log', location: 'Receiving Office' },
+                    { id: 'FOOD-RM-03', description: "Visually inspect materials for damage, pests, or signs of spoilage.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Receiving Dock' },
+                    { id: 'FOOD-RM-04', description: "Collect samples for lab testing (microbial, chemical) according to sampling plan.", priority: 'High', riskLevel: 'High', proof: 'Sampling Log', location: 'Lab' },
+                    { id: 'FOOD-RM-05', description: "Approve or reject shipment based on inspection and test results.", priority: 'High', riskLevel: 'High', proof: 'Approval Form', location: 'Receiving Office' }
+                ]
+            },
+            {
+                title: "⚙️ Equipment Calibration & Maintenance",
+                department: "Maintenance",
+                frequency: "Daily/Weekly",
+                role: "Maintenance Technician",
+                summary: "Maximize uptime and ensure product consistency. This preventive maintenance checklist guarantees all production equipment operates accurately, reliably, and safely.",
+                tasks: [
+                    { id: 'FOOD-EQ-01', description: "Calibrate weighing scales and check for accuracy.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Production Floor' },
+                    { id: 'FOOD-EQ-02', description: "Inspect conveyor belts, gears, and other moving parts for wear and tear.", priority: 'High', riskLevel: 'Medium', proof: 'Inspection Log', location: 'Production Floor' },
+                    { id: 'FOOD-EQ-03', description: "Lubricate equipment according to maintenance schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Lubrication Log', location: 'Production Floor' },
+                    { id: 'FOOD-EQ-04', description: "Verify functionality of safety guards and interlocks.", priority: 'High', riskLevel: 'High', proof: 'Safety Check Log', location: 'Production Floor' },
+                    { id: 'FOOD-EQ-05', description: "Record all maintenance activities in equipment log.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Log', location: 'Maintenance Office' }
+                ]
+            },
+             {
+                title: "🧼 Cleaning & Sanitation (HACCP)",
+                department: "Sanitation",
+                frequency: "Daily",
+                role: "Sanitation Technician",
+                summary: "Achieve uncompromising hygiene with a HACCP-aligned protocol. This critical checklist prevents cross-contamination and ensures all surfaces are sanitary before production begins.",
+                tasks: [
+                    { id: 'FOOD-SAN-01', description: "Remove all debris and food residue from equipment and surfaces.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
+                    { id: 'FOOD-SAN-02', description: "Apply approved cleaning agents according to manufacturer instructions.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Agent Log', location: 'Production Floor' },
+                    { id: 'FOOD-SAN-03', description: "Rinse equipment and surfaces thoroughly with potable water.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
+                    { id: 'FOOD-SAN-04', description: "Apply approved sanitizing agents according to manufacturer instructions.", priority: 'High', riskLevel: 'High', proof: 'Sanitizer Log', location: 'Production Floor' },
+                    { id: 'FOOD-SAN-05', description: "Allow equipment and surfaces to air dry before restarting production.", priority: 'High', riskLevel: 'High', proof: 'Air Dry Time Log', location: 'Production Floor' }
+                ]
+            },
+            {
+                title: "🧪 Finished Product Testing",
+                department: "Quality Control",
+                frequency: "Per Batch",
+                role: "QC Technician",
+                summary: "Guarantee your product is safe and meets all specifications before it leaves the factory. This final QA check is your last chance to catch issues and protect your brand.",
+                tasks: [
+                    { id: 'FOOD-FP-01', description: "Collect samples for lab testing (microbial, chemical, sensory) according to sampling plan.", priority: 'High', riskLevel: 'High', proof: 'Sampling Log', location: 'Production Line' },
+                    { id: 'FOOD-FP-02', description: "Verify product meets specifications for weight, volume, or count.", priority: 'High', riskLevel: 'Medium', proof: 'Weight/Volume Check', location: 'Lab' },
+                    { id: 'FOOD-FP-03', description: "Inspect packaging for proper sealing, labeling, and coding.", priority: 'High', riskLevel: 'High', proof: 'Packaging Inspection Log', location: 'Packaging Line' },
+                    { id: 'FOOD-FP-04', description: "Review all production and quality control records for completeness.", priority: 'High', riskLevel: 'High', proof: 'Record Review Log', location: 'QC Office' },
+                    { id: 'FOOD-FP-05', description: "Approve or reject product release based on test results and record review.", priority: 'High', riskLevel: 'High', proof: 'Release Form', location: 'QC Office' }
+                ]
+            },
+             {
+                title: "🌱 HACCP Plan Verification",
+                department: "Quality Assurance",
+                frequency: "Annually",
+                role: "HACCP Coordinator",
+                summary: "Ensure your food safety system is not just implemented, but effective. This verification checklist confirms your HACCP plan is working as intended and protecting consumers.",
+                tasks: [
+                    { id: 'HACCP-VE-01', description: "Review to confirm that the team involved has adequate knowledge and skillset.", priority: 'High', riskLevel: 'High', proof: 'Training Report', location: 'HR Department' },
+                    { id: 'HACCP-VE-02', description: "Does the pre-requisite program has to be verified as being done effectively", priority: 'High', riskLevel: 'High', proof: 'Pest Control', location: 'All areas' },
+                    { id: 'HACCP-VE-03', description: "Verify all the steps by process that is involved from raw to packaging.", priority: 'High', riskLevel: 'Medium', proof: 'Visual', location: 'Production Areas' },
+                    { id: 'HACCP-VE-04', description: "Set plan of corrections and do the calibration test frequently.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance logs', location: 'All Areas' },
+                    { id: 'HACCP-VE-05', description: "Keep data intact and perform the evaluation to enhance the HACCP plan.", priority: 'High', riskLevel: 'High', proof: 'Records', location: 'Office' }
+                ]
+            },
+            {
+                title: "🛡️ Allergen Control Program",
+                department: "Quality Assurance",
+                frequency: "Daily",
+                role: "Quality Coordinator",
+                summary: "Protect sensitive consumers and ensure regulatory compliance. This program minimizes the risk of allergen cross-contamination through strict separation, labeling, and cleaning protocols.",
+                tasks: [
+                    { id: 'FOOD-ALLERGEN-001', description: "Designate separate equipment for allergen-containing and allergen-free products.", priority: 'High', riskLevel: 'High', proof: 'Equipment Designation List', location: 'All Areas' },
+                    { id: 'FOOD-ALLERGEN-002', description: "Label all allergen-containing ingredients and products clearly and prominently.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Warehouse/ Production' },
+                    { id: 'FOOD-ALLERGEN-003', description: "Implement strict cleaning and sanitation procedures after processing any allergen-containing product.", priority: 'High', riskLevel: 'High', proof: 'Clearing Log', location: 'All areas' },
+                    { id: 'FOOD-ALLERGEN-004', description: "Verify that the product label accurately lists all ingredients, including allergens.", priority: 'High', riskLevel: 'High', proof: 'Verification', location: 'Production Area' },
+                    { id: 'FOOD-ALLERGEN-005', description: "Train employees on allergen awareness and control procedures.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'HR office' }
+                ]
+            },
+            {
+                title: "🧹 Glass & Brittle Plastic Control",
+                department: "Operations",
+                frequency: "Weekly",
+                role: "Production Supervisor",
+                summary: "Prevent dangerous physical contamination. This system provides a robust method to control, monitor, and manage any glass or hard plastic in the production environment.",
+                tasks: [
+                    { id: 'FOOD-GLASS-01', description: "Prohibit glass containers in the production area unless absolutely necessary.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Production Floor' },
+                    { id: 'FOOD-GLASS-02', description: "Create a Glass Register to Log and Monitor the area.", priority: 'High', riskLevel: 'High', proof: 'Log', location: 'Production Floor' },
+                    { id: 'FOOD-GLASS-03', description: "Conduct frequent inspections of lighting fixtures, windows, and other glass/plastic objects for damage.", priority: 'High', riskLevel: 'High', proof: 'Audit/logs', location: 'Production Floor' },
+                    { id: 'FOOD-GLASS-04', description: "Maintain a log of any glass breakage incidents, including cleanup procedures and disposal.", priority: 'High', riskLevel: 'High', proof: 'Audit/logs', location: 'Office' },
+                    { id: 'FOOD-GLASS-05', description: "Ensure that all new equipments or tools are assessed and inspected.", priority: 'High', riskLevel: 'High', proof: 'Inspection form', location: 'Before procurement' }
+                ]
+            },
+            {
+                title: "🐜 Pest Control Management",
+                department: "Facilities/Compliance",
+                frequency: "Weekly",
+                role: "Facility Manager",
+                summary: "Safeguard your facility from contamination. This program establishes a comprehensive defense against insects and rodents, crucial for maintaining hygiene in a food-grade environment.",
+                tasks: [
+                    { id: 'PEST-FOOD-001', description: "Inspect buildings, premises and equipment weekly for the sings of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Inspection log', location: 'All Areas' },
+                    { id: 'PEST-FOOD-002', description: "Waste and any byproducts must be disposed regularly.", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'All Areas' },
+                    { id: 'PEST-FOOD-003', description: "Ensure sealing is maintained for entries to reduce rodent attraction.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Work Order', location: 'Perimeter' },
+                    { id: 'PEST-FOOD-004', description: "Review regular pest reports and make the service based on the history.", priority: 'High', riskLevel: 'Medium', proof: 'Service order', location: 'All Areas' },
+                    { id: 'PEST-FOOD-005', description: "Train employees on clean work environment.", priority: 'High', riskLevel: 'Medium', proof: 'Training records', location: 'HR Office' }
+                ]
+            },
+        ]
+    },
     // --- Social Cause ---
     {
         id: 'animal_shelter_pack',
@@ -2352,3 +2352,5 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
+    
