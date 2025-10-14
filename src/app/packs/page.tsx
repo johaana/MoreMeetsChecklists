@@ -7,29 +7,28 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Check, Star } from "lucide-react";
+import { Check, Star, Download } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 
 const categoryColors: { [key: string]: string } = {
     "Hospitality": "bg-blue-100 text-blue-800 border-blue-200",
-    "Corporate": "bg-indigo-100 text-indigo-800 border-indigo-200",
+    "Corporate & Tech": "bg-indigo-100 text-indigo-800 border-indigo-200",
     "Retail": "bg-pink-100 text-pink-800 border-pink-200",
     "Healthcare": "bg-red-100 text-red-800 border-red-200",
     "Education": "bg-green-100 text-green-800 border-green-200",
-    "Manufacturing": "bg-gray-100 text-gray-800 border-gray-200",
-    "Events": "bg-purple-100 text-purple-800 border-purple-200",
-    "Personal": "bg-yellow-100 text-yellow-800 border-yellow-200",
+    "Industrial & Transport": "bg-gray-100 text-gray-800 border-gray-200",
+    "Entertainment & Events": "bg-purple-100 text-purple-800 border-purple-200",
+    "Social Cause": "bg-emerald-100 text-emerald-800 border-emerald-200",
     "Automotive": "bg-orange-100 text-orange-800 border-orange-200",
     "Real Estate": "bg-teal-100 text-teal-800 border-teal-200",
     "Compliance": "bg-cyan-100 text-cyan-800 border-cyan-200",
-    "Wellness": "bg-lime-100 text-lime-800 border-lime-200",
+    "Wellness & Beauty": "bg-lime-100 text-lime-800 border-lime-200",
     "E-commerce": "bg-sky-100 text-sky-800 border-sky-200",
     "Agency": "bg-amber-100 text-amber-800 border-amber-200",
     "Logistics": "bg-gray-100 text-gray-800 border-gray-200",
     "Maritime": "bg-blue-100 text-blue-800 border-blue-200",
     "Aviation": "bg-sky-100 text-sky-800 border-sky-200",
-    "Entertainment": "bg-rose-100 text-rose-800 border-rose-200",
 };
 
 export default function AllPacksPage() {
@@ -102,11 +101,20 @@ export default function AllPacksPage() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold" variant="default">
-                                    <Link href={`/packs/${pack.id}`}>
-                                        View Full Checklist &amp; Purchase
-                                    </Link>
-                                </Button>
+                                {pack.priceINR > 0 ? (
+                                    <Button asChild className="w-full font-bold" variant="default">
+                                        <Link href={`/packs/${pack.id}`}>
+                                            View Full Checklist &amp; Purchase
+                                        </Link>
+                                    </Button>
+                                ) : (
+                                    <Button asChild className="w-full font-bold" variant="accent">
+                                        <Link href={`/packs/${pack.id}`}>
+                                            <Download className="mr-2 h-4 w-4"/>
+                                            Free Download
+                                        </Link>
+                                    </Button>
+                                )}
                             </CardFooter>
                         </Card>
                     ))}
@@ -118,3 +126,5 @@ export default function AllPacksPage() {
     </div>
   );
 }
+
+    

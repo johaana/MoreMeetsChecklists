@@ -7,12 +7,68 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
+import { writeFile, utils } from 'xlsx-js-style';
+
+
+function handleDownload (pack: PremiumPack) {
+    if (!pack) {
+        alert("Could not find the pack data. Please contact support.");
+        return;
+    }
+    
+    const workbook = utils.book_new();
+    const headerStyle = {
+        font: { bold: true, color: { rgb: "FFFFFF" } },
+        fill: { fgColor: { rgb: "0A2540" } }
+    };
+
+    pack.checklists.forEach(checklist => {
+        const checklistHeaders = [
+            'Task ID', 'Task Description', 'Priority', 'Risk Level', 
+            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+        ];
+        
+        const tasksForSheet = checklist.tasks.map(task => [
+            task.id,
+            task.description,
+            task.priority,
+            task.riskLevel,
+            task.proof,
+            'Pending',
+            '',
+            ''
+        ]);
+
+        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+        
+        worksheet['!cols'] = [
+            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
+            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
+        ];
+
+         const headerRange = utils.decode_range(worksheet['!ref']!);
+         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+            const address = utils.encode_cell({ r: 0, c: C });
+            if(worksheet[address]) {
+                worksheet[address].s = headerStyle;
+            }
+         }
+         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+
+        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+        utils.book_append_sheet(workbook, worksheet, sheetName);
+    });
+
+    const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
+    writeFile(workbook, fileName);
+};
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -97,7 +153,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }, []);
 
 
-    if (pack.id === 'personal_travel_pack') {
+    if (pack.priceINR <= 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
                 <div className="container px-4 md:px-6">
@@ -105,16 +161,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <Card className="shadow-2xl border-2 border-primary/20">
                             <CardHeader className="text-center pb-4">
                                 <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
-                                <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
+                                <CardDescription>This is a free community resource. Download it instantly.</CardDescription>
                             </CardHeader>
                             <CardContent className="text-center">
-                               <p className="text-4xl font-extrabold mb-4">₹{pack.priceINR}</p>
-                               <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
-                               </div>
+                               <p className="text-4xl font-extrabold mb-4">Free Download</p>
+                               <Button size="lg" className="w-full" onClick={() => handleDownload(pack)}>
+                                 <Download className="mr-2 h-5 w-5" />
+                                 Download Now
+                               </Button>
                             </CardContent>
                              <CardFooter className="flex-col gap-2 pt-2 items-center">
-                                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+                                <p className="text-xs text-muted-foreground mt-2">Thank you for supporting animal welfare!</p>
                              </CardFooter>
                         </Card>
                     </div>
@@ -264,6 +321,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
-
 
     

@@ -106,7 +106,7 @@ const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-free-comparison">
-                        <AccordionTrigger className="text-lg font-semibold">How are your checklists different from the free templates I find online?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">How are your checklists different from the free templates I find online?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground space-y-4">
                            <p>That's a crucial question. Free templates are typically simple lists of what to check, designed as lead magnets for expensive software. They give you a starting point, but the hard work of building an operational system is still on you.</p>
                            <p className="font-semibold text-foreground">MoreMeets is different. We sell the system itself.</p>
@@ -121,7 +121,7 @@ const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-ai-alt">
-                        <AccordionTrigger className="text-lg font-semibold">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
                            Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 200 industry veterans who have managed these high-stakes environments.
                         </AccordionContent>
@@ -617,3 +617,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

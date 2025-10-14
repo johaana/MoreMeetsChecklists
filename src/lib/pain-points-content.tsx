@@ -165,7 +165,7 @@ export const painPointsContent = {
             { icon: <Users />, title: "Build Deep Parent Trust & Confidence", description: "A visible and systematic approach to safety and organization is the most powerful marketing tool. Demonstrate your commitment to safety and build the trust that is a key factor in school choice." }
         ]
     },
-    manufacturing_plant_pack: {
+    manufacturing_operations_ehs_pack: {
         title: "The Business Case for a Safer, More Productive Plant",
         points: [
             { icon: <Shield />, title: "Prevent Life-Altering Accidents", description: "A single LOTO failure can lead to a fatality. Our life-saving protocols for Lock-Out Tag-Out, Permit-to-Work, and Confined Space Entry are non-negotiable systems to protect your workforce." },
@@ -180,7 +180,7 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Achieve 99%+ Inventory Accuracy", description: "Stop losing money to lost stock. Implement systematic checklists for Goods Receiving (GRN), cycle counting, and returns management to get a true, real-time picture of your inventory." },
             { icon: <Shield />, title: "Create a Safer Warehouse Environment", description: "Prevent costly accidents with daily safety checklists for forklifts, loading docks, and general housekeeping, reducing injuries and potential compliance fines." },
             { icon: <HandCoins />, title: "Eliminate Costly Shipping & Data Entry Errors", description: "A single typo in product dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' protocol for new product data entry prevents these expensive mistakes." },
-            { icon: <FileCheck />, title: "Improve Order Fulfillment Speed & Accuracy", description: "A well-organized warehouse is a fast warehouse. Our 5S and inventory management checklists ensure that your pick-and-pack operations are efficient, accurate, and scalable." }
+            { icon: 'x', title: "Improve Order Fulfillment Speed & Accuracy", description: "A well-organized warehouse is a fast warehouse. Our 5S and inventory management checklists ensure that your pick-and-pack operations are efficient, accurate, and scalable." }
         ]
     },
     construction_site_pack: {
@@ -209,20 +209,13 @@ export const painPointsContent = {
             { icon: <HandCoins />, title: "Optimize Bookings & Reduce No-Shows", description: "Streamline your front desk with checklists for smart appointment scheduling, automated reminders, and waitlist management to maximize your capacity and revenue." },
             { icon: <FileCheck />, title: "Improve Staff Performance & Reduce Errors", description: "Empower your team with clear, step-by-step protocols for every service. This reduces training time, minimizes mistakes, and creates a less stressful, more professional work environment." }
         ]
-    },
-    personal_travel_pack: {
-        title: "The Business Case for an Organized & Stress-Free Life",
-        points: [
-            { icon: <TrendingUp />, title: "Reduce Stress & Mental Overload", description: "Stop trying to remember everything. Our personal checklists for travel and moving turn chaotic events into calm, manageable processes, letting you focus on what matters." },
-            { icon: <HandCoins />, title: "Avoid Costly Mistakes", description: "Forgetting to cancel a subscription before moving or packing critical medication in the wrong bag can have real financial and health consequences. Our checklists prevent these simple but costly errors." },
-            { icon: <Shield />, title: "Peace of Mind for Your Loved Ones", description: "Whether it's for a pet sitter or a family member, a clear set of instructions ensures the ones you care for are looked after exactly the way you want, giving you true peace of mind while you're away." },
-            { icon: <Users />, title: "A Happier, More Present You", description: "When you're not worried about forgetting something, you're free to be more present and enjoy the moment—whether that's your vacation or the first night in your new home." }
-        ]
     }
 };
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
 
+
+    
 
     

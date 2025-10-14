@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Personal" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
+    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -55,7 +55,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Hospitality ---
     {
         id: 'hospitality_excellence_suite',
-        title: "Hotel & Resort Operations Checklist",
+        title: "Hospitality Excellence Suite",
         priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -1275,7 +1275,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Corporate & Tech ---
     {
         id: 'facility_management_blueprint',
-        title: "Facility Management Checklist",
+        title: "Facility Management Blueprint",
         priceUSD: 169.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -2282,8 +2282,8 @@ export const premiumPacks: PremiumPack[] = [
     },
     // --- Industrial & Transport ---
     {
-        id: 'manufacturing_plant_pack',
-        title: "Manufacturing Plant Checklist",
+        id: 'manufacturing_operations_ehs_pack',
+        title: "Manufacturing Operations & EHS Pack",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -3123,142 +3123,80 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-    // --- Personal ---
+    // --- Social Cause ---
     {
-        id: 'personal_travel_pack',
-        title: "Personal Travel & Pet Care Pack",
-        priceUSD: 9.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Personal",
-        description: "For the organized individual. A pack to manage your travels and ensure your pets are cared for while you're away.",
+        id: 'animal_shelter_pack',
+        title: "Animal Shelter Operations Pack",
+        priceUSD: 0,
+        priceINR: 0,
+        paymentId: '', // No payment needed
+        category: "Social Cause",
+        description: "A free toolkit for animal shelters and rescue organizations to ensure animal welfare, facility hygiene, and smooth operations.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
-        badgeText: "Bestseller",
-        badgeVariant: "default" as const,
-        whoIsItFor: ["Frequent Travelers", "Pet Owners", "Anyone planning a move"],
+        badgeText: "Free",
+        badgeVariant: "accent" as const,
+        whoIsItFor: ["Animal Shelter Managers", "Rescue Coordinators", "Veterinarians", "Volunteer Coordinators"],
         sampleItems: [
-            "A comprehensive 'Travel Packing & Prep' checklist.",
-            "A detailed 'Pet Sitter Instructions' checklist.",
-            "An 'Itinerary & Document' checklist for your trip.",
-            "A 'Home Security Checklist' for while you're away."
+            "Ensure animal health with a 'Daily Animal Welfare Check'.",
+            "Maintain a clean environment with the 'Shelter Hygiene Protocol'.",
+            "Streamline the 'Adoption & Foster Care Process'.",
+            "Manage your team effectively with a 'Volunteer Onboarding & Management' checklist."
         ],
         checklists: [
-             {
-                title: "✈️ Travel Packing & Pre-Departure Checklist",
-                department: "Personal",
-                frequency: "Per Trip",
-                role: "Traveler",
-                summary: "The ultimate list to ensure you pack everything you need and prepare your home before you leave for a stress-free vacation.",
+            {
+                title: "🐶 Daily Animal Health & Welfare Check",
+                department: "Animal Care",
+                frequency: "Daily",
+                role: "Animal Caretaker",
+                summary: "A fundamental daily check to monitor the health and well-being of every animal in the shelter.",
                 tasks: [
-                    { id: 'TVL-PC-01', description: "Pack clothing appropriate for the destination's weather.", priority: 'High', riskLevel: 'Low', proof: 'Packed Luggage', location: 'Home' },
-                    { id: 'TVL-PC-02', description: "Gather all necessary travel documents: passports, visas, tickets, and hotel confirmations.", priority: 'High', riskLevel: 'High', proof: 'Document Folder', location: 'Home' },
-                    { id: 'TVL-PC-03', description: "Pack essential medications and a basic first-aid kit.", priority: 'High', riskLevel: 'High', proof: 'Packed Bag', location: 'Home' },
-                    { id: 'TVL-PC-04', description: "Notify your bank/credit card companies of your travel dates to avoid blocked cards.", priority: 'High', riskLevel: 'Medium', proof: 'Bank Communication', location: 'Home' },
-                    { id: 'TVL-PC-05', description: "Arrange for mail to be held or collected.", priority: 'Medium', riskLevel: 'Low', proof: 'Post Office Request', location: 'Home' },
-                    { id: 'TVL-PC-06', description: "Unplug non-essential electronics and set thermostat to an energy-saving temperature.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Home' },
-                    { id: 'TVL-PC-07', description: "Charge all electronic devices before leaving for the airport.", priority: 'High', riskLevel: 'Low', proof: 'Charged Devices', location: 'Home' },
-                    { id: 'TVL-PC-08', description: "Share your itinerary with a family member or friend.", priority: 'High', riskLevel: 'Medium', proof: 'Email/Message', location: 'Home' },
+                    { id: 'AS-AHW-01', description: "Check each animal for any signs of illness, injury, or distress.", priority: 'High', riskLevel: 'High', proof: 'Health Log', location: 'Kennels/Enclosures' },
+                    { id: 'AS-AHW-02', description: "Ensure every animal has fresh, clean water.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels/Enclosures' },
+                    { id: 'AS-AHW-03', description: "Provide the correct type and amount of food to each animal according to their diet plan.", priority: 'High', riskLevel: 'Medium', proof: 'Feeding Log', location: 'Kennels/Enclosures' },
+                    { id: 'AS-AHW-04', description: "Administer any required medications and document it in the animal's record.", priority: 'High', riskLevel: 'High', proof: 'Medication Administration Record (MAR)', location: 'Medical Room' },
+                    { id: 'AS-AHW-05', description: "Ensure each animal has some form of enrichment (e.g., toy, social interaction).", priority: 'Medium', riskLevel: 'Low', proof: 'Enrichment Log', location: 'Kennels/Enclosures' }
                 ]
             },
             {
-                title: "🐾 Pet Sitter & Home Care Instructions",
-                department: "Personal",
-                frequency: "Per Trip",
-                role: "Pet Owner",
-                summary: "A detailed instruction sheet for your pet sitter to ensure your pet and home are well taken care of while you're away.",
+                title: "🧼 Shelter Hygiene & Disease Control Protocol",
+                department: "Operations/Hygiene",
+                frequency: "Daily",
+                role: "Kennel Manager",
+                summary: "A strict cleaning and disinfection protocol to prevent the spread of disease within the shelter.",
                 tasks: [
-                    { id: 'PET-SIT-01', description: "Provide detailed feeding instructions: type of food, quantity, and feeding times.", priority: 'High', riskLevel: 'High', proof: 'Written Instructions', location: 'Home' },
-                    { id: 'PET-SIT-02', description: "List all medications with dosage and administration times.", priority: 'High', riskLevel: 'High', proof: 'Medication Schedule', location: 'Home' },
-                    { id: 'PET-SIT-03', description: "Provide contact information for your veterinarian and a 24-hour emergency vet clinic.", priority: 'High', riskLevel: 'High', proof: 'Contact List', location: 'Home' },
-                    { id: 'PET-SIT-04', description: "Explain the pet's daily routine, including walk times, playtime, and sleeping arrangements.", priority: 'High', riskLevel: 'Medium', proof: 'Written Routine', location: 'Home' },
-                    { id: 'PET-SIT-05', description: "Leave instructions for home care, such as watering plants or bringing in mail.", priority: 'Medium', riskLevel: 'Low', proof: 'Written Instructions', location: 'Home' },
-                    { id: 'PET-SIT-06', description: "Show the sitter where all pet supplies are located (food, leashes, toys, cleaning supplies).", priority: 'High', riskLevel: 'Low', proof: 'Physical Walkthrough', location: 'Home' },
-                    { id: 'PET-SIT-07', description: "Provide your contact information and travel itinerary.", priority: 'High', riskLevel: 'Medium', proof: 'Contact Info Sheet', location: 'Home' },
-                    { id: 'PET-SIT-08', description: "Inform the sitter of any of your pet's behavioral quirks or fears.", priority: 'Medium', riskLevel: 'Medium', proof: 'Written Notes', location: 'Home' },
-                ]
-            },
-             {
-                title: "🏠 Home Cleaning Routine",
-                department: "Personal",
-                frequency: "Weekly",
-                role: "Homeowner",
-                summary: "A structured checklist to keep your home clean and organized, breaking down tasks by room and frequency.",
-                tasks: [
-                    { id: 'CLEAN-WK-01', description: "Change and wash all bed linens and towels.", priority: 'Medium', riskLevel: 'Low', proof: 'Clean Linens', location: 'Bedrooms/Bathrooms' },
-                    { id: 'CLEAN-WK-02', description: "Dust all surfaces, including furniture, shelves, and electronics.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'All Rooms' },
-                    { id: 'CLEAN-WK-03', description: "Vacuum all carpets and rugs, and mop all hard floors.", priority: 'High', riskLevel: 'Low', proof: 'Clean Floors', location: 'All Rooms' },
-                    { id: 'CLEAN-WK-04', description: "Clean and disinfect all bathroom surfaces, including toilet, sink, and shower.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Bathrooms' },
-                    { id: 'CLEAN-WK-05', description: "Wipe down all kitchen surfaces, clean the sink, and take out the trash.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' }
+                    { id: 'AS-HYG-01', description: "Clean and disinfect every kennel/enclosure daily.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels/Enclosures' },
+                    { id: 'AS-HYG-02', description: "Wash all food and water bowls with disinfectant after each use.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen/Cleaning Area' },
+                    { id: 'AS-HYG-03', description: "Implement and monitor quarantine protocols for all new and sick animals.", priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Isolation Area' },
+                    { id: 'AS-HYG-04', description: "Ensure staff and volunteers use hand sanitizer or wash hands between handling different animals.", priority: 'High', riskLevel: 'High', proof: 'Observation/Signage', location: 'Throughout Shelter' },
+                    { id: 'AS-HYG-05', description: "Properly dispose of all animal waste in designated, sealed bins.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Log', location: 'Waste Disposal Area' }
                 ]
             },
             {
-                title: "🎉 Event & Party Planning",
-                department: "Personal",
-                frequency: "Per Event",
-                role: "Host",
-                summary: "A step-by-step guide to planning a successful party or event, from budget and guest list to day-of execution.",
+                title: "🏡 Adoption & Foster Care Process",
+                department: "Adoptions",
+                frequency: "Per Adoption/Foster",
+                role: "Adoption Counselor",
+                summary: "A structured process to ensure animals are placed in safe, loving, and appropriate homes.",
                 tasks: [
-                    { id: 'PARTY-01', description: "Set a budget and create a guest list.", priority: 'High', riskLevel: 'Medium', proof: 'Budget Spreadsheet', location: 'Planning Phase' },
-                    { id: 'PARTY-02', description: "Choose a date, time, and venue, and send out invitations.", priority: 'High', riskLevel: 'High', proof: 'Invitations Sent', location: 'Planning Phase' },
-                    { id: 'PARTY-03', description: "Plan the menu and arrange for catering or purchase groceries.", priority: 'High', riskLevel: 'Medium', proof: 'Menu Plan', location: 'Planning Phase' },
-                    { id: 'PARTY-04', description: "Arrange for entertainment, music, and decorations.", priority: 'Medium', riskLevel: 'Low', proof: 'Booking Confirmations', location: 'Planning Phase' },
-                    { id: 'PARTY-05', description: "On the day of the event, set up the venue and do a final check of all arrangements.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Venue' }
+                    { id: 'AS-ADOPT-01', description: "Have potential adopters fill out a detailed application form.", priority: 'High', riskLevel: 'High', proof: 'Completed Application Form', location: 'Adoption Office' },
+                    { id: 'AS-ADOPT-02', description: "Conduct an interview with the applicant to assess their suitability and home environment.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Adoption Office' },
+                    { id: 'AS-ADOPT-03', description: "If required by policy, conduct a home visit before finalizing the adoption.", priority: 'High', riskLevel: 'High', proof: 'Home Visit Report', location: 'Adopter\'s Home' },
+                    { id: 'AS-ADOPT-04', description: "Ensure the animal is vaccinated, dewormed, and spayed/neutered before adoption.", priority: 'High', riskLevel: 'High', proof: 'Veterinary Records', location: 'Medical Records' },
+                    { id: 'AS-ADOPT-05', description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Adoption Contract', location: 'Adoption Office' }
                 ]
             },
             {
-                title: "🛡️ Home Security Checklist (While Away)",
-                department: "Personal",
-                frequency: "Per Trip",
-                role: "Homeowner",
-                summary: "A checklist to enhance your home's security and give you peace of mind while you are on vacation.",
+                title: "🙋 Volunteer Onboarding & Management",
+                department: "Volunteers",
+                frequency: "Per Volunteer",
+                role: "Volunteer Coordinator",
+                summary: "A checklist to recruit, train, and manage volunteers effectively, ensuring they are a valuable and safe asset to the shelter.",
                 tasks: [
-                    { id: 'HOME-SEC-01', description: "Ensure all windows and doors are securely locked.", priority: 'High', riskLevel: 'High', proof: 'Physical Check', location: 'Home' },
-                    { id: 'HOME-SEC-02', description: "Set timers for indoor lights to create the appearance of occupancy.", priority: 'High', riskLevel: 'Medium', proof: 'Timers Set', location: 'Home' },
-                    { id: 'HOME-SEC-03', description: "Inform a trusted neighbor or friend of your travel dates and ask them to keep an eye on your property.", priority: 'High', riskLevel: 'Medium', proof: 'Neighbor Notified', location: 'Home' },
-                    { id: 'HOME-SEC-04', description: "Pause mail and newspaper deliveries to avoid pile-ups.", priority: 'High', riskLevel: 'Medium', proof: 'Delivery Hold Confirmation', location: 'Home' },
-                    { id: 'HOME-SEC-05', description: "Test your home security system and ensure monitoring is active.", priority: 'High', riskLevel: 'High', proof: 'System Test Log', location: 'Home' }
-                ]
-            },
-            {
-                title: "🚗 Car Maintenance Checklist",
-                department: "Personal",
-                frequency: "Monthly/Quarterly",
-                role: "Car Owner",
-                summary: "A routine checklist to keep your vehicle safe and in good working order, helping to prevent costly breakdowns.",
-                tasks: [
-                    { id: 'CAR-MAIN-01', description: "Check and top-up all essential fluids (engine oil, coolant, washer fluid).", priority: 'High', riskLevel: 'Medium', proof: 'Fluid Level Check', location: 'Vehicle' },
-                    { id: 'CAR-MAIN-02', description: "Inspect tire pressure and tread depth.", priority: 'High', riskLevel: 'High', proof: 'Tire Gauge Reading', location: 'Vehicle' },
-                    { id: 'CAR-MAIN-03', description: "Test all exterior and interior lights.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Vehicle' },
-                    { id: 'CAR-MAIN-04', description: "Check windshield wipers for wear and tear.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Inspection', location: 'Vehicle' },
-                    { id: 'CAR-MAIN-05', description: "Schedule regular professional servicing as per the manufacturer's recommendation.", priority: 'High', riskLevel: 'High', proof: 'Service Record', location: 'Service Center' }
-                ]
-            },
-            {
-                title: "💸 Personal Finance & Budgeting",
-                department: "Personal",
-                frequency: "Monthly",
-                role: "Individual",
-                summary: "A monthly checklist to manage your finances, track spending, and work towards your financial goals.",
-                tasks: [
-                    { id: 'FIN-PER-01', description: "Review all bank and credit card statements for accuracy and unauthorized charges.", priority: 'High', riskLevel: 'High', proof: 'Statement Review', location: 'Home Office' },
-                    { id: 'FIN-PER-02', description: "Track your income and expenses for the month against your budget.", priority: 'High', riskLevel: 'Medium', proof: 'Budget Spreadsheet', location: 'Home Office' },
-                    { id: 'FIN-PER-03', description: "Pay all bills on time to avoid late fees.", priority: 'High', riskLevel: 'High', proof: 'Payment Confirmations', location: 'Home Office' },
-                    { id: 'FIN-PER-04', description: "Allocate funds to savings and investment accounts.", priority: 'High', riskLevel: 'Medium', proof: 'Bank Transfers', location: 'Home Office' },
-                    { id: 'FIN-PER-05', description: "Review your progress towards short-term and long-term financial goals.", priority: 'Medium', riskLevel: 'Low', proof: 'Goal Tracker', location: 'Home Office' }
-                ]
-            },
-            {
-                title: "🌱 Garden & Plant Care Checklist",
-                department: "Personal",
-                frequency: "Weekly",
-                role: "Gardener",
-                summary: "A simple checklist to keep your indoor and outdoor plants healthy and thriving.",
-                tasks: [
-                    { id: 'GARDEN-01', description: "Check soil moisture and water plants as needed.", priority: 'High', riskLevel: 'Low', proof: 'Moisture Check', location: 'Garden/Indoors' },
-                    { id: 'GARDEN-02', description: "Inspect plants for signs of pests or diseases and treat them.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Garden/Indoors' },
-                    { id: 'GARDEN-03', description: "Remove any dead leaves or weeds.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Garden/Indoors' },
-                    { id: 'GARDEN-04', description: "Rotate indoor plants to ensure they get even sunlight.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Indoors' },
-                    { id: 'GARDEN-05', description: "Fertilize plants according to their specific needs and season.", priority: 'Medium', riskLevel: 'Low', proof: 'Fertilizing Schedule', location: 'Garden/Indoors' }
+                    { id: 'AS-VOL-01', description: "Conduct an orientation session for new volunteers covering shelter policies, safety procedures, and animal handling.", priority: 'High', riskLevel: 'High', proof: 'Orientation Sign-in Sheet', location: 'Training Room' },
+                    { id: 'AS-VOL-02', description: "Have all volunteers sign a waiver and code of conduct agreement.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Waiver', location: 'Coordinator\'s Office' },
+                    { id: 'AS-VOL-03', description: "Provide specific training for different roles (e.g., dog walking, cat socializing, cleaning).", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Various' },
+                    { id: 'AS-VOL-04', description: "Maintain a clear schedule for volunteer shifts.", priority: 'High', riskLevel: 'Low', proof: 'Volunteer Schedule', location: 'Coordinator\'s Office' },
+                    { id: 'AS-VOL-05', description: "Provide regular feedback and recognition to keep volunteers engaged and motivated.", priority: 'Medium', riskLevel: 'Low', proof: 'Communication Log', location: 'Coordinator\'s Office' }
                 ]
             }
         ]
@@ -3266,5 +3204,7 @@ export const premiumPacks: PremiumPack[] = [
 ]
 
 
+
+    
 
     
