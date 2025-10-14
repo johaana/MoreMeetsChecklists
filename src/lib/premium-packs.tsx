@@ -3131,11 +3131,9 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 0,
         paymentId: '', // No payment needed
         category: "Social Cause",
-        description: "A free toolkit for animal shelters and rescue organizations to ensure animal welfare, facility hygiene, and smooth operations.",
+        description: "A comprehensive toolkit for animal shelters and rescue organizations to ensure animal welfare, facility hygiene, and smooth operations. As a small contribution to the incredible work being done for animal welfare, we are offering this pack for free.",
         icon: <PawPrint className="w-8 h-8 text-primary" />,
-        badgeText: "Free",
-        badgeVariant: "accent" as const,
-        whoIsItFor: ["Animal Shelter Managers", "Rescue Coordinators", "Veterinarians", "Volunteer Coordinators"],
+        whoIsItFor: ["Animal Shelter Managers", "Rescue Coordinators", "Veterinarians", "Volunteer Coordinators", "NGO Staff"],
         sampleItems: [
             "Ensure animal health with a 'Daily Animal Welfare Check'.",
             "Maintain a clean environment with the 'Shelter Hygiene Protocol'.",
@@ -3150,11 +3148,11 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Animal Caretaker",
                 summary: "A fundamental daily check to monitor the health and well-being of every animal in the shelter.",
                 tasks: [
-                    { id: 'AS-AHW-01', description: "Check each animal for any signs of illness, injury, or distress.", priority: 'High', riskLevel: 'High', proof: 'Health Log', location: 'Kennels/Enclosures' },
-                    { id: 'AS-AHW-02', description: "Ensure every animal has fresh, clean water.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels/Enclosures' },
+                    { id: 'AS-AHW-01', description: "Check each animal for any signs of illness, injury, or distress (e.g., lethargy, not eating).", priority: 'High', riskLevel: 'High', proof: 'Health Log', location: 'Kennels/Enclosures' },
+                    { id: 'AS-AHW-02', description: "Ensure every animal has access to fresh, clean water.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels/Enclosures' },
                     { id: 'AS-AHW-03', description: "Provide the correct type and amount of food to each animal according to their diet plan.", priority: 'High', riskLevel: 'Medium', proof: 'Feeding Log', location: 'Kennels/Enclosures' },
                     { id: 'AS-AHW-04', description: "Administer any required medications and document it in the animal's record.", priority: 'High', riskLevel: 'High', proof: 'Medication Administration Record (MAR)', location: 'Medical Room' },
-                    { id: 'AS-AHW-05', description: "Ensure each animal has some form of enrichment (e.g., toy, social interaction).", priority: 'Medium', riskLevel: 'Low', proof: 'Enrichment Log', location: 'Kennels/Enclosures' }
+                    { id: 'AS-AHW-05', description: "Observe and log the animal's behavior (e.g., social, fearful, active).", priority: 'Medium', riskLevel: 'Low', proof: 'Behavioral Log', location: 'Kennels/Enclosures' }
                 ]
             },
             {
@@ -3164,9 +3162,9 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Kennel Manager",
                 summary: "A strict cleaning and disinfection protocol to prevent the spread of disease within the shelter.",
                 tasks: [
-                    { id: 'AS-HYG-01', description: "Clean and disinfect every kennel/enclosure daily.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels/Enclosures' },
+                    { id: 'AS-HYG-01', description: "Clean and disinfect every kennel/enclosure daily with a vet-approved disinfectant.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels/Enclosures' },
                     { id: 'AS-HYG-02', description: "Wash all food and water bowls with disinfectant after each use.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen/Cleaning Area' },
-                    { id: 'AS-HYG-03', description: "Implement and monitor quarantine protocols for all new and sick animals.", priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Isolation Area' },
+                    { id: 'AS-HYG-03', description: "Implement and monitor strict quarantine protocols for all new and sick animals.", priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Isolation Area' },
                     { id: 'AS-HYG-04', description: "Ensure staff and volunteers use hand sanitizer or wash hands between handling different animals.", priority: 'High', riskLevel: 'High', proof: 'Observation/Signage', location: 'Throughout Shelter' },
                     { id: 'AS-HYG-05', description: "Properly dispose of all animal waste in designated, sealed bins.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Log', location: 'Waste Disposal Area' }
                 ]
@@ -3178,10 +3176,10 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Adoption Counselor",
                 summary: "A structured process to ensure animals are placed in safe, loving, and appropriate homes.",
                 tasks: [
-                    { id: 'AS-ADOPT-01', description: "Have potential adopters fill out a detailed application form.", priority: 'High', riskLevel: 'High', proof: 'Completed Application Form', location: 'Adoption Office' },
-                    { id: 'AS-ADOPT-02', description: "Conduct an interview with the applicant to assess their suitability and home environment.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Adoption Office' },
-                    { id: 'AS-ADOPT-03', description: "If required by policy, conduct a home visit before finalizing the adoption.", priority: 'High', riskLevel: 'High', proof: 'Home Visit Report', location: 'Adopter\'s Home' },
-                    { id: 'AS-ADOPT-04', description: "Ensure the animal is vaccinated, dewormed, and spayed/neutered before adoption.", priority: 'High', riskLevel: 'High', proof: 'Veterinary Records', location: 'Medical Records' },
+                    { id: 'AS-ADOPT-01', description: "Have potential adopters fill out a detailed application form, including lifestyle and home environment questions.", priority: 'High', riskLevel: 'High', proof: 'Completed Application Form', location: 'Adoption Office' },
+                    { id: 'AS-ADOPT-02', description: "Conduct an interview with the applicant to assess their suitability and expectations.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Adoption Office' },
+                    { id: 'AS-ADOPT-03', description: "If required by policy, conduct a home visit (virtual or in-person) before finalizing the adoption.", priority: 'High', riskLevel: 'High', proof: 'Home Visit Report', location: 'Adopter\'s Home' },
+                    { id: 'AS-ADOPT-04', description: "Ensure the animal is vaccinated, dewormed, and spayed/neutered before leaving the shelter.", priority: 'High', riskLevel: 'High', proof: 'Veterinary Records', location: 'Medical Records' },
                     { id: 'AS-ADOPT-05', description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Adoption Contract', location: 'Adoption Office' }
                 ]
             },
@@ -3192,11 +3190,67 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Volunteer Coordinator",
                 summary: "A checklist to recruit, train, and manage volunteers effectively, ensuring they are a valuable and safe asset to the shelter.",
                 tasks: [
-                    { id: 'AS-VOL-01', description: "Conduct an orientation session for new volunteers covering shelter policies, safety procedures, and animal handling.", priority: 'High', riskLevel: 'High', proof: 'Orientation Sign-in Sheet', location: 'Training Room' },
-                    { id: 'AS-VOL-02', description: "Have all volunteers sign a waiver and code of conduct agreement.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Waiver', location: 'Coordinator\'s Office' },
-                    { id: 'AS-VOL-03', description: "Provide specific training for different roles (e.g., dog walking, cat socializing, cleaning).", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Various' },
-                    { id: 'AS-VOL-04', description: "Maintain a clear schedule for volunteer shifts.", priority: 'High', riskLevel: 'Low', proof: 'Volunteer Schedule', location: 'Coordinator\'s Office' },
-                    { id: 'AS-VOL-05', description: "Provide regular feedback and recognition to keep volunteers engaged and motivated.", priority: 'Medium', riskLevel: 'Low', proof: 'Communication Log', location: 'Coordinator\'s Office' }
+                    { id: 'AS-VOL-01', description: "Conduct an orientation session for new volunteers covering shelter policies, safety procedures, and basic animal handling.", priority: 'High', riskLevel: 'High', proof: 'Orientation Sign-in Sheet', location: 'Training Room' },
+                    { id: 'AS-VOL-02', description: "Have all volunteers sign a liability waiver and code of conduct agreement.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Waiver', location: 'Coordinator\'s Office' },
+                    { id: 'AS-VOL-03', description: "Provide specific, hands-on training for different roles (e.g., dog walking, cat socializing, cleaning).", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Various' },
+                    { id: 'AS-VOL-04', description: "Maintain a clear and accessible schedule for volunteer shifts.", priority: 'High', riskLevel: 'Low', proof: 'Volunteer Schedule', location: 'Coordinator\'s Office' },
+                    { id: 'AS-VOL-05', description: "Provide regular feedback, appreciation, and recognition to keep volunteers engaged and motivated.", priority: 'Medium', riskLevel: 'Low', proof: 'Communication Log', location: 'Coordinator\'s Office' }
+                ]
+            },
+            {
+                title: "📥 New Animal Intake & Quarantine",
+                department: "Animal Care",
+                frequency: "Per New Animal",
+                role: "Intake Coordinator",
+                summary: "A systematic protocol for safely processing new arrivals to protect the existing shelter population.",
+                tasks: [
+                    { id: 'AS-INTAKE-01', description: "Assign a unique ID to the new animal and create a record in the shelter management system.", priority: 'High', riskLevel: 'Medium', proof: 'System Record', location: 'Intake Room' },
+                    { id: 'AS-INTAKE-02', description: "Conduct an initial health screening for obvious signs of injury or illness.", priority: 'High', riskLevel: 'High', proof: 'Health Screen Form', location: 'Intake Room' },
+                    { id: 'AS-INTAKE-03', description: "Place the animal in a designated quarantine area, separate from the general population.", priority: 'High', riskLevel: 'High', proof: 'Location Log', location: 'Quarantine Area' },
+                    { id: 'AS-INTAKE-04', description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: 'High', riskLevel: 'High', proof: 'Medical Record', location: 'Medical Room' },
+                    { id: 'AS-INTAKE-05', description: "Perform a basic behavioral assessment to understand the animal's temperament.", priority: 'Medium', riskLevel: 'Medium', proof: 'Behavioral Notes', location: 'Quarantine Area' }
+                ]
+            },
+            {
+                title: "🛡️ Facility & Enclosure Safety Audit",
+                department: "Facilities",
+                frequency: "Weekly",
+                role: "Shelter Manager",
+                summary: "A weekly walkthrough to ensure the physical environment is safe for both animals and humans.",
+                tasks: [
+                    { id: 'AS-FACILITY-01', description: "Inspect all kennel and enclosure doors and latches to ensure they are secure.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'All Enclosures' },
+                    { id: 'AS-FACILITY-02', description: "Check for any sharp edges, broken wires, or potential hazards within enclosures.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'All Enclosures' },
+                    { id: 'AS-FACILITY-03', description: "Ensure outdoor play areas are secure with no gaps in fencing.", priority: 'High', riskLevel: 'High', proof: 'Perimeter Check Log', location: 'Outdoor Areas' },
+                    { id: 'AS-FACILITY-04', description: "Verify that fire extinguishers and first-aid kits are accessible and fully stocked.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Facility-wide' },
+                    { id: 'AS-FACILITY-05', description: "Check that all cleaning and medical supplies are stored securely away from animals.", priority: 'High', riskLevel: 'High', proof: 'Storage Area Audit', location: 'Storage Rooms' }
+                ]
+            },
+            {
+                title: "🎉 Adoption Event & Community Outreach",
+                department: "Adoptions/Marketing",
+                frequency: "Per Event",
+                role: "Outreach Coordinator",
+                summary: "A checklist to plan and execute successful off-site adoption events to increase visibility and find more homes for animals.",
+                tasks: [
+                    { id: 'AS-EVENT-01', description: "Select and book a suitable, safe venue for the event.", priority: 'High', riskLevel: 'Medium', proof: 'Venue Contract', location: 'Office' },
+                    { id: 'AS-EVENT-02', description: "Promote the event on social media, community calendars, and with local media.", priority: 'High', riskLevel: 'Medium', proof: 'Marketing Plan', location: 'Office' },
+                    { id: 'AS-EVENT-03', description: "Prepare 'adoption-ready' animal profiles and necessary paperwork for the event.", priority: 'High', riskLevel: 'Medium', proof: 'Event Binder', location: 'Office' },
+                    { id: 'AS-EVENT-04', description: "Ensure safe transport cages, water, and shade are available for all animals at the event.", priority: 'High', riskLevel: 'High', proof: 'Event Supply Checklist', location: 'Event Site' },
+                    { id: 'AS-EVENT-05', description: "Have experienced volunteers or staff on hand to manage animal handling and interact with the public.", priority: 'High', riskLevel: 'High', proof: 'Staff/Volunteer Roster', location: 'Event Site' }
+                ]
+            },
+            {
+                title: "📱 Social Media for Adoptions & Donations",
+                department: "Marketing",
+                frequency: "Weekly",
+                role: "Social Media Manager",
+                summary: "A checklist to create engaging content that drives adoptions and secures donations for the shelter.",
+                tasks: [
+                    { id: 'AS-SM-01', description: "Post high-quality photos and compelling stories of at least 3-5 adoptable animals each week.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Feed', location: 'Online' },
+                    { id: 'AS-SM-02', description: "Share 'Happy Tail' success stories of recently adopted animals to encourage other adopters.", priority: 'High', riskLevel: 'Low', proof: 'Social Media Feed', location: 'Online' },
+                    { id: 'AS-SM-03', description: "Create a weekly 'urgent needs' post highlighting specific donation requests (e.g., food, blankets, medical funds).", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Feed', location: 'Online' },
+                    { id: 'AS-SM-04', description: "Respond to all comments and direct messages from potential adopters or donors within 24 hours.", priority: 'High', riskLevel: 'Medium', proof: 'Inbox Review', location: 'Online' },
+                    { id: 'AS-SM-05', description: "Go 'Live' on platforms like Instagram or Facebook to showcase animals and answer questions in real-time.", priority: 'Medium', riskLevel: 'Low', proof: 'Live Video Archive', location: 'Online' }
                 ]
             }
         ]
