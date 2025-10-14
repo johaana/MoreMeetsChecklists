@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
@@ -176,6 +176,12 @@ export function SiteHeader() {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm">
+                         <SheetHeader>
+                            <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                            <SheetDescription className="sr-only">
+                                A list of navigation links for the MoreMeets website.
+                            </SheetDescription>
+                        </SheetHeader>
                         <div className="flex flex-col gap-4 p-4">
                             <div className="mb-4">
                                 <BrandLogo />
