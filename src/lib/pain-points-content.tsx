@@ -30,7 +30,7 @@ export const painPointsContent = {
             { icon: <Shield />, title: "Protect Against Internal & External Threats", description: "From robust opening/closing security procedures to daily CCTV audits and secure cash handling, our checklists provide a multi-layered defense system for your store." }
         ]
     },
-    retail_electronics_showroom_pack: {
+    electronics_showroom_pack: {
         title: "The Business Case for a High-Performing Electronics Showroom",
         points: [
             { icon: <Tv />, title: "Prevent Demo Unit Failures & Inconsistent Displays", description: "A non-functional demo unit or a messy display is a lost sale. Our checklists ensure every product is perfectly presented and functional, maintaining brand standards and boosting customer confidence." },
@@ -46,15 +46,6 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Improve On-Shelf Availability & Reduce Stockouts", description: "Streamline your inventory management with checklists for high-volume receiving, planogram compliance, and daily stock audits, ensuring popular items are always available to customers." },
             { icon: <HandCoins />, title: "Increase Checkout Speed & Reduce Shrinkage", description: "Optimize front-end efficiency with checklists for cash management, queue monitoring, and loss prevention at the point of sale, improving customer experience and protecting profits." },
             { icon: <Shield />, title: "Ensure a Safe & Clean Shopping Environment", description: "Implement daily store readiness and housekeeping checklists to ensure your store is always safe, hygienic, and welcoming, building customer trust and loyalty." }
-        ]
-    },
-    retail_mall_ops_pack: {
-        title: "The Business Case for World-Class Mall Management",
-        points: [
-            { icon: <Users />, title: "Enhance Shopper Experience & Increase Dwell Time", description: "Use checklists for common area maintenance, ambiance, and cleanliness to create a welcoming environment that encourages shoppers to stay longer and spend more." },
-            { icon: <Shield />, title: "Mitigate Liability with Robust Safety Protocols", description: "Implement comprehensive security, emergency response, and parking management checklists to ensure a safe environment for millions of visitors, protecting your asset from liability." },
-            { icon: <Building2 />, title: "Improve Tenant Relations & Satisfaction", description: "Streamline tenant onboarding, fit-out management, and communication with clear, professional processes, making your mall a preferred location for top-tier brands." },
-            { icon: <HandCoins />, title: "Optimize Operational Costs & Vendor Performance", description: "Manage your third-party vendors for housekeeping, security, and maintenance effectively with SLA-based checklists, ensuring you get the service you pay for and optimizing CAM charges." }
         ]
     },
     film_production_pack: {
@@ -84,22 +75,22 @@ export const painPointsContent = {
             { icon: <FileCheck />, title: "Ensure Regulatory & Safety Compliance", description: "Maintain a constant state of readiness for safety audits with documented checklists for ride maintenance, water park hygiene, and emergency preparedness, aligned with international standards." }
         ]
     },
-    sports_club_operations: {
-        title: "The Business Case for World-Class Sports Club & Gym Operations",
+    sports_clubs_facilities_pack: {
+        title: "The Business Case for World-Class Sports Club & Facility Operations",
         points: [
-            { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "A snapped cable or unhygienic pool can lead to lawsuits. Our checklists for equipment maintenance and pool hygiene create a verifiable safety record, protecting your members and your business." },
-            { icon: <Users />, title: "Deliver a Consistent, Premium Member Experience", description: "Inconsistent service leads to member churn. Standardize facility cleanliness, staff protocols, and class readiness to ensure every member has a 5-star experience on every visit." },
-            { icon: <TrendingUp />, title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers were key failures in the Uphaar tragedy. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and property." },
-            { icon: <FileCheck />, title: "Optimize Facility Management & Vendor Performance", description: "Manage your facility efficiently with checklists for housekeeping, vendor SLAs, and energy management, reducing operational costs and improving the longevity of your assets." }
+            { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "Worn-out turf or a faulty goalpost can lead to lawsuits. Our checklists for equipment and infrastructure maintenance create a verifiable safety record, protecting your members and your business." },
+            { icon: <Users />, title: "Master Event & Crowd Management", description: "Inconsistent security and poor crowd flow during tournaments create chaos. Standardize event setup, security briefing, and evacuation plans to ensure every event is safe and professional." },
+            { icon: <TrendingUp />, title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers are a catastrophic liability. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and property." },
+            { icon: <FileCheck />, title: "Optimize Facility Hygiene & Vendor Performance", description: "Poor hygiene in locker rooms or pools leads to member complaints and health risks. Manage facility cleanliness, vendor SLAs, and sustainability with our comprehensive checklists." }
         ]
     },
-    museum_cultural_ops_pack: {
-        title: "The Business Case for Preserving Culture & Engaging Visitors",
+    fitness_centers_gyms_pack: {
+        title: "The Business Case for a Safer, More Profitable Fitness Center",
         points: [
-            { icon: <FileLock />, title: "Protect Priceless Artifacts from Damage", description: "Implement strict, conservationist-approved protocols for artifact handling, climate control, and pest management to preserve your collection for future generations." },
-            { icon: <Users />, title: "Enhance the Visitor & Educational Experience", description: "Standardize exhibit installation, visitor services, and accessibility (WCAG) to create an engaging, informative, and welcoming experience for every guest." },
-            { icon: <Shield />, title: "Ensure Security & Emergency Preparedness", description: "Protect your collection and visitors with comprehensive checklists for museum security, alarm testing, and emergency response for scenarios like theft or fire." },
-            { icon: <FileCheck />, title: "Streamline Curatorial & Exhibition Management", description: "Manage your collection effectively with protocols for archiving, loans, and new acquisitions, while running complex temporary exhibitions on time and on budget." }
+            { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "A snapped cable or an unmaintained treadmill can lead to serious injury and lawsuits. Our checklists for daily equipment safety checks and preventive maintenance protect your members and your business." },
+            { icon: <Users />, title: "Deliver a Consistent, Premium Member Experience", description: "Inconsistent cleaning, poor staff accountability, and broken equipment lead to member churn. Standardize facility hygiene, staff certifications, and member feedback to ensure a 5-star experience." },
+            { icon: <TrendingUp />, title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers are common failures. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and your facility." },
+            { icon: <FileCheck />, title: "Improve Staff Performance & Accountability", description: "Lack of clear processes leads to inconsistent service. Empower your team with clear checklists for opening, closing, and cleaning, and use our audit checklists to ensure standards are met." }
         ]
     },
     facility_management_blueprint: {
@@ -120,7 +111,7 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Build a Foundation for Scalable Growth", description: "By embedding basic legal and compliance checks into your core operations (like asset management and strategic planning), you build a robust company that is more attractive to investors and partners." }
         ]
     },
-    ai_cybersecurity_compliance_pack: {
+    enterprise_risk_compliance_pack: {
         title: "The Business Case for AI & Cybersecurity Governance",
         points: [
             { icon: <BrainCircuit />, title: "Build Trust & Mitigate AI Risk", description: "Implement an AI Ethics framework to govern your models, assess for bias, and ensure transparency, building trust with users and regulators before you face scrutiny." },
@@ -136,15 +127,6 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Pass NABH/JCI/NABL Audits with Confidence", description: "Stop the pre-audit scramble. Our checklists embed global standards into your daily workflow, ensuring you are perpetually audit-ready and compliant, saving you from non-compliance penalties." },
             { icon: <Users />, title: "Eliminate Hospital-Acquired Infections (HAIs)", description: "HAIs are a major cost and safety risk. Our CSSD and Infection Control checklists enforce rigorous sterilization and hygiene protocols, directly reducing infection rates and improving patient outcomes." },
             { icon: <HandCoins />, title: "Stop Revenue Leakage from Inefficiency", description: "Reduce costly delays, sample rejections, and readmissions. Our protocols for ER, lab, and discharge planning streamline operations, improving patient flow and financial health." }
-        ]
-    },
-    dental_clinic_ops_pack: {
-        title: "The Business Case for a Safer & More Efficient Dental Practice",
-        points: [
-            { icon: <Shield />, title: "Eliminate Infection Control Lapses", description: "Prevent cross-contamination and build patient trust with CDC-aligned checklists for instrument sterilization and operatory disinfection between every patient." },
-            { icon: <FileLock />, title: "Reduce Legal Risk with Ironclad Consent", description: "Implement a robust process for client intake, medical history review, and signed informed consent to protect your practice from liability." },
-            { icon: <TrendingUp />, title: "Optimize Clinic Flow & Revenue", description: "Streamline your front office with checklists for efficient appointment scheduling, accurate billing, and proactive follow-up on insurance claims to maximize revenue and reduce administrative burden." },
-            { icon: <Users />, title: "Ensure Patient & Staff Safety", description: "From X-ray safety protocols to monthly emergency medical kit checks and compliant biomedical waste management, our checklists create a verifiable system of safety for everyone in your clinic." }
         ]
     },
     pharmacy_ops_pack: {
@@ -181,33 +163,6 @@ export const painPointsContent = {
             { icon: <Shield />, title: "Create a Safer Warehouse Environment", description: "Prevent costly accidents with daily safety checklists for forklifts, loading docks, and general housekeeping, reducing injuries and potential compliance fines." },
             { icon: <HandCoins />, title: "Eliminate Costly Shipping & Data Entry Errors", description: "A single typo in product dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' protocol for new product data entry prevents these expensive mistakes." },
             { icon: 'x', title: "Improve Order Fulfillment Speed & Accuracy", description: "A well-organized warehouse is a fast warehouse. Our 5S and inventory management checklists ensure that your pick-and-pack operations are efficient, accurate, and scalable." }
-        ]
-    },
-    construction_site_pack: {
-        title: "The Business Case for a Zero-Incident Construction Site",
-        points: [
-            { icon: <Shield />, title: "Prevent Fatalities with Permit-to-Work Systems", description: "Falls, trench collapses, and electrocutions are leading causes of death in construction. Our permit systems for Work-at-Height, Excavation, and Hot Work are essential controls to save lives." },
-            { icon: <FileCheck />, title: "Ensure Subcontractor Compliance & Reduce Liability", description: "Don't inherit a subcontractor's safety risk. Our 'Contractor Pre-Qualification' checklist ensures every vendor on your site has the right insurance, training, and safety record." },
-            { icon: <TrendingUp />, title: "Improve Site Productivity with Daily Audits", description: "A safe site is a productive site. Our 'Daily Site Safety Audit' checklist helps you proactively identify and fix hazards, from poor housekeeping to improper PPE use, preventing stop-work orders." },
-            { icon: <Users />, title: "Build a Powerful Safety Culture", description: "Move beyond compliance to culture. By using systematic tools like incident investigations, toolbox talks, and daily checks, you build a site where every worker is a safety leader." }
-        ]
-    },
-    alternative_medicine_wellness_pack: {
-        title: "The Business Case for a Trusted & Compliant Wellness Center",
-        points: [
-            { icon: <Shield />, title: "Protect Your Clients & Your Practice", description: "A single adverse reaction can destroy trust. Our 'Client Intake & Contraindication Screening' checklist is your most critical tool to ensure treatments are safe for every individual." },
-            { icon: <FileCheck />, title: "Meet Ayush & Global Hygiene Standards", description: "Ensure your center is compliant with regulatory bodies like the Ministry of Ayush and meets global standards for hygiene with our checklists for sterilization and facility management." },
-            { icon: <TrendingUp />, title: "Deliver Consistent, High-Quality Treatments", description: "Standardize your client journey from consultation to post-treatment care. Checklists for treatment room readiness and practitioner protocols ensure every client receives the same 5-star experience." },
-            { icon: <Sprout />, title: "Ensure Product Safety & Efficacy", description: "Manage your herbal remedies and wellness products with precision. Our inventory checklists cover expiry management, sourcing, and storage to ensure the products you use are safe and potent." }
-        ]
-    },
-    beauty_wellness_pack: {
-        title: "The Business Case for a Premier Salon, Spa & Fitness Studio",
-        points: [
-            { icon: <Shield />, title: "Guarantee Client Safety & Hygiene", description: "Prevent infections and build unshakable client trust with rigorous checklists for tool sterilization, equipment disinfection, and contraindication screening." },
-            { icon: <TrendingUp />, title: "Deliver a Consistent, 5-Star Experience", description: "Standardize everything from the client consultation and treatment protocol to the spa ambiance, ensuring every client receives the same premium service that justifies your pricing." },
-            { icon: <HandCoins />, title: "Optimize Bookings & Reduce No-Shows", description: "Streamline your front desk with checklists for smart appointment scheduling, automated reminders, and waitlist management to maximize your capacity and revenue." },
-            { icon: <FileCheck />, title: "Improve Staff Performance & Reduce Errors", description: "Empower your team with clear, step-by-step protocols for every service. This reduces training time, minimizes mistakes, and creates a less stressful, more professional work environment." }
         ]
     },
     animal_shelter_pack: {
