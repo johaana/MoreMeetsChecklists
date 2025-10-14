@@ -82,7 +82,7 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         globalStandards: {
-            title: "Aligned with Global Hospitality Standards",
+            title: "Built on Global Hospitality Standards",
             standards: [
                 { name: "Health & Safety", description: "HACCP, ISO 22000 for food safety; NFPA for fire safety; local health department regulations." },
                 { name: "Guest Experience", description: "ISO 9001 for quality management; star-rating criteria; brand-specific Standard Operating Procedures." },
@@ -234,7 +234,7 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         globalStandards: {
-            title: "Aligned with Global Food & Safety Standards",
+            title: "Built on Global Food & Safety Standards",
             standards: [
                 { name: "Food Safety", description: "HACCP principles, ISO 22000, local regulations (FDA, FSSAI, EFSA)." },
                 { name: "Quality Management", description: "ISO 9001 for consistent service and quality." },
@@ -376,7 +376,7 @@ export const premiumPacks: PremiumPack[] = [
             "Includes checklists for 'Cash Handling' and 'Daily Security Audits'."
         ],
         globalStandards: {
-            title: "Aligned with Global Luxury & Security Standards",
+            title: "Built on Global Luxury & Security Standards",
             standards: [
                 { name: "Security", description: "Best practices for physical security, vault management, and high-value inventory control." },
                 { name: "Customer Experience", description: "Principles of luxury service, clienteling, and personalized shopping." },
@@ -390,7 +390,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Security/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "Establish an ironclad routine. This rigorous protocol ensures your store is secure, preventing theft and guaranteeing staff safety from open to close.",
+                summary: "Establish an ironclad routine to secure your high-value store. This rigorous protocol prevents theft and guarantees staff safety from open to close.",
                 tasks: [
                     { id: 'LUX-SEC-01', description: "Test all alarm systems (panic buttons, door sensors) before opening.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Store' },
                     { id: 'LUX-SEC-02', description: "Verify all CCTV cameras are recording and have unobstructed views, especially over cash counters and vaults.", priority: 'High', riskLevel: 'High', proof: 'CCTV Check Log', location: 'Security Room' },
@@ -404,7 +404,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory/Security",
                 frequency: "Daily",
                 role: "Inventory Manager",
-                summary: "Protect your most valuable assets. This precise checklist tracks every high-value item with two-person sign-offs and daily counts to eliminate loss or theft.",
+                summary: "Protect your most valuable assets from internal and external threats. This precise checklist tracks every high-value item with two-person sign-offs and daily counts to eliminate loss.",
                 tasks: [
                     { id: 'LUX-INV-01', description: "Conduct a daily count of all items in the vault and high-security display cases.", priority: 'High', riskLevel: 'High', proof: 'Daily Count Sheet', location: 'Vault/Sales Floor' },
                     { id: 'LUX-INV-02', description: "Log every instance an item is removed from or returned to the vault, with two-person sign-off.", priority: 'High', riskLevel: 'High', proof: 'Movement Log', location: 'Vault' },
@@ -418,7 +418,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Marketing/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "Deliver a flawless brand experience. This checklist ensures your store's presentation meets the exacting standards of a luxury brand, from lighting and scent to display cleanliness.",
+                summary: "Deliver a flawless brand experience that justifies a premium price point. This checklist ensures your store's presentation meets the exacting standards of a luxury brand, from lighting and scent to display cleanliness.",
                 tasks: [
                     { id: 'LUX-VM-01', description: "Ensure all display cases are immaculately clean, fingerprint-free, and well-lit.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'LUX-VM-02', description: "Verify that all product displays adhere to the brand's global visual merchandising guidelines.", priority: 'High', riskLevel: 'Medium', proof: 'VM Guideline Checklist', location: 'Sales Floor' },
@@ -432,7 +432,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sales",
                 frequency: "Ongoing",
                 role: "Sales Associate",
-                summary: "Turn clients into brand advocates. This protocol guides your team in delivering an exceptional, personalized service experience that defines luxury.",
+                summary: "Turn high-net-worth clients into lifelong brand advocates. This protocol guides your team in delivering an exceptional, personalized service experience that defines luxury.",
                 tasks: [
                     { id: 'LUX-CUST-01', description: "Greet every client within 30 seconds of entry and offer a beverage.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
                     { id: 'LUX-CUST-02', description: "For returning clients, review their purchase history and preferences in the CRM before engaging.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'Back Office/Tablet' },
@@ -446,7 +446,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Finance/Operations",
                 frequency: "Daily",
                 role: "Cashier/Manager",
-                summary: "Protect your business from financial crime. This checklist ensures secure cash handling and strict compliance with Anti-Money Laundering (AML) regulations for large transactions.",
+                summary: "Protect your business from financial crime and regulatory penalties. This checklist ensures secure cash handling and strict compliance with Anti-Money Laundering (AML) regulations for large transactions.",
                 tasks: [
                     { id: 'LUX-AML-01', description: "Perform cash reconciliation at the start and end of each shift with a two-person sign-off.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Cash Office' },
                     { id: 'LUX-AML-02', description: "For any cash transaction above the regulatory threshold (e.g., $10,000), complete a 'Source of Funds' declaration form.", priority: 'High', riskLevel: 'High', proof: 'AML Form', location: 'Cash Office' },
@@ -460,7 +460,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Per Item",
                 role: "Service Manager",
-                summary: "Elevate your after-sales service. This detailed process for managing custom orders and repairs builds client trust and loyalty, a key part of the luxury experience.",
+                summary: "Elevate your after-sales service to build unbreakable client trust. This detailed process for managing custom orders and repairs turns a potential pain point into a loyalty-building experience.",
                 tasks: [
                     { id: 'LUX-REPAIR-01', description: "Photograph and document the condition of any item received for repair, with client sign-off.", priority: 'High', riskLevel: 'High', proof: 'Intake Form with Photos', location: 'Service Desk' },
                     { id: 'LUX-REPAIR-02', description: "Provide the client with a detailed estimate and timeline for the repair or special order.", priority: 'High', riskLevel: 'Medium', proof: 'Estimate Document', location: 'Service Desk' },
@@ -474,7 +474,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Compliance",
                 frequency: "Quarterly",
                 role: "Compliance Officer",
-                summary: "Build a brand that customers can trust. This checklist ensures you meet modern standards for ethical sourcing and sustainability, a key factor for discerning clients.",
+                summary: "Build a brand that discerning clients can trust. This checklist ensures you meet modern standards for ethical sourcing and sustainability, a key differentiator in the luxury market.",
                 tasks: [
                     { id: 'LUX-ESG-01', description: "Verify that diamond and precious metal suppliers provide valid 'Kimberley Process' or other conflict-free sourcing certificates.", priority: 'High', riskLevel: 'High', proof: 'Supplier Certificates', location: 'Procurement Office' },
                     { id: 'LUX-ESG-02', description: "Audit the brand's packaging to ensure it meets sustainability goals (e.g., recycled materials, FSC certified).", priority: 'Medium', riskLevel: 'Low', proof: 'Packaging Audit Report', location: 'Marketing Office' },
@@ -488,7 +488,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "IT/Operations",
                 frequency: "Quarterly",
                 role: "Store Manager",
-                summary: "Protect your clients and your business. This checklist ensures your store is compliant with PCI DSS standards to safeguard sensitive customer payment data.",
+                summary: "Protect your high-net-worth clients and your business from cyber threats. This checklist ensures your store is compliant with PCI DSS standards to safeguard sensitive payment data.",
                 tasks: [
                     { id: 'LUX-PCI-01', description: "Ensure the POS system and credit card terminals are running updated, patched software.", priority: 'High', riskLevel: 'High', proof: 'IT System Log', location: 'IT Office' },
                     { id: 'LUX-PCI-02', description: "Verify that the store's Wi-Fi network for payments is separate from the public guest Wi-Fi.", priority: 'High', riskLevel: 'High', proof: 'Network Diagram', location: 'IT Office' },
@@ -518,7 +518,7 @@ export const premiumPacks: PremiumPack[] = [
             "Streamline 'Omni-Channel Operations' for click-and-collect and online returns."
         ],
         globalStandards: {
-            title: "Aligned with Global Fashion Retail Standards",
+            title: "Built on Global Fashion Retail Standards",
             standards: [
                 { name: "Inventory Management", description: "Best practices for seasonal stock, markdowns, and omni-channel accuracy." },
                 { name: "Loss Prevention", description: "Techniques for shrinkage control, including fitting room monitoring and security tag audits." },
@@ -532,7 +532,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Store Manager",
-                summary: "Ensure a flawless first impression. This morning checklist ensures your store is perfectly presented, stocked, and ready for customers the moment your doors open.",
+                summary: "Set the stage for a successful sales day. This morning checklist ensures your store is perfectly presented, stocked, and ready for customers the moment your doors open.",
                 tasks: [
                     { id: 'FAS-OPEN-01', description: "Ensure all mannequins are dressed according to the current VM guide and are clean.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'FAS-OPEN-02', description: "Verify all lighting is functional and focused correctly on displays.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Sales Floor' },
@@ -546,7 +546,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory",
                 frequency: "Weekly",
                 role: "Merchandiser/Manager",
-                summary: "Maximize profitability and avoid costly write-offs. This checklist helps you manage the transition between seasons, optimizing sell-through and minimizing markdowns.",
+                summary: "Maximize profitability by mastering the fashion cycle. This checklist helps you manage the transition between seasons, optimizing sell-through and avoiding costly end-of-season write-offs.",
                 tasks: [
                     { id: 'FAS-INV-01', description: "Review sales data to identify fast and slow-moving items from the current season.", priority: 'High', riskLevel: 'High', proof: 'Sales Report', location: 'Office' },
                     { id: 'FAS-INV-02', description: "Plan and execute timely markdowns for end-of-season stock.", priority: 'High', riskLevel: 'High', proof: 'Markdown Plan', location: 'System' },
@@ -560,7 +560,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Merchandising",
                 frequency: "Weekly",
                 role: "Visual Merchandiser",
-                summary: "Create displays that stop traffic and drive sales. This creative and operational checklist ensures your window and in-store displays are compelling, fresh, and on-brand.",
+                summary: "Create displays that stop traffic and tell a story. This creative and operational checklist ensures your window and in-store displays are compelling, fresh, and on-brand.",
                 tasks: [
                     { id: 'FAS-VM-01', description: "Rotate the main window display according to the marketing calendar.", priority: 'High', riskLevel: 'Medium', proof: 'Photo of Display', location: 'Window' },
                     { id: 'FAS-VM-02', description: "Ensure all displayed apparel is perfectly steamed, pinned, and accessorized.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
@@ -574,7 +574,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sales/Security",
                 frequency: "Ongoing",
                 role: "Sales Associate",
-                summary: "Turn fitting rooms into a profit center, not a loss zone. This protocol helps you provide excellent customer service while implementing key security measures to prevent theft.",
+                summary: "Turn your fitting rooms into a high-conversion sales tool, not a shrinkage hotspot. This protocol helps you provide excellent customer service while implementing key security measures to prevent theft.",
                 tasks: [
                     { id: 'FAS-FIT-01', description: "Log the number of items a customer takes into a fitting room.", priority: 'High', riskLevel: 'High', proof: 'Fitting Room Log/Tags', location: 'Fitting Room Entrance' },
                     { id: 'FAS-FIT-02', description: "Check the fitting room for any left-behind items or discarded security tags immediately after a customer leaves.", priority: 'High', riskLevel: 'High', proof: 'Room Check Log', location: 'Fitting Rooms' },
@@ -617,6 +617,15 @@ export const premiumPacks: PremiumPack[] = [
             "Optimize 'Front-End Checkout & Cash Management'.",
             "Includes checklists for 'Planogram Compliance' and 'Daily Store Readiness'."
         ],
+        globalStandards: {
+            title: "Built on Global Retail & Food Safety Standards",
+            standards: [
+                { name: "Food Safety", description: "HACCP and local food safety authority guidelines for all fresh departments." },
+                { name: "Inventory Management", description: "Best practices for high-volume receiving, stock rotation (FIFO), and cycle counting." },
+                { name: "Loss Prevention", description: "Strategies for reducing shrinkage from receiving to point-of-sale." },
+                { name: "Workplace Safety", description: "OSHA guidelines for warehouse, stocking, and general store safety." }
+            ]
+        },
         checklists: [
             {
                 title: "🛒 Daily Store Readiness & Opening",
@@ -752,7 +761,7 @@ export const premiumPacks: PremiumPack[] = [
             "Deliver exceptional Customer Experience from greeting to post-sale support."
         ],
         globalStandards: {
-            title: "Aligned with Global Retail & Electronics Standards",
+            title: "Built on Global Retail & Electronics Standards",
             standards: [
                 { name: "Quality & Process Control", description: "ISO 9001" },
                 { name: "Environmental & Sustainability", description: "ISO 14001, ESG" },
@@ -869,11 +878,11 @@ export const premiumPacks: PremiumPack[] = [
             "Includes checklists for 'Cast & Crew Compliance'."
         ],
         globalStandards: {
-            title: "Aligned with Global Production Standards",
+            title: "Built on Global Production Standards",
             standards: [
                 { name: "Safety & Quality", description: "ISO 45001/9001, OSHA for on-set safety and quality management." },
                 { name: "Technical Standards", description: "SMPTE guidelines for camera, audio, and post-production formats." },
-                { name: "Legal & Compliance", description: "Protocols for copyright, E&O insurance, and union agreements (e.g., SAG-AFTRA, DGA)." },
+                { name: "Legal & Compliance", description: "Protocols for copyright, E&amp;O insurance, and union agreements (e.g., SAG-AFTRA, DGA)." },
                 { name: "Data Security", description: "Best practices for managing sensitive script and production data."}
             ]
         },
@@ -983,7 +992,7 @@ export const premiumPacks: PremiumPack[] = [
             "Implement 'Compliance & Security' protocols for data and content protection."
         ],
          globalStandards: {
-            title: "Aligned with Global Streaming & Tech Standards",
+            title: "Built on Global Streaming & Tech Standards",
             standards: [
                 { name: "Digital & Security", description: "WCAG 2.1 (Accessibility), ISO 27001 (Security), GDPR/DPDP (Privacy), PCI DSS (Payments)." },
                 { name: "Content & Broadcast", description: "Technical standards for video encoding, delivery (e.g., HLS/DASH), and metadata." },
@@ -1124,6 +1133,15 @@ export const premiumPacks: PremiumPack[] = [
             "Standardize 'Food & Beverage Hygiene (HACCP)' for park outlets.",
             "Includes checklists for 'Character & Performer Management' and 'Water Park Safety'."
         ],
+        globalStandards: {
+            title: "Built on Global Amusement Park Safety Standards",
+            standards: [
+                { name: "Ride Safety", description: "ASTM F24 standards for amusement ride design, maintenance, and operation." },
+                { name: "Guest Safety", description: "Best practices for crowd management, emergency response, and first aid." },
+                { name: "Food & Hygiene", description: "HACCP and local health department standards for all food and beverage outlets." },
+                { name: "Water Safety", description: "Protocols for water quality and lifeguard operations in aquatic parks." }
+            ]
+        },
         checklists: [
             {
                 title: "🎢 Daily Ride Safety & Operations",
@@ -1269,7 +1287,7 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         globalStandards: {
-            title: "Aligned with Global Facility Management Standards",
+            title: "Built on Global Facility Management Standards",
             standards: [
                 { name: "Safety", description: "OSHA (US), NEBOSH/IOSH (UK) for workplace safety; NFPA for fire safety." },
                 { name: "Quality & Process", description: "ISO 9001 for quality management; ISO 41001 for Facility Management standards." },
@@ -1411,7 +1429,7 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'Vendor Contract Review' checklist for non-lawyers."
         ],
         globalStandards: {
-            title: "Aligned with Foundational Legal & HR Best Practices",
+            title: "Built on Foundational Legal & HR Best Practices",
             standards: [
                 { name: "Employment Law", description: "Basics of hiring, contracts, and HR policy deployment." },
                 { name: "Contract Law", description: "Fundamentals of reviewing vendor agreements for key risks." },
@@ -1553,7 +1571,7 @@ export const premiumPacks: PremiumPack[] = [
             "Includes checklists for 'Vendor Security Assessment' and 'Cloud Security'."
         ],
         globalStandards: {
-            title: "Aligned with Global Tech & Security Standards",
+            title: "Built on Global Tech & Security Standards",
             standards: [
                 { name: "Info Security", description: "ISO 27001 for Information Security Management Systems." },
                 { name: "Data Privacy", description: "GDPR (EU), DPDP (India), CCPA (California) and other major data protection regulations." },
@@ -1707,7 +1725,7 @@ export const premiumPacks: PremiumPack[] = [
             ]
         },
         globalStandards: {
-            title: "Aligned with Global Healthcare Standards",
+            title: "Built on Global Healthcare Standards",
             standards: [
                 { name: "Clinical Quality", description: "JCI (Joint Commission International), NABH (India) for hospital accreditation." },
                 { name: "Patient Safety", description: "WHO Surgical Safety Guidelines, protocols for medication safety and infection control." },
@@ -1755,7 +1773,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PU-PREV-002', description: "The nurse or aide who repositions the patient must initial the log every two hours.", priority: 'High', riskLevel: 'High', proof: 'Signed Log', location: 'Bedside' },
                     { id: 'PU-PREV-003', description: "During handover, the outgoing and incoming nurse must verbally confirm the patient's repositioning schedule.", priority: 'High', riskLevel: 'Medium', proof: 'Handover Confirmation', location: 'Bedside' },
                     { id: 'PU-PREV-004', description: "Inspect patient's skin for redness or early signs of pressure sores during each turn.", priority: 'High', riskLevel: 'High', proof: 'Skin Assessment Log', location: 'Bedside' },
-                    { id: 'PU-PREV-005', description: "Ensure pressure-relieving mattresses or cushions are used for high-risk patients.", priority: 'High', riskLevel: 'High', proof: 'Equipment Check', location: 'Bedside' }
+                    { id: 'PU-PREV-05', description: "Ensure pressure-relieving mattresses or cushions are used for high-risk patients.", priority: 'High', riskLevel: 'High', proof: 'Equipment Check', location: 'Bedside' }
                 ]
             },
             {
@@ -1848,6 +1866,15 @@ export const premiumPacks: PremiumPack[] = [
             "Standardize 'Cold Chain & Vaccine Management' to ensure efficacy.",
             "Includes checklists for 'Patient Counseling' and 'Look-Alike, Sound-Alike Drugs'."
         ],
+        globalStandards: {
+            title: "Built on Global Pharmacy Best Practices",
+            standards: [
+                { name: "Dispensing Safety", description: "Protocols aligned with ISMP (Institute for Safe Medication Practices) guidelines, including for LASA drugs." },
+                { name: "Regulatory Compliance", description: "Frameworks for managing controlled substances according to DEA (US) and local narcotics control regulations." },
+                { name: "Quality & Storage", description: "Based on USP (United States Pharmacopeia) standards for drug storage, handling, and cold chain management." },
+                { name: "Patient Care", description: "Best practices for patient counseling and medication therapy management." }
+            ]
+        },
         checklists: [
             {
                 title: "℞ Prescription Intake & Verification",
@@ -1996,6 +2023,15 @@ export const premiumPacks: PremiumPack[] = [
             "Implement 'Student Housing & Residence Life' protocols.",
             "Includes checklists for 'Emergency Response' and 'Campus Security'."
         ],
+        globalStandards: {
+            title: "Built on Global Education & Safety Standards",
+            standards: [
+                { name: "Campus Safety", description: "Protocols aligned with campus safety regulations and best practices for emergency response." },
+                { name: "Lab & Research Safety", description: "Adherence to safety standards for handling chemicals and equipment in educational labs." },
+                { name: "Facility Management", description: "ISO 41001 principles for managing campus facilities, including maintenance and janitorial services." },
+                { name: "IT & Data", description: "Best practices for managing campus IT infrastructure and protecting student data." }
+            ]
+        },
         checklists: [
             {
                 title: "🚸 Classroom Readiness & Technology",
@@ -2144,6 +2180,15 @@ export const premiumPacks: PremiumPack[] = [
             "Monitor and audit 'Cleaning & Sanitation (HACCP)'.",
             "Includes checklists for 'Finished Product Testing' and 'Pest Control'."
         ],
+        globalStandards: {
+            title: "Built on Global Food Manufacturing Standards",
+            standards: [
+                { name: "Food Safety", description: "HACCP, ISO 22000, and GFSI-benchmarked standards for food safety management." },
+                { name: "Quality Management", description: "ISO 9001 principles for process control and consistent product quality." },
+                { name: "Workplace Safety", description: "OSHA and ISO 45001 standards for safe manufacturing operations, including LOTO and machine guarding." },
+                { name: "Traceability", description: "Frameworks for batch tracking and recall management." }
+            ]
+        },
         checklists: [
             {
                 title: "🍎 Raw Material Receiving & Inspection",
@@ -2256,7 +2301,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-FOOD-004', description: "Review regular pest reports and make the service based on the history.", priority: 'High', riskLevel: 'Medium', proof: 'Service order', location: 'All Areas' },
                     { id: 'PEST-FOOD-005', description: "Train employees on clean work environment.", priority: 'High', riskLevel: 'Medium', proof: 'Training records', location: 'HR Office' }
                 ]
-            },
+            }
         ]
     },
     // --- Social Cause ---
@@ -2278,6 +2323,15 @@ export const premiumPacks: PremiumPack[] = [
             "Standardize the 'Adoption & Foster Screening' process.",
             "Includes checklists for 'Medication Administration' and 'Volunteer Onboarding'."
         ],
+        globalStandards: {
+            title: "Built on Global Animal Welfare Best Practices",
+            standards: [
+                { name: "Animal Health", description: "Protocols aligned with veterinary best practices for health checks, medication, and hygiene." },
+                { name: "Shelter Operations", description: "Guidelines from leading animal welfare organizations for sanitation and disease control." },
+                { name: "Adoption & Foster", description: "Ethical and effective screening processes to ensure safe and permanent homes." },
+                { name: "Volunteer Management", description: "Best practices for training and managing volunteers in an animal care setting." }
+            ]
+        },
         checklists: [
             {
                 title: "🐾 Daily Animal Health & Wellness",
@@ -2352,5 +2406,3 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
-
-    
