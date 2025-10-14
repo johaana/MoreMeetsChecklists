@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase, Home, Building, Leaf } from 'lucide-react';
 
@@ -58,7 +59,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'new-employee-onboarding-legal',
         title: "New Employee Onboarding (Legal Focus)",
         priceINR: 1999,
-        paymentId: "pl_ROLnfbmEpZzgZZ",
+        paymentId: "pl_ROLjNNiQa8G8XJ",
         category: "Corporate",
         icon: <Briefcase />,
         description: "A legally-focused checklist to ensure every new hire is onboarded correctly, minimizing future compliance risks and disputes.",
@@ -91,9 +92,9 @@ export const individualChecklists: IndividualChecklist[] = [
     },
     {
         id: 'esg-sustainability-audit',
-        title: "ESG &amp; Sustainability Audit (Office)",
+        title: "ESG & Sustainability Audit (Office)",
         priceINR: 1299,
-        paymentId: "pl_ROLoCqYkE1kRkF",
+        paymentId: "pl_ROLjNNiQa8G8XJ",
         category: "Corporate",
         icon: <Leaf />,
         description: "An actionable checklist for offices to measure and improve their environmental footprint, focusing on energy, water, and waste.",

@@ -128,7 +128,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     // Standardized, fixed pricing for the premium personalized tier
     const personalizedPrice = 10999;
     const personalizedStrikethroughPrice = 18999;
-    const personalizedPaymentId = 'pl_RMncDLAlms69Pd'; // This ID corresponds to the personalized price point in Razorpay
+    const personalizedPaymentId = pack.paymentId; // Use the same base payment ID
 
     const [showStickyBar, setShowStickyBar] = React.useState(false);
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
