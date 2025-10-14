@@ -19,6 +19,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { individualChecklists } from "@/lib/individual-checklists";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
+import { RotatingText } from "@/components/ui/rotating-text";
 
 
 const HowWeAreDifferentSection = () => (
@@ -26,7 +27,7 @@ const HowWeAreDifferentSection = () => (
         <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
                 <div className="text-center mb-8">
-                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                     <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         We Don't Sell Software. We Sell The System.
                     </h2>
                 </div>
@@ -62,7 +63,7 @@ const GlobalStandardsSection = () => {
         <section className="w-full py-12 md:py-24">
             <div className="container px-4 md:px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         Audit-Ready. Globally Compliant. Operationally Excellent.
                     </h2>
                     <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
@@ -89,7 +90,7 @@ const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
                     Frequently Asked Questions
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -243,7 +244,7 @@ function PackList() {
         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
                         {title}
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -317,7 +318,7 @@ const IndividualChecklistsSection = () => {
         <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
                         Solve a Specific Problem, Instantly
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -432,7 +433,7 @@ const WhyDetailMatters = () => {
             <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
                 <div className="container px-4 md:px-6">
                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                        <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
                             Why Every Detail Matters
                         </h2>
                         <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -494,6 +495,7 @@ const WhyDetailMatters = () => {
 
 export default function Home() {
   const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+  const isMobile = useIsMobile();
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -541,9 +543,15 @@ export default function Home() {
 
          <section className="w-full py-12 bg-secondary/30 lg:hidden">
             <div className="container px-4 md:px-6 text-center">
-                 <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
-                    Meet More Standards. <br/>More Compliance. <br/>More Consistency.
-                </h2>
+                 {isMobile ? (
+                    <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
+                        Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
+                    </h2>
+                 ) : (
+                    <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
+                        Meet More Standards. <br/>More Compliance. <br/>More Consistency.
+                    </h2>
+                 )}
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
                     Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                 </p>
@@ -565,7 +573,7 @@ export default function Home() {
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                     <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
                         Loved by Professionals Worldwide
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
