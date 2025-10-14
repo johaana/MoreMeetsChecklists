@@ -84,13 +84,13 @@ export const painPointsContent = {
             { icon: <FileCheck />, title: "Ensure Regulatory & Safety Compliance", description: "Maintain a constant state of readiness for safety audits with documented checklists for ride maintenance, water park hygiene, and emergency preparedness, aligned with international standards." }
         ]
     },
-    sports_complex_stadium_ops: {
-        title: "The Business Case for World-Class Stadium Operations",
+    sports_club_operations: {
+        title: "The Business Case for World-Class Sports Club & Gym Operations",
         points: [
-            { icon: <Shield />, title: "Ensure Public Safety & Prevent Crowd Disasters", description: "Implement comprehensive protocols for pre-event security sweeps, crowd management, and emergency egress planning to prevent tragedies and ensure a safe environment for thousands of fans." },
-            { icon: <Trophy />, title: "Deliver a Professional Sporting & Broadcast Experience", description: "Maintain pristine playing fields with turf management checklists and ensure flawless media coverage with broadcast operations protocols, meeting the standards of professional leagues." },
-            { icon: <Users />, title: "Maximize VIP & Corporate Hospitality Revenue", description: "Standardize the premium experience for corporate boxes and VIP lounges, from catering and service to ambiance, ensuring satisfaction and renewal of high-value clients." },
-            { icon: <FileCheck />, title: "Optimize Facility Management & Event Turnover", description: "Efficiently manage everything from parking and traffic to post-event cleaning and restoration, ensuring the venue is always ready for the next big event and operating at peak efficiency." }
+            { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "A snapped cable or unhygienic pool can lead to lawsuits. Our checklists for equipment maintenance and pool hygiene create a verifiable safety record, protecting your members and your business." },
+            { icon: <Users />, title: "Deliver a Consistent, Premium Member Experience", description: "Inconsistent service leads to member churn. Standardize facility cleanliness, staff protocols, and class readiness to ensure every member has a 5-star experience on every visit." },
+            { icon: '🔥', title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers were key failures in the Uphaar tragedy. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and property." },
+            { icon: <FileCheck />, title: "Optimize Facility Management & Vendor Performance", description: "Manage your facility efficiently with checklists for housekeeping, vendor SLAs, and energy management, reducing operational costs and improving the longevity of your assets." }
         ]
     },
     museum_cultural_ops_pack: {

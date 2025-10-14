@@ -26,7 +26,7 @@ const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-D
 const packImageMap: Record<string, string> = {
   'film_production_pack': 'https://i.postimg.cc/zvqmVdT5/movie-production-1.jpg',
   'ott_platform_pack': 'https://i.postimg.cc/90c3rxyh/ott-platforms.webp',
-  'sports_complex_stadium_ops': 'https://i.postimg.cc/SRm0JZcS/sports-stadium-football1.jpg',
+  'sports_club_operations': 'https://i.postimg.cc/WpYSfqRk/sports-club-management.jpg',
   'cinema_operations_pack': 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
   'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
   'healthcare_compliance_suite': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
