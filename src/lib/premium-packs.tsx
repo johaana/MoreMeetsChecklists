@@ -35,7 +35,7 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
+    category: "Hotels & Resorts" | "Restaurants" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -59,7 +59,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Hospitality",
+        category: "Hotels & Resorts",
         description: "For GMs & Dept. Heads. A one-time purchase for a complete toolkit covering operations, finance, and leadership.",
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
@@ -211,7 +211,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 89.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Hospitality",
+        category: "Restaurants",
         description: "The essential HACCP-based toolkit for restaurant owners focused on safety, quality, and efficiency.",
         icon: <Utensils className="w-8 h-8 text-primary" />,
         badgeText: "Essential for F&B",
@@ -2643,7 +2643,7 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'AS-INTAKE-01', description: "Assign a unique ID to the new animal and create a record in the shelter management system.", priority: 'High', riskLevel: 'Medium', proof: 'System Record', location: 'Intake Room' },
                     { id: 'AS-INTAKE-02', description: "Conduct an initial health screening for obvious signs of injury or illness.", priority: 'High', riskLevel: 'High', proof: 'Health Screen Form', location: 'Intake Room' },
-                    { id: 'AS-INTAKE-03', description: "Place the animal in a designated quarantine area, separate from the general population.", priority: 'High', riskLevel: 'High', proof: 'Location Log', location: 'Quarantine Area' },
+                    { id: 'AS-INTAKE-03', description: "Place the animal in a designated quarantine area, separate from the general population.", priority: 'High', riskLevel: 'High', proof: 'Location Log', location: 'Isolation Area' },
                     { id: 'AS-INTAKE-04', description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: 'High', riskLevel: 'High', proof: 'Medical Record', location: 'Medical Room' },
                     { id: 'AS-INTAKE-05', description: "Perform a basic behavioral assessment to understand the animal's temperament.", priority: 'Medium', riskLevel: 'Medium', proof: 'Behavioral Notes', location: 'Quarantine Area' }
                 ]
@@ -2699,4 +2699,3 @@ export const premiumPacks: PremiumPack[] = [
     
 
     
-
