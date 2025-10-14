@@ -27,7 +27,7 @@ const HowWeAreDifferentSection = () => (
         <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
                 <div className="text-center mb-8">
-                     <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         We Don't Sell Software. We Sell The System.
                     </h2>
                 </div>
@@ -63,7 +63,7 @@ const GlobalStandardsSection = () => {
         <section className="w-full py-12 md:py-24">
             <div className="container px-4 md:px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         Audit-Ready. Globally Compliant. Operationally Excellent.
                     </h2>
                     <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
@@ -71,7 +71,7 @@ const GlobalStandardsSection = () => {
                     </p>
                 </div>
                 <div className="max-w-5xl mx-auto mt-12">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                         {standards.map(standard => (
                             <div key={standard.name} className="flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg border border-primary/10 text-center">
                                 <p className="font-bold text-base md:text-lg text-primary">{standard.name}</p>
@@ -90,7 +90,7 @@ const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Frequently Asked Questions
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -244,7 +244,7 @@ function PackList() {
         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         {title}
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -318,7 +318,7 @@ const IndividualChecklistsSection = () => {
         <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         Solve a Specific Problem, Instantly
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -433,7 +433,7 @@ const WhyDetailMatters = () => {
             <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
                 <div className="container px-4 md:px-6">
                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
+                        <h2 className="text-3xl font-bold tracking-tighter font-headline">
                             Why Every Detail Matters
                         </h2>
                         <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -464,7 +464,7 @@ const WhyDetailMatters = () => {
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         Why Every Detail Matters
                     </h2>
                     <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
@@ -516,7 +516,7 @@ export default function Home() {
                     The Professional Standard for Compliance &amp; Operations Checklists.
                     </h1>
                     <div className="hidden lg:block">
-                         <h2 className="text-2xl font-bold text-white/90 drop-shadow-sm max-w-3xl mx-auto font-headline">
+                         <h2 className="text-4xl font-bold text-white/90 drop-shadow-sm max-w-3xl mx-auto font-headline">
                             Meet More Standards. More Compliance. More Consistency.
                         </h2>
                         <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
@@ -573,7 +573,7 @@ export default function Home() {
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                     <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         Loved by Professionals Worldwide
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
