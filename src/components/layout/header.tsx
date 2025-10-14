@@ -13,6 +13,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const mainNavLinks = [
     { href: "/blog", label: "Blog" },
@@ -175,24 +176,45 @@ export function SiteHeader() {
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm">
+                    <SheetContent side="right" className="w-full max-w-sm flex flex-col">
                          <SheetHeader>
                             <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                             <SheetDescription className="sr-only">
                                 A list of navigation links for the MoreMeets website.
                             </SheetDescription>
-                        </SheetHeader>
-                        <div className="flex flex-col gap-4 p-4">
-                            <div className="mb-4">
+                            <div className="mb-4 pt-4">
                                 <BrandLogo />
                             </div>
-                             <div className="flex flex-col gap-3">
+                        </SheetHeader>
+                        <ScrollArea className="flex-1">
+                            <div className="flex flex-col gap-3 p-4">
                                 {isSalesPage ? (
                                     <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Back to Main Site</Link>
                                 ) : (
                                 <>
-                                    <Link href="/packs" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">All Packages</Link>
-                                    <Link href="/checklists" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Bestselling Checklists</Link>
+                                    <Accordion type="single" collapsible className="w-full">
+                                        <AccordionItem value="item-1" className="border-b-0">
+                                            <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline -ml-1 pr-1">
+                                                Explore Solutions
+                                            </AccordionTrigger>
+                                            <AccordionContent className="pt-2">
+                                                <div className="flex flex-col gap-2 pl-4 border-l">
+                                                    <h4 className="font-semibold text-sm text-primary/80 mt-2 mb-1">Premium Packs</h4>
+                                                    {premiumPacks.map(pack => (
+                                                        <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-md hover:bg-secondary">
+                                                            <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
+                                                            <span className="flex-1 leading-snug">{pack.title}</span>
+                                                        </Link>
+                                                    ))}
+                                                     <h4 className="font-semibold text-sm text-primary/80 mt-4 mb-1">Bestselling Checklists</h4>
+                                                     <Link href="/checklists" className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors">
+                                                        View All Bestsellers &rarr;
+                                                    </Link>
+                                                </div>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    </Accordion>
+                                    
                                     {mainNavLinks.map(link => (
                                         <Link
                                             key={link.href}
@@ -206,7 +228,7 @@ export function SiteHeader() {
                                 </>
                                 )}
                             </div>
-                        </div>
+                         </ScrollArea>
                     </SheetContent>
                 </Sheet>
             </div>

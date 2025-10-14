@@ -545,7 +545,7 @@ export default function Home() {
             <div className="container px-4 md:px-6 text-center">
                  {isMobile ? (
                     <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
-                        Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
+                        Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} period={1500} />
                     </h2>
                  ) : (
                     <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
