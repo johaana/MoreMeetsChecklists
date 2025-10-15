@@ -1575,7 +1575,7 @@ export const premiumPacks: PremiumPack[] = [
             "Prevent medication errors with a 'Look-Alike, Sound-Alike Drug' protocol.",
             "Ensure 'Critical Test Result Communication' is timely and logged.",
             "Master the 'High-Risk Patient Handover' to prevent information loss.",
-            "Includes a 'CSSD Audit' and 'Unidentified Patient Intake' protocol."
+            "NEW: Global Edition includes checklists aligned with JCI, WHO, and HIPAA."
         ],
         previewScenario: {
             title: "Preventing a Medication Error",
@@ -1884,7 +1884,7 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a 'Student Transport & Bus Safety' protocol.",
             "Manage 'Visitor & Access Control' to secure your campus.",
             "Ensure 'Playground & Sports Equipment Safety'.",
-            "Includes checklists for 'Emergency Drills' and 'Classroom Safety'."
+            "NEW: Global Edition includes checklists for Anti-Bullying, Digital Safety, and international curriculum compliance."
         ],
         globalStandards: {
             title: "Global Compliance Framework for Schools",
@@ -2226,7 +2226,7 @@ export const premiumPacks: PremiumPack[] = [
             "Implement 'Raw Material Receiving & Inspection' to prevent substandard inputs.",
             "Standardize 'Equipment Calibration & Maintenance' for accuracy and uptime.",
             "Monitor and audit 'Cleaning & Sanitation (HACCP)'.",
-            "Includes checklists for 'Finished Product Testing' and 'Pest Control'."
+            "NEW: Global Edition includes checklists for GFSI, FDA, and BRC compliance."
         ],
         globalStandards: {
             title: "Built on Global Food Manufacturing Standards",
@@ -2368,7 +2368,7 @@ export const premiumPacks: PremiumPack[] = [
             "Implement a life-saving 'Lock-Out Tag-Out (LOTO)' checklist.",
             "Manage high-risk tasks with a 'Permit-to-Work' system.",
             "Ensure 'Contractor EHS Management' to prevent third-party incidents.",
-            "Includes checklists for 'Waste Management' and 'Machine Guarding'."
+            "NEW: Global Edition adds specific checklists for OSHA, ISO 45001, and environmental compliance."
         ],
         previewScenario: {
             title: "Handling a Hazardous Chemical Spill",
@@ -3101,5 +3101,7 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
+    
 
     

@@ -37,8 +37,11 @@ const packImageMap: Record<string, string> = {
   'restaurants': 'https://i.postimg.cc/9QRtnf3Z/food1.jpg',
   'jewelry_and_luxury_retail': 'https://i.postimg.cc/JnbXpSjM/luxury-retail-2.jpg',
   'fashion_and_apparel_retail': 'https://i.postimg.cc/d1G5M6T3/fashion-retail-1.jpg',
-  'school_operations_pack': 'https://i.postimg.cc/LXMw9mXm/school-campus-1.jpg',
-  'university_college_ops': 'https://i.postimg.cc/tJ0Gz8Gz/university-campus-1.jpg',
+  'school_operations_pack': 'https://i.postimg.cc/hGC6S2JD/school1.jpg',
+  'university_college_ops': 'https://i.postimg.cc/FKP89TYW/college.jpg',
+  'logistics_warehouse_pack': 'https://i.postimg.cc/6qQ1FnWm/logistics.webp',
+  'manufacturing_operations_ehs_pack': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
+  'food_manufacturing_ops': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
 };
 
 
@@ -306,3 +309,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    

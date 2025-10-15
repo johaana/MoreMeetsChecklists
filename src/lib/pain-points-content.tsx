@@ -148,12 +148,12 @@ export const painPointsContent = {
         ]
     },
     school_operations_pack: {
-        title: "Why Every Detail Matters in School Operations",
+        title: "Why Your School's Reputation Depends on These Checklists",
         points: [
-            { icon: <Bus />, title: "Prevent the 'Forgotten Child' Tragedy", description: "A child left on a bus is a nightmare that destroys reputations and lives. Our mandatory end-of-route check ensures no child is ever left behind, preventing a catastrophic, irreversible failure." },
-            { icon: <Shield />, title: "Stop an Intruder Before They Enter", description: "An unauthorized person on campus is every parent's worst fear. Our strict visitor management protocol is your first line of defense, creating a secure perimeter to protect students from external threats." },
-            { icon: <Utensils />, title: "Avoid a Food Poisoning Outbreak", description: "A canteen food safety lapse can sicken dozens of students and lead to immediate closure. Our HACCP-based checklists for kitchen hygiene prevent contamination and protect student health." },
-            { icon: <TrendingUp />, title: "Pass a Surprise Inspection Without Panic", description: "Failing a fire safety or academic board inspection can lead to fines or loss of affiliation. Our checklists ensure you are perpetually compliant and always ready for an audit." }
+            { icon: <Bus />, title: "The 'Forgotten Child' Nightmare", description: "A child left on a bus is a catastrophic failure that can lead to criminal negligence charges and destroy your school's reputation forever. Our mandatory end-of-route check prevents this." },
+            { icon: <Shield />, title: "The Unseen Intruder on Campus", description: "An unauthorized person on school grounds is a terrifying security breach. Our strict visitor management and perimeter control checklists are your first line of defense against potential threats." },
+            { icon: <Utensils />, title: "The Cafeteria Food Poisoning Outbreak", description: "One food safety lapse can sicken dozens of students, trigger a public health crisis, and lead to immediate closure. Our HACCP-based kitchen hygiene SOPs prevent this disaster." },
+            { icon: <TrendingUp />, title: "Failing a Surprise Inspection", description: "Failing a fire safety or academic board inspection can result in fines, public embarrassment, or loss of affiliation. Our checklists ensure you are perpetually compliant and always ready." }
         ]
     },
     university_college_ops: {
@@ -205,5 +205,7 @@ export const painPointsContent = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
+
+    
 
     
