@@ -364,7 +364,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
-        description: "A comprehensive SOP and compliance checklist suite designed for fine jewellery, luxury watch, and premium retail brands — ensuring security, operational efficiency, brand consistency, and customer trust across stores.",
+        description: "A comprehensive SOP and compliance checklist suite designed for fine jewellery, luxury watch, and premium retail brands.",
         icon: <Gem className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
@@ -441,6 +441,62 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-PAY-05', description: "Use only secured, password-protected Wi-Fi networks for all POS transactions (PCI DSS compliance).", priority: 'High', riskLevel: 'High', proof: 'Network Configuration', location: 'IT Office' }
                 ]
             },
+            {
+                title: "🤝 High-Value Exchange & Handling SOP",
+                department: "Sales/Security",
+                frequency: "Per Exchange",
+                role: "Senior Sales Executive",
+                summary: "Prevent mishandling and fraud during high-value exchanges with a strict, dual-verification protocol that protects both the customer and the brand.",
+                tasks: [
+                    { id: 'LUX-EXCH-01', description: "Conduct all high-value exchanges in a dedicated, CCTV-monitored area.", priority: 'High', riskLevel: 'High', proof: 'CCTV Footage', location: 'Exchange Counter' },
+                    { id: 'LUX-EXCH-02', description: "Require two staff members to be present during the entire exchange process.", priority: 'High', riskLevel: 'High', proof: 'Staff Log', location: 'Exchange Counter' },
+                    { id: 'LUX-EXCH-03', description: "Verify the authenticity and weight of the returned item using certified equipment.", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'Exchange Counter' },
+                    { id: 'LUX-EXCH-04', description: "Document the exchange with signatures from the customer and both staff members.", priority: 'High', riskLevel: 'High', proof: 'Signed Exchange Form', location: 'Exchange Counter' },
+                    { id: 'LUX-EXCH-05', description: "Securely tag and log the exchanged item for return to inventory or assessment.", priority: 'High', riskLevel: 'Medium', proof: 'Tag and Log Entry', location: 'Exchange Counter' }
+                ]
+            },
+            {
+                title: "🔥 Fire & Electrical Safety Audit Checklist",
+                department: "Safety/Facilities",
+                frequency: "Monthly",
+                role: "Safety Officer",
+                summary: "Mitigate fire risks in a luxury environment where high-powered lighting and electronics are common. This checklist ensures compliance with fire safety regulations.",
+                tasks: [
+                    { id: 'LUX-FIRE-01', description: "Inspect all fire extinguishers for expiry date, pressure, and accessibility.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Inspection Log', location: 'Store-wide' },
+                    { id: 'LUX-FIRE-02', description: "Test all smoke detectors and fire alarms.", priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Store-wide' },
+                    { id: 'LUX-FIRE-03', description: "Check all display lighting and electrical wiring for signs of overheating or wear.", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Report', location: 'Sales Floor' },
+                    { id: 'LUX-FIRE-04', description: "Ensure flammable materials (cleaning supplies, packaging) are stored away from electrical panels.", priority: 'High', riskLevel: 'Medium', proof: 'Storage Area Audit', location: 'Storeroom' },
+                    { id: 'LUX-FIRE-05', description: "Verify that all emergency exits are clear and staff are trained on the evacuation plan.", priority: 'High', riskLevel: 'High', proof: 'Evacuation Drill Log', location: 'Store-wide' }
+                ]
+            },
+            {
+                title: "⚖️ POSH & Professional Conduct SOP",
+                department: "HR",
+                frequency: "Annually",
+                role: "HR Manager",
+                summary: "Foster a respectful and professional environment. This SOP outlines the process for Prevention of Sexual Harassment (POSH) compliance and professional conduct.",
+                tasks: [
+                    { id: 'LUX-POSH-01', description: "Ensure the company's POSH policy is displayed and accessible to all employees.", priority: 'High', riskLevel: 'High', proof: 'Policy Display Check', location: 'Staff Area' },
+                    { id: 'LUX-POSH-02', description: "Conduct mandatory annual POSH awareness training for all employees.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Training Room' },
+                    { id: 'LUX-POSH-03', description: "Verify that the Internal Complaints Committee (ICC) is properly constituted and members are trained.", priority: 'High', riskLevel: 'High', proof: 'ICC Constitution Document', location: 'HR Office' },
+                    { id: 'LUX-POSH-04', description: "Maintain a confidential log of any complaints and the actions taken.", priority: 'High', riskLevel: 'High', proof: 'Grievance Redressal Log', location: 'HR Office' },
+                    { id: 'LUX-POSH-05', description: "All employees to sign a code of conduct declaration upon joining.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Declarations', location: 'Employee Files' }
+                ]
+            },
+            {
+                title: "💠 Jewelry Certification & Documentation SOP",
+                department: "Sales/Quality",
+                frequency: "Per Sale",
+                role: "Sales Associate",
+                summary: "Build customer trust and prevent disputes by ensuring every piece of certified jewelry is sold with the correct, verified documentation (e.g., GIA, IGI).",
+                tasks: [
+                    { id: 'LUX-CERT-01', description: "Before completing a sale, match the serial number on the jewelry with the certificate number.", priority: 'High', riskLevel: 'High', proof: 'Physical Match Verification', location: 'POS' },
+                    { id: 'LUX-CERT-02', description: "Create a digital record linking the SKU of the sold item to its unique certificate number.", priority: 'High', riskLevel: 'Medium', proof: 'System Log Entry', location: 'POS/System' },
+                    { id: 'LUX-CERT-03', description: "Provide the original certificate to the customer in a branded folder.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'POS' },
+                    { id: 'LUX-CERT-04', description: "Have the customer sign an acknowledgment form confirming receipt of the correct certificate.", priority: 'High', riskLevel: 'High', proof: 'Signed Acknowledgment Form', location: 'POS' },
+                    { id: 'LUX-CERT-05', description: "Maintain a duplicate or digital copy of the certificate in the store's records for future reference.", priority: 'High', riskLevel: 'Medium', proof: 'Digital Archive', location: 'Office' }
+                ]
+            }
         ]
     },
     {
@@ -539,6 +595,48 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FAS-OMNI-03', description: "Process online returns that are brought into the store, inspecting items and updating inventory.", priority: 'High', riskLevel: 'High', proof: 'Returns Log', location: 'POS' },
                     { id: 'FAS-OMNI-04', description: "Perform a daily audit of store inventory levels to ensure they sync accurately with the online store.", priority: 'High', riskLevel: 'High', proof: 'Inventory Sync Report', location: 'System' },
                     { id: 'FAS-OMNI-05', description: "Train all staff on how to handle online orders and returns professionally.", priority: 'High', riskLevel: 'Medium', proof: 'Training Record', location: 'HR' }
+                ]
+            },
+            {
+                title: "🛡️ Store Safety & Loss Prevention",
+                department: "Security/Operations",
+                frequency: "Daily",
+                role: "Store Manager",
+                summary: "Protect your assets and ensure a safe shopping environment. This checklist covers daily security measures, from CCTV checks to managing EAS systems.",
+                tasks: [
+                    { id: 'FAS-SEC-01', description: "Verify all CCTV cameras are operational and have clear views of entrances, POS, and high-value areas.", priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
+                    { id: 'FAS-SEC-02', description: "Test EAS (Electronic Article Surveillance) gates at the start of the day.", priority: 'High', riskLevel: 'High', proof: 'EAS Test Log', location: 'Entrance' },
+                    { id: 'FAS-SEC-03', description: "Ensure all high-value items are properly tagged with security devices.", priority: 'High', riskLevel: 'High', proof: 'Tagging Audit', location: 'Sales Floor' },
+                    { id: 'FAS-SEC-04', description: "Conduct end-of-day checks to ensure all doors, windows, and cash registers are secure.", priority: 'High', riskLevel: 'High', proof: 'Closing Checklist', location: 'Store-wide' },
+                    { id: 'FAS-SEC-05', description: "Brief staff on current loss prevention focus areas (e.g., specific types of theft).", priority: 'Medium', riskLevel: 'Medium', proof: 'Briefing Notes', location: 'Staff Huddle' }
+                ]
+            },
+            {
+                title: "💰 Cash & Payment Handling",
+                department: "Finance/Operations",
+                frequency: "Per Shift",
+                role: "Head Cashier",
+                summary: "Secure your revenue with a strict protocol for cash handling, POS operations, and end-of-day reconciliation to prevent fraud and errors.",
+                tasks: [
+                    { id: 'FAS-CASH-01', description: "Verify cash float at the beginning of each shift.", priority: 'High', riskLevel: 'High', proof: 'Float Count Sheet', location: 'Cash Office' },
+                    { id: 'FAS-CASH-02', description: "Reconcile cash, card, and digital payments against POS reports at the end of each shift.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Cash Office' },
+                    { id: 'FAS-CASH-03', description: "Process refunds and exchanges only with manager approval and proper documentation.", priority: 'High', riskLevel: 'High', proof: 'Refund Log', location: 'POS' },
+                    { id: 'FAS-CASH-04', description: "Securely transport cash deposits to the bank or safe.", priority: 'High', riskLevel: 'High', proof: 'Deposit Slip/Log', location: 'Cash Office' },
+                    { id: 'FAS-CASH-05', description: "Regularly check POS hardware (card readers, printers) for tampering or malfunction.", priority: 'High', riskLevel: 'Medium', proof: 'Hardware Check Log', location: 'POS' }
+                ]
+            },
+            {
+                title: "🧑‍🏫 Staff Training & Performance",
+                department: "HR/Management",
+                frequency: "Monthly",
+                role: "Store Manager",
+                summary: "Build a high-performing sales team. This checklist focuses on continuous training, performance tracking, and motivation to drive sales and customer satisfaction.",
+                tasks: [
+                    { id: 'FAS-HR-01', description: "Conduct product knowledge training for new collections.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Training Room' },
+                    { id: 'FAS-HR-02', description: "Review individual sales performance and provide coaching.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Review Notes', location: 'Office' },
+                    { id: 'FAS-HR-03', description: "Run role-playing sessions on customer service scenarios (e.g., handling a difficult customer).", priority: 'Medium', riskLevel: 'Low', proof: 'Training Session Log', location: 'Sales Floor' },
+                    { id: 'FAS-HR-04', description: "Update staff on current promotions, sales targets, and store KPIs.", priority: 'High', riskLevel: 'Low', proof: 'Communication Log', location: 'Staff Huddle' },
+                    { id: 'FAS-HR-05', description: "Ensure all staff have completed mandatory compliance training (e.g., POSH, safety).", priority: 'High', riskLevel: 'High', proof: 'Compliance Training Records', location: 'HR Office' }
                 ]
             }
         ]
@@ -1425,6 +1523,48 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'GYM-POOL-03', description: "Check that pool decks are clean, dry, and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
                     { id: 'GYM-POOL-04', description: "Verify that pool drains are covered and filtration systems are running correctly.", priority: 'High', riskLevel: 'High', proof: 'Pump Room Log', location: 'Pump Room' },
                     { id: 'GYM-POOL-05', description: "If lifeguards are on duty, ensure they are alert and positioned correctly.", priority: 'High', riskLevel: 'High', proof: 'Supervisor Observation', location: 'Poolside' }
+                ]
+            },
+             {
+                title: "💰 Sales & Membership Management",
+                department: "Sales",
+                frequency: "Weekly",
+                role: "Sales Manager",
+                summary: "Drive membership growth and retention with a structured sales process. This checklist covers lead management, tours, and closing techniques.",
+                tasks: [
+                    { id: 'GYM-SALES-01', description: "Follow up with all new leads within 24 hours.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'CRM' },
+                    { id: 'GYM-SALES-02', description: "Conduct gym tours following a standardized script that highlights key features and benefits.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Gym Floor' },
+                    { id: 'GYM-SALES-03', description: "Track daily sales calls, tours, and closing rates.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Dashboard', location: 'CRM' },
+                    { id: 'GYM-SALES-04', description: "Run a weekly sales meeting to review performance and set targets.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Office' },
+                    { id: 'GYM-SALES-05', description: "Manage membership renewal and cancellation processes efficiently.", priority: 'High', riskLevel: 'High', proof: 'Renewal/Cancellation Log', location: 'CRM' }
+                ]
+            },
+            {
+                title: "💪 Personal Trainer & Staff Compliance",
+                department: "Fitness",
+                frequency: "Quarterly",
+                role: "Fitness Director",
+                summary: "Ensure your trainers are certified, professional, and delivering safe and effective programs, protecting your members and your brand.",
+                tasks: [
+                    { id: 'GYM-PT-01', description: "Verify that all personal trainer certifications are current and valid.", priority: 'High', riskLevel: 'High', proof: 'Certification File', location: 'HR Office' },
+                    { id: 'GYM-PT-02', description: "Conduct regular performance reviews and session observations for all trainers.", priority: 'High', riskLevel: 'Medium', proof: 'Review Forms', location: 'Office' },
+                    { id: 'GYM-PT-03', description: "Ensure trainers are following a standardized process for client assessment and program design.", priority: 'High', riskLevel: 'High', proof: 'Client File Audit', location: 'Office' },
+                    { id: 'GYM-PT-04', description: "Provide ongoing education and training on new fitness trends and safety protocols.", priority: 'Medium', riskLevel: 'Low', proof: 'Training Log', location: 'Training Room' },
+                    { id: 'GYM-PT-05', description: "Enforce a professional code of conduct for all training staff.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Code of Conduct', location: 'HR Office' }
+                ]
+            },
+            {
+                title: "🧘 Class & Studio Management",
+                department: "Group Fitness",
+                frequency: "Daily",
+                role: "Group Fitness Coordinator",
+                summary: "Deliver exceptional group fitness classes. This checklist covers studio readiness, instructor preparedness, and equipment safety for classes like yoga, spinning, and HIIT.",
+                tasks: [
+                    { id: 'GYM-CLASS-01', description: "Ensure the studio is clean and set up for the specific class type (e.g., yoga mats, spin bikes).", priority: 'High', riskLevel: 'Medium', proof: 'Studio Readiness Log', location: 'Studio' },
+                    { id: 'GYM-CLASS-02', description: "Check that all class-specific equipment (e.g., spin bikes, weights, bands) is functional and safe.", priority: 'High', riskLevel: 'High', proof: 'Equipment Check Log', location: 'Studio' },
+                    { id: 'GYM-CLASS-03', description: "Verify the instructor is present, prepared, and has the correct music and class plan.", priority: 'High', riskLevel: 'Medium', proof: 'Instructor Check-in', location: 'Studio' },
+                    { id: 'GYM-CLASS-04', description: "Manage class bookings and waitlists to avoid overcrowding.", priority: 'High', riskLevel: 'Medium', proof: 'Booking System', location: 'Front Desk' },
+                    { id: 'GYM-CLASS-05', description: "Gather feedback from members about class quality and instructor performance.", priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Forms/System', location: 'Various' }
                 ]
             }
         ]
