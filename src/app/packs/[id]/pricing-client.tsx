@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, Landmark, GraduationCap, IndianRupee } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, Landmark, GraduationCap } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -124,7 +124,7 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
     <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
         <div className="text-center mb-8">
             <h3 className="font-headline text-2xl font-bold mb-2 text-primary">A Smarter Investment in Excellence</h3>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-foreground/80 max-w-3xl mx-auto">
                 You're not just buying a tool—you're buying the expert-researched system.
             </p>
         </div>
@@ -219,7 +219,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         );
     }
 
-    const hasTieredEditions = ["Education", "Healthcare", "Industrial & Transport", "Entertainment & Events"].includes(pack.category);
+    const packsWithTieredEditions = [
+        "jewelry_and_luxury_retail",
+        "healthcare_and_hospital_operations",
+        "school_operations_pack",
+        "university_college_ops",
+        "sports_clubs_facilities_pack",
+    ];
+
+    const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
 
     const pricingCards = [
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
@@ -231,7 +239,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </Badge>
                 )}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
-                 {hasTieredEditions && <CardDescription>Aligned with domestic standards (e.g., CBSE, NABH, FSSAI).</CardDescription>}
+                 {hasTieredEditions && <CardDescription>Aligned with domestic standards (e.g., BIS, NABH, NBC, FSSAI).</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
@@ -341,6 +349,27 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </Card>
     ];
 
+    const singleTierCard = (
+         <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
+            <CardHeader className="p-6">
+                <CardTitle className="font-headline text-2xl">Get Instant Access</CardTitle>
+                <p className="text-4xl font-bold text-foreground pt-2">₹{pack.priceINR}</p>
+                <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
+                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
+                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
+            </CardContent>
+            <CardFooter className="p-6 mt-auto flex flex-col items-center">
+                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
+                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+            </CardFooter>
+        </Card>
+    );
+
     return (
         <>
         <section ref={pricingSectionRef} className="w-full py-12 md:py-16" id="pricing">
@@ -350,17 +379,25 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
 
-                {/* Desktop View */}
-                <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {pricingCards}
-                </div>
+                {hasTieredEditions ? (
+                     <>
+                        {/* Desktop View */}
+                        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                            {pricingCards}
+                        </div>
 
-                {/* Mobile View - Now a vertical stack */}
-                <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:hidden">
-                   {pricingCards.map((card, index) => (
-                        <div key={index}>{card}</div>
-                    ))}
-                </div>
+                        {/* Mobile View - Now a vertical stack */}
+                        <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:hidden">
+                        {pricingCards.map((card, index) => (
+                                <div key={index}>{card}</div>
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <div className="max-w-md mx-auto">
+                        {singleTierCard}
+                    </div>
+                )}
 
 
                 {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
