@@ -121,6 +121,44 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
+const ValueComparisonSection = ({ price }: { price: number }) => (
+    <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
+        <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary">A Smarter Investment in Excellence</h3>
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">See how a one-time purchase compares to other operational solutions.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <Card className="p-4 bg-background border-primary/20 border-2 shadow-lg">
+                <CardHeader className="p-2">
+                    <CardTitle className="text-lg font-headline text-primary">MoreMeets Pack</CardTitle>
+                </CardHeader>
+                <CardContent className="p-2">
+                    <p className="text-3xl font-bold">₹{price}</p>
+                    <p className="text-sm font-semibold text-muted-foreground">One-Time Purchase</p>
+                </CardContent>
+            </Card>
+            <Card className="p-4 bg-background">
+                <CardHeader className="p-2">
+                    <CardTitle className="text-lg font-headline">SaaS Subscriptions</CardTitle>
+                </CardHeader>
+                <CardContent className="p-2">
+                    <p className="text-3xl font-bold">₹30,000+</p>
+                    <p className="text-sm font-semibold text-muted-foreground">Per Year</p>
+                </CardContent>
+            </Card>
+            <Card className="p-4 bg-background">
+                <CardHeader className="p-2">
+                    <CardTitle className="text-lg font-headline">Consultant Fees</CardTitle>
+                </CardHeader>
+                <CardContent className="p-2">
+                    <p className="text-3xl font-bold">₹75,000+</p>
+                    <p className="text-sm font-semibold text-muted-foreground">Per Project</p>
+                </CardContent>
+            </Card>
+        </div>
+        <p className="text-center text-xs text-muted-foreground mt-6">Own the system, don't just rent the software. Get lifetime updates included.</p>
+    </div>
+);
+
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = pack.priceINR;
     const professionalPaymentId = pack.paymentId; 
@@ -156,7 +194,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     if (pack.priceINR <= 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
-                <div className="container px-4 md:px-6">
+                <div className="container px-2 md:px-6">
                      <div className="max-w-md mx-auto">
                         <Card className="shadow-2xl border-2 border-primary/20">
                             <CardHeader className="text-center pb-4">
@@ -256,7 +294,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     return (
         <>
         <section ref={pricingSectionRef} className="w-full py-12 md:py-16" id="pricing">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
@@ -277,6 +315,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
 
+                <ValueComparisonSection price={pack.priceINR} />
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
@@ -321,5 +360,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
-
-    

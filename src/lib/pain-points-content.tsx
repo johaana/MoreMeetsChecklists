@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt } from 'lucide-react';
 
@@ -146,13 +147,22 @@ export const painPointsContent = {
             { icon: <Users />, title: "Improve Patient Outcomes with Standardized Counseling", description: "Go beyond just dispensing. Use our patient counseling checklist to ensure every patient understands their medication, leading to better adherence and health outcomes." }
         ]
     },
-    education_sector_pack: {
-        title: "The Business Case for a Safer, More Organized Campus",
+    school_operations_pack: {
+        title: "The Business Case for a Safer, More Organized School",
         points: [
-            { icon: <Shield />, title: "Prevent a Parent's Worst Nightmare", description: "An unauthorized pickup or a bus accident is an existential threat to a school's reputation. Our protocols for student pickup verification and bus safety are your first line of defense." },
-            { icon: <TrendingUp />, title: "Pass CBSE/ICSE Inspections Without Panic", description: "Stop scrambling for inspections. Our checklists ensure you are always compliant with education board requirements for fire safety, lab safety, and facilities, preventing penalties." },
+            { icon: <Shield />, title: "Prevent a Parent's Worst Nightmare", description: "An unauthorized student pickup or a bus accident is an existential threat to a school's reputation. Our protocols for student pickup and bus safety are your first line of defense." },
+            { icon: <TrendingUp />, title: "Pass Board Inspections Without Panic", description: "Stop scrambling for inspections. Our checklists ensure you are always compliant with education board requirements for fire safety, lab safety, and facilities, preventing penalties." },
             { icon: <FileLock />, title: "Protect Students in the Digital World", description: "Implement our 'Student Digital Safety Audit' to review network traffic, web filters, and device settings, creating a safer online learning environment for your students." },
-            { icon: <Users />, title: "Build Deep Parent Trust &amp; Confidence", description: "A visible and systematic approach to safety and organization is the most powerful marketing tool. Demonstrate your commitment to safety and build the trust that is a key factor in school choice." }
+            { icon: <Users />, title: "Build Deep Parent Trust & Confidence", description: "A visible, systematic approach to safety is your most powerful marketing tool. Demonstrate your commitment and build the trust that is a key factor in school choice for parents." }
+        ]
+    },
+    university_college_ops: {
+        title: "The Business Case for a Modern, Efficient Campus",
+        points: [
+            { icon: <Shield />, title: "Ensure a Safe & Secure Campus Environment", description: "Manage the complexities of a large, open campus. Our protocols for emergency response, access control, and event security protect your students, faculty, and reputation." },
+            { icon: <TrendingUp />, title: "Optimize Facility & Resource Management", description: "Streamline operations across a large campus, from classroom technology readiness and lab safety to grounds maintenance and janitorial services, reducing costs and improving student experience." },
+            { icon: <FileCheck />, title: "Enhance Student Life & Academic Support", description: "Deliver a world-class student experience with checklists for residence life, mental health support, admissions, and library operations, boosting student satisfaction and retention." },
+            { icon: <Users />, title: "Maintain Regulatory & Accreditation Compliance", description: "Stay audit-ready with checklists that align with higher education standards for safety, accessibility, and academic integrity, safeguarding your institution's standing." }
         ]
     },
     manufacturing_operations_ehs_pack: {
