@@ -1869,6 +1869,106 @@ export const premiumPacks: PremiumPack[] = [
     },
     // --- Education ---
     {
+        id: 'school_operations_pack',
+        title: "School Operations & Safety",
+        priceUSD: 149.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Education",
+        description: "A complete toolkit for school principals and admin heads to ensure student safety, operational efficiency, and a secure learning environment.",
+        icon: <School className="w-8 h-8 text-primary" />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["School Principals", "Admin Heads", "Heads of Security", "Transport Managers"],
+        sampleItems: [
+            "Implement a 'Student Transport & Bus Safety' protocol.",
+            "Manage 'Visitor & Access Control' to secure your campus.",
+            "Ensure 'Playground & Sports Equipment Safety'.",
+            "Includes checklists for 'Emergency Drills' and 'Classroom Safety'."
+        ],
+        globalStandards: {
+            title: "Built on Global Education & Safety Standards",
+            standards: [
+                { name: "Student Safety", description: "Best practices for campus security, transport safety, and emergency response." },
+                { name: "Child Protection", description: "Guidelines for visitor management and staff conduct to ensure a safe environment for students." },
+                { name: "Facility Safety", description: "Protocols for playground safety, lab safety, and general campus maintenance." },
+                { name: "Regulatory Compliance", description: "Alignment with national and regional education board standards for safety and operations." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🚌 Student Transport & Bus Safety",
+                department: "Transport",
+                frequency: "Daily",
+                role: "Transport Manager",
+                summary: "Ensure every child's journey to and from school is safe. This checklist covers daily bus inspections, driver readiness, and student boarding/de-boarding procedures.",
+                tasks: [
+                    { id: 'SCH-BUS-01', description: "Conduct a pre-trip inspection of the bus (tires, lights, brakes, first-aid kit).", priority: 'High', riskLevel: 'High', proof: 'Bus Inspection Log', location: 'Bus Depot' },
+                    { id: 'SCH-BUS-02', description: "Verify the driver's fitness for duty (no signs of fatigue or illness).", priority: 'High', riskLevel: 'High', proof: 'Driver Self-Declaration', location: 'Bus Depot' },
+                    { id: 'SCH-BUS-03', description: "Ensure a designated attendant is present on the bus to supervise students.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster', location: 'Bus' },
+                    { id: 'SCH-BUS-04', description: "Take attendance as students board and de-board the bus.", priority: 'High', riskLevel: 'High', proof: 'Attendance Register', location: 'Bus' },
+                    { id: 'SCH-BUS-05', description: "Check that all students are seated and the bus doors are securely closed before moving.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Bus' }
+                ]
+            },
+            {
+                title: "🔒 Visitor Management & Access Control",
+                department: "Security/Admin",
+                frequency: "Ongoing",
+                role: "Security Head",
+                summary: "Protect your campus from unauthorized access. This protocol establishes a strict but welcoming process for managing all visitors, from parents to vendors.",
+                tasks: [
+                    { id: 'SCH-VIS-01', description: "All visitors must sign in and provide photo ID at the main gate.", priority: 'High', riskLevel: 'High', proof: 'Visitor Logbook', location: 'Main Gate' },
+                    { id: 'SCH-VIS-02', description: "Issue a temporary visitor's badge that must be worn at all times.", priority: 'High', riskLevel: 'High', proof: 'Badge Issuance Log', location: 'Main Gate' },
+                    { id: 'SCH-VIS-03', description: "Verify the visitor's appointment with the concerned staff member before granting access.", priority: 'High', riskLevel: 'Medium', proof: 'Phone/Intercom Log', location: 'Main Gate' },
+                    { id: 'SCH-VIS-04', description: "Escort visitors to and from their destination within the campus.", priority: 'High', riskLevel: 'Medium', proof: 'Escort Assignment', location: 'Campus' },
+                    { id: 'SCH-VIS-05', description: "Ensure visitors sign out and return their badge upon departure.", priority: 'High', riskLevel: 'Medium', proof: 'Visitor Logbook', location: 'Main Gate' }
+                ]
+            },
+            {
+                title: "🏃 Playground & Sports Equipment Safety",
+                department: "Facilities/Sports",
+                frequency: "Weekly",
+                role: "Admin Manager",
+                summary: "Prevent injuries during playtime. This checklist ensures all playground and sports equipment is safe, well-maintained, and free from hazards.",
+                tasks: [
+                    { id: 'SCH-PLAY-01', description: "Inspect all playground equipment (swings, slides) for sharp edges, rust, or loose parts.", priority: 'High', riskLevel: 'High', proof: 'Playground Inspection Log', location: 'Playground' },
+                    { id: 'SCH-PLAY-02', description: "Check the ground surface under equipment for adequate cushioning (e.g., sand, rubber matting).", priority: 'High', riskLevel: 'High', proof: 'Surface Check', location: 'Playground' },
+                    { id: 'SCH-PLAY-03', description: "Inspect sports equipment (goalposts, basketball hoops) for stability and damage.", priority: 'High', riskLevel: 'High', proof: 'Sports Equipment Log', location: 'Sports Fields' },
+                    { id: 'SCH-PLAY-04', description: "Ensure the playground area is free of debris, litter, or any hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Playground' },
+                    { id: 'SCH-PLAY-05', description: "Report and cordon off any unsafe equipment immediately until it is repaired.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Request', location: 'Playground' }
+                ]
+            },
+            {
+                title: "🔥 Emergency Drills (Fire, Lockdown)",
+                department: "Safety/Admin",
+                frequency: "Quarterly",
+                role: "Principal/Safety Officer",
+                summary: "Prepare your students and staff to act decisively in a crisis. This checklist provides a framework for conducting effective fire, earthquake, and lockdown drills.",
+                tasks: [
+                    { id: 'SCH-DRILL-01', description: "Plan and announce the drill schedule for the academic year.", priority: 'High', riskLevel: 'Medium', proof: 'Drill Schedule', location: 'Office' },
+                    { id: 'SCH-DRILL-02', description: "Brief staff on their specific roles and responsibilities before the drill.", priority: 'High', riskLevel: 'High', proof: 'Briefing Log', location: 'Staff Meeting' },
+                    { id: 'SCH-DRILL-03', description: "Execute the drill, timing the evacuation or lockdown process.", priority: 'High', riskLevel: 'High', proof: 'Drill Execution Log', location: 'Campus-wide' },
+                    { id: 'SCH-DRILL-04', description: "Conduct a post-drill review to identify successes and areas for improvement.", priority: 'High', riskLevel: 'High', proof: 'Post-Drill Report', location: 'Office' },
+                    { id: 'SCH-DRILL-05', description: "Communicate the outcomes and learnings from the drill to parents.", priority: 'Medium', riskLevel: 'Low', proof: 'Parent Circular', location: 'Office' }
+                ]
+            },
+            {
+                title: "🏫 Classroom Safety & Hygiene",
+                department: "Academics/Admin",
+                frequency: "Daily",
+                role: "Teacher/Supervisor",
+                summary: "Create a safe and healthy learning space. This checklist covers daily checks for classroom safety, cleanliness, and readiness for students.",
+                tasks: [
+                    { id: 'SCH-CLASS-01', description: "Ensure the classroom is clean and free of clutter or trip hazards before students arrive.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classroom' },
+                    { id: 'SCH-CLASS-02', description: "Check that all furniture (desks, chairs, shelves) is stable and not damaged.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classroom' },
+                    { id: 'SCH-CLASS-03', description: "Verify that first-aid kits are accessible and stocked.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Log', location: 'Classroom' },
+                    { id: 'SCH-CLASS-04', description: "Ensure electrical outlets are not overloaded and cords are safely tucked away.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Classroom' },
+                    { id: 'SCH-CLASS-05', description: "Ensure hand sanitizer or handwashing facilities are available and stocked.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classroom' }
+                ]
+            }
+        ]
+    },
+    {
         id: 'university_college_ops',
         title: "University & College Operations",
         priceUSD: 199.99,
@@ -2163,107 +2263,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-FOOD-003', description: "Ensure sealing is maintained for entries to reduce rodent attraction.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Work Order', location: 'Perimeter' },
                     { id: 'PEST-FOOD-004', description: "Review regular pest reports and make the service based on the history.", priority: 'High', riskLevel: 'Medium', proof: 'Service order', location: 'All Areas' },
                     { id: 'PEST-FOOD-005', description: "Train employees on clean work environment.", priority: 'High', riskLevel: 'Medium', proof: 'Training records', location: 'HR Office' }
-                ]
-            }
-        ]
-    },
-    // --- Social Cause ---
-    {
-        id: 'animal_shelter_pack',
-        title: "Animal Shelter Operations",
-        priceUSD: 0,
-        priceINR: 0,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Social Cause",
-        description: "A comprehensive toolkit for non-profit animal shelters to ensure animal welfare, safety, and effective volunteer management.",
-        icon: <PawPrint className="w-8 h-8 text-primary" />,
-        badgeText: "Free",
-        badgeVariant: "accent",
-        whoIsItFor: ["Shelter Managers", "Animal Welfare Officers", "Volunteer Coordinators", "Non-profit Founders", "Vets"],
-        sampleItems: [
-            "Ensure 'Daily Animal Health & Wellness' checks are never missed.",
-            "Implement a 'Kennel & Facility Hygiene' protocol to prevent disease.",
-            "Standardize the 'Adoption & Foster Screening' process.",
-            "Includes checklists for 'Medication Administration' and 'Volunteer Onboarding'."
-        ],
-        globalStandards: {
-            title: "Built on Global Animal Welfare Best Practices",
-            standards: [
-                { name: "Animal Health", description: "Protocols aligned with veterinary best practices for health checks, medication, and hygiene." },
-                { name: "Shelter Operations", description: "Guidelines from leading animal welfare organizations for sanitation and disease control." },
-                { name: "Adoption & Foster", description: "Ethical and effective screening processes to ensure safe and permanent homes." },
-                { name: "Volunteer Management", description: "Best practices for training and managing volunteers in an animal care setting." }
-            ]
-        },
-        checklists: [
-            {
-                title: "🐾 Daily Animal Health & Wellness",
-                department: "Animal Care",
-                frequency: "Daily",
-                role: "Animal Caretaker",
-                summary: "Provide the best possible care for every animal. This checklist ensures no animal's health needs are overlooked, from feeding to monitoring for signs of illness.",
-                tasks: [
-                    { id: 'AS-HEALTH-01', description: "Check every animal for signs of illness, injury, or distress.", priority: 'High', riskLevel: 'High', proof: 'Health Log', location: 'Kennels/Cages' },
-                    { id: 'AS-HEALTH-02', description: "Ensure every animal has access to fresh, clean water.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kennels/Cages' },
-                    { id: 'AS-HEALTH-03', description: "Feed every animal according to their specific dietary plan.", priority: 'High', riskLevel: 'High', proof: 'Feeding Log', location: 'Kennels/Cages' },
-                    { id: 'AS-HEALTH-04', description: "Administer any required medications and log the dosage and time.", priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Medical Room' },
-                    { id: 'AS-HEALTH-05', description: "Provide enrichment (e.g., toys, walks) for mental stimulation.", priority: 'Medium', riskLevel: 'Low', proof: 'Enrichment Log', location: 'Play Areas' }
-                ]
-            },
-            {
-                title: "🧼 Kennel & Facility Hygiene",
-                department: "Facilities/Volunteers",
-                frequency: "Daily",
-                role: "Kennel Manager",
-                summary: "Prevent the spread of disease with a rigorous cleaning protocol. This checklist ensures kennels, common areas, and equipment are properly sanitized every day.",
-                tasks: [
-                    { id: 'AS-HYGIENE-01', description: "Clean and disinfect all empty kennels/cages before a new animal is placed in them.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels/Cages' },
-                    { id: 'AS-HYGIENE-02', description: "Wash all food and water bowls with animal-safe disinfectant.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Cleaning Area' },
-                    { id: 'AS-HYGIENE-03', description: "Scoop all litter boxes and clean outdoor waste areas.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels/Outdoor Areas' },
-                    { id: 'AS-HYGIENE-04', description: "Wash and dry all soiled bedding and towels.", priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
-                    { id: 'AS-HYGIENE-05', description: "Mop and sanitize floors in all animal and public areas.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Entire Facility' }
-                ]
-            },
-            {
-                title: "❤️ Adoption & Foster Screening",
-                department: "Adoptions",
-                frequency: "Per Application",
-                role: "Adoption Counselor",
-                summary: "Find the perfect forever home for every animal. This checklist provides a structured, fair, and thorough process for vetting potential adopters and fosters.",
-                tasks: [
-                    { id: 'AS-ADOPT-01', description: "Review the adoption/foster application for completeness and red flags.", priority: 'High', riskLevel: 'High', proof: 'Application Review Notes', location: 'Office' },
-                    { id: 'AS-ADOPT-02', description: "Conduct an interview with the potential adopter to understand their lifestyle and experience.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
-                    { id: 'AS-ADOPT-03', description: "If applicable, verify landlord approval for pets.", priority: 'High', riskLevel: 'High', proof: 'Landlord Contact Log', location: 'Office' },
-                    { id: 'AS-ADOPT-04', description: "Perform a home visit (or virtual home visit) to check for a safe and suitable environment.", priority: 'High', riskLevel: 'High', proof: 'Home Visit Report', location: 'Applicant Home' },
-                    { id: 'AS-ADOPT-05', description: "Check veterinary references for existing pets, if any.", priority: 'High', riskLevel: 'High', proof: 'Vet Reference Check Log', location: 'Office' }
-                ]
-            },
-            {
-                title: "🤝 Volunteer Onboarding & Management",
-                department: "Volunteers",
-                frequency: "Per Volunteer",
-                role: "Volunteer Coordinator",
-                summary: "Empower your volunteers and keep them engaged. This checklist ensures every new volunteer is properly trained, onboarded, and understands their role.",
-                tasks: [
-                    { id: 'AS-VOL-01', description: "Conduct a volunteer orientation session covering shelter policies and safety procedures.", priority: 'High', riskLevel: 'Medium', proof: 'Orientation Sign-in Sheet', location: 'Meeting Room' },
-                    { id: 'AS-VOL-02', description: "Provide hands-on training for specific tasks (e.g., animal handling, cleaning protocols).", priority: 'High', riskLevel: 'High', proof: 'Training Checklist', location: 'Kennels/Facility' },
-                    { id: 'AS-VOL-03', description: "Assign a mentor or experienced volunteer to the new recruit for their first few shifts.", priority: 'Medium', riskLevel: 'Low', proof: 'Mentor Assignment', location: 'Office' },
-                    { id: 'AS-VOL-04', description: "Ensure the volunteer has signed all necessary waivers and agreements.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Forms', location: 'Office' },
-                    { id: 'AS-VOL-05', description: "Schedule the volunteer's first few shifts and add them to the communication system (e.g., email list, WhatsApp group).", priority: 'High', riskLevel: 'Low', proof: 'System Entry', location: 'Office' }
-                ]
-            },
-            {
-                title: "🐜 Pest Control Management",
-                department: "Facilities/Operations",
-                frequency: "Monthly",
-                role: "Shelter Manager",
-                summary: "Protect vulnerable animals from fleas, ticks, and other pests. This checklist establishes a preventive and reactive pest control program that is safe for animals.",
-                tasks: [
-                    { id: 'PEST-ANIMAL-01', description: "Inspect all kennel, quarantine, and food storage areas for signs of pests (e.g., fleas, rodents).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Facility-wide' },
-                    { id: 'PEST-ANIMAL-02', description: "Ensure all food is stored in sealed, chew-proof containers.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Storage Area' },
-                    { id: 'PEST-ANIMAL-03', description: "Maintain a regular cleaning schedule for all areas to eliminate food sources and breeding grounds for pests.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Logs', location: 'Facility-wide' },
-                    { id: 'PEST-ANIMAL-04', description: "Use only animal-safe pest control products and methods, as approved by a veterinarian.", priority: 'High', riskLevel: 'High', proof: 'Product Approval List', location: 'Manager Office' },
-                    { id: 'PEST-ANIMAL-05', description: "Coordinate with a professional pest control service for regular inspections and treatments, ensuring they are aware of the presence of animals.", priority: 'High', riskLevel: 'High', proof: 'Vendor Service Report', location: 'Manager Office' }
                 ]
             }
         ]
@@ -2914,5 +2913,108 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    // --- Social Cause ---
+    {
+        id: 'animal_shelter_pack',
+        title: "Animal Shelter Operations",
+        priceUSD: 0,
+        priceINR: 0,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Social Cause",
+        description: "A comprehensive toolkit for non-profit animal shelters to ensure animal welfare, safety, and effective volunteer management.",
+        icon: <PawPrint className="w-8 h-8 text-primary" />,
+        badgeText: "Free",
+        badgeVariant: "accent",
+        whoIsItFor: ["Shelter Managers", "Animal Welfare Officers", "Volunteer Coordinators", "Non-profit Founders", "Vets"],
+        sampleItems: [
+            "Ensure 'Daily Animal Health & Wellness' checks are never missed.",
+            "Implement a 'Kennel & Facility Hygiene' protocol to prevent disease.",
+            "Standardize the 'Adoption & Foster Screening' process.",
+            "Includes checklists for 'Medication Administration' and 'Volunteer Onboarding'."
+        ],
+        globalStandards: {
+            title: "Built on Global Animal Welfare Best Practices",
+            standards: [
+                { name: "Animal Health", description: "Protocols aligned with veterinary best practices for health checks, medication, and hygiene." },
+                { name: "Shelter Operations", description: "Guidelines from leading animal welfare organizations for sanitation and disease control." },
+                { name: "Adoption & Foster", description: "Ethical and effective screening processes to ensure safe and permanent homes." },
+                { name: "Volunteer Management", description: "Best practices for training and managing volunteers in an animal care setting." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🐾 Daily Animal Health & Wellness",
+                department: "Animal Care",
+                frequency: "Daily",
+                role: "Animal Caretaker",
+                summary: "Provide the best possible care for every animal. This checklist ensures no animal's health needs are overlooked, from feeding to monitoring for signs of illness.",
+                tasks: [
+                    { id: 'AS-HEALTH-01', description: "Check every animal for signs of illness, injury, or distress.", priority: 'High', riskLevel: 'High', proof: 'Health Log', location: 'Kennels/Cages' },
+                    { id: 'AS-HEALTH-02', description: "Ensure every animal has access to fresh, clean water.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kennels/Cages' },
+                    { id: 'AS-HEALTH-03', description: "Feed every animal according to their specific dietary plan.", priority: 'High', riskLevel: 'High', proof: 'Feeding Log', location: 'Kennels/Cages' },
+                    { id: 'AS-HEALTH-04', description: "Administer any required medications and log the dosage and time.", priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Medical Room' },
+                    { id: 'AS-HEALTH-05', description: "Provide enrichment (e.g., toys, walks) for mental stimulation.", priority: 'Medium', riskLevel: 'Low', proof: 'Enrichment Log', location: 'Play Areas' }
+                ]
+            },
+            {
+                title: "🧼 Kennel & Facility Hygiene",
+                department: "Facilities/Volunteers",
+                frequency: "Daily",
+                role: "Kennel Manager",
+                summary: "Prevent the spread of disease with a rigorous cleaning protocol. This checklist ensures kennels, common areas, and equipment are properly sanitized every day.",
+                tasks: [
+                    { id: 'AS-HYGIENE-01', description: "Clean and disinfect all empty kennels/cages before a new animal is placed in them.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels/Cages' },
+                    { id: 'AS-HYGIENE-02', description: "Wash all food and water bowls with animal-safe disinfectant.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Cleaning Area' },
+                    { id: 'AS-HYGIENE-03', description: "Scoop all litter boxes and clean outdoor waste areas.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels/Outdoor Areas' },
+                    { id: 'AS-HYGIENE-04', description: "Wash and dry all soiled bedding and towels.", priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
+                    { id: 'AS-HYGIENE-05', description: "Mop and sanitize floors in all animal and public areas.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Entire Facility' }
+                ]
+            },
+            {
+                title: "❤️ Adoption & Foster Screening",
+                department: "Adoptions",
+                frequency: "Per Application",
+                role: "Adoption Counselor",
+                summary: "Find the perfect forever home for every animal. This checklist provides a structured, fair, and thorough process for vetting potential adopters and fosters.",
+                tasks: [
+                    { id: 'AS-ADOPT-01', description: "Review the adoption/foster application for completeness and red flags.", priority: 'High', riskLevel: 'High', proof: 'Application Review Notes', location: 'Office' },
+                    { id: 'AS-ADOPT-02', description: "Conduct an interview with the potential adopter to understand their lifestyle and experience.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'AS-ADOPT-03', description: "If applicable, verify landlord approval for pets.", priority: 'High', riskLevel: 'High', proof: 'Landlord Contact Log', location: 'Office' },
+                    { id: 'AS-ADOPT-04', description: "Perform a home visit (or virtual home visit) to check for a safe and suitable environment.", priority: 'High', riskLevel: 'High', proof: 'Home Visit Report', location: 'Applicant Home' },
+                    { id: 'AS-ADOPT-05', description: "Check veterinary references for existing pets, if any.", priority: 'High', riskLevel: 'High', proof: 'Vet Reference Check Log', location: 'Office' }
+                ]
+            },
+            {
+                title: "🤝 Volunteer Onboarding & Management",
+                department: "Volunteers",
+                frequency: "Per Volunteer",
+                role: "Volunteer Coordinator",
+                summary: "Empower your volunteers and keep them engaged. This checklist ensures every new volunteer is properly trained, onboarded, and understands their role.",
+                tasks: [
+                    { id: 'AS-VOL-01', description: "Conduct a volunteer orientation session covering shelter policies and safety procedures.", priority: 'High', riskLevel: 'Medium', proof: 'Orientation Sign-in Sheet', location: 'Meeting Room' },
+                    { id: 'AS-VOL-02', description: "Provide hands-on training for specific tasks (e.g., animal handling, cleaning protocols).", priority: 'High', riskLevel: 'High', proof: 'Training Checklist', location: 'Kennels/Facility' },
+                    { id: 'AS-VOL-03', description: "Assign a mentor or experienced volunteer to the new recruit for their first few shifts.", priority: 'Medium', riskLevel: 'Low', proof: 'Mentor Assignment', location: 'Office' },
+                    { id: 'AS-VOL-04', description: "Ensure the volunteer has signed all necessary waivers and agreements.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Forms', location: 'Office' },
+                    { id: 'AS-VOL-05', description: "Schedule the volunteer's first few shifts and add them to the communication system (e.g., email list, WhatsApp group).", priority: 'High', riskLevel: 'Low', proof: 'System Entry', location: 'Office' }
+                ]
+            },
+            {
+                title: "🐜 Pest Control Management",
+                department: "Facilities/Operations",
+                frequency: "Monthly",
+                role: "Shelter Manager",
+                summary: "Protect vulnerable animals from fleas, ticks, and other pests. This checklist establishes a preventive and reactive pest control program that is safe for animals.",
+                tasks: [
+                    { id: 'PEST-ANIMAL-01', description: "Inspect all kennel, quarantine, and food storage areas for signs of pests (e.g., fleas, rodents).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Facility-wide' },
+                    { id: 'PEST-ANIMAL-02', description: "Ensure all food is stored in sealed, chew-proof containers.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Storage Area' },
+                    { id: 'PEST-ANIMAL-03', description: "Maintain a regular cleaning schedule for all areas to eliminate food sources and breeding grounds for pests.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Logs', location: 'Facility-wide' },
+                    { id: 'PEST-ANIMAL-04', description: "Use only animal-safe pest control products and methods, as approved by a veterinarian.", priority: 'High', riskLevel: 'High', proof: 'Product Approval List', location: 'Manager Office' },
+                    { id: 'PEST-ANIMAL-05', description: "Coordinate with a professional pest control service for regular inspections and treatments, ensuring they are aware of the presence of animals.", priority: 'High', riskLevel: 'High', proof: 'Vendor Service Report', location: 'Manager Office' }
+                ]
+            }
+        ]
     }
 ]
+
+    
