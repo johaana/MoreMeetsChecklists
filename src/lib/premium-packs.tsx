@@ -1,5 +1,5 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, Brain } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -1965,6 +1965,48 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-CLASS-04', description: "Ensure electrical outlets are not overloaded and cords are safely tucked away.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Classroom' },
                     { id: 'SCH-CLASS-05', description: "Ensure hand sanitizer or handwashing facilities are available and stocked.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Classroom' }
                 ]
+            },
+            {
+                title: "🍔 Cafeteria & Food Hygiene (HACCP)",
+                department: "F&B/Admin",
+                frequency: "Daily",
+                role: "Cafeteria Manager",
+                summary: "Ensure student meals are safe and nutritious with a HACCP-based protocol for your school cafeteria, from food storage to serving.",
+                tasks: [
+                    { id: 'SCH-FOOD-01', description: "Check and log temperatures of all refrigerators, freezers, and hot-holding units.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen/Cafeteria' },
+                    { id: 'SCH-FOOD-02', description: "Ensure all food handlers adhere to strict hygiene standards (handwashing, hairnets, gloves).", priority: 'High', riskLevel: 'High', proof: 'Supervisor Observation', location: 'Kitchen' },
+                    { id: 'SCH-FOOD-03', description: "Verify that food is cooked to the correct internal temperatures.", priority: 'High', riskLevel: 'High', proof: 'Cooking Temperature Log', location: 'Kitchen' },
+                    { id: 'SCH-FOOD-04', description: "Implement a clear system for managing student food allergies.", priority: 'High', riskLevel: 'High', proof: 'Allergy Management Plan', location: 'Cafeteria' },
+                    { id: 'SCH-FOOD-05', description: "Ensure all kitchen and serving surfaces are cleaned and sanitized after each meal service.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen/Cafeteria' },
+                ]
+            },
+            {
+                title: "🔬 Science Lab Safety",
+                department: "Academics/Safety",
+                frequency: "Per Lab Session",
+                role: "Science Teacher",
+                summary: "Prevent accidents in a hands-on environment. This checklist ensures all safety equipment is ready and students follow protocols for handling chemicals and equipment.",
+                tasks: [
+                    { id: 'SCH-LAB-01', description: "Ensure all students are wearing appropriate Personal Protective Equipment (PPE) like goggles and lab coats.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Science Lab' },
+                    { id: 'SCH-LAB-02', description: "Verify that eyewash stations and safety showers are unobstructed and functional before the session begins.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Science Lab' },
+                    { id: 'SCH-LAB-03', description: "Brief students on the specific hazards of the chemicals and equipment being used in the experiment.", priority: 'High', riskLevel: 'High', proof: 'Pre-Lab Briefing', location: 'Science Lab' },
+                    { id: 'SCH-LAB-04', description: "Ensure proper ventilation systems are active, especially when working with fumes.", priority: 'High', riskLevel: 'High', proof: 'Ventilation System Check', location: 'Science Lab' },
+                    { id: 'SCH-LAB-05', description: "Supervise the correct disposal of all chemical waste and broken glassware.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Science Lab' },
+                ]
+            },
+            {
+                title: "💻 IT & Student Digital Safety",
+                department: "IT/Admin",
+                frequency: "Quarterly",
+                role: "IT Manager",
+                summary: "Create a safe and productive digital learning environment. This protocol covers network security, content filtering, and responsible use policies for student devices.",
+                tasks: [
+                    { id: 'SCH-IT-01', description: "Audit and update web content filters to block inappropriate websites.", priority: 'High', riskLevel: 'High', proof: 'Filter Policy Review', location: 'Firewall/Server Room' },
+                    { id: 'SCH-IT-02', description: "Review network access logs for any unusual activity or policy violations.", priority: 'High', riskLevel: 'Medium', proof: 'Network Log Analysis', location: 'SIEM/Log Server' },
+                    { id: 'SCH-IT-03', description: "Ensure all school-owned devices have up-to-date antivirus software and security patches.", priority: 'High', riskLevel: 'High', proof: 'Patch Management Report', location: 'IT Office' },
+                    { id: 'SCH-IT-04', description: "Conduct a digital citizenship and online safety session for all students.", priority: 'High', riskLevel: 'Medium', proof: 'Training Schedule', location: 'Classrooms' },
+                    { id: 'SCH-IT-05', description: "Review and enforce the school's 'Acceptable Use Policy' for technology.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Acknowledgment Forms', location: 'Admin Office' },
+                ]
             }
         ]
     },
@@ -2039,7 +2081,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: " Emergency Response",
+                title: "🚨 Emergency Response",
                 department: "Security",
                 frequency: "Bi-Annually",
                 role: "Security Manager",
@@ -2053,7 +2095,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: " 🔐 Campus Security & Surveillance",
+                title: "🔐 Campus Security & Surveillance",
                 department: "Security",
                 frequency: "Daily",
                 role: "Security Manager",
@@ -2067,7 +2109,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: " 🌱 Landscape & Grounds Maintenance",
+                title: "🌱 Landscape & Grounds Maintenance",
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Supervisor",
@@ -2108,14 +2150,56 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'UNIV-JAN-05', description: "Check that the common areas are well maintained and cleaned", priority: 'High', riskLevel: 'Medium', proof: 'logs', location: 'All Areas' }
                 ]
             },
-             {
+            {
+                title: "📝 Admissions & Enrollment Process",
+                department: "Admissions",
+                frequency: "Per Applicant",
+                role: "Admissions Officer",
+                summary: "Create a smooth and professional admissions experience. This checklist ensures every applicant is managed consistently from initial inquiry to final enrollment decision.",
+                tasks: [
+                    { id: 'UNIV-ADMIT-01', description: "Acknowledge receipt of application within 48 hours.", priority: 'High', riskLevel: 'Medium', proof: 'Email Log', location: 'Admissions CRM' },
+                    { id: 'UNIV-ADMIT-02', description: "Verify all required documents (transcripts, essays, recommendations) have been received.", priority: 'High', riskLevel: 'High', proof: 'Applicant File Checklist', location: 'Admissions CRM' },
+                    { id: 'UNIV-ADMIT-03', description: "Schedule and conduct applicant interviews according to a standardized format.", priority: 'High', riskLevel: 'Medium', proof: 'Interview Schedule', location: 'Admissions Office' },
+                    { id: 'UNIV-ADMIT-04', description: "Record admission committee decisions and reasoning in the applicant's file.", priority: 'High', riskLevel: 'High', proof: 'Decision Log', location: 'Admissions CRM' },
+                    { id: 'UNIV-ADMIT-05', description: "Send out official decision letters (acceptance, waitlist, rejection) on the published date.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Admissions CRM' },
+                ]
+            },
+            {
+                title: "🧠 Student Mental Health & Wellness Support",
+                department: "Student Services",
+                frequency: "Ongoing",
+                role: "Wellness Counselor",
+                summary: "Provide accessible and confidential mental health support. This protocol ensures students can easily access services and that counselors follow best practices for care.",
+                tasks: [
+                    { id: 'UNIV-WELL-01', description: "Ensure information on how to access counseling services is clearly available on the university website and student portals.", priority: 'High', riskLevel: 'High', proof: 'Website Audit', location: 'Digital Platforms' },
+                    { id: 'UNIV-WELL-02', description: "Conduct a confidential initial assessment for every student seeking help to determine their needs.", priority: 'High', riskLevel: 'High', proof: 'Initial Assessment Form', location: 'Counseling Center' },
+                    { id: 'UNIV-WELL-03', description: "Maintain secure and confidential case notes for all counseling sessions, compliant with privacy laws.", priority: 'High', riskLevel: 'High', proof: 'Case Note Audit', location: 'Counseling Center' },
+                    { id: 'UNIV-WELL-04', description: "Have a clear protocol for escalating high-risk cases (e.g., self-harm risk) to appropriate emergency services.", priority: 'High', riskLevel: 'High', proof: 'Escalation Protocol Document', location: 'Counseling Center' },
+                    { id: 'UNIV-WELL-05', description: "Run proactive wellness campaigns and workshops on topics like stress management and exam anxiety.", priority: 'Medium', riskLevel: 'Low', proof: 'Event Calendar', location: 'Campus-wide' },
+                ]
+            },
+            {
+                title: "📚 Library Operations & Resource Management",
+                department: "Library Services",
+                frequency: "Weekly",
+                role: "Head Librarian",
+                summary: "Manage the heart of the campus. This checklist ensures the library is a quiet, productive, and resource-rich environment for students and faculty.",
+                tasks: [
+                    { id: 'UNIV-LIB-01', description: "Audit a section of the shelves each week to ensure books are correctly cataloged and placed.", priority: 'Medium', riskLevel: 'Low', proof: 'Shelf Audit Log', location: 'Library Shelves' },
+                    { id: 'UNIV-LIB-02', description: "Check that all public computers, printers, and scanners are functional.", priority: 'High', riskLevel: 'Medium', proof: 'IT Equipment Check', location: 'Library' },
+                    { id: 'UNIV-LIB-03', description: "Review and manage inter-library loan requests and digital resource subscriptions.", priority: 'High', riskLevel: 'Medium', proof: 'Subscription Review', location: 'Librarian Office' },
+                    { id: 'UNIV-LIB-04', description: "Ensure the library environment is quiet and conducive to study in designated zones.", priority: 'High', riskLevel: 'Medium', proof: 'Hourly Walkthrough Log', location: 'Library' },
+                    { id: 'UNIV-LIB-05', description: "Manage the process for overdue books and fines in a consistent manner.", priority: 'High', riskLevel: 'Low', proof: 'Fines and Overdue Report', location: 'Library System' },
+                ]
+            },
+            {
                 title: "🐜 Pest Control Management",
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Facility Manager",
                 summary: "Create a safe and comfortable environment for students and staff with a preventive pest control program designed for a large campus.",
                 tasks: [
-                    { id: 'PEST-CAMP-01', description: "Inspect and monitor the buildings, gardens and campus weekly", priority: 'High', riskLevel: 'Medium', proof: 'Regular inspection logs', location: 'All Areas' },
+                    { id: 'PEST-CAMP-01', description: "Inspect buildings, gardens and campus weekly", priority: 'High', riskLevel: 'Medium', proof: 'Regular inspection logs', location: 'All Areas' },
                     { id: 'PEST-CAMP-02', description: "Clear the standing water and remove trash in an organised matter", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'All Areas' },
                     { id: 'PEST-CAMP-03', description: "Install the right barriers that may prevent access for insects and pests.", priority: 'High', riskLevel: 'Medium', proof: 'Contract', location: 'All Areas' },
                     { id: 'PEST-CAMP-04', description: "Keep the landscape well maintained and follow the waste protocols.", priority: 'High', riskLevel: 'Medium', proof: 'Work Order', location: 'Everywhere' },
