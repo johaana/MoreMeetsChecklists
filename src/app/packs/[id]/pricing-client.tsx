@@ -122,38 +122,38 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 
 const ValueComparisonSection = ({ price }: { price: number }) => (
     <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
-        <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary">A Smarter Investment in Excellence</h3>
-        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">See how a one-time purchase compares to other operational solutions.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <Card className="p-4 bg-background border-primary/20 border-2 shadow-lg">
-                <CardHeader className="p-2">
-                    <CardTitle className="text-lg font-headline text-primary">MoreMeets Pack</CardTitle>
-                </CardHeader>
-                <CardContent className="p-2">
-                    <p className="text-3xl font-bold">₹{price}</p>
-                    <p className="text-sm font-semibold text-muted-foreground">One-Time Purchase</p>
-                </CardContent>
-            </Card>
-            <Card className="p-4 bg-background">
-                <CardHeader className="p-2">
-                    <CardTitle className="text-lg font-headline">SaaS Subscriptions</CardTitle>
-                </CardHeader>
-                <CardContent className="p-2">
-                    <p className="text-3xl font-bold">₹30,000+</p>
-                    <p className="text-sm font-semibold text-muted-foreground">Per Year</p>
-                </CardContent>
-            </Card>
-            <Card className="p-4 bg-background">
-                <CardHeader className="p-2">
-                    <CardTitle className="text-lg font-headline">Consultant Fees</CardTitle>
-                </CardHeader>
-                <CardContent className="p-2">
-                    <p className="text-3xl font-bold">₹75,000+</p>
-                    <p className="text-sm font-semibold text-muted-foreground">Per Project</p>
-                </CardContent>
-            </Card>
+        <div className="text-center mb-8">
+            <h3 className="font-headline text-2xl font-bold mb-2 text-primary">A Smarter Investment in Excellence</h3>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+                You're not just buying a tool—you're buying the expert-researched system. See how a one-time purchase compares.
+            </p>
         </div>
-        <p className="text-center text-xs text-muted-foreground mt-6">Own the system, don't just rent the software. Get lifetime updates included.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+             <Card className="p-4 bg-background border-primary/20 border-2 shadow-xl flex-1 h-full">
+                <CardHeader className="p-2 text-center">
+                    <CardTitle className="text-xl font-headline text-primary">MoreMeets Pack</CardTitle>
+                </CardHeader>
+                <CardContent className="p-2 text-center">
+                    <p className="text-4xl font-bold">₹{price}</p>
+                    <p className="text-lg font-semibold text-muted-foreground">One-Time Purchase</p>
+                    <p className="text-xs text-muted-foreground mt-1">Lifetime Updates Included</p>
+                </CardContent>
+            </Card>
+            <div className="space-y-4">
+                <div className="p-4 border rounded-lg bg-background/50">
+                    <h4 className="font-bold text-lg text-center">Typical SaaS Subscriptions</h4>
+                    <p className="text-3xl font-bold text-center mt-1">₹30,000+</p>
+                    <p className="text-sm font-semibold text-muted-foreground text-center">Per Year, Per Location</p>
+                    <p className="text-xs text-muted-foreground mt-2 text-center">Provides the software, but you still have to write all the checklists yourself.</p>
+                </div>
+                 <div className="p-4 border rounded-lg bg-background/50">
+                    <h4 className="font-bold text-lg text-center">Hiring a Consultant</h4>
+                    <p className="text-3xl font-bold text-center mt-1">₹75,000+</p>
+                    <p className="text-sm font-semibold text-muted-foreground text-center">Per Project</p>
+                    <p className="text-xs text-muted-foreground mt-2 text-center">Provides custom SOPs, but at a significant one-time cost and with no easy path for updates.</p>
+                </div>
+            </div>
+        </div>
     </div>
 );
 
@@ -248,7 +248,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
                  {hasTieredEditions && (
-                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
+                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
                 )}
@@ -269,7 +269,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
                 <div className="grid gap-3 pl-8">
                     {hasTieredEditions && (
-                        <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
+                         <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                             <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                             <div>
                                 <p className="font-semibold">Global Compliance Checklists</p>
@@ -362,7 +362,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
 
-                <ValueComparisonSection price={pack.priceINR} />
+                <ValueComparisonSection price={professionalPrice} />
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
