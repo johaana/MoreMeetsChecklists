@@ -254,8 +254,8 @@ function PackList() {
                 {isMobile ? (
                     <Carousel 
                         opts={{ align: "start", loop: true }}
-                        plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
-                        className="w-full max-w-sm mx-auto"
+                        plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+                        className="w-full max-w-[calc(100%-2rem)] mx-auto"
                     >
                         <CarouselContent>
                             {featuredPacks.map((pack) => (
@@ -266,8 +266,8 @@ function PackList() {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="text-accent border-accent" />
-                        <CarouselNext className="text-accent border-accent" />
+                        <CarouselPrevious className="text-accent border-accent -left-4" />
+                        <CarouselNext className="text-accent border-accent -right-4" />
                     </Carousel>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -328,8 +328,8 @@ const IndividualChecklistsSection = () => {
                  {isMobile ? (
                      <Carousel 
                         opts={{ align: "start", loop: true }}
-                        plugins={[Autoplay({ delay: 5500, stopOnInteraction: true })]}
-                        className="w-full max-w-sm mx-auto"
+                        plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
+                        className="w-full max-w-[calc(100%-2rem)] mx-auto"
                     >
                         <CarouselContent>
                             {bestsellers.map((checklist) => (
@@ -340,8 +340,8 @@ const IndividualChecklistsSection = () => {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="text-accent border-accent" />
-                        <CarouselNext className="text-accent border-accent" />
+                        <CarouselPrevious className="text-accent border-accent -left-4" />
+                        <CarouselNext className="text-accent border-accent -right-4" />
                     </Carousel>
                  ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">

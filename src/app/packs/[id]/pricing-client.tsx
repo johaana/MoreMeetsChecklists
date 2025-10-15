@@ -139,7 +139,7 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
                     <p className="text-xs text-muted-foreground mt-1">Lifetime Updates Included</p>
                 </CardContent>
             </Card>
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 md:space-y-0 gap-4">
                 <div className="p-4 border rounded-lg bg-background/50">
                     <h4 className="font-bold text-lg text-center">Typical SaaS Subscriptions</h4>
                     <p className="text-3xl font-bold text-center mt-1">₹30,000+</p>
