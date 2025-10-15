@@ -44,7 +44,7 @@ export async function generateMetadata(
           url: heroImageUrl,
           width: 1200,
           height: 630,
-          alt: 'MoreMeets Hero Image: Operational Excellence Checklists',
+          alt: checklist.title,
         },
       ],
     },
@@ -63,6 +63,36 @@ export default function Page({ params }: { params: { id: string } }) {
   if (!checklist) {
     notFound();
   }
+
+  const heroImageUrl = checklistImageMap[params.id] || defaultHeroImageUrl;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: checklist.title,
+    description: checklist.description,
+    image: heroImageUrl,
+    brand: {
+      '@type': 'Brand',
+      name: 'MoreMeets',
+    },
+    offers: {
+        '@type': 'Offer',
+        price: checklist.priceINR.toString(),
+        priceCurrency: 'INR',
+        availability: 'https://schema.org/InStock',
+      },
+  };
   
-  return <ChecklistClientPage checklist={checklist} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ChecklistClientPage checklist={checklist} />
+    </>
+  );
 }
+
+    

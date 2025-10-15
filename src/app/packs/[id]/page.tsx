@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -215,18 +215,18 @@ export default function Page({ params }: { params: { id: string } }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: pack.title,
-    description: pack.description,
+    description: `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`,
     image: heroImageUrl,
-    offers: {
-      '@type': 'Offer',
-      price: pack.priceINR.toString(),
-      priceCurrency: 'INR',
-      availability: 'https://schema.org/InStock',
-    },
     brand: {
       '@type': 'Brand',
       name: 'MoreMeets',
     },
+    offers: {
+        '@type': 'Offer',
+        price: pack.priceINR,
+        priceCurrency: 'INR',
+        availability: 'https://schema.org/InStock',
+      },
   };
   
   return (
@@ -309,3 +309,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+    
