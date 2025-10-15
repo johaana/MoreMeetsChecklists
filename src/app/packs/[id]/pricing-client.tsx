@@ -222,7 +222,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                {hasTieredEditions && (
+                 {hasTieredEditions && (
                      <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
                        <span className="font-sans text-base">🇮🇳</span> India Edition
                     </Badge>
@@ -247,7 +247,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
-                {hasTieredEditions && (
+                 {hasTieredEditions && (
                      <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
