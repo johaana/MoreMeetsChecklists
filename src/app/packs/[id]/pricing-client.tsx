@@ -125,7 +125,7 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
         <div className="text-center mb-8">
             <h3 className="font-headline text-2xl font-bold mb-2 text-primary">A Smarter Investment in Excellence</h3>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-                You're not just buying a tool—you're buying the expert-researched system. See how a one-time purchase compares.
+                You're not just buying a tool—you're buying the expert-researched system.
             </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -139,18 +139,21 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
                     <p className="text-xs text-muted-foreground mt-1">Lifetime Updates Included</p>
                 </CardContent>
             </Card>
-            <div className="grid grid-cols-2 md:space-y-0 gap-4">
-                <div className="p-4 border rounded-lg bg-background/50">
-                    <h4 className="font-bold text-lg text-center">Typical SaaS Subscriptions</h4>
-                    <p className="text-3xl font-bold text-center mt-1">₹30,000+</p>
-                    <p className="text-sm font-semibold text-muted-foreground text-center">Per Year, Per Location</p>
-                    <p className="text-xs text-muted-foreground mt-2 text-center">Provides the software, but you still have to write all the checklists yourself.</p>
-                </div>
-                 <div className="p-4 border rounded-lg bg-background/50">
-                    <h4 className="font-bold text-lg text-center">Hiring a Consultant</h4>
-                    <p className="text-3xl font-bold text-center mt-1">₹75,000+</p>
-                    <p className="text-sm font-semibold text-muted-foreground text-center">Per Project</p>
-                    <p className="text-xs text-muted-foreground mt-2 text-center">Provides custom SOPs, but at a significant one-time cost and with no easy path for updates.</p>
+            <div className="space-y-4">
+                <h4 className="md:hidden text-center text-sm font-semibold text-muted-foreground">Typical Industry Alternatives</h4>
+                <div className="grid grid-cols-2 md:space-y-0 gap-4">
+                    <div className="p-4 border rounded-lg bg-muted/50">
+                        <h4 className="font-bold text-lg text-center">Typical SaaS Subscriptions</h4>
+                        <p className="text-2xl md:text-3xl font-bold text-center mt-1">₹30,000+</p>
+                        <p className="text-sm font-semibold text-muted-foreground text-center">Per Year, Per Location</p>
+                        <p className="text-xs text-muted-foreground mt-2 text-center">Provides the software, but you still have to write all the checklists yourself.</p>
+                    </div>
+                     <div className="p-4 border rounded-lg bg-muted/50">
+                        <h4 className="font-bold text-lg text-center">Hiring a Consultant</h4>
+                        <p className="text-2xl md:text-3xl font-bold text-center mt-1">₹75,000+</p>
+                        <p className="text-sm font-semibold text-muted-foreground text-center">Per Project</p>
+                        <p className="text-xs text-muted-foreground mt-2 text-center">Provides custom SOPs, but at a significant one-time cost and with no easy path for updates.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,7 +266,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 {hasTieredEditions && <CardDescription>Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                <div className="flex items-start gap-3">
+                <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
                 </div>
@@ -317,7 +320,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="text-4xl font-bold text-foreground">Custom</p>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                <div className="flex items-start gap-3">
+                <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" />
                     <p className="font-semibold text-primary">Everything in Personalized, plus:</p>
                  </div>
