@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -215,7 +216,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         );
     }
 
-    const isEducationPack = pack.category === "Education";
     const hasTieredEditions = ["Education", "Healthcare", "Industrial & Transport"].includes(pack.category);
 
     const pricingCards = [
@@ -223,7 +223,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                 {hasTieredEditions && (
-                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-500/50 bg-green-500/10 text-green-800 dark:text-green-300">
+                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
                        <span className="font-sans text-base">🇮🇳</span> India Edition
                     </Badge>
                 )}
@@ -248,7 +248,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
                 {hasTieredEditions && (
-                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300">
+                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
                 )}
@@ -262,14 +262,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
                 {hasTieredEditions && <CardDescription>Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
             </CardHeader>
-            <CardContent className="flex-1 space-y-4 text-sm p-6 pt-0">
+            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <div className="flex items-start gap-3">
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
                 </div>
-                 <div className="grid gap-3">
+                 <div className="grid gap-3 pl-8">
                     {hasTieredEditions && (
-                        <div className="flex items-start gap-3">
+                        <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                             <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                             <div>
                                 <p className="font-semibold">Global Compliance Checklists</p>
@@ -277,21 +277,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </div>
                     )}
-                    <div className="flex items-start gap-3">
+                    <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
                             <p className="font-semibold">Custom Branding</p>
                             <p className="text-muted-foreground">Your logo added to the checklists.</p>
                         </div>
                     </div>
-                     <div className="flex items-start gap-3">
+                     <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
                             <p className="font-semibold">Priority Action Plan</p>
                             <p className="text-muted-foreground">A document highlighting the top 10 most critical checklists for you to implement first.</p>
                         </div>
                     </div>
-                     <div className="flex items-start gap-3">
+                     <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
                             <p className="font-semibold">30-Min Onboarding Call</p>
@@ -407,5 +407,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
-
-    
