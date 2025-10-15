@@ -1270,18 +1270,18 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Sports Club GMs", "Stadium Managers", "Directors of Operations", "Heads of Facilities", "VPs", "Directors"],
         sampleItems: [
-            "Implement 'Sports Infrastructure & Equipment Maintenance' protocols.",
-            "Master 'Tournament & Event Management' for flawless execution.",
-            "Ensure 'Member & Guest Safety' with rigorous checklists.",
-            "Includes 'Fire & Emergency Preparedness' and 'Vendor Management'."
+            "Prevent injuries with our 'Daily Equipment Safety' checklist.",
+            "Master 'Event & Crowd Management' for flawless execution.",
+            "Ensure member safety and data privacy with 'Access Control & Cybersecurity' SOPs.",
+            "Includes 'Fire & Emergency Preparedness' and 'Seasonal Readiness' protocols."
         ],
         globalStandards: {
-            title: "Built on Global Sports & Safety Standards",
+            title: "Built on a Global & National Compliance Framework",
             standards: [
-                { name: "Facility Safety", description: "Adherence to international standards for sports facility safety, including turf management and equipment inspection." },
-                { name: "Event Management", description: "Best practices for crowd control, security, and emergency response during sporting events." },
-                { name: "Health & Hygiene", description: "Protocols for facility cleanliness, locker room hygiene, and swimming pool safety." },
-                { name: "Workplace Safety", description: "OSHA guidelines for facility maintenance and staff safety." }
+                { name: "Health & Safety (ISO 45001)", description: "Ensures workplace safety and accident prevention." },
+                { name: "Hygiene & Sanitation (WHO)", description: "Maintains health standards for members and staff." },
+                { name: "Access & Data Privacy (GDPR/DPDP)", description: "Protects member data and secures facility access." },
+                { name: "Fire & Emergency (NFPA/NBC)", description: "Guarantees readiness for any emergency situation." }
             ]
         },
         checklists: [
@@ -1353,6 +1353,34 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SPORT-VENDOR-03', description: "Conduct a safety briefing for all on-site contractors before they begin work.", priority: 'High', riskLevel: 'High', proof: 'Safety Briefing Sign-off', location: 'Site' },
                     { id: 'SPORT-VENDOR-04', description: "Monitor vendor performance against the SLA and provide feedback.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Review Notes', location: 'Office' },
                     { id: 'SPORT-VENDOR-05', description: "Review and approve all vendor invoices against work completed.", priority: 'High', riskLevel: 'Medium', proof: 'Invoice Approval', location: 'Office' }
+                ]
+            },
+            {
+                title: "🔐 Data Privacy & Cybersecurity Compliance",
+                department: "IT/Security",
+                frequency: "Quarterly",
+                role: "IT Manager",
+                summary: "Protect your members' data and your club's reputation. This checklist helps you comply with data privacy laws (like GDPR/DPDP) and defend against common cyber threats.",
+                tasks: [
+                    { id: 'SPORT-CYBER-01', description: "Review and update the club's data privacy policy.", priority: 'High', riskLevel: 'High', proof: 'Privacy Policy Document', location: 'Office' },
+                    { id: 'SPORT-CYBER-02', description: "Conduct a quarterly audit of user access rights to member databases.", priority: 'High', riskLevel: 'High', proof: 'Access Rights Audit Report', location: 'IT Office' },
+                    { id: 'SPORT-CYBER-03', description: "Ensure all systems processing member data are encrypted and patched.", priority: 'High', riskLevel: 'High', proof: 'System Security Scan', location: 'IT Office' },
+                    { id: 'SPORT-CYBER-04', description: "Run a simulated phishing campaign to train staff on cybersecurity awareness.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Campaign Report', location: 'Office' },
+                    { id: 'SPORT-CYBER-05', description: "Test the data breach incident response plan.", priority: 'High', riskLevel: 'High', proof: 'Breach Drill Report', location: 'Office' }
+                ]
+            },
+            {
+                title: "💧 Monsoon & Seasonal Facility Readiness",
+                department: "Facilities",
+                frequency: "Pre-Season",
+                role: "Facility Manager",
+                summary: "Prepare your facility for seasonal challenges like heavy rain or extreme heat, preventing flooding, equipment damage, and operational disruptions.",
+                tasks: [
+                    { id: 'SPORT-SEASON-01', description: "Inspect and clean all roof drains, gutters, and storm water drainage systems.", priority: 'High', riskLevel: 'High', proof: 'Drainage Inspection Log', location: 'Exterior/Roof' },
+                    { id: 'SPORT-SEASON-02', description: "Test all sump pumps and backup power systems for drainage.", priority: 'High', riskLevel: 'High', proof: 'Pump Test Log', location: 'Basement/Pump Rooms' },
+                    { id: 'SPORT-SEASON-03', description: "Check all external structures (fencing, scoreboards) for wind resistance.", priority: 'High', riskLevel: 'High', proof: 'Structural Integrity Check', location: 'Exterior' },
+                    { id: 'SPORT-SEASON-04', description: "Review and update the extreme weather emergency response plan.", priority: 'High', riskLevel: 'High', proof: 'Updated Plan Document', location: 'Office' },
+                    { id: 'SPORT-SEASON-05', description: "Stock up on necessary seasonal supplies (e.g., sandbags for flooding, extra water for heatwaves).", priority: 'Medium', riskLevel: 'Medium', proof: 'Inventory Check', location: 'Storage' }
                 ]
             }
         ]
@@ -3101,7 +3129,3 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
-
-    
-
-    

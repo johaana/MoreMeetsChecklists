@@ -141,8 +141,8 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
             </Card>
             <div className="space-y-4">
                 <h4 className="md:hidden text-center text-sm font-semibold text-muted-foreground">Typical Industry Alternatives</h4>
-                <div className="grid grid-cols-2 md:space-y-0 gap-4">
-                    <div className="p-4 border rounded-lg bg-muted/50">
+                <div className="grid grid-cols-2 gap-4">
+                     <div className="p-4 border rounded-lg bg-muted/50">
                         <h4 className="font-bold text-lg text-center">Typical SaaS Subscriptions</h4>
                         <p className="text-2xl md:text-3xl font-bold text-center mt-1">₹30,000+</p>
                         <p className="text-sm font-semibold text-muted-foreground text-center">Per Year, Per Location</p>
@@ -219,7 +219,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         );
     }
 
-    const hasTieredEditions = ["Education", "Healthcare", "Industrial & Transport"].includes(pack.category);
+    const hasTieredEditions = ["Education", "Healthcare", "Industrial & Transport", "Entertainment & Events"].includes(pack.category);
 
     const pricingCards = [
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">

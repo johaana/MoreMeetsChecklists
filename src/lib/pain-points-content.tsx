@@ -85,12 +85,12 @@ export const painPointsContent = {
         ]
     },
     sports_clubs_facilities_pack: {
-        title: "The Business Case for World-Class Sports Club & Facility Operations",
+        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent",
         points: [
-            { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "Worn-out turf or a faulty goalpost can lead to lawsuits. Our checklists for equipment and infrastructure maintenance create a verifiable safety record, protecting your members and your business." },
-            { icon: <Users />, title: "Master Event & Crowd Management", description: "Inconsistent security and poor crowd flow during tournaments create chaos. Standardize event setup, security briefing, and evacuation plans to ensure every event is safe and professional." },
-            { icon: <TrendingUp />, title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers are a catastrophic liability. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and property." },
-            { icon: <FileCheck />, title: "Optimize Facility Hygiene & Vendor Performance", description: "Poor hygiene in locker rooms or pools leads to member complaints and health risks. Manage facility cleanliness, vendor SLAs, and sustainability with our comprehensive checklists." }
+            { icon: <Siren />, title: "The Unlocked Treadmill Tragedy (Bengaluru)", description: "A treadmill accelerated suddenly, injuring a member. Investigation revealed a three-month service lapse. Our 'Daily Equipment Inspection' checklist prevents this." },
+            { icon: <HeartPulse />, title: "The Locker Room Slip & Fall Lawsuit", description: "A member fractured her wrist on a wet floor with no signage, leading to a negligence lawsuit. Our 'Housekeeping & Safety' protocol mandates signage and verification." },
+            { icon: <Wind />, title: "The London Gym Ceiling Collapse", description: "A ceiling weakened by an unreported HVAC leak collapsed during a class, hospitalizing three. Our 'Facility Maintenance' checklist forces proactive structural and system checks." },
+            { icon: <Shield />, title: "The Dubai Sauna Explosion", description: "A blocked pressure valve in a sauna caused an explosion, injuring a guest. Our 'High-Risk Equipment' checklist ensures weekly checks of all critical safety components." }
         ]
     },
     fitness_centers_gyms_pack: {
@@ -148,12 +148,12 @@ export const painPointsContent = {
         ]
     },
     school_operations_pack: {
-        title: "Why Your School's Reputation Depends on These Checklists",
+        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent",
         points: [
-            { icon: <Bus />, title: "The 'Forgotten Child' Nightmare", description: "A child left on a bus is a catastrophic failure that can lead to criminal negligence charges and destroy your school's reputation forever. Our mandatory end-of-route check prevents this." },
-            { icon: <Shield />, title: "The Unseen Intruder on Campus", description: "An unauthorized person on school grounds is a terrifying security breach. Our strict visitor management and perimeter control checklists are your first line of defense against potential threats." },
-            { icon: <Utensils />, title: "The Cafeteria Food Poisoning Outbreak", description: "One food safety lapse can sicken dozens of students, trigger a public health crisis, and lead to immediate closure. Our HACCP-based kitchen hygiene SOPs prevent this disaster." },
-            { icon: <TrendingUp />, title: "Failing a Surprise Inspection", description: "Failing a fire safety or academic board inspection can result in fines, public embarrassment, or loss of affiliation. Our checklists ensure you are perpetually compliant and always ready." }
+            { icon: <Siren />, title: "The 'Forgotten Child' Nightmare", description: "A child left on a bus is a catastrophic failure that can destroy your school's reputation forever. Our mandatory, verifiable end-of-route check prevents this." },
+            { icon: <Shield />, title: "The Unseen Intruder on Campus", description: "An unauthorized person on school grounds is a terrifying security breach. Our strict visitor management and perimeter control checklists are your first line of defense." },
+            { icon: <HeartPulse />, title: "The Cafeteria Food Poisoning Outbreak", description: "One food safety lapse can sicken dozens of students and trigger a public health crisis. Our HACCP-based kitchen hygiene SOPs prevent this disaster." },
+            { icon: <TrendingUp />, title: "Failing a Surprise Inspection", description: "Failing a fire safety or academic board inspection can result in fines, public embarrassment, or loss of affiliation. Our checklists ensure you are perpetually compliant." }
         ]
     },
     university_college_ops: {
@@ -205,7 +205,3 @@ export const painPointsContent = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
-
-    
-
-    
