@@ -50,11 +50,11 @@ const GlobalStandardsSection = () => {
     const standards = [
         { name: "ISO 9001", description: "Quality Management" },
         { name: "HACCP / FSSAI", description: "Food Safety" },
-        { name: "JCI &amp; NABH", description: "Healthcare Quality" },
+        { name: "JCI & NABH", description: "Healthcare Quality" },
         { name: "OSHA / ISO 45001", description: "Workplace Safety" },
-        { name: "ISO 14001 &amp; ESG", description: "Sustainability" },
-        { name: "ISPS / IATA", description: "Maritime &amp; Aviation" },
-        { name: "PCI DSS / GDPR", description: "Data &amp; Payment Security" },
+        { name: "ISO 14001 & ESG", description: "Sustainability" },
+        { name: "ISPS / IATA", description: "Maritime & Aviation" },
+        { name: "PCI DSS / GDPR", description: "Data & Payment Security" },
         { name: "SOX", description: "Financial Governance" }
     ];
 
@@ -111,10 +111,10 @@ const FaqSection = () => (
                            <p className="font-semibold text-foreground">MoreMeets is different. We sell the system itself.</p>
                            <p>Our blueprints are not just lists; they are complete, expert-built operational plans in an editable Excel format. Each task is structured with the critical details free templates miss:</p>
                            <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Who is responsible</strong> (Role &amp; Department)</li>
+                                <li><strong>Who is responsible</strong> (Role & Department)</li>
                                 <li><strong>When it needs to be done</strong> (Frequency)</li>
-                                <li><strong>How important it is</strong> (Priority &amp; Risk Level)</li>
-                                <li><strong>How to prove it's done</strong> (Proof &amp; Audit Trail)</li>
+                                <li><strong>How important it is</strong> (Priority & Risk Level)</li>
+                                <li><strong>How to prove it's done</strong> (Proof & Audit Trail)</li>
                            </ul>
                             <p>In short, free templates ask the questions. Our blueprints give your team the actionable answers. You're not buying a document; you're buying a ready-to-deploy system that saves you weeks of work and gives you the confidence that every detail is covered from day one.</p>
                         </AccordionContent>
@@ -232,7 +232,7 @@ function PackList() {
             <CardFooter className="p-6 pt-2 mt-auto">
                 <Button asChild className="w-full font-bold" variant="default">
                     <Link href={`/packs/${pack.id}`}>
-                        View Full Checklist &amp; Purchase
+                        View Full Checklist & Purchase
                     </Link>
                 </Button>
             </CardFooter>
@@ -512,7 +512,7 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center space-y-6 text-center">
                 <div className="space-y-4">
                     <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                        The Professional Standard for Compliance &amp; Operations Checklists.
+                        The Professional Standard for Compliance & Operations Checklists.
                     </h1>
                     <div className="hidden lg:block">
                          <h2 className="text-3xl font-bold text-white/90 drop-shadow-md max-w-full mx-auto font-headline">

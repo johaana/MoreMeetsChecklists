@@ -861,7 +861,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Entertainment & Events ---
     {
         id: 'film_production_pack',
-        title: "Film Production Pack",
+        title: "Film & OTT Production Pack",
         priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -882,7 +882,7 @@ export const premiumPacks: PremiumPack[] = [
             standards: [
                 { name: "Safety & Quality", description: "ISO 45001/9001, OSHA for on-set safety and quality management." },
                 { name: "Technical Standards", description: "SMPTE guidelines for camera, audio, and post-production formats." },
-                { name: "Legal & Compliance", description: "Protocols for copyright, E&amp;O insurance, and union agreements (e.g., SAG-AFTRA, DGA)." },
+                { name: "Legal & Compliance", description: "Protocols for copyright, E&O insurance, and union agreements (e.g., SAG-AFTRA, DGA)." },
                 { name: "Data Security", description: "Best practices for managing sensitive script and production data."}
             ]
         },
@@ -1879,7 +1879,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <School className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["School Principals", "School Owners", "Admin Heads", "Heads of Security", "Transport Managers"],
+        whoIsItFor: ["School Owners", "School Principals", "Admin Heads", "Heads of Security", "Transport Managers"],
         sampleItems: [
             "Implement a 'Student Transport & Bus Safety' protocol.",
             "Manage 'Visitor & Access Control' to secure your campus.",
