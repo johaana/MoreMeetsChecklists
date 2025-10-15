@@ -148,21 +148,21 @@ export const painPointsContent = {
         ]
     },
     school_operations_pack: {
-        title: "The Business Case for a Safer, More Organized School",
+        title: "Why Every Detail Matters in School Operations",
         points: [
-            { icon: <Shield />, title: "Prevent a Parent's Worst Nightmare", description: "An unauthorized student pickup or a bus accident is an existential threat to a school's reputation. Our protocols for student pickup and bus safety are your first line of defense." },
-            { icon: <TrendingUp />, title: "Pass Board Inspections Without Panic", description: "Stop scrambling for inspections. Our checklists ensure you are always compliant with education board requirements for fire safety, lab safety, and facilities, preventing penalties." },
-            { icon: <FileLock />, title: "Protect Students in the Digital World", description: "Implement our 'Student Digital Safety Audit' to review network traffic, web filters, and device settings, creating a safer online learning environment for your students." },
-            { icon: <Users />, title: "Build Deep Parent Trust & Confidence", description: "A visible, systematic approach to safety is your most powerful marketing tool. Demonstrate your commitment and build the trust that is a key factor in school choice for parents." }
+            { icon: <Bus />, title: "Prevent the 'Forgotten Child' in the Bus", description: "A simple, mandatory end-of-route check by drivers and attendants, logged and verified, prevents a terrifying and reputation-destroying incident." },
+            { icon: <Shield />, title: "Stop Unauthorized Visitors Before They Enter", description: "A strict visitor management protocol with ID verification, badge issuance, and escort policies is your first line of defense in protecting students from external threats." },
+            { icon: <Utensils />, title: "Avoid Canteen Contamination Scares", description: "Daily food temperature logs, FIFO inventory checks, and strict hygiene protocols based on HACCP principles prevent foodborne illnesses and protect student health." },
+            { icon: <TrendingUp />, title: "Pass Fire Safety & Board Inspections Without Panic", description: "Regular, documented fire drills and monthly audits of extinguishers and emergency exits ensure you are always compliant and, more importantly, always ready." }
         ]
     },
     university_college_ops: {
-        title: "The Business Case for a Modern, Efficient Campus",
+        title: "The Business Case for a World-Class Campus Operation",
         points: [
-            { icon: <Shield />, title: "Ensure a Safe & Secure Campus Environment", description: "Manage the complexities of a large, open campus. Our protocols for emergency response, access control, and event security protect your students, faculty, and reputation." },
-            { icon: <TrendingUp />, title: "Optimize Facility & Resource Management", description: "Streamline operations across a large campus, from classroom technology readiness and lab safety to grounds maintenance and janitorial services, reducing costs and improving student experience." },
-            { icon: <FileCheck />, title: "Enhance Student Life & Academic Support", description: "Deliver a world-class student experience with checklists for residence life, mental health support, admissions, and library operations, boosting student satisfaction and retention." },
-            { icon: <Users />, title: "Maintain Regulatory & Accreditation Compliance", description: "Stay audit-ready with checklists that align with higher education standards for safety, accessibility, and academic integrity, safeguarding your institution's standing." }
+            { icon: <TestTube />, title: "Prevent Viral Lab Accidents", description: "A lab fire caused by an expired extinguisher can ruin your reputation. Our EHS checklists ensure equipment is maintained, chemicals are managed, and staff are trained, meeting OSHA and OECD GLP standards." },
+            { icon: <FileLock />, title: "Stop Exam Paper Leaks", description: "Protect academic integrity with a strict chain-of-custody protocol for confidential materials, from secure printing and storage to supervised distribution and destruction." },
+            { icon: <Home />, title: "Mitigate Hostel Safety Breaches", description: "Weekly electrical safety audits, functional smoke detectors, and clear enforcement of appliance policies prevent fires and ensure a safe living environment for students." },
+            { icon: <Users />, title: "Build a Culture of Well-being & Anti-Ragging", description: "Go beyond compliance with proactive checklists for anonymous reporting, awareness workshops, and a responsive committee, ensuring student mental and emotional safety is a priority." }
         ]
     },
     manufacturing_operations_ehs_pack: {
@@ -180,7 +180,7 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Achieve 99%+ Inventory Accuracy", description: "Stop losing money to lost stock. Implement systematic checklists for Goods Receiving (GRN), cycle counting, and returns management to get a true, real-time picture of your inventory." },
             { icon: <Shield />, title: "Create a Safer Warehouse Environment", description: "Prevent costly accidents with daily safety checklists for forklifts, loading docks, and general housekeeping, reducing injuries and potential compliance fines." },
             { icon: <HandCoins />, title: "Eliminate Costly Shipping &amp; Data Entry Errors", description: "A single typo in product dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' protocol for new product data entry prevents these expensive mistakes." },
-            { icon: 'x', title: "Improve Order Fulfillment Speed &amp; Accuracy", description: "A well-organized warehouse is a fast warehouse. Our 5S and inventory management checklists ensure that your pick-and-pack operations are efficient, accurate, and scalable." }
+            { icon: <FileCheck />, title: "Improve Order Fulfillment Speed &amp; Accuracy", description: "A well-organized warehouse is a fast warehouse. Our 5S and inventory management checklists ensure that your pick-and-pack operations are efficient, accurate, and scalable." }
         ]
     },
     animal_shelter_pack: {

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase, Home, Building, Leaf } from 'lucide-react';
+import { CookingPot, HardHat, Hospital, Lock, Shield, Search, Briefcase, Home, Building, Leaf, FileText } from 'lucide-react';
 
 export type IndividualChecklist = {
     id: string;
@@ -123,9 +123,40 @@ export const individualChecklists: IndividualChecklist[] = [
             { id: 'ESG-P-01', description: "Review procurement policy to prioritize vendors with sustainable practices and recycled products.", priority: 'Medium', riskLevel: 'Low', proof: 'Procurement Policy Document', location: 'Admin Office' },
             { id: 'ESG-P-02', description: "Implement a 'no single-use plastic' policy in the office pantry.", priority: 'High', riskLevel: 'Low', proof: 'Policy Communication', location: 'Pantry' },
         ]
+    },
+    {
+        id: 'surgical-safety',
+        title: "WHO Surgical Safety Checklist",
+        priceINR: 1999,
+        paymentId: "pl_ROLjNNiQa8G8XJ",
+        category: "Healthcare",
+        icon: <FileText />,
+        description: "A JCI & NABH-aligned checklist based on the WHO's life-saving protocol to prevent 'never events' in the operating room.",
+        longDescription: "Wrong-site, wrong-procedure, and wrong-patient surgeries are catastrophic but preventable failures. This checklist operationalizes the globally recognized World Health Organization (WHO) Surgical Safety protocol. It enforces a mandatory 'Time Out' before incision, where the entire surgical team—surgeons, anesthetists, and nurses—verbally confirm the patient's identity, the surgical site, and the procedure. Implementing this is a foundational requirement for JCI and NABH accreditation and is proven to significantly reduce surgical complications and mortality.",
+        relatedPackId: "healthcare_and_hospital_operations",
+        whoIsItFor: ["Hospital COOs", "Chief Medical Officers", "Heads of Surgery", "Quality Managers"],
+        painPoints: [
+            {
+                title: "Prevent Catastrophic Surgical Errors",
+                description: "Eliminates the communication gaps that lead to wrong-site or wrong-patient surgeries by forcing a final, verbal team confirmation."
+            },
+            {
+                title: "Meet JCI/NABH Accreditation Standards",
+                description: "Provides a clear, documented system that fulfills a core patient safety requirement for all major hospital accreditations."
+            },
+            {
+                title: "Reduce Post-Operative Complications",
+                description: "Studies show that implementing this simple checklist dramatically reduces infection rates, complications, and mortality by improving teamwork and communication."
+            }
+        ],
+        tasks: [
+            { id: 'SSC-01', description: "Before induction of anesthesia ('Sign In'): Confirm patient identity, site, procedure, and consent.", priority: 'High', riskLevel: 'High', proof: 'Signed Consent Form', location: 'Operating Room' },
+            { id: 'SSC-02', description: "Before induction of anesthesia: Check if the surgical site is marked.", priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Operating Room' },
+            { id: 'SSC-03', description: "Before skin incision ('Time Out'): All team members introduce themselves by name and role.", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Operating Room' },
+            { id: 'SSC-04', description: "Before skin incision: Surgeon, anesthesia professional, and nurse verbally confirm patient, site, and procedure.", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Operating Room' },
+            { id: 'SSC-05', description: "Before patient leaves room ('Sign Out'): Nurse verbally confirms the name of the procedure recorded, that instrument/sponge counts are correct, and any equipment problems to be addressed.", priority: 'High', riskLevel: 'High', proof: 'Verbal Confirmation', location: 'Operating Room' }
+        ]
     }
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
-
-    

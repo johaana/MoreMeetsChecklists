@@ -1878,7 +1878,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "A complete toolkit for school principals and admin heads to ensure student safety, operational efficiency, and a secure learning environment.",
         icon: <School className="w-8 h-8 text-primary" />,
         badgeText: "New!",
-        badgeVariant: "accent",
+        badgeVariant: "accent" as const,
         whoIsItFor: ["School Principals", "Admin Heads", "Heads of Security", "Transport Managers"],
         sampleItems: [
             "Implement a 'Student Transport & Bus Safety' protocol.",
@@ -1887,17 +1887,17 @@ export const premiumPacks: PremiumPack[] = [
             "Includes checklists for 'Emergency Drills' and 'Classroom Safety'."
         ],
         globalStandards: {
-            title: "Built on Global Education & Safety Standards",
+            title: "Global Compliance Framework for Schools",
             standards: [
-                { name: "Student Safety", description: "Best practices for campus security, transport safety, and emergency response." },
-                { name: "Child Protection", description: "Guidelines for visitor management and staff conduct to ensure a safe environment for students." },
-                { name: "Facility Safety", description: "Protocols for playground safety, lab safety, and general campus maintenance." },
-                { name: "Regulatory Compliance", description: "Alignment with national and regional education board standards for safety and operations." }
+                { name: "Child Safety & Protection", description: "UNCRC, ISO 45001, NSPCC" },
+                { name: "Health, Hygiene & Food Safety", description: "WHO, HACCP, ISO 22000" },
+                { name: "Infrastructure & Emergency", description: "NFPA 101, UNESCO, ISO 22301" },
+                { name: "Data Privacy & Digital Learning", description: "GDPR, FERPA, ISO 27001" },
             ]
         },
         checklists: [
             {
-                title: "🚌 Student Transport & Bus Safety",
+                title: "Student Safety & Child Protection Audit – Global Edition",
                 department: "Transport",
                 frequency: "Daily",
                 role: "Transport Manager",
@@ -1911,7 +1911,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔒 Visitor Management & Access Control",
+                title: "Visitor Management & Access Control",
                 department: "Security/Admin",
                 frequency: "Ongoing",
                 role: "Security Head",
@@ -1925,7 +1925,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🏃 Playground & Sports Equipment Safety",
+                title: "Playground & Sports Equipment Safety",
                 department: "Facilities/Sports",
                 frequency: "Weekly",
                 role: "Admin Manager",
@@ -1939,7 +1939,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔥 Emergency Drills (Fire, Lockdown)",
+                title: "Safe School Infrastructure & Emergency Response SOP",
                 department: "Safety/Admin",
                 frequency: "Quarterly",
                 role: "Principal/Safety Officer",
@@ -1953,7 +1953,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🏫 Classroom Safety & Hygiene",
+                title: "Classroom Safety & Hygiene",
                 department: "Academics/Admin",
                 frequency: "Daily",
                 role: "Teacher/Supervisor",
@@ -1967,7 +1967,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🍔 Cafeteria & Food Hygiene (HACCP)",
+                title: "School Hygiene & Canteen Safety (WHO–HACCP Integrated)",
                 department: "F&B/Admin",
                 frequency: "Daily",
                 role: "Cafeteria Manager",
@@ -1981,7 +1981,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔬 Science Lab Safety",
+                title: "Laboratory EHS & Research Ethics Compliance",
                 department: "Academics/Safety",
                 frequency: "Per Lab Session",
                 role: "Science Teacher",
@@ -1995,7 +1995,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💻 IT & Student Digital Safety",
+                title: "Data Privacy & Digital Learning Safety Checklist",
                 department: "IT/Admin",
                 frequency: "Quarterly",
                 role: "IT Manager",
@@ -2029,12 +2029,13 @@ export const premiumPacks: PremiumPack[] = [
             "Includes checklists for 'Emergency Response' and 'Campus Security'."
         ],
         globalStandards: {
-            title: "Built on Global Education & Safety Standards",
+            title: "Global Compliance Framework for Colleges & Universities",
             standards: [
-                { name: "Campus Safety", description: "Protocols aligned with campus safety regulations and best practices for emergency response." },
-                { name: "Lab & Research Safety", description: "Adherence to safety standards for handling chemicals and equipment in educational labs." },
-                { name: "Facility Management", description: "ISO 41001 principles for managing campus facilities, including maintenance and janitorial services." },
-                { name: "IT & Data", description: "Best practices for managing campus IT infrastructure and protecting student data." }
+                { name: "Lab & Research Safety", description: "OSHA, ISO 45001, OECD GLP" },
+                { name: "Hostel & Campus Safety", description: "NFPA 101, ISO 31000, UNESCO" },
+                { name: "Academic Integrity & Data Security", description: "GDPR, FERPA, ISO 27001" },
+                { name: "Student Well-being", description: "UNESCO, Title IX (US), UGC (India)" },
+                { name: "Sustainability & ESG", description: "UN SDGs, ISO 14001, Green Campus" }
             ]
         },
         checklists: [
@@ -2053,7 +2054,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧪 Lab Safety & Compliance",
+                title: "Laboratory EHS & Research Ethics Compliance",
                 department: "Lab Operations",
                 frequency: "Weekly",
                 role: "Lab Manager",
@@ -2067,7 +2068,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🏡 Student Housing & Residence Life",
+                title: "Safe Campus & Hostel Operations (Global Safety Benchmark)",
                 department: "Residence Life",
                 frequency: "Weekly",
                 role: "Residence Manager",
@@ -2081,7 +2082,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🚨 Emergency Response",
+                title: "Emergency Response",
                 department: "Security",
                 frequency: "Bi-Annually",
                 role: "Security Manager",
@@ -2109,7 +2110,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🌱 Landscape & Grounds Maintenance",
+                title: "Landscape & Grounds Maintenance",
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Supervisor",
@@ -2123,7 +2124,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "👩‍💻 IT Systems & Network Management",
+                title: "Academic Integrity & Data Privacy Compliance",
                 department: "IT",
                 frequency: "Bi Annually",
                 role: "IT administrator",
@@ -2165,7 +2166,7 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧠 Student Mental Health & Wellness Support",
+                title: "Student Well-being & Anti-Harassment Global SOP",
                 department: "Student Services",
                 frequency: "Ongoing",
                 role: "Wellness Counselor",
@@ -2192,18 +2193,18 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'UNIV-LIB-05', description: "Manage the process for overdue books and fines in a consistent manner.", priority: 'High', riskLevel: 'Low', proof: 'Fines and Overdue Report', location: 'Library System' },
                 ]
             },
-            {
-                title: "🐜 Pest Control Management",
-                department: "Facilities",
-                frequency: "Monthly",
-                role: "Facility Manager",
-                summary: "Create a safe and comfortable environment for students and staff with a preventive pest control program designed for a large campus.",
+             {
+                title: "Green Campus & ESG Compliance",
+                department: "Sustainability",
+                frequency: "Quarterly",
+                role: "Sustainability Officer",
+                summary: "Drive your campus towards a greener future. This checklist helps you track key environmental metrics and implement sustainable practices across the university.",
                 tasks: [
-                    { id: 'PEST-CAMP-01', description: "Inspect buildings, gardens and campus weekly", priority: 'High', riskLevel: 'Medium', proof: 'Regular inspection logs', location: 'All Areas' },
-                    { id: 'PEST-CAMP-02', description: "Clear the standing water and remove trash in an organised matter", priority: 'High', riskLevel: 'High', proof: 'Work order', location: 'All Areas' },
-                    { id: 'PEST-CAMP-03', description: "Install the right barriers that may prevent access for insects and pests.", priority: 'High', riskLevel: 'Medium', proof: 'Contract', location: 'All Areas' },
-                    { id: 'PEST-CAMP-04', description: "Keep the landscape well maintained and follow the waste protocols.", priority: 'High', riskLevel: 'Medium', proof: 'Work Order', location: 'Everywhere' },
-                    { id: 'PEST-CAMP-05', description: "Provide Safety data to all the workers who apply the chemicals on campus.", priority: 'High', riskLevel: 'High', proof: 'SDS document', location: 'Everywhere' }
+                    { id: 'UNIV-ESG-01', description: "Track and analyze campus-wide energy and water consumption data.", priority: 'High', riskLevel: 'Medium', proof: 'Consumption Report', location: 'Facilities Office' },
+                    { id: 'UNIV-ESG-02', description: "Audit waste management processes to measure recycling rates and identify areas for reduction.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Audit Report', location: 'Campus-wide' },
+                    { id: 'UNIV-ESG-03', description: "Review procurement policies to prioritize sustainable and ethically sourced products.", priority: 'Medium', riskLevel: 'Low', proof: 'Procurement Policy', location: 'Admin Office' },
+                    { id: 'UNIV-ESG-04', description: "Promote and manage campus sustainability initiatives (e.g., carpooling, plastic-free campaigns).", priority: 'Medium', riskLevel: 'Low', proof: 'Campaign Report', location: 'Sustainability Office' },
+                    { id: 'UNIV-ESG-05', description: "Prepare a quarterly ESG report for university leadership and stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'ESG Report', location: 'Sustainability Office' }
                 ]
             }
         ]
