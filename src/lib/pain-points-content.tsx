@@ -133,7 +133,7 @@ export const painPointsContent = {
         title: "The Business Case for Patient Safety &amp; Compliance",
         points: [
             { icon: <Shield />, title: "Prevent 'Never Events' &amp; Medication Errors", description: "A wrong-site surgery or medication error is catastrophic. Our WHO-aligned Surgical Safety and LASA Drug checklists create a safety net to prevent these devastating and legally perilous events." },
-            { icon: <TrendingUp />, title: "Pass NABH/JCI/NABL Audits with Confidence", description: "Stop the pre-audit scramble. Our checklists embed global standards into your daily workflow, ensuring you are perpetually audit-ready and compliant, saving you from non-compliance penalties." },
+            { icon: <TrendingUp />, title: "Pass NABH/JCI Audits with Confidence", description: "Stop the pre-audit scramble. Our checklists embed global standards into your daily workflow, ensuring you are perpetually audit-ready and compliant, saving you from non-compliance penalties." },
             { icon: <Users />, title: "Eliminate Hospital-Acquired Infections (HAIs)", description: "HAIs are a major cost and safety risk. Our CSSD and Infection Control checklists enforce rigorous sterilization and hygiene protocols, directly reducing infection rates and improving patient outcomes." },
             { icon: <HandCoins />, title: "Stop Revenue Leakage from Inefficiency", description: "Reduce costly delays, sample rejections, and readmissions. Our protocols for ER, lab, and discharge planning streamline operations, improving patient flow and financial health." }
         ]
@@ -163,6 +163,15 @@ export const painPointsContent = {
             { icon: <FileLock />, title: "Stop Exam Paper Leaks", description: "Protect academic integrity with a strict chain-of-custody protocol for confidential materials, from secure printing and storage to supervised distribution and destruction." },
             { icon: <Home />, title: "Mitigate Hostel Safety Breaches", description: "Weekly electrical safety audits, functional smoke detectors, and clear enforcement of appliance policies prevent fires and ensure a safe living environment for students." },
             { icon: <Users />, title: "Build a Culture of Well-being & Anti-Ragging", description: "Go beyond compliance with proactive checklists for anonymous reporting, awareness workshops, and a responsive committee, ensuring student mental and emotional safety is a priority." }
+        ]
+    },
+    food_manufacturing_ops: {
+        title: "The Business Case for a Safer, More Productive Plant",
+        points: [
+            { icon: <Shield />, title: "Prevent Contamination & Ensure Food Safety", description: "Implement HACCP-based checklists for raw material receiving, sanitation, and allergen control to prevent costly recalls and protect consumer health." },
+            { icon: <TrendingUp />, title: "Maximize Uptime & Production Throughput", description: "Move from reactive repairs to proactive maintenance with protocols for equipment calibration, lubrication, and daily checks, ensuring your lines are always running." },
+            { icon: <FileCheck />, title: "Achieve & Maintain GFSI/ISO 22000 Certification", description: "Our checklists are aligned with global food safety standards, providing the documentation and process control needed to pass audits and access new markets." },
+            { icon: <Users />, title: "Improve Quality & Reduce Product Waste", description: "Use robust protocols for finished product testing and quality control to reduce defects, minimize rework, and protect your profit margins." }
         ]
     },
     manufacturing_operations_ehs_pack: {
@@ -196,3 +205,5 @@ export const painPointsContent = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
+
+    

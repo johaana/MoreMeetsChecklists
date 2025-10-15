@@ -5,7 +5,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, GraduationCap } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, GraduationCap, IndianRupee } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -223,8 +223,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                 {hasTieredEditions && (
-                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-orange-500/50 bg-orange-50 text-orange-800">
-                        <span className="font-sans">🇮🇳</span> India Edition
+                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-500/50 bg-green-500/10 text-green-800 dark:text-green-300">
+                       <span className="font-sans text-base">🇮🇳</span> India Edition
                     </Badge>
                 )}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
@@ -248,7 +248,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
                 {hasTieredEditions && (
-                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-50 text-blue-800">
+                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
                 )}
@@ -268,6 +268,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
                 </div>
                  <div className="grid gap-3">
+                    {hasTieredEditions && (
+                        <div className="flex items-start gap-3">
+                            <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                            <div>
+                                <p className="font-semibold">Global Compliance Checklists</p>
+                                <p className="text-muted-foreground">Checklists aligned with international standards like ISO, OSHA, and JCI.</p>
+                            </div>
+                        </div>
+                    )}
                     <div className="flex items-start gap-3">
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
@@ -398,3 +407,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
+
+    
