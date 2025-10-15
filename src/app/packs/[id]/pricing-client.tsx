@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -7,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, GraduationCap } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -203,7 +202,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="text-center">
                                <p className="text-4xl font-extrabold mb-4">Free Download</p>
-                               <Button size="lg" className="w-full" onClick={() => handleDownload(pack)}>
+                               <Button size="lg" className="w-full" onClick={() => handleDownload(pack, 'pack')}>
                                  <Download className="mr-2 h-5 w-5" />
                                  Download Now
                                </Button>
@@ -218,11 +217,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         );
     }
 
+    const isEducationPack = pack.category === "Education";
+
     const pricingCards = [
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
+                 {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5"><GraduationCap className="w-4 h-4" /> India Edition</Badge>}
                 <p className="text-4xl font-bold text-foreground">₹{professionalPrice}</p>
+                 {isEducationPack && <CardDescription>Aligned with domestic standards (CBSE, AICTE, UGC).</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
@@ -243,6 +246,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
                     Personalized Pack
                 </CardTitle>
+                 {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5"><Globe className="w-4 h-4" /> Global Edition</Badge>}
                 <div className="flex items-baseline gap-2">
                     <p className="text-4xl font-bold text-foreground">
                         ₹{personalizedPrice}
@@ -251,12 +255,34 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         ₹{personalizedStrikethroughPrice}
                     </p>
                 </div>
+                {isEducationPack && <CardDescription>Benchmarks against global standards (ISO, WHO, UNCRC, GDPR).</CardDescription>}
             </CardHeader>
-            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Professional, plus:</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span className="font-semibold">Custom Branding:</span> Your logo added to the checklists.</p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span className="font-semibold">Priority Action Plan:</span> A document highlighting the top 10 most critical checklists for you to implement first.</p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span className="font-semibold">30-Min Onboarding Call:</span> A walkthrough of the pack to help you get started.</p>
+            <CardContent className="flex-1 space-y-4 text-sm p-6 pt-0">
+                <div className="flex items-start gap-3">
+                    <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
+                    <p className="font-semibold text-primary">Everything in Professional, plus:</p>
+                </div>
+                 <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                    <div>
+                        <p className="font-semibold">Custom Branding</p>
+                        <p className="text-muted-foreground">Your logo added to the checklists.</p>
+                    </div>
+                </div>
+                 <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                    <div>
+                        <p className="font-semibold">Priority Action Plan</p>
+                        <p className="text-muted-foreground">A document highlighting the top 10 most critical checklists for you to implement first.</p>
+                    </div>
+                </div>
+                 <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                    <div>
+                        <p className="font-semibold">30-Min Onboarding Call</p>
+                        <p className="text-muted-foreground">A walkthrough of the pack to help you get started.</p>
+                    </div>
+                </div>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
                  <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
@@ -360,3 +386,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
+
+    
