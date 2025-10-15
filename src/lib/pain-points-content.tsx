@@ -3,6 +3,15 @@ import React from 'react';
 import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt } from 'lucide-react';
 
 export const painPointsContent = {
+    jewelry_and_luxury_retail: {
+        title: "High-Stakes Retail: How a Single Missed Step Leads to Multi-Crore Losses",
+        points: [
+            { icon: <Gem />, title: "The ₹3.8 Crore Mumbai Showroom Theft", description: "A premium store was burgled overnight after an alarm was switched off for maintenance with no backup protocol. Our 'End-of-Day Security' checklist prevents this by mandating alarm, CCTV, and patrol verifications before closing." },
+            { icon: <Users />, title: "The Fake Return Fraud", description: "A staff member colluded with a customer to process ₹12 lakh in fake refunds. Our 'Sales & Return Authorization' SOP, requiring dual approval for large refunds and weekly POS audits, eliminates this internal threat." },
+            { icon: <Lock />, title: "The Vault Access Breach", description: "An employee used a colleague’s access card to enter a gold vault after hours. Our 'Vault Access Control' checklist, mandating biometric entry and daily log reviews, would have made this impossible." },
+            { icon: <Shield />, title: "The Payment Gateway Cyber Scam", description: "A luxury watch brand lost sales after fraudsters placed fake QR codes on payment counters. Our 'Digital Transaction Security' checklist includes daily QR code validation to prevent this modern form of theft." }
+        ]
+    },
     hotels_and_resorts: {
         title: "The Business Case for 5-Star Operational Excellence",
         points: [
@@ -19,15 +28,6 @@ export const painPointsContent = {
             { icon: <HandCoins />, title: "Stop Kitchen Profit Drain", description: "Reduce costly food spoilage with rigorous temperature logging and FIFO protocols, and control portion sizes to protect your margins on every plate." },
             { icon: <TrendingUp />, title: "Eliminate Service Inconsistency", description: "Ensure every guest gets the same high-quality experience with standardized checklists for FOH opening, closing, and service standards, leading to better reviews and repeat business." },
             { icon: <Users />, title: "Reduce Back-of-House Chaos", description: "Empower your kitchen staff with clear, repeatable processes for everything from receiving goods to closing down, reducing errors and staff stress." }
-        ]
-    },
-    jewelry_and_luxury_retail: {
-        title: "The Business Case for Luxury Retail Excellence",
-        points: [
-            { icon: <Gem />, title: "Prevent High-Value Inventory Loss", description: "Implement ironclad, two-person protocols for vault access, daily counts, and client presentations to eliminate the risk of theft or loss of high-value items." },
-            { icon: <Users />, title: "Uphold Brand Prestige with Every Interaction", description: "Standardize the 'white-glove' service experience, from clienteling and private viewings to store ambiance, ensuring your brand's luxury promise is always delivered." },
-            { icon: <FileLock />, title: "Comply with Anti-Money Laundering (AML) Regulations", description: "Navigate complex regulations for high-value cash transactions with a clear protocol for identity verification and 'Source of Funds' documentation, protecting your business from legal risk." },
-            { icon: <Shield />, title: "Protect Against Internal & External Threats", description: "From robust opening/closing security procedures to daily CCTV audits and secure cash handling, our checklists provide a multi-layered defense system for your store." }
         ]
     },
     fashion_and_apparel_retail: {

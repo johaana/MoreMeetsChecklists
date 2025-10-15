@@ -364,43 +364,43 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
-        description: "A premium toolkit for luxury brand managers to deliver impeccable service and ensure ironclad security for high-value inventory.",
+        description: "A comprehensive SOP and compliance checklist suite designed for fine jewellery, luxury watch, and premium retail brands — ensuring security, operational efficiency, brand consistency, and customer trust across stores.",
         icon: <Gem className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors", "GMs", "Directors"],
+        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors", "Compliance Officers", "GMs", "Directors"],
         sampleItems: [
-            "Implement a 'High-Value Inventory & Vault' security protocol.",
-            "Standardize your 'White-Glove Customer Service' experience.",
-            "Ensure 'Visual Merchandising & Display' compliance with brand standards.",
-            "Includes checklists for 'Cash Handling' and 'Daily Security Audits'."
+            "Implement a 'Vault Access Control' checklist based on biometric and dual-approval protocols.",
+            "Standardize your 'High-Value Exchange & Handling' SOP to prevent internal fraud.",
+            "Ensure 'Digital Transaction Security' with daily QR code and POS validation.",
+            "Align with 'BIS Hallmarking' and 'Anti-Money Laundering (AML)' compliance."
         ],
         globalStandards: {
-            title: "Built on Global Luxury & Security Standards",
+            title: "Global & Indian Compliance Standards",
             standards: [
-                { name: "Security", description: "Best practices for physical security, vault management, and high-value inventory control." },
-                { name: "Customer Experience", description: "Principles of luxury service, clienteling, and personalized shopping." },
-                { name: "Compliance", description: "Protocols for AML (Anti-Money Laundering) in high-value transactions and PCI DSS for payments." },
-                { name: "Quality", description: "ISO 9001 for consistent brand presentation and operational excellence." }
+                { name: "Safety & Security", description: "BIS Hallmarking, ISO 28000 (Supply Chain), ISO 18788 (Security Ops), PSARA (India)." },
+                { name: "Labour & HR", description: "Shops & Establishment Act, POSH Act, ILO Code of Conduct." },
+                { name: "Financial & Anti-Theft", description: "Anti-Money Laundering (PMLA), GST/Income Tax reporting, Insurance Compliance." },
+                { name: "ESG & Sustainability", description: "Responsible Jewellery Council (RJC), Kimberley Process (KPCS), ISO 14001." }
             ]
         },
         checklists: [
             {
-                title: "🔒 Daily Security & Opening/Closing",
+                title: "🔒 End-of-Day Store Closure & Security",
                 department: "Security/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
                 summary: "Establish an ironclad routine to secure your high-value store. This rigorous protocol prevents theft and guarantees staff safety from open to close.",
                 tasks: [
-                    { id: 'LUX-SEC-01', description: "Test all alarm systems (panic buttons, door sensors) before opening.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Store' },
-                    { id: 'LUX-SEC-02', description: "Verify all CCTV cameras are recording and have unobstructed views, especially over cash counters and vaults.", priority: 'High', riskLevel: 'High', proof: 'CCTV Check Log', location: 'Security Room' },
-                    { id: 'LUX-SEC-03', description: "Perform a two-person check to open and close the vault.", priority: 'High', riskLevel: 'High', proof: 'Vault Access Log', location: 'Vault' },
-                    { id: 'LUX-SEC-04', description: "Check that all display cases are locked and secured at closing.", priority: 'High', riskLevel: 'High', proof: 'Closing Checklist', location: 'Sales Floor' },
-                    { id: 'LUX-SEC-05', description: "Ensure no unauthorized personnel are present during opening and closing procedures.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster Check', location: 'Store' }
+                    { id: 'LUX-SEC-01', description: "Test all alarm systems (panic buttons, door sensors) before final exit.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Store' },
+                    { id: 'LUX-SEC-02', description: "Verify all CCTV cameras are recording with unobstructed views, especially over cash counters and vaults.", priority: 'High', riskLevel: 'High', proof: 'CCTV Check Log', location: 'Security Room' },
+                    { id: 'LUX-SEC-03', description: "Perform a two-person check to lock the vault.", priority: 'High', riskLevel: 'High', proof: 'Vault Access Log', location: 'Vault' },
+                    { id: 'LUX-SEC-04', description: "Ensure all high-value display cases are locked and secured.", priority: 'High', riskLevel: 'High', proof: 'Closing Checklist', location: 'Sales Floor' },
+                    { id: 'LUX-SEC-05', description: "Conduct final sweep to ensure no unauthorized personnel are present.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster Check', location: 'Store' }
                 ]
             },
             {
-                title: "💎 High-Value Inventory Management",
+                title: "💎 Vault Access Control",
                 department: "Inventory/Security",
                 frequency: "Daily",
                 role: "Inventory Manager",
@@ -408,95 +408,39 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'LUX-INV-01', description: "Conduct a daily count of all items in the vault and high-security display cases.", priority: 'High', riskLevel: 'High', proof: 'Daily Count Sheet', location: 'Vault/Sales Floor' },
                     { id: 'LUX-INV-02', description: "Log every instance an item is removed from or returned to the vault, with two-person sign-off.", priority: 'High', riskLevel: 'High', proof: 'Movement Log', location: 'Vault' },
-                    { id: 'LUX-INV-03', description: "When showing items to customers, only present a limited number at a time.", priority: 'High', riskLevel: 'High', proof: 'Staff Training Record', location: 'Sales Floor' },
-                    { id: 'LUX-INV-04', description: "Verify authenticity and weight of any returned or trade-in items using certified equipment.", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'Back Office' },
-                    { id: 'LUX-INV-05', description: "Perform a blind cycle count of a section of inventory weekly.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Report', location: 'Vault/Sales Floor' }
+                    { id: 'LUX-INV-03', description: "Review vault access logs daily for any unauthorized or unusual activity.", priority: 'High', riskLevel: 'High', proof: 'Access Log Review', location: 'Manager Office' },
+                    { id: 'LUX-INV-04', description: "Enforce a strict policy against shared access credentials (biometric or unique PINs preferred).", priority: 'High', riskLevel: 'High', proof: 'Access Policy Document', location: 'HR' },
+                    { id: 'LUX-INV-05', description: "Perform a blind cycle count of a section of vault inventory weekly.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Report', location: 'Vault' }
                 ]
             },
             {
-                title: "✨ Visual Merchandising & Store Ambiance",
-                department: "Marketing/Operations",
-                frequency: "Daily",
+                title: "✍️ Sales & Return Authorization",
+                department: "Sales/Operations",
+                frequency: "Per Transaction",
                 role: "Store Manager",
-                summary: "Deliver a flawless brand experience that justifies a premium price point. This checklist ensures your store's presentation meets the exacting standards of a luxury brand, from lighting and scent to display cleanliness.",
+                summary: "Prevent internal fraud and ensure every transaction is legitimate. This SOP requires dual approval for high-value refunds and creates a clear audit trail for all returns.",
                 tasks: [
-                    { id: 'LUX-VM-01', description: "Ensure all display cases are immaculately clean, fingerprint-free, and well-lit.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'LUX-VM-02', description: "Verify that all product displays adhere to the brand's global visual merchandising guidelines.", priority: 'High', riskLevel: 'Medium', proof: 'VM Guideline Checklist', location: 'Sales Floor' },
-                    { id: 'LUX-VM-03', description: "Check that lighting levels, music, and scent are set to the brand's standard.", priority: 'High', riskLevel: 'Low', proof: 'Ambiance Checklist', location: 'Sales Floor' },
-                    { id: 'LUX-VM-04', description: "Ensure all signage and price displays are correct, elegant, and perfectly placed.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'LUX-VM-05', description: "Confirm that staff uniforms are pristine and worn according to brand standards.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Appearance Check', location: 'Store' }
+                    { id: 'LUX-RET-01', description: "Require manager approval (dual sign-off) for any refund or exchange above a set value (e.g., ₹10,000).", priority: 'High', riskLevel: 'High', proof: 'Signed Refund Form', location: 'POS' },
+                    { id: 'LUX-RET-02', description: "Verify the original purchase receipt and inspect the returned item for authenticity and condition.", priority: 'High', riskLevel: 'High', proof: 'Return Inspection Log', location: 'POS' },
+                    { id: 'LUX-RET-03', description: "Process all refunds back to the original payment method.", priority: 'High', riskLevel: 'Medium', proof: 'POS Transaction Slip', location: 'POS' },
+                    { id: 'LUX-RET-04', description: "Conduct a weekly audit of all refund transactions against physical stock.", priority: 'High', riskLevel: 'High', proof: 'Weekly Audit Report', location: 'Office' },
+                    { id: 'LUX-RET-05', description: "Log reasons for all returns to identify potential product quality issues.", priority: 'Medium', riskLevel: 'Low', proof: 'Returns Analysis Report', location: 'Office' }
                 ]
             },
             {
-                title: "🤝 White-Glove Customer Service Protocol",
-                department: "Sales",
-                frequency: "Ongoing",
-                role: "Sales Associate",
-                summary: "Turn high-net-worth clients into lifelong brand advocates. This protocol guides your team in delivering an exceptional, personalized service experience that defines luxury.",
-                tasks: [
-                    { id: 'LUX-CUST-01', description: "Greet every client within 30 seconds of entry and offer a beverage.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Sales Floor' },
-                    { id: 'LUX-CUST-02', description: "For returning clients, review their purchase history and preferences in the CRM before engaging.", priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'Back Office/Tablet' },
-                    { id: 'LUX-CUST-03', description: "Use gloves when handling all high-value items in front of the client.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
-                    { id: 'LUX-CUST-04', description: "Offer personalized services like private viewings, custom engraving, or gift wrapping.", priority: 'Medium', riskLevel: 'Low', proof: 'Service Log', location: 'Sales Floor' },
-                    { id: 'LUX-CUST-05', description: "Send a personalized thank-you note or email after a significant purchase.", priority: 'High', riskLevel: 'Low', proof: 'Communication Log', location: 'Back Office' }
-                ]
-            },
-            {
-                title: "💰 Cash Handling & AML Compliance",
-                department: "Finance/Operations",
+                title: "💳 Digital Transaction Security",
+                department: "IT/Operations",
                 frequency: "Daily",
                 role: "Cashier/Manager",
-                summary: "Protect your business from financial crime and regulatory penalties. This checklist ensures secure cash handling and strict compliance with Anti-Money Laundering (AML) regulations for large transactions.",
+                summary: "Protect your business and customers from modern payment fraud. This checklist ensures the integrity of your digital payment systems, from QR codes to POS terminals.",
                 tasks: [
-                    { id: 'LUX-AML-01', description: "Perform cash reconciliation at the start and end of each shift with a two-person sign-off.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Sheet', location: 'Cash Office' },
-                    { id: 'LUX-AML-02', description: "For any cash transaction above the regulatory threshold (e.g., $10,000), complete a 'Source of Funds' declaration form.", priority: 'High', riskLevel: 'High', proof: 'AML Form', location: 'Cash Office' },
-                    { id: 'LUX-AML-03', description: "Verify the identity of any client making a large cash purchase with government-issued ID.", priority: 'High', riskLevel: 'High', proof: 'ID Verification Log', location: 'Cash Office' },
-                    { id: 'LUX-AML-04', description: "Report all suspicious transactions to the designated compliance officer.", priority: 'High', riskLevel: 'High', proof: 'STR Filing', location: 'Compliance Office' },
-                    { id: 'LUX-AML-05', description: "Ensure cash is stored in a locked safe and deposits are made via a secure, scheduled process.", priority: 'High', riskLevel: 'High', proof: 'Deposit Slips/Log', location: 'Cash Office' }
+                    { id: 'LUX-PAY-01', description: "Visually inspect QR codes and payment terminals for any signs of tampering or overlays at the start of each day.", priority: 'High', riskLevel: 'High', proof: 'Daily Inspection Log', location: 'POS' },
+                    { id: 'LUX-PAY-02', description: "Reconcile digital payment gateway reports with POS transaction records at the end of each day.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Office' },
+                    { id: 'LUX-PAY-03', description: "Ensure CCTV cameras have a clear, unobstructed view of all payment counters.", priority: 'High', riskLevel: 'High', proof: 'CCTV View Check', location: 'Security Room' },
+                    { id: 'LUX-PAY-04', description: "Train staff on how to identify and respond to suspected payment fraud.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
+                    { id: 'LUX-PAY-05', description: "Use only secured, password-protected Wi-Fi networks for all POS transactions (PCI DSS compliance).", priority: 'High', riskLevel: 'High', proof: 'Network Configuration', location: 'IT Office' }
                 ]
             },
-            {
-                title: "📦 Special Order & Repair Management",
-                department: "Operations",
-                frequency: "Per Item",
-                role: "Service Manager",
-                summary: "Elevate your after-sales service to build unbreakable client trust. This detailed process for managing custom orders and repairs turns a potential pain point into a loyalty-building experience.",
-                tasks: [
-                    { id: 'LUX-REPAIR-01', description: "Photograph and document the condition of any item received for repair, with client sign-off.", priority: 'High', riskLevel: 'High', proof: 'Intake Form with Photos', location: 'Service Desk' },
-                    { id: 'LUX-REPAIR-02', description: "Provide the client with a detailed estimate and timeline for the repair or special order.", priority: 'High', riskLevel: 'Medium', proof: 'Estimate Document', location: 'Service Desk' },
-                    { id: 'LUX-REPAIR-03', description: "Tag the item with a unique tracking number that follows it through the entire process.", priority: 'High', riskLevel: 'Medium', proof: 'Tracking Tag', location: 'Service Desk' },
-                    { id: 'LUX-REPAIR-04', description: "Conduct a final quality control check on the completed work before notifying the client.", priority: 'High', riskLevel: 'High', proof: 'QC Checklist', location: 'Workshop' },
-                    { id: 'LUX-REPAIR-05', description: "Present the finished item to the client in premium packaging and update their purchase history.", priority: 'High', riskLevel: 'Low', proof: 'Client Sign-off', location: 'Service Desk' }
-                ]
-            },
-            {
-                title: "🌱 ESG & Responsible Sourcing Audit",
-                department: "Compliance",
-                frequency: "Quarterly",
-                role: "Compliance Officer",
-                summary: "Build a brand that discerning clients can trust. This checklist ensures you meet modern standards for ethical sourcing and sustainability, a key differentiator in the luxury market.",
-                tasks: [
-                    { id: 'LUX-ESG-01', description: "Verify that diamond and precious metal suppliers provide valid 'Kimberley Process' or other conflict-free sourcing certificates.", priority: 'High', riskLevel: 'High', proof: 'Supplier Certificates', location: 'Procurement Office' },
-                    { id: 'LUX-ESG-02', description: "Audit the brand's packaging to ensure it meets sustainability goals (e.g., recycled materials, FSC certified).", priority: 'Medium', riskLevel: 'Low', proof: 'Packaging Audit Report', location: 'Marketing Office' },
-                    { id: 'LUX-ESG-03', description: "Review energy and water consumption logs for the store and identify areas for reduction.", priority: 'Medium', riskLevel: 'Low', proof: 'Utility Bill Analysis', location: 'Admin Office' },
-                    { id: 'LUX-ESG-04', description: "Ensure compliance with ethical employment practices for all staff.", priority: 'High', riskLevel: 'Medium', proof: 'HR Audit', location: 'HR Office' },
-                    { id: 'LUX-ESG-05', description: "Prepare a quarterly ESG report for internal management and brand partners.", priority: 'High', riskLevel: 'Medium', proof: 'ESG Report', location: 'Compliance Office' }
-                ]
-            },
-            {
-                title: "🔐 Data & Payment Security (PCI DSS)",
-                department: "IT/Operations",
-                frequency: "Quarterly",
-                role: "Store Manager",
-                summary: "Protect your high-net-worth clients and your business from cyber threats. This checklist ensures your store is compliant with PCI DSS standards to safeguard sensitive payment data.",
-                tasks: [
-                    { id: 'LUX-PCI-01', description: "Ensure the POS system and credit card terminals are running updated, patched software.", priority: 'High', riskLevel: 'High', proof: 'IT System Log', location: 'IT Office' },
-                    { id: 'LUX-PCI-02', description: "Verify that the store's Wi-Fi network for payments is separate from the public guest Wi-Fi.", priority: 'High', riskLevel: 'High', proof: 'Network Diagram', location: 'IT Office' },
-                    { id: 'LUX-PCI-03', description: "Physically inspect card terminals for any signs of tampering or skimmers.", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Cash Desk' },
-                    { id: 'LUX-PCI-04', description: "Ensure that full credit card numbers are never written down or stored in non-compliant systems.", priority: 'High', riskLevel: 'High', proof: 'Policy Training Log', location: 'HR' },
-                    { id: 'LUX-PCI-05', description: "Restrict physical access to all network ports and payment system hardware.", priority: 'High', riskLevel: 'High', proof: 'Physical Access Log', location: 'Back Office' }
-                ]
-            }
         ]
     },
     {
