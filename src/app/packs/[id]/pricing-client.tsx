@@ -216,14 +216,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }
 
     const isEducationPack = pack.category === "Education";
+    const hasTieredEditions = ["Education", "Healthcare", "Industrial & Transport"].includes(pack.category);
 
     const pricingCards = [
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-500/50 bg-green-50 text-green-800"><GraduationCap className="w-4 h-4" /> India Edition</Badge>}
+                {hasTieredEditions && (
+                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-orange-500/50 bg-orange-50 text-orange-800">
+                        <span className="font-sans">🇮🇳</span> India Edition
+                    </Badge>
+                )}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
-                 {isEducationPack && <CardDescription>Aligned with domestic standards (CBSE, AICTE, UGC).</CardDescription>}
+                 {hasTieredEditions && <CardDescription>Aligned with domestic standards (e.g., CBSE, NABH, FSSAI).</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
@@ -240,9 +245,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
         <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
             <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
-            <CardHeader className="p-6">
-                <CardTitle className="font-headline text-2xl pt-4">Personalized Pack</CardTitle>
-                {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-50 text-blue-800"><Globe className="w-4 h-4" /> Global Edition</Badge>}
+            <CardHeader className="p-6 pt-8">
+                <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
+                {hasTieredEditions && (
+                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-50 text-blue-800">
+                        <Globe className="w-4 h-4" /> Global Edition
+                    </Badge>
+                )}
                 <div className="flex items-baseline gap-2 pt-2">
                     <p className="text-4xl font-bold text-foreground">
                         ₹{personalizedPrice}
@@ -251,7 +260,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         ₹{personalizedStrikethroughPrice}
                     </p>
                 </div>
-                {isEducationPack && <CardDescription>Benchmarks against global standards (ISO, WHO, UNCRC, GDPR).</CardDescription>}
+                {hasTieredEditions && <CardDescription>Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-4 text-sm p-6 pt-0">
                 <div className="flex items-start gap-3">
