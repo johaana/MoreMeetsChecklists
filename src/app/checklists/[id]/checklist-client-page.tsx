@@ -3,7 +3,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, Check, FileCheck2, Sparkles, AlertTriangle, AlertCircle, Layers } from 'lucide-react';
+import { Layers } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Footer } from '@/components/layout/footer';
@@ -11,23 +11,11 @@ import { SiteHeader } from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { premiumPacks } from '@/lib/premium-packs';
-import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import type { IndividualChecklist } from '@/lib/individual-checklists';
 import { individualChecklists } from '@/lib/individual-checklists';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
+import { PainPoint } from '@/components/ui/pain-point';
 
-
-const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-    <div className="flex items-start gap-4">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 shrink-0 mt-1">
-            {React.cloneElement(icon as React.ReactElement, { className: "w-5 h-5 text-primary" })}
-        </div>
-        <div>
-            <h3 className="text-md font-bold">{title}</h3>
-            <p className="text-muted-foreground text-sm mt-1">{description}</p>
-        </div>
-    </div>
-);
 
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
@@ -129,10 +117,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
             <div className="container grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start px-2 md:px-6">
                 <div className="space-y-8">
                      <div>
-                        <h2 className="text-2xl font-bold font-headline text-primary mb-4 flex items-center gap-3">
-                           <FileCheck2 className="w-7 h-7" />
-                           Why This Checklist is Essential
-                        </h2>
+                        <h2 className="text-2xl font-bold font-headline text-primary mb-4 flex items-center gap-3">Why This Checklist is Essential</h2>
                         <p className="text-muted-foreground">{checklist.longDescription}</p>
                     </div>
 
@@ -140,7 +125,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         <h2 className="text-2xl font-bold font-headline text-primary mb-6">Pain Points Solved</h2>
                         <div className="space-y-6">
                            {checklist.painPoints.map((point, index) => (
-                                <PainPoint key={index} icon={<Check />} title={point.title} description={point.description} />
+                                <PainPoint key={index} icon={checklist.icon} title={point.title} description={point.description} />
                            ))}
                         </div>
                     </div>
@@ -196,6 +181,3 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </>
   );
 }
-
-
-    

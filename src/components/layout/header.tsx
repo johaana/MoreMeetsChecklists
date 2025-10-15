@@ -187,27 +187,40 @@ export function SiteHeader() {
                             </div>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
-                            <div className="flex flex-col gap-3 p-4">
+                            <div className="flex flex-col gap-1 p-4">
                                 {isSalesPage ? (
-                                    <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Back to Main Site</Link>
+                                    <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2">Back to Main Site</Link>
                                 ) : (
                                 <>
-                                    <Accordion type="single" collapsible className="w-full">
+                                    <Accordion type="multiple" className="w-full">
                                         <AccordionItem value="item-1" className="border-b-0">
-                                            <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline -ml-1 pr-1">
+                                            <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline py-2 -ml-1 pr-1">
                                                 Explore Solutions
                                             </AccordionTrigger>
                                             <AccordionContent className="pt-2">
                                                 <div className="flex flex-col gap-2 pl-4 border-l">
-                                                    <h4 className="font-semibold text-sm text-primary/80 mt-2 mb-1">Premium Packs</h4>
-                                                    {premiumPacks.map(pack => (
-                                                        <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-md hover:bg-secondary">
-                                                            <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
-                                                            <span className="flex-1 leading-snug">{pack.title}</span>
-                                                        </Link>
-                                                    ))}
-                                                     <h4 className="font-semibold text-sm text-primary/80 mt-4 mb-1">Bestselling Checklists</h4>
-                                                     <Link href="/checklists" className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors">
+                                                    <h4 className="font-semibold text-sm text-muted-foreground mt-2 mb-1">Premium Packs by Industry</h4>
+                                                    <Accordion type="multiple" className="w-full">
+                                                        {Object.entries(packsByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
+                                                            <AccordionItem key={category} value={category} className="border-b-0">
+                                                                <AccordionTrigger className="text-base font-medium text-muted-foreground hover:text-foreground hover:no-underline py-1.5">
+                                                                    {category}
+                                                                </AccordionTrigger>
+                                                                <AccordionContent className="pl-4">
+                                                                    <div className="flex flex-col gap-1 mt-1 border-l">
+                                                                        {packs.map(pack => (
+                                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 pl-4 rounded-r-md hover:bg-secondary">
+                                                                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
+                                                                                <span className="flex-1 leading-snug">{pack.title}</span>
+                                                                            </Link>
+                                                                        ))}
+                                                                    </div>
+                                                                </AccordionContent>
+                                                            </AccordionItem>
+                                                        ))}
+                                                    </Accordion>
+                                                     <h4 className="font-semibold text-sm text-muted-foreground mt-4 mb-1">Bestselling Checklists</h4>
+                                                     <Link href="/checklists" className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-1.5">
                                                         View All Bestsellers &rarr;
                                                     </Link>
                                                 </div>
@@ -219,7 +232,7 @@ export function SiteHeader() {
                                         <Link
                                             key={link.href}
                                             href={link.href}
-                                            className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                            className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
                                             prefetch={false}
                                         >
                                             {link.label}

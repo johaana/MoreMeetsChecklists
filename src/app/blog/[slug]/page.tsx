@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -128,9 +129,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </p>
             </header>
             {post.imageUrl && (
-              <img
+              <Image
                 src={post.imageUrl}
                 alt={post.title}
+                width={1200}
+                height={630}
                 className="w-full h-auto rounded-lg mb-8 aspect-video object-cover"
               />
             )}
