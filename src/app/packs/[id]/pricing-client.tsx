@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -159,13 +158,12 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
 
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const professionalPrice = pack.priceINR;
-    const professionalPaymentId = pack.paymentId; 
+    const professionalPrice = 7999;
+    const professionalPaymentId = 'pl_RMnYKoxjfq5XCx';
 
-    // Standardized, fixed pricing for the premium personalized tier
     const personalizedPrice = 10999;
     const personalizedStrikethroughPrice = 18999;
-    const personalizedPaymentId = "pl_RMncDLAlms69Pd"; // Known working personalized ID
+    const personalizedPaymentId = "pl_RMncDLAlms69Pd";
 
     const [showStickyBar, setShowStickyBar] = React.useState(false);
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
@@ -202,7 +200,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="text-center">
                                <p className="text-4xl font-extrabold mb-4">Free Download</p>
-                               <Button size="lg" className="w-full" onClick={() => handleDownload(pack, 'pack')}>
+                               <Button size="lg" className="w-full" onClick={() => handleDownload(pack)}>
                                  <Download className="mr-2 h-5 w-5" />
                                  Download Now
                                </Button>
@@ -220,11 +218,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const isEducationPack = pack.category === "Education";
 
     const pricingCards = [
-        <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/80 relative">
-            <CardHeader className="p-6 pt-8">
+        <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
+            <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                 {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5"><GraduationCap className="w-4 h-4" /> India Edition</Badge>}
-                <p className="text-4xl font-bold text-foreground">₹{professionalPrice}</p>
+                {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-500/50 bg-green-50 text-green-800"><GraduationCap className="w-4 h-4" /> India Edition</Badge>}
+                <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
                  {isEducationPack && <CardDescription>Aligned with domestic standards (CBSE, AICTE, UGC).</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
@@ -243,11 +241,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
             <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
             <CardHeader className="p-6">
-                <CardTitle className="flex items-center gap-2 font-headline text-2xl pt-4">
-                    Personalized Pack
-                </CardTitle>
-                 {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5"><Globe className="w-4 h-4" /> Global Edition</Badge>}
-                <div className="flex items-baseline gap-2">
+                <CardTitle className="font-headline text-2xl pt-4">Personalized Pack</CardTitle>
+                {isEducationPack && <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-50 text-blue-800"><Globe className="w-4 h-4" /> Global Edition</Badge>}
+                <div className="flex items-baseline gap-2 pt-2">
                     <p className="text-4xl font-bold text-foreground">
                         ₹{personalizedPrice}
                     </p>
@@ -262,27 +258,29 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
                 </div>
-                 <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                    <div>
-                        <p className="font-semibold">Custom Branding</p>
-                        <p className="text-muted-foreground">Your logo added to the checklists.</p>
+                 <div className="grid gap-3">
+                    <div className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                        <div>
+                            <p className="font-semibold">Custom Branding</p>
+                            <p className="text-muted-foreground">Your logo added to the checklists.</p>
+                        </div>
                     </div>
-                </div>
-                 <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                    <div>
-                        <p className="font-semibold">Priority Action Plan</p>
-                        <p className="text-muted-foreground">A document highlighting the top 10 most critical checklists for you to implement first.</p>
+                     <div className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                        <div>
+                            <p className="font-semibold">Priority Action Plan</p>
+                            <p className="text-muted-foreground">A document highlighting the top 10 most critical checklists for you to implement first.</p>
+                        </div>
                     </div>
-                </div>
-                 <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                    <div>
-                        <p className="font-semibold">30-Min Onboarding Call</p>
-                        <p className="text-muted-foreground">A walkthrough of the pack to help you get started.</p>
+                     <div className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+                        <div>
+                            <p className="font-semibold">30-Min Onboarding Call</p>
+                            <p className="text-muted-foreground">A walkthrough of the pack to help you get started.</p>
+                        </div>
                     </div>
-                </div>
+                 </div>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center">
                  <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
@@ -301,11 +299,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="text-4xl font-bold text-foreground">Custom</p>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
-                <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Personalized, plus:</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Full SOP manual creation from checklists.</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Dedicated account manager for support.</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Training for your team.</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
+                <div className="flex items-start gap-3">
+                    <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" />
+                    <p className="font-semibold text-primary">Everything in Personalized, plus:</p>
+                 </div>
+                 <div className="grid gap-3 pl-8">
+                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Full SOP manual creation from checklists.</span></p>
+                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Dedicated account manager for support.</span></p>
+                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Training for your team.</span></p>
+                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
+                 </div>
             </CardContent>
             <CardFooter className="p-6 mt-auto">
                 <Button asChild className="w-full h-12 text-lg font-bold">
@@ -386,5 +389,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
-
-    
