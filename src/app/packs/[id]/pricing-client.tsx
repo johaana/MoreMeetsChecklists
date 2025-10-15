@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, GraduationCap, IndianRupee } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, Landmark, GraduationCap, IndianRupee } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -224,7 +224,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
                  {hasTieredEditions && (
                      <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
-                       <span className="font-sans text-base">🇮🇳</span> India Edition
+                       <Landmark className="w-4 h-4" /> India Edition
                     </Badge>
                 )}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
@@ -273,7 +273,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                             <div>
                                 <p className="font-semibold">Global Compliance Checklists</p>
-                                <p className="text-muted-foreground">Checklists aligned with international standards like ISO, OSHA, and JCI.</p>
+                                <p className="text-muted-foreground text-xs">Checklists aligned with international standards like ISO, OSHA, and JCI.</p>
                             </div>
                         </div>
                     )}
@@ -281,21 +281,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
                             <p className="font-semibold">Custom Branding</p>
-                            <p className="text-muted-foreground">Your logo added to the checklists.</p>
+                            <p className="text-muted-foreground text-xs">Your logo added to the checklists.</p>
                         </div>
                     </div>
                      <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
                             <p className="font-semibold">Priority Action Plan</p>
-                            <p className="text-muted-foreground">A document highlighting the top 10 most critical checklists for you to implement first.</p>
+                            <p className="text-muted-foreground text-xs">A document highlighting the top 10 most critical checklists for you to implement first.</p>
                         </div>
                     </div>
                      <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                         <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
                         <div>
                             <p className="font-semibold">30-Min Onboarding Call</p>
-                            <p className="text-muted-foreground">A walkthrough of the pack to help you get started.</p>
+                            <p className="text-muted-foreground text-xs">A walkthrough of the pack to help you get started.</p>
                         </div>
                     </div>
                  </div>

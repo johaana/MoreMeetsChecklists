@@ -150,10 +150,10 @@ export const painPointsContent = {
     school_operations_pack: {
         title: "Why Every Detail Matters in School Operations",
         points: [
-            { icon: <Bus />, title: "Prevent the 'Forgotten Child' in the Bus", description: "A simple, mandatory end-of-route check by drivers and attendants, logged and verified, prevents a terrifying and reputation-destroying incident." },
-            { icon: <Shield />, title: "Stop Unauthorized Visitors Before They Enter", description: "A strict visitor management protocol with ID verification, badge issuance, and escort policies is your first line of defense in protecting students from external threats." },
-            { icon: <Utensils />, title: "Avoid Canteen Contamination Scares", description: "Daily food temperature logs, FIFO inventory checks, and strict hygiene protocols based on HACCP principles prevent foodborne illnesses and protect student health." },
-            { icon: <TrendingUp />, title: "Pass Fire Safety & Board Inspections Without Panic", description: "Regular, documented fire drills and monthly audits of extinguishers and emergency exits ensure you are always compliant and, more importantly, always ready." }
+            { icon: <Bus />, title: "Prevent the 'Forgotten Child' Tragedy", description: "A child left on a bus is a nightmare that destroys reputations and lives. Our mandatory end-of-route check ensures no child is ever left behind, preventing a catastrophic, irreversible failure." },
+            { icon: <Shield />, title: "Stop an Intruder Before They Enter", description: "An unauthorized person on campus is every parent's worst fear. Our strict visitor management protocol is your first line of defense, creating a secure perimeter to protect students from external threats." },
+            { icon: <Utensils />, title: "Avoid a Food Poisoning Outbreak", description: "A canteen food safety lapse can sicken dozens of students and lead to immediate closure. Our HACCP-based checklists for kitchen hygiene prevent contamination and protect student health." },
+            { icon: <TrendingUp />, title: "Pass a Surprise Inspection Without Panic", description: "Failing a fire safety or academic board inspection can lead to fines or loss of affiliation. Our checklists ensure you are perpetually compliant and always ready for an audit." }
         ]
     },
     university_college_ops: {

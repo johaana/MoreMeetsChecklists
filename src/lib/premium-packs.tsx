@@ -1879,7 +1879,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <School className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent" as const,
-        whoIsItFor: ["School Principals", "Admin Heads", "Heads of Security", "Transport Managers"],
+        whoIsItFor: ["School Principals", "School Owners", "Admin Heads", "Heads of Security", "Transport Managers"],
         sampleItems: [
             "Implement a 'Student Transport & Bus Safety' protocol.",
             "Manage 'Visitor & Access Control' to secure your campus.",
