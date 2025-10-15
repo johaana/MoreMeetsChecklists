@@ -248,7 +248,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
                 {hasTieredEditions && (
-                    <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
+                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
                 )}
@@ -267,7 +267,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
                 </div>
-                 <div className="grid gap-3 pl-8">
+                <div className="grid gap-3 pl-8">
                     {hasTieredEditions && (
                         <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                             <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
@@ -406,4 +406,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
         </>
     );
-}
+
+    
