@@ -1,4 +1,3 @@
-
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, Brain } from "lucide-react";
 
 export type Checklist = {
@@ -1220,7 +1219,7 @@ export const premiumPacks: PremiumPack[] = [
                 role: "F&B Manager",
                 summary: "Uphold the highest food safety standards across all park outlets. This checklist ensures your F&B operations meet stringent HACCP guidelines, protecting guests and your brand.",
                 tasks: [
-                    { id: 'TP-FB-01', description: "Log temperatures of all refrigerators, freezers, and hot-holding units at each outlet.", priority: 'High', riskLevel: 'High', proof: 'Temperature Logs', location: 'All F&B Outlets' },
+                    { id: 'TP-FB-01', description: "Log temperatures of all refrigerated display cases and walk-in coolers at each outlet.", priority: 'High', riskLevel: 'High', proof: 'Temperature Logs', location: 'All F&B Outlets' },
                     { id: 'TP-FB-02', description: "Check for proper food labeling and dating (FIFO) in all storage areas.", priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'All F&B Outlets' },
                     { id: 'TP-FB-03', description: "Ensure handwashing stations are stocked and accessible to all food handlers.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'All F&B Outlets' },
                     { id: 'TP-FB-04', description: "Verify that cooking temperatures are being checked with a calibrated thermometer.", priority: 'High', riskLevel: 'High', proof: 'Cooking Temp Log', location: 'Kitchens' },
@@ -1525,7 +1524,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'GYM-POOL-05', description: "If lifeguards are on duty, ensure they are alert and positioned correctly.", priority: 'High', riskLevel: 'High', proof: 'Supervisor Observation', location: 'Poolside' }
                 ]
             },
-             {
+            {
                 title: "💰 Sales & Membership Management",
                 department: "Sales",
                 frequency: "Weekly",
@@ -2089,7 +2088,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-FOOD-02', description: "Ensure all food handlers adhere to strict hygiene standards (handwashing, hairnets, gloves).", priority: 'High', riskLevel: 'High', proof: 'Supervisor Observation', location: 'Kitchen' },
                     { id: 'SCH-FOOD-03', description: "Verify that food is cooked to the correct internal temperatures.", priority: 'High', riskLevel: 'High', proof: 'Cooking Temperature Log', location: 'Kitchen' },
                     { id: 'SCH-FOOD-04', description: "Implement a clear system for managing student food allergies.", priority: 'High', riskLevel: 'High', proof: 'Allergy Management Plan', location: 'Cafeteria' },
-                    { id: 'SCH-FOOD-05', description: "Ensure all kitchen and serving surfaces are cleaned and sanitized after each meal service.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen/Cafeteria' },
+                    { id: 'SCH-FOOD-05', description: "Ensure all kitchen and serving surfaces are cleaned and sanitized after each meal service.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen/Cafeteria' }
                 ]
             },
             {
@@ -2103,7 +2102,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-LAB-02', description: "Verify that eyewash stations and safety showers are unobstructed and functional before the session begins.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Science Lab' },
                     { id: 'SCH-LAB-03', description: "Brief students on the specific hazards of the chemicals and equipment being used in the experiment.", priority: 'High', riskLevel: 'High', proof: 'Pre-Lab Briefing', location: 'Science Lab' },
                     { id: 'SCH-LAB-04', description: "Ensure proper ventilation systems are active, especially when working with fumes.", priority: 'High', riskLevel: 'High', proof: 'Ventilation System Check', location: 'Science Lab' },
-                    { id: 'SCH-LAB-05', description: "Supervise the correct disposal of all chemical waste and broken glassware.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Science Lab' },
+                    { id: 'SCH-LAB-05', description: "Supervise the correct disposal of all chemical waste and broken glassware.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Science Lab' }
                 ]
             },
             {
@@ -2274,7 +2273,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'UNIV-ADMIT-02', description: "Verify all required documents (transcripts, essays, recommendations) have been received.", priority: 'High', riskLevel: 'High', proof: 'Applicant File Checklist', location: 'Admissions CRM' },
                     { id: 'UNIV-ADMIT-03', description: "Schedule and conduct applicant interviews according to a standardized format.", priority: 'High', riskLevel: 'Medium', proof: 'Interview Schedule', location: 'Admissions Office' },
                     { id: 'UNIV-ADMIT-04', description: "Record admission committee decisions and reasoning in the applicant's file.", priority: 'High', riskLevel: 'High', proof: 'Decision Log', location: 'Admissions CRM' },
-                    { id: 'UNIV-ADMIT-05', description: "Send out official decision letters (acceptance, waitlist, rejection) on the published date.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Admissions CRM' },
+                    { id: 'UNIV-ADMIT-05', description: "Send out official decision letters (acceptance, waitlist, rejection) on the published date.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Admissions CRM' }
                 ]
             },
             {
@@ -2302,7 +2301,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'UNIV-LIB-02', description: "Check that all public computers, printers, and scanners are functional.", priority: 'High', riskLevel: 'Medium', proof: 'IT Equipment Check', location: 'Library' },
                     { id: 'UNIV-LIB-03', description: "Review and manage inter-library loan requests and digital resource subscriptions.", priority: 'High', riskLevel: 'Medium', proof: 'Subscription Review', location: 'Librarian Office' },
                     { id: 'UNIV-LIB-04', description: "Ensure the library environment is quiet and conducive to study in designated zones.", priority: 'High', riskLevel: 'Medium', proof: 'Hourly Walkthrough Log', location: 'Library' },
-                    { id: 'UNIV-LIB-05', description: "Manage the process for overdue books and fines in a consistent manner.", priority: 'High', riskLevel: 'Low', proof: 'Fines and Overdue Report', location: 'Library System' },
+                    { id: 'UNIV-LIB-05', description: "Manage the process for overdue books and fines in a consistent manner.", priority: 'High', riskLevel: 'Low', proof: 'Fines and Overdue Report', location: 'Library System' }
                 ]
             },
              {
@@ -2724,7 +2723,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BUILD-002', description: "Select and contract with architects, contractors, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
                     { id: 'BUILD-003', description: "Conduct weekly progress meetings with all stakeholders and track milestones against the plan.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Site/Office' },
                     { id: 'BUILD-004', description: "Manage the procurement and installation of furniture, fixtures, and equipment (FF&E).", priority: 'High', riskLevel: 'Medium', proof: 'Procurement Log', location: 'Office' },
-                    { id: 'BUILD-005', description: "Perform a final 'snagging' list and ensure all defects are rectified before final payment and handover.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'New Site' },
+                    { id: 'BUILD-005', description: "Perform a final 'snagging' list and ensure all defects are rectified before final payment and handover.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'New Site' }
                 ]
             },
             {
@@ -2866,7 +2865,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BUILD-002', description: "Select and contract with architects, contractors, and other vendors.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
                     { id: 'BUILD-003', description: "Conduct weekly progress meetings with all stakeholders and track milestones against the plan.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Site/Office' },
                     { id: 'BUILD-004', description: "Manage the procurement and installation of furniture, fixtures, and equipment (FF&E).", priority: 'High', riskLevel: 'Medium', proof: 'Procurement Log', location: 'Office' },
-                    { id: 'BUILD-005', description: "Perform a final 'snagging' list and ensure all defects are rectified before final payment and handover.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'New Site' },
+                    { id: 'BUILD-005', description: "Perform a final 'snagging' list and ensure all defects are rectified before final payment and handover.", priority: 'High', riskLevel: 'High', proof: 'Snag List', location: 'New Site' }
                 ]
             },
             {
