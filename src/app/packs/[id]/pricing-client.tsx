@@ -248,7 +248,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
                  {hasTieredEditions && (
-                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-500/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
+                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
                 )}
