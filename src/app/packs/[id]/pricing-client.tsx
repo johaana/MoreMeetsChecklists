@@ -229,9 +229,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         "healthcare_and_hospital_operations",
         "school_operations_pack",
         "university_college_ops",
-        "sports_clubs_facilities_pack",
         "manufacturing_operations_ehs_pack",
         "logistics_warehouse_pack",
+        "sports_clubs_facilities_pack",
     ];
 
     const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
