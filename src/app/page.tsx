@@ -558,8 +558,8 @@ export default function Home() {
 
         <section className="w-full py-16">
             <div className="container px-2 md:px-6">
-                 <div className="max-w-4xl mx-auto p-8 bg-secondary/30 rounded-2xl border">
-                    <p className="text-center text-lg md:text-xl text-muted-foreground">
+                 <div className="max-w-4xl mx-auto">
+                    <p className="text-center text-lg md:text-xl text-muted-foreground italic">
                         Running a business means you can't be everywhere at once. MoreMeets gives your team the expert-built, step-by-step instructions you need to ensure critical tasks are done right, every single time. We don't sell software; we sell the proven system for consistency and safety.
                     </p>
                 </div>
