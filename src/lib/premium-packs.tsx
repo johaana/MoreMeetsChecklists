@@ -565,7 +565,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-EXCH-05', description: "Securely tag and log the exchanged item for return to inventory or assessment.", priority: 'High', riskLevel: 'Medium', proof: 'Tag and Log Entry', location: 'Exchange Counter' },
                     { id: 'LUX-EXCH-06', description: "Check original sales record to confirm purchase details.", priority: 'High', riskLevel: 'High', proof: 'Sales Record Check', location: 'POS System' },
                     { id: 'LUX-EXCH-07', description: "Photograph the item being returned and the new item being issued.", priority: 'High', riskLevel: 'Medium', proof: 'Photo Log', location: 'Exchange Counter' },
-                    { id: 'LUX-EXCH-08', description: "Communicate the exchange policy clearly to the customer before beginning the process.", priority: 'High', riskLevel: 'Low', proof: 'Verbal Communication', location: 'Exchange Counter' },
+                    { id: 'LUX-EXCH-08', description: "Communicate the exchange policy clearly to the customer before beginning the process.", priority: 'High', riskLevel: 'Low', proof: 'Verbal Confirmation', location: 'Exchange Counter' },
                     { id: 'LUX-EXCH-09', description: "Update inventory records immediately after the exchange is complete.", priority: 'High', riskLevel: 'High', proof: 'Inventory System Log', location: 'System' },
                     { id: 'LUX-EXCH-10', description: "Manager to review and sign off on all high-value exchange forms at the end of the day.", priority: 'High', riskLevel: 'High', proof: 'Manager Sign-off', location: 'Office' }
                 ]
@@ -911,9 +911,9 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SM-RECV-05', description: "Process and document any shortages, damages, or discrepancies with the carrier immediately.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Receiving Office' },
                     { id: 'SM-RECV-06', description: "Check temperature of refrigerated and frozen goods upon arrival.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Receiving Dock' },
                     { id: 'SM-RECV-07', description: "Verify expiry dates of all incoming products.", priority: 'High', riskLevel: 'High', proof: 'Expiry Date Check', location: 'Receiving Dock' },
-                    { id: 'SM-RECV-08', description: "Ensure the receiving area is clean and clear of debris.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Receiving Area' },
+                    { id: 'SM-RECV-08', description: "Ensure the receiving area is clean and clear of debris.", priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Check', location: 'Receiving Area' },
                     { id: 'SM-RECV-09', description: "Secure the receiving area when not in use.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Receiving Area' },
-                    { id: 'SM-RECV-10', description: "Train receiving staff on all procedures and safety protocols.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' }
+                    { id: 'SM-RECV-10', description: "Communicate any discrepancies to the procurement team.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Email', location: 'Office' }
                 ]
             },
             {
