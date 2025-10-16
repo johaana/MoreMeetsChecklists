@@ -83,15 +83,6 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'HR-PERF-008', description: "Log the entire incident with times and actions taken for legal and insurance purposes.", sourceChecklist: "Managerial Performance Review", priority: 'High' }
             ]
         },
-        globalStandards: {
-            title: "Built on Global Hospitality Standards",
-            standards: [
-                { name: "Health & Safety", description: "HACCP, ISO 22000 for food safety; NFPA for fire safety; local health department regulations." },
-                { name: "Guest Experience", description: "ISO 9001 for quality management; star-rating criteria; brand-specific Standard Operating Procedures." },
-                { name: "Security & Data", description: "PCI DSS for payment card security; GDPR/CCPA for guest data privacy." },
-                { name: "Environmental", description: "ISO 14001 for environmental management; LEED for green building standards." }
-            ]
-        },
         checklists: [
             {
                 title: "🏨 Hotel Pre-Opening Checklist",
@@ -275,14 +266,6 @@ export const premiumPacks: PremiumPack[] = [
                 { id: 'REST-MEETING-05', description: "The Manager confirms with the chef and server that the allergy protocol was followed before the dish leaves the kitchen.", sourceChecklist: "Weekly Sales & Revenue Meeting", priority: 'High' }
             ]
         },
-        globalStandards: {
-            title: "Built on Global Food & Safety Standards",
-            standards: [
-                { name: "Food Safety", description: "HACCP principles, ISO 22000, local regulations (FDA, FSSAI, EFSA)." },
-                { name: "Quality Management", description: "ISO 9001 for consistent service and quality." },
-                { name: "Occupational Health", description: "OSHA and local workplace safety standards for kitchen environments." }
-            ]
-        },
         checklists: [
             {
                 title: "📍 New Site/Location Feasibility Study",
@@ -457,25 +440,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure 'Digital Transaction Security' with daily QR code and POS validation.", icon: <Shield /> },
             { text: "Align with 'BIS Hallmarking' and 'Anti-Money Laundering (AML)' compliance.", icon: <FileCheck /> }
         ],
-        previewScenario: {
-            title: "Handling a High-Value Exchange",
-            description: "A customer wants to exchange a high-value diamond necklace. This scenario shows how checklists for Sales, Security, and Documentation work together to prevent fraud and ensure a smooth, secure transaction.",
-            tasks: [
-                { id: 'LUX-EXCH-02', description: "Require two staff members to be present during the entire exchange process.", sourceChecklist: "High-Value Exchange & Handling SOP", priority: 'High' },
-                { id: 'LUX-CERT-01', description: "Match the serial number on the returned item with its original GIA certificate.", sourceChecklist: "Jewelry Certification & Documentation SOP", priority: 'High' },
-                { id: 'LUX-SEC-02', description: "Verify all CCTV cameras are recording the transaction with an unobstructed view.", sourceChecklist: "End-of-Day Store Closure & Security", priority: 'High' },
-                { id: 'LUX-RET-01', description: "Require manager approval (dual sign-off) before finalizing the exchange in the POS system.", sourceChecklist: "Sales & Return Authorization", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Global & Indian Compliance Standards",
-            standards: [
-                { name: "Safety & Security", description: "BIS Hallmarking, ISO 28000 (Supply Chain), ISO 18788 (Security Ops), PSARA (India)." },
-                { name: "Labour & HR", description: "Shops & Establishment Act, POSH Act, ILO Code of Conduct." },
-                { name: "Financial & Anti-Theft", description: "Anti-Money Laundering (PMLA), GST/Income Tax reporting, Insurance Compliance." },
-                { name: "ESG & Sustainability", description: "Responsible Jewellery Council (RJC), Kimberley Process (KPCS), ISO 14001." }
-            ]
-        },
         checklists: [
             {
                 title: "🔒 End-of-Day Store Closure & Security",
@@ -628,20 +592,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-CERT-09', description: "Train all sales staff on the different types of certifications and what they mean.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
                     { id: 'LUX-CERT-10', description: "Have a clear process for handling lost or damaged customer certificates.", priority: 'Medium', riskLevel: 'Medium', proof: 'Policy Document', location: 'Office' }
                 ]
-            },
-             {
-                title: "🏢 EBO Operations Checklist",
-                department: "Retail Operations",
-                frequency: "Daily/Weekly",
-                role: "Store Manager",
-                summary: "Run your Exclusive Brand Outlet to perfection. This checklist covers brand compliance, sales training, and inventory management specific to an EBO environment.",
-                tasks: [
-                    { id: 'EBO-VM-01', description: "Ensure all visual merchandising and product displays strictly adhere to the parent brand's guidelines.", priority: 'High', riskLevel: 'High', proof: 'VM Guideline Check', location: 'Sales Floor' },
-                    { id: 'EBO-TRAIN-02', description: "Conduct weekly training on brand story, product features, and the target customer profile.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
-                    { id: 'EBO-INV-03', description: "Report daily sales and inventory data to the parent company using the specified format/portal.", priority: 'High', riskLevel: 'High', proof: 'System Report', location: 'Office' },
-                    { id: 'EBO-CUST-04', description: "Audit the customer experience to ensure it aligns with the luxury/premium positioning of the brand.", priority: 'High', riskLevel: 'Medium', proof: 'Experience Audit', location: 'Sales Floor' },
-                    { id: 'EBO-MAINT-05', description: "Verify that all store fixtures, furniture, and lighting meet the brand's quality standards and are in perfect condition.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Entire Store' }
-                ]
             }
         ]
     },
@@ -663,25 +613,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Secure your store with a 'Fitting Room Operations & Security' protocol.", icon: <DoorClosed /> },
             { text: "Streamline 'Omni-Channel Operations' for click-and-collect and online returns.", icon: <Link /> }
         ],
-        previewScenario: {
-            title: "Handling a Suspected Theft in the Fitting Room",
-            description: "A staff member suspects a customer has concealed items in their bag. This scenario shows how checklists for Fitting Rooms and Loss Prevention guide a delicate but firm response to prevent shrinkage.",
-            tasks: [
-                { id: 'FAS-FIT-01', description: "Log the exact number of items the customer takes into the fitting room.", sourceChecklist: "Fitting Room Operations & Security", priority: 'High' },
-                { id: 'FAS-FIT-02', description: "After the customer leaves, immediately check the room for discarded security tags or packaging.", sourceChecklist: "Fitting Room Operations & Security", priority: 'High' },
-                { id: 'FAS-SEC-03', description: "Politely ask to check the customer's bag if a discrepancy is found, following store policy.", sourceChecklist: "Store Safety & Loss Prevention", priority: 'High' },
-                { id: 'FAS-SEC-08', description: "Log the incident, including the outcome, regardless of whether a theft occurred.", sourceChecklist: "Store Safety & Loss Prevention", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Built on Global Fashion Retail Standards",
-            standards: [
-                { name: "Inventory Management", description: "Best practices for seasonal stock, markdowns, and omni-channel accuracy." },
-                { name: "Loss Prevention", description: "Techniques for shrinkage control, including fitting room monitoring and security tag audits." },
-                { name: "Customer Experience", description: "Principles of fashion retail service, including styling advice and fitting room service." },
-                { name: "Visual Merchandising", description: "Guidelines for creating compelling window and in-store displays that drive sales." }
-            ]
-        },
         checklists: [
             {
                 title: "👕 Store Opening & Daily Readiness",
@@ -815,20 +746,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FAS-CASH-09', description: "Limit access to the cash office.", priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Cash Office' },
                     { id: 'FAS-CASH-10', description: "Conduct surprise cash audits.", priority: 'High', riskLevel: 'High', proof: 'Audit Log', location: 'Office' }
                 ]
-            },
-            {
-                title: "🏢 EBO Operations Checklist",
-                department: "Retail Operations",
-                frequency: "Daily/Weekly",
-                role: "Store Manager",
-                summary: "Run your Exclusive Brand Outlet to perfection. This checklist covers brand compliance, sales training, and inventory management specific to an EBO environment.",
-                tasks: [
-                    { id: 'EBO-VM-01', description: "Ensure all visual merchandising and product displays strictly adhere to the parent brand's guidelines.", priority: 'High', riskLevel: 'High', proof: 'VM Guideline Check', location: 'Sales Floor' },
-                    { id: 'EBO-TRAIN-02', description: "Conduct weekly training on brand story, product features, and the target customer profile.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
-                    { id: 'EBO-INV-03', description: "Report daily sales and inventory data to the parent company using the specified format/portal.", priority: 'High', riskLevel: 'High', proof: 'System Report', location: 'Office' },
-                    { id: 'EBO-CUST-04', description: "Audit the customer experience to ensure it aligns with the luxury/premium positioning of the brand.", priority: 'High', riskLevel: 'Medium', proof: 'Experience Audit', location: 'Sales Floor' },
-                    { id: 'EBO-MAINT-05', description: "Verify that all store fixtures, furniture, and lighting meet the brand's quality standards and are in perfect condition.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Entire Store' }
-                ]
             }
         ]
     },
@@ -850,25 +767,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Optimize 'Cash Handling & POS Security' to prevent fraud.", icon: <Banknote /> },
             { text: "Includes checklists for 'Expiry & Inventory Rotation' and 'Store Hygiene'.", icon: <Recycle /> }
         ],
-        previewScenario: {
-            title: "Responding to a Cold Storage Breakdown",
-            description: "A Mumbai hypermarket lost ₹18 lakh in perishable inventory after a cold room malfunctioned overnight. This scenario shows how checklists prevent this by ensuring a proactive, systematic response.",
-            tasks: [
-                { id: 'CS-01', description: "Morning temperature check from the 'Daily Store Readiness' checklist immediately flags a unit is out of the safe zone.", sourceChecklist: "Daily Store Readiness & Audit", priority: 'High' },
-                { id: 'CS-02', description: "The 'Cold Storage & Food Safety' SOP is activated: all products are quarantined and internal temperatures are checked.", sourceChecklist: "Cold Storage & Food Safety", priority: 'High' },
-                { id: 'CS-03', description: "The 'Inventory, Expiry & Replenishment' checklist is used to log all spoiled items for wastage reports and insurance claims.", sourceChecklist: "Inventory, Expiry & Replenishment", priority: 'High' },
-                { id: 'CS-04', description: "Maintenance is called and the unit is not restocked until the 'Cold Storage' checklist certifies it's safe, preventing further loss.", sourceChecklist: "Cold Storage & Food Safety", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Built on Global & Indian Compliance Standards",
-            standards: [
-                { name: "Food Safety & Hygiene", description: "FSSAI (India), ISO 22000 (Food Safety Management), HACCP Guidelines, Codex Alimentarius Standards" },
-                { name: "Occupational Health & Safety", description: "ISO 45001, IS 14489 (Occupational Safety Audit), Local Fire & Labour Laws" },
-                { name: "Retail & Labour Compliance", description: "Shops & Establishments Act (state-wise), Minimum Wages Act, POSH Act 2013, Working Hours & Shift Scheduling" },
-                { name: "Data & Consumer Protection", description: "DPDP Act 2023 (India), GDPR (Global), Consumer Protection Act 2019" }
-            ]
-        },
         checklists: [
             {
                 title: "🧯 Fire & Electrical Safety",
@@ -1021,44 +919,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SGR-IFO-09', description: "Review customer complaints related to food court vendors and take corrective action.", priority: 'High', riskLevel: 'High', proof: 'Complaint Log', location: 'Manager Office' },
                     { id: 'SGR-IFO-10', description: "Hold a weekly coordination meeting with all food court vendors to discuss safety and operational issues.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Manager Office' }
                 ]
-            },
-            {
-                title: "🌱 Sustainability & Waste Management",
-                department: "Facilities/Compliance",
-                frequency: "Monthly",
-                role: "Sustainability Officer",
-                summary: "Meet regulatory requirements and improve your brand's green credentials. This checklist provides a framework for managing plastic, e-waste, and organic waste in compliance with Indian laws.",
-                tasks: [
-                    { id: 'SGR-SWM-01', description: "Audit waste streams to measure the percentage of plastic, organic, and e-waste being generated.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Audit Report', location: 'Waste Area' },
-                    { id: 'SGR-SWM-02', description: "Ensure compliance with Plastic Waste Management Rules, including use of approved carry bags.", priority: 'High', riskLevel: 'High', proof: 'Compliance Certificate', location: 'Checkout' },
-                    { id: 'SGR-SWM-03', description: "Maintain a log for e-waste collection and ensure it is handed over to a certified recycler.", priority: 'High', riskLevel: 'High', proof: 'E-Waste Manifest', location: 'Manager Office' },
-                    { id: 'SGR-SWM-04', description: "Implement and monitor an in-store composting program or a partnership for managing organic waste.", priority: 'High', riskLevel: 'Medium', proof: 'Organic Waste Log', location: 'Waste Area' },
-                    { id: 'SGR-SWM-05', description: "Track and report on energy and water consumption, and set reduction targets.", priority: 'High', riskLevel: 'Medium', proof: 'Utility Consumption Report', location: 'Manager Office' },
-                    { id: 'SGR-SWM-06', description: "Train staff on proper waste segregation at source.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
-                    { id: 'SGR-SWM-07', description: "Explore opportunities to reduce packaging from suppliers.", priority: 'Medium', riskLevel: 'Low', proof: 'Supplier Communication', location: 'Procurement Office' },
-                    { id: 'SGR-SWM-08', description: "Ensure all waste management vendors are certified and compliant.", priority: 'High', riskLevel: 'High', proof: 'Vendor Compliance File', location: 'Manager Office' },
-                    { id: 'SGR-SWM-09', description: "Set up collection points for customers to drop off e-waste or plastic waste.", priority: 'Medium', riskLevel: 'Low', proof: 'In-store Signage', location: 'Entrance' },
-                    { id: 'SGR-SWM-10', description: "Prepare and file annual environmental compliance reports as required.", priority: 'High', riskLevel: 'High', proof: 'Filed Report', location: 'Compliance Office' }
-                ]
-            },
-            {
-                title: "✅ Daily Store Readiness & Audit",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "A master checklist for store managers to conduct a comprehensive daily walkthrough. It ensures the entire store is safe, compliant, and ready for business, covering key points from all departments.",
-                tasks: [
-                    { id: 'SGR-DSRA-01', description: "Verify all department opening checklists have been completed and signed off.", priority: 'High', riskLevel: 'High', proof: 'Signed Checklists', location: 'Manager Office' },
-                    { id: 'SGR-DSRA-02', description: "Conduct a full walk of the sales floor, checking for cleanliness, safety hazards, and planogram compliance.", priority: 'High', riskLevel: 'High', proof: 'Manager Walkthrough Log', location: 'Sales Floor' },
-                    { id: 'SGR-DSRA-03', description: "Review previous day's sales reports and current day's targets.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Manager Office' },
-                    { id: 'SGR-DSRA-04', description: "Check that all staff are present, correctly rostered, and in proper uniform.", priority: 'High', riskLevel: 'Medium', proof: 'Roster Sheet', location: 'Staff Room' },
-                    { id: 'SGR-DSRA-05', description: "Review any overnight security or maintenance incident reports.", priority: 'High', riskLevel: 'High', proof: 'Incident Logs', location: 'Manager Office' },
-                    { id: 'SGR-DSRA-06', description: "Spot-check temperatures in one random cold storage unit.", priority: 'High', riskLevel: 'High', proof: 'Spot Check Log', location: 'Cold Storage' },
-                    { id: 'SGR-DSRA-07', description: "Spot-check one aisle for expiry dates and FIFO compliance.", priority: 'High', riskLevel: 'High', proof: 'Spot Check Log', location: 'Sales Floor' },
-                    { id: 'SGR-DSRA-08', description: "Hold a daily morning huddle with all department heads.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Notes', location: 'Manager Office' },
-                    { id: 'SGR-DSRA-09', description: "Ensure the store's external appearance is clean and welcoming.", priority: 'High', riskLevel: 'Low', proof: 'Visual Inspection', location: 'Exterior' },
-                    { id: 'SGR-DSRA-10', description: "Sign off on the store's readiness for business, officially opening for the day.", priority: 'High', riskLevel: 'High', proof: 'Master Readiness Log', location: 'Manager Office' }
-                ]
             }
         ]
     },
@@ -1080,27 +940,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure perfect Product Display & Visual Merchandising compliance.", icon: <GalleryVertical /> },
             { text: "Master secure Cash & Payment Handling with PCI DSS standards.", icon: <Banknote /> }
         ],
-        previewScenario: {
-            title: "Launching a New Flagship Phone",
-            description: "It's launch day for a highly anticipated smartphone. This scenario shows how checklists for Inventory, Visual Merchandising, and Customer Experience come together for a flawless and high-impact launch day.",
-            tasks: [
-                { id: 'ELEC-INV-01', description: "Conduct a cycle count of the new phone SKU to ensure inventory is 100% accurate before doors open.", sourceChecklist: "Inventory & Stock Management", priority: 'High' },
-                { id: 'ELEC-VM-02', description: "Ensure all demo units of the new phone are functional, charged, and running the latest software.", sourceChecklist: "Product Display & Visual Merchandising", priority: 'High' },
-                { id: 'ELEC-CUST-02', description: "Ensure all sales staff have completed product training on the new phone's key features.", sourceChecklist: "Customer Experience & Store Standards", priority: 'High' },
-                { id: 'ELEC-CASH-01', description: "Verify POS systems are updated with the correct pricing and promotional bundles for the new phone.", sourceChecklist: "Cash & Payment Handling", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Built on Global Retail & Electronics Standards",
-            standards: [
-                { name: "Quality & Process Control", description: "ISO 9001" },
-                { name: "Environmental & Sustainability", description: "ISO 14001, ESG" },
-                { name: "Safety & Workforce Protection", description: "ISO 45001, OSHA" },
-                { name: "Data & Privacy", description: "ISO 27001, GDPR" },
-                { name: "Payment Security", description: "PCI DSS" },
-                { name: "Accessibility", description: "WCAG 2.1 (for digital in-store kiosks)" },
-            ]
-        },
         checklists: [
             {
                 title: "Store Operations & Compliance",
@@ -1214,58 +1053,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ELEC-CUST-08', description: "Follow up with customers after a sale to ensure satisfaction.", priority: 'Medium', riskLevel: 'Low', proof: 'Follow-up Log', location: 'System' },
                     { id: 'ELEC-CUST-09', description: "Handle customer complaints with empathy and resolve them promptly.", priority: 'High', riskLevel: 'High', proof: 'Complaint Resolution Log', location: 'Customer Service' },
                     { id: 'ELEC-CUST-10', description: "Collect customer feedback to identify areas for improvement.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Survey Results', location: 'Office' }
-                ]
-            },
-             {
-                title: "Vendor & Supplier Management",
-                department: "Procurement",
-                frequency: "Quarterly",
-                role: "Procurement Manager",
-                summary: "Ensure your suppliers meet your standards for quality, delivery, and compliance. This checklist helps you manage vendor relationships effectively.",
-                tasks: [
-                    { id: 'ELEC-VENDOR-01', description: "Review vendor performance against SLAs.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Report', location: 'Office' },
-                    { id: 'ELEC-VENDOR-02', description: "Conduct regular business reviews with key suppliers.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Office' },
-                    { id: 'ELEC-VENDOR-03', description: "Audit vendor invoices for accuracy.", priority: 'High', riskLevel: 'High', proof: 'Invoice Audit Report', location: 'Office' },
-                    { id: 'ELEC-VENDOR-04', description: "Negotiate pricing and terms for new contracts.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Office' },
-                    { id: 'ELEC-VENDOR-05', description: "Ensure vendors comply with all legal and ethical standards.", priority: 'High', riskLevel: 'High', proof: 'Compliance Audit', location: 'Office' },
-                    { id: 'ELEC-VENDOR-06', description: "Manage a preferred vendor list.", priority: 'Medium', riskLevel: 'Low', proof: 'Vendor List', location: 'Office' },
-                    { id: 'ELEC-VENDOR-07', description: "Resolve any disputes with vendors promptly.", priority: 'High', riskLevel: 'High', proof: 'Dispute Resolution Log', location: 'Office' },
-                    { id: 'ELEC-VENDOR-08', description: "Assess vendor risk and have contingency plans.", priority: 'High', riskLevel: 'High', proof: 'Risk Assessment Report', location: 'Office' },
-                    { id: 'ELEC-VENDOR-09', description: "Scout for new and alternative suppliers.", priority: 'Medium', riskLevel: 'Low', proof: 'Supplier Scouting Report', location: 'Office' },
-                    { id: 'ELEC-VENDOR-10', description: "Maintain strong relationships with key suppliers.", priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'Office' }
-                ]
-            },
-            {
-                title: "E-Waste Management & Compliance",
-                department: "Compliance",
-                frequency: "Monthly",
-                role: "Compliance Officer",
-                summary: "Ensure your showroom complies with all e-waste regulations, protecting the environment and avoiding fines. This checklist covers the collection, storage, and disposal of electronic waste.",
-                tasks: [
-                    { id: 'ELEC-EWASTE-01', description: "Ensure designated collection bins for e-waste are available and clearly labeled.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Store-wide' },
-                    { id: 'ELEC-EWASTE-02', description: "Train staff on the correct procedures for handling and segregating e-waste.", priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
-                    { id: 'ELEC-EWASTE-03', description: "Arrange for regular pickups with a certified e-waste recycling vendor.", priority: 'High', riskLevel: 'High', proof: 'Pickup Schedule', location: 'Office' },
-                    { id: 'ELEC-EWASTE-04', description: "Maintain all necessary documentation, including collection receipts and disposal certificates.", priority: 'High', riskLevel: 'High', proof: 'E-waste Logbook', location: 'Office' },
-                    { id: 'ELEC-EWASTE-05', description: "Store e-waste in a designated, secure area away from new products and customer areas.", priority: 'High', riskLevel: 'High', proof: 'Storage Area Inspection', location: 'Storage' },
-                    { id: 'ELEC-EWASTE-06', description: "Ensure compliance with the E-Waste (Management) Rules, 2022.", priority: 'High', riskLevel: 'High', proof: 'Compliance Audit Report', location: 'Office' },
-                    { id: 'ELEC-EWASTE-07', description: "Educate customers about the e-waste collection program.", priority: 'Medium', riskLevel: 'Low', proof: 'In-store Signage', location: 'Store-wide' },
-                    { id: 'ELEC-EWASTE-08', description: "Review and update the e-waste management policy annually.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Document', location: 'Office' },
-                    { id: 'ELEC-EWASTE-09', description: "Track the volume of e-waste collected and report on targets.", priority: 'Medium', riskLevel: 'Low', proof: 'E-waste Report', location: 'Office' },
-                    { id: 'ELEC-EWASTE-10', description: "Ensure the recycling vendor provides certificates of destruction for data-bearing devices.", priority: 'High', riskLevel: 'High', proof: 'Certificates of Destruction', location: 'Office' }
-                ]
-            },
-            {
-                title: "🏢 EBO Operations Checklist",
-                department: "Retail Operations",
-                frequency: "Daily/Weekly",
-                role: "Store Manager",
-                summary: "Run your Exclusive Brand Outlet to perfection. This checklist covers brand compliance, sales training, and inventory management specific to an EBO environment.",
-                tasks: [
-                    { id: 'EBO-VM-01', description: "Ensure all visual merchandising and product displays strictly adhere to the parent brand's guidelines.", priority: 'High', riskLevel: 'High', proof: 'VM Guideline Check', location: 'Sales Floor' },
-                    { id: 'EBO-TRAIN-02', description: "Conduct weekly training on brand story, product features, and the target customer profile.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
-                    { id: 'EBO-INV-03', description: "Report daily sales and inventory data to the parent company using the specified format/portal.", priority: 'High', riskLevel: 'High', proof: 'System Report', location: 'Office' },
-                    { id: 'EBO-CUST-04', description: "Audit the customer experience to ensure it aligns with the luxury/premium positioning of the brand.", priority: 'High', riskLevel: 'Medium', proof: 'Experience Audit', location: 'Sales Floor' },
-                    { id: 'EBO-MAINT-05', description: "Verify that all store fixtures, furniture, and lighting meet the brand's quality standards and are in perfect condition.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Entire Store' }
                 ]
             }
         ]
@@ -1397,16 +1184,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure your 'Website Legal Health' (Privacy Policy, ToS) is up to date.", icon: <HeartPulse /> },
             { text: "Framework for 'Disciplinary Actions' that minimizes legal exposure.", icon: <FileWarning /> }
         ],
-        previewScenario: {
-            title: "Avoiding a Wrongful Termination Lawsuit",
-            description: "An underperforming employee is let go, but the process is handled poorly, leading to a costly legal notice. This scenario shows how SOPs for HR create a defensible, fair process.",
-            tasks: [
-                { id: 'HR-DISC-01', description: "The manager documents specific instances of underperformance with dates and metrics, as required by the 'Disciplinary Action' checklist.", sourceChecklist: "Employee Disciplinary Actions", priority: 'High' },
-                { id: 'HR-DISC-02', description: "A formal 'Performance Improvement Plan' (PIP) is issued, with clear, measurable goals and a defined timeline.", sourceChecklist: "Employee Disciplinary Actions", priority: 'High' },
-                { id: 'HR-ONBOARD-01', description: "The original 'New Hire Onboarding' file is reviewed to confirm the employee signed the acknowledgment of the company's performance policies.", sourceChecklist: "New Employee Onboarding (HR & Legal)", priority: 'High' },
-                { id: 'HR-DISC-04', description: "When termination occurs, it's based on the documented failure to meet the PIP, creating a clear, non-discriminatory reason and minimizing legal risk.", sourceChecklist: "Employee Disciplinary Actions", priority: 'High' }
-            ]
-        },
         checklists: [
             {
                 title: "🧑‍💼 New Employee Onboarding (HR & Legal)",
@@ -1482,16 +1259,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Strengthen defenses with a 'Cloud Security Posture Management' checklist.", icon: <DatabaseZap /> },
             { text: "Practice your 'Cybersecurity Incident Response' plan with drills.", icon: <Siren /> }
         ],
-        previewScenario: {
-            title: "Responding to a Suspected Data Breach",
-            description: "An engineer reports unusual activity on a production database, suggesting a potential data breach. This scenario shows how checklists for Incident Response, Cloud Security, and Access Control enable a swift, coordinated, and compliant response.",
-            tasks: [
-                { id: 'CYBER-IR-01', description: "The 'Cybersecurity Incident Response Plan' is immediately activated, and the core incident response team is assembled.", sourceChecklist: "Cybersecurity Incident Response Plan", priority: 'High' },
-                { id: 'CLOUD-SEC-03', description: "Using the 'Cloud Security' checklist, the team immediately isolates the affected database and rotates all access credentials.", sourceChecklist: "Cloud Security Posture Management", priority: 'High' },
-                { id: 'CYBER-AC-02', description: "An 'Employee Offboarding' protocol is triggered for the suspected user account to revoke all access system-wide.", sourceChecklist: "Employee Offboarding & Access Control", priority: 'High' },
-                { id: 'PRIV-AUDIT-04', description: "The 'Data Privacy Audit' checklist guides the legal and compliance team in determining if the incident meets the threshold for mandatory reporting to regulators under GDPR/DPDP.", sourceChecklist: "Data Privacy (GDPR/DPDP) Audit", priority: 'High' }
-            ]
-        },
         checklists: [
             {
                 title: "🤖 AI Ethics & Governance Framework",
@@ -1584,16 +1351,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Master infection control with 'CSSD & Sterilization' protocols.", icon: <Microscope /> },
             { text: "Includes 'ER Triage' and 'LASA Drug Management' checklists.", icon: <Ambulance /> }
         ],
-        previewScenario: {
-            title: "Preventing a Wrong-Site Surgery",
-            description: "A patient is prepped for surgery, but a discrepancy is found in the consent form. This scenario shows how checklists for Surgical Safety, Patient ID, and Pre-Op Assessment create a safety net to prevent a catastrophic 'never event'.",
-            tasks: [
-                { id: 'SAFE-ID-01', description: "The nurse confirms the patient's identity using two identifiers (name and MRN) and checks the wristband, as per the 'Patient Identification' SOP.", sourceChecklist: "Patient Identification & Safety", priority: 'High' },
-                { id: 'PRE-OP-02', description: "During the 'Pre-operative Assessment', the anesthesiologist notices the surgical site marked on the patient does not match the consent form.", sourceChecklist: "Pre-Operative Patient Assessment", priority: 'High' },
-                { id: 'SURG-SS-03', description: "The 'Surgical Safety Checklist' cannot proceed. A hard stop is initiated, and the entire 'Time Out' procedure is halted.", sourceChecklist: "Surgical Safety Checklist (WHO)", priority: 'High' },
-                { id: 'RISK-INC-01', description: "The near-miss is reported as a non-punitive incident, triggering a root cause analysis to prevent future occurrences, fulfilling a key NABH requirement.", sourceChecklist: "Patient Safety & Risk Management", priority: 'High' }
-            ]
-        },
         checklists: [
              {
                 title: "⚕️ Surgical Safety Checklist (WHO)",
@@ -1713,16 +1470,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure medication efficacy with a 'Cold Chain Management' protocol.", icon: <Thermometer /> },
             { text: "Standardize 'Patient Counseling' to improve medication adherence.", icon: <UserCheck /> }
         ],
-        previewScenario: {
-            title: "Preventing a High-Risk Dispensing Error",
-            description: "A pharmacist receives a handwritten prescription for a high-alert LASA drug. This scenario shows how checklists prevent a potentially fatal medication error.",
-            tasks: [
-                { id: 'LASA-03', description: "The pharmacist calls the prescribing doctor to verbally confirm the drug and dosage, as mandated by the 'LASA Drug Management' SOP.", sourceChecklist: "LASA Drug Management", priority: 'High' },
-                { id: 'DISPENSE-02', description: "A second pharmacist performs an independent double-check of the prescription, the selected drug, and the label before it's dispensed.", sourceChecklist: "Dispensing Accuracy", priority: 'High' },
-                { id: 'COUNSEL-02', description: "During 'Patient Counseling', the pharmacist confirms the patient's understanding of what the medication is for, catching any final potential discrepancy.", sourceChecklist: "Patient Counseling", priority: 'High' },
-                { id: 'NARC-05', description: "The entire dispensing process, including the two-person check, is logged, creating a defensible audit trail.", sourceChecklist: "Controlled Substance & Narcotics Management", priority: 'High' }
-            ]
-        },
         checklists: [
             {
                 title: "Dispensing Accuracy",
@@ -1782,6 +1529,7 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
+    // --- Education ---
     {
         id: 'school_operations_pack',
         title: "School Operations Pack",
@@ -1798,16 +1546,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "HACCP-aligned 'Cafeteria & Food Safety' checklists.", icon: <Sprout /> },
             { text: "Protocols for 'Emergency Preparedness' including fire, medical, and evacuation drills.", icon: <Siren /> }
         ],
-        previewScenario: {
-            title: "Responding to an Unauthorized Person on Campus",
-            description: "A person attempts to enter school grounds without authorization. This scenario shows how checklists for Security, Visitor Management, and Emergency Response work together to neutralize the threat.",
-            tasks: [
-                { id: 'CSVM-01', description: "The security guard at the gate denies entry because the person is not on the pre-approved visitor list, as per the 'Visitor Management' SOP.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' },
-                { id: 'CSVM-04', description: "When the person becomes agitated, the guard triggers a silent alarm to alert the Principal and Head of Security.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' },
-                { id: 'EPD-03', description: "The 'Emergency Response' protocol for an intruder is activated, and all external doors are remotely locked.", sourceChecklist: "Emergency Preparedness & Drills", priority: 'High' },
-                { id: 'CSVM-06', description: "The incident is logged in detail, including CCTV timestamps, providing a clear record for law enforcement.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' }
-            ]
-        },
         globalStandards: {
             title: "Built on National & Global Safety Standards",
             standards: [
@@ -1988,16 +1726,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Protect academic integrity with a 'Confidential Exam Material Handling' SOP.", icon: <FileLock /> },
             { text: "A framework for 'Student Well-being & Anti-Ragging' compliance.", icon: <Users /> }
         ],
-        previewScenario: {
-            title: "Preventing an Exam Paper Leak",
-            description: "A prestigious university faces a reputation crisis after an exam paper is leaked. This scenario shows how a strict chain-of-custody protocol prevents this.",
-            tasks: [
-                { id: 'CEMH-01', description: "The exam papers are printed in a secure, access-controlled room, as mandated by the 'Confidential Material Handling' SOP.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' },
-                { id: 'CEMH-02', description: "The sealed packets are transported to the exam center in a locked container, with a documented chain-of-custody form signed at each handover point.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' },
-                { id: 'CEMH-04', description: "Two authorized personnel are required to be present when the sealed packets are opened just before the exam begins.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' },
-                { id: 'CEMH-05', description: "After the exam, all unused papers are accounted for and shredded under supervision, completing the secure lifecycle.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' }
-            ]
-        },
         globalStandards: {
             title: "Aligned with Accreditation & Safety Standards",
             standards: [
@@ -2163,8 +1891,4 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
-  
-
-
-
     
