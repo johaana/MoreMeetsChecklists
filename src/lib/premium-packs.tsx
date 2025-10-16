@@ -738,7 +738,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-AML-05', description: "Maintain a confidential internal log of all reported transactions.", priority: 'High', riskLevel: 'High', proof: 'AML Logbook', location: 'Office' },
                     { id: 'LUX-AML-06', description: "Train all sales and cashier staff on identifying and flagging suspicious transactions.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'HR' },
                     { id: 'LUX-AML-07', description: "Do not 'tip off' the customer that a report is being filed.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'Office' },
-                    { id: 'LUX-AML-08', description: "Regularly update knowledge of AML regulations and thresholds.", priority: 'High', riskLevel: 'Medium', proof: 'Training Certificate', location: 'Office' },
+                    { id: 'LUX-AML-08', description: "Regularly update knowledge of AML regulations and thresholds.", priority: 'High', riskLevel: 'Medium', proof: 'Legal Update Subscription', location: 'Legal' },
                     { id: 'LUX-AML-09', description: "Appoint a Principal Officer responsible for AML compliance.", priority: 'High', riskLevel: 'High', proof: 'Appointment Letter', location: 'HR' },
                     { id: 'LUX-AML-10', description: "Conduct an annual independent audit of AML compliance procedures.", priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Office' }
                 ]
@@ -2549,6 +2549,7 @@ export const premiumPacks: PremiumPack[] = [
     
 
   
+
 
 
 

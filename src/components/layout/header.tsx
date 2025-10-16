@@ -31,6 +31,7 @@ export function SiteHeader() {
 
     React.useEffect(() => {
         setIsSheetOpen(false);
+        setIsDropdownOpen(false);
     }, [pathname]);
 
     React.useEffect(() => {
