@@ -76,23 +76,27 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full mt-4">
+                <Button variant="accent" className="w-full mt-4">
                     <Eye className="w-4 h-4 mr-2" />
-                    See a Sample
+                    Preview a Real-World Scenario
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="max-w-4xl">
                 <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline">Scenario: {scenario.title}</AlertDialogTitle>
+                    <AlertDialogTitle className="font-headline flex items-center gap-3">
+                         <AlertTriangle className="w-6 h-6 text-destructive" />
+                        Scenario: {scenario.title}
+                    </AlertDialogTitle>
                     <AlertDialogDescription>
-                        {scenario.description} The full download is a fully editable Excel file.
+                        {scenario.description}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <ScrollArea className="max-h-[60vh] pr-6">
+                    <div className="text-sm text-muted-foreground mt-2 mb-4">The full checklist pack contains dozens of such integrated protocols. This is just a sample of how they work together.</div>
                     <Table className="mt-4 border rounded-lg">
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Task Description</TableHead>
+                                <TableHead>Critical Task</TableHead>
                                 <TableHead>Source Checklist</TableHead>
                                 <TableHead>Priority</TableHead>
                             </TableRow>
@@ -100,7 +104,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
                         <TableBody>
                             {scenario.tasks.map((task, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{task.description}</TableCell>
+                                    <TableCell className="font-medium">{task.description}</TableCell>
                                     <TableCell className="text-muted-foreground">{task.sourceChecklist}</TableCell>
                                     <TableCell>
                                         <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
@@ -400,7 +404,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 )}
 
 
-                {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
+                <div className="max-w-md mx-auto">
+                    <ScenarioPreviewDialog scenario={pack.previewScenario} />
+                </div>
 
                 <ValueComparisonSection price={professionalPrice} />
 
