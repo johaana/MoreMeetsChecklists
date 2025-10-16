@@ -19,7 +19,7 @@ export default function ContactUsPage() {
     const [email, setEmail] = React.useState('');
     const [message, setMessage] = React.useState('');
 
-    const recipientWhatsApp = '919545997111';
+    const recipientWhatsApp = '919860997711';
     const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
     const whatsappLink = `https://wa.me/${recipientWhatsApp}?text=${encodeURIComponent(body)}`;
 
@@ -50,7 +50,7 @@ export default function ContactUsPage() {
                                     <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><WhatsAppIcon className="w-8 h-8"/> WhatsApp</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <a href="https://wa.me/919545997111" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
+                                    <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
                                 </CardContent>
                             </Card>
                             <Card className="text-center">
