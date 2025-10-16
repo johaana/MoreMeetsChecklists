@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, Landmark, GraduationCap } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, Landmark, GraduationCap, AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
