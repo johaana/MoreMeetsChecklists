@@ -1,5 +1,5 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, Brain } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, Brain, BriefcaseBusiness } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -628,6 +628,20 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-CERT-09', description: "Train all sales staff on the different types of certifications and what they mean.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
                     { id: 'LUX-CERT-10', description: "Have a clear process for handling lost or damaged customer certificates.", priority: 'Medium', riskLevel: 'Medium', proof: 'Policy Document', location: 'Office' }
                 ]
+            },
+            {
+                title: "🏢 EBO Operations Checklist",
+                department: "Retail Operations",
+                frequency: "Daily/Weekly",
+                role: "Store Manager",
+                summary: "Run your Exclusive Brand Outlet to perfection. This checklist covers brand compliance, sales training, and inventory management specific to an EBO environment.",
+                tasks: [
+                    { id: 'EBO-VM-01', description: "Ensure all visual merchandising and product displays strictly adhere to the parent brand's guidelines.", priority: 'High', riskLevel: 'High', proof: 'VM Guideline Check', location: 'Sales Floor' },
+                    { id: 'EBO-TRAIN-02', description: "Conduct weekly training on brand story, product features, and the target customer profile.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
+                    { id: 'EBO-INV-03', description: "Report daily sales and inventory data to the parent company using the specified format/portal.", priority: 'High', riskLevel: 'High', proof: 'System Report', location: 'Office' },
+                    { id: 'EBO-CUST-04', description: "Audit the customer experience to ensure it aligns with the luxury/premium positioning of the brand.", priority: 'High', riskLevel: 'Medium', proof: 'Experience Audit', location: 'Sales Floor' },
+                    { id: 'EBO-MAINT-05', description: "Verify that all store fixtures, furniture, and lighting meet the brand's quality standards and are in perfect condition.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Entire Store' }
+                ]
             }
         ]
     },
@@ -642,7 +656,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Shirt className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail"],
+        whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
         sampleItems: [
             "Master 'Seasonal Inventory Management' to reduce dead stock.",
             "Implement a 'Visual Merchandising' checklist for stunning displays.",
@@ -803,29 +817,24 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧑‍🏫 Staff Training & Performance",
-                department: "HR/Management",
-                frequency: "Monthly",
+                title: "🏢 EBO Operations Checklist",
+                department: "Retail Operations",
+                frequency: "Daily/Weekly",
                 role: "Store Manager",
-                summary: "Build a high-performing sales team. This checklist focuses on continuous training, performance tracking, and motivation to drive sales and customer satisfaction.",
+                summary: "Run your Exclusive Brand Outlet to perfection. This checklist covers brand compliance, sales training, and inventory management specific to an EBO environment.",
                 tasks: [
-                    { id: 'FAS-HR-01', description: "Conduct product knowledge training for new collections.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Training Room' },
-                    { id: 'FAS-HR-02', description: "Review individual sales performance and provide coaching.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Review Notes', location: 'Office' },
-                    { id: 'FAS-HR-03', description: "Run role-playing sessions on customer service scenarios (e.g., handling a difficult customer).", priority: 'Medium', riskLevel: 'Low', proof: 'Training Session Log', location: 'Sales Floor' },
-                    { id: 'FAS-HR-04', description: "Update staff on current promotions, sales targets, and store KPIs.", priority: 'High', riskLevel: 'Low', proof: 'Communication Log', location: 'Staff Huddle' },
-                    { id: 'FAS-HR-05', description: "Ensure all staff have completed mandatory compliance training (e.g., POSH, safety).", priority: 'High', riskLevel: 'High', proof: 'Compliance Training Records', location: 'HR Office' },
-                    { id: 'FAS-HR-06', description: "Provide training on visual merchandising standards.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Training Room' },
-                    { id: 'FAS-HR-07', description: "Recognize and reward top-performing employees.", priority: 'Medium', riskLevel: 'Low', proof: 'Recognition Program Log', location: 'Office' },
-                    { id: 'FAS-HR-08', description: "Conduct regular team meetings to foster communication and teamwork.", priority: 'High', riskLevel: 'Low', proof: 'Meeting Minutes', location: 'Staff Area' },
-                    { id: 'FAS-HR-09', description: "Monitor staff morale and address any issues.", priority: 'High', riskLevel: 'Medium', proof: 'Morale Survey', location: 'Office' },
-                    { id: 'FAS-HR-10', description: "Have a clear career development path for employees.", priority: 'Medium', riskLevel: 'Low', proof: 'Career Path Document', location: 'HR Office' }
+                    { id: 'EBO-VM-01', description: "Ensure all visual merchandising and product displays strictly adhere to the parent brand's guidelines.", priority: 'High', riskLevel: 'High', proof: 'VM Guideline Check', location: 'Sales Floor' },
+                    { id: 'EBO-TRAIN-02', description: "Conduct weekly training on brand story, product features, and the target customer profile.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
+                    { id: 'EBO-INV-03', description: "Report daily sales and inventory data to the parent company using the specified format/portal.", priority: 'High', riskLevel: 'High', proof: 'System Report', location: 'Office' },
+                    { id: 'EBO-CUST-04', description: "Audit the customer experience to ensure it aligns with the luxury/premium positioning of the brand.", priority: 'High', riskLevel: 'Medium', proof: 'Experience Audit', location: 'Sales Floor' },
+                    { id: 'EBO-MAINT-05', description: "Verify that all store fixtures, furniture, and lighting meet the brand's quality standards and are in perfect condition.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Entire Store' }
                 ]
             }
         ]
     },
     {
-        id: 'supermarket_hypermarket_ops_pack',
-        title: "Supermarket & Hypermarket Operations",
+        id: 'supermarket_operations_pack',
+        title: "Supermarket Operations Pack",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -1206,6 +1215,20 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ELEC-EWASTE-09', description: "Track the volume of e-waste collected and report on targets.", priority: 'Medium', riskLevel: 'Low', proof: 'E-waste Report', location: 'Office' },
                     { id: 'ELEC-EWASTE-10', description: "Ensure the recycling vendor provides certificates of destruction for data-bearing devices.", priority: 'High', riskLevel: 'High', proof: 'Certificates of Destruction', location: 'Office' }
                 ]
+            },
+            {
+                title: "🏢 EBO Operations Checklist",
+                department: "Retail Operations",
+                frequency: "Daily/Weekly",
+                role: "Store Manager",
+                summary: "Run your Exclusive Brand Outlet to perfection. This checklist covers brand compliance, sales training, and inventory management specific to an EBO environment.",
+                tasks: [
+                    { id: 'EBO-VM-01', description: "Ensure all visual merchandising and product displays strictly adhere to the parent brand's guidelines.", priority: 'High', riskLevel: 'High', proof: 'VM Guideline Check', location: 'Sales Floor' },
+                    { id: 'EBO-TRAIN-02', description: "Conduct weekly training on brand story, product features, and the target customer profile.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
+                    { id: 'EBO-INV-03', description: "Report daily sales and inventory data to the parent company using the specified format/portal.", priority: 'High', riskLevel: 'High', proof: 'System Report', location: 'Office' },
+                    { id: 'EBO-CUST-04', description: "Audit the customer experience to ensure it aligns with the luxury/premium positioning of the brand.", priority: 'High', riskLevel: 'Medium', proof: 'Experience Audit', location: 'Sales Floor' },
+                    { id: 'EBO-MAINT-05', description: "Verify that all store fixtures, furniture, and lighting meet the brand's quality standards and are in perfect condition.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Entire Store' }
+                ]
             }
         ]
     },
@@ -1339,8 +1362,8 @@ export const premiumPacks: PremiumPack[] = [
                     { id: "FP-DIST-06", description: "Develop a marketing and promotional strategy.", priority: 'High', riskLevel: 'High', proof: 'Marketing Plan', location: 'Marketing Office' },
                     { id: "FP-DIST-07", description: "Submit the film to festivals.", priority: 'High', riskLevel: 'Medium', proof: 'Festival Submission Log', location: 'Marketing Office' },
                     { id: "FP-DIST-08", description: "Secure distribution deals with theaters, streaming platforms, and broadcasters.", priority: 'High', riskLevel: 'High', proof: 'Distribution Agreements', location: 'Legal Department' },
-                    { id: "FP-DIST-09", description: "Manage the film's social media presence.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Calendar', location: 'Marketing Office' },
-                    { id: "FP-DIST-10", description: "Track box office and streaming performance.", priority: 'High', riskLevel: 'High', proof: 'Performance Reports', location: 'Marketing Office' }
+                    { id: 'FP-DIST-09', description: "Manage the film's social media presence.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Calendar', location: 'Marketing Office' },
+                    { id: 'FP-DIST-10', description: "Track box office and streaming performance.", priority: 'High', riskLevel: 'High', proof: 'Performance Reports', location: 'Marketing Office' }
                 ]
             },
             {
