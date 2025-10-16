@@ -195,10 +195,9 @@ const FaqSection = () => (
 
 function PackList() {
     const isMobile = useIsMobile();
-    const featuredPackIds = ["hotels_and_resorts", "healthcare_and_hospital_operations", "facility_management_blueprint"];
-    const featuredPacks = premiumPacks.filter(p => featuredPackIds.includes(p.id));
-    const title = "Featured Checklist Packs";
-    const description = "Get instant access to expert-crafted operational SOPs. One-time purchase, lifetime updates. Downloadable in Excel.";
+    const featuredPacks = premiumPacks.filter(p => p.bestseller);
+    const title = "Bestselling Checklist Packs";
+    const description = "Get instant access to expert-crafted operational SOPs trusted by industry leaders. One-time purchase, lifetime updates.";
 
     const PackCard = ({ pack }: { pack: (typeof premiumPacks)[0] }) => (
         <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">

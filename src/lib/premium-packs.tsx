@@ -47,7 +47,8 @@ export type PremiumPack = {
     globalStandards?: {
         title: string;
         standards: { name: string; description: string; }[];
-    }
+    };
+    bestseller?: boolean;
 }
 
 
@@ -64,6 +65,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Building className="w-8 h-8 text-primary" />,
         badgeText: "Most Popular",
         badgeVariant: "default" as const,
+        bestseller: true,
         whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "GMs", "VPs", "and their teams"],
         sampleItems: [
             "Master hotel finance with 'Annual Budgeting' and 'P&L Review' checklists.",
@@ -949,7 +951,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SM-CASH-05', description: "At closing, reconcile cash, card, and digital payments for each POS and investigate all discrepancies.", priority: 'High', riskLevel: 'High', proof: 'End-of-Day Reconciliation Report', location: 'Cash Office' },
                     { id: 'SM-CASH-06', description: "Ensure all checkout staff are trained on handling coupons and promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
                     { id: 'SM-CASH-07', description: "Check that all POS hardware is clean and functional.", priority: 'High', riskLevel: 'Medium', proof: 'Hardware Check Log', location: 'Checkout Area' },
-                    { id: 'SM-CASH-08', description: "Provide excellent customer service at checkout.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Checkout Area' },
+                    { id: 'SM-CASH-09', description: "Provide excellent customer service at checkout.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Checkout Area' },
                     { id: 'SM-CASH-09', description: "Manage the return and exchange process efficiently.", priority: 'High', riskLevel: 'High', proof: 'Return Log', location: 'Customer Service Desk' },
                     { id: 'SM-CASH-10', description: "Implement measures to prevent sweethearting and other forms of POS fraud.", priority: 'High', riskLevel: 'High', proof: 'Loss Prevention Audit', location: 'Checkout Area' }
                 ]
@@ -1388,14 +1390,14 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'FP-PLATFORM-01', description: "Monitor platform uptime and performance.", priority: 'High', riskLevel: 'High', proof: 'Uptime Report', location: 'NOC' },
                     { id: 'FP-PLATFORM-02', description: "Check content delivery network (CDN) performance.", priority: 'High', riskLevel: 'High', proof: 'CDN Report', location: 'NOC' },
-                    { id: 'FP-PLATFORM-03', description: "Review user feedback and address any platform-related issues.", priority: 'High', riskLevel: 'Medium', proof: 'User Feedback Log', location: 'Support' },
-                    { id: 'FP-PLATFORM-04', description: "Ensure all new content is published correctly and on time.", priority: 'High', riskLevel: 'High', proof: 'Content Publishing Log', location: 'CMS' },
-                    { id: 'FP-PLATFORM-05', description: "Monitor for any security threats or vulnerabilities.", priority: 'High', riskLevel: 'High', proof: 'Security Scan Report', location: 'Security' },
-                    { id: 'FP-PLATFORM-06', description: "Check that all analytics and tracking are working correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Analytics Dashboard', location: 'Marketing' },
-                    { id: 'FP-PLATFORM-07', description: "Ensure all payment and subscription systems are functioning properly.", priority: 'High', riskLevel: 'High', proof: 'Payment System Log', location: 'Finance' },
-                    { id: 'FP-PLATFORM-08', description: "Manage user accounts and access control.", priority: 'High', riskLevel: 'High', proof: 'User Management Log', location: 'Admin' },
-                    { id: 'FP-PLATFORM-09', description: "Conduct regular platform maintenance and updates.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Log', location: 'IT' },
-                    { id: 'FP-PLATFORM-10', description: "Have a disaster recovery plan in place and test it regularly.", priority: 'High', riskLevel: 'High', proof: 'Disaster Recovery Test Log', location: 'IT' }
+                    { id: 'FP-PLATFORM-03', description: "Review application error logs for critical issues.", priority: 'High', riskLevel: 'High', proof: 'Log Management System', location: 'NOC' },
+                    { id: 'FP-PLATFORM-04', description: "Verify backup and disaster recovery jobs completed successfully.", priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'NOC' },
+                    { id: 'FP-PLATFORM-05', description: "Handle customer support escalations related to platform issues.", priority: 'High', riskLevel: 'Medium', proof: 'Support Ticket System', location: 'Support Dept' },
+                    { id: 'FP-PLATFORM-06', description: "Monitor database performance.", priority: 'High', riskLevel: 'High', proof: 'Database Dashboard', location: 'NOC' },
+                    { id: 'FP-PLATFORM-07', description: "Check for any latency issues in video streaming.", priority: 'High', riskLevel: 'High', proof: 'Streaming Analytics', location: 'NOC' },
+                    { id: 'FP-PLATFORM-08', description: "Ensure all automated jobs and scripts ran successfully.", priority: 'High', riskLevel: 'Medium', proof: 'Job Log', location: 'NOC' },
+                    { id: 'FP-PLATFORM-09', description: "Communicate any platform issues to internal stakeholders.", priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'NOC' },
+                    { id: 'FP-PLATFORM-10', description: "Plan and coordinate any scheduled maintenance.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Plan', location: 'Office' }
                 ]
             }
         ]
@@ -1775,7 +1777,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-TP-03', description: "Check that garbage and refuse areas are clean and bins are tightly covered.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Exterior/Waste Area' },
                     { id: 'PEST-TP-04', description: "Review reports from the professional pest control vendor and ensure all recommended actions are taken.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Report Review', location: 'Manager Office' },
                     { id: 'PEST-TP-05', description: "Ensure good drainage across the park to prevent standing water, which can attract mosquitoes.", priority: 'High', riskLevel: 'High', proof: 'Drainage Inspection Log', location: 'Park-wide' },
-                    { id: 'PEST-TP-06', description: "Use animal-safe pest control methods in all areas.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Product List', location: 'Office' },
+                    { id: 'PEST-TP-06', description: "Use only animal-safe pest control methods in all areas.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Product List', location: 'Office' },
                     { id: 'PEST-TP-07', description: "Train staff on how to spot and report pest activity.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
                     { id: 'PEST-TP-08', description: "Maintain a log of all pest sightings and actions taken.", priority: 'High', riskLevel: 'Medium', proof: 'Pest Sighting Log', location: 'Office' },
                     { id: 'PEST-TP-09', description: "Ensure that the external area around the store is clean and free of pest attractants.", priority: 'High', riskLevel: 'Medium', proof: 'External Area Inspection', location: 'Exterior' },
@@ -2371,6 +2373,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "An ISO 45001 & OSHA-aligned toolkit for plant heads to ensure workforce safety, operational efficiency, and regulatory compliance.",
         icon: <HardHat className="w-8 h-8 text-primary" />,
         badgeText: "Safety Critical",
+        bestseller: true,
         badgeVariant: "destructive" as const,
         whoIsItFor: ["Plant Heads", "EHS Directors", "Production Managers", "Quality Control Heads", "VPs of Operations", "GMs", "Directors"],
         sampleItems: [
@@ -2506,6 +2509,7 @@ export const premiumPacks: PremiumPack[] = [
         description: "A comprehensive toolkit for warehouse managers to optimize inventory accuracy, improve fulfillment speed, and ensure a safe working environment.",
         icon: <Warehouse className="w-8 h-8 text-primary" />,
         badgeText: "New!",
+        bestseller: true,
         badgeVariant: "accent",
         whoIsItFor: ["Warehouse Managers", "Logistics Directors", "Supply Chain Heads", "3PL Owners", "VPs", "GMs", "Directors"],
         sampleItems: [
@@ -2768,5 +2772,3 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
-
-    
