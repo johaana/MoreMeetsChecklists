@@ -99,8 +99,8 @@ export default function AllPacksPage() {
                                 <ul className="space-y-2 text-muted-foreground text-sm">
                                     {pack.sampleItems.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
-                                            <span dangerouslySetInnerHTML={{ __html: item.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                                            <span className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent">{item.icon}</span>
+                                            <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
                                         </li>
                                     ))}
                                 </ul>

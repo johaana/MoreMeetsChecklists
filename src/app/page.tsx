@@ -222,8 +222,8 @@ function PackList() {
                 <ul className="space-y-2 text-muted-foreground text-sm">
                     {pack.sampleItems.map((item, index) => (
                         <li key={index} className="flex items-start">
-                            <Check className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent"/>
-                            <span dangerouslySetInnerHTML={{ __html: item.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                            <span className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent">{item.icon}</span>
+                            <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
                         </li>
                     ))}
                 </ul>
@@ -493,7 +493,6 @@ const WhyDetailMatters = () => {
 
 export default function Home() {
   const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
-  const isMobile = useIsMobile();
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -509,56 +508,42 @@ export default function Home() {
           />
             <div className="container relative z-10 px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <div className="space-y-4">
-                    <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                        The Professional Standard for Compliance & Operations Checklists.
-                    </h1>
-                    <div className="hidden lg:block">
-                         <h2 className="text-3xl font-bold text-white/90 drop-shadow-md max-w-full mx-auto font-headline">
-                            Meet More Standards. More Compliance. More Consistency.
-                        </h2>
+                    <div className="space-y-4">
+                        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
+                            The Professional Standard for Compliance & Operations Checklists.
+                        </h1>
                         <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
                             Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                         </p>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-4 pt-4">
-                    <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                        <Link href="/packs">
-                        Browse All Packages
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
-                    <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                        <p className="text-xs text-white/80">
-                        Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA.
-                        </p>
+                        <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                            <Link href="/packs">
+                            Browse All Packages
+                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
+                        <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
+                            <p className="text-xs text-white/80">
+                            Built on globally recognized frameworks like ISO 9001, HACCP, JCI, and OSHA.
+                            </p>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </section>
 
-         <section className="w-full py-12 bg-secondary/30 lg:hidden">
+         <section className="w-full py-12 bg-background">
             <div className="container px-2 md:px-6 text-center">
-                 {isMobile ? (
-                    <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
-                        Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} period={1500} />
-                    </h2>
-                 ) : (
-                    <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">
-                        Meet More Standards. <br/>More Compliance. <br/>More Consistency.
-                    </h2>
-                 )}
-                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
-                    Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
-                </p>
+                 <h2 className="text-4xl font-bold tracking-tighter font-headline text-primary">
+                    Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
+                </h2>
             </div>
         </section>
 
-        <section className="w-full py-16">
+        <section className="w-full pb-16 pt-8">
             <div className="container px-2 md:px-6">
-                 <div className="max-w-4xl mx-auto">
+                 <div className="max-w-4xl mx-auto p-8 bg-secondary/30 rounded-2xl">
                     <p className="text-center text-lg md:text-xl text-muted-foreground italic">
                         Running a business means you can't be everywhere at once. MoreMeets gives your team the expert-built, step-by-step instructions you need to ensure critical tasks are done right, every single time. We don't sell software; we sell the proven system for consistency and safety.
                     </p>
