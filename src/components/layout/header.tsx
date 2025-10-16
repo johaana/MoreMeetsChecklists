@@ -14,11 +14,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const mainNavLinks = [
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
-];
-
 const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
         acc[pack.category] = [];
@@ -143,17 +138,8 @@ export function SiteHeader() {
                                 </div>
                             )}
                         </div>
-
-                        {mainNavLinks.map(link => (
-                             <Link 
-                                key={link.href} 
-                                href={link.href} 
-                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                                prefetch={false}
-                             >
-                                {link.label}
-                            </Link>
-                        ))}
+                        <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>Blog</Link>
+                        <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>Contact</Link>
                     </>
                 )}
                  {isSalesPage && (
@@ -227,16 +213,12 @@ export function SiteHeader() {
                                         </AccordionItem>
                                     </Accordion>
                                     
-                                    {mainNavLinks.map(link => (
-                                        <Link
-                                            key={link.href}
-                                            href={link.href}
-                                            className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-                                            prefetch={false}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    ))}
+                                    <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
+                                        Blog
+                                    </Link>
+                                    <Link href="/contact" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
+                                        Contact
+                                    </Link>
                                 </>
                                 )}
                             </div>
@@ -247,3 +229,5 @@ export function SiteHeader() {
         </header>
     );
 }
+
+    
