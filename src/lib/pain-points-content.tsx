@@ -58,12 +58,12 @@ export const painPointsContent = {
         ]
     },
     film_production_pack: {
-        title: "The Business Case for Professional Film & OTT Production",
+        title: "From Costly Errors to Creative Control: A Blueprint for Modern Production",
         points: [
-            { icon: <FileLock />, title: "Prevent Costly Legal & Compliance Disasters", description: "A $2M film was halted for failing to secure life rights. Our pre-production checklists ensure all clearances (E&O, copyright, life rights) are secured before you spend, preventing catastrophic losses." },
-            { icon: <Shield />, title: "Ensure On-Set Safety & Avoid Liability", description: "Accidents on set can be career-ending. Our checklists for equipment handling, stunt coordination, and on-set EHS create a safer working environment and a clear audit trail of due diligence." },
-            { icon: <TrendingUp />, title: "Eliminate Expensive Post-Production Errors", description: "Standardize your entire workflow—from daily call sheets and data management to post-production handovers—to prevent miscommunication, lost footage, and expensive rework." },
-            { icon: <Video />, title: "Guarantee Technical Quality for Global Distribution", description: "Ensure your final product meets global distribution standards (SMPTE, DCP) with checklists for equipment checks, data management, and final QC, preventing costly rejections from distributors." }
+            { icon: <Siren />, title: "The On-Set Electrocution (Hyderabad)", description: "A crew member was fatally electrocuted handling lighting on an outdoor shoot. Our 'Pre-Shoot Electrical & Set Safety' checklist, requiring grounding tests and safety officer sign-offs, prevents this." },
+            { icon: <HeartPulse />, title: "The Uninsured Stunt Injury", description: "A stunt double's spinal injury led to a massive lawsuit because the production lacked specific accident insurance. Our 'Stunt & Risk Scene Safety' SOP mandates insurance validation and on-site medical readiness." },
+            { icon: <FileLock />, title: "The OTT Script Leak", description: "A major series script was leaked from a freelancer's unsecured cloud folder. Our 'Data Security & NDA Compliance' SOP enforces secure sharing protocols and role-based access to protect your IP." },
+            { icon: <Bug />, title: "The ₹50 Lakh Vendor Overbilling", description: "A production was overbilled due to duplicate invoices. Our 'Vendor Billing & Audit' SOP implements a three-way match (Invoice vs. PO vs. GRN) to stop financial leakage." }
         ]
     },
     ott_platform_pack: {
@@ -85,13 +85,14 @@ export const painPointsContent = {
         ]
     },
     sports_clubs_facilities_pack: {
-        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent",
+        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent in Sports",
         points: [
-            { icon: <Siren />, title: "The Unlocked Treadmill Tragedy (Bengaluru)", description: "A treadmill accelerated suddenly, injuring a member. Investigation revealed a three-month service lapse. Our 'Daily Equipment Inspection' checklist prevents this." },
-            { icon: <HeartPulse />, title: "The Locker Room Slip & Fall Lawsuit", description: "A member fractured her wrist on a wet floor with no signage, leading to a negligence lawsuit. Our 'Housekeeping & Safety' protocol mandates signage and verification." },
-            { icon: <Wind />, title: "The London Gym Ceiling Collapse", description: "A ceiling weakened by an unreported HVAC leak collapsed during a class, hospitalizing three. Our 'Facility Maintenance' checklist forces proactive structural and system checks." },
-            { icon: <Shield />, title: "The Dubai Sauna Explosion", description: "A blocked pressure valve in a sauna caused an explosion, injuring a guest. Our 'High-Risk Equipment' checklist ensures weekly checks of all critical safety components." }
+            { icon: <Siren />, title: "The Kerala Stadium Stampede", description: "Poor entry/exit flow and no emergency plan led to a fatal stampede. Our 'Crowd Control & Entry Management SOP' with pre-event capacity verification and evacuation drills prevents this." },
+            { icon: <HeartPulse />, title: "The Athlete Collapse from Heatstroke", description: "A teenage athlete collapsed with no on-site medical team. Our 'Medical & Emergency Response SOP' mandates certified first-aiders, hydration monitoring, and ambulance readiness checks." },
+            { icon: <FileLock />, title: "The Fake Ticket Scandal (Bengaluru)", description: "Chaos erupted at a cricket match due to fake QR code tickets. Our 'Digital Ticketing & Entry Validation SOP' uses real-time scanning and partner sync to eliminate this fraud." },
+            { icon: <Wind />, title: "The Monsoon Flooding Disaster (Delhi)", description: "A basement gym's equipment worth ₹25 lakh was destroyed by flooding due to poor drainage. Our 'Facility Maintenance & Seasonal Prep SOP' includes mandatory checks for drainage, sumps, and waterproofing." }
         ]
+
     },
     fitness_centers_gyms_pack: {
         title: "The Business Case for a Safer, More Profitable Fitness Center",
