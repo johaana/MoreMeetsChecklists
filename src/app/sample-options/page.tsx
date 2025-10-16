@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { ArrowLeft, Check, Download, Eye, FileText, AlertTriangle, Shield, HeartPulse } from 'lucide-react';
 import React from 'react';
-import { SiteHeader } from '@/components/ui/header';
+import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import {
   AlertDialog,
