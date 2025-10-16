@@ -22,6 +22,7 @@ const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
 
+const allIndividualChecklists = individualChecklists;
 
 export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
@@ -92,7 +93,7 @@ export function SiteHeader() {
                                                     <div className="md:w-1/4 space-y-4 pr-6 border-r">
                                                         <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
                                                         <ul className="space-y-1">
-                                                            {individualChecklists.map(checklist => (
+                                                            {allIndividualChecklists.map(checklist => (
                                                                 <li key={checklist.id}>
                                                                     <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
                                                                         <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
@@ -229,5 +230,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
-    
