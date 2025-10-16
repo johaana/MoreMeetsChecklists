@@ -269,7 +269,7 @@ export default function Page({ params }: { params: { id: string } }) {
                         <Card key={index} className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
                            <CardHeader className="flex flex-row items-center gap-4 bg-muted/30 p-4">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                                   <FileCheck2 className="w-6 h-6 text-primary" />
+                                   {React.cloneElement(checklist.icon, { className: "w-6 h-6 text-primary" })}
                                 </div>
                                 <div>
                                     <CardTitle>{checklist.title}</CardTitle>
@@ -300,3 +300,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+  

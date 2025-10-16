@@ -1,5 +1,6 @@
 
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, Spray, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, Brain, BriefcaseBusiness, ShieldCheck } from "lucide-react";
+
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Pallet, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Mask, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, Brain, BriefcaseBusiness, ShieldCheck } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -7,6 +8,7 @@ export type Checklist = {
     frequency: string;
     role: string;
     summary: string;
+    icon: React.ReactElement;
     tasks: {
         id: string;
         description: string;
@@ -85,10 +87,11 @@ export const premiumPacks: PremiumPack[] = [
         },
         checklists: [
             {
-                title: "🏨 Hotel Pre-Opening Checklist",
+                title: "Hotel Pre-Opening Checklist",
                 department: "Management",
                 frequency: "Project-Based",
                 role: "General Manager",
+                icon: <Milestone />,
                 summary: "Launch your new property flawlessly. This master plan covers everything from construction handover and licensing to staff recruitment and launch marketing, ensuring a successful opening day.",
                 tasks: [
                     { id: 'PRE-OPEN-01', description: "Secure all necessary operational licenses and permits (food, liquor, building, fire).", priority: 'High', riskLevel: 'High', proof: 'License Certificates', location: 'Admin Office' },
@@ -104,10 +107,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📊 Annual Budgeting & Forecasting",
+                title: "Annual Budgeting & Forecasting",
                 department: "Finance",
                 frequency: "Annually/Quarterly",
                 role: "Financial Controller",
+                icon: <BarChart3 />,
                 summary: "Drive profitability with a strategic framework for preparing the hotel's annual budget, focusing on accurate revenue forecasting, departmental cost control, and smart CAPEX planning.",
                 tasks: [
                     { id: 'FIN-BUD-01', description: "Analyze previous year's performance and market trends to establish revenue targets.", priority: 'High', riskLevel: 'High', proof: 'Analysis Report', location: 'Finance Office' },
@@ -123,10 +127,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📈 Monthly P&L Review & Cost Control",
+                title: "Monthly P&L Review & Cost Control",
                 department: "Management",
                 frequency: "Monthly",
                 role: "General Manager",
+                icon: <DollarSign />,
                 summary: "Turn financial data into action. This structured meeting agenda helps you review performance against budget, analyze variances, and implement effective cost-saving measures with your HODs.",
                 tasks: [
                     { id: 'FIN-PNL-01', description: "Distribute departmental P&L statements to all HODs 3 days before the meeting.", priority: 'High', riskLevel: 'Medium', proof: 'Email Log', location: 'Finance Office' },
@@ -142,10 +147,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "⭐ Brand Standards & Guest Experience Audit",
+                title: "Brand Standards & Guest Experience Audit",
                 department: "Quality/Management",
                 frequency: "Quarterly",
                 role: "Quality Manager",
+                icon: <Trophy />,
                 summary: "Protect your brand's reputation with a rigorous internal audit. Ensure every guest touchpoint meets the highest standards for service, cleanliness, and experience.",
                 tasks: [
                     { id: 'BRAND-01', description: "Audit the check-in process against brand standards for greeting, speed, and efficiency.", priority: 'High', riskLevel: 'Medium', proof: 'Audit Scorecard', location: 'Front Desk' },
@@ -161,10 +167,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧑‍🏫 New Hire Onboarding & Training Plan",
+                title: "New Hire Onboarding & Training Plan",
                 department: "HR",
                 frequency: "Per New Hire",
                 role: "HR Manager",
+                icon: <UserCheck />,
                 summary: "Integrate new employees effectively. This 30-day plan ensures new hires are properly onboarded, trained, and aligned with your hotel's culture and operational standards from day one.",
                 tasks: [
                     { id: 'HR-ONBOARD-01', description: "Day 1: Conduct company orientation, issue handbook, and complete all legal paperwork.", priority: 'High', riskLevel: 'Medium', proof: 'Onboarding Checklist', location: 'HR Office' },
@@ -180,10 +187,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "👔 Managerial Performance Review",
+                title: "Managerial Performance Review",
                 department: "HR/Management",
                 frequency: "Quarterly/Annually",
                 role: "General Manager",
+                icon: <BriefcaseBusiness />,
                 summary: "Develop stronger leaders with a framework for fair and effective performance reviews, focusing on measurable KPIs, leadership skills, and clear goal setting.",
                 tasks: [
                     { id: 'HR-PERF-001', description: "Review the manager's performance against their pre-set KPIs (e.g., departmental profit, guest satisfaction scores, employee turnover).", priority: 'High', riskLevel: 'Medium', proof: 'KPI Dashboard', location: 'Office' },
@@ -199,10 +207,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🗣️ Online Review & Reputation Management",
+                title: "Online Review & Reputation Management",
                 department: "Marketing/Guest Relations",
                 frequency: "Daily",
                 role: "Marketing Manager",
+                icon: <Megaphone />,
                 summary: "Take control of your online brand. This daily protocol helps you monitor, manage, and respond to reviews across all platforms, protecting your reputation and driving bookings.",
                 tasks: [
                     { id: 'ORM-001', description: "Monitor all major review platforms (TripAdvisor, Google Reviews, OTAs) for new reviews.", priority: 'High', riskLevel: 'Medium', proof: 'Monitoring Tool Screenshot', location: 'Office' },
@@ -218,10 +227,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🐜 Pest Control Management",
+                title: "Pest Control Management",
                 department: "Housekeeping/Maintenance",
                 frequency: "Weekly",
                 role: "Housekeeping Manager",
+                icon: <Bug />,
                 summary: "Protect your guests and your reputation with a proactive checklist for preventing and managing pest infestations, crucial for health standards and guest satisfaction.",
                 tasks: [
                     { id: 'PEST-001', description: "Inspect F&B outlets, kitchens, and garbage areas for signs of pest activity (droppings, gnaw marks).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Back of House' },
@@ -268,10 +278,11 @@ export const premiumPacks: PremiumPack[] = [
         },
         checklists: [
             {
-                title: "📍 New Site/Location Feasibility Study",
+                title: "New Site/Location Feasibility Study",
                 department: "Management/Strategy",
                 frequency: "Per Potential Site",
                 role: "Owner/Director",
+                icon: <Milestone />,
                 summary: "De-risk expansion with a structured framework for selecting a new location, ensuring it aligns with your brand, operational needs, and financial goals.",
                 tasks: [
                     { id: 'FEAS-001', description: "Conduct a demographic analysis of the target area (e.g., population density, average income).", priority: 'High', riskLevel: 'High', proof: 'Demographic Report', location: 'Office' },
@@ -287,10 +298,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📅 Weekly Sales & Revenue Meeting Agenda",
+                title: "Weekly Sales & Revenue Meeting Agenda",
                 department: "Management",
                 frequency: "Weekly",
                 role: "Restaurant Manager",
+                icon: <BarChart3 />,
                 summary: "Run effective weekly sales meetings that go beyond numbers. Analyze data, recognize top performers, and create actionable plans to boost revenue.",
                 tasks: [
                     { id: 'REST-MEETING-01', description: "Review previous week's sales performance against target (by day, by meal period).", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Agenda', location: 'Meeting Room' },
@@ -306,10 +318,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🍳 Kitchen Opening Checklist (HACCP Focus)",
+                title: "Kitchen Opening Checklist (HACCP Focus)",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Head Chef",
+                icon: <ShieldCheck />,
                 summary: "Prevent food safety violations and ensure a perfect start every day with this HACCP-aligned checklist for temperature, sanitation, and equipment readiness.",
                 tasks: [
                     { id: 'CK-KO-001', description: "Verify all surfaces (prep tables, cutting boards) are sanitized.", priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Kitchen' },
@@ -325,10 +338,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📦 Food Receiving & Storage Protocol",
+                title: "Food Receiving & Storage Protocol",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Store Keeper",
+                icon: <PackageCheck />,
                 summary: "Secure the first critical control point in food safety. This checklist guarantees quality by managing temperature checks, quality inspection, and FIFO storage for all incoming goods.",
                 tasks: [
                     { id: 'CK-FRS-001', description: "Check temperature of refrigerated/frozen delivery truck upon arrival.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
@@ -344,10 +358,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🌡️ Daily HACCP & Line Check",
+                title: "Daily HACCP & Line Check",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Sous Chef",
+                icon: <Thermometer />,
                 summary: "Maintain impeccable food safety during service. This ongoing check ensures correct holding temperatures, prevents cross-contamination, and reinforces staff hygiene on the line.",
                 tasks: [
                     { id: 'CK-HLC-001', description: "Check and log temperatures of all hot and cold holding units on the line every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Line Check Log', location: 'Service Line' },
@@ -363,10 +378,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧽 Kitchen Closing & Cleaning Checklist",
+                title: "Kitchen Closing & Cleaning Checklist",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Closing Chef",
+                icon: <SprayCan />,
                 summary: "Ensure a safe, sanitary, and efficient start for the next day. This detailed protocol covers food storage, equipment shutdown, surface sanitization, and waste disposal.",
                 tasks: [
                     { id: 'CK-KCC-001', description: "Properly cool, cover, label, and store all leftover food.", priority: 'High', riskLevel: 'High', proof: 'Storage Log', location: 'Kitchen' },
@@ -382,10 +398,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🍽️ Front of House Opening Checklist",
+                title: "Front of House Opening Checklist",
                 department: "F&B",
                 frequency: "Daily",
                 role: "Restaurant Manager",
+                icon: <DoorClosed />,
                 summary: "Create a perfect first impression. This checklist ensures your dining area is immaculate, correctly set, and has a welcoming ambiance before the first guest arrives.",
                 tasks: [
                     { id: 'FOH-O-001', description: "Check cleanliness of dining room, tables, chairs, and floors.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Dining Room' },
@@ -401,10 +418,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🐜 Pest Control Management",
+                title: "Pest Control Management",
                 department: "Maintenance",
                 frequency: "Weekly",
                 role: "Manager",
+                icon: <Bug />,
                 summary: "Protect your reputation and prevent health code violations with a proactive system for managing pests in a demanding F&B environment.",
                 tasks: [
                     { id: 'PEST-REST-001', description: "Inspect kitchen, storage, and dining areas for signs of pest activity (droppings, gnaw marks).", priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'Entire Restaurant' },
@@ -416,7 +434,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-REST-007', description: "Check for any standing water inside or outside the restaurant.", priority: 'High', riskLevel: 'Medium', proof: 'Water Source Inspection', location: 'Entire Premises' },
                     { id: 'PEST-REST-008', description: "Train staff on pest awareness and reporting procedures.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Area' },
                     { id: 'PEST-REST-009', description: "Keep doors and windows closed when not in use.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Entire Restaurant' },
-                    { id: 'PEST-REST-010', description: "Maintain a pest sighting log and review it weekly.", priority: 'High', riskLevel: 'Medium', proof: 'Pest Sighting Log', location: 'Manager Office' }
+                    { id: 'PEST-REST-10', description: "Maintain a pest sighting log and review it weekly.", priority: 'High', riskLevel: 'Medium', proof: 'Pest Sighting Log', location: 'Manager Office' }
                 ]
             }
         ]
@@ -442,10 +460,11 @@ export const premiumPacks: PremiumPack[] = [
         ],
         checklists: [
             {
-                title: "🔒 End-of-Day Store Closure & Security",
+                title: "End-of-Day Store Closure & Security",
                 department: "Security/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
+                icon: <Shield />,
                 summary: "Establish an ironclad routine to secure your high-value store. This rigorous protocol prevents theft and guarantees staff safety from open to close.",
                 tasks: [
                     { id: 'LUX-SEC-01', description: "Test all alarm systems (panic buttons, door sensors) before final exit.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Store' },
@@ -461,10 +480,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💎 Vault Access Control",
+                title: "Vault Access Control",
                 department: "Inventory/Security",
                 frequency: "Daily",
                 role: "Inventory Manager",
+                icon: <Lock />,
                 summary: "Protect your most valuable assets from internal and external threats. This precise checklist tracks every high-value item with two-person sign-offs and daily counts to eliminate loss.",
                 tasks: [
                     { id: 'LUX-INV-01', description: "Conduct a daily count of all items in the vault and high-security display cases.", priority: 'High', riskLevel: 'High', proof: 'Daily Count Sheet', location: 'Vault/Sales Floor' },
@@ -480,10 +500,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "✍️ Sales & Return Authorization",
+                title: "Sales & Return Authorization",
                 department: "Sales/Operations",
                 frequency: "Per Transaction",
                 role: "Store Manager",
+                icon: <Banknote />,
                 summary: "Prevent internal fraud and ensure every transaction is legitimate. This SOP requires dual approval for high-value refunds and creates a clear audit trail for all returns.",
                 tasks: [
                     { id: 'LUX-RET-01', description: "Require manager approval (dual sign-off) for any refund or exchange above a set value (e.g., ₹10,000).", priority: 'High', riskLevel: 'High', proof: 'Signed Refund Form', location: 'POS' },
@@ -499,10 +520,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💳 Digital Transaction Security",
+                title: "Digital Transaction Security",
                 department: "IT/Operations",
                 frequency: "Daily",
                 role: "Cashier/Manager",
+                icon: <ShieldCheck />,
                 summary: "Protect your business and customers from modern payment fraud. This checklist ensures the integrity of your digital payment systems, from QR codes to POS terminals.",
                 tasks: [
                     { id: 'LUX-PAY-01', description: "Visually inspect QR codes and payment terminals for any signs of tampering or overlays at the start of each day.", priority: 'High', riskLevel: 'High', proof: 'Daily Inspection Log', location: 'POS' },
@@ -518,10 +540,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🤝 High-Value Exchange & Handling SOP",
+                title: "High-Value Exchange & Handling SOP",
                 department: "Sales/Security",
                 frequency: "Per Exchange",
                 role: "Senior Sales Executive",
+                icon: <Gem />,
                 summary: "Prevent mishandling and fraud during high-value exchanges with a strict, dual-verification protocol that protects both the customer and the brand.",
                 tasks: [
                     { id: 'LUX-EXCH-01', description: "Conduct all high-value exchanges in a dedicated, CCTV-monitored area.", priority: 'High', riskLevel: 'High', proof: 'CCTV Footage', location: 'Exchange Counter' },
@@ -537,10 +560,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔥 Fire & Electrical Safety Audit Checklist",
+                title: "Fire & Electrical Safety Audit Checklist",
                 department: "Safety/Facilities",
                 frequency: "Monthly",
                 role: "Safety Officer",
+                icon: <Siren />,
                 summary: "Mitigate fire risks in a luxury environment where high-powered lighting and electronics are common. This checklist ensures compliance with fire safety regulations.",
                 tasks: [
                     { id: 'LUX-FIRE-01', description: "Inspect all fire extinguishers for expiry date, pressure, and accessibility.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Inspection Log', location: 'Store-wide' },
@@ -556,10 +580,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "⚖️ POSH & Professional Conduct SOP",
+                title: "POSH & Professional Conduct SOP",
                 department: "HR",
                 frequency: "Annually",
                 role: "HR Manager",
+                icon: <Users />,
                 summary: "Foster a respectful and professional environment. This SOP outlines the process for Prevention of Sexual Harassment (POSH) compliance and professional conduct.",
                 tasks: [
                     { id: 'LUX-POSH-01', description: "Ensure the company's POSH policy is displayed and accessible to all employees.", priority: 'High', riskLevel: 'High', proof: 'Policy Display Check', location: 'Staff Area' },
@@ -575,10 +600,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💠 Jewelry Certification & Documentation SOP",
+                title: "Jewelry Certification & Documentation SOP",
                 department: "Sales/Quality",
                 frequency: "Per Sale",
                 role: "Sales Associate",
+                icon: <FileCheck />,
                 summary: "Build customer trust and prevent disputes by ensuring every piece of certified jewelry is sold with the correct, verified documentation (e.g., GIA, IGI).",
                 tasks: [
                     { id: 'LUX-CERT-01', description: "Before completing a sale, match the serial number on the jewelry with the certificate number.", priority: 'High', riskLevel: 'High', proof: 'Physical Match Verification', location: 'POS' },
@@ -615,10 +641,11 @@ export const premiumPacks: PremiumPack[] = [
         ],
         checklists: [
             {
-                title: "👕 Store Opening & Daily Readiness",
+                title: "Store Opening & Daily Readiness",
                 department: "Operations",
                 frequency: "Daily",
                 role: "Store Manager",
+                icon: <Key />,
                 summary: "Set the stage for a successful sales day. This morning checklist ensures your store is perfectly presented, stocked, and ready for customers the moment your doors open.",
                 tasks: [
                     { id: 'FAS-OPEN-01', description: "Ensure all mannequins are dressed according to the current VM guide and are clean.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
@@ -634,10 +661,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📦 Seasonal Inventory Management",
+                title: "Seasonal Inventory Management",
                 department: "Inventory",
                 frequency: "Weekly",
                 role: "Merchandiser/Manager",
+                icon: <Thermometer />,
                 summary: "Maximize profitability by mastering the fashion cycle. This checklist helps you manage the transition between seasons, optimizing sell-through and avoiding costly end-of-season write-offs.",
                 tasks: [
                     { id: 'FAS-INV-01', description: "Review sales data to identify fast and slow-moving items from the current season.", priority: 'High', riskLevel: 'High', proof: 'Sales Report', location: 'Office' },
@@ -653,10 +681,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "✨ Visual Merchandising & Window Display",
+                title: "Visual Merchandising & Window Display",
                 department: "Merchandising",
                 frequency: "Weekly",
                 role: "Visual Merchandiser",
+                icon: <GalleryVertical />,
                 summary: "Create displays that stop traffic and tell a story. This creative and operational checklist ensures your window and in-store displays are compelling, fresh, and on-brand.",
                 tasks: [
                     { id: 'FAS-VM-01', description: "Rotate the main window display according to the marketing calendar.", priority: 'High', riskLevel: 'Medium', proof: 'Photo of Display', location: 'Window' },
@@ -672,10 +701,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔒 Fitting Room Operations & Security",
+                title: "Fitting Room Operations & Security",
                 department: "Sales/Security",
                 frequency: "Ongoing",
                 role: "Sales Associate",
+                icon: <DoorClosed />,
                 summary: "Turn your fitting rooms into a high-conversion sales tool, not a shrinkage hotspot. This protocol helps you provide excellent customer service while implementing key security measures to prevent theft.",
                 tasks: [
                     { id: 'FAS-FIT-01', description: "Log the number of items a customer takes into a fitting room.", priority: 'High', riskLevel: 'High', proof: 'Fitting Room Log/Tags', location: 'Fitting Room Entrance' },
@@ -691,10 +721,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔄 Omni-Channel Operations",
+                title: "Omni-Channel Operations",
                 department: "Operations",
                 frequency: "Daily",
                 role: "Omni-Channel Lead",
+                icon: <Link />,
                 summary: "Create a seamless bridge between your online and physical stores. This checklist standardizes 'Click and Collect', in-store returns, and inventory syncing for a frustration-free customer experience.",
                 tasks: [
                     { id: 'FAS-OMNI-01', description: "Check for new 'Click and Collect' orders every hour.", priority: 'High', riskLevel: 'Medium', proof: 'Order System Log', location: 'System' },
@@ -710,10 +741,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🛡️ Store Safety & Loss Prevention",
+                title: "Store Safety & Loss Prevention",
                 department: "Security/Operations",
                 frequency: "Daily",
                 role: "Store Manager",
+                icon: <Shield />,
                 summary: "Protect your assets and ensure a safe shopping environment. This checklist covers daily security measures, from CCTV checks to managing EAS systems.",
                 tasks: [
                     { id: 'FAS-SEC-01', description: "Verify all CCTV cameras are operational and have clear views of entrances, POS, and high-value areas.", priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
@@ -729,10 +761,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💰 Cash & Payment Handling",
+                title: "Cash & Payment Handling",
                 department: "Finance/Operations",
                 frequency: "Per Shift",
                 role: "Head Cashier",
+                icon: <DollarSign />,
                 summary: "Secure your revenue with a strict protocol for cash handling, POS operations, and end-of-day reconciliation to prevent fraud and errors.",
                 tasks: [
                     { id: 'FAS-CASH-01', description: "Verify cash float at the beginning of each shift.", priority: 'High', riskLevel: 'High', proof: 'Float Count Sheet', location: 'Cash Office' },
@@ -769,10 +802,11 @@ export const premiumPacks: PremiumPack[] = [
         ],
         checklists: [
             {
-                title: "🧯 Fire & Electrical Safety",
+                title: "Fire & Electrical Safety",
                 department: "Safety/Maintenance",
                 frequency: "Weekly",
                 role: "Safety Officer",
+                icon: <Siren />,
                 summary: "A critical checklist to prevent fire incidents in a high-traffic retail environment. Covers electrical load audits, fire equipment readiness, and emergency exit verification to ensure staff and customer safety.",
                 tasks: [
                     { id: 'SGR-FES-01', description: "Inspect all fire extinguishers for correct pressure, accessibility, and valid inspection tags.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Log', location: 'Store-wide' },
@@ -788,10 +822,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🥶 Cold Storage & Food Safety",
+                title: "Cold Storage & Food Safety",
                 department: "Fresh Food/Dairy",
                 frequency: "Hourly/Daily",
                 role: "Department Manager",
+                icon: <Thermometer />,
                 summary: "Prevent spoilage and ensure FSSAI/HACCP compliance with this essential checklist for all refrigerated and frozen units. It includes temperature monitoring, alarm testing, and FIFO rotation protocols.",
                 tasks: [
                     { id: 'SGR-CSFS-01', description: "Log temperatures of all chillers, freezers, and cold rooms every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log Sheet/Digital Record', location: 'All Cold Units' },
@@ -807,10 +842,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧹 Store Hygiene & Housekeeping",
+                title: "Store Hygiene & Housekeeping",
                 department: "Operations/Facilities",
                 frequency: "Hourly/Daily",
                 role: "Floor Supervisor",
+                icon: <SprayCan />,
                 summary: "Maintain a safe, clean, and welcoming environment for customers. This checklist covers everything from spill response and floor cleaning to restroom sanitation and trolley maintenance.",
                 tasks: [
                     { id: 'SGR-SHH-01', description: "Conduct hourly floor walks to check for spills, debris, or any slip-and-fall hazards.", priority: 'High', riskLevel: 'High', proof: 'Floor Walk Log', location: 'Sales Floor' },
@@ -826,10 +862,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💰 Cash Handling & POS Security",
+                title: "Cash Handling & POS Security",
                 department: "Finance/Front-End",
                 frequency: "Per Shift",
                 role: "Head Cashier",
+                icon: <Banknote />,
                 summary: "Prevent theft and ensure accuracy at your most critical transaction point. This SOP covers cash reconciliation, POS audits, and manager approvals to secure your revenue.",
                 tasks: [
                     { id: 'SGR-CHPS-01', description: "Verify and sign for the cash float at the start of each shift.", priority: 'High', riskLevel: 'High', proof: 'Float Log', location: 'Cash Office' },
@@ -845,10 +882,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📦 Inventory, Expiry & Replenishment",
+                title: "Inventory, Expiry & Replenishment",
                 department: "Inventory/Floor Staff",
                 frequency: "Daily/Weekly",
                 role: "Inventory Manager",
+                icon: <Recycle />,
                 summary: "Optimize stock levels and prevent wastage with a rigorous SOP for inventory management. This checklist ensures FIFO compliance, timely replenishment, and accurate expiry tracking to protect margins.",
                 tasks: [
                     { id: 'SGR-IER-01', description: "Perform daily checks in the fresh food department for items nearing their expiry date.", priority: 'High', riskLevel: 'High', proof: 'Expiry Check Log', location: 'Fresh Food Section' },
@@ -864,10 +902,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "⚖️ Legal & Metrology Compliance",
+                title: "Legal & Metrology Compliance",
                 department: "Compliance/Legal",
                 frequency: "Monthly/Quarterly",
                 role: "Compliance Officer",
+                icon: <FileCheck />,
                 summary: "Ensure full compliance with all local laws, from FSSAI licensing to Legal Metrology for weights and measures. This checklist helps avoid fines and builds a foundation of legal integrity.",
                 tasks: [
                     { id: 'SGR-LMC-01', description: "Verify that the store's FSSAI license is current and prominently displayed.", priority: 'High', riskLevel: 'High', proof: 'License Display Photo', location: 'Entrance' },
@@ -883,10 +922,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔒 Security & Loss Prevention",
+                title: "Security & Loss Prevention",
                 department: "Security",
                 frequency: "Daily",
                 role: "Loss Prevention Officer",
+                icon: <Lock />,
                 summary: "Protect your assets and profits with a multi-layered security approach. This checklist covers everything from CCTV audits and access control to managing shrinkage from receiving to checkout.",
                 tasks: [
                     { id: 'SGR-SLP-01', description: "Conduct a daily audit of all CCTV cameras to ensure they are recording and have clear, unobstructed views.", priority: 'High', riskLevel: 'High', proof: 'CCTV Audit Log', location: 'Security Room' },
@@ -902,10 +942,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧑‍🍳 In-Store Food Outlet Management",
+                title: "In-Store Food Outlet Management",
                 department: "F&B/Operations",
                 frequency: "Daily",
                 role: "Food Court Manager",
+                icon: <CakeSlice />,
                 summary: "Manage the unique risks of in-store food courts or bakeries. This checklist ensures third-party vendors and internal food outlets adhere to strict hygiene, safety, and FSSAI standards.",
                 tasks: [
                     { id: 'SGR-IFO-01', description: "Verify FSSAI licenses for all food vendors are valid and displayed.", priority: 'High', riskLevel: 'High', proof: 'License Check Log', location: 'Food Court' },
@@ -946,6 +987,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Operations",
                 frequency: "Daily",
                 role: "Store Manager",
+                icon: <Store />,
                 summary: "Ensure smooth, secure, and compliant daily store operations with core checklists for readiness, security, and system checks.",
                 tasks: [
                     { id: 'ELEC-OPEN-01', description: "Verify store cleanliness, lighting, HVAC systems are optimal.", priority: 'High', riskLevel: 'Medium', proof: 'Opening Log', location: 'Store-wide' },
@@ -965,6 +1007,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Inventory",
                 frequency: "Daily/Weekly",
                 role: "Inventory Manager",
+                icon: <PackageCheck />,
                 summary: "Achieve precise inventory control. This checklist helps you maintain optimal stock levels, prevent shrinkage through daily cycle counts, and ensure data accuracy.",
                 tasks: [
                     { id: 'ELEC-INV-01', description: "Conduct daily cycle counts on high-value items.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheet', location: 'Warehouse/Sales Floor' },
@@ -984,6 +1027,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Merchandising",
                 frequency: "Daily",
                 role: "Visual Merchandiser",
+                icon: <GalleryVertical />,
                 summary: "Create a compelling and consistent brand presentation. This checklist ensures all demo units are functional, displays are perfect, and pricing is accurate.",
                 tasks: [
                     { id: 'ELEC-VM-01', description: "Verify planogram adherence for all brands.", priority: 'High', riskLevel: 'Medium', proof: 'Planogram Compliance Photo', location: 'Sales Floor' },
@@ -1003,6 +1047,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Finance",
                 frequency: "Per Shift",
                 role: "Head Cashier",
+                icon: <Banknote />,
                 summary: "Safeguard your revenue with secure and compliant payment operations. This protocol prevents fraud, ensures accurate reconciliation, and adheres to PCI DSS standards.",
                 tasks: [
                     { id: 'ELEC-CASH-01', description: "Calibrate POS and verify payment gateway functionality.", priority: 'High', riskLevel: 'High', proof: 'System Test Log', location: 'POS Terminal' },
@@ -1022,6 +1067,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Facilities/EHS",
                 frequency: "Weekly",
                 role: "Safety Officer",
+                icon: <HardHat />,
                 summary: "Create a safe and reliable environment for staff and customers. This checklist covers regular maintenance of electrical, fire, and safety systems to prevent accidents.",
                 tasks: [
                     { id: 'ELEC-SAFETY-01', description: "Inspect electrical fittings and display power points for signs of wear or damage.", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Report', location: 'Store-wide' },
@@ -1041,6 +1087,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Sales",
                 frequency: "Ongoing",
                 role: "Sales Manager",
+                icon: <UserCheck />,
                 summary: "Deliver a consistently excellent customer experience. These checklists ensure every interaction, from greeting to checkout, is professional, efficient, and brand-aligned.",
                 tasks: [
                     { id: 'ELEC-CUST-01', description: "Greet customers within 30 seconds of entry.", priority: 'High', riskLevel: 'Low', proof: 'Manager Observation', location: 'Entrance' },
@@ -1097,10 +1144,11 @@ export const premiumPacks: PremiumPack[] = [
         },
         checklists: [
              {
-                title: "🏢 Office Operations & Employee Experience",
+                title: "Office Operations & Employee Experience",
                 department: "Administration",
                 frequency: "Daily",
                 role: "Office Manager",
+                icon: <Briefcase />,
                 summary: "Ensure a seamless and productive work environment with daily checks for cleanliness, supplies, and front desk readiness.",
                 tasks: [
                     { id: 'ADMIN-OO-01', description: "Conduct a morning walkthrough to ensure office cleanliness and readiness.", priority: 'High', riskLevel: 'Medium', proof: 'Walkthrough Log', location: 'Entire Office' },
@@ -1111,10 +1159,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🤝 Front Desk & Visitor Management",
+                title: "Front Desk & Visitor Management",
                 department: "Administration/Security",
                 frequency: "Ongoing",
                 role: "Receptionist",
+                icon: <UserCog />,
                 summary: "Create a professional first impression and maintain security with a robust system for managing visitors, calls, and access.",
                 tasks: [
                     { id: 'ADMIN-FD-01', description: "Register all visitors and issue temporary access cards/badges.", priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Front Desk' },
@@ -1125,10 +1174,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔧 MEP & Preventive Maintenance",
+                title: "MEP & Preventive Maintenance",
                 department: "Facilities/Maintenance",
                 frequency: "Weekly/Monthly",
                 role: "Maintenance Supervisor",
+                icon: <Wrench />,
                 summary: "Prevent costly breakdowns and ensure business continuity with a proactive maintenance schedule for all critical Mechanical, Electrical, and Plumbing (MEP) systems.",
                 tasks: [
                     { id: 'ADMIN-MEP-01', description: "Perform weekly checks on HVAC systems, including filters and thermostat settings.", priority: 'High', riskLevel: 'High', proof: 'HVAC Log', location: 'MEP Rooms' },
@@ -1139,10 +1189,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔥 Fire & Life Safety Compliance",
+                title: "Fire & Life Safety Compliance",
                 department: "EHS/Security",
                 frequency: "Monthly",
                 role: "Safety Officer",
+                icon: <Siren />,
                 summary: "Ensure your facility is compliant with fire safety codes and prepared for any emergency with rigorous checks of all fire prevention and response systems.",
                 tasks: [
                     { id: 'ADMIN-FLS-01', description: "Inspect all fire extinguishers for expiry, pressure, and accessibility.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Log', location: 'Entire Office' },
@@ -1153,10 +1204,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
              {
-                title: "💡 Energy Management & Sustainability (ESG)",
+                title: "Energy Management & Sustainability (ESG)",
                 department: "Facilities",
                 frequency: "Monthly",
                 role: "Facility Manager",
+                icon: <Leaf />,
                 summary: "Reduce operational costs and improve your company's ESG score with a checklist focused on optimizing energy and water consumption and managing waste.",
                 tasks: [
                     { id: 'ADMIN-ESG-01', description: "Audit energy consumption data and identify areas for reduction.", priority: 'High', riskLevel: 'Medium', proof: 'Energy Audit Report', location: 'Office' },
@@ -1186,10 +1238,11 @@ export const premiumPacks: PremiumPack[] = [
         ],
         checklists: [
             {
-                title: "🧑‍💼 New Employee Onboarding (HR & Legal)",
+                title: "New Employee Onboarding (HR & Legal)",
                 department: "HR",
                 frequency: "Per Hire",
                 role: "HR Manager",
+                icon: <Briefcase />,
                 summary: "A legally-focused checklist to ensure every new hire is onboarded correctly, minimizing future compliance risks and employment disputes.",
                 tasks: [
                     { id: 'HR-ONBOARD-01', description: "Ensure signed offer letter and employment contract are on file before start date.", priority: 'High', riskLevel: 'High', proof: 'Signed Documents', location: 'Employee File' },
@@ -1200,10 +1253,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "✍️ Vendor Contract Review for Non-Lawyers",
+                title: "Vendor Contract Review for Non-Lawyers",
                 department: "Procurement/Any",
                 frequency: "Per Contract",
                 role: "Manager",
+                icon: <FileCheck />,
                 summary: "Empower your managers to spot critical risks in vendor agreements before they escalate to legal. This checklist covers key clauses like liability, termination, and data privacy.",
                 tasks: [
                     { id: 'LEGAL-VEND-01', description: "Identify the legal names of both parties. Are they correct?", priority: 'High', riskLevel: 'Medium', proof: 'Contract Draft', location: 'Contract' },
@@ -1214,10 +1268,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "⚖️ Employee Disciplinary Actions",
+                title: "Employee Disciplinary Actions",
                 department: "HR/Management",
                 frequency: "Per Incident",
                 role: "Manager/HR Head",
+                icon: <FileWarning />,
                 summary: "A step-by-step guide to conducting disciplinary actions in a fair, consistent, and legally defensible manner, from verbal warnings to Performance Improvement Plans (PIPs).",
                 tasks: [
                     { id: 'HR-DISC-01', description: "Document the specific, objective instances of underperformance or misconduct with dates, times, and measurable impact.", priority: 'High', riskLevel: 'High', proof: 'Incident Documentation', location: 'Manager File' },
@@ -1228,10 +1283,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🌐 Website Legal Health Check",
+                title: "Website Legal Health Check",
                 department: "Marketing/Legal",
                 frequency: "Quarterly",
                 role: "Marketing Manager",
+                icon: <HeartPulse />,
                 summary: "A quick audit to ensure your public-facing website meets basic legal requirements, helping you avoid data privacy fines and build user trust.",
                 tasks: [
                     { id: 'LEGAL-WEB-01', description: "Is your 'Privacy Policy' link clearly visible in the website footer?", priority: 'High', riskLevel: 'High', proof: 'Website Screenshot', location: 'Website' },
@@ -1261,10 +1317,11 @@ export const premiumPacks: PremiumPack[] = [
         ],
         checklists: [
             {
-                title: "🤖 AI Ethics & Governance Framework",
+                title: "AI Ethics & Governance Framework",
                 department: "Technology/Ethics",
                 frequency: "Per Model",
                 role: "AI Ethics Officer",
+                icon: <BrainCircuit />,
                 summary: "Build trust and mitigate risk in your AI systems. This checklist helps you assess models for bias, ensure transparency, and create a governance structure for responsible AI development.",
                 tasks: [
                     { id: 'AI-ETHICS-01', description: "Define and document the intended use case and potential societal impact of the AI model.", priority: 'High', riskLevel: 'High', proof: 'Impact Assessment Document', location: 'AI Governance File' },
@@ -1275,10 +1332,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔐 Data Privacy (GDPR/DPDP) Audit",
+                title: "Data Privacy (GDPR/DPDP) Audit",
                 department: "Compliance/Legal",
                 frequency: "Quarterly",
                 role: "Data Protection Officer (DPO)",
+                icon: <FileLock />,
                 summary: "Ensure your organization complies with global data privacy regulations. This checklist covers key requirements like maintaining a Record of Processing Activities (ROPA) and handling Data Subject Access Requests (DSARs).",
                 tasks: [
                     { id: 'PRIV-AUDIT-01', description: "Review and update the company's Record of Processing Activities (ROPA) to ensure it reflects all current data processing.", priority: 'High', riskLevel: 'High', proof: 'Updated ROPA Document', location: 'Compliance Office' },
@@ -1289,10 +1347,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "☁️ Cloud Security Posture Management",
+                title: "Cloud Security Posture Management",
                 department: "IT/Security",
                 frequency: "Weekly",
                 role: "Cloud Security Engineer",
+                icon: <DatabaseZap />,
                 summary: "Prevent misconfigurations, a leading cause of data breaches. This checklist helps you audit your cloud environment (AWS, Azure, GCP) for common security weaknesses.",
                 tasks: [
                     { id: 'CLOUD-SEC-01', description: "Scan for publicly exposed storage buckets (e.g., S3 buckets) or databases.", priority: 'High', riskLevel: 'High', proof: 'Cloud Security Scan Report', location: 'Security Dashboard' },
@@ -1303,10 +1362,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🚨 Cybersecurity Incident Response Plan",
+                title: "Cybersecurity Incident Response Plan",
                 department: "Security",
                 frequency: "Quarterly",
                 role: "CISO",
+                icon: <Siren />,
                 summary: "Prepare for the inevitable. This checklist provides a step-by-step framework for responding to a cyber attack, from initial detection to post-incident review, minimizing damage and recovery time.",
                 tasks: [
                     { id: 'CYBER-IR-01', description: "Conduct a quarterly tabletop exercise or drill to test the incident response plan with the core team.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Conference Room' },
@@ -1317,10 +1377,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "👋 Employee Offboarding & Access Control",
+                title: "Employee Offboarding & Access Control",
                 department: "HR/IT",
                 frequency: "Per Departure",
                 role: "IT Admin",
+                icon: <UserCog />,
                 summary: "Prevent departing employees from becoming your next data breach. This time-sensitive checklist ensures all physical and digital access is revoked immediately upon employee exit.",
                 tasks: [
                     { id: 'CYBER-AC-01', description: "Immediately disable all of the employee's system accounts (email, Slack, CRM, etc.) upon notification of termination.", priority: 'High', riskLevel: 'High', proof: 'Account Deactivation Log', location: 'IT Helpdesk' },
@@ -1353,10 +1414,11 @@ export const premiumPacks: PremiumPack[] = [
         ],
         checklists: [
              {
-                title: "⚕️ Surgical Safety Checklist (WHO)",
+                title: "Surgical Safety Checklist (WHO)",
                 department: "Surgery",
                 frequency: "Per Procedure",
                 role: "Circulating Nurse",
+                icon: <SyringeIcon />,
                 summary: "The foundational checklist to prevent wrong-site, wrong-patient, and wrong-procedure errors. Aligned with WHO, JCI, and NABH standards.",
                 tasks: [
                     { id: 'SURG-SS-01', description: "Sign In (Before Anesthesia): Confirm patient identity, site, procedure, and consent.", priority: 'High', riskLevel: 'High', proof: 'Signed Checklist', location: 'Operating Room' },
@@ -1367,10 +1429,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "💊 LASA Drug Management",
+                title: "LASA Drug Management",
                 department: "Pharmacy/Nursing",
                 frequency: "Daily/Per Dispensing",
                 role: "Pharmacist/Nurse",
+                icon: <Pill />,
                 summary: "Prevent medication errors with a strict protocol for managing Look-Alike, Sound-Alike (LASA) drugs, a major focus area for NABH and JCI.",
                 tasks: [
                     { id: 'LASA-01', description: "Store LASA drugs in separate, clearly labeled locations.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log', location: 'Pharmacy/Ward' },
@@ -1381,10 +1444,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
              {
-                title: "🔬 CSSD & Sterilization Protocol",
+                title: "CSSD & Sterilization Protocol",
                 department: "CSSD/Infection Control",
                 frequency: "Per Cycle",
                 role: "CSSD Technician",
+                icon: <Microscope />,
                 summary: "Ensure every surgical instrument is sterile and safe. This checklist covers the entire sterilization cycle, from decontamination to sterile storage, preventing hospital-acquired infections.",
                 tasks: [
                     { id: 'CSSD-01', description: "Perform daily check of sterilizer (autoclave) performance using biological and chemical indicators.", priority: 'High', riskLevel: 'High', proof: 'Sterilizer Log', location: 'CSSD' },
@@ -1395,10 +1459,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🚑 Emergency Room Triage & Patient Flow",
+                title: "Emergency Room Triage & Patient Flow",
                 department: "Emergency",
                 frequency: "Per Patient",
                 role: "Triage Nurse",
+                icon: <Ambulance />,
                 summary: "Manage chaos in the ER. This checklist provides a standardized triage system to quickly identify and prioritize critical patients, improving patient flow and outcomes.",
                 tasks: [
                     { id: 'ER-01', description: "Perform initial patient assessment within 5 minutes of arrival.", priority: 'High', riskLevel: 'High', proof: 'Triage Form', location: 'Triage Area' },
@@ -1409,10 +1474,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "⚠️ Patient Safety & Risk Management",
+                title: "Patient Safety & Risk Management",
                 department: "Quality",
                 frequency: "Monthly",
                 role: "Quality Manager",
+                icon: <ShieldCheck />,
                 summary: "A proactive framework for identifying and mitigating patient safety risks. This checklist helps you run an effective patient safety committee and manage incident reporting.",
                 tasks: [
                     { id: 'RISK-01', description: "Review all incident reports (falls, medication errors, etc.) from the previous month.", priority: 'High', riskLevel: 'High', proof: 'Incident Report Analysis', location: 'Quality Office' },
@@ -1423,10 +1489,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🆔 Patient Identification & Safety",
+                title: "Patient Identification & Safety",
                 department: "Nursing",
                 frequency: "Per Interaction",
                 role: "Nurse",
+                icon: <UserCheck />,
                 summary: "A critical checklist to ensure the right patient gets the right care every time, preventing errors in medication administration, transfusions, and procedures.",
                 tasks: [
                     { id: 'SAFE-ID-01', description: "Use at least two patient identifiers (e.g., name and MRN) before administering any medication or procedure.", priority: 'High', riskLevel: 'High', proof: 'Patient Chart Sign-off', location: 'Bedside' },
@@ -1437,10 +1504,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📋 Pre-Operative Patient Assessment",
+                title: "Pre-Operative Patient Assessment",
                 department: "Anesthesia/Surgery",
                 frequency: "Per Patient",
                 role: "Anesthesiologist",
+                icon: <Stethoscope />,
                 summary: "Ensure every patient is fully assessed and prepared for surgery. This checklist covers all critical checks from allergy verification to consent form review.",
                 tasks: [
                     { id: 'PRE-OP-01', description: "Review patient's medical history and current medications.", priority: 'High', riskLevel: 'High', proof: 'Patient File', location: 'Pre-op Area' },
@@ -1476,6 +1544,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy",
                 frequency: "Per Prescription",
                 role: "Pharmacist",
+                icon: <Syringe />,
                 summary: "Ensure the right patient gets the right drug at the right dose, every time. This is the core checklist for safe pharmacy operations.",
                 tasks: [
                     { id: 'DISPENSE-01', description: "Verify patient identity using two identifiers.", priority: 'High', riskLevel: 'High', proof: 'Patient Record', location: 'Dispensing Counter' },
@@ -1490,6 +1559,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy/Compliance",
                 frequency: "Daily",
                 role: "Chief Pharmacist",
+                icon: <Lock />,
                 summary: "Ensure 100% compliance with narcotics regulations. This checklist covers secure storage, perpetual inventory, and discrepancy reporting.",
                 tasks: [
                     { id: 'NARC-01', description: "Conduct a daily reconciliation of all controlled substance inventory with two staff members present.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Log', location: 'Narcotics Vault' },
@@ -1504,6 +1574,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy/Logistics",
                 frequency: "Daily",
                 role: "Pharmacist",
+                icon: <Thermometer />,
                 summary: "Protect the efficacy of vaccines and other temperature-sensitive medications with this rigorous cold chain protocol.",
                 tasks: [
                     { id: 'COLD-01', description: "Log refrigerator and freezer temperatures twice daily.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Cold Storage' },
@@ -1518,6 +1589,7 @@ export const premiumPacks: PremiumPack[] = [
                 department: "Pharmacy",
                 frequency: "Per New Prescription",
                 role: "Pharmacist",
+                icon: <UserCheck />,
                 summary: "Improve patient adherence and safety with a standardized counseling checklist to ensure every patient understands their medication.",
                 tasks: [
                     { id: 'COUNSEL-01', description: "Explain the name of the medication and what it is for.", priority: 'High', riskLevel: 'Medium', proof: 'Counseling Checklist', location: 'Counseling Area' },
@@ -1557,10 +1629,11 @@ export const premiumPacks: PremiumPack[] = [
         },
         checklists: [
             {
-                title: "🚌 School Bus Safety & Transport",
+                title: "School Bus Safety & Transport",
                 department: "Transport",
                 frequency: "Daily",
                 role: "Transport Manager",
+                icon: <Bus />,
                 summary: "Ensure every child's journey to and from school is safe with rigorous daily checks for vehicle fitness, driver readiness, and student safety protocols.",
                 tasks: [
                     { id: 'SBST-01', description: "Conduct a pre-trip inspection of the bus (tires, lights, brakes, first-aid kit, fire extinguisher).", priority: 'High', riskLevel: 'High', proof: 'Pre-Trip Inspection Log', location: 'Bus Depot' },
@@ -1576,10 +1649,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🛡️ Campus Security & Visitor Management",
+                title: "Campus Security & Visitor Management",
                 department: "Security",
                 frequency: "Ongoing",
                 role: "Head of Security",
+                icon: <Shield />,
                 summary: "Control access to your campus and protect students with a strict protocol for managing visitors, verifying identities, and monitoring perimeters.",
                 tasks: [
                     { id: 'CSVM-01', description: "Verify the identity of all visitors and check them against a pre-approved appointment list.", priority: 'High', riskLevel: 'High', proof: 'Visitor Management System Log', location: 'Main Gate' },
@@ -1595,10 +1669,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🍎 Cafeteria & Food Safety (HACCP)",
+                title: "Cafeteria & Food Safety (HACCP)",
                 department: "F&B/Admin",
                 frequency: "Daily",
                 role: "Cafeteria Manager",
+                icon: <Sprout />,
                 summary: "Prevent foodborne illness and ensure compliance with FSSAI standards using this HACCP-based checklist for kitchen hygiene, food storage, and preparation.",
                 tasks: [
                     { id: 'CFS-01', description: "Check and log temperatures of all refrigerators, freezers, and hot holding units twice daily.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
@@ -1614,10 +1689,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🚨 Emergency Preparedness & Drills",
+                title: "Emergency Preparedness & Drills",
                 department: "Administration",
                 frequency: "Quarterly",
                 role: "Admin Head",
+                icon: <Siren />,
                 summary: "Prepare your school for any crisis. This checklist covers the planning and execution of drills for fire, medical emergencies, and evacuations.",
                 tasks: [
                     { id: 'EPD-01', description: "Conduct a fire drill each quarter and record evacuation times and any issues observed.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Campus-wide' },
@@ -1633,10 +1709,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🏫 Classroom & Building Safety Audit",
+                title: "Classroom & Building Safety Audit",
                 department: "Facilities/Admin",
                 frequency: "Monthly",
                 role: "Facility Manager",
+                icon: <Building />,
                 summary: "Ensure the physical learning environment is safe for students and staff with this comprehensive monthly audit of classrooms, labs, and building infrastructure.",
                 tasks: [
                     { id: 'CBSA-01', description: "Inspect classroom furniture (desks, chairs) for sharp edges or instability.", priority: 'High', riskLevel: 'Medium', proof: 'Classroom Inspection Log', location: 'Classrooms' },
@@ -1652,10 +1729,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🩺 Student Health & Medical Room",
+                title: "Student Health & Medical Room",
                 department: "Health/Admin",
                 frequency: "Daily/Weekly",
                 role: "School Nurse/Medical Officer",
+                icon: <HeartPulse />,
                 summary: "Manage student health effectively with protocols for administering medication, handling medical emergencies, and maintaining student health records.",
                 tasks: [
                     { id: 'SHMR-01', description: "Maintain an accurate and confidential health record for every student, including allergies and chronic conditions.", priority: 'High', riskLevel: 'High', proof: 'Student Health Records', location: 'Medical Room' },
@@ -1671,10 +1749,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📋 Academic & Co-curricular Planning",
+                title: "Academic & Co-curricular Planning",
                 department: "Academics",
                 frequency: "Term-wise",
                 role: "Academic Coordinator",
+                icon: <BookOpen />,
                 summary: "Ensure a well-structured and balanced academic year with this planning checklist for curriculum, examinations, events, and co-curricular activities.",
                 tasks: [
                     { id: 'AACP-01', description: "Finalize the academic calendar for the year, including term dates, holidays, and examination periods.", priority: 'High', riskLevel: 'Medium', proof: 'Academic Calendar', location: 'Academic Office' },
@@ -1690,10 +1769,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🤝 Parent & Community Engagement",
+                title: "Parent & Community Engagement",
                 department: "Administration/PR",
                 frequency: "Monthly",
                 role: "Principal/PR Officer",
+                icon: <Users />,
                 summary: "Build a strong, positive relationship with parents and the wider community through structured communication, events, and feedback channels.",
                 tasks: [
                     { id: 'PCE-01', description: "Send a monthly newsletter to all parents with updates on school activities and achievements.", priority: 'High', riskLevel: 'Low', proof: 'Newsletter Archive', location: 'PR Office' },
@@ -1737,10 +1817,11 @@ export const premiumPacks: PremiumPack[] = [
         },
         checklists: [
             {
-                title: "🧪 Lab Safety & Chemical Management (GLP)",
+                title: "Lab Safety & Chemical Management (GLP)",
                 department: "EHS/Academics",
                 frequency: "Monthly",
                 role: "Lab Manager",
+                icon: <TestTube />,
                 summary: "Ensure a safe and compliant research environment with this checklist for chemical storage, equipment maintenance, and personal protective equipment (PPE) usage.",
                 tasks: [
                     { id: 'LSCM-01', description: "Audit chemical storage to ensure proper segregation (e.g., flammables, corrosives) and up-to-date inventory.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log & Inventory', location: 'Chemical Storeroom' },
@@ -1756,10 +1837,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🏠 Hostel Safety & Security",
+                title: "Hostel Safety & Security",
                 department: "Student Affairs/Admin",
                 frequency: "Weekly",
                 role: "Chief Warden",
+                icon: <Home />,
                 summary: "Ensure a safe and secure living environment for students with weekly checks for electrical safety, fire preparedness, and access control.",
                 tasks: [
                     { id: 'HSS-01', description: "Conduct a walkthrough of all floors to check for fire hazards (e.g., illegal cooking, blocked corridors, stored combustibles).", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Log', location: 'Hostel' },
@@ -1775,10 +1857,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🔒 Confidential Exam Material Handling",
+                title: "Confidential Exam Material Handling",
                 department: "Academics/Admin",
                 frequency: "Per Exam",
                 role: "Controller of Examinations",
+                icon: <FileLock />,
                 summary: "Protect academic integrity with a strict chain-of-custody protocol for exam papers, from secure printing and storage to supervised distribution and destruction.",
                 tasks: [
                     { id: 'CEMH-01', description: "Print exam papers in a secure, access-controlled room with no unauthorized electronic devices present.", priority: 'High', riskLevel: 'High', proof: 'Access Log for Printing Room', location: 'Secure Printing Room' },
@@ -1794,10 +1877,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "😊 Student Well-being & Anti-Ragging",
+                title: "Student Well-being & Anti-Ragging",
                 department: "Student Affairs",
                 frequency: "Monthly",
                 role: "Dean of Student Affairs",
+                icon: <Users />,
                 summary: "A proactive framework to ensure compliance with anti-ragging regulations and promote a positive, supportive campus environment for all students.",
                 tasks: [
                     { id: 'SWAR-01', description: "Verify that anti-ragging posters and contact numbers for the helpline are prominently displayed in hostels, canteens, and common areas.", priority: 'High', riskLevel: 'High', proof: 'Display Audit Photos', location: 'Hostels/Common Areas' },
@@ -1813,10 +1897,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "📚 Library Operations & Resource Management",
+                title: "Library Operations & Resource Management",
                 department: "Library",
                 frequency: "Weekly",
                 role: "Chief Librarian",
+                icon: <Library />,
                 summary: "Optimize library services and resource management with this checklist covering inventory, digital access, and user experience.",
                 tasks: [
                     { id: 'LORM-01', description: "Conduct a weekly shelf-reading audit in a designated section to ensure books are in the correct order.", priority: 'Medium', riskLevel: 'Low', proof: 'Shelf-Reading Log', location: 'Library Stacks' },
@@ -1832,10 +1917,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🎓 Admissions & Records Management",
+                title: "Admissions & Records Management",
                 department: "Admissions/Admin",
                 frequency: "Cycle-based",
                 role: "Registrar/Admissions Head",
+                icon: <Briefcase />,
                 summary: "Ensure a fair, transparent, and compliant admissions process from application to enrollment, maintaining accurate and secure student records.",
                 tasks: [
                     { id: 'ARM-01', description: "Verify that the admission criteria and process are clearly published on the university website.", priority: 'High', riskLevel: 'High', proof: 'Website Audit', location: 'Website' },
@@ -1851,10 +1937,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🚗 Campus Transportation & Parking",
+                title: "Campus Transportation & Parking",
                 department: "Transport/Security",
                 frequency: "Daily/Weekly",
                 role: "Transport Officer",
+                icon: <Car />,
                 summary: "Manage campus traffic, parking, and shuttle services efficiently and safely for students, staff, and visitors.",
                 tasks: [
                     { id: 'CTP-01', description: "Conduct daily checks of shuttle buses for safety and cleanliness.", priority: 'High', riskLevel: 'High', proof: 'Bus Inspection Log', location: 'Bus Depot' },
@@ -1870,10 +1957,11 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "🧠 Faculty & Academic Affairs",
+                title: "Faculty & Academic Affairs",
                 department: "Academics",
                 frequency: "Semester-wise",
                 role: "Dean of Academics",
+                icon: <BriefcaseBusiness />,
                 summary: "Manage the academic lifecycle of faculty, from recruitment and performance reviews to course allocation and professional development.",
                 tasks: [
                     { id: 'FAA-01', description: "Oversee the faculty recruitment and hiring process to ensure fairness and quality.", priority: 'High', riskLevel: 'High', proof: 'Hiring Committee Minutes', location: 'Dean\'s Office' },
@@ -1892,3 +1980,5 @@ export const premiumPacks: PremiumPack[] = [
     }
 ]
     
+
+  
