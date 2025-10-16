@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -6,7 +7,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertCircle, Download, Globe, Landmark, GraduationCap, AlertTriangle } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -84,7 +85,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
             <AlertDialogContent className="max-w-4xl">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="font-headline flex items-center gap-3">
-                         <AlertTriangle className="w-6 h-6 text-destructive" />
+                         <AlertTriangleIcon className="w-6 h-6 text-destructive" />
                         Scenario: {scenario.title}
                     </AlertDialogTitle>
                     <AlertDialogDescription>
@@ -229,6 +230,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         "school_operations_pack",
         "university_college_ops",
         "sports_clubs_facilities_pack",
+        "manufacturing_operations_ehs_pack",
     ];
 
     const hasTieredEditions = packsWithTieredEditions.includes(pack.id);

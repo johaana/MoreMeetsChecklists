@@ -1618,13 +1618,23 @@ export const premiumPacks: PremiumPack[] = [
             { text: "HACCP-aligned 'Cafeteria & Food Safety' checklists.", icon: <Sprout /> },
             { text: "Protocols for 'Emergency Preparedness' including fire, medical, and evacuation drills.", icon: <Siren /> }
         ],
+        previewScenario: {
+            title: "Handling a Medical Emergency on the Playground",
+            description: "A student has a fall on the playground and requires immediate medical attention. This scenario shows how Health, Safety, and Communication checklists work together for a swift and professional response.",
+            tasks: [
+                { id: 'SHMR-07', description: "A teacher trained in first-aid provides immediate care and calls the school nurse.", sourceChecklist: "Student Health & Medical Room", priority: 'High' },
+                { id: 'CSVM-04', description: "Security monitors CCTV and clears a path for the ambulance to enter the campus.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' },
+                { id: 'PCE-09', description: "The front office uses the emergency contact list to inform the parents as per the communication protocol.", sourceChecklist: "Parent & Community Engagement", priority: 'High' },
+                { id: 'EPD-03', description: "The incident is logged as per the Emergency Preparedness plan for post-incident review.", sourceChecklist: "Emergency Preparedness & Drills", priority: 'Medium' }
+            ]
+        },
         globalStandards: {
             title: "Built on National & Global Safety Standards",
             standards: [
-                { name: "Student Safety", description: "Guidelines from the National Commission for Protection of Child Rights (NCPCR) and POSCO Act." },
-                { name: "Campus Security", description: "CBSE & State Board safety guidelines, local police recommendations." },
-                { name: "Health & Hygiene", description: "FSSAI standards for school canteens, National School Health Programme guidelines." },
-                { name: "Infrastructure Safety", description: "National Building Code (NBC) for fire safety and structural integrity." }
+                { name: "Student Safety (NCPCR)", description: "Guidelines from the National Commission for Protection of Child Rights and POSCO Act." },
+                { name: "Campus Security (CBSE)", description: "Aligned with CBSE & State Board safety guidelines, and local police recommendations." },
+                { name: "Health & Hygiene (FSSAI)", description: "FSSAI standards for school canteens and National School Health Programme guidelines." },
+                { name: "Infrastructure Safety (NBC)", description: "National Building Code of India for fire safety, structural integrity, and accessibility." }
             ]
         },
         checklists: [
@@ -1806,13 +1816,23 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Protect academic integrity with a 'Confidential Exam Material Handling' SOP.", icon: <FileLock /> },
             { text: "A framework for 'Student Well-being & Anti-Ragging' compliance.", icon: <Users /> }
         ],
+        previewScenario: {
+            title: "Managing a Lab Chemical Spill",
+            description: "A researcher accidentally spills a hazardous chemical in a chemistry lab. This scenario demonstrates how Lab Safety, EHS, and Emergency Response checklists coordinate to manage the incident safely and effectively.",
+            tasks: [
+                { id: 'LSCM-08', description: "Researcher immediately uses the emergency spill kit as per training.", sourceChecklist: "Lab Safety & Chemical Management (GLP)", priority: 'High' },
+                { id: 'EHS-04', description: "The Lab Manager initiates the EHS Incident Reporting protocol, securing the area.", sourceChecklist: "Environment, Health & Safety (EHS) Audit", priority: 'High' },
+                { id: 'CEMH-01', description: "The campus emergency response team is activated as per the university's disaster management plan.", sourceChecklist: "Disaster Management & Emergency Response", priority: 'High' },
+                { id: 'LSCM-04', description: "The hazardous waste is contained and disposed of according to strict regulatory guidelines.", sourceChecklist: "Lab Safety & Chemical Management (GLP)", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Accreditation & Safety Standards",
             standards: [
-                { name: "Academic Integrity", description: "NAAC & UGC guidelines for fair examinations and academic practices." },
-                { name: "Lab & Research Safety", description: "OECD Principles of Good Laboratory Practice (GLP), ISO 17025." },
-                { name: "Student Welfare", description: "UGC regulations on anti-ragging, guidelines for student mental health and well-being." },
-                { name: "Campus Safety", description: "National Building Code (NBC) for fire safety, local EHS regulations for campus facilities." }
+                { name: "Academic Integrity (NAAC/UGC)", description: "NAAC & UGC guidelines for fair examinations and academic practices." },
+                { name: "Lab & Research Safety (OECD GLP)", description: "OECD Principles of Good Laboratory Practice (GLP), ISO 17025." },
+                { name: "Student Welfare (UGC)", description: "UGC regulations on anti-ragging, guidelines for student mental health and well-being." },
+                { name: "Campus Safety (NBC)", description: "National Building Code for fire safety, local EHS regulations for campus facilities." }
             ]
         },
         checklists: [
@@ -1982,3 +2002,5 @@ export const premiumPacks: PremiumPack[] = [
     
 
   
+
+

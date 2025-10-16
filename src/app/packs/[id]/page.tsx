@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -43,6 +44,7 @@ const packImageMap: Record<string, string> = {
   'logistics_warehouse_pack': 'https://i.postimg.cc/6qQ1FnWm/logistics.webp',
   'manufacturing_operations_ehs_pack': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
   'food_manufacturing_ops': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
+  'supermarket_grocery_retail_pack': 'https://i.postimg.cc/L63xxv8M/supermarket-main.webp',
 };
 
 
