@@ -1781,7 +1781,195 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 'school_operations_pack',
+        title: "School Operations Pack",
+        priceUSD: 149.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Education",
+        description: "A complete safety and compliance toolkit for K-12 schools, ensuring the well-being of every student and staff member.",
+        icon: <School className="w-8 h-8 text-primary" />,
+        whoIsItFor: ["School Principals", "Admin Heads", "Trustees", "Heads of Security"],
+        sampleItems: [
+            { text: "Mandatory 'End-of-Route' check for school buses to prevent 'forgotten child' incidents.", icon: <Bus /> },
+            { text: "A robust 'Campus Security & Visitor Management' protocol to control access.", icon: <UserCog2 /> },
+            { text: "HACCP-aligned 'Cafeteria & Food Safety' checklists.", icon: <Sprout /> },
+            { text: "Protocols for 'Emergency Preparedness' including fire, medical, and evacuation drills.", icon: <Siren /> }
+        ],
+        previewScenario: {
+            title: "Responding to an Unauthorized Person on Campus",
+            description: "A person attempts to enter school grounds without authorization. This scenario shows how checklists for Security, Visitor Management, and Emergency Response work together to neutralize the threat.",
+            tasks: [
+                { id: 'CSVM-01', description: "The security guard at the gate denies entry because the person is not on the pre-approved visitor list, as per the 'Visitor Management' SOP.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' },
+                { id: 'CSVM-04', description: "When the person becomes agitated, the guard triggers a silent alarm to alert the Principal and Head of Security.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' },
+                { id: 'EPD-03', description: "The 'Emergency Response' protocol for an intruder is activated, and all external doors are remotely locked.", sourceChecklist: "Emergency Preparedness & Drills", priority: 'High' },
+                { id: 'CSVM-06', description: "The incident is logged in detail, including CCTV timestamps, providing a clear record for law enforcement.", sourceChecklist: "Campus Security & Visitor Management", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Built on National & Global Safety Standards",
+            standards: [
+                { name: "Student Safety", description: "Guidelines from the National Commission for Protection of Child Rights (NCPCR) and POSCO Act." },
+                { name: "Campus Security", description: "CBSE & State Board safety guidelines, local police recommendations." },
+                { name: "Health & Hygiene", description: "FSSAI standards for school canteens, National School Health Programme guidelines." },
+                { name: "Infrastructure Safety", description: "National Building Code (NBC) for fire safety and structural integrity." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🚌 School Bus Safety & Transport",
+                department: "Transport",
+                frequency: "Daily",
+                role: "Transport Manager",
+                summary: "Ensure every child's journey to and from school is safe with rigorous daily checks for vehicle fitness, driver readiness, and student safety protocols.",
+                tasks: [
+                    { id: 'SBST-01', description: "Conduct a pre-trip inspection of the bus (tires, lights, brakes, first-aid kit).", priority: 'High', riskLevel: 'High', proof: 'Pre-Trip Inspection Log', location: 'Bus Depot' },
+                    { id: 'SBST-02', description: "Verify the driver's fitness for duty (no signs of illness or fatigue).", priority: 'High', riskLevel: 'High', proof: 'Driver Fitness Log', location: 'Bus Depot' },
+                    { id: 'SBST-03', description: "Ensure the on-board GPS and CCTV are functional.", priority: 'High', riskLevel: 'High', proof: 'System Check Log', location: 'Bus' },
+                    { id: 'SBST-04', description: "Check that a female attendant is present on every bus route with female students.", priority: 'High', riskLevel: 'High', proof: 'Attendant Roster', location: 'Bus' },
+                    { id: 'SBST-05', description: "Perform a mandatory 'end-of-route' sweep of the entire bus to ensure no child is left behind.", priority: 'High', riskLevel: 'High', proof: 'End-of-Route Log', location: 'Bus' }
+                ]
+            },
+            {
+                title: "🛡️ Campus Security & Visitor Management",
+                department: "Security",
+                frequency: "Ongoing",
+                role: "Head of Security",
+                summary: "Control access to your campus and protect students with a strict protocol for managing visitors, verifying identities, and monitoring perimeters.",
+                tasks: [
+                    { id: 'CSVM-01', description: "Verify the identity of all visitors and check them against a pre-approved list.", priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Main Gate' },
+                    { id: 'CSVM-02', description: "Issue temporary ID badges to all authorized visitors.", priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Main Gate' },
+                    { id: 'CSVM-03', description: "Conduct regular patrols of the campus perimeter and check for any breaches.", priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Campus Perimeter' },
+                    { id: 'CSVM-04', description: "Monitor CCTV feeds for any suspicious activity.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Security Room' },
+                    { id: 'CSVM-06', description: "Maintain a detailed log of all security incidents.", priority: 'High', riskLevel: 'High', proof: 'Incident Logbook', location: 'Security Office' }
+                ]
+            },
+            {
+                title: "🍎 Cafeteria & Food Safety (HACCP)",
+                department: "F&B/Admin",
+                frequency: "Daily",
+                role: "Cafeteria Manager",
+                summary: "Prevent foodborne illness and ensure compliance with FSSAI standards using this HACCP-based checklist for kitchen hygiene, food storage, and preparation.",
+                tasks: [
+                    { id: 'CFS-01', description: "Check and log temperatures of all refrigerators and freezers.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
+                    { id: 'CFS-02', description: "Ensure all food handlers are following proper hygiene practices (hairnets, gloves, handwashing).", priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit', location: 'Kitchen' },
+                    { id: 'CFS-03', description: "Verify that raw and cooked foods are stored separately to prevent cross-contamination.", priority: 'High', riskLevel: 'High', proof: 'Storage Inspection', location: 'Kitchen/Storage' },
+                    { id: 'CFS-04', description: "Check that all food is cooked to the correct internal temperature.", priority: 'High', riskLevel: 'High', proof: 'Cooking Temperature Log', location: 'Kitchen' },
+                    { id: 'CFS-05', description: "Ensure the dining area is cleaned and sanitized before and after each meal service.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Cafeteria' }
+                ]
+            },
+            {
+                title: "🚨 Emergency Preparedness & Drills",
+                department: "Administration",
+                frequency: "Quarterly",
+                role: "Admin Head",
+                summary: "Prepare your school for any crisis. This checklist covers the planning and execution of drills for fire, medical emergencies, and evacuations.",
+                tasks: [
+                    { id: 'EPD-01', description: "Conduct a fire drill each quarter and record evacuation times.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Campus-wide' },
+                    { id: 'EPD-02', description: "Inspect all fire safety equipment (extinguishers, alarms) monthly.", priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Campus-wide' },
+                    { id: 'EPD-03', description: "Ensure a documented emergency response plan is in place for various scenarios (intruder, medical, natural disaster).", priority: 'High', riskLevel: 'High', proof: 'Emergency Plan Document', location: 'Admin Office' },
+                    { id: 'EPD-04', description: "Verify that first-aid kits are fully stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Log', location: 'Various Locations' },
+                    { id: 'EPD-05', description: "Train staff and students on the emergency evacuation routes and assembly points.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Campus-wide' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'university_college_ops',
+        title: "University & College Operations Pack",
+        priceUSD: 149.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Education",
+        description: "A comprehensive toolkit for higher education institutions to manage complex operations, from lab safety and hostel management to academic integrity and compliance.",
+        icon: <GraduationCap className="w-8 h-8 text-primary" />,
+        whoIsItFor: ["Deans & Registrars", "Heads of Administration", "Chief Wardens", "Heads of Security", "EHS Officers"],
+        sampleItems: [
+            { text: "Ensure 'Lab Safety & Chemical Management' aligns with OECD GLP and local regulations.", icon: <TestTube /> },
+            { text: "Implement a 'Hostel Safety & Security' protocol to protect resident students.", icon: <Home /> },
+            { text: "Protect academic integrity with a 'Confidential Exam Material Handling' SOP.", icon: <FileLock /> },
+            { text: "A framework for 'Student Well-being & Anti-Ragging' compliance.", icon: <Users /> }
+        ],
+        previewScenario: {
+            title: "Preventing an Exam Paper Leak",
+            description: "A prestigious university faces a reputation crisis after an exam paper is leaked. This scenario shows how a strict chain-of-custody protocol prevents this.",
+            tasks: [
+                { id: 'CEMH-01', description: "The exam papers are printed in a secure, access-controlled room, as mandated by the 'Confidential Material Handling' SOP.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' },
+                { id: 'CEMH-02', description: "The sealed packets are transported to the exam center in a locked container, with a documented chain-of-custody form signed at each handover point.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' },
+                { id: 'CEMH-04', description: "Two authorized personnel are required to be present when the sealed packets are opened just before the exam begins.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' },
+                { id: 'CEMH-05', description: "After the exam, all unused papers are accounted for and shredded under supervision, completing the secure lifecycle.", sourceChecklist: "Confidential Exam Material Handling", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Accreditation & Safety Standards",
+            standards: [
+                { name: "Academic Integrity", description: "NAAC & UGC guidelines for fair examinations and academic practices." },
+                { name: "Lab & Research Safety", description: "OECD Principles of Good Laboratory Practice (GLP), ISO 17025." },
+                { name: "Student Welfare", description: "UGC regulations on anti-ragging, guidelines for student mental health and well-being." },
+                { name: "Campus Safety", description: "National Building Code (NBC) for fire safety, local EHS regulations for campus facilities." }
+            ]
+        },
+        checklists: [
+            {
+                title: "🧪 Lab Safety & Chemical Management (GLP)",
+                department: "EHS/Academics",
+                frequency: "Monthly",
+                role: "Lab Manager",
+                summary: "Ensure a safe and compliant research environment with this checklist for chemical storage, equipment maintenance, and personal protective equipment (PPE) usage.",
+                tasks: [
+                    { id: 'LSCM-01', description: "Audit chemical storage to ensure proper segregation (e.g., flammables, corrosives).", priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log', location: 'Chemical Storeroom' },
+                    { id: 'LSCM-02', description: "Verify that all safety equipment (showers, eyewash stations, fire extinguishers) is functional and accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Lab' },
+                    { id: 'LSCM-03', description: "Ensure all lab personnel are using the correct Personal Protective Equipment (PPE).", priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Lab' },
+                    { id: 'LSCM-04', description: "Check that all hazardous waste is being disposed of according to regulations.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
+                    { id: 'LSCM-05', description: "Maintain a log of all equipment calibration and maintenance.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Logbook', location: 'Lab' }
+                ]
+            },
+            {
+                title: "🏠 Hostel Safety & Security",
+                department: "Student Affairs/Admin",
+                frequency: "Weekly",
+                role: "Chief Warden",
+                summary: "Ensure a safe and secure living environment for students with weekly checks for electrical safety, fire preparedness, and access control.",
+                tasks: [
+                    { id: 'HSS-01', description: "Conduct a walkthrough of all floors to check for fire hazards (e.g., illegal cooking, blocked corridors).", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Log', location: 'Hostel' },
+                    { id: 'HSS-02', description: "Test fire alarms and check expiry dates of fire extinguishers on each floor.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Log', location: 'Hostel' },
+                    { id: 'HSS-03', description: "Review visitor logs and enforce rules regarding guest entry and exit times.", priority: 'High', riskLevel: 'Medium', proof: 'Visitor Log Review', location: 'Hostel Entrance' },
+                    { id: 'HSS-04', description: "Inspect electrical fittings in common areas and a random selection of rooms for unsafe modifications.", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Log', location: 'Hostel' },
+                    { id: 'HSS-05', description: "Ensure all hostel staff and student volunteers are trained in emergency response.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Warden Office' }
+                ]
+            },
+            {
+                title: "🔒 Confidential Exam Material Handling",
+                department: "Academics/Admin",
+                frequency: "Per Exam",
+                role: "Controller of Examinations",
+                summary: "Protect academic integrity with a strict chain-of-custody protocol for exam papers, from secure printing and storage to supervised distribution and destruction.",
+                tasks: [
+                    { id: 'CEMH-01', description: "Print exam papers in a secure, access-controlled room.", priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Secure Printing Room' },
+                    { id: 'CEMH-02', description: "Store sealed exam packets in a dual-lock vault or safe.", priority: 'High', riskLevel: 'High', proof: 'Vault Log', location: 'Exam Vault' },
+                    { id: 'CEMH-03', description: "Document the chain of custody for any movement of the exam papers.", priority: 'High', riskLevel: 'High', proof: 'Chain of Custody Form', location: 'Exam Office' },
+                    { id: 'CEMH-04', description: "Require two authorized personnel to be present during the opening of sealed packets.", priority: 'High', riskLevel: 'High', proof: 'Dual Sign-off Sheet', location: 'Exam Hall' },
+                    { id: 'CEMH-05', description: "Account for and shred all unused exam papers immediately after the exam.", priority: 'High', riskLevel: 'High', proof: 'Destruction Log', location: 'Secure Area' }
+                ]
+            },
+            {
+                title: "😊 Student Well-being & Anti-Ragging",
+                department: "Student Affairs",
+                frequency: "Monthly",
+                role: "Dean of Student Affairs",
+                summary: "A proactive framework to ensure compliance with anti-ragging regulations and promote a positive, supportive campus environment for all students.",
+                tasks: [
+                    { id: 'SWAR-01', description: "Verify that anti-ragging posters and contact numbers for the helpline are prominently displayed.", priority: 'High', riskLevel: 'High', proof: 'Display Audit', location: 'Hostels/Common Areas' },
+                    { id: 'SWAR-02', description: "Conduct regular, surprise checks in hostels and common areas.", priority: 'High', riskLevel: 'High', proof: 'Surprise Check Log', location: 'Hostels' },
+                    { id: 'SWAR-03', description: "Hold monthly meetings of the Anti-Ragging Committee to review any incidents or concerns.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Committee Room' },
+                    { id: 'SWAR-04', description: "Ensure a confidential and accessible process for students to report incidents.", priority: 'High', riskLevel: 'High', proof: 'Reporting Process Document', location: 'Student Affairs Office' },
+                    { id: 'SWAR-05', description: "Organize awareness workshops on mental health and anti-ragging for new students.", priority: 'High', riskLevel: 'Medium', proof: 'Workshop Attendance', location: 'Auditorium' }
+                ]
+            }
+        ]
     }
 ]
-
   
+
