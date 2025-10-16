@@ -450,7 +450,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Gem className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors", "Compliance Officers", "GMs", "Directors"],
+        whoIsItFor: ["Luxury Brand VPs", "Store Owners", "Heads of Retail Operations", "Security Directors", "Compliance Officers", "COOs"],
         sampleItems: [
             "Implement a 'Vault Access Control' checklist based on biometric and dual-approval protocols.",
             "Standardize your 'High-Value Exchange & Handling' SOP to prevent internal fraud.",
@@ -629,7 +629,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LUX-CERT-10', description: "Have a clear process for handling lost or damaged customer certificates.", priority: 'Medium', riskLevel: 'Medium', proof: 'Policy Document', location: 'Office' }
                 ]
             },
-            {
+             {
                 title: "🏢 EBO Operations Checklist",
                 department: "Retail Operations",
                 frequency: "Daily/Weekly",
@@ -833,193 +833,231 @@ export const premiumPacks: PremiumPack[] = [
         ]
     },
     {
-        id: 'supermarket_operations_pack',
-        title: "Supermarket Operations Pack",
+        id: 'supermarket_grocery_retail_pack',
+        title: "Supermarket & Grocery Retail Operations Pack",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Retail",
-        description: "A comprehensive toolkit for managing high-volume retail, focusing on fresh food safety, inventory accuracy, and checkout efficiency.",
+        description: "An all-in-one operations and compliance pack for supermarkets, hypermarkets, and grocery retail chains, ensuring food safety, loss prevention, hygiene, and operational efficiency across outlets.",
         icon: <ShoppingBasket className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Supermarket Owners", "Store Directors", "Heads of Retail Operations", "Fresh Food Department Heads", "GMs", "VPs", "Directors"],
+        whoIsItFor: ["Supermarket Owners", "Grocery Store Proprietors", "Heads of Retail Operations", "Store Directors", "Department Heads (Fresh Food, Dairy)", "3PL Partners"],
         sampleItems: [
-            "Implement a 'Fresh Food Department' safety and quality checklist (HACCP).",
+            "Implement a 'Cold Storage & Food Safety' checklist based on FSSAI/HACCP.",
             "Standardize 'Goods Receiving & Staging' for high-volume inventory.",
-            "Optimize 'Front-End Checkout & Cash Management'.",
-            "Includes checklists for 'Planogram Compliance' and 'Daily Store Readiness'."
+            "Optimize 'Cash Handling & POS Security' to prevent fraud.",
+            "Includes checklists for 'Expiry & Inventory Rotation' and 'Store Hygiene'."
         ],
         previewScenario: {
-            title: "Responding to a Cold Chain Breach",
-            description: "A refrigerator unit in the dairy section fails overnight. This scenario shows how checklists for Store Readiness, Fresh Food, and Maintenance work together to prevent massive stock loss and protect customer safety.",
+            title: "Responding to a Cold Storage Breakdown",
+            description: "A Mumbai hypermarket lost ₹18 lakh in perishable inventory after a cold room malfunctioned overnight. This scenario shows how checklists prevent this by ensuring a proactive, systematic response.",
             tasks: [
-                { id: 'SM-OPEN-08', description: "Morning temperature check reveals a unit is out of the safe zone.", sourceChecklist: "Daily Store Readiness & Opening", priority: 'High' },
-                { id: 'SM-FRESH-01', description: "Immediately quarantine all products from the affected unit and check internal product temperatures.", sourceChecklist: "Fresh Food Department Checklist (HACCP)", priority: 'High' },
-                { id: 'SM-FRESH-10', description: "Dispose of all products that have fallen outside the safe temperature range for too long, and log the wastage.", sourceChecklist: "Fresh Food Department Checklist (HACCP)", priority: 'High' },
-                { id: 'SM-CASH-09', description: "File a maintenance request and do not restock the unit until it has been certified as safe and functional.", sourceChecklist: "Front-End Checkout & Cash Management", priority: 'High' }
+                { id: 'CS-01', description: "Morning temperature check from the 'Daily Store Readiness' checklist immediately flags a unit is out of the safe zone.", sourceChecklist: "Daily Store Readiness & Audit", priority: 'High' },
+                { id: 'CS-02', description: "The 'Cold Storage & Food Safety' SOP is activated: all products are quarantined and internal temperatures are checked.", sourceChecklist: "Cold Storage & Food Safety", priority: 'High' },
+                { id: 'CS-03', description: "The 'Inventory, Expiry & Replenishment' checklist is used to log all spoiled items for wastage reports and insurance claims.", sourceChecklist: "Inventory, Expiry & Replenishment", priority: 'High' },
+                { id: 'CS-04', description: "Maintenance is called and the unit is not restocked until the 'Cold Storage' checklist certifies it's safe, preventing further loss.", sourceChecklist: "Cold Storage & Food Safety", priority: 'High' }
             ]
         },
         globalStandards: {
-            title: "Built on Global Retail & Food Safety Standards",
+            title: "Built on Global & Indian Compliance Standards",
             standards: [
-                { name: "Food Safety", description: "HACCP and local food safety authority guidelines for all fresh departments." },
-                { name: "Inventory Management", description: "Best practices for high-volume receiving, stock rotation (FIFO), and cycle counting." },
-                { name: "Loss Prevention", description: "Strategies for reducing shrinkage from receiving to point-of-sale." },
-                { name: "Workplace Safety", description: "OSHA guidelines for warehouse, stocking, and general store safety." }
+                { name: "Food Safety & Hygiene", description: "FSSAI (India), ISO 22000 (Food Safety Management), HACCP Guidelines, Codex Alimentarius Standards" },
+                { name: "Occupational Health & Safety", description: "ISO 45001, IS 14489 (Occupational Safety Audit), Local Fire & Labour Laws" },
+                { name: "Retail & Labour Compliance", description: "Shops & Establishments Act (state-wise), Minimum Wages Act, POSH Act 2013, Working Hours & Shift Scheduling" },
+                { name: "Data & Consumer Protection", description: "DPDP Act 2023 (India), GDPR (Global), Consumer Protection Act 2019" }
             ]
         },
         checklists: [
             {
-                title: "🛒 Daily Store Readiness & Opening",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensure your store is safe, stocked, and welcoming before the first customer walks in. This comprehensive morning checklist covers cleanliness, safety, and promotional readiness.",
-                tasks: [
-                    { id: 'SM-OPEN-01', description: "Conduct a full store walkthrough to check for cleanliness, safety hazards, and lighting.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Log', location: 'Entire Store' },
-                    { id: 'SM-OPEN-02', description: "Ensure all shopping carts and baskets are clean and available at the entrance.", priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Entrance' },
-                    { id: 'SM-OPEN-03', description: "Verify all POS systems, card terminals, and weighing scales are online and functional.", priority: 'High', riskLevel: 'High', proof: 'System Check Log', location: 'Checkout/Depts' },
-                    { id: 'SM-OPEN-04', description: "Check that all promotional signage and pricing are correct and up-to-date.", priority: 'High', riskLevel: 'Medium', proof: 'Signage Audit', location: 'Entire Store' },
-                    { id: 'SM-OPEN-05', description: "Hold a brief morning huddle with department heads to discuss daily sales targets and priorities.", priority: 'High', riskLevel: 'Low', proof: 'Meeting Log', location: 'Staff Area' },
-                    { id: 'SM-OPEN-06', description: "Ensure restrooms are clean and fully stocked.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms' },
-                    { id: 'SM-OPEN-08', description: "Check that all aisles are clear of obstructions.", priority: 'High', riskLevel: 'High', proof: 'Aisle Inspection Log', location: 'Aisles' },
-                    { id: 'SM-OPEN-08', description: "Verify temperature of all refrigerated and frozen units.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'All Units' },
-                    { id: 'SM-OPEN-09', description: "Ensure staff are in proper uniform and ready for service.", priority: 'High', riskLevel: 'Low', proof: 'Staff Check', location: 'Staff Area' },
-                    { id: 'SM-OPEN-10', description: "Confirm that security personnel are in place.", priority: 'High', riskLevel: 'High', proof: 'Security Roster', location: 'Entrance/Security Office' }
-                ]
-            },
-            {
-                title: "🍎 Fresh Food Department Checklist (HACCP)",
-                department: "Fresh Produce/Meat/Dairy",
-                frequency: "Daily/Hourly",
-                role: "Department Head",
-                summary: "Protect customers and your bottom line with a food-safety critical checklist. Manage produce, meat, and dairy departments with rigorous controls for temperature, handling, and rotation.",
-                tasks: [
-                    { id: 'SM-FRESH-01', description: "Log temperatures of all refrigerated display cases and walk-in coolers every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Fresh Depts' },
-                    { id: 'SM-FRESH-02', description: "Inspect all fresh produce for spoilage and remove any substandard items from display.", priority: 'High', riskLevel: 'Medium', proof: 'Culling Log', location: 'Produce Section' },
-                    { id: 'SM-FRESH-03', description: "Ensure proper FIFO (First-In, First-Out) rotation is being followed for all items, especially dairy and meat.", priority: 'High', riskLevel: 'High', proof: 'Date Check Audit', location: 'Fresh Depts' },
-                    { id: 'SM-FRESH-04', description: "Verify that all food handling surfaces, knives, and equipment are being sanitized at scheduled intervals.", priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Fresh Depts' },
-                    { id: 'SM-FRESH-05', description: "Check that all staff handling fresh food are wearing gloves, hairnets, and adhering to hygiene standards.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Fresh Depts' },
-                    { id: 'SM-FRESH-06', description: "Ensure proper labeling of all prepared foods with ingredients and expiration dates.", priority: 'High', riskLevel: 'High', proof: 'Label Check', location: 'Deli/Bakery' },
-                    { id: 'SM-FRESH-07', description: "Monitor for any signs of cross-contamination between raw and ready-to-eat foods.", priority: 'High', riskLevel: 'High', proof: 'Visual Observation', location: 'Meat/Deli' },
-                    { id: 'SM-FRESH-08', description: "Check that thermometers are calibrated weekly.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Office' },
-                    { id: 'SM-FRESH-09', description: "Ensure pest control measures are in place and effective.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Log', location: 'Entire Store' },
-                    { id: 'SM-FRESH-10', description: "Dispose of expired or spoiled food according to store policy.", priority: 'High', riskLevel: 'High', proof: 'Disposal Log', location: 'Waste Area' }
-                ]
-            },
-            {
-                title: "📦 Goods Receiving & Staging (High Volume)",
-                department: "Logistics/Receiving",
-                frequency: "Per Delivery",
-                role: "Receiving Manager",
-                summary: "Handle dozens of daily deliveries with precision and efficiency. This process manages everything from pallet verification to staging for putaway, ensuring inventory accuracy from the dock.",
-                tasks: [
-                    { id: 'SM-RECV-01', description: "Schedule all deliveries to avoid dock congestion.", priority: 'High', riskLevel: 'Medium', proof: 'Dock Schedule', location: 'Receiving Office' },
-                    { id: 'SM-RECV-02', description: "Verify pallet count and check for visible damage before breaking the seal on a truck.", priority: 'High', riskLevel: 'High', proof: 'Delivery Note Sign-off', location: 'Receiving Dock' },
-                    { id: 'SM-RECV-03', description: "Use handheld scanners to receive products against the purchase order in real-time.", priority: 'High', riskLevel: 'High', proof: 'System Log', location: 'Receiving Dock' },
-                    { id: 'SM-RECV-04', description: "Segregate received goods by temperature requirement (ambient, chilled, frozen) and stage them for immediate putaway.", priority: 'High', riskLevel: 'High', proof: 'Visual Staging Check', location: 'Receiving Area' },
-                    { id: 'SM-RECV-05', description: "Process and document any shortages, damages, or discrepancies with the carrier immediately.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Receiving Office' },
-                    { id: 'SM-RECV-06', description: "Check temperature of refrigerated and frozen goods upon arrival.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Receiving Dock' },
-                    { id: 'SM-RECV-07', description: "Verify expiry dates of all incoming products.", priority: 'High', riskLevel: 'High', proof: 'Expiry Date Check', location: 'Receiving Dock' },
-                    { id: 'SM-RECV-08', description: "Ensure the receiving area is clean and clear of debris.", priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Check', location: 'Receiving Area' },
-                    { id: 'SM-RECV-09', description: "Secure the receiving area when not in use.", priority: 'High', riskLevel: 'High', proof: 'Security Log', location: 'Receiving Area' },
-                    { id: 'SM-RECV-10', description: "Communicate any discrepancies to the procurement team.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Email', location: 'Office' }
-                ]
-            },
-            {
-                title: "📜 Planogram & Merchandising Compliance",
-                department: "Operations/Merchandising",
+                title: "🧯 Fire & Electrical Safety",
+                department: "Safety/Maintenance",
                 frequency: "Weekly",
-                role: "Floor Manager",
-                summary: "Maximize sales and maintain brand consistency. This checklist ensures shelves are stocked according to the corporate planogram, driving sales and improving the shopping experience.",
+                role: "Safety Officer",
+                summary: "A critical checklist to prevent fire incidents in a high-traffic retail environment. Covers electrical load audits, fire equipment readiness, and emergency exit verification to ensure staff and customer safety.",
                 tasks: [
-                    { id: 'SM-PLANO-01', description: "Select a different aisle each week and audit product placement against the official planogram.", priority: 'High', riskLevel: 'Medium', proof: 'Planogram Audit Form', location: 'Aisles' },
-                    { id: 'SM-PLANO-02', description: "Ensure shelf labels and pricing match the products on display.", priority: 'High', riskLevel: 'High', proof: 'Label Audit', location: 'Aisles' },
-                    { id: 'SM-PLANO-03', description: "Check for out-of-stock items and ensure shelf gaps are filled or correctly flagged.", priority: 'High', riskLevel: 'High', proof: 'Stock Gap Report', location: 'Aisles' },
-                    { id: 'SM-PLANO-04', description: "Verify that promotional displays and endcaps are set up according to the marketing calendar.", priority: 'High', riskLevel: 'Medium', proof: 'Promo Display Photo', location: 'Endcaps' },
-                    { id: 'SM-PLANO-05', description: "Train staff on the importance of planogram compliance and how to read the diagrams.", priority: 'Medium', riskLevel: 'Low', proof: 'Training Log', location: 'Staff Training' },
-                    { id: 'SM-PLANO-06', description: "Ensure aisles are clean and well-lit.", priority: 'High', riskLevel: 'Medium', proof: 'Aisle Cleanliness Check', location: 'Aisles' },
-                    { id: 'SM-PLANO-07', description: "Remove any damaged or expired products from the shelves.", priority: 'High', riskLevel: 'High', proof: 'Removal Log', location: 'Aisles' },
-                    { id: 'SM-PLANO-08', description: "Check that all products are front-facing and neatly arranged.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Aisles' },
-                    { id: 'SM-PLANO-09', description: "Update shelf talkers and other in-aisle marketing materials.", priority: 'Medium', riskLevel: 'Low', proof: 'Marketing Material Audit', location: 'Aisles' },
-                    { id: 'SM-PLANO-10', description: "Report any recurring stockout issues to the inventory team.", priority: 'High', riskLevel: 'High', proof: 'Stockout Report', location: 'Office' }
+                    { id: 'SGR-FES-01', description: "Inspect all fire extinguishers for correct pressure, accessibility, and valid inspection tags.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Log', location: 'Store-wide' },
+                    { id: 'SGR-FES-02', description: "Test fire alarm system, including smoke detectors and manual pull stations.", priority: 'High', riskLevel: 'High', proof: 'Alarm Test Record', location: 'Control Panel' },
+                    { id: 'SGR-FES-03', description: "Walk all emergency exit routes to ensure they are completely clear and unobstructed.", priority: 'High', riskLevel: 'High', proof: 'Exit Path Photo Log', location: 'Store-wide' },
+                    { id: 'SGR-FES-04', description: "Check electrical panels and high-load areas (e.g., cold storage units) for signs of overheating or exposed wiring.", priority: 'High', riskLevel: 'High', proof: 'Thermal Scan Report (optional)', location: 'Electrical Rooms/Cold Storage' },
+                    { id: 'SGR-FES-05', description: "Ensure emergency lighting is functional and tested.", priority: 'High', riskLevel: 'High', proof: 'Lighting Test Log', location: 'Store-wide' },
+                    { id: 'SGR-FES-06', description: "Verify that 'No Smoking' signs are clearly displayed in all designated areas.", priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Store-wide' },
+                    { id: 'SGR-FES-07', description: "Ensure staff are trained on the fire evacuation plan and the location of fire equipment.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Sheet', location: 'Staff Room' },
+                    { id: 'SGR-FES-08', description: "Check that sprinkler systems are unobstructed and heads are not painted over.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Store-wide' },
+                    { id: 'SGR-FES-09', description: "Document and schedule a quarterly fire drill.", priority: 'High', riskLevel: 'High', proof: 'Drill Schedule', location: 'Manager Office' },
+                    { id: 'SGR-FES-10', description: "Ensure vendor-supplied equipment (e.g., promotional refrigerators) are electrically safe and certified.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Compliance Check', location: 'Sales Floor' }
                 ]
             },
             {
-                title: "💰 Front-End Checkout & Cash Management",
-                department: "Front-End",
-                frequency: "Daily",
+                title: "🥶 Cold Storage & Food Safety",
+                department: "Fresh Food/Dairy",
+                frequency: "Hourly/Daily",
+                role: "Department Manager",
+                summary: "Prevent spoilage and ensure FSSAI/HACCP compliance with this essential checklist for all refrigerated and frozen units. It includes temperature monitoring, alarm testing, and FIFO rotation protocols.",
+                tasks: [
+                    { id: 'SGR-CSFS-01', description: "Log temperatures of all chillers, freezers, and cold rooms every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log Sheet/Digital Record', location: 'All Cold Units' },
+                    { id: 'SGR-CSFS-02', description: "Verify that digital temperature displays match a calibrated handheld thermometer reading (weekly).", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'All Cold Units' },
+                    { id: 'SGR-CSFS-03', description: "Test high/low temperature alarms for all critical cold storage units.", priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Cold Rooms' },
+                    { id: 'SGR-CSFS-04', description: "Check that door seals are intact and doors close properly on all refrigerated units.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection Log', location: 'All Cold Units' },
+                    { id: 'SGR-CSFS-05', description: "Ensure raw meat, poultry, and fish are stored separately and below ready-to-eat foods to prevent cross-contamination.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Walk-in Chiller' },
+                    { id: 'SGR-CSFS-06', description: "Audit stock to ensure FIFO (First-In, First-Out) rotation is being followed.", priority: 'High', riskLevel: 'Medium', proof: 'FIFO Audit Report', location: 'All Cold Units' },
+                    { id: 'SGR-CSFS-07', description: "Ensure condenser units are clean and free from dust and debris.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'Cold Storage Area' },
+                    { id: 'SGR-CSFS-08', description: "Have a clear written procedure for what to do in case of a power failure or equipment breakdown.", priority: 'High', riskLevel: 'High', proof: 'Emergency SOP Document', location: 'Manager Office' },
+                    { id:'SGR-CSFS-09', description: "Train all staff on the importance of temperature control and what to do if an alarm sounds.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Staff Room' },
+                    { id: 'SGR-CSFS-10', description: "Keep all cold storage areas clean and organized, with products stored off the floor.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'All Cold Units' }
+                ]
+            },
+            {
+                title: "🧹 Store Hygiene & Housekeeping",
+                department: "Operations/Facilities",
+                frequency: "Hourly/Daily",
+                role: "Floor Supervisor",
+                summary: "Maintain a safe, clean, and welcoming environment for customers. This checklist covers everything from spill response and floor cleaning to restroom sanitation and trolley maintenance.",
+                tasks: [
+                    { id: 'SGR-SHH-01', description: "Conduct hourly floor walks to check for spills, debris, or any slip-and-fall hazards.", priority: 'High', riskLevel: 'High', proof: 'Floor Walk Log', location: 'Sales Floor' },
+                    { id: 'SGR-SHH-02', description: "Ensure 'Wet Floor' signs are used immediately for any spills, and the area is cleaned and dried promptly.", priority: 'High', riskLevel: 'High', proof: 'Incident Log', location: 'Sales Floor' },
+                    { id: 'SGR-SHH-03', description: "Check and clean restrooms hourly, ensuring they are stocked with soap, paper towels, and toilet paper.", priority: 'High', riskLevel: 'High', proof: 'Restroom Cleaning Log', location: 'Restrooms' },
+                    { id: 'SGR-SHH-04', description: "Sanitize shopping trolley and basket handles at regular intervals.", priority: 'High', riskLevel: 'Medium', proof: 'Sanitization Log', location: 'Entrance' },
+                    { id: 'SGR-SHH-05', description: "Empty all trash bins before they become full.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Store-wide' },
+                    { id: 'SGR-SHH-06', description: "Ensure all shelves and product displays are free of dust and grime.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Sales Floor' },
+                    { id: 'SGR-SHH-07', description: "Check that the store entrance is clean and inviting.", priority: 'High', riskLevel: 'Low', proof: 'Visual Inspection', location: 'Entrance' },
+                    { id: 'SGR-SHH-08', description: "Perform a deep clean of all floors after closing hours.", priority: 'High', riskLevel: 'Medium', proof: 'End-of-Day Cleaning Report', location: 'Store-wide' },
+                    { id: 'SGR-SHH-09', description: "Ensure cleaning supplies are stored safely and correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'Janitor Closet' },
+                    { id: 'SGR-SHH-10', description: "Train all staff on the 'Clean As You Go' policy.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' }
+                ]
+            },
+            {
+                title: "💰 Cash Handling & POS Security",
+                department: "Finance/Front-End",
+                frequency: "Per Shift",
                 role: "Head Cashier",
-                summary: "Optimize the final and most important customer touchpoint. This checklist improves checkout speed, ensures cash security, and reduces transaction errors.",
+                summary: "Prevent theft and ensure accuracy at your most critical transaction point. This SOP covers cash reconciliation, POS audits, and manager approvals to secure your revenue.",
                 tasks: [
-                    { id: 'SM-CASH-01', description: "Ensure adequate number of checkout lanes are open based on customer traffic forecasts.", priority: 'High', riskLevel: 'Medium', proof: 'Staff Roster', location: 'Checkout Area' },
-                    { id: 'SM-CASH-02', description: "Perform cash float verification for each POS terminal at the start of the shift.", priority: 'High', riskLevel: 'High', proof: 'Float Count Sheet', location: 'Cash Office' },
-                    { id: 'SM-CASH-03', description: "Monitor queue lengths and call for additional cashiers as needed.", priority: 'High', riskLevel: 'Medium', proof: 'Supervisor Log', location: 'Checkout Area' },
-                    { id: 'SM-CASH-04', description: "Conduct periodic 'cash lifts' from registers to minimize the amount of cash held at the checkout.", priority: 'High', riskLevel: 'High', proof: 'Cash Lift Log', location: 'Checkout Area' },
-                    { id: 'SM-CASH-05', description: "At closing, reconcile cash, card, and digital payments for each POS and investigate all discrepancies.", priority: 'High', riskLevel: 'High', proof: 'End-of-Day Reconciliation Report', location: 'Cash Office' },
-                    { id: 'SM-CASH-06', description: "Ensure all checkout staff are trained on handling coupons and promotions.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
-                    { id: 'SM-CASH-07', description: "Check that all POS hardware is clean and functional.", priority: 'High', riskLevel: 'Medium', proof: 'Hardware Check Log', location: 'Checkout Area' },
-                    { id: 'SM-CASH-09', description: "Provide excellent customer service at checkout.", priority: 'High', riskLevel: 'Medium', proof: 'Manager Observation', location: 'Checkout Area' },
-                    { id: 'SM-CASH-09', description: "Manage the return and exchange process efficiently.", priority: 'High', riskLevel: 'High', proof: 'Return Log', location: 'Customer Service Desk' },
-                    { id: 'SM-CASH-10', description: "Implement measures to prevent sweethearting and other forms of POS fraud.", priority: 'High', riskLevel: 'High', proof: 'Loss Prevention Audit', location: 'Checkout Area' }
+                    { id: 'SGR-CHPS-01', description: "Verify and sign for the cash float at the start of each shift.", priority: 'High', riskLevel: 'High', proof: 'Float Log', location: 'Cash Office' },
+                    { id: 'SGR-CHPS-02', description: "Reconcile cash, card, and digital payments against POS totals at the end of each shift.", priority: 'High', riskLevel: 'High', proof: 'End-of-Shift Report', location: 'Cash Office' },
+                    { id: 'SGR-CHPS-03', description: "Require a manager's override or signature for all voided transactions and refunds over a set limit (e.g., ₹1,000).", priority: 'High', riskLevel: 'High', proof: 'Override Log', location: 'POS Terminal' },
+                    { id: 'SGR-CHPS-04', description: "Conduct random daily audits of at least one cashier's drawer.", priority: 'High', riskLevel: 'High', proof: 'Random Audit Log', location: 'Cash Office' },
+                    { id: 'SGR-CHPS-05', description: "Ensure all cashiers log in with their unique biometric or password credentials.", priority: 'High', riskLevel: 'High', proof: 'POS User Policy', location: 'POS Terminal' },
+                    { id: 'SGR-CHPS-06', description: "Inspect payment terminals daily for any signs of tampering or skimming devices.", priority: 'High', riskLevel: 'High', proof: 'Terminal Inspection Log', location: 'POS Terminal' },
+                    { id: 'SGR-CHPS-07', description: "Secure cash drops and end-of-day deposits according to a two-person integrity rule.", priority: 'High', riskLevel: 'High', proof: 'Deposit Log', location: 'Cash Office' },
+                    { id: 'SGR-CHPS-08', description: "Review daily reports of voids, discounts, and 'no sale' transactions for unusual patterns.", priority: 'High', riskLevel: 'High', proof: 'Exception Report Analysis', location: 'Manager Office' },
+                    { id: 'SGR-CHPS-09', description: "Ensure CCTV provides a clear, unobstructed view of all cash registers.", priority: 'High', riskLevel: 'High', proof: 'CCTV Audit', location: 'Security Office' },
+                    { id: 'SGR-CHPS-10', description: "Train cashiers on how to identify and handle counterfeit currency.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Staff Room' }
                 ]
             },
             {
-                title: "🛡️ Loss Prevention & Store Security",
+                title: "📦 Inventory, Expiry & Replenishment",
+                department: "Inventory/Floor Staff",
+                frequency: "Daily/Weekly",
+                role: "Inventory Manager",
+                summary: "Optimize stock levels and prevent wastage with a rigorous SOP for inventory management. This checklist ensures FIFO compliance, timely replenishment, and accurate expiry tracking to protect margins.",
+                tasks: [
+                    { id: 'SGR-IER-01', description: "Perform daily checks in the fresh food department for items nearing their expiry date.", priority: 'High', riskLevel: 'High', proof: 'Expiry Check Log', location: 'Fresh Food Section' },
+                    { id: 'SGR-IER-02', description: "Implement and audit a strict FIFO (First-In, First-Out) policy during shelf replenishment.", priority: 'High', riskLevel: 'High', proof: 'FIFO Audit Form', location: 'Sales Floor' },
+                    { id: 'SGR-IER-03', description: "Generate daily replenishment reports from the POS/WMS to identify items that need restocking from the warehouse.", priority: 'High', riskLevel: 'Medium', proof: 'Replenishment Report', location: 'System' },
+                    { id: 'SGR-IER-04', description: "Conduct weekly cycle counts on high-value or fast-moving product categories.", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheets', location: 'Aisles/Warehouse' },
+                    { id: 'SGR-IER-05', description: "Log all damaged, spoiled, or expired products in a wastage/shrinkage file.", priority: 'High', riskLevel: 'Medium', proof: 'Wastage Log', location: 'System' },
+                    { id: 'SGR-IER-06', description: "Ensure items returned to shelves are in saleable condition.", priority: 'High', riskLevel: 'Medium', proof: 'Returns Inspection', location: 'Customer Service/Sales Floor' },
+                    { id: 'SGR-IER-07', description: "Clearly mark down items approaching expiry to encourage quick sale, as per store policy.", priority: 'Medium', riskLevel: 'Low', proof: 'Markdown Log', location: 'Sales Floor' },
+                    { id: 'SGR-IER-08', description: "Train staff on how to read and understand date codes (Best Before, Use By, MFD).", priority: 'High', riskLevel: 'Medium', proof: 'Training Record', location: 'Staff Room' },
+                    { id: 'SGR-IER-09', description: "Review stock levels of promotional items to prevent stockouts during sale periods.", priority: 'High', riskLevel: 'Medium', proof: 'Promo Stock Report', location: 'System' },
+                    { id: 'SGR-IER-10', description: "Analyze inventory turnover rates to optimize reordering.", priority: 'High', riskLevel: 'High', proof: 'Inventory Analysis Report', location: 'Office' }
+                ]
+            },
+            {
+                title: "⚖️ Legal & Metrology Compliance",
+                department: "Compliance/Legal",
+                frequency: "Monthly/Quarterly",
+                role: "Compliance Officer",
+                summary: "Ensure full compliance with all local laws, from FSSAI licensing to Legal Metrology for weights and measures. This checklist helps avoid fines and builds a foundation of legal integrity.",
+                tasks: [
+                    { id: 'SGR-LMC-01', description: "Verify that the store's FSSAI license is current and prominently displayed.", priority: 'High', riskLevel: 'High', proof: 'License Display Photo', location: 'Entrance' },
+                    { id: 'SGR-LMC-02', description: "Check that all weighing scales are calibrated and certified by the Legal Metrology department, with stamps visible.", priority: 'High', riskLevel: 'High', proof: 'Calibration Certificate', location: 'All Weighing Stations' },
+                    { id: 'SGR-LMC-03', description: "Audit a sample of pre-packaged goods to ensure they comply with packaged commodity rules (MRP, mfg date, net weight).", priority: 'High', riskLevel: 'High', proof: 'Packaging Audit Report', location: 'Sales Floor' },
+                    { id: 'SGR-LMC-04', description: "Ensure compliance with the Shops & Establishments Act, including store opening/closing times and staff work hours.", priority: 'High', riskLevel: 'High', proof: 'Roster & Time Sheets', location: 'HR Office' },
+                    { id: 'SGR-LMC-05', description: "Verify that all fire safety NOCs and equipment inspection certificates are up-to-date.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety File', location: 'Manager Office' },
+                    { id: 'SGR-LMC-06', description: "Maintain records of GST filings and other tax compliance documents.", priority: 'High', riskLevel: 'High', proof: 'Tax Filing Receipts', location: 'Accounts Office' },
+                    { id: 'SGR-LMC-07', description: "Ensure the store's POSH (Prevention of Sexual Harassment) committee is constituted and policy is displayed.", priority: 'High', riskLevel: 'High', proof: 'POSH Committee List', location: 'Notice Board' },
+                    { id: 'SGR-LMC-08', description: "Check that all staff are being paid at or above the minimum wage.", priority: 'High', riskLevel: 'High', proof: 'Payroll Records', location: 'HR Office' },
+                    { id: 'SGR-LMC-09', description: "Review and ensure compliance with plastic and e-waste management rules.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Policy', location: 'Manager Office' },
+                    { id: 'SGR-LMC-10', description: "Maintain a log of all official inspections and any corrective actions taken.", priority: 'High', riskLevel: 'High', proof: 'Inspection Logbook', location: 'Manager Office' }
+                ]
+            },
+            {
+                title: "🔒 Security & Loss Prevention",
                 department: "Security",
                 frequency: "Daily",
                 role: "Loss Prevention Officer",
-                summary: "Protect your profits and create a safe shopping environment. This proactive checklist helps deter theft, reduce shrinkage, and manage security risks.",
+                summary: "Protect your assets and profits with a multi-layered security approach. This checklist covers everything from CCTV audits and access control to managing shrinkage from receiving to checkout.",
                 tasks: [
-                    { id: 'SM-LP-01', description: "Audit EAS (Electronic Article Surveillance) gates, deactivators, and security tags to ensure they are functional.", priority: 'High', riskLevel: 'High', proof: 'EAS Test Log', location: 'Entrance/Checkout' },
-                    { id: 'SM-LP-02', description: "Review CCTV footage of 'sweethearting' hotspots like checkouts and receiving docks.", priority: 'High', riskLevel: 'High', proof: 'CCTV Review Log', location: 'Security Office' },
-                    { id: 'SM-LP-03', description: "Monitor high-value items (e.g., liquor, electronics) and check inventory levels.", priority: 'High', riskLevel: 'High', proof: 'High-Value Count Sheet', location: 'Specific Aisles' },
-                    { id: 'SM-LP-04', description: "Ensure all back doors and emergency exits are alarmed and not propped open.", priority: 'High', riskLevel: 'High', proof: 'Door Check Log', location: 'Perimeter' },
-                    { id: 'SM-LP-05', description: "Train front-end staff on procedures for handling counterfeit currency and fraudulent returns.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'HR' },
-                    { id: 'SM-LP-06', description: "Conduct uniformed staff patrols in high-theft areas.", priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Sales Floor' },
-                    { id: 'SM-LP-07', description: "Implement a clear bag policy for employees.", priority: 'Medium', riskLevel: 'Medium', proof: 'Policy Document', location: 'HR' },
-                    { id: 'SM-LP-08', description: "Work with local law enforcement on organized retail crime prevention.", priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Notes', location: 'Office' },
-                    { id: 'SM-LP-09', description: "Analyze shrinkage data to identify trends and focus areas.", priority: 'High', riskLevel: 'High', proof: 'Shrinkage Report', location: 'Office' },
-                    { id: 'SM-LP-10', description: "Perform regular audits of refund and void transactions.", priority: 'High', riskLevel: 'High', proof: 'Transaction Audit', location: 'Office' }
+                    { id: 'SGR-SLP-01', description: "Conduct a daily audit of all CCTV cameras to ensure they are recording and have clear, unobstructed views.", priority: 'High', riskLevel: 'High', proof: 'CCTV Audit Log', location: 'Security Room' },
+                    { id: 'SGR-SLP-02', description: "Review footage of high-risk areas like cash counters, receiving docks, and high-value aisles.", priority: 'High', riskLevel: 'High', proof: 'Footage Review Log', location: 'Security Room' },
+                    { id: 'SGR-SLP-03', description: "Test EAS (Electronic Article Surveillance) gates at the store entrance/exit daily.", priority: 'High', riskLevel: 'High', proof: 'EAS Test Log', location: 'Entrance' },
+                    { id: 'SGR-SLP-04', description: "Ensure all back doors and delivery access points are secured and alarmed.", priority: 'High', riskLevel: 'High', proof: 'Access Control Log', location: 'Perimeter' },
+                    { id: 'SGR-SLP-05', description: "Implement and audit a clear bag policy for employees exiting the store.", priority: 'Medium', riskLevel: 'Medium', proof: 'Employee Exit Check Log', location: 'Staff Exit' },
+                    { id: 'SGR-SLP-06', description: "Monitor for and investigate any unusual patterns of voids, refunds, or discounts at the POS.", priority: 'High', riskLevel: 'High', proof: 'POS Exception Report', location: 'Manager Office' },
+                    { id: 'SGR-SLP-07', description: "Conduct visible security patrols in high-theft areas.", priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Sales Floor' },
+                    { id: 'SGR-SLP-08', description: "Train staff on how to identify and report suspicious behavior or potential theft.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
+                    { id: 'SGR-SLP-09', description: "Maintain an incident log for all security-related events, including theft, altercations, and accidents.", priority: 'High', riskLevel: 'High', proof: 'Incident Logbook', location: 'Security Office' },
+                    { id: 'SGR-SLP-10', description: "Secure high-value items in locked displays or with security tags.", priority: 'High', riskLevel: 'High', proof: 'High-Value Item Audit', location: 'Sales Floor' }
                 ]
             },
             {
-                title: "🗑️ Waste Management & Recycling",
-                department: "Facilities",
+                title: "🧑‍🍳 In-Store Food Outlet Management",
+                department: "F&B/Operations",
                 frequency: "Daily",
-                role: "Facilities Coordinator",
-                summary: "Manage waste streams efficiently to meet sustainability goals and comply with health codes, focusing on recycling, food waste, and sanitation.",
+                role: "Food Court Manager",
+                summary: "Manage the unique risks of in-store food courts or bakeries. This checklist ensures third-party vendors and internal food outlets adhere to strict hygiene, safety, and FSSAI standards.",
                 tasks: [
-                    { id: 'SM-WASTE-01', description: "Ensure separate, clearly labeled bins are available for different waste streams (general, recyclable, food waste).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Back of House' },
-                    { id: 'SM-WASTE-02', description: "Check that waste compactors and balers are operational and used correctly.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Check Log', location: 'Waste Area' },
-                    { id: 'SM-WASTE-03', description: "Monitor and log the weight of food waste to identify opportunities for reduction.", priority: 'Medium', riskLevel: 'Low', proof: 'Waste Log', location: 'Waste Area' },
-                    { id: 'SM-WASTE-04', description: "Schedule regular pickups to prevent overflow and pest issues.", priority: 'High', riskLevel: 'Medium', proof: 'Pickup Schedule', location: 'Office' },
-                    { id: 'SM-WASTE-05', description: "Keep the waste and recycling area clean and sanitized to comply with health codes.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Waste Area' },
-                    { id: 'SM-WASTE-06', description: "Train staff on proper waste segregation.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
-                    { id: 'SM-WASTE-07', description: "Ensure hazardous waste is disposed of correctly.", priority: 'High', riskLevel: 'High', proof: 'Hazardous Waste Log', location: 'Waste Area' },
-                    { id: 'SM-WASTE-08', description: "Track recycling rates and set improvement targets.", priority: 'Medium', riskLevel: 'Low', proof: 'Recycling Report', location: 'Office' },
-                    { id: 'SM-WASTE-09', description: "Comply with all local regulations regarding waste disposal.", priority: 'High', riskLevel: 'High', proof: 'Compliance Audit', location: 'Office' },
-                    { id: 'SM-WASTE-10', description: "Explore partnerships for food donation to reduce waste.", priority: 'Medium', riskLevel: 'Low', proof: 'Partnership Agreement', location: 'Office' }
+                    { id: 'SGR-IFO-01', description: "Verify FSSAI licenses for all food vendors are valid and displayed.", priority: 'High', riskLevel: 'High', proof: 'License Check Log', location: 'Food Court' },
+                    { id: 'SGR-IFO-02', description: "Conduct a daily hygiene inspection of each food stall, checking for cleanliness, proper food handling, and staff hygiene.", priority: 'High', riskLevel: 'High', proof: 'Hygiene Inspection Form', location: 'Food Court' },
+                    { id: 'SGR-IFO-03', description: "Check and log temperatures of all food holding units (hot and cold) at each stall.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Food Court' },
+                    { id: 'SGR-IFO-04', description: "Ensure each vendor has a functional fire extinguisher (Class K) and staff know how to use it.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Audit', location: 'Food Court' },
+                    { id: 'SGR-IFO-05', description: "Check gas lines and electrical connections for all vendor equipment for safety.", priority: 'High', riskLevel: 'High', proof: 'Utility Safety Check', location: 'Food Court' },
+                    { id: 'SGR-IFO-06', description: "Verify that vendors are using approved water sources and have RO systems serviced.", priority: 'High', riskLevel: 'High', proof: 'Water Source Verification', location: 'Food Court' },
+                    { id: 'SGR-IFO-07', description: "Ensure proper waste segregation and disposal procedures are being followed by all vendors.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Audit', location: 'Food Court' },
+                    { id: 'SGR-IFO-08', description: "Check for correct allergen information display at each food stall.", priority: 'High', riskLevel: 'High', proof: 'Allergen Info Audit', location: 'Food Court' },
+                    { id: 'SGR-IFO-09', description: "Review customer complaints related to food court vendors and take corrective action.", priority: 'High', riskLevel: 'High', proof: 'Complaint Log', location: 'Manager Office' },
+                    { id: 'SGR-IFO-10', description: "Hold a weekly coordination meeting with all food court vendors to discuss safety and operational issues.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Manager Office' }
                 ]
             },
             {
-                title: "🐜 Pest Control Management",
+                title: "🌱 Sustainability & Waste Management",
                 department: "Facilities/Compliance",
-                frequency: "Weekly",
-                role: "Store Manager",
-                summary: "Implement a critical checklist for preventing pests in a large food-handling environment, protecting both product and public health.",
+                frequency: "Monthly",
+                role: "Sustainability Officer",
+                summary: "Meet regulatory requirements and improve your brand's green credentials. This checklist provides a framework for managing plastic, e-waste, and organic waste in compliance with Indian laws.",
                 tasks: [
-                    { id: 'PEST-SM-01', description: "Inspect receiving docks, garbage areas, and food departments for any signs of pest activity.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'Store-wide' },
-                    { id: 'PEST-SM-02', description: "Ensure all food in storage and on display is properly covered or sealed.", priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Store-wide' },
-                    { id: 'PEST-SM-03', description: "Check for and seal any cracks or holes in walls, floors, and around pipes that could be entry points.", priority: 'High', riskLevel: 'Medium', proof: 'Structural Inspection Log', location: 'Store-wide' },
-                    { id: 'PEST-SM-04', description: "Verify that all pest traps and bait stations are in their correct locations and are being serviced by the vendor.", priority: 'High', riskLevel: 'High', proof: 'Vendor Service Report', location: 'Store-wide' },
-                    { id: 'PEST-SM-05', description: "Maintain a high standard of cleanliness, ensuring no food debris is left overnight.", priority: 'High', riskLevel: 'High', proof: 'Closing Cleaning Log', location: 'Store-wide' },
-                    { id: 'PEST-SM-06', description: "Keep doors to the outside closed as much as possible.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Perimeter' },
-                    { id: 'PEST-SM-07', description: "Train staff on how to spot and report pest activity.", priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Area' },
-                    { id: 'PEST-SM-08', description: "Review pest control logs and take corrective action as needed.", priority: 'High', riskLevel: 'High', proof: 'Log Review', location: 'Office' },
-                    { id: 'PEST-SM-09', description: "Ensure that the external area around the store is clean and free of pest attractants.", priority: 'High', riskLevel: 'Medium', proof: 'External Area Inspection', location: 'Exterior' },
-                    { id: 'PEST-SM-10', description: "Work with the pest control vendor to develop a long-term prevention plan.", priority: 'High', riskLevel: 'Medium', proof: 'Prevention Plan Document', location: 'Office' }
+                    { id: 'SGR-SWM-01', description: "Audit waste streams to measure the percentage of plastic, organic, and e-waste being generated.", priority: 'High', riskLevel: 'Medium', proof: 'Waste Audit Report', location: 'Waste Area' },
+                    { id: 'SGR-SWM-02', description: "Ensure compliance with Plastic Waste Management Rules, including use of approved carry bags.", priority: 'High', riskLevel: 'High', proof: 'Compliance Certificate', location: 'Checkout' },
+                    { id: 'SGR-SWM-03', description: "Maintain a log for e-waste collection and ensure it is handed over to a certified recycler.", priority: 'High', riskLevel: 'High', proof: 'E-Waste Manifest', location: 'Manager Office' },
+                    { id: 'SGR-SWM-04', description: "Implement and monitor an in-store composting program or a partnership for managing organic waste.", priority: 'High', riskLevel: 'Medium', proof: 'Organic Waste Log', location: 'Waste Area' },
+                    { id: 'SGR-SWM-05', description: "Track and report on energy and water consumption, and set reduction targets.", priority: 'High', riskLevel: 'Medium', proof: 'Utility Consumption Report', location: 'Manager Office' },
+                    { id: 'SGR-SWM-06', description: "Train staff on proper waste segregation at source.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Staff Room' },
+                    { id: 'SGR-SWM-07', description: "Explore opportunities to reduce packaging from suppliers.", priority: 'Medium', riskLevel: 'Low', proof: 'Supplier Communication', location: 'Procurement Office' },
+                    { id: 'SGR-SWM-08', description: "Ensure all waste management vendors are certified and compliant.", priority: 'High', riskLevel: 'High', proof: 'Vendor Compliance File', location: 'Manager Office' },
+                    { id: 'SGR-SWM-09', description: "Set up collection points for customers to drop off e-waste or plastic waste.", priority: 'Medium', riskLevel: 'Low', proof: 'In-store Signage', location: 'Entrance' },
+                    { id: 'SGR-SWM-10', description: "Prepare and file annual environmental compliance reports as required.", priority: 'High', riskLevel: 'High', proof: 'Filed Report', location: 'Compliance Office' }
+                ]
+            },
+            {
+                title: "✅ Daily Store Readiness & Audit",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Store Manager",
+                summary: "A master checklist for store managers to conduct a comprehensive daily walkthrough. It ensures the entire store is safe, compliant, and ready for business, covering key points from all departments.",
+                tasks: [
+                    { id: 'SGR-DSRA-01', description: "Verify all department opening checklists have been completed and signed off.", priority: 'High', riskLevel: 'High', proof: 'Signed Checklists', location: 'Manager Office' },
+                    { id: 'SGR-DSRA-02', description: "Conduct a full walk of the sales floor, checking for cleanliness, safety hazards, and planogram compliance.", priority: 'High', riskLevel: 'High', proof: 'Manager Walkthrough Log', location: 'Sales Floor' },
+                    { id: 'SGR-DSRA-03', description: "Review previous day's sales reports and current day's targets.", priority: 'High', riskLevel: 'Medium', proof: 'Sales Report', location: 'Manager Office' },
+                    { id: 'SGR-DSRA-04', description: "Check that all staff are present, correctly rostered, and in proper uniform.", priority: 'High', riskLevel: 'Medium', proof: 'Roster Sheet', location: 'Staff Room' },
+                    { id: 'SGR-DSRA-05', description: "Review any overnight security or maintenance incident reports.", priority: 'High', riskLevel: 'High', proof: 'Incident Logs', location: 'Manager Office' },
+                    { id: 'SGR-DSRA-06', description: "Spot-check temperatures in one random cold storage unit.", priority: 'High', riskLevel: 'High', proof: 'Spot Check Log', location: 'Cold Storage' },
+                    { id: 'SGR-DSRA-07', description: "Spot-check one aisle for expiry dates and FIFO compliance.", priority: 'High', riskLevel: 'High', proof: 'Spot Check Log', location: 'Sales Floor' },
+                    { id: 'SGR-DSRA-08', description: "Hold a daily morning huddle with all department heads.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Notes', location: 'Manager Office' },
+                    { id: 'SGR-DSRA-09', description: "Ensure the store's external appearance is clean and welcoming.", priority: 'High', riskLevel: 'Low', proof: 'Visual Inspection', location: 'Exterior' },
+                    { id: 'SGR-DSRA-10', description: "Sign off on the store's readiness for business, officially opening for the day.", priority: 'High', riskLevel: 'High', proof: 'Master Readiness Log', location: 'Manager Office' }
                 ]
             }
         ]
@@ -1035,7 +1073,7 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Tv className="w-8 h-8 text-primary" />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Store Managers", "Regional Managers", "GMs", "VPs of Retail", "Directors of Operations", "GMs", "VPs", "Directors"],
+        whoIsItFor: ["Store Managers", "Regional Managers", "GMs", "VPs of Retail", "Directors of Operations", "COOs"],
         sampleItems: [
             "Standardize Store Opening & Closing procedures for security and readiness.",
             "Implement robust Inventory & Stock Management to prevent shrinkage.",
@@ -1360,10 +1398,10 @@ export const premiumPacks: PremiumPack[] = [
                     { id: "FP-DIST-04", description: "Create and QC subtitles in multiple languages.", priority: "High", riskLevel: "Medium", proof: "Subtitle Files (.srt)", location: "Post-Production Suite" },
                     { id: "FP-DIST-05", description: "Archive all project files, including raw footage and final masters, in a secure long-term storage solution.", priority: "High", riskLevel: "High", proof: "Archive Log", location: "Data Center" },
                     { id: "FP-DIST-06", description: "Develop a marketing and promotional strategy.", priority: 'High', riskLevel: 'High', proof: 'Marketing Plan', location: 'Marketing Office' },
-                    { id: "FP-DIST-07", description: "Submit the film to festivals.", priority: 'High', riskLevel: 'Medium', proof: 'Festival Submission Log', location: 'Marketing Office' },
-                    { id: "FP-DIST-08", description: "Secure distribution deals with theaters, streaming platforms, and broadcasters.", priority: 'High', riskLevel: 'High', proof: 'Distribution Agreements', location: 'Legal Department' },
+                    { id: 'FP-DIST-07', description: "Submit the film to festivals.", priority: 'High', riskLevel: 'Medium', proof: 'Festival Submission Log', location: 'Marketing Office' },
+                    { id: 'FP-DIST-08', description: "Secure distribution deals with theaters, streaming platforms, and broadcasters.", priority: 'High', riskLevel: 'High', proof: 'Distribution Agreements', location: 'Legal Department' },
                     { id: 'FP-DIST-09', description: "Manage the film's social media presence.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Calendar', location: 'Marketing Office' },
-                    { id: 'FP-DIST-10', description: "Track box office and streaming performance.", priority: 'High', riskLevel: 'High', proof: 'Performance Reports', location: 'Marketing Office' }
+                    { id: "FP-DIST-10", description: "Track box office and streaming performance.", priority: 'High', riskLevel: 'High', proof: 'Performance Reports', location: 'Marketing Office' }
                 ]
             },
             {
@@ -1380,7 +1418,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PEST-FILM-05', description: "On location shoots, assess pest-related risks and take appropriate preventive measures.", priority: 'High', riskLevel: 'High', proof: 'Location Risk Assessment', location: 'Location' },
                     { id: 'PEST-FILM-06', description: "Keep a log of all pest sightings and the actions taken.", priority: 'High', riskLevel: 'Medium', proof: 'Pest Sighting Log', location: 'Admin Office' },
                     { id: 'PEST-FILM-07', description: "Ensure that exterior areas around the studio are clean and free of debris.", priority: 'High', riskLevel: 'Medium', proof: 'Exterior Inspection Log', location: 'Exterior' },
-                    { id: 'PEST-FILM-08', description: "Use only approved, non-toxic pest control methods in sensitive areas.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Product List', location: 'Admin Office' },
+                    { id: 'PEST-FILM-08', description: "Use only approved, non-toxic pest control methods in sensitive areas.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Product List', location: 'Office' },
                     { id: 'PEST-FILM-09', description: "Train staff on how to identify and report pest issues.", priority: 'Medium', riskLevel: 'Low', proof: 'Training Log', location: 'HR' },
                     { id: 'PEST-FILM-10', description: "Conduct a thorough pest control audit before and after any major event or shoot.", priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Admin Office' }
                 ]
@@ -2795,3 +2833,4 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ]
+
