@@ -81,19 +81,39 @@ const OptionA = () => (
 );
 
 const OptionB = () => (
-    <Card className="border-accent">
+    <Card className="border-2 border-accent shadow-lg">
         <CardHeader>
             <CardTitle>Option B: High-Stakes Scenario (Modal)</CardTitle>
             <CardDescription>Keeps the user on the page and uses a compelling, story-driven scenario to demonstrate the pack's value in solving critical problems. Highly recommended.</CardDescription>
         </CardHeader>
         <CardContent>
             <AlertDialog>
-                <AlertDialogTrigger asChild>
-                    <Button variant="outline" className="w-full">
-                        <Eye className="w-4 h-4 mr-2" />
-                        Preview a Real-World Scenario
-                    </Button>
-                </AlertDialogTrigger>
+                <div className="space-y-4">
+                    <div>
+                        <h4 className="font-semibold mb-2 text-sm">Button Style Options:</h4>
+                        <div className="space-y-2">
+                             <AlertDialogTrigger asChild>
+                                <Button variant="outline" className="w-full">
+                                    <Eye className="w-4 h-4 mr-2" />
+                                    Preview Scenario (Outline - Subtle)
+                                </Button>
+                            </AlertDialogTrigger>
+                             <AlertDialogTrigger asChild>
+                                <Button variant="secondary" className="w-full">
+                                    <Eye className="w-4 h-4 mr-2" />
+                                    Preview Scenario (Secondary - Balanced)
+                                </Button>
+                            </AlertDialogTrigger>
+                             <AlertDialogTrigger asChild>
+                                <Button variant="accent" className="w-full">
+                                    <Eye className="w-4 h-4 mr-2" />
+                                    Preview Scenario (Accent - High Visibility)
+                                </Button>
+                            </AlertDialogTrigger>
+                        </div>
+                    </div>
+                </div>
+
                 <AlertDialogContent className="max-w-4xl">
                     <AlertDialogHeader>
                         <AlertDialogTitle className="font-headline flex items-center gap-3">
@@ -226,7 +246,7 @@ export default function SampleOptionsPage() {
                                 Sample/Preview UI Options
                             </h1>
                             <p className="mt-4 text-muted-foreground md:text-lg">
-                                Here are different ways we can showcase a sample of the checklist pack content to users before they purchase. The content below has been updated to reflect more compelling, scenario-based samples.
+                               Here are different ways we can showcase a sample of the checklist pack content to users before they purchase. The content has been updated to reflect more compelling, scenario-based samples.
                             </p>
                         </div>
 
