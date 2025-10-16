@@ -1279,7 +1279,7 @@ export const premiumPacks: PremiumPack[] = [
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Corporate & Tech",
         description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
-        icon: <Briefcase className="w-8 h-8 text-primary" />,
+        icon: <Building2 className="w-8 h-8 text-primary" />,
         badgeText: "Enterprise Grade",
         bestseller: true,
         whoIsItFor: ["COOs", "Heads of Corporate Real Estate", "Directors of Facilities", "VPs of Administration", "Data Center Managers"],
@@ -1825,11 +1825,16 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Transport Manager",
                 summary: "Ensure every child's journey to and from school is safe with rigorous daily checks for vehicle fitness, driver readiness, and student safety protocols.",
                 tasks: [
-                    { id: 'SBST-01', description: "Conduct a pre-trip inspection of the bus (tires, lights, brakes, first-aid kit).", priority: 'High', riskLevel: 'High', proof: 'Pre-Trip Inspection Log', location: 'Bus Depot' },
-                    { id: 'SBST-02', description: "Verify the driver's fitness for duty (no signs of illness or fatigue).", priority: 'High', riskLevel: 'High', proof: 'Driver Fitness Log', location: 'Bus Depot' },
-                    { id: 'SBST-03', description: "Ensure the on-board GPS and CCTV are functional.", priority: 'High', riskLevel: 'High', proof: 'System Check Log', location: 'Bus' },
-                    { id: 'SBST-04', description: "Check that a female attendant is present on every bus route with female students.", priority: 'High', riskLevel: 'High', proof: 'Attendant Roster', location: 'Bus' },
-                    { id: 'SBST-05', description: "Perform a mandatory 'end-of-route' sweep of the entire bus to ensure no child is left behind.", priority: 'High', riskLevel: 'High', proof: 'End-of-Route Log', location: 'Bus' }
+                    { id: 'SBST-01', description: "Conduct a pre-trip inspection of the bus (tires, lights, brakes, first-aid kit, fire extinguisher).", priority: 'High', riskLevel: 'High', proof: 'Pre-Trip Inspection Log', location: 'Bus Depot' },
+                    { id: 'SBST-02', description: "Verify the driver's fitness for duty (no signs of illness or fatigue) and check their license validity.", priority: 'High', riskLevel: 'High', proof: 'Driver Fitness Log', location: 'Bus Depot' },
+                    { id: 'SBST-03', description: "Ensure the on-board GPS and CCTV are functional and recording.", priority: 'High', riskLevel: 'High', proof: 'System Check Log', location: 'Bus' },
+                    { id: 'SBST-04', description: "Check that a female attendant is present on every bus route with female students, as per regulations.", priority: 'High', riskLevel: 'High', proof: 'Attendant Roster', location: 'Bus' },
+                    { id: 'SBST-05', description: "Perform a mandatory 'end-of-route' sweep of the entire bus to ensure no child is left behind.", priority: 'High', riskLevel: 'High', proof: 'End-of-Route Log with signature', location: 'Bus' },
+                    { id: 'SBST-06', description: "Confirm that the speed governor is installed and functional.", priority: 'High', riskLevel: 'High', proof: 'Vendor Certificate', location: 'Bus Depot' },
+                    { id: 'SBST-07', description: "Ensure all emergency exits are clearly marked and operational.", priority: 'High', riskLevel: 'High', proof: 'Weekly Exit Check', location: 'Bus' },
+                    { id: 'SBST-08', description: "Maintain a log of all maintenance and repairs for each bus.", priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Record', location: 'Transport Office' },
+                    { id: 'SBST-09', description: "Verify student attendance on the bus for both morning and afternoon trips.", priority: 'High', riskLevel: 'Medium', proof: 'Attendance Log', location: 'Bus' },
+                    { id: 'SBST-10', description: "Train drivers and attendants on emergency procedures and child safety protocols annually.", priority: 'High', riskLevel: 'High', proof: 'Training Certificate', location: 'HR' }
                 ]
             },
             {
@@ -1839,11 +1844,16 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Head of Security",
                 summary: "Control access to your campus and protect students with a strict protocol for managing visitors, verifying identities, and monitoring perimeters.",
                 tasks: [
-                    { id: 'CSVM-01', description: "Verify the identity of all visitors and check them against a pre-approved list.", priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Main Gate' },
-                    { id: 'CSVM-02', description: "Issue temporary ID badges to all authorized visitors.", priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Main Gate' },
-                    { id: 'CSVM-03', description: "Conduct regular patrols of the campus perimeter and check for any breaches.", priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Campus Perimeter' },
-                    { id: 'CSVM-04', description: "Monitor CCTV feeds for any suspicious activity.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Security Room' },
-                    { id: 'CSVM-06', description: "Maintain a detailed log of all security incidents.", priority: 'High', riskLevel: 'High', proof: 'Incident Logbook', location: 'Security Office' }
+                    { id: 'CSVM-01', description: "Verify the identity of all visitors and check them against a pre-approved appointment list.", priority: 'High', riskLevel: 'High', proof: 'Visitor Management System Log', location: 'Main Gate' },
+                    { id: 'CSVM-02', description: "Issue temporary, time-bound ID badges to all authorized visitors, which must be worn at all times.", priority: 'High', riskLevel: 'High', proof: 'Visitor Badge Log', location: 'Main Gate' },
+                    { id: 'CSVM-03', description: "Conduct regular patrols of the campus perimeter, checking for any breaches, and logging the patrol route.", priority: 'High', riskLevel: 'Medium', proof: 'Digital Patrol Log', location: 'Campus Perimeter' },
+                    { id: 'CSVM-04', description: "Monitor live CCTV feeds for any suspicious activity, especially near entry/exit points and playgrounds.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Security Room' },
+                    { id: 'CSVM-05', description: "Maintain a detailed log of all security incidents, including actions taken and resolutions.", priority: 'High', riskLevel: 'High', proof: 'Incident Report File', location: 'Security Office' },
+                    { id: 'CSVM-06', description: "Ensure all security personnel are trained in child protection policies and emergency response.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'CSVM-07', description: "Test all campus alarms (intruder, fire) and communication systems weekly.", priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Security Room' },
+                    { id: 'CSVM-08', description: "Enforce a strict policy for student pickup, verifying the identity of the person collecting the child.", priority: 'High', riskLevel: 'High', proof: 'Pickup Authorization Log', location: 'Exit Gate' },
+                    { id: 'CSVM-09', description: "Conduct background checks on all new security personnel.", priority: 'High', riskLevel: 'High', proof: 'Background Check Report', location: 'HR' },
+                    { id: 'CSVM-10', description: "Perform a security sweep of the campus after school hours to ensure no unauthorized individuals are present.", priority: 'High', riskLevel: 'Medium', proof: 'End-of-Day Security Log', location: 'Campus-wide' }
                 ]
             },
             {
@@ -1853,11 +1863,16 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Cafeteria Manager",
                 summary: "Prevent foodborne illness and ensure compliance with FSSAI standards using this HACCP-based checklist for kitchen hygiene, food storage, and preparation.",
                 tasks: [
-                    { id: 'CFS-01', description: "Check and log temperatures of all refrigerators and freezers.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
-                    { id: 'CFS-02', description: "Ensure all food handlers are following proper hygiene practices (hairnets, gloves, handwashing).", priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit', location: 'Kitchen' },
-                    { id: 'CFS-03', description: "Verify that raw and cooked foods are stored separately to prevent cross-contamination.", priority: 'High', riskLevel: 'High', proof: 'Storage Inspection', location: 'Kitchen/Storage' },
-                    { id: 'CFS-04', description: "Check that all food is cooked to the correct internal temperature.", priority: 'High', riskLevel: 'High', proof: 'Cooking Temperature Log', location: 'Kitchen' },
-                    { id: 'CFS-05', description: "Ensure the dining area is cleaned and sanitized before and after each meal service.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Cafeteria' }
+                    { id: 'CFS-01', description: "Check and log temperatures of all refrigerators, freezers, and hot holding units twice daily.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
+                    { id: 'CFS-02', description: "Ensure all food handlers are following proper hygiene practices (hairnets, gloves, handwashing, no jewelry).", priority: 'High', riskLevel: 'High', proof: 'Daily Hygiene Audit', location: 'Kitchen' },
+                    { id: 'CFS-03', description: "Verify that raw and cooked foods are stored and prepared separately to prevent cross-contamination.", priority: 'High', riskLevel: 'High', proof: 'Storage & Prep Inspection', location: 'Kitchen/Storage' },
+                    { id: 'CFS-04', description: "Use a calibrated thermometer to check that all food is cooked to the correct internal temperature.", priority: 'High', riskLevel: 'High', proof: 'Cooking Temperature Log', location: 'Kitchen' },
+                    { id: 'CFS-05', description: "Ensure the dining area is cleaned and sanitized before and after each meal service.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Cafeteria' },
+                    { id: 'CFS-06', description: "Check for FSSAI license of all food suppliers and inspect raw materials upon delivery.", priority: 'High', riskLevel: 'High', proof: 'Supplier File & Receiving Log', location: 'Receiving Area' },
+                    { id: 'CFS-07', description: "Ensure a pest control program is in place and records are maintained.", priority: 'High', riskLevel: 'High', proof: 'Pest Control Logbook', location: 'Admin Office' },
+                    { id: 'CFS-08', description: "Verify that potable water is used for all cooking and cleaning.", priority: 'High', riskLevel: 'High', proof: 'Water Test Report', location: 'Admin Office' },
+                    { id: 'CFS-09', description: "Label all stored food items with date of preparation and use-by date.", priority: 'High', riskLevel: 'Medium', proof: 'Labeling Audit', location: 'Storage' },
+                    { id: 'CFS-10', description: "Maintain a sample of each cooked meal for 48 hours for testing if required.", priority: 'High', riskLevel: 'Medium', proof: 'Food Sample Log', location: 'Kitchen' }
                 ]
             },
             {
@@ -1867,11 +1882,92 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Admin Head",
                 summary: "Prepare your school for any crisis. This checklist covers the planning and execution of drills for fire, medical emergencies, and evacuations.",
                 tasks: [
-                    { id: 'EPD-01', description: "Conduct a fire drill each quarter and record evacuation times.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Campus-wide' },
-                    { id: 'EPD-02', description: "Inspect all fire safety equipment (extinguishers, alarms) monthly.", priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Campus-wide' },
+                    { id: 'EPD-01', description: "Conduct a fire drill each quarter and record evacuation times and any issues observed.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Campus-wide' },
+                    { id: 'EPD-02', description: "Inspect all fire safety equipment (extinguishers, alarms, hoses) monthly and ensure they are certified.", priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Campus-wide' },
                     { id: 'EPD-03', description: "Ensure a documented emergency response plan is in place for various scenarios (intruder, medical, natural disaster).", priority: 'High', riskLevel: 'High', proof: 'Emergency Plan Document', location: 'Admin Office' },
-                    { id: 'EPD-04', description: "Verify that first-aid kits are fully stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Log', location: 'Various Locations' },
-                    { id: 'EPD-05', description: "Train staff and students on the emergency evacuation routes and assembly points.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Campus-wide' }
+                    { id: 'EPD-04', description: "Verify that first-aid kits are fully stocked, accessible, and a trained first-aider is always on-site.", priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Log & Staff Roster', location: 'Various Locations' },
+                    { id: 'EPD-05', description: "Train all staff and students on the emergency evacuation routes and designated safe assembly points.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Campus-wide' },
+                    { id: 'EPD-06', description: "Ensure emergency contact information for all students is up-to-date and easily accessible.", priority: 'High', riskLevel: 'High', proof: 'Student Information System Audit', location: 'Admin Office' },
+                    { id: 'EPD-07', description: "Test the school's mass communication system (e.g., PA system, SMS alerts) monthly.", priority: 'High', riskLevel: 'Medium', proof: 'Communication Test Log', location: 'Admin Office' },
+                    { id: 'EPD-08', description: "Coordinate with local emergency services (Fire, Police, Hospital) and maintain their contact details.", priority: 'High', riskLevel: 'Medium', proof: 'Contact List', location: 'Admin Office' },
+                    { id: 'EPD-09', description: "Check that all emergency exits are clearly marked, illuminated, and never blocked.", priority: 'High', riskLevel: 'High', proof: 'Daily Campus Walkthrough', location: 'Campus-wide' },
+                    { id: 'EPD-10', description: "Conduct a post-drill review to identify areas for improvement in the emergency plan.", priority: 'High', riskLevel: 'Medium', proof: 'Post-Drill Review Minutes', location: 'Admin Office' }
+                ]
+            },
+            {
+                title: "🏫 Classroom & Building Safety Audit",
+                department: "Facilities/Admin",
+                frequency: "Monthly",
+                role: "Facility Manager",
+                summary: "Ensure the physical learning environment is safe for students and staff with this comprehensive monthly audit of classrooms, labs, and building infrastructure.",
+                tasks: [
+                    { id: 'CBSA-01', description: "Inspect classroom furniture (desks, chairs) for sharp edges or instability.", priority: 'High', riskLevel: 'Medium', proof: 'Classroom Inspection Log', location: 'Classrooms' },
+                    { id: 'CBSA-02', description: "Check for any electrical hazards like exposed wires, overloaded sockets, or uncertified equipment.", priority: 'High', riskLevel: 'High', proof: 'Electrical Safety Log', location: 'Campus-wide' },
+                    { id: 'CBSA-03', description: "Ensure all heavy furniture (cupboards, shelves) is securely anchored to the walls.", priority: 'High', riskLevel: 'High', proof: 'Anchoring Check', location: 'Classrooms/Labs' },
+                    { id: 'CBSA-04', description: "Verify that science labs have functional safety showers, eyewash stations, and fume hoods.", priority: 'High', riskLevel: 'High', proof: 'Lab Safety Equipment Log', location: 'Science Labs' },
+                    { id: 'CBSA-05', description: "Inspect playground equipment for any signs of wear, rust, or structural damage.", priority: 'High', riskLevel: 'High', proof: 'Playground Inspection Log', location: 'Playground' },
+                    { id: 'CBSA-06', description: "Ensure all glass windows and doors are made of shatterproof glass or have a safety film.", priority: 'High', riskLevel: 'Medium', proof: 'Glass Safety Audit', location: 'Campus-wide' },
+                    { id: 'CBSA-07', description: "Check for any slip, trip, or fall hazards on floors, stairs, and walkways.", priority: 'High', riskLevel: 'Medium', proof: 'Campus Walkthrough Log', location: 'Campus-wide' },
+                    { id: 'CBSA-08', description: "Verify that ceilings and walls are free from leakages, cracks, or falling plaster.", priority: 'High', riskLevel: 'High', proof: 'Building Integrity Check', location: 'Campus-wide' },
+                    { id: 'CBSA-09', description: "Ensure proper ventilation and air quality in all classrooms and enclosed spaces.", priority: 'High', riskLevel: 'Medium', proof: 'HVAC Maintenance Log', location: 'Campus-wide' },
+                    { id: 'CBSA-10', description: "Confirm that hazardous materials are stored securely and away from student access.", priority: 'High', riskLevel: 'High', proof: 'Chemical Storage Audit', location: 'Labs/Storage' }
+                ]
+            },
+            {
+                title: "🩺 Student Health & Medical Room",
+                department: "Health/Admin",
+                frequency: "Daily/Weekly",
+                role: "School Nurse/Medical Officer",
+                summary: "Manage student health effectively with protocols for administering medication, handling medical emergencies, and maintaining student health records.",
+                tasks: [
+                    { id: 'SHMR-01', description: "Maintain an accurate and confidential health record for every student, including allergies and chronic conditions.", priority: 'High', riskLevel: 'High', proof: 'Student Health Records', location: 'Medical Room' },
+                    { id: 'SHMR-02', description: "Administer medication only with written parental consent and a doctor's prescription.", priority: 'High', riskLevel: 'High', proof: 'Medication Administration Log', location: 'Medical Room' },
+                    { id: 'SHMR-03', description: "Conduct daily checks of the medical room to ensure it is clean, and all equipment is functional.", priority: 'High', riskLevel: 'Medium', proof: 'Daily Room Check Log', location: 'Medical Room' },
+                    { id: 'SHMR-04', description: "Check inventory and expiry dates of all medicines and first-aid supplies weekly.", priority: 'High', riskLevel: 'High', proof: 'Inventory & Expiry Log', location: 'Medical Room' },
+                    { id: 'SHMR-05', description: "Maintain a log of all student visits to the medical room, including complaints, treatment given, and parental notification.", priority: 'High', riskLevel: 'Medium', proof: 'Student Visit Log', location: 'Medical Room' },
+                    { id: 'SHMR-06', description: "Ensure a qualified nurse or doctor is present on campus during all school hours.", priority: 'High', riskLevel: 'High', proof: 'Staff Roster', location: 'Admin' },
+                    { id: 'SHMR-07', description: "Have a clear, documented protocol for handling medical emergencies, including contact with parents and nearby hospitals.", priority: 'High', riskLevel: 'High', proof: 'Emergency Protocol Document', location: 'Medical Room' },
+                    { id: 'SHMR-08', description: "Conduct regular health screenings (e.g., vision, dental) as per government guidelines.", priority: 'Medium', riskLevel: 'Low', proof: 'Screening Schedule', location: 'Medical Room' },
+                    { id: 'SHMR-09', description: "Provide health and hygiene education sessions for students and staff.", priority: 'Medium', riskLevel: 'Low', proof: 'Session Plan', location: 'Various' },
+                    { id: 'SHMR-10', description: "Ensure safe disposal of biomedical waste (e.g., used syringes, dressings).", priority: 'High', riskLevel: 'High', proof: 'Biomedical Waste Log', location: 'Medical Room' }
+                ]
+            },
+            {
+                title: "📋 Academic & Co-curricular Planning",
+                department: "Academics",
+                frequency: "Term-wise",
+                role: "Academic Coordinator",
+                summary: "Ensure a well-structured and balanced academic year with this planning checklist for curriculum, examinations, events, and co-curricular activities.",
+                tasks: [
+                    { id: 'AACP-01', description: "Finalize the academic calendar for the year, including term dates, holidays, and examination periods.", priority: 'High', riskLevel: 'Medium', proof: 'Academic Calendar', location: 'Academic Office' },
+                    { id: 'AACP-02', description: "Ensure curriculum plans for all subjects are submitted and approved by the department head before the term starts.", priority: 'High', riskLevel: 'High', proof: 'Approved Curriculum Plans', location: 'Academic Office' },
+                    { id: 'AACP-03', description: "Plan and schedule all internal and external examinations, ensuring no clashes.", priority: 'High', riskLevel: 'High', proof: 'Examination Schedule', location: 'Academic Office' },
+                    { id: 'AACP-04', description: "Develop a schedule for co-curricular activities, competitions, and field trips for the term.", priority: 'High', riskLevel: 'Low', proof: 'Co-curricular Calendar', location: 'Academic Office' },
+                    { id: 'AACP-05', description: "Coordinate with teachers to ensure timely completion of syllabus.", priority: 'High', riskLevel: 'Medium', proof: 'Syllabus Tracker', location: 'Academic Office' },
+                    { id: 'AACP-06', description: "Plan parent-teacher meetings for each term.", priority: 'High', riskLevel: 'Low', proof: 'PTM Schedule', location: 'Academic Office' },
+                    { id: 'AACP-07', description: "Organize professional development workshops for teachers.", priority: 'Medium', riskLevel: 'Medium', proof: 'Workshop Schedule', location: 'HR/Academics' },
+                    { id: 'AACP-08', description: "Review and update the school's assessment and promotion policies annually.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'Academic Office' },
+                    { id: 'AACP-09', description: "Ensure all required academic resources (textbooks, lab equipment) are procured in time.", priority: 'High', riskLevel: 'Medium', proof: 'Procurement Records', location: 'Admin/Academics' },
+                    { id: 'AACP-10', description: "Plan and execute annual events like Sports Day and Annual Day.", priority: 'High', riskLevel: 'Medium', proof: 'Event Plan', location: 'Events Committee' }
+                ]
+            },
+            {
+                title: "🤝 Parent & Community Engagement",
+                department: "Administration/PR",
+                frequency: "Monthly",
+                role: "Principal/PR Officer",
+                summary: "Build a strong, positive relationship with parents and the wider community through structured communication, events, and feedback channels.",
+                tasks: [
+                    { id: 'PCE-01', description: "Send a monthly newsletter to all parents with updates on school activities and achievements.", priority: 'High', riskLevel: 'Low', proof: 'Newsletter Archive', location: 'PR Office' },
+                    { id: 'PCE-02', description: "Schedule and conduct regular Parent-Teacher Meetings (PTMs) as per the academic calendar.", priority: 'High', riskLevel: 'Medium', proof: 'PTM Minutes/Attendance', location: 'Classrooms' },
+                    { id: 'PCE-03', description: "Maintain an open and responsive communication channel for parental queries and concerns (e.g., dedicated email, phone line).", priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'Admin Office' },
+                    { id: 'PCE-04', description: "Organize at least two community engagement events per year (e.g., science fair, charity drive).", priority: 'Medium', riskLevel: 'Low', proof: 'Event Calendar', location: 'Events Committee' },
+                    { id: 'PCE-05', description: "Actively manage the school's social media channels with positive content and timely responses.", priority: 'High', riskLevel: 'Medium', proof: 'Social Media Page', location: 'PR Office' },
+                    { id: 'PCE-06', description: "Conduct an annual parent satisfaction survey and share the results and action plan.", priority: 'High', riskLevel: 'Medium', proof: 'Survey Report', location: 'Admin Office' },
+                    { id: 'PCE-07', description: "Establish and support a Parent-Teacher Association (PTA).", priority: 'High', riskLevel: 'Medium', proof: 'PTA Constitution/Minutes', location: 'Admin Office' },
+                    { id: 'PCE-08', description: "Ensure the school diary or communication app is used effectively by teachers to communicate with parents.", priority: 'High', riskLevel: 'Medium', proof: 'App Usage Audit', location: 'Academic Office' },
+                    { id: 'PCE-09', description: "Have a clear protocol for communicating with parents during an emergency.", priority: 'High', riskLevel: 'High', proof: 'Emergency Communication Plan', location: 'Admin Office' },
+                    { id: 'PCE-10', description: "Celebrate student achievements publicly through newsletters, website, and social media.", priority: 'Medium', riskLevel: 'Low', proof: 'Public Announcements', location: 'PR Office' }
                 ]
             }
         ]
@@ -1919,11 +2015,16 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Lab Manager",
                 summary: "Ensure a safe and compliant research environment with this checklist for chemical storage, equipment maintenance, and personal protective equipment (PPE) usage.",
                 tasks: [
-                    { id: 'LSCM-01', description: "Audit chemical storage to ensure proper segregation (e.g., flammables, corrosives).", priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log', location: 'Chemical Storeroom' },
-                    { id: 'LSCM-02', description: "Verify that all safety equipment (showers, eyewash stations, fire extinguishers) is functional and accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Lab' },
-                    { id: 'LSCM-03', description: "Ensure all lab personnel are using the correct Personal Protective Equipment (PPE).", priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Lab' },
-                    { id: 'LSCM-04', description: "Check that all hazardous waste is being disposed of according to regulations.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
-                    { id: 'LSCM-05', description: "Maintain a log of all equipment calibration and maintenance.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Logbook', location: 'Lab' }
+                    { id: 'LSCM-01', description: "Audit chemical storage to ensure proper segregation (e.g., flammables, corrosives) and up-to-date inventory.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log & Inventory', location: 'Chemical Storeroom' },
+                    { id: 'LSCM-02', description: "Verify that all safety equipment (showers, eyewash stations, fire extinguishers, first aid) is functional and accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Lab' },
+                    { id: 'LSCM-03', description: "Ensure all lab personnel are using the correct Personal Protective Equipment (PPE) for the task at hand.", priority: 'High', riskLevel: 'High', proof: 'PPE Audit Checklist', location: 'Lab' },
+                    { id: 'LSCM-04', description: "Check that all hazardous waste is being disposed of according to institutional and national regulations.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log & Manifests', location: 'Waste Area' },
+                    { id: 'LSCM-05', description: "Maintain a log of all equipment calibration and maintenance, ensuring it meets GLP standards.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Logbook', location: 'Lab' },
+                    { id: 'LSCM-06', description: "Ensure Safety Data Sheets (SDS) are available for all chemicals present in the lab.", priority: 'High', riskLevel: 'High', proof: 'SDS Binder/Digital File', location: 'Lab' },
+                    { id: 'LSCM-07', description: "Verify that fume hoods are certified and functioning correctly.", priority: 'High', riskLevel: 'High', proof: 'Certification Sticker & Airflow Test', location: 'Lab' },
+                    { id: 'LSCM-08', description: "Train all new lab users on safety protocols before they begin work.", priority: 'High', riskLevel: 'High', proof: 'Training Completion Record', location: 'Lab' },
+                    { id: 'LSCM-09', description: "Conduct a monthly lab self-inspection covering all safety aspects.", priority: 'High', riskLevel: 'Medium', proof: 'Self-Inspection Report', location: 'Lab' },
+                    { id: 'LSCM-10', description: "Maintain an emergency response plan specific to the lab's hazards.", priority: 'High', riskLevel: 'High', proof: 'Emergency Plan Document', location: 'Lab Entrance' }
                 ]
             },
             {
@@ -1933,11 +2034,16 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Chief Warden",
                 summary: "Ensure a safe and secure living environment for students with weekly checks for electrical safety, fire preparedness, and access control.",
                 tasks: [
-                    { id: 'HSS-01', description: "Conduct a walkthrough of all floors to check for fire hazards (e.g., illegal cooking, blocked corridors).", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Log', location: 'Hostel' },
-                    { id: 'HSS-02', description: "Test fire alarms and check expiry dates of fire extinguishers on each floor.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Log', location: 'Hostel' },
-                    { id: 'HSS-03', description: "Review visitor logs and enforce rules regarding guest entry and exit times.", priority: 'High', riskLevel: 'Medium', proof: 'Visitor Log Review', location: 'Hostel Entrance' },
-                    { id: 'HSS-04', description: "Inspect electrical fittings in common areas and a random selection of rooms for unsafe modifications.", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Log', location: 'Hostel' },
-                    { id: 'HSS-05', description: "Ensure all hostel staff and student volunteers are trained in emergency response.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Warden Office' }
+                    { id: 'HSS-01', description: "Conduct a walkthrough of all floors to check for fire hazards (e.g., illegal cooking, blocked corridors, stored combustibles).", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Log', location: 'Hostel' },
+                    { id: 'HSS-02', description: "Test fire alarms and check expiry dates and pressure gauges of fire extinguishers on each floor.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Log', location: 'Hostel' },
+                    { id: 'HSS-03', description: "Review visitor logs and enforce rules regarding guest entry, exit times, and overnight stays.", priority: 'High', riskLevel: 'Medium', proof: 'Visitor Log Review', location: 'Hostel Entrance' },
+                    { id: 'HSS-04', description: "Inspect electrical fittings in common areas and a random selection of rooms for unsafe modifications (e.g., unauthorized heaters).", priority: 'High', riskLevel: 'High', proof: 'Electrical Inspection Log', location: 'Hostel' },
+                    { id: 'HSS-05', description: "Ensure all hostel staff, wardens, and student volunteers are trained in emergency response and evacuation.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Warden Office' },
+                    { id: 'HSS-06', description: "Check that all security cameras are functional and recording.", priority: 'High', riskLevel: 'High', proof: 'CCTV Functionality Log', location: 'Security Office' },
+                    { id: 'HSS-07', description: "Verify that access control systems (biometric, card readers) are working correctly.", priority: 'High', riskLevel: 'High', proof: 'Access Control Test', location: 'Hostel Entrance' },
+                    { id: 'HSS-08', description: "Ensure common areas and stairwells are well-lit and free of obstructions.", priority: 'High', riskLevel: 'Medium', proof: 'Lighting and Path Audit', location: 'Hostel' },
+                    { id: 'HSS-09', description: "Check the condition of hostel infrastructure (windows, railings, plumbing) for any safety issues.", priority: 'High', riskLevel: 'Medium', proof: 'Infrastructure Audit Log', location: 'Hostel' },
+                    { id: 'HSS-10', description: "Maintain a log of student complaints regarding safety or maintenance and track their resolution.", priority: 'High', riskLevel: 'Medium', proof: 'Complaint Register', location: 'Warden Office' }
                 ]
             },
             {
@@ -1947,11 +2053,16 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Controller of Examinations",
                 summary: "Protect academic integrity with a strict chain-of-custody protocol for exam papers, from secure printing and storage to supervised distribution and destruction.",
                 tasks: [
-                    { id: 'CEMH-01', description: "Print exam papers in a secure, access-controlled room.", priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Secure Printing Room' },
-                    { id: 'CEMH-02', description: "Store sealed exam packets in a dual-lock vault or safe.", priority: 'High', riskLevel: 'High', proof: 'Vault Log', location: 'Exam Vault' },
-                    { id: 'CEMH-03', description: "Document the chain of custody for any movement of the exam papers.", priority: 'High', riskLevel: 'High', proof: 'Chain of Custody Form', location: 'Exam Office' },
-                    { id: 'CEMH-04', description: "Require two authorized personnel to be present during the opening of sealed packets.", priority: 'High', riskLevel: 'High', proof: 'Dual Sign-off Sheet', location: 'Exam Hall' },
-                    { id: 'CEMH-05', description: "Account for and shred all unused exam papers immediately after the exam.", priority: 'High', riskLevel: 'High', proof: 'Destruction Log', location: 'Secure Area' }
+                    { id: 'CEMH-01', description: "Print exam papers in a secure, access-controlled room with no unauthorized electronic devices present.", priority: 'High', riskLevel: 'High', proof: 'Access Log for Printing Room', location: 'Secure Printing Room' },
+                    { id: 'CEMH-02', description: "Store sealed exam packets in a dual-lock vault or safe, with access controlled by a log.", priority: 'High', riskLevel: 'High', proof: 'Vault Access Log', location: 'Exam Vault' },
+                    { id: 'CEMH-03', description: "Document the chain of custody for any movement of the exam papers, with signatures at each handover.", priority: 'High', riskLevel: 'High', proof: 'Chain of Custody Form', location: 'Exam Office' },
+                    { id: 'CEMH-04', description: "Require two authorized personnel (e.g., invigilator and external examiner) to be present during the opening of sealed packets.", priority: 'High', riskLevel: 'High', proof: 'Dual Sign-off Sheet', location: 'Exam Hall' },
+                    { id: 'CEMH-05', description: "Account for and shred all unused exam papers and supplementary materials immediately after the exam under supervision.", priority: 'High', riskLevel: 'High', proof: 'Destruction Log with witness signature', location: 'Secure Area' },
+                    { id: 'CEMH-06', description: "Transport exam papers in sealed, tamper-evident bags or locked boxes.", priority: 'High', riskLevel: 'High', proof: 'Transport Log', location: 'Transit' },
+                    { id: 'CEMH-07', description: "Count and verify the number of sealed packets received at the examination center against the manifest.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Exam Center' },
+                    { id: 'CEMH-08', description: "Prohibit any digital recording devices in the exam hall during paper distribution and collection.", priority: 'High', riskLevel: 'High', proof: 'Invigilator Instructions', location: 'Exam Hall' },
+                    { id: 'CEMH-09', description: "Securely store answer sheets after the exam before they are sent for evaluation.", priority: 'High', riskLevel: 'High', proof: 'Post-Exam Storage Log', location: 'Exam Center Strong Room' },
+                    { id: 'CEMH-10', description: "Conduct a security briefing with all invigilators before each exam session.", priority: 'High', riskLevel: 'High', proof: 'Briefing Attendance', location: 'Exam Center' }
                 ]
             },
             {
@@ -1961,11 +2072,92 @@ export const premiumPacks: PremiumPack[] = [
                 role: "Dean of Student Affairs",
                 summary: "A proactive framework to ensure compliance with anti-ragging regulations and promote a positive, supportive campus environment for all students.",
                 tasks: [
-                    { id: 'SWAR-01', description: "Verify that anti-ragging posters and contact numbers for the helpline are prominently displayed.", priority: 'High', riskLevel: 'High', proof: 'Display Audit', location: 'Hostels/Common Areas' },
-                    { id: 'SWAR-02', description: "Conduct regular, surprise checks in hostels and common areas.", priority: 'High', riskLevel: 'High', proof: 'Surprise Check Log', location: 'Hostels' },
-                    { id: 'SWAR-03', description: "Hold monthly meetings of the Anti-Ragging Committee to review any incidents or concerns.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Committee Room' },
-                    { id: 'SWAR-04', description: "Ensure a confidential and accessible process for students to report incidents.", priority: 'High', riskLevel: 'High', proof: 'Reporting Process Document', location: 'Student Affairs Office' },
-                    { id: 'SWAR-05', description: "Organize awareness workshops on mental health and anti-ragging for new students.", priority: 'High', riskLevel: 'Medium', proof: 'Workshop Attendance', location: 'Auditorium' }
+                    { id: 'SWAR-01', description: "Verify that anti-ragging posters and contact numbers for the helpline are prominently displayed in hostels, canteens, and common areas.", priority: 'High', riskLevel: 'High', proof: 'Display Audit Photos', location: 'Hostels/Common Areas' },
+                    { id: 'SWAR-02', description: "Conduct regular, surprise checks in hostels and common areas, especially during the initial weeks of a new academic year.", priority: 'High', riskLevel: 'High', proof: 'Surprise Check Log', location: 'Hostels' },
+                    { id: 'SWAR-03', description: "Hold monthly meetings of the Anti-Ragging Committee to review any incidents or concerns and document the minutes.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Committee Room' },
+                    { id: 'SWAR-04', description: "Ensure a confidential and accessible process (online portal, drop boxes) for students to report incidents without fear of retribution.", priority: 'High', riskLevel: 'High', proof: 'Reporting Process Document', location: 'Student Affairs Office' },
+                    { id: 'SWAR-05', description: "Organize mandatory awareness workshops on mental health, consent, and anti-ragging for all new students.", priority: 'High', riskLevel: 'Medium', proof: 'Workshop Attendance Records', location: 'Auditorium' },
+                    { id: 'SWAR-06', description: "Ensure all students and parents have signed the anti-ragging undertaking as required by UGC regulations.", priority: 'High', riskLevel: 'High', proof: 'Signed Undertakings File', location: 'Admissions Office' },
+                    { id: 'SWAR-07', description: "Regularly check and respond to grievances filed through the official anti-ragging portal.", priority: 'High', riskLevel: 'High', proof: 'Portal Action Log', location: 'Student Affairs Office' },
+                    { id: 'SWAR-08', description: "Ensure counseling services are available and actively promoted to students.", priority: 'High', riskLevel: 'Medium', proof: 'Counseling Center Records', location: 'Counseling Center' },
+                    { id: 'SWAR-09', description: "Appoint and train a student-led anti-ragging squad to act as peer monitors.", priority: 'Medium', riskLevel: 'Medium', proof: 'Squad Member List & Training Log', location: 'Student Affairs Office' },
+                    { id: 'SWAR-10', description: "Review and update the anti-ragging policy annually and communicate any changes to the campus community.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Review Document', location: 'Admin Office' }
+                ]
+            },
+            {
+                title: "📚 Library Operations & Resource Management",
+                department: "Library",
+                frequency: "Weekly",
+                role: "Chief Librarian",
+                summary: "Optimize library services and resource management with this checklist covering inventory, digital access, and user experience.",
+                tasks: [
+                    { id: 'LORM-01', description: "Conduct a weekly shelf-reading audit in a designated section to ensure books are in the correct order.", priority: 'Medium', riskLevel: 'Low', proof: 'Shelf-Reading Log', location: 'Library Stacks' },
+                    { id: 'LORM-02', description: "Verify that the library's digital subscription services and databases are accessible.", priority: 'High', riskLevel: 'Medium', proof: 'Digital Access Test Log', location: 'Library Computers' },
+                    { id: 'LORM-03', description: "Process new book acquisitions, including cataloging and barcoding.", priority: 'High', riskLevel: 'Medium', proof: 'Acquisition Log', location: 'Technical Section' },
+                    { id: 'LORM-04', description: "Manage the circulation desk, including check-ins, check-outs, and fine collection.", priority: 'High', riskLevel: 'Medium', proof: 'Circulation Statistics', location: 'Circulation Desk' },
+                    { id: 'LORM-05', description: "Review and act on overdue notices and lost book reports.", priority: 'High', riskLevel: 'Medium', proof: 'Overdue Report', location: 'Librarian Office' },
+                    { id: 'LORM-06', description: "Ensure the library environment is conducive to study (quiet, clean, well-lit).", priority: 'High', riskLevel: 'Low', proof: 'Environment Check Log', location: 'Library' },
+                    { id: 'LORM-07', description: "Maintain and service library equipment like computers, printers, and scanners.", priority: 'High', riskLevel: 'Medium', proof: 'Equipment Maintenance Log', location: 'Library' },
+                    { id: 'LORM-08', description: "Conduct an annual physical inventory of the entire collection.", priority: 'High', riskLevel: 'High', proof: 'Annual Inventory Report', location: 'Library' },
+                    { id: 'LORM-09', description: "Plan and execute workshops on research skills and database usage for students.", priority: 'Medium', riskLevel: 'Low', proof: 'Workshop Schedule', location: 'Library' },
+                    { id: 'LORM-10', description: "Gather user feedback to improve library services and collections.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Analysis Report', location: 'Librarian Office' }
+                ]
+            },
+            {
+                title: "🎓 Admissions & Records Management",
+                department: "Admissions/Admin",
+                frequency: "Cycle-based",
+                role: "Registrar/Admissions Head",
+                summary: "Ensure a fair, transparent, and compliant admissions process from application to enrollment, maintaining accurate and secure student records.",
+                tasks: [
+                    { id: 'ARM-01', description: "Verify that the admission criteria and process are clearly published on the university website.", priority: 'High', riskLevel: 'High', proof: 'Website Audit', location: 'Website' },
+                    { id: 'ARM-02', description: "Ensure the online application portal is secure and functional before the admission cycle begins.", priority: 'High', riskLevel: 'High', proof: 'Portal Test Report', location: 'IT Department' },
+                    { id: 'ARM-03', description: "Conduct verification of all submitted documents (transcripts, certificates) for authenticity.", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'Admissions Office' },
+                    { id: 'ARM-04', description: "Maintain a clear and documented process for handling admission queries and appeals.", priority: 'High', riskLevel: 'Medium', proof: 'Query/Appeal Log', location: 'Admissions Office' },
+                    { id: 'ARM-05', description: "Ensure that student records are stored securely in compliance with data privacy regulations.", priority: 'High', riskLevel: 'High', proof: 'Data Security Audit', location: 'Records Room/Server' },
+                    { id: 'ARM-06', description: "Process student enrollment, course registration, and fee payments accurately.", priority: 'High', riskLevel: 'High', proof: 'Enrollment Register', location: 'Registrar Office' },
+                    { id: 'ARM-07', description: "Manage the issuance of transcripts, certificates, and other official documents.", priority: 'High', riskLevel: 'High', proof: 'Document Issuance Log', location: 'Registrar Office' },
+                    { id: 'ARM-08', description: "Ensure compliance with all reservation policies and government mandates in admissions.", priority: 'High', riskLevel: 'High', proof: 'Compliance Report', location: 'Admissions Office' },
+                    { id: 'ARM-09', description: "Train admissions staff on ethical practices and confidentiality.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'HR' },
+                    { id: 'ARM-10', description: "Generate and analyze admission statistics to inform future strategy.", priority: 'High', riskLevel: 'Medium', proof: 'Admissions Report', location: 'Admissions Office' }
+                ]
+            },
+            {
+                title: "🚗 Campus Transportation & Parking",
+                department: "Transport/Security",
+                frequency: "Daily/Weekly",
+                role: "Transport Officer",
+                summary: "Manage campus traffic, parking, and shuttle services efficiently and safely for students, staff, and visitors.",
+                tasks: [
+                    { id: 'CTP-01', description: "Conduct daily checks of shuttle buses for safety and cleanliness.", priority: 'High', riskLevel: 'High', proof: 'Bus Inspection Log', location: 'Bus Depot' },
+                    { id: 'CTP-02', description: "Ensure shuttle bus routes and schedules are clearly displayed and adhered to.", priority: 'High', riskLevel: 'Medium', proof: 'Schedule Adherence Report', location: 'Transport Office' },
+                    { id: 'CTP-03', description: "Monitor parking lots to ensure proper use of designated spaces (staff, student, visitor, disabled).", priority: 'High', riskLevel: 'Medium', proof: 'Parking Patrol Log', location: 'Parking Lots' },
+                    { id: 'CTP-04', description: "Manage the issuance and renewal of parking permits.", priority: 'High', riskLevel: 'Medium', proof: 'Permit Issuance Log', location: 'Security/Admin Office' },
+                    { id: 'CTP-05', description: "Ensure all traffic and parking signage on campus is clear and visible.", priority: 'High', riskLevel: 'Medium', proof: 'Signage Audit', location: 'Campus-wide' },
+                    { id: 'CTP-06', description: "Have a clear protocol for handling parking violations and unauthorized vehicles.", priority: 'High', riskLevel: 'Medium', proof: 'Violation Protocol Document', location: 'Security Office' },
+                    { id: 'CTP-07', description: "Check that parking areas are well-lit and have functional CCTV coverage.", priority: 'High', riskLevel: 'High', proof: 'Lighting & CCTV Check', location: 'Parking Lots' },
+                    { id: 'CTP-08', description: "Plan for and manage traffic and parking during major campus events.", priority: 'High', riskLevel: 'High', proof: 'Event Traffic Plan', location: 'Security Office' },
+                    { id: 'CTP-09', description: "Gather feedback from users to improve transport and parking services.", priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'Transport Office' },
+                    { id: 'CTP-10', description: "Maintain vehicle registration and insurance records for all university-owned vehicles.", priority: 'High', riskLevel: 'High', proof: 'Vehicle Records File', location: 'Transport Office' }
+                ]
+            },
+            {
+                title: "🧠 Faculty & Academic Affairs",
+                department: "Academics",
+                frequency: "Semester-wise",
+                role: "Dean of Academics",
+                summary: "Manage the academic lifecycle of faculty, from recruitment and performance reviews to course allocation and professional development.",
+                tasks: [
+                    { id: 'FAA-01', description: "Oversee the faculty recruitment and hiring process to ensure fairness and quality.", priority: 'High', riskLevel: 'High', proof: 'Hiring Committee Minutes', location: 'Dean\'s Office' },
+                    { id: 'FAA-02', description: "Conduct annual performance reviews for all faculty members, focusing on teaching, research, and service.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Review Forms', location: 'Dean\'s Office' },
+                    { id: 'FAA-03', description: "Manage the course allocation process, ensuring a fair distribution of workload.", priority: 'High', riskLevel: 'High', proof: 'Course Allocation Matrix', location: 'Department Offices' },
+                    { id: 'FAA-04', description: "Promote and manage faculty participation in professional development, conferences, and research.", priority: 'High', riskLevel: 'Medium', proof: 'Faculty Development Budget', location: 'Dean\'s Office' },
+                    { id: 'FAA-05', description: "Oversee the process for faculty promotions and tenure.", priority: 'High', riskLevel: 'High', proof: 'Promotion Committee Files', location: 'Dean\'s Office' },
+                    { id: 'FAA-06', description: "Ensure all faculty members have a clear understanding of the institution's academic policies.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Acknowledgment Log', location: 'HR' },
+                    { id: 'FAA-07', description: "Collect and analyze student feedback on courses and teaching effectiveness.", priority: 'High', riskLevel: 'Medium', proof: 'Student Feedback Reports', location: 'Dean\'s Office' },
+                    { id: 'FAA-08',  description: "Facilitate curriculum review and development processes.", priority: 'High', riskLevel: 'High', proof: 'Curriculum Committee Minutes', location: 'Dean\'s Office' },
+                    { id: 'FAA-09', description: "Handle faculty grievances and disputes in a confidential and fair manner.", priority: 'High', riskLevel: 'High', proof: 'Grievance Files', location: 'Dean\'s Office' },
+                    { id: 'FAA-10', description: "Support faculty in securing research grants and funding.", priority: 'Medium', riskLevel: 'Low', proof: 'Grant Application Support Log', location: 'Research Office' }
                 ]
             }
         ]
@@ -1973,3 +2165,6 @@ export const premiumPacks: PremiumPack[] = [
 ]
   
 
+
+
+    
