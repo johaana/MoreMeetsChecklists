@@ -14,7 +14,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-// Correctly group ALL premium packs by category
 const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
         acc[pack.category] = [];

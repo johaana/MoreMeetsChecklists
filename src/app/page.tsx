@@ -11,7 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
-import { premiumPacks } from "@/lib/premium-packs";
+import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -193,13 +193,10 @@ const FaqSection = () => (
     </section>
 );
 
-function PackList() {
+function PackList({ packs, title, description }: { packs: PremiumPack[], title: string, description: string }) {
     const isMobile = useIsMobile();
-    const featuredPacks = premiumPacks.filter(p => p.bestseller);
-    const title = "Bestselling Checklist Packs";
-    const description = "Get instant access to expert-crafted operational SOPs trusted by industry leaders. One-time purchase, lifetime updates.";
-
-    const PackCard = ({ pack }: { pack: (typeof premiumPacks)[0] }) => (
+    
+    const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
             <CardHeader className="p-6 relative">
                 {pack.badgeText && (
@@ -257,7 +254,7 @@ function PackList() {
                         className="w-full max-w-[calc(100%-2rem)] mx-auto"
                     >
                         <CarouselContent>
-                            {featuredPacks.map((pack) => (
+                            {packs.map((pack) => (
                                 <CarouselItem key={pack.id} className="p-2">
                                     <div className="p-1 h-full">
                                         <PackCard pack={pack} />
@@ -270,7 +267,7 @@ function PackList() {
                     </Carousel>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                        {featuredPacks.map((pack) => (
+                        {packs.map((pack) => (
                             <PackCard key={pack.id} pack={pack} />
                         ))}
                     </div>
@@ -493,7 +490,8 @@ const WhyDetailMatters = () => {
 
 export default function Home() {
   const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
-  
+  const featuredPacks = premiumPacks.filter(p => p.bestseller);
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
@@ -558,7 +556,11 @@ export default function Home() {
         <GlobalStandardsSection />
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
-            <PackList />
+            <PackList 
+                packs={featuredPacks}
+                title="Bestselling Checklist Packs"
+                description="Get instant access to expert-crafted operational SOPs trusted by industry leaders. One-time purchase, lifetime updates."
+            />
         </React.Suspense>
         
         <IndividualChecklistsSection />
@@ -610,3 +612,4 @@ export default function Home() {
     </div>
   );
 }
+
