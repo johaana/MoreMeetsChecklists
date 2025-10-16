@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -20,7 +19,7 @@ const mainNavLinks = [
     { href: "/contact", label: "Contact" },
 ];
 
-const packsByCategory: Record<string, typeof premiumPacks> = premiumPacks.reduce((acc, pack) => {
+const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
         acc[pack.category] = [];
     }
@@ -90,7 +89,7 @@ export function SiteHeader() {
                                 Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
                             {isDropdownOpen && (
-                                <div className="absolute top-full right-0 w-screen max-w-5xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                                <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                                     <div className="bg-background rounded-lg shadow-2xl border flex flex-col">
                                          <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                             <div className="p-6">
@@ -112,7 +111,7 @@ export function SiteHeader() {
                                                     <div className="md:w-3/4 pl-6">
                                                         <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
                                                         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-                                                            {Object.entries(packsByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
+                                                            {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
                                                                 <div key={category} className="break-inside-avoid-column">
                                                                     <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
                                                                     <ul className="space-y-1">
@@ -201,7 +200,7 @@ export function SiteHeader() {
                                                 <div className="flex flex-col gap-2 pl-4 border-l">
                                                     <h4 className="font-semibold text-sm text-muted-foreground mt-2 mb-1">Premium Packs by Industry</h4>
                                                     <Accordion type="multiple" className="w-full">
-                                                        {Object.entries(packsByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
+                                                        {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
                                                             <AccordionItem key={category} value={category} className="border-b-0">
                                                                 <AccordionTrigger className="text-base font-medium text-muted-foreground hover:text-foreground hover:no-underline py-1.5">
                                                                     {category}
