@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -11,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
-import { premiumPacks, PremiumPack } from "@/lib/premium-packs";
+import { premiumPacks, type PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";

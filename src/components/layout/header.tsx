@@ -14,6 +14,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+// --- DATA PREPARATION (Computed once at top-level) ---
+
+// 1. Get all premium packs and group them by category. This is the single source of truth.
 const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
         acc[pack.category] = [];
@@ -22,7 +25,9 @@ const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
 
+// 2. Get all individual checklists. This is the single source of truth.
 const allIndividualChecklists = individualChecklists;
+
 
 export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
