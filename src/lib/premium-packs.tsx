@@ -2211,7 +2211,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RISK-01', description: "Review all incident reports (falls, medication errors, etc.) from the previous month.", priority: 'High', riskLevel: 'High', proof: 'Incident Report Analysis', location: 'Quality Office' },
                     { id: 'RISK-02', description: "Conduct a root cause analysis (RCA) for any sentinel events.", priority: 'High', riskLevel: 'High', proof: 'RCA Report', location: 'Quality Office' },
                     { id: 'RISK-03', description: "Implement and track corrective and preventive actions (CAPA).", priority: 'High', riskLevel: 'High', proof: 'CAPA Log', location: 'Quality Office' },
-                    { id: 'RISK-04', description: "Conduct monthly patient safety walkthroughs in different departments.", priority: 'High', riskLevel: 'High', proof: 'Walkthrough Report', location: 'Various Departments' },
                     { id: 'RISK-INC-01', description: "Promote a non-punitive culture for incident reporting.", priority: 'High', riskLevel: 'Medium', proof: 'Policy Document', location: 'HR/Quality' },
                     { id: 'RISK-06', description: "Analyze patient fall data and implement fall prevention strategies.", priority: 'High', riskLevel: 'High', proof: 'Fall Prevention Plan', location: 'Quality Office' },
                     { id: 'RISK-07', description: "Review hospital-acquired infection (HAI) rates and trends.", priority: 'High', riskLevel: 'High', proof: 'HAI Report', location: 'Infection Control' },
@@ -2558,3 +2557,6 @@ export const premiumPacks: PremiumPack[] = [
 
 
 
+
+
+    
