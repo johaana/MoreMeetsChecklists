@@ -3266,5 +3266,187 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 'sports_clubs_facilities_pack',
+        title: "Sports Clubs & Stadium Operations",
+        priceUSD: 149.99,
+        priceINR: 7999,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Entertainment & Events",
+        description: "A comprehensive safety and operational pack for managing sports clubs, gyms, stadiums, and training facilities.",
+        icon: <Trophy />,
+        bestseller: true,
+        whoIsItFor: ["Sports Facility Managers", "Club Owners", "Stadium Operations Heads", "Safety Officers"],
+        sampleItems: [
+            { text: "Ensure 'Crowd Control & Emergency Evacuation' readiness for large events.", icon: <Users /> },
+            { text: "Implement a 'Gym & Equipment Safety' checklist to prevent accidents.", icon: <Dumbbell /> },
+            { text: "Manage 'Sports Field & Turf Maintenance' for optimal playing conditions.", icon: <Sprout /> },
+            { text: "Includes 'Swimming Pool Hygiene & Safety' to meet health standards.", icon: <Waves /> },
+            { text: "Secure events with 'Digital Ticketing & Entry Validation'.", icon: <Ticket /> },
+        ],
+        globalStandards: {
+            title: "Aligned with Global Safety Standards",
+            standards: [
+                { name: "Occupational Safety (OSHA)", description: "Ensures workplace safety and accident prevention." },
+                { name: "Fire & Life Safety (NFPA)", description: "Adheres to fire prevention and emergency evacuation codes." },
+                { name: "Water Quality (WHO)", description: "Follows World Health Organization guidelines for swimming pool safety." },
+                { name: "Quality Management (ISO 9001)", description: "Implements processes for consistent service and operational quality." }
+            ]
+        },
+        previewScenario: {
+            title: "Averting a Pre-Match Crisis",
+            description: "Hours before a major football match, a severe weather alert is issued for high winds and heavy rain. This scenario shows how checklists prevent a potential disaster like the Indiana State Fair stage collapse.",
+            tasks: [
+                { id: 'SEC-EMER-01', description: "The 'Emergency Response' checklist is activated by the Safety Officer upon receiving the weather alert.", sourceChecklist: "Fire Safety & Emergency Preparedness", priority: 'High' },
+                { id: 'SEC-CROWD-01', description: "The 'Crowd Management' protocol is initiated to prepare for a possible delayed entry or evacuation, with staff moved to key positions.", sourceChecklist: "Crowd Control & Entry Management", priority: 'High' },
+                { id: 'FAC-MAINT-05', description: "The 'Facility Maintenance' SOP ensures all drainage systems are checked and cleared to prevent flooding of the field and lower levels.", sourceChecklist: "Facility Maintenance & Seasonal Prep", priority: 'High' },
+                { id: 'SEC-VENDOR-01', description: "The 'Vendor Safety' checklist is used to confirm that all temporary structures, like broadcast towers and sponsor tents, are secured for high winds.", sourceChecklist: "Vendor & Contractor EHS Audit", priority: 'High' }
+            ]
+        },
+        checklists: [
+            {
+                title: "Crowd Control & Entry Management",
+                department: "Security",
+                frequency: "Per Event",
+                role: "Security Head",
+                icon: <Users />,
+                summary: "Manage large crowds safely and efficiently during events, preventing stampedes and ensuring a smooth entry/exit experience.",
+                tasks: [
+                    { id: 'SEC-CROWD-01', description: "Review event capacity and ticketing data before the event.", priority: 'High', riskLevel: 'High', proof: 'Capacity Plan', location: 'Control Room' },
+                    { id: 'SEC-CROWD-02', description: "Deploy security personnel and ushers at all entry points, exits, and choke points.", priority: 'High', riskLevel: 'High', proof: 'Deployment Map', location: 'Venue' },
+                    { id: 'SEC-CROWD-03', description: "Implement a clear queuing system at entry gates.", priority: 'High', riskLevel: 'High', proof: 'Queue Layout Photo', location: 'Entrances' },
+                    { id: 'SEC-CROWD-04', description: "Monitor crowd flow via CCTV and on-ground staff.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Control Room' },
+                    { id: 'SEC-CROWD-05', description: "Have a clear plan for opening additional gates or redirecting crowds if needed.", priority: 'High', riskLevel: 'High', proof: 'Contingency Plan', location: 'Control Room' },
+                ]
+            },
+            {
+                title: "Fire Safety & Emergency Preparedness",
+                department: "Safety/EHS",
+                frequency: "Monthly",
+                role: "Safety Officer",
+                icon: <Siren />,
+                summary: "A comprehensive checklist to ensure your facility is always ready for a fire or other emergency, aligned with NFPA and local fire codes.",
+                tasks: [
+                    { id: 'SEC-EMER-01', description: "Inspect all fire extinguishers, hydrants, and sprinkler systems.", priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Venue' },
+                    { id: 'SEC-EMER-02', description: "Test fire alarms and the public address system.", priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Control Room' },
+                    { id: 'SEC-EMER-03', description: "Ensure all emergency exit routes are clear and well-lit.", priority: 'High', riskLevel: 'High', proof: 'Exit Route Audit', location: 'Venue' },
+                    { id: 'SEC-EMER-04', description: "Conduct quarterly evacuation drills with staff.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Venue' },
+                    { id: 'SEC-EMER-05', description: "Maintain an updated emergency contact list for all key personnel and local authorities.", priority: 'High', riskLevel: 'High', proof: 'Emergency Contact List', location: 'Control Room' },
+                ]
+            },
+            {
+                title: "Gym Equipment & Safety",
+                department: "Fitness",
+                frequency: "Daily",
+                role: "Gym Manager",
+                icon: <Dumbbell />,
+                summary: "Prevent accidents and ensure member safety with a rigorous daily inspection checklist for all gym equipment.",
+                tasks: [
+                    { id: 'GYM-SAFE-01', description: "Inspect all cardio machines for functionality and wear.", priority: 'High', riskLevel: 'High', proof: 'Cardio Equipment Log', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-02', description: "Check all strength-training machines, cables, and pulleys for fraying or damage.", priority: 'High', riskLevel: 'High', proof: 'Strength Equipment Log', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-03', description: "Ensure free weights are stored correctly and not creating trip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-04', description: "Report any faulty equipment immediately and label it 'Out of Order'.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Request', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-05', description: "Ensure first aid kits are stocked and trainers are certified in CPR/First Aid.", priority: 'High', riskLevel: 'High', proof: 'Certification Records', location: 'Gym Office' },
+                ]
+            },
+            {
+                title: "Swimming Pool Hygiene & Safety",
+                department: "Aquatics",
+                frequency: "Hourly/Daily",
+                role: "Pool Supervisor",
+                icon: <Waves />,
+                summary: "Meet WHO health standards and ensure guest safety with this comprehensive checklist for pool operations.",
+                tasks: [
+                    { id: 'POOL-SAFE-01', description: "Test and log water pH and chlorine levels every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
+                    { id: 'POOL-SAFE-02', description: "Check filtration and pump systems for correct operation.", priority: 'High', riskLevel: 'High', proof: 'Pump Room Log', location: 'Pump Room' },
+                    { id: 'POOL-SAFE-03', description: "Ensure all safety equipment (life rings, shepherd's crook) is accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Check', location: 'Poolside' },
+                    { id: 'POOL-SAFE-04', description: "Verify that lifeguards are on duty and alert.", priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster', location: 'Poolside' },
+                    { id: 'POOL-SAFE-05', description: "Ensure pool deck is clean and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
+                ]
+            },
+        ]
+    },
+    // --- Social Cause ---
+    {
+        id: 'animal_shelter_pack',
+        title: "Animal Shelter Operations Pack",
+        priceUSD: 0,
+        priceINR: 0,
+        paymentId: 'pl_RMnYKoxjfq5XCx',
+        category: "Social Cause",
+        description: "A complete (and free) operational toolkit for animal shelters and NGOs to ensure animal welfare, hygiene, and effective adoption programs.",
+        icon: <PawPrint />,
+        badgeText: "Free Resource",
+        badgeVariant: "accent",
+        whoIsItFor: ["Shelter Managers", "NGO Founders", "Animal Welfare Officers", "Volunteers"],
+        sampleItems: [
+            { text: "Ensure 'Daily Animal Health & Wellness' with systematic checks.", icon: <HeartPulse /> },
+            { text: "Implement a 'Kennel & Shelter Hygiene' protocol.", icon: <SprayCan /> },
+            { text: "Manage 'Adoption & Foster Program' applications effectively.", icon: <Home /> },
+            { text: "Includes 'Volunteer Management & Training' checklists.", icon: <Users /> },
+        ],
+        checklists: [
+            {
+                title: "Daily Animal Health & Wellness",
+                department: "Animal Care",
+                frequency: "Daily",
+                role: "Kennel Technician",
+                icon: <HeartPulse />,
+                summary: "A fundamental checklist to ensure every animal is observed for health and behavioral issues daily.",
+                tasks: [
+                    { id: 'AS-HW-01', description: "Observe each animal for signs of illness (lethargy, loss of appetite, etc.).", priority: 'High', riskLevel: 'High', proof: 'Health Observation Log', location: 'Kennels' },
+                    { id: 'AS-HW-02', description: "Administer any required medications as per the vet's instructions.", priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Kennels' },
+                    { id: 'AS-HW-03', description: "Ensure every animal has fresh water and food.", priority: 'High', riskLevel: 'Medium', proof: 'Feeding Log', location: 'Kennels' },
+                    { id: 'AS-HW-04', description: "Log any unusual behavior and report to the shelter manager.", priority: 'High', riskLevel: 'High', proof: 'Behavioral Log', location: 'Kennels' },
+                    { id: 'AS-HW-05', description: "Provide daily enrichment or exercise for each animal.", priority: 'High', riskLevel: 'Medium', proof: 'Enrichment Log', location: 'Play Area' }
+                ]
+            },
+            {
+                title: "Kennel & Shelter Hygiene",
+                department: "Animal Care",
+                frequency: "Daily",
+                role: "Kennel Cleaner",
+                icon: <SprayCan />,
+                summary: "Prevent the spread of disease with a rigorous daily cleaning and disinfection protocol for all animal enclosures and common areas.",
+                tasks: [
+                    { id: 'AS-HYG-01', description: "Clean and disinfect every kennel/enclosure daily.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels' },
+                    { id: 'AS-HYG-02', description: "Wash all food and water bowls with disinfectant.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'AS-HYG-03', description: "Launder all bedding and towels.", priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
+                    { id: 'AS-HYG-04', description: "Properly dispose of all animal waste.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
+                    { id: 'AS-HYG-05', description: "Maintain a separate isolation area for sick animals and follow strict quarantine protocols.", priority: 'High', riskLevel: 'High', proof: 'Isolation Log', location: 'Isolation Ward' }
+                ]
+            },
+            {
+                title: "Adoption & Foster Program",
+                department: "Adoptions",
+                frequency: "Per Application",
+                role: "Adoption Counselor",
+                icon: <Home />,
+                summary: "Ensure every animal goes to a safe and loving home with this structured process for vetting applications and managing adoptions.",
+                tasks: [
+                    { id: 'AS-AD-01', description: "Review the adoption application for completeness and red flags.", priority: 'High', riskLevel: 'High', proof: 'Application Review Form', location: 'Office' },
+                    { id: 'AS-AD-02', description: "Conduct an interview with the potential adopter.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'AS-AD-03', description: "Perform a home check (virtual or physical) for first-time pet owners.", priority: 'High', riskLevel: 'High', proof: 'Home Check Report', location: 'Adopter\'s Home' },
+                    { id: 'AS-AD-04', description: "Complete all adoption paperwork, including the contract and medical records.", priority: 'High', riskLevel: 'High', proof: 'Signed Adoption Contract', location: 'Office' },
+                    { id: 'AS-AD-05', description: "Schedule a follow-up call a week after adoption to check on the animal's adjustment.", priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Log', location: 'Office' }
+                ]
+            },
+            {
+                title: "Volunteer Management & Training",
+                department: "HR/Admin",
+                frequency: "Per Volunteer",
+                role: "Volunteer Coordinator",
+                icon: <Users />,
+                summary: "Effectively manage your most valuable resource—your volunteers. This checklist covers onboarding, training, and scheduling.",
+                tasks: [
+                    { id: 'AS-VOL-01', description: "Conduct an orientation for all new volunteers covering shelter policies and safety procedures.", priority: 'High', riskLevel: 'High', proof: 'Orientation Sign-in Sheet', location: 'Training Room' },
+                    { id: 'AS-VOL-02', description: "Provide hands-on training for animal handling and cleaning protocols.", priority: 'High', riskLevel: 'High', proof: 'Training Checklist', location: 'Kennels' },
+                    { id: 'AS-VOL-03', description: "Maintain a schedule for all volunteer shifts.", priority: 'High', riskLevel: 'Medium', proof: 'Volunteer Schedule', location: 'Office' },
+                    { id: 'AS-VOL-04', description: "Ensure all volunteers have signed a liability waiver.", priority: 'High', riskLevel: 'High', proof: 'Signed Waivers', location: 'Office' },
+                    { id: 'AS-VOL-05', description: "Recognize and appreciate volunteer contributions regularly.", priority: 'Medium', riskLevel: 'Low', proof: 'Appreciation Program', location: 'Office' }
+                ]
+            }
+        ]
     }
 ];

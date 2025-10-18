@@ -232,6 +232,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         "manufacturing_operations_ehs_pack",
         "logistics_warehouse_pack",
         "sports_clubs_facilities_pack",
+        "facility_management_blueprint",
     ];
 
     const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
@@ -247,6 +248,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 )}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
                  {hasTieredEditions && <CardDescription>Aligned with domestic standards (e.g., BIS, NABH, NBC, FSSAI).</CardDescription>}
+                 {!hasTieredEditions && <CardDescription>The complete, expert-curated checklist pack.</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
@@ -279,6 +281,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </p>
                 </div>
                 {hasTieredEditions && <CardDescription>Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
+                 {!hasTieredEditions && <CardDescription>Get custom branding and a guided start.</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
                 <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
@@ -446,10 +449,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <div className='flex items-center justify-between gap-4'>
                  <div>
                     <p className='font-bold text-sm truncate'>{pack.title}</p>
-                    <p className='text-lg font-extrabold'>₹{professionalPrice}</p>
+                    <p className='text-lg font-extrabold'>₹{hasTieredEditions ? professionalPrice : pack.priceINR}</p>
                 </div>
                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                    <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                    <RazorpayButton paymentId={hasTieredEditions ? professionalPaymentId : pack.paymentId} params={{ pack_id: pack.id }}/>
                 </div>
             </div>
         </div>

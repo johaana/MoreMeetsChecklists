@@ -58,7 +58,7 @@ export const painPointsContent = {
         ]
     },
     film_production_pack: {
-        title: "From Costly Errors to Creative Control: A Blueprint for Modern Production",
+        title: "From Costly Errors to Creative Control: Real Production Disasters & How to Prevent Them",
         points: [
             { icon: <Siren />, title: "The On-Set Electrocution (Hyderabad)", description: "A crew member was fatally electrocuted handling lighting on an outdoor shoot. Our 'Pre-Shoot Electrical & Set Safety' checklist, requiring grounding tests and safety officer sign-offs, prevents this." },
             { icon: <HeartPulse />, title: "The Uninsured Stunt Injury", description: "A stunt double's spinal injury led to a massive lawsuit because the production lacked specific accident insurance. Our 'Stunt & Risk Scene Safety' SOP mandates insurance validation and on-site medical readiness." },
@@ -85,14 +85,13 @@ export const painPointsContent = {
         ]
     },
     sports_clubs_facilities_pack: {
-        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent in Sports",
+        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent",
         points: [
             { icon: <Siren />, title: "The Kerala Stadium Stampede", description: "Poor entry/exit flow and no emergency plan led to a fatal stampede. Our 'Crowd Control & Entry Management SOP' with pre-event capacity verification and evacuation drills prevents this." },
             { icon: <HeartPulse />, title: "The Athlete Collapse from Heatstroke", description: "A teenage athlete collapsed with no on-site medical team. Our 'Medical & Emergency Response SOP' mandates certified first-aiders, hydration monitoring, and ambulance readiness checks." },
             { icon: <FileLock />, title: "The Fake Ticket Scandal (Bengaluru)", description: "Chaos erupted at a cricket match due to fake QR code tickets. Our 'Digital Ticketing & Entry Validation SOP' uses real-time scanning and partner sync to eliminate this fraud." },
             { icon: <Wind />, title: "The Monsoon Flooding Disaster (Delhi)", description: "A basement gym's equipment worth ₹25 lakh was destroyed by flooding due to poor drainage. Our 'Facility Maintenance & Seasonal Prep SOP' includes mandatory checks for drainage, sumps, and waterproofing." }
         ]
-
     },
     fitness_centers_gyms_pack: {
         title: "The Business Case for a Safer, More Profitable Fitness Center",
@@ -131,12 +130,12 @@ export const painPointsContent = {
         ]
     },
     healthcare_and_hospital_operations: {
-        title: "The Business Case for Patient Safety & Compliance",
+        title: "Preventing 'Never Events': Real Incidents & The Checklists That Stop Them",
         points: [
-            { icon: <Shield />, title: "Prevent 'Never Events' & Medication Errors", description: "A wrong-site surgery or medication error is catastrophic. Our WHO-aligned Surgical Safety and LASA Drug checklists create a safety net to prevent these devastating and legally perilous events." },
-            { icon: <TrendingUp />, title: "Pass NABH/JCI Audits with Confidence", description: "Stop the pre-audit scramble. Our checklists embed global standards into your daily workflow, ensuring you are perpetually audit-ready and compliant, saving you from non-compliance penalties." },
-            { icon: <Users />, title: "Eliminate Hospital-Acquired Infections (HAIs)", description: "HAIs are a major cost and safety risk. Our CSSD and Infection Control checklists enforce rigorous sterilization and hygiene protocols, directly reducing infection rates and improving patient outcomes." },
-            { icon: <HandCoins />, title: "Stop Revenue Leakage from Inefficiency", description: "Reduce costly delays, sample rejections, and readmissions. Our protocols for ER, lab, and discharge planning streamline operations, improving patient flow and financial health." }
+            { icon: <Shield />, title: "Prevent Wrong-Site Surgery", description: "A patient in Rhode Island underwent brain surgery on the wrong side due to a communication lapse. Our WHO-aligned Surgical Safety Checklist mandates a 'Time Out' to prevent this catastrophic 'never event'." },
+            { icon: <TrendingUp />, title: "Stop Look-Alike Drug Errors", description: "A fatal overdose occurred when a nurse administered a sound-alike drug. Our LASA (Look-Alike, Sound-Alike) Drug Management checklist, with 'Tall Man' lettering and dual sign-offs, prevents this." },
+            { icon: <Users />, title: "Eliminate Hospital-Acquired Infections", description: "An unsterile instrument led to a post-operative infection and a costly lawsuit. Our CSSD Sterilization Protocol, with biological indicators and cycle logs, ensures every instrument is safe." },
+            { icon: <HandCoins />, title: "Prevent Patient Identification Mix-ups", description: "A blood transfusion was given to the wrong patient, resulting in a severe reaction. Our Patient Identification SOP requires two unique identifiers at every critical point of care, from lab samples to transfusions." }
         ]
     },
     pharmacy_ops_pack: {
