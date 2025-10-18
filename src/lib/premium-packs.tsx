@@ -3185,91 +3185,9 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-    // --- Social Cause ---
-    {
-        id: 'animal_shelter_pack',
-        title: "Animal Shelter Operations Pack",
-        priceUSD: 0,
-        priceINR: 0,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Social Cause",
-        description: "A complete (and free) operational toolkit for animal shelters and NGOs to ensure animal welfare, hygiene, and effective adoption programs.",
-        icon: <PawPrint />,
-        badgeText: "Free Resource",
-        badgeVariant: "accent",
-        whoIsItFor: ["Shelter Managers", "NGO Founders", "Animal Welfare Officers", "Volunteers"],
-        sampleItems: [
-            { text: "Ensure 'Daily Animal Health & Wellness' with systematic checks.", icon: <HeartPulse /> },
-            { text: "Implement a 'Kennel & Shelter Hygiene' protocol.", icon: <SprayCan /> },
-            { text: "Manage 'Adoption & Foster Program' applications effectively.", icon: <Home /> },
-            { text: "Includes 'Volunteer Management & Training' checklists.", icon: <Users /> },
-        ],
-        checklists: [
-            {
-                title: "Daily Animal Health & Wellness",
-                department: "Animal Care",
-                frequency: "Daily",
-                role: "Kennel Technician",
-                icon: <HeartPulse />,
-                summary: "A fundamental checklist to ensure every animal is observed for health and behavioral issues daily.",
-                tasks: [
-                    { id: 'AS-HW-01', description: "Observe each animal for signs of illness (lethargy, loss of appetite, etc.).", priority: 'High', riskLevel: 'High', proof: 'Health Observation Log', location: 'Kennels' },
-                    { id: 'AS-HW-02', description: "Administer any required medications as per the vet's instructions.", priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Kennels' },
-                    { id: 'AS-HW-03', description: "Ensure every animal has fresh water and food.", priority: 'High', riskLevel: 'Medium', proof: 'Feeding Log', location: 'Kennels' },
-                    { id: 'AS-HW-04', description: "Log any unusual behavior and report to the shelter manager.", priority: 'High', riskLevel: 'High', proof: 'Behavioral Log', location: 'Kennels' },
-                    { id: 'AS-HW-05', description: "Provide daily enrichment or exercise for each animal.", priority: 'High', riskLevel: 'Medium', proof: 'Enrichment Log', location: 'Play Area' }
-                ]
-            },
-            {
-                title: "Kennel & Shelter Hygiene",
-                department: "Animal Care",
-                frequency: "Daily",
-                role: "Kennel Cleaner",
-                icon: <SprayCan />,
-                summary: "Prevent the spread of disease with a rigorous daily cleaning and disinfection protocol for all animal enclosures and common areas.",
-                tasks: [
-                    { id: 'AS-HYG-01', description: "Clean and disinfect every kennel/enclosure daily.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kennels' },
-                    { id: 'AS-HYG-02', description: "Wash all food and water bowls with disinfectant.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
-                    { id: 'AS-HYG-03', description: "Launder all bedding and towels.", priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
-                    { id: 'AS-HYG-04', description: "Properly dispose of all animal waste.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
-                    { id: 'AS-HYG-05', description: "Maintain a separate isolation area for sick animals and follow strict quarantine protocols.", priority: 'High', riskLevel: 'High', proof: 'Isolation Log', location: 'Isolation Ward' }
-                ]
-            },
-            {
-                title: "Adoption & Foster Program",
-                department: "Adoptions",
-                frequency: "Per Application",
-                role: "Adoption Counselor",
-                icon: <Home />,
-                summary: "Ensure every animal goes to a safe and loving home with this structured process for vetting applications and managing adoptions.",
-                tasks: [
-                    { id: 'AS-AD-01', description: "Review the adoption application for completeness and red flags.", priority: 'High', riskLevel: 'High', proof: 'Application Review Form', location: 'Office' },
-                    { id: 'AS-AD-02', description: "Conduct an interview with the potential adopter.", priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
-                    { id: 'AS-AD-03', description: "Perform a home check (virtual or physical) for first-time pet owners.", priority: 'High', riskLevel: 'High', proof: 'Home Check Report', location: 'Adopter\'s Home' },
-                    { id: 'AS-AD-04', description: "Complete all adoption paperwork, including the contract and medical records.", priority: 'High', riskLevel: 'High', proof: 'Signed Adoption Contract', location: 'Office' },
-                    { id: 'AS-AD-05', description: "Schedule a follow-up call a week after adoption to check on the animal's adjustment.", priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Log', location: 'Office' }
-                ]
-            },
-            {
-                title: "Volunteer Management & Training",
-                department: "HR/Admin",
-                frequency: "Per Volunteer",
-                role: "Volunteer Coordinator",
-                icon: <Users />,
-                summary: "Effectively manage your most valuable resource—your volunteers. This checklist covers onboarding, training, and scheduling.",
-                tasks: [
-                    { id: 'AS-VOL-01', description: "Conduct an orientation for all new volunteers covering shelter policies and safety procedures.", priority: 'High', riskLevel: 'High', proof: 'Orientation Sign-in Sheet', location: 'Training Room' },
-                    { id: 'AS-VOL-02', description: "Provide hands-on training for animal handling and cleaning protocols.", priority: 'High', riskLevel: 'High', proof: 'Training Checklist', location: 'Kennels' },
-                    { id: 'AS-VOL-03', description: "Maintain a schedule for all volunteer shifts.", priority: 'High', riskLevel: 'Medium', proof: 'Volunteer Schedule', location: 'Office' },
-                    { id: 'AS-VOL-04', description: "Ensure all volunteers have signed a liability waiver.", priority: 'High', riskLevel: 'High', proof: 'Signed Waivers', location: 'Office' },
-                    { id: 'AS-VOL-05', description: "Recognize and appreciate volunteer contributions regularly.", priority: 'Medium', riskLevel: 'Low', proof: 'Appreciation Program', location: 'Office' }
-                ]
-            }
-        ]
-    },
     {
         id: 'sports_clubs_facilities_pack',
-        title: "Sports Clubs & Stadium Operations",
+        title: "Sports Clubs & Facilities Operations",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
