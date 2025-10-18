@@ -203,7 +203,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'HR-PERF-006', description: "Review the manager's leadership and team management skills.", priority: 'High', riskLevel: 'Medium', proof: '360-Feedback Report', location: 'Office' },
                     { id: 'HR-PERF-007', description: "Discuss manager's contribution to overall hotel goals.", priority: 'High', riskLevel: 'Medium', proof: 'Goal Alignment Discussion', location: 'Office' },
                     { id: 'HR-PERF-008', description: "Review the manager's handling of any major incidents or challenges.", priority: 'High', riskLevel: 'Medium', proof: 'Incident Reports', location: 'Office' },
-                    { id:: 'HR-PERF-009', description: "Assess the manager's financial acumen and budget management.", priority: 'High', riskLevel: 'High', proof: 'P&L Reports', location: 'Office' },
+                    { id: 'HR-PERF-009', description: "Assess the manager's financial acumen and budget management.", priority: 'High', riskLevel: 'High', proof: 'P&L Reports', location: 'Office' },
                     { id: 'HR-PERF-010', description: "Create a career development path for the manager.", priority: 'Medium', riskLevel: 'Low', proof: 'Career Path Document', location: 'Office' }
                 ]
             },
