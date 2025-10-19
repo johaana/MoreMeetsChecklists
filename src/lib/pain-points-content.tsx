@@ -13,48 +13,48 @@ export const painPointsContent = {
         ]
     },
     hotels_and_resorts: {
-        title: "The Business Case for 5-Star Operational Excellence",
+        title: "From Guest Nightmare to 5-Star Experience: Real Incidents SOPs Prevent",
         points: [
-            { icon: <Users />, title: "Prevent Bad Reviews from Single Incidents", description: "A faulty AC or expired minibar item can ruin a stay and lead to a negative review. Daily room checks catch these failures before the guest does." },
-            { icon: <HandCoins />, title: "Stop Revenue Leakage", description: "Prevent wastage in F&B, ensure accurate minibar billing, and use preventive maintenance to avoid costly emergency repairs, directly impacting your bottom line." },
-            { icon: <Shield />, title: "Avoid Health & Safety Crises", description: "Rigorous HACCP (food) and water quality (pool) logs prevent foodborne or waterborne illnesses, protecting guests and avoiding catastrophic legal and reputational damage." },
-            { icon: <TrendingUp />, title: "Reduce Staff Chaos & Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
+            { icon: <Siren />, title: "The Hotel Arpit Palace Fire (Delhi, 2019)", description: "17 lives were lost in a hotel fire due to illegally blocked exits and non-functional alarms. Our daily 'Fire Safety & Exit Inspection' checklist provides a verifiable audit trail to ensure this never happens." },
+            { icon: <Stethoscope />, title: "The Legionnaires’ Disease Outbreak (Spain, 2016)", description: "A deadly disease outbreak was traced to a resort's contaminated water systems. Our 'Preventive Maintenance' SOP for HVAC and plumbing ensures water quality is logged and systems are cleaned, preventing biological hazards." },
+            { icon: <Bug />, title: "The Bed Bug Infestation & Reputational Damage", description: "A 5-star hotel faced a media storm over a bed bug complaint. Our 'Daily Room Readiness' SOP includes mandatory checks of mattresses and upholstery, catching such issues before a guest ever does." },
+            { icon: <HandCoins />, title: "The 'Phantom' Minibar Charges", description: "Inaccurate minibar billing is a top guest complaint. Our 'Housekeeping & Minibar' SOP ensures stock is verified against consumption upon checkout, eliminating billing errors and revenue loss." }
         ]
     },
     restaurants: {
-        title: "The Business Case for a More Profitable & Compliant Restaurant",
+        title: "From Food Poisoning to Profit: Real Incidents Our Checklists Prevent",
         points: [
-            { icon: <Shield />, title: "Prevent Food Safety Violations", description: "A single food poisoning incident can destroy your reputation. Our HACCP-based temperature and handling logs create a verifiable system to prevent this." },
-            { icon: <HandCoins />, title: "Stop Kitchen Profit Drain", description: "Reduce costly food spoilage with rigorous temperature logging and FIFO protocols, and control portion sizes to protect your margins on every plate." },
-            { icon: <TrendingUp />, title: "Eliminate Service Inconsistency", description: "Ensure every guest gets the same high-quality experience with standardized checklists for FOH opening, closing, and service standards, leading to better reviews and repeat business." },
-            { icon: <Users />, title: "Reduce Back-of-House Chaos", description: "Empower your kitchen staff with clear, repeatable processes for everything from receiving goods to closing down, reducing errors and staff stress." }
+            { icon: <Bug />, title: "The E. coli Outbreak (Chipotle, USA, 2015)", description: "A nationwide E. coli outbreak cost Chipotle billions in stock value and brand damage. Our 'HACCP Kitchen Checklist' prevents cross-contamination with mandatory, logged checks for food handling and surface sanitation." },
+            { icon: <Siren />, title: "The Pune Eatery Sealing (2022)", description: "An FSSAI raid sealed a popular eatery due to unhygienic conditions. Our 'Kitchen Opening & Closing' SOPs create a daily, auditable record of hygiene compliance, ensuring you're always inspection-ready." },
+            { icon: <HandCoins />, title: "The Profit-Draining Spoilage Problem", description: "Thousands in produce was wasted due to a faulty walk-in freezer. Our 'Cold Storage Temperature Logs' provide twice-daily, signed verification that your expensive inventory is safe, preventing spoilage." },
+            { icon: <Users />, title: "The Inconsistent Service that Kills Reviews", description: "One bad service experience can lead to a 1-star review. Our 'FOH Service Standards' checklist ensures every guest receives the same high level of service, from seating to billing, every single time." }
         ]
     },
     fashion_and_apparel_retail: {
-        title: "The Business Case for a More Profitable Fashion Store",
+        title: "From Fire Hazards to Profit Protection: Real Retail Disasters",
         points: [
-            { icon: <TrendingUp />, title: "Reduce Seasonal Dead Stock", description: "Implement checklists for managing seasonal inventory, running timely markdowns, and analyzing sales data to prevent costly end-of-season write-offs." },
-            { icon: <Shirt />, title: "Master Omni-Channel Operations", description: "Seamlessly integrate your online and offline stores with protocols for 'Click and Collect', processing online returns in-store, and maintaining accurate cross-channel inventory." },
-            { icon: <Shield />, title: "Prevent Shrinkage in Fitting Rooms & on the Floor", description: "Use our checklists for fitting room monitoring, security tag audits, and daily cycle counts to significantly reduce losses from theft." },
-            { icon: <Users />, title: "Deliver a Consistent, High-Touch Customer Experience", description: "Standardize your sales process from greeting and style consultation to fitting room service and final sale, turning browsers into loyal customers." }
+            { icon: <Siren />, title: "The Karol Bagh Garment Fire (Delhi, 2023)", description: "A massive fire in a garment market was fueled by illegally stored, flammable materials. Our 'Store Safety & Fire Audit' mandates checks for proper storage and clear fire exits, preventing a small spark from becoming a disaster." },
+            { icon: <Shield />, title: "The Rana Plaza Factory Collapse (Bangladesh, 2013)", description: "Over 1,100 workers died when a structurally unsound garment factory collapsed. Our 'Vendor Compliance Audit' includes checks for structural safety and ethical labor practices in your supply chain, protecting your brand from association with such tragedies." },
+            { icon: <TrendingUp />, title: "The Dead Stock Dilemma", description: "Billions are lost globally to unsold seasonal inventory. Our 'Seasonal Inventory Management' SOP provides a framework for timely markdowns and stock consolidation to clear inventory before it becomes worthless." },
+            { icon: <Lock />, title: "The Fitting Room Shrinkage", description: "Professional shoplifters often target fitting rooms. Our 'Fitting Room Operations' protocol, requiring item counts and attendant monitoring, is a simple, effective deterrent against this major source of loss." }
         ]
     },
     electronics_showroom_pack: {
-        title: "The Business Case for a High-Performing Electronics Showroom",
+        title: "From Short Circuits to Secure Sales: Real Electronics Store Risks",
         points: [
-            { icon: <Zap />, title: "Prevent Electrical Fires & Shocks", description: "A faulty demo unit's wiring can cause a fire. Our daily electrical checks and periodic PAT testing SOPs prevent shocks and fires, ensuring customer and staff safety." },
-            { icon: <HandCoins />, title: "Stop Inventory & Warranty Fraud", description: "An untagged asset can be easily stolen or swapped for warranty fraud. Our asset tagging and daily high-value inventory checks prevent theft and protect against warranty abuse." },
-            { icon: <Bug />, title: "Eliminate Costly Data Entry & Shipping Errors", description: "One wrong digit in a product's weight or dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' data entry SOP prevents these expensive errors before they happen." },
-            { icon: <Shield />, title: "Avoid E-Waste & Compliance Fines", description: "Improper disposal of electronics is a regulatory violation. Our e-waste handling SOP ensures you follow all rules, avoid fines, and protect the environment." }
+            { icon: <Siren />, title: "The Vijay Sales Fire (Mumbai, 2020)", description: "A devastating fire was traced back to a short circuit from overloaded wiring. Our 'Electrical Safety Audit' mandates checks for wiring loads and prevents the use of unsafe multi-plugs, stopping fires before they start." },
+            { icon: <Zap />, title: "The Lithium Battery Explosion (Samsung Store, UK)", description: "A phone's battery exploded while charging, causing an emergency evacuation. Our 'Demo Unit Safety' SOP includes daily checks for battery swelling and heat on all charging devices, preventing fires and injuries." },
+            { icon: <Bug />, title: "The Warranty Swap Fraud", description: "Fraudsters buy a new device, swap its internal components with a damaged one, and return it for a refund. Our 'Returns & Warranty' SOP, requiring serial number verification on the device and box, makes this scam impossible." },
+            { icon: <HandCoins />, title: "The Shipping Dimension Error", description: "A single wrong digit in a product's weight or dimensions can lead to thousands in shipping chargebacks. Our 'Maker-Checker' data entry SOP for new products prevents these expensive, avoidable errors." }
         ]
     },
     supermarket_grocery_retail_pack: {
-        title: "The Business Case for Supermarket & Hypermarket Efficiency",
+        title: "From Expired Goods to Efficient Operations: Real Supermarket Risks",
         points: [
-            { icon: <Recycle />, title: "Reduce Fresh Food Spoilage & Wastage", description: "Our HACCP-aligned checklists for fresh departments ensure proper temperature control, handling, and stock rotation (FIFO), drastically reducing spoilage and protecting thin margins." },
-            { icon: <TrendingUp />, title: "Improve On-Shelf Availability & Reduce Stockouts", description: "Streamline your inventory management with checklists for high-volume receiving, planogram compliance, and daily stock audits, ensuring popular items are always available to customers." },
-            { icon: <HandCoins />, title: "Increase Checkout Speed & Reduce Shrinkage", description: "Optimize front-end efficiency with checklists for cash management, queue monitoring, and loss prevention at the point of sale, improving customer experience and protecting profits." },
-            { icon: <Shield />, title: "Ensure a Safe & Clean Shopping Environment", description: "A simple slip-and-fall incident can lead to a major lawsuit. Implement daily store readiness and hourly spill-check protocols to ensure your store is always safe, hygienic, and welcoming." }
+            { icon: <Siren />, title: "The £7.6M Tesco Fine for Expired Food (UK, 2017)", description: "Tesco was hit with a multi-million pound fine for selling expired food. Our 'Expiry Date & FIFO Rotation' checklist provides a daily, verifiable system to ensure expired goods never reach the shelf." },
+            { icon: <Bug />, title: "The Big Bazaar Fine for Expired Goods (India, 2022)", description: "A major hypermarket was fined after a customer found expired products. Our SOPs for daily expiry sweeps and proper stock rotation prevent this regulatory and reputational disaster." },
+            { icon: <Stethoscope />, title: "The Slip-and-Fall Lawsuit", description: "A simple spill on the floor can lead to a customer injury and a costly lawsuit. Our 'Hourly Floor Inspection & Spill Response' SOP ensures hazards are identified and cleaned up immediately, with a log to prove diligence." },
+            { icon: <Recycle />, title: "The Cold Chain Failure", description: "A faulty refrigerator can lead to thousands in spoiled dairy and produce. Our 'Cold Storage Temperature Logs' provide twice-daily, signed verification that your equipment is working, protecting your inventory and customers." }
         ]
     },
     film_production_pack: {
@@ -67,21 +67,21 @@ export const painPointsContent = {
         ]
     },
     ott_platform_pack: {
-        title: "The Business Case for a Scalable & Compliant OTT Platform",
+        title: "From Platform Outages to Privacy Breaches: Real OTT Disasters",
         points: [
-            { icon: <TrendingUp />, title: "Prevent Show-Stopping Platform Outages", description: "When a cricket streaming app crashed, it lost millions in trust. Our checklists for load testing, disaster recovery, and infrastructure readiness prevent these public failures." },
-            { icon: <FileLock />, title: "Navigate Global Content & Data Regulations", description: "Ensure compliance with regional content laws (like IT Rules 2021), accessibility standards (WCAG 2.1), and data privacy regulations (GDPR/DPDP) to avoid fines and geo-restrictions." },
-            { icon: <Shield />, title: "Secure Your Content and User Data", description: "Implement a robust security framework with checklists for DRM implementation, vendor security assessments, and cybersecurity incident response to protect your content and user data from breaches." },
-            { icon: <Video />, title: "Streamline Your Content Supply Chain", description: "Standardize your content pipeline from acquisition and metadata tagging to QC and release scheduling, improving efficiency and reducing time-to-market for new content." }
+            { icon: <Users />, title: "The Live Sports Streaming Crash", description: "A major OTT platform crashed during a live cricket match, infuriating millions. Our 'Live Event Readiness' checklist prevents this with mandatory load testing and disaster recovery drills before major events." },
+            { icon: <Shield />, title: "The ZEE5 Data Breach (India, 2021)", description: "User data, including emails and phone numbers, was exposed in a major breach. Our 'Data Privacy & Access Control' SOPs, requiring data encryption and least-privilege access, are designed to prevent this." },
+            { icon: <Lock />, title: "The Netflix Vendor Data Leak (2020)", description: "Subscriber data was exposed not by Netflix, but by a third-party vendor. Our 'Vendor Compliance Checklist' includes mandatory security assessments of all third-party partners who handle your data." },
+            { icon: <FileLock />, title: "The Copyright Takedown Nightmare", description: "A platform faced legal action for hosting content without proper rights. Our 'Content Licensing SOP' ensures a clear, auditable chain-of-title for all assets before they go live." }
         ]
     },
     theme_park_ops_pack: {
-        title: "The Business Case for Theme Park Safety & Guest Experience",
+        title: "From Ride Malfunctions to Revenue Loss: Real Theme Park Tragedies",
         points: [
-            { icon: <Shield />, title: "Prevent Catastrophic Ride Failures", description: "A single missed check on a safety restraint or emergency stop can be fatal. Implement rigorous daily ride safety checks, maintenance logs, and operator readiness protocols to prevent accidents." },
-            { icon: <Users />, title: "Master Crowd Control & Emergency Response", description: "A stampede is a theme park's worst nightmare. Manage large crowds effectively and execute orderly evacuations with checklists for crowd flow, emergency exits, and staff response drills." },
-            { icon: <HeartPulse />, title: "Deliver a Flawless Guest Experience", description: "Inconsistent cleanliness, poor F&B hygiene, or a grumpy character actor can ruin a family's expensive day out. Standardize every touchpoint to ensure a magical and memorable experience." },
-            { icon: <FileCheck />, title: "Ensure Regulatory & Safety Compliance", description: "Maintain a constant state of readiness for safety audits with documented checklists for ride maintenance (ASTM F24), water park hygiene, and emergency preparedness." }
+            { icon: <Siren />, title: "The Chennai Ride Collapse (2019)", description: "A ride collapsed mid-operation, leading to fatalities. Our 'Daily Ride Inspection' checklist, including checks of structural bolts, safety harnesses, and emergency stops, provides a mandatory, auditable safety verification." },
+            { icon: <Shield />, title: "The Stampede Risk", description: "Poor crowd flow management can turn a popular attraction into a dangerous stampede risk. Our 'Crowd Management SOP' provides clear protocols for queue management, barrier setup, and emergency dispersal." },
+            { icon: <Bug />, title: "The Food Stall Hygiene Failure", description: "Food poisoning from a single stall can ruin a park's reputation. Our 'Vendor & F&B Stall Safety' checklists enforce the same HACCP-based hygiene standards across your entire park." },
+            { icon: <HeartPulse />, title: "The Delayed Medical Response", description: "A guest suffering from heatstroke did not receive timely medical attention. Our 'Emergency Medical Response' plan mandates staffed first-aid posts and clear communication protocols for rapid response." }
         ]
     },
     sports_clubs_facilities_pack: {
@@ -94,39 +94,39 @@ export const painPointsContent = {
         ]
     },
     fitness_centers_gyms_pack: {
-        title: "The Business Case for a Safer, More Profitable Fitness Center",
+        title: "From Member Injuries to Membership Growth: Real Gym Risks & Solutions",
         points: [
-            { icon: <Shield />, title: "Prevent Member Injuries & Reduce Liability", description: "A snapped cable or an unmaintained treadmill can lead to serious injury and lawsuits. Our checklists for daily equipment safety checks and preventive maintenance protect your members and your business." },
-            { icon: <Users />, title: "Deliver a Consistent, Premium Member Experience", description: "Inconsistent cleaning, poor staff accountability, and broken equipment lead to member churn. Standardize facility hygiene, staff certifications, and member feedback to ensure a 5-star experience." },
-            { icon: <TrendingUp />, title: "Ensure Fire & Emergency Readiness", description: "Blocked exits and expired extinguishers are common failures. Our fire safety checklists ensure you are always prepared for an emergency, protecting lives and your facility." },
-            { icon: <FileCheck />, title: "Improve Staff Performance & Accountability", description: "Lack of clear processes leads to inconsistent service. Empower your team with clear checklists for opening, closing, and cleaning, and use our audit checklists to ensure standards are met." }
+            { icon: <Siren />, title: "The Gym Equipment Fatality (Pune, 2022)", description: "A gym-goer was killed when a machine's cable snapped. Our 'Daily Equipment Inspection' checklist includes mandatory checks for cable wear and tear, preventing such catastrophic failures." },
+            { icon: <Stethoscope />, title: "The Trainer Negligence Lawsuit (LA Fitness, US)", description: "A gym was sued after a trainer's negligence led to a member's injury. Our 'Trainer Certification & Safety Induction' SOP ensures all trainers are qualified and follow safe training protocols." },
+            { icon: <Bug />, title: "The Locker Room Fungal Outbreak", description: "Unhygienic locker rooms can lead to skin infections and member complaints. Our 'Daily Hygiene & Sanitation' routines provide a verifiable record that all wet areas are cleaned and disinfected multiple times a day." },
+            { icon: <Shield />, title: "The Unprepared Medical Emergency", description: "A member suffers a heart attack with no clear response plan. Our 'Emergency & AED Readiness' checklist ensures your AED is functional and staff are trained in CPR, turning chaos into a life-saving response." }
         ]
     },
     facility_management_blueprint: {
-        title: "The Business Case for a More Efficient & Secure Workplace",
+        title: "From Costly Breakdowns to Efficient Operations: Real Facility Disasters",
         points: [
-            { icon: <TrendingUp />, title: "Reduce Operational Costs & Improve Efficiency", description: "Our facility management checklists optimize everything from energy consumption and vendor contracts to preventive maintenance, cutting operational costs and improving your bottom line." },
-            { icon: <Shield />, title: "Mitigate Safety & Compliance Risks", description: "Ensure a safe and compliant workplace with protocols for fire safety, electrical systems (LOTO), EHS, and contractor management, reducing liability and protecting your employees." },
-            { icon: <Users />, title: "Enhance Employee Experience & Productivity", description: "Create a seamless and productive work environment with checklists for office operations, front desk management, and efficient handling of maintenance requests." },
-            { icon: <FileCheck />, title: "Achieve Strategic Goals with Data-Driven Management", description: "Implement frameworks for Quarterly Business Reviews (QBRs) and Annual Strategic Planning to align facility operations with company objectives and demonstrate value to leadership." }
+            { icon: <Siren />, title: "The Escalator Injury (Mumbai Mall)", description: "An escalator malfunctioned due to poor upkeep, causing serious injury. Our 'Preventive Maintenance' schedule for vertical transport ensures all safety checks and vendor servicing are logged and up-to-date." },
+            { icon: <Lock />, title: "The Data Center Overheating Crisis (Bengaluru Tech Park)", description: "A critical data center was threatened when a primary HVAC unit failed. Our 'Critical Systems Redundancy' SOP ensures backup systems are tested weekly, preventing catastrophic downtime." },
+            { icon: <Shield />, title: "The Elevator Fatality from Vendor Negligence (UK)", description: "A facility firm was fined millions after an elevator serviced by their vendor malfunctioned, causing a fatality. Our 'Vendor Performance Checklist' includes verification of a vendor's safety record and insurance, protecting you from their liability." },
+            { icon: <Zap />, title: "The Silent Energy Drain", description: "Lights and ACs left on in unused floors can cost lakhs annually. Our 'Energy Management' checklist includes daily sweeps and BMS monitoring to eliminate wastage and cut utility costs." }
         ]
     },
     corporate_legal_compliance_starter_kit: {
-        title: "The Business Case for a Legally Sound Business Foundation",
+        title: "From Legal Fines to Investor Readiness: Real Corporate Compliance Failures",
         points: [
-            { icon: <FileLock />, title: "Reduce Legal Risk in Hiring & Firing", description: "Implement legally sound checklists for new employee onboarding and disciplinary actions to ensure fair processes and protect your company from wrongful termination claims." },
-            { icon: <Briefcase />, title: "Empower Managers to Make Smarter Decisions", description: "Use the 'Vendor Contract Review for Non-Lawyers' checklist to train your managers to spot key risks in contracts before they escalate to the legal team, saving time and money." },
-            { icon: <Shield />, title: "Prevent Data Privacy Fines", description: "Ensure your public-facing website is compliant with basic data privacy principles with a health check for your Privacy Policy, Terms of Service, and cookie consent." },
-            { icon: <TrendingUp />, title: "Build a Foundation for Scalable Growth", description: "By embedding basic legal and compliance checks into your core operations (like asset management and strategic planning), you build a robust company that is more attractive to investors and partners." }
+            { icon: <Siren />, title: "The €1.2 Billion GDPR Fine (Meta, 2023)", description: "Meta was hit with a record fine for data privacy violations. Our 'Data Privacy Audit Checklist' helps you implement basic GDPR/DPDP principles, like data mapping and consent logs, to demonstrate compliance." },
+            { icon: <Briefcase />, title: "The Startup Wrongful Termination Lawsuit", description: "A hastily fired employee can lead to a costly legal battle. Our 'Disciplinary Action' and 'Exit Process' checklists ensure you follow a fair, documented process, creating a strong legal defense." },
+            { icon: <FileLock />, title: "The Missed Statutory Filing Penalty", description: "Startups are frequently fined for missing ROC or tax filing deadlines. Our 'Statutory Compliance Calendar' provides a clear, shared schedule with automated reminders to ensure deadlines are never missed." },
+            { icon: <HandCoins />, title: "The Due Diligence Failure that Kills a Funding Round", description: "Investors will walk away if your legal house isn't in order. Our checklists for 'Contract Management' and 'Policy Acknowledgement' ensure you have a clean, auditable record, making you investor-ready." }
         ]
     },
     enterprise_risk_cybersecurity_pack: {
-        title: "The Business Case for AI & Cybersecurity Governance",
+        title: "From Ransomware to Resilience: Real-World Cyber Disasters",
         points: [
-            { icon: <BrainCircuit />, title: "Build Trust & Mitigate AI Risk", description: "Implement an AI Ethics framework to govern your models, assess for bias, and ensure transparency, building trust with users and regulators before you face scrutiny." },
-            { icon: <FileLock />, title: "Avoid Crippling Data Privacy Fines", description: "Use our GDPR/DPDP audit checklists to maintain a Record of Processing Activities (ROPA), manage consent, and handle Data Subject Access Requests (DSARs) efficiently." },
-            { icon: <Shield />, title: "Strengthen Your Defenses Against Cyber Attacks", description: "Move from reactive to proactive security. Use checklists for incident response drills, vendor security assessments, and cloud security posture management to find and fix weaknesses before they are exploited." },
-            { icon: 'logo' in Users ? <Users /> : <Users />, title: "Secure the Human Element", description: "Your biggest vulnerability is often your people. Implement secure employee offboarding and access control reviews to ensure departing employees don't become your next data breach." }
+            { icon: <Siren />, title: "The AIIMS Ransomware Attack (Delhi, 2022)", description: "This attack crippled a major hospital system, exposing massive vulnerabilities. Our 'Cybersecurity Incident Response' checklist, with protocols for isolation, backup restoration, and forensics, helps contain such an attack." },
+            { icon: <Lock />, title: "The Colonial Pipeline Hack (USA, 2021)", description: "A single compromised password on an account without MFA shut down critical infrastructure. Our 'Access Control & MFA Audit' SOP mandates quarterly reviews to eliminate stale accounts and enforce multi-factor authentication everywhere." },
+            { icon: <BrainCircuit />, title: "The AI Model Bias Lawsuit", description: "An AI hiring tool was found to be biased, leading to a discrimination lawsuit. Our 'AI Governance & Ethics' framework provides a checklist for assessing models for bias and ensuring fairness before deployment." },
+            { icon: <Users />, title: "The Employee Phishing Attack", description: "The most common entry point for hackers is a successful phishing email. Our 'Employee Phishing Simulation' SOP provides a framework for training and testing your staff, turning your biggest weakness into a human firewall." }
         ]
     },
     healthcare_and_hospital_operations: {
@@ -148,62 +148,60 @@ export const painPointsContent = {
         ]
     },
     school_operations_pack: {
-        title: "From Minor Lapses to Major Disasters: Real Incidents That SOPs Prevent",
+        title: "From School Bus Tragedies to Fire Drills: Real-World School Risks",
         points: [
-            { icon: <Siren />, title: "The 'Forgotten Child' Nightmare", description: "A child left on a bus is a catastrophic failure that can destroy your school's reputation forever. Our mandatory, verifiable end-of-route check prevents this." },
-            { icon: <Shield />, title: "The Unseen Intruder on Campus", description: "An unauthorized person on school grounds is a terrifying security breach. Our strict visitor management and perimeter control checklists are your first line of defense." },
-            { icon: <HeartPulse />, title: "The Cafeteria Food Poisoning Outbreak", description: "One food safety lapse can sicken dozens of students and trigger a public health crisis. Our HACCP-based kitchen hygiene SOPs prevent this disaster." },
-            { icon: <TrendingUp />, title: "Failing a Surprise Inspection", description: "Failing a fire safety or academic board inspection can result in fines, public embarrassment, or loss of affiliation. Our checklists ensure you are perpetually compliant." }
+            { icon: <Siren />, title: "The Surat Coaching Centre Fire (2019)", description: "A fire in a coaching center killed 22 students due to illegal structures and blocked exits. Our 'Fire Safety Drills' and 'Infrastructure Audits' ensure your premises are safe and evacuation-ready." },
+            { icon: <Bus />, title: "The 'Forgotten Child' on the School Bus", description: "A child left unattended on a bus is a school's worst nightmare. Our 'Transport Safety' checklist mandates a verifiable, seat-by-seat check by the attendant at the end of every route, preventing this tragedy." },
+            { icon: <Bug />, title: "The Mid-Day Meal Food Poisoning", description: "Contaminated food can sicken hundreds of students. Our 'Canteen Hygiene & Food Safety' checklist, based on HACCP principles, ensures that food is stored, prepared, and served safely every day." },
+            { icon: <Users />, title: "The Unverified Visitor Security Breach", description: "An unauthorized person on campus is a major security threat. Our 'Visitor Management & Campus Security' SOP provides a strict protocol for verifying and tracking every non-staff member who enters your school." }
         ]
     },
     university_college_ops: {
-        title: "The Business Case for a World-Class Campus Operation",
+        title: "From Lab Explosions to Hostel Safety: Managing Campus Risks",
         points: [
-            { icon: <TestTube />, title: "Prevent Viral Lab Accidents", description: "A lab fire caused by an expired extinguisher can ruin your reputation. Our EHS checklists ensure equipment is maintained, chemicals are managed, and staff are trained, meeting OSHA and OECD GLP standards." },
-            { icon: <FileLock />, title: "Stop Exam Paper Leaks", description: "Protect academic integrity with a strict chain-of-custody protocol for confidential materials, from secure printing and storage to supervised distribution and destruction." },
-            { icon: <Home />, title: "Mitigate Hostel Safety Breaches", description: "Weekly electrical safety audits, functional smoke detectors, and clear enforcement of appliance policies prevent fires and ensure a safe living environment for students." },
-            { icon: <Users />, title: "Build a Culture of Well-being & Anti-Ragging", description: "Go beyond compliance with proactive checklists for anonymous reporting, awareness workshops, and a responsive committee, ensuring student mental and emotional safety is a priority." }
+            { icon: <Siren />, title: "The College Lab Fire (Coimbatore, 2023)", description: "A fire broke out in a college lab due to improper chemical storage. Our 'Lab & Chemical Safety' SOPs, aligned with OSHA standards, mandate correct storage, labeling, and disposal procedures to prevent fires and exposure." },
+            { icon: <Home />, title: "The Hostel Fire Hazard", description: "Illegal use of cooking appliances in hostels is a common cause of fires. Our 'Hostel Inspection SOP' includes regular checks for prohibited items and faulty wiring, ensuring student residential safety." },
+            { icon: <FileLock />, title: "The Exam Paper Leak", description: "A leaked exam paper can destroy an institution's academic reputation. Our 'Confidential Document Handling' SOP provides a strict chain-of-custody protocol for exam papers, from printing to distribution." },
+            { icon: <HeartPulse />, title: "The Failure to Address Harassment", description: "Not having a clear, accessible anti-harassment policy can lead to regulatory action and a toxic campus culture. Our 'Anti-Harassment & Grievance' checklists help you comply with UGC guidelines and ensure a fair process." }
         ]
     },
     food_manufacturing_ops: {
-        title: "The Business Case for a Safer, More Productive Plant",
+        title: "From Product Recalls to Production Excellence: Real Food Plant Risks",
         points: [
-            { icon: <Shield />, title: "Prevent Contamination & Ensure Food Safety", description: "Implement HACCP-based checklists for raw material receiving, sanitation, and allergen control to prevent costly recalls and protect consumer health." },
-            { icon: <TrendingUp />, title: "Maximize Uptime & Production Throughput", description: "Move from reactive repairs to proactive maintenance with protocols for equipment calibration, lubrication, and daily checks, ensuring your lines are always running." },
-            { icon: <FileCheck />, title: "Achieve & Maintain GFSI/ISO 22000 Certification", description: "Our checklists are aligned with global food safety standards, providing the documentation and process control needed to pass audits and access new markets." },
-            { icon: <Users />, title: "Improve Quality & Reduce Product Waste", description: "Use robust protocols for finished product testing and quality control to reduce defects, minimize rework, and protect your profit margins." }
+            { icon: <Bug />, title: "The Ice Cream Plant Contamination (Gujarat, 2021)", description: "A major ice cream brand had to recall products after contamination was found at its plant. Our 'HACCP Production Checklists' help prevent contamination at every Critical Control Point, from raw materials to packaging." },
+            { icon: <Users />, title: "The Worker Injury from Unsafe Machinery", description: "A worker losing a hand in a machine without a safety guard is a preventable tragedy. Our 'Machine Safety & EHS' SOPs mandate daily checks for safety guards and emergency stops, complying with the Factories Act." },
+            { icon: <Recycle />, title: "The Cross-Contamination Catastrophe", description: "Undeclared allergens from cross-contact can be fatal for consumers. Our 'Allergen Management SOP' provides a rigorous system for production scheduling, cleaning verification, and raw material segregation to prevent this." },
+            { icon: <FileLock />, title: "The Failed Export Consignment", description: "A shipment is rejected by a foreign country for not meeting their food safety standards. Our checklists, aligned with BRCGS and ISO 22000, ensure you have the documentation and processes for global market access." }
         ]
     },
     manufacturing_operations_ehs_pack: {
-        title: "The Business Case for a Safer, More Productive Plant",
+        title: "From Fatal Accidents to Factory Compliance: Real EHS Disasters",
         points: [
-            { icon: <Shield />, title: "Prevent Life-Altering Accidents", description: "A single LOTO failure can lead to a fatality. Our life-saving protocols for Lock-Out Tag-Out, Permit-to-Work, and Confined Space Entry are non-negotiable systems to protect your workforce." },
-            { icon: <TrendingUp />, title: "Eliminate Unplanned Downtime & Production Losses", description: "Move from reactive repairs to proactive maintenance. Our checklists for shift handovers, critical spares verification, and tool calibration help avert failures before they happen, maximizing uptime." },
-            { icon: <FileCheck />, title: "Ensure Vendor & Contractor Safety Compliance", description: "Don't let a contractor's safety lapse become your liability. Our Contractor EHS Management checklist ensures all third-party vendors on your site are pre-qualified and adhere to your safety standards." },
-            { icon: <Users />, title: "Improve Quality & Reduce Rework", description: "Prevent defects at the source. Use robust protocols for raw material inspection and 'maker-checker' systems for critical data entry to reduce waste, improve first-pass yield, and protect your margins." }
+            { icon: <Siren />, title: "The LG Polymer Gas Leak (Visakhapatnam, 2020)", description: "A catastrophic chemical leak killed 12 people and affected hundreds due to a failure in maintenance and safety protocols. Our 'Chemical Handling' and 'Preventive Maintenance' SOPs are designed to prevent such disasters." },
+            { icon: <Zap />, title: "The Lockout/Tagout (LOTO) Fatality", description: "A worker is killed when a machine is accidentally started during maintenance. Our 'LOTO Procedure' checklist is a life-saving protocol that ensures equipment is de-energized and locked out before any work begins." },
+            { icon: <HardHat />, title: "The Confined Space Tragedy", description: "Workers entering a tank without proper checks can suffocate from toxic gases. Our 'Confined Space Entry Permit' mandates gas testing, an attendant, and a rescue plan, making entry safe." },
+            { icon: <Shield />, title: "The 'Temporary' Fix That Becomes a Permanent Hazard", description: "An unsafe, temporary bypass on a machine's safety sensor leads to an injury weeks later. Our 'Shift Handover' and 'Maintenance Logs' ensure that such temporary fixes are documented and rectified, not forgotten." }
         ]
     },
     logistics_warehouse_pack: {
-        title: "The Business Case for a More Accurate & Efficient Warehouse",
+        title: "From Warehouse Collapse to Supply Chain Excellence: Real Logistics Risks",
         points: [
-            { icon: <TrendingUp />, title: "Achieve 99%+ Inventory Accuracy", description: "Stop losing money to lost stock. Implement systematic checklists for Goods Receiving (GRN), cycle counting, and returns management to get a true, real-time picture of your inventory." },
-            { icon: <Shield />, title: "Create a Safer Warehouse Environment", description: "Prevent costly accidents with daily safety checklists for forklifts, loading docks, and general housekeeping, reducing injuries and potential compliance fines." },
-            { icon: <HandCoins />, title: "Eliminate Costly Shipping & Data Entry Errors", description: "A single typo in product dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' protocol for new product data entry prevents these expensive mistakes." },
-            { icon: <FileCheck />, title: "Improve Order Fulfillment Speed & Accuracy", description: "A well-organized warehouse is a fast warehouse. Our 5S and inventory management checklists ensure that your pick-and-pack operations are efficient, accurate, and scalable." }
+            { icon: <Siren />, title: "The Bhiwandi Warehouse Fire (2022)", description: "Lakhs of goods were destroyed in a fire caused by faulty wiring and improper storage of flammable materials. Our 'Warehouse Fire Safety' and 'Hazardous Material Handling' SOPs are designed to prevent this." },
+            { icon: <Users />, title: "The Forklift Collision Fatality", description: "A pedestrian worker is hit and killed by a reversing forklift. Our 'Forklift & MHE Operations' checklist includes mandatory pre-operation checks for horns, lights, and designated pedestrian walkways to prevent such accidents." },
+            { icon: <Building2 />, title: "The Amazon Warehouse Collapse (USA, 2021)", description: "A warehouse collapsed during a tornado, leading to fatalities and questions about structural safety. While weather can't be controlled, our 'Infrastructure & Racking Inspection' SOPs ensure your facility meets its structural load and safety ratings." },
+            { icon: <TrendingUp />, title: "The Inventory 'Black Hole'", description: "Stock that exists in the system but can't be found on the shelf is a major profit drain. Our 'Cycle Counting' and 'Bin Accuracy' SOPs create a disciplined process to achieve over 99% inventory accuracy." }
         ]
     },
     animal_shelter_pack: {
-        title: "The Case for Operational Excellence in Animal Welfare",
+        title: "From Disease Outbreak to Donor Trust: The Case for Shelter SOPs",
         points: [
-            { icon: <HeartPulse />, title: "Ensure Animal Health & Safety", description: "A systematic approach to daily health checks, medication logs, and hygiene protocols prevents the spread of disease and ensures every animal receives the care it deserves." },
-            { icon: <Users />, title: "Empower Volunteers & Staff", description: "Clear, simple checklists for cleaning, feeding, and enrichment empower your team and volunteers to provide consistent, high-quality care, even with limited resources." },
-            { icon: <Shield />, title: "Build Public Trust & Donor Confidence", description: "A well-run, transparent operation demonstrates that you are responsible stewards of donor funds, encouraging more adoptions, volunteers, and financial support." },
-            { icon: <Home />, title: "Improve Adoption & Foster Outcomes", description: "A structured process for vetting potential homes ensures that animals are placed in safe, loving environments, reducing the chance of returns and creating successful, lifelong matches." }
+            { icon: <Bug />, title: "The Parvovirus Outbreak Shutdown (2023)", description: "A shelter was forced to close and euthanize animals after a parvovirus outbreak. Our 'Intake & Quarantine' and 'Daily Sanitation' SOPs are designed specifically to prevent the spread of infectious diseases." },
+            { icon: <Stethoscope />, title: "The Neglect Allegation That Drains Donations", description: "Allegations of animal neglect, even if unfounded, can destroy public trust. Our 'Daily Health Check' and 'Medical Record' logs provide a verifiable, timestamped audit trail of the care every single animal receives." },
+            { icon: <Users />, title: "The Volunteer Injury & Liability", description: "A volunteer is bitten by a dog with a known history of fear-aggression. Our 'Animal Handling & Safety' SOP for volunteers includes training on reading animal behavior and using correct PPE, protecting your team and your NGO." },
+            { icon: <Home />, title: "The 'Failed Adoption' Heartbreak", description: "An animal is returned days after adoption because the home was unsuitable. Our 'Adoption & Home Check' checklist provides a structured, fair process to ensure a better match, reducing returns and creating successful forever homes." }
         ]
     }
 };
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
-
-    
