@@ -7,8 +7,8 @@ export const painPointsContent = {
         title: "High-Stakes Retail: How a Single Missed Step Leads to Multi-Crore Losses",
         points: [
             { icon: <Siren />, title: "The ₹3.8 Crore Mumbai Showroom Theft", description: "A premium store was burgled overnight after an alarm was switched off for maintenance with no backup protocol. Our 'End-of-Day Security' checklist prevents this by mandating alarm, CCTV, and patrol verifications before closing." },
-            { icon: <Users />, title: "The Fake Return Fraud", description: "A staff member colluded with a customer to process ₹12 lakh in fake refunds. Our 'Sales & Return Authorization' SOP, requiring dual approval for large refunds and weekly POS audits, eliminates this internal threat." },
-            { icon: <Lock />, title: "The Vault Access Breach", description: "An employee used a colleague’s access card to enter a gold vault after hours. Our 'Vault Access Control' checklist, mandating biometric entry and daily log reviews, would have made this impossible." },
+            { icon: <Users />, title: "The Fake Return Fraud (Neiman Marcus, USA)", description: "A sophisticated fraud ring cost luxury retailers millions by returning high-end fake goods for real refunds. Our 'Sales & Return Authorization' SOP, requiring product verification and manager approval for high-value returns, shuts this down." },
+            { icon: <Lock />, title: "The Vault Access Breach (Antwerp Diamond Heist)", description: "One of history's largest diamond heists succeeded by exploiting weaknesses in vault access. Our 'Vault Access Control' checklist, mandating biometric entry and daily log reviews, hardens this critical target." },
             { icon: <Shield />, title: "The Payment Gateway Cyber Scam", description: "A luxury watch brand lost sales after fraudsters placed fake QR codes on payment counters. Our 'Digital Transaction Security' checklist includes daily QR code validation to prevent this modern form of theft." }
         ]
     },
@@ -80,7 +80,7 @@ export const painPointsContent = {
         points: [
             { icon: <Siren />, title: "The Kishkinta Theme Park Collapse (Chennai, 2016)", description: "A ride collapsed during a trial run, killing one and injuring others. Our 'Daily Ride Inspection' checklist mandates checks of structural bolts, safety harnesses, and emergency stops to provide a verifiable safety audit." },
             { icon: <Shield />, title: "The Stampede at Imagicaa (2018)", description: "Poor crowd flow management at a popular attraction led to a near-stampede situation. Our 'Crowd Management SOP' provides clear protocols for queue management, barrier setup, and emergency dispersal." },
-            { icon: <Bug />, title: "The Water Park Contamination", description: "A water park was forced to close after guests reported skin infections due to poor water quality. Our 'Water Quality & Hygiene' checklists enforce the same HACCP-based standards across your entire park." },
+            { icon: <Bug />, title: "The Water Park Contamination (Action Park, USA)", description: "A water park was forced to close after guests reported skin infections due to poor water quality. Our 'Water Quality & Hygiene' checklists enforce the same HACCP-based standards across your entire park." },
             { icon: <HeartPulse />, title: "The Delayed Medical Response Fatality", description: "A guest suffering a heart attack did not receive timely medical attention due to unclear communication. Our 'Emergency Medical Response' plan mandates staffed first-aid posts and clear communication protocols for rapid response." }
         ]
     },
@@ -88,9 +88,9 @@ export const painPointsContent = {
         title: "From Stampedes to Safety: Real Sports Venue Failures",
         points: [
             { icon: <Siren />, title: "The Hillsborough Disaster (UK, 1989)", description: "A fatal human crush resulted from poor crowd control and outdated stadium design. Our 'Crowd Control & Entry Management SOP' ensures pre-event capacity verification and emergency evacuation drills to prevent such tragedies." },
-            { icon: <Dumbbell />, title: "The Gym Equipment Injury Lawsuit", description: "A member at a leading gym chain suffered a severe injury due to a faulty machine. Our 'Equipment Safety & Maintenance Checklist' with daily, logged inspections prevents this and provides a strong legal defense." },
-            { icon: <Stethoscope />, title: "The Power of Readiness: The Christian Eriksen Collapse (Euro 2020)", description: "The world watched as a player collapsed, but the immediate, coordinated response from a trained medical team with an AED saved his life. Our 'Medical & Emergency Response SOP' ensures your venue is prepared for exactly this scenario." },
-            { icon: <Ticket />, title: "The Fake Ticket Chaos (UEFA Champions League Final, 2022)", description: "Chaos erupted at a major final due to a massive influx of fake tickets. Our 'Digital Ticketing & Entry Validation SOP' uses real-time scanning and fraud detection to eliminate this risk." }
+            { icon: <Dumbbell />, title: "The Gym Equipment Fatality (Delhi, 2023)", description: "A 32-year-old gym-goer died after a cable snapped on a machine. Our 'Daily Equipment Inspection' checklist includes mandatory checks for cable wear and tear, preventing such catastrophic failures." },
+            { icon: <Stethoscope />, title: "The Damar Hamlin On-Field Collapse (NFL, USA, 2023)", description: "The world watched as a player collapsed, but the immediate, coordinated response from a trained medical team with an AED saved his life. Our 'Medical & Emergency Response SOP' ensures your venue is prepared for exactly this scenario." },
+            { icon: <Ticket />, title: "The UEFA Champions League Final Fake Ticket Chaos (Paris, 2022)", description: "Chaos erupted at a major final due to a massive influx of fake tickets. Our 'Digital Ticketing & Entry Validation SOP' uses real-time scanning and fraud detection to eliminate this risk." }
         ]
     },
     fitness_centers_gyms_pack: {
@@ -210,3 +210,4 @@ export type PainPointCategory = keyof PainPoints;
     
 
     
+
