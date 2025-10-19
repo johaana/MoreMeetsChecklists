@@ -328,13 +328,8 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ALLERGEN-01', description: "Brief chefs on any special diet orders before service begins.", priority: 'High', riskLevel: 'High', proof: 'Briefing Notes', location: 'Kitchen' },
                     { id: 'ALLERGEN-02', description: "Use designated, labeled cooking stations for allergen-free orders.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen' },
                     { id: 'ALLERGEN-03', description: "Manager to double-check special diet plates before they leave the kitchen.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Log', location: 'Kitchen Pass' },
-                    { id: 'ALLERGEN-04', description: "Obtain written acknowledgement from guest for complex special orders.", priority: 'Medium', riskLevel: 'Medium', proof: 'Signed Order Slip', location: 'POS' },
-                    { id: 'ALLERGEN-05', description: "Manager or Head Chef to double-check the final dish against the ticket before it leaves the kitchen.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Log Sign-off', location: 'Kitchen Pass' },
-                    { id: 'ALLERGEN-06', description: "The server who took the order must be the one to deliver the dish to the correct guest.", priority: 'High', riskLevel: 'High', proof: 'Service Protocol', location: 'Dining Area' },
-                    { id: 'ALLERGEN-07', description: "Verbally re-confirm the dish and its special preparation with the guest upon delivery.", priority: 'High', riskLevel: 'Medium', proof: 'Server Confirmation', location: 'Dining Table' },
                     { id: 'ALLERGEN-08', description: "Maintain an up-to-date allergen matrix for all menu items.", priority: 'High', riskLevel: 'High', proof: 'Allergen Matrix Document', location: 'POS/Kitchen' },
                     { id: 'ALLERGEN-09', description: "Change gloves and wash hands before and after handling an allergen-free order.", priority: 'High', riskLevel: 'High', proof: 'CCTV/Supervisor Audit', location: 'Kitchen' },
-                    { id: 'ALLERGEN-10', description: "Document any complex or severe allergy requests in a shift log for future reference.", priority: 'Medium', riskLevel: 'Medium', proof: 'Shift Logbook', location: 'Manager Office' },
                 ]
             },
             {
@@ -2200,7 +2195,7 @@ export const premiumPacks: PremiumPack[] = [
             {
                 title: "Visitor Management & Campus Security",
                 department: "Security",
-                frequency: "Ongoing",
+                frequency: "Daily",
                 role: "Security Guard",
                 icon: <UserCog />,
                 summary: "Strict protocol for verifying and tracking all visitors to ensure student safety.",
@@ -2963,11 +2958,11 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <Shield />,
                 summary: "Controlling access to the warehouse to prevent theft and ensure only authorized personnel are present.",
                 tasks: [
-                    { id: 'SAC-01', description: 'Check credentials of all employees and visitors entering the facility.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Main Gate' },
-                    { id: 'SAC-02', description: 'Issue visitor passes and ensure they are escorted.', priority: 'High', riskLevel: 'High', proof: 'Visitor Pass Log', location: 'Main Gate' },
-                    { id: 'SAC-03', description: 'Monitor CCTV cameras for suspicious activity.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
-                    { id: 'SAC-04', description: 'Perform regular patrols of the warehouse perimeter.', priority: 'High', riskLevel: 'High', proof: 'Patrol Log', location: 'Perimeter' },
-                    { id: 'SAC-05', description: 'Inspect all outgoing vehicles for unauthorized goods.', priority: 'High', riskLevel: 'High', proof: 'Vehicle Inspection Log', location: 'Exit Gate' },
+                    { id: 'SAC-01', description: 'Check membership status of everyone entering the facility.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Main Gate' },
+                    { id: 'SAC-02', description: 'Monitor CCTV cameras for suspicious activity.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
+                    { id: 'SAC-03', description: 'Perform regular patrols of the locker rooms and other areas.', priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Facility-wide' },
+                    { id: 'SAC-04', description: 'Ensure all lockers are functional and report any broken ones.', priority: 'Medium', riskLevel: 'Medium', proof: 'Locker Inspection Log', location: 'Locker Rooms' },
+                    { id: 'SAC-05', description: 'Manage a lost and found system for member belongings.', priority: 'High', riskLevel: 'Low', proof: 'Lost and Found Log', location: 'Reception' },
                 ]
             },
             {
@@ -3707,13 +3702,13 @@ export const premiumPacks: PremiumPack[] = [
         ]
     },
     {
-        id: 'sports_clubs_facilities_pack',
-        title: "Sports Clubs & Facilities Operations",
+        id: 'sports_clubs_stadium_operations_pack',
+        title: "Sports Clubs & Stadium Operations Pack",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Entertainment & Events",
-        description: "A comprehensive safety and operational pack for managing sports clubs, gyms, stadiums, and training facilities.",
+        description: "An advanced compliance and operations suite for gyms, sports academies, and stadiums, focusing on athlete safety, crowd control, EHS, and facility compliance.",
         icon: <Trophy />,
         bestseller: true,
         whoIsItFor: ["Sports Facility Managers", "Club Owners", "Stadium Operations Heads", "Safety Officers"],
@@ -3880,18 +3875,18 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
             {
-                title: "Member & Guest Services",
-                department: "Membership/Hospitality",
-                frequency: "Daily",
-                role: "Guest Services Manager",
-                icon: <UserCog />,
-                summary: "Ensuring a premium experience for members and guests from arrival to departure.",
+                title: "POSH & Ethical Conduct SOP",
+                department: "HR/Compliance",
+                frequency: "Ongoing",
+                role: "POSH Committee Head",
+                icon: <ShieldCheck />,
+                summary: "Establish a robust framework for preventing and addressing harassment, ensuring a safe and respectful environment for all athletes and staff.",
                 tasks: [
-                    { id: 'GUEST-SVC-01', description: "Review member feedback and action any complaints.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Log', location: 'Office' },
-                    { id: 'GUEST-SVC-02', description: "Ensure reception and member lounges are clean and well-presented.", priority: 'High', riskLevel: 'Low', proof: 'Lounge Checklist', location: 'Lounges' },
-                    { id: 'GUEST-SVC-03', description: "Manage bookings for club facilities (courts, rooms).", priority: 'High', riskLevel: 'Medium', proof: 'Booking System', location: 'Reception' },
-                    { id: 'GUEST-SVC-04', description: "Train staff on club policies and guest interaction standards.", priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
-                    { id: 'GUEST-SVC-05', description: "Handle membership inquiries and renewals professionally.", priority: 'High', riskLevel: 'Medium', proof: 'Membership CRM', location: 'Office' },
+                    { id: 'POSH-01', description: "Form and document the Internal Complaints Committee (ICC) as per the POSH Act.", priority: 'High', riskLevel: 'High', proof: 'ICC Formation Order', location: 'HR Office' },
+                    { id: 'POSH-02', description: "Conduct mandatory POSH awareness and sensitization training for all staff, coaches, and athletes annually.", priority: 'High', riskLevel: 'High', proof: 'Training Attendance Records', location: 'HR Office' },
+                    { id: 'POSH-03', description: "Display posters and notices about the POSH policy and ICC members in prominent locations.", priority: 'High', riskLevel: 'Medium', proof: 'Photographs of Displays', location: 'Venue' },
+                    { id: 'POSH-04', description: "Establish a confidential and accessible complaint lodging mechanism (email, physical box, designated person).", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'HR/Website' },
+                    { id: 'POSH-05', description: "Review and act upon any complaint received within the timelines prescribed by the POSH Act.", priority: 'High', riskLevel: 'High', proof: 'Complaint Register & Action Taken Report', location: 'ICC Files' },
                 ]
             }
         ]
