@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt, Zap, Package } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Theater, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt, Zap, Package, Fish, Cloud } from 'lucide-react';
 
 export const painPointsContent = {
     jewelry_and_luxury_retail: {
@@ -126,7 +126,7 @@ export const painPointsContent = {
             { icon: <Siren />, title: "The AIIMS Ransomware Attack (Delhi, 2022)", description: "This attack crippled a major hospital system, exposing massive vulnerabilities. Our 'Cybersecurity Incident Response' checklist, with protocols for isolation, backup restoration, and forensics, helps contain such an attack." },
             { icon: <Lock />, title: "The Colonial Pipeline Hack (USA, 2021)", description: "A single compromised password on an account without MFA shut down critical infrastructure. Our 'Access Control & MFA Audit' SOP mandates quarterly reviews to eliminate stale accounts and enforce multi-factor authentication everywhere." },
             { icon: <BrainCircuit />, title: "The AI Model Bias Lawsuit", description: "An AI hiring tool was found to be biased, leading to a discrimination lawsuit. Our 'AI Governance & Ethics' framework provides a checklist for assessing models for bias and ensuring fairness before deployment." },
-            { icon: <Users />, title: "The Employee Phishing Attack that Compromised a Unicorn", description: "The most common entry point for hackers is a successful phishing email. Our 'Employee Phishing Simulation' SOP provides a framework for training and testing your staff, turning your biggest weakness into a human firewall." }
+            { icon: <Fish />, title: "The Employee Phishing Attack that Compromised a Unicorn", description: "The most common entry point for hackers is a successful phishing email. Our 'Employee Phishing Simulation' SOP provides a framework for training and testing your staff, turning your biggest weakness into a human firewall." }
         ]
     },
     healthcare_and_hospital_operations: {
@@ -206,4 +206,5 @@ export const painPointsContent = {
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
 
+    
     
