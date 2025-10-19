@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -7,13 +6,14 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { writeFile, utils } from 'xlsx-js-style';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 
 function handleDownload (pack: PremiumPack) {
@@ -471,4 +471,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
         </>
     );
-}
+
+    
