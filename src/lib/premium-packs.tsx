@@ -1658,11 +1658,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LOG-DISP-03', description: 'Match the physical goods being loaded with the dispatch documentation.', priority: 'High', riskLevel: 'High', proof: 'Dispatch Note Sign-off', location: 'Loading Bay' },
                     { id: 'LOG-DISP-04', description: 'Ensure the truck is sealed (if required) and the seal number is recorded.', priority: 'High', riskLevel: 'High', proof: 'Seal Log', location: 'Loading Bay' },
                     { id: 'LOG-DISP-05', description: 'Finalize and hand over all shipping documents to the driver.', priority: 'High', riskLevel: 'Medium', proof: 'Document Handover Log', location: 'Dispatch Office' },
-                    { id: 'LOG-DISP-06', description: 'Verify the truck\'s registration and driver\'s license are valid.', priority: 'High', riskLevel: 'Medium', proof: 'Document Check', location: 'Security Gate' },
+                    { id: 'LOG-DISP-06', description: "Verify the truck's registration and driver's license are valid.", priority: 'High', riskLevel: 'Medium', proof: 'Document Check', location: 'Security Gate' },
                     { id: 'LOG-DISP-07', description: 'Check the condition of the truck to ensure it is roadworthy (tires, lights).', priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Loading Bay' },
                     { id: 'LOG-DISP-08', description: 'Photograph the sealed truck before it departs.', priority: 'High', riskLevel: 'Medium', proof: 'Photo Archive', location: 'Loading Bay' },
-                    { id: 'LOG-DISP-09', description: 'Confirm the driver has completed their pre-trip vehicle inspection.', priority: 'High', riskLevel: 'Medium', proof: 'Driver\'s Logbook Check', location: 'Loading Bay' },
-                    { id: 'LOG-DISP-10', description: 'Update the shipment status to \'Dispatched\' in the WMS/TMS.', priority: 'High', riskLevel: 'Medium', proof: 'System Status Update', location: 'System' },
+                    { id: 'LOG-DISP-09', description: "Confirm the driver has completed their pre-trip vehicle inspection.", priority: 'High', riskLevel: 'Medium', proof: "Driver's Logbook Check", location: 'Loading Bay' },
+                    { id: 'LOG-DISP-10', description: "Update the shipment status to 'Dispatched' in the WMS/TMS.", priority: 'High', riskLevel: 'Medium', proof: 'System Status Update', location: 'System' },
                 ]
             },
             {
