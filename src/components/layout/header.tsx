@@ -66,47 +66,42 @@ const SolutionsList = () => (
 
 // Reusable mobile component to render the list of solutions
 const MobileSolutionsList = () => (
-    <Accordion type="multiple" className="w-full">
-        <AccordionItem value="packs-by-industry" className="border-b-0">
+    <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="solutions" className="border-b-0">
             <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline py-2 -ml-1 pr-1">
-                Premium Packs by Industry
+                Explore Solutions
             </AccordionTrigger>
-            <AccordionContent className="pt-2">
-                <div className="flex flex-col gap-2 pl-4 border-l">
-                     <Accordion type="multiple" className="w-full">
-                        {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-                            <AccordionItem key={category} value={category} className="border-b-0">
-                                <AccordionTrigger className="text-base font-medium text-muted-foreground hover:text-foreground hover:no-underline py-1.5">
-                                    {category}
-                                </AccordionTrigger>
-                                <AccordionContent className="pl-4">
-                                    <div className="flex flex-col gap-1 mt-1 border-l">
+            <AccordionContent className="pt-2 pl-4 border-l">
+                <div className="space-y-4">
+                     <div>
+                        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Bestselling Checklists</h4>
+                        <div className="flex flex-col gap-1">
+                            {allIndividualChecklists.map(checklist => (
+                                <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-r-md hover:bg-secondary">
+                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+                                    <span className="flex-1 leading-snug">{checklist.title}</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                     <div className="space-y-3">
+                        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Premium Packs by Industry</h4>
+                        <div className="flex flex-col gap-3">
+                            {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
+                                <div key={category}>
+                                    <h5 className="font-semibold text-sm text-primary/80 mb-1.5">{category}</h5>
+                                     <div className="flex flex-col gap-1">
                                         {packs.map(pack => (
-                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 pl-4 rounded-r-md hover:bg-secondary">
+                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-r-md hover:bg-secondary">
                                                 <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
                                                 <span className="flex-1 leading-snug">{pack.title}</span>
                                             </Link>
                                         ))}
                                     </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="bestselling-checklists" className="border-b-0">
-            <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline py-2 -ml-1 pr-1">
-                Bestselling Checklists
-            </AccordionTrigger>
-            <AccordionContent className="pt-2">
-                 <div className="flex flex-col gap-1 mt-1 border-l pl-4">
-                    {allIndividualChecklists.map(checklist => (
-                         <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 pl-4 rounded-r-md hover:bg-secondary">
-                            <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                            <span className="flex-1 leading-snug">{checklist.title}</span>
-                        </Link>
-                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </AccordionContent>
         </AccordionItem>
