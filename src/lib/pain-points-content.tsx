@@ -106,7 +106,7 @@ export const painPointsContent = {
         title: "From Costly Breakdowns to Efficient Operations: Real Facility Disasters",
         points: [
             { icon: <Siren />, title: "The Escalator Injury (Mumbai Mall)", description: "An escalator malfunctioned due to poor upkeep, causing serious injury. Our 'Preventive Maintenance' schedule for vertical transport ensures all safety checks and vendor servicing are logged and up-to-date." },
-            { icon: <Lock />, title: "The Data Center Overheating Crisis (Bengaluru Tech Park)", description: "A critical data center was threatened when a primary HVAC unit failed. Our 'Critical Systems Redundancy' SOP ensures backup systems are tested weekly, preventing catastrophic downtime." },
+            { icon: <Lock />, title: "The Data Center Overheating Crisis (Hyderabad IT Park)", description: "A critical data center was threatened when a primary HVAC unit failed. Our 'Critical Systems Redundancy' SOP ensures backup systems are tested weekly, preventing catastrophic downtime." },
             { icon: <Shield />, title: "The Elevator Fatality from Vendor Negligence (UK)", description: "A facility firm was fined millions after an elevator serviced by their vendor malfunctioned, causing a fatality. Our 'Vendor Performance Checklist' includes verification of a vendor's safety record and insurance, protecting you from their liability." },
             { icon: <Zap />, title: "The Generator Fuel Blunder at a Bengaluru Tech Park", description: "A major tech park lost millions in productivity when a backup generator failed during a power cut because its fuel levels were never checked. Our 'Preventive Maintenance' SOP includes a weekly generator load test and fuel level verification." }
         ]
