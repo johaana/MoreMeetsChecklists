@@ -7,7 +7,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -185,13 +185,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             { rootMargin: "0px 0px -100% 0px" } 
         );
 
-        if (pricingSectionRef.current) {
-            observer.observe(pricingSectionRef.current);
+        const pricingRef = pricingSectionRef.current;
+        if (pricingRef) {
+            observer.observe(pricingRef);
         }
 
         return () => {
-            if (pricingSectionRef.current) {
-                observer.unobserve(pricingSectionRef.current);
+            if (pricingRef) {
+                observer.unobserve(pricingRef);
             }
         };
     }, []);
@@ -231,13 +232,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         "university_college_ops",
         "manufacturing_operations_ehs_pack",
         "logistics_warehouse_pack",
-        "sports_clubs_facilities_pack",
+        "sports_clubs_stadium_operations_pack",
         "facility_management_blueprint",
     ];
 
     const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
 
-    const pricingCards = [
+    const pricingCards = (
+      <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:max-w-7xl lg:grid-cols-3">
+        {/* Professional Pack Card */}
         <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
@@ -261,8 +264,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
             </CardFooter>
-        </Card>,
+        </Card>
 
+        {/* Personalized Pack Card */}
         <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
             <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
             <CardHeader className="p-6 pt-8">
@@ -327,8 +331,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
             </CardFooter>
-        </Card>,
+        </Card>
 
+        {/* Enterprise Pack Card */}
         <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="flex items-center gap-2 font-headline text-2xl">
@@ -357,7 +362,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </Button>
             </CardFooter>
         </Card>
-    ];
+      </div>
+    );
 
     const singleTierCard = (
          <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
@@ -389,25 +395,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
 
-                {hasTieredEditions ? (
-                     <>
-                        {/* Desktop View */}
-                        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                            {pricingCards}
-                        </div>
-
-                        {/* Mobile View - Now a vertical stack */}
-                        <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:hidden">
-                        {pricingCards.map((card, index) => (
-                                <div key={index}>{card}</div>
-                            ))}
-                        </div>
-                    </>
-                ) : (
-                    <div className="max-w-md mx-auto">
-                        {singleTierCard}
-                    </div>
-                )}
+                <div className="hidden lg:block">
+                    {hasTieredEditions ? pricingCards : <div className="max-w-md mx-auto">{singleTierCard}</div>}
+                </div>
+                <div className="lg:hidden">
+                     {hasTieredEditions ? (
+                         <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto">{pricingCards}</div>
+                    ) : (
+                         <div className="max-w-md mx-auto">{singleTierCard}</div>
+                    )}
+                </div>
 
 
                 <div className="max-w-md mx-auto">
@@ -446,15 +443,31 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </div>
         </section>
         <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
-            <div className='flex items-center justify-between gap-4'>
-                 <div>
-                    <p className='font-bold text-sm truncate'>{pack.title}</p>
-                    <p className='text-lg font-extrabold'>₹{hasTieredEditions ? professionalPrice : pack.priceINR}</p>
-                </div>
-                <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                    <RazorpayButton paymentId={hasTieredEditions ? professionalPaymentId : pack.paymentId} params={{ pack_id: pack.id }}/>
-                </div>
-            </div>
+            {pack.priceINR <= 0 ? (
+                 <Button size="lg" className="w-full font-bold" onClick={() => handleDownload(pack)}>
+                    <Download className="mr-2 h-5 w-5" />
+                    Free Download
+                </Button>
+            ) : (
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button size="lg" variant="default" className="w-full font-bold">
+                            View Options & Purchase
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="bottom" className="rounded-t-2xl">
+                        <SheetHeader className="text-left mb-4">
+                            <SheetTitle className="font-headline text-2xl">Select Your Pack</SheetTitle>
+                            <CardDescription>Choose the edition that best fits your needs.</CardDescription>
+                        </SheetHeader>
+                        <ScrollArea className="h-[60vh]">
+                            <div className="p-1 pb-4">
+                                {hasTieredEditions ? pricingCards : <div className="max-w-md mx-auto">{singleTierCard}</div>}
+                            </div>
+                        </ScrollArea>
+                    </SheetContent>
+                </Sheet>
+            )}
         </div>
         </>
     );
