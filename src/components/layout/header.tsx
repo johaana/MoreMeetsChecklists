@@ -43,7 +43,7 @@ const SolutionsList = () => (
 
     <div className="md:w-3/4 pl-6">
       <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Premium Packs by Industry</h4>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
           <div key={category}>
             <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
