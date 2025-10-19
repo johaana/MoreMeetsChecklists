@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Theater, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -3251,7 +3251,7 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "Encrypted storage, retention schedules, consent capture flows, breach-notification plan.",
                 tasks: [
                     { id: 'OTT-PRIV-01', description: 'Audit subscriber data storage to ensure it is encrypted.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Report', location: 'System' },
-                    { id: 'OTT-PRIV-02', description: 'Review data retention schedules and verify old data is being purged.', priority: 'High', riskLevel: High', proof: 'Data Purge Log', location: 'System' },
+                    { id: 'OTT-PRIV-02', description: 'Review data retention schedules and verify old data is being purged.', priority: 'High', riskLevel: 'High', proof: 'Data Purge Log', location: 'System' },
                     { id: 'OTT-PRIV-03', description: 'Test the consent capture and withdrawal flows.', priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Platform' },
                     { id: 'OTT-PRIV-04', description: 'Review and update the data breach notification plan.', priority: 'High', riskLevel: 'High', proof: 'Updated Plan', location: 'Compliance Office' },
                     { id: 'OTT-PRIV-05', description: 'Conduct a Data Protection Impact Assessment (DPIA) for new features.', priority: 'High', riskLevel: 'High', proof: 'DPIA Report', location: 'Compliance Office' },
@@ -3539,185 +3539,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SP-03', description: 'Check all outdoor electrical systems for waterproofing.', priority: 'High', riskLevel: 'High', proof: 'Electrical Audit', location: 'Park-wide' },
                     { id: 'SP-04', description: 'Increase frequency of water quality tests during peak summer heat.', priority: 'High', riskLevel: 'High', proof: 'Water Quality Schedule', location: 'Water Park' },
                     { id: 'SP-05', description: 'Ensure all indoor areas have adequate cooling and ventilation for summer.', priority: 'High', riskLevel: 'Medium', proof: 'HVAC Test Report', location: 'Buildings' },
-                ]
-            }
-        ]
-    },
-    {
-        id: 'fitness_centers_gyms_pack',
-        title: "Fitness Centers & Gyms Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Wellness & Beauty",
-        description: "A comprehensive safety and operational pack for gyms and fitness centers to ensure member safety, equipment reliability, and a premium experience.",
-        icon: <Dumbbell />,
-        whoIsItFor: ["Gym Owners", "Fitness Center Managers", "Personal Training Directors", "Heads of Operations"],
-        sampleItems: [
-            { text: "Equipment inspection & PM.", icon: <Wrench /> },
-            { text: "Member onboarding & health risk assessment.", icon: <UserCheck /> },
-            { text: "Hygiene & locker room cleaning.", icon: <Sparkles /> },
-            { text: "Trainer certification & conduct.", icon: <Trophy /> },
-            { text: "Emergency & AED readiness.", icon: <HeartPulse /> },
-        ],
-        globalStandards: {
-            title: "Aligned with Fitness Industry Safety Standards",
-            standards: [
-                { name: "OSHA Guidance", description: "Follows guidelines for facility and equipment safety." },
-                { name: 'ISO 45001', description: "Framework for occupational health and safety management." },
-                { name: "Local Health Codes", description: "Ensures compliance with local regulations for hygiene and sanitation." },
-                { name: "Consumer Protection", description: "Best practices for member agreements and service delivery." }
-            ]
-        },
-        checklists: [
-            {
-                title: "Pre-Opening Gym Equipment Checklist",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Gym Manager",
-                icon: <Wrench />,
-                summary: "Belts, cables, emergency stop, lubrication, treadmill belt alignment; tag out and lock for any faulty machine.",
-                tasks: [
-                    { id: 'GYM-EQUIP-01', description: 'Inspect treadmill belts for alignment and wear.', priority: 'High', riskLevel: 'High', proof: 'Equipment Log', location: 'Cardio Area' },
-                    { id: 'GYM-EQUIP-02', description: 'Check all strength machine cables and pulleys for fraying.', priority: 'High', riskLevel: 'High', proof: 'Equipment Log', location: 'Strength Area' },
-                    { id: 'GYM-EQUIP-03', description: 'Test emergency stop buttons on all cardio equipment.', priority: 'High', riskLevel: 'High', proof: 'E-Stop Test Log', location: 'Cardio Area' },
-                    { id: 'GYM-EQUIP-04', description: 'Tag out and lock any faulty machine, and log it for maintenance.', priority: 'High', riskLevel: 'High', proof: 'Tag Out Log', location: 'Gym Floor' },
-                    { id: 'GYM-EQUIP-05', description: 'Wipe down and sanitize all equipment upholstery and handles.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Gym Floor' },
-                ]
-            },
-            {
-                title: "Member Health Screening & Waiver SOP",
-                department: "Sales/Membership",
-                frequency: "Per New Member",
-                role: "Membership Advisor",
-                icon: <UserCheck />,
-                summary: "Pre-membership health questionnaire, documented restrictions, emergency contact info; special handling for minors.",
-                tasks: [
-                    { id: 'GYM-MEMBER-01', description: 'Complete a pre-membership health questionnaire (PAR-Q) for every new member.', priority: 'High', riskLevel: 'High', proof: 'Completed PAR-Q Form', location: 'Member File' },
-                    { id: 'GYM-MEMBER-02', description: 'Have every member sign a liability waiver.', priority: 'High', riskLevel: 'High', proof: 'Signed Waiver', location: 'Member File' },
-                    { id: 'GYM-MEMBER-03', description: 'Document any health restrictions and emergency contact information.', priority: 'High', riskLevel: 'High', proof: 'Member Record', location: 'System' },
-                    { id: 'GYM-MEMBER-04', description: 'Obtain parental consent for all members who are minors.', priority: 'High', riskLevel: 'High', proof: 'Parental Consent Form', location: 'Member File' },
-                    { id: 'GYM-MEMBER-05', description: 'Offer a basic fitness assessment and orientation to new members.', priority: 'Medium', riskLevel: 'Low', proof: 'Orientation Log', location: 'Gym Floor' },
-                ]
-            },
-            {
-                title: "Locker Room Sanitation Schedule",
-                department: "Housekeeping",
-                frequency: "Multiple times daily",
-                role: "Housekeeping Staff",
-                icon: <Sparkles />,
-                summary: "Multiple daily cycles with supervisor sign-off, disinfectant concentration checks, humidity/ventilation check.",
-                tasks: [
-                    { id: 'GYM-HYGIENE-01', description: 'Clean and sanitize all surfaces (benches, lockers, showers) on a scheduled basis.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Locker Rooms' },
-                    { id: 'GYM-HYGIENE-02', description: 'Supervisor to sign off on each cleaning cycle.', priority: 'High', riskLevel: 'Medium', proof: 'Supervisor Signature', location: 'Cleaning Log' },
-                    { id: 'GYM-HYGIENE-03', description: 'Check and log disinfectant concentrations.', priority: 'High', riskLevel: 'Medium', proof: 'Concentration Log', location: 'Janitor Closet' },
-                    { id: 'GYM-HYGIENE-04', description: 'Verify ventilation system is working to control humidity.', priority: 'High', riskLevel: 'Medium', proof: 'Ventilation Check', location: 'Locker Rooms' },
-                    { id: 'GYM-HYGIENE-05', description: 'Restock all supplies like soap, towels, and sanitizer.', priority: 'High', riskLevel: 'Low', proof: 'Restock Log', location: 'Locker Rooms' },
-                ]
-            },
-            {
-                title: "Trainer Credentialing",
-                department: "HR/Fitness",
-                frequency: "Per Hire",
-                role: "Fitness Director",
-                icon: <Trophy />,
-                summary: "Verify certificates, first-aid training, background checks, probation performance review.",
-                tasks: [
-                    { id: 'GYM-TRAINER-01', description: 'Verify all personal training certifications are current.', priority: 'High', riskLevel: 'High', proof: 'Certificate Copies', location: 'Trainer File' },
-                    { id: 'GYM-TRAINER-02', description: 'Ensure all trainers have valid CPR and First Aid certification.', priority: 'High', riskLevel: 'High', proof: 'First Aid Certificate', location: 'Trainer File' },
-                    { id: 'GYM-TRAINER-03', description: 'Conduct background checks for all new trainers.', priority: 'High', riskLevel: 'High', proof: 'Background Check Report', location: 'Trainer File' },
-                    { id: 'GYM-TRAINER-04', description: 'Perform a performance review at the end of the probationary period.', priority: 'High', riskLevel: 'Medium', proof: 'Probation Review Form', location: 'Trainer File' },
-                    { id: 'GYM-TRAINER-05', description: 'Conduct regular in-house training on new techniques and safety.', priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
-                ]
-            },
-            {
-                title: "Defibrillator & First Aid Checks",
-                department: "Safety",
-                frequency: "Monthly",
-                role: "Safety Officer",
-                icon: <HeartPulse />,
-                summary: "AED monthly check, first-aid kit inventory, staff trained in CPR on each shift.",
-                tasks: [
-                    { id: 'GYM-AED-01', description: 'Perform a monthly check of the Automated External Defibrillator (AED), including battery and pad expiry.', priority: 'High', riskLevel: 'High', proof: 'AED Check Log', location: 'AED Location' },
-                    { id: 'GYM-AED-02', description: 'Check and restock all first-aid kits monthly.', priority: 'High', riskLevel: 'High', proof: 'First-Aid Kit Inventory', location: 'First-Aid Stations' },
-                    { id: 'GYM-AED-03', description: 'Ensure at least one staff member trained in CPR is present on every shift.', priority: 'High', riskLevel: 'High', proof: 'Staff Roster vs. Training Records', location: 'Office' },
-                    { id: 'GYM-AED-04', description: 'Post clear emergency contact numbers and procedures.', priority: 'High', riskLevel: 'High', proof: 'Photo of Signage', location: 'Various' },
-                    { id: 'GYM-AED-05', description: 'Conduct a mock medical emergency drill quarterly.', priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Office' },
-                ]
-            },
-            {
-                title: "Personal Training Session Log",
-                department: "Fitness",
-                frequency: "Per Session",
-                role: "Personal Trainer",
-                icon: <ClipboardList />,
-                summary: "A log to document each personal training session, tracking progress and ensuring consistency.",
-                tasks: [
-                    { id: 'PTSL-01', description: 'Log the date, time, and duration of the session.', priority: 'High', riskLevel: 'Medium', proof: 'Session Log', location: 'System/Logbook' },
-                    { id: 'PTSL-02', description: 'Document the exercises performed, including sets, reps, and weights.', priority: 'High', riskLevel: 'Medium', proof: 'Session Log', location: 'System/Logbook' },
-                    { id: 'PTSL-03', description: 'Note any client feedback or issues.', priority: 'High', riskLevel: 'Medium', proof: 'Session Log', location: 'System/Logbook' },
-                    { id: 'PTSL-04', description: 'Plan the next session and set goals with the client.', priority: 'Medium', riskLevel: 'Low', proof: 'Session Log', location: 'System/Logbook' },
-                    { id: 'PTSL-05', description: 'Get client signature to confirm the session was completed.', priority: 'High', riskLevel: 'High', proof: 'Signed Log', location: 'System/Logbook' },
-                ]
-            },
-            {
-                title: "Membership Sales & Renewals",
-                department: "Sales",
-                frequency: "Ongoing",
-                role: "Membership Advisor",
-                icon: <DollarSign />,
-                summary: "A process for managing membership sales, renewals, and cancellations.",
-                tasks: [
-                    { id: 'MSR-01', description: 'Follow a standard script for sales presentations.', priority: 'High', riskLevel: 'Medium', proof: 'Sales Script', location: 'Sales Desk' },
-                    { id: 'MSR-02', description: 'Process new membership agreements and payments accurately.', priority: 'High', riskLevel: 'High', proof: 'Signed Agreement', location: 'Member File' },
-                    { id: 'MSR-03', description: 'Follow up with members before their renewal date.', priority: 'High', riskLevel: 'Medium', proof: 'CRM Log', location: 'System' },
-                    { id: 'MSR-04', description: 'Handle membership cancellations according to company policy.', priority: 'High', riskLevel: 'High', proof: 'Cancellation Form', location: 'Office' },
-                    { id: 'MSR-05', description: 'Track sales targets and conversion rates.', priority: 'High', riskLevel: 'Medium', proof: 'Sales Dashboard', location: 'System' },
-                ]
-            },
-            {
-                title: "Pool & Spa Safety (if applicable)",
-                department: "Aquatics",
-                frequency: "Daily",
-                role: "Pool Supervisor",
-                icon: <Waves />,
-                summary: "Daily checks for water quality, safety equipment, and hygiene in pool and spa areas.",
-                tasks: [
-                    { id: 'PSS-01', description: 'Test and log water pH and chlorine levels.', priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
-                    { id: 'PSS-02', description: 'Check all safety equipment (life rings, first aid kits).', priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Log', location: 'Poolside' },
-                    { id: 'PSS-03', description: 'Ensure pool deck is clean and free of slip hazards.', priority: 'High', riskLevel: 'High', proof: 'Deck Inspection Log', location: 'Pool Deck' },
-                    { id: 'PSS-04', description: 'Verify lifeguard is on duty during peak hours.', priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster', location: 'Poolside' },
-                    { id: 'PSS-05', description: 'Inspect sauna and steam rooms for correct temperature and cleanliness.', priority: 'High', riskLevel: 'Medium', proof: 'Spa Inspection Log', location: 'Spa Area' },
-                ]
-            },
-            {
-                title: "Guest & Member Feedback",
-                department: "Management",
-                frequency: "Weekly",
-                role: "Gym Manager",
-                icon: <Megaphone />,
-                summary: "A system for collecting, analyzing, and acting on member feedback to improve services.",
-                tasks: [
-                    { id: 'GMF-01', description: 'Review all feedback from suggestion boxes, surveys, and online reviews.', priority: 'High', riskLevel: 'Medium', proof: 'Feedback Summary Report', location: 'Office' },
-                    { id: 'GMF-02', description: 'Log all feedback and assign action items for resolution.', priority: 'High', riskLevel: 'Medium', proof: 'Action Tracker', location: 'System' },
-                    { id: 'GMF-03', description: 'Follow up with members who provided negative feedback.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'CRM' },
-                    { id: 'GMF-04', description: 'Analyze feedback trends to identify systemic issues.', priority: 'High', riskLevel: 'High', proof: 'Trend Analysis Report', location: 'Office' },
-                    { id: 'GMF-05', description: 'Share key feedback points with staff during weekly meetings.', priority: 'Medium', riskLevel: 'Low', proof: 'Meeting Minutes', location: 'Office' },
-                ]
-            },
-            {
-                title: "Security & Access Control",
-                department: "Security",
-                frequency: "Daily",
-                role: "Security Staff",
-                icon: <Shield />,
-                summary: "Procedures to control access to the gym and protect member belongings.",
-                tasks: [
-                    { id: 'SAC-01', description: 'Check membership status of everyone entering the facility.', priority: 'High', riskLevel: 'High', proof: 'Access Control System Log', location: 'Entrance' },
-                    { id: 'SAC-02', description: 'Monitor CCTV cameras for any suspicious activity.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
-                    { id: 'SAC-03', description: 'Perform regular patrols of the locker rooms and other areas.', priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Facility-wide' },
-                    { id: 'SAC-04', description: 'Ensure all lockers are functional and report any broken ones.', priority: 'Medium', riskLevel: 'Medium', proof: 'Locker Inspection Log', location: 'Locker Rooms' },
-                    { id: 'SAC-05', description: 'Manage a lost and found system for member belongings.', priority: 'High', riskLevel: 'Low', proof: 'Lost and Found Log', location: 'Reception' },
                 ]
             }
         ]
@@ -4099,3 +3920,4 @@ export const premiumPacks: PremiumPack[] = [
     
 
     
+
