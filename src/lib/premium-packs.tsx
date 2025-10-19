@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Cross, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Theater, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, Theater, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -103,12 +103,16 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <Home />,
                 summary: "Housekeeping verifies: bed linen condition, minibar stock, in-room safe test, plumbing check, minibar expiry, TV/AC operation. Sign-off: housekeeper + supervisor (photo + timestamp).",
                 tasks: [
-                     { id: 'HRR-01', description: 'Check bed linen for stains and tears.', priority: 'High', riskLevel: 'Medium', proof: 'Photo', location: 'Guest Room' },
-                     { id: 'HRR-02', description: 'Verify minibar stock against the standard list.', priority: 'High', riskLevel: 'Medium', proof: 'Stock Checklist', location: 'Guest Room' },
-                     { id: 'HRR-03', description: 'Test the functionality of the in-room safe.', priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Guest Room' },
-                     { id: 'HRR-04', description: 'Check all plumbing (taps, shower, toilet) for leaks and proper function.', priority: 'High', riskLevel: 'High', proof: 'Visual & Functional Check', location: 'Guest Room' },
-                     { id: 'HRR-05', description: 'Audit minibar items for expiry dates.', priority: 'High', riskLevel: 'High', proof: 'Expiry Log', location: 'Guest Room' },
-                     { id: 'HRR-06', description: 'Test TV and AC remote controls and functionality.', priority: 'High', riskLevel: 'Medium', proof: 'Functional Test', location: 'Guest Room' },
+                     { id: 'HRR-01', description: 'Check bed linen for stains, tears, and proper placement.', priority: 'High', riskLevel: 'Medium', proof: 'Photo of made bed', location: 'Guest Room' },
+                     { id: 'HRR-02', description: 'Verify minibar stock against the standard list and check for expired items.', priority: 'High', riskLevel: 'Medium', proof: 'Minibar Restock Sheet', location: 'Guest Room' },
+                     { id: 'HRR-03', description: 'Test the functionality of the in-room safe and ensure it is empty and open.', priority: 'High', riskLevel: 'High', proof: 'Safe Test Log', location: 'Guest Room' },
+                     { id: 'HRR-04', description: 'Check all plumbing (taps, shower, toilet) for leaks and proper function. Check water pressure.', priority: 'High', riskLevel: 'High', proof: 'Plumbing Check Log', location: 'Guest Bathroom' },
+                     { id: 'HRR-05', description: 'Inspect all surfaces (tables, counters, mirrors) for cleanliness and dust.', priority: 'High', riskLevel: 'Low', proof: 'Visual Check', location: 'Guest Room' },
+                     { id: 'HRR-06', description: 'Test TV, AC remote controls, and all light switches.', priority: 'High', riskLevel: 'Medium', proof: 'Functional Test Log', location: 'Guest Room' },
+                     { id: 'HRR-07', description: 'Replenish all guest amenities (toiletries, tea/coffee, water bottles).', priority: 'Medium', riskLevel: 'Low', proof: 'Amenity Checklist', location: 'Guest Room' },
+                     { id: 'HRR-08', description: 'Check functionality of the door lock and key card access.', priority: 'High', riskLevel: 'High', proof: 'Lock Test Log', location: 'Guest Room Door' },
+                     { id: 'HRR-09', description: 'Ensure the room is free of any odors. Use air freshener if necessary.', priority: 'Medium', riskLevel: 'Low', proof: 'Olfactory Check', location: 'Guest Room' },
+                     { id: 'HRR-10', description: 'Final supervisor check and sign-off with photo uploaded to system.', priority: 'High', riskLevel: 'Medium', proof: 'Supervisor Sign-off', location: 'System' },
                 ]
             },
             {
@@ -119,11 +123,16 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <Utensils />,
                 summary: "Verify cold-room temps, raw material receipts (with supplier docs), handwashing stations, knife sanitation, allergen segregation tags. Responsible: Head Chef, Kitchen Manager.",
                 tasks: [
-                    { id: 'HACCP-01', description: 'Log temperatures of all cold rooms and freezers.', priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
-                    { id: 'HACCP-02', description: 'Verify raw material deliveries against supplier documentation and quality standards.', priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Bay' },
-                    { id: 'HACCP-03', description: 'Ensure all handwashing stations are stocked with soap and sanitizer.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
-                    { id: 'HACCP-04', description: 'Check knife sanitation station for correct chemical concentration.', priority: 'High', riskLevel: 'High', proof: 'Sanitizer Log', location: 'Kitchen' },
-                    { id: 'HACCP-05', description: 'Ensure allergen segregation is maintained in storage and prep areas.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Kitchen' },
+                    { id: 'HACCP-01', description: 'Log temperatures of all walk-in chillers, freezers, and reach-in refrigerators.', priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Kitchen' },
+                    { id: 'HACCP-02', description: 'Verify raw material deliveries against supplier documentation, checking for temperature and quality.', priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Bay' },
+                    { id: 'HACCP-03', description: 'Ensure all handwashing stations are stocked with soap, sanitizer, and paper towels.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kitchen' },
+                    { id: 'HACCP-04', description: 'Check knife sanitation station for correct chemical concentration and temperature.', priority: 'High', riskLevel: 'High', proof: 'Sanitizer Log', location: 'Kitchen' },
+                    { id: 'HACCP-05', description: 'Ensure allergen segregation is maintained in storage (separate shelves) and prep areas (color-coded boards).', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Photo', location: 'Kitchen/Stores' },
+                    { id: 'HACCP-06', description: 'Calibrate food thermometers using ice-point or boiling-point method.', priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Kitchen' },
+                    { id: 'HACCP-07', description: 'Inspect all food contact surfaces for cleanliness before starting prep.', priority: 'High', riskLevel: 'High', proof: 'Surface Swab Test (optional)', location: 'Prep Stations' },
+                    { id: 'HACCP-08', description: 'Brief staff on the day\'s menu, highlighting any potential allergens.', priority: 'High', riskLevel: 'Medium', proof: 'Briefing Notes', location: 'Kitchen' },
+                    { id: 'HACCP-09', description: 'Check that trash bins are clean, lined, and covered.', priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Waste Area' },
+                    { id: 'HACCP-10', description: 'Ensure pest control traps are in place and not disturbed.', priority: 'High', riskLevel: 'High', proof: 'Pest Control Log', location: 'Kitchen Perimeter' },
                 ]
             },
             {
@@ -134,11 +143,14 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <LifeBuoy />,
                 summary: "Test chlorine/pH, lifeguard rosters, rescue equipment check, pool deck anti-slip visual check; record readings and corrective actions if out of range.",
                 tasks: [
-                    { id: 'POOL-01', description: 'Test and record chlorine and pH levels of the pool water.', priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
-                    { id: 'POOL-02', description: 'Verify lifeguard duty roster and presence.', priority: 'High', riskLevel: 'High', proof: 'Duty Roster', location: 'Poolside' },
-                    { id: 'POOL-03', description: 'Check all rescue equipment (life rings, first aid kit) is present and in good condition.', priority: 'High', riskLevel: 'High', proof: 'Equipment Checklist', location: 'Poolside' },
-                    { id: 'POOL-04', description: 'Inspect pool deck for slip hazards or damage.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection Log', location: 'Pool Deck' },
-                    { id: 'POOL-05', description: 'Document any corrective actions taken for out-of-range readings.', priority: 'High', riskLevel: 'High', proof: 'Corrective Action Log', location: 'Pool Office' },
+                    { id: 'POOL-01', description: 'Test and record chlorine and pH levels of the pool water at least 3 times daily.', priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
+                    { id: 'POOL-02', description: 'Verify lifeguard duty roster and ensure certified lifeguards are present and alert.', priority: 'High', riskLevel: 'High', proof: 'Duty Roster Sign-off', location: 'Poolside' },
+                    { id: 'POOL-03', description: 'Check all rescue equipment (life rings, first aid kit, spine board) is present and in good condition.', priority: 'High', riskLevel: 'High', proof: 'Equipment Checklist', location: 'Poolside' },
+                    { id: 'POOL-04', description: 'Inspect pool deck for slip hazards, damage, or broken tiles.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection Log', location: 'Pool Deck' },
+                    { id: 'POOL-05', description: 'Check and log the temperature of the spa/jacuzzi.', priority: 'High', riskLevel: 'Medium', proof: 'Temperature Log', location: 'Spa' },
+                    { id: 'POOL-06', description: 'Ensure depth markers and safety signage are clearly visible.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Poolside' },
+                    { id: 'POOL-07', description: 'Inspect pool drains and suction fittings for any blockages or damage.', priority: 'High', riskLevel: 'High', proof: 'Drain Inspection Log', location: 'Pool' },
+                    { id: 'POOL-08', description: 'Test the emergency phone or alarm system.', priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Poolside' },
                 ]
             },
              {
@@ -149,11 +161,13 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <Wrench />,
                 summary: "HVAC filter replacement, generator test, elevator monthly certification; each PM logged with vendor certificate and next due date.",
                 tasks: [
-                    { id: 'PM-01', description: 'Perform scheduled HVAC filter cleaning/replacement.', priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'HVAC Rooms' },
-                    { id: 'PM-02', description: 'Conduct weekly load test of backup generators.', priority: 'High', riskLevel: 'High', proof: 'Generator Test Log', location: 'Generator Room' },
-                    { id: 'PM-03', description: 'Verify monthly elevator certification and maintenance by vendor.', priority: 'High', riskLevel: 'High', proof: 'Vendor Certificate', location: 'Elevator Shafts' },
+                    { id: 'PM-01', description: 'Perform scheduled HVAC filter cleaning/replacement as per the master schedule.', priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Log', location: 'HVAC Rooms' },
+                    { id: 'PM-02', description: 'Conduct weekly load test of backup generators and log fuel levels.', priority: 'High', riskLevel: 'High', proof: 'Generator Test Log', location: 'Generator Room' },
+                    { id: 'PM-03', description: 'Verify monthly elevator certification and maintenance by vendor, and check the in-lift emergency phone.', priority: 'High', riskLevel: 'High', proof: 'Vendor Certificate & Test Call Log', location: 'Elevator Shafts' },
                     { id: 'PM-04', description: 'Log all preventive maintenance activities with vendor reports and schedule next due dates.', priority: 'High', riskLevel: 'Medium', proof: 'Master PM Log', location: 'Maintenance Office' },
-                    { id: 'PM-05', description: 'Inspect water pumps and tanks for leaks and functionality.', priority: 'High', riskLevel: 'Medium', proof: 'Pump Inspection Log', location: 'Pump Room' },
+                    { id: 'PM-05', description: 'Inspect water pumps and tanks for leaks, pressure, and functionality.', priority: 'High', riskLevel: 'Medium', proof: 'Pump Inspection Log', location: 'Pump Room' },
+                    { id: 'PM-06', description: 'Check and clean kitchen exhaust hoods and ducts quarterly.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Certificate', location: 'Kitchen' },
+                    { id: 'PM-07', description: 'Test the hotel\'s fire pump and sprinkler system monthly.', priority: 'High', riskLevel: 'High', proof: 'Fire Pump Test Log', location: 'Fire Pump Room' },
                 ]
             },
             {
@@ -164,11 +178,13 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <Siren />,
                 summary: "Monthly extinguisher inspections, quarterly mock evacuation (attendance + time-to-evacuate), stairwell/exit clearance log.",
                 tasks: [
-                    { id: 'FIRE-01', description: 'Conduct monthly inspection of all fire extinguishers.', priority: 'High', riskLevel: 'High', proof: 'Extinguisher Log', location: 'Entire Property' },
-                    { id: 'FIRE-02', description: 'Perform a quarterly mock evacuation drill with staff.', priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Entire Property' },
-                    { id: 'FIRE-03', description: 'Log attendance and time-to-evacuate for each drill.', priority: 'High', riskLevel: 'High', proof: 'Drill Attendance Sheet', location: 'Assembly Point' },
-                    { id: 'FIRE-04', description: 'Perform daily checks of all stairwells and fire exits to ensure they are clear.', priority: 'High', riskLevel: 'High', proof: 'Exit Clearance Log', location: 'Entire Property' },
+                    { id: 'FIRE-01', description: 'Conduct monthly inspection of all fire extinguishers (pressure, expiry, accessibility).', priority: 'High', riskLevel: 'High', proof: 'Extinguisher Log', location: 'Entire Property' },
+                    { id: 'FIRE-02', description: 'Perform a quarterly mock evacuation drill with a specific scenario (e.g., kitchen fire).', priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Entire Property' },
+                    { id: 'FIRE-03', description: 'Log attendance and time-to-evacuate for each drill, and note any delays.', priority: 'High', riskLevel: 'High', proof: 'Drill Attendance Sheet', location: 'Assembly Point' },
+                    { id: 'FIRE-04', description: 'Perform daily checks of all stairwells and fire exits to ensure they are clear and unlocked.', priority: 'High', riskLevel: 'High', proof: 'Exit Clearance Log', location: 'Entire Property' },
                     { id: 'FIRE-05', description: 'Test the public address system and emergency lighting weekly.', priority: 'High', riskLevel: 'High', proof: 'System Test Log', location: 'Control Room' },
+                    { id: 'FIRE-06', description: 'Check that fire safety signage (exit signs, floor plans) is in place and visible.', priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Entire Property' },
+                    { id: 'FIRE-07', description: 'Ensure kitchen fire suppression systems (e.g., Ansul) are certified and serviced annually.', priority: 'High', riskLevel: 'High', proof: 'Vendor Certificate', location: 'Kitchen' },
                 ]
             },
             {
@@ -180,10 +196,12 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "Contractor ID, insurance copy, area-of-work permit, start/end time, tool inventory, supervisor escort.",
                 tasks: [
                     { id: 'VENDOR-01', description: 'Verify contractor ID and check against approved vendor list.', priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Security Gate' },
-                    { id: 'VENDOR-02', description: 'Obtain and file a copy of the vendor\'s liability insurance.', priority: 'High', riskLevel: 'High', proof: 'Insurance Copy', location: 'Security Office' },
-                    { id: 'VENDOR-03', description: 'Issue a time-bound work permit for a specific area.', priority: 'High', riskLevel: 'Medium', proof: 'Work Permit', location: 'Security Office' },
-                    { id: 'VENDOR-04', description: 'Log all tools brought in and out by the contractor.', priority: 'High', riskLevel: 'Medium', proof: 'Tool Inventory Log', location: 'Security Gate' },
-                    { id: 'VENDOR-05', description: 'Assign a supervisor to escort vendors in sensitive areas.', priority: 'High', riskLevel: 'High', proof: 'Escort Log', location: 'Various' },
+                    { id: 'VENDOR-02', description: 'Obtain and file a copy of the vendor\'s liability insurance and any required licenses.', priority: 'High', riskLevel: 'High', proof: 'Insurance & License Copy', location: 'Security Office' },
+                    { id: 'VENDOR-03', description: 'Issue a time-bound work permit for a specific area, detailing the scope of work.', priority: 'High', riskLevel: 'Medium', proof: 'Work Permit', location: 'Security Office' },
+                    { id: 'VENDOR-04', description: 'Log all tools and equipment brought in and out by the contractor.', priority: 'High', riskLevel: 'Medium', proof: 'Tool Inventory Log', location: 'Security Gate' },
+                    { id: 'VENDOR-05', description: 'Assign a supervisor to escort vendors in sensitive areas (e.g., server rooms, cash office).', priority: 'High', riskLevel: 'High', proof: 'Escort Log', location: 'Various' },
+                    { id: 'VENDOR-06', description: 'Conduct a safety briefing before any high-risk work (e.g., hot work, electrical).', priority: 'High', riskLevel: 'High', proof: 'Safety Briefing Sign-off', location: 'Work Area' },
+                    { id: 'VENDOR-07', description: 'Inspect the work area after completion to ensure it is clean and safe.', priority: 'High', riskLevel: 'Medium', proof: 'Work Area Clearance Form', location: 'Work Area' },
                 ]
             },
             {
@@ -194,11 +212,12 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <FileWarning />,
                 summary: "Immediate triage steps, incident report with photos, escalation path (GM/legal/insurance), root-cause & corrective action.",
                 tasks: [
-                    { id: 'INC-01', description: 'Perform immediate triage (e.g., provide first aid, secure the area).', priority: 'High', riskLevel: 'High', proof: 'First Action Log', location: 'Incident Site' },
-                    { id: 'INC-02', description: 'Fill out a detailed incident report with photos and witness statements.', priority: 'High', riskLevel: 'High', proof: 'Incident Report Form', location: 'Office' },
-                    { id: 'INC-03', description: 'Follow the defined escalation path for notifying GM, legal, and insurance.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
-                    { id: 'INC-04', description: 'Conduct a root-cause analysis (RCA) for the incident.', priority: 'High', riskLevel: 'High', proof: 'RCA Report', location: 'Office' },
+                    { id: 'INC-01', description: 'Perform immediate triage (e.g., provide first aid, secure the area, offer assistance).', priority: 'High', riskLevel: 'High', proof: 'First Action Log', location: 'Incident Site' },
+                    { id: 'INC-02', description: 'Fill out a detailed incident report with photos, witness statements, and timestamps.', priority: 'High', riskLevel: 'High', proof: 'Incident Report Form', location: 'Office' },
+                    { id: 'INC-03', description: 'Follow the defined escalation path for notifying GM, legal, and insurance within 1 hour.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
+                    { id: 'INC-04', description: 'Conduct a root-cause analysis (RCA) for the incident within 24 hours.', priority: 'High', riskLevel: 'High', proof: 'RCA Report', location: 'Office' },
                     { id: 'INC-05', description: 'Develop and track a Corrective and Preventive Action (CAPA) plan.', priority: 'High', riskLevel: 'High', proof: 'CAPA Plan', location: 'Office' },
+                    { id: 'INC-06', description: 'Preserve any relevant evidence, such as CCTV footage.', priority: 'High', riskLevel: 'High', proof: 'Evidence Log', location: 'Security' },
                 ]
             },
             {
@@ -209,11 +228,11 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <UserCheck />,
                 summary: "Ensures smooth check-in/check-out, accurate billing, and exceptional guest service at the first point of contact.",
                 tasks: [
-                    { id: 'FO-01', description: 'Verify daily arrivals list against reservations.', priority: 'High', riskLevel: 'Medium', proof: 'PMS Report', location: 'Front Desk' },
-                    { id: 'FO-02', description: 'Reconcile cash and credit card transactions at end of shift.', priority: 'High', riskLevel: 'High', proof: 'Shift Closing Report', location: 'Front Desk' },
-                    { id: 'FO-03', description: 'Review guest feedback from the previous day and assign follow-up actions.', priority: 'High', riskLevel: 'Medium', proof: 'Feedback Log', location: 'Office' },
-                    { id: 'FO-04', description: 'Check inventory of key cards and other front desk supplies.', priority: 'Medium', riskLevel: 'Low', proof: 'Inventory Sheet', location: 'Front Desk' },
-                    { id: 'FO-05', description: 'Brief staff on VIP arrivals and special requests for the day.', priority: 'High', riskLevel: 'Medium', proof: 'Briefing Notes', location: 'Front Desk' },
+                    { id: 'FO-01', description: 'Verify daily arrivals list against reservations, noting any VIPs or special requests.', priority: 'High', riskLevel: 'Medium', proof: 'PMS Report', location: 'Front Desk' },
+                    { id: 'FO-02', description: 'Reconcile cash and credit card transactions at end of each shift with dual sign-off.', priority: 'High', riskLevel: 'High', proof: 'Shift Closing Report', location: 'Front Desk' },
+                    { id: 'FO-03', description: 'Review guest feedback from the previous day and assign follow-up actions with deadlines.', priority: 'High', riskLevel: 'Medium', proof: 'Feedback Action Log', location: 'Office' },
+                    { id: 'FO-04', description: 'Check inventory of key cards, registration forms, and other front desk supplies.', priority: 'Medium', riskLevel: 'Low', proof: 'Inventory Sheet', location: 'Front Desk' },
+                    { id: 'FO-05', description: 'Brief staff on hotel occupancy, events, and VIP movements for the day.', priority: 'High', riskLevel: 'Medium', proof: 'Briefing Notes', location: 'Front Desk' },
                 ]
             },
             {
@@ -224,11 +243,11 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <ScanFace />,
                 summary: "Active monitoring of key areas, incident logging, and ensuring data retention policies are met to maintain a secure environment.",
                 tasks: [
-                    { id: 'SEC-CCTV-01', description: 'Perform hourly patrols or virtual tours of key areas via CCTV.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Control Room' },
-                    { id: 'SEC-CCTV-02', description: 'Log any suspicious activity with timestamps and descriptions.', priority: 'High', riskLevel: 'High', proof: 'Incident Log', location: 'Control Room' },
-                    { id: 'SEC-CCTV-03', description: 'Verify all cameras are recording and have clear views.', priority: 'High', riskLevel: 'High', proof: 'System Health Check', location: 'Control Room' },
-                    { id: 'SEC-CCTV-04', description: 'Ensure footage is backed up according to the data retention policy.', priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'Server Room' },
-                    { id: 'SEC-CCTV-05', description: 'Test panic alarm functionality weekly.', priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Various' },
+                    { id: 'SEC-CCTV-01', description: 'Perform hourly patrols or virtual tours of key areas (lobby, perimeter, parking) via CCTV.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Control Room' },
+                    { id: 'SEC-CCTV-02', description: 'Log any suspicious activity with timestamps, descriptions, and save relevant footage.', priority: 'High', riskLevel: 'High', proof: 'Incident Log', location: 'Control Room' },
+                    { id: 'SEC-CCTV-03', description: 'Verify all cameras are recording, have clear views, and correct timestamp.', priority: 'High', riskLevel: 'High', proof: 'System Health Check', location: 'Control Room' },
+                    { id: 'SEC-CCTV-04', description: 'Ensure footage is backed up according to the data retention policy (e.g., 30 days).', priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'Server Room' },
+                    { id: 'SEC-CCTV-05', description: 'Test panic alarm functionality and response weekly.', priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Various' },
                 ]
             },
             {
@@ -239,11 +258,11 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <HandPlatter />,
                 summary: "Manages guest requests, transportation, and local recommendations to enhance the overall guest experience.",
                 tasks: [
-                    { id: 'CON-01', description: 'Review daily log of guest requests and ensure all have been actioned.', priority: 'High', riskLevel: 'Medium', proof: 'Request Log', location: 'Concierge Desk' },
-                    { id: 'CON-02', description: 'Verify transportation bookings and confirm with vendors.', priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmations', location: 'Concierge Desk' },
-                    { id: 'CON-03', description: 'Update information on local events, restaurants, and attractions.', priority: 'Medium', riskLevel: 'Low', proof: 'Information Binder', location: 'Concierge Desk' },
-                    { id: 'CON-04', description: 'Check luggage storage area for security and correct tagging.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Bell Desk' },
-                    { id: 'CON-05', description: 'Follow up with guests on special arrangements made.', priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Call Log', location: 'Concierge Desk' },
+                    { id: 'CON-01', description: 'Review daily log of guest requests and ensure all have been actioned or handed over.', priority: 'High', riskLevel: 'Medium', proof: 'Request Log', location: 'Concierge Desk' },
+                    { id: 'CON-02', description: 'Verify transportation bookings and re-confirm with vendors 24 hours prior.', priority: 'High', riskLevel: 'Medium', proof: 'Booking Confirmations', location: 'Concierge Desk' },
+                    { id: 'CON-03', description: 'Update information on local events, restaurants, flight schedules, and attractions.', priority: 'Medium', riskLevel: 'Low', proof: 'Information Binder', location: 'Concierge Desk' },
+                    { id: 'CON-04', description: 'Check luggage storage area for security, correct tagging, and log all movements.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Log', location: 'Bell Desk' },
+                    { id: 'CON-05', description: 'Follow up with guests post-activity (e.g., a tour) to gather feedback.', priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Call Log', location: 'Concierge Desk' },
                 ]
             }
         ]
@@ -1208,11 +1227,13 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <UserCheck />,
                 summary: "Common areas, restrooms, HVAC status, lighting, signage; photo evidence and supervisor signature.",
                 tasks: [
-                    {id: 'DFW-01', description: "Check cleanliness and orderliness of all common areas.", priority: 'High', riskLevel: 'Low', proof: 'Photo Log', location: 'Common Areas'},
-                    {id: 'DFW-02', description: "Inspect restrooms for hygiene and supplies.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms'},
-                    {id: 'DFW-03', description: "Verify HVAC system status from BMS.", priority: 'High', riskLevel: 'High', proof: 'BMS Screenshot', location: 'BMS Room'},
-                    {id: 'DFW-04', description: "Check for any fused lights or faulty signage.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Request', location: 'Entire Facility'},
-                    {id: 'DFW-05', description: "Supervisor to sign off on the walkthrough report with photo evidence.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Report', location: 'Office'},
+                    {id: 'DFW-01', description: "Check cleanliness and orderliness of all common areas (lobbies, cafeterias).", priority: 'High', riskLevel: 'Low', proof: 'Photo Log', location: 'Common Areas'},
+                    {id: 'DFW-02', description: "Inspect restrooms for hygiene, supplies, and any plumbing issues.", priority: 'High', riskLevel: 'Medium', proof: 'Restroom Log', location: 'Restrooms'},
+                    {id: 'DFW-03', description: "Verify HVAC system status from BMS and check for any alarms.", priority: 'High', riskLevel: 'High', proof: 'BMS Screenshot', location: 'BMS Room'},
+                    {id: 'DFW-04', description: "Check for any fused lights or faulty signage and raise a ticket.", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Ticket', location: 'Entire Facility'},
+                    {id: 'DFW-05', description: "Ensure all emergency exit paths are clear and unobstructed.", priority: 'High', riskLevel: 'High', proof: 'Photo of exit path', location: 'Stairwells/Exits'},
+                    {id: 'DFW-06', description: "Check status of water coolers and pantry equipment.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Pantries'},
+                    {id: 'DFW-07', description: 'Inspect exterior of the building for any issues (e.g., broken glass, leaks).', priority: 'Medium', riskLevel: 'Medium', proof: 'Exterior Check Log', location: 'Building Perimeter' },
                 ]
             },
             {
@@ -2958,11 +2979,11 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <Shield />,
                 summary: "Controlling access to the warehouse to prevent theft and ensure only authorized personnel are present.",
                 tasks: [
-                    { id: 'SAC-01', description: 'Check membership status of everyone entering the facility.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Main Gate' },
+                    { id: 'SAC-01', description: 'Check ID of everyone entering the facility.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Main Gate' },
                     { id: 'SAC-02', description: 'Monitor CCTV cameras for suspicious activity.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
-                    { id: 'SAC-03', description: 'Perform regular patrols of the locker rooms and other areas.', priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Facility-wide' },
-                    { id: 'SAC-04', description: 'Ensure all lockers are functional and report any broken ones.', priority: 'Medium', riskLevel: 'Medium', proof: 'Locker Inspection Log', location: 'Locker Rooms' },
-                    { id: 'SAC-05', description: 'Manage a lost and found system for member belongings.', priority: 'High', riskLevel: 'Low', proof: 'Lost and Found Log', location: 'Reception' },
+                    { id: 'SAC-03', description: 'Perform regular patrols of the perimeter and internal areas.', priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Facility-wide' },
+                    { id: 'SAC-04', description: 'Ensure all doors and gates are secured after hours.', priority: 'High', riskLevel: 'High', proof: 'Closing Log', location: 'Various' },
+                    { id: 'SAC-05', description: 'Manage visitor and contractor access through a permit system.', priority: 'High', riskLevel: 'High', proof: 'Visitor Permit Log', location: 'Security Office' },
                 ]
             },
             {
@@ -3127,7 +3148,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PROP-02', description: 'Track the continuity of props and wardrobe for each scene.', priority: 'High', riskLevel: 'High', proof: 'Continuity Photos/Notes', location: 'Set' },
                     { id: 'PROP-03', description: 'Securely store all items at the end of each shooting day.', priority: 'High', riskLevel: 'High', proof: 'End-of-Day Storage Log', location: 'Art/Costume Dept' },
                     { id: 'PROP-04', description: 'Manage the budget for props and wardrobe.', priority: 'High', riskLevel: 'Medium', proof: 'Budget Tracker', location: 'Accounts Office' },
-                    { id: 'PROP-05', description: 'Handle returns of all rented items promptly after use.', priority: 'High', riskLevel: 'Medium', proof: 'Rental Return Receipts', location: 'Art/Costume Dept' }
+                    { id: 'PROP-05', description: 'Handle returns of all rented items promptly after use.', priority: 'High', riskLevel: 'Medium', proof: 'Rental Return Receipts', location: 'Art/Costume Dept' },
                 ]
             },
             {
@@ -3230,7 +3251,7 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "Encrypted storage, retention schedules, consent capture flows, breach-notification plan.",
                 tasks: [
                     { id: 'OTT-PRIV-01', description: 'Audit subscriber data storage to ensure it is encrypted.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Report', location: 'System' },
-                    { id: 'OTT-PRIV-02', description: 'Review data retention schedules and verify old data is being purged.', priority: 'High', riskLevel: 'High', proof: 'Data Purge Log', location: 'System' },
+                    { id: 'OTT-PRIV-02', description: 'Review data retention schedules and verify old data is being purged.', priority: 'High', riskLevel: High', proof: 'Data Purge Log', location: 'System' },
                     { id: 'OTT-PRIV-03', description: 'Test the consent capture and withdrawal flows.', priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Platform' },
                     { id: 'OTT-PRIV-04', description: 'Review and update the data breach notification plan.', priority: 'High', riskLevel: 'High', proof: 'Updated Plan', location: 'Compliance Office' },
                     { id: 'OTT-PRIV-05', description: 'Conduct a Data Protection Impact Assessment (DPIA) for new features.', priority: 'High', riskLevel: 'High', proof: 'DPIA Report', location: 'Compliance Office' },
@@ -3794,9 +3815,9 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'POOL-SAFE-01', description: "Test and log water pH and chlorine levels every 2 hours.", priority: 'High', riskLevel: 'High', proof: 'Water Quality Log', location: 'Poolside' },
                     { id: 'POOL-SAFE-02', description: "Check filtration and pump systems for correct operation.", priority: 'High', riskLevel: 'High', proof: 'Pump Room Log', location: 'Pump Room' },
-                    { id: 'POOL-SAFE-03', description: "Ensure all safety equipment (life rings, shepherd's crook) is accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Check', location: 'Poolside' },
-                    { id: 'POOL-SAFE-04', description: "Verify that lifeguards are on duty and alert.", priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster', location: 'Poolside' },
-                    { id: 'POOL-SAFE-05', description: "Ensure pool deck is clean and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
+                    { id: 'POOL-03', description: "Ensure all safety equipment (life rings, shepherd's crook) is accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Check', location: 'Poolside' },
+                    { id: 'POOL-04', description: "Verify that lifeguards are on duty and alert.", priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster', location: 'Poolside' },
+                    { id: 'POOL-05', description: "Ensure pool deck is clean and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
                 ]
             },
             {
