@@ -78,7 +78,7 @@ export const painPointsContent = {
     theme_park_ops_pack: {
         title: "From Ride Malfunctions to Revenue Loss: Real Theme Park Tragedies",
         points: [
-            { icon: <Siren />, title: "The Chennai Ride Collapse (2019)", description: "A ride collapsed mid-operation, leading to fatalities and immediate shutdown. Our 'Daily Ride Inspection' checklist, including checks of structural bolts, safety harnesses, and emergency stops, provides a mandatory, auditable safety verification." },
+            { icon: <Siren />, title: "The Kishkinta Theme Park Collapse (Chennai, 2016)", description: "A ride collapsed during a trial run, killing one and injuring others. Our 'Daily Ride Inspection' checklist mandates checks of structural bolts, safety harnesses, and emergency stops to provide a verifiable safety audit." },
             { icon: <Shield />, title: "The Stampede at Imagicaa (2018)", description: "Poor crowd flow management at a popular attraction led to a near-stampede situation. Our 'Crowd Management SOP' provides clear protocols for queue management, barrier setup, and emergency dispersal." },
             { icon: <Bug />, title: "The Water Park Contamination", description: "A water park was forced to close after guests reported skin infections due to poor water quality. Our 'Water Quality & Hygiene' checklists enforce the same HACCP-based standards across your entire park." },
             { icon: <HeartPulse />, title: "The Delayed Medical Response Fatality", description: "A guest suffering a heart attack did not receive timely medical attention due to unclear communication. Our 'Emergency Medical Response' plan mandates staffed first-aid posts and clear communication protocols for rapid response." }
@@ -89,7 +89,7 @@ export const painPointsContent = {
         points: [
             { icon: <Siren />, title: "The Hillsborough Disaster (UK, 1989)", description: "A fatal human crush resulted from poor crowd control and outdated stadium design. Our 'Crowd Control & Entry Management SOP' ensures pre-event capacity verification and emergency evacuation drills to prevent such tragedies." },
             { icon: <Dumbbell />, title: "The Gym Equipment Injury Lawsuit", description: "A member at a leading gym chain suffered a severe injury due to a faulty machine. Our 'Equipment Safety & Maintenance Checklist' with daily, logged inspections prevents this and provides a strong legal defense." },
-            { icon: <Stethoscope />, title: "The Christian Eriksen On-Pitch Collapse (Euro 2020)", description: "The world watched as a player collapsed from cardiac arrest. The immediate, coordinated response from a trained medical team with an AED saved his life. Our 'Medical & Emergency Response SOP' ensures your venue is prepared for exactly this scenario." },
+            { icon: <Stethoscope />, title: "The Power of Readiness: The Christian Eriksen Collapse (Euro 2020)", description: "The world watched as a player collapsed, but the immediate, coordinated response from a trained medical team with an AED saved his life. Our 'Medical & Emergency Response SOP' ensures your venue is prepared for exactly this scenario." },
             { icon: <Ticket />, title: "The Fake Ticket Chaos (UEFA Champions League Final, 2022)", description: "Chaos erupted at a major final due to a massive influx of fake tickets. Our 'Digital Ticketing & Entry Validation SOP' uses real-time scanning and fraud detection to eliminate this risk." }
         ]
     },
