@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt, Zap } from 'lucide-react';
+import { HandCoins, Shield, TrendingUp, Users, Bus, Anchor, Trophy, Briefcase, FileCheck, Recycle, Drama, FerrisWheel, Mask, GalleryVertical, Guitar, VenetianMask, Gamepad, Rabbit, Video, Computer, Landmark, Sprout, Wind, Syringe, HeartPulse, BrainCircuit, Lock, KeyRound, Banknote, Bug, UserCog, Siren, Milestone, UserCheck, Stethoscope, Microscope, TestTube, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, CakeSlice, Truck, Pill, Store, Gem, Factory, HardHat, GraduationCap, Building2, Warehouse, Utensils, Building, MonitorPlay, Film, PawPrint, Home, Dumbbell, Tv, Shirt, Zap, Package } from 'lucide-react';
 
 export const painPointsContent = {
     jewelry_and_luxury_retail: {
         title: "High-Stakes Retail: How a Single Missed Step Leads to Multi-Crore Losses",
         points: [
-            { icon: <Gem />, title: "The ₹3.8 Crore Mumbai Showroom Theft", description: "A premium store was burgled overnight after an alarm was switched off for maintenance with no backup protocol. Our 'End-of-Day Security' checklist prevents this by mandating alarm, CCTV, and patrol verifications before closing." },
+            { icon: <Siren />, title: "The ₹3.8 Crore Mumbai Showroom Theft", description: "A premium store was burgled overnight after an alarm was switched off for maintenance with no backup protocol. Our 'End-of-Day Security' checklist prevents this by mandating alarm, CCTV, and patrol verifications before closing." },
             { icon: <Users />, title: "The Fake Return Fraud", description: "A staff member colluded with a customer to process ₹12 lakh in fake refunds. Our 'Sales & Return Authorization' SOP, requiring dual approval for large refunds and weekly POS audits, eliminates this internal threat." },
             { icon: <Lock />, title: "The Vault Access Breach", description: "An employee used a colleague’s access card to enter a gold vault after hours. Our 'Vault Access Control' checklist, mandating biometric entry and daily log reviews, would have made this impossible." },
             { icon: <Shield />, title: "The Payment Gateway Cyber Scam", description: "A luxury watch brand lost sales after fraudsters placed fake QR codes on payment counters. Our 'Digital Transaction Security' checklist includes daily QR code validation to prevent this modern form of theft." }
@@ -16,18 +16,18 @@ export const painPointsContent = {
         title: "From Guest Nightmare to 5-Star Experience: Real Incidents SOPs Prevent",
         points: [
             { icon: <Siren />, title: "The Hotel Arpit Palace Fire (Delhi, 2019)", description: "17 lives were lost in a hotel fire due to illegally blocked exits and non-functional alarms. Our daily 'Fire Safety & Exit Inspection' checklist provides a verifiable audit trail to ensure this never happens." },
-            { icon: <Stethoscope />, title: "The Legionnaires’ Disease Outbreak (Spain, 2016)", description: "A deadly disease outbreak was traced to a resort's contaminated water systems. Our 'Preventive Maintenance' SOP for HVAC and plumbing ensures water quality is logged and systems are cleaned, preventing biological hazards." },
-            { icon: <Bug />, title: "The Bed Bug Infestation & Reputational Damage", description: "A 5-star hotel faced a media storm over a bed bug complaint. Our 'Daily Room Readiness' SOP includes mandatory checks of mattresses and upholstery, catching such issues before a guest ever does." },
-            { icon: <HandCoins />, title: "The 'Phantom' Minibar Charges", description: "Inaccurate minibar billing is a top guest complaint. Our 'Housekeeping & Minibar' SOP ensures stock is verified against consumption upon checkout, eliminating billing errors and revenue loss." }
+            { icon: <Bug />, title: "The Hyatt Regency Pune Contamination (2017)", description: "Over 80 guests, including airline crew, fell ill from food poisoning, leading to a major health crisis. Our 'Kitchen HACCP' checklists for food handling and storage are designed to prevent such mass contamination events." },
+            { icon: <Shield />, title: "The Marriott (Starwood) Data Breach (2018)", description: "The personal details of 500 million guests were exposed in one of history's largest data breaches. Our 'Data Privacy SOPs' enforce access controls and encryption, forming a first line of defense against such cyber-attacks." },
+            { icon: <HandCoins />, title: "The 'Phantom' Minibar Charges", description: "Inaccurate minibar billing is a top guest complaint and a source of revenue loss. Our 'Housekeeping & Minibar' SOP ensures stock is verified against consumption upon checkout, eliminating billing errors and financial leakage." }
         ]
     },
     restaurants: {
         title: "From Food Poisoning to Profit: Real Incidents Our Checklists Prevent",
         points: [
             { icon: <Bug />, title: "The E. coli Outbreak (Chipotle, USA, 2015)", description: "A nationwide E. coli outbreak cost Chipotle billions in stock value and brand damage. Our 'HACCP Kitchen Checklist' prevents cross-contamination with mandatory, logged checks for food handling and surface sanitation." },
-            { icon: <Siren />, title: "The Pune Eatery Sealing (2022)", description: "An FSSAI raid sealed a popular eatery due to unhygienic conditions. Our 'Kitchen Opening & Closing' SOPs create a daily, auditable record of hygiene compliance, ensuring you're always inspection-ready." },
+            { icon: <Siren />, title: "The Kamala Mills Fire (Mumbai, 2017)", description: "A fire originating in a rooftop restaurant killed 14 people due to illegal structures and blocked exits. Our 'Fire Safety' and 'Infrastructure' audits ensure compliance with fire codes, preventing such tragedies." },
             { icon: <HandCoins />, title: "The Profit-Draining Spoilage Problem", description: "Thousands in produce was wasted due to a faulty walk-in freezer. Our 'Cold Storage Temperature Logs' provide twice-daily, signed verification that your expensive inventory is safe, preventing spoilage." },
-            { icon: <Users />, title: "The Inconsistent Service that Kills Reviews", description: "One bad service experience can lead to a 1-star review. Our 'FOH Service Standards' checklist ensures every guest receives the same high level of service, from seating to billing, every single time." }
+            { icon: <Users />, title: "The Inconsistent Service that Kills Reviews", description: "One bad service experience can lead to a 1-star review and damage your reputation. Our 'FOH Service Standards' checklist ensures every guest receives the same high level of service, from seating to billing, every single time." }
         ]
     },
     fashion_and_apparel_retail: {
@@ -60,9 +60,9 @@ export const painPointsContent = {
     film_production_pack: {
         title: "From Costly Errors to Creative Control: Real Production Disasters & How to Prevent Them",
         points: [
-            { icon: <Siren />, title: "The On-Set Electrocution (Hyderabad)", description: "A crew member was fatally electrocuted handling lighting on an outdoor shoot. Our 'Pre-Shoot Electrical & Set Safety' checklist, requiring grounding tests and safety officer sign-offs, prevents this." },
+            { icon: <Siren />, title: "The 'Rust' Movie Set Tragedy (USA, 2021)", description: "A fatal on-set shooting occurred due to lapses in firearms safety protocols. Our 'On-Set Safety (EHS)' checklists, including prop weapon handling, mandate multiple verifications to prevent such catastrophic failures." },
             { icon: <HeartPulse />, title: "The Uninsured Stunt Injury", description: "A stunt double's spinal injury led to a massive lawsuit because the production lacked specific accident insurance. Our 'Stunt & Risk Scene Safety' SOP mandates insurance validation and on-site medical readiness." },
-            { icon: <FileLock />, title: "The OTT Script Leak", description: "A major series script was leaked from a freelancer's unsecured cloud folder. Our 'Data Security & NDA Compliance' SOP enforces secure sharing protocols and role-based access to protect your IP." },
+            { icon: <FileLock />, title: "The HBO Script & Episode Leaks (2017)", description: "Unaired episodes of major shows were stolen by hackers. Our 'Data Security & NDA Compliance' SOP enforces secure sharing protocols and role-based access to protect your IP from development to distribution." },
             { icon: <Bug />, title: "The ₹50 Lakh Vendor Overbilling", description: "A production was overbilled due to duplicate invoices. Our 'Vendor Billing & Audit' SOP implements a three-way match (Invoice vs. PO vs. GRN) to stop financial leakage." }
         ]
     },
@@ -79,9 +79,9 @@ export const painPointsContent = {
         title: "From Ride Malfunctions to Revenue Loss: Real Theme Park Tragedies",
         points: [
             { icon: <Siren />, title: "The Chennai Ride Collapse (2019)", description: "A ride collapsed mid-operation, leading to fatalities. Our 'Daily Ride Inspection' checklist, including checks of structural bolts, safety harnesses, and emergency stops, provides a mandatory, auditable safety verification." },
-            { icon: <Shield />, title: "The Stampede Risk", description: "Poor crowd flow management can turn a popular attraction into a dangerous stampede risk. Our 'Crowd Management SOP' provides clear protocols for queue management, barrier setup, and emergency dispersal." },
+            { icon: <Shield />, title: "The Stampede Risk", description: "Poor crowd flow management at a popular attraction can become a dangerous stampede risk. Our 'Crowd Management SOP' provides clear protocols for queue management, barrier setup, and emergency dispersal." },
             { icon: <Bug />, title: "The Food Stall Hygiene Failure", description: "Food poisoning from a single stall can ruin a park's reputation. Our 'Vendor & F&B Stall Safety' checklists enforce the same HACCP-based hygiene standards across your entire park." },
-            { icon: <HeartPulse />, title: "The Delayed Medical Response", description: "A guest suffering from heatstroke did not receive timely medical attention. Our 'Emergency Medical Response' plan mandates staffed first-aid posts and clear communication protocols for rapid response." }
+            { icon: <HeartPulse />, title: "The Delayed Medical Response", description: "A guest suffering from heatstroke does not receive timely medical attention. Our 'Emergency Medical Response' plan mandates staffed first-aid posts and clear communication protocols for rapid response." }
         ]
     },
     sports_clubs_facilities_pack: {
@@ -96,7 +96,7 @@ export const painPointsContent = {
     fitness_centers_gyms_pack: {
         title: "From Member Injuries to Membership Growth: Real Gym Risks & Solutions",
         points: [
-            { icon: <Siren />, title: "The Gym Equipment Fatality (Pune, 2022)", description: "A gym-goer was killed when a machine's cable snapped. Our 'Daily Equipment Inspection' checklist includes mandatory checks for cable wear and tear, preventing such catastrophic failures." },
+            { icon: <Siren />, title: "The Gym Equipment Fatality (Delhi, 2023)", description: "A 32-year-old gym-goer died after a cable snapped on a machine. Our 'Daily Equipment Inspection' checklist includes mandatory checks for cable wear and tear, preventing such catastrophic failures." },
             { icon: <Stethoscope />, title: "The Trainer Negligence Lawsuit (LA Fitness, US)", description: "A gym was sued after a trainer's negligence led to a member's injury. Our 'Trainer Certification & Safety Induction' SOP ensures all trainers are qualified and follow safe training protocols." },
             { icon: <Bug />, title: "The Locker Room Fungal Outbreak", description: "Unhygienic locker rooms can lead to skin infections and member complaints. Our 'Daily Hygiene & Sanitation' routines provide a verifiable record that all wet areas are cleaned and disinfected multiple times a day." },
             { icon: <Shield />, title: "The Unprepared Medical Emergency", description: "A member suffers a heart attack with no clear response plan. Our 'Emergency & AED Readiness' checklist ensures your AED is functional and staff are trained in CPR, turning chaos into a life-saving response." }
@@ -139,12 +139,12 @@ export const painPointsContent = {
         ]
     },
     pharmacy_ops_pack: {
-        title: "The Business Case for a Safe & Compliant Pharmacy",
+        title: "From Dispensing Errors to Compliance Certainty: Real Pharmacy Risks",
         points: [
-            { icon: <Shield />, title: "Prevent Dangerous Dispensing Errors", description: "Implement a multi-stage verification process, from prescription intake to a final check, including specific protocols for Look-Alike, Sound-Alike (LASA) drugs, to protect patients." },
-            { icon: <FileLock />, title: "Master Controlled Substance & Narcotics Management", description: "Ensure full compliance and prevent diversion with rigorous checklists for logging, daily reconciliation, and secure storage of all controlled substances, ready for any audit." },
-            { icon: <TrendingUp />, title: "Protect Product Efficacy with Cold Chain Management", description: "Prevent spoilage of expensive vaccines and biologics with daily temperature logging, alarm checks, and backup power protocols, ensuring medications are both safe and effective." },
-            { icon: <Users />, title: "Improve Patient Outcomes with Standardized Counseling", description: "Go beyond just dispensing. Use our patient counseling checklist to ensure every patient understands their medication, leading to better adherence and health outcomes." }
+            { icon: <Shield />, title: "The Look-Alike Drug Tragedy", description: "A patient in the UK died after being dispensed the wrong medication due to a similar name. Our 'Dispensing Accuracy' SOP with 'Tall Man' lettering and dual-verification prevents these fatal errors." },
+            { icon: <FileLock />, title: "The Narcotics Diversion Scheme", description: "A pharmacist in the US was jailed for diverting controlled substances. Our 'Controlled Substance Log' with daily dual-signatory reconciliation makes such internal theft nearly impossible." },
+            { icon: <TrendingUp />, title: "The Vaccine Cold Chain Failure", description: "Thousands of vaccines were rendered useless after a pharmacy fridge failed overnight. Our 'Cold Chain Management' checklist, with twice-daily temperature logs and alarm checks, protects your most valuable inventory." },
+            { icon: <Users />, title: "The Incomplete Counseling Lawsuit", description: "A patient sued a pharmacy for failing to counsel on severe side effects. Our 'Patient Counseling' checklist ensures every patient receives standardized, documented advice, improving adherence and reducing liability." }
         ]
     },
     school_operations_pack: {
@@ -168,8 +168,8 @@ export const painPointsContent = {
     food_manufacturing_ops: {
         title: "From Product Recalls to Production Excellence: Real Food Plant Risks",
         points: [
-            { icon: <Bug />, title: "The Ice Cream Plant Contamination (Gujarat, 2021)", description: "A major ice cream brand had to recall products after contamination was found at its plant. Our 'HACCP Production Checklists' help prevent contamination at every Critical Control Point, from raw materials to packaging." },
-            { icon: <Users />, title: "The Worker Injury from Unsafe Machinery", description: "A worker losing a hand in a machine without a safety guard is a preventable tragedy. Our 'Machine Safety & EHS' SOPs mandate daily checks for safety guards and emergency stops, complying with the Factories Act." },
+            { icon: <Bug />, title: "The Cadbury Worm Controversy (India, 2003)", description: "Cadbury faced a major crisis when insects were found in its chocolates, traced to storage issues. Our 'HACCP Production Checklists' help prevent contamination at every Critical Control Point, from raw materials to packaging." },
+            { icon: 'x', title: "The Factory Worker Injury", description: "A worker losing a hand in a machine without a safety guard is a preventable tragedy. Our 'Machine Safety & EHS' SOPs mandate daily checks for safety guards and emergency stops, complying with the Factories Act." },
             { icon: <Recycle />, title: "The Cross-Contamination Catastrophe", description: "Undeclared allergens from cross-contact can be fatal for consumers. Our 'Allergen Management SOP' provides a rigorous system for production scheduling, cleaning verification, and raw material segregation to prevent this." },
             { icon: <FileLock />, title: "The Failed Export Consignment", description: "A shipment is rejected by a foreign country for not meeting their food safety standards. Our checklists, aligned with BRCGS and ISO 22000, ensure you have the documentation and processes for global market access." }
         ]
@@ -205,3 +205,5 @@ export const painPointsContent = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
+
+    
