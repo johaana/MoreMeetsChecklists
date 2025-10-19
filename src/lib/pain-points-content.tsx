@@ -15,16 +15,16 @@ export const painPointsContent = {
     hotels_and_resorts: {
         title: "The Business Case for 5-Star Operational Excellence",
         points: [
-            { icon: <Users />, title: "Inconsistent Guest Experience", description: "Standardize every touchpoint, from check-in to room service, ensuring every guest receives the same 5-star treatment, every time. This builds loyalty and drives positive reviews." },
-            { icon: <HandCoins />, title: "Revenue Leakage & Cost Overruns", description: "Plug financial leaks by tracking minibar consumption accurately, preventing wastage in F&B, and implementing preventative maintenance to avoid costly emergency repairs." },
-            { icon: <Shield />, title: "Compliance Nightmares & Safety Risks", description: "Navigate complex safety regulations with ease. Our checklists ensure you're always compliant with fire safety, food hygiene (HACCP), and security protocols, protecting you from fines and reputational damage." },
-            { icon: <TrendingUp />, title: "Inefficient Operations & Staff Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
+            { icon: <Users />, title: "Prevent Bad Reviews from Single Incidents", description: "A faulty AC or expired minibar item can ruin a stay and lead to a negative review. Daily room checks catch these failures before the guest does." },
+            { icon: <HandCoins />, title: "Stop Revenue Leakage", description: "Prevent wastage in F&B, ensure accurate minibar billing, and use preventive maintenance to avoid costly emergency repairs, directly impacting your bottom line." },
+            { icon: <Shield />, title: "Avoid Health & Safety Crises", description: "Rigorous HACCP (food) and water quality (pool) logs prevent foodborne or waterborne illnesses, protecting guests and avoiding catastrophic legal and reputational damage." },
+            { icon: <TrendingUp />, title: "Reduce Staff Chaos & Turnover", description: "Empower your team with clear, step-by-step SOPs. This reduces training time, minimizes errors, and creates a less stressful work environment, leading to higher staff retention." }
         ]
     },
     restaurants: {
         title: "The Business Case for a More Profitable & Compliant Restaurant",
         points: [
-            { icon: <Shield />, title: "Prevent Food Safety Violations", description: "A single food poisoning incident can destroy your reputation. Our HACCP-based checklists for opening, line checks, and closing create a verifiable system to prevent this." },
+            { icon: <Shield />, title: "Prevent Food Safety Violations", description: "A single food poisoning incident can destroy your reputation. Our HACCP-based temperature and handling logs create a verifiable system to prevent this." },
             { icon: <HandCoins />, title: "Stop Kitchen Profit Drain", description: "Reduce costly food spoilage with rigorous temperature logging and FIFO protocols, and control portion sizes to protect your margins on every plate." },
             { icon: <TrendingUp />, title: "Eliminate Service Inconsistency", description: "Ensure every guest gets the same high-quality experience with standardized checklists for FOH opening, closing, and service standards, leading to better reviews and repeat business." },
             { icon: <Users />, title: "Reduce Back-of-House Chaos", description: "Empower your kitchen staff with clear, repeatable processes for everything from receiving goods to closing down, reducing errors and staff stress." }
@@ -42,19 +42,19 @@ export const painPointsContent = {
     electronics_showroom_pack: {
         title: "The Business Case for a High-Performing Electronics Showroom",
         points: [
-            { icon: <Tv />, title: "Prevent Demo Unit Failures & Inconsistent Displays", description: "A non-functional demo unit or a messy display is a lost sale. Our checklists ensure every product is perfectly presented and functional, maintaining brand standards and boosting customer confidence." },
-            { icon: <HandCoins />, title: "Stop Inventory & Cash Shrinkage", description: "Small, high-value electronics are prime targets for theft. Our protocols for inventory cycle counting, cash handling, and security audits protect your most valuable assets and your bottom line." },
+            { icon: <Zap />, title: "Prevent Electrical Fires & Shocks", description: "A faulty demo unit's wiring can cause a fire. Our daily electrical checks and periodic PAT testing SOPs prevent shocks and fires, ensuring customer and staff safety." },
+            { icon: <HandCoins />, title: "Stop Inventory & Warranty Fraud", description: "An untagged asset can be easily stolen or swapped for warranty fraud. Our asset tagging and daily high-value inventory checks prevent theft and protect against warranty abuse." },
             { icon: <Bug />, title: "Eliminate Costly Data Entry & Shipping Errors", description: "One wrong digit in a product's weight or dimensions can lead to thousands in shipping chargebacks. Our 'maker-checker' data entry SOP prevents these expensive errors before they happen." },
-            { icon: <Shield />, title: "Reduce Compliance & Safety Risks", description: "Faulty wiring on displays is a fire hazard, and non-compliance with payment security (PCI DSS) can lead to crippling fines. Our safety and payment handling checklists mitigate these critical risks." }
+            { icon: <Shield />, title: "Avoid E-Waste & Compliance Fines", description: "Improper disposal of electronics is a regulatory violation. Our e-waste handling SOP ensures you follow all rules, avoid fines, and protect the environment." }
         ]
     },
-    supermarket_hypermarket_ops_pack: {
+    supermarket_grocery_retail_pack: {
         title: "The Business Case for Supermarket & Hypermarket Efficiency",
         points: [
-            { icon: <Recycle />, title: "Reduce Fresh Food Spoilage & Wastage", description: "Our HACCP-aligned checklists for fresh departments ensure proper temperature control, handling, and stock rotation, drastically reducing spoilage and protecting thin margins." },
+            { icon: <Recycle />, title: "Reduce Fresh Food Spoilage & Wastage", description: "Our HACCP-aligned checklists for fresh departments ensure proper temperature control, handling, and stock rotation (FIFO), drastically reducing spoilage and protecting thin margins." },
             { icon: <TrendingUp />, title: "Improve On-Shelf Availability & Reduce Stockouts", description: "Streamline your inventory management with checklists for high-volume receiving, planogram compliance, and daily stock audits, ensuring popular items are always available to customers." },
             { icon: <HandCoins />, title: "Increase Checkout Speed & Reduce Shrinkage", description: "Optimize front-end efficiency with checklists for cash management, queue monitoring, and loss prevention at the point of sale, improving customer experience and protecting profits." },
-            { icon: <Shield />, title: "Ensure a Safe & Clean Shopping Environment", description: "Implement daily store readiness and housekeeping checklists to ensure your store is always safe, hygienic, and welcoming, building customer trust and loyalty." }
+            { icon: <Shield />, title: "Ensure a Safe & Clean Shopping Environment", description: "A simple slip-and-fall incident can lead to a major lawsuit. Implement daily store readiness and hourly spill-check protocols to ensure your store is always safe, hygienic, and welcoming." }
         ]
     },
     film_production_pack: {
@@ -70,7 +70,7 @@ export const painPointsContent = {
         title: "The Business Case for a Scalable & Compliant OTT Platform",
         points: [
             { icon: <TrendingUp />, title: "Prevent Show-Stopping Platform Outages", description: "When a cricket streaming app crashed, it lost millions in trust. Our checklists for load testing, disaster recovery, and infrastructure readiness prevent these public failures." },
-            { icon: <FileLock />, title: "Navigate Global Content & Data Regulations", description: "Ensure compliance with regional content laws, accessibility standards (WCAG 2.1), and data privacy regulations (GDPR/DPDP) to avoid fines and geo-restrictions." },
+            { icon: <FileLock />, title: "Navigate Global Content & Data Regulations", description: "Ensure compliance with regional content laws (like IT Rules 2021), accessibility standards (WCAG 2.1), and data privacy regulations (GDPR/DPDP) to avoid fines and geo-restrictions." },
             { icon: <Shield />, title: "Secure Your Content and User Data", description: "Implement a robust security framework with checklists for DRM implementation, vendor security assessments, and cybersecurity incident response to protect your content and user data from breaches." },
             { icon: <Video />, title: "Streamline Your Content Supply Chain", description: "Standardize your content pipeline from acquisition and metadata tagging to QC and release scheduling, improving efficiency and reducing time-to-market for new content." }
         ]
@@ -78,10 +78,10 @@ export const painPointsContent = {
     theme_park_ops_pack: {
         title: "The Business Case for Theme Park Safety & Guest Experience",
         points: [
-            { icon: <Shield />, title: "Prevent Catastrophic Ride Failures", description: "Implement rigorous daily ride safety checks, maintenance logs, and operator readiness protocols to prevent accidents and ensure the highest level of guest safety." },
-            { icon: <Users />, title: "Master Crowd Control & Emergency Response", description: "Manage large crowds effectively and execute orderly evacuations with checklists for crowd flow, emergency exits, and staff response drills, preventing stampedes and ensuring public safety." },
-            { icon: <HeartPulse />, title: "Deliver a Flawless Guest Experience", description: "Standardize everything from park cleanliness and F&B hygiene to character interactions and show quality, ensuring every visitor has a magical and memorable experience." },
-            { icon: <FileCheck />, title: "Ensure Regulatory & Safety Compliance", description: "Maintain a constant state of readiness for safety audits with documented checklists for ride maintenance, water park hygiene, and emergency preparedness, aligned with international standards." }
+            { icon: <Shield />, title: "Prevent Catastrophic Ride Failures", description: "A single missed check on a safety restraint or emergency stop can be fatal. Implement rigorous daily ride safety checks, maintenance logs, and operator readiness protocols to prevent accidents." },
+            { icon: <Users />, title: "Master Crowd Control & Emergency Response", description: "A stampede is a theme park's worst nightmare. Manage large crowds effectively and execute orderly evacuations with checklists for crowd flow, emergency exits, and staff response drills." },
+            { icon: <HeartPulse />, title: "Deliver a Flawless Guest Experience", description: "Inconsistent cleanliness, poor F&B hygiene, or a grumpy character actor can ruin a family's expensive day out. Standardize every touchpoint to ensure a magical and memorable experience." },
+            { icon: <FileCheck />, title: "Ensure Regulatory & Safety Compliance", description: "Maintain a constant state of readiness for safety audits with documented checklists for ride maintenance (ASTM F24), water park hygiene, and emergency preparedness." }
         ]
     },
     sports_clubs_facilities_pack: {
@@ -120,13 +120,13 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "Build a Foundation for Scalable Growth", description: "By embedding basic legal and compliance checks into your core operations (like asset management and strategic planning), you build a robust company that is more attractive to investors and partners." }
         ]
     },
-    enterprise_risk_compliance_pack: {
+    enterprise_risk_cybersecurity_pack: {
         title: "The Business Case for AI & Cybersecurity Governance",
         points: [
             { icon: <BrainCircuit />, title: "Build Trust & Mitigate AI Risk", description: "Implement an AI Ethics framework to govern your models, assess for bias, and ensure transparency, building trust with users and regulators before you face scrutiny." },
             { icon: <FileLock />, title: "Avoid Crippling Data Privacy Fines", description: "Use our GDPR/DPDP audit checklists to maintain a Record of Processing Activities (ROPA), manage consent, and handle Data Subject Access Requests (DSARs) efficiently." },
             { icon: <Shield />, title: "Strengthen Your Defenses Against Cyber Attacks", description: "Move from reactive to proactive security. Use checklists for incident response drills, vendor security assessments, and cloud security posture management to find and fix weaknesses before they are exploited." },
-            { icon: <Users />, title: "Secure the Human Element", description: "Your biggest vulnerability is often your people. Implement secure employee offboarding and access control reviews to ensure departing employees don't become your next data breach." }
+            { icon: 'logo' in Users ? <Users /> : <Users />, title: "Secure the Human Element", description: "Your biggest vulnerability is often your people. Implement secure employee offboarding and access control reviews to ensure departing employees don't become your next data breach." }
         ]
     },
     healthcare_and_hospital_operations: {
