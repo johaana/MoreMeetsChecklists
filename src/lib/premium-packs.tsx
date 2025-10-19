@@ -280,6 +280,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ALLERGEN-02', description: "Use designated, labeled cooking stations for allergen-free orders.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kitchen' },
                     { id: 'ALLERGEN-03', description: "Manager to double-check special diet plates before they leave the kitchen.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Log', location: 'Kitchen Pass' },
                     { id: 'ALLERGEN-04', description: "Obtain written acknowledgement from guest for complex special orders.", priority: 'Medium', riskLevel: 'Medium', proof: 'Signed Order Slip', location: 'POS' },
+                    { id: 'ALLERGEN-05', description: "Manager or Head Chef to double-check the final dish against the ticket before it leaves the kitchen.", priority: 'High', riskLevel: 'High', proof: 'Dispatch Log Sign-off', location: 'Kitchen Pass' },
+                    { id: 'ALLERGEN-06', description: "The server who took the order must be the one to deliver the dish to the correct guest.", priority: 'High', riskLevel: 'High', proof: 'Service Protocol', location: 'Dining Area' },
+                    { id: 'ALLERGEN-07', description: "Verbally re-confirm the dish and its special preparation with the guest upon delivery.", priority: 'High', riskLevel: 'Medium', proof: 'Server Confirmation', location: 'Dining Table' },
+                    { id: 'ALLERGEN-08', description: "Maintain an up-to-date allergen matrix for all menu items.", priority: 'High', riskLevel: 'High', proof: 'Allergen Matrix Document', location: 'POS/Kitchen' },
+                    { id: 'ALLERGEN-09', description: "Change gloves and wash hands before and after handling an allergen-free order.", priority: 'High', riskLevel: 'High', proof: 'CCTV/Supervisor Audit', location: 'Kitchen' },
+                    { id: 'ALLERGEN-10', description: "Document any complex or severe allergy requests in a shift log for future reference.", priority: 'Medium', riskLevel: 'Medium', proof: 'Shift Logbook', location: 'Manager\'s Office' },
                 ]
             },
             {
@@ -1649,7 +1655,14 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'LOG-DISP-01', description: 'Verify load is properly restrained and secured inside the truck.', priority: 'High', riskLevel: 'High', proof: 'Photo of Secured Load', location: 'Loading Bay' },
                     { id: 'LOG-DISP-02', description: 'Ensure weight is evenly distributed to prevent tipping.', priority: 'High', riskLevel: 'High', proof: 'Weight Distribution Plan', location: 'Loading Bay' },
-                    { id: 'LOG-DISP-03', description: 'Confirm driver has completed their pre-trip vehicle inspection.', priority: 'High', riskLevel: 'Medium', proof: 'Driver\'s Log', location: 'Loading Bay' },
+                    { id: 'LOG-DISP-03', description: 'Match the physical goods being loaded with the dispatch documentation.', priority: 'High', riskLevel: 'High', proof: 'Dispatch Note Sign-off', location: 'Loading Bay' },
+                    { id: 'LOG-DISP-04', description: 'Ensure the truck is sealed (if required) and the seal number is recorded.', priority: 'High', riskLevel: 'High', proof: 'Seal Log', location: 'Loading Bay' },
+                    { id: 'LOG-DISP-05', description: 'Finalize and hand over all shipping documents to the driver.', priority: 'High', riskLevel: 'Medium', proof: 'Document Handover Log', location: 'Dispatch Office' },
+                    { id: 'LOG-DISP-06', description: 'Verify the truck\'s registration and driver\'s license are valid.', priority: 'High', riskLevel: 'Medium', proof: 'Document Check', location: 'Security Gate' },
+                    { id: 'LOG-DISP-07', description: 'Check the condition of the truck to ensure it is roadworthy (tires, lights).', priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Loading Bay' },
+                    { id: 'LOG-DISP-08', description: 'Photograph the sealed truck before it departs.', priority: 'High', riskLevel: 'Medium', proof: 'Photo Archive', location: 'Loading Bay' },
+                    { id: 'LOG-DISP-09', description: 'Confirm the driver has completed their pre-trip vehicle inspection.', priority: 'High', riskLevel: 'Medium', proof: 'Driver\'s Logbook Check', location: 'Loading Bay' },
+                    { id: 'LOG-DISP-10', description: 'Update the shipment status to \'Dispatched\' in the WMS/TMS.', priority: 'High', riskLevel: 'Medium', proof: 'System Status Update', location: 'System' },
                 ]
             },
             {
@@ -2255,3 +2268,5 @@ export const premiumPacks: PremiumPack[] = [
         ]
     }
 ];
+
+    
