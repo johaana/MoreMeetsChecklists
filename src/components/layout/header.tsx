@@ -28,7 +28,7 @@ const allIndividualChecklists = individualChecklists;
 const SolutionsList = () => (
   <>
     <div className="md:w-1/4 space-y-4 pr-6 border-r">
-      <h4 className="font-semibold text-sm text-muted-foreground px-2">Our Bestselling Individual Checklists</h4>
+      <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Our Bestselling Individual Checklists</h4>
       <ul className="space-y-1">
         {allIndividualChecklists.map(checklist => (
           <li key={checklist.id}>
@@ -42,10 +42,10 @@ const SolutionsList = () => (
     </div>
 
     <div className="md:w-3/4 pl-6">
-      <h4 className="font-semibold text-sm text-muted-foreground px-2">Premium Packs by Industry</h4>
-      <div className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+      <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Premium Packs by Industry</h4>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-          <div key={category} className="break-inside-avoid-column">
+          <div key={category}>
             <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
             <ul className="space-y-1">
               {packs.map(pack => (
