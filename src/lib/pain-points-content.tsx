@@ -89,7 +89,7 @@ export const painPointsContent = {
         points: [
             { icon: <Siren />, title: "The Hillsborough Disaster (UK, 1989)", description: "A fatal human crush resulted from poor crowd control and outdated stadium design. Our 'Crowd Control & Entry Management SOP' ensures pre-event capacity verification and emergency evacuation drills to prevent such tragedies." },
             { icon: <Dumbbell />, title: "The Gym Equipment Fatality (Delhi, 2023)", description: "A 32-year-old gym-goer died after a cable snapped on a machine. Our 'Daily Equipment Inspection' checklist includes mandatory checks for cable wear and tear, preventing such catastrophic failures." },
-            { icon: <Stethoscope />, title: "The Damar Hamlin On-Field Collapse (NFL, USA, 2023)", description: "The world watched as a player collapsed, but the immediate, coordinated response from a trained medical team with an AED saved his life. Our 'Medical & Emergency Response SOP' ensures your venue is prepared for exactly this scenario." },
+            { icon: <Stethoscope />, title: "The Christian Eriksen On-Pitch Collapse (Euro 2020)", description: "A life was saved due to a perfectly executed emergency response plan. Our 'Medical & Emergency Response SOP' ensures your venue has the same level of preparedness, turning a potential tragedy into a testament to safety." },
             { icon: <Ticket />, title: "The UEFA Champions League Final Fake Ticket Chaos (Paris, 2022)", description: "Chaos erupted at a major final due to a massive influx of fake tickets. Our 'Digital Ticketing & Entry Validation SOP' uses real-time scanning and fraud detection to eliminate this risk." }
         ]
     },
@@ -130,7 +130,7 @@ export const painPointsContent = {
         ]
     },
     healthcare_and_hospital_operations: {
-        title: "Preventing 'Never Events': Real Incidents & The Checklists That Stop Them",
+        title: "From Code Blue to Compliance: Real Hospital Failures",
         points: [
             { icon: <Shield />, title: "Prevent Wrong-Site Surgery", description: "A patient in Rhode Island underwent brain surgery on the wrong side due to a communication lapse. Our WHO-aligned Surgical Safety Checklist mandates a 'Time Out' to prevent this catastrophic 'never event'." },
             { icon: <TrendingUp />, title: "Stop Look-Alike Drug Errors", description: "A fatal overdose occurred when a nurse administered a sound-alike drug. Our LASA (Look-Alike, Sound-Alike) Drug Management checklist, with 'Tall Man' lettering and dual sign-offs, prevents this." },
@@ -213,5 +213,7 @@ export type PainPointCategory = keyof PainPoints;
 
 
 
+
+    
 
     
