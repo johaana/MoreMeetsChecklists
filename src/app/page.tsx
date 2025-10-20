@@ -554,12 +554,12 @@ export default function Home() {
                         <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                             The Professional Standard for Compliance & Operations Checklists.
                         </h1>
-                         <div className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2 text-white/90 text-xl md:text-2xl/relaxed mx-auto [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)] font-semibold">
+                         <div className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2 text-white/90 text-xl md:text-2xl/relaxed mx-auto [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)] font-semibold tracking-wide">
                             <span className="flex items-center gap-2">
                                 <Check className="w-6 h-6 text-accent" />
                                 <span>Instant SOPs</span>
                             </span>
-                            <span className="hidden sm:inline-block">•</span>
+                             <span className="hidden sm:inline-block">•</span>
                             <span className="flex items-center gap-2">
                                 <Check className="w-6 h-6 text-accent" />
                                 <span>Total Compliance</span>
