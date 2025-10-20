@@ -554,7 +554,7 @@ export default function Home() {
                         <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                             The Professional Standard for Compliance & Operations Checklists.
                         </h1>
-                         <p className="max-w-[700px] text-white/90 text-base md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
+                         <p className="max-w-[700px] text-white/90 text-xl md:text-2xl/relaxed mx-auto drop-shadow-sm mt-4 font-medium">
                             Instant SOPs. Total Compliance.
                         </p>
                     </div>
@@ -567,7 +567,7 @@ export default function Home() {
                         </Button>
                         <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                             <p className="text-xs text-white/80">
-                                Standards compliant with ISO, JCI, HACCP, OSHA & more
+                                Standards Compliant: ISO, JCI, HACCP, OSHA & More
                             </p>
                         </div>
                     </div>
