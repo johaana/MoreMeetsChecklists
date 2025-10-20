@@ -12,6 +12,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
@@ -22,45 +23,46 @@ const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
 
-const allIndividualChecklists = individualChecklists.slice(0, 8); // Limit to a manageable number for the dropdown
+const topPremiumPacks = premiumPacks.filter(p => p.bestseller).slice(0, 6);
+const topIndividualChecklists = individualChecklists.slice(0, 6);
 
 // Reusable component to render the list of solutions
 const SolutionsList = () => (
-  <>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4">
-      {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-        <div key={category}>
-          <h5 className="font-semibold text-sm text-primary/80 mb-2 px-2">{category}</h5>
-          <ul className="space-y-1">
-            {packs.map(pack => (
-              <li key={pack.id}>
-                <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                  <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
-                  <span className="flex-1 leading-snug">{pack.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <div className="grid grid-cols-1 gap-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4">
+        {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
+            <div key={category}>
+                <h5 className="font-bold text-sm text-primary/90 mb-2 px-2">{category}</h5>
+                <ul className="space-y-1">
+                    {packs.map(pack => (
+                        <li key={pack.id}>
+                            <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
+                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
+                                <span className="flex-1 leading-snug">{pack.title}</span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        ))}
         </div>
-      ))}
-    </div>
-    
-    <Separator className="my-6"/>
+        
+        <Separator className="my-4"/>
 
-    <div>
-        <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Popular Individual Checklists</h4>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1">
-            {allIndividualChecklists.map(checklist => (
-              <li key={checklist.id}>
-                <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-                  <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                  <span className="flex-1 leading-snug">{checklist.title}</span>
-                </Link>
-              </li>
-            ))}
-        </ul>
+        <div>
+            <h4 className="font-bold text-sm text-primary/90 px-2 mb-2">Popular Individual Checklists</h4>
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1">
+                {individualChecklists.slice(0, 8).map(checklist => (
+                <li key={checklist.id}>
+                    <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
+                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+                    <span className="flex-1 leading-snug">{checklist.title}</span>
+                    </Link>
+                </li>
+                ))}
+            </ul>
+        </div>
     </div>
-  </>
 );
 
 export function SiteHeader() {
@@ -172,24 +174,54 @@ export function SiteHeader() {
                             <BrandLogo />
                         </SheetHeader>
                         <ScrollArea className="flex-1">
-                            <div className="flex flex-col gap-1 p-4">
+                            <div className="flex flex-col p-2">
                                 {isSalesPage ? (
-                                    <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2">Back to Main Site</Link>
+                                    <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2">Back to Main Site</Link>
                                 ) : (
-                                <>
-                                    <Link href="/packs" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
-                                        All Premium Packs
-                                    </Link>
-                                     <Link href="/checklists" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
-                                        All Individual Checklists
-                                    </Link>
-                                    <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
+                                <Accordion type="multiple" className="w-full">
+                                    <AccordionItem value="packs" className="border-b-0">
+                                        <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
+                                            Premium Packs
+                                        </AccordionTrigger>
+                                        <AccordionContent className="pb-2">
+                                            <div className="flex flex-col gap-1 border-l ml-4 pl-4">
+                                                {topPremiumPacks.map(pack => (
+                                                     <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
+                                                        {React.cloneElement(pack.icon, { className: "w-4 h-4 shrink-0" })}
+                                                        <span>{pack.title}</span>
+                                                    </Link>
+                                                ))}
+                                                <Link href="/packs" className="text-base font-semibold text-primary hover:text-primary/80 transition-colors py-1.5 px-2 rounded-md hover:bg-secondary">
+                                                    View All Packs &rarr;
+                                                </Link>
+                                            </div>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                     <AccordionItem value="checklists" className="border-b-0">
+                                        <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
+                                            Individual Checklists
+                                        </AccordionTrigger>
+                                        <AccordionContent className="pb-2">
+                                            <div className="flex flex-col gap-1 border-l ml-4 pl-4">
+                                                {topIndividualChecklists.map(checklist => (
+                                                     <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
+                                                         {React.cloneElement(checklist.icon, { className: "w-4 h-4 shrink-0" })}
+                                                         <span>{checklist.title}</span>
+                                                    </Link>
+                                                ))}
+                                                <Link href="/checklists" className="text-base font-semibold text-primary hover:text-primary/80 transition-colors py-1.5 px-2 rounded-md hover:bg-secondary">
+                                                    View All Checklists &rarr;
+                                                </Link>
+                                            </div>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                     <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 border-b" prefetch={false}>
                                         Blog
                                     </Link>
-                                    <Link href="/contact" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
+                                    <Link href="/contact" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2" prefetch={false}>
                                         Contact
                                     </Link>
-                                </>
+                                </Accordion>
                                 )}
                             </div>
                          </ScrollArea>

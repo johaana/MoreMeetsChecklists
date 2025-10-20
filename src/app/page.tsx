@@ -435,16 +435,16 @@ const WhyDetailMatters = () => {
                             In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
                         </p>
                     </div>
-                    <Accordion type="single" collapsible className="w-full">
+                     <Accordion type="single" collapsible className="w-full">
                         {points.map((point, index) => (
-                            <AccordionItem key={index} value={`item-${index}`}>
-                                <AccordionTrigger className="text-base font-semibold text-left">
+                             <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg mb-2 bg-background shadow-sm">
+                                <AccordionTrigger className="text-base font-semibold text-left p-4">
                                     <div className="flex items-center gap-3">
                                         <div className="shrink-0 text-primary">{React.cloneElement(point.icon, { className: "w-5 h-5" })}</div>
                                         {point.title}
                                     </div>
                                 </AccordionTrigger>
-                                <AccordionContent className="text-muted-foreground">
+                                <AccordionContent className="text-muted-foreground px-4">
                                     {point.description}
                                 </AccordionContent>
                             </AccordionItem>
@@ -510,7 +510,7 @@ export default function Home() {
                         <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                             The Professional Standard for Compliance & Operations Checklists.
                         </h1>
-                        <p className="max-w-[700px] text-white/90 text-base md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
+                         <p className="hidden md:block max-w-[700px] text-white/90 text-base md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
                             Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                         </p>
                     </div>
@@ -544,6 +544,9 @@ export default function Home() {
                  <div className="max-w-4xl mx-auto p-8 bg-secondary/30 rounded-2xl">
                     <p className="text-center text-base md:text-xl text-muted-foreground italic">
                         Running a business means you can't be everywhere at once. MoreMeets gives your team the expert-built, step-by-step instructions you need to ensure critical tasks are done right, every single time. We don't sell software; we sell the proven system for consistency and safety.
+                    </p>
+                     <p className="md:hidden text-center max-w-[700px] text-muted-foreground text-base md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
+                        Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                     </p>
                 </div>
             </div>
