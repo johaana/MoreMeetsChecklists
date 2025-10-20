@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -487,6 +487,49 @@ const WhyDetailMatters = () => {
     );
 };
 
+const ValuePropositionSection = () => {
+    const benefits = [
+        {
+            icon: <BadgePercent className="w-6 h-6" />,
+            title: "One-Time Purchase",
+            description: "No recurring subscriptions. Pay once and own it forever.",
+        },
+        {
+            icon: <History className="w-6 h-6" />,
+            title: "Lifetime Updates",
+            description: "Receive all future enhancements and additions to your pack, for free.",
+        },
+        {
+            icon: <Download className="w-6 h-6" />,
+            title: "Instant Download",
+            description: "Get immediate access to your fully editable Excel files after purchase.",
+        },
+        {
+            icon: <Globe className="w-6 h-6" />,
+            title: "Globally Compliant",
+            description: "Checklists are aligned with standards like ISO, JCI, HACCP, and more.",
+        }
+    ];
+
+    return (
+        <section className="w-full py-12 bg-background border-y">
+            <div className="container px-2 md:px-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    {benefits.map((benefit, index) => (
+                        <div key={index} className="flex flex-col items-center gap-2">
+                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                {benefit.icon}
+                            </div>
+                            <h3 className="text-sm md:text-base font-bold">{benefit.title}</h3>
+                            <p className="text-xs md:text-sm text-muted-foreground">{benefit.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 
 export default function Home() {
   const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
@@ -524,7 +567,7 @@ export default function Home() {
                         </Button>
                         <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                             <p className="text-xs text-white/80">
-                                One-Time Purchase • Lifetime Updates
+                                Standards compliant with ISO, JCI, HACCP, OSHA & more
                             </p>
                         </div>
                     </div>
@@ -539,6 +582,8 @@ export default function Home() {
                 </h2>
             </div>
         </section>
+
+        <ValuePropositionSection />
 
         <section className="w-full pb-16 pt-8">
             <div className="container px-2 md:px-6">
