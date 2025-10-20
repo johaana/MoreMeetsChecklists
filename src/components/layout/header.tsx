@@ -27,7 +27,7 @@ const allIndividualChecklists = individualChecklists;
 // Reusable component to render the list of solutions
 const SolutionsList = () => (
   <>
-    <div className="md:w-1/4 space-y-4 pr-6 border-r">
+    <div className="md:w-1/2 lg:w-1/3 space-y-4 pr-6 border-r">
       <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Premium Packs by Industry</h4>
       <div className="grid grid-cols-1 gap-y-2">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
@@ -48,9 +48,9 @@ const SolutionsList = () => (
       </div>
     </div>
 
-    <div className="md:w-3/4 pl-6">
+    <div className="md:w-1/2 lg:w-2/3 pl-6">
       <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Our Bestselling Individual Checklists</h4>
-      <ul className="space-y-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6">
+      <ul className="space-y-1 grid grid-cols-1 md:grid-cols-2 gap-x-6">
         {allIndividualChecklists.map(checklist => (
           <li key={checklist.id}>
             <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
@@ -136,11 +136,11 @@ export function SiteHeader() {
                                             </div>
                                         </ScrollArea>
                                         <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
-                                            <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
-                                                View All Bestselling Checklists &rarr;
-                                            </Link>
                                             <Link href="/packs" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
                                                 View All Premium Packs &rarr;
+                                            </Link>
+                                            <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
+                                                View All Bestselling Checklists &rarr;
                                             </Link>
                                         </div>
                                     </div>
