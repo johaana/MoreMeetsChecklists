@@ -36,7 +36,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
                 </div>
                 <div className='text-center md:text-left flex-1'>
                     <h3 className="text-2xl font-bold font-headline text-primary mb-1">Loved this checklist?</h3>
-                    <p className="text-muted-foreground">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong>!</p>
+                    <p className="text-muted-foreground text-sm md:text-base">Get this checklist plus <strong>{pack.checklists.length - 1} more</strong> in the full <strong>{pack.title}</strong>!</p>
                 </div>
                 <Button asChild size="lg" className="shrink-0 mt-4 md:mt-0">
                     <Link href={`/packs/${pack.id}`}>Explore The Full Pack</Link>
@@ -54,7 +54,7 @@ const UpsellBanner = ({ packId }: { packId: string }) => {
             </div>
             <div className='text-center md:text-left flex-1'>
                  <h3 className="text-2xl font-bold font-headline text-primary mb-1">Loved this checklist?</h3>
-                 <p className="text-muted-foreground">Get this checklist plus <strong>{pack.checklists.length -1} more</strong> in the full <strong>{pack.title}</strong> and <strong className="text-primary">save over {savingsPercentage}%</strong>!</p>
+                 <p className="text-muted-foreground text-sm md:text-base">Get this checklist plus <strong>{pack.checklists.length -1} more</strong> in the full <strong>{pack.title}</strong> and <strong className="text-primary">save over {savingsPercentage}%</strong>!</p>
             </div>
             <Button asChild size="lg" className="shrink-0 mt-4 md:mt-0">
                 <Link href={`/packs/${pack.id}`}>Explore The Full Pack</Link>
@@ -105,7 +105,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl font-headline">
                             {checklist.title}
                         </h1>
-                        <p className="text-muted-foreground md:text-lg">
+                        <p className="text-muted-foreground text-base md:text-lg">
                             {checklist.description}
                         </p>
                     </div>
@@ -118,7 +118,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                 <div className="space-y-8">
                      <div>
                         <h2 className="text-2xl font-bold font-headline text-primary mb-4 flex items-center gap-3">Why This Checklist is Essential</h2>
-                        <p className="text-muted-foreground">{checklist.longDescription}</p>
+                        <p className="text-muted-foreground text-sm md:text-base">{checklist.longDescription}</p>
                     </div>
 
                     <div>
@@ -131,7 +131,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                     </div>
                      <div>
                         <h2 className="text-2xl font-bold font-headline text-primary mb-4">Perfect For:</h2>
-                        <p className="text-muted-foreground">{checklist.whoIsItFor.join(' • ')}</p>
+                        <p className="text-muted-foreground text-sm md:text-base">{checklist.whoIsItFor.join(' • ')}</p>
                     </div>
                 </div>
                  <div ref={pricingSectionRef} className="sticky top-24">

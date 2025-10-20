@@ -12,7 +12,7 @@ export function Footer() {
                         <Logo className="h-6 w-6 text-primary" />
                         <span className="font-headline text-lg font-bold">MoreMeets</span>
                     </Link>
-                    <p className="text-sm text-muted-foreground max-w-xs">
+                    <p className="text-xs md:text-sm text-muted-foreground max-w-xs">
                         The Professional Standard for Compliance &amp; Operations Checklists.
                     </p>
                      <div className="flex flex-col items-center md:items-start gap-2 mt-4 text-sm">
@@ -26,14 +26,14 @@ export function Footer() {
                         </a>
                     </div>
                 </div>
-                <div className="flex flex-col gap-2 items-center text-sm">
+                <div className="flex flex-col gap-2 items-center text-xs md:text-sm">
                     <h3 className="font-semibold">Quick Links</h3>
                     <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>All Packages</Link>
                     <Link href="/checklists" className="text-muted-foreground hover:text-foreground" prefetch={false}>Bestselling Checklists</Link>
                     <Link href="/#faq" className="text-muted-foreground hover:text-foreground" prefetch={false}>FAQ</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                 </div>
-                <div className="flex flex-col gap-2 items-center md:items-end text-sm">
+                <div className="flex flex-col gap-2 items-center md:items-end text-xs md:text-sm">
                     <h3 className="font-semibold">Legal</h3>
                     <Link href="/terms" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Terms of Service

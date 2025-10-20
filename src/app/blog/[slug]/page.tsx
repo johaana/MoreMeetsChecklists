@@ -84,7 +84,7 @@ function RelatedProductCard({ post }: { post: BlogPost }) {
     return (
         <div className="mt-12 p-6 bg-secondary/50 rounded-2xl border-2 border-dashed border-primary/20 text-center">
             <h3 className="text-xl font-bold font-headline text-primary mb-2">Continue Your Journey to Excellence</h3>
-            <p className="text-muted-foreground mb-4">The concepts in this article are operationalized in the following toolkit:</p>
+            <p className="text-muted-foreground mb-4 text-sm md:text-base">The concepts in this article are operationalized in the following toolkit:</p>
             <p className="text-lg font-bold">{item.title}</p>
             <p className="text-sm text-muted-foreground mb-6">{itemType}</p>
             <Button asChild size="lg">
@@ -124,7 +124,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <h1 className="text-3xl md:text-5xl font-extrabold font-headline tracking-tight mb-4 text-primary">
                 {post.title}
               </h1>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-xs md:text-sm">
                 Published on {publishDate} by {post.author}
               </p>
             </header>

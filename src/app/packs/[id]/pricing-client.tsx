@@ -129,7 +129,7 @@ const ValueComparisonSection = ({ price }: { price: number }) => (
     <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
         <div className="text-center mb-8">
             <h3 className="font-headline text-2xl font-bold mb-2 text-primary">A Smarter Investment in Excellence</h3>
-            <p className="text-foreground/80 max-w-3xl mx-auto">
+            <p className="text-foreground/80 max-w-3xl mx-auto text-sm md:text-base">
                 You're not just buying a tool—you're buying the expert-researched system.
             </p>
         </div>
@@ -250,10 +250,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </Badge>
                 )}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
-                 {hasTieredEditions && <CardDescription>Aligned with domestic standards (e.g., BIS, NABH, NBC, FSSAI).</CardDescription>}
-                 {!hasTieredEditions && <CardDescription>The complete, expert-curated checklist pack.</CardDescription>}
+                 {hasTieredEditions && <CardDescription className="text-sm md:text-base">Aligned with domestic standards (e.g., BIS, NABH, NBC, FSSAI).</CardDescription>}
+                 {!hasTieredEditions && <CardDescription className="text-sm md:text-base">The complete, expert-curated checklist pack.</CardDescription>}
             </CardHeader>
-            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
@@ -284,10 +284,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         ₹{personalizedStrikethroughPrice}
                     </p>
                 </div>
-                {hasTieredEditions && <CardDescription>Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
-                 {!hasTieredEditions && <CardDescription>Get custom branding and a guided start.</CardDescription>}
+                {hasTieredEditions && <CardDescription className="text-sm md:text-base">Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
+                 {!hasTieredEditions && <CardDescription className="text-sm md:text-base">Get custom branding and a guided start.</CardDescription>}
             </CardHeader>
-            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
                 <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
@@ -342,7 +342,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </CardTitle>
                 <p className="text-4xl font-bold text-foreground">Custom</p>
             </CardHeader>
-            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
                 <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" />
                     <p className="font-semibold text-primary">Everything in Personalized, plus:</p>
@@ -370,9 +370,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Get Instant Access</CardTitle>
                 <p className="text-4xl font-bold text-foreground pt-2">₹{pack.priceINR}</p>
-                <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
+                <CardDescription className="text-sm md:text-base">One-time purchase. Lifetime updates.</CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 space-y-3 text-sm p-6 pt-0">
+            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
@@ -392,7 +392,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
-                    <p className="text-foreground/80 md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
+                    <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
 
                 <div className="hidden lg:block">
@@ -415,7 +415,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
-                    <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">This is a one-time payment. No subscriptions. No hidden fees. You get lifetime access to your checklist pack and all future updates, guaranteed.</p>
+                    <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8 text-sm md:text-base">This is a one-time payment. No subscriptions. No hidden fees. You get lifetime access to your checklist pack and all future updates, guaranteed.</p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                         <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background border">
                             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
@@ -458,7 +458,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <SheetContent side="bottom" className="rounded-t-2xl">
                         <SheetHeader className="text-left mb-4">
                             <SheetTitle className="font-headline text-2xl">Select Your Pack</SheetTitle>
-                            <CardDescription>Choose the edition that best fits your needs.</CardDescription>
+                            <CardDescription className="text-sm md:text-base">Choose the edition that best fits your needs.</CardDescription>
                         </SheetHeader>
                         <ScrollArea className="h-[60vh]">
                             <div className="p-1 pb-4">
@@ -472,5 +472,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
-
-    

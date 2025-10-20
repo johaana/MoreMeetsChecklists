@@ -39,7 +39,7 @@ export default function AllIndividualChecklistsPage() {
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         High-Impact Checklists for Critical Tasks
                     </h1>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         Solve a specific operational problem today. These are our most requested, powerful checklists, perfect for starting your journey towards operational excellence.
                     </p>
                 </div>
@@ -90,7 +90,7 @@ export default function AllIndividualChecklistsPage() {
 
                  <div className="max-w-4xl mx-auto mt-20 text-center bg-secondary/50 p-8 rounded-2xl border">
                     <h2 className="text-2xl font-bold font-headline text-primary mb-4">Looking for a Complete System?</h2>
-                    <p className="text-muted-foreground mb-6">
+                    <p className="text-muted-foreground mb-6 text-sm md:text-base">
                         While individual checklists solve specific problems, our full packs provide a comprehensive, integrated operational system for your entire department or business. Get dozens of checklists bundled together for maximum value.
                     </p>
                     <Button asChild size="lg">

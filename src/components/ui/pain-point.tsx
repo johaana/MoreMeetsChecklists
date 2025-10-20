@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 type PainPointProps = {
@@ -13,7 +14,7 @@ export const PainPoint = ({ icon, title, description }: PainPointProps) => (
     </div>
     <div>
       <h3 className="text-lg font-bold text-primary">{title}</h3>
-      <p className="text-muted-foreground mt-1">{description}</p>
+      <p className="text-muted-foreground mt-1 text-sm md:text-base">{description}</p>
     </div>
   </div>
 );

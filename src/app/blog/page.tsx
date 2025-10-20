@@ -25,7 +25,7 @@ export default function BlogListPage() {
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         MoreMeets Blog
                     </h1>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         Insights on operational excellence, compliance, and risk management.
                     </p>
                 </div>
@@ -46,7 +46,7 @@ export default function BlogListPage() {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="flex-1">
-                                <CardDescription>{post.description}</CardDescription>
+                                <CardDescription className="text-sm md:text-base">{post.description}</CardDescription>
                             </CardContent>
                             <CardFooter className="flex justify-between items-center">
                                 <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>

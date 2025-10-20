@@ -223,7 +223,7 @@ export default function MasterAccessClientPage() {
                             <ShieldCheck className="w-8 h-8 text-green-500" />
                             Internal Resource Portal
                         </h1>
-                        <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                             Download any premium pack for demonstration or customer support purposes.
                         </p>
                     </div>
@@ -235,7 +235,7 @@ export default function MasterAccessClientPage() {
                                     {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
                                     <div>
                                         <h3 className="font-semibold">{pack.title}</h3>
-                                        <p className="text-sm text-muted-foreground">{pack.category}</p>
+                                        <p className="text-xs md:text-sm text-muted-foreground">{pack.category}</p>
                                     </div>
                                 </div>
                                 <Button onClick={() => handleDownload(pack as PremiumPack)}>

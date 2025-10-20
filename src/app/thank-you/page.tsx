@@ -149,7 +149,7 @@ function ThankYouContent() {
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
             Verifying your payment...
           </h1>
-          <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed mx-auto">
+          <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
             Please wait while we confirm your transaction.
           </p>
         </div>
@@ -164,7 +164,7 @@ function ThankYouContent() {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Verification Failed
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed mx-auto">
+                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
                     There was an issue verifying your payment:
                 </p>
                 <p className="font-semibold text-destructive">{error}</p>
@@ -187,7 +187,7 @@ function ThankYouContent() {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Thank You! Your download has started.
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed mx-auto">
+                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
                     Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder. If the download doesn't start automatically, use the button below.
                 </p>
             </div>

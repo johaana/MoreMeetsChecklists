@@ -119,7 +119,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
                     <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
                         {pack.globalStandards.title}
                     </h2>
-                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
+                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
                         Our checklists are built upon globally recognized standards to ensure you're operating at a world-class level.
                     </p>
                 </div>
@@ -131,7 +131,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
                                 <CardTitle className="text-lg font-headline">{standard.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 mt-2 flex-1">
-                                <p className="text-sm text-muted-foreground">{standard.description}</p>
+                                <p className="text-xs md:text-sm text-muted-foreground">{standard.description}</p>
                             </CardContent>
                         </Card>
                     ))}
@@ -160,7 +160,7 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
                     <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary">
                         Just Need a Specific Solution?
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
                         This pack is the best value, but you can also start with one of our high-impact individual checklists.
                     </p>
                 </div>
@@ -241,12 +241,12 @@ export default function Page({ params }: { params: { id: string } }) {
                         <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                             {pack.title}
                         </h1>
-                        <p className="text-muted-foreground md:text-lg">
+                        <p className="text-muted-foreground text-base md:text-lg">
                             {pack.description}
                         </p>
                          <div className="mt-4 bg-background/50 border p-4 rounded-lg">
                             <h2 className="text-sm font-semibold text-primary mb-2">Perfect For:</h2>
-                            <p className="text-sm text-foreground/80">{audience.join(' • ')}</p>
+                            <p className="text-xs md:text-sm text-foreground/80">{audience.join(' • ')}</p>
                         </div>
                     </div>
                 </div>
@@ -261,7 +261,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
                         What's Included: A Complete Operational Toolkit
                     </h2>
-                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto mt-4">
+                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
                         This pack contains {pack.checklists.length} professional checklists, covering every aspect of your operation with over {totalTasks} detailed tasks.
                     </p>
                 </div>
@@ -275,14 +275,14 @@ export default function Page({ params }: { params: { id: string } }) {
                                 </div>
                                 <div>
                                     <CardTitle>{checklist.title}</CardTitle>
-                                    <CardDescription>
+                                    <CardDescription className="text-xs md:text-sm">
                                         <strong>Dept:</strong> {checklist.department} | <strong>Freq:</strong> {checklist.frequency}
                                     </CardDescription>
                                 </div>
                             </CardHeader>
                             <CardContent className="p-6 text-sm">
                                 <p className="text-muted-foreground">{checklist.summary}</p>
-                                <h3 className="font-semibold text-primary/80 mt-2">Contains {checklist.tasks.length} detailed tasks.</h3>
+                                <h3 className="font-semibold text-primary/80 mt-2 text-xs md:text-sm">Contains {checklist.tasks.length} detailed tasks.</h3>
                             </CardContent>
                         </Card>
                     ))}
@@ -302,5 +302,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-  

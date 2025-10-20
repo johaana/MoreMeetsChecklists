@@ -34,7 +34,7 @@ export default function ContactUsPage() {
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
                         Contact Us
                     </h1>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         We're here to help. Reach out to us with any questions or inquiries.
                     </p>
                 </div>
@@ -66,7 +66,7 @@ export default function ContactUsPage() {
                                     <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><MapPin className="w-8 h-8 text-primary"/> Office</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                     <p className="text-muted-foreground">Borivali East, Mumbai 400066</p>
+                                     <p className="text-muted-foreground text-sm md:text-base">Borivali East, Mumbai 400066</p>
                                 </CardContent>
                             </Card>
                         </div>
@@ -74,7 +74,7 @@ export default function ContactUsPage() {
                      <div className="space-y-8">
                          <div className="space-y-4 text-center">
                             <h2 className="text-2xl font-bold font-headline text-primary">Send a Message</h2>
-                             <p className="text-muted-foreground max-w-md mx-auto">For the fastest response, send your message on WhatsApp.</p>
+                             <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-base">For the fastest response, send your message on WhatsApp.</p>
                          </div>
                         <form className="max-w-xl mx-auto space-y-4" onSubmit={(e) => e.preventDefault()}>
                             <div className="space-y-2">

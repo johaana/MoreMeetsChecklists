@@ -30,7 +30,7 @@ const HowWeAreDifferentSection = () => (
                         We Don't Sell Software. We Sell The System.
                     </h2>
                 </div>
-                <div className="space-y-6 text-center text-muted-foreground md:text-lg">
+                <div className="space-y-6 text-center text-muted-foreground text-base md:text-lg">
                     <p>
                         Most SOP platforms sell software subscriptions that help you manage or automate SOPs—but <strong>they don’t actually provide the SOP checklists themselves.</strong> You still have to create the content on your own.
                     </p>
@@ -65,7 +65,7 @@ const GlobalStandardsSection = () => {
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         Audit-Ready. Globally Compliant. Operationally Excellent.
                     </h2>
-                    <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+                    <p className="mt-4 text-muted-foreground text-base md:text-xl/relaxed">
                         Our checklists are more than just best practices; they are frameworks built upon the globally recognized standards that govern your industry. This ensures you're not just organized, but compliant and operating at a world-class level.
                     </p>
                 </div>
@@ -73,7 +73,7 @@ const GlobalStandardsSection = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                         {standards.map(standard => (
                             <div key={standard.name} className="flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg border border-primary/10 text-center">
-                                <p className="font-bold text-base md:text-lg text-primary">{standard.name}</p>
+                                <p className="font-bold text-sm md:text-lg text-primary">{standard.name}</p>
                                 <p className="text-xs text-muted-foreground">{standard.description}</p>
                             </div>
                         ))}
@@ -92,7 +92,7 @@ const FaqSection = () => (
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Frequently Asked Questions
                 </h2>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                     Everything you need to know before you buy.
                 </p>
             </div>
@@ -210,7 +210,7 @@ function PackList({ packs, title, description }: { packs: PremiumPack[], title: 
                     </div>
                     <div className="flex-1">
                         <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                        <CardDescription className="mt-1 text-sm md:text-base">{pack.description}</CardDescription>
                     </div>
                 </div>
             </CardHeader>
@@ -242,7 +242,7 @@ function PackList({ packs, title, description }: { packs: PremiumPack[], title: 
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         {title}
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         {description}
                     </p>
                 </div>
@@ -316,7 +316,7 @@ const IndividualChecklistsSection = () => {
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         Solve a Specific Problem, Instantly
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         Not ready for a full pack? Start with one of our most popular, high-impact checklists. The perfect way to see the MoreMeets standard in action.
                     </p>
                 </div>
@@ -431,7 +431,7 @@ const WhyDetailMatters = () => {
                         <h2 className="text-3xl font-bold tracking-tighter font-headline">
                             Why Every Detail Matters
                         </h2>
-                        <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                        <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                             In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
                         </p>
                     </div>
@@ -510,7 +510,7 @@ export default function Home() {
                         <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                             The Professional Standard for Compliance & Operations Checklists.
                         </h1>
-                        <p className="max-w-[700px] text-white/90 md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
+                        <p className="max-w-[700px] text-white/90 text-base md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
                             Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
                         </p>
                     </div>
@@ -533,7 +533,7 @@ export default function Home() {
 
          <section className="w-full py-12 bg-background">
             <div className="container px-2 md:px-6 text-center">
-                 <h2 className="text-4xl font-bold tracking-tighter font-headline text-primary">
+                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
                     Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
                 </h2>
             </div>
@@ -542,7 +542,7 @@ export default function Home() {
         <section className="w-full pb-16 pt-8">
             <div className="container px-2 md:px-6">
                  <div className="max-w-4xl mx-auto p-8 bg-secondary/30 rounded-2xl">
-                    <p className="text-center text-lg md:text-xl text-muted-foreground italic">
+                    <p className="text-center text-base md:text-xl text-muted-foreground italic">
                         Running a business means you can't be everywhere at once. MoreMeets gives your team the expert-built, step-by-step instructions you need to ensure critical tasks are done right, every single time. We don't sell software; we sell the proven system for consistency and safety.
                     </p>
                 </div>
@@ -571,7 +571,7 @@ export default function Home() {
                      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         Loved by Professionals Worldwide
                     </h2>
-                     <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         Trusted by managers from world-leading organizations.
                     </p>
                 </div>
@@ -593,11 +593,11 @@ export default function Home() {
                                 )}
                              </div>
                             <CardContent className="p-0">
-                                <p className="text-muted-foreground italic">"{testimonial.quote}"</p>                            
+                                <p className="text-muted-foreground italic text-sm md:text-base">"{testimonial.quote}"</p>                            
                             </CardContent>
                              <CardFooter className="p-0 mt-4 flex-col">
                                  <p className="font-bold font-headline">{testimonial.name}</p>
-                                 <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                                 <p className="text-xs md:text-sm text-muted-foreground">{testimonial.title}</p>
                              </CardFooter>
                         </Card>
                     )})}
@@ -612,5 +612,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
