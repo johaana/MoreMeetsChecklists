@@ -278,11 +278,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
-            <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                    <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+            <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
+                <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
             </CardFooter>
         </Card>
 
@@ -345,11 +343,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </div>
                  </div>
             </CardContent>
-            <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                    <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+            <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
+                 <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
             </CardFooter>
         </Card>
 
@@ -397,11 +393,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
                 <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
             </CardContent>
-            <CardFooter className="p-6 mt-auto flex flex-col items-center">
-                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+            <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
+                <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
+                <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
             </CardFooter>
         </Card>
     );
@@ -468,14 +462,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                <tr className="bg-secondary/50">
                                    <td className="sticky left-0 p-4 font-semibold bg-background/95 backdrop-blur-sm"></td>
                                    <td className="p-4 text-center border-l">
-                                        <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-2 [&_.razorpay-payment-button]:px-4 [&_.razorpay-payment-button]:text-base [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                                           <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
-                                       </div>
+                                        <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
                                    </td>
                                    <td className="p-4 text-center border-l bg-accent/10">
-                                       <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-2 [&_.razorpay-payment-button]:px-4 [&_.razorpay-payment-button]:text-base [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                           <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
-                                       </div>
+                                       <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
                                    </td>
                                    <td className="p-4 text-center border-l">
                                        <Button asChild className="w-full">
