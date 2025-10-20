@@ -29,7 +29,7 @@ const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-D
 const packImageMap: Record<string, string> = {
   'film_production_pack': 'https://i.postimg.cc/zvqmVdT5/movie-production-1.jpg',
   'ott_platform_pack': 'https://i.postimg.cc/90c3rxyh/ott-platforms.webp',
-  'sports_clubs_facilities_pack': 'https://i.postimg.cc/WpYSfqRk/sports-club-management.jpg',
+  'sports_clubs_stadium_operations_pack': 'https://i.postimg.cc/WpYSfqRk/sports-club-management.jpg',
   'fitness_centers_gyms_pack': 'https://i.postimg.cc/mDyrvM7x/gym-2.jpg',
   'cinema_operations_pack': 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
   'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
@@ -46,6 +46,10 @@ const packImageMap: Record<string, string> = {
   'manufacturing_operations_ehs_pack': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
   'food_manufacturing_ops': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
   'supermarket_grocery_retail_pack': 'https://i.postimg.cc/L63xxv8M/supermarket-main.webp',
+  'electronics_showroom_pack': 'https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg',
+  'theme_park_ops_pack': 'https://i.postimg.cc/0j9gbt7Q/sports-stadium.webp',
+  'corporate_legal_compliance_starter_kit': 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg',
+  'enterprise_risk_cybersecurity_pack': 'https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp'
 };
 
 
@@ -234,8 +238,8 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="container px-2 md:px-6">
                 <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
                      <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
-                        <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
-                           {React.cloneElement(pack.icon, { className: "w-8 h-8 md:w-12 md:h-12 text-primary" })}
+                        <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
+                           {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
                        </div>
                      </div>
                     <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-2">
