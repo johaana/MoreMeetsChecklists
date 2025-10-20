@@ -28,22 +28,8 @@ const allIndividualChecklists = individualChecklists;
 const SolutionsList = () => (
   <>
     <div className="md:w-1/4 space-y-4 pr-6 border-r">
-      <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Our Bestselling Individual Checklists</h4>
-      <ul className="space-y-1">
-        {allIndividualChecklists.map(checklist => (
-          <li key={checklist.id}>
-            <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
-              <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-              <span className="flex-1 leading-snug">{checklist.title}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <div className="md:w-3/4 pl-6">
       <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Premium Packs by Industry</h4>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
+      <div className="grid grid-cols-1 gap-y-2">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
           <div key={category}>
             <h5 className="font-semibold text-sm text-primary/80 mb-1 px-2">{category}</h5>
@@ -61,6 +47,20 @@ const SolutionsList = () => (
         ))}
       </div>
     </div>
+
+    <div className="md:w-3/4 pl-6">
+      <h4 className="font-semibold text-sm text-muted-foreground px-2 mb-2">Our Bestselling Individual Checklists</h4>
+      <ul className="space-y-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6">
+        {allIndividualChecklists.map(checklist => (
+          <li key={checklist.id}>
+            <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary">
+              <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+              <span className="flex-1 leading-snug">{checklist.title}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   </>
 );
 
@@ -73,17 +73,6 @@ const MobileSolutionsList = () => (
             </AccordionTrigger>
             <AccordionContent className="pt-2 pl-4 border-l">
                 <div className="space-y-4">
-                     <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Bestselling Checklists</h4>
-                        <div className="flex flex-col gap-1">
-                            {allIndividualChecklists.map(checklist => (
-                                <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-r-md hover:bg-secondary">
-                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                                    <span className="flex-1 leading-snug">{checklist.title}</span>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
                      <div className="space-y-3">
                         <h4 className="font-semibold text-sm text-muted-foreground mb-2">Premium Packs by Industry</h4>
                         <div className="flex flex-col gap-3">
@@ -99,6 +88,17 @@ const MobileSolutionsList = () => (
                                         ))}
                                     </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Bestselling Checklists</h4>
+                        <div className="flex flex-col gap-1">
+                            {allIndividualChecklists.map(checklist => (
+                                <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-r-md hover:bg-secondary">
+                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
+                                    <span className="flex-1 leading-snug">{checklist.title}</span>
+                                </Link>
                             ))}
                         </div>
                     </div>

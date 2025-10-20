@@ -17,6 +17,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
 type Props = {
@@ -266,26 +267,34 @@ export default function Page({ params }: { params: { id: string } }) {
                     </p>
                 </div>
 
-                <div className="space-y-8 max-w-4xl mx-auto">
-                    {pack.checklists.map((checklist, index) => (
-                        <Card key={index} className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
-                           <CardHeader className="flex flex-row items-center gap-4 bg-muted/30 p-4">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                                   {React.cloneElement(checklist.icon, { className: "w-6 h-6 text-primary" })}
-                                </div>
-                                <div>
-                                    <CardTitle>{checklist.title}</CardTitle>
-                                    <CardDescription className="text-xs md:text-sm">
-                                        <strong>Dept:</strong> {checklist.department} | <strong>Freq:</strong> {checklist.frequency}
-                                    </CardDescription>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="p-6 text-sm">
-                                <p className="text-muted-foreground">{checklist.summary}</p>
-                                <h3 className="font-semibold text-primary/80 mt-2 text-xs md:text-sm">Contains {checklist.tasks.length} detailed tasks.</h3>
-                            </CardContent>
-                        </Card>
-                    ))}
+                <div className="space-y-4 max-w-4xl mx-auto">
+                     <Accordion type="multiple" className="w-full space-y-4">
+                        {pack.checklists.map((checklist, index) => (
+                            <AccordionItem key={index} value={`item-${index}`} className="border-b-0">
+                                <Card className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+                                    <AccordionTrigger className="w-full hover:no-underline">
+                                        <CardHeader className="flex flex-row items-center gap-4 bg-muted/30 p-4 text-left w-full">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0">
+                                                {React.cloneElement(checklist.icon, { className: "w-6 h-6 text-primary" })}
+                                            </div>
+                                            <div>
+                                                <CardTitle>{checklist.title}</CardTitle>
+                                                <CardDescription className="text-xs md:text-sm">
+                                                    <strong>Dept:</strong> {checklist.department} | <strong>Freq:</strong> {checklist.frequency}
+                                                </CardDescription>
+                                            </div>
+                                        </CardHeader>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <CardContent className="p-6 text-sm">
+                                            <p className="text-muted-foreground">{checklist.summary}</p>
+                                            <h3 className="font-semibold text-primary/80 mt-2 text-xs md:text-sm">Contains {checklist.tasks.length} detailed tasks.</h3>
+                                        </CardContent>
+                                    </AccordionContent>
+                                </Card>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
         </section>
