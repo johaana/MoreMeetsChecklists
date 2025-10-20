@@ -94,11 +94,11 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-2 md:px-6">
                  <div className="max-w-4xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                         {content.title}
                     </h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
                         <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
                     ))}
@@ -117,22 +117,22 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
         <section className="w-full py-12 md:py-16">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline">
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline">
                         {pack.globalStandards.title}
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
                         Our checklists are built upon globally recognized standards to ensure you're operating at a world-class level.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
                     {pack.globalStandards.standards.map((standard, index) => (
-                        <Card key={index} className="flex flex-col text-center p-6">
+                        <Card key={index} className="flex flex-col text-center p-4 md:p-6">
                             <CardHeader className="p-0">
-                                <CheckCircle className="w-10 h-10 text-accent mx-auto mb-3" />
-                                <CardTitle className="text-lg font-headline">{standard.name}</CardTitle>
+                                <CheckCircle className="w-8 h-8 md:w-10 md:h-10 text-accent mx-auto mb-2" />
+                                <CardTitle className="text-sm md:text-lg font-headline">{standard.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 mt-2 flex-1">
-                                <p className="text-xs md:text-sm text-muted-foreground">{standard.description}</p>
+                                <p className="text-xs text-muted-foreground">{standard.description}</p>
                             </CardContent>
                         </Card>
                     ))}
@@ -158,7 +158,7 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
         <section className="w-full py-12 md:py-16">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary">
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-primary">
                         Just Need a Specific Solution?
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
@@ -232,14 +232,14 @@ export default function Page({ params }: { params: { id: string } }) {
       <main className="flex-1">
         <section className="w-full bg-secondary/30 py-12 md:py-16">
             <div className="container px-2 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] items-start gap-6 md:gap-x-8 max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
                      <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
-                        <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
-                           {React.cloneElement(pack.icon, { className: "w-10 h-10 md:w-14 md:h-14 text-primary" })}
+                        <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
+                           {React.cloneElement(pack.icon, { className: "w-10 h-10 md:w-12 md:h-12 text-primary" })}
                        </div>
                      </div>
                     <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-2">
-                        <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter font-headline">
                             {pack.title}
                         </h1>
                         <p className="text-muted-foreground text-base md:text-lg">
@@ -259,7 +259,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <section id="checklists" className="w-full py-12 md:py-16">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                         What's Included: A Complete Operational Toolkit
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
@@ -274,11 +274,11 @@ export default function Page({ params }: { params: { id: string } }) {
                                 <Card className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
                                     <AccordionTrigger className="w-full hover:no-underline">
                                         <CardHeader className="flex flex-row items-center gap-4 bg-muted/30 p-4 text-left w-full">
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                                                {React.cloneElement(checklist.icon, { className: "w-6 h-6 text-primary" })}
+                                            <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0">
+                                                {React.cloneElement(checklist.icon, { className: "w-5 h-5 md:w-6 md:h-6 text-primary" })}
                                             </div>
                                             <div>
-                                                <CardTitle>{checklist.title}</CardTitle>
+                                                <CardTitle className='text-base md:text-lg'>{checklist.title}</CardTitle>
                                                 <CardDescription className="text-xs md:text-sm">
                                                     <strong>Dept:</strong> {checklist.department} | <strong>Freq:</strong> {checklist.frequency}
                                                 </CardDescription>

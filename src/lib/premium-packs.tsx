@@ -731,6 +731,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'JLR-SEC-03', description: 'Conduct a full inventory count of all display cases at opening and closing.', priority: 'High', riskLevel: 'High', proof: 'Display Inventory Sheet', location: 'Sales Floor' },
                     { id: 'JLR-SEC-04', description: 'Verify all CCTV cameras are recording and have unobstructed views.', priority: 'High', riskLevel: 'High', proof: 'CCTV Check Log', location: 'Security Room' },
                     { id: 'JLR-SEC-05', description: 'Test silent panic alarms daily before opening.', priority: 'High', riskLevel: 'High', proof: 'Panic Alarm Test Log', location: 'Security Office' },
+                    { id: 'JLR-SEC-06', description: 'Check entry/exit logs from previous day.', priority: 'Medium', riskLevel: 'Medium', proof: 'Log Review', location: 'Security Office' },
+                    { id: 'JLR-SEC-07', description: 'Confirm all display cases are locked and secure.', priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation', location: 'Sales Floor' },
+                    { id: 'JLR-SEC-08', description: 'Ensure all staff have their IDs visible.', priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'JLR-SEC-09', description: 'Verify alarm system communication with monitoring center.', priority: 'High', riskLevel: 'High', proof: 'System Test', location: 'Security Office' },
+                    { id: 'JLR-SEC-10', description: 'Document any security anomalies from the previous night.', priority: 'High', riskLevel: 'Medium', proof: 'Incident Report', location: 'Security Office' },
                 ]
             },
             {
@@ -746,6 +751,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'JLR-SALE-03', description: "Use counterfeit detection pens/machines for all large cash transactions.", priority: 'High', riskLevel: 'High', proof: 'Counterfeit Check Log', location: 'POS' },
                     { id: 'JLR-SALE-04', description: "Follow specific protocols for verifying digital payments and flagging potential fraud.", priority: 'High', riskLevel: 'High', proof: 'Payment Verification Checklist', location: 'POS' },
                     { id: 'JLR-SALE-05', description: 'Log details of any suspicious transaction attempts.', priority: 'High', riskLevel: 'High', proof: 'Suspicious Activity Report', location: 'Office' },
+                    { id: 'JLR-SALE-06', description: 'Confirm customer contact information for high-value sales.', priority: 'Medium', riskLevel: 'Medium', proof: 'CRM Entry', location: 'POS' },
+                    { id: 'JLR-SALE-07', description: 'For international cards, call for authorization.', priority: 'High', riskLevel: 'High', proof: 'Call Log', location: 'POS' },
+                    { id: 'JLR-SALE-08', description: 'Ensure proper documentation for tax-free sales.', priority: 'High', riskLevel: 'Medium', proof: 'Tax Form', location: 'POS' },
+                    { id: 'JLR-SALE-09', description: 'Double-check packaging and boxing in front of customer.', priority: 'High', riskLevel: 'Low', proof: 'Visual Confirmation', location: 'POS' },
+                    { id: 'JLR-SALE-10', description: 'Provide customer with all necessary certificates and warranty cards.', priority: 'High', riskLevel: 'Low', proof: 'Document Handover', location: 'POS' },
                 ]
             },
             {
@@ -761,6 +771,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'JLR-INV-03', description: "Maintain a detailed chain-of-custody log for items sent out for repair or certification.", priority: 'High', riskLevel: 'High', proof: 'Chain of Custody Form', location: 'Office' },
                     { id: 'JLR-INV-04', description: 'Conduct weekly audits of serialized inventory against system records.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'System' },
                     { id: 'JLR-INV-05', description: 'Match serial number at point of sale to prevent swapping.', priority: 'High', riskLevel: 'High', proof: 'POS Scan Log', location: 'POS' },
+                    { id: 'JLR-INV-06', description: 'Photograph each serialized item upon receipt.', priority: 'High', riskLevel: 'Medium', proof: 'Photo Log', location: 'Receiving' },
+                    { id: 'JLR-INV-07', description: 'Update inventory system immediately upon sale.', priority: 'High', riskLevel: 'High', proof: 'System Entry', location: 'POS' },
+                    { id: 'JLR-INV-08', description: 'Report any serial number discrepancies immediately.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Office' },
+                    { id: 'JLR-INV-09', description: 'Verify serial number matches on box, certificate, and item.', priority: 'High', riskLevel: 'High', proof: 'Triple Check Log', location: 'Receiving/POS' },
+                    { id: 'JLR-INV-10', description: 'Securely destroy old serial number records after statutory period.', priority: 'Medium', riskLevel: 'Low', proof: 'Destruction Log', location: 'Office' },
                 ]
             },
             {
@@ -776,6 +791,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'JLR-DISP-03', description: 'Test motion sensors and panic buttons weekly.', priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Store-wide' },
                     { id: 'JLR-DISP-04', description: 'Ensure all keys are accounted for and stored securely.', priority: 'High', riskLevel: 'High', proof: 'Key Log', location: 'Safe' },
                     { id: 'JLR-DISP-05', description: 'Audit display lighting to ensure all items are well-illuminated.', priority: 'Medium', riskLevel: 'Low', proof: 'Lighting Check', location: 'Sales Floor' },
+                    { id: 'JLR-DISP-06', description: 'Ensure display case glass is clean and free of cracks.', priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'JLR-DISP-07', description: 'Check for any signs of tampering with display cases.', priority: 'High', riskLevel: 'High', proof: 'Tamper Check Log', location: 'Sales Floor' },
+                    { id: 'JLR-DISP-08', description: 'Verify that vault combination is changed periodically.', priority: 'High', riskLevel: 'High', proof: 'Combination Change Log', location: 'Security Office' },
+                    { id: 'JLR-DISP-09', description: 'Ensure vault is clean and organized.', priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Vault' },
+                    { id: 'JLR-DISP-10', description: 'Review vault access logs for any unauthorized entries.', priority: 'High', riskLevel: 'High', proof: 'Log Review', location: 'Security Office' },
                 ]
             },
             {
@@ -791,6 +811,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'JA-AUDIT-03', description: 'Conduct counts in teams of two for high-value areas.', priority: 'High', riskLevel: 'High', proof: 'Count Team Roster', location: 'Office' },
                     { id: 'JA-AUDIT-04', description: 'Secure the area being audited to prevent stock movement.', priority: 'High', riskLevel: 'Medium', proof: 'Audit Procedure', location: 'Audit Area' },
                     { id: 'JA-AUDIT-05', description: 'Reconcile physical counts with system inventory and report to management.', priority: 'High', riskLevel: 'High', proof: 'Final Audit Report', location: 'Office' },
+                    { id: 'JA-AUDIT-06', description: 'Use barcode scanners for accuracy during counts.', priority: 'High', riskLevel: 'High', proof: 'Scan Logs', location: 'System' },
+                    { id: 'JA-AUDIT-07', description: 'Freeze system inventory during full stock takes.', priority: 'High', riskLevel: 'High', proof: 'System Setting', location: 'System' },
+                    { id: 'JA-AUDIT-08', description: 'Document reasons for all inventory adjustments.', priority: 'High', riskLevel: 'High', proof: 'Adjustment Notes', location: 'System' },
+                    { id: 'JA-AUDIT-09', description: 'Rotate audit locations and categories regularly.', priority: 'Medium', riskLevel: 'Medium', proof: 'Audit Schedule', location: 'Office' },
+                    { id: 'JA-AUDIT-10', description: 'Manager to sign off on all final audit reports.', priority: 'High', riskLevel: 'High', proof: 'Signed Report', location: 'Office' },
                 ]
             },
             {
@@ -806,6 +831,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CV-03', description: 'For large transactions, perform a quick online search to verify customer profile.', priority: 'Medium', riskLevel: 'Medium', proof: 'Search Log', location: 'POS' },
                     { id: 'CV-04', description: 'Document all verification steps in the customer\'s transaction record.', priority: 'High', riskLevel: 'High', proof: 'Transaction Notes', location: 'CRM/POS' },
                     { id: 'CV-05', description: 'Flag any suspicious behavior for a manager\'s review before proceeding.', priority: 'High', riskLevel: 'High', proof: 'Manager Alert', location: 'POS' },
+                    { id: 'CV-06', description: 'Follow AML (Anti-Money Laundering) guidelines for large cash transactions.', priority: 'High', riskLevel: 'High', proof: 'AML Form', location: 'POS' },
+                    { id: 'CV-07', description: 'Record customer details accurately for future communication.', priority: 'High', riskLevel: 'Medium', proof: 'CRM Entry', location: 'POS' },
+                    { id: 'CV-08', description: 'Check against any internal watchlists for known fraudsters.', priority: 'High', riskLevel: 'High', proof: 'Watchlist Check', location: 'System' },
+                    { id: 'CV-09', description: 'For corporate purchases, verify business registration details.', priority: 'High', riskLevel: 'High', proof: 'Business Document Copy', location: 'POS' },
+                    { id: 'CV-10', description: 'Retain verification documents securely and in compliance with privacy laws.', priority: 'High', riskLevel: 'High', proof: 'Secure Storage Log', location: 'Office' },
                 ]
             },
             {
@@ -821,6 +851,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RSM-03', description: 'Obtain written customer approval before proceeding with any work.', priority: 'High', riskLevel: 'High', proof: 'Signed Approval', location: 'System' },
                     { id: 'RSM-04', description: 'Store all customer items in a dedicated, secure, and insured location.', priority: 'High', riskLevel: 'High', proof: 'Storage Log', location: 'Safe' },
                     { id: 'RSM-05', description: 'Verify customer identity upon collection of the serviced item.', priority: 'High', riskLevel: 'High', proof: 'ID Check Log', location: 'Service Desk' },
+                    { id: 'RSM-06', description: 'Track repair status and provide updates to the customer.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'CRM' },
+                    { id: 'RSM-07', description: 'Inspect the item after repair to ensure quality.', priority: 'High', riskLevel: 'High', proof: 'QC Check', location: 'Service Desk' },
+                    { id: 'RSM-08', description: 'Securely package the item for return to the customer.', priority: 'High', riskLevel: 'Low', proof: 'Packaging Check', location: 'Service Desk' },
+                    { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', proof: 'Invoice', location: 'POS' },
+                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', proof: 'Repair History', location: 'System' },
                 ]
             },
             {
@@ -836,6 +871,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'STSP-03', description: 'Drill staff on the correct procedure for showing high-value items to customers.', priority: 'High', riskLevel: 'High', proof: 'Drill Log', location: 'Sales Floor' },
                     { id: 'STSP-04', description: 'Review recent security incidents or attempts with the team.', priority: 'Medium', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Office' },
                     { id: 'STSP-05', description: 'Test staff knowledge with quizzes on security protocols.', priority: 'Medium', riskLevel: 'Medium', proof: 'Quiz Results', location: 'System' },
+                    { id: 'STSP-06', description: 'Train staff on the use of panic buttons.', priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Training Room' },
+                    { id: 'STSP-07', description: 'Role-play different security scenarios with staff.', priority: 'High', riskLevel: 'High', proof: 'Role-play Log', location: 'Training Room' },
+                    { id: 'STSP-08', description: 'Ensure all staff know the emergency contact numbers.', priority: 'High', riskLevel: 'High', proof: 'Contact List Check', location: 'Sales Floor' },
+                    { id: 'STSP-09', description: 'Provide training on handling difficult customers.', priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Training Room' },
+                    { id: 'STSP-10', description: 'Update training materials based on new threats or incidents.', priority: 'High', riskLevel: 'Medium', proof: 'Updated Materials', location: 'Office' },
                 ]
             },
             {
@@ -851,6 +891,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'IC-03', description: 'Maintain all necessary documentation for potential police or tax audits.', priority: 'High', riskLevel: 'High', proof: 'Audit File', location: 'Office' },
                     { id: 'IC-04', description: 'Ensure BIS hallmarking compliance for all relevant jewelry.', priority: 'High', riskLevel: 'High', proof: 'Hallmarking Records', location: 'Inventory' },
                     { id: 'IC-05', description: 'Track and comply with any changes in import/export regulations.', priority: 'High', riskLevel: 'High', proof: 'Regulatory Update Log', location: 'Office' },
+                    { id: 'IC-06', description: 'Ensure compliance with anti-money laundering (AML) regulations.', priority: 'High', riskLevel: 'High', proof: 'AML Policy Review', location: 'Legal Office' },
+                    { id: 'IC-07', description: 'Review data privacy policies for customer data.', priority: 'High', riskLevel: 'High', proof: 'Privacy Policy Review', location: 'Legal Office' },
+                    { id: 'IC-08', description: 'Verify compliance with labor laws for all staff.', priority: 'High', riskLevel: 'High', proof: 'Labor Law Audit', location: 'HR Office' },
+                    { id: 'IC-09', description: 'Maintain records of all compliance-related training.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR Office' },
+                    { id: 'IC-10', description: 'Conduct an annual compliance risk assessment.', priority: 'High', riskLevel: 'High', proof: 'Risk Assessment Report', location: 'Compliance Office' },
                 ]
             }
         ]
@@ -895,6 +940,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'DEMO-03', description: 'Verify all wiring is neatly concealed to prevent trip hazards.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'DEMO-04', description: 'Check that all demo devices have the latest firmware and demo content loaded.', priority: 'High', riskLevel: 'Low', proof: 'Firmware Version Check', location: 'Sales Floor' },
                     { id: 'DEMO-05', description: 'Ensure all security straps and covers for demo units are intact.', priority: 'High', riskLevel: 'High', proof: 'Security Device Log', location: 'Sales Floor' },
+                    { id: 'DEMO-06', description: 'Clean screens and surfaces of all demo units.', priority: 'Medium', riskLevel: 'Low', proof: 'Cleaning Log', location: 'Sales Floor' },
+                    { id: 'DEMO-07', description: 'Verify all demo units are powered on and functional.', priority: 'High', riskLevel: 'Medium', proof: 'Functionality Check', location: 'Sales Floor' },
+                    { id: 'DEMO-08', description: 'Check for any signs of overheating on charging stations.', priority: 'High', riskLevel: 'High', proof: 'Thermal Check', location: 'Sales Floor' },
+                    { id: 'DEMO-09', description: 'Ensure all pricing and feature labels are correct and visible.', priority: 'High', riskLevel: 'Low', proof: 'Label Audit', location: 'Sales Floor' },
+                    { id: 'DEMO-10', description: 'Report any faulty demo units for immediate replacement.', priority: 'High', riskLevel: 'Medium', proof: 'Fault Report', location: 'System' },
                 ]
             },
             {
@@ -910,6 +960,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ELEC-03', description: 'Maintain records of all electrical grounding tests and certifications.', priority: 'High', riskLevel: 'High', proof: 'Grounding Test Records', location: 'Office' },
                     { id: 'ELEC-04', description: 'Check load on all circuits to prevent overloading.', priority: 'High', riskLevel: 'High', proof: 'Load Test Report', location: 'Electrical Panels' },
                     { id: 'ELEC-05', description: 'Ensure fire extinguishers are suitable for electrical fires (Class C).', priority: 'High', riskLevel: 'High', proof: 'Extinguisher Inspection Log', location: 'Store-wide' },
+                    { id: 'ELEC-06', description: 'Inspect all extension cords and power strips for damage.', priority: 'High', riskLevel: 'High', proof: 'Cord Inspection Log', location: 'Store-wide' },
+                    { id: 'ELEC-07', description: 'Ensure all electrical panels are accessible and not blocked.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Electrical Rooms' },
+                    { id: 'ELEC-08', description: 'Train staff on basic electrical safety and how to report issues.', priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
+                    { id: 'ELEC-09', description: 'Use only certified electricians for any repair work.', priority: 'High', riskLevel: 'High', proof: 'Vendor Certification', location: 'Office' },
+                    { id: 'ELEC-10', description: 'Conduct an annual thermal imaging audit of electrical panels.', priority: 'High', riskLevel: 'High', proof: 'Thermal Imaging Report', location: 'Office' },
                 ]
             },
             {
@@ -925,6 +980,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ASSET-03', description: 'Perform daily high-value item inventory verification.', priority: 'High', riskLevel: 'High', proof: 'High-Value Count Sheet', location: 'Store-wide' },
                     { id: 'ASSET-04', description: 'Implement an immediate escalation process for any missing items.', priority: 'High', riskLevel: 'High', proof: 'Escalation SOP', location: 'Office' },
                     { id: 'ASSET-05', description: 'Reconcile physical inventory with system records monthly.', priority: 'High', riskLevel: 'High', proof: 'Monthly Stock Take Report', location: 'Office' },
+                    { id: 'ASSET-06', description: 'Use barcode scanners for accurate inventory counts.', priority: 'High', riskLevel: 'High', proof: 'Scan Logs', location: 'System' },
+                    { id: 'ASSET-07', description: 'Secure the stockroom with restricted access.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Stockroom' },
+                    { id: 'ASSET-08', description: 'Track items sent for repair or to other locations.', priority: 'High', riskLevel: 'High', proof: 'Movement Log', location: 'System' },
+                    { id: 'ASSET-09', description: 'Investigate root causes of inventory discrepancies.', priority: 'High', riskLevel: 'High', proof: 'Investigation Report', location: 'Office' },
+                    { id: 'ASSET-10', description: 'Manager to sign off on all inventory adjustments.', priority: 'High', riskLevel: 'High', proof: 'Signed Adjustment Form', location: 'System' },
                 ]
             },
             {
@@ -940,6 +1000,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'POS-RECON-03', description: 'Ensure CCTV covers all billing areas clearly.', priority: 'High', riskLevel: 'High', proof: 'CCTV View Audit', location: 'Security Office' },
                     { id: 'POS-RECON-04', description: 'Require dual approval from a manager for all refunds.', priority: 'High', riskLevel: 'High', proof: 'Refund Approval Log', location: 'POS' },
                     { id: 'POS-RECON-05', description: 'Securely store and transport daily cash deposits.', priority: 'High', riskLevel: 'High', proof: 'Cash Deposit Log', location: 'Cash Office' },
+                    { id: 'POS-RECON-06', description: 'Reconcile gift card and voucher sales.', priority: 'High', riskLevel: 'Medium', proof: 'Voucher Log', location: 'System' },
+                    { id: 'POS-RECON-07', description: 'Verify cashier logins and logouts for each shift.', priority: 'High', riskLevel: 'Medium', proof: 'Shift Log', location: 'System' },
+                    { id: 'POS-RECON-08', description: 'Report any cash discrepancies immediately.', priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Office' },
+                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', proof: 'PCI Compliance Audit', location: 'Office' },
+                    { id: 'POS-RECON-10', description: 'Use counterfeit detection on all cash transactions.', priority: 'High', riskLevel: 'High', proof: 'Counterfeit Check', location: 'POS' },
                 ]
             },
             {
@@ -955,6 +1020,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'EWaste-03', description: 'Maintain a detailed log of all e-waste disposals.', priority: 'High', riskLevel: 'High', proof: 'Disposal Log', location: 'Office' },
                     { id: 'EWaste-04', description: 'Obtain and file disposal/destruction certificates from the vendor.', priority: 'High', riskLevel: 'High', proof: 'Disposal Certificates', location: 'Office' },
                     { id: 'EWaste-05', description: 'Train staff on identifying and segregating e-waste correctly.', priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
+                    { id: 'EWaste-06', description: 'Securely wipe data from all devices before disposal.', priority: 'High', riskLevel: 'High', proof: 'Data Wipe Log', location: 'IT Office' },
+                    { id: 'EWaste-07', description: 'Store e-waste in a secure, designated area.', priority: 'High', riskLevel: 'Medium', proof: 'Storage Area Check', location: 'Stockroom' },
+                    { id: 'EWaste-08', description: 'Follow all local environmental regulations for e-waste.', priority: 'High', riskLevel: 'High', proof: 'Regulatory Checklist', location: 'Office' },
+                    { id: 'EWaste-09', description: 'Schedule regular pickups with the e-waste vendor.', priority: 'High', riskLevel: 'Medium', proof: 'Pickup Schedule', location: 'Office' },
+                    { id: 'EWaste-10', description: 'Audit the e-waste process annually for compliance.', priority: 'High', riskLevel: 'High', proof: 'Annual Audit Report', location: 'Office' },
                 ]
             },
             {
@@ -970,6 +1040,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'WRM-03', description: 'Process warranty claims with manufacturers according to their policies.', priority: 'High', riskLevel: 'High', proof: 'Warranty Claim Forms', location: 'Office' },
                     { id: 'WRM-04', description: 'Communicate repair status updates to customers.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'CRM' },
                     { id: 'WRM-05', description: 'Inspect repaired items before returning them to the customer.', priority: 'High', riskLevel: 'High', proof: 'Final Inspection Checklist', location: 'Service Desk' },
+                    { id: 'WRM-06', description: 'Obtain customer sign-off upon collection of repaired item.', priority: 'High', riskLevel: 'Medium', proof: 'Collection Form', location: 'Service Desk' },
+                    { id: 'WRM-07', description: 'Manage inventory of spare parts for common repairs.', priority: 'High', riskLevel: 'Medium', proof: 'Spare Parts Inventory', location: 'Stockroom' },
+                    { id: 'WRM-08', description: 'Provide customer with a clear timeline for repairs.', priority: 'High', riskLevel: 'Low', proof: 'Repair Estimate Form', location: 'Service Desk' },
+                    { id: 'WRM-09', description: 'Handle repair payments and invoicing.', priority: 'High', riskLevel: 'Medium', proof: 'Invoice', location: 'POS' },
+                    { id: 'WRM-10', description: 'Log all repair details for warranty and history purposes.', priority: 'High', riskLevel: 'Medium', proof: 'Service History', location: 'System' },
                 ]
             },
             {
@@ -985,6 +1060,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SO-03', description: 'Check for any damaged or open boxes and report them.', priority: 'High', riskLevel: 'High', proof: 'Damage Report', location: 'Stockroom' },
                     { id: 'SO-04', description: 'Implement FIFO (First-In, First-Out) stock rotation.', priority: 'High', riskLevel: 'Medium', proof: 'Stock Rotation Audit', location: 'Stockroom' },
                     { id: 'SO-05', description: 'Ensure the stockroom is locked and access is restricted.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Stockroom' },
+                    { id: 'SO-06', description: 'Maintain a clean and dust-free environment.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Stockroom' },
+                    { id: 'SO-07', description: 'Check for any pest activity.', priority: 'High', riskLevel: 'High', proof: 'Pest Control Log', location: 'Stockroom' },
+                    { id: 'SO-08', description: 'Ensure proper lighting in all areas of the stockroom.', priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Stockroom' },
+                    { id: 'SO-09', description: 'Organize items by brand, category, or SKU for easy picking.', priority: 'High', riskLevel: 'Medium', proof: 'Organization Plan', location: 'Stockroom' },
+                    { id: 'SO-10', description: 'Conduct a weekly safety audit of the stockroom.', priority: 'High', riskLevel: 'High', proof: 'Safety Audit Report', location: 'Office' },
                 ]
             },
             {
@@ -1000,6 +1080,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FSA-03', description: 'Ensure all emergency exits are clear and accessible.', priority: 'High', riskLevel: 'High', proof: 'Exit Inspection Log', location: 'Store-wide' },
                     { id: 'FSA-04', description: 'Check that all staff are trained on fire evacuation procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                     { id: 'FSA-05', description: 'Maintain a log of all fire safety audits for regulatory inspection.', priority: 'High', riskLevel: 'High', proof: 'Master Audit File', location: 'Office' },
+                    { id: 'FSA-06', description: 'Check emergency lighting functionality.', priority: 'High', riskLevel: 'High', proof: 'Lighting Test Log', location: 'Store-wide' },
+                    { id: 'FSA-07', description: 'Ensure fire safety signage is visible and correct.', priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Store-wide' },
+                    { id: 'FSA-08', description: 'Conduct a fire drill at least once every six months.', priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Office' },
+                    { id: 'FSA-09', description: 'Ensure sprinkler system is inspected annually by a certified vendor.', priority: 'High', riskLevel: 'High', proof: 'Vendor Certificate', location: 'Office' },
+                    { id: 'FSA-10', description: 'Review and update the fire emergency plan annually.', priority: 'High', riskLevel: 'High', proof: 'Updated Plan', location: 'Office' },
                 ]
             }
         ]
@@ -1046,6 +1131,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-COLD-03', description: 'Check door seals on all refrigerated units daily.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Inspection', location: 'Sales Floor' },
                     { id: 'SC-COLD-04', description: 'Ensure backup power for cold storage is tested weekly.', priority: 'High', riskLevel: 'High', proof: 'Generator Test Log', location: 'Back of House' },
                     { id: 'SC-COLD-05', description: 'Document any temperature excursions and the corrective actions taken.', priority: 'High', riskLevel: 'High', proof: 'Corrective Action Report', location: 'Office' },
+                    { id: 'SC-COLD-06', description: 'Ensure goods are moved to cold storage immediately upon receipt.', priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving Area' },
+                    { id: 'SC-COLD-07', description: 'Clean and sanitize all refrigerated units weekly.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Sales Floor/Stockroom' },
+                    { id: 'SC-COLD-08', description: 'Do not overload refrigerated units to ensure proper air flow.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor/Stockroom' },
+                    { id: 'SC-COLD-09', description: 'Train staff on cold chain management procedures.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'Office' },
+                    { id: 'SC-COLD-10', description: 'Calibrate thermometers quarterly.', priority: 'High', riskLevel: 'High', proof: 'Calibration Certificates', location: 'Office' },
                 ]
             },
             {
@@ -1061,6 +1151,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-FIFO-03', description: 'Follow markdown or quarantine procedures for near-expiry items.', priority: 'High', riskLevel: 'Medium', proof: 'Markdown Log', location: 'Sales Floor' },
                     { id: 'SC-FIFO-04', description: 'Remove and log all expired products from shelves immediately.', priority: 'High', riskLevel: 'High', proof: 'Expired Goods Log', location: 'Back of House' },
                     { id: 'SC-FIFO-05', description: 'Train staff on how to read and interpret expiry date codes.', priority: 'High', riskLevel: 'Medium', proof: 'Training Record', location: 'Office' },
+                    { id: 'SC-FIFO-06', description: 'Donate or dispose of expired goods according to policy.', priority: 'High', riskLevel: 'Medium', proof: 'Donation/Disposal Log', location: 'Back of House' },
+                    { id: 'SC-FIFO-07', description: 'Audit stockroom for FIFO compliance weekly.', priority: 'High', riskLevel: 'High', proof: 'Stockroom Audit Log', location: 'Stockroom' },
+                    { id: 'SC-FIFO-08', description: 'Review reports on expired goods to identify purchasing issues.', priority: 'High', riskLevel: 'Medium', proof: 'Analysis Report', location: 'Office' },
+                    { id: 'SC-FIFO-09', description: 'Ensure near-expiry items are clearly marked for customers.', priority: 'High', riskLevel: 'Low', proof: 'Signage Check', location: 'Sales Floor' },
+                    { id: 'SC-FIFO-10', description: 'Manager to sign off on all expired goods disposal.', priority: 'High', riskLevel: 'High', proof: 'Signed Disposal Form', location: 'Office' },
                 ]
             },
             {
@@ -1076,6 +1171,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-CLEAN-03', description: 'Log all spill incidents with time, location, and cleanup action.', priority: 'High', riskLevel: 'Medium', proof: 'Spill Incident Log', location: 'Office' },
                     { id: 'SC-CLEAN-04', description: 'Inspect and clean restrooms hourly.', priority: 'High', riskLevel: 'Medium', proof: 'Restroom Cleaning Log', location: 'Restrooms' },
                     { id: 'SC-CLEAN-05', description: 'Ensure cleaning equipment is sanitized and stored correctly.', priority: 'Medium', riskLevel: 'Low', proof: 'Storage Inspection', location: 'Janitor Closet' },
+                    { id: 'SC-CLEAN-06', description: 'Deep clean high-traffic areas daily after closing.', priority: 'High', riskLevel: 'Medium', proof: 'Deep Clean Log', location: 'Sales Floor' },
+                    { id: 'SC-CLEAN-07', description: 'Check and empty all trash bins regularly.', priority: 'High', riskLevel: 'Low', proof: 'Waste Bin Check', location: 'Sales Floor' },
+                    { id: 'SC-CLEAN-08', description: 'Sanitize shopping carts and baskets daily.', priority: 'High', riskLevel: 'Medium', proof: 'Sanitization Log', location: 'Entrance' },
+                    { id: 'SC-CLEAN-09', description: 'Use correct cleaning chemicals for different surfaces.', priority: 'High', riskLevel: 'Medium', proof: 'Chemical Usage Log', location: 'Janitor Closet' },
+                    { id: 'SC-CLEAN-10', description: 'Train staff on spill response procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -1091,6 +1191,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-INBOUND-03', description: 'Quarantine and document any non-conforming or damaged products.', priority: 'High', riskLevel: 'High', proof: 'Quarantine Report', location: 'Quarantine Area' },
                     { id: 'SC-INBOUND-04', description: 'Check temperature of chilled and frozen goods on arrival.', priority: 'High', riskLevel: 'High', proof: 'Inbound Temperature Log', location: 'Receiving Bay' },
                     { id: 'SC-INBOUND-05', description: 'Inspect packaging for signs of pest activity or tampering.', priority: 'High', riskLevel: 'High', proof: 'Visual Inspection Log', location: 'Receiving Bay' },
+                    { id: 'SC-INBOUND-06', description: 'Reject deliveries that do not meet quality standards.', priority: 'High', riskLevel: 'High', proof: 'Rejection Note', location: 'Receiving Bay' },
+                    { id: 'SC-INBOUND-07', description: 'Verify FSSAI license and other required documents from supplier.', priority: 'High', riskLevel: 'High', proof: 'Document Check', location: 'Receiving Bay' },
+                    { id: 'SC-INBOUND-08', description: 'Update inventory system upon receipt of goods.', priority: 'High', riskLevel: 'High', proof: 'System Entry Log', location: 'System' },
+                    { id: 'SC-INBOUND-09', description: 'Clean receiving area after each delivery.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Receiving Bay' },
+                    { id: 'SC-INBOUND-10', description: 'Train staff on receiving procedures.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -1106,6 +1211,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-POS-03', description: 'Verify CCTV cameras at billing lanes are operational and have a clear view.', priority: 'High', riskLevel: 'High', proof: 'CCTV Check Log', location: 'Security Office' },
                     { id: 'SC-POS-04', description: 'Reconcile each cash drawer at the end of every shift.', priority: 'High', riskLevel: 'High', proof: 'Shift Reconciliation Report', location: 'Cash Office' },
                     { id: 'SC-POS-05', description: 'Check for any signs of tampering on card payment devices.', priority: 'High', riskLevel: 'High', proof: 'Device Inspection Log', location: 'POS' },
+                    { id: 'SC-POS-06', description: 'Securely store cash in a safe.', priority: 'High', riskLevel: 'High', proof: 'Safe Log', location: 'Cash Office' },
+                    { id: 'SC-POS-07', description: 'Use counterfeit detection for large cash transactions.', priority: 'High', riskLevel: 'High', proof: 'Counterfeit Check', location: 'POS' },
+                    { id: 'SC-POS-08', description: 'Train cashiers on fraud prevention techniques.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'SC-POS-09', description: 'Limit cash in drawers to a minimum amount.', priority: 'High', riskLevel: 'High', proof: 'Cash Limit Policy', location: 'Office' },
+                    { id: 'SC-POS-10', description: 'Investigate cash discrepancies immediately.', priority: 'High', riskLevel: 'High', proof: 'Investigation Report', location: 'Office' },
                 ]
             },
              {
@@ -1121,6 +1231,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'WSC-03', description: 'Ensure the calibration certificate is displayed near the scale.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
                     { id: 'WSC-04', description: 'Train staff on correct usage and cleaning of scales.', priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
                     { id: 'WSC-05', description: 'Immediately remove any malfunctioning scale from service and label it.', priority: 'High', riskLevel: 'High', proof: 'Out of Service Log', location: 'Sales Floor' },
+                    { id: 'WSC-06', description: 'Keep scales clean and free of debris.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Sales Floor' },
+                    { id: 'WSC-07', description: 'Verify scale accuracy with standard weights weekly.', priority: 'High', riskLevel: 'High', proof: 'Weight Check Log', location: 'Office' },
+                    { id: 'WSC-08', description: 'Ensure scales are on a level surface.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'WSC-09', description: 'Protect scales from physical damage.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Sales Floor' },
+                    { id: 'WSC-10', description: 'Comply with all Legal Metrology regulations.', priority: 'High', riskLevel: 'High', proof: 'Compliance Audit', location: 'Office' },
                 ]
             },
             {
@@ -1136,6 +1251,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BHF-03', description: 'Use separate equipment for raw and cooked food preparation.', priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Bakery/Kitchen' },
                     { id: 'BHF-04', description: 'Discard any food held below the safe temperature for more than 2 hours.', priority: 'High', riskLevel: 'High', proof: 'Discard Log', location: 'Hot Food Section' },
                     { id: 'BHF-05', description: 'Ensure staff follow correct handwashing and glove usage protocols.', priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit', location: 'Bakery/Kitchen' },
+                    { id: 'BHF-06', description: 'Label all prepared foods with preparation time and date.', priority: 'High', riskLevel: 'High', proof: 'Label Check', location: 'Bakery/Kitchen' },
+                    { id: 'BHF-07', description: 'Clean and sanitize all surfaces and equipment after use.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Bakery/Kitchen' },
+                    { id: 'BHF-08', description: 'Check for allergens and provide clear labeling.', priority: 'High', riskLevel: 'High', proof: 'Allergen Label Audit', location: 'Hot Food Section' },
+                    { id: 'BHF-09', description: 'Calibrate food thermometers daily.', priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Bakery/Kitchen' },
+                    { id: 'BHF-10', description: 'Train staff on food safety procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -1151,6 +1271,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LPS-03', description: 'Monitor staff entry and exit points for unauthorized item removal.', priority: 'High', riskLevel: 'High', proof: 'Staff Exit Check Log', location: 'Staff Gate' },
                     { id: 'LPS-04', description: 'Conduct random audits in high-theft categories like cosmetics and electronics.', priority: 'High', riskLevel: 'High', proof: 'Random Audit Log', location: 'Sales Floor' },
                     { id: 'LPS-05', description: 'Train staff on identifying and reporting suspicious activity.', priority: 'High', riskLevel: 'Medium', proof: 'Training Record', location: 'Office' },
+                    { id: 'LPS-06', description: 'Secure all high-value items in locked cabinets.', priority: 'High', riskLevel: 'High', proof: 'Cabinet Check', location: 'Sales Floor' },
+                    { id: 'LPS-07', description: 'Perform bag checks on staff leaving the premises.', priority: 'High', riskLevel: 'High', proof: 'Bag Check Log', location: 'Staff Gate' },
+                    { id: 'LPS-08', description: 'Analyze shrinkage data to identify trends.', priority: 'High', riskLevel: 'High', proof: 'Shrinkage Report', location: 'Office' },
+                    { id: 'LPS-09', description: 'Ensure all emergency exits are alarmed and monitored.', priority: 'High', riskLevel: 'High', proof: 'Alarm System Check', location: 'Security Office' },
+                    { id: 'LPS-10', description: 'Work with law enforcement on organized retail crime.', priority: 'Medium', riskLevel: 'High', proof: 'Police Liaison Log', location: 'Office' },
                 ]
             }
         ]
@@ -1210,6 +1335,9 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'DFW-05', description: "Ensure all emergency exit paths are clear and unobstructed.", priority: 'High', riskLevel: 'High', proof: 'Photo of exit path', location: 'Stairwells/Exits'},
                     {id: 'DFW-06', description: "Check status of water coolers and pantry equipment.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Pantries'},
                     {id: 'DFW-07', description: 'Inspect exterior of the building for any issues (e.g., broken glass, leaks).', priority: 'Medium', riskLevel: 'Medium', proof: 'Exterior Check Log', location: 'Building Perimeter' },
+                    {id: 'DFW-08', description: 'Check security desk for any overnight incident reports.', priority: 'High', riskLevel: 'High', proof: 'Incident Log Review', location: 'Security Desk' },
+                    {id: 'DFW-09', description: 'Ensure landscaping is well-maintained.', priority: 'Low', riskLevel: 'Low', proof: 'Visual Check', location: 'Exterior' },
+                    {id: 'DFW-10', description: 'Confirm all access control systems are functional.', priority: 'High', riskLevel: 'High', proof: 'Access Control System Check', location: 'Entrances' },
                 ]
             },
             {
@@ -1225,6 +1353,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'PM-SLA-03', description: "Update vendor SLA tracker with response and resolution times for recent tickets.", priority: 'High', riskLevel: 'High', proof: 'SLA Tracker', location: 'System'},
                     {id: 'PM-SLA-04', description: "Review and escalate any SLA breaches to the vendor.", priority: 'High', riskLevel: 'High', proof: 'Escalation Email', location: 'Office'},
                     {id: 'PM-SLA-05', description: "Hold quarterly performance reviews with critical vendors.", priority: 'High', riskLevel: 'High', proof: 'Meeting Minutes', location: 'Office' },
+                    {id: 'PM-SLA-06', description: 'Review vendor invoices against work completed.', priority: 'High', riskLevel: 'High', proof: 'Invoice Audit', location: 'Finance Office' },
+                    {id: 'PM-SLA-07', description: 'Ensure all vendor contracts are current and valid.', priority: 'High', riskLevel: 'High', proof: 'Contract Review', location: 'Legal Office' },
+                    {id: 'PM-SLA-08', description: 'Plan PM activities to minimize disruption to operations.', priority: 'High', riskLevel: 'Medium', proof: 'PM Schedule', location: 'Office' },
+                    {id: 'PM-SLA-09', description: 'Maintain a stock of critical spare parts.', priority: 'High', riskLevel: 'High', proof: 'Spares Inventory', location: 'Stores' },
+                    {id: 'PM-SLA-10', description: 'Analyze breakdown trends to optimize PM schedule.', priority: 'High', riskLevel: 'High', proof: 'Trend Analysis Report', location: 'Office' },
                 ]
             },
             {
@@ -1240,6 +1373,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'HKV-03', description: "Check consumable stock levels and log restocks.", priority: 'High', riskLevel: 'Low', proof: 'Restock Log', location: 'Janitor Room'},
                     {id: 'HKV-04', description: 'Review cleaning chemical inventory and dilution logs.', priority: 'Medium', riskLevel: 'Medium', proof: 'Chemical Log', location: 'Janitor Room' },
                     {id: 'HKV-05', description: 'Inspect waste management area for cleanliness and proper segregation.', priority: 'High', riskLevel: 'Medium', proof: 'Waste Area Audit', location: 'Waste Yard' },
+                    {id: 'HKV-06', description: 'Ensure pest control measures are in place and effective.', priority: 'High', riskLevel: 'High', proof: 'Pest Control Log', location: 'Various' },
+                    {id: 'HKV-07', description: 'Check for any damages or stains on furniture and carpets.', priority: 'Medium', riskLevel: 'Low', proof: 'Damage Report', location: 'Various' },
+                    {id: 'HKV-08', description: 'Verify that cleaning staff are using the correct PPE.', priority: 'High', riskLevel: 'Medium', proof: 'PPE Audit', location: 'Various' },
+                    {id: 'HKV-09', description: 'Train housekeeping staff on new cleaning techniques or chemicals.', priority: 'Medium', riskLevel: 'Low', proof: 'Training Log', location: 'Office' },
+                    {id: 'HKV-10', description: 'Get feedback from employees on the cleanliness of the facility.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Form', location: 'System' },
                 ]
             },
             {
@@ -1255,6 +1393,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'SEC-VIS-03', description: "Ensure all issued cards are returned upon exit.", priority: 'High', riskLevel: 'High', proof: 'Access Card Log', location: 'Reception'},
                     {id: 'SEC-VIS-04', description: "Perform daily health check of CCTV system, ensuring all cameras are recording.", priority: 'High', riskLevel: 'High', proof: 'CCTV Health Log', location: 'Security Room'},
                     {id: 'SEC-VIS-05', description: "Verify CCTV footage is retained as per the company's retention policy.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Server Room'},
+                    {id: 'SEC-VIS-06', description: 'Perform regular patrols of the facility perimeter.', priority: 'High', riskLevel: 'High', proof: 'Patrol Log', location: 'Perimeter' },
+                    {id: 'SEC-VIS-07', description: 'Test alarm systems weekly.', priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Security Room' },
+                    {id: 'SEC-VIS-08', description: 'Manage parking and vehicle access.', priority: 'High', riskLevel: 'Medium', proof: 'Parking Log', location: 'Parking Area' },
+                    {id: 'SEC-VIS-09', description: 'Screen all incoming mail and packages.', priority: 'High', riskLevel: 'High', proof: 'Mail Screening Log', location: 'Mail Room' },
+                    {id: 'SEC-VIS-10', description: 'Maintain an incident log for all security-related events.', priority: 'High', riskLevel: 'High', proof: 'Security Incident Log', location: 'Security Room' },
                 ]
             },
             {
@@ -1270,6 +1413,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'UTIL-03', description: "Analyze daily energy usage and investigate any anomalies.", priority: 'High', riskLevel: 'Medium', proof: 'Usage Analysis Report', location: 'Office'},
                     {id: 'UTIL-04', description: 'Check water treatment plant (WTP) and sewage treatment plant (STP) operational parameters.', priority: 'High', riskLevel: 'High', proof: 'WTP/STP Log', location: 'Plant Room' },
                     {id: 'UTIL-05', description: 'Inspect backup generator fuel levels weekly.', priority: 'High', riskLevel: 'High', proof: 'Fuel Log', location: 'Generator Room' },
+                    {id: 'UTIL-06', description: 'Check HVAC system for unusual noises or vibrations.', priority: 'High', riskLevel: 'High', proof: 'HVAC Inspection Log', location: 'HVAC Rooms' },
+                    {id: 'UTIL-07', description: 'Monitor lighting system for any faults.', priority: 'Medium', riskLevel: 'Low', proof: 'Lighting Log', location: 'Entire Facility' },
+                    {id: 'UTIL-08', description: 'Analyze water usage to detect any potential leaks.', priority: 'High', riskLevel: 'Medium', proof: 'Water Usage Report', location: 'Office' },
+                    {id: 'UTIL-09', description: 'Ensure all utility rooms are clean and accessible.', priority: 'High', riskLevel: 'Medium', proof: 'Room Inspection', location: 'Utility Rooms' },
+                    {id: 'UTIL-10', description: 'Report any utility-related issues immediately.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'System' },
                 ]
             },
             {
@@ -1285,6 +1433,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'TSC-03', description: "Test redundant cooling units in the data center.", priority: 'High', riskLevel: 'High', proof: 'Cooling Test Report', location: 'Data Center' },
                     { id: 'TSC-04', description: "Verify fire suppression system in critical areas is active and certified.", priority: 'High', riskLevel: 'High', proof: 'Fire System Certificate', location: 'Data Center' },
                     { id: 'TSC-05', description: "Check network redundancy by simulating a primary link failure.", priority: 'High', riskLevel: 'High', proof: 'Network Failover Test', location: 'Network Room' },
+                    { id: 'TSC-06', description: 'Review and update the disaster recovery plan.', priority: 'High', riskLevel: 'High', proof: 'Updated DR Plan', location: 'Office' },
+                    { id: 'TSC-07', description: 'Ensure all critical staff are trained on the DR plan.', priority: 'High', riskLevel: 'High', proof: 'DR Training Log', location: 'Office' },
+                    { id: 'TSC-08', description: 'Verify offsite backup integrity.', priority: 'High', riskLevel: 'High', proof: 'Backup Restore Test', location: 'Test Environment' },
+                    { id: 'TSC-09', description: 'Test emergency communication systems.', priority: 'High', riskLevel: 'High', proof: 'Comms Test Log', location: 'Office' },
+                    { id: 'TSC-10', description: 'Document all test results and corrective actions.', priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Office' },
                 ]
             },
             {
@@ -1300,6 +1453,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'INC-REP-03', description: "Escalate critical incidents to senior management per the escalation matrix.", priority: 'High', riskLevel: 'High', proof: 'Escalation Communication', location: 'System' },
                     { id: 'INC-REP-04', description: "Conduct a Root Cause Analysis (RCA) for all major incidents.", priority: 'High', riskLevel: 'High', proof: 'RCA Report', location: 'System' },
                     { id: 'INC-REP-05', description: "Track all corrective and preventive actions (CAPAs) to closure.", priority: 'High', riskLevel: 'High', proof: 'CAPA Tracker', location: 'System' },
+                    { id: 'INC-REP-06', description: 'Communicate incident status to relevant stakeholders.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'System' },
+                    { id: 'INC-REP-07', description: 'Preserve all evidence related to the incident.', priority: 'High', riskLevel: 'High', proof: 'Evidence Log', location: 'System' },
+                    { id: 'INC-REP-08', description: 'Generate incident reports for management review.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'System' },
+                    { id: 'INC-REP-09', description: 'Review incident trends to identify recurring issues.', priority: 'High', riskLevel: 'High', proof: 'Trend Analysis', location: 'System' },
+                    { id: 'INC-REP-10', description: 'Update procedures based on lessons learned from incidents.', priority: 'High', riskLevel: 'High', proof: 'Procedure Update Log', location: 'System' },
                 ]
             },
             {
@@ -1315,6 +1473,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'EHS-03', description: "Check that first aid kits are fully stocked and accessible.", priority: 'High', riskLevel: 'High', proof: 'First Aid Kit Log', location: 'Various' },
                     { id: 'EHS-04', description: "Ensure all staff have completed mandatory safety training.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                     { id: 'EHS-05', description: "Review and update risk assessments for all facility activities.", priority: 'High', riskLevel: 'High', proof: 'Risk Assessment Register', location: 'Office' },
+                    { id: 'EHS-06', description: 'Check PPE availability and usage.', priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Various' },
+                    { id: 'EHS-07', description: 'Inspect fire safety equipment.', priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Entire Facility' },
+                    { id: 'EHS-08', description: 'Ensure proper handling and storage of chemicals.', priority: 'High', riskLevel: 'High', proof: 'Chemical Safety Audit', location: 'Stores' },
+                    { id: 'EHS-09', description: 'Check ergonomics of workstations.', priority: 'Medium', riskLevel: 'Medium', proof: 'Ergonomics Audit', location: 'Workstations' },
+                    { id: 'EHS-10', description: 'Maintain all EHS records for regulatory audits.', priority: 'High', riskLevel: 'High', proof: 'EHS Record File', location: 'Office' },
                 ]
             }
         ]
@@ -1359,6 +1522,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'CAL-03', description: "Set automated reminders for 15, 7, and 2 days before each due date.", priority: 'High', riskLevel: 'Medium', proof: 'Reminder System Config', location: 'System'},
                     {id: 'CAL-04', description: 'Confirm filings are completed and save acknowledgement receipts.', priority: 'High', riskLevel: 'High', proof: 'Filed Returns Folder', location: 'System' },
                     {id: 'CAL-05', description: 'Hold a monthly meeting to review upcoming compliance deadlines.', priority: 'Medium', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Office' },
+                    {id: 'CAL-06', description: 'Review any changes in tax or corporate law.', priority: 'High', riskLevel: 'High', proof: 'Legal Update Summary', location: 'System' },
+                    {id: 'CAL-07', description: 'Liaise with external auditors/consultants for filings.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'System' },
+                    {id: 'CAL-08', description: 'Maintain a central repository for all filed documents.', priority: 'High', riskLevel: 'High', proof: 'Document Repository', location: 'System' },
+                    {id: 'CAL-09', description: 'Track payment of statutory dues.', priority: 'High', riskLevel: 'High', proof: 'Payment Records', location: 'System' },
+                    {id: 'CAL-10', description: 'Prepare a monthly compliance report for management.', priority: 'High', riskLevel: 'High', proof: 'Compliance Report', location: 'System' },
                 ]
             },
             {
@@ -1374,6 +1542,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'POL-03', description: "Track digital acknowledgement from all employees for new/updated policies.", priority: 'High', riskLevel: 'High', proof: 'Acknowledgement Report', location: 'System'},
                     {id: 'POL-04', description: 'Schedule annual reviews for all key company policies.', priority: 'High', riskLevel: 'Medium', proof: 'Review Calendar', location: 'System' },
                     {id: 'POL-05', description: 'Make all current policies easily accessible to employees on an intranet or portal.', priority: 'High', riskLevel: 'Low', proof: 'Intranet Page Link', location: 'System' },
+                    {id: 'POL-06', description: 'Communicate policy changes to all employees.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Record', location: 'System' },
+                    {id: 'POL-07', description: 'Train employees on new or complex policies.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'System' },
+                    {id: 'POL-08', description: 'Ensure policies are aligned with current laws and regulations.', priority: 'High', riskLevel: 'High', proof: 'Legal Review', location: 'System' },
+                    {id: 'POL-09', description: 'Archive old policy versions.', priority: 'Medium', riskLevel: 'Low', proof: 'Archive Log', location: 'System' },
+                    {id: 'POL-10', description: 'Get feedback from employees on policy clarity and effectiveness.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'System' },
                 ]
             },
             {
@@ -1389,6 +1562,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'CON-03', description: "Store all signed contracts in a central, secure repository.", priority: 'High', riskLevel: 'High', proof: 'Contract Register', location: 'System'},
                     {id: 'CON-04', description: "Set reminders for all contract expiry or renewal dates.", priority: 'High', riskLevel: 'Medium', proof: 'Calendar System', location: 'System'},
                     {id: 'CON-05', description: 'Log key obligations and dates from each contract into a summary sheet.', priority: 'High', riskLevel: 'Medium', proof: 'Contract Summary Sheet', location: 'System' },
+                    {id: 'CON-06', description: 'Ensure all contracts are reviewed by the legal department.', priority: 'High', riskLevel: 'High', proof: 'Legal Approval', location: 'System' },
+                    {id: 'CON-07', description: 'Standardize contract templates where possible.', priority: 'High', riskLevel: 'Medium', proof: 'Template Library', location: 'System' },
+                    {id: 'CON-08', description: 'Track contract negotiations and versions.', priority: 'High', riskLevel: 'Medium', proof: 'Version History', location: 'System' },
+                    {id: 'CON-09', description: 'Ensure proper execution of contracts (signing, stamping).', priority: 'High', riskLevel: 'High', proof: 'Executed Contract', location: 'System' },
+                    {id: 'CON-10', description: 'Audit contracts periodically for compliance.', priority: 'High', riskLevel: 'High', proof: 'Contract Audit Report', location: 'System' },
                 ]
             },
             {
@@ -1404,6 +1582,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'AUD-03', description: "Issue a Non-Conformance Report (NCR) for any findings.", priority: 'High', riskLevel: 'High', proof: 'NCR Form', location: 'System'},
                     {id: 'AUD-04', description: "Track all Corrective and Preventive Actions (CAPAs) to closure.", priority: 'High', riskLevel: 'High', proof: 'CAPA Tracker', location: 'System'},
                     {id: 'AUD-05', description: 'Verify the effectiveness of implemented CAPAs in a follow-up audit.', priority: 'High', riskLevel: 'High', proof: 'Verification Report', location: 'System' },
+                    {id: 'AUD-06', description: 'Prepare a formal audit report for management.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'System' },
+                    {id: 'AUD-07', description: 'Hold an audit closing meeting with the auditee.', priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Office' },
+                    {id: 'AUD-08', description: 'Maintain all audit records for future reference.', priority: 'High', riskLevel: 'Medium', proof: 'Audit File', location: 'System' },
+                    {id: 'AUD-09', description: 'Ensure auditors are independent of the process being audited.', priority: 'High', riskLevel: 'High', proof: 'Auditor Assignment', location: 'System' },
+                    {id: 'AUD-10', description: 'Train internal auditors on audit methodologies.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'System' },
                 ]
             },
             {
@@ -1419,6 +1602,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'WB-03', description: "Conduct a confidential investigation within a set timeline.", priority: 'High', riskLevel: 'High', proof: 'Investigation Plan', location: 'Office'},
                     {id: 'WB-04', description: "Provide protection against retaliation for the whistleblower.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'HR'},
                     {id: 'WB-05', description: "Report findings and actions to the board's audit committee.", priority: 'High', riskLevel: 'High', proof: 'Board Report', location: 'Office'},
+                    {id: 'WB-06', description: 'Maintain confidentiality of the investigation.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Agreements', location: 'Office' },
+                    {id: 'WB-07', description: 'Document all investigation steps and evidence.', priority: 'High', riskLevel: 'High', proof: 'Investigation File', location: 'Office' },
+                    {id: 'WB-08', description: 'Communicate the outcome to the whistleblower, if appropriate.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
+                    {id: 'WB-09', description: 'Take disciplinary action if the complaint is substantiated.', priority: 'High', riskLevel: 'High', proof: 'Disciplinary Action Record', location: 'HR' },
+                    {id: 'WB-10', description: 'Train all employees on the whistleblowing policy.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
                 ]
             },
             {
@@ -1434,6 +1622,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BM-03', description: 'Ensure quorum is present at the start of the meeting.', priority: 'High', riskLevel: 'High', proof: 'Attendance Sheet', location: 'Meeting' },
                     { id: 'BM-04', description: 'Take detailed minutes of the meeting, recording all resolutions.', priority: 'High', riskLevel: 'High', proof: 'Draft Minutes', location: 'Office' },
                     { id: 'BM-05', description: 'File any necessary forms with the ROC post-meeting.', priority: 'High', riskLevel: 'High', proof: 'ROC Filing Receipt', location: 'System' },
+                    { id: 'BM-06', description: 'Get minutes confirmed and signed in the next meeting.', priority: 'High', riskLevel: 'High', proof: 'Signed Minutes', location: 'Minute Book' },
+                    { id: 'BM-07', description: 'Track action items from the meeting.', priority: 'High', riskLevel: 'Medium', proof: 'Action Tracker', location: 'System' },
+                    { id: 'BM-08', description: 'Maintain all board meeting records.', priority: 'High', riskLevel: 'High', proof: 'Board Records File', location: 'Office' },
+                    { id: 'BM-09', description: 'Ensure compliance with all secretarial standards.', priority: 'High', riskLevel: 'High', proof: 'Compliance Certificate', location: 'Office' },
+                    { id: 'BM-10', description: 'Arrange logistics for the board meeting (venue, tech).', priority: 'Medium', riskLevel: 'Low', proof: 'Logistics Plan', location: 'Office' },
                 ]
             },
             {
@@ -1449,6 +1642,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'DP-03', description: 'Audit Data Processing Agreements (DPAs) with all vendors handling personal data.', priority: 'High', riskLevel: 'High', proof: 'DPA Register', location: 'System' },
                     { id: 'DP-04', description: 'Test the process for handling data subject access requests (DSARs).', priority: 'High', riskLevel: 'High', proof: 'DSAR Test Log', location: 'System' },
                     { id: 'DP-05', description: 'Conduct privacy awareness training for all employees.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
+                    { id: 'DP-06', description: 'Ensure privacy policy is up-to-date and accessible.', priority: 'High', riskLevel: 'High', proof: 'Privacy Policy on Website', location: 'Website' },
+                    { id: 'DP-07', description: 'Conduct a Data Protection Impact Assessment (DPIA) for new projects.', priority: 'High', riskLevel: 'High', proof: 'DPIA Report', location: 'System' },
+                    { id: 'DP-08', description: 'Review and test data breach response plan.', priority: 'High', riskLevel: 'High', proof: 'Breach Drill Report', location: 'System' },
+                    { id: 'DP-09', description: 'Verify data is retained only as long as necessary.', priority: 'High', riskLevel: 'High', proof: 'Data Retention Policy Audit', location: 'System' },
+                    { id: 'DP-10', description: 'Ensure cross-border data transfers are compliant.', priority: 'High', riskLevel: 'High', proof: 'Transfer Mechanism documentation', location: 'System' },
                 ]
             },
             {
@@ -1464,6 +1662,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'DA-03', description: 'Give the employee a chance to respond to the allegations.', priority: 'High', riskLevel: 'High', proof: 'Employee Response', location: 'Employee File' },
                     { id: 'DA-04', description: 'Document the final decision and the reasoning behind it.', priority: 'High', riskLevel: 'High', proof: 'Final Decision Letter', location: 'Employee File' },
                     { id: 'DA-05', description: 'Ensure all actions comply with company policy and local labor laws.', priority: 'High', riskLevel: 'High', proof: 'Legal Review', location: 'Legal Dept' },
+                    { id: 'DA-06', description: 'Maintain confidentiality throughout the process.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Undertaking', location: 'HR File' },
+                    { id: 'DA-07', description: 'Provide the employee with a copy of all relevant documents.', priority: 'High', riskLevel: 'High', proof: 'Acknowledgement of Receipt', location: 'Employee File' },
+                    { id: 'DA-08', description: 'Ensure consistency in disciplinary actions for similar offenses.', priority: 'High', riskLevel: 'High', proof: 'Precedent Review', location: 'HR File' },
+                    { id: 'DA-09', description: 'Consult with legal counsel for serious cases.', priority: 'High', riskLevel: 'High', proof: 'Legal Consultation Log', location: 'Legal Dept' },
+                    { id: 'DA-10', description: 'Properly document the entire process from start to finish.', priority: 'High', riskLevel: 'High', proof: 'Complete Case File', location: 'HR File' },
                 ]
             }
         ]
@@ -1508,6 +1711,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'AR-03', description: "Remove access for any stale accounts (e.g., inactive for 90 days).", priority: 'High', riskLevel: 'High', proof: 'Deactivation Log', location: 'System'},
                     {id: 'AR-04', description: "Verify that Multi-Factor Authentication (MFA) is enforced for all admin accounts.", priority: 'High', riskLevel: 'High', proof: 'MFA Configuration Report', location: 'System'},
                     {id: 'AR-05', description: "Implement Just-In-Time (JIT) access for critical administrative tasks where possible.", priority: 'Medium', riskLevel: 'High', proof: 'JIT System Logs', location: 'System'},
+                    {id: 'AR-06', description: 'Review third-party vendor access to your systems.', priority: 'High', riskLevel: 'High', proof: 'Vendor Access Review', location: 'System' },
+                    {id: 'AR-07', description: 'Ensure the principle of least privilege is applied to all accounts.', priority: 'High', riskLevel: 'High', proof: 'Role-Based Access Control (RBAC) Audit', location: 'System' },
+                    {id: 'AR-08', description: 'Audit changes to user access rights.', priority: 'High', riskLevel: 'High', proof: 'Access Change Log', location: 'System' },
+                    {id: 'AR-09', description: 'Train staff on the importance of access control.', priority: 'Medium', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
+                    {id: 'AR-10', description: 'Log all access attempts, both successful and failed.', priority: 'High', riskLevel: 'High', proof: 'Access Logs', location: 'SIEM' },
                 ]
             },
             {
@@ -1523,6 +1731,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'PMW-03', description: "Test all critical patches in a staging environment before production deployment.", priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Staging Environment'},
                     {id: 'PMW-04', description: "Deploy critical patches within a defined SLA (e.g., 14 days).", priority: 'High', riskLevel: 'High', proof: 'Deployment Logs', location: 'Production Systems'},
                     {id: 'PMW-05', description: "Have a documented rollback plan for any patch that causes issues.", priority: 'High', riskLevel: 'Medium', proof: 'Rollback Plan Document', location: 'System'},
+                    {id: 'PMW-06', description: 'Maintain an inventory of all software and versions.', priority: 'High', riskLevel: 'Medium', proof: 'Software Inventory', location: 'System' },
+                    {id: 'PMW-07', description: 'Subscribe to vendor security advisories.', priority: 'High', riskLevel: 'High', proof: 'Subscription Confirmation', location: 'System' },
+                    {id: 'PMW-08', description: 'Automate patch deployment where possible.', priority: 'High', riskLevel: 'Medium', proof: 'Automation Script/Tool Config', location: 'System' },
+                    {id: 'PMW-09', description: 'Verify successful patch installation.', priority: 'High', riskLevel: 'High', proof: 'Verification Scan', location: 'System' },
+                    {id: 'PMW-10', description: 'Report on patch compliance to management.', priority: 'High', riskLevel: 'High', proof: 'Compliance Report', location: 'System' },
                 ]
             },
             {
@@ -1538,6 +1751,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'BCDR-03', description: "Perform a quarterly test restore of a critical system from backup.", priority: 'High', riskLevel: 'High', proof: 'Test Restore Report', location: 'Test Environment'},
                     {id: 'BCDR-04', description: "Ensure a copy of critical backups is stored in an offsite, encrypted location.", priority: 'High', riskLevel: 'High', proof: 'Offsite Storage Log', location: 'Vendor/Cloud'},
                     {id: 'BCDR-05', description: "Conduct an annual disaster recovery drill with a full playbook.", priority: 'High', riskLevel: 'High', proof: 'DR Drill Report', location: 'Office'},
+                    {id: 'BCDR-06', description: 'Review and update the DR plan annually.', priority: 'High', riskLevel: 'High', proof: 'Updated DR Plan', location: 'Office' },
+                    {id: 'BCDR-07', description: 'Test failover of redundant systems.', priority: 'High', riskLevel: 'High', proof: 'Failover Test Report', location: 'Production' },
+                    {id: 'BCDR-08', description: 'Ensure all critical data is included in backup jobs.', priority: 'High', riskLevel: 'High', proof: 'Backup Job Configuration', location: 'System' },
+                    {id: 'BCDR-09', description: 'Verify integrity of backup media.', priority: 'High', riskLevel: 'High', proof: 'Media Check Log', location: 'System' },
+                    {id: 'BCDR-10', description: 'Train staff on their roles in the DR plan.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                 ]
             },
             {
@@ -1554,6 +1772,10 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'IR-04', description: "Notify key stakeholders (legal, management, comms) according to the plan.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'War Room'},
                     {id: 'IR-05', description: "Engage external forensics or legal counsel if required.", priority: 'High', riskLevel: 'High', proof: 'Engagement Letter', location: 'Office'},
                     {id: 'IR-06', description: "Notify regulatory bodies (e.g., CERT-In) within the required timeframe.", priority: 'High', riskLevel: 'High', proof: 'Regulatory Filing', location: 'Office'},
+                    {id: 'IR-07', description: 'Eradicate the threat and restore systems from a clean backup.', priority: 'High', riskLevel: 'High', proof: 'Eradication Report', location: 'System' },
+                    {id: 'IR-08', description: 'Conduct a post-incident review to identify lessons learned.', priority: 'High', riskLevel: 'High', proof: 'Post-Incident Report', location: 'Office' },
+                    {id: 'IR-09', description: 'Update security controls based on the incident.', priority: 'High', riskLevel: 'High', proof: 'Control Change Log', location: 'System' },
+                    {id: 'IR-10', description: 'Communicate with affected parties (customers, employees) as required.', priority: 'High', riskLevel: 'High', proof: 'Communication Plan Execution', location: 'Office' },
                 ]
             },
             {
@@ -1569,6 +1791,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'VSA-03', description: "Ensure the vendor contract includes robust security and data protection clauses.", priority: 'High', riskLevel: 'High', proof: 'Signed Contract', location: 'Legal'},
                     {id: 'VSA-04', description: "Conduct an annual security review for all critical vendors.", priority: 'High', riskLevel: 'High', proof: 'Annual Review Report', location: 'Vendor File'},
                     {id: 'VSA-05', description: 'Define clear SLAs for vulnerability remediation for all vendors.', priority: 'High', riskLevel: 'High', proof: 'Contract Clause', location: 'Legal' },
+                    {id: 'VSA-06', description: 'Review vendor access to your systems and data.', priority: 'High', riskLevel: 'High', proof: 'Vendor Access Audit', location: 'System' },
+                    {id: 'VSA-07', description: 'Assess the vendor\'s own supply chain security.', priority: 'Medium', riskLevel: 'High', proof: 'Supply Chain Assessment', location: 'Vendor File' },
+                    {id: 'VSA-08', description: 'Ensure vendor has a data breach notification process.', priority: 'High', riskLevel: 'High', proof: 'Breach Notification Clause', location: 'Contract' },
+                    {id: 'VSA-09', description: 'Classify vendors based on their risk level.', priority: 'High', riskLevel: 'High', proof: 'Vendor Risk Classification', location: 'System' },
+                    {id: 'VSA-10', description: 'Terminate contracts with non-compliant vendors.', priority: 'High', riskLevel: 'High', proof: 'Termination Record', location: 'Legal' },
                 ]
             },
              {
@@ -1584,6 +1811,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FRR-03', description: 'Ensure an implicit deny rule is at the bottom of the ACL.', priority: 'High', riskLevel: 'High', proof: 'Firewall Configuration', location: 'System' },
                     { id: 'FRR-04', description: 'Document the purpose and owner of every rule.', priority: 'High', riskLevel: 'Medium', proof: 'Rule Base Documentation', location: 'System' },
                     { id: 'FRR-05', description: 'Analyze firewall logs for unusual traffic patterns.', priority: 'High', riskLevel: 'High', proof: 'Log Analysis Report', location: 'SIEM' },
+                    { id: 'FRR-06', description: 'Validate firewall rules after any network changes.', priority: 'High', riskLevel: 'High', proof: 'Validation Report', location: 'System' },
+                    { id: 'FRR-07', description: 'Ensure firewall software is up-to-date.', priority: 'High', riskLevel: 'High', proof: 'Firmware Version Check', location: 'System' },
+                    { id: 'FRR-08', description: 'Test firewall failover capabilities.', priority: 'High', riskLevel: 'High', proof: 'Failover Test Report', location: 'System' },
+                    { id: 'FRR-09', description: 'Review and approve all new firewall rule requests.', priority: 'High', riskLevel: 'High', proof: 'Approval Workflow', location: 'System' },
+                    { id: 'FRR-10', description: 'Conduct an annual external penetration test of the firewall.', priority: 'High', riskLevel: 'High', proof: 'Pen Test Report', location: 'System' },
                 ]
             },
             {
@@ -1599,6 +1831,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PST-03', description: 'Assign remedial training to employees who failed the simulation.', priority: 'High', riskLevel: 'Medium', proof: 'Training Assignment Log', location: 'LMS' },
                     { id: 'PST-04', description: 'Share anonymized results with management to show trends.', priority: 'Medium', riskLevel: 'Low', proof: 'Management Report', location: 'Office' },
                     { id: 'PST-05', description: 'Update simulation templates to reflect current phishing trends.', priority: 'Medium', riskLevel: 'Medium', proof: 'Template Library', location: 'Simulation Platform' },
+                    { id: 'PST-06', description: 'Conduct spear-phishing simulations for high-risk users.', priority: 'High', riskLevel: 'High', proof: 'Spear-phishing Campaign Report', location: 'Simulation Platform' },
+                    { id: 'PST-07', description: 'Provide regular security awareness newsletters.', priority: 'Medium', riskLevel: 'Low', proof: 'Newsletter Archive', location: 'System' },
+                    { id: 'PST-08', description: 'Train employees on how to report phishing emails.', priority: 'High', riskLevel: 'Medium', proof: 'Reporting Instructions', location: 'Intranet' },
+                    { id: 'PST-09', description: 'Recognize employees who report phishing attempts.', priority: 'Low', riskLevel: 'Low', proof: 'Recognition Program', location: 'HR' },
+                    { id: 'PST-10', description: 'Analyze the effectiveness of training and simulations.', priority: 'High', riskLevel: 'Medium', proof: 'Effectiveness Report', location: 'Office' },
                 ]
             },
             {
@@ -1614,6 +1851,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CSPM-03', description: 'Audit security groups/NSGs for overly permissive inbound rules (e.g., 0.0.0.0/0).', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'System' },
                     { id: 'CSPM-04', description: 'Ensure logging and monitoring are enabled for all cloud resources.', priority: 'High', riskLevel: 'High', proof: 'Logging Configuration Audit', location: 'System' },
                     { id: 'CSPM-05', description: 'Verify IAM roles and policies follow the principle of least privilege.', priority: 'High', riskLevel: 'High', proof: 'IAM Audit Report', location: 'System' },
+                    { id: 'CSPM-06', description: 'Check for unused or stale cloud resources.', priority: 'Medium', riskLevel: 'Medium', proof: 'Resource Audit', location: 'System' },
+                    { id: 'CSPM-07', description: 'Ensure data encryption is enabled for all sensitive data stores.', priority: 'High', riskLevel: 'High', proof: 'Encryption Audit', location: 'System' },
+                    { id: 'CSPM-08', description: 'Monitor for unauthorized API calls.', priority: 'High', riskLevel: 'High', proof: 'API Log Analysis', location: 'SIEM' },
+                    { id: 'CSPM-09', description: 'Regularly review and update security baselines for cloud services.', priority: 'High', riskLevel: 'High', proof: 'Baseline Documents', location: 'System' },
+                    { id: 'CSPM-10', description: 'Automate remediation of common misconfigurations.', priority: 'High', riskLevel: 'High', proof: 'Automation Scripts', location: 'System' },
                 ]
             }
         ]
@@ -1662,6 +1904,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-SSC-03', description: 'Review critical patient history, including allergies and airway risks.', priority: 'High', riskLevel: 'High', proof: 'Anesthesia record', location: 'OT' },
                     { id: 'H-SSC-04', description: 'Confirm instrument, sponge, and needle counts before closing.', priority: 'High', riskLevel: 'High', proof: 'Count sheet', location: 'OT' },
                     { id: 'H-SSC-05', description: 'Verbally confirm the name of the procedure recorded and specimen labeling.', priority: 'High', riskLevel: 'High', proof: 'Sign-out log', location: 'OT' },
+                    { id: 'H-SSC-06', description: 'Ensure all team members have introduced themselves by name and role.', priority: 'High', riskLevel: 'Medium', proof: 'Time-out log', location: 'OT' },
+                    { id: 'H-SSC-07', description: 'Confirm antibiotic prophylaxis has been given within the last 60 minutes.', priority: 'High', riskLevel: 'High', proof: 'Medication Administration Record (MAR)', location: 'OT' },
+                    { id: 'H-SSC-08', description: 'Review anticipated critical events with the surgeon and anesthesia team.', priority: 'High', riskLevel: 'High', proof: 'Verbal confirmation', location: 'OT' },
+                    { id: 'H-SSC-09', description: 'Verify availability of essential imaging.', priority: 'High', riskLevel: 'High', proof: 'Imaging Display', location: 'OT' },
+                    { id: 'H-SSC-10', description: 'Check for equipment issues or concerns before starting.', priority: 'High', riskLevel: 'High', proof: 'Equipment Check Log', location: 'OT' },
                 ]
             },
             {
@@ -1677,6 +1924,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-IC-03', description: 'Check sterile packages for integrity, dryness, and expiry date before dispatch.', priority: 'High', riskLevel: 'High', proof: 'Package inspection log', location: 'CSSD' },
                     { id: 'H-IC-04', description: 'Monitor hand hygiene compliance in clinical areas.', priority: 'High', riskLevel: 'High', proof: 'Audit Form', location: 'Wards/ICU' },
                     { id: 'H-IC-05', description: 'Maintain a log for environmental cleaning and disinfection.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'All Areas' },
+                    { id: 'H-IC-06', description: 'Track hospital-acquired infection (HAI) rates.', priority: 'High', riskLevel: 'High', proof: 'HAI Data Report', location: 'Infection Control Office' },
+                    { id: 'H-IC-07', description: 'Ensure staff use appropriate PPE in isolation rooms.', priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Isolation Rooms' },
+                    { id: 'H-IC-08', description: 'Manage biomedical waste segregation and disposal.', priority: 'High', riskLevel: 'High', proof: 'Waste Log', location: 'Waste Area' },
+                    { id: 'H-IC-09', description: 'Audit antibiotic stewardship program compliance.', priority: 'High', riskLevel: 'High', proof: 'Stewardship Audit', location: 'Pharmacy' },
+                    { id: 'H-IC-10', description: 'Provide regular infection control training to all staff.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                 ]
             },
             {
@@ -1692,6 +1944,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-MED-03', description: 'Use smart infusion pumps with dose error reduction software for IV high-alert drugs.', priority: 'High', riskLevel: 'High', proof: 'Pump Log', location: 'Patient Bedside' },
                     { id: 'H-MED-04', description: 'Patient education on high-alert medications before discharge.', priority: 'High', riskLevel: 'Medium', proof: 'Patient Education Form', location: 'Discharge Lounge' },
                     { id: 'H-MED-05', description: 'Quarterly audit of high-alert medication incidents and near-misses.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Quality Dept' },
+                    { id: 'H-MED-06', description: 'Reconcile medications at every transition of care (admission, transfer, discharge).', priority: 'High', riskLevel: 'High', proof: 'Medication Reconciliation Form', location: 'Patient Ward' },
+                    { id: 'H-MED-07', description: 'Label all medications, including those in syringes and basins.', priority: 'High', riskLevel: 'High', proof: 'Labeling Audit', location: 'Medication Room' },
+                    { id: 'H-MED-08', description: 'Report all medication errors and near misses.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Quality Dept' },
+                    { id: 'H-MED-09', description: 'Ensure concentrated electrolytes are stored only in the pharmacy.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Pharmacy' },
+                    { id: 'H-MED-10', description: 'Verify patient allergies before administering any medication.', priority: 'High', riskLevel: 'High', proof: 'Allergy Check in MAR', location: 'Patient Bedside' },
                 ]
             },
             {
@@ -1707,6 +1964,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-PID-03', description: 'Label all laboratory samples in the presence of the patient.', priority: 'High', riskLevel: 'High', proof: 'Procedure Adherence Audit', location: 'Patient Bedside' },
                     { id: 'H-PID-04', description: 'Cross-check patient identifiers before any blood transfusion.', priority: 'High', riskLevel: 'High', proof: 'Transfusion Checklist', location: 'Patient Bedside' },
                     { id: 'H-PID-05', description: 'Use barcode scanning for patient ID and medication verification where available.', priority: 'High', riskLevel: 'High', proof: 'Scan Log', location: 'System' },
+                    { id: 'H-PID-06', description: 'Verify patient identity before any diagnostic procedure (e.g., X-ray, MRI).', priority: 'High', riskLevel: 'High', proof: 'Procedure Checklist', location: 'Radiology' },
+                    { id: 'H-PID-07', description: 'Ensure all patients have a clear and accurate ID band.', priority: 'High', riskLevel: 'High', proof: 'ID Band Audit', location: 'Wards' },
+                    { id: 'H-PID-08', description: 'For non-verbal patients, use alternative identification methods.', priority: 'High', riskLevel: 'High', proof: 'Alternative ID Protocol', location: 'Wards' },
+                    { id: 'H-PID-09', description: 'Train all clinical staff on the patient identification policy.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'H-PID-10', description: 'Audit compliance with the patient identification policy monthly.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Quality Dept' },
                 ]
             },
             {
@@ -1722,6 +1984,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-BMW-03', description: "Maintain a log of all waste handed over to the authorized disposal agency.", priority: 'High', riskLevel: 'High', proof: 'Disposal Log', location: 'Waste Area' },
                     { id: 'H-BMW-04', description: "Check that sharps containers are not overfilled and are sealed correctly.", priority: 'High', riskLevel: 'High', proof: 'Sharps Container Log', location: 'Wards' },
                     { id: 'H-BMW-05', description: "Train all staff on correct biomedical waste handling procedures.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'H-BMW-06', description: 'Verify vendor compliance for waste transportation and disposal.', priority: 'High', riskLevel: 'High', proof: 'Vendor Audit', location: 'Office' },
+                    { id: 'H-BMW-07', description: 'Ensure all waste containers are properly labeled.', priority: 'High', riskLevel: 'High', proof: 'Label Audit', location: 'Various' },
+                    { id: 'H-BMW-08', description: 'Track waste generation quantities.', priority: 'Medium', riskLevel: 'Medium', proof: 'Waste Generation Report', location: 'Office' },
+                    { id: 'H-BMW-09', description: 'Manage liquid biomedical waste as per protocol.', priority: 'High', riskLevel: 'High', proof: 'Liquid Waste Log', location: 'Labs' },
+                    { id: 'H-BMW-10', description: 'Conduct annual review of the biomedical waste management plan.', priority: 'High', riskLevel: 'High', proof: 'Plan Review Minutes', location: 'Office' },
                 ]
             },
             {
@@ -1737,6 +2004,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-EQUIP-03', description: 'Maintain a detailed service history for each piece of equipment.', priority: 'High', riskLevel: 'High', proof: 'Equipment Logbook', location: 'Biomed Dept' },
                     { id: 'H-EQUIP-04', description: 'Tag any faulty equipment as "Out of Service" immediately.', priority: 'High', riskLevel: 'High', proof: 'Tag Log', location: 'Various' },
                     { id: 'H-EQUIP-05', description: 'Check battery backup for critical life-support equipment daily.', priority: 'High', riskLevel: 'High', proof: 'Battery Check Log', location: 'ICU/OT' },
+                    { id: 'H-EQUIP-06', description: 'Ensure all equipment alarms are functional.', priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Various' },
+                    { id: 'H-EQUIP-07', description: 'Perform safety tests on all electrical medical equipment.', priority: 'High', riskLevel: 'High', proof: 'Safety Test Report', location: 'Biomed Dept' },
+                    { id: 'H-EQUIP-08', description: 'Manage inventory of essential spare parts.', priority: 'High', riskLevel: 'High', proof: 'Spares Inventory', location: 'Biomed Dept' },
+                    { id: 'H-EQUIP-09', description: 'Train clinical staff on basic equipment troubleshooting.', priority: 'Medium', riskLevel: 'Medium', proof: 'Training Log', location: 'HR' },
+                    { id: 'H-EQUIP-10', description: 'Document all maintenance and repair activities.', priority: 'High', riskLevel: 'High', proof: 'Service Reports', location: 'Biomed Dept' },
                 ]
             },
             {
@@ -1752,6 +2024,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-MRD-03', description: 'Follow a strict protocol for releasing patient information to third parties.', priority: 'High', riskLevel: 'High', proof: 'Information Release Log', location: 'MRD' },
                     { id: 'H-MRD-04', description: 'Train all staff on patient data confidentiality and privacy laws.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                     { id: 'H-MRD-05', description: 'Ensure all digital patient data is encrypted both at rest and in transit.', priority: 'High', riskLevel: 'High', proof: 'Encryption Policy', location: 'IT Dept' },
+                    { id: 'H-MRD-06', description: 'Ensure patient consent is obtained for data sharing.', priority: 'High', riskLevel: 'High', proof: 'Consent Forms', location: 'MRD' },
+                    { id: 'H-MRD-07', description: 'Manage record retention and destruction policy.', priority: 'High', riskLevel: 'High', proof: 'Retention Policy', location: 'MRD' },
+                    { id: 'H-MRD-08', description: 'Handle patient requests for their medical records.', priority: 'High', riskLevel: 'High', proof: 'Request Log', location: 'MRD' },
+                    { id: 'H-MRD-09', description: 'Ensure all records are complete and accurate.', priority: 'High', riskLevel: 'High', proof: 'Record Audit', location: 'MRD' },
+                    { id: 'H-MRD-10', description: 'Conduct regular privacy risk assessments.', priority: 'High', riskLevel: 'High', proof: 'Risk Assessment Report', location: 'Compliance Office' },
                 ]
             },
             {
@@ -1767,6 +2044,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'H-DRILL-03', description: 'Debrief with the team after each drill to identify areas for improvement.', priority: 'High', riskLevel: 'High', proof: 'Debrief Minutes', location: 'Office' },
                     { id: 'H-DRILL-04', description: 'Check that emergency carts (crash carts) are fully stocked and sealed.', priority: 'High', riskLevel: 'High', proof: 'Crash Cart Checklist', location: 'Wards/ICU' },
                     { id: 'H-DRILL-05', description: 'Ensure all staff know the emergency contact numbers and codes.', priority: 'High', riskLevel: 'High', proof: 'Staff Quiz/Survey', location: 'HR' },
+                    { id: 'H-DRILL-06', description: 'Test the hospital-wide public address system.', priority: 'High', riskLevel: 'High', proof: 'PA System Test Log', location: 'Control Room' },
+                    { id: 'H-DRILL-07', description: 'Drill for Code Pink (Infant Abduction).', priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Maternity/Peds' },
+                    { id: 'H-DRILL-08', description: 'Drill for Code Yellow (Internal Disaster).', priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Various' },
+                    { id: 'H-DRILL-09', description: 'Verify all emergency exits are clear.', priority: 'High', riskLevel: 'High', proof: 'Exit Audit', location: 'Various' },
+                    { id: 'H-DRILL-10', description: 'Update emergency plans based on drill outcomes.', priority: 'High', riskLevel: 'High', proof: 'Updated Plans', location: 'Safety Office' },
                 ]
             }
         ]
@@ -1811,6 +2093,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PHARM-DISP-03', description: "Use separate trays for each prescription to avoid mix-ups.", priority: 'High', riskLevel: 'High', proof: 'Visual SOP', location: 'Dispensing Counter' },
                     { id: 'PHARM-DISP-04', description: 'Counsel patient on the medication being dispensed.', priority: 'High', riskLevel: 'High', proof: 'Counseling Log', location: 'Dispensing Counter' },
                     { id: 'PHARM-DISP-05', description: 'Check for potential drug interactions for patients with multiple prescriptions.', priority: 'High', riskLevel: 'High', proof: 'System Alert Review', location: 'System' },
+                    { id: 'PHARM-DISP-06', description: 'Verify patient identity using two identifiers.', priority: 'High', riskLevel: 'High', proof: 'ID Check Log', location: 'Dispensing Counter' },
+                    { id: 'PHARM-DISP-07', description: 'Handle Look-Alike Sound-Alike (LASA) drugs with extra care.', priority: 'High', riskLevel: 'High', proof: 'LASA Drug Handling Log', location: 'Pharmacy' },
+                    { id: 'PHARM-DISP-08', description: 'Report any dispensing errors or near misses.', priority: 'High', riskLevel: 'High', proof: 'Error Report', location: 'Office' },
+                    { id: 'PHARM-DISP-09', description: 'Ensure proper lighting at the dispensing counter.', priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Dispensing Counter' },
+                    { id: 'PHARM-DISP-10', description: 'Maintain a clean and organized dispensing area.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Dispensing Counter' },
                 ]
             },
             {
@@ -1826,6 +2113,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PHARM-CS-03', description: "Report any discrepancies to management and regulatory bodies immediately.", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Office' },
                     { id: 'PHARM-CS-04', description: 'Review dispensing records for any unusual patterns.', priority: 'High', riskLevel: 'High', proof: 'Audit Trail Report', location: 'System' },
                     { id: 'PHARM-CS-05', description: 'Ensure controlled substances are stored in a locked safe with restricted access.', priority: 'High', riskLevel: 'High', proof: 'Access Log', location: 'Safe' },
+                    { id: 'PHARM-CS-06', description: 'Verify prescriptions for controlled substances are valid.', priority: 'High', riskLevel: 'High', proof: 'Prescription Check Log', location: 'Dispensing Counter' },
+                    { id: 'PHARM-CS-07', description: 'Maintain records of all controlled substance purchases.', priority: 'High', riskLevel: 'High', proof: 'Purchase Invoices', location: 'Office' },
+                    { id: 'PHARM-CS-08', description: 'Document destruction of expired controlled substances with a witness.', priority: 'High', riskLevel: 'High', proof: 'Destruction Log', location: 'Office' },
+                    { id: 'PHARM-CS-09', description: 'Conduct a surprise audit of controlled substances quarterly.', priority: 'High', riskLevel: 'High', proof: 'Surprise Audit Report', location: 'Office' },
+                    { id: 'PHARM-CS-10', description: 'Train staff on controlled substance regulations.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -1841,6 +2133,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PHARM-CC-03', description: "Check backup power source (UPS/generator) weekly.", priority: 'High', riskLevel: 'High', proof: 'Backup Power Test Log', location: 'Back Office' },
                     { id: 'PHARM-CC-04', description: 'Document corrective actions for any temperature excursions.', priority: 'High', riskLevel: 'High', proof: 'Corrective Action Log', location: 'Office' },
                     { id: 'PHARM-CC-05', description: 'Validate cool boxes used for transport before each use.', priority: 'High', riskLevel: 'High', proof: 'Cool Box Validation Log', location: 'Transport Area' },
+                    { id: 'PHARM-CC-06', description: 'Ensure refrigerator is not overloaded to allow air circulation.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Refrigerator' },
+                    { id: 'PHARM-CC-07', description: 'Store vaccines away from the refrigerator door.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Refrigerator' },
+                    { id: 'PHARM-CC-08', description: 'Calibrate temperature monitoring devices annually.', priority: 'High', riskLevel: 'High', proof: 'Calibration Certificate', location: 'Office' },
+                    { id: 'PHARM-CC-09', description: 'Train staff on cold chain emergency procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'PHARM-CC-10', description: 'Check expiry dates of all cold chain products monthly.', priority: 'High', riskLevel: 'High', proof: 'Expiry Check Log', location: 'Refrigerator' },
                 ]
             },
             {
@@ -1856,6 +2153,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PHARM-EXP-03', description: "Initiate the return-to-vendor process for eligible expired drugs.", priority: 'High', riskLevel: 'Medium', proof: 'Return Forms', location: 'Office' },
                     { id: 'PHARM-EXP-04', description: 'Document all expired drugs that are destroyed.', priority: 'High', riskLevel: 'High', proof: 'Destruction Log', location: 'Office' },
                     { id: 'PHARM-EXP-05', description: 'Implement FIFO (First-In, First-Out) for all stock.', priority: 'High', riskLevel: 'High', proof: 'Stock Audit', location: 'Shelves' },
+                    { id: 'PHARM-EXP-06', description: 'Remove expired drugs from stock immediately.', priority: 'High', riskLevel: 'High', proof: 'Removal Log', location: 'Shelves' },
+                    { id: 'PHARM-EXP-07', description: 'Maintain records of all destroyed medications.', priority: 'High', riskLevel: 'High', proof: 'Destruction Records', location: 'Office' },
+                    { id: 'PHARM-EXP-08', description: 'Send non-returnable expired drugs for incineration as per regulations.', priority: 'High', riskLevel: 'High', proof: 'Incineration Certificate', location: 'Office' },
+                    { id: 'PHARM-EXP-09', description: 'Analyze expired stock data to improve purchasing.', priority: 'Medium', riskLevel: 'Medium', proof: 'Analysis Report', location: 'Office' },
+                    { id: 'PHARM-EXP-10', description: 'Train staff on the expiry management policy.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'Office' },
                 ]
             },
              {
@@ -1871,6 +2173,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PHARM-COMP-03', description: 'Verify all ingredients and their quantities before compounding.', priority: 'High', riskLevel: 'High', proof: 'Compounding Worksheet', location: 'Compounding Room' },
                     { id: 'PHARM-COMP-04', description: 'Perform final product testing for sterility and potency as required.', priority: 'High', riskLevel: 'High', proof: 'QC Test Results', location: 'Lab' },
                     { id: 'PHARM-COMP-05', description: 'Label all compounded products accurately with beyond-use dates.', priority: 'High', riskLevel: 'High', proof: 'Label Verification', location: 'Compounding Room' },
+                    { id: 'PHARM-COMP-06', description: 'Document all compounding activities.', priority: 'High', riskLevel: 'High', proof: 'Compounding Log', location: 'Compounding Room' },
+                    { id: 'PHARM-COMP-07', description: 'Ensure proper environmental monitoring of the compounding area.', priority: 'High', riskLevel: 'High', proof: 'Environmental Monitoring Log', location: 'Compounding Room' },
+                    { id: 'PHARM-COMP-08', description: 'Validate all equipment used in compounding.', priority: 'High', riskLevel: 'High', proof: 'Equipment Validation Records', location: 'Compounding Room' },
+                    { id: 'PHARM-COMP-09', description: 'Train staff on aseptic techniques.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'PHARM-COMP-10', description: 'Review and update compounding procedures regularly.', priority: 'High', riskLevel: 'High', proof: 'Procedure Review Log', location: 'Office' },
                 ]
             },
             {
@@ -1886,6 +2193,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'VQ-03', description: 'Ensure the vendor can provide a Certificate of Analysis (COA) for products.', priority: 'High', riskLevel: 'High', proof: 'Sample COA', location: 'Vendor File' },
                     { id: 'VQ-04', description: 'Establish a quality agreement with the vendor.', priority: 'High', riskLevel: 'High', proof: 'Signed Quality Agreement', location: 'Vendor File' },
                     { id: 'VQ-05', description: 'Audit the vendor\'s storage and transport facilities if possible.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Vendor File' },
+                    { id: 'VQ-06', description: 'Maintain an approved vendor list.', priority: 'High', riskLevel: 'High', proof: 'Approved Vendor List', location: 'Office' },
+                    { id: 'VQ-07', description: 'Review vendor performance annually.', priority: 'High', riskLevel: 'High', proof: 'Performance Review Report', location: 'Office' },
+                    { id: 'VQ-08', description: 'Ensure vendor complies with cold chain requirements.', priority: 'High', riskLevel: 'High', proof: 'Cold Chain Agreement', location: 'Vendor File' },
+                    { id: 'VQ-09', description: 'Check for any regulatory warnings or actions against the vendor.', priority: 'High', riskLevel: 'High', proof: 'Regulatory Check', location: 'Office' },
+                    { id: 'VQ-10', description: 'Document all vendor qualification activities.', priority: 'High', riskLevel: 'High', proof: 'Qualification File', location: 'Office' },
                 ]
             },
             {
@@ -1901,6 +2213,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ADR-03', description: 'Report the ADR to the national pharmacovigilance program (e.g., PvPI in India).', priority: 'High', riskLevel: 'High', proof: 'Reporting Confirmation', location: 'System' },
                     { id: 'ADR-04', description: 'Follow up with the patient as needed.', priority: 'Medium', riskLevel: 'Medium', proof: 'Follow-up Log', location: 'System' },
                     { id: 'ADR-05', description: 'Analyze ADR data quarterly to identify trends.', priority: 'Medium', riskLevel: 'Medium', proof: 'ADR Analysis Report', location: 'Office' },
+                    { id: 'ADR-06', description: 'Train staff on identifying and reporting ADRs.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'ADR-07', description: 'Provide patient with information on how to report ADRs.', priority: 'Medium', riskLevel: 'Low', proof: 'Patient Brochure', location: 'Pharmacy' },
+                    { id: 'ADR-08', description: 'Maintain a log of all reported ADRs.', priority: 'High', riskLevel: 'High', proof: 'ADR Logbook', location: 'Office' },
+                    { id: 'ADR-09', description: 'Ensure confidentiality of patient information.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Policy', location: 'Office' },
+                    { id: 'ADR-10', description: 'Cooperate with regulatory authorities during any investigation.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
                 ]
             },
             {
@@ -1916,6 +2233,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LRC-03', description: 'Review record-keeping practices for compliance with the Drugs & Cosmetics Act.', priority: 'High', riskLevel: 'High', proof: 'Record Audit', location: 'Office' },
                     { id: 'LRC-04', description: 'Ensure all advertising and promotional materials are compliant.', priority: 'High', riskLevel: 'Medium', proof: 'Material Review', location: 'Office' },
                     { id: 'LRC-05', description: 'Stay updated on any changes to pharmacy laws and regulations.', priority: 'High', riskLevel: 'High', proof: 'Regulatory Update Log', location: 'Office' },
+                    { id: 'LRC-06', description: 'Verify compliance with prescription handling requirements.', priority: 'High', riskLevel: 'High', proof: 'Prescription Audit', location: 'Pharmacy' },
+                    { id: 'LRC-07', description: 'Ensure compliance with pricing regulations.', priority: 'High', riskLevel: 'High', proof: 'Price Audit', location: 'Office' },
+                    { id: 'LRC-08', description: 'Manage compliance for online pharmacy operations, if applicable.', priority: 'High', riskLevel: 'High', proof: 'Online Compliance Checklist', location: 'Office' },
+                    { id: 'LRC-09', description: 'Prepare for and manage regulatory inspections.', priority: 'High', riskLevel: 'High', proof: 'Inspection Readiness Checklist', location: 'Office' },
+                    { id: 'LRC-10', description: 'Maintain all compliance-related documentation.', priority: 'High', riskLevel: 'High', proof: 'Compliance File', location: 'Office' },
                 ]
             }
         ]
@@ -1962,6 +2284,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-TRANS-03', description: "Ensure both the driver and attendant sign the trip log.", priority: 'High', riskLevel: 'Medium', proof: 'Signed Trip Log', location: 'Transport Office' },
                     { id: 'SCH-TRANS-04', description: "Review CCTV footage from a random bus weekly.", priority: 'High', riskLevel: 'Medium', proof: 'CCTV Review Log', location: 'Security Office' },
                     { id: 'SCH-TRANS-05', description: 'Check first aid kit and fire extinguisher on each bus daily.', priority: 'High', riskLevel: 'High', proof: 'Bus Safety Check Log', location: 'Bus' },
+                    { id: 'SCH-TRANS-06', description: 'Verify driver license and vehicle registration are valid.', priority: 'High', riskLevel: 'High', proof: 'Document Check', location: 'Transport Office' },
+                    { id: 'SCH-TRANS-07', description: 'Check bus tires, lights, and brakes daily.', priority: 'High', riskLevel: 'High', proof: 'Vehicle Inspection Log', location: 'Bus' },
+                    { id: 'SCH-TRANS-08', description: 'Ensure speed governor is functional.', priority: 'High', riskLevel: 'High', proof: 'Speed Governor Test', location: 'Transport Office' },
+                    { id: 'SCH-TRANS-09', description: 'Train drivers and attendants on emergency procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Transport Office' },
+                    { id: 'SCH-TRANS-10', description: 'Maintain a log of all maintenance done on buses.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Logbook', location: 'Transport Office' },
                 ]
             },
             {
@@ -1977,6 +2304,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-HR-03', description: "Provide mandatory child-protection policy (POCSO) training during induction.", priority: 'High', riskLevel: 'High', proof: 'Training Acknowledgement Form', location: 'Employee File' },
                     { id: 'SCH-HR-04', description: 'Verify educational qualifications and past employment.', priority: 'High', riskLevel: 'High', proof: 'Document Verification', location: 'Employee File' },
                     { id: 'SCH-HR-05', description: 'Ensure all staff sign the code of conduct.', priority: 'High', riskLevel: 'High', proof: 'Signed Code of Conduct', location: 'Employee File' },
+                    { id: 'SCH-HR-06', description: 'Create and maintain a complete personnel file for each employee.', priority: 'High', riskLevel: 'High', proof: 'Personnel File Checklist', location: 'HR Office' },
+                    { id: 'SCH-HR-07', description: 'Conduct a medical check-up for all new staff.', priority: 'High', riskLevel: 'High', proof: 'Medical Certificate', location: 'Employee File' },
+                    { id: 'SCH-HR-08', description: 'Issue ID cards to all staff.', priority: 'High', riskLevel: 'Medium', proof: 'ID Card Issuance Log', location: 'HR Office' },
+                    { id: 'SCH-HR-09', description: 'Enroll staff in provident fund and other statutory schemes.', priority: 'High', riskLevel: 'High', proof: 'Enrollment Forms', location: 'HR Office' },
+                    { id: 'SCH-HR-10', description: 'Provide a clear job description and responsibilities.', priority: 'High', riskLevel: 'Medium', proof: 'Job Description', location: 'Employee File' },
                 ]
             },
             {
@@ -1992,6 +2324,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-CANTEEN-03', description: "Audit staff for hygienic handling of food (gloves, hairnets).", priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit Log', location: 'Kitchen' },
                     { id: 'SCH-CANTEEN-04', description: "Display a clear allergen information chart.", priority: 'High', riskLevel: 'High', proof: 'Photo of Display', location: 'Canteen' },
                     { id: 'SCH-CANTEEN-05', description: 'Check that food is cooked to the correct internal temperatures.', priority: 'High', riskLevel: 'High', proof: 'Cooking Temperature Log', location: 'Kitchen' },
+                    { id: 'SCH-CANTEEN-06', description: 'Ensure raw and cooked foods are stored separately.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Kitchen' },
+                    { id: 'SCH-CANTEEN-07', description: 'Maintain a cleaning schedule for all kitchen equipment.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Kitchen' },
+                    { id: 'SCH-CANTEEN-08', description: 'Check water quality reports for drinking water.', priority: 'High', riskLevel: 'High', proof: 'Water Test Report', location: 'Office' },
+                    { id: 'SCH-CANTEEN-09', description: 'Implement pest control measures.', priority: 'High', riskLevel: 'High', proof: 'Pest Control Log', location: 'Kitchen' },
+                    { id: 'SCH-CANTEEN-10', description: 'Train canteen staff on food safety and hygiene.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -2007,6 +2344,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-DRILL-03', description: "Have a specific, documented evacuation plan for students with disabilities.", priority: 'High', riskLevel: 'High', proof: 'Special Needs Evacuation Plan', location: 'Office' },
                     { id: 'SCH-DRILL-04', description: 'Test all alarm systems before conducting a drill.', priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Control Room' },
                     { id: 'SCH-DRILL-05', description: 'Debrief with staff after each drill to identify improvements.', priority: 'High', riskLevel: 'Medium', proof: 'Debrief Minutes', location: 'Office' },
+                    { id: 'SCH-DRILL-06', description: 'Check all fire extinguishers and hydrants monthly.', priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Campus' },
+                    { id: 'SCH-DRILL-07', description: 'Ensure all emergency exits are clear and marked.', priority: 'High', riskLevel: 'High', proof: 'Exit Audit', location: 'Campus' },
+                    { id: 'SCH-DRILL-08', description: 'Train staff on their roles during an emergency.', priority: 'High', riskLevel: 'High', proof: 'Emergency Role Training', location: 'Office' },
+                    { id: 'SCH-DRILL-09', description: 'Communicate emergency procedures to parents.', priority: 'High', riskLevel: 'Medium', proof: 'Parent Circular', location: 'Office' },
+                    { id: 'SCH-DRILL-10', description: 'Coordinate with local fire and police departments.', priority: 'High', riskLevel: 'High', proof: 'Coordination Meeting Minutes', location: 'Office' },
                 ]
             },
             {
@@ -2022,6 +2364,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SCH-HEALTH-03', description: "Notify parents immediately if a child is isolated.", priority: 'High', riskLevel: 'High', proof: 'Parent Communication Log', location: 'Infirmary' },
                     { id: 'SCH-HEALTH-04', description: "Log all details of the sickness and actions taken.", priority: 'High', riskLevel: 'Medium', proof: 'Student Health Record', location: 'Infirmary' },
                     { id: 'SCH-HEALTH-05', description: 'Follow protocol for notifying health authorities in case of a notifiable disease.', priority: 'High', riskLevel: 'High', proof: 'Notification Record', location: 'Office' },
+                    { id: 'SCH-HEALTH-06', description: 'Maintain student vaccination records.', priority: 'High', riskLevel: 'High', proof: 'Vaccination Records', location: 'Infirmary' },
+                    { id: 'SCH-HEALTH-07', description: 'Dispense medication to students only with written parental consent.', priority: 'High', riskLevel: 'High', proof: 'Consent Forms', location: 'Infirmary' },
+                    { id: 'SCH-HEALTH-08', description: 'Check first aid kits in classrooms and buses monthly.', priority: 'High', riskLevel: 'High', proof: 'First Aid Kit Log', location: 'Infirmary' },
+                    { id: 'SCH-HEALTH-09', description: 'Provide health and hygiene education to students.', priority: 'Medium', riskLevel: 'Low', proof: 'Education Session Plan', location: 'Classrooms' },
+                    { id: 'SCH-HEALTH-10', description: 'Train teachers to recognize common signs of illness.', priority: 'High', riskLevel: 'Medium', proof: 'Teacher Training Log', location: 'Office' },
                 ]
             },
             {
@@ -2037,6 +2384,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PG-03', description: 'Ensure fall surfaces (e.g., rubber mats, sand) are adequate and well-maintained.', priority: 'High', riskLevel: 'High', proof: 'Surface Depth Check', location: 'Playground' },
                     { id: 'PG-04', description: 'Report and cordon off any unsafe equipment immediately.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Request', location: 'Playground' },
                     { id: 'PG-05', description: 'Check for any foreign objects or debris in the play area.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Playground' },
+                    { id: 'PG-06', description: 'Ensure adequate supervision during playtime.', priority: 'High', riskLevel: 'High', proof: 'Supervisor Roster', location: 'Playground' },
+                    { id: 'PG-07', description: 'Check for any water stagnation that could breed mosquitoes.', priority: 'Medium', riskLevel: 'Medium', proof: 'Visual Check', location: 'Playground' },
+                    { id: 'PG-08', description: 'Verify that equipment is age-appropriate for the children using it.', priority: 'High', riskLevel: 'High', proof: 'Equipment Specs', location: 'Office' },
+                    { id: 'PG-09', description: 'Clean and sanitize playground equipment regularly.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Playground' },
+                    { id: 'PG-10', description: 'Maintain a record of all inspections and repairs.', priority: 'High', riskLevel: 'High', proof: 'Maintenance File', location: 'Office' },
                 ]
             },
             {
@@ -2052,6 +2404,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'VMCS-03', description: 'Log the entry and exit times of all visitors.', priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Main Gate' },
                     { id: 'VMCS-04', description: 'Escort visitors to their destination within the campus.', priority: 'High', riskLevel: 'Medium', proof: 'Escort Protocol', location: 'Campus' },
                     { id: 'VMCS-05', description: 'Perform regular patrols of the campus perimeter.', priority: 'High', riskLevel: 'High', proof: 'Patrol Log', location: 'Campus' },
+                    { id: 'VMCS-06', description: 'Monitor CCTV cameras for any suspicious activity.', priority: 'High', riskLevel: 'High', proof: 'CCTV Log', location: 'Security Office' },
+                    { id: 'VMCS-07', description: 'Ensure all gates and access points are secure.', priority: 'High', riskLevel: 'High', proof: 'Gate Check Log', location: 'Campus' },
+                    { id: 'VMCS-08', description: 'Implement a clear policy for parent and guardian pickups.', priority: 'High', riskLevel: 'High', proof: 'Pickup Policy', location: 'Office' },
+                    { id: 'VMCS-09', description: 'Train security staff on emergency procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'VMCS-10', description: 'Have a system for emergency communication with all staff.', priority: 'High', riskLevel: 'High', proof: 'Communication System Test', location: 'Office' },
                 ]
             },
             {
@@ -2067,6 +2424,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ITDS-03', description: 'Conduct digital citizenship and online safety workshops for students.', priority: 'High', riskLevel: 'Medium', proof: 'Workshop Schedule', location: 'School' },
                     { id: 'ITDS-04', description: 'Monitor network for any unauthorized access or activity.', priority: 'High', riskLevel: 'High', proof: 'Network Monitoring Tool', location: 'IT Office' },
                     { id: 'ITDS-05', description: 'Ensure all school devices have up-to-date antivirus software.', priority: 'High', riskLevel: 'High', proof: 'Software Audit', location: 'IT Office' },
+                    { id: 'ITDS-06', description: 'Manage student accounts and access levels.', priority: 'High', riskLevel: 'High', proof: 'Account Management Log', location: 'IT Office' },
+                    { id: 'ITDS-07', description: 'Implement a policy for the use of personal devices on campus.', priority: 'High', riskLevel: 'Medium', proof: 'BYOD Policy', location: 'Office' },
+                    { id: 'ITDS-08', description: 'Back up all critical school data regularly.', priority: 'High', riskLevel: 'High', proof: 'Backup Logs', location: 'IT Office' },
+                    { id: 'ITDS-09', description: 'Provide training to staff on cybersecurity best practices.', priority: 'High', riskLevel: 'High', proof: 'Staff Training Records', location: 'Office' },
+                    { id: 'ITDS-10', description: 'Have a clear incident response plan for any cyber attacks.', priority: 'High', riskLevel: 'High', proof: 'Incident Response Plan', location: 'Office' },
                 ]
             }
         ]
@@ -2113,6 +2475,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'ULAB-03', description: "Check that appropriate PPE is being used by all lab personnel.", priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Lab'},
                     {id: 'ULAB-04', description: "Inspect fume hoods for proper airflow and certification.", priority: 'High', riskLevel: 'High', proof: 'Fume Hood Log', location: 'Lab'},
                     {id: 'ULAB-05', description: "Manage chemical waste segregation and disposal records.", priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Lab'},
+                    {id: 'ULAB-06', description: 'Test emergency eyewash stations and showers weekly.', priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Lab' },
+                    {id: 'ULAB-07', description: 'Ensure lab equipment is calibrated and maintained.', priority: 'High', riskLevel: 'High', proof: 'Calibration Records', location: 'Lab' },
+                    {id: 'ULAB-08', description: 'Maintain an inventory of all chemicals.', priority: 'High', riskLevel: 'High', proof: 'Chemical Inventory', location: 'Lab' },
+                    {id: 'ULAB-09', description: 'Provide safety training to all new lab users.', priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Office' },
+                    {id: 'ULAB-10', description: 'Have a clear protocol for chemical spills.', priority: 'High', riskLevel: 'High', proof: 'Spill Response Plan', location: 'Lab' },
                 ]
             },
             {
@@ -2128,6 +2495,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'URESEARCH-03', description: "Collect and file conflict-of-interest disclosures from all researchers.", priority: 'High', riskLevel: 'High', proof: 'Disclosure Forms', location: 'Research Office'},
                     {id: 'URESEARCH-04', description: 'Ensure informed consent is properly documented for all participants.', priority: 'High', riskLevel: 'High', proof: 'Consent Forms', location: 'Research Office' },
                     {id: 'URESEARCH-05', description: 'Follow data anonymization protocols where required.', priority: 'High', riskLevel: 'High', proof: 'Anonymization Log', location: 'IT' },
+                    {id: 'URESEARCH-06', description: 'Maintain a secure data backup.', priority: 'High', riskLevel: 'High', proof: 'Backup Log', location: 'IT' },
+                    {id: 'URESEARCH-07', description: 'Manage data sharing agreements with external collaborators.', priority: 'High', riskLevel: 'High', proof: 'Data Sharing Agreements', location: 'Research Office' },
+                    {id: 'URESEARCH-08', description: 'Ensure compliance with funding agency requirements.', priority: 'High', riskLevel: 'High', proof: 'Grant Compliance Checklist', location: 'Research Office' },
+                    {id: 'URESEARCH-09', description: 'Provide ethics training to all researchers.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Research Office' },
+                    {id: 'URESEARCH-10', description: 'Audit research projects for ethical compliance.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Research Office' },
                 ]
             },
             {
@@ -2143,6 +2515,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'UHOSTEL-03', description: "Review the night-warden's log for any incidents.", priority: 'High', riskLevel: 'Medium', proof: 'Warden Logbook', location: 'Warden Office'},
                     {id: 'UHOSTEL-04', description: "Check that fire extinguishers on all floors are accessible and have valid inspection tags.", priority: 'High', riskLevel: 'High', proof: 'Extinguisher Check Log', location: 'Hostel Corridors'},
                     {id: 'UHOSTEL-05', description: 'Ensure all common areas are clean and hygienic.', priority: 'High', riskLevel: 'Medium', proof: 'Hygiene Log', location: 'Common Rooms' },
+                    {id: 'UHOSTEL-06', description: 'Check for any maintenance issues and report them.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Request Log', location: 'Warden Office' },
+                    {id: 'UHOSTEL-07', description: 'Monitor for any signs of bullying or harassment.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Warden Office' },
+                    {id: 'UHOSTEL-08', description: 'Ensure all residents have emergency contact information.', priority: 'High', riskLevel: 'Medium', proof: 'Contact Info Verification', location: 'Warden Office' },
+                    {id: 'UHOSTEL-09', description: 'Manage hostel entry and exit logs.', priority: 'High', riskLevel: 'High', proof: 'Entry/Exit Register', location: 'Hostel Entrance' },
+                    {id: 'UHOSTEL-10', description: 'Conduct a headcount during fire drills.', priority: 'High', riskLevel: 'High', proof: 'Drill Attendance', location: 'Assembly Point' },
                 ]
             },
             {
@@ -2158,6 +2535,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'UEVENT-03', description: "Approve the emergency exit and evacuation plan.", priority: 'High', riskLevel: 'High', proof: 'Approved Evacuation Plan', location: 'Office'},
                     {id: 'UEVENT-04', description: "Conduct a safety induction for all third-party event vendors.", priority: 'High', riskLevel: 'Medium', proof: 'Vendor Induction Log', location: 'Event Venue'},
                     {id: 'UEVENT-05', description: 'Verify security deployment as per the event plan.', priority: 'High', riskLevel: 'High', proof: 'Security Deployment Plan', location: 'Event Venue' },
+                    {id: 'UEVENT-06', description: 'Inspect stage and equipment setup for safety.', priority: 'High', riskLevel: 'High', proof: 'Stage Inspection Log', location: 'Event Venue' },
+                    {id: 'UEVENT-07', description: 'Check all fire safety equipment at the venue.', priority: 'High', riskLevel: 'High', proof: 'Fire Equipment Log', location: 'Event Venue' },
+                    {id: 'UEVENT-08', description: 'Have a communication plan for all event staff.', priority: 'High', riskLevel: 'High', proof: 'Communication Plan', location: 'Office' },
+                    {id: 'UEVENT-09', description: 'Manage crowd control barriers and signage.', priority: 'High', riskLevel: 'High', proof: 'Crowd Control Plan', location: 'Event Venue' },
+                    {id: 'UEVENT-10', description: 'Brief all staff on their roles during an emergency.', priority: 'High', riskLevel: 'High', proof: 'Emergency Briefing Log', location: 'Event Venue' },
                 ]
             },
             {
@@ -2173,6 +2555,11 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'USUPPORT-03', description: "Have a documented escalation tree for handling severe student issues.", priority: 'High', riskLevel: 'High', proof: 'Escalation Document', location: 'Office'},
                     {id: 'USUPPORT-04', description: 'Ensure all staff are trained on the anti-ragging and anti-harassment policies.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                     {id: 'USUPPORT-05', description: 'Track resolution times for all reported grievances.', priority: 'High', riskLevel: 'Medium', proof: 'Grievance Tracker', location: 'System' },
+                    {id: 'USUPPORT-06', description: 'Provide resources for mental health support.', priority: 'High', riskLevel: 'High', proof: 'Resource List', location: 'Student Welfare Office' },
+                    {id: 'USUPPORT-07', description: 'Conduct awareness campaigns on student support services.', priority: 'High', riskLevel: 'Medium', proof: 'Campaign Material', location: 'Campus' },
+                    {id: 'USUPPORT-08', description: 'Maintain confidentiality of all student cases.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Policy', location: 'Office' },
+                    {id: 'USUPPORT-09', description: 'Get feedback from students on the effectiveness of support services.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'System' },
+                    {id: 'USUPPORT-10', description: 'Collaborate with external support organizations when needed.', priority: 'High', riskLevel: 'High', proof: 'Collaboration Agreements', location: 'Office' },
                 ]
             },
             {
@@ -2188,6 +2575,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AIE-03', description: 'Implement a strict protocol for handling cases of cheating.', priority: 'High', riskLevel: 'High', proof: 'Academic Misconduct Policy', location: 'Office' },
                     { id: 'AIE-04', description: 'Use plagiarism detection software for all major submissions.', priority: 'High', riskLevel: 'Medium', proof: 'Plagiarism Scan Reports', location: 'System' },
                     { id: 'AIE-05', description: 'Follow a secure process for the evaluation and moderation of results.', priority: 'High', riskLevel: 'High', proof: 'Evaluation Protocol', location: 'Office' },
+                    { id: 'AIE-06', description: 'Verify student identity before they enter the exam hall.', priority: 'High', riskLevel: 'High', proof: 'ID Check Log', location: 'Exam Hall Entrance' },
+                    { id: 'AIE-07', description: 'Ensure proper seating arrangements to prevent cheating.', priority: 'High', riskLevel: 'Medium', proof: 'Seating Plan', location: 'Exam Hall' },
+                    { id: 'AIE-08', description: 'Securely collect and transport answer sheets after the exam.', priority: 'High', riskLevel: 'High', proof: 'Transport Log', location: 'Exam Hall' },
+                    { id: 'AIE-09', description: 'Maintain confidentiality of exam questions and results.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Agreements', location: 'Office' },
+                    { id: 'AIE-10', description: 'Have a clear policy for students who miss exams due to illness.', priority: 'High', riskLevel: 'Medium', proof: 'Missed Exam Policy', location: 'Office' },
                 ]
             },
             {
@@ -2203,6 +2595,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CIM-03', description: 'Inspect all campus lighting and replace faulty bulbs.', priority: 'High', riskLevel: 'Medium', proof: 'Lighting Log', location: 'Campus-wide' },
                     { id: 'CIM-04', description: 'Verify that all fire hydrants and water sources are accessible.', priority: 'High', riskLevel: 'High', proof: 'Hydrant Check', location: 'Campus-wide' },
                     { id: 'CIM-05', description: 'Check campus signage for visibility and accuracy.', priority: 'Medium', riskLevel: 'Low', proof: 'Signage Audit', location: 'Campus-wide' },
+                    { id: 'CIM-06', description: 'Inspect drainage systems to prevent waterlogging.', priority: 'High', riskLevel: 'Medium', proof: 'Drainage Inspection', location: 'Campus-wide' },
+                    { id: 'CIM-07', description: 'Check for any unsafe trees or branches.', priority: 'High', riskLevel: 'High', proof: 'Tree Inspection', location: 'Campus-wide' },
+                    { id: 'CIM-08', description: 'Ensure all accessibility ramps and features are in good condition.', priority: 'High', riskLevel: 'High', proof: 'Accessibility Audit', location: 'Campus-wide' },
+                    { id: 'CIM-09', description: 'Maintain a log of all maintenance activities.', priority: 'High', riskLevel: 'Medium', proof: 'Maintenance Logbook', location: 'Office' },
+                    { id: 'CIM-10', description: 'Plan and budget for major infrastructure repairs.', priority: 'High', riskLevel: 'High', proof: 'Budget Plan', location: 'Office' },
                 ]
             },
             {
@@ -2218,6 +2615,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LO-03', description: 'Monitor the library to ensure a quiet environment is maintained.', priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Library' },
                     { id: 'LO-04', description: 'Manage overdue notices and fines.', priority: 'High', riskLevel: 'Medium', proof: 'Overdue Report', location: 'System' },
                     { id: 'LO-05', description: 'Inspect books for damage upon return.', priority: 'Medium', riskLevel: 'Medium', proof: 'Damage Log', location: 'Circulation Desk' },
+                    { id: 'LO-06', description: 'Assist students with finding resources.', priority: 'High', riskLevel: 'Low', proof: 'Assistance Log', location: 'Library' },
+                    { id: 'LO-07', description: 'Manage library membership and records.', priority: 'High', riskLevel: 'Medium', proof: 'Membership System', location: 'System' },
+                    { id: 'LO-08', description: 'Maintain an inventory of all library books.', priority: 'High', riskLevel: 'Medium', proof: 'Inventory Report', location: 'System' },
+                    { id: 'LO-09', description: 'Organize library events and workshops.', priority: 'Medium', riskLevel: 'Low', proof: 'Event Calendar', location: 'Library' },
+                    { id: 'LO-10', description: 'Ensure all library equipment (computers, printers) is functional.', priority: 'High', riskLevel: 'Medium', proof: 'Equipment Check Log', location: 'Library' },
                 ]
             }
         ]
@@ -2263,6 +2665,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FMAN-SSOP-03', description: "Check that equipment is fully disassembled for cleaning as per the schedule.", priority: 'High', riskLevel: 'High', proof: 'Disassembly Log', location: 'Production Line' },
                     { id: 'FMAN-SSOP-04', description: "Conduct ATP swabbing or other verification methods to confirm cleanliness.", priority: 'High', riskLevel: 'High', proof: 'Swab Test Results', location: 'Lab' },
                     { id: 'FMAN-SSOP-05', description: "Supervisor to sign off on all cleaning and sanitation logs.", priority: 'High', riskLevel: 'High', proof: 'Signed Logs', location: 'Office' },
+                    { id: 'FMAN-SSOP-06', description: 'Maintain a master sanitation schedule.', priority: 'High', riskLevel: 'High', proof: 'Master Schedule', location: 'QA Office' },
+                    { id: 'FMAN-SSOP-07', description: 'Train staff on SSOPs.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'FMAN-SSOP-08', description: 'Ensure proper drainage in all production areas.', priority: 'High', riskLevel: 'Medium', proof: 'Drain Inspection Log', location: 'Production Area' },
+                    { id: 'FMAN-SSOP-09', description: 'Manage waste disposal to prevent pest attraction.', priority: 'High', riskLevel: 'High', proof: 'Waste Management Log', location: 'Waste Area' },
+                    { id: 'FMAN-SSOP-10', description: 'Review and update SSOPs annually.', priority: 'High', riskLevel: 'High', proof: 'Review Log', location: 'QA Office' },
                 ]
             },
             {
@@ -2278,6 +2685,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FMAN-ALLERGEN-03', description: "Ensure allergenic raw materials are stored in a segregated, clearly marked area.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Warehouse' },
                     { id: 'FMAN-ALLERGEN-04', description: 'Train all production staff on allergen handling protocols.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                     { id: 'FMAN-ALLERGEN-05', description: 'Manage rework of allergen-containing products to prevent cross-contamination.', priority: 'High', riskLevel: 'High', proof: 'Rework Log', location: 'Production' },
+                    { id: 'FMAN-ALLERGEN-06', description: 'Use dedicated utensils and equipment for allergens.', priority: 'High', riskLevel: 'High', proof: 'Equipment Audit', location: 'Production Line' },
+                    { id: 'FMAN-ALLERGEN-07', description: 'Have a clear spill response plan for allergenic materials.', priority: 'High', riskLevel: 'High', proof: 'Spill Plan', location: 'Production' },
+                    { id: 'FMAN-ALLERGEN-08', description: 'Maintain an allergen matrix for all products.', priority: 'High', riskLevel: 'High', proof: 'Allergen Matrix', location: 'QA Office' },
+                    { id: 'FMAN-ALLERGEN-09', description: 'Conduct regular audits of allergen controls.', priority: 'High', riskLevel: 'High', proof: 'Allergen Audit Report', location: 'QA Office' },
+                    { id: 'FMAN-ALLERGEN-10', description: 'Communicate allergen information to all relevant staff.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
                 ]
             },
             {
@@ -2293,6 +2705,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FMAN-TRACE-03', description: "Assign a unique finished good batch number that links back to all raw materials.", priority: 'High', riskLevel: 'High', proof: 'Finished Goods Log', location: 'System' },
                     { id: 'FMAN-TRACE-04', description: 'Conduct a mock traceability exercise quarterly.', priority: 'High', riskLevel: 'High', proof: 'Mock Traceability Report', location: 'Office' },
                     { id: 'FMAN-TRACE-05', description: 'Ensure finished product labels have correct batch codes and expiry dates.', priority: 'High', riskLevel: 'High', proof: 'Label Audit', location: 'Packaging Line' },
+                    { id: 'FMAN-TRACE-06', description: 'Maintain records for the required retention period.', priority: 'High', riskLevel: 'High', proof: 'Record Retention Policy', location: 'Office' },
+                    { id: 'FMAN-TRACE-07', description: 'Link traceability data to the distribution chain.', priority: 'High', riskLevel: 'High', proof: 'Distribution Log', location: 'System' },
+                    { id: 'FMAN-TRACE-08', description: 'Train staff on the importance of accurate record-keeping for traceability.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'FMAN-TRACE-09', description: 'Validate the traceability system annually.', priority: 'High', riskLevel: 'High', proof: 'Validation Report', location: 'Office' },
+                    { id: 'FMAN-TRACE-10', description: 'Have a clear system for identifying and holding non-conforming products.', priority: 'High', riskLevel: 'High', proof: 'Hold & Release SOP', location: 'QA Office' },
                 ]
             },
             {
@@ -2308,6 +2725,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FMAN-CCP-PM-03', description: "Test all safety interlocks on equipment weekly.", priority: 'High', riskLevel: 'High', proof: 'Interlock Test Log', location: 'Production Line' },
                     { id: 'FMAN-CCP-PM-04', description: 'Calibrate all monitoring equipment (e.g., thermometers, pressure gauges) as per schedule.', priority: 'High', riskLevel: 'High', proof: 'Calibration Records', location: 'Maintenance Office' },
                     { id: 'FMAN-CCP-PM-05', description: 'Lubricate all moving parts as per manufacturer specifications.', priority: 'High', riskLevel: 'Medium', proof: 'Lubrication Log', location: 'Production Line' },
+                    { id: 'FMAN-CCP-PM-06', description: 'Inspect seals and gaskets on equipment.', priority: 'High', riskLevel: 'High', proof: 'Seal Inspection Log', location: 'Production Line' },
+                    { id: 'FMAN-CCP-PM-07', description: 'Maintain a log of all maintenance activities.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Logbook', location: 'Maintenance Office' },
+                    { id: 'FMAN-CCP-PM-08', description: 'Use food-grade lubricants where necessary.', priority: 'High', riskLevel: 'High', proof: 'Lubricant Purchase Records', location: 'Maintenance Office' },
+                    { id: 'FMAN-CCP-PM-09', description: 'Train maintenance staff on food safety requirements.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'FMAN-CCP-PM-10', description: 'Have a clear procedure for handling breakdowns of CCP equipment.', priority: 'High', riskLevel: 'High', proof: 'Breakdown SOP', location: 'Maintenance Office' },
                 ]
             },
             {
@@ -2323,6 +2745,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FMAN-RECALL-03', description: "Have pre-approved communication templates ready for notifying regulators and customers.", priority: 'High', riskLevel: 'High', proof: 'Communication Templates', location: 'Office' },
                     { id: 'FMAN-RECALL-04', description: 'Verify contact details for the recall team and regulatory bodies are up to date.', priority: 'High', riskLevel: 'High', proof: 'Contact List', location: 'Office' },
                     { id: 'FMAN-RECALL-05', description: 'Evaluate the effectiveness of the mock recall and identify areas for improvement.', priority: 'High', riskLevel: 'High', proof: 'Post-Drill Review Minutes', location: 'Office' },
+                    { id: 'FMAN-RECALL-06', description: 'Define roles and responsibilities of the recall team.', priority: 'High', riskLevel: 'High', proof: 'Recall Team Charter', location: 'Office' },
+                    { id: 'FMAN-RECALL-07', description: 'Have a plan for handling recalled product.', priority: 'High', riskLevel: 'High', proof: 'Product Disposition Plan', location: 'Office' },
+                    { id: 'FMAN-RECALL-08', description: 'Test communication channels for the recall.', priority: 'High', riskLevel: 'High', proof: 'Comms Test Log', location: 'Office' },
+                    { id: 'FMAN-RECALL-09', description: 'Train the recall team on their roles.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'FMAN-RECALL-10', description: 'Maintain all recall-related documentation.', priority: 'High', riskLevel: 'High', proof: 'Recall File', location: 'Office' },
                 ]
             },
             {
@@ -2338,6 +2765,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'GBPC-03', description: 'Follow a documented procedure for handling any breakage.', priority: 'High', riskLevel: 'High', proof: 'Breakage Procedure', location: 'QA Office' },
                     { id: 'GBPC-04', description: 'Ensure all light fixtures in production areas have protective covers.', priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Production Area' },
                     { id: 'GBPC-05', description: 'Train staff on the glass and brittle plastic policy.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
+                    { id: 'GBPC-06', description: 'Use metal-detectable plastic where possible.', priority: 'Medium', riskLevel: 'Medium', proof: 'Material Specs', location: 'Procurement' },
+                    { id: 'GBPC-07', description: 'Investigate any incidents of glass or plastic contamination.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'QA Office' },
+                    { id: 'GBPC-08', description: 'Restrict the use of glass in production areas.', priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'QA Office' },
+                    { id: 'GBPC-09', description: 'Perform regular checks of sight glasses on equipment.', priority: 'High', riskLevel: 'High', proof: 'Sight Glass Log', location: 'Production Line' },
+                    { id: 'GBPC-10', description: 'Review the policy annually.', priority: 'High', riskLevel: 'High', proof: 'Policy Review Log', location: 'QA Office' },
                 ]
             },
             {
@@ -2353,6 +2785,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PCM-03', description: 'Ensure there are no gaps in doors, windows, or walls that could allow pest entry.', priority: 'High', riskLevel: 'High', proof: 'Structural Audit', location: 'Facility-wide' },
                     { id: 'PCM-04', description: 'Keep all external areas free of debris and standing water.', priority: 'High', riskLevel: 'High', proof: 'External Area Inspection Log', location: 'Plant Perimeter' },
                     { id: 'PCM-05', description: 'Analyze pest activity trends to identify and address root causes.', priority: 'High', riskLevel: 'High', proof: 'Trend Analysis Report', location: 'QA Office' },
+                    { id: 'PCM-06', description: 'Ensure all drains are covered and clean.', priority: 'High', riskLevel: 'High', proof: 'Drain Inspection Log', location: 'Facility-wide' },
+                    { id: 'PCM-07', description: 'Manage waste to prevent pest attraction.', priority: 'High', riskLevel: 'High', proof: 'Waste Management Log', location: 'Waste Area' },
+                    { id: 'PCM-08', description: 'Train employees to report any pest sightings.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
+                    { id: 'PCM-09', description: 'Use insect light traps (ILTs) in appropriate areas.', priority: 'High', riskLevel: 'Medium', proof: 'ILT Layout Plan', location: 'QA Office' },
+                    { id: 'PCM-10', description: 'Review the pest control program annually.', priority: 'High', riskLevel: 'High', proof: 'Program Review Minutes', location: 'QA Office' },
                 ]
             },
             {
@@ -2368,6 +2805,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SAV-03', description: 'Request product specifications and a Certificate of Analysis (COA) for all raw materials.', priority: 'High', riskLevel: 'High', proof: 'Spec Sheets & COAs', location: 'Procurement File' },
                     { id: 'SAV-04', description: 'Conduct a physical audit of critical suppliers\' facilities if possible.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Procurement File' },
                     { id: 'SAV-05', description: 'Maintain an approved supplier list.', priority: 'High', riskLevel: 'High', proof: 'Approved Supplier List', location: 'System' },
+                    { id: 'SAV-06', description: 'Review supplier performance annually.', priority: 'High', riskLevel: 'High', proof: 'Performance Review Report', location: 'Procurement File' },
+                    { id: 'SAV-07', description: 'Have a clear agreement on quality and delivery terms.', priority: 'High', riskLevel: 'High', proof: 'Signed Supplier Agreement', location: 'Procurement File' },
+                    { id: 'SAV-08', description: 'Test incoming raw materials for quality.', priority: 'High', riskLevel: 'High', proof: 'Incoming QC Report', location: 'Lab' },
+                    { id: 'SAV-09', description: 'Track supplier non-conformances.', priority: 'High', riskLevel: 'High', proof: 'Non-Conformance Log', location: 'System' },
+                    { id: 'SAV-10', description: 'Ensure suppliers have a traceability system in place.', priority: 'High', riskLevel: 'High', proof: 'Supplier Traceability Audit', location: 'Procurement File' },
                 ]
             }
         ]
@@ -2413,6 +2855,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MFG-LOTO-03', description: 'Verify zero energy state by attempting to start the machine.', priority: 'High', riskLevel: 'High', proof: 'Zero Energy Check Log', location: 'Equipment' },
                     { id: 'MFG-LOTO-04', description: 'Use multi-person lock bars for group maintenance tasks.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Equipment' },
                     { id: 'MFG-LOTO-05', description: 'Complete return-to-service checks before removing locks.', priority: 'High', riskLevel: 'High', proof: 'Return-to-Service Form', location: 'Equipment' },
+                    { id: 'MFG-LOTO-06', description: 'Maintain a LOTO registry of all authorized personnel.', priority: 'High', riskLevel: 'High', proof: 'LOTO Registry', location: 'EHS Office' },
+                    { id: 'MFG-LOTO-07', description: 'Audit LOTO procedures annually.', priority: 'High', riskLevel: 'High', proof: 'LOTO Audit Report', location: 'EHS Office' },
+                    { id: 'MFG-LOTO-08', description: 'Provide LOTO training to all relevant employees.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'MFG-LOTO-09', description: 'Ensure LOTO devices are standardized and readily available.', priority: 'High', riskLevel: 'High', proof: 'Device Inventory', location: 'Stores' },
+                    { id: 'MFG-LOTO-10', description: 'Investigate any LOTO violations.', priority: 'High', riskLevel: 'High', proof: 'Investigation Report', location: 'EHS Office' },
                 ]
             },
             {
@@ -2428,6 +2875,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MFG-JHA-03', description: 'Determine preventive measures and required PPE for each hazard.', priority: 'High', riskLevel: 'High', proof: 'JHA Form', location: 'Office' },
                     { id: 'MFG-JHA-04', description: 'Get sign-off on the completed JHA from the area supervisor and safety officer.', priority: 'High', riskLevel: 'High', proof: 'Signed JHA Form', location: 'Office' },
                     { id: 'MFG-JHA-05', description: 'Review JHAs annually or after any incident.', priority: 'High', riskLevel: 'High', proof: 'Review Log', location: 'Office' },
+                    { id: 'MFG-JHA-06', description: 'Communicate the JHA to all workers involved in the task.', priority: 'High', riskLevel: 'High', proof: 'Toolbox Talk Log', location: 'Work Area' },
+                    { id: 'MFG-JHA-07', description: 'Update JHA if the task changes.', priority: 'High', riskLevel: 'High', proof: 'Updated JHA Form', location: 'Office' },
+                    { id: 'MFG-JHA-08', description: 'Maintain a library of JHAs for common tasks.', priority: 'High', riskLevel: 'Medium', proof: 'JHA Library', location: 'Safety Office' },
+                    { id: 'MFG-JHA-09', description: 'Train employees on how to conduct a JHA.', priority: 'High', riskLevel: 'Medium', proof: 'Training Records', location: 'HR' },
+                    { id: 'MFG-JHA-10', description: 'Use JHA findings to improve overall safety procedures.', priority: 'High', riskLevel: 'High', proof: 'Procedure Update Log', location: 'Safety Office' },
                 ]
             },
             {
@@ -2443,6 +2895,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MFG-PPE-03', description: 'Maintain a replacement schedule for PPE with a limited lifespan.', priority: 'Medium', riskLevel: 'Medium', proof: 'Replacement Schedule', location: 'Office' },
                     { id: 'MFG-PPE-04', description: 'Keep records of respirator fit testing for all relevant employees.', priority: 'High', riskLevel: 'High', proof: 'Fit Test Records', location: 'EHS Office' },
                     { id: 'MFG-PPE-05', description: 'Inspect communal PPE (e.g., face shields) daily for damage.', priority: 'High', riskLevel: 'High', proof: 'Communal PPE Log', location: 'Shop Floor' },
+                    { id: 'MFG-PPE-06', description: 'Ensure PPE is stored correctly.', priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'Stores' },
+                    { id: 'MFG-PPE-07', description: 'Provide training on the proper use and maintenance of PPE.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'MFG-PPE-08', description: 'Assess new tasks for PPE requirements.', priority: 'High', riskLevel: 'High', proof: 'JHA', location: 'Safety Office' },
+                    { id: 'MFG-PPE-09', description: 'Enforce PPE policy with disciplinary action if necessary.', priority: 'High', riskLevel: 'High', proof: 'Disciplinary Records', location: 'HR' },
+                    { id: 'MFG-PPE-10', description: 'Regularly get feedback from users on PPE comfort and effectiveness.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'EHS Office' },
                 ]
             },
             {
@@ -2458,6 +2915,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MFG-INC-03', description: 'Conduct a 5-Why or similar root cause analysis (RCA).', priority: 'High', riskLevel: 'High', proof: 'RCA Report', location: 'Office' },
                     { id: 'MFG-INC-04', description: 'Develop and track Corrective and Preventive Actions (CAPAs) to closure.', priority: 'High', riskLevel: 'High', proof: 'CAPA Tracker', location: 'Office' },
                     { id: 'MFG-INC-05', description: 'Report notifiable accidents to the relevant authorities within the timeline.', priority: 'High', riskLevel: 'High', proof: 'Regulatory Filing', location: 'Office' },
+                    { id: 'MFG-INC-06', description: 'Form an investigation team for serious incidents.', priority: 'High', riskLevel: 'High', proof: 'Team Charter', location: 'Office' },
+                    { id: 'MFG-INC-07', description: 'Interview all involved parties and witnesses.', priority: 'High', riskLevel: 'High', proof: 'Interview Notes', location: 'Office' },
+                    { id: 'MFG-INC-08', description: 'Share lessons learned with all employees.', priority: 'High', riskLevel: 'Medium', proof: 'Safety Alert', location: 'Company-wide' },
+                    { id: 'MFG-INC-09', description: 'Update risk assessments based on incident findings.', priority: 'High', riskLevel: 'High', proof: 'Updated Risk Assessment', location: 'Safety Office' },
+                    { id: 'MFG-INC-10', description: 'Maintain an incident database for trend analysis.', priority: 'High', riskLevel: 'High', proof: 'Incident Database', location: 'System' },
                 ]
             },
             {
@@ -2473,6 +2935,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MFG-PERMIT-03', description: 'Have a documented rescue plan in place.', priority: 'High', riskLevel: 'High', proof: 'Rescue Plan Document', location: 'Safety Office' },
                     { id: 'MFG-PERMIT-04', description: 'Ensure fire watch is assigned for all hot work.', priority: 'High', riskLevel: 'High', proof: 'Permit Form', location: 'Work Area' },
                     { id: 'MFG-PERMIT-05', description: 'Close out and file all permits upon work completion.', priority: 'High', riskLevel: 'Medium', proof: 'Closed Permit File', location: 'Safety Office' },
+                    { id: 'MFG-PERMIT-06', description: 'Isolate all energy sources before starting work.', priority: 'High', riskLevel: 'High', proof: 'LOTO Log', location: 'Work Area' },
+                    { id: 'MFG-PERMIT-07', description: 'Provide adequate ventilation for confined spaces.', priority: 'High', riskLevel: 'High', proof: 'Ventilation Setup', location: 'Work Area' },
+                    { id: 'MFG-PERMIT-08', description: 'Ensure all required PPE is used.', priority: 'High', riskLevel: 'High', proof: 'PPE Check', location: 'Work Area' },
+                    { id: 'MFG-PERMIT-09', description: 'Train all personnel involved in permit-required work.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'MFG-PERMIT-10', description: 'Audit permit-to-work system annually.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Safety Office' },
                 ]
             },
             {
@@ -2488,6 +2955,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MGA-03', description: 'Ensure no guards have been improperly bypassed or removed.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'Shop Floor' },
                     { id: 'MGA-04', description: 'Report any damaged or missing guards immediately.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Request', location: 'System' },
                     { id: 'MGA-05', description: 'Train operators not to use any machine with a faulty guard.', priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Office' },
+                    { id: 'MGA-06', description: 'Ensure emergency stop buttons are accessible and functional.', priority: 'High', riskLevel: 'High', proof: 'E-Stop Test Log', location: 'Shop Floor' },
+                    { id: 'MGA-07', description: 'Check for any new hazards created by modifications to machinery.', priority: 'High', riskLevel: 'High', proof: 'Change Management Review', location: 'Office' },
+                    { id: 'MGA-08', description: 'Keep the area around machinery clean and free of obstructions.', priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Log', location: 'Shop Floor' },
+                    { id: 'MGA-09', description: 'Review machine guarding at least annually.', priority: 'High', riskLevel: 'High', proof: 'Annual Review Report', location: 'Safety Office' },
+                    { id: 'MGA-10', description: 'Ensure all guards meet regulatory standards.', priority: 'High', riskLevel: 'High', proof: 'Compliance Certificate', location: 'Safety Office' },
                 ]
             },
             {
@@ -2503,6 +2975,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CHS-03', description: 'Check that Material Safety Data Sheets (MSDS) are available for all chemicals.', priority: 'High', riskLevel: 'High', proof: 'MSDS Binder Check', location: 'Chemical Store' },
                     { id: 'CHS-04', description: 'Inspect spill kits to ensure they are fully stocked and accessible.', priority: 'High', riskLevel: 'High', proof: 'Spill Kit Log', location: 'Various' },
                     { id: 'CHS-05', description: 'Ensure proper PPE is available and used when handling chemicals.', priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Chemical Store' },
+                    { id: 'CHS-06', description: 'Check ventilation in chemical storage areas.', priority: 'High', riskLevel: 'High', proof: 'Ventilation Check', location: 'Chemical Store' },
+                    { id: 'CHS-07', description: 'Inspect secondary containment for any leaks or damage.', priority: 'High', riskLevel: 'High', proof: 'Containment Inspection', location: 'Chemical Store' },
+                    { id: 'CHS-08', description: 'Maintain an inventory of all chemicals.', priority: 'High', riskLevel: 'High', proof: 'Chemical Inventory', location: 'System' },
+                    { id: 'CHS-09', description: 'Train staff on safe chemical handling procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'CHS-10', description: 'Have a clear emergency response plan for chemical spills.', priority: 'High', riskLevel: 'High', proof: 'Spill Response Plan', location: 'Safety Office' },
                 ]
             },
             {
@@ -2518,6 +2995,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ESA-03', description: 'Verify that all electrical equipment is properly grounded.', priority: 'High', riskLevel: 'High', proof: 'Grounding Test Report', location: 'Facility-wide' },
                     { id: 'ESA-04', description: 'Ensure all electrical panels are properly labeled and accessible.', priority: 'High', riskLevel: 'High', proof: 'Panel Label Audit', location: 'Electrical Rooms' },
                     { id: 'ESA-05', description: 'Test Earth Leakage Circuit Breakers (ELCBs) for functionality.', priority: 'High', riskLevel: 'High', proof: 'ELCB Test Log', location: 'Electrical Panels' },
+                    { id: 'ESA-06', description: 'Conduct thermal imaging of electrical panels to detect hot spots.', priority: 'High', riskLevel: 'High', proof: 'Thermal Imaging Report', location: 'Electrical Rooms' },
+                    { id: 'ESA-07', description: 'Ensure all temporary wiring is removed after use.', priority: 'High', riskLevel: 'High', proof: 'Temporary Wiring Log', location: 'Facility-wide' },
+                    { id: 'ESA-08', description: 'Check that all staff are trained on electrical safety.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'ESA-09', description: 'Use only certified electricians for electrical work.', priority: 'High', riskLevel: 'High', proof: 'Contractor Records', location: 'Procurement' },
+                    { id: 'ESA-10', description: 'Review and update the electrical safety program annually.', priority: 'High', riskLevel: 'High', proof: 'Program Review Minutes', location: 'Safety Office' },
                 ]
             }
         ]
@@ -2565,6 +3047,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LOG-STORE-03', description: 'Inspect pallets for damage or instability before storage.', priority: 'High', riskLevel: 'High', proof: 'Pallet Inspection Log', location: 'Receiving Area' },
                     { id: 'LOG-STORE-04', description: 'Check that loads are stable and properly shrink-wrapped.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Staging Area' },
                     { id: 'LOG-STORE-05', description: 'Audit racking systems for any signs of damage or overloading.', priority: 'High', riskLevel: 'High', proof: 'Racking Inspection Log', location: 'Racking Area' },
+                    { id: 'LOG-STORE-06', description: 'Store heavier items on lower shelves.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Racking Area' },
+                    { id: 'LOG-STORE-07', description: 'Ensure proper lighting in all storage areas.', priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Warehouse Floor' },
+                    { id: 'LOG-STORE-08', description: 'Keep storage areas clean and free of debris.', priority: 'High', riskLevel: 'Medium', proof: 'Housekeeping Log', location: 'Warehouse Floor' },
+                    { id: 'LOG-STORE-09', description: 'Train staff on safe stacking and storage practices.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'LOG-STORE-10', description: 'Periodically inspect the structural integrity of the racking.', priority: 'High', riskLevel: 'High', proof: 'Structural Engineer Report', location: 'Office' },
                 ]
             },
             {
@@ -2580,6 +3067,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LOG-FORKLIFT-03', description: 'Supervisor to verify operator has a valid license.', priority: 'High', riskLevel: 'High', proof: 'License Check Log', location: 'Office' },
                     { id: 'LOG-FORKLIFT-04', description: 'Check for any hydraulic leaks.', priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Forklift' },
                     { id: 'LOG-FORKLIFT-05', description: 'Ensure the operator is wearing the required PPE.', priority: 'High', riskLevel: 'High', proof: 'PPE Check', location: 'MHE Area' },
+                    { id: 'LOG-FORKLIFT-06', description: 'Check tire condition and pressure.', priority: 'High', riskLevel: 'High', proof: 'Tire Check', location: 'Forklift' },
+                    { id: 'LOG-FORKLIFT-07', description: 'Ensure forks are in good condition.', priority: 'High', riskLevel: 'High', proof: 'Fork Inspection', location: 'Forklift' },
+                    { id: 'LOG-FORKLIFT-08', description: 'Check battery charge or fuel level.', priority: 'High', riskLevel: 'Medium', proof: 'Gauge Check', location: 'Forklift' },
+                    { id: 'LOG-FORKLIFT-09', description: 'Report any defects immediately.', priority: 'High', riskLevel: 'High', proof: 'Defect Report', location: 'System' },
+                    { id: 'LOG-FORKLIFT-10', description: 'Do not operate a faulty forklift.', priority: 'High', riskLevel: 'High', proof: 'Operator Declaration', location: 'Pre-Op Checklist Form' },
                 ]
             },
             {
@@ -2595,6 +3087,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LOG-RECV-03', description: 'Quarantine any non-conforming goods in a designated area.', priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Quarantine Area' },
                     { id: 'LOG-RECV-04', description: 'Upload photos of any damaged goods to the system.', priority: 'High', riskLevel: 'High', proof: 'System Upload', location: 'System' },
                     { id: 'LOG-RECV-05', description: 'Count and verify the quantity of goods received.', priority: 'High', riskLevel: 'High', proof: 'Count Sheet', location: 'Receiving Dock' },
+                    { id: 'LOG-RECV-06', description: 'Check for correct labeling and marking.', priority: 'High', riskLevel: 'High', proof: 'Label Check', location: 'Receiving Dock' },
+                    { id: 'LOG-RECV-07', description: 'Verify temperature for temperature-sensitive goods.', priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Receiving Dock' },
+                    { id: 'LOG-RECV-08', description: 'Update the inventory system upon receipt.', priority: 'High', riskLevel: 'High', proof: 'System Entry', location: 'System' },
+                    { id: 'LOG-RECV-09', description: 'Clean receiving area after each delivery.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Receiving Dock' },
+                    { id: 'LOG-RECV-10', description: 'Report any discrepancies to the procurement team.', priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'System' },
                 ]
             },
             {
@@ -2630,6 +3127,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LOG-HAZMAT-03', description: 'Verify that Safety Data Sheets (SDS/MSDS) are available for all hazardous goods.', priority: 'High', riskLevel: 'High', proof: 'SDS Binder Check', location: 'Hazmat Area' },
                     { id: 'LOG-HAZMAT-04', description: 'Check that all hazardous areas are marked with appropriate signage.', priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Hazmat Area' },
                     { id: 'LOG-HAZMAT-05', description: 'Inspect spill containment kits monthly.', priority: 'High', riskLevel: 'High', proof: 'Spill Kit Log', location: 'Hazmat Area' },
+                    { id: 'LOG-HAZMAT-06', description: 'Train employees on hazmat handling and emergency procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'LOG-HAZMAT-07', description: 'Ensure proper ventilation in hazmat storage areas.', priority: 'High', riskLevel: 'High', proof: 'Ventilation Check', location: 'Hazmat Area' },
+                    { id: 'LOG-HAZMAT-08', description: 'Maintain a hazmat inventory.', priority: 'High', riskLevel: 'High', proof: 'Hazmat Inventory Log', location: 'System' },
+                    { id: 'LOG-HAZMAT-09', description: 'Have a clear spill response plan.', priority: 'High', riskLevel: 'High', proof: 'Spill Response Plan', location: 'Safety Office' },
+                    { id: 'LOG-HAZMAT-10', description: 'Follow all regulations for transporting hazardous materials.', priority: 'High', riskLevel: 'High', proof: 'Transport Checklist', location: 'Dispatch Office' },
                 ]
             },
             {
@@ -2645,6 +3147,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ICC-03', description: 'Investigate discrepancies between system and physical count immediately.', priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'System' },
                     { id: 'ICC-04', description: 'Process inventory adjustments with manager approval.', priority: 'High', riskLevel: 'High', proof: 'Adjustment Form', location: 'System' },
                     { id: 'ICC-05', description: 'Track and report inventory accuracy percentage weekly.', priority: 'High', riskLevel: 'High', proof: 'Accuracy Report', location: 'System' },
+                    { id: 'ICC-06', description: 'Freeze inventory locations during counting.', priority: 'High', riskLevel: 'High', proof: 'System Screenshot', location: 'System' },
+                    { id: 'ICC-07', description: 'Reconcile counts and post adjustments on the same day.', priority: 'High', riskLevel: 'High', proof: 'Reconciliation Log', location: 'System' },
+                    { id: 'ICC-08', description: 'Identify root causes of discrepancies.', priority: 'High', riskLevel: 'High', proof: 'Root Cause Analysis', location: 'Office' },
+                    { id: 'ICC-09', description: 'Train staff on correct inventory handling.', priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
+                    { id: 'ICC-10', description: 'Audit the cycle counting process itself periodically.', priority: 'High', riskLevel: 'Medium', proof: 'Process Audit Report', location: 'Office' },
                 ]
             },
             {
@@ -2660,6 +3167,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'WH-03', description: 'Empty all trash and recycling bins daily.', priority: 'High', riskLevel: 'Low', proof: 'Waste Log', location: 'Waste Area' },
                     { id: 'WH-04', description: 'Organize and store all equipment in its designated place.', priority: 'Medium', riskLevel: 'Low', proof: 'Equipment Storage Audit', location: 'Various' },
                     { id: 'WH-05', description: 'Conduct a weekly deep clean of the entire warehouse.', priority: 'Medium', riskLevel: 'Medium', proof: 'Deep Clean Schedule', location: 'Office' },
+                    { id: 'WH-06', description: 'Report any spills or leaks immediately.', priority: 'High', riskLevel: 'High', proof: 'Spill Report', location: 'System' },
+                    { id: 'WH-07', description: 'Maintain good lighting throughout the warehouse.', priority: 'High', riskLevel: 'Medium', proof: 'Lighting Check', location: 'Warehouse Floor' },
+                    { id: 'WH-08', description: 'Ensure proper ventilation.', priority: 'High', riskLevel: 'Medium', proof: 'Ventilation Check', location: 'Warehouse Floor' },
+                    { id: 'WH-09', description: 'Implement a "clean as you go" policy.', priority: 'High', riskLevel: 'Medium', proof: 'Policy Document', location: 'Office' },
+                    { id: 'WH-10', description: 'Conduct regular housekeeping audits.', priority: 'High', riskLevel: 'Medium', proof: 'Audit Reports', location: 'Office' },
                 ]
             },
             {
@@ -2675,6 +3187,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'DYM-03', description: 'Manage yard traffic to prevent congestion and accidents.', priority: 'High', riskLevel: 'High', proof: 'Yard Traffic Plan', location: 'Yard' },
                     { id: 'DYM-04', description: 'Inspect the yard for any hazards or debris.', priority: 'High', riskLevel: 'Medium', proof: 'Yard Inspection Log', location: 'Yard' },
                     { id: 'DYM-05', description: 'Communicate with warehouse staff about truck arrival and departure.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'System' },
+                    { id: 'DYM-06', description: 'Enforce speed limits in the yard.', priority: 'High', riskLevel: 'High', proof: 'Speed Limit Signage', location: 'Yard' },
+                    { id: 'DYM-07', description: 'Separate pedestrian and vehicle traffic.', priority: 'High', riskLevel: 'High', proof: 'Marked Walkways', location: 'Yard' },
+                    { id: 'DYM-08', description: 'Ensure proper lighting in the yard during night operations.', priority: 'High', riskLevel: 'High', proof: 'Lighting Check', location: 'Yard' },
+                    { id: 'DYM-09', description: 'Have a clear plan for emergency situations in the yard.', priority: 'High', riskLevel: 'High', proof: 'Yard Emergency Plan', location: 'Office' },
+                    { id: 'DYM-10', description: 'Train yard personnel on safe operating procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -2690,6 +3207,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SAC-03', description: 'Perform regular patrols of the perimeter and internal areas.', priority: 'High', riskLevel: 'Medium', proof: 'Patrol Log', location: 'Facility-wide' },
                     { id: 'SAC-04', description: 'Ensure all doors and gates are secured after hours.', priority: 'High', riskLevel: 'High', proof: 'Closing Log', location: 'Various' },
                     { id: 'SAC-05', description: 'Manage visitor and contractor access through a permit system.', priority: 'High', riskLevel: 'High', proof: 'Visitor Permit Log', location: 'Security Office' },
+                    { id: 'SAC-06', description: 'Conduct random vehicle inspections.', priority: 'High', riskLevel: 'High', proof: 'Vehicle Inspection Log', location: 'Main Gate' },
+                    { id: 'SAC-07', description: 'Implement a key control system.', priority: 'High', riskLevel: 'High', proof: 'Key Log', location: 'Security Office' },
+                    { id: 'SAC-08', description: 'Ensure all security equipment is functional.', priority: 'High', riskLevel: 'High', proof: 'Equipment Check Log', location: 'Security Office' },
+                    { id: 'SAC-09', description: 'Train security staff on their duties and responsibilities.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'SAC-10', description: 'Have a clear protocol for responding to security incidents.', priority: 'High', riskLevel: 'High', proof: 'Incident Response Plan', location: 'Security Office' },
                 ]
             }
         ]
@@ -2734,7 +3256,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FILM-LEGAL-02', description: "Secure chain-of-title for the script (writer agreements, source material rights).", priority: 'High', riskLevel: 'High', proof: 'Writer Agreements', location: 'Legal File' },
                     { id: 'FILM-LEGAL-03', description: "Obtain life rights agreements for any real people depicted.", priority: 'High', riskLevel: 'High', proof: 'Life Rights Agreement', location: 'Legal File' },
                     { id: 'FILM-LEGAL-04', description: "Secure Errors & Omissions (E&O) insurance.", priority: 'High', riskLevel: 'High', proof: 'E&O Insurance Policy', location: 'Legal File' },
-                    { id: 'FILM-LEGAL-05', description: "Ensure all cast and key crew have signed their contracts.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Production Office' }
+                    { id: 'FILM-LEGAL-05', description: "Ensure all cast and key crew have signed their contracts.", priority: 'High', riskLevel: 'High', proof: 'Signed Contracts', location: 'Production Office' },
+                    { id: 'FILM-LEGAL-06', description: 'Clear all music and stock footage rights.', priority: 'High', riskLevel: 'High', proof: 'License Agreements', location: 'Legal File' },
+                    { id: 'FILM-LEGAL-07', description: 'Verify locations have been cleared for filming.', priority: 'High', riskLevel: 'High', proof: 'Location Agreements', location: 'Legal File' },
+                    { id: 'FILM-LEGAL-08', description: 'Check script for any potential defamation or privacy issues.', priority: 'High', riskLevel: 'High', proof: 'Script Clearance Report', location: 'Legal File' },
+                    { id: 'FILM-LEGAL-09', description: 'Ensure compliance with all guild and union agreements.', priority: 'High', riskLevel: 'High', proof: 'Guild Agreements', location: 'Production Office' },
+                    { id: 'FILM-LEGAL-10', description: 'Set up the production company and bank accounts.', priority: 'High', riskLevel: 'High', proof: 'Corporate Documents', location: 'Production Office' },
                 ]
             },
             {
@@ -2749,7 +3276,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FILM-SAFE-02', description: "Ensure all electrical cables are properly secured and not creating trip hazards.", priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'Set' },
                     { id: 'FILM-SAFE-03', description: "Verify that fire extinguishers are accessible and staff know how to use them.", priority: 'High', riskLevel: 'High', proof: 'Fire Safety Check', location: 'Set' },
                     { id: 'FILM-SAFE-04', description: "Have a qualified medic and first aid kit on set at all times.", priority: 'High', riskLevel: 'High', proof: 'Medic Presence Log', location: 'Set' },
-                    { id: 'FILM-SAFE-05', description: "Ensure clear access to all emergency exits.", priority: 'High', riskLevel: 'High', proof: 'Exit Path Check', location: 'Set' }
+                    { id: 'FILM-SAFE-05', description: "Ensure clear access to all emergency exits.", priority: 'High', riskLevel: 'High', proof: 'Exit Path Check', location: 'Set' },
+                    { id: 'FILM-SAFE-06', description: 'Inspect all scaffolding and rigging.', priority: 'High', riskLevel: 'High', proof: 'Rigging Inspection Log', location: 'Set' },
+                    { id: 'FILM-SAFE-07', description: 'Manage on-set vehicle safety.', priority: 'High', riskLevel: 'High', proof: 'Vehicle Safety Log', location: 'Set' },
+                    { id: 'FILM-SAFE-08', description: 'Provide adequate drinking water and sanitation facilities.', priority: 'High', riskLevel: 'Medium', proof: 'Facility Check', location: 'Set' },
+                    { id: 'FILM-SAFE-09', description: 'Enforce PPE requirements for all crew.', priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Set' },
+                    { id: 'FILM-SAFE-10', description: 'Have a clear plan for adverse weather conditions.', priority: 'High', riskLevel: 'High', proof: 'Weather Contingency Plan', location: 'Production Office' },
                 ]
             },
             {
@@ -2764,7 +3296,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FILM-STUNT-02', description: "Ensure all performers involved are properly trained and rehearsed.", priority: 'High', riskLevel: 'High', proof: 'Rehearsal Log', location: 'Set' },
                     { id: 'FILM-STUNT-03', description: "Have a dedicated ambulance and medical team on standby.", priority: 'High', riskLevel: 'High', proof: 'Ambulance Standby Confirmation', location: 'Set' },
                     { id: 'FILM-STUNT-04', description: "Verify all safety equipment (harnesses, pads) is certified and in good condition.", priority: 'High', riskLevel: 'High', proof: 'Equipment Inspection Log', location: 'Set' },
-                    { id: 'FILM-STUNT-05', description: "Clear the set of all non-essential personnel before the stunt.", priority: 'High', riskLevel: 'High', proof: 'Set Clearance Log', location: 'Set' }
+                    { id: 'FILM-STUNT-05', description: "Clear the set of all non-essential personnel before the stunt.", priority: 'High', riskLevel: 'High', proof: 'Set Clearance Log', location: 'Set' },
+                    { id: 'FILM-STUNT-06', description: 'Brief all involved personnel on the stunt procedure.', priority: 'High', riskLevel: 'High', proof: 'Stunt Briefing Log', location: 'Set' },
+                    { id: 'FILM-STUNT-07', description: 'Use a qualified stunt coordinator for all stunts.', priority: 'High', riskLevel: 'High', proof: 'Coordinator Contract', location: 'Production Office' },
+                    { id: 'FILM-STUNT-08', description: 'Test all special effects and pyrotechnics before filming.', priority: 'High', riskLevel: 'High', proof: 'Test Log', location: 'Set' },
+                    { id: 'FILM-STUNT-09', description: 'Have multiple camera angles to capture the action safely.', priority: 'High', riskLevel: 'Medium', proof: 'Camera Plot', location: 'Production Office' },
+                    { id: 'FILM-STUNT-10', description: 'Get sign-off from all key personnel before executing the stunt.', priority: 'High', riskLevel: 'High', proof: 'Sign-off Sheet', location: 'Set' },
                 ]
             },
             {
@@ -2779,7 +3316,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FILM-DATA-02', description: "Use watermarked scripts and dailies with individual names.", priority: 'High', riskLevel: 'High', proof: 'Sample Watermarked Script', location: 'System' },
                     { id: 'FILM-DATA-03', description: "Restrict access to sensitive footage to authorized personnel only.", priority: 'High', riskLevel: 'High', proof: 'Access Control Logs', location: 'Post-production Suite' },
                     { id: 'FILM-DATA-04', description: "Use secure, encrypted platforms for sharing files with vendors.", priority: 'High', riskLevel: 'High', proof: 'File Sharing Policy', location: 'IT' },
-                    { id: 'FILM-DATA-05', description: "Wipe data from all rented equipment before returning it.", priority: 'High', riskLevel: 'High', proof: 'Data Wipe Certificate', location: 'IT' }
+                    { id: 'FILM-DATA-05', description: "Wipe data from all rented equipment before returning it.", priority: 'High', riskLevel: 'High', proof: 'Data Wipe Certificate', location: 'IT' },
+                    { id: 'FILM-DATA-06', description: 'Encrypt all hard drives used for transport of footage.', priority: 'High', riskLevel: 'High', proof: 'Encryption Log', location: 'IT' },
+                    { id: 'FILM-DATA-07', description: 'Implement a clean desk policy in the production office.', priority: 'Medium', riskLevel: 'Medium', proof: 'Policy Document', location: 'Production Office' },
+                    { id: 'FILM-DATA-08', description: 'Securely store all physical scripts and storyboards.', priority: 'High', riskLevel: 'High', proof: 'Storage Log', location: 'Production Office' },
+                    { id: 'FILM-DATA-09', description: 'Have a data breach response plan.', priority: 'High', riskLevel: 'High', proof: 'Breach Response Plan', location: 'Production Office' },
+                    { id: 'FILM-DATA-10', description: 'Train staff on data security best practices.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                 ]
             },
             {
@@ -2794,7 +3336,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FILM-BILL-02', description: "Verify that all costs are within the approved budget.", priority: 'High', riskLevel: 'High', proof: 'Budget vs. Actual Report', location: 'Accounts Office' },
                     { id: 'FILM-BILL-03', description: "Get approval from the relevant Head of Department before processing payment.", priority: 'High', riskLevel: 'High', proof: 'Signed Invoice', location: 'Accounts Office' },
                     { id: 'FILM-BILL-04', description: "Track all payments in a centralized accounting system.", priority: 'High', riskLevel: 'Medium', proof: 'Accounting Software Log', location: 'System' },
-                    { id: 'FILM-BILL-05', description: "Reconcile vendor statements monthly to ensure there are no discrepancies.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Accounts Office' }
+                    { id: 'FILM-BILL-05', description: "Reconcile vendor statements monthly to ensure there are no discrepancies.", priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Accounts Office' },
+                    { id: 'FILM-BILL-06', description: 'Check for duplicate invoices.', priority: 'High', riskLevel: 'High', proof: 'Duplicate Check Log', location: 'Accounts Office' },
+                    { id: 'FILM-BILL-07', description: 'Verify all tax calculations are correct.', priority: 'High', riskLevel: 'High', proof: 'Tax Audit', location: 'Accounts Office' },
+                    { id: 'FILM-BILL-08', description: 'Process payments within the agreed terms.', priority: 'High', riskLevel: 'Medium', proof: 'Payment Records', location: 'System' },
+                    { id: 'FILM-BILL-09', description: 'Have a clear process for disputing invoices.', priority: 'High', riskLevel: 'High', proof: 'Dispute Resolution SOP', location: 'Accounts Office' },
+                    { id: 'FILM-BILL-10', description: 'Maintain all financial records for auditing purposes.', priority: 'High', riskLevel: 'High', proof: 'Financial Records File', location: 'Accounts Office' },
                 ]
             },
             {
@@ -2809,7 +3356,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LOC-02', description: 'Obtain all necessary filming permits from local authorities.', priority: 'High', riskLevel: 'High', proof: 'Filming Permits', location: 'Legal File' },
                     { id: 'LOC-03', description: 'Negotiate and sign location agreements with property owners.', priority: 'High', riskLevel: 'High', proof: 'Location Agreements', location: 'Legal File' },
                     { id: 'LOC-04', description: 'Assess locations for logistical challenges (power, access, noise).', priority: 'High', riskLevel: 'High', proof: 'Location Tech Recce Report', location: 'Production Office' },
-                    { id: 'LOC-05', description: 'Coordinate with local police for traffic and crowd control.', priority: 'High', riskLevel: 'High', proof: 'Police Coordination Plan', location: 'Production Office' }
+                    { id: 'LOC-05', description: 'Coordinate with local police for traffic and crowd control.', priority: 'High', riskLevel: 'High', proof: 'Police Coordination Plan', location: 'Production Office' },
+                    { id: 'LOC-06', description: 'Arrange for parking for cast and crew.', priority: 'High', riskLevel: 'Medium', proof: 'Parking Plan', location: 'Production Office' },
+                    { id: 'LOC-07', description: 'Secure holding areas for cast and crew.', priority: 'High', riskLevel: 'Medium', proof: 'Holding Area Plan', location: 'Production Office' },
+                    { id: 'LOC-08', description: 'Ensure sanitation facilities are available.', priority: 'High', riskLevel: 'Medium', proof: 'Facility Plan', location: 'Production Office' },
+                    { id: 'LOC-09', description: 'Inform local residents and businesses about filming.', priority: 'High', riskLevel: 'Medium', proof: 'Notification Letter', location: 'Production Office' },
+                    { id: 'LOC-10', description: 'Restore location to its original condition after filming.', priority: 'High', riskLevel: 'High', proof: 'Post-shoot Inspection', location: 'Location' },
                 ]
             },
             {
@@ -2824,7 +3376,12 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CAST-02', description: 'Hold auditions and screen tests for key roles.', priority: 'High', riskLevel: 'High', proof: 'Audition Tapes', location: 'Casting Office' },
                     { id: 'CAST-03', description: 'Negotiate contracts with actors and their agents.', priority: 'High', riskLevel: 'High', proof: 'Actor Contracts', location: 'Legal File' },
                     { id: 'CAST-04', description: 'Coordinate travel and accommodation for out-of-town talent.', priority: 'High', riskLevel: 'Medium', proof: 'Travel Itineraries', location: 'Production Office' },
-                    { id: 'CAST-05', description: 'Ensure all talent have call sheets and schedules.', priority: 'High', riskLevel: 'High', proof: 'Call Sheets', location: 'Production Office' }
+                    { id: 'CAST-05', description: 'Ensure all talent have call sheets and schedules.', priority: 'High', riskLevel: 'High', proof: 'Call Sheets', location: 'Production Office' },
+                    { id: 'CAST-06', description: 'Manage talent payments and per diems.', priority: 'High', riskLevel: 'High', proof: 'Payment Records', location: 'Accounts Office' },
+                    { id: 'CAST-07', description: 'Handle any special requests or riders from talent.', priority: 'High', riskLevel: 'Medium', proof: 'Rider Fulfillment Log', location: 'Production Office' },
+                    { id: 'CAST-08', description: 'Ensure a safe and comfortable environment for talent on set.', priority: 'High', riskLevel: 'High', proof: 'Set Environment Check', location: 'Set' },
+                    { id: 'CAST-09', description: 'Coordinate with wardrobe and makeup departments.', priority: 'High', riskLevel: 'Medium', proof: 'Coordination Schedule', location: 'Production Office' },
+                    { id: 'CAST-10', description: 'Maintain good relationships with talent and their representatives.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'Casting Office' },
                 ]
             },
             {
@@ -2840,6 +3397,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PROP-03', description: 'Securely store all items at the end of each shooting day.', priority: 'High', riskLevel: 'High', proof: 'End-of-Day Storage Log', location: 'Art/Costume Dept' },
                     { id: 'PROP-04', description: 'Manage the budget for props and wardrobe.', priority: 'High', riskLevel: 'Medium', proof: 'Budget Tracker', location: 'Accounts Office' },
                     { id: 'PROP-05', description: 'Handle returns of all rented items promptly after use.', priority: 'High', riskLevel: 'Medium', proof: 'Rental Return Receipts', location: 'Art/Costume Dept' },
+                    { id: 'PROP-06', description: 'Clean and repair costumes as needed.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Costume Dept' },
+                    { id: 'PROP-07', description: 'Source props and costumes according to the script.', priority: 'High', riskLevel: 'High', proof: 'Sourcing Log', location: 'Art/Costume Dept' },
+                    { id: 'PROP-08', description: 'Ensure all items are labeled and organized.', priority: 'High', riskLevel: 'Medium', proof: 'Labeling System', location: 'Art/Costume Dept' },
+                    { id: 'PROP-09', description: 'Coordinate with the director and production designer.', priority: 'High', riskLevel: 'Medium', proof: 'Meeting Notes', location: 'Production Office' },
+                    { id: 'PROP-10', description: 'Maintain a petty cash log for small purchases.', priority: 'High', riskLevel: 'High', proof: 'Petty Cash Log', location: 'Accounts Office' },
                 ]
             }
         ]
@@ -2886,6 +3448,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'OTT-RELEASE-03', description: 'Confirm subtitle and dubbing tracks are approved.', priority: 'High', riskLevel: 'High', proof: 'QC Report', location: 'System' },
                     { id: 'OTT-RELEASE-04', description: 'Obtain final legal sign-off on content rights and clearances.', priority: 'High', riskLevel: 'High', proof: 'Legal Sign-off Email', location: 'Legal File' },
                     { id: 'OTT-RELEASE-05', description: 'Schedule the content for release in the CMS.', priority: 'High', riskLevel: 'Medium', proof: 'CMS Schedule', location: 'CMS' },
+                    { id: 'OTT-RELEASE-06', description: 'Perform a final QC of the content before it goes live.', priority: 'High', riskLevel: 'High', proof: 'Final QC Report', location: 'System' },
+                    { id: 'OTT-RELEASE-07', description: 'Ensure all promotional materials are ready.', priority: 'High', riskLevel: 'Medium', proof: 'Marketing Checklist', location: 'Marketing Dept' },
+                    { id: 'OTT-RELEASE-08', description: 'Check that content is available in all intended regions.', priority: 'High', riskLevel: 'High', proof: 'Geo-availability Test', location: 'System' },
+                    { id: 'OTT-RELEASE-09', description: 'Monitor the release for any initial issues.', priority: 'High', riskLevel: 'High', proof: 'Release Monitoring Log', location: 'System' },
+                    { id: 'OTT-RELEASE-10', description: 'Archive all release-related documentation.', priority: 'Medium', riskLevel: 'Low', proof: 'Archive Log', location: 'System' },
                 ]
             },
             {
@@ -2901,6 +3468,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'OTT-SEC-03', description: 'Verify access keys are role-based and limited in scope.', priority: 'High', riskLevel: 'High', proof: 'IAM Policy Review', location: 'Cloud Console' },
                     { id: 'OTT-SEC-04', description: 'Check for any hardcoded secrets in the content package.', priority: 'High', riskLevel: 'High', proof: 'Code Scan Report', location: 'System' },
                     { id: 'OTT-SEC-05', description: 'Ensure DRM is correctly applied to the content.', priority: 'High', riskLevel: 'High', proof: 'DRM Log', location: 'System' },
+                    { id: 'OTT-SEC-06', description: 'Perform a vulnerability scan on the content delivery pipeline.', priority: 'High', riskLevel: 'High', proof: 'Vulnerability Scan Report', location: 'System' },
+                    { id: 'OTT-SEC-07', description: 'Check for any open S3 buckets or insecure storage.', priority: 'High', riskLevel: 'High', proof: 'Storage Security Audit', location: 'Cloud Console' },
+                    { id: 'OTT-SEC-08', description: 'Verify that content is served over HTTPS.', priority: 'High', riskLevel: 'High', proof: 'HTTPS Check', location: 'System' },
+                    { id: 'OTT-SEC-09', description: 'Ensure all APIs are authenticated and authorized.', priority: 'High', riskLevel: 'High', proof: 'API Security Audit', location: 'System' },
+                    { id: 'OTT-SEC-10', description: 'Sign off on the security review before release.', priority: 'High', riskLevel: 'High', proof: 'Security Sign-off', location: 'System' },
                 ]
             },
             {
@@ -2916,6 +3488,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'OTT-PRIV-03', description: 'Test the consent capture and withdrawal flows.', priority: 'High', riskLevel: 'High', proof: 'Test Report', location: 'Platform' },
                     { id: 'OTT-PRIV-04', description: 'Review and update the data breach notification plan.', priority: 'High', riskLevel: 'High', proof: 'Updated Plan', location: 'Compliance Office' },
                     { id: 'OTT-PRIV-05', description: 'Conduct a Data Protection Impact Assessment (DPIA) for new features.', priority: 'High', riskLevel: 'High', proof: 'DPIA Report', location: 'Compliance Office' },
+                    { id: 'OTT-PRIV-06', description: 'Ensure compliance with regional data privacy laws (GDPR, CCPA, etc.).', priority: 'High', riskLevel: 'High', proof: 'Regional Compliance Audit', location: 'Compliance Office' },
+                    { id: 'OTT-PRIV-07', description: 'Handle data subject access requests (DSARs) within the legal timeframe.', priority: 'High', riskLevel: 'High', proof: 'DSAR Log', location: 'System' },
+                    { id: 'OTT-PRIV-08', description: 'Train staff on data privacy best practices.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'OTT-PRIV-09', description: 'Maintain a record of all data processing activities.', priority: 'High', riskLevel: 'High', proof: 'ROPA Document', location: 'Compliance Office' },
+                    { id: 'OTT-PRIV-10', description: 'Review privacy policies and notices annually.', priority: 'High', riskLevel: 'High', proof: 'Policy Review Log', location: 'Compliance Office' },
                 ]
             },
             {
@@ -2931,6 +3508,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'OTT-VULN-03', description: 'Review SSO and OAuth configurations for any security gaps.', priority: 'High', riskLevel: 'High', proof: 'Configuration Review Report', location: 'System' },
                     { id: 'OTT-VULN-04', description: 'Perform penetration testing on the platform annually.', priority: 'High', riskLevel: 'High', proof: 'Pen Test Report', location: 'Security Office' },
                     { id: 'OTT-VULN-05', description: 'Track all identified vulnerabilities to closure.', priority: 'High', riskLevel: 'High', proof: 'Vulnerability Tracker', location: 'System' },
+                    { id: 'OTT-VULN-06', description: 'Review and harden server configurations.', priority: 'High', riskLevel: 'High', proof: 'Hardening Checklist', location: 'System' },
+                    { id: 'OTT-VULN-07', description: 'Monitor for new threats and vulnerabilities.', priority: 'High', riskLevel: 'High', proof: 'Threat Intelligence Feed', location: 'Security Office' },
+                    { id: 'OTT-VULN-08', description: 'Have a responsible disclosure policy for security researchers.', priority: 'High', riskLevel: 'Medium', proof: 'Disclosure Policy', location: 'Website' },
+                    { id: 'OTT-VULN-09', description: 'Conduct regular code reviews for security flaws.', priority: 'High', riskLevel: 'High', proof: 'Code Review Log', location: 'Dev Team' },
+                    { id: 'OTT-VULN-10', description: 'Train developers on secure coding practices.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                 ]
             },
             {
@@ -2946,6 +3528,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'OTT-REG-03', description: 'Test the geo-blocking functionality to ensure it works as expected.', priority: 'High', riskLevel: 'High', proof: 'Geo-blocking Test Report', location: 'System' },
                     { id: 'OTT-REG-04', description: 'Ensure all required content advisories are displayed.', priority: 'High', riskLevel: 'High', proof: 'Advisory Check', location: 'Platform' },
                     { id: 'OTT-REG-05', description: 'File any necessary compliance reports with regulatory bodies.', priority: 'High', riskLevel: 'High', proof: 'Filed Reports', location: 'Legal File' },
+                    { id: 'OTT-REG-06', description: 'Manage content takedown requests from authorities.', priority: 'High', riskLevel: 'High', proof: 'Takedown Log', location: 'Legal File' },
+                    { id: 'OTT-REG-07', description: 'Ensure compliance with local age verification laws.', priority: 'High', riskLevel: 'High', proof: 'Age Verification Audit', location: 'System' },
+                    { id: 'OTT-REG-08', description: 'Review terms of service and privacy policies for compliance.', priority: 'High', riskLevel: 'High', proof: 'Policy Review Log', location: 'Legal File' },
+                    { id: 'OTT-REG-09', description: 'Liaise with local counsel in different regions.', priority: 'High', riskLevel: 'High', proof: 'Counsel Communication Log', location: 'Legal File' },
+                    { id: 'OTT-REG-10', description: 'Train content teams on regional content sensitivities.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                 ]
             },
             {
@@ -2961,6 +3548,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LER-03', description: 'Conduct a disaster recovery drill by failing a regional cluster.', priority: 'High', riskLevel: 'High', proof: 'DR Drill Report', location: 'Production' },
                     { id: 'LER-04', description: 'Establish a "war room" with key personnel for the duration of the event.', priority: 'High', riskLevel: 'High', proof: 'War Room Roster', location: 'Office' },
                     { id: 'LER-05', description: 'Brief customer support on potential issues and communication protocols.', priority: 'High', riskLevel: 'Medium', proof: 'Support Briefing', location: 'Office' },
+                    { id: 'LER-06', description: 'Freeze all non-essential deployments during the event.', priority: 'High', riskLevel: 'High', proof: 'Deployment Freeze Notice', location: 'Dev Team' },
+                    { id: 'LER-07', description: 'Monitor key performance indicators (KPIs) in real-time.', priority: 'High', riskLevel: 'High', proof: 'Monitoring Dashboard', location: 'War Room' },
+                    { id: 'LER-08', description: 'Have a rollback plan for any critical failures.', priority: 'High', riskLevel: 'High', proof: 'Rollback Plan', location: 'War Room' },
+                    { id: 'LER-09', description: 'Test the entire streaming workflow from ingest to playback.', priority: 'High', riskLevel: 'High', proof: 'End-to-End Test Report', location: 'Staging' },
+                    { id: 'LER-10', description: 'Conduct a post-event review to analyze performance.', priority: 'High', riskLevel: 'High', proof: 'Post-Event Report', location: 'Office' },
                 ]
             },
             {
@@ -2976,6 +3568,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AD-03', description: 'Test new ad creatives for compatibility and performance.', priority: 'High', riskLevel: 'Medium', proof: 'Creative Test Report', location: 'Staging' },
                     { id: 'AD-04', description: 'Manage ad campaign pacing to ensure delivery targets are met.', priority: 'High', riskLevel: 'High', proof: 'Pacing Report', location: 'System' },
                     { id: 'AD-05', description: 'Ensure compliance with ad industry standards (e.g., IAB).', priority: 'High', riskLevel: 'High', proof: 'Compliance Audit', location: 'Office' },
+                    { id: 'AD-06', description: 'Troubleshoot any ad delivery issues.', priority: 'High', riskLevel: 'High', proof: 'Troubleshooting Log', location: 'System' },
+                    { id: 'AD-07', description: 'Manage relationships with ad networks and partners.', priority: 'High', riskLevel: 'High', proof: 'Partner Communication Log', location: 'Office' },
+                    { id: 'AD-08', description: 'Optimize ad placements for user experience and revenue.', priority: 'High', riskLevel: 'High', proof: 'A/B Test Results', location: 'System' },
+                    { id: 'AD-09', description: 'Forecast ad inventory and revenue.', priority: 'High', riskLevel: 'High', proof: 'Forecast Report', location: 'Office' },
+                    { id: 'AD-10', description: 'Keep up with the latest ad tech trends.', priority: 'Medium', riskLevel: 'Medium', proof: 'Industry News Log', location: 'Office' },
                 ]
             },
             {
@@ -2991,6 +3588,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SM-03', description: 'Manage promotional offers and coupon codes.', priority: 'High', riskLevel: 'Medium', proof: 'Promotion Calendar', location: 'System' },
                     { id: 'SM-04', description: 'Handle customer support escalations related to billing and access.', priority: 'High', riskLevel: 'High', proof: 'Escalation Log', location: 'CRM' },
                     { id: 'SM-05', description: 'Ensure compliance with payment card industry (PCI) standards.', priority: 'High', riskLevel: 'High', proof: 'PCI Compliance Certificate', location: 'Compliance Office' },
+                    { id: 'SM-06', description: 'Analyze user behavior to improve retention.', priority: 'High', riskLevel: 'High', proof: 'Behavioral Analysis Report', location: 'System' },
+                    { id: 'SM-07', description: 'Send out renewal reminders to subscribers.', priority: 'High', riskLevel: 'Medium', proof: 'Email Campaign Report', location: 'System' },
+                    { id: 'SM-08', description: 'Process cancellations and gather feedback.', priority: 'High', riskLevel: 'Medium', proof: 'Cancellation Survey', location: 'System' },
+                    { id: 'SM-09', description: 'Work with marketing on acquisition and retention campaigns.', priority: 'High', riskLevel: 'High', proof: 'Campaign Plan', location: 'Marketing Dept' },
+                    { id: 'SM-10', description: 'Ensure subscription plans and pricing are displayed correctly.', priority: 'High', riskLevel: 'High', proof: 'Pricing Page Audit', location: 'Platform' },
                 ]
             }
         ]
@@ -3035,6 +3637,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'TP-RIDE-03', description: 'Conduct a test of the emergency stop function.', priority: 'High', riskLevel: 'High', proof: 'E-Stop Test Log', location: 'Ride Control Booth' },
                     { id: 'TP-RIDE-04', description: 'Check for any hydraulic or pneumatic leaks.', priority: 'High', riskLevel: 'High', proof: 'Leak Inspection Log', location: 'Ride Location' },
                     { id: 'TP-RIDE-05', description: 'Operator to sign off on the pre-opening checklist before first use.', priority: 'High', riskLevel: 'High', proof: 'Signed Checklist', location: 'Ride Control Booth' },
+                    { id: 'TP-RIDE-06', description: 'Run one full cycle of the ride empty.', priority: 'High', riskLevel: 'High', proof: 'Test Run Log', location: 'Ride Control Booth' },
+                    { id: 'TP-RIDE-07', description: 'Clean and sanitize all guest contact surfaces.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Ride Location' },
+                    { id: 'TP-RIDE-08', description: 'Check all ride signage for clarity and condition.', priority: 'High', riskLevel: 'Medium', proof: 'Signage Audit', location: 'Ride Entrance' },
+                    { id: 'TP-RIDE-09', description: 'Ensure communication systems with the control booth are working.', priority: 'High', riskLevel: 'High', proof: 'Comms Test', location: 'Ride Location' },
+                    { id: 'TP-RIDE-10', description: 'Report any issues to maintenance immediately.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Request', location: 'System' },
                 ]
             },
             {
@@ -3050,6 +3657,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'TP-QUEUE-03', description: 'Verify minimum height and other safety restriction signage is clearly visible.', priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Ride Entrance' },
                     { id: 'TP-QUEUE-04', description: 'Log any guest incidents that occur in the queue area.', priority: 'High', riskLevel: 'High', proof: 'Incident Log', location: 'Ride Exit' },
                     { id: 'TP-QUEUE-05', description: 'Ensure staff are making safety announcements at regular intervals.', priority: 'High', riskLevel: 'Medium', proof: 'Announcement Log', location: 'Queue Area' },
+                    { id: 'TP-QUEUE-06', description: 'Manage queue jumpers and unruly behavior.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Security' },
+                    { id: 'TP-QUEUE-07', description: 'Provide accurate wait time information.', priority: 'Medium', riskLevel: 'Low', proof: 'Wait Time Board', location: 'Ride Entrance' },
+                    { id: 'TP-QUEUE-08', description: 'Ensure queue area is clean and free of hazards.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Queue Area' },
+                    { id: 'TP-QUEUE-09', description: 'Have a plan for managing queues during ride breakdowns.', priority: 'High', riskLevel: 'High', proof: 'Breakdown SOP', location: 'Office' },
+                    { id: 'TP-QUEUE-10', description: 'Train staff on crowd management techniques.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -3065,6 +3677,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'TP-MED-03', description: 'Test the emergency communication system (walkie-talkies, phones).', priority: 'High', riskLevel: 'High', proof: 'Comms Test Log', location: 'Control Room' },
                     { id: 'TP-MED-04', description: 'Review and update the medical emergency response plan quarterly.', priority: 'High', riskLevel: 'High', proof: 'Updated Plan', location: 'Office' },
                     { id: 'TP-MED-05', description: 'Check AEDs (Automated External Defibrillators) monthly.', priority: 'High', riskLevel: 'High', proof: 'AED Check Log', location: 'Various' },
+                    { id: 'TP-MED-06', description: 'Train all park staff on how to report a medical emergency.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'TP-MED-07', description: 'Maintain a log of all medical incidents.', priority: 'High', riskLevel: 'High', proof: 'Medical Incident Log', location: 'Medical Office' },
+                    { id: 'TP-MED-08', description: 'Coordinate with local hospitals for serious emergencies.', priority: 'High', riskLevel: 'High', proof: 'Hospital Contact List', location: 'Medical Office' },
+                    { id: 'TP-MED-09', description: 'Ensure privacy of patients during treatment.', priority: 'High', riskLevel: 'High', proof: 'Privacy Screens', location: 'First Aid Stations' },
+                    { id: 'TP-MED-10', description: 'Conduct a debrief after any major medical incident.', priority: 'High', riskLevel: 'High', proof: 'Debrief Minutes', location: 'Office' },
                 ]
             },
             {
@@ -3080,6 +3697,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'TP-VENDOR-03', description: 'Conduct safety induction training for all new vendors.', priority: 'High', riskLevel: 'Medium', proof: 'Induction Training Log', location: 'Office' },
                     { id: 'TP-VENDOR-04', description: 'Check electrical wiring for all stalls.', priority: 'High', riskLevel: 'High', proof: 'Electrical Safety Audit', location: 'Food Stalls' },
                     { id: 'TP-VENDOR-05', description: 'Verify vendors are complying with food hygiene standards.', priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit', location: 'Food Stalls' },
+                    { id: 'TP-VENDOR-06', description: 'Ensure vendors have proper waste disposal systems.', priority: 'High', riskLevel: 'Medium', proof: 'Waste Management Check', location: 'Food Stalls' },
+                    { id: 'TP-VENDOR-07', description: 'Check that vendors have valid licenses and permits.', priority: 'High', riskLevel: 'High', proof: 'License Check', location: 'Office' },
+                    { id: 'TP-VENDOR-08', description: 'Monitor for any unsafe cooking practices.', priority: 'High', riskLevel: 'High', proof: 'Spot Check Log', location: 'Food Stalls' },
+                    { id: 'TP-VENDOR-09', description: 'Ensure vendors do not block any fire exits or pathways.', priority: 'High', riskLevel: 'High', proof: 'Pathway Audit', location: 'Food Stalls' },
+                    { id: 'TP-VENDOR-10', description: 'Have a clear process for shutting down non-compliant vendors.', priority: 'High', riskLevel: 'High', proof: 'Shutdown SOP', location: 'Office' },
                 ]
             },
             {
@@ -3095,6 +3717,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'WP-HS-03', description: 'Ensure lifeguards are positioned at all key points.', priority: 'High', riskLevel: 'High', proof: 'Lifeguard Deployment Plan', location: 'Water Park' },
                     { id: 'WP-HS-04', description: 'Check all wave pools and lazy rivers for correct operation.', priority: 'High', riskLevel: 'High', proof: 'System Check Log', location: 'Pump Room' },
                     { id: 'WP-HS-05', description: 'Verify all safety signage is clear and visible.', priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Water Park' },
+                    { id: 'WP-HS-06', description: 'Inspect water play structures for any hazards.', priority: 'High', riskLevel: 'High', proof: 'Structure Inspection Log', location: 'Water Park' },
+                    { id: 'WP-HS-07', description: 'Check rescue equipment at all lifeguard stations.', priority: 'High', riskLevel: 'High', proof: 'Rescue Equipment Log', location: 'Lifeguard Stations' },
+                    { id: 'WP-HS-08', description: 'Monitor water temperature.', priority: 'High', riskLevel: 'Medium', proof: 'Temperature Log', location: 'Poolside' },
+                    { id: 'WP-HS-09', description: 'Conduct regular drills for lifeguards.', priority: 'High', riskLevel: 'High', proof: 'Drill Reports', location: 'Office' },
+                    { id: 'WP-HS-10', description: 'Enforce all water park rules with guests.', priority: 'High', riskLevel: 'High', proof: 'Rule Enforcement Log', location: 'Water Park' },
                 ]
             },
             {
@@ -3110,6 +3737,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CPS-03', description: 'Provide a designated "handler" for each costumed character in crowded areas.', priority: 'High', riskLevel: 'High', proof: 'Handler Assignment Sheet', location: 'Park' },
                     { id: 'CPS-04', description: 'Train performers on managing crowds and interacting safely with children.', priority: 'High', riskLevel: 'Medium', proof: 'Training Log', location: 'Office' },
                     { id: 'CPS-05', description: 'Have a clear protocol for performers to signal for assistance.', priority: 'High', riskLevel: 'High', proof: 'Emergency Signal Protocol', location: 'Entertainment Dept' },
+                    { id: 'CPS-06', description: 'Provide secure changing and break areas for performers.', priority: 'High', riskLevel: 'Medium', proof: 'Area Inspection', location: 'Green Room' },
+                    { id: 'CPS-07', description: 'Manage performer schedules to avoid overexertion.', priority: 'High', riskLevel: 'High', proof: 'Schedule', location: 'Office' },
+                    { id: 'CPS-08', description: 'Have first aid available for performers.', priority: 'High', riskLevel: 'High', proof: 'First Aid Kit Check', location: 'Green Room' },
+                    { id: 'CPS-09', description: 'Debrief performers after each shift to address any issues.', priority: 'Medium', riskLevel: 'Medium', proof: 'Debrief Log', location: 'Office' },
+                    { id: 'CPS-10', description: 'Ensure performers are trained on fire and emergency procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
                 ]
             },
             {
@@ -3125,6 +3757,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CHTS-03', description: 'Use counterfeit detection for all cash transactions.', priority: 'High', riskLevel: 'High', proof: 'Counterfeit Log', location: 'Ticket Counters' },
                     { id: 'CHTS-04', description: 'Securely store all cash and unsold ticket stock.', priority: 'High', riskLevel: 'High', proof: 'Safe Log', location: 'Cash Office' },
                     { id: 'CHTS-05', description: 'Monitor for any unusual void or discount patterns.', priority: 'High', riskLevel: 'High', proof: 'POS Audit Report', location: 'System' },
+                    { id: 'CHTS-06', description: 'Manager approval required for all refunds.', priority: 'High', riskLevel: 'High', proof: 'Refund Log', location: 'Ticket Office' },
+                    { id: 'CHTS-07', description: 'Transport cash to the bank securely.', priority: 'High', riskLevel: 'High', proof: 'Cash Transport Log', location: 'Cash Office' },
+                    { id: 'CHTS-08', description: 'Train staff on cash handling procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'CHTS-09', description: 'Ensure CCTV coverage of all cash handling areas.', priority: 'High', riskLevel: 'High', proof: 'CCTV Audit', location: 'Security Office' },
+                    { id: 'CHTS-10', description: 'Have a clear policy for handling cash shortages or overages.', priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'Office' },
                 ]
             },
             {
@@ -3140,6 +3777,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LCP-03', description: 'Monitor all exits and inform exit staff.', priority: 'High', riskLevel: 'High', proof: 'Exit Staff Communication Log', location: 'Control Room' },
                     { id: 'LCP-04', description: 'Dispatch staff to search specific zones of the park.', priority: 'High', riskLevel: 'High', proof: 'Search Team Deployment Log', location: 'Control Room' },
                     { id: 'LCP-05', description: 'Notify local police after a set period of time (e.g., 10 minutes).', priority: 'High', riskLevel: 'High', proof: 'Police Notification Log', location: 'Control Room' },
+                    { id: 'LCP-06', description: 'Take the reporting parent/guardian to a secure location.', priority: 'High', riskLevel: 'High', proof: 'Escort Log', location: 'Guest Services' },
+                    { id: 'LCP-07', description: 'If a child is found, bring them to a designated safe area.', priority: 'High', riskLevel: 'High', proof: 'Safe Area SOP', location: 'Guest Services' },
+                    { id: 'LCP-08', description: 'Verify the identity of the parent/guardian before reuniting.', priority: 'High', riskLevel: 'High', proof: 'ID Check', location: 'Guest Services' },
+                    { id: 'LCP-09', description: 'Document the entire incident from start to finish.', priority: 'High', riskLevel: 'High', proof: 'Incident Report', location: 'Office' },
+                    { id: 'LCP-10', description: 'Conduct a debrief after the incident.', priority: 'High', riskLevel: 'High', proof: 'Debrief Minutes', location: 'Office' },
                 ]
             }
         ]
@@ -3195,6 +3837,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SEC-CROWD-03', description: "Implement a clear queuing system at entry gates.", priority: 'High', riskLevel: 'High', proof: 'Queue Layout Photo', location: 'Entrances' },
                     { id: 'SEC-CROWD-04', description: "Monitor crowd flow via CCTV and on-ground staff.", priority: 'High', riskLevel: 'High', proof: 'CCTV Monitoring Log', location: 'Control Room' },
                     { id: 'SEC-CROWD-05', description: "Have a clear plan for opening additional gates or redirecting crowds if needed.", priority: 'High', riskLevel: 'High', proof: 'Contingency Plan', location: 'Control Room' },
+                    { id: 'SEC-CROWD-06', description: 'Train staff on crowd management techniques.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'SEC-CROWD-07', description: 'Have clear signage for all gates, sections, and exits.', priority: 'High', riskLevel: 'High', proof: 'Signage Audit', location: 'Venue' },
+                    { id: 'SEC-CROWD-08', description: 'Coordinate with local police for traffic and crowd control outside the venue.', priority: 'High', riskLevel: 'High', proof: 'Police Coordination Log', location: 'Office' },
+                    { id: 'SEC-CROWD-09', description: 'Have a lost and found system in place.', priority: 'High', riskLevel: 'Medium', proof: 'Lost & Found SOP', location: 'Office' },
+                    { id: 'SEC-CROWD-10', description: 'Conduct a post-event debrief on crowd management.', priority: 'High', riskLevel: 'Medium', proof: 'Debrief Minutes', location: 'Office' },
                 ]
             },
             {
@@ -3210,6 +3857,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SEC-EMER-03', description: "Ensure all emergency exit routes are clear and well-lit.", priority: 'High', riskLevel: 'High', proof: 'Exit Route Audit', location: 'Venue' },
                     { id: 'SEC-EMER-04', description: "Conduct quarterly evacuation drills with staff.", priority: 'High', riskLevel: 'High', proof: 'Drill Report', location: 'Venue' },
                     { id: 'SEC-EMER-05', description: "Maintain an updated emergency contact list for all key personnel and local authorities.", priority: 'High', riskLevel: 'High', proof: 'Emergency Contact List', location: 'Control Room' },
+                    { id: 'SEC-EMER-06', description: 'Ensure all staff are trained on their roles in an emergency.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'SEC-EMER-07', description: 'Check that all emergency lighting is functional.', priority: 'High', riskLevel: 'High', proof: 'Emergency Lighting Test', location: 'Venue' },
+                    { id: 'SEC-EMER-08', description: 'Have a plan for assisting people with disabilities during an evacuation.', priority: 'High', riskLevel: 'High', proof: 'Accessibility Plan', location: 'Office' },
+                    { id: 'SEC-EMER-09', description: 'Review and update the emergency plan annually.', priority: 'High', riskLevel: 'High', proof: 'Plan Review Log', location: 'Office' },
+                    { id: 'SEC-EMER-10', description: 'Keep a log of all emergency incidents and responses.', priority: 'High', riskLevel: 'High', proof: 'Incident Logbook', location: 'Control Room' },
                 ]
             },
             {
@@ -3225,6 +3877,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'GYM-SAFE-03', description: "Ensure free weights are stored correctly and not creating trip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Gym Floor' },
                     { id: 'GYM-SAFE-04', description: "Report any faulty equipment immediately and label it 'Out of Order'.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Request', location: 'Gym Floor' },
                     { id: 'GYM-SAFE-05', description: "Ensure first aid kits are stocked and trainers are certified in CPR/First Aid.", priority: 'High', riskLevel: 'High', proof: 'Certification Records', location: 'Gym Office' },
+                    { id: 'GYM-SAFE-06', description: 'Clean and sanitize all equipment daily.', priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-07', description: 'Check floor surfaces for any hazards.', priority: 'High', riskLevel: 'High', proof: 'Floor Inspection Log', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-08', description: 'Ensure proper lighting and ventilation.', priority: 'High', riskLevel: 'Medium', proof: 'Lighting & HVAC Check', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-09', description: 'Have clear safety rules displayed for members.', priority: 'High', riskLevel: 'Medium', proof: 'Safety Signage', location: 'Gym Floor' },
+                    { id: 'GYM-SAFE-10', description: 'Maintain a log of all equipment maintenance and repairs.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Logbook', location: 'Gym Office' },
                 ]
             },
             {
@@ -3240,6 +3897,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'POOL-03', description: "Ensure all safety equipment (life rings, shepherd's crook) is accessible.", priority: 'High', riskLevel: 'High', proof: 'Safety Equipment Check', location: 'Poolside' },
                     { id: 'POOL-04', description: "Verify that lifeguards are on duty and alert.", priority: 'High', riskLevel: 'High', proof: 'Lifeguard Roster', location: 'Poolside' },
                     { id: 'POOL-05', description: "Ensure pool deck is clean and free of slip hazards.", priority: 'High', riskLevel: 'Medium', proof: 'Deck Inspection Log', location: 'Poolside' },
+                    { id: 'POOL-SAFE-06', description: 'Check water temperature.', priority: 'High', riskLevel: 'Medium', proof: 'Temperature Log', location: 'Poolside' },
+                    { id: 'POOL-SAFE-07', description: 'Inspect pool drains and suction covers.', priority: 'High', riskLevel: 'High', proof: 'Drain Inspection Log', location: 'Pool' },
+                    { id: 'POOL-SAFE-08', description: 'Ensure depth markers are clearly visible.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Poolside' },
+                    { id: 'POOL-SAFE-09', description: 'Conduct regular lifeguard training and drills.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'POOL-SAFE-10', description: 'Maintain a log of all incidents and actions taken.', priority: 'High', riskLevel: 'High', proof: 'Incident Logbook', location: 'Pool Office' },
                 ]
             },
             {
@@ -3255,6 +3917,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FIELD-03', description: "Mow and line-mark the field as per schedule.", priority: 'High', riskLevel: 'Low', proof: 'Groundskeeping Log', location: 'Field' },
                     { id: 'FIELD-04', description: "Inspect goalposts, nets, and other field equipment for safety.", priority: 'High', riskLevel: 'High', proof: 'Equipment Safety Check', location: 'Field/Court' },
                     { id: 'FIELD-05', description: "Manage pest and weed control schedule.", priority: 'Medium', riskLevel: 'Medium', proof: 'Pest Control Log', location: 'Grounds Office' },
+                    { id: 'FIELD-06', description: 'Aerate and fertilize turf as needed.', priority: 'High', riskLevel: 'Medium', proof: 'Turf Management Plan', location: 'Grounds Office' },
+                    { id: 'FIELD-07', description: 'Clean and maintain hard courts (tennis, basketball).', priority: 'High', riskLevel: 'Medium', proof: 'Court Maintenance Log', location: 'Courts' },
+                    { id: 'FIELD-08', description: 'Ensure proper drainage of the field.', priority: 'High', riskLevel: 'High', proof: 'Drainage Inspection', location: 'Field' },
+                    { id: 'FIELD-09', description: 'Maintain all groundskeeping equipment.', priority: 'High', riskLevel: 'Medium', proof: 'Equipment Maintenance Log', location: 'Grounds Office' },
+                    { id: 'FIELD-10', description: 'Keep all surrounding areas clean and tidy.', priority: 'Medium', riskLevel: 'Low', proof: 'Housekeeping Log', location: 'Surrounding Areas' },
                 ]
             },
             {
@@ -3270,6 +3937,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'TICKET-03', description: "Train staff on handling fraudulent or duplicate tickets.", priority: 'High', riskLevel: 'High', proof: 'Training Log', location: 'Office' },
                     { id: 'TICKET-04', description: "Monitor entry flow and scanner performance in real-time.", priority: 'High', riskLevel: 'Medium', proof: 'Live Dashboard', location: 'Control Room' },
                     { id: 'TICKET-05', description: "Have a clear process for resolving customer ticketing issues on-site.", priority: 'High', riskLevel: 'High', proof: 'Issue Resolution Protocol', location: 'Box Office' },
+                    { id: 'TICKET-06', description: 'Ensure all entry points are adequately staffed.', priority: 'High', riskLevel: 'High', proof: 'Staff Roster', location: 'Entrances' },
+                    { id: 'TICKET-07', description: 'Secure all ticketing hardware and software.', priority: 'High', riskLevel: 'High', proof: 'Security Audit', location: 'IT Office' },
+                    { id: 'TICKET-08', description: 'Manage access control for different ticket types.', priority: 'High', riskLevel: 'High', proof: 'Access Control Plan', location: 'Control Room' },
+                    { id: 'TICKET-09', description: 'Have a contingency plan for system failures.', priority: 'High', riskLevel: 'High', proof: 'Contingency Plan', location: 'Office' },
+                    { id: 'TICKET-10', description: 'Generate post-event attendance reports.', priority: 'High', riskLevel: 'Medium', proof: 'Attendance Report', location: 'System' },
                 ]
             },
             {
@@ -3285,6 +3957,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'VENDOR-EHS-03', description: "Issue work permits for high-risk activities (e.g., hot work, working at height).", priority: 'High', riskLevel: 'High', proof: 'Work Permit System', location: 'Site Office' },
                     { id: 'VENDOR-EHS-04', description: "Inspect contractor work areas for compliance with safety rules.", priority: 'High', riskLevel: 'High', proof: 'Site Inspection Report', location: 'Work Area' },
                     { id: 'VENDOR-EHS-05', description: "Hold a close-out meeting to ensure the work area is left safe and clean.", priority: 'High', riskLevel: 'Medium', proof: 'Close-out Form', location: 'Site Office' },
+                    { id: 'VENDOR-EHS-06', description: 'Ensure vendors use appropriate PPE.', priority: 'High', riskLevel: 'High', proof: 'PPE Audit', location: 'Work Area' },
+                    { id: 'VENDOR-EHS-07', description: 'Review vendor\'s JHA for their tasks.', priority: 'High', riskLevel: 'High', proof: 'JHA Review', location: 'Office' },
+                    { id: 'VENDOR-EHS-08', description: 'Monitor vendor activities to ensure compliance.', priority: 'High', riskLevel: 'High', proof: 'Monitoring Log', location: 'Work Area' },
+                    { id: 'VENDOR-EHS-09', description: 'Have a clear process for stopping unsafe work.', priority: 'High', riskLevel: 'High', proof: 'Stop Work Authority SOP', location: 'Office' },
+                    { id: 'VENDOR-EHS-10', description: 'Evaluate vendor safety performance after the job.', priority: 'High', riskLevel: 'High', proof: 'Performance Review', location: 'Office' },
                 ]
             },
             {
@@ -3300,6 +3977,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'MED-RESP-03', description: "Check all AEDs (defibrillators) are functional and accessible.", priority: 'High', riskLevel: 'High', proof: 'AED Check Log', location: 'Venue' },
                     { id: 'MED-RESP-04', description: "Maintain a clear communication protocol for medical emergencies.", priority: 'High', riskLevel: 'High', proof: 'Emergency Protocol', location: 'Control Room' },
                     { id: 'MED-RESP-05', description: "Log all medical incidents and the response provided.", priority: 'High', riskLevel: 'High', proof: 'Medical Incident Log', location: 'First Aid Station' },
+                    { id: 'MED-RESP-06', description: 'Train all staff on how to report a medical emergency.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'Office' },
+                    { id: 'MED-RESP-07', description: 'Have a clear path for ambulance entry and exit.', priority: 'High', riskLevel: 'High', proof: 'Ambulance Route Plan', location: 'Venue' },
+                    { id: 'MED-RESP-08', description: 'Coordinate with local hospitals for patient transfers.', priority: 'High', riskLevel: 'High', proof: 'Hospital Coordination Plan', location: 'Office' },
+                    { id: 'MED-RESP-09', description: 'Provide medical services for athletes.', priority: 'High', riskLevel: 'High', proof: 'Athlete Medical Plan', location: 'Medical Room' },
+                    { id: 'MED-RESP-10', description: 'Conduct a post-event medical debrief.', priority: 'High', riskLevel: 'Medium', proof: 'Medical Debrief Minutes', location: 'Office' },
                 ]
             }
         ]
@@ -3347,6 +4029,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-INTAKE-03', description: "Place animal in quarantine for the specified period.", priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Quarantine Area' },
                     { id: 'AS-INTAKE-04', description: "Administer initial deworming and vaccinations as per vet protocol.", priority: 'High', riskLevel: 'High', proof: 'Medical Record', location: 'Intake Room' },
                     { id: 'AS-INTAKE-05', description: 'Create a unique ID and record for the animal in the shelter management system.', priority: 'High', riskLevel: 'High', proof: 'System Entry', location: 'Office' },
+                    { id: 'AS-INTAKE-06', description: 'Photograph the animal for records.', priority: 'High', riskLevel: 'Medium', proof: 'Photo in System', location: 'Intake Room' },
+                    { id: 'AS-INTAKE-07', description: 'Assess the animal\'s temperament.', priority: 'High', riskLevel: 'High', proof: 'Temperament Assessment Form', location: 'Intake Room' },
+                    { id: 'AS-INTAKE-08', description: 'Provide food, water, and a clean kennel.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Quarantine Area' },
+                    { id: 'AS-INTAKE-09', description: 'Inform relevant staff about the new arrival.', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'Office' },
+                    { id: 'AS-INTAKE-10', description: 'Follow specific protocols for neonatal or injured animals.', priority: 'High', riskLevel: 'High', proof: 'Special Care Protocol', location: 'Medical Room' },
                 ]
             },
             {
@@ -3362,6 +4049,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-MED-03', description: "Set reminders for all upcoming booster shots.", priority: 'High', riskLevel: 'Medium', proof: 'Calendar/System Reminder', location: 'System' },
                     { id: 'AS-MED-04', description: 'Administer regular parasite control (fleas, ticks, worms).', priority: 'High', riskLevel: 'High', proof: 'Treatment Log', location: 'Medical File' },
                     { id: 'AS-MED-05', description: 'Maintain a detailed medical history for each animal.', priority: 'High', riskLevel: 'High', proof: 'Medical Chart', location: 'Medical File' },
+                    { id: 'AS-MED-06', description: 'Keep a log of all medications dispensed.', priority: 'High', riskLevel: 'High', proof: 'Dispensing Log', location: 'Pharmacy' },
+                    { id: 'AS-MED-07', description: 'Monitor animals for any adverse reactions to medications.', priority: 'High', riskLevel: 'High', proof: 'Observation Log', location: 'Kennels' },
+                    { id: 'AS-MED-08', description: 'Maintain an inventory of all medical supplies.', priority: 'High', riskLevel: 'High', proof: 'Inventory System', location: 'Pharmacy' },
+                    { id: 'AS-MED-09', description: 'Ensure proper storage of all medications.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Pharmacy' },
+                    { id: 'AS-MED-10', description: 'Follow protocols for surgical procedures.', priority: 'High', riskLevel: 'High', proof: 'Surgical Checklist', location: 'Operating Room' },
                 ]
             },
             {
@@ -3377,6 +4069,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-SANIT-03', description: "Ensure correct disinfectant contact times are followed.", priority: 'High', riskLevel: 'High', proof: 'Supervisor Check', location: 'Kennels' },
                     { id: 'AS-SANIT-04', description: "Review monthly pest control logs.", priority: 'High', riskLevel: 'Medium', proof: 'Pest Control Report', location: 'Office' },
                     { id: 'AS-SANIT-05', description: 'Ensure proper ventilation in all animal housing areas.', priority: 'High', riskLevel: 'High', proof: 'Ventilation System Check', location: 'Kennels' },
+                    { id: 'AS-SANIT-06', description: 'Clean and sanitize all food and water bowls.', priority: 'High', riskLevel: 'High', proof: 'Bowl Cleaning Log', location: 'Kitchen' },
+                    { id: 'AS-SANIT-07', description: 'Dispose of animal waste properly.', priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
+                    { id: 'AS-SANIT-08', description: 'Keep isolation areas separate and use dedicated cleaning supplies.', priority: 'High', riskLevel: 'High', proof: 'Isolation Cleaning Log', location: 'Isolation Area' },
+                    { id: 'AS-SANIT-09', description: 'Maintain a hand sanitizing station for all staff and visitors.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Entrance' },
+                    { id: 'AS-SANIT-10', description: 'Conduct a weekly deep clean of the entire facility.', priority: 'High', riskLevel: 'High', proof: 'Deep Clean Log', location: 'Facility-wide' },
                 ]
             },
             {
@@ -3392,6 +4089,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-VOL-03', description: "Ensure volunteers use appropriate PPE (gloves, boots).", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Kennels' },
                     { id: 'AS-VOL-04', description: "Have a clear process for reporting any bites or scratches.", priority: 'High', riskLevel: 'High', proof: 'Incident Report Form', location: 'Office' },
                     { id: 'AS-VOL-05', description: 'Match volunteers with animals appropriate for their skill level.', priority: 'High', riskLevel: 'High', proof: 'Assignment Log', location: 'Office' },
+                    { id: 'AS-VOL-06', description: 'Ensure volunteers sign a liability waiver.', priority: 'High', riskLevel: 'High', proof: 'Signed Waiver', location: 'Office' },
+                    { id: 'AS-VOL-07', description: 'Provide a clear schedule and duties for each volunteer.', priority: 'High', riskLevel: 'Medium', proof: 'Volunteer Schedule', location: 'Office' },
+                    { id: 'AS-VOL-08', description: 'Have a supervisor present during volunteer hours.', priority: 'High', riskLevel: 'High', proof: 'Supervisor Roster', location: 'Facility' },
+                    { id: 'AS-VOL-09', description: 'Recognize and appreciate volunteer contributions.', priority: 'Medium', riskLevel: 'Low', proof: 'Recognition Program', location: 'Office' },
+                    { id: 'AS-VOL-10', description: 'Get feedback from volunteers to improve the program.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'System' },
                 ]
             },
             {
@@ -3407,6 +4109,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-ADOPT-03', description: "Use secure and appropriately sized transport crates for the animal.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Transport Vehicle' },
                     { id: 'AS-ADOPT-04', description: "Provide the adopter with the animal's health and vaccination certificate.", priority: 'High', riskLevel: 'Medium', proof: 'Document Handover Log', location: 'Office' },
                     { id: 'AS-ADOPT-05', description: 'Have the adopter sign the adoption agreement.', priority: 'High', riskLevel: 'High', proof: 'Signed Agreement', location: 'Adoption File' },
+                    { id: 'AS-ADOPT-06', description: 'Provide post-adoption support information.', priority: 'High', riskLevel: 'Medium', proof: 'Support Handout', location: 'Office' },
+                    { id: 'AS-ADOPT-07', description: 'Counsel the adopter on the animal\'s needs and behavior.', priority: 'High', riskLevel: 'High', proof: 'Counseling Notes', location: 'Adoption File' },
+                    { id: 'AS-ADOPT-08', description: 'Microchip the animal with the adopter\'s details.', priority: 'High', riskLevel: 'High', proof: 'Microchip Registration', location: 'System' },
+                    { id: 'AS-ADOPT-09', description: 'Follow up with the adopter after a set period.', priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Call Log', location: 'Office' },
+                    { id: 'AS-ADOPT-10', description: 'Maintain a complete record of the adoption.', priority: 'High', riskLevel: 'High', proof: 'Adoption File', location: 'Office' },
                 ]
             },
             {
@@ -3422,6 +4129,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-FEED-03', description: "Ensure fresh, clean water is available to all animals at all times.", priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Kennels' },
                     { id: 'AS-FEED-04', description: "Clean all food and water bowls daily.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Kitchen' },
                     { id: 'AS-FEED-05', description: "Monitor food intake and report any animals not eating.", priority: 'High', riskLevel: 'High', proof: 'Feeding Log', location: 'Kennels' },
+                    { id: 'AS-FEED-06', description: 'Store animal food properly to prevent spoilage and pests.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Kitchen' },
+                    { id: 'AS-FEED-07', description: 'Handle food hygienically.', priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit', location: 'Kitchen' },
+                    { id: 'AS-FEED-08', description: 'Track food inventory.', priority: 'High', riskLevel: 'Medium', proof: 'Inventory System', location: 'Kitchen' },
+                    { id: 'AS-FEED-09', description: 'Consult with a vet on nutrition plans.', priority: 'High', riskLevel: 'High', proof: 'Vet Consultation Notes', location: 'Office' },
+                    { id: 'AS-FEED-10', description: 'Ensure feeding times are consistent.', priority: 'High', riskLevel: 'Medium', proof: 'Schedule', location: 'Kennels' },
                 ]
             },
             {
@@ -3437,6 +4149,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-BEHAV-03', description: 'Socialize animals with other animals and humans where appropriate.', priority: 'High', riskLevel: 'High', proof: 'Socialization Log', location: 'Play Area' },
                     { id: 'AS-BEHAV-04', description: 'Identify and work on behavioral issues with a trainer.', priority: 'High', riskLevel: 'High', proof: 'Training Plan', location: 'Training Area' },
                     { id: 'AS-BEHAV-05', description: 'Document behavioral assessments and progress.', priority: 'High', riskLevel: 'High', proof: 'Behavioral Notes', location: 'Animal File' },
+                    { id: 'AS-BEHAV-06', description: 'Provide quiet time and space for animals to rest.', priority: 'High', riskLevel: 'Medium', proof: 'Rest Schedule', location: 'Kennels' },
+                    { id: 'AS-BEHAV-07', description: 'Use positive reinforcement training methods.', priority: 'High', riskLevel: 'High', proof: 'Training Policy', location: 'Office' },
+                    { id: 'AS-BEHAV-08', description: 'Rotate toys to keep animals engaged.', priority: 'Medium', riskLevel: 'Low', proof: 'Toy Rotation Schedule', location: 'Office' },
+                    { id: 'AS-BEHAV-09', description: 'Assess adoptability based on behavior.', priority: 'High', riskLevel: 'High', proof: 'Adoptability Assessment', location: 'Animal File' },
+                    { id: 'AS-BEHAV-10', description: 'Provide feedback to potential adopters on animal behavior.', priority: 'High', riskLevel: 'High', proof: 'Adopter Counseling Notes', location: 'Adoption Office' },
                 ]
             },
             {
@@ -3452,6 +4169,11 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'AS-DON-03', description: 'Track inventory levels of food, medicine, and other supplies.', priority: 'High', riskLevel: 'High', proof: 'Inventory System', location: 'System' },
                     { id: 'AS-DON-04', description: 'Place orders for supplies when they reach reorder levels.', priority: 'High', riskLevel: 'Medium', proof: 'Purchase Orders', location: 'Office' },
                     { id: 'AS-DON-05', description: 'Reconcile donation records with bank statements monthly.', priority: 'High', riskLevel: 'High', proof: 'Reconciliation Report', location: 'Office' },
+                    { id: 'AS-DON-06', description: 'Send thank you notes to all donors.', priority: 'High', riskLevel: 'Medium', proof: 'Thank You Log', location: 'Office' },
+                    { id: 'AS-DON-07', description: 'Maintain a donor database.', priority: 'High', riskLevel: 'High', proof: 'CRM System', location: 'System' },
+                    { id: 'AS-DON-08', description: 'Manage fundraising events and campaigns.', priority: 'High', riskLevel: 'High', proof: 'Event Plan', location: 'Office' },
+                    { id: 'AS-DON-09', description: 'Prepare financial reports for the board.', priority: 'High', riskLevel: 'High', proof: 'Financial Reports', location: 'Office' },
+                    { id: 'AS-DON-10', description: 'Ensure compliance with all financial regulations for NGOs.', priority: 'High', riskLevel: 'High', proof: 'Compliance Audit', location: 'Office' },
                 ]
             }
         ]
@@ -3466,3 +4188,4 @@ export const premiumPacks: PremiumPack[] = [
 
 
   
+
