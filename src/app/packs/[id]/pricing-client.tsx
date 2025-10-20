@@ -242,19 +242,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
       { key: 'pack', label: 'Complete Checklist Pack', professional: `✓ (${pack.checklists.length} checklists)`, personalized: '✓', enterprise: '✓' },
       { key: 'download', label: 'Instant Download', professional: '✓', personalized: '✓', enterprise: '✓' },
       { key: 'editable', label: 'Fully Editable Excel Files', professional: '✓', personalized: '✓', enterprise: '✓' },
-      { key: 'global', label: hasTieredEditions ? 'Global Compliance' : 'Custom Branding', personalized: '✓', enterprise: '✓' },
-      { key: 'action_plan', label: 'Priority Action Plan', personalized: '✓', enterprise: '✓' },
-      { key: 'onboarding', label: '30-Min Onboarding Call', personalized: '✓', enterprise: '✓' },
-      { key: 'sop', label: 'Full SOP Manual Creation', enterprise: '✓' },
-      { key: 'am', label: 'Dedicated Account Manager', enterprise: '✓' },
-      { key: 'training', label: 'Team Training', enterprise: '✓' },
-      { key: 'bespoke', label: 'Bespoke Checklist Creation', enterprise: '✓' },
+      { key: 'global', label: hasTieredEditions ? 'Global Compliance' : 'Custom Branding', professional: '—', personalized: '✓', enterprise: '✓' },
+      { key: 'action_plan', label: 'Priority Action Plan', professional: '—', personalized: '✓', enterprise: '✓' },
+      { key: 'onboarding', label: '30-Min Onboarding Call', professional: '—', personalized: '✓', enterprise: '✓' },
+      { key: 'sop', label: 'Full SOP Manual Creation', professional: '—', enterprise: '—', enterpriseOnly: true },
+      { key: 'am', label: 'Dedicated Account Manager', professional: '—', enterprise: '—', enterpriseOnly: true },
+      { key: 'training', label: 'Team Training', professional: '—', enterprise: '—', enterpriseOnly: true },
+      { key: 'bespoke', label: 'Bespoke Checklist Creation', professional: '—', enterprise: '—', enterpriseOnly: true },
     ];
     
     if (hasTieredEditions) {
-      features.find(f => f.key === 'global')!.label = 'Global Compliance Checklists';
+      const globalFeature = features.find(f => f.key === 'global');
+      if (globalFeature) globalFeature.label = 'Global Compliance Checklists';
     } else {
-       features.find(f => f.key === 'global')!.label = 'Custom Branding';
+       const customBrandingFeature = features.find(f => f.key === 'global');
+       if (customBrandingFeature) customBrandingFeature.label = 'Custom Branding';
     }
 
 
@@ -310,37 +312,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> 
                     <p className="font-semibold text-primary">Everything in Professional, plus:</p>
                 </div>
-                <div className="grid gap-3 pl-8">
-                    {hasTieredEditions && (
-                         <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
+                 <div className="grid gap-3 pl-8">
+                    {features.filter(f => !f.professional && f.personalized && !f.enterpriseOnly).map(feature => (
+                         <div key={feature.key} className="grid grid-cols-[auto_1fr] items-start gap-x-3">
                             <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                            <div>
-                                <p className="font-semibold">Global Compliance Checklists</p>
-                                <p className="text-muted-foreground text-xs">Checklists aligned with international standards like ISO, OSHA, and JCI.</p>
-                            </div>
+                            <p className="font-semibold">{feature.label}</p>
                         </div>
-                    )}
-                    <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
-                        <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                        <div>
-                            <p className="font-semibold">Custom Branding</p>
-                            <p className="text-muted-foreground text-xs">Your logo added to the checklists.</p>
-                        </div>
-                    </div>
-                     <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
-                        <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                        <div>
-                            <p className="font-semibold">Priority Action Plan</p>
-                            <p className="text-muted-foreground text-xs">A document highlighting the top 10 most critical checklists for you to implement first.</p>
-                        </div>
-                    </div>
-                     <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
-                        <Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-                        <div>
-                            <p className="font-semibold">30-Min Onboarding Call</p>
-                            <p className="text-muted-foreground text-xs">A walkthrough of the pack to help you get started.</p>
-                        </div>
-                    </div>
+                    ))}
                  </div>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
@@ -364,10 +342,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="font-semibold text-primary">Everything in Personalized, plus:</p>
                  </div>
                  <div className="grid gap-3 pl-8">
-                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Full SOP manual creation from checklists.</span></p>
-                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Dedicated account manager for support.</span></p>
-                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Training for your team.</span></p>
-                    <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Bespoke checklist creation for your unique needs.</span></p>
+                    {features.filter(f => f.enterpriseOnly).map(feature => (
+                        <p key={feature.key} className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>{feature.label}</span></p>
+                    ))}
                  </div>
             </CardContent>
             <CardFooter className="p-6 mt-auto">
@@ -418,27 +395,20 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <div className="block lg:hidden">
                     {hasTieredEditions ? (
                          <div className="w-full overflow-x-auto relative border rounded-lg">
-                           <table className="w-full text-sm">
-                             <thead className="text-left">
+                           <table className="w-full min-w-[700px] text-sm">
+                             <thead>
                                <tr className="border-b">
-                                  {/* Sticky Feature Header */}
-                                 <th className="sticky left-0 p-4 font-semibold text-primary bg-background/95 backdrop-blur-sm min-w-[150px]">Features</th>
-                                 
-                                  {/* Professional Tier Header */}
-                                 <th className="p-4 min-w-[200px] border-l">
+                                 <th className="sticky left-0 p-4 font-semibold text-primary bg-background/95 backdrop-blur-sm min-w-[150px] text-left">Features</th>
+                                 <th className="p-4 min-w-[200px] border-l text-center">
                                     <h4 className="font-headline text-lg">Professional</h4>
                                     <p className="text-2xl font-bold">₹{professionalPrice}</p>
                                  </th>
-                                 
-                                  {/* Personalized Tier Header */}
-                                 <th className="p-4 min-w-[200px] border-l bg-accent/10 relative">
+                                 <th className="p-4 min-w-[200px] border-l bg-accent/10 relative text-center">
                                     <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">Best Value</Badge>
                                     <h4 className="font-headline text-lg text-primary">Personalized</h4>
                                     <p className="text-2xl font-bold text-primary">₹{personalizedPrice}</p>
                                  </th>
-                                 
-                                  {/* Enterprise Tier Header */}
-                                 <th className="p-4 min-w-[200px] border-l">
+                                 <th className="p-4 min-w-[200px] border-l text-center">
                                     <h4 className="font-headline text-lg">Enterprise</h4>
                                     <p className="text-2xl font-bold">Custom</p>
                                  </th>
@@ -462,10 +432,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                <tr className="bg-secondary/50">
                                    <td className="sticky left-0 p-4 font-semibold bg-background/95 backdrop-blur-sm"></td>
                                    <td className="p-4 text-center border-l">
-                                        <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                                        <div className="[&>form]:flex [&>form]:justify-center">
+                                            <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                                        </div>
                                    </td>
                                    <td className="p-4 text-center border-l bg-accent/10">
-                                       <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                                        <div className="[&>form]:flex [&>form]:justify-center">
+                                            <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                                        </div>
                                    </td>
                                    <td className="p-4 text-center border-l">
                                        <Button asChild className="w-full">
@@ -553,3 +527,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </>
     );
 }
+
+    
