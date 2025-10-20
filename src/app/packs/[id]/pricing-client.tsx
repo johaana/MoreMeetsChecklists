@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse, Building2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -237,6 +237,26 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     ];
 
     const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
+    
+    const features = [
+      { key: 'pack', label: 'Complete Checklist Pack', professional: `✓ (${pack.checklists.length} checklists)`, personalized: '✓', enterprise: '✓' },
+      { key: 'download', label: 'Instant Download', professional: '✓', personalized: '✓', enterprise: '✓' },
+      { key: 'editable', label: 'Fully Editable Excel Files', professional: '✓', personalized: '✓', enterprise: '✓' },
+      { key: 'global', label: hasTieredEditions ? 'Global Compliance' : 'Custom Branding', personalized: '✓', enterprise: '✓' },
+      { key: 'action_plan', label: 'Priority Action Plan', personalized: '✓', enterprise: '✓' },
+      { key: 'onboarding', label: '30-Min Onboarding Call', personalized: '✓', enterprise: '✓' },
+      { key: 'sop', label: 'Full SOP Manual Creation', enterprise: '✓' },
+      { key: 'am', label: 'Dedicated Account Manager', enterprise: '✓' },
+      { key: 'training', label: 'Team Training', enterprise: '✓' },
+      { key: 'bespoke', label: 'Bespoke Checklist Creation', enterprise: '✓' },
+    ];
+    
+    if (hasTieredEditions) {
+      features.find(f => f.key === 'global')!.label = 'Global Compliance Checklists';
+    } else {
+       features.find(f => f.key === 'global')!.label = 'Custom Branding';
+    }
+
 
     const pricingCards = (
       <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:max-w-7xl lg:grid-cols-3">
@@ -337,7 +357,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                    <Building className="w-6 h-6 text-primary" />
+                    <Building2 className="w-6 h-6 text-primary" />
                     Enterprise
                 </CardTitle>
                 <p className="text-4xl font-bold text-foreground">Custom</p>
@@ -395,12 +415,79 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
 
+                {/* Desktop View: 3-Card Grid */}
                 <div className="hidden lg:block">
                     {hasTieredEditions ? pricingCards : <div className="max-w-md mx-auto">{singleTierCard}</div>}
                 </div>
-                <div className="lg:hidden">
-                     {hasTieredEditions ? (
-                         <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto">{pricingCards}</div>
+
+                {/* Mobile View: Comparison Table or Single Card */}
+                <div className="block lg:hidden">
+                    {hasTieredEditions ? (
+                         <div className="w-full overflow-x-auto relative border rounded-lg">
+                           <table className="w-full text-sm">
+                             <thead className="text-left">
+                               <tr className="border-b">
+                                  {/* Sticky Feature Header */}
+                                 <th className="sticky left-0 p-4 font-semibold text-primary bg-background/95 backdrop-blur-sm min-w-[150px]">Features</th>
+                                 
+                                  {/* Professional Tier Header */}
+                                 <th className="p-4 min-w-[200px] border-l">
+                                    <h4 className="font-headline text-lg">Professional</h4>
+                                    <p className="text-2xl font-bold">₹{professionalPrice}</p>
+                                 </th>
+                                 
+                                  {/* Personalized Tier Header */}
+                                 <th className="p-4 min-w-[200px] border-l bg-accent/10 relative">
+                                    <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">Best Value</Badge>
+                                    <h4 className="font-headline text-lg text-primary">Personalized</h4>
+                                    <p className="text-2xl font-bold text-primary">₹{personalizedPrice}</p>
+                                 </th>
+                                 
+                                  {/* Enterprise Tier Header */}
+                                 <th className="p-4 min-w-[200px] border-l">
+                                    <h4 className="font-headline text-lg">Enterprise</h4>
+                                    <p className="text-2xl font-bold">Custom</p>
+                                 </th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                              {features.map((feature) => (
+                                 <tr key={feature.key} className="border-b last:border-b-0">
+                                   <td className="sticky left-0 p-4 font-semibold bg-background/95 backdrop-blur-sm">{feature.label}</td>
+                                   <td className="p-4 text-center border-l">
+                                       <span className="text-green-500 font-bold">{feature.professional || '—'}</span>
+                                   </td>
+                                   <td className="p-4 text-center border-l bg-accent/10">
+                                       <span className="text-green-500 font-bold">{feature.personalized || '—'}</span>
+                                   </td>
+                                   <td className="p-4 text-center border-l">
+                                       <span className="text-green-500 font-bold">{feature.enterprise || '—'}</span>
+                                   </td>
+                                 </tr>
+                               ))}
+                               <tr className="bg-secondary/50">
+                                   <td className="sticky left-0 p-4 font-semibold bg-background/95 backdrop-blur-sm"></td>
+                                   <td className="p-4 text-center border-l">
+                                        <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-2 [&_.razorpay-payment-button]:px-4 [&_.razorpay-payment-button]:text-base [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
+                                           <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                                       </div>
+                                   </td>
+                                   <td className="p-4 text-center border-l bg-accent/10">
+                                       <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-2 [&_.razorpay-payment-button]:px-4 [&_.razorpay-payment-button]:text-base [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                                           <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                                       </div>
+                                   </td>
+                                   <td className="p-4 text-center border-l">
+                                       <Button asChild className="w-full">
+                                           <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                               Book Call
+                                           </Link>
+                                       </Button>
+                                   </td>
+                               </tr>
+                             </tbody>
+                           </table>
+                         </div>
                     ) : (
                          <div className="max-w-md mx-auto">{singleTierCard}</div>
                     )}
@@ -462,7 +549,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </SheetHeader>
                         <ScrollArea className="h-[60vh]">
                             <div className="p-1 pb-4">
-                                {hasTieredEditions ? pricingCards : <div className="max-w-md mx-auto">{singleTierCard}</div>}
+                               {hasTieredEditions ? (
+                                    <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto">{pricingCards}</div>
+                                ) : (
+                                    <div className="max-w-md mx-auto">{singleTierCard}</div>
+                                )}
                             </div>
                         </ScrollArea>
                     </SheetContent>
