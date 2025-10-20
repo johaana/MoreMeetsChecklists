@@ -98,7 +98,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                         {content.title}
                     </h2>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
                         <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
                     ))}
@@ -234,8 +234,8 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="container px-2 md:px-6">
                 <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
                      <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
-                        <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
-                           {React.cloneElement(pack.icon, { className: "w-10 h-10 md:w-12 md:h-12 text-primary" })}
+                        <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
+                           {React.cloneElement(pack.icon, { className: "w-8 h-8 md:w-12 md:h-12 text-primary" })}
                        </div>
                      </div>
                     <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-2">
