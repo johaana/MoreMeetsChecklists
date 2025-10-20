@@ -64,51 +64,6 @@ const SolutionsList = () => (
   </>
 );
 
-// Reusable mobile component to render the list of solutions
-const MobileSolutionsList = () => (
-    <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="solutions" className="border-b-0">
-            <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors hover:no-underline py-2 -ml-1 pr-1">
-                Explore Solutions
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pl-4 border-l">
-                <div className="space-y-4">
-                     <div className="space-y-3">
-                        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Premium Packs by Industry</h4>
-                        <div className="flex flex-col gap-3">
-                            {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-                                <div key={category}>
-                                    <h5 className="font-semibold text-sm text-primary/80 mb-1.5">{category}</h5>
-                                     <div className="flex flex-col gap-1">
-                                        {packs.map(pack => (
-                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-r-md hover:bg-secondary">
-                                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
-                                                <span className="flex-1 leading-snug">{pack.title}</span>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                     <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Bestselling Checklists</h4>
-                        <div className="flex flex-col gap-1">
-                            {allIndividualChecklists.map(checklist => (
-                                <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item py-1.5 rounded-r-md hover:bg-secondary">
-                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                                    <span className="flex-1 leading-snug">{checklist.title}</span>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionItem>
-    </Accordion>
-);
-
-
 export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
@@ -225,7 +180,12 @@ export function SiteHeader() {
                                     <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2">Back to Main Site</Link>
                                 ) : (
                                 <>
-                                    <MobileSolutionsList />
+                                    <Link href="/packs" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
+                                        All Premium Packs
+                                    </Link>
+                                     <Link href="/checklists" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
+                                        All Individual Checklists
+                                    </Link>
                                     <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2" prefetch={false}>
                                         Blog
                                     </Link>
