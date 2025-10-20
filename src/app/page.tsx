@@ -554,9 +554,16 @@ export default function Home() {
                         <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
                             The Professional Standard for Compliance & Operations Checklists.
                         </h1>
-                         <p className="max-w-[700px] text-white/90 text-xl md:text-2xl/relaxed mx-auto drop-shadow-sm mt-4 font-medium">
-                            Instant SOPs. Total Compliance.
-                        </p>
+                         <div className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2 text-white/90 text-xl md:text-2xl/relaxed mx-auto drop-shadow-sm mt-4 font-medium">
+                            <span className="flex items-center gap-2">
+                                <Check className="w-6 h-6 text-accent" />
+                                <span>Instant SOPs</span>
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <Check className="w-6 h-6 text-accent" />
+                                <span>Total Compliance</span>
+                            </span>
+                        </div>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-4 pt-4">
                         <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -566,7 +573,7 @@ export default function Home() {
                             </Link>
                         </Button>
                         <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                            <p className="text-xs text-white/80">
+                             <p className="text-xs text-white/80">
                                 International Standards Integrated: ISO, JCI, HACCP, OSHA & More
                             </p>
                         </div>
