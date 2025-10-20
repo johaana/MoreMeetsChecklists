@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle } from 'lucide-react';
+import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck } from 'lucide-react';
 
 export const painPointsContent = {
     hotels_and_resorts: {
@@ -22,7 +22,7 @@ export const painPointsContent = {
         ]
     },
     fashion_and_apparel_retail: {
-        title: "Retail Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "Fashion & Apparel Retail Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Tanishq Showroom Fire (Delhi, 2022)", description: "A fire due to a short-circuit caused damage worth ₹2 crores. Our fire safety and electrical maintenance audits prevent the overloaded circuits and faulty wiring that cause these fires." },
             { icon: <Factory />, title: "Zara Factory Fire (Bangladesh, 2012)", description: "A worker died in a factory fire due to non-compliance, causing a global brand crisis. Our vendor compliance audits ensure your supply chain meets ethical and safety standards." },
@@ -40,7 +40,7 @@ export const painPointsContent = {
         ]
     },
     supermarket_grocery_retail_pack: {
-        title: "Supermarket Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "Supermarket & Grocery Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Big Bazaar Slip Injury Lawsuit (Delhi, 2018)", description: "A customer slipped on a wet floor, leading to a major lawsuit. Our 'Hourly Floor Inspection & Spill Response' SOP ensures hazards are identified and cleaned up immediately, with a log to prove diligence." },
             { icon: <Bug />, title: "Tesco Rodent Infestation (UK, 2017)", description: "A Tesco store was hit with heavy fines after a rodent infestation was discovered. Our store hygiene and pest control schedules prevent the conditions that allow for such infestations." },
@@ -49,7 +49,7 @@ export const painPointsContent = {
         ]
     },
     ott_platform_pack: {
-        title: "Digital Platform Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "OTT Platform Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Users />, title: "Hotstar World Cup Crash (2019)", description: "The platform crashed during a crucial India match, infuriating millions. Our 'Live Event Readiness' checklist prevents this with mandatory load testing and disaster recovery drills before major events." },
             { icon: <Shield />, title: "SonyLIV User Data Leak (2021)", description: "User data was leaked due to an API misconfiguration, a common security flaw. Our cybersecurity checklists include API security reviews to prevent such breaches." },
@@ -58,12 +58,12 @@ export const painPointsContent = {
         ]
     },
     theme_park_ops_pack: {
-        title: "Amusement Park Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "Theme Park Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Adventure Island Ride Collapse (Delhi, 2022)", description: "A ride collapsed during operation, injuring 10 people. Our 'Daily Ride Inspection' checklist mandates checks of structural bolts, safety harnesses, and emergency stops to provide a verifiable safety audit." },
             { icon: <Shield />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction. Our maintenance SOPs ensure that every component, from pumps to belts, is regularly inspected and logged." },
             { icon: <Bug />, title: "Universal Orlando Fatality (2011)", description: "A child was killed due to a mechanical failure on a popular ride. Our checklists ensure that operator training and daily safety checks are rigorously documented, preventing such catastrophic failures." },
-            { icon: '🎢', title: "Adlabs Imagica Guest Injury (Mumbai, 2018)", description: "A guest was injured due to a loose safety harness. Our ride operator checklists include a mandatory double-check of every restraint system before the ride starts, ensuring guest safety." }
+            { icon: <FerrisWheel />, title: "Adlabs Imagica Guest Injury (Mumbai, 2018)", description: "A guest was injured due to a loose safety harness. Our ride operator checklists include a mandatory double-check of every restraint system before the ride starts, ensuring guest safety." }
         ]
     },
     fitness_centers_gyms_pack: {
@@ -112,7 +112,7 @@ export const painPointsContent = {
         ]
     },
     university_college_ops: {
-        title: "Campus Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "University & College Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "AIIMS Hostel Fire (2019)", description: "A fire caused by an electrical short circuit was made worse by inaccessible fire extinguishers. Our 'Hostel Maintenance' checklist includes regular checks of electrical systems and safety equipment." },
             { icon: <Shield />, title: "Chandigarh University Privacy Breach (2022)", description: "A major privacy scandal erupted from weak CCTV access SOPs. Our checklists enforce strict access control and monitoring protocols for all campus surveillance systems." },
@@ -121,7 +121,7 @@ export const painPointsContent = {
         ]
     },
     food_manufacturing_ops: {
-        title: "Food Industry Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "Food Manufacturing Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Bug />, title: "Nestlé Maggi Lead Contamination (India, 2015)", description: "A nationwide recall costing ₹500 crore was triggered by lead contamination. Our 'Batch Testing & Traceability' SOPs create a verifiable chain of quality from raw material to finished product." },
             { icon: <Bug />, title: "Britannia Biscuit Recall (2020)", description: "A batch of biscuits was recalled due to mold from a storage lapse. Our 'Cold Storage Temperature Logs' and hygiene SOPs prevent the conditions that lead to spoilage and mold growth." },
@@ -130,7 +130,7 @@ export const painPointsContent = {
         ]
     },
     manufacturing_operations_ehs_pack: {
-        title: "Industrial Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "Manufacturing & EHS Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "LG Polymers Gas Leak (Vizag, 2020)", description: "A catastrophic chemical leak killed 12 and injured over 1,000 people due to failures in maintenance and safety protocols. Our 'Chemical Storage & Ventilation' checklists are designed to prevent such disasters." },
             { icon: <Bug />, title: "Bhopal Gas Tragedy (1984)", description: "The world's worst industrial disaster, which killed over 3,000 people, was a result of catastrophic safety negligence. Our checklists enforce the basic, non-negotiable safety audits that could have prevented it." },
@@ -139,7 +139,7 @@ export const painPointsContent = {
         ]
     },
     logistics_warehouse_pack: {
-        title: "Logistics Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        title: "Logistics & Warehouse Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Amazon Warehouse Fire (Delhi, 2022)", description: "A massive fire destroyed ₹5 crore worth of inventory, likely caused by faulty wiring. Our 'Fire Prevention and Zoning' SOPs include regular electrical audits to prevent this." },
             { icon: <Factory />, title: "Flipkart Hub Injury (Bengaluru, 2021)", description: "A worker was severely injured by a falling pallet due to improper stacking. Our 'Daily Warehouse Inspection' checklist includes checks for pallet stability and stacking height to prevent such accidents." },
@@ -157,7 +157,7 @@ export const painPointsContent = {
         ]
     },
     sports_clubs_stadium_operations_pack: {
-        title: "Venue Catastrophes: Real-World Stadium Failures & The Checklists That Prevent Them",
+        title: "Sports Clubs & Stadium Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Users />, title: "Stampede at Salt Lake Stadium, Kolkata (2018)", description: "Fans rushed exits after a sudden blackout; lack of emergency lighting and trained marshals led to dozens injured. Prevented by: Crowd control SOP, emergency exit and backup power inspection checklist." },
             { icon: <Dumbbell />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after gym equipment snapped due to poor maintenance; machine had not been serviced in 14 months. Prevented by: Monthly equipment inspection and preventive maintenance SOP." },
