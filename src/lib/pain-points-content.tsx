@@ -1,18 +1,19 @@
+
 import React from 'react';
 import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle } from 'lucide-react';
 
 export const painPointsContent = {
     hotels_and_resorts: {
-        title: "From Guest Nightmare to 5-Star Experience: Real Incidents SOPs Prevent",
+        title: "Hospitality Catastrophes: Real-World Hotel Failures & The Checklists That Prevent Them",
         points: [
-            { icon: <Siren />, title: "Hotel Arpit Palace Fire (Delhi, 2019)", description: "17 lives were lost in a hotel fire due to illegally blocked exits and non-functional alarms. Our daily 'Fire Safety & Exit Inspection' checklist provides a verifiable audit trail to ensure this never happens." },
+            { icon: <Siren />, title: "Hotel Arpit Palace, Delhi (2019)", description: "17 lives were lost in a fire due to illegally blocked exits and non-functional alarms. Our daily 'Fire Safety & Exit Inspection' checklist provides a verifiable audit trail to ensure this never happens." },
             { icon: <Zap />, title: "Carlton Tower Hotel, Bengaluru (2010)", description: "A short circuit led to a fatal smoke suffocation incident. Our preventive maintenance checklists for wiring & HVAC ensure your infrastructure is safe and compliant." },
             { icon: <Users />, title: "Oberoi Trident, Mumbai (2008)", description: "The 26/11 terror attack exposed a lack of coordinated emergency SOPs for lockdowns and guest safety. Our checklists provide a framework for a unified security response." },
             { icon: <Shield />, title: "DusitD2 Hotel, Nairobi (2019)", description: "A major security breach highlighted critical lapses in guest screening and perimeter control SOPs. Our security checklists harden your first line of defense." }
         ]
     },
     restaurants: {
-        title: "From Food Poisoning to Profit: Real Incidents Our Checklists Prevent",
+        title: "Restaurant Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Bug />, title: "Chipotle E. coli Outbreak (USA, 2015)", description: "A nationwide E. coli outbreak cost Chipotle billions in stock value and brand damage. Our 'HACCP Kitchen Checklist' prevents cross-contamination with mandatory, logged checks." },
             { icon: <Siren />, title: "Indore Eatery Food Poisoning (2022)", description: "Over 50 people were hospitalized after eating at a local eatery, leading to its closure. Our daily hygiene SOPs provide a verifiable record of cleanliness, preventing such incidents." },
@@ -21,7 +22,7 @@ export const painPointsContent = {
         ]
     },
     fashion_and_apparel_retail: {
-        title: "From Fire Hazards to Profit Protection: Real Retail Disasters",
+        title: "Retail Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Tanishq Showroom Fire (Delhi, 2022)", description: "A fire due to a short-circuit caused damage worth ₹2 crores. Our fire safety and electrical maintenance audits prevent the overloaded circuits and faulty wiring that cause these fires." },
             { icon: <Factory />, title: "Zara Factory Fire (Bangladesh, 2012)", description: "A worker died in a factory fire due to non-compliance, causing a global brand crisis. Our vendor compliance audits ensure your supply chain meets ethical and safety standards." },
@@ -30,7 +31,7 @@ export const painPointsContent = {
         ]
     },
     electronics_showroom_pack: {
-        title: "From Short Circuits to Secure Sales: Real Electronics Store Risks",
+        title: "Electronics Retail Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Croma Store Fire (Mumbai, 2021)", description: "A devastating fire was traced back to a short circuit from a demo unit. Our 'Electrical Safety Audit' mandates checks for wiring loads and prevents the use of unsafe multi-plugs, stopping fires before they start." },
             { icon: <Zap />, title: "Apple Store Battery Explosion (Sydney, 2018)", description: "A phone's battery exploded while charging, causing an emergency evacuation. Our 'Demo Unit Safety' SOP includes daily checks for battery swelling and heat, preventing fires." },
@@ -39,7 +40,7 @@ export const painPointsContent = {
         ]
     },
     supermarket_grocery_retail_pack: {
-        title: "From Expired Goods to Efficient Operations: Real Supermarket Risks",
+        title: "Supermarket Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Big Bazaar Slip Injury Lawsuit (Delhi, 2018)", description: "A customer slipped on a wet floor, leading to a major lawsuit. Our 'Hourly Floor Inspection & Spill Response' SOP ensures hazards are identified and cleaned up immediately, with a log to prove diligence." },
             { icon: <Bug />, title: "Tesco Rodent Infestation (UK, 2017)", description: "A Tesco store was hit with heavy fines after a rodent infestation was discovered. Our store hygiene and pest control schedules prevent the conditions that allow for such infestations." },
@@ -48,7 +49,7 @@ export const painPointsContent = {
         ]
     },
     ott_platform_pack: {
-        title: "From Platform Outages to Privacy Breaches: Real OTT Disasters",
+        title: "Digital Platform Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Users />, title: "Hotstar World Cup Crash (2019)", description: "The platform crashed during a crucial India match, infuriating millions. Our 'Live Event Readiness' checklist prevents this with mandatory load testing and disaster recovery drills before major events." },
             { icon: <Shield />, title: "SonyLIV User Data Leak (2021)", description: "User data was leaked due to an API misconfiguration, a common security flaw. Our cybersecurity checklists include API security reviews to prevent such breaches." },
@@ -57,7 +58,7 @@ export const painPointsContent = {
         ]
     },
     theme_park_ops_pack: {
-        title: "From Ride Malfunctions to Revenue Loss: Real Theme Park Tragedies",
+        title: "Amusement Park Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Adventure Island Ride Collapse (Delhi, 2022)", description: "A ride collapsed during operation, injuring 10 people. Our 'Daily Ride Inspection' checklist mandates checks of structural bolts, safety harnesses, and emergency stops to provide a verifiable safety audit." },
             { icon: <Shield />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction. Our maintenance SOPs ensure that every component, from pumps to belts, is regularly inspected and logged." },
@@ -66,7 +67,7 @@ export const painPointsContent = {
         ]
     },
     fitness_centers_gyms_pack: {
-        title: "From Member Injuries to Membership Growth: Real Gym Risks & Solutions",
+        title: "Fitness Center Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after gym equipment snapped due to poor maintenance. Our 'Monthly Equipment Inspection' and preventive maintenance SOPs ensure machines are always safe." },
             { icon: <Stethoscope />, title: "Anytime Fitness AED Failure (Delhi, 2022)", description: "A member suffered a heart attack, but the gym's AED was not functional. Our 'First Aid & AED Readiness' SOP includes weekly checks of emergency equipment, ensuring it works when needed most." },
@@ -75,7 +76,7 @@ export const painPointsContent = {
         ]
     },
     facility_management_blueprint: {
-        title: "From Costly Breakdowns to Compliant Operations: Real Facility Disasters",
+        title: "Facility Management Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Kamala Mills Fire (Mumbai, 2017)", description: "14 lives were lost in a rooftop fire due to faulty wiring and missing fire audit logs. Our fire audit and electrical compliance checklists prevent such negligence." },
             { icon: <Zap />, title: "AIIMS Delhi Fire (2023)", description: "A major fire broke out in a building block due to a short-circuit in an AC unit, highlighting gaps in preventive maintenance. Our checklists ensure all MEP systems are regularly inspected." },
@@ -84,7 +85,7 @@ export const painPointsContent = {
         ]
     },
     corporate_legal_compliance_starter_kit: {
-        title: "From Legal Fines to Investor Readiness: Real Corporate Compliance Failures",
+        title: "Corporate Compliance Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <FileLock />, title: "Byju's Regulatory Penalties (2023)", description: "The ed-tech giant faced significant regulatory penalties for delayed financial filings. Our 'Regulatory Calendar' checklist with automated reminders ensures all statutory deadlines are met." },
             { icon: <Shield />, title: "Facebook's $5B FTC Fine (2021)", description: "The company was hit with a massive fine for privacy violations. Our 'Policy Approval and Renewal' checklists help ensure that data privacy policies are up-to-date and acknowledged by all staff." },
@@ -93,7 +94,7 @@ export const painPointsContent = {
         ]
     },
     enterprise_risk_cybersecurity_pack: {
-        title: "From Ransomware to Resilience: Real-World Cyber Disasters",
+        title: "Cybersecurity Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "AIIMS Cyberattack (2022)", description: "The hospital's systems were down for weeks due to a ransomware attack, with no clear backup restoration SOP. Our 'Incident Response' and 'Backup & Recovery' checklists are designed to handle exactly this scenario." },
             { icon: <Zap />, title: "WannaCry Ransomware Attack (2017)", description: "This global attack hit over 150 countries by exploiting unpatched systems. Our 'Patch Management' checklist ensures that all critical security patches are tested and deployed on time." },
@@ -102,7 +103,7 @@ export const painPointsContent = {
         ]
     },
     school_operations_pack: {
-        title: "From School Bus Tragedies to Fire Drills: Real-World School Risks",
+        title: "School Safety Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Ryan International School Tragedy (Gurgaon, 2017)", description: "A student was murdered inside the school due to a massive security lapse, including unverified staff. Our visitor entry and staff background check SOPs are designed to prevent such unauthorized access." },
             { icon: <Building />, title: "Surat Coaching Centre Fire (2019)", description: "A fire in a coaching center killed 22 students due to illegal structures and no fire exits. Our 'Fire Safety' and evacuation SOPs ensure your premises are safe and your staff is prepared." },
@@ -111,7 +112,7 @@ export const painPointsContent = {
         ]
     },
     university_college_ops: {
-        title: "From Lab Explosions to Hostel Safety: Managing Campus Risks",
+        title: "Campus Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "AIIMS Hostel Fire (2019)", description: "A fire caused by an electrical short circuit was made worse by inaccessible fire extinguishers. Our 'Hostel Maintenance' checklist includes regular checks of electrical systems and safety equipment." },
             { icon: <Shield />, title: "Chandigarh University Privacy Breach (2022)", description: "A major privacy scandal erupted from weak CCTV access SOPs. Our checklists enforce strict access control and monitoring protocols for all campus surveillance systems." },
@@ -120,7 +121,7 @@ export const painPointsContent = {
         ]
     },
     food_manufacturing_ops: {
-        title: "From Product Recalls to Production Excellence: Real Food Plant Risks",
+        title: "Food Industry Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Bug />, title: "Nestlé Maggi Lead Contamination (India, 2015)", description: "A nationwide recall costing ₹500 crore was triggered by lead contamination. Our 'Batch Testing & Traceability' SOPs create a verifiable chain of quality from raw material to finished product." },
             { icon: <Bug />, title: "Britannia Biscuit Recall (2020)", description: "A batch of biscuits was recalled due to mold from a storage lapse. Our 'Cold Storage Temperature Logs' and hygiene SOPs prevent the conditions that lead to spoilage and mold growth." },
@@ -129,7 +130,7 @@ export const painPointsContent = {
         ]
     },
     manufacturing_operations_ehs_pack: {
-        title: "From Fatal Accidents to Factory Compliance: Real EHS Disasters",
+        title: "Industrial Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "LG Polymers Gas Leak (Vizag, 2020)", description: "A catastrophic chemical leak killed 12 and injured over 1,000 people due to failures in maintenance and safety protocols. Our 'Chemical Storage & Ventilation' checklists are designed to prevent such disasters." },
             { icon: <Bug />, title: "Bhopal Gas Tragedy (1984)", description: "The world's worst industrial disaster, which killed over 3,000 people, was a result of catastrophic safety negligence. Our checklists enforce the basic, non-negotiable safety audits that could have prevented it." },
@@ -138,7 +139,7 @@ export const painPointsContent = {
         ]
     },
     logistics_warehouse_pack: {
-        title: "From Warehouse Collapse to Supply Chain Excellence: Real Logistics Risks",
+        title: "Logistics Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Siren />, title: "Amazon Warehouse Fire (Delhi, 2022)", description: "A massive fire destroyed ₹5 crore worth of inventory, likely caused by faulty wiring. Our 'Fire Prevention and Zoning' SOPs include regular electrical audits to prevent this." },
             { icon: <Factory />, title: "Flipkart Hub Injury (Bengaluru, 2021)", description: "A worker was severely injured by a falling pallet due to improper stacking. Our 'Daily Warehouse Inspection' checklist includes checks for pallet stability and stacking height to prevent such accidents." },
@@ -147,7 +148,7 @@ export const painPointsContent = {
         ]
     },
     animal_shelter_pack: {
-        title: "From Disease Outbreak to Donor Trust: The Case for Shelter SOPs",
+        title: "Animal Shelter Catastrophes: Real-World Failures & The Checklists That Prevent Them",
         points: [
             { icon: <Bug />, title: "Delhi Shelter Parvovirus Outbreak (2023)", description: "A parvovirus outbreak killed 20 dogs, forcing a temporary shutdown. Our 'Cleaning and Disinfection' schedule is designed to prevent the spread of such infectious diseases." },
             { icon: <Siren />, title: "Pune NGO Shelter Sealed (2021)", description: "A shelter was sealed by authorities due to unsanitary conditions. Our checklists provide a verifiable record of daily cleaning and hygiene, ensuring compliance and animal welfare." },
@@ -156,14 +157,32 @@ export const painPointsContent = {
         ]
     },
     sports_clubs_stadium_operations_pack: {
-        title: "From Stampedes to Safety: Real Sports Venue Failures",
+        title: "Venue Catastrophes: Real-World Stadium Failures & The Checklists That Prevent Them",
         points: [
-            { icon: <Users />, title: "Salt Lake Stadium Stampede (Kolkata, 2018)", description: "Fans rushed exits after a blackout, injuring dozens due to a lack of emergency lighting and trained marshals. Our checklists include backup power and emergency exit inspections." },
-            { icon: <Dumbbell />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after equipment snapped due to poor maintenance. Our monthly inspection SOPs ensure all equipment is certified safe, preventing such catastrophic failures." },
-            { icon: <Siren />, title: "Bradford City Stadium Fire (UK, 1985)", description: "A fire under wooden stands killed 56 people because of accumulated litter and no fire drills. Our housekeeping and fire safety SOPs eliminate such basic, fatal hazards." },
-            { icon: <Bug />, title: "Wankhede Stadium Water Contamination (2019)", description: "Spectators fell ill from untested drinking water during an IPL match. Our F&B hygiene checklists include mandatory water safety tests for public venues." }
+            { icon: <Users />, title: "Stampede at Salt Lake Stadium, Kolkata (2018)", description: "Fans rushed exits after a sudden blackout; lack of emergency lighting and trained marshals led to dozens injured. Prevented by: Crowd control SOP, emergency exit and backup power inspection checklist." },
+            { icon: <Dumbbell />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after gym equipment snapped due to poor maintenance; machine had not been serviced in 14 months. Prevented by: Monthly equipment inspection and preventive maintenance SOP." },
+            { icon: <Siren />, title: "Bradford City Stadium Fire, UK (1985)", description: "A pile of litter under wooden stands caught fire, killing 56. No evacuation drill or fire audit had been done. Prevented by: Fire safety and housekeeping SOP, quarterly evacuation drills." },
+            { icon: <Bug />, title: "Wankhede Stadium Water Contamination (2019)", description: "Several spectators fell ill due to untested drinking water points during an IPL match. Prevented by: Daily sanitation and F&B hygiene audit checklist." }
         ]
     },
+    film_production_pack: {
+        title: "Film Production Catastrophes: Real-World Failures & The Checklists That Prevent Them",
+        points: [
+            { icon: <FileLock />, title: "The '$2M Mistake' Life Rights Disaster", description: "A biopic was halted and sued because producers failed to secure the life rights of its subject. Our 'Pre-production Legal' checklist makes this impossible to miss." },
+            { icon: <Siren />, title: "Rust Movie Set Shooting (2021)", description: "A tragic on-set death occurred due to a failure in weapons handling protocols. Our 'On-Set Safety' and 'High-Risk Scene' checklists enforce strict, verifiable safety procedures." },
+            { icon: <Car />, title: "Midnight Rider Train Accident (2014)", description: "A crew member was killed filming on a live train track without proper permits or safety coordination. Our 'Location Scouting & Permitting' SOP ensures all legal and safety clearances are met." },
+            { icon: <Lock />, title: "The 'Deadpool' Leak (2014)", description: "Test footage was leaked online, but it actually generated huge buzz and got the movie greenlit. While this was a happy accident, our 'Data Security' SOPs prevent unauthorized leaks of valuable IP." }
+        ]
+    },
+    healthcare_and_hospital_operations: {
+        title: "Medical Catastrophes: Real-World Hospital Failures & The Checklists That Prevent Them",
+        points: [
+            { icon: <FileCheck />, title: "Wrong-Side Brain Surgery (Rhode Island, 2007)", description: "A veteran neurosurgeon operated on the wrong side of a patient's head. Our 'Surgical Safety Checklist,' aligned with WHO standards, prevents this 'never event' through a mandatory pre-incision 'Time Out'."},
+            { icon: <Sparkles />, title: "JIPMER Sterilization Failure (2019)", description: "An infection outbreak was traced back to improperly sterilized surgical tools. Our 'CSSD & Sterilization' checklist, including biological indicator tests, ensures equipment is sterile." },
+            { icon: <Pill />, title: "Dana-Farber Chemo Overdose (1995)", description: "A patient died after receiving a four-fold overdose of chemotherapy due to a calculation error. Our 'High-Alert Medication' SOP mandates an independent double-check for exactly these scenarios." },
+            { icon: <UserCheck />, title: "Patient ID Mix-up (Multiple Cases)", description: "Countless errors occur from mixing up patients with similar names. Our 'Patient Identification Protocol' requires using two identifiers (e.g., name and MRN) before any procedure or medication." }
+        ]
+    }
 };
 
 type PainPoints = typeof painPointsContent;
