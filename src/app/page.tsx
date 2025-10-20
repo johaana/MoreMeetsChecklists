@@ -567,7 +567,7 @@ export default function Home() {
                         </Button>
                         <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                             <p className="text-xs text-white/80">
-                                Standards Compliant: ISO, JCI, HACCP, OSHA & More
+                                International Standards Integrated: ISO, JCI, HACCP, OSHA & More
                             </p>
                         </div>
                     </div>
