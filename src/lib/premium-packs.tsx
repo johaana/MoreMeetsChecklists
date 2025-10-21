@@ -498,6 +498,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Streamline 'Omni-Channel Operations' for click-and-collect and online returns.", icon: <Link /> },
             { text: "Prevent theft with 'Store Safety & Loss Prevention'.", icon: <Shield /> },
         ],
+        previewScenario: {
+            title: "Preventing End-of-Season Stock Write-Offs",
+            description: "A fashion store is left with a massive amount of unsold winter wear at the end of the season, forcing a huge write-off. This scenario shows how checklists create a proactive process to manage seasonal inventory and maximize profit.",
+            tasks: [
+                { id: 'SIM-02', description: "The 'Seasonal Inventory Management' checklist schedules markdowns to start 6 weeks before the season ends, clearing stock progressively.", sourceChecklist: "Seasonal Inventory Management", priority: 'High' },
+                { id: 'VM-AUDIT-05', description: "The 'Visual Merchandising' SOP ensures that discounted items are moved to a high-traffic 'Sale' section to increase visibility and sell-through.", sourceChecklist: "VM & Display Audit", priority: 'High' },
+                { id: 'INV-RECON-05', description: "'Inventory Reconciliation' provides real-time data on what's selling, allowing for targeted promotions on slow-moving items before the season ends.", sourceChecklist: "Inventory Reconciliation SOP", priority: 'Medium' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Retail Best Practices",
             standards: [
@@ -709,6 +718,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "High-value transaction & payment verification.", icon: <CircleDollarSign /> },
             { text: "NEW: Watch & serialized item management.", icon: <Watch /> },
         ],
+        previewScenario: {
+            title: "Foiling a High-Value Swap Theft",
+            description: "A criminal posing as a wealthy customer attempts to swap a genuine luxury watch with a high-quality counterfeit during a viewing. This scenario shows how integrated checklists prevent this common high-value theft.",
+            tasks: [
+                { id: 'JLR-SALE-01', description: "The 'High-Value Transaction' SOP requires showing only one item at a time, preventing the sleight-of-hand needed for a swap.", sourceChecklist: "High-Value Transaction SOP", priority: 'High' },
+                { id: 'JLR-INV-05', description: "The 'Serialized Item Management' process mandates that the item's serial number is scanned and verified against the box and certificate before and after the viewing, making a swap impossible to hide.", sourceChecklist: "Serialized Item & Watch Management", priority: 'High' },
+                { id: 'JLR-SEC-04', description: "The 'Opening & Closing Security' SOP ensures high-resolution CCTV covers the viewing area, providing clear evidence of the attempt.", sourceChecklist: "Opening & Closing Security Protocol", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with High-Value Retail Security Standards",
             standards: [
@@ -855,7 +873,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RSM-07', description: 'Inspect the item after repair to ensure quality.', priority: 'High', riskLevel: 'High', proof: 'QC Check', location: 'Service Desk' },
                     { id: 'RSM-08', description: 'Securely package the item for return to the customer.', priority: 'High', riskLevel: 'Low', proof: 'Packaging Check', location: 'Service Desk' },
                     { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', proof: 'Invoice', location: 'POS' },
-                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', proof: 'Repair History', location: 'System' },
+                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', proof: 'Service History', location: 'System' },
                 ]
             },
             {
@@ -917,6 +935,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "POS & payment security.", icon: <ShieldCheck /> },
             { text: "Customer demo & returns SOP.", icon: <UserCheck /> }
         ],
+        previewScenario: {
+            title: "Preventing a Showroom Fire",
+            description: "An electrical fire breaks out overnight in a showroom, caused by a faulty demo laptop. This scenario demonstrates how checklists for electrical safety and closing procedures can prevent such a catastrophe.",
+            tasks: [
+                { id: 'DEMO-08', description: "The 'Demo Unit' checklist includes a daily check for overheating charging stations, which would have identified the faulty laptop charger before it could cause a fire.", sourceChecklist: "Demo Unit Pre-Opening Checklist", priority: 'High' },
+                { id: 'ELEC-01', description: "The 'Electrical Safety' SOP mandates periodic Portable Appliance Testing (PAT), which would have formally identified the faulty device and removed it from service.", sourceChecklist: "Electrical Safety & PAT Testing", priority: 'High' },
+                { id: 'POS-RECON-03', description: "The 'POS Reconciliation' checklist includes verifying that CCTV is operational, providing crucial evidence for any incident investigation.", sourceChecklist: "POS & Payment Reconciliation", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Electronics & Safety Standards",
             standards: [
@@ -1108,6 +1135,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "POS & cash reconciliation.", icon: <DollarSign /> },
             { text: "Supplier inbound inspection.", icon: <PackageCheck /> },
         ],
+        previewScenario: {
+            title: "Averting a Food Poisoning Outbreak",
+            description: "A batch of expired yogurt remains on the shelf, leading to a customer complaint of food poisoning. This scenario shows how checklists work together to prevent a brand-damaging outbreak.",
+            tasks: [
+                { id: 'SC-FIFO-01', description: "The 'FIFO & Expiry Sweep' SOP mandates a daily check of high-risk items like dairy, ensuring the yogurt would have been removed before it could be sold.", sourceChecklist: "FIFO & Expiry Sweep SOP", priority: 'High' },
+                { id: 'SC-COLD-01', description: "The 'Cold Chain Management' log would provide a verifiable record of the chiller's temperature, proving the product was stored correctly and the issue was expiry, not spoilage.", sourceChecklist: "Cold Chain & Perishables Management", priority: 'High' },
+                { id: 'SC-POS-02', description: "If a complaint is made, the 'POS Security' checklist, which includes CCTV monitoring at billing, can help trace the transaction and identify the exact product batch involved.", sourceChecklist: "POS Security & Reconciliation", priority: 'Medium' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Food & Retail Standards",
             standards: [
@@ -1499,6 +1535,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Internal audit & non-compliance remediation.", icon: <Bug /> },
             { text: "Whistleblowing & investigations.", icon: <Siren /> },
         ],
+        previewScenario: {
+            title: "Surviving a Surprise Regulatory Audit",
+            description: "A regulatory body arrives for a surprise audit, requesting all compliance documents for the past year. Instead of panic, this scenario shows how checklists ensure you are always audit-ready.",
+            tasks: [
+                { id: 'CAL-08', description: "The 'Statutory Calendar' SOP ensures a central repository of all filed returns and acknowledgements is maintained and easily accessible.", sourceChecklist: "Statutory Calendar SOP", priority: 'High' },
+                { id: 'CON-03', description: "The 'Contract Intake & Approval' checklist means all key contracts are stored in a central register, ready for inspection.", sourceChecklist: "Contract Intake & Approval", priority: 'High' },
+                { id: 'POL-03', description: "The 'Policy Review & Acknowledgement' log provides digital proof that all employees have read and acknowledged critical policies, a key audit requirement.", sourceChecklist: "Policy Review & Acknowledgement", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Corporate Governance Principles",
             standards: [
@@ -1688,6 +1733,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Incident response & forensics.", icon: <Siren /> },
             { text: "Cloud security posture & misconfigurations.", icon: <Cloud /> },
         ],
+        previewScenario: {
+            title: "Surviving a Ransomware Attack",
+            description: "A ransomware attack encrypts critical company servers. Instead of paying the ransom, this scenario shows how a multi-layered checklist approach enables a swift recovery.",
+            tasks: [
+                { id: 'IR-02', description: "The 'Incident Response' checklist immediately triggers the isolation of affected servers, preventing the ransomware from spreading across the network.", sourceChecklist: "Incident Response Checklist", priority: 'High' },
+                { id: 'BCDR-03', description: "The 'BC/DR & Backup' SOP, which mandates quarterly test restores, ensures the company has a recent, clean backup ready to be deployed.", sourceChecklist: "BC/DR & Backup SOP", priority: 'High' },
+                { id: 'PMW-04', description: "After recovery, the 'Patch Management' workflow ensures the vulnerability that allowed the attack is immediately patched, preventing re-infection.", sourceChecklist: "Patch Management Workflow", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Global Cybersecurity Frameworks",
             standards: [
@@ -1881,6 +1935,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Patient identification & safety.", icon: <UserCheck /> },
             { text: "Medical records & data privacy.", icon: <FileLock /> },
         ],
+        previewScenario: {
+            title: "Preventing a 'Never Event': Wrong-Site Surgery",
+            description: "A surgeon is about to operate on the wrong knee due to a mix-up in the pre-op area. This scenario shows how checklists prevent a catastrophic, reputation-destroying 'never event'.",
+            tasks: [
+                { id: 'H-SSC-01', description: "The 'Surgical Safety Checklist' mandates a final 'Time Out' where the entire team must verbally confirm the patient, site, and procedure. The nurse notices the discrepancy with the marked site and halts the procedure.", sourceChecklist: "Surgical Safety Checklist (WHO Aligned)", priority: 'High' },
+                { id: 'H-PID-02', description: "The 'Patient Identification Protocol' would have flagged the error earlier, as it requires matching the patient's ID band with the surgical consent form before entering the OT.", sourceChecklist: "Patient Identification Protocol", priority: 'High' },
+                { id: 'H-MED-01', description: "The 'High-Alert Medication' SOP, which requires dual checks, instills a culture of verification that makes staff more likely to question and catch errors in other areas.", sourceChecklist: "High-Alert Medication SOP", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Leading Healthcare Accreditations",
             standards: [
@@ -2070,6 +2133,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Inventory management & expiry control.", icon: <Recycle /> },
             { text: "Patient counseling & medication therapy management.", icon: <UserCheck /> },
         ],
+        previewScenario: {
+            title: "Preventing a Controlled Substance Discrepancy",
+            description: "During a regulatory audit, an inspector asks for the records of a specific narcotic. This scenario shows how the pack's checklists provide a clear, unimpeachable audit trail.",
+            tasks: [
+                { id: 'PHARM-CS-02', description: "The 'Controlled Substance Log' shows a daily-reconciled, dual-signed record of the physical count versus the system record, providing immediate proof of control.", sourceChecklist: "Controlled Substance Log", priority: 'High' },
+                { id: 'PHARM-DISP-01', description: "The 'Dispensing Accuracy SOP' ensures that every prescription for this drug was verified against a valid prescription, creating a clear chain of custody.", sourceChecklist: "Dispensing Accuracy SOP", priority: 'High' },
+                { id: 'PHARM-EXP-01', description: "The 'Expiry Management SOP' provides logs showing how any expired stock of the narcotic was handled and destroyed, completing the lifecycle audit.", sourceChecklist: "Expiry Management SOP", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Pharmacy & Drug Regulations",
             standards: [
@@ -2261,6 +2333,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Fire & lockdown drills.", icon: <Siren /> },
             { text: "Health screening & outbreak control.", icon: <HeartPulse /> },
         ],
+        previewScenario: {
+            title: "Preventing a School Bus Tragedy",
+            description: "A young child is accidentally left on a school bus at the end of the day, a situation that has led to tragic consequences in real life. This scenario shows how checklists create a non-negotiable safety net.",
+            tasks: [
+                { id: 'SCH-TRANS-01', description: "The 'Transport & Bus Safety' checklist mandates a physical, seat-by-seat check of the bus by the attendant after the last drop-off, making it impossible to miss a sleeping child.", sourceChecklist: "Transport & Bus Safety Checklist", priority: 'High' },
+                { id: 'SCH-HR-01', description: "The 'Staff Background & Induction' SOP ensures that the bus attendant has undergone police verification and specific child safety training, increasing their diligence.", sourceChecklist: "Staff Background & Induction SOP", priority: 'High' },
+                { id: 'SCH-DRILL-01', description: "The 'Fire & Lockdown Drill' SOP includes scenarios for non-fire emergencies, ensuring staff know how to raise an alarm for a missing child.", sourceChecklist: "Fire & Lockdown Drill SOP", priority: 'Medium' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Education Safety Norms",
             standards: [
@@ -2452,6 +2533,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Campus event risk & crowd management.", icon: <Users /> },
             { text: "Student welfare & anti-harassment.", icon: <HeartPulse /> },
         ],
+        previewScenario: {
+            title: "Managing a Laboratory Chemical Spill",
+            description: "A chemical spill occurs in a university chemistry lab. This scenario shows how checklists ensure a safe, compliant, and rapid response to contain the situation.",
+            tasks: [
+                { id: 'ULAB-10', description: "The lab user immediately follows the 'Chemical Spill' protocol, using the spill kit and notifying the Lab Supervisor.", sourceChecklist: "Laboratory Safety SOP", priority: 'High' },
+                { id: 'UHOSTEL-02', description: "The 'Hostel Daily Inspection' checklist, which includes fire safety, ensures that evacuation routes from the lab building are always clear.", sourceChecklist: "Hostel Daily Inspection", priority: 'High' },
+                { id: 'UEVENT-01', description: "The 'Event Safety Permit' process, used for a science fair in an adjacent hall, includes an evacuation plan that accounts for incidents in nearby labs, ensuring a coordinated response.", sourceChecklist: "Event Safety Permit SOP", priority: 'Medium' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Higher Education Standards",
             standards: [
@@ -2642,6 +2732,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Preventive maintenance on production lines.", icon: <Wrench /> },
             { text: "Supplier verification & inbound QC.", icon: <PackageCheck /> },
         ],
+        previewScenario: {
+            title: "Preventing a Product Recall",
+            description: "A routine quality check detects a potential allergen cross-contamination in a batch of cookies. This scenario shows how checklists prevent a costly and brand-damaging product recall.",
+            tasks: [
+                { id: 'FMAN-ALLERGEN-02', description: "The 'Allergen Control SOP' includes a mandatory check of packaging labels against the production schedule. This check flags that a batch made on a line after a peanut-containing product was accidentally put in non-allergen packaging.", sourceChecklist: "Allergen Control SOP", priority: 'High' },
+                { id: 'FMAN-TRACE-03', description: "The 'Batch Traceability' system allows QA to instantly identify all affected raw material lots and finished goods, preventing the contaminated batch from ever leaving the warehouse.", sourceChecklist: "Batch Traceability Checklist", priority: 'High' },
+                { id: 'FMAN-SSOP-03', description: "The 'Sanitation' checklist provides a verifiable log proving the line was cleaned, pointing the investigation towards a labeling error, not a cleaning failure, which speeds up the root cause analysis.", sourceChecklist: "Sanitation Standard Operating Procedure (SSOP)", priority: 'Medium' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Global Food Safety Standards",
             standards: [
@@ -2832,6 +2931,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Incident investigation & root-cause analysis.", icon: <Bug /> },
             { text: "Confined space & hot work permits.", icon: <FileCheck /> },
         ],
+        previewScenario: {
+            title: "Preventing a Fatal 'Lockout-Tagout' Failure",
+            description: "A maintenance worker is severely injured when a machine they are working on is accidentally restarted. This scenario illustrates how checklists prevent catastrophic LOTO failures.",
+            tasks: [
+                { id: 'MFG-LOTO-03', description: "The 'Lockout-Tagout (LOTO)' checklist requires the worker to physically try to start the machine (verification of zero energy state) after applying their lock, a step that was missed in the real incident.", sourceChecklist: "Lockout-Tagout (LOTO) Procedure", priority: 'High' },
+                { id: 'MFG-JHA-03', description: "The 'Job Hazard Analysis' for this specific maintenance task would have identified 'accidental re-energization' as a key hazard and mandated the LOTO procedure as a primary control.", sourceChecklist: "Job Hazard Analysis (JHA)", priority: 'High' },
+                { id: 'MFG-INC-04', description: "Even if a near-miss had occurred previously, the 'Incident Investigation' SOP would have triggered a root cause analysis and a CAPA plan to reinforce the LOTO procedure, preventing the future accident.", sourceChecklist: "Incident Investigation SOP", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Global EHS Standards",
             standards: [
@@ -3024,6 +3132,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Receiving & dispatch documentation control.", icon: <FileCheck /> },
             { text: "Hazardous goods handling.", icon: <FileWarning /> },
         ],
+        previewScenario: {
+            title: "Preventing a Warehouse Collapse",
+            description: "A section of racking in a busy warehouse collapses, causing significant inventory damage and a near-miss injury. This scenario shows how checklists prevent such structural failures.",
+            tasks: [
+                { id: 'LOG-STORE-05', description: "The 'Storage & Pallet Safety' SOP mandates a weekly audit of racking for signs of damage, overloading, or instability, which would have caught the compromised rack before it failed.", sourceChecklist: "Storage & Pallet Safety SOP", priority: 'High' },
+                { id: 'LOG-FORKLIFT-02', description: "The 'Forklift Pre-Op' checklist includes verifying the load capacity plate, preventing operators from accidentally overloading the racks with a weight they didn't realize was too heavy.", sourceChecklist: "Forklift Pre-Op Checklist", priority: 'High' },
+                { id: 'LOG-RECV-01', description: "The 'Receiving Inspection' SOP ensures that incoming goods are weighed and checked against the PO, preventing overweight pallets from ever entering the storage system in the first place.", sourceChecklist: "Receiving Inspection SOP", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Global Logistics Standards",
             standards: [
@@ -3425,6 +3542,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Platform security & incident response.", icon: <Siren /> },
             { text: "Content takedown & compliance with local regulations.", icon: <Recycle /> }
         ],
+        previewScenario: {
+            title: "Responding to a Major Content Leak",
+            description: "A highly anticipated new series is leaked online a week before its official release, threatening subscription growth and marketing plans. This scenario shows how checklists enable a rapid and coordinated response.",
+            tasks: [
+                { id: 'OTT-SEC-01', description: "The 'Pre-Publish Security Review' checklist includes a verification of watermarking, which helps trace the source of the leak.", sourceChecklist: "Pre-Publish Security Review", priority: 'High' },
+                { id: 'OTT-REG-06', description: "The 'Regulatory Compliance Matrix' has a pre-defined process for issuing DMCA and other legal takedown notices, allowing the legal team to act immediately.", sourceChecklist: "Regulatory Compliance Matrix", priority: 'High' },
+                { id: 'OTT-VULN-01', description: "The 'Vulnerability & Patch Management' SOP ensures that all platform components have up-to-date security, minimizing the chance the leak came from an external hack.", sourceChecklist: "Vulnerability & Patch Management", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Global Tech & Media Standards",
             standards: [
@@ -3614,6 +3740,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Vendor / F&B stall safety.", icon: <Utensils /> },
             { text: "Seasonal preparedness.", icon: <Wind /> },
         ],
+        previewScenario: {
+            title: "Preventing a Ride Malfunction Catastrophe",
+            description: "A sensor on a high-speed roller coaster begins to fail intermittently, a precursor to a major malfunction. This scenario shows how checklists prevent a disaster before it happens.",
+            tasks: [
+                { id: 'TP-RIDE-01', description: "The 'Daily Ride Pre-Opening Inspection' includes a system diagnostic check. An operator notices an anomalous sensor reading and flags it for immediate maintenance, taking the ride offline before it can open.", sourceChecklist: "Daily Ride Pre-Opening Inspections", priority: 'High' },
+                { id: 'TP-QUEUE-09', description: "The 'Guest Safety & Queue SOP' has a clear protocol for managing ride downtime, allowing staff to calmly communicate the delay to guests and offer alternatives, preventing frustration.", sourceChecklist: "Guest Safety & Queue SOP", priority: 'High' },
+                { id: 'TP-MED-01', description: "While the ride is down for repair, a guest in the long queue faints from the heat. The 'Emergency Medical Response' plan is activated, and the on-site first aid team responds within minutes.", sourceChecklist: "Emergency Medical Response", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Global Amusement Park Standards",
             standards: [
@@ -4006,6 +4141,15 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Volunteer & staff safety.", icon: <Users /> },
             { text: "Adoption & transport procedures.", icon: <Truck /> },
         ],
+        previewScenario: {
+            title: "Preventing a Disease Outbreak",
+            description: "A new dog carrying a contagious virus is brought into the shelter. This scenario shows how checklists prevent a devastating outbreak.",
+            tasks: [
+                { id: 'AS-INTAKE-03', description: "The 'Intake & Quarantine' SOP mandates that the new animal is placed in a separate quarantine area for 14 days, preventing contact with the general population.", sourceChecklist: "Intake & Quarantine SOP", priority: 'High' },
+                { id: 'AS-SANIT-08', description: "The 'Daily Sanitation Checklist' requires using dedicated cleaning supplies for the quarantine area, stopping the spread of germs on staff hands or equipment.", sourceChecklist: "Daily Sanitation Checklist", priority: 'High' },
+                { id: 'AS-MED-01', description: "The 'Vaccination & Medical Log' ensures the animal receives its initial vaccinations upon intake, reducing the severity and spread of any potential illness.", sourceChecklist: "Vaccination & Medical Log", priority: 'High' }
+            ]
+        },
         globalStandards: {
             title: "Aligned with Animal Welfare Best Practices",
             standards: [
@@ -4188,4 +4332,3 @@ export const premiumPacks: PremiumPack[] = [
 
 
   
-

@@ -6,7 +6,7 @@ import type { PremiumPack, Checklist as PackChecklist } from '@/lib/premium-pack
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,9 +14,9 @@ import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescript
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { writeFile, utils } from 'xlsx-js-style';
 
-function handleDownload (pack: PremiumPack) {
-    if (!pack) {
-        alert("Could not find the pack data. Please contact support.");
+function handleDemoDownload (checklist: PackChecklist) {
+    if (!checklist) {
+        alert("Could not find the checklist data. Please contact support.");
         return;
     }
     
@@ -25,49 +25,46 @@ function handleDownload (pack: PremiumPack) {
         font: { bold: true, color: { rgb: "FFFFFF" } },
         fill: { fgColor: { rgb: "0A2540" } }
     };
+    
+    const checklistHeaders = [
+        'Task ID', 'Task Description', 'Priority', 'Risk Level', 
+        'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+    ];
+    
+    const tasksForSheet = checklist.tasks.map(task => [
+        task.id,
+        task.description,
+        task.priority,
+        task.riskLevel,
+        task.proof,
+        'Pending',
+        '',
+        ''
+    ]);
 
-    pack.checklists.forEach(checklist => {
-        const checklistHeaders = [
-            'Task ID', 'Task Description', 'Priority', 'Risk Level', 
-            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-        ];
-        
-        const tasksForSheet = checklist.tasks.map(task => [
-            task.id,
-            task.description,
-            task.priority,
-            task.riskLevel,
-            task.proof,
-            'Pending',
-            '',
-            ''
-        ]);
+    const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+    const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+    
+    worksheet['!cols'] = [
+        { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
+        { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
+    ];
 
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-        
-        worksheet['!cols'] = [
-            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-        ];
+     const headerRange = utils.decode_range(worksheet['!ref']!);
+     for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+        const address = utils.encode_cell({ r: 0, c: C });
+        if(worksheet[address]) {
+            worksheet[address].s = headerStyle;
+        }
+     }
+     worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
 
-         const headerRange = utils.decode_range(worksheet['!ref']!);
-         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if(worksheet[address]) {
-                worksheet[address].s = headerStyle;
-            }
-         }
-         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+    const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+    utils.book_append_sheet(workbook, worksheet, sheetName);
 
-        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
-    });
-
-    const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
+    const fileName = checklist.title.replace(/ /g, '_') + '_DEMO.xlsx';
     writeFile(workbook, fileName);
 };
-
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
@@ -123,62 +120,74 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-function SampleChecklistPreviewDialog({ checklist }: { checklist: PackChecklist }) {
+function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
+    const checklist = pack.checklists[0];
     if (!checklist) return null;
 
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button variant="outline" className="w-full">
-                    <Eye className="w-4 h-4 mr-2" />
+                    <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="max-w-6xl">
                 <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline flex items-center gap-3">
+                    <AlertDialogTitle className="font-headline flex items-start gap-4">
+                        <div className="flex items-center gap-3">
                          {React.cloneElement(checklist.icon, { className: 'w-6 h-6 text-accent' })}
-                        Sample: {checklist.title}
+                            <span>Sample: {checklist.title}</span>
+                        </div>
+                        <Badge variant="secondary" className="ml-auto">DEMO</Badge>
                     </AlertDialogTitle>
-                     <AlertDialogDescription className="text-left">
-                        <strong>Department:</strong> {checklist.department} | <strong>Frequency:</strong> {checklist.frequency} | <strong>Role:</strong> {checklist.role}
-                    </AlertDialogDescription>
-                    <AlertDialogDescription className="text-left pt-2">
-                        {checklist.summary}
+                     <AlertDialogDescription className="text-left pt-2 space-y-1">
+                        <div><strong>Department:</strong> {checklist.department} | <strong>Frequency:</strong> {checklist.frequency} | <strong>Role:</strong> {checklist.role}</div>
+                        <div>{checklist.summary}</div>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
-                <ScrollArea className="max-h-[60vh] pr-6">
-                    <div className="text-sm text-muted-foreground mt-2 mb-4">This is one of {checklist.tasks.length} tasks from just this single checklist. The full pack contains multiple such checklists.</div>
-                    <Table className="mt-4 border rounded-lg">
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[40%]">Task</TableHead>
-                                <TableHead>Priority</TableHead>
-                                <TableHead>Risk Level</TableHead>
-                                <TableHead>Proof / Evidence</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {checklist.tasks.map((task) => (
-                                <TableRow key={task.id}>
-                                    <TableCell className="font-medium">{task.description}</TableCell>
-                                     <TableCell>
-                                        <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
-                                            {task.priority}
-                                        </Badge>
-                                    </TableCell>
-                                     <TableCell>
-                                        <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
-                                            {task.riskLevel}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="text-muted-foreground">{task.proof}</TableCell>
+                <ScrollArea className="max-h-[50vh] pr-6">
+                    <div className="text-sm text-muted-foreground mt-2 mb-4">
+                        This is a preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file will contain all checklists as separate, fully editable tabs.
+                    </div>
+                    <div className="border rounded-lg overflow-hidden">
+                        <Table className="bg-background">
+                            <TableHeader className="bg-primary/5">
+                                <TableRow>
+                                    <TableHead className="w-[100px] text-primary font-bold">Task ID</TableHead>
+                                    <TableHead className="w-[40%] text-primary font-bold">Task Description</TableHead>
+                                    <TableHead className="text-primary font-bold">Priority</TableHead>
+                                    <TableHead className="text-primary font-bold">Risk Level</TableHead>
+                                    <TableHead className="text-primary font-bold">Proof / Evidence</TableHead>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {checklist.tasks.slice(0, 5).map((task) => (
+                                    <TableRow key={task.id}>
+                                        <TableCell className="font-mono text-xs">{task.id}</TableCell>
+                                        <TableCell className="font-medium">{task.description}</TableCell>
+                                        <TableCell>
+                                            <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
+                                                {task.priority}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
+                                                {task.riskLevel}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell className="text-muted-foreground text-xs">{task.proof}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </ScrollArea>
-                <AlertDialogFooter>
+                <AlertDialogFooter className="sm:justify-between items-center pt-4">
+                    <Button onClick={() => handleDemoDownload(checklist)}>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download DEMO .xlsx
+                    </Button>
                     <AlertDialogCancel>Close Preview</AlertDialogCancel>
                 </AlertDialogFooter>
             </AlertDialogContent>
@@ -206,7 +215,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="text-center">
                                <p className="text-4xl font-extrabold mb-4">Free Download</p>
-                               <Button size="lg" className="w-full" onClick={() => handleDownload(pack)}>
+                               <Button size="lg" className="w-full" onClick={() => handleDemoDownload(pack.checklists[0])}>
                                  <Download className="mr-2 h-5 w-5" />
                                  Download Now
                                </Button>
@@ -313,7 +322,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                     {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
-                    {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog checklist={pack.checklists[0]} />}
+                    {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
                 </div>
 
 
