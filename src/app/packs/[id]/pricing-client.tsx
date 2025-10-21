@@ -13,8 +13,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { writeFile, utils } from 'xlsx-js-style';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-
 
 function handleDownload (pack: PremiumPack) {
     if (!pack) {
@@ -133,30 +131,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedStrikethroughPrice = 18999;
     const personalizedPaymentId = "pl_RMncDLAlms69Pd";
 
-    const [showStickyBar, setShowStickyBar] = React.useState(false);
-    const pricingSectionRef = React.useRef<HTMLDivElement>(null);
+    const packsWithTieredEditions = [
+        "jewelry_and_luxury_retail",
+        "healthcare_and_hospital_operations",
+        "school_operations_pack",
+        "university_college_ops",
+        "manufacturing_operations_ehs_pack",
+        "logistics_warehouse_pack",
+        "sports_clubs_stadium_operations_pack",
+        "facility_management_blueprint",
+    ];
 
-    React.useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setShowStickyBar(!entry.isIntersecting);
-            },
-            { rootMargin: "0px 0px -100% 0px" } 
-        );
-
-        const pricingRef = pricingSectionRef.current;
-        if (pricingRef) {
-            observer.observe(pricingRef);
-        }
-
-        return () => {
-            if (pricingRef) {
-                observer.unobserve(pricingRef);
-            }
-        };
-    }, []);
-
-
+    const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
+    
     if (pack.priceINR <= 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
@@ -183,150 +170,116 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </section>
         );
     }
-
-    const packsWithTieredEditions = [
-        "jewelry_and_luxury_retail",
-        "healthcare_and_hospital_operations",
-        "school_operations_pack",
-        "university_college_ops",
-        "manufacturing_operations_ehs_pack",
-        "logistics_warehouse_pack",
-        "sports_clubs_stadium_operations_pack",
-        "facility_management_blueprint",
-    ];
-
-    const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
     
-    const singleTierCard = (
-         <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
-            <CardHeader className="p-6">
-                <CardTitle className="font-headline text-2xl">Get Instant Access</CardTitle>
-                <p className="text-4xl font-bold text-foreground pt-2">₹{pack.priceINR}</p>
-                <CardDescription className="text-sm md:text-base">One-time purchase. Lifetime updates.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
-                <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></li>
-                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Instant download, immediate impact.</span></li>
-                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Fully editable & brandable Excel files.</span></li>
-                </ul>
-            </CardContent>
-            <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
-                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
-                </div>
-                <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
-            </CardFooter>
-        </Card>
-    );
-
-    const pricingCards = (
-        <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:max-w-7xl lg:grid-cols-3 items-stretch">
-            {/* Professional Pack Card */}
-            <Card className="flex flex-col">
-                <CardHeader>
-                    <CardTitle>Professional Pack</CardTitle>
-                    {hasTieredEditions ? (
-                         <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
-                           <Landmark className="w-4 h-4" /> India Edition
-                        </Badge>
-                    ) : <div className="h-9"/>}
-                    <p className="text-4xl font-bold pt-4">₹{professionalPrice}</p>
-                    <CardDescription>{hasTieredEditions ? "Aligned with domestic standards (BIS, NABH, etc.)" : "The complete, expert-curated checklist pack."}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                    <ul className="space-y-3 text-muted-foreground text-sm">
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Complete checklist pack with {pack.checklists.length} checklists.</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Instant Excel download.</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Lifetime updates.</span></li>
-                    </ul>
-                </CardContent>
-                <CardFooter className="mt-auto">
-                    <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                        <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
-                    </div>
-                </CardFooter>
-            </Card>
-
-            {/* Personalized Pack Card */}
-            <Card className="flex flex-col border-2 border-accent relative">
-                <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
-                <CardHeader>
-                    <CardTitle className="pt-2">Personalized Pack</CardTitle>
-                    {hasTieredEditions ? (
-                        <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
-                            <Globe className="w-4 h-4" /> Global Edition
-                        </Badge>
-                    ) : <div className="h-9"/>}
-                     <div className="flex items-baseline gap-2 pt-4">
-                        <p className="text-4xl font-bold">₹{personalizedPrice}</p>
-                        <p className="text-xl font-medium text-muted-foreground line-through">₹{personalizedStrikethroughPrice}</p>
-                    </div>
-                     <CardDescription>{hasTieredEditions ? "Benchmarks against global standards (ISO, JCI, etc.)" : "Get custom branding and a guided start."}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                     <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
-                     <ul className="space-y-3 text-muted-foreground text-sm">
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>{hasTieredEditions ? 'Global Compliance Checklists' : 'Custom Branding & Logo'}</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Priority Action Plan</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>30-Min Onboarding Call</span></li>
-                     </ul>
-                </CardContent>
-                <CardFooter className="mt-auto">
-                    <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                         <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
-                    </div>
-                </CardFooter>
-            </Card>
-
-            {/* Enterprise Pack Card */}
-            <Card className="flex flex-col">
-                <CardHeader>
-                    <CardTitle>Enterprise</CardTitle>
-                    <div className="h-9"/>
-                    <p className="text-4xl font-bold pt-4">Custom</p>
-                     <CardDescription>A complete, done-for-you operational system.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                     <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
-                     <ul className="space-y-3 text-muted-foreground text-sm">
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Full SOP Manual Creation</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Dedicated Account Manager</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Team Training & Onboarding</span></li>
-                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Bespoke Checklist Creation</span></li>
-                     </ul>
-                </CardContent>
-                <CardFooter className="mt-auto">
-                    <Button asChild className="w-full" variant="outline">
-                        <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                            Book a Discovery Call
-                        </Link>
-                    </Button>
-                </CardFooter>
-            </Card>
-      </div>
-    );
-
     return (
-        <>
-        <section ref={pricingSectionRef} className="w-full py-12 md:py-16" id="pricing">
+        <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
-
-                <div className="hidden lg:grid grid-cols-1 gap-8 mx-auto lg:max-w-7xl lg:grid-cols-3">
-                   {hasTieredEditions ? pricingCards : <div className="lg:col-start-2">{singleTierCard}</div>}
-                </div>
                 
-                 <div className="block lg:hidden">
-                    {hasTieredEditions ? (
-                        <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto">{pricingCards}</div>
-                    ): (
-                        <div className="max-w-md mx-auto">{singleTierCard}</div>
-                    )}
-                 </div>
+                {hasTieredEditions ? (
+                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                        <Card className="flex flex-col">
+                            <CardHeader>
+                                <CardTitle>Professional Pack</CardTitle>
+                                <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
+                                   <Landmark className="w-4 h-4" /> India Edition
+                                </Badge>
+                                <p className="text-4xl font-bold pt-4">₹{professionalPrice}</p>
+                                <CardDescription>Aligned with domestic standards (BIS, NABH, etc.)</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Complete checklist pack with {pack.checklists.length} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Instant Excel download.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Lifetime updates.</span></li>
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto">
+                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
+                                    <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                                </div>
+                            </CardFooter>
+                        </Card>
+
+                        <Card className="flex flex-col border-2 border-accent relative">
+                            <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
+                            <CardHeader>
+                                <CardTitle className="pt-2">Personalized Pack</CardTitle>
+                                <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
+                                    <Globe className="w-4 h-4" /> Global Edition
+                                </Badge>
+                                 <div className="flex items-baseline gap-2 pt-4">
+                                    <p className="text-4xl font-bold">₹{personalizedPrice}</p>
+                                    <p className="text-xl font-medium text-muted-foreground line-through">₹{personalizedStrikethroughPrice}</p>
+                                </div>
+                                 <CardDescription>Benchmarks against global standards (ISO, JCI, etc.)</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                 <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
+                                 <ul className="space-y-3 text-muted-foreground text-sm">
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Global Compliance Checklists</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Priority Action Plan</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>30-Min Onboarding Call</span></li>
+                                 </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto">
+                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                                     <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                                </div>
+                            </CardFooter>
+                        </Card>
+
+                        <Card className="flex flex-col">
+                            <CardHeader>
+                                <CardTitle>Enterprise</CardTitle>
+                                <p className="text-4xl font-bold pt-4 mt-9">Custom</p>
+                                 <CardDescription>A complete, done-for-you operational system.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                 <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
+                                 <ul className="space-y-3 text-muted-foreground text-sm">
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Full SOP Manual Creation</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Dedicated Account Manager</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Team Training & Onboarding</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Bespoke Checklist Creation</span></li>
+                                 </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto">
+                                <Button asChild className="w-full" variant="outline">
+                                    <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                        Book a Discovery Call
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                ) : (
+                    <div className="max-w-md mx-auto">
+                         <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
+                            <CardHeader className="p-6">
+                                <CardTitle className="font-headline text-2xl">Get Instant Access</CardTitle>
+                                <p className="text-4xl font-bold text-foreground pt-2">₹{pack.priceINR}</p>
+                                <CardDescription className="text-sm md:text-base">One-time purchase. Lifetime updates.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
+                                <ul className="space-y-3 text-muted-foreground">
+                                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Instant download, immediate impact.</span></li>
+                                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Fully editable & brandable Excel files.</span></li>
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
+                                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
+                                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
+                                </div>
+                                <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                )}
 
 
                 <div className="max-w-md mx-auto">
@@ -362,41 +315,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
             </div>
         </section>
-        <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
-            {pack.priceINR <= 0 ? (
-                 <Button size="lg" className="w-full font-bold" onClick={() => handleDownload(pack)}>
-                    <Download className="mr-2 h-5 w-5" />
-                    Free Download
-                </Button>
-            ) : (
-                <Sheet>
-                    <SheetTrigger asChild>
-                        <Button size="lg" variant="default" className="w-full font-bold">
-                            View Options & Purchase
-                        </Button>
-                    </SheetTrigger>
-                    <SheetContent side="bottom" className="rounded-t-2xl">
-                        <SheetHeader className="text-left mb-4">
-                            <SheetTitle className="font-headline text-2xl">Select Your Pack</SheetTitle>
-                            <CardDescription className="text-sm md:text-base">Choose the edition that best fits your needs.</CardDescription>
-                        </SheetHeader>
-                        <ScrollArea className="h-[60vh]">
-                            <div className="p-1 pb-4">
-                               {hasTieredEditions ? (
-                                    <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto">{pricingCards}</div>
-                                ) : (
-                                    <div className="max-w-md mx-auto">{singleTierCard}</div>
-                                )}
-                            </div>
-                        </ScrollArea>
-                    </SheetContent>
-                </Sheet>
-            )}
-        </div>
-        </>
     );
-
-    
-
-    
+}
 
