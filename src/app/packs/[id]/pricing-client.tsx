@@ -217,24 +217,24 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 
     const pricingCards = (
-      <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:max-w-7xl lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto lg:max-w-7xl lg:grid-cols-3 items-start">
         {/* Professional Pack Card */}
-        <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
+        <Card key="professional" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative h-full">
             <CardHeader className="p-6">
                 <CardTitle className="font-headline text-2xl">Professional Pack</CardTitle>
-                 {hasTieredEditions && (
+                 {hasTieredEditions ? (
                      <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
                        <Landmark className="w-4 h-4" /> India Edition
                     </Badge>
-                )}
+                ) : <div className="h-6"/>}
                 <p className="text-4xl font-bold text-foreground pt-2">₹{professionalPrice}</p>
                  {hasTieredEditions && <CardDescription className="text-sm md:text-base">Aligned with domestic standards (e.g., BIS, NABH, NBC, FSSAI).</CardDescription>}
                  {!hasTieredEditions && <CardDescription className="text-sm md:text-base">The complete, expert-curated checklist pack.</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant download, immediate impact.</span></p>
-                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Fully editable & brandable Excel files.</span></p>
+                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Complete checklist pack with {pack.checklists.length} checklists.</span></p>
+                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Instant Excel download.</span></p>
+                <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Lifetime updates.</span></p>
             </CardContent>
             <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
                 <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
@@ -243,15 +243,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </Card>
 
         {/* Personalized Pack Card */}
-        <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative">
+        <Card key="personalized" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-accent relative h-full">
             <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
             <CardHeader className="p-6 pt-8">
                 <CardTitle className="font-headline text-2xl">Personalized Pack</CardTitle>
-                 {hasTieredEditions && (
+                 {hasTieredEditions ? (
                     <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
                         <Globe className="w-4 h-4" /> Global Edition
                     </Badge>
-                )}
+                ) : <div className="h-6"/>}
                 <div className="flex items-baseline gap-2 pt-2">
                     <p className="text-4xl font-bold text-foreground">
                         ₹{personalizedPrice}
@@ -260,12 +260,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         ₹{personalizedStrikethroughPrice}
                     </p>
                 </div>
-                {hasTieredEditions && <CardDescription className="text-sm md:text-base">Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
+                 {hasTieredEditions && <CardDescription className="text-sm md:text-base">Benchmarks against global standards (e.g., ISO, WHO, JCI, GDPR).</CardDescription>}
                  {!hasTieredEditions && <CardDescription className="text-sm md:text-base">Get custom branding and a guided start.</CardDescription>}
             </CardHeader>
             <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
-                <p className="flex items-start gap-2"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span className="font-semibold text-primary">Everything in Professional, plus:</span></p>
-                 <div className="pl-8 space-y-2">
+                 <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Professional, plus:</span></p>
+                 <div className="pl-7 space-y-2">
                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>{hasTieredEditions ? 'Global Compliance Checklists' : 'Custom Branding'}</span></p>
                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Priority Action Plan</span></p>
                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>30-Min Onboarding Call</span></p>
@@ -278,17 +278,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </Card>
 
         {/* Enterprise Pack Card */}
-        <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
-            <CardHeader className="p-6 pt-8">
+        <Card key="enterprise" className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative h-full">
+            <CardHeader className="p-6">
                 <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                     <Building2 className="w-6 h-6 text-primary" />
                     Enterprise
                 </CardTitle>
-                <p className="text-4xl font-bold text-foreground">Custom</p>
+                 <div className="h-6"/>
+                <p className="text-4xl font-bold text-foreground pt-2">Custom</p>
+                 <CardDescription className="text-sm md:text-base">A complete, done-for-you solution.</CardDescription>
             </CardHeader>
             <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
-                <p className="flex items-start gap-2"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span className="font-semibold text-primary">Everything in Personalized, plus:</span></p>
-                 <div className="pl-8 space-y-2">
+                 <p className="flex items-start gap-2 font-semibold text-primary"><Sparkles className="w-5 h-5 mt-0.5 text-accent shrink-0" /> <span>Everything in Personalized, plus:</span></p>
+                 <div className="pl-7 space-y-2">
                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Full SOP Manual Creation</span></p>
                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Dedicated Account Manager</span></p>
                     <p className="flex items-start gap-2"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0" /> <span>Team Training</span></p>
@@ -316,7 +318,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 <div className="hidden lg:grid grid-cols-1 gap-8 mx-auto lg:max-w-7xl lg:grid-cols-3">
-                   {hasTieredEditions ? pricingCards : <div className="max-w-md mx-auto">{singleTierCard}</div>}
+                   {hasTieredEditions ? pricingCards : <div className="lg:col-start-2">{singleTierCard}</div>}
                 </div>
                 
                  <div className="block lg:hidden">
@@ -394,4 +396,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </div>
         </>
     );
-}
+
+    
