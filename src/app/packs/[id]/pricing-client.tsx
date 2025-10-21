@@ -181,6 +181,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 
                 {hasTieredEditions ? (
                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                        {/* Professional Pack */}
                         <Card className="flex flex-col">
                             <CardHeader>
                                 <CardTitle>Professional Pack</CardTitle>
@@ -204,6 +205,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardFooter>
                         </Card>
 
+                        {/* Personalized Pack */}
                         <Card className="flex flex-col border-2 border-accent relative">
                             <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
                             <CardHeader>
@@ -232,11 +234,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardFooter>
                         </Card>
 
+                        {/* Enterprise Pack */}
                         <Card className="flex flex-col">
                             <CardHeader>
                                 <CardTitle>Enterprise</CardTitle>
-                                <p className="text-4xl font-bold pt-4 mt-9">Custom</p>
-                                 <CardDescription>A complete, done-for-you operational system.</CardDescription>
+                                 <div className="pt-4 mt-9"> {/* Spacer to align with other cards */}
+                                    <p className="text-4xl font-bold">Custom</p>
+                                </div>
+                                <CardDescription>A complete, done-for-you operational system.</CardDescription>
                             </CardHeader>
                             <CardContent className="flex-1">
                                  <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
@@ -318,3 +323,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 }
 
+    
