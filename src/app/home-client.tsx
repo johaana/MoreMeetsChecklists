@@ -102,7 +102,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-expertise">
                         <AccordionTrigger className="text-lg font-semibold text-left">What's the expertise behind your checklists?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                           Our checklists have been curated and vetted by a panel of over 200 seasoned industry professionals—veteran GMs, compliance officers, and heads of security. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
+                           Our checklists have been curated and vetted by a core panel of over 30 globally experienced industry consultants and veteran leaders—GMs, compliance officers, and heads of security from world-leading organizations. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-free-comparison">
@@ -123,7 +123,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-ai-alt">
                         <AccordionTrigger className="text-lg font-semibold text-left">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                           Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 200 industry veterans who have managed these high-stakes environments.
+                           Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 30 industry veterans who have managed these high-stakes environments.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-1">
