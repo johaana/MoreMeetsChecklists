@@ -130,19 +130,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const personalizedPrice = 10999;
     const personalizedStrikethroughPrice = 18999;
     const personalizedPaymentId = "pl_RMncDLAlms69Pd";
-
-    const packsWithTieredEditions = [
-        "jewelry_and_luxury_retail",
-        "healthcare_and_hospital_operations",
-        "school_operations_pack",
-        "university_college_ops",
-        "manufacturing_operations_ehs_pack",
-        "logistics_warehouse_pack",
-        "sports_clubs_stadium_operations_pack",
-        "facility_management_blueprint",
-    ];
-
-    const hasTieredEditions = packsWithTieredEditions.includes(pack.id);
     
     if (pack.priceINR <= 0) {
         return (
@@ -179,113 +166,87 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
                 
-                {hasTieredEditions ? (
-                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
-                        {/* Professional Pack */}
-                        <Card className="flex flex-col">
-                            <CardHeader>
-                                <CardTitle>Professional Pack</CardTitle>
-                                <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
-                                   <Landmark className="w-4 h-4" /> India Edition
-                                </Badge>
-                                <p className="text-4xl font-bold pt-4">₹{professionalPrice}</p>
-                                <CardDescription>Aligned with domestic standards (BIS, NABH, etc.)</CardDescription>
-                            </CardHeader>
-                            <CardContent className="flex-1">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                    {/* Professional Pack */}
+                    <Card className="flex flex-col">
+                        <CardHeader>
+                            <CardTitle>Professional Pack</CardTitle>
+                            <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
+                                <Landmark className="w-4 h-4" /> India Edition
+                            </Badge>
+                            <p className="text-4xl font-bold pt-4">₹{professionalPrice}</p>
+                            <CardDescription>Aligned with domestic standards (BIS, NABH, etc.)</CardDescription>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                            <ul className="space-y-3 text-muted-foreground text-sm">
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Complete checklist pack with {pack.checklists.length} checklists.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Instant Excel download.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Lifetime updates.</span></li>
+                            </ul>
+                        </CardContent>
+                        <CardFooter className="mt-auto">
+                            <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
+                                <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
+                            </div>
+                        </CardFooter>
+                    </Card>
+
+                    {/* Personalized Pack */}
+                    <Card className="flex flex-col border-2 border-accent relative">
+                        <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
+                        <CardHeader>
+                            <CardTitle className="pt-2">Personalized Pack</CardTitle>
+                            <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
+                                <Globe className="w-4 h-4" /> Global Edition
+                            </Badge>
+                                <div className="flex items-baseline gap-2 pt-4">
+                                <p className="text-4xl font-bold">₹{personalizedPrice}</p>
+                                <p className="text-xl font-medium text-muted-foreground line-through">₹{personalizedStrikethroughPrice}</p>
+                            </div>
+                                <CardDescription>Benchmarks against global standards (ISO, JCI, etc.)</CardDescription>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                                <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Complete checklist pack with {pack.checklists.length} checklists.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Instant Excel download.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Lifetime updates.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Global Compliance Checklists</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Priority Action Plan</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>30-Min Onboarding Call</span></li>
                                 </ul>
-                            </CardContent>
-                            <CardFooter className="mt-auto">
-                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                                    <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
-                                </div>
-                            </CardFooter>
-                        </Card>
+                        </CardContent>
+                        <CardFooter className="mt-auto">
+                            <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+                                    <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                            </div>
+                        </CardFooter>
+                    </Card>
 
-                        {/* Personalized Pack */}
-                        <Card className="flex flex-col border-2 border-accent relative">
-                            <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
-                            <CardHeader>
-                                <CardTitle className="pt-2">Personalized Pack</CardTitle>
-                                <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
-                                    <Globe className="w-4 h-4" /> Global Edition
-                                </Badge>
-                                 <div className="flex items-baseline gap-2 pt-4">
-                                    <p className="text-4xl font-bold">₹{personalizedPrice}</p>
-                                    <p className="text-xl font-medium text-muted-foreground line-through">₹{personalizedStrikethroughPrice}</p>
-                                </div>
-                                 <CardDescription>Benchmarks against global standards (ISO, JCI, etc.)</CardDescription>
-                            </CardHeader>
-                            <CardContent className="flex-1">
-                                 <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
-                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Global Compliance Checklists</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Priority Action Plan</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>30-Min Onboarding Call</span></li>
-                                 </ul>
-                            </CardContent>
-                            <CardFooter className="mt-auto">
-                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                     <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
-                                </div>
-                            </CardFooter>
-                        </Card>
-
-                        {/* Enterprise Pack */}
-                        <Card className="flex flex-col">
-                            <CardHeader>
-                                <CardTitle>Enterprise</CardTitle>
-                                 <div className="pt-4 mt-9"> {/* Spacer to align with other cards */}
-                                    <p className="text-4xl font-bold">Custom</p>
-                                </div>
-                                <CardDescription>A complete, done-for-you operational system.</CardDescription>
-                            </CardHeader>
-                            <CardContent className="flex-1">
-                                 <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
-                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Full SOP Manual Creation</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Dedicated Account Manager</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Team Training & Onboarding</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Bespoke Checklist Creation</span></li>
-                                 </ul>
-                            </CardContent>
-                            <CardFooter className="mt-auto">
-                                <Button asChild className="w-full" variant="secondary">
-                                    <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                        Book a Discovery Call
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    </div>
-                ) : (
-                    <div className="max-w-md mx-auto">
-                         <Card className="flex flex-col text-left rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border-2 border-primary/10 relative">
-                            <CardHeader className="p-6">
-                                <CardTitle className="font-headline text-2xl">Get Instant Access</CardTitle>
-                                <p className="text-4xl font-bold text-foreground pt-2">₹{pack.priceINR}</p>
-                                <CardDescription className="text-sm md:text-base">One-time purchase. Lifetime updates.</CardDescription>
-                            </CardHeader>
-                            <CardContent className="flex-1 space-y-3 p-6 pt-0 text-sm md:text-base">
-                                <ul className="space-y-3 text-muted-foreground">
-                                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Complete, expert-curated checklist pack with {pack.checklists.length} checklists.</span></li>
-                                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Instant download, immediate impact.</span></li>
-                                    <li className="flex items-start"><Check className="w-5 h-5 mt-0.5 text-green-500 shrink-0 mr-2" /> <span>Fully editable & brandable Excel files.</span></li>
+                    {/* Enterprise Pack */}
+                    <Card className="flex flex-col">
+                        <CardHeader>
+                            <CardTitle>Enterprise</CardTitle>
+                                <div className="pt-4 mt-9"> {/* Spacer to align with other cards */}
+                                <p className="text-4xl font-bold">Custom</p>
+                            </div>
+                            <CardDescription>A complete, done-for-you operational system.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                                <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Full SOP Manual Creation</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Dedicated Account Manager</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Team Training & Onboarding</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Bespoke Checklist Creation</span></li>
                                 </ul>
-                            </CardContent>
-                            <CardFooter className="p-6 mt-auto flex flex-col items-center gap-2">
-                                 <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:bg-primary [&_.razorpay-payment-button]:text-primary-foreground [&_.razorpay-payment-button]:hover:bg-primary/90">
-                                    <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
-                                </div>
-                                <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
-                            </CardFooter>
-                        </Card>
-                    </div>
-                )}
-
+                        </CardContent>
+                        <CardFooter className="mt-auto">
+                            <Button asChild className="w-full" variant="secondary">
+                                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                    Book a Discovery Call
+                                </Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
 
                 <div className="max-w-md mx-auto">
                     <ScenarioPreviewDialog scenario={pack.previewScenario} />
