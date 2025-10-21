@@ -253,7 +253,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                  </ul>
                             </CardContent>
                             <CardFooter className="mt-auto">
-                                <Button asChild className="w-full" variant="outline">
+                                <Button asChild className="w-full" variant="secondary">
                                     <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
                                         Book a Discovery Call
                                     </Link>
@@ -322,5 +322,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
