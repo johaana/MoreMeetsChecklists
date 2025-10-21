@@ -2,11 +2,11 @@
 'use client';
 
 import * as React from 'react';
-import type { PremiumPack } from '@/lib/premium-packs';
+import type { PremiumPack, Checklist as PackChecklist } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Building, AlertTriangle, Download, Globe, Landmark, GraduationCap, AlertTriangle as AlertTriangleIcon, Factory, Warehouse, Building2 } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -75,7 +75,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="accent" className="w-full mt-4">
+                <Button variant="outline" className="w-full">
                     <Eye className="w-4 h-4 mr-2" />
                     Preview a Real-World Scenario
                 </Button>
@@ -83,7 +83,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
             <AlertDialogContent className="max-w-4xl">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="font-headline flex items-center gap-3">
-                         <AlertTriangleIcon className="w-6 h-6 text-destructive" />
+                         <Sparkles className="w-6 h-6 text-accent" />
                         Scenario: {scenario.title}
                     </AlertDialogTitle>
                     <AlertDialogDescription>
@@ -110,6 +110,69 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
                                             {task.priority}
                                         </Badge>
                                     </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </ScrollArea>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Close Preview</AlertDialogCancel>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+    );
+}
+
+function SampleChecklistPreviewDialog({ checklist }: { checklist: PackChecklist }) {
+    if (!checklist) return null;
+
+    return (
+        <AlertDialog>
+            <AlertDialogTrigger asChild>
+                <Button variant="outline" className="w-full">
+                    <Eye className="w-4 h-4 mr-2" />
+                    Preview a Sample Checklist
+                </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="max-w-6xl">
+                <AlertDialogHeader>
+                    <AlertDialogTitle className="font-headline flex items-center gap-3">
+                         {React.cloneElement(checklist.icon, { className: 'w-6 h-6 text-accent' })}
+                        Sample: {checklist.title}
+                    </AlertDialogTitle>
+                     <AlertDialogDescription className="text-left">
+                        <strong>Department:</strong> {checklist.department} | <strong>Frequency:</strong> {checklist.frequency} | <strong>Role:</strong> {checklist.role}
+                    </AlertDialogDescription>
+                    <AlertDialogDescription className="text-left pt-2">
+                        {checklist.summary}
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <ScrollArea className="max-h-[60vh] pr-6">
+                    <div className="text-sm text-muted-foreground mt-2 mb-4">This is one of {checklist.tasks.length} tasks from just this single checklist. The full pack contains multiple such checklists.</div>
+                    <Table className="mt-4 border rounded-lg">
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[40%]">Task</TableHead>
+                                <TableHead>Priority</TableHead>
+                                <TableHead>Risk Level</TableHead>
+                                <TableHead>Proof / Evidence</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {checklist.tasks.map((task) => (
+                                <TableRow key={task.id}>
+                                    <TableCell className="font-medium">{task.description}</TableCell>
+                                     <TableCell>
+                                        <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
+                                            {task.priority}
+                                        </Badge>
+                                    </TableCell>
+                                     <TableCell>
+                                        <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
+                                            {task.riskLevel}
+                                        </Badge>
+                                    </TableCell>
+                                    <TableCell className="text-muted-foreground">{task.proof}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -248,9 +311,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </Card>
                 </div>
 
-                <div className="max-w-md mx-auto">
-                    <ScenarioPreviewDialog scenario={pack.previewScenario} />
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
+                    {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog checklist={pack.checklists[0]} />}
                 </div>
+
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
