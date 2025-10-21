@@ -125,47 +125,6 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     );
 }
 
-const ValueComparisonSection = ({ price }: { price: number }) => (
-    <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
-        <div className="text-center mb-8">
-            <h3 className="font-headline text-2xl font-bold mb-2 text-primary">A Smarter Investment in Excellence</h3>
-            <p className="text-foreground/80 max-w-3xl mx-auto text-sm md:text-base">
-                You're not just buying a tool—you're buying the expert-researched system.
-            </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-             <Card className="p-4 bg-background border-primary/20 border-2 shadow-xl flex-1 h-full">
-                <CardHeader className="p-2 text-center">
-                    <CardTitle className="text-xl font-headline text-primary">MoreMeets Pack</CardTitle>
-                </CardHeader>
-                <CardContent className="p-2 text-center">
-                    <p className="text-4xl font-bold">₹{price}</p>
-                    <p className="text-lg font-semibold text-muted-foreground">One-Time Purchase</p>
-                    <p className="text-xs text-muted-foreground mt-1">Lifetime Updates Included</p>
-                </CardContent>
-            </Card>
-            <div className="space-y-4">
-                <h4 className="md:hidden text-center text-sm font-semibold text-muted-foreground">Typical Industry Alternatives</h4>
-                <div className="grid grid-cols-2 gap-4">
-                     <div className="p-4 border rounded-lg bg-muted/50">
-                        <h4 className="font-bold text-lg text-center">Typical SaaS Subscriptions</h4>
-                        <p className="text-2xl md:text-3xl font-bold text-center mt-1">₹30,000+</p>
-                        <p className="text-sm font-semibold text-muted-foreground text-center">Per Year, Per Location</p>
-                        <p className="text-xs text-muted-foreground mt-2 text-center">Provides the software, but you still have to write all the checklists yourself.</p>
-                    </div>
-                     <div className="p-4 border rounded-lg bg-muted/50">
-                        <h4 className="font-bold text-lg text-center">Hiring a Consultant</h4>
-                        <p className="text-2xl md:text-3xl font-bold text-center mt-1">₹75,000+</p>
-                        <p className="text-sm font-semibold text-muted-foreground text-center">Per Project</p>
-                        <p className="text-xs text-muted-foreground mt-2 text-center">Provides custom SOPs, but at a significant one-time cost and with no easy path for updates.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = 7999;
     const professionalPaymentId = 'pl_RMnYKoxjfq5XCx';
@@ -372,8 +331,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <div className="max-w-md mx-auto">
                     <ScenarioPreviewDialog scenario={pack.previewScenario} />
                 </div>
-
-                <ValueComparisonSection price={professionalPrice} />
 
                 <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
                     <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
