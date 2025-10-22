@@ -15,9 +15,10 @@ import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { writeFile, utils } from 'xlsx-js-style';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from '@/hooks/use-toast';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
+
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
@@ -112,9 +113,9 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                     <div className="p-4 bg-secondary/30">
                                          <h3 className="text-lg font-bold font-headline">{checklist.title}</h3>
                                     </div>
-                                    <Table className="text-xs">
-                                        <TableHeader className="bg-primary/5">
-                                             <TableRow className="border-b-0">
+                                    <Table className="text-xs border-t">
+                                         <TableHeader>
+                                             <TableRow className="bg-primary/5 border-b-0">
                                                 <TableHead className="p-2 text-primary/80 font-bold" colSpan={5}>
                                                     <div className="flex justify-between items-center text-xs">
                                                         <span><strong>Dept:</strong> {checklist.department}</span>
@@ -123,7 +124,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                                     </div>
                                                 </TableHead>
                                             </TableRow>
-                                            <TableRow>
+                                            <TableRow className="bg-primary/10">
                                                 <TableHead className="w-[100px] p-2 text-primary font-bold">Task ID</TableHead>
                                                 <TableHead className="w-[40%] p-2 text-primary font-bold">Task Description</TableHead>
                                                 <TableHead className="p-2 text-primary font-bold">Priority</TableHead>
@@ -133,7 +134,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                         </TableHeader>
                                         <TableBody>
                                             {checklist.tasks.slice(0, 5).map((task) => (
-                                                <TableRow key={task.id}>
+                                                <TableRow key={task.id} className="border-t">
                                                     <TableCell className="p-2 font-mono">{task.id}</TableCell>
                                                     <TableCell className="p-2 font-medium">
                                                         <div className="flex items-start gap-2">
@@ -178,26 +179,26 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                     </TabsContent>
                      <TabsContent value="contents">
                          <AlertDialogDescription className="text-left pt-2">
-                            The final Excel file includes a hyperlinked cover page like this for easy navigation between checklists.
+                            The final Excel file includes a hyperlinked cover page for easy navigation between checklists. This preview shows the full contents of the pack.
                         </AlertDialogDescription>
                          <ScrollArea className="max-h-[50vh] pr-6 mt-4">
                              <div className="border rounded-lg overflow-hidden">
                                 <Table>
-                                    <TableHeader className="bg-primary/5">
+                                    <TableHeader className="bg-primary/10">
                                         <TableRow>
-                                            <TableHead className="w-[50%] text-primary">Checklist Title</TableHead>
-                                            <TableHead className="text-primary">Department</TableHead>
-                                            <TableHead className="text-primary">Frequency</TableHead>
-                                            <TableHead className="text-primary">Role</TableHead>
+                                            <TableHead className="w-[50%] text-primary font-bold p-2">Checklist Title</TableHead>
+                                            <TableHead className="text-primary font-bold p-2">Department</TableHead>
+                                            <TableHead className="text-primary font-bold p-2">Frequency</TableHead>
+                                            <TableHead className="text-primary font-bold p-2">Role</TableHead>
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
                                         {pack.checklists.map((c, index) => (
-                                            <TableRow key={index}>
-                                                <TableCell className="font-medium text-blue-600 dark:text-blue-400 cursor-pointer hover:underline text-sm">{c.title}</TableCell>
-                                                <TableCell className="text-muted-foreground text-xs">{c.department}</TableCell>
-                                                <TableCell className="text-muted-foreground text-xs">{c.frequency}</TableCell>
-                                                <TableCell className="text-muted-foreground text-xs">{c.role}</TableCell>
+                                            <TableRow key={index} className="border-t">
+                                                <TableCell className="font-medium text-blue-600 dark:text-blue-400 cursor-pointer hover:underline text-sm p-2">{c.title}</TableCell>
+                                                <TableCell className="text-muted-foreground text-xs p-2">{c.department}</TableCell>
+                                                <TableCell className="text-muted-foreground text-xs p-2">{c.frequency}</TableCell>
+                                                <TableCell className="text-muted-foreground text-xs p-2">{c.role}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>

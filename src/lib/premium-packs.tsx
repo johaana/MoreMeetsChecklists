@@ -70,11 +70,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "GMs", "VPs", "and their teams"],
         sampleItems: [
-            { text: "Guest room readiness & housekeeping.", icon: <Home /> },
-            { text: "Food & beverage / kitchen hygiene (HACCP).", icon: <Utensils /> },
-            { text: "Pool & spa safety.", icon: <LifeBuoy /> },
-            { text: "Fire safety & evacuation drills.", icon: <Siren /> },
-            { text: "Vendor & contractor control.", icon: <HardHat /> }
+            { text: "Daily Room Readiness and Housekeeping Verification.", icon: <Home /> },
+            { text: "Kitchen Hygiene (HACCP) & F&B Service Standards.", icon: <Utensils /> },
+            { text: "Pool & Spa Safety and Water Quality Logs.", icon: <LifeBuoy /> },
+            { text: "Fire Safety Audits & Evacuation Drill Management.", icon: <Siren /> },
+            { text: "Vendor Access Control & Work Permit SOPs.", icon: <HardHat /> },
+            { text: "Preventive Maintenance for HVAC, Lifts, and Generators.", icon: <Wrench /> }
         ],
         previewScenario: {
             title: "Responding to a Guest Medical Emergency",
@@ -271,11 +272,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "VPs", "GMs", "Directors"],
         sampleItems: [
-            { text: "Kitchen opening/closing & HACCP controls.", icon: <ShieldCheck /> },
-            { text: "Cold chain & temperature monitoring.", icon: <Thermometer /> },
-            { text: "Allergen management & menu labeling.", icon: <FileWarning /> },
-            { text: "Waste & pest control.", icon: <Bug /> },
-            { text: "Staff hygiene & training.", icon: <UserCheck /> }
+            { text: "Kitchen Opening & Closing Hygiene (HACCP).", icon: <ShieldCheck /> },
+            { text: "Cold Chain & Temperature Monitoring.", icon: <Thermometer /> },
+            { text: "Allergen Management & Menu Labeling.", icon: <FileWarning /> },
+            { text: "Waste Segregation & Pest Control.", icon: <Bug /> },
+            { text: "Staff Hygiene & Training Verification.", icon: <UserCheck /> },
+            { text: "Raw Material Receiving & Quality Control.", icon: <PackageCheck /> }
         ],
         previewScenario: {
             title: "Handling a Food Allergy Alert",
@@ -493,11 +495,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
         sampleItems: [
-            { text: "Master 'Seasonal Inventory Management' to reduce dead stock.", icon: <Thermometer /> },
-            { text: "Implement a 'Visual Merchandising' checklist for stunning displays.", icon: <GalleryVertical /> },
-            { text: "Secure your store with a 'Fitting Room Operations & Security' protocol.", icon: <DoorClosed /> },
-            { text: "Streamline 'Omni-Channel Operations' for click-and-collect and online returns.", icon: <Link /> },
-            { text: "Prevent theft with 'Store Safety & Loss Prevention'.", icon: <Shield /> },
+            { text: "Seasonal Inventory & Markdown Management.", icon: <Thermometer /> },
+            { text: "Visual Merchandising & Display Audits.", icon: <GalleryVertical /> },
+            { text: "Fitting Room Operations & Security Protocols.", icon: <DoorClosed /> },
+            { text: "Omni-Channel Operations (Click-and-Collect, Returns).", icon: <Link /> },
+            { text: "Store Safety & Loss Prevention Audits.", icon: <Shield /> },
+            { text: "Cash Handling and Daily POS Reconciliation.", icon: <Banknote /> }
         ],
         previewScenario: {
             title: "Preventing End-of-Season Stock Write-Offs",
@@ -714,10 +717,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Jewelry Store Owners", "Luxury Brand Managers", "Asset Protection Directors", "Heads of Retail"],
         sampleItems: [
-            { text: "Vault access control & dual verification.", icon: <Lock /> },
-            { text: "Display case & overnight security.", icon: <Shield /> },
-            { text: "High-value transaction & payment verification.", icon: <CircleDollarSign /> },
-            { text: "NEW: Watch & serialized item management.", icon: <Watch /> },
+            { text: "Vault Access Control & Dual Verification.", icon: <Lock /> },
+            { text: "Display Case & Overnight Security Protocol.", icon: <Shield /> },
+            { text: "High-Value Transaction & Payment Verification.", icon: <CircleDollarSign /> },
+            { text: "Serialized Item & Watch Management.", icon: <Watch /> },
+            { text: "Customer Verification & KYC Compliance.", icon: <UserCheck /> },
+            { text: "Repair & Service Intake Management.", icon: <Wrench /> }
         ],
         previewScenario: {
             title: "Foiling a High-Value Swap Theft",
@@ -930,11 +935,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Tv />,
         whoIsItFor: ["Electronics Store Owners", "Showroom Managers", "Heads of Retail Operations", "Asset Protection Managers"],
         sampleItems: [
-            { text: "Demo unit safety & electrical checks.", icon: <Zap /> },
-            { text: "Asset tagging & warranty management.", icon: <Barcode /> },
-            { text: "E-waste handling & disposal.", icon: <Recycle /> },
-            { text: "POS & payment security.", icon: <ShieldCheck /> },
-            { text: "Customer demo & returns SOP.", icon: <UserCheck /> }
+            { text: "Demo Unit Safety & Electrical Load Audits.", icon: <Zap /> },
+            { text: "Serialized Asset Tagging & Warranty Management.", icon: <Barcode /> },
+            { text: "E-waste Handling & Compliant Disposal.", icon: <Recycle /> },
+            { text: "Point-of-Sale & Payment Security (PCI-DSS).", icon: <ShieldCheck /> },
+            { text: "Customer Demo Experience & Returns SOP.", icon: <UserCheck /> },
+            { text: "Stockroom Organization & Safety.", icon: <Package /> }
         ],
         previewScenario: {
             title: "Preventing a Showroom Fire",
@@ -1130,11 +1136,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Supermarket Owners", "Grocery Store Proprietors", "Heads of Retail Operations", "Store Directors", "Department Heads (Fresh Food, Dairy)", "3PL Partners"],
         sampleItems: [
-            { text: "Cold chain & perishables management.", icon: <Thermometer /> },
-            { text: "Expiry & FIFO rotation process.", icon: <Recycle /> },
-            { text: "Cleaning, hygiene & pest control.", icon: <SprayCan /> },
-            { text: "POS & cash reconciliation.", icon: <DollarSign /> },
-            { text: "Supplier inbound inspection.", icon: <PackageCheck /> },
+            { text: "Cold Chain & Perishables Temperature Management.", icon: <Thermometer /> },
+            { text: "FIFO Rotation & Expiry Date Sweep Process.", icon: <Recycle /> },
+            { text: "Store Hygiene, Cleaning & Spill Response.", icon: <SprayCan /> },
+            { text: "Point-of-Sale Security & Cash Reconciliation.", icon: <DollarSign /> },
+            { text: "Inbound Supplier Quality Control & Receiving.", icon: <PackageCheck /> },
+            { text: "Weighing Scale Calibration & Legal Metrology.", icon: <Scale /> }
         ],
         previewScenario: {
             title: "Averting a Food Poisoning Outbreak",
@@ -1331,11 +1338,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["COOs", "Heads of Corporate Real Estate", "Directors of Facilities", "VPs of Administration", "Data Center Managers"],
         sampleItems: [
-            { text: "Daily facility walkthrough & verification.", icon: <UserCheck /> },
-            { text: "Preventive maintenance planning & SLA tracking.", icon: <Wrench /> },
-            { text: "Housekeeping & hygiene audits.", icon: <Sparkles /> },
-            { text: "Security & access control.", icon: <KeyRound /> },
-            { text: "Utilities & energy management.", icon: <Zap /> },
+            { text: "Daily Facility Walkthrough & Verification.", icon: <UserCheck /> },
+            { text: "Preventive Maintenance Planning & Vendor SLA Tracking.", icon: <Wrench /> },
+            { text: "Housekeeping, Hygiene & Pest Control Audits.", icon: <Sparkles /> },
+            { text: "Visitor Management & Access Control Protocols.", icon: <KeyRound /> },
+            { text: "Utilities, Energy & Water Management.", icon: <Zap /> },
+            { text: "Critical Systems (UPS, HVAC) & Redundancy Testing.", icon: <Cog /> }
         ],
         previewScenario: {
             title: "Averting a Data Center Catastrophe",
@@ -1530,11 +1538,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <FileLock />,
         whoIsItFor: ["Founders & CEOs", "HR Managers", "Operations Heads", "Non-lawyer Managers", "Directors"],
         sampleItems: [
-            { text: "Statutory filing calendar & reminders.", icon: <CalendarDays /> },
-            { text: "Policy management & employee acknowledgements.", icon: <UserCheck /> },
-            { text: "Contract lifecycle management.", icon: <FileCheck /> },
-            { text: "Internal audit & non-compliance remediation.", icon: <Bug /> },
-            { text: "Whistleblowing & investigations.", icon: <Siren /> },
+            { text: "Statutory Filing Calendar & Reminders.", icon: <CalendarDays /> },
+            { text: "Policy Management & Employee Acknowledgements.", icon: <UserCheck /> },
+            { text: "Contract Lifecycle Management & Clause Checklist.", icon: <FileCheck /> },
+            { text: "Internal Audit & Non-Compliance Remediation (CAPA).", icon: <Bug /> },
+            { text: "Whistleblowing Process & Investigation SOP.", icon: <Siren /> },
+            { text: "Board Meeting Preparation & Minute Taking.", icon: <BriefcaseBusiness /> }
         ],
         previewScenario: {
             title: "Surviving a Surprise Regulatory Audit",
@@ -1728,11 +1737,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <ShieldCheck />,
         whoIsItFor: ["CISOs", "CTOs", "Data Protection Officers (DPOs)", "Heads of Risk & Compliance", "IT Directors"],
         sampleItems: [
-            { text: "Access management & least privilege.", icon: <KeyRound /> },
-            { text: "Patch & vulnerability lifecycle.", icon: <Bug /> },
-            { text: "Backup, business continuity & disaster recovery (BC/DR).", icon: <DatabaseZap /> },
-            { text: "Incident response & forensics.", icon: <Siren /> },
-            { text: "Cloud security posture & misconfigurations.", icon: <Cloud /> },
+            { text: "User Access Reviews & Least Privilege.", icon: <KeyRound /> },
+            { text: "Vulnerability Scanning & Patch Management.", icon: <Bug /> },
+            { text: "Business Continuity & Disaster Recovery (BC/DR) Drills.", icon: <DatabaseZap /> },
+            { text: "Incident Response Playbooks & Forensics.", icon: <Siren /> },
+            { text: "Cloud Security Posture Management (CSPM).", icon: <Cloud /> },
+            { text: "Third-Party Vendor Security Assessments.", icon: <Handshake /> }
         ],
         previewScenario: {
             title: "Surviving a Ransomware Attack",
@@ -1930,11 +1940,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents"],
         sampleItems: [
-            { text: "Surgical safety & operating theatre (OT) protocols.", icon: <Stethoscope /> },
-            { text: "Infection control & sterilization (CSSD).", icon: <SyringeIcon /> },
-            { text: "Medication management & high-alert drugs.", icon: <Pill /> },
-            { text: "Patient identification & safety.", icon: <UserCheck /> },
-            { text: "Medical records & data privacy.", icon: <FileLock /> },
+            { text: "Surgical Safety Checklist (WHO Aligned).", icon: <Stethoscope /> },
+            { text: "Infection Control & Sterilization (CSSD) Audits.", icon: <SyringeIcon /> },
+            { text: "High-Alert Medication & Dispensing SOPs.", icon: <Pill /> },
+            { text: "Patient Identification & Safety Protocols.", icon: <UserCheck /> },
+            { text: "Biomedical Waste Management & Compliance.", icon: <Recycle /> },
+            { text: "Emergency Code & Mock Drill Management.", icon: <Ambulance /> }
         ],
         previewScenario: {
             title: "Preventing a 'Never Event': Wrong-Site Surgery",
@@ -2128,11 +2139,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Pill />,
         whoIsItFor: ["Pharmacists-in-Charge", "Pharmacy Owners", "Hospital Pharmacy Directors", "Compliance Officers"],
         sampleItems: [
-            { text: "Dispensing accuracy & error prevention.", icon: <FileCheck /> },
-            { text: "Controlled substance & narcotics logs.", icon: <FileLock /> },
-            { text: "Cold chain management for vaccines.", icon: <Thermometer /> },
-            { text: "Inventory management & expiry control.", icon: <Recycle /> },
-            { text: "Patient counseling & medication therapy management.", icon: <UserCheck /> },
+            { text: "Dispensing Accuracy & Error Prevention.", icon: <FileCheck /> },
+            { text: "Controlled Substance & Narcotics Logs.", icon: <FileLock /> },
+            { text: "Cold Chain Management for Vaccines & Biologics.", icon: <Thermometer /> },
+            { text: "Inventory, FIFO, and Expiry Control.", icon: <Recycle /> },
+            { text: "Patient Counseling & Medication Therapy Management.", icon: <UserCheck /> },
+            { text: "Regulatory Compliance (Drugs & Cosmetics Act).", icon: <Scale /> }
         ],
         previewScenario: {
             title: "Preventing a Controlled Substance Discrepancy",
@@ -2328,11 +2340,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Safety First",
         whoIsItFor: ["School Principals", "Trustees", "Administrators", "Heads of Security", "Transport Managers"],
         sampleItems: [
-            { text: "Student attendance & transport safety.", icon: <Bus /> },
-            { text: "Child protection & background verification.", icon: <ShieldCheck /> },
-            { text: "Canteen hygiene & food safety.", icon: <Utensils /> },
-            { text: "Fire & lockdown drills.", icon: <Siren /> },
-            { text: "Health screening & outbreak control.", icon: <HeartPulse /> },
+            { text: "Student Transport & Bus Safety Protocols.", icon: <Bus /> },
+            { text: "Child Protection & Staff Background Verification.", icon: <ShieldCheck /> },
+            { text: "Canteen Hygiene & Food Safety Audits.", icon: <Utensils /> },
+            { text: "Fire Safety & Emergency Lockdown Drills.", icon: <Siren /> },
+            { text: "Health Screening & Outbreak Control SOPs.", icon: <HeartPulse /> },
+            { text: "Playground & Sports Equipment Safety Inspections.", icon: <FerrisWheel /> }
         ],
         previewScenario: {
             title: "Preventing a School Bus Tragedy",
@@ -2528,11 +2541,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["University Registrars", "Deans of Administration", "Heads of Student Affairs", "Campus Safety Directors"],
         sampleItems: [
-            { text: "Laboratory safety & chemical management.", icon: <TestTube /> },
-            { text: "Research ethics & data management.", icon: <DatabaseZap /> },
-            { text: "Hostel operations & fire safety.", icon: <Home /> },
-            { text: "Campus event risk & crowd management.", icon: <Users /> },
-            { text: "Student welfare & anti-harassment.", icon: <HeartPulse /> },
+            { text: "Laboratory Safety & Chemical Management.", icon: <TestTube /> },
+            { text: "Research Ethics, Data Management & IRB Compliance.", icon: <DatabaseZap /> },
+            { text: "Hostel Operations & Fire Safety Audits.", icon: <Home /> },
+            { text: "Campus Event Risk Assessment & Crowd Management.", icon: <Users /> },
+            { text: "Student Welfare, Grievance & Anti-Harassment SOPs.", icon: <HeartPulse /> },
+            { text: "Academic Integrity & Examination Protocols.", icon: <BookOpen /> }
         ],
         previewScenario: {
             title: "Managing a Laboratory Chemical Spill",
@@ -2727,11 +2741,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Factory />,
         whoIsItFor: ["Plant Heads", "Quality Assurance Managers", "Production Managers", "Food Safety Officers"],
         sampleItems: [
-            { text: "GMP/GHP sanitation & cleaning regimes.", icon: <SprayCan /> },
-            { text: "Allergen management & segregation.", icon: <FileWarning /> },
-            { text: "Batch traceability & recall readiness.", icon: <Barcode /> },
-            { text: "Preventive maintenance on production lines.", icon: <Wrench /> },
-            { text: "Supplier verification & inbound QC.", icon: <PackageCheck /> },
+            { text: "Good Manufacturing Practice (GMP) & Hygiene.", icon: <SprayCan /> },
+            { text: "Allergen Management & Cross-Contamination Prevention.", icon: <FileWarning /> },
+            { text: "Batch Traceability & Mock Recall Drills.", icon: <Barcode /> },
+            { text: "Preventive Maintenance for Critical Control Points (CCPs).", icon: <Wrench /> },
+            { text: "Supplier Verification & Inbound Raw Material QC.", icon: <PackageCheck /> },
+            { text: "Glass & Brittle Plastic Control Program.", icon: <Eye /> }
         ],
         previewScenario: {
             title: "Preventing a Product Recall",
@@ -2926,11 +2941,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Plant Heads", "EHS Directors", "Production Managers", "Maintenance Heads", "Quality Control Managers"],
         sampleItems: [
-            { text: "Lockout-Tagout (LOTO) & machine guarding.", icon: <Lock /> },
-            { text: "Hazard identification & risk assessment (JHA).", icon: <FileWarning /> },
-            { text: "PPE & training logs.", icon: <HardHat /> },
-            { text: "Incident investigation & root-cause analysis.", icon: <Bug /> },
-            { text: "Confined space & hot work permits.", icon: <FileCheck /> },
+            { text: "Lockout-Tagout (LOTO) & Machine Guarding.", icon: <Lock /> },
+            { text: "Job Hazard Analysis (JHA) & Risk Assessments.", icon: <FileWarning /> },
+            { text: "Personal Protective Equipment (PPE) Compliance.", icon: <HardHat /> },
+            { text: "Incident Investigation & Root-Cause Analysis.", icon: <Bug /> },
+            { text: "Confined Space & Hot Work Permit Systems.", icon: <FileCheck /> },
+            { text: "Chemical Handling & Storage Safety.", icon: <TestTube /> }
         ],
         previewScenario: {
             title: "Preventing a Fatal 'Lockout-Tagout' Failure",
@@ -3127,11 +3143,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Warehouse Managers", "Logistics Heads", "Supply Chain Directors", "E-commerce Operations Managers"],
         sampleItems: [
-            { text: "Storage & stacking safety.", icon: <Package /> },
-            { text: "Forklift & vehicle operation checks.", icon: <HardHat /> },
-            { text: "Fire & electrical safety for warehouses.", icon: <Siren /> },
-            { text: "Receiving & dispatch documentation control.", icon: <FileCheck /> },
-            { text: "Hazardous goods handling.", icon: <FileWarning /> },
+            { text: "Storage, Racking & Pallet Safety.", icon: <Package /> },
+            { text: "Forklift & MHE Pre-Operation Safety Checks.", icon: <HardHat /> },
+            { text: "Fire Prevention & Electrical Safety for Warehouses.", icon: <Siren /> },
+            { text: "Inbound Receiving & Outbound Dispatch QC.", icon: <FileCheck /> },
+            { text: "Hazardous Goods (Hazmat) Handling & Storage.", icon: <FileWarning /> },
+            { text: "Inventory Cycle Counting & Accuracy.", icon: <Barcode /> }
         ],
         previewScenario: {
             title: "Preventing a Warehouse Collapse",
@@ -3346,11 +3363,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Film />,
         whoIsItFor: ["Producers", "Line Producers", "Production Managers", "Heads of Production"],
         sampleItems: [
-            { text: "Pre-production legal & clearances.", icon: <FileLock /> },
-            { text: "On-set safety (EHS).", icon: <Siren /> },
-            { text: "Stunt & high-risk scene protocols.", icon: <Car /> },
-            { text: "Data security & NDA compliance.", icon: <Lock /> },
-            { text: "Vendor billing & invoice auditing.", icon: <DollarSign /> }
+            { text: "Pre-production Legal & Clearances (Title, Script, Life Rights).", icon: <FileLock /> },
+            { text: "On-Set Safety & EHS Protocols.", icon: <Siren /> },
+            { text: "Stunt & High-Risk Scene Coordination.", icon: <Car /> },
+            { text: "Post-Production Data Security & NDA Compliance.", icon: <Lock /> },
+            { text: "Vendor Contract & Invoice Auditing.", icon: <DollarSign /> },
+            { text: "Location Scouting, Permitting & Management.", icon: <Map /> }
         ],
         previewScenario: {
             title: "The $2M Mistake: Averting a 'Life Rights' Disaster",
@@ -3537,11 +3555,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["CTOs", "Heads of Content", "Product Managers", "Heads of Ad-Ops", "SRE Leads"],
         sampleItems: [
-            { text: "Content classification & release workflow.", icon: <FileCheck /> },
-            { text: "Legal & licensing documentation SOP.", icon: <FileLock /> },
-            { text: "Data privacy & subscriber data handling.", icon: <Shield /> },
-            { text: "Platform security & incident response.", icon: <Siren /> },
-            { text: "Content takedown & compliance with local regulations.", icon: <Recycle /> }
+            { text: "Content Ingestion, Classification & Release Workflow.", icon: <FileCheck /> },
+            { text: "Legal & Licensing Documentation Management.", icon: <FileLock /> },
+            { text: "Subscriber Data Privacy & Retention (GDPR/DPDP).", icon: <Shield /> },
+            { text: "Platform Security, Vulnerability & Patch Management.", icon: <Siren /> },
+            { text: "Content Takedown & Regulatory Compliance.", icon: <Recycle /> },
+            { text: "Live Event & High-Concurrency Readiness Drills.", icon: <Zap /> }
         ],
         previewScenario: {
             title: "Responding to a Major Content Leak",
@@ -3735,11 +3754,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <FerrisWheel />,
         whoIsItFor: ["Theme Park GMs", "Heads of Operations", "Safety Directors", "Maintenance Heads", "F&B Managers"],
         sampleItems: [
-            { text: "Ride inspection & maintenance.", icon: <Wrench /> },
-            { text: "Guest safety & queue/crowd management.", icon: <Users /> },
-            { text: "Emergency response & medical readiness.", icon: <Ambulance /> },
-            { text: "Vendor / F&B stall safety.", icon: <Utensils /> },
-            { text: "Seasonal preparedness.", icon: <Wind /> },
+            { text: "Daily Ride Inspection & Maintenance Logs.", icon: <Wrench /> },
+            { text: "Guest Safety, Queue & Crowd Management.", icon: <Users /> },
+            { text: "Emergency Response & Medical Readiness Drills.", icon: <Ambulance /> },
+            { text: "F&B Vendor Stall Safety & LPG Handling.", icon: <Utensils /> },
+            { text: "Water Park Hygiene & Lifeguard Safety.", icon: <Waves /> },
+            { text: "Lost Child & Incident Reporting Protocols.", icon: <HelpingHand /> }
         ],
         previewScenario: {
             title: "Preventing a Ride Malfunction Catastrophe",
@@ -3934,11 +3954,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Sports Facility Managers", "Club Owners", "Stadium Operations Heads", "Safety Officers"],
         sampleItems: [
-            { text: "Crowd Control & Emergency Evacuation readiness.", icon: <Users /> },
-            { text: "Gym & Equipment Safety checklist to prevent accidents.", icon: <Dumbbell /> },
-            { text: "Sports Field & Turf Maintenance for optimal playing conditions.", icon: <Sprout /> },
-            { text: "Swimming Pool Hygiene & Safety to meet health standards.", icon: <Waves /> },
-            { text: "Digital Ticketing & Entry Validation for secure events.", icon: <Ticket /> },
+            { text: "Crowd Control & Emergency Evacuation Readiness.", icon: <Users /> },
+            { text: "Gym & Fitness Equipment Safety Inspection.", icon: <Dumbbell /> },
+            { text: "Sports Field & Turf Maintenance Schedule.", icon: <Sprout /> },
+            { text: "Swimming Pool Hygiene & Lifeguard Safety.", icon: <Waves /> },
+            { text: "Digital Ticketing & Secure Entry Validation.", icon: <Ticket /> },
+            { text: "Medical & Emergency Response Plan.", icon: <Ambulance /> }
         ],
         previewScenario: {
             title: "Averting a Pre-Match Crisis",
@@ -4136,11 +4157,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Shelter Managers", "NGO Founders", "Animal Welfare Officers", "Volunteers"],
         sampleItems: [
-            { text: "Animal intake & quarantine.", icon: <Home /> },
-            { text: "Vaccination & medical records.", icon: <HeartPulse /> },
-            { text: "Sanitation & disease control.", icon: <Sparkles /> },
-            { text: "Volunteer & staff safety.", icon: <Users /> },
-            { text: "Adoption & transport procedures.", icon: <Truck /> },
+            { text: "Animal Intake & Quarantine Protocols.", icon: <Home /> },
+            { text: "Vaccination & Medical Record Logs.", icon: <HeartPulse /> },
+            { text: "Kennel Sanitation & Disease Control.", icon: <Sparkles /> },
+            { text: "Volunteer Onboarding & Safety.", icon: <Users /> },
+            { text: "Adoption Verification & Transport SOPs.", icon: <Truck /> },
+            { text: "Feeding, Nutrition & Enrichment Schedules.", icon: <Rabbit /> }
         ],
         previewScenario: {
             title: "Preventing a Disease Outbreak",
@@ -4333,3 +4355,4 @@ export const premiumPacks: PremiumPack[] = [
 
 
   
+
