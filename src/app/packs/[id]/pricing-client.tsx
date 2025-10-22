@@ -25,7 +25,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="secondary" className="w-full">
+                <Button variant="accent" className="w-full">
                     <Eye className="w-4 h-4 mr-2" />
                     Preview a Real-World Scenario
                 </Button>
@@ -81,7 +81,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="accent" className="w-full">
+                <Button variant="secondary" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
@@ -90,9 +90,9 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                  <Tabs defaultValue="sample" className="w-full">
                     <AlertDialogHeader>
                         <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between">
-                            <AlertDialogTitle className="font-headline flex items-start gap-4">
+                             <AlertDialogTitle className="font-headline flex items-start gap-4">
                                 <div className="flex items-center gap-3">
-                                {React.cloneElement(checklist.icon, { className: 'w-6 h-6 text-accent' })}
+                                {React.cloneElement(pack.icon, { className: 'w-6 h-6 text-accent' })}
                                     <span>{pack.title} Preview</span>
                                 </div>
                             </AlertDialogTitle>
@@ -108,20 +108,18 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                         </AlertDialogDescription>
                         <ScrollArea className="max-h-[50vh] pr-6 mt-4">
                             <TooltipProvider>
-                                <div className="border rounded-lg overflow-hidden">
-                                    <Table className="bg-background text-xs">
+                                <div className="border rounded-lg overflow-hidden bg-background">
+                                    <div className="p-4 bg-secondary/30">
+                                         <h3 className="text-lg font-bold font-headline">{checklist.title}</h3>
+                                    </div>
+                                    <Table className="text-xs">
                                         <TableHeader className="bg-primary/5">
-                                            <TableRow className="border-b-0">
-                                                <TableHead className="text-primary font-bold p-2 text-lg" colSpan={5}>
-                                                     {checklist.title}
-                                                </TableHead>
-                                            </TableRow>
-                                            <TableRow>
-                                                <TableHead className="text-primary font-bold p-2" colSpan={5}>
+                                             <TableRow className="border-b-0">
+                                                <TableHead className="p-2 text-primary/80 font-bold" colSpan={5}>
                                                     <div className="flex justify-between items-center text-xs">
-                                                    <span><strong>Dept:</strong> {checklist.department}</span>
-                                                    <span><strong>Freq:</strong> {checklist.frequency}</span>
-                                                    <span><strong>Role:</strong> {checklist.role}</span>
+                                                        <span><strong>Dept:</strong> {checklist.department}</span>
+                                                        <span><strong>Freq:</strong> {checklist.frequency}</span>
+                                                        <span><strong>Role:</strong> {checklist.role}</span>
                                                     </div>
                                                 </TableHead>
                                             </TableRow>
@@ -224,7 +222,6 @@ const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
     const handleFreeDownload = (e: React.FormEvent) => {
         e.preventDefault();
         
-        // Basic email validation
         if (!email || !/\S+@\S+\.\S+/.test(email)) {
             toast({
                 variant: "destructive",
@@ -234,11 +231,56 @@ const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
             return;
         }
 
-        // In a real app, you'd send this email to a service.
-        // For now, we'll just trigger the download.
-        
         const workbook = utils.book_new();
         const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } } };
+
+        const coverPageName = "Cover Page";
+        const footerText = "Provided by MoreMeets | www.moremeets.com";
+
+        const coverPageHeader = [pack.title];
+        const coverPageData = [
+            [" "],
+            ["Click to navigate:"],
+            ["Checklist Title", "Department", "Frequency", "Role"],
+            ...pack.checklists.map((checklist) => {
+                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+                return [
+                    { v: checklist.title, f: formula },
+                    checklist.department,
+                    checklist.frequency,
+                    checklist.role
+                ];
+            }),
+            [" "], 
+            [footerText] 
+        ];
+
+        const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
+        coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
+        
+        coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
+        
+        ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
+            if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
+        });
+
+        const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
+        for (let R = 4; R < rangeLinks.e.r -1; ++R) { 
+            const address = utils.encode_cell({ r: R, c: 0 });
+            if (coverWorksheet[address] && coverWorksheet[address].f) {
+                coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+            }
+        }
+        
+        const footerRowIndex = rangeLinks.e.r;
+        const footerCellAddress = `A${footerRowIndex + 1}`;
+        if (coverWorksheet[footerCellAddress]) {
+            coverWorksheet[footerCellAddress].s = { font: { italic: true, sz: 10 } };
+        }
+        
+        utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
+        
         pack.checklists.forEach(checklist => addChecklistSheet(workbook, checklist, headerStyle));
         const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
         writeFile(workbook, fileName);
@@ -437,8 +479,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
                     {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
+                    {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
                 </div>
 
 
@@ -473,6 +515,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-
-    
