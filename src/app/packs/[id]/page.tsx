@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -264,41 +264,24 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                        What's Included: A Complete Operational Toolkit
+                        A Complete System for Operational Excellence
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        This pack contains {pack.checklists.length} professional checklists, covering every aspect of your operation with over {totalTasks} detailed tasks.
+                        This pack contains <span className="font-bold text-primary">{pack.checklists.length} professional checklists</span> covering every aspect of your operation with over <span className="font-bold text-primary">{totalTasks}+ detailed tasks</span>. Instead of just lists, you get actionable SOPs covering:
                     </p>
                 </div>
 
-                <div className="space-y-4 max-w-4xl mx-auto">
-                     <Accordion type="multiple" className="w-full space-y-4">
-                        {pack.checklists.map((checklist, index) => (
-                            <AccordionItem key={index} value={`item-${index}`} className="border-b-0">
-                                <Card className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
-                                    <AccordionTrigger className="w-full hover:no-underline">
-                                        <CardHeader className="flex flex-row items-center gap-4 bg-muted/30 p-4 text-left w-full">
-                                            <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                                                {React.cloneElement(checklist.icon, { className: "w-5 h-5 md:w-6 md:h-6 text-primary" })}
-                                            </div>
-                                            <div>
-                                                <CardTitle className='text-base md:text-lg'>{checklist.title}</CardTitle>
-                                                <CardDescription className="text-xs md:text-sm">
-                                                    <strong>Dept:</strong> {checklist.department} | <strong>Freq:</strong> {checklist.frequency}
-                                                </CardDescription>
-                                            </div>
-                                        </CardHeader>
-                                    </AccordionTrigger>
-                                    <AccordionContent>
-                                        <CardContent className="p-6 text-sm">
-                                            <p className="text-muted-foreground">{checklist.summary}</p>
-                                            <h3 className="font-semibold text-primary/80 mt-2 text-xs md:text-sm">Contains {checklist.tasks.length} detailed tasks.</h3>
-                                        </CardContent>
-                                    </AccordionContent>
-                                </Card>
-                            </AccordionItem>
+                <div className="max-w-4xl mx-auto space-y-4">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                        {pack.sampleItems.map((item, index) => (
+                            <li key={index} className="flex items-start gap-3">
+                                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 mt-1 shrink-0">
+                                    <Check className="h-4 w-4 text-green-600" />
+                                </span>
+                                <span className="text-muted-foreground text-sm md:text-base" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                            </li>
                         ))}
-                    </Accordion>
+                    </ul>
                 </div>
             </div>
         </section>

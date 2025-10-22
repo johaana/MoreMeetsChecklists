@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -88,128 +89,86 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="max-w-6xl">
-                 <Tabs defaultValue="sample" className="w-full">
-                    <AlertDialogHeader>
-                        <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between">
-                             <AlertDialogTitle className="font-headline flex items-start gap-4">
-                                <div className="flex items-center gap-3">
-                                {React.cloneElement(pack.icon, { className: 'w-6 h-6 text-accent' })}
-                                    <span>{pack.title} Preview</span>
-                                </div>
-                            </AlertDialogTitle>
-                            <TabsList className="grid grid-cols-2 max-w-sm mt-2 sm:mt-0">
-                                <TabsTrigger value="sample">Sample Checklist</TabsTrigger>
-                                <TabsTrigger value="contents">Full Pack Contents</TabsTrigger>
-                            </TabsList>
+                 <AlertDialogHeader>
+                    <AlertDialogTitle className="font-headline flex items-start gap-4">
+                        <div className="flex items-center gap-3">
+                        {React.cloneElement(pack.icon, { className: 'w-6 h-6 text-accent' })}
+                            <span>{pack.title} Preview</span>
                         </div>
-                    </AlertDialogHeader>
-                    <TabsContent value="sample">
-                        <AlertDialogDescription className="text-left pt-2">
-                             This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file will contain all checklists as separate, fully editable tabs.
-                        </AlertDialogDescription>
-                        <ScrollArea className="max-h-[50vh] pr-6 mt-4">
-                            <TooltipProvider>
-                                <div className="border rounded-lg overflow-hidden bg-background">
-                                    <div className="p-4 bg-secondary/30">
-                                         <h3 className="text-lg font-bold font-headline">{checklist.title}</h3>
-                                    </div>
-                                    <Table className="text-xs border-t">
-                                         <TableHeader>
-                                             <TableRow className="bg-primary/5 border-b-0">
-                                                <TableHead className="p-2 text-primary/80 font-bold" colSpan={5}>
-                                                    <div className="flex justify-between items-center text-xs">
-                                                        <span><strong>Dept:</strong> {checklist.department}</span>
-                                                        <span><strong>Freq:</strong> {checklist.frequency}</span>
-                                                        <span><strong>Role:</strong> {checklist.role}</span>
-                                                    </div>
-                                                </TableHead>
-                                            </TableRow>
-                                            <TableRow className="bg-primary/10">
-                                                <TableHead className="w-[100px] p-2 text-primary font-bold">Task ID</TableHead>
-                                                <TableHead className="w-[40%] p-2 text-primary font-bold">Task Description</TableHead>
-                                                <TableHead className="p-2 text-primary font-bold">Priority</TableHead>
-                                                <TableHead className="p-2 text-primary font-bold">Risk Level</TableHead>
-                                                <TableHead className="p-2 text-primary font-bold">Proof / Evidence</TableHead>
-                                            </TableRow>
-                                        </TableHeader>
-                                        <TableBody>
-                                            {checklist.tasks.slice(0, 5).map((task) => (
-                                                <TableRow key={task.id} className="border-t">
-                                                    <TableCell className="p-2 font-mono">{task.id}</TableCell>
-                                                    <TableCell className="p-2 font-medium">
-                                                        <div className="flex items-start gap-2">
-                                                            <span>{task.description}</span>
-                                                            {task.consequence && (
-                                                                <Tooltip>
-                                                                    <TooltipTrigger asChild><Info className="w-3.5 h-3.5 text-muted-foreground hover:text-accent cursor-pointer shrink-0"/></TooltipTrigger>
-                                                                    <TooltipContent className="max-w-xs">
-                                                                        <p className='font-bold text-accent'>Why it matters:</p>
-                                                                        <p>{task.consequence}</p>
-                                                                    </TooltipContent>
-                                                                </Tooltip>
-                                                            )}
-                                                        </div>
-                                                    </TableCell>
-                                                    <TableCell className="p-2">
-                                                        <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
-                                                            {task.priority}
-                                                        </Badge>
-                                                    </TableCell>
-                                                    <TableCell className="p-2">
-                                                        <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
-                                                            {task.riskLevel}
-                                                        </Badge>
-                                                    </TableCell>
-                                                    <TableCell className="p-2 text-muted-foreground">{task.proof}</TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </div>
-                            </TooltipProvider>
-                        </ScrollArea>
-                        {remainingTasks > 0 && (
-                            <div className="text-center text-sm text-muted-foreground p-3 bg-secondary/50 rounded-md mt-4">
-                                ...and <strong>{remainingTasks} more</strong> detailed tasks in this checklist.
+                    </AlertDialogTitle>
+                </AlertDialogHeader>
+                <AlertDialogDescription className="text-left pt-2">
+                        This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file will contain all checklists as separate, fully editable tabs.
+                </AlertDialogDescription>
+                <ScrollArea className="max-h-[50vh] pr-6 mt-4">
+                    <TooltipProvider>
+                        <div className="border rounded-lg overflow-hidden bg-background">
+                            <div className="p-4 bg-secondary/30">
+                                    <h3 className="text-lg font-bold font-headline">{checklist.title}</h3>
                             </div>
-                        )}
-                        <AlertDialogFooter className="pt-4">
-                             <AlertDialogCancel>Close Preview</AlertDialogCancel>
-                         </AlertDialogFooter>
-                    </TabsContent>
-                     <TabsContent value="contents">
-                         <AlertDialogDescription className="text-left pt-2">
-                            The final Excel file includes a hyperlinked cover page for easy navigation between checklists. This preview shows the full contents of the pack.
-                        </AlertDialogDescription>
-                         <ScrollArea className="max-h-[50vh] pr-6 mt-4">
-                             <div className="border rounded-lg overflow-hidden">
-                                <Table>
-                                    <TableHeader className="bg-primary/10">
-                                        <TableRow>
-                                            <TableHead className="w-[50%] text-primary font-bold p-2">Checklist Title</TableHead>
-                                            <TableHead className="text-primary font-bold p-2">Department</TableHead>
-                                            <TableHead className="text-primary font-bold p-2">Frequency</TableHead>
-                                            <TableHead className="text-primary font-bold p-2">Role</TableHead>
+                            <Table className="text-xs border-t">
+                                    <TableHeader>
+                                        <TableRow className="bg-primary/5 border-b-0">
+                                        <TableHead className="p-2 text-primary/80 font-bold" colSpan={5}>
+                                            <div className="flex justify-between items-center text-xs">
+                                                <span><strong>Dept:</strong> {checklist.department}</span>
+                                                <span><strong>Freq:</strong> {checklist.frequency}</span>
+                                                <span><strong>Role:</strong> {checklist.role}</span>
+                                            </div>
+                                        </TableHead>
+                                    </TableRow>
+                                    <TableRow className="bg-primary/10">
+                                        <TableHead className="w-[100px] p-2 text-primary font-bold">Task ID</TableHead>
+                                        <TableHead className="w-[40%] p-2 text-primary font-bold">Task Description</TableHead>
+                                        <TableHead className="p-2 text-primary font-bold">Priority</TableHead>
+                                        <TableHead className="p-2 text-primary font-bold">Risk Level</TableHead>
+                                        <TableHead className="p-2 text-primary font-bold">Proof / Evidence</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {checklist.tasks.slice(0, 5).map((task) => (
+                                        <TableRow key={task.id} className="border-t">
+                                            <TableCell className="p-2 font-mono">{task.id}</TableCell>
+                                            <TableCell className="p-2 font-medium">
+                                                <div className="flex items-start gap-2">
+                                                    <span>{task.description}</span>
+                                                    {task.consequence && (
+                                                        <Tooltip>
+                                                            <TooltipTrigger asChild><Info className="w-3.5 h-3.5 text-muted-foreground hover:text-accent cursor-pointer shrink-0"/></TooltipTrigger>
+                                                            <TooltipContent className="max-w-xs">
+                                                                <p className='font-bold text-accent'>Why it matters:</p>
+                                                                <p>{task.consequence}</p>
+                                                            </TooltipContent>
+                                                        </Tooltip>
+                                                    )}
+                                                </div>
+                                            </TableCell>
+                                            <TableCell className="p-2">
+                                                <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
+                                                    {task.priority}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell className="p-2">
+                                                <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
+                                                    {task.riskLevel}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell className="p-2 text-muted-foreground">{task.proof}</TableCell>
                                         </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {pack.checklists.map((c, index) => (
-                                            <TableRow key={index} className="border-t">
-                                                <TableCell className="font-medium text-blue-600 dark:text-blue-400 cursor-pointer hover:underline text-sm p-2">{c.title}</TableCell>
-                                                <TableCell className="text-muted-foreground text-xs p-2">{c.department}</TableCell>
-                                                <TableCell className="text-muted-foreground text-xs p-2">{c.frequency}</TableCell>
-                                                <TableCell className="text-muted-foreground text-xs p-2">{c.role}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </ScrollArea>
-                        <AlertDialogFooter className="pt-4">
-                             <AlertDialogCancel>Close Preview</AlertDialogCancel>
-                         </AlertDialogFooter>
-                     </TabsContent>
-                </Tabs>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </div>
+                    </TooltipProvider>
+                </ScrollArea>
+                {remainingTasks > 0 && (
+                    <div className="text-center text-sm text-muted-foreground p-3 bg-secondary/50 rounded-md mt-4">
+                        This is a sample of the full checklist, which contains <strong>{remainingTasks} more</strong> detailed tasks.
+                    </div>
+                )}
+                <AlertDialogFooter className="pt-4">
+                        <AlertDialogCancel>Close Preview</AlertDialogCancel>
+                    </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
     );
