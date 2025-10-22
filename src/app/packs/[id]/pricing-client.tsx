@@ -141,8 +141,8 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                         </div>
                         <Badge variant="secondary" className="ml-auto">DEMO</Badge>
                     </AlertDialogTitle>
-                     <AlertDialogDescription className="text-left pt-2 space-y-1">
-                        <div><strong>Department:</strong> {checklist.department} | <strong>Frequency:</strong> {checklist.frequency} | <strong>Role:</strong> {checklist.role}</div>
+                     <AlertDialogDescription className="text-left pt-2 space-y-1 text-xs">
+                        <div className="font-semibold"><strong>Department:</strong> {checklist.department} | <strong>Frequency:</strong> {checklist.frequency} | <strong>Role:</strong> {checklist.role}</div>
                         <div>{checklist.summary}</div>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
