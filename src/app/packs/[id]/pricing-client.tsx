@@ -132,7 +132,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full">
+                <Button variant="secondary" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
@@ -225,22 +225,26 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                     </TabsContent>
                      <TabsContent value="contents">
                          <AlertDialogDescription className="text-left pt-2">
-                            This pack contains the following {pack.checklists.length} checklists.
+                            The final Excel file includes a hyperlinked cover page like this for easy navigation between checklists.
                         </AlertDialogDescription>
                          <ScrollArea className="max-h-[50vh] pr-6 mt-4">
                              <div className="border rounded-lg overflow-hidden">
                                 <Table>
-                                    <TableHeader>
+                                    <TableHeader className="bg-primary/5">
                                         <TableRow>
-                                            <TableHead>Checklist Title</TableHead>
-                                            <TableHead>Department</TableHead>
+                                            <TableHead className="w-[50%] text-primary">Checklist Title</TableHead>
+                                            <TableHead className="text-primary">Department</TableHead>
+                                            <TableHead className="text-primary">Frequency</TableHead>
+                                            <TableHead className="text-primary">Role</TableHead>
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
                                         {pack.checklists.map((c, index) => (
                                             <TableRow key={index}>
-                                                <TableCell className="font-medium text-sm">{c.title}</TableCell>
+                                                <TableCell className="font-medium text-blue-600 dark:text-blue-400 cursor-pointer hover:underline text-sm">{c.title}</TableCell>
                                                 <TableCell className="text-muted-foreground text-xs">{c.department}</TableCell>
+                                                <TableCell className="text-muted-foreground text-xs">{c.frequency}</TableCell>
+                                                <TableCell className="text-muted-foreground text-xs">{c.role}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
