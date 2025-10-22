@@ -27,7 +27,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="accent" className="w-full">
+                 <Button variant="accent" className="w-full">
                     <Eye className="w-4 h-4 mr-2" />
                     Preview a Real-World Scenario
                 </Button>
@@ -90,26 +90,26 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
             </AlertDialogTrigger>
             <AlertDialogContent className="max-w-6xl">
                  <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline flex items-start gap-4">
-                        <div className="flex items-center gap-3">
-                        {React.cloneElement(pack.icon, { className: 'w-6 h-6 text-accent' })}
-                            <span>{pack.title} Preview</span>
-                        </div>
+                    <AlertDialogTitle className="font-headline flex items-start gap-4 text-2xl">
+                       <div className="p-2 bg-primary/10 rounded-md">
+                         {React.cloneElement(pack.icon, { className: 'w-6 h-6 text-primary' })}
+                       </div>
+                        <span>Sample Preview: {pack.title}</span>
                     </AlertDialogTitle>
                 </AlertDialogHeader>
-                <AlertDialogDescription className="text-left pt-2">
-                        This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file will contain all checklists as separate, fully editable tabs.
+                <AlertDialogDescription className="text-left pt-2 text-base">
+                    This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file is a fully editable tool and includes additional columns like <strong>'Assigned To' and 'Notes'</strong> for your team to use.
                 </AlertDialogDescription>
                 <ScrollArea className="max-h-[50vh] pr-6 mt-4">
                     <TooltipProvider>
                         <div className="border rounded-lg overflow-hidden bg-background">
-                            <div className="p-4 bg-secondary/30">
-                                    <h3 className="text-lg font-bold font-headline">{checklist.title}</h3>
+                            <div className="p-4 bg-secondary/50">
+                                    <h3 className="text-xl font-bold font-headline">{checklist.title}</h3>
                             </div>
-                            <Table className="text-xs border-t">
-                                    <TableHeader>
-                                        <TableRow className="bg-primary/5 border-b-0">
-                                        <TableHead className="p-2 text-primary/80 font-bold" colSpan={5}>
+                            <Table className="text-sm border-t">
+                                     <TableHeader>
+                                    <TableRow className="bg-primary/5 border-b-0">
+                                        <TableHead className="p-2 text-primary/80 font-bold" colSpan={6}>
                                             <div className="flex justify-between items-center text-xs">
                                                 <span><strong>Dept:</strong> {checklist.department}</span>
                                                 <span><strong>Freq:</strong> {checklist.frequency}</span>
@@ -123,6 +123,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                         <TableHead className="p-2 text-primary font-bold">Priority</TableHead>
                                         <TableHead className="p-2 text-primary font-bold">Risk Level</TableHead>
                                         <TableHead className="p-2 text-primary font-bold">Proof / Evidence</TableHead>
+                                        <TableHead className="p-2 text-primary font-bold">Status</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
@@ -154,6 +155,9 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="p-2 text-muted-foreground">{task.proof}</TableCell>
+                                            <TableCell className="p-2">
+                                                <Badge variant="outline">Pending</Badge>
+                                            </TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
@@ -439,7 +443,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
+                     {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
                     {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
                 </div>
 
