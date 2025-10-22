@@ -19,65 +19,13 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 
-function handleDemoDownload (checklist: PackChecklist) {
-    if (!checklist) {
-        alert("Could not find the checklist data. Please contact support.");
-        return;
-    }
-    
-    const workbook = utils.book_new();
-    const headerStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" } },
-        fill: { fgColor: { rgb: "0A2540" } }
-    };
-    
-    const checklistHeaders = [
-        'Task ID', 'Task Description', 'Priority', 'Risk Level', 
-        'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-    ];
-    
-    const tasksForSheet = checklist.tasks.map(task => [
-        task.id,
-        task.description,
-        task.priority,
-        task.riskLevel,
-        task.proof,
-        'Pending',
-        '',
-        ''
-    ]);
-
-    const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-    const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-    
-    worksheet['!cols'] = [
-        { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-        { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-    ];
-
-     const headerRange = utils.decode_range(worksheet['!ref']!);
-     for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-        const address = utils.encode_cell({ r: 0, c: C });
-        if(worksheet[address]) {
-            worksheet[address].s = headerStyle;
-        }
-     }
-     worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
-    const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-    utils.book_append_sheet(workbook, worksheet, sheetName);
-
-    const fileName = checklist.title.replace(/ /g, '_') + '_DEMO.xlsx';
-    writeFile(workbook, fileName);
-};
-
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
 
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full">
+                <Button variant="secondary" className="w-full">
                     <Eye className="w-4 h-4 mr-2" />
                     Preview a Real-World Scenario
                 </Button>
@@ -128,11 +76,12 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
 function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     const checklist = pack.checklists[0];
     if (!checklist) return null;
+    const remainingTasks = checklist.tasks.length > 5 ? checklist.tasks.length - 5 : 0;
 
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="secondary" className="w-full">
+                <Button variant="accent" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
@@ -162,6 +111,11 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                 <div className="border rounded-lg overflow-hidden">
                                     <Table className="bg-background text-xs">
                                         <TableHeader className="bg-primary/5">
+                                            <TableRow className="border-b-0">
+                                                <TableHead className="text-primary font-bold p-2 text-lg" colSpan={5}>
+                                                     {checklist.title}
+                                                </TableHead>
+                                            </TableRow>
                                             <TableRow>
                                                 <TableHead className="text-primary font-bold p-2" colSpan={5}>
                                                     <div className="flex justify-between items-center text-xs">
@@ -215,13 +169,14 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </TooltipProvider>
                         </ScrollArea>
-                        <AlertDialogFooter className="sm:justify-between items-center pt-4">
-                            <Button onClick={() => handleDemoDownload(checklist)}>
-                                <Download className="mr-2 h-4 w-4" />
-                                Download DEMO .xlsx
-                            </Button>
-                            <AlertDialogCancel>Close Preview</AlertDialogCancel>
-                        </AlertDialogFooter>
+                        {remainingTasks > 0 && (
+                            <div className="text-center text-sm text-muted-foreground p-3 bg-secondary/50 rounded-md mt-4">
+                                ...and <strong>{remainingTasks} more</strong> detailed tasks in this checklist.
+                            </div>
+                        )}
+                        <AlertDialogFooter className="pt-4">
+                             <AlertDialogCancel>Close Preview</AlertDialogCancel>
+                         </AlertDialogFooter>
                     </TabsContent>
                      <TabsContent value="contents">
                          <AlertDialogDescription className="text-left pt-2">
@@ -482,8 +437,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
                     {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
+                    {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
                 </div>
 
 
@@ -518,3 +473,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+
+    
