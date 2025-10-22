@@ -141,9 +141,8 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                         </div>
                         <Badge variant="secondary" className="ml-auto">DEMO</Badge>
                     </AlertDialogTitle>
-                     <AlertDialogDescription className="text-left pt-2 space-y-1 text-xs">
-                        <div className="font-semibold"><strong>Department:</strong> {checklist.department} | <strong>Frequency:</strong> {checklist.frequency} | <strong>Role:</strong> {checklist.role}</div>
-                        <div>{checklist.summary}</div>
+                     <AlertDialogDescription className="text-left pt-2">
+                        {checklist.summary}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <ScrollArea className="max-h-[50vh] pr-6">
@@ -154,7 +153,16 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                         <Table className="bg-background">
                             <TableHeader className="bg-primary/5">
                                 <TableRow>
-                                    <TableHead className="w-[100px] text-primary font-bold">Task ID</TableHead>
+                                    <TableHead className="text-primary font-bold" colSpan={5}>
+                                        <div className="flex justify-between items-center text-xs">
+                                           <span><strong>Department:</strong> {checklist.department}</span>
+                                           <span><strong>Frequency:</strong> {checklist.frequency}</span>
+                                           <span><strong>Role:</strong> {checklist.role}</span>
+                                        </div>
+                                    </TableHead>
+                                </TableRow>
+                                <TableRow>
+                                    <TableHead className="w-[120px] text-primary font-bold">Task ID</TableHead>
                                     <TableHead className="w-[40%] text-primary font-bold">Task Description</TableHead>
                                     <TableHead className="text-primary font-bold">Priority</TableHead>
                                     <TableHead className="text-primary font-bold">Risk Level</TableHead>
@@ -165,7 +173,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                 {checklist.tasks.slice(0, 5).map((task) => (
                                     <TableRow key={task.id}>
                                         <TableCell className="font-mono text-xs">{task.id}</TableCell>
-                                        <TableCell className="font-medium">{task.description}</TableCell>
+                                        <TableCell className="font-medium text-sm">{task.description}</TableCell>
                                         <TableCell>
                                             <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
                                                 {task.priority}
