@@ -6,13 +6,18 @@ import type { PremiumPack, Checklist as PackChecklist } from '@/lib/premium-pack
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo, Info } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { writeFile, utils } from 'xlsx-js-style';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 function handleDemoDownload (checklist: PackChecklist) {
     if (!checklist) {
@@ -133,75 +138,222 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="max-w-6xl">
-                <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline flex items-start gap-4">
-                        <div className="flex items-center gap-3">
-                         {React.cloneElement(checklist.icon, { className: 'w-6 h-6 text-accent' })}
-                            <span>Sample: {checklist.title}</span>
+                 <Tabs defaultValue="sample" className="w-full">
+                    <AlertDialogHeader>
+                        <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between">
+                            <AlertDialogTitle className="font-headline flex items-start gap-4">
+                                <div className="flex items-center gap-3">
+                                {React.cloneElement(checklist.icon, { className: 'w-6 h-6 text-accent' })}
+                                    <span>{pack.title} Preview</span>
+                                </div>
+                            </AlertDialogTitle>
+                            <TabsList className="grid grid-cols-2 max-w-sm mt-2 sm:mt-0">
+                                <TabsTrigger value="sample">Sample Checklist</TabsTrigger>
+                                <TabsTrigger value="contents">Full Pack Contents</TabsTrigger>
+                            </TabsList>
                         </div>
-                        <Badge variant="secondary" className="ml-auto">DEMO</Badge>
-                    </AlertDialogTitle>
-                     <AlertDialogDescription className="text-left pt-2">
-                        {checklist.summary}
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <ScrollArea className="max-h-[50vh] pr-6">
-                    <div className="text-sm text-muted-foreground mt-2 mb-4">
-                        This is a preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file will contain all checklists as separate, fully editable tabs.
-                    </div>
-                    <div className="border rounded-lg overflow-hidden">
-                        <Table className="bg-background">
-                            <TableHeader className="bg-primary/5">
-                                <TableRow>
-                                    <TableHead className="text-primary font-bold" colSpan={5}>
-                                        <div className="flex justify-between items-center text-xs">
-                                           <span><strong>Department:</strong> {checklist.department}</span>
-                                           <span><strong>Frequency:</strong> {checklist.frequency}</span>
-                                           <span><strong>Role:</strong> {checklist.role}</span>
-                                        </div>
-                                    </TableHead>
-                                </TableRow>
-                                <TableRow>
-                                    <TableHead className="w-[120px] text-primary font-bold">Task ID</TableHead>
-                                    <TableHead className="w-[40%] text-primary font-bold">Task Description</TableHead>
-                                    <TableHead className="text-primary font-bold">Priority</TableHead>
-                                    <TableHead className="text-primary font-bold">Risk Level</TableHead>
-                                    <TableHead className="text-primary font-bold">Proof / Evidence</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {checklist.tasks.slice(0, 5).map((task) => (
-                                    <TableRow key={task.id}>
-                                        <TableCell className="font-mono text-xs">{task.id}</TableCell>
-                                        <TableCell className="font-medium text-sm">{task.description}</TableCell>
-                                        <TableCell>
-                                            <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
-                                                {task.priority}
-                                            </Badge>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
-                                                {task.riskLevel}
-                                            </Badge>
-                                        </TableCell>
-                                        <TableCell className="text-muted-foreground text-xs">{task.proof}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                </ScrollArea>
-                <AlertDialogFooter className="sm:justify-between items-center pt-4">
-                    <Button onClick={() => handleDemoDownload(checklist)}>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download DEMO .xlsx
-                    </Button>
-                    <AlertDialogCancel>Close Preview</AlertDialogCancel>
-                </AlertDialogFooter>
+                    </AlertDialogHeader>
+                    <TabsContent value="sample">
+                        <AlertDialogDescription className="text-left pt-2">
+                             This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file will contain all checklists as separate, fully editable tabs.
+                        </AlertDialogDescription>
+                        <ScrollArea className="max-h-[50vh] pr-6 mt-4">
+                            <TooltipProvider>
+                                <div className="border rounded-lg overflow-hidden">
+                                    <Table className="bg-background text-xs">
+                                        <TableHeader className="bg-primary/5">
+                                            <TableRow>
+                                                <TableHead className="text-primary font-bold p-2" colSpan={5}>
+                                                    <div className="flex justify-between items-center text-xs">
+                                                    <span><strong>Dept:</strong> {checklist.department}</span>
+                                                    <span><strong>Freq:</strong> {checklist.frequency}</span>
+                                                    <span><strong>Role:</strong> {checklist.role}</span>
+                                                    </div>
+                                                </TableHead>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableHead className="w-[100px] p-2 text-primary font-bold">Task ID</TableHead>
+                                                <TableHead className="w-[40%] p-2 text-primary font-bold">Task Description</TableHead>
+                                                <TableHead className="p-2 text-primary font-bold">Priority</TableHead>
+                                                <TableHead className="p-2 text-primary font-bold">Risk Level</TableHead>
+                                                <TableHead className="p-2 text-primary font-bold">Proof / Evidence</TableHead>
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {checklist.tasks.slice(0, 5).map((task) => (
+                                                <TableRow key={task.id}>
+                                                    <TableCell className="p-2 font-mono">{task.id}</TableCell>
+                                                    <TableCell className="p-2 font-medium">
+                                                        <div className="flex items-start gap-2">
+                                                            <span>{task.description}</span>
+                                                            {task.consequence && (
+                                                                <Tooltip>
+                                                                    <TooltipTrigger asChild><Info className="w-3.5 h-3.5 text-muted-foreground hover:text-accent cursor-pointer shrink-0"/></TooltipTrigger>
+                                                                    <TooltipContent className="max-w-xs">
+                                                                        <p className='font-bold text-accent'>Why it matters:</p>
+                                                                        <p>{task.consequence}</p>
+                                                                    </TooltipContent>
+                                                                </Tooltip>
+                                                            )}
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className="p-2">
+                                                        <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
+                                                            {task.priority}
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="p-2">
+                                                        <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
+                                                            {task.riskLevel}
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="p-2 text-muted-foreground">{task.proof}</TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </div>
+                            </TooltipProvider>
+                        </ScrollArea>
+                        <AlertDialogFooter className="sm:justify-between items-center pt-4">
+                            <Button onClick={() => handleDemoDownload(checklist)}>
+                                <Download className="mr-2 h-4 w-4" />
+                                Download DEMO .xlsx
+                            </Button>
+                            <AlertDialogCancel>Close Preview</AlertDialogCancel>
+                        </AlertDialogFooter>
+                    </TabsContent>
+                     <TabsContent value="contents">
+                         <AlertDialogDescription className="text-left pt-2">
+                            This pack contains the following {pack.checklists.length} checklists.
+                        </AlertDialogDescription>
+                         <ScrollArea className="max-h-[50vh] pr-6 mt-4">
+                             <div className="border rounded-lg overflow-hidden">
+                                <Table>
+                                    <TableHeader>
+                                        <TableRow>
+                                            <TableHead>Checklist Title</TableHead>
+                                            <TableHead>Department</TableHead>
+                                        </TableRow>
+                                    </TableHeader>
+                                    <TableBody>
+                                        {pack.checklists.map((c, index) => (
+                                            <TableRow key={index}>
+                                                <TableCell className="font-medium text-sm">{c.title}</TableCell>
+                                                <TableCell className="text-muted-foreground text-xs">{c.department}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </div>
+                        </ScrollArea>
+                        <AlertDialogFooter className="pt-4">
+                             <AlertDialogCancel>Close Preview</AlertDialogCancel>
+                         </AlertDialogFooter>
+                     </TabsContent>
+                </Tabs>
             </AlertDialogContent>
         </AlertDialog>
     );
 }
+
+const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
+    const { toast } = useToast();
+    const [email, setEmail] = React.useState('');
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    const handleFreeDownload = (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        // Basic email validation
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            toast({
+                variant: "destructive",
+                title: "Invalid Email",
+                description: "Please enter a valid email address.",
+            });
+            return;
+        }
+
+        // In a real app, you'd send this email to a service.
+        // For now, we'll just trigger the download.
+        
+        const workbook = utils.book_new();
+        const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } } };
+        pack.checklists.forEach(checklist => addChecklistSheet(workbook, checklist, headerStyle));
+        const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
+        writeFile(workbook, fileName);
+        
+        toast({
+            title: "Download Started!",
+            description: `The complete "${pack.title}" pack is being downloaded.`,
+        });
+
+        setIsOpen(false);
+    };
+
+    const addChecklistSheet = (workbook: any, checklist: PackChecklist, headerStyle: any) => {
+        const checklistHeaders = ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Status', 'Assigned To', 'Notes'];
+        const tasksForSheet = checklist.tasks.map(task => [task.id, task.description, task.priority, task.riskLevel, task.proof, 'Pending', '', '']);
+        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+        worksheet['!cols'] = [{ wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }];
+        const headerRange = utils.decode_range(worksheet['!ref']!);
+        for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+            const address = utils.encode_cell({ r: 0, c: C });
+            if(worksheet[address]) {
+                worksheet[address].s = headerStyle;
+            }
+        }
+        worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+        utils.book_append_sheet(workbook, worksheet, sheetName);
+    };
+
+    return (
+        <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+            <AlertDialogTrigger asChild>
+                <Button size="lg" className="w-full" variant="accent">
+                    <Download className="mr-2 h-5 w-5" />
+                    Download Now
+                </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>Get Your Free Pack</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        Enter your email address to receive the download link for the complete "{pack.title}" pack.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <form onSubmit={handleFreeDownload}>
+                    <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="email" className="text-right">
+                                Email
+                            </Label>
+                            <Input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="col-span-3"
+                                placeholder="you@example.com"
+                            />
+                        </div>
+                    </div>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <Button type="submit">
+                           <Download className="mr-2 h-4 w-4" />
+                           Download for Free
+                        </Button>
+                    </AlertDialogFooter>
+                </form>
+            </AlertDialogContent>
+        </AlertDialog>
+    );
+};
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const professionalPrice = 7999;
@@ -219,14 +371,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <Card className="shadow-2xl border-2 border-primary/20">
                             <CardHeader className="text-center pb-4">
                                 <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
-                                <CardDescription>This is a free community resource. Download it instantly.</CardDescription>
+                                <CardDescription>This is a free community resource. Enter your email to download it instantly.</CardDescription>
                             </CardHeader>
                             <CardContent className="text-center">
                                <p className="text-4xl font-extrabold mb-4">Free Download</p>
-                               <Button size="lg" className="w-full" onClick={() => handleDemoDownload(pack.checklists[0])}>
-                                 <Download className="mr-2 h-5 w-5" />
-                                 Download Now
-                               </Button>
+                               <FreeDownloadDialog pack={pack} />
                             </CardContent>
                              <CardFooter className="flex-col gap-2 pt-2 items-center">
                                 <p className="text-xs text-muted-foreground mt-2">Thank you for supporting animal welfare!</p>
