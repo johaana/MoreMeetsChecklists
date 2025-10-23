@@ -109,20 +109,11 @@ export default function AllPacksPage() {
                                 </ul>
                             </CardContent>
                              <CardFooter className="p-6 pt-2 mt-auto">
-                                {pack.priceINR > 0 ? (
-                                    <Button asChild className="w-full font-bold" variant="default">
-                                        <Link href={`/packs/${pack.id}`}>
-                                            View Full Checklist &amp; Purchase
-                                        </Link>
-                                    </Button>
-                                ) : (
-                                    <Button asChild className="w-full font-bold" variant="accent">
-                                        <Link href={`/packs/${pack.id}`}>
-                                            <Download className="mr-2 h-4 w-4"/>
-                                            Free Download
-                                        </Link>
-                                    </Button>
-                                )}
+                                <Button asChild className="w-full font-bold" variant="default">
+                                    <Link href={`/packs/${pack.id}`}>
+                                        View Full Checklist &amp; Purchase
+                                    </Link>
+                                </Button>
                             </CardFooter>
                         </Card>
                     ))}
