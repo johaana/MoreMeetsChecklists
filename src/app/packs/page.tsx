@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -35,9 +34,12 @@ const categoryColors: { [key: string]: string } = {
 
 export default function AllPacksPage() {
   const [filter, setFilter] = React.useState('All');
-  const categories = ['All', ...Array.from(new Set(premiumPacks.map(p => p.category)))];
+  
+  const visiblePacks = premiumPacks.filter(p => p.category !== "Free Resources");
+  
+  const categories = ['All', ...Array.from(new Set(visiblePacks.map(p => p.category)))];
 
-  const filteredPacks = filter === 'All' ? premiumPacks : premiumPacks.filter(p => p.category === filter);
+  const filteredPacks = filter === 'All' ? visiblePacks : visiblePacks.filter(p => p.category === filter);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
