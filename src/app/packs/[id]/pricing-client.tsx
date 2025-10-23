@@ -7,7 +7,7 @@ import type { PremiumPack, Checklist as PackChecklist } from '@/lib/premium-pack
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo, Info } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo, Info, Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -19,6 +19,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from '@/hooks/use-toast';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
+import { addContact } from '../actions';
+import { premiumPacks } from '@/lib/premium-packs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -83,7 +86,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="secondary" className="w-full">
+                 <Button variant="secondary" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
@@ -98,7 +101,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                     </AlertDialogTitle>
                 </AlertDialogHeader>
                 <AlertDialogDescription className="text-left pt-2 text-base">
-                    This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file is a fully editable tool and includes additional columns like <strong>'Assigned To' and 'Notes'</strong> for your team to use.
+                    This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file is a fully editable tool and includes additional columns like <strong>'Status', 'Assigned To', and 'Notes'</strong> for your team to use.
                 </AlertDialogDescription>
                 <ScrollArea className="max-h-[50vh] pr-6 mt-4">
                     <TooltipProvider>
@@ -180,101 +183,60 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
 
 const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
     const { toast } = useToast();
+    const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
+    const [company, setCompany] = React.useState('');
+    const [designation, setDesignation] = React.useState('');
+    const [isLoading, setIsLoading] = React.useState(false);
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const handleFreeDownload = (e: React.FormEvent) => {
+    const handleDownloadRequest = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        if (!name || !email || !/\S+@\S+\.\S+/.test(email) || !company || !designation) {
             toast({
                 variant: "destructive",
-                title: "Invalid Email",
-                description: "Please enter a valid email address.",
+                title: "Invalid Input",
+                description: "Please fill out all required fields.",
             });
             return;
         }
 
-        const workbook = utils.book_new();
-        const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } } };
+        setIsLoading(true);
 
-        const coverPageName = "Cover Page";
-        const footerText = "Provided by MoreMeets | www.moremeets.com";
+        try {
+            const result = await addContact({ 
+                name, 
+                email,
+                company,
+                designation,
+                packId: pack.id 
+            });
 
-        const coverPageHeader = [pack.title];
-        const coverPageData = [
-            [" "],
-            ["Click to navigate:"],
-            ["Checklist Title", "Department", "Frequency", "Role"],
-            ...pack.checklists.map((checklist) => {
-                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [
-                    { v: checklist.title, f: formula },
-                    checklist.department,
-                    checklist.frequency,
-                    checklist.role
-                ];
-            }),
-            [" "], 
-            [footerText] 
-        ];
-
-        const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
-        coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
-        
-        coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-        
-        ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-            if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-        });
-
-        const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-        for (let R = 4; R < rangeLinks.e.r -1; ++R) { 
-            const address = utils.encode_cell({ r: R, c: 0 });
-            if (coverWorksheet[address] && coverWorksheet[address].f) {
-                coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+            if (result.success) {
+                toast({
+                    title: "Success!",
+                    description: "Thank you! Your download link has been sent to your email address.",
+                });
+                setIsOpen(false);
+            } else {
+                 toast({
+                    variant: "destructive",
+                    title: "Submission Failed",
+                    description: result.error || "Could not add contact. Please try again.",
+                });
             }
+        } catch (error) {
+             toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "There was a problem with your request. Please try again later.",
+            });
+        } finally {
+            setIsLoading(false);
         }
-        
-        const footerRowIndex = rangeLinks.e.r;
-        const footerCellAddress = `A${footerRowIndex + 1}`;
-        if (coverWorksheet[footerCellAddress]) {
-            coverWorksheet[footerCellAddress].s = { font: { italic: true, sz: 10 } };
-        }
-        
-        utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
-        
-        pack.checklists.forEach(checklist => addChecklistSheet(workbook, checklist, headerStyle));
-        const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
-        writeFile(workbook, fileName);
-        
-        toast({
-            title: "Download Started!",
-            description: `The complete "${pack.title}" pack is being downloaded.`,
-        });
-
-        setIsOpen(false);
     };
-
-    const addChecklistSheet = (workbook: any, checklist: PackChecklist, headerStyle: any) => {
-        const checklistHeaders = ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Status', 'Assigned To', 'Notes'];
-        const tasksForSheet = checklist.tasks.map(task => [task.id, task.description, task.priority, task.riskLevel, task.proof, 'Pending', '', '']);
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-        worksheet['!cols'] = [{ wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }];
-        const headerRange = utils.decode_range(worksheet['!ref']!);
-        for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if(worksheet[address]) {
-                worksheet[address].s = headerStyle;
-            }
-        }
-        worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
-    };
-
+    
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
@@ -285,13 +247,26 @@ const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Get Your Free Pack</AlertDialogTitle>
+                    <AlertDialogTitle>Get Your Free {pack.title}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        Enter your email address to receive the download link for the complete "{pack.title}" pack.
+                        Enter your details below to receive the download link for the complete "{pack.title}" in your inbox.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
-                <form onSubmit={handleFreeDownload}>
+                <form onSubmit={handleDownloadRequest}>
                     <div className="grid gap-4 py-4">
+                         <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="name" className="text-right">
+                                Name
+                            </Label>
+                            <Input
+                                id="name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="col-span-3"
+                                placeholder="e.g. Jane Doe"
+                                required
+                            />
+                        </div>
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="email" className="text-right">
                                 Email
@@ -302,15 +277,46 @@ const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="col-span-3"
-                                placeholder="you@example.com"
+                                placeholder="you@company.com"
+                                required
                             />
+                        </div>
+                         <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="company" className="text-right">
+                                Company
+                            </Label>
+                            <Input
+                                id="company"
+                                value={company}
+                                onChange={(e) => setCompany(e.target.value)}
+                                className="col-span-3"
+                                placeholder="Your Company Name"
+                                required
+                            />
+                        </div>
+                         <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="designation" className="text-right">
+                                Designation
+                            </Label>
+                             <Select onValueChange={setDesignation} required>
+                                <SelectTrigger className="col-span-3">
+                                    <SelectValue placeholder="Select your role" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="Founder/CXO">Founder / CXO</SelectItem>
+                                    <SelectItem value="Manager/Director">Manager / Director</SelectItem>
+                                    <SelectItem value="Employee">Employee</SelectItem>
+                                    <SelectItem value="Student">Student</SelectItem>
+                                    <SelectItem value="Other">Other</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
                     </div>
                     <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <Button type="submit">
-                           <Download className="mr-2 h-4 w-4" />
-                           Download for Free
+                        <AlertDialogCancel disabled={isLoading}>Cancel</AlertDialogCancel>
+                        <Button type="submit" disabled={isLoading}>
+                           {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
+                           {isLoading ? 'Submitting...' : 'Get Download Link'}
                         </Button>
                     </AlertDialogFooter>
                 </form>
@@ -321,12 +327,6 @@ const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
 
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const professionalPrice = 7999;
-    const professionalPaymentId = 'pl_RMnYKoxjfq5XCx';
-
-    const personalizedPrice = 10999;
-    const personalizedStrikethroughPrice = 18999;
-    const personalizedPaymentId = "pl_RMncDLAlms69Pd";
     
     if (pack.priceINR <= 0) {
         return (
@@ -336,14 +336,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <Card className="shadow-2xl border-2 border-primary/20">
                             <CardHeader className="text-center pb-4">
                                 <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
-                                <CardDescription>This is a free community resource. Enter your email to download it instantly.</CardDescription>
+                                <CardDescription>This is a free community resource. Enter your details to receive the download link instantly via email.</CardDescription>
                             </CardHeader>
                             <CardContent className="text-center">
                                <p className="text-4xl font-extrabold mb-4">Free Download</p>
                                <FreeDownloadDialog pack={pack} />
                             </CardContent>
                              <CardFooter className="flex-col gap-2 pt-2 items-center">
-                                <p className="text-xs text-muted-foreground mt-2">Thank you for supporting animal welfare!</p>
+                                <p className="text-xs text-muted-foreground mt-2">Thank you for supporting our community initiatives!</p>
                              </CardFooter>
                         </Card>
                     </div>
@@ -360,87 +360,101 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
-                    {/* Professional Pack */}
-                    <Card className="flex flex-col">
-                        <CardHeader>
-                            <CardTitle>Professional Pack</CardTitle>
-                            <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-green-600/50 bg-green-500/10 text-green-800 dark:text-green-300 mt-2">
-                                <Landmark className="w-4 h-4" /> India Edition
-                            </Badge>
-                            <p className="text-4xl font-bold pt-4">₹{professionalPrice}</p>
-                            <CardDescription>Aligned with domestic standards (BIS, NABH, etc.)</CardDescription>
-                        </CardHeader>
-                        <CardContent className="flex-1">
-                            <ul className="space-y-3 text-muted-foreground text-sm">
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Complete checklist pack with {pack.checklists.length} checklists.</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Instant Excel download.</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Lifetime updates.</span></li>
-                            </ul>
-                        </CardContent>
-                        <CardFooter className="mt-auto">
-                            <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                                <RazorpayButton paymentId={professionalPaymentId} params={{ pack_id: pack.id }}/>
-                            </div>
-                        </CardFooter>
-                    </Card>
+                <Tabs defaultValue="inr" className="max-w-6xl mx-auto">
+                    <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto">
+                        <TabsTrigger value="inr">Pricing in INR (₹)</TabsTrigger>
+                        <TabsTrigger value="usd">Pricing in USD ($)</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="inr">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mt-6">
+                             <Card className="flex flex-col">
+                                <CardHeader>
+                                    <CardTitle>Professional Pack</CardTitle>
+                                    <CardDescription>The complete, expert-built checklist pack.</CardDescription>
+                                    <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
+                                </CardHeader>
+                                <CardContent className="flex-1">
+                                    <ul className="space-y-3 text-muted-foreground text-sm">
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                                    </ul>
+                                </CardContent>
+                                <CardFooter className="mt-auto">
+                                    <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
+                                        <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
+                                    </div>
+                                </CardFooter>
+                            </Card>
 
-                    {/* Personalized Pack */}
-                    <Card className="flex flex-col border-2 border-accent relative">
-                        <Badge variant="accent" className="absolute top-0 -translate-y-1/2 left-6 py-1 px-3 font-bold z-10 border-2 border-background">Best Value</Badge>
-                        <CardHeader>
-                            <CardTitle className="pt-2">Personalized Pack</CardTitle>
-                            <Badge variant="outline" className="w-fit font-bold flex items-center gap-1.5 border-blue-600/50 bg-blue-500/10 text-blue-800 dark:text-blue-300 mt-2">
-                                <Globe className="w-4 h-4" /> Global Edition
-                            </Badge>
-                                <div className="flex items-baseline gap-2 pt-4">
-                                <p className="text-4xl font-bold">₹{personalizedPrice}</p>
-                                <p className="text-xl font-medium text-muted-foreground line-through">₹{personalizedStrikethroughPrice}</p>
-                            </div>
-                                <CardDescription>Benchmarks against global standards (ISO, JCI, etc.)</CardDescription>
-                        </CardHeader>
-                        <CardContent className="flex-1">
-                                <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
-                                <ul className="space-y-3 text-muted-foreground text-sm">
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Global Compliance Checklists</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Priority Action Plan</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>30-Min Onboarding Call</span></li>
-                                </ul>
-                        </CardContent>
-                        <CardFooter className="mt-auto">
-                            <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                    <RazorpayButton paymentId={personalizedPaymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
-                            </div>
-                        </CardFooter>
-                    </Card>
-
-                    {/* Enterprise Pack */}
-                    <Card className="flex flex-col">
-                        <CardHeader>
-                            <CardTitle>Enterprise</CardTitle>
-                                <div className="pt-4 mt-9"> {/* Spacer to align with other cards */}
-                                <p className="text-4xl font-bold">Custom</p>
-                            </div>
-                            <CardDescription>A complete, done-for-you operational system.</CardDescription>
-                        </CardHeader>
-                        <CardContent className="flex-1">
-                                <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
-                                <ul className="space-y-3 text-muted-foreground text-sm">
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Full SOP Manual Creation</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Dedicated Account Manager</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Team Training & Onboarding</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-1 shrink-0 text-green-500"/><span>Bespoke Checklist Creation</span></li>
-                                </ul>
-                        </CardContent>
-                        <CardFooter className="mt-auto">
-                            <Button asChild className="w-full" variant="secondary">
-                                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                    Book a Discovery Call
-                                </Link>
-                            </Button>
-                        </CardFooter>
-                    </Card>
-                </div>
+                            <Card className="flex flex-col">
+                                <CardHeader>
+                                    <CardTitle>Enterprise</CardTitle>
+                                    <CardDescription>A complete, done-for-you operational system.</CardDescription>
+                                    <p className="text-4xl font-bold pt-4">Custom</p>
+                                </CardHeader>
+                                <CardContent className="flex-1">
+                                        <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
+                                        <ul className="space-y-3 text-muted-foreground text-sm">
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Bespoke Checklist Creation for Your Unique Needs</span></li>
+                                        </ul>
+                                </CardContent>
+                                <CardFooter className="mt-auto">
+                                    <Button asChild className="w-full" variant="secondary">
+                                        <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                            Book a Discovery Call
+                                        </Link>
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+                        </div>
+                    </TabsContent>
+                     <TabsContent value="usd">
+                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mt-6">
+                            <Card className="flex flex-col">
+                                <CardHeader>
+                                    <CardTitle>Professional Pack</CardTitle>
+                                    <CardDescription>The complete, expert-built checklist pack.</CardDescription>
+                                    <p className="text-4xl font-bold pt-4">${pack.priceUSD}</p>
+                                </CardHeader>
+                                <CardContent className="flex-1">
+                                    <ul className="space-y-3 text-muted-foreground text-sm">
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                                    </ul>
+                                </CardContent>
+                                <CardFooter className="mt-auto">
+                                    <Button asChild className="w-full"><Link href="https://buy.stripe.com/your-link" target="_blank">Buy Now (via Stripe)</Link></Button>
+                                </CardFooter>
+                            </Card>
+                            <Card className="flex flex-col">
+                                <CardHeader>
+                                    <CardTitle>Enterprise</CardTitle>
+                                    <CardDescription>A complete, done-for-you operational system.</CardDescription>
+                                    <p className="text-4xl font-bold pt-4">Custom</p>
+                                </CardHeader>
+                                <CardContent className="flex-1">
+                                    <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
+                                    <ul className="space-y-3 text-muted-foreground text-sm">
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Bespoke Checklist Creation for Your Unique Needs</span></li>
+                                    </ul>
+                                </CardContent>
+                                <CardFooter className="mt-auto">
+                                     <Button asChild className="w-full" variant="secondary">
+                                        <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                            Book a Discovery Call
+                                        </Link>
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+                        </div>
+                    </TabsContent>
+                </Tabs>
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                      {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
@@ -479,3 +493,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+  

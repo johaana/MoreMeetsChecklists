@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater, Search } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -38,7 +38,8 @@ export type PremiumPack = {
     priceUSD: number;
     priceINR: number;
     paymentId: string;
-    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production";
+    listId?: number; // Brevo List ID
+    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Free Resources";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -55,6 +56,104 @@ export type PremiumPack = {
 }
 
 export const premiumPacks: PremiumPack[] = [
+    {
+        id: 'business-safety-essentials-kit',
+        title: "Business Safety Essentials Kit",
+        priceUSD: 0,
+        priceINR: 0,
+        paymentId: '',
+        listId: 6,
+        category: "Free Resources",
+        description: "A free starter kit with 5 essential safety checklists that every business needs to ensure a safe and compliant workplace.",
+        icon: <ShieldCheck />,
+        badgeText: "Free Download",
+        badgeVariant: "accent",
+        whoIsItFor: ["Business Owners", "Office Managers", "HR Professionals", "Facility Managers"],
+        sampleItems: [
+            { text: "Monthly fire safety audit to prevent hazards.", icon: <Siren /> },
+            { text: "First-aid kit stocking and inspection log.", icon: <HeartPulse /> },
+            { text: "General workplace hazard inspection checklist.", icon: <Search /> },
+            { text: "Basic electrical safety checks for non-electricians.", icon: <Zap /> },
+            { text: "Visitor & contractor sign-in protocol for security.", icon: <UserCheck /> },
+        ],
+        checklists: [
+            {
+                title: "Monthly Fire Safety Audit",
+                department: "Safety",
+                frequency: "Monthly",
+                role: "Safety Officer",
+                icon: <Siren />,
+                summary: "A universal checklist to ensure your workplace is compliant with basic fire safety standards, covering extinguishers, exits, and alarms.",
+                tasks: [
+                    { id: 'FSA-01', description: 'Check that all fire extinguishers are in their designated locations and unobstructed.', priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation Log', location: 'All Areas' },
+                    { id: 'FSA-02', description: 'Inspect extinguisher pressure gauges to ensure they are in the green zone.', priority: 'High', riskLevel: 'High', proof: 'Gauge Photo Log', location: 'All Areas' },
+                    { id: 'FSA-03', description: 'Verify that all emergency exit paths and doorways are completely clear of obstructions.', priority: 'High', riskLevel: 'High', proof: 'Photo of Exit Paths', location: 'All Areas' },
+                    { id: 'FSA-04', description: 'Test smoke detectors and fire alarms to ensure they are functional.', priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Control Panel' },
+                    { id: 'FSA-05', description: 'Check that all emergency lighting fixtures illuminate when tested.', priority: 'High', riskLevel: 'High', proof: 'Lighting Test Log', location: 'All Areas' },
+                ]
+            },
+            {
+                title: "Workplace First-Aid Kit Checklist",
+                department: "HR/Admin",
+                frequency: "Monthly",
+                role: "Admin Manager",
+                icon: <HeartPulse />,
+                summary: "A checklist to ensure your workplace first-aid kit is always stocked, compliant, and ready for any minor medical incident.",
+                tasks: [
+                    { id: 'FAK-01', description: 'Check inventory of all items against the standard first-aid kit contents list.', priority: 'High', riskLevel: 'Medium', proof: 'Inventory Sheet', location: 'First-Aid Station' },
+                    { id: 'FAK-02', description: 'Check expiry dates of all medications and ointments (e.g., antiseptic wipes, pain relievers).', priority: 'High', riskLevel: 'Medium', proof: 'Expiry Date Log', location: 'First-Aid Station' },
+                    { id: 'FAK-03', description: 'Restock any used items (e.g., bandages, gauze, adhesive tape).', priority: 'High', riskLevel: 'Medium', proof: 'Restock Order Form', location: 'First-Aid Station' },
+                    { id: 'FAK-04', description: 'Ensure the first-aid kit is stored in a clearly marked and easily accessible location.', priority: 'High', riskLevel: 'Medium', proof: 'Location Photo', location: 'First-Aid Station' },
+                    { id: 'FAK-05', description: 'Verify the incident log book is present with the kit and has blank pages.', priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'First-Aid Station' },
+                ]
+            },
+            {
+                title: "General Workplace Hazard Inspection",
+                department: "Facilities/Safety",
+                frequency: "Weekly",
+                role: "Facility Manager",
+                icon: <Search />,
+                summary: "A weekly walk-around checklist to proactively identify and mitigate common workplace hazards before they cause an accident.",
+                tasks: [
+                    { id: 'GWH-01', description: 'Inspect all walkways and floors for trip hazards (e.g., loose cables, carpets, spills).', priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'All Areas' },
+                    { id: 'GWH-02', description: 'Check that heavy items are not stored on high shelves.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Photo', location: 'Storage Rooms' },
+                    { id: 'GWH-03', description: 'Ensure all areas are adequately lit.', priority: 'Medium', riskLevel: 'Medium', proof: 'Lighting Check Log', location: 'All Areas' },
+                    { id: 'GWH-04', description: 'Verify that all wet floor signs are available and in good condition.', priority: 'High', riskLevel: 'Medium', proof: 'Signage Check', location: 'Janitor Closet' },
+                    { id: 'GWH-05', description: 'Check that office furniture (chairs, desks) is stable and in good repair.', priority: 'Medium', riskLevel: 'Medium', proof: 'Furniture Audit', location: 'Office Areas' },
+                ]
+            },
+            {
+                title: "Basic Electrical Safety Checklist",
+                department: "Admin/Facilities",
+                frequency: "Monthly",
+                role: "Admin Supervisor",
+                icon: <Zap />,
+                summary: "A non-technical checklist to spot common electrical hazards that are a leading cause of workplace fires and accidents.",
+                tasks: [
+                    { id: 'BES-01', description: 'Inspect for any "daisy-chained" multi-plugs or extension cords plugged into other extension cords.', priority: 'High', riskLevel: 'High', proof: 'Photo of Violation', location: 'All Areas' },
+                    { id: 'BES-02', description: 'Check for any frayed, cracked, or damaged electrical cords on equipment.', priority: 'High', riskLevel: 'High', proof: 'Damage Report', location: 'All Areas' },
+                    { id: 'BES-03', description: 'Ensure electrical panels are unobstructed and easily accessible (at least 3 feet of clearance).', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Utility Areas' },
+                    { id: 'BES-04', description: 'Verify that no electrical cords are running under carpets or across doorways where they can be damaged.', priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'All Areas' },
+                    { id: 'BES-05', description: 'Report any outlets or switches that are hot to the touch to facility maintenance immediately.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Ticket', location: 'All Areas' },
+                ]
+            },
+            {
+                title: "Visitor & Contractor Sign-In Protocol",
+                department: "Security/Reception",
+                frequency: "Per Visitor",
+                role: "Receptionist",
+                icon: <UserCheck />,
+                summary: "A simple protocol to ensure every non-employee is accounted for, enhancing security and accountability.",
+                tasks: [
+                    { id: 'VCS-01', description: 'Ensure every visitor signs the logbook with their name, company, contact person, and time of entry.', priority: 'High', riskLevel: 'Medium', proof: 'Visitor Logbook', location: 'Reception' },
+                    { id: 'VCS-02', description: 'Issue a numbered visitor badge to every guest.', priority: 'High', riskLevel: 'Medium', proof: 'Badge Issue Log', location: 'Reception' },
+                    { id: 'VCS-03', description: 'Verify the identity of contractors against a pre-approved list from facility management.', priority: 'High', riskLevel: 'High', proof: 'Contractor Verification', location: 'Reception' },
+                    { id: 'VCS-04', description: 'Ensure every visitor is escorted by an employee or has their host notified.', priority: 'High', riskLevel: 'Medium', proof: 'Host Notification Log', location: 'Reception' },
+                    { id: 'VCS-05', description: 'Ensure every visitor signs out and returns their badge upon exiting.', priority: 'High', riskLevel: 'Medium', proof: 'Visitor Logbook', location: 'Reception' },
+                ]
+            }
+        ]
+    },
     // --- Hospitality ---
     {
         id: 'hotels_and_resorts',
@@ -70,12 +169,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "GMs", "VPs", "and their teams"],
         sampleItems: [
-            { text: "Daily Room Readiness and Housekeeping Verification.", icon: <Home /> },
-            { text: "Kitchen Hygiene (HACCP) & F&B Service Standards.", icon: <Utensils /> },
-            { text: "Pool & Spa Safety and Water Quality Logs.", icon: <LifeBuoy /> },
-            { text: "Fire Safety Audits & Evacuation Drill Management.", icon: <Siren /> },
-            { text: "Vendor Access Control & Work Permit SOPs.", icon: <HardHat /> },
-            { text: "Preventive Maintenance for HVAC, Lifts, and Generators.", icon: <Wrench /> }
+             { text: "Ensure flawless room presentation with daily readiness and housekeeping verification.", icon: <Home /> },
+             { text: "Uphold world-class food safety with kitchen hygiene (HACCP) and F&B service standards.", icon: <Utensils /> },
+             { text: "Mitigate water-related risks with pool & spa safety protocols and water quality logs.", icon: <LifeBuoy /> },
+             { text: "Guarantee guest and staff safety through rigorous fire safety audits and evacuation drills.", icon: <Siren /> },
+             { text: "Control site access and third-party risk with vendor and work permit SOPs.", icon: <HardHat /> },
+             { text: "Prevent costly downtime with a proactive preventive maintenance schedule for all critical assets.", icon: <Wrench /> }
         ],
         previewScenario: {
             title: "Responding to a Guest Medical Emergency",
@@ -272,12 +371,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "VPs", "GMs", "Directors"],
         sampleItems: [
-            { text: "Kitchen Opening & Closing Hygiene (HACCP).", icon: <ShieldCheck /> },
-            { text: "Cold Chain & Temperature Monitoring.", icon: <Thermometer /> },
-            { text: "Allergen Management & Menu Labeling.", icon: <FileWarning /> },
-            { text: "Waste Segregation & Pest Control.", icon: <Bug /> },
-            { text: "Staff Hygiene & Training Verification.", icon: <UserCheck /> },
-            { text: "Raw Material Receiving & Quality Control.", icon: <PackageCheck /> }
+            { text: "Prevent foodborne illness with kitchen opening & closing hygiene protocols (HACCP).", icon: <ShieldCheck /> },
+            { text: "Protect your inventory from spoilage with rigorous cold chain and temperature monitoring.", icon: <Thermometer /> },
+            { text: "Safeguard guests with a robust allergen management and menu labeling system.", icon: <FileWarning /> },
+            { text: "Maintain a spotless, pest-free environment with auditable waste segregation and pest control logs.", icon: <Bug /> },
+            { text: "Build a professional team through verifiable staff hygiene and training protocols.", icon: <UserCheck /> },
+            { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: <PackageCheck /> }
         ],
         previewScenario: {
             title: "Handling a Food Allergy Alert",
@@ -495,12 +594,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
         sampleItems: [
-            { text: "Seasonal Inventory & Markdown Management.", icon: <Thermometer /> },
-            { text: "Visual Merchandising & Display Audits.", icon: <GalleryVertical /> },
-            { text: "Fitting Room Operations & Security Protocols.", icon: <DoorClosed /> },
-            { text: "Omni-Channel Operations (Click-and-Collect, Returns).", icon: <Link /> },
-            { text: "Store Safety & Loss Prevention Audits.", icon: <Shield /> },
-            { text: "Cash Handling and Daily POS Reconciliation.", icon: <Banknote /> }
+            { text: "Streamline inventory turnover with a seasonal stock & markdown management system.", icon: <Thermometer /> },
+            { text: "Create stunning, brand-aligned stores with visual merchandising and display audits.", icon: <GalleryVertical /> },
+            { text: "Reduce theft with secure fitting room operations and security protocols.", icon: <DoorClosed /> },
+            { text: "Master modern retail with seamless omni-channel operations (Click-and-Collect, Returns).", icon: <Link /> },
+            { text: "Protect your assets through rigorous store safety and loss prevention audits.", icon: <Shield /> },
+            { text: "Ensure financial accuracy with daily cash handling and POS reconciliation procedures.", icon: <Banknote /> }
         ],
         previewScenario: {
             title: "Preventing End-of-Season Stock Write-Offs",
@@ -717,12 +816,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Jewelry Store Owners", "Luxury Brand Managers", "Asset Protection Directors", "Heads of Retail"],
         sampleItems: [
-            { text: "Vault Access Control & Dual Verification.", icon: <Lock /> },
-            { text: "Display Case & Overnight Security Protocol.", icon: <Shield /> },
-            { text: "High-Value Transaction & Payment Verification.", icon: <CircleDollarSign /> },
-            { text: "Serialized Item & Watch Management.", icon: <Watch /> },
-            { text: "Customer Verification & KYC Compliance.", icon: <UserCheck /> },
-            { text: "Repair & Service Intake Management.", icon: <Wrench /> }
+            { text: "Enforce Fort-Knox level security with vault access control and dual verification SOPs.", icon: <Lock /> },
+            { text: "Protect your most valuable assets with display case and overnight security protocols.", icon: <Shield /> },
+            { text: "Prevent fraud in high-value transactions with rigorous payment verification steps.", icon: <CircleDollarSign /> },
+            { text: "Eliminate swap theft and inventory loss with serialized item and watch management.", icon: <Watch /> },
+            { text: "Ensure regulatory compliance with robust customer verification (KYC) processes.", icon: <UserCheck /> },
+            { text: "Build customer trust with a secure and transparent repair and service intake process.", icon: <Wrench /> }
         ],
         previewScenario: {
             title: "Foiling a High-Value Swap Theft",
@@ -935,12 +1034,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Tv />,
         whoIsItFor: ["Electronics Store Owners", "Showroom Managers", "Heads of Retail Operations", "Asset Protection Managers"],
         sampleItems: [
-            { text: "Demo Unit Safety & Electrical Load Audits.", icon: <Zap /> },
-            { text: "Serialized Asset Tagging & Warranty Management.", icon: <Barcode /> },
-            { text: "E-waste Handling & Compliant Disposal.", icon: <Recycle /> },
-            { text: "Point-of-Sale & Payment Security (PCI-DSS).", icon: <ShieldCheck /> },
-            { text: "Customer Demo Experience & Returns SOP.", icon: <UserCheck /> },
-            { text: "Stockroom Organization & Safety.", icon: <Package /> }
+            { text: "Prevent fires and damage with meticulous demo unit safety and electrical load audits.", icon: <Zap /> },
+            { text: "Secure high-value assets with serialized tagging, warranty management, and inventory control.", icon: <Barcode /> },
+            { text: "Ensure environmental compliance with a formal e-waste handling and disposal process.", icon: <Recycle /> },
+            { text: "Protect customer data and prevent fraud with PCI-DSS compliant payment security.", icon: <ShieldCheck /> },
+            { text: "Enhance customer trust through a standardized and professional demo and returns process.", icon: <UserCheck /> },
+            { text: "Optimize your back-of-house with safe and efficient stockroom organization checklists.", icon: <Package /> }
         ],
         previewScenario: {
             title: "Preventing a Showroom Fire",
@@ -1136,12 +1235,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Supermarket Owners", "Grocery Store Proprietors", "Heads of Retail Operations", "Store Directors", "Department Heads (Fresh Food, Dairy)", "3PL Partners"],
         sampleItems: [
-            { text: "Cold Chain & Perishables Temperature Management.", icon: <Thermometer /> },
-            { text: "FIFO Rotation & Expiry Date Sweep Process.", icon: <Recycle /> },
-            { text: "Store Hygiene, Cleaning & Spill Response.", icon: <SprayCan /> },
-            { text: "Point-of-Sale Security & Cash Reconciliation.", icon: <DollarSign /> },
-            { text: "Inbound Supplier Quality Control & Receiving.", icon: <PackageCheck /> },
-            { text: "Weighing Scale Calibration & Legal Metrology.", icon: <Scale /> }
+            { text: "Prevent spoilage and foodborne illness with robust cold chain and perishables temperature management.", icon: <Thermometer /> },
+            { text: "Minimize waste and ensure freshness with a daily FIFO rotation and expiry date sweep process.", icon: <Recycle /> },
+            { text: "Maintain a safe and inviting store with checklists for hygiene, cleaning, and rapid spill response.", icon: <SprayCan /> },
+            { text: "Protect your revenue through rigorous point-of-sale security and cash reconciliation.", icon: <DollarSign /> },
+            { text: "Guarantee quality from the start with inbound supplier QC and receiving protocols.", icon: <PackageCheck /> },
+            { text: "Ensure compliance and fair trade with weighing scale calibration and Legal Metrology checks.", icon: <Scale /> }
         ],
         previewScenario: {
             title: "Averting a Food Poisoning Outbreak",
@@ -1338,12 +1437,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["COOs", "Heads of Corporate Real Estate", "Directors of Facilities", "VPs of Administration", "Data Center Managers"],
         sampleItems: [
-            { text: "Daily Facility Walkthrough & Verification.", icon: <UserCheck /> },
-            { text: "Preventive Maintenance Planning & Vendor SLA Tracking.", icon: <Wrench /> },
-            { text: "Housekeeping, Hygiene & Pest Control Audits.", icon: <Sparkles /> },
-            { text: "Visitor Management & Access Control Protocols.", icon: <KeyRound /> },
-            { text: "Utilities, Energy & Water Management.", icon: <Zap /> },
-            { text: "Critical Systems (UPS, HVAC) & Redundancy Testing.", icon: <Cog /> }
+            { text: "Implement a daily facility walkthrough for proactive issue identification.", icon: <UserCheck /> },
+            { text: "Master vendor performance with preventive maintenance planning and SLA tracking.", icon: <Wrench /> },
+            { text: "Ensure a pristine and safe environment with housekeeping, hygiene, and pest control audits.", icon: <Sparkles /> },
+            { text: "Secure your premises with robust visitor management and access control protocols.", icon: <KeyRound /> },
+            { text: "Optimize costs and sustainability through a utilities, energy, and water management system.", icon: <Zap /> },
+            { text: "Guarantee business continuity with critical systems (UPS, HVAC) and redundancy testing.", icon: <Cog /> }
         ],
         previewScenario: {
             title: "Averting a Data Center Catastrophe",
@@ -1538,12 +1637,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <FileLock />,
         whoIsItFor: ["Founders & CEOs", "HR Managers", "Operations Heads", "Non-lawyer Managers", "Directors"],
         sampleItems: [
-            { text: "Statutory Filing Calendar & Reminders.", icon: <CalendarDays /> },
-            { text: "Policy Management & Employee Acknowledgements.", icon: <UserCheck /> },
-            { text: "Contract Lifecycle Management & Clause Checklist.", icon: <FileCheck /> },
-            { text: "Internal Audit & Non-Compliance Remediation (CAPA).", icon: <Bug /> },
-            { text: "Whistleblowing Process & Investigation SOP.", icon: <Siren /> },
-            { text: "Board Meeting Preparation & Minute Taking.", icon: <BriefcaseBusiness /> }
+            { text: "Never miss a deadline with a master statutory filing calendar and automated reminders.", icon: <CalendarDays /> },
+            { text: "Ensure company policies are consistently enforced with a robust management and employee acknowledgement system.", icon: <UserCheck /> },
+            { text: "Minimize legal risk with a structured contract lifecycle management process and clause checklist.", icon: <FileCheck /> },
+            { text: "Proactively identify and fix compliance gaps with an internal audit and remediation (CAPA) workflow.", icon: <Bug /> },
+            { text: "Foster a safe and ethical workplace with a formal whistleblowing and investigation process.", icon: <Siren /> },
+            { text: "Improve corporate governance with a professional system for board meeting preparation and minute taking.", icon: <BriefcaseBusiness /> }
         ],
         previewScenario: {
             title: "Surviving a Surprise Regulatory Audit",
@@ -1737,12 +1836,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <ShieldCheck />,
         whoIsItFor: ["CISOs", "CTOs", "Data Protection Officers (DPOs)", "Heads of Risk & Compliance", "IT Directors"],
         sampleItems: [
-            { text: "User Access Reviews & Least Privilege.", icon: <KeyRound /> },
-            { text: "Vulnerability Scanning & Patch Management.", icon: <Bug /> },
-            { text: "Business Continuity & Disaster Recovery (BC/DR) Drills.", icon: <DatabaseZap /> },
-            { text: "Incident Response Playbooks & Forensics.", icon: <Siren /> },
-            { text: "Cloud Security Posture Management (CSPM).", icon: <Cloud /> },
-            { text: "Third-Party Vendor Security Assessments.", icon: <Handshake /> }
+            { text: "Enforce the principle of least privilege with quarterly user access reviews.", icon: <KeyRound /> },
+            { text: "Stay ahead of threats with a structured workflow for vulnerability scanning and patch management.", icon: <Bug /> },
+            { text: "Build resilience with proven playbooks for Business Continuity and Disaster Recovery (BC/DR) drills.", icon: <DatabaseZap /> },
+            { text: "Master crisis management with step-by-step incident response and digital forensics playbooks.", icon: <Siren /> },
+            { text: "Prevent costly data leaks by continuously monitoring and correcting your cloud security posture (CSPM).", icon: <Cloud /> },
+            { text: "De-risk your supply chain with a formal security assessment process for all third-party vendors.", icon: <Handshake /> }
         ],
         previewScenario: {
             title: "Surviving a Ransomware Attack",
@@ -1940,12 +2039,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents"],
         sampleItems: [
-            { text: "Surgical Safety Checklist (WHO Aligned).", icon: <Stethoscope /> },
-            { text: "Infection Control & Sterilization (CSSD) Audits.", icon: <SyringeIcon /> },
-            { text: "High-Alert Medication & Dispensing SOPs.", icon: <Pill /> },
-            { text: "Patient Identification & Safety Protocols.", icon: <UserCheck /> },
-            { text: "Biomedical Waste Management & Compliance.", icon: <Recycle /> },
-            { text: "Emergency Code & Mock Drill Management.", icon: <Ambulance /> }
+            { text: "Prevent 'never events' with a WHO-aligned Surgical Safety Checklist.", icon: <Stethoscope /> },
+            { text: "Combat hospital-acquired infections (HAIs) with rigorous infection control and sterilization (CSSD) audits.", icon: <SyringeIcon /> },
+            { text: "Eliminate medication errors using SOPs for high-alert medication dispensing and administration.", icon: <Pill /> },
+            { text: "Enhance patient safety with a robust protocol for patient identification at every touchpoint.", icon: <UserCheck /> },
+            { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: <Recycle /> },
+            { text: "Prepare for any crisis with emergency code management and mock drill scenarios.", icon: <Ambulance /> }
         ],
         previewScenario: {
             title: "Preventing a 'Never Event': Wrong-Site Surgery",
@@ -2139,12 +2238,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Pill />,
         whoIsItFor: ["Pharmacists-in-Charge", "Pharmacy Owners", "Hospital Pharmacy Directors", "Compliance Officers"],
         sampleItems: [
-            { text: "Dispensing Accuracy & Error Prevention.", icon: <FileCheck /> },
-            { text: "Controlled Substance & Narcotics Logs.", icon: <FileLock /> },
-            { text: "Cold Chain Management for Vaccines & Biologics.", icon: <Thermometer /> },
-            { text: "Inventory, FIFO, and Expiry Control.", icon: <Recycle /> },
-            { text: "Patient Counseling & Medication Therapy Management.", icon: <UserCheck /> },
-            { text: "Regulatory Compliance (Drugs & Cosmetics Act).", icon: <Scale /> }
+            { text: "Eliminate dispensing errors with a multi-stage accuracy and error prevention system.", icon: <FileCheck /> },
+            { text: "Ensure strict compliance with logs for controlled substances and narcotics.", icon: <FileLock /> },
+            { text: "Protect sensitive medications with a robust cold chain management process for vaccines and biologics.", icon: <Thermometer /> },
+            { text: "Minimize waste and prevent stockouts with an efficient inventory, FIFO, and expiry control system.", icon: <Recycle /> },
+            { text: "Improve patient outcomes through structured counseling and medication therapy management.", icon: <UserCheck /> },
+            { text: "Stay audit-ready with checklists aligned to the Drugs & Cosmetics Act and other regulations.", icon: <Scale /> }
         ],
         previewScenario: {
             title: "Preventing a Controlled Substance Discrepancy",
@@ -2231,7 +2330,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Monthly",
                 role: "Stockist",
                 icon: <Recycle />,
-                summary: "Monthly sweep for near-expiry drugs (3-6 months), quarantine, and return-to-vendor process.",
+                summary: "Monthly sweep for near-expiry drugs, quarantine, and return-to-vendor process.",
                 tasks: [
                     { id: 'PHARM-EXP-01', description: "Perform a monthly sweep of shelves to identify drugs expiring within 6 months.", priority: 'High', riskLevel: 'Medium', proof: 'Near-Expiry Log', location: 'Shelves' },
                     { id: 'PHARM-EXP-02', description: "Move near-expiry drugs to a designated quarantine area.", priority: 'High', riskLevel: 'Medium', proof: 'Quarantine Area Log', location: 'Quarantine Area' },
@@ -2340,12 +2439,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeText: "Safety First",
         whoIsItFor: ["School Principals", "Trustees", "Administrators", "Heads of Security", "Transport Managers"],
         sampleItems: [
-            { text: "Student Transport & Bus Safety Protocols.", icon: <Bus /> },
-            { text: "Child Protection & Staff Background Verification.", icon: <ShieldCheck /> },
-            { text: "Canteen Hygiene & Food Safety Audits.", icon: <Utensils /> },
-            { text: "Fire Safety & Emergency Lockdown Drills.", icon: <Siren /> },
-            { text: "Health Screening & Outbreak Control SOPs.", icon: <HeartPulse /> },
-            { text: "Playground & Sports Equipment Safety Inspections.", icon: <FerrisWheel /> }
+            { text: "Prevent tragic accidents with rigorous student transport and bus safety protocols.", icon: <Bus /> },
+            { text: "Protect every child with mandatory staff background verification and child protection SOPs.", icon: <ShieldCheck /> },
+            { text: "Ensure student health with HACCP-aligned canteen hygiene and food safety audits.", icon: <Utensils /> },
+            { text: "Prepare for any crisis with fire safety drills and emergency lockdown procedures.", icon: <Siren /> },
+            { text: "Maintain a healthy campus through systematic health screening and outbreak control SOPs.", icon: <HeartPulse /> },
+            { text: "Create a safe play environment with playground and sports equipment safety inspections.", icon: <FerrisWheel /> }
         ],
         previewScenario: {
             title: "Preventing a School Bus Tragedy",
@@ -2541,12 +2640,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["University Registrars", "Deans of Administration", "Heads of Student Affairs", "Campus Safety Directors"],
         sampleItems: [
-            { text: "Laboratory Safety & Chemical Management.", icon: <TestTube /> },
-            { text: "Research Ethics, Data Management & IRB Compliance.", icon: <DatabaseZap /> },
-            { text: "Hostel Operations & Fire Safety Audits.", icon: <Home /> },
-            { text: "Campus Event Risk Assessment & Crowd Management.", icon: <Users /> },
-            { text: "Student Welfare, Grievance & Anti-Harassment SOPs.", icon: <HeartPulse /> },
-            { text: "Academic Integrity & Examination Protocols.", icon: <BookOpen /> }
+            { text: "Manage high-risk environments with laboratory safety and chemical management protocols.", icon: <TestTube /> },
+            { text: "Uphold academic standards with checklists for research ethics, data management, and IRB compliance.", icon: <DatabaseZap /> },
+            { text: "Ensure student safety in residences with hostel operations and fire safety audits.", icon: <Home /> },
+            { text: "Run safe and successful campus events with risk assessment and crowd management SOPs.", icon: <Users /> },
+            { text: "Support your student body with structured grievance, welfare, and anti-harassment processes.", icon: <HeartPulse /> },
+            { text: "Protect institutional integrity with robust examination and academic integrity protocols.", icon: <BookOpen /> }
         ],
         previewScenario: {
             title: "Managing a Laboratory Chemical Spill",
@@ -2741,12 +2840,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Factory />,
         whoIsItFor: ["Plant Heads", "Quality Assurance Managers", "Production Managers", "Food Safety Officers"],
         sampleItems: [
-            { text: "Good Manufacturing Practice (GMP) & Hygiene.", icon: <SprayCan /> },
-            { text: "Allergen Management & Cross-Contamination Prevention.", icon: <FileWarning /> },
-            { text: "Batch Traceability & Mock Recall Drills.", icon: <Barcode /> },
-            { text: "Preventive Maintenance for Critical Control Points (CCPs).", icon: <Wrench /> },
-            { text: "Supplier Verification & Inbound Raw Material QC.", icon: <PackageCheck /> },
-            { text: "Glass & Brittle Plastic Control Program.", icon: <Eye /> }
+            { text: "Ensure a sterile environment with Good Manufacturing Practice (GMP) and hygiene checklists.", icon: <SprayCan /> },
+            { text: "Prevent deadly cross-contamination with a comprehensive allergen management system.", icon: <FileWarning /> },
+            { text: "Enable rapid response to quality issues with batch traceability and mock recall drills.", icon: <Barcode /> },
+            { text: "Guarantee food safety by managing Critical Control Points (CCPs) with preventive maintenance.", icon: <Wrench /> },
+            { text: "Secure your supply chain with a stringent supplier verification and raw material QC process.", icon: <PackageCheck /> },
+            { text: "Eliminate physical hazards with a meticulous glass and brittle plastic control program.", icon: <Eye /> }
         ],
         previewScenario: {
             title: "Preventing a Product Recall",
@@ -2941,12 +3040,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Plant Heads", "EHS Directors", "Production Managers", "Maintenance Heads", "Quality Control Managers"],
         sampleItems: [
-            { text: "Lockout-Tagout (LOTO) & Machine Guarding.", icon: <Lock /> },
-            { text: "Job Hazard Analysis (JHA) & Risk Assessments.", icon: <FileWarning /> },
-            { text: "Personal Protective Equipment (PPE) Compliance.", icon: <HardHat /> },
-            { text: "Incident Investigation & Root-Cause Analysis.", icon: <Bug /> },
-            { text: "Confined Space & Hot Work Permit Systems.", icon: <FileCheck /> },
-            { text: "Chemical Handling & Storage Safety.", icon: <TestTube /> }
+            { text: "Prevent fatal accidents with a rigorous Lockout-Tagout (LOTO) and machine guarding system.", icon: <Lock /> },
+            { text: "Proactively identify risks with a structured Job Hazard Analysis (JHA) and risk assessment process.", icon: <FileWarning /> },
+            { text: "Ensure worker safety with a comprehensive Personal Protective Equipment (PPE) compliance program.", icon: <HardHat /> },
+            { text: "Learn from mistakes and prevent recurrence with a formal incident investigation and root-cause analysis workflow.", icon: <Bug /> },
+            { text: "Manage high-risk tasks safely using a permit-to-work system for confined space and hot work.", icon: <FileCheck /> },
+            { text: "Avoid chemical disasters with safe chemical handling and storage procedures.", icon: <TestTube /> }
         ],
         previewScenario: {
             title: "Preventing a Fatal 'Lockout-Tagout' Failure",
@@ -3143,12 +3242,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Warehouse Managers", "Logistics Heads", "Supply Chain Directors", "E-commerce Operations Managers"],
         sampleItems: [
-            { text: "Storage, Racking & Pallet Safety.", icon: <Package /> },
-            { text: "Forklift & MHE Pre-Operation Safety Checks.", icon: <HardHat /> },
-            { text: "Fire Prevention & Electrical Safety for Warehouses.", icon: <Siren /> },
-            { text: "Inbound Receiving & Outbound Dispatch QC.", icon: <FileCheck /> },
-            { text: "Hazardous Goods (Hazmat) Handling & Storage.", icon: <FileWarning /> },
-            { text: "Inventory Cycle Counting & Accuracy.", icon: <Barcode /> }
+            { text: "Prevent rack collapses and storage accidents with rigorous storage, racking, and pallet safety SOPs.", icon: <Package /> },
+            { text: "Ensure operator and pedestrian safety with pre-operation checklists for forklifts and MHE.", icon: <HardHat /> },
+            { text: "Mitigate fire risks specific to warehouses with fire prevention and electrical safety audits.", icon: <Siren /> },
+            { text: "Improve accuracy and reduce errors with stringent QC for inbound receiving and outbound dispatch.", icon: <FileCheck /> },
+            { text: "Handle dangerous goods safely with compliant hazardous materials (Hazmat) storage protocols.", icon: <FileWarning /> },
+            { text: "Achieve near-perfect stock accuracy with a structured inventory cycle counting system.", icon: <Barcode /> }
         ],
         previewScenario: {
             title: "Preventing a Warehouse Collapse",
@@ -3363,12 +3462,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <Film />,
         whoIsItFor: ["Producers", "Line Producers", "Production Managers", "Heads of Production"],
         sampleItems: [
-            { text: "Pre-production Legal & Clearances (Title, Script, Life Rights).", icon: <FileLock /> },
-            { text: "On-Set Safety & EHS Protocols.", icon: <Siren /> },
-            { text: "Stunt & High-Risk Scene Coordination.", icon: <Car /> },
-            { text: "Post-Production Data Security & NDA Compliance.", icon: <Lock /> },
-            { text: "Vendor Contract & Invoice Auditing.", icon: <DollarSign /> },
-            { text: "Location Scouting, Permitting & Management.", icon: <Map /> }
+            { text: "Secure your project from day one with pre-production legal clearances (Title, Script, Life Rights).", icon: <FileLock /> },
+            { text: "Create a safe set for cast and crew with robust on-set safety and EHS protocols.", icon: <Siren /> },
+            { text: "Manage high-risk scenes safely with a dedicated stunt and special effects coordination checklist.", icon: <Car /> },
+            { text: "Protect your intellectual property with post-production data security and NDA compliance.", icon: <Lock /> },
+            { text: "Keep your budget on track with a rigorous vendor contract and invoice auditing process.", icon: <DollarSign /> },
+            { text: "Streamline logistics with checklists for location scouting, permitting, and management.", icon: <Map /> }
         ],
         previewScenario: {
             title: "The $2M Mistake: Averting a 'Life Rights' Disaster",
@@ -3555,12 +3654,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["CTOs", "Heads of Content", "Product Managers", "Heads of Ad-Ops", "SRE Leads"],
         sampleItems: [
-            { text: "Content Ingestion, Classification & Release Workflow.", icon: <FileCheck /> },
-            { text: "Legal & Licensing Documentation Management.", icon: <FileLock /> },
-            { text: "Subscriber Data Privacy & Retention (GDPR/DPDP).", icon: <Shield /> },
-            { text: "Platform Security, Vulnerability & Patch Management.", icon: <Siren /> },
-            { text: "Content Takedown & Regulatory Compliance.", icon: <Recycle /> },
-            { text: "Live Event & High-Concurrency Readiness Drills.", icon: <Zap /> }
+            { text: "Streamline your pipeline with a content ingestion, classification, and release workflow.", icon: <FileCheck /> },
+            { text: "Mitigate legal risk with a robust system for managing legal and licensing documentation.", icon: <FileLock /> },
+            { text: "Protect your users and your brand with a subscriber data privacy & retention policy (GDPR/DPDP).", icon: <Shield /> },
+            { text: "Build a resilient platform with checklists for security, vulnerability, and patch management.", icon: <Siren /> },
+            { text: "Navigate complex regulations with a clear process for content takedowns and compliance.", icon: <Recycle /> },
+            { text: "Guarantee uptime during major launches with readiness drills for live events and high-concurrency.", icon: <Zap /> }
         ],
         previewScenario: {
             title: "Responding to a Major Content Leak",
@@ -3754,12 +3853,12 @@ export const premiumPacks: PremiumPack[] = [
         icon: <FerrisWheel />,
         whoIsItFor: ["Theme Park GMs", "Heads of Operations", "Safety Directors", "Maintenance Heads", "F&B Managers"],
         sampleItems: [
-            { text: "Daily Ride Inspection & Maintenance Logs.", icon: <Wrench /> },
-            { text: "Guest Safety, Queue & Crowd Management.", icon: <Users /> },
-            { text: "Emergency Response & Medical Readiness Drills.", icon: <Ambulance /> },
-            { text: "F&B Vendor Stall Safety & LPG Handling.", icon: <Utensils /> },
-            { text: "Water Park Hygiene & Lifeguard Safety.", icon: <Waves /> },
-            { text: "Lost Child & Incident Reporting Protocols.", icon: <HelpingHand /> }
+            { text: "Prevent accidents with daily ride inspections, maintenance logs, and safety checks.", icon: <Wrench /> },
+            { text: "Manage large crowds effectively with SOPs for guest safety, queuing, and crowd control.", icon: <Users /> },
+            { text: "Be prepared for anything with emergency response plans and medical readiness drills.", icon: <Ambulance /> },
+            { text: "Ensure food safety and prevent fire hazards with vendor stall and LPG handling checklists.", icon: <Utensils /> },
+            { text: "Maintain a safe and clean water park with hygiene protocols and lifeguard safety SOPs.", icon: <Waves /> },
+            { text: "Handle sensitive situations professionally with lost child and incident reporting protocols.", icon: <HelpingHand /> }
         ],
         previewScenario: {
             title: "Preventing a Ride Malfunction Catastrophe",
@@ -3954,12 +4053,12 @@ export const premiumPacks: PremiumPack[] = [
         bestseller: true,
         whoIsItFor: ["Sports Facility Managers", "Club Owners", "Stadium Operations Heads", "Safety Officers"],
         sampleItems: [
-            { text: "Crowd Control & Emergency Evacuation Readiness.", icon: <Users /> },
-            { text: "Gym & Fitness Equipment Safety Inspection.", icon: <Dumbbell /> },
-            { text: "Sports Field & Turf Maintenance Schedule.", icon: <Sprout /> },
-            { text: "Swimming Pool Hygiene & Lifeguard Safety.", icon: <Waves /> },
-            { text: "Digital Ticketing & Secure Entry Validation.", icon: <Ticket /> },
-            { text: "Medical & Emergency Response Plan.", icon: <Ambulance /> }
+            { text: "Handle massive crowds safely with SOPs for crowd control and emergency evacuation.", icon: <Users /> },
+            { text: "Prevent injuries and liability with rigorous gym and fitness equipment safety inspections.", icon: <Dumbbell /> },
+            { text: "Maintain world-class playing surfaces with a structured sports field and turf maintenance schedule.", icon: <Sprout /> },
+            { text: "Ensure water safety with comprehensive swimming pool hygiene and lifeguard protocols.", icon: <Waves /> },
+            { text: "Streamline event entry with a secure system for digital ticketing and validation.", icon: <Ticket /> },
+            { text: "Be prepared for any situation with a robust medical and emergency response plan.", icon: <Ambulance /> }
         ],
         previewScenario: {
             title: "Averting a Pre-Match Crisis",
@@ -4150,6 +4249,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 0,
         priceINR: 0,
         paymentId: '',
+        listId: 3,
         category: "Social Cause",
         description: "A complete (and free) operational toolkit for animal shelters and NGOs to ensure animal welfare, hygiene, and effective adoption programs.",
         icon: <PawPrint />,
@@ -4157,12 +4257,12 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Shelter Managers", "NGO Founders", "Animal Welfare Officers", "Volunteers"],
         sampleItems: [
-            { text: "Animal Intake & Quarantine Protocols.", icon: <Home /> },
-            { text: "Vaccination & Medical Record Logs.", icon: <HeartPulse /> },
-            { text: "Kennel Sanitation & Disease Control.", icon: <Sparkles /> },
-            { text: "Volunteer Onboarding & Safety.", icon: <Users /> },
-            { text: "Adoption Verification & Transport SOPs.", icon: <Truck /> },
-            { text: "Feeding, Nutrition & Enrichment Schedules.", icon: <Rabbit /> }
+            { text: "Safely process new arrivals with intake and quarantine protocols.", icon: <Home /> },
+            { text: "Track every animal's health with vaccination and medical record logs.", icon: <HeartPulse /> },
+            { text: "Prevent disease outbreaks with a rigorous kennel sanitation and disease control program.", icon: <Sparkles /> },
+            { text: "Protect your team with volunteer onboarding and safe animal handling SOPs.", icon: <Users /> },
+            { text: "Ensure successful adoptions with a structured verification and transport process.", icon: <Truck /> },
+            { text: "Promote well-being with daily feeding, nutrition, and enrichment schedules.", icon: <Rabbit /> }
         ],
         previewScenario: {
             title: "Preventing a Disease Outbreak",
@@ -4356,3 +4456,7 @@ export const premiumPacks: PremiumPack[] = [
 
   
 
+
+
+
+  
