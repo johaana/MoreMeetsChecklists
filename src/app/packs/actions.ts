@@ -8,7 +8,7 @@ export async function addContact(data: { name: string, email: string, company: s
   const apiKey = process.env.BREVO_API_KEY;
 
   if (!apiKey) {
-    console.error("Brevo API key not configured.");
+    console.error("Brevo key not configured.");
     return { success: false, error: "Server configuration error. Please contact support." };
   }
 
@@ -53,5 +53,3 @@ export async function addContact(data: { name: string, email: string, company: s
     return { success: false, error: 'An unexpected error occurred.' };
   }
 }
-
-  
