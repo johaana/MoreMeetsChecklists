@@ -85,7 +85,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                 <Button variant="outline" className="w-full">
+                 <Button variant="ghost" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
@@ -351,7 +351,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         );
     }
     
-    // Virtual pack for the Personalized tier
     const personalizedPack = {
       ...pack,
       id: 'personalized_pack',
