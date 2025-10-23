@@ -357,7 +357,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
       id: 'personalized_pack',
       title: 'Personalized Pack',
       priceINR: 11999, // As discussed
-      paymentId: 'pl_ROk8qeybBnyrA6', // New Payment ID
+      paymentId: 'pl_PbCgmnv5nLujnK', // New Payment ID for personalized pack
     };
 
     return (
