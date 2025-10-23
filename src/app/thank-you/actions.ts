@@ -83,7 +83,7 @@ export async function verifyRazorpayPayment(
         
         const expectedAmount = foundItem.priceINR * 100;
         if (payment.amount !== expectedAmount) {
-             return { success: false, error: `Payment amount mismatch. Please contact support for assistance.` };
+             return { success: false, error: `Payment amount mismatch. Expected ₹${foundItem.priceINR} but paid ₹${payment.amount / 100}. Please contact support.` };
         }
 
         return { success: true, item: foundItem, type: itemType! };
