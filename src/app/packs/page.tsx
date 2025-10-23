@@ -81,11 +81,6 @@ export default function AllPacksPage() {
                                         <Star className="w-4 h-4" /> {pack.badgeText}
                                         </Badge>
                                     )}
-                                     {pack.priceINR === 0 && (
-                                        <Badge variant="accent" className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 w-fit">
-                                            Free
-                                        </Badge>
-                                    )}
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
@@ -125,3 +120,5 @@ export default function AllPacksPage() {
     </div>
   );
 }
+
+    
