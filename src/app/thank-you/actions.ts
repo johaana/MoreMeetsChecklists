@@ -9,7 +9,7 @@ const virtualPersonalizedPack = {
   title: 'Personalized Pack',
   checklists: premiumPacks.flatMap(p => p.checklists), 
   priceUSD: 0,
-  priceINR: 11999,
+  priceINR: 10999,
   category: "Personalized",
   description: "A custom pack tailored for you.",
   sampleItems: [],
