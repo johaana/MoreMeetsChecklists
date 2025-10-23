@@ -7,7 +7,7 @@ import type { PremiumPack, Checklist as PackChecklist } from '@/lib/premium-pack
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo, Info, Loader2 } from 'lucide-react';
+import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo, Info, Loader2, Briefcase } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -409,9 +409,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </ul>
                         </CardContent>
                             <CardFooter className="mt-auto">
-                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                                    <RazorpayButton paymentId={globalPack.paymentId} params={{ pack_id: globalPack.id }}/>
-                                </div>
+                               <Button asChild className="w-full" variant="secondary">
+                                    <Link href="/contact?subject=global-pack-interest" >
+                                        Contact to Purchase
+                                    </Link>
+                                </Button>
                             </CardFooter>
                         </Card>
                     )}
