@@ -16,8 +16,6 @@ import { writeFile, utils } from 'xlsx-js-style';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from '@/hooks/use-toast';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
@@ -313,5 +311,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
