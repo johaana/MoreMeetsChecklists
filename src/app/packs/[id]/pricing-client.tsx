@@ -85,7 +85,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                 <Button variant="secondary" className="w-full">
+                 <Button variant="outline" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     Preview a Sample Checklist
                 </Button>
