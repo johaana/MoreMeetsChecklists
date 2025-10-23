@@ -12,7 +12,6 @@ export async function addContact(data: { name: string, email: string, company: s
     return { success: false, error: "Server configuration error. Please contact support." };
   }
 
-  // Find the list ID based on the pack ID
   const pack = premiumPacks.find(p => p.id === packId);
   const listId = pack?.listId;
 
