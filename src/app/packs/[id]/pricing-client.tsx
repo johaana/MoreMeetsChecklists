@@ -360,101 +360,51 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
                 
-                <Tabs defaultValue="inr" className="max-w-6xl mx-auto">
-                    <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto">
-                        <TabsTrigger value="inr">Pricing in INR (₹)</TabsTrigger>
-                        <TabsTrigger value="usd">Pricing in USD ($)</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="inr">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mt-6">
-                             <Card className="flex flex-col">
-                                <CardHeader>
-                                    <CardTitle>Professional Pack</CardTitle>
-                                    <CardDescription>The complete, expert-built checklist pack.</CardDescription>
-                                    <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
-                                </CardHeader>
-                                <CardContent className="flex-1">
-                                    <ul className="space-y-3 text-muted-foreground text-sm">
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
-                                    </ul>
-                                </CardContent>
-                                <CardFooter className="mt-auto">
-                                    <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                                        <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
-                                    </div>
-                                </CardFooter>
-                            </Card>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mt-6 max-w-4xl mx-auto">
+                     <Card className="flex flex-col">
+                        <CardHeader>
+                            <CardTitle>Professional Pack</CardTitle>
+                            <CardDescription>The complete, expert-built checklist pack.</CardDescription>
+                            <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                            <ul className="space-y-3 text-muted-foreground text-sm">
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                            </ul>
+                        </CardContent>
+                        <CardFooter className="mt-auto">
+                            <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
+                                <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
+                            </div>
+                        </CardFooter>
+                    </Card>
 
-                            <Card className="flex flex-col">
-                                <CardHeader>
-                                    <CardTitle>Enterprise</CardTitle>
-                                    <CardDescription>A complete, done-for-you operational system.</CardDescription>
-                                    <p className="text-4xl font-bold pt-4">Custom</p>
-                                </CardHeader>
-                                <CardContent className="flex-1">
-                                        <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
-                                        <ul className="space-y-3 text-muted-foreground text-sm">
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Bespoke Checklist Creation for Your Unique Needs</span></li>
-                                        </ul>
-                                </CardContent>
-                                <CardFooter className="mt-auto">
-                                    <Button asChild className="w-full" variant="secondary">
-                                        <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                            Book a Discovery Call
-                                        </Link>
-                                    </Button>
-                                </CardFooter>
-                            </Card>
-                        </div>
-                    </TabsContent>
-                     <TabsContent value="usd">
-                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mt-6">
-                            <Card className="flex flex-col">
-                                <CardHeader>
-                                    <CardTitle>Professional Pack</CardTitle>
-                                    <CardDescription>The complete, expert-built checklist pack.</CardDescription>
-                                    <p className="text-4xl font-bold pt-4">${pack.priceUSD}</p>
-                                </CardHeader>
-                                <CardContent className="flex-1">
-                                    <ul className="space-y-3 text-muted-foreground text-sm">
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
-                                    </ul>
-                                </CardContent>
-                                <CardFooter className="mt-auto">
-                                    <Button asChild className="w-full"><Link href="https://buy.stripe.com/your-link" target="_blank">Buy Now (via Stripe)</Link></Button>
-                                </CardFooter>
-                            </Card>
-                            <Card className="flex flex-col">
-                                <CardHeader>
-                                    <CardTitle>Enterprise</CardTitle>
-                                    <CardDescription>A complete, done-for-you operational system.</CardDescription>
-                                    <p className="text-4xl font-bold pt-4">Custom</p>
-                                </CardHeader>
-                                <CardContent className="flex-1">
-                                    <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
-                                    <ul className="space-y-3 text-muted-foreground text-sm">
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Bespoke Checklist Creation for Your Unique Needs</span></li>
-                                    </ul>
-                                </CardContent>
-                                <CardFooter className="mt-auto">
-                                     <Button asChild className="w-full" variant="secondary">
-                                        <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                            Book a Discovery Call
-                                        </Link>
-                                    </Button>
-                                </CardFooter>
-                            </Card>
-                        </div>
-                    </TabsContent>
-                </Tabs>
+                    <Card className="flex flex-col">
+                        <CardHeader>
+                            <CardTitle>Enterprise</CardTitle>
+                            <CardDescription>A complete, done-for-you operational system.</CardDescription>
+                            <p className="text-4xl font-bold pt-4">Custom</p>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                                <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Bespoke Checklist Creation for Your Unique Needs</span></li>
+                                </ul>
+                        </CardContent>
+                        <CardFooter className="mt-auto">
+                            <Button asChild className="w-full" variant="secondary">
+                                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                    Book a Discovery Call
+                                </Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
+
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                      {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
@@ -493,5 +443,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-  
