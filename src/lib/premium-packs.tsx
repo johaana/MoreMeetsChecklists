@@ -1521,7 +1521,7 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'HKV-07', description: 'Check for any damages or stains on furniture and carpets.', priority: 'Medium', riskLevel: 'Low', proof: 'Damage Report', location: 'Various' },
                     {id: 'HKV-08', description: 'Verify that cleaning staff are using the correct PPE.', priority: 'High', riskLevel: 'Medium', proof: 'PPE Audit', location: 'Various' },
                     {id: 'HKV-09', description: 'Train housekeeping staff on new cleaning techniques or chemicals.', priority: 'Medium', riskLevel: 'Low', proof: 'Training Log', location: 'Office' },
-                    {id: 'HKV-10', description: 'Get feedback from employees on the cleanliness of the facility.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Form', location: 'System' },
+                    {id: 'HKV-10', description: 'Get feedback from employees on the cleanliness of the facility.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'System' },
                 ]
             },
             {

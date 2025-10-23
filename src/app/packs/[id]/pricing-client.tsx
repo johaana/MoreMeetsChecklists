@@ -327,7 +327,7 @@ const FreeDownloadDialog = ({ pack }: { pack: PremiumPack }) => {
 
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    
+
     if (pack.priceINR <= 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
@@ -352,6 +352,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         );
     }
     
+    // Find the global edition of the current pack
+    const globalPack = premiumPacks.find(p => p.id === `${pack.id}_global`);
+
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
@@ -360,11 +363,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mt-6 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mt-6 max-w-6xl mx-auto">
+                     {/* Domestic Edition */}
                      <Card className="flex flex-col">
                         <CardHeader>
-                            <CardTitle>Professional Pack</CardTitle>
-                            <CardDescription>The complete, expert-built checklist pack.</CardDescription>
+                             <div className="flex items-center gap-2">
+                                <Landmark className="w-6 h-6 text-primary" />
+                                <CardTitle>Domestic Edition</CardTitle>
+                            </div>
+                            <CardDescription>For businesses operating within India. Aligned with domestic compliance standards.</CardDescription>
                             <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
                         </CardHeader>
                         <CardContent className="flex-1">
@@ -372,6 +379,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                                <li className="flex items-start"><BadgeInfo className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-blue-500"/><span>Compliance focused on Indian laws (e.g., FSSAI, Factories Act, BOCW).</span></li>
                             </ul>
                         </CardContent>
                         <CardFooter className="mt-auto">
@@ -381,14 +389,45 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardFooter>
                     </Card>
 
+                    {/* Global Edition */}
+                    {globalPack && (
+                        <Card className="flex flex-col border-2 border-accent shadow-lg">
+                           <CardHeader>
+                             <div className="flex items-center gap-2">
+                                <Globe className="w-6 h-6 text-accent" />
+                                <CardTitle>Global Edition</CardTitle>
+                            </div>
+                            <CardDescription>For international operations or businesses aspiring to global standards.</CardDescription>
+                            <p className="text-4xl font-bold pt-4">₹{globalPack.priceINR}</p>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                            <ul className="space-y-3 text-muted-foreground text-sm">
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {globalPack.checklists.length} checklists.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                                <li className="flex items-start"><BadgeInfo className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-blue-500"/><span>Compliance focused on international standards (e.g., ISO, OSHA, JCI).</span></li>
+                            </ul>
+                        </CardContent>
+                            <CardFooter className="mt-auto">
+                                <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
+                                    <RazorpayButton paymentId={globalPack.paymentId} params={{ pack_id: globalPack.id }}/>
+                                </div>
+                            </CardFooter>
+                        </Card>
+                    )}
+
+                    {/* Enterprise Edition */}
                     <Card className="flex flex-col">
                         <CardHeader>
-                            <CardTitle>Enterprise</CardTitle>
+                             <div className="flex items-center gap-2">
+                                <Briefcase className="w-6 h-6 text-primary" />
+                                <CardTitle>Enterprise</CardTitle>
+                            </div>
                             <CardDescription>A complete, done-for-you operational system.</CardDescription>
                             <p className="text-4xl font-bold pt-4">Custom</p>
                         </CardHeader>
                         <CardContent className="flex-1">
-                                <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
+                                <p className="font-semibold mb-3 text-sm">Everything in Global, plus:</p>
                                 <ul className="space-y-3 text-muted-foreground text-sm">
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
