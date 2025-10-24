@@ -213,10 +213,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
                             </ul>
                         </CardContent>
-                        <CardFooter className="mt-auto">
-                            <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                                <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
-                            </div>
+                        <CardFooter className="mt-auto flex justify-center">
+                            <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
                         </CardFooter>
                     </Card>
 
@@ -238,10 +236,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>One-on-one onboarding call to help you get started.</span></li>
                         </ul>
                     </CardContent>
-                        <CardFooter className="mt-auto">
-                           <div className="[&_form]:w-full [&_.razorpay-payment-button]:w-full">
-                                <RazorpayButton paymentId={personalizedPack.paymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
-                            </div>
+                        <CardFooter className="mt-auto flex justify-center">
+                           <RazorpayButton paymentId={personalizedPack.paymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
                         </CardFooter>
                     </Card>
 

@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -140,14 +139,12 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                             <CardTitle className="text-2xl font-headline">Get Instant Access</CardTitle>
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
-                        <CardContent className="text-center">
+                        <CardContent className="text-center flex flex-col items-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-auto [&_.razorpay-payment-button]:py-3 [&_.razorpay-payment-button]:px-8 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
-                                <RazorpayButton 
-                                    paymentId={checklist.paymentId} 
-                                    params={{ checklist_id: checklist.id }}
-                                />
-                           </div>
+                           <RazorpayButton 
+                                paymentId={checklist.paymentId} 
+                                params={{ checklist_id: checklist.id }}
+                           />
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
                             <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
@@ -166,11 +163,11 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </div>
      <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className='flex items-center justify-between gap-4'>
-             <div>
+             <div className='flex-1'>
                 <p className='font-bold text-sm truncate'>{checklist.title}</p>
                 <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
             </div>
-            <div className="[&_form]:w-full [&_.razorpay-payment-button]:h-12 [&_.razorpay-payment-button]:text-lg [&_.razorpay-payment-button]:font-bold [&_.razorpay-payment-button]:w-full [&_.razorpay-payment-button]:bg-accent [&_.razorpay-payment-button]:text-accent-foreground [&_.razorpay-payment-button]:hover:bg-accent/90">
+            <div className="flex-shrink-0">
                  <RazorpayButton 
                     paymentId={checklist.paymentId} 
                     params={{ checklist_id: checklist.id }}
