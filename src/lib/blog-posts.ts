@@ -125,6 +125,7 @@ export const blogPosts: BlogPost[] = [
     author: 'MoreMeets Team',
     tags: ['Operations', 'Compliance', 'Risk Management'],
     relatedPackId: 'manufacturing_plant_pack',
+    imageUrl: 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
     content: `
 <p>In any high-stakes environment—be it a manufacturing plant, a hospital operating room, or a five-star hotel kitchen—the difference between success and catastrophic failure often comes down to one thing: a single, missed step.</p>
 <p>A manager briefs the morning shift, but forgets to mention a new safety protocol. A maintenance engineer, under pressure, verbally confirms a machine is de-energized but doesn't physically check the lock-out tag. A server takes a guest's allergy instruction but fails to enter the specific "Allergy Alert" modifier into the POS system.</p>
@@ -149,7 +150,7 @@ A junior technician was tasked with replacing a faulty sensor on a hydraulic pre
   },
   {
     slug: 'anatomy-of-a-never-event',
-    title: 'The Anatomy of a "Never Event": Preventing Wrong-Site Surgery with One Checklist',
+    title: 'The WHO Surgical Safety Checklist: How to Prevent \'Never Events\' in the OR',
     description: 'Wrong-site, wrong-procedure, wrong-patient errors are called "never events" for a reason. We explore how a simple, WHO-aligned checklist is the most powerful tool to prevent them.',
     publishedDate: '2024-07-30',
     author: 'MoreMeets Team',
@@ -266,6 +267,57 @@ A landmark study in The New England Journal of Medicine found that implementing 
     <li><strong>Establish a "War Room" Protocol:</strong> Have a documented plan with on-call engineers, communication channels, and decision-making authority for the duration of the live event.</li>
 </ul>
 <p>Checklists like these turn wishful thinking ("we hope the servers hold up") into verifiable proof ("we have tested for 1.5x expected load and confirmed auto-scaling functions"). For an OTT platform, this isn't just an IT process; it's the core of protecting your brand and revenue.</p>
+`
+    },
+    {
+    slug: 'guide-to-implementing-who-surgical-safety-checklist',
+    title: 'A Practical Guide to Implementing the WHO Surgical Safety Checklist',
+    description: 'Move from theory to practice. A step-by-step guide for hospital administrators and clinical leads on successfully rolling out the WHO Surgical Safety Checklist in your organization.',
+    publishedDate: '2024-08-08',
+    author: 'MoreMeets Team',
+    tags: ['Healthcare', 'Patient Safety', 'Implementation Guide', 'WHO'],
+    relatedChecklistId: 'surgical-safety',
+    imageUrl: 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
+    content: `
+<p>The World Health Organization (WHO) Surgical Safety Checklist is a proven tool that has been shown to significantly reduce complications and mortality from surgery. However, its effectiveness hinges on successful implementation. It's not just about printing a form; it's about changing culture and embedding a new communication protocol into the fabric of your operating room.</p>
+<p>This guide provides a practical, step-by-step approach for hospital administrators, quality managers, and clinical heads to effectively implement the checklist.</p>
+
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Step 1: Leadership Buy-In and Forming a Core Team</h3>
+<p>Implementation must be championed from the top. The hospital CEO, COO, and Medical Director must publicly endorse the initiative. Form a multidisciplinary team including a surgeon, an anesthetist, a senior nurse, a quality officer, and an administrator. This team will own the rollout.</p>
+
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Step 2: Adapt, Don't Just Adopt</h3>
+<p>While the WHO provides a standard template, it's crucial to adapt it to your local context. Our <a href="/checklists/surgical-safety" class="text-accent underline">Surgical Safety Checklist</a> is a great starting point. Your core team should:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li>Review each item on the checklist to ensure it is relevant and clear for your hospital's workflow.</li>
+    <li>Add any specific checks that are critical for your patient population or types of surgeries (e.g., specific implant confirmations).</li>
+    <li>Decide on the documentation process. Will it be a paper form? Integrated into your Hospital Information System (HIS)?</li>
+</ul>
+<p>The goal is to create a tool that feels like it was designed *for* your teams, not imposed *on* them.</p>
+
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Step 3: Comprehensive Training & Simulation</h3>
+<p>Do not simply email the new checklist to staff. Conduct mandatory training sessions for all OT personnel. The most effective training involves simulation:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li>Run mock surgeries where teams practice using the checklist for the "Sign In," "Time Out," and "Sign Out" phases.</li>
+    <li>Emphasize that the checklist is a communication tool, not a tick-box exercise. Encourage team members to speak up if they see a discrepancy.</li>
+    <li>Address potential resistance head-on. Explain the evidence behind the checklist and share stories of "never events" it is designed to prevent.</li>
+</ul>
+
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Step 4: Phased Rollout and Observation</h3>
+<p>Don't go live in all operating rooms at once. Start with one or two pilot OTs. During the pilot phase:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li>Have an observer (like a quality officer) present during surgeries to watch how the team uses the checklist.</li>
+    <li>The observer should note any challenges, points of confusion, or steps that are being skipped.</li>
+    <li>Collect feedback from the surgical teams after a week. What's working? What's clumsy? Use this feedback to make final adjustments to the checklist and the process.</li>
+</ul>
+
+<h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Step 5: Hospital-Wide Implementation and Auditing</h3>
+<p>Once the process is refined, roll it out across the entire hospital. But implementation doesn't end there. The final, crucial step is continuous monitoring:</p>
+<ul class="list-disc pl-6 space-y-2 my-4">
+    <li>Conduct regular, random audits of checklist usage in all OTs.</li>
+    <li>Track key metrics like surgical site infection rates, post-operative complications, and "near misses" to measure the checklist's impact over time.</li>
+    <li>Share success stories and positive outcomes with all staff to reinforce the value of the new process.</li>
+</ul>
+<p>Implementing the WHO Surgical Safety Checklist is a significant undertaking, but it is one of the highest-impact patient safety initiatives a hospital can pursue. By following a structured, thoughtful process, you can build a safer surgical environment for every patient.</p>
 `
   }
 ];

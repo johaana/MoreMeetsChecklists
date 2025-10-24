@@ -126,7 +126,7 @@ export const individualChecklists: IndividualChecklist[] = [
     },
     {
         id: 'surgical-safety',
-        title: "WHO Surgical Safety Checklist",
+        title: "WHO Surgical Safety Checklist Template (NABH & JCI Aligned)",
         priceINR: 1999,
         paymentId: "pl_ROLnfbmEpZzgZZ",
         category: "Healthcare",
