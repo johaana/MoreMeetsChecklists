@@ -384,24 +384,36 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         )
     }
 
-    // Low-cost pack view
+    // Low-cost pack view (under 5000 INR)
     if (pack.priceINR < 5000) {
+        const originalPrice = 7999;
+        const discount = Math.round(((originalPrice - pack.priceINR) / originalPrice) * 100);
+
         return (
             <section className="w-full py-12 md:py-16" id="pricing">
                 <div className="container px-2 md:px-6">
                     <div className="max-w-3xl mx-auto mb-10 text-center">
-                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Toolkit</h2>
-                        <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Instant download.</p>
+                         <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Toolkit</h2>
+                         <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Instant download.</p>
                     </div>
                     <div className="flex justify-center">
-                        <Card className="flex flex-col max-w-md">
+                        <Card className="flex flex-col max-w-md border-2 border-accent shadow-lg">
                             <CardHeader>
-                                 <div className="flex items-center gap-2">
-                                    <Landmark className="w-6 h-6 text-primary" />
-                                    <CardTitle>Professional Pack</CardTitle>
+                                 <div className="flex justify-between items-center">
+                                    <div className="flex items-center gap-2">
+                                        <Landmark className="w-6 h-6 text-accent" />
+                                        <CardTitle>Professional Pack</CardTitle>
+                                    </div>
+                                    {pack.badgeText && (
+                                        <Badge variant="accent">{pack.badgeText}</Badge>
+                                    )}
                                 </div>
                                 <CardDescription>The complete, expert-built checklist pack.</CardDescription>
-                                <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
+                                <div className="flex items-baseline gap-4 pt-4">
+                                    <p className="text-4xl font-bold">₹{pack.priceINR}</p>
+                                    <p className="text-xl font-medium text-muted-foreground line-through">₹{originalPrice}</p>
+                                     <p className="text-lg font-bold text-accent">{discount}% OFF</p>
+                                </div>
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <ul className="space-y-3 text-muted-foreground text-sm">

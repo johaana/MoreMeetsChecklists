@@ -289,7 +289,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Food & Beverage",
         description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
         icon: <CakeSlice />,
-        badgeText: "Launch Offer",
+        badgeText: "Special Offer",
         badgeVariant: "accent",
         whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
         sampleItems: [
@@ -335,8 +335,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BAKE-OPEN-06', description: 'Ensure all staff are present and have their hairnets and aprons on.', priority: 'High', riskLevel: 'Medium', proof: 'Staff Hygiene Check', location: 'Production Area' },
                     { id: 'BAKE-OPEN-07', description: 'Check that all work surfaces are sanitized before starting.', priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Production Area' },
                     { id: 'BAKE-OPEN-08', description: 'Prepare and scale out base doughs and batters for the day.', priority: 'High', riskLevel: 'High', proof: 'Scaling Sheets', location: 'Mixing Area' },
-                    { id: 'BAKE-OPEN-09', description: 'Check proofer and retarder temperatures and humidity.', priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Proofing Area' },
-                    { id: 'BAKE-OPEN-10', description: 'Brief the team on the daily plan and any specific instructions.', priority: 'High', riskLevel: 'Medium', proof: 'Briefing Notes', location: 'Production Area' },
                 ]
             },
             {
@@ -355,8 +353,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'ALLERGEN-BAKE-06', description: 'Train all staff on the risks of cross-contamination and how to handle allergen-related queries.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
                     { id: 'ALLERGEN-BAKE-07', description: 'Clearly label all finished products with allergen warnings.', priority: 'High', riskLevel: 'High', proof: 'Label Check', location: 'Packaging Area' },
                     { id: 'ALLERGEN-BAKE-08', description: 'Have a clear procedure for handling a customer allergen reaction incident.', priority: 'High', riskLevel: 'High', proof: 'Incident SOP', location: 'Office' },
-                    { id: 'ALLERGEN-BAKE-09', description: 'Verify raw material specs with suppliers to check for hidden allergens.', priority: 'High', riskLevel: 'High', proof: 'Supplier Spec Sheet', location: 'Procurement' },
-                    { id: 'ALLERGEN-BAKE-10', description: 'Conduct periodic allergen testing on surfaces and finished products.', priority: 'High', riskLevel: 'High', proof: 'Lab Test Report', location: 'Lab' },
                 ]
             },
             {
@@ -375,10 +371,134 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'LABEL-06', description: 'Check for the vegetarian/non-vegetarian logo.', priority: 'High', riskLevel: 'High', proof: 'Logo Check', location: 'Packaging Area' },
                     { id: 'LABEL-07', description: 'Ensure the net weight is correctly stated.', priority: 'High', riskLevel: 'High', proof: 'Weight Check', location: 'Packaging Area' },
                     { id: 'LABEL-08', description: 'Inspect packaging for tears, correct sealing, and overall quality.', priority: 'High', riskLevel: 'Medium', proof: 'Package Integrity Check', location: 'Packaging Area' },
-                    { id: 'LABEL-09', description: 'Store packaging materials in a clean, dry, and pest-free environment.', priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'Packaging Store' },
-                    { id: 'LABEL-10', description: 'Maintain a record of each batch\'s packaging and labeling checks.', priority: 'High', riskLevel: 'High', proof: 'Packaging QC Log', location: 'System' },
                 ]
             },
+            {
+                title: "Ingredient Sourcing & QC",
+                department: "Procurement",
+                frequency: "Per Delivery",
+                role: "Store Manager",
+                icon: <PackageCheck />,
+                summary: "Ensures all raw materials meet quality standards before they enter production.",
+                tasks: [
+                    { id: 'BAKE-QC-01', description: "Verify supplier's FSSAI license and COA (Certificate of Analysis).", priority: 'High', riskLevel: 'High', proof: 'Supplier Documents', location: 'Receiving' },
+                    { id: 'BAKE-QC-02', description: "Check raw materials for freshness, signs of pests, or damage upon receipt.", priority: 'High', riskLevel: 'High', proof: 'Receiving Log', location: 'Receiving' },
+                    { id: 'BAKE-QC-03', description: "Verify ingredient expiry dates and reject any near-expiry stock.", priority: 'High', riskLevel: 'High', proof: 'Expiry Check Log', location: 'Receiving' },
+                    { id: 'BAKE-QC-04', description: "Store ingredients at correct temperatures (e.g., cold chain for dairy).", priority: 'High', riskLevel: 'High', proof: 'Storage Temp Log', location: 'Stores' },
+                    { id: 'BAKE-QC-05', description: "Ensure traceability with batch numbers for all key ingredients.", priority: 'High', riskLevel: 'High', proof: 'Batch Log', location: 'Stores' },
+                    { id: 'BAKE-QC-06', description: "Use FIFO (First-In, First-Out) for all ingredient usage.", priority: 'High', riskLevel: 'Medium', proof: 'Stock Rotation Audit', location: 'Stores' },
+                    { id: 'BAKE-QC-07', description: "Maintain a register of approved suppliers.", priority: 'High', riskLevel: 'Medium', proof: 'Approved Supplier List', location: 'Office' },
+                    { id: 'BAKE-QC-08', description: "Check for any signs of adulteration in raw materials.", priority: 'High', riskLevel: 'High', proof: 'Visual/Sensory Check', location: 'Receiving' },
+                ]
+            },
+            {
+                title: "Dough Management & Proofing",
+                department: "Production",
+                frequency: "Daily",
+                role: "Baker",
+                icon: <Thermometer />,
+                summary: "Controls for dough temperature, fermentation times, and proofing conditions to ensure consistent texture and volume.",
+                tasks: [
+                    { id: 'BAKE-DOUGH-01', description: "Log dough mixing times and final dough temperature.", priority: 'High', riskLevel: 'Medium', proof: 'Dough Log', location: 'Mixing Station' },
+                    { id: 'BAKE-DOUGH-02', description: "Monitor proofing box temperature and humidity.", priority: 'High', riskLevel: 'High', proof: 'Proofer Log', location: 'Proofing Area' },
+                    { id: 'BAKE-DOUGH-03', description: "Follow standardized fermentation and resting times for each product.", priority: 'High', riskLevel: 'High', proof: 'Production Schedule', location: 'Production' },
+                    { id: 'BAKE-DOUGH-04', description: "Visually check dough for proper rise and volume before baking.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check Log', location: 'Proofing Area' },
+                    { id: 'BAKE-DOUGH-05', description: "Use timers to ensure consistent proofing times.", priority: 'High', riskLevel: 'Medium', proof: 'Timer Usage Audit', location: 'Proofing Area' },
+                    { id: 'BAKE-DOUGH-06', description: "Protect dough from drafts or temperature fluctuations.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Production Area' },
+                    { id: 'BAKE-DOUGH-07', description: "Clean all dough handling equipment between batches.", priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Mixing Station' },
+                    { id: 'BAKE-DOUGH-08', description: "Label all doughs with type and production time.", priority: 'High', riskLevel: 'Medium', proof: 'Label Check', location: 'Production Area' },
+                ]
+            },
+            {
+                title: "Oven Calibration & Maintenance",
+                department: "Maintenance",
+                frequency: "Weekly",
+                role: "Maintenance Technician",
+                icon: <Wrench />,
+                summary: "Ensures ovens bake evenly and accurately, preventing undercooked or burnt products.",
+                tasks: [
+                    { id: 'BAKE-OVEN-01', description: "Calibrate oven thermostats weekly with an independent thermometer.", priority: 'High', riskLevel: 'High', proof: 'Calibration Log', location: 'Oven Area' },
+                    { id: 'BAKE-OVEN-02', description: "Check for even heat distribution by test-baking a tray of products.", priority: 'High', riskLevel: 'Medium', proof: 'Test Bake Photos', location: 'Oven Area' },
+                    { id: 'BAKE-OVEN-03', description: "Clean oven interiors and doors daily to prevent carbon buildup.", priority: 'High', riskLevel: 'Medium', proof: 'Cleaning Log', location: 'Oven Area' },
+                    { id: 'BAKE-OVEN-04', description: "Inspect door seals for leaks that can cause temperature fluctuations.", priority: 'High', riskLevel: 'High', proof: 'Seal Inspection Log', location: 'Oven Area' },
+                    { id: 'BAKE-OVEN-05', description: "Check and clean oven ventilation systems.", priority: 'High', riskLevel: 'Medium', proof: 'Ventilation Log', location: 'Oven Area' },
+                    { id: 'BAKE-OVEN-06', description: "Log all maintenance and repairs.", priority: 'High', riskLevel: 'High', proof: 'Maintenance Records', location: 'Office' },
+                    { id: 'BAKE-OVEN-07', description: "Ensure oven timers are accurate.", priority: 'High', riskLevel: 'Medium', proof: 'Timer Test', location: 'Oven Area' },
+                    { id: 'BAKE-OVEN-08', description: "Train staff on safe oven operation.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                ]
+            },
+            {
+                title: "Display & Freshness Management",
+                department: "Sales/FOH",
+                frequency: "Daily",
+                role: "Sales Associate",
+                icon: <Eye />,
+                summary: "Protocols for rotating stock, managing display appearance, and handling day-old products.",
+                tasks: [
+                    { id: 'BAKE-DISP-01', description: "Follow FIFO (First-In, First-Out) when arranging the display counter.", priority: 'High', riskLevel: 'Medium', proof: 'Visual Audit', location: 'Display Counter' },
+                    { id: 'BAKE-DISP-02', description: "Remove any products that appear stale or damaged from display.", priority: 'High', riskLevel: 'Medium', proof: 'Removal Log', location: 'Display Counter' },
+                    { id: 'BAKE-DISP-03', description: "Implement a markdown or donation strategy for day-old products.", priority: 'High', riskLevel: 'Medium', proof: 'Markdown/Donation Log', location: 'POS' },
+                    { id: 'BAKE-DISP-04', description: "Clean display cases and trays throughout the day.", priority: 'High', riskLevel: 'Low', proof: 'Cleaning Schedule', location: 'Display Counter' },
+                    { id: 'BAKE-DISP-05', description: "Ensure products are displayed attractively.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Display Counter' },
+                    { id: 'BAKE-DISP-06', description: "Check temperatures of refrigerated display units.", priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Display Counter' },
+                    { id: 'BAKE-DISP-07', description: "Use correct labels and price tags.", priority: 'High', riskLevel: 'Medium', proof: 'Label Audit', location: 'Display Counter' },
+                    { id: 'BAKE-DISP-08', description: "Replenish stock as needed to keep displays full.", priority: 'High', riskLevel: 'Low', proof: 'Replenishment Check', location: 'Display Counter' },
+                ]
+            },
+            {
+                title: "Custom Cake Order Process",
+                department: "Sales/Production",
+                frequency: "Per Order",
+                role: "Order Taker/Baker",
+                icon: <CakeSlice />,
+                summary: "A workflow from order taking to delivery to prevent errors in custom cake orders.",
+                tasks: [
+                    { id: 'BAKE-CUST-01', description: "Use a standardized order form to capture all customer requirements (size, flavor, design, message).", priority: 'High', riskLevel: 'High', proof: 'Completed Order Form', location: 'POS' },
+                    { id: 'BAKE-CUST-02', description: "Confirm all details with the customer before finalizing the order.", priority: 'High', riskLevel: 'Medium', proof: 'Confirmation Email/Message', location: 'System' },
+                    { id: 'BAKE-CUST-03', description: "Create a detailed production brief for the baking team.", priority: 'High', riskLevel: 'High', proof: 'Production Brief', location: 'Production' },
+                    { id: 'BAKE-CUST-04', description: "Final QC check of the finished cake against the order form before delivery.", priority: 'High', riskLevel: 'High', proof: 'Final QC Photos', location: 'Dispatch' },
+                    { id: 'BAKE-CUST-05', description: "Take a deposit for all custom orders.", priority: 'High', riskLevel: 'Medium', proof: 'Deposit Receipt', location: 'POS' },
+                    { id: 'BAKE-CUST-06', description: "Communicate clearly about pickup/delivery times.", priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'System' },
+                    { id: 'BAKE-CUST-07', description: "Package the cake securely for transport.", priority: 'High', riskLevel: 'High', proof: 'Packaging Check', location: 'Dispatch' },
+                    { id: 'BAKE-CUST-08', description: "Provide instructions for storage and handling to the customer.", priority: 'High', riskLevel: 'Medium', proof: 'Instruction Card', location: 'Dispatch' },
+                ]
+            },
+            {
+                title: "Staff Hygiene & Training",
+                department: "HR/Management",
+                frequency: "Ongoing",
+                role: "Manager",
+                icon: <UserCheck />,
+                summary: "Ensures all staff follow strict hygiene protocols to maintain food safety.",
+                tasks: [
+                    { id: 'BAKE-TRAIN-01', description: "Conduct daily checks for clean uniforms, aprons, and hairnets.", priority: 'High', riskLevel: 'Medium', proof: 'Daily Staff Check Log', location: 'Entry Point' },
+                    { id: 'BAKE-TRAIN-02', description: "Enforce handwashing protocols before starting work and between tasks.", priority: 'High', riskLevel: 'High', proof: 'Hygiene Audit', location: 'Production' },
+                    { id: 'BAKE-TRAIN-03', description: "Train staff on the \"no jewelry\" policy in production areas.", priority: 'High', riskLevel: 'High', proof: 'Policy Acknowledgement', location: 'HR File' },
+                    { id: 'BAKE-TRAIN-04', description: "Provide documented training on food safety and allergen management.", priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR File' },
+                    { id: 'BAKE-TRAIN-05', description: "Ensure staff report any illness and are not allowed to work with food if sick.", priority: 'High', riskLevel: 'High', proof: 'Sick Leave Policy', location: 'HR' },
+                    { id: 'BAKE-TRAIN-06', description: "Keep training records up to date for all employees.", priority: 'High', riskLevel: 'Medium', proof: 'Master Training File', location: 'HR' },
+                    { id: 'BAKE-TRAIN-07', description: "Conduct refresher training annually.", priority: 'High', riskLevel: 'Medium', proof: 'Refresher Training Log', location: 'HR' },
+                    { id: 'BAKE-TRAIN-08', description: "Post hygiene reminders in staff areas.", priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'Staff Areas' },
+                ]
+            },
+            {
+                title: "Pest Control Management",
+                department: "Hygiene",
+                frequency: "Weekly",
+                role: "Hygiene Supervisor",
+                icon: <Bug />,
+                summary: "A proactive approach to keep the bakery free of pests.",
+                tasks: [
+                    { id: 'BAKE-PEST-01', description: "Inspect for signs of pests (droppings, gnaw marks) weekly.", priority: 'High', riskLevel: 'High', proof: 'Pest Inspection Log', location: 'All Areas' },
+                    { id: 'BAKE-PEST-02', description: "Ensure all doors and windows have screens and are kept closed.", priority: 'High', riskLevel: 'High', proof: 'Structural Audit', location: 'Perimeter' },
+                    { id: 'BAKE-PEST-03', description: "Manage waste disposal to not attract pests.", priority: 'High', riskLevel: 'High', proof: 'Waste Management Log', location: 'Waste Area' },
+                    { id: 'BAKE-PEST-04', description: "Review and file the monthly report from the professional pest control vendor.", priority: 'High', riskLevel: 'High', proof: 'Vendor Report', location: 'Office' },
+                    { id: 'BAKE-PEST-05', description: "Keep ingredients in sealed containers.", priority: 'High', riskLevel: 'High', proof: 'Storage Audit', location: 'Stores' },
+                    { id: 'BAKE-PEST-06', description: "Eliminate any standing water sources.", priority: 'High', riskLevel: 'Medium', proof: 'Water Source Check', location: 'All Areas' },
+                    { id: 'BAKE-PEST-07', description: "Install and maintain insect light traps.", priority: 'High', riskLevel: 'Medium', proof: 'Trap Maintenance Log', location: 'Production Area' },
+                    { id: 'BAKE-PEST-08', description: "Seal any cracks or holes in walls and floors.", priority: 'High', riskLevel: 'High', proof: 'Structural Maintenance Log', location: 'All Areas' },
+                ]
+            }
         ]
     },
     // --- Hospitality ---
@@ -387,7 +507,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Hotels & Resorts",
         priceUSD: 99.99,
         priceINR: 7999,
-        paymentId: 'pl_RMnb42oApd90f0',
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Hospitality",
         description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
         icon: <Building />,
@@ -1274,7 +1394,7 @@ export const premiumPacks: PremiumPack[] = [
             tasks: [
                 { id: 'DEMO-08', description: "The 'Demo Unit' checklist includes a daily check for overheating charging stations, which would have identified the faulty laptop charger before it could cause a fire.", sourceChecklist: "Demo Unit Pre-Opening Checklist", priority: 'High' },
                 { id: 'ELEC-01', description: "The 'Electrical Safety' SOP mandates periodic Portable Appliance Testing (PAT), which would have formally identified the faulty device and removed it from service.", sourceChecklist: "Electrical Safety & PAT Testing", priority: 'High' },
-                { id: 'POS-RECON-03', description: "The 'POS Reconciliation' checklist includes verifying that CCTV is operational, providing crucial evidence for any incident investigation.", sourceChecklist: "POS & Payment Reconciliation", priority: 'High' }
+                { id: 'POS-RECON-03', description: "The 'POS Reconciliation' checklist includes verifying that CCTV is operational, providing crucial evidence for any incident investigation.", sourceChecklist: "POS & Payment Reconciliation", priority: 'Medium' }
             ]
         },
         globalStandards: {
@@ -3893,6 +4013,8 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
+
 
 
 
