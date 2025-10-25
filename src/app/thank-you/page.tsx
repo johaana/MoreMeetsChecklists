@@ -35,68 +35,124 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         font: { bold: true, color: { rgb: "FFFFFF" } },
         fill: { fgColor: { rgb: "0A2540" } }
     };
+     const footerStyle = {
+        font: { italic: true, sz: 10 }
+    };
+
+    let checklists: PackChecklist[] = [];
+    let packTitle = item.title;
 
     if (type === 'pack') {
         const pack = item as PremiumPack;
-        const allChecklists = pack.id === 'personalized_pack' 
+        packTitle = pack.title;
+        checklists = pack.id === 'personalized_pack' 
           ? premiumPacks.flatMap(p => p.checklists)
           : pack.checklists;
-
-        allChecklists.forEach(checklist => addChecklistSheet(workbook, checklist, headerStyle));
-        
-    } else if (type === 'individual') {
+    } else {
         const checklist = item as IndividualChecklist;
-        addChecklistSheet(workbook, {
+        packTitle = checklist.title;
+        checklists = [{
             title: checklist.title,
             tasks: checklist.tasks,
             department: checklist.category, // fallback
             frequency: 'N/A',
             role: 'N/A',
-            summary: checklist.longDescription
-        }, headerStyle);
+            summary: checklist.longDescription,
+            icon: checklist.icon
+        }];
     }
+    
+    // --- Cover Page ---
+    const coverPageName = "Cover Page";
+    const footerText = "Provided by MoreMeets | www.moremeets.com";
+
+    const coverPageHeader = [packTitle];
+    const coverPageData = [
+        [" "],
+        ["Click to navigate:"],
+        ["Checklist Title", "Department", "Frequency", "Role"],
+         ...checklists.map((checklist) => {
+            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+            return [
+                { v: checklist.title, f: formula },
+                checklist.department,
+                checklist.frequency,
+                checklist.role
+            ];
+        }),
+        [" "], 
+        [footerText] 
+    ];
+
+    const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
+    coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
+    
+    coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
+    
+    ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
+        if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
+    });
+
+    const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
+    for (let R = 4; R <= rangeLinks.e.r; ++R) { 
+        const address = utils.encode_cell({ r: R, c: 0 });
+        if (coverWorksheet[address] && coverWorksheet[address].f) {
+             coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+        }
+    }
+    
+    const footerRowIndex = rangeLinks.e.r;
+    const footerCellAddress = `A${footerRowIndex + 1}`;
+    if (coverWorksheet[footerCellAddress]) {
+        coverWorksheet[footerCellAddress].s = footerStyle;
+    }
+    
+    utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
+
+
+    // --- Individual Checklist Sheets ---
+    checklists.forEach(checklist => {
+        const checklistHeaders = [
+            'Task ID', 'Task Description', 'Priority', 'Risk Level', 
+            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+        ];
+        
+        const tasksForSheet = checklist.tasks.map(task => [
+            task.id,
+            task.description,
+            task.priority,
+            task.riskLevel,
+            task.proof,
+            'Pending',
+            '',
+            ''
+        ]);
+
+        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+        
+        worksheet['!cols'] = [
+            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
+            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
+        ];
+
+         const headerRange = utils.decode_range(worksheet['!ref']!);
+         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+            const address = utils.encode_cell({ r: 0, c: C });
+            if(worksheet[address]) {
+                worksheet[address].s = headerStyle;
+            }
+         }
+         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+
+        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+        utils.book_append_sheet(workbook, worksheet, sheetName);
+    });
 
     const fileName = item.title.replace(/ /g, '_') + '.xlsx';
     writeFile(workbook, fileName);
 };
-
-const addChecklistSheet = (workbook: any, checklist: PackChecklist, headerStyle: any) => {
-    const checklistHeaders = [
-        'Task ID', 'Task Description', 'Priority', 'Risk Level', 
-        'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-    ];
-    
-    const tasksForSheet = checklist.tasks.map(task => [
-        task.id,
-        task.description,
-        task.priority,
-        task.riskLevel,
-        task.proof,
-        'Pending',
-        '',
-        ''
-    ]);
-
-    const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-    const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-    
-    worksheet['!cols'] = [
-        { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-        { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-    ];
-
-     const headerRange = utils.decode_range(worksheet['!ref']!);
-     for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-        const address = utils.encode_cell({ r: 0, c: C });
-        if(worksheet[address]) {
-            worksheet[address].s = headerStyle;
-        }
-     }
-     worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
-    const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-    utils.book_append_sheet(workbook, worksheet, sheetName);
-}
 
 
 function ThankYouContent() {

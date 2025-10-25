@@ -210,12 +210,7 @@ export default function MasterAccessClientPage() {
 
     return (
          <div className="flex flex-col min-h-screen bg-background">
-            <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
-                <SiteHeader />
-                 <div className="ml-auto">
-                    <Button variant="outline" onClick={() => setIsAuthenticated(false)}>Logout</Button>
-                </div>
-            </header>
+            <SiteHeader />
             <main className="flex-1 py-12">
                 <div className="container px-4 md:px-6">
                      <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">

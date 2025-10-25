@@ -32,6 +32,7 @@ export function Footer() {
                     <Link href="/checklists" className="text-muted-foreground hover:text-foreground" prefetch={false}>Bestselling Checklists</Link>
                     <Link href="/#faq" className="text-muted-foreground hover:text-foreground" prefetch={false}>FAQ</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
+                    <Link href="/packs/animal_shelter_pack" className="text-muted-foreground hover:text-foreground" prefetch={false}>Social Impact (Free Resources)</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-end text-xs md:text-sm">
                     <h3 className="font-semibold">Legal</h3>

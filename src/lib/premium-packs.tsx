@@ -39,7 +39,7 @@ export type PremiumPack = {
     priceINR: number;
     paymentId: string;
     listId?: number; // Brevo List ID
-    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Free Resources";
+    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Free Resources" | "Franchise" | "Food & Beverage";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -57,101 +57,327 @@ export type PremiumPack = {
 
 export const premiumPacks: PremiumPack[] = [
     {
-        id: 'business-safety-essentials-kit',
-        title: "Business Safety Essentials Kit",
+        id: 'animal_shelter_pack',
+        title: "Animal Shelter Operations Pack",
         priceUSD: 0,
         priceINR: 0,
         paymentId: '',
-        listId: 6,
-        category: "Free Resources",
-        description: "A free starter kit with 5 essential safety checklists that every business needs to ensure a safe and compliant workplace.",
-        icon: <ShieldCheck />,
+        listId: 7,
+        category: "Social Cause",
+        description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
+        icon: <PawPrint />,
         badgeText: "Free Download",
         badgeVariant: "accent",
-        whoIsItFor: ["Business Owners", "Office Managers", "HR Professionals", "Facility Managers"],
+        whoIsItFor: ["Animal Shelter Managers", "NGO Founders", "Veterinarians", "Volunteer Coordinators"],
         sampleItems: [
-            { text: "Monthly fire safety audit to prevent hazards.", icon: <Siren /> },
-            { text: "First-aid kit stocking and inspection log.", icon: <HeartPulse /> },
-            { text: "General workplace hazard inspection checklist.", icon: <Search /> },
-            { text: "Basic electrical safety checks for non-electricians.", icon: <Zap /> },
-            { text: "Visitor & contractor sign-in protocol for security.", icon: <UserCheck /> },
+            { text: "Prevent disease outbreaks with rigorous cleaning, disinfection, and quarantine protocols.", icon: <Sparkles /> },
+            { text: "Ensure every animal's health with checklists for daily feeding, medication administration, and health monitoring.", icon: <Stethoscope /> },
+            { text: "Manage your population responsibly with SOPs for intake, vaccination, and spay/neuter programs.", icon: <Syringe /> },
+            { text: "Create a safe environment for animals and people with protocols for temperament testing and safe handling.", icon: <Users /> },
+            { text: "Increase adoptions with a structured process for counseling, home checks, and post-adoption follow-up.", icon: <Home /> },
+            { text: "Streamline your operations with checklists for volunteer management, inventory, and fundraising events.", icon: <ClipboardList /> }
         ],
+        previewScenario: {
+            title: "Preventing a Parvovirus Outbreak",
+            description: "A newly rescued puppy is brought to the shelter, unknowingly carrying the highly contagious parvovirus. This scenario shows how checklists prevent a devastating outbreak.",
+            tasks: [
+                { id: 'INTAKE-03', description: "The 'Animal Intake' protocol mandates that all new animals are placed in a separate quarantine area for a minimum of 7 days, preventing immediate contact with the general population.", sourceChecklist: "Animal Intake & Quarantine", priority: 'High' },
+                { id: 'VET-CARE-01', description: "The 'Veterinary Care' checklist requires a vet to examine the new puppy within 24 hours. The vet spots the early symptoms and initiates a parvo test.", sourceChecklist: "Veterinary Care & Health Monitoring", priority: 'High' },
+                { id: 'CLEAN-DIS-05', description: "Once confirmed, the 'Cleaning & Disinfection' SOP is activated. The quarantine area is deep-cleaned with a parvocidal disinfectant, and foot baths are placed, containing the virus and saving the lives of other animals.", sourceChecklist: "Cleaning & Disinfection Protocol", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Animal Welfare Best Practices",
+            standards: [
+                { name: "ASPCA Guidelines", description: "References best practices from the American Society for the Prevention of Cruelty to Animals." },
+                { name: "Humane Society Standards", description: "Guidelines for shelter operations and animal care." },
+                { name: "AWBI (India) Norms", description: "Compliance with the Animal Welfare Board of India regulations." },
+                { name: "Global Alliance for Rabies Control", description: "Protocols for vaccination and rabies prevention." }
+            ]
+        },
         checklists: [
+             {
+                title: "Animal Intake & Quarantine",
+                department: "Operations",
+                frequency: "Per Animal",
+                role: "Intake Coordinator",
+                icon: <PackageCheck />,
+                summary: "SOP for safely admitting new animals, including health screening and quarantine.",
+                tasks: [
+                    { id: 'INTAKE-01', description: 'Log all details of the incoming animal (source, species, age, condition).', priority: 'High', riskLevel: 'High', proof: 'Intake Form', location: 'Reception' },
+                    { id: 'INTAKE-02', description: 'Perform an initial health screening for obvious injuries or signs of disease.', priority: 'High', riskLevel: 'High', proof: 'Health Screening Form', location: 'Intake Room' },
+                    { id: 'INTAKE-03', description: 'Place all new animals in a designated quarantine area for a minimum period.', priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Quarantine Area' },
+                    { id: 'INTAKE-04', description: 'Provide fresh food, water, and clean bedding.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Quarantine Area' },
+                    { id: 'INTAKE-05', description: 'Administer prophylactic treatments (deworming, flea/tick) as per vet protocol.', priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Quarantine Area' },
+                    { id: 'INTAKE-06', description: 'Assign a unique ID number or tag to the animal.', priority: 'High', riskLevel: 'Medium', proof: 'ID Tag Application', location: 'Intake Room' },
+                    { id: 'INTAKE-07', description: 'Take a clear photograph of the animal for records and adoption profiles.', priority: 'High', riskLevel: 'Low', proof: 'Photo in System', location: 'Intake Room' },
+                    { id: 'INTAKE-08', description: 'Observe the animal\'s behavior and temperament.', priority: 'High', riskLevel: 'High', proof: 'Behavioral Notes', location: 'Quarantine Area' },
+                    { id: 'INTAKE-09', description: 'Create a file for the animal with all intake documentation.', priority: 'High', riskLevel: 'High', proof: 'Animal File', location: 'Office' },
+                    { id: 'INTAKE-10', description: 'Update the shelter management software with the new animal\'s details.', priority: 'High', riskLevel: 'High', proof: 'System Entry', location: 'System' },
+                ]
+            },
             {
-                title: "Monthly Fire Safety Audit",
-                department: "Safety",
+                title: "Cleaning & Disinfection Protocol",
+                department: "Hygiene",
+                frequency: "Daily",
+                role: "Kennel Staff",
+                icon: <Sparkles />,
+                summary: "Daily cleaning schedules and use of appropriate disinfectants to prevent disease spread.",
+                tasks: [
+                    { id: 'CLEAN-DIS-01', description: 'Clean and disinfect all animal enclosures daily.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Enclosures' },
+                    { id: 'CLEAN-DIS-02', description: 'Use a veterinarian-approved disinfectant at the correct dilution.', priority: 'High', riskLevel: 'High', proof: 'Chemical Log', location: 'Storage' },
+                    { id: 'CLEAN-DIS-03', description: 'Clean food and water bowls thoroughly every day.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Enclosures' },
+                    { id: 'CLEAN-DIS-04', description: 'Wash all bedding and toys regularly.', priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
+                    { id: 'CLEAN-DIS-05', description: 'Implement strict cleaning protocols for the quarantine and isolation areas.', priority: 'High', riskLevel: 'High', proof: 'Isolation Cleaning SOP', location: 'Quarantine/Isolation' },
+                    { id: 'CLEAN-DIS-06', description: 'Dispose of animal waste properly and hygienically.', priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
+                    { id: 'CLEAN-DIS-07', description: 'Clean common areas, including staff and visitor areas.', priority: 'High', riskLevel: 'Medium', proof: 'Common Area Cleaning Log', location: 'Entire Facility' },
+                    { id: 'CLEAN-DIS-08', description: 'Use separate cleaning equipment for different areas (e.g., quarantine, general population).', priority: 'High', riskLevel: 'High', proof: 'Equipment Color Coding', location: 'Storage' },
+                    { id: 'CLEAN-DIS-09', description: 'Train staff on all cleaning and disinfection procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'CLEAN-DIS-10', description: 'Perform a deep clean of the entire facility monthly.', priority: 'High', riskLevel: 'High', proof: 'Deep Clean Log', location: 'Entire Facility' },
+                ]
+            },
+            {
+                title: "Veterinary Care & Health Monitoring",
+                department: "Medical",
+                frequency: "Daily",
+                role: "Vet/Para-Vet",
+                icon: <Stethoscope />,
+                summary: "Daily health checks, medication logs, and protocols for managing sick animals.",
+                tasks: [
+                    { id: 'VET-CARE-01', description: 'Conduct a daily health check of every animal in the shelter.', priority: 'High', riskLevel: 'High', proof: 'Daily Health Log', location: 'Enclosures' },
+                    { id: 'VET-CARE-02', description: 'Administer all prescribed medications and log them accurately.', priority: 'High', riskLevel: 'High', proof: 'Medication Administration Record (MAR)', location: 'Enclosures' },
+                    { id: 'VET-CARE-03', description: 'Isolate any animal showing signs of infectious disease immediately.', priority: 'High', riskLevel: 'High', proof: 'Isolation Log', location: 'Isolation Area' },
+                    { id: 'VET-CARE-04', description: 'Maintain a vaccination and deworming schedule for all animals.', priority: 'High', riskLevel: 'High', proof: 'Vaccination Records', location: 'System' },
+                    { id: 'VET-CARE-05', description: 'Manage a spay/neuter program for all eligible animals.', priority: 'High', riskLevel: 'High', proof: 'Surgery Log', location: 'Clinic' },
+                    { id: 'VET-CARE-06', description: 'Keep detailed medical records for every animal.', priority: 'High', riskLevel: 'High', proof: 'Medical Files', location: 'Office' },
+                    { id: 'VET-CARE-07', description: 'Maintain a well-stocked and organized veterinary clinic.', priority: 'High', riskLevel: 'High', proof: 'Clinic Inventory', location: 'Clinic' },
+                    { id: 'VET-CARE-08', description: 'Have a clear protocol for veterinary emergencies.', priority: 'High', riskLevel: 'High', proof: 'Emergency SOP', location: 'Office' },
+                    { id: 'VET-CARE-09', description: 'Coordinate with external veterinary specialists when needed.', priority: 'High', riskLevel: 'High', proof: 'Specialist Referral Log', location: 'Office' },
+                    { id: 'VET-CARE-10', description: 'Provide special care for geriatric, pediatric, or special needs animals.', priority: 'High', riskLevel: 'High', proof: 'Special Needs Care Plan', location: 'Special Care Area' },
+                ]
+            },
+            {
+                title: "Adoption & Counseling Process",
+                department: "Adoptions",
+                frequency: "Per Adoption",
+                role: "Adoption Counselor",
+                icon: <Home />,
+                summary: "A structured process to ensure animals are placed in suitable, loving homes.",
+                tasks: [
+                    { id: 'ADOPT-01', description: 'Counsel potential adopters on the responsibilities of pet ownership.', priority: 'High', riskLevel: 'Medium', proof: 'Counseling Checklist', location: 'Adoption Office' },
+                    { id: 'ADOPT-02', description: 'Have potential adopters fill out a detailed application form.', priority: 'High', riskLevel: 'Medium', proof: 'Adoption Application', location: 'Adoption Office' },
+                    { id: 'ADOPT-03', description: 'Conduct a home check (virtual or physical) for first-time pet owners.', priority: 'High', riskLevel: 'Medium', proof: 'Home Check Report', location: 'Office' },
+                    { id: 'ADOPT-04', description: 'Match the right animal with the right family based on temperament and lifestyle.', priority: 'High', riskLevel: 'Medium', proof: 'Matchmaking Notes', location: 'Adoption Office' },
+                    { id: 'ADOPT-05', description: 'Complete all adoption paperwork, including an adoption contract.', priority: 'High', riskLevel: 'High', proof: 'Signed Adoption Contract', location: 'Adoption Office' },
+                    { id: 'ADOPT-06', description: 'Provide the adopter with the animal\'s medical history and vaccination records.', priority: 'High', riskLevel: 'High', proof: 'Medical File Handover', location: 'Adoption Office' },
+                    { id: 'ADOPT-07', description: 'Educate the adopter on the animal\'s diet, exercise, and grooming needs.', priority: 'High', riskLevel: 'Medium', proof: 'Adopter Education Checklist', location: 'Adoption Office' },
+                    { id: 'ADOPT-08', description: 'Conduct a post-adoption follow-up call or visit within two weeks.', priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Log', location: 'System' },
+                    { id: 'ADOPT-09', description: 'Have a clear policy for handling returned animals.', priority: 'High', riskLevel: 'High', proof: 'Return Policy Document', location: 'Office' },
+                    { id: 'ADOPT-10', description: 'Update the animal\'s status to "Adopted" in the shelter management system.', priority: 'High', riskLevel: 'High', proof: 'System Update', location: 'System' },
+                ]
+            },
+        ]
+    },
+    {
+        id: 'franchise_operations_pack',
+        title: "Franchise Operations Pack",
+        priceUSD: 49.99,
+        priceINR: 1999,
+        paymentId: 'pl_RMnb42oApd90f0',
+        category: "Franchise",
+        description: "A complete toolkit for franchisors to ensure brand consistency, operational excellence, and compliance across all franchise locations.",
+        icon: <Store />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["Franchise Owners", "Heads of Franchise Operations", "Regional Managers", "Franchise Business Coaches"],
+        sampleItems: [
+            { text: "Ensure a consistent brand experience with a detailed brand and visual identity audit.", icon: <Eye /> },
+            { text: "Maintain quality standards with SOPs for product/service delivery and customer service.", icon: <Sparkles /> },
+            { text: "Improve franchisee performance with a structured process for monthly reporting and business reviews.", icon: <BarChart3 /> },
+            { text: "Protect your brand with a system for local marketing compliance and approvals.", icon: <Megaphone /> },
+            { text: "Streamline franchisee onboarding with a comprehensive checklist for new location setup.", icon: <KeyRound /> },
+            { text: "Ensure financial health with royalty fee reconciliation and financial audit procedures.", icon: <DollarSign /> }
+        ],
+        previewScenario: {
+            title: "Handling a Rogue Franchisee",
+            description: "A franchisee starts using unapproved marketing materials and discounting products, damaging the brand. This scenario shows how checklists help regain control.",
+            tasks: [
+                { id: 'BRAND-AUDIT-01', description: "The 'Brand & Visual Identity Audit' checklist, used during a surprise visit, immediately flags the non-compliant marketing materials and store signage.", sourceChecklist: "Brand & Visual Identity Audit", priority: 'High' },
+                { id: 'FIN-AUDIT-03', description: "The 'Financial Audit' SOP identifies unauthorized discounting by reconciling POS data against the standard pricing.", sourceChecklist: "Franchisee Financial Audit", priority: 'High' },
+                { id: 'PERF-REVIEW-04', description: "The 'Performance Review' process provides a formal framework to present these breaches to the franchisee and create a time-bound corrective action plan, with clear consequences for non-compliance as per the franchise agreement.", sourceChecklist: "Monthly Performance Review", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with International Franchise Standards",
+            standards: [
+                { name: "IFA Code of Ethics", description: "Principles from the International Franchise Association." },
+                { name: "FTC Franchise Rule", description: "References disclosure requirements from the U.S. Federal Trade Commission." },
+                { name: "Franchise Agreement Law", description: "Ensures compliance with general principles of contract and commercial law." },
+                { name: "ISO 9001", description: "For ensuring consistent quality management across locations." }
+            ]
+        },
+        checklists: [
+             {
+                title: "New Franchisee Onboarding",
+                department: "Onboarding",
+                frequency: "Per New Franchisee",
+                role: "Onboarding Manager",
+                icon: <KeyRound />,
+                summary: "A complete checklist from site selection and legal paperwork to staff training and grand opening.",
+                tasks: [
+                    { id: 'FR-ONBOARD-01', description: 'Verify final site selection and lease agreement.', priority: 'High', riskLevel: 'High', proof: 'Signed Lease', location: 'Legal File' },
+                    { id: 'FR-ONBOARD-02', description: 'Execute the franchise agreement and collect initial fees.', priority: 'High', riskLevel: 'High', proof: 'Signed Agreement & Receipt', location: 'Legal File' },
+                    { id: 'FR-ONBOARD-03', description: 'Provide the franchisee with the complete operations manual.', priority: 'High', riskLevel: 'High', proof: 'Manual Handover Form', location: 'Office' },
+                    { id: 'FR-ONBOARD-04', description: 'Manage the store fit-out process according to brand guidelines.', priority: 'High', riskLevel: 'High', proof: 'Fit-out Completion Report', location: 'New Location' },
+                    { id: 'FR-ONBOARD-05', description: 'Train the franchisee and their key staff on all operational procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Certificates', location: 'Training Center' },
+                    { id: 'FR-ONBOARD-06', description: 'Set up POS, inventory, and other required software systems.', priority: 'High', riskLevel: 'High', proof: 'System Setup Log', location: 'New Location' },
+                    { id: 'FR-ONBOARD-07', description: 'Coordinate initial inventory and supply chain setup.', priority: 'High', riskLevel: 'High', proof: 'First PO', location: 'New Location' },
+                    { id: 'FR-ONBOARD-08', description: 'Plan and execute a grand opening marketing campaign.', priority: 'High', riskLevel: 'Medium', proof: 'Marketing Plan', location: 'Marketing Dept' },
+                    { id: 'FR-ONBOARD-09', description: 'Provide on-site support for the first week of operations.', priority: 'High', riskLevel: 'High', proof: 'Support Log', location: 'New Location' },
+                    { id: 'FR-ONBOARD-10', description: 'Schedule the first 90-day performance review.', priority: 'High', riskLevel: 'Medium', proof: 'Calendar Invite', location: 'Office' },
+                ]
+            },
+            {
+                title: "Brand & Visual Identity Audit",
+                department: "Operations",
+                frequency: "Quarterly",
+                role: "Field Manager",
+                icon: <Eye />,
+                summary: "A quarterly audit to ensure every franchise location is perfectly aligned with the brand's look and feel.",
+                tasks: [
+                    { id: 'BRAND-AUDIT-01', description: 'Check that all interior and exterior signage is correct and in good condition.', priority: 'High', riskLevel: 'High', proof: 'Photo Audit', location: 'Franchise Location' },
+                    { id: 'BRAND-AUDIT-02', description: 'Verify staff uniforms are clean, correct, and worn properly.', priority: 'High', riskLevel: 'Medium', proof: 'Staff Inspection', location: 'Franchise Location' },
+                    { id: 'BRAND-AUDIT-03', description: 'Ensure all marketing materials on display are current and brand-approved.', priority: 'High', riskLevel: 'High', proof: 'Marketing Material Audit', location: 'Franchise Location' },
+                    { id: 'BRAND-AUDIT-04', description: 'Audit store cleanliness, lighting, and ambiance.', priority: 'High', riskLevel: 'High', proof: 'Ambiance Checklist', location: 'Franchise Location' },
+                    { id: 'BRAND-AUDIT-05', description: 'Check that product/service presentation meets brand standards.', priority: 'High', riskLevel: 'High', proof: 'Product Display Audit', location: 'Franchise Location' },
+                    { id: 'BRAND-AUDIT-06', description: 'Review local social media and advertising for brand compliance.', priority: 'High', riskLevel: 'High', proof: 'Social Media Review', location: 'Online' },
+                    { id: 'BRAND-AUDIT-07', description: 'Ensure the correct brand music or scent profile is being used, if applicable.', priority: 'Medium', riskLevel: 'Low', proof: 'Sensory Audit', location: 'Franchise Location' },
+                    { id: 'BRAND-AUDIT-08', description: 'Provide a detailed report to the franchisee with required corrective actions.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'System' },
+                    { id: 'BRAND-AUDIT-09', description: 'Follow up to ensure all corrective actions are completed.', priority: 'High', riskLevel: 'High', proof: 'Follow-up Report', location: 'System' },
+                    { id: 'BRAND-AUDIT-10', description: 'Share best practices from high-performing franchisees.', priority: 'Medium', riskLevel: 'Low', proof: 'Best Practice Email', location: 'System' },
+                ]
+            },
+            {
+                title: "Monthly Performance Review",
+                department: "Operations",
                 frequency: "Monthly",
-                role: "Safety Officer",
-                icon: <Siren />,
-                summary: "A universal checklist to ensure your workplace is compliant with basic fire safety standards, covering extinguishers, exits, and alarms.",
+                role: "Franchise Manager",
+                icon: <BarChart3 />,
+                summary: "A structured agenda for monthly review meetings to discuss sales, operations, and marketing performance.",
                 tasks: [
-                    { id: 'FSA-01', description: 'Check that all fire extinguishers are in their designated locations and unobstructed.', priority: 'High', riskLevel: 'High', proof: 'Visual Confirmation Log', location: 'All Areas' },
-                    { id: 'FSA-02', description: 'Inspect extinguisher pressure gauges to ensure they are in the green zone.', priority: 'High', riskLevel: 'High', proof: 'Gauge Photo Log', location: 'All Areas' },
-                    { id: 'FSA-03', description: 'Verify that all emergency exit paths and doorways are completely clear of obstructions.', priority: 'High', riskLevel: 'High', proof: 'Photo of Exit Paths', location: 'All Areas' },
-                    { id: 'FSA-04', description: 'Test smoke detectors and fire alarms to ensure they are functional.', priority: 'High', riskLevel: 'High', proof: 'Alarm Test Log', location: 'Control Panel' },
-                    { id: 'FSA-05', description: 'Check that all emergency lighting fixtures illuminate when tested.', priority: 'High', riskLevel: 'High', proof: 'Lighting Test Log', location: 'All Areas' },
+                    { id: 'PERF-REVIEW-01', description: 'Review franchisee\'s monthly sales data against targets.', priority: 'High', riskLevel: 'High', proof: 'Sales Report', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-02', description: 'Analyze key operational KPIs (e.g., customer satisfaction, speed of service).', priority: 'High', riskLevel: 'High', proof: 'KPI Dashboard', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-03', description: 'Discuss successes, challenges, and support needed from the franchisor.', priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-04', description: 'Develop a joint action plan for the upcoming month.', priority: 'High', riskLevel: 'High', proof: 'Action Plan Document', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-05', description: 'Review local marketing initiatives and results.', priority: 'High', riskLevel: 'Medium', proof: 'Marketing Report', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-06', description: 'Address any outstanding compliance issues from previous audits.', priority: 'High', riskLevel: 'High', proof: 'Compliance Tracker', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-07', description: 'Provide updates on new products, services, or brand-wide campaigns.', priority: 'High', riskLevel: 'Medium', proof: 'Update Presentation', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-08', description: 'Review franchisee\'s P&L statement and discuss profitability.', priority: 'High', riskLevel: 'High', proof: 'P&L Statement', location: 'Meeting' },
+                    { id: 'PERF-REVIEW-09', description: 'Document all discussions and action items.', priority: 'High', riskLevel: 'High', proof: 'Signed Meeting Minutes', location: 'System' },
+                    { id: 'PERF-REVIEW-10', description: 'Schedule the next performance review meeting.', priority: 'High', riskLevel: 'Low', proof: 'Calendar Invite', location: 'System' },
+                ]
+            },
+        ]
+    },
+    {
+        id: 'bakery_confectionery_pack',
+        title: "Bakery & Confectionery Operations Pack",
+        priceUSD: 49.99,
+        priceINR: 1999,
+        paymentId: 'pl_RMnaU5w95a7x3k',
+        category: "Food & Beverage",
+        description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
+        icon: <CakeSlice />,
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
+        sampleItems: [
+            { text: "Achieve perfect results every time with recipe scaling and dough management checklists.", icon: <ClipboardList /> },
+            { text: "Ensure food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: <ShieldCheck /> },
+            { text: "Maintain equipment precision with SOPs for oven calibration and mixer maintenance.", icon: <Wrench /> },
+            { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: '🔄' },
+            { text: "Guarantee compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: <FileCheck /> },
+            { text: "Streamline your custom order process from client briefing to final delivery.", icon: <Package /> }
+        ],
+        previewScenario: {
+            title: "Handling a Major Allergen Incident",
+            description: "A customer with a severe nut allergy has a reaction after eating a product they were told was nut-free. This shows how checklists prevent this critical failure.",
+            tasks: [
+                { id: 'ALLERGEN-BAKE-01', description: "The 'Allergen Management' SOP requires a clear, color-coded system separating allergen-free production from regular production, preventing cross-contamination.", sourceChecklist: "Allergen Management & Control", priority: 'High' },
+                { id: 'LABEL-01', description: "The 'Packaging & Labeling' checklist mandates that every single product is labeled with a full ingredient list and bolded allergens, providing a final safety net for the customer.", sourceChecklist: "Packaging & Labeling Compliance", priority: 'High' },
+                { id: 'TRAIN-BAKE-04', description: "The 'Staff Training' SOP includes mandatory training on how to answer customer questions about allergens, ensuring staff never give incorrect information.", sourceChecklist: "Staff Hygiene & Training", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Global Baking & Food Safety Standards",
+            standards: [
+                { name: "FSSAI", description: "Compliance with Indian food safety and labeling laws." },
+                { name: "HACCP", description: "System for managing food safety hazards in baking." },
+                { name: "BRCGS", description: "Global standard for food safety, often required by major retailers." },
+                { name: "Codex Alimentarius", description: "International food standards, guidelines, and codes of practice." }
+            ]
+        },
+        checklists: [
+             {
+                title: "Opening & Baking Prep Checklist",
+                department: "Production",
+                frequency: "Daily",
+                role: "Head Baker",
+                icon: <ClipboardList />,
+                summary: "A checklist to start the day right: oven pre-heating, mixer inspection, and preparing the day's production schedule.",
+                tasks: [
+                    { id: 'BAKE-OPEN-01', description: 'Pre-heat all ovens to their required temperatures for the first bake.', priority: 'High', riskLevel: 'Medium', proof: 'Oven Temperature Log', location: 'Oven Area' },
+                    { id: 'BAKE-OPEN-02', description: 'Inspect mixers and other equipment for cleanliness and functionality.', priority: 'High', riskLevel: 'High', proof: 'Equipment Check Log', location: 'Production Area' },
+                    { id: 'BAKE-OPEN-03', description: 'Review the day\'s production schedule and special orders.', priority: 'High', riskLevel: 'High', proof: 'Production Sheet', location: 'Office' },
+                    { id: 'BAKE-OPEN-04', description: 'Pull all required ingredients from storage based on the production plan.', priority: 'High', riskLevel: 'Medium', proof: 'Ingredient Pull Sheet', location: 'Stores' },
+                    { id: 'BAKE-OPEN-05', description: 'Calibrate weighing scales.', priority: 'High', riskLevel: 'High', proof: 'Scale Calibration Log', location: 'Weighing Area' },
+                    { id: 'BAKE-OPEN-06', description: 'Ensure all staff are present and have their hairnets and aprons on.', priority: 'High', riskLevel: 'Medium', proof: 'Staff Hygiene Check', location: 'Production Area' },
+                    { id: 'BAKE-OPEN-07', description: 'Check that all work surfaces are sanitized before starting.', priority: 'High', riskLevel: 'High', proof: 'Sanitization Log', location: 'Production Area' },
+                    { id: 'BAKE-OPEN-08', description: 'Prepare and scale out base doughs and batters for the day.', priority: 'High', riskLevel: 'High', proof: 'Scaling Sheets', location: 'Mixing Area' },
+                    { id: 'BAKE-OPEN-09', description: 'Check proofer and retarder temperatures and humidity.', priority: 'High', riskLevel: 'High', proof: 'Temperature Log', location: 'Proofing Area' },
+                    { id: 'BAKE-OPEN-10', description: 'Brief the team on the daily plan and any specific instructions.', priority: 'High', riskLevel: 'Medium', proof: 'Briefing Notes', location: 'Production Area' },
                 ]
             },
             {
-                title: "Workplace First-Aid Kit Checklist",
-                department: "HR/Admin",
-                frequency: "Monthly",
-                role: "Admin Manager",
-                icon: <HeartPulse />,
-                summary: "A checklist to ensure your workplace first-aid kit is always stocked, compliant, and ready for any minor medical incident.",
+                title: "Allergen Management & Control",
+                department: "Quality/Production",
+                frequency: "Ongoing",
+                role: "QA Manager",
+                icon: <ShieldCheck />,
+                summary: "SOPs to prevent cross-contamination, including separate storage, color-coded utensils, and clear labeling.",
                 tasks: [
-                    { id: 'FAK-01', description: 'Check inventory of all items against the standard first-aid kit contents list.', priority: 'High', riskLevel: 'Medium', proof: 'Inventory Sheet', location: 'First-Aid Station' },
-                    { id: 'FAK-02', description: 'Check expiry dates of all medications and ointments (e.g., antiseptic wipes, pain relievers).', priority: 'High', riskLevel: 'Medium', proof: 'Expiry Date Log', location: 'First-Aid Station' },
-                    { id: 'FAK-03', description: 'Restock any used items (e.g., bandages, gauze, adhesive tape).', priority: 'High', riskLevel: 'Medium', proof: 'Restock Order Form', location: 'First-Aid Station' },
-                    { id: 'FAK-04', description: 'Ensure the first-aid kit is stored in a clearly marked and easily accessible location.', priority: 'High', riskLevel: 'Medium', proof: 'Location Photo', location: 'First-Aid Station' },
-                    { id: 'FAK-05', description: 'Verify the incident log book is present with the kit and has blank pages.', priority: 'Medium', riskLevel: 'Low', proof: 'Visual Check', location: 'First-Aid Station' },
+                    { id: 'ALLERGEN-BAKE-01', description: 'Store allergenic ingredients (like nuts, soy, dairy) in separate, clearly labeled containers.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Photo', location: 'Stores' },
+                    { id: 'ALLERGEN-BAKE-02', description: 'Use color-coded utensils and equipment for preparing allergen-free items.', priority: 'High', riskLevel: 'High', proof: 'Visual Audit', location: 'Production Area' },
+                    { id: 'ALLERGEN-BAKE-03', description: 'Thoroughly clean and sanitize surfaces and equipment between batches with and without allergens.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Production Area' },
+                    { id: 'ALLERGEN-BAKE-04', description: 'Schedule production of allergen-free items first thing in the morning after a deep clean.', priority: 'High', riskLevel: 'High', proof: 'Production Schedule', location: 'Office' },
+                    { id: 'ALLERGEN-BAKE-05', description: 'Maintain an accurate allergen matrix for all products.', priority: 'High', riskLevel: 'High', proof: 'Allergen Matrix Document', location: 'Office' },
+                    { id: 'ALLERGEN-BAKE-06', description: 'Train all staff on the risks of cross-contamination and how to handle allergen-related queries.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
+                    { id: 'ALLERGEN-BAKE-07', description: 'Clearly label all finished products with allergen warnings.', priority: 'High', riskLevel: 'High', proof: 'Label Check', location: 'Packaging Area' },
+                    { id: 'ALLERGEN-BAKE-08', description: 'Have a clear procedure for handling a customer allergen reaction incident.', priority: 'High', riskLevel: 'High', proof: 'Incident SOP', location: 'Office' },
+                    { id: 'ALLERGEN-BAKE-09', description: 'Verify raw material specs with suppliers to check for hidden allergens.', priority: 'High', riskLevel: 'High', proof: 'Supplier Spec Sheet', location: 'Procurement' },
+                    { id: 'ALLERGEN-BAKE-10', description: 'Conduct periodic allergen testing on surfaces and finished products.', priority: 'High', riskLevel: 'High', proof: 'Lab Test Report', location: 'Lab' },
                 ]
             },
             {
-                title: "General Workplace Hazard Inspection",
-                department: "Facilities/Safety",
-                frequency: "Weekly",
-                role: "Facility Manager",
-                icon: <Search />,
-                summary: "A weekly walk-around checklist to proactively identify and mitigate common workplace hazards before they cause an accident.",
+                title: "Packaging & Labeling Compliance",
+                department: "Packaging",
+                frequency: "Per Batch",
+                role: "Packaging Supervisor",
+                icon: <FileCheck />,
+                summary: "A checklist to ensure all packaging complies with FSSAI regulations, including ingredient lists, nutritional info, and expiry dates.",
                 tasks: [
-                    { id: 'GWH-01', description: 'Inspect all walkways and floors for trip hazards (e.g., loose cables, carpets, spills).', priority: 'High', riskLevel: 'High', proof: 'Inspection Log', location: 'All Areas' },
-                    { id: 'GWH-02', description: 'Check that heavy items are not stored on high shelves.', priority: 'High', riskLevel: 'High', proof: 'Storage Audit Photo', location: 'Storage Rooms' },
-                    { id: 'GWH-03', description: 'Ensure all areas are adequately lit.', priority: 'Medium', riskLevel: 'Medium', proof: 'Lighting Check Log', location: 'All Areas' },
-                    { id: 'GWH-04', description: 'Verify that all wet floor signs are available and in good condition.', priority: 'High', riskLevel: 'Medium', proof: 'Signage Check', location: 'Janitor Closet' },
-                    { id: 'GWH-05', description: 'Check that office furniture (chairs, desks) is stable and in good repair.', priority: 'Medium', riskLevel: 'Medium', proof: 'Furniture Audit', location: 'Office Areas' },
+                    { id: 'LABEL-01', description: 'Verify the ingredient list is accurate and complete for the specific batch.', priority: 'High', riskLevel: 'High', proof: 'Label vs Recipe Check', location: 'Packaging Area' },
+                    { id: 'LABEL-02', description: 'Ensure all allergens are correctly declared and highlighted as per FSSAI norms.', priority: 'High', riskLevel: 'High', proof: 'Allergen Declaration Check', location: 'Packaging Area' },
+                    { id: 'LABEL-03', description: 'Check that the manufacturing date and "Best Before" date are correctly printed.', priority: 'High', riskLevel: 'High', proof: 'Date Code Verification', location: 'Packaging Area' },
+                    { id: 'LABEL-04', description: 'Ensure the nutritional information is accurate and formatted correctly.', priority: 'High', riskLevel: 'Medium', proof: 'Nutritional Panel Audit', location: 'Packaging Area' },
+                    { id: 'LABEL-05', description: 'Verify the FSSAI license number is correctly displayed on the package.', priority: 'High', riskLevel: 'High', proof: 'FSSAI License Check', location: 'Packaging Area' },
+                    { id: 'LABEL-06', description: 'Check for the vegetarian/non-vegetarian logo.', priority: 'High', riskLevel: 'High', proof: 'Logo Check', location: 'Packaging Area' },
+                    { id: 'LABEL-07', description: 'Ensure the net weight is correctly stated.', priority: 'High', riskLevel: 'High', proof: 'Weight Check', location: 'Packaging Area' },
+                    { id: 'LABEL-08', description: 'Inspect packaging for tears, correct sealing, and overall quality.', priority: 'High', riskLevel: 'Medium', proof: 'Package Integrity Check', location: 'Packaging Area' },
+                    { id: 'LABEL-09', description: 'Store packaging materials in a clean, dry, and pest-free environment.', priority: 'High', riskLevel: 'Medium', proof: 'Storage Audit', location: 'Packaging Store' },
+                    { id: 'LABEL-10', description: 'Maintain a record of each batch\'s packaging and labeling checks.', priority: 'High', riskLevel: 'High', proof: 'Packaging QC Log', location: 'System' },
                 ]
             },
-            {
-                title: "Basic Electrical Safety Checklist",
-                department: "Admin/Facilities",
-                frequency: "Monthly",
-                role: "Admin Supervisor",
-                icon: <Zap />,
-                summary: "A non-technical checklist to spot common electrical hazards that are a leading cause of workplace fires and accidents.",
-                tasks: [
-                    { id: 'BES-01', description: 'Inspect for any "daisy-chained" multi-plugs or extension cords plugged into other extension cords.', priority: 'High', riskLevel: 'High', proof: 'Photo of Violation', location: 'All Areas' },
-                    { id: 'BES-02', description: 'Check for any frayed, cracked, or damaged electrical cords on equipment.', priority: 'High', riskLevel: 'High', proof: 'Damage Report', location: 'All Areas' },
-                    { id: 'BES-03', description: 'Ensure electrical panels are unobstructed and easily accessible (at least 3 feet of clearance).', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Utility Areas' },
-                    { id: 'BES-04', description: 'Verify that no electrical cords are running under carpets or across doorways where they can be damaged.', priority: 'High', riskLevel: 'High', proof: 'Visual Inspection', location: 'All Areas' },
-                    { id: 'BES-05', description: 'Report any outlets or switches that are hot to the touch to facility maintenance immediately.', priority: 'High', riskLevel: 'High', proof: 'Maintenance Ticket', location: 'All Areas' },
-                ]
-            },
-            {
-                title: "Visitor & Contractor Sign-In Protocol",
-                department: "Security/Reception",
-                frequency: "Per Visitor",
-                role: "Receptionist",
-                icon: <UserCheck />,
-                summary: "A simple protocol to ensure every non-employee is accounted for, enhancing security and accountability.",
-                tasks: [
-                    { id: 'VCS-01', description: 'Ensure every visitor signs the logbook with their name, company, contact person, and time of entry.', priority: 'High', riskLevel: 'Medium', proof: 'Visitor Logbook', location: 'Reception' },
-                    { id: 'VCS-02', description: 'Issue a numbered visitor badge to every guest.', priority: 'High', riskLevel: 'Medium', proof: 'Badge Issue Log', location: 'Reception' },
-                    { id: 'VCS-03', description: 'Verify the identity of contractors against a pre-approved list from facility management.', priority: 'High', riskLevel: 'High', proof: 'Contractor Verification', location: 'Reception' },
-                    { id: 'VCS-04', description: 'Ensure every visitor is escorted by an employee or has their host notified.', priority: 'High', riskLevel: 'Medium', proof: 'Host Notification Log', location: 'Reception' },
-                    { id: 'VCS-05', description: 'Ensure every visitor signs out and returns their badge upon exiting.', priority: 'High', riskLevel: 'Medium', proof: 'Visitor Logbook', location: 'Reception' },
-                ]
-            }
         ]
     },
     // --- Hospitality ---
@@ -1757,7 +1983,7 @@ export const premiumPacks: PremiumPack[] = [
                     {id: 'WB-03', description: "Conduct a confidential investigation within a set timeline.", priority: 'High', riskLevel: 'High', proof: 'Investigation Plan', location: 'Office'},
                     {id: 'WB-04', description: "Provide protection against retaliation for the whistleblower.", priority: 'High', riskLevel: 'High', proof: 'Policy Document', location: 'HR'},
                     {id: 'WB-05', description: "Report findings and actions to the board's audit committee.", priority: 'High', riskLevel: 'High', proof: 'Board Report', location: 'Office'},
-                    {id: 'WB-06', description: 'Maintain confidentiality of the investigation.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Agreements', location: 'Office' },
+                    {id: 'WB-06', description: 'Maintain confidentiality throughout the process.', priority: 'High', riskLevel: 'High', proof: 'Confidentiality Agreements', location: 'Office' },
                     {id: 'WB-07', description: 'Document all investigation steps and evidence.', priority: 'High', riskLevel: 'High', proof: 'Investigation File', location: 'Office' },
                     {id: 'WB-08', description: 'Communicate the outcome to the whistleblower, if appropriate.', priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'Office' },
                     {id: 'WB-09', description: 'Take disciplinary action if the complaint is substantiated.', priority: 'High', riskLevel: 'High', proof: 'Disciplinary Action Record', location: 'HR' },
@@ -3175,11 +3401,11 @@ export const premiumPacks: PremiumPack[] = [
     },
     {
         id: 'ott_platform_pack',
-        title: "Film & OTT Production Pack",
+        title: "OTT Platform Operations Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Specialized Production",
+        category: "Entertainment & Events",
         description: "A comprehensive toolkit for OTT platform operations, covering content ingestion, quality control, live streaming, and infrastructure management.",
         icon: <MonitorPlay />,
         whoIsItFor: ["OTT Platform Owners", "Heads of Content Operations", "Chief Technology Officers (CTOs)", "SRE & DevOps Leads"],
@@ -3648,128 +3874,6 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
         ]
-    },
-     // --- Social Cause ---
-    {
-        id: 'animal_shelter_pack',
-        title: "Animal Shelter Operations Pack",
-        priceUSD: 49.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Social Cause",
-        description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
-        icon: <PawPrint />,
-        badgeText: "For NGOs",
-        badgeVariant: "accent",
-        whoIsItFor: ["Animal Shelter Managers", "NGO Founders", "Veterinarians", "Volunteer Coordinators"],
-        sampleItems: [
-            { text: "Prevent disease outbreaks with rigorous cleaning, disinfection, and quarantine protocols.", icon: <Sparkles /> },
-            { text: "Ensure every animal's health with checklists for daily feeding, medication administration, and health monitoring.", icon: <Stethoscope /> },
-            { text: "Manage your population responsibly with SOPs for intake, vaccination, and spay/neuter programs.", icon: <Syringe /> },
-            { text: "Create a safe environment for animals and people with protocols for temperament testing and safe handling.", icon: <Users /> },
-            { text: "Increase adoptions with a structured process for counseling, home checks, and post-adoption follow-up.", icon: <Home /> },
-            { text: "Streamline your operations with checklists for volunteer management, inventory, and fundraising events.", icon: <ClipboardList /> }
-        ],
-        previewScenario: {
-            title: "Preventing a Parvovirus Outbreak",
-            description: "A newly rescued puppy is brought to the shelter, unknowingly carrying the highly contagious parvovirus. This scenario shows how checklists prevent a devastating outbreak.",
-            tasks: [
-                { id: 'INTAKE-03', description: "The 'Animal Intake' protocol mandates that all new animals are placed in a separate quarantine area for a minimum of 7 days, preventing immediate contact with the general population.", sourceChecklist: "Animal Intake & Quarantine", priority: 'High' },
-                { id: 'VET-CARE-01', description: "The 'Veterinary Care' checklist requires a vet to examine the new puppy within 24 hours. The vet spots the early symptoms and initiates a parvo test.", sourceChecklist: "Veterinary Care & Health Monitoring", priority: 'High' },
-                { id: 'CLEAN-DIS-05', description: "Once confirmed, the 'Cleaning & Disinfection' SOP is activated. The quarantine area is deep-cleaned with a parvocidal disinfectant, and foot baths are placed, containing the virus and saving the lives of other animals.", sourceChecklist: "Cleaning & Disinfection Protocol", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Animal Welfare Best Practices",
-            standards: [
-                { name: "ASPCA Guidelines", description: "References best practices from the American Society for the Prevention of Cruelty to Animals." },
-                { name: "Humane Society Standards", description: "Guidelines for shelter operations and animal care." },
-                { name: "AWBI (India) Norms", description: "Compliance with the Animal Welfare Board of India regulations." },
-                { name: "Global Alliance for Rabies Control", description: "Protocols for vaccination and rabies prevention." }
-            ]
-        },
-        checklists: [
-             {
-                title: "Animal Intake & Quarantine",
-                department: "Operations",
-                frequency: "Per Animal",
-                role: "Intake Coordinator",
-                icon: <PackageCheck />,
-                summary: "SOP for safely admitting new animals, including health screening and quarantine.",
-                tasks: [
-                    { id: 'INTAKE-01', description: 'Log all details of the incoming animal (source, species, age, condition).', priority: 'High', riskLevel: 'High', proof: 'Intake Form', location: 'Reception' },
-                    { id: 'INTAKE-02', description: 'Perform an initial health screening for obvious injuries or signs of disease.', priority: 'High', riskLevel: 'High', proof: 'Health Screening Form', location: 'Intake Room' },
-                    { id: 'INTAKE-03', description: 'Place all new animals in a designated quarantine area for a minimum period.', priority: 'High', riskLevel: 'High', proof: 'Quarantine Log', location: 'Quarantine Area' },
-                    { id: 'INTAKE-04', description: 'Provide fresh food, water, and clean bedding.', priority: 'High', riskLevel: 'Medium', proof: 'Visual Check', location: 'Quarantine Area' },
-                    { id: 'INTAKE-05', description: 'Administer prophylactic treatments (deworming, flea/tick) as per vet protocol.', priority: 'High', riskLevel: 'High', proof: 'Medication Log', location: 'Quarantine Area' },
-                    { id: 'INTAKE-06', description: 'Assign a unique ID number or tag to the animal.', priority: 'High', riskLevel: 'Medium', proof: 'ID Tag Application', location: 'Intake Room' },
-                    { id: 'INTAKE-07', description: 'Take a clear photograph of the animal for records and adoption profiles.', priority: 'High', riskLevel: 'Low', proof: 'Photo in System', location: 'Intake Room' },
-                    { id: 'INTAKE-08', description: 'Observe the animal\'s behavior and temperament.', priority: 'High', riskLevel: 'High', proof: 'Behavioral Notes', location: 'Quarantine Area' },
-                    { id: 'INTAKE-09', description: 'Create a file for the animal with all intake documentation.', priority: 'High', riskLevel: 'High', proof: 'Animal File', location: 'Office' },
-                    { id: 'INTAKE-10', description: 'Update the shelter management software with the new animal\'s details.', priority: 'High', riskLevel: 'High', proof: 'System Entry', location: 'System' },
-                ]
-            },
-            {
-                title: "Cleaning & Disinfection Protocol",
-                department: "Hygiene",
-                frequency: "Daily",
-                role: "Kennel Staff",
-                icon: <Sparkles />,
-                summary: "Daily cleaning schedules and use of appropriate disinfectants to prevent disease spread.",
-                tasks: [
-                    { id: 'CLEAN-DIS-01', description: 'Clean and disinfect all animal enclosures daily.', priority: 'High', riskLevel: 'High', proof: 'Cleaning Log', location: 'Enclosures' },
-                    { id: 'CLEAN-DIS-02', description: 'Use a veterinarian-approved disinfectant at the correct dilution.', priority: 'High', riskLevel: 'High', proof: 'Chemical Log', location: 'Storage' },
-                    { id: 'CLEAN-DIS-03', description: 'Clean food and water bowls thoroughly every day.', priority: 'High', riskLevel: 'High', proof: 'Visual Check', location: 'Enclosures' },
-                    { id: 'CLEAN-DIS-04', description: 'Wash all bedding and toys regularly.', priority: 'High', riskLevel: 'Medium', proof: 'Laundry Log', location: 'Laundry Area' },
-                    { id: 'CLEAN-DIS-05', description: 'Implement strict cleaning protocols for the quarantine and isolation areas.', priority: 'High', riskLevel: 'High', proof: 'Isolation Cleaning SOP', location: 'Quarantine/Isolation' },
-                    { id: 'CLEAN-DIS-06', description: 'Dispose of animal waste properly and hygienically.', priority: 'High', riskLevel: 'High', proof: 'Waste Disposal Log', location: 'Waste Area' },
-                    { id: 'CLEAN-DIS-07', description: 'Clean common areas, including staff and visitor areas.', priority: 'High', riskLevel: 'Medium', proof: 'Common Area Cleaning Log', location: 'Entire Facility' },
-                    { id: 'CLEAN-DIS-08', description: 'Use separate cleaning equipment for different areas (e.g., quarantine, general population).', priority: 'High', riskLevel: 'High', proof: 'Equipment Color Coding', location: 'Storage' },
-                    { id: 'CLEAN-DIS-09', description: 'Train staff on all cleaning and disinfection procedures.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'HR' },
-                    { id: 'CLEAN-DIS-10', description: 'Perform a deep clean of the entire facility monthly.', priority: 'High', riskLevel: 'High', proof: 'Deep Clean Log', location: 'Entire Facility' },
-                ]
-            },
-            {
-                title: "Veterinary Care & Health Monitoring",
-                department: "Medical",
-                frequency: "Daily",
-                role: "Vet/Para-Vet",
-                icon: <Stethoscope />,
-                summary: "Daily health checks, medication logs, and protocols for managing sick animals.",
-                tasks: [
-                    { id: 'VET-CARE-01', description: 'Conduct a daily health check of every animal in the shelter.', priority: 'High', riskLevel: 'High', proof: 'Daily Health Log', location: 'Enclosures' },
-                    { id: 'VET-CARE-02', description: 'Administer all prescribed medications and log them accurately.', priority: 'High', riskLevel: 'High', proof: 'Medication Administration Record (MAR)', location: 'Enclosures' },
-                    { id: 'VET-CARE-03', description: 'Isolate any animal showing signs of infectious disease immediately.', priority: 'High', riskLevel: 'High', proof: 'Isolation Log', location: 'Isolation Area' },
-                    { id: 'VET-CARE-04', description: 'Maintain a vaccination and deworming schedule for all animals.', priority: 'High', riskLevel: 'High', proof: 'Vaccination Records', location: 'System' },
-                    { id: 'VET-CARE-05', description: 'Manage a spay/neuter program for all eligible animals.', priority: 'High', riskLevel: 'High', proof: 'Surgery Log', location: 'Clinic' },
-                    { id: 'VET-CARE-06', description: 'Keep detailed medical records for every animal.', priority: 'High', riskLevel: 'High', proof: 'Medical Files', location: 'Office' },
-                    { id: 'VET-CARE-07', description: 'Maintain a well-stocked and organized veterinary clinic.', priority: 'High', riskLevel: 'High', proof: 'Clinic Inventory', location: 'Clinic' },
-                    { id: 'VET-CARE-08', description: 'Have a clear protocol for veterinary emergencies.', priority: 'High', riskLevel: 'High', proof: 'Emergency SOP', location: 'Office' },
-                    { id: 'VET-CARE-09', description: 'Coordinate with external veterinary specialists when needed.', priority: 'High', riskLevel: 'High', proof: 'Specialist Referral Log', location: 'Office' },
-                    { id: 'VET-CARE-10', description: 'Provide special care for geriatric, pediatric, or special needs animals.', priority: 'High', riskLevel: 'High', proof: 'Special Needs Care Plan', location: 'Special Care Area' },
-                ]
-            },
-            {
-                title: "Adoption & Counseling Process",
-                department: "Adoptions",
-                frequency: "Per Adoption",
-                role: "Adoption Counselor",
-                icon: <Home />,
-                summary: "A structured process to ensure animals are placed in suitable, loving homes.",
-                tasks: [
-                    { id: 'ADOPT-01', description: 'Counsel potential adopters on the responsibilities of pet ownership.', priority: 'High', riskLevel: 'Medium', proof: 'Counseling Checklist', location: 'Adoption Office' },
-                    { id: 'ADOPT-02', description: 'Have potential adopters fill out a detailed application form.', priority: 'High', riskLevel: 'Medium', proof: 'Adoption Application', location: 'Adoption Office' },
-                    { id: 'ADOPT-03', description: 'Conduct a home check (virtual or physical) for first-time pet owners.', priority: 'High', riskLevel: 'Medium', proof: 'Home Check Report', location: 'Office' },
-                    { id: 'ADOPT-04', description: 'Match the right animal with the right family based on temperament and lifestyle.', priority: 'High', riskLevel: 'Medium', proof: 'Matchmaking Notes', location: 'Adoption Office' },
-                    { id: 'ADOPT-05', description: 'Complete all adoption paperwork, including an adoption contract.', priority: 'High', riskLevel: 'High', proof: 'Signed Adoption Contract', location: 'Adoption Office' },
-                    { id: 'ADOPT-06', description: 'Provide the adopter with the animal\'s medical history and vaccination records.', priority: 'High', riskLevel: 'High', proof: 'Medical File Handover', location: 'Adoption Office' },
-                    { id: 'ADOPT-07', description: 'Educate the adopter on the animal\'s diet, exercise, and grooming needs.', priority: 'High', riskLevel: 'Medium', proof: 'Adopter Education Checklist', location: 'Adoption Office' },
-                    { id: 'ADOPT-08', description: 'Conduct a post-adoption follow-up call or visit within two weeks.', priority: 'High', riskLevel: 'Medium', proof: 'Follow-up Log', location: 'System' },
-                    { id: 'ADOPT-09', description: 'Have a clear policy for handling returned animals.', priority: 'High', riskLevel: 'High', proof: 'Return Policy Document', location: 'Office' },
-                    { id: 'ADOPT-10', description: 'Update the animal\'s status to "Adopted" in the shelter management system.', priority: 'High', riskLevel: 'High', proof: 'System Update', location: 'System' },
-                ]
-            },
-        ]
     }
 ];
 
@@ -3788,6 +3892,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
