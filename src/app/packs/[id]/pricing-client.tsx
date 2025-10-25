@@ -334,15 +334,30 @@ const handleDownload = (pack: PremiumPack) => {
     writeFile(workbook, fileName);
 }
 
-const RazorpayButtonWrapper = ({ paymentId }: { paymentId: string }) => {
+const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string, packId?: string, type?: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
         const form = document.createElement('form');
+        
+        // Base action URL
+        let actionUrl = `/thank-you?razorpay_payment_id=`; // The payment ID will be appended by Razorpay's script.
+        
+        // Add pack_id or type to the action URL
+        if (packId) {
+            actionUrl += `&pack_id=${packId}`;
+        }
+        if (type) {
+            actionUrl += `&type=${type}`;
+        }
+        
+        form.action = actionUrl;
+
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.async = true;
         script.dataset.payment_button_id = paymentId;
+        
         form.appendChild(script);
         
         if (formContainerRef.current) {
@@ -350,7 +365,7 @@ const RazorpayButtonWrapper = ({ paymentId }: { paymentId: string }) => {
             formContainerRef.current.innerHTML = '';
             formContainerRef.current.appendChild(form);
         }
-    }, [paymentId]);
+    }, [paymentId, packId, type]);
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
 };
@@ -443,7 +458,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </ul>
                             </CardContent>
                              <CardFooter className="mt-auto flex justify-center w-full">
-                                <RazorpayButtonWrapper paymentId={pack.paymentId} />
+                                <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} />
                             </CardFooter>
                         </Card>
                     </div>
@@ -485,7 +500,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </ul>
                         </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                            <RazorpayButtonWrapper paymentId={pack.paymentId} />
+                           <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id}/>
                         </CardFooter>
                     </Card>
 
@@ -493,22 +508,22 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Card className="flex flex-col border-2 border-accent shadow-lg">
                        <CardHeader>
                          <div className="flex items-center gap-2">
-                            <Bot className="w-6 h-6 text-accent" />
+                            <Globe className="w-6 h-6 text-accent" />
                             <CardTitle>Personalized Pack</CardTitle>
                         </div>
-                        <CardDescription>An AI-generated pack tailored to your specific business challenges.</CardDescription>
+                        <CardDescription>The Professional pack, enhanced with international standards for global operations.</CardDescription>
                         <p className="text-4xl font-bold pt-4">₹{personalizedPack.priceINR}</p>
                     </CardHeader>
                     <CardContent className="flex-1">
                          <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
                         <ul className="space-y-3 text-muted-foreground text-sm">
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Checklists tailored to your unique operational pain points by our AI.</span></li>
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Custom branding with your company's logo.</span></li>
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>One-on-one onboarding call to help you get started.</span></li>
+                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>**Aligned with global frameworks** (ISO, JCI, HACCP, etc.)</span></li>
+                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>**Includes cross-border compliance checklists**</span></li>
+                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>**Priority customer support**</span></li>
                         </ul>
                     </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <RazorpayButtonWrapper paymentId={personalizedPack.paymentId} />
+                           <RazorpayButtonWrapper paymentId={personalizedPack.paymentId} packId={pack.id} type="personalized" />
                         </CardFooter>
                     </Card>
 
@@ -578,6 +593,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
 
