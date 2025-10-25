@@ -334,6 +334,24 @@ const handleDownload = (pack: PremiumPack) => {
     writeFile(workbook, fileName);
 }
 
+const RazorpayButtonWrapper = ({ paymentId }: { paymentId: string }) => {
+    const formContainerRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        if (formContainerRef.current && formContainerRef.current.children.length === 0) {
+            const form = document.createElement('form');
+            const script = document.createElement('script');
+            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+            script.async = true;
+            script.dataset.payment_button_id = paymentId;
+            form.appendChild(script);
+            formContainerRef.current.appendChild(form);
+        }
+    }, [paymentId]);
+
+    return <div ref={formContainerRef} />;
+};
+
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
@@ -383,7 +401,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         )
     }
 
-    // Low-cost pack view (under 5000 INR)
+    // Low-cost pack view
     if (pack.priceINR < 5000) {
         const originalPrice = 7999;
         const discount = Math.round(((originalPrice - pack.priceINR) / originalPrice) * 100);
@@ -421,10 +439,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
                                 </ul>
                             </CardContent>
-                            <CardFooter className="mt-auto flex justify-center w-full">
-                               <form>
-                                   <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async> </script> 
-                                </form>
+                             <CardFooter className="mt-auto flex justify-center w-full">
+                                <RazorpayButtonWrapper paymentId={pack.paymentId} />
                             </CardFooter>
                         </Card>
                     </div>
