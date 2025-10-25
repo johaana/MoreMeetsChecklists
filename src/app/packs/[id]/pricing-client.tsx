@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -382,6 +383,52 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         )
     }
 
+    // Low-cost pack view
+    if (pack.priceINR < 5000) {
+        return (
+            <section className="w-full py-12 md:py-16" id="pricing">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-3xl mx-auto mb-10 text-center">
+                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Toolkit</h2>
+                        <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Instant download.</p>
+                    </div>
+                    <div className="flex justify-center">
+                        <Card className="flex flex-col max-w-md">
+                            <CardHeader>
+                                 <div className="flex items-center gap-2">
+                                    <Landmark className="w-6 h-6 text-primary" />
+                                    <CardTitle>Professional Pack</CardTitle>
+                                </div>
+                                <CardDescription>The complete, expert-built checklist pack.</CardDescription>
+                                <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto flex justify-center">
+                               <form action={pack.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
+                                    <Button type="submit" size="lg" className="w-full">
+                                        Buy Now
+                                    </Button>
+                                </form>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                        {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
+                        {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+
+    // Standard premium pack view
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
@@ -510,3 +557,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+

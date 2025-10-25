@@ -1,4 +1,5 @@
 
+
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail, Phone } from "lucide-react";
@@ -54,3 +55,4 @@ export function Footer() {
         </footer>
     );
 }
+

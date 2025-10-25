@@ -1,4 +1,5 @@
 
+
 import React from "react";
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater, Search } from "lucide-react";
 
@@ -39,7 +40,7 @@ export type PremiumPack = {
     priceINR: number;
     paymentId: string;
     listId?: number; // Brevo List ID
-    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Free Resources" | "Franchise" | "Food & Beverage";
+    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise";
     description: string;
     icon: React.ReactElement;
     badgeText?: string;
@@ -181,8 +182,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'franchise_operations_pack',
         title: "Franchise Operations Pack",
-        priceUSD: 49.99,
-        priceINR: 1999,
+        priceUSD: 149.99,
+        priceINR: 7999,
         paymentId: 'pl_RMnb42oApd90f0',
         category: "Franchise",
         description: "A complete toolkit for franchisors to ensure brand consistency, operational excellence, and compliance across all franchise locations.",
@@ -284,7 +285,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Bakery & Confectionery Operations Pack",
         priceUSD: 49.99,
         priceINR: 1999,
-        paymentId: 'pl_RMnaU5w95a7x3k',
+        paymentId: 'pl_P8WbT7A6g6xvyR',
         category: "Food & Beverage",
         description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
         icon: <CakeSlice />,
@@ -295,7 +296,7 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Achieve perfect results every time with recipe scaling and dough management checklists.", icon: <ClipboardList /> },
             { text: "Ensure food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: <ShieldCheck /> },
             { text: "Maintain equipment precision with SOPs for oven calibration and mixer maintenance.", icon: <Wrench /> },
-            { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: '🔄' },
+            { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: <Recycle /> },
             { text: "Guarantee compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: <FileCheck /> },
             { text: "Streamline your custom order process from client briefing to final delivery.", icon: <Package /> }
         ],
@@ -590,7 +591,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 89.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Hospitality",
+        category: "Food & Beverage",
         description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
         icon: <Utensils />,
         badgeText: "Essential for F&B",
@@ -820,7 +821,7 @@ export const premiumPacks: PremiumPack[] = [
         badgeVariant: "accent",
         whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
         sampleItems: [
-            { text: "Streamline inventory turnover with a seasonal stock & markdown management system.", icon: <Thermometer /> },
+            { text: "Streamline inventory turnover with a seasonal stock & markdown management system.", icon: <Recycle /> },
             { text: "Create stunning, brand-aligned stores with visual merchandising and display audits.", icon: <GalleryVertical /> },
             { text: "Reduce theft with secure fitting room operations and security protocols.", icon: <DoorClosed /> },
             { text: "Master modern retail with seamless omni-channel operations (Click-and-Collect, Returns).", icon: <Link /> },
@@ -3002,7 +3003,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Industrial & Transport",
+        category: "Food & Beverage",
         description: "A HACCP and FSSAI-compliant toolkit for food processing plants to ensure food safety, quality, and traceability from farm to fork.",
         icon: <Sprout />,
         badgeText: "FSSAI Compliant",
@@ -3791,7 +3792,7 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure guest safety with comprehensive crowd management, queuing, and access control SOPs.", icon: <Users /> },
             { text: "Be prepared for any crisis with emergency response plans for medical incidents, power failures, and ride stoppages.", icon: <Siren /> },
             { text: "Protect children with a robust Lost Child Protocol and designated safe zones.", icon: <HelpingHand /> },
-            { text: "Maintain a safe and beautiful park with checklists for park-wide landscaping, housekeeping, and infrastructure safety.", icon: '🌳' },
+            { text: "Maintain a safe and beautiful park with checklists for park-wide landscaping, housekeeping, and infrastructure safety.", icon: <Recycle /> },
             { text: "Guarantee food safety across all park outlets with FSSAI/HACCP-aligned hygiene and food handling checklists.", icon: <Utensils /> }
         ],
         previewScenario: {
@@ -3892,6 +3893,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 

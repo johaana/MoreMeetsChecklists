@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Menu, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists } from "@/lib/individual-checklists";
@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
-const visiblePacks = premiumPacks.filter(p => p.category !== "Free Resources");
+const visiblePacks = premiumPacks.filter(p => p.category !== "Social Cause");
 
 const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
@@ -207,6 +207,15 @@ export function SiteHeader() {
                                                     </div>
                                                 </div>
                                             ))}
+                                             <div className="ml-4 pl-4 border-l">
+                                                <h5 className="font-semibold text-base text-primary/90 mt-2 mb-1">Social Cause</h5>
+                                                <div className="flex flex-col gap-1">
+                                                    <Link href="/packs/animal_shelter_pack" className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
+                                                        <span className="w-4 h-4 shrink-0"><PawPrint /></span>
+                                                        <span>Animal Shelter Operations (Free)</span>
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         </AccordionContent>
                                     </AccordionItem>
                                      <AccordionItem value="checklists" className="border-b-0">
