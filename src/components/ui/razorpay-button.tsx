@@ -17,42 +17,49 @@ interface RazorpayButtonProps {
 
 export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, params, className }) => {
     const formRef = useRef<HTMLFormElement>(null);
-    const scriptLoaded = useRef(false);
 
     useEffect(() => {
-        const loadScript = () => {
-            const script = document.createElement('script');
-            script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-            script.async = true;
-            script.dataset.payment_button_id = paymentId;
-            
-            // Remove any existing Razorpay buttons to avoid duplicates.
-            const existingButton = formRef.current?.querySelector('.razorpay-payment-button');
-            if(existingButton) {
-                existingButton.remove();
-            }
+        const scriptId = `razorpay-script-${paymentId.replace(/[^a-zA-Z0-9]/g, '')}`;
 
-            if (formRef.current) {
-                formRef.current.appendChild(script);
+        // If script is already loaded, don't add it again.
+        if (document.getElementById(scriptId)) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.async = true;
+        script.dataset.payment_button_id = paymentId;
+        
+        const form = document.createElement('form');
+        if (params) {
+            for (const key in params) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = String(params[key]);
+                form.appendChild(input);
+            }
+        }
+        form.appendChild(script);
+
+        if (formRef.current) {
+            formRef.current.innerHTML = ''; // Clear previous content
+            formRef.current.appendChild(form);
+        }
+
+        return () => {
+            // Cleanup script if component unmounts, though usually not necessary
+            const existingScript = document.getElementById(scriptId);
+            if (existingScript) {
+                existingScript.remove();
             }
         };
 
-        if (!scriptLoaded.current) {
-            loadScript();
-            scriptLoaded.current = true;
-        }
-
-    }, [paymentId]);
-
+    }, [paymentId, params]);
+    
     const formClass = `razorpay-form ${className || ''}`.trim();
 
-    return (
-        <form ref={formRef} className={formClass}>
-            {params && Object.entries(params).map(([key, value]) => (
-                <input key={key} type="hidden" name={key} value={String(value)} />
-            ))}
-        </form>
-    );
+    return <div ref={formRef} className={formClass} />;
 };
-
-    

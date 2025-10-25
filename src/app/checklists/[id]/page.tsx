@@ -12,7 +12,8 @@ const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-D
 const checklistImageMap: Record<string, string> = {
   'corporate-office-security': 'https://i.postimg.cc/sQHHL4nm/office1.jpg',
   'new-employee-onboarding-legal': 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg',
-  'esg-sustainability-audit': 'https://i.postimg.cc/PrfS2hrQ/Laucala-Island-Fiji.jpg'
+  'esg-sustainability-audit': 'https://i.postimg.cc/PrfS2hrQ/Laucala-Island-Fiji.jpg',
+  'surgical-safety': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp'
 };
 
 
@@ -94,5 +95,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </>
   );
 }
-
-    

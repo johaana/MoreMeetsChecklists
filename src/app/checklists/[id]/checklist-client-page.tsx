@@ -12,7 +12,6 @@ import { Badge } from '@/components/ui/badge';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { IndividualChecklist } from '@/lib/individual-checklists';
 import { individualChecklists } from '@/lib/individual-checklists';
-import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { PainPoint } from '@/components/ui/pain-point';
 
 
@@ -86,6 +85,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
         };
     }, []);
 
+    const isSurgicalChecklist = checklist.id === 'surgical-safety';
+
   return (
     <>
     <div className="flex flex-col min-h-screen bg-background">
@@ -104,6 +105,9 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl font-headline">
                             {checklist.title}
                         </h1>
+                        {isSurgicalChecklist && (
+                            <p className="text-lg font-semibold text-muted-foreground">(NABH & JCI Aligned)</p>
+                        )}
                         <p className="text-muted-foreground text-base md:text-lg">
                             {checklist.description}
                         </p>
@@ -141,10 +145,11 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         </CardHeader>
                         <CardContent className="text-center flex flex-col items-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <RazorpayButton 
-                                paymentId={checklist.paymentId} 
-                                params={{ checklist_id: checklist.id }}
-                           />
+                           <form action={checklist.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
+                                <Button type="submit" size="lg" className="w-full">
+                                    Buy Now
+                                </Button>
+                            </form>
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
                             <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
@@ -168,10 +173,11 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                 <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
             </div>
             <div className="flex-shrink-0">
-                 <RazorpayButton 
-                    paymentId={checklist.paymentId} 
-                    params={{ checklist_id: checklist.id }}
-                />
+                 <form action={checklist.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
+                    <Button type="submit">
+                        Buy Now
+                    </Button>
+                </form>
             </div>
         </div>
     </div>

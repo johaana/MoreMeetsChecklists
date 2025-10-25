@@ -11,9 +11,8 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { writeFile, utils } from 'xlsx-js-style';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from '@/hooks/use-toast';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -238,6 +237,98 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
       paymentId: 'pl_RMncDLAlms69Pd',
     };
 
+    const handleFreeDownload = () => {
+        if (!pack) {
+            alert("Could not find the pack data. Please contact support.");
+            return;
+        }
+        
+        const workbook = utils.book_new();
+        const headerStyle = {
+            font: { bold: true, color: { rgb: "FFFFFF" } },
+            fill: { fgColor: { rgb: "0A2540" } }
+        };
+
+        pack.checklists.forEach(checklist => {
+            const checklistHeaders = [
+                'Task ID', 'Task Description', 'Priority', 'Risk Level', 
+                'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+            ];
+            
+            const tasksForSheet = checklist.tasks.map(task => [
+                task.id,
+                task.description,
+                task.priority,
+                task.riskLevel,
+                task.proof,
+                'Pending',
+                '',
+                ''
+            ]);
+
+            const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
+            const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+            
+            worksheet['!cols'] = [
+                { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
+                { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
+            ];
+
+            const headerRange = utils.decode_range(worksheet['!ref']!);
+            for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
+                const address = utils.encode_cell({ r: 0, c: C });
+                if(worksheet[address]) {
+                    worksheet[address].s = headerStyle;
+                }
+            }
+            worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
+
+            const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            utils.book_append_sheet(workbook, worksheet, sheetName);
+        });
+
+        const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
+        writeFile(workbook, fileName);
+    }
+
+    if (pack.priceINR === 0) {
+        return (
+             <section className="w-full py-12 md:py-16" id="pricing">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-3xl mx-auto mb-10 text-center">
+                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Free Toolkit</h2>
+                        <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
+                    </div>
+                    <div className="flex justify-center">
+                        <Card className="flex flex-col max-w-md">
+                            <CardHeader>
+                                <div className="flex items-center gap-2">
+                                    <Download className="w-6 h-6 text-primary" />
+                                    <CardTitle>Instant Download</CardTitle>
+                                </div>
+                                <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
+                                <p className="text-4xl font-bold pt-4">Free</p>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>No payment or email required.</span></li>
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto flex justify-center">
+                                <Button size="lg" onClick={handleFreeDownload} className="w-full">
+                                    <Download className="mr-2 h-4 w-4" />
+                                    Download Now
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
@@ -265,7 +356,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </ul>
                         </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                            <RazorpayButton paymentId={pack.paymentId} params={{ pack_id: pack.id }}/>
+                           <form action={pack.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
+                                <Button type="submit" size="lg" className="w-full">
+                                    Buy Now
+                                </Button>
+                            </form>
                         </CardFooter>
                     </Card>
 
@@ -288,7 +383,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </ul>
                     </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <RazorpayButton paymentId={personalizedPack.paymentId} params={{ pack_id: pack.id, type: 'personalized' }}/>
+                           <form action={personalizedPack.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
+                                <Button type="submit" size="lg" className="w-full" variant="accent">
+                                    Buy Personalized Pack
+                                </Button>
+                            </form>
                         </CardFooter>
                     </Card>
 
