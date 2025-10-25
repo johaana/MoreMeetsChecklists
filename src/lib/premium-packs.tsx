@@ -184,7 +184,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Franchise Operations Pack",
         priceUSD: 149.99,
         priceINR: 7999,
-        paymentId: 'pl_RMnb42oApd90f0',
+        paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Franchise",
         description: "A complete toolkit for franchisors to ensure brand consistency, operational excellence, and compliance across all franchise locations.",
         icon: <Store />,
@@ -289,7 +289,7 @@ export const premiumPacks: PremiumPack[] = [
         category: "Food & Beverage",
         description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
         icon: <CakeSlice />,
-        badgeText: "New!",
+        badgeText: "Launch Offer",
         badgeVariant: "accent",
         whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
         sampleItems: [
@@ -591,7 +591,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 89.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Food & Beverage",
+        category: "Hospitality",
         description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
         icon: <Utensils />,
         badgeText: "Essential for F&B",
@@ -3893,6 +3893,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 

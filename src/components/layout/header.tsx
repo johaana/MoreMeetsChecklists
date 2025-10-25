@@ -36,10 +36,10 @@ const allChecklistsByCategory = individualChecklists.reduce((acc, checklist) => 
 
 // Reusable component to render the list of solutions
 const SolutionsList = () => (
-    <div className="grid grid-cols-1 gap-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4">
+    <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-x-6 md:gap-y-4">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-            <div key={category}>
+            <div key={category} className="flex flex-col mb-4 md:mb-0">
                 <h5 className="font-bold text-sm text-primary/90 mb-2 px-2">{category}</h5>
                 <ul className="space-y-1">
                     {packs.map(pack => (
@@ -212,7 +212,7 @@ export function SiteHeader() {
                                                 <div className="flex flex-col gap-1">
                                                     <Link href="/packs/animal_shelter_pack" className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
                                                         <span className="w-4 h-4 shrink-0"><PawPrint /></span>
-                                                        <span>Animal Shelter Operations (Free)</span>
+                                                        <span>Animal Shelter (Free)</span>
                                                     </Link>
                                                 </div>
                                             </div>
