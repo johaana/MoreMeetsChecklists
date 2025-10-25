@@ -37,7 +37,7 @@ const allChecklistsByCategory = individualChecklists.reduce((acc, checklist) => 
 // Reusable component to render the list of solutions
 const SolutionsList = () => (
     <div className="flex flex-col gap-y-6">
-        <div className="md:grid md:grid-flow-col md:grid-rows-5 md:gap-x-8 md:gap-y-4 flex flex-col">
+        <div className="md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-4 flex flex-col">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
             <div key={category} className="flex flex-col mb-4 md:mb-0 break-inside-avoid">
                 <h5 className="font-bold text-sm text-primary/90 mb-2 px-2">{category}</h5>
@@ -143,11 +143,11 @@ export function SiteHeader() {
                                             </div>
                                         </ScrollArea>
                                         <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
+                                             <Link href="/packs/animal_shelter_pack" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2">
+                                                <PawPrint className="w-4 h-4" /> Social Cause (Free Pack)
+                                            </Link>
                                             <Link href="/packs" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
                                                 View All Premium Packs &rarr;
-                                            </Link>
-                                            <Link href="/checklists" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
-                                                View All Bestselling Checklists &rarr;
                                             </Link>
                                         </div>
                                     </div>
@@ -211,7 +211,7 @@ export function SiteHeader() {
                                                 <h5 className="font-semibold text-base text-primary/90 mt-2 mb-1">Social Cause</h5>
                                                 <div className="flex flex-col gap-1">
                                                     <Link href="/packs/animal_shelter_pack" className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                        <span className="w-4 h-4 shrink-0"><PawPrint /></span>
+                                                        <PawPrint className="w-4 h-4 shrink-0" />
                                                         <span>Animal Shelter Pack (Free)</span>
                                                     </Link>
                                                 </div>
