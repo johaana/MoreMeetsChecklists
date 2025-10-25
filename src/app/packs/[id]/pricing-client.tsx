@@ -422,7 +422,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </ul>
                             </CardContent>
                             <CardFooter className="mt-auto flex justify-center w-full">
-                               <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async> </script> </form>
+                               <form>
+                                   <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async> </script> 
+                                </form>
                             </CardFooter>
                         </Card>
                     </div>
