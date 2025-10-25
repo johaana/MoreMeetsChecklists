@@ -338,18 +338,21 @@ const RazorpayButtonWrapper = ({ paymentId }: { paymentId: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (formContainerRef.current && formContainerRef.current.children.length === 0) {
-            const form = document.createElement('form');
-            const script = document.createElement('script');
-            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-            script.async = true;
-            script.dataset.payment_button_id = paymentId;
-            form.appendChild(script);
+        const form = document.createElement('form');
+        const script = document.createElement('script');
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.async = true;
+        script.dataset.payment_button_id = paymentId;
+        form.appendChild(script);
+        
+        if (formContainerRef.current) {
+            // Clear existing content and append the new form
+            formContainerRef.current.innerHTML = '';
             formContainerRef.current.appendChild(form);
         }
     }, [paymentId]);
 
-    return <div ref={formContainerRef} />;
+    return <div ref={formContainerRef} className="w-full flex justify-center" />;
 };
 
 
@@ -421,7 +424,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <Landmark className="w-6 h-6 text-accent" />
                                         <CardTitle>Professional Pack</CardTitle>
                                     </div>
-                                    {pack.badgeText && (
+                                     {pack.badgeText && (
                                         <Badge variant="accent">{pack.badgeText}</Badge>
                                     )}
                                 </div>
@@ -482,9 +485,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </ul>
                         </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <form action={`/thank-you?pack_id=${pack.id}`} method="GET" target="_blank" rel="noopener noreferrer" className="w-full">
-                                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async></script>
-                            </form>
+                            <RazorpayButtonWrapper paymentId={pack.paymentId} />
                         </CardFooter>
                     </Card>
 
@@ -507,9 +508,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </ul>
                     </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <form action={`/thank-you?pack_id=${pack.id}&type=personalized`} method="GET" target="_blank" rel="noopener noreferrer" className="w-full">
-                               <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={personalizedPack.paymentId} async></script>
-                            </form>
+                           <RazorpayButtonWrapper paymentId={personalizedPack.paymentId} />
                         </CardFooter>
                     </Card>
 
@@ -579,5 +578,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
