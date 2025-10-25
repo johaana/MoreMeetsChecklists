@@ -186,26 +186,26 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Franchise",
-        description: "A complete toolkit for franchisors to ensure brand consistency, operational excellence, and compliance across all franchise locations.",
+        description: "The most important document for your franchise. This toolkit provides the legal and operational foundation to enforce brand standards, ensure quality control, and empower your franchisees to succeed.",
         icon: <Store />,
         badgeText: "New!",
         badgeVariant: "accent",
-        whoIsItFor: ["Franchise Owners", "Heads of Franchise Operations", "Regional Managers", "Franchise Business Coaches"],
+        whoIsItFor: ["Franchise Founders", "Franchise Operations Heads", "Franchise Business Coaches", "Multi-unit Franchisees"],
         sampleItems: [
-            { text: "Ensure a consistent brand experience with a detailed brand and visual identity audit.", icon: <Eye /> },
-            { text: "Maintain quality standards with SOPs for product/service delivery and customer service.", icon: <Sparkles /> },
-            { text: "Improve franchisee performance with a structured process for monthly reporting and business reviews.", icon: <BarChart3 /> },
+            { text: "Enforce brand consistency with a detailed visual identity and store operations audit.", icon: <Eye /> },
+            { text: "Provide a legal framework for quality control and franchisee performance management.", icon: <FileCheck /> },
+            { text: "Streamline franchisee onboarding from site selection to grand opening.", icon: <KeyRound /> },
+            { text: "Standardize financials with SOPs for royalty reconciliation and supplier audits.", icon: <DollarSign /> },
+            { text: "Empower franchisees with a clear, searchable guide for their day-to-day operations.", icon: <BookOpen /> },
             { text: "Protect your brand with a system for local marketing compliance and approvals.", icon: <Megaphone /> },
-            { text: "Streamline franchisee onboarding with a comprehensive checklist for new location setup.", icon: <KeyRound /> },
-            { text: "Ensure financial health with royalty fee reconciliation and financial audit procedures.", icon: <DollarSign /> }
         ],
         previewScenario: {
-            title: "Handling a Rogue Franchisee",
-            description: "A franchisee starts using unapproved marketing materials and discounting products, damaging the brand. This scenario shows how checklists help regain control.",
+            title: "Onboarding a New Franchisee & Preventing Brand Dilution",
+            description: "A new, enthusiastic franchisee is about to open their first store. This scenario shows how the operations pack ensures they launch successfully while perfectly maintaining your brand standards from day one, preventing common new-franchisee errors.",
             tasks: [
-                { id: 'BRAND-AUDIT-01', description: "The 'Brand & Visual Identity Audit' checklist, used during a surprise visit, immediately flags the non-compliant marketing materials and store signage.", sourceChecklist: "Brand & Visual Identity Audit", priority: 'High' },
-                { id: 'FIN-AUDIT-03', description: "The 'Financial Audit' SOP identifies unauthorized discounting by reconciling POS data against the standard pricing.", sourceChecklist: "Franchisee Financial Audit", priority: 'High' },
-                { id: 'PERF-REVIEW-04', description: "The 'Performance Review' process provides a formal framework to present these breaches to the franchisee and create a time-bound corrective action plan, with clear consequences for non-compliance as per the franchise agreement.", sourceChecklist: "Monthly Performance Review", priority: 'High' }
+                { id: 'FR-ONBOARD-04', description: "The 'New Franchisee Onboarding' checklist provides a step-by-step guide for store fit-out, ensuring the new location is an exact replica of the brand's look and feel, preventing inconsistent design.", sourceChecklist: "New Franchisee Onboarding", priority: 'High' },
+                { id: 'LSM-01', description: "Before their grand opening, the 'LSM Compliance' SOP requires the franchisee to submit their local marketing plan for approval, preventing the use of off-brand messaging or unauthorized discounts.", sourceChecklist: "Local Store Marketing (LSM) Compliance", priority: 'High' },
+                { id: 'CSSA-01', description: "The 'Customer Service Standards Audit' checklist is used by the franchise coach in the first week to train staff on the exact greeting and service script, ensuring a consistent customer experience network-wide.", sourceChecklist: "Customer Service Standards Audit", priority: 'High' }
             ]
         },
         globalStandards: {
@@ -224,7 +224,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Per New Franchisee",
                 role: "Onboarding Manager",
                 icon: <KeyRound />,
-                summary: "A complete checklist from site selection and legal paperwork to staff training and grand opening.",
+                summary: "The master guide for a successful launch. This covers everything from site selection and legal paperwork to staff training and grand opening, ensuring every new franchisee starts strong and is set up for success.",
                 tasks: [
                     { id: 'FR-ONBOARD-01', description: 'Verify final site selection and lease agreement.', priority: 'High', riskLevel: 'High', proof: 'Signed Lease', location: 'Legal File' },
                     { id: 'FR-ONBOARD-02', description: 'Execute the franchise agreement and collect initial fees.', priority: 'High', riskLevel: 'High', proof: 'Signed Agreement & Receipt', location: 'Legal File' },
@@ -242,7 +242,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Quarterly",
                 role: "Field Manager",
                 icon: <Eye />,
-                summary: "A quarterly audit to ensure every franchise location is perfectly aligned with the brand's look and feel.",
+                summary: "Your brand's first line of defense. A quarterly audit to ensure every franchise location perfectly reflects the brand's look and feel, from signage and uniforms to product displays and store ambiance.",
                 tasks: [
                     { id: 'BRAND-AUDIT-01', description: 'Check that all interior and exterior signage is correct and in good condition.', priority: 'High', riskLevel: 'High', proof: 'Photo Audit', location: 'Franchise Location' },
                     { id: 'BRAND-AUDIT-02', description: 'Verify staff uniforms are clean, correct, and worn properly.', priority: 'High', riskLevel: 'Medium', proof: 'Staff Inspection', location: 'Franchise Location' },
@@ -260,7 +260,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Monthly",
                 role: "Franchise Manager",
                 icon: <BarChart3 />,
-                summary: "A structured agenda for monthly review meetings to discuss sales, operations, and marketing performance.",
+                summary: "The engine of continuous improvement. A structured agenda for monthly review meetings to discuss sales, KPIs, and challenges, ensuring franchisees feel supported and are held accountable.",
                 tasks: [
                     { id: 'PERF-REVIEW-01', description: 'Review franchisee\'s monthly sales data against targets.', priority: 'High', riskLevel: 'High', proof: 'Sales Report', location: 'Meeting' },
                     { id: 'PERF-REVIEW-02', description: 'Analyze key operational KPIs (e.g., customer satisfaction, speed of service).', priority: 'High', riskLevel: 'High', proof: 'KPI Dashboard', location: 'Meeting' },
@@ -278,7 +278,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Annually",
                 role: "Auditor",
                 icon: <DollarSign />,
-                summary: "SOP for auditing franchisee financials, reconciling royalty fees, and ensuring financial reporting standards.",
+                summary: "Protect your revenue streams. A formal SOP for auditing franchisee financials, reconciling royalty fees, verifying sales data against POS records, and ensuring financial reporting standards are met.",
                 tasks: [
                     { id: 'FIN-AUDIT-01', description: 'Verify accuracy of franchisee\'s reported gross sales.', priority: 'High', riskLevel: 'High', proof: 'Sales Records vs POS Data', location: 'Franchisee Office' },
                     { id: 'FIN-AUDIT-02', description: 'Reconcile royalty fee payments against reported sales.', priority: 'High', riskLevel: 'High', proof: 'Royalty Calculation Sheet', location: 'Franchisor Office' },
@@ -296,7 +296,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Per Campaign",
                 role: "Marketing Manager",
                 icon: <Megaphone />,
-                summary: "A workflow for franchisees to submit local marketing plans for approval, ensuring brand consistency.",
+                summary: "Empower local marketing while protecting the brand. This workflow provides franchisees with pre-approved templates and a clear process for getting their local marketing initiatives approved.",
                 tasks: [
                     { id: 'LSM-01', description: 'Require franchisees to submit all local marketing plans for approval.', priority: 'High', riskLevel: 'High', proof: 'LSM Submission Form', location: 'System' },
                     { id: 'LSM-02', description: 'Review submitted plans for brand consistency and messaging.', priority: 'High', riskLevel: 'High', proof: 'Approval Checklist', location: 'Marketing Office' },
@@ -314,7 +314,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Quarterly",
                 role: "Mystery Shopper/Field Manager",
                 icon: <Sparkles />,
-                summary: "An audit checklist, often used for mystery shopping, to evaluate customer service quality.",
+                summary: "The tool for measuring what matters most: the customer experience. An audit checklist, often used for mystery shopping, to evaluate service quality, staff knowledge, cleanliness, and complaint handling.",
                 tasks: [
                     { id: 'CSSA-01', description: 'Audit staff greeting and welcome procedure.', priority: 'High', riskLevel: 'Medium', proof: 'Mystery Shopper Report', location: 'Franchise Location' },
                     { id: 'CSSA-02', description: 'Evaluate staff product knowledge and ability to answer questions.', priority: 'High', riskLevel: 'High', proof: 'Mystery Shopper Report', location: 'Franchise Location' },
@@ -332,7 +332,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Quarterly",
                 role: "Supply Chain Analyst",
                 icon: <Truck />,
-                summary: "Ensures franchisees are ordering correctly, managing stock levels, and adhering to supply chain policies.",
+                summary: "Ensures franchisees maintain profitability and quality by ordering from approved suppliers, managing stock levels correctly, and adhering to the franchisor's supply chain policies.",
                 tasks: [
                     { id: 'SCIA-01', description: 'Audit franchisee purchase orders to ensure they are using approved suppliers.', priority: 'High', riskLevel: 'High', proof: 'PO Audit', location: 'System' },
                     { id: 'SCIA-02', description: 'Analyze inventory turnover rates to identify overstocking or understocking.', priority: 'High', riskLevel: 'High', proof: 'Inventory Turnover Report', location: 'System' },
@@ -350,7 +350,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Ongoing",
                 role: "Training Manager",
                 icon: <Users />,
-                summary: "A process to ensure that all franchisee staff are certified on brand standards, product knowledge, and operational procedures.",
+                summary: "Standardize excellence across your network. A complete process to ensure that all franchisee staff are certified on brand standards, product knowledge, and operational procedures.",
                 tasks: [
                     { id: 'FST-01', description: 'Provide a mandatory training curriculum for all new franchisee employees.', priority: 'High', riskLevel: 'High', proof: 'Training Curriculum', location: 'LMS' },
                     { id: 'FST-02', description: 'Require staff to pass a certification test on product knowledge and brand standards.', priority: 'High', riskLevel: 'Medium', proof: 'Certification Test Results', location: 'LMS' },
@@ -368,7 +368,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Quarterly",
                 role: "IT Support Lead",
                 icon: <Computer />,
-                summary: "Ensures all franchise locations are using approved, secure, and up-to-date IT systems.",
+                summary: "The technical backbone of your franchise. This SOP ensures all franchise locations are using approved, secure, and up-to-date IT systems, from POS software to payment security.",
                 tasks: [
                     { id: 'IT-POS-01', description: 'Ensure all locations are using the mandated POS software version.', priority: 'High', riskLevel: 'High', proof: 'Software Version Report', location: 'System' },
                     { id: 'IT-POS-02', description: 'Verify that antivirus and security software is installed and updated on all systems.', priority: 'High', riskLevel: 'High', proof: 'Security Software Dashboard', location: 'System' },
@@ -386,7 +386,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Annually",
                 role: "Compliance Officer",
                 icon: <ShieldCheck />,
-                summary: "An annual audit to ensure franchisees comply with all local health, safety, and operational regulations.",
+                summary: "Your legal shield. An annual audit to ensure franchisees comply with all local health, safety, and operational regulations, from fire safety to labor laws, protecting the entire brand from liability.",
                 tasks: [
                     { id: 'HSC-01', description: 'Verify the franchisee holds all required local licenses and permits (e.g., Shop & Establishment, FSSAI).', priority: 'High', riskLevel: 'High', proof: 'License and Permit File', location: 'Franchisee Office' },
                     { id: 'HSC-02', description: 'Inspect for fire safety compliance (extinguishers, exits, alarms).', priority: 'High', riskLevel: 'High', proof: 'Fire Safety Audit Checklist', location: 'Franchise Location' },
@@ -1514,7 +1514,7 @@ export const premiumPacks: PremiumPack[] = [
             tasks: [
                 { id: 'DEMO-08', description: "The 'Demo Unit' checklist includes a daily check for overheating charging stations, which would have identified the faulty laptop charger before it could cause a fire.", sourceChecklist: "Demo Unit Pre-Opening Checklist", priority: 'High' },
                 { id: 'ELEC-01', description: "The 'Electrical Safety' SOP mandates periodic Portable Appliance Testing (PAT), which would have formally identified the faulty device and removed it from service.", sourceChecklist: "Electrical Safety & PAT Testing", priority: 'High' },
-                { id: 'POS-RECON-03', description: "The 'POS Reconciliation' checklist includes verifying that CCTV is operational, providing crucial evidence for any incident investigation.", sourceChecklist: "POS & Payment Reconciliation", priority: 'Medium' }
+                { id: 'POS-RECON-03', description: "The 'POS Reconciliation' checklist, which includes verifying that CCTV is operational, provides crucial evidence for any incident investigation.", sourceChecklist: "POS & Payment Reconciliation", priority: 'Medium' }
             ]
         },
         globalStandards: {
@@ -4133,6 +4133,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
