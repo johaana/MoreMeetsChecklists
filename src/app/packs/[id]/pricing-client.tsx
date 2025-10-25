@@ -45,7 +45,7 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
                 </AlertDialogHeader>
                 <ScrollArea className="max-h-[60vh] pr-6">
                     <div className="text-sm text-muted-foreground mt-2 mb-4">The full checklist pack contains dozens of such integrated protocols. This is just a sample of how they work together.</div>
-                    {isMobile ? (
+                     {isMobile ? (
                         <div className="space-y-4">
                             {scenario.tasks.map((task, index) => (
                                 <Card key={index} className="p-4">
@@ -291,6 +291,7 @@ const handleDownload = (pack: PremiumPack) => {
     
     utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
 
+
     // --- Individual Checklist Sheets ---
     pack.checklists.forEach(checklist => {
         const checklistHeaders = [
@@ -410,10 +411,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </ul>
                             </CardContent>
                             <CardFooter className="mt-auto flex justify-center">
-                               <form action={pack.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
-                                    <Button type="submit" size="lg" className="w-full">
-                                        Buy Now
-                                    </Button>
+                               <form action={`/thank-you?pack_id=${pack.id}`} method="GET" target="_blank" rel="noopener noreferrer" className="w-full">
+                                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async></script>
                                 </form>
                             </CardFooter>
                         </Card>
@@ -456,10 +455,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </ul>
                         </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <form action={pack.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
-                                <Button type="submit" size="lg" className="w-full">
-                                    Buy Now
-                                </Button>
+                           <form action={`/thank-you?pack_id=${pack.id}`} method="GET" target="_blank" rel="noopener noreferrer" className="w-full">
+                                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async></script>
                             </form>
                         </CardFooter>
                     </Card>
@@ -483,10 +480,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </ul>
                     </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <form action={personalizedPack.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
-                                <Button type="submit" size="lg" className="w-full" variant="accent">
-                                    Buy Personalized Pack
-                                </Button>
+                           <form action={`/thank-you?pack_id=${pack.id}&type=personalized`} method="GET" target="_blank" rel="noopener noreferrer" className="w-full">
+                               <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={personalizedPack.paymentId} async></script>
                             </form>
                         </CardFooter>
                     </Card>
@@ -557,4 +552,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
