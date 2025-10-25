@@ -2253,7 +2253,7 @@ export const premiumPacks: PremiumPack[] = [
             tasks: [
                 { id: 'VIS-MG-03', description: "The 'Visitor Management' checklist requires security to verify the visitor's ID against a pre-approved pickup list for each child. The unauthorized parent is denied entry.", sourceChecklist: "Visitor Management & Security", priority: 'High' },
                 { id: 'TRAN-05', description: "The 'Student Transport' SOP mandates that the class teacher only hands over the child to a registered guardian, providing a second layer of verification.", sourceChecklist: "Student Transport & Safety", priority: 'High' },
-                { id: 'INC-HDLG-01', description: "The 'Incident Handling' checklist provides a clear protocol for the principal to follow, including immediately notifying the custodial parent and documenting the incident.", sourceChecklist: "Incident Handling Protocol", priority: 'High' }
+                { id: 'INC-HDLG-01', description: "The 'Incident Handling' protocol provides a clear protocol for the principal to follow, including immediately notifying the custodial parent and documenting the incident.", sourceChecklist: "Incident Handling Protocol", priority: 'High' }
             ]
         },
         globalStandards: {
@@ -3770,122 +3770,6 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
         ]
-    },
-    {
-        id: 'shelter_operations',
-        title: "Shelter Operations",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
-        category: "Social Cause",
-        description: "A basic (and free) operational toolkit for NGO shelter managers to ensure the safety and well-being of beneficiaries.",
-        icon: <PersonStanding />,
-        badgeText: "Free Resource",
-        badgeVariant: "accent",
-        whoIsItFor: ["Shelter Managers", "NGO Founders", "Social Workers"],
-        sampleItems: [
-            { text: "Safely process new admissions with intake and assessment protocols.", icon: <Home /> },
-            { text: "Manage health with medication and medical logs.", icon: <HeartPulse /> },
-            { text: "Create clean shelter.", icon: <Sparkles /> },
-            { text: "Protect with volunteer onboarding and ground rules.", icon: <Users /> },
-            { text: "Enable by skill learning and job search", icon: <Briefcase /> },
-            { text: "Promote well-being with a hygiene and nutrition plan.", icon: <Utensils /> }
-        ],
-        previewScenario: {
-            title: "Intake & Assessment",
-            description: "Here is intake workflow. This scenario shows how checklists prevent this.",
-            tasks: [
-                { id: 'A-SSC-01', description: "Immediate dispatch. This is source. ", sourceChecklist: "A Surgical Safety Checklist (WHO Aligned)", priority: 'High' },
-                { id: 'B-SSC-02', description: "The  check with the  surgical consent form before entering the OT.", sourceChecklist: "B Patient Identification Protocol", priority: 'High' },
-                { id: 'C-SSC-03', description: "The Manager confirms that the allergy protocol was followed before the dish leaves the kitchen.", sourceChecklist: "C High-Alert Medication SOP", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Add global for social",
-            standards: [
-                { name: "Add name", description: "Description" },
-            ]
-        },
-        checklists: [
-            {
-                title: "Intake & Assessment Protocol",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Manager",
-                icon: <Home />,
-                summary: "1. ID & background, 2. Health assessment, 3. Assign Bed , 4. Key contact",
-                tasks: [
-                    {id: 'ABC-01', description: "New benificiary has ID , take copy", priority: 'High', riskLevel: 'Low', proof: 'Notes', location: 'Bed', consequence: 'impact.'},
-                    {id: 'ABC-02', description: "Take details of health issues", priority: 'High', riskLevel: 'Medium', proof: 'Photo Log', location: 'Bed', consequence: 'impact.'},
-                    {id: 'ABC-03', description: "Allot a bed", priority: 'High', riskLevel: 'High', proof: 'BMS Screenshot', location: 'Bed', consequence: 'impact.'},
-                    {id: 'ABC-04', description: "Add emergency contect details", priority: 'Medium', riskLevel: 'Low', proof: 'Maintenance Ticket', location: 'Bed', consequence: 'impact.'},
-                ]
-            },
-            {
-                title: "Medicine protocols",
-                department: "Medical",
-                frequency: "Weekly",
-                role: "Doc",
-                icon: <HeartPulse />,
-                summary: "1. Log, 2. Verify , 3. Confirm",
-                tasks: [
-                    {id: 'XYZ-01', description: "Log temperature is maintained", priority: 'High', riskLevel: 'Medium', proof: 'Asset Register', location: 'System'},
-                    {id: 'XYZ-02', description: "Weekly", priority: 'High', riskLevel: 'High', proof: 'PM Compliance Report', location: 'System'},
-                    {id: 'XYZ-03', description: "Escalate", priority: 'High', riskLevel: 'High', proof: 'SLA Tracker', location: 'System'},
-                ]
-            },
-            {
-                title: "Deep Clean",
-                department: "Admin",
-                frequency: "Daily",
-                role: "Cleaner",
-                icon: <Sparkles />,
-                summary: "Zone-wise cleaning checklist, deep-clean schedule, consumable restock logs (soap, sanitizer).",
-                tasks: [
-                    {id: 'PQR-01', description: "Deep clean", priority: 'High', riskLevel: 'Medium', proof: 'Audit Scorecard', location: 'Various'},
-                    {id: 'PQR-02', description: "Verify consumables", priority: 'High', riskLevel: 'Medium', proof: 'Deep Clean Log', location: 'Various'},
-                    {id: 'PQR-03', description: "Check stock", priority: 'High', riskLevel: 'Low', proof: 'Restock Log', location: 'Janitor Room'},
-                ]
-            },
-            {
-                title: "Support Staff",
-                department: "Security",
-                frequency: "Ongoing",
-                role: "Security Supervisor",
-                icon: <Users />,
-                summary: "Contractor verification, access card issuance/return, CCTV health monitoring and retention policy.",
-                tasks: [
-                    {id: 'LMN-01', description: "ID check", priority: 'High', riskLevel: 'High', proof: 'Visitor Log', location: 'Reception'},
-                    {id: 'LMN-02', description: "Issue Cards", priority: 'High', riskLevel: 'High', proof: 'Access Card Log', location: 'Reception'},
-                    {id: 'LMN-03', description: "Recieved cards", priority: 'High', riskLevel: 'High', proof: 'Access Card Log', location: 'Reception'},
-                ]
-            },
-            {
-                title: "Skills & Training",
-                department: "Training",
-                frequency: "Weekly",
-                role: "Trainer",
-                icon: <Briefcase />,
-                summary: "BMS data review, meter readings, energy usage anomaly alerts.",
-                tasks: [
-                    {id: 'EFG-01', description: "Conduct session", priority: 'High', riskLevel: 'High', proof: 'BMS Log', location: 'BMS Room'},
-                    {id: 'EFG-02', description: "Track attendence", priority: 'High', riskLevel: 'Medium', proof: 'Meter Reading Log', location: 'Meter Rooms'},
-                    {id: 'EFG-03', description: "Get Feedback", priority: 'High', riskLevel: 'Medium', proof: 'Usage Analysis Report', location: 'Office'},
-                ]
-            },
-            {
-                title: "Hygiene",
-                department: "Hygien",
-                frequency: "Daily",
-                role: "Cleaner",
-                icon: <Utensils />,
-                summary: "Hygien check",
-                tasks: [
-                    { id: 'OPQ-01', description: "Clean surface", priority: 'High', riskLevel: 'High', proof: 'Cycle Count Sheets', location: 'Sales Floor/Vault' },
-                    { id: 'OPQ-02', description: "Check area", priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Office' },
-                ]
-            }
-        ]
     }
 ];
 
@@ -3904,6 +3788,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 

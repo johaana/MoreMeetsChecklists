@@ -18,10 +18,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from '@/hooks/use-toast';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
     if (!scenario) return null;
+    const isMobile = useIsMobile();
 
     return (
         <AlertDialog>
@@ -43,28 +45,44 @@ function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewSce
                 </AlertDialogHeader>
                 <ScrollArea className="max-h-[60vh] pr-6">
                     <div className="text-sm text-muted-foreground mt-2 mb-4">The full checklist pack contains dozens of such integrated protocols. This is just a sample of how they work together.</div>
-                    <Table className="mt-4 border rounded-lg">
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Critical Task</TableHead>
-                                <TableHead>Source Checklist</TableHead>
-                                <TableHead>Priority</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
+                    {isMobile ? (
+                        <div className="space-y-4">
                             {scenario.tasks.map((task, index) => (
-                                <TableRow key={index}>
-                                    <TableCell className="font-medium">{task.description}</TableCell>
-                                    <TableCell className="text-muted-foreground">{task.sourceChecklist}</TableCell>
-                                    <TableCell>
+                                <Card key={index} className="p-4">
+                                    <p className="font-bold">{task.description}</p>
+                                    <p className="text-sm text-muted-foreground mt-1"><strong>Source:</strong> {task.sourceChecklist}</p>
+                                    <div className="mt-2">
                                         <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
-                                            {task.priority}
+                                            {task.priority} Priority
                                         </Badge>
-                                    </TableCell>
-                                </TableRow>
+                                    </div>
+                                </Card>
                             ))}
-                        </TableBody>
-                    </Table>
+                        </div>
+                    ) : (
+                        <Table className="mt-4 border rounded-lg">
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Critical Task</TableHead>
+                                    <TableHead>Source Checklist</TableHead>
+                                    <TableHead>Priority</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {scenario.tasks.map((task, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell className="font-medium">{task.description}</TableCell>
+                                        <TableCell className="text-muted-foreground">{task.sourceChecklist}</TableCell>
+                                        <TableCell>
+                                            <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
+                                                {task.priority}
+                                            </Badge>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    )}
                 </ScrollArea>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Close Preview</AlertDialogCancel>
@@ -78,6 +96,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     const checklist = pack.checklists[0];
     if (!checklist) return null;
     const remainingTasks = checklist.tasks.length > 5 ? checklist.tasks.length - 5 : 0;
+    const isMobile = useIsMobile();
 
     return (
         <AlertDialog>
@@ -105,7 +124,38 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                             <div className="p-4 bg-secondary/50">
                                     <h3 className="text-xl font-bold font-headline">{checklist.title}</h3>
                             </div>
-                            <Table className="text-sm border-t">
+                            {isMobile ? (
+                                <div className="p-4 space-y-4">
+                                {checklist.tasks.slice(0, 5).map((task) => (
+                                    <Card key={task.id} className="p-4">
+                                        <div className="flex justify-between items-start">
+                                            <p className="font-bold flex-1 pr-2">{task.description}</p>
+                                            {task.consequence && (
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild><Info className="w-4 h-4 text-muted-foreground hover:text-accent cursor-pointer shrink-0"/></TooltipTrigger>
+                                                    <TooltipContent className="max-w-xs">
+                                                        <p className='font-bold text-accent'>Why it matters:</p>
+                                                        <p>{task.consequence}</p>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            )}
+                                        </div>
+                                        <p className="text-sm text-muted-foreground mt-2"><strong>Proof:</strong> {task.proof}</p>
+                                        <div className="flex gap-2 mt-2">
+                                            <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
+                                                {task.priority} Priority
+                                            </Badge>
+                                            <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
+                                                {task.riskLevel} Risk
+                                            </Badge>
+                                            <Badge variant="outline">Pending</Badge>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground mt-2 font-mono">ID: {task.id}</p>
+                                    </Card>
+                                ))}
+                                </div>
+                            ) : (
+                                <Table className="text-sm border-t">
                                      <TableHeader>
                                     <TableRow className="bg-primary/5 border-b-0">
                                         <TableHead className="p-2 text-primary/80 font-bold" colSpan={6}>
@@ -161,6 +211,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
                                     ))}
                                 </TableBody>
                             </Table>
+                            )}
                         </div>
                     </TooltipProvider>
                 </ScrollArea>
