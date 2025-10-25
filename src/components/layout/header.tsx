@@ -15,7 +15,9 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
-const allPacksByCategory = premiumPacks.reduce((acc, pack) => {
+const visiblePacks = premiumPacks.filter(p => p.category !== "Free Resources");
+
+const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
         acc[pack.category] = [];
     }
