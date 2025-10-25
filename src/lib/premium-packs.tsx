@@ -234,8 +234,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'FR-ONBOARD-06', description: 'Set up POS, inventory, and other required software systems.', priority: 'High', riskLevel: 'High', proof: 'System Setup Log', location: 'New Location' },
                     { id: 'FR-ONBOARD-07', description: 'Coordinate initial inventory and supply chain setup.', priority: 'High', riskLevel: 'High', proof: 'First PO', location: 'New Location' },
                     { id: 'FR-ONBOARD-08', description: 'Plan and execute a grand opening marketing campaign.', priority: 'High', riskLevel: 'Medium', proof: 'Marketing Plan', location: 'Marketing Dept' },
-                    { id: 'FR-ONBOARD-09', description: 'Provide on-site support for the first week of operations.', priority: 'High', riskLevel: 'High', proof: 'Support Log', location: 'New Location' },
-                    { id: 'FR-ONBOARD-10', description: 'Schedule the first 90-day performance review.', priority: 'High', riskLevel: 'Medium', proof: 'Calendar Invite', location: 'Office' },
                 ]
             },
             {
@@ -254,8 +252,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BRAND-AUDIT-06', description: 'Review local social media and advertising for brand compliance.', priority: 'High', riskLevel: 'High', proof: 'Social Media Review', location: 'Online' },
                     { id: 'BRAND-AUDIT-07', description: 'Ensure the correct brand music or scent profile is being used, if applicable.', priority: 'Medium', riskLevel: 'Low', proof: 'Sensory Audit', location: 'Franchise Location' },
                     { id: 'BRAND-AUDIT-08', description: 'Provide a detailed report to the franchisee with required corrective actions.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'System' },
-                    { id: 'BRAND-AUDIT-09', description: 'Follow up to ensure all corrective actions are completed.', priority: 'High', riskLevel: 'High', proof: 'Follow-up Report', location: 'System' },
-                    { id: 'BRAND-AUDIT-10', description: 'Share best practices from high-performing franchisees.', priority: 'Medium', riskLevel: 'Low', proof: 'Best Practice Email', location: 'System' },
                 ]
             },
             {
@@ -274,10 +270,134 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'PERF-REVIEW-06', description: 'Address any outstanding compliance issues from previous audits.', priority: 'High', riskLevel: 'High', proof: 'Compliance Tracker', location: 'Meeting' },
                     { id: 'PERF-REVIEW-07', description: 'Provide updates on new products, services, or brand-wide campaigns.', priority: 'High', riskLevel: 'Medium', proof: 'Update Presentation', location: 'Meeting' },
                     { id: 'PERF-REVIEW-08', description: 'Review franchisee\'s P&L statement and discuss profitability.', priority: 'High', riskLevel: 'High', proof: 'P&L Statement', location: 'Meeting' },
-                    { id: 'PERF-REVIEW-09', description: 'Document all discussions and action items.', priority: 'High', riskLevel: 'High', proof: 'Signed Meeting Minutes', location: 'System' },
-                    { id: 'PERF-REVIEW-10', description: 'Schedule the next performance review meeting.', priority: 'High', riskLevel: 'Low', proof: 'Calendar Invite', location: 'System' },
                 ]
             },
+            {
+                title: "Franchisee Financial Audit",
+                department: "Finance",
+                frequency: "Annually",
+                role: "Auditor",
+                icon: <DollarSign />,
+                summary: "SOP for auditing franchisee financials, reconciling royalty fees, and ensuring financial reporting standards.",
+                tasks: [
+                    { id: 'FIN-AUDIT-01', description: 'Verify accuracy of franchisee\'s reported gross sales.', priority: 'High', riskLevel: 'High', proof: 'Sales Records vs POS Data', location: 'Franchisee Office' },
+                    { id: 'FIN-AUDIT-02', description: 'Reconcile royalty fee payments against reported sales.', priority: 'High', riskLevel: 'High', proof: 'Royalty Calculation Sheet', location: 'Franchisor Office' },
+                    { id: 'FIN-AUDIT-03', description: 'Audit compliance with approved pricing and discount policies.', priority: 'High', riskLevel: 'High', proof: 'POS Transaction Audit', location: 'Franchisee Office' },
+                    { id: 'FIN-AUDIT-04', description: 'Check contributions to the national marketing fund.', priority: 'High', riskLevel: 'Medium', proof: 'Marketing Fund Ledger', location: 'Franchisor Office' },
+                    { id: 'FIN-AUDIT-05', description: 'Review franchisee P&L statements for any red flags.', priority: 'High', riskLevel: 'Medium', proof: 'P&L Analysis', location: 'Franchisor Office' },
+                    { id: 'FIN-AUDIT-06', description: 'Ensure timely submission of all required financial reports.', priority: 'High', riskLevel: 'Medium', proof: 'Submission Log', location: 'System' },
+                    { id: 'FIN-AUDIT-07', description: 'Verify purchases are made from approved suppliers.', priority: 'High', riskLevel: 'Medium', proof: 'Supplier Invoice Audit', location: 'Franchisee Office' },
+                    { id: 'FIN-AUDIT-08', description: 'Issue an audit report with findings and required actions.', priority: 'High', riskLevel: 'High', proof: 'Audit Report', location: 'System' },
+                ]
+            },
+            {
+                title: "Local Store Marketing (LSM) Compliance",
+                department: "Marketing",
+                frequency: "Per Campaign",
+                role: "Marketing Manager",
+                icon: <Megaphone />,
+                summary: "A workflow for franchisees to submit local marketing plans for approval, ensuring brand consistency.",
+                tasks: [
+                    { id: 'LSM-01', description: 'Require franchisees to submit all local marketing plans for approval.', priority: 'High', riskLevel: 'High', proof: 'LSM Submission Form', location: 'System' },
+                    { id: 'LSM-02', description: 'Review submitted plans for brand consistency and messaging.', priority: 'High', riskLevel: 'High', proof: 'Approval Checklist', location: 'Marketing Office' },
+                    { id: 'LSM-03', description: 'Provide feedback or approval within a defined SLA (e.g., 5 business days).', priority: 'High', riskLevel: 'Medium', proof: 'Communication Log', location: 'System' },
+                    { id: 'LSM-04', description: 'Provide franchisees with a library of pre-approved marketing templates.', priority: 'High', riskLevel: 'Medium', proof: 'Asset Library', location: 'System' },
+                    { id: 'LSM-05', description: 'Monitor franchisee social media accounts for compliance.', priority: 'High', riskLevel: 'High', proof: 'Social Media Audit', location: 'Online' },
+                    { id: 'LSM-06', description: 'Ensure correct usage of logos, fonts, and brand colors.', priority: 'High', riskLevel: 'High', proof: 'Brand Guideline Check', location: 'System' },
+                    { id: 'LSM-07', description: 'Track the ROI of local marketing campaigns.', priority: 'Medium', riskLevel: 'Low', proof: 'ROI Report', location: 'System' },
+                    { id: 'LSM-08', description: 'Share successful LSM ideas across the franchise network.', priority: 'Medium', riskLevel: 'Low', proof: 'Best Practice Newsletter', location: 'System' },
+                ]
+            },
+            {
+                title: "Customer Service Standards Audit",
+                department: "Operations",
+                frequency: "Quarterly",
+                role: "Mystery Shopper/Field Manager",
+                icon: <Sparkles />,
+                summary: "An audit checklist, often used for mystery shopping, to evaluate customer service quality.",
+                tasks: [
+                    { id: 'CSSA-01', description: 'Audit staff greeting and welcome procedure.', priority: 'High', riskLevel: 'Medium', proof: 'Mystery Shopper Report', location: 'Franchise Location' },
+                    { id: 'CSSA-02', description: 'Evaluate staff product knowledge and ability to answer questions.', priority: 'High', riskLevel: 'High', proof: 'Mystery Shopper Report', location: 'Franchise Location' },
+                    { id: 'CSSA-03', description: 'Check speed of service and queue management.', priority: 'High', riskLevel: 'High', proof: 'Timing Log', location: 'Franchise Location' },
+                    { id: 'CSSA-04', description: 'Assess cleanliness and presentation of the customer-facing areas.', priority: 'High', riskLevel: 'High', proof: 'Cleanliness Scorecard', location: 'Franchise Location' },
+                    { id: 'CSSA-05', description: 'Evaluate how staff handle customer complaints or difficult situations.', priority: 'High', riskLevel: 'High', proof: 'Scenario Test', location: 'Franchise Location' },
+                    { id: 'CSSA-06', description: 'Check if staff are attempting to upsell or cross-sell.', priority: 'Medium', riskLevel: 'Low', proof: 'Upsell Attempt Log', location: 'Franchise Location' },
+                    { id: 'CSSA-07', description: 'Review customer feedback scores (e.g., NPS, Google Reviews).', priority: 'High', riskLevel: 'High', proof: 'Feedback Dashboard', location: 'System' },
+                    { id: 'CSSA-08', description: 'Provide a detailed report and coaching plan to the franchisee.', priority: 'High', riskLevel: 'High', proof: 'Audit Report & Action Plan', location: 'System' },
+                ]
+            },
+            {
+                title: "Supply Chain & Inventory Audit",
+                department: "Supply Chain",
+                frequency: "Quarterly",
+                role: "Supply Chain Analyst",
+                icon: <Truck />,
+                summary: "Ensures franchisees are ordering correctly, managing stock levels, and adhering to supply chain policies.",
+                tasks: [
+                    { id: 'SCIA-01', description: 'Audit franchisee purchase orders to ensure they are using approved suppliers.', priority: 'High', riskLevel: 'High', proof: 'PO Audit', location: 'System' },
+                    { id: 'SCIA-02', description: 'Analyze inventory turnover rates to identify overstocking or understocking.', priority: 'High', riskLevel: 'High', proof: 'Inventory Turnover Report', location: 'System' },
+                    { id: 'SCIA-03', description: 'Check for compliance with stock storage and handling procedures (e.g., FIFO).', priority: 'High', riskLevel: 'High', proof: 'Stockroom Inspection', location: 'Franchise Location' },
+                    { id: 'SCIA-04', description: 'Verify that shrinkage (loss) levels are within acceptable limits.', priority: 'High', riskLevel: 'High', proof: 'Shrinkage Report', location: 'System' },
+                    { id: 'SCIA-05', description: 'Ensure franchisee is participating in mandatory promotional buys.', priority: 'High', riskLevel: 'Medium', proof: 'Promo Purchase Report', location: 'System' },
+                    { id: 'SCIA-06', description: 'Review logistics and delivery processes for efficiency.', priority: 'Medium', riskLevel: 'Medium', proof: 'Delivery Time Analysis', location: 'System' },
+                    { id: 'SCIA-07', description: 'Identify and address any unauthorized product sourcing.', priority: 'High', riskLevel: 'High', proof: 'Product Sourcing Audit', location: 'Franchise Location' },
+                    { id: 'SCIA-08', description: 'Provide guidance on optimizing inventory levels.', priority: 'Medium', riskLevel: 'Low', proof: 'Recommendation Report', location: 'System' },
+                ]
+            },
+            {
+                title: "Franchisee Staff Training SOP",
+                department: "Training",
+                frequency: "Ongoing",
+                role: "Training Manager",
+                icon: <Users />,
+                summary: "A process to ensure that all franchisee staff are certified on brand standards, product knowledge, and operational procedures.",
+                tasks: [
+                    { id: 'FST-01', description: 'Provide a mandatory training curriculum for all new franchisee employees.', priority: 'High', riskLevel: 'High', proof: 'Training Curriculum', location: 'LMS' },
+                    { id: 'FST-02', description: 'Require staff to pass a certification test on product knowledge and brand standards.', priority: 'High', riskLevel: 'Medium', proof: 'Certification Test Results', location: 'LMS' },
+                    { id: 'FST-03', description: 'Track training completion for all staff across the network.', priority: 'High', riskLevel: 'Medium', proof: 'Training Completion Report', location: 'System' },
+                    { id: 'FST-04', description: 'Conduct "Train the Trainer" sessions for franchisee managers.', priority: 'High', riskLevel: 'High', proof: 'Trainer Certification', location: 'Training Center' },
+                    { id: 'FST-05', description: 'Provide regular refresher training on new products or procedures.', priority: 'High', riskLevel: 'Medium', proof: 'Refresher Training Log', location: 'LMS' },
+                    { id: 'FST-06', description: 'Audit training records during franchisee performance reviews.', priority: 'High', riskLevel: 'Medium', proof: 'Audit Checklist', location: 'Meeting' },
+                    { id: 'FST-07', description: 'Use a mix of online modules, in-person workshops, and on-the-job training.', priority: 'Medium', riskLevel: 'Low', proof: 'Blended Learning Plan', location: 'System' },
+                    { id: 'FST-08', description: 'Gather feedback from franchisees on the effectiveness of training programs.', priority: 'Medium', riskLevel: 'Low', proof: 'Feedback Survey', location: 'System' },
+                ]
+            },
+            {
+                title: "IT Systems & POS Management",
+                department: "IT",
+                frequency: "Quarterly",
+                role: "IT Support Lead",
+                icon: <Computer />,
+                summary: "Ensures all franchise locations are using approved, secure, and up-to-date IT systems.",
+                tasks: [
+                    { id: 'IT-POS-01', description: 'Ensure all locations are using the mandated POS software version.', priority: 'High', riskLevel: 'High', proof: 'Software Version Report', location: 'System' },
+                    { id: 'IT-POS-02', description: 'Verify that antivirus and security software is installed and updated on all systems.', priority: 'High', riskLevel: 'High', proof: 'Security Software Dashboard', location: 'System' },
+                    { id: 'IT-POS-03', description: 'Audit POS data for signs of fraudulent activity (e.g., excessive voids, unusual discounts).', priority: 'High', riskLevel: 'High', proof: 'POS Exception Report', location: 'System' },
+                    { id: 'IT-POS-04', description: 'Ensure franchisees are compliant with data privacy and payment security (PCI DSS) standards.', priority: 'High', riskLevel: 'High', proof: 'Compliance Audit', location: 'System' },
+                    { id: 'IT-POS-05', description: 'Provide a centralized IT helpdesk for franchisee support.', priority: 'High', riskLevel: 'Medium', proof: 'Helpdesk SLA Report', location: 'System' },
+                    { id: 'IT-POS-06', description: 'Manage user access controls for all corporate systems.', priority: 'High', riskLevel: 'High', proof: 'User Access Review', location: 'System' },
+                    { id: 'IT-POS-07', description: 'Ensure regular data backups are being performed.', priority: 'High', riskLevel: 'High', proof: 'Backup Logs', location: 'System' },
+                    { id: 'IT-POS-08', description: 'Manage the rollout of any new software or hardware to the network.', priority: 'High', riskLevel: 'High', proof: 'Rollout Plan', location: 'System' },
+                ]
+            },
+            {
+                title: "Health, Safety & Compliance Audit",
+                department: "Compliance",
+                frequency: "Annually",
+                role: "Compliance Officer",
+                icon: <ShieldCheck />,
+                summary: "An annual audit to ensure franchisees comply with all local health, safety, and operational regulations.",
+                tasks: [
+                    { id: 'HSC-01', description: 'Verify the franchisee holds all required local licenses and permits (e.g., Shop & Establishment, FSSAI).', priority: 'High', riskLevel: 'High', proof: 'License and Permit File', location: 'Franchisee Office' },
+                    { id: 'HSC-02', description: 'Inspect for fire safety compliance (extinguishers, exits, alarms).', priority: 'High', riskLevel: 'High', proof: 'Fire Safety Audit Checklist', location: 'Franchise Location' },
+                    { id: 'HSC-03', description: 'Check for workplace safety hazards (trip hazards, electrical safety).', priority: 'High', riskLevel: 'High', proof: 'Workplace Safety Audit', location: 'Franchise Location' },
+                    { id: 'HSC-04', description: 'Ensure compliance with all labor laws (e.g., minimum wage, working hours).', priority: 'High', riskLevel: 'High', proof: 'Labor Law Compliance Audit', location: 'HR File' },
+                    { id: 'HSC-05', description: 'Verify that staff have received mandatory safety training.', priority: 'High', riskLevel: 'High', proof: 'Training Records', location: 'System' },
+                    { id: 'HSC-06', description: 'Check first-aid kits are stocked and accessible.', priority: 'High', riskLevel: 'Medium', proof: 'First-Aid Kit Log', location: 'Franchise Location' },
+                    { id: 'HSC-07', description: 'Document all findings and create a corrective action plan with the franchisee.', priority: 'High', riskLevel: 'High', proof: 'Compliance Report & CAPA', location: 'System' },
+                    { id: 'HSC-08', description: 'Follow up to ensure all compliance issues are resolved.', priority: 'High', riskLevel: 'High', proof: 'Follow-up Report', location: 'System' },
+                ]
+            }
         ]
     },
     {
@@ -306,7 +426,7 @@ export const premiumPacks: PremiumPack[] = [
             tasks: [
                 { id: 'ALLERGEN-BAKE-01', description: "The 'Allergen Management' SOP requires a clear, color-coded system separating allergen-free production from regular production, preventing cross-contamination.", sourceChecklist: "Allergen Management & Control", priority: 'High' },
                 { id: 'LABEL-01', description: "The 'Packaging & Labeling' checklist mandates that every single product is labeled with a full ingredient list and bolded allergens, providing a final safety net for the customer.", sourceChecklist: "Packaging & Labeling Compliance", priority: 'High' },
-                { id: 'TRAIN-BAKE-04', description: "The 'Staff Training' SOP includes mandatory training on how to answer customer questions about allergens, ensuring staff never give incorrect information.", sourceChecklist: "Staff Hygiene & Training", priority: 'High' }
+                { id: 'BAKE-TRAIN-04', description: "The 'Staff Training' SOP includes mandatory training on how to answer customer questions about allergens, ensuring staff never give incorrect information.", sourceChecklist: "Staff Hygiene & Training", priority: 'High' }
             ]
         },
         globalStandards: {
@@ -4013,6 +4133,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
