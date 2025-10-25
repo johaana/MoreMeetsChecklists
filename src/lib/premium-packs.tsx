@@ -285,7 +285,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Bakery & Confectionery Operations Pack",
         priceUSD: 49.99,
         priceINR: 1999,
-        paymentId: 'pl_P8WbT7A6g6xvyR',
+        paymentId: 'pl_ROLnfbmEpZzgZZ',
         category: "Food & Beverage",
         description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
         icon: <CakeSlice />,
@@ -387,7 +387,7 @@ export const premiumPacks: PremiumPack[] = [
         title: "Hotels & Resorts",
         priceUSD: 99.99,
         priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        paymentId: 'pl_RMnb42oApd90f0',
         category: "Hospitality",
         description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
         icon: <Building />,
@@ -3893,6 +3893,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 

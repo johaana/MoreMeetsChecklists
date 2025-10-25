@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -145,10 +146,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         </CardHeader>
                         <CardContent className="text-center flex flex-col items-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <form action={checklist.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
-                                <Button type="submit" size="lg" className="w-full">
-                                    Buy Now
-                                </Button>
+                           <form action={`/thank-you?checklist_id=${checklist.id}`} method="GET" target="_blank" rel="noopener noreferrer">
+                                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={checklist.paymentId} async></script>
                             </form>
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
@@ -173,10 +172,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                 <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
             </div>
             <div className="flex-shrink-0">
-                 <form action={checklist.paymentId} method="GET" target="_blank" rel="noopener noreferrer">
-                    <Button type="submit">
-                        Buy Now
-                    </Button>
+                 <form action={`/thank-you?checklist_id=${checklist.id}`} method="GET" target="_blank" rel="noopener noreferrer">
+                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={checklist.paymentId} async></script>
                 </form>
             </div>
         </div>
