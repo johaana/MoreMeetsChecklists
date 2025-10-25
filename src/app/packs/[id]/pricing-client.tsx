@@ -410,7 +410,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
                                 </ul>
                             </CardContent>
-                            <CardFooter className="mt-auto flex justify-center">
+                            <CardFooter className="mt-auto flex justify-center w-full">
                                <form action={`/thank-you?pack_id=${pack.id}`} method="GET" target="_blank" rel="noopener noreferrer" className="w-full">
                                     <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={pack.paymentId} async></script>
                                 </form>
