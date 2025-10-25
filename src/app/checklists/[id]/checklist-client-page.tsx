@@ -160,7 +160,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
         </section>
         
         <div className="container">
-            <UpsellBanner packId={checklist.relatedPackId} />
+            {checklist.relatedPackId && <UpsellBanner packId={checklist.relatedPackId} />}
         </div>
 
       </main>

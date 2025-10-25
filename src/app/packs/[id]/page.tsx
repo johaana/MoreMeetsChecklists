@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download } from 'lucide-react';
 import React from 'react';
 import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -18,6 +18,8 @@ import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { writeFile, utils } from 'xlsx-js-style';
+import type { Checklist as PackChecklist } from "@/lib/premium-packs";
 
 
 type Props = {
