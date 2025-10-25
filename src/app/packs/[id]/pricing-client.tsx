@@ -338,19 +338,17 @@ const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string,
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
+        if (!formContainerRef.current) return;
+
         const form = document.createElement('form');
-        
-        // Base action URL
-        let actionUrl = `/thank-you?razorpay_payment_id=`; // The payment ID will be appended by Razorpay's script.
-        
-        // Add pack_id or type to the action URL
+        let actionUrl = `/thank-you?razorpay_payment_id=`; 
+
         if (packId) {
             actionUrl += `&pack_id=${packId}`;
         }
         if (type) {
             actionUrl += `&type=${type}`;
         }
-        
         form.action = actionUrl;
 
         const script = document.createElement('script');
@@ -360,11 +358,9 @@ const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string,
         
         form.appendChild(script);
         
-        if (formContainerRef.current) {
-            // Clear existing content and append the new form
-            formContainerRef.current.innerHTML = '';
-            formContainerRef.current.appendChild(form);
-        }
+        formContainerRef.current.innerHTML = '';
+        formContainerRef.current.appendChild(form);
+
     }, [paymentId, packId, type]);
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
