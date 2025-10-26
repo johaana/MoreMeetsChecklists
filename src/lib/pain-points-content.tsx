@@ -1,6 +1,7 @@
 
+
 import React from 'react';
-import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck } from 'lucide-react';
+import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale } from 'lucide-react';
 
 export const painPointsContent = {
     bakery_confectionery_pack: {
@@ -177,7 +178,7 @@ export const painPointsContent = {
         title: "Anatomy of a Logistics & Warehouse Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
         points: [
-            { icon: <Siren />, title: "The Beirut Port Explosion (Lebanon, 2020)", description: "A catastrophic explosion of improperly stored chemicals killed over 200 people. This is the ultimate example of a storage and handling failure. Our checklists for 'Hazardous Materials' and 'Warehouse Safety' enforce the strict protocols that prevent such a disaster." },
+            { icon: <Siren />, title: "The Beirut Port Explosion (Lebanon, 2020)", description: "A catastrophic explosion of improperly stored ammonium nitrate killed over 200 people. This is the ultimate example of a storage and handling failure. Our checklists for 'Hazardous Materials' and 'Warehouse Safety' enforce the strict protocols that prevent such a disaster." },
             { icon: <Truck />, title: "The Ever Given Suez Canal Blockage (Global, 2021)", description: "This single incident halted $9.6 billion of trade per day, a symbol of supply chain fragility. Our SOPs ensure you have the internal resilience to withstand external shocks by optimizing stock levels and having pre-vetted alternative transport and supply options." },
             { icon: <Building />, title: "ASOS Warehouse Fire (UK, 2014)", description: "A massive fire, believed to be arson, destroyed over $30 million of inventory. Our 'Security & Visitor Control' checklists harden your facility against unauthorized access, while 'Fire Safety' SOPs ensure rapid detection and response." },
             { icon: <Wrench />, title: "Amazon Warehouse Fatality (USA, 2021)", description: "A worker was killed after being caught in a conveyor belt. Our 'Material Handling Equipment (MHE)' safety checklists and maintenance logs ensure that all machinery is safe and operated correctly, preventing tragic accidents." }
@@ -227,3 +228,5 @@ export const painPointsContent = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
+
+    

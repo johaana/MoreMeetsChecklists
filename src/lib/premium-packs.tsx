@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater, Search } from "lucide-react";
+import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater, Search, TrendingUp, ClipboardCheck, UserPlus } from "lucide-react";
 
 export type Checklist = {
     title: string;
@@ -861,7 +861,7 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "FSSAI", description: "Complies with Food Safety and Standards Authority of India regulations." },
                 { name: "HACCP", description: "Follows Hazard Analysis and Critical Control Points principles." },
                 { name: "ISO 22000", description: "Adheres to international standards for food safety management." },
-                { name: "FDA Food Code", description: "References guidelines from the U.S. Food and Drug Administration." }
+                { name: "Codex Alimentarius", description: "International food standards and guidelines from the WHO/FAO." }
             ]
         },
         checklists: [
@@ -1082,8 +1082,8 @@ export const premiumPacks: PremiumPack[] = [
             standards: [
                 { name: "ISO 9001", description: "For quality management and customer satisfaction." },
                 { name: "Shops & Establishment Act", description: "Ensures compliance with local labor and operational laws." },
-                { name: "OSHA 29 CFR", description: "Guidelines for retail workplace safety." },
-                { name: "ILO Safety Standards", description: "International Labour Organization standards for worker safety." }
+                { name: "WRAP", description: "A leading standard for ethical manufacturing in the apparel industry." },
+                { name: "OSHA 29 CFR", description: "Guidelines for retail workplace safety." }
             ]
         },
         checklists: [
@@ -2127,7 +2127,7 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "Companies Act", description: "For board meetings, statutory filings, and governance." },
                 { name: "Indian Labour Laws", description: "For HR processes like onboarding and disciplinary actions." },
                 { name: "ISO 37301", description: "International standard for compliance management systems." },
-                { name: "SOX Principles", description: "References Sarbanes-Oxley principles for internal controls." }
+                { name: "COSO Framework", description: "The global standard for designing and implementing internal controls." }
             ]
         },
         checklists: [
@@ -2712,7 +2712,8 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Maintain a safe campus with daily playground, classroom, and facility safety audits.", icon: <Shield /> },
             { text: "Prepare for emergencies with comprehensive fire safety drills and first-aid response plans.", icon: <Siren /> },
             { text: "Protect students with a legally compliant staff background verification and hiring process.", icon: <UserCheck /> },
-            { text: "Safeguard health with kitchen hygiene audits and clean water testing schedules.", icon: <Utensils /> }
+            { text: "Ensure a smooth and fair admissions process with a standardized enrolment checklist.", icon: <UserPlus /> },
+            { text: "Safeguard academic integrity with a secure examination and report card generation process.", icon: <GraduationCap /> },
         ],
         previewScenario: {
             title: "Preventing a Student Abduction Scare",
@@ -2871,6 +2872,42 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'INC-HDLG-08', description: 'File any required reports with regulatory bodies.', priority: 'High', riskLevel: 'High', proof: 'Regulatory Filing', location: 'Office' },
                     { id: 'INC-HDLG-09', description: 'Debrief with involved staff to learn from the incident.', priority: 'High', riskLevel: 'Medium', proof: 'Debrief Meeting Minutes', location: 'Office' },
                     { id: 'INC-HDLG-10', description: 'Review and update relevant policies based on the incident.', priority: 'High', riskLevel: 'High', proof: 'Policy Update Log', location: 'Office' },
+                ]
+            },
+            {
+                title: "Admissions & Enrolment Process",
+                department: "Admissions",
+                frequency: "Per Admission Cycle",
+                role: "Admissions Officer",
+                icon: <UserPlus />,
+                summary: "A standardized workflow for managing student applications, from inquiry to final enrolment.",
+                tasks: [
+                    { id: 'ADM-01', description: "Publish clear admission criteria and timelines.", priority: 'High', riskLevel: 'Medium', proof: 'Admissions Prospectus', location: 'Website/Office'},
+                    { id: 'ADM-02', description: "Use a standardized application form to collect all necessary student and parent information.", priority: 'High', riskLevel: 'High', proof: 'Application Form', location: 'System'},
+                    { id: 'ADM-03', description: "Track all applications in a centralized admissions management system.", priority: 'High', riskLevel: 'High', proof: 'Admissions Dashboard', location: 'System'},
+                    { id: 'ADM-04', description: "Schedule and conduct parent interviews or student assessments in a fair and consistent manner.", priority: 'High', riskLevel: 'High', proof: 'Interview Schedule & Scorecards', location: 'System'},
+                    { id: 'ADM-05', description: "Communicate admission decisions (offers, waitlists, rejections) to all applicants on a specified date.", priority: 'High', riskLevel: 'High', proof: 'Communication Log', location: 'System'},
+                    { id: 'ADM-06', description: "Collect all required documents (birth certificate, previous school records) for admitted students.", priority: 'High', riskLevel: 'High', proof: 'Document Checklist', location: 'Admissions Office'},
+                    { id: 'ADM-07', description: "Process admission fees and issue receipts.", priority: 'High', riskLevel: 'High', proof: 'Fee Receipt', location: 'Accounts Office'},
+                    { id: 'ADM-08', description: "Conduct an orientation program for new students and parents.", priority: 'High', riskLevel: 'Medium', proof: 'Orientation Schedule', location: 'Campus'}
+                ]
+            },
+            {
+                title: "Examination & Report Card SOP",
+                department: "Academics",
+                frequency: "Per Examination Cycle",
+                role: "Examination Controller",
+                icon: <GraduationCap />,
+                summary: "A secure and accurate process for conducting exams and publishing results.",
+                tasks: [
+                    { id: 'EXAM-01', description: "Ensure secure handling and storage of question papers before the exam.", priority: 'High', riskLevel: 'High', proof: 'Secure Storage Log', location: 'Examination Room'},
+                    { id: 'EXAM-02', description: "Follow a strict protocol for exam invigilation to prevent cheating.", priority: 'High', riskLevel: 'High', proof: 'Invigilation Duty Roster', location: 'Exam Halls'},
+                    { id: 'EXAM-03', description: "Implement a fair and anonymous process for grading answer sheets.", priority: 'High', riskLevel: 'High', proof: 'Grading Policy Document', location: 'Office'},
+                    { id: 'EXAM-04', description: "Have a dual-check or verification process for tabulating marks and grades.", priority: 'High', riskLevel: 'High', proof: 'Verification Log', location: 'System'},
+                    { id: 'EXAM-05', description: "Generate and print report cards with a final QC check for any errors.", priority: 'High', riskLevel: 'High', proof: 'QC Sign-off Sheet', location: 'Office'},
+                    { id: 'EXAM-06', description: "Publish results and distribute report cards on a pre-announced date.", priority: 'High', riskLevel: 'Medium', proof: 'Distribution Log', location: 'System'},
+                    { id: 'EXAM-07', description: "Have a clear process for handling student requests for re-evaluation or grade clarifications.", priority: 'High', riskLevel: 'Medium', proof: 'Re-evaluation Policy', location: 'Office'},
+                    { id: 'EXAM-08', description: "Securely archive all examination records as per regulatory requirements.", priority: 'High', riskLevel: 'High', proof: 'Archive Log', location: 'Record Room'}
                 ]
             }
         ]
@@ -3077,7 +3114,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Industrial & Transport ---
     {
         id: 'manufacturing_operations_ehs_pack',
-        title: "Manufacturing & EHS Pack",
+        title: "Plant Operations & EHS Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -3091,9 +3128,9 @@ export const premiumPacks: PremiumPack[] = [
         sampleItems: [
             { text: "Prevent fatal accidents with a legally compliant Lock-Out Tag-Out (LOTO) procedure for machine maintenance.", icon: <Lock /> },
             { text: "Ensure worker safety with a permit-to-work system for high-risk jobs like hot work and confined space entry.", icon: <FileCheck /> },
+            { text: "Boost productivity by tracking Overall Equipment Effectiveness (OEE) to minimize downtime.", icon: <TrendingUp /> },
+            { text: "Reduce defects and waste with an In-Process Quality Control (IPQC) system.", icon: <ClipboardCheck /> },
             { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: <Siren /> },
-            { text: "Guarantee product quality and traceability with raw material inspection and batch tracking SOPs.", icon: <PackageCheck /> },
-            { text: "Build a culture of safety with daily shift-start safety briefings and machine readiness checklists.", icon: <ClipboardList /> },
             { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: <Leaf /> }
         ],
         previewScenario: {
@@ -3233,6 +3270,36 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'INC-CAPA-08', description: 'Share lessons learned with all relevant personnel.', priority: 'High', riskLevel: 'Medium', proof: 'Safety Alert/Toolbox Talk', location: 'Plant-wide' },
                     { id: 'INC-CAPA-09', description: 'Update SOPs or risk assessments based on findings.', priority: 'High', riskLevel: 'High', proof: 'Updated Documents', location: 'System' },
                     { id: 'INC-CAPA-10', description: 'Report incident statistics to management monthly.', priority: 'High', riskLevel: 'Medium', proof: 'Monthly Safety Report', location: 'Office' },
+                ]
+            },
+            {
+                title: "Overall Equipment Effectiveness (OEE)",
+                department: "Production",
+                frequency: "Daily/Shift-wise",
+                role: "Production Supervisor",
+                icon: <TrendingUp />,
+                summary: "A system for tracking machine downtime, performance, and quality to boost productivity.",
+                tasks: [
+                    { id: 'OEE-01', description: "Track all machine downtime and log the reason for each stoppage.", priority: 'High', riskLevel: 'High', proof: 'Downtime Log', location: 'Control Room' },
+                    { id: 'OEE-02', description: "Measure actual production output against the machine's ideal run rate.", priority: 'High', riskLevel: 'Medium', proof: 'Performance Log', location: 'System' },
+                    { id: 'OEE-03', description: "Track the number of defective units produced versus the total units.", priority: 'High', riskLevel: 'High', proof: 'Quality Log', location: 'QC Station' },
+                    { id: 'OEE-04', description: "Calculate the OEE score (Availability x Performance x Quality) for each critical machine daily.", priority: 'High', riskLevel: 'High', proof: 'OEE Report', location: 'System' },
+                    { id: 'OEE-05', description: "Discuss OEE results in daily production meetings to identify improvement areas.", priority: 'High', riskLevel: 'Medium', proof: 'Meeting Minutes', location: 'Office' },
+                ]
+            },
+            {
+                title: "In-Process Quality Control (IPQC)",
+                department: "Quality",
+                frequency: "Per Batch/Hour",
+                role: "QC Inspector",
+                icon: <ClipboardCheck />,
+                summary: "Checklists for conducting quality checks at various stages of the production line to catch defects early.",
+                tasks: [
+                    { id: 'IPQC-01', description: "Perform quality checks on semi-finished goods at defined control points.", priority: 'High', riskLevel: 'High', proof: 'IPQC Checksheet', location: 'Production Line' },
+                    { id: 'IPQC-02', description: "Verify that process parameters (e.g., temperature, pressure) are within specified limits.", priority: 'High', riskLevel: 'High', proof: 'Process Log', location: 'Control Room' },
+                    { id: 'IPQC-03', description: "Hold and quarantine any batch that fails an in-process check.", priority: 'High', riskLevel: 'High', proof: 'Hold Notice/Tag', location: 'Production Line' },
+                    { id: 'IPQC-04', description: "Document all IPQC checks and any deviations found.", priority: 'High', riskLevel: 'High', proof: 'IPQC Report', location: 'System' },
+                    { id: 'IPQC-05', description: "Provide real-time feedback to the production team on quality issues.", priority: 'High', riskLevel: 'Medium', proof: 'Feedback Log', location: 'Production Line' },
                 ]
             },
         ]
@@ -4133,6 +4200,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
