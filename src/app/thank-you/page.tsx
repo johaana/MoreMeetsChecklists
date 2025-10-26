@@ -51,7 +51,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const pack = item as PremiumPack;
         packTitle = pack.title;
         packObject = premiumPacks.find(p => p.id === pack.id);
-        checklists = isPersonalized
+        checklists = isPersonalized && packObject
           ? premiumPacks.flatMap(p => p.checklists)
           : pack.checklists;
     } else {
@@ -128,7 +128,6 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             ["Task ID", "Task Description", ...packObject.globalStandards.standards.map(s => s.name)],
         ];
 
-        // This is a placeholder mapping. In a real scenario, this would come from the data model.
         const mockMapping: { [key: string]: string[] } = {
             'LOTO-01': ['ISO 45001', 'OSHA'],
             'PTW-01': ['ISO 45001', 'OSHA'],
@@ -240,7 +239,7 @@ function ThankYouContent() {
       if (result.success) {
         setVerifiedItem(result.item);
         setItemType(result.type);
-        handleDownload(result.item, result.type, isPersonalizedPurchase);
+        handleDownload(result.item as PremiumPack, result.type, isPersonalizedPurchase);
         setShowDownloadConfirm(true);
       } else {
         setError(result.error);

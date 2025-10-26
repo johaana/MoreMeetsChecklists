@@ -4,18 +4,14 @@
 import { premiumPacks, PremiumPack } from '@/lib/premium-packs';
 import { individualChecklists, IndividualChecklist } from '@/lib/individual-checklists';
 
-const virtualPersonalizedPack = {
+const virtualPersonalizedPack = (basePack: PremiumPack): PremiumPack => ({
+  ...basePack, // Inherit details from the original pack
   id: 'personalized_pack',
-  title: 'Personalized Pack',
-  checklists: premiumPacks.flatMap(p => p.checklists), 
-  priceUSD: 0,
-  priceINR: 10999,
-  category: "Personalized",
-  description: "A custom pack tailored for you.",
-  sampleItems: [],
-};
+  title: `Global Compliance Edition: ${basePack.title}`,
+});
 
-type FoundItem = PremiumPack | (typeof virtualPersonalizedPack) | IndividualChecklist;
+
+type FoundItem = PremiumPack | IndividualChecklist;
 
 type VerificationResult = {
     success: true;
@@ -65,25 +61,32 @@ export async function verifyRazorpayPayment(
         
         let foundItem: FoundItem | null = null;
         let itemType: 'pack' | 'individual' | null = null;
+        let expectedAmount = 0;
+
+        const basePack = premiumPacks.find(p => p.id === packId);
 
         if (isPersonalized) {
-             foundItem = virtualPersonalizedPack;
+             if (!basePack) return { success: false, error: 'Could not find the base pack for personalization.' };
+             foundItem = virtualPersonalizedPack(basePack);
              itemType = 'pack';
+             // Hardcoded price for the global compliance pack
+             expectedAmount = 10999 * 100;
         } else if (packId) {
-             foundItem = premiumPacks.find(p => p.id === packId) || null;
+             foundItem = basePack || null;
              itemType = 'pack';
+             if (foundItem) expectedAmount = foundItem.priceINR * 100;
         } else if (checklistId) {
              foundItem = individualChecklists.find(c => c.id === checklistId) || null;
              itemType = 'individual';
+             if (foundItem) expectedAmount = foundItem.priceINR * 100;
         }
 
         if (!foundItem) {
             return { success: false, error: 'Could not find the purchased item associated with your order.' };
         }
         
-        const expectedAmount = foundItem.priceINR * 100;
         if (payment.amount !== expectedAmount) {
-             return { success: false, error: `Payment amount mismatch. Expected ₹${foundItem.priceINR} but paid ₹${payment.amount / 100}. Please contact support.` };
+             return { success: false, error: `Payment amount mismatch. Expected ₹${expectedAmount / 100} but paid ₹${payment.amount / 100}. Please contact support.` };
         }
 
         return { success: true, item: foundItem, type: itemType! };

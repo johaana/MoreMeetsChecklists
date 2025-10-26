@@ -227,7 +227,7 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     );
 }
 
-const handleDownload = (pack: PremiumPack) => {
+const handleDownload = (pack: PremiumPack, isPersonalized?: boolean) => {
     if (!pack) {
         alert("Could not find the pack data. Please contact support.");
         return;
@@ -241,6 +241,14 @@ const handleDownload = (pack: PremiumPack) => {
     const footerStyle = {
         font: { italic: true, sz: 10 }
     };
+    const complianceHeaderStyle = {
+        font: { bold: true, color: { rgb: "FFFFFF" } },
+        fill: { fgColor: { rgb: "C0504D" } }
+    };
+
+    const checklists = isPersonalized
+        ? premiumPacks.flatMap(p => p.checklists)
+        : pack.checklists;
 
     // --- Cover Page ---
     const coverPageName = "Cover Page";
@@ -251,7 +259,7 @@ const handleDownload = (pack: PremiumPack) => {
         [" "],
         ["Click to navigate:"],
         ["Checklist Title", "Department", "Frequency", "Role"],
-         ...pack.checklists.map((checklist) => {
+         ...checklists.map((checklist) => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
             return [
@@ -290,9 +298,52 @@ const handleDownload = (pack: PremiumPack) => {
     
     utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
 
+    // --- Add Compliance Matrix for Personalized/Global Compliance Pack ---
+    if (isPersonalized && pack.globalStandards) {
+        const complianceSheetName = "Compliance Matrix";
+        const complianceData: any[][] = [
+            ["Global Standards Compliance Matrix"],
+            [],
+            [pack.globalStandards.title],
+            [],
+            ["Task ID", "Task Description", ...pack.globalStandards.standards.map(s => s.name)],
+        ];
+
+        const mockMapping: { [key: string]: string[] } = {
+            'LOTO-01': ['ISO 45001', 'OSHA'],
+            'PTW-01': ['ISO 45001', 'OSHA'],
+            'HACCP-01': ['ISO 22000', 'HACCP'],
+            'FIRE-01': ['NFPA 101'],
+        };
+        
+        checklists.forEach(checklist => {
+            checklist.tasks.forEach(task => {
+                const row = [task.id, task.description];
+                pack.globalStandards!.standards.forEach(standard => {
+                    if (mockMapping[task.id]?.includes(standard.name)) {
+                        row.push('✔');
+                    } else {
+                        row.push('');
+                    }
+                });
+                complianceData.push(row);
+            });
+        });
+
+        const complianceWorksheet = utils.aoa_to_sheet(complianceData);
+        complianceWorksheet['!cols'] = [{ wch: 20 }, { wch: 60 }, ...pack.globalStandards.standards.map(() => ({ wch: 20 }))];
+        complianceWorksheet['A1'].s = { font: { sz: 18, bold: true } };
+        complianceWorksheet['A3'].s = { font: { sz: 14, bold: true } };
+        complianceData[4].forEach((_, C) => {
+            const address = utils.encode_cell({ r: 4, c: C });
+            complianceWorksheet[address].s = complianceHeaderStyle;
+        });
+
+        utils.book_append_sheet(workbook, complianceWorksheet, complianceSheetName);
+    }
 
     // --- Individual Checklist Sheets ---
-    pack.checklists.forEach(checklist => {
+    checklists.forEach(checklist => {
         const checklistHeaders = [
             'Task ID', 'Task', 'Priority', 'Risk Level', 
             'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
@@ -493,6 +544,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Built on Best Practices:</span><span className="ml-1">Aligned with foundational Indian standards.</span></li>
                             </ul>
                         </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
@@ -513,9 +565,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <CardContent className="flex-1">
                          <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
                         <ul className="space-y-3 text-muted-foreground text-sm">
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>**Aligned with global frameworks** (ISO, JCI, HACCP, etc.)</span></li>
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>**Includes cross-border compliance checklists**</span></li>
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>**Priority customer support**</span></li>
+                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Aligned with global frameworks</span><span className="ml-1">(ISO, JCI, HACCP, etc.)</span></li>
+                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Includes a Compliance Matrix</span><span className="ml-1">Excel sheet mapping tasks to standards.</span></li>
+                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Priority customer support</span></li>
                         </ul>
                     </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
@@ -534,7 +586,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <p className="text-4xl font-bold pt-4">Custom</p>
                         </CardHeader>
                         <CardContent className="flex-1">
-                                <p className="font-semibold mb-3 text-sm">Everything in Personalized, plus:</p>
+                                <p className="font-semibold mb-3 text-sm">Everything in Global Compliance, plus:</p>
                                 <ul className="space-y-3 text-muted-foreground text-sm">
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
