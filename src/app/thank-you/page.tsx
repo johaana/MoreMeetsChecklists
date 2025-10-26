@@ -24,7 +24,7 @@ import {
   AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
 
-const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
+const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual', isPersonalized?: boolean) => {
     if (!item) {
         alert("Could not find the purchased item data. Please contact support.");
         return;
@@ -35,22 +35,29 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         font: { bold: true, color: { rgb: "FFFFFF" } },
         fill: { fgColor: { rgb: "0A2540" } }
     };
-     const footerStyle = {
+    const footerStyle = {
         font: { italic: true, sz: 10 }
+    };
+    const complianceHeaderStyle = {
+        font: { bold: true, color: { rgb: "FFFFFF" } },
+        fill: { fgColor: { rgb: "C0504D" } }
     };
 
     let checklists: PackChecklist[] = [];
     let packTitle = item.title;
+    let packObject: PremiumPack | undefined;
 
     if (type === 'pack') {
         const pack = item as PremiumPack;
         packTitle = pack.title;
-        checklists = pack.id === 'personalized_pack' 
+        packObject = premiumPacks.find(p => p.id === pack.id);
+        checklists = isPersonalized
           ? premiumPacks.flatMap(p => p.checklists)
           : pack.checklists;
     } else {
         const checklist = item as IndividualChecklist;
         packTitle = checklist.title;
+        packObject = premiumPacks.find(p => p.id === checklist.relatedPackId);
         checklists = [{
             title: checklist.title,
             tasks: checklist.tasks,
@@ -110,6 +117,51 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     
     utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
 
+    // --- Add Compliance Matrix for Personalized/Global Compliance Pack ---
+    if (isPersonalized && packObject?.globalStandards) {
+        const complianceSheetName = "Compliance Matrix";
+        const complianceData: any[][] = [
+            ["Global Standards Compliance Matrix"],
+            [],
+            [packObject.globalStandards.title],
+            [],
+            ["Task ID", "Task Description", ...packObject.globalStandards.standards.map(s => s.name)],
+        ];
+
+        // This is a placeholder mapping. In a real scenario, this would come from the data model.
+        const mockMapping: { [key: string]: string[] } = {
+            'LOTO-01': ['ISO 45001', 'OSHA'],
+            'PTW-01': ['ISO 45001', 'OSHA'],
+            'HACCP-01': ['ISO 22000', 'HACCP'],
+            'FIRE-01': ['NFPA 101'],
+        };
+        
+        checklists.forEach(checklist => {
+            checklist.tasks.forEach(task => {
+                const row = [task.id, task.description];
+                packObject!.globalStandards!.standards.forEach(standard => {
+                    if (mockMapping[task.id]?.includes(standard.name)) {
+                        row.push('✔');
+                    } else {
+                        row.push('');
+                    }
+                });
+                complianceData.push(row);
+            });
+        });
+
+        const complianceWorksheet = utils.aoa_to_sheet(complianceData);
+        complianceWorksheet['!cols'] = [{ wch: 20 }, { wch: 60 }, ...packObject.globalStandards.standards.map(() => ({ wch: 20 }))];
+        complianceWorksheet['A1'].s = { font: { sz: 18, bold: true } };
+        complianceWorksheet['A3'].s = { font: { sz: 14, bold: true } };
+        complianceData[4].forEach((_, C) => {
+            const address = utils.encode_cell({ r: 4, c: C });
+            complianceWorksheet[address].s = complianceHeaderStyle;
+        });
+
+        utils.book_append_sheet(workbook, complianceWorksheet, complianceSheetName);
+    }
+
 
     // --- Individual Checklist Sheets ---
     checklists.forEach(checklist => {
@@ -161,13 +213,16 @@ function ThankYouContent() {
   const [error, setError] = React.useState<string | null>(null);
   const [verifiedItem, setVerifiedItem] = React.useState<any | null>(null);
   const [itemType, setItemType] = React.useState<'pack' | 'individual' | null>(null);
+  const [isPersonalized, setIsPersonalized] = React.useState(false);
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 
   React.useEffect(() => {
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
     const packId = searchParams.get('pack_id');
     const checklistId = searchParams.get('checklist_id');
-    const isPersonalized = searchParams.get('type') === 'personalized';
+    const type = searchParams.get('type');
+    const isPersonalizedPurchase = type === 'personalized';
+    setIsPersonalized(isPersonalizedPurchase);
 
     if (!rzpPaymentId) {
       setError("Payment ID not found. Please check your email from Razorpay or contact support.");
@@ -180,12 +235,12 @@ function ThankYouContent() {
       setError(null);
       setVerifiedItem(null);
 
-      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId, !!isPersonalized);
+      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId, isPersonalizedPurchase);
       
       if (result.success) {
         setVerifiedItem(result.item);
         setItemType(result.type);
-        handleDownload(result.item, result.type);
+        handleDownload(result.item, result.type, isPersonalizedPurchase);
         setShowDownloadConfirm(true);
       } else {
         setError(result.error);
@@ -246,8 +301,11 @@ function ThankYouContent() {
                 <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
                     Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder. If the download doesn't start automatically, use the button below.
                 </p>
+                 <p className="text-sm text-muted-foreground pt-2">
+                    If you face any difficulty downloading your pack, please contact us on <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">WhatsApp at +91 98609 97711</a> for immediate assistance.
+                </p>
             </div>
-            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={() => handleDownload(verifiedItem, itemType!)}>
+            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={() => handleDownload(verifiedItem, itemType!, isPersonalized)}>
                 <Download className="mr-2 h-5 w-5" />
                 Download Again
             </Button>
@@ -313,3 +371,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    

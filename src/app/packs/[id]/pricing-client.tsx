@@ -369,10 +369,10 @@ const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string,
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const personalizedPack = {
+    const globalCompliancePack = {
       ...pack,
       id: 'personalized_pack',
-      title: 'Personalized Pack',
+      title: 'Global Compliance Pack',
       priceINR: 10999,
       paymentId: 'pl_RMncDLAlms69Pd',
     };
@@ -500,15 +500,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardFooter>
                     </Card>
 
-                    {/* Personalized Pack */}
+                    {/* Global Compliance Pack */}
                     <Card className="flex flex-col border-2 border-accent shadow-lg">
                        <CardHeader>
                          <div className="flex items-center gap-2">
                             <Globe className="w-6 h-6 text-accent" />
-                            <CardTitle>Personalized Pack</CardTitle>
+                            <CardTitle>Global Compliance Pack</CardTitle>
                         </div>
                         <CardDescription>The Professional pack, enhanced with international standards for global operations.</CardDescription>
-                        <p className="text-4xl font-bold pt-4">₹{personalizedPack.priceINR}</p>
+                        <p className="text-4xl font-bold pt-4">₹{globalCompliancePack.priceINR}</p>
                     </CardHeader>
                     <CardContent className="flex-1">
                          <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
@@ -519,7 +519,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </ul>
                     </CardContent>
                         <CardFooter className="mt-auto flex justify-center">
-                           <RazorpayButtonWrapper paymentId={personalizedPack.paymentId} packId={pack.id} type="personalized" />
+                           <RazorpayButtonWrapper paymentId={globalCompliancePack.paymentId} packId={pack.id} type="personalized" />
                         </CardFooter>
                     </Card>
 
@@ -589,6 +589,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
 
     
 
