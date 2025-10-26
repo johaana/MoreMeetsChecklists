@@ -78,10 +78,10 @@ export const painPointsContent = {
     theme_park_ops_pack: {
         title: "Anatomy of a Theme Park Failure",
         points: [
-            { icon: <Siren />, title: "Adventure Island Ride Collapse (Delhi, 2022)", description: "A ride collapsed during operation, injuring 10 people. Our 'Daily Ride Inspection' checklist mandates checks of structural bolts, safety harnesses, and emergency stops to provide a verifiable safety audit." },
-            { icon: <Shield />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction. Our maintenance SOPs ensure that every component, from pumps to belts, is regularly inspected and logged." },
-            { icon: <Bug />, title: "Universal Orlando Fatality (2011)", description: "A child was killed due to a mechanical failure on a popular ride. Our checklists ensure that operator training and daily safety checks are rigorously documented, preventing such catastrophic failures." },
-            { icon: <FerrisWheel />, title: "Adlabs Imagica Guest Injury (Mumbai, 2018)", description: "A guest was injured due to a loose safety harness. Our ride operator checklists include a mandatory double-check of every restraint system before the ride starts, ensuring guest safety." }
+            { icon: <Siren />, title: "The Smiler Crash at Alton Towers (UK, 2015)", description: "Two carriages collided on a roller coaster, causing life-changing injuries. The cause was human error overriding a safety system. Our Ride Safety SOP includes a mandatory 'no-override' policy and dual-operator verification, preventing this exact failure." },
+            { icon: <Shield />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction that was a known issue. Our preventive maintenance checklists ensure that every component, from pumps to belts, is regularly inspected, logged, and repaired before it can cause a disaster." },
+            { icon: <Bug />, title: "The Mindbender Derailment (Canada, 1986)", description: "A roller coaster derailed and killed three people because of missing bolts on a wheel assembly—a clear maintenance failure. Our daily pre-opening inspection checklist mandates a multi-point physical check of critical components like bolts and harnesses, catching such issues before the first guest arrives." },
+            { icon: <FerrisWheel />, title: "Action Park (USA, 1980s-90s)", description: "Dubbed 'Class Action Park', this venue was notorious for poorly designed rides and untrained staff, leading to multiple deaths. Our checklists for ride design, operator training, and daily safety audits are the antidote to such a catastrophic operational culture." }
         ]
     },
     fitness_centers_gyms_pack: {
@@ -123,10 +123,10 @@ export const painPointsContent = {
     school_operations_pack: {
         title: "Anatomy of a School Safety Failure",
         points: [
-            { icon: <Siren />, title: "Ryan International School Tragedy (Gurgaon, 2017)", description: "A student was murdered inside the school due to a massive security lapse, including unverified staff. Our visitor entry and staff background check SOPs are designed to prevent such unauthorized access." },
-            { icon: <Building />, title: "Surat Coaching Centre Fire (2019)", description: "A fire in a coaching center killed 22 students due to illegal structures and no fire exits. Our 'Fire Safety' and evacuation SOPs ensure your premises are safe and your staff is prepared." },
-            { icon: <Bug />, title: "Vadodara Mid-Day Meal Poisoning (2021)", description: "Contaminated food sickened dozens of students. Our 'Kitchen and Food Safety Audit', based on HACCP principles, prevents such incidents through rigorous hygiene and storage checks." },
-            { icon: <Bus />, title: "Japanese Kindergarten Bus Fatality (2018)", description: "A child died of heatstroke after being forgotten on a school bus. Our 'Student Transport' checklist mandates a physical, seat-by-seat check at the end of every trip to prevent this." }
+            { icon: <Siren />, title: "The Sandy Hook Elementary Shooting (USA, 2012)", description: "A gunman gained entry to the school, leading to a tragic loss of life. Our Visitor Management and Emergency Preparedness checklists enforce a single point of entry, ID verification, and lockdown drills to harden the security posture." },
+            { icon: <Building />, title: "Our Lady of the Angels School Fire (USA, 1958)", description: "A fire at the base of a stairwell trapped students, killing 92 children and 3 nuns. It exposed failures in fire alarms and evacuation routes. Our checklists mandate functional alarms and clear, drilled evacuation plans to prevent such a tragedy." },
+            { icon: <Bug />, title: "Jack in the Box E. coli Outbreak (USA, 1993)", description: "Contaminated meat served at a fast-food chain led to the deaths of four children. Our Kitchen and Food Safety Audit, based on HACCP, prevents such incidents through rigorous temperature and hygiene checks for school canteens." },
+            { icon: <Bus />, title: "Japanese Kindergarten Bus Fatality (2018)", description: "A child died of heatstroke after being forgotten on a school bus. Our Student Transport checklist mandates a physical, seat-by-seat check at the end of every trip to ensure this 'never event' doesn't happen." }
         ]
     },
     university_college_ops: {
