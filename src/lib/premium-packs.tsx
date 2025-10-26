@@ -1603,7 +1603,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'POS-RECON-06', description: 'Reconcile gift card and voucher sales.', priority: 'High', riskLevel: 'Medium', proof: 'Voucher Log', location: 'System' },
                     { id: 'POS-RECON-07', description: 'Verify cashier logins and logouts for each shift.', priority: 'High', riskLevel: 'Medium', proof: 'Shift Log', location: 'System' },
                     { id: 'POS-RECON-08', description: 'Report any cash discrepancies immediately.', priority: 'High', riskLevel: 'High', proof: 'Discrepancy Report', location: 'Office' },
-                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', proof: 'PCI Compliance Audit', location: 'Office' },
+                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', proof: 'PCI Compliance Certificate', location: 'Office' },
                     { id: 'POS-RECON-10', description: 'Use counterfeit detection on all cash transactions.', priority: 'High', riskLevel: 'High', proof: 'Counterfeit Check', location: 'POS' },
                 ]
             },
@@ -4133,6 +4133,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
