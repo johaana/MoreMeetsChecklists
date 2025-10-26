@@ -186,22 +186,22 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
         category: "Franchise",
-        description: "The most important document for your franchise. This toolkit provides the legal and operational foundation to enforce brand standards, ensure quality control, and empower your franchisees to succeed.",
+        description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
         icon: <Store />,
         badgeText: "New!",
         badgeVariant: "accent",
         whoIsItFor: ["Franchise Founders", "Franchise Operations Heads", "Franchise Business Coaches", "Multi-unit Franchisees"],
         sampleItems: [
-            { text: "Enforce brand consistency with a detailed visual identity and store operations audit.", icon: <Eye /> },
+            { text: "Enforce brand consistency with a visual identity and store operations audit.", icon: <Eye /> },
             { text: "Provide a legal framework for quality control and franchisee performance management.", icon: <FileCheck /> },
             { text: "Streamline franchisee onboarding from site selection to grand opening.", icon: <KeyRound /> },
             { text: "Standardize financials with SOPs for royalty reconciliation and supplier audits.", icon: <DollarSign /> },
-            { text: "Empower franchisees with a clear, searchable guide for their day-to-day operations.", icon: <BookOpen /> },
+            { text: "Empower franchisees with a clear guide for day-to-day operations.", icon: <BookOpen /> },
             { text: "Protect your brand with a system for local marketing compliance and approvals.", icon: <Megaphone /> },
         ],
         previewScenario: {
             title: "Onboarding a New Franchisee & Preventing Brand Dilution",
-            description: "A new, enthusiastic franchisee is about to open their first store. This scenario shows how the operations pack ensures they launch successfully while perfectly maintaining your brand standards from day one, preventing common new-franchisee errors.",
+            description: "A new franchisee is about to open their first store. This scenario shows how the operations pack ensures they launch successfully while perfectly maintaining your brand standards, preventing common new-franchisee errors.",
             tasks: [
                 { id: 'FR-ONBOARD-04', description: "The 'New Franchisee Onboarding' checklist provides a step-by-step guide for store fit-out, ensuring the new location is an exact replica of the brand's look and feel, preventing inconsistent design.", sourceChecklist: "New Franchisee Onboarding", priority: 'High' },
                 { id: 'LSM-01', description: "Before their grand opening, the 'LSM Compliance' SOP requires the franchisee to submit their local marketing plan for approval, preventing the use of off-brand messaging or unauthorized discounts.", sourceChecklist: "Local Store Marketing (LSM) Compliance", priority: 'High' },
@@ -224,7 +224,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Per New Franchisee",
                 role: "Onboarding Manager",
                 icon: <KeyRound />,
-                summary: "The master guide for a successful launch. This covers everything from site selection and legal paperwork to staff training and grand opening, ensuring every new franchisee starts strong and is set up for success.",
+                summary: "The master guide for a successful launch. This covers everything from site selection and legal paperwork to staff training and grand opening, ensuring every new franchisee starts strong.",
                 tasks: [
                     { id: 'FR-ONBOARD-01', description: 'Verify final site selection and lease agreement.', priority: 'High', riskLevel: 'High', proof: 'Signed Lease', location: 'Legal File' },
                     { id: 'FR-ONBOARD-02', description: 'Execute the franchise agreement and collect initial fees.', priority: 'High', riskLevel: 'High', proof: 'Signed Agreement & Receipt', location: 'Legal File' },
@@ -242,7 +242,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Quarterly",
                 role: "Field Manager",
                 icon: <Eye />,
-                summary: "Your brand's first line of defense. A quarterly audit to ensure every franchise location perfectly reflects the brand's look and feel, from signage and uniforms to product displays and store ambiance.",
+                summary: "Your brand's first line of defense. A quarterly audit to ensure every franchise location perfectly reflects the brand's look and feel, from signage and uniforms to product displays and ambiance.",
                 tasks: [
                     { id: 'BRAND-AUDIT-01', description: 'Check that all interior and exterior signage is correct and in good condition.', priority: 'High', riskLevel: 'High', proof: 'Photo Audit', location: 'Franchise Location' },
                     { id: 'BRAND-AUDIT-02', description: 'Verify staff uniforms are clean, correct, and worn properly.', priority: 'High', riskLevel: 'Medium', proof: 'Staff Inspection', location: 'Franchise Location' },
@@ -4133,6 +4133,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 

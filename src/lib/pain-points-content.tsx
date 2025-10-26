@@ -3,6 +3,24 @@ import React from 'react';
 import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck } from 'lucide-react';
 
 export const painPointsContent = {
+    bakery_confectionery_pack: {
+        title: "Anatomy of a Bakery Failure",
+        points: [
+            { icon: <Bug />, title: "The Nut-Allergy Nightmare (Local Cafe, 2022)", description: "A customer suffered a severe allergic reaction from a 'nut-free' pastry due to cross-contamination. Our 'Allergen Management' SOP provides a verifiable system to prevent this life-threatening and business-ending mistake." },
+            { icon: <Siren />, title: "FSSAI Shutdown (Mumbai, 2023)", description: "A popular bakery was temporarily shut down by FSSAI for improper labeling and hygiene. Our 'Packaging & Labeling Compliance' and 'Daily Cleaning' checklists ensure you are always audit-ready." },
+            { icon: <Wrench />, title: "The Inconsistent Croissant Crisis (Chain Bakery, 2021)", description: "A bakery chain lost customers due to inconsistent product quality from uncalibrated ovens. Our 'Oven Calibration & Maintenance' checklist guarantees your equipment produces the same perfect result every time." },
+            { icon: <Recycle />, title: "End-of-Day Waste & Lost Profit (All Bakeries)", description: "Thousands in profit are lost annually to stale, unsold goods. Our 'Display & Freshness Management' SOP provides a clear process for stock rotation and markdown strategy to minimize waste." }
+        ]
+    },
+     franchise_operations_pack: {
+        title: "Anatomy of a Franchise Failure",
+        points: [
+            { icon: <Eye />, title: "Brand Dilution Disaster (Fast Food Chain, 2022)", description: "A franchisee went rogue with unapproved signage and a dirty store, causing a local PR nightmare. Our 'Brand & Visual Identity Audit' provides the legal and operational framework to enforce brand standards across your network." },
+            { icon: <FileCheck />, title: "The 'He Said, She Said' Lawsuit (Service Franchise, 2021)", description: "A terminated franchisee sued, claiming they weren't given proper support. Without a documented system, the franchisor lost. Our SOPs create a verifiable audit trail of training, support, and compliance, protecting you legally." },
+            { icon: <TrendingUp />, title: "Franchisee Failure Cascade (Retail Chain, 2023)", description: "Multiple franchisees failed due to poor financial management and inconsistent service. Our 'Monthly Performance Review' and 'Financial Audit' checklists empower you to proactively coach franchisees, ensuring their profitability and your royalty stream." },
+            { icon: <KeyRound />, title: "The Chaotic Grand Opening (New Franchise, 2022)", description: "A new store launch was a disaster, with IT issues, untrained staff, and missing inventory. Our 'New Franchisee Onboarding' checklist is a step-by-step master guide to ensure every new unit opens flawlessly." }
+        ]
+    },
     hotels_and_resorts: {
         title: "Anatomy of a Hotel Failure",
         points: [
