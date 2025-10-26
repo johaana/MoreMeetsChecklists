@@ -624,7 +624,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Hospitality ---
     {
         id: 'hotels_and_resorts',
-        title: "Hotels & Resorts",
+        title: "Hotels & Resorts Pack",
         priceUSD: 99.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -827,7 +827,7 @@ export const premiumPacks: PremiumPack[] = [
     },
     {
         id: 'restaurants',
-        title: "Restaurants",
+        title: "Restaurant Operations Pack",
         priceUSD: 89.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -861,7 +861,7 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "FSSAI", description: "Complies with Food Safety and Standards Authority of India regulations." },
                 { name: "HACCP", description: "Follows Hazard Analysis and Critical Control Points principles." },
                 { name: "ISO 22000", description: "Adheres to international standards for food safety management." },
-                { name: "Codex Alimentarius", description: "International food standards and guidelines from the WHO/FAO." }
+                { name: "Codex Alimentarius", description: "International food standards from the WHO/FAO." }
             ]
         },
         checklists: [
@@ -1050,7 +1050,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Retail ---
     {
         id: 'fashion_and_apparel_retail',
-        title: "Fashion & Apparel Retail",
+        title: "Fashion & Apparel Retail Pack",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -1271,7 +1271,7 @@ export const premiumPacks: PremiumPack[] = [
     },
     {
         id: 'jewelry_and_luxury_retail',
-        title: "Jewelry & Luxury Retail",
+        title: "Jewelry & Luxury Retail Pack",
         priceUSD: 149.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -2495,7 +2495,7 @@ export const premiumPacks: PremiumPack[] = [
      // --- Healthcare ---
     {
         id: 'healthcare_and_hospital_operations',
-        title: "Healthcare & Hospital Operations",
+        title: "Healthcare & Hospital Operations Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -3114,7 +3114,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Industrial & Transport ---
     {
         id: 'manufacturing_operations_ehs_pack',
-        title: "Plant Operations & EHS Pack",
+        title: "Manufacturing Operations & EHS Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -3306,7 +3306,7 @@ export const premiumPacks: PremiumPack[] = [
     },
     {
         id: 'food_manufacturing_ops',
-        title: "Food Manufacturing Operations",
+        title: "Food Manufacturing Operations Pack",
         priceUSD: 199.99,
         priceINR: 7999,
         paymentId: 'pl_RMnYKoxjfq5XCx',
@@ -4200,6 +4200,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
