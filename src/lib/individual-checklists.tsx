@@ -23,7 +23,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'corporate-office-security',
         title: "Corporate Office Opening/Closing Security Protocol",
         priceINR: 1299,
-        paymentId: "https://rzp.io/l/b8u2wke",
+        paymentId: "pl_ROLjNNiQa8G8XJ",
         category: "Corporate",
         icon: <Shield />,
         description: "An essential daily checklist to ensure your office is secure, energy-efficient, and ready for the next business day.",
@@ -33,7 +33,7 @@ export const individualChecklists: IndividualChecklist[] = [
         painPoints: [
             {
                 title: "Prevent Overnight Security Lapses",
-                description: "Eliminate the risk of doors being left unlocked or alarms not being set, which can lead to theft or unauthorized access after hours."
+                description: "Eliminate the risk of doors being left unlocked or alarms not being set. A simple documented error, like the one that led to the 2019 WeWork mass key-card failure, highlights the need for robust physical security SOPs."
             },
             {
                 title: "Reduce Energy Waste & Costs",
@@ -60,7 +60,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'new-employee-onboarding-legal',
         title: "New Employee Onboarding (Legal Focus)",
         priceINR: 1999,
-        paymentId: "https://rzp.io/l/xKLUx2H",
+        paymentId: "pl_ROLnfbmEpZzgZZ",
         category: "Corporate",
         icon: <Briefcase />,
         description: "A legally-focused checklist to ensure every new hire is onboarded correctly, minimizing future compliance risks and disputes.",
@@ -69,8 +69,8 @@ export const individualChecklists: IndividualChecklist[] = [
         whoIsItFor: ["HR Managers", "Founders", "COOs", "Admin Heads"],
         painPoints: [
             {
-                title: "Prevent Future Legal Disputes",
-                description: "Ensures that critical documents like employment contracts and IP assignment clauses are signed on day one, not weeks later, preventing potential ownership and termination disputes."
+                title: "Prevent Future IP & Contract Disputes",
+                description: "Ensures critical documents like IP assignment clauses are signed on day one. The landmark Oracle vs. Google lawsuit, which hinged on intellectual property, proves the multi-billion dollar importance of getting this right from the start."
             },
             {
                 title: "Ensure Statutory Compliance",
@@ -95,7 +95,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'esg-sustainability-audit',
         title: "ESG & Sustainability Audit (Office)",
         priceINR: 1299,
-        paymentId: "https://rzp.io/l/b8u2wke",
+        paymentId: "pl_ROLjNNiQa8G8XJ",
         category: "Corporate",
         icon: <Leaf />,
         description: "An actionable checklist for offices to measure and improve their environmental footprint, focusing on energy, water, and waste.",
@@ -129,7 +129,7 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'surgical-safety',
         title: "WHO Surgical Safety Checklist",
         priceINR: 1999,
-        paymentId: "https://rzp.io/l/xKLUx2H",
+        paymentId: "pl_ROLnfbmEpZzgZZ",
         category: "Healthcare",
         icon: <FileText />,
         description: "A JCI & NABH-aligned checklist based on the WHO's life-saving protocol to prevent 'never events' in the operating room.",
@@ -139,7 +139,7 @@ export const individualChecklists: IndividualChecklist[] = [
         painPoints: [
             {
                 title: "Prevent Catastrophic Surgical Errors",
-                description: "Eliminates the communication gaps that lead to wrong-site or wrong-patient surgeries by forcing a final, verbal team confirmation."
+                description: "Eliminates the communication gaps that lead to wrong-site or wrong-patient surgeries, like the infamous Rhode Island Hospital case. This forces a final, verbal team confirmation, preventing 'never events'."
             },
             {
                 title: "Meet JCI/NABH Accreditation Standards",
@@ -147,7 +147,7 @@ export const individualChecklists: IndividualChecklist[] = [
             },
             {
                 title: "Reduce Post-Operative Complications",
-                description: "Studies show that implementing this simple checklist dramatically reduces infection rates, complications, and mortality by improving teamwork and communication."
+                description: "Studies in The New England Journal of Medicine show that implementing this simple checklist dramatically reduces infection rates and mortality by improving teamwork."
             }
         ],
         tasks: [
@@ -161,4 +161,5 @@ export const individualChecklists: IndividualChecklist[] = [
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
+
 
