@@ -6,19 +6,19 @@ export const painPointsContent = {
     bakery_confectionery_pack: {
         title: "Anatomy of a Bakery Failure",
         points: [
-            { icon: <Bug />, title: "The Nut-Allergy Nightmare (Local Cafe, 2022)", description: "A customer suffered a severe allergic reaction from a 'nut-free' pastry due to cross-contamination. Our 'Allergen Management' SOP provides a verifiable system to prevent this life-threatening and business-ending mistake." },
-            { icon: <Siren />, title: "FSSAI Shutdown (Mumbai, 2023)", description: "A popular bakery was temporarily shut down by FSSAI for improper labeling and hygiene. Our 'Packaging & Labeling Compliance' and 'Daily Cleaning' checklists ensure you are always audit-ready." },
-            { icon: <Wrench />, title: "The Inconsistent Croissant Crisis (Chain Bakery, 2021)", description: "A bakery chain lost customers due to inconsistent product quality from uncalibrated ovens. Our 'Oven Calibration & Maintenance' checklist guarantees your equipment produces the same perfect result every time." },
+            { icon: <Bug />, title: "The Fatal Allergen Mistake (Pret a Manger, UK, 2016)", description: "A teenager died from an allergic reaction to sesame in a baguette that was not listed on the label, leading to 'Natasha's Law.' Our 'Allergen Management' and 'Labeling Compliance' checklists provide a verifiable system to prevent this life-threatening and business-ending error." },
+            { icon: <Siren />, title: "The Viral Contamination (Dominique Ansel Bakery, USA, 2014)", description: "The world-famous creator of the 'Cronut' was shut down by the health department after a video of a mouse in the kitchen went viral. Our 'Pest Control' and 'Daily Cleaning' SOPs provide a documented defense against the single lapse that can cause a PR disaster." },
+            { icon: <Wrench />, title: "The Inconsistent Quality Crisis (Starbucks, Global)", description: "Early in its growth, Starbucks' quality varied wildly between stores. They solved it by rigorously standardizing every step. Our checklists for 'Oven Calibration' and 'Recipe Scaling' ensure every product has the same high quality, protecting your brand's reputation." },
             { icon: <Recycle />, title: "End-of-Day Waste & Lost Profit (All Bakeries)", description: "Thousands in profit are lost annually to stale, unsold goods. Our 'Display & Freshness Management' SOP provides a clear process for stock rotation and markdown strategy to minimize waste." }
         ]
     },
      franchise_operations_pack: {
         title: "Anatomy of a Franchise Failure",
         points: [
-            { icon: <Eye />, title: "Brand Dilution Disaster (Fast Food Chain, 2022)", description: "A franchisee went rogue with unapproved signage and a dirty store, causing a local PR nightmare. Our 'Brand & Visual Identity Audit' provides the legal and operational framework to enforce brand standards across your network." },
-            { icon: <FileCheck />, title: "The 'He Said, She Said' Lawsuit (Service Franchise, 2021)", description: "A terminated franchisee sued, claiming they weren't given proper support. Without a documented system, the franchisor lost. Our SOPs create a verifiable audit trail of training, support, and compliance, protecting you legally." },
-            { icon: <TrendingUp />, title: "Franchisee Failure Cascade (Retail Chain, 2023)", description: "Multiple franchisees failed due to poor financial management and inconsistent service. Our 'Monthly Performance Review' and 'Financial Audit' checklists empower you to proactively coach franchisees, ensuring their profitability and your royalty stream." },
-            { icon: <KeyRound />, title: "The Chaotic Grand Opening (New Franchise, 2022)", description: "A new store launch was a disaster, with IT issues, untrained staff, and missing inventory. Our 'New Franchisee Onboarding' checklist is a step-by-step master guide to ensure every new unit opens flawlessly." }
+            { icon: <Eye />, title: "The Brand Dilution Disaster (Subway's 'Footlong' Scandal, USA)", description: "Franchisees were caught using shorter bread, leading to lawsuits and a PR crisis. Our 'Brand Audit' and 'Supply Chain SOPs' enforce portion control and supplier compliance, protecting your brand's core promise." },
+            { icon: <FileCheck />, title: "The 'He Said, She Said' Lawsuit (Service Franchise, 2021)", description: "A terminated franchisee sued, claiming lack of support. Without a documented system, the franchisor lost. Our checklists for 'Onboarding' and 'Performance Reviews' create a verifiable legal audit trail, making your agreement defensible." },
+            { icon: <TrendingUp />, title: "The Franchisee Failure Cascade (Quiznos, USA, 2010s)", description: "Thousands of franchisees went bankrupt from a flawed model and lack of support, crippling the brand. Our 'Financial Audit' and 'Monthly Performance Review' checklists help you proactively coach franchisees to ensure their profitability and your royalty stream." },
+            { icon: <KeyRound />, title: "The Chaotic Grand Opening (New Franchise, 2022)", description: "A new store launch was a disaster with IT issues and untrained staff. Our 'New Franchisee Onboarding' checklist is a master guide to ensure every new unit opens flawlessly and starts generating revenue from day one." }
         ]
     },
     hotels_and_resorts: {
@@ -60,8 +60,8 @@ export const painPointsContent = {
     supermarket_grocery_retail_pack: {
         title: "Anatomy of a Supermarket Failure",
         points: [
-            { icon: <Siren />, title: "Big Bazaar Slip Injury Lawsuit (Delhi, 2018)", description: "A customer slipped on a wet floor, leading to a major lawsuit. Our 'Hourly Floor Inspection & Spill Response' SOP ensures hazards are identified and cleaned up immediately, with a log to prove diligence." },
-            { icon: <Bug />, title: "Tesco Rodent Infestation (UK, 2017)", description: "A Tesco store was hit with heavy fines after a rodent infestation was discovered. Our store hygiene and pest control schedules prevent the conditions that allow for such infestations." },
+            { icon: <Siren />, title: "Tesco Rodent Infestation (UK, 2017)", description: "A Tesco store was hit with heavy fines after a rodent infestation was discovered. Our store hygiene and pest control schedules prevent the conditions that allow for such infestations." },
+            { icon: <Bug />, title: "Big Bazaar Slip Injury Lawsuit (Delhi, 2018)", description: "A customer slipped on a wet floor, leading to a major lawsuit. Our 'Hourly Floor Inspection & Spill Response' SOP ensures hazards are identified and cleaned up immediately, with a log to prove diligence." },
             { icon: <Zap />, title: "D-Mart Fire Near Cold Storage (Hyderabad, 2021)", description: "A fire near a cold storage area threatened massive inventory loss. Our electrical safety audits for refrigeration units prevent the faulty wiring and short circuits that cause such fires." },
             { icon: <Recycle />, title: "More Retail Fined for Expired Goods (Mumbai, 2020)", description: "The chain was fined after an inspection found expired items on shelves. Our 'Expiry Date & FIFO Rotation' checklist provides a daily, verifiable system to ensure this never happens." }
         ]
@@ -78,16 +78,16 @@ export const painPointsContent = {
     theme_park_ops_pack: {
         title: "Anatomy of a Theme Park Failure",
         points: [
-            { icon: <Siren />, title: "The Smiler Crash at Alton Towers (UK, 2015)", description: "Two carriages collided on a roller coaster, causing life-changing injuries. The cause was human error overriding a safety system. Our Ride Safety SOP includes a mandatory 'no-override' policy and dual-operator verification, preventing this exact failure." },
-            { icon: <Shield />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction that was a known issue. Our preventive maintenance checklists ensure that every component, from pumps to belts, is regularly inspected, logged, and repaired before it can cause a disaster." },
-            { icon: <Bug />, title: "The Mindbender Derailment (Canada, 1986)", description: "A roller coaster derailed and killed three people because of missing bolts on a wheel assembly—a clear maintenance failure. Our daily pre-opening inspection checklist mandates a multi-point physical check of critical components like bolts and harnesses, catching such issues before the first guest arrives." },
-            { icon: <FerrisWheel />, title: "Action Park (USA, 1980s-90s)", description: "Dubbed 'Class Action Park', this venue was notorious for poorly designed rides and untrained staff, leading to multiple deaths. Our checklists for ride design, operator training, and daily safety audits are the antidote to such a catastrophic operational culture." }
+            { icon: <Siren />, title: "The Smiler Crash at Alton Towers (UK, 2015)", description: "Two carriages collided, causing life-changing injuries. The cause was human error overriding a safety system. Our Ride Safety SOP includes a mandatory 'no-override' policy and dual-operator verification, preventing this exact failure." },
+            { icon: <Shield />, title: "The Mindbender Derailment (Canada, 1986)", description: "A roller coaster derailed, killing three people, because of missing bolts on a wheel assembly—a clear maintenance failure. Our daily pre-opening inspection checklist mandates a multi-point physical check of critical components, catching such issues before the first guest arrives." },
+            { icon: <Bug />, title: "Action Park (USA, 1980s-90s)", description: "Dubbed 'Class Action Park,' this venue was notorious for poorly designed rides and untrained staff, leading to multiple deaths. Our checklists for ride design, operator training, and daily safety audits are the antidote to such a catastrophic operational culture." },
+            { icon: <FerrisWheel />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction that was a known issue. Our preventive maintenance checklists ensure that every component, from pumps to belts, is regularly inspected, logged, and repaired before it can cause a disaster." }
         ]
     },
     fitness_centers_gyms_pack: {
         title: "Anatomy of a Fitness Center Failure",
         points: [
-            { icon: <Siren />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after gym equipment snapped due to poor maintenance. Our 'Monthly Equipment Inspection' and preventive maintenance SOPs ensure machines are always safe." },
+            { icon: <Siren />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after gym equipment snapped due to poor maintenance; machine had not been serviced in 14 months. Prevented by: Monthly equipment inspection and preventive maintenance SOP." },
             { icon: <Stethoscope />, title: "Anytime Fitness AED Failure (Delhi, 2022)", description: "A member suffered a heart attack, but the gym's AED was not functional. Our 'First Aid & AED Readiness' SOP includes weekly checks of emergency equipment, ensuring it works when needed most." },
             { icon: <Bug />, title: "California Gym Infection Outbreak (2020)", description: "A bacterial infection spread via unclean exercise mats. Our 'Hygiene & Disinfection Schedule' provides a verifiable log that all equipment is sanitized daily." },
             { icon: <Building />, title: "Bangalore Gym Ceiling Fan Collapse (2023)", description: "A member was injured by a falling ceiling fan due to poor facility maintenance. Our checklists include regular facility audits to spot and fix such hidden dangers." }
@@ -177,10 +177,10 @@ export const painPointsContent = {
     sports_clubs_stadium_operations_pack: {
         title: "Anatomy of a Sports Venue Failure",
         points: [
-            { icon: <Users />, title: "Stampede at Salt Lake Stadium, Kolkata (2018)", description: "Fans rushed exits after a sudden blackout; lack of emergency lighting and trained marshals led to dozens injured. Prevented by: Crowd control SOP, emergency exit and backup power inspection checklist." },
-            { icon: <Dumbbell />, title: "Jabalpur Gym Accident (2023)", description: "A youth died after gym equipment snapped due to poor maintenance; machine had not been serviced in 14 months. Prevented by: Monthly equipment inspection and preventive maintenance SOP." },
-            { icon: <Siren />, title: "Bradford City Stadium Fire, UK (1985)", description: "A pile of litter under wooden stands caught fire, killing 56. No evacuation drill or fire audit had been done. Prevented by: Fire safety and housekeeping SOP, quarterly evacuation drills." },
-            { icon: <Bug />, title: "Wankhede Stadium Water Contamination (2019)", description: "Several spectators fell ill due to untested drinking water points during an IPL match. Prevented by: Daily sanitation and F&B hygiene audit checklist." }
+            { icon: <Users />, title: "Hillsborough Disaster (UK, 1989)", description: "A human crush at a football match killed 97 people due to severe overcrowding and failed crowd control. Our 'Crowd Management' SOPs, including capacity monitoring and steward positioning, are designed to prevent such a catastrophe." },
+            { icon: <Dumbbell />, title: "Jabalpur Gym Accident (India, 2023)", description: "A youth died after gym equipment snapped due to poor maintenance; the machine had not been serviced in 14 months. Prevented by: Our 'Monthly Equipment Inspection' and preventive maintenance SOP, which creates a mandatory, verifiable service log." },
+            { icon: <Siren />, title: "Bradford City Stadium Fire (UK, 1985)", description: "A pile of litter under wooden stands caught fire, killing 56 people. No fire audit had been done. Prevented by: Our 'Fire Safety' and 'Housekeeping' SOPs, which mandate checks for flammable debris and functional fire equipment." },
+            { icon: <Bug />, title: "Wankhede Stadium Water Contamination (India, 2019)", description: "Several spectators fell ill due to untested drinking water points during an IPL match. Prevented by: Our 'Daily Sanitation' and 'F&B Hygiene Audit' checklists, ensuring all public amenities are safe." }
         ]
     },
     film_production_pack: {
