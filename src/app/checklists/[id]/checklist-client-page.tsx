@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -14,6 +13,40 @@ import { premiumPacks } from '@/lib/premium-packs';
 import type { IndividualChecklist } from '@/lib/individual-checklists';
 import { individualChecklists } from '@/lib/individual-checklists';
 import { PainPoint } from '@/components/ui/pain-point';
+
+const paymentButtonMap: { [price: number]: string } = {
+    1299: 'pl_ROLjNNiQa8G8XJ',
+    1999: 'pl_ROLnfbmEpZzgZZ',
+};
+
+const RazorpayButtonWrapper = ({ price, checklistId }: { price: number, checklistId: string }) => {
+    const formContainerRef = React.useRef<HTMLDivElement>(null);
+    const paymentButtonId = paymentButtonMap[price];
+
+    React.useEffect(() => {
+        if (!formContainerRef.current || !paymentButtonId) return;
+
+        const form = document.createElement('form');
+        form.action = `/thank-you?checklist_id=${checklistId}`;
+        
+        const script = document.createElement('script');
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.async = true;
+        script.dataset.payment_button_id = paymentButtonId;
+        
+        form.appendChild(script);
+        
+        formContainerRef.current.innerHTML = '';
+        formContainerRef.current.appendChild(form);
+
+    }, [paymentButtonId, checklistId]);
+
+    if (!paymentButtonId) {
+        return <p className="text-destructive text-sm">Payment button not available for this price.</p>;
+    }
+
+    return <div ref={formContainerRef} className="w-full flex justify-center" />;
+};
 
 
 const UpsellBanner = ({ packId }: { packId: string }) => {
@@ -146,9 +179,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                         </CardHeader>
                         <CardContent className="text-center flex flex-col items-center">
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <form action={`/thank-you?checklist_id=${checklist.id}`} method="GET" target="_blank" rel="noopener noreferrer">
-                                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={checklist.paymentId} async></script>
-                            </form>
+                           <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
                         </CardContent>
                          <CardFooter className="flex-col gap-2 pt-2 items-center">
                             <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
@@ -172,9 +203,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                 <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
             </div>
             <div className="flex-shrink-0">
-                 <form action={`/thank-you?checklist_id=${checklist.id}`} method="GET" target="_blank" rel="noopener noreferrer">
-                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id={checklist.paymentId} async></script>
-                </form>
+                 <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
             </div>
         </div>
     </div>
