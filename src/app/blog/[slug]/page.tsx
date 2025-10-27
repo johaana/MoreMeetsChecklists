@@ -115,7 +115,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <main className="flex-1 py-12 md:py-20">
         <div className="container max-w-4xl mx-auto px-2 md:px-6">
           <article>
-            <header className="mb-8 text-center">
+            <header className="mb-8 text-center bg-secondary/30 p-8 rounded-2xl">
               <div className="flex justify-center gap-2 mb-4">
                 {post.tags.map(tag => (
                   <Badge key={tag} variant="secondary">{tag}</Badge>
@@ -128,16 +128,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 Published on {publishDate} by {post.author}
               </p>
             </header>
-            {post.imageUrl && (
-              <Image
-                src={post.imageUrl}
-                alt={post.title}
-                width={1200}
-                height={630}
-                className="w-full h-auto rounded-lg mb-8 aspect-video object-cover"
-                priority
-              />
-            )}
+            
             <div 
               className="prose prose-lg dark:prose-invert max-w-none mx-auto [&_p]:text-foreground/80 [&_h3]:text-primary"
               dangerouslySetInnerHTML={{ __html: post.content }}
