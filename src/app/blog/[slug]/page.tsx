@@ -135,6 +135,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 width={1200}
                 height={630}
                 className="w-full h-auto rounded-lg mb-8 aspect-video object-cover"
+                priority
               />
             )}
             <div 
