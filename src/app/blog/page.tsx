@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
     title: 'Blog | MoreMeets',
@@ -33,6 +34,17 @@ export default function BlogListPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {blogPosts.map((post) => (
                         <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                            {post.imageUrl && (
+                                <Link href={`/blog/${post.slug}`} className="block">
+                                    <Image
+                                        src={post.imageUrl}
+                                        alt={post.title}
+                                        width={600}
+                                        height={340}
+                                        className="w-full h-48 object-cover"
+                                    />
+                                </Link>
+                            )}
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                     {post.tags.map(tag => (
@@ -48,7 +60,7 @@ export default function BlogListPage() {
                             <CardContent className="flex-1">
                                 <CardDescription className="text-sm md:text-base">{post.description}</CardDescription>
                             </CardContent>
-                            <CardFooter className="flex justify-between items-center">
+                            <CardFooter className="flex justify-between items-center mt-auto">
                                 <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                 <Button asChild variant="ghost" size="sm">
                                     <Link href={`/blog/${post.slug}`}>
