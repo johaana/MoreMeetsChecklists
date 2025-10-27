@@ -103,7 +103,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const publishDate = new Date(post.publishedDate).toLocaleDateDateString('en-US', {
+  const publishDate = new Date(post.publishedDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
