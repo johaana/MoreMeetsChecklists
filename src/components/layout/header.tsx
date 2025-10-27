@@ -126,6 +126,7 @@ export function SiteHeader() {
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 {!isSalesPage && (
                     <>
+                        <Link href="/library" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>SOP Library</Link>
                         <div 
                             className="group relative"
                             onMouseEnter={() => setIsDropdownOpen(true)}
@@ -189,6 +190,11 @@ export function SiteHeader() {
                                     <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2">Back to Main Site</Link>
                                 ) : (
                                 <Accordion type="multiple" className="w-full">
+                                    <div className="border-b">
+                                        <Link href="/library" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
+                                            SOP Library
+                                        </Link>
+                                    </div>
                                     <AccordionItem value="packs" className="border-b-0">
                                         <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
                                             All Premium Packs

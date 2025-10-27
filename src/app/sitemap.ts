@@ -9,8 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     { url: siteUrl, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 1 },
-    { url: `${siteUrl}/sales-consultancy`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
-    { url: `${siteUrl}/packs`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
+    { url: `${siteUrl}/library`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
+    { url: `${siteUrl}/packs`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${siteUrl}/checklists`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${siteUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${siteUrl}/contact`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.7 },
@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.5 },
     { url: `${siteUrl}/refund`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.5 },
     { url: `${siteUrl}/shipping`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.5 },
+    { url: `${siteUrl}/master-access`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.1 },
     { url: `${siteUrl}/thank-you`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.4 }
   ];
 
@@ -44,5 +45,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticRoutes, ...packRoutes, ...checklistRoutes, ...blogRoutes];
 }
-
-    

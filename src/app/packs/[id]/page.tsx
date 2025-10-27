@@ -285,6 +285,26 @@ export default function Page({ params }: { params: { id: string } }) {
                         ))}
                     </ul>
                 </div>
+
+                <div className="max-w-4xl mx-auto mt-12">
+                  <h3 className="text-2xl font-bold font-headline text-center mb-6">What's Inside The Pack?</h3>
+                  <Accordion type="single" collapsible className="w-full">
+                    {pack.checklists.map((checklist, index) => (
+                      <AccordionItem key={index} value={`item-${index}`}>
+                        <AccordionTrigger>
+                          <div className="flex items-center gap-3">
+                            {React.cloneElement(checklist.icon, { className: "w-5 h-5 text-primary" })}
+                            <span className="text-base font-semibold text-left">{checklist.title}</span>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground text-sm md:text-base pl-11">
+                          {checklist.summary}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+
             </div>
         </section>
         
