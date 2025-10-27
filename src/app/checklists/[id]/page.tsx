@@ -31,8 +31,8 @@ export async function generateMetadata(
     };
   }
   
-  const title = `${checklist.title} | MoreMeets`;
-  const description = checklist.description;
+  const title = `${checklist.title} Template (Excel) | MoreMeets`;
+  const description = `Download the ${checklist.title}. This expert-crafted SOP checklist for ${checklist.category} professionals helps you solve specific operational challenges.`;
   const heroImageUrl = checklistImageMap[id] || defaultHeroImageUrl;
 
   return {

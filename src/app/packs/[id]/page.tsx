@@ -69,8 +69,8 @@ export async function generateMetadata(
     };
   }
   
-  const title = `${pack.title} | MoreMeets`;
-  const description = `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
+  const title = `${pack.title} - Excel SOP Templates | MoreMeets`;
+  const description = `Download the complete ${pack.title}. Includes ${pack.checklists.length} expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
 
   const heroImageUrl = packImageMap[id] || defaultHeroImageUrl;
   const openGraphImages = heroImageUrl ? [{ url: heroImageUrl, width: 1200, height: 630, alt: `${pack.title} Preview` }] : [];
@@ -103,6 +103,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
                         {content.title}
                     </h2>
+                     <p className="mt-4 text-xs text-muted-foreground italic">{content.disclaimer}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (

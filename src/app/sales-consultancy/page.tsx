@@ -9,52 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Check, ArrowRight, TrendingUp, Target, Users, Bot, Zap, Rocket, Search, Edit, BarChart, FileText, Star } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
-
-const benefits = [
-    {
-        icon: <Zap className="w-6 h-6" />,
-        title: "Cross-Industry Expertise",
-        description: "Proven success in SaaS, retail, hospitality, manufacturing, banking, and more."
-    },
-    {
-        icon: <Bot className="w-6 h-6" />,
-        title: "AI-Driven Sales Optimization",
-        description: "Leveraging top-tier AI tools to streamline your sales process and maximize efficiency."
-    },
-    {
-        icon: <Rocket className="w-6 h-6" />,
-        title: "Proven Frameworks",
-        description: "Implementing battle-tested frameworks for cold calling and demos that convert."
-    },
-    {
-        icon: <TrendingUp className="w-6 h-6" />,
-        title: "Scalable Sales Automation",
-        description: "Saving you time and resources while scaling your outreach and follow-up efforts."
-    }
-];
-
-const processSteps = [
-    {
-        step: "01",
-        title: "Discovery & Audit",
-        description: "We start with a deep dive into your current sales process, team structure, and tech stack to identify key bottlenecks and opportunities."
-    },
-    {
-        step: "02",
-        title: "Strategy & Playbook Design",
-        description: "We co-create a tailored sales playbook, defining your ideal customer profile, value proposition, and a step-by-step execution plan."
-    },
-    {
-        step: "03",
-        title: "Implementation & Coaching",
-        description: "We work directly with your team, providing hands-on coaching for prospecting, demoing, negotiating, and closing."
-    },
-    {
-        step: "04",
-        title: "Optimization & Scale",
-        description: "Using data and feedback, we continuously refine the process, optimize your tech stack, and build a system for predictable revenue growth."
-    }
-];
+import type { Metadata } from 'next';
 
 export default function SalesConsultancyPage() {
   return (
@@ -297,3 +252,49 @@ export default function SalesConsultancyPage() {
     </div>
   );
 }
+
+const benefits = [
+    {
+        icon: <Zap className="w-6 h-6" />,
+        title: "Cross-Industry Expertise",
+        description: "Proven success in SaaS, retail, hospitality, manufacturing, banking, and more."
+    },
+    {
+        icon: <Bot className="w-6 h-6" />,
+        title: "AI-Driven Sales Optimization",
+        description: "Leveraging top-tier AI tools to streamline your sales process and maximize efficiency."
+    },
+    {
+        icon: <Rocket className="w-6 h-6" />,
+        title: "Proven Frameworks",
+        description: "Implementing battle-tested frameworks for cold calling and demos that convert."
+    },
+    {
+        icon: <TrendingUp className="w-6 h-6" />,
+        title: "Scalable Sales Automation",
+        description: "Saving you time and resources while scaling your outreach and follow-up efforts."
+    }
+];
+
+const processSteps = [
+    {
+        step: "01",
+        title: "Discovery & Audit",
+        description: "We start with a deep dive into your current sales process, team structure, and tech stack to identify key bottlenecks and opportunities."
+    },
+    {
+        step: "02",
+        title: "Strategy & Playbook Design",
+        description: "We co-create a tailored sales playbook, defining your ideal customer profile, value proposition, and a step-by-step execution plan."
+    },
+    {
+        step: "03",
+        title: "Implementation & Coaching",
+        description: "We work directly with your team, providing hands-on coaching for prospecting, demoing, negotiating, and closing."
+    },
+    {
+        step: "04",
+        title: "Optimization & Scale",
+        description: "Using data and feedback, we continuously refine the process, optimize your tech stack, and build a system for predictable revenue growth."
+    }
+];
