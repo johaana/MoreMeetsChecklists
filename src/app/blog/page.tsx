@@ -8,7 +8,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, FileText } from 'lucide-react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import React from 'react';
 import { premiumPacks } from '@/lib/premium-packs';
 import { individualChecklists } from '@/lib/individual-checklists';
