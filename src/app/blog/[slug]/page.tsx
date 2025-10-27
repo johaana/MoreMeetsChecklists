@@ -103,7 +103,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const publishDate = new Date(post.publishedDate).toLocaleDateString('en-US', {
+  const publishDate = new Date(post.publishedDate).toLocaleDateDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -115,13 +115,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <main className="flex-1 py-12 md:py-20">
         <div className="container max-w-4xl mx-auto px-2 md:px-6">
           <article>
-            <header className="mb-8 text-center bg-secondary/30 p-8 rounded-2xl">
+            <header className="mb-8 text-center bg-secondary/30 p-4 md:p-8 rounded-2xl">
               <div className="flex justify-center gap-2 mb-4">
                 {post.tags.map(tag => (
                   <Badge key={tag} variant="secondary">{tag}</Badge>
                 ))}
               </div>
-              <h1 className="text-3xl md:text-5xl font-extrabold font-headline tracking-tight mb-4 text-primary">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-headline tracking-tight mb-4 text-primary">
                 {post.title}
               </h1>
               <p className="text-muted-foreground text-xs md:text-sm">
