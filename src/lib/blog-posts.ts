@@ -16,15 +16,15 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
     {
-    slug: 'air-canada-chatbot-fiasco-ai-governance',
-    title: "The Air Canada Chatbot Fiasco: How an AI Governance SOP Prevents Your Bot from Lying to Customers",
-    publishedDate: "2025-10-27",
-    author: "MoreMeets Team",
-    tags: ["AI", "Corporate Governance", "Customer Service", "Risk Management"],
-    relatedPackId: "corporate_legal_compliance_starter_kit",
-    imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
-    description: "In 2024, Air Canada was legally forced to honor a refund policy invented by its own chatbot. This case study breaks down why AI governance is no longer optional and how a simple checklist can prevent your technology from creating costly liabilities.",
-    content: `
+      slug: 'air-canada-chatbot-fiasco-ai-governance',
+      title: "The Air Canada Chatbot Fiasco: How an AI Governance SOP Prevents Your Bot from Lying to Customers",
+      publishedDate: "2025-10-27",
+      author: "MoreMeets Team",
+      tags: ["AI", "Corporate Governance", "Customer Service", "Risk Management"],
+      relatedPackId: "corporate_legal_compliance_starter_kit",
+      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
+      description: "In 2024, Air Canada was legally forced to honor a refund policy invented by its own chatbot. This case study breaks down why AI governance is no longer optional and how a simple checklist can prevent your technology from creating costly liabilities.",
+      content: `
       <p>In early 2024, a seemingly minor customer service interaction escalated into a landmark legal case for Air Canada. A customer, interacting with the airline's website chatbot to ask about bereavement fares, was given incorrect information. The chatbot confidently promised a retroactive discount, a policy that did not exist. When the airline refused to honor the bot's promise, the customer took them to court. The result? The tribunal ruled against Air Canada, forcing them to pay the refund and setting a stunning precedent: a company is responsible for the information provided by its AI, even when it's wrong.</p>
       <p>This incident is a watershed moment for every business deploying AI, from simple chatbots to complex recommendation engines. It reveals a massive new category of operational and legal risk that most companies are unprepared for. The core failure wasn't technical; it was a catastrophic failure of governance.</p>
       
@@ -243,7 +243,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["EHS", "Chemical Safety", "Compliance", "Manufacturing"],
       relatedPackId: "manufacturing_operations_ehs_pack",
-      imageUrl: "https://i.postimg.cc/kGhhCGDM/manufacturing.jpg",
+      imageUrl: "https://i.postimg.cc/FzLpZDmk/gas-leak.jpg",
       description: "In 2023, a toxic gas leak from a sewer in Ludhiana, India, killed 11 people in a densely populated area. This tragedy underscores the critical need for even small businesses handling chemicals to implement rigorous EHS and chemical handling SOPs.",
       content: `
         <p>On April 30, 2023, residents of a crowded neighborhood in Ludhiana, Punjab, woke up to a nightmare. A colorless, odorless toxic gas, later identified as hydrogen sulfide from the sewer system, had silently filled their homes and businesses. Eleven people, including children, collapsed and died. The source was traced back to the improper disposal of industrial chemicals into the municipal sewer system, which reacted to create the deadly gas.</p>
@@ -287,6 +287,68 @@ export const blogPosts: BlogPost[] = [
         <p>The Ludhiana tragedy is a powerful lesson for every business owner and plant manager. Your operational procedures don't just affect your employees; they affect the entire community you operate in. A single lapse can have consequences that extend far beyond a regulatory fine.</p>
         <p>Implementing a comprehensive EHS system isn't a cost center; it's a critical investment in risk management and corporate citizenship. The checklists in our <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS Pack</a> provide a turnkey solution to build this system, ensuring your operations are not only efficient but also safe and responsible. Don't wait for a tragedy to reveal a gap in your safety protocols.</p>
       `
+    },
+    {
+        slug: 'warehouse-fires-delhi-2024',
+        title: "The Rise of Warehouse Fires (Delhi, 2024): How a Fire Safety SOP Prevents Your Inventory from Turning to Ash.",
+        publishedDate: "2025-10-27",
+        author: "MoreMeets Team",
+        tags: ["Warehouse", "Logistics", "Fire Safety", "Risk Management"],
+        relatedPackId: "logistics_warehouse_pack",
+        imageUrl: "https://i.postimg.cc/W1W2j3GW/warehouse.webp",
+        description: "In 2024, a series of devastating fires in Delhi's industrial areas wiped out crores in inventory. This analysis breaks down the common causes—faulty wiring, improper storage—and how a robust Fire Safety SOP for warehouses is the best insurance policy you can have.",
+        content: `
+            <p>Throughout 2024, the industrial areas around Delhi, from Mundka to Alipur, have been plagued by a series of massive warehouse fires. Each incident tells a familiar story: a blaze starting from a suspected short circuit, rapidly engulfing a facility packed with flammable goods, and leaving behind a trail of total financial ruin for the business owners. These are not freak accidents; they are predictable outcomes of systemic failures in basic fire safety and prevention.</p>
+            <p>For a warehouse or logistics company, inventory is cash. Watching it go up in smoke is a catastrophic failure. Investigations into these fires consistently reveal a pattern of common, preventable mistakes: overloaded electrical circuits, improper storage of flammable materials, and blocked emergency exits. A robust, checklist-driven fire safety program, like the one in our <a href="/packs/logistics_warehouse_pack" class="text-accent underline">Logistics & Warehouse Pack</a>, is designed to eliminate these exact risks.</p>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Tinderbox: Common Warehouse Fire Hazards</h3>
+            <p>Warehouses are inherently high-risk environments. They contain a perfect storm of potential fire hazards:</p>
+            <ul class="list-disc pl-6 space-y-2 my-4">
+                <li><strong>Electrical Faults:</strong> Overloaded circuits, faulty wiring, and unattended battery charging stations are the most common ignition sources.</li>
+                <li><strong>Improper Storage:</strong> Storing flammable liquids or aerosols near ignition sources, or blocking sprinkler heads with high stacks of inventory.</li>
+                <li><strong>Poor Housekeeping:</strong> Piles of cardboard, plastic wrap, and other combustible waste create fuel for a fire to spread rapidly.</li>
+                <li><strong>Lack of Clear Exits & Access:</strong> Blocked fire exits trap employees, and cluttered aisles prevent firefighters from reaching the source of the blaze.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Prevention to Response: A Checklist-Driven Fire Safety Plan</h3>
+            <p>A comprehensive fire safety SOP is not just about having fire extinguishers; it's a multi-layered system of prevention, detection, and response. Here’s how the checklists in our Logistics & Warehouse Pack create this system:</p>
+            
+            <table class="w-full text-left border-collapse my-6">
+                <thead>
+                    <tr class="bg-secondary">
+                        <th class="p-2 border">Failure Point</th>
+                        <th class="p-2 border">Relevant MoreMeets Checklist</th>
+                        <th class="p-2 border">The Preventive Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t">
+                        <td class="p-2 border font-semibold">Electrical Faults</td>
+                        <td class="p-2 border">\`Warehouse Safety & Housekeeping\`</td>
+                        <td class="p-2 border">Mandates a weekly inspection of all electrical panels and prohibits the use of unauthorized extension cords or multi-plugs, preventing circuit overloads.</td>
+                    </tr>
+                    <tr class="border-t bg-secondary/50">
+                        <td class="p-2 border font-semibold">Improper Storage</td>
+                        <td class="p-2 border">\`Inbound & Receiving\` (and Hazmat SOPs)</td>
+                        <td class="p-2 border">Requires segregation of flammable materials into a designated, ventilated area, away from ignition sources. It also ensures stock is kept at a safe distance below sprinkler heads.</td>
+                    </tr>
+                    <tr class="border-t">
+                        <td class="p-2 border font-semibold">Poor Housekeeping</td>
+                        <td class="p-2 border">\`Warehouse Safety & Housekeeping\`</td>
+                        <td class="p-2 border">Includes a daily end-of-shift checklist item to clear all aisles of combustible waste like cardboard and plastic, reducing the fire load.</td>
+                    </tr>
+                    <tr class="border-t bg-secondary/50">
+                        <td class="p-2 border font-semibold">Blocked Exits</td>
+                        <td class="p-2 border">\`Warehouse Safety & Housekeeping\`</td>
+                        <td class="p-2 border">A daily walkthrough log to verify that all fire exits, extinguisher points, and electrical panels are unobstructed. This simple, 5-minute check is a lifesaver.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Your Best Insurance is a Good Checklist</h3>
+            <p>Insurance can replace your inventory, but it can't replace your business's momentum, customer trust, or, most importantly, the lives of your employees. The recurring warehouse fires in Delhi are a tragic symptom of a widespread failure to prioritize basic safety procedures.</p>
+            <p>By implementing a rigorous, documented fire safety SOP, you move from a reactive position of hoping a fire doesn't happen, to a proactive one of ensuring it can't. The checklists in our <a href="/packs/logistics_warehouse_pack" class="text-accent underline">Logistics & Warehouse Pack</a> provide the expert-built framework to protect your people, your inventory, and your business from going up in flames.</p>
+        `
     },
     {
       slug: 'mdh-everest-spice-ban-supplier-qc',
@@ -408,7 +470,7 @@ export const blogPosts: BlogPost[] = [
         author: "MoreMeets Team",
         tags: ["Aviation", "Manufacturing", "Quality Control", "Safety"],
         relatedPackId: "manufacturing_operations_ehs_pack",
-        imageUrl: "https://i.postimg.cc/kGhhCGDM/manufacturing.jpg",
+        imageUrl: "https://i.postimg.cc/wjf6Hv58/airline.jpg",
         description: "In January 2024, a door plug on a brand-new Alaska Airlines Boeing 737 MAX blew out mid-air. The cause: four critical bolts were never installed. This incident is a masterclass in the catastrophic consequences of a simple quality control failure.",
         content: `
             <p>On January 5, 2024, passengers on Alaska Airlines Flight 1282 experienced a terrifying ordeal. Just minutes after takeoff, a large panel on the side of the brand-new Boeing 737 MAX aircraft—a "door plug" used to seal an unused emergency exit—blew out, causing explosive decompression at 16,000 feet. Miraculously, no one was seriously injured, but the incident sent shockwaves through the aviation industry and grounded hundreds of aircraft worldwide.</p>
@@ -580,7 +642,7 @@ export const blogPosts: BlogPost[] = [
         author: "MoreMeets Team",
         tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
         relatedPackId: "sports_clubs_stadium_operations_pack",
-        imageUrl: "https://i.postimg.cc/SRm0JZcS/sports-stadium-football1.jpg",
+        imageUrl: "https://i.postimg.cc/Jz61mnNF/Stadium-and-Arena.webp",
         description: "The 1989 Hillsborough disaster, where 97 Liverpool fans were killed in a human crush, remains one of the darkest days in sports history. This analysis explores the catastrophic failures in crowd management and how modern, checklist-driven SOPs are designed to prevent such a tragedy.",
         content: `
             <p>On April 15, 1989, at the Hillsborough Stadium in Sheffield, England, a football match turned into a scene of unimaginable horror. A massive crush of spectators in the stadium's central pens led to the deaths of 97 Liverpool supporters. For decades, the narrative was wrongly focused on fan behavior. But years of inquiries have since made it clear: the disaster was caused by a catastrophic failure of police and stadium management.</p>
@@ -694,7 +756,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Logistics", "Supply Chain", "Risk Management", "Geopolitics"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/6qQ1FnWm/logistics.webp",
+      imageUrl: "https://i.postimg.cc/9Q8WVMdS/ocean-freight-shipping.png",
       description: "Starting in late 2023, attacks on commercial shipping in the Red Sea have thrown global supply chains into chaos, causing massive delays and cost overruns. This ongoing crisis is a powerful lesson in why businesses need a proactive Supply Chain Risk Management SOP.",
       content: `
         <p>For decades, the Red Sea, leading to the Suez Canal, has been a superhighway for global trade, carrying over 12% of the world's commerce. But starting in late 2023, this critical artery was effectively severed. A series of drone and missile attacks by Houthi militants forced major shipping lines like Maersk, MSC, and Hapag-Lloyd to reroute their entire fleets around the southern tip of Africa, adding weeks to transit times and millions of dollars in fuel costs.</p>
@@ -751,7 +813,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["ESG", "Compliance", "Corporate Governance", "Marketing"],
       relatedChecklistId: "esg-sustainability-audit",
-      imageUrl: "https://i.postimg.cc/PrfS2hrQ/Laucala-Island-Fiji.jpg",
+      imageUrl: "https://i.postimg.cc/RFbfH4zv/sustainability1.webp",
       description: "From Volkswagen's 'Dieselgate' to H&M's misleading environmental scorecards, 'greenwashing' has become a massive legal and reputational risk. This post explores why making unsubstantiated sustainability claims is so dangerous and how a rigorous internal ESG audit checklist can protect your brand.",
       content: `
         <p>In today's market, sustainability sells. Consumers and investors alike are increasingly drawn to brands that demonstrate a genuine commitment to environmental, social, and governance (ESG) principles. The temptation for companies to market themselves as "eco-friendly," "green," or "sustainable" is immense. But making these claims without the data to back them up is a high-stakes gamble known as "greenwashing," and it's a game that is blowing up in the faces of some of the world's biggest brands.</p>
@@ -800,6 +862,123 @@ export const blogPosts: BlogPost[] = [
         <p>The era of making vague, feel-good environmental claims is over. In a world of empowered consumers and data-savvy investors, greenwashing is a losing game. The only sustainable strategy is one of authentic, measurable action.</p>
         <p>Start small, but start with data. Use a tool like our <a href="/checklists/esg-sustainability-audit" class="text-accent underline">ESG & Sustainability Audit</a> checklist to begin gathering real metrics about your operations. Let your data, not your marketing department, tell your sustainability story. It may be a less glamorous headline, but it's one that can withstand scrutiny and build genuine, lasting trust with your stakeholders.</p>
       `
-    }
-  ];
+    },
+    {
+        slug: 'popeyes-girl-dinner-local-marketing-compliance',
+        title: "Why did Popeyes' 'Girl Dinner' Menu Fail? A Lesson in Local Store Marketing Compliance.",
+        publishedDate: "2025-10-27",
+        author: "MoreMeets Team",
+        tags: ["Franchise", "Marketing", "Brand Management"],
+        relatedPackId: "franchise_operations_pack",
+        imageUrl: "https://i.postimg.cc/527x105j/franchisee.jpg",
+        description: "In 2023, a single Popeyes franchisee's 'girl dinner' menu went viral for all the wrong reasons, creating a brand compliance headache. This incident is a perfect case study in why franchisors need a robust Local Store Marketing (LSM) compliance SOP.",
+        content: `
+            <p>In the summer of 2023, the "girl dinner" trend took over social media—a playful celebration of assembling a meal from various snacks. One enterprising Popeyes franchisee in New York decided to capitalize on the trend, creating their own unauthorized "girl dinner" menu featuring a mix of side dishes. The menu went viral, but not in the way the franchisee hoped. It sparked a debate online about brand consistency, pricing, and franchisee autonomy, forcing the corporate office to step in and shut it down.</p>
+            <p>While seemingly minor, this incident is a microcosm of the biggest challenge in franchising: how do you empower local franchisees to be creative while protecting the integrity and consistency of the national brand? The answer lies in a clear, easy-to-follow process for Local Store Marketing (LSM).</p>
 
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Dangers of Unchecked Creativity</h3>
+            <p>Franchisees are entrepreneurs. They are often full of creative ideas to boost local sales. But without a framework for approval, that creativity can lead to significant problems:</p>
+            <ul class="list-disc pl-6 space-y-2 my-4">
+                <li><strong>Brand Dilution:</strong> A customer should have the same core experience at every Popeyes. Unauthorized menus create confusion and dilute the brand's promise.</li>
+                <li><strong>Pricing Chaos:</strong> Inconsistent pricing across a franchise network can anger customers and devalue the product.</li>
+                <li><strong>Operational Strain:</strong> A custom menu item can disrupt the kitchen workflow, which is optimized for the standard menu.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Approval Workflow: A Checklist for Smart Marketing</h3>
+            <p>A good LSM process doesn't say "no" to every local idea. It provides a structured way to say "yes" to the good ones and "no" to the risky ones. Our <a href="/packs/franchise_operations_pack" class="text-accent underline">Franchise Operations Pack</a> includes a \`Local Store Marketing (LSM) Compliance\` checklist that provides this exact framework.</p>
+            
+            <table class="w-full text-left border-collapse my-6">
+                <thead>
+                    <tr class="bg-secondary">
+                        <th class="p-2 border">Step in the Process</th>
+                        <th class="p-2 border">Actionable Checklist Item</th>
+                        <th class="p-2 border">How It Prevents the 'Girl Dinner' Problem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t">
+                        <td class="p-2 border font-semibold">1. Idea Submission</td>
+                        <td class="p-2 border">"Franchisee must submit a formal proposal for any new menu item or local promotion using the LSM Submission Form."</td>
+                        <td class="p-2 border">This moves the idea from a spontaneous decision to a formal proposal that can be properly evaluated by the corporate team.</td>
+                    </tr>
+                    <tr class="border-t bg-secondary/50">
+                        <td class="p-2 border font-semibold">2. Corporate Review</td>
+                        <td class="p-2 border">"Marketing and Operations teams review the submission for brand fit, operational feasibility, and profitability."</td>
+                        <td class="p-2 border">The corporate team could have identified that while the idea was trendy, it didn't align with the brand's core messaging and could cause operational issues.</td>
+                    </tr>
+                    <tr class="border-t">
+                        <td class="p-2 border font-semibold">3. Controlled Pilot</td>
+                        <td class="p-2 border">"If approved, the idea is launched as a limited-time, single-store pilot with clear success metrics."</td>
+                        <td class="p-2 border">Instead of a rogue launch, a good idea could be tested in a controlled environment. If successful, it could even be considered for a wider rollout.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Channel Creativity, Don't Crush It</h3>
+            <p>The solution to the "girl dinner" problem isn't to ban all local marketing. It's to provide a clear and easy process for franchisees to channel their creativity in a way that benefits both their local store and the national brand. A simple approval workflow turns franchisees from potential liabilities into a source of innovation.</p>
+            <p>Our <a href="/packs/franchise_operations_pack" class="text-accent underline">Franchise Operations Pack</a> provides the tools to build this collaborative relationship, ensuring your brand stays consistent while still tapping into the entrepreneurial spirit of your franchisees.</p>
+        `
+    },
+    {
+        slug: 'uphaar-cinema-fire-tragedy-analysis',
+        title: "The Uphaar Cinema Fire: A Haunting Lesson in Fire Safety Negligence",
+        publishedDate: "2025-10-27",
+        author: "MoreMeets Team",
+        tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study"],
+        relatedPackId: "cinema_operations_pack",
+        imageUrl: "https://i.postimg.cc/rwF8vWrG/Uphaar-Cinema-Hall.avif",
+        description: "In 1997, 59 people died in a fire at Uphaar Cinema in Delhi, not from the flames, but from suffocation after finding the emergency exits blocked. This tragedy is a powerful case study in why a rigorous, daily fire safety checklist is a non-negotiable for any public venue.",
+        content: `
+            <p>On June 13, 1997, during a screening of the movie "Border," a fire broke out at Uphaar Cinema in Delhi. While the initial fire was contained, the smoke was deadly. Patrons scrambling to escape in the dark found a horrifying reality: the emergency exits were either locked, blocked by illegally added seats, or otherwise inaccessible. Fifty-nine people died, trapped inside the auditorium. It remains one of India's deadliest fire tragedies.</p>
+            <p>The subsequent investigation revealed a catastrophic and criminal level of negligence. The venue's fire safety systems were not just inadequate; they were actively compromised for commercial gain. The Uphaar tragedy is a haunting lesson that fire safety is not about ticking a box for a license; it's about a daily, verifiable commitment to public safety.</p>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Chain of Failures: How a Cinema Becomes a Death Trap</h3>
+            <p>The Uphaar fire was not an accident; it was the inevitable result of a series of deliberate operational failures:</p>
+            <ul class="list-disc pl-6 space-y-2 my-4">
+                <li><strong>Blocked Exits:</strong> The most damning failure. Exit doors were locked and blocked to add extra seats, turning the auditorium into a trap.</li>
+                <li><strong>No Public Address System:</strong> There was no working PA system to guide patrons or give instructions.</li>
+                <li><strong>No Staff Training:</strong> Cinema staff had no training on how to handle an emergency or conduct an evacuation.</li>
+                <li><strong>Faulty Equipment:</strong> The transformer that started the fire was poorly maintained and had shown previous signs of problems.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">A Checklist as a Lifesaver: The Uphaar Failures vs. Modern SOPs</h3>
+            <p>A modern cinema operations plan, like the one outlined in our <a href="/packs/cinema_operations_pack" class="text-accent underline">Cinema & Multiplex Operations Pack</a>, is designed to prevent every single one of these failures. It turns abstract safety rules into concrete, daily actions.</p>
+            
+            <table class="w-full text-left border-collapse my-6">
+                <thead>
+                    <tr class="bg-secondary">
+                        <th class="p-2 border">Uphaar Failure Point</th>
+                        <th class="p-2 border">Checklist from our Cinema Operations Pack</th>
+                        <th class="p-2 border">The Preventive Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t">
+                        <td class="p-2 border font-semibold">Blocked Exits</td>
+                        <td class="p-2 border">\`Fire Safety & Evacuation\`</td>
+                        <td class="p-2 border">Mandates a physical check of *every single emergency exit* before the first show of the day, with a signed log. An unopenable door would be a "show-stopper" event.</td>
+                    </tr>
+                    <tr class="border-t bg-secondary/50">
+                        <td class="p-2 border font-semibold">No PA System</td>
+                        <td class="p-2 border">\`Projection & Sound QC\`</td>
+                        <td class="p-2 border">Includes a mandatory daily test of the public address system to ensure emergency announcements can be made clearly in every auditorium.</td>
+                    </tr>
+                    <tr class="border-t">
+                        <td class="p-2 border font-semibold">Untrained Staff</td>
+                        <td class="p-2 border">\`Fire Safety & Evacuation\`</td>
+                        <td class="p-2 border">Requires quarterly evacuation drills where staff practice their specific roles, from guiding patrons to operating fire extinguishers.</td>
+                    </tr>
+                    <tr class="border-t bg-secondary/50">
+                        <td class="p-2 border font-semibold">Faulty Equipment</td>
+                        <td class="p-2 border">\`Electrical Safety & PAT Testing\` (from a facility pack)</td>
+                        <td class="p-2 border">A preventive maintenance schedule for all high-voltage equipment like transformers, with regular inspections, would have flagged the faulty unit for repair long before it could cause a fire.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Honor the Victims with Diligence</h3>
+            <p>The greatest tragedy of the Uphaar fire is that it was entirely preventable. It was a failure of process, of compliance, and of basic human diligence. For any owner or manager of a public venue—be it a cinema, a stadium, or a hotel—the lesson is clear: you cannot afford to delegate or assume safety. It must be verified, every single day.</p>
+            <p>Implementing the checklists from our <a href="/packs/cinema_operations_pack" class="text-accent underline">Cinema & Multiplex Operations Pack</a> is more than a business decision. It is a moral commitment to ensure that every guest who enters your venue is guaranteed a safe exit.</p>
+        `
+    }
+];
