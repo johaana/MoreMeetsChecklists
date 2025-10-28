@@ -16,6 +16,117 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
     {
+      slug: 'deepfake-cfo-scam-arup',
+      title: "The $25 Million Deepfake: How a Video Call Scam Fooled a CFO and Why Your Only Defense is a Financial SOP",
+      publishedDate: "2024-07-31",
+      author: "MoreMeets Team",
+      tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
+      relatedPackId: "enterprise_risk_cybersecurity_pack",
+      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
+      description: "In early 2024, a finance worker at multinational firm Arup was tricked into sending $25.6 million by a sophisticated deepfake video call of his CFO. This new-age fraud bypasses traditional security, and only robust, human-centric financial SOPs can stop it.",
+      content: `
+        <p>In February 2024, the business world was shaken by a story that seemed straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling $25.6 million. He complied. The only problem? The people on the call were not his colleagues. They were AI-generated deepfakes.</p>
+        <p>This incident represents a terrifying new frontier in financial fraud. Traditional cybersecurity measures like email filters and antivirus are useless against a threat that so perfectly mimics trusted human leadership. The Arup case proves that in the age of AI, the last line of defense is no longer technology, but a rigorously enforced, human-centric operational process.</p>
+        
+        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Why Technology Alone Fails</h3>
+        <p>The deepfake scam bypassed all technical defenses because it didn't target a system; it targeted a person. The employee wasn't hacked. He was deceived. He saw and heard what he believed to be his boss giving a direct, albeit unusual, order. In a high-pressure environment, the instinct is often to comply with authority.</p>
+        <p>This highlights a critical vulnerability in many organizations: a reliance on single-channel, authority-based approvals for financial transactions. If your process allows a large sum of money to be moved based on a single email, phone call, or even a video call, you are exposed to this exact type of attack.</p>
+
+        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Un-Hackable Defense: A Fortified Financial SOP</h3>
+        <p>You cannot patch human psychology, but you can build a process that is resilient to it. The only way to stop a deepfake financial scam is with a non-negotiable, multi-layered approval process that cannot be short-circuited by a single point of failure. This is where a robust financial checklist becomes your most critical security asset.</p>
+        <p>Our <a href="/packs/jewelry_and_luxury_retail" class="text-accent underline">Jewelry & Luxury Retail Pack</a>, designed for high-value environments, contains a \`High-Value Transaction SOP\` that offers the perfect template. Here’s how its principles would have prevented the Arup disaster:</p>
+
+        <table class="w-full text-left border-collapse my-6">
+          <thead>
+            <tr class="bg-secondary">
+              <th class="p-2 border">Control Principle</th>
+              <th class="p-2 border">Actionable Checklist Item</th>
+              <th class="p-2 border">How It Defeats the Deepfake</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2 border font-semibold">1. Dual Control (Four-Eyes Principle)</td>
+              <td class="p-2 border">"All transactions over [$X amount] require independent approval from two authorized signatories from different departments."</td>
+              <td class="p-2 border">This is the most powerful defense. The deepfake could trick one person, but it cannot be on two different video calls with two different managers simultaneously. It forces a second, independent verification, which would immediately expose the scam.</td>
+            </tr>
+            <tr class="border-t bg-secondary/50">
+              <td class="p-2 border font-semibold">2. Out-of-Band Verification</td>
+              <td class="p-2 border">"For any unusual or urgent high-value request, verification must be made via a pre-established, separate communication channel (e.g., a direct phone call to the CFO's personal mobile number)."</td>
+              <td class="p-2 border">This breaks the scammer's control. The employee would call the real CFO, who would have no knowledge of the request. The scam relies on keeping the victim within the attacker's controlled environment (the fake video call).</td>
+            </tr>
+            <tr class="border-t">
+              <td class="p-2 border font-semibold">3. Segregation of Duties</td>
+              <td class="p-2 border">"The person initiating the payment request cannot be the same person who approves and executes the final bank transfer."</td>
+              <td class="p-2 border">This procedural control ensures that even if one person is compromised, they don't have the end-to-end authority to move funds. The request would be passed to another team member or manager for execution, creating another opportunity for verification.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Process is Your Best Defense Against Advanced Threats</h3>
+        <p>As technology evolves, so do the threats. The emergence of convincing deepfakes means that "seeing is believing" is no longer a safe assumption in business. The only true defense is a robust, disciplined, and consistently enforced operational process that removes single points of failure.</p>
+        <p>Review your financial transaction policies today. If a single employee can move a significant amount of money based on a single request—no matter how convincing it seems—you are vulnerable. Implementing a checklist-driven, multi-person approval workflow isn't bureaucracy; it's your best and only defense against the next generation of financial fraud.</p>
+        <p>Explore the control principles in our <a href="/packs/enterprise_risk_cybersecurity_pack" class="text-accent underline">Enterprise Risk & Cybersecurity Pack</a> to build a resilient financial system.</p>
+      `
+    },
+    {
+      slug: 'pink-panther-gang-luxury-heist',
+      title: "The Pink Panther Heist: How the World's Most Famous Jewel Thieves Exploit Procedural Flaws",
+      publishedDate: "2024-07-31",
+      author: "MoreMeets Team",
+      tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
+      relatedPackId: "jewelry_and_luxury_retail",
+      imageUrl: "https://i.postimg.cc/JnbXpSjM/luxury-retail-2.jpg",
+      description: "The legendary Pink Panther gang doesn't use brute force; they use intelligence to exploit human behavior and procedural loopholes in luxury stores. This analysis reveals how their methods work and why simple, rigid checklists are their kryptonite.",
+      content: `
+        <p>They are the stuff of legend: the Pink Panthers, a network of audacious jewel thieves responsible for over a billion dollars in heists from Dubai to Tokyo. Their methods are cinematic, intelligent, and famously non-violent. They don't blow up vaults; they exploit the single greatest vulnerability in any luxury retail store: human process.</p>
+        <p>The Pink Panthers are masters of social engineering and procedural exploitation. They "case" a store for days, observing how staff handle high-value items, when they are distracted, and where the blind spots in the process lie. They create diversions, use sleight of hand, and rely on the fact that busy employees under pressure may skip a step. This makes them a perfect case study for why a rigid, checklist-driven security culture is the only effective defense.</p>
+
+        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Exploiting the Human Element</h3>
+        <p>The Pink Panthers' strategy is built on predictable human behavior in a retail environment:</p>
+        <ul class="list-disc pl-6 space-y-2 my-4">
+            <li><strong>The Pressure to Sell:</strong> An employee eager to make a large commission may be tempted to show multiple high-value items at once, creating the perfect opportunity for a swap.</li>
+            <li><strong>Distraction:</strong> One member of the gang creates a scene or asks complex questions, pulling staff attention away while another performs the theft.</li>
+            <li><strong>Lack of Verification:</strong> They rely on employees not following the tedious process of verifying serial numbers before and after every single viewing.</li>
+        </ul>
+        <p>High-tech cameras and alarms are useless if the thief never has to break a rule. The Panthers win by making the employee break the rule for them.</p>
+        
+        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Process as a Fortress: How Checklists Defeat Thieves</h3>
+        <p>You cannot make your employees immune to social engineering, but you can give them a process that is. Our <a href="/packs/jewelry_and_luxury_retail" class="text-accent underline">Jewelry & Luxury Retail Pack</a> is designed to create a fortress of procedure that shuts down these exact tactics.</p>
+        
+        <table class="w-full text-left border-collapse my-6">
+          <thead>
+            <tr class="bg-secondary">
+              <th class="p-2 border">Pink Panther Tactic</th>
+              <th class="p-2 border">The Checklist-Driven Defense</th>
+              <th class="p-2 border">Why It Works</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2 border font-semibold">The Swap (showing multiple items)</td>
+              <td class="p-2 border">\`High-Value Transaction SOP\`</td>
+              <td class="p-2 border">Mandates a strict "one item out at a time" rule. It's a simple, non-negotiable policy that removes the opportunity for sleight of hand entirely.</td>
+            </tr>
+            <tr class="border-t bg-secondary/50">
+              <td class="p-2 border font-semibold">The Distraction</td>
+              <td class="p-2 border">\`Staff Training on Security Protocols\`</td>
+              <td class="p-2 border">This checklist includes training staff to recognize diversion tactics and have a "buddy system" where one employee always remains focused on the high-value item, no matter what else is happening in the store.</td>
+            </tr>
+            <tr class="border-t">
+              <td class="p-2 border font-semibold">The Counterfeit Swap</td>
+              <td class="p-2 border">\`Serialized Item & Watch Management\`</td>
+              <td class="p-2 border">Mandates that the serial number of a watch or item is scanned and verified against the record *before* it is shown to a customer and *immediately after* it is returned. A swap would be detected instantly.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Build a Culture of Security, Not Just a Wall</h3>
+        <p>The lesson from the Pink Panthers is that your most valuable assets are not protected by your vault, but by your procedures. A disciplined team that follows a simple, repeatable, and verifiable checklist for every single transaction is more secure than a store with a dozen security guards who are prone to distraction and human error.</p>
+        <p>Don't wait for a high-stakes lesson. Implement the checklists from our <a href="/packs/jewelry_and_luxury_retail" class="text-accent underline">Jewelry & Luxury Retail Pack</a> to build a culture of security that even the world's most notorious thieves can't penetrate.</p>
+      `
+    },
+    {
       slug: 'kfc-chicken-shortage-supply-chain-risk',
       title: "The Day KFC Ran Out of Chicken: A Masterclass in Supply Chain Risk Management",
       publishedDate: "2024-07-30",
@@ -69,7 +180,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'dominos-india-data-breach',
-      title: "The Domino's India Data Breach: Why Your Customer's Trust is Your Most Valuable Asset",
+      title: "Anatomy of a Data Breach: The Domino's India Leak and Why Customer Data is Your Biggest Liability",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Data Privacy", "Brand Reputation"],
@@ -125,7 +236,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'kerala-blasts-event-security',
-      title: "The Kerala Convention Centre Blasts (2023): A Wake-Up Call for Event Security SOPs",
+      title: "The Kerala Convention Centre Blasts: A Wake-Up Call for Event Security SOPs",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Event Safety", "Security", "Risk Management"],
@@ -176,60 +287,6 @@ export const blogPosts: BlogPost[] = [
         <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Hope is Not a Security Strategy</h3>
         <p>The Kalamassery blasts are a tragic reminder that in today's world, no large gathering is completely without risk. Relying on hope or assuming an event is "safe" is not enough. The safety of your guests depends on having a professional, repeatable, and verifiable security process.</p>
         <p>Implementing the operational checklists from our safety and security-focused packs is the most effective way to meet your duty of care, protect your guests, and ensure your venue is remembered for the right reasons.</p>
-      `
-    },
-    {
-      slug: 'deepfake-cfo-scam-arup',
-      title: "The $25 Million Deepfake: How a Video Call Scam Fooled a CFO and Why Your Only Defense is a Financial SOP",
-      publishedDate: "2024-07-30",
-      author: "MoreMeets Team",
-      tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
-      relatedPackId: "enterprise_risk_cybersecurity_pack",
-      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
-      description: "In 2024, a finance worker at Arup was tricked into sending $25 million by a sophisticated deepfake video call of his CFO. This post breaks down how this new-age fraud bypasses traditional security and why only robust, human-centric financial SOPs can stop it.",
-      content: `
-        <p>In February 2024, the business world was shaken by a story that seemed straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling $25.6 million. He complied. The only problem? The people on the call were not his colleagues. They were AI-generated deepfakes.</p>
-        <p>This incident represents a terrifying new frontier in financial fraud. Traditional cybersecurity measures like email filters and antivirus are useless against a threat that so perfectly mimics trusted human leadership. The Arup case proves that in the age of AI, the last line of defense is no longer technology, but a rigorously enforced, human-centric operational process.</p>
-        
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Why Technology Alone Fails</h3>
-        <p>The deepfake scam bypassed all technical defenses because it didn't target a system; it targeted a person. The employee wasn't hacked. He was deceived. He saw and heard what he believed to be his boss giving a direct, albeit unusual, order. In a high-pressure environment, the instinct is often to comply with authority.</p>
-        <p>This highlights a critical vulnerability in many organizations: a reliance on single-channel, authority-based approvals for financial transactions. If your process allows a large sum of money to be moved based on a single email, phone call, or even a video call, you are exposed to this exact type of attack.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Un-Hackable Defense: A Fortified Financial SOP</h3>
-        <p>You cannot patch human psychology, but you can build a process that is resilient to it. The only way to stop a deepfake financial scam is with a non-negotiable, multi-layered approval process that cannot be short-circuited by a single point of failure. This is where a robust financial checklist becomes your most critical security asset.</p>
-        <p>Our <a href="/packs/jewelry_and_luxury_retail" class="text-accent underline">Jewelry & Luxury Retail Pack</a>, designed for high-value environments, contains a \`High-Value Transaction SOP\` that offers the perfect template. Here’s how its principles would have prevented the Arup disaster:</p>
-
-        <table class="w-full text-left border-collapse my-6">
-          <thead>
-            <tr class="bg-secondary">
-              <th class="p-2 border">Control Principle</th>
-              <th class="p-2 border">Actionable Checklist Item</th>
-              <th class="p-2 border">How It Defeats the Deepfake</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">1. Dual Control (Four-Eyes Principle)</td>
-              <td class="p-2 border">"All transactions over [$X amount] require independent approval from two authorized signatories from different departments."</td>
-              <td class="p-2 border">This is the most powerful defense. The deepfake could trick one person, but it cannot be on two different video calls with two different managers simultaneously. It forces a second, independent verification, which would immediately expose the scam.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">2. Out-of-Band Verification</td>
-              <td class="p-2 border">"For any unusual or urgent high-value request, verification must be made via a pre-established, separate communication channel (e.g., a direct phone call to the CFO's personal mobile number)."</td>
-              <td class="p-2 border">This breaks the scammer's control. The employee would call the real CFO, who would have no knowledge of the request. The scam relies on keeping the victim within the attacker's controlled environment (the fake video call).</td>
-            </tr>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">3. Segregation of Duties</td>
-              <td class="p-2 border">"The person initiating the payment request cannot be the same person who approves and executes the final bank transfer."</td>
-              <td class="p-2 border">This procedural control ensures that even if one person is compromised, they don't have the end-to-end authority to move funds. The request would be passed to another team member or manager for execution, creating another opportunity for verification.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Process is Your Best Defense Against Advanced Threats</h3>
-        <p>As technology evolves, so do the threats. The emergence of convincing deepfakes means that "seeing is believing" is no longer a safe assumption in business. The only true defense is a robust, disciplined, and consistently enforced operational process that removes single points of failure.</p>
-        <p>Review your financial transaction policies today. If a single employee can move a significant amount of money based on a single request—no matter how convincing it seems—you are vulnerable. Implementing a checklist-driven, multi-person approval workflow isn't bureaucracy; it's your best and only defense against the next generation of financial fraud.</p>
-        <p>Explore the control principles in our <a href="/packs/enterprise_risk_cybersecurity_pack" class="text-accent underline">Enterprise Risk & Cybersecurity Pack</a> to build a resilient financial system.</p>
       `
     },
     {
@@ -453,340 +510,6 @@ export const blogPosts: BlogPost[] = [
     `
     },
     {
-      slug: 'deepfake-scam-arup-cfo-fraud-internal-controls',
-      title: "Anatomy of a Deepfake Scam: The Arup CFO Fraud and How Internal Controls Can Stop It",
-      publishedDate: "2024-07-29",
-      author: "MoreMeets Team",
-      tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
-      relatedPackId: "enterprise_risk_cybersecurity_pack",
-      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
-      description: "In 2024, a finance worker at Arup was tricked into sending $25 million by a sophisticated deepfake video call of his CFO. This post breaks down how this new-age fraud bypasses traditional security and why only robust, human-centric financial SOPs can stop it.",
-      content: `
-        <p>In February 2024, the business world was shaken by a story that seemed straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling $25.6 million. He complied. The only problem? The people on the call were not his colleagues. They were AI-generated deepfakes.</p>
-        <p>This incident represents a terrifying new frontier in financial fraud. Traditional cybersecurity measures like email filters and antivirus are useless against a threat that so perfectly mimics trusted human leadership. The Arup case proves that in the age of AI, the last line of defense is no longer technology, but a rigorously enforced, human-centric operational process.</p>
-        
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Why Technology Alone Fails</h3>
-        <p>The deepfake scam bypassed all technical defenses because it didn't target a system; it targeted a person. The employee wasn't hacked. He was deceived. He saw and heard what he believed to be his boss giving a direct, albeit unusual, order. In a high-pressure environment, the instinct is often to comply with authority.</p>
-        <p>This highlights a critical vulnerability in many organizations: a reliance on single-channel, authority-based approvals for financial transactions. If your process allows a large sum of money to be moved based on a single email, phone call, or even a video call, you are exposed to this exact type of attack.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Un-Hackable Defense: A Fortified Financial SOP</h3>
-        <p>You cannot patch human psychology, but you can build a process that is resilient to it. The only way to stop a deepfake financial scam is with a non-negotiable, multi-layered approval process that cannot be short-circuited by a single point of failure. This is where a robust financial checklist becomes your most critical security asset.</p>
-        <p>Our <a href="/packs/jewelry_and_luxury_retail" class="text-accent underline">Jewelry & Luxury Retail Pack</a>, designed for high-value environments, contains a \`High-Value Transaction SOP\` that offers the perfect template. Here’s how its principles would have prevented the Arup disaster:</p>
-
-        <table class="w-full text-left border-collapse my-6">
-          <thead>
-            <tr class="bg-secondary">
-              <th class="p-2 border">Control Principle</th>
-              <th class="p-2 border">Actionable Checklist Item</th>
-              <th class="p-2 border">How It Defeats the Deepfake</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">1. Dual Control (Four-Eyes Principle)</td>
-              <td class="p-2 border">"All transactions over [$X amount] require independent approval from two authorized signatories from different departments."</td>
-              <td class="p-2 border">This is the most powerful defense. The deepfake could trick one person, but it cannot be on two different video calls with two different managers simultaneously. It forces a second, independent verification, which would immediately expose the scam.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">2. Out-of-Band Verification</td>
-              <td class="p-2 border">"For any unusual or urgent high-value request, verification must be made via a pre-established, separate communication channel (e.g., a direct phone call to the CFO's personal mobile number)."</td>
-              <td class="p-2 border">This breaks the scammer's control. The employee would call the real CFO, who would have no knowledge of the request. The scam relies on keeping the victim within the attacker's controlled environment (the fake video call).</td>
-            </tr>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">3. Segregation of Duties</td>
-              <td class="p-2 border">"The person initiating the payment request cannot be the same person who approves and executes the final bank transfer."</td>
-              <td class="p-2 border">This procedural control ensures that even if one person is compromised, they don't have the end-to-end authority to move funds. The request would be passed to another team member or manager for execution, creating another opportunity for verification.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Process is Your Best Defense Against Advanced Threats</h3>
-        <p>As technology evolves, so do the threats. The emergence of convincing deepfakes means that "seeing is believing" is no longer a safe assumption in business. The only true defense is a robust, disciplined, and consistently enforced operational process that removes single points of failure.</p>
-        <p>Review your financial transaction policies today. If a single employee can move a significant amount of money based on a single request—no matter how convincing it seems—you are vulnerable. Implementing a checklist-driven, multi-person approval workflow isn't bureaucracy; it's your best and only defense against the next generation of financial fraud.</p>
-        <p>Explore the control principles in our <a href="/packs/enterprise_risk_cybersecurity_pack" class="text-accent underline">Enterprise Risk & Cybersecurity Pack</a> to build a resilient financial system.</p>
-      `
-    },
-    {
-      slug: 'baltimore-bridge-collapse-maritime-safety-sops',
-      title: "The Baltimore Bridge Collapse: A Lesson in Maritime Safety and Emergency SOPs",
-      publishedDate: "2024-07-29",
-      author: "MoreMeets Team",
-      tags: ["Maritime", "Logistics", "Safety", "Incident Analysis"],
-      relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/6qQ1FnWm/logistics.webp",
-      description: "The catastrophic 2024 collapse of the Francis Scott Key Bridge after being struck by the Dali container ship was a shocking failure of infrastructure and maritime safety. This analysis explores how robust operational checklists for vessel maintenance and emergency response could have mitigated the disaster.",
-      content: `
-        <p>In the early hours of March 26, 2024, the world watched in horror as the Francis Scott Key Bridge in Baltimore, a critical artery for East Coast shipping, collapsed in seconds. The container ship 'Dali' had lost all power, rendering it uncontrollable as it drifted into a main support pier. The event caused a tragic loss of life, shut down one of America's busiest ports, and created a supply chain crisis estimated to cost billions.</p>
-        <p>While the full investigation is ongoing, initial reports point to a catastrophic power failure aboard the vessel. This incident serves as a stark reminder that in complex operational environments—whether a container ship or a warehouse—disasters are rarely the result of a single error, but a chain of them. It underscores the absolute necessity of rigorous, checklist-driven protocols for maintenance, redundancy, and emergency response.</p>
-        
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Chain of Failure: Beyond a Simple Power Outage</h3>
-        <p>The Dali didn't just have a power failure; it reportedly had a failure of its backup systems as well. This "double failure" is what turns a manageable problem into a full-blown catastrophe. For any complex operation, the key to safety is not just preventing the first failure, but ensuring the second and third layers of defense are functional and well-rehearsed.</p>
-        
-        <p>Let's translate the lessons from this maritime disaster into the language of logistics and facility management, using the frameworks found in our <a href="/packs/logistics_warehouse_pack" class="text-accent underline">Logistics & Warehouse Pack</a>.</p>
-
-        <table class="w-full text-left border-collapse my-6">
-          <thead>
-            <tr class="bg-secondary">
-              <th class="p-2 border">Maritime Failure Point</th>
-              <th class="p-2 border">Equivalent Warehouse/Logistics SOP</th>
-              <th class="p-2 border">How a Checklist Prevents Disaster</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">Total Power Failure (Loss of Primary & Backup Generators)</td>
-              <td class="p-2 border">\`Critical Systems & Redundancy Testing\` (from Facility Management Blueprint)</td>
-              <td class="p-2 border">A checklist mandates weekly load tests of backup generators and UPS systems. This would have identified a faulty backup system on the Dali long before it left port, forcing a repair.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">Inability to Steer or Stop</td>
-              <td class="p-2 border">\`Material Handling Equipment (MHE) Safety\`</td>
-              <td class="p-2 border">Our MHE checklist requires a daily pre-use inspection of brakes, steering, and emergency stops on forklifts. This culture of pre-use checks, applied to the ship's critical systems, could have caught the underlying issue.</td>
-            </tr>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">Delayed 'Mayday' Call & Response</td>
-              <td class="p-2 border">\`Incident Reporting & Emergency Response\`</td>
-              <td class="p-2 border">An emergency SOP provides a drilled, step-by-step playbook. The moment a critical failure is identified (loss of power), the protocol dictates an immediate, pre-scripted alert to authorities, maximizing response time. The Dali's crew did this, which saved countless lives on the bridge.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Reactive to Proactive: The Power of the Checklist</h3>
-        <p>The key takeaway from the Baltimore bridge collapse is the danger of assuming critical systems will work when needed. Hope is not a strategy. The only way to ensure reliability is through a culture of rigorous, documented, and repetitive testing.</p>
-        <p>In your warehouse or manufacturing plant, your "container ship" might be a critical conveyor system, a main electrical panel, or a fire suppression pump. Your "bridge" might be your production line, your data center, or the safety of your employees. Are you conducting regular, documented checks on their backup and safety systems? Or are you assuming they will work in a crisis?</p>
-        
-        <p>Implementing checklists from our <a href="/packs/logistics_warehouse_pack" class="text-accent underline">Logistics & Warehouse</a> and <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS</a> packs moves your operation from a reactive, hope-based model to a proactive, evidence-based one. It creates a verifiable record that proves you have done everything possible to prevent the first failure and are fully prepared to handle it if it occurs. Don't wait for your own "bridge collapse" to discover a gap in your safety procedures.</p>
-      `
-    },
-    {
-      slug: 'silkyara-tunnel-collapse-confined-space-sop',
-      title: "The Silkyara Tunnel Collapse: Why Confined Space Entry SOPs Are a Matter of Life and Death",
-      publishedDate: "2024-07-29",
-      author: "MoreMeets Team",
-      tags: ["Industrial Safety", "EHS", "Construction", "Risk Management"],
-      relatedPackId: "manufacturing_operations_ehs_pack",
-      imageUrl: "https://i.postimg.cc/kGhhCGDM/manufacturing.jpg",
-      description: "The harrowing 17-day ordeal of 41 workers trapped in the Silkyara tunnel in 2023 was a stark reminder of the dangers of confined space work. This analysis breaks down how a Permit-to-Work (PTW) system and a robust Confined Space Entry checklist are designed to prevent such disasters.",
-      content: `
-        <p>In November 2023, the nation held its breath for 17 days as a massive rescue operation unfolded to save 41 workers trapped inside the collapsed Silkyara Bend-Barkot tunnel in Uttarakhand. The collapse, attributed to a geological fault in a fragile mountain range, highlighted the extreme risks associated with working in confined spaces. While the eventual rescue was a triumph of human ingenuity, the incident itself serves as a critical case study for industrial safety and the absolute necessity of rigorous, checklist-driven safety protocols.</p>
-        <p>Working in tunnels, tanks, silos, or trenches is among the most dangerous jobs in any industry. These "confined spaces" present multiple risks: atmospheric hazards (lack of oxygen, toxic gases), engulfment (from collapsing soil or materials), and limited means of entry or exit. The Silkyara collapse was a catastrophic failure of the latter.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Beyond Geological Surprise: The Role of Procedural Safety</h3>
-        <p>While the immediate cause was a geological event, a comprehensive safety framework is designed to anticipate and mitigate such risks. A world-class safety program doesn't just prevent predictable accidents; it builds in layers of defense for the unpredictable. This is the core purpose of a Permit-to-Work (PTW) system for confined spaces, a cornerstone of our <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS Pack</a>.</p>
-        <p>A PTW system is not just paperwork. It is a formal, documented risk assessment and authorization process that must be completed *before* any high-risk work begins. It forces supervisors and workers to stop and think, turning unstated assumptions into verified facts.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">How a Confined Space Entry Checklist Prevents Disaster</h3>
-        <p>Let's break down how a robust Confined Space Entry checklist, as part of a PTW system, addresses the risks highlighted by the Silkyara incident:</p>
-        
-        <table class="w-full text-left border-collapse my-6">
-          <thead>
-            <tr class="bg-secondary">
-              <th class="p-2 border">Safety Pillar</th>
-              <th class="p-2 border">Checklist Item from our \`Permit-To-Work\` SOP</th>
-              <th class="p-2 border">How It Could Have Helped</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">1. Pre-Entry Risk Assessment</td>
-              <td class="p-2 border">"Conduct a Job Safety Analysis (JSA) identifying all potential hazards, including geological instability and potential for collapse."</td>
-              <td class="p-2 border">This would have forced the engineering team to formally document the known geological risks of the area and verify that adequate ground support and reinforcement measures were in place.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">2. Emergency & Rescue Plan</td>
-              <td class="p-2 border">"Verify that a specific, rehearsed rescue plan for this confined space is in place, including equipment and trained personnel."</td>
-              <td class="p-2 border">A key failure point in many collapses is the lack of a pre-planned rescue strategy. This checklist item ensures that before a single worker enters, there is a clear, actionable plan on how to get them out if the worst happens. This includes having rescue equipment on standby.</td>
-            </tr>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">3. Atmospheric Monitoring</td>
-              <td class="p-2 border">"Test atmosphere for oxygen levels, flammable gases, and toxic contaminants before entry and during work."</td>
-              <td class="p-2 border">While not the cause at Silkyara, this is a primary killer in confined spaces. A checklist makes this non-negotiable, preventing workers from entering a deadly, oxygen-deficient environment.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">4. Communication Protocol</td>
-              <td class="p-2 border">"Ensure a reliable communication system is established between the workers inside, the 'hole watch' outside, and the shift supervisor."</td>
-              <td class="p-2 border">In the event of a collapse, a pre-established communication line (like a reinforced comms cable) is vital for assessing the condition of trapped workers and coordinating rescue efforts.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Don't Dig Your Own Grave</h3>
-        <p>The Silkyara tunnel rescue was a testament to human spirit, but the incident itself was a warning. Any organization that sends employees into confined spaces without a rigorously enforced Permit-to-Work system is taking an unacceptable risk with their lives.</p>
-        <p>The checklists within our <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS Pack</a> provide a ready-to-deploy system to manage these high-stakes environments. They ensure that safety isn't an afterthought, but a prerequisite for work. Before your team enters another confined space, ask yourself: is their safety depending on luck, or is it guaranteed by a process?</p>
-      `
-    },
-    {
-      slug: 'ludhiana-gas-leak-urban-industrial-safety',
-      title: "The Ludhiana Gas Leak Tragedy: A Sobering Reminder for Urban Industrial Safety Audits",
-      publishedDate: "2024-07-29",
-      author: "MoreMeets Team",
-      tags: ["EHS", "Chemical Safety", "Compliance", "Manufacturing"],
-      relatedPackId: "manufacturing_operations_ehs_pack",
-      imageUrl: "https://i.postimg.cc/FzLpZDmk/gas-leak.jpg",
-      description: "In 2023, a toxic gas leak from a sewer in Ludhiana, India, killed 11 people in a densely populated area. This tragedy underscores the critical need for even small businesses handling chemicals to implement rigorous EHS and chemical handling SOPs.",
-      content: `
-        <p>On April 30, 2023, residents of a crowded neighborhood in Ludhiana, Punjab, woke up to a nightmare. A colorless, odorless toxic gas, later identified as hydrogen sulfide from the sewer system, had silently filled their homes and businesses. Eleven people, including children, collapsed and died. The source was traced back to the improper disposal of industrial chemicals into the municipal sewer system, which reacted to create the deadly gas.</p>
-        <p>This incident is a horrifying example of how a single operational failure in an industrial setting can have devastating consequences for the surrounding community. It's a stark warning that for any business handling chemicals—no matter how small—a robust Environment, Health, and Safety (EHS) program isn't just about regulatory compliance; it's a profound social responsibility.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Ripple Effect of a Single Shortcut</h3>
-        <p>The investigation pointed to the illegal dumping of sodium sulfide, a chemical commonly used in industries like electroplating and dyeing. A business likely took a shortcut, pouring chemical waste down the drain to avoid the cost and hassle of proper disposal. This single act of negligence created a chemical reaction that produced a cloud of lethal gas.</p>
-        <p>This is where a checklist-driven EHS system, like the one found in our <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS Pack</a>, becomes indispensable. It creates a framework of accountability that makes such shortcuts impossible to hide.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">How an EHS Checklist Prevents Community Disasters</h3>
-        <p>Let's examine the specific failures in the Ludhiana case and how a formal SOP would have prevented them:</p>
-        
-        <table class="w-full text-left border-collapse my-6">
-          <thead>
-            <tr class="bg-secondary">
-              <th class="p-2 border">Failure Point</th>
-              <th class="p-2 border">Relevant MoreMeets Checklist</th>
-              <th class="p-2 border">The Preventive Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">Improper Chemical Disposal</td>
-              <td class="p-2 border">\`Chemical Handling & Storage\`</td>
-              <td class="p-2 border">This SOP mandates a logged, cradle-to-grave process for every chemical. It includes a specific procedure for waste disposal that requires contracting a certified hazardous waste vendor, creating a verifiable paper trail.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">Lack of Risk Assessment</td>
-              <td class="p-2 border">\`EHS (Environment, Health, Safety) Audit\`</td>
-              <td class="p-2 border">This checklist forces a business to identify all chemicals on-site, assess the risks associated with them (including improper disposal), and document the control measures in place. The risk of sewer dumping would have been explicitly identified and prohibited.</td>
-            </tr>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">No Employee Training</td>
-              <td class="p-2 border">\`Incident Investigation & CAPA\`</td>
-              <td class="p-2 border">Our EHS framework includes mandatory, documented training for all employees who handle chemicals. This training covers safe handling, storage, and, most importantly, the legal and life-threatening consequences of improper disposal.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Your Responsibility Extends Beyond Your Factory Gates</h3>
-        <p>The Ludhiana tragedy is a powerful lesson for every business owner and plant manager. Your operational procedures don't just affect your employees; they affect the entire community you operate in. A single lapse can have consequences that extend far beyond a regulatory fine.</p>
-        <p>Implementing a comprehensive EHS system isn't a cost center; it's a critical investment in risk management and corporate citizenship. The checklists in our <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS Pack</a> provide a turnkey solution to build this system, ensuring your operations are not only efficient but also safe and responsible. Don't wait for a tragedy to reveal a gap in your safety protocols.</p>
-      `
-    },
-    {
-        slug: 'warehouse-fires-delhi-2024',
-        title: "The Rise of Warehouse Fires (Delhi, 2024): How a Fire Safety SOP Prevents Your Inventory from Turning to Ash.",
-        publishedDate: "2024-07-29",
-        author: "MoreMeets Team",
-        tags: ["Warehouse", "Logistics", "Fire Safety", "Risk Management"],
-        relatedPackId: "logistics_warehouse_pack",
-        imageUrl: "https://i.postimg.cc/W1W2j3GW/warehouse.webp",
-        description: "In 2024, a series of devastating fires in Delhi's industrial areas wiped out crores in inventory. This analysis breaks down the common causes—faulty wiring, improper storage—and how a robust Fire Safety SOP for warehouses is the best insurance policy you can have.",
-        content: `
-            <p>Throughout 2024, the industrial areas around Delhi, from Mundka to Alipur, have been plagued by a series of massive warehouse fires. Each incident tells a familiar story: a blaze starting from a suspected short circuit, rapidly engulfing a facility packed with flammable goods, and leaving behind a trail of total financial ruin for the business owners. These are not freak accidents; they are predictable outcomes of systemic failures in basic fire safety and prevention.</p>
-            <p>For a warehouse or logistics company, inventory is cash. Watching it go up in smoke is a catastrophic failure. Investigations into these fires consistently reveal a pattern of common, preventable mistakes: overloaded electrical circuits, improper storage of flammable materials, and blocked emergency exits. A robust, checklist-driven fire safety program, like the one in our <a href="/packs/logistics_warehouse_pack" class="text-accent underline">Logistics & Warehouse Pack</a>, is designed to eliminate these exact risks.</p>
-
-            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Tinderbox: Common Warehouse Fire Hazards</h3>
-            <p>Warehouses are inherently high-risk environments. They contain a perfect storm of potential fire hazards:</p>
-            <ul class="list-disc pl-6 space-y-2 my-4">
-                <li><strong>Electrical Faults:</strong> Overloaded circuits, faulty wiring, and unattended battery charging stations are the most common ignition sources.</li>
-                <li><strong>Improper Storage:</strong> Storing flammable liquids or aerosols near ignition sources, or blocking sprinkler heads with high stacks of inventory.</li>
-                <li><strong>Poor Housekeeping:</strong> Piles of cardboard, plastic wrap, and other combustible waste create fuel for a fire to spread rapidly.</li>
-                <li><strong>Lack of Clear Exits & Access:</strong> Blocked fire exits trap employees, and cluttered aisles prevent firefighters from reaching the source of the blaze.</li>
-            </ul>
-
-            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Prevention to Response: A Checklist-Driven Fire Safety Plan</h3>
-            <p>A comprehensive fire safety SOP is not just about having fire extinguishers; it's a multi-layered system of prevention, detection, and response. Here’s how the checklists in our Logistics & Warehouse Pack create this system:</p>
-            
-            <table class="w-full text-left border-collapse my-6">
-                <thead>
-                    <tr class="bg-secondary">
-                        <th class="p-2 border">Failure Point</th>
-                        <th class="p-2 border">Relevant MoreMeets Checklist</th>
-                        <th class="p-2 border">The Preventive Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-t">
-                        <td class="p-2 border font-semibold">Electrical Faults</td>
-                        <td class="p-2 border">\`Warehouse Safety & Housekeeping\`</td>
-                        <td class="p-2 border">Mandates a weekly inspection of all electrical panels and prohibits the use of unauthorized extension cords or multi-plugs, preventing circuit overloads.</td>
-                    </tr>
-                    <tr class="border-t bg-secondary/50">
-                        <td class="p-2 border font-semibold">Improper Storage</td>
-                        <td class="p-2 border">\`Inbound & Receiving\` (and Hazmat SOPs)</td>
-                        <td class="p-2 border">Requires segregation of flammable materials into a designated, ventilated area, away from ignition sources. It also ensures stock is kept at a safe distance below sprinkler heads.</td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="p-2 border font-semibold">Poor Housekeeping</td>
-                        <td class="p-2 border">\`Warehouse Safety & Housekeeping\`</td>
-                        <td class="p-2 border">Includes a daily end-of-shift checklist item to clear all aisles of combustible waste like cardboard and plastic, reducing the fire load.</td>
-                    </tr>
-                    <tr class="border-t bg-secondary/50">
-                        <td class="p-2 border font-semibold">Blocked Exits</td>
-                        <td class="p-2 border">\`Warehouse Safety & Housekeeping\`</td>
-                        <td class="p-2 border">A daily walkthrough log to verify that all fire exits, extinguisher points, and electrical panels are unobstructed. This simple, 5-minute check is a lifesaver.</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Your Best Insurance is a Good Checklist</h3>
-            <p>Insurance can replace your inventory, but it can't replace your business's momentum, customer trust, or, most importantly, the lives of your employees. The recurring warehouse fires in Delhi are a tragic symptom of a widespread failure to prioritize basic safety procedures.</p>
-            <p>By implementing a rigorous, documented fire safety SOP, you move from a reactive position of hoping a fire doesn't happen, to a proactive one of ensuring it can't. The checklists in our <a href="/packs/logistics_warehouse_pack" class="text-accent underline">Logistics & Warehouse Pack</a> provide the expert-built framework to protect your people, your inventory, and your business from going up in flames.</p>
-        `
-    },
-    {
-      slug: 'mdh-everest-spice-ban-supplier-qc',
-      title: "The MDH & Everest Spice Ban: How a Supplier QC SOP Prevents Global Rejection",
-      publishedDate: "2024-07-29",
-      author: "MoreMeets Team",
-      tags: ["Food Safety", "Manufacturing", "Quality Control", "Export"],
-      relatedPackId: "food_manufacturing_ops",
-      imageUrl: "https://i.postimg.cc/kGhhCGDM/manufacturing.jpg",
-      description: "In 2024, iconic Indian spice brands MDH and Everest faced bans in Hong Kong and Singapore due to contamination with a carcinogenic pesticide. This crisis highlights why a rigorous, checklist-driven Raw Material & Supplier QC process is critical for any food manufacturer.",
-      content: `
-        <p>In April 2024, the Indian food industry was rocked when two of its most iconic brands, MDH and Everest, had their products banned in Hong Kong and Singapore. The reason? Regulators in those countries detected ethylene oxide, a carcinogenic pesticide, in several spice mixes. The news triggered a global wave of scrutiny, recalls, and a massive blow to consumer trust in brands that have been household names for generations.</p>
-        <p>This incident is a textbook case of a supply chain failure. The contamination didn't happen in the brands' own factories; it almost certainly occurred further up the chain, either at the farming level where the raw spices were grown or during post-harvest processing. It demonstrates a critical vulnerability for any food manufacturer: your final product is only as safe as your weakest supplier.</p>
-        
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Black Box of Your Supply Chain</h3>
-        <p>Many manufacturers operate with a "black box" approach to raw materials. They trust that their suppliers are providing safe, compliant ingredients, but they lack a systematic process to verify it. This trust-based system works—until it doesn't. When a contamination event occurs, the brand is left scrambling, unable to pinpoint the source and facing a catastrophic recall.</p>
-        <p>The only way to defend against this is to replace trust with an evidence-based system of verification. This is the purpose of the checklists in our <a href="/packs/food_manufacturing_ops" class="text-accent underline">Food Manufacturing Operations Pack</a>.</p>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">From Trust to Verification: A Checklist-Driven Defense</h3>
-        <p>Let's analyze how a robust, checklist-driven process for supplier and raw material quality control could have prevented the MDH/Everest crisis:</p>
-
-        <table class="w-full text-left border-collapse my-6">
-          <thead>
-            <tr class="bg-secondary">
-              <th class="p-2 border">Control Point</th>
-              <th class="p-2 border">Checklist from our Food Manufacturing Pack</th>
-              <th class="p-2 border">The Preventive Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">1. Supplier Onboarding</td>
-              <td class="p-2 border">\`Raw Material & Inbound QC\`</td>
-              <td class="p-2 border">The SOP mandates that no supplier is approved without a formal audit of their facilities and processes. This includes verifying their own pesticide control programs and food safety certifications (e.g., GlobalG.A.P.).</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">2. Inbound Goods Receiving</td>
-              <td class="p-2 border">\`Raw Material & Inbound QC\`</td>
-              <td class="p-2 border">The checklist requires that every single batch of raw material arriving at the factory is accompanied by a Certificate of Analysis (COA) from the supplier, explicitly stating it is free from specific contaminants like ethylene oxide. No COA, no entry.</td>
-            </tr>
-            <tr class="border-t">
-              <td class="p-2 border font-semibold">3. Independent Verification</td>
-              <td class="p-2 border">\`HACCP Plan Implementation\`</td>
-              <td class="p-2 border">A comprehensive HACCP plan includes a step for periodic, random testing of raw materials by an independent third-party lab. This "trust but verify" step would have caught the contamination long before the finished product was shipped.</td>
-            </tr>
-            <tr class="border-t bg-secondary/50">
-              <td class="p-2 border font-semibold">4. Full Traceability</td>
-              <td class="p-2 border">\`Traceability & Recall Procedure\`</td>
-              <td class="p-2 border">This SOP ensures every pack of finished spice can be traced back to the specific batch of raw material it came from. In case of a contamination event, this allows for a surgical recall of only the affected products, rather than a brand-destroying nationwide recall.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: Your Brand is on Your Supplier's Hands</h3>
-        <p>The MDH and Everest crisis is a wake-up call for the entire food industry. In a globalized market, you are no longer just responsible for your own four walls; you are responsible for your entire supply chain. Relying on your suppliers' promises is a recipe for disaster.</p>
-        <p>By implementing the auditable, verification-based checklists in our <a href="/packs/food_manufacturing_ops" class="text-accent underline">Food Manufacturing Operations Pack</a>, you build a resilient system that protects your product, your customers, and your brand from failures that happen far outside your factory gates.</p>
-      `
-    },
-    {
         slug: 'anatomy-of-a-5-star-security-failure-26-11-mumbai-attacks',
         title: "Anatomy of a 5-Star Security Failure: Lessons from the 26/11 Mumbai Terror Attacks",
         publishedDate: "2024-07-28",
@@ -843,64 +566,8 @@ export const blogPosts: BlogPost[] = [
         `
     },
     {
-        slug: 'boeing-door-plug-blowout-maintenance-qc-lessons',
-        title: "The Boeing Door Plug Blowout: An Unforgiving Lesson in Maintenance and Quality Control",
-        publishedDate: "2024-07-28",
-        author: "MoreMeets Team",
-        tags: ["Aviation", "Manufacturing", "Quality Control", "Safety"],
-        relatedPackId: "manufacturing_operations_ehs_pack",
-        imageUrl: "https://i.postimg.cc/wjf6Hv58/airline.jpg",
-        description: "In January 2024, a door plug on a brand-new Alaska Airlines Boeing 737 MAX blew out mid-air. The cause: four critical bolts were never installed. This incident is a masterclass in the catastrophic consequences of a simple quality control failure.",
-        content: `
-            <p>On January 5, 2024, passengers on Alaska Airlines Flight 1282 experienced a terrifying ordeal. Just minutes after takeoff, a large panel on the side of the brand-new Boeing 737 MAX aircraft—a "door plug" used to seal an unused emergency exit—blew out, causing explosive decompression at 16,000 feet. Miraculously, no one was seriously injured, but the incident sent shockwaves through the aviation industry and grounded hundreds of aircraft worldwide.</p>
-            <p>The initial findings from the National Transportation Safety Board (NTSB) were stunningly simple and deeply troubling: the four bolts designed to secure the door plug to the airframe were missing. They were likely never installed at the Boeing factory. This wasn't a complex design flaw or a mysterious material failure; it was a basic, catastrophic lapse in the manufacturing and quality control process.</p>
-
-            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">The Anatomy of a "Stupid" Mistake</h3>
-            <p>How can a multi-billion dollar aircraft roll off the assembly line with four critical bolts missing? The answer lies in process decay. The incident highlights several classic failure points that are universal to any manufacturing or maintenance operation:</p>
-            <ul class="list-disc pl-6 space-y-2 my-4">
-                <li><strong>Incomplete Handover:</strong> The work on the door plug was reportedly started by one team and finished by another. A clear, documented handover process was likely missing.</li>
-                <li><strong>Assumption Over Verification:</strong> The team that closed the plug may have assumed the previous team had installed the bolts. The quality inspector, in turn, may have assumed the installation team did their job correctly.</li>
-                <li><strong>Lack of a Forcing Function:</strong> There was no "forcing function"—a mandatory, non-skippable checklist item—that required a second person to independently verify that the bolts were torqued to specification before the cabin wall panel was re-installed over them.</li>
-            </ul>
-
-            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Applying Aviation Lessons to Your Factory Floor</h3>
-            <p>While your factory might not be building airplanes, the principles of preventing such failures are identical. The checklists in our <a href="/packs/manufacturing_operations_ehs_pack" class="text-accent underline">Manufacturing Operations & EHS Pack</a> are designed to instill this aviation-grade discipline into any industrial process.</p>
-
-            <table class="w-full text-left border-collapse my-6">
-                <thead>
-                    <tr class="bg-secondary">
-                        <th class="p-2 border">Boeing's Failure Point</th>
-                        <th class="p-2 border">Relevant MoreMeets SOP</th>
-                        <th class="p-2 border">How It Prevents the Error</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-t">
-                        <td class="p-2 border font-semibold">Missing Bolts</td>
-                        <td class="p-2 border">\`In-Process Quality Control (IPQC)\`</td>
-                        <td class="p-2 border">This checklist introduces a "Quality Gate" at the end of a critical assembly step. The work cannot proceed until a QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued.</td>
-                    </tr>
-                    <tr class="border-t bg-secondary/50">
-                        <td class="p-2 border font-semibold">Incomplete Handover</td>
-                        <td class="p-2 border">\`Shift Handover Protocol\`</td>
-                        <td class="p-2 border">This SOP mandates a detailed, written handover between shifts or teams. The outgoing team must explicitly state the exact status of the job, including what was and was not completed. The incoming team must sign to acknowledge they understand the status.</td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="p-2 border font-semibold">Lack of Accountability</td>
-                        <td class="p-2 border">\`Traceability & Batch Records\`</td>
-                        <td class="p-2 border">Every step of the assembly process would be tied to the employee who performed it. A completed checklist becomes a permanent record, linking the installation, the torquing, and the final QC check to specific individuals, creating accountability.</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: You Can't Afford to Assume</h3>
-            <p>The Boeing door plug incident is a powerful lesson for every operations manager. It proves that even in the most advanced manufacturing environments, the simplest steps are often the most critical. It demonstrates that verbal communication is unreliable and that assumptions are the enemy of safety and quality.</p>
-            <p>A physical checklist that must be signed at each critical stage of a process is not bureaucracy. It is the most effective tool ever invented to prevent human error. Before you sign off on your next product shipment, ask yourself: do you have a verifiable record that all the "bolts" have been installed, or are you just assuming they have?</p>
-        `
-    },
-    {
       slug: 'kota-student-crisis-hostel-mental-health-sop',
-      title: "The Kota Student Crisis: Beyond Academics, Why a Hostel Mental Health SOP is Now Essential",
+      title: "The Kota Student Crisis: Why Every Hostel Needs a Mental Health & Wellness SOP",
       publishedDate: "2024-07-28",
       author: "MoreMeets Team",
       tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health"],
@@ -963,13 +630,13 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'after-change-healthcare-attack-vendor-security-sop',
-        title: "After the Change Healthcare Attack: Why a Vendor Security Assessment is Your Best Defense",
+        title: "The Change Healthcare Hack: Why Your Vendor's Security is Now Your Biggest Risk",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Cybersecurity", "Healthcare", "Vendor Management", "Risk"],
         relatedPackId: "enterprise_risk_cybersecurity_pack",
         imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
-        description: "The 2024 ransomware attack on Change Healthcare, a subsidiary of UnitedHealth, was one of the most disruptive in history. It originated from a single compromised vendor portal without MFA. This is a masterclass in why a rigorous Vendor Security Assessment SOP is no longer optional.",
+        description: "The 2024 ransomware attack on Change Healthcare, which crippled the US healthcare system, originated from a single compromised vendor portal without MFA. This is a masterclass in why a rigorous Vendor Security Assessment SOP is no longer optional.",
         content: `
             <p>In February 2024, the American healthcare system was brought to its knees. A ransomware attack on Change Healthcare, a company that processes over 15 billion healthcare transactions a year, caused a catastrophic outage. Doctors couldn't verify insurance, pharmacies couldn't process prescriptions, and payments to providers ground to a halt. The CEO of UnitedHealth Group later testified before Congress that the initial point of entry for the hackers was a single, stolen credential for a remote access portal that lacked Multi-Factor Authentication (MFA).</p>
             <p>Let that sink in. One of the most significant cyberattacks in recent history, costing billions of dollars and jeopardizing patient care nationwide, was not the result of a sophisticated zero-day exploit. It was the result of a basic, inexcusable security lapse on a third-party system.</p>
@@ -1016,7 +683,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'hillsborough-disaster-crowd-management-lessons',
-        title: "The Hillsborough Disaster: A Lesson in Crowd Management That Every Stadium Manager Must Know",
+        title: "The Hillsborough Disaster: A Haunting Lesson in Crowd Management SOPs",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
@@ -1130,7 +797,7 @@ export const blogPosts: BlogPost[] = [
     },
      {
       slug: 'red-sea-shipping-crisis-supply-chain-sop',
-      title: "The Red Sea Shipping Crisis: Why a Supply Chain Risk SOP is Now Mandatory",
+      title: "The Red Sea Shipping Crisis: Why a 'Just-in-Time' Supply Chain Needs a 'Just-in-Case' SOP",
       publishedDate: "2024-07-28",
       author: "MoreMeets Team",
       tags: ["Logistics", "Supply Chain", "Risk Management", "Geopolitics"],
