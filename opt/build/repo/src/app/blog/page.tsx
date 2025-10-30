@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogListPage() {
+  const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
