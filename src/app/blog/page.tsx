@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -9,7 +8,6 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Loader2, CheckCircle } from 'lucide-react';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import { subscribeToBlog } from './actions';
@@ -86,7 +84,7 @@ export default function BlogListPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
             <div className="container px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
