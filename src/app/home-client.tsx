@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -16,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
 import { individualChecklists } from "@/lib/individual-checklists";
+import { blogPosts } from "@/lib/blog-posts";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 import { RotatingText } from "@/components/ui/rotating-text";
@@ -351,7 +351,7 @@ function PackList({ packs, title, description }: { packs: PremiumPack[], title: 
 
 const IndividualChecklistsSection = () => {
     const isMobile = useIsMobile();
-    const bestsellers = individualChecklists.slice(0, 5);
+    const bestsellers = individualChecklists.slice(0, 3);
 
     const ChecklistCard = ({ checklist }: { checklist: (typeof bestsellers)[0] }) => (
          <Card className="flex flex-col text-center rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border h-full">
@@ -594,6 +594,72 @@ const ValuePropositionSection = () => {
     );
 };
 
+const FeaturedBlogPostsSection = () => {
+  const latestPosts = [...blogPosts]
+    .sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime())
+    .slice(0, 3);
+
+  return (
+    <section id="blog" className="w-full py-12 md:py-24 lg:py-32">
+      <div className="container px-2 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
+            From the Debrief
+          </h2>
+          <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+            Insights from real-world operational failures and how to prevent them.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {latestPosts.map(post => (
+            <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                    {post.imageUrl && (
+                        <Image
+                            src={post.imageUrl}
+                            alt={post.title}
+                            width={600}
+                            height={340}
+                            className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                    )}
+                </Link>
+                <CardHeader>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                        {post.tags.slice(0,2).map(tag => (
+                            <Badge key={tag} variant="secondary">{tag}</Badge>
+                        ))}
+                    </div>
+                    <CardTitle className="text-xl font-headline">
+                      <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                        {post.title}
+                      </Link>
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1">
+                    <CardDescription>{post.description}</CardDescription>
+                </CardContent>
+                <CardFooter>
+                    <Button asChild variant="secondary" size="sm">
+                      <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                    </Button>
+                </CardFooter>
+            </Card>
+          ))}
+        </div>
+         <div className="text-center mt-16">
+            <Button asChild size="lg" variant="outline" className="group">
+                <Link href="/blog">
+                    Read All Articles
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+            </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
 export default function HomeClientPage() {
   const featuredPacks = premiumPacks.filter(p => p.bestseller);
@@ -686,6 +752,8 @@ export default function HomeClientPage() {
         </React.Suspense>
         
         <IndividualChecklistsSection />
+        
+        <FeaturedBlogPostsSection />
 
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
             <div className="container px-2 md:px-6">

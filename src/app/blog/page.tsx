@@ -191,7 +191,6 @@ export default function BlogListPage() {
                     </p>
                 </div>
 
-
                 {/* Featured Post */}
                 {featuredPost && (
                     <div className="mb-16">
@@ -271,8 +270,8 @@ export default function BlogListPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {filteredPosts.map((post) => (
                         <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-                            {post.imageUrl ? (
-                                <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                                {post.imageUrl ? (
                                     <Image
                                         src={post.imageUrl}
                                         alt={post.title}
@@ -280,12 +279,12 @@ export default function BlogListPage() {
                                         height={340}
                                         className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                                     />
-                                </Link>
-                            ): (
-                               <div className="w-full h-48 bg-secondary flex items-center justify-center">
-                                 <p className="text-muted-foreground text-sm">No Image</p>
-                               </div>
-                            )}
+                                ): (
+                                <div className="w-full h-48 bg-secondary flex items-center justify-center">
+                                    <p className="text-muted-foreground text-sm">No Image</p>
+                                </div>
+                                )}
+                            </Link>
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                     {post.tags.map(tag => (
@@ -300,6 +299,9 @@ export default function BlogListPage() {
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <CardDescription>{post.description}</CardDescription>
+                                <Button asChild variant="secondary" size="sm" className="mt-4">
+                                  <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                </Button>
                             </CardContent>
                             <CardFooter className="flex justify-between items-center mt-auto">
                                 <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
