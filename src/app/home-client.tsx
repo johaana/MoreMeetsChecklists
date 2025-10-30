@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -19,8 +19,71 @@ import { individualChecklists } from "@/lib/individual-checklists";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 import { RotatingText } from "@/components/ui/rotating-text";
+import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { subscribeToBlog } from "@/app/blog/actions";
 
 const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+
+function SubscriptionForm() {
+  const [email, setEmail] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    const result = await subscribeToBlog({ email });
+
+    if (result.success) {
+      setSubmitted(true);
+       toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to the debrief.",
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Subscription Failed",
+        description: result.message,
+      });
+    }
+    setLoading(false);
+  };
+
+  if (submitted) {
+    return (
+        <div className="flex items-center justify-center p-4 rounded-lg bg-green-100 border border-green-200 text-green-800 dark:bg-green-900/50 dark:text-green-200 dark:border-green-800">
+            <CheckCircle className="w-5 h-5 mr-3" />
+            <p className="font-semibold">Thank you for subscribing!</p>
+        </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full max-w-md">
+      <Input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="flex-1"
+      />
+      <Button type="submit" disabled={loading} className="w-full sm:w-auto">
+        {loading ? (
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Mail className="mr-2 h-4 w-4" />
+        )}
+        Subscribe
+      </Button>
+    </form>
+  );
+}
+
 
 const HowWeAreDifferentSection = () => (
     <section id="how-we-are-different" className="w-full py-12 md:py-24 lg:py-32">
@@ -664,6 +727,16 @@ export default function HomeClientPage() {
             </div>
         </section>
         
+         <section className="w-full py-12 md:py-24">
+            <div className="container px-2 md:px-6">
+                 <div className="max-w-2xl mx-auto flex flex-col items-center gap-6 p-8 border rounded-2xl bg-secondary/50">
+                    <h3 className="font-bold text-center text-2xl font-headline text-primary">Get the Debrief.</h3>
+                    <p className="text-center text-muted-foreground">Subscribe to our newsletter for deep dives into operational disasters and the systems that prevent them.</p>
+                    <SubscriptionForm />
+                </div>
+            </div>
+        </section>
+
         <FaqSection />
 
       </main>
