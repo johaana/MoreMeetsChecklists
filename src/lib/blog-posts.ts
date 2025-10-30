@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
-      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
+      imageUrl: "https://i.postimg.cc/90DLgJK4/deepfake-web.webp",
       description: "In early 2024, a finance worker at multinational firm Arup was tricked into sending $25.6 million by a sophisticated deepfake video call of his CFO. This new-age fraud bypasses traditional security, and only robust, human-centric financial SOPs can stop it.",
       content: `
         <p>In February 2024, the business world was shaken by a story that seemed straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling $25.6 million. He complied. The only problem? The people on the call were not his colleagues. They were AI-generated deepfakes.</p>
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
       relatedPackId: "jewelry_and_luxury_retail",
-      imageUrl: "https://i.postimg.cc/JnbXpSjM/luxury-retail-2.jpg",
+      imageUrl: "https://i.postimg.cc/Hnr6vBRV/pink-panther1.avif",
       description: "The legendary Pink Panther gang doesn't use brute force; they use intelligence to exploit human behavior and procedural loopholes in luxury stores. This analysis reveals how their methods work and why simple, rigid checklists are their kryptonite.",
       content: `
         <p>They are the stuff of legend: the Pink Panthers, a network of audacious jewel thieves responsible for over a billion dollars in heists from Dubai to Tokyo. Their methods are cinematic, intelligent, and famously non-violent. They don't blow up vaults; they exploit the single greatest vulnerability in any luxury retail store: human process.</p>
@@ -86,7 +86,7 @@ export const blogPosts: BlogPost[] = [
         <p>The Pink Panthers' strategy is built on predictable human behavior in a retail environment:</p>
         <ul class="list-disc pl-6 space-y-2 my-4">
             <li><strong>The Pressure to Sell:</strong> An employee eager to make a large commission may be tempted to show multiple high-value items at once, creating the perfect opportunity for a swap.</li>
-            <li><strong>Distraction:</strong> One member of the gang creates a scene or asks complex questions, pulling staff attention away while another performs the theft.</li>
+            <li><strong>The Distraction:</strong> One member of the gang creates a scene or asks complex questions, pulling staff attention away while another performs the theft.</li>
             <li><strong>Lack of Verification:</strong> They rely on employees not following the tedious process of verifying serial numbers before and after every single viewing.</li>
         </ul>
         <p>High-tech cameras and alarms are useless if the thief never has to break a rule. The Panthers win by making the employee break the rule for them.</p>
@@ -133,7 +133,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Supply Chain", "Logistics", "Risk Management", "QSR"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/W1W2j3GW/warehouse.webp",
+      imageUrl: "https://i.postimg.cc/h41b8FYn/warehouse.webp",
       description: "In 2018, KFC UK had to close hundreds of stores because they ran out of chicken. This colossal failure wasn't a supply issue; it was a logistics breakdown. This is a perfect lesson in why a robust Supply Chain Risk Management SOP is essential.",
       content: `
         <p>In February 2018, Kentucky Fried Chicken, a brand synonymous with chicken, committed the ultimate sin: it ran out of chicken. Hundreds of its 900 outlets across the UK were forced to close, signs on the doors wryly apologizing for the fowl-up. The financial cost was enormous, but the reputational damage was even worse. The culprit wasn't a chicken shortage; it was a self-inflicted logistics catastrophe.</p>
@@ -185,7 +185,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Data Privacy", "Brand Reputation"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
-      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
+      imageUrl: "https://i.postimg.cc/1X8v7J2s/dominoz.jpg",
       description: "In 2021, the personal data of 18 crore Domino's Pizza India users was leaked on the dark web. The breach wasn't just an IT issue; it was a catastrophic failure of basic cybersecurity hygiene that eroded customer trust.",
       content: `
         <p>In May 2021, a hacker put the personal data of 18 crore Domino's India users up for sale on the dark web. The treasure trove included names, phone numbers, email addresses, and delivery locations. It was a privacy nightmare and a stark reminder that in the digital age, a company's responsibility extends far beyond the product it sells. For a brand like Domino's, which thrives on direct-to-customer relationships, this was a fundamental breach of trust.</p>
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Event Safety", "Security", "Risk Management"],
       relatedPackId: "sports_clubs_stadium_operations_pack",
-      imageUrl: "https://i.postimg.cc/0j9gbt7Q/sports-stadium.webp",
+      imageUrl: "https://i.postimg.cc/J0spYPv8/kerala-convention-centre-blast.avif",
       description: "In October 2023, a series of explosions at a crowded convention centre in Kalamassery, Kerala, left several dead and dozens injured. This tragedy is a stark reminder that even for private events, robust security screening and emergency response are non-negotiable.",
       content: `
         <p>On a Sunday morning in October 2023, a prayer meeting at a convention centre in Kerala turned into a scene of terror. Multiple IEDs detonated, killing three people and injuring over 50. The attack, carried out by a single individual, exposed a critical vulnerability in many event venues: a lack of rigorous entry screening for private or religious gatherings.</p>
@@ -296,7 +296,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Manufacturing", "Aviation", "Quality Control", "Safety"],
       relatedPackId: "manufacturing_operations_ehs_pack",
-      imageUrl: "https://i.postimg.cc/wjf6Hv58/airline.jpg",
+      imageUrl: "https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif",
       description: "In January 2024, a door plug on a Boeing 737 MAX blew out mid-air because four critical bolts were never installed. This incident is a powerful lesson in how simple, verifiable checklists are essential for preventing catastrophic quality control failures.",
       content: `
         <p>On January 5, 2024, passengers on Alaska Airlines Flight 1282 experienced a terrifying ordeal. Just minutes after takeoff, a large panel on the side of the brand-new Boeing 737 MAX aircraft—a "door plug" used to seal an unused emergency exit—blew out, causing explosive decompression at 16,000 feet. Miraculously, no one was seriously injured, but the incident sent shockwaves through the aviation industry and grounded hundreds of aircraft worldwide.</p>
@@ -352,7 +352,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Healthcare", "Facility Management", "Safety", "Risk Management"],
       relatedPackId: "healthcare_and_hospital_operations",
-      imageUrl: "https://i.postimg.cc/Gtb0HMvR/hospital1.webp",
+      imageUrl: "https://i.postimg.cc/k41jyk19/Challenges-To-Healthcare-challenges.jpg",
       description: "Recurring tragedies of patient deaths in Indian hospitals during power outages highlight a deadly operational failure: untested backup generators. This post explains why a simple, weekly generator test checklist is a life-saving, non-negotiable procedure.",
       content: `
         <p>In October 2023, a government hospital in Nanded, Maharashtra, reported the deaths of 31 patients, including 16 infants, in just 48 hours. While the hospital cited staff shortages, another horrifying factor emerged in similar incidents across the country: power failures compounded by non-functional backup generators. In a modern hospital, where ventilators, incubators, and vital sign monitors depend on a constant stream of electricity, a power cut is not an inconvenience—it's a mass casualty event waiting to happen.</p>
@@ -402,7 +402,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Logistics", "Safety", "Fleet Management"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/6qQ1FnWm/logistics.webp",
+      imageUrl: "https://i.postimg.cc/FFVgbt6K/sop1.jpg",
       description: "We've all seen the horrifying videos: a log or other unsecured load falls from a truck on the highway, causing a catastrophic accident. This isn't just a random tragedy; it's a direct failure of a pre-departure safety checklist.",
       content: `
         <p>It's a primal fear for any highway driver, made famous by horror movies but tragically common in real life: a truck ahead sheds its load, sending logs, pipes, or other heavy materials tumbling into traffic. These incidents are not "freak accidents." They are almost always the result of a failure to follow basic, fundamental safety procedures before a vehicle ever leaves the yard.</p>
@@ -453,13 +453,13 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'air-canada-chatbot-fiasco-ai-governance',
-      title: "The Air Canada Chatbot Fiasco: How an AI Governance SOP Prevents Your Bot from Lying to Customers",
+      title: "Why Air Canada Was Forced to Honor Its Chatbot's Lie: A Lesson in AI Governance",
       publishedDate: "2024-07-29",
       author: "MoreMeets Team",
       tags: ["AI", "Corporate Governance", "Customer Service", "Risk Management"],
       relatedPackId: "corporate_legal_compliance_starter_kit",
-      imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
-      description: "In 2024, Air Canada was legally forced to honor a refund policy invented by its own chatbot. This case study breaks down why AI governance is no longer optional and how a simple checklist can prevent your technology from creating costly liabilities.",
+      imageUrl: "https://i.postimg.cc/85KybqKp/air-canada-loses-court-case-after-its-chatbot-hallucinated.webp",
+      description: "In a landmark 2024 ruling, Air Canada was held legally responsible for a refund policy invented by its own chatbot. This case study breaks down why AI governance is no longer optional and how a simple checklist can prevent your technology from creating costly liabilities.",
       content: `
       <p>In early 2024, a seemingly minor customer service interaction escalated into a landmark legal case for Air Canada. A customer, interacting with the airline's website chatbot to ask about bereavement fares, was given incorrect information. The chatbot confidently promised a retroactive discount, a policy that did not exist. When the airline refused to honor the bot's promise, the customer took them to court. The result? The tribunal ruled against Air Canada, forcing them to pay the refund and setting a stunning precedent: a company is responsible for the information provided by its AI, even when it's wrong.</p>
       <p>This incident is a watershed moment for every business deploying AI, from simple chatbots to complex recommendation engines. It reveals a massive new category of operational and legal risk that most companies are unprepared for. The core failure wasn't technical; it was a catastrophic failure of governance.</p>
@@ -688,7 +688,7 @@ export const blogPosts: BlogPost[] = [
         author: "MoreMeets Team",
         tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
         relatedPackId: "sports_clubs_stadium_operations_pack",
-        imageUrl: "https://i.postimg.cc/Jz61mnNF/Stadium-and-Arena.webp",
+        imageUrl: "https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp",
         description: "The 1989 Hillsborough disaster, where 97 Liverpool fans were killed in a human crush, remains one of the darkest days in sports history. This analysis explores the catastrophic failures in crowd management and how modern, checklist-driven SOPs are designed to prevent such a tragedy.",
         content: `
             <p>On April 15, 1989, at the Hillsborough Stadium in Sheffield, England, a football match turned into a scene of unimaginable horror. A massive crush of spectators in the stadium's central pens led to the deaths of 97 Liverpool supporters. For decades, the narrative was wrongly focused on fan behavior. But years of inquiries have since made it clear: the disaster was caused by a catastrophic failure of police and stadium management.</p>
@@ -802,7 +802,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Logistics", "Supply Chain", "Risk Management", "Geopolitics"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/9Q8WVMdS/ocean-freight-shipping.png",
+      imageUrl: "https://i.postimg.cc/G3xJP0ft/ocean-freight-shipping.png",
       description: "Starting in late 2023, attacks on commercial shipping in the Red Sea have thrown global supply chains into chaos, causing massive delays and cost overruns. This ongoing crisis is a powerful lesson in why businesses need a proactive Supply Chain Risk Management SOP.",
       content: `
         <p>For decades, the Red Sea, leading to the Suez Canal, has been a superhighway for global trade, carrying over 12% of the world's commerce. But starting in late 2023, this critical artery was effectively severed. A series of drone and missile attacks by Houthi militants forced major shipping lines like Maersk, MSC, and Hapag-Lloyd to reroute their entire fleets around the southern tip of Africa, adding weeks to transit times and millions of dollars in fuel costs.</p>
@@ -859,7 +859,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["ESG", "Compliance", "Corporate Governance", "Marketing"],
       relatedChecklistId: "esg-sustainability-audit",
-      imageUrl: "https://i.postimg.cc/RFbfH4zv/sustainability1.webp",
+      imageUrl: "https://i.postimg.cc/T10VTmb7/sustainability1.webp",
       description: "From Volkswagen's 'Dieselgate' to H&M's misleading environmental scorecards, 'greenwashing' has become a massive legal and reputational risk. This post explores why making unsubstantiated sustainability claims is so dangerous and how a rigorous internal ESG audit checklist can protect your brand.",
       content: `
         <p>In today's market, sustainability sells. Consumers and investors alike are increasingly drawn to brands that demonstrate a genuine commitment to environmental, social, and governance (ESG) principles. The temptation for companies to market themselves as "eco-friendly," "green," or "sustainable" is immense. But making these claims without the data to back them up is a high-stakes gamble known as "greenwashing," and it's a game that is blowing up in the faces of some of the world's biggest brands.</p>
@@ -911,12 +911,12 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'popeyes-girl-dinner-local-marketing-compliance',
-        title: "Why did Popeyes' 'Girl Dinner' Menu Fail? A Lesson in Local Store Marketing Compliance.",
+        title: "Why Popeyes' 'Girl Dinner' Menu Failed: A Lesson in Local Store Marketing Compliance",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Franchise", "Marketing", "Brand Management"],
         relatedPackId: "franchise_operations_pack",
-        imageUrl: "https://i.postimg.cc/527x105j/franchisee.jpg",
+        imageUrl: "https://i.postimg.cc/26cHxPcY/popeyes-menu-fail.webp",
         description: "In 2023, a single Popeyes franchisee's 'girl dinner' menu went viral for all the wrong reasons, creating a brand compliance headache. This incident is a perfect case study in why franchisors need a robust Local Store Marketing (LSM) compliance SOP.",
         content: `
             <p>In the summer of 2023, the "girl dinner" trend took over social media—a playful celebration of assembling a meal from various snacks. One enterprising Popeyes franchisee in New York decided to capitalize on the trend, creating their own unauthorized "girl dinner" menu featuring a mix of side dishes. The menu went viral, but not in the way the franchisee hoped. It sparked a debate online about brand consistency, pricing, and franchisee autonomy, forcing the corporate office to step in and shut it down.</p>
@@ -972,7 +972,7 @@ export const blogPosts: BlogPost[] = [
         author: "MoreMeets Team",
         tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study"],
         relatedPackId: "cinema_operations_pack",
-        imageUrl: "https://i.postimg.cc/rwF8vWrG/Uphaar-Cinema-Hall.avif",
+        imageUrl: "https://i.postimg.cc/brgxqbnV/Uphaar-Cinema-Hall.avif",
         description: "In 1997, 59 people died in a fire at Uphaar Cinema in Delhi, not from the flames, but from suffocation after finding the emergency exits blocked. This tragedy is a powerful case study in why a rigorous, daily fire safety checklist is a non-negotiable for any public venue.",
         content: `
             <p>On June 13, 1997, during a screening of the movie "Border," a fire broke out at Uphaar Cinema in Delhi. While the initial fire was contained, the smoke was deadly. Patrons scrambling to escape in the dark found a horrifying reality: the emergency exits were either locked, blocked by illegally added seats, or otherwise inaccessible. Fifty-nine people died, trapped inside the auditorium. It remains one of India's deadliest fire tragedies.</p>
@@ -1028,3 +1028,5 @@ export const blogPosts: BlogPost[] = [
         `
     }
 ];
+
+    
