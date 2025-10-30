@@ -6,105 +6,14 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, FileText } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
-import React from 'react';
-import { premiumPacks } from '@/lib/premium-packs';
-import { individualChecklists } from '@/lib/individual-checklists';
-import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
     title: 'Blog | MoreMeets',
     description: 'Insights and expert analysis on operational excellence, compliance, and risk management for modern businesses.',
 };
-
-type BlogPost = (typeof blogPosts)[0];
-
-function getPostIcon(post: BlogPost): React.ReactElement {
-    let item: any = null;
-
-    if (post.relatedPackId) {
-        item = premiumPacks.find(p => p.id === post.relatedPackId);
-    } else if (post.relatedChecklistId) {
-        item = individualChecklists.find(c => c.id === post.relatedChecklistId);
-    }
-
-    if (item && item.icon) {
-        return React.cloneElement(item.icon, { className: "w-8 h-8 text-primary" });
-    }
-
-    return <FileText className="w-8 h-8 text-primary" />;
-}
-
-function calculateReadingTime(content: string): string {
-    const wordsPerMinute = 200;
-    const text = content.replace(/<[^>]*>/g, ''); // Strip HTML tags
-    const wordCount = text.split(/\s+/).length;
-    const readingTime = Math.ceil(wordCount / wordsPerMinute);
-    return `${readingTime} min read`;
-}
-
-const BlogCard = ({ post, className }: { post: BlogPost, className?: string }) => (
-    <Link href={`/blog/${post.slug}`} className="group block h-full">
-        <Card className={cn("flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 group-hover:scale-[1.02]", className)}>
-            <CardHeader>
-                <div className="flex items-start gap-4">
-                     <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                       {getPostIcon(post)}
-                     </div>
-                    <div className="flex-1">
-                        <div className="flex flex-wrap gap-2 mb-2">
-                            {post.tags.map(tag => (
-                                <Badge key={tag} variant="secondary">{tag}</Badge>
-                            ))}
-                        </div>
-                        <CardTitle className="text-xl font-headline group-hover:text-primary transition-colors">
-                           {post.title}
-                        </CardTitle>
-                    </div>
-                </div>
-            </CardHeader>
-            <CardContent className="flex-1">
-                <CardDescription className="text-sm md:text-base">{post.description}</CardDescription>
-            </CardContent>
-            <CardFooter className="flex justify-between items-center mt-auto">
-                <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                <p className="text-xs font-semibold text-primary">{calculateReadingTime(post.content)}</p>
-            </CardFooter>
-        </Card>
-    </Link>
-);
-
-const FeaturedBlogCard = ({ post }: { post: BlogPost }) => (
-    <Link href={`/blog/${post.slug}`} className="group block">
-        <Card className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 group-hover:scale-[1.01] md:grid md:grid-cols-2 md:items-center">
-            <CardHeader className="p-6 md:p-8">
-                 <div className="p-4 bg-secondary rounded-full border border-primary/10 shrink-0 w-fit mb-4">
-                   {getPostIcon(post)}
-                 </div>
-                <div className="flex flex-wrap gap-2 mb-2">
-                    {post.tags.map(tag => (
-                        <Badge key={tag} variant="secondary">{tag}</Badge>
-                    ))}
-                </div>
-                <CardTitle className="text-2xl md:text-3xl font-headline group-hover:text-primary transition-colors">
-                    {post.title}
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 md:p-8 pt-0 md:pt-6">
-                <CardDescription className="text-base md:text-lg mb-6">{post.description}</CardDescription>
-                 <div className="flex justify-between items-center mt-auto">
-                    <p className="text-sm text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                    <p className="text-sm font-semibold text-primary">{calculateReadingTime(post.content)}</p>
-                </div>
-                <Button variant="link" className="p-0 h-auto mt-4 text-base group-hover:text-primary font-bold">
-                    Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-            </CardContent>
-        </Card>
-    </Link>
-);
-
 
 export default function BlogListPage() {
   const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
@@ -120,20 +29,96 @@ export default function BlogListPage() {
                         MoreMeets Blog
                     </h1>
                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        Insights and expert analysis on operational excellence, compliance, and risk management for modern businesses.
+                        Insights on operational excellence, compliance, and risk management.
                     </p>
                 </div>
 
+                {/* Featured Post */}
                 {featuredPost && (
-                    <div className="mb-12 md:mb-16 max-w-5xl mx-auto">
-                         <h2 className="text-2xl font-bold font-headline mb-4 ml-2">Latest Article</h2>
-                        <FeaturedBlogCard post={featuredPost} />
+                    <div className="mb-16">
+                        <Link href={`/blog/${featuredPost.slug}`} className="block group">
+                            <Card className="relative grid md:grid-cols-2 overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 min-h-[300px] md:min-h-[400px] items-center">
+                                {featuredPost.imageUrl ? (
+                                    <div className="absolute inset-0 z-0">
+                                        <Image
+                                            src={featuredPost.imageUrl}
+                                            alt={featuredPost.title}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
+                                    </div>
+                                ) : (
+                                    <div className="absolute inset-0 bg-primary z-0" />
+                                )}
+
+                                <div className="relative z-10 p-6 md:p-10 space-y-4 text-white">
+                                    <div className="flex flex-wrap gap-2">
+                                        {featuredPost.tags.map(tag => (
+                                            <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>
+                                        ))}
+                                    </div>
+                                    <CardTitle className="text-2xl md:text-4xl font-headline text-white drop-shadow-lg">
+                                        {featuredPost.title}
+                                    </CardTitle>
+                                    <CardDescription className="text-base md:text-lg text-white/90 hidden sm:block">
+                                        {featuredPost.description}
+                                    </CardDescription>
+                                    <div className="flex justify-between items-center text-xs text-white/80">
+                                        <span>{new Date(featuredPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                        <span className="font-semibold">{Math.ceil(featuredPost.content.split(' ').length / 200)} min read</span>
+                                    </div>
+                                    <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
+                                        Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                                <div className="hidden md:block">
+                                    {/* This div is a placeholder for the grid layout */}
+                                </div>
+                            </Card>
+                        </Link>
                     </div>
                 )}
-                
+
+                {/* Other Posts */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {otherPosts.map((post) => (
-                       <BlogCard key={post.slug} post={post} />
+                        <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                            {post.imageUrl && (
+                                <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                                    <Image
+                                        src={post.imageUrl}
+                                        alt={post.title}
+                                        width={600}
+                                        height={340}
+                                        className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                                    />
+                                </Link>
+                            )}
+                            <CardHeader>
+                                <div className="flex flex-wrap gap-2 mb-2">
+                                    {post.tags.map(tag => (
+                                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                                    ))}
+                                </div>
+                                <CardTitle className="text-xl font-headline">
+                                    <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                                        {post.title}
+                                    </Link>
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <CardDescription className="text-sm md:text-base">{post.description}</CardDescription>
+                            </CardContent>
+                            <CardFooter className="flex justify-between items-center mt-auto">
+                                <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                <Button asChild variant="ghost" size="sm">
+                                    <Link href={`/blog/${post.slug}`}>
+                                        Read More <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
                     ))}
                 </div>
             </div>
