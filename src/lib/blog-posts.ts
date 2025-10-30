@@ -133,7 +133,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Supply Chain", "Logistics", "Risk Management", "QSR"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/h41b8FYn/warehouse.webp",
+      imageUrl: "https://i.postimg.cc/6q8MbYgW/kfc.jpg",
       description: "In 2018, KFC UK had to close hundreds of stores because they ran out of chicken. This colossal failure wasn't a supply issue; it was a logistics breakdown. This is a perfect lesson in why a robust Supply Chain Risk Management SOP is essential.",
       content: `
         <p>In February 2018, Kentucky Fried Chicken, a brand synonymous with chicken, committed the ultimate sin: it ran out of chicken. Hundreds of its 900 outlets across the UK were forced to close, signs on the doors wryly apologizing for the fowl-up. The financial cost was enormous, but the reputational damage was even worse. The culprit wasn't a chicken shortage; it was a self-inflicted logistics catastrophe.</p>
@@ -458,7 +458,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["AI", "Corporate Governance", "Customer Service", "Risk Management"],
       relatedPackId: "corporate_legal_compliance_starter_kit",
-      imageUrl: "https://i.postimg.cc/85KybqKp/air-canada-loses-court-case-after-its-chatbot-hallucinated.webp",
+      imageUrl: "https://i.postimg.cc/xCxsPWxT/air-canada.jpg",
       description: "In a landmark 2024 ruling, Air Canada was held legally responsible for a refund policy invented by its own chatbot. This case study breaks down why AI governance is no longer optional and how a simple checklist can prevent your technology from creating costly liabilities.",
       content: `
       <p>In early 2024, a seemingly minor customer service interaction escalated into a landmark legal case for Air Canada. A customer, interacting with the airline's website chatbot to ask about bereavement fares, was given incorrect information. The chatbot confidently promised a retroactive discount, a policy that did not exist. When the airline refused to honor the bot's promise, the customer took them to court. The result? The tribunal ruled against Air Canada, forcing them to pay the refund and setting a stunning precedent: a company is responsible for the information provided by its AI, even when it's wrong.</p>
