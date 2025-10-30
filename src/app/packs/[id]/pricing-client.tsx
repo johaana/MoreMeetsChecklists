@@ -18,6 +18,8 @@ import { useToast } from '@/hooks/use-toast';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { addContact } from '../actions';
+import { Input } from '@/components/ui/input';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -418,6 +420,63 @@ const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string,
 };
 
 
+function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
+    const { toast } = useToast();
+    const [email, setEmail] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const result = await addContact({ email, packId: pack.id });
+
+        if (result.success) {
+            handleDownload(pack);
+            setSubmitted(true);
+            toast({
+                title: "Download Started!",
+                description: "Your checklist pack is being downloaded.",
+            });
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Something went wrong",
+                description: result.message || "Could not process your request.",
+            });
+        }
+
+        setLoading(false);
+    };
+
+    if (submitted) {
+        return (
+            <div className="text-center p-4 bg-green-100 text-green-800 rounded-md">
+                <p className="font-semibold">Thank you! Your download has started.</p>
+                <p className="text-sm">Please check your browser's download folder.</p>
+            </div>
+        )
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+             <Input
+                type="email"
+                placeholder="Enter your email to download"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full"
+            />
+            <Button size="lg" type="submit" className="w-full" disabled={loading}>
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
+                Download Now
+            </Button>
+        </form>
+    )
+}
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const globalCompliancePack = {
@@ -450,14 +509,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <ul className="space-y-3 text-muted-foreground text-sm">
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>No payment or email required.</span></li>
                                 </ul>
                             </CardContent>
-                            <CardFooter className="mt-auto flex justify-center">
-                                <Button size="lg" onClick={() => handleDownload(pack)} className="w-full">
-                                    <Download className="mr-2 h-4 w-4" />
-                                    Download Now
-                                </Button>
+                            <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2">
+                                <FreeDownloadForm pack={pack} />
+                                <p className="text-xs text-muted-foreground">By downloading, you agree to receive occasional updates from MoreMeets.</p>
                             </CardFooter>
                         </Card>
                     </div>
@@ -641,11 +697,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
-
-    
-
-    
 
     
