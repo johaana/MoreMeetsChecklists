@@ -17,7 +17,7 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
     {
       slug: 'deepfake-cfo-scam-arup',
-      title: "The $25 Million Deepfake: How a Video Call Scam Fooled a CFO and Why Your Only Defense is a Financial SOP",
+      title: "The $25 Million Deepfake: A Video Call Scam Fooled a CFO. Here's How an SOP Could Have Stopped It.",
       publishedDate: "2024-07-31",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
@@ -71,7 +71,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'pink-panther-gang-luxury-heist',
-      title: "The Pink Panther Heist: How the World's Most Famous Jewel Thieves Exploit Procedural Flaws",
+      title: "Anatomy of a Heist: How the Pink Panther Gang Exploits Procedural Flaws in Luxury Retail.",
       publishedDate: "2024-07-31",
       author: "MoreMeets Team",
       tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
@@ -128,7 +128,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'kfc-chicken-shortage-supply-chain-risk',
-      title: "The Day KFC Ran Out of Chicken: A Masterclass in Supply Chain Risk Management",
+      title: "FCK: The Day KFC Ran Out of Chicken. A Masterclass in Supply Chain Risk.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Supply Chain", "Logistics", "Risk Management", "QSR"],
@@ -180,7 +180,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'dominos-india-data-breach',
-      title: "Anatomy of a Data Breach: The Domino's India Leak and Why Customer Data is Your Biggest Liability",
+      title: "Anatomy of a Data Breach: How 18 Crore Domino's India Users Were Exposed.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Data Privacy", "Brand Reputation"],
@@ -236,7 +236,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'kerala-blasts-event-security',
-      title: "The Kerala Convention Centre Blasts: A Wake-Up Call for Event Security SOPs",
+      title: "Terror at a Prayer Meet: The Kerala Blasts and the Case for Event Security SOPs.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Event Safety", "Security", "Risk Management"],
@@ -291,7 +291,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'boeing-door-plug-blowout-qc-lessons',
-      title: "The Boeing Door Plug Blowout: A Masterclass in Quality Control Checklists",
+      title: "Mid-Air Blowout: How a Missing Bolt on a Boeing 737 Became a Masterclass in Quality Control.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Manufacturing", "Aviation", "Quality Control", "Safety"],
@@ -347,7 +347,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'hospital-power-cut-tragedy',
-      title: "The Hospital Power Cut Tragedy: Why Your Backup Generator is Useless Without a Weekly Test SOP",
+      title: "Blackout: The Hospital Power Cut Tragedies and the Life-Saving Importance of a Generator Test SOP.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Healthcare", "Facility Management", "Safety", "Risk Management"],
@@ -397,12 +397,12 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'log-truck-accident-fleet-safety',
-      title: "The 'Final Destination' Scenario: A Tragic Log Truck Accident and Why Fleet Safety SOPs Matter",
+      title: "The 'Final Destination' Scenario: A Tragic Log Truck Accident and Why Fleet Safety SOPs Matter.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Logistics", "Safety", "Fleet Management"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/FFVgbt6K/sop1.jpg",
+      imageUrl: "https://i.postimg.cc/k4LfRWYv/overload-truck-1.jpg",
       description: "We've all seen the horrifying videos: a log or other unsecured load falls from a truck on the highway, causing a catastrophic accident. This isn't just a random tragedy; it's a direct failure of a pre-departure safety checklist.",
       content: `
         <p>It's a primal fear for any highway driver, made famous by horror movies but tragically common in real life: a truck ahead sheds its load, sending logs, pipes, or other heavy materials tumbling into traffic. These incidents are not "freak accidents." They are almost always the result of a failure to follow basic, fundamental safety procedures before a vehicle ever leaves the yard.</p>
@@ -453,7 +453,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'air-canada-chatbot-fiasco-ai-governance',
-      title: "Why Air Canada Was Forced to Honor Its Chatbot's Lie: A Lesson in AI Governance",
+      title: "Held Liable for its Chatbot's Lie: The Air Canada Ruling and the Urgent Case for AI Governance.",
       publishedDate: "2024-07-29",
       author: "MoreMeets Team",
       tags: ["AI", "Corporate Governance", "Customer Service", "Risk Management"],
@@ -511,12 +511,12 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'anatomy-of-a-5-star-security-failure-26-11-mumbai-attacks',
-        title: "Anatomy of a 5-Star Security Failure: Lessons from the 26/11 Mumbai Terror Attacks",
+        title: "Anatomy of a 5-Star Security Failure: Lessons from the 26/11 Mumbai Terror Attacks.",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Hospitality", "Security", "Risk Management", "Case Study"],
         relatedPackId: "hotels_and_resorts",
-        imageUrl: "https://i.postimg.cc/68CfSMyy/Taj-Mahal-Palace.jpg",
+        imageUrl: "https://i.postimg.cc/0jmZYrh4/taj-attack-5-star-security.avif",
         description: "The 2008 terror attacks on the Taj and Oberoi hotels in Mumbai exposed critical gaps in hotel security protocols. This analysis explores how modern, checklist-driven SOPs for access control, incident response, and staff training are designed to prevent such a tragedy from ever happening again.",
         content: `
             <p>The night of November 26, 2008, remains etched in history as one of the most audacious terror attacks ever executed. A small group of terrorists laid siege to Mumbai, with the iconic Taj Mahal Palace and Oberoi Trident hotels becoming horrifying epicenters of the violence. The attackers exploited a key vulnerability: the open and welcoming nature of a luxury hotel. They walked in through main entrances, indistinguishable from guests, before beginning their assault.</p>
@@ -567,12 +567,12 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'kota-student-crisis-hostel-mental-health-sop',
-      title: "The Kota Student Crisis: Why Every Hostel Needs a Mental Health & Wellness SOP",
+      title: "The Kota Factory: Why India's Coaching Hubs Need a Mental Health SOP.",
       publishedDate: "2024-07-28",
       author: "MoreMeets Team",
       tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health"],
       relatedPackId: "university_college_ops",
-      imageUrl: "https://i.postimg.cc/FKP89TYW/college.jpg",
+      imageUrl: "https://i.postimg.cc/9FJnXwtj/kota-student-crisis.avif",
       description: "The recurring tragedies of student suicides in coaching hubs like Kota highlight a critical gap in student housing operations: the lack of a proactive mental health and wellness protocol. This article explores how a structured SOP for wardens and staff can create a safer, more supportive environment.",
       content: `
         <p>For years, the town of Kota in India has been synonymous with academic ambition, a grueling production line for future engineers and doctors. But recently, it has become synonymous with something far darker: a student mental health crisis of epidemic proportions. With dozens of students taking their own lives each year under the immense pressure, the spotlight is no longer just on the coaching centers, but on the entire ecosystem that houses these young aspirants—chiefly, the hostels.</p>
@@ -630,12 +630,12 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'after-change-healthcare-attack-vendor-security-sop',
-        title: "The Change Healthcare Hack: Why Your Vendor's Security is Now Your Biggest Risk",
+        title: "The $22M Ransom: How a Single Unprotected Login Crippled the U.S. Healthcare System.",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Cybersecurity", "Healthcare", "Vendor Management", "Risk"],
         relatedPackId: "enterprise_risk_cybersecurity_pack",
-        imageUrl: "https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp",
+        imageUrl: "https://i.postimg.cc/bJynvr9B/Cybersecurity.webp",
         description: "The 2024 ransomware attack on Change Healthcare, which crippled the US healthcare system, originated from a single compromised vendor portal without MFA. This is a masterclass in why a rigorous Vendor Security Assessment SOP is no longer optional.",
         content: `
             <p>In February 2024, the American healthcare system was brought to its knees. A ransomware attack on Change Healthcare, a company that processes over 15 billion healthcare transactions a year, caused a catastrophic outage. Doctors couldn't verify insurance, pharmacies couldn't process prescriptions, and payments to providers ground to a halt. The CEO of UnitedHealth Group later testified before Congress that the initial point of entry for the hackers was a single, stolen credential for a remote access portal that lacked Multi-Factor Authentication (MFA).</p>
@@ -683,7 +683,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'hillsborough-disaster-crowd-management-lessons',
-        title: "The Hillsborough Disaster: A Haunting Lesson in Crowd Management SOPs",
+        title: "97 Dead. No Accident. The Hillsborough Disaster and the Deadly Cost of Failed Crowd Management.",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
@@ -740,7 +740,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'forgotten-child-school-bus-safety-sop',
-        title: "A Forgotten Child: How a Simple School Bus Check SOP Prevents Unthinkable Tragedies",
+        title: "A Forgotten Child: The Unthinkable School Bus Tragedy a Simple Checklist Can Prevent.",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["School Safety", "Transportation", "Compliance", "Risk Management"],
@@ -797,12 +797,12 @@ export const blogPosts: BlogPost[] = [
     },
      {
       slug: 'red-sea-shipping-crisis-supply-chain-sop',
-      title: "The Red Sea Shipping Crisis: Why a 'Just-in-Time' Supply Chain Needs a 'Just-in-Case' SOP",
+      title: "Geopolitics vs. Your P&L: How the Red Sea Crisis Proves You Need a Supply Chain SOP.",
       publishedDate: "2024-07-28",
       author: "MoreMeets Team",
       tags: ["Logistics", "Supply Chain", "Risk Management", "Geopolitics"],
       relatedPackId: "logistics_warehouse_pack",
-      imageUrl: "https://i.postimg.cc/G3xJP0ft/ocean-freight-shipping.png",
+      imageUrl: "https://i.postimg.cc/26g2Ln9B/red-sea-crisis.png",
       description: "Starting in late 2023, attacks on commercial shipping in the Red Sea have thrown global supply chains into chaos, causing massive delays and cost overruns. This ongoing crisis is a powerful lesson in why businesses need a proactive Supply Chain Risk Management SOP.",
       content: `
         <p>For decades, the Red Sea, leading to the Suez Canal, has been a superhighway for global trade, carrying over 12% of the world's commerce. But starting in late 2023, this critical artery was effectively severed. A series of drone and missile attacks by Houthi militants forced major shipping lines like Maersk, MSC, and Hapag-Lloyd to reroute their entire fleets around the southern tip of Africa, adding weeks to transit times and millions of dollars in fuel costs.</p>
@@ -854,7 +854,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'are-your-sustainability-claims-real-esg-greenwashing-sop',
-      title: "The Perils of Greenwashing: How an ESG Audit SOP Ensures Your Sustainability Claims are Real",
+      title: "Greenwashing: How an ESG Audit SOP Prevents Your Marketing from Becoming a Lawsuit.",
       publishedDate: "2024-07-28",
       author: "MoreMeets Team",
       tags: ["ESG", "Compliance", "Corporate Governance", "Marketing"],
@@ -911,7 +911,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'popeyes-girl-dinner-local-marketing-compliance',
-        title: "Why Popeyes' 'Girl Dinner' Menu Failed: A Lesson in Local Store Marketing Compliance",
+        title: "The 'Girl Dinner' Fiasco: Why Popeyes Had to Shut Down a Viral Menu and What Franchisors Can Learn.",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Franchise", "Marketing", "Brand Management"],
@@ -967,7 +967,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: 'uphaar-cinema-fire-tragedy-analysis',
-        title: "The Uphaar Cinema Fire: A Haunting Lesson in Fire Safety Negligence",
+        title: "59 Dead, Exits Blocked: The Uphaar Cinema Fire and the Criminal Cost of Ignoring a Safety Checklist.",
         publishedDate: "2024-07-28",
         author: "MoreMeets Team",
         tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study"],
