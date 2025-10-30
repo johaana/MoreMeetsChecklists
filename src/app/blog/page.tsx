@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Loader2, CheckCircle, Filter } from 'lucide-react';
+import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { subscribeToBlog } from './actions';
@@ -15,8 +15,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
+const primaryTags = ["Cybersecurity", "Risk Management", "Safety", "Supply Chain"];
+const secondaryTags = allTags.filter(tag => !primaryTags.includes(tag));
 
 function SubscriptionForm() {
   const [email, setEmail] = React.useState('');
@@ -96,7 +100,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                 >
                     All
                 </Button>
-                {allTags.map(tag => (
+                {primaryTags.map(tag => (
                     <Button
                         key={tag}
                         variant={activeFilter === tag ? 'default' : 'outline'}
@@ -106,6 +110,21 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="outline" className="rounded-full">
+                           {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
+                           <ChevronDown className="w-4 h-4 ml-2" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        {secondaryTags.map(tag => (
+                             <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)}>
+                                {tag}
+                            </DropdownMenuItem>
+                        ))}
+                    </DropdownMenuContent>
+                </DropdownMenu>
             </div>
 
             {/* Mobile Filters */}
@@ -161,7 +180,7 @@ export default function BlogListPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <section className="w-full pt-12 pb-12 md:pb-24 lg:pb-32">
+        <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
@@ -245,11 +264,6 @@ export default function BlogListPage() {
                     </div>
                 )}
                 
-                <div className="max-w-xl mx-auto my-16 flex flex-col items-center gap-4 p-6 border rounded-2xl bg-secondary/50">
-                    <h3 className="font-bold text-center">Get the analysis behind the headlines.</h3>
-                    <SubscriptionForm />
-                </div>
-                
                 <FilterControls activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
 
 
@@ -293,6 +307,10 @@ export default function BlogListPage() {
                             </CardFooter>
                         </Card>
                     ))}
+                </div>
+                 <div className="max-w-xl mx-auto mt-24 flex flex-col items-center gap-4 p-6 border rounded-2xl bg-secondary/50">
+                    <h3 className="font-bold text-center">Get the analysis behind the headlines.</h3>
+                    <SubscriptionForm />
                 </div>
             </div>
         </section>
