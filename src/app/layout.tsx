@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Inter, Poppins } from 'next/font/google';
+import Script from 'next/script';
 
 
 const siteUrl = 'https://www.moremeets.com';
@@ -74,6 +75,20 @@ export default function RootLayout({
       )}>
         {children}
         <Toaster />
+        <Script id="brevo-chat-widget" strategy="lazyOnload">
+          {`
+            (function(d, w, c) {
+                w.BrevoConversationsID = '66a6a43f5450f3388a1087d3';
+                w[c] = w[c] || function() {
+                    (w[c].q = w[c].q || []).push(arguments);
+                };
+                var s = d.createElement('script');
+                s.async = true;
+                s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
+                if (d.head) d.head.appendChild(s);
+            })(document, window, 'BrevoConversations');
+          `}
+        </Script>
       </body>
     </html>
   );
