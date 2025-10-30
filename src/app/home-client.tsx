@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -126,7 +126,7 @@ const GlobalStandardsSection = () => {
         <section className="w-full py-12 md:py-24">
             <div className="container px-2 md:px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
+                    <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         Audit-Ready. Globally Compliant. Operationally Excellent.
                     </h2>
                     <p className="mt-4 text-muted-foreground text-base md:text-xl/relaxed">
@@ -153,7 +153,7 @@ const FaqSection = () => (
     <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-2 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Frequently Asked Questions
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
@@ -303,7 +303,7 @@ function PackList({ packs, title, description }: { packs: PremiumPack[], title: 
         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                    <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         {title}
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
@@ -377,7 +377,7 @@ const IndividualChecklistsSection = () => {
         <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
+                    <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
                         Solve a Specific Problem, Instantly
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
@@ -445,35 +445,10 @@ const WhyDetailMatters = () => {
             title: "An Auditor's Visit Shouldn't Be a Panic Attack",
             description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside and out, providing a clear, documented trail of diligence.",
         },
-        {
-            icon: <GitBranch />,
-            title: "How Do You Enforce Standards Across Multiple Locations?",
-            description: "When your brand is spread across multiple sites, consistency is everything. Our checklists provide a centralized, replicable blueprint for excellence, ensuring that your customer in one city gets the exact same high-quality experience as a customer a thousand miles away.",
-        },
-        {
-            icon: <HandCoins />,
-            title: "It's the Small Leaks That Sink the Ship",
-            description: "A little wasted inventory, a minor service complaint—together, they drain profitability. Our checklists are designed to find and plug these leaks, driving efficiency that shows up on your bottom line.",
-        },
-        {
-            icon: <Award />,
-            title: "Don't Let Your Business Rely on One Hero",
-            description: "What happens if your one indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone on your team can operate at a high standard.",
-        },
-        {
-            icon: <Briefcase />,
-            title: "A Flawless Launch or a Public Failure?",
-            description: "For any grand opening or product launch, success hinges on hundreds of details. Our checklists are the playbook for flawless execution, ensuring your big day is remembered for the right reasons.",
-        },
-        {
-            icon: <Star />,
-            title: "Is Every Guest Getting 5-Star Treatment?",
-            description: "Inconsistency is the enemy of a great reputation. Our hospitality checklists ensure every guest touchpoint is executed to the same high standard, every time.",
-        },
-        {
-            icon: <HardHat />,
-            title: "The Most Dangerous Risks Are Hiding in Plain Sight",
-            description: "Daily repetition can lead to complacency. Our checklists force a fresh, systematic review of your environment, catching safety blind spots before they become tragic accidents.",
+         {
+            icon: <FileText />,
+            title: "You Know You Need SOPs. But Where Do You Start?",
+            description: "The task of creating SOPs from scratch is daunting. We've done the work for you. Our checklists provide an expert-built foundation that is 90% of the way there.",
         },
         {
             icon: <BarChart />,
@@ -481,43 +456,11 @@ const WhyDetailMatters = () => {
             description: "Every minute your team spends fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your best people to focus on innovation.",
         },
         {
-            icon: <FileText />,
-            title: "You Know You Need SOPs. But Where Do You Start?",
-            description: "The task of creating SOPs from scratch is daunting. We've done the work for you. Our checklists provide an expert-built foundation that is 90% of the way there.",
-        },
+            icon: <Award />,
+            title: "Don't Let Your Business Rely on One Hero",
+            description: "What happens if your one indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone on your team can operate at a high standard.",
+        }
     ];
-
-    if (isMobile) {
-        return (
-            <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-                <div className="container px-2 md:px-6">
-                    <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-3xl font-bold tracking-tighter font-headline">
-                            Why Every Detail Matters
-                        </h2>
-                        <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                            In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
-                        </p>
-                    </div>
-                     <Accordion type="single" collapsible className="w-full">
-                        {points.map((point, index) => (
-                             <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg mb-2 bg-background shadow-sm">
-                                <AccordionTrigger className="text-base font-semibold text-left p-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className="shrink-0 text-primary">{React.cloneElement(point.icon, { className: "w-5 h-5" })}</div>
-                                        {point.title}
-                                    </div>
-                                </AccordionTrigger>
-                                <AccordionContent className="text-muted-foreground px-4">
-                                    {point.description}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </div>
-            </section>
-        );
-    }
 
     return (
         <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
@@ -526,7 +469,7 @@ const WhyDetailMatters = () => {
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                         Why Every Detail Matters
                     </h2>
-                    <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed mx-auto">
+                    <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
                         In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
                     </p>
                 </div>
@@ -550,6 +493,42 @@ const WhyDetailMatters = () => {
         </section>
     );
 };
+
+const WhoIsItForSection = () => {
+    const roles = [
+        { icon: <Hospital className="w-8 h-8" />, label: "Hospital GMs" },
+        { icon: <Factory className="w-8 h-8" />, label: "Plant Heads" },
+        { icon: <BuildingIcon className="w-8 h-8" />, label: "Facility Managers" },
+        { icon: <GraduationCap className="w-8 h-8" />, label: "School Principals" },
+        { icon: <Gem className="w-8 h-8" />, label: "Luxury Retailers" },
+        { icon: <CookingPot className="w-8 h-8" />, label: "Restaurant Owners" },
+    ];
+    return (
+        <section className="w-full py-12 md:py-24">
+            <div className="container px-2 md:px-6">
+                <div className="max-w-3xl mx-auto text-center mb-12">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                        Trusted By Professionals in Every Industry
+                    </h2>
+                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                        Our checklists are designed by industry veterans for the specific challenges you face every day.
+                    </p>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 max-w-5xl mx-auto">
+                    {roles.map((role, index) => (
+                        <div key={index} className="flex flex-col items-center text-center gap-3">
+                            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary">
+                                {role.icon}
+                            </div>
+                            <p className="font-semibold text-sm md:text-base">{role.label}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 
 const ValuePropositionSection = () => {
     const benefits = [
@@ -722,20 +701,7 @@ export default function HomeClientPage() {
 
         <ValuePropositionSection />
 
-        <section className="w-full pb-16 pt-8">
-            <div className="container px-2 md:px-6">
-                 <div className="max-w-4xl mx-auto p-8 bg-secondary/30 rounded-2xl">
-                    <p className="text-center text-base md:text-xl text-muted-foreground italic">
-                        Running a business means you can't be everywhere at once. MoreMeets gives your team the expert-built, step-by-step instructions you need to ensure critical tasks are done right, every single time. We don't sell software; we sell the proven system for consistency and safety.
-                    </p>
-                     {isMobile && (
-                        <p className="text-center max-w-[700px] text-muted-foreground text-base md:text-lg/relaxed mx-auto drop-shadow-sm mt-4">
-                            Instantly download expert-crafted, fully-editable operational checklists for your hotel, restaurant, or facility. One-time purchase, lifetime updates.
-                        </p>
-                    )}
-                </div>
-            </div>
-        </section>
+        <WhoIsItForSection />
         
         <WhyDetailMatters />
 
@@ -756,43 +722,54 @@ export default function HomeClientPage() {
         <FeaturedBlogPostsSection />
 
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
-            <div className="container px-2 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Loved by Professionals Worldwide
-                    </h2>
-                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        Trusted by managers from world-leading organizations.
-                    </p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial) => {
-                        const image = PlaceHolderImages.find(img => img.id === testimonial.imageId);
-                        return (
-                         <Card key={testimonial.name} className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl">
-                             <div className="mb-4 rounded-full overflow-hidden w-24 h-24 border-2 border-primary/10">
-                                {image && (
-                                    <Image
-                                        src={image.imageUrl}
-                                        alt={testimonial.name}
-                                        width={96}
-                                        height={96}
-                                        className="w-full h-full object-cover"
-                                        data-ai-hint={image.imageHint}
-                                    />
-                                )}
-                             </div>
-                            <CardContent className="p-0">
-                                <p className="text-muted-foreground italic text-sm md:text-base">"{testimonial.quote}"</p>                            
-                            </CardContent>
-                             <CardFooter className="p-0 mt-4 flex-col">
-                                 <p className="font-bold font-headline">{testimonial.name}</p>
-                                 <p className="text-xs md:text-sm text-muted-foreground">{testimonial.title}</p>
-                             </CardFooter>
-                        </Card>
-                    )})}
-                </div>
+          <div className="container px-2 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                Loved by Professionals Worldwide
+              </h2>
+              <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+                Trusted by managers from world-leading organizations.
+              </p>
             </div>
+            <Carousel 
+                opts={{ align: "start", loop: true }}
+                plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+                className="w-full max-w-5xl mx-auto"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial) => {
+                  const image = PlaceHolderImages.find(img => img.id === testimonial.imageId);
+                  return (
+                    <CarouselItem key={testimonial.name} className="md:basis-1/2 lg:basis-1/3 p-4">
+                      <Card className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl h-full">
+                        <div className="mb-4 rounded-full overflow-hidden w-24 h-24 border-2 border-primary/10">
+                          {image && (
+                            <Image
+                              src={image.imageUrl}
+                              alt={testimonial.name}
+                              width={96}
+                              height={96}
+                              className="w-full h-full object-cover"
+                              data-ai-hint={image.imageHint}
+                            />
+                          )}
+                        </div>
+                        <CardContent className="p-0 flex-1">
+                          <p className="text-muted-foreground italic text-sm md:text-base">"{testimonial.quote}"</p>
+                        </CardContent>
+                        <CardFooter className="p-0 mt-4 flex-col">
+                          <p className="font-bold font-headline">{testimonial.name}</p>
+                          <p className="text-xs md:text-sm text-muted-foreground">{testimonial.title}</p>
+                        </CardFooter>
+                      </Card>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <CarouselPrevious className="text-accent border-accent -left-4" />
+              <CarouselNext className="text-accent border-accent -right-4" />
+            </Carousel>
+          </div>
         </section>
         
          <section className="w-full py-12 md:py-24">
