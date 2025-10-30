@@ -113,10 +113,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1 py-12 md:py-20">
-        <div className="container max-w-4xl mx-auto px-2 md:px-6">
+        <div className="container max-w-4xl mx-auto px-4 md:px-6">
           <article>
-            <header className="mb-8 text-center bg-secondary/30 p-4 md:p-8 rounded-2xl">
-              <div className="flex justify-center gap-2 mb-4">
+            <header className="mb-8 text-center">
+               <div className="flex justify-center flex-wrap gap-2 mb-4">
                 {post.tags.map(tag => (
                   <Badge key={tag} variant="secondary">{tag}</Badge>
                 ))}
@@ -124,13 +124,26 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-headline tracking-tight mb-4 text-primary">
                 {post.title}
               </h1>
-              <p className="text-muted-foreground text-xs md:text-sm">
+              <p className="text-muted-foreground text-sm md:text-base">
                 Published on {publishDate} by {post.author}
               </p>
             </header>
+
+            {post.imageUrl && (
+                <div className="my-8 md:my-12 rounded-2xl overflow-hidden shadow-lg">
+                    <Image
+                        src={post.imageUrl}
+                        alt={post.title}
+                        width={1200}
+                        height={675}
+                        className="w-full object-cover"
+                        priority
+                    />
+                </div>
+            )}
             
             <div 
-              className="prose prose-lg dark:prose-invert max-w-none mx-auto [&_p]:text-foreground/80 [&_h3]:text-primary prose-table:w-full prose-table:text-sm prose-table:md:text-base [&_table]:border-collapse [&_th]:p-2 [&_th]:border [&_th]:bg-secondary/80 [&_td]:p-2 [&_td]:border"
+              className="prose prose-lg dark:prose-invert max-w-none mx-auto prose-headings:font-headline prose-headings:text-primary prose-a:text-accent hover:prose-a:text-accent/80 prose-p:text-foreground/80 prose-table:w-full prose-table:text-sm prose-table:md:text-base [&_table]:border-collapse [&_th]:p-2 [&_th]:border [&_th]:bg-secondary/80 [&_td]:p-2 [&_td]:border first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:font-headline"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <RelatedProductCard post={post} />
