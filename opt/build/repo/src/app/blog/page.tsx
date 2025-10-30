@@ -7,12 +7,14 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Loader2, CheckCircle } from 'lucide-react';
+import { ArrowRight, Mail, Loader2, CheckCircle, Filter } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { subscribeToBlog } from './actions';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
 
@@ -30,6 +32,10 @@ function SubscriptionForm() {
 
     if (result.success) {
       setSubmitted(true);
+       toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to the debrief.",
+      });
     } else {
       toast({
         variant: "destructive",
@@ -42,7 +48,7 @@ function SubscriptionForm() {
 
   if (submitted) {
     return (
-        <div className="flex items-center justify-center p-4 rounded-lg bg-green-100 border border-green-200 text-green-800">
+        <div className="flex items-center justify-center p-4 rounded-lg bg-green-100 border border-green-200 text-green-800 dark:bg-green-900/50 dark:text-green-200 dark:border-green-800">
             <CheckCircle className="w-5 h-5 mr-3" />
             <p className="font-semibold">Thank you for subscribing!</p>
         </div>
@@ -71,6 +77,77 @@ function SubscriptionForm() {
   );
 }
 
+const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: string | null, setActiveFilter: (filter: string | null) => void }) => {
+    const [isSheetOpen, setSheetOpen] = React.useState(false);
+
+    const handleFilterClick = (tag: string | null) => {
+        setActiveFilter(tag);
+        setSheetOpen(false);
+    }
+    
+    return (
+        <>
+            {/* Desktop Filters */}
+            <div className="hidden md:flex flex-wrap items-center justify-center gap-2 mb-12">
+                 <Button
+                    variant={activeFilter === null ? 'default' : 'outline'}
+                    onClick={() => setActiveFilter(null)}
+                    className="rounded-full"
+                >
+                    All
+                </Button>
+                {allTags.map(tag => (
+                    <Button
+                        key={tag}
+                        variant={activeFilter === tag ? 'default' : 'outline'}
+                        onClick={() => setActiveFilter(tag)}
+                        className="rounded-full"
+                    >
+                        {tag}
+                    </Button>
+                ))}
+            </div>
+
+            {/* Mobile Filters */}
+            <div className="md:hidden fixed bottom-4 right-4 z-40">
+                 <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
+                    <SheetTrigger asChild>
+                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
+                            <Filter className="w-6 h-6" />
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="bottom" className="rounded-t-2xl">
+                        <SheetHeader className="mb-4">
+                            <SheetTitle>Filter by Category</SheetTitle>
+                        </SheetHeader>
+                        <ScrollArea className="h-[50vh]">
+                            <div className="flex flex-col gap-2 pr-4">
+                                 <Button
+                                    variant={activeFilter === null ? 'default' : 'ghost'}
+                                    onClick={() => handleFilterClick(null)}
+                                    className="justify-start text-lg"
+                                >
+                                    All
+                                </Button>
+                                {allTags.map(tag => (
+                                     <Button
+                                        key={tag}
+                                        variant={activeFilter === tag ? 'default' : 'ghost'}
+                                        onClick={() => handleFilterClick(tag)}
+                                        className="justify-start text-lg"
+                                    >
+                                        {tag}
+                                    </Button>
+                                ))}
+                            </div>
+                        </ScrollArea>
+                    </SheetContent>
+                </Sheet>
+            </div>
+        </>
+    );
+}
+
 
 export default function BlogListPage() {
   const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
@@ -85,9 +162,9 @@ export default function BlogListPage() {
       <SiteHeader />
       <main className="flex-1">
         <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
-            <div className="container px-2 md:px-6">
+            <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
                         Black Box Debrief
                     </h1>
                     <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
@@ -105,69 +182,75 @@ export default function BlogListPage() {
                 {featuredPost && (
                     <div className="mb-16">
                         <Link href={`/blog/${featuredPost.slug}`} className="block group">
-                            <Card className="relative grid md:grid-cols-2 overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 min-h-[300px] md:min-h-[400px] items-center">
-                                {featuredPost.imageUrl ? (
-                                    <div className="absolute inset-0 z-0">
+                             <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                                {/* Mobile Layout: Image on top */}
+                                <div className="md:hidden">
+                                     {featuredPost.imageUrl && (
                                         <Image
                                             src={featuredPost.imageUrl}
                                             alt={featuredPost.title}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            width={600}
+                                            height={340}
+                                            className="w-full object-cover"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
+                                    )}
+                                    <div className="p-6 bg-card">
+                                        <div className="flex flex-wrap gap-2 mb-2">
+                                            {featuredPost.tags.map(tag => ( <Badge key={tag} variant="secondary">{tag}</Badge>))}
+                                        </div>
+                                        <CardTitle className="text-2xl font-headline">{featuredPost.title}</CardTitle>
+                                        <CardDescription className="mt-2 text-base">{featuredPost.description}</CardDescription>
+                                        <Button variant="outline" className="mt-4">
+                                            Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
+                                        </Button>
                                     </div>
-                                ) : (
-                                    <div className="absolute inset-0 bg-primary z-0" />
-                                )}
-
-                                <div className="relative z-10 p-6 md:p-10 space-y-4 text-white">
-                                    <div className="flex flex-wrap gap-2">
-                                        {featuredPost.tags.map(tag => (
-                                            <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>
-                                        ))}
-                                    </div>
-                                    <CardTitle className="text-2xl md:text-4xl font-headline text-white drop-shadow-lg">
-                                        {featuredPost.title}
-                                    </CardTitle>
-                                    <CardDescription className="text-base md:text-lg text-white/90 hidden sm:block">
-                                        {featuredPost.description}
-                                    </CardDescription>
-                                    <div className="flex justify-between items-center text-xs text-white/80">
-                                        <span>{new Date(featuredPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                                        <span className="font-semibold">{Math.ceil(featuredPost.content.split(' ').length / 200)} min read</span>
-                                    </div>
-                                    <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
-                                        Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
                                 </div>
-                                <div className="hidden md:block">
-                                    {/* This div is a placeholder for the grid layout */}
+                                
+                                {/* Desktop Layout: Image overlay */}
+                                <div className="hidden md:block relative min-h-[400px]">
+                                    <div className="grid md:grid-cols-2 items-center h-full">
+                                        <div className="absolute inset-0 z-0">
+                                             {featuredPost.imageUrl && (
+                                                <>
+                                                    <Image
+                                                        src={featuredPost.imageUrl}
+                                                        alt={featuredPost.title}
+                                                        fill
+                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    />
+                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
+                                                </>
+                                            )}
+                                        </div>
+                                        <div className="relative z-10 p-10 space-y-4 text-white">
+                                            <div className="flex flex-wrap gap-2">
+                                                {featuredPost.tags.map(tag => (
+                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>
+                                                ))}
+                                            </div>
+                                            <CardTitle className="text-4xl font-headline text-white drop-shadow-lg">
+                                                {featuredPost.title}
+                                            </CardTitle>
+                                            <CardDescription className="text-lg text-white/90">
+                                                {featuredPost.description}
+                                            </CardDescription>
+                                            <div className="flex justify-between items-center text-xs text-white/80">
+                                                <span>{new Date(featuredPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                                <span className="font-semibold">{Math.ceil(featuredPost.content.split(' ').length / 200)} min read</span>
+                                            </div>
+                                            <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
+                                                Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
+                                            </Button>
+                                        </div>
+                                        <div className="hidden md:block">{/* Placeholder for grid */}</div>
+                                    </div>
                                 </div>
                             </Card>
                         </Link>
                     </div>
                 )}
                 
-                {/* Filters */}
-                <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-                    <Button
-                        variant={activeFilter === null ? 'default' : 'outline'}
-                        onClick={() => setActiveFilter(null)}
-                        className="rounded-full"
-                    >
-                        All
-                    </Button>
-                    {allTags.map(tag => (
-                        <Button
-                            key={tag}
-                            variant={activeFilter === tag ? 'default' : 'outline'}
-                            onClick={() => setActiveFilter(tag)}
-                            className="rounded-full"
-                        >
-                            {tag}
-                        </Button>
-                    ))}
-                </div>
+                <FilterControls activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
 
 
                 {/* Other Posts */}
@@ -202,7 +285,7 @@ export default function BlogListPage() {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="flex-1">
-                                <CardDescription className="text-sm md:text-base">{post.description}</CardDescription>
+                                <CardDescription>{post.description}</CardDescription>
                             </CardContent>
                             <CardFooter className="flex justify-between items-center mt-auto">
                                 <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
