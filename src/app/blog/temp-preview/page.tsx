@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { AlertTriangle, ShieldCheck, BookCopy } from 'lucide-react';
+import { AlertTriangle, ShieldCheck, BookCopy, Zap, ChevronsRight } from 'lucide-react';
 import React from 'react';
 
 const boeingPost = {
@@ -17,23 +17,26 @@ const boeingPost = {
 const failurePoints = [
     {
         title: "Missing Bolts",
-        description: "The core failure was physical: the four bolts securing the door plug were never installed.",
+        step: "Step 1: The Oversight",
+        description: "The core physical failure: the four bolts securing the door plug were never installed during a rework at the Boeing factory.",
         sop: "In-Process Quality Control (IPQC)",
         solution: "This SOP introduces a mandatory 'Quality Gate.' Work cannot proceed until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued. It creates a 'forcing function' that makes it impossible to forget a critical step.",
         icon: <AlertTriangle className="w-6 h-6 text-destructive" />
     },
     {
         title: "Incomplete Handover",
-        description: "Work on the door plug was reportedly started by one team and finished by another, with no formal handover process.",
+        step: "Step 2: The Assumption",
+        description: "Work on the door plug was reportedly started by one team and finished by another, with no formal process to communicate that the bolts still needed to be installed.",
         sop: "Shift Handover Protocol",
-        solution: "This checklist mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status, including what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions.",
+        solution: "This checklist mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status, including what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions between shifts.",
         icon: <BookCopy className="w-6 h-6 text-blue-500" />
     },
     {
-        title: "Lack of Accountability",
-        description: "Without a verifiable record, it was impossible to know who was responsible for installing the bolts and who was supposed to check their work.",
+        title: "Accountability Void",
+        step: "Step 3: The Ghost in the Machine",
+        description: "Without a verifiable record, it was impossible to know which employee was responsible for installing the bolts and who was supposed to check their work.",
         sop: "Traceability & Batch Records",
-        solution: "This system ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating clear accountability.",
+        solution: "This system ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating undeniable accountability.",
         icon: <ShieldCheck className="w-6 h-6 text-green-500" />
     }
 ];
@@ -107,6 +110,58 @@ export default function TempBlogPreviewPage() {
                  </div>
             </div>
 
+            <Separator className="my-12" />
+            
+            {/* --- STYLE 3: SPLIT CARD LAYOUT --- */}
+            <div className="mb-16">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-center mb-8">Style 3: Split Card Layout</h2>
+                <div className="space-y-8">
+                    {failurePoints.map((point, index) => (
+                        <Card key={index} className="overflow-hidden shadow-lg border-t-4 border-primary">
+                            <CardHeader>
+                                 <CardTitle className="text-xl font-headline text-primary flex items-center gap-3">{point.icon} {point.title}</CardTitle>
+                            </CardHeader>
+                            <div className="grid md:grid-cols-2">
+                                <CardContent className="space-y-2 border-b md:border-b-0 md:border-r">
+                                    <h4 className="font-bold text-destructive">Anatomy of Failure</h4>
+                                    <p className="text-sm text-muted-foreground">{point.description}</p>
+                                </CardContent>
+                                <CardContent className="space-y-2 bg-secondary/30">
+                                    <h4 className="font-bold text-green-700 dark:text-green-400">The Fortress of Procedure</h4>
+                                    <p className="text-sm text-foreground/80">The <code className="font-semibold text-accent bg-background p-1 rounded-md">{point.sop}</code> SOP prevents this. {point.solution}</p>
+                                </CardContent>
+                            </div>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+            
+            <Separator className="my-12" />
+
+            {/* --- STYLE 4: NUMBERED STEPS TO FAILURE --- */}
+            <div className="mb-16">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-center mb-8">Style 4: Numbered Steps to Failure</h2>
+                 <div className="relative space-y-10 pl-8">
+                     <div className="absolute left-0 top-0 h-full w-px bg-border ml-4"></div>
+                     {failurePoints.map((point, index) => (
+                        <div key={index} className="relative">
+                            <div className="absolute -left-8 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">{index + 1}</div>
+                            <div className="pl-4">
+                                <h3 className="text-xl font-semibold font-headline text-primary">{point.step}</h3>
+                                <p className="text-muted-foreground mt-1">{point.description}</p>
+                                <div className="mt-3 flex items-start gap-3 rounded-lg border border-green-500/20 bg-green-500/10 p-3">
+                                    <Zap className="h-5 w-5 text-green-600 mt-1 shrink-0" />
+                                    <div>
+                                        <h4 className="font-semibold text-green-700 dark:text-green-400">The Intervention</h4>
+                                        <p className="text-sm text-foreground/80">The <code className="font-semibold text-accent bg-background p-1 rounded-md">{point.sop}</code> SOP would have broken the chain of failure here. {point.solution}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
              <div className="prose prose-lg dark:prose-invert max-w-none mx-auto mt-12">
                 <h3 class="text-xl font-bold mt-6 mb-4 font-headline text-primary">Conclusion: You Can't Afford to Assume</h3>
                 <p>The Boeing door plug incident is a powerful lesson for every operations manager. It proves that even in the most advanced manufacturing environments, the simplest steps are often the most critical. It demonstrates that verbal communication is unreliable and that assumptions are the enemy of safety and quality.</p>
@@ -120,3 +175,5 @@ export default function TempBlogPreviewPage() {
     </div>
   );
 }
+
+    
