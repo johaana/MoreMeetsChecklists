@@ -11,6 +11,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
+import { cn } from '@/lib/utils';
+
 
 type Props = {
   params: { slug: string }
@@ -143,7 +145,41 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             )}
             
             <div 
-              className="prose md:prose-lg dark:prose-invert max-w-none mx-auto prose-h2:font-headline prose-h2:text-primary prose-a:text-accent hover:prose-a:text-accent/80 prose-p:text-base prose-p:leading-relaxed prose-headings:font-headline prose-headings:tracking-tight prose-h3:text-xl prose-h3:text-foreground/90 prose-blockquote:border-accent prose-blockquote:text-muted-foreground prose-strong:text-foreground/90"
+              className={cn(
+                  "prose dark:prose-invert max-w-none mx-auto",
+                  "prose-headings:font-headline prose-headings:tracking-tight",
+                  "prose-h2:text-primary",
+                  "prose-h3:text-foreground/90",
+                  "prose-p:text-base prose-p:leading-relaxed", // Base mobile font size
+                  "md:prose-lg", // Larger text on medium screens and up
+                  "prose-a:text-accent hover:prose-a:text-accent/80",
+                  "prose-blockquote:border-accent prose-blockquote:text-muted-foreground",
+                  "prose-strong:text-foreground/90",
+                  // Custom class for the chain of failure
+                  "[&_.chain-of-failure]:relative [&_.chain-of-failure]:mt-12 [&_.chain-of-failure]:mb-12 [&_.chain-of-failure]:py-4",
+                  // Mobile first: no left border or padding
+                  "[&_.chain-of-failure]:border-l-0 [&_.chain-of-failure]:pl-0",
+                  // Desktop: add left border and padding
+                  "md:[&_.chain-of-failure]:border-l-4 md:[&_.chain-of-failure]:border-primary md:[&_.chain-of-failure]:pl-8",
+
+                  // The vertical line connecting the dots
+                  "[&_.chain-timeline]:relative [&_.chain-timeline]:space-y-10",
+                  "[&_.chain-timeline_>_.timeline-line]:hidden", // Hide line on mobile
+                  "md:[&_.chain-timeline_>_.timeline-line]:block md:[&_.chain-timeline_>_.timeline-line]:absolute md:[&_.chain-timeline_>_.timeline-line]:left-0 md:[&_.chain-timeline_>_.timeline-line]:top-0 md:[&_.chain-timeline_>_.timeline-line]:h-full md:[&_.chain-timeline_>_.timeline-line]:w-px md:[&_.chain-timeline_>_.timeline-line]:bg-border md:[&_.chain-timeline_>_.timeline-line]:ml-4",
+
+                  // The step container
+                  "[&_.chain-step]:relative",
+
+                  // The number circle
+                  "[&_.step-number-container]:flex [&_.step-number-container]:items-center [&_.step-number-container]:gap-4 [&_.step-number-container]:mb-2",
+                  "md:[&_.step-number-container]:block md:[&_.step-number-container]:absolute md:[&_.step-number-container]:-left-8 md:[&_.step-number-container]:top-1 md:[&_.step-number-container]:mb-0",
+                  
+                  "[&_.step-number]:flex [&_.step-number]:h-8 [&_.step-number]:w-8 [&_.step-number]:items-center [&_.step-number]:justify-center [&_.step-number]:rounded-full [&_.step-number]:bg-primary [&_.step-number]:text-primary-foreground [&_.step-number]:font-bold",
+                  
+                  // The main content for each step
+                  "[&_.step-content]:pl-0 md:pl-4"
+
+              )}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <RelatedProductCard post={post} />
