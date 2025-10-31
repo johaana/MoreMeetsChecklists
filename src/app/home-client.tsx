@@ -771,7 +771,7 @@ export default function HomeClientPage() {
           </div>
         </section>
         
-         <section className="w-full py-12 md:py-24">
+        <section className="w-full py-12 md:py-24">
             <div className="container px-2 md:px-6">
                  <div className="max-w-2xl mx-auto flex flex-col items-center gap-6 p-8 border rounded-2xl bg-secondary/50">
                     <h3 className="font-bold text-center text-2xl font-headline text-primary">The Most Valuable Newsletter in Operations.</h3>
@@ -788,5 +788,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    

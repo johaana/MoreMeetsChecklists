@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -270,8 +271,8 @@ export default function BlogListPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {filteredPosts.map((post) => (
                         <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
-                                {post.imageUrl ? (
+                            {post.imageUrl ? (
+                                <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
                                     <Image
                                         src={post.imageUrl}
                                         alt={post.title}
@@ -279,12 +280,12 @@ export default function BlogListPage() {
                                         height={340}
                                         className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                                     />
-                                ): (
-                                <div className="w-full h-48 bg-secondary flex items-center justify-center">
-                                    <p className="text-muted-foreground text-sm">No Image</p>
-                                </div>
-                                )}
-                            </Link>
+                                </Link>
+                            ): (
+                               <div className="w-full h-48 bg-secondary flex items-center justify-center">
+                                 <p className="text-muted-foreground text-sm">No Image</p>
+                               </div>
+                            )}
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                     {post.tags.map(tag => (
@@ -299,13 +300,15 @@ export default function BlogListPage() {
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <CardDescription>{post.description}</CardDescription>
+                            </CardContent>
+                             <CardFooter className="flex justify-between items-center mt-auto pt-0">
                                 <Button asChild variant="secondary" size="sm" className="mt-4">
                                   <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>
-                            </CardContent>
-                            <CardFooter className="flex justify-between items-center mt-auto">
-                                <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                                 <span className="text-xs text-muted-foreground">{Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                                <div className="text-right">
+                                    <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <span className="text-xs text-muted-foreground">{Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                                </div>
                             </CardFooter>
                         </Card>
                     ))}
