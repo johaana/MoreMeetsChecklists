@@ -1,5 +1,4 @@
 
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -240,7 +239,7 @@ export default function Page({ params }: { params: { id: string } }) {
       <main className="flex-1">
         <section className="w-full pt-12 pb-6 md:pt-20 md:pb-10 bg-secondary/30">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center">
+            <div className="grid gap-6 lg:grid-cols-[1fr,400px] lg:gap-12 xl:gap-16 items-center">
               <div className="space-y-4">
                 <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary">
                   {pack.title}
@@ -259,7 +258,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   alt={pack.title}
                   width={600}
                   height={400}
-                  className="rounded-2xl shadow-2xl object-cover"
+                  className="rounded-2xl shadow-2xl object-cover aspect-[3/2]"
                 />
               </div>
             </div>
