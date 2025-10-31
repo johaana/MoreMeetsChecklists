@@ -301,11 +301,11 @@ export default function BlogListPage() {
                             <CardContent className="flex-1">
                                 <CardDescription>{post.description}</CardDescription>
                             </CardContent>
-                             <CardFooter className="flex justify-between items-center mt-auto pt-0">
-                                <Button asChild variant="secondary" size="sm" className="mt-4">
+                             <CardFooter className="flex-col items-start gap-4 p-4 md:p-6 md:pt-0">
+                                <Button asChild variant="secondary" size="sm" className="w-full md:hidden">
                                   <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>
-                                <div className="text-right">
+                                <div className="hidden md:flex justify-between items-center w-full">
                                     <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                     <span className="text-xs text-muted-foreground">{Math.ceil(post.content.split(' ').length / 200)} min read</span>
                                 </div>

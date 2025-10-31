@@ -12,6 +12,7 @@ import Image from 'next/image';
 import { ArrowRight, Zap, FileCheck2 } from 'lucide-react';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 
 
 type Props = {
@@ -98,6 +99,56 @@ function RelatedProductCard({ post }: { post: BlogPost }) {
     );
 }
 
+function YouMightAlsoLike({ currentSlug }: { currentSlug: string }) {
+  const otherPosts = blogPosts
+    .filter(p => p.slug !== currentSlug) // Exclude the current post
+    .sort(() => 0.5 - Math.random()) // Shuffle the array
+    .slice(0, 3); // Take the first 3
+
+  if (otherPosts.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="mt-16 pt-12 border-t">
+      <h2 className="text-2xl font-bold font-headline text-center mb-8">You Might Also Like</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {otherPosts.map((post) => (
+          <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+            {post.imageUrl && (
+              <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                <Image
+                  src={post.imageUrl}
+                  alt={post.title}
+                  width={600}
+                  height={340}
+                  className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </Link>
+            )}
+            <CardHeader>
+                <CardTitle className="text-lg font-headline leading-snug">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                        {post.title}
+                    </Link>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="flex-1">
+                <CardDescription className="text-sm">{post.description}</CardDescription>
+            </CardContent>
+            <CardFooter>
+                 <Button asChild variant="secondary" size="sm" className="w-full">
+                    <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
 
@@ -144,14 +195,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 </div>
             )}
             
-            <div 
+             <div 
               className={cn(
                   "prose dark:prose-invert max-w-none mx-auto",
                   "text-base md:text-lg", // Base font size
+                  "prose-p:leading-relaxed prose-p:text-base prose-p:md:text-lg", // Specific responsive paragraph
                   "prose-headings:font-headline prose-headings:tracking-tight",
                   "prose-h2:text-primary",
                   "prose-h3:text-foreground/90",
-                  "prose-p:leading-relaxed",
                   "prose-a:text-accent hover:prose-a:text-accent/80",
                   "prose-blockquote:border-accent prose-blockquote:text-muted-foreground",
                   "prose-strong:text-foreground/90",
@@ -159,7 +210,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   // New styles for the analysis section
                   "[&_.failure-analysis-section]:mt-12 [&_.failure-analysis-section]:mb-8",
                   "[&_.failure-analysis-section_h3]:text-2xl [&_.failure-analysis-section_h3]:mb-2 [&_.failure-analysis-section_h3]:text-primary",
-                  "[&_.failure-analysis-section_p]:text-base [&_.failure-analysis-section_p]:md:text-lg",
                   
                   // New styles for the intervention box
                   "[&_.intervention-box]:mt-6 [&_.intervention-box]:p-6 [&_.intervention-box]:rounded-xl [&_.intervention-box]:bg-secondary/50 [&_.intervention-box]:border",
@@ -171,6 +221,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             />
             <RelatedProductCard post={post} />
           </article>
+
+           <YouMightAlsoLike currentSlug={post.slug} />
+
         </div>
       </main>
       <Footer />
