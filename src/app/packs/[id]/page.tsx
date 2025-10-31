@@ -131,7 +131,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
                         Our checklists are built upon globally recognized standards to ensure you're operating at a world-class level.
                     </p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto items-start justify-center">
                     {pack.globalStandards.standards.map((standard, index) => (
                         <Card key={index} className="flex flex-col text-center p-4 md:p-6">
                             <CardHeader className="p-0">
