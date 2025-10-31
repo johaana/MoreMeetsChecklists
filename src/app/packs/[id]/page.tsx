@@ -41,7 +41,7 @@ const packImageMap: Record<string, string> = {
   'hotels_and_resorts': defaultHeroImageUrl,
   'restaurants': 'https://i.postimg.cc/9QRtnf3Z/food1.jpg',
   'jewelry_and_luxury_retail': 'https://i.postimg.cc/JnbXpSjM/luxury-retail-2.jpg',
-  'fashion_and_apparel_retail': 'https://i.postimg.cc/d1G5M6T3/fashion-retail-1.jpg',
+  'fashion_and_apparel_retail': 'https://i.postimg.cc/L5MzcDw7/fashion-retail.webp',
   'school_operations_pack': 'https://i.postimg.cc/hGC6S2JD/school1.jpg',
   'university_college_ops': 'https://i.postimg.cc/FKP89TYW/college.jpg',
   'logistics_warehouse_pack': 'https://i.postimg.cc/6qQ1FnWm/logistics.webp',
@@ -49,7 +49,7 @@ const packImageMap: Record<string, string> = {
   'food_manufacturing_ops': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
   'supermarket_grocery_retail_pack': 'https://i.postimg.cc/L63xxv8M/supermarket-main.webp',
   'electronics_showroom_pack': 'https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg',
-  'theme_park_ops_pack': 'https://i.postimg.cc/0j9gbt7Q/theme_park_ops_pack.webp',
+  'theme_park_ops_pack': 'https://i.postimg.cc/Wz6MTrcB/theme-park.jpg',
   'corporate_legal_compliance_starter_kit': 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg',
   'enterprise_risk_cybersecurity_pack': 'https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp'
 };
@@ -212,6 +212,15 @@ export default function Page({ params }: { params: { id: string } }) {
   const totalChecklists = pack.checklists.length;
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
 
+  const checklistsByDept = pack.checklists.reduce((acc, checklist) => {
+      const { department } = checklist;
+      if (!acc[department]) {
+          acc[department] = [];
+      }
+      acc[department].push(checklist);
+      return acc;
+  }, {} as Record<string, PackChecklist[]>);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -279,21 +288,30 @@ export default function Page({ params }: { params: { id: string } }) {
                         A Complete System for Operational Excellence
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        This pack contains a suite of professional checklists covering every aspect of your operation, including:
+                        This pack contains a suite of professional checklists covering every aspect of your operation. Here is a high-level overview of the areas covered:
                     </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto space-y-4">
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                        {pack.sampleItems.map((item, index) => (
-                            <li key={index} className="flex items-start gap-3">
-                                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 mt-1 shrink-0">
-                                    <Check className="h-4 w-4 text-green-600" />
-                                </span>
-                                <span className="text-muted-foreground text-sm md:text-base" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                            </li>
+                     <Accordion type="multiple" className="w-full">
+                        {Object.entries(checklistsByDept).map(([department, checklists]) => (
+                            <AccordionItem value={department} key={department}>
+                                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                                    <div className="flex items-center gap-3">
+                                        {checklists[0]?.icon && React.cloneElement(checklists[0].icon, { className: "w-5 h-5 text-primary/80" })}
+                                        <span>{department}</span>
+                                    </div>
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                    <ul className="list-disc pl-8 pr-4 space-y-2 text-muted-foreground">
+                                        {checklists.map((checklist) => (
+                                            <li key={checklist.title}>{checklist.summary}</li>
+                                        ))}
+                                    </ul>
+                                </AccordionContent>
+                            </AccordionItem>
                         ))}
-                    </ul>
+                    </Accordion>
                 </div>
 
             </div>
