@@ -143,7 +143,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             )}
             
             <div 
-              className="prose md:prose-lg dark:prose-invert max-w-none mx-auto prose-headings:font-headline prose-headings:text-primary prose-a:text-accent hover:prose-a:text-accent/80 prose-p:text-foreground/80 prose-p:leading-relaxed"
+              className="prose md:prose-lg dark:prose-invert max-w-none mx-auto prose-headings:font-headline prose-headings:text-primary prose-a:text-accent hover:prose-a:text-accent/80 prose-p:text-base prose-p:leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <RelatedProductCard post={post} />
