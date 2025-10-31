@@ -125,7 +125,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline">
-                        {pack.globalStandards.title}
+                        Audit-Ready. Globally Compliant.
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
                         Our checklists are built upon globally recognized standards to ensure you're operating at a world-class level.
@@ -133,9 +133,9 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto items-start justify-center">
                     {pack.globalStandards.standards.map((standard, index) => (
-                        <Card key={index} className="flex flex-col text-center p-4 md:p-6">
+                        <Card key={index} className="flex flex-col text-center p-4 md:p-6 bg-background">
                             <CardHeader className="p-0">
-                                <CheckCircle className="w-8 h-8 md:w-10 md:h-10 text-accent mx-auto mb-2" />
+                                <Globe className="w-8 h-8 md:w-10 md:h-10 text-accent mx-auto mb-2" />
                                 <CardTitle className="text-sm md:text-lg font-headline">{standard.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 mt-2 flex-1">
@@ -273,31 +273,29 @@ export default function Page({ params }: { params: { id: string } }) {
         <PainPointsSection packId={pack.id} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
-          <div className="container px-2 md:px-6">
-            <div className="max-w-4xl mx-auto text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                    A Complete System for Operational Excellence
-                </h2>
-                <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                    This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
-                </p>
-            </div>
+            <div className="container px-2 md:px-6">
+                <div className="max-w-4xl mx-auto text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                        A Complete System for Operational Excellence
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                        This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
+                    </p>
+                </div>
 
-            <div className="max-w-4xl mx-auto space-y-4">
-                <ul className="space-y-6">
-                    {pack.sampleItems.map((item, index) => (
-                        <li key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                                {React.cloneElement(item.icon, { className: "w-5 h-5" })}
-                            </div>
-                            <div>
-                                <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                <div className="max-w-4xl mx-auto space-y-4">
+                    <ul className="space-y-3">
+                        {pack.sampleItems.map((item, index) => (
+                            <li key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50">
+                                <Check className="h-6 w-6 mt-1 shrink-0 text-green-500"/>
+                                <div>
+                                    <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-          </div>
         </section>
         
         <PricingClient pack={pack} />
