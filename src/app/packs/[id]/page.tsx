@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download } from 'lucide-react';
 import React from 'react';
-import PricingClient from './pricing-client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { painPointsContent } from '@/lib/pain-points-content';
@@ -20,6 +19,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { writeFile, utils } from 'xlsx-js-style';
 import type { Checklist as PackChecklist } from "@/lib/premium-packs";
 import Image from 'next/image';
+import PricingClient from './pricing-client';
 
 
 type Props = {
@@ -208,8 +208,7 @@ export default function Page({ params }: { params: { id: string } }) {
   
   const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
   const audience = pack.whoIsItFor || ["Industry Professionals"];
-  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
-
+  
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -274,7 +273,7 @@ export default function Page({ params }: { params: { id: string } }) {
                         A Complete System for Operational Excellence
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        This pack contains <span className="font-bold text-primary">{pack.checklists.length} professional checklists</span> covering every aspect of your operation with over <span className="font-bold text-primary">{totalTasks}+ detailed tasks</span>. Instead of just lists, you get actionable SOPs covering:
+                        This pack contains a suite of professional checklists covering every aspect of your operation, including:
                     </p>
                 </div>
 
@@ -306,5 +305,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    
