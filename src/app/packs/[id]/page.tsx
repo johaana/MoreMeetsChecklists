@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles, Siren, Bug, TrendingUp, Lock, FileLock, Users, Banknote, Bus, TestTube, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -41,7 +41,7 @@ const packImageMap: Record<string, string> = {
   'animal_shelter_pack': 'https://i.postimg.cc/hPrThfgt/animal-shelter-1.jpg',
   'hotels_and_resorts': defaultHeroImageUrl,
   'restaurants': 'https://i.postimg.cc/9QRtnf3Z/food1.jpg',
-  'jewelry_and_luxury_retail': 'https://i.postimg.cc/JnbXpSjM/luxury-retail-2.jpg',
+  'jewelry_and_luxury_retail': 'https://i.postimg.cc/LX3xVv9R/jewelry-retail2.jpg',
   'fashion_and_apparel_retail': 'https://i.postimg.cc/L5MzcDw7/fashion-retail.webp',
   'school_operations_pack': 'https://i.postimg.cc/hGC6S2JD/school1.jpg',
   'university_college_ops': 'https://i.postimg.cc/FKP89TYW/college.jpg',
@@ -274,29 +274,29 @@ export default function Page({ params }: { params: { id: string } }) {
         <PainPointsSection packId={pack.id} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
-          <div className="container px-2 md:px-6">
-            <div className="max-w-4xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                A Complete System for Operational Excellence
-              </h2>
-              <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-4">
-              {pack.sampleItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 transition-all hover:shadow-md hover:border-primary/20">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                    <Check className="h-6 w-6 text-green-600 dark:text-green-400"/>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                  </div>
+            <div className="container px-2 md:px-6">
+                <div className="max-w-4xl mx-auto text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                        A Complete System for Operational Excellence
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                        This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
+                    </p>
                 </div>
-              ))}
+
+                <div className="max-w-4xl mx-auto space-y-2">
+                    {pack.sampleItems.map((item, index) => (
+                        <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
+                                <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
+                            </div>
+                            <div>
+                                <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-          </div>
         </section>
         
         <PricingClient pack={pack} />
