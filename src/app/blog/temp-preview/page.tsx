@@ -16,25 +16,25 @@ const boeingPost = {
 
 const failurePoints = [
     {
-        title: "Missing Bolts",
-        step: "Step 1: The Oversight",
-        description: "The core physical failure: the four bolts securing the door plug were never installed during a rework at the Boeing factory.",
+        title: "The Oversight: Missing Bolts",
+        step: "Step 1: The Physical Failure",
+        description: "The NTSB found the four bolts meant to secure the door plug were never installed after a rework at the Boeing factory. The plug was opened to fix other issues, but the critical step of re-securing it was missed.",
         sop: "In-Process Quality Control (IPQC)",
         solution: "This SOP introduces a mandatory 'Quality Gate.' Work cannot proceed until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued. It creates a 'forcing function' that makes it impossible to forget a critical step.",
         icon: <AlertTriangle className="w-6 h-6 text-destructive" />
     },
     {
-        title: "Incomplete Handover",
-        step: "Step 2: The Assumption",
-        description: "Work on the door plug was reportedly started by one team and finished by another, with no formal process to communicate that the bolts still needed to be installed.",
+        title: "The Breakdown: Incomplete Handover",
+        step: "Step 2: The Communication Gap",
+        description: "Reports suggest the work was performed across different shifts. A verbal-only handover or incomplete paperwork failed to communicate that the bolts still needed to be installed before the interior panel was put back on.",
         sop: "Shift Handover Protocol",
-        solution: "This checklist mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status, including what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions between shifts.",
+        solution: "This checklist mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status—what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions.",
         icon: <BookCopy className="w-6 h-6 text-blue-500" />
     },
     {
-        title: "Accountability Void",
+        title: "The Black Hole: Accountability Void",
         step: "Step 3: The Ghost in the Machine",
-        description: "Without a verifiable record, it was impossible to know which employee was responsible for installing the bolts and who was supposed to check their work.",
+        description: "In the initial investigation, it was difficult to determine who was responsible for installing the bolts and who was supposed to check their work. Without a verifiable record, accountability disappears.",
         sop: "Traceability & Batch Records",
         solution: "This system ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating undeniable accountability.",
         icon: <ShieldCheck className="w-6 h-6 text-green-500" />
@@ -69,19 +69,19 @@ export default function TempBlogPreviewPage() {
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-center mb-8">Style 1: The Narrative List</h2>
                 <div className="space-y-8">
                     <div>
-                        <h3 className="text-xl font-semibold font-headline text-primary flex items-center gap-3">{failurePoints[0].icon} The Anatomy of the Failure: Missing Bolts</h3>
+                        <h3 className="text-xl font-semibold font-headline text-primary flex items-center gap-3">{failurePoints[0].icon} {failurePoints[0].title}</h3>
                         <p className="text-muted-foreground mt-2 ml-9">{failurePoints[0].description}</p>
-                        <p className="mt-2 ml-9"><strong className="text-foreground">The Checklisted Solution:</strong> Our <code className="font-semibold text-accent bg-secondary p-1 rounded-md">In-Process Quality Control (IPQC)</code> SOP introduces a mandatory 'Quality Gate.' Work cannot proceed until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued. This creates a 'forcing function' that makes it impossible to 'forget' a critical step.</p>
+                        <p className="mt-2 ml-9"><strong className="text-foreground">The Checklisted Solution:</strong> Our <code className="font-semibold text-accent bg-secondary p-1 rounded-md">{failurePoints[0].sop}</code> SOP introduces a mandatory 'Quality Gate.' Work cannot proceed until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued. This creates a 'forcing function' that makes it impossible to 'forget' a critical step.</p>
                     </div>
                      <div>
-                        <h3 className="text-xl font-semibold font-headline text-primary flex items-center gap-3">{failurePoints[1].icon} The Communication Breakdown: Incomplete Handover</h3>
+                        <h3 className="text-xl font-semibold font-headline text-primary flex items-center gap-3">{failurePoints[1].icon} {failurePoints[1].title}</h3>
                         <p className="text-muted-foreground mt-2 ml-9">{failurePoints[1].description}</p>
-                        <p className="mt-2 ml-9"><strong className="text-foreground">The Checklisted Solution:</strong> The <code className="font-semibold text-accent bg-secondary p-1 rounded-md">Shift Handover Protocol</code> mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status—what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions between shifts.</p>
+                        <p className="mt-2 ml-9"><strong className="text-foreground">The Checklisted Solution:</strong> The <code className="font-semibold text-accent bg-secondary p-1 rounded-md">{failurePoints[1].sop}</code> mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status—what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions between shifts.</p>
                     </div>
                     <div>
-                        <h3 className="text-xl font-semibold font-headline text-primary flex items-center gap-3">{failurePoints[2].icon} The Accountability Void: No Verifiable Record</h3>
+                        <h3 className="text-xl font-semibold font-headline text-primary flex items-center gap-3">{failurePoints[2].icon} {failurePoints[2].title}</h3>
                         <p className="text-muted-foreground mt-2 ml-9">{failurePoints[2].description}</p>
-                        <p className="mt-2 ml-9"><strong className="text-foreground">The Checklisted Solution:</strong> Our system for <code className="font-semibold text-accent bg-secondary p-1 rounded-md">Traceability & Batch Records</code> ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating undeniable accountability.</p>
+                        <p className="mt-2 ml-9"><strong className="text-foreground">The Checklisted Solution:</strong> Our system for <code className="font-semibold text-accent bg-secondary p-1 rounded-md">{failurePoints[2].sop}</code> ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating undeniable accountability.</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@ export default function TempBlogPreviewPage() {
                            <CardHeader className="flex flex-row items-start gap-4">
                                 {point.icon}
                                 <div>
-                                    <CardTitle className="text-xl font-headline text-destructive">The Failure: {point.title}</CardTitle>
+                                    <CardTitle className="text-xl font-headline text-destructive">{point.title}</CardTitle>
                                     <p className="text-sm text-muted-foreground mt-1">{point.description}</p>
                                 </div>
                             </CardHeader>
@@ -152,8 +152,8 @@ export default function TempBlogPreviewPage() {
                                 <div className="mt-3 flex items-start gap-3 rounded-lg border border-green-500/20 bg-green-500/10 p-3">
                                     <Zap className="h-5 w-5 text-green-600 mt-1 shrink-0" />
                                     <div>
-                                        <h4 className="font-semibold text-green-700 dark:text-green-400">The Intervention</h4>
-                                        <p className="text-sm text-foreground/80">The <code className="font-semibold text-accent bg-background p-1 rounded-md">{point.sop}</code> SOP would have broken the chain of failure here. {point.solution}</p>
+                                        <h4 className="font-semibold text-green-700 dark:text-green-400">The Procedural Intervention</h4>
+                                        <p className="text-sm text-foreground/80">The <code className="font-semibold text-accent bg-background p-1 rounded-md">{point.sop}</code> would have broken the chain of failure here. {point.solution}</p>
                                     </div>
                                 </div>
                             </div>
@@ -175,5 +175,3 @@ export default function TempBlogPreviewPage() {
     </div>
   );
 }
-
-    
