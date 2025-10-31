@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -143,7 +143,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             )}
             
             <div 
-              className="prose prose-lg dark:prose-invert max-w-none mx-auto prose-headings:font-headline prose-headings:text-primary prose-a:text-accent hover:prose-a:text-accent/80 prose-p:text-foreground/80 prose-table:w-full prose-table:text-sm prose-table:md:text-base [&_table]:border-collapse [&_th]:p-2 [&_th]:border [&_th]:bg-secondary/80 [&_td]:p-2 [&_td]:border first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:font-headline"
+              className="prose prose-lg dark:prose-invert max-w-none mx-auto prose-headings:font-headline prose-headings:text-primary prose-a:text-accent hover:prose-a:text-accent/80 prose-p:text-foreground/80 prose-table:w-full prose-table:text-sm prose-table:md:text-base [&_table]:border-collapse [&_th]:p-2 [&_th]:border [&_th]:bg-secondary/80 [&_td]:p-2 [&_td]:border"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <RelatedProductCard post={post} />
