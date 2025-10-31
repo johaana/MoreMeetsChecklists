@@ -20,6 +20,7 @@ import { PainPoint } from '@/components/ui/pain-point';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { writeFile, utils } from 'xlsx-js-style';
 import type { Checklist as PackChecklist } from "@/lib/premium-packs";
+import Image from 'next/image';
 
 
 type Props = {
@@ -222,7 +223,7 @@ export default function Page({ params }: { params: { id: string } }) {
     },
     offers: {
         '@type': 'Offer',
-        price: pack.priceINR,
+        price: pack.priceINR.toString(),
         priceCurrency: 'INR',
         availability: 'https://schema.org/InStock',
       },
@@ -237,28 +238,32 @@ export default function Page({ params }: { params: { id: string } }) {
       <SiteHeader />
 
       <main className="flex-1">
-        <section className="relative w-full h-[50vh] flex items-center justify-center text-white">
-            <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url(${heroImageUrl})`,
-                }}
-            />
-             <div className="container relative z-10 px-4 md:px-6">
-                 <div className="max-w-3xl text-center mx-auto space-y-4">
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter font-headline drop-shadow-md">
-                        {pack.title}
-                    </h1>
-                    <p className="text-lg md:text-xl text-white/90 [text-shadow:0_1px_3px_rgb(0_0_0_/_0.4)]">
-                        {pack.description}
-                    </p>
-                    <div className="mt-4 bg-black/30 backdrop-blur-sm p-4 rounded-lg inline-block">
-                        <h2 className="text-sm font-semibold text-white/80 mb-2">Perfect For:</h2>
-                        <p className="text-sm text-white">{audience.join(' • ')}</p>
-                    </div>
+        <section className="w-full pt-12 pb-6 md:pt-20 md:pb-10 bg-secondary/30">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center">
+              <div className="space-y-4">
+                <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary">
+                  {pack.title}
+                </h1>
+                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg lg:text-xl">
+                  {pack.description}
+                </p>
+                <div className="mt-4 bg-background/50 border p-4 rounded-lg">
+                  <h2 className="text-sm font-semibold text-primary mb-2">PERFECT FOR:</h2>
+                  <p className="text-sm text-muted-foreground">{audience.join(' • ')}</p>
                 </div>
+              </div>
+              <div className="flex justify-center">
+                <Image
+                  src={heroImageUrl}
+                  alt={pack.title}
+                  width={600}
+                  height={400}
+                  className="rounded-2xl shadow-2xl object-cover"
+                />
+              </div>
             </div>
+          </div>
         </section>
 
         <PainPointsSection packId={pack.id} />
