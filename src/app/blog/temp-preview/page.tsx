@@ -20,24 +20,21 @@ const failurePoints = [
         step: "Step 1: The Physical Failure",
         description: "The NTSB found the four bolts meant to secure the door plug were never installed after a rework at the Boeing factory. The plug was opened to fix other issues, but the critical step of re-securing it was missed.",
         sop: "In-Process Quality Control (IPQC)",
-        solution: "This SOP introduces a mandatory 'Quality Gate.' Work cannot proceed until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued. It creates a 'forcing function' that makes it impossible to forget a critical step.",
-        icon: <AlertTriangle className="w-6 h-6 text-destructive" />
+        solution: "This SOP introduces a mandatory 'Quality Gate.' Work cannot proceed until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued. It creates a 'forcing function' that makes it impossible to forget a critical step."
     },
     {
         title: "The Breakdown: Incomplete Handover",
         step: "Step 2: The Communication Gap",
         description: "Reports suggest the work was performed across different shifts. A verbal-only handover or incomplete paperwork failed to communicate that the bolts still needed to be installed before the interior panel was put back on.",
         sop: "Shift Handover Protocol",
-        solution: "This checklist mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status—what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions.",
-        icon: <BookCopy className="w-6 h-6 text-blue-500" />
+        solution: "This checklist mandates a detailed, written handover. The outgoing team must explicitly state the job's exact status—what was and was not completed. The incoming team signs to acknowledge they understand, preventing fatal assumptions."
     },
     {
         title: "The Black Hole: Accountability Void",
         step: "Step 3: The Ghost in the Machine",
         description: "In the initial investigation, it was difficult to determine who was responsible for installing the bolts and who was supposed to check their work. Without a verifiable record, accountability disappears.",
         sop: "Traceability & Batch Records",
-        solution: "This system ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating undeniable accountability.",
-        icon: <ShieldCheck className="w-6 h-6 text-green-500" />
+        solution: "This system ties every critical assembly step to the specific employee who performed it. A completed checklist becomes a permanent, signed record, linking installation, torquing, and final QC to individuals and creating undeniable accountability."
     }
 ];
 
@@ -103,7 +100,7 @@ export default function TempBlogPreviewPage() {
                             </CardHeader>
                             <CardContent className="bg-secondary/50 p-6">
                                 <h4 className="font-semibold text-primary">The Fortress of Procedure</h4>
-                                <p className="text-sm text-foreground/80 mt-2">The <code className="font-semibold text-accent bg-background p-1 rounded-md">{point.sop}</code> SOP prevents this by mandating a verifiable checklist. {point.solution}</p>
+                                <p className="text-sm text-foreground/80">The <code className="font-semibold text-accent bg-background p-1 rounded-md">{point.sop}</code> SOP prevents this by mandating a verifiable checklist. {point.solution}</p>
                             </CardContent>
                         </Card>
                     ))}
