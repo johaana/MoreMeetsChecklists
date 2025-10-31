@@ -212,15 +212,6 @@ export default function Page({ params }: { params: { id: string } }) {
   const totalChecklists = pack.checklists.length;
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
 
-  const checklistsByDept = pack.checklists.reduce((acc, checklist) => {
-      const { department } = checklist;
-      if (!acc[department]) {
-          acc[department] = [];
-      }
-      acc[department].push(checklist);
-      return acc;
-  }, {} as Record<string, PackChecklist[]>);
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -282,39 +273,34 @@ export default function Page({ params }: { params: { id: string } }) {
         <PainPointsSection packId={pack.id} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
-            <div className="container px-2 md:px-6">
-                <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                        A Complete System for Operational Excellence
-                    </h2>
-                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        This pack contains a suite of professional checklists covering every aspect of your operation. Here is a high-level overview of the areas covered:
-                    </p>
-                </div>
-
-                <div className="max-w-4xl mx-auto space-y-4">
-                     <Accordion type="multiple" className="w-full">
-                        {Object.entries(checklistsByDept).map(([department, checklists]) => (
-                            <AccordionItem value={department} key={department}>
-                                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                                    <div className="flex items-center gap-3">
-                                        {checklists[0]?.icon && React.cloneElement(checklists[0].icon, { className: "w-5 h-5 text-primary/80" })}
-                                        <span>{department}</span>
-                                    </div>
-                                </AccordionTrigger>
-                                <AccordionContent>
-                                    <ul className="list-disc pl-8 pr-4 space-y-2 text-muted-foreground">
-                                        {checklists.map((checklist) => (
-                                            <li key={checklist.title}>{checklist.summary}</li>
-                                        ))}
-                                    </ul>
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </div>
-
+          <div className="container px-2 md:px-6">
+            <div className="max-w-3xl mx-auto text-center mb-10">
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                    A Complete System: {totalChecklists} Checklists & {totalTasks}+ Tasks
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                    This pack contains a suite of professional checklists covering every aspect of your operation. Here's how it solves your biggest challenges:
+                </p>
             </div>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    {pack.sampleItems.map((item, index) => (
+                        <li key={index} className="flex items-start">
+                            <span className="h-6 w-6 mr-3 mt-1 shrink-0 text-accent">{item.icon}</span>
+                            <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                        </li>
+                    ))}
+                </ul>
+                 {pack.globalStandards && (
+                    <div className="pt-6">
+                        <p className="text-sm font-semibold text-center text-primary/80">
+                            Aligned with {pack.globalStandards.title.replace("Aligned with ", "")}
+                        </p>
+                    </div>
+                )}
+            </div>
+          </div>
         </section>
         
         <PricingClient pack={pack} />
@@ -329,3 +315,4 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
