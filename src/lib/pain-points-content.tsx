@@ -20,7 +20,7 @@ export const painPointsContent = {
         points: [
             { icon: <Eye />, title: "The Brand Dilution Disaster (Subway's 'Footlong' Scandal, USA)", description: "Multiple Subway franchisees were caught using bread shorter than 11 inches, leading to class-action lawsuits and a PR crisis that damaged the brand's core promise. Our 'Brand Audit' and 'Supply Chain SOPs' enforce portion control and supplier compliance, protecting your brand integrity." },
             { icon: <Siren />, title: "The Unchecked Employee (Domino's Pizza, USA, 2009)", description: "Two employees posted a viral video of themselves contaminating food, causing a catastrophic brand crisis. Our 'Customer Service Standards Audit' and 'Daily Operations Checklist' enforce manager presence and accountability, preventing the rogue behavior that can destroy a reputation overnight." },
-            { icon: <TrendingUp />, title: "The Franchisee Failure Cascade (Quiznos, USA, 2010s)", description: "Thousands of franchisees went bankrupt from a flawed model and lack of support, crippling the brand. Our 'Financial Audit' and 'Monthly Performance Review' checklists help you proactively coach franchisees to ensure their profitability and your royalty stream." },
+            { icon: <TrendingUp />, title: "The Franchisee Failure Cascade (Quiznos, USA, 2010s)", description: "Thousands of franchisees went bankrupt from a flawed model and lack of support. Our 'Financial Audit' and 'Monthly Performance Review' checklists help you proactively coach franchisees to ensure their profitability and your royalty stream." },
             { icon: <KeyRound />, title: "The Chaotic Grand Opening (Generic Example)", description: "A new store launch is a disaster with IT issues and untrained staff. Our 'New Franchisee Onboarding' checklist is a master guide to ensure every new unit opens flawlessly and starts generating revenue from day one." }
         ]
     },
@@ -222,6 +222,26 @@ export const painPointsContent = {
             { icon: <Sparkles />, title: "JIPMER Sterilization Failure (India, 2019)", description: "An infection outbreak was traced back to improperly sterilized surgical tools. Our 'CSSD & Sterilization' checklist, including biological indicator tests, ensures equipment is sterile." },
             { icon: <Pill />, title: "Dana-Farber Chemo Overdose (USA, 1995)", description: "A patient died after receiving a four-fold overdose of chemotherapy due to a calculation error. Our 'High-Alert Medication' SOP mandates an independent double-check for exactly these scenarios." },
             { icon: <UserCheck />, title: "Patient ID Mix-up (Multiple Cases, Global)", description: "Countless errors occur from mixing up patients with similar names. Our 'Patient Identification Protocol' requires using two identifiers (e.g., name and MRN) before any procedure or medication." }
+        ]
+    },
+    jewelry_and_luxury_retail: {
+        title: "Anatomy of a Luxury Retail Failure",
+        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
+        points: [
+            { icon: <Gem />, title: "The Graff Diamond Heist (UK, 2009)", description: "Thieves used professional makeup to disguise their identities and simply walked out with £40 million in jewels. This highlights the need for behavioral awareness training, covered in our 'Suspicious Behavior Identification' checklist." },
+            { icon: <Siren />, title: "The 'Swap' Thefts (Global, Ongoing)", description: "High-value items like watches or diamonds are swapped with fakes during a viewing. Our 'High-Value Transaction' SOP, requiring one-item-at-a-time viewing and post-viewing serial number checks, prevents this." },
+            { icon: <Zap />, title: "Rolex 'Smash and Grab' Robberies (Global, Ongoing)", description: "Gangs use hammers to smash display cases in seconds. Our 'Display Case Security' protocols recommend laminated, shatter-resistant glass and alarm integration to deter these attacks." },
+            { icon: <Lock />, title: "Antwerp Diamond Heist (Belgium, 2003)", description: "Over $100 million was stolen by bypassing the vault's multiple security systems. Our 'Vault Security' SOP includes dual-person access control and regular alarm testing to ensure layers of defense." }
+        ]
+    },
+    cinema_operations_pack: {
+        title: "Anatomy of a Cinema Failure",
+        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
+        points: [
+            { icon: <Siren />, title: "Uphaar Cinema Fire (Delhi, 1997)", description: "59 people died, not from fire, but from suffocation due to blocked exits. Our 'Fire Safety' checklist mandates daily exit checks, making such a tragedy impossible." },
+            { icon: <Bug />, title: "AMC Theater Bed Bug Infestation (USA, 2010)", description: "A viral news story about bed bugs led to a PR nightmare and costly pest control. Our 'Auditorium Cleaning' SOP includes checks for pests, preventing such outbreaks." },
+            { icon: <Projector />, title: "Interstellar Projection Error (Global, 2014)", description: "Many cinemas showed the film with incorrect sound mixing, ruining the experience. Our 'Projection & Sound QC' checklist ensures all technical aspects are perfect before every show." },
+            { icon: <Users />, title: "Aurora Movie Theater Shooting (USA, 2012)", description: "While a horrific criminal act, this tragedy led to enhanced security protocols worldwide. Our 'Crowd Management & Security' checklists help manage entry points and monitor for suspicious behavior." }
         ]
     }
 };

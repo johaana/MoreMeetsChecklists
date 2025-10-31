@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -273,29 +274,29 @@ export default function Page({ params }: { params: { id: string } }) {
         <PainPointsSection packId={pack.id} />
 
         <section id="checklists" className="w-full py-12 md:py-16">
-            <div className="container px-2 md:px-6">
-                <div className="max-w-4xl mx-auto text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                        A Complete System for Operational Excellence
-                    </h2>
-                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
-                    </p>
-                </div>
-
-                <div className="max-w-4xl mx-auto space-y-4">
-                    {pack.sampleItems.map((item, index) => (
-                        <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 transition-all hover:shadow-md hover:border-primary/20">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                <Check className="h-6 w-6 text-green-600 dark:text-green-400"/>
-                            </div>
-                            <div>
-                                <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                            </div>
-                        </div>
-                    ))}
-                </div>
+          <div className="container px-2 md:px-6">
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                A Complete System for Operational Excellence
+              </h2>
+              <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
+              </p>
             </div>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+              {pack.sampleItems.map((item, index) => (
+                <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 transition-all hover:shadow-md hover:border-primary/20">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
+                    <Check className="h-6 w-6 text-green-600 dark:text-green-400"/>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
         
         <PricingClient pack={pack} />
