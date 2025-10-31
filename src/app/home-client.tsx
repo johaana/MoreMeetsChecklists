@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -427,13 +428,11 @@ const IndividualChecklistsSection = () => {
 
 
 const WhyDetailMatters = () => {
-    const isMobile = useIsMobile();
-
     const points = [
         {
             icon: <AlertTriangle />,
             title: "One Missed Step Can Cost Everything",
-            description: "A forgotten safety check, an uncalibrated instrument, an insecure access point. These small mistakes lead to compliance fines, reputational damage, and lost revenue. Our checklists are your defense.",
+            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue. Our checklists are your defense.",
         },
         {
             icon: <Users />,
@@ -442,23 +441,23 @@ const WhyDetailMatters = () => {
         },
         {
             icon: <Shield />,
-            title: "An Auditor's Visit Shouldn't Be a Panic Attack",
-            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside and out, providing a clear, documented trail of diligence.",
+            title: "An Auditor's Visit Shouldn't Be Panic",
+            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside out, providing a clear, documented trail of diligence.",
         },
          {
             icon: <FileText />,
             title: "You Know You Need SOPs. But Where Do You Start?",
-            description: "The task of creating SOPs from scratch is daunting. We've done the work for you. Our checklists provide an expert-built foundation that is 90% of the way there.",
+            description: "The task of creating SOPs from scratch is daunting. We've done the hard work, providing an expert-built foundation that is 90% of the way there.",
         },
         {
             icon: <BarChart />,
             title: "Stop Managing Problems. Start Building Profit.",
-            description: "Every minute your team spends fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your best people to focus on innovation.",
+            description: "Every minute spent fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your team to innovate.",
         },
         {
             icon: <Award />,
             title: "Don't Let Your Business Rely on One Hero",
-            description: "What happens if your one indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone on your team can operate at a high standard.",
+            description: "What happens if your indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone can operate at a high standard.",
         }
     ];
 
@@ -583,10 +582,10 @@ const FeaturedBlogPostsSection = () => {
       <div className="container px-2 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
-            From the Debrief
+            Decoding the Black Box
           </h2>
           <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-            Insights from real-world operational failures and how to prevent them.
+            Recovering the critical data from catastrophic failures to make your business safer.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -789,3 +788,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
