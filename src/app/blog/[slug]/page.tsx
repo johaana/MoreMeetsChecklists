@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight, Zap, FileCheck2 } from 'lucide-react';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 
@@ -147,38 +147,25 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div 
               className={cn(
                   "prose dark:prose-invert max-w-none mx-auto",
+                  "text-base md:text-lg", // Base font size
                   "prose-headings:font-headline prose-headings:tracking-tight",
                   "prose-h2:text-primary",
                   "prose-h3:text-foreground/90",
-                  "prose-p:text-base prose-p:leading-relaxed", // Base mobile font size
-                  "md:prose-lg", // Larger text on medium screens and up
+                  "prose-p:leading-relaxed",
                   "prose-a:text-accent hover:prose-a:text-accent/80",
                   "prose-blockquote:border-accent prose-blockquote:text-muted-foreground",
                   "prose-strong:text-foreground/90",
-                  // Custom class for the chain of failure
-                  "[&_.chain-of-failure]:relative [&_.chain-of-failure]:mt-12 [&_.chain-of-failure]:mb-12 [&_.chain-of-failure]:py-4",
-                  // Mobile first: no left border or padding
-                  "[&_.chain-of-failure]:border-l-0 [&_.chain-of-failure]:pl-0",
-                  // Desktop: add left border and padding
-                  "md:[&_.chain-of-failure]:border-l-4 md:[&_.chain-of-failure]:border-primary md:[&_.chain-of-failure]:pl-8",
-
-                  // The vertical line connecting the dots
-                  "[&_.chain-timeline]:relative [&_.chain-timeline]:space-y-10",
-                  "[&_.chain-timeline_>_.timeline-line]:hidden", // Hide line on mobile
-                  "md:[&_.chain-timeline_>_.timeline-line]:block md:[&_.chain-timeline_>_.timeline-line]:absolute md:[&_.chain-timeline_>_.timeline-line]:left-0 md:[&_.chain-timeline_>_.timeline-line]:top-0 md:[&_.chain-timeline_>_.timeline-line]:h-full md:[&_.chain-timeline_>_.timeline-line]:w-px md:[&_.chain-timeline_>_.timeline-line]:bg-border md:[&_.chain-timeline_>_.timeline-line]:ml-4",
-
-                  // The step container
-                  "[&_.chain-step]:relative",
-
-                  // The number circle
-                  "[&_.step-number-container]:flex [&_.step-number-container]:items-center [&_.step-number-container]:gap-4 [&_.step-number-container]:mb-2",
-                  "md:[&_.step-number-container]:block md:[&_.step-number-container]:absolute md:[&_.step-number-container]:-left-8 md:[&_.step-number-container]:top-1 md:[&_.step-number-container]:mb-0",
                   
-                  "[&_.step-number]:flex [&_.step-number]:h-8 [&_.step-number]:w-8 [&_.step-number]:items-center [&_.step-number]:justify-center [&_.step-number]:rounded-full [&_.step-number]:bg-primary [&_.step-number]:text-primary-foreground [&_.step-number]:font-bold",
+                  // New styles for the analysis section
+                  "[&_.failure-analysis-section]:mt-12 [&_.failure-analysis-section]:mb-8",
+                  "[&_.failure-analysis-section_h3]:text-2xl [&_.failure-analysis-section_h3]:mb-2 [&_.failure-analysis-section_h3]:text-primary",
+                  "[&_.failure-analysis-section_p]:text-base [&_.failure-analysis-section_p]:md:text-lg",
                   
-                  // The main content for each step
-                  "[&_.step-content]:pl-0 md:pl-4"
-
+                  // New styles for the intervention box
+                  "[&_.intervention-box]:mt-6 [&_.intervention-box]:p-6 [&_.intervention-box]:rounded-xl [&_.intervention-box]:bg-secondary/50 [&_.intervention-box]:border",
+                  "[&_.intervention-box_h4]:flex [&_.intervention-box_h4]:items-center [&_.intervention-box_h4]:gap-2 [&_.intervention-box_h4]:text-lg [&_.intervention-box_h4]:font-bold [&_.intervention-box_h4]:text-primary",
+                  "[&_.intervention-box_p]:text-sm [&_.intervention-box_p]:md:text-base [&_.intervention-box_p]:text-foreground/80 [&_.intervention-box_p]:mt-2",
+                  "[&_.intervention-box_code]:font-semibold [&_.intervention-box_code]:text-accent [&_.intervention-box_code]:bg-secondary [&_.intervention-box_code]:p-1 [&_.intervention-box_code]:rounded-md"
               )}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
