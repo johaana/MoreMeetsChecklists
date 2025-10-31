@@ -249,7 +249,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <p className="max-w-[600px] text-muted-foreground text-base md:text-lg lg:text-xl">
                   {pack.description}
                 </p>
-                <div className="text-sm text-muted-foreground font-semibold">
+                 <div className="text-sm text-muted-foreground font-semibold">
                   Includes <span className="text-primary font-bold">{totalChecklists} checklists</span> with over <span className="text-primary font-bold">{totalTasks} individual tasks</span>.
                 </div>
                 <div className="mt-4 bg-background/50 border p-4 rounded-lg">
@@ -274,21 +274,25 @@ export default function Page({ params }: { params: { id: string } }) {
 
         <section id="checklists" className="w-full py-12 md:py-16">
           <div className="container px-2 md:px-6">
-            <div className="max-w-3xl mx-auto text-center mb-10">
+            <div className="max-w-4xl mx-auto text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                    A Complete System: {totalChecklists} Checklists & {totalTasks}+ Tasks
+                    A Complete System for Operational Excellence
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                    This pack contains a suite of professional checklists covering every aspect of your operation. Here's how it solves your biggest challenges:
+                    This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
                 </p>
             </div>
 
             <div className="max-w-4xl mx-auto space-y-4">
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                <ul className="space-y-6">
                     {pack.sampleItems.map((item, index) => (
-                        <li key={index} className="flex items-start">
-                            <span className="h-6 w-6 mr-3 mt-1 shrink-0 text-accent">{item.icon}</span>
-                            <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                        <li key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
+                                {React.cloneElement(item.icon, { className: "w-5 h-5" })}
+                            </div>
+                            <div>
+                                <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                            </div>
                         </li>
                     ))}
                 </ul>
