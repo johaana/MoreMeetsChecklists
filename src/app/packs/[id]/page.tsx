@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -292,13 +292,6 @@ export default function Page({ params }: { params: { id: string } }) {
                         </li>
                     ))}
                 </ul>
-                 {pack.globalStandards && (
-                    <div className="pt-6">
-                        <p className="text-sm font-semibold text-center text-primary/80">
-                            Aligned with {pack.globalStandards.title.replace("Aligned with ", "")}
-                        </p>
-                    </div>
-                )}
             </div>
           </div>
         </section>
@@ -315,4 +308,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
