@@ -78,7 +78,7 @@ function SubscriptionForm() {
         ) : (
           <Mail className="mr-2 h-4 w-4" />
         )}
-        Subscribe
+        Subscribe Now
       </Button>
     </form>
   );
@@ -775,8 +775,8 @@ export default function HomeClientPage() {
          <section className="w-full py-12 md:py-24">
             <div className="container px-2 md:px-6">
                  <div className="max-w-2xl mx-auto flex flex-col items-center gap-6 p-8 border rounded-2xl bg-secondary/50">
-                    <h3 className="font-bold text-center text-2xl font-headline text-primary">Get the Debrief.</h3>
-                    <p className="text-center text-muted-foreground">Subscribe to our newsletter for deep dives into operational disasters and the systems that prevent them.</p>
+                    <h3 className="font-bold text-center text-2xl font-headline text-primary">The Most Valuable Newsletter in Operations.</h3>
+                    <p className="text-center text-muted-foreground">One insight per edition that could save your company millions. Straight to your inbox.</p>
                     <SubscriptionForm />
                 </div>
             </div>
