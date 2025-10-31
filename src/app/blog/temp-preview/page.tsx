@@ -140,7 +140,7 @@ export default function TempBlogPreviewPage() {
 
             {/* --- STYLE 4: NUMBERED STEPS TO FAILURE --- */}
             <div className="mb-16">
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-center mb-8">Style 4: Numbered Steps to Failure</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-center mb-8">Style 4: The Chain of Failure</h2>
                  <div className="relative space-y-10 pl-8">
                      <div className="absolute left-0 top-0 h-full w-px bg-border ml-4"></div>
                      {failurePoints.map((point, index) => (
