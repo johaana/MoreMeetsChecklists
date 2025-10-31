@@ -17,7 +17,7 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
     {
       slug: 'deepfake-cfo-scam-arup',
-      title: "The $25 Million Deepfake: A Video Call Scam Fooled a CFO. Here's How an SOP Could Have Stopped It.",
+      title: `"I Thought It Was My Boss." How an AI Ghost Stole $25 Million Over a Single Video Call.`,
       publishedDate: "2024-07-31",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'pink-panther-gang-luxury-heist',
-      title: "Anatomy of a Heist: How the Pink Panther Gang Exploits Procedural Flaws in Luxury Retail.",
+      title: "The Three-Second Distraction That Costs Jewelers a Fortune. How the Pink Panthers Use Your Own Staff to Steal Millions.",
       publishedDate: "2024-07-31",
       author: "MoreMeets Team",
       tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
@@ -176,7 +176,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'dominos-india-data-breach',
-      title: "Anatomy of a Data Breach: How 18 Crore Domino's India Users Were Exposed.",
+      title: "Your Pizza, Your Data, For Sale. The Domino's Breach and the Betrayal of 18 Crore Customers.",
       publishedDate: "2024-07-30",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Data Privacy", "Brand Reputation"],
@@ -225,7 +225,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       slug: 'kota-student-crisis-hostel-mental-health-sop',
-      title: "The Kota Factory: Why India's Coaching Hubs Need a Mental Health SOP.",
+      title: "A Fan, a Locked Door, and a Final Note. Why Are India's Brightest Students Dying in Kota?",
       publishedDate: "2024-07-28",
       author: "MoreMeets Team",
       tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health"],
