@@ -285,7 +285,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
                 <div className="max-w-4xl mx-auto space-y-4">
                     {pack.sampleItems.map((item, index) => (
-                         <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 transition-all hover:shadow-md hover:border-primary/20">
+                        <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 transition-all hover:shadow-md hover:border-primary/20">
                             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
                                 <Check className="h-6 w-6 text-green-600 dark:text-green-400"/>
                             </div>
