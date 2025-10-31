@@ -237,25 +237,25 @@ export default function Page({ params }: { params: { id: string } }) {
       <SiteHeader />
 
       <main className="flex-1">
-        <section className="w-full bg-secondary/30 py-12 md:py-16">
-            <div className="container px-2 md:px-6">
-                <div className="grid md:grid-cols-[auto_1fr] items-start gap-4 md:gap-x-8 max-w-5xl mx-auto">
-                     <div className="row-start-1 md:col-start-1 flex items-center md:items-start gap-4">
-                        <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary/10 border-2 border-primary/20 shrink-0">
-                           {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
-                       </div>
-                     </div>
-                    <div className="row-start-2 md:row-start-1 md:col-start-2 space-y-2">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter font-headline">
-                            {pack.title}
-                        </h1>
-                        <p className="text-muted-foreground text-base md:text-lg">
-                            {pack.description}
-                        </p>
-                         <div className="mt-4 bg-background/50 border p-4 rounded-lg">
-                            <h2 className="text-sm font-semibold text-primary mb-2">Perfect For:</h2>
-                            <p className="text-xs md:text-sm text-foreground/80">{audience.join(' • ')}</p>
-                        </div>
+        <section className="relative w-full h-[50vh] flex items-center justify-center text-white">
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url(${heroImageUrl})`,
+                }}
+            />
+             <div className="container relative z-10 px-4 md:px-6">
+                 <div className="max-w-3xl text-center mx-auto space-y-4">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter font-headline drop-shadow-md">
+                        {pack.title}
+                    </h1>
+                    <p className="text-lg md:text-xl text-white/90 [text-shadow:0_1px_3px_rgb(0_0_0_/_0.4)]">
+                        {pack.description}
+                    </p>
+                    <div className="mt-4 bg-black/30 backdrop-blur-sm p-4 rounded-lg inline-block">
+                        <h2 className="text-sm font-semibold text-white/80 mb-2">Perfect For:</h2>
+                        <p className="text-sm text-white">{audience.join(' • ')}</p>
                     </div>
                 </div>
             </div>
