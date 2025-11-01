@@ -35,6 +35,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Dual Control SOP</h4>
             <p>A foundational principle in finance. Our <code>High-Value Transaction SOP</code> mandates that all transactions over a pre-defined threshold (e.g., $100,000) require independent electronic approval from two authorized signatories from different departments. The deepfake could fool one person, but it can't be on two separate systems getting two separate approvals simultaneously.</p>
+            <div class="embedded-cta">This exact protocol is detailed in the <strong>Enterprise Risk & Cybersecurity Pack</strong>. <a href="/packs/enterprise_risk_cybersecurity_pack">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -70,6 +71,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: "One Item Out" Rule</h4>
             <p>Our <code>High-Value Transaction SOP</code> mandates a strict "one item out at a time" rule for any item over a certain value. This isn't a suggestion; it's a non-negotiable policy that removes the opportunity for sleight of hand entirely and gives the employee a simple, powerful reason to control the interaction.</p>
+            <div class="embedded-cta">This exact rule is a core component of our <strong>Jewelry & Luxury Retail Pack</strong>. <a href="/packs/jewelry_and_luxury_retail">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -114,6 +116,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Vendor Onboarding & Risk Assessment</h4>
             <p>Our <code>Vendor Onboarding & Risk Assessment</code> checklist would mandate a formal risk assessment before any major vendor change. It would immediately flag the "single warehouse" strategy as a critical, high-impact risk and force management to create a contingency plan. The SOP would also require a phased rollout, running the new vendor in parallel with the old one for a period to ensure stability before a full switch.</p>
+             <div class="embedded-cta">This protocol is a key part of our <strong>Logistics & Warehouse Pack</strong>. <a href="/packs/logistics_warehouse_pack">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -149,6 +152,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Access Review SOP</h4>
             <p>Our <code>Access Review SOP</code> mandates a quarterly, manager-led review of who has access to customer databases. It enforces the "Principle of Least Privilege"—if you don't need it for your job, you don't get access. It also includes an offboarding checklist to ensure access is terminated on an employee's last day, not weeks later.</p>
+             <div class="embedded-cta">This SOP is included in the <strong>Enterprise Risk & Cybersecurity Pack</strong>. <a href="/packs/enterprise_risk_cybersecurity_pack">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -184,6 +188,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Proactive Monitoring</h4>
             <p>Our <code>Student Wellness SOP</code> mandates a simple, non-invasive weekly check-in with a rotating 20% of students, simply asking how they are coping. This moves the interaction from passive observation to active, documented engagement, creating a regular, low-pressure opportunity for a student to voice concerns.</p>
+            <div class="embedded-cta">Our <strong>University & College Operations Pack</strong> details this full SOP. <a href="/packs/university_college_ops">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -228,6 +233,7 @@ export const blogPosts: BlogPost[] = [
                 <div class="intervention-box">
                     <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Vendor Security Assessment</h4>
                     <p>Our <code>Vendor Security Assessment</code> checklist mandates a pre-onboarding security questionnaire. A mandatory, non-negotiable question like "Is Multi-Factor Authentication enforced on ALL remote access portals?" would have immediately raised a red flag, forcing the vendor to fix the critical vulnerability before being granted access to the network.</p>
+                    <div class="embedded-cta">This exact checklist is included in the <strong>Enterprise Risk & Cybersecurity Pack</strong>. <a href="/packs/enterprise_risk_cybersecurity_pack">Explore the toolkit &rarr;</a></div>
                 </div>
             </div>
 
@@ -263,6 +269,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: In-Process Quality Control (IPQC)</h4>
             <p>Our <code>IPQC</code> checklist introduces a mandatory "Quality Gate." Work on a sub-assembly cannot proceed to the next stage until a separate QC inspector independently verifies (with a signature and timestamp) that all fasteners are correctly installed and torqued to specification. It creates an independent check that breaks the chain of error.</p>
+             <div class="embedded-cta">This protocol is detailed in our <strong>Manufacturing Operations & EHS Pack</strong>. <a href="/packs/manufacturing_operations_ehs_pack">Explore the full toolkit &rarr;</a></div>
           </div>
         </div>
 
@@ -307,6 +314,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Crowd Management & Safety SOP</h4>
             <p>This SOP mandates dedicated CCTV operators to monitor real-time crowd density. More importantly, it requires stewards at the entrance to each pen to use clicker counters. If a sector reaches a pre-defined threshold (e.g., 85% capacity), a protocol is triggered to redirect fans, preventing a crush before it begins.</p>
+            <div class="embedded-cta">Learn more in our <strong>Sports Clubs & Stadium Operations Pack</strong>. <a href="/packs/sports_clubs_stadium_operations_pack">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -351,6 +359,7 @@ export const blogPosts: BlogPost[] = [
               <div class="intervention-box">
                 <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Physical Walk-Through</h4>
                 <p>Our SOP mandates that the driver or attendant must physically walk from the back of the bus to the front, looking under every single seat, after the last child has exited. A sleeping child can easily be missed from the driver's mirror alone.</p>
+                <div class="embedded-cta">This life-saving protocol is included in the <strong>School Operations Pack</strong>. <a href="/packs/school_operations_pack">See the Full Pack &rarr;</a></div>
               </div>
             </div>
 
@@ -395,6 +404,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Route Mapping & Risk Assessment</h4>
             <p>Our SOP mandates a quarterly review and mapping of primary *and* secondary shipping routes for all critical supplies. Instead of scrambling, a company with this SOP would have already identified and costed the alternative route around Africa, allowing for an immediate and orderly pivot with a clear understanding of the financial impact.</p>
+             <div class="embedded-cta">This planning framework is a core part of the <strong>Logistics & Warehouse Pack</strong>. <a href="/packs/logistics_warehouse_pack">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 
@@ -430,6 +440,7 @@ export const blogPosts: BlogPost[] = [
           <div class="intervention-box">
             <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Fire Safety & Evacuation SOP</h4>
             <p>Our <code>Fire Safety & Evacuation SOP</code> mandates a physical check of *every single emergency exit* before the first show of the day. The duty manager must physically open each door and sign a log confirming it is clear and operational. An unopenable door would be a "show-stopper" event, preventing the cinema from opening and creating an undeniable paper trail of diligence.</p>
+            <div class="embedded-cta">This daily safety check is a core part of our <strong>Cinema & Multiplex Operations Pack</strong>. <a href="/packs/cinema_operations_pack">See the Full Pack &rarr;</a></div>
           </div>
         </div>
 

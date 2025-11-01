@@ -207,15 +207,22 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   "prose-blockquote:border-accent prose-blockquote:text-muted-foreground",
                   "prose-strong:text-foreground/90",
                   
-                  // New styles for the analysis section
+                  // Styles for the failure analysis section
                   "[&_.failure-analysis-section]:mt-12 [&_.failure-analysis-section]:mb-8",
                   "[&_.failure-analysis-section_h3]:text-2xl [&_.failure-analysis-section_h3]:mb-2 [&_.failure-analysis-section_h3]:text-primary",
                   
-                  // New styles for the intervention box
+                  // Styles for the intervention box
                   "[&_.intervention-box]:mt-6 [&_.intervention-box]:p-6 [&_.intervention-box]:rounded-xl [&_.intervention-box]:bg-secondary/50 [&_.intervention-box]:border",
                   "[&_.intervention-box_h4]:flex [&_.intervention-box_h4]:items-center [&_.intervention-box_h4]:gap-2 [&_.intervention-box_h4]:text-lg [&_.intervention-box_h4]:font-bold [&_.intervention-box_h4]:text-primary",
                   "[&_.intervention-box_p]:text-sm [&_.intervention-box_p]:md:text-base [&_.intervention-box_p]:text-foreground/80 [&_.intervention-box_p]:mt-2",
-                  "[&_.intervention-box_code]:font-semibold [&_.intervention-box_code]:text-accent [&_.intervention-box_code]:bg-secondary [&_.intervention-box_code]:p-1 [&_.intervention-box_code]:rounded-md"
+                  "[&_.intervention-box_code]:font-semibold [&_.intervention-box_code]:text-accent [&_.intervention-box_code]:bg-secondary [&_.intervention-box_code]:p-1 [&_.intervention-box_code]:rounded-md",
+
+                   // NEW styles for the embedded CTA
+                  "[&_.embedded-cta]:mt-4 [&_.embedded-cta]:pt-4 [&_.embedded-cta]:border-t [&_.embedded-cta]:border-dashed [&_.embedded-cta]:border-primary/20",
+                  "[&_.embedded-cta]:text-sm [&_.embedded-cta]:text-center [&_.embedded-cta]:text-muted-foreground",
+                  "[&_.embedded-cta_strong]:text-foreground",
+                  "[&_.embedded-cta_a]:font-bold [&_.embedded-cta_a]:text-accent [&_.embedded-cta_a]:underline-offset-4 [&_.embedded-cta_a]:hover:text-accent/80"
+
               )}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
