@@ -136,7 +136,18 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
             </div>
 
             {/* Mobile Filters */}
-            <div className="md:hidden fixed bottom-4 right-4 z-40">
+            <div className="md:hidden fixed bottom-4 right-4 z-40 flex items-center gap-2">
+                 {activeFilter && (
+                    <Button 
+                        size="sm" 
+                        variant="secondary" 
+                        onClick={() => setActiveFilter(null)} 
+                        className="rounded-full shadow-lg h-12"
+                    >
+                        <X className="w-4 h-4 mr-1" />
+                        Clear
+                    </Button>
+                )}
                  <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                     <SheetTrigger asChild>
                         <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
