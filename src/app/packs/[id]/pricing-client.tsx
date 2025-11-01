@@ -9,223 +9,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '../actions';
 import { Input } from '@/components/ui/input';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { Info } from 'lucide-react';
-
-
-function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
-    if (!scenario) return null;
-    const isMobile = useIsMobile();
-
-    return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
-                 <Button variant="accent" className="w-full">
-                    <Eye className="w-4 h-4 mr-2" />
-                    Preview a Real-World Scenario
-                </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent className="max-w-4xl">
-                <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline flex items-center gap-3">
-                         <Sparkles className="w-6 h-6 text-accent" />
-                        Scenario: {scenario.title}
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                        {scenario.description}
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <ScrollArea className="max-h-[60vh] pr-6">
-                    <div className="text-sm text-muted-foreground mt-2 mb-4">The full checklist pack contains dozens of such integrated protocols. This is just a sample of how they work together.</div>
-                     {isMobile ? (
-                        <div className="space-y-4">
-                            {scenario.tasks.map((task, index) => (
-                                <Card key={index} className="p-4">
-                                    <p className="font-bold">{task.description}</p>
-                                    <p className="text-sm text-muted-foreground mt-1"><strong>Source:</strong> {task.sourceChecklist}</p>
-                                    <div className="mt-2">
-                                        <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
-                                            {task.priority} Priority
-                                        </Badge>
-                                    </div>
-                                </Card>
-                            ))}
-                        </div>
-                    ) : (
-                        <Table className="mt-4 border rounded-lg">
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Critical Task</TableHead>
-                                    <TableHead>Source Checklist</TableHead>
-                                    <TableHead>Priority</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {scenario.tasks.map((task, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell className="font-medium">{task.description}</TableCell>
-                                        <TableCell className="text-muted-foreground">{task.sourceChecklist}</TableCell>
-                                        <TableCell>
-                                            <Badge variant={task.priority === 'High' ? 'destructive' : 'secondary'}>
-                                                {task.priority}
-                                            </Badge>
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    )}
-                </ScrollArea>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Close Preview</AlertDialogCancel>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
-    );
-}
-
-function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
-    const checklist = pack.checklists[0];
-    if (!checklist) return null;
-    const remainingTasks = checklist.tasks.length > 5 ? checklist.tasks.length - 5 : 0;
-    const isMobile = useIsMobile();
-
-    return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
-                 <Button variant="ghost" className="w-full">
-                    <FileText className="w-4 h-4 mr-2" />
-                    Preview a Sample Checklist
-                </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent className="max-w-6xl">
-                 <AlertDialogHeader>
-                    <AlertDialogTitle className="font-headline flex items-start gap-4 text-2xl">
-                       <div className="p-2 bg-primary/10 rounded-md">
-                         {React.cloneElement(pack.icon, { className: 'w-6 h-6 text-primary' })}
-                       </div>
-                        <span>Sample Preview: {pack.title}</span>
-                    </AlertDialogTitle>
-                </AlertDialogHeader>
-                <AlertDialogDescription className="text-left pt-2 text-base">
-                    This is a detailed preview of one of the <strong>{pack.checklists.length} checklists</strong> in this pack. The final downloaded Excel file is a fully editable tool and includes additional columns like <strong>'Status', 'Assigned To', and 'Notes'</strong> for your team to use.
-                </AlertDialogDescription>
-                <ScrollArea className="max-h-[50vh] pr-6 mt-4">
-                    <TooltipProvider>
-                        <div className="border rounded-lg overflow-hidden bg-background">
-                            <div className="p-4 bg-secondary/50">
-                                    <h3 className="text-xl font-bold font-headline">{checklist.title}</h3>
-                            </div>
-                            {isMobile ? (
-                                <div className="p-4 space-y-4">
-                                {checklist.tasks.slice(0, 5).map((task) => (
-                                    <Card key={task.id} className="p-4">
-                                        <div className="flex justify-between items-start">
-                                            <p className="font-bold flex-1 pr-2">{task.description}</p>
-                                            {task.consequence && (
-                                                <Tooltip>
-                                                    <TooltipTrigger asChild><Info className="w-4 h-4 text-muted-foreground hover:text-accent cursor-pointer shrink-0"/></TooltipTrigger>
-                                                    <TooltipContent className="max-w-xs">
-                                                        <p className='font-bold text-accent'>Why it matters:</p>
-                                                        <p>{task.consequence}</p>
-                                                    </TooltipContent>
-                                                </Tooltip>
-                                            )}
-                                        </div>
-                                        <p className="text-sm text-muted-foreground mt-2"><strong>Proof:</strong> {task.proof}</p>
-                                        <div className="flex gap-2 mt-2">
-                                            <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
-                                                {task.priority} Priority
-                                            </Badge>
-                                            <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
-                                                {task.riskLevel} Risk
-                                            </Badge>
-                                            <Badge variant="outline">Pending</Badge>
-                                        </div>
-                                        <p className="text-xs text-muted-foreground mt-2 font-mono">ID: {task.id}</p>
-                                    </Card>
-                                ))}
-                                </div>
-                            ) : (
-                                <Table className="text-sm border-t">
-                                     <TableHeader>
-                                    <TableRow className="bg-primary/5 border-b-0">
-                                        <TableHead className="p-2 text-primary/80 font-bold" colSpan={6}>
-                                            <div className="flex justify-between items-center text-xs">
-                                                <span><strong>Dept:</strong> {checklist.department}</span>
-                                                <span><strong>Freq:</strong> {checklist.frequency}</span>
-                                                <span><strong>Role:</strong> {checklist.role}</span>
-                                            </div>
-                                        </TableHead>
-                                    </TableRow>
-                                    <TableRow className="bg-primary/10">
-                                        <TableHead className="w-[100px] p-2 text-primary font-bold">Task ID</TableHead>
-                                        <TableHead className="w-[40%] p-2 text-primary font-bold">Task Description</TableHead>
-                                        <TableHead className="p-2 text-primary font-bold">Priority</TableHead>
-                                        <TableHead className="p-2 text-primary font-bold">Risk Level</TableHead>
-                                        <TableHead className="p-2 text-primary font-bold">Proof / Evidence</TableHead>
-                                        <TableHead className="p-2 text-primary font-bold">Status</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {checklist.tasks.slice(0, 5).map((task) => (
-                                        <TableRow key={task.id} className="border-t">
-                                            <TableCell className="p-2 font-mono">{task.id}</TableCell>
-                                            <TableCell className="p-2 font-medium">
-                                                <div className="flex items-start gap-2">
-                                                    <span>{task.description}</span>
-                                                    {task.consequence && (
-                                                        <Tooltip>
-                                                            <TooltipTrigger asChild><Info className="w-3.5 h-3.5 text-muted-foreground hover:text-accent cursor-pointer shrink-0"/></TooltipTrigger>
-                                                            <TooltipContent className="max-w-xs">
-                                                                <p className='font-bold text-accent'>Why it matters:</p>
-                                                                <p>{task.consequence}</p>
-                                                            </TooltipContent>
-                                                        </Tooltip>
-                                                    )}
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="p-2">
-                                                <Badge variant={task.priority === 'High' ? 'destructive' : task.priority === 'Medium' ? 'secondary' : 'outline'}>
-                                                    {task.priority}
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="p-2">
-                                                <Badge variant={task.riskLevel === 'High' ? 'destructive' : task.riskLevel === 'Medium' ? 'secondary' : 'outline'}>
-                                                    {task.riskLevel}
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="p-2 text-muted-foreground">{task.proof}</TableCell>
-                                            <TableCell className="p-2">
-                                                <Badge variant="outline">Pending</Badge>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                            )}
-                        </div>
-                    </TooltipProvider>
-                </ScrollArea>
-                {remainingTasks > 0 && (
-                    <div className="text-center text-sm text-muted-foreground p-3 bg-secondary/50 rounded-md mt-4">
-                        This is a sample of the full checklist, which contains <strong>{remainingTasks} more</strong> detailed tasks.
-                    </div>
-                )}
-                <AlertDialogFooter className="pt-4">
-                        <AlertDialogCancel>Close Preview</AlertDialogCancel>
-                    </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
-    );
-}
 
 const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packId: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
@@ -322,17 +108,19 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
     switch(standard.toUpperCase()) {
         case 'NABH': return <Star className="w-4 h-4 text-green-600" />;
         case 'JCI': return <Globe className="w-4 h-4 text-blue-600" />;
-        case 'WHO GUIDELINES': return <Check className="w-4 h-4 text-cyan-600" />;
+        case 'WHO GUIDELINES': return <HeartPulse className="w-4 h-4 text-cyan-600" />;
         case 'ISO 15189': return <Book className="w-4 h-4 text-purple-600" />;
+        case 'ISO 9001': return <Award className="w-4 h-4 text-yellow-600" />;
+        case 'HACCP': return <ShieldCheck className="w-4 h-4 text-red-600" />;
+        case 'OSHA': return <HardHat className="w-4 h-4 text-orange-600" />;
         default: return <Award className="w-4 h-4 text-gray-500" />;
     }
 }
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
-    
+
     if (pack.priceINR === 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
@@ -388,7 +176,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
                             <div className="flex items-baseline justify-center gap-2">
                                 <p className="text-5xl font-extrabold">₹{pack.priceINR}</p>
-                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
+                                <p className="text-sm text-muted-foreground">/ One-time payment. Forever yours.</p>
                             </div>
                            
                             <div className='space-y-4'>
@@ -425,17 +213,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                            <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                    Need custom branding or team licensing? Book a Call
+                                    Need this pack tailored to your brand's specific needs? Schedule a call.
                                 </Link>
                             </Button>
                         </CardFooter>
                     </Card>
                 </div>
-                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
-                    {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
-                </div>
             </div>
         </section>
     );
 }
+
