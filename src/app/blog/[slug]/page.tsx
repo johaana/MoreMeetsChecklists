@@ -171,7 +171,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <header className="mb-8 text-center">
                <div className="flex justify-center flex-wrap gap-2 mb-4">
                 {post.tags.map(tag => (
-                  <Badge key={tag} variant="secondary">{tag}</Badge>
+                   <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag}>
+                    <Badge variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer">{tag}</Badge>
+                  </Link>
                 ))}
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-headline tracking-tight mb-4 text-primary">
@@ -212,10 +214,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   "[&_.failure-analysis-section_h3]:text-2xl [&_.failure-analysis-section_h3]:mb-2 [&_.failure-analysis-section_h3]:text-primary",
                   
                   // Styles for the intervention box
-                  "[&_.intervention-box]:mt-6 [&_.intervention-box]:p-6 [&_.intervention-box]:rounded-xl [&_.intervention-box]:bg-muted/30 [&_.intervention-box]:border-l-4 [&_.intervention-box]:border-l-primary",
+                   "[&_.intervention-box]:mt-6 [&_.intervention-box]:p-6 [&_.intervention-box]:rounded-xl [&_.intervention-box]:bg-muted/30 [&_.intervention-box]:border-l-4 [&_.intervention-box]:border-l-primary",
                   "[&_.intervention-box_h4]:flex [&_.intervention-box_h4]:items-center [&_.intervention-box_h4]:gap-2 [&_.intervention-box_h4]:text-lg [&_.intervention-box_h4]:font-bold [&_.intervention-box_h4]:text-primary",
                   "[&_.intervention-box_p]:text-sm [&_.intervention-box_p]:md:text-base [&_.intervention-box_p]:text-foreground/80 [&_.intervention-box_p]:mt-2",
-                  "[&_.intervention-box_code]:font-semibold [&_.intervention-box_code]:text-foreground",
+                  "[&_.intervention-box_code]:font-bold [&_.intervention-box_code]:text-foreground",
 
                    // NEW styles for the embedded CTA
                   "[&_.embedded-cta]:mt-4 [&_.embedded-cta]:pt-4 [&_.embedded-cta]:border-t [&_.embedded-cta]:border-dashed [&_.embedded-cta]:border-primary/20",

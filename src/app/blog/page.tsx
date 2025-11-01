@@ -2,13 +2,14 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { blogPosts } from '@/lib/blog-posts';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown } from 'lucide-react';
+import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { subscribeToBlog } from './actions';
@@ -99,7 +100,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                     onClick={() => setActiveFilter(null)}
                     className="rounded-full"
                 >
-                    All
+                    All Posts
                 </Button>
                 {primaryTags.map(tag => (
                     <Button
@@ -126,6 +127,12 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         ))}
                     </DropdownMenuContent>
                 </DropdownMenu>
+                 {activeFilter && (
+                    <Button variant="ghost" size="sm" onClick={() => setActiveFilter(null)} className="rounded-full">
+                        <X className="w-4 h-4 mr-2" />
+                        Clear filter
+                    </Button>
+                )}
             </div>
 
             {/* Mobile Filters */}
@@ -168,14 +175,27 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
     );
 }
 
+function BlogListPageContent() {
+  const searchParams = useSearchParams();
+  const tagFilterFromUrl = searchParams.get('tag');
 
-export default function BlogListPage() {
   const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
-  const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = React.useState<string | null>(tagFilterFromUrl);
+
+  React.useEffect(() => {
+      setActiveFilter(tagFilterFromUrl);
+  }, [tagFilterFromUrl]);
+
 
   const filteredPosts = activeFilter
     ? otherPosts.filter(post => post.tags.includes(activeFilter))
     : otherPosts;
+
+  const handleSetFilter = (tag: string | null) => {
+    setActiveFilter(tag);
+    const url = tag ? `/blog?tag=${encodeURIComponent(tag)}` : '/blog';
+    window.history.pushState({ ...window.history.state, as: url, url: url }, '', url);
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -193,7 +213,7 @@ export default function BlogListPage() {
                 </div>
 
                 {/* Featured Post */}
-                {featuredPost && (
+                {featuredPost && !activeFilter && (
                     <div className="mb-16">
                         <Link href={`/blog/${featuredPost.slug}`} className="block group">
                              <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
@@ -210,7 +230,11 @@ export default function BlogListPage() {
                                     )}
                                     <div className="p-6 bg-card">
                                         <div className="flex flex-wrap gap-2 mb-2">
-                                            {featuredPost.tags.map(tag => ( <Badge key={tag} variant="secondary">{tag}</Badge>))}
+                                            {featuredPost.tags.map(tag => ( 
+                                                <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag} onClick={(e) => e.stopPropagation()}>
+                                                    <Badge variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer">{tag}</Badge>
+                                                </Link>
+                                            ))}
                                         </div>
                                         <CardTitle className="text-2xl font-headline">{featuredPost.title}</CardTitle>
                                         <CardDescription className="mt-2 text-base">{featuredPost.description}</CardDescription>
@@ -239,7 +263,9 @@ export default function BlogListPage() {
                                         <div className="relative z-10 p-10 space-y-4 text-white">
                                             <div className="flex flex-wrap gap-2">
                                                 {featuredPost.tags.map(tag => (
-                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>
+                                                     <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag} onClick={(e) => e.stopPropagation()}>
+                                                        <Badge variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer">{tag}</Badge>
+                                                    </Link>
                                                 ))}
                                             </div>
                                             <CardTitle className="text-4xl font-headline text-white drop-shadow-lg">
@@ -264,7 +290,7 @@ export default function BlogListPage() {
                     </div>
                 )}
                 
-                <FilterControls activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+                <FilterControls activeFilter={activeFilter} setActiveFilter={handleSetFilter} />
 
 
                 {/* Other Posts */}
@@ -289,7 +315,9 @@ export default function BlogListPage() {
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                     {post.tags.map(tag => (
-                                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                                         <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag} onClick={(e) => e.stopPropagation()}>
+                                            <Badge variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer">{tag}</Badge>
+                                        </Link>
                                     ))}
                                 </div>
                                 <CardTitle className="text-xl font-headline">
@@ -301,7 +329,7 @@ export default function BlogListPage() {
                             <CardContent className="flex-1">
                                 <CardDescription>{post.description}</CardDescription>
                             </CardContent>
-                            <CardFooter className="flex-col items-start gap-4 p-4 md:p-6 md:pt-0">
+                             <CardFooter className="flex-col items-start gap-4 p-4 md:p-6 md:pt-0">
                                 <Button asChild variant="secondary" size="sm" className="w-full md:hidden">
                                   <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>
@@ -323,4 +351,13 @@ export default function BlogListPage() {
       <Footer />
     </div>
   );
+}
+
+
+export default function BlogListPage() {
+    return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <BlogListPageContent />
+        </React.Suspense>
+    )
 }
