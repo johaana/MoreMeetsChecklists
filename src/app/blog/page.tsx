@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { blogPosts } from '@/lib/blog-posts';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -177,6 +177,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 
 function BlogListPageContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const tagFilterFromUrl = searchParams.get('tag');
 
   const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
@@ -187,14 +188,19 @@ function BlogListPageContent() {
   }, [tagFilterFromUrl]);
 
 
-  const filteredPosts = activeFilter
-    ? otherPosts.filter(post => post.tags.includes(activeFilter))
-    : otherPosts;
+  const displayedPosts = activeFilter ? [featuredPost, ...otherPosts].filter(p => p.tags.includes(activeFilter!)) : [featuredPost, ...otherPosts];
+  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
+
 
   const handleSetFilter = (tag: string | null) => {
     setActiveFilter(tag);
     const url = tag ? `/blog?tag=${encodeURIComponent(tag)}` : '/blog';
     window.history.pushState({ ...window.history.state, as: url, url: url }, '', url);
+  };
+  
+  const handleTagClick = (e: React.MouseEvent, tag: string) => {
+    e.stopPropagation();
+    router.push(`/blog?tag=${encodeURIComponent(tag)}`);
   };
 
   return (
@@ -231,9 +237,9 @@ function BlogListPageContent() {
                                     <div className="p-6 bg-card">
                                         <div className="flex flex-wrap gap-2 mb-2">
                                             {featuredPost.tags.map(tag => ( 
-                                                <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag} onClick={(e) => e.stopPropagation()}>
-                                                    <Badge variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer">{tag}</Badge>
-                                                </Link>
+                                                <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                    {tag}
+                                                </Badge>
                                             ))}
                                         </div>
                                         <CardTitle className="text-2xl font-headline">{featuredPost.title}</CardTitle>
@@ -263,9 +269,9 @@ function BlogListPageContent() {
                                         <div className="relative z-10 p-10 space-y-4 text-white">
                                             <div className="flex flex-wrap gap-2">
                                                 {featuredPost.tags.map(tag => (
-                                                     <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag} onClick={(e) => e.stopPropagation()}>
-                                                        <Badge variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer">{tag}</Badge>
-                                                    </Link>
+                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                        {tag}
+                                                    </Badge>
                                                 ))}
                                             </div>
                                             <CardTitle className="text-4xl font-headline text-white drop-shadow-lg">
@@ -294,11 +300,11 @@ function BlogListPageContent() {
 
 
                 {/* Other Posts */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {filteredPosts.map((post) => (
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {(activeFilter ? displayedPosts : otherPosts).map((post) => (
                         <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                           <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
                             {post.imageUrl ? (
-                                <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
                                     <Image
                                         src={post.imageUrl}
                                         alt={post.title}
@@ -306,18 +312,18 @@ function BlogListPageContent() {
                                         height={340}
                                         className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                                     />
-                                </Link>
                             ): (
                                <div className="w-full h-48 bg-secondary flex items-center justify-center">
                                  <p className="text-muted-foreground text-sm">No Image</p>
                                </div>
                             )}
+                            </Link>
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
-                                    {post.tags.map(tag => (
-                                         <Link href={`/blog?tag=${encodeURIComponent(tag)}`} key={tag} onClick={(e) => e.stopPropagation()}>
-                                            <Badge variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer">{tag}</Badge>
-                                        </Link>
+                                     {post.tags.map(tag => (
+                                        <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                            {tag}
+                                        </Badge>
                                     ))}
                                 </div>
                                 <CardTitle className="text-xl font-headline">
@@ -361,3 +367,5 @@ export default function BlogListPage() {
         </React.Suspense>
     )
 }
+
+    
