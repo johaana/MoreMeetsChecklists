@@ -215,7 +215,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   "[&_.intervention-box]:mt-6 [&_.intervention-box]:p-6 [&_.intervention-box]:rounded-xl [&_.intervention-box]:bg-muted/30 [&_.intervention-box]:border-l-4 [&_.intervention-box]:border-l-primary",
                   "[&_.intervention-box_h4]:flex [&_.intervention-box_h4]:items-center [&_.intervention-box_h4]:gap-2 [&_.intervention-box_h4]:text-lg [&_.intervention-box_h4]:font-bold [&_.intervention-box_h4]:text-primary",
                   "[&_.intervention-box_p]:text-sm [&_.intervention-box_p]:md:text-base [&_.intervention-box_p]:text-foreground/80 [&_.intervention-box_p]:mt-2",
-                  "[&_.intervention-box_code]:font-semibold [&_.intervention-box_code]:text-accent",
+                  "[&_.intervention-box_code]:font-semibold [&_.intervention-box_code]:text-foreground",
 
                    // NEW styles for the embedded CTA
                   "[&_.embedded-cta]:mt-4 [&_.embedded-cta]:pt-4 [&_.embedded-cta]:border-t [&_.embedded-cta]:border-dashed [&_.embedded-cta]:border-primary/20",
