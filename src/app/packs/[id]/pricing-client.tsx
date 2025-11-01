@@ -7,7 +7,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark } from 'lucide-react';
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -265,9 +265,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
         const result = await addContact({ email, packId: pack.id });
 
         if (result.success) {
-            // This part would ideally be handled by a serverless function after successful contact addition
-            // For now, we simulate the download directly.
-            // handleDownload(pack); 
             setSubmitted(true);
             toast({
                 title: "Check Your Inbox!",
@@ -311,7 +308,21 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     )
 }
 
+const ComplianceIcon = ({ standard }: { standard: string }) => {
+    switch(standard.toLowerCase()) {
+        case 'iso': return <Award className="w-5 h-5 text-blue-600" />;
+        case 'nabh': return <Star className="w-5 h-5 text-green-600" />;
+        case 'jci': return <Globe className="w-5 h-5 text-purple-600" />;
+        case 'haccp': return <Book className="w-5 h-5 text-red-600" />;
+        case 'osha': return <Shield className="w-5 h-5 text-yellow-600" />;
+        default: return <Check className="w-5 h-5 text-gray-500" />;
+    }
+}
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
+
+    const totalChecklists = pack.checklists.length;
+    const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
     
     if (pack.priceINR === 0) {
         return (
@@ -333,7 +344,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
                                 </ul>
                             </CardContent>
@@ -352,37 +363,62 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
-                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Toolkit Instantly</h2>
-                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Worth ₹25,000+ in SOP creation time.</p>
+                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Instant-Download Toolkit</h2>
+                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours.</p>
                 </div>
                 <div className="flex justify-center">
-                    <Card className="flex flex-col max-w-lg border-2 border-accent shadow-xl">
-                        <CardHeader>
+                    <Card className="flex flex-col max-w-xl border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
+                        <CardHeader className="p-6 bg-secondary/30">
                              <div className="flex justify-between items-center">
-                                <div className="flex items-center gap-3">
+                                <h3 className="text-2xl font-bold font-headline text-primary flex items-center gap-3">
                                     <Landmark className="w-7 h-7 text-accent" />
-                                    <CardTitle className="text-2xl">Global Compliance Pack</CardTitle>
-                                </div>
+                                    Global Compliance Pack
+                                </h3>
                                  {pack.badgeText && (
                                     <Badge variant="accent">{pack.badgeText}</Badge>
                                 )}
                             </div>
-                            <CardDescription>The complete, expert-built checklist pack for your industry.</CardDescription>
-                            <div className="flex items-baseline gap-4 pt-4">
-                                <p className="text-5xl font-bold">₹{pack.priceINR}</p>
-                            </div>
+                            <CardDescription className='pt-1'>{pack.description}</CardDescription>
                         </CardHeader>
-                        <CardContent className="flex-1">
-                            <ul className="space-y-3 text-muted-foreground text-sm">
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Globally Compliant:</span><span className="ml-1">Aligned with international frameworks like ISO, JCI, HACCP, and more.</span></li>
-                            </ul>
+                        <CardContent className="p-6 flex-1 flex flex-col gap-6">
+                            <div className="flex items-baseline justify-center gap-2">
+                                <p className="text-5xl font-extrabold">₹{pack.priceINR}</p>
+                                <p className="text-sm text-muted-foreground">/ one-time payment</p>
+                            </div>
+                           
+                            <div className='space-y-4'>
+                                <h4 className="font-semibold text-center">WHAT'S INCLUDED:</h4>
+                                <ul className="space-y-3 text-sm">
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>{totalChecklists} Expert-Built Checklists</strong> ({totalTasks}+ total tasks)</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Audit-Ready & Globally Compliant</strong> framework.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Instant Download</strong> in fully editable Excel format.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Lifetime Access</strong> to all future updates for this pack.</span></li>
+                                </ul>
+                            </div>
+                             {pack.globalStandards && (
+                                <div>
+                                    <h4 className="font-semibold text-center text-sm mb-3">ALIGNED WITH:</h4>
+                                    <div className="flex justify-center flex-wrap gap-x-4 gap-y-2">
+                                        {pack.globalStandards.standards.slice(0, 4).map(standard => (
+                                            <div key={standard.name} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                                                <ComplianceIcon standard={standard.name.split(' ')[0]} />
+                                                <span>{standard.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                             <div className="text-center bg-secondary/50 p-4 rounded-lg border border-dashed border-primary/20">
+                                <p className="font-bold text-primary">Worth ₹25,000+ in SOP creation time.</p>
+                                <blockquote className="text-sm text-muted-foreground italic mt-2">“Every MoreMeets pack is globally compliant. Because operational excellence should be accessible, not expensive.”</blockquote>
+                            </div>
+
                         </CardContent>
-                         <CardFooter className="mt-auto flex flex-col gap-4">
+                         <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id}/>
-                           <Button asChild variant="ghost" className="w-full text-xs">
+                           <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
+                           <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
                                     Need custom branding or team licensing? Book a Call
                                 </Link>
@@ -390,7 +426,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardFooter>
                     </Card>
                 </div>
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                     {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
                     {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
                 </div>
@@ -398,6 +434,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
-

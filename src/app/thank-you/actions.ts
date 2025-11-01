@@ -1,4 +1,5 @@
 
+
 'use server';
 
 import { premiumPacks, PremiumPack } from '@/lib/premium-packs';
@@ -51,25 +52,30 @@ export async function verifyRazorpayPayment(
             return { success: false, error: `Payment not completed. Status: ${payment.status}` };
         }
         
-        let foundItem: FoundItem | null = null;
+        let foundItem: FoundItem | undefined;
         let itemType: 'pack' | 'individual' | null = null;
         let expectedAmount = 0;
 
         if (packId) {
-             foundItem = premiumPacks.find(p => p.id === packId) || null;
-             itemType = 'pack';
-             if (foundItem) expectedAmount = foundItem.priceINR * 100;
+             foundItem = premiumPacks.find(p => p.id === packId);
+             if (foundItem) {
+                itemType = 'pack';
+                expectedAmount = foundItem.priceINR * 100;
+             }
         } else if (checklistId) {
-             foundItem = individualChecklists.find(c => c.id === checklistId) || null;
-             itemType = 'individual';
-             if (foundItem) expectedAmount = foundItem.priceINR * 100;
+             foundItem = individualChecklists.find(c => c.id === checklistId);
+             if (foundItem) {
+                itemType = 'individual';
+                expectedAmount = foundItem.priceINR * 100;
+             }
         }
 
         if (!foundItem) {
             return { success: false, error: 'Could not find the purchased item associated with your order.' };
         }
         
-        if (payment.amount !== expectedAmount) {
+        // Skip amount check for free packs (priceINR is 0)
+        if (foundItem.priceINR > 0 && payment.amount !== expectedAmount) {
              return { success: false, error: `Payment amount mismatch. Expected ₹${expectedAmount / 100} but paid ₹${payment.amount / 100}. Please contact support.` };
         }
 
