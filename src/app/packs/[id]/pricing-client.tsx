@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -7,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star } from 'lucide-react';
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '../actions';
@@ -38,8 +37,8 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
     if (!paymentId) {
         return (
             <div className="text-center text-destructive p-4 bg-destructive/10 rounded-md">
-                <p className="font-semibold">Payment Button Error</p>
-                <p className="text-sm">The payment button ID is missing. Please contact support.</p>
+                <p className="font-semibold">Some error occurred</p>
+                <p className="text-sm">The payment button could not be loaded. Please contact support.</p>
             </div>
         );
     }
@@ -222,5 +221,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </div>
         </section>
     );
-}
 
+    
