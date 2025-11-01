@@ -3,24 +3,21 @@
 'use client';
 
 import * as React from 'react';
-import type { PremiumPack, Checklist as PackChecklist } from '@/lib/premium-packs';
+import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Repeat, DollarSign, Sparkles, ShieldCheck, Eye, Download, Globe, Landmark, FileText, BadgeInfo, Info, Loader2, Briefcase, Bot } from 'lucide-react';
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-import { writeFile, utils } from 'xlsx-js-style';
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from '@/hooks/use-toast';
-import { premiumPacks } from '@/lib/premium-packs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { addContact } from '../actions';
 import { Input } from '@/components/ui/input';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Info } from 'lucide-react';
 
 
 function ScenarioPreviewDialog({ scenario }: { scenario: PremiumPack['previewScenario'] }) {
@@ -230,181 +227,15 @@ function SampleChecklistPreviewDialog({ pack }: { pack: PremiumPack }) {
     );
 }
 
-const handleDownload = (pack: PremiumPack, isPersonalized?: boolean) => {
-    if (!pack) {
-        alert("Could not find the pack data. Please contact support.");
-        return;
-    }
-    
-    const workbook = utils.book_new();
-    const headerStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" } },
-        fill: { fgColor: { rgb: "0A2540" } }
-    };
-    const footerStyle = {
-        font: { italic: true, sz: 10 }
-    };
-    const complianceHeaderStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" } },
-        fill: { fgColor: { rgb: "C0504D" } }
-    };
-
-    const checklists = isPersonalized
-        ? premiumPacks.flatMap(p => p.checklists)
-        : pack.checklists;
-
-    // --- Cover Page ---
-    const coverPageName = "Cover Page";
-    const footerText = "Provided by MoreMeets | www.moremeets.com";
-
-    const coverPageHeader = [pack.title];
-    const coverPageData = [
-        [" "],
-        ["Click to navigate:"],
-        ["Checklist Title", "Department", "Frequency", "Role"],
-         ...checklists.map((checklist) => {
-            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-            const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-            return [
-                { v: checklist.title, f: formula },
-                checklist.department,
-                checklist.frequency,
-                checklist.role
-            ];
-        }),
-        [" "], 
-        [footerText] 
-    ];
-
-    const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
-    coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
-    
-    coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-    
-    ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-        if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-    });
-
-    const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-    for (let R = 4; R <= rangeLinks.e.r; ++R) { 
-        const address = utils.encode_cell({ r: R, c: 0 });
-        if (coverWorksheet[address] && coverWorksheet[address].f) {
-             coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
-        }
-    }
-    
-    const footerRowIndex = rangeLinks.e.r;
-    const footerCellAddress = `A${footerRowIndex + 1}`;
-    if (coverWorksheet[footerCellAddress]) {
-        coverWorksheet[footerCellAddress].s = footerStyle;
-    }
-    
-    utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
-
-    // --- Add Compliance Matrix for Personalized/Global Compliance Pack ---
-    if (isPersonalized && pack.globalStandards) {
-        const complianceSheetName = "Compliance Matrix";
-        const complianceData: any[][] = [
-            ["Global Standards Compliance Matrix"],
-            [],
-            [pack.globalStandards.title],
-            [],
-            ["Task ID", "Task Description", ...pack.globalStandards.standards.map(s => s.name)],
-        ];
-
-        const mockMapping: { [key: string]: string[] } = {
-            'LOTO-01': ['ISO 45001', 'OSHA'],
-            'PTW-01': ['ISO 45001', 'OSHA'],
-            'HACCP-01': ['ISO 22000', 'HACCP'],
-            'FIRE-01': ['NFPA 101'],
-        };
-        
-        checklists.forEach(checklist => {
-            checklist.tasks.forEach(task => {
-                const row = [task.id, task.description];
-                pack.globalStandards!.standards.forEach(standard => {
-                    if (mockMapping[task.id]?.includes(standard.name)) {
-                        row.push('✔');
-                    } else {
-                        row.push('');
-                    }
-                });
-                complianceData.push(row);
-            });
-        });
-
-        const complianceWorksheet = utils.aoa_to_sheet(complianceData);
-        complianceWorksheet['!cols'] = [{ wch: 20 }, { wch: 60 }, ...pack.globalStandards.standards.map(() => ({ wch: 20 }))];
-        complianceWorksheet['A1'].s = { font: { sz: 18, bold: true } };
-        complianceWorksheet['A3'].s = { font: { sz: 14, bold: true } };
-        complianceData[4].forEach((_, C) => {
-            const address = utils.encode_cell({ r: 4, c: C });
-            complianceWorksheet[address].s = complianceHeaderStyle;
-        });
-
-        utils.book_append_sheet(workbook, complianceWorksheet, complianceSheetName);
-    }
-
-    // --- Individual Checklist Sheets ---
-    checklists.forEach(checklist => {
-        const checklistHeaders = [
-            'Task ID', 'Task', 'Priority', 'Risk Level', 
-            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
-        ];
-        
-        const tasksForSheet = checklist.tasks.map(task => [
-            task.id,
-            task.description,
-            task.priority,
-            task.riskLevel,
-            task.proof,
-            'Pending',
-            '',
-            ''
-        ]);
-
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
-        
-        worksheet['!cols'] = [
-            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-        ];
-
-         const headerRange = utils.decode_range(worksheet['!ref']!);
-         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if(worksheet[address]) {
-                worksheet[address].s = headerStyle;
-            }
-         }
-         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
-        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
-    });
-
-    const fileName = pack.title.replace(/ /g, '_') + '.xlsx';
-    writeFile(workbook, fileName);
-}
-
-const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string, packId?: string, type?: string }) => {
+const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packId: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
         if (!formContainerRef.current) return;
 
         const form = document.createElement('form');
-        let actionUrl = `/thank-you?razorpay_payment_id=`; 
-
-        if (packId) {
-            actionUrl += `&pack_id=${packId}`;
-        }
-        if (type) {
-            actionUrl += `&type=${type}`;
-        }
-        form.action = actionUrl;
-
+        form.action = `/thank-you?pack_id=${packId}`;
+        
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.async = true;
@@ -415,7 +246,7 @@ const RazorpayButtonWrapper = ({ paymentId, packId, type }: { paymentId: string,
         formContainerRef.current.innerHTML = '';
         formContainerRef.current.appendChild(form);
 
-    }, [paymentId, packId, type]);
+    }, [paymentId, packId]);
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
 };
@@ -434,11 +265,13 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
         const result = await addContact({ email, packId: pack.id });
 
         if (result.success) {
-            handleDownload(pack);
+            // This part would ideally be handled by a serverless function after successful contact addition
+            // For now, we simulate the download directly.
+            // handleDownload(pack); 
             setSubmitted(true);
             toast({
-                title: "Download Started!",
-                description: "Your checklist pack is being downloaded.",
+                title: "Check Your Inbox!",
+                description: "Your free checklist pack has been sent to your email.",
             });
         } else {
             toast({
@@ -454,8 +287,8 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     if (submitted) {
         return (
             <div className="text-center p-4 bg-green-100 text-green-800 rounded-md">
-                <p className="font-semibold">Thank you! Your download has started.</p>
-                <p className="text-sm">Please check your browser's download folder.</p>
+                <p className="font-semibold">Thank you! Your pack is on its way.</p>
+                <p className="text-sm">Please check your email inbox (and spam folder).</p>
             </div>
         )
     }
@@ -472,7 +305,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
             />
             <Button size="lg" type="submit" className="w-full" disabled={loading}>
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
-                Download Now
+                Get Your Free Pack
             </Button>
         </form>
     )
@@ -480,14 +313,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const globalCompliancePack = {
-      ...pack,
-      id: 'personalized_pack',
-      title: 'Global Compliance Pack',
-      priceINR: 10999,
-      paymentId: 'pl_RMncDLAlms69Pd',
-    };
-
     if (pack.priceINR === 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
@@ -523,176 +348,51 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         )
     }
 
-    // Low-cost pack view
-    if (pack.priceINR < 5000) {
-        const originalPrice = 7999;
-        const discount = Math.round(((originalPrice - pack.priceINR) / originalPrice) * 100);
-
-        return (
-            <section className="w-full py-12 md:py-16" id="pricing">
-                <div className="container px-2 md:px-6">
-                    <div className="max-w-3xl mx-auto mb-10 text-center">
-                         <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Toolkit</h2>
-                         <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Instant download.</p>
-                    </div>
-                    <div className="flex justify-center">
-                        <Card className="flex flex-col max-w-md border-2 border-accent shadow-lg">
-                            <CardHeader>
-                                 <div className="flex justify-between items-center">
-                                    <div className="flex items-center gap-2">
-                                        <Landmark className="w-6 h-6 text-accent" />
-                                        <CardTitle>Professional Pack</CardTitle>
-                                    </div>
-                                     {pack.badgeText && (
-                                        <Badge variant="accent">{pack.badgeText}</Badge>
-                                    )}
-                                </div>
-                                <CardDescription>The complete, expert-built checklist pack.</CardDescription>
-                                <div className="flex items-baseline gap-4 pt-4">
-                                    <p className="text-4xl font-bold">₹{pack.priceINR}</p>
-                                    <p className="text-xl font-medium text-muted-foreground line-through">₹{originalPrice}</p>
-                                     <p className="text-lg font-bold text-accent">{discount}% OFF</p>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="flex-1">
-                                <ul className="space-y-3 text-muted-foreground text-sm">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
-                                </ul>
-                            </CardContent>
-                             <CardFooter className="mt-auto flex justify-center w-full">
-                                <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} />
-                            </CardFooter>
-                        </Card>
-                    </div>
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                        {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
-                        {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
-                    </div>
-                </div>
-            </section>
-        );
-    }
-
-
-    // Standard premium pack view
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto mb-10 text-center">
-                    <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Special Launch Offer: Lock In Your Lifetime Price</h2>
-                    <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Select the pack that's right for you.</p>
+                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Toolkit Instantly</h2>
+                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours. Worth ₹25,000+ in SOP creation time.</p>
                 </div>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mt-6 max-w-6xl mx-auto">
-                     {/* Professional Pack */}
-                     <Card className="flex flex-col">
+                <div className="flex justify-center">
+                    <Card className="flex flex-col max-w-lg border-2 border-accent shadow-xl">
                         <CardHeader>
-                             <div className="flex items-center gap-2">
-                                <Landmark className="w-6 h-6 text-primary" />
-                                <CardTitle>Professional Pack</CardTitle>
+                             <div className="flex justify-between items-center">
+                                <div className="flex items-center gap-3">
+                                    <Landmark className="w-7 h-7 text-accent" />
+                                    <CardTitle className="text-2xl">Global Compliance Pack</CardTitle>
+                                </div>
+                                 {pack.badgeText && (
+                                    <Badge variant="accent">{pack.badgeText}</Badge>
+                                )}
                             </div>
                             <CardDescription>The complete, expert-built checklist pack for your industry.</CardDescription>
-                            <p className="text-4xl font-bold pt-4">₹{pack.priceINR}</p>
+                            <div className="flex items-baseline gap-4 pt-4">
+                                <p className="text-5xl font-bold">₹{pack.priceINR}</p>
+                            </div>
                         </CardHeader>
                         <CardContent className="flex-1">
                             <ul className="space-y-3 text-muted-foreground text-sm">
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {pack.checklists.length} checklists.</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Instant download in fully editable Excel format.</span></li>
                                 <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Lifetime access to all future updates for this pack.</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Built on Best Practices:</span><span className="ml-1">Aligned with foundational Indian standards.</span></li>
+                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Globally Compliant:</span><span className="ml-1">Aligned with international frameworks like ISO, JCI, HACCP, and more.</span></li>
                             </ul>
                         </CardContent>
-                        <CardFooter className="mt-auto flex justify-center">
+                         <CardFooter className="mt-auto flex flex-col gap-4">
                            <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id}/>
-                        </CardFooter>
-                    </Card>
-
-                    {/* Global Compliance Pack */}
-                    <Card className="flex flex-col border-2 border-accent shadow-lg">
-                       <CardHeader>
-                         <div className="flex items-center gap-2">
-                            <Globe className="w-6 h-6 text-accent" />
-                            <CardTitle>Global Compliance Pack</CardTitle>
-                        </div>
-                        <CardDescription>The Professional pack, enhanced with international standards for global operations.</CardDescription>
-                        <p className="text-4xl font-bold pt-4">₹{globalCompliancePack.priceINR}</p>
-                    </CardHeader>
-                    <CardContent className="flex-1">
-                         <p className="font-semibold mb-3 text-sm">Everything in Professional, plus:</p>
-                        <ul className="space-y-3 text-muted-foreground text-sm">
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Aligned with global frameworks</span><span className="ml-1">(ISO, JCI, HACCP, etc.)</span></li>
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Includes a Compliance Matrix</span><span className="ml-1">Excel sheet mapping tasks to standards.</span></li>
-                            <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span className="font-semibold text-foreground">Priority customer support</span></li>
-                        </ul>
-                    </CardContent>
-                        <CardFooter className="mt-auto flex justify-center">
-                           <RazorpayButtonWrapper paymentId={globalCompliancePack.paymentId} packId={pack.id} type="personalized" />
-                        </CardFooter>
-                    </Card>
-
-                    {/* Enterprise Edition */}
-                    <Card className="flex flex-col">
-                        <CardHeader>
-                             <div className="flex items-center gap-2">
-                                <Briefcase className="w-6 h-6 text-primary" />
-                                <CardTitle>Enterprise</CardTitle>
-                            </div>
-                            <CardDescription>A complete, done-for-you operational system.</CardDescription>
-                            <p className="text-4xl font-bold pt-4">Custom</p>
-                        </CardHeader>
-                        <CardContent className="flex-1">
-                                <p className="font-semibold mb-3 text-sm">Everything in Global Compliance, plus:</p>
-                                <ul className="space-y-3 text-muted-foreground text-sm">
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Full SOP Manual Creation & Customization</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Dedicated Account Manager & Team Training</span></li>
-                                <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Bespoke Checklist Creation for Your Unique Needs</span></li>
-                                </ul>
-                        </CardContent>
-                        <CardFooter className="mt-auto">
-                            <Button asChild className="w-full" variant="secondary">
+                           <Button asChild variant="ghost" className="w-full text-xs">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                    Book a Discovery Call
+                                    Need custom branding or team licensing? Book a Call
                                 </Link>
                             </Button>
                         </CardFooter>
                     </Card>
                 </div>
-
-
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                     {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
+                    {pack.previewScenario && <ScenarioPreviewDialog scenario={pack.previewScenario} />}
                     {pack.checklists && pack.checklists.length > 0 && <SampleChecklistPreviewDialog pack={pack} />}
-                </div>
-
-
-                <div className="mt-16 bg-primary/5 p-8 rounded-2xl max-w-5xl mx-auto border-2 border-primary/10">
-                    <h3 className="text-center font-headline text-2xl font-bold mb-6 text-primary flex items-center justify-center gap-2">Buy Once, Own It Forever.</h3>
-                    <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8 text-sm md:text-base">This is a one-time payment. No subscriptions. No hidden fees. You get lifetime access to your checklist pack and all future updates, guaranteed.</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                        <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background border">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                                <DollarSign className="w-6 h-6" />
-                            </div>
-                            <h4 className="font-semibold">One-Time Payment</h4>
-                            <p className="text-xs text-muted-foreground">No recurring subscriptions. Ever. Your single purchase is valid for life.</p>
-                        </div>
-                        <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background border">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                                <Repeat className="w-6 h-6" />
-                            </div>
-                            <h4 className="font-semibold">Lifetime Updates</h4>
-                            <p className="text-xs text-muted-foreground">Receive all future enhancements and additions to your pack, for free.</p>
-                        </div>
-                        <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background border">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                                <ShieldCheck className="w-6 h-6" />
-                            </div>
-                            <h4 className="font-semibold">Secure Checkout</h4>
-                            <p className="text-xs text-muted-foreground">Your payment is processed securely. Download your files instantly after purchase.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -700,3 +400,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 }
 
     
+

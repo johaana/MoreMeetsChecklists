@@ -36,7 +36,6 @@ export type PreviewScenario = {
 export type PremiumPack = {
     id: string;
     title: string;
-    priceUSD: number;
     priceINR: number;
     paymentId: string;
     listId?: number; // Brevo List ID
@@ -60,7 +59,6 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'animal_shelter_pack',
         title: "Animal Shelter Operations Pack",
-        priceUSD: 0,
         priceINR: 0,
         paymentId: '',
         listId: 7,
@@ -262,9 +260,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'franchise_operations_pack',
         title: "Franchise Operations Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Franchise",
         description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
         icon: <Store />,
@@ -503,9 +500,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'bakery_confectionery_pack',
         title: "Bakery & Confectionery Operations Pack",
-        priceUSD: 49.99,
-        priceINR: 1999,
-        paymentId: 'pl_ROLnfbmEpZzgZZ',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Food & Beverage",
         description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
         icon: <CakeSlice />,
@@ -745,9 +741,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'hotels_and_resorts',
         title: "Hotels & Resorts Pack",
-        priceUSD: 99.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Hospitality",
         description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
         icon: <Building />,
@@ -948,9 +943,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'restaurants',
         title: "Restaurant Operations Pack",
-        priceUSD: 89.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Hospitality",
         description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
         icon: <Utensils />,
@@ -1171,9 +1165,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'fashion_and_apparel_retail',
         title: "Fashion & Apparel Retail Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Retail",
         description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
         icon: <Shirt />,
@@ -1392,9 +1385,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'jewelry_and_luxury_retail',
         title: "Jewelry & Luxury Retail Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Retail",
         description: "A specialized toolkit for high-value retail, focusing on vault security, inventory control, and preventing sophisticated fraud.",
         icon: <Gem />,
@@ -1613,9 +1605,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'electronics_showroom_pack',
         title: "Electronics Showroom Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Retail",
         description: "A comprehensive operational pack for electronics retailers to ensure safety, asset security, and a superior customer experience.",
         icon: <Tv />,
@@ -1812,9 +1803,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'supermarket_grocery_retail_pack',
         title: "Supermarket & Grocery Retail Operations Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Retail",
         description: "An all-in-one operations and compliance pack for supermarkets, hypermarkets, and grocery retail chains, ensuring food safety, quality, and operational efficiency across outlets.",
         icon: <ShoppingBasket />,
@@ -2015,9 +2005,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'facility_management_blueprint',
         title: "Facility Management Blueprint (Enterprise Edition)",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Corporate & Tech",
         description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
         icon: <Building2 />,
@@ -2217,9 +2206,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'corporate_legal_compliance_starter_kit',
         title: "Corporate Legal & Compliance Starter Kit",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Corporate & Tech",
         description: "An essential toolkit for founders and managers to embed basic legal and compliance checks into core business operations, reducing risk without needing a law degree.",
         icon: <FileLock />,
@@ -2416,9 +2404,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'enterprise_risk_cybersecurity_pack',
         title: "Enterprise Risk & Cybersecurity Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Corporate & Tech",
         description: "An advanced toolkit for CISOs and compliance officers to manage modern enterprise risks, from AI governance and data privacy to cloud security and incident response.",
         icon: <ShieldCheck />,
@@ -2616,9 +2603,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'healthcare_and_hospital_operations',
         title: "Healthcare & Hospital Operations Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Healthcare",
         description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
         icon: <Hospital />,
@@ -2819,9 +2805,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'school_operations_pack',
         title: "School Operations Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Education",
         description: "A comprehensive safety and compliance toolkit for school principals and administrators to ensure a secure and well-managed learning environment.",
         icon: <School />,
@@ -3039,9 +3024,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'university_college_ops',
         title: "University & College Operations Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Education",
         description: "A comprehensive compliance and safety pack for managing large educational campuses, from hostels and labs to transport and events.",
         icon: <GraduationCap />,
@@ -3239,9 +3223,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'manufacturing_operations_ehs_pack',
         title: "Manufacturing Operations & EHS Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Industrial & Transport",
         description: "A comprehensive EHS and operational toolkit for plant heads and safety officers to ensure a safe, compliant, and efficient manufacturing environment.",
         icon: <Factory />,
@@ -3441,9 +3424,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'food_manufacturing_ops',
         title: "Food Manufacturing Operations Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Food & Beverage",
         description: "A HACCP and FSSAI-compliant toolkit for food processing plants to ensure food safety, quality, and traceability from farm to fork.",
         icon: <Sprout />,
@@ -3642,9 +3624,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'logistics_warehouse_pack',
         title: "Logistics & Warehouse Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Industrial & Transport",
         description: "A complete operational toolkit for warehouse managers and logistics heads to improve efficiency, safety, and inventory accuracy.",
         icon: <Warehouse />,
@@ -3845,9 +3826,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'film_production_pack',
         title: "Film & OTT Production Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Entertainment & Events",
         description: "An end-to-end production toolkit for film and OTT producers to manage everything from legal clearances and location permits to on-set safety and post-production workflows.",
         icon: <Film />,
@@ -4044,9 +4024,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'ott_platform_pack',
         title: "OTT Platform Operations Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Entertainment & Events",
         description: "A comprehensive toolkit for OTT platform operations, covering content ingestion, quality control, live streaming, and infrastructure management.",
         icon: <MonitorPlay />,
@@ -4243,9 +4222,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'sports_clubs_stadium_operations_pack',
         title: "Sports Clubs & Stadium Operations Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Entertainment & Events",
         description: "A comprehensive operational toolkit for sports clubs, gyms, and stadium managers to ensure safety, compliance, and an excellent member experience.",
         icon: <Trophy />,
@@ -4442,9 +4420,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'cinema_operations_pack',
         title: "Cinema & Multiplex Operations Pack",
-        priceUSD: 149.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Entertainment & Events",
         description: "A complete operational pack for cinema managers to ensure a safe, clean, and high-quality movie-going experience.",
         icon: <Popcorn />,
@@ -4641,9 +4618,8 @@ export const premiumPacks: PremiumPack[] = [
     {
         id: 'theme_park_ops_pack',
         title: "Theme Park Operations Pack",
-        priceUSD: 199.99,
-        priceINR: 7999,
-        paymentId: 'pl_RMnYKoxjfq5XCx',
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
         category: "Entertainment & Events",
         description: "A safety-critical toolkit for theme park and amusement park operators, covering ride safety, crowd management, and emergency response.",
         icon: <FerrisWheel />,
@@ -4854,6 +4830,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 

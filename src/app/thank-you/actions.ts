@@ -4,13 +4,6 @@
 import { premiumPacks, PremiumPack } from '@/lib/premium-packs';
 import { individualChecklists, IndividualChecklist } from '@/lib/individual-checklists';
 
-const virtualPersonalizedPack = (basePack: PremiumPack): PremiumPack => ({
-  ...basePack, // Inherit details from the original pack
-  id: 'personalized_pack',
-  title: `Global Compliance Edition: ${basePack.title}`,
-});
-
-
 type FoundItem = PremiumPack | IndividualChecklist;
 
 type VerificationResult = {
@@ -25,8 +18,7 @@ type VerificationResult = {
 export async function verifyRazorpayPayment(
     paymentId: string, 
     packId: string | null,
-    checklistId: string | null, 
-    isPersonalized: boolean
+    checklistId: string | null
 ): Promise<VerificationResult> {
     if (!paymentId || !paymentId.startsWith('pay_')) {
         return { success: false, error: 'Invalid Payment ID format.' };
@@ -63,16 +55,8 @@ export async function verifyRazorpayPayment(
         let itemType: 'pack' | 'individual' | null = null;
         let expectedAmount = 0;
 
-        const basePack = premiumPacks.find(p => p.id === packId);
-
-        if (isPersonalized) {
-             if (!basePack) return { success: false, error: 'Could not find the base pack for personalization.' };
-             foundItem = virtualPersonalizedPack(basePack);
-             itemType = 'pack';
-             // Hardcoded price for the global compliance pack
-             expectedAmount = 10999 * 100;
-        } else if (packId) {
-             foundItem = basePack || null;
+        if (packId) {
+             foundItem = premiumPacks.find(p => p.id === packId) || null;
              itemType = 'pack';
              if (foundItem) expectedAmount = foundItem.priceINR * 100;
         } else if (checklistId) {
