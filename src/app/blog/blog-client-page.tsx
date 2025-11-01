@@ -1,0 +1,360 @@
+
+'use client';
+
+import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { blogPosts } from '@/lib/blog-posts';
+import { SiteHeader } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
+import { subscribeToBlog } from './actions';
+import { useToast } from '@/hooks/use-toast';
+import { Input } from '@/components/ui/input';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
+
+const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
+const primaryTags = ["Cybersecurity", "Risk Management", "Safety", "Supply Chain"];
+const secondaryTags = allTags.filter(tag => !primaryTags.includes(tag));
+
+function SubscriptionForm() {
+  const [email, setEmail] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    const result = await subscribeToBlog({ email });
+
+    if (result.success) {
+      setSubmitted(true);
+       toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to the debrief.",
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Subscription Failed",
+        description: result.message,
+      });
+    }
+    setLoading(false);
+  };
+
+  if (submitted) {
+    return (
+        <div className="flex items-center justify-center p-4 rounded-lg bg-green-100 border border-green-200 text-green-800 dark:bg-green-900/50 dark:text-green-200 dark:border-green-800">
+            <CheckCircle className="w-5 h-5 mr-3" />
+            <p className="font-semibold">Thank you for subscribing!</p>
+        </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full max-w-md">
+      <Input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="flex-1"
+      />
+      <Button type="submit" disabled={loading} className="w-full sm:w-auto">
+        {loading ? (
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Mail className="mr-2 h-4 w-4" />
+        )}
+        Subscribe
+      </Button>
+    </form>
+  );
+}
+
+const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: string | null, setActiveFilter: (filter: string | null) => void }) => {
+    const [isSheetOpen, setSheetOpen] = React.useState(false);
+
+    const handleFilterClick = (tag: string | null) => {
+        setActiveFilter(tag);
+        setSheetOpen(false);
+    }
+    
+    return (
+        <>
+            {/* Desktop Filters */}
+            <div className="hidden md:flex flex-wrap items-center justify-center gap-2 mb-12">
+                 <Button
+                    variant={activeFilter === null ? 'default' : 'outline'}
+                    onClick={() => setActiveFilter(null)}
+                    className="rounded-full"
+                >
+                    All Posts
+                </Button>
+                {primaryTags.map(tag => (
+                    <Button
+                        key={tag}
+                        variant={activeFilter === tag ? 'default' : 'outline'}
+                        onClick={() => setActiveFilter(tag)}
+                        className="rounded-full"
+                    >
+                        {tag}
+                    </Button>
+                ))}
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="outline" className="rounded-full">
+                           {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
+                           <ChevronDown className="w-4 h-4 ml-2" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="max-h-60 overflow-y-auto">
+                        {secondaryTags.map(tag => (
+                             <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)}>
+                                {tag}
+                            </DropdownMenuItem>
+                        ))}
+                    </DropdownMenuContent>
+                </DropdownMenu>
+                 {activeFilter && (
+                    <Button variant="ghost" size="sm" onClick={() => setActiveFilter(null)} className="rounded-full">
+                        <X className="w-4 h-4 mr-2" />
+                        Clear filter
+                    </Button>
+                )}
+            </div>
+
+            {/* Mobile Filters */}
+            <div className="md:hidden fixed bottom-4 right-4 z-40">
+                 <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
+                    <SheetTrigger asChild>
+                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
+                            <Filter className="w-6 h-6" />
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="bottom" className="rounded-t-2xl">
+                        <SheetHeader className="mb-4">
+                            <SheetTitle>Filter by Category</SheetTitle>
+                        </SheetHeader>
+                        <ScrollArea className="h-[50vh]">
+                            <div className="flex flex-col gap-2 pr-4">
+                                 <Button
+                                    variant={activeFilter === null ? 'default' : 'ghost'}
+                                    onClick={() => handleFilterClick(null)}
+                                    className="justify-start text-lg"
+                                >
+                                    All
+                                </Button>
+                                {allTags.map(tag => (
+                                     <Button
+                                        key={tag}
+                                        variant={activeFilter === tag ? 'default' : 'ghost'}
+                                        onClick={() => handleFilterClick(tag)}
+                                        className="justify-start text-lg"
+                                    >
+                                        {tag}
+                                    </Button>
+                                ))}
+                            </div>
+                        </ScrollArea>
+                    </SheetContent>
+                </Sheet>
+            </div>
+        </>
+    );
+}
+
+export default function BlogClientPage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const tagFilterFromUrl = searchParams.get('tag');
+
+  const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+  const [activeFilter, setActiveFilter] = React.useState<string | null>(tagFilterFromUrl);
+
+  React.useEffect(() => {
+      setActiveFilter(tagFilterFromUrl);
+  }, [tagFilterFromUrl]);
+
+
+  const displayedPosts = activeFilter ? [featuredPost, ...otherPosts].filter(p => p.tags.includes(activeFilter!)) : [featuredPost, ...otherPosts];
+  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
+
+
+  const handleSetFilter = (tag: string | null) => {
+    setActiveFilter(tag);
+    const url = tag ? `/blog?tag=${encodeURIComponent(tag)}` : '/blog';
+    window.history.pushState({ ...window.history.state, as: url, url: url }, '', url);
+  };
+  
+  const handleTagClick = (e: React.MouseEvent, tag: string) => {
+    e.stopPropagation();
+    router.push(`/blog?tag=${encodeURIComponent(tag)}`);
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen bg-background">
+      <SiteHeader />
+      <main className="flex-1">
+        <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
+                        Black Box Debrief
+                    </h1>
+                    <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+                        Deconstructing the world's most costly operational disasters to build more resilient organizations. An insights hub by MoreMeets.
+                    </p>
+                </div>
+
+                {/* Featured Post */}
+                {featuredPost && !activeFilter && (
+                    <div className="mb-16">
+                        <Link href={`/blog/${featuredPost.slug}`} className="block group">
+                             <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                                {/* Mobile Layout: Image on top */}
+                                <div className="md:hidden">
+                                     {featuredPost.imageUrl && (
+                                        <Image
+                                            src={featuredPost.imageUrl}
+                                            alt={featuredPost.title}
+                                            width={600}
+                                            height={340}
+                                            className="w-full object-cover"
+                                        />
+                                    )}
+                                    <div className="p-6 bg-card">
+                                        <div className="flex flex-wrap gap-2 mb-2">
+                                            {featuredPost.tags.map(tag => ( 
+                                                <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                    {tag}
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                        <CardTitle className="text-2xl font-headline">{featuredPost.title}</CardTitle>
+                                        <CardDescription className="mt-2 text-base">{featuredPost.description}</CardDescription>
+                                        <Button variant="outline" className="mt-4">
+                                            Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                </div>
+                                
+                                {/* Desktop Layout: Image overlay */}
+                                <div className="hidden md:block relative min-h-[400px]">
+                                    <div className="grid md:grid-cols-2 items-center h-full">
+                                        <div className="absolute inset-0 z-0">
+                                             {featuredPost.imageUrl && (
+                                                <>
+                                                    <Image
+                                                        src={featuredPost.imageUrl}
+                                                        alt={featuredPost.title}
+                                                        fill
+                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    />
+                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
+                                                </>
+                                            )}
+                                        </div>
+                                        <div className="relative z-10 p-10 space-y-4 text-white">
+                                            <div className="flex flex-wrap gap-2">
+                                                {featuredPost.tags.map(tag => (
+                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                        {tag}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                            <CardTitle className="text-4xl font-headline text-white drop-shadow-lg">
+                                                {featuredPost.title}
+                                            </CardTitle>
+                                            <CardDescription className="text-lg text-white/90">
+                                                {featuredPost.description}
+                                            </CardDescription>
+                                            <div className="flex justify-between items-center text-xs text-white/80">
+                                                <span>{new Date(featuredPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                                <span className="font-semibold">{Math.ceil(featuredPost.content.split(' ').length / 200)} min read</span>
+                                            </div>
+                                            <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
+                                                Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
+                                            </Button>
+                                        </div>
+                                        <div className="hidden md:block">{/* Placeholder for grid */}</div>
+                                    </div>
+                                </div>
+                            </Card>
+                        </Link>
+                    </div>
+                )}
+                
+                <FilterControls activeFilter={activeFilter} setActiveFilter={handleSetFilter} />
+
+
+                {/* Other Posts */}
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {(activeFilter ? displayedPosts : otherPosts).map((post) => (
+                        <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                           <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                            {post.imageUrl ? (
+                                    <Image
+                                        src={post.imageUrl}
+                                        alt={post.title}
+                                        width={600}
+                                        height={340}
+                                        className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                                    />
+                            ): (
+                               <div className="w-full h-48 bg-secondary flex items-center justify-center">
+                                 <p className="text-muted-foreground text-sm">No Image</p>
+                               </div>
+                            )}
+                            </Link>
+                            <CardHeader>
+                                <div className="flex flex-wrap gap-2 mb-2">
+                                     {post.tags.map(tag => (
+                                         <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                            {tag}
+                                        </Badge>
+                                    ))}
+                                </div>
+                                <CardTitle className="text-xl font-headline">
+                                    <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                                        {post.title}
+                                    </Link>
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <CardDescription>{post.description}</CardDescription>
+                            </CardContent>
+                             <CardFooter className="flex-col items-start gap-4 p-4 md:p-6 md:pt-0">
+                                <Button asChild variant="secondary" size="sm" className="w-full md:hidden">
+                                  <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                </Button>
+                                <div className="hidden md:flex justify-between items-center w-full">
+                                    <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <span className="text-xs text-muted-foreground">{Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                                </div>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+                 <div className="max-w-xl mx-auto mt-24 flex flex-col items-center gap-4 p-6 border rounded-2xl bg-secondary/50">
+                    <h3 className="font-bold text-center">Get the analysis behind the headlines.</h3>
+                    <SubscriptionForm />
+                </div>
+            </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+}
