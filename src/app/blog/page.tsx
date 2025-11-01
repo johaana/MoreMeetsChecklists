@@ -119,7 +119,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                            <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className="max-h-60 overflow-y-auto">
                         {secondaryTags.map(tag => (
                              <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)}>
                                 {tag}
@@ -367,5 +367,3 @@ export default function BlogListPage() {
         </React.Suspense>
     )
 }
-
-    
