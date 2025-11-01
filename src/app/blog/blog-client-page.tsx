@@ -112,14 +112,14 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
                            <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="max-h-60 overflow-y-auto">
+                    <DropdownMenuContent className="max-h-[50vh] overflow-y-auto">
                         {secondaryTags.map(tag => (
                              <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)}>
                                 {tag}
@@ -200,7 +200,7 @@ export default function BlogClientPage() {
   
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
     e.stopPropagation();
-    router.push(`/blog?tag=${encodeURIComponent(tag)}`);
+    handleSetFilter(tag);
   };
 
   return (
