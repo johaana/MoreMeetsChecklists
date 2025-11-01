@@ -157,23 +157,18 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
         return null;
     }
     
-    const individualPrice = relatedChecklists[0]?.priceINR || 0;
-    const packPrice = premiumPacks.find(p => p.id === packId)?.priceINR || 0;
-    const savings = (relatedChecklists.length * individualPrice) - packPrice;
-
-
     return (
         <section className="w-full py-12 md:py-16">
             <div className="container px-2 md:px-6">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline text-primary">
+                    <h2 className="text-2xl md:text-3xl font-bold font-headline text-primary">
                         Just Need a Specific Solution?
                     </h2>
                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
                         This pack is the best value, but you can also start with one of our high-impact individual checklists.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto justify-center">
                     {relatedChecklists.map((checklist) => (
                         <Card key={checklist.id} className="flex flex-col text-center rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                              <CardHeader>
