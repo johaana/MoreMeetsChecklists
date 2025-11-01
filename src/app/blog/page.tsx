@@ -301,7 +301,7 @@ export default function BlogListPage() {
                             <CardContent className="flex-1">
                                 <CardDescription>{post.description}</CardDescription>
                             </CardContent>
-                             <CardFooter className="flex-col items-start gap-4 p-4 md:p-6 md:pt-0">
+                            <CardFooter className="flex-col items-start gap-4 p-4 md:p-6 md:pt-0">
                                 <Button asChild variant="secondary" size="sm" className="w-full md:hidden">
                                   <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>

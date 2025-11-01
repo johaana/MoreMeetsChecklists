@@ -108,13 +108,15 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
             { rootMargin: "0px 0px -100% 0px" } 
         );
 
-        if (pricingSectionRef.current) {
-            observer.observe(pricingSectionRef.current);
+        const currentRef = pricingSectionRef.current;
+
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (pricingSectionRef.current) {
-                observer.unobserve(pricingSectionRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
