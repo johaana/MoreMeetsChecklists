@@ -231,7 +231,7 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (!formContainerRef.current) return;
+        if (!paymentId || !formContainerRef.current) return;
 
         const form = document.createElement('form');
         form.action = `/thank-you?pack_id=${packId}`;
@@ -243,10 +243,20 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
         
         form.appendChild(script);
         
+        // To prevent multiple buttons from being added on re-renders
         formContainerRef.current.innerHTML = '';
         formContainerRef.current.appendChild(form);
 
     }, [paymentId, packId]);
+
+    if (!paymentId) {
+        return (
+            <div className="text-center text-destructive p-4 bg-destructive/10 rounded-md">
+                <p className="font-semibold">Payment Button Error</p>
+                <p className="text-sm">The payment button ID is missing. Please contact support.</p>
+            </div>
+        );
+    }
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
 };
@@ -283,7 +293,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 
     if (submitted) {
         return (
-            <div className="text-center p-4 bg-green-100 text-green-800 rounded-md">
+            <div className="text-center p-4 bg-green-100 text-green-800 rounded-md dark:bg-green-900/50 dark:text-green-200">
                 <p className="font-semibold">Thank you! Your pack is on its way.</p>
                 <p className="text-sm">Please check your email inbox (and spam folder).</p>
             </div>
@@ -309,13 +319,12 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 }
 
 const ComplianceIcon = ({ standard }: { standard: string }) => {
-    switch(standard.toLowerCase()) {
-        case 'iso': return <Award className="w-5 h-5 text-blue-600" />;
-        case 'nabh': return <Star className="w-5 h-5 text-green-600" />;
-        case 'jci': return <Globe className="w-5 h-5 text-purple-600" />;
-        case 'haccp': return <Book className="w-5 h-5 text-red-600" />;
-        case 'osha': return <Shield className="w-5 h-5 text-yellow-600" />;
-        default: return <Check className="w-5 h-5 text-gray-500" />;
+    switch(standard.toUpperCase()) {
+        case 'NABH': return <Star className="w-4 h-4 text-green-600" />;
+        case 'JCI': return <Globe className="w-4 h-4 text-blue-600" />;
+        case 'WHO GUIDELINES': return <Check className="w-4 h-4 text-cyan-600" />;
+        case 'ISO 15189': return <Book className="w-4 h-4 text-purple-600" />;
+        default: return <Award className="w-4 h-4 text-gray-500" />;
     }
 }
 
@@ -333,14 +342,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
                     </div>
                     <div className="flex justify-center">
-                        <Card className="flex flex-col max-w-md">
-                            <CardHeader>
-                                <div className="flex items-center gap-2">
-                                    <Download className="w-6 h-6 text-primary" />
-                                    <CardTitle>Instant Download</CardTitle>
-                                </div>
+                        <Card className="flex flex-col max-w-md w-full">
+                            <CardHeader className="text-center">
+                                <Download className="w-10 h-10 text-primary mx-auto mb-4" />
+                                <CardTitle className="text-2xl font-headline">Instant Download</CardTitle>
                                 <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
-                                <p className="text-4xl font-bold pt-4">Free</p>
+                                <p className="text-5xl font-extrabold pt-4">Free</p>
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <ul className="space-y-3 text-muted-foreground text-sm">
@@ -348,9 +355,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
                                 </ul>
                             </CardContent>
-                            <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2">
+                            <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2 p-6">
                                 <FreeDownloadForm pack={pack} />
-                                <p className="text-xs text-muted-foreground">By downloading, you agree to receive occasional updates from MoreMeets.</p>
+                                <p className="text-xs text-muted-foreground text-center">By downloading, you agree to receive occasional updates from MoreMeets.</p>
                             </CardFooter>
                         </Card>
                     </div>
@@ -362,33 +369,31 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
-                <div className="max-w-3xl mx-auto mb-10 text-center">
-                     <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Instant-Download Toolkit</h2>
-                     <p className="text-foreground/80 text-base md:text-lg">One-time payment, forever yours.</p>
-                </div>
                 <div className="flex justify-center">
-                    <Card className="flex flex-col max-w-xl border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
-                        <CardHeader className="p-6 bg-secondary/30">
-                             <div className="flex justify-between items-center">
-                                <h3 className="text-2xl font-bold font-headline text-primary flex items-center gap-3">
-                                    <Landmark className="w-7 h-7 text-accent" />
-                                    Global Compliance Pack
-                                </h3>
-                                 {pack.badgeText && (
-                                    <Badge variant="accent">{pack.badgeText}</Badge>
-                                )}
+                    <Card className="flex flex-col max-w-2xl w-full border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
+                        <CardHeader className="p-6 bg-secondary/30 text-center">
+                             <div className="flex justify-center items-center gap-4">
+                                <Landmark className="w-10 h-10 text-accent" />
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
+                                        Global Compliance Pack
+                                    </h3>
+                                    {pack.badgeText && (
+                                        <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
+                                    )}
+                                </div>
                             </div>
-                            <CardDescription className='pt-1'>{pack.description}</CardDescription>
+                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
                             <div className="flex items-baseline justify-center gap-2">
                                 <p className="text-5xl font-extrabold">₹{pack.priceINR}</p>
-                                <p className="text-sm text-muted-foreground">/ one-time payment</p>
+                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
                             </div>
                            
                             <div className='space-y-4'>
-                                <h4 className="font-semibold text-center">WHAT'S INCLUDED:</h4>
-                                <ul className="space-y-3 text-sm">
+                                <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
+                                <ul className="space-y-3 text-sm text-foreground/90">
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>{totalChecklists} Expert-Built Checklists</strong> ({totalTasks}+ total tasks)</span></li>
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Audit-Ready & Globally Compliant</strong> framework.</span></li>
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Instant Download</strong> in fully editable Excel format.</span></li>
@@ -396,12 +401,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </ul>
                             </div>
                              {pack.globalStandards && (
-                                <div>
-                                    <h4 className="font-semibold text-center text-sm mb-3">ALIGNED WITH:</h4>
+                                <div className="text-center">
+                                    <h4 className="font-semibold text-center text-sm mb-3 text-primary/90">ALIGNED WITH:</h4>
                                     <div className="flex justify-center flex-wrap gap-x-4 gap-y-2">
-                                        {pack.globalStandards.standards.slice(0, 4).map(standard => (
+                                        {pack.globalStandards.standards.map(standard => (
                                             <div key={standard.name} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
-                                                <ComplianceIcon standard={standard.name.split(' ')[0]} />
+                                                <ComplianceIcon standard={standard.name} />
                                                 <span>{standard.name}</span>
                                             </div>
                                         ))}
