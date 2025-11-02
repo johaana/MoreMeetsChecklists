@@ -55,7 +55,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'pink-panther-gang-luxury-heist',
       title: "The Three-Second Distraction That Costs Jewelers a Fortune. How the Pink Panthers Use Your Own Staff to Steal Millions.",
-      publishedDate: "2025-11-02",
+      publishedDate: "2025-11-01",
       author: "MoreMeets Team",
       tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management", "Hospitality"],
       relatedPackId: "jewelry_and_luxury_retail",
@@ -172,7 +172,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'kota-student-crisis-hostel-mental-health-sop',
       title: "A Fan, a Locked Door, and a Final Note. Why Are India's Brightest Students Dying in Kota?",
-      publishedDate: "2025-11-03",
+      publishedDate: "2025-11-01",
       author: "MoreMeets Team",
       tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health", "Hospitality"],
       relatedPackId: "university_college_ops",
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'hillsborough-disaster-crowd-management-lessons',
       title: "97 Dead. No Accident. The Hillsborough Disaster and the Deadly Cost of Failed Crowd Management.",
-      publishedDate: "2025-11-05",
+      publishedDate: "2025-11-02",
       author: "MoreMeets Team",
       tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control", "Facility Management"],
       relatedPackId: "sports_clubs_stadium_operations_pack",
@@ -424,7 +424,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'uphaar-cinema-fire-tragedy-analysis',
       title: "59 Dead, Exits Blocked: The Uphaar Cinema Fire and the Criminal Cost of Ignoring a Safety Checklist.",
-      publishedDate: "2025-11-04",
+      publishedDate: "2025-11-02",
       author: "MoreMeets Team",
       tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study", "Hospitality"],
       relatedPackId: "cinema_operations_pack",
