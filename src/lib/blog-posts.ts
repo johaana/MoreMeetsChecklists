@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
       title: "The Three-Second Distraction That Costs Jewelers a Fortune. How the Pink Panthers Use Your Own Staff to Steal Millions.",
       publishedDate: "2025-10-28",
       author: "MoreMeets Team",
-      tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
+      tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management", "Hospitality"],
       relatedPackId: "jewelry_and_luxury_retail",
       imageUrl: "https://i.postimg.cc/Hnr6vBRV/pink-panther1.avif",
       description: "The legendary Pink Panther gang doesn't use brute force; they use intelligence to exploit human behavior and procedural loopholes in luxury stores. This analysis reveals how their methods work and why simple, rigid checklists are their kryptonite.",
@@ -174,7 +174,7 @@ export const blogPosts: BlogPost[] = [
       title: "A Fan, a Locked Door, and a Final Note. Why Are India's Brightest Students Dying in Kota?",
       publishedDate: "2025-09-18",
       author: "MoreMeets Team",
-      tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health"],
+      tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health", "Hospitality"],
       relatedPackId: "university_college_ops",
       imageUrl: "https://i.postimg.cc/9FJnXwtj/kota-student-crisis.avif",
       description: "The recurring tragedies of student suicides in coaching hubs like Kota highlight a critical gap in student housing operations: the lack of a proactive mental health and wellness protocol. This article explores how a structured SOP for wardens and staff can create a safer, more supportive environment.",
@@ -300,7 +300,7 @@ export const blogPosts: BlogPost[] = [
       title: "97 Dead. No Accident. The Hillsborough Disaster and the Deadly Cost of Failed Crowd Management.",
       publishedDate: "2025-09-10",
       author: "MoreMeets Team",
-      tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
+      tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control", "Facility Management"],
       relatedPackId: "sports_clubs_stadium_operations_pack",
       imageUrl: "https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp",
       description: "The 1989 Hillsborough disaster, where 97 Liverpool fans were killed in a human crush, remains one of the darkest days in sports history. This analysis explores the catastrophic failures in crowd management and how modern, checklist-driven SOPs are designed to prevent such a tragedy.",
@@ -426,7 +426,7 @@ export const blogPosts: BlogPost[] = [
       title: "59 Dead, Exits Blocked: The Uphaar Cinema Fire and the Criminal Cost of Ignoring a Safety Checklist.",
       publishedDate: "2025-09-01",
       author: "MoreMeets Team",
-      tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study"],
+      tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study", "Hospitality"],
       relatedPackId: "cinema_operations_pack",
       imageUrl: "https://i.postimg.cc/brgxqbnV/Uphaar-Cinema-Hall.avif",
       description: "In 1997, 59 people died in a fire at Uphaar Cinema in Delhi, not from the flames, but from suffocation after finding the emergency exits blocked. This tragedy is a powerful case study in why a rigorous, daily fire safety checklist is a non-negotiable for any public venue.",
@@ -458,3 +458,5 @@ export const blogPosts: BlogPost[] = [
       `
     }
 ];
+
+    
