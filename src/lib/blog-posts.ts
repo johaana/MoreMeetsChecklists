@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'deepfake-cfo-scam-arup',
       title: `"I Thought It Was My Boss." How an AI Ghost Stole $25 Million Over a Single Video Call.`,
-      publishedDate: "2024-07-31",
+      publishedDate: "2025-11-01",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
@@ -55,7 +55,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'pink-panther-gang-luxury-heist',
       title: "The Three-Second Distraction That Costs Jewelers a Fortune. How the Pink Panthers Use Your Own Staff to Steal Millions.",
-      publishedDate: "2024-07-31",
+      publishedDate: "2025-10-28",
       author: "MoreMeets Team",
       tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
       relatedPackId: "jewelry_and_luxury_retail",
@@ -100,7 +100,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'kfc-chicken-shortage-supply-chain-risk',
       title: "FCK: The Day KFC Ran Out of Chicken. A Masterclass in Supply Chain Risk.",
-      publishedDate: "2024-07-30",
+      publishedDate: "2025-09-22",
       author: "MoreMeets Team",
       tags: ["Supply Chain", "Logistics", "Risk Management", "QSR"],
       relatedPackId: "logistics_warehouse_pack",
@@ -136,7 +136,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'dominos-india-data-breach',
       title: "Your Pizza, Your Data, For Sale. The Domino's Breach and the Betrayal of 18 Crore Customers.",
-      publishedDate: "2024-07-30",
+      publishedDate: "2025-09-20",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Data Privacy", "Brand Reputation"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
@@ -172,7 +172,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'kota-student-crisis-hostel-mental-health-sop',
       title: "A Fan, a Locked Door, and a Final Note. Why Are India's Brightest Students Dying in Kota?",
-      publishedDate: "2024-07-28",
+      publishedDate: "2025-09-18",
       author: "MoreMeets Team",
       tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health"],
       relatedPackId: "university_college_ops",
@@ -217,7 +217,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'after-change-healthcare-attack-vendor-security-sop',
         title: "The $22M Ransom: How a Single Unprotected Login Crippled the U.S. Healthcare System.",
-        publishedDate: "2024-07-28",
+        publishedDate: "2025-09-15",
         author: "MoreMeets Team",
         tags: ["Cybersecurity", "Healthcare", "Vendor Management", "Risk"],
         relatedPackId: "enterprise_risk_cybersecurity_pack",
@@ -253,7 +253,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'boeing-door-plug-blowout-qc-lessons',
         title: "Mid-Air Blowout: How a Missing Bolt on a Boeing 737 Became a Masterclass in Quality Control.",
-        publishedDate: "2024-07-30",
+        publishedDate: "2025-09-12",
         author: "MoreMeets Team",
         tags: ["Manufacturing", "Aviation", "Quality Control", "Safety"],
         relatedPackId: "manufacturing_operations_ehs_pack",
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'hillsborough-disaster-crowd-management-lessons',
       title: "97 Dead. No Accident. The Hillsborough Disaster and the Deadly Cost of Failed Crowd Management.",
-      publishedDate: "2024-07-28",
+      publishedDate: "2025-09-10",
       author: "MoreMeets Team",
       tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
       relatedPackId: "sports_clubs_stadium_operations_pack",
@@ -343,7 +343,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'forgotten-child-school-bus-safety-sop',
         title: "A Forgotten Child: The Unthinkable School Bus Tragedy a Simple Checklist Can Prevent.",
-        publishedDate: "2024-07-28",
+        publishedDate: "2025-09-08",
         author: "MoreMeets Team",
         tags: ["School Safety", "Transportation", "Compliance", "Risk Management"],
         relatedPackId: "school_operations_pack",
@@ -388,7 +388,7 @@ export const blogPosts: BlogPost[] = [
      {
       slug: 'red-sea-shipping-crisis-supply-chain-sop',
       title: "Geopolitics vs. Your P&L: How the Red Sea Crisis Proves You Need a Supply Chain SOP.",
-      publishedDate: "2024-07-28",
+      publishedDate: "2025-09-05",
       author: "MoreMeets Team",
       tags: ["Logistics", "Supply Chain", "Risk Management", "Geopolitics"],
       relatedPackId: "logistics_warehouse_pack",
@@ -424,7 +424,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'uphaar-cinema-fire-tragedy-analysis',
       title: "59 Dead, Exits Blocked: The Uphaar Cinema Fire and the Criminal Cost of Ignoring a Safety Checklist.",
-      publishedDate: "2024-07-28",
+      publishedDate: "2025-09-01",
       author: "MoreMeets Team",
       tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study"],
       relatedPackId: "cinema_operations_pack",
