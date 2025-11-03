@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { blogPosts } from '@/lib/blog-posts';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -188,7 +188,6 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 
 export default function BlogClientPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const tagFilterFromUrl = searchParams.get('tag');
 
   const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
@@ -197,10 +196,6 @@ export default function BlogClientPage() {
   React.useEffect(() => {
       setActiveFilter(tagFilterFromUrl);
   }, [tagFilterFromUrl]);
-
-
-  const displayedPosts = activeFilter ? [featuredPost, ...otherPosts].filter(p => p.tags.includes(activeFilter!)) : [featuredPost, ...otherPosts];
-  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
 
 
   const handleSetFilter = (tag: string | null) => {
@@ -214,6 +209,13 @@ export default function BlogClientPage() {
     e.preventDefault();
     handleSetFilter(tag);
   };
+  
+  const allPosts = [featuredPost, ...otherPosts];
+  const displayedPosts = activeFilter ? allPosts.filter(p => p.tags.includes(activeFilter)) : allPosts;
+
+  const currentFeaturedPost = (featuredPost && !activeFilter) ? featuredPost : null;
+  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -231,31 +233,32 @@ export default function BlogClientPage() {
                 </div>
 
                 {/* Featured Post */}
-                {featuredPost && !activeFilter && (
+                {currentFeaturedPost && (
                     <div className="mb-16">
-                        <Link href={`/blog/${featuredPost.slug}`} className="block group">
+                        <Link href={`/blog/${currentFeaturedPost.slug}`} className="block group">
                              <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
                                 {/* Mobile Layout: Image on top */}
                                 <div className="md:hidden">
-                                     {featuredPost.imageUrl && (
+                                    <div className="relative w-full h-auto aspect-[16/9]">
+                                     {currentFeaturedPost.imageUrl && (
                                         <Image
-                                            src={featuredPost.imageUrl}
-                                            alt={featuredPost.title}
-                                            width={600}
-                                            height={340}
-                                            className="w-full object-cover"
+                                            src={currentFeaturedPost.imageUrl}
+                                            alt={currentFeaturedPost.title}
+                                            fill
+                                            className="w-full h-full object-cover"
                                         />
                                     )}
+                                    </div>
                                     <div className="p-6 bg-card">
                                         <div className="flex flex-wrap gap-2 mb-2">
-                                            {featuredPost.tags.map(tag => ( 
+                                            {currentFeaturedPost.tags.map(tag => ( 
                                                 <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                                     {tag}
                                                 </Badge>
                                             ))}
                                         </div>
-                                        <CardTitle className="text-2xl font-headline">{featuredPost.title}</CardTitle>
-                                        <CardDescription className="mt-2 text-base">{featuredPost.description}</CardDescription>
+                                        <CardTitle className="text-2xl font-headline">{currentFeaturedPost.title}</CardTitle>
+                                        <CardDescription className="mt-2 text-base">{currentFeaturedPost.description}</CardDescription>
                                         <Button variant="outline" className="mt-4">
                                             Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
                                         </Button>
@@ -266,11 +269,11 @@ export default function BlogClientPage() {
                                 <div className="hidden md:block relative min-h-[400px]">
                                     <div className="grid md:grid-cols-2 items-center h-full">
                                         <div className="absolute inset-0 z-0">
-                                             {featuredPost.imageUrl && (
+                                             {currentFeaturedPost.imageUrl && (
                                                 <>
                                                     <Image
-                                                        src={featuredPost.imageUrl}
-                                                        alt={featuredPost.title}
+                                                        src={currentFeaturedPost.imageUrl}
+                                                        alt={currentFeaturedPost.title}
                                                         fill
                                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                                                     />
@@ -280,21 +283,21 @@ export default function BlogClientPage() {
                                         </div>
                                         <div className="relative z-10 p-10 space-y-4 text-white">
                                             <div className="flex flex-wrap gap-2">
-                                                {featuredPost.tags.map(tag => (
+                                                {currentFeaturedPost.tags.map(tag => (
                                                     <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                                         {tag}
                                                     </Badge>
                                                 ))}
                                             </div>
                                             <CardTitle className="text-4xl font-headline text-white drop-shadow-lg">
-                                                {featuredPost.title}
+                                                {currentFeaturedPost.title}
                                             </CardTitle>
                                             <CardDescription className="text-lg text-white/90">
-                                                {featuredPost.description}
+                                                {currentFeaturedPost.description}
                                             </CardDescription>
                                             <div className="flex justify-between items-center text-xs text-white/80">
-                                                <span>{new Date(featuredPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                                                <span className="font-semibold">{Math.ceil(featuredPost.content.split(' ').length / 200)} min read</span>
+                                                <span>{new Date(currentFeaturedPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                                <span className="font-semibold">{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
                                             <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
                                                 Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
@@ -313,22 +316,23 @@ export default function BlogClientPage() {
 
                 {/* Other Posts */}
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {(activeFilter ? displayedPosts : otherPosts).map((post) => (
+                    {postsForGrid.map((post) => (
                         <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                            <div className="relative w-full h-auto aspect-[16/9]">
                             {post.imageUrl ? (
                                     <Image
                                         src={post.imageUrl}
                                         alt={post.title}
-                                        width={600}
-                                        height={340}
-                                        className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                                        fill
+                                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                                     />
                             ): (
-                               <div className="w-full h-48 bg-secondary flex items-center justify-center">
+                               <div className="w-full h-full bg-secondary flex items-center justify-center">
                                  <p className="text-muted-foreground text-sm">No Image</p>
                                </div>
                             )}
+                            </div>
                             </Link>
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
@@ -347,14 +351,14 @@ export default function BlogClientPage() {
                             <CardContent className="flex-1">
                                 <CardDescription>{post.description}</CardDescription>
                             </CardContent>
-                             <CardFooter className="flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4 p-4 md:p-6 md:pt-0">
-                                <Button asChild variant="secondary" size="sm" className="w-full md:hidden">
+                             <CardFooter className="flex flex-col items-start gap-4 p-4 md:p-6 mt-auto">
+                                <div className="w-full flex justify-between items-center text-xs text-muted-foreground">
+                                    <p>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                                </div>
+                                <Button asChild variant="secondary" size="sm" className="w-full mt-2">
                                   <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>
-                                <div className="w-full flex justify-between items-center">
-                                    <p className="text-xs text-muted-foreground">{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                                    <span className="text-xs text-muted-foreground">{Math.ceil(post.content.split(' ').length / 200)} min read</span>
-                                </div>
                             </CardFooter>
                         </Card>
                     ))}
@@ -370,3 +374,5 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+    

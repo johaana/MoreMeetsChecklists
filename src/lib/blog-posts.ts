@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'deepfake-cfo-scam-arup',
       title: `"I Thought It Was My Boss." How an AI Ghost Stole $25 Million Over a Single Video Call.`,
-      publishedDate: "2025-11-01",
+      publishedDate: "2024-09-28",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
@@ -55,9 +55,9 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'pink-panther-gang-luxury-heist',
       title: "The Three-Second Distraction That Costs Jewelers a Fortune. How the Pink Panthers Use Your Own Staff to Steal Millions.",
-      publishedDate: "2025-11-01",
+      publishedDate: "2024-09-25",
       author: "MoreMeets Team",
-      tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management", "Hospitality"],
+      tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
       relatedPackId: "jewelry_and_luxury_retail",
       imageUrl: "https://i.postimg.cc/Hnr6vBRV/pink-panther1.avif",
       description: "The legendary Pink Panther gang doesn't use brute force; they use intelligence to exploit human behavior and procedural loopholes in luxury stores. This analysis reveals how their methods work and why simple, rigid checklists are their kryptonite.",
@@ -100,7 +100,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'kfc-chicken-shortage-supply-chain-risk',
       title: "FCK: The Day KFC Ran Out of Chicken. A Masterclass in Supply Chain Risk.",
-      publishedDate: "2025-09-22",
+      publishedDate: "2024-09-22",
       author: "MoreMeets Team",
       tags: ["Supply Chain", "Logistics", "Risk Management", "QSR"],
       relatedPackId: "logistics_warehouse_pack",
@@ -136,7 +136,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'dominos-india-data-breach',
       title: "Your Pizza, Your Data, For Sale. The Domino's Breach and the Betrayal of 18 Crore Customers.",
-      publishedDate: "2025-09-20",
+      publishedDate: "2024-09-20",
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Data Privacy", "Brand Reputation"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
@@ -172,9 +172,9 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'kota-student-crisis-hostel-mental-health-sop',
       title: "A Fan, a Locked Door, and a Final Note. Why Are India's Brightest Students Dying in Kota?",
-      publishedDate: "2025-11-01",
+      publishedDate: "2024-09-18",
       author: "MoreMeets Team",
-      tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health", "Hospitality"],
+      tags: ["Education", "Student Welfare", "Hostel Management", "Mental Health"],
       relatedPackId: "university_college_ops",
       imageUrl: "https://i.postimg.cc/9FJnXwtj/kota-student-crisis.avif",
       description: "The recurring tragedies of student suicides in coaching hubs like Kota highlight a critical gap in student housing operations: the lack of a proactive mental health and wellness protocol. This article explores how a structured SOP for wardens and staff can create a safer, more supportive environment.",
@@ -217,7 +217,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'after-change-healthcare-attack-vendor-security-sop',
         title: "The $22M Ransom: How a Single Unprotected Login Crippled the U.S. Healthcare System.",
-        publishedDate: "2025-09-15",
+        publishedDate: "2024-09-15",
         author: "MoreMeets Team",
         tags: ["Cybersecurity", "Healthcare", "Vendor Management", "Risk"],
         relatedPackId: "enterprise_risk_cybersecurity_pack",
@@ -253,7 +253,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'boeing-door-plug-blowout-qc-lessons',
         title: "Mid-Air Blowout: How a Missing Bolt on a Boeing 737 Became a Masterclass in Quality Control.",
-        publishedDate: "2025-09-12",
+        publishedDate: "2024-09-12",
         author: "MoreMeets Team",
         tags: ["Manufacturing", "Aviation", "Quality Control", "Safety"],
         relatedPackId: "manufacturing_operations_ehs_pack",
@@ -298,9 +298,9 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'hillsborough-disaster-crowd-management-lessons',
       title: "97 Dead. No Accident. The Hillsborough Disaster and the Deadly Cost of Failed Crowd Management.",
-      publishedDate: "2025-11-02",
+      publishedDate: "2024-09-10",
       author: "MoreMeets Team",
-      tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control", "Facility Management"],
+      tags: ["Event Safety", "Stadium Operations", "Risk Management", "Crowd Control"],
       relatedPackId: "sports_clubs_stadium_operations_pack",
       imageUrl: "https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp",
       description: "The 1989 Hillsborough disaster, where 97 Liverpool fans were killed in a human crush, remains one of the darkest days in sports history. This analysis explores the catastrophic failures in crowd management and how modern, checklist-driven SOPs are designed to prevent such a tragedy.",
@@ -343,7 +343,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'forgotten-child-school-bus-safety-sop',
         title: "A Forgotten Child: The Unthinkable School Bus Tragedy a Simple Checklist Can Prevent.",
-        publishedDate: "2025-09-08",
+        publishedDate: "2024-09-08",
         author: "MoreMeets Team",
         tags: ["School Safety", "Transportation", "Compliance", "Risk Management"],
         relatedPackId: "school_operations_pack",
@@ -388,7 +388,7 @@ export const blogPosts: BlogPost[] = [
      {
       slug: 'red-sea-shipping-crisis-supply-chain-sop',
       title: "Geopolitics vs. Your P&L: How the Red Sea Crisis Proves You Need a Supply Chain SOP.",
-      publishedDate: "2025-09-05",
+      publishedDate: "2024-09-05",
       author: "MoreMeets Team",
       tags: ["Logistics", "Supply Chain", "Risk Management", "Geopolitics"],
       relatedPackId: "logistics_warehouse_pack",
@@ -424,9 +424,9 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'uphaar-cinema-fire-tragedy-analysis',
       title: "59 Dead, Exits Blocked: The Uphaar Cinema Fire and the Criminal Cost of Ignoring a Safety Checklist.",
-      publishedDate: "2025-11-02",
+      publishedDate: "2024-09-01",
       author: "MoreMeets Team",
-      tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study", "Hospitality"],
+      tags: ["Event Safety", "Fire Safety", "Compliance", "Case Study"],
       relatedPackId: "cinema_operations_pack",
       imageUrl: "https://i.postimg.cc/brgxqbnV/Uphaar-Cinema-Hall.avif",
       description: "In 1997, 59 people died in a fire at Uphaar Cinema in Delhi, not from the flames, but from suffocation after finding the emergency exits blocked. This tragedy is a powerful case study in why a rigorous, daily fire safety checklist is a non-negotiable for any public venue.",
