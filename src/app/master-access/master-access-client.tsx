@@ -10,168 +10,199 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
-import { writeFile, utils } from 'xlsx-js-style';
-import Link from 'next/link';
+import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { SiteHeader } from '@/components/layout/header';
 
 
-// The download logic is copied from the thank-you page.
 const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
         alert("Could not find the item data. Please contact support.");
         return;
     }
-    
-    const workbook = utils.book_new();
+
+    const wb = utils.book_new();
+
+    // --- Styles ---
     const headerStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" } },
-        fill: { fgColor: { rgb: "0A2540" } }
+        font: { bold: true, color: { rgb: "FFFFFF" }, sz: 12 },
+        fill: { fgColor: { rgb: "0A2540" } },
+        alignment: { vertical: 'center' }
     };
-    const footerStyle = {
-        font: { italic: true, sz: 10 }
+    const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "0A2540" } } };
+    const subtitleStyle = { font: { sz: 14, bold: true, color: { rgb: "0A2540" } } };
+    const instructionStyle = { font: { sz: 12 }, alignment: { wrapText: true, vertical: 'top' } };
+    const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
+    const footerStyle = { font: { italic: true, sz: 10, color: { rgb: "808080" } } };
+    const statusHeaderStyle = { ...headerStyle, fill: { fgColor: { rgb: "FFA500" } } };
+
+    // --- Helper Functions ---
+    const setColumnWidths = (ws: WorkSheet, widths: number[]) => {
+        ws['!cols'] = widths.map(wch => ({ wch }));
     };
 
+    const addFooter = (ws: WorkSheet, lastRow: number) => {
+        const footerText = "© MoreMeets | www.moremeets.com - The Professional Standard for Operational Checklists.";
+        utils.sheet_add_aoa(ws, [[footerText]], { origin: `A${lastRow + 2}` });
+        ws[`A${lastRow + 2}`].s = footerStyle;
+    };
+    
     let checklists: PackChecklist[] = [];
-    let packTitle = item.title;
+    const packTitle = item.title;
 
     if (type === 'pack') {
-        const pack = item as PremiumPack;
-        packTitle = pack.title;
-        checklists = pack.checklists;
+        checklists = (item as PremiumPack).checklists;
     } else {
         const checklist = item as IndividualChecklist;
-        packTitle = checklist.title;
         checklists = [{
             title: checklist.title,
             tasks: checklist.tasks,
-            department: checklist.category, // fallback
+            department: checklist.category,
             frequency: 'N/A',
             role: 'N/A',
             summary: checklist.longDescription,
             icon: checklist.icon
         }];
     }
-    
+
+    // --- Instructions Sheet ---
+    const instructionsWs = utils.aoa_to_sheet([
+        ["How to Use Your Checklist Pack"],
+        [],
+        ["Welcome!"],
+        ["This Excel file is designed to be a powerful tool for your operations. Here’s how to get the most out of it:"],
+        [],
+        ["1. Navigation"],
+        ["The 'Cover Page' sheet contains a full list of all checklists included in this pack. Click on any checklist title to jump directly to that sheet."],
+        [],
+        ["2. Using the Checklists"],
+        ["Each checklist sheet is ready for daily use. The 'Status' column is interactive:"],
+        ["- Click on a cell in the 'Status' column to choose from a dropdown: Pending, In Progress, or Completed."],
+        ["- Use the 'Assigned To' and 'Notes' columns to manage tasks within your team."],
+        [],
+        ["3. Customization"],
+        ["This is your file. Feel free to customize it to fit your exact needs. You can add your company logo, change tasks, or add new columns."],
+        [],
+        ["Questions?"],
+        ["If you need any assistance, please contact us at more@moremeets.com."]
+    ]);
+    instructionsWs["A1"].s = titleStyle;
+    instructionsWs["A3"].s = subtitleStyle;
+    instructionsWs["A6"].s = subtitleStyle;
+    instructionsWs["A9"].s = subtitleStyle;
+    instructionsWs["A15"].s = subtitleStyle;
+    instructionsWs["A18"].s = subtitleStyle;
+
+    for (let i = 1; i <= 20; i++) {
+        const cell = `A${i}`;
+        if (instructionsWs[cell]) {
+            instructionsWs[cell].s = { ...instructionsWs[cell].s, ...instructionStyle };
+        }
+         const cellB = `B${i}`;
+         if (instructionsWs[cellB]) {
+             instructionsWs[cellB].s = { ...instructionsWs[cellB].s, ...instructionStyle };
+         }
+    }
+    setColumnWidths(instructionsWs, [100]);
+    utils.book_append_sheet(wb, instructionsWs, "Instructions");
+
     // --- Cover Page ---
     const coverPageName = "Cover Page";
-    const footerText = "Provided by MoreMeets | www.moremeets.com";
-
     const coverPageHeader = [packTitle];
     const coverPageData = [
         [" "],
-        ["Click to navigate:"],
-        ["Checklist Title", "Department", "Frequency", "Role"],
+        ["Click any checklist title below to navigate directly to its sheet."],
+        [],
+        ["Checklist Title", "Department", "Frequency", "Primary Role"],
          ...checklists.map((checklist) => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-            return [
-                { v: checklist.title, f: formula },
-                checklist.department,
-                checklist.frequency,
-                checklist.role
-            ];
+            return [ { v: checklist.title, f: formula }, checklist.department, checklist.frequency, checklist.role ];
         }),
-        [" "], 
-        [footerText] 
     ];
 
-    const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
-    coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
+    const coverWs = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
+    setColumnWidths(coverWs, [60, 25, 20, 25]);
+    coverWs['A1'].s = titleStyle;
+    coverWs['A2'].s = { font: { italic: true, sz: 11 } };
     
-    coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-    
-    ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-        if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-    });
+    ['A4', 'B4', 'C4', 'D4'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = headerStyle; });
 
-    const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
+    const rangeLinks = utils.decode_range(coverWs['!ref']!);
     for (let R = 4; R <= rangeLinks.e.r; ++R) { 
         const address = utils.encode_cell({ r: R, c: 0 });
-        if (coverWorksheet[address] && coverWorksheet[address].f) {
-             coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
+        if (coverWs[address] && coverWs[address].f) {
+             coverWs[address].s = linkStyle;
         }
     }
-    
-    const footerRowIndex = rangeLinks.e.r;
-    const footerCellAddress = `A${footerRowIndex + 1}`;
-    if (coverWorksheet[footerCellAddress]) {
-        coverWorksheet[footerCellAddress].s = footerStyle;
-    }
-    
-    utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
+    addFooter(coverWs, rangeLinks.e.r);
+    utils.book_append_sheet(wb, coverWs, coverPageName);
 
-    // --- Master View (For Packs Only for now) ---
+    // --- Master View (For Packs only) ---
     if (type === 'pack') {
         const masterSheetName = "Master View";
         const masterSheetData = [
             ["Checklist Title", "Task ID", "Task Description", "Priority", "Risk Level"],
             ...(item as PremiumPack).checklists.flatMap((checklist) => 
-                checklist.tasks.map(task => [
-                    checklist.title,
-                    task.id,
-                    task.description,
-                    task.priority,
-                    task.riskLevel
-                ])
+                checklist.tasks.map(task => [ checklist.title, task.id, task.description, task.priority, task.riskLevel ])
             )
         ];
         
-        const masterWorksheet = utils.aoa_to_sheet(masterSheetData);
-        masterWorksheet['!cols'] = [{ wch: 40 }, { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }];
-        
-        const rangeMaster = utils.decode_range(masterWorksheet['!ref']!);
+        const masterWs = utils.aoa_to_sheet(masterSheetData);
+        setColumnWidths(masterWs, [40, 15, 60, 15, 15]);
+        const rangeMaster = utils.decode_range(masterWs['!ref']!);
         for (let C = rangeMaster.s.c; C <= rangeMaster.e.c; ++C) {
             const address = utils.encode_cell({ r: 0, c: C });
-            if (masterWorksheet[address]) {
-                masterWorksheet[address].s = headerStyle;
-            }
+            if (masterWs[address]) masterWs[address].s = headerStyle;
         }
-        masterWorksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-        
-        utils.book_append_sheet(workbook, masterWorksheet, masterSheetName);
+        masterWs['!views'] = [{state: 'frozen', ySplit: 1}];
+        addFooter(masterWs, rangeMaster.e.r);
+        utils.book_append_sheet(wb, masterWs, masterSheetName);
     }
 
     // --- Individual Checklist Sheets ---
     checklists.forEach(checklist => {
-        const checklistHeaders = [
-            'Task ID', 'Task', 'Priority', 'Risk Level', 
-            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+        const wsData = [
+            [checklist.title],
+            [],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Status', 'Assigned To', 'Notes']
         ];
-        
         const tasksForSheet = checklist.tasks.map(task => [
-            task.id,
-            task.description,
-            task.priority,
-            task.riskLevel,
-            task.proof,
-            'Pending',
-            '',
-            ''
+            task.id, task.description, task.priority, task.riskLevel, task.proof, 'Pending', '', ''
         ]);
+        wsData.push(...tasksForSheet);
 
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+        const ws = utils.aoa_to_sheet(wsData);
         
-        worksheet['!cols'] = [
-            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-        ];
+        // Apply styles and widths
+        ws['A1'].s = titleStyle;
+        setColumnWidths(ws, [15, 60, 15, 15, 25, 15, 20, 30]);
+        ['A3', 'B3', 'C3', 'D3', 'E3', 'G3', 'H3'].forEach(cell => { if (ws[cell]) ws[cell].s = headerStyle; });
+        ws['F3'].s = statusHeaderStyle;
 
-         const headerRange = utils.decode_range(worksheet['!ref']!);
-         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if(worksheet[address]) {
-                worksheet[address].s = headerStyle;
+        // Add dropdown validation for 'Status' column
+        const statusRange = { s: { r: 3, c: 5 }, e: { r: 3 + tasksForSheet.length, c: 5 } };
+        ws['!dataValidation'] = [
+            ...(ws['!dataValidation'] || []),
+            {
+                sqref: utils.encode_range(statusRange),
+                opts: {
+                    type: 'list',
+                    formula1: '"Pending,In Progress,Completed"',
+                    showDropDown: true,
+                    error: 'Please select from the dropdown',
+                    errorTitle: 'Invalid Status'
+                }
             }
-         }
-         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
+        ];
+        ws['!views'] = [{state: 'frozen', ySplit: 3}];
+        addFooter(ws, wsData.length);
+        
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
+        utils.book_append_sheet(wb, ws, sheetName);
     });
 
-    const fileName = item.title.replace(/ /g, '_') + '_DEMO.xlsx';
-    writeFile(workbook, fileName);
+    const fileName = item.title.replace(/[^a-z0-9]/gi, '_') + '_MoreMeets.xlsx';
+    writeFile(wb, fileName);
 }
 
 
@@ -252,7 +283,7 @@ export default function MasterAccessClientPage() {
                             <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Premium Packs</h2>
                             <div className="space-y-4">
                                 {premiumPacks.map((pack) => (
-                                    <Card key={pack.id} className="flex items-center justify-between p-4">
+                                    <Card key={pack.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
                                             {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
                                             <div>
@@ -260,9 +291,9 @@ export default function MasterAccessClientPage() {
                                                 <p className="text-xs md:text-sm text-muted-foreground">{pack.category}</p>
                                             </div>
                                         </div>
-                                        <Button onClick={() => handleDownload(pack as PremiumPack, 'pack')}>
+                                        <Button onClick={() => handleDownload(pack, 'pack')} className="w-full sm:w-auto">
                                             <Download className="mr-2 h-4 w-4" />
-                                            Download
+                                            Download Pack
                                         </Button>
                                     </Card>
                                 ))}
@@ -273,7 +304,7 @@ export default function MasterAccessClientPage() {
                             <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Individual Checklists</h2>
                             <div className="space-y-4">
                                 {individualChecklists.map((checklist) => (
-                                    <Card key={checklist.id} className="flex items-center justify-between p-4">
+                                    <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
                                              {React.cloneElement(checklist.icon, { className: "w-8 h-8 text-primary" })}
                                             <div>
@@ -281,9 +312,9 @@ export default function MasterAccessClientPage() {
                                                 <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>
                                             </div>
                                         </div>
-                                        <Button onClick={() => handleDownload(checklist as IndividualChecklist, 'individual')}>
+                                        <Button onClick={() => handleDownload(checklist, 'individual')} className="w-full sm:w-auto">
                                             <Download className="mr-2 h-4 w-4" />
-                                            Download
+                                            Download Checklist
                                         </Button>
                                     </Card>
                                 ))}
