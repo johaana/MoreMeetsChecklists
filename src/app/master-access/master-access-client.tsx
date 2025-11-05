@@ -108,7 +108,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     // --- Cover Page ---
     const coverPageName = "Cover Page";
     
-    if (type === 'pack') {
+    if (type === 'pack' && checklists.length > 1) {
         const coverPageData = [
             [{ v: packTitle, s: titleStyle }],
             [],
@@ -118,7 +118,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             ...checklists.map((checklist) => {
                 const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
                 const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [ { v: checklist.title, f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ];
+                return [ { v: checklist.title, t: 's', l: { Target: `'${safeSheetName}'!A1`}, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ];
             }),
         ];
 
@@ -167,8 +167,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     });
     
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
-        delete wb.Sheets['Sheet1'];
-        wb.SheetNames.splice(wb.SheetNames.indexOf('Sheet1'), 1);
+        const sheetIndex = wb.SheetNames.indexOf('Sheet1');
+        wb.SheetNames.splice(sheetIndex, 1);
     }
     
     const sortedSheetNames = wb.SheetNames.sort((a, b) => {
