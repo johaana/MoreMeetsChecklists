@@ -28,14 +28,15 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const instructionTitleStyle = { font: { bold: true, sz: 12 }, alignment: { vertical: 'top' } };
     const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
-    const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true } };
+    const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true, horizontal: 'center' } };
+    const dateStyle = { numFmt: 'dd-mmm-yyyy' };
     
     // --- CONDITIONAL FORMATTING ---
     const overdueFill = { fgColor: { rgb: "FFC7CE" } };
     const overdueFont = { color: { rgb: "9C0006" } };
      const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -43,7 +44,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
      const completedConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("L"&ROW())))`,
         style: { fill: completedFill, font: completedFont },
     };
     
@@ -80,28 +81,28 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- INSTRUCTIONS SHEET ---
     const instructionsData = [
-        [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null, null],
+        [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
         [],
-        [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null, null],
-        [{ v: "This isn't a static list; it's a dynamic operational tool designed for accountability and easy tracking. Here’s how to use its smart features:" , t: 's', s: { ...instructionBodyStyle, alignment: { ...instructionBodyStyle.alignment, horizontal: 'center' } } }, null, null, null, null],
+        [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null],
+        [{ v: "This isn't a static list; it's a dynamic operational tool designed for accountability and easy tracking. Here’s how to use its smart features:", t: 's', s: { ...instructionBodyStyle, alignment: { ...instructionBodyStyle.alignment, horizontal: 'center' } } }, null, null, null],
         [],
-        [{ v: '1. Complete a Task', t: 's', s: instructionTitleStyle }, { v: "Simply enter the completion date in the 'Date Last Completed' column. The 'Status' and 'Next Due Date' columns will update automatically.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status' column is fully automated. If a task is overdue, the row will turn RED. If it is completed, it will turn GREEN.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '3. Handle Event-Driven Tasks', t: 's', s: instructionTitleStyle }, { v: "For tasks with a frequency of 'As Required' or 'Per Incident', the 'Next Due Date' will show 'N/A' and the task will never become overdue.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '4. Reset a Recurring Task', t: 's', s: instructionTitleStyle }, { v: "To start the next cycle for a recurring task (e.g., weekly, monthly), just clear the date from the 'Date Last Completed' cell. The row will revert to 'Pending'.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '5. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '1. Complete a Task', t: 's', s: instructionTitleStyle }, { v: "Enter the date of completion in the 'Date Last Completed' column using the format DD-MMM-YYYY (e.g., 05-Nov-2025). The 'Status' and 'Next Due Date' columns will update automatically.", t: 's', s: instructionBodyStyle }],
+        [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status' column is fully automated. If a task is overdue, the row will turn RED. If it is completed, it will turn GREEN.", t: 's', s: instructionBodyStyle }],
+        [{ v: '3. Handle Event-Driven Tasks', t: 's', s: instructionTitleStyle }, { v: "For tasks with a frequency of 'As Required' or 'Per Incident', the 'Next Due Date' will show 'N/A' and the task will never become overdue.", t: 's', s: instructionBodyStyle }],
+        [{ v: '4. Reset a Recurring Task', t: 's', s: instructionTitleStyle }, { v: "To start the next cycle for a recurring task (e.g., weekly, monthly), just clear the date from the 'Date Last Completed' cell. The row will revert to 'Pending'.", t: 's', s: instructionBodyStyle }],
+        [{ v: '5. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }],
     ];
     
     const instructionsWs = utils.aoa_to_sheet(instructionsData);
     instructionsWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } },
-        { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, { s: { r: 5, c: 1 }, e: { r: 5, c: 4 } },
-        { s: { r: 6, c: 1 }, e: { r: 6, c: 4 } }, { s: { r: 7, c: 1 }, e: { r: 7, c: 4 } },
-        { s: { r: 8, c: 1 }, e: { r: 8, c: 4 } }, { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } },
+        { s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } },
+        { s: { r: 3, c: 0 }, e: { r: 3, c: 3 } }, { s: { r: 5, c: 1 }, e: { r: 5, c: 3 } },
+        { s: { r: 6, c: 1 }, e: { r: 6, c: 3 } }, { s: { r: 7, c: 1 }, e: { r: 7, c: 3 } },
+        { s: { r: 8, c: 1 }, e: { r: 8, c: 3 } }, { s: { r: 9, c: 1 }, e: { r: 9, c: 3 } },
     ];
-    setColumnWidths(instructionsWs, [25, 25, 25, 25, 25]);
-    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }];
-    addFooter(instructionsWs, 11, 5);
+    setColumnWidths(instructionsWs, [25, 25, 25, 25]);
+    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 40 }, { hpt: 15 }, { hpt: 60 }, { hpt: 50 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }];
+    addFooter(instructionsWs, 11, 4);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
 
@@ -131,27 +132,22 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- CHECKLIST SHEETS ---
     checklists.forEach(checklist => {
+        const headerEndCol = 'M';
         const wsData: any[][] = [
-            [checklist.title], [],
+            [{v: checklist.title, s: titleStyle}], [],
             ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Last Completed', 'Status', 'Next Due Date', 'Notes'],
         ];
-        
-        const headerEndCol = 'M';
-        const helperColStart = 13;
 
         checklist.tasks.forEach((task, index) => {
             const rowNum = 4 + index;
             const dateCell = `J${rowNum}`;
             const freqCell = `G${rowNum}`;
-            const helperDateCell = `N${rowNum}`;
             
-            const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0)))`;
+            const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
 
-            const excelDateNumberFormula = `IF(ISNUMBER(${dateCell}), ${dateCell}, DATEVALUE(LEFT(${dateCell},SEARCH(" ",${dateCell}&" ")-1)&"-"&MID(SUBSTITUTE(${dateCell}," ","-",1),SEARCH("-",SUBSTITUTE(${dateCell}," ","-",1))+1,3)&"-"&RIGHT(${dateCell},4)))`;
-            
-            const nextDueDateFormula = `IF(OR(Q${rowNum}, ISBLANK(${dateCell})),"N/A",IF(P${rowNum}>0,EDATE(${helperDateCell},P${rowNum}),${helperDateCell}+O${rowNum}))`;
+            const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
             const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(L${rowNum}="N/A","Completed",IF(TODAY()>=L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
 
             wsData.push([
@@ -159,20 +155,15 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
                 task.frequency || checklist.frequency, task.department || checklist.department, task.role || checklist.role,
                 null, 
                 { t: 'f', f: statusFormula }, 
-                { t: 'f', f: nextDueDateFormula, s: { numFmt: 'dd-mmm-yyyy' } }, 
-                '',
-                { t: 'f', f: excelDateNumberFormula, s: { numFmt: 'dd-mmm-yyyy' } }, // N: Helper Date
-                { t: 'f', f: daysToAddFormula }, // O: Days to Add
-                { t: 'f', f: monthsToAddFormula }, // P: Months to Add
-                { t: 'f', f: isEventDrivenFormula }, // Q: Is Event Driven
+                { t: 'f', f: nextDueDateFormula, s: dateStyle }, 
+                null,
             ]);
         });
         
         const ws = utils.aoa_to_sheet(wsData);
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
-        if(ws['A1']) ws['A1'].s = titleStyle;
         ws['!rows'] = [{ hpt: 30 }];
-        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 20, 25, 20, 30, 0, 0, 0, 0]);
+        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 20, 25, 20, 30]);
         const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3', 'L3', 'M3'];
         headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = headerStyle; });
         
