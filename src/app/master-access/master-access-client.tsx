@@ -23,10 +23,11 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     // --- Styles ---
-    const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "0A2540" } }, alignment: { horizontal: 'center' } };
-    const subtitleStyle = { font: { sz: 14, bold: true, color: { rgb: "0A2540" } } };
-    const instructionHeaderStyle = { font: { sz: 12, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { horizontal: 'center', vertical: 'center', wrapText: true } };
+    const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "0A2540" } }, alignment: { horizontal: 'center', vertical: 'center' } };
+    const instructionHeaderStyle = { font: { sz: 12, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } } };
     const instructionBodyStyle = { font: { sz: 11 }, alignment: { wrapText: true, vertical: 'top' } };
+    const sectionTitleStyle = { font: { sz: 14, bold: true, color: { rgb: "0A2540" } } };
+    const stepTitleStyle = { font: { sz: 11, bold: true } };
     const footerStyle = { font: { italic: true, sz: 10, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
 
@@ -88,27 +89,31 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         ["Need Help?"],
         ["For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711."]
     ]);
-
+    
+    // Set heights and widths
     setColumnWidths(instructionsWs, [20, 80]);
+    instructionsWs['!rows'] = [{ hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, { hpt: 30 }, { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }];
+
+    // Merging cells
+    instructionsWs['!merges'] = [
+        { s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }, // Title
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, // Step 1 Header
+        { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }, // Step 1 Body
+        { s: { r: 5, c: 0 }, e: { r: 5, c: 1 } }, // How to Use Header
+        { s: { r: 10, c: 0 }, e: { r: 10, c: 1 } }, // Need Help Header
+        { s: { r: 11, c: 0 }, e: { r: 11, c: 1 } }  // Need Help Body
+    ];
+
+    // Applying styles
     instructionsWs["A1"].s = titleStyle;
-    instructionsWs['!rows'] = [{ hpx: 30 }]; // Set height for the first row
-    instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
-    
     instructionsWs["A3"].s = instructionHeaderStyle;
-    instructionsWs['!merges']!.push({ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } });
-    instructionsWs["A4"].s = { ...instructionBodyStyle, font: { ...instructionBodyStyle.font, bold: true, color: { rgb: "C00000" } } };
-    instructionsWs['!merges']!.push({ s: { r: 3, c: 0 }, e: { r: 3, c: 1 } });
+    instructionsWs["A4"].s = { ...instructionBodyStyle, font: { ...instructionBodyStyle.font, color: { rgb: "C00000" } } };
+    instructionsWs["A6"].s = sectionTitleStyle;
+    instructionsWs["A11"].s = sectionTitleStyle;
+
+    ["A7", "A8", "A9"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = stepTitleStyle });
+    ["B7", "B8", "B9", "A12"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = instructionBodyStyle });
     
-    instructionsWs["A6"].s = subtitleStyle;
-    instructionsWs['!merges']!.push({ s: { r: 5, c: 0 }, e: { r: 5, c: 1 } });
-
-    ["A7", "A8", "A9"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = {...instructionBodyStyle, font: {...instructionBodyStyle.font, bold: true}}});
-    ["B7", "B8", "B9"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = instructionBodyStyle});
-
-    instructionsWs["A11"].s = subtitleStyle;
-    instructionsWs['!merges']!.push({ s: { r: 10, c: 0 }, e: { r: 10, c: 1 } });
-    instructionsWs["A12"].s = instructionBodyStyle;
-    instructionsWs['!merges']!.push({ s: { r: 11, c: 0 }, e: { r: 11, c: 1 } });
     addFooter(instructionsWs, 13, 2);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
@@ -130,6 +135,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     const coverWs = utils.aoa_to_sheet(coverPageData);
     setColumnWidths(coverWs, [60, 25, 20, 25]);
+    coverWs['!rows'] = [{ hpt: 30 }];
     coverWs['A1'].s = titleStyle;
     coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
     coverWs['A3'].s = { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } };
@@ -164,6 +170,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const ws = utils.aoa_to_sheet(wsData, { cellStyles: true });
         
         ws['A1'].s = titleStyle;
+        ws['!rows'] = [{ hpt: 30 }];
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
 
         setColumnWidths(ws, [15, 60, 15, 15, 25, 15, 20, 30]);
@@ -178,13 +185,20 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         utils.book_append_sheet(wb, ws, sheetName);
     });
     
-    // --- Remove default Sheet1 ---
-    if (wb.SheetNames.includes('Sheet1')) {
-        const sheet1Index = wb.SheetNames.indexOf('Sheet1');
-        wb.SheetNames.splice(sheet1Index, 1);
+    // --- Remove default Sheet1 if it exists ---
+    if (wb.SheetNames.indexOf('Sheet1') > -1) {
         delete wb.Sheets['Sheet1'];
+        wb.SheetNames.splice(wb.SheetNames.indexOf('Sheet1'), 1);
     }
-
+    
+    // Reorder sheets to have Instructions first
+    wb.SheetNames.sort((a, b) => {
+        if (a === 'Instructions') return -1;
+        if (b === 'Instructions') return 1;
+        if (a === 'Cover Page') return -1;
+        if (b === 'Cover Page') return 1;
+        return a.localeCompare(b);
+    });
 
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
