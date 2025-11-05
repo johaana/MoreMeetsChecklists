@@ -35,6 +35,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
     const instructionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
     const instructionBodyStyle = { font: { sz: 11, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
+    const instructionTitleStyle = { font: { bold: true, sz: 12 }, alignment: { vertical: 'top' } };
     const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
     const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true } };
@@ -88,17 +89,17 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     }
 
     // --- INSTRUCTIONS SHEET ---
-    const instructionsData = [
+     const instructionsData = [
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null, null],
         [],
         [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null, null],
-        [{ v: "This isn't a static list; it's a dynamic operational tool designed for accountability and easy tracking. Here’s how to use its smart features:" , t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } }, null, null, null, null],
+        [{ v: "This isn't a static list; it's a dynamic operational tool designed for accountability and easy tracking. Here’s how to use its smart features:" , t: 's', s: { ...instructionBodyStyle, alignment: { ...instructionBodyStyle.alignment, horizontal: 'center' } } }, null, null, null, null],
         [],
-        [{ v: '1. Complete a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "Simply enter the completion date in the 'Date Last Completed' column. The 'Status' and 'Next Due Date' columns will update automatically.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '2. See The Live Status', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "The 'Status' column is fully automated. If a task is overdue, the row will turn RED. If it is completed, it will turn GREEN.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '3. Handle Event-Driven Tasks', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "For tasks with a frequency of 'As Required' or 'Per Incident', the 'Next Due Date' will show 'N/A' and the task will never become overdue.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '4. Reset a Recurring Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "To start the next cycle for a recurring task (e.g., weekly, monthly), just clear the date from the 'Date Last Completed' cell. The row will revert to 'Pending'.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '5. Handle Exceptions', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '1. Complete a Task', t: 's', s: instructionTitleStyle }, { v: "Simply enter the completion date in the 'Date Last Completed' column. The 'Status' and 'Next Due Date' columns will update automatically.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status' column is fully automated. If a task is overdue, the row will turn RED. If it is completed, it will turn GREEN.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '3. Handle Event-Driven Tasks', t: 's', s: instructionTitleStyle }, { v: "For tasks with a frequency of 'As Required' or 'Per Incident', the 'Next Due Date' will show 'N/A' and the task will never become overdue.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '4. Reset a Recurring Task', t: 's', s: instructionTitleStyle }, { v: "To start the next cycle for a recurring task (e.g., weekly, monthly), just clear the date from the 'Date Last Completed' cell. The row will revert to 'Pending'.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '5. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }, null, null, null],
     ];
     
     const instructionsWs = utils.aoa_to_sheet(instructionsData);
@@ -109,7 +110,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         { s: { r: 8, c: 1 }, e: { r: 8, c: 4 } }, { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } },
     ];
     setColumnWidths(instructionsWs, [25, 25, 25, 25, 25]);
-    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 50 }, { hpt: 60 }, { hpt: 60 }, { hpt: 50 }, { hpt: 60 }];
+    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }];
     addFooter(instructionsWs, 11, 5);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
@@ -120,7 +121,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [],
             [{v:"Click any checklist title below to navigate directly to its sheet.", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } }}, null, null, null],
             [],
-            ["Checklist Title", "Department", "Frequency", "Primary Role"],
+            [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
         checklists.forEach(checklist => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
@@ -133,7 +134,6 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         setColumnWidths(coverWs, [60, 25, 20, 25]);
         coverWs['!rows'] = [{ hpt: 30 }];
         coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }];
-        ['A5', 'B5', 'C5', 'D5'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = headerStyle; });
         addFooter(coverWs, coverPageData.length, 4);
         utils.book_append_sheet(wb, coverWs, "Cover Page");
     }
@@ -145,27 +145,22 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Last Completed', 'Status', 'Next Due Date', 'Notes'],
         ];
         
-        const headerEndCol = 'M'; // Last visible column
-        const helperColStart = 13; // Column N
+        const headerEndCol = 'M';
+        const helperColStart = 13;
 
         checklist.tasks.forEach((task, index) => {
             const rowNum = 4 + index;
             const dateCell = `J${rowNum}`;
             const freqCell = `G${rowNum}`;
+            const helperDateCell = `N${rowNum}`;
             
-            // Helper Column 1 (N): Is Event Driven?
             const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
-
-            // Helper Column 2 (O): Days to Add
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
-
-            // Helper Column 3 (P): Months to Add
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0)))`;
-
-            // Visible "Next Due Date" Column (L)
-            const nextDueDateFormula = `IF(OR(N${rowNum}, ISBLANK(${dateCell})),"N/A",IF(P${rowNum}>0,EDATE(${dateCell},P${rowNum}),${dateCell}+O${rowNum}))`;
-
-            // Visible "Status" Column (K)
+            
+            const excelDateNumberFormula = `IF(ISNUMBER(${dateCell}), ${dateCell}, DATEVALUE(LEFT(${dateCell},SEARCH(" ",${dateCell}&" ")-1)&"-"&MID(SUBSTITUTE(${dateCell}," ","-",1),SEARCH("-",SUBSTITUTE(${dateCell}," ","-",1))+1,3)&"-"&RIGHT(${dateCell},4)))`;
+            
+            const nextDueDateFormula = `IF(OR(Q${rowNum}, ISBLANK(${dateCell})),"N/A",IF(P${rowNum}>0,EDATE(${helperDateCell},P${rowNum}),${helperDateCell}+O${rowNum}))`;
             const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(L${rowNum}="N/A","Completed",IF(TODAY()>=L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
 
             wsData.push([
@@ -175,9 +170,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
                 { t: 'f', f: statusFormula }, 
                 { t: 'f', f: nextDueDateFormula, s: { numFmt: 'dd-mmm-yyyy' } }, 
                 '',
-                { t: 'f', f: isEventDrivenFormula },
-                { t: 'f', f: daysToAddFormula },
-                { t: 'f', f: monthsToAddFormula }
+                { t: 'f', f: excelDateNumberFormula, s: { numFmt: 'dd-mmm-yyyy' } }, // N: Helper Date
+                { t: 'f', f: daysToAddFormula }, // O: Days to Add
+                { t: 'f', f: monthsToAddFormula }, // P: Months to Add
+                { t: 'f', f: isEventDrivenFormula }, // Q: Is Event Driven
             ]);
         });
         
@@ -185,7 +181,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
         if(ws['A1']) ws['A1'].s = titleStyle;
         ws['!rows'] = [{ hpt: 30 }];
-        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 20, 25, 20, 30, 0, 0, 0]); // Hide helper columns
+        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 20, 25, 20, 30, 0, 0, 0, 0]);
         const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3', 'L3', 'M3'];
         headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = headerStyle; });
         
@@ -385,3 +381,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    
