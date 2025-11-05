@@ -97,9 +97,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null],
         [{ v: "This isn't just a static list; it's a dynamic operational tool. The sheet is designed to be automated. You only need to edit ONE column.", t: 's', s: { ...instructionBodyStyle, alignment: { ...instructionBodyStyle.alignment, horizontal: 'center' } } }, null, null, null],
         [],
-        [{ v: '1. Update the Date', t: 's', s: instructionTitleStyle }, { v: "When you complete a task, go to the 'Date Completed (Enter Date Here)' column and enter the date. Use the format DD-MMM-YY (e.g., 05-Nov-24). This is the only column you ever need to touch.", t: 's', s: instructionBodyStyle }],
+        [{ v: '1. Update the Date', t: 's', s: instructionTitleStyle }, { v: "When you complete a task, go to the 'Date Completed (dd-mmm-yy)' column and enter the date. Use the format DD-MMM-YY (e.g., 05-Nov-24). This is the only column you ever need to touch.", t: 's', s: instructionBodyStyle }],
         [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status (Auto-updates)' and 'Next Due Date (Auto-calculated)' columns will update automatically. You do not need to edit them. If a task is overdue, the entire row will turn RED. If it's completed on time, it will turn GREEN.", t: 's', s: instructionBodyStyle }],
-        [{ v: '3. Event-Driven vs. Scheduled Tasks', t: 's', s: instructionTitleStyle }, { v: "Tasks with a 'Frequency' like 'Daily', 'Weekly', or 'Monthly' are scheduled and will become overdue. Tasks with a frequency like 'As Required', 'Per Incident', or 'Per Hire' are event-driven and will never show as 'OVERDUE'.", t: 's', s: instructionBodyStyle }],
+        [{ v: '3. Event-Driven vs. Scheduled Tasks', t: 's', s: instructionTitleStyle }, { v: "Tasks with a 'Frequency' like 'Daily', 'Weekly', or 'Monthly' are scheduled and will become overdue. Tasks with a frequency like 'As Required', 'Per Incident', or 'Ongoing' are event-driven and will show 'N/A' for the due date.", t: 's', s: instructionBodyStyle }],
         [{ v: '4. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }],
     ];
     
@@ -113,8 +113,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     setColumnWidths(instructionsWs, [25, 25, 25, 25]);
     instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 40 }, { hpt: 15 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }];
     instructionsData.forEach((row, r) => {
-        if (row[1] && typeof row[1].v === 'string') {
-           instructionsWs[utils.encode_cell({r:r, c:1})].s = instructionBodyStyle;
+        const cell = instructionsWs[utils.encode_cell({r:r, c:1})];
+        if (cell && typeof cell.v === 'string') {
+            cell.s = { ...instructionBodyStyle };
         }
     });
 
@@ -151,7 +152,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const headerEndCol = 'M';
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (Enter Date Here)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mmm-yy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
         ];
 
         checklist.tasks.forEach((task, index) => {
@@ -159,13 +160,12 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const dateCell = `J${rowNum}`;
             const freqCell = `G${rowNum}`;
             
+            const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0)))`;
-            const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
 
             const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
             const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(L${rowNum}="N/A","Completed",IF(TODAY()>L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
-
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
