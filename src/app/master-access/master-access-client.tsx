@@ -35,14 +35,14 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: 'INDIRECT("H"&ROW())="ACTION REQUIRED - OVERDUE"',
+        formula: 'INDIRECT("J"&ROW())="ACTION REQUIRED - OVERDUE"',
         style: { fill: overdueFill, font: overdueFont },
     };
 
     const completedFill = { fgColor: { rgb: "E6FFEC" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: 'INDIRECT("H"&ROW())="Completed"',
+        formula: 'LEFT(INDIRECT("J"&ROW()), 9)="Completed"',
         style: { fill: completedFill },
     };
 
@@ -55,7 +55,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const addFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
         ws['!merges'] = ws['!merges'] || [];
         ws['!merges'].push({ s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } });
-        const footerCell: CellObject = { v: "© 2024 MoreMeets | www.moremeets.com - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
+        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2024 MoreMeets - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
         utils.sheet_add_aoa(ws, [[footerCell]], { origin: `A${lastRow + 3}` });
     };
     
@@ -84,18 +84,15 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [],
         [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null, null],
         [
-            { v: "This isn't a static list; it's a dynamic operational tool. Here's how it works:" , t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } },
+            { v: "This isn't a static list; it's a dynamic operational tool designed for accountability and easy tracking. Here’s how to use its smart features:" , t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } },
             null, null, null, null
         ],
         [],
         [{ v: '1. Complete a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "Simply enter the date in the 'Date Last Completed' column. The sheet does the rest.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '2. Automatic Updates', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "The 'Status' will change to 'Completed' and the 'Next Due Date' will calculate automatically based on the task's frequency (Daily, Weekly, etc.).", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '3. Stay Alert', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "When a task's due date arrives, the 'Status' will automatically change to 'ACTION REQUIRED - OVERDUE' and the row will highlight, telling you exactly what needs attention.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '4. Reset a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "To 'reset' a recurring task for its next cycle, just clear the date from the 'Date Last Completed' cell. The row will reset to 'Pending'.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '5. Handle Exceptions', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column to add details. This keeps the primary system clean while providing context.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [],
-        [{ v: 'Need Help?', t: 's', s: sectionTitleStyle }, null, null, null, null],
-        [{ v: 'For any questions or support, please email us at more@moremeets.com.', t: 's', s: instructionBodyStyle }, null, null, null, null],
+        [{ v: '2. Automatic Status Updates', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "The 'Next Due Date' and 'Status' columns will update automatically. Completed tasks turn green.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '3. Overdue Alerts', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "When a recurring task's due date arrives, the 'Status' will change to 'ACTION REQUIRED - OVERDUE' and the entire row will highlight red, showing you exactly what needs attention.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '4. Reset a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "For a recurring task, just clear the date from the 'Date Last Completed' cell to reset it for the next cycle. The row will turn white again, ready for the next completion date.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '5. Handle Exceptions', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }, null, null, null],
     ];
     
     const instructionsWs = utils.aoa_to_sheet(instructionsData);
@@ -108,16 +105,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         { s: { r: 7, c: 1 }, e: { r: 7, c: 4 } },
         { s: { r: 8, c: 1 }, e: { r: 8, c: 4 } },
         { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } },
-        { s: { r: 11, c: 0 }, e: { r: 11, c: 4 } },
-        { s: { r: 12, c: 0 }, e: { r: 12, c: 4 } },
     ];
     setColumnWidths(instructionsWs, [20, 25, 25, 25, 25]);
-    instructionsWs['!rows'] = [
-        { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 40 }, { hpt: 15 }, 
-        { hpt: 40 }, { hpt: 40 }, { hpt: 40 }, { hpt: 40 }, { hpt: 40 }, 
-        { hpt: 15 }, { hpt: 20 }, { hpt: 30 }
-    ];
-    addFooter(instructionsWs, 15, 5);
+    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 40 }, { hpt: 50 }, { hpt: 60 }, { hpt: 50 }, { hpt: 60 }];
+    addFooter(instructionsWs, 12, 5);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
 
@@ -154,40 +145,34 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const wsData = [
             [checklist.title],
             [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Date Last Completed', 'Next Due Date', 'Status', 'Assigned To', 'Notes'],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Frequency', 'Date Last Completed', 'Next Due Date', 'Status', 'Notes'],
         ];
         
         const tasksForSheet = checklist.tasks.map((task, index) => {
             const rowNum = 4 + index; 
-            const dateCell = `F${rowNum}`;
-            const nextDueDateCell = `G${rowNum}`;
+            const freqCell = `F${rowNum}`;
+            const dateCell = `G${rowNum}`;
+            const nextDueDateCell = `H${rowNum}`;
             
-            let freq = checklist.frequency.toLowerCase();
-            let nextDueDateFormula = `IF(${dateCell}="", "", `;
-            if (freq.includes('daily')) {
-                nextDueDateFormula += `${dateCell}+1)`;
-            } else if (freq.includes('weekly')) {
-                nextDueDateFormula += `${dateCell}+7)`;
-            } else if (freq.includes('monthly')) {
-                nextDueDateFormula += `EDATE(${dateCell}, 1))`;
-            } else if (freq.includes('quarterly')) {
-                 nextDueDateFormula += `EDATE(${dateCell}, 3))`;
-            } else if (freq.includes('annually')) {
-                nextDueDateFormula += `EDATE(${dateCell}, 12))`;
-            }
-             else {
-                nextDueDateFormula = 'IF(F4="","","N/A")';
-            }
-
-
-            const statusFormula = `IF(${dateCell}="", "Pending", IF(${nextDueDateCell}="N/A", "Completed", IF(AND(${nextDueDateCell}<>"", ${nextDueDateCell}<=TODAY()), "ACTION REQUIRED - OVERDUE", "Completed")))`;
+            const nextDueDateFormula = `IF(${dateCell}="", "", ` +
+                `SWITCH(LOWER(${freqCell}), ` +
+                `"daily", ${dateCell}+1, ` +
+                `"weekly", ${dateCell}+7, ` +
+                `"monthly", EDATE(${dateCell}, 1), ` +
+                `"quarterly", EDATE(${dateCell}, 3), ` +
+                `"annually", EDATE(${dateCell}, 12), ` +
+                `"N/A"))`;
+            
+            const statusFormula = `IF(${dateCell}="", "Pending", ` +
+                `IF(${nextDueDateCell}="N/A", "Completed", ` +
+                `IF(AND(${nextDueDateCell}<>"", ${nextDueDateCell}<=TODAY()), "ACTION REQUIRED - OVERDUE", "Completed (Next Due: " & TEXT(${nextDueDateCell}, "dd-mmm-yy") & ")")))`;
 
             return [
                 task.id, task.description, task.priority, task.riskLevel, task.proof, 
+                checklist.frequency,
                 null,
                 { t: 'f', f: nextDueDateFormula },
                 { t: 'f', f: statusFormula },
-                '', 
                 '' 
             ];
         });
@@ -199,7 +184,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         if (ws['A1']) ws['A1'].s = titleStyle;
         ws['!rows'] = [{ hpt: 30 }];
         
-        setColumnWidths(ws, [15, 60, 15, 15, 25, 20, 20, 30, 20, 30]);
+        setColumnWidths(ws, [15, 60, 15, 15, 25, 20, 20, 20, 30, 30]);
 
         ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3'].forEach(cell => { if (ws[cell]) ws[cell].s = checklistHeaderStyle; });
         
@@ -210,18 +195,17 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             { ref: `A4:J${range.e.r + 1}`, rules: [completedConditionalFmt] }
         );
 
-
         for (let R = 3; R <= range.e.r; ++R) {
-            // F column for Date Last Completed
-            const dateCellF = ws[utils.encode_cell({c: 5, r: R})]; 
-            if (dateCellF) {
-                dateCellF.t = 'd';
-                dateCellF.s = { numFmt: 'dd-mmm-yyyy' };
+            // G column for Date Last Completed
+            const dateCellG = ws[utils.encode_cell({c: 6, r: R})]; 
+            if (dateCellG) {
+                dateCellG.t = 'd';
+                dateCellG.s = { numFmt: 'dd-mmm-yyyy' };
             }
-             // G column for Next Due Date
-            const dateCellG = ws[utils.encode_cell({c: 6, r: R})];
-            if(dateCellG) {
-                 dateCellG.s = { numFmt: 'dd-mmm-yyyy' };
+            // H column for Next Due Date
+            const dateCellH = ws[utils.encode_cell({c: 7, r: R})];
+            if(dateCellH) {
+                 dateCellH.s = { numFmt: 'dd-mmm-yyyy' };
             }
         }
         
