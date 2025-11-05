@@ -24,7 +24,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- Styles ---
     const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "0A2540" } }, alignment: { horizontal: 'center', vertical: 'center' } };
-    const instructionHeaderStyle = { font: { sz: 12, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } } };
+    const instructionHeaderStyle = { font: { sz: 12, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center' } };
     const instructionBodyStyle = { font: { sz: 11 }, alignment: { wrapText: true, vertical: 'top' } };
     const sectionTitleStyle = { font: { sz: 14, bold: true, color: { rgb: "0A2540" } } };
     const stepTitleStyle = { font: { sz: 11, bold: true } };
@@ -92,7 +92,11 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     
     // Set heights and widths
     setColumnWidths(instructionsWs, [20, 80]);
-    instructionsWs['!rows'] = [{ hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, { hpt: 30 }, { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }];
+    instructionsWs['!rows'] = [
+        { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, 
+        { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, { hpt: 40 }, 
+        { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }
+    ];
 
     // Merging cells
     instructionsWs['!merges'] = [
@@ -112,46 +116,49 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     instructionsWs["A11"].s = sectionTitleStyle;
 
     ["A7", "A8", "A9"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = stepTitleStyle });
-    ["B7", "B8", "B9", "A12"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = instructionBodyStyle });
+    ["B7", "B8", "B9", "B12"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = instructionBodyStyle });
     
     addFooter(instructionsWs, 13, 2);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
 
     // --- Cover Page ---
-    const coverPageName = "Cover Page";
-    const coverPageData = [
-        [packTitle],
-        [],
-        ["Click any checklist title below to navigate directly to its sheet."],
-        [],
-        ["Checklist Title", "Department", "Frequency", "Primary Role"],
-         ...checklists.map((checklist) => {
-            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-            const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-            return [ { v: checklist.title, f: formula }, checklist.department, checklist.frequency, checklist.role ];
-        }),
-    ];
-
-    const coverWs = utils.aoa_to_sheet(coverPageData);
-    setColumnWidths(coverWs, [60, 25, 20, 25]);
-    coverWs['!rows'] = [{ hpt: 30 }];
-    coverWs['A1'].s = titleStyle;
-    coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
-    coverWs['A3'].s = { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } };
-    coverWs['!merges']!.push({ s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
+    const coverPageName = type === 'pack' ? "Cover Page" : checklists[0].title.replace(/[^\w\s]/gi, '').substring(0, 31);
     
-    ['A5', 'B5', 'C5', 'D5'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = checklistHeaderStyle; });
+    if (type === 'pack') {
+        const coverPageData = [
+            [packTitle],
+            [],
+            ["Click any checklist title below to navigate directly to its sheet."],
+            [],
+            ["Checklist Title", "Department", "Frequency", "Primary Role"],
+            ...checklists.map((checklist) => {
+                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+                return [ { v: checklist.title, f: formula }, checklist.department, checklist.frequency, checklist.role ];
+            }),
+        ];
 
-    const rangeLinks = utils.decode_range(coverWs['!ref']!);
-    for (let R = 5; R < rangeLinks.e.r + 1; ++R) { 
-        const address = utils.encode_cell({ r: R, c: 0 });
-        if (coverWs[address] && coverWs[address].f) {
-             coverWs[address].s = linkStyle;
+        const coverWs = utils.aoa_to_sheet(coverPageData);
+        setColumnWidths(coverWs, [60, 25, 20, 25]);
+        coverWs['!rows'] = [{ hpt: 30 }];
+        coverWs['A1'].s = titleStyle;
+        coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+        coverWs['A3'].s = { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } };
+        coverWs['!merges']!.push({ s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
+        
+        ['A5', 'B5', 'C5', 'D5'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = checklistHeaderStyle; });
+
+        const rangeLinks = utils.decode_range(coverWs['!ref']!);
+        for (let R = 5; R < rangeLinks.e.r + 1; ++R) { 
+            const address = utils.encode_cell({ r: R, c: 0 });
+            if (coverWs[address] && coverWs[address].f) {
+                coverWs[address].s = linkStyle;
+            }
         }
+        addFooter(coverWs, rangeLinks.e.r + 1, 4);
+        utils.book_append_sheet(wb, coverWs, coverPageName);
     }
-    addFooter(coverWs, rangeLinks.e.r + 1, 4);
-    utils.book_append_sheet(wb, coverWs, coverPageName);
 
 
     // --- Individual Checklist Sheets ---
@@ -195,8 +202,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     wb.SheetNames.sort((a, b) => {
         if (a === 'Instructions') return -1;
         if (b === 'Instructions') return 1;
-        if (a === 'Cover Page') return -1;
-        if (b === 'Cover Page') return 1;
+        if (type === 'pack' && a === 'Cover Page') return -1;
+        if (type === 'pack' && b === 'Cover Page') return 1;
         return a.localeCompare(b);
     });
 
