@@ -75,7 +75,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- Instructions Sheet ---
     const instructionsWs = utils.aoa_to_sheet([
-        ["MoreMeets Operations Pack"],
+        [`Welcome to Your MoreMeets Operations Pack: ${packTitle}`],
         [],
         ["Step 1: Enable Editing (IMPORTANT)"],
         ["Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features."],
@@ -91,7 +91,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     setColumnWidths(instructionsWs, [20, 80]);
     instructionsWs["A1"].s = titleStyle;
-    utils.sheet_set_row_height(instructionsWs, 0, 30);
+    instructionsWs['!rows'] = [{ hpx: 30 }]; // Set height for the first row
     instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
     
     instructionsWs["A3"].s = instructionHeaderStyle;
@@ -138,13 +138,13 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     ['A5', 'B5', 'C5', 'D5'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = checklistHeaderStyle; });
 
     const rangeLinks = utils.decode_range(coverWs['!ref']!);
-    for (let R = 5; R < rangeLinks.e.r; ++R) { 
+    for (let R = 5; R < rangeLinks.e.r + 1; ++R) { 
         const address = utils.encode_cell({ r: R, c: 0 });
         if (coverWs[address] && coverWs[address].f) {
              coverWs[address].s = linkStyle;
         }
     }
-    addFooter(coverWs, rangeLinks.e.r, 4);
+    addFooter(coverWs, rangeLinks.e.r + 1, 4);
     utils.book_append_sheet(wb, coverWs, coverPageName);
 
 
@@ -180,9 +180,11 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     
     // --- Remove default Sheet1 ---
     if (wb.SheetNames.includes('Sheet1')) {
+        const sheet1Index = wb.SheetNames.indexOf('Sheet1');
+        wb.SheetNames.splice(sheet1Index, 1);
         delete wb.Sheets['Sheet1'];
-        wb.SheetNames = wb.SheetNames.filter(name => name !== 'Sheet1');
     }
+
 
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
