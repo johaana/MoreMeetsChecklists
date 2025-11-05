@@ -23,8 +23,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     // --- Enhanced Styles ---
-    const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { horizontal: 'center', vertical: 'center' } };
-    const instructionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
+    const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
+    const instructionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
     const instructionBodyStyle = { font: { sz: 11, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
     const sectionTitleStyle = { font: { sz: 14, bold: true, color: { rgb: "0A2540" } } };
     const stepTitleStyle = { font: { sz: 12, bold: true } };
@@ -69,36 +69,27 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         }];
     }
 
-    // --- NEW Professional Instructions Sheet ---
-    const instructionsWs = utils.aoa_to_sheet([[]], {skipHeader: true}); // Start with an empty sheet
-    
-    // Set widths first
+    // --- Professional Instructions Sheet ---
+    const instructionsWs = utils.aoa_to_sheet([[]], {skipHeader: true});
     setColumnWidths(instructionsWs, [20, 80]);
-    
+
     // Title
-    instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
-    instructionsWs['A1'] = { v: `Welcome to Your MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle };
+    instructionsWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }];
+    instructionsWs['A2'] = { v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle };
 
     // Step 1: Enable Editing
     instructionsWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } });
     instructionsWs['A3'] = { v: "Step 1: Enable Editing (IMPORTANT)", t: 's', s: instructionHeaderStyle };
-    
     instructionsWs['!merges'].push({ s: { r: 3, c: 0 }, e: { r: 3, c: 1 } });
     instructionsWs['A4'] = { v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features.", t: 's', s: {...instructionBodyStyle, font: {...instructionBodyStyle.font, color: {rgb: "C00000"}}, alignment: { ...instructionBodyStyle.alignment, vertical: 'center', horizontal: 'center'} }};
 
-    // How to Use This File Header
+    // How to Use This File
     instructionsWs['!merges'].push({ s: { r: 5, c: 0 }, e: { r: 5, c: 1 } });
     instructionsWs['A6'] = { v: "How to Use This File", t: 's', s: sectionTitleStyle };
-
-    // Step 1
     instructionsWs['A7'] = { v: "1. Navigate", t: 's', s: stepTitleStyle };
     instructionsWs['B7'] = { v: "Use the 'Cover Page' sheet to see all included checklists. Click any title to jump directly to that sheet.", t: 's', s: instructionBodyStyle };
-
-    // Step 2
     instructionsWs['A8'] = { v: "2. Use Checklists", t: 's', s: stepTitleStyle };
     instructionsWs['B8'] = { v: "In each checklist sheet, manually update the 'Status' column to 'In Progress' or 'Completed' to track your tasks.", t: 's', s: instructionBodyStyle };
-    
-    // Step 3
     instructionsWs['A9'] = { v: "3. Customize", t: 's', s: stepTitleStyle };
     instructionsWs['B9'] = { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", t: 's', s: instructionBodyStyle };
 
@@ -108,18 +99,14 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     instructionsWs['!merges'].push({ s: { r: 12, c: 0 }, e: { r: 12, c: 1 } });
     instructionsWs['A13'] = { v: "For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.", t: 's', s: instructionBodyStyle };
 
-    setRowHeights(instructionsWs, [
-        { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, 
-        { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, { hpt: 40 }, 
-        { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, {hpt: 30}
-    ]);
+    setRowHeights(instructionsWs, [ {hpt: 5}, { hpt: 30 }, { hpt: 20 }, { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, { hpt: 40 }, { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, {hpt: 30} ]);
     
     addFooter(instructionsWs, 15, 2);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
 
     // --- Cover Page ---
-    const coverPageName = type === 'pack' ? "Cover Page" : checklists[0].title.replace(/[^\w\s]/gi, '').substring(0, 31);
+    const coverPageName = "Cover Page";
     
     if (type === 'pack') {
         const coverPageData = [
@@ -184,13 +171,14 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         wb.SheetNames.splice(wb.SheetNames.indexOf('Sheet1'), 1);
     }
     
-    wb.SheetNames.sort((a, b) => {
+    const sortedSheetNames = wb.SheetNames.sort((a, b) => {
         if (a === 'Instructions') return -1;
         if (b === 'Instructions') return 1;
-        if (type === 'pack' && a === 'Cover Page') return -1;
-        if (type === 'pack' && b === 'Cover Page') return 1;
+        if (a === 'Cover Page') return -1;
+        if (b === 'Cover Page') return 1;
         return a.localeCompare(b);
     });
+     wb.SheetNames = sortedSheetNames;
 
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
