@@ -32,6 +32,13 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const checklistHeaderStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 12 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center' } };
     const checklistInstructionStyle = { font: { bold: true, sz: 9, color: { rgb: "4A4A4A" } }, fill: { fgColor: { rgb: "F3F3F3" } }, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } };
 
+    const greenFill = { fgColor: { rgb: "E6FFEC" } };
+    const completedConditionalFmt = {
+        type: "expression",
+        formula: 'INDIRECT("G"&ROW())="Completed"', // Check if Status column is 'Completed'
+        style: { fill: greenFill },
+    };
+
     // --- Helper Functions ---
     const setColumnWidths = (ws: WorkSheet, widths: number[]) => {
         ws['!cols'] = widths.map(wch => ({ wch }));
@@ -68,18 +75,27 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
       [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
       [],
       [{ v: 'Step 1: Enable Editing (IMPORTANT)', t: 's', s: instructionHeaderStyle }, null, null, null],
-      [{ v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features, including interactive dropdowns.", t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } }, null, null, null],
+      [{ v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all automated features.", t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } }, null, null, null],
       [],
       [{ v: 'How To Use This File', t: 's', s: sectionTitleStyle }, null, null, null],
-      [{ v: '1. Navigate', t: 's', s: {font: {bold: true}} }, { v: "Use the 'Cover Page' sheet to see all included checklists. Click any checklist title to jump directly to that sheet.", t: 's', s: instructionBodyStyle }, null, null],
-      [{ v: '2. Use Checklists', t: 's', s: {font: {bold: true}} }, { v: "In each checklist sheet, click on a cell in the 'Status' column to use the dropdown menu and update a task's progress.", t: 's', s: instructionBodyStyle }, null, null],
-      [{ v: '3. Customize', t: 's', s: {font: {bold: true}} }, { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", t: 's', s: instructionBodyStyle }, null, null],
+      [
+        { v: '1. Navigate', t: 's', s: {font: {bold: true}} }, 
+        { v: "Use the 'Cover Page' sheet to see all included checklists. Click any checklist title to jump directly to that sheet.", t: 's', s: instructionBodyStyle }
+      ],
+      [
+        { v: '2. Update Status', t: 's', s: {font: {bold: true}} },
+        { v: "In each checklist, simply enter the date a task is finished in the 'Date Completed' column. The 'Status' will automatically update and the row will highlight green.", t: 's', s: instructionBodyStyle }
+      ],
+      [
+        { v: '3. Customize', t: 's', s: {font: {bold: true}} },
+        { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", t: 's', s: instructionBodyStyle }
+      ],
       [], [],
       [{ v: 'Need Help?', t: 's', s: sectionTitleStyle }, null, null, null],
-      [{ v: 'For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.', t: 's', s: instructionBodyStyle }, null, null, null],
+      [{ v: 'For any questions or support, please email us at more@moremeets.com.', t: 's', s: instructionBodyStyle }, null, null, null],
     ];
     
-    const instructionsWs = utils.aoa_to_sheet(instructionsData, {skipHeader: true});
+    const instructionsWs = utils.aoa_to_sheet(instructionsData);
     instructionsWs['!merges'] = [
         { s: { r: 0, c: 0 }, e: { r: 0, c: 3 } },
         { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } },
@@ -100,6 +116,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     addFooter(instructionsWs, 15, 4);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
+
     // --- Cover Page ---
     if (type === 'pack' && checklists.length > 1) {
         const coverPageName = "Cover Page";
@@ -114,10 +131,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         checklists.forEach(checklist => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-            coverPageData.push([{ v: checklist.title, t: 's', f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ]);
+            coverPageData.push([{ t: 's', v: checklist.title, f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ]);
         });
 
-        const coverWs = utils.aoa_to_sheet(coverPageData, {cellStyles: true});
+        const coverWs = utils.aoa_to_sheet(coverPageData);
         setColumnWidths(coverWs, [60, 25, 20, 25]);
         coverWs['!rows'] = [{ hpt: 30 }];
         coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }];
@@ -133,44 +150,56 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const wsData = [
             [checklist.title],
             [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Status', 'Assigned To', 'Notes'],
-            ['', 'Manually update status to \'In Progress\' or \'Completed\'.', '', '', '', '(Pending, In Progress, Completed)', 'Assign tasks to team members here.', 'Add notes or link to evidence here.']
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Date Completed', 'Status', 'Assigned To', 'Notes'],
+            ['', '', '', '', '', 'Enter date when done', 'Auto-updates', 'Assign tasks here.', 'Add notes here.']
         ];
-        const tasksForSheet = checklist.tasks.map(task => [
-            task.id, task.description, task.priority, task.riskLevel, task.proof, 'Pending', '', ''
-        ]);
+        const tasksForSheet = checklist.tasks.map((task, index) => {
+            const rowNum = 5 + index; // Data starts at row 5
+            const statusFormula = `IF(F${rowNum}<>"", "Completed", "Pending")`;
+            return [
+                task.id, task.description, task.priority, task.riskLevel, task.proof, 
+                null, // Date Completed - initially empty
+                { t: 'f', f: statusFormula }, // Status formula
+                '', // Assigned To
+                ''  // Notes
+            ];
+        });
         wsData.push(...tasksForSheet);
 
-        const ws = utils.aoa_to_sheet(wsData, { cellStyles: true });
+        const ws = utils.aoa_to_sheet(wsData);
         
-        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
+        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 8 } }];
         if (ws['A1']) ws['A1'].s = titleStyle;
-
         ws['!rows'] = [{ hpt: 30 }, undefined, { hpt: 20 }, {hpt: 30}];
-
-        setColumnWidths(ws, [15, 60, 15, 15, 25, 15, 20, 30]);
-        ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3'].forEach(cell => { if (ws[cell]) ws[cell].s = checklistHeaderStyle; });
-        ['B4', 'F4', 'G4', 'H4'].forEach(cell => { if(ws[cell]) ws[cell].s = checklistInstructionStyle });
         
-        // Add dropdown for status
-        const statusValidation = {
-            type: "list",
-            allowBlank: true,
-            showDropDown: true,
-            sqref: `F5:F${4 + tasksForSheet.length}`,
-            formulas: ['"Pending,In Progress,Completed"']
-        };
-        if (!ws['!dataValidation']) ws['!dataValidation'] = [];
-        ws['!dataValidation'].push(statusValidation);
+        setColumnWidths(ws, [15, 60, 15, 15, 25, 18, 15, 20, 30]);
+
+        ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3'].forEach(cell => { if (ws[cell]) ws[cell].s = checklistHeaderStyle; });
+        ['F4', 'G4', 'H4', 'I4'].forEach(cell => { if(ws[cell]) ws[cell].s = checklistInstructionStyle });
+        
+        // --- Add Date Formatting & Conditional Formatting ---
+        const range = utils.decode_range(ws['!ref'] || 'A1');
+        ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
+        ws['!conditional_formatting'].push({
+            ref: `A5:I${range.e.r + 1}`,
+            rules: [completedConditionalFmt]
+        });
+
+        for (let R = 4; R <= range.e.r; ++R) {
+            const dateCell = ws[utils.encode_cell({c: 5, r: R})]; // Column F for Date Completed
+            if (dateCell) {
+                dateCell.t = 'd';
+                dateCell.s = { numFmt: 'dd-mmm-yyyy' };
+            }
+        }
         
         ws['!views'] = [{state: 'frozen', ySplit: 4}];
-        addFooter(ws, wsData.length, 8);
+        addFooter(ws, wsData.length, 9);
         
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(wb, ws, sheetName);
     });
     
-    // Remove default 'Sheet1' if it exists
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
         const sheetIndex = wb.SheetNames.indexOf('Sheet1');
         if (sheetIndex !== -1) {
