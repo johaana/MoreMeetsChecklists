@@ -70,36 +70,33 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     }
 
     // --- Professional Instructions Sheet ---
-    const instructionsWs = utils.aoa_to_sheet([[]], {skipHeader: true});
+    const instructionsData = [
+        [], // Row 1: Spacer
+        [{ v: `MoreMeets Operations Pack: ${packTitle}`, s: titleStyle }], // Row 2: Title
+        [{ v: "Step 1: Enable Editing (IMPORTANT)", s: instructionHeaderStyle }], // Row 3: Enable editing header
+        [{ v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features.", s: {...instructionBodyStyle, font: {...instructionBodyStyle.font, color: {rgb: "C00000"}}, alignment: { ...instructionBodyStyle.alignment, vertical: 'center', horizontal: 'center'} }}], // Row 4
+        [], // Row 5: Spacer
+        [{ v: "How to Use This File", s: sectionTitleStyle }], // Row 6
+        [{v: "1. Navigate", s: stepTitleStyle}, {v: "Use the 'Cover Page' sheet to see all included checklists. Click any checklist title to jump directly to that sheet.", s: instructionBodyStyle }], // Row 7
+        [{v: "2. Use Checklists", s: stepTitleStyle}, {v: "In each checklist sheet, manually update the 'Status' column to 'In Progress' or 'Completed' to track your tasks.", s: instructionBodyStyle }], // Row 8
+        [{v: "3. Customize", s: stepTitleStyle}, {v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", s: instructionBodyStyle }], // Row 9
+        [], // Row 10: Spacer
+        [], // Row 11: Spacer
+        [{ v: "Need Help?", s: sectionTitleStyle }], // Row 12
+        [{ v: "For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.", s: instructionBodyStyle }], // Row 13
+    ];
+
+    const instructionsWs = utils.aoa_to_sheet(instructionsData, {skipHeader: true});
     setColumnWidths(instructionsWs, [20, 80]);
-
-    // Title
-    instructionsWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }];
-    instructionsWs['A2'] = { v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle };
-
-    // Step 1: Enable Editing
-    instructionsWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } });
-    instructionsWs['A3'] = { v: "Step 1: Enable Editing (IMPORTANT)", t: 's', s: instructionHeaderStyle };
-    instructionsWs['!merges'].push({ s: { r: 3, c: 0 }, e: { r: 3, c: 1 } });
-    instructionsWs['A4'] = { v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features.", t: 's', s: {...instructionBodyStyle, font: {...instructionBodyStyle.font, color: {rgb: "C00000"}}, alignment: { ...instructionBodyStyle.alignment, vertical: 'center', horizontal: 'center'} }};
-
-    // How to Use This File
-    instructionsWs['!merges'].push({ s: { r: 5, c: 0 }, e: { r: 5, c: 1 } });
-    instructionsWs['A6'] = { v: "How to Use This File", t: 's', s: sectionTitleStyle };
-    instructionsWs['A7'] = { v: "1. Navigate", t: 's', s: stepTitleStyle };
-    instructionsWs['B7'] = { v: "Use the 'Cover Page' sheet to see all included checklists. Click any title to jump directly to that sheet.", t: 's', s: instructionBodyStyle };
-    instructionsWs['A8'] = { v: "2. Use Checklists", t: 's', s: stepTitleStyle };
-    instructionsWs['B8'] = { v: "In each checklist sheet, manually update the 'Status' column to 'In Progress' or 'Completed' to track your tasks.", t: 's', s: instructionBodyStyle };
-    instructionsWs['A9'] = { v: "3. Customize", t: 's', s: stepTitleStyle };
-    instructionsWs['B9'] = { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", t: 's', s: instructionBodyStyle };
-
-    // Need Help?
-    instructionsWs['!merges'].push({ s: { r: 11, c: 0 }, e: { r: 11, c: 1 } });
-    instructionsWs['A12'] = { v: "Need Help?", t: 's', s: sectionTitleStyle };
-    instructionsWs['!merges'].push({ s: { r: 12, c: 0 }, e: { r: 12, c: 1 } });
-    instructionsWs['A13'] = { v: "For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.", t: 's', s: instructionBodyStyle };
-
-    setRowHeights(instructionsWs, [ {hpt: 5}, { hpt: 30 }, { hpt: 20 }, { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, { hpt: 40 }, { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, {hpt: 30} ]);
+    instructionsWs['!merges'] = [
+        { s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, // Title
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, // Enable Editing Header
+        { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }, // Enable Editing Body
+        { s: { r: 5, c: 0 }, e: { r: 5, c: 1 } }, // How to Use Header
+        { s: { r: 11, c: 0 }, e: { r: 11, c: 1 } }, // Need Help Header
+        { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, // Need Help Body
+    ];
+    setRowHeights(instructionsWs, [ {hpt: 5}, { hpt: 30 }, { hpt: 20 }, { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, { hpt: 40 }, { hpt: 40 }, { hpt: 15 }, { hpt: 15 }, { hpt: 20 }, {hpt: 30} ]);
     
     addFooter(instructionsWs, 15, 2);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
