@@ -34,7 +34,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: 'AND(INDIRECT("L"&ROW())<>"",INDIRECT("L"&ROW())<TODAY())',
+        formula: 'AND(INDIRECT("K"&ROW())<>"", SEARCH("OVERDUE", INDIRECT("K"&ROW()))>0)',
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -42,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: 'LEFT(INDIRECT("K"&ROW()), 9)="Completed"',
+        formula: 'SEARCH("Completed", INDIRECT("K"&ROW()))>0',
         style: { fill: completedFill, font: completedFont },
     };
     
@@ -139,11 +139,11 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const freqCell = `G${rowNum}`;
             const dateCell = `J${rowNum}`;
 
-            const isEventDriven = `OR(LOWER(${freqCell})="as required", LOWER(${freqCell})="per incident", LOWER(${freqCell})="ongoing", LOWER(${freqCell})="per hire", LOWER(${freqCell})="per delivery", LOWER(${freqCell})="per order", LOWER(${freqCell})="per transaction", LOWER(${freqCell})="per new franchisee", LOWER(${freqCell})="per campaign", LOWER(${freqCell})="per case", LOWER(${freqCell})="per vendor visit", LOWER(${freqCell})="per item", LOWER(${freqCell})="per high-value transaction", LOWER(${freqCell})="per audit", LOWER(${freqCell})="per deviation")`;
+            const isEventDriven = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
 
-            const nextDueDateFormula = `IF(OR(${isEventDriven}, ${dateCell}=""), "N/A", IF(LOWER(${freqCell})="daily", ${dateCell}+1, IF(LOWER(${freqCell})="weekly", ${dateCell}+7, IF(LOWER(${freqCell})="fortnightly", ${dateCell}+14, IF(LOWER(${freqCell})="monthly", EDATE(${dateCell}, 1), IF(LOWER(${freqCell})="quarterly", EDATE(${dateCell}, 3), IF(LOWER(${freqCell})="annually", EDATE(${dateCell}, 12), "N/A")))))))`;
+            const nextDueDateFormula = `IF(OR(${isEventDriven}, ${dateCell}=""), "N/A", IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))), ${dateCell}+1, IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))), ${dateCell}+7, IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))), ${dateCell}+14, IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))), EDATE(${dateCell},1), IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))), EDATE(${dateCell},3), IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))), EDATE(${dateCell},12), "N/A")))))))`;
 
-            const statusFormula = `IF(${dateCell}<>"", IF(OR(${isEventDriven}, L${rowNum}="N/A"), "Completed", IF(TODAY()>=L${rowNum}, "ACTION REQUIRED - OVERDUE", "Completed")), "Pending")`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDriven},L${rowNum}="N/A"),"Completed",IF(TODAY()>=L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -168,7 +168,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         for (let R = 3; R <= range.e.r; ++R) {
             const dateCellJ = ws[utils.encode_cell({c: 9, r: R})]; 
-            if (dateCellJ) dateCellJ.t = 'd';
+             if(dateCellJ) {
+                if (!dateCellJ.s) dateCellJ.s = {};
+                dateCellJ.s.numFmt = 'dd-mmm-yyyy';
+            }
         }
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
