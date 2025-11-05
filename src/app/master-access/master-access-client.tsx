@@ -65,18 +65,18 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- Professional Instructions Sheet ---
     const instructionsData = [
-      [{ v: `MoreMeets Operations Pack: ${packTitle}`, s: titleStyle }],
+      [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
       [],
-      [{ v: 'Step 1: Enable Editing (IMPORTANT)', s: instructionHeaderStyle }],
-      [{ v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features.", s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } }],
+      [{ v: 'Step 1: Enable Editing (IMPORTANT)', t: 's', s: instructionHeaderStyle }, null, null, null],
+      [{ v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features, including interactive dropdowns.", t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } }, null, null, null],
       [],
-      [{ v: 'How To Use This File', s: sectionTitleStyle }],
-      [{ v: '1. Navigate', s: {font: {bold: true}} }, { v: "Use the 'Cover Page' sheet to see all included checklists. Click any checklist title to jump directly to that sheet.", s: instructionBodyStyle }],
-      [{ v: '2. Use Checklists', s: {font: {bold: true}} }, { v: "In each checklist sheet, manually update the 'Status' column to 'In Progress' or 'Completed' to track your tasks.", s: instructionBodyStyle }],
-      [{ v: '3. Customize', s: {font: {bold: true}} }, { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", s: instructionBodyStyle }],
+      [{ v: 'How To Use This File', t: 's', s: sectionTitleStyle }, null, null, null],
+      [{ v: '1. Navigate', t: 's', s: {font: {bold: true}} }, { v: "Use the 'Cover Page' sheet to see all included checklists. Click any checklist title to jump directly to that sheet.", t: 's', s: instructionBodyStyle }, null, null],
+      [{ v: '2. Use Checklists', t: 's', s: {font: {bold: true}} }, { v: "In each checklist sheet, click on a cell in the 'Status' column to use the dropdown menu and update a task's progress.", t: 's', s: instructionBodyStyle }, null, null],
+      [{ v: '3. Customize', t: 's', s: {font: {bold: true}} }, { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", t: 's', s: instructionBodyStyle }, null, null],
       [], [],
-      [{ v: 'Need Help?', s: sectionTitleStyle }],
-      [{ v: 'For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.', s: instructionBodyStyle }],
+      [{ v: 'Need Help?', t: 's', s: sectionTitleStyle }, null, null, null],
+      [{ v: 'For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.', t: 's', s: instructionBodyStyle }, null, null, null],
     ];
     
     const instructionsWs = utils.aoa_to_sheet(instructionsData, {skipHeader: true});
@@ -103,18 +103,19 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     // --- Cover Page ---
     if (type === 'pack' && checklists.length > 1) {
         const coverPageName = "Cover Page";
-        const coverPageData = [
-            [{ v: packTitle, s: titleStyle }],
+        const coverPageData: any[][] = [
+            [{ v: packTitle, s: titleStyle }, null, null, null],
             [],
-            [{v:"Click any checklist title below to navigate directly to its sheet.", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } }}],
+            [{v:"Click any checklist title below to navigate directly to its sheet.", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } }}, null, null, null],
             [],
             ["Checklist Title", "Department", "Frequency", "Primary Role"],
-            ...checklists.map((checklist) => {
-                const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-                const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [{ v: checklist.title, t: 's', f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ];
-            }),
         ];
+
+        checklists.forEach(checklist => {
+            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
+            coverPageData.push([{ v: checklist.title, t: 's', f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ]);
+        });
 
         const coverWs = utils.aoa_to_sheet(coverPageData, {cellStyles: true});
         setColumnWidths(coverWs, [60, 25, 20, 25]);
