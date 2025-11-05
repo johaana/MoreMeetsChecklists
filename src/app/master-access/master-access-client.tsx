@@ -34,7 +34,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: 'AND(INDIRECT("K"&ROW())<>"",TODAY()>=INDIRECT("K"&ROW()))',
+        formula: 'LEFT(INDIRECT("J"&ROW()), 16)="ACTION REQUIRED"',
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -42,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: 'LEFT(INDIRECT("J"&ROW()), 9)="Completed"',
+        formula: 'INDIRECT("J"&ROW())="Completed"',
         style: { fill: completedFill, font: completedFont },
     };
 
@@ -90,9 +90,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         ],
         [],
         [{ v: '1. Complete a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "Simply enter the completion date in the 'Date Last Completed' column. The 'Status' and 'Next Due Date' columns will update automatically. Completed tasks turn green.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '2. Handle "As Required" Tasks', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "For tasks with a frequency of 'As Required' or 'Per Incident', the 'Next Due Date' will show 'N/A'. The status will simply show 'Completed' once you enter a date.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '3. Automatic "Overdue" Alerts', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "When a recurring task's due date arrives, the 'Status' will change to 'ACTION REQUIRED - OVERDUE' and the entire row will highlight red, showing you exactly what needs attention.", t: 's', s: instructionBodyStyle }, null, null, null],
-        [{ v: '4. Reset a Recurring Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "To start the next cycle for a recurring task (e.g., weekly, monthly), just clear the date from the 'Date Last Completed' cell. The row will turn white again, ready for the next completion date.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '2. Recurring Tasks', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "When a recurring task's due date arrives, the 'Status' will change to 'ACTION REQUIRED - OVERDUE' and the entire row will highlight red, showing you exactly what needs attention.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '3. "As Required" Tasks', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "For tasks with a frequency of 'As Required' or 'Per Incident', the 'Next Due Date' will show 'N/A'. The status will simply show 'Completed' once you enter a date.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '4. Reset a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "To reset a recurring task for the next cycle (e.g., for the next day or week), simply clear the date from the 'Date Last Completed' cell. The row will revert to 'Pending'.", t: 's', s: instructionBodyStyle }, null, null, null],
         [{ v: '5. Handle Exceptions', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }, null, null, null],
     ];
     
@@ -108,7 +108,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } },
     ];
     setColumnWidths(instructionsWs, [20, 25, 25, 25, 25]);
-    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 40 }, { hpt: 50 }, { hpt: 60 }, { hpt: 50 }, { hpt: 60 }];
+    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }];
     addFooter(instructionsWs, 12, 5);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
@@ -143,28 +143,30 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- Individual Checklist Sheets ---
     checklists.forEach(checklist => {
-        const wsData = [
+        const wsData: any[][] = [
             [checklist.title],
             [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Date Last Completed', 'Status', 'Next Due Date', 'Notes'],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Last Completed', 'Status', 'Next Due Date', 'Notes'],
         ];
         
         checklist.tasks.forEach((task, index) => {
             const rowNum = 4 + index; 
             const freqCell = `G${rowNum}`;
-            const dateCell = `H${rowNum}`;
-            const statusCell = `I${rowNum}`;
-            const nextDueDateCell = `K${rowNum}`;
+            const dateCell = `J${rowNum}`;
+            const statusCell = `K${rowNum}`;
+            const nextDueDateCell = `L${rowNum}`;
 
             const isEventDriven = `OR(LOWER(${freqCell})="as required", LOWER(${freqCell})="per incident", LOWER(${freqCell})="per order", LOWER(${freqCell})="per delivery", LOWER(${freqCell})="per transaction", LOWER(${freqCell})="per new franchisee", LOWER(${freqCell})="per campaign", LOWER(${freqCell})="per case")`;
             
-            const nextDueDateFormula = `IF(${isEventDriven}, "N/A", IF(${dateCell}="", "", SWITCH(LOWER(${freqCell}), "daily", ${dateCell}+1, "weekly", ${dateCell}+7, "monthly", EDATE(${dateCell}, 1), "quarterly", EDATE(${dateCell}, 3), "annually", EDATE(${dateCell}, 12), "N/A")))`;
+            const nextDueDateFormula = `IF(${isEventDriven}, "N/A", IF(${dateCell}="", "", SWITCH(LOWER(${freqCell}), "daily", ${dateCell}+1, "weekly", ${dateCell}+7, "fortnightly", ${dateCell}+14, "monthly", EDATE(${dateCell}, 1), "quarterly", EDATE(${dateCell}, 3), "annually", EDATE(${dateCell}, 12), "N/A")))`;
             
-            const statusFormula = `IF(${dateCell}<>"", "Completed", IF(AND(${nextDueDateCell}<>"", TODAY()>=${nextDueDateCell}), "ACTION REQUIRED - OVERDUE", "Pending"))`;
+            const statusFormula = `IF(${dateCell}<>"", IF(${isEventDriven}, "Completed", IF(TODAY()>=${nextDueDateCell}, "ACTION REQUIRED - OVERDUE", "Completed")), "Pending")`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
-                task.frequency,
+                task.frequency || checklist.frequency,
+                task.department || checklist.department,
+                task.role || checklist.role,
                 null,
                 { t: 'f', f: statusFormula },
                 { t: 'f', f: nextDueDateFormula },
@@ -174,38 +176,38 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
         const ws = utils.aoa_to_sheet(wsData);
         
-        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 10 } }];
+        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
         if (ws['A1']) ws['A1'].s = titleStyle;
         ws['!rows'] = [{ hpt: 30 }];
         
-        setColumnWidths(ws, [15, 60, 10, 10, 30, 25, 15, 20, 30, 20, 30]);
+        setColumnWidths(ws, [15, 60, 10, 10, 30, 25, 15, 20, 20, 20, 30, 20, 30]);
 
         // Apply header style
-        const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3'];
+        const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3', 'L3', 'M3'];
         headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = checklistHeaderStyle; });
         
         const range = utils.decode_range(ws['!ref'] || 'A1');
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
         ws['!conditional_formatting'].push(
-            { ref: `A4:K${range.e.r + 1}`, rules: [overdueConditionalFmt] },
-            { ref: `A4:K${range.e.r + 1}`, rules: [completedConditionalFmt] }
+            { ref: `A4:M${range.e.r + 1}`, rules: [overdueConditionalFmt] },
+            { ref: `A4:M${range.e.r + 1}`, rules: [completedConditionalFmt] }
         );
         
         // Apply date formatting
         for (let R = 3; R <= range.e.r; ++R) {
-            const dateCellH = ws[utils.encode_cell({c: 7, r: R})]; 
-            if (dateCellH) {
-                dateCellH.t = 'd';
-                dateCellH.s = { numFmt: 'dd-mmm-yyyy' };
+            const dateCellJ = ws[utils.encode_cell({c: 9, r: R})]; 
+            if (dateCellJ) {
+                dateCellJ.t = 'd';
+                dateCellJ.s = { numFmt: 'dd-mmm-yyyy' };
             }
-            const dateCellI = ws[utils.encode_cell({c: 9, r: R})];
-            if(dateCellI) {
-                 dateCellI.s = { numFmt: 'dd-mmm-yyyy' };
+            const dateCellL = ws[utils.encode_cell({c: 11, r: R})];
+            if(dateCellL) {
+                 dateCellL.s = { numFmt: 'dd-mmm-yyyy' };
             }
         }
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
-        addFooter(ws, wsData.length, 11);
+        addFooter(ws, wsData.length, 13);
         
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(wb, ws, sheetName);

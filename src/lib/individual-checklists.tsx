@@ -15,7 +15,18 @@ export type IndividualChecklist = {
     relatedPackId: string;
     whoIsItFor: string[];
     painPoints: { title: string; description: string }[];
-    tasks: { id: string; description: string; priority: 'High' | 'Medium' | 'Low'; riskLevel: 'High' | 'Medium' | 'Low'; consequence: string; proof: string; location: string; }[];
+    tasks: { 
+        id: string; 
+        description: string; 
+        priority: 'High' | 'Medium' | 'Low'; 
+        riskLevel: 'High' | 'Medium' | 'Low'; 
+        consequence: string; 
+        proof: string; 
+        location?: string;
+        frequency?: string;
+        department?: string;
+        role?: string;
+    }[];
 };
 
 export const individualChecklists: IndividualChecklist[] = [
@@ -45,15 +56,15 @@ export const individualChecklists: IndividualChecklist[] = [
             }
         ],
         tasks: [
-            { id: 'COS-O-01', description: "[Opening] Deactivate the main security alarm system and log the entry time.", priority: 'High', riskLevel: 'High', consequence: 'Failure to deactivate can trigger false alarms; failure to log hinders incident investigation.', proof: 'Security System Log', location: 'Entrance' },
-            { id: 'COS-O-02', description: "[Opening] Conduct a walkthrough to check for any signs of overnight disturbance or security issues.", priority: 'High', riskLevel: 'High', consequence: 'Missing a security breach (e.g., a broken window) could leave the facility vulnerable.', proof: 'Walkthrough Log', location: 'Entire Office' },
-            { id: 'COS-O-03', description: "[Opening] Turn on all necessary lights, HVAC systems, and office equipment.", priority: 'High', riskLevel: 'Low', consequence: 'Impacts employee comfort and productivity at the start of the day.', proof: 'Visual Check', location: 'Entire Office' },
-            { id: 'COS-O-04', description: "[Opening] Unlock all required internal doors and meeting rooms.", priority: 'Medium', riskLevel: 'Medium', consequence: 'Hinders employee access and workflow.', proof: 'Physical Check', location: 'Internal Areas' },
-            { id: 'COS-C-01', description: "[Closing] Ensure all employees and visitors have left the premises.", priority: 'High', riskLevel: 'High', consequence: 'Accidentally locking an individual inside poses a serious safety and security risk.', proof: 'Headcount/Sweep', location: 'Entire Office' },
-            { id: 'COS-C-02', description: "[Closing] Turn off all non-essential lights, monitors, and office equipment.", priority: 'High', riskLevel: 'Medium', consequence: 'Significant energy waste, increased utility costs, and fire risk from overheated electronics.', proof: 'Visual Check', location: 'Entire Office' },
-            { id: 'COS-C-03', description: "[Closing] Check and lock all windows, internal office doors, and server room doors.", priority: 'High', riskLevel: 'High', consequence: 'An unlocked window or door is an open invitation for theft or unauthorized access.', proof: 'Physical Check', location: 'Perimeter/Internal' },
-            { id: 'COS-C-04', description: "[Closing] Secure all sensitive documents and clear desks as per clean desk policy.", priority: 'High', riskLevel: 'Medium', consequence: 'Leaving sensitive information exposed can lead to data breaches and non-compliance with privacy regulations.', proof: 'Visual Audit', location: 'Workstations' },
-            { id: 'COS-C-05', description: "[Closing] Activate the main security alarm system and log the exit time.", priority: 'High', riskLevel: 'High', consequence: 'The facility remains unprotected overnight, vulnerable to break-ins.', proof: 'Security System Log', location: 'Exit' },
+            { id: 'COS-O-01', description: "[Opening] Deactivate the main security alarm system and log the entry time.", priority: 'High', riskLevel: 'High', consequence: 'Failure to deactivate can trigger false alarms; failure to log hinders incident investigation.', proof: 'Security System Log', location: 'Entrance', frequency: 'Daily', department: 'Security', role: 'Security Guard' },
+            { id: 'COS-O-02', description: "[Opening] Conduct a walkthrough to check for any signs of overnight disturbance or security issues.", priority: 'High', riskLevel: 'High', consequence: 'Missing a security breach (e.g., a broken window) could leave the facility vulnerable.', proof: 'Walkthrough Log', location: 'Entire Office', frequency: 'Daily', department: 'Security', role: 'Security Supervisor' },
+            { id: 'COS-O-03', description: "[Opening] Turn on all necessary lights, HVAC systems, and office equipment.", priority: 'High', riskLevel: 'Low', consequence: 'Impacts employee comfort and productivity at the start of the day.', proof: 'Visual Check', location: 'Entire Office', frequency: 'Daily', department: 'Admin', role: 'Office Assistant' },
+            { id: 'COS-O-04', description: "[Opening] Unlock all required internal doors and meeting rooms.", priority: 'Medium', riskLevel: 'Medium', consequence: 'Hinders employee access and workflow.', proof: 'Physical Check', location: 'Internal Areas', frequency: 'Daily', department: 'Admin', role: 'Office Assistant' },
+            { id: 'COS-C-01', description: "[Closing] Ensure all employees and visitors have left the premises.", priority: 'High', riskLevel: 'High', consequence: 'Accidentally locking an individual inside poses a serious safety and security risk.', proof: 'Headcount/Sweep', location: 'Entire Office', frequency: 'Daily', department: 'Security', role: 'Security Guard' },
+            { id: 'COS-C-02', description: "[Closing] Turn off all non-essential lights, monitors, and office equipment.", priority: 'High', riskLevel: 'Medium', consequence: 'Significant energy waste, increased utility costs, and fire risk from overheated electronics.', proof: 'Visual Check', location: 'Entire Office', frequency: 'Daily', department: 'Admin', role: 'Closing Manager' },
+            { id: 'COS-C-03', description: "[Closing] Check and lock all windows, internal office doors, and server room doors.", priority: 'High', riskLevel: 'High', consequence: 'An unlocked window or door is an open invitation for theft or unauthorized access.', proof: 'Physical Check', location: 'Perimeter/Internal', frequency: 'Daily', department: 'Security', role: 'Security Guard' },
+            { id: 'COS-C-04', description: "[Closing] Secure all sensitive documents and clear desks as per clean desk policy.", priority: 'High', riskLevel: 'Medium', consequence: 'Leaving sensitive information exposed can lead to data breaches and non-compliance with privacy regulations.', proof: 'Visual Audit', location: 'Workstations', frequency: 'Daily', department: 'All', role: 'All Employees' },
+            { id: 'COS-C-05', description: "[Closing] Activate the main security alarm system and log the exit time.", priority: 'High', riskLevel: 'High', consequence: 'The facility remains unprotected overnight, vulnerable to break-ins.', proof: 'Security System Log', location: 'Exit', frequency: 'Daily', department: 'Security', role: 'Closing Manager' },
         ]
     },
     {
@@ -82,13 +93,13 @@ export const individualChecklists: IndividualChecklist[] = [
             }
         ],
         tasks: [
-            { id: 'NEO-01', description: "Ensure a signed offer letter detailing position, compensation, and start date is in the employee's file.", priority: 'High', riskLevel: 'High', consequence: 'Lack of a clear offer can lead to salary disputes and legal challenges over employment terms.', proof: 'Signed Offer Letter', location: 'HR File' },
-            { id: 'NEO-02', description: "Verify the employment contract is signed, including clauses for confidentiality, IP assignment, and non-compete.", priority: 'High', riskLevel: 'High', consequence: 'Without a signed contract, the company\'s intellectual property is at risk and non-compete clauses are unenforceable.', proof: 'Signed Employment Contract', location: 'HR File' },
-            { id: 'NEO-03', description: "Complete and file all required statutory forms (e.g., PF, ESI, Tax Declarations).", priority: 'High', riskLevel: 'High', consequence: 'Failure to file statutory forms can result in significant government penalties and legal action.', proof: 'Filed Forms', location: 'HR File' },
-            { id: 'NEO-04', description: "Ensure the employee has acknowledged receipt of the company handbook and key policies (e.g., Code of Conduct, Anti-Harassment).", priority: 'High', riskLevel: 'Medium', consequence: 'Difficult to enforce company policies or defend against wrongful termination claims if the employee was never formally made aware of the rules.', proof: 'Acknowledgement Form', location: 'HR File' },
-            { id: 'NEO-05', description: "Conduct and document background and reference checks as per company policy.", priority: 'High', riskLevel: 'High', consequence: 'Hiring an individual with a fraudulent or criminal background can expose the company to significant financial and reputational risk.', proof: 'Background Check Report', location: 'HR File' },
-            { id: 'NEO-06', description: "Issue and log all company assets (laptop, phone, access cards) provided to the employee.", priority: 'High', riskLevel: 'Medium', consequence: 'Without a log, it is difficult to recover company assets upon employee termination, leading to financial loss.', proof: 'Asset Issuance Form', location: 'IT/Admin File' },
-            { id: 'NEO-07', description: "Add the new employee to the payroll and relevant insurance policies.", priority: 'High', riskLevel: 'Medium', consequence: 'Delays can lead to incorrect salary payments and lack of insurance coverage, causing employee dissatisfaction and potential legal issues.', proof: 'System Entry Confirmation', location: 'Finance/HR' }
+            { id: 'NEO-01', description: "Ensure a signed offer letter detailing position, compensation, and start date is in the employee's file.", priority: 'High', riskLevel: 'High', consequence: 'Lack of a clear offer can lead to salary disputes and legal challenges over employment terms.', proof: 'Signed Offer Letter', location: 'HR File', frequency: 'Per Hire', department: 'HR', role: 'HR Executive' },
+            { id: 'NEO-02', description: "Verify the employment contract is signed, including clauses for confidentiality, IP assignment, and non-compete.", priority: 'High', riskLevel: 'High', consequence: 'Without a signed contract, the company\'s intellectual property is at risk and non-compete clauses are unenforceable.', proof: 'Signed Employment Contract', location: 'HR File', frequency: 'Per Hire', department: 'HR', role: 'HR Executive' },
+            { id: 'NEO-03', description: "Complete and file all required statutory forms (e.g., PF, ESI, Tax Declarations).", priority: 'High', riskLevel: 'High', consequence: 'Failure to file statutory forms can result in significant government penalties and legal action.', proof: 'Filed Forms', location: 'HR File', frequency: 'Per Hire', department: 'HR', role: 'Compliance Officer' },
+            { id: 'NEO-04', description: "Ensure the employee has acknowledged receipt of the company handbook and key policies (e.g., Code of Conduct, Anti-Harassment).", priority: 'High', riskLevel: 'Medium', consequence: 'Difficult to enforce company policies or defend against wrongful termination claims if the employee was never formally made aware of the rules.', proof: 'Acknowledgement Form', location: 'HR File', frequency: 'Per Hire', department: 'HR', role: 'HR Executive' },
+            { id: 'NEO-05', description: "Conduct and document background and reference checks as per company policy.", priority: 'High', riskLevel: 'High', consequence: 'Hiring an individual with a fraudulent or criminal background can expose the company to significant financial and reputational risk.', proof: 'Background Check Report', location: 'HR File', frequency: 'Per Hire', department: 'HR', role: 'HR Recruiter' },
+            { id: 'NEO-06', description: "Issue and log all company assets (laptop, phone, access cards) provided to the employee.", priority: 'High', riskLevel: 'Medium', consequence: 'Without a log, it is difficult to recover company assets upon employee termination, leading to financial loss.', proof: 'Asset Issuance Form', location: 'IT/Admin File', frequency: 'Per Hire', department: 'IT/Admin', role: 'IT Support' },
+            { id: 'NEO-07', description: "Add the new employee to the payroll and relevant insurance policies.", priority: 'High', riskLevel: 'Medium', consequence: 'Delays can lead to incorrect salary payments and lack of insurance coverage, causing employee dissatisfaction and potential legal issues.', proof: 'System Entry Confirmation', location: 'Finance/HR', frequency: 'Per Hire', department: 'HR', role: 'Payroll Specialist' }
         ]
     },
     {
@@ -117,12 +128,12 @@ export const individualChecklists: IndividualChecklist[] = [
             }
         ],
         tasks: [
-            { id: 'ESG-E-01', description: "Audit lighting: Identify all non-LED lights and create a replacement plan.", priority: 'High', riskLevel: 'Low', consequence: 'Continued use of inefficient lighting leads to higher energy bills and a larger carbon footprint.', proof: 'Lighting Audit Report', location: 'Office-wide' },
-            { id: 'ESG-E-02', description: "Review HVAC settings and schedules. Ensure they are optimized for occupancy hours.", priority: 'High', riskLevel: 'Medium', consequence: 'Running HVAC systems in an empty office is a major source of energy waste and unnecessary cost.', proof: 'HVAC Schedule', location: 'Facility Office' },
-            { id: 'ESG-W-01', description: "Audit all waste bins to check for proper segregation of wet, dry, and recyclable waste.", priority: 'High', riskLevel: 'Medium', consequence: 'Improper waste segregation can lead to fines and increases the amount of waste sent to landfills.', proof: 'Waste Audit Report', location: 'Office-wide' },
-            { id: 'ESG-W-02', description: "Track monthly waste generation and set a target for reduction.", priority: 'Medium', riskLevel: 'Low', consequence: 'Without tracking, it\'s impossible to manage and reduce waste effectively.', proof: 'Waste Log', location: 'Facility Office' },
-            { id: 'ESG-P-01', description: "Review procurement policy to prioritize vendors with sustainable practices and recycled products.", priority: 'Medium', riskLevel: 'Low', consequence: 'Continues a cycle of unsustainable consumption and misses an opportunity to influence the supply chain.', proof: 'Procurement Policy Document', location: 'Admin Office' },
-            { id: 'ESG-P-02', description: "Implement a 'no single-use plastic' policy in the office pantry.", priority: 'High', riskLevel: 'Low', consequence: 'Contributes to plastic pollution and presents a negative image to environmentally-conscious employees.', proof: 'Policy Communication', location: 'Pantry' },
+            { id: 'ESG-E-01', description: "Audit lighting: Identify all non-LED lights and create a replacement plan.", priority: 'High', riskLevel: 'Low', consequence: 'Continued use of inefficient lighting leads to higher energy bills and a larger carbon footprint.', proof: 'Lighting Audit Report', location: 'Office-wide', frequency: 'Annually', department: 'Facilities', role: 'Facility Manager' },
+            { id: 'ESG-E-02', description: "Review HVAC settings and schedules. Ensure they are optimized for occupancy hours.", priority: 'High', riskLevel: 'Medium', consequence: 'Running HVAC systems in an empty office is a major source of energy waste and unnecessary cost.', proof: 'HVAC Schedule', location: 'Facility Office', frequency: 'Quarterly', department: 'Facilities', role: 'Facility Manager' },
+            { id: 'ESG-W-01', description: "Audit all waste bins to check for proper segregation of wet, dry, and recyclable waste.", priority: 'High', riskLevel: 'Medium', consequence: 'Improper waste segregation can lead to fines and increases the amount of waste sent to landfills.', proof: 'Waste Audit Report', location: 'Office-wide', frequency: 'Monthly', department: 'Admin', role: 'Admin Supervisor' },
+            { id: 'ESG-W-02', description: "Track monthly waste generation and set a target for reduction.", priority: 'Medium', riskLevel: 'Low', consequence: 'Without tracking, it\'s impossible to manage and reduce waste effectively.', proof: 'Waste Log', location: 'Facility Office', frequency: 'Monthly', department: 'Admin', role: 'Admin Supervisor' },
+            { id: 'ESG-P-01', description: "Review procurement policy to prioritize vendors with sustainable practices and recycled products.", priority: 'Medium', riskLevel: 'Low', consequence: 'Continues a cycle of unsustainable consumption and misses an opportunity to influence the supply chain.', proof: 'Procurement Policy Document', location: 'Admin Office', frequency: 'Annually', department: 'Procurement', role: 'Procurement Manager' },
+            { id: 'ESG-P-02', description: "Implement a 'no single-use plastic' policy in the office pantry.", priority: 'High', riskLevel: 'Low', consequence: 'Contributes to plastic pollution and presents a negative image to environmentally-conscious employees.', proof: 'Policy Communication', location: 'Pantry', frequency: 'Once', department: 'Admin', role: 'Admin Head' },
         ]
     },
     {
@@ -151,19 +162,13 @@ export const individualChecklists: IndividualChecklist[] = [
             }
         ],
         tasks: [
-            { id: 'SSC-01', description: "Before induction of anesthesia ('Sign In'): Confirm patient identity, site, procedure, and consent.", priority: 'High', riskLevel: 'High', consequence: 'The primary cause of wrong-site surgery, a catastrophic and litigious event.', proof: 'Signed Consent Form', location: 'Operating Room' },
-            { id: 'SSC-02', description: "Before induction of anesthesia: Check if the surgical site is marked.", priority: 'High', riskLevel: 'High', consequence: 'An unmarked site increases the risk of error, especially in bilateral procedures.', proof: 'Visual Confirmation', location: 'Operating Room' },
-            { id: 'SSC-03', description: "Before skin incision ('Time Out'): All team members introduce themselves by name and role.", priority: 'High', riskLevel: 'High', consequence: 'Fosters teamwork and ensures everyone feels empowered to speak up if they see a problem.', proof: 'Verbal Confirmation', location: 'Operating Room' },
-            { id: 'SSC-04', description: "Before skin incision: Surgeon, anesthesia professional, and nurse verbally confirm patient, site, and procedure.", priority: 'High', riskLevel: 'High', consequence: 'This is the final, critical pause to catch any errors before the irreversible step of incision is made.', proof: 'Verbal Confirmation', location: 'Operating Room' },
-            { id: 'SSC-05', description: "Before patient leaves room ('Sign Out'): Nurse verbally confirms the name of the procedure recorded, that instrument/sponge counts are correct, and any equipment problems to be addressed.", priority: 'High', riskLevel: 'High', consequence: 'A retained foreign object can lead to severe infection, requiring a second surgery and causing immense patient harm.', proof: 'Verbal Confirmation', location: 'Operating Room' }
+            { id: 'SSC-01', description: "Before induction of anesthesia ('Sign In'): Confirm patient identity, site, procedure, and consent.", priority: 'High', riskLevel: 'High', consequence: 'The primary cause of wrong-site surgery, a catastrophic and litigious event.', proof: 'Signed Consent Form', location: 'Operating Room', frequency: 'Per Procedure', department: 'Surgery', role: 'Nurse' },
+            { id: 'SSC-02', description: "Before induction of anesthesia: Check if the surgical site is marked.", priority: 'High', riskLevel: 'High', consequence: 'An unmarked site increases the risk of error, especially in bilateral procedures.', proof: 'Visual Confirmation', location: 'Operating Room', frequency: 'Per Procedure', department: 'Surgery', role: 'Surgeon' },
+            { id: 'SSC-03', description: "Before skin incision ('Time Out'): All team members introduce themselves by name and role.", priority: 'High', riskLevel: 'High', consequence: 'Fosters teamwork and ensures everyone feels empowered to speak up if they see a problem.', proof: 'Verbal Confirmation', location: 'Operating Room', frequency: 'Per Procedure', department: 'Surgery', role: 'Circulating Nurse' },
+            { id: 'SSC-04', description: "Before skin incision: Surgeon, anesthesia professional, and nurse verbally confirm patient, site, and procedure.", priority: 'High', riskLevel: 'High', consequence: 'This is the final, critical pause to catch any errors before the irreversible step of incision is made.', proof: 'Verbal Confirmation', location: 'Operating Room', frequency: 'Per Procedure', department: 'Surgery', role: 'Entire Team' },
+            { id: 'SSC-05', description: "Before patient leaves room ('Sign Out'): Nurse verbally confirms the name of the procedure recorded, that instrument/sponge counts are correct, and any equipment problems to be addressed.", priority: 'High', riskLevel: 'High', consequence: 'A retained foreign object can lead to severe infection, requiring a second surgery and causing immense patient harm.', proof: 'Verbal Confirmation', location: 'Operating Room', frequency: 'Per Procedure', department: 'Surgery', role: 'Circulating Nurse' }
         ]
     }
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
-
-
-
-
-
-
