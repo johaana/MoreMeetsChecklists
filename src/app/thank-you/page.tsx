@@ -134,7 +134,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         checklists.forEach(checklist => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `'${safeSheetName}'!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `${safeSheetName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });

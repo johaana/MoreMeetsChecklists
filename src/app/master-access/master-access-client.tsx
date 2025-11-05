@@ -37,7 +37,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -124,7 +124,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         checklists.forEach(checklist => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `'${safeSheetName}'!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `${safeSheetName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
