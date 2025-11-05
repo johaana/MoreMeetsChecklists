@@ -7,11 +7,10 @@ import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
-import { writeFile, utils } from 'xlsx-js-style';
+import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
 import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 import { verifyRazorpayPayment } from './actions';
-import { premiumPacks } from '@/lib/premium-packs';
 import { SiteHeader } from "@/components/layout/header";
 
 import {
@@ -29,127 +28,217 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         alert("Could not find the purchased item data. Please contact support.");
         return;
     }
+
+    const wb = utils.book_new();
+
+    // --- Enhanced Styles ---
+    const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
+    const instructionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
+    const instructionBodyStyle = { font: { sz: 11, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
+    const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
+    const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
+    const checklistHeaderStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true } };
     
-    const workbook = utils.book_new();
-    const headerStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" } },
-        fill: { fgColor: { rgb: "0A2540" } }
-    };
-    const footerStyle = {
-        font: { italic: true, sz: 10 }
+    const overdueFill = { fgColor: { rgb: "FFC7CE" } };
+    const overdueFont = { color: { rgb: "9C0006" } };
+    const overdueConditionalFmt = {
+        type: "expression",
+        formula: 'INDIRECT("J"&ROW())="ACTION REQUIRED - OVERDUE"',
+        style: { fill: overdueFill, font: overdueFont },
     };
 
+    const completedFill = { fgColor: { rgb: "E6FFEC" } };
+    const completedFont = { color: { rgb: "006100" } };
+    const completedConditionalFmt = {
+        type: "expression",
+        formula: 'LEFT(INDIRECT("J"&ROW()), 9)="Completed"',
+        style: { fill: completedFill, font: completedFont },
+    };
+
+
+    // --- Helper Functions ---
+    const setColumnWidths = (ws: WorkSheet, widths: number[]) => {
+        ws['!cols'] = widths.map(wch => ({ wch }));
+    };
+    
+    const addFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
+        const merge = { s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } };
+        if (!ws['!merges']) ws['!merges'] = [];
+        ws['!merges'].push(merge);
+        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2024 MoreMeets - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
+        utils.sheet_add_aoa(ws, [[footerCell]], { origin: `A${lastRow + 3}` });
+    };
+    
+    // --- Data Preparation ---
     let checklists: PackChecklist[] = [];
-    let packTitle = item.title;
+    const packTitle = item.title;
 
     if (type === 'pack') {
-        const pack = item as PremiumPack;
-        packTitle = pack.title;
-        checklists = pack.checklists;
+        checklists = (item as PremiumPack).checklists;
     } else {
         const checklist = item as IndividualChecklist;
-        packTitle = checklist.title;
         checklists = [{
             title: checklist.title,
             tasks: checklist.tasks,
-            department: checklist.category, // fallback
-            frequency: 'N/A',
-            role: 'N/A',
+            department: checklist.category,
+            frequency: 'As Required',
+            role: 'User',
             summary: checklist.longDescription,
             icon: checklist.icon
         }];
     }
-    
-    // --- Cover Page ---
-    const coverPageName = "Cover Page";
-    const footerText = "Provided by MoreMeets | www.moremeets.com";
 
-    const coverPageHeader = [packTitle];
-    const coverPageData = [
-        [" "],
-        ["Click to navigate:"],
-        ["Checklist Title", "Department", "Frequency", "Role"],
-         ...checklists.map((checklist) => {
+    // --- Professional Instructions Sheet ---
+    const instructionsData = [
+        [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null, null],
+        [],
+        [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null, null],
+        [
+            { v: "This isn't a static list; it's a dynamic operational tool designed for accountability and easy tracking. Here’s how to use its smart features:" , t: 's', s: { ...instructionBodyStyle, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } } },
+            null, null, null, null
+        ],
+        [],
+        [{ v: '1. Complete a Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "Simply enter the date in the 'Date Last Completed' column. The sheet does the rest.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '2. Automatic Status Updates', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "The 'Next Due Date' and 'Status' columns will update automatically. Completed tasks turn green.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '3. Overdue Alerts', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "When a recurring task's due date arrives, the 'Status' will change to 'ACTION REQUIRED - OVERDUE' and the entire row will highlight red, showing you exactly what needs attention.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '4. Reset a Recurring Task', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "To start the next cycle for a recurring task (e.g., weekly, monthly), just clear the date from the 'Date Last Completed' cell. The row will turn white again, ready for the next completion date.", t: 's', s: instructionBodyStyle }, null, null, null],
+        [{ v: '5. Handle Exceptions', t: 's', s: {font: {bold: true, sz: 12}} }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }, null, null, null],
+    ];
+    
+    const instructionsWs = utils.aoa_to_sheet(instructionsData);
+    instructionsWs['!merges'] = [
+        { s: { r: 0, c: 0 }, e: { r: 0, c: 4 } },
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } },
+        { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
+        { s: { r: 5, c: 1 }, e: { r: 5, c: 4 } },
+        { s: { r: 6, c: 1 }, e: { r: 6, c: 4 } },
+        { s: { r: 7, c: 1 }, e: { r: 7, c: 4 } },
+        { s: { r: 8, c: 1 }, e: { r: 8, c: 4 } },
+        { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } },
+    ];
+    setColumnWidths(instructionsWs, [20, 25, 25, 25, 25]);
+    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 60 }, { hpt: 15 }, { hpt: 40 }, { hpt: 50 }, { hpt: 60 }, { hpt: 50 }, { hpt: 60 }];
+    addFooter(instructionsWs, 12, 5);
+    utils.book_append_sheet(wb, instructionsWs, "Instructions");
+
+
+    // --- Cover Page ---
+    if (type === 'pack' && checklists.length > 1) {
+        const coverPageName = "Cover Page";
+        const coverPageData: any[][] = [
+            [{ v: packTitle, s: titleStyle }, null, null, null],
+            [],
+            [{v:"Click any checklist title below to navigate directly to its sheet.", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } }}, null, null, null],
+            [],
+            ["Checklist Title", "Department", "Frequency", "Primary Role"],
+        ];
+
+        checklists.forEach(checklist => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-            return [
-                { v: checklist.title, f: formula },
-                checklist.department,
-                checklist.frequency,
-                checklist.role
-            ];
-        }),
-        [" "], 
-        [footerText] 
-    ];
+            coverPageData.push([{ t: 's', v: checklist.title, f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ]);
+        });
 
-    const coverWorksheet = utils.aoa_to_sheet([coverPageHeader, ...coverPageData]);
-    coverWorksheet['!cols'] = [{ wch: 60 }, { wch: 25 }, { wch: 20 }, { wch: 25 }];
-    
-    coverWorksheet['A1'].s = { font: { sz: 24, bold: true }};
-    
-    ['A4', 'B4', 'C4', 'D4'].forEach(cell => {
-        if (coverWorksheet[cell]) coverWorksheet[cell].s = headerStyle;
-    });
+        const coverWs = utils.aoa_to_sheet(coverPageData);
+        setColumnWidths(coverWs, [60, 25, 20, 25]);
+        coverWs['!rows'] = [{ hpt: 30 }];
+        coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }];
+        
+        ['A5', 'B5', 'C5', 'D5'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = checklistHeaderStyle; });
 
-    const rangeLinks = utils.decode_range(coverWorksheet['!ref']!);
-    for (let R = 4; R <= rangeLinks.e.r; ++R) { 
-        const address = utils.encode_cell({ r: R, c: 0 });
-        if (coverWorksheet[address] && coverWorksheet[address].f) {
-             coverWorksheet[address].s = { font: { color: { rgb: "0000FF" }, underline: true } };
-        }
+        addFooter(coverWs, coverPageData.length, 4);
+        utils.book_append_sheet(wb, coverWs, coverPageName);
     }
-    
-    const footerRowIndex = rangeLinks.e.r;
-    const footerCellAddress = `A${footerRowIndex + 1}`;
-    if (coverWorksheet[footerCellAddress]) {
-        coverWorksheet[footerCellAddress].s = footerStyle;
-    }
-    
-    utils.book_append_sheet(workbook, coverWorksheet, coverPageName);
 
     // --- Individual Checklist Sheets ---
     checklists.forEach(checklist => {
-        const checklistHeaders = [
-            'Task ID', 'Task Description', 'Priority', 'Risk Level', 
-            'Proof / Evidence', 'Status', 'Assigned To', 'Notes'
+        const wsData = [
+            [checklist.title],
+            [],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Proof / Evidence', 'Consequence of Failure', 'Frequency', 'Date Last Completed', 'Next Due Date', 'Status', 'Notes'],
         ];
         
-        const tasksForSheet = checklist.tasks.map(task => [
-            task.id,
-            task.description,
-            task.priority,
-            task.riskLevel,
-            task.proof,
-            'Pending',
-            '',
-            ''
-        ]);
+        checklist.tasks.forEach((task, index) => {
+            const rowNum = 4 + index; 
+            const freqCell = `G${rowNum}`;
+            const dateCell = `H${rowNum}`;
+            const nextDueDateCell = `I${rowNum}`;
 
-        const checklistDataWithHeader = [checklistHeaders, ...tasksForSheet];
-        const worksheet = utils.aoa_to_sheet(checklistDataWithHeader);
+            const isEventDriven = `OR(LOWER(${freqCell})="as required", LOWER(${freqCell})="per incident", LOWER(${freqCell})="per order", LOWER(${freqCell})="per delivery", LOWER(${freqCell})="per transaction", LOWER(${freqCell})="per new franchisee", LOWER(${freqCell})="per campaign", LOWER(${freqCell})="per case")`;
+            
+            const nextDueDateFormula = `IF(${isEventDriven}, "As Required", IF(${dateCell}="", "", SWITCH(LOWER(${freqCell}), "daily", ${dateCell}+1, "weekly", ${dateCell}+7, "monthly", EDATE(${dateCell}, 1), "quarterly", EDATE(${dateCell}, 3), "annually", EDATE(${dateCell}, 12), "N/A")))`;
+            
+            const statusFormula = `IF(${isEventDriven}, IF(${dateCell}<>"", "Completed", "Pending"), IF(${dateCell}="", "Pending", IF(${nextDueDateCell}<=TODAY(), "ACTION REQUIRED - OVERDUE", "Completed")))`;
+
+            wsData.push([
+                task.id, task.description, task.priority, task.riskLevel, task.proof, 
+                task.consequence,
+                checklist.frequency,
+                null,
+                { t: 'f', f: nextDueDateFormula },
+                { t: 'f', f: statusFormula },
+                '' 
+            ]);
+        });
+
+        const ws = utils.aoa_to_sheet(wsData);
         
-        worksheet['!cols'] = [
-            { wch: 15 }, { wch: 60 }, { wch: 15 }, { wch: 15 }, 
-            { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 30 }
-        ];
+        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 10 } }];
+        if (ws['A1']) ws['A1'].s = titleStyle;
+        ws['!rows'] = [{ hpt: 30 }];
+        
+        setColumnWidths(ws, [15, 60, 10, 10, 25, 30, 15, 20, 20, 30, 30]);
 
-         const headerRange = utils.decode_range(worksheet['!ref']!);
-         for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-            const address = utils.encode_cell({ r: 0, c: C });
-            if(worksheet[address]) {
-                worksheet[address].s = headerStyle;
+        // Apply header style
+        const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3'];
+        headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = checklistHeaderStyle; });
+        
+        const range = utils.decode_range(ws['!ref'] || 'A1');
+        ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
+        ws['!conditional_formatting'].push(
+            { ref: `A4:K${range.e.r + 1}`, rules: [overdueConditionalFmt] },
+            { ref: `A4:K${range.e.r + 1}`, rules: [completedConditionalFmt] }
+        );
+        
+        // Apply date formatting
+        for (let R = 3; R <= range.e.r; ++R) {
+            const dateCellH = ws[utils.encode_cell({c: 7, r: R})]; 
+            if (dateCellH) {
+                dateCellH.t = 'd';
+                dateCellH.s = { numFmt: 'dd-mmm-yyyy' };
             }
-         }
-         worksheet['!views'] = [{state: 'frozen', ySplit: 1}];
-
+            const dateCellI = ws[utils.encode_cell({c: 8, r: R})];
+            if(dateCellI) {
+                 dateCellI.s = { numFmt: 'dd-mmm-yyyy' };
+            }
+        }
+        
+        ws['!views'] = [{state: 'frozen', ySplit: 3}];
+        addFooter(ws, wsData.length, 11);
+        
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
-        utils.book_append_sheet(workbook, worksheet, sheetName);
+        utils.book_append_sheet(wb, ws, sheetName);
     });
+    
+    // Remove default 'Sheet1' if it exists
+    const sheet1Index = wb.SheetNames.indexOf('Sheet1');
+    if (sheet1Index > -1) {
+        wb.SheetNames.splice(sheet1Index, 1);
+        delete wb.Sheets['Sheet1'];
+    }
 
-    const fileName = item.title.replace(/ /g, '_') + '.xlsx';
-    writeFile(workbook, fileName);
-};
+    const sortedSheetNames = wb.SheetNames.sort((a, b) => {
+        if (a === 'Instructions') return -1;
+        if (b === 'Instructions') return 1;
+        if (a === 'Cover Page') return -1;
+        if (b === 'Cover Page') return 1;
+        return a.localeCompare(b);
+    });
+     wb.SheetNames = sortedSheetNames;
+
+    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
+    writeFile(wb, fileName);
+}
 
 
 function ThankYouContent() {
@@ -181,7 +270,7 @@ function ThankYouContent() {
       if (result.success) {
         setVerifiedItem(result.item);
         setItemType(result.type);
-        handleDownload(result.item as PremiumPack, result.type);
+        handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type);
         setShowDownloadConfirm(true);
       } else {
         setError(result.error);
