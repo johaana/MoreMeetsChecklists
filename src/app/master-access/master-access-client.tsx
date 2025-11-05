@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
-import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
+import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
 import { SiteHeader } from '@/components/layout/header';
 
 
@@ -22,37 +22,32 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     const wb = utils.book_new();
 
-    // --- Styles ---
-    const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "0A2540" } }, alignment: { horizontal: 'center', vertical: 'center' } };
-    const instructionHeaderStyle = { font: { sz: 12, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center' } };
-    const instructionBodyStyle = { font: { sz: 11 }, alignment: { wrapText: true, vertical: 'top' } };
+    // --- Enhanced Styles ---
+    const titleStyle = { font: { sz: 24, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { horizontal: 'center', vertical: 'center' } };
+    const instructionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
+    const instructionBodyStyle = { font: { sz: 11, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
     const sectionTitleStyle = { font: { sz: 14, bold: true, color: { rgb: "0A2540" } } };
-    const stepTitleStyle = { font: { sz: 11, bold: true } };
-    const footerStyle = { font: { italic: true, sz: 10, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
+    const stepTitleStyle = { font: { sz: 12, bold: true } };
+    const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
-
-    const checklistHeaderStyle = {
-        font: { bold: true, color: { rgb: "FFFFFF" }, sz: 12 },
-        fill: { fgColor: { rgb: "0A2540" } },
-        alignment: { vertical: 'center' }
-    };
-    const checklistInstructionStyle = {
-        font: { bold: true, sz: 9, color: { rgb: "4A4A4A" } },
-        fill: { fgColor: { rgb: "F3F3F3" } },
-        alignment: { wrapText: true, vertical: 'center', horizontal: 'center' }
-    };
+    const checklistHeaderStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 12 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center' } };
+    const checklistInstructionStyle = { font: { bold: true, sz: 9, color: { rgb: "4A4A4A" } }, fill: { fgColor: { rgb: "F3F3F3" } }, alignment: { wrapText: true, vertical: 'center', horizontal: 'center' } };
 
     // --- Helper Functions ---
     const setColumnWidths = (ws: WorkSheet, widths: number[]) => {
         ws['!cols'] = widths.map(wch => ({ wch }));
     };
+    
+    const setRowHeights = (ws: WorkSheet, heights: { hpt: number }[]) => {
+        ws['!rows'] = heights;
+    };
 
     const addFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
         const footerText = "© 2024 MoreMeets | www.moremeets.com - The Professional Standard for Operational Checklists.";
-        utils.sheet_add_aoa(ws, [[footerText]], { origin: `A${lastRow + 3}` });
         ws['!merges'] = ws['!merges'] || [];
         ws['!merges'].push({ s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } });
-        ws[`A${lastRow + 3}`].s = footerStyle;
+        const footerCell: CellObject = { v: footerText, t: 's', s: footerStyle };
+        utils.sheet_add_aoa(ws, [[footerCell]], { origin: `A${lastRow + 3}` });
     };
     
     // --- Data Preparation ---
@@ -74,51 +69,52 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         }];
     }
 
-    // --- Instructions Sheet ---
-    const instructionsWs = utils.aoa_to_sheet([
-        [`Welcome to Your MoreMeets Operations Pack: ${packTitle}`],
-        [],
-        ["Step 1: Enable Editing (IMPORTANT)"],
-        ["Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features."],
-        [],
-        ["How to Use This File"],
-        ["1. Navigate", "Use the 'Cover Page' sheet to see all included checklists. Click any title to jump directly to that sheet."],
-        ["2. Use Checklists", "In each checklist sheet, manually update the 'Status' column to 'In Progress' or 'Completed' to track your tasks."],
-        ["3. Customize", "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs."],
-        [],
-        ["Need Help?"],
-        ["For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711."]
-    ]);
+    // --- NEW Professional Instructions Sheet ---
+    const instructionsWs = utils.aoa_to_sheet([[]], {skipHeader: true}); // Start with an empty sheet
     
-    // Set heights and widths
+    // Set widths first
     setColumnWidths(instructionsWs, [20, 80]);
-    instructionsWs['!rows'] = [
+    
+    // Title
+    instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
+    instructionsWs['A1'] = { v: `Welcome to Your MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle };
+
+    // Step 1: Enable Editing
+    instructionsWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } });
+    instructionsWs['A3'] = { v: "Step 1: Enable Editing (IMPORTANT)", t: 's', s: instructionHeaderStyle };
+    
+    instructionsWs['!merges'].push({ s: { r: 3, c: 0 }, e: { r: 3, c: 1 } });
+    instructionsWs['A4'] = { v: "Your file may open in 'Protected View'. Click the [Enable Editing] button in the yellow bar at the top of your screen to activate all features.", t: 's', s: {...instructionBodyStyle, font: {...instructionBodyStyle.font, color: {rgb: "C00000"}}, alignment: { ...instructionBodyStyle.alignment, vertical: 'center', horizontal: 'center'} }};
+
+    // How to Use This File Header
+    instructionsWs['!merges'].push({ s: { r: 5, c: 0 }, e: { r: 5, c: 1 } });
+    instructionsWs['A6'] = { v: "How to Use This File", t: 's', s: sectionTitleStyle };
+
+    // Step 1
+    instructionsWs['A7'] = { v: "1. Navigate", t: 's', s: stepTitleStyle };
+    instructionsWs['B7'] = { v: "Use the 'Cover Page' sheet to see all included checklists. Click any title to jump directly to that sheet.", t: 's', s: instructionBodyStyle };
+
+    // Step 2
+    instructionsWs['A8'] = { v: "2. Use Checklists", t: 's', s: stepTitleStyle };
+    instructionsWs['B8'] = { v: "In each checklist sheet, manually update the 'Status' column to 'In Progress' or 'Completed' to track your tasks.", t: 's', s: instructionBodyStyle };
+    
+    // Step 3
+    instructionsWs['A9'] = { v: "3. Customize", t: 's', s: stepTitleStyle };
+    instructionsWs['B9'] = { v: "This is your file. Feel free to add your company logo, edit tasks, or add columns to fit your specific needs.", t: 's', s: instructionBodyStyle };
+
+    // Need Help?
+    instructionsWs['!merges'].push({ s: { r: 11, c: 0 }, e: { r: 11, c: 1 } });
+    instructionsWs['A12'] = { v: "Need Help?", t: 's', s: sectionTitleStyle };
+    instructionsWs['!merges'].push({ s: { r: 12, c: 0 }, e: { r: 12, c: 1 } });
+    instructionsWs['A13'] = { v: "For any questions, contact us at more@moremeets.com or on WhatsApp at +91 98609 97711.", t: 's', s: instructionBodyStyle };
+
+    setRowHeights(instructionsWs, [
         { hpt: 30 }, { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, 
         { hpt: 15 }, { hpt: 20 }, { hpt: 40 }, { hpt: 40 }, 
-        { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }
-    ];
-
-    // Merging cells
-    instructionsWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }, // Title
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, // Step 1 Header
-        { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }, // Step 1 Body
-        { s: { r: 5, c: 0 }, e: { r: 5, c: 1 } }, // How to Use Header
-        { s: { r: 10, c: 0 }, e: { r: 10, c: 1 } }, // Need Help Header
-        { s: { r: 11, c: 0 }, e: { r: 11, c: 1 } }  // Need Help Body
-    ];
-
-    // Applying styles
-    instructionsWs["A1"].s = titleStyle;
-    instructionsWs["A3"].s = instructionHeaderStyle;
-    instructionsWs["A4"].s = { ...instructionBodyStyle, font: { ...instructionBodyStyle.font, color: { rgb: "C00000" } } };
-    instructionsWs["A6"].s = sectionTitleStyle;
-    instructionsWs["A11"].s = sectionTitleStyle;
-
-    ["A7", "A8", "A9"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = stepTitleStyle });
-    ["B7", "B8", "B9", "B12"].forEach(cell => { if(instructionsWs[cell]) instructionsWs[cell].s = instructionBodyStyle });
+        { hpt: 40 }, { hpt: 15 }, { hpt: 20 }, { hpt: 30 }, {hpt: 30}
+    ]);
     
-    addFooter(instructionsWs, 13, 2);
+    addFooter(instructionsWs, 15, 2);
     utils.book_append_sheet(wb, instructionsWs, "Instructions");
 
 
@@ -127,36 +123,26 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     
     if (type === 'pack') {
         const coverPageData = [
-            [packTitle],
+            [{ v: packTitle, s: titleStyle }],
             [],
-            ["Click any checklist title below to navigate directly to its sheet."],
+            [{v:"Click any checklist title below to navigate directly to its sheet.", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } }}],
             [],
             ["Checklist Title", "Department", "Frequency", "Primary Role"],
             ...checklists.map((checklist) => {
                 const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
                 const formula = `HYPERLINK("#'${safeSheetName}'!A1", "${checklist.title}")`;
-                return [ { v: checklist.title, f: formula }, checklist.department, checklist.frequency, checklist.role ];
+                return [ { v: checklist.title, f: formula, s: linkStyle }, checklist.department, checklist.frequency, checklist.role ];
             }),
         ];
 
-        const coverWs = utils.aoa_to_sheet(coverPageData);
+        const coverWs = utils.aoa_to_sheet(coverPageData, {cellStyles: true});
         setColumnWidths(coverWs, [60, 25, 20, 25]);
-        coverWs['!rows'] = [{ hpt: 30 }];
-        coverWs['A1'].s = titleStyle;
-        coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
-        coverWs['A3'].s = { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } };
-        coverWs['!merges']!.push({ s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
+        setRowHeights(coverWs, [{ hpt: 30 }]);
+        coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }];
         
         ['A5', 'B5', 'C5', 'D5'].forEach(cell => { if (coverWs[cell]) coverWs[cell].s = checklistHeaderStyle; });
 
-        const rangeLinks = utils.decode_range(coverWs['!ref']!);
-        for (let R = 5; R < rangeLinks.e.r + 1; ++R) { 
-            const address = utils.encode_cell({ r: R, c: 0 });
-            if (coverWs[address] && coverWs[address].f) {
-                coverWs[address].s = linkStyle;
-            }
-        }
-        addFooter(coverWs, rangeLinks.e.r + 1, 4);
+        addFooter(coverWs, coverPageData.length, 4);
         utils.book_append_sheet(wb, coverWs, coverPageName);
     }
 
@@ -176,9 +162,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
         const ws = utils.aoa_to_sheet(wsData, { cellStyles: true });
         
-        ws['A1'].s = titleStyle;
-        ws['!rows'] = [{ hpt: 30 }];
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
+        ws['A1'].s = titleStyle;
+
+        setRowHeights(ws, [{ hpt: 30 }]);
 
         setColumnWidths(ws, [15, 60, 15, 15, 25, 15, 20, 30]);
         ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3'].forEach(cell => { if (ws[cell]) ws[cell].s = checklistHeaderStyle; });
@@ -186,19 +173,17 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         ['B4', 'G4', 'H4'].forEach(cell => { if(ws[cell]) ws[cell].s = checklistInstructionStyle });
         
         ws['!views'] = [{state: 'frozen', ySplit: 4}];
-        addFooter(ws, wsData.length + 1, 8);
+        addFooter(ws, wsData.length, 8);
         
         const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
         utils.book_append_sheet(wb, ws, sheetName);
     });
     
-    // --- Remove default Sheet1 if it exists ---
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
         delete wb.Sheets['Sheet1'];
         wb.SheetNames.splice(wb.SheetNames.indexOf('Sheet1'), 1);
     }
     
-    // Reorder sheets to have Instructions first
     wb.SheetNames.sort((a, b) => {
         if (a === 'Instructions') return -1;
         if (b === 'Instructions') return 1;
