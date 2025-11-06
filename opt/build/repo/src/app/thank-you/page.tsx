@@ -95,22 +95,6 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         }];
     }
     
-    // --- DASHBOARD SHEET ---
-    const dashboardData = [
-        [{ v: `${packTitle} - Operations Dashboard`, s: titleStyle }, null, null, null, null, null],
-        [],
-        [{ v: "Overdue Tasks (Top 5)", s: sectionHeaderStyle }, null, { v: "Department Health", s: sectionHeaderStyle }, null, null, null],
-    ];
-    
-    let dashboardWs = utils.aoa_to_sheet(dashboardData);
-    dashboardWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }, 
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, 
-        { s: { r: 2, c: 2 }, e: { r: 2, c: 5 } },
-    ];
-    setColumnWidths(dashboardWs, [40, 20, 20, 15, 15, 15]);
-    utils.book_append_sheet(wb, dashboardWs, "Dashboard");
-
      // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
@@ -169,7 +153,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         checklists.forEach(checklist => {
             const sName = safeSheetName(checklist.title);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `'${sName}'!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `#${sName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -253,13 +237,12 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         }
     }
 
-    const sortedSheetNames = ["Dashboard", ...wb.SheetNames.filter(name => name !== "Dashboard").sort((a, b) => {
-        if (a === 'Instructions & Legend') return -1;
-        if (b === 'Instructions & Legend') return 1;
-        if (a === 'Cover Page') return -1;
-        if (b === 'Cover Page') return 1;
-        return a.localeCompare(b);
-    })];
+    // Re-order sheets to have Instructions and Cover Page first
+    const sortedSheetNames = ["Instructions & Legend", "Cover Page", ...wb.SheetNames.filter(name => name !== "Instructions & Legend" && name !== "Cover Page").sort()];
+     if (type !== 'pack' || checklists.length <= 1) {
+        const coverIndex = sortedSheetNames.indexOf("Cover Page");
+        if(coverIndex > -1) sortedSheetNames.splice(coverIndex, 1);
+    }
     wb.SheetNames = sortedSheetNames;
     
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
