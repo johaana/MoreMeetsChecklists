@@ -23,9 +23,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string) => {
-        // Remove invalid characters and truncate to Excel's 31-character limit
         const sanitized = title.replace(/[\s&/\\?*:[\]]/g, '_');
-        return sanitized.substring(0, 31);
+        return sanitized.substring(0, 30);
     }
     
     // --- STYLES ---
@@ -170,16 +169,14 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const rowNum = 4 + taskIndex;
             const dateCell = `J${rowNum}`;
             const freqCell = `G${rowNum}`;
-            
+            const nextDueDateCell = `L${rowNum}`;
+
             const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
-            
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
-            
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
-            const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
-            
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, INDIRECT("L"&ROW())="N/A"),"Completed",IF(TODAY()>INDIRECT("L"&ROW()),"ACTION REQUIRED","Completed")))`;
+            const nextDueDateFormula = `IF(ISBLANK(${dateCell}),"",IF(${isEventDrivenFormula},"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula})))`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${nextDueDateCell}="N/A",${nextDueDateCell}=""),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED","Completed")))`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -206,7 +203,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             else ws[dateCellJ].z = 'dd-mm-yyyy';
 
             const dateCellL = utils.encode_cell({c: 11, r: R});
-            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
+            if(!ws[dateCellL]) ws[dateCellL] = {t:'n', z: 'dd-mm-yyyy'};
+            else ws[dateCellL].s = dateStyle;
         }
 
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
@@ -220,26 +218,15 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         utils.book_append_sheet(wb, ws, sName);
     });
     
-    // Re-order sheets
+    // Re-order sheets to ensure Instructions and Cover Page are first
     const sheetNames = wb.SheetNames;
-    const instructionIndex = sheetNames.indexOf("Instructions & Legend");
-    if(instructionIndex > -1) {
-      const instructionSheet = sheetNames.splice(instructionIndex, 1);
-      sheetNames.unshift(instructionSheet[0]);
-    }
-
-    const coverIndex = sheetNames.indexOf("Cover Page");
-    if (coverIndex > -1) {
-        const coverSheet = sheetNames.splice(coverIndex, 1);
-        if (instructionIndex > -1) {
-            sheetNames.splice(1, 0, coverSheet[0]);
-        } else {
-            sheetNames.unshift(coverSheet[0]);
+    const sortedSheetNames = ["Instructions & Legend", "Cover Page"].filter(name => sheetNames.includes(name));
+    sheetNames.forEach(name => {
+        if (!sortedSheetNames.includes(name)) {
+            sortedSheetNames.push(name);
         }
-    }
-    
-    wb.SheetNames = sheetNames;
-
+    });
+    wb.SheetNames = sortedSheetNames;
 
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
@@ -366,3 +353,7 @@ export default function MasterAccessPage() {
         </div>
     );
 }
+
+    
+
+    
