@@ -23,8 +23,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string) => {
-      // Remove invalid characters, replace spaces, and truncate to 30 characters
-      return title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 30);
+        // Remove invalid characters and truncate to Excel's 31-character limit
+        const sanitized = title.replace(/[\s&/\\?*:[\]]/g, '_');
+        return sanitized.substring(0, 31);
     }
     
     // --- STYLES ---
@@ -42,7 +43,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `AND(ISNUMBER(INDIRECT("L"&ROW())), INDIRECT("L"&ROW())<TODAY(), NOT(ISBLANK(INDIRECT("L"&ROW()))))`,
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -365,5 +366,3 @@ export default function MasterAccessPage() {
         </div>
     );
 }
-
-    

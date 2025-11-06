@@ -32,8 +32,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string) => {
-      // Remove invalid characters, replace spaces, and truncate to 30 characters
-      return title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 30);
+        // Remove invalid characters and truncate to Excel's 31-character limit
+        const sanitized = title.replace(/[\s&/\\?*:[\]]/g, '_');
+        return sanitized.substring(0, 31);
     }
     
     // --- STYLES ---
@@ -51,7 +52,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `AND(ISNUMBER(INDIRECT("L"&ROW())), INDIRECT("L"&ROW())<TODAY(), NOT(ISBLANK(INDIRECT("L"&ROW()))))`,
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -167,6 +168,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     // --- CHECKLIST SHEETS ---
     checklists.forEach((checklist, index) => {
         const headerEndCol = 'M';
+        const sName = safeSheetName(checklist.title);
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
             ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
@@ -223,7 +225,6 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const sName = safeSheetName(checklist.title);
         utils.book_append_sheet(wb, ws, sName);
     });
     
@@ -412,5 +413,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
-    
