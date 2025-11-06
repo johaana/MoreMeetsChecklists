@@ -23,10 +23,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string): string => {
-        // Replace all non-alphanumeric characters with an underscore
-        const replaced = title.replace(/[^a-zA-Z0-9]/g, '_');
-        // Truncate to Excel's 31-character limit
-        return replaced.substring(0, 31);
+        // Replace invalid chars, then truncate.
+        return title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 31);
     }
 
     // --- STYLES ---
@@ -44,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -52,7 +50,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("L"&ROW())))`,
         style: { fill: completedFill, font: completedFont },
     };
     
@@ -172,10 +170,13 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const freqCell = `G${rowNum}`;
             
             const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
+            
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
+            
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
             const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
+            
             const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(L${rowNum}="N/A","Completed",IF(TODAY()>L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
 
             wsData.push([
