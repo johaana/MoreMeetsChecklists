@@ -40,7 +40,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
     const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true, horizontal: 'center' } };
-    const dateStyle = { numFmt: 'dd-mmm-yy' };
+    const dateStyle = { numFmt: 'dd-mm-yyyy' };
     
     // --- CONDITIONAL FORMATTING ---
     const overdueFill = { fgColor: { rgb: "FFC7CE" } };
@@ -97,7 +97,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null],
         [{ v: "This isn't just a static list; it's a dynamic operational tool. The sheet is designed to be automated. You only need to edit ONE column.", t: 's', s: { ...instructionBodyStyle, alignment: { ...instructionBodyStyle.alignment, horizontal: 'center' } } }, null, null, null],
         [],
-        [{ v: '1. Update the Date', t: 's', s: instructionTitleStyle }, { v: "When you complete a task, go to the 'Date Completed (dd-mmm-yy)' column and enter the date. Use the format DD-MMM-YY (e.g., 05-Nov-24). This is the only column you ever need to touch.", t: 's', s: instructionBodyStyle }],
+        [{ v: '1. Update the Date', t: 's', s: instructionTitleStyle }, { v: "When you complete a task, go to the 'Date Completed (dd-mm-yyyy)' column and enter the date. Use the format DD-MM-YYYY (e.g., 05-11-2024). This is the only column you ever need to touch.", t: 's', s: instructionBodyStyle }],
         [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status (Auto-updates)' and 'Next Due Date (Auto-calculated)' columns will update automatically. You do not need to edit them. If a task is overdue, the entire row will turn RED. If it's completed on time, it will turn GREEN.", t: 's', s: instructionBodyStyle }],
         [{ v: '3. Event-Driven vs. Scheduled Tasks', t: 's', s: instructionTitleStyle }, { v: "Tasks with a 'Frequency' like 'Daily', 'Weekly', or 'Monthly' are scheduled and will become overdue. Tasks with a frequency like 'As Required', 'Per Incident', or 'Ongoing' are event-driven and will show 'N/A' for the due date.", t: 's', s: instructionBodyStyle }],
         [{ v: '4. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }],
@@ -115,7 +115,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     instructionsData.forEach((row, r) => {
         const cell = instructionsWs[utils.encode_cell({r:r, c:1})];
         if (cell && typeof cell.v === 'string') {
-            cell.s = { ...instructionBodyStyle };
+            cell.s = { ...instructionBodyStyle, alignment: {...instructionBodyStyle.alignment, wrapText: true} };
         }
     });
 
@@ -135,7 +135,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         checklists.forEach(checklist => {
             const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `${safeSheetName}!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `#${safeSheetName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -152,7 +152,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const headerEndCol = 'M';
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mmm-yy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
         ];
 
         checklist.tasks.forEach((task, index) => {
@@ -193,8 +193,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         for (let R = 3; R <= range.e.r; ++R) {
             const dateCellJ = utils.encode_cell({c: 9, r: R});
-            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mmm-yy'};
-            else ws[dateCellJ].z = 'dd-mmm-yy';
+            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mm-yyyy'};
+            else ws[dateCellJ].z = 'dd-mm-yyyy';
         }
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
