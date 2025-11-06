@@ -68,7 +68,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const merge = { s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } };
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push(merge);
-        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2024 MoreMeets - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
+        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2025 MoreMeets - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
         utils.sheet_add_aoa(ws, [[footerCell]], { origin: { r: lastRow + 2, c: 0 } });
     };
 
@@ -99,7 +99,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [],
         [{ v: '1. Update the Date', t: 's', s: instructionTitleStyle }, { v: "When you complete a task, go to the 'Date Completed (dd-mm-yyyy)' column and enter the date. Use the format DD-MM-YYYY (e.g., 05-11-2024). This is the only column you ever need to touch.", t: 's', s: instructionBodyStyle }],
         [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status (Auto-updates)' and 'Next Due Date (Auto-calculated)' columns will update automatically. You do not need to edit them. If a task is overdue, the entire row will turn RED. If it's completed on time, it will turn GREEN.", t: 's', s: instructionBodyStyle }],
-        [{ v: '3. Event-Driven vs. Scheduled Tasks', t: 's', s: instructionTitleStyle }, { v: "Tasks with a 'Frequency' like 'Daily', 'Weekly', or 'Monthly' are scheduled and will become overdue. Tasks with a frequency like 'As Required', 'Per Incident', or 'Ongoing' are event-driven and will show 'N/A' for the due date.", t: 's', s: instructionBodyStyle }],
+        [{ v: '3. Event-Driven vs. Scheduled Tasks', t: 's', s: instructionTitleStyle }, { v: "Tasks with a 'Frequency' like 'As Required', 'Per Incident', or 'Ongoing' are event-driven and will show 'N/A' for the due date.", t: 's', s: instructionBodyStyle }],
         [{ v: '4. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }],
     ];
     
@@ -133,7 +133,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
         checklists.forEach(checklist => {
-            const safeSheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+            const safeSheetName = checklist.title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 31);
             coverPageData.push([
                 { t: 's', v: checklist.title, l: { Target: `#${safeSheetName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
@@ -199,7 +199,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const sheetName = checklist.title.replace(/[^\w\s]/gi, '').substring(0, 31);
+        const sheetName = checklist.title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 31);
         utils.book_append_sheet(wb, ws, sheetName);
     });
     
