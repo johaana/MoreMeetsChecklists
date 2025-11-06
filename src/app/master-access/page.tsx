@@ -42,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -203,8 +203,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             else ws[dateCellJ].z = 'dd-mm-yyyy';
 
             const dateCellL = utils.encode_cell({c: 11, r: R});
-            if(!ws[dateCellL]) ws[dateCellL] = {t:'n', z: 'dd-mm-yyyy'};
-            else ws[dateCellL].s = dateStyle;
+            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
         }
 
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];

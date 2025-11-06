@@ -211,8 +211,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             else ws[dateCellJ].z = 'dd-mm-yyyy';
 
             const dateCellL = utils.encode_cell({c: 11, r: R});
-            if(!ws[dateCellL]) ws[dateCellL] = {t:'n', z: 'dd-mm-yyyy'};
-            else ws[dateCellL].s = dateStyle;
+            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
         }
 
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
