@@ -14,14 +14,6 @@ import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style
 import { SiteHeader } from '@/components/layout/header';
 import type { Metadata } from 'next';
 
-// Note: Metadata export is not used in a 'use client' component,
-// but we can keep it here for reference or move it to a layout if needed.
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
 
 const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {

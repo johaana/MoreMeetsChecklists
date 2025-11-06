@@ -32,7 +32,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string) => {
-        return title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 31);
+        return title.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 31);
     }
     
     // --- STYLES ---
@@ -50,7 +50,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -58,7 +58,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("L"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("K"&ROW())))`,
         style: { fill: completedFill, font: completedFont },
     };
     

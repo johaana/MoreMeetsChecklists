@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { subscribeToBlog } from './actions';
+import { subscribeToBlog } from '@/app/packs/actions';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -189,21 +189,29 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 export default function BlogClientPage() {
   const searchParams = useSearchParams();
   const tagFilterFromUrl = searchParams.get('tag');
-
-  const allPostsSorted = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
-  const [featuredPost, ...otherPosts] = allPostsSorted;
   
+  const allPostsSorted = React.useMemo(() => 
+    [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()), 
+    []
+  );
+
   const [activeFilter, setActiveFilter] = React.useState<string | null>(tagFilterFromUrl);
 
   React.useEffect(() => {
-      setActiveFilter(tagFilterFromUrl);
-  }, [tagFilterFromUrl]);
+    setActiveFilter(searchParams.get('tag'));
+  }, [searchParams]);
 
 
   const handleSetFilter = (tag: string | null) => {
+    const params = new URLSearchParams(window.location.search);
+    if (tag) {
+      params.set('tag', tag);
+    } else {
+      params.delete('tag');
+    }
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.pushState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl);
     setActiveFilter(tag);
-    const url = tag ? `/blog?tag=${encodeURIComponent(tag)}` : '/blog';
-    window.history.pushState({ ...window.history.state, as: url, url: url }, '', url);
   };
   
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
@@ -212,14 +220,15 @@ export default function BlogClientPage() {
     handleSetFilter(tag);
   };
 
-  const displayedPosts = activeFilter 
-    ? allPostsSorted.filter(p => p.tags.includes(activeFilter)) 
-    : allPostsSorted;
+  const displayedPosts = React.useMemo(() => {
+    if (activeFilter) {
+      return allPostsSorted.filter(p => p.tags.includes(activeFilter));
+    }
+    return allPostsSorted;
+  }, [activeFilter, allPostsSorted]);
 
-  // The featured post is only shown when no filter is active
-  const currentFeaturedPost = !activeFilter ? featuredPost : null;
-  // If a filter is active, the grid should contain all filtered posts. Otherwise, it should contain the "other" posts.
-  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
+  const currentFeaturedPost = !activeFilter ? displayedPosts[0] : null;
+  const postsForGrid = activeFilter ? displayedPosts : displayedPosts.slice(1);
   
 
   return (
