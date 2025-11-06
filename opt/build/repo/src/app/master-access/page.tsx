@@ -22,6 +22,11 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     const wb = utils.book_new();
 
+    const safeSheetName = (title: string) => {
+        const sanitized = title.replace(/[\s&/\\?*:[\]]/g, '_');
+        return sanitized.substring(0, 30);
+    }
+    
     // --- STYLES ---
     const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
     const sectionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
@@ -37,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `AND(ISNUMBER(INDIRECT("L"&ROW())), INDIRECT("L"&ROW())<TODAY(), NOT(ISBLANK(INDIRECT("L"&ROW()))))`,
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -137,9 +142,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
         checklists.forEach((checklist, index) => {
-            const sName = `Checklist${index + 1}`;
+            const sName = safeSheetName(checklist.title);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `#${sName}!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `#'${sName}'!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -154,6 +159,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     // --- CHECKLIST SHEETS ---
     checklists.forEach((checklist, index) => {
         const headerEndCol = 'M';
+        const sName = safeSheetName(checklist.title);
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
             ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
@@ -163,16 +169,14 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const rowNum = 4 + taskIndex;
             const dateCell = `J${rowNum}`;
             const freqCell = `G${rowNum}`;
-            
+            const nextDueDateCell = `L${rowNum}`;
+
             const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
-            
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
-            
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
-            const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
-            
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, INDIRECT("L"&ROW())="N/A"),"Completed",IF(TODAY()>INDIRECT("L"&ROW()),"ACTION REQUIRED","Completed")))`;
+            const nextDueDateFormula = `IF(ISBLANK(${dateCell}), "N/A", IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}="N/A"),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED","Completed")))`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -210,30 +214,18 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const sName = `Checklist${index + 1}`;
-        const finalSheetName = item.title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 25) + `_${index}`;
-        utils.book_append_sheet(wb, ws, finalSheetName);
+        utils.book_append_sheet(wb, ws, sName);
     });
     
-    // Re-order sheets
+    // Re-order sheets to ensure Instructions and Cover Page are first
     const sheetNames = wb.SheetNames;
-    const instructionIndex = sheetNames.indexOf("Instructions & Legend");
-    if(instructionIndex > -1) {
-      const instructionSheet = sheetNames.splice(instructionIndex, 1);
-      sheetNames.unshift(instructionSheet[0]);
-    }
-
-    const coverIndex = sheetNames.indexOf("Cover Page");
-    if (coverIndex > -1) {
-        const coverSheet = sheetNames.splice(coverIndex, 1);
-        if (instructionIndex > -1) {
-            sheetNames.splice(1, 0, coverSheet[0]);
-        } else {
-            sheetNames.unshift(coverSheet[0]);
+    const sortedSheetNames = ["Instructions & Legend", "Cover Page"].filter(name => sheetNames.includes(name));
+    sheetNames.forEach(name => {
+        if (!sortedSheetNames.includes(name)) {
+            sortedSheetNames.push(name);
         }
-    }
-    wb.SheetNames = sheetNames;
-
+    });
+    wb.SheetNames = sortedSheetNames;
 
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
@@ -360,3 +352,5 @@ export default function MasterAccessPage() {
         </div>
     );
 }
+
+    
