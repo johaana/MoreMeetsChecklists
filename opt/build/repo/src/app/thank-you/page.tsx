@@ -34,20 +34,20 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     // --- STYLES ---
     const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
-    const instructionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
+    const sectionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
     const instructionBodyStyle = { font: { sz: 11, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
     const instructionTitleStyle = { font: { bold: true, sz: 12 }, alignment: { vertical: 'top' } };
     const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
     const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true, horizontal: 'center' } };
-    const dateStyle = { numFmt: 'dd-mm-yyyy' };
+    const dateStyle = { numFmt: 'dd-mmm-yy' };
     
     // --- CONDITIONAL FORMATTING ---
     const overdueFill = { fgColor: { rgb: "FFC7CE" } };
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -94,32 +94,46 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const instructionsData = [
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
         [],
-        [{ v: 'How To Use This "Smart" Checklist', t: 's', s: instructionHeaderStyle }, null, null, null],
-        [{ v: "This isn't just a static list; it's a dynamic operational tool. The sheet is designed to be automated. You only need to edit ONE column.", t: 's', s: { ...instructionBodyStyle, alignment: { ...instructionBodyStyle.alignment, horizontal: 'center' } } }, null, null, null],
+        [{ v: 'Quick Start Guide', t: 's', s: sectionHeaderStyle }, null, null, null],
+        [{ v: '1. Update ONLY ONE Column', t: 's', s: instructionTitleStyle }, { v: "Find your task. When it's done, enter the completion date in the 'Date Completed (dd-mmm-yy)' column. This is the only column you ever need to edit.", t: 's', s: instructionBodyStyle }],
+        [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status' and 'Next Due Date' columns will update automatically. Completed tasks turn GREEN. Overdue tasks turn RED.", t: 's', s: instructionBodyStyle }],
+        [{ v: '3. Add Context (If Needed)', t: 's', s: instructionTitleStyle }, { v: "Use the 'Notes' column for important context, like 'Delayed - Awaiting Parts' or 'Not Applicable this month'.", t: 's', s: instructionBodyStyle }],
         [],
-        [{ v: '1. Update the Date', t: 's', s: instructionTitleStyle }, { v: "When you complete a task, go to the 'Date Completed (dd-mm-yyyy)' column and enter the date. Use the format DD-MM-YYYY (e.g., 05-11-2024). This is the only column you ever need to touch.", t: 's', s: instructionBodyStyle }],
-        [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status (Auto-updates)' and 'Next Due Date (Auto-calculated)' columns will update automatically. You do not need to edit them. If a task is overdue, the entire row will turn RED. If it's completed on time, it will turn GREEN.", t: 's', s: instructionBodyStyle }],
-        [{ v: '3. Event-Driven vs. Scheduled Tasks', t: 's', s: instructionTitleStyle }, { v: "Tasks with a 'Frequency' like 'As Required', 'Per Incident', or 'Ongoing' are event-driven and will show 'N/A' for the due date.", t: 's', s: instructionBodyStyle }],
-        [{ v: '4. Handle Exceptions', t: 's', s: instructionTitleStyle }, { v: "If a task is delayed (e.g., 'Awaiting Parts') or not applicable, use the 'Notes' column. This keeps the primary system clean while providing important context for managers and auditors.", t: 's', s: instructionBodyStyle }],
+        [{ v: 'Pro-Tips for Optimum Use', t: 's', s: sectionHeaderStyle }, null, null, null],
+        [{ v: 'Create Instant Reports with Filters', t: 's', s: instructionTitleStyle }, { v: "Go to the 'Data' tab in Excel and click the 'Filter' icon. Dropdown arrows will appear on each header. Now you can create instant reports. For example: Filter the 'Status' column to see only 'OVERDUE' tasks, or filter the 'Role' column to see a to-do list for a specific person.", t: 's', s: instructionBodyStyle }],
+        [{ v: 'Use the Audit Trail', t: 's', s: instructionTitleStyle }, { v: "Every task has a unique 'Task ID' and a required 'Proof / Evidence'. When discussing an issue, refer to the Task ID for perfect clarity. The 'Proof' column creates a clear, consistent audit trail for every action.", t: 's', s: instructionBodyStyle }],
+        [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
+        [],
+        [{ v: 'Legend', t: 's', s: sectionHeaderStyle }, null, null, null],
+        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED - OVERDUE: The task was not completed by its calculated due date.', s: instructionBodyStyle}],
+        [{v: 'Priority', s: instructionTitleStyle}, {v: 'High: Critical task. Failure has a major impact on operations, safety, or compliance.\nMedium: Important task. Failure has a moderate impact.\nLow: Routine task. Failure has a minor impact.', s: instructionBodyStyle}],
+        [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
     ];
     
     const instructionsWs = utils.aoa_to_sheet(instructionsData);
     instructionsWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } },
-        { s: { r: 3, c: 0 }, e: { r: 3, c: 3 } }, { s: { r: 5, c: 1 }, e: { r: 5, c: 3 } },
-        { s: { r: 6, c: 1 }, e: { r: 6, c: 3 } }, { s: { r: 7, c: 1 }, e: { r: 7, c: 3 } },
-        { s: { r: 8, c: 1 }, e: { r: 8, c: 3 } },
+        { s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, 
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }, 
+        { s: { r: 7, c: 0 }, e: { r: 7, c: 3 } }, 
+        { s: { r: 12, c: 0 }, e: { r: 12, c: 3 } },
+        { s: { r: 3, c: 1 }, e: { r: 3, c: 3 } }, { s: { r: 4, c: 1 }, e: { r: 4, c: 3 } }, { s: { r: 5, c: 1 }, e: { r: 5, c: 3 } },
+        { s: { r: 8, c: 1 }, e: { r: 8, c: 3 } }, { s: { r: 9, c: 1 }, e: { r: 9, c: 3 } }, { s: { r: 10, c: 1 }, e: { r: 10, c: 3 } },
+        { s: { r: 13, c: 1 }, e: { r: 13, c: 3 } }, { s: { r: 14, c: 1 }, e: { r: 14, c: 3 } }, { s: { r: 15, c: 1 }, e: { r: 15, c: 3 } }
     ];
-    setColumnWidths(instructionsWs, [25, 25, 25, 25]);
-    instructionsWs['!rows'] = [ { hpt: 30 }, { hpt: 15 }, { hpt: 25 }, { hpt: 40 }, { hpt: 15 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }];
+    setColumnWidths(instructionsWs, [30, 30, 30, 30]);
+    instructionsWs['!rows'] = [ 
+        { hpt: 30 }, null, { hpt: 25 }, { hpt: 50 }, { hpt: 50 }, { hpt: 50 }, null, 
+        { hpt: 25 }, { hpt: 80 }, { hpt: 80 }, { hpt: 80 }, null,
+        { hpt: 25 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }
+    ];
     instructionsData.forEach((row, r) => {
         const cell = instructionsWs[utils.encode_cell({r:r, c:1})];
         if (cell && typeof cell.v === 'string') {
-            cell.s = { ...instructionBodyStyle, alignment: {...instructionBodyStyle.alignment, wrapText: true} };
+            cell.s = { ...cell.s, ...instructionBodyStyle };
         }
     });
 
-    addFooter(instructionsWs, 10, 4);
+    addFooter(instructionsWs, 17, 4);
     utils.book_append_sheet(wb, instructionsWs, "Instructions & Legend");
 
 
@@ -133,7 +147,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
         checklists.forEach(checklist => {
-            const safeSheetName = checklist.title.replace(/[\\/*?:]/g, '').substring(0, 31);
+            const safeSheetName = checklist.title.replace(/[\\/*?:"[\]]/g, '').substring(0, 31);
             coverPageData.push([
                 { t: 's', v: checklist.title, l: { Target: `#${safeSheetName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
@@ -152,7 +166,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const headerEndCol = 'M';
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mmm-yy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
         ];
 
         checklist.tasks.forEach((task, index) => {
@@ -172,7 +186,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
                 task.frequency || checklist.frequency, task.department || checklist.department, task.role || checklist.role,
                 null, 
                 { t: 'f', f: statusFormula }, 
-                { t: 'f', f: nextDueDateFormula, s: dateStyle }, 
+                { t: 'f', f: nextDueDateFormula }, 
                 null,
             ]);
         });
@@ -185,22 +199,26 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = headerStyle; });
         
         const range = utils.decode_range(ws['!ref'] || 'A1');
+
+        for (let R = 3; R <= range.e.r; ++R) {
+            const dateCellJ = utils.encode_cell({c: 9, r: R});
+            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mmm-yy'};
+            else ws[dateCellJ].z = 'dd-mmm-yy';
+
+            const dateCellL = utils.encode_cell({c: 11, r: R});
+            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
+        }
+
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
         ws['!conditional_formatting'].push(
             { ref: `A4:${headerEndCol}${range.e.r + 1}`, rules: [overdueConditionalFmt] },
             { ref: `A4:${headerEndCol}${range.e.r + 1}`, rules: [completedConditionalFmt] }
         );
         
-        for (let R = 3; R <= range.e.r; ++R) {
-            const dateCellJ = utils.encode_cell({c: 9, r: R});
-            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mm-yyyy'};
-            else ws[dateCellJ].z = 'dd-mm-yyyy';
-        }
-        
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const sheetName = checklist.title.replace(/[\\/*?:]/g, '').substring(0, 31);
-        utils.book_append_sheet(wb, ws, sheetName);
+        const safeSheetName = checklist.title.replace(/[\\/*?:"[\]]/g, '').substring(0, 31);
+        utils.book_append_sheet(wb, ws, safeSheetName);
     });
     
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
@@ -251,7 +269,7 @@ function ThankYouContent() {
       if (result.success) {
         setVerifiedItem(result.item);
         setItemType(result.type);
-        handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type);
+        handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
         setShowDownloadConfirm(true);
       } else {
         setError(result.error);

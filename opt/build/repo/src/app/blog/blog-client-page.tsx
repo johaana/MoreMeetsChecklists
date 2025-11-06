@@ -217,12 +217,11 @@ export default function BlogClientPage() {
     ? allPostsSorted.filter(p => p.tags.includes(activeFilter)) 
     : allPostsSorted;
 
-  // Determine which posts to show in the grid
-  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
-  
   // The featured post is only shown when no filter is active
   const currentFeaturedPost = !activeFilter ? featuredPost : null;
-
+  // If a filter is active, the grid should contain all filtered posts. Otherwise, it should contain the "other" posts.
+  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
+  
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -381,5 +380,3 @@ export default function BlogClientPage() {
     </div>
   );
 }
-
-    
