@@ -12,12 +12,12 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
-import { subscribeToBlog } from './actions';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { subscribeToBlog } from '@/app/packs/actions';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -189,19 +189,29 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 export default function BlogClientPage() {
   const searchParams = useSearchParams();
   const tagFilterFromUrl = searchParams.get('tag');
+  
+  const allPostsSorted = React.useMemo(() => 
+    [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()), 
+    []
+  );
 
-  const [featuredPost, ...otherPosts] = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
   const [activeFilter, setActiveFilter] = React.useState<string | null>(tagFilterFromUrl);
 
   React.useEffect(() => {
-      setActiveFilter(tagFilterFromUrl);
-  }, [tagFilterFromUrl]);
+    setActiveFilter(searchParams.get('tag'));
+  }, [searchParams]);
 
 
   const handleSetFilter = (tag: string | null) => {
+    const params = new URLSearchParams(window.location.search);
+    if (tag) {
+      params.set('tag', tag);
+    } else {
+      params.delete('tag');
+    }
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.pushState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl);
     setActiveFilter(tag);
-    const url = tag ? `/blog?tag=${encodeURIComponent(tag)}` : '/blog';
-    window.history.pushState({ ...window.history.state, as: url, url: url }, '', url);
   };
   
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
@@ -209,13 +219,17 @@ export default function BlogClientPage() {
     e.preventDefault();
     handleSetFilter(tag);
   };
+
+  const displayedPosts = React.useMemo(() => {
+    if (activeFilter) {
+      return allPostsSorted.filter(p => p.tags.includes(activeFilter));
+    }
+    return allPostsSorted;
+  }, [activeFilter, allPostsSorted]);
+
+  const currentFeaturedPost = !activeFilter ? displayedPosts[0] : null;
+  const postsForGrid = activeFilter ? displayedPosts : displayedPosts.slice(1);
   
-  const allPosts = [featuredPost, ...otherPosts];
-  const displayedPosts = activeFilter ? allPosts.filter(p => p.tags.includes(activeFilter)) : allPosts;
-
-  const currentFeaturedPost = (featuredPost && !activeFilter) ? featuredPost : null;
-  const postsForGrid = activeFilter ? displayedPosts : otherPosts;
-
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -374,5 +388,3 @@ export default function BlogClientPage() {
     </div>
   );
 }
-
-    

@@ -32,8 +32,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string) => {
-        // Remove spaces and special characters, replace with underscores, and truncate.
-        return title.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 31);
+        const truncatedTitle = title.substring(0, 31);
+        return truncatedTitle.replace(/[^a-zA-Z0-9\s]/g, '_');
     }
     
     // --- STYLES ---
@@ -51,7 +51,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -59,7 +59,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("L"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("K"&ROW())))`,
         style: { fill: completedFill, font: completedFont },
     };
     
@@ -150,9 +150,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
         checklists.forEach(checklist => {
-            const sheetName = safeSheetName(checklist.title);
+            const sName = safeSheetName(checklist.title);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `#${sheetName}!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `#${sName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -209,7 +209,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             else ws[dateCellJ].z = 'dd-mm-yyyy';
 
             const dateCellL = utils.encode_cell({c: 11, r: R});
-            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
+             if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
         }
 
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
@@ -220,8 +220,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const sheetName = safeSheetName(checklist.title);
-        utils.book_append_sheet(wb, ws, sheetName);
+        const sName = safeSheetName(checklist.title);
+        utils.book_append_sheet(wb, ws, sName);
     });
     
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
