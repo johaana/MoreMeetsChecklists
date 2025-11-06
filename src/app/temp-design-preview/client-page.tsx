@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { ArrowRight, Zap, Users, Shield, BrainCircuit, Bot, Syringe, UserCheck, Briefcase, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
 
 const painPoints = {
   resilience: {
