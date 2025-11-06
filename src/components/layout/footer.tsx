@@ -49,10 +49,11 @@ export function Footer() {
                      <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
                         Sitemap
                     </Link>
-                    <p className="text-xs text-muted-foreground mt-4">&copy; 2024 MoreMeets. All rights reserved.</p>
+                    <p className="text-xs text-muted-foreground mt-4">&copy; 2025 MoreMeets. All rights reserved.</p>
                 </div>
             </div>
         </footer>
     );
 }
 
+    
