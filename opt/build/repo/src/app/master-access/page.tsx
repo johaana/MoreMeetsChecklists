@@ -23,8 +23,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string): string => {
-        // Replace invalid chars, then truncate.
-        return title.replace(/[\s&/\\?*:[\]]/g, '_').substring(0, 31);
+        // Replace invalid chars, then truncate. Max length for a sheet name is 31.
+        let name = title.replace(/[\s&/\\?*:[\]]/g, '_');
+        return name.length > 31 ? name.substring(0, 31) : name;
     }
 
     // --- STYLES ---
@@ -112,7 +113,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: '3. Add Context (If Needed)', t: 's', s: instructionTitleStyle }, { v: "Use the 'Notes' column for important context, like 'Delayed - Awaiting Parts' or 'Not Applicable this month'.", t: 's', s: instructionBodyStyle }],
         [],
         [{ v: 'Pro-Tips for Optimum Use', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{ v: 'Create Instant Reports with Filters', t: 's', s: instructionTitleStyle }, { v: "Go to the 'Data' tab in Excel and click the 'Filter' icon. Dropdown arrows will appear on each header. Now you can create instant reports. For example: Filter the 'Status' column to see only 'OVERDUE' tasks, or filter the 'Role' column to see a to-do list for a specific person.", t: 's', s: instructionBodyStyle }],
+        [{ v: 'Create Instant Reports with Filters', t: 's', s: instructionTitleStyle }, { v: "Go to the 'Data' tab in Excel and click the 'Filter' icon. Dropdown arrows will appear on each header. Now you can create instant reports. For example: Filter the 'Status' column to see only 'ACTION REQUIRED' tasks, or filter the 'Role' column to see a to-do list for a specific person.", t: 's', s: instructionBodyStyle }],
         [{ v: 'Use the Audit Trail', t: 's', s: instructionTitleStyle }, { v: "Every task has a unique 'Task ID' and a required 'Proof / Evidence'. When discussing an issue, refer to the Task ID for perfect clarity. The 'Proof' column creates a clear, consistent audit trail for every action.", t: 's', s: instructionBodyStyle }],
         [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
         [],
@@ -236,10 +237,13 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         utils.book_append_sheet(wb, ws, sName);
     });
     
+    // This removes the default "Sheet1" that might be created
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
         const sheet1Index = wb.SheetNames.indexOf('Sheet1');
-        wb.SheetNames.splice(sheet1Index, 1);
-        delete wb.Sheets['Sheet1'];
+        if (sheet1Index > -1) {
+          wb.SheetNames.splice(sheet1Index, 1);
+          delete wb.Sheets['Sheet1'];
+        }
     }
 
     const sortedSheetNames = ["Dashboard", ...wb.SheetNames.filter(name => name !== "Dashboard").sort((a, b) => {
@@ -250,6 +254,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         return a.localeCompare(b);
     })];
     wb.SheetNames = sortedSheetNames;
+
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
 }
@@ -375,7 +380,3 @@ export default function MasterAccessPage() {
         </div>
     );
 }
-
-    
-
-    
