@@ -68,49 +68,52 @@ export default function AllPacksPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {filteredPacks.map((pack) => (
-                        <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-                            <CardHeader className="p-6 relative">
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                     <Badge className={`${categoryColors[pack.category] || 'bg-gray-100 text-gray-800'}`}>
-                                        {pack.category}
-                                    </Badge>
-                                    {pack.badgeText && (
-                                        <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 w-fit">
-                                        <Star className="w-4 h-4" /> {pack.badgeText}
-                                        </Badge>
-                                    )}
-                                </div>
-                                <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                    {filteredPacks.map((pack) => {
+                        const totalChecklists = pack.checklists.length;
+                        const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+                        return (
+                            <Card key={pack.id} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                                <CardHeader className="p-6 relative">
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                        {pack.badgeText && (
+                                            <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 w-fit">
+                                            <Star className="w-4 h-4" /> {pack.badgeText}
+                                            </Badge>
+                                        )}
+                                         <Badge variant="secondary">{totalChecklists} Checklists</Badge>
+                                         <Badge variant="secondary">{totalTasks}+ Tasks</Badge>
                                     </div>
-                                    <div className="flex-1">
-                                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                                        <CardDescription className="mt-1">{pack.description}</CardDescription>
+                                    <div className="flex items-start gap-4">
+                                        <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
+                                            {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                                        </div>
+                                        <div className="flex-1">
+                                            <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                                            <CardDescription className="mt-1">{pack.description}</CardDescription>
+                                        </div>
                                     </div>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="px-6 flex-1">
-                                <h2 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h2>
-                                <ul className="space-y-2 text-muted-foreground text-sm">
-                                    {pack.sampleItems.map((item, index) => (
-                                        <li key={index} className="flex items-start">
-                                            <span className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent">{item.icon}</span>
-                                            <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </CardContent>
-                             <CardFooter className="p-6 pt-2 mt-auto">
-                                <Button asChild className="w-full font-bold" variant="default">
-                                    <Link href={`/packs/${pack.id}`}>
-                                        View Full Checklist &amp; Purchase
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    ))}
+                                </CardHeader>
+                                <CardContent className="px-6 flex-1">
+                                    <h2 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h2>
+                                    <ul className="space-y-2 text-muted-foreground text-sm">
+                                        {pack.sampleItems.map((item, index) => (
+                                            <li key={index} className="flex items-start">
+                                                <span className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent">{item.icon}</span>
+                                                <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </CardContent>
+                                <CardFooter className="p-6 pt-2 mt-auto">
+                                    <Button asChild className="w-full font-bold" variant="default">
+                                        <Link href={`/packs/${pack.id}`}>
+                                            View Full Checklist &amp; Purchase
+                                        </Link>
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+                        )
+                    })}
                 </div>
             </div>
         </section>
@@ -119,3 +122,5 @@ export default function AllPacksPage() {
     </div>
   );
 }
+
+    

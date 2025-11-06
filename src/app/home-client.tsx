@@ -261,44 +261,53 @@ const FaqSection = () => (
 function PackList({ packs, title, description }: { packs: PremiumPack[], title: string, description: string }) {
     const isMobile = useIsMobile();
     
-    const PackCard = ({ pack }: { pack: PremiumPack }) => (
-        <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-            <CardHeader className="p-6 relative">
-                {pack.badgeText && (
-                    <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 mb-4 w-fit">
-                        <Star className="w-4 h-4" /> {pack.badgeText}
-                    </Badge>
-                )}
-                <div className="flex items-start gap-4">
-                    <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                        {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+    const PackCard = ({ pack }: { pack: PremiumPack }) => {
+        const totalChecklists = pack.checklists.length;
+        const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+
+        return (
+            <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                <CardHeader className="p-6 relative">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                        {pack.badgeText && (
+                            <Badge variant={pack.badgeVariant || 'default'} className="py-1 px-3 font-bold z-10 flex items-center gap-1.5 w-fit">
+                                <Star className="w-4 h-4" /> {pack.badgeText}
+                            </Badge>
+                        )}
+                        <Badge variant="secondary">{totalChecklists} Checklists</Badge>
+                        <Badge variant="secondary">{totalTasks}+ Tasks</Badge>
                     </div>
-                    <div className="flex-1">
-                        <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
-                        <CardDescription className="mt-1 text-sm md:text-base">{pack.description}</CardDescription>
+                    <div className="flex items-start gap-4">
+                        <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
+                            {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                        </div>
+                        <div className="flex-1">
+                            <CardTitle className="text-xl font-headline">{pack.title}</CardTitle>
+                            <CardDescription className="mt-1 text-sm md:text-base">{pack.description}</CardDescription>
+                        </div>
                     </div>
-                </div>
-            </CardHeader>
-            <CardContent className="px-6 flex-1">
-                <h3 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h3>
-                <ul className="space-y-2 text-muted-foreground text-sm">
-                    {pack.sampleItems.map((item, index) => (
-                        <li key={index} className="flex items-start">
-                            <span className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent">{item.icon}</span>
-                            <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                        </li>
-                    ))}
-                </ul>
-            </CardContent>
-            <CardFooter className="p-6 pt-2 mt-auto">
-                <Button asChild className="w-full font-bold" variant="default">
-                    <Link href={`/packs/${pack.id}`}>
-                        View Full Checklist & Purchase
-                    </Link>
-                </Button>
-            </CardFooter>
-        </Card>
-    );
+                </CardHeader>
+                <CardContent className="px-6 flex-1">
+                    <h3 className="font-semibold text-sm mb-3 text-primary">WHAT'S INSIDE:</h3>
+                    <ul className="space-y-2 text-muted-foreground text-sm">
+                        {pack.sampleItems.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                                <span className="h-4 w-4 mr-2 mt-1 shrink-0 text-accent">{item.icon}</span>
+                                <span dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                            </li>
+                        ))}
+                    </ul>
+                </CardContent>
+                <CardFooter className="p-6 pt-2 mt-auto">
+                    <Button asChild className="w-full font-bold" variant="default">
+                        <Link href={`/packs/${pack.id}`}>
+                            View Full Checklist & Purchase
+                        </Link>
+                    </Button>
+                </CardFooter>
+            </Card>
+        );
+    };
 
     return (
         <section id="packs" className="w-full py-12 md:py-24 lg:py-32">
@@ -432,32 +441,32 @@ const WhyDetailMatters = () => {
         {
             icon: <AlertTriangle />,
             title: "One Missed Step Can Cost Everything",
-            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue. Our checklists are your defense.",
+            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue. With MoreMeets, you have a verifiable system that turns best practices into daily habits, preventing errors before they happen.",
         },
         {
             icon: <Users />,
             title: "Your Team Can't Read Your Mind",
-            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality. Our checklists translate your standards into actionable steps for everyone.",
+            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality. MoreMeets checklists translate your standards into actionable steps for everyone.",
         },
         {
             icon: <Shield />,
             title: "An Auditor's Visit Shouldn't Be Panic",
-            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside out, providing a clear, documented trail of diligence.",
+            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside out, providing a clear, documented trail of diligence to make you audit-ready.",
         },
          {
             icon: <FileText />,
             title: "You Know You Need SOPs. But Where Do You Start?",
-            description: "The task of creating SOPs from scratch is daunting. We've done the hard work, providing an expert-built foundation that is 90% of the way there.",
+            description: "The task of creating SOPs from scratch is daunting. We've done the hard work, providing an expert-built foundation that is 90% of the way there, saving you weeks of work.",
         },
         {
             icon: <BarChart />,
             title: "Stop Managing Problems. Start Building Profit.",
-            description: "Every minute spent fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your team to innovate.",
+            description: "Every minute spent fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your team to innovate and focus on customers.",
         },
         {
             icon: <Award />,
             title: "Don't Let Your Business Rely on One Hero",
-            description: "What happens if your indispensable employee leaves? Our checklists democratize expertise, creating a scalable system where anyone can operate at a high standard.",
+            description: "What happens if your indispensable manager leaves? MoreMeets democratizes expertise, creating a scalable system where anyone can operate at a high standard.",
         }
     ];
 
@@ -788,3 +797,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
