@@ -22,7 +22,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { RotatingText } from "@/components/ui/rotating-text";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
-import { subscribeToBlog } from "@/app/packs/actions";
+import { subscribeToBlog } from "@/app/blog/actions";
 
 const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
 
@@ -668,7 +668,7 @@ export default function HomeClientPage() {
                 <div className="flex flex-col items-center justify-center space-y-6 text-center">
                     <div className="space-y-4">
                         <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                            The Professional Standard for Compliance &amp; Operations Checklists.
+                            The Professional Standard for Compliance & Operations Checklists.
                         </h1>
                          <div className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2 text-white/90 text-xl md:text-2xl/relaxed mx-auto [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)] font-semibold tracking-wide">
                             <span className="flex items-center gap-2">
@@ -691,7 +691,7 @@ export default function HomeClientPage() {
                         </Button>
                         <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
                              <p className="text-xs text-white/80">
-                                International Standards Integrated: ISO, JCI, HACCP, OSHA &amp; More
+                                International Standards Integrated: ISO, JCI, HACCP, OSHA & More
                             </p>
                         </div>
                     </div>
@@ -797,5 +797,7 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
 
     
