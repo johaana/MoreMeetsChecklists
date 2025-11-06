@@ -32,10 +32,11 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string): string => {
-        // Replace spaces and special characters with a single underscore, then truncate.
-        return title.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_').substring(0, 31);
+        // Replace invalid chars, then truncate. Max length for a sheet name is 31.
+        let name = title.replace(/[\s&/\\?*:[\]]/g, '_');
+        return name.length > 31 ? name.substring(0, 31) : name;
     }
-    
+
     // --- STYLES ---
     const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
     const sectionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
@@ -93,6 +94,22 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             icon: checklist.icon
         }];
     }
+    
+    // --- DASHBOARD SHEET ---
+    const dashboardData = [
+        [{ v: `${packTitle} - Operations Dashboard`, s: titleStyle }, null, null, null, null, null],
+        [],
+        [{ v: "Overdue Tasks (Top 5)", s: sectionHeaderStyle }, null, { v: "Department Health", s: sectionHeaderStyle }, null, null, null],
+    ];
+    
+    let dashboardWs = utils.aoa_to_sheet(dashboardData);
+    dashboardWs['!merges'] = [
+        { s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }, 
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, 
+        { s: { r: 2, c: 2 }, e: { r: 2, c: 5 } },
+    ];
+    setColumnWidths(dashboardWs, [40, 20, 20, 15, 15, 15]);
+    utils.book_append_sheet(wb, dashboardWs, "Dashboard");
 
      // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
@@ -227,13 +244,19 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         utils.book_append_sheet(wb, ws, sName);
     });
     
+    // This removes the default "Sheet1" that might be created
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
         const sheet1Index = wb.SheetNames.indexOf('Sheet1');
-        wb.SheetNames.splice(sheet1Index, 1);
-        delete wb.Sheets['Sheet1'];
+        if (sheet1Index > -1) {
+          wb.SheetNames.splice(sheet1Index, 1);
+          delete wb.Sheets['Sheet1'];
+        }
     }
 
+
     const sortedSheetNames = wb.SheetNames.sort((a, b) => {
+        if (a === 'Dashboard') return -1;
+        if (b === 'Dashboard') return 1;
         if (a === 'Instructions & Legend') return -1;
         if (b === 'Instructions & Legend') return 1;
         if (a === 'Cover Page') return -1;
@@ -241,6 +264,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         return a.localeCompare(b);
     });
     wb.SheetNames = sortedSheetNames;
+    
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
 }
@@ -406,6 +430,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
-    
-
