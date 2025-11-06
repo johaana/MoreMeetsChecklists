@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, Zap, Users, Shield, BrainCircuit, Bot, Syringe, UserCheck, Briefcase, FileText } from 'lucide-react';
+import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
@@ -12,13 +12,13 @@ import { Badge } from '@/components/ui/badge';
 const painPoints = {
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring consistency and continuity, no matter who is on shift.',
-    image: 'https://i.postimg.cc/YS98WRVB/operational-excellence-colleagues-collaborating-at-laptop.webp'
+    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
+    image: 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg'
   },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
-    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks to eliminate costly mistakes and ensure compliance.',
-    image: 'https://i.postimg.cc/6q9d44rV/cold-call1.jpg'
+    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
+    image: 'https://i.postimg.cc/bJynvr9B/Cybersecurity.webp'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
@@ -42,7 +42,7 @@ const InteractiveHeroSection = () => {
           alt={content.title}
           fill
           className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-          key={content.image} // Force re-render on image change
+          key={content.image} 
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       </div>
@@ -208,3 +208,5 @@ export default function TempDesignClientPage() {
         </main>
     );
 }
+
+    
