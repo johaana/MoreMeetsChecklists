@@ -12,7 +12,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
 import { SiteHeader } from '@/components/layout/header';
-import type { Metadata } from 'next';
 
 
 const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -23,9 +22,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     const wb = utils.book_new();
 
-    const safeSheetName = (title: string) => {
-        const truncatedTitle = title.substring(0, 31);
-        return truncatedTitle.replace(/[^a-zA-Z0-9\s]/g, '_');
+    const safeSheetName = (title: string): string => {
+        // Replace spaces and special characters with a single underscore, then truncate.
+        return title.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_').substring(0, 31);
     }
 
     // --- STYLES ---
@@ -43,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
+        formula: `AND(ISNUMBER(INDIRECT("L"&ROW())), INDIRECT("L"&ROW())<TODAY(), NOT(ISBLANK(INDIRECT("L"&ROW()))))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -101,7 +100,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
         [],
         [{ v: 'Legend', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED - OVERDUE: The task was not completed by its calculated due date.', s: instructionBodyStyle}],
+        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
         [{v: 'Priority', s: instructionTitleStyle}, {v: 'High: Critical task. Failure has a major impact on operations, safety, or compliance.\nMedium: Important task. Failure has a moderate impact.\nLow: Routine task. Failure has a minor impact.', s: instructionBodyStyle}],
         [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
     ];
@@ -145,7 +144,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         checklists.forEach(checklist => {
             const sName = safeSheetName(checklist.title);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `#${sName}!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `'${sName}'!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -171,11 +170,14 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const freqCell = `G${rowNum}`;
             
             const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
+            
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
-            const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0)))`;
+            
+            const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
             const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(L${rowNum}="N/A","Completed",IF(TODAY()>L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
+            
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, INDIRECT("L"&ROW())="N/A"),"Completed",IF(TODAY()>INDIRECT("L"&ROW()),"ACTION REQUIRED","Completed")))`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -202,7 +204,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             else ws[dateCellJ].z = 'dd-mm-yyyy';
 
             const dateCellL = utils.encode_cell({c: 11, r: R});
-             if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
+            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
         }
 
         ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
@@ -356,4 +358,6 @@ export default function MasterAccessPage() {
         </div>
     );
 }
+
+    
 

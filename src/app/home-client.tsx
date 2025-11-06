@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon, Zap } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -441,32 +441,38 @@ const WhyDetailMatters = () => {
         {
             icon: <AlertTriangle />,
             title: "One Missed Step Can Cost Everything",
-            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue. With MoreMeets, you have a verifiable system that turns best practices into daily habits, preventing errors before they happen.",
+            problem: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue.",
+            solution: "Our checklists provide a verifiable system that turns best practices into daily habits, preventing errors before they happen."
         },
         {
             icon: <Users />,
             title: "Your Team Can't Read Your Mind",
-            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality. MoreMeets checklists translate your standards into actionable steps for everyone.",
+            problem: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality and a poor customer experience.",
+            solution: "MoreMeets translates your high standards into clear, actionable steps that anyone on your team can follow, ensuring consistency."
         },
         {
             icon: <Shield />,
             title: "An Auditor's Visit Shouldn't Be Panic",
-            description: "Our checklists are built by industry veterans who know regulations (NABH, JCI, ISO) inside out, providing a clear, documented trail of diligence to make you audit-ready.",
+            problem: "A lack of a documented trail of diligence makes you vulnerable during audits (NABH, JCI, ISO) and inspections.",
+            solution: "Our checklists are built by industry veterans who know regulations inside out, providing a clear, documented audit trail that makes you audit-ready, anytime."
         },
          {
             icon: <FileText />,
             title: "You Know You Need SOPs. But Where Do You Start?",
-            description: "The task of creating SOPs from scratch is daunting. We've done the hard work, providing an expert-built foundation that is 90% of the way there, saving you weeks of work.",
+            problem: "The task of creating professional, comprehensive SOPs from scratch is daunting, time-consuming, and often gets postponed indefinitely.",
+            solution: "We've done the hard work for you. Our expert-built checklists provide a foundation that is 90% of the way there, saving you weeks of work."
         },
         {
             icon: <BarChart />,
             title: "Stop Managing Problems. Start Building Profit.",
-            description: "Every minute spent fixing preventable errors is a minute not spent on growth. Our checklists reduce operational friction, freeing your team to innovate and focus on customers.",
+            problem: "Every minute spent fixing preventable errors and dealing with chaos is a minute not spent on growing your business.",
+            solution: "Our checklists reduce operational friction, freeing your team to innovate, focus on customers, and drive growth."
         },
         {
             icon: <Award />,
             title: "Don't Let Your Business Rely on One Hero",
-            description: "What happens if your indispensable manager leaves? MoreMeets democratizes expertise, creating a scalable system where anyone can operate at a high standard.",
+            problem: "When critical knowledge lives in one indispensable manager's head, your entire operation is at risk when they leave or are unavailable.",
+            solution: "MoreMeets democratizes expertise by creating a scalable system where anyone can operate at a high standard, making your operation resilient."
         }
     ];
 
@@ -475,24 +481,32 @@ const WhyDetailMatters = () => {
             <div className="container px-2 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Why Every Detail Matters
+                        Stop Firefighting. Start Building Excellence.
                     </h2>
                     <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        In any professional operation, the difference between success and failure lies in the details. Overlooking a single step can expose you to risks you can't afford.
+                        In any professional operation, the difference between chaos and control lies in the system. Overlooking details doesn't just lead to mistakes—it creates risk. Here's how MoreMeets transforms operational risks into strengths.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {points.map((point, index) => (
                          <Card key={index} className="flex flex-col">
-                            <CardHeader className="flex flex-row items-center gap-4">
-                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <CardHeader className="flex flex-row items-start gap-4 pb-4">
+                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0 mt-1">
                                     {React.cloneElement(point.icon, { className: "w-6 h-6" })}
                                 </div>
-                                <CardTitle className="text-lg">{point.title}</CardTitle>
+                                <div className="flex-1">
+                                    <CardTitle className="text-lg leading-tight">{point.title}</CardTitle>
+                                    <p className="text-sm text-muted-foreground mt-1">{point.problem}</p>
+                                </div>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-sm text-muted-foreground">{point.description}</p>
+                                <blockquote className="border-l-4 border-accent bg-accent/10 p-3 rounded-r-lg">
+                                    <p className="text-sm font-semibold text-accent-foreground/90 leading-snug">
+                                        <span className="font-bold text-accent-foreground mr-1">The MoreMeets Solution:</span> 
+                                        {point.solution}
+                                    </p>
+                                </blockquote>
                             </CardContent>
                         </Card>
                     ))}
