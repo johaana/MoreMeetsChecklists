@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -13,6 +12,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
 import { SiteHeader } from '@/components/layout/header';
+import type { Metadata } from 'next';
+
+// Note: Metadata export is not used in a 'use client' component,
+// but we can keep it here for reference or move it to a layout if needed.
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -21,6 +30,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     }
 
     const wb = utils.book_new();
+
+    const safeSheetName = (title: string) => {
+        return title.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 31);
+    }
 
     // --- STYLES ---
     const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
@@ -137,9 +150,9 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
         checklists.forEach(checklist => {
-            const safeSheetName = checklist.title.replace(/[\\/*?:"[\]]/g, '').substring(0, 31);
+            const sheetName = safeSheetName(checklist.title);
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `#${safeSheetName}!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `#${sheetName}!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -207,8 +220,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const safeSheetName = checklist.title.replace(/[\\/*?:"[\]]/g, '').substring(0, 31);
-        utils.book_append_sheet(wb, ws, safeSheetName);
+        const sheetName = safeSheetName(checklist.title);
+        utils.book_append_sheet(wb, ws, sheetName);
     });
     
     if (wb.SheetNames.indexOf('Sheet1') > -1) {
@@ -230,7 +243,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 }
 
 
-export default function MasterAccessClientPage() {
+export default function MasterAccessPage() {
     const [password, setPassword] = React.useState('');
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
     const [error, setError] = React.useState('');
