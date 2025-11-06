@@ -167,7 +167,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-compare">
                         <AccordionTrigger className="text-lg font-semibold text-left">Why invest in a MoreMeets Pack when I can use a free template or an AI tool?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                             <p className="mb-4">Because a simple list is not a system. A MoreMeets Pack is a comprehensive, automated operational tool, engineered by industry experts after hundreds of hours of research.</p>
+                            <p className="mb-4">Because a list is not a system. A MoreMeets Pack is a comprehensive, automated operational tool, engineered by industry experts after hundreds of hours of research.</p>
                             <p className="mb-4">A free template is a blank page. An AI gives you a generic list of *what* to do. Our packs provide a complete framework that tells you:</p>
                             <ul className="list-disc pl-6 space-y-2 mb-4">
                                 <li><strong>Who</strong> is accountable (Assigned To)</li>

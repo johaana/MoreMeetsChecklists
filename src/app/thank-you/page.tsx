@@ -32,7 +32,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string): string => {
-        // Replace invalid chars, then truncate. Max length for a sheet name is 31.
+        // Aggressively remove invalid characters and truncate.
         let name = title.replace(/[\s&/\\?*:[\]]/g, '_');
         return name.length > 31 ? name.substring(0, 31) : name;
     }
