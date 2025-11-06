@@ -31,12 +31,6 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
     const wb = utils.book_new();
 
-    const safeSheetName = (title: string): string => {
-        // Replace invalid chars, then truncate. Max length for a sheet name is 31.
-        let name = title.replace(/[\s&/\\?*:[\]]/g, '_');
-        return name.length > 31 ? name.substring(0, 31) : name;
-    }
-
     // --- STYLES ---
     const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
     const sectionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
@@ -94,7 +88,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             icon: checklist.icon
         }];
     }
-
+    
      // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
@@ -150,10 +144,10 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             [],
             [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
         ];
-        checklists.forEach(checklist => {
-            const sName = safeSheetName(checklist.title);
+        checklists.forEach((checklist, index) => {
+            const sheetName = `Checklist_${index + 1}`;
             coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `#${sName}!A1` }, s: linkStyle },
+                { t: 's', v: checklist.title, l: { Target: `#'${sheetName}'!A1` }, s: linkStyle },
                 checklist.department, checklist.frequency, checklist.role
             ]);
         });
@@ -166,15 +160,16 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     }
 
     // --- CHECKLIST SHEETS ---
-    checklists.forEach(checklist => {
+    checklists.forEach((checklist, index) => {
         const headerEndCol = 'M';
+        const sheetName = `Checklist_${index + 1}`;
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
             ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
         ];
 
-        checklist.tasks.forEach((task, index) => {
-            const rowNum = 4 + index;
+        checklist.tasks.forEach((task, taskIndex) => {
+            const rowNum = 4 + taskIndex;
             const dateCell = `J${rowNum}`;
             const freqCell = `G${rowNum}`;
             
@@ -224,22 +219,17 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         
         ws['!views'] = [{state: 'frozen', ySplit: 3}];
         addFooter(ws, wsData.length, 13);
-        const sName = safeSheetName(checklist.title);
-        utils.book_append_sheet(wb, ws, sName);
+        utils.book_append_sheet(wb, ws, sheetName);
     });
     
-    // This removes the default "Sheet1" that might be created
-    if (wb.SheetNames.indexOf('Sheet1') > -1) {
-        const sheet1Index = wb.SheetNames.indexOf('Sheet1');
-        if (sheet1Index > -1) {
-          wb.SheetNames.splice(sheet1Index, 1);
-          delete wb.Sheets['Sheet1'];
-        }
+    // Re-order sheets to have Instructions and Cover Page first
+    const sheetNames = ["Instructions & Legend", "Cover Page", ...wb.SheetNames.filter(name => name !== "Instructions & Legend" && name !== "Cover Page")];
+    if (type !== 'pack' || checklists.length <= 1) {
+        const coverIndex = sheetNames.indexOf("Cover Page");
+        if (coverIndex > -1) sheetNames.splice(coverIndex, 1);
     }
-
-    const sortedSheetNames = ["Instructions & Legend", "Cover Page", ...wb.SheetNames.filter(name => name !== "Instructions & Legend" && name !== "Cover Page").sort()];
     
-    wb.SheetNames = sortedSheetNames;
+    wb.SheetNames = sheetNames;
     
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
@@ -406,3 +396,5 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
+
+    
