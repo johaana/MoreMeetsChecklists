@@ -32,7 +32,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const wb = utils.book_new();
 
     const safeSheetName = (title: string): string => {
-        // Aggressively remove invalid characters and truncate.
+        // Replace invalid chars, then truncate. Max length for a sheet name is 31.
         let name = title.replace(/[\s&/\\?*:[\]]/g, '_');
         return name.length > 31 ? name.substring(0, 31) : name;
     }
@@ -94,24 +94,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             icon: checklist.icon
         }];
     }
-    
-    // --- DASHBOARD SHEET ---
-    const dashboardData = [
-        [{ v: `${packTitle} - Operations Dashboard`, s: titleStyle }, null, null, null, null, null],
-        [],
-        [{ v: "Overdue Tasks (Top 5)", s: sectionHeaderStyle }, null, { v: "Department Health", s: sectionHeaderStyle }, null, null, null],
-    ];
-    
-    let dashboardWs = utils.aoa_to_sheet(dashboardData);
-    dashboardWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }, 
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, 
-        { s: { r: 2, c: 2 }, e: { r: 2, c: 5 } },
-    ];
-    setColumnWidths(dashboardWs, [40, 20, 20, 15, 15, 15]);
-    utils.book_append_sheet(wb, dashboardWs, "Dashboard");
 
-     // --- INSTRUCTIONS & LEGEND SHEET ---
+    // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
         [],
@@ -253,13 +237,13 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         }
     }
 
-    const sortedSheetNames = ["Dashboard", ...wb.SheetNames.filter(name => name !== "Dashboard").sort((a, b) => {
+    const sortedSheetNames = wb.SheetNames.sort((a, b) => {
         if (a === 'Instructions & Legend') return -1;
         if (b === 'Instructions & Legend') return 1;
         if (a === 'Cover Page') return -1;
         if (b === 'Cover Page') return 1;
         return a.localeCompare(b);
-    })];
+    });
     wb.SheetNames = sortedSheetNames;
     
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
