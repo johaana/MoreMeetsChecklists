@@ -42,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("L"&ROW())))`,
+        formula: `AND(ISNUMBER(INDIRECT("L"&ROW())), INDIRECT("L"&ROW())<TODAY(), NOT(ISBLANK(INDIRECT("L"&ROW()))))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -50,7 +50,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const completedFont = { color: { rgb: "006100" } };
     const completedConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("L"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("K"&ROW())))`,
         style: { fill: completedFill, font: completedFont },
     };
     
@@ -85,6 +85,23 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         }];
     }
 
+    // --- DASHBOARD SHEET ---
+    const dashboardData = [
+        [{ v: `${packTitle} - Operations Dashboard`, s: titleStyle }, null, null, null, null, null],
+        [],
+        [{ v: "Overdue Tasks (Top 5)", s: sectionHeaderStyle }, null, { v: "Department Health", s: sectionHeaderStyle }, null, null, null],
+    ];
+    
+    let dashboardWs = utils.aoa_to_sheet(dashboardData);
+    dashboardWs['!merges'] = [
+        { s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }, 
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, 
+        { s: { r: 2, c: 2 }, e: { r: 2, c: 5 } },
+    ];
+    setColumnWidths(dashboardWs, [40, 20, 20, 15, 15, 15]);
+    utils.book_append_sheet(wb, dashboardWs, "Dashboard");
+
+
     // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
@@ -100,7 +117,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
         [],
         [{ v: 'Legend', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED - OVERDUE: The task was not completed by its calculated due date.', s: instructionBodyStyle}],
+        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
         [{v: 'Priority', s: instructionTitleStyle}, {v: 'High: Critical task. Failure has a major impact on operations, safety, or compliance.\nMedium: Important task. Failure has a moderate impact.\nLow: Routine task. Failure has a minor impact.', s: instructionBodyStyle}],
         [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
     ];
@@ -177,7 +194,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
             const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
             
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(L${rowNum}="N/A","Completed",IF(TODAY()>L${rowNum},"ACTION REQUIRED - OVERDUE","Completed")))`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, INDIRECT("L"&ROW())="N/A"),"Completed",IF(TODAY()>INDIRECT("L"&ROW()),"ACTION REQUIRED","Completed")))`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -225,13 +242,13 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         delete wb.Sheets['Sheet1'];
     }
 
-    const sortedSheetNames = wb.SheetNames.sort((a, b) => {
+    const sortedSheetNames = ["Dashboard", ...wb.SheetNames.filter(name => name !== "Dashboard").sort((a, b) => {
         if (a === 'Instructions & Legend') return -1;
         if (b === 'Instructions & Legend') return 1;
         if (a === 'Cover Page') return -1;
         if (b === 'Cover Page') return 1;
         return a.localeCompare(b);
-    });
+    })];
     wb.SheetNames = sortedSheetNames;
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     writeFile(wb, fileName);
@@ -358,5 +375,7 @@ export default function MasterAccessPage() {
         </div>
     );
 }
+
+    
 
     

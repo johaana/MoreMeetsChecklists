@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon, Zap, BookOpen, ClipboardList, Siren } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -164,62 +164,50 @@ const FaqSection = () => (
             </div>
             <div className="max-w-4xl mx-auto">
                 <Accordion type="single" collapsible className="w-full">
+                     <AccordionItem value="item-compare">
+                        <AccordionTrigger className="text-lg font-semibold text-left">Why invest in a MoreMeets Pack when I can use a free template or an AI tool?</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">
+                            <p className="mb-4">Because a list is not a system. A MoreMeets Pack is a comprehensive, automated operational tool, engineered by industry experts after hundreds of hours of research.</p>
+                            <p className="mb-4">A free template is a blank page. An AI gives you a generic list of *what* to do. Our packs provide a complete framework that tells you:</p>
+                            <ul className="list-disc pl-6 space-y-2 mb-4">
+                                <li><strong>Who</strong> is accountable (Assigned To)</li>
+                                <li><strong>When</strong> it needs to happen (Frequency)</li>
+                                <li><strong>How</strong> to prove it's done (Proof/Evidence)</li>
+                                <li><strong>Why</strong> it's critical (Consequence of Failure)</li>
+                            </ul>
+                            <p className="mb-4">You are not getting a simple checklist. You are getting a multi-layered Excel system with specialized, industry-specific knowledge built directly into its structure.</p>
+                            <p>Plus, we build in <strong>dynamic automation</strong>. The Excel file is pre-configured with conditional formatting. When a task becomes overdue, the entire row <strong>automatically turns red</strong>. When it's marked complete, it <strong>turns green</strong>. This transforms a static spreadsheet into a live, visual dashboard for managing your operations.</p>
+                        </AccordionContent>
+                    </AccordionItem>
                     <AccordionItem value="item-expertise">
-                        <AccordionTrigger className="text-lg font-semibold text-left">What's the expertise behind your checklists?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">What's the expertise behind your Packs?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                           Our checklists have been curated and vetted by a core panel of over 30 globally experienced industry consultants and veteran leaders—GMs, compliance officers, and heads of security from world-leading organizations. This real-world knowledge is our core difference, ensuring you get proven, field-tested operational wisdom.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-free-comparison">
-                        <AccordionTrigger className="text-lg font-semibold text-left">How are your checklists different from the free templates I find online?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground space-y-4">
-                           <p>That's a crucial question. Free templates are typically simple lists of what to check, designed as lead magnets for expensive software. They give you a starting point, but the hard work of building an operational system is still on you.</p>
-                           <p className="font-semibold text-foreground">MoreMeets is different. We sell the system itself.</p>
-                           <p>Our blueprints are not just lists; they are complete, expert-built operational plans in an editable Excel format. Each task is structured with the critical details free templates miss:</p>
-                           <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Who is responsible</strong> (Role & Department)</li>
-                                <li><strong>When it needs to be done</strong> (Frequency)</li>
-                                <li><strong>How important it is</strong> (Priority & Risk Level)</li>
-                                <li><strong>How to prove it's done</strong> (Proof & Audit Trail)</li>
-                           </ul>
-                            <p>In short, free templates ask the questions. Our blueprints give your team the actionable answers. You're not buying a document; you're buying a ready-to-deploy system that saves you weeks of work and gives you the confidence that every detail is covered from day one.</p>
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-ai-alt">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Why choose these checklists over free templates or automated tools?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                           Because in professional operations, generic advice is dangerous. A single missed step—a detail you won't find in an automated template—can lead to compliance failures, safety incidents, or revenue loss. Our checklists are different. They have been meticulously built and pressure-tested by a panel of over 30 industry veterans who have managed these high-stakes environments.
+                           Our Packs are curated and pressure-tested by a core panel of over 30 globally experienced industry consultants and veteran leaders—General Managers, CISOs, and Heads of Operations from world-leading organizations. You are not buying a document; you are investing in decades of distilled, actionable experience.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-1">
-                        <AccordionTrigger className="text-lg font-semibold text-left">How will I receive the checklists after purchase?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">How will I receive the Pack after purchase?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Instantly. You’ll get access to download the Excel file directly from the confirmation page after payment. A copy of the download link is also sent to your email for safekeeping.
+                            Instantly. After your payment is processed, you’ll get immediate access to download the complete Excel file from the confirmation page. For your convenience, a secure download link is also sent to your email.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Are these checklists editable?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Are the checklists editable?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes, completely. All checklists come in a standard Microsoft Excel file (.xlsx), so you can fully customize them to fit your organization’s specific needs, branding, and workflow.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-3">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Do I need any special software to use these?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            No. The files open in Microsoft Excel, Google Sheets, Apple Numbers, or any compatible spreadsheet software.
+                            Yes, 100% editable. All our Packs come in a standard Microsoft Excel file (.xlsx), giving you the full flexibility to customize them to your exact operational workflow. They also work perfectly with Google Sheets and Apple Numbers.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-4">
                         <AccordionTrigger className="text-lg font-semibold text-left">Will I get future updates?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Absolutely. Each purchase includes lifetime updates. Whenever we improve or add new SOPs to a pack you've purchased, you’ll receive the updated version for free.
+                            Absolutely. Your one-time purchase includes <strong>free lifetime updates</strong>. Whenever we enhance a Pack you've purchased with new SOPs or improved formulas, you will automatically receive the latest version at no extra cost.
                         </AccordionContent>
                     </AccordionItem>
 
                      <AccordionItem value="item-5">
                         <AccordionTrigger className="text-lg font-semibold text-left">Is my payment secure?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes, 100%. We use Razorpay, one of India’s most trusted payment gateways, which is fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers.
+                            Yes, completely. We use industry-leading payment gateways that are fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers, ensuring your payment is secure.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-8">
@@ -228,23 +216,17 @@ const FaqSection = () => (
                             Yes. Your one-time purchase grants you a license to use and replicate the checklists across all teams, branches, and locations within your single organization.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-9">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Can I use these for client projects if I am a consultant?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Yes, consultants often use our packs as a foundational framework for their client engagements. However, the license does not permit reselling, rebranding for resale, or public redistribution of the files.
-                        </AccordionContent>
-                    </AccordionItem>
 
                      <AccordionItem value="item-10">
                         <AccordionTrigger className="text-lg font-semibold text-left">What is your refund policy?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                           Due to the nature of instantly downloadable digital products, all sales are final and we do not offer refunds. However, if you face any technical issues with accessing or downloading your files, our support team will resolve it for you immediately.
+                           Due to the nature of instantly downloadable digital products, all sales are final and we do not offer refunds. We provide comprehensive details on each pack page to help you make an informed decision. If you face any technical issues with your download, our support team will resolve it for you immediately.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-11">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Can I request a custom checklist for my business?</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-left">Can I request a custom Pack for my business?</AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Absolutely. We provide custom checklist and SOP creation services. Please <a href="https://calendly.com/aditi-imran-khan/30min" target="_blank" rel="noopener noreferrer" className="text-primary underline">contact us with your requirements</a>, and our experts will tailor a package specifically for you.
+                            Absolutely. We provide custom SOP creation services for specialized needs. Please <a href="https://calendly.com/aditi-imran-khan/30min" target="_blank" rel="noopener noreferrer" className="text-primary underline">contact us with your requirements</a>, and our experts will tailor a package specifically for you.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-12">
@@ -442,32 +424,32 @@ const WhyDetailMatters = () => {
         {
             icon: <AlertTriangle />,
             title: "One Missed Step Can Cost Everything",
-            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue.",
+            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue. Our checklists provide a verifiable system that turns best practices into daily habits, preventing errors before they happen."
         },
         {
             icon: <Users />,
             title: "Your Team Can't Read Your Mind",
-            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality and a poor customer experience.",
+            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality and a poor customer experience. MoreMeets translates your high standards into clear, actionable steps that anyone on your team can follow, ensuring consistency."
         },
         {
             icon: <Shield />,
             title: "An Auditor's Visit Shouldn't Be Panic",
-            description: "A lack of a documented trail of diligence makes you vulnerable during audits (NABH, JCI, ISO) and inspections.",
+            description: "A lack of a documented trail of diligence makes you vulnerable during audits (NABH, JCI, ISO) and inspections. Our checklists are built by industry veterans who know regulations inside out, providing a clear, documented audit trail that makes you audit-ready, anytime."
         },
          {
             icon: <FileText />,
             title: "You Know You Need SOPs. But Where Do You Start?",
-            description: "The task of creating professional, comprehensive SOPs from scratch is daunting, time-consuming, and often gets postponed indefinitely.",
+            description: "The task of creating professional, comprehensive SOPs from scratch is daunting, time-consuming, and often gets postponed indefinitely. We've done the hard work for you. Our expert-built checklists provide a foundation that is 90% of the way there, saving you weeks of work."
         },
         {
             icon: <BarChart />,
             title: "Stop Managing Problems. Start Building Profit.",
-            description: "Every minute spent fixing preventable errors and dealing with chaos is a minute not spent on growing your business.",
+            description: "Every minute spent fixing preventable errors and dealing with chaos is a minute not spent on growing your business. Our checklists reduce operational friction, freeing your team to innovate, focus on customers, and drive growth."
         },
         {
             icon: <Award />,
             title: "Don't Let Your Business Rely on One Hero",
-            description: "When critical knowledge lives in one indispensable manager's head, your entire operation is at risk when they leave or are unavailable.",
+            description: "When critical knowledge lives in one indispensable manager's head, your entire operation is at risk when they leave or are unavailable. MoreMeets democratizes expertise by creating a scalable system where anyone can operate at a high standard, making your operation resilient."
         }
     ];
 
@@ -486,11 +468,11 @@ const WhyDetailMatters = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {points.map((point, index) => (
                          <Card key={index} className="flex flex-col">
-                            <CardHeader className="flex flex-row items-center gap-4">
-                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <CardHeader className="flex flex-row items-start gap-4">
+                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0 mt-1">
                                     {React.cloneElement(point.icon, { className: "w-6 h-6" })}
                                 </div>
-                                <CardTitle className="text-lg">{point.title}</CardTitle>
+                                <CardTitle className="text-lg leading-tight">{point.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-sm text-muted-foreground">{point.description}</p>
@@ -799,3 +781,4 @@ export default function HomeClientPage() {
   );
 }
 
+    
