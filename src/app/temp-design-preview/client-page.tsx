@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
-import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp } from 'lucide-react';
+import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
@@ -36,55 +36,56 @@ const InteractiveHeroSection = () => {
   const content = painPoints[activePainPoint];
 
   return (
-    <section className="relative w-full h-[80vh] flex items-center justify-center text-white text-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={content.image}
-          alt={content.title}
-          fill
-          className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-          key={content.image}
-          priority
-        />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-      </div>
-
-      <div className="relative z-10 container px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline drop-shadow-lg transition-all duration-300">
+    <section className="w-full bg-secondary/30">
+      <div className="container grid lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 md:py-20">
+        <div className="flex flex-col items-start text-left space-y-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tighter">
             {content.title}
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl mx-auto [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
             {content.description}
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-2 md:gap-4">
+          <div className="flex flex-col sm:flex-row gap-2 w-full">
             {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
               <Button
                 key={key}
                 variant={activePainPoint === key ? 'accent' : 'outline'}
-                className={cn(
-                  "bg-transparent border-2 text-white transition-all duration-300",
-                   activePainPoint === key
-                     ? 'border-accent bg-accent/20'
-                     : 'border-white/50 hover:bg-white/10 hover:border-white'
-                )}
+                className="justify-start text-left w-full sm:w-auto flex-1 py-6 text-base"
                 onClick={() => setActivePainPoint(key)}
               >
-                {key === 'resilience' && 'Build Resilience'}
-                {key === 'error' && 'Eliminate Errors'}
-                {key === 'onboarding' && 'Accelerate Onboarding'}
+                <div className="flex items-center gap-3">
+                  <div className={cn("w-6 h-6 rounded-full border-2 flex items-center justify-center", activePainPoint === key ? "border-accent-foreground" : "border-primary")}>
+                    {activePainPoint === key && <Check className="w-4 h-4 text-accent-foreground" />}
+                  </div>
+                  <span className="font-semibold">
+                    {key === 'resilience' && 'Build Resilience'}
+                    {key === 'error' && 'Eliminate Errors'}
+                    {key === 'onboarding' && 'Accelerate Onboarding'}
+                  </span>
+                </div>
               </Button>
             ))}
           </div>
+        </div>
+        <div className="relative w-full h-80 md:h-[450px] rounded-2xl overflow-hidden shadow-2xl order-first lg:order-last">
+          <Image
+            src={content.image}
+            alt={content.title}
+            fill
+            className="object-cover transition-all duration-500 ease-in-out transform scale-105"
+            key={content.image}
+            priority
+          />
         </div>
       </div>
     </section>
   );
 };
 
+
 // --- Section 2: "From Chaos to Control" Visualization ---
 const ChaosToControlSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
+  <section className="w-full py-16 md:py-24 bg-background">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
@@ -124,7 +125,7 @@ const ChaosToControlSection = () => (
 
 // --- Section 3: "Expertise Extractor" Infographic ---
 const ExpertiseExtractorSection = () => (
-  <section className="w-full py-16 md:py-24">
+  <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <h2 className="text-3xl md:text-4xl font-bold font-headline">Democratize Your Expertise</h2>
@@ -172,9 +173,9 @@ const ExpertiseExtractorSection = () => (
 
 // --- Section 4: "Manager as Coach" Feature Callout ---
 const ManagerAsCoachSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
+  <section className="w-full py-16 md:py-24 bg-background">
     <div className="container px-4 md:px-6">
-      <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-background shadow-lg">
+      <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-secondary/30 shadow-lg border">
         <div className="space-y-4">
           <Badge variant="accent">FOR MANAGERS</Badge>
           <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
@@ -192,26 +193,26 @@ const ManagerAsCoachSection = () => (
               </DialogHeader>
               <div className="prose prose-sm max-w-none text-muted-foreground">
                 <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
-                <h4>How it Works: The "Trainer's Notes" Column</h4>
+                <h4 className="font-semibold text-foreground">How it Works: The "Trainer's Notes" Column</h4>
                 <p>For each critical task in a checklist, we've added a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
                 <ul className="space-y-2">
-                  <li><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</li>
-                  <li><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</li>
-                  <li><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</span></li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</span></li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</span></li>
                 </ul>
-                <h4 className="mt-4">The Result:</h4>
+                <h4 className="mt-4 font-semibold text-foreground">The Result:</h4>
                 <p>You're not just buying a checklist; you're investing in a scalable training system. You turn every routine check into a micro-training session, create more engaged employees, and build a more resilient, intelligent operation.</p>
               </div>
             </DialogContent>
           </Dialog>
         </div>
-        <div className="rounded-lg bg-secondary/50 p-4 border border-dashed">
-            <Image 
+        <div className="rounded-lg overflow-hidden">
+             <Image 
                 src="https://i.postimg.cc/dVP6Kjf5/businessman-businesswoman-cafe-1157-14643.avif"
                 alt="Manager coaching an employee"
                 width={500}
                 height={350}
-                className="rounded-lg object-cover"
+                className="object-cover w-full h-full"
             />
         </div>
       </Card>
