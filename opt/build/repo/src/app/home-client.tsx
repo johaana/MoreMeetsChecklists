@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon, XCircle, CheckCircleIcon } from "lucide-react";
+import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -22,8 +22,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { RotatingText } from "@/components/ui/rotating-text";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
-import { subscribeToBlog } from "@/app/packs/actions";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { subscribeToBlog } from "@/app/blog/actions";
 
 
 const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
@@ -86,88 +85,6 @@ function SubscriptionForm() {
     </form>
   );
 }
-
-
-const WhyDetailMatters = () => {
-  const points = [
-    {
-      problem: "Reliance on memory and individual 'heroes' for critical tasks.",
-      solution: "A verifiable system that democratizes expertise and ensures consistency, regardless of who is on duty.",
-      icon: <Users />
-    },
-    {
-      problem: "Inconsistent quality and service that damages your brand reputation.",
-      solution: "Standardized, actionable steps that translate your high standards into daily habits for every team member.",
-      icon: <Award />
-    },
-    {
-      problem: "Reactive 'firefighting' that consumes management time and resources.",
-      solution: "A proactive framework that reduces operational friction, freeing your team to focus on growth and innovation.",
-      icon: <BarChart />
-    },
-    {
-      problem: "Panic during audits and inspections due to a lack of documented proof.",
-      solution: "An audit-ready system with a clear, documented trail of diligence for every task, making you compliant by default.",
-      icon: <ShieldCheck />
-    },
-    {
-      problem: "The overwhelming task of creating professional SOPs from scratch.",
-      solution: "An expert-built foundation that is 90% of the way there, saving you weeks of work.",
-      icon: <FileText />
-    },
-    {
-      problem: "Preventable errors leading to safety incidents, compliance fines, or revenue loss.",
-      solution: "A system built on global standards (ISO, JCI, HACCP) to prevent failures before they happen.",
-      icon: <AlertTriangle />
-    },
-  ];
-
-  return (
-    <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-      <div className="container px-2 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-            Stop Firefighting. Start Building Excellence.
-          </h2>
-          <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-            In any professional operation, the difference between chaos and control lies in the system. Overlooking details doesn't just lead to mistakes—it creates risk.
-          </p>
-        </div>
-        
-        <Card className="w-full max-w-5xl mx-auto shadow-2xl">
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-1/2 text-lg font-headline text-destructive text-center">The Risk (Without a System)</TableHead>
-                  <TableHead className="w-1/2 text-lg font-headline text-green-600 text-center">The Solution (With MoreMeets)</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {points.map((point, index) => (
-                  <TableRow key={index} className="[&_td]:p-4 [&_td]:md:p-6">
-                    <TableCell className="border-r">
-                      <div className="flex items-start gap-3">
-                         <XCircle className="w-5 h-5 text-destructive shrink-0 mt-1" />
-                         <p className="text-sm md:text-base text-muted-foreground">{point.problem}</p>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                       <div className="flex items-start gap-3">
-                         <CheckCircleIcon className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                         <p className="text-sm md:text-base text-muted-foreground">{point.solution}</p>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  );
-};
 
 
 const HowWeAreDifferentSection = () => (
@@ -520,7 +437,150 @@ const IndividualChecklistsSection = () => {
 };
 
 
+const WhyDetailMatters = () => {
+    const points = [
+        {
+            icon: <AlertTriangle />,
+            title: "One Missed Step Can Cost Everything",
+            description: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue.",
+        },
+        {
+            icon: <Users />,
+            title: "Your Team Can't Read Your Mind",
+            description: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality and a poor customer experience.",
+        },
+        {
+            icon: <Shield />,
+            title: "An Auditor's Visit Shouldn't Be Panic",
+            description: "A lack of a documented trail of diligence makes you vulnerable during audits (NABH, JCI, ISO) and inspections.",
+        },
+         {
+            icon: <FileText />,
+            title: "You Know You Need SOPs. But Where Do You Start?",
+            description: "The task of creating professional, comprehensive SOPs from scratch is daunting, time-consuming, and often gets postponed indefinitely.",
+        },
+        {
+            icon: <BarChart />,
+            title: "Stop Managing Problems. Start Building Profit.",
+            description: "Every minute spent fixing preventable errors and dealing with chaos is a minute not spent on growing your business.",
+        },
+        {
+            icon: <Award />,
+            title: "Don't Let Your Business Rely on One Hero",
+            description: "When critical knowledge lives in one indispensable manager's head, your entire operation is at risk when they leave or are unavailable.",
+        }
+    ];
 
+    return (
+        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-2 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                        Stop Firefighting. Start Building Excellence.
+                    </h2>
+                    <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+                        In any professional operation, the difference between chaos and control lies in the system. Overlooking details doesn't just lead to mistakes—it creates risk.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {points.map((point, index) => (
+                         <Card key={index} className="flex flex-col">
+                            <CardHeader className="flex flex-row items-center gap-4">
+                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0">
+                                    {React.cloneElement(point.icon, { className: "w-6 h-6" })}
+                                </div>
+                                <CardTitle className="text-lg">{point.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm text-muted-foreground">{point.description}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const WhoIsItForSection = () => {
+    const roles = [
+        { icon: <Hospital className="w-8 h-8" />, label: "Hospital GMs" },
+        { icon: <Factory className="w-8 h-8" />, label: "Plant Heads" },
+        { icon: <BuildingIcon className="w-8 h-8" />, label: "Facility Managers" },
+        { icon: <GraduationCap className="w-8 h-8" />, label: "School Principals" },
+        { icon: <Gem className="w-8 h-8" />, label: "Luxury Retailers" },
+        { icon: <CookingPot className="w-8 h-8" />, label: "Restaurant Owners" },
+    ];
+    return (
+        <section className="w-full py-12 md:py-24">
+            <div className="container px-2 md:px-6">
+                <div className="max-w-3xl mx-auto text-center mb-12">
+                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                        Trusted By Professionals in Every Industry
+                    </h2>
+                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                        Our checklists are designed by industry veterans for the specific challenges you face every day.
+                    </p>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 max-w-5xl mx-auto">
+                    {roles.map((role, index) => (
+                        <div key={index} className="flex flex-col items-center text-center gap-3">
+                            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary">
+                                {role.icon}
+                            </div>
+                            <p className="font-semibold text-sm md:text-base">{role.label}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+
+const ValuePropositionSection = () => {
+    const benefits = [
+        {
+            icon: <BadgePercent className="w-6 h-6" />,
+            title: "One-Time Purchase",
+            description: "No recurring subscriptions. Pay once and own it forever.",
+        },
+        {
+            icon: <History className="w-6 h-6" />,
+            title: "Lifetime Updates",
+            description: "Receive all future enhancements and additions to your pack, for free.",
+        },
+        {
+            icon: <Download className="w-6 h-6" />,
+            title: "Instant Download",
+            description: "Get immediate access to your fully editable Excel files after purchase.",
+        },
+        {
+            icon: <Globe className="w-6 h-6" />,
+            title: "Globally Compliant",
+            description: "Checklists are aligned with standards like ISO, JCI, HACCP, and more.",
+        }
+    ];
+
+    return (
+        <section className="w-full py-12 bg-background border-y">
+            <div className="container px-2 md:px-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    {benefits.map((benefit, index) => (
+                        <div key={index} className="flex flex-col items-center gap-2">
+                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                {benefit.icon}
+                            </div>
+                            <h3 className="text-sm md:text-base font-bold">{benefit.title}</h3>
+                            <p className="text-xs md:text-sm text-muted-foreground">{benefit.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
 
 const FeaturedBlogPostsSection = () => {
   const latestPosts = [...blogPosts]
@@ -739,6 +799,3 @@ export default function HomeClientPage() {
   );
 }
 
-    
-
-    
