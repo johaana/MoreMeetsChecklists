@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -13,17 +14,17 @@ const painPoints = {
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
     description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    image: 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg'
+    image: 'https://i.postimg.cc/9fPNknF0/successful-business-team-looking-camera-1262-2017.jpg'
   },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    image: 'https://i.postimg.cc/bJynvr9B/Cybersecurity.webp'
+    image: 'https://i.postimg.cc/YqqkzQ8H/colleagues-safety-equipment-work.jpg'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
     description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    image: 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg'
+    image: 'https://i.postimg.cc/NjKcWYW6/group-people-working-team.jpg'
   }
 };
 
@@ -42,7 +43,8 @@ const InteractiveHeroSection = () => {
           alt={content.title}
           fill
           className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-          key={content.image} 
+          key={content.image}
+          priority
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       </div>
@@ -62,8 +64,8 @@ const InteractiveHeroSection = () => {
                 variant={activePainPoint === key ? 'accent' : 'outline'}
                 className={cn(
                   "bg-transparent border-2 text-white transition-all duration-300",
-                   activePainPoint === key 
-                     ? 'border-accent bg-accent/20' 
+                   activePainPoint === key
+                     ? 'border-accent bg-accent/20'
                      : 'border-white/50 hover:bg-white/10 hover:border-white'
                 )}
                 onClick={() => setActivePainPoint(key)}
@@ -177,20 +179,40 @@ const ManagerAsCoachSection = () => (
           <Badge variant="accent">FOR MANAGERS</Badge>
           <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
           <p className="text-muted-foreground">Our 'Manager's Edition' packs include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
-          <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[625px]">
+              <DialogHeader>
+                <DialogTitle className="font-headline text-2xl">The Manager's Coaching Playbook</DialogTitle>
+                <DialogDescription>
+                  Go beyond compliance. Build a culture of excellence.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="prose prose-sm max-w-none text-muted-foreground">
+                <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
+                <h4>How it Works: The "Trainer's Notes" Column</h4>
+                <p>For each critical task in a checklist, we've added a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
+                <ul className="space-y-2">
+                  <li><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</li>
+                  <li><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</li>
+                  <li><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</li>
+                </ul>
+                <h4 className="mt-4">The Result:</h4>
+                <p>You're not just buying a checklist; you're investing in a scalable training system. You turn every routine check into a micro-training session, create more engaged employees, and build a more resilient, intelligent operation.</p>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
         <div className="rounded-lg bg-secondary/50 p-4 border border-dashed">
-          <p className="text-sm font-semibold">Example: "Trainer's Notes" Column</p>
-          <div className="mt-2 space-y-2">
-            <div className="bg-background p-2 rounded-md">
-                <p className="font-mono text-xs">**Task:** Check for allergen cross-contamination.</p>
-                <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Show the new hire the separate color-coded boards. Explain the Pret a Manger case study to reinforce why a simple mistake here can be fatal and business-ending."</p>
-            </div>
-            <div className="bg-background p-2 rounded-md">
-                <p className="font-mono text-xs">**Task:** Verify LOTO on machine #3.</p>
-                <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Ask the employee: 'What is the biggest risk if we forget this step?' Ensure they understand this prevents someone from being crushed."</p>
-            </div>
-          </div>
+            <Image 
+                src="https://i.postimg.cc/dVP6Kjf5/businessman-businesswoman-cafe-1157-14643.avif"
+                alt="Manager coaching an employee"
+                width={500}
+                height={350}
+                className="rounded-lg object-cover"
+            />
         </div>
       </Card>
     </div>
@@ -208,5 +230,3 @@ export default function TempDesignClientPage() {
         </main>
     );
 }
-
-    
