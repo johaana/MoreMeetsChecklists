@@ -30,7 +30,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
     const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
     const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true, horizontal: 'center' } };
-    const dateStyle = { numFmt: 'dd-mmm-yy' };
+    const dateStyle = { numFmt: 'dd-mm-yyyy' };
     
     // --- CONDITIONAL FORMATTING ---
     const overdueFill = { fgColor: { rgb: "FFC7CE" } };
@@ -85,7 +85,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
         [],
         [{ v: 'Quick Start Guide', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{ v: '1. Update ONLY ONE Column', t: 's', s: instructionTitleStyle }, { v: "Find your task. When it's done, enter the completion date in the 'Date Completed (dd-mmm-yy)' column. This is the only column you ever need to edit.", t: 's', s: instructionBodyStyle }],
+        [{ v: '1. Update ONLY ONE Column', t: 's', s: instructionTitleStyle }, { v: "Find your task. When it's done, enter the completion date in the 'Date Completed (dd-mm-yyyy)' column. This is the only column you ever need to edit.", t: 's', s: instructionBodyStyle }],
         [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status' and 'Next Due Date' columns will update automatically. Completed tasks turn GREEN. Overdue tasks turn RED.", t: 's', s: instructionBodyStyle }],
         [{ v: '3. Add Context (If Needed)', t: 's', s: instructionTitleStyle }, { v: "Use the 'Notes' column for important context, like 'Delayed - Awaiting Parts' or 'Not Applicable this month'.", t: 's', s: instructionBodyStyle }],
         [],
@@ -156,7 +156,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const headerEndCol = 'M';
         const wsData: any[][] = [
             [{v: checklist.title, s: titleStyle}], [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mmm-yy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
+            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
         ];
 
         checklist.tasks.forEach((task, index) => {
@@ -184,7 +184,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         const ws = utils.aoa_to_sheet(wsData);
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
         ws['!rows'] = [{ hpt: 30 }];
-        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 20, 25, 20, 30]);
+        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 25, 25, 25, 30]);
         const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3', 'L3', 'M3'];
         headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = headerStyle; });
         
@@ -192,8 +192,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
 
         for (let R = 3; R <= range.e.r; ++R) {
             const dateCellJ = utils.encode_cell({c: 9, r: R});
-            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mmm-yy'};
-            else ws[dateCellJ].z = 'dd-mmm-yy';
+            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mm-yyyy'};
+            else ws[dateCellJ].z = 'dd-mm-yyyy';
 
             const dateCellL = utils.encode_cell({c: 11, r: R});
             if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
