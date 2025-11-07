@@ -73,16 +73,9 @@ const InteractiveHeroSection = () => {
 
  if (isMobile) {
     return (
-      <section className="w-full relative bg-primary text-primary-foreground py-24 md:py-32">
-        <Image
-          src="https://i.postimg.cc/H8nM3YmH/office-tension-team.jpg"
-          alt="Team solving operational challenges"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
-        <div className="relative z-10 container px-4 text-left">
-          <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+      <section className="w-full bg-background text-foreground py-16">
+        <div className="container px-4 text-left">
+           <h1 className="text-4xl font-extrabold font-headline tracking-tight">
             <span>The Professional Standard for</span>
             <AnimatePresence mode="wait">
               <motion.span
@@ -97,8 +90,8 @@ const InteractiveHeroSection = () => {
               </motion.span>
             </AnimatePresence>
           </h1>
-          <p className="text-base text-primary-foreground/80 max-w-xl mt-4">
-            For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+          <p className="text-lg text-muted-foreground max-w-xl mt-6">
+             For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
           </p>
           <div className="pt-8">
             <Button size="lg" asChild className="group" variant="accent">
@@ -202,7 +195,7 @@ const ChaosToControlSection = () => (
             <CardDescription>Relying on memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
-             <div className="block md:hidden rounded-lg overflow-hidden mb-4">
+             <div className="rounded-lg overflow-hidden mb-4">
               <Image 
                   src="https://i.postimg.cc/28RJCB3L/stressed-out-team-small.webp"
                   alt="Stressed team in a chaotic office"
@@ -224,6 +217,15 @@ const ChaosToControlSection = () => (
             <CardDescription>A system of record that ensures excellence every time.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-foreground">
+              <div className="rounded-lg overflow-hidden mb-4">
+              <Image 
+                  src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
+                  alt="Calm, happy professional in control of their work"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-auto"
+              />
+            </div>
              <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making the operation resilient.</span></p>
