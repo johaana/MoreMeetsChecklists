@@ -70,22 +70,36 @@ const InteractiveHeroSection = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+ if (!isClient) {
+    // Render a skeleton or null during SSR to avoid hydration mismatch
+    return null;
+  }
+
  if (isMobile) {
     return (
       <section className="w-full bg-background text-foreground py-16">
         <div className="container px-4 text-left">
-           <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+          <h1 className="text-4xl font-extrabold font-headline tracking-tight min-h-[9rem] md:min-h-0">
                 The Professional Standard for
                 <br />
-                <span className="text-accent inline-block min-h-[3rem]">
-                    {isClient ? currentWord : rotatingWords[0]}
-                </span>
+                 <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentWord}
+                      className="text-accent inline-block"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                  >
+                      {currentWord}
+                  </motion.span>
+              </AnimatePresence>
             </h1>
           <p className="text-lg text-muted-foreground max-w-xl mt-4">
-             For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+             Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
           </p>
-          <div className="pt-6">
-            <Button size="lg" asChild className="group" variant="accent">
+          <div className="pt-8">
+            <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
               <Link href="/packs">
                 Explore All Packages
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
