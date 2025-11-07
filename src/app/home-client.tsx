@@ -48,6 +48,7 @@ const InteractiveHeroSection = () => {
   const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
   const content = painPoints[activePainPoint];
   const isMobile = useIsMobile();
+  const [isClient, setIsClient] = useState(false);
 
   const rotatingWords = [
     "Operational Resilience.",
@@ -55,48 +56,47 @@ const InteractiveHeroSection = () => {
     "Accelerated Onboarding.",
   ];
   const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
     const intervalId = setInterval(() => {
-        setCurrentWord(prev => {
-            const currentIndex = rotatingWords.indexOf(prev);
-            const nextIndex = (currentIndex + 1) % rotatingWords.length;
-            return rotatingWords[nextIndex];
-        });
+      setCurrentWord(prev => {
+        const currentIndex = rotatingWords.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % rotatingWords.length;
+        return rotatingWords[nextIndex];
+      });
     }, 3000);
-
     return () => clearInterval(intervalId);
   }, []);
 
- if (!isClient) {
-    // Render a skeleton or null during SSR to avoid hydration mismatch
-    return null;
+  if (!isClient) {
+    // Render a placeholder or null during SSR to avoid hydration mismatch
+    return <section className="w-full py-16 bg-background h-[60vh] md:h-auto"></section>;
   }
 
- if (isMobile) {
+  if (isMobile) {
     return (
       <section className="w-full bg-background text-foreground py-16">
         <div className="container px-4 text-left">
-          <h1 className="text-4xl font-extrabold font-headline tracking-tight min-h-[9rem] md:min-h-0">
-                The Professional Standard for
-                <br />
-                 <AnimatePresence mode="wait">
-                    <motion.span
-                      key={currentWord}
-                      className="text-accent inline-block"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -20, opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                  >
-                      {currentWord}
-                  </motion.span>
+          <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+            The Professional Standard for
+            <br />
+            <span className="text-accent inline-block h-12">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentWord}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {currentWord}
+                </motion.span>
               </AnimatePresence>
-            </h1>
+            </span>
+          </h1>
           <p className="text-lg text-muted-foreground max-w-xl mt-4">
-             Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
+            Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
           </p>
           <div className="pt-8">
             <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -124,57 +124,57 @@ const InteractiveHeroSection = () => {
                 {content.description}
               </p>
             </div>
-             <div className="relative flex flex-col rounded-lg p-1.5 bg-muted shadow-inner">
-                <motion.div
-                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
-                    initial={false}
-                    animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                />
-                <div className="flex">
-                    {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
-                        <Button
-                        key={key}
-                        variant="ghost"
-                        className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
-                        onClick={() => setActivePainPoint(key)}
-                        >
-                        <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
-                            {key === 'resilience' && 'Build Resilience'}
-                            {key === 'error' && 'Eliminate Errors'}
-                            {key === 'onboarding' && 'Accelerate Onboarding'}
-                        </span>
-                        </Button>
-                    ))}
-                </div>
+            <div className="relative flex flex-col rounded-lg p-1.5 bg-muted shadow-inner">
+              <motion.div
+                className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                initial={false}
+                animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              />
+              <div className="flex">
+                {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                  <Button
+                    key={key}
+                    variant="ghost"
+                    className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
+                    onClick={() => setActivePainPoint(key)}
+                  >
+                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                      {key === 'resilience' && 'Build Resilience'}
+                      {key === 'error' && 'Eliminate Errors'}
+                      {key === 'onboarding' && 'Accelerate Onboarding'}
+                    </span>
+                  </Button>
+                ))}
+              </div>
             </div>
-             <div className="pt-4">
-                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                    <Link href="/packs">
-                        Explore All Packages
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
+            <div className="pt-4">
+              <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                <Link href="/packs">
+                  Explore All Packages
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
             </div>
           </div>
           <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
-             <AnimatePresence>
-                <motion.div
-                    key={content.image}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0"
-                >
-                    <Image
-                        src={content.image}
-                        alt={content.title}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                </motion.div>
+            <AnimatePresence>
+              <motion.div
+                key={content.image}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={content.image}
+                  alt={content.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
             </AnimatePresence>
           </div>
         </div>
@@ -627,3 +627,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
