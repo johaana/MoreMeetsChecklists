@@ -21,6 +21,8 @@ import { Input } from "@/components/ui/input";
 import { subscribeToBlog } from "@/app/blog/actions";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const painPoints = {
   resilience: {
@@ -46,6 +48,67 @@ type PainPointKey = keyof typeof painPoints;
 const InteractiveHeroSection = () => {
   const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
   const content = painPoints[activePainPoint];
+  const isMobile = useIsMobile();
+
+  const rotatingWords = [
+    "Operational Resilience.",
+    "Error-Free Compliance.",
+    "Accelerated Onboarding.",
+  ];
+  const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    const intervalId = setInterval(() => {
+        setCurrentWord(prev => {
+            const currentIndex = rotatingWords.indexOf(prev);
+            const nextIndex = (currentIndex + 1) % rotatingWords.length;
+            return rotatingWords[nextIndex];
+        });
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+  if (isMobile) {
+    return (
+       <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+        <div className="container px-4">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight h-28 md:h-24">
+                  The Professional Standard for
+                  <br />
+                  <AnimatePresence mode="wait">
+                        <motion.span
+                          key={currentWord}
+                          className="text-accent inline-block"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -20, opacity: 0 }}
+                          transition={{ duration: 0.4 }}
+                      >
+                          {isClient ? currentWord : rotatingWords[0]}
+                      </motion.span>
+                  </AnimatePresence>
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto mt-4">
+                  Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
+              </p>
+               <div className="pt-8">
+                  <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                      <Link href="/packs">
+                          Explore All Packages
+                          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                  </Button>
+              </div>
+            </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
@@ -60,20 +123,27 @@ const InteractiveHeroSection = () => {
                 {content.description}
               </p>
             </div>
-            <div className="flex flex-col md:flex-row gap-3">
-              {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
-                <Button
-                  key={key}
-                  size="lg"
-                  variant={activePainPoint === key ? 'default' : 'outline'}
-                  className="justify-center md:justify-start"
-                  onClick={() => setActivePainPoint(key)}
-                >
-                  {key === 'resilience' && 'Build Resilience'}
-                  {key === 'error' && 'Eliminate Errors'}
-                  {key === 'onboarding' && 'Accelerate Onboarding'}
-                </Button>
-              ))}
+             <div className="relative flex flex-col rounded-lg p-1.5 bg-muted shadow-inner">
+                <div
+                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-12px)] bg-background rounded-md shadow-sm transition-transform duration-300 ease-in-out"
+                    style={{ transform: `translateX(${Object.keys(painPoints).indexOf(activePainPoint) * 100}%)` }}
+                />
+                <div className="flex">
+                    {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                        <Button
+                        key={key}
+                        variant="ghost"
+                        className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
+                        onClick={() => setActivePainPoint(key)}
+                        >
+                        <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                            {key === 'resilience' && 'Build Resilience'}
+                            {key === 'error' && 'Eliminate Errors'}
+                            {key === 'onboarding' && 'Accelerate Onboarding'}
+                        </span>
+                        </Button>
+                    ))}
+                </div>
             </div>
              <div className="pt-4">
                 <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -85,14 +155,24 @@ const InteractiveHeroSection = () => {
             </div>
           </div>
           <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src={content.image}
-              alt={content.title}
-              fill
-              className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-              key={content.image}
-              priority
-            />
+             <AnimatePresence>
+                <motion.div
+                    key={content.image}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0"
+                >
+                    <Image
+                        src={content.image}
+                        alt={content.title}
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
@@ -245,6 +325,12 @@ function SubscriptionForm() {
   const [loading, setLoading] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
   const { toast } = useToast();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -267,6 +353,15 @@ function SubscriptionForm() {
     }
     setLoading(false);
   };
+
+  if (!isClient) {
+    return (
+       <div className="flex flex-col sm:flex-row gap-2 w-full max-w-md h-10">
+          <div className="bg-gray-200 animate-pulse rounded-md w-2/3"></div>
+          <div className="bg-gray-200 animate-pulse rounded-md w-1/3"></div>
+      </div>
+    )
+  }
 
   if (submitted) {
     return (
@@ -469,11 +564,6 @@ const FeaturedBlogPostsSection = () => {
 
 export default function HomeClientPage() {
   const featuredPacks = premiumPacks.filter(p => p.bestseller);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -481,14 +571,6 @@ export default function HomeClientPage() {
       <main className="flex-1">
         
         <InteractiveHeroSection />
-
-         <section className="w-full py-12 bg-secondary/30 border-y">
-            <div className="container px-2 md:px-6 text-center">
-                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
-                    Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
-                </h2>
-            </div>
-        </section>
 
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
@@ -509,7 +591,7 @@ export default function HomeClientPage() {
                  <div className="max-w-2xl mx-auto flex flex-col items-center gap-6 p-8 border rounded-2xl bg-secondary/50">
                     <h3 className="font-bold text-center text-2xl font-headline text-primary">The Most Valuable Newsletter in Operations.</h3>
                     <p className="text-center text-muted-foreground">One insight per edition that could save your company millions. Straight to your inbox.</p>
-                    {isClient && <SubscriptionForm />}
+                    <SubscriptionForm />
                 </div>
             </div>
         </section>
