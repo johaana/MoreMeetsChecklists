@@ -28,7 +28,7 @@ const painPoints = {
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
     description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    image: 'https://i.postimg.cc/zfYc0r5h/business-people-looking-camera-with-arms-crossed-13339-169896.jpg'
+    image: 'https://i.postimg.cc/X7HWHXD4/ops1.jpg'
   },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
@@ -38,7 +38,7 @@ const painPoints = {
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
     description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    image: 'https://i.postimg.cc/K812dFdJ/people-creating-new-project.jpg'
+    image: 'https://i.postimg.cc/dVP6Kjf5/businessman-businesswoman-cafe-1157-14643.avif'
   }
 };
 
