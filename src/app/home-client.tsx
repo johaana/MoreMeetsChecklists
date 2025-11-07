@@ -71,45 +71,46 @@ const InteractiveHeroSection = () => {
   }, []);
 
 
-  if (isMobile) {
+ if (isMobile) {
     return (
-       <section className="w-full relative bg-primary text-primary-foreground py-16">
+      <section className="w-full relative bg-primary text-primary-foreground py-24 md:py-32">
         <Image
-            src="https://i.postimg.cc/YqqkzQ8H/colleagues-safety-equipment-work.jpg"
-            alt="Operational excellence"
-            fill
-            className="object-cover opacity-20"
+          src="https://i.postimg.cc/H8nM3YmH/office-tension-team.jpg"
+          alt="Team solving operational challenges"
+          fill
+          className="object-cover opacity-20"
+          priority
         />
         <div className="relative z-10 container px-4 text-left">
-            <h1 className="text-4xl font-extrabold font-headline tracking-tight">
-              <span>The Professional Standard for</span>
-                <AnimatePresence mode="wait">
-                    <motion.span
-                        key={currentWord}
-                        className="text-accent inline-block"
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                    >
-                        {isClient ? currentWord : rotatingWords[0]}
-                    </motion.span>
-                </AnimatePresence>
-            </h1>
-            <p className="text-base text-primary-foreground/80 max-w-xl mt-4">
-              For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-            </p>
-            <div className="pt-6">
-                <Button size="lg" asChild className="group" variant="accent">
-                    <Link href="/packs">
-                        Explore All Packages
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
-            </div>
+          <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+            <span>The Professional Standard for</span>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentWord}
+                className="text-accent inline-block"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                {isClient ? currentWord : rotatingWords[0]}
+              </motion.span>
+            </AnimatePresence>
+          </h1>
+          <p className="text-base text-primary-foreground/80 max-w-xl mt-4">
+            For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+          </p>
+          <div className="pt-8">
+            <Button size="lg" asChild className="group" variant="accent">
+              <Link href="/packs">
+                Explore All Packages
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -201,6 +202,15 @@ const ChaosToControlSection = () => (
             <CardDescription>Relying on memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
+             <div className="block md:hidden rounded-lg overflow-hidden mb-4">
+              <Image 
+                  src="https://i.postimg.cc/28RJCB3L/stressed-out-team-small.webp"
+                  alt="Stressed team in a chaotic office"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-auto"
+              />
+            </div>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone remember to check the fire exits?"</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
