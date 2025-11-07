@@ -80,7 +80,7 @@ const InteractiveHeroSection = () => {
             fill
             className="object-cover opacity-20"
         />
-        <div className="relative z-10 container px-4 py-20">
+        <div className="relative z-10 container px-4 py-16">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-extrabold font-headline tracking-tight flex flex-col justify-center min-h-[9rem]">
                   <span>The Professional Standard for</span>
@@ -612,4 +612,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
