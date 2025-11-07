@@ -70,30 +70,21 @@ const InteractiveHeroSection = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-
  if (isMobile) {
     return (
       <section className="w-full bg-background text-foreground py-16">
         <div className="container px-4 text-left">
            <h1 className="text-4xl font-extrabold font-headline tracking-tight">
-            <span>The Professional Standard for</span>
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentWord}
-                className="text-accent inline-block"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {isClient ? currentWord : rotatingWords[0]}
-              </motion.span>
-            </AnimatePresence>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mt-6">
+                The Professional Standard for
+                <br />
+                <span className="text-accent inline-block min-h-[3rem]">
+                    {isClient ? currentWord : rotatingWords[0]}
+                </span>
+            </h1>
+          <p className="text-lg text-muted-foreground max-w-xl mt-4">
              For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
           </p>
-          <div className="pt-8">
+          <div className="pt-6">
             <Button size="lg" asChild className="group" variant="accent">
               <Link href="/packs">
                 Explore All Packages
