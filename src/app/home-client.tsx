@@ -74,10 +74,10 @@ const InteractiveHeroSection = () => {
 
   if (isMobile) {
     return (
-       <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+       <section className="w-full py-20 bg-background">
         <div className="container px-4">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight min-h-28 md:min-h-24 flex flex-col justify-center">
+              <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight flex flex-col justify-center min-h-[7rem]">
                   <span>The Professional Standard for</span>
                   <AnimatePresence mode="wait">
                         <motion.span
@@ -92,10 +92,10 @@ const InteractiveHeroSection = () => {
                       </motion.span>
                   </AnimatePresence>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto mt-4">
-                  Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto mt-6">
+                 From operational resilience to global compliance, our expert-built SOP checklists provide the definitive framework for turning your fragile processes into strengths.
               </p>
-               <div className="pt-8">
+               <div className="pt-10">
                   <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
                       <Link href="/packs">
                           Explore All Packages
@@ -570,6 +570,14 @@ export default function HomeClientPage() {
       <main className="flex-1">
         
         <InteractiveHeroSection />
+
+         <section className="w-full py-12 bg-secondary/30 border-y">
+            <div className="container px-2 md:px-6 text-center">
+                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
+                    Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
+                </h2>
+            </div>
+        </section>
 
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
