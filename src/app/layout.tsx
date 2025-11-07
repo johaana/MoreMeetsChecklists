@@ -8,12 +8,12 @@ import Script from 'next/script';
 
 
 const siteUrl = 'https://www.moremeets.com';
-const heroImageUrl = 'https://i.postimg.cc/sQHHL4nm/office1.jpg';
 const siteTitle = 'MoreMeets: Professional Operational Checklists & SOPs';
 const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
-
+const ogImageUrl = `${siteUrl}/api/og`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: siteTitle,
   description: siteDescription,
   openGraph: {
@@ -23,10 +23,10 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: heroImageUrl,
+        url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: 'MoreMeets Hero Image: Operational Excellence Checklists',
+        alt: siteTitle,
       },
     ],
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteTitle,
     description: siteDescription,
-    images: [heroImageUrl],
+    images: [ogImageUrl],
   },
   icons: {
     icon: '/favicon.ico',

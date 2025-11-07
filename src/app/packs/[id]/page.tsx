@@ -1,5 +1,4 @@
 
-
 import { notFound } from 'next/navigation';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -53,25 +52,28 @@ export async function generateMetadata(
     };
   }
   
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const title = `${pack.title} - Excel SOP Templates | MoreMeets`;
   const description = `Download the complete ${pack.title}. Includes ${pack.checklists.length} expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
-
-  const heroImageUrl = packImageMap[id] || defaultHeroImageUrl;
-  const openGraphImages = heroImageUrl ? [{ url: heroImageUrl, width: 1200, height: 630, alt: `${pack.title} Preview` }] : [];
+  
+  const ogUrl = new URL(`${siteUrl}/api/og`);
+  ogUrl.searchParams.set('type', 'pack');
+  ogUrl.searchParams.set('id', pack.id);
 
   return {
+    metadataBase: new URL(siteUrl),
     title: title,
     description: description,
     openGraph: {
       title: title,
       description: description,
-      images: openGraphImages,
+      images: [{ url: ogUrl.toString(), width: 1200, height: 630, alt: title }],
     },
      twitter: {
       card: 'summary_large_image',
       title: title,
       description: description,
-      images: openGraphImages.map(img => img.url),
+      images: [ogUrl.toString()],
     },
   }
 }
@@ -86,12 +88,17 @@ export default function Page({ params }: { params: { id: string } }) {
   
   const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
+  const ogUrl = new URL(`${siteUrl}/api/og`);
+  ogUrl.searchParams.set('type', 'pack');
+  ogUrl.searchParams.set('id', pack.id);
+  
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: pack.title,
     description: `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`,
-    image: heroImageUrl,
+    image: ogUrl.toString(),
     brand: {
       '@type': 'Brand',
       name: 'MoreMeets',
@@ -114,4 +121,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </>
   );
 }
-

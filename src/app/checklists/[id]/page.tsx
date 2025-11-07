@@ -1,5 +1,4 @@
 
-
 import { notFound } from 'next/navigation';
 import { individualChecklists } from '@/lib/individual-checklists';
 import type { Metadata } from 'next';
@@ -31,30 +30,28 @@ export async function generateMetadata(
     };
   }
   
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const title = `${checklist.title} Template (Excel) | MoreMeets`;
   const description = `Download the ${checklist.title}. This expert-crafted SOP checklist for ${checklist.category} professionals helps you solve specific operational challenges.`;
-  const heroImageUrl = checklistImageMap[id] || defaultHeroImageUrl;
+  
+  const ogUrl = new URL(`${siteUrl}/api/og`);
+  ogUrl.searchParams.set('type', 'checklist');
+  ogUrl.searchParams.set('id', checklist.id);
 
   return {
+    metadataBase: new URL(siteUrl),
     title: title,
     description: description,
     openGraph: {
       title: title,
       description: description,
-      images: [
-        {
-          url: heroImageUrl,
-          width: 1200,
-          height: 630,
-          alt: checklist.title,
-        },
-      ],
+      images: [{ url: ogUrl.toString(), width: 1200, height: 630, alt: title }],
     },
      twitter: {
       card: 'summary_large_image',
       title: title,
       description: description,
-      images: [heroImageUrl],
+      images: [ogUrl.toString()],
     },
   }
 }
@@ -66,14 +63,17 @@ export default function Page({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  const heroImageUrl = checklistImageMap[params.id] || defaultHeroImageUrl;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
+  const ogUrl = new URL(`${siteUrl}/api/og`);
+  ogUrl.searchParams.set('type', 'checklist');
+  ogUrl.searchParams.set('id', checklist.id);
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: checklist.title,
     description: checklist.description,
-    image: heroImageUrl,
+    image: ogUrl.toString(),
     brand: {
       '@type': 'Brand',
       name: 'MoreMeets',
