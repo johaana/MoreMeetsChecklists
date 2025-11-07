@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
-import "./globals.css";
+import "@/app/globals.css";
 import { cn } from '@/lib/utils';
 import { Inter, Poppins } from 'next/font/google';
 import Script from 'next/script';
@@ -67,6 +67,14 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
+      <body className={cn(
+        "min-h-screen bg-background font-body antialiased",
+        mainFont.variable,
+        headlineFont.variable,
+      )}>
+        {children}
+        <Toaster />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -83,14 +91,9 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className={cn(
-        "min-h-screen bg-background font-body antialiased",
-        mainFont.variable,
-        headlineFont.variable,
-      )}>
-        {children}
-        <Toaster />
+        {/* Start of HubSpot Embed Code */}
+        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244305680.js"></script>
+        {/* End of HubSpot Embed Code */}
       </body>
     </html>
   );
