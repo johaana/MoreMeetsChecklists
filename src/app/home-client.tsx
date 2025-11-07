@@ -93,7 +93,7 @@ const InteractiveHeroSection = () => {
                   </AnimatePresence>
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto mt-6">
-                 From operational resilience to global compliance, our expert-built SOP checklists provide the definitive framework for turning your fragile processes into strengths.
+                 For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
               </p>
                <div className="pt-10">
                   <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -123,9 +123,11 @@ const InteractiveHeroSection = () => {
               </p>
             </div>
              <div className="relative flex flex-col rounded-lg p-1.5 bg-muted shadow-inner">
-                <div
-                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-12px)] bg-background rounded-md shadow-sm transition-transform duration-300 ease-in-out"
-                    style={{ transform: `translateX(${Object.keys(painPoints).indexOf(activePainPoint) * 100}%)` }}
+                <motion.div
+                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                    initial={false}
+                    animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
                 <div className="flex">
                     {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
@@ -571,14 +573,6 @@ export default function HomeClientPage() {
         
         <InteractiveHeroSection />
 
-         <section className="w-full py-12 bg-secondary/30 border-y">
-            <div className="container px-2 md:px-6 text-center">
-                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
-                    Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
-                </h2>
-            </div>
-        </section>
-
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
         <ManagerAsCoachSection />
@@ -608,3 +602,4 @@ export default function HomeClientPage() {
   );
 }
 
+    
