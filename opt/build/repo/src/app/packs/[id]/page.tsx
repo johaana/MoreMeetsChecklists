@@ -9,6 +9,35 @@ type Props = {
   params: { id: string }
 }
 
+const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+
+const packImageMap: Record<string, string> = {
+  'film_production_pack': 'https://i.postimg.cc/zvqmVdT5/movie-production-1.jpg',
+  'ott_platform_pack': 'https://i.postimg.cc/90c3rxyh/ott-platforms.webp',
+  'sports_clubs_stadium_operations_pack': 'https://i.postimg.cc/WpYSfqRk/sports-club-management.jpg',
+  'fitness_centers_gyms_pack': 'https://i.postimg.cc/mDyrvM7x/gym-2.jpg',
+  'cinema_operations_pack': 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
+  'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
+  'healthcare_and_hospital_operations': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
+  'facility_management_blueprint': 'https://i.postimg.cc/9fnbtT36/facility-management.webp',
+  'animal_shelter_pack': 'https://i.postimg.cc/hPrThfgt/animal-shelter-1.jpg',
+  'hotels_and_resorts': defaultHeroImageUrl,
+  'restaurants': 'https://i.postimg.cc/9QRtnf3Z/food1.jpg',
+  'jewelry_and_luxury_retail': 'https://i.postimg.cc/LX3xVv9R/jewelry-retail2.jpg',
+  'fashion_and_apparel_retail': 'https://i.postimg.cc/L5MzcDw7/fashion-retail.webp',
+  'school_operations_pack': 'https://i.postimg.cc/hGC6S2JD/school1.jpg',
+  'university_college_ops': 'https://i.postimg.cc/FKP89TYW/college.jpg',
+  'logistics_warehouse_pack': 'https://i.postimg.cc/6qQ1FnWm/logistics.webp',
+  'manufacturing_operations_ehs_pack': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
+  'food_manufacturing_ops': 'https://i.postimg.cc/kGhhCGDM/manufacturing.jpg',
+  'supermarket_grocery_retail_pack': 'https://i.postimg.cc/L63xxv8M/supermarket-main.webp',
+  'electronics_showroom_pack': 'https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg',
+  'theme_park_ops_pack': 'https://i.postimg.cc/Wz6MTrcB/theme-park.jpg',
+  'corporate_legal_compliance_starter_kit': 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg',
+  'enterprise_risk_cybersecurity_pack': 'https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp'
+};
+
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -56,6 +85,8 @@ export default function Page({ params }: { params: { id: string } }) {
   if (!pack) {
     notFound();
   }
+  
+  const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const ogUrl = new URL(`${siteUrl}/api/og`);
@@ -86,7 +117,7 @@ export default function Page({ params }: { params: { id: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PackClientPage pack={pack} />
+      <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
     </>
   );
 }
