@@ -77,9 +77,8 @@ const InteractiveHeroSection = () => {
        <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
         <div className="container px-4">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight h-28 md:h-24">
-                  The Professional Standard for
-                  <br />
+              <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight min-h-28 md:min-h-24 flex flex-col justify-center">
+                  <span>The Professional Standard for</span>
                   <AnimatePresence mode="wait">
                         <motion.span
                           key={currentWord}
@@ -600,3 +599,4 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
