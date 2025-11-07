@@ -4,18 +4,14 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, DownloadCloud, Layers, HandCoins, Shield, TrendingUp, AlertTriangle, Users, GitBranch, Search, Lock, Award, Briefcase, BarChart, HardHat, CookingPot, Hospital, Factory, ShieldCheck, FileQuestion, Recycle, Leaf, Globe, BadgeCheck, Repeat, Download, History, BadgePercent, Mail, Loader2, CheckCircle, GraduationCap, Gem, Building as BuildingIcon, Zap } from "lucide-react";
-import { testimonials } from "@/lib/testimonials";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import React from 'react';
+import { Check, Star, ArrowRight, FileText, Layers, Shield, Users, Award, BarChart, Hospital, Factory, GraduationCap, Gem, CookingPot, Building as BuildingIcon, Zap, BrainCircuit, Mail, Loader2, CheckCircle, BadgePercent, History, Download, Globe, AlertTriangle } from "lucide-react";
+import React, { useState } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { premiumPacks, type PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
-import { individualChecklists } from "@/lib/individual-checklists";
 import { blogPosts } from "@/lib/blog-posts";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
@@ -23,9 +19,226 @@ import { RotatingText } from "@/components/ui/rotating-text";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { subscribeToBlog } from "@/app/blog/actions";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { cn } from "@/lib/utils";
+
+const painPoints = {
+  resilience: {
+    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
+    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
+    image: 'https://i.postimg.cc/X7HWHXD4/ops1.jpg'
+  },
+  error: {
+    title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
+    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
+    image: 'https://i.postimg.cc/YqqkzQ8H/colleagues-safety-equipment-work.jpg'
+  },
+  onboarding: {
+    title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
+    description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
+    image: 'https://i.postimg.cc/K812dFdJ/people-creating-new-project.jpg'
+  }
+};
+
+type PainPointKey = keyof typeof painPoints;
+
+// --- Section 1: The Interactive "Pain Point" Hero ---
+const InteractiveHeroSection = () => {
+  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+  const content = painPoints[activePainPoint];
+
+  return (
+    <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+      <div className="container px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
+                {content.title}
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-xl">
+                {content.description}
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                <Button
+                  key={key}
+                  size="lg"
+                  variant={activePainPoint === key ? 'default' : 'outline'}
+                  className="justify-start"
+                  onClick={() => setActivePainPoint(key)}
+                >
+                  {key === 'resilience' && 'Build Resilience'}
+                  {key === 'error' && 'Eliminate Errors'}
+                  {key === 'onboarding' && 'Accelerate Onboarding'}
+                </Button>
+              ))}
+            </div>
+             <div className="pt-4">
+                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
+            </div>
+          </div>
+          <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src={content.image}
+              alt={content.title}
+              fill
+              className="object-cover transition-all duration-500 ease-in-out transform scale-105"
+              key={content.image}
+              priority
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 
-const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
+// --- Section 2: "From Chaos to Control" Visualization ---
+const ChaosToControlSection = () => (
+  <section className="w-full py-16 md:py-24 bg-secondary/30">
+    <div className="container px-4 md:px-6">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to a Structured System</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your fragile, person-dependent processes into a reliable, verifiable system of record.</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        {/* Before */}
+        <Card className="border-destructive/50 border-2">
+          <CardHeader>
+            <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardDescription>Relying on memory, verbal instructions, and hope.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-muted-foreground">
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone remember to check the fire exits?"</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
+          </CardContent>
+        </Card>
+        {/* After */}
+        <Card className="border-primary/50 border-2 bg-background shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
+            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-foreground">
+             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making the operation resilient.</span></p>
+            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+);
+
+
+// --- Section 3: "Expertise Extractor" Infographic ---
+const ExpertiseExtractorSection = () => (
+  <section className="w-full py-16 md:py-24">
+    <div className="container px-4 md:px-6">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">Democratize Your Expertise</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">Our system extracts the wisdom of your best people and distributes it across your entire team, creating a consistent standard of excellence.</p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-4 items-center text-center max-w-4xl mx-auto">
+        {/* Step 1 */}
+        <div className="flex flex-col items-center p-4">
+          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
+            <BrainCircuit className="w-10 h-10" />
+          </div>
+          <h3 className="font-bold font-headline">1. Codify Expertise</h3>
+          <p className="text-sm text-muted-foreground">The unwritten knowledge of your best manager is captured in a structured, actionable format.</p>
+        </div>
+        {/* Arrow */}
+        <div className="flex justify-center">
+            <ArrowRight className="w-12 h-12 text-primary/50 hidden md:block" />
+             <ArrowRight className="w-12 h-12 text-primary/50 rotate-90 md:hidden" />
+        </div>
+        {/* Step 2 */}
+        <div className="flex flex-col items-center p-4">
+          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 border-2 border-accent/20">
+            <FileText className="w-10 h-10" />
+          </div>
+          <h3 className="font-bold font-headline text-accent">2. Distribute the Playbook</h3>
+          <p className="text-sm text-muted-foreground">This knowledge becomes a "MoreMeets Pack"—an interactive system that's instantly available to everyone.</p>
+        </div>
+      </div>
+        {/* Arrow Down */}
+        <div className="flex justify-center my-4">
+             <ArrowRight className="w-12 h-12 text-primary/50 rotate-90" />
+        </div>
+      {/* Step 3 */}
+      <div className="flex flex-col items-center p-4 text-center max-w-4xl mx-auto">
+          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 border-2 border-green-500/20">
+            <Users className="w-10 h-10" />
+          </div>
+          <h3 className="font-bold font-headline text-green-600">3. Empower the Entire Team</h3>
+          <p className="text-sm text-muted-foreground">New hires and existing staff can now perform critical tasks with the consistency and rigor of your best expert, reducing onboarding time and eliminating errors.</p>
+        </div>
+    </div>
+  </section>
+);
+
+
+// --- Section 4: "Manager as Coach" Feature Callout ---
+const ManagerAsCoachSection = () => (
+  <section className="w-full py-16 md:py-24 bg-secondary/30">
+    <div className="container px-4 md:px-6">
+      <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-background shadow-lg border">
+        <div className="space-y-4">
+          <Badge variant="accent">FOR MANAGERS</Badge>
+          <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
+          <p className="text-muted-foreground">Our 'Manager's Edition' packs can include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[625px]">
+              <DialogHeader>
+                <DialogTitle className="font-headline text-2xl">The Manager's Coaching Playbook</DialogTitle>
+                <DialogDescription>
+                  Go beyond compliance. Build a culture of excellence.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="prose prose-sm max-w-none text-muted-foreground">
+                <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
+                <h4 className="font-semibold text-foreground">How it Works: The "Trainer's Notes" Column</h4>
+                <p>For each critical task in a checklist, we can add a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</span></li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</span></li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</span></li>
+                </ul>
+                <h4 className="mt-4 font-semibold text-foreground">The Result:</h4>
+                <p>You're not just buying a checklist; you're investing in a scalable training system. You turn every routine check into a micro-training session, create more engaged employees, and build a more resilient, intelligent operation.</p>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+        <div className="rounded-lg overflow-hidden h-64 md:h-full">
+             <Image 
+                src="https://i.postimg.cc/dVP6Kjf5/businessman-businesswoman-cafe-1157-14643.avif"
+                alt="Manager coaching an employee in a modern cafe setting"
+                width={500}
+                height={400}
+                className="object-cover w-full h-full"
+            />
+        </div>
+      </Card>
+    </div>
+  </section>
+);
+
 
 function SubscriptionForm() {
   const [email, setEmail] = React.useState('');
@@ -85,161 +298,6 @@ function SubscriptionForm() {
     </form>
   );
 }
-
-
-const HowWeAreDifferentSection = () => (
-    <section id="how-we-are-different" className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-2 md:px-6">
-            <div className="max-w-4xl mx-auto p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-sm border">
-                <div className="text-center mb-8">
-                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
-                        We Don't Sell Software. We Sell The System.
-                    </h2>
-                </div>
-                <div className="space-y-6 text-center text-muted-foreground text-base md:text-lg">
-                    <p>
-                        Most SOP platforms sell software subscriptions that help you manage or automate SOPs—but <strong>they don’t actually provide the SOP checklists themselves.</strong> You still have to create the content on your own.
-                    </p>
-                    <p>
-                        MoreMeets is different. We provide <strong>ready-to-use, expert-written checklists</strong> built from years of research, industry consulting, and real-world operational experience. Instead of a costly recurring subscription, you get a <strong>one-time purchase with lifetime updates.</strong>
-                    </p>
-                     <p className="text-foreground font-semibold italic">
-                        From Ensuring Compliance to Unlocking Excellence, Our Checklists Turn Best Practices into Daily Habits.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-);
-
-const GlobalStandardsSection = () => {
-    const standards = [
-        { name: "ISO 9001", description: "Quality Management" },
-        { name: "HACCP / FSSAI", description: "Food Safety" },
-        { name: "JCI & NABH", description: "Healthcare Quality" },
-        { name: "OSHA / ISO 45001", description: "Workplace Safety" },
-        { name: "ISO 14001 & ESG", description: "Sustainability" },
-        { name: "ISPS / IATA", description: "Maritime & Aviation" },
-        { name: "PCI DSS / GDPR", description: "Data & Payment Security" },
-        { name: "SOX", description: "Financial Governance" }
-    ];
-
-    return (
-        <section className="w-full py-12 md:py-24">
-            <div className="container px-2 md:px-6">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
-                        Audit-Ready. Globally Compliant. Operationally Excellent.
-                    </h2>
-                    <p className="mt-4 text-muted-foreground text-base md:text-xl/relaxed">
-                        Our checklists are more than just best practices; they are frameworks built upon the globally recognized standards that govern your industry. This ensures you're not just organized, but compliant and operating at a world-class level.
-                    </p>
-                </div>
-                 <div className="max-w-5xl mx-auto mt-12">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                        {standards.map(standard => (
-                            <div key={standard.name} className="flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg border border-primary/10 text-center">
-                                <p className="font-bold text-sm md:text-lg text-primary">{standard.name}</p>
-                                <p className="text-xs text-muted-foreground">{standard.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-};
-
-
-const FaqSection = () => (
-    <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-        <div className="container px-2 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Frequently Asked Questions
-                </h2>
-                <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                    Everything you need to know before you buy.
-                </p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-                <Accordion type="single" collapsible className="w-full">
-                     <AccordionItem value="item-compare">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Why invest in a MoreMeets Pack when I can use a free template or an AI tool?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            <p className="mb-4">Because a list is not a system. A MoreMeets Pack is a comprehensive, automated operational tool, engineered by industry experts after hundreds of hours of research.</p>
-                            <p className="mb-4">A free template is a blank page. An AI gives you a generic list of *what* to do. Our packs provide a complete framework that tells you:</p>
-                            <ul className="list-disc pl-6 space-y-2 mb-4">
-                                <li><strong>Who</strong> is accountable (Assigned To)</li>
-                                <li><strong>When</strong> it needs to happen (Frequency)</li>
-                                <li><strong>How</strong> to prove it's done (Proof/Evidence)</li>
-                                <li><strong>Why</strong> it's critical (Consequence of Failure)</li>
-                            </ul>
-                            <p className="mb-4">You are not getting a simple checklist. You are getting a multi-layered Excel system with specialized, industry-specific knowledge built directly into its structure.</p>
-                            <p>Plus, we build in <strong>dynamic automation</strong>. The Excel file is pre-configured with conditional formatting. When a task becomes overdue, the entire row <strong>automatically turns red</strong>. When it's marked complete, it <strong>turns green</strong>. This transforms a static spreadsheet into a live, visual dashboard for managing your operations.</p>
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-expertise">
-                        <AccordionTrigger className="text-lg font-semibold text-left">What's the expertise behind your Packs?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                           Our Packs are curated and pressure-tested by a core panel of over 30 globally experienced industry consultants and veteran leaders—General Managers, CISOs, and Heads of Operations from world-leading organizations. You are not buying a document; you are investing in decades of distilled, actionable experience.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-1">
-                        <AccordionTrigger className="text-lg font-semibold text-left">How will I receive the Pack after purchase?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Instantly. After your payment is processed, you’ll get immediate access to download the complete Excel file from the confirmation page. For your convenience, a secure download link is also sent to your email.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Are the checklists editable?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Yes, 100% editable. All our Packs come in a standard Microsoft Excel file (.xlsx), giving you the full flexibility to customize them to your exact operational workflow. They also work perfectly with Google Sheets and Apple Numbers.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-4">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Will I get future updates?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Absolutely. Your one-time purchase includes <strong>free lifetime updates</strong>. Whenever we enhance a Pack you've purchased with new SOPs or improved formulas, you will automatically receive the latest version at no extra cost.
-                        </AccordionContent>
-                    </AccordionItem>
-
-                     <AccordionItem value="item-5">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Is my payment secure?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Yes, completely. We use industry-leading payment gateways that are fully PCI-DSS compliant. Your financial data is encrypted and is never stored on our servers, ensuring your payment is secure.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-8">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Can I share the checklists with my team or across multiple locations?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Yes. Your one-time purchase grants you a license to use and replicate the checklists across all teams, branches, and locations within your single organization.
-                        </AccordionContent>
-                    </AccordionItem>
-
-                     <AccordionItem value="item-10">
-                        <AccordionTrigger className="text-lg font-semibold text-left">What is your refund policy?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                           Due to the nature of instantly downloadable digital products, all sales are final and we do not offer refunds. We provide comprehensive details on each pack page to help you make an informed decision. If you face any technical issues with your download, our support team will resolve it for you immediately.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-11">
-                        <AccordionTrigger className="text-lg font-semibold text-left">Can I request a custom Pack for my business?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            Absolutely. We provide custom SOP creation services for specialized needs. Please <a href="https://calendly.com/aditi-imran-khan/30min" target="_blank" rel="noopener noreferrer" className="text-primary underline">contact us with your requirements</a>, and our experts will tailor a package specifically for you.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-12">
-                        <AccordionTrigger className="text-lg font-semibold text-left">How can I get support if I have an issue?</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                            You can reach us anytime at `more@moremeets.com` or via the <Link href="/contact" className="text-primary underline">contact page</Link> on our website. We are committed to helping you and typically respond within 24 hours.
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
-            </div>
-        </div>
-    </section>
-);
 
 function PackList({ packs, title, description }: { packs: PremiumPack[], title: string, description: string }) {
     const isMobile = useIsMobile();
@@ -342,242 +400,6 @@ function PackList({ packs, title, description }: { packs: PremiumPack[], title: 
     )
 }
 
-const IndividualChecklistsSection = () => {
-    const isMobile = useIsMobile();
-    const bestsellers = individualChecklists.slice(0, 3);
-
-    const ChecklistCard = ({ checklist }: { checklist: (typeof bestsellers)[0] }) => (
-         <Card className="flex flex-col text-center rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border h-full">
-            <CardHeader className="p-6">
-                {React.cloneElement(checklist.icon, { className: "w-10 h-10 text-accent mx-auto mb-3" })}
-                <CardTitle className="text-lg font-headline">{checklist.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="px-6 flex-1">
-                <p className="text-sm text-muted-foreground">{checklist.description}</p>
-            </CardContent>
-                <CardFooter className="p-6 pt-4 mt-auto flex-col items-center gap-4">
-                <Button asChild className="w-full font-bold flex-col h-auto" variant="secondary">
-                    <Link href={`/checklists/${checklist.id}`}>
-                        <span>Own It Forever</span>
-                        <span className="text-xl font-bold">₹{checklist.priceINR}</span>
-                    </Link>
-                </Button>
-            </CardFooter>
-        </Card>
-    );
-
-    return (
-        <section id="individual-checklists" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-            <div className="container px-2 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
-                        Solve a Specific Problem, Instantly
-                    </h2>
-                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        Not ready for a full pack? Start with one of our most popular, high-impact checklists. The perfect way to see the MoreMeets standard in action.
-                    </p>
-                </div>
-
-                 {isMobile ? (
-                     <Carousel 
-                        opts={{ align: "start", loop: true }}
-                        plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
-                        className="w-full max-w-[calc(100%-2rem)] mx-auto"
-                    >
-                        <CarouselContent>
-                            {bestsellers.map((checklist) => (
-                                <CarouselItem key={checklist.id} className="p-2">
-                                    <div className="p-1 h-full">
-                                       <ChecklistCard checklist={checklist} />
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="text-accent border-accent -left-4" />
-                        <CarouselNext className="text-accent border-accent -right-4" />
-                    </Carousel>
-                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                        {bestsellers.map((checklist) => (
-                           <ChecklistCard key={checklist.id} checklist={checklist} />
-                        ))}
-                    </div>
-                 )}
-
-
-                 <div className="text-center mt-16">
-                    <Button asChild size="lg" className="group">
-                        <Link href="/checklists">
-                            View All Bestselling Checklists
-                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
-                </div>
-            </div>
-        </section>
-    );
-};
-
-
-const WhyDetailMatters = () => {
-    const points = [
-        {
-            icon: <AlertTriangle />,
-            title: "One Missed Step Can Cost Everything",
-            problem: "A forgotten safety check or an insecure access point can lead to compliance fines, reputational damage, and lost revenue.",
-            solution: "Our checklists provide a verifiable system that turns best practices into daily habits, preventing errors before they happen."
-        },
-        {
-            icon: <Users />,
-            title: "Your Team Can't Read Your Mind",
-            problem: "Without a standardized guide, small deviations by well-meaning staff can lead to inconsistent quality and a poor customer experience.",
-            solution: "MoreMeets translates your high standards into clear, actionable steps that anyone on your team can follow, ensuring consistency."
-        },
-        {
-            icon: <Shield />,
-            title: "An Auditor's Visit Shouldn't Be Panic",
-            problem: "A lack of a documented trail of diligence makes you vulnerable during audits (NABH, JCI, ISO) and inspections.",
-            solution: "Our checklists are built by industry veterans who know regulations inside out, providing a clear, documented audit trail that makes you audit-ready, anytime."
-        },
-         {
-            icon: <FileText />,
-            title: "You Know You Need SOPs. But Where Do You Start?",
-            problem: "The task of creating professional, comprehensive SOPs from scratch is daunting, time-consuming, and often gets postponed indefinitely.",
-            solution: "We've done the hard work for you. Our expert-built checklists provide a foundation that is 90% of the way there, saving you weeks of work."
-        },
-        {
-            icon: <BarChart />,
-            title: "Stop Managing Problems. Start Building Profit.",
-            problem: "Every minute spent fixing preventable errors and dealing with chaos is a minute not spent on growing your business.",
-            solution: "Our checklists reduce operational friction, freeing your team to innovate, focus on customers, and drive growth."
-        },
-        {
-            icon: <Award />,
-            title: "Don't Let Your Business Rely on One Hero",
-            problem: "When critical knowledge lives in one indispensable manager's head, your entire operation is at risk when they leave or are unavailable.",
-            solution: "MoreMeets democratizes expertise by creating a scalable system where anyone can operate at a high standard, making your operation resilient."
-        }
-    ];
-
-    return (
-        <section id="why-us" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-            <div className="container px-2 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                        Stop Firefighting. Start Building Excellence.
-                    </h2>
-                    <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        In any professional operation, the difference between chaos and control lies in the system. Overlooking details doesn't just lead to mistakes—it creates risk. Here's how MoreMeets transforms operational risks into strengths.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {points.map((point, index) => (
-                         <Card key={index} className="flex flex-col">
-                            <CardHeader className="flex flex-row items-start gap-4 pb-4">
-                                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary shrink-0 mt-1">
-                                    {React.cloneElement(point.icon, { className: "w-6 h-6" })}
-                                </div>
-                                <div className="flex-1">
-                                    <CardTitle className="text-lg leading-tight">{point.title}</CardTitle>
-                                    <p className="text-sm text-muted-foreground mt-1">{point.problem}</p>
-                                </div>
-                            </CardHeader>
-                            <CardContent>
-                                <blockquote className="border-l-4 border-accent bg-accent/10 p-3 rounded-r-lg">
-                                    <p className="text-sm font-semibold text-accent-foreground/90 leading-snug">
-                                        <span className="font-bold text-accent-foreground mr-1">The MoreMeets Solution:</span> 
-                                        {point.solution}
-                                    </p>
-                                </blockquote>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const WhoIsItForSection = () => {
-    const roles = [
-        { icon: <Hospital className="w-8 h-8" />, label: "Hospital GMs" },
-        { icon: <Factory className="w-8 h-8" />, label: "Plant Heads" },
-        { icon: <BuildingIcon className="w-8 h-8" />, label: "Facility Managers" },
-        { icon: <GraduationCap className="w-8 h-8" />, label: "School Principals" },
-        { icon: <Gem className="w-8 h-8" />, label: "Luxury Retailers" },
-        { icon: <CookingPot className="w-8 h-8" />, label: "Restaurant Owners" },
-    ];
-    return (
-        <section className="w-full py-12 md:py-24">
-            <div className="container px-2 md:px-6">
-                <div className="max-w-3xl mx-auto text-center mb-12">
-                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                        Trusted By Professionals in Every Industry
-                    </h2>
-                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        Our checklists are designed by industry veterans for the specific challenges you face every day.
-                    </p>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 max-w-5xl mx-auto">
-                    {roles.map((role, index) => (
-                        <div key={index} className="flex flex-col items-center text-center gap-3">
-                            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary">
-                                {role.icon}
-                            </div>
-                            <p className="font-semibold text-sm md:text-base">{role.label}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-
-const ValuePropositionSection = () => {
-    const benefits = [
-        {
-            icon: <BadgePercent className="w-6 h-6" />,
-            title: "One-Time Purchase",
-            description: "No recurring subscriptions. Pay once and own it forever.",
-        },
-        {
-            icon: <History className="w-6 h-6" />,
-            title: "Lifetime Updates",
-            description: "Receive all future enhancements and additions to your pack, for free.",
-        },
-        {
-            icon: <Download className="w-6 h-6" />,
-            title: "Instant Download",
-            description: "Get immediate access to your fully editable Excel files after purchase.",
-        },
-        {
-            icon: <Globe className="w-6 h-6" />,
-            title: "Globally Compliant",
-            description: "Checklists are aligned with standards like ISO, JCI, HACCP, and more.",
-        }
-    ];
-
-    return (
-        <section className="w-full py-12 bg-background border-y">
-            <div className="container px-2 md:px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    {benefits.map((benefit, index) => (
-                        <div key={index} className="flex flex-col items-center gap-2">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                                {benefit.icon}
-                            </div>
-                            <h3 className="text-sm md:text-base font-bold">{benefit.title}</h3>
-                            <p className="text-xs md:text-sm text-muted-foreground">{benefit.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
 const FeaturedBlogPostsSection = () => {
   const latestPosts = [...blogPosts]
     .sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime())
@@ -647,56 +469,15 @@ const FeaturedBlogPostsSection = () => {
 
 export default function HomeClientPage() {
   const featuredPacks = premiumPacks.filter(p => p.bestseller);
-  const isMobile = useIsMobile();
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative w-full h-[60vh] lg:h-[70vh] flex items-center justify-center">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImageUrl})`,
-            }}
-          />
-            <div className="container relative z-10 px-2 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                    <div className="space-y-4">
-                        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline text-white drop-shadow-md">
-                            The Professional Standard for Compliance & Operations Checklists.
-                        </h1>
-                         <div className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2 text-white/90 text-xl md:text-2xl/relaxed mx-auto [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)] font-semibold tracking-wide">
-                            <span className="flex items-center gap-2">
-                                <Check className="w-6 h-6 text-accent" />
-                                <span>Instant SOPs</span>
-                            </span>
-                             <span className="hidden sm:inline-block">•</span>
-                            <span className="flex items-center gap-2">
-                                <Check className="w-6 h-6 text-accent" />
-                                <span>Total Compliance</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-4 pt-4">
-                        <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                            <Link href="/packs">
-                            Browse All Packages
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
-                        <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                             <p className="text-xs text-white/80">
-                                International Standards Integrated: ISO, JCI, HACCP, OSHA & More
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
+        <InteractiveHeroSection />
 
-         <section className="w-full py-12 bg-background">
+         <section className="w-full py-12 bg-secondary/30 border-y">
             <div className="container px-2 md:px-6 text-center">
                  <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
                     Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
@@ -704,15 +485,9 @@ export default function HomeClientPage() {
             </div>
         </section>
 
-        <ValuePropositionSection />
-
-        <WhoIsItForSection />
-        
-        <WhyDetailMatters />
-
-        <HowWeAreDifferentSection />
-
-        <GlobalStandardsSection />
+        <ChaosToControlSection />
+        <ExpertiseExtractorSection />
+        <ManagerAsCoachSection />
 
         <React.Suspense fallback={<div>Loading packs...</div>}>
             <PackList 
@@ -722,62 +497,9 @@ export default function HomeClientPage() {
             />
         </React.Suspense>
         
-        <IndividualChecklistsSection />
-        
         <FeaturedBlogPostsSection />
 
-        <section id="testimonials" className="w-full py-12 md:py-24 lg:py32">
-          <div className="container px-2 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <h2 className="text-3xl font.bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                Loved by Professionals Worldwide
-              </h2>
-              <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                Trusted by managers from world-leading organizations.
-              </p>
-            </div>
-            <Carousel 
-                opts={{ align: "start", loop: true }}
-                plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
-                className="w-full max-w-5xl mx-auto"
-            >
-              <CarouselContent>
-                {testimonials.map((testimonial) => {
-                  const image = PlaceHolderImages.find(img => img.id === testimonial.imageId);
-                  return (
-                    <CarouselItem key={testimonial.name} className="md:basis-1/2 lg:basis-1/3 p-4">
-                      <Card className="p-6 flex flex-col items-center text-center shadow-lg rounded-2xl h-full">
-                        <div className="mb-4 rounded-full overflow-hidden w-24 h-24 border-2 border-primary/10">
-                          {image && (
-                            <Image
-                              src={image.imageUrl}
-                              alt={testimonial.name}
-                              width={96}
-                              height={96}
-                              className="w-full h-full object-cover"
-                              data-ai-hint={image.imageHint}
-                            />
-                          )}
-                        </div>
-                        <CardContent className="p-0 flex-1">
-                          <p className="text-muted-foreground italic text-sm md:text-base">"{testimonial.quote}"</p>
-                        </CardContent>
-                        <CardFooter className="p-0 mt-4 flex-col">
-                          <p className="font-bold font-headline">{testimonial.name}</p>
-                          <p className="text-xs md:text-sm text-muted-foreground">{testimonial.title}</p>
-                        </CardFooter>
-                      </Card>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-              <CarouselPrevious className="text-accent border-accent -left-4" />
-              <CarouselNext className="text-accent border-accent -right-4" />
-            </Carousel>
-          </div>
-        </section>
-        
-        <section className="w-full py-12 md:py-24">
+         <section className="w-full py-12 md:py-24">
             <div className="container px-2 md:px-6">
                  <div className="max-w-2xl mx-auto flex flex-col items-center gap-6 p-8 border rounded-2xl bg-secondary/50">
                     <h3 className="font-bold text-center text-2xl font-headline text-primary">The Most Valuable Newsletter in Operations.</h3>
@@ -786,9 +508,6 @@ export default function HomeClientPage() {
                 </div>
             </div>
         </section>
-
-        <FaqSection />
-
       </main>
       <Footer />
     </div>
