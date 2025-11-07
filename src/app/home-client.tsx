@@ -73,41 +73,39 @@ const InteractiveHeroSection = () => {
 
   if (isMobile) {
     return (
-       <section className="w-full relative bg-primary text-primary-foreground">
+       <section className="w-full relative bg-primary text-primary-foreground py-20 md:py-24">
         <Image
-            src="https://i.postimg.cc/X7HWHXD4/ops1.jpg"
+            src="https://i.postimg.cc/YqqkzQ8H/colleagues-safety-equipment-work.jpg"
             alt="Operational excellence"
             fill
             className="object-cover opacity-20"
         />
-        <div className="relative z-10 container px-4 py-16">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-extrabold font-headline tracking-tight flex flex-col justify-center min-h-[9rem]">
-                  <span>The Professional Standard for</span>
-                  <AnimatePresence mode="wait">
-                        <motion.span
-                          key={currentWord}
-                          className="text-accent inline-block"
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: -20, opacity: 0 }}
-                          transition={{ duration: 0.4 }}
-                      >
-                          {isClient ? currentWord : rotatingWords[0]}
-                      </motion.span>
-                  </AnimatePresence>
-              </h1>
-              <p className="text-lg text-primary-foreground/90 max-w-xl mx-auto mt-6">
-                For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-              </p>
-               <div className="pt-10">
-                  <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                      <Link href="/packs">
-                          Explore All Packages
-                          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                  </Button>
-              </div>
+        <div className="relative z-10 container px-4 text-left">
+            <h1 className="text-5xl font-extrabold font-headline tracking-tight min-h-[12rem] flex flex-col justify-center">
+              <span>The Professional Standard for</span>
+                <AnimatePresence mode="wait">
+                    <motion.span
+                        key={currentWord}
+                        className="text-accent inline-block"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        {isClient ? currentWord : rotatingWords[0]}
+                    </motion.span>
+                </AnimatePresence>
+            </h1>
+            <p className="text-lg text-primary-foreground/80 max-w-xl mt-4">
+              For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+            </p>
+            <div className="pt-8">
+                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
             </div>
         </div>
       </section>
