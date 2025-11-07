@@ -5,17 +5,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star, ArrowRight, FileText, Layers, Shield, Users, Award, BarChart, Hospital, Factory, GraduationCap, Gem, CookingPot, Building as BuildingIcon, Zap, BrainCircuit, Mail, Loader2, CheckCircle, BadgePercent, History, Download, Globe, AlertTriangle } from "lucide-react";
-import { testimonials } from "@/lib/testimonials";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import React from 'react';
+import React, { useState } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { premiumPacks, type PremiumPack } from "@/lib/premium-packs";
 import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import { useIsMobile } from "@/hooks/use-mobile";
-import { individualChecklists } from "@/lib/individual-checklists";
 import { blogPosts } from "@/lib/blog-posts";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
@@ -24,28 +20,106 @@ import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { subscribeToBlog } from "@/app/blog/actions";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { cn } from "@/lib/utils";
 
-
-const heroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
 const rotatingWords = ["Operational Resilience.", "Eliminating Human Error.", "Accelerating Onboarding."];
+
+const painPoints = {
+  resilience: {
+    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
+    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
+    image: 'https://i.postimg.cc/zfYc0r5h/business-people-looking-camera-with-arms-crossed-13339-169896.jpg'
+  },
+  error: {
+    title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
+    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
+    image: 'https://i.postimg.cc/YqqkzQ8H/colleagues-safety-equipment-work.jpg'
+  },
+  onboarding: {
+    title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
+    description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
+    image: 'https://i.postimg.cc/K812dFdJ/people-creating-new-project.jpg'
+  }
+};
+
+type PainPointKey = keyof typeof painPoints;
+
+// --- Section 1: The Interactive "Pain Point" Hero ---
+const InteractiveHeroSection = () => {
+  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+  const content = painPoints[activePainPoint];
+
+  return (
+    <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+      <div className="container px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
+                {content.title}
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-xl">
+                {content.description}
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                <Button
+                  key={key}
+                  size="lg"
+                  variant={activePainPoint === key ? 'default' : 'outline'}
+                  className="justify-start"
+                  onClick={() => setActivePainPoint(key)}
+                >
+                  {key === 'resilience' && 'Build Resilience'}
+                  {key === 'error' && 'Eliminate Errors'}
+                  {key === 'onboarding' && 'Accelerate Onboarding'}
+                </Button>
+              ))}
+            </div>
+             <div className="pt-4">
+                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
+            </div>
+          </div>
+          <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src={content.image}
+              alt={content.title}
+              fill
+              className="object-cover transition-all duration-500 ease-in-out transform scale-105"
+              key={content.image}
+              priority
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
 // --- Section 2: "From Chaos to Control" Visualization ---
 const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to a Structured System</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your fragile, person-dependent processes into a reliable, verifiable system of record.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-center">
         {/* Before */}
         <Card className="border-destructive/50 border-2">
           <CardHeader>
             <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+            <CardDescription>Relying on memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone remember to check the fire exits?"</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
@@ -58,10 +132,10 @@ const ChaosToControlSection = () => (
             <CardDescription>A system of record that ensures excellence every time.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-foreground">
-             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making the operation resilient.</span></p>
+            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
           </CardContent>
         </Card>
       </div>
@@ -126,7 +200,7 @@ const ManagerAsCoachSection = () => (
         <div className="space-y-4">
           <Badge variant="accent">FOR MANAGERS</Badge>
           <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
-          <p className="text-muted-foreground">Our 'Manager's Edition' packs include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
+          <p className="text-muted-foreground">Our 'Manager's Edition' packs can include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
           <Dialog>
             <DialogTrigger asChild>
               <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
@@ -141,7 +215,7 @@ const ManagerAsCoachSection = () => (
               <div className="prose prose-sm max-w-none text-muted-foreground">
                 <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
                 <h4 className="font-semibold text-foreground">How it Works: The "Trainer's Notes" Column</h4>
-                <p>For each critical task in a checklist, we've added a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
+                <p>For each critical task in a checklist, we can add a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</span></li>
                   <li className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</span></li>
@@ -153,12 +227,12 @@ const ManagerAsCoachSection = () => (
             </DialogContent>
           </Dialog>
         </div>
-        <div className="rounded-lg overflow-hidden">
+        <div className="rounded-lg overflow-hidden h-64 md:h-full">
              <Image 
                 src="https://i.postimg.cc/dVP6Kjf5/businessman-businesswoman-cafe-1157-14643.avif"
-                alt="Manager coaching an employee"
+                alt="Manager coaching an employee in a modern cafe setting"
                 width={500}
-                height={350}
+                height={400}
                 className="object-cover w-full h-full"
             />
         </div>
@@ -237,7 +311,7 @@ const ValuePropositionSection = () => {
         {
             icon: <History className="w-6 h-6" />,
             title: "Lifetime Updates",
-            description: "Receive all future enhancements and additions to your pack, for free.",
+            description: "Receive all future enhancements to your purchased pack, for free.",
         },
         {
             icon: <Download className="w-6 h-6" />,
@@ -445,45 +519,17 @@ export default function HomeClientPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative w-full h-[70vh] lg:h-[80vh] flex items-center justify-center text-white">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImageUrl})`,
-            }}
-          />
-            <div className="container relative z-10 px-2 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter font-headline drop-shadow-md">
-                           The Professional Standard for <br />
-                           <span className="text-accent">
-                             <RotatingText words={rotatingWords} />
-                           </span>
-                        </h1>
-                        <p className="max-w-[700px] text-white/90 text-lg md:text-xl/relaxed mx-auto [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)]">
-                           We provide expert-built operational playbooks to help you reduce errors, scale your team, and build a more resilient business.
-                        </p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-4 pt-4">
-                        <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                            <Link href="/packs">
-                            Explore All Packages
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
-                        <div className="bg-black/30 backdrop-blur-sm rounded-full px-4 py-1">
-                             <p className="text-xs text-white/80">
-                                One-time purchase. Lifetime updates. Instant download.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        
+        <InteractiveHeroSection />
+
+         <section className="w-full py-12 bg-secondary/30 border-y">
+            <div className="container px-2 md:px-6 text-center">
+                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
+                    Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
+                </h2>
             </div>
         </section>
 
-        <ValuePropositionSection />
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
         <ManagerAsCoachSection />
@@ -512,5 +558,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
