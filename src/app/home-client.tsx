@@ -22,8 +22,6 @@ import { subscribeToBlog } from "@/app/blog/actions";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { cn } from "@/lib/utils";
 
-const rotatingWords = ["Operational Resilience.", "Eliminating Human Error.", "Accelerating Onboarding."];
-
 const painPoints = {
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
@@ -300,49 +298,6 @@ function SubscriptionForm() {
     </form>
   );
 }
-
-const ValuePropositionSection = () => {
-    const benefits = [
-        {
-            icon: <BadgePercent className="w-6 h-6" />,
-            title: "One-Time Purchase",
-            description: "No recurring subscriptions. Pay once and own it forever.",
-        },
-        {
-            icon: <History className="w-6 h-6" />,
-            title: "Lifetime Updates",
-            description: "Receive all future enhancements to your purchased pack, for free.",
-        },
-        {
-            icon: <Download className="w-6 h-6" />,
-            title: "Instant Download",
-            description: "Get immediate access to your fully editable Excel files after purchase.",
-        },
-        {
-            icon: <Globe className="w-6 h-6" />,
-            title: "Globally Compliant",
-            description: "Checklists are aligned with standards like ISO, JCI, HACCP, and more.",
-        }
-    ];
-
-    return (
-        <section className="w-full py-12 bg-background border-y">
-            <div className="container px-2 md:px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    {benefits.map((benefit, index) => (
-                        <div key={index} className="flex flex-col items-center gap-2">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                                {benefit.icon}
-                            </div>
-                            <h3 className="text-sm md:text-base font-bold">{benefit.title}</h3>
-                            <p className="text-xs md:text-sm text-muted-foreground">{benefit.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
 
 function PackList({ packs, title, description }: { packs: PremiumPack[], title: string, description: string }) {
     const isMobile = useIsMobile();
