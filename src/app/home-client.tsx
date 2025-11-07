@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star, ArrowRight, FileText, Layers, Shield, Users, Award, BarChart, Hospital, Factory, GraduationCap, Gem, CookingPot, Building as BuildingIcon, Zap, BrainCircuit, Mail, Loader2, CheckCircle, BadgePercent, History, Download, Globe, AlertTriangle } from "lucide-react";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { premiumPacks, type PremiumPack } from "@/lib/premium-packs";
@@ -469,6 +469,11 @@ const FeaturedBlogPostsSection = () => {
 
 export default function HomeClientPage() {
   const featuredPacks = premiumPacks.filter(p => p.bestseller);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -504,7 +509,7 @@ export default function HomeClientPage() {
                  <div className="max-w-2xl mx-auto flex flex-col items-center gap-6 p-8 border rounded-2xl bg-secondary/50">
                     <h3 className="font-bold text-center text-2xl font-headline text-primary">The Most Valuable Newsletter in Operations.</h3>
                     <p className="text-center text-muted-foreground">One insight per edition that could save your company millions. Straight to your inbox.</p>
-                    <SubscriptionForm />
+                    {isClient && <SubscriptionForm />}
                 </div>
             </div>
         </section>
