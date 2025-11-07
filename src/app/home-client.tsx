@@ -60,13 +60,13 @@ const InteractiveHeroSection = () => {
                 {content.description}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col md:flex-row gap-3">
               {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
                 <Button
                   key={key}
                   size="lg"
                   variant={activePainPoint === key ? 'default' : 'outline'}
-                  className="justify-start"
+                  className="justify-center md:justify-start"
                   onClick={() => setActivePainPoint(key)}
                 >
                   {key === 'resilience' && 'Build Resilience'}
@@ -518,3 +518,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
