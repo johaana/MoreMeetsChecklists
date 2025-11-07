@@ -15,7 +15,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { blogPosts } from "@/lib/blog-posts";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
-import { RotatingText } from "@/components/ui/rotating-text";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { subscribeToBlog } from "@/app/blog/actions";
@@ -74,10 +73,16 @@ const InteractiveHeroSection = () => {
 
   if (isMobile) {
     return (
-       <section className="w-full py-20 bg-background">
-        <div className="container px-4">
+       <section className="w-full relative bg-primary text-primary-foreground">
+        <Image
+            src="https://i.postimg.cc/X7HWHXD4/ops1.jpg"
+            alt="Operational excellence"
+            fill
+            className="object-cover opacity-20"
+        />
+        <div className="relative z-10 container px-4 py-20">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight flex flex-col justify-center min-h-[7rem]">
+              <h1 className="text-4xl md:text-5xl font-extrabold font-headline tracking-tight flex flex-col justify-center min-h-[9rem]">
                   <span>The Professional Standard for</span>
                   <AnimatePresence mode="wait">
                         <motion.span
@@ -92,8 +97,8 @@ const InteractiveHeroSection = () => {
                       </motion.span>
                   </AnimatePresence>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto mt-6">
-                 For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+              <p className="text-lg text-primary-foreground/90 max-w-xl mx-auto mt-6">
+                For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
               </p>
                <div className="pt-10">
                   <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -573,6 +578,12 @@ export default function HomeClientPage() {
         
         <InteractiveHeroSection />
 
+         <section className="w-full py-12 border-y">
+            <div className="container px-2 md:px-6 text-center">
+                <h3 className="text-lg font-semibold text-muted-foreground">MoreMeets: More Standards. More Compliance. More Consistency.</h3>
+            </div>
+        </section>
+
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
         <ManagerAsCoachSection />
@@ -602,4 +613,3 @@ export default function HomeClientPage() {
   );
 }
 
-    
