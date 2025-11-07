@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 import { individualChecklists } from '@/lib/individual-checklists';
 import type { Metadata } from 'next';
-import ChecklistClientPage from './checklist-client-page';
+import ChecklistClientPage from '@/app/checklists/[id]/checklist-client-page';
 
 type Props = {
   params: { id: string }
