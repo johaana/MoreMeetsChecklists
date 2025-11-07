@@ -131,7 +131,7 @@ const CardFlipHero = () => {
                     key={key}
                     size="lg"
                     variant={activePainPoint === key ? 'default' : 'outline'}
-                    className="justify-center md:justify-start"
+                    className="justify-center"
                     onClick={() => handleClick(key)}
                     >
                     {key === 'resilience' && 'Build Resilience'}
@@ -232,8 +232,6 @@ const RotatingTextHero = () => {
 
 
 export default function TempDesignClientPage() {
-    // We need framer-motion for smooth animations
-    // Add it to package.json
     return (
         <main className="flex-1 divide-y-2 divide-dashed">
              <div className="py-8">
