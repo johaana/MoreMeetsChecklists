@@ -42,7 +42,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("OVERDUE",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -175,8 +175,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
-            const nextDueDateFormula = `IF(ISBLANK(${dateCell}),"",IF(${isEventDrivenFormula},"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula})))`;
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${nextDueDateCell}="N/A",${nextDueDateCell}=""),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED","Completed")))`;
+            const nextDueDateFormula = `IF(ISBLANK(${dateCell}), "", IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}=""),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED","Completed")))`;
 
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 

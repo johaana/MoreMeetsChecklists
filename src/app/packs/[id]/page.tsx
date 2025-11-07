@@ -197,6 +197,8 @@ const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
 
 export default function Page({ params }: { params: { id: string } }) {
   const pack = premiumPacks.find((p) => p.id === params.id);
+  const pricingSectionRef = React.useRef<HTMLDivElement>(null);
+  const [showStickyBar, setShowStickyBar] = React.useState(false);
 
   if (!pack) {
     notFound();
@@ -227,6 +229,7 @@ export default function Page({ params }: { params: { id: string } }) {
   };
   
   return (
+    <>
     <div className="flex flex-col min-h-screen bg-background">
        <script
         type="application/ld+json"
@@ -304,5 +307,8 @@ export default function Page({ params }: { params: { id: string } }) {
       </main>
        <Footer />
     </div>
+    </>
   );
 }
+
+    
