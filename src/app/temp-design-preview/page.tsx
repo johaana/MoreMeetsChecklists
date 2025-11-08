@@ -28,13 +28,12 @@ const painPoints = {
 type PainPointKey = keyof typeof painPoints;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
-const RefinedHeroSection = () => {
+const BaseHeroSection = ({ overlayClass = '', textClass = '', containerClass = '' }) => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const content = painPoints[activePainPoint];
 
     return (
         <section className="relative w-full h-[70vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
-            {/* Video Background */}
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -43,13 +42,11 @@ const RefinedHeroSection = () => {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
-            {/* Gradient Overlay */}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+            <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
-            {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
-                <div className="max-w-2xl space-y-6">
-                     <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
+                <div className={cn("max-w-2xl space-y-6", containerClass)}>
+                     <div className={cn("space-y-4 min-h-[14rem] flex flex-col justify-center", textClass)}>
                         <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
@@ -86,10 +83,10 @@ const RefinedHeroSection = () => {
                                     )}
                                     onClick={() => setActivePainPoint(key)}
                                 >
-                                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
-                                    {key === 'resilience' && 'Build Resilience'}
-                                    {key === 'error' && 'Eliminate Errors'}
-                                    {key === 'onboarding' && 'Accelerate Onboarding'}
+                                    <span className={cn('leading-tight', activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
+                                        {key === 'resilience' && 'Build Resilience'}
+                                        {key === 'error' && 'Eliminate Errors'}
+                                        {key === 'onboarding' && 'Accelerate Onboarding'}
                                     </span>
                                 </Button>
                                 ))}
@@ -97,7 +94,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                     <div className="pt-2">
-                        <h2 className="text-lg font-semibold text-accent drop-shadow-sm">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+                        <h2 className={cn("text-lg font-semibold text-accent", textClass)}>The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
                     </div>
                     <div className="pt-2">
                         <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
@@ -131,8 +128,29 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                <RefinedHeroSection />
+                {/* --- Mobile Only Preview Section --- */}
+                <div className="md:hidden">
+                    <div className="p-4 bg-muted">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 1: Frosted Glass Effect</h2>
+                    </div>
+                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30 backdrop-blur-sm" />
 
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Text Shadow</h2>
+                    </div>
+                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" textClass="[text-shadow:0_2px_8px_rgba(0,0,0,0.8)]" />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 3: Text Box Container</h2>
+                    </div>
+                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" containerClass="bg-black/40 p-6 rounded-2xl" />
+                </div>
+
+                {/* --- Desktop View --- */}
+                <div className="hidden md:block">
+                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" />
+                </div>
+                
             </main>
             <Footer />
         </div>
