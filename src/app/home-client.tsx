@@ -84,7 +84,7 @@ const MobileHero = () => {
           </span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mt-4">
-          Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
+          For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
         </p>
         <div className="pt-8">
           <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -311,7 +311,11 @@ const ManagerAsCoachSection = () => (
         <div className="space-y-4">
           <Badge variant="accent">FOR MANAGERS</Badge>
           <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
-          <p className="text-muted-foreground">Our 'Manager's Edition' packs can include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
+          <p className="text-muted-foreground">
+            Our 'Manager's Edition' packs can include an optional{' '}
+            <strong className="text-foreground">"Trainer's Notes"</strong>{' '}
+            column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.
+          </p>
           <Dialog>
             <DialogTrigger asChild>
               <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
@@ -324,7 +328,7 @@ const ManagerAsCoachSection = () => (
                 </DialogDescription>
               </DialogHeader>
               <div className="prose prose-sm max-w-none text-muted-foreground">
-                <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
+                <p>The standard MoreMeets packs ensure tasks are done correctly. The <strong>Manager's Coaching Edition</strong> ensures your team understands <em>why</em> they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
                 <h4 className="font-semibold text-foreground">How it Works: The "Trainer's Notes" Column</h4>
                 <p>For each critical task in a checklist, we can add a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
                 <ul className="space-y-2">
