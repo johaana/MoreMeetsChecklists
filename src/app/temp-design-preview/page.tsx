@@ -12,13 +12,13 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const painPoints = {
-  resilience: {
-    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-  },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
+  },
+  resilience: {
+    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
+    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
@@ -27,9 +27,11 @@ const painPoints = {
 };
 
 type PainPointKey = keyof typeof painPoints;
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
+
 
 const UnifiedHeroSection = () => {
-  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
   const content = painPoints[activePainPoint];
 
   return (
@@ -49,11 +51,11 @@ const UnifiedHeroSection = () => {
             <motion.div
                 className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
                 initial={false}
-                animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
             <div className="flex">
-                {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                {painPointKeys.map((key) => (
                 <Button
                     key={key}
                     variant="ghost"
@@ -68,6 +70,9 @@ const UnifiedHeroSection = () => {
                 </Button>
                 ))}
             </div>
+          </div>
+           <div className="pt-6 text-center">
+              <h2 className="text-sm font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
           </div>
           <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
             <video
@@ -114,11 +119,11 @@ const UnifiedHeroSection = () => {
               <motion.div
                 className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
                 initial={false}
-                animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               />
               <div className="flex">
-                {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                {painPointKeys.map((key) => (
                   <Button
                     key={key}
                     variant="ghost"
@@ -133,6 +138,9 @@ const UnifiedHeroSection = () => {
                   </Button>
                 ))}
               </div>
+            </div>
+            <div className="pt-4">
+               <h2 className="text-md font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
             </div>
             <div className="pt-4">
               <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
