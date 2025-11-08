@@ -125,7 +125,7 @@ const MobileHeroWithVideo = () => {
     <section className="w-full py-12 bg-background">
       <div className="container px-4 text-center">
         
-        <div className="mb-4">
+        <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-primary">
                 The Professional Standard for
                 <span className="text-accent block h-12 mt-1">
@@ -144,22 +144,22 @@ const MobileHeroWithVideo = () => {
                 </span>
             </h1>
         </div>
-
-        <div className="relative h-56 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
-             <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-            >
-              Your browser does not support the video tag.
-            </video>
-        </div>
         
-        <div className='-mt-12'>
-            <div className="p-6 pt-10">
+        <div className="rounded-2xl shadow-2xl overflow-hidden">
+             <div className="relative h-56 w-full">
+                 <video
+                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div className="p-6 pt-8 bg-background">
                  <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                     For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
                 </p>
@@ -206,4 +206,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
