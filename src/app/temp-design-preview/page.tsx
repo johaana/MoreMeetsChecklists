@@ -136,14 +136,44 @@ export default function TempDesignPreviewPage() {
                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30 backdrop-blur-sm" />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Text Shadow</h2>
+                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Subtle Text Shadow</h2>
                     </div>
-                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" textClass="[text-shadow:0_2px_8px_rgba(0,0,0,0.8)]" />
+                    <BaseHeroSection 
+                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
+                        textClass="[text-shadow:0_2px_8px_rgba(0,0,0,0.8)]" 
+                    />
 
                     <div className="p-4 bg-muted mt-8">
                         <h2 className="text-center font-bold text-lg font-headline">Option 3: Text Box Container</h2>
                     </div>
-                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" containerClass="bg-black/40 p-6 rounded-2xl" />
+                     <BaseHeroSection 
+                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
+                        containerClass="bg-black/40 p-6 rounded-2xl" 
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Idea A: Subtle Glow Effect</h2>
+                    </div>
+                     <BaseHeroSection 
+                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
+                        textClass="[text-shadow:0_0_10px_rgba(0,0,0,0.7),0_0_20px_rgba(0,0,0,0.5)]" 
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Idea B: Gradient Text</h2>
+                    </div>
+                     <BaseHeroSection 
+                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
+                        textClass="bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent" 
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Idea C: Vignette Overlay</h2>
+                    </div>
+                     <BaseHeroSection 
+                        overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.7))]" 
+                    />
+
                 </div>
 
                 {/* --- Desktop View --- */}
