@@ -32,7 +32,9 @@ const BaseHeroSection = ({
     overlayClass = '', 
     textClass = '', 
     containerClass = '',
-    videoClass = '' 
+    videoClass = '',
+    headlineClass = '',
+    descriptionClass = ''
 }) => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const content = painPoints[activePainPoint];
@@ -60,10 +62,10 @@ const BaseHeroSection = ({
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
                             >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-md">
+                            <h1 className={cn("text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-md", headlineClass)}>
                                 {content.title}
                             </h1>
-                            <p className="text-lg text-white/90 max-w-xl mt-4">
+                            <p className={cn("text-lg text-white/90 max-w-xl mt-4", descriptionClass)}>
                                 {content.description}
                             </p>
                             </motion.div>
@@ -151,34 +153,27 @@ export default function TempDesignPreviewPage() {
                     <BaseHeroSection
                         containerClass="bg-background/90 text-primary p-6 rounded-2xl shadow-2xl"
                         textClass="!text-primary [text-shadow:none]"
+                        headlineClass="!text-primary"
+                        descriptionClass="!text-primary/80"
                     />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Idea D: Floating Plaque</h2>
+                        <h2 className="text-center font-bold text-lg font-headline">New Idea F: Reduced Text + Dark Overlay</h2>
                     </div>
                      <BaseHeroSection 
-                        containerClass="bg-black/40 p-6 rounded-2xl backdrop-blur-md border border-white/20" 
+                        overlayClass="bg-black/70"
+                        headlineClass="!text-3xl"
+                        descriptionClass="!text-base"
                     />
                     
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Idea E: Hero Bar</h2>
+                        <h2 className="text-center font-bold text-lg font-headline">New Idea G: Frosted Glass + Reduced Text</h2>
                     </div>
-                     <div className="relative w-full h-[70vh] min-h-[600px] flex items-center text-white overflow-hidden">
-                        <video
-                            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="absolute inset-0 w-full h-full object-cover z-0"
-                        />
-                        <div className="absolute inset-0 z-10 bg-black/40" />
-                        <div className="absolute bottom-0 left-0 right-0 z-20 p-4">
-                           <BaseHeroSection containerClass="w-full max-w-full" />
-                        </div>
-                    </div>
-
-
+                     <BaseHeroSection 
+                        overlayClass="bg-black/40 backdrop-blur-sm"
+                        headlineClass="!text-3xl"
+                        descriptionClass="!text-base"
+                    />
                 </div>
 
                 {/* --- Desktop View --- */}
@@ -191,6 +186,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
-
-    
