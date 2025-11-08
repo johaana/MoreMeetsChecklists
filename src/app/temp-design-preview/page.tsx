@@ -44,7 +44,7 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Gradient Overlay */}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
@@ -69,7 +69,7 @@ const RefinedHeroSection = () => {
                     </div>
                      <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden">
                         <div className="flex overflow-x-auto no-scrollbar">
-                             <div className="relative flex flex-nowrap p-1.5 w-full min-w-[500px] md:min-w-full">
+                             <div className="relative flex flex-nowrap p-1.5 w-full min-w-full">
                                 <motion.div
                                     className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
                                     initial={false}
@@ -80,7 +80,10 @@ const RefinedHeroSection = () => {
                                 <Button
                                     key={key}
                                     variant="ghost"
-                                    className="relative z-10 flex-1 justify-center text-xs md:text-sm py-2.5 md:py-3 transition-colors duration-300 hover:bg-transparent whitespace-nowrap px-2"
+                                    className={cn(
+                                        "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12 md:h-auto",
+                                        activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                                    )}
                                     onClick={() => setActivePainPoint(key)}
                                 >
                                     <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
