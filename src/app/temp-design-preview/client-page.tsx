@@ -62,31 +62,31 @@ const InteractiveHeroSection = () => {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
-              <motion.div
-                className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
-                initial={false}
-                animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              />
-              <div className="flex">
-                {painPointKeys.map((key) => (
-                  <Button
-                    key={key}
-                    variant="ghost"
-                    className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
-                    onClick={() => setActivePainPoint(key)}
-                  >
-                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
-                      {key === 'resilience' && 'Build Resilience'}
-                      {key === 'error' && 'Eliminate Errors'}
-                      {key === 'onboarding' && 'Accelerate Onboarding'}
-                    </span>
-                  </Button>
-                ))}
-              </div>
+             <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
+                <motion.div
+                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                    initial={false}
+                    animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+                <div className="flex">
+                    {painPointKeys.map((key) => (
+                    <Button
+                        key={key}
+                        variant="ghost"
+                        className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
+                        onClick={() => setActivePainPoint(key)}
+                    >
+                        <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                        {key === 'resilience' && 'Build Resilience'}
+                        {key === 'error' && 'Eliminate Errors'}
+                        {key === 'onboarding' && 'Accelerate Onboarding'}
+                        </span>
+                    </Button>
+                    ))}
+                </div>
             </div>
-            <div className="pt-2">
+             <div className="pt-4">
                  <h2 className="text-md font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
             </div>
             <div className="pt-4">
@@ -154,7 +154,7 @@ const InteractiveHeroSection = () => {
                 ))}
             </div>
           </div>
-          <div className="pt-4 text-center">
+           <div className="pt-4 text-center">
               <h2 className="text-sm font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
           </div>
           <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
