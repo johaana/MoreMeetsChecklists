@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -45,7 +44,7 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Gradient Overlay */}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
@@ -68,28 +67,30 @@ const RefinedHeroSection = () => {
                             </motion.div>
                         </AnimatePresence>
                     </div>
-                     <div className="relative flex flex-col rounded-xl p-1.5 bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg">
-                        <motion.div
-                            className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-white/90 rounded-lg shadow-sm"
-                            initial={false}
-                            animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                        />
-                        <div className="flex">
-                            {painPointKeys.map((key) => (
-                            <Button
-                                key={key}
-                                variant="ghost"
-                                className="relative z-10 flex-1 justify-center text-sm md:text-base py-2.5 md:py-3 transition-colors duration-300 hover:bg-transparent"
-                                onClick={() => setActivePainPoint(key)}
-                            >
-                                <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
-                                {key === 'resilience' && 'Build Resilience'}
-                                {key === 'error' && 'Eliminate Errors'}
-                                {key === 'onboarding' && 'Accelerate Onboarding'}
-                                </span>
-                            </Button>
-                            ))}
+                     <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden">
+                        <div className="flex overflow-x-auto no-scrollbar">
+                             <div className="relative flex flex-nowrap p-1.5 w-full min-w-[500px] md:min-w-full">
+                                <motion.div
+                                    className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                                    initial={false}
+                                    animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                />
+                                {painPointKeys.map((key) => (
+                                <Button
+                                    key={key}
+                                    variant="ghost"
+                                    className="relative z-10 flex-1 justify-center text-xs md:text-sm py-2.5 md:py-3 transition-colors duration-300 hover:bg-transparent whitespace-nowrap px-2"
+                                    onClick={() => setActivePainPoint(key)}
+                                >
+                                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
+                                    {key === 'resilience' && 'Build Resilience'}
+                                    {key === 'error' && 'Eliminate Errors'}
+                                    {key === 'onboarding' && 'Accelerate Onboarding'}
+                                    </span>
+                                </Button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <div className="pt-2">
@@ -105,6 +106,15 @@ const RefinedHeroSection = () => {
                     </div>
                 </div>
             </div>
+             <style jsx>{`
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            `}</style>
         </section>
     );
 };
