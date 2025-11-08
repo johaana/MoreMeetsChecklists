@@ -34,7 +34,7 @@ const RefinedHeroSection = () => {
     const content = painPoints[activePainPoint];
 
     return (
-        <section className="relative w-full h-[60vh] min-h-[500px] md:min-h-[600px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-[60vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
             {/* Video Background */}
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
@@ -45,12 +45,12 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent z-10" />
 
             {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
                 <div className="max-w-2xl space-y-6">
-                     <div className="space-y-4 min-h-[12rem] flex flex-col justify-center">
+                     <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
@@ -68,9 +68,9 @@ const RefinedHeroSection = () => {
                             </motion.div>
                         </AnimatePresence>
                     </div>
-                     <div className="relative flex flex-col rounded-lg p-1.5 bg-white/10 backdrop-blur-sm border border-white/20">
+                     <div className="relative flex flex-col rounded-xl p-1.5 bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg">
                         <motion.div
-                            className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-white/90 rounded-md shadow-sm"
+                            className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-12px)] bg-white/90 rounded-lg shadow-sm"
                             initial={false}
                             animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -93,10 +93,10 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                     <div className="pt-2">
-                        <h2 className="text-md font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+                        <h2 className="text-lg font-semibold text-accent drop-shadow-sm">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
                     </div>
                     <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                        <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
                             <Link href="/packs">
                             Explore All Packages
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
