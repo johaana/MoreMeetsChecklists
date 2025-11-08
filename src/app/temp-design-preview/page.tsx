@@ -49,7 +49,7 @@ const InteractiveHeroSection = () => {
             className="w-full h-full"
           >
              <Image
-                src={content.image}
+                src={'https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg'}
                 alt={content.title}
                 fill
                 className="object-cover"
@@ -127,8 +127,8 @@ const MobileHeroWithVideo = () => {
   return (
     <section className="w-full py-12 bg-background">
       <div className="container px-4">
-        {/* Video Block */}
-        <div className="relative h-56 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
+        {/* Video Block with overlaid text */}
+        <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
              <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -139,28 +139,30 @@ const MobileHeroWithVideo = () => {
             >
               Your browser does not support the video tag.
             </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                 <h1 className="text-3xl font-extrabold font-headline tracking-tight text-white">
+                    The Professional Standard for
+                    <br />
+                    <span className="text-accent inline-block h-12">
+                        <AnimatePresence mode="wait">
+                        <motion.span
+                            key={currentWord}
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -20, opacity: 0 }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            {currentWord}
+                        </motion.span>
+                        </AnimatePresence>
+                    </span>
+                 </h1>
+            </div>
         </div>
         
         {/* Text Content Block */}
         <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-foreground">
-              The Professional Standard for
-              <br />
-              <span className="text-accent inline-block h-12">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentWord}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    {currentWord}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mt-4 mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
             </p>
             <div className="pt-8 flex justify-center">
