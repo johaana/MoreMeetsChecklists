@@ -151,7 +151,7 @@ const OptionK = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     return (
         <div className="max-w-2xl space-y-6">
-            <SharedHeroContent activePainPoint={activePainPoint} />
+            <SharedHeroContentReduced activePainPoint={activePainPoint} />
              <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
                 <div className="flex w-full">
                      <motion.div
@@ -186,7 +186,7 @@ const OptionL = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     return (
         <div className="max-w-2xl space-y-6">
-            <SharedHeroContent activePainPoint={activePainPoint} />
+            <SharedHeroContentReduced activePainPoint={activePainPoint} />
              <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
                 <div className="flex w-full">
                      <motion.div
@@ -221,7 +221,7 @@ const OptionM = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     return (
         <div className="max-w-2xl space-y-6">
-            <SharedHeroContent activePainPoint={activePainPoint} />
+            <SharedHeroContentReduced activePainPoint={activePainPoint} />
              <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 max-w-sm mx-auto">
                 <div className="flex w-full">
                      <motion.div
@@ -258,7 +258,7 @@ const Idea5 = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     return (
         <div className="max-w-2xl space-y-6 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl p-6">
-            <SharedHeroContent activePainPoint={activePainPoint} />
+            <SharedHeroContentReduced activePainPoint={activePainPoint} />
              <div className="relative flex flex-col rounded-xl bg-black/20 border border-white/20 shadow-lg overflow-hidden p-1.5">
                 <div className="flex w-full">
                      <motion.div
@@ -284,7 +284,7 @@ const Idea6 = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     return (
         <div className="max-w-5xl w-full space-y-6 bg-gradient-to-r from-black/80 via-black/70 to-black/80 backdrop-blur-sm border-y border-white/20 shadow-2xl p-6">
-            <SharedHeroContent activePainPoint={activePainPoint} />
+            <SharedHeroContentReduced activePainPoint={activePainPoint} />
              <div className="relative flex flex-col rounded-xl bg-white/10 border border-white/20 shadow-lg overflow-hidden p-1.5">
                 <div className="flex w-full">
                      <motion.div
@@ -312,7 +312,7 @@ const Idea7 = () => {
     return (
         <div className="max-w-2xl space-y-6">
             <div className="[text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-              <SharedHeroContent activePainPoint={activePainPoint} />
+              <SharedHeroContentReduced activePainPoint={activePainPoint} />
             </div>
              <div className="relative flex flex-col rounded-xl bg-black/20 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
                 <div className="flex w-full">
@@ -340,7 +340,7 @@ const Idea8 = () => {
     return (
         <div className="max-w-2xl space-y-6">
              <div className="[text-shadow:0_0_15px_rgba(255,255,255,0.3)]">
-              <SharedHeroContent activePainPoint={activePainPoint} />
+              <SharedHeroContentReduced activePainPoint={activePainPoint} />
             </div>
              <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
                 <div className="flex w-full">
@@ -433,4 +433,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
