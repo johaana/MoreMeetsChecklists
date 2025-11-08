@@ -28,7 +28,12 @@ const painPoints = {
 type PainPointKey = keyof typeof painPoints;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
-const BaseHeroSection = ({ overlayClass = '', textClass = '', containerClass = '' }) => {
+const BaseHeroSection = ({ 
+    overlayClass = '', 
+    textClass = '', 
+    containerClass = '',
+    videoClass = '' 
+}) => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const content = painPoints[activePainPoint];
 
@@ -40,7 +45,7 @@ const BaseHeroSection = ({ overlayClass = '', textClass = '', containerClass = '
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover z-0"
+                className={cn("absolute inset-0 w-full h-full object-cover z-0", videoClass)}
             />
             <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
@@ -79,11 +84,12 @@ const BaseHeroSection = ({ overlayClass = '', textClass = '', containerClass = '
                                     variant="ghost"
                                     className={cn(
                                         "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12 md:h-auto",
+                                        "whitespace-normal leading-tight",
                                         activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                                     )}
                                     onClick={() => setActivePainPoint(key)}
                                 >
-                                    <span className={cn('leading-tight', activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
+                                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
                                         {key === 'resilience' && 'Build Resilience'}
                                         {key === 'error' && 'Eliminate Errors'}
                                         {key === 'onboarding' && 'Accelerate Onboarding'}
@@ -172,6 +178,32 @@ export default function TempDesignPreviewPage() {
                     </div>
                      <BaseHeroSection 
                         overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.7))]" 
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 7: Bright Video + Hard Shadow</h2>
+                    </div>
+                    <BaseHeroSection
+                        videoClass="[filter:brightness(1.2)]"
+                        overlayClass="bg-black/20"
+                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 8: Dark Video + Glow Text</h2>
+                    </div>
+                    <BaseHeroSection
+                        videoClass="[filter:brightness(0.6)]"
+                        overlayClass="bg-black/40"
+                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.3)]"
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 9: Text on a "Plaque"</h2>
+                    </div>
+                    <BaseHeroSection
+                        containerClass="bg-background/90 text-primary p-6 rounded-2xl shadow-2xl"
+                        textClass="!text-primary [text-shadow:none]"
                     />
 
                 </div>
