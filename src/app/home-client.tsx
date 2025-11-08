@@ -119,15 +119,6 @@ const DesktopHero = () => {
                 </p>
                 </div>
                 <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
-                {/* 
-                  <video
-                    src="YOUR_VIDEO_URL.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    className="absolute inset-0 w-full h-full object-cover"
-                  /> 
-                  */}
                 <motion.div
                     className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
                     initial={false}
@@ -170,13 +161,14 @@ const DesktopHero = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute inset-0"
                 >
-                    <Image
-                    src={content.image}
-                    alt={content.title}
-                    fill
-                    className="object-cover"
-                    priority
-                    />
+                     <video
+                        src="https://res.cloudinary.com/dxqe8xdea/video/upload/w_1920,h_1080,c_fill,q_auto/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
                 </motion.div>
                 </AnimatePresence>
             </div>
@@ -652,5 +644,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
