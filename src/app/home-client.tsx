@@ -43,6 +43,7 @@ const painPoints = {
 
 type PainPointKey = keyof typeof painPoints;
 
+// --- Mobile Hero Component ---
 const MobileHero = () => {
   const rotatingWords = [
     "Operational Resilience.",
@@ -83,7 +84,7 @@ const MobileHero = () => {
           </span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mt-4">
-           For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+          For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
         </p>
         <div className="pt-8">
           <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -99,6 +100,7 @@ const MobileHero = () => {
 };
 
 
+// --- Desktop Hero Component ---
 const DesktopHero = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
     const content = painPoints[activePainPoint];
@@ -117,6 +119,15 @@ const DesktopHero = () => {
                 </p>
                 </div>
                 <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
+                {/* 
+                  <video
+                    src="YOUR_VIDEO_URL.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    className="absolute inset-0 w-full h-full object-cover"
+                  /> 
+                  */}
                 <motion.div
                     className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
                     initial={false}
@@ -150,15 +161,6 @@ const DesktopHero = () => {
                 </div>
             </div>
             <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
-                 {/* 
-                  <video
-                    src="YOUR_VIDEO_URL.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    className="absolute inset-0 w-full h-full object-cover"
-                  /> 
-                  */}
                 <AnimatePresence>
                 <motion.div
                     key={content.image}
