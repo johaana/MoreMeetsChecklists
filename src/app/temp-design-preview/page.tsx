@@ -34,7 +34,7 @@ const RefinedHeroSection = () => {
     const content = painPoints[activePainPoint];
 
     return (
-        <section className="relative w-full h-[60vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-[70vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
             {/* Video Background */}
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
@@ -45,7 +45,7 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
