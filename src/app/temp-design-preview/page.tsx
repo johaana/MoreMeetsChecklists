@@ -35,8 +35,62 @@ const UnifiedHeroSection = () => {
   return (
     <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
       <div className="container px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Content Block */}
+        {/* Mobile Layout */}
+        <div className="lg:hidden">
+          <div className="space-y-4 text-center">
+             <h1 className="text-4xl font-extrabold font-headline text-primary tracking-tighter">
+                {content.title}
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                {content.description}
+              </p>
+          </div>
+           <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border mt-6">
+            <motion.div
+                className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                initial={false}
+                animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+            <div className="flex">
+                {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                <Button
+                    key={key}
+                    variant="ghost"
+                    className="relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300"
+                    onClick={() => setActivePainPoint(key)}
+                >
+                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                    {key === 'resilience' && 'Resilience'}
+                    {key === 'error' && 'Eliminate Errors'}
+                    {key === 'onboarding' && 'Onboarding'}
+                    </span>
+                </Button>
+                ))}
+            </div>
+          </div>
+          <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
+            <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+           <div className="pt-8 text-center">
+              <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                <Link href="/packs">
+                  Explore All Packages
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6">
             <div className="space-y-4 min-h-[12rem] flex flex-col justify-center">
               <AnimatePresence mode="wait">
@@ -89,7 +143,6 @@ const UnifiedHeroSection = () => {
               </Button>
             </div>
           </div>
-          {/* Video Block */}
           <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
             <video
               src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
