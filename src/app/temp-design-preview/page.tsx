@@ -57,7 +57,7 @@ const InteractiveHeroSection = () => {
               />
           </motion.div>
         </AnimatePresence>
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -125,7 +125,7 @@ const MobileHeroWithVideo = () => {
   }, []);
 
   return (
-    <section className="w-full py-8 md:py-12 bg-background">
+    <section className="w-full py-12 bg-background">
       <div className="container px-4">
         {/* Video Block */}
         <div className="relative h-56 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
