@@ -161,7 +161,7 @@ const DesktopHero = () => {
                 </div>
             </div>
             <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
-                <AnimatePresence>
+                 <AnimatePresence>
                 <motion.div
                     key={content.image}
                     initial={{ opacity: 0, scale: 1.05 }}
@@ -652,3 +652,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
