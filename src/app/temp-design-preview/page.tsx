@@ -146,6 +146,41 @@ const OptionJ = () => {
     )
 }
 
+// --- Option J Small: The Fix-Up with reduced text ---
+const OptionJSmall = () => {
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
+    return (
+        <div className="max-w-2xl space-y-6">
+            <SharedHeroContentReduced activePainPoint={activePainPoint} />
+             <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
+                <div className="flex w-full">
+                     <motion.div
+                        className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                        initial={false}
+                        animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                    {painPointKeys.map((key) => (
+                    <Button
+                        key={key}
+                        variant="ghost"
+                        className={cn(
+                            "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
+                            "whitespace-normal leading-tight flex items-center",
+                            activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                        )}
+                        onClick={() => setActivePainPoint(key)}
+                    >
+                        <span>{painPoints[key].buttonText}</span>
+                    </Button>
+                    ))}
+                </div>
+            </div>
+            <SharedCTA />
+        </div>
+    )
+}
+
 // --- New Idea K: Improved Contrast ---
 const OptionK = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
@@ -391,7 +426,8 @@ const Idea9 = () => {
 
 export default function TempDesignPreviewPage() {
     const options = [
-        { title: "Option J: The Fix-Up", component: <OptionJ />},
+        { title: "Option J (Large Text)", component: <OptionJ />},
+        { title: "Option J (Small Text)", component: <OptionJSmall />},
         { title: "Option K: Improved Contrast", component: <OptionK />},
         { title: "Option L: Pill Glow", component: <OptionL />},
         { title: "Option M: Contained & Centered", component: <OptionM />},
@@ -433,3 +469,5 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
+
+    
