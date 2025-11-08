@@ -47,7 +47,7 @@ const InteractiveHeroSection = () => {
           key={content.image}
           priority
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-xl" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -113,7 +113,7 @@ const MobileHeroDemo = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-xl" />
       </div>
       <div className="container px-4 relative z-10">
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">
