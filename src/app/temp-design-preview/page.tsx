@@ -46,7 +46,7 @@ const InteractiveHeroSection = () => {
             className="w-full h-full"
           >
              <Image
-                src="https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg"
+                src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
                 alt={content.title}
                 fill
                 className="object-cover"
@@ -162,7 +162,7 @@ const MobileHeroWithVideo = () => {
         
         {/* Text Content Block */}
         <div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
             </p>
             <div className="pt-8 flex justify-center">
@@ -207,4 +207,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
