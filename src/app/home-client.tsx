@@ -58,7 +58,7 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Gradient Overlay */}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/70 to-black/40 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
@@ -95,7 +95,7 @@ const RefinedHeroSection = () => {
                                     key={key}
                                     variant="ghost"
                                     className={cn(
-                                        "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-auto",
+                                        "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12 md:h-auto",
                                         "whitespace-normal leading-tight",
                                         activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                                     )}
