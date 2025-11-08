@@ -107,7 +107,7 @@ const DesktopHero = () => {
         <div className="container px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6">
-                <div className="space-y-4">
+                <div className="space-y-4 min-h-[12rem] flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={activePainPoint}
@@ -160,7 +160,7 @@ const DesktopHero = () => {
             </div>
             <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
                 <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/w_1920,h_1080,c_fill,q_auto/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                     autoPlay
                     loop
                     muted
@@ -198,8 +198,8 @@ const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to a Structured System</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your fragile, person-dependent processes into a reliable, verifiable system of record.</p>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">Human Memory is Your Biggest Liability. Install a Firewall Against Error.</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-center">
         {/* Before */}

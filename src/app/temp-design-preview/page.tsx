@@ -5,10 +5,12 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const painPoints = {
   resilience: {
@@ -55,7 +57,7 @@ const InteractiveHeroSection = () => {
             />
           </motion.div>
         </AnimatePresence>
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -101,71 +103,77 @@ const InteractiveHeroSection = () => {
   );
 };
 
-
-// --- NEW Mobile Hero with Video Component ---
+// --- NEW Focused Mobile Hero with Video Block ---
 const MobileHeroWithVideo = () => {
-    const rotatingWords = [
-        "Operational Resilience.",
-        "Error-Free Compliance.",
-        "Accelerated Onboarding.",
-    ];
-    const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
+  const rotatingWords = [
+    "Operational Resilience.",
+    "Error-Free Compliance.",
+    "Accelerated Onboarding.",
+  ];
+  const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-        setCurrentWord(prev => {
-            const currentIndex = rotatingWords.indexOf(prev);
-            const nextIndex = (currentIndex + 1) % rotatingWords.length;
-            return rotatingWords[nextIndex];
-        });
-        }, 3000);
-        return () => clearInterval(intervalId);
-    }, []);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentWord(prev => {
+        const currentIndex = rotatingWords.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % rotatingWords.length;
+        return rotatingWords[nextIndex];
+      });
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, []);
 
-
-    return (
-        <section className="w-full bg-background text-foreground">
-             <div className="w-full aspect-[16/9] bg-black">
-                 <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1080/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                />
+  return (
+    <section className="w-full py-8 md:py-12 bg-background">
+      <div className="container px-4">
+        {/* Video Block */}
+        <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
+            <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1280/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            >
+              Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        {/* Text Content Block */}
+        <div className="text-left">
+            <h1 className="text-4xl font-extrabold font-headline tracking-tight text-foreground">
+              The Professional Standard for
+              <br />
+              <span className="text-accent inline-block h-12">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {currentWord}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-xl mt-4">
+              For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+            </p>
+            <div className="pt-8">
+                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
             </div>
-            <div className="container px-4 py-8 text-left">
-                <h1 className="text-3xl font-extrabold font-headline tracking-tight">
-                    The Professional Standard for
-                    <br />
-                    <span className="text-accent inline-block h-10">
-                        <AnimatePresence mode="wait">
-                            <motion.span
-                                key={currentWord}
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                exit={{ y: -20, opacity: 0 }}
-                                transition={{ duration: 0.4 }}
-                            >
-                                {currentWord}
-                            </motion.span>
-                        </AnimatePresence>
-                    </span>
-                </h1>
-                <p className="text-lg text-muted-foreground max-w-xl mt-4">
-                    For leaders who can't be everywhere, we provide the framework to standardize operational excellence.
-                </p>
-                <div className="pt-8">
-                    <Button size="lg" asChild className="group" variant="accent">
-                        <a href="/packs">
-                            Explore All Packages
-                        </a>
-                    </Button>
-                </div>
-            </div>
-        </section>
-    );
+        </div>
+      </div>
+    </section>
+  );
 };
 
 
@@ -196,3 +204,5 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
+
+    
