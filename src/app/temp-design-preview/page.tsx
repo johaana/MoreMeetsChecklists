@@ -136,50 +136,6 @@ export default function TempDesignPreviewPage() {
                 
                 {/* --- Mobile Only Preview Section --- */}
                 <div className="md:hidden">
-                    <div className="p-4 bg-muted">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 1: Frosted Glass Effect</h2>
-                    </div>
-                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30 backdrop-blur-sm" />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Subtle Text Shadow</h2>
-                    </div>
-                    <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        textClass="[text-shadow:0_2px_8px_rgba(0,0,0,0.8)]" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 3: Text Box Container</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        containerClass="bg-black/40 p-6 rounded-2xl" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Idea A: Subtle Glow Effect</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        textClass="[text-shadow:0_0_10px_rgba(0,0,0,0.7),0_0_20px_rgba(0,0,0,0.5)]" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Idea B: Gradient Text</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        textClass="bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Idea C: Vignette Overlay</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.7))]" 
-                    />
-
                     <div className="p-4 bg-muted mt-8">
                         <h2 className="text-center font-bold text-lg font-headline">Option 7: Bright Video + Hard Shadow</h2>
                     </div>
@@ -190,21 +146,38 @@ export default function TempDesignPreviewPage() {
                     />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 8: Dark Video + Glow Text</h2>
-                    </div>
-                    <BaseHeroSection
-                        videoClass="[filter:brightness(0.6)]"
-                        overlayClass="bg-black/40"
-                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.3)]"
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
                         <h2 className="text-center font-bold text-lg font-headline">Option 9: Text on a "Plaque"</h2>
                     </div>
                     <BaseHeroSection
                         containerClass="bg-background/90 text-primary p-6 rounded-2xl shadow-2xl"
                         textClass="!text-primary [text-shadow:none]"
                     />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">New Idea D: Floating Plaque</h2>
+                    </div>
+                     <BaseHeroSection 
+                        containerClass="bg-black/40 p-6 rounded-2xl backdrop-blur-md border border-white/20" 
+                    />
+                    
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">New Idea E: Hero Bar</h2>
+                    </div>
+                     <div className="relative w-full h-[70vh] min-h-[600px] flex items-center text-white overflow-hidden">
+                        <video
+                            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover z-0"
+                        />
+                        <div className="absolute inset-0 z-10 bg-black/40" />
+                        <div className="absolute bottom-0 left-0 right-0 z-20 p-4">
+                           <BaseHeroSection containerClass="w-full max-w-full" />
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -218,3 +191,6 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
+
+
+    
