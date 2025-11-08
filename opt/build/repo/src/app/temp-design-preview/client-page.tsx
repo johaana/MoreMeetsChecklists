@@ -9,6 +9,7 @@ import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp } fr
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
   resilience: {
@@ -46,7 +47,7 @@ const InteractiveHeroSection = () => {
           key={content.image}
           priority
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -81,6 +82,73 @@ const InteractiveHeroSection = () => {
     </section>
   );
 };
+
+// --- Mobile Hero Demo Component ---
+const MobileHeroDemo = () => {
+  const rotatingWords = [
+    "Operational Resilience.",
+    "Error-Free Compliance.",
+    "Accelerated Onboarding.",
+  ];
+  const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentWord(prev => {
+        const currentIndex = rotatingWords.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % rotatingWords.length;
+        return rotatingWords[nextIndex];
+      });
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+    <section className="w-full relative text-white py-16 text-left min-h-[60vh] flex items-center">
+       <div className="absolute inset-0 z-0">
+        <Image
+          src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
+          alt="Professional working in an office"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
+      <div className="container px-4 relative z-10">
+        <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+          The Professional Standard for
+          <br />
+          <span className="text-accent inline-block h-12">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentWord}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                {currentWord}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+        </h1>
+        <p className="text-lg text-white/90 max-w-xl mt-4">
+          For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+        </p>
+        <div className="pt-8">
+          <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+            <a href="/packs">
+              Explore All Packages
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
 // --- Section 2: "From Chaos to Control" Visualization ---
 const ChaosToControlSection = () => (
@@ -227,7 +295,15 @@ const ManagerAsCoachSection = () => (
 export default function TempDesignClientPage() {
     return (
         <main className="flex-1">
-            <InteractiveHeroSection />
+            <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
+                <p>⚠️ This is a temporary design preview page. ⚠️</p>
+            </div>
+            <div className="md:hidden">
+                <MobileHeroDemo />
+            </div>
+             <div className="hidden md:block">
+                <InteractiveHeroSection />
+            </div>
             <ChaosToControlSection />
             <ExpertiseExtractorSection />
             <ManagerAsCoachSection />
