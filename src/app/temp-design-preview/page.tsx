@@ -148,29 +148,10 @@ export default function TempDesignPreviewPage() {
                     />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Idea F: Reduced Text + Dark Overlay</h2>
+                        <h2 className="text-center font-bold text-lg font-headline">Final Contender: Cinematic Gradient + Reduced Text</h2>
                     </div>
                      <BaseHeroSection 
-                        overlayClass="bg-black/70"
-                        headlineClass="!text-3xl"
-                        descriptionClass="!text-base"
-                    />
-                    
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Idea G: Frosted Glass + Reduced Text</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-black/40 backdrop-blur-sm"
-                        headlineClass="!text-3xl"
-                        descriptionClass="!text-base"
-                    />
-                    
-                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Idea H: Bright Video + Reduced Text</h2>
-                    </div>
-                     <BaseHeroSection 
-                        videoClass="[filter:brightness(1.2)]"
-                        overlayClass="bg-black/20"
+                        overlayClass="bg-gradient-to-t from-black/60 to-transparent"
                         textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
                         headlineClass="!text-3xl"
                         descriptionClass="!text-base"
