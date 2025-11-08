@@ -30,7 +30,7 @@ const painPoints = {
 
 type PainPointKey = keyof typeof painPoints;
 
-// --- Desktop Hero Section ---
+// --- Desktop Hero Section (For Comparison) ---
 const InteractiveHeroSection = () => {
   const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
   const content = painPoints[activePainPoint];
@@ -47,7 +47,7 @@ const InteractiveHeroSection = () => {
             className="w-full h-full"
           >
             <Image
-              src={painPoints.resilience.image} // Using a known good image
+              src={content.image}
               alt={content.title}
               fill
               className="object-cover"
@@ -55,7 +55,7 @@ const InteractiveHeroSection = () => {
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -102,6 +102,73 @@ const InteractiveHeroSection = () => {
 };
 
 
+// --- NEW Mobile Hero with Video Component ---
+const MobileHeroWithVideo = () => {
+    const rotatingWords = [
+        "Operational Resilience.",
+        "Error-Free Compliance.",
+        "Accelerated Onboarding.",
+    ];
+    const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+        setCurrentWord(prev => {
+            const currentIndex = rotatingWords.indexOf(prev);
+            const nextIndex = (currentIndex + 1) % rotatingWords.length;
+            return rotatingWords[nextIndex];
+        });
+        }, 3000);
+        return () => clearInterval(intervalId);
+    }, []);
+
+
+    return (
+        <section className="w-full bg-background text-foreground">
+             <div className="w-full aspect-[16/9] bg-black">
+                 <video
+                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1080/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                />
+            </div>
+            <div className="container px-4 py-8 text-left">
+                <h1 className="text-3xl font-extrabold font-headline tracking-tight">
+                    The Professional Standard for
+                    <br />
+                    <span className="text-accent inline-block h-10">
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={currentWord}
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -20, opacity: 0 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                {currentWord}
+                            </motion.span>
+                        </AnimatePresence>
+                    </span>
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-xl mt-4">
+                    For leaders who can't be everywhere, we provide the framework to standardize operational excellence.
+                </p>
+                <div className="pt-8">
+                    <Button size="lg" asChild className="group" variant="accent">
+                        <a href="/packs">
+                            Explore All Packages
+                        </a>
+                    </Button>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+
 export default function TempDesignPreviewPage() {
     const isMobile = useIsMobile();
     const [isClient, setIsClient] = useState(false);
@@ -122,7 +189,7 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                <InteractiveHeroSection />
+                {isMobile ? <MobileHeroWithVideo /> : <InteractiveHeroSection />}
 
             </main>
             <Footer />
