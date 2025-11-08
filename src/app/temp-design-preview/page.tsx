@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ArrowRight } from 'lucide-react';
@@ -29,70 +28,77 @@ const painPoints = {
 
 type PainPointKey = keyof typeof painPoints;
 
-// --- Desktop Hero Section (For Comparison) ---
-const InteractiveHeroSection = () => {
+const UnifiedHeroSection = () => {
   const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
   const content = painPoints[activePainPoint];
 
   return (
-    <section className="relative w-full h-[80vh] flex items-center justify-center text-white text-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence>
-          <motion.div
-            key={activePainPoint}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="w-full h-full"
-          >
-             <Image
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                alt={content.title}
-                fill
-                className="object-cover"
-                priority
+    <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+      <div className="container px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Content Block */}
+          <div className="space-y-6">
+            <div className="space-y-4 min-h-[12rem] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePainPoint}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
+                    {content.title}
+                  </h1>
+                  <p className="text-lg text-muted-foreground max-w-xl mt-4">
+                    {content.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
+              <motion.div
+                className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                initial={false}
+                animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               />
-          </motion.div>
-        </AnimatePresence>
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
-      </div>
-
-      <div className="relative z-10 container px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activePainPoint}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline drop-shadow-lg">
-                {content.title}
-              </h1>
-              <p className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl mx-auto [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-                {content.description}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-          <div className="mt-8 flex flex-wrap justify-center gap-2 md:gap-4">
-            {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
-              <Button
-                key={key}
-                variant={activePainPoint === key ? 'accent' : 'outline'}
-                className={cn(
-                  "bg-transparent border-2 text-white transition-all duration-300",
-                  activePainPoint === key
-                    ? 'border-accent bg-accent/20'
-                    : 'border-white/50 hover:bg-white/10 hover:border-white'
-                )}
-                onClick={() => setActivePainPoint(key)}
-              >
-                {key === 'resilience' && 'Build Resilience'}
-                {key === 'error' && 'Eliminate Errors'}
-                {key === 'onboarding' && 'Accelerate Onboarding'}
+              <div className="flex">
+                {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                  <Button
+                    key={key}
+                    variant="ghost"
+                    className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
+                    onClick={() => setActivePainPoint(key)}
+                  >
+                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                      {key === 'resilience' && 'Build Resilience'}
+                      {key === 'error' && 'Eliminate Errors'}
+                      {key === 'onboarding' && 'Accelerate Onboarding'}
+                    </span>
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <div className="pt-4">
+              <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                <Link href="/packs">
+                  Explore All Packages
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
-            ))}
+            </div>
+          </div>
+          {/* Video Block */}
+          <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
+            <video
+              src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
@@ -100,87 +106,7 @@ const InteractiveHeroSection = () => {
   );
 };
 
-
-// --- NEW Focused Mobile Hero with Video Block ---
-const MobileHeroWithVideo = () => {
-  const rotatingWords = [
-    "Operational Resilience.",
-    "Error-Free Compliance.",
-    "Accelerated Onboarding.",
-  ];
-  const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentWord(prev => {
-        const currentIndex = rotatingWords.indexOf(prev);
-        const nextIndex = (currentIndex + 1) % rotatingWords.length;
-        return rotatingWords[nextIndex];
-      });
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  return (
-    <section className="w-full py-12 bg-background">
-      <div className="container px-4 text-center">
-        
-        <div className="mb-8">
-            <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-primary">
-                The Professional Standard for
-                <span className="text-accent block h-12 mt-1">
-                    <AnimatePresence mode="wait">
-                    <motion.span
-                        key={currentWord}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                         className="text-4xl sm:text-5xl"
-                    >
-                        {currentWord}
-                    </motion.span>
-                    </AnimatePresence>
-                </span>
-            </h1>
-        </div>
-        
-        <div className="rounded-2xl shadow-2xl overflow-hidden">
-             <div className="relative h-56 w-full">
-                 <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                >
-                  Your browser does not support the video tag.
-                </video>
-            </div>
-            
-            <div className="p-6 pt-8 bg-background">
-                 <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                    For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-                </p>
-                <div className="pt-8 flex justify-center">
-                    <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                        <Link href="/packs">
-                            Explore All Packages
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
-                </div>
-            </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-
 export default function TempDesignPreviewPage() {
-    const isMobile = useIsMobile();
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -199,7 +125,7 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                {isMobile ? <MobileHeroWithVideo /> : <InteractiveHeroSection />}
+                <UnifiedHeroSection />
 
             </main>
             <Footer />
