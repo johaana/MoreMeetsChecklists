@@ -39,14 +39,14 @@ const InteractiveHeroSection = () => {
       <div className="absolute inset-0 z-0">
         <AnimatePresence>
           <motion.div
-            key={content.image}
+            key={activePainPoint}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="w-full h-full"
           >
              <Image
-                src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
+                src="https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg"
                 alt={content.title}
                 fill
                 className="object-cover"
@@ -125,7 +125,6 @@ const MobileHeroWithVideo = () => {
     <section className="w-full py-12 bg-background">
       <div className="container px-4 text-center">
         
-        {/* Headline Section */}
         <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-primary">
                 The Professional Standard for
@@ -146,7 +145,6 @@ const MobileHeroWithVideo = () => {
             </h1>
         </div>
 
-        {/* Video Block with overlaid text */}
         <div className="relative h-56 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
              <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
@@ -160,18 +158,19 @@ const MobileHeroWithVideo = () => {
             </video>
         </div>
         
-        {/* Text Content Block */}
-        <div>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-            </p>
-            <div className="pt-8 flex justify-center">
-                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                    <Link href="/packs">
-                        Explore All Packages
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
+        <div className='-mt-12'>
+            <div className="bg-secondary/30 border rounded-2xl p-6 pt-10">
+                <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+                For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+                </p>
+                <div className="pt-8 flex justify-center">
+                    <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                        <Link href="/packs">
+                            Explore All Packages
+                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
             </div>
         </div>
       </div>
