@@ -16,17 +16,14 @@ const painPoints = {
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
     description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    image: 'https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg'
   },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    image: 'https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
     description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    image: 'https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4'
   }
 };
 
@@ -49,7 +46,7 @@ const InteractiveHeroSection = () => {
             className="w-full h-full"
           >
              <Image
-                src={'https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg'}
+                src="https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg"
                 alt={content.title}
                 fill
                 className="object-cover"
@@ -57,7 +54,7 @@ const InteractiveHeroSection = () => {
               />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -126,9 +123,31 @@ const MobileHeroWithVideo = () => {
 
   return (
     <section className="w-full py-12 bg-background">
-      <div className="container px-4">
+      <div className="container px-4 text-center">
+        
+        {/* Headline Section */}
+        <div className="mb-8">
+            <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-primary">
+                The Professional Standard for
+                <br />
+                <span className="text-accent inline-block h-12">
+                    <AnimatePresence mode="wait">
+                    <motion.span
+                        key={currentWord}
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        {currentWord}
+                    </motion.span>
+                    </AnimatePresence>
+                </span>
+            </h1>
+        </div>
+
         {/* Video Block with overlaid text */}
-        <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
+        <div className="relative h-56 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
              <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -139,29 +158,10 @@ const MobileHeroWithVideo = () => {
             >
               Your browser does not support the video tag.
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                 <h1 className="text-3xl font-extrabold font-headline tracking-tight text-white">
-                    The Professional Standard for
-                    <br />
-                    <span className="text-accent inline-block h-12">
-                        <AnimatePresence mode="wait">
-                        <motion.span
-                            key={currentWord}
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -20, opacity: 0 }}
-                            transition={{ duration: 0.4 }}
-                        >
-                            {currentWord}
-                        </motion.span>
-                        </AnimatePresence>
-                    </span>
-                 </h1>
-            </div>
         </div>
         
         {/* Text Content Block */}
-        <div className="text-center">
+        <div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
             </p>
@@ -207,3 +207,4 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
+
