@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star, ArrowRight, FileText, Layers, Shield, Users, Award, BarChart, Hospital, Factory, GraduationCap, Gem, CookingPot, Building as BuildingIcon, Zap, BrainCircuit, Mail, Loader2, CheckCircle, BadgePercent, History, Download, Globe, AlertTriangle } from "lucide-react";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { premiumPacks, type PremiumPack } from "@/lib/premium-packs";
@@ -15,12 +15,13 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { blogPosts } from "@/lib/blog-posts";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
-import { RotatingText } from "@/components/ui/rotating-text";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { subscribeToBlog } from "@/app/blog/actions";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const painPoints = {
   resilience: {
@@ -42,62 +43,156 @@ const painPoints = {
 
 type PainPointKey = keyof typeof painPoints;
 
-// --- Section 1: The Interactive "Pain Point" Hero ---
-const InteractiveHeroSection = () => {
-  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
-  const content = painPoints[activePainPoint];
+// --- Mobile Hero Component ---
+const MobileHero = () => {
+  const rotatingWords = [
+    "Operational Resilience.",
+    "Error-Free Compliance.",
+    "Accelerated Onboarding.",
+  ];
+  const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentWord(prev => {
+        const currentIndex = rotatingWords.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % rotatingWords.length;
+        return rotatingWords[nextIndex];
+      });
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [rotatingWords]);
 
   return (
-    <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
-      <div className="container px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
-                {content.title}
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-xl">
-                {content.description}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
-                <Button
-                  key={key}
-                  size="lg"
-                  variant={activePainPoint === key ? 'default' : 'outline'}
-                  className="justify-start"
-                  onClick={() => setActivePainPoint(key)}
-                >
-                  {key === 'resilience' && 'Build Resilience'}
-                  {key === 'error' && 'Eliminate Errors'}
-                  {key === 'onboarding' && 'Accelerate Onboarding'}
-                </Button>
-              ))}
-            </div>
-             <div className="pt-4">
-                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-                    <Link href="/packs">
-                        Explore All Packages
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
-            </div>
-          </div>
-          <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src={content.image}
-              alt={content.title}
-              fill
-              className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-              key={content.image}
-              priority
-            />
-          </div>
+    <section className="w-full bg-background text-foreground py-16">
+      <div className="container px-4 text-left">
+        <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+          The Professional Standard for
+          <br />
+          <span className="text-accent inline-block h-12">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentWord}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                {currentWord}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-xl mt-4">
+          Our expert-built SOP checklists transform your operations from fragile processes into reliable, auditable systems.
+        </p>
+        <div className="pt-8">
+          <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+            <Link href="/packs">
+              Explore All Packages
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
   );
+};
+
+
+// --- Desktop Hero Component ---
+const DesktopHero = () => {
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+    const content = painPoints[activePainPoint];
+
+    return (
+        <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+        <div className="container px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-6">
+                <div className="space-y-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
+                    {content.title}
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-xl">
+                    {content.description}
+                </p>
+                </div>
+                <div className="relative flex flex-col rounded-lg p-1.5 bg-muted shadow-inner">
+                <motion.div
+                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                    initial={false}
+                    animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+                <div className="flex">
+                    {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                    <Button
+                        key={key}
+                        variant="ghost"
+                        className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
+                        onClick={() => setActivePainPoint(key)}
+                    >
+                        <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                        {key === 'resilience' && 'Build Resilience'}
+                        {key === 'error' && 'Eliminate Errors'}
+                        {key === 'onboarding' && 'Accelerate Onboarding'}
+                        </span>
+                    </Button>
+                    ))}
+                </div>
+                </div>
+                <div className="pt-4">
+                <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                    <Link href="/packs">
+                    Explore All Packages
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
+                </div>
+            </div>
+            <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
+                <AnimatePresence>
+                <motion.div
+                    key={content.image}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0"
+                >
+                    <Image
+                    src={content.image}
+                    alt={content.title}
+                    fill
+                    className="object-cover"
+                    priority
+                    />
+                </motion.div>
+                </AnimatePresence>
+            </div>
+            </div>
+        </div>
+        </section>
+    );
+};
+
+
+// --- Main Interactive Hero Section ---
+const InteractiveHeroSection = () => {
+  const isMobile = useIsMobile();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    // Render a consistent placeholder during SSR and initial client render to avoid hydration mismatch
+    return <section className="w-full py-16 bg-background h-[60vh] md:h-auto"></section>;
+  }
+
+  return isMobile ? <MobileHero /> : <DesktopHero />;
 };
 
 
@@ -117,6 +212,15 @@ const ChaosToControlSection = () => (
             <CardDescription>Relying on memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
+             <div className="rounded-lg overflow-hidden mb-4">
+              <Image 
+                  src="https://i.postimg.cc/28RJCB3L/stressed-out-team-small.webp"
+                  alt="Stressed team in a chaotic office"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-auto"
+              />
+            </div>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone remember to check the fire exits?"</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
@@ -130,6 +234,15 @@ const ChaosToControlSection = () => (
             <CardDescription>A system of record that ensures excellence every time.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-foreground">
+              <div className="rounded-lg overflow-hidden mb-4">
+              <Image 
+                  src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
+                  alt="Calm, happy professional in control of their work"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-auto"
+              />
+            </div>
              <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making the operation resilient.</span></p>
@@ -198,7 +311,11 @@ const ManagerAsCoachSection = () => (
         <div className="space-y-4">
           <Badge variant="accent">FOR MANAGERS</Badge>
           <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
-          <p className="text-muted-foreground">Our 'Manager's Edition' packs can include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
+          <p className="text-muted-foreground">
+            Our 'Manager's Edition' packs can include an optional{' '}
+            <strong className="text-foreground">"Trainer's Notes"</strong>{' '}
+            column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.
+          </p>
           <Dialog>
             <DialogTrigger asChild>
               <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
@@ -211,7 +328,7 @@ const ManagerAsCoachSection = () => (
                 </DialogDescription>
               </DialogHeader>
               <div className="prose prose-sm max-w-none text-muted-foreground">
-                <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
+                <p>The standard MoreMeets packs ensure tasks are done correctly. The <strong>Manager's Coaching Edition</strong> ensures your team understands <em>why</em> they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
                 <h4 className="font-semibold text-foreground">How it Works: The "Trainer's Notes" Column</h4>
                 <p>For each critical task in a checklist, we can add a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
                 <ul className="space-y-2">
@@ -245,6 +362,12 @@ function SubscriptionForm() {
   const [loading, setLoading] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
   const { toast } = useToast();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -267,6 +390,15 @@ function SubscriptionForm() {
     }
     setLoading(false);
   };
+
+  if (!isClient) {
+    return (
+       <div className="flex flex-col sm:flex-row gap-2 w-full max-w-md h-10">
+          <div className="bg-gray-200 animate-pulse rounded-md w-2/3"></div>
+          <div className="bg-gray-200 animate-pulse rounded-md w-1/3"></div>
+      </div>
+    )
+  }
 
   if (submitted) {
     return (
@@ -477,11 +609,9 @@ export default function HomeClientPage() {
         
         <InteractiveHeroSection />
 
-         <section className="w-full py-12 bg-secondary/30 border-y">
+         <section className="w-full py-12 border-y">
             <div className="container px-2 md:px-6 text-center">
-                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline text-primary">
-                    Meet More <RotatingText words={["Standards.", "Compliance.", "Consistency."]} />
-                </h2>
+                <h3 className="text-lg font-semibold text-muted-foreground">MoreMeets: More Standards. More Compliance. More Consistency.</h3>
             </div>
         </section>
 
