@@ -107,7 +107,7 @@ const DesktopHero = () => {
         <div className="container px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6">
-                <div className="space-y-4 h-48">
+                <div className="space-y-4 min-h-[12rem] flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={activePainPoint}
