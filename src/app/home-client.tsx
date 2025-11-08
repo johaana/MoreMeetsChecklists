@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -74,7 +75,7 @@ const RefinedHeroSection = () => {
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-md">
                                 {content.title}
                             </h1>
-                            <p className="text-lg text-white/90 max-w-xl mt-4">
+                            <p className="text-lg text-white/90 max-w-xl mt-4 drop-shadow-md">
                                 {content.description}
                             </p>
                             </motion.div>
@@ -94,8 +95,8 @@ const RefinedHeroSection = () => {
                                     key={key}
                                     variant="ghost"
                                     className={cn(
-                                        "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-16 md:h-auto",
-                                        "whitespace-normal h-auto py-2 leading-tight",
+                                        "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-auto",
+                                        "whitespace-normal leading-tight",
                                         activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                                     )}
                                     onClick={() => setActivePainPoint(key)}
@@ -584,3 +585,6 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
+    
