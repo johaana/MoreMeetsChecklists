@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from "framer-motion";
+import { useIsMobile } from '@/hooks/use-mobile';
+
 
 const painPoints = {
   resilience: {
@@ -104,8 +106,8 @@ const InteractiveHeroSection = () => {
 };
 
 
-// --- Mobile Hero Demo Component ---
-const MobileHeroDemo = () => {
+// --- Mobile Hero with Video ---
+const MobileHeroWithVideo = () => {
   const rotatingWords = [
     "Operational Resilience.",
     "Error-Free Compliance.",
@@ -122,53 +124,56 @@ const MobileHeroDemo = () => {
       });
     }, 3000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [rotatingWords]);
 
   return (
-    <section className="w-full bg-background text-foreground py-8">
-      <div className="w-full mb-8">
-         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1280/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-auto"
-        />
-      </div>
-      <div className="container px-4 text-left">
-        <h1 className="text-4xl font-extrabold font-headline tracking-tight">
-          The Professional Standard for
-          <br />
-          <span className="text-accent inline-block h-12">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentWord}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {currentWord}
-              </motion.span>
-            </AnimatePresence>
-          </span>
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-xl mt-4">
-          For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-        </p>
-        <div className="pt-8">
-          <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-            <a href="/packs">
-              Explore All Packages
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
+    <section className="w-full bg-background text-foreground pt-4 pb-16">
+      <div className="container px-4">
+        <div className="w-full mb-8 rounded-2xl overflow-hidden">
+          <video
+              src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1280/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto"
+          />
+        </div>
+        <div className="text-left">
+          <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+            The Professional Standard for
+            <br />
+            <span className="text-accent inline-block h-12">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentWord}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {currentWord}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-xl mt-4">
+            For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+          </p>
+          <div className="pt-8">
+            <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+              <a href="/packs">
+                Explore All Packages
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
 
 
 // --- Section 2: "From Chaos to Control" Visualization ---
@@ -314,17 +319,25 @@ const ManagerAsCoachSection = () => (
 
 
 export default function TempDesignClientPage() {
+    const isMobile = useIsMobile();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        return <main className="flex-1 h-[60vh]"></main>;
+    }
+
     return (
         <main className="flex-1">
             <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
                 <p>⚠️ This is a temporary design preview page. ⚠️</p>
             </div>
-            <div className="md:hidden">
-                <MobileHeroDemo />
-            </div>
-             <div className="hidden md:block">
-                <InteractiveHeroSection />
-            </div>
+            
+            {isMobile ? <MobileHeroWithVideo /> : <InteractiveHeroSection />}
+
             <ChaosToControlSection />
             <ExpertiseExtractorSection />
             <ManagerAsCoachSection />
