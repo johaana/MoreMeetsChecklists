@@ -48,16 +48,16 @@ const InteractiveHeroSection = () => {
             transition={{ duration: 0.8 }}
             className="w-full h-full"
           >
-            <Image
-              src={content.image}
-              alt={content.title}
-              fill
-              className="object-cover"
-              priority
-            />
+             <Image
+                src={content.image}
+                alt={content.title}
+                fill
+                className="object-cover"
+                priority
+              />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -103,6 +103,7 @@ const InteractiveHeroSection = () => {
   );
 };
 
+
 // --- NEW Focused Mobile Hero with Video Block ---
 const MobileHeroWithVideo = () => {
   const rotatingWords = [
@@ -127,9 +128,9 @@ const MobileHeroWithVideo = () => {
     <section className="w-full py-8 md:py-12 bg-background">
       <div className="container px-4">
         {/* Video Block */}
-        <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
-            <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1280/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+        <div className="relative h-56 w-full rounded-2xl overflow-hidden shadow-2xl mb-8">
+             <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1024/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
                 loop
                 muted
@@ -141,8 +142,8 @@ const MobileHeroWithVideo = () => {
         </div>
         
         {/* Text Content Block */}
-        <div className="text-left">
-            <h1 className="text-4xl font-extrabold font-headline tracking-tight text-foreground">
+        <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-foreground">
               The Professional Standard for
               <br />
               <span className="text-accent inline-block h-12">
@@ -159,10 +160,10 @@ const MobileHeroWithVideo = () => {
                 </AnimatePresence>
               </span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mt-4">
+            <p className="text-lg text-muted-foreground max-w-2xl mt-4 mx-auto">
               For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
             </p>
-            <div className="pt-8">
+            <div className="pt-8 flex justify-center">
                 <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
                     <Link href="/packs">
                         Explore All Packages
@@ -204,5 +205,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
-    
