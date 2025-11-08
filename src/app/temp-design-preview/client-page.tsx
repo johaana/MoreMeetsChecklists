@@ -38,25 +38,26 @@ const InteractiveHeroSection = () => {
 
   return (
     <section className="relative w-full h-[80vh] flex items-center justify-center text-white text-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence>
-            <motion.div
-              key={content.image}
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="w-full h-full"
-            >
-              <Image
-                src={content.image}
-                alt={content.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+        <div className="absolute inset-0 z-0">
+             <AnimatePresence>
+                <motion.div
+                  key={content.image}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="w-full h-full"
+                >
+                  <Image
+                    src={content.image}
+                    alt={content.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
@@ -102,6 +103,7 @@ const InteractiveHeroSection = () => {
   );
 };
 
+
 // --- Mobile Hero Demo Component ---
 const MobileHeroDemo = () => {
   const rotatingWords = [
@@ -123,18 +125,18 @@ const MobileHeroDemo = () => {
   }, []);
 
   return (
-    <section className="w-full relative text-white py-16 text-left min-h-[60vh] flex items-center">
-       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
-          alt="Professional working in an office"
-          fill
-          className="object-cover"
-          priority
+    <section className="w-full bg-background text-foreground py-8">
+      <div className="w-full mb-8">
+         <video
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1280/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto"
         />
-        <div className="absolute inset-0 bg-black/60" />
       </div>
-      <div className="container px-4 relative z-10">
+      <div className="container px-4 text-left">
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">
           The Professional Standard for
           <br />
@@ -152,7 +154,7 @@ const MobileHeroDemo = () => {
             </AnimatePresence>
           </span>
         </h1>
-        <p className="text-lg text-white/90 max-w-xl mt-4">
+        <p className="text-lg text-muted-foreground max-w-xl mt-4">
           For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
         </p>
         <div className="pt-8">
