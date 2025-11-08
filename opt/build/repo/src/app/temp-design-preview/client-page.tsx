@@ -47,7 +47,7 @@ const InteractiveHeroSection = () => {
           key={content.image}
           priority
         />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
