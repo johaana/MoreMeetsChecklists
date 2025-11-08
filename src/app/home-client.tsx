@@ -107,6 +107,7 @@ const DesktopHero = () => {
         <div className="container px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6">
+                <div className="space-y-4 h-48">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={activePainPoint}
@@ -114,7 +115,6 @@ const DesktopHero = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
-                      className="space-y-4"
                     >
                       <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
                           {content.title}
@@ -124,6 +124,7 @@ const DesktopHero = () => {
                       </p>
                     </motion.div>
                 </AnimatePresence>
+                </div>
                 <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
                 <motion.div
                     className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
@@ -158,14 +159,14 @@ const DesktopHero = () => {
                 </div>
             </div>
             <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
-                 <video
+                <video
                     src="https://res.cloudinary.com/dxqe8xdea/video/upload/w_1920,h_1080,c_fill,q_auto/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover"
-                  />
+                />
             </div>
             </div>
         </div>
@@ -639,3 +640,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    

@@ -39,25 +39,44 @@ const InteractiveHeroSection = () => {
   return (
     <section className="relative w-full h-[80vh] flex items-center justify-center text-white text-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Image
-          src={content.image}
-          alt={content.title}
-          fill
-          className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-          key={content.image}
-          priority
-        />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-xl" />
+        <AnimatePresence>
+            <motion.div
+              key={content.image}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="w-full h-full"
+            >
+              <Image
+                src={content.image}
+                alt={content.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
       </div>
 
       <div className="relative z-10 container px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline drop-shadow-lg transition-all duration-300">
-            {content.title}
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl mx-auto [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-            {content.description}
-          </p>
+           <AnimatePresence mode="wait">
+             <motion.div
+                key={activePainPoint}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline drop-shadow-lg">
+                  {content.title}
+                </h1>
+                <p className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl mx-auto [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
+                  {content.description}
+                </p>
+            </motion.div>
+          </AnimatePresence>
           <div className="mt-8 flex flex-wrap justify-center gap-2 md:gap-4">
             {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
               <Button
@@ -113,7 +132,7 @@ const MobileHeroDemo = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-xl" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
       <div className="container px-4 relative z-10">
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">
@@ -310,3 +329,5 @@ export default function TempDesignClientPage() {
         </main>
     );
 }
+
+    
