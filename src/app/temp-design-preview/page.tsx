@@ -148,16 +148,6 @@ export default function TempDesignPreviewPage() {
                     />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 9: Text on a "Plaque"</h2>
-                    </div>
-                    <BaseHeroSection
-                        containerClass="bg-background/90 text-primary p-6 rounded-2xl shadow-2xl"
-                        textClass="!text-primary [text-shadow:none]"
-                        headlineClass="!text-primary"
-                        descriptionClass="!text-primary/80"
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
                         <h2 className="text-center font-bold text-lg font-headline">New Idea F: Reduced Text + Dark Overlay</h2>
                     </div>
                      <BaseHeroSection 
@@ -171,6 +161,17 @@ export default function TempDesignPreviewPage() {
                     </div>
                      <BaseHeroSection 
                         overlayClass="bg-black/40 backdrop-blur-sm"
+                        headlineClass="!text-3xl"
+                        descriptionClass="!text-base"
+                    />
+                    
+                     <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">New Idea H: Bright Video + Reduced Text</h2>
+                    </div>
+                     <BaseHeroSection 
+                        videoClass="[filter:brightness(1.2)]"
+                        overlayClass="bg-black/20"
+                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
                         headlineClass="!text-3xl"
                         descriptionClass="!text-base"
                     />
