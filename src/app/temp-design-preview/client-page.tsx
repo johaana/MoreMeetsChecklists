@@ -42,8 +42,8 @@ const InteractiveHeroSection = () => {
         <AnimatePresence>
             <motion.div
               key={content.image}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
               className="w-full h-full"
             >
@@ -329,5 +329,3 @@ export default function TempDesignClientPage() {
         </main>
     );
 }
-
-    

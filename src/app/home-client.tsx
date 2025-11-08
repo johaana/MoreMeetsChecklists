@@ -160,7 +160,7 @@ const DesktopHero = () => {
             </div>
             <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
                 <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/w_1920,h_1080,c_fill,q_auto/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                     autoPlay
                     loop
                     muted
@@ -640,5 +640,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
