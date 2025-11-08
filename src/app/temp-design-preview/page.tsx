@@ -49,7 +49,7 @@ const MobileHero = () => {
       });
     }, 3000);
     return () => clearInterval(intervalId);
-  }, [rotatingWords]);
+  }, []);
 
   return (
     <section className="w-full bg-background text-foreground py-16">
@@ -74,6 +74,9 @@ const MobileHero = () => {
         <p className="text-lg text-muted-foreground max-w-xl mt-4">
           For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
         </p>
+         <div className="pt-6">
+             <h2 className="text-sm font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+        </div>
         <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
