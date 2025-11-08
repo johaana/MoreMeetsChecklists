@@ -5,22 +5,22 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
-import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp } from 'lucide-react';
+import { ArrowRight, Zap, Users, Shield, BrainCircuit, FileText, TrendingUp, CheckCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
-  resilience: {
-    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    image: 'https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg'
-  },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
     image: 'https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp'
+  },
+  resilience: {
+    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
+    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
+    image: 'https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
@@ -31,118 +31,150 @@ const painPoints = {
 
 type PainPointKey = keyof typeof painPoints;
 
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
+
 // --- Section 1: The Interactive "Pain Point" Hero ---
 const InteractiveHeroSection = () => {
-  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
   const content = painPoints[activePainPoint];
 
   return (
-    <section className="relative w-full h-[80vh] flex items-center justify-center text-white text-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={content.image}
-          alt={content.title}
-          fill
-          className="object-cover transition-all duration-500 ease-in-out transform scale-105"
-          key={content.image}
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
-      </div>
-
-      <div className="relative z-10 container px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline drop-shadow-lg transition-all duration-300">
-            {content.title}
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl mx-auto [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-            {content.description}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-2 md:gap-4">
-            {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
-              <Button
-                key={key}
-                variant={activePainPoint === key ? 'accent' : 'outline'}
-                className={cn(
-                  "bg-transparent border-2 text-white transition-all duration-300",
-                   activePainPoint === key
-                     ? 'border-accent bg-accent/20'
-                     : 'border-white/50 hover:bg-white/10 hover:border-white'
-                )}
-                onClick={() => setActivePainPoint(key)}
-              >
-                {key === 'resilience' && 'Build Resilience'}
-                {key === 'error' && 'Eliminate Errors'}
-                {key === 'onboarding' && 'Accelerate Onboarding'}
+    <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
+      <div className="container px-4 md:px-6">
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-6">
+            <div className="space-y-4 min-h-[12rem] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePainPoint}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline text-primary tracking-tighter">
+                    {content.title}
+                  </h1>
+                   <p className="text-lg text-muted-foreground max-w-xl mt-4">
+                    {content.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+             <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border">
+                <motion.div
+                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                    initial={false}
+                    animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+                <div className="flex">
+                    {painPointKeys.map((key) => (
+                    <Button
+                        key={key}
+                        variant="ghost"
+                        className="relative z-10 flex-1 justify-center text-base py-4 transition-colors duration-300"
+                        onClick={() => setActivePainPoint(key)}
+                    >
+                        <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                        {key === 'resilience' && 'Build Resilience'}
+                        {key === 'error' && 'Eliminate Errors'}
+                        {key === 'onboarding' && 'Accelerate Onboarding'}
+                        </span>
+                    </Button>
+                    ))}
+                </div>
+            </div>
+             <div className="pt-4">
+                 <h2 className="text-md font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+            </div>
+            <div className="pt-4">
+              <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                <a href="/packs">
+                  Explore All Packages
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
-            ))}
+            </div>
+          </div>
+          <div className="relative h-64 md:h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
+            <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
 
-// --- Mobile Hero Demo Component ---
-const MobileHeroDemo = () => {
-  const rotatingWords = [
-    "Operational Resilience.",
-    "Error-Free Compliance.",
-    "Accelerated Onboarding.",
-  ];
-  const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentWord(prev => {
-        const currentIndex = rotatingWords.indexOf(prev);
-        const nextIndex = (currentIndex + 1) % rotatingWords.length;
-        return rotatingWords[nextIndex];
-      });
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  return (
-    <section className="w-full relative text-white py-16 text-left min-h-[60vh] flex items-center">
-       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://i.postimg.cc/T1X9vgQR/happy-male-entrepreneur-reading-email-laptop-while-working-office.jpg"
-          alt="Professional working in an office"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
-      <div className="container px-4 relative z-10">
-        <h1 className="text-4xl font-extrabold font-headline tracking-tight">
-          The Professional Standard for
-          <br />
-          <span className="text-accent inline-block h-12">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentWord}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {currentWord}
-              </motion.span>
-            </AnimatePresence>
-          </span>
-        </h1>
-        <p className="text-lg text-white/90 max-w-xl mt-4">
-          For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-        </p>
-        <div className="pt-8">
-          <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
-            <a href="/packs">
-              Explore All Packages
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
+        {/* Mobile Layout */}
+        <div className="lg:hidden">
+           <div className="space-y-4 text-center">
+             <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePainPoint}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                    <h1 className="text-3xl sm:text-4xl font-extrabold font-headline text-primary tracking-tighter">
+                        {content.title}
+                    </h1>
+                     <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                        {content.description}
+                    </p>
+                </motion.div>
+              </AnimatePresence>
+          </div>
+           <div className="relative flex flex-col rounded-lg p-1.5 bg-secondary/50 border mt-6">
+            <motion.div
+                className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
+                initial={false}
+                animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+            <div className="flex">
+                {painPointKeys.map((key) => (
+                <Button
+                    key={key}
+                    variant="ghost"
+                    className="relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300"
+                    onClick={() => setActivePainPoint(key)}
+                >
+                    <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
+                    {key === 'resilience' && 'Resilience'}
+                    {key === 'error' && 'Eliminate Errors'}
+                    {key === 'onboarding' && 'Onboarding'}
+                    </span>
+                </Button>
+                ))}
+            </div>
+          </div>
+           <div className="pt-4 text-center">
+              <h2 className="text-sm font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+          </div>
+          <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
+            <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+           <div className="pt-8 text-center">
+              <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
+                <a href="/packs">
+                  Explore All Packages
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+            </div>
         </div>
       </div>
     </section>
@@ -179,10 +211,10 @@ const ChaosToControlSection = () => (
             <CardDescription>A system of record that ensures excellence every time.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-foreground">
-             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
           </CardContent>
         </Card>
       </div>
@@ -298,12 +330,7 @@ export default function TempDesignClientPage() {
             <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
                 <p>⚠️ This is a temporary design preview page. ⚠️</p>
             </div>
-            <div className="md:hidden">
-                <MobileHeroDemo />
-            </div>
-             <div className="hidden md:block">
-                <InteractiveHeroSection />
-            </div>
+            <InteractiveHeroSection />
             <ChaosToControlSection />
             <ExpertiseExtractorSection />
             <ManagerAsCoachSection />
