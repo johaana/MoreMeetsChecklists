@@ -46,7 +46,7 @@ const InteractiveHeroSection = () => {
             className="w-full h-full"
           >
              <Image
-                src="https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg"
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 alt={content.title}
                 fill
                 className="object-cover"
@@ -125,11 +125,10 @@ const MobileHeroWithVideo = () => {
     <section className="w-full py-12 bg-background">
       <div className="container px-4 text-center">
         
-        <div className="mb-8">
+        <div className="mb-4">
             <h1 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-primary">
                 The Professional Standard for
-                <br />
-                <span className="text-accent inline-block h-12">
+                <span className="text-accent block h-12 mt-1">
                     <AnimatePresence mode="wait">
                     <motion.span
                         key={currentWord}
@@ -137,6 +136,7 @@ const MobileHeroWithVideo = () => {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.4 }}
+                         className="text-4xl sm:text-5xl"
                     >
                         {currentWord}
                     </motion.span>
@@ -159,9 +159,9 @@ const MobileHeroWithVideo = () => {
         </div>
         
         <div className='-mt-12'>
-            <div className="bg-secondary/30 border rounded-2xl p-6 pt-10">
-                <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+            <div className="p-6 pt-10">
+                 <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+                    For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
                 </p>
                 <div className="pt-8 flex justify-center">
                     <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -206,3 +206,4 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
+
