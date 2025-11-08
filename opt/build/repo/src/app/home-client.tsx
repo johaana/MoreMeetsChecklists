@@ -24,13 +24,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const painPoints = {
-  resilience: {
-    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-  },
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
+  },
+  resilience: {
+    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
+    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
@@ -39,12 +39,13 @@ const painPoints = {
 };
 
 type PainPointKey = keyof typeof painPoints;
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 // --- Mobile Hero Component ---
 const MobileHero = () => {
   const rotatingWords = [
-    "Operational Resilience.",
     "Error-Free Compliance.",
+    "Operational Resilience.",
     "Accelerated Onboarding.",
   ];
   const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
@@ -83,6 +84,16 @@ const MobileHero = () => {
         <p className="text-lg text-muted-foreground max-w-xl mt-4">
           For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
         </p>
+        <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
+            <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            />
+        </div>
         <div className="pt-8">
           <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
             <Link href="/packs">
@@ -99,7 +110,7 @@ const MobileHero = () => {
 
 // --- Desktop Hero Component ---
 const DesktopHero = () => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const content = painPoints[activePainPoint];
 
     return (
@@ -129,11 +140,11 @@ const DesktopHero = () => {
                 <motion.div
                     className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-background rounded-md shadow-sm"
                     initial={false}
-                    animate={{ x: `${Object.keys(painPoints).indexOf(activePainPoint) * 100}%` }}
+                    animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
                 <div className="flex">
-                    {(Object.keys(painPoints) as PainPointKey[]).map((key) => (
+                    {painPointKeys.map((key) => (
                     <Button
                         key={key}
                         variant="ghost"
@@ -141,13 +152,16 @@ const DesktopHero = () => {
                         onClick={() => setActivePainPoint(key)}
                     >
                         <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
-                        {key === 'resilience' && 'Build Resilience'}
-                        {key === 'error' && 'Eliminate Errors'}
-                        {key === 'onboarding' && 'Accelerate Onboarding'}
+                          {key === 'error' && 'Eliminate Errors'}
+                          {key === 'resilience' && 'Build Resilience'}
+                          {key === 'onboarding' && 'Accelerate Onboarding'}
                         </span>
                     </Button>
                     ))}
                 </div>
+                </div>
+                 <div className="pt-4">
+                     <h2 className="text-md font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
                 </div>
                 <div className="pt-4">
                 <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -198,8 +212,8 @@ const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">Human Memory is Your Biggest Liability. Install a Firewall Against Error.</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.</p>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to a Structured System</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your fragile, person-dependent processes into a reliable, verifiable system of record.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-center">
         {/* Before */}
@@ -640,3 +654,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
