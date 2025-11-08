@@ -45,7 +45,7 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             {/* Content */}
             <div className="container px-4 md:px-6 relative z-20">
@@ -70,7 +70,7 @@ const RefinedHeroSection = () => {
                     </div>
                      <div className="relative flex flex-col rounded-xl p-1.5 bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg">
                         <motion.div
-                            className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-12px)] bg-white/90 rounded-lg shadow-sm"
+                            className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(33.33%-10px)] bg-white/90 rounded-lg shadow-sm"
                             initial={false}
                             animate={{ x: `${painPointKeys.indexOf(activePainPoint) * 100}%` }}
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -80,7 +80,7 @@ const RefinedHeroSection = () => {
                             <Button
                                 key={key}
                                 variant="ghost"
-                                className="relative z-10 flex-1 justify-center text-base py-3 transition-colors duration-300 hover:bg-transparent"
+                                className="relative z-10 flex-1 justify-center text-sm md:text-base py-2.5 md:py-3 transition-colors duration-300 hover:bg-transparent"
                                 onClick={() => setActivePainPoint(key)}
                             >
                                 <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
@@ -96,7 +96,7 @@ const RefinedHeroSection = () => {
                         <h2 className="text-lg font-semibold text-accent drop-shadow-sm">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
                     </div>
                     <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
                             <Link href="/packs">
                             Explore All Packages
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
