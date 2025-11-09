@@ -584,7 +584,3 @@ export default function HomeClientPage() {
 }
 
     
-
-    
-
-    
