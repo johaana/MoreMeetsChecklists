@@ -59,7 +59,7 @@ const RefinedHeroSection = () => {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             <div className="container px-4 md:px-6 relative z-20">
                 <div className="max-w-2xl space-y-6">
