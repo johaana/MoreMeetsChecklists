@@ -14,19 +14,19 @@ import Link from 'next/link';
 const contentOptions = {
     optionA: {
         error: {
-            title: "Human Error is Inevitable. Business Failure Isn't.",
-            description: "Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.",
+            title: "Your next crisis is a forgotten check.",
+            description: 'Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.',
             buttonText: 'Reduce Risk',
             mobileButtonText: 'Control'
         },
         resilience: {
-            title: "Your Best Employee is About to Quit. Your Process is About to Break.",
+            title: "Your process just walked out the door.",
             description: 'We help you convert operational knowledge from a fragile memory into a permanent corporate asset, ensuring quality and consistency are built into your system.',
             buttonText: 'Build Your Asset',
             mobileButtonText: 'System'
         },
         onboarding: {
-            title: "Your New Hire's First Mistake Could Be Your Last.",
+            title: "Your new hire is a liability, not an asset.",
             description: 'Our checklists provide a clear roadmap, drastically reducing training time and empowering new hires to be competent, safe, and effective from their very first shift.',
             buttonText: 'Onboard Faster',
             mobileButtonText: 'Train'
@@ -34,19 +34,19 @@ const contentOptions = {
     },
     optionB: {
         error: {
-            title: 'Even Your Best People Will Make Mistakes.',
-            description: 'It’s not about skill; it\'s human nature under pressure. Our checklists provide a simple, verifiable guide to ensure critical tasks are done right, every time.',
+            title: "Human Error is Inevitable. Business Failure Isn't.",
+            description: 'Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.',
             buttonText: 'Ensure Accuracy',
             mobileButtonText: 'Risk'
         },
         resilience: {
-            title: 'What Happens When Your "Go-To" Person Goes?',
+            title: "If it's not written down, it's not a process.",
             description: 'We help you convert your team\'s unwritten expertise into a permanent corporate asset. This creates a resilient process that anyone on your team can follow.',
             buttonText: 'Create Resilience',
             mobileButtonText: 'Resilience'
         },
         onboarding: {
-            title: 'New Hires Can\'t Learn Everything on Day One.',
+            title: 'Competence From Day One, Not Day Ninety.',
             description: 'But they can follow a checklist. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.',
             buttonText: 'Accelerate Onboarding',
             mobileButtonText: 'Onboarding'
@@ -204,13 +204,13 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page for A/B testing hero copy. ⚠️</p>
                 </div>
                 
-                <TempPageOption title="Option A: The 'Intelligent Control' Copy" description="Direct, strategic, and asset-focused.">
+                <TempPageOption title="Option A: The Challenger" description="Direct, provocative, and pain-focused.">
                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
                         <HeroContent contentSet={optionA} />
                      </BaseHeroSection>
                 </TempPageOption>
 
-                 <TempPageOption title="Option B: The 'Pragmatic Leader' Copy" description="Consultative, empathetic, and problem-focused.">
+                 <TempPageOption title="Option B: The Strategist" description="Confident, intelligent, and solution-focused.">
                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
                         <HeroContent contentSet={optionB} />
                      </BaseHeroSection>
