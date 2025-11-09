@@ -26,7 +26,7 @@ const contentOptions = {
             mobileButtonText: 'System'
         },
         onboarding: {
-            title: 'Compliance From Day One, Not Day Ninety.',
+            title: 'Onboard in Days, Not Weeks.',
             description: 'Our checklists are a live training manual. They give new hires the clear, actionable steps to be compliant, safe, and effective from their very first shift, drastically reducing training time.',
             buttonText: 'Onboard Faster',
             mobileButtonText: 'Train'
