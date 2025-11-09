@@ -65,8 +65,8 @@ const BaseHeroSection = ({
     );
 };
 
-const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean }) => (
-    <div className={cn("relative flex flex-col rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full max-w-sm")}>
+const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string }) => (
+    <div className={cn("relative flex flex-col rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full max-w-sm", className)}>
         <div className="flex w-full">
             <motion.div
                 className="absolute top-1 left-1 bottom-1 w-1/3 bg-white/90 rounded-md shadow-sm"
@@ -167,7 +167,7 @@ export default function TempDesignPreviewPage() {
                 <div className="md:hidden">
 
                     {/* --- KEPT OPTIONS --- */}
-                    <TempPageOption title="1. Cinematic Vignette (Kept)" description="A radial gradient focuses light on the center, naturally drawing the eye to the text.">
+                    <TempPageOption title="1. Cinematic Vignette" description="A radial gradient focuses light on the center, naturally drawing the eye to the text.">
                         <BaseHeroSection 
                             overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.7))]" 
                             containerClass="flex items-center justify-center text-center"
@@ -175,8 +175,7 @@ export default function TempDesignPreviewPage() {
                            <div className="max-w-xl space-y-4">{fullContentBlock}</div>
                         </BaseHeroSection>
                     </TempPageOption>
-
-                    <TempPageOption title="2. Minimalist Lower Third (Base)" description="The original reference. Broadcast-style text placement, but missing key interactive elements.">
+                     <TempPageOption title="2. Minimalist Lower Third (Base)" description="The original reference. Broadcast-style text placement.">
                         <BaseHeroSection 
                           containerClass="flex flex-col justify-end pb-12"
                           overlayClass="bg-gradient-to-t from-black/70 via-transparent to-transparent"
@@ -190,20 +189,7 @@ export default function TempDesignPreviewPage() {
                         </BaseHeroSection>
                     </TempPageOption>
 
-                    {/* --- NEW VARIATIONS OF OPTION G --- */}
-
-                    <TempPageOption title="Variation A: Compact Stack" description="All elements stacked cleanly in the lower-left corner.">
-                        <BaseHeroSection 
-                            containerClass="flex flex-col justify-end pb-8"
-                            overlayClass="bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-                        >
-                            <div className="w-full max-w-xl space-y-3">
-                                {fullContentBlock}
-                            </div>
-                        </BaseHeroSection>
-                    </TempPageOption>
-                    
-                    <TempPageOption title="Variation B: Integrated Bar" description="Pill buttons are integrated into a sleek bottom bar for a modern look.">
+                    <TempPageOption title="3. Variation B (Integrated Bar)" description="Pill buttons are integrated into a sleek bottom bar for a modern look.">
                         <BaseHeroSection 
                             containerClass="flex flex-col justify-end pb-8"
                             overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
@@ -219,18 +205,7 @@ export default function TempDesignPreviewPage() {
                         </BaseHeroSection>
                     </TempPageOption>
 
-                    <TempPageOption title="Variation C: Floating Plaque" description="Text and buttons sit on a semi-transparent 'plaque' for guaranteed readability.">
-                        <BaseHeroSection 
-                            containerClass="flex flex-col justify-end pb-8"
-                            overlayClass="bg-black/20"
-                        >
-                            <div className="w-full max-w-xl space-y-3 bg-black/60 backdrop-blur-sm p-4 rounded-lg border border-white/20">
-                                {fullContentBlock}
-                            </div>
-                        </BaseHeroSection>
-                    </TempPageOption>
-
-                     <TempPageOption title="Variation D: Split Layout" description="Separates the main headline and buttons from the secondary text.">
+                    <TempPageOption title="4. Variation D (Split Layout)" description="Separates the main headline and buttons from the secondary text.">
                         <BaseHeroSection 
                             containerClass="flex flex-col justify-end pb-8"
                             overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
@@ -245,22 +220,7 @@ export default function TempDesignPreviewPage() {
                             </div>
                         </BaseHeroSection>
                     </TempPageOption>
-
-                    <TempPageOption title="Variation E: Centered Button" description="A more symmetrical layout with the main action button centered.">
-                         <BaseHeroSection 
-                            containerClass="flex flex-col justify-end pb-8 text-center"
-                            overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
-                        >
-                            <div className="w-full max-w-xl space-y-3">
-                               <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
-                               <div className="mx-auto"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
-                               <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                               <div className="pt-2"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
-                            </div>
-                        </BaseHeroSection>
-                    </TempPageOption>
-
-                    <TempPageOption title="Variation F: Wide Stance" description="Spreads elements horizontally across the bottom for a spacious feel.">
+                     <TempPageOption title="5. Variation F (Wide Stance)" description="Spreads elements horizontally across the bottom for a spacious feel.">
                         <BaseHeroSection 
                             containerClass="flex flex-col justify-end pb-8"
                             overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
@@ -275,8 +235,7 @@ export default function TempDesignPreviewPage() {
                            </div>
                         </BaseHeroSection>
                     </TempPageOption>
-                    
-                    <TempPageOption title="Variation G: Two-Column" description="A unique mobile layout splitting text and interaction.">
+                     <TempPageOption title="6. Variation G (Two-Column)" description="A unique mobile layout splitting text and interaction.">
                          <BaseHeroSection 
                             containerClass="flex flex-col justify-end pb-8"
                             overlayClass="bg-gradient-to-t from-black/80 via-black/20 to-transparent"
@@ -291,6 +250,55 @@ export default function TempDesignPreviewPage() {
                             </div>
                         </BaseHeroSection>
                     </TempPageOption>
+
+                    {/* --- NEW OPTIONS --- */}
+                     <TempPageOption title="7. Variation H (Text Focus)" description="Makes the pill buttons smaller and more subtle, putting maximum emphasis on the main headline.">
+                        <BaseHeroSection 
+                            containerClass="flex flex-col justify-end pb-8"
+                            overlayClass="bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+                        >
+                            <div className="w-full max-w-xl space-y-4">
+                               <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
+                               <div className="flex gap-4 items-center">
+                                    <div className="flex-1">
+                                        <InteractivePill className="p-0.5 bg-black/20" activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
+                                    </div>
+                                    <Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore</Link></Button>
+                               </div>
+                               <h2 className="text-xs font-semibold text-accent/80 pt-2">The Solution: Expert-Crafted Operational Checklists.</h2>
+                            </div>
+                        </BaseHeroSection>
+                    </TempPageOption>
+
+                     <TempPageOption title="8. Variation I (Pill Bar)" description="A modern, app-like design that places the pill selector in a sleek, full-width bar at the bottom.">
+                        <BaseHeroSection 
+                            containerClass="flex flex-col justify-end"
+                            overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                        >
+                            <div className="w-full max-w-xl space-y-4 pb-4">
+                               <div className="min-h-[9rem] px-4"><AnimatedText content={content} /></div>
+                               <div className="px-4"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
+                            </div>
+                            <div className="w-full bg-black/50 backdrop-blur-md mt-4">
+                                <InteractivePill className="p-1 max-w-full rounded-none border-x-0 border-b-0 border-t border-white/10 bg-transparent shadow-none backdrop-blur-none" activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
+                            </div>
+                        </BaseHeroSection>
+                    </TempPageOption>
+
+                     <TempPageOption title="9. Variation J (Centered & Balanced)" description="A symmetrical and elegant layout that center-aligns the entire content block.">
+                        <BaseHeroSection 
+                            containerClass="flex flex-col justify-end pb-8 text-center"
+                            overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
+                        >
+                            <div className="w-full max-w-xl space-y-4">
+                               <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
+                               <div className="mx-auto"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
+                               <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
+                               <div className="pt-2"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
+                            </div>
+                        </BaseHeroSection>
+                    </TempPageOption>
+
 
                 </div>
 
@@ -308,5 +316,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
-    
