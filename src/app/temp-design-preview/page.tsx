@@ -15,7 +15,7 @@ const contentOptions = {
     optionA: {
         error: {
             title: 'Relying on Memory is a Gamble.',
-            description: 'Even your best teams miss things under pressure. Our checklists provide a simple, verifiable framework to catch small oversights before they become major problems.',
+            description: 'Even the best teams miss things under pressure. Our checklists provide a simple, verifiable framework to catch small oversights before they become major problems.',
             buttonText: 'Reduce Risk',
             mobileButtonText: 'Control'
         },
@@ -71,7 +71,7 @@ const BaseHeroSection = ({
 }) => {
 
     return (
-        <section className="relative w-full h-[80vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-[85vh] min-h-[650px] md:min-h-[700px] flex items-center text-white overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -82,7 +82,7 @@ const BaseHeroSection = ({
             />
             <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
-            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full", containerClass)}>
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-center", containerClass)}>
                  {children}
             </div>
         </section>
@@ -174,8 +174,12 @@ export default function TempDesignPreviewPage() {
          <HeroVariant contentSet={contentSet}>
             {(isMobile, content, activePainPoint, setActivePainPoint) => (
                 <div className="max-w-2xl space-y-6">
-                    <div className="min-h-[14rem]"><AnimatedText content={content[activePainPoint]} /></div>
-                    <div className=""><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
+                    <div className="min-h-[14rem] flex flex-col justify-center">
+                        <AnimatedText content={content[activePainPoint]} />
+                    </div>
+                    <div className="">
+                        <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
+                    </div>
                     <div className="pt-2">
                         <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                     </div>
