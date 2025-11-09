@@ -14,17 +14,20 @@ const painPoints = {
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    buttonText: 'Errors'
+    buttonText: 'Eliminate Errors',
+    mobileButtonText: 'Errors'
   },
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
     description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    buttonText: 'Resilience'
+    buttonText: 'Build Resilience',
+    mobileButtonText: 'Resilience'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
     description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    buttonText: 'Onboarding'
+    buttonText: 'Accelerate Onboarding',
+    mobileButtonText: 'Onboarding'
   }
 };
 
@@ -41,7 +44,7 @@ const BaseHeroSection = ({
     buttonContainerClass = 'bg-white/10 backdrop-blur-sm border border-white/20',
     buttonClass = 'text-white/80 hover:text-white',
     activeButtonClass = 'text-primary font-semibold',
-    mobileButtons = false,
+    isMobile,
     children
 }: {
     overlayClass?: string;
@@ -53,7 +56,7 @@ const BaseHeroSection = ({
     buttonContainerClass?: string;
     buttonClass?: string;
     activeButtonClass?: string;
-    mobileButtons?: boolean;
+    isMobile: boolean;
     children?: React.ReactNode;
 }) => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
@@ -112,7 +115,7 @@ const BaseHeroSection = ({
                                         onClick={() => setActivePainPoint(key)}
                                     >
                                         <span className={cn('leading-tight whitespace-nowrap', activePainPoint === key ? activeButtonClass : buttonClass)}>
-                                            {painPoints[key][mobileButtons ? 'mobileButtonText' : 'buttonText']}
+                                            {isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}
                                         </span>
                                     </Button>
                                     ))}
@@ -147,6 +150,17 @@ const BaseHeroSection = ({
 };
 
 export default function TempDesignPreviewPage() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
@@ -158,86 +172,52 @@ export default function TempDesignPreviewPage() {
                 {/* --- Mobile Only Preview Section --- */}
                 <div className="md:hidden">
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">1. Refined Frosted Glass (Light)</h2>
-                         <p className="text-center text-sm text-muted-foreground">A more subtle blur to soften the background without obscuring the video.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">A. Clean & Subtle</h2>
+                        <p className="text-center text-sm text-muted-foreground">A slight dark overlay with a crisp text shadow. Professional and clear.</p>
                     </div>
                     <BaseHeroSection 
-                        overlayClass="bg-black/10 backdrop-blur-sm"
-                        textClass="[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]"
-                        mobileButtons
+                        overlayClass="bg-black/20"
+                        textClass="[text-shadow:0_1px_6px_rgba(0,0,0,0.6)]"
+                        isMobile={isMobile}
                     />
-                    
+
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">2. Cinematic Vignette</h2>
-                         <p className="text-center text-sm text-muted-foreground">Darkens the edges to naturally draw focus to the centered text. A classic, elegant look.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">B. Cinematic Dark</h2>
+                        <p className="text-center text-sm text-muted-foreground">Darker video filter and overlay for more dramatic text contrast.</p>
                     </div>
                      <BaseHeroSection 
-                        overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.8))]"
-                        textClass="[text-shadow:0_1px_6px_rgba(0,0,0,0.7)]" 
-                        mobileButtons
+                        videoClass="[filter:brightness(0.6)]"
+                        overlayClass="bg-black/50"
+                        textClass="[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]"
+                        isMobile={isMobile}
                     />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">3. Contained "Plaque"</h2>
-                         <p className="text-center text-sm text-muted-foreground">Text is placed on a solid background for maximum readability, but designed to feel modern and integrated.</p>
-                    </div>
-                    <BaseHeroSection
-                        overlayClass="bg-black/50"
-                        containerClass="flex items-center justify-center"
-                    >
-                         <div className="bg-background/90 text-primary p-6 rounded-xl shadow-2xl max-w-sm w-full">
-                            <h1 className="text-2xl font-extrabold font-headline text-primary">Human Memory is a Liability.</h1>
-                            <p className="text-sm text-foreground/80 mt-2">Our system is an external brain, guiding your team through critical tasks to eliminate costly mistakes.</p>
-                         </div>
-                    </BaseHeroSection>
-
-                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">4. Elegant Text Glow</h2>
+                        <h2 className="text-center font-bold text-lg font-headline">C. Elegant Glow</h2>
                         <p className="text-center text-sm text-muted-foreground">A very subtle glow effect on a darker video that makes text feel premium and sharp.</p>
                     </div>
                      <BaseHeroSection 
                         videoClass="[filter:brightness(0.7)]"
                         overlayClass="bg-black/40"
                         textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.4)]"
-                        mobileButtons
+                        isMobile={isMobile}
                     />
                     
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">5. Clean Gradient & Sharp Shadow</h2>
-                        <p className="text-center text-sm text-muted-foreground">The most classic and reliable approach. A simple gradient and a crisp text shadow.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">D. Balanced & Readable</h2>
+                        <p className="text-center text-sm text-muted-foreground">Less dark than other options, but still provides excellent readability with a strong text shadow.</p>
                     </div>
                      <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
-                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.8)]"
-                        mobileButtons
+                        overlayClass="bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+                        textClass="[text-shadow:0_2px_5px_rgba(0,0,0,0.8)]"
+                        isMobile={isMobile}
                     />
 
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">6. Minimalist Lower Third</h2>
-                        <p className="text-center text-sm text-muted-foreground">A clean, broadcast-inspired design with smaller text placed in a high-contrast zone.</p>
-                    </div>
-                    <BaseHeroSection
-                        overlayClass="bg-gradient-to-t from-black/90 via-transparent to-transparent"
-                        containerClass="flex items-end"
-                        h1Class="text-3xl font-extrabold font-headline text-white"
-                        pClass="text-base text-white/80 mt-2"
-                        mobileButtons
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">7. High-Contrast Overlay</h2>
-                         <p className="text-center text-sm text-muted-foreground">A simple, effective, no-compromise solution. A solid dark overlay ensures text is always readable.</p>
-                    </div>
-                    <BaseHeroSection 
-                        overlayClass="bg-black/60" 
-                        textClass="[text-shadow:none]"
-                        mobileButtons
-                    />
                 </div>
 
                 {/* --- Desktop View (for context) --- */}
                 <div className="hidden md:block">
-                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" />
+                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" isMobile={isMobile} />
                 </div>
                 
             </main>
