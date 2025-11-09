@@ -60,7 +60,7 @@ const BaseHeroSection = ({
     const content = painPoints[activePainPoint];
 
     return (
-        <section className="relative w-full h-[70vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-[80vh] min-h-[650px] md:min-h-[700px] flex items-center text-white overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -106,13 +106,13 @@ const BaseHeroSection = ({
                                         key={key}
                                         variant="ghost"
                                         className={cn(
-                                            "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12 md:h-auto",
+                                            "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14 md:h-auto",
                                             activePainPoint === key ? activeButtonClass : buttonClass
                                         )}
                                         onClick={() => setActivePainPoint(key)}
                                     >
                                         <span className={cn('leading-tight whitespace-nowrap', activePainPoint === key ? activeButtonClass : buttonClass)}>
-                                            {painPoints[key].buttonText}
+                                            {painPoints[key][mobileButtons ? 'mobileButtonText' : 'buttonText']}
                                         </span>
                                     </Button>
                                     ))}
@@ -158,71 +158,79 @@ export default function TempDesignPreviewPage() {
                 {/* --- Mobile Only Preview Section --- */}
                 <div className="md:hidden">
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 1: Frosted Glass</h2>
-                         <p className="text-center text-sm text-muted-foreground">A blurred overlay separates text from the video, ensuring readability.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">1. Refined Frosted Glass (Light)</h2>
+                         <p className="text-center text-sm text-muted-foreground">A more subtle blur to soften the background without obscuring the video.</p>
                     </div>
                     <BaseHeroSection 
-                        overlayClass="bg-black/30 backdrop-blur-sm"
-                        mobileButtons
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Subtle Text Shadow</h2>
-                        <p className="text-center text-sm text-muted-foreground">A classic, clean look with a soft shadow to lift text from the background.</p>
-                    </div>
-                    <BaseHeroSection 
-                        overlayClass="bg-black/40"
-                        textClass="[text-shadow:0_1px_6px_rgba(0,0,0,0.7)]"
+                        overlayClass="bg-black/10 backdrop-blur-sm"
+                        textClass="[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]"
                         mobileButtons
                     />
                     
-                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 3: Text Box Container</h2>
-                        <p className="text-center text-sm text-muted-foreground">Guarantees readability by placing text in a semi-transparent container.</p>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-black/50" 
-                    >
-                         <div className="max-w-2xl space-y-6 bg-black/40 p-4 rounded-xl">
-                            <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                    key={'textbox'}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.3 }}
-                                    >
-                                    <h1 className="text-4xl font-extrabold font-headline tracking-tighter text-white">
-                                        {painPoints['error'].title}
-                                    </h1>
-                                    <p className="text-lg text-white/90 max-w-xl mt-4">
-                                        {painPoints['error'].description}
-                                    </p>
-                                    </motion.div>
-                                </AnimatePresence>
-                            </div>
-                         </div>
-                    </BaseHeroSection>
-
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 4: Subtle Glow Effect</h2>
-                        <p className="text-center text-sm text-muted-foreground">A soft glow makes text pop against a darker background.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">2. Cinematic Vignette</h2>
+                         <p className="text-center text-sm text-muted-foreground">Darkens the edges to naturally draw focus to the centered text. A classic, elegant look.</p>
                     </div>
                      <BaseHeroSection 
-                        overlayClass="bg-black/60" 
-                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.25)]"
+                        overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.8))]"
+                        textClass="[text-shadow:0_1px_6px_rgba(0,0,0,0.7)]" 
                         mobileButtons
                     />
 
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 5: Bright Video + Hard Shadow</h2>
-                         <p className="text-center text-sm text-muted-foreground">A high-contrast style using a brighter video and a sharper shadow.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">3. Contained "Plaque"</h2>
+                         <p className="text-center text-sm text-muted-foreground">Text is placed on a solid background for maximum readability, but designed to feel modern and integrated.</p>
                     </div>
                     <BaseHeroSection
-                        videoClass="[filter:brightness(1.1)]"
-                        overlayClass="bg-black/20"
-                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.6)]"
+                        overlayClass="bg-black/50"
+                        containerClass="flex items-center justify-center"
+                    >
+                         <div className="bg-background/90 text-primary p-6 rounded-xl shadow-2xl max-w-sm w-full">
+                            <h1 className="text-2xl font-extrabold font-headline text-primary">Human Memory is a Liability.</h1>
+                            <p className="text-sm text-foreground/80 mt-2">Our system is an external brain, guiding your team through critical tasks to eliminate costly mistakes.</p>
+                         </div>
+                    </BaseHeroSection>
+
+                     <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">4. Elegant Text Glow</h2>
+                        <p className="text-center text-sm text-muted-foreground">A very subtle glow effect on a darker video that makes text feel premium and sharp.</p>
+                    </div>
+                     <BaseHeroSection 
+                        videoClass="[filter:brightness(0.7)]"
+                        overlayClass="bg-black/40"
+                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.4)]"
+                        mobileButtons
+                    />
+                    
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">5. Clean Gradient & Sharp Shadow</h2>
+                        <p className="text-center text-sm text-muted-foreground">The most classic and reliable approach. A simple gradient and a crisp text shadow.</p>
+                    </div>
+                     <BaseHeroSection 
+                        overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
+                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.8)]"
+                        mobileButtons
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">6. Minimalist Lower Third</h2>
+                        <p className="text-center text-sm text-muted-foreground">A clean, broadcast-inspired design with smaller text placed in a high-contrast zone.</p>
+                    </div>
+                    <BaseHeroSection
+                        overlayClass="bg-gradient-to-t from-black/90 via-transparent to-transparent"
+                        containerClass="flex items-end"
+                        h1Class="text-3xl font-extrabold font-headline text-white"
+                        pClass="text-base text-white/80 mt-2"
+                        mobileButtons
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">7. High-Contrast Overlay</h2>
+                         <p className="text-center text-sm text-muted-foreground">A simple, effective, no-compromise solution. A solid dark overlay ensures text is always readable.</p>
+                    </div>
+                    <BaseHeroSection 
+                        overlayClass="bg-black/60" 
+                        textClass="[text-shadow:none]"
                         mobileButtons
                     />
                 </div>
