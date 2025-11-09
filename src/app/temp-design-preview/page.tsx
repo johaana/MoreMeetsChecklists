@@ -14,20 +14,40 @@ import Link from 'next/link';
 const contentOptions = {
     optionA: {
         error: {
-            title: 'Under Pressure, People Forget.',
-            description: 'Our digital SOPs act as a firewall against human error, ensuring critical tasks are done right, every time.',
-            buttonText: 'Eliminate Errors',
-            mobileButtonText: 'Errors'
+            title: 'Relying on Memory is a Gamble.',
+            description: 'Even your best teams miss things under pressure. Our checklists provide a simple, verifiable framework to catch small oversights before they become major problems.',
+            buttonText: 'Reduce Risk',
+            mobileButtonText: 'Control'
         },
         resilience: {
-            title: 'Your Best Manager Can\'t Be Everywhere.',
-            description: 'We transform your operation from person-dependent to process-driven, ensuring expert knowledge stays long after people leave.',
-            buttonText: 'Build Resilience',
+            title: 'Adopt Global Best Practices as Your Own.',
+            description: 'Start with our globally compliant solutions, then modify them to create a permanent corporate asset. This ensures your operations run on a documented, expert-built process.',
+            buttonText: 'Build Your Asset',
+            mobileButtonText: 'System'
+        },
+        onboarding: {
+            title: 'Compliance From Day One, Not Day Ninety.',
+            description: 'Our checklists are a live training manual. They give new hires the clear, actionable steps to be compliant, safe, and effective from their very first shift, drastically reducing training time.',
+            buttonText: 'Onboard Faster',
+            mobileButtonText: 'Train'
+        }
+    },
+    optionB: {
+        error: {
+            title: 'Even Your Best People Will Make Mistakes.',
+            description: 'It’s not about skill; it\'s human nature under pressure. Our checklists provide a simple, verifiable guide to ensure critical tasks are done right, every time.',
+            buttonText: 'Ensure Accuracy',
+            mobileButtonText: 'Risk'
+        },
+        resilience: {
+            title: 'What Happens When Your "Go-To" Person Goes?',
+            description: 'We help you convert your team\'s unwritten expertise into a permanent corporate asset. This creates a resilient process that anyone on your team can follow.',
+            buttonText: 'Create Resilience',
             mobileButtonText: 'Resilience'
         },
         onboarding: {
-            title: 'Stop Wasting Months on Training.',
-            description: 'Our checklists are a live training manual, empowering new hires to perform like seasoned pros from their very first shift.',
+            title: 'New Hires Can\'t Learn Everything on Day One.',
+            description: 'But they can follow a checklist. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.',
             buttonText: 'Accelerate Onboarding',
             mobileButtonText: 'Onboarding'
         }
@@ -70,12 +90,12 @@ const BaseHeroSection = ({
 };
 
 const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionA }) => (
-    <div className={cn("relative flex flex-col rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full max-w-sm", className)}>
+    <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full", className)}>
         <div className="flex w-full">
             <motion.div
-                className="absolute top-1 left-1 bottom-1 w-1/3 bg-white/90 rounded-md shadow-sm"
+                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
                 initial={false}
-                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 1.33}px)` }}
+                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
             {painPointKeys.map((key) => (
@@ -83,14 +103,14 @@ const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, classN
                 key={key}
                 variant="ghost"
                 className={cn(
-                    "relative z-10 flex-1 justify-center text-xs py-2 h-10 transition-colors duration-300 hover:bg-transparent px-1",
+                    "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
                     "whitespace-normal leading-tight flex items-center text-center",
                     activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                 )}
                 onClick={() => setActivePainPoint(key)}
             >
                 <span>
-                    {painPoints[key].mobileButtonText}
+                     {isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}
                 </span>
             </Button>
             ))}
@@ -102,15 +122,15 @@ const AnimatedText = ({ content }: { content: typeof contentOptions.optionA[Pain
     <AnimatePresence mode="wait">
         <motion.div
         key={content.title}
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
+        exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
         >
-            <h1 className="text-xl font-extrabold font-headline tracking-tight text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                 {content.title}
             </h1>
-            <p className="text-sm text-white/90 max-w-xl mt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+            <p className="text-lg text-white/90 max-w-xl mt-4 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                 {content.description}
             </p>
         </motion.div>
@@ -128,10 +148,9 @@ const TempPageOption = ({ title, description, children }: { title: string, descr
     </>
 )
 
-const HeroVariant = ({ children }: { children: (isMobile: boolean, content: any, activePainPoint: PainPointKey, setActivePainPoint: (k: PainPointKey) => void) => React.ReactNode }) => {
+const HeroVariant = ({ children, contentSet }: { children: (isMobile: boolean, content: any, activePainPoint: PainPointKey, setActivePainPoint: (k: PainPointKey) => void) => React.ReactNode, contentSet: any }) => {
     const [isMobile, setIsMobile] = useState(false);
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const { optionA } = contentOptions;
     
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -142,187 +161,56 @@ const HeroVariant = ({ children }: { children: (isMobile: boolean, content: any,
 
     return (
         <>
-            {children(isMobile, optionA, activePainPoint, setActivePainPoint)}
+            {children(isMobile, contentSet, activePainPoint, setActivePainPoint)}
         </>
-    );
-};
-
-const ContentSection = ({ title, options, contentSet }: { title: string, options: string[], contentSet: any }) => {
-    return (
-        <div className="py-8">
-            <div className="bg-primary text-primary-foreground p-4 text-center">
-                <h2 className="text-2xl font-bold font-headline">{title}</h2>
-            </div>
-            {options.includes("B") && <HeroB content={contentSet} />}
-            {options.includes("D") && <HeroD content={contentSet} />}
-            {options.includes("H") && <HeroH content={contentSet} />}
-            {options.includes("J") && <HeroJ content={contentSet} />}
-        </div>
-    );
-}
-
-const HeroB = ({ content }: { content: any }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const currentContent = content[activePainPoint];
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    return (
-        <TempPageOption title="Variation B (Integrated Bar)" description="Pill buttons are integrated into a sleek bottom bar for a modern look.">
-            <BaseHeroSection 
-                containerClass="flex flex-col justify-end pb-8"
-                overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
-            >
-                <div className="w-full max-w-xl space-y-3">
-                    <div className="min-h-[7rem]"><AnimatedText content={currentContent} /></div>
-                    <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                    <div className="flex items-center gap-4 pt-2">
-                        <div className="flex-1"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
-                        <Button asChild className="group shadow-lg" variant="accent" size="icon"><Link href="/packs"><ArrowRight className="h-5 w-5" /></Link></Button>
-                    </div>
-                </div>
-            </BaseHeroSection>
-        </TempPageOption>
-    );
-};
-
-const HeroD = ({ content }: { content: any }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const currentContent = content[activePainPoint];
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    return (
-        <TempPageOption title="Variation D (Split Layout)" description="Separates the main headline and buttons from the secondary text.">
-            <BaseHeroSection 
-                containerClass="flex flex-col justify-end pb-8"
-                overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
-            >
-                <div className="w-full max-w-xl space-y-3">
-                   <div className="min-h-[7rem]"><AnimatedText content={currentContent} /></div>
-                   <div className="flex gap-4">
-                    <div className="flex-1"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
-                    <Button asChild className="group shadow-lg" variant="accent" size="icon"><Link href="/packs"><ArrowRight className="h-5 w-5" /></Link></Button>
-                   </div>
-                   <h2 className="text-xs font-semibold text-accent/80 pt-2">The Solution: Expert-Crafted Operational Checklists.</h2>
-                </div>
-            </BaseHeroSection>
-        </TempPageOption>
-    );
-};
-
-const HeroH = ({ content }: { content: any }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const currentContent = content[activePainPoint];
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-    return (
-        <TempPageOption title="Variation H (Text Focus + Glow)" description="Subtle buttons and a glowing solution text to maximize headline impact.">
-            <BaseHeroSection 
-                containerClass="flex flex-col justify-end pb-8"
-                overlayClass="bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-            >
-                <div className="w-full max-w-xl space-y-4">
-                   <div className="min-h-[7rem]"><AnimatedText content={currentContent} /></div>
-                   <div className="flex gap-4 items-center">
-                        <div className="flex-1">
-                            <InteractivePill painPoints={content} className="p-0.5 bg-black/20" activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                        </div>
-                        <Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore</Link></Button>
-                   </div>
-                   <h2 className="text-xs font-semibold text-accent/80 pt-2 [text-shadow:0_0_8px_hsl(var(--accent)/0.7)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                </div>
-            </BaseHeroSection>
-        </TempPageOption>
-    );
-};
-
-const HeroJ = ({ content }: { content: any }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const currentContent = content[activePainPoint];
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-    return (
-        <TempPageOption title="Variation J (Centered & Balanced)" description="A symmetrical and elegant layout that center-aligns the entire content block.">
-            <BaseHeroSection 
-                containerClass="flex flex-col justify-end pb-8 items-center text-center"
-                overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
-            >
-                <div className="w-full max-w-xl space-y-4">
-                   <div className="min-h-[7rem]"><AnimatedText content={currentContent} /></div>
-                   <div className="mx-auto w-full max-w-xs"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
-                   <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                   <div className="pt-2"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
-                </div>
-            </BaseHeroSection>
-        </TempPageOption>
     );
 };
 
 
 export default function TempDesignPreviewPage() {
-    const { optionA } = contentOptions;
+    const { optionA, optionB } = contentOptions;
+
+    const HeroContent = ({ contentSet }: { contentSet: any }) => (
+         <HeroVariant contentSet={contentSet}>
+            {(isMobile, content, activePainPoint, setActivePainPoint) => (
+                <div className="max-w-2xl space-y-6">
+                    <div className="min-h-[14rem]"><AnimatedText content={content[activePainPoint]} /></div>
+                    <div className=""><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
+                    <div className="pt-2">
+                        <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
+                    </div>
+                    <div className="pt-2">
+                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                            <Link href="/packs">
+                            Explore Packages
+                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
+                    </div>
+                </div>
+            )}
+        </HeroVariant>
+    )
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main className="flex-1">
                 <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-                    <p>⚠️ This is a temporary design preview page for mobile variations. ⚠️</p>
+                    <p>⚠️ This is a temporary design preview page for A/B testing hero copy. ⚠️</p>
                 </div>
                 
-                <div className="md:hidden">
-                    <ContentSection title="Refined Content" options={["B", "D", "H", "J"]} contentSet={optionA} />
-                </div>
-
-                {/* --- Desktop View (Unchanged) --- */}
-                <div className="hidden md:block">
-                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
-                        <HeroVariant>
-                            {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                                <div className="max-w-2xl space-y-6">
-                                     <div className="min-h-[7rem]"><AnimatedText content={content[activePainPoint]} /></div>
-                                    <div className="mt-4"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
-                                    <div className="pt-3">
-                                        <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                                    </div>
-                                    <div className="pt-3">
-                                        <Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                                            <Link href="/packs">
-                                            Explore
-                                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                            )}
-                        </HeroVariant>
+                <TempPageOption title="Option A: The 'Intelligent Control' Copy" description="Direct, strategic, and asset-focused.">
+                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
+                        <HeroContent contentSet={optionA} />
                      </BaseHeroSection>
-                </div>
+                </TempPageOption>
+
+                 <TempPageOption title="Option B: The 'Pragmatic Leader' Copy" description="Consultative, empathetic, and problem-focused.">
+                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
+                        <HeroContent contentSet={optionB} />
+                     </BaseHeroSection>
+                </TempPageOption>
                 
             </main>
             <Footer />
