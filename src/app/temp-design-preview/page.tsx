@@ -165,23 +165,6 @@ export default function TempDesignPreviewPage() {
                 </div>
                 
                 <div className="md:hidden">
-                    <TempPageOption title="Cinematic Vignette" description="A radial gradient focuses light on the center, naturally drawing the eye to the text.">
-                        <BaseHeroSection 
-                            overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.7))]" 
-                            containerClass="flex items-center justify-center text-center"
-                        >
-                           <div className="max-w-xl space-y-4">{fullContentBlock}</div>
-                        </BaseHeroSection>
-                    </TempPageOption>
-
-                    <TempPageOption title="Minimalist Lower Third (Full)" description="The base layout, now with all elements and a dark text shadow for clarity.">
-                        <BaseHeroSection 
-                          containerClass="flex flex-col justify-end pb-12"
-                          overlayClass="bg-gradient-to-t from-black/70 via-transparent to-transparent"
-                        >
-                           <div className="max-w-xl space-y-4">{fullContentBlock}</div>
-                        </BaseHeroSection>
-                    </TempPageOption>
 
                     <TempPageOption title="Variation B (Integrated Bar)" description="Pill buttons are integrated into a sleek bottom bar for a modern look.">
                         <BaseHeroSection 
@@ -214,21 +197,6 @@ export default function TempDesignPreviewPage() {
                             </div>
                         </BaseHeroSection>
                     </TempPageOption>
-                     <TempPageOption title="Variation F (Wide Stance + Glow)" description="Spreads elements horizontally with a glowing solution text for emphasis.">
-                        <BaseHeroSection 
-                            containerClass="flex flex-col justify-end pb-8"
-                            overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
-                        >
-                           <div className="space-y-4">
-                                <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-2/3"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
-                                    <div className="flex-1"><Button asChild className="w-full group shadow-lg" variant="accent"><Link href="/packs">Explore</Link></Button></div>
-                                </div>
-                                <h2 className="text-xs font-semibold text-accent/80 pt-1 [text-shadow:0_0_8px_hsl(var(--accent)/0.7)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                           </div>
-                        </BaseHeroSection>
-                    </TempPageOption>
 
                      <TempPageOption title="Variation H (Text Focus + Glow)" description="Subtle buttons and a glowing solution text to maximize headline impact.">
                         <BaseHeroSection 
@@ -255,7 +223,7 @@ export default function TempDesignPreviewPage() {
                         >
                             <div className="w-full max-w-xl space-y-4">
                                <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
-                               <div className="mx-auto"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
+                               <div className="mx-auto w-full max-w-[90%]"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
                                <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                                <div className="pt-2"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
                             </div>
