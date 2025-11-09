@@ -10,35 +10,68 @@ import { Footer } from "@/components/layout/footer";
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-const painPoints = {
-  error: {
-    title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
-    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-  },
-  resilience: {
-    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-  },
-  onboarding: {
-    title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
-    description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-  }
+
+const contentOptions = {
+    optionA: {
+        error: {
+            title: 'Relying on Memory is a Gamble.',
+            description: 'Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.',
+            buttonText: 'Reduce Risk',
+            mobileButtonText: 'Control'
+        },
+        resilience: {
+            title: 'Adopt Global Best Practices as Your Own.',
+            description: 'Start with our globally compliant solutions, then modify them to create a permanent corporate asset. This ensures your operations run on a documented, expert-built process.',
+            buttonText: 'Build Your Asset',
+            mobileButtonText: 'System'
+        },
+        onboarding: {
+            title: 'Compliance From Day One, Not Day Ninety.',
+            description: 'Our checklists provide a clear roadmap, drastically reducing training time and empowering new hires to be competent, safe, and effective from their very first shift.',
+            buttonText: 'Onboard Faster',
+            mobileButtonText: 'Train'
+        }
+    },
+    optionB: {
+        error: {
+            title: 'Even Your Best People Will Make Mistakes.',
+            description: 'It’s not about skill; it\'s human nature under pressure. Our checklists provide a simple, verifiable guide to ensure critical tasks are done right, every time.',
+            buttonText: 'Ensure Accuracy',
+            mobileButtonText: 'Risk'
+        },
+        resilience: {
+            title: 'What Happens When Your "Go-To" Person Goes?',
+            description: 'We help you convert your team\'s unwritten expertise into a permanent corporate asset. This creates a resilient process that anyone on your team can follow.',
+            buttonText: 'Create Resilience',
+            mobileButtonText: 'Resilience'
+        },
+        onboarding: {
+            title: 'New Hires Can\'t Learn Everything on Day One.',
+            description: 'But they can follow a checklist. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.',
+            buttonText: 'Accelerate Onboarding',
+            mobileButtonText: 'Onboarding'
+        }
+    }
 };
 
-type PainPointKey = keyof typeof painPoints;
+
+type PainPointKey = keyof typeof contentOptions.optionA;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const BaseHeroSection = ({ 
     overlayClass = '', 
-    textClass = '', 
     containerClass = '',
-    videoClass = '' 
+    videoClass = '',
+    children
+}: {
+    overlayClass?: string;
+    containerClass?: string;
+    videoClass?: string;
+    children: React.ReactNode;
 }) => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const content = painPoints[activePainPoint];
 
     return (
-        <section className="relative w-full h-[70vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-[80vh] min-h-[600px] md:min-h-[700px] flex items-center text-white overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -49,82 +82,116 @@ const BaseHeroSection = ({
             />
             <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
-            <div className="container px-4 md:px-6 relative z-20">
-                <div className={cn("max-w-2xl space-y-6", containerClass)}>
-                     <div className={cn("space-y-4 min-h-[14rem] flex flex-col justify-center", textClass)}>
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                            key={activePainPoint}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-md">
-                                {content.title}
-                            </h1>
-                            <p className="text-lg text-white/90 max-w-xl mt-4">
-                                {content.description}
-                            </p>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-                     <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden">
-                        <div className="flex overflow-x-auto no-scrollbar">
-                             <div className="relative flex flex-nowrap p-1.5 w-full min-w-full">
-                                <motion.div
-                                    className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
-                                    initial={false}
-                                    animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
-                                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                                />
-                                {painPointKeys.map((key) => (
-                                <Button
-                                    key={key}
-                                    variant="ghost"
-                                    className={cn(
-                                        "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12 md:h-auto",
-                                        activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
-                                    )}
-                                    onClick={() => setActivePainPoint(key)}
-                                >
-                                    <span className={cn('leading-tight', activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white')}>
-                                        {key === 'resilience' && 'Build Resilience'}
-                                        {key === 'error' && 'Eliminate Errors'}
-                                        {key === 'onboarding' && 'Accelerate Onboarding'}
-                                    </span>
-                                </Button>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="pt-2">
-                        <h2 className={cn("text-lg font-semibold text-accent", textClass)}>The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
-                    </div>
-                    <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                            <Link href="/packs">
-                            Explore All Packages
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full", containerClass)}>
+                 {children}
             </div>
-             <style jsx>{`
-                .no-scrollbar::-webkit-scrollbar {
-                    display: none;
-                }
-                .no-scrollbar {
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                }
-            `}</style>
         </section>
     );
 };
 
+const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionA }) => (
+    <div className={cn("relative flex flex-col rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full max-w-sm", className)}>
+        <div className="flex w-full">
+            <motion.div
+                className="absolute top-1 left-1 bottom-1 w-1/3 bg-white/90 rounded-md shadow-sm"
+                initial={false}
+                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 1.33}px)` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+            {painPointKeys.map((key) => (
+            <Button
+                key={key}
+                variant="ghost"
+                className={cn(
+                    "relative z-10 flex-1 justify-center text-xs py-2 h-10 transition-colors duration-300 hover:bg-transparent px-1",
+                    "whitespace-normal leading-tight flex items-center text-center",
+                    activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                )}
+                onClick={() => setActivePainPoint(key)}
+            >
+                <span>
+                     {isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}
+                </span>
+            </Button>
+            ))}
+        </div>
+    </div>
+);
+
+const AnimatedText = ({ content }: { content: typeof contentOptions.optionA[PainPointKey] }) => (
+    <AnimatePresence mode="wait">
+        <motion.div
+        key={content.title}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.3 }}
+        >
+            <h1 className="text-xl md:text-4xl lg:text-5xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                {content.title}
+            </h1>
+            <p className="text-sm md:text-lg text-white/90 max-w-xl mt-2 md:mt-4 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                {content.description}
+            </p>
+        </motion.div>
+    </AnimatePresence>
+)
+
+
+const TempPageOption = ({ title, description, children }: { title: string, description: string, children: React.ReactNode }) => (
+    <>
+        <div className="p-4 bg-muted mt-8">
+            <h2 className="text-center font-bold text-lg font-headline">{title}</h2>
+            <p className="text-center text-sm text-muted-foreground">{description}</p>
+        </div>
+        {children}
+    </>
+)
+
+const HeroVariant = ({ children, contentSet }: { children: (isMobile: boolean, content: any, activePainPoint: PainPointKey, setActivePainPoint: (k: PainPointKey) => void) => React.ReactNode, contentSet: any }) => {
+    const [isMobile, setIsMobile] = useState(false);
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
+    
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    return (
+        <>
+            {children(isMobile, contentSet, activePainPoint, setActivePainPoint)}
+        </>
+    );
+};
+
+
 export default function TempDesignPreviewPage() {
+    const { optionA, optionB } = contentOptions;
+
+    const HeroContent = ({ contentSet }: { contentSet: any }) => (
+         <HeroVariant contentSet={contentSet}>
+            {(isMobile, content, activePainPoint, setActivePainPoint) => (
+                <div className="max-w-2xl space-y-6 flex flex-col justify-center h-full">
+                    <div className="min-h-[10rem] md:min-h-[14rem]"><AnimatedText content={content[activePainPoint]} /></div>
+                    <div className="pt-2"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
+                    <div className="pt-3">
+                        <h2 className="text-sm md:text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
+                    </div>
+                    <div className="pt-3">
+                        <Button size="lg" asChild className="group text-md md:text-lg py-4 md:py-6 px-6 md:px-8 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                            <Link href="/packs">
+                            Explore Packages
+                            <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
+                    </div>
+                </div>
+            )}
+        </HeroVariant>
+    )
+
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
@@ -133,84 +200,17 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                {/* --- Mobile Only Preview Section --- */}
-                <div className="md:hidden">
-                    <div className="p-4 bg-muted">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 1: Frosted Glass Effect</h2>
-                    </div>
-                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30 backdrop-blur-sm" />
+                <TempPageOption title="Option A: The 'Intelligent Control' Copy" description="Direct, strategic, and uses strong mobile button text.">
+                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
+                        <HeroContent contentSet={optionA} />
+                     </BaseHeroSection>
+                </TempPageOption>
 
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Subtle Text Shadow</h2>
-                    </div>
-                    <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        textClass="[text-shadow:0_2px_8px_rgba(0,0,0,0.8)]" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 3: Text Box Container</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        containerClass="bg-black/40 p-6 rounded-2xl" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Idea A: Subtle Glow Effect</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        textClass="[text-shadow:0_0_10px_rgba(0,0,0,0.7),0_0_20px_rgba(0,0,0,0.5)]" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Idea B: Gradient Text</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-gradient-to-t from-black/70 via-black/50 to-black/30" 
-                        textClass="bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Idea C: Vignette Overlay</h2>
-                    </div>
-                     <BaseHeroSection 
-                        overlayClass="bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.7))]" 
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 7: Bright Video + Hard Shadow</h2>
-                    </div>
-                    <BaseHeroSection
-                        videoClass="[filter:brightness(1.2)]"
-                        overlayClass="bg-black/20"
-                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 8: Dark Video + Glow Text</h2>
-                    </div>
-                    <BaseHeroSection
-                        videoClass="[filter:brightness(0.6)]"
-                        overlayClass="bg-black/40"
-                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.3)]"
-                    />
-
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">Option 9: Text on a "Plaque"</h2>
-                    </div>
-                    <BaseHeroSection
-                        containerClass="bg-background/90 text-primary p-6 rounded-2xl shadow-2xl"
-                        textClass="!text-primary [text-shadow:none]"
-                    />
-
-                </div>
-
-                {/* --- Desktop View --- */}
-                <div className="hidden md:block">
-                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" />
-                </div>
+                 <TempPageOption title="Option B: The 'Pragmatic Leader' Copy" description="Consultative, empathetic, and uses more descriptive mobile button text.">
+                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
+                        <HeroContent contentSet={optionB} />
+                     </BaseHeroSection>
+                </TempPageOption>
                 
             </main>
             <Footer />
