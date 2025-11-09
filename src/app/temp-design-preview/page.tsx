@@ -14,20 +14,20 @@ import Link from 'next/link';
 const contentOptions = {
     optionA: {
         error: {
-            title: 'Even Your Best People Will Make Mistakes.',
-            description: 'It’s not about skill; it\'s human nature under pressure. Our checklists provide a simple, verifiable guide to ensure critical tasks are done right, every time.',
+            title: "Human Error is Inevitable. Business Failure Isn't.",
+            description: "Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.",
             buttonText: 'Reduce Risk',
             mobileButtonText: 'Control'
         },
         resilience: {
-            title: 'Adopt Global Best Practices as Your Own.',
-            description: 'Start with our globally compliant solutions, then modify them to create a permanent corporate asset. This ensures your operations run on a documented, expert-built process.',
+            title: "Your Best Employee is About to Quit. Your Process is About to Break.",
+            description: 'We help you convert operational knowledge from a fragile memory into a permanent corporate asset, ensuring quality and consistency are built into your system.',
             buttonText: 'Build Your Asset',
             mobileButtonText: 'System'
         },
         onboarding: {
-            title: 'Onboard in Days, Not Weeks.',
-            description: 'Our checklists are a live training manual. They give new hires the clear, actionable steps to be compliant, safe, and effective from their very first shift, drastically reducing training time.',
+            title: "Your New Hire's First Mistake Could Be Your Last.",
+            description: 'Our checklists provide a clear roadmap, drastically reducing training time and empowering new hires to be competent, safe, and effective from their very first shift.',
             buttonText: 'Onboard Faster',
             mobileButtonText: 'Train'
         }
