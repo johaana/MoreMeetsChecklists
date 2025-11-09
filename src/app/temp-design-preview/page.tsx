@@ -216,6 +216,14 @@ export default function TempDesignPreviewPage() {
                         h1Class="text-3xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.9)]"
                         pClass="text-base text-white/90 max-w-xl mt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.8)]"
                     />
+                    
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 11: Desktop Look on Mobile</h2>
+                    </div>
+                    <BaseHeroSection
+                        overlayClass="bg-gradient-to-r from-black/80 via-black/60 to-transparent"
+                    />
+
 
                 </div>
 
