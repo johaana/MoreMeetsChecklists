@@ -14,20 +14,17 @@ const painPoints = {
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    buttonText: 'Eliminate Errors',
-    mobileButtonText: 'Errors'
+    buttonText: 'Errors'
   },
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
     description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    buttonText: 'Build Resilience',
-    mobileButtonText: 'Resilience'
+    buttonText: 'Resilience'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
     description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    buttonText: 'Accelerate Onboarding',
-    mobileButtonText: 'Onboarding'
+    buttonText: 'Onboarding'
   }
 };
 
@@ -115,7 +112,7 @@ const BaseHeroSection = ({
                                         onClick={() => setActivePainPoint(key)}
                                     >
                                         <span className={cn('leading-tight whitespace-nowrap', activePainPoint === key ? activeButtonClass : buttonClass)}>
-                                            {mobileButtons ? painPoints[key].mobileButtonText : painPoints[key].buttonText}
+                                            {painPoints[key].buttonText}
                                         </span>
                                     </Button>
                                     ))}
@@ -155,55 +152,82 @@ export default function TempDesignPreviewPage() {
             <SiteHeader />
             <main className="flex-1">
                 <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-                    <p>⚠️ This is a temporary design preview page. ⚠️</p>
+                    <p>⚠️ This is a temporary design preview page for mobile variations. ⚠️</p>
                 </div>
                 
                 {/* --- Mobile Only Preview Section --- */}
                 <div className="md:hidden">
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Option 1: Clean & Subtle</h2>
-                        <p className="text-center text-sm text-muted-foreground">Slightly darkened video with a sharp text shadow for maximum clarity.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">Option 1: Frosted Glass</h2>
+                         <p className="text-center text-sm text-muted-foreground">A blurred overlay separates text from the video, ensuring readability.</p>
                     </div>
-                     <BaseHeroSection
-                        videoClass="[filter:brightness(0.8)]"
-                        overlayClass="bg-black/30"
-                        textClass="[text-shadow:0_2px_12px_rgba(0,0,0,1)]"
+                    <BaseHeroSection 
+                        overlayClass="bg-black/30 backdrop-blur-sm"
                         mobileButtons
                     />
-                    
+
                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Option 2: Cinematic Dark</h2>
-                        <p className="text-center text-sm text-muted-foreground">A darker video filter for a more dramatic, high-contrast feel.</p>
+                        <h2 className="text-center font-bold text-lg font-headline">Option 2: Subtle Text Shadow</h2>
+                        <p className="text-center text-sm text-muted-foreground">A classic, clean look with a soft shadow to lift text from the background.</p>
                     </div>
-                     <BaseHeroSection
-                        videoClass="[filter:brightness(0.6)]"
-                        overlayClass="bg-black/50"
-                        textClass="[text-shadow:0_1px_8px_rgba(0,0,0,0.8)]"
-                        mobileButtons
-                    />
-                    
-                    <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Option 3: Text Glow</h2>
-                        <p className="text-center text-sm text-muted-foreground">A subtle glow on the text to lift it off the dark background.</p>
-                    </div>
-                     <BaseHeroSection
-                        videoClass="[filter:brightness(0.6)]"
-                        overlayClass="bg-black/60"
-                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.3)]"
-                        mobileButtons
-                    />
-                     <div className="p-4 bg-muted mt-8">
-                        <h2 className="text-center font-bold text-lg font-headline">New Option 4: Balanced</h2>
-                        <p className="text-center text-sm text-muted-foreground">A medium-darkness overlay that balances video visibility with text readability.</p>
-                    </div>
-                     <BaseHeroSection
+                    <BaseHeroSection 
                         overlayClass="bg-black/40"
-                        textClass="[text-shadow:0_2px_10px_rgba(0,0,0,0.9)]"
+                        textClass="[text-shadow:0_1px_6px_rgba(0,0,0,0.7)]"
+                        mobileButtons
+                    />
+                    
+                     <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 3: Text Box Container</h2>
+                        <p className="text-center text-sm text-muted-foreground">Guarantees readability by placing text in a semi-transparent container.</p>
+                    </div>
+                     <BaseHeroSection 
+                        overlayClass="bg-black/50" 
+                    >
+                         <div className="max-w-2xl space-y-6 bg-black/40 p-4 rounded-xl">
+                            <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                    key={'textbox'}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.3 }}
+                                    >
+                                    <h1 className="text-4xl font-extrabold font-headline tracking-tighter text-white">
+                                        {painPoints['error'].title}
+                                    </h1>
+                                    <p className="text-lg text-white/90 max-w-xl mt-4">
+                                        {painPoints['error'].description}
+                                    </p>
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
+                         </div>
+                    </BaseHeroSection>
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 4: Subtle Glow Effect</h2>
+                        <p className="text-center text-sm text-muted-foreground">A soft glow makes text pop against a darker background.</p>
+                    </div>
+                     <BaseHeroSection 
+                        overlayClass="bg-black/60" 
+                        textClass="[text-shadow:0_0_15px_rgba(255,255,255,0.25)]"
+                        mobileButtons
+                    />
+
+                    <div className="p-4 bg-muted mt-8">
+                        <h2 className="text-center font-bold text-lg font-headline">Option 5: Bright Video + Hard Shadow</h2>
+                         <p className="text-center text-sm text-muted-foreground">A high-contrast style using a brighter video and a sharper shadow.</p>
+                    </div>
+                    <BaseHeroSection
+                        videoClass="[filter:brightness(1.1)]"
+                        overlayClass="bg-black/20"
+                        textClass="[text-shadow:0_2px_4px_rgba(0,0,0,0.6)]"
                         mobileButtons
                     />
                 </div>
 
-                {/* --- Desktop View --- */}
+                {/* --- Desktop View (for context) --- */}
                 <div className="hidden md:block">
                      <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" />
                 </div>
