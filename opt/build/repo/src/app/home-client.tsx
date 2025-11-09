@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -62,37 +63,41 @@ const MobileHero = () => {
   }, []);
 
   return (
-    <section className="w-full bg-background text-foreground py-16">
-      <div className="container px-4 text-left">
-        <h1 className="text-4xl font-extrabold font-headline tracking-tight">
-          The Professional Standard for
-          <br />
-          <span className="text-accent inline-block h-12">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentWord}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {currentWord}
-              </motion.span>
-            </AnimatePresence>
-          </span>
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-xl mt-4">
-          For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
-        </p>
-        <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl mt-8">
-            <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-            />
+    <section className="relative w-full overflow-hidden py-16 text-white">
+      <div className="absolute inset-0 z-0 bg-black">
+        <video
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+      </div>
+
+      <div className="container relative z-10 px-4 text-left">
+        <div className="[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+            <h1 className="text-4xl font-extrabold font-headline tracking-tight">
+              The Professional Standard for
+              <br />
+              <span className="text-accent inline-block h-12">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {currentWord}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </h1>
+            <p className="text-lg text-white/90 max-w-xl mt-4">
+              For leaders who can't be everywhere, we provide the framework to standardize operational excellence. Our checklists ensure global compliance and deliver auditable results at scale.
+            </p>
         </div>
         <div className="pt-8">
           <Button size="lg" asChild className="group text-lg py-7 px-10" variant="accent">
@@ -654,5 +659,7 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
 
     
