@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 
 const contentOptions = {
-    optionB: {
+    optionA: {
         error: {
             title: 'Under Pressure, People Forget.',
             description: 'Our digital SOPs act as a firewall against human error, ensuring critical tasks are done right, every time.',
@@ -21,33 +21,13 @@ const contentOptions = {
         },
         resilience: {
             title: 'Your Best Manager Can\'t Be Everywhere.',
-            description: 'Our playbooks codify the wisdom of your key people, turning their expertise into a scalable system for the whole team.',
-            buttonText: 'Build Resilience',
-            mobileButtonText: 'Resilience'
-        },
-        onboarding: {
-            title: 'Make Day One Feel Like Day 100.',
-            description: 'Our checklists are a live training manual, empowering new hires to perform like seasoned pros from their very first shift.',
-            buttonText: 'Accelerate Onboarding',
-            mobileButtonText: 'Onboarding'
-        }
-    },
-    optionC: {
-        error: {
-            title: 'Costly Mistakes Start with "I Forgot."',
-            description: 'We replace fallible memory with a verifiable system, guiding your team to perfect execution under pressure.',
-            buttonText: 'Eliminate Errors',
-            mobileButtonText: 'Errors'
-        },
-        resilience: {
-            title: 'What Happens When Your Hero Quits?',
-            description: 'We transform your operation from person-dependent to process-driven, ensuring knowledge stays even when people leave.',
+            description: 'We transform your operation from person-dependent to process-driven, ensuring expert knowledge stays long after people leave.',
             buttonText: 'Build Resilience',
             mobileButtonText: 'Resilience'
         },
         onboarding: {
             title: 'Stop Wasting Months on Training.',
-            description: 'Accelerate the path from new hire to productive team member. Our playbooks get your team up to speed, instantly.',
+            description: 'Our checklists are a live training manual, empowering new hires to perform like seasoned pros from their very first shift.',
             buttonText: 'Accelerate Onboarding',
             mobileButtonText: 'Onboarding'
         }
@@ -55,7 +35,7 @@ const contentOptions = {
 };
 
 
-type PainPointKey = keyof typeof contentOptions.optionB;
+type PainPointKey = keyof typeof contentOptions.optionA;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const BaseHeroSection = ({ 
@@ -89,7 +69,7 @@ const BaseHeroSection = ({
     );
 };
 
-const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionB }) => (
+const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionA }) => (
     <div className={cn("relative flex flex-col rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full max-w-sm", className)}>
         <div className="flex w-full">
             <motion.div
@@ -118,7 +98,7 @@ const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, classN
     </div>
 );
 
-const AnimatedText = ({ content }: { content: typeof contentOptions.optionB[PainPointKey] }) => (
+const AnimatedText = ({ content }: { content: typeof contentOptions.optionA[PainPointKey] }) => (
     <AnimatePresence mode="wait">
         <motion.div
         key={content.title}
@@ -151,7 +131,7 @@ const TempPageOption = ({ title, description, children }: { title: string, descr
 const HeroVariant = ({ children }: { children: (isMobile: boolean, content: any, activePainPoint: PainPointKey, setActivePainPoint: (k: PainPointKey) => void) => React.ReactNode }) => {
     const [isMobile, setIsMobile] = useState(false);
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const { optionB, optionC } = contentOptions;
+    const { optionA } = contentOptions;
     
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -162,7 +142,7 @@ const HeroVariant = ({ children }: { children: (isMobile: boolean, content: any,
 
     return (
         <>
-            {children(isMobile, optionB, activePainPoint, setActivePainPoint)}
+            {children(isMobile, optionA, activePainPoint, setActivePainPoint)}
         </>
     );
 };
@@ -289,12 +269,12 @@ const HeroJ = ({ content }: { content: any }) => {
     return (
         <TempPageOption title="Variation J (Centered & Balanced)" description="A symmetrical and elegant layout that center-aligns the entire content block.">
             <BaseHeroSection 
-                containerClass="flex flex-col justify-end pb-8 text-center"
+                containerClass="flex flex-col justify-end pb-8 items-center text-center"
                 overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
             >
                 <div className="w-full max-w-xl space-y-4">
                    <div className="min-h-[7rem]"><AnimatedText content={currentContent} /></div>
-                   <div className="mx-auto w-full max-w-[95%]"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
+                   <div className="mx-auto w-full max-w-xs"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
                    <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                    <div className="pt-2"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
                 </div>
@@ -305,6 +285,8 @@ const HeroJ = ({ content }: { content: any }) => {
 
 
 export default function TempDesignPreviewPage() {
+    const { optionA } = contentOptions;
+
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
@@ -314,8 +296,7 @@ export default function TempDesignPreviewPage() {
                 </div>
                 
                 <div className="md:hidden">
-                    <ContentSection title="Content Option B" options={["B", "D", "H", "J"]} contentSet={contentOptions.optionB} />
-                    <ContentSection title="Content Option C" options={["B", "D", "H", "J"]} contentSet={contentOptions.optionC} />
+                    <ContentSection title="Refined Content" options={["B", "D", "H", "J"]} contentSet={optionA} />
                 </div>
 
                 {/* --- Desktop View (Unchanged) --- */}
