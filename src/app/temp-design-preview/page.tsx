@@ -12,20 +12,20 @@ import Link from 'next/link';
 
 const painPoints = {
   error: {
-    title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
-    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
+    title: 'Human Memory is Your Biggest Liability.',
+    description: 'Our system guides your team through critical tasks with automated checks to eliminate costly mistakes.',
     buttonText: 'Eliminate Errors',
     mobileButtonText: 'Errors'
   },
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
+    description: 'Codify expertise to ensure continuity and consistent quality, no matter who is on shift.',
     buttonText: 'Build Resilience',
     mobileButtonText: 'Resilience'
   },
   onboarding: {
-    title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
-    description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
+    title: 'Onboard New Hires in Days, Not Months.',
+    description: 'Turn every new hire into a seasoned pro from day one with interactive operational playbooks.',
     buttonText: 'Accelerate Onboarding',
     mobileButtonText: 'Onboarding'
   }
@@ -86,7 +86,7 @@ const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, classN
                 onClick={() => setActivePainPoint(key)}
             >
                 <span>
-                    {isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}
+                    {painPoints[key].mobileButtonText}
                 </span>
             </Button>
             ))}
@@ -140,15 +140,15 @@ export default function TempDesignPreviewPage() {
 
     const fullContentBlock = (
         <>
-            <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
+            <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
             <div className="mt-4"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
             <div className="pt-3">
-                <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+                <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
             </div>
             <div className="pt-3">
                 <Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
                     <Link href="/packs">
-                    Explore All Packages
+                    Explore
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                 </Button>
@@ -173,17 +173,13 @@ export default function TempDesignPreviewPage() {
                            <div className="max-w-xl space-y-4">{fullContentBlock}</div>
                         </BaseHeroSection>
                     </TempPageOption>
-                     <TempPageOption title="Minimalist Lower Third (Base)" description="The original reference. Broadcast-style text placement.">
+
+                    <TempPageOption title="Minimalist Lower Third (Full)" description="The base layout, now with all elements and a dark text shadow for clarity.">
                         <BaseHeroSection 
                           containerClass="flex flex-col justify-end pb-12"
                           overlayClass="bg-gradient-to-t from-black/70 via-transparent to-transparent"
                         >
-                           <div className="max-w-xl space-y-2">
-                                <div className="space-y-1 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
-                                  <h1 className="text-xl font-extrabold font-headline tracking-tight">Human Memory is Your Biggest Liability.</h1>
-                                  <p className="text-sm text-white/90 max-w-xl">Our system guides your team through critical tasks with automated checks.</p>
-                                </div>
-                            </div>
+                           <div className="max-w-xl space-y-4">{fullContentBlock}</div>
                         </BaseHeroSection>
                     </TempPageOption>
 
@@ -193,8 +189,8 @@ export default function TempDesignPreviewPage() {
                             overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
                         >
                             <div className="w-full max-w-xl space-y-3">
-                                <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
-                                <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+                                <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
+                                <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                                 <div className="flex items-center gap-4 pt-2">
                                     <div className="flex-1"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
                                     <Button asChild className="group shadow-lg" variant="accent" size="icon"><Link href="/packs"><ArrowRight className="h-5 w-5" /></Link></Button>
@@ -209,60 +205,45 @@ export default function TempDesignPreviewPage() {
                             overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
                         >
                             <div className="w-full max-w-xl space-y-3">
-                               <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
+                               <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
                                <div className="flex gap-4">
                                 <div className="flex-1"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
                                 <Button asChild className="group shadow-lg" variant="accent" size="icon"><Link href="/packs"><ArrowRight className="h-5 w-5" /></Link></Button>
                                </div>
-                               <h2 className="text-xs font-semibold text-accent/80 pt-2">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+                               <h2 className="text-xs font-semibold text-accent/80 pt-2">The Solution: Expert-Crafted Operational Checklists.</h2>
                             </div>
                         </BaseHeroSection>
                     </TempPageOption>
-                     <TempPageOption title="Variation F (Wide Stance)" description="Spreads elements horizontally across the bottom for a spacious feel.">
+                     <TempPageOption title="Variation F (Wide Stance + Glow)" description="Spreads elements horizontally with a glowing solution text for emphasis.">
                         <BaseHeroSection 
                             containerClass="flex flex-col justify-end pb-8"
                             overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
                         >
                            <div className="space-y-4">
-                                <div className="min-h-[6rem]"><AnimatedText content={content} /></div>
+                                <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
                                 <div className="flex items-center gap-4">
                                     <div className="w-2/3"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
                                     <div className="flex-1"><Button asChild className="w-full group shadow-lg" variant="accent"><Link href="/packs">Explore</Link></Button></div>
                                 </div>
-                                <h2 className="text-xs font-semibold text-accent/80 pt-1">The Solution: Expert-Crafted Operational Checklists.</h2>
+                                <h2 className="text-xs font-semibold text-accent/80 pt-1 [text-shadow:0_0_8px_hsl(var(--accent)/0.7)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                            </div>
                         </BaseHeroSection>
                     </TempPageOption>
 
-                     <TempPageOption title="Variation H (Text Focus)" description="Makes the pill buttons smaller and more subtle, putting maximum emphasis on the main headline.">
+                     <TempPageOption title="Variation H (Text Focus + Glow)" description="Subtle buttons and a glowing solution text to maximize headline impact.">
                         <BaseHeroSection 
                             containerClass="flex flex-col justify-end pb-8"
                             overlayClass="bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                         >
                             <div className="w-full max-w-xl space-y-4">
-                               <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
+                               <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
                                <div className="flex gap-4 items-center">
                                     <div className="flex-1">
                                         <InteractivePill className="p-0.5 bg-black/20" activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
                                     </div>
                                     <Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore</Link></Button>
                                </div>
-                               <h2 className="text-xs font-semibold text-accent/80 pt-2">The Solution: Expert-Crafted Operational Checklists.</h2>
-                            </div>
-                        </BaseHeroSection>
-                    </TempPageOption>
-
-                     <TempPageOption title="Variation I (Pill Bar)" description="A modern, app-like design that places the pill selector in a sleek, full-width bar at the bottom.">
-                        <BaseHeroSection 
-                            containerClass="flex flex-col justify-end"
-                            overlayClass="bg-gradient-to-t from-black/80 via-transparent to-transparent"
-                        >
-                            <div className="w-full max-w-xl space-y-4 pb-4">
-                               <div className="min-h-[9rem] px-4"><AnimatedText content={content} /></div>
-                               <div className="px-4"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
-                            </div>
-                            <div className="w-full bg-black/50 backdrop-blur-md mt-4">
-                                <InteractivePill className="p-1 max-w-full rounded-none border-x-0 border-b-0 border-t border-white/10 bg-transparent shadow-none backdrop-blur-none" activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
+                               <h2 className="text-xs font-semibold text-accent/80 pt-2 [text-shadow:0_0_8px_hsl(var(--accent)/0.7)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                             </div>
                         </BaseHeroSection>
                     </TempPageOption>
@@ -273,14 +254,13 @@ export default function TempDesignPreviewPage() {
                             overlayClass="bg-gradient-to-t from-black/80 via-black/50 to-transparent"
                         >
                             <div className="w-full max-w-xl space-y-4">
-                               <div className="min-h-[9rem]"><AnimatedText content={content} /></div>
+                               <div className="min-h-[7rem]"><AnimatedText content={content} /></div>
                                <div className="mx-auto"><InteractivePill activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} /></div>
                                <h2 className="text-sm font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
                                <div className="pt-2"><Button size="lg" asChild className="group text-md py-4 px-6 shadow-lg" variant="accent"><Link href="/packs">Explore Packages</Link></Button></div>
                             </div>
                         </BaseHeroSection>
                     </TempPageOption>
-
 
                 </div>
 
@@ -298,5 +278,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
-    
