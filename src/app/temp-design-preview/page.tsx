@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, 'use state', 'use effect';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,8 +14,8 @@ import Link from 'next/link';
 const contentOptions = {
     optionA: {
         error: {
-            title: 'Relying on Memory is a Gamble.',
-            description: 'Even the best teams miss things under pressure. Our checklists provide a simple, verifiable framework to catch small oversights before they become major problems.',
+            title: 'Even Your Best People Will Make Mistakes.',
+            description: 'It’s not about skill; it\'s human nature under pressure. Our checklists provide a simple, verifiable guide to ensure critical tasks are done right, every time.',
             buttonText: 'Reduce Risk',
             mobileButtonText: 'Control'
         },
