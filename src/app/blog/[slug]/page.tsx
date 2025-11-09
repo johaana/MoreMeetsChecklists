@@ -30,6 +30,19 @@ export async function generateMetadata(
     };
   }
   
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
+  let imageUrl: string;
+
+  if (post.imageUrl) {
+    imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
+  } else {
+    const ogUrl = new URL(`${siteUrl}/api/og`);
+    ogUrl.searchParams.set('type', 'blog');
+    ogUrl.searchParams.set('slug', post.slug);
+    imageUrl = ogUrl.toString();
+  }
+
+
   return {
     title: `${post.title} | MoreMeets Blog`,
     description: post.description,
@@ -37,26 +50,23 @@ export async function generateMetadata(
       title: post.title,
       description: post.description,
       type: 'article',
+      url: `${siteUrl}/blog/${post.slug}`,
       publishedTime: post.publishedDate,
       authors: [post.author],
-       ...(post.imageUrl && {
-        images: [
-          {
-            url: post.imageUrl,
-            width: 1200,
-            height: 630,
-            alt: post.title,
-          },
-        ],
-      }),
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
         card: 'summary_large_image',
         title: post.title,
         description: post.description,
-         ...(post.imageUrl && {
-          images: [post.imageUrl],
-        }),
+        images: [imageUrl],
     }
   };
 }
@@ -245,5 +255,3 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-
-    

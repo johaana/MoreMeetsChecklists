@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -28,17 +27,20 @@ const painPoints = {
   error: {
     title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
     description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    buttonText: 'Eliminate Errors'
+    buttonText: 'Eliminate Errors',
+    mobileButtonText: 'Errors'
   },
   resilience: {
     title: 'Stop Relying on Heroes. Build a Resilient Operation.',
     description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    buttonText: 'Build Resilience'
+    buttonText: 'Build Resilience',
+    mobileButtonText: 'Resilience'
   },
   onboarding: {
     title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
     description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    buttonText: 'Accelerate Onboarding'
+    buttonText: 'Accelerate Onboarding',
+    mobileButtonText: 'Onboarding'
   }
 };
 
@@ -47,7 +49,17 @@ const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const RefinedHeroSection = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
+    const isMobile = useIsMobile();
+    const [isClient, setIsClient] = useState(false);
     const content = painPoints[activePainPoint];
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+      return <section className="w-full bg-background h-[70vh] min-h-[600px] md:h-screen"></section>;
+    }
 
     return (
         <section className="relative w-full min-h-[70vh] md:min-h-screen flex items-center text-white overflow-hidden">
@@ -100,7 +112,7 @@ const RefinedHeroSection = () => {
                                 )}
                                 onClick={() => setActivePainPoint(key)}
                             >
-                                <span>{painPoints[key].buttonText}</span>
+                                <span>{isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}</span>
                             </Button>
                             ))}
                         </div>
@@ -570,7 +582,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
-
-    
