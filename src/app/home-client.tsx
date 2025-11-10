@@ -76,7 +76,8 @@ const RefinedHeroSection = () => {
 
             {/* Mobile Content Block Wrapper */}
             <div className={cn(
-              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-center"
+              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col",
+              "justify-end pb-12 md:justify-center md:pb-0"
             )}>
               {/* Desktop Content */}
               <div className="hidden md:block max-w-2xl space-y-6">
@@ -136,8 +137,8 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/60 backdrop-blur-sm rounded-2xl p-4 border-t border-white/20 space-y-2 text-center items-center flex flex-col">
-                <div className='max-w-md space-y-3'>
+              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-2xl p-4 border-t border-white/20 space-y-2 text-center items-center flex flex-col">
+                <div className='max-w-md space-y-2'>
                     <AnimatePresence mode="wait">
                       <motion.div
                       key={activePainPoint}
@@ -146,10 +147,10 @@ const RefinedHeroSection = () => {
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.3 }}
                       >
-                      <h1 className="text-lg font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                      <h1 className="text-xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                           {content.title}
                       </h1>
-                      <p className="text-xs text-white/90 max-w-xl mt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                      <p className="text-sm text-white/90 max-w-xl mt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                           {content.description}
                       </p>
                       </motion.div>
@@ -179,7 +180,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                      <div className="pt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-xs font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                        <h2 className="text-sm font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
                     </div>
                     <div className="pt-1">
                         <Button size="lg" asChild className="group text-base py-4 px-6 shadow-lg w-full" variant="accent">
@@ -641,3 +642,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
