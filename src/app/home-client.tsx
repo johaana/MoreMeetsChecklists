@@ -137,7 +137,7 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-2xl p-4 border-t border-white/20 space-y-3 text-center items-center flex flex-col">
+              <div className="md:hidden w-full bg-black/60 backdrop-blur-sm rounded-t-2xl p-4 border-t border-white/20 space-y-3 text-center items-center flex flex-col">
                 <div className='max-w-md space-y-3'>
                     <AnimatePresence mode="wait">
                       <motion.div
