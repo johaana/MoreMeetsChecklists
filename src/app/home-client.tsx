@@ -142,11 +142,12 @@ const RefinedHeroSection = () => {
                      <div className="max-w-md space-y-6">
                         <AnimatePresence mode="wait">
                             <motion.div
-                            key={activePainPoint}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
+                                key={activePainPoint}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.3 }}
+                                className="min-h-[7rem]"
                             >
                                 <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white">
                                     {content.title}
@@ -642,5 +643,7 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
 
     
