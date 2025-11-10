@@ -71,31 +71,93 @@ const RefinedHeroSection = () => {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+            {/* Desktop Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
-            <div className="container px-4 md:px-6 relative z-20 h-full flex flex-col justify-end pb-20 md:justify-center md:pb-0">
-                <div className="max-w-2xl space-y-6">
-                     <div className="space-y-4 min-h-[14rem] flex flex-col justify-center [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                            key={activePainPoint}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
-                                {content.title}
-                            </h1>
-                            <p className="text-lg text-white/90 max-w-xl mt-4">
-                                {content.description}
-                            </p>
-                            </motion.div>
-                        </AnimatePresence>
+            {/* Mobile Content Block Wrapper */}
+            <div className={cn(
+              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col",
+              "justify-end pb-0 md:justify-center"
+            )}>
+              {/* Desktop Content */}
+              <div className="hidden md:block max-w-2xl space-y-6">
+                <div className="space-y-4 min-h-[14rem] flex flex-col justify-center [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                        key={activePainPoint}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        >
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
+                            {content.title}
+                        </h1>
+                        <p className="text-lg text-white/90 max-w-xl mt-4">
+                            {content.description}
+                        </p>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+                  <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
+                    <div className="flex w-full">
+                          <motion.div
+                            className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                            initial={false}
+                            animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        />
+                        {painPointKeys.map((key) => (
+                        <Button
+                            key={key}
+                            variant="ghost"
+                            className={cn(
+                                "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
+                                "whitespace-normal leading-tight flex items-center text-center",
+                                activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                            )}
+                            onClick={() => setActivePainPoint(key)}
+                        >
+                            <span>{isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}</span>
+                        </Button>
+                        ))}
                     </div>
-                     <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
+                </div>
+                <div className="pt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+                    <h2 className="text-lg font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists.</h2>
+                </div>
+                <div className="pt-2">
+                    <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                        <Link href="/packs">
+                        Explore All Packages
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
+              </div>
+
+              {/* Mobile Content Block */}
+              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-6 border-t border-white/20 space-y-5 text-center items-center flex flex-col">
+                <div className='max-w-md space-y-5'>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                      key={activePainPoint}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      >
+                      <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                          {content.title}
+                      </h1>
+                      <p className="text-base text-white/90 max-w-xl mt-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                          {content.description}
+                      </p>
+                      </motion.div>
+                  </AnimatePresence>
+                    <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full">
                         <div className="flex w-full">
-                             <motion.div
+                            <motion.div
                                 className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
                                 initial={false}
                                 animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
@@ -106,29 +168,24 @@ const RefinedHeroSection = () => {
                                 key={key}
                                 variant="ghost"
                                 className={cn(
-                                    "relative z-10 flex-1 justify-center text-xs md:text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
+                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12",
                                     "whitespace-normal leading-tight flex items-center text-center",
                                     activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                                 )}
                                 onClick={() => setActivePainPoint(key)}
                             >
-                                <span>{isMobile ? painPoints[key].mobileButtonText : painPoints[key].buttonText}</span>
+                                <span>{painPoints[key].mobileButtonText}</span>
                             </Button>
                             ))}
                         </div>
                     </div>
-                    <div className="pt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-lg font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists.</h2>
-                    </div>
                     <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                            <Link href="/packs">
-                            Explore All Packages
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
+                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
+                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
                 </div>
+              </div>
             </div>
         </section>
     );
