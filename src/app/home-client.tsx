@@ -49,7 +49,6 @@ const painPointKeys: PainPointKey[] = ['resilience', 'error', 'onboarding'];
 
 const RefinedHeroSection = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
-    const isMobile = useIsMobile();
     const [isClient, setIsClient] = useState(false);
     const content = painPoints[activePainPoint];
 
@@ -643,3 +642,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
