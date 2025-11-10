@@ -75,9 +75,9 @@ const RefinedHeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
             {/* Mobile Content Block Wrapper */}
-            <div className={cn(
+             <div className={cn(
               "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col",
-              "justify-end pb-12 md:justify-center md:pb-0"
+              "md:justify-center justify-end pb-4"
             )}>
               {/* Desktop Content */}
               <div className="hidden md:block max-w-2xl space-y-6">
@@ -124,7 +124,7 @@ const RefinedHeroSection = () => {
                     </div>
                 </div>
                 <div className="pt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                    <h2 className="text-lg font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                    <h2 className="text-lg font-semibold text-accent">Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
                 </div>
                 <div className="pt-2">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
@@ -147,10 +147,10 @@ const RefinedHeroSection = () => {
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.3 }}
                       >
-                      <h1 className="text-xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                      <h1 className="text-lg font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                           {content.title}
                       </h1>
-                      <p className="text-sm text-white/90 max-w-xl mt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                      <p className="text-xs text-white/90 max-w-xl mt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                           {content.description}
                       </p>
                       </motion.div>
@@ -180,7 +180,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                      <div className="pt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-sm font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                        <h2 className="text-xs font-semibold text-accent">Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
                     </div>
                     <div className="pt-1">
                         <Button size="lg" asChild className="group text-base py-4 px-6 shadow-lg w-full" variant="accent">
@@ -642,5 +642,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
