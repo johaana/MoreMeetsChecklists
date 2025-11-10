@@ -77,7 +77,7 @@ const RefinedHeroSection = () => {
             {/* Mobile Content Block Wrapper */}
              <div className={cn(
               "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col",
-              "md:justify-center justify-end pb-12"
+              "md:justify-center justify-end pb-20"
             )}>
               {/* Desktop Content */}
               <div className="hidden md:block max-w-2xl space-y-6">
