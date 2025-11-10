@@ -27,8 +27,8 @@ const painPoints = {
   error: {
     title: `"Are our operations globally compliant & audit-ready?"`,
     description: 'Even your best people make mistakes under pressure. We provide globally compliant checklists that install a firewall against error and ensure you are audit-ready, every single day.',
-    buttonText: 'Eliminate Errors',
-    mobileButtonText: 'Errors'
+    buttonText: 'Global Compliance',
+    mobileButtonText: 'Compliance'
   },
   resilience: {
     title: `"Is your team's knowledge a liability or a corporate asset?"`,
@@ -136,7 +136,7 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/60 backdrop-blur-sm rounded-xl p-4 space-y-3 text-center items-center flex flex-col">
+              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-xl p-4 space-y-3 text-center items-center flex flex-col">
                 <div className='max-w-md space-y-3'>
                     <AnimatePresence mode="wait">
                       <motion.div
