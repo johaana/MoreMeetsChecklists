@@ -25,8 +25,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
   error: {
-    title: `"Are our operations globally compliant & audit-ready?"`,
-    description: 'Even your best people make mistakes under pressure. We provide globally compliant checklists that install a firewall against error and ensure you are audit-ready, every single day.',
+    title: `"Compliance slips aren’t small mistakes."`,
+    description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
     buttonText: 'Global Compliance',
     mobileButtonText: 'Compliance'
   },
@@ -641,3 +641,7 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
+
+    
