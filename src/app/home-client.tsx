@@ -76,8 +76,7 @@ const RefinedHeroSection = () => {
 
             {/* Mobile Content Block Wrapper */}
             <div className={cn(
-              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col",
-              "justify-end pb-0 md:justify-center"
+              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-center"
             )}>
               {/* Desktop Content */}
               <div className="hidden md:block max-w-2xl space-y-6">
@@ -137,8 +136,8 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/60 backdrop-blur-sm rounded-t-2xl p-4 pb-4 border-t border-white/20 space-y-3 text-center items-center flex flex-col">
-                <div className='max-w-md space-y-2'>
+              <div className="md:hidden w-full bg-black/60 backdrop-blur-sm rounded-2xl p-4 border-t border-white/20 space-y-2 text-center items-center flex flex-col">
+                <div className='max-w-md space-y-3'>
                     <AnimatePresence mode="wait">
                       <motion.div
                       key={activePainPoint}
