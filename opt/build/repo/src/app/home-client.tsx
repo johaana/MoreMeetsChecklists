@@ -137,8 +137,8 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-4 border-t border-white/20 space-y-4 text-center items-center flex flex-col">
-                <div className='max-w-md space-y-4'>
+              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-4 pb-2 border-t border-white/20 space-y-3 text-center items-center flex flex-col">
+                <div className='max-w-md space-y-2'>
                     <AnimatePresence mode="wait">
                       <motion.div
                       key={activePainPoint}
@@ -147,18 +147,18 @@ const RefinedHeroSection = () => {
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
                       >
-                      <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                      <h1 className="text-xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                           {content.title}
                       </h1>
-                      <p className="text-base text-white/90 max-w-xl mt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                      <p className="text-sm text-white/90 max-w-xl mt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                           {content.description}
                       </p>
                       </motion.div>
                   </AnimatePresence>
-                    <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full">
+                    <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full">
                         <div className="flex w-full">
                             <motion.div
-                                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                                className="absolute top-1 left-1 bottom-1 w-1/3 bg-white/90 rounded-lg shadow-sm"
                                 initial={false}
                                 animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
                                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -168,7 +168,7 @@ const RefinedHeroSection = () => {
                                 key={key}
                                 variant="ghost"
                                 className={cn(
-                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12",
+                                    "relative z-10 flex-1 justify-center text-sm py-2 transition-colors duration-300 hover:bg-transparent px-1 h-10",
                                     "whitespace-normal leading-tight flex items-center text-center",
                                     activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                                 )}
@@ -179,8 +179,11 @@ const RefinedHeroSection = () => {
                             ))}
                         </div>
                     </div>
+                     <div className="pt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+                        <h2 className="text-sm font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                    </div>
                     <div className="pt-1">
-                        <Button size="lg" asChild className="group text-base py-5 px-6 shadow-lg w-full" variant="accent">
+                        <Button size="lg" asChild className="group text-base py-4 px-6 shadow-lg w-full" variant="accent">
                             <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
