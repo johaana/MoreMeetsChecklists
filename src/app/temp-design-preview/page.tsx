@@ -184,7 +184,7 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                <TempPageOption title="The 'Manager's Anxiety' Package" description="This version uses the anxious internal monologue of a manager to create an immediate, emotional connection.">
+                <TempPageOption title="The 'Painful Question' Package (Mobile Optimized)" description="This version uses the anxious internal monologue of a manager. The mobile layout is pushed to the bottom third for a more cinematic feel.">
                     <BaseHeroSection 
                         overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent"
                     >
