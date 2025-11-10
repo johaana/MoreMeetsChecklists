@@ -13,30 +13,30 @@ import Link from 'next/link';
 
 const contentOptions = {
     optionA: {
-        error: {
-            title: `"Are we sure we didn't miss a step?"`,
-            description: 'Even your best people make mistakes under pressure. A checklist is the only way to ensure critical tasks are done right, every single time.',
-            buttonText: 'Control',
-            mobileButtonText: 'Control'
-        },
         resilience: {
-            title: `"What happens if our best person quits?"`,
-            description: "Your process isn't a process if it only exists in one person's head. We help you codify that expertise into a permanent corporate asset.",
-            buttonText: 'Resilience',
+            title: `"Stop losing knowledge every time someone quits."`,
+            description: 'Turn people-dependent processes into a permanent, scalable system.',
+            buttonText: 'Build Resilience',
             mobileButtonText: 'Resilience'
         },
+        error: {
+            title: `"Compliance slips aren’t small mistakes."`,
+            description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
+            buttonText: 'Global Compliance',
+            mobileButtonText: 'Compliance'
+        },
         onboarding: {
-            title: `"How long until I can trust the new hire?"`,
-            description: "Don't wait months. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.",
-            buttonText: 'Onboarding',
-            mobileButtonText: 'Onboarding'
+            title: `"Training shouldn’t depend on who’s available that day."`,
+            description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
+            buttonText: 'Onboard Faster',
+            mobileButtonText: 'Train'
         }
     }
 };
 
 
 type PainPointKey = keyof typeof contentOptions.optionA;
-const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
+const painPointKeys: PainPointKey[] = ['resilience', 'error', 'onboarding'];
 
 const BaseHeroSection = ({ 
     overlayClass = 'bg-black/50', 
@@ -128,7 +128,7 @@ const TempPageOption = ({ title, description, children }: { title: string, descr
 )
 
 const HeroVariant = ({ children, contentSet }: { children: (content: any, activePainPoint: PainPointKey, setActivePainPoint: (k: PainPointKey) => void) => React.ReactNode, contentSet: any }) => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
     return <>{children(contentSet, activePainPoint, setActivePainPoint)}</>;
 };
 
@@ -144,11 +144,49 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page with 5 mobile options. ⚠️</p>
                 </div>
                 
-                <TempPageOption title="Option 1: Ultra-Minimalist Bottom Center" description="Content is pushed very low, centered, with a constrained width for focus.">
+                <TempPageOption title="Option 1: Floating Content Block" description="Text and controls are grouped in a semi-transparent block for maximum readability. This is the current live version.">
+                     <HeroVariant contentSet={optionA}>
+                        {(content, activePainPoint, setActivePainPoint) => (
+                           <BaseHeroSection containerClass="justify-center items-center md:items-start md:justify-center md:text-left">
+                             <div className="hidden md:block max-w-2xl">
+                                <AnimatedText content={content[activePainPoint]} />
+                                <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                <div className="pt-6">
+                                    <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
+                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                    </Button>
+                                </div>
+                             </div>
+                             <div className="w-full bg-black/40 backdrop-blur-sm rounded-xl p-4 border-t border-white/20 space-y-5 text-center items-center flex flex-col md:hidden">
+                                <div className='max-w-md space-y-5'>
+                                    <AnimatedText content={content[activePainPoint]} />
+                                    <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
+                                    <div className="pt-2">
+                                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
+                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                           </BaseHeroSection>
+                        )}
+                    </HeroVariant>
+                </TempPageOption>
+
+                <TempPageOption title="Option 2: Ultra-Minimalist Bottom Center" description="Content is pushed very low, centered, with a constrained width for focus.">
                     <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-center items-center">
-                             <div className="max-w-md space-y-6">
+                           <BaseHeroSection containerClass="text-center items-center justify-end md:items-start md:justify-center md:text-left">
+                             <div className="hidden md:block max-w-2xl">
+                                <AnimatedText content={content[activePainPoint]} />
+                                <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                <div className="pt-6">
+                                    <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
+                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                    </Button>
+                                </div>
+                             </div>
+                             <div className="max-w-md space-y-6 md:hidden">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                 <div className="pt-2">
@@ -162,11 +200,20 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
 
-                <TempPageOption title="Option 2: Wide Bottom-Left" description="Content is low and aligned left, spanning more of the screen width for a cinematic, editorial feel.">
+                <TempPageOption title="Option 3: Wide Bottom-Left" description="Content is low and aligned left, spanning more of the screen width for a cinematic, editorial feel.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-left">
-                             <div className="w-full max-w-xl space-y-6">
+                           <BaseHeroSection containerClass="text-left items-end md:items-start md:justify-center md:text-left">
+                              <div className="hidden md:block max-w-2xl">
+                                <AnimatedText content={content[activePainPoint]} />
+                                <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                <div className="pt-6">
+                                    <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
+                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                    </Button>
+                                </div>
+                             </div>
+                             <div className="w-full max-w-xl space-y-6 md:hidden">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                 <div className="pt-2">
@@ -180,11 +227,20 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
 
-                <TempPageOption title="Option 3: Floating Pill" description="The interactive pill is separated from the text, creating a layered, more interactive look.">
+                <TempPageOption title="Option 4: Floating Pill" description="The interactive pill is separated from the text, creating a layered, more interactive look.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-center items-center">
-                             <div className="max-w-md w-full flex flex-col space-y-4">
+                           <BaseHeroSection containerClass="text-center items-center justify-end md:items-start md:justify-center md:text-left">
+                              <div className="hidden md:block max-w-2xl">
+                                <AnimatedText content={content[activePainPoint]} />
+                                <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                <div className="pt-6">
+                                    <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
+                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                    </Button>
+                                </div>
+                             </div>
+                             <div className="max-w-md w-full flex flex-col space-y-4 md:hidden">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className='pt-4 space-y-4'>
                                     <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
@@ -198,11 +254,20 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
                 
-                <TempPageOption title="Option 4: Extreme Lower-Left" description="Content is pushed even further down and to the left for a dramatic, minimalist aesthetic.">
+                <TempPageOption title="Option 5: Extreme Lower-Left" description="Content is pushed even further down and to the left for a dramatic, minimalist aesthetic.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-left">
-                             <div className="w-full max-w-xl space-y-5">
+                           <BaseHeroSection containerClass="text-left items-end md:items-start md:justify-center">
+                            <div className="hidden md:block max-w-2xl">
+                                <AnimatedText content={content[activePainPoint]} />
+                                <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                <div className="pt-6">
+                                    <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
+                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                    </Button>
+                                </div>
+                             </div>
+                             <div className="w-full max-w-xl space-y-5 md:hidden">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className='max-w-sm'>
                                     <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
@@ -218,28 +283,10 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
 
-                 <TempPageOption title="Option 5: Content Block" description="Text and controls are grouped in a semi-transparent block for maximum readability.">
-                     <HeroVariant contentSet={optionA}>
-                        {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end p-0">
-                             <div className="w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-6 border-t border-white/20 space-y-5 text-center items-center flex flex-col">
-                                <div className='max-w-md space-y-5'>
-                                    <AnimatedText content={content[activePainPoint]} />
-                                    <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
-                                    <div className="pt-2">
-                                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                           </BaseHeroSection>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-
             </main>
             <Footer />
         </div>
     );
 }
+
+    
