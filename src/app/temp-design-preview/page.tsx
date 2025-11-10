@@ -14,42 +14,22 @@ import Link from 'next/link';
 const contentOptions = {
     optionA: {
         error: {
-            title: "Your next crisis is a forgotten check.",
-            description: 'Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.',
-            buttonText: 'Reduce Risk',
+            title: `"Are we sure we didn't miss a step?"`,
+            description: 'Even your best people make mistakes under pressure. A checklist is the only way to ensure critical tasks are done right, every single time.',
+            buttonText: 'Control for Error',
             mobileButtonText: 'Control'
         },
         resilience: {
-            title: "Your process just walked out the door.",
-            description: 'We help you convert operational knowledge from a fragile memory into a permanent corporate asset, ensuring quality and consistency are built into your system.',
-            buttonText: 'Build Your Asset',
+            title: `"What happens if our best person quits?"`,
+            description: 'Your process isn\'t a process if it only exists in one person\'s head. We help you codify that expertise into a permanent corporate asset.',
+            buttonText: 'Build Resilience',
             mobileButtonText: 'System'
         },
         onboarding: {
-            title: "Your new hire is a liability, not an asset.",
-            description: 'Our checklists provide a clear roadmap, drastically reducing training time and empowering new hires to be competent, safe, and effective from their very first shift.',
+            title: `"How long until I can trust the new hire?"`,
+            description: 'Don\'t wait months. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.',
             buttonText: 'Onboard Faster',
             mobileButtonText: 'Train'
-        }
-    },
-    optionB: {
-        error: {
-            title: "Human Error is Inevitable. Business Failure Isn't.",
-            description: 'Even your best people make mistakes under pressure. Our checklists provide a verifiable framework that catches small oversights before they become major problems.',
-            buttonText: 'Ensure Accuracy',
-            mobileButtonText: 'Risk'
-        },
-        resilience: {
-            title: "If it's not written down, it's not a process.",
-            description: 'We help you convert your team\'s unwritten expertise into a permanent corporate asset. This creates a resilient process that anyone on your team can follow.',
-            buttonText: 'Create Resilience',
-            mobileButtonText: 'Resilience'
-        },
-        onboarding: {
-            title: 'Competence From Day One, Not Day Ninety.',
-            description: 'But they can follow a checklist. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.',
-            buttonText: 'Accelerate Onboarding',
-            mobileButtonText: 'Onboarding'
         }
     }
 };
@@ -168,7 +148,7 @@ const HeroVariant = ({ children, contentSet }: { children: (isMobile: boolean, c
 
 
 export default function TempDesignPreviewPage() {
-    const { optionA, optionB } = contentOptions;
+    const { optionA } = contentOptions;
 
     const HeroContent = ({ contentSet }: { contentSet: any }) => (
          <HeroVariant contentSet={contentSet}>
@@ -201,18 +181,12 @@ export default function TempDesignPreviewPage() {
             <SiteHeader />
             <main className="flex-1">
                 <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-                    <p>⚠️ This is a temporary design preview page for A/B testing hero copy. ⚠️</p>
+                    <p>⚠️ This is a temporary design preview page for hero copy. ⚠️</p>
                 </div>
                 
-                <TempPageOption title="Option A: The Challenger" description="Direct, provocative, and pain-focused.">
+                <TempPageOption title="The 'Manager's Anxiety' Package" description="This version uses the anxious internal monologue of a manager to highlight common pain points.">
                     <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
                         <HeroContent contentSet={optionA} />
-                     </BaseHeroSection>
-                </TempPageOption>
-
-                 <TempPageOption title="Option B: The Strategist" description="Confident, intelligent, and solution-focused.">
-                    <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent">
-                        <HeroContent contentSet={optionB} />
                      </BaseHeroSection>
                 </TempPageOption>
                 
