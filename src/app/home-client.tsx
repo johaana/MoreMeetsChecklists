@@ -25,21 +25,21 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
   error: {
-    title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
-    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    buttonText: 'Eliminate Errors',
-    mobileButtonText: 'Errors'
+    title: `"Are we sure we didn't miss a step?"`,
+    description: 'Even your best people make mistakes under pressure. A checklist is the only way to ensure critical tasks are done right, every single time.',
+    buttonText: 'Control for Error',
+    mobileButtonText: 'Control'
   },
   resilience: {
-    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
+    title: `"What happens if our best person quits?"`,
+    description: "Your process isn't a process if it only exists in one person's head. We help you codify that expertise into a permanent corporate asset.",
     buttonText: 'Build Resilience',
     mobileButtonText: 'Resilience'
   },
   onboarding: {
-    title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
-    description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    buttonText: 'Accelerate Onboarding',
+    title: `"How long until I can trust the new hire?"`,
+    description: "Don't wait months. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.",
+    buttonText: 'Onboard Faster',
     mobileButtonText: 'Onboarding'
   }
 };
@@ -58,11 +58,11 @@ const RefinedHeroSection = () => {
     }, []);
 
     if (!isClient) {
-      return <section className="w-full bg-background h-[70vh] min-h-[600px] md:h-screen"></section>;
+      return <section className="w-full bg-background h-screen min-h-[700px]"></section>;
     }
 
     return (
-        <section className="relative w-full min-h-[70vh] md:min-h-screen flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -73,7 +73,7 @@ const RefinedHeroSection = () => {
             />
              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
 
-            <div className="container px-4 md:px-6 relative z-20">
+            <div className="container px-4 md:px-6 relative z-20 h-full flex flex-col justify-end pb-20 md:justify-center md:pb-0">
                 <div className="max-w-2xl space-y-6">
                      <div className="space-y-4 min-h-[14rem] flex flex-col justify-center [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
                         <AnimatePresence mode="wait">
@@ -118,7 +118,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                     <div className="pt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-lg font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists in Instantly Downloadable Excel Packs.</h2>
+                        <h2 className="text-lg font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists.</h2>
                     </div>
                     <div className="pt-2">
                         <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
@@ -582,3 +582,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
