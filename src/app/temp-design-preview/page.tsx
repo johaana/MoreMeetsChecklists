@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 
 const contentOptions = {
-    optionB: {
+    optionA: {
         error: {
             title: `"Are we sure we didn't miss a step?"`,
             description: 'Even your best people make mistakes under pressure. A checklist is the only way to ensure critical tasks are done right, every single time.',
@@ -21,21 +21,21 @@ const contentOptions = {
         },
         resilience: {
             title: `"What happens if our best person quits?"`,
-            description: 'Your process isn\'t a process if it only exists in one person\'s head. We help you codify that expertise into a permanent corporate asset.',
+            description: "Your process isn't a process if it only exists in one person's head. We help you codify that expertise into a permanent corporate asset.",
             buttonText: 'Build Resilience',
-            mobileButtonText: 'System'
+            mobileButtonText: 'Resilience'
         },
         onboarding: {
             title: `"How long until I can trust the new hire?"`,
-            description: 'Don\'t wait months. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.',
+            description: "Don't wait months. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.",
             buttonText: 'Onboard Faster',
-            mobileButtonText: 'Train'
+            mobileButtonText: 'Onboarding'
         }
     }
 };
 
 
-type PainPointKey = keyof typeof contentOptions.optionB;
+type PainPointKey = keyof typeof contentOptions.optionA;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const BaseHeroSection = ({ 
@@ -67,7 +67,7 @@ const BaseHeroSection = ({
     );
 };
 
-const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionB }) => (
+const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionA }) => (
     <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full", className)}>
         <div className="flex w-full">
             <motion.div
@@ -96,7 +96,7 @@ const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, classN
     </div>
 );
 
-const AnimatedText = ({ content, className }: { content: typeof contentOptions.optionB[PainPointKey], className?: string }) => (
+const AnimatedText = ({ content, className }: { content: typeof contentOptions.optionA[PainPointKey], className?: string }) => (
     <AnimatePresence mode="wait">
         <motion.div
         key={content.title}
@@ -147,26 +147,24 @@ const HeroVariant = ({ children, contentSet }: { children: (isMobile: boolean, c
 
 
 export default function TempDesignPreviewPage() {
-    const { optionB } = contentOptions;
+    const { optionA } = contentOptions;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main className="flex-1">
                 <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-                    <p>⚠️ This is a temporary design preview page. Please review the 7 options below. ⚠️</p>
+                    <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                {/* --- Option 1 --- */}
-                <TempPageOption title="Option 1: Classic Centered" description="Content is vertically and horizontally centered. Clean and balanced.">
-                     <HeroVariant contentSet={optionB}>
+                <TempPageOption title="Minimalist Lower-Third" description="Content is anchored to the bottom third of the screen for a clean, cinematic mobile experience.">
+                     <HeroVariant contentSet={optionA}>
                         {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="items-center justify-center text-center">
+                           <BaseHeroSection containerClass="justify-end pb-20 text-center md:justify-center md:pb-0 md:text-left">
                              <div className="max-w-2xl space-y-6">
                                 <AnimatedText content={content[activePainPoint]} />
-                                <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                                <div className="pt-2">
-                                    <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
+                                <div className="max-w-md mx-auto md:mx-0">
+                                  <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
                                 </div>
                                 <div className="pt-2">
                                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
@@ -178,144 +176,8 @@ export default function TempDesignPreviewPage() {
                         )}
                     </HeroVariant>
                 </TempPageOption>
-
-                 {/* --- Option 2 --- */}
-                <TempPageOption title="Option 2: Cinematic Bottom-Third (Left Aligned)" description="Content is anchored to the bottom third and aligned left for a modern, editorial feel.">
-                     <HeroVariant contentSet={optionB}>
-                        {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-12 md:justify-center md:pb-0">
-                                <div className="max-w-2xl space-y-6">
-                                    <AnimatedText content={content[activePainPoint]} />
-                                    <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                                    <div className="pt-2">
-                                        <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                                    </div>
-                                    <div className="pt-2">
-                                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                           </BaseHeroSection>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-
-                 {/* --- Option 3 --- */}
-                <TempPageOption title="Option 3: Cinematic Bottom-Third (Centered)" description="Same as above, but with text centered for a more powerful, focused look.">
-                     <HeroVariant contentSet={optionB}>
-                        {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-12 items-center text-center md:justify-center md:pb-0">
-                                <div className="max-w-2xl space-y-6">
-                                    <AnimatedText content={content[activePainPoint]} />
-                                    <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                                    <div className="pt-2">
-                                        <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                                    </div>
-                                    <div className="pt-2">
-                                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                           </BaseHeroSection>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-
-                 {/* --- Option 4 --- */}
-                <TempPageOption title="Option 4: Classic Top-Aligned" description="Content is aligned to the top of the screen, creating a more traditional, article-style layout.">
-                     <HeroVariant contentSet={optionB}>
-                        {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-start pt-32 md:justify-center md:pt-0">
-                                <div className="max-w-2xl space-y-6">
-                                    <AnimatedText content={content[activePainPoint]} />
-                                    <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                                    <div className="pt-2">
-                                        <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                                    </div>
-                                    <div className="pt-2">
-                                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                           </BaseHeroSection>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-
-                 {/* --- Option 5 --- */}
-                <TempPageOption title="Option 5: Split View" description="A clean, two-part layout with the video in the top half and the text/controls in a solid block at the bottom. Prioritizes readability.">
-                     <HeroVariant contentSet={optionB}>
-                        {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <section className="h-screen min-h-[700px] flex flex-col">
-                                <div className="relative h-1/2 w-full">
-                                    <video src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0" />
-                                </div>
-                                <div className="h-1/2 bg-background text-foreground flex items-center justify-center">
-                                    <div className="max-w-2xl space-y-6 p-4 text-center">
-                                         <AnimatedText content={content[activePainPoint]} className="!text-foreground [text-shadow:none]" />
-                                         <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} className="bg-secondary/50 !text-white" />
-                                         <div className="pt-2">
-                                            <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg" variant="accent">
-                                                <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
-                                            </Button>
-                                         </div>
-                                    </div>
-                                </div>
-                           </section>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-
-                {/* --- Option 6 --- */}
-                <TempPageOption title="Option 6: Dramatic Overlay" description="Content is centered with a stronger, darker gradient overlay to make the text pop dramatically.">
-                     <HeroVariant contentSet={optionB}>
-                        {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="items-center justify-center text-center" overlayClass="bg-gradient-to-t from-black/90 via-black/70 to-black/40">
-                             <div className="max-w-2xl space-y-6">
-                                <AnimatedText content={content[activePainPoint]} />
-                                <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                                <div className="pt-2">
-                                    <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                                </div>
-                                <div className="pt-2">
-                                    <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
-                                    </Button>
-                                </div>
-                            </div>
-                           </BaseHeroSection>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-
-                {/* --- Option 7 --- */}
-                <TempPageOption title="Option 7: Minimalist Bottom-Left" description="Content is anchored to the bottom-left with extra padding, creating a very clean, sophisticated look.">
-                     <HeroVariant contentSet={optionB}>
-                        {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-20 md:justify-center md:pb-0">
-                                <div className="max-w-2xl space-y-6">
-                                    <AnimatedText content={content[activePainPoint]} />
-                                    <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} isMobile={isMobile} />
-                                    <div className="pt-2">
-                                        <h2 className="text-lg font-semibold text-accent [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">The Solution: Expert-Crafted Operational Checklists.</h2>
-                                    </div>
-                                    <div className="pt-2">
-                                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                           </BaseHeroSection>
-                        )}
-                    </HeroVariant>
-                </TempPageOption>
-                
             </main>
             <Footer />
         </div>
     );
 }
-
