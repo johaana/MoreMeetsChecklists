@@ -60,7 +60,7 @@ const BaseHeroSection = ({
             />
             <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
-            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col", containerClass)}>
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0", containerClass)}>
                  {children}
             </div>
         </section>
@@ -106,7 +106,7 @@ const AnimatedText = ({ content, className }: { content: typeof contentOptions.o
         transition={{ duration: 0.3 }}
         className={className}
         >
-            <h1 className="text-3xl md:text-5xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+            <h1 className="text-2xl md:text-5xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                 {content.title}
             </h1>
             <p className="text-base text-white/90 max-w-xl mt-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
@@ -147,7 +147,7 @@ export default function TempDesignPreviewPage() {
                 <TempPageOption title="Option 1: Ultra-Minimalist Bottom Center" description="Content is pushed very low, centered, with a constrained width for focus.">
                     <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-8 text-center items-center">
+                           <BaseHeroSection containerClass="text-center items-center">
                              <div className="max-w-md space-y-6">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
@@ -165,7 +165,7 @@ export default function TempDesignPreviewPage() {
                 <TempPageOption title="Option 2: Wide Bottom-Left" description="Content is low and aligned left, spanning more of the screen width for a cinematic, editorial feel.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-8 text-left">
+                           <BaseHeroSection containerClass="text-left">
                              <div className="w-full max-w-xl space-y-6">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
@@ -183,7 +183,7 @@ export default function TempDesignPreviewPage() {
                 <TempPageOption title="Option 3: Floating Pill" description="The interactive pill is separated from the text, creating a layered, more interactive look.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-8 text-center items-center">
+                           <BaseHeroSection containerClass="text-center items-center">
                              <div className="max-w-md w-full flex flex-col space-y-4">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className='pt-4 space-y-4'>
@@ -201,7 +201,7 @@ export default function TempDesignPreviewPage() {
                 <TempPageOption title="Option 4: Extreme Lower-Left" description="Content is pushed even further down and to the left for a dramatic, minimalist aesthetic.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-6 text-left">
+                           <BaseHeroSection containerClass="text-left">
                              <div className="w-full max-w-xl space-y-5">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className='max-w-sm'>
@@ -221,7 +221,7 @@ export default function TempDesignPreviewPage() {
                  <TempPageOption title="Option 5: Content Block" description="Text and controls are grouped in a semi-transparent block for maximum readability.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="justify-end pb-4">
+                           <BaseHeroSection containerClass="justify-end p-0">
                              <div className="w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-6 border-t border-white/20 space-y-5 text-center items-center flex flex-col">
                                 <div className='max-w-md space-y-5'>
                                     <AnimatedText content={content[activePainPoint]} />
@@ -243,4 +243,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
