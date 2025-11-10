@@ -37,8 +37,8 @@ const painPoints = {
     mobileButtonText: 'Resilience'
   },
   onboarding: {
-    title: `"How can new hires be productive & compliant from Day 1?"`,
-    description: "Accelerate your onboarding with playbooks for faster training. Our system acts as a live training manual, making every new hire competent and compliant from Day 1.",
+    title: `"Training shouldn’t depend on who’s available that day."`,
+    description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
     buttonText: 'Onboard Faster',
     mobileButtonText: 'Train'
   }
@@ -641,7 +641,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
 
     
