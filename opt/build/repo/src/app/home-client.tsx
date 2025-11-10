@@ -137,8 +137,8 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-6 border-t border-white/20 space-y-5 text-center items-center flex flex-col">
-                <div className='max-w-md space-y-5'>
+              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-4 border-t border-white/20 space-y-4 text-center items-center flex flex-col">
+                <div className='max-w-md space-y-4'>
                     <AnimatePresence mode="wait">
                       <motion.div
                       key={activePainPoint}
@@ -150,7 +150,7 @@ const RefinedHeroSection = () => {
                       <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                           {content.title}
                       </h1>
-                      <p className="text-base text-white/90 max-w-xl mt-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                      <p className="text-base text-white/90 max-w-xl mt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                           {content.description}
                       </p>
                       </motion.div>
@@ -179,8 +179,8 @@ const RefinedHeroSection = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
+                    <div className="pt-1">
+                        <Button size="lg" asChild className="group text-base py-5 px-6 shadow-lg w-full" variant="accent">
                             <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
