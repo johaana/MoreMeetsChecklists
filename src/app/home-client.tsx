@@ -45,10 +45,10 @@ const painPoints = {
 };
 
 type PainPointKey = keyof typeof painPoints;
-const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
+const painPointKeys: PainPointKey[] = ['onboarding', 'error', 'resilience'];
 
 const RefinedHeroSection = () => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('onboarding');
     const isMobile = useIsMobile();
     const [isClient, setIsClient] = useState(false);
     const content = painPoints[activePainPoint];
@@ -136,7 +136,7 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-xl p-4 space-y-3 text-center items-center flex flex-col">
+              <div className="md:hidden w-full bg-black/20 backdrop-blur-sm border-t border-white/10 rounded-xl p-4 space-y-3 text-center items-center flex flex-col">
                 <div className='max-w-md space-y-3'>
                     <AnimatePresence mode="wait">
                       <motion.div
