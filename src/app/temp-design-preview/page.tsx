@@ -173,11 +173,12 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
 
-                <TempPageOption title="Option 2: Ultra-Minimalist Bottom Center" description="Content is pushed very low, centered, with a constrained width for focus.">
+                 <TempPageOption title="Option 2: Ultra-Minimalist Bottom Center (Gradient)" description="Content is low and centered. A new gradient improves text readability.">
                     <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-center items-center justify-end md:items-start md:justify-center md:text-left">
-                             <div className="hidden md:block max-w-2xl">
+                           <BaseHeroSection overlayClass="bg-black/30" containerClass="text-center items-center justify-end md:items-start md:justify-center md:text-left">
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+                             <div className="hidden md:block max-w-2xl relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
                                 <div className="pt-6">
@@ -186,7 +187,7 @@ export default function TempDesignPreviewPage() {
                                     </Button>
                                 </div>
                              </div>
-                             <div className="max-w-md space-y-6 md:hidden">
+                             <div className="max-w-md space-y-6 md:hidden relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                 <div className="pt-2">
@@ -200,11 +201,12 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
 
-                <TempPageOption title="Option 3: Wide Bottom-Left" description="Content is low and aligned left, spanning more of the screen width for a cinematic, editorial feel.">
+                 <TempPageOption title="Option 3: Wide Bottom-Left (Gradient)" description="Cinematic feel with text aligned left. A new gradient improves text readability.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-left items-end md:items-start md:justify-center md:text-left">
-                              <div className="hidden md:block max-w-2xl">
+                           <BaseHeroSection overlayClass="bg-black/30" containerClass="text-left items-end md:items-start md:justify-center md:text-left">
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+                              <div className="hidden md:block max-w-2xl relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
                                 <div className="pt-6">
@@ -213,7 +215,7 @@ export default function TempDesignPreviewPage() {
                                     </Button>
                                 </div>
                              </div>
-                             <div className="w-full max-w-xl space-y-6 md:hidden">
+                             <div className="w-full max-w-xl space-y-6 md:hidden relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                 <div className="pt-2">
@@ -227,11 +229,12 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
 
-                <TempPageOption title="Option 4: Floating Pill" description="The interactive pill is separated from the text, creating a layered, more interactive look.">
+                 <TempPageOption title="Option 4: Floating Pill (Gradient)" description="Layered look with separated controls. A new gradient improves text readability.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-center items-center justify-end md:items-start md:justify-center md:text-left">
-                              <div className="hidden md:block max-w-2xl">
+                           <BaseHeroSection overlayClass="bg-black/30" containerClass="text-center items-center justify-end md:items-start md:justify-center md:text-left">
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+                              <div className="hidden md:block max-w-2xl relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
                                 <div className="pt-6">
@@ -240,7 +243,7 @@ export default function TempDesignPreviewPage() {
                                     </Button>
                                 </div>
                              </div>
-                             <div className="max-w-md w-full flex flex-col space-y-4 md:hidden">
+                             <div className="max-w-md w-full flex flex-col space-y-4 md:hidden relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className='pt-4 space-y-4'>
                                     <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
@@ -254,11 +257,12 @@ export default function TempDesignPreviewPage() {
                     </HeroVariant>
                 </TempPageOption>
                 
-                <TempPageOption title="Option 5: Extreme Lower-Left" description="Content is pushed even further down and to the left for a dramatic, minimalist aesthetic.">
+                 <TempPageOption title="Option 5: Extreme Lower-Left (Gradient)" description="Dramatic, minimalist aesthetic. A new gradient improves text readability.">
                      <HeroVariant contentSet={optionA}>
                         {(content, activePainPoint, setActivePainPoint) => (
-                           <BaseHeroSection containerClass="text-left items-end md:items-start md:justify-center">
-                            <div className="hidden md:block max-w-2xl">
+                           <BaseHeroSection overlayClass="bg-black/30" containerClass="text-left items-end md:items-start md:justify-center">
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+                            <div className="hidden md:block max-w-2xl relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
                                 <div className="pt-6">
@@ -267,7 +271,7 @@ export default function TempDesignPreviewPage() {
                                     </Button>
                                 </div>
                              </div>
-                             <div className="w-full max-w-xl space-y-5 md:hidden">
+                             <div className="w-full max-w-xl space-y-5 md:hidden relative z-20">
                                 <AnimatedText content={content[activePainPoint]} />
                                 <div className='max-w-sm'>
                                     <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
@@ -288,5 +292,3 @@ export default function TempDesignPreviewPage() {
         </div>
     );
 }
-
-    
