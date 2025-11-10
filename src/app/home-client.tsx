@@ -31,8 +31,8 @@ const painPoints = {
     mobileButtonText: 'Compliance'
   },
   resilience: {
-    title: `"Is your team's knowledge a liability or a corporate asset?"`,
-    description: "Your process isn't a process if it only exists in one person's head. We help you codify that expertise into a permanent, verifiable corporate asset, building true operational resilience.",
+    title: `"Stop losing knowledge every time someone quits."`,
+    description: 'Turn people-dependent processes into a permanent, scalable system.',
     buttonText: 'Build Resilience',
     mobileButtonText: 'Resilience'
   },
@@ -641,5 +641,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
