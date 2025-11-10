@@ -24,23 +24,23 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const painPoints = {
+  resilience: {
+      title: `"Stop losing knowledge every time someone quits."`,
+      description: 'Turn people-dependent processes into a permanent, scalable system.',
+      buttonText: 'Build Resilience',
+      mobileButtonText: 'Resilience'
+  },
   error: {
     title: `"Compliance slips aren’t small mistakes."`,
     description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
     buttonText: 'Global Compliance',
     mobileButtonText: 'Compliance'
   },
-  resilience: {
-    title: `"Stop losing knowledge every time someone quits."`,
-    description: 'Turn people-dependent processes into a permanent, scalable system.',
-    buttonText: 'Build Resilience',
-    mobileButtonText: 'Resilience'
-  },
   onboarding: {
-    title: `"Training shouldn’t depend on who’s available that day."`,
-    description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
-    buttonText: 'Onboard Faster',
-    mobileButtonText: 'Train'
+      title: `"Training shouldn’t depend on who’s available that day."`,
+      description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
+      buttonText: 'Onboard Faster',
+      mobileButtonText: 'Train'
   }
 };
 
@@ -177,9 +177,6 @@ const RefinedHeroSection = () => {
                             </Button>
                             ))}
                         </div>
-                    </div>
-                     <div className="pt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-xs font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
                     </div>
                     <div className="pt-1">
                         <Button size="lg" asChild className="group text-base py-4 px-6 shadow-lg w-full" variant="accent">
