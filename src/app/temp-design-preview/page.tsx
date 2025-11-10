@@ -62,7 +62,7 @@ const BaseHeroSection = ({
             />
             <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
-            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col md:justify-center", containerClass)}>
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-center", containerClass)}>
                  {children}
             </div>
         </section>
@@ -187,7 +187,7 @@ export default function TempDesignPreviewPage() {
                 <TempPageOption title="The 'Manager's Anxiety' Package" description="This version uses the anxious internal monologue of a manager to create an immediate, emotional connection.">
                     <BaseHeroSection 
                         overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent"
-                        containerClass="justify-end pb-12"
+                        containerClass="justify-end pb-12 md:justify-center md:pb-0"
                     >
                         <HeroContent contentSet={optionA} />
                      </BaseHeroSection>
