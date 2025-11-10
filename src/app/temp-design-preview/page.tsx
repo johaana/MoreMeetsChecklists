@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 
 const contentOptions = {
-    optionB: {
+    optionA: {
         error: {
             title: `"Are we sure we didn't miss a step?"`,
             description: 'Even your best people make mistakes under pressure. A checklist is the only way to ensure critical tasks are done right, every single time.',
@@ -35,7 +35,7 @@ const contentOptions = {
 };
 
 
-type PainPointKey = keyof typeof contentOptions.optionB;
+type PainPointKey = keyof typeof contentOptions.optionA;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const BaseHeroSection = ({ 
@@ -62,14 +62,14 @@ const BaseHeroSection = ({
             />
             <div className={cn("absolute inset-0 z-10", overlayClass)} />
 
-            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-center", containerClass)}>
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col", containerClass)}>
                  {children}
             </div>
         </section>
     );
 };
 
-const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionB }) => (
+const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, className, painPoints }: { activePainPoint: PainPointKey, setActivePainPoint: (key: PainPointKey) => void, isMobile: boolean, className?: string, painPoints: typeof contentOptions.optionA }) => (
     <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full", className)}>
         <div className="flex w-full">
             <motion.div
@@ -98,7 +98,7 @@ const InteractivePill = ({ activePainPoint, setActivePainPoint, isMobile, classN
     </div>
 );
 
-const AnimatedText = ({ content }: { content: typeof contentOptions.optionB[PainPointKey] }) => (
+const AnimatedText = ({ content }: { content: typeof contentOptions.optionA[PainPointKey] }) => (
     <AnimatePresence mode="wait">
         <motion.div
         key={content.title}
@@ -148,12 +148,12 @@ const HeroVariant = ({ children, contentSet }: { children: (isMobile: boolean, c
 
 
 export default function TempDesignPreviewPage() {
-    const { optionB } = contentOptions;
+    const { optionA } = contentOptions;
 
     const HeroContent = ({ contentSet }: { contentSet: any }) => (
          <HeroVariant contentSet={contentSet}>
             {(isMobile, content, activePainPoint, setActivePainPoint) => (
-                 <div className={cn("max-w-2xl space-y-6 w-full", isMobile ? "flex flex-col justify-end pb-12 h-full" : "")}>
+                 <div className="max-w-2xl space-y-6">
                     <div className="min-h-[14rem] flex flex-col justify-center">
                         <AnimatedText content={content[activePainPoint]} />
                     </div>
@@ -184,12 +184,12 @@ export default function TempDesignPreviewPage() {
                     <p>⚠️ This is a temporary design preview page. ⚠️</p>
                 </div>
                 
-                <TempPageOption title="The 'Painful Question' Package" description="This version uses the anxious internal monologue of a manager to create an immediate, emotional connection.">
+                <TempPageOption title="The 'Manager's Anxiety' Package" description="This version uses the anxious internal monologue of a manager to create an immediate, emotional connection.">
                     <BaseHeroSection 
                         overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent"
-                        containerClass="md:justify-center"
+                        containerClass="md:justify-center justify-end pb-12"
                     >
-                        <HeroContent contentSet={optionB} />
+                        <HeroContent contentSet={optionA} />
                      </BaseHeroSection>
                 </TempPageOption>
                 
