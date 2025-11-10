@@ -13,29 +13,32 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
   error: {
-    title: 'Human Memory is Your Biggest Liability. Install a Firewall Against Error.',
-    description: 'Under pressure, people forget. Our system is their external brain, guiding them through critical tasks with automated checks to eliminate costly mistakes and ensure compliance.',
-    image: 'https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp'
+    title: `"Compliance slips aren’t small mistakes."`,
+    description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
+    buttonText: 'Global Compliance',
+    mobileButtonText: 'Compliance'
   },
   resilience: {
-    title: 'Stop Relying on Heroes. Build a Resilient Operation.',
-    description: 'Your operation runs on the knowledge of a few key people. Our system codifies that expertise, ensuring continuity and consistent quality, no matter who is on shift.',
-    image: 'https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg'
+    title: `"Stop losing knowledge every time someone quits."`,
+    description: 'Turn people-dependent processes into a permanent, scalable system.',
+    buttonText: 'Build Resilience',
+    mobileButtonText: 'Resilience'
   },
   onboarding: {
-    title: 'Onboard New Hires in Days, Not Months. Scale Your Expertise Instantly.',
-    description: 'Turn every new hire into a seasoned pro from day one. Our playbooks act as a live training manual, accelerating their path to productivity and excellence.',
-    image: 'https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp'
+    title: `"Training shouldn’t depend on who’s available that day."`,
+    description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
+    buttonText: 'Onboard Faster',
+    mobileButtonText: 'Train'
   }
 };
 
 type PainPointKey = keyof typeof painPoints;
 
-const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
+const painPointKeys: PainPointKey[] = ['resilience', 'error', 'onboarding'];
 
 // --- Section 1: The Interactive "Pain Point" Hero ---
 const InteractiveHeroSection = () => {
-  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
+  const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
   const content = painPoints[activePainPoint];
 
   return (
@@ -78,9 +81,7 @@ const InteractiveHeroSection = () => {
                         onClick={() => setActivePainPoint(key)}
                     >
                         <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
-                        {key === 'resilience' && 'Build Resilience'}
-                        {key === 'error' && 'Eliminate Errors'}
-                        {key === 'onboarding' && 'Accelerate Onboarding'}
+                        {painPoints[key].buttonText}
                         </span>
                     </Button>
                     ))}
@@ -146,9 +147,7 @@ const InteractiveHeroSection = () => {
                     onClick={() => setActivePainPoint(key)}
                 >
                     <span className={cn(activePainPoint === key ? 'text-primary font-semibold' : 'text-muted-foreground')}>
-                    {key === 'resilience' && 'Resilience'}
-                    {key === 'error' && 'Eliminate Errors'}
-                    {key === 'onboarding' && 'Onboarding'}
+                     {painPoints[key].mobileButtonText}
                     </span>
                 </Button>
                 ))}
