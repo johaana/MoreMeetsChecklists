@@ -34,8 +34,13 @@ export async function generateMetadata(
   let imageUrl: string;
 
   if (post.imageUrl) {
-    imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
+    // If the imageUrl is already an absolute URL, use it directly.
+    // Otherwise, construct the full URL from the base siteUrl.
+    imageUrl = post.imageUrl.startsWith('http') 
+      ? post.imageUrl 
+      : `${siteUrl}${post.imageUrl}`;
   } else {
+    // If no imageUrl is provided, generate one dynamically.
     const ogUrl = new URL(`${siteUrl}/api/og`);
     ogUrl.searchParams.set('type', 'blog');
     ogUrl.searchParams.set('slug', post.slug);
