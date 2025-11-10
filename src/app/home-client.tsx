@@ -45,7 +45,7 @@ const painPoints = {
 };
 
 type PainPointKey = keyof typeof painPoints;
-const painPointKeys: PainPointKey[] = ['onboarding', 'error', 'resilience'];
+const painPointKeys: PainPointKey[] = ['onboarding', 'resilience', 'error'];
 
 const RefinedHeroSection = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('onboarding');
@@ -641,3 +641,7 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
+
+    
