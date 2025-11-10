@@ -25,22 +25,22 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
   error: {
-    title: `"Are we sure we didn't miss a step?"`,
-    description: 'Even your best people make mistakes under pressure. A checklist is the only way to ensure critical tasks are done right, every single time.',
-    buttonText: 'Control for Error',
-    mobileButtonText: 'Control'
+    title: `"Are our operations globally compliant & audit-ready?"`,
+    description: 'Even your best people make mistakes under pressure. We provide globally compliant checklists that install a firewall against error and ensure you are audit-ready, every single day.',
+    buttonText: 'Eliminate Errors',
+    mobileButtonText: 'Errors'
   },
   resilience: {
-    title: `"What happens if our best person quits?"`,
-    description: "Your process isn't a process if it only exists in one person's head. We help you codify that expertise into a permanent corporate asset.",
+    title: `"Is your team's knowledge a liability or a corporate asset?"`,
+    description: "Your process isn't a process if it only exists in one person's head. We help you codify that expertise into a permanent, verifiable corporate asset, building true operational resilience.",
     buttonText: 'Build Resilience',
     mobileButtonText: 'Resilience'
   },
   onboarding: {
-    title: `"How long until I can trust the new hire?"`,
-    description: "Don't wait months. Our playbooks provide a clear, step-by-step roadmap, empowering new hires to be competent and effective from their very first shift.",
+    title: `"How can new hires be productive & compliant from Day 1?"`,
+    description: "Accelerate your onboarding with playbooks for faster training. Our system acts as a live training manual, making every new hire competent and compliant from Day 1.",
     buttonText: 'Onboard Faster',
-    mobileButtonText: 'Onboarding'
+    mobileButtonText: 'Train'
   }
 };
 
@@ -124,7 +124,7 @@ const RefinedHeroSection = () => {
                     </div>
                 </div>
                 <div className="pt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                    <h2 className="text-lg font-semibold text-accent">The Solution: Expert-Crafted Operational Checklists.</h2>
+                    <h2 className="text-lg font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
                 </div>
                 <div className="pt-2">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
