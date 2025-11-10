@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
     images: [
       {
         url: ogImageUrl,
@@ -22,6 +25,9 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
     images: [ogImageUrl],
   },
 };
