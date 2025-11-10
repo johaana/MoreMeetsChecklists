@@ -639,5 +639,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
