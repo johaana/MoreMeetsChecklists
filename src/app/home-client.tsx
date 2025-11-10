@@ -124,7 +124,7 @@ const RefinedHeroSection = () => {
                     </div>
                 </div>
                 <div className="pt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                    <h2 className="text-lg font-semibold text-accent">Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                    <h2 className="text-lg font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
                 </div>
                 <div className="pt-2">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
@@ -137,7 +137,7 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-2xl p-4 border-t border-white/20 space-y-2 text-center items-center flex flex-col">
+              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-2xl p-4 pb-2 border-t border-white/20 space-y-2 text-center items-center flex flex-col">
                 <div className='max-w-md space-y-2'>
                     <AnimatePresence mode="wait">
                       <motion.div
@@ -180,7 +180,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                      <div className="pt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-xs font-semibold text-accent">Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                        <h2 className="text-xs font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
                     </div>
                     <div className="pt-1">
                         <Button size="lg" asChild className="group text-base py-4 px-6 shadow-lg w-full" variant="accent">
