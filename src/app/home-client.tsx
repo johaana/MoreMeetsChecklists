@@ -137,25 +137,25 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile Content Block */}
-              <div className="md:hidden w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-4 border-t border-white/20 space-y-3 text-center items-center flex flex-col">
-                <div className='max-w-md space-y-3'>
+              <div className="md:hidden w-full bg-black/60 backdrop-blur-sm rounded-t-2xl p-4 pb-4 border-t border-white/20 space-y-3 text-center items-center flex flex-col">
+                <div className='max-w-md space-y-2'>
                     <AnimatePresence mode="wait">
                       <motion.div
                       key={activePainPoint}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
+                      exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.3 }}
                       >
-                      <h1 className="text-xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                      <h1 className="text-lg font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                           {content.title}
                       </h1>
-                      <p className="text-sm text-white/90 max-w-xl mt-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                      <p className="text-xs text-white/90 max-w-xl mt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                           {content.description}
                       </p>
                       </motion.div>
                   </AnimatePresence>
-                    <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full">
+                    <div className="relative flex flex-col rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1 w-full">
                         <div className="flex w-full">
                             <motion.div
                                 className="absolute top-1 left-1 bottom-1 w-1/3 bg-white/90 rounded-lg shadow-sm"
@@ -180,7 +180,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                      <div className="pt-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                        <h2 className="text-sm font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
+                        <h2 className="text-xs font-semibold text-accent">The Solution: Turn Your Process into a Verifiable Corporate Asset.</h2>
                     </div>
                     <div className="pt-1">
                         <Button size="lg" asChild className="group text-base py-4 px-6 shadow-lg w-full" variant="accent">
@@ -642,5 +642,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    
