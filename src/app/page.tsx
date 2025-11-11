@@ -10,7 +10,6 @@ import { SiteHeader } from "@/components/layout/header";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const painPoints = {
   resilience: {
       title: `"Stop losing knowledge every time someone quits."`,
@@ -48,9 +47,8 @@ const RefinedHeroSection = () => {
       return <section className="w-full bg-background h-screen min-h-[700px]"></section>;
     }
 
-
     return (
-        <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-screen min-h-[700px] flex text-white overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -59,14 +57,13 @@ const RefinedHeroSection = () => {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
-            {/* Desktop Overlay */}
+            
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
             
-            {/* Gradient Overlay for Mobile */}
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
 
             <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
-              {/* Desktop Content */}
+              
               <div className="hidden md:block max-w-2xl">
                 <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
                     <AnimatePresence mode="wait">
@@ -123,7 +120,7 @@ const RefinedHeroSection = () => {
                 </div>
               </div>
 
-              {/* Mobile Content (Ultra-Minimalist Bottom Center) */}
+              
               <div className="md:hidden text-center items-center flex flex-col relative z-20">
                  <div className="max-w-md space-y-6">
                     <div className="min-h-[7rem] flex items-center">

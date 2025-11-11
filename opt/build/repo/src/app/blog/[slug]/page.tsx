@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Zap, FileCheck2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
@@ -34,7 +34,7 @@ export async function generateMetadata(
   let imageUrl: string;
 
   if (post.imageUrl) {
-    imageUrl = post.imageUrl;
+    imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
   } else {
     const ogUrl = new URL(`${siteUrl}/api/og`);
     ogUrl.searchParams.set('type', 'blog');
@@ -44,12 +44,14 @@ export async function generateMetadata(
 
 
   return {
+    metadataBase: new URL(siteUrl),
     title: `${post.title} | MoreMeets Blog`,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
+      url: `/blog/${post.slug}`,
       publishedTime: post.publishedDate,
       authors: [post.author],
       images: [

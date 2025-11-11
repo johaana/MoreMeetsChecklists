@@ -83,9 +83,6 @@ export default function RootLayout({
             `,
           }}
         />
-         {/* Start of HubSpot Embed Code */}
-        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/46736444.js"></script>
-        {/* End of HubSpot Embed Code */}
       </head>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
