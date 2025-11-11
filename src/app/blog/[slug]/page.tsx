@@ -34,8 +34,10 @@ export async function generateMetadata(
   let imageUrl: string;
 
   if (post.imageUrl) {
+    // Ensure the imageUrl is absolute. If it's a relative path, prepend the siteUrl.
     imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
   } else {
+    // Fallback to the OG image generator API
     const ogUrl = new URL(`${siteUrl}/api/og`);
     ogUrl.searchParams.set('type', 'blog');
     ogUrl.searchParams.set('slug', post.slug);

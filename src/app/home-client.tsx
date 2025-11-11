@@ -134,7 +134,7 @@ const RefinedHeroSection = () => {
                 </div>
               </div>
 
-              {/* Mobile Content Block (Option 2) */}
+              {/* Mobile Content Block (Ultra-Minimalist Bottom Center) */}
               <div className="md:hidden text-center items-center flex flex-col w-full relative z-20">
                      <div className="w-full max-w-md space-y-6">
                         <AnimatePresence mode="wait">
