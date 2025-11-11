@@ -67,15 +67,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      </head>
-      <body className={cn(
-        "min-h-screen bg-background font-body antialiased",
-        mainFont.variable,
-        headlineFont.variable,
-      )}>
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '2rem', color: 'red', zIndex: 1000, backgroundColor: 'white', padding: '2rem', border: '2px solid black' }}>This is the new, temporary homepage content.</div>
-        {children}
-        <Toaster />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -92,9 +83,17 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Start of HubSpot Embed Code */}
-        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244305680.js"></script>
+         {/* Start of HubSpot Embed Code */}
+        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/46736444.js"></script>
         {/* End of HubSpot Embed Code */}
+      </head>
+      <body className={cn(
+        "min-h-screen bg-background font-body antialiased",
+        mainFont.variable,
+        headlineFont.variable,
+      )}>
+        {children}
+        <Toaster />
       </body>
     </html>
   );
