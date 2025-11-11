@@ -34,28 +34,23 @@ export async function generateMetadata(
   let imageUrl: string;
 
   if (post.imageUrl) {
-    // If the imageUrl is already an absolute URL, use it directly.
-    // Otherwise, construct the full URL from the base siteUrl.
-    imageUrl = post.imageUrl.startsWith('http') 
-      ? post.imageUrl 
-      : `${siteUrl}${post.imageUrl}`;
+    // Let metadataBase handle resolving relative URLs.
+    imageUrl = post.imageUrl;
   } else {
-    // If no imageUrl is provided, generate one dynamically.
-    const ogUrl = new URL(`${siteUrl}/api/og`);
-    ogUrl.searchParams.set('type', 'blog');
-    ogUrl.searchParams.set('slug', post.slug);
-    imageUrl = ogUrl.toString();
+    // Use a relative path that metadataBase will resolve into an absolute URL.
+    imageUrl = `/api/og?type=blog&slug=${post.slug}`;
   }
 
 
   return {
+    metadataBase: new URL(siteUrl),
     title: `${post.title} | MoreMeets Blog`,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
-      url: `${siteUrl}/blog/${post.slug}`,
+      url: `/blog/${post.slug}`,
       publishedTime: post.publishedDate,
       authors: [post.author],
       images: [

@@ -72,7 +72,7 @@ const RefinedHeroSection = () => {
             />
             {/* Desktop Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
-
+            
             {/* Mobile Gradient Overlay */}
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
 
@@ -125,9 +125,6 @@ const RefinedHeroSection = () => {
                     </div>
                 </div>
                 <div className="pt-2">
-                    <h2 className="text-lg font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
-                </div>
-                <div className="pt-2">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
                         <Link href="/packs">
                         Explore All Packages
@@ -137,7 +134,7 @@ const RefinedHeroSection = () => {
                 </div>
               </div>
 
-                {/* Mobile Content Block */}
+                {/* Mobile Content Block (Option 2) */}
                 <div className="md:hidden text-center items-center flex flex-col relative z-20">
                      <div className="max-w-md space-y-6">
                         <AnimatePresence mode="wait">
@@ -643,4 +640,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
