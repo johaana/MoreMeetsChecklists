@@ -36,7 +36,10 @@ export async function generateMetadata(
   if (post.imageUrl) {
     imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
   } else {
-    imageUrl = `/api/og?type=blog&slug=${post.slug}`;
+    const ogUrl = new URL(`${siteUrl}/api/og`);
+    ogUrl.searchParams.set('type', 'blog');
+    ogUrl.searchParams.set('slug', post.slug);
+    imageUrl = ogUrl.toString();
   }
 
 
@@ -253,5 +256,3 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-
-    

@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
 const title = 'Black Box Debrief | MoreMeets Blog';
 const description = 'Deconstructing the world\'s most costly operational disasters to build more resilient organizations. An insights hub by MoreMeets.';
+const ogImageUrl = `${siteUrl}/api/og?type=blog`;
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
         url: '/blog',
         images: [
             {
-                url: `/api/og?type=blog`,
+                url: ogImageUrl,
                 width: 1200,
                 height: 630,
                 alt: title,
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: title,
         description: description,
-        images: [`/api/og?type=blog`],
+        images: [ogImageUrl],
     }
 };
 
@@ -41,5 +42,3 @@ export default function BlogListPage() {
         </React.Suspense>
     )
 }
-
-    
