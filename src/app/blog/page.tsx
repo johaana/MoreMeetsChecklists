@@ -6,19 +6,18 @@ import type { Metadata } from 'next';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
 const title = 'Black Box Debrief | MoreMeets Blog';
 const description = 'Deconstructing the world\'s most costly operational disasters to build more resilient organizations. An insights hub by MoreMeets.';
-const ogImageUrl = `/api/og?type=blog`; // Use relative path
 
 export const metadata: Metadata = {
-    metadataBase: new URL(siteUrl), // Add metadataBase
+    metadataBase: new URL(siteUrl),
     title: title,
     description: description,
     openGraph: {
         title: title,
         description: description,
-        url: '/blog', // Use relative path
+        url: '/blog',
         images: [
             {
-                url: ogImageUrl, // Relative path will be resolved by metadataBase
+                url: `/api/og?type=blog`,
                 width: 1200,
                 height: 630,
                 alt: title,
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: title,
         description: description,
-        images: [ogImageUrl], // Relative path will be resolved
+        images: [`/api/og?type=blog`],
     }
 };
 

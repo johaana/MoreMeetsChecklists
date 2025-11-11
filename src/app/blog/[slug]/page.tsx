@@ -34,10 +34,8 @@ export async function generateMetadata(
   let imageUrl: string;
 
   if (post.imageUrl) {
-    // Let metadataBase handle resolving relative URLs if it's not a full URL
-    imageUrl = post.imageUrl;
+    imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
   } else {
-    // Use a relative path that metadataBase will resolve into an absolute URL.
     imageUrl = `/api/og?type=blog&slug=${post.slug}`;
   }
 
