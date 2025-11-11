@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -60,7 +61,7 @@ const RefinedHeroSection = () => {
     }
 
     return (
-        <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
+        <section className="relative w-full h-screen min-h-[700px] flex text-white overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
                 autoPlay
@@ -73,7 +74,7 @@ const RefinedHeroSection = () => {
             <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent z-10" />
             
             {/* Mobile Gradient Overlay */}
-            <div className="md:hidden absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
+            <div className="md:hidden absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
 
             {/* Content Wrapper */}
              <div className={cn(
@@ -145,10 +146,10 @@ const RefinedHeroSection = () => {
                                 transition={{ duration: 0.3 }}
                                 className="min-h-[7rem]"
                             >
-                                <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white">
+                                <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
                                     {content.title}
                                 </h1>
-                                <p className="text-base text-white/90 max-w-xl mt-3">
+                                <p className="text-base text-white/90 max-w-xl mt-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                                     {content.description}
                                 </p>
                             </motion.div>
@@ -193,7 +194,6 @@ const RefinedHeroSection = () => {
 
 
 export default function HomeClientPage() {
-  const featuredPacks = premiumPacks.filter(p => p.bestseller);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -207,3 +207,5 @@ export default function HomeClientPage() {
     </div>
   );
 }
+
+    
