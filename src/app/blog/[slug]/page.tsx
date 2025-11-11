@@ -1,4 +1,3 @@
-
 import { notFound } from 'next/navigation';
 import { blogPosts, BlogPost } from '@/lib/blog-posts';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -256,5 +255,3 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-
-    

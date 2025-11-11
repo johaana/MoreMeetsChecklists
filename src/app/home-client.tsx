@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -61,7 +60,7 @@ const RefinedHeroSection = () => {
             <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent z-10" />
             
             {/* Mobile Gradient Overlay */}
-            <div className="md:hidden absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
+            <div className="md:hidden absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
 
             {/* Content Wrapper */}
              <div className={cn(
@@ -179,7 +178,7 @@ const RefinedHeroSection = () => {
     );
 };
 
-export default function HomeClientPage() {
+export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
@@ -190,5 +189,3 @@ export default function HomeClientPage() {
     </div>
   );
 }
-
-    

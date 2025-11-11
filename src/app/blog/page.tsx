@@ -1,4 +1,3 @@
-
 import React from 'react';
 import BlogClientPage from './blog-client-page';
 import type { Metadata } from 'next';
@@ -42,5 +41,3 @@ export default function BlogListPage() {
         </React.Suspense>
     )
 }
-
-    
