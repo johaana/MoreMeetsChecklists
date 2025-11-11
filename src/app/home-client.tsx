@@ -71,14 +71,14 @@ const RefinedHeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
             {/* Desktop Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+            <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent z-10" />
             
             {/* Mobile Gradient Overlay */}
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+            <div className="md:hidden absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
 
             {/* Content Wrapper */}
              <div className={cn(
-              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:items-start md:text-left"
+              "container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:pb-0 md:justify-center"
             )}>
               {/* Desktop Content */}
               <div className="hidden md:block max-w-2xl space-y-6">
@@ -100,7 +100,7 @@ const RefinedHeroSection = () => {
                         </motion.div>
                     </AnimatePresence>
                 </div>
-                  <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5">
+                  <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 max-w-lg">
                     <div className="flex w-full">
                           <motion.div
                             className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
@@ -124,7 +124,7 @@ const RefinedHeroSection = () => {
                         ))}
                     </div>
                 </div>
-                <div className="pt-2">
+                <div className="pt-4">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
                         <Link href="/packs">
                         Explore All Packages
@@ -135,8 +135,8 @@ const RefinedHeroSection = () => {
               </div>
 
                 {/* Mobile Content Block (Option 2) */}
-                <div className="md:hidden text-center items-center flex flex-col relative z-20">
-                     <div className="max-w-md space-y-6">
+                 <div className="md:hidden text-center items-center flex flex-col w-full relative z-20">
+                     <div className="w-full max-w-md space-y-6">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activePainPoint}

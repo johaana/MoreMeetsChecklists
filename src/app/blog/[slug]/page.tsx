@@ -34,7 +34,7 @@ export async function generateMetadata(
   let imageUrl: string;
 
   if (post.imageUrl) {
-    // Let metadataBase handle resolving relative URLs.
+    // Let metadataBase handle resolving relative URLs if it's not a full URL
     imageUrl = post.imageUrl;
   } else {
     // Use a relative path that metadataBase will resolve into an absolute URL.
