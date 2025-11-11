@@ -3,25 +3,12 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star, ArrowRight, FileText, Layers, Shield, Users, Mail, Loader2, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
-import { premiumPacks, type PremiumPack } from "@/lib/premium-packs";
-import { Badge } from "@/components/ui/badge";
-import Image from 'next/image';
-import { useIsMobile } from "@/hooks/use-mobile";
-import { blogPosts } from "@/lib/blog-posts";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay";
-import { useToast } from "@/hooks/use-toast";
-import { Input } from "@/components/ui/input";
-import { subscribeToBlog } from "@/app/blog/actions";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-
 
 const painPoints = {
   resilience: {
@@ -146,10 +133,10 @@ const RefinedHeroSection = () => {
                                 transition={{ duration: 0.3 }}
                                 className="min-h-[7rem]"
                             >
-                                <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+                                <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white">
                                     {content.title}
                                 </h1>
-                                <p className="text-base text-white/90 max-w-xl mt-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                                <p className="text-base text-white/90 max-w-xl mt-3">
                                     {content.description}
                                 </p>
                             </motion.div>
@@ -192,16 +179,12 @@ const RefinedHeroSection = () => {
     );
 };
 
-
 export default function HomeClientPage() {
-
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        
         <RefinedHeroSection />
-
       </main>
       <Footer />
     </div>
