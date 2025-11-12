@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -351,11 +352,9 @@ export default function BlogClientPage() {
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                      {post.tags.map(tag => (
-                                        <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} onClick={(e) => handleTagClick(e, tag)}>
-                                            <Badge variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer">
-                                                {tag}
-                                            </Badge>
-                                        </Link>
+                                        <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                            {tag}
+                                        </Badge>
                                     ))}
                                 </div>
                                 <CardTitle className="text-xl font-headline">
@@ -391,4 +390,3 @@ export default function BlogClientPage() {
   );
 }
 
-    

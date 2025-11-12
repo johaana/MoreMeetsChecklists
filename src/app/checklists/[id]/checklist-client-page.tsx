@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -14,22 +15,18 @@ import type { IndividualChecklist } from '@/lib/individual-checklists';
 import { individualChecklists } from '@/lib/individual-checklists';
 import { PainPoint } from '@/components/ui/pain-point';
 import { ValueProposition } from '@/components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-
-const paymentButtonMap: { [price: number]: string } = {
-    1299: 'pl_ROLjNNiQa8G8XJ',
-    1999: 'pl_ROLnfbmEpZzgZZ',
-};
 
 const RazorpayButtonWrapper = ({ price, checklistId }: { price: number, checklistId: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
-    const paymentButtonId = paymentButtonMap[price];
+    const paymentButtonId = price === 1299 ? 'pl_ROLjNNiQa8G8XJ' : 'pl_ROLnfbmEpZzgZZ';
 
     React.useEffect(() => {
         if (!formContainerRef.current || !paymentButtonId) return;
 
         const form = document.createElement('form');
-        form.action = `/thank-you?checklist_id=${checklistId}`;
+        form.action = `/thank-you?checklist_id=${checklistId}&payment_method=razorpay`;
         
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
@@ -101,6 +98,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
 
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
     const [showStickyBar, setShowStickyBar] = React.useState(false);
+    const [currency, setCurrency] = React.useState('INR');
     
     React.useEffect(() => {
         const observer = new IntersectionObserver(
@@ -182,16 +180,34 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center flex flex-col items-center">
-                           <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
-                           <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
+                           <div className="flex justify-center mb-4">
+                                <Tabs defaultValue="INR" onValueChange={setCurrency} className="w-full max-w-xs">
+                                  <TabsList className="grid w-full grid-cols-2">
+                                    <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                    <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                  </TabsList>
+                                </Tabs>
+                            </div>
+                           <p className="text-4xl font-extrabold mb-4">
+                                {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
+                            </p>
+                            {currency === 'INR' ? (
+                                <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
+                            ) : (
+                                <Button asChild size="lg" className="w-full max-w-xs">
+                                    <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
+                                        Buy Now
+                                    </Link>
+                                </Button>
+                            )}
                         </CardContent>
                          <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
                             <ValueProposition
-                                ourPrice={`₹${checklist.priceINR}`}
-                                competitorPrice="₹8,000+"
+                                ourPrice={currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
+                                competitorPrice={currency === 'INR' ? "₹8,000+" : "$99+"}
                                 valueStatement="For a single, custom-written SOP."
                             />
-                            <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
+                            <p className="text-xs text-muted-foreground mt-2">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
                          </CardFooter>
                     </Card>
                 </div>
@@ -209,10 +225,15 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
         <div className='flex items-center justify-between gap-4'>
              <div className='flex-1'>
                 <p className='font-bold text-sm truncate'>{checklist.title}</p>
-                <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
+                 <div className="flex items-baseline gap-2">
+                    <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
+                    <p className='text-lg font-extrabold text-muted-foreground'>/ ${checklist.priceUSD}</p>
+                 </div>
             </div>
             <div className="flex-shrink-0">
-                 <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
+                 <Button asChild>
+                    <a href="#pricing">Buy Now</a>
+                 </Button>
             </div>
         </div>
     </div>
