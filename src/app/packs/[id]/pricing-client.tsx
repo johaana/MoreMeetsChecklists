@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy } from 'lucide-react';
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
@@ -118,7 +118,7 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
     if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
     if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
     if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <Trophy className="w-4 h-4 text-purple-500" />;
+    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
     if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
     return <Landmark className="w-4 h-4 text-gray-500" />;
 };
