@@ -9,7 +9,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { addContact } from '../actions';
+import { addContact } from '@/app/packs/actions';
 import { Input } from '@/components/ui/input';
 import { ValueProposition } from '@/components/ui/value-proposition';
 
@@ -126,6 +126,12 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    const features = [
+        { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
+        { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
+        { text: "<strong>Instant Download</strong> in fully editable Excel format."},
+        { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
+    ];
 
     if (pack.priceINR === 0) {
         return (
@@ -188,10 +194,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className='space-y-4'>
                                 <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
                                 <ul className="space-y-3 text-sm text-foreground/90">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>{totalChecklists} Expert-Built Checklists</strong> ({totalTasks}+ total tasks)</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Audit-Ready & Globally Compliant</strong> framework.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Instant Download</strong> in fully editable Excel format.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span><strong>Lifetime Access</strong> to all future updates for this pack.</span></li>
+                                    {features.map((feature, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
+                                            <span dangerouslySetInnerHTML={{ __html: feature.text }} />
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                              {pack.globalStandards && (

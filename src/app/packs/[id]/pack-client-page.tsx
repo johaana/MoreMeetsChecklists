@@ -66,7 +66,7 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 
 
 const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) => {
-    if (!pack.globalStandards) {
+    if (!pack.globalStandards || !pack.globalStandards.standards) {
         return null;
     }
 

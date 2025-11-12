@@ -11,17 +11,17 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
 const painPoints = {
-  resilience: {
-      title: `"Stop losing knowledge every time someone quits."`,
-      description: 'Turn people-dependent processes into a permanent, scalable system.',
-      buttonText: 'Build Resilience',
-      mobileButtonText: 'Resilience'
-  },
   error: {
       title: `"World-class compliance used to cost a fortune. We fixed that."`,
       description: "Achieve world-class compliance without the enterprise price tag. Our audit-ready, globally-compliant SOPs are available for instant download—no subscriptions, no hidden fees. We believe operational excellence is a right, not a luxury.",
       buttonText: 'Global Compliance',
       mobileButtonText: 'Compliance'
+  },
+  resilience: {
+      title: `"Stop losing knowledge every time someone quits."`,
+      description: 'Turn people-dependent processes into a permanent, scalable system.',
+      buttonText: 'Build Resilience',
+      mobileButtonText: 'Resilience'
   },
   onboarding: {
       title: `"Training shouldn’t depend on who’s available that day."`,
