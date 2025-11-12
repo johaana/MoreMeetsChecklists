@@ -69,18 +69,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function(d, w, c) {
-                  w.BrevoConversationsID = '68f884eb6ab6c55e530f5d10';
-                  w[c] = w[c] || function() {
-                      (w[c].q = w[c].q || []).push(arguments);
-                  };
-                  var s = d.createElement('script');
-                  s.async = true;
-                  s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
-                  if (d.head) d.head.appendChild(s);
-              })(document, window, 'BrevoConversations');
-            `,
+            __html: `function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+o.onload=function(){window.trackingFunctions.onLoad({appId:"6874d173c779c900217ae56b"})},
+document.head.appendChild(o)}initApollo();`,
           }}
         />
       </head>
