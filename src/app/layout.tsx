@@ -70,16 +70,24 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function(d, w, c) {
-                  w.BrevoConversationsID = '68f884eb6ab6c55e530f5d10';
-                  w[c] = w[c] || function() {
-                      (w[c].q = w[c].q || []).push(arguments);
-                  };
-                  var s = d.createElement('script');
-                  s.async = true;
-                  s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
-                  if (d.head) d.head.appendChild(s);
-              })(document, window, 'BrevoConversations');
+              (function(d,w){
+                var t=w.Apollo||(w.Apollo={});
+                if(t.invoked)return;
+                t.invoked=true;
+                t.methods=["identify","track","trigger","captureLead","show","hide","open","close"];
+                t.methods.forEach(function(m){t[m]=function(){
+                return t.invoked?t.q.push([m,Array.prototype.slice.call(arguments)]):t.callMethod(m,arguments);};});
+                t.SNIPPET_VERSION="2.2.1";
+                t.q=[];
+                var s=d.createElement("script");
+                s.type="text/javascript";
+                s.async=true;
+                s.src="https://cdn.apollo.io/widgets/latest/loader.js";
+                var h=d.getElementsByTagName("script")[0];
+                h.parentNode.insertBefore(s,h);
+              })(document,window);
+
+              window.Apollo.identify({app_id: "66a64240767c2e022f602b1f"});
             `,
           }}
         />
