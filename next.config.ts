@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
         destination: '/packs/manufacturing_operations_ehs_pack',
         permanent: true,
       },
+      {
+        source: '/packs/master-access',
+        destination: '/master-access',
+        permanent: true,
+      },
       // --- End of New Redirects ---
     ]
   },
