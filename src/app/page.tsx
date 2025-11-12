@@ -65,7 +65,7 @@ const RefinedHeroSection = () => {
             <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
               
               <div className="hidden md:block max-w-2xl">
-                <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
+                <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                         key={activePainPoint}
