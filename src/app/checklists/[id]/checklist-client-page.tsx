@@ -13,6 +13,8 @@ import { premiumPacks } from '@/lib/premium-packs';
 import type { IndividualChecklist } from '@/lib/individual-checklists';
 import { individualChecklists } from '@/lib/individual-checklists';
 import { PainPoint } from '@/components/ui/pain-point';
+import { ValueProposition } from '@/components/ui/value-proposition';
+
 
 const paymentButtonMap: { [price: number]: string } = {
     1299: 'pl_ROLjNNiQa8G8XJ',
@@ -183,8 +185,13 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                            <p className="text-4xl font-extrabold mb-4">₹{checklist.priceINR}</p>
                            <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
                         </CardContent>
-                         <CardFooter className="flex-col gap-2 pt-2 items-center">
-                            <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
+                         <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
+                            <ValueProposition
+                                ourPrice={`₹${checklist.priceINR}`}
+                                competitorPrice="₹8,000+"
+                                valueStatement="For a single, custom-written SOP."
+                            />
+                            <p className="text-xs text-muted-foreground mt-2">Secure payment via Razorpay</p>
                          </CardFooter>
                     </Card>
                 </div>

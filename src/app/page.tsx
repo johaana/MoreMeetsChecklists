@@ -18,8 +18,8 @@ const painPoints = {
       mobileButtonText: 'Resilience'
   },
   error: {
-      title: `"Compliance slips aren’t small mistakes."`,
-      description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
+      title: `"World-class compliance used to cost a fortune. We fixed that."`,
+      description: 'Get audit-ready SOPs trusted by global firms, for a fraction of the cost. No subscriptions, no enterprise fees.',
       buttonText: 'Global Compliance',
       mobileButtonText: 'Compliance'
   },
@@ -123,7 +123,7 @@ const RefinedHeroSection = () => {
               
               <div className="md:hidden text-center items-center flex flex-col relative z-20">
                  <div className="max-w-md space-y-6">
-                    <div className="min-h-[7rem] flex items-center">
+                    <div className="min-h-[9rem] flex items-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
@@ -133,7 +133,7 @@ const RefinedHeroSection = () => {
                             transition={{ duration: 0.3 }}
                             className="w-full"
                             >
-                                <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white">
+                                <h1 className="text-3xl font-extrabold font-headline tracking-tighter text-white">
                                     {content.title}
                                 </h1>
                                 <p className="text-base text-white/90 max-w-xl mt-3">

@@ -62,10 +62,10 @@ export default function AboutUsPage() {
                                 Most toolkits help you pass an audit once a year. Our checklists are designed to be used by your team on the ground, every single day. We don't just make you compliant; we make your operations better, safer, and more efficient.
                             </ValueCard>
                              <ValueCard icon={<HandCoins className="w-8 h-8 text-accent"/>} title="Radically Affordable">
-                                We've built a lean, efficient model that cuts out the unnecessary overhead of traditional consulting. This allows us to offer our expert-built toolkits for up to 80% less than competitors, passing the savings directly to you.
+                                Our lean, efficient model cuts out the unnecessary overhead of traditional consulting. This allows us to offer our expert-built toolkits for up to 80% less than competitors, passing the savings directly to you.
                             </ValueCard>
                              <ValueCard icon={<Building className="w-8 h-8 text-accent"/>} title="Built for the Real World">
-                                Our founder has over 15 years of experience managing high-stakes operations for global 7-star hospitality brands and large-scale events. Our checklists aren't theoretical; they are battle-tested and designed for the realities of your business.
+                                Our founder has over 25 years of experience managing high-stakes operations for global 7-star hospitality brands and large-scale events. Our checklists aren't theoretical; they are battle-tested and designed for the realities of your business.
                             </ValueCard>
                               <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
                                 Every pack is built on a foundation of globally recognized standards (like ISO and OSHA) but is crafted with a practical understanding of the challenges and opportunities in the Indian and global markets.

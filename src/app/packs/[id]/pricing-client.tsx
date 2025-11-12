@@ -11,6 +11,8 @@ import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '../actions';
 import { Input } from '@/components/ui/input';
+import { ValueProposition } from '@/components/ui/value-proposition';
+
 
 const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packId: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
@@ -201,10 +203,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             )}
 
-                             <div className="text-center bg-secondary/50 p-4 rounded-lg border border-dashed border-primary/20">
-                                <p className="font-bold text-primary">Worth ₹25,000+ in SOP creation time.</p>
-                                <blockquote className="text-sm text-muted-foreground italic mt-2">“Every MoreMeets pack is globally compliant. Because operational excellence should be accessible, not expensive.”</blockquote>
-                            </div>
+                             <ValueProposition 
+                                ourPrice={`₹${pack.priceINR}`}
+                                competitorPrice="₹35,000+"
+                                valueStatement="For a comparable enterprise compliance toolkit."
+                            />
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
