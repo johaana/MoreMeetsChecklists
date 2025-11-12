@@ -19,7 +19,7 @@ const painPoints = {
   },
   error: {
       title: `"World-class compliance used to cost a fortune. We fixed that."`,
-      description: 'Achieve world-class compliance without the enterprise price tag. Expert-built SOPs, instant download. No subscriptions, no hidden fees.',
+      description: "Achieve world-class compliance without the enterprise price tag. Our audit-ready, globally-compliant SOPs are available for instant download—no subscriptions, no hidden fees. We believe operational excellence is a right, not a luxury.",
       buttonText: 'Global Compliance',
       mobileButtonText: 'Compliance'
   },
@@ -123,7 +123,7 @@ const RefinedHeroSection = () => {
               
               <div className="md:hidden text-center items-center flex flex-col relative z-20">
                  <div className="max-w-md space-y-6">
-                    <div className="min-h-[9rem] flex items-center">
+                    <div className="min-h-[14rem] flex items-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
