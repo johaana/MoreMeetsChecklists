@@ -752,7 +752,7 @@ export const premiumPacks: PremiumPack[] = [
         priceINR: 5999,
         priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2e15f21-7299-4d69-a86d-966a93549646',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f9b98b4f-9036-46f9-924e-6883bc01760e',
         category: "Hospitality",
         description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
         icon: <Building />,
@@ -984,7 +984,7 @@ export const premiumPacks: PremiumPack[] = [
         globalStandards: {
             title: "Aligned with Food Safety Standards",
             standards: [
-                { name: "FSSAI", description: "Complies with Food Safety and Standards Authority of India regulations." },
+                { name: "FSSAI", description: "Compliance with Food Safety and Standards Authority of India regulations." },
                 { name: "HACCP", description: "Follows Hazard Analysis and Critical Control Points principles." },
                 { name: "ISO 22000", description: "Adheres to international standards for food safety management." },
                 { name: "Codex Alimentarius", description: "International food standards from the WHO/FAO." }
@@ -1210,7 +1210,7 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "ISO 9001", description: "For quality management and customer satisfaction." },
                 { name: "Shops & Establishment Act", description: "Ensures compliance with local labor and operational laws." },
                 { name: "WRAP", description: "A leading standard for ethical manufacturing in the apparel industry." },
-                { name: "OSHA 29 CFR", description: "Guidelines for retail workplace safety." }
+                { name: "OSHA Retail Safety", description: "Guidelines for workplace safety in retail environments." }
             ]
         },
         checklists: [
@@ -1572,7 +1572,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RSM-06', description: 'Track repair status and provide updates to the customer.', priority: 'High', riskLevel: 'Medium', consequence: 'Lack of communication leads to customer frustration.', proof: 'Communication Log', location: 'CRM' },
                     { id: 'RSM-07', description: 'Inspect the item after repair to ensure quality.', priority: 'High', riskLevel: 'High', consequence: 'Returning an item that is still faulty leads to extreme customer dissatisfaction.', proof: 'QC Check', location: 'Service Desk' },
                     { id: 'RSM-08', description: 'Securely package the item for return to the customer.', priority: 'High', riskLevel: 'Low', consequence: 'Protects the item from damage after it leaves the store.', proof: 'Packaging Check', location: 'Service Desk' },
-                    { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', consequence: 'Billing errors can lead to disputes.', proof: 'Invoice', location: 'POS' },
+                    { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', consequence: 'Billing errors can lead to customer disputes.', proof: 'Invoice', location: 'POS' },
                     { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', consequence: 'Provides a valuable service history for the item.', proof: 'Service History', location: 'System' },
                 ]
             },
@@ -1726,7 +1726,7 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'POS-RECON-01', description: 'Perform end-of-day reconciliation of cash, card, and digital payments against POS reports.', priority: 'High', riskLevel: 'High', consequence: 'Unreconciled tills can hide cash theft or payment processing errors.', proof: 'Reconciliation Report', location: 'Cash Office' },
                     { id: 'POS-RECON-02', description: 'Check payment terminals daily for signs of tampering.', priority: 'High', riskLevel: 'High', consequence: 'Criminals can install skimmers to steal customer card data.', proof: 'Device Inspection Log', location: 'POS' },
-                    { id: 'POS-RECON-03', description: 'Verify CCTV cameras at billing lanes are operational and have a clear view.', priority: 'High', riskLevel: 'High', consequence: 'Provides crucial evidence in case of cash disputes or fraudulent transactions.', proof: 'CCTV Check Log', location: 'Security Office' },
+                    { id: 'POS-RECON-03', description: 'Verify CCTV cameras at billing lanes are operational and have a clear view.', priority: 'High', riskLevel: 'High', consequence: 'Provides crucial evidence in case of cash disputes, theft, or scams.', proof: 'CCTV Check Log', location: 'Security Office' },
                     { id: 'POS-RECON-04', description: 'Require dual approval from a manager for all refunds.', priority: 'High', riskLevel: 'High', consequence: 'A common method for internal fraud is processing fake refunds.', proof: 'Refund/Void Log', location: 'POS' },
                     { id: 'POS-RECON-05', description: 'Securely store and transport daily cash deposits.', priority: 'High', riskLevel: 'High', consequence: 'Reduces the risk of robbery or internal theft of cash.', proof: 'Cash Deposit Log', location: 'Cash Office' },
                     { id: 'POS-RECON-06', description: 'Reconcile gift card and voucher sales.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents fraud related to gift card issuance and redemption.', proof: 'Voucher Log', location: 'System' },
@@ -1994,7 +1994,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BHF-06', description: 'Label all prepared foods with preparation time and date.', priority: 'High', riskLevel: 'High', consequence: 'Ensures that older food is used or discarded first.', proof: 'Label Check', location: 'Bakery/Kitchen' },
                     { id: 'BHF-07', description: 'Clean and sanitize all surfaces and equipment after use.', priority: 'High', riskLevel: 'High', consequence: 'Prevents buildup of bacteria and allergens.', proof: 'Cleaning Log', location: 'Bakery/Kitchen' },
                     { id: 'BHF-08', description: 'Check for allergens and provide clear labeling.', priority: 'High', riskLevel: 'High', consequence: 'Undeclared allergens can cause severe reactions in sensitive customers.', proof: 'Allergen Label Audit', location: 'Hot Food Section' },
-                    { id: 'BHF-09', description: 'Calibrate food thermometers daily.', priority: 'High', riskLevel: 'High', consequence: 'Inaccurate thermometers give a false sense of food safety.', proof: 'Calibration Log', location: 'Bakery/Kitchen' },
+                    { id: 'BHF-09', description: 'Calibrate food thermometers daily.', priority: 'High', riskLevel: 'High', consequence: 'Inaccurate thermometers give a false sense of safety.', proof: 'Calibration Log', location: 'Bakery/Kitchen' },
                     { id: 'BHF-10', description: 'Train staff on food safety procedures.', priority: 'High', riskLevel: 'High', consequence: 'Untrained staff are a major liability in any food handling environment.', proof: 'Training Records', location: 'Office' },
                 ]
             },
@@ -3268,6 +3268,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
