@@ -19,7 +19,7 @@ const painPoints = {
   },
   error: {
       title: `"World-class compliance used to cost a fortune. We fixed that."`,
-      description: 'Get audit-ready SOPs trusted by global firms, for a fraction of the cost. No subscriptions, no enterprise fees.',
+      description: 'Achieve world-class compliance without the enterprise price tag. Expert-built SOPs, instant download. No subscriptions, no hidden fees.',
       buttonText: 'Global Compliance',
       mobileButtonText: 'Compliance'
   },
@@ -32,10 +32,10 @@ const painPoints = {
 };
 
 type PainPointKey = keyof typeof painPoints;
-const painPointKeys: PainPointKey[] = ['resilience', 'error', 'onboarding'];
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const RefinedHeroSection = () => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const [isClient, setIsClient] = useState(false);
     const content = painPoints[activePainPoint];
 
