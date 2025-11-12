@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles, Siren, Bug, TrendingUp, Lock, FileLock, Users, Banknote, Bus, TestTube, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector } from 'lucide-react';
+import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles, Siren, Bug, TrendingUp, Lock, FileLock, Users, Banknote, Bus, TestTube, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector, Award, HeartPulse } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -46,6 +46,25 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
     );
 }
 
+const ComplianceIcon = ({ standard }: { standard: string }) => {
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <Landmark className="w-4 h-4 text-gray-500" />;
+};
+
+
 const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) => {
     if (!pack.globalStandards) {
         return null;
@@ -66,7 +85,7 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
                     {pack.globalStandards.standards.map((standard, index) => (
                         <Card key={index} className="flex flex-col text-center p-4 md:p-6 bg-background">
                             <CardHeader className="p-0">
-                                <Globe className="w-8 h-8 md:w-10 md:h-10 text-accent mx-auto mb-2" />
+                                <div className="text-accent mx-auto mb-2"><ComplianceIcon standard={standard.name} /></div>
                                 <CardTitle className="text-sm md:text-lg font-headline">{standard.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 mt-2 flex-1">

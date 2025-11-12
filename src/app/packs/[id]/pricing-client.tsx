@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse } from 'lucide-react';
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '../actions';
@@ -106,17 +106,22 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 }
 
 const ComplianceIcon = ({ standard }: { standard: string }) => {
-    switch(standard.toUpperCase()) {
-        case 'NABH': return <Star className="w-4 h-4 text-green-600" />;
-        case 'JCI': return <Globe className="w-4 h-4 text-blue-600" />;
-        case 'WHO GUIDELINES': return <HeartPulse className="w-4 h-4 text-cyan-600" />;
-        case 'ISO 15189': return <Book className="w-4 h-4 text-purple-600" />;
-        case 'ISO 9001': return <Award className="w-4 h-4 text-yellow-600" />;
-        case 'HACCP': return <ShieldCheck className="w-4 h-4 text-red-600" />;
-        case 'OSHA': return <HardHat className="w-4 h-4 text-orange-600" />;
-        default: return <Award className="w-4 h-4 text-gray-500" />;
-    }
-}
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <Trophy className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <Landmark className="w-4 h-4 text-gray-500" />;
+};
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalChecklists = pack.checklists.length;

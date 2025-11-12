@@ -147,7 +147,7 @@ export function SiteHeader() {
                                              <Link href="/packs/animal_shelter_pack" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2">
                                                 <PawPrint className="w-4 h-4" /> Social Cause (Free Pack)
                                             </Link>
-                                            <Link href="/packs" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
+                                            <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
                                                 View All Premium Packs &rarr;
                                             </Link>
                                         </div>

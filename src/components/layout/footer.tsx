@@ -28,7 +28,7 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col gap-2 items-center text-xs md:text-sm">
                     <h3 className="font-semibold">Quick Links</h3>
-                    <Link href="/packs" className="text-muted-foreground hover:text-foreground" prefetch={false}>All Packages</Link>
+                    <Link href="/library" className="text-muted-foreground hover:text-foreground" prefetch={false}>SOP Library</Link>
                     <Link href="/checklists" className="text-muted-foreground hover:text-foreground" prefetch={false}>Bestselling Checklists</Link>
                     <Link href="/about" className="text-muted-foreground hover:text-foreground" prefetch={false}>About Us</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
