@@ -67,30 +67,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(d,w){
-                var t=w.Apollo||(w.Apollo={});
-                if(t.invoked)return;
-                t.invoked=true;
-                t.methods=["identify","track","trigger","captureLead","show","hide","open","close"];
-                t.methods.forEach(function(m){t[m]=function(){
-                return t.invoked?t.q.push([m,Array.prototype.slice.call(arguments)]):t.callMethod(m,arguments);};});
-                t.SNIPPET_VERSION="2.2.1";
-                t.q=[];
-                var s=d.createElement("script");
-                s.type="text/javascript";
-                s.async=true;
-                s.src="https://cdn.apollo.io/widgets/latest/loader.js";
-                var h=d.getElementsByTagName("script")[0];
-                h.parentNode.insertBefore(s,h);
-              })(document,window);
-
-              window.Apollo.identify({app_id: "66a64240767c2e022f602b1f"});
-            `,
-          }}
-        />
       </head>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
