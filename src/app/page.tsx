@@ -74,10 +74,10 @@ const RefinedHeroSection = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                         >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
                             {content.title}
                         </h1>
-                        <p className="text-lg text-white/90 max-w-xl mt-4">
+                        <p className="text-lg text-white/90 max-w-xl mt-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
                             {content.description}
                         </p>
                         </motion.div>
