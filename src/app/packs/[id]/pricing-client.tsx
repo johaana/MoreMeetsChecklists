@@ -231,9 +231,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             )}
 
-                             <ValueProposition 
-                                ourPrice={`₹${pack.priceINR}`}
-                                competitorPrice="₹35,000+"
+                            <ValueProposition
+                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                competitorPrice={currency === 'INR' ? `₹35,000+` : `$${pack.competitorPriceUSD}+`}
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
 
