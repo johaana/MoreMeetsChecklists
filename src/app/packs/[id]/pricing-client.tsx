@@ -6,12 +6,13 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness } from 'lucide-react';
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Banknote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
 import { Input } from '@/components/ui/input';
 import { ValueProposition } from '@/components/ui/value-proposition';
+import { cn } from '@/lib/utils';
 
 
 const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packId: string }) => {
@@ -124,6 +125,7 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
+    const [currency, setCurrency] = React.useState<'INR' | 'USD'>('INR');
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
     const features = [
@@ -166,6 +168,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         )
     }
 
+    const hasUSD = pack.priceUSD && pack.lemonSqueezyUrl;
+
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
@@ -173,7 +177,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <Card className="flex flex-col max-w-2xl w-full border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
                         <CardHeader className="p-6 bg-secondary/30 text-center">
                              <div className="flex justify-center items-center gap-4">
-                                <Landmark className="w-10 h-10 text-accent" />
+                                <Banknote className="w-10 h-10 text-accent" />
                                 <div>
                                     <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
                                         Global Compliance Pack
@@ -186,10 +190,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
+                            {hasUSD && (
+                                <div className="flex justify-center bg-muted p-1 rounded-full">
+                                    <Button onClick={() => setCurrency('INR')} variant={currency === 'INR' ? 'default' : 'ghost'} className="flex-1 rounded-full">Pay in INR</Button>
+                                    <Button onClick={() => setCurrency('USD')} variant={currency === 'USD' ? 'default' : 'ghost'} className="flex-1 rounded-full">Pay in USD</Button>
+                                </div>
+                            )}
                             <div className="flex items-baseline justify-center gap-2">
-                                <p className="text-5xl font-extrabold">₹{pack.priceINR}</p>
-                                <p className="text-sm text-muted-foreground">/ One-time payment. Forever yours.</p>
+                                {currency === 'INR' ? (
+                                    <p className="text-5xl font-extrabold">₹{pack.priceINR}</p>
+                                ) : (
+                                    <p className="text-5xl font-extrabold">${pack.priceUSD}</p>
+                                )}
+                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
                             </div>
+                            {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
                            
                             <div className='space-y-4'>
                                 <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
@@ -224,8 +239,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
-                           <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id}/>
-                           <p className="text-xs text-muted-foreground">Secure payment via Razorpay</p>
+                            {currency === 'INR' && <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id}/>}
+                            {currency === 'USD' && hasUSD && (
+                                <Button asChild size="lg" className="w-full">
+                                    <Link href={pack.lemonSqueezyUrl!} target="_blank">Pay with Card (USD)</Link>
+                                </Button>
+                            )}
+                           <p className="text-xs text-muted-foreground">Secure payment via Razorpay / Lemon Squeezy</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
                                     Need this pack tailored to your brand's specific needs? Schedule a call.

@@ -37,7 +37,9 @@ export type PremiumPack = {
     id: string;
     title: string;
     priceINR: number;
+    priceUSD?: number;
     paymentId: string;
+    lemonSqueezyUrl?: string;
     listId?: number; // Brevo List ID
     category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise";
     description: string;
@@ -261,7 +263,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'franchise_operations_pack',
         title: "Franchise Operations Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/bb36236b-67a4-44b4-846c-e549f7e53f19',
         category: "Franchise",
         description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
         icon: <Store />,
@@ -1110,7 +1114,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SH-01', description: "Conduct daily checks for clean uniforms, nails, and hairnets.", priority: 'High', riskLevel: 'Medium', consequence: 'Poor personal hygiene can lead to food contamination.', proof: 'Daily Staff Audit Log', location: 'Entry Point' },
                     { id: 'SH-02', description: "Perform random audits of handwashing procedures.", priority: 'High', riskLevel: 'High', consequence: 'Improper handwashing is a leading cause of foodborne illness.', proof: 'Handwashing Audit', location: 'Kitchen' },
                     { id: 'SH-03', description: "Conduct and document monthly refresher training on hygiene.", priority: 'High', riskLevel: 'Medium', consequence: 'Staff forget procedures over time; regular training reinforces good habits.', proof: 'Training Records', location: 'Training Room' },
-                    { id: 'SH-04', description: "Screen new staff for any communicable diseases.", priority: 'High', riskLevel: 'High', consequence: 'A sick employee can cause a major outbreak.', proof: 'Medical Fitness Certificate', location: 'HR File' },
+                    { id: 'SH-04', description: "Screen new staff for any communicable diseases.", priority: 'High', riskLevel: 'High', consequence: 'A sick food handler can cause a major outbreak.', proof: 'Medical Fitness Certificate', location: 'HR File' },
                     { id: 'SH-05', description: "Ensure 'Staff Only' areas are clearly marked and access is restricted.", priority: 'Medium', riskLevel: 'Low', consequence: 'Prevents unauthorized personnel from entering food prep areas.', proof: 'Visual check and signage', location: 'Back of House' },
                     { id: 'SH-06', description: "Provide and enforce the use of gloves for handling ready-to-eat foods.", priority: 'High', riskLevel: 'High', consequence: 'Prevents direct hand-to-food contamination.', proof: 'Glove Usage Audit', location: 'Kitchen' },
                     { id: 'SH-07', description: "Ensure a 'no jewelry' policy is followed by kitchen staff.", priority: 'High', riskLevel: 'High', consequence: 'Jewelry can fall into food, creating a physical hazard.', proof: 'Visual Check', location: 'Kitchen' },
@@ -1166,7 +1170,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'fashion_and_apparel_retail',
         title: "Fashion & Apparel Retail Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0f83e20e-6f89-4822-8356-829d5926712b',
         category: "Retail",
         description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
         icon: <Shirt />,
@@ -1386,7 +1392,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'jewelry_and_luxury_retail',
         title: "Jewelry & Luxury Retail Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/88f3c5af-45f8-4444-9988-348123533854',
         category: "Retail",
         description: "A specialized toolkit for high-value retail, focusing on vault security, inventory control, and preventing sophisticated fraud.",
         icon: <Gem />,
@@ -1537,7 +1545,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CV-07', description: 'Record customer details accurately for future communication.', priority: 'High', riskLevel: 'Medium', consequence: 'Critical for building a long-term client relationship.', proof: 'CRM Entry', location: 'POS' },
                     { id: 'CV-08', description: 'Check against any internal watchlists for known fraudsters.', priority: 'High', riskLevel: 'High', consequence: 'Prevents repeat fraud attempts by known individuals.', proof: 'Watchlist Check', location: 'System' },
                     { id: 'CV-09', description: 'For corporate purchases, verify business registration details.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the purchase is legitimate and authorized by the company.', proof: 'Business Document Copy', location: 'POS' },
-                    { id: 'CV-10', description: 'Retain verification documents securely and in compliance with privacy laws.', priority: 'High', riskLevel: 'High', consequence: 'Mishandling customer data can lead to privacy violations and fines.', proof: 'Secure Storage Log', location: 'Office' },
+                    { id: 'CV-10', description: 'Retain verification documents securely and in compliance with privacy laws.', priority: 'High', riskLevel: 'High', consequence: 'Mishandling high-net-worth individual data is a major legal risk.', proof: 'Secure Storage Log', location: 'Office' },
                 ]
             },
             {
@@ -1606,7 +1614,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'electronics_showroom_pack',
         title: "Electronics Showroom Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a5528759-9944-4638-a28d-16c8712a76f0',
         category: "Retail",
         description: "A comprehensive operational pack for electronics retailers to ensure safety, asset security, and a superior customer experience.",
         icon: <Tv />,
@@ -1707,14 +1717,14 @@ export const premiumPacks: PremiumPack[] = [
                 summary: "End-of-day reconciliation, device tag checks, CCTV on bill area, dual-approval for refunds.",
                 tasks: [
                     { id: 'POS-RECON-01', description: 'Perform end-of-day reconciliation of cash, card, and digital payments against POS reports.', priority: 'High', riskLevel: 'High', consequence: 'Unreconciled tills can hide cash theft or payment processing errors.', proof: 'Reconciliation Report', location: 'Cash Office' },
-                    { id: 'POS-RECON-02', description: 'Check payment terminals daily for signs of tampering.', priority: 'High', riskLevel: 'High', consequence: 'Criminals may install skimmers to steal customer card data.', proof: 'Device Inspection Log', location: 'POS' },
+                    { id: 'POS-RECON-02', description: 'Check payment terminals daily for signs of tampering.', priority: 'High', riskLevel: 'High', consequence: 'Criminals can install skimmers to steal customer card data.', proof: 'Device Inspection Log', location: 'POS' },
                     { id: 'POS-RECON-03', description: 'Verify CCTV cameras at billing lanes are operational and have a clear view.', priority: 'High', riskLevel: 'High', consequence: 'Provides crucial evidence in case of cash disputes or fraudulent transactions.', proof: 'CCTV Check Log', location: 'Security Office' },
-                    { id: 'POS-RECON-04', description: 'Require dual approval from a manager for all refunds.', priority: 'High', riskLevel: 'High', consequence: 'A common method for internal fraud is processing fake refunds.', proof: 'Refund Approval Log', location: 'POS' },
+                    { id: 'POS-RECON-04', description: 'Require dual approval from a manager for all refunds.', priority: 'High', riskLevel: 'High', consequence: 'A common method for internal fraud is processing fake refunds.', proof: 'Refund/Void Log', location: 'POS' },
                     { id: 'POS-RECON-05', description: 'Securely store and transport daily cash deposits.', priority: 'High', riskLevel: 'High', consequence: 'Reduces the risk of robbery or internal theft of cash.', proof: 'Cash Deposit Log', location: 'Cash Office' },
                     { id: 'POS-RECON-06', description: 'Reconcile gift card and voucher sales.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents fraud related to gift card issuance and redemption.', proof: 'Voucher Log', location: 'System' },
                     { id: 'POS-RECON-07', description: 'Verify cashier logins and logouts for each shift.', priority: 'High', riskLevel: 'Medium', consequence: 'Ensures accountability for all transactions processed on a specific till.', proof: 'Shift Log', location: 'System' },
                     { id: 'POS-RECON-08', description: 'Report any cash discrepancies immediately.', priority: 'High', riskLevel: 'High', consequence: 'A small discrepancy could be a test for a larger theft.', proof: 'Discrepancy Report', location: 'Office' },
-                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', consequence: 'Non-compliance can lead to massive fines and reputational damage.', proof: 'PCI Compliance Certificate', location: 'Office' },
+                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', consequence: 'Non-compliance can lead to massive fines and loss of card processing rights.', proof: 'PCI Compliance Certificate', location: 'Office' },
                     { id: 'POS-RECON-10', description: 'Use counterfeit detection on all cash transactions.', priority: 'High', riskLevel: 'High', consequence: 'Accepting fake currency is a direct financial loss.', proof: 'Counterfeit Check', location: 'POS' },
                 ]
             },
@@ -1804,7 +1814,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'supermarket_grocery_retail_pack',
         title: "Supermarket & Grocery Retail Operations Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/e33b5c6b-9243-42e3-9f5b-18a7c265e8a3',
         category: "Retail",
         description: "An all-in-one operations and compliance pack for supermarkets, hypermarkets, and grocery retail chains, ensuring food safety, quality, and operational efficiency across outlets.",
         icon: <ShoppingBasket />,
@@ -1816,7 +1828,7 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Minimize waste and ensure freshness with a daily FIFO rotation and expiry date sweep process.", icon: <Recycle /> },
             { text: "Maintain a safe and inviting store with checklists for hygiene, cleaning, and rapid spill response.", icon: <SprayCan /> },
             { text: "Protect your revenue through rigorous point-of-sale security and cash reconciliation.", icon: <DollarSign /> },
-            { text: "Guarantee food quality from the start with inbound supplier QC and receiving protocols.", icon: <PackageCheck /> },
+            { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: <PackageCheck /> },
             { text: "Ensure compliance and fair trade with weighing scale calibration and Legal Metrology checks.", icon: <Scale /> }
         ],
         previewScenario: {
@@ -1892,7 +1904,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-CLEAN-04', description: 'Inspect and clean restrooms hourly.', priority: 'High', riskLevel: 'Medium', consequence: 'Dirty restrooms are a major source of customer complaints and reflect poorly on the store.', proof: 'Restroom Cleaning Log', location: 'Restrooms' },
                     { id: 'SC-CLEAN-05', description: 'Ensure cleaning equipment is sanitized and stored correctly.', priority: 'Medium', riskLevel: 'Low', consequence: 'Dirty equipment can spread germs instead of cleaning.', proof: 'Storage Inspection', location: 'Janitor Closet' },
                     { id: 'SC-CLEAN-06', description: 'Deep clean high-traffic areas daily after closing.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents gradual buildup of dirt and grime.', proof: 'Deep Clean Log', location: 'Sales Floor' },
-                    { id: 'SC-CLEAN-07', description: 'Check and empty all trash bins regularly.', priority: 'High', riskLevel: 'Low', consequence: 'Overflowing bins are unsightly and can attract pests.', proof: 'Waste Bin Check', location: 'Sales Floor' },
+                    { id: 'SC-CLEAN-07', description: 'Check and empty all trash bins regularly.', priority: 'High', riskLevel: 'Low', consequence: 'Overflowing bins are unsightly and unhygienic.', proof: 'Waste Bin Check', location: 'Sales Floor' },
                     { id: 'SC-CLEAN-08', description: 'Sanitize shopping carts and baskets daily.', priority: 'High', riskLevel: 'Medium', consequence: 'Carts and baskets are high-touch surfaces that can spread germs.', proof: 'Sanitization Log', location: 'Entrance' },
                     { id: 'SC-CLEAN-09', description: 'Use correct cleaning chemicals for different surfaces.', priority: 'High', riskLevel: 'Medium', consequence: 'Using the wrong chemicals can damage surfaces or be ineffective.', proof: 'Chemical Usage Log', location: 'Janitor Closet' },
                     { id: 'SC-CLEAN-10', description: 'Train staff on spill response procedures.', priority: 'High', riskLevel: 'High', consequence: 'A slow or improper response increases the risk of accidents.', proof: 'Training Records', location: 'Office' },
@@ -2006,7 +2018,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'facility_management_blueprint',
         title: "Facility Management Blueprint (Enterprise Edition)",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/b0e515d9-4874-45e7-a726-1b51829e0018',
         category: "Corporate & Tech",
         description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
         icon: <Building2 />,
@@ -2207,7 +2221,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'corporate_legal_compliance_starter_kit',
         title: "Corporate Legal & Compliance Starter Kit",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/5b736b41-5369-4e76-a496-0a2569b9303c',
         category: "Corporate & Tech",
         description: "An essential toolkit for founders and managers to embed basic legal and compliance checks into core business operations, reducing risk without needing a law degree.",
         icon: <FileLock />,
@@ -2405,7 +2421,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'enterprise_risk_cybersecurity_pack',
         title: "Enterprise Risk & Cybersecurity Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/6418c3d7-2101-4433-a337-2d4314c4059a',
         category: "Corporate & Tech",
         description: "An advanced toolkit for CISOs and compliance officers to manage modern enterprise risks, from AI governance and data privacy to cloud security and incident response.",
         icon: <ShieldCheck />,
@@ -2599,12 +2617,14 @@ export const premiumPacks: PremiumPack[] = [
             }
         ]
     },
-     // --- Healthcare ---
+    // --- Healthcare ---
     {
         id: 'healthcare_and_hospital_operations',
         title: "Healthcare & Hospital Operations Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/888de138-1fcf-491f-9988-f58c7348e3a2',
         category: "Healthcare",
         description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
         icon: <Hospital />,
@@ -2806,7 +2826,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'school_operations_pack',
         title: "School Operations Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f44b2591-236b-4573-863a-a1b7596ab04c',
         category: "Education",
         description: "A comprehensive safety and compliance toolkit for school principals and administrators to ensure a secure and well-managed learning environment.",
         icon: <School />,
@@ -3224,7 +3246,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'manufacturing_operations_ehs_pack',
         title: "Manufacturing Operations & EHS Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a',
         category: "Industrial & Transport",
         description: "A comprehensive EHS and operational toolkit for plant heads and safety officers to ensure a safe, compliant, and efficient manufacturing environment.",
         icon: <Factory />,
@@ -3425,7 +3449,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'food_manufacturing_ops',
         title: "Food Manufacturing Operations Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/3d368e73-b261-4828-a400-f14d8615b3c3',
         category: "Food & Beverage",
         description: "A HACCP and FSSAI-compliant toolkit for food processing plants to ensure food safety, quality, and traceability from farm to fork.",
         icon: <Sprout />,
@@ -3614,210 +3640,9 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'CAPA-05', description: 'Assign owners and due dates for all actions.', priority: 'High', riskLevel: 'High', consequence: 'Without ownership and deadlines, actions are never implemented.', proof: 'CAPA Tracker', location: 'System' },
                     { id: 'CAPA-06', description: 'Track all CAPA actions to completion.', priority: 'High', riskLevel: 'High', consequence: 'The most critical part of the process, ensuring the loop is closed.', proof: 'CAPA Status Report', location: 'System' },
                     { id: 'CAPA-07', description: 'Verify the effectiveness of the implemented actions.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the fix was not just a temporary patch.', proof: 'Effectiveness Check Log', location: 'System' },
-                    { id: 'CAPA-08', description: 'Close out the CAPA once effectiveness is verified.', priority: 'High', riskLevel: 'High', consequence: 'The formal end to the improvement cycle for that issue.', proof: 'Closed CAPA Report', location: 'System' },
-                    { id: 'CAPA-09', description: 'Share learnings from CAPAs across the organization.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Helps to build a culture of continuous improvement.', proof: 'Lessons Learned Document', location: 'System' },
-                    { id: 'CAPA-10', description: 'Review CAPA trends in management review meetings.', priority: 'High', riskLevel: 'High', consequence: 'Provides leadership with insight into the biggest operational problems.', proof: 'Management Review Minutes', location: 'Office' },
-                ]
-            }
-        ]
-    },
-    {
-        id: 'logistics_warehouse_pack',
-        title: "Logistics & Warehouse Pack",
-        priceINR: 5999,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        category: "Industrial & Transport",
-        description: "A complete operational toolkit for warehouse managers and logistics heads to improve efficiency, safety, and inventory accuracy.",
-        icon: <Warehouse />,
-        badgeText: "Bestseller",
-        badgeVariant: "default",
-        bestseller: true,
-        whoIsItFor: ["Warehouse Managers", "Logistics Heads", "Supply Chain Directors", "3PL Providers"],
-        sampleItems: [
-            { text: "Optimize space and speed with a systematic inbound receiving and putaway process.", icon: <PackageCheck /> },
-            { text: "Ensure worker safety with daily checks for Material Handling Equipment (MHE) like forklifts.", icon: <HardHat /> },
-            { text: "Achieve near-perfect inventory accuracy with a structured cycle counting and reconciliation SOP.", icon: <Barcode /> },
-            { text: "Improve dispatch accuracy and speed with a clear order picking, packing, and shipping workflow.", icon: <Truck /> },
-            { text: "Maintain a safe and efficient warehouse with daily housekeeping and safety inspection checklists.", icon: <Shield /> },
-            { text: "Enhance security and prevent theft with robust visitor control and CCTV monitoring protocols.", icon: <KeyRound /> }
-        ],
-        previewScenario: {
-            title: "Preventing a Major Shipping Error",
-            description: "A large, high-value order is shipped to the wrong customer, resulting in significant financial loss and customer dissatisfaction. This scenario shows how checklists prevent this.",
-            tasks: [
-                { id: 'PICK-01', description: "The 'Order Picking' checklist requires the picker to scan the location and the product barcode, ensuring the correct item is picked.", sourceChecklist: "Order Picking & Packing SOP", priority: 'High' },
-                { id: 'SHIP-03', description: "The 'Shipping & Dispatch' process mandates a final scan of the shipping label and the packed items, which would flag a mismatch before the truck is loaded.", sourceChecklist: "Shipping & Dispatch Workflow", priority: 'High' },
-                { id: 'INV-07', description: "Real-time 'Inventory Management' updates from scanning would immediately show the discrepancy, allowing for correction before dispatch.", sourceChecklist: "Inventory & Cycle Count Management", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Global Logistics & Safety Standards",
-            standards: [
-                { name: "OSHA 1910.178", description: "Safety standards for powered industrial trucks (forklifts)." },
-                { name: "ISO 9001", description: "For quality management in logistics processes." },
-                { name: "ISO 45001", description: "For occupational health and safety in warehouse environments." },
-                { name: "C-TPAT Principles", description: "References security principles for supply chain management." }
-            ]
-        },
-        checklists: [
-             {
-                title: "Inbound & Receiving",
-                department: "Receiving",
-                frequency: "Per Shipment",
-                role: "Receiving Clerk",
-                icon: <PackageCheck />,
-                summary: "Verifying shipments against POs, inspecting for damage, and accurate system updates.",
-                tasks: [
-                    { id: 'INB-01', description: 'Verify physical shipment against the Purchase Order (PO).', priority: 'High', riskLevel: 'High', consequence: 'Accepting an incorrect shipment leads to major inventory and payment discrepancies.', proof: 'PO & Delivery Note Match', location: 'Receiving Bay' },
-                    { id: 'INB-02', description: 'Inspect all incoming packages for damage or tampering.', priority: 'High', riskLevel: 'High', consequence: 'Accepting damaged goods results in a financial loss that should be claimed from the transporter or supplier.', proof: 'Damage Report', location: 'Receiving Bay' },
-                    { id: 'INB-03', description: 'Count and verify the quantity of items received.', priority: 'High', riskLevel: 'High', consequence: 'Short-shipments that are not caught at receiving are a direct financial loss.', proof: 'Count Sheet', location: 'Receiving Bay' },
-                    { id: 'INB-04', description: 'Update the Warehouse Management System (WMS) with received quantities.', priority: 'High', riskLevel: 'High', consequence: 'A delay or error in updating the WMS means the inventory system is inaccurate, affecting order fulfillment.', proof: 'WMS Entry Log', location: 'System' },
-                    { id: 'INB-05', description: 'Assign items to a putaway location in the WMS.', priority: 'High', riskLevel: 'Medium', consequence: 'Slow putaway clogs the receiving area and makes items unavailable for picking.', proof: 'Putaway Ticket', location: 'System' },
-                    { id: 'INB-06', description: 'Generate and apply labels/barcodes if required.', priority: 'High', riskLevel: 'Medium', consequence: 'Unlabeled inventory is impossible to track and manage effectively.', proof: 'Labeling Log', location: 'Receiving Bay' },
-                    { id: 'INB-07', description: 'Move goods from receiving to the putaway or staging area promptly.', priority: 'High', riskLevel: 'Medium', consequence: 'A cluttered receiving bay is inefficient and a safety hazard.', proof: 'Movement Log', location: 'Receiving Bay' },
-                    { id: 'INB-08', description: 'Handle and document any discrepancies or short shipments.', priority: 'High', riskLevel: 'High', consequence: 'Provides the necessary documentation to file a claim with the supplier.', proof: 'Discrepancy Report', location: 'System' },
-                    { id: 'INB-09', description: 'Keep the receiving area clean and clear of obstructions.', priority: 'High', riskLevel: 'Medium', consequence: 'A messy receiving area is a major safety hazard.', proof: 'Housekeeping Log', location: 'Receiving Bay' },
-                    { id: 'INB-10', description: 'Sign and stamp the delivery driver\'s paperwork.', priority: 'High', riskLevel: 'Medium', consequence: 'The legal confirmation that the shipment was received.', proof: 'Signed Proof of Delivery', location: 'Receiving Bay' },
-                ]
-            },
-            {
-                title: "Material Handling Equipment (MHE) Safety",
-                department: "Safety/Operations",
-                frequency: "Daily",
-                role: "MHE Operator",
-                icon: <HardHat />,
-                summary: "Daily pre-use inspection for forklifts, reach trucks, and other MHE.",
-                tasks: [
-                    { id: 'MHE-01', description: 'Perform a pre-use inspection of the forklift/MHE (brakes, horn, lights, tires).', priority: 'High', riskLevel: 'High', consequence: 'Operating a faulty forklift can lead to catastrophic accidents, injuries, or fatalities.', proof: 'Pre-use Inspection Checklist', location: 'MHE Parking Area' },
-                    { id: 'MHE-02', description: 'Check battery charge or fuel level.', priority: 'High', riskLevel: 'Medium', consequence: 'A forklift running out of power mid-operation can strand a heavy load in a dangerous position.', proof: 'Inspection Checklist', location: 'MHE Parking Area' },
-                    { id: 'MHE-03', description: 'Report any defects or malfunctions immediately and do not use the MHE.', priority: 'High', riskLevel: 'High', consequence: 'Using a known-faulty machine is gross negligence and can lead to severe legal penalties.', proof: 'Defect Report Form', location: 'Supervisor Office' },
-                    { id: 'MHE-04', description: 'Ensure all operators have a valid MHE license.', priority: 'High', riskLevel: 'High', consequence: 'Allowing an untrained person to operate MHE is a major safety violation and illegal.', proof: 'License Verification Log', location: 'HR/Safety Office' },
-                    { id: 'MHE-05', description: 'Follow designated pathways and speed limits within the warehouse.', priority: 'High', riskLevel: 'High', consequence: 'Speeding or taking shortcuts is a leading cause of collisions with racks or pedestrians.', proof: 'CCTV Monitoring', location: 'Warehouse' },
-                    { id: 'MHE-06', description: 'Use horn at intersections and blind spots.', priority: 'High', riskLevel: 'High', consequence: 'A simple but critical step to prevent collisions with other MHE or people.', proof: 'Operator Observation', location: 'Warehouse' },
-                    { id: 'MHE-07', description: 'Ensure loads are stable and within the MHE\'s capacity.', priority: 'High', riskLevel: 'High', consequence: 'Overloading can cause the forklift to tip over, a potentially fatal accident.', proof: 'Load Check', location: 'Warehouse' },
-                    { id: 'MHE-08', description: 'Park MHE in designated areas with forks lowered.', priority: 'High', riskLevel: 'Medium', consequence: 'Raised forks are a major trip hazard.', proof: 'Visual Check', location: 'MHE Parking Area' },
-                    { id: 'MHE-09', description: 'Conduct refresher training for all MHE operators annually.', priority: 'High', riskLevel: 'High', consequence: 'Ensures operators are up-to-date on safety procedures.', proof: 'Training Records', location: 'HR' },
-                    { id: 'MHE-10', description: 'Maintain a log of all MHE-related incidents and near-misses.', priority: 'High', riskLevel: 'High', consequence: 'Helps to identify unsafe behaviors or areas and prevent future accidents.', proof: 'Incident Log', location: 'Safety Office' },
-                ]
-            },
-            {
-                title: "Inventory & Cycle Count Management",
-                department: "Inventory",
-                frequency: "Daily/Weekly",
-                role: "Inventory Controller",
-                icon: <Barcode />,
-                summary: "A structured process for regular cycle counting to maintain inventory accuracy.",
-                tasks: [
-                    { id: 'INV-01', description: 'Generate a daily cycle count list based on ABC analysis or location.', priority: 'High', riskLevel: 'High', consequence: 'Without regular counts, inventory accuracy degrades, leading to stockouts or overstocking.', proof: 'Cycle Count Sheet', location: 'System' },
-                    { id: 'INV-02', description: 'Conduct blind counts without showing system quantity to the counter.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents "pencil whipping" where counters just copy the system number.', proof: 'Counting Procedure', location: 'Office' },
-                    { id: 'INV-03', description: 'Investigate discrepancies between physical and system counts on the same day.', priority: 'High', riskLevel: 'High', consequence: 'The longer the delay, the harder it is to find the root cause of the error.', proof: 'Discrepancy Report', location: 'System' },
-                    { id: 'INV-04', description: 'Perform a recount for any disputed locations.', priority: 'High', riskLevel: 'High', consequence: 'A second count confirms if the discrepancy is real or just a counting error.', proof: 'Recount Log', location: 'System' },
-                    { id: 'INV-05', description: 'Process inventory adjustments with manager approval and reason codes.', priority: 'High', riskLevel: 'High', consequence: 'Unauthorized adjustments can be a method to conceal theft.', proof: 'Adjustment Form', location: 'System' },
-                    { id: 'INV-06', description: 'Track inventory accuracy as a key performance indicator (KPI).', priority: 'High', riskLevel: 'High', consequence: 'If you don\'t measure it, you can\'t improve it.', proof: 'KPI Dashboard', location: 'System' },
-                    { id: 'INV-07', description: 'Freeze locations in the WMS during counting to prevent movement.', priority: 'High', riskLevel: 'High', consequence: 'Items being moved in or out during a count will guarantee an inaccurate result.', proof: 'WMS Setting', location: 'System' },
-                    { id: 'INV-08', description: 'Analyze root causes of inventory inaccuracies.', priority: 'High', riskLevel: 'High', consequence: 'Helps to identify and fix the underlying process issues causing errors.', proof: 'Root Cause Analysis Report', location: 'Office' },
-                    { id: 'INV-09', description: 'Conduct a full physical inventory count annually or biannually.', priority: 'High', riskLevel: 'High', consequence: 'A necessary step for accurate financial accounting and a complete inventory reset.', proof: 'Full Count Plan', location: 'Office' },
-                    { id: 'INV-10', description: 'Reconcile and post the results of the full physical count.', priority: 'High', riskLevel: 'High', consequence: 'The final step to ensure the system reflects the true on-the-ground reality.', proof: 'Reconciliation Report', location: 'System' },
-                ]
-            },
-            {
-                title: "Shipping & Dispatch Workflow",
-                department: "Dispatch",
-                frequency: "Per Shipment",
-                role: "Dispatch Clerk",
-                icon: <Truck />,
-                summary: "A checklist to ensure orders are picked, packed, and shipped accurately and on time.",
-                tasks: [
-                    { id: 'SHIP-01', description: 'Generate a consolidated pick list for all orders to be dispatched.', priority: 'High', riskLevel: 'Medium', consequence: 'An inefficient picking process is slow and error-prone.', proof: 'Pick List', location: 'System' },
-                    { id: 'SHIP-02', description: 'Pick items accurately using a handheld scanner or pick list.', priority: 'High', riskLevel: 'High', consequence: 'Picking the wrong item is a major cause of customer complaints and returns.', proof: 'Scan Log/Signed Pick List', location: 'Warehouse' },
-                    { id: 'SHIP-03', description: 'Pack orders securely and apply the correct shipping label.', priority: 'High', riskLevel: 'High', consequence: 'Poor packing leads to damaged goods; a wrong label means the shipment goes to the wrong customer.', proof: 'Packing Slip & Label', location: 'Packing Station' },
-                    { id: 'SHIP-04', description: 'Verify the packed items against the customer order one last time.', priority: 'High', riskLevel: 'High', consequence: 'The final quality check to prevent a shipping error before it leaves the building.', proof: 'Final Check Log', location: 'Packing Station' },
-                    { id: 'SHIP-05', description: 'Load items onto the correct truck for delivery.', priority: 'High', riskLevel: 'High', consequence: 'Loading onto the wrong truck can cause massive delays and require costly re-shipping.', proof: 'Loading Manifest', location: 'Dispatch Bay' },
-                    { id: 'SHIP-06', description: 'Generate all necessary shipping documents (invoice, manifest, e-way bill).', priority: 'High', riskLevel: 'High', consequence: 'A truck can be stopped and fined by authorities if it doesn\'t have the correct legal paperwork.', proof: 'Shipping Documents', location: 'System' },
-                    { id: 'SHIP-07', description: 'Update the order status in the system to "Shipped".', priority: 'High', riskLevel: 'High', consequence: 'A delay in updating leaves the customer without tracking information.', proof: 'System Update Log', location: 'System' },
-                    { id: 'SHIP-08', description: 'Seal the truck and record the seal number.', priority: 'High', riskLevel: 'High', consequence: 'A numbered seal proves that the shipment has not been tampered with in transit.', proof: 'Seal Log', location: 'Dispatch Bay' },
-                    { id: 'SHIP-09', description: 'Hand over documents to the driver and get acknowledgment.', priority: 'High', riskLevel: 'High', consequence: 'Confirms the legal transfer of responsibility for the goods to the transporter.', proof: 'Signed Acknowledgment', location: 'Dispatch Bay' },
-                    { id: 'SHIP-10', description: 'Track shipments and handle any delivery exceptions.', priority: 'High', riskLevel: 'Medium', consequence: 'Proactively solving problems in transit improves customer satisfaction.', proof: 'Tracking System', location: 'System' },
-                ]
-            },
-            {
-                title: "Warehouse Safety & Housekeeping",
-                department: "Safety/Operations",
-                frequency: "Daily",
-                role: "Safety Officer",
-                icon: <Shield />,
-                summary: "Daily walkthroughs to check for common warehouse hazards and ensure a clean, safe environment.",
-                tasks: [
-                    { id: 'WSH-01', description: 'Ensure all aisles and emergency exits are clear of obstructions.', priority: 'High', riskLevel: 'High', consequence: 'A blocked aisle is a trip hazard and a blocked exit is a fatal flaw in a fire.', proof: 'Daily Walkthrough Log', location: 'Warehouse' },
-                    { id: 'WSH-02', description: 'Check that fire extinguishers and first aid stations are accessible.', priority: 'High', riskLevel: 'High', consequence: 'In an emergency, these items must be reachable immediately.', proof: 'Safety Equipment Log', location: 'Warehouse' },
-                    { id: 'WSH-03', description: 'Inspect for any spills or leaks and ensure they are cleaned up immediately.', priority: 'High', riskLevel: 'High', consequence: 'Spills are a major slip-and-fall hazard, a leading cause of workplace injury.', proof: 'Spill Report', location: 'Warehouse' },
-                    { id: 'WSH-04', description: 'Verify that all staff in the operational area are wearing required PPE.', priority: 'High', riskLevel: 'High', consequence: 'Failure to wear PPE (like safety shoes or helmets) can lead to severe injuries.', proof: 'PPE Audit', location: 'Warehouse' },
-                    { id: 'WSH-05', description: 'Check that pallets are stacked safely and not leaning.', priority: 'High', riskLevel: 'High', consequence: 'A collapsing stack of pallets can be fatal.', proof: 'Stacking Audit', location: 'Warehouse' },
-                    { id: 'WSH-06', description: 'Ensure proper lighting throughout the warehouse.', priority: 'High', riskLevel: 'Medium', consequence: 'Poor lighting increases the risk of accidents and picking errors.', proof: 'Lighting Check', location: 'Warehouse' },
-                    { id: 'WSH-07', description: 'Manage waste and scrap disposal effectively.', priority: 'High', riskLevel: 'Medium', consequence: 'Accumulated waste is a fire hazard and attracts pests.', proof: 'Waste Disposal Log', location: 'Waste Area' },
-                    { id: 'WSH-08', description: 'Check battery charging areas for safety compliance.', priority: 'High', riskLevel: 'High', consequence: 'Charging batteries can release explosive gases; proper ventilation is critical.', proof: 'Charging Area Audit', location: 'Charging Bay' },
-                    { id: 'WSH-09', description: 'Conduct a brief safety toolbox talk at the start of each shift.', priority: 'High', riskLevel: 'Medium', consequence: 'Keeps safety top-of-mind for all workers.', proof: 'Toolbox Talk Record', location: 'Shift Briefing Area' },
-                    { id: 'WSH-10', description: 'Report all safety incidents and near-misses.', priority: 'High', riskLevel: 'High', consequence: 'Analyzing near-misses is the best way to prevent a major accident from happening.', proof: 'Incident Reporting System', location: 'Safety Office' },
-                ]
-            },
-            {
-                title: "Security & Access Control",
-                department: "Security",
-                frequency: "Ongoing",
-                role: "Security Supervisor",
-                icon: <KeyRound />,
-                summary: "Procedures for managing visitor access, vehicle entry/exit, and CCTV monitoring to prevent theft.",
-                tasks: [
-                    { id: 'SAC-01', description: "Maintain a log of all visitors and vehicles entering/exiting the premises.", priority: 'High', riskLevel: 'High', consequence: 'Without a log, you have no record of who was on your property during a theft or incident.', proof: 'Visitor/Vehicle Log', location: 'Main Gate' },
-                    { id: 'SAC-02', description: "Issue visitor passes and ensure they are returned upon exit.", priority: 'High', riskLevel: 'Medium', consequence: 'Prevents visitors from wandering into restricted areas.', proof: 'Visitor Pass Log', location: 'Main Gate' },
-                    { id: 'SAC-03', description: "Conduct random checks of vehicles leaving the premises.", priority: 'High', riskLevel: 'High', consequence: 'A key deterrent against theft of goods via vehicles.', proof: 'Vehicle Check Log', location: 'Main Gate' },
-                    { id: 'SAC-04', description: "Ensure all CCTV cameras are functional and recording.", priority: 'High', riskLevel: 'High', consequence: 'A non-functional camera provides no evidence for investigations.', proof: 'CCTV Health Log', location: 'Security Room' },
-                    { id: 'SAC-05', description: "Monitor CCTV feeds for any suspicious activity.", priority: 'High', riskLevel: 'High', consequence: 'Proactive monitoring can spot a theft in progress.', proof: 'CCTV Monitoring Log', location: 'Security Room' },
-                    { id: 'SAC-06', description: "Restrict access to high-value or sensitive areas.", priority: 'High', riskLevel: 'High', consequence: 'The fewer people with access, the lower the risk of theft.', proof: 'Access Control System', location: 'Warehouse' },
-                    { id: 'SAC-07', description: "Perform regular patrols of the warehouse perimeter.", priority: 'High', riskLevel: 'High', consequence: 'Deters intruders and allows for detection of fence breaches or tampering.', proof: 'Patrol Log', location: 'Perimeter' },
-                    { id: 'SAC-08', description: "Secure all doors, windows, and gates after hours.", priority: 'High', riskLevel: 'High', consequence: 'The most basic and critical step in preventing overnight burglary.', proof: 'Lock-up Checklist', location: 'Warehouse' },
-                    { id: 'SAC-09', description: "Conduct background checks for all security personnel.", priority: 'High', riskLevel: 'High', consequence: 'A security guard with a criminal history is a major liability.', proof: 'Background Check Reports', location: 'HR' },
-                    { id: 'SAC-10', description: "Have a clear procedure for responding to a security breach or theft.", priority: 'High', riskLevel: 'High', consequence: 'A disorganized response can compromise evidence and hinder investigation.', proof: 'Security Incident SOP', location: 'Security Office' },
-                ]
-            },
-            {
-                title: "Returns Management (Reverse Logistics)",
-                department: "Returns/QC",
-                frequency: "Per Return",
-                role: "Returns Supervisor",
-                icon: <Package />,
-                summary: "A process for handling returned goods, from inspection and grading to restocking or disposal.",
-                tasks: [
-                    { id: 'RET-01', description: "Receive and log all returned shipments.", priority: 'High', riskLevel: 'Medium', consequence: 'Without a log, returned goods can get lost in the warehouse.', proof: 'Returns Log', location: 'Returns Area' },
-                    { id: 'RET-02', description: "Inspect returned items for damage, usage, and completeness.", priority: 'High', riskLevel: 'High', consequence: 'Accepting damaged or incomplete returns results in a financial loss.', proof: 'Inspection Report', location: 'Returns Area' },
-                    { id: 'RET-03', description: "Grade returned items (e.g., restockable, requires repackaging, scrap).", priority: 'High', riskLevel: 'High', consequence: 'Incorrect grading can lead to damaged goods being put back into saleable stock.', proof: 'Grading Log', location: 'Returns Area' },
-                    { id: 'RET-04', description: "Process items for restocking back into inventory.", priority: 'High', riskLevel: 'High', consequence: 'Delays in restocking mean items are not available for resale.', proof: 'Restocking Log', location: 'System' },
-                    { id: 'RET-05', description: "Segregate items for scrap or refurbishment.", priority: 'High', riskLevel: 'High', consequence: 'Mixing scrap with good inventory can lead to picking errors.', proof: 'Segregation Area', location: 'Returns Area' },
-                    { id: 'RET-06', description: "Process customer credits or refunds accurately.", priority: 'High', riskLevel: 'High', consequence: 'Errors in credits can lead to customer disputes and financial discrepancies.', proof: 'Credit Note', location: 'System' },
-                    { id: 'RET-07', description: "Analyze return reasons to identify product or process issues.", priority: 'High', riskLevel: 'High', consequence: 'High return rates can indicate a serious quality problem that needs to be fixed.', proof: 'Returns Analysis Report', location: 'Office' },
-                    { id: 'RET-08', description: "Manage disposal of scrapped items according to policy.", priority: 'High', riskLevel: 'High', consequence: 'Improper disposal can lead to environmental issues or fraud.', proof: 'Scrap Disposal Note', location: 'System' },
-                    { id: 'RET-09', description: "Keep the returns area organized and separate from main inventory.", priority: 'High', riskLevel: 'High', consequence: 'A disorganized returns area can lead to items being lost or processed incorrectly.', proof: 'Area Inspection', location: 'Returns Area' },
-                    { id: 'RET-10', description: "Provide feedback to the sales/shipping teams on return causes.", priority: 'High', riskLevel: 'Medium', consequence: 'Helps other departments understand how their actions (e.g., poor packing) lead to returns.', proof: 'Feedback Meeting', location: 'Office' },
-                ]
-            },
-            {
-                title: "Vendor Performance Management",
-                department: "Procurement/Logistics",
-                frequency: "Quarterly",
-                role: "Logistics Manager",
-                icon: <UserCog />,
-                summary: "A scorecard and review process to manage the performance of transporters and other logistics vendors.",
-                tasks: [
-                    { id: 'VEND-PERF-01', description: "Track On-Time Delivery (OTD) performance for each carrier.", priority: 'High', riskLevel: 'High', consequence: 'Late deliveries can shut down a production line or lead to stockouts.', proof: 'OTD Report', location: 'System' },
-                    { id: 'VEND-PERF-02', description: "Monitor the rate of damaged goods for each carrier.", priority: 'High', riskLevel: 'High', consequence: 'A high damage rate indicates a careless transporter and leads to financial loss.', proof: 'Damage Rate Report', location: 'System' },
-                    { id: 'VEND-PERF-03', description: "Review freight invoices for accuracy and compliance with agreed rates.", priority: 'High', riskLevel: 'High', consequence: 'Prevents over-billing and ensures cost control.', proof: 'Invoice Audit', location: 'Finance' },
-                    { id: 'VEND-PERF-04', description: "Hold quarterly business reviews (QBRs) with key logistics partners.", priority: 'High', riskLevel: 'High', consequence: 'The primary forum for discussing performance and driving improvement.', proof: 'QBR Minutes', location: 'Office' },
-                    { id: 'VEND-PERF-05', description: "Maintain a vendor scorecard with all key performance metrics.", priority: 'High', riskLevel: 'High', consequence: 'Provides an objective, data-driven way to compare vendor performance.', proof: 'Vendor Scorecard', location: 'System' },
-                    { id: 'VEND-PERF-06', description: "Set joint improvement targets with vendors.", priority: 'High', riskLevel: 'Medium', consequence: 'Turns the relationship from adversarial to collaborative.', proof: 'Action Plan', location: 'System' },
-                    { id: 'VEND-PERF-07', description: "Ensure vendors comply with all safety and security requirements.", priority: 'High', riskLevel: 'High', consequence: 'A non-compliant vendor can introduce major safety or security risks into your supply chain.', proof: 'Vendor Compliance Audit', location: 'Office' },
-                    { id: 'VEND-PERF-08', description: "Negotiate contracts and rates based on performance.", priority: 'High', riskLevel: 'High', consequence: 'High-performing vendors should be rewarded, while poor performers should not.', proof: 'Contract Negotiation Notes', location: 'Office' },
-                    { id: 'VEND-PERF-09', description: "Have a process for onboarding new vendors.", priority: 'High', riskLevel: 'High', consequence: 'Ensures new vendors understand all your requirements from day one.', proof: 'Onboarding Checklist', location: 'Office' },
-                    { id: 'VEND-PERF-10', description: "Develop contingency plans with backup carriers.", priority: 'High', riskLevel: 'High', consequence: 'If your primary carrier fails, you have an immediate backup plan to ensure business continuity.', proof: 'Contingency Plan', location: 'Office' },
+                    { id: 'CAPA-08', description: 'Share learnings from CAPAs across the organization.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Helps to build a culture of continuous improvement.', proof: 'Lessons Learned Document', location: 'System' },
+                    { id: 'CAPA-09', description: 'Review CAPA trends in management review meetings.', priority: 'High', riskLevel: 'High', consequence: 'Provides leadership with insight into the biggest operational problems.', proof: 'Management Review Minutes', location: 'Office' },
+                    { id: 'CAPA-10', description: 'Update procedures based on lessons learned from incidents.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the procedures remain effective and relevant.', proof: 'Updated Procedures', location: 'System' },
                 ]
             }
         ]
@@ -3842,7 +3667,7 @@ export const premiumPacks: PremiumPack[] = [
         ],
         previewScenario: {
             title: "Avoiding a Location Shutdown",
-            description: "A film shoot in a public space is shut down by the police because the production team failed to get the right permits, costing a full day of shooting and thousands of dollars. This shows how checklists prevent this.",
+            description: "A film shoot in a public space is shut down by the police because the production team failed to get the right permits, costing a full day of shooting and thousands of dollars. This scenario shows how checklists prevent this.",
             tasks: [
                 { id: 'LOC-01', description: "The 'Location Scouting & Permitting' checklist requires the location manager to obtain and file all necessary permits (police, municipal, traffic) before the shoot is scheduled.", sourceChecklist: "Location Scouting & Permitting", priority: 'High' },
                 { id: 'PRE-PROD-05', description: "The 'Pre-Production Planning' SOP includes a mandatory gate where all key permits must be in place before the final shooting schedule is locked and released.", sourceChecklist: "Pre-Production Planning", priority: 'High' },
@@ -4389,7 +4214,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'HK-VP-04', description: 'Clean and maintain all common areas (lobbies, hallways).', priority: 'High', riskLevel: 'Medium', consequence: 'First impressions matter; a clean lobby sets the tone.', proof: 'Common Area Log', location: 'Venue' },
                     { id: 'HK-VP-05', description: 'Respond to cleaning requests and spills promptly.', priority: 'High', riskLevel: 'High', consequence: 'Spills are a major slip-and-fall hazard.', proof: 'Spill Response Log', location: 'Venue' },
                     { id: 'HK-VP-06', description: 'Conduct a post-event deep clean of the entire venue.', priority: 'High', riskLevel: 'High', consequence: 'Prepares the venue for the next event and prevents buildup of grime.', proof: 'Deep Clean Report', location: 'Venue' },
-                    { id: 'HK-VP-07', description: 'Ensure all cleaning supplies and equipment are stocked and maintained.', priority: 'High', riskLevel: 'Medium', consequence: 'Lack of supplies can halt cleaning operations.', proof: 'Supply Inventory', location: 'Janitor Closet' },
+                    { id: 'HK-VP-07', description: 'Ensure all cleaning supplies and equipment are stocked and maintained.', priority: 'High', riskLevel: 'Low', consequence: 'Lack of supplies can halt cleaning operations.', proof: 'Supply Inventory', location: 'Janitor Closet' },
                     { id: 'HK-VP-08', description: 'Train housekeeping staff on cleaning standards and safety.', priority: 'High', riskLevel: 'High', consequence: 'Untrained staff can use chemicals incorrectly or miss key areas.', proof: 'Training Log', location: 'HR' },
                     { id: 'HK-VP-09', description: 'Inspect the exterior of the venue for cleanliness.', priority: 'High', riskLevel: 'Medium', consequence: 'The exterior is the first thing a visitor sees.', proof: 'Exterior Inspection Log', location: 'Exterior' },
                     { id: 'HK-VP-10', description: 'Report any maintenance issues found during cleaning.', priority: 'High', riskLevel: 'High', consequence: 'Housekeeping staff are the "eyes and ears" of the maintenance team.', proof: 'Maintenance Request', location: 'System' },
@@ -4421,7 +4246,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'cinema_operations_pack',
         title: "Cinema & Multiplex Operations Pack",
         priceINR: 5999,
+        priceUSD: 79,
         paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/15a415b3-3a05-4ce3-a077-10499e74301d',
         category: "Entertainment & Events",
         description: "A complete operational pack for cinema managers to ensure a safe, clean, and high-quality movie-going experience.",
         icon: <Popcorn />,
@@ -4830,6 +4657,7 @@ export const premiumPacks: PremiumPack[] = [
   
 
     
+
 
 
 
