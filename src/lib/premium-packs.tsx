@@ -1256,7 +1256,7 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'INV-RECON-01', description: 'Perform daily cycle counts on designated high-value items.', priority: 'High', riskLevel: 'High', consequence: 'Failure to count high-value items daily can allow major theft to go unnoticed for weeks.', proof: 'Daily Count Sheet', location: 'Stockroom/Floor' },
                     { id: 'INV-RECON-02', description: 'Conduct scheduled weekly cycle counts for other categories.', priority: 'High', riskLevel: 'Medium', consequence: 'Less frequent counts lead to larger discrepancies and harder investigations.', proof: 'Weekly Count Sheet', location: 'Stockroom/Floor' },
-                    { id: 'INV-RECON-03', description: 'Investigate any count variances within 24 hours.', priority: 'High', riskLevel: 'High', consequence: 'The longer the delay, the harder it is to find the root cause of the discrepancy (theft, damage, or mis-shipment).', proof: 'Variance Report', location: 'Office' },
+                    { id: 'INV-RECON-03', description: 'Investigate any count variances within 24 hours.', priority: 'High', riskLevel: 'High', consequence: 'The trail goes cold quickly; immediate investigation is key to recovery or identifying the cause.', proof: 'Variance Report', location: 'Office' },
                     { id: 'INV-RECON-04', description: 'Process inventory adjustments only with supervisor sign-off.', priority: 'High', riskLevel: 'High', consequence: 'Unauthorized adjustments can be used to cover up theft.', proof: 'Signed Adjustment Form', location: 'System' },
                     { id: 'INV-RECON-05', description: 'Analyze shrinkage report monthly to identify trends.', priority: 'High', riskLevel: 'High', consequence: 'Without analysis, you cannot identify patterns of theft or process errors to fix them.', proof: 'Shrinkage Analysis', location: 'Office' },
                     { id: 'INV-RECON-06', description: 'Conduct a full stock take bi-annually.', priority: 'High', riskLevel: 'High', consequence: 'A necessary step for accurate financial reporting and identifying systemic issues.', proof: 'Stock Take Report', location: 'Store-wide' },
@@ -1916,7 +1916,7 @@ export const premiumPacks: PremiumPack[] = [
                 frequency: "Per Delivery",
                 role: "Receiving Clerk",
                 icon: <PackageCheck />,
-                summary: "Check delivery against PO, verify batch & expiry dates, reject & quarantine non-conforming lots with vendor return process.",
+                summary: "Check for FSSAI license, vehicle condition, product temperature, and reject non-compliant items with documentation.",
                 tasks: [
                     { id: 'SC-INBOUND-01', description: 'Verify delivery quantity and items against the Purchase Order (PO).', priority: 'High', riskLevel: 'High', consequence: 'Accepting incorrect quantities leads to inventory errors and financial discrepancies.', proof: 'Signed Delivery Note', location: 'Receiving Bay' },
                     { id: 'SC-INBOUND-02', description: 'Check batch numbers and expiry dates of all incoming products.', priority: 'High', riskLevel: 'High', consequence: 'Accepting near-expiry goods leads to increased waste and potential safety issues.', proof: 'Receiving Log', location: 'Receiving Bay' },
@@ -1943,7 +1943,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-POS-03', description: 'Verify CCTV cameras at billing lanes are operational and have a clear view.', priority: 'High', riskLevel: 'High', consequence: 'Provides critical evidence in case of cash disputes, theft, or scams.', proof: 'CCTV Check Log', location: 'Security Office' },
                     { id: 'SC-POS-04', description: 'Reconcile each cash drawer at the end of every shift.', priority: 'High', riskLevel: 'High', consequence: 'The only way to accurately track cash and identify shortages or overages.', proof: 'Shift Reconciliation Report', location: 'Cash Office' },
                     { id: 'SC-POS-05', description: 'Check for any signs of tampering on card payment devices.', priority: 'High', riskLevel: 'High', consequence: 'Criminals can install skimmers to steal customer card data, leading to massive liability.', proof: 'Device Inspection Log', location: 'POS' },
-                    { id: 'SC-POS-06', description: 'Securely store cash in a safe.', priority: 'High', riskLevel: 'High', consequence: 'Leaving cash in the till overnight is a major theft risk.', proof: 'Safe Log', location: 'Cash Office' },
+                    { id: 'SC-POS-06', description: 'Securely store and transport daily cash deposits.', priority: 'High', riskLevel: 'High', consequence: 'Reduces the risk of robbery or internal theft of cash.', proof: 'Cash Deposit Log', location: 'Cash Office' },
                     { id: 'SC-POS-07', description: 'Use counterfeit detection for large cash transactions.', priority: 'High', riskLevel: 'High', consequence: 'Accepting counterfeit notes is a direct financial loss.', proof: 'Counterfeit Check', location: 'POS' },
                     { id: 'SC-POS-08', description: 'Train cashiers on fraud prevention techniques.', priority: 'High', riskLevel: 'High', consequence: 'Untrained cashiers are easy targets for common retail scams.', proof: 'Training Records', location: 'Office' },
                     { id: 'SC-POS-09', description: 'Limit cash in drawers to a minimum amount.', priority: 'High', riskLevel: 'High', consequence: 'Reduces the potential loss in case of a till-snatch or robbery.', proof: 'Cash Limit Policy', location: 'Office' },
@@ -1986,7 +1986,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'BHF-06', description: 'Label all prepared foods with preparation time and date.', priority: 'High', riskLevel: 'High', consequence: 'Ensures that older food is used or discarded first.', proof: 'Label Check', location: 'Bakery/Kitchen' },
                     { id: 'BHF-07', description: 'Clean and sanitize all surfaces and equipment after use.', priority: 'High', riskLevel: 'High', consequence: 'Prevents buildup of bacteria and allergens.', proof: 'Cleaning Log', location: 'Bakery/Kitchen' },
                     { id: 'BHF-08', description: 'Check for allergens and provide clear labeling.', priority: 'High', riskLevel: 'High', consequence: 'Undeclared allergens can cause severe reactions in sensitive customers.', proof: 'Allergen Label Audit', location: 'Hot Food Section' },
-                    { id: 'BHF-09', description: 'Calibrate food thermometers daily.', priority: 'High', riskLevel: 'High', consequence: 'Inaccurate thermometers give a false sense of food safety.', proof: 'Calibration Log', location: 'Bakery/Kitchen' },
+                    { id: 'BHF-09', description: 'Calibrate food thermometers daily.', priority: 'High', riskLevel: 'High', consequence: 'Inaccurate thermometers give a false sense of safety.', proof: 'Calibration Log', location: 'Bakery/Kitchen' },
                     { id: 'BHF-10', description: 'Train staff on food safety procedures.', priority: 'High', riskLevel: 'High', consequence: 'Untrained staff are a major liability in any food handling environment.', proof: 'Training Records', location: 'Office' },
                 ]
             },
@@ -2889,7 +2889,7 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <KeyRound />,
                 summary: "ID verification, logbook maintenance, and background checks for all non-parent visitors.",
                 tasks: [
-                    { id: 'VIS-MG-01', description: 'Verify government-issued ID for every visitor.', priority: 'High', riskLevel: 'High', consequence: 'The first and most basic step to preventing unauthorized entry.', proof: 'Visitor Logbook', location: 'Main Gate' },
+                    { id: 'VIS-MG-01', description: 'Verify government-issued ID for every visitor.', priority: 'High', riskLevel: 'High', consequence: 'The most basic and essential step to preventing unauthorized entry.', proof: 'Visitor Logbook', location: 'Main Gate' },
                     { id: 'VIS-MG-02', description: 'Issue a visitor pass and ensure it is worn at all times.', priority: 'High', riskLevel: 'Medium', consequence: 'Allows staff to quickly identify who is a visitor and who is not.', proof: 'Pass Issue Log', location: 'Main Gate' },
                     { id: 'VIS-MG-03', description: 'Check visitor against a pre-approved pickup list for student pickups.', priority: 'High', riskLevel: 'High', consequence: 'The primary control to prevent a child from being picked up by an unauthorized person.', proof: 'Approved List', location: 'Main Gate' },
                     { id: 'VIS-MG-04', description: 'Escort all maintenance staff and vendors within the school premises.', priority: 'High', riskLevel: 'High', consequence: 'Prevents unknown individuals from wandering the campus unsupervised.', proof: 'Escort Log', location: 'Campus' },
@@ -3237,412 +3237,6 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'INC-HDLG-UNIV-08', description: 'Provide support and counseling to affected students/staff.', priority: 'High', riskLevel: 'Medium', consequence: 'Crucial for the well-being of the campus community after a traumatic event.', proof: 'Counseling Log', location: 'Counseling Center' },
                     { id: 'INC-HDLG-UNIV-09', description: 'Document all communications with external parties (police, media).', priority: 'High', riskLevel: 'High', consequence: 'Creates a clear record of who said what and when.', proof: 'External Communication Log', location: 'Office' },
                     { id: 'INC-HDLG-UNIV-10', description: 'Review and update incident handling procedures annually.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the procedures remain effective and relevant.', proof: 'Updated Procedures', location: 'Office' },
-                ]
-            }
-        ]
-    },
-    // --- Industrial & Transport ---
-    {
-        id: 'manufacturing_operations_ehs_pack',
-        title: "Manufacturing Operations & EHS Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a',
-        category: "Industrial & Transport",
-        description: "A comprehensive EHS and operational toolkit for plant heads and safety officers to ensure a safe, compliant, and efficient manufacturing environment.",
-        icon: <Factory />,
-        badgeText: "Safety Critical",
-        badgeVariant: "destructive",
-        bestseller: true,
-        whoIsItFor: ["Plant Heads", "EHS Officers", "Production Managers", "Maintenance Heads", "Quality Control Managers"],
-        sampleItems: [
-            { text: "Prevent fatal accidents with a legally compliant Lock-Out Tag-Out (LOTO) procedure for machine maintenance.", icon: <Lock /> },
-            { text: "Ensure worker safety with a permit-to-work system for high-risk jobs like hot work and confined space entry.", icon: <FileCheck /> },
-            { text: "Boost productivity by tracking Overall Equipment Effectiveness (OEE) to minimize downtime.", icon: <TrendingUp /> },
-            { text: "Reduce defects and waste with an In-Process Quality Control (IPQC) system.", icon: <ClipboardCheck /> },
-            { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: <Siren /> },
-            { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: <Leaf /> }
-        ],
-        previewScenario: {
-            title: "Preventing a Fatal Maintenance Accident",
-            description: "A maintenance worker is severely injured when a machine they are working on is accidentally started by another employee. This scenario shows how checklists prevent this.",
-            tasks: [
-                { id: 'LOTO-01', description: "The 'LOTO' procedure mandates that the worker must apply their personal lock and tag to the machine's power source before starting work, making an accidental startup impossible.", sourceChecklist: "Lock-Out Tag-Out (LOTO) SOP", priority: 'High' },
-                { id: 'PTW-01', description: "The 'Permit-to-Work' system requires a signed permit from a supervisor that verifies the machine is de-energized and isolated before any maintenance can begin.", sourceChecklist: "Permit-To-Work (PTW) System", priority: 'High' },
-                { id: 'SHIFT-H-01', description: "The 'Shift Handover' checklist includes a section to communicate all ongoing maintenance activities, ensuring the incoming shift is aware of the work and the LOTO in place.", sourceChecklist: "Shift Handover Protocol", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Key Industrial & Safety Standards",
-            standards: [
-                { name: "OSHA 29 CFR 1910", description: "The US standard for occupational safety, including LOTO and PTW." },
-                { name: "Factories Act, 1948", description: "Compliance with Indian laws for worker health and safety in factories." },
-                { name: "ISO 45001", description: "The international standard for occupational health and safety management." },
-                { name: "ISO 14001", description: "For environmental management and compliance." }
-            ]
-        },
-        checklists: [
-             {
-                title: "Lock-Out Tag-Out (LOTO) SOP",
-                department: "Maintenance/Safety",
-                frequency: "Per Maintenance Task",
-                role: "Maintenance Technician",
-                icon: <Lock />,
-                summary: "A legally compliant procedure to ensure machinery is safely de-energized before maintenance.",
-                tasks: [
-                    { id: 'LOTO-01', description: 'Identify all energy sources for the equipment.', priority: 'High', riskLevel: 'High', consequence: 'Missing an energy source (e.g., pneumatic, hydraulic) can lead to unexpected machine movement.', proof: 'Energy Source List', location: 'Machine' },
-                    { id: 'LOTO-02', description: 'Isolate the energy sources (e.g., turn off breaker, close valve).', priority: 'High', riskLevel: 'High', consequence: 'The critical first step to de-energizing the machine.', proof: 'Visual Confirmation', location: 'Energy Source' },
-                    { id: 'LOTO-03', description: 'Apply a personal lock and tag to the energy isolating device.', priority: 'High', riskLevel: 'High', consequence: 'Prevents anyone else from accidentally re-energizing the machine while you are working on it.', proof: 'Lock & Tag Photo', location: 'Energy Source' },
-                    { id: 'LOTO-04', description: 'Dissipate any stored energy (e.g., bleed pressure, discharge capacitors).', priority: 'High', riskLevel: 'High', consequence: 'Stored energy can still cause machine parts to move unexpectedly even after the main power is off.', proof: 'Energy Dissipation Log', location: 'Machine' },
-                    { id: 'LOTO-05', description: 'Verify the equipment is de-energized by trying to start it.', priority: 'High', riskLevel: 'High', consequence: 'The "try-out" step is the only way to be 100% certain the machine is de-energized. The most critical step.', proof: 'Zero Energy Test Log', location: 'Machine' },
-                    { id: 'LOTO-06', description: 'After work, ensure all tools and personnel are clear.', priority: 'High', riskLevel: 'High', consequence: 'Leaving a tool inside a machine can cause catastrophic damage upon startup.', proof: 'Clearance Check', location: 'Machine' },
-                    { id: 'LOTO-07', description: 'Remove your lock and tag.', priority: 'High', riskLevel: 'High', consequence: 'Only the person who applied the lock should ever remove it.', proof: 'Lock Removal Log', location: 'Energy Source' },
-                    { id: 'LOTO-08', description: 'Re-energize the equipment and test for normal operation.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the maintenance was successful and the machine is safe to return to service.', proof: 'Operational Test Log', location: 'Machine' },
-                    { id: 'LOTO-09', description: 'Document the entire LOTO procedure in the maintenance log.', priority: 'High', riskLevel: 'High', consequence: 'Provides a legal record that the safe procedure was followed.', proof: 'Maintenance Log', location: 'System' },
-                    { id: 'LOTO-10', description: 'Provide annual LOTO training to all affected employees.', priority: 'High', riskLevel: 'High', consequence: 'A legal requirement in most countries and essential for ensuring everyone understands this life-saving procedure.', proof: 'Training Records', location: 'HR' },
-                ]
-            },
-            {
-                title: "Permit-To-Work (PTW) System",
-                department: "Safety",
-                frequency: "Per High-Risk Job",
-                role: "Safety Officer",
-                icon: <FileCheck />,
-                summary: "A formal permit system for hot work, confined space entry, and working at height.",
-                tasks: [
-                    { id: 'PTW-01', description: 'Issue a specific permit for any high-risk work (hot work, confined space, height).', priority: 'High', riskLevel: 'High', consequence: 'Proceeding with high-risk work without a permit is a major safety violation and can lead to fatal accidents.', proof: 'Signed Permit', location: 'Work Area' },
-                    { id: 'PTW-02', description: 'Conduct a job safety analysis (JSA) before issuing the permit.', priority: 'High', riskLevel: 'High', consequence: 'Identifies the specific hazards and control measures for the job.', proof: 'JSA Document', location: 'Office' },
-                    { id: 'PTW-03', description: 'Verify all safety precautions listed on the permit are in place.', priority: 'High', riskLevel: 'High', consequence: 'The permit is useless if the safety measures are not actually implemented.', proof: 'Pre-work Inspection', location: 'Work Area' },
-                    { id: 'PTW-04', description: 'Ensure all personnel involved have signed the permit.', priority: 'High', riskLevel: 'High', consequence: 'Confirms that everyone understands the risks and safety procedures.', proof: 'Signed Permit', location: 'Work Area' },
-                    { id: 'PTW-05', description: 'Display the permit prominently at the work location.', priority: 'High', riskLevel: 'Medium', consequence: 'Alerts everyone in the area that high-risk work is in progress.', proof: 'Photo of Displayed Permit', location: 'Work Area' },
-                    { id: 'PTW-06', description: 'For confined space, test the atmosphere for oxygen and toxic gases.', priority: 'High', riskLevel: 'High', consequence: 'Entering a confined space with a hazardous atmosphere can be instantly fatal.', proof: 'Gas Test Log', location: 'Confined Space' },
-                    { id: 'PTW-07', description: 'For hot work, ensure a fire watch is present and fire extinguishers are ready.', priority: 'High', riskLevel: 'High', consequence: 'Hot work (welding, grinding) is a leading cause of industrial fires.', proof: 'Fire Watch Log', location: 'Work Area' },
-                    { id: 'PTW-08', description: 'Close the permit upon completion of work and verify the area is safe.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the work area is returned to a safe condition for normal operations.', proof: 'Closed Permit', location: 'Office' },
-                    { id: 'PTW-09', description: 'Audit the PTW system quarterly for compliance.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the system is being used correctly and effectively.', proof: 'PTW Audit Report', location: 'Office' },
-                    { id: 'PTW-10', description: 'Train all relevant staff on the PTW system.', priority: 'High', riskLevel: 'High', consequence: 'Personnel must understand when a permit is needed and how to follow the procedure.', proof: 'Training Records', location: 'HR' },
-                ]
-            },
-            {
-                title: "Chemical Handling & Storage",
-                department: "EHS",
-                frequency: "Daily/Weekly",
-                role: "Chemical Handler",
-                icon: <TestTube />,
-                summary: "Checks for proper labeling, segregation of incompatible chemicals, and availability of spill kits.",
-                tasks: [
-                    { id: 'CHS-01', description: 'Ensure all chemical containers are properly labeled with contents and hazards.', priority: 'High', riskLevel: 'High', consequence: 'An unlabeled chemical is an unknown hazard; can lead to dangerous mix-ups.', proof: 'Labeling Audit', location: 'Chemical Store' },
-                    { id: 'CHS-02', description: 'Store incompatible chemicals in separate, designated areas.', priority: 'High', riskLevel: 'High', consequence: 'Mixing incompatible chemicals (e.g., acids and bleach) can release toxic gas or cause an explosion.', proof: 'Storage Segregation Audit', location: 'Chemical Store' },
-                    { id: 'CHS-03', description: 'Check that spill kits are fully stocked and accessible.', priority: 'High', riskLevel: 'High', consequence: 'In a spill, lack of a proper kit can lead to a wider contamination and worker exposure.', proof: 'Spill Kit Inventory', location: 'Chemical Store' },
-                    { id: 'CHS-04', description: 'Maintain an inventory of all chemicals with updated MSDS sheets.', priority: 'High', riskLevel: 'High', consequence: 'MSDS provides critical safety information for handling and emergency response.', proof: 'Chemical Register', location: 'Office' },
-                    { id: 'CHS-05', description: 'Inspect storage areas for leaks, spills, or damaged containers.', priority: 'High', riskLevel: 'High', consequence: 'Early detection prevents small leaks from becoming major incidents.', proof: 'Storage Inspection Log', location: 'Chemical Store' },
-                    { id: 'CHS-06', description: 'Ensure proper ventilation in chemical storage areas.', priority: 'High', riskLevel: 'High', consequence: 'Buildup of fumes can be toxic and flammable.', proof: 'Ventilation System Check', location: 'Chemical Store' },
-                    { id: 'CHS-07', description: 'Verify that all personnel handling chemicals are wearing the correct PPE.', priority: 'High', riskLevel: 'High', consequence: 'Direct exposure to corrosive or toxic chemicals can cause severe injuries.', proof: 'PPE Audit', location: 'Handling Area' },
-                    { id: 'CHS-08', description: 'Follow correct procedures for disposing of chemical waste.', priority: 'High', riskLevel: 'High', consequence: 'Improper disposal is a major environmental violation and can lead to heavy fines.', proof: 'Waste Disposal Log', location: 'Waste Area' },
-                    { id: 'CHS-09', description: 'Train employees on chemical handling safety and emergency procedures.', priority: 'High', riskLevel: 'High', consequence: 'Untrained workers are a major liability when handling hazardous materials.', proof: 'Training Records', location: 'HR' },
-                    { id: 'CHS-10', description: 'Ensure eyewash stations and safety showers are functional and tested weekly.', priority: 'High', riskLevel: 'High', consequence: 'In a chemical splash, these are critical for minimizing injury.', proof: 'Test Log', location: 'Handling Area' },
-                ]
-            },
-             {
-                title: "Shift Handover Protocol",
-                department: "Production",
-                frequency: "Per Shift",
-                role: "Shift Supervisor",
-                icon: <ClipboardList />,
-                summary: "A structured handover process to communicate production status, safety issues, and maintenance activities.",
-                tasks: [
-                    { id: 'SHIFT-H-01', description: 'Review production targets and performance of the outgoing shift.', priority: 'High', riskLevel: 'Medium', consequence: 'Allows the new shift to understand the current status and what needs to be prioritized.', proof: 'Production Log', location: 'Control Room' },
-                    { id: 'SHIFT-H-02', description: 'Communicate any ongoing safety issues or maintenance work (LOTO).', priority: 'High', riskLevel: 'High', consequence: 'A failure in communication here can lead to someone accidentally re-energizing a machine under maintenance, with fatal results.', proof: 'Handover Logbook', location: 'Control Room' },
-                    { id: 'SHIFT-H-03', description: 'Discuss any quality issues or deviations from the previous shift.', priority: 'High', riskLevel: 'High', consequence: 'Prevents the new shift from repeating the same quality mistakes.', proof: 'Quality Log', location: 'Control Room' },
-                    { id: 'SHIFT-H-04', description: 'Check inventory levels of raw materials and finished goods.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents unexpected stockouts or overproduction during the shift.', proof: 'Inventory Report', location: 'System' },
-                    { id: 'SHIFT-H-05', description: 'Conduct a brief walkthrough of the production floor with the incoming supervisor.', priority: 'High', riskLevel: 'Medium', consequence: 'Allows for visual confirmation of any issues and a smoother transition.', proof: 'Walkthrough Sign-off', location: 'Production Floor' },
-                    { id: 'SHIFT-H-06', description: 'Assign tasks and positions to the incoming shift personnel.', priority: 'High', riskLevel: 'Medium', consequence: 'Ensures a smooth start to the shift with clear roles.', proof: 'Shift Roster', location: 'Control Room' },
-                    { id: 'SHIFT-H-07', description: 'Ensure all logbooks and records are signed and up-to-date.', priority: 'High', riskLevel: 'High', consequence: 'Maintains an accurate and auditable record of plant operations.', proof: 'Logbook Audit', location: 'Control Room' },
-                    { id: 'SHIFT-H-08', description: 'Brief the incoming team on any changes in procedure or schedule.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents confusion and errors from procedural changes.', proof: 'Briefing Notes', location: 'Control Room' },
-                    { id: 'SHIFT-H-09', description: 'Verify that all necessary tools and equipment are available.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents delays caused by missing tools.', proof: 'Tool Inventory', location: 'Tool Room' },
-                    { id: 'SHIFT-H-10', description: 'Both outgoing and incoming supervisors must sign the handover log.', priority: 'High', riskLevel: 'High', consequence: 'Creates clear accountability for the transfer of responsibility.', proof: 'Signed Handover Log', location: 'Control Room' },
-                ]
-            },
-            {
-                title: "Raw Material & Inbound QC",
-                department: "Quality/Stores",
-                frequency: "Per Delivery",
-                role: "QC Inspector",
-                icon: <PackageCheck />,
-                summary: "Verification of materials against specifications, sampling for testing, and quarantine of non-conforming goods.",
-                tasks: [
-                    { id: 'RM-QC-01', description: 'Verify incoming material against PO and supplier Certificate of Analysis (COA).', priority: 'High', riskLevel: 'High', consequence: 'Accepting the wrong material can ruin an entire batch of production.', proof: 'COA and PO Match', location: 'Receiving Bay' },
-                    { id: 'RM-QC-02', description: 'Take a sample for quality testing as per the sampling plan.', priority: 'High', riskLevel: 'High', consequence: 'Without sampling, you are blindly trusting the supplier\'s quality.', proof: 'Sample Log', location: 'Lab' },
-                    { id: 'RM-QC-03', description: 'Quarantine the material until QC results are available.', priority: 'High', riskLevel: 'High', consequence: 'Using material before QC approval can lead to producing a non-conforming batch.', proof: 'Quarantine Tag', location: 'Quarantine Area' },
-                    { id: 'RM-QC-04', description: 'Reject and return any material that does not meet specifications.', priority: 'High', riskLevel: 'High', consequence: 'The most important step to prevent bad quality from entering your plant.', proof: 'Rejection Note', location: 'Receiving Bay' },
-                    { id: 'RM-QC-05', description: 'Release the material for production only after QC approval.', priority: 'High', riskLevel: 'High', consequence: 'Ensures only approved materials are used in production.', proof: 'QC Release Note', location: 'System' },
-                    { id: 'RM-QC-06', description: 'Inspect packaging for damage or contamination.', priority: 'High', riskLevel: 'High', consequence: 'Damaged packaging can compromise the quality and safety of the material inside.', proof: 'Packaging Inspection Log', location: 'Receiving Bay' },
-                    { id: 'RM-QC-07', description: 'Check for correct labeling, including batch numbers and expiry dates.', priority: 'High', riskLevel: 'High', consequence: 'Crucial for traceability and preventing the use of expired materials.', proof: 'Label Check Log', location: 'Receiving Bay' },
-                    { id: 'RM-QC-08', description: 'Maintain a log of all incoming material inspections.', priority: 'High', riskLevel: 'High', consequence: 'Provides data for supplier performance evaluation.', proof: 'Inbound QC Log', location: 'System' },
-                    { id: 'RM-QC-09', description: 'Audit supplier performance based on QC results.', priority: 'High', riskLevel: 'High', consequence: 'Helps to weed out poor-quality suppliers.', proof: 'Supplier Scorecard', location: 'Office' },
-                    { id: 'RM-QC-10', description: 'Store materials in the correct environmental conditions.', priority: 'High', riskLevel: 'High', consequence: 'Improper storage can degrade material quality.', proof: 'Storage Condition Log', location: 'Stores' },
-                ]
-            },
-            {
-                title: "Incident Investigation & CAPA",
-                department: "EHS/Management",
-                frequency: "Per Incident",
-                role: "Safety Manager",
-                icon: <FileWarning />,
-                summary: "A formal process for investigating accidents and near-misses to prevent recurrence.",
-                tasks: [
-                    { id: 'INC-CAPA-01', description: 'Log the incident or near-miss immediately.', priority: 'High', riskLevel: 'High', consequence: 'Delays in reporting can lead to loss of crucial information.', proof: 'Incident Report', location: 'System' },
-                    { id: 'INC-CAPA-02', description: 'Form an investigation team for serious incidents.', priority: 'High', riskLevel: 'High', consequence: 'Ensures a thorough and unbiased investigation.', proof: 'Team Charter', location: 'Office' },
-                    { id: 'INC-CAPA-03', description: 'Conduct a root cause analysis (e.g., 5 Whys, Fishbone).', priority: 'High', riskLevel: 'High', consequence: 'Without finding the root cause, you will only fix the symptom, and the problem will recur.', proof: 'RCA Report', location: 'Office' },
-                    { id: 'INC-CAPA-04', description: 'Develop a Corrective and Preventive Action (CAPA) plan.', priority: 'High', riskLevel: 'High', consequence: 'Turns the investigation findings into a concrete plan for improvement.', proof: 'CAPA Plan', location: 'System' },
-                    { id: 'INC-CAPA-05', description: 'Assign owners and deadlines for each action in the CAPA plan.', priority: 'High', riskLevel: 'High', consequence: 'Without ownership and deadlines, actions are never completed.', proof: 'CAPA Tracker', location: 'System' },
-                    { id: 'INC-CAPA-06', description: 'Track all CAPA items to completion.', priority: 'High', riskLevel: 'High', consequence: 'The most critical step; ensures the improvement cycle is closed.', proof: 'CAPA Status Report', location: 'System' },
-                    { id: 'INC-CAPA-07', description: 'Verify the effectiveness of the implemented actions.', priority: 'High', riskLevel: 'High', consequence: 'Ensures that the fix actually worked and solved the problem.', proof: 'Effectiveness Review', location: 'System' },
-                    { id: 'INC-CAPA-08', description: 'Share lessons learned with all relevant personnel.', priority: 'High', riskLevel: 'Medium', consequence: 'Helps to build a culture of safety and continuous improvement.', proof: 'Safety Alert/Toolbox Talk', location: 'Plant-wide' },
-                    { id: 'INC-CAPA-09', description: 'Update SOPs or risk assessments based on findings.', priority: 'High', riskLevel: 'High', consequence: 'Integrates the learnings from the incident into the formal management system.', proof: 'Updated Documents', location: 'System' },
-                    { id: 'INC-CAPA-10', description: 'Report incident statistics to management monthly.', priority: 'High', riskLevel: 'Medium', consequence: 'Provides leadership with visibility into the plant\'s safety performance.', proof: 'Monthly Safety Report', location: 'Office' },
-                ]
-            },
-            {
-                title: "Overall Equipment Effectiveness (OEE)",
-                department: "Production",
-                frequency: "Daily/Shift-wise",
-                role: "Production Supervisor",
-                icon: <TrendingUp />,
-                summary: "A system for tracking machine downtime, performance, and quality to boost productivity.",
-                tasks: [
-                    { id: 'OEE-01', description: "Track all machine downtime and log the reason for each stoppage.", priority: 'High', riskLevel: 'High', consequence: 'If you don\'t measure downtime, you can\'t manage it. This is the biggest source of lost productivity.', proof: 'Downtime Log', location: 'Control Room' },
-                    { id: 'OEE-02', description: "Measure actual production output against the machine's ideal run rate.", priority: 'High', riskLevel: 'Medium', consequence: 'Identifies if machines are running slower than their designed capacity.', proof: 'Performance Log', location: 'System' },
-                    { id: 'OEE-03', description: "Track the number of defective units produced versus the total units.", priority: 'High', riskLevel: 'High', consequence: 'Identifies quality problems that lead to scrap, rework, and financial loss.', proof: 'Quality Log', location: 'QC Station' },
-                    { id: 'OEE-04', description: "Calculate the OEE score (Availability x Performance x Quality) for each critical machine daily.", priority: 'High', riskLevel: 'High', consequence: 'Provides a single, powerful metric to track overall manufacturing productivity.', proof: 'OEE Report', location: 'System' },
-                    { id: 'OEE-05', description: "Discuss OEE results in daily production meetings to identify improvement areas.", priority: 'High', riskLevel: 'Medium', consequence: 'Turns data into actionable conversations and drives a culture of continuous improvement.', proof: 'Meeting Minutes', location: 'Office' },
-                    { id: 'OEE-06', description: 'Analyze the top causes of downtime.', priority: 'High', riskLevel: 'High', consequence: 'Helps focus maintenance efforts on the most impactful problems.', proof: 'Downtime Analysis Report', location: 'Office' },
-                    { id: 'OEE-07', description: 'Set improvement targets for OEE.', priority: 'High', riskLevel: 'Medium', consequence: 'Without targets, there is no clear goal for the team to work towards.', proof: 'Target Sheet', location: 'Office' },
-                    { id: 'OEE-08', description: 'Implement actions to reduce changeover times.', priority: 'High', riskLevel: 'High', consequence: 'Long changeovers are a major source of lost production time.', proof: 'SMED Analysis', location: 'Office' },
-                    { id: 'OEE-09', description: 'Train operators on autonomous maintenance tasks.', priority: 'High', riskLevel: 'Medium', consequence: 'Empowers operators to handle minor maintenance, freeing up the maintenance team for bigger issues.', proof: 'Training Records', location: 'HR' },
-                    { id: 'OEE-10', description: 'Display OEE scores visually on the shop floor.', priority: 'Medium', riskLevel: 'Low', consequence: 'Makes the score visible to everyone and fosters a sense of ownership.', proof: 'Visual Management Board', location: 'Production Floor' },
-                ]
-            },
-            {
-                title: "In-Process Quality Control (IPQC)",
-                department: "Quality",
-                frequency: "Per Batch/Hour",
-                role: "QC Inspector",
-                icon: <ClipboardCheck />,
-                summary: "Checklists for conducting quality checks at various stages of the production line to catch defects early.",
-                tasks: [
-                    { id: 'IPQC-01', description: "Perform quality checks on semi-finished goods at defined control points.", priority: 'High', riskLevel: 'High', consequence: 'Catches defects early before more value and cost is added to the product.', proof: 'IPQC Checksheet', location: 'Production Line' },
-                    { id: 'IPQC-02', description: "Verify that process parameters (e.g., temperature, pressure) are within specified limits.", priority: 'High', riskLevel: 'High', consequence: 'Deviations in process parameters are a leading cause of quality defects.', proof: 'Process Log', location: 'Control Room' },
-                    { id: 'IPQC-03', description: "Hold and quarantine any batch that fails an in-process check.", priority: 'High', riskLevel: 'High', consequence: 'Prevents a defective batch from moving further down the line and potentially being shipped to a customer.', proof: 'Hold Notice/Tag', location: 'Production Line' },
-                    { id: 'IPQC-04', description: "Document all IPQC checks and any deviations found.", priority: 'High', riskLevel: 'High', consequence: 'Provides a data trail for root cause analysis of quality issues.', proof: 'IPQC Report', location: 'System' },
-                    { id: 'IPQC-05', description: "Provide real-time feedback to the production team on quality issues.", priority: 'High', riskLevel: 'Medium', consequence: 'Allows operators to correct issues immediately instead of continuing to produce defects.', proof: 'Feedback Log', location: 'Production Line' },
-                    { id: 'IPQC-06', description: 'Calibrate all inspection and measuring equipment.', priority: 'High', riskLevel: 'High', consequence: 'An uncalibrated tool can give false "pass" results.', proof: 'Calibration Records', location: 'QC Lab' },
-                    { id: 'IPQC-07', description: 'Take samples for laboratory testing as per the plan.', priority: 'High', riskLevel: 'High', consequence: 'Provides more in-depth analysis than can be done on the production line.', proof: 'Sample Log', location: 'Production Line' },
-                    { id: 'IPQC-08', description: 'Ensure operators are trained on quality standards.', priority: 'High', riskLevel: 'Medium', consequence: 'Operators who don\'t know the standard cannot meet it.', proof: 'Training Records', location: 'HR' },
-                    { id: 'IPQC-09', description: 'Use statistical process control (SPC) charts to monitor processes.', priority: 'High', riskLevel: 'High', consequence: 'Helps to identify process drift before it results in out-of-spec product.', proof: 'SPC Charts', location: 'System' },
-                    { id: 'IPQC-10', description: 'Conduct a final product inspection before packaging.', priority: 'High', riskLevel: 'High', consequence: 'The last chance to catch any defects before they reach the customer.', proof: 'Final Inspection Report', location: 'QC Station' },
-                ]
-            },
-        ]
-    },
-    {
-        id: 'food_manufacturing_ops',
-        title: "Food Manufacturing Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/3d368e73-b261-4828-a400-f14d8615b3c3',
-        category: "Food & Beverage",
-        description: "A HACCP and FSSAI-compliant toolkit for food processing plants to ensure food safety, quality, and traceability from farm to fork.",
-        icon: <Sprout />,
-        badgeText: "FSSAI Compliant",
-        badgeVariant: "accent",
-        whoIsItFor: ["Food Plant Owners", "Quality Assurance Managers", "Production Heads", "F&B Entrepreneurs"],
-        sampleItems: [
-            { text: "Ensure end-to-end food safety with a comprehensive HACCP plan implementation checklist.", icon: <ShieldCheck /> },
-            { text: "Prevent cross-contamination with color-coded zoning and sanitation protocols.", icon: <SprayCan /> },
-            { text: "Guarantee full traceability with a robust batch coding and recall procedure.", icon: <Barcode /> },
-            { text: "Maintain product integrity with strict cold chain management and temperature logging.", icon: <Thermometer /> },
-            { text: "Meet regulatory standards with a complete supplier verification and raw material QC process.", icon: <PackageCheck /> },
-            { text: "Protect your brand with a formal procedure for handling customer complaints and food safety incidents.", icon: <FileWarning /> }
-        ],
-        previewScenario: {
-            title: "Executing a Mock Product Recall",
-            description: "A regulator asks the plant to demonstrate its ability to trace a specific batch of product from a consumer back to the raw material source within 4 hours. This scenario shows how checklists make this possible.",
-            tasks: [
-                { id: 'TRACE-01', description: "The 'Traceability & Recall' SOP provides a step-by-step guide to use the batch number to identify all related production, QC, and raw material records.", sourceChecklist: "Traceability & Recall Procedure", priority: 'High' },
-                { id: 'BATCH-01', description: "The 'Batch Production Record' for that batch contains all the necessary links to the raw material batch codes used.", sourceChecklist: "Batch Production Record", priority: 'High' },
-                { id: 'RM-QC-08', description: "The 'Inbound QC' log for the raw material provides the final link back to the supplier and their Certificate of Analysis, completing the trace in well under the required time.", sourceChecklist: "Raw Material & Inbound QC", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Global Food Safety Standards",
-            standards: [
-                { name: "FSSAI (FoSTaC)", description: "Compliance with Indian food safety training and certification." },
-                { name: "ISO 22000", description: "The international standard for food safety management systems." },
-                { name: "HACCP", description: "Hazard Analysis and Critical Control Points system." },
-                { name: "BRCGS", description: "Global standard for food safety, recognized by retailers worldwide." }
-            ]
-        },
-        checklists: [
-             {
-                title: "HACCP Plan Implementation",
-                department: "Quality",
-                frequency: "Ongoing",
-                role: "QA Manager",
-                icon: <ShieldCheck />,
-                summary: "A master checklist to ensure all elements of the HACCP plan are implemented and monitored.",
-                tasks: [
-                    { id: 'HACCP-IMP-01', description: 'Review and update the HACCP plan annually or when processes change.', priority: 'High', riskLevel: 'High', consequence: 'An outdated plan does not address current risks, a major compliance failure.', proof: 'Updated HACCP Plan', location: 'Office' },
-                    { id: 'HACCP-IMP-02', description: 'Monitor all Critical Control Points (CCPs) as defined in the plan.', priority: 'High', riskLevel: 'High', consequence: 'Failure to monitor a CCP (e.g., cooking temperature) can lead to unsafe food.', proof: 'CCP Monitoring Records', location: 'Production Line' },
-                    { id: 'HACCP-IMP-03', description: 'Take immediate corrective action for any CCP deviation.', priority: 'High', riskLevel: 'High', consequence: 'Allows unsafe product to be produced and potentially shipped.', proof: 'Corrective Action Report', location: 'System' },
-                    { id: 'HACCP-IMP-04', description: 'Verify that the HACCP system is working effectively through regular audits.', priority: 'High', riskLevel: 'High', consequence: 'Without verification, you are only assuming the plan is working.', proof: 'HACCP Verification Report', location: 'Office' },
-                    { id: 'HACCP-IMP-05', description: 'Maintain all records related to the HACCP plan.', priority: 'High', riskLevel: 'High', consequence: 'Lack of records is a major red flag for any food safety auditor.', proof: 'HACCP Record File', location: 'Office' },
-                    { id: 'HACCP-IMP-06', description: 'Train all employees on their roles in the HACCP plan.', priority: 'High', riskLevel: 'High', consequence: 'The entire system depends on trained employees executing their roles correctly.', proof: 'Training Records', location: 'HR' },
-                    { id: 'HACCP-IMP-07', description: 'Conduct a hazard analysis for any new products or processes.', priority: 'High', riskLevel: 'High', consequence: 'New products may introduce new hazards (e.g., allergens) that are not controlled.', proof: 'Hazard Analysis Report', location: 'Office' },
-                    { id: 'HACCP-IMP-08', description: 'Validate critical limits for CCPs.', priority: 'High', riskLevel: 'High', consequence: 'If the critical limit is wrong (e.g., temp is too low), the CCP is ineffective.', proof: 'Validation Study', location: 'Lab' },
-                    { id: 'HACCP-IMP-09', description: 'Review prerequisite programs (e.g., sanitation, pest control).', priority: 'High', riskLevel: 'High', consequence: 'A HACCP plan cannot succeed without a strong foundation of basic hygiene.', proof: 'PRP Review Report', location: 'Office' },
-                    { id: 'HACCP-IMP-10', description: 'Hold regular HACCP team meetings.', priority: 'High', riskLevel: 'Medium', consequence: 'Ensures ongoing management and improvement of the food safety system.', proof: 'Meeting Minutes', location: 'Office' },
-                ]
-            },
-            {
-                title: "Zoning & Cross-Contamination Control",
-                department: "Production/Hygiene",
-                frequency: "Daily",
-                role: "Hygiene Supervisor",
-                icon: <SprayCan />,
-                summary: "Ensures physical separation and color-coding between raw material, processing, and packaging zones.",
-                tasks: [
-                    { id: 'ZCC-01', description: 'Ensure clear physical separation between raw and cooked/ready-to-eat areas.', priority: 'High', riskLevel: 'High', consequence: 'A primary cause of cross-contamination with pathogens like Salmonella or Listeria.', proof: 'Visual Audit', location: 'Production Area' },
-                    { id: 'ZCC-02', description: 'Use color-coded uniforms, tools, and cleaning equipment for different zones.', priority: 'High', riskLevel: 'High', consequence: 'Prevents a dirty tool from a raw area being used in a clean, high-risk area.', proof: 'Color Coding Chart', location: 'Production Area' },
-                    { id: 'ZCC-03', description: 'Control personnel movement between zones.', priority: 'High', riskLevel: 'High', consequence: 'People can carry pathogens on their shoes and clothes from a raw to a clean zone.', proof: 'Access Control Log', location: 'Production Area' },
-                    { id: 'ZCC-04', description: 'Manage airflow to prevent airborne contamination from raw to clean areas.', priority: 'High', riskLevel: 'High', consequence: 'Important for controlling airborne pathogens like Listeria.', proof: 'Air Pressure Monitoring', location: 'HVAC System' },
-                    { id: 'ZCC-05', description: 'Have separate cleaning procedures for different zones.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the highest level of sanitation is applied to high-risk areas.', proof: 'Cleaning SOPs', location: 'Office' },
-                    { id: 'ZCC-06', description: 'Ensure waste from raw areas does not pass through finished product areas.', priority: 'High', riskLevel: 'High', consequence: 'A major vector for spreading contamination.', proof: 'Waste Movement Path', location: 'Plant Layout' },
-                    { id: 'ZCC-07', description: 'Train employees on the importance of zoning and cross-contamination control.', priority: 'High', riskLevel: 'High', consequence: 'The system only works if employees understand and follow the rules.', proof: 'Training Records', location: 'HR' },
-                    { id: 'ZCC-08', description: 'Audit zoning compliance weekly.', priority: 'High', riskLevel: 'High', consequence: 'Regular audits are needed to enforce compliance.', proof: 'Zoning Audit Report', location: 'Office' },
-                    { id: 'ZCC-09', description: 'Use foot baths or sanitizing mats at the entrance to high-risk areas.', priority: 'High', riskLevel: 'High', consequence: 'Helps to prevent pathogens from being tracked in on footwear.', proof: 'Visual Check', location: 'High-Risk Area Entrance' },
-                    { id: 'ZCC-10', description: 'Test for allergens in finished products to verify control measures.', priority: 'High', riskLevel: 'High', consequence: 'The ultimate proof that your allergen control zoning is effective.', proof: 'Allergen Test Results', location: 'Lab' },
-                ]
-            },
-            {
-                title: "Traceability & Recall Procedure",
-                department: "Quality",
-                frequency: "Per Batch/Recall Drill",
-                role: "QA Manager",
-                icon: <Barcode />,
-                summary: "A step-by-step procedure for tracing a product batch and executing a mock or real product recall.",
-                tasks: [
-                    { id: 'TRACE-01', description: 'Assign a unique batch code to every batch of finished product.', priority: 'High', riskLevel: 'High', consequence: 'Without a batch code, traceability is impossible.', proof: 'Batch Code Log', location: 'System' },
-                    { id: 'TRACE-02', description: 'Link finished product batch codes to the raw material batch codes used.', priority: 'High', riskLevel: 'High', consequence: 'This is the core of "one step forward, one step back" traceability.', proof: 'Batch Production Record', location: 'System' },
-                    { id: 'TRACE-03', description: 'Conduct a mock recall drill twice a year.', priority: 'High', riskLevel: 'High', consequence: 'Tests your ability to trace a product and contact customers quickly in a real crisis.', proof: 'Mock Recall Report', location: 'Office' },
-                    { id: 'TRACE-04', description: 'Maintain an up-to-date contact list for all distributors and regulators.', priority: 'High', riskLevel: 'High', consequence: 'In a recall, wasting time looking for contact details can be costly and dangerous.', proof: 'Contact List', location: 'Office' },
-                    { id: 'TRACE-05', description: 'Have a pre-approved public communication template for recalls.', priority: 'High', riskLevel: 'Medium', consequence: 'Allows for rapid, clear, and legally vetted communication during a crisis.', proof: 'Communication Template', location: 'Office' },
-                    { id: 'TRACE-06', description: 'Define a clear recall team with roles and responsibilities.', priority: 'High', riskLevel: 'High', consequence: 'In a recall, a clear command structure is essential to avoid chaos.', proof: 'Recall Team Chart', location: 'Office' },
-                    { id: 'TRACE-07', description: 'Test the ability to trace a batch forward (to customer) and backward (to supplier).', priority: 'High', riskLevel: 'High', consequence: 'Proves that your traceability system actually works end-to-end.', proof: 'Traceability Test Report', location: 'System' },
-                    { id: 'TRACE-08', description: 'Have a clear procedure for product destruction or return during a recall.', priority: 'High', riskLevel: 'High', consequence: 'Ensures that recalled product is effectively removed from the market.', proof: 'Destruction/Return SOP', location: 'Office' },
-                    { id: 'TRACE-09', description: 'Investigate the root cause of any recall and implement corrective actions.', priority: 'High', riskLevel: 'High', consequence: 'The most important step to prevent the same problem from happening again.', proof: 'CAPA Report', location: 'System' },
-                    { id: 'TRACE-10', description: 'Notify regulators within the required timeframe during a recall.', priority: 'High', riskLevel: 'High', consequence: 'A legal requirement that carries heavy penalties if missed.', proof: 'Regulatory Notification', location: 'Office' },
-                ]
-            },
-            {
-                title: 'Personnel Hygiene & Training',
-                department: 'HR/Hygiene',
-                frequency: 'Ongoing',
-                role: 'Hygiene Officer',
-                icon: <UserCheck />,
-                summary: 'Protocols for staff health screening, uniform policy, and food safety training (FoSTaC).',
-                tasks: [
-                    { id: 'PHT-01', description: 'Conduct pre-employment and annual medical check-ups for all food handlers.', priority: 'High', riskLevel: 'High', consequence: 'Prevents individuals with communicable diseases from handling food.', proof: 'Medical Records', location: 'HR' },
-                    { id: 'PHT-02', description: 'Enforce a strict uniform policy, including hairnets, masks, and dedicated footwear.', priority: 'High', riskLevel: 'High', consequence: 'Prevents physical contaminants (hair) and pathogens from entering the food.', proof: 'Daily Uniform Audit', location: 'Entry Point' },
-                    { id: 'PHT-03', description: 'Monitor handwashing stations and ensure proper handwashing technique is followed.', priority: 'High', riskLevel: 'High', consequence: 'Improper handwashing is a primary cause of foodborne illness.', proof: 'Handwashing Audit Log', location: 'Production Area' },
-                    { id: 'PHT-04', description: 'Implement a "no jewelry" and "no nail polish" policy.', priority: 'High', riskLevel: 'High', consequence: 'Jewelry can fall into food (physical hazard) and nail polish can chip (chemical hazard).', proof: 'Visual Check', location: 'Entry Point' },
-                    { id: 'PHT-05', description: 'Ensure all staff complete FSSAI FoSTaC training.', priority: 'High', riskLevel: 'High', consequence: 'A legal requirement in India and a baseline for food safety knowledge.', proof: 'FoSTaC Certificates', location: 'HR' },
-                    { id: 'PHT-06', description: 'Have a clear policy for staff with illnesses or open wounds.', priority: 'High', riskLevel: 'High', consequence: 'A sick employee working can cause a massive food poisoning outbreak.', proof: 'Sick Leave Policy', location: 'HR' },
-                    { id: 'PHT-07', description: 'Conduct regular refresher training on GMP and food safety.', priority: 'High', riskLevel: 'High', consequence: 'Ensures food safety remains top-of-mind and knowledge is current.', proof: 'Training Calendar', location: 'HR' },
-                    { id: 'PHT-08', description: 'Restrict personal items from being brought into the production area.', priority: 'High', riskLevel: 'Medium', consequence: 'Personal items can be a source of contamination.', proof: 'Locker Room Policy', location: 'Locker Room' },
-                    { id: 'PHT-09', description: 'Post hygiene reminders in multiple languages.', priority: 'Medium', riskLevel: 'Low', consequence: 'Reinforces key messages in a diverse workforce.', proof: 'Signage Photos', location: 'Common Areas' },
-                    { id: 'PHT-10', description: 'Observe and correct any unsafe personal behaviors.', priority: 'High', riskLevel: 'High', consequence: 'Builds a culture of hygiene and accountability.', proof: 'Behavioral Observation Report', location: 'Production Floor' },
-                ]
-            },
-            {
-                title: 'Equipment Cleaning & Sanitization',
-                department: 'Maintenance/Hygiene',
-                frequency: 'Daily/Scheduled',
-                role: 'Sanitation Supervisor',
-                icon: <SprayCan />,
-                summary: 'Schedules and procedures for cleaning-in-place (CIP) and cleaning-out-of-place (COP) for all equipment.',
-                tasks: [
-                    { id: 'ECS-01', description: 'Follow a master sanitation schedule for all equipment and areas.', priority: 'High', riskLevel: 'High', consequence: 'Without a schedule, cleaning tasks are easily forgotten.', proof: 'Master Sanitation Schedule', location: 'Office' },
-                    { id: 'ECS-02', description: 'Use validated CIP/COP procedures for all food contact equipment.', priority: 'High', riskLevel: 'High', consequence: 'An unvalidated procedure may not effectively remove soil and pathogens.', proof: 'Cleaning Procedure Documents', location: 'Production' },
-                    { id: 'ECS-03', description: 'Verify cleaning effectiveness using ATP swabs or protein tests.', priority: 'High', riskLevel: 'High', consequence: 'The only way to scientifically prove that a surface is truly clean.', proof: 'ATP Test Log', location: 'QC Lab' },
-                    { id: 'ECS-04', description: 'Maintain logs for all cleaning and sanitization activities.', priority: 'High', riskLevel: 'High', consequence: 'Provides a legal record of due diligence for food safety audits.', proof: 'Cleaning Logs', location: 'System' },
-                    { id: 'ECS-05', description: 'Use only food-grade, approved cleaning chemicals.', priority: 'High', riskLevel: 'High', consequence: 'Using unapproved chemicals can introduce chemical hazards into the food.', proof: 'Chemical Approval List', location: 'Stores' },
-                    { id: 'ECS-06', description: 'Train staff on correct chemical handling and dilution.', priority: 'High', riskLevel: 'High', consequence: 'Incorrect dilution can make a sanitizer ineffective or dangerously strong.', proof: 'Training Records', location: 'HR' },
-                    { id: 'ECS-07', description: 'Disassemble equipment for cleaning where required.', priority: 'High', riskLevel: 'High', consequence: 'Hidden areas that are not cleaned can harbor massive amounts of bacteria.', proof: 'Disassembly SOP', location: 'Production' },
-                    { id: 'ECS-08', description: 'Inspect equipment for cleanliness before starting production.', priority: 'High', riskLevel: 'High', consequence: 'The final check to ensure you are not starting work on dirty equipment.', proof: 'Pre-op Inspection Log', location: 'Production' },
-                    { id: 'ECS-09', description: 'Manage and clean non-food contact surfaces (floors, walls, drains).', priority: 'High', riskLevel: 'Medium', consequence: 'A dirty environment can lead to indirect contamination of food.', proof: 'Area Cleaning Schedule', location: 'Production' },
-                    { id: 'ECS-10', description: 'Titrate sanitizer concentrations daily to ensure effectiveness.', priority: 'High', riskLevel: 'High', consequence: 'Sanitizer concentration can degrade over time, making it useless.', proof: 'Titration Log', location: 'QC Lab' },
-                ]
-            },
-            {
-                title: 'Pest Control Management',
-                department: 'EHS',
-                frequency: 'Weekly',
-                role: 'EHS Officer',
-                icon: <Bug />,
-                summary: 'Integrated pest management plan including facility proofing, trap monitoring, and vendor management.',
-                tasks: [
-                    { id: 'PCM-01', description: 'Conduct a weekly inspection of the entire facility for signs of pests.', priority: 'High', riskLevel: 'High', consequence: 'Early detection is critical to preventing a full-blown infestation.', proof: 'Pest Inspection Log', location: 'Entire Facility' },
-                    { id: 'PCM-02', description: 'Check and maintain all pest control devices (bait stations, insect light traps).', priority: 'High', riskLevel: 'High', consequence: 'Ineffective traps provide a false sense of security.', proof: 'Device Maintenance Log', location: 'Perimeter/Production' },
-                    { id: 'PCM-03', description: 'Ensure all doors, windows, and openings are properly sealed.', priority: 'High', riskLevel: 'High', consequence: 'The first line of defense is to deny pests entry to the facility.', proof: 'Facility Sealing Audit', location: 'Perimeter' },
-                    { id: 'PCM-04', description: 'Manage waste disposal to prevent attracting pests.', priority: 'High', riskLevel: 'High', consequence: 'Open garbage is a primary food source for rodents and insects.', proof: 'Waste Management Log', location: 'Waste Area' },
-                    { id: 'PCM-05', description: 'Review and file service reports from the external pest control operator.', priority: 'High', riskLevel: 'High', consequence: 'Provides expert, third-party validation of your pest control program.', proof: 'Vendor Reports', location: 'Office' },
-                    { id: 'PCM-06', description: 'Maintain a pest sighting log and take immediate action.', priority: 'High', riskLevel: 'High', consequence: 'Helps to identify hotspots and trends in pest activity.', proof: 'Sighting Log', location: 'Office' },
-                    { id: 'PCM-07', description: 'Keep exterior areas clean and free of vegetation.', priority: 'High', riskLevel: 'Medium', consequence: 'Overgrown vegetation provides hiding places for pests.', proof: 'Exterior Inspection Log', location: 'Perimeter' },
-                    { id: 'PCM-08', description: 'Train employees on how to spot and report pest activity.', priority: 'High', riskLevel: 'Medium', consequence: 'More eyes looking for pests means earlier detection.', proof: 'Training Records', location: 'HR' },
-                    { id: 'PCM-09', description: 'Analyze pest trends to identify root causes.', priority: 'High', riskLevel: 'High', consequence: 'Helps to move from reactive killing to proactive prevention.', proof: 'Trend Analysis Report', location: 'Office' },
-                    { id: 'PCM-10', description: 'Ensure incoming raw materials are free from pests.', priority: 'High', riskLevel: 'High', consequence: 'Pests can be introduced into the facility via suppliers.', proof: 'Receiving Inspection Log', location: 'Receiving Bay' },
-                ]
-            },
-            {
-                title: 'Finished Product QC & Release',
-                department: 'Quality',
-                frequency: 'Per Batch',
-                role: 'QC Manager',
-                icon: <ClipboardCheck />,
-                summary: 'SOP for final product testing, quality attribute checks, and formal release for dispatch.',
-                tasks: [
-                    { id: 'FPQC-01', description: 'Collect a representative sample of the finished product from each batch.', priority: 'High', riskLevel: 'High', consequence: 'Without a representative sample, testing results are meaningless.', proof: 'Sampling Log', location: 'Packaging Line' },
-                    { id: 'FPQC-02', description: 'Conduct sensory evaluation (taste, smell, appearance).', priority: 'High', riskLevel: 'High', consequence: 'The final check to ensure the product meets customer expectations.', proof: 'Sensory Panel Report', location: 'QC Lab' },
-                    { id: 'FPQC-03', description: 'Perform laboratory tests (e.g., microbial, chemical) as per the QC plan.', priority: 'High', riskLevel: 'High', consequence: 'The scientific proof that the product is safe to eat.', proof: 'Lab Test Results', location: 'QC Lab' },
-                    { id: 'FPQC-04', description: 'Check packaging integrity and labeling accuracy.', priority: 'High', riskLevel: 'High', consequence: 'A faulty package can lead to spoilage; an incorrect label can be a major legal issue.', proof: 'Packaging QC Report', location: 'QC Lab' },
-                    { id: 'FPQC-05', description: 'Hold the entire batch until all QC tests are passed.', priority: 'High', riskLevel: 'High', consequence: 'Releasing a product before QC clearance is a catastrophic food safety failure.', proof: 'Hold & Release Log', location: 'System' },
-                    { id: 'FPQC-06', description: 'Generate a Certificate of Analysis (COA) for the batch.', priority: 'High', riskLevel: 'High', consequence: 'The formal document that proves the product meets all specifications.', proof: 'COA Document', location: 'System' },
-                    { id: 'FPQC-07', description: 'Formally release the batch for dispatch in the inventory system.', priority: 'High', riskLevel: 'High', consequence: 'The final step that allows the product to be shipped to customers.', proof: 'System Release', location: 'System' },
-                    { id: 'FPQC-08', description: 'Retain a control sample from each batch for the duration of its shelf life.', priority: 'High', riskLevel: 'High', consequence: 'Essential for investigating any future customer complaints.', proof: 'Control Sample Log', location: 'QC Lab' },
-                    { id: 'FPQC-09', description: 'Investigate any out-of-specification results.', priority: 'High', riskLevel: 'High', consequence: 'You must understand why a batch failed to prevent it from happening again.', proof: 'OOS Investigation Report', location: 'Office' },
-                    { id: 'FPQC-10', description: 'Review and approve all batch records before release.', priority: 'High', riskLevel: 'High', consequence: 'The final check to ensure all production and quality steps were followed correctly.', proof: 'Signed Batch Record', location: 'System' },
-                ]
-            },
-            {
-                title: 'Corrective & Preventive Action (CAPA)',
-                department: 'Quality/Management',
-                frequency: 'Per Deviation',
-                role: 'CAPA Coordinator',
-                icon: <FileWarning />,
-                summary: 'A formal system for investigating deviations, finding root causes, and implementing actions to prevent recurrence.',
-                tasks: [
-                    { id: 'CAPA-01', description: 'Log all deviations, non-conformances, and complaints in the CAPA system.', priority: 'High', riskLevel: 'High', consequence: 'If it\'s not logged, it doesn\'t exist. This is the starting point for all improvement.', proof: 'CAPA Log', location: 'System' },
-                    { id: 'CAPA-02', description: 'Conduct a thorough root cause analysis (RCA) for each issue.', priority: 'High', riskLevel: 'High', consequence: 'Fixing the symptom instead of the root cause guarantees the problem will happen again.', proof: 'RCA Report', location: 'System' },
-                    { id: 'CAPA-03', description: 'Develop a corrective action plan to address the immediate issue.', priority: 'High', riskLevel: 'High', consequence: 'The immediate fix to contain the problem.', proof: 'Corrective Action Plan', location: 'System' },
-                    { id: 'CAPA-04', description: 'Develop a preventive action plan to prevent recurrence.', priority: 'High', riskLevel: 'High', consequence: 'The long-term fix that addresses the root cause.', proof: 'Preventive Action Plan', location: 'System' },
-                    { id: 'CAPA-05', description: 'Assign owners and due dates for all actions.', priority: 'High', riskLevel: 'High', consequence: 'Without ownership and deadlines, actions are never implemented.', proof: 'CAPA Tracker', location: 'System' },
-                    { id: 'CAPA-06', description: 'Track all CAPA actions to completion.', priority: 'High', riskLevel: 'High', consequence: 'The most critical part of the process, ensuring the loop is closed.', proof: 'CAPA Status Report', location: 'System' },
-                    { id: 'CAPA-07', description: 'Verify the effectiveness of the implemented actions.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the fix was not just a temporary patch.', proof: 'Effectiveness Check Log', location: 'System' },
-                    { id: 'CAPA-08', description: 'Share learnings from CAPAs across the organization.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Helps to build a culture of continuous improvement.', proof: 'Lessons Learned Document', location: 'System' },
-                    { id: 'CAPA-09', description: 'Review CAPA trends in management review meetings.', priority: 'High', riskLevel: 'High', consequence: 'Provides leadership with insight into the biggest operational problems.', proof: 'Management Review Minutes', location: 'Office' },
-                    { id: 'CAPA-10', description: 'Update procedures based on lessons learned from incidents.', priority: 'High', riskLevel: 'High', consequence: 'Ensures the procedures remain effective and relevant.', proof: 'Updated Procedures', location: 'System' },
                 ]
             }
         ]
@@ -4639,44 +4233,122 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 'logistics_warehouse_pack',
+        title: "Logistics & Warehouse Operations Pack",
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
+        category: "Industrial & Transport",
+        description: "A complete toolkit for warehouse managers and logistics heads to optimize inventory, ensure safety, and improve supply chain resilience.",
+        icon: <Warehouse />,
+        whoIsItFor: ["Warehouse Managers", "Logistics Heads", "Supply Chain Directors", "3PL Providers"],
+        sampleItems: [
+            { text: "Streamline your receiving process with checklists for inbound quality control and documentation.", icon: <ClipboardCheck /> },
+            { text: "Maximize space and efficiency with SOPs for stock-keeping, bin location management, and putaway.", icon: <Package /> },
+            { text: "Ensure order accuracy and speed with a structured picking, packing, and dispatch process.", icon: <Truck /> },
+            { text: "Maintain a safe workplace with checklists for Material Handling Equipment (MHE) safety and operator training.", icon: <HardHat /> },
+            { text: "Protect your inventory with robust protocols for security, access control, and cycle counting.", icon: <Shield /> },
+            { text: "Build a resilient supply chain with SOPs for vendor management and contingency planning.", icon: <LinkIcon /> }
+        ],
+        previewScenario: {
+            title: "Preventing a Costly Mis-Shipment",
+            description: "A large B2B order is incorrectly picked and shipped, leading to a major customer complaint and expensive reverse logistics. This scenario shows how checklists prevent this.",
+            tasks: [
+                { id: 'PICK-PACK-01', description: "The 'Picking & Packing' SOP requires a two-stage verification: first the picker scans the item and location, then a separate packer re-scans the item before sealing the box.", sourceChecklist: "Picking, Packing & Dispatch", priority: 'High' },
+                { id: 'INV-MGMT-03', description: "The 'Inventory Management' checklist ensures that all bin locations are clearly labeled, reducing the chance of a picker going to the wrong location in the first place.", sourceChecklist: "Inventory & Stock Management", priority: 'High' },
+                { id: 'DISPATCH-02', description: "The 'Dispatch & Logistics' SOP includes a final weight check against the expected weight in the system, which would flag an order with a missing or extra item before it leaves the warehouse.", sourceChecklist: "Dispatch & Logistics Coordination", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Global Logistics & Safety Standards",
+            standards: [
+                { name: "ISO 9001", description: "For quality management systems and process control." },
+                { name: "ISO 45001", description: "International standard for occupational health and safety." },
+                { name: "C-TPAT", description: "Guidelines for supply chain security from the U.S. Customs and Border Protection." },
+                { name: "OSHA", description: "Standards for warehouse and MHE safety." }
+            ]
+        },
+        checklists: []
+    },
+    {
+        id: 'manufacturing_operations_ehs_pack',
+        title: "Manufacturing Operations & EHS Pack",
+        priceINR: 5999,
+        priceUSD: 79,
+        paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a',
+        category: "Industrial & Transport",
+        description: "A comprehensive EHS and operational toolkit for plant heads and safety officers to ensure a safe, compliant, and efficient manufacturing environment.",
+        icon: <Factory />,
+        badgeText: "Safety Critical",
+        badgeVariant: "destructive",
+        bestseller: true,
+        whoIsItFor: ["Plant Heads", "EHS Officers", "Production Managers", "Maintenance Heads", "Quality Control Managers"],
+        sampleItems: [
+            { text: "Prevent fatal accidents with a legally compliant Lock-Out Tag-Out (LOTO) procedure for machine maintenance.", icon: <Lock /> },
+            { text: "Ensure worker safety with a permit-to-work system for high-risk jobs like hot work and confined space entry.", icon: <FileCheck /> },
+            { text: "Boost productivity by tracking Overall Equipment Effectiveness (OEE) to minimize downtime.", icon: <TrendingUp /> },
+            { text: "Reduce defects and waste with an In-Process Quality Control (IPQC) system.", icon: <ClipboardCheck /> },
+            { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: <Siren /> },
+            { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: <Leaf /> }
+        ],
+        previewScenario: {
+            title: "Preventing a Fatal Maintenance Accident",
+            description: "A maintenance worker is severely injured when a machine they are working on is accidentally started by another employee. This scenario shows how checklists prevent this.",
+            tasks: [
+                { id: 'LOTO-01', description: "The 'LOTO' procedure mandates that the worker must apply their personal lock and tag to the machine's power source before starting work, making an accidental startup impossible.", sourceChecklist: "Lock-Out Tag-Out (LOTO) SOP", priority: 'High' },
+                { id: 'PTW-01', description: "The 'Permit-to-Work' system requires a signed permit from a supervisor that verifies the machine is de-energized and isolated before any maintenance can begin.", sourceChecklist: "Permit-To-Work (PTW) System", priority: 'High' },
+                { id: 'SHIFT-H-01', description: "The 'Shift Handover' checklist includes a section to communicate all ongoing maintenance activities, ensuring the incoming shift is aware of the work and the LOTO in place.", sourceChecklist: "Shift Handover Protocol", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Key Industrial & Safety Standards",
+            standards: [
+                { name: "OSHA 29 CFR 1910", description: "The US standard for occupational safety, including LOTO and PTW." },
+                { name: "Factories Act, 1948", description: "Compliance with Indian laws for worker health and safety in factories." },
+                { name: "ISO 45001", description: "The international standard for occupational health and safety management." },
+                { name: "ISO 14001", description: "For environmental management and compliance." }
+            ]
+        },
+        checklists: []
+    },
+    {
+        id: 'pharmacy_ops_pack',
+        title: "Pharmacy Operations Pack",
+        priceINR: 5999,
+        paymentId: 'pl_RaWEBHhFLQENxC',
+        category: "Healthcare",
+        description: "A compliance and safety toolkit for pharmacies to manage inventory, prevent dispensing errors, and adhere to regulatory standards.",
+        icon: <Pill />,
+        whoIsItFor: ["Pharmacists", "Pharmacy Owners", "Hospital Pharmacy Managers", "Retail Pharmacy Chains"],
+        sampleItems: [
+            { text: "Prevent dispensing errors with a robust prescription verification and double-check system.", icon: <FileCheck /> },
+            { text: "Ensure drug efficacy and safety with stringent cold chain management and temperature logging for vaccines and biologics.", icon: <Thermometer /> },
+            { text: "Manage narcotics and high-risk drugs with a legally compliant inventory, storage, and dispensing log.", icon: <Lock /> },
+            { text: "Maintain regulatory compliance with SOPs for drug procurement, batch tracking, and recall management.", icon: <Barcode /> },
+            { text: "Improve patient counseling with checklists for providing clear instructions on medication usage and side effects.", icon: <UserCheck /> },
+            { text: "Run a clean and professional pharmacy with daily checklists for hygiene, organization, and stock arrangement.", icon: <Sparkles /> }
+        ],
+        previewScenario: {
+            title: "Preventing a Look-Alike, Sound-Alike (LASA) Drug Error",
+            description: "A pharmacist nearly dispenses a sound-alike drug with a similar name but a completely different use, a common and dangerous error. This scenario shows how checklists create a safety net.",
+            tasks: [
+                { id: 'DISP-ERR-02', description: "The 'Dispensing Error Prevention' SOP requires a mandatory barcode scan of the drug container, which would immediately flag the mismatch with the prescription in the system.", sourceChecklist: "Dispensing Error Prevention", priority: 'High' },
+                { id: 'LASA-01', description: "The 'LASA Drugs Management' checklist mandates that look-alike, sound-alike drugs are stored in separate, brightly-labeled bins, making a picking error less likely.", sourceChecklist: "LASA Drugs Management", priority: 'High' },
+                { id: 'PAT-COUNSEL-01', description: "The 'Patient Counseling' checklist requires the pharmacist to verbally confirm the name of the drug and its purpose with the patient, providing a final chance to catch the error.", sourceChecklist: "Patient Counseling Checklist", priority: 'High' }
+            ]
+        },
+        globalStandards: {
+            title: "Aligned with Pharmacy Council & Drug Safety Standards",
+            standards: [
+                { name: "Pharmacy Act & Drugs and Cosmetics Act", description: "Compliance with Indian pharmacy and drug laws." },
+                { name: "Good Pharmacy Practice (GPP)", description: "Guidelines from the FIP and WHO for quality pharmacy services." },
+                { name: "ISMP Guidelines", description: "Best practices for medication safety from the Institute for Safe Medication Practices." },
+                { name: "NABH Standards for Pharmacies", description: "Accreditation standards for hospital and retail pharmacies in India." }
+            ]
+        },
+        checklists: []
     }
 ];
-
-    
-
-    
-
-
-
-
-  
-
-
-
-
-  
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
