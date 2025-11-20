@@ -749,7 +749,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Hospitality ---
     {
         id: 'hotels_and_resorts',
-        title: "Hotels & Resorts Pack",
+        title: "Hotels & Resorts Operations Pack",
         priceINR: 5999,
         priceUSD: 79,
         competitorPriceUSD: 420,
@@ -1179,7 +1179,7 @@ export const premiumPacks: PremiumPack[] = [
     // --- Retail ---
     {
         id: 'fashion_and_apparel_retail',
-        title: "Fashion & Apparel Retail Pack",
+        title: "Fashion & Apparel Retail Operations Pack",
         priceINR: 5999,
         priceUSD: 79,
         competitorPriceUSD: 420,
@@ -1993,7 +1993,7 @@ export const premiumPacks: PremiumPack[] = [
                 icon: <CakeSlice />,
                 summary: "Checklists for food temperature holding, ingredient traceability, and cross-contamination prevention in in-store kitchens.",
                 tasks: [
-                    { id: 'BHF-01', description: 'Log temperatures of hot holding units every 2 hours.', priority: 'High', riskLevel: 'High', consequence: 'Food held below 60°C can enter the temperature "danger zone" and grow harmful bacteria.', proof: 'Temperature Log', location: 'Hot Food Section' },
+                    { id: 'BHF-01', description: 'Log temperatures of all hot holding units every 2 hours.', priority: 'High', riskLevel: 'High', consequence: 'Food held below 60°C can enter the temperature "danger zone" and grow harmful bacteria.', proof: 'Temperature Log', location: 'Hot Food Section' },
                     { id: 'BHF-02', description: 'Trace all ingredients used back to their source batch.', priority: 'High', riskLevel: 'High', consequence: 'In case of a food poisoning complaint, traceability is essential to identify the source.', proof: 'Ingredient Traceability Log', location: 'Bakery/Kitchen' },
                     { id: 'BHF-03', description: 'Use separate equipment for raw and cooked food preparation.', priority: 'High', riskLevel: 'High', consequence: 'Prevents cross-contamination, a leading cause of foodborne illness.', proof: 'Visual Audit', location: 'Bakery/Kitchen' },
                     { id: 'BHF-04', description: 'Discard any food held below the safe temperature for more than 2 hours.', priority: 'High', riskLevel: 'High', consequence: 'Serving this food is a major health risk.', proof: 'Discard Log', location: 'Hot Food Section' },
