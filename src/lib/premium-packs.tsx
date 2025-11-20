@@ -1577,7 +1577,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RSM-06', description: 'Track repair status and provide updates to the customer.', priority: 'High', riskLevel: 'Medium', consequence: 'Lack of communication leads to customer frustration.', proof: 'Communication Log', location: 'CRM' },
                     { id: 'RSM-07', description: 'Inspect the item after repair to ensure quality.', priority: 'High', riskLevel: 'High', consequence: 'Returning an item that is still faulty leads to extreme customer dissatisfaction.', proof: 'QC Check', location: 'Service Desk' },
                     { id: 'RSM-08', description: 'Securely package the item for return to the customer.', priority: 'High', riskLevel: 'Low', consequence: 'Protects the item from damage after it leaves the store.', proof: 'Packaging Check', location: 'Service Desk' },
-                    { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', consequence: 'Billing errors can lead to disputes.', proof: 'Invoice', location: 'POS' },
+                    { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', consequence: 'Billing errors can lead to customer disputes.', proof: 'Invoice', location: 'POS' },
                     { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', consequence: 'A detailed service history is valuable for diagnosing future problems.', proof: 'Service History', location: 'System' },
                 ]
             },
@@ -1625,7 +1625,7 @@ export const premiumPacks: PremiumPack[] = [
     },
     {
         id: 'electronics_showroom_pack',
-        title: "Electronics Showroom Pack",
+        title: "Electronics Showroom Operations Pack",
         priceINR: 5999,
         priceUSD: 79,
         competitorPriceUSD: 420,
@@ -2036,7 +2036,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/b0e515d9-4874-45e7-a726-1b51829e0018',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ab64c7a0-4341-40a8-bb54-871074a22d10',
         category: "Corporate & Tech",
         description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
         icon: <Building2 />,
@@ -4218,7 +4218,7 @@ export const premiumPacks: PremiumPack[] = [
                 tasks: [
                     { id: 'FNB-RETAIL-01', description: 'Conduct daily food safety and hygiene audits of all F&B outlets.', priority: 'High', riskLevel: 'High', consequence: 'A food poisoning outbreak can sicken thousands of guests and cause a PR disaster.', proof: 'Hygiene Audit Report', location: 'F&B Outlets' },
                     { id: 'FNB-RETAIL-02', description: 'Manage inventory levels to meet demand without excessive waste.', priority: 'High', riskLevel: 'High', consequence: 'Running out of popular items is a major source of lost revenue.', proof: 'Inventory Management System', location: 'System' },
-                    { id: 'FNB-RETAIL-03', description: 'Reconcile cash and sales for each outlet at the end of the day.', priority: 'High', riskLevel: 'High', consequence: 'Essential for tracking profitability and preventing cash theft.', proof: 'Sales Reconciliation Report', location: 'Office' },
+                    { id: 'FNB-RETAIL-03', description: 'Reconcile cash and sales for each outlet at the end of the day.', priority: 'High', riskLevel: 'High', consequence: 'Essential for financial accounting and preventing cash theft.', proof: 'Sales Reconciliation Report', location: 'Office' },
                     { id: 'FNB-RETAIL-04', description: 'Ensure all staff are trained in food handling and customer service.', priority: 'High', riskLevel: 'High', consequence: 'Untrained staff are a food safety and customer service liability.', proof: 'Training Records', location: 'HR' },
                     { id: 'FNB-RETAIL-05', description: 'Maintain consistent pricing and promotions across all outlets.', priority: 'High', riskLevel: 'Medium', consequence: 'Inconsistent pricing confuses and frustrates guests.', proof: 'Pricing Audit', location: 'All Outlets' },
                     { id: 'FNB-RETAIL-06', description: 'Manage supplier relationships and deliveries.', priority: 'High', riskLevel: 'High', consequence: 'Ensures a steady supply of quality ingredients and merchandise.', proof: 'Supplier Contracts', location: 'Procurement' },
@@ -4394,3 +4394,4 @@ export const premiumPacks: PremiumPack[] = [
         checklists: []
     }
 ];
+
