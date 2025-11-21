@@ -118,8 +118,8 @@ const RefinedHeroSection = () => {
                 </div>
                 <div className="pt-4">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                        <Link href="/packs">
-                        Explore All Packages
+                        <Link href="/library">
+                        Explore The SOP Library
                         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
@@ -174,7 +174,7 @@ const RefinedHeroSection = () => {
                     </div>
                     <div className="pt-2">
                         <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
-                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                            <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
                 </div>

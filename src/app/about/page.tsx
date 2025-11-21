@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Zap, HandCoins, Building, CheckCircle, ArrowRight } from 'lucide-react';
+import { Zap, HandCoins, Building, CheckCircle, ArrowRight, BookOpen, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 };
 
 const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <Card className="flex flex-col">
-        <CardHeader className="flex flex-row items-center gap-4">
+    <Card className="flex flex-col text-center md:text-left">
+        <CardHeader className="flex flex-col md:flex-row items-center gap-4">
             {icon}
             <CardTitle>{title}</CardTitle>
         </CardHeader>
@@ -36,39 +36,36 @@ export default function AboutUsPage() {
                 Democratizing Operational Excellence
               </h1>
               <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure budgets.
+                We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We make excellence accessible.
               </p>
             </div>
           </div>
         </section>
 
         <section className="w-full py-12 md:py-20 lg:py-24">
-            <div className="container px-4 md:px-6 max-w-4xl mx-auto">
-                <div className="grid gap-10">
+            <div className="container px-4 md:px-6 max-w-5xl mx-auto">
+                <div className="grid gap-12">
                     <div className="space-y-4">
-                        <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Mission</h2>
-                        <p className="text-muted-foreground text-lg">
-                            MoreMeets was born in India and built for the world. We saw brilliant businesses held back by operational gaps and global compliance toolkits priced for a different hemisphere. The tools for excellence were locked away, accessible only to the largest enterprises.
-                        </p>
-                        <p className="text-muted-foreground text-lg">
-                            Our mission is to break that lock. We create audit-ready, expert-crafted operational checklists that are not only world-class but also radically affordable. We turn complex global standards into simple, actionable SOPs that anyone can use, every single day.
+                        <h2 className="text-3xl font-bold tracking-tighter text-center font-headline text-primary">Our Mission: Your Playbook for Success</h2>
+                        <p className="text-muted-foreground text-lg text-center max-w-3xl mx-auto">
+                           MoreMeets was born from a simple observation: the tools for operational excellence were locked away, priced for giant enterprises and delivered through complex software or expensive consultants. We exist to break that lock. We create audit-ready, expert-crafted operational playbooks in instantly downloadable Excel files, making world-class standards radically affordable and accessible to everyone.
                         </p>
                     </div>
 
                     <div className="space-y-8">
-                         <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Philosophy</h2>
+                         <h2 className="text-3xl font-bold tracking-tighter text-center font-headline text-primary">Our Unshakeable Philosophy</h2>
                          <div className="grid md:grid-cols-2 gap-6">
-                            <ValueCard icon={<Zap className="w-8 h-8 text-accent"/>} title="From Audit to Action">
-                                Most toolkits help you pass an audit once a year. Our checklists are designed to be used by your team on the ground, every single day. We don't just make you compliant; we make your operations better, safer, and more efficient.
+                            <ValueCard icon={<Zap className="w-8 h-8 text-accent"/>} title="One-Time Purchase, Lifetime Value">
+                                No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle.
                             </ValueCard>
-                             <ValueCard icon={<HandCoins className="w-8 h-8 text-accent"/>} title="Radically Affordable">
-                                Our lean, efficient model cuts out the unnecessary overhead of traditional consulting. This allows us to offer our expert-built toolkits for up to 80% less than competitors, passing the savings directly to you.
+                             <ValueCard icon={<BookOpen className="w-8 h-8 text-accent"/>} title="Excel-Ready, Not SaaS-Locked">
+                                We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software.
                             </ValueCard>
-                             <ValueCard icon={<Building className="w-8 h-8 text-accent"/>} title="Built for the Real World">
-                                Our founder has over 25 years of experience managing high-stakes operations for global 7-star hospitality brands and large-scale events. Our checklists aren't theoretical; they are battle-tested and designed for the realities of your business.
+                             <ValueCard icon={<ShieldCheck className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
+                                Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground.
                             </ValueCard>
-                              <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
-                                Every pack is built on a foundation of globally recognized standards (like ISO and OSHA) but is crafted with a practical understanding of the challenges and opportunities in the Indian and global markets.
+                              <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="More Than Templates, They're Systems">
+                                Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools.
                             </ValueCard>
                          </div>
                     </div>
@@ -79,8 +76,8 @@ export default function AboutUsPage() {
                             Explore our library of operational playbooks and find the exact toolkit you need to solve your biggest challenges.
                         </p>
                         <Button size="lg" asChild className="group">
-                             <Link href="/packs">
-                                Explore All Packages
+                             <Link href="/library">
+                                Explore The Full SOP Library
                                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
