@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -204,7 +203,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                          <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
                             <ValueProposition
                                 ourPrice={currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
-                                competitorPrice={currency === 'INR' ? "₹8,000+" : "$99+"}
+                                competitorPrice={currency === 'INR' ? "₹12,000+" : "$149+"}
                                 valueStatement="For a single, custom-written SOP."
                             />
                             <p className="text-xs text-muted-foreground mt-2">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>

@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -235,7 +234,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                              <ValueProposition 
                                 ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
-                                competitorPrice={currency === 'INR' ? "₹35,000+" : `$${pack.competitorPriceUSD || 400}+`}
+                                competitorPrice={currency === 'INR' ? "₹50,000+" : "$599+"}
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
 
