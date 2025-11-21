@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -6,13 +7,21 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+<<<<<<< HEAD
 import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Banknote } from 'lucide-react';
+=======
+import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus } from 'lucide-react';
+>>>>>>> 4cdb8610828d1d8ffc6dc810b27f96f63aa94185
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
 import { Input } from '@/components/ui/input';
 import { ValueProposition } from '@/components/ui/value-proposition';
+<<<<<<< HEAD
 import { cn } from '@/lib/utils';
+=======
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+>>>>>>> 4cdb8610828d1d8ffc6dc810b27f96f63aa94185
 
 
 const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packId: string }) => {
@@ -22,7 +31,7 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
         if (!paymentId || !formContainerRef.current) return;
 
         const form = document.createElement('form');
-        form.action = `/thank-you?pack_id=${packId}`;
+        form.action = `/thank-you?pack_id=${packId}&payment_method=razorpay`;
         
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
@@ -40,8 +49,8 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
     if (!paymentId) {
         return (
             <div className="text-center text-destructive p-4 bg-destructive/10 rounded-md">
-                <p className="font-semibold">Some error occurred</p>
-                <p className="text-sm">The payment button could not be loaded. Please contact support.</p>
+                <p className="font-semibold">Payment Option Not Available</p>
+                <p className="text-sm">Please select a different currency or contact support.</p>
             </div>
         );
     }
@@ -125,7 +134,11 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
+<<<<<<< HEAD
     const [currency, setCurrency] = React.useState<'INR' | 'USD'>('INR');
+=======
+    const [currency, setCurrency] = React.useState('INR');
+>>>>>>> 4cdb8610828d1d8ffc6dc810b27f96f63aa94185
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
     const features = [
@@ -190,6 +203,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
+<<<<<<< HEAD
                             {hasUSD && (
                                 <div className="flex justify-center bg-muted p-1 rounded-full">
                                     <Button onClick={() => setCurrency('INR')} variant={currency === 'INR' ? 'default' : 'ghost'} className="flex-1 rounded-full">Pay in INR</Button>
@@ -202,6 +216,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 ) : (
                                     <p className="text-5xl font-extrabold">${pack.priceUSD}</p>
                                 )}
+=======
+                             <div className="flex justify-center">
+                                <Tabs defaultValue="INR" onValueChange={setCurrency} className="w-full max-w-xs">
+                                  <TabsList className="grid w-full grid-cols-2">
+                                    <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                    <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                  </TabsList>
+                                </Tabs>
+                            </div>
+
+                            <div className="flex items-baseline justify-center gap-2">
+                                <p className="text-5xl font-extrabold">
+                                    {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                </p>
+>>>>>>> 4cdb8610828d1d8ffc6dc810b27f96f63aa94185
                                 <p className="text-sm text-muted-foreground">/ One-time payment</p>
                             </div>
                             {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
@@ -231,14 +260,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             )}
 
+<<<<<<< HEAD
                             <ValueProposition
                                 ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 competitorPrice={currency === 'INR' ? `₹35,000+` : `$${pack.competitorPriceUSD}+`}
+=======
+                             <ValueProposition 
+                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                competitorPrice={currency === 'INR' ? "₹35,000+" : "$400+"}
+>>>>>>> 4cdb8610828d1d8ffc6dc810b27f96f63aa94185
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
+<<<<<<< HEAD
                             {currency === 'INR' && <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id}/>}
                             {currency === 'USD' && hasUSD && (
                                 <Button asChild size="lg" className="w-full">
@@ -246,6 +282,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </Button>
                             )}
                            <p className="text-xs text-muted-foreground">Secure payment via Razorpay / Lemon Squeezy</p>
+=======
+                           {currency === 'INR' ? (
+                                <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} />
+                            ) : (
+                                <Button asChild size="lg" className="w-full max-w-xs">
+                                    <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                        Buy Now
+                                    </Link>
+                                </Button>
+                            )}
+                           <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+>>>>>>> 4cdb8610828d1d8ffc6dc810b27f96f63aa94185
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
                                     Need this pack tailored to your brand's specific needs? Schedule a call.

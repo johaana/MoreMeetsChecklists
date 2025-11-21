@@ -7,7 +7,9 @@ export type IndividualChecklist = {
     id: string;
     title: string;
     priceINR: number;
-    paymentId: string;
+    priceUSD: number;
+    paymentId: string; // Razorpay Payment ID
+    lemonSqueezyUrl: string; // Lemon Squeezy Checkout URL
     category: "Restaurant" | "Healthcare" | "Manufacturing" | "Retail" | "Education" | "Marketing" | "Startup" | "Corporate";
     description: string;
     longDescription: string;
@@ -34,7 +36,9 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'corporate-office-security',
         title: "Corporate Office Opening/Closing Security Protocol",
         priceINR: 1299,
+        priceUSD: 19,
         paymentId: "pl_ROLjNNiQa8G8XJ",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
         category: "Corporate",
         icon: <Shield />,
         description: "An essential daily checklist to ensure your office is secure, energy-efficient, and ready for the next business day.",
@@ -71,7 +75,9 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'new-employee-onboarding-legal',
         title: "New Employee Onboarding (Legal Focus)",
         priceINR: 1999,
+        priceUSD: 29,
         paymentId: "pl_ROLnfbmEpZzgZZ",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
         category: "Corporate",
         icon: <Briefcase />,
         description: "A legally-focused checklist to ensure every new hire is onboarded correctly, minimizing future compliance risks and disputes.",
@@ -106,7 +112,9 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'esg-sustainability-audit',
         title: "ESG & Sustainability Audit (Office)",
         priceINR: 1299,
+        priceUSD: 19,
         paymentId: "pl_ROLjNNiQa8G8XJ",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
         category: "Corporate",
         icon: <Leaf />,
         description: "An actionable checklist for offices to measure and improve their environmental footprint, focusing on energy, water, and waste.",
@@ -140,7 +148,9 @@ export const individualChecklists: IndividualChecklist[] = [
         id: 'surgical-safety',
         title: "WHO Surgical Safety Checklist",
         priceINR: 1999,
+        priceUSD: 29,
         paymentId: "pl_ROLnfbmEpZzgZZ",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
         category: "Healthcare",
         icon: <FileText />,
         description: "A JCI & NABH-aligned checklist based on the WHO's life-saving protocol to prevent 'never events' in the operating room.",

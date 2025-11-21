@@ -31,17 +31,10 @@ export async function generateMetadata(
   }
   
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
-  let imageUrl: string;
-
-  if (post.imageUrl) {
-    imageUrl = post.imageUrl.startsWith('http') ? post.imageUrl : `${siteUrl}${post.imageUrl}`;
-  } else {
-    const ogUrl = new URL(`${siteUrl}/api/og`);
-    ogUrl.searchParams.set('type', 'blog');
-    ogUrl.searchParams.set('slug', post.slug);
-    imageUrl = ogUrl.toString();
-  }
-
+  const ogUrl = new URL(`${siteUrl}/api/og`);
+  ogUrl.searchParams.set('type', 'blog');
+  ogUrl.searchParams.set('slug', post.slug);
+  const imageUrl = ogUrl.toString();
 
   return {
     metadataBase: new URL(siteUrl),

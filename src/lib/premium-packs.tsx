@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import { Briefcase, Building, Leaf, Heart, School, Shield, Warehouse, Trophy, Factory, Home, GraduationCap, Truck, Gem, Plane, Utensils, Waves, ShoppingCart, PawPrint, PersonStanding, Dumbbell, Wrench, Building2, Phone, TestTube, Shirt, Ear, TreePalm, Recycle, FileCheck, LifeBuoy, DollarSign, CloudRain, Hospital, HardHat, Sprout, ShoppingBasket, Wifi, UserCheck, BarChart3, Link as LinkIcon, BrainCircuit, Bot, Syringe, DatabaseZap, Megaphone, Siren, Lock, KeyRound, Users, Banknote, Webcam, Bug, UserCog, PackageCheck, Ambulance, FileWarning, Milestone, DoorClosed, CircleDollarSign, Wind, Thermometer, UserCog2, Key, Router, Package, Watch, Drama, Barcode, Stethoscope, SyringeIcon, HeartPulse, Microscope, Bus, BookOpen, Car, Drill, SprayCan, FileLock, Projector, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, Film, AnchorIcon, Clapperboard, MonitorPlay, Tv, Library, BriefcaseBusiness, ShieldCheck, Handshake, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Scale, Code, Video, Zap, ScanFace, HandPlatter, Cog, Scissors, Eye, Fish, Cloud, Theater, Search, TrendingUp, ClipboardCheck, UserPlus, Coins, Mail } from "lucide-react";
 
@@ -63,7 +62,9 @@ export const premiumPacks: PremiumPack[] = [
         id: 'animal_shelter_pack',
         title: "Animal Shelter Operations Pack",
         priceINR: 0,
+        priceUSD: 0,
         paymentId: '',
+        lemonSqueezyUrl: '',
         listId: 7,
         category: "Social Cause",
         description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
@@ -267,7 +268,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/5ace95d6-b828-4c17-8be8-52c09c011361',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d8b3b441-f923-455b-90a7-4b7f8374d6c6',
         category: "Franchise",
         description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
         icon: <Store />,
@@ -510,7 +511,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d20b66a6-f2b6-4b2a-b733-14930983d97d',
         category: "Food & Beverage",
         description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
         icon: <CakeSlice />,
@@ -754,7 +755,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f9b98b4f-9036-46f9-924e-6883bc01760e',
         category: "Hospitality",
         description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
         icon: <Building />,
@@ -959,7 +960,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ee481c02-cd85-430b-bc21-7a574bfea0cb',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/c8b2a3c7-60f6-4a41-8c46-17c38586c9d1',
         category: "Hospitality",
         description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
         icon: <Utensils />,
@@ -987,7 +988,7 @@ export const premiumPacks: PremiumPack[] = [
         globalStandards: {
             title: "Aligned with Food Safety Standards",
             standards: [
-                { name: "FSSAI", description: "Complies with Food Safety and Standards Authority of India regulations." },
+                { name: "FSSAI", description: "Compliance with Food Safety and Standards Authority of India regulations." },
                 { name: "HACCP", description: "Follows Hazard Analysis and Critical Control Points principles." },
                 { name: "ISO 22000", description: "Adheres to international standards for food safety management." },
                 { name: "Codex Alimentarius", description: "International food standards from the WHO/FAO." }
@@ -1184,7 +1185,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/35c743f7-333a-4fe6-9866-3334172e144b',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f135b131-7b02-466a-9311-6c518b5c9077',
         category: "Retail",
         description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
         icon: <Shirt />,
@@ -1214,7 +1215,7 @@ export const premiumPacks: PremiumPack[] = [
                 { name: "ISO 9001", description: "For quality management and customer satisfaction." },
                 { name: "Shops & Establishment Act", description: "Ensures compliance with local labor and operational laws." },
                 { name: "WRAP", description: "A leading standard for ethical manufacturing in the apparel industry." },
-                { name: "OSHA 29 CFR", description: "Guidelines for retail workplace safety." }
+                { name: "OSHA Retail Safety", description: "Guidelines for workplace safety in retail environments." }
             ]
         },
         checklists: [
@@ -1407,7 +1408,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/bf8a35c9-991d-4471-95f6-e0c7ce285981',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/98045618-18e9-4e78-a24a-195964a2754c',
         category: "Retail",
         description: "A specialized toolkit for high-value retail, focusing on vault security, inventory control, and preventing sophisticated fraud.",
         icon: <Gem />,
@@ -1578,7 +1579,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RSM-07', description: 'Inspect the item after repair to ensure quality.', priority: 'High', riskLevel: 'High', consequence: 'Returning an item that is still faulty leads to extreme customer dissatisfaction.', proof: 'QC Check', location: 'Service Desk' },
                     { id: 'RSM-08', description: 'Securely package the item for return to the customer.', priority: 'High', riskLevel: 'Low', consequence: 'Protects the item from damage after it leaves the store.', proof: 'Packaging Check', location: 'Service Desk' },
                     { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', consequence: 'Billing errors can lead to customer disputes.', proof: 'Invoice', location: 'POS' },
-                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', consequence: 'A detailed service history is valuable for diagnosing future problems.', proof: 'Service History', location: 'System' },
+                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', consequence: 'Provides a valuable service history for the item.', proof: 'Service History', location: 'System' },
                 ]
             },
             {
@@ -1630,7 +1631,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a05cb9ef-51b3-454a-a389-609b314b8338',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/9099c279-b148-4395-9388-c7e411a141d4',
         category: "Retail",
         description: "A comprehensive operational pack for electronics retailers to ensure safety, asset security, and a superior customer experience.",
         icon: <Tv />,
@@ -1738,7 +1739,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'POS-RECON-06', description: 'Reconcile gift card and voucher sales.', priority: 'High', riskLevel: 'Medium', consequence: 'Prevents fraud related to gift card issuance and redemption.', proof: 'Voucher Log', location: 'System' },
                     { id: 'POS-RECON-07', description: 'Verify cashier logins and logouts for each shift.', priority: 'High', riskLevel: 'Medium', consequence: 'Ensures accountability for all transactions processed on a specific till.', proof: 'Shift Log', location: 'System' },
                     { id: 'POS-RECON-08', description: 'Report any cash discrepancies immediately.', priority: 'High', riskLevel: 'High', consequence: 'A small discrepancy could be a test for a larger theft.', proof: 'Discrepancy Report', location: 'Office' },
-                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', consequence: 'Non-compliance can lead to massive fines and loss of card processing rights.', proof: 'PCI Compliance Certificate', location: 'Office' },
+                    { id: 'POS-RECON-09', description: 'Follow PCI DSS guidelines for all card transactions.', priority: 'High', riskLevel: 'High', consequence: 'Non-compliance can lead to massive fines and loss of ability to accept cards.', proof: 'PCI Compliance Certificate', location: 'Office' },
                     { id: 'POS-RECON-10', description: 'Use counterfeit detection on all cash transactions.', priority: 'High', riskLevel: 'High', consequence: 'Accepting fake currency is a direct financial loss.', proof: 'Counterfeit Check', location: 'POS' },
                 ]
             },
@@ -1831,7 +1832,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f29f04d7-1300-410a-8a4b-014f3b614838',
         category: "Retail",
         description: "An all-in-one operations and compliance pack for supermarkets, hypermarkets, and grocery retail chains, ensuring food safety, quality, and operational efficiency across outlets.",
         icon: <ShoppingBasket />,
@@ -1843,7 +1844,7 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Minimize waste and ensure freshness with a daily FIFO rotation and expiry date sweep process.", icon: <Recycle /> },
             { text: "Maintain a safe and inviting store with checklists for hygiene, cleaning, and rapid spill response.", icon: <SprayCan /> },
             { text: "Protect your revenue through rigorous point-of-sale security and cash reconciliation.", icon: <DollarSign /> },
-            { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: <PackageCheck /> },
+            { text: "Guarantee food quality from the start with a stringent raw material receiving and QC process.", icon: <PackageCheck /> },
             { text: "Ensure compliance and fair trade with weighing scale calibration and Legal Metrology checks.", icon: <Scale /> }
         ],
         previewScenario: {
@@ -1958,9 +1959,9 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'SC-POS-03', description: 'Verify CCTV cameras at billing lanes are operational and have a clear view.', priority: 'High', riskLevel: 'High', consequence: 'Provides critical evidence in case of cash disputes, theft, or scams.', proof: 'CCTV Check Log', location: 'Security Office' },
                     { id: 'SC-POS-04', description: 'Reconcile each cash drawer at the end of every shift.', priority: 'High', riskLevel: 'High', consequence: 'The only way to accurately track cash and identify shortages or overages.', proof: 'Shift Reconciliation Report', location: 'Cash Office' },
                     { id: 'SC-POS-05', description: 'Check for any signs of tampering on card payment devices.', priority: 'High', riskLevel: 'High', consequence: 'Criminals can install skimmers to steal customer card data, leading to massive liability.', proof: 'Device Inspection Log', location: 'POS' },
-                    { id: 'SC-POS-06', description: 'Securely store and transport daily cash deposits.', priority: 'High', riskLevel: 'High', consequence: 'Reduces the risk of robbery or internal theft of cash.', proof: 'Cash Deposit Log', location: 'Cash Office' },
-                    { id: 'SC-POS-07', description: 'Use counterfeit detection for large cash transactions.', priority: 'High', riskLevel: 'High', consequence: 'Accepting fake currency is a direct financial loss.', proof: 'Counterfeit Check', location: 'POS' },
-                    { id: 'SC-POS-08', description: 'Train cashiers on fraud prevention techniques.', priority: 'High', riskLevel: 'High', consequence: 'Untrained cashiers are easy targets for common retail scams.', proof: 'Training Records', location: 'Office' },
+                    { id: 'SC-POS-06', description: 'Securely store cash in a safe.', priority: 'High', riskLevel: 'High', consequence: 'Leaving cash in the till overnight is a major theft risk.', proof: 'Safe Log', location: 'Cash Office' },
+                    { id: 'SC-POS-07', description: 'Use counterfeit detection for large cash transactions.', priority: 'High', riskLevel: 'High', consequence: 'Accepting counterfeit notes is a direct financial loss.', proof: 'Counterfeit Check', location: 'POS' },
+                    { id: 'SC-POS-08', description: 'Train cashiers on fraud prevention techniques.', priority: 'High', riskLevel: 'High', consequence: 'Untrained cashiers are more likely to make costly mistakes.', proof: 'Training Records', location: 'Office' },
                     { id: 'SC-POS-09', description: 'Limit cash in drawers to a minimum amount.', priority: 'High', riskLevel: 'High', consequence: 'Reduces the potential loss in case of a till-snatch or robbery.', proof: 'Cash Limit Policy', location: 'Office' },
                     { id: 'SC-POS-10', description: 'Investigate cash discrepancies immediately.', priority: 'High', riskLevel: 'High', consequence: 'A small, unresolved discrepancy can be an indicator of a larger, ongoing theft problem.', proof: 'Investigation Report', location: 'Office' },
                 ]
@@ -2036,7 +2037,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ab64c7a0-4341-40a8-bb54-871074a22d10',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/4214470d-7043-4a0d-b4f0-459223793f41',
         category: "Corporate & Tech",
         description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
         icon: <Building2 />,
@@ -2240,7 +2241,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/5b736b41-5369-4e76-a496-0a2569b9303c',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/6487d559-0f62-4217-a006-2580556f8f7c',
         category: "Corporate & Tech",
         description: "An essential toolkit for founders and managers to embed basic legal and compliance checks into core business operations, reducing risk without needing a law degree.",
         icon: <FileLock />,
@@ -2441,7 +2442,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/6418c3d7-2101-4433-a337-2d4314c4059a',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/97193699-548c-4443-8517-4343169829f2',
         category: "Corporate & Tech",
         description: "An advanced toolkit for CISOs and compliance officers to manage modern enterprise risks, from AI governance and data privacy to cloud security and incident response.",
         icon: <ShieldCheck />,
@@ -2643,7 +2644,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/15c7a52f-1c83-41a4-9214-41d3c01372b8',
         category: "Healthcare",
         description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
         icon: <Hospital />,
@@ -2661,7 +2662,7 @@ export const premiumPacks: PremiumPack[] = [
         ],
         previewScenario: {
             title: "Preventing a 'Never Event': Wrong-Site Surgery",
-            description: "A surgeon is about to operate on the wrong knee due to a mix-up in the pre-op area. This scenario shows how our checklists prevent this.",
+            description: "A surgeon is about to operate on the wrong knee due to a mix-up in the pre-op area. This scenario shows how checklists prevent this.",
             tasks: [
                 { id: 'H-SSC-01', description: "The 'Surgical Safety Checklist' mandates a final 'Time Out' where the entire team must verbally confirm the patient, site, and procedure. The nurse notices the discrepancy with the marked site and halts the procedure.", sourceChecklist: "Surgical Safety Checklist (WHO Aligned)", priority: 'High' },
                 { id: 'H-PID-02', description: "The 'Patient Identification Protocol' would have flagged the error earlier, as it requires matching the patient's ID band with the surgical consent form before entering the OT.", sourceChecklist: "Patient Identification Protocol", priority: 'High' },
@@ -2848,7 +2849,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/e74bd8ac-23cb-4993-bdeb-bac9dbe9cd67',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/03126f55-1175-4813-80b1-419b62d3a39b',
         category: "Education",
         description: "A comprehensive safety and compliance toolkit for school principals and administrators to ensure a secure and well-managed learning environment.",
         icon: <School />,
@@ -3013,7 +3014,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'INC-HDLG-02', description: 'Document the incident in detail with witness statements.', priority: 'High', riskLevel: 'High', consequence: 'A poorly documented incident is difficult to investigate or defend legally.', proof: 'Incident Report Form', location: 'Office' },
                     { id: 'INC-HDLG-03', description: 'Escalate the incident to senior management or trustees if required.', priority: 'High', riskLevel: 'High', consequence: 'Keeps leadership informed of significant risks and events.', proof: 'Escalation Communication', location: 'Office' },
                     { id: 'INC-HDLG-04', description: 'Conduct a root cause analysis to prevent recurrence.', priority: 'High', riskLevel: 'High', consequence: 'Without an RCA, the school is likely to repeat the same mistakes.', proof: 'RCA Report', location: 'Office' },
-                    { id: 'INC-HDLG-05', description: 'Implement corrective and preventive actions (CAPA).', priority: 'High', riskLevel: 'High', consequence: 'Turns the incident into a concrete plan for improvement.', proof: 'CAPA Plan', location: 'Office' },
+                    { id: 'INC-HDLG-05', description: 'Implement corrective and preventive actions (CAPA).', priority: 'High', riskLevel: 'High', consequence: 'Turns the incident into a concrete plan for improvement.', proof: 'CAPA Plan', location: 'System' },
                     { id: 'INC-HDLG-06', description: 'Preserve any CCTV footage or other evidence.', priority: 'High', riskLevel: 'High', consequence: 'Loss of evidence can compromise any investigation.', proof: 'Evidence Log', location: 'Security Room' },
                     { id: 'INC-HDLG-07', description: 'Communicate with parents transparently and empathetically.', priority: 'High', riskLevel: 'High', consequence: 'Poor communication can destroy trust between parents and the school.', proof: 'Communication Log', location: 'Office' },
                     { id: 'INC-HDLG-08', description: 'File any required reports with regulatory bodies.', priority: 'High', riskLevel: 'High', consequence: 'Failure to report can lead to legal penalties.', proof: 'Regulatory Filing', location: 'Office' },
@@ -3070,7 +3071,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/08d810c9-a9a3-4852-a5a5-38a4d7d13009',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/c03522f2-3957-4584-a131-002711d945e4',
         category: "Education",
         description: "A comprehensive compliance and safety pack for managing large educational campuses, from hostels and labs to transport and events.",
         icon: <GraduationCap />,
@@ -4277,7 +4278,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0f6e9175-2964-4424-a74e-7b79a5180630',
         category: "Industrial & Transport",
         description: "A complete toolkit for warehouse managers and logistics heads to optimize inventory, ensure safety, and improve supply chain resilience.",
         icon: <Warehouse />,
@@ -4394,4 +4395,3 @@ export const premiumPacks: PremiumPack[] = [
         checklists: []
     }
 ];
-

@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -12,6 +13,8 @@ import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-pack
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 import { verifyRazorpayPayment } from '@/app/packs/actions';
 import { SiteHeader } from "@/components/layout/header";
+import { premiumPacks } from '@/lib/premium-packs';
+import { individualChecklists } from '@/lib/individual-checklists';
 
 import {
   AlertDialog,
@@ -51,7 +54,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("ACTION REQUIRED - OVERDUE",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -109,7 +112,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
         [],
         [{ v: 'Legend', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED - OVERDUE: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
+        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
         [{v: 'Priority', s: instructionTitleStyle}, {v: 'High: Critical task. Failure has a major impact on operations, safety, or compliance.\nMedium: Important task. Failure has a moderate impact.\nLow: Routine task. Failure has a minor impact.', s: instructionBodyStyle}],
         [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
     ];
@@ -183,8 +186,8 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
-            const nextDueDateFormula = `IF(OR(${isEventDrivenFormula}, ISBLANK(${dateCell})),"N/A",IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(${nextDueDateCell}="N/A","Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED - OVERDUE","Completed")))`;
+            const nextDueDateFormula = `IF(ISBLANK(${dateCell}), "N/A", IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}="N/A"),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED","Completed")))`;
             
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -249,36 +252,58 @@ function ThankYouContent() {
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 
   React.useEffect(() => {
+    const paymentMethod = searchParams.get('payment_method');
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
-    const packId = searchParams.get('pack_id');
-    const checklistId = searchParams.get('checklist_id');
+    const lsOrderId = searchParams.get('order_id'); // Lemon Squeezy sends order_id
+    const packId = searchParams.get('pack_id') || searchParams.get('checkout[custom][pack_id]');
+    const checklistId = searchParams.get('checklist_id') || searchParams.get('checkout[custom][checklist_id]');
     
-    if (!rzpPaymentId) {
-      setError("Payment ID not found. Please check your email from Razorpay or contact support.");
-      setIsLoading(false);
-      return;
-    }
+    const processPurchase = async () => {
+        setIsLoading(true);
+        setError(null);
+        setVerifiedItem(null);
 
-    const verify = async () => {
-      setIsLoading(true);
-      setError(null);
-      setVerifiedItem(null);
+        let item: PremiumPack | IndividualChecklist | undefined;
+        let type: 'pack' | 'individual' | null = null;
+        
+        if (packId) {
+            item = premiumPacks.find(p => p.id === packId);
+            if (item) type = 'pack';
+        } else if (checklistId) {
+            item = individualChecklists.find(c => c.id === checklistId);
+            if(item) type = 'individual';
+        }
+        
+        if (!item || !type) {
+            setError("Could not find the purchased item. Please contact support.");
+            setIsLoading(false);
+            return;
+        }
 
-      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId);
-      
-      if (result.success) {
-        setVerifiedItem(result.item);
-        setItemType(result.type);
-        handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
-        setShowDownloadConfirm(true);
-      } else {
-        setError(result.error);
-      }
-      
-      setIsLoading(false);
+        if (paymentMethod === 'razorpay' && rzpPaymentId) {
+            const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId);
+            if (result.success) {
+                setVerifiedItem(result.item);
+                setItemType(result.type);
+                handleDownload(result.item, result.type);
+                setShowDownloadConfirm(true);
+            } else {
+                setError(result.error);
+            }
+        } else if (lsOrderId) {
+            // For Lemon Squeezy, we trust the redirect as verification
+            setVerifiedItem(item);
+            setItemType(type);
+            handleDownload(item, type);
+            setShowDownloadConfirm(true);
+        } else {
+            setError("Invalid payment information. Please check your email or contact support.");
+        }
+        
+        setIsLoading(false);
     };
 
-    verify();
+    processPurchase();
   }, [searchParams]);
 
   const renderContent = () => {
@@ -287,10 +312,10 @@ function ThankYouContent() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <Loader2 className="h-16 w-16 text-primary animate-spin" />
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-            Verifying your payment...
+            Verifying your purchase...
           </h1>
           <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-            Please wait while we confirm your transaction.
+            Please wait while we confirm your transaction. Your download will begin shortly.
           </p>
         </div>
       );
@@ -309,7 +334,7 @@ function ThankYouContent() {
                 </p>
                 <p className="font-semibold text-destructive">{error}</p>
                 <p className="text-muted-foreground text-sm pt-4">
-                    Please contact our support team with your Payment ID for assistance.
+                    Please contact our support team with your Payment/Order ID for assistance.
                 </p>
                  <Button asChild className="mt-4">
                     <Link href="/contact">Contact Support</Link>
@@ -400,7 +425,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
-    
-
-    
