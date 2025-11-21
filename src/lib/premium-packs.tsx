@@ -268,7 +268,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d8b3b441-f923-455b-90a7-4b7f8374d6c6',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/5ace95d6-b828-4c17-8be8-52c09c011361',
         category: "Franchise",
         description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
         icon: <Store />,
@@ -960,7 +960,7 @@ export const premiumPacks: PremiumPack[] = [
         priceUSD: 79,
         competitorPriceUSD: 420,
         paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/c8b2a3c7-60f6-4a41-8c46-17c38586c9d1',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ee481c02-cd85-430b-bc21-7a574bfea0cb',
         category: "Hospitality",
         description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
         icon: <Utensils />,
@@ -1579,7 +1579,7 @@ export const premiumPacks: PremiumPack[] = [
                     { id: 'RSM-07', description: 'Inspect the item after repair to ensure quality.', priority: 'High', riskLevel: 'High', consequence: 'Returning an item that is still faulty leads to extreme customer dissatisfaction.', proof: 'QC Check', location: 'Service Desk' },
                     { id: 'RSM-08', description: 'Securely package the item for return to the customer.', priority: 'High', riskLevel: 'Low', consequence: 'Protects the item from damage after it leaves the store.', proof: 'Packaging Check', location: 'Service Desk' },
                     { id: 'RSM-09', description: 'Process payment for repairs accurately.', priority: 'High', riskLevel: 'Medium', consequence: 'Billing errors can lead to customer disputes.', proof: 'Invoice', location: 'POS' },
-                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', consequence: 'Provides a valuable service history for the item.', proof: 'Service History', location: 'System' },
+                    { id: 'RSM-10', description: 'Log all repair details for future reference and warranty claims.', priority: 'High', riskLevel: 'Medium', consequence: 'A detailed service history is valuable for diagnosing future problems.', proof: 'Service History', location: 'System' },
                 ]
             },
             {
