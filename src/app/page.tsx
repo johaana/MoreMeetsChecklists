@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle } from "lucide-react";
+import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
@@ -184,6 +184,46 @@ const RefinedHeroSection = () => {
     );
 };
 
+const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
+    <Card className="flex flex-col text-center md:text-left">
+        <CardHeader className="flex flex-col md:flex-row items-center gap-4">
+            {icon}
+            <CardTitle>{title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1">
+            <p className="text-muted-foreground">{children}</p>
+        </CardContent>
+    </Card>
+);
+
+const PhilosophySection = () => (
+    <section className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="space-y-4 text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Unshakeable Philosophy</h2>
+                <p className="text-muted-foreground text-lg">
+                   We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
+                </p>
+            </div>
+             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <ValueCard icon={<Zap className="w-8 h-8 text-accent"/>} title="One-Time Purchase, Lifetime Value">
+                    No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle.
+                </ValueCard>
+                 <ValueCard icon={<BookOpen className="w-8 h-8 text-accent"/>} title="Excel-Ready, Not SaaS-Locked">
+                    We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software.
+                </ValueCard>
+                 <ValueCard icon={<ShieldCheck className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
+                    Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground.
+                </ValueCard>
+                  <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="More Than Templates, They're Systems">
+                    Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools.
+                </ValueCard>
+             </div>
+        </div>
+    </section>
+);
+
+
 const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
@@ -269,58 +309,6 @@ const ExpertiseExtractorSection = () => (
   </section>
 );
 
-const ManagerAsCoachSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
-    <div className="container px-4 md:px-6">
-      <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-background shadow-lg">
-        <div className="space-y-4">
-          <Badge variant="accent">FOR MANAGERS</Badge>
-          <h2 className="text-2xl md:text-3xl font-bold font-headline">Turn Every Manager into an Expert Coach</h2>
-          <p className="text-muted-foreground">Our 'Manager's Edition' packs include an optional **"Trainer's Notes"** column. It provides your managers with talking points, real-world examples, and coaching questions for every single task, transforming routine supervision into powerful on-the-job training.</p>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button>Learn More About Coaching Packs <ArrowRight className="w-4 h-4 ml-2" /></Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[625px]">
-              <DialogHeader>
-                <DialogTitle className="font-headline text-2xl">The Manager's Coaching Playbook</DialogTitle>
-                <DialogDescription>
-                  Go beyond compliance. Build a culture of excellence.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="prose prose-sm max-w-none">
-                <p>The standard MoreMeets packs ensure tasks are done correctly. The **Manager's Coaching Edition** ensures your team understands *why* they're doing them. This premium add-on is a force multiplier for your leadership team.</p>
-                <h4>How it Works: The "Trainer's Notes" Column</h4>
-                <p>For each critical task in a checklist, we've added a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
-                <ul>
-                  <li><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</li>
-                  <li><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</li>
-                  <li><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</li>
-                </ul>
-                <h4>The Result:</h4>
-                <p>You're not just buying a checklist; you're investing in a scalable training system. You turn every routine check into a micro-training session, create more engaged employees, and build a more resilient, intelligent operation.</p>
-              </div>
-            </DialogContent>
-          </Dialog>
-        </div>
-        <div className="rounded-lg bg-secondary/50 p-4 border border-dashed">
-          <p className="text-sm font-semibold">Example: "Trainer's Notes" Column</p>
-          <div className="mt-2 space-y-2">
-            <div className="bg-background p-2 rounded-md">
-                <p className="font-mono text-xs">**Task:** Check for allergen cross-contamination.</p>
-                <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Show the new hire the separate color-coded boards. Explain the Pret a Manger case study to reinforce why a simple mistake here can be fatal and business-ending."</p>
-            </div>
-            <div className="bg-background p-2 rounded-md">
-                <p className="font-mono text-xs">**Task:** Verify LOTO on machine #3.</p>
-                <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Ask the employee: 'What is the biggest risk if we forget this step?' Ensure they understand this prevents someone from being crushed."</p>
-            </div>
-          </div>
-        </div>
-      </Card>
-    </div>
-  </section>
-);
-
 const FaqSection = () => (
     <section id="faq" className="w-full py-16 md:py-24">
         <div className="container px-4 md:px-6">
@@ -375,9 +363,9 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <RefinedHeroSection />
+        <PhilosophySection />
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
-        <ManagerAsCoachSection />
         <FaqSection />
       </main>
       <Footer />

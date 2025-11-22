@@ -30,7 +30,7 @@ export function Footer() {
                     <h3 className="font-semibold">Quick Links</h3>
                     <Link href="/library" className="text-muted-foreground hover:text-foreground" prefetch={false}>SOP Library</Link>
                     <Link href="/checklists" className="text-muted-foreground hover:text-foreground" prefetch={false}>Bestselling Checklists</Link>
-                    <Link href="/about" className="text-muted-foreground hover:text-foreground" prefetch={false}>About Us</Link>
+                    <Link href="/blog" className="text-muted-foreground hover:text-foreground" prefetch={false}>Blog</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
                     <Link href="/packs/animal_shelter_pack" className="text-muted-foreground hover:text-foreground" prefetch={false}>Social Impact (Free Resources)</Link>
                 </div>

@@ -156,7 +156,6 @@ export function SiteHeader() {
                             )}
                         </div>
                         <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>Blog</Link>
-                        <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>About Us</Link>
                         <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>Contact</Link>
                     </>
                 )}
@@ -248,11 +247,6 @@ export function SiteHeader() {
                                     <div className="border-b">
                                         <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
                                             Blog
-                                        </Link>
-                                    </div>
-                                     <div className="border-b">
-                                        <Link href="/about" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
-                                            About Us
                                         </Link>
                                     </div>
                                     <div>
