@@ -3,26 +3,31 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Metadata } from 'next';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 
 const painPoints = {
+  error: {
+      title: `"World-class compliance used to cost a fortune. We fixed that."`,
+      description: "Achieve world-class compliance without the enterprise price tag. Our audit-ready, globally-compliant SOPs are available for instant download—no subscriptions, no hidden fees. We believe operational excellence is a right, not a luxury.",
+      buttonText: 'Global Compliance',
+      mobileButtonText: 'Compliance'
+  },
   resilience: {
       title: `"Stop losing knowledge every time someone quits."`,
       description: 'Turn people-dependent processes into a permanent, scalable system.',
       buttonText: 'Build Resilience',
       mobileButtonText: 'Resilience'
-  },
-  error: {
-      title: `"Compliance slips aren’t small mistakes."`,
-      description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
-      buttonText: 'Global Compliance',
-      mobileButtonText: 'Compliance'
   },
   onboarding: {
       title: `"Training shouldn’t depend on who’s available that day."`,
@@ -33,10 +38,10 @@ const painPoints = {
 };
 
 type PainPointKey = keyof typeof painPoints;
-const painPointKeys: PainPointKey[] = ['resilience', 'error', 'onboarding'];
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const RefinedHeroSection = () => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const [isClient, setIsClient] = useState(false);
     const content = painPoints[activePainPoint];
 
@@ -66,7 +71,7 @@ const RefinedHeroSection = () => {
             <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
               
               <div className="hidden md:block max-w-2xl">
-                <div className="space-y-4 min-h-[14rem] flex flex-col justify-center">
+                <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                         key={activePainPoint}
@@ -75,10 +80,10 @@ const RefinedHeroSection = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                         >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
                             {content.title}
                         </h1>
-                        <p className="text-lg text-white/90 max-w-xl mt-4">
+                        <p className="text-lg text-white/90 max-w-xl mt-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
                             {content.description}
                         </p>
                         </motion.div>
@@ -113,8 +118,8 @@ const RefinedHeroSection = () => {
                 </div>
                 <div className="pt-4">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                        <Link href="/packs">
-                        Explore All Packages
+                        <Link href="/library">
+                        Explore The SOP Library
                         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
@@ -124,7 +129,7 @@ const RefinedHeroSection = () => {
               
               <div className="md:hidden text-center items-center flex flex-col relative z-20">
                  <div className="max-w-md space-y-6">
-                    <div className="min-h-[7rem] flex items-center">
+                    <div className="min-h-[14rem] flex items-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
@@ -134,7 +139,7 @@ const RefinedHeroSection = () => {
                             transition={{ duration: 0.3 }}
                             className="w-full"
                             >
-                                <h1 className="text-2xl font-extrabold font-headline tracking-tighter text-white">
+                                <h1 className="text-3xl font-extrabold font-headline tracking-tighter text-white">
                                     {content.title}
                                 </h1>
                                 <p className="text-base text-white/90 max-w-xl mt-3">
@@ -169,7 +174,7 @@ const RefinedHeroSection = () => {
                     </div>
                     <div className="pt-2">
                         <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
-                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                            <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
                 </div>
@@ -179,6 +184,178 @@ const RefinedHeroSection = () => {
     );
 };
 
+const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
+    <Card className="flex flex-col text-center md:text-left">
+        <CardHeader className="flex flex-col md:flex-row items-center gap-4">
+            {icon}
+            <CardTitle>{title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1">
+            <p className="text-muted-foreground">{children}</p>
+        </CardContent>
+    </Card>
+);
+
+const PhilosophySection = () => (
+    <section className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="space-y-4 text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Unshakeable Philosophy</h2>
+                <p className="text-muted-foreground text-lg">
+                   We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
+                </p>
+            </div>
+             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <ValueCard icon={<Zap className="w-8 h-8 text-accent"/>} title="One-Time Purchase, Lifetime Value">
+                    No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle.
+                </ValueCard>
+                 <ValueCard icon={<BookOpen className="w-8 h-8 text-accent"/>} title="Excel-Ready, Not SaaS-Locked">
+                    We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software.
+                </ValueCard>
+                 <ValueCard icon={<ShieldCheck className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
+                    Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground.
+                </ValueCard>
+                  <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="More Than Templates, They're Systems">
+                    Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools.
+                </ValueCard>
+             </div>
+        </div>
+    </section>
+);
+
+
+const ChaosToControlSection = () => (
+  <section className="w-full py-16 md:py-24 bg-secondary/30">
+    <div className="container px-4 md:px-6">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        {/* Before */}
+        <Card className="border-destructive/50 border-2">
+          <CardHeader>
+            <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-muted-foreground">
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
+          </CardContent>
+        </Card>
+        {/* After */}
+        <Card className="border-primary/50 border-2 bg-background shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
+            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-foreground">
+             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+);
+
+const ExpertiseExtractorSection = () => (
+  <section className="w-full py-16 md:py-24">
+    <div className="container px-4 md:px-6">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">Democratize Your Expertise</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">Our system extracts the wisdom of your best people and distributes it across your entire team, creating a consistent standard of excellence.</p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-4 items-center text-center max-w-4xl mx-auto">
+        {/* Step 1 */}
+        <div className="flex flex-col items-center p-4">
+          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
+            <BrainCircuit className="w-10 h-10" />
+          </div>
+          <h3 className="font-bold font-headline">1. Codify Expertise</h3>
+          <p className="text-sm text-muted-foreground">The unwritten knowledge of your best manager is captured in a structured, actionable format.</p>
+        </div>
+        {/* Arrow */}
+        <div className="flex justify-center">
+            <ArrowRight className="w-12 h-12 text-primary/50 hidden md:block" />
+             <ArrowRight className="w-12 h-12 text-primary/50 rotate-90 md:hidden" />
+        </div>
+        {/* Step 2 */}
+        <div className="flex flex-col items-center p-4">
+          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 border-2 border-accent/20">
+            <FileText className="w-10 h-10" />
+          </div>
+          <h3 className="font-bold font-headline text-accent">2. Distribute the Playbook</h3>
+          <p className="text-sm text-muted-foreground">This knowledge becomes a "MoreMeets Pack"—an interactive system that's instantly available to everyone.</p>
+        </div>
+      </div>
+        {/* Arrow Down */}
+        <div className="flex justify-center my-4">
+             <ArrowRight className="w-12 h-12 text-primary/50 rotate-90" />
+        </div>
+      {/* Step 3 */}
+      <div className="flex flex-col items-center p-4 text-center max-w-4xl mx-auto">
+          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 border-2 border-green-500/20">
+            <Users className="w-10 h-10" />
+          </div>
+          <h3 className="font-bold font-headline text-green-600">3. Empower the Entire Team</h3>
+          <p className="text-sm text-muted-foreground">New hires and existing staff can now perform critical tasks with the consistency and rigor of your best expert, reducing onboarding time and eliminating errors.</p>
+        </div>
+    </div>
+  </section>
+);
+
+const FaqSection = () => (
+    <section id="faq" className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Frequently Asked Questions</h2>
+                <p className="text-muted-foreground mt-2 text-base md:text-lg">
+                    Answering your key questions about how MoreMeets works.
+                </p>
+            </div>
+            <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger>What format are the checklists in?</AccordionTrigger>
+                        <AccordionContent>
+                            All our checklists are provided as fully editable Microsoft Excel (.xlsx) files. This allows you to easily customize them, add your company logo, and integrate them into your existing operational workflow without needing any special software.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger>Is this a one-time purchase or a subscription?</AccordionTrigger>
+                        <AccordionContent>
+                            It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger>What is your refund policy?</AccordionTrigger>
+                        <AccordionContent>
+                            Due to the instant, digital nature of our products, all sales are final once the purchase is completed. We provide detailed descriptions and sample items on every pack page to help you make an informed decision. If you have any issues with your download, our support team is ready to assist immediately.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                        <AccordionTrigger>Can I request a checklist or pack that isn't listed?</AccordionTrigger>
+                        <AccordionContent>
+                            Absolutely. We are constantly expanding our library based on customer needs. Please visit our Contact Us page to send your suggestion to our content team. We also offer custom SOP development services.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-5">
+                        <AccordionTrigger>What if I have trouble with my download?</AccordionTrigger>
+                        <AccordionContent>
+                            Your purchase confirmation email contains your download link. If you face any issues, please contact us immediately at `more@moremeets.com` or chat with us on WhatsApp for instant support. We'll make sure you get your files.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
+        </div>
+    </section>
+);
+
 
 export default function Home() {
   return (
@@ -186,6 +363,10 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <RefinedHeroSection />
+        <PhilosophySection />
+        <ChaosToControlSection />
+        <ExpertiseExtractorSection />
+        <FaqSection />
       </main>
       <Footer />
     </div>
