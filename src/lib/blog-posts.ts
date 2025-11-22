@@ -24,6 +24,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Film Production", "Safety", "Risk Management", "Stunts"],
       relatedPackId: "film_production_pack",
+      imageUrl: "https://i.postimg.cc/ZRFZzbXT/sardar-2.webp",
       description: "The recent death of a stuntman on the set of Sardar 2 was not a freak accident; it was a preventable tragedy. We break down the professional-grade stunt safety SOPs that every production, big or small, must implement to protect lives and their bottom line.",
       content: `
         <p class="lead">The Indian film industry was recently rocked by the tragic death of a stuntman during the filming of "Sardar 2". While the investigation is ongoing, such incidents are rarely a matter of bad luck. They are almost always the result of a catastrophic breakdown in process. For every high-flying action sequence that wows audiences, there must be a grounded, rigorous, and verifiable safety protocol. When that chain of procedure is broken, the consequences are devastating.</p>
@@ -41,7 +42,7 @@ export const blogPosts: BlogPost[] = [
 
         <div class="intervention-box">
           <h4><FileCheck2 className="w-5 h-5"/> 2. Equipment & Rigging Inspection</h4>
-          <p>Every single piece of equipment—from the carabiner to the crane—must be inspected and certified by a qualified rigger before the shoot day. Our <code>Film, TV & OTT Production Pack</code> includes a 'Rigging Inspection Checklist' where each item is signed off, creating a legal, auditable trail of due diligence.</p>
+          <p>Every single piece of equipment—from the carabiner to the crane—must be inspected and certified by a qualified rigger before the shoot day. Our <strong>Film, TV & OTT Production Pack</strong> includes a 'Rigging Inspection Checklist' where each item is signed off, creating a legal, auditable trail of due diligence.</p>
         </div>
 
         <div class="intervention-box">
@@ -86,6 +87,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Theme Parks", "Ride Safety", "Risk Management", "Operations"],
       relatedPackId: "theme_park_ops_pack",
+      imageUrl: "https://i.postimg.cc/XqjWjM04/stardust-racers.webp",
       description: "Universal's decision to reopen the Stardust Racers ride after a fatality puts a spotlight on safety. Reopening isn't enough. Operators need a new playbook. Here are the technical, operational, and human factor SOPs that must be implemented.",
       content: `
         <p class="lead">The reopening of the Stardust Racers ride at Universal's Epic Universe, following a tragic guest fatality, is a moment of critical importance for the entire theme park industry. The incident, and the subsequent investigation, underscores a vital truth: reopening a ride is not just a technical fix. It requires a comprehensive overhaul of the operational and human systems surrounding the attraction to restore public trust and prevent a repeat incident.</p>
@@ -134,6 +136,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Theme Parks", "Ride Safety", "Maintenance", "Compliance"],
       relatedPackId: "theme_park_ops_pack",
+      imageUrl: "https://i.postimg.cc/vBLMwYCD/delhi-fun-and-food-village.webp",
       description: "A fatal accident at Delhi's Fun N Food Village was caused by a seatbelt failure. This was not a 'freak accident'. It was a maintenance failure. Learn the critical ride inspection SOPs that every amusement park must operate to prevent these 'never events'.",
       content: `
         <p class="lead">A day of fun at Delhi's Fun N Food Village turned to tragedy when a rider was flung from a rollercoaster, an incident attributed to a seatbelt and fastener failure. This heartbreaking event is a stark reminder that in the world of amusement parks, safety is not a suggestion; it is an absolute, non-negotiable requirement. Incidents like this are rarely 'freak accidents' but are almost always the final, tragic outcome of a chain of procedural failures.</p>
@@ -181,6 +184,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Film Production", "Safety", "Risk Management", "Fire Safety"],
       relatedPackId: "film_production_pack",
+      imageUrl: "https://i.postimg.cc/XJc36jtZ/anupama.webp",
       description: "Fire on TV sets is avoidable. We break down the Anupamaa set fire, what went wrong, and the simple SOPs every production unit should adopt today to prevent shoot delays, insurance claims, and reputational damage.",
       content: `
         <p class="lead">In early 2023, a major fire broke out on the set of the popular TV show "Anupamaa." While thankfully no casualties were reported, the incident resulted in significant financial loss and production delays. For production houses and line producers, this event serves as a critical case study. Set fires are not a random act of fate; they are almost always a predictable outcome of gaps in operational safety procedures.</p>
@@ -659,3 +663,5 @@ export const blogPosts: BlogPost[] = [
 ];
 
     
+
+
