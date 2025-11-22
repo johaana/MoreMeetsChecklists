@@ -4,13 +4,12 @@ import type {NextConfig} from 'next';
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // --- Start of New Redirects ---
       {
         source: '/about',
         destination: '/',
         permanent: true,
       },
-      // Redirect old pack URLs to the main packs page or their new equivalent
+      // --- Start of New Redirects ---
       {
         source: '/packs/automotive_workshop_pack/:path*',
         destination: '/packs',
