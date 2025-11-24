@@ -15,7 +15,10 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
-const visiblePacks = premiumPacks.filter(p => p.category !== "Social Cause");
+const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR > 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD > 0) || p.priceINR === 0);
+const checklistsWithLinks = individualChecklists.filter(c => (c.paymentId && c.priceINR > 0) || (c.lemonSqueezyUrl && c.priceUSD && c.priceUSD > 0));
+
+const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause");
 
 const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     if (!acc[pack.category]) {
@@ -25,7 +28,7 @@ const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
 
-const allChecklistsByCategory = individualChecklists.reduce((acc, checklist) => {
+const allChecklistsByCategory = checklistsWithLinks.reduce((acc, checklist) => {
     if (!acc[checklist.category]) {
         acc[checklist.category] = [];
     }
@@ -60,7 +63,7 @@ const SolutionsList = () => (
         <div>
             <h4 className="font-bold text-sm text-primary/90 px-2 mb-2">Popular Individual Checklists</h4>
             <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1">
-                {individualChecklists.slice(0, 8).map(checklist => (
+                {checklistsWithLinks.slice(0, 8).map(checklist => (
                 <li key={checklist.id}>
                     <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
                     <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>

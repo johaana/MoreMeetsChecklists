@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { SiteHeader } from '@/components/layout/header';
@@ -27,7 +28,9 @@ const categoryColors: { [key: string]: string } = {
 };
 
 export default function LibraryPage() {
-    const packsByCategory = premiumPacks.reduce((acc, pack) => {
+    const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR > 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD > 0) || p.priceINR === 0);
+
+    const packsByCategory = packsWithLinks.reduce((acc, pack) => {
         const { category } = pack;
         if (!acc[category]) {
             acc[category] = [];

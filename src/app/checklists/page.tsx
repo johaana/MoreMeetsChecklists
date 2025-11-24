@@ -22,9 +22,12 @@ const categoryColors: { [key: string]: string } = {
 
 export default function AllIndividualChecklistsPage() {
   const [filter, setFilter] = React.useState('All');
-  const categories = ['All', ...Array.from(new Set(individualChecklists.map(p => p.category)))];
+  
+  const checklistsWithLinks = individualChecklists.filter(c => (c.paymentId && c.priceINR > 0) || (c.lemonSqueezyUrl && c.priceUSD && c.priceUSD > 0));
 
-  const filteredChecklists = filter === 'All' ? individualChecklists : individualChecklists.filter(p => p.category === filter);
+  const categories = ['All', ...Array.from(new Set(checklistsWithLinks.map(p => p.category)))];
+
+  const filteredChecklists = filter === 'All' ? checklistsWithLinks : checklistsWithLinks.filter(p => p.category === filter);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
