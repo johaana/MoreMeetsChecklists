@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -107,7 +108,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ];
 
-    if (pack.priceINR === 0) {
+    if (pack.priceINR === 0 && pack.priceUSD === 0) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
                 <div className="container px-2 md:px-6">
@@ -250,3 +251,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+

@@ -37,8 +37,8 @@ export const individualChecklists: IndividualChecklist[] = [
         title: "Corporate Office Opening/Closing Security Protocol",
         priceINR: 1299,
         priceUSD: 19,
-        paymentId: "pl_ROLjNNiQa8G8XJ",
-        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
+        paymentId: "pl_OTYFf0xG23nSft",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/f290d8a5-d913-485e-9905-59b922a01490",
         category: "Corporate",
         icon: <Shield />,
         description: "An essential daily checklist to ensure your office is secure, energy-efficient, and ready for the next business day.",
@@ -76,8 +76,8 @@ export const individualChecklists: IndividualChecklist[] = [
         title: "New Employee Onboarding (Legal Focus)",
         priceINR: 1999,
         priceUSD: 29,
-        paymentId: "pl_ROLnfbmEpZzgZZ",
-        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
+        paymentId: "pl_OTYbD4eXhA9WIs",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a",
         category: "Corporate",
         icon: <Briefcase />,
         description: "A legally-focused checklist to ensure every new hire is onboarded correctly, minimizing future compliance risks and disputes.",
@@ -113,8 +113,8 @@ export const individualChecklists: IndividualChecklist[] = [
         title: "ESG & Sustainability Audit (Office)",
         priceINR: 1299,
         priceUSD: 19,
-        paymentId: "pl_ROLjNNiQa8G8XJ",
-        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
+        paymentId: "pl_OTYFf0xG23nSft",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/f290d8a5-d913-485e-9905-59b922a01490",
         category: "Corporate",
         icon: <Leaf />,
         description: "An actionable checklist for offices to measure and improve their environmental footprint, focusing on energy, water, and waste.",
@@ -149,8 +149,8 @@ export const individualChecklists: IndividualChecklist[] = [
         title: "WHO Surgical Safety Checklist",
         priceINR: 1999,
         priceUSD: 29,
-        paymentId: "pl_ROLnfbmEpZzgZZ",
-        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/your-product-id",
+        paymentId: "pl_OTYctpGWhTcFjB",
+        lemonSqueezyUrl: "https://moremeets.lemonsqueezy.com/buy/9796e625-27a3-4876-b605-7287955c48b7",
         category: "Healthcare",
         icon: <FileText />,
         description: "A JCI & NABH-aligned checklist based on the WHO's life-saving protocol to prevent 'never events' in the operating room.",
@@ -182,3 +182,4 @@ export const individualChecklists: IndividualChecklist[] = [
 ];
 
 export type IndividualChecklistStub = Omit<IndividualChecklist, 'longDescription' | 'whoIsItFor' | 'painPoints'>;
+
