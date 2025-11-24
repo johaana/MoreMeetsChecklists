@@ -80,10 +80,10 @@ const RefinedHeroSection = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                         >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
                             {content.title}
                         </h1>
-                        <p className="text-lg text-white/90 max-w-xl mt-4">
+                        <p className="text-lg text-white/90 max-w-xl mt-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
                             {content.description}
                         </p>
                         </motion.div>
@@ -309,54 +309,52 @@ const ExpertiseExtractorSection = () => (
   </section>
 );
 
-const FaqSection = () => {
-    return (
-        <section id="faq" className="w-full py-16 md:py-24">
-            <div className="container px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Frequently Asked Questions</h2>
-                    <p className="text-muted-foreground mt-2 text-base md:text-lg">
-                        Answering your key questions about how MoreMeets works.
-                    </p>
-                </div>
-                <div className="max-w-3xl mx-auto">
-                    <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="item-1">
-                            <AccordionTrigger>What format are the checklists in?</AccordionTrigger>
-                            <AccordionContent>
-                                All our checklists are provided as fully editable Microsoft Excel (.xlsx) files. This allows you to easily customize them, add your company logo, and integrate them into your existing operational workflow without needing any special software.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-2">
-                            <AccordionTrigger>Is this a one-time purchase or a subscription?</AccordionTrigger>
-                            <AccordionContent>
-                                It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-3">
-                            <AccordionTrigger>What is your refund policy?</AccordionTrigger>
-                            <AccordionContent>
-                                Due to the instant, digital nature of our products, all sales are final once the purchase is completed. We provide detailed descriptions and sample items on every pack page to help you make an informed decision. If you have any issues with your download, our support team is ready to assist immediately.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-4">
-                            <AccordionTrigger>Can I request a checklist or pack that isn't listed?</AccordionTrigger>
-                            <AccordionContent>
-                                Absolutely. We are constantly expanding our library based on customer needs. Please visit our Contact Us page to send your suggestion to our content team. We also offer custom SOP development services.
-                            </AccordionContent>
-                        </AccordionItem>
-                         <AccordionItem value="item-5">
-                            <AccordionTrigger>What if I have trouble with my download?</AccordionTrigger>
-                            <AccordionContent>
-                                Your purchase confirmation email contains your download link. If you face any issues, please contact us immediately at `more@moremeets.com` or chat with us on WhatsApp for instant support. We'll make sure you get your files.
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
-                </div>
+const FaqSection = () => (
+    <section id="faq" className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Frequently Asked Questions</h2>
+                <p className="text-muted-foreground mt-2 text-base md:text-lg">
+                    Answering your key questions about how MoreMeets works.
+                </p>
             </div>
-        </section>
-    );
-};
+            <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger>What format are the checklists in?</AccordionTrigger>
+                        <AccordionContent>
+                            All our checklists are provided as fully editable Microsoft Excel (.xlsx) files. This allows you to easily customize them, add your company logo, and integrate them into your existing operational workflow without needing any special software.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger>Is this a one-time purchase or a subscription?</AccordionTrigger>
+                        <AccordionContent>
+                            It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger>What is your refund policy?</AccordionTrigger>
+                        <AccordionContent>
+                            Due to the instant, digital nature of our products, all sales are final once the purchase is completed. We provide detailed descriptions and sample items on every pack page to help you make an informed decision. If you have any issues with your download, our support team is ready to assist immediately.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                        <AccordionTrigger>Can I request a checklist or pack that isn't listed?</AccordionTrigger>
+                        <AccordionContent>
+                            Absolutely. We are constantly expanding our library based on customer needs. Please visit our Contact Us page to send your suggestion to our content team. We also offer custom SOP development services.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-5">
+                        <AccordionTrigger>What if I have trouble with my download?</AccordionTrigger>
+                        <AccordionContent>
+                            Your purchase confirmation email contains your download link. If you face any issues, please contact us immediately at `more@moremeets.com` or chat with us on WhatsApp for instant support. We'll make sure you get your files.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
+        </div>
+    </section>
+);
 
 
 export default function Home() {
