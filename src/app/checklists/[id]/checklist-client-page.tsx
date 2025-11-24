@@ -19,10 +19,20 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const RazorpayButtonWrapper = ({ price, checklistId }: { price: number, checklistId: string }) => {
     const formContainerRef = React.useRef<HTMLDivElement>(null);
-    const paymentButtonId = price === 1299 ? 'pl_ROLjNNiQa8G8XJ' : 'pl_ROLnfbmEpZzgZZ';
+    
+    // Determine paymentId based on price
+    let paymentButtonId = '';
+    if (price === 1299) {
+        paymentButtonId = 'pl_ROLjNNiQa8G8XJ';
+    } else if (price === 1999) {
+        paymentButtonId = 'pl_ROLnfbmEpZzgZZ';
+    }
 
     React.useEffect(() => {
-        if (!formContainerRef.current || !paymentButtonId) return;
+        if (!paymentButtonId || paymentButtonId.length === 0 || !formContainerRef.current) {
+            // If no valid payment ID, do nothing. The component will render nothing.
+            return;
+        }
 
         const form = document.createElement('form');
         form.action = `/thank-you?checklist_id=${checklistId}&payment_method=razorpay`;
@@ -39,8 +49,8 @@ const RazorpayButtonWrapper = ({ price, checklistId }: { price: number, checklis
 
     }, [paymentButtonId, checklistId]);
 
-    if (!paymentButtonId) {
-        return <p className="text-destructive text-sm">Payment button not available for this price.</p>;
+    if (!paymentButtonId || paymentButtonId.length === 0) {
+        return null;
     }
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
@@ -98,9 +108,9 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
     const [showStickyBar, setShowStickyBar] = React.useState(false);
 
-    const hasINR = checklist.paymentId && checklist.priceINR > 0;
+    const hasINR = !!(checklist.paymentId && checklist.priceINR > 0);
     const hasUSD = !!(checklist.lemonSqueezyUrl && checklist.lemonSqueezyUrl.length > 0 && checklist.priceUSD && checklist.priceUSD > 0);
-    const [currency, setCurrency] = React.useState(hasINR ? 'INR' : 'USD');
+    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
     
     React.useEffect(() => {
         const observer = new IntersectionObserver(
@@ -186,8 +196,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                                <div className="flex justify-center mb-4">
                                     <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
                                       <TabsList className="grid w-full grid-cols-2">
-                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                         <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                       </TabsList>
                                     </Tabs>
                                 </div>
@@ -232,13 +242,13 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
              <div className='flex-1'>
                 <p className='font-bold text-sm truncate'>{checklist.title}</p>
                  <div className="flex items-baseline gap-2">
-                    <p className='text-lg font-extrabold'>₹{checklist.priceINR}</p>
-                    <p className='text-lg font-extrabold text-muted-foreground'>/ ${checklist.priceUSD}</p>
+                    {hasUSD && <p className='text-lg font-extrabold'>${checklist.priceUSD}</p>}
+                    {hasINR && <p className='text-muted-foreground'>/ ₹{checklist.priceINR}</p>}
                  </div>
             </div>
             <div className="flex-shrink-0">
-                 <Button asChild>
-                    <a href="#pricing">Buy Now</a>
+                 <Button asChild onClick={() => pricingSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}>
+                    <Link href="#pricing">Buy Now</Link>
                  </Button>
             </div>
         </div>
@@ -247,4 +257,3 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
   );
 }
 
-    

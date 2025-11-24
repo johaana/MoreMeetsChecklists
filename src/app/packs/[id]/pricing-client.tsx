@@ -19,16 +19,9 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (!paymentId || !formContainerRef.current) {
-            const errorMessage = document.createElement('p');
-            errorMessage.className = "text-destructive text-sm font-semibold";
-            errorMessage.textContent = 'Razorpay payment link not configured. Please contact support.';
-            if(formContainerRef.current) {
-               formContainerRef.current.innerHTML = '';
-               formContainerRef.current.appendChild(errorMessage);
-            }
+        if (!paymentId || paymentId.length === 0 || !formContainerRef.current) {
             return;
-        };
+        }
 
         const form = document.createElement('form');
         form.action = `/thank-you?pack_id=${packId}&payment_method=razorpay`;
@@ -46,6 +39,10 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
         }
 
     }, [paymentId, packId]);
+
+    if (!paymentId || paymentId.length === 0) {
+        return null;
+    }
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
 };
@@ -127,10 +124,10 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const hasINR = pack.paymentId && pack.priceINR > 0;
+    const hasINR = !!(pack.paymentId && pack.priceINR > 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD && pack.priceUSD > 0);
     
-    const [currency, setCurrency] = React.useState(hasINR ? 'INR' : 'USD');
+    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
     
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
@@ -204,9 +201,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="flex justify-center">
                                     <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
                                     <TabsList className="grid w-full grid-cols-2">
-                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                         <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
-                                    </TabsList>
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                      </TabsList>
                                     </Tabs>
                                 </div>
                              )}
@@ -253,7 +250,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
-                                hasINR ? <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} /> : <p className='text-destructive'>INR payments not yet available.</p>
+                                hasINR ? <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} /> : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
                             ) : (
                                 hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
@@ -261,7 +258,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             Buy Now
                                         </Link>
                                     </Button>
-                                ) : <p className='text-destructive'>USD payments not yet available.</p>
+                                ) : <p className='text-destructive text-sm font-semibold'>USD payment option is currently unavailable.</p>
                             )}
                            <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
@@ -277,4 +274,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 }
 
-    
