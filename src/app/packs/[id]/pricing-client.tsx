@@ -19,7 +19,16 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
     const formContainerRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (!paymentId || !formContainerRef.current) return;
+        if (!paymentId || !formContainerRef.current) {
+            const errorMessage = document.createElement('p');
+            errorMessage.className = "text-destructive text-sm font-semibold";
+            errorMessage.textContent = 'Razorpay payment link not configured. Please contact support.';
+            if(formContainerRef.current) {
+               formContainerRef.current.innerHTML = '';
+               formContainerRef.current.appendChild(errorMessage);
+            }
+            return;
+        };
 
         const form = document.createElement('form');
         form.action = `/thank-you?pack_id=${packId}&payment_method=razorpay`;
@@ -31,20 +40,12 @@ const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packI
         
         form.appendChild(script);
         
-        // To prevent multiple buttons from being added on re-renders
-        formContainerRef.current.innerHTML = '';
-        formContainerRef.current.appendChild(form);
+        if(formContainerRef.current) {
+            formContainerRef.current.innerHTML = '';
+            formContainerRef.current.appendChild(form);
+        }
 
     }, [paymentId, packId]);
-
-    if (!paymentId) {
-        return (
-            <div className="text-center text-destructive p-4 bg-destructive/10 rounded-md">
-                <p className="font-semibold">Payment Option Not Available</p>
-                <p className="text-sm">Please select a different currency or contact support.</p>
-            </div>
-        );
-    }
 
     return <div ref={formContainerRef} className="w-full flex justify-center" />;
 };
@@ -125,7 +126,12 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
-    const [currency, setCurrency] = React.useState('INR');
+    
+    const hasINR = pack.paymentId && pack.priceINR > 0;
+    const hasUSD = pack.priceUSD && pack.lemonSqueezyUrl;
+    
+    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
+    
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
     const features = [
@@ -153,8 +159,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    {!totalChecklists ? (
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Coming soon.</span></li>
+                                    ) : (
+                                    <>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    </>
+                                    )}
                                 </ul>
                             </CardContent>
                             <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2 p-6">
@@ -167,8 +179,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             </section>
         )
     }
-
-    const hasUSD = pack.priceUSD && pack.lemonSqueezyUrl;
 
     return (
         <section className="w-full py-12 md:py-16" id="pricing">
@@ -190,14 +200,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
-                             <div className="flex justify-center">
-                                <Tabs defaultValue="INR" onValueChange={setCurrency} className="w-full max-w-xs">
-                                  <TabsList className="grid w-full grid-cols-2">
-                                    <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
-                                    <TabsTrigger value="USD" disabled={!hasUSD}>Pay in USD ($)</TabsTrigger>
-                                  </TabsList>
-                                </Tabs>
-                            </div>
+                             {hasINR && hasUSD && (
+                                <div className="flex justify-center">
+                                    <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
+                                    <TabsList className="grid w-full grid-cols-2">
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                    </TabsList>
+                                    </Tabs>
+                                </div>
+                             )}
 
                             <div className="flex items-baseline justify-center gap-2">
                                 <p className="text-5xl font-extrabold">
@@ -234,22 +246,22 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                              <ValueProposition 
                                 ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
-                                competitorPrice={currency === 'INR' ? "₹50,000+" : "$599+"}
+                                competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
-                                <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} />
+                                hasINR ? <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} /> : <p className='text-destructive'>INR payments not available.</p>
                             ) : (
-                                hasUSD && (
+                                hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                             Buy Now
                                         </Link>
                                     </Button>
-                                )
+                                ) : <p className='text-destructive'>USD payments not available.</p>
                             )}
                            <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">

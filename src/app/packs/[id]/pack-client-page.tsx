@@ -176,6 +176,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists.length;
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+  const isEmptyPack = totalChecklists === 0;
 
   return (
     <>
@@ -193,9 +194,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   <p className="max-w-[600px] text-muted-foreground text-base md:text-lg lg:text-xl">
                     {pack.description}
                   </p>
-                   <div className="text-sm text-muted-foreground font-semibold">
-                    Includes <span className="text-primary font-bold">{totalChecklists} checklists</span> with over <span className="text-primary font-bold">{totalTasks} individual tasks</span>.
-                  </div>
+                  {!isEmptyPack && (
+                    <div className="text-sm text-muted-foreground font-semibold">
+                      Includes <span className="text-primary font-bold">{totalChecklists} checklists</span> with over <span className="text-primary font-bold">{totalTasks} individual tasks</span>.
+                    </div>
+                  )}
                   <div className="mt-4 bg-background/50 border p-4 rounded-lg">
                     <h2 className="text-sm font-semibold text-primary mb-2">PERFECT FOR:</h2>
                     <p className="text-sm text-muted-foreground">{audience.join(' • ')}</p>
@@ -216,31 +219,33 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
           <PainPointsSection packId={pack.id} />
 
-          <section id="checklists" className="w-full py-12 md:py-16">
-              <div className="container px-2 md:px-6">
-                  <div className="max-w-4xl mx-auto text-center mb-12">
-                      <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
-                          A Complete System for Operational Excellence
-                      </h2>
-                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                          This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
-                      </p>
-                  </div>
+          {!isEmptyPack && (
+            <section id="checklists" className="w-full py-12 md:py-16">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-4xl mx-auto text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline">
+                            A Complete System for Operational Excellence
+                        </h2>
+                        <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
+                            This pack contains {totalChecklists} checklists and over {totalTasks} individual tasks, giving you a comprehensive framework to:
+                        </p>
+                    </div>
 
-                  <div className="max-w-4xl mx-auto space-y-2">
-                      {pack.sampleItems.map((item, index) => (
-                          <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
-                              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                  <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
-                              </div>
-                              <div>
-                                  <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
-                              </div>
-                          </div>
-                      ))}
-                  </div>
-              </div>
-          </section>
+                    <div className="max-w-4xl mx-auto space-y-2">
+                        {pack.sampleItems.map((item, index) => (
+                            <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
+                                    <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+          )}
           
           <div ref={pricingSectionRef}>
             <PricingClient pack={pack} />
@@ -263,7 +268,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
                 <div className="flex-shrink-0">
                      <Button asChild>
-                        <Link href="#pricing">View Pricing</Link>
+                        <Link href="#pricing">Buy Now</Link>
                     </Button>
                 </div>
             </div>
