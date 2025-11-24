@@ -91,7 +91,7 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const hasINR = !!(pack.paymentId && pack.priceINR >= 0);
+    const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
