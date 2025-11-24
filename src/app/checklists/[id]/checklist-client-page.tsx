@@ -16,47 +16,6 @@ import { PainPoint } from '@/components/ui/pain-point';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-
-const RazorpayButtonWrapper = ({ price, checklistId }: { price: number, checklistId: string }) => {
-    const formContainerRef = React.useRef<HTMLDivElement>(null);
-    
-    // Determine paymentId based on price
-    let paymentButtonId = '';
-    if (price === 1299) {
-        paymentButtonId = 'pl_ROLjNNiQa8G8XJ';
-    } else if (price === 1999) {
-        paymentButtonId = 'pl_ROLnfbmEpZzgZZ';
-    }
-
-    React.useEffect(() => {
-        if (!paymentButtonId || paymentButtonId.length === 0 || !formContainerRef.current) {
-            // If no valid payment ID, do nothing. The component will render nothing.
-            return;
-        }
-
-        const form = document.createElement('form');
-        form.action = `/thank-you?checklist_id=${checklistId}&payment_method=razorpay`;
-        
-        const script = document.createElement('script');
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.async = true;
-        script.dataset.payment_button_id = paymentButtonId;
-        
-        form.appendChild(script);
-        
-        formContainerRef.current.innerHTML = '';
-        formContainerRef.current.appendChild(form);
-
-    }, [paymentButtonId, checklistId]);
-
-    if (!paymentButtonId || paymentButtonId.length === 0) {
-        return null;
-    }
-
-    return <div ref={formContainerRef} className="w-full flex justify-center" />;
-};
-
-
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
     if (!pack) return null;
@@ -108,8 +67,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
     const [showStickyBar, setShowStickyBar] = React.useState(false);
 
-    const hasINR = !!(checklist.paymentId && checklist.priceINR > 0);
-    const hasUSD = !!(checklist.lemonSqueezyUrl && checklist.lemonSqueezyUrl.length > 0 && checklist.priceUSD && checklist.priceUSD > 0);
+    const hasINR = !!(checklist.paymentId && checklist.priceINR >= 0);
+    const hasUSD = !!(checklist.lemonSqueezyUrl && checklist.lemonSqueezyUrl.length > 0 && checklist.priceUSD !== undefined && checklist.priceUSD >= 0);
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
     
     React.useEffect(() => {
@@ -206,7 +165,17 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
                             {currency === 'INR' ? (
-                                hasINR ? <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} /> : <p className='text-destructive text-sm'>INR payments not yet available.</p>
+                                (hasINR && checklist.paymentId) ? (
+                                    <div className="w-full flex justify-center">
+                                        <form action={`/thank-you?checklist_id=${checklist.id}&payment_method=razorpay`}>
+                                            <script
+                                                src="https://checkout.razorpay.com/v1/payment-button.js"
+                                                data-payment_button_id={checklist.paymentId}
+                                                async
+                                            ></script>
+                                        </form>
+                                    </div>
+                                ) : <p className='text-destructive text-sm'>INR payments not yet available.</p>
                             ) : (
                                 hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
@@ -256,4 +225,3 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </>
   );
 }
-

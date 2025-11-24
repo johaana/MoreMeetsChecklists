@@ -54,7 +54,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
     const overdueFont = { color: { rgb: "9C0006" } };
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("K"&ROW())))`,
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED - OVERDUE",INDIRECT("K"&ROW())))`,
         style: { fill: overdueFill, font: overdueFont },
     };
 
@@ -112,7 +112,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
         [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
         [],
         [{ v: 'Legend', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
+        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED - OVERDUE: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
         [{v: 'Priority', s: instructionTitleStyle}, {v: 'High: Critical task. Failure has a major impact on operations, safety, or compliance.\nMedium: Important task. Failure has a moderate impact.\nLow: Routine task. Failure has a minor impact.', s: instructionBodyStyle}],
         [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
     ];
@@ -187,7 +187,7 @@ const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 
             const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
 
             const nextDueDateFormula = `IF(ISBLANK(${dateCell}), "N/A", IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}="N/A"),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED","Completed")))`;
+            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}="N/A"),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED - OVERDUE","Completed")))`;
             
             wsData.push([
                 task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
@@ -364,7 +364,7 @@ function ThankYouContent() {
                 Download Again
             </Button>
             <Button size="lg" asChild className="group mt-4" variant="outline">
-                <Link href="/packs">
+                <Link href="/library">
                     Explore More Packages
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>

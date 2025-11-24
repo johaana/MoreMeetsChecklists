@@ -352,7 +352,7 @@ export default function BlogClientPage() {
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                      {post.tags.map(tag => (
-                                        <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                         <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                             {tag}
                                         </Badge>
                                     ))}
@@ -389,4 +389,3 @@ export default function BlogClientPage() {
     </div>
   );
 }
-

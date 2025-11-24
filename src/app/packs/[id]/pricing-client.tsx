@@ -15,39 +15,6 @@ import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 
-const RazorpayButtonWrapper = ({ paymentId, packId }: { paymentId: string, packId: string }) => {
-    const formContainerRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        if (!paymentId || paymentId.length === 0 || !formContainerRef.current) {
-            return;
-        }
-
-        const form = document.createElement('form');
-        form.action = `/thank-you?pack_id=${packId}&payment_method=razorpay`;
-        
-        const script = document.createElement('script');
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.async = true;
-        script.dataset.payment_button_id = paymentId;
-        
-        form.appendChild(script);
-        
-        if(formContainerRef.current) {
-            formContainerRef.current.innerHTML = '';
-            formContainerRef.current.appendChild(form);
-        }
-
-    }, [paymentId, packId]);
-
-    if (!paymentId || paymentId.length === 0) {
-        return null;
-    }
-
-    return <div ref={formContainerRef} className="w-full flex justify-center" />;
-};
-
-
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
     const [email, setEmail] = React.useState('');
@@ -124,8 +91,8 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const hasINR = !!(pack.paymentId && pack.priceINR > 0);
-    const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD && pack.priceUSD > 0);
+    const hasINR = !!(pack.paymentId && pack.priceINR >= 0);
+    const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
     
@@ -200,7 +167,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              {hasINR && hasUSD && (
                                 <div className="flex justify-center">
                                     <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
-                                    <TabsList className="grid w-full grid-cols-2">
+                                      <TabsList className="grid w-full grid-cols-2">
                                         <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
                                         <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                       </TabsList>
@@ -250,7 +217,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
-                                hasINR ? <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} /> : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
+                                hasINR ? (
+                                    <div className="w-full flex justify-center">
+                                      <form action={`/thank-you?pack_id=${pack.id}&payment_method=razorpay`}>
+                                        <script
+                                          src="https://checkout.razorpay.com/v1/payment-button.js"
+                                          data-payment_button_id={pack.paymentId}
+                                          async
+                                        ></script>
+                                      </form>
+                                    </div>
+                                ) : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
                             ) : (
                                 hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
@@ -273,4 +250,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
