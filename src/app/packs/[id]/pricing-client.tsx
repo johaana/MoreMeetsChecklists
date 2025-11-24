@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Sparkles, ShieldCheck, Eye, FileText, Loader2, Briefcase, Landmark, Book, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Banknote } from 'lucide-react';
+import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
@@ -128,17 +128,19 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const hasINR = pack.paymentId && pack.priceINR > 0;
-    const hasUSD = pack.priceUSD && pack.lemonSqueezyUrl;
+    const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD && pack.priceUSD > 0);
     
-    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
+    const [currency, setCurrency] = React.useState(hasINR ? 'INR' : 'USD');
     
     const totalChecklists = pack.checklists.length;
     const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
-    const features = [
+    const features = totalChecklists > 0 ? [
         { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
         { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
         { text: "<strong>Instant Download</strong> in fully editable Excel format."},
         { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
+    ] : [
+        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ];
 
     if (pack.priceINR === 0) {
@@ -159,9 +161,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    {!totalChecklists ? (
-                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Coming soon.</span></li>
-                                    ) : (
+                                    {totalChecklists > 0 && (
                                     <>
                                         <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
                                         <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
@@ -253,7 +253,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
-                                hasINR ? <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} /> : <p className='text-destructive'>INR payments not available.</p>
+                                hasINR ? <RazorpayButtonWrapper paymentId={pack.paymentId} packId={pack.id} /> : <p className='text-destructive'>INR payments not yet available.</p>
                             ) : (
                                 hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
@@ -261,7 +261,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             Buy Now
                                         </Link>
                                     </Button>
-                                ) : <p className='text-destructive'>USD payments not available.</p>
+                                ) : <p className='text-destructive'>USD payments not yet available.</p>
                             )}
                            <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
@@ -276,3 +276,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    

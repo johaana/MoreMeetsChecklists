@@ -97,7 +97,10 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
 
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
     const [showStickyBar, setShowStickyBar] = React.useState(false);
-    const [currency, setCurrency] = React.useState('INR');
+
+    const hasINR = checklist.paymentId && checklist.priceINR > 0;
+    const hasUSD = !!(checklist.lemonSqueezyUrl && checklist.lemonSqueezyUrl.length > 0 && checklist.priceUSD && checklist.priceUSD > 0);
+    const [currency, setCurrency] = React.useState(hasINR ? 'INR' : 'USD');
     
     React.useEffect(() => {
         const observer = new IntersectionObserver(
@@ -179,25 +182,29 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                             <CardDescription>One-time purchase. Lifetime updates.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center flex flex-col items-center">
-                           <div className="flex justify-center mb-4">
-                                <Tabs defaultValue="INR" onValueChange={setCurrency} className="w-full max-w-xs">
-                                  <TabsList className="grid w-full grid-cols-2">
-                                    <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
-                                    <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
-                                  </TabsList>
-                                </Tabs>
-                            </div>
+                            {hasINR && hasUSD && (
+                               <div className="flex justify-center mb-4">
+                                    <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
+                                      <TabsList className="grid w-full grid-cols-2">
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                      </TabsList>
+                                    </Tabs>
+                                </div>
+                            )}
                            <p className="text-4xl font-extrabold mb-4">
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
                             {currency === 'INR' ? (
-                                <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} />
+                                hasINR ? <RazorpayButtonWrapper price={checklist.priceINR} checklistId={checklist.id} /> : <p className='text-destructive text-sm'>INR payments not yet available.</p>
                             ) : (
-                                <Button asChild size="lg" className="w-full max-w-xs">
-                                    <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
-                                        Buy Now
-                                    </Link>
-                                </Button>
+                                hasUSD ? (
+                                    <Button asChild size="lg" className="w-full max-w-xs">
+                                        <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
+                                            Buy Now
+                                        </Link>
+                                    </Button>
+                                ) : <p className='text-destructive text-sm'>USD payments not yet available.</p>
                             )}
                         </CardContent>
                          <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
@@ -239,3 +246,5 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </>
   );
 }
+
+    
