@@ -67,7 +67,8 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     const pricingSectionRef = React.useRef<HTMLDivElement>(null);
     const [showStickyBar, setShowStickyBar] = React.useState(false);
 
-    const hasINR = !!(checklist.paymentId && checklist.paymentId.length > 0 && checklist.priceINR >= 0);
+    // Temporarily disable INR option by defaulting to USD
+    const hasINR = false; // !!(checklist.paymentId && checklist.paymentId.length > 0 && checklist.priceINR >= 0);
     const hasUSD = !!(checklist.lemonSqueezyUrl && checklist.lemonSqueezyUrl.length > 0 && checklist.priceUSD !== undefined && checklist.priceUSD >= 0);
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
     
@@ -225,5 +226,3 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     </>
   );
 }
-
-    
