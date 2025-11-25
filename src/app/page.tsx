@@ -231,10 +231,10 @@ const ChaosToControlSection = () => {
       <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
         <CardHeader className="text-center items-center p-0">
           <div className="text-red-400">
-            <Frown className="h-16 w-16 mb-2" />
+            <Frown className="h-12 w-12 mb-2" />
           </div>
-          <CardTitle className="text-red-400 font-headline text-3xl">The Old Way: Chaos</CardTitle>
-          <CardDescription className="text-gray-400 text-sm mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
+          <CardTitle className="text-red-400 font-headline text-2xl">The Old Way: Chaos</CardTitle>
+          <CardDescription className="text-gray-400 text-xs mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
           <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Forgotten safety checks</span></p>
@@ -243,7 +243,7 @@ const ChaosToControlSection = () => {
           <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>No proof of compliance</span></p>
         </CardContent>
         <div className="p-2 text-center text-xs text-slate-400 font-semibold flex items-center justify-center gap-2">
-          Flip for Solution
+          Flip Back
         </div>
       </div>
     </div>
@@ -254,10 +254,10 @@ const ChaosToControlSection = () => {
       <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
         <CardHeader className="text-center items-center p-0">
           <div className="text-green-400">
-            <Smile className="h-16 w-16 mb-2" />
+            <Smile className="h-12 w-12 mb-2" />
           </div>
-          <CardTitle className="text-green-400 font-headline text-3xl">The New Way: Control</CardTitle>
-          <CardDescription className="text-gray-300 text-sm mt-1">A system of record that ensures excellence.</CardDescription>
+          <CardTitle className="text-green-400 font-headline text-2xl">The New Way: Control</CardTitle>
+          <CardDescription className="text-gray-300 text-xs mt-1">A system of record that ensures excellence.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
           <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Verifiable safety logs</span></p>
@@ -266,7 +266,7 @@ const ChaosToControlSection = () => {
           <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Instant audit trail</span></p>
         </CardContent>
         <div className="p-2 text-center text-xs text-slate-400 font-semibold flex items-center justify-center gap-2">
-          Flip Back
+          Flip for Problem
         </div>
       </div>
     </div>
@@ -289,7 +289,7 @@ const ChaosToControlSection = () => {
             initial={false}
             animate={{ rotateY: isFlipped ? 180 : 0 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            style={{ transformStyle: 'preserve-3d', height: '26rem' }}
+            style={{ transformStyle: 'preserve-3d', height: '24rem' }}
           >
             <div className="absolute h-full w-full" style={{ backfaceVisibility: 'hidden' }}>{front}</div>
             <div className="absolute h-full w-full" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>{back}</div>
