@@ -63,7 +63,7 @@ const RefinedHeroSection = () => {
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
             
-            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-0 md:justify-center")}>
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
               
               {/* Desktop View */}
               <div className="hidden md:block max-w-2xl">
@@ -122,10 +122,11 @@ const RefinedHeroSection = () => {
                 </div>
               </div>
 
-              {/* Mobile View - Option 5 Implementation */}
-              <div className="md:hidden flex flex-col justify-end h-full">
-                <div className="w-full bg-black/40 backdrop-blur-sm rounded-t-2xl p-6 border-t border-white/20 space-y-5 text-center items-center flex flex-col">
-                    <div className='max-w-md space-y-5'>
+              {/* Mobile View */}
+              <div className="md:hidden text-center items-center flex flex-col relative z-20">
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+                 <div className="max-w-md space-y-6 relative z-10">
+                    <div className="min-h-[14rem] flex items-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
@@ -133,7 +134,7 @@ const RefinedHeroSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
-                            className="w-full min-h-[10rem] flex flex-col justify-center"
+                            className="w-full"
                             >
                                 <h1 className="text-3xl font-extrabold font-headline tracking-tighter text-white">
                                     {content.title}
@@ -143,41 +144,38 @@ const RefinedHeroSection = () => {
                                 </p>
                             </motion.div>
                         </AnimatePresence>
-                        
-                        <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full")}>
-                            <div className="flex w-full">
-                                <motion.div
-                                    className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
-                                    initial={false}
-                                    animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
-                                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                                />
-                                {painPointKeys.map((key) => (
-                                <Button
-                                    key={key}
-                                    variant="ghost"
-                                    className={cn(
-                                        "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12",
-                                        "whitespace-normal leading-tight flex items-center text-center",
-                                        activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
-                                    )}
-                                    onClick={() => setActivePainPoint(key)}
-                                >
-                                    <span>{painPoints[key].mobileButtonText}</span>
-                                </Button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="pt-2">
-                            <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
-                                <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                    </div>
+                    <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full")}>
+                        <div className="flex w-full">
+                            <motion.div
+                                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                                initial={false}
+                                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                            />
+                            {painPointKeys.map((key) => (
+                            <Button
+                                key={key}
+                                variant="ghost"
+                                className={cn(
+                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12",
+                                    "whitespace-normal leading-tight flex items-center text-center",
+                                    activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                                )}
+                                onClick={() => setActivePainPoint(key)}
+                            >
+                                <span>{painPoints[key].mobileButtonText}</span>
                             </Button>
+                            ))}
                         </div>
+                    </div>
+                    <div className="pt-2">
+                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
+                            <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                        </Button>
                     </div>
                 </div>
               </div>
-
             </div>
         </section>
     );
