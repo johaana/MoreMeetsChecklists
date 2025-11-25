@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 
 const painPoints = {
@@ -185,7 +185,7 @@ const RefinedHeroSection = () => {
 };
 
 const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <Card className="flex flex-col text-center md:text-left">
+    <Card className="flex flex-col text-center md:text-left h-full">
         <CardHeader className="flex flex-col md:flex-row items-center gap-4">
             {icon}
             <CardTitle>{title}</CardTitle>
@@ -196,6 +196,13 @@ const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: st
     </Card>
 );
 
+const philosophyCards = [
+    { icon: <Zap className="w-8 h-8 text-accent"/>, title: "One-Time Purchase, Lifetime Value", children: "No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle." },
+    { icon: <BookOpen className="w-8 h-8 text-accent"/>, title: "Excel-Ready, Not SaaS-Locked", children: "We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software." },
+    { icon: <ShieldCheck className="w-8 h-8 text-accent"/>, title: "Globally Compliant, Locally Relevant", children: "Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground." },
+    { icon: <CheckCircle className="w-8 h-8 text-accent"/>, title: "More Than Templates, They're Systems", children: "Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools." }
+];
+
 const PhilosophySection = () => (
     <section className="w-full py-16 md:py-24">
         <div className="container px-4 md:px-6">
@@ -205,23 +212,44 @@ const PhilosophySection = () => (
                    We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
                 </p>
             </div>
-             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <ValueCard icon={<Zap className="w-8 h-8 text-accent"/>} title="One-Time Purchase, Lifetime Value">
-                    No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle.
-                </ValueCard>
-                 <ValueCard icon={<BookOpen className="w-8 h-8 text-accent"/>} title="Excel-Ready, Not SaaS-Locked">
-                    We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software.
-                </ValueCard>
-                 <ValueCard icon={<ShieldCheck className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
-                    Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground.
-                </ValueCard>
-                  <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="More Than Templates, They're Systems">
-                    Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools.
-                </ValueCard>
+             <div className="hidden md:grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {philosophyCards.map((card, index) => (
+                    <ValueCard key={index} icon={card.icon} title={card.title}>
+                        {card.children}
+                    </ValueCard>
+                ))}
+             </div>
+             <div className="md:hidden">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                      stopOnInteraction: true,
+                    }),
+                  ]}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {philosophyCards.map((card, index) => (
+                      <CarouselItem key={index} className="basis-4/5">
+                        <div className="p-1 h-full">
+                           <ValueCard icon={card.icon} title={card.title}>
+                                {card.children}
+                           </ValueCard>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
              </div>
         </div>
     </section>
 );
+
 
 const ChaosToControlSection = () => {
   const [isFlipped, setIsFlipped] = React.useState(false);
@@ -356,19 +384,19 @@ const FaqSection = () => (
                     <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>—strengthening, not just replacing, what works.
+                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you already have.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-2">
+                    <AccordionItem value="item-2">
                         <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
                         <AccordionContent>
                             AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-3">
+                     <AccordionItem value="item-3">
                         <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
-                           Absolutely. Our packs reference ISO, OSHA, FSSAI, and other global standards. Each checklist includes specific <strong>audit controls, evidence fields, and documentation flows</strong> designed to meet the rigorous demands of both internal and external inspections.
+                           Absolutely. Our packs reference ISO, OSHA, and other global standards. Each checklist includes specific <strong>audit controls, evidence fields, and documentation flows</strong> designed to meet the rigorous demands of both internal and external inspections.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4">
@@ -377,25 +405,25 @@ const FaqSection = () => (
                            Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-5">
+                     <AccordionItem value="item-5">
                         <AccordionTrigger>What ROI can we expect?</AccordionTrigger>
                         <AccordionContent>
                            Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, <strong>preventing a single major safety or compliance failure</strong> can save more than the cost of our entire library.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-6">
+                    <AccordionItem value="item-6">
                         <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
                         <AccordionContent>
                            Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-7">
+                    <AccordionItem value="item-7">
                         <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
                         <AccordionContent>
                            MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-8">
+                     <AccordionItem value="item-8">
                         <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
                         <AccordionContent>
                            They can, but building a complete, compliant SOP library takes <strong>3-6 months of cross-functional effort</strong>. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
