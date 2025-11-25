@@ -2,10 +2,9 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, CheckCircle, Frown, Smile, RefreshCw, MoveHorizontal } from 'lucide-react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { ArrowRight, CheckCircle, Frown, Smile, RefreshCw } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -18,7 +17,8 @@ const cardContent = {
         points: [
             "\"Did anyone check the fire exits?\"",
             "A new hire makes a costly mistake on their first day.",
-            "Your best manager quits, taking critical knowledge with them."
+            "Your best manager quits, taking critical knowledge with them.",
+            "No audit trail to prove compliance during an inspection."
         ]
     },
     control: {
@@ -28,7 +28,8 @@ const cardContent = {
         points: [
             "\"Fire exit check completed daily at 9:05 AM. See log.\"",
             "New hires are productive and compliant from day one.",
-            "Knowledge is retained in the system, making your operation resilient."
+            "Knowledge is retained in the system, making your operation resilient.",
+            "A timestamped, verifiable audit trail for every critical task."
         ]
     }
 };
@@ -40,7 +41,7 @@ const DesignOption = ({ title, description, children, className }: { title: stri
             <h3 className="text-2xl font-bold font-headline">{title}</h3>
             <p className="text-muted-foreground mt-2">{description}</p>
         </div>
-        <div className={cn("mx-auto", className)}>
+        <div className={cn("mx-auto flex justify-center", className)}>
             {children}
         </div>
     </div>
@@ -62,7 +63,7 @@ const FlipCard = ({
 }) => {
   return (
     <div
-      className={cn("group relative h-[30rem] w-full max-w-sm cursor-pointer", containerClassName)}
+      className={cn("group relative w-full max-w-sm cursor-pointer", containerClassName)}
       onClick={onFlip}
       style={{ perspective: '1200px' }}
     >
@@ -91,6 +92,7 @@ const PremiumFlipCard = () => {
         <FlipCard 
             isFlipped={isFlipped} 
             onFlip={() => setIsFlipped(!isFlipped)}
+            containerClassName="h-auto" // Let height be determined by content
             frontContent={
                 <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.red.500)]">
                      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
@@ -134,63 +136,6 @@ const PremiumFlipCard = () => {
         />
     )
 }
-
-const SliderCard = () => {
-    const x = useMotionValue(0);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const rightSideOpacity = useTransform(x, [-100, 0], [0, 1]);
-    const leftSideOpacity = useTransform(x, [0, 100], [1, 0]);
-
-    return (
-        <div className="relative w-full max-w-sm h-[30rem] rounded-xl shadow-2xl bg-slate-50 border-2 border-primary/20 overflow-hidden">
-            {/* Control Side (Back) */}
-            <motion.div style={{ opacity: rightSideOpacity }} className="absolute inset-0 p-6 flex flex-col">
-                 <CardHeader className="text-center items-center p-0">
-                    <div className="text-primary">{cardContent.control.icon}</div>
-                    <CardTitle className="text-primary">{cardContent.control.title}</CardTitle>
-                    <CardDescription>{cardContent.control.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm text-foreground flex-1 mt-6 p-0">
-                    {cardContent.control.points.map((point, i) => (
-                    <p key={i} className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>{point}</span></p>
-                    ))}
-                </CardContent>
-            </motion.div>
-
-            {/* Chaos Side (Front) */}
-            <motion.div 
-                ref={containerRef}
-                style={{ x, opacity: leftSideOpacity }} 
-                className="absolute inset-0 w-full h-full bg-slate-800 text-white p-6 cursor-grab active:cursor-grabbing"
-            >
-                <CardHeader className="text-center items-center p-0">
-                    <div className="text-red-400">{cardContent.chaos.icon}</div>
-                    <CardTitle className="text-red-400">{cardContent.chaos.title}</CardTitle>
-                    <CardDescription className="text-slate-400">{cardContent.chaos.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm text-slate-300 flex-1 mt-6 p-0">
-                    {cardContent.chaos.points.map((point, i) => (
-                    <p key={i} className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>{point}</span></p>
-                    ))}
-                </CardContent>
-            </motion.div>
-
-            {/* Handle */}
-            <motion.div
-                style={{ x }}
-                drag="x"
-                dragConstraints={containerRef}
-                className="absolute top-1/2 left-0 w-4 h-full bg-transparent -translate-y-1/2 z-10 cursor-ew-resize flex items-center justify-center"
-                dragElastic={0.1}
-            >
-                <div className="w-1.5 h-16 bg-primary/20 rounded-full flex items-center justify-center">
-                    <MoveHorizontal className="w-4 h-4 text-primary" />
-                </div>
-            </motion.div>
-        </div>
-    );
-};
-
 
 const AccordionCard = () => {
     return(
@@ -238,14 +183,7 @@ export default function TempDesignClientPage() {
             </DesignOption>
 
              <DesignOption
-                title="Option 2: 'Before & After' Slider"
-                description="A highly interactive card where you drag the handle to slide away the 'Chaos' panel and reveal the 'Control' solution underneath."
-            >
-               <SliderCard />
-            </DesignOption>
-
-             <DesignOption
-                title="Option 3: Accordion Reveal"
+                title="Option 2: Accordion Reveal"
                 description="A clean, structured approach. Click on each problem statement to expand it and reveal the corresponding solution directly below."
             >
               <AccordionCard />
