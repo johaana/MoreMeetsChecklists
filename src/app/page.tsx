@@ -350,46 +350,49 @@ const FaqSection = () => (
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Frequently Asked Questions</h2>
-                <p className="text-muted-foreground mt-2 text-base md:text-lg">
-                    Answering your key questions about how MoreMeets works.
-                </p>
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
-                        <AccordionTrigger>What format are the checklists in?</AccordionTrigger>
+                        <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                            All our checklists are provided as fully editable Microsoft Excel (.xlsx) files. This allows you to easily customize them, add your company logo, and integrate them into your existing operational workflow without needing any special software.
+                           Most SOPs are outdated or inconsistent. MoreMeets upgrades your existing system into a globally compliant, audit-ready framework. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger>Is this a one-time purchase or a subscription?</AccordionTrigger>
+                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
                         <AccordionContent>
-                            It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-6">
-                        <AccordionTrigger>We don’t need SOPs. We already have them.</AccordionTrigger>
-                        <AccordionContent>
-                            Internal SOPs often miss global compliance and new safety mandates. MoreMeets gives you audit-ready, professionally structured SOPs that eliminate gaps and protect you from operational and regulatory risk, no matter how good your current SOPs are.
+                            AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using global regulations, ISO frameworks, and real-world operational learnings—not generic templates.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
-                        <AccordionTrigger>What is your refund policy?</AccordionTrigger>
+                        <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
-                            Due to the instant, digital nature of our products, all sales are final once the purchase is completed. We provide detailed descriptions and sample items on every pack page to help you make an informed decision. If you have any issues with your download, our support team is ready to assist immediately.
+                           Absolutely. Our packs reference ISO, OSHA, FSSAI, and other global standards. Each checklist includes specific audit controls, evidence fields, and documentation flows designed to meet the rigorous demands of both internal and external inspections.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4">
-                        <AccordionTrigger>Can I request a checklist or pack that isn't listed?</AccordionTrigger>
+                        <AccordionTrigger>Will this system fit our unique workflows?</AccordionTrigger>
                         <AccordionContent>
-                            Absolutely. We are constantly expanding our library based on customer needs. Please visit our Contact Us page to send your suggestion to our content team. We also offer custom SOP development services.
+                           Yes. Over 80% of operational best practices are universal. We provide the globally benchmarked structure, and you can easily customize the last 20% to fit your specific organizational needs.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">
-                        <AccordionTrigger>What if I have trouble with my download?</AccordionTrigger>
+                        <AccordionTrigger>What ROI can we expect from implementing this?</AccordionTrigger>
                         <AccordionContent>
-                            Your purchase confirmation email contains your download link. If you face any issues, please contact us immediately at `more@moremeets.com` or chat with us on WhatsApp for instant support. We'll make sure you get your files.
+                           Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-6">
+                        <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
+                        <AccordionContent>
+                           Yes. Our SOPs are written in simple, actionable language. They include Trainer’s Notes and real-world examples that make daily adoption effortless and turn managers into expert coaches.
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-7">
+                        <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
+                        <AccordionContent>
+                           They can, but building a complete, compliant SOP library takes 3-6 months of cross-functional effort. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
