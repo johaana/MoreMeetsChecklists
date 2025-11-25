@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 
 const painPoints = {
@@ -221,44 +223,67 @@ const PhilosophySection = () => (
 );
 
 
-const ChaosToControlSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+const ChaosToControlSection = () => {
+  const chaosImage = PlaceHolderImages.find(img => img.id === 'chaos-desk');
+  const controlImage = PlaceHolderImages.find(img => img.id === 'control-desk');
+
+  return (
+    <section className="w-full py-16 md:py-24 bg-secondary/30">
+      <div className="container px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
+          <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+          {/* Before */}
+          <Card className="border-destructive/50 border-2 flex flex-col">
+            {chaosImage && (
+              <Image 
+                src={chaosImage.imageUrl} 
+                alt={chaosImage.description} 
+                width={600} 
+                height={400} 
+                className="rounded-t-lg object-cover w-full aspect-video"
+              />
+            )}
+            <CardHeader>
+              <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+              <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
+            </CardContent>
+          </Card>
+          {/* After */}
+          <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
+            {controlImage && (
+              <Image 
+                src={controlImage.imageUrl} 
+                alt={controlImage.description} 
+                width={600} 
+                height={400} 
+                className="rounded-t-lg object-cover w-full aspect-video"
+              />
+            )}
+            <CardHeader>
+              <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
+              <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm text-foreground flex-1">
+               <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        {/* Before */}
-        <Card className="border-destructive/50 border-2">
-          <CardHeader>
-            <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-muted-foreground">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
-          </CardContent>
-        </Card>
-        {/* After */}
-        <Card className="border-primary/50 border-2 bg-background shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
-            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-foreground">
-             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const ExpertiseExtractorSection = () => (
   <section className="w-full py-16 md:py-24">
@@ -329,7 +354,7 @@ const FaqSection = () => (
                             It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-6">
+                     <AccordionItem value="item-6">
                         <AccordionTrigger>We don’t need SOPs. We already have them.</AccordionTrigger>
                         <AccordionContent>
                             Internal SOPs often miss global compliance and new safety mandates. MoreMeets gives you audit-ready, professionally structured SOPs that eliminate gaps and protect you from operational and regulatory risk, no matter how good your current SOPs are.

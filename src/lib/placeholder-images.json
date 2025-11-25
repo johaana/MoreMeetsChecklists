@@ -202,5 +202,17 @@
     "description": "A retail display of electronic gadgets.",
     "imageUrl": "https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg",
     "imageHint": "retail electronics"
+  },
+  {
+    "id": "chaos-desk",
+    "description": "A messy desk representing operational chaos.",
+    "imageUrl": "https://i.postimg.cc/d10rGypZ/pexels-khwanchai-12885861.jpg",
+    "imageHint": "messy desk"
+  },
+  {
+    "id": "control-desk",
+    "description": "A clean, organized desk representing operational control.",
+    "imageUrl": "https://i.postimg.cc/4ydP4Msr/pexels-olly-3778966.jpg",
+    "imageHint": "organized desk"
   }
 ]
