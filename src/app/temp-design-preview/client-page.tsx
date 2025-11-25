@@ -92,7 +92,7 @@ const PremiumFlipCard = () => {
         <FlipCard 
             isFlipped={isFlipped} 
             onFlip={() => setIsFlipped(!isFlipped)}
-            containerClassName="h-auto" // Let height be determined by content
+            containerClassName="min-h-[32rem]"
             frontContent={
                 <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.red.500)]">
                      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
