@@ -91,7 +91,7 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const hasINR = !!(pack.paymentId && pack.priceINR >= 0);
+    const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
@@ -219,13 +219,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                            {currency === 'INR' ? (
                                 (hasINR && pack.paymentId) ? (
                                     <div className="w-full flex justify-center">
-                                      <form action={`/thank-you?pack_id=${pack.id}&payment_method=razorpay`}>
-                                        <script
-                                          src="https://checkout.razorpay.com/v1/payment-button.js"
-                                          data-payment_button_id={pack.paymentId}
-                                          async
-                                        ></script>
-                                      </form>
+                                        <form action={`/thank-you?pack_id=${pack.id}&payment_method=razorpay`}>
+                                            <script
+                                                src="https://checkout.razorpay.com/v1/payment-button.js"
+                                                data-payment_button_id={pack.paymentId}
+                                                async
+                                            ></script>
+                                        </form>
                                     </div>
                                 ) : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
                             ) : (

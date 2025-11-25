@@ -252,58 +252,36 @@ function ThankYouContent() {
   const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
 
   React.useEffect(() => {
-    const paymentMethod = searchParams.get('payment_method');
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
-    const lsOrderId = searchParams.get('order_id'); // Lemon Squeezy sends order_id
-    const packId = searchParams.get('pack_id') || searchParams.get('checkout[custom][pack_id]');
-    const checklistId = searchParams.get('checklist_id') || searchParams.get('checkout[custom][checklist_id]');
+    const packId = searchParams.get('pack_id');
+    const checklistId = searchParams.get('checklist_id');
     
-    const processPurchase = async () => {
-        setIsLoading(true);
-        setError(null);
-        setVerifiedItem(null);
+    if (!rzpPaymentId) {
+      setError("Payment ID not found. Please check your email from Razorpay or contact support.");
+      setIsLoading(false);
+      return;
+    }
 
-        let item: PremiumPack | IndividualChecklist | undefined;
-        let type: 'pack' | 'individual' | null = null;
-        
-        if (packId) {
-            item = premiumPacks.find(p => p.id === packId);
-            if (item) type = 'pack';
-        } else if (checklistId) {
-            item = individualChecklists.find(c => c.id === checklistId);
-            if(item) type = 'individual';
-        }
-        
-        if (!item || !type) {
-            setError("Could not find the purchased item. Please contact support.");
-            setIsLoading(false);
-            return;
-        }
+    const verify = async () => {
+      setIsLoading(true);
+      setError(null);
+      setVerifiedItem(null);
 
-        if (paymentMethod === 'razorpay' && rzpPaymentId) {
-            const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId);
-            if (result.success) {
-                setVerifiedItem(result.item);
-                setItemType(result.type);
-                handleDownload(result.item, result.type);
-                setShowDownloadConfirm(true);
-            } else {
-                setError(result.error);
-            }
-        } else if (lsOrderId) {
-            // For Lemon Squeezy, we trust the redirect as verification
-            setVerifiedItem(item);
-            setItemType(type);
-            handleDownload(item, type);
-            setShowDownloadConfirm(true);
-        } else {
-            setError("Invalid payment information. Please check your email or contact support.");
-        }
-        
-        setIsLoading(false);
+      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId);
+      
+      if (result.success) {
+        setVerifiedItem(result.item);
+        setItemType(result.type);
+        handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
+        setShowDownloadConfirm(true);
+      } else {
+        setError(result.error);
+      }
+      
+      setIsLoading(false);
     };
 
-    processPurchase();
+    verify();
   }, [searchParams]);
 
   const renderContent = () => {
@@ -312,10 +290,10 @@ function ThankYouContent() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <Loader2 className="h-16 w-16 text-primary animate-spin" />
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-            Verifying your purchase...
+            Verifying your payment...
           </h1>
           <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-            Please wait while we confirm your transaction. Your download will begin shortly.
+            Please wait while we confirm your transaction.
           </p>
         </div>
       );
@@ -334,7 +312,7 @@ function ThankYouContent() {
                 </p>
                 <p className="font-semibold text-destructive">{error}</p>
                 <p className="text-muted-foreground text-sm pt-4">
-                    Please contact our support team with your Payment/Order ID for assistance.
+                    Please contact our support team with your Payment ID for assistance.
                 </p>
                  <Button asChild className="mt-4">
                     <Link href="/contact">Contact Support</Link>
@@ -425,4 +403,3 @@ export default function ThankYouPage() {
     </React.Suspense>
   );
 }
-
