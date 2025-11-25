@@ -356,49 +356,49 @@ const FaqSection = () => (
                     <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a globally compliant, structured framework that strengthens, not just replaces, what you have.
+                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>—strengthening, not just replacing, what works.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger>Why not just generate SOPs using AI?</AccordionTrigger>
+                     <AccordionItem value="item-2">
+                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
                         <AccordionContent>
-                            AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using global regulations, ISO frameworks, and real-world operational learnings—not generic templates.
+                            AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
                         <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
-                           Absolutely. Our packs reference ISO, OSHA, FSSAI, and other global standards. Each checklist includes specific audit controls, evidence fields, and documentation flows designed to meet the rigorous demands of both internal and external inspections.
+                           Absolutely. Our packs reference ISO, OSHA, FSSAI, and other global standards. Each checklist includes specific <strong>audit controls, evidence fields, and documentation flows</strong> designed to meet the rigorous demands of both internal and external inspections.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4">
                         <AccordionTrigger>Will this system fit our unique workflows?</AccordionTrigger>
                         <AccordionContent>
-                           Yes. Over 80% of operational best practices are universal. We provide the globally benchmarked structure, and you can easily customize the last 20% to fit your specific organizational needs.
+                           Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-5">
+                    <AccordionItem value="item-5">
                         <AccordionTrigger>What ROI can we expect?</AccordionTrigger>
                         <AccordionContent>
-                           Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
+                           Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, <strong>preventing a single major safety or compliance failure</strong> can save more than the cost of our entire library.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-6">
                         <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
                         <AccordionContent>
-                           Yes. Our SOPs are written in simple, actionable language. They include **Trainer’s Notes** and real-world examples that make daily adoption effortless and turn managers into expert coaches.
+                           Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-7">
-                        <AccordionTrigger>How does this reduce dependency on our key managers?</AccordionTrigger>
+                        <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
                         <AccordionContent>
-                           MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the same accuracy and consistency as your top performers, reducing your reliance on any single individual.
+                           MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-8">
                         <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
                         <AccordionContent>
-                           They can, but building a complete, compliant SOP library takes 3-6 months of cross-functional effort. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
+                           They can, but building a complete, compliant SOP library takes <strong>3-6 months of cross-functional effort</strong>. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
