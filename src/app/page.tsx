@@ -230,15 +230,15 @@ const ChaosToControlSection = () => {
     <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.red.500)]">
       <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
         <CardHeader className="text-center items-center p-0">
-          <div className="text-red-400 group-hover:text-red-300 transition-colors"><Frown className="h-20 w-20 mb-2" /></div>
+          <div className="text-red-400 group-hover:text-red-300 transition-colors"><Frown className="h-12 w-12 mb-2" /></div>
           <CardTitle className="text-red-400 font-headline text-2xl group-hover:text-red-300 transition-colors">The Old Way: Chaos</CardTitle>
           <CardDescription className="text-gray-400 text-sm mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3 text-sm text-gray-300 flex-1 mt-6 p-0">
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Forgotten safety checks</span></p>
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Costly new hire mistakes</span></p>
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Knowledge walks out the door</span></p>
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>No proof of compliance</span></p>
+        <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
+          <p className="flex items-start gap-3">→<span>Forgotten safety checks</span></p>
+          <p className="flex items-start gap-3">→<span>Costly new hire mistakes</span></p>
+          <p className="flex items-start gap-3">→<span>Knowledge walks out the door</span></p>
+          <p className="flex items-start gap-3">→<span>No proof of compliance</span></p>
         </CardContent>
         <div className="p-2 text-center text-xs text-slate-400 font-semibold opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
           <RefreshCw className="w-3 h-3 group-hover:rotate-180 transition-transform duration-500" />
@@ -252,11 +252,11 @@ const ChaosToControlSection = () => {
     <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-green-500/50 via-blue-900 to-slate-900 group-hover:from-green-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.green.500)]">
       <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
         <CardHeader className="text-center items-center p-0">
-          <div className="text-green-400 group-hover:text-green-300 transition-colors"><Smile className="h-20 w-20 mb-2" /></div>
+          <div className="text-green-400 group-hover:text-green-300 transition-colors"><Smile className="h-12 w-12 mb-2" /></div>
           <CardTitle className="text-green-400 font-headline text-2xl group-hover:text-green-300 transition-colors">The New Way: Control</CardTitle>
           <CardDescription className="text-gray-300 text-sm mt-1">A system of record that ensures excellence.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3 text-sm text-gray-200 flex-1 mt-6 p-0">
+        <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
           <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Verifiable safety logs</span></p>
           <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Day-one productivity</span></p>
           <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>System-retained knowledge</span></p>
