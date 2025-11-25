@@ -76,10 +76,10 @@ const RefinedHeroSection = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                         >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
                             {content.title}
                         </h1>
-                        <p className="text-lg text-white/90 max-w-xl mt-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
+                        <p className="text-lg text-white/90 max-w-xl mt-4">
                             {content.description}
                         </p>
                         </motion.div>
@@ -123,11 +123,11 @@ const RefinedHeroSection = () => {
               </div>
 
               {/* Mobile View */}
-              <div className="md:hidden text-center items-center flex flex-col relative z-20">
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-                 <div className="max-w-md space-y-6 relative z-10">
-                    <div className="min-h-[14rem] flex items-center">
-                        <AnimatePresence mode="wait">
+              <div className="md:hidden text-left items-start flex flex-col relative z-10">
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-0" />
+                 <div className="w-full max-w-xl space-y-6 relative z-10">
+                    <div className="min-h-[14rem] flex items-end">
+                       <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
                             initial={{ opacity: 0, y: 20 }}
@@ -170,7 +170,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                     <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
+                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
                             <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
@@ -327,6 +327,12 @@ const FaqSection = () => (
                         <AccordionTrigger>Is this a one-time purchase or a subscription?</AccordionTrigger>
                         <AccordionContent>
                             It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-6">
+                        <AccordionTrigger>We don’t need SOPs. We already have them.</AccordionTrigger>
+                        <AccordionContent>
+                            Internal SOPs often miss global compliance and new safety mandates. MoreMeets gives you audit-ready, professionally structured SOPs that eliminate gaps and protect you from operational and regulatory risk, no matter how good your current SOPs are.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
