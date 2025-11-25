@@ -4,14 +4,13 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, CheckCircle, Frown, Smile } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ArrowRight, CheckCircle, Frown, Smile, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => void }) => {
   return (
     <div 
-      className="relative w-full h-80 cursor-pointer" 
+      className="relative w-full h-80 cursor-pointer group" 
       onClick={onFlip}
       style={{ perspective: '1000px' }}
     >
@@ -35,7 +34,9 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
               <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
             </CardContent>
              <div className="p-4 text-center">
-                <Button variant="destructive" size="sm">Click to Flip</Button>
+                <div className="flex items-center justify-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                    <RefreshCw className="w-3 h-3 mr-2 animate-spin"/> Click to flip
+                </div>
             </div>
           </Card>
         </div>
@@ -53,13 +54,155 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
               <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
             </CardContent>
              <div className="p-4 text-center">
-                 <Button variant="default" size="sm">Click to Flip Back</Button>
+                 <div className="flex items-center justify-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                    <RefreshCw className="w-3 h-3 mr-2 animate-spin"/> Click to flip back
+                </div>
             </div>
           </Card>
         </div>
       </motion.div>
     </div>
   );
+};
+
+const VerticalUnfoldCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => void }) => {
+    return (
+        <div className="relative w-full h-80 cursor-pointer group" onClick={onFlip} style={{ perspective: '1200px' }}>
+            <AnimatePresence>
+                {!isFlipped ? (
+                    <motion.div
+                        key="front"
+                        initial={{ opacity: 1, rotateX: 0 }}
+                        exit={{ opacity: 0, rotateX: -90, y: -40 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="absolute w-full h-full"
+                    >
+                        <Card className="border-destructive/50 border-2 flex flex-col h-full">
+                           <CardHeader>
+                                <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-6 h-6"/> The Old Way: Chaos</CardTitle>
+                                <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
+                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+                            </CardContent>
+                            <div className="p-4 text-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">Click to Reveal</div>
+                        </Card>
+                    </motion.div>
+                ) : (
+                     <motion.div
+                        key="back"
+                        initial={{ opacity: 0, rotateX: 90, y: 40 }}
+                        animate={{ opacity: 1, rotateX: 0, y: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="absolute w-full h-full"
+                    >
+                        <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col h-full">
+                            <CardHeader>
+                            <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The New Way: Control</CardTitle>
+                            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-3 text-sm text-foreground flex-1">
+                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily. See log."</span></p>
+                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive from day one.</span></p>
+                            </CardContent>
+                             <div className="p-4 text-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">Click to Reset</div>
+                        </Card>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
+
+const PeelCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => void }) => {
+    return (
+        <div className="relative w-full h-80 cursor-pointer group" onClick={onFlip}>
+            <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col h-full">
+                <CardHeader>
+                    <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The New Way: Control</CardTitle>
+                    <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3 text-sm text-foreground flex-1">
+                    <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Verifiable audit trail for every task.</span></p>
+                    <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system.</span></p>
+                </CardContent>
+            </Card>
+
+            <motion.div
+                className="absolute inset-0 w-full h-full"
+                initial={false}
+                animate={{
+                    clipPath: isFlipped
+                        ? 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)'
+                        : 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+                }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+                <Card className="border-destructive/50 border-2 flex flex-col h-full">
+                    <CardHeader>
+                        <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-6 h-6"/> The Old Way: Chaos</CardTitle>
+                        <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
+                        <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+                        <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake.</span></p>
+                    </CardContent>
+                    <div className="p-4 text-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">Click to Peel</div>
+                </Card>
+            </motion.div>
+        </div>
+    );
+};
+
+const ZoomFadeCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => void }) => {
+    return (
+        <div className="relative w-full h-80 cursor-pointer group" onClick={onFlip}>
+            <AnimatePresence>
+                {!isFlipped ? (
+                    <motion.div
+                        key="front-zoom"
+                        initial={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute w-full h-full"
+                    >
+                         <Card className="border-destructive/50 border-2 flex flex-col h-full">
+                           <CardHeader>
+                                <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-6 h-6"/> The Old Way: Chaos</CardTitle>
+                                <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
+                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Best manager quits, takes knowledge with them.</span></p>
+                                 <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail during an inspection.</span></p>
+                            </CardContent>
+                              <div className="p-4 text-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">Click to Transform</div>
+                        </Card>
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        key="back-zoom"
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute w-full h-full"
+                    >
+                        <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col h-full">
+                            <CardHeader>
+                            <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The New Way: Control</CardTitle>
+                            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-3 text-sm text-foreground flex-1">
+                                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge retained in the system.</span></p>
+                                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Timestamped audit trail for every task.</span></p>
+                            </CardContent>
+                            <div className="p-4 text-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">Click to Reset</div>
+                        </Card>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
 };
 
 
@@ -73,11 +216,14 @@ const DesignOption = ({ title, description, children }: { title: string, descrip
             {children}
         </div>
     </div>
-)
+);
 
 
 export default function TempDesignClientPage() {
     const [flipped1, setFlipped1] = useState(false);
+    const [flipped2, setFlipped2] = useState(false);
+    const [flipped3, setFlipped3] = useState(false);
+    const [flipped4, setFlipped4] = useState(false);
 
     return (
         <div className="container py-12">
@@ -85,15 +231,36 @@ export default function TempDesignClientPage() {
                 <p>⚠️ This is a temporary design preview page. ⚠️</p>
             </div>
             <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Flipping Card Animation Options</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Interactive Card Animations</h2>
                 <p className="text-muted-foreground mt-2 text-base md:text-lg">Click on the cards below to see the different animation styles for the "Chaos to Control" section.</p>
             </div>
             
             <DesignOption 
-                title="Option 1: Standard Flip"
-                description="A clean, simple 2D flip effect. The card rotates on its vertical axis to reveal the 'Control' state."
+                title="Option 1: 3D Flip"
+                description="A clean, simple 3D flip effect. The card rotates on its vertical axis to reveal the 'Control' state."
             >
                 <FlipCard isFlipped={flipped1} onFlip={() => setFlipped1(!flipped1)} />
+            </DesignOption>
+
+            <DesignOption 
+                title="Option 2: Vertical Unfold"
+                description="The 'Chaos' card folds away while the 'Control' card unfolds from below, like turning a page."
+            >
+                <VerticalUnfoldCard isFlipped={flipped2} onFlip={() => setFlipped2(!flipped2)} />
+            </DesignOption>
+
+            <DesignOption 
+                title="Option 3: Corner Peel"
+                description="The 'Chaos' card peels away from the corner to reveal the solution underneath. Click to peel and reset."
+            >
+                <PeelCard isFlipped={flipped3} onFlip={() => setFlipped3(!flipped3)} />
+            </DesignOption>
+
+             <DesignOption 
+                title="Option 4: Zoom & Fade"
+                description="A smooth and modern transition where the old state fades out while the new one fades in."
+            >
+                <ZoomFadeCard isFlipped={flipped4} onFlip={() => setFlipped4(!flipped4)} />
             </DesignOption>
         </div>
     );
