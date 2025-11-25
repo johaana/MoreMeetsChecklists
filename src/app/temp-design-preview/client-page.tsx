@@ -15,12 +15,12 @@ const cardContent = {
     chaos: {
         icon: <Frown className="h-16 w-16 mb-4"/>,
         title: "The Old Way: Chaos",
-        description: "Relying on human memory, verbal instructions, and hope.",
+        description: "Relying on memory, verbal instructions, and hope.",
         points: [
-            "\"Did anyone check the fire exits?\"",
-            "A new hire makes a costly mistake on their first day.",
-            "Your best manager quits, taking critical knowledge with them.",
-            "No audit trail to prove compliance during an inspection."
+            "Forgotten safety checks",
+            "Costly new hire mistakes",
+            "Knowledge walks out the door",
+            "No proof of compliance"
         ]
     },
     control: {
@@ -28,10 +28,10 @@ const cardContent = {
         title: "The New Way: Control",
         description: "A system of record that ensures excellence every time.",
         points: [
-            "\"Fire exit check completed daily at 9:05 AM. See log.\"",
-            "New hires are productive and compliant from day one.",
-            "Knowledge is retained in the system, making your operation resilient.",
-            "A timestamped, verifiable audit trail for every critical task."
+            "Verifiable safety logs",
+            "Day-one productivity",
+            "System-retained knowledge",
+            "Instant audit trail"
         ]
     }
 };
@@ -99,11 +99,11 @@ const PremiumFlipCard = () => {
                 <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.red.500)]">
                      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
                         <CardHeader className="text-center items-center p-0">
-                            <div className="text-red-400 group-hover:text-red-300 transition-colors">{cardContent.chaos.icon}</div>
+                            <div className="text-red-400 group-hover:text-red-300 transition-colors">{React.cloneElement(cardContent.chaos.icon, {className: "h-20 w-20 mb-2"})}</div>
                             <CardTitle className="text-red-400 font-headline text-2xl group-hover:text-red-300 transition-colors">{cardContent.chaos.title}</CardTitle>
                             <CardDescription className="text-gray-400 text-sm">{cardContent.chaos.description}</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
+                        <CardContent className="space-y-3 text-sm text-gray-300 flex-1 mt-6 p-0">
                             {cardContent.chaos.points.map((point, i) => (
                                 <p key={i} className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>{point}</span></p>
                             ))}
@@ -119,11 +119,11 @@ const PremiumFlipCard = () => {
                  <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-green-500/50 via-blue-900 to-slate-900 group-hover:from-green-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.green.500)]">
                      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
                         <CardHeader className="text-center items-center p-0">
-                            <div className="text-green-400 group-hover:text-green-300 transition-colors">{cardContent.control.icon}</div>
+                            <div className="text-green-400 group-hover:text-green-300 transition-colors">{React.cloneElement(cardContent.control.icon, {className: "h-20 w-20 mb-2"})}</div>
                             <CardTitle className="text-green-400 font-headline text-2xl group-hover:text-green-300 transition-colors">{cardContent.control.title}</CardTitle>
                             <CardDescription className="text-gray-300 text-sm">{cardContent.control.description}</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
+                        <CardContent className="space-y-3 text-sm text-gray-200 flex-1 mt-6 p-0">
                             {cardContent.control.points.map((point, i) => (
                                 <p key={i} className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1"/><span>{point}</span></p>
                             ))}
