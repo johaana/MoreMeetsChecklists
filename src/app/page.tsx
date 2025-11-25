@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -13,7 +12,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 
 const painPoints = {
@@ -239,8 +237,8 @@ const PhilosophySection = () => (
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-12px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary" />
-                  <CarouselNext className="absolute right-[-12px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary" />
+                  <CarouselPrevious className="absolute left-[-8px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
+                  <CarouselNext className="absolute right-[-8px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
                 </Carousel>
              </div>
         </div>
@@ -387,7 +385,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-2">
                         <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
                         <AccordionContent>
-                            AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
+                            AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, safety codes, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-3">
@@ -423,7 +421,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-8">
                         <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
                         <AccordionContent>
-                           They can, but building a complete, compliant SOP library takes <strong>3-6 months of cross-functional effort</strong>. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
+                           They can, but building a complete, compliant SOP library takes <strong>3–6 months of cross-functional effort</strong>. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
@@ -449,3 +447,5 @@ export default function Home() {
   );
 }
 
+
+    
