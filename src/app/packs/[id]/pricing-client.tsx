@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -92,7 +91,7 @@ const ComplianceIcon = ({ standard }: { standard: string }) => {
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
-    const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
+    const hasINR = !!(pack.paymentId && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
@@ -218,7 +217,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
-                                hasINR ? (
+                                (hasINR && pack.paymentId) ? (
                                     <div className="w-full flex justify-center">
                                       <form action={`/thank-you?pack_id=${pack.id}&payment_method=razorpay`}>
                                         <script
@@ -251,4 +250,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
