@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck } from "lucide-react";
+import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck, Frown, Smile } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
@@ -236,7 +236,7 @@ const ChaosToControlSection = () => {
           {/* Before */}
           <Card className="border-destructive/50 border-2 flex flex-col">
             <CardHeader>
-              <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+              <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-6 h-6"/> The Old Way: Chaos</CardTitle>
               <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
@@ -249,7 +249,7 @@ const ChaosToControlSection = () => {
           {/* After */}
           <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
             <CardHeader>
-              <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
+              <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The New Way: Control</CardTitle>
               <CardDescription>A system of record that ensures excellence every time.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-foreground flex-1">
