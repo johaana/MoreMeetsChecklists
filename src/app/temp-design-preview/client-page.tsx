@@ -11,7 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const cardContent = {
     chaos: {
-        icon: <Frown className="h-14 w-14 mb-4"/>,
+        icon: <Frown className="h-16 w-16 mb-4"/>,
         title: "The Old Way: Chaos",
         description: "Relying on human memory, verbal instructions, and hope.",
         points: [
@@ -22,7 +22,7 @@ const cardContent = {
         ]
     },
     control: {
-        icon: <Smile className="h-14 w-14 mb-4"/>,
+        icon: <Smile className="h-16 w-16 mb-4"/>,
         title: "The New Way: Control",
         description: "A system of record that ensures excellence every time.",
         points: [
@@ -92,7 +92,7 @@ const PremiumFlipCard = () => {
         <FlipCard 
             isFlipped={isFlipped} 
             onFlip={() => setIsFlipped(!isFlipped)}
-            containerClassName="min-h-[28rem]"
+            containerClassName="h-[28rem]"
             frontContent={
                 <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.red.500)]">
                      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
@@ -101,12 +101,12 @@ const PremiumFlipCard = () => {
                             <CardTitle className="text-red-400 font-headline text-2xl group-hover:text-red-300 transition-colors">{cardContent.chaos.title}</CardTitle>
                             <CardDescription className="text-gray-400 text-sm">{cardContent.chaos.description}</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-3 text-sm text-gray-300 flex-1 mt-4 p-0">
+                        <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
                             {cardContent.chaos.points.map((point, i) => (
                                 <p key={i} className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>{point}</span></p>
                             ))}
                         </CardContent>
-                        <div className="p-2 text-center text-xs text-gray-500 opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                        <div className="p-2 text-center text-xs text-slate-400 font-semibold opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                           <RefreshCw className="w-3 h-3 group-hover:rotate-180 transition-transform duration-500" />
                           Flip for Solution
                         </div>
@@ -121,14 +121,14 @@ const PremiumFlipCard = () => {
                             <CardTitle className="text-green-400 font-headline text-2xl group-hover:text-green-300 transition-colors">{cardContent.control.title}</CardTitle>
                             <CardDescription className="text-gray-300 text-sm">{cardContent.control.description}</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-3 text-sm text-gray-200 flex-1 mt-4 p-0">
+                        <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
                             {cardContent.control.points.map((point, i) => (
                                 <p key={i} className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1"/><span>{point}</span></p>
                             ))}
                         </CardContent>
-                         <div className="p-2 text-center text-xs text-gray-500 opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                         <div className="p-2 text-center text-xs text-slate-400 font-semibold opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                            <RefreshCw className="w-3 h-3 group-hover:-rotate-180 transition-transform duration-500" />
-                          Flip for Problem
+                          Flip Back
                         </div>
                     </div>
                 </div>
