@@ -356,11 +356,11 @@ const FaqSection = () => (
                     <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated or inconsistent. MoreMeets upgrades your existing system into a globally compliant, audit-ready framework. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
+                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a globally compliant, structured framework that strengthens, not just replaces, what you have.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
+                        <AccordionTrigger>Why not just generate SOPs using AI?</AccordionTrigger>
                         <AccordionContent>
                             AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using global regulations, ISO frameworks, and real-world operational learnings—not generic templates.
                         </AccordionContent>
@@ -378,7 +378,7 @@ const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">
-                        <AccordionTrigger>What ROI can we expect from implementing this?</AccordionTrigger>
+                        <AccordionTrigger>What ROI can we expect?</AccordionTrigger>
                         <AccordionContent>
                            Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
                         </AccordionContent>
@@ -386,10 +386,16 @@ const FaqSection = () => (
                      <AccordionItem value="item-6">
                         <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
                         <AccordionContent>
-                           Yes. Our SOPs are written in simple, actionable language. They include Trainer’s Notes and real-world examples that make daily adoption effortless and turn managers into expert coaches.
+                           Yes. Our SOPs are written in simple, actionable language. They include **Trainer’s Notes** and real-world examples that make daily adoption effortless and turn managers into expert coaches.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-7">
+                        <AccordionTrigger>How does this reduce dependency on our key managers?</AccordionTrigger>
+                        <AccordionContent>
+                           MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the same accuracy and consistency as your top performers, reducing your reliance on any single individual.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-8">
                         <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
                         <AccordionContent>
                            They can, but building a complete, compliant SOP library takes 3-6 months of cross-functional effort. MoreMeets gives you a better outcome instantly, at a fraction of the cost.
