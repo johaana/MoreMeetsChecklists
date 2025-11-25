@@ -81,29 +81,32 @@ const cardContent = {
 };
 
 export default function TempDesignClientPage() {
-    const [isFlipped, setIsFlipped] = useState(false);
+    const [flippedStates, setFlippedStates] = useState([false, false, false]);
+
+    const handleFlip = (index: number) => {
+        const newFlippedStates = [...flippedStates];
+        newFlippedStates[index] = !newFlippedStates[index];
+        setFlippedStates(newFlippedStates);
+    };
 
     return (
         <div className="container py-12">
             <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold mb-8">
                 <p>⚠️ This is a temporary design preview page. ⚠️</p>
             </div>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Interactive Card Design</h2>
-                <p className="text-muted-foreground mt-2 text-base md:text-lg">Click the card to see the 3D flip animation.</p>
-            </div>
             
+            {/* Option 1 */}
             <DesignOption 
-                title="Premium Animated Card"
+                title="Option 1: Premium Dark & Gradient"
                 description="A sophisticated, dark-themed card with gradient borders, glow effects, and a glassmorphism panel for a modern, premium feel."
             >
                 <FlipCard 
-                    isFlipped={isFlipped} 
-                    onFlip={() => setIsFlipped(!isFlipped)}
-                    containerClassName="rounded-2xl shadow-2xl"
+                    isFlipped={flippedStates[0]} 
+                    onFlip={() => handleFlip(0)}
+                    containerClassName="rounded-2xl"
                     frontContent={
-                        <div className="relative w-full h-full rounded-2xl p-0.5 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500">
-                             <div className="relative w-full h-full bg-gray-900 rounded-[14px] p-6 flex flex-col text-white backdrop-blur-xl bg-opacity-80">
+                        <div className="relative w-full h-full rounded-2xl p-0.5 bg-gradient-to-br from-red-500/50 via-gray-800 to-gray-900 group-hover:from-red-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_20px_theme(colors.red.500)]">
+                             <div className="relative w-full h-full bg-gray-900/80 rounded-[14px] p-6 flex flex-col text-white backdrop-blur-lg">
                                 <CardHeader className="text-center items-center p-0">
                                     <div className="text-red-400 group-hover:text-red-300 transition-colors">{cardContent.chaos.icon}</div>
                                     <CardTitle className="text-red-400 font-headline text-2xl group-hover:text-red-300 transition-colors">{cardContent.chaos.title}</CardTitle>
@@ -119,8 +122,8 @@ export default function TempDesignClientPage() {
                         </div>
                     }
                     backContent={
-                         <div className="relative w-full h-full rounded-2xl p-0.5 bg-gradient-to-br from-green-500/50 via-gray-800 to-gray-900 group-hover:from-green-500/70 transition-all duration-500">
-                             <div className="relative w-full h-full bg-gray-900 rounded-[14px] p-6 flex flex-col text-white backdrop-blur-xl bg-opacity-80">
+                         <div className="relative w-full h-full rounded-2xl p-0.5 bg-gradient-to-br from-green-500/50 via-gray-800 to-gray-900 group-hover:from-green-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_20px_theme(colors.green.500)]">
+                             <div className="relative w-full h-full bg-gray-900/80 rounded-[14px] p-6 flex flex-col text-white backdrop-blur-lg">
                                 <CardHeader className="text-center items-center p-0">
                                     <div className="text-green-400 group-hover:text-green-300 transition-colors">{cardContent.control.icon}</div>
                                     <CardTitle className="text-green-400 font-headline text-2xl group-hover:text-green-300 transition-colors">{cardContent.control.title}</CardTitle>
@@ -136,6 +139,86 @@ export default function TempDesignClientPage() {
                         </div>
                     }
                 />
+            </DesignOption>
+
+            {/* Option 2 */}
+            <DesignOption
+              title="Option 2: Clean & Corporate"
+              description="A professional, light-themed card using the app's primary colors for a trustworthy, corporate aesthetic. Simple, clean, and direct."
+            >
+              <FlipCard
+                isFlipped={flippedStates[1]}
+                onFlip={() => handleFlip(1)}
+                containerClassName="rounded-xl shadow-lg"
+                frontContent={
+                  <Card className="h-full w-full border-destructive/50 border-2">
+                    <CardHeader className="text-center items-center">
+                      <div className="text-destructive">{cardContent.chaos.icon}</div>
+                      <CardTitle className="text-destructive">{cardContent.chaos.title}</CardTitle>
+                      <CardDescription>{cardContent.chaos.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-3 text-sm text-muted-foreground">
+                      {cardContent.chaos.points.map((point, i) => (
+                        <p key={i} className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>{point}</span></p>
+                      ))}
+                    </CardContent>
+                  </Card>
+                }
+                backContent={
+                  <Card className="h-full w-full border-primary/50 border-2 bg-background shadow-lg">
+                    <CardHeader className="text-center items-center">
+                      <div className="text-primary">{cardContent.control.icon}</div>
+                      <CardTitle className="text-primary">{cardContent.control.title}</CardTitle>
+                      <CardDescription>{cardContent.control.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-3 text-sm text-foreground">
+                      {cardContent.control.points.map((point, i) => (
+                        <p key={i} className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>{point}</span></p>
+                      ))}
+                    </CardContent>
+                  </Card>
+                }
+              />
+            </DesignOption>
+
+            {/* Option 3 */}
+            <DesignOption
+              title="Option 3: Creative & Bold"
+              description="A vibrant design with colored backgrounds and high-contrast text for a bold, energetic, and modern look."
+            >
+              <FlipCard
+                isFlipped={flippedStates[2]}
+                onFlip={() => handleFlip(2)}
+                containerClassName="rounded-lg shadow-xl"
+                frontContent={
+                  <div className="h-full w-full rounded-lg bg-red-600 p-6 text-white flex flex-col">
+                    <CardHeader className="text-center items-center p-0">
+                      <div className="">{cardContent.chaos.icon}</div>
+                      <CardTitle className="font-headline text-2xl">{cardContent.chaos.title}</CardTitle>
+                      <CardDescription className="text-red-100 text-sm">{cardContent.chaos.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4 text-sm text-red-50 flex-1 mt-6 p-0">
+                      {cardContent.chaos.points.map((point, i) => (
+                          <p key={i} className="flex items-start gap-3 border-t border-red-400/50 pt-2"><ArrowRight className="w-4 h-4 shrink-0 mt-1"/><span>{point}</span></p>
+                      ))}
+                    </CardContent>
+                  </div>
+                }
+                backContent={
+                   <div className="h-full w-full rounded-lg bg-green-600 p-6 text-white flex flex-col">
+                    <CardHeader className="text-center items-center p-0">
+                      <div className="">{cardContent.control.icon}</div>
+                      <CardTitle className="font-headline text-2xl">{cardContent.control.title}</CardTitle>
+                      <CardDescription className="text-green-100 text-sm">{cardContent.control.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4 text-sm text-green-50 flex-1 mt-6 p-0">
+                      {cardContent.control.points.map((point, i) => (
+                          <p key={i} className="flex items-start gap-3 border-t border-green-400/50 pt-2"><CheckCircle className="w-4 h-4 shrink-0 mt-1"/><span>{point}</span></p>
+                      ))}
+                    </CardContent>
+                  </div>
+                }
+              />
             </DesignOption>
         </div>
     );
