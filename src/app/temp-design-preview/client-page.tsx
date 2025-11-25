@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => void }) => {
   return (
     <div 
-      className="relative w-full h-80 cursor-pointer group" 
+      className="relative w-full h-96 cursor-pointer group" 
       onClick={onFlip}
       style={{ perspective: '1000px' }}
     >
@@ -23,18 +23,19 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
       >
         {/* Front of Card */}
         <div className="absolute w-full h-full" style={{ backfaceVisibility: 'hidden' }}>
-          <Card className="border-destructive/50 border-2 flex flex-col h-full">
-            <CardHeader>
-              <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-6 h-6"/> The Old Way: Chaos</CardTitle>
-              <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+          <Card className="border-destructive/70 border-2 flex flex-col h-full bg-slate-900 text-white shadow-lg shadow-destructive/20">
+            <CardHeader className="text-center">
+              <Frown className="w-12 h-12 text-destructive mx-auto mb-2"/>
+              <CardTitle className="text-destructive font-headline text-2xl">The Old Way: Chaos</CardTitle>
+              <CardDescription className="text-slate-400">Relying on human memory, verbal instructions, and hope.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+            <CardContent className="space-y-4 text-base text-slate-300 flex-1">
+              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
             </CardContent>
              <div className="p-4 text-center">
-                <div className="flex items-center justify-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center justify-center text-xs text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">
                     <RefreshCw className="w-3 h-3 mr-2 animate-spin"/> Click to flip
                 </div>
             </div>
@@ -43,18 +44,19 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
 
         {/* Back of Card */}
         <div className="absolute w-full h-full" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-           <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col h-full">
-            <CardHeader>
-              <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The New Way: Control</CardTitle>
-              <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+           <Card className="border-primary/70 border-2 bg-slate-50 shadow-lg shadow-primary/20 flex flex-col h-full">
+            <CardHeader className="text-center">
+                <Smile className="w-12 h-12 text-primary mx-auto mb-2"/>
+              <CardTitle className="text-primary font-headline text-2xl">The New Way: Control</CardTitle>
+              <CardDescription className="text-slate-600">A system of record that ensures excellence every time.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-foreground flex-1">
-               <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+            <CardContent className="space-y-4 text-base text-slate-800 flex-1">
+               <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+              <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+              <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
             </CardContent>
              <div className="p-4 text-center">
-                 <div className="flex items-center justify-center text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                 <div className="flex items-center justify-center text-xs text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">
                     <RefreshCw className="w-3 h-3 mr-2 animate-spin"/> Click to flip back
                 </div>
             </div>
@@ -236,8 +238,8 @@ export default function TempDesignClientPage() {
             </div>
             
             <DesignOption 
-                title="Option 1: 3D Flip"
-                description="A clean, simple 3D flip effect. The card rotates on its vertical axis to reveal the 'Control' state."
+                title="Option 1: 3D Flip (Redesigned)"
+                description="A dynamic 3D flip with improved colors and icons to represent chaos and control."
             >
                 <FlipCard isFlipped={flipped1} onFlip={() => setFlipped1(!flipped1)} />
             </DesignOption>
