@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck, Frown, Smile } from "lucide-react";
+import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck, Frown, Smile, RefreshCw } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
@@ -223,52 +223,54 @@ const PhilosophySection = () => (
     </section>
 );
 
-
 const ChaosToControlSection = () => {
   const [isFlipped, setIsFlipped] = React.useState(false);
-  
+
   const front = (
-    <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-destructive/50 via-gray-800 to-gray-900 group-hover:from-destructive/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.destructive)]">
-         <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
-            <CardHeader className="text-center items-center p-0">
-                <div className="text-red-400 group-hover:text-red-300 transition-colors"><Frown className="h-20 w-20 mb-2"/></div>
-                <CardTitle className="text-red-400 font-headline text-3xl group-hover:text-red-300 transition-colors">The Old Way: Chaos</CardTitle>
-                <CardDescription className="text-gray-400 text-sm mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
-                <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>Forgotten safety checks</span></p>
-                <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>Costly new hire mistakes</span></p>
-                <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>Knowledge walks out the door</span></p>
-                 <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1"/><span>No proof of compliance</span></p>
-            </CardContent>
-            <div className="p-2 text-center text-xs text-slate-400 font-semibold opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-              Flip for Solution
-            </div>
+    <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-red-800/80 via-slate-900 to-slate-900 shadow-2xl">
+      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
+        <CardHeader className="text-center items-center p-0">
+          <div className="text-red-400">
+            <Frown className="h-16 w-16 mb-2" />
+          </div>
+          <CardTitle className="text-red-400 font-headline text-3xl">The Old Way: Chaos</CardTitle>
+          <CardDescription className="text-gray-400 text-sm mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
+          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Forgotten safety checks</span></p>
+          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Costly new hire mistakes</span></p>
+          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Knowledge walks out the door</span></p>
+          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>No proof of compliance</span></p>
+        </CardContent>
+        <div className="p-2 text-center text-xs text-slate-400 font-semibold flex items-center justify-center gap-2">
+          Flip for Solution
         </div>
+      </div>
     </div>
   );
 
-   const back = (
-     <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-green-500/50 via-blue-900 to-slate-900 group-hover:from-green-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-[0_0_25px_theme(colors.green.500)]">
-         <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
-            <CardHeader className="text-center items-center p-0">
-                <div className="text-green-400 group-hover:text-green-300 transition-colors"><Smile className="h-20 w-20 mb-2"/></div>
-                <CardTitle className="text-green-400 font-headline text-3xl group-hover:text-green-300 transition-colors">The New Way: Control</CardTitle>
-                <CardDescription className="text-gray-300 text-sm mt-1">A system of record that ensures excellence.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
-                <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1"/><span>Verifiable safety logs</span></p>
-                <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1"/><span>Day-one productivity</span></p>
-                <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1"/><span>System-retained knowledge</span></p>
-                <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1"/><span>Instant audit trail</span></p>
-            </CardContent>
-             <div className="p-2 text-center text-xs text-slate-400 font-semibold opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-              Flip Back
-            </div>
+  const back = (
+    <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-br from-green-800/80 via-slate-900 to-slate-900 shadow-2xl">
+      <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
+        <CardHeader className="text-center items-center p-0">
+          <div className="text-green-400">
+            <Smile className="h-16 w-16 mb-2" />
+          </div>
+          <CardTitle className="text-green-400 font-headline text-3xl">The New Way: Control</CardTitle>
+          <CardDescription className="text-gray-300 text-sm mt-1">A system of record that ensures excellence.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
+          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Verifiable safety logs</span></p>
+          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Day-one productivity</span></p>
+          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>System-retained knowledge</span></p>
+          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Instant audit trail</span></p>
+        </CardContent>
+        <div className="p-2 text-center text-xs text-slate-400 font-semibold flex items-center justify-center gap-2">
+          Flip Back
         </div>
+      </div>
     </div>
   );
-
 
   return (
     <section className="w-full py-16 md:py-24 bg-secondary/30">
@@ -277,7 +279,7 @@ const ChaosToControlSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
           <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
         </div>
-         <div 
+        <div
           className="group max-w-sm mx-auto cursor-pointer"
           onClick={() => setIsFlipped(!isFlipped)}
           style={{ perspective: '1200px' }}
@@ -287,7 +289,7 @@ const ChaosToControlSection = () => {
             initial={false}
             animate={{ rotateY: isFlipped ? 180 : 0 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            style={{ transformStyle: 'preserve-3d', height: '28rem' }}
+            style={{ transformStyle: 'preserve-3d', height: '26rem' }}
           >
             <div className="absolute h-full w-full" style={{ backfaceVisibility: 'hidden' }}>{front}</div>
             <div className="absolute h-full w-full" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>{back}</div>
@@ -297,6 +299,7 @@ const ChaosToControlSection = () => {
     </section>
   );
 };
+
 
 const ExpertiseExtractorSection = () => (
   <section className="w-full py-16 md:py-24">
