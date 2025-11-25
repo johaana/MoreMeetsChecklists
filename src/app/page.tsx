@@ -233,14 +233,14 @@ const ChaosToControlSection = () => {
           <div className="text-red-400">
             <Frown className="h-12 w-12 mb-2" />
           </div>
-          <CardTitle className="text-red-400 font-headline text-2xl">The Old Way: Chaos</CardTitle>
+          <CardTitle className="text-red-400 font-headline text-xl">The Old Way: Chaos</CardTitle>
           <CardDescription className="text-gray-400 text-xs mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Forgotten safety checks</span></p>
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Costly new hire mistakes</span></p>
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Knowledge walks out the door</span></p>
-          <p className="flex items-start gap-3"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>No proof of compliance</span></p>
+          <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Forgotten safety checks</span></p>
+          <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Costly new hire mistakes</span></p>
+          <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>Knowledge walks out the door</span></p>
+          <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-red-500/80 shrink-0 mt-1" /><span>No proof of compliance</span></p>
         </CardContent>
         <div className="p-2 text-center text-xs text-slate-400 font-semibold flex items-center justify-center gap-2">
           Flip Back
@@ -256,14 +256,14 @@ const ChaosToControlSection = () => {
           <div className="text-green-400">
             <Smile className="h-12 w-12 mb-2" />
           </div>
-          <CardTitle className="text-green-400 font-headline text-2xl">The New Way: Control</CardTitle>
+          <CardTitle className="text-green-400 font-headline text-xl">The New Way: Control</CardTitle>
           <CardDescription className="text-gray-300 text-xs mt-1">A system of record that ensures excellence.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
-          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Verifiable safety logs</span></p>
-          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Day-one productivity</span></p>
-          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>System-retained knowledge</span></p>
-          <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Instant audit trail</span></p>
+          <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Verifiable safety logs</span></p>
+          <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Day-one productivity</span></p>
+          <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>System-retained knowledge</span></p>
+          <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Instant audit trail</span></p>
         </CardContent>
         <div className="p-2 text-center text-xs text-slate-400 font-semibold flex items-center justify-center gap-2">
           Flip for Problem
@@ -416,3 +416,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
