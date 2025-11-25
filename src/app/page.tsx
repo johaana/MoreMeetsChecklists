@@ -9,10 +9,7 @@ import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 

@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -19,8 +20,8 @@ const contentOptions = {
             mobileButtonText: 'Resilience'
         },
         error: {
-            title: `"Compliance slips aren’t small mistakes."`,
-            description: 'They’re lost licenses, fines, and headlines. We keep you bulletproof.',
+            title: `"World-class compliance used to cost a fortune. We fixed that."`,
+            description: 'Achieve world-class compliance without the enterprise price tag. Our audit-ready, globally-compliant SOPs are available for instant download—no subscriptions, no hidden fees.',
             buttonText: 'Global Compliance',
             mobileButtonText: 'Compliance'
         },
@@ -35,7 +36,7 @@ const contentOptions = {
 
 
 type PainPointKey = keyof typeof contentOptions.optionA;
-const painPointKeys: PainPointKey[] = ['resilience', 'error', 'onboarding'];
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const BaseHeroSection = ({ 
     overlayClass = 'bg-black/50', 
@@ -105,7 +106,7 @@ const AnimatedText = ({ content, className, useTextShadow = true }: { content: t
         transition={{ duration: 0.3 }}
         className={className}
         >
-            <h1 className={cn("text-2xl md:text-5xl font-extrabold font-headline tracking-tighter text-white", useTextShadow && "[text-shadow:0_1px_4px_rgba(0,0,0,0.7)]")}>
+            <h1 className={cn("text-3xl md:text-5xl font-extrabold font-headline tracking-tighter text-white", useTextShadow && "[text-shadow:0_1px_4px_rgba(0,0,0,0.7)]")}>
                 {content.title}
             </h1>
             <p className={cn("text-base text-white/90 max-w-xl mt-3", useTextShadow && "[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]")}>
@@ -127,7 +128,7 @@ const TempPageOption = ({ title, description, children }: { title: string, descr
 )
 
 const HeroVariant = ({ children, contentSet }: { children: (content: any, activePainPoint: PainPointKey, setActivePainPoint: (k: PainPointKey) => void) => React.ReactNode, contentSet: any }) => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('resilience');
+    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     return <>{children(contentSet, activePainPoint, setActivePainPoint)}</>;
 };
 
@@ -140,7 +141,7 @@ export default function TempDesignPreviewPage() {
             <SiteHeader />
             <main className="flex-1">
                 <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-                    <p>⚠️ This is a temporary design preview page. ⚠️</p>
+                    <p>⚠️ This is a temporary design preview page with 5 mobile options. ⚠️</p>
                 </div>
                 
                 <TempPageOption title="Option 1: Floating Content Block" description="Text and controls are grouped in a semi-transparent block for maximum readability. This is the current live version.">
@@ -153,7 +154,7 @@ export default function TempDesignPreviewPage() {
                                     <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                     <div className="pt-2">
                                         <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                            <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                                         </Button>
                                     </div>
                                 </div>
@@ -173,7 +174,7 @@ export default function TempDesignPreviewPage() {
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                 <div className="pt-2">
                                     <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
-                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                                     </Button>
                                 </div>
                             </div>
@@ -192,7 +193,7 @@ export default function TempDesignPreviewPage() {
                                 <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                 <div className="pt-2">
                                     <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
-                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                                     </Button>
                                 </div>
                             </div>
@@ -211,7 +212,7 @@ export default function TempDesignPreviewPage() {
                                 <div className='pt-4 space-y-4'>
                                     <InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} />
                                     <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
-                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                                     </Button>
                                 </div>
                             </div>
@@ -232,7 +233,7 @@ export default function TempDesignPreviewPage() {
                                 </div>
                                 <div className="pt-2">
                                     <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
-                                        <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                                     </Button>
                                 </div>
                             </div>
@@ -248,11 +249,42 @@ export default function TempDesignPreviewPage() {
                             {(content, activePainPoint, setActivePainPoint) => (
                             <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" containerClass="text-left md:justify-center">
                                 <div className="max-w-2xl">
-                                    <AnimatedText content={content[activePainPoint]} useTextShadow={true} />
-                                    <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                    <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
+                                        <AnimatedText content={content[activePainPoint]} useTextShadow={true} />
+                                    </div>
+                                    <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 mt-6 max-w-lg">
+                                        <div className="flex w-full">
+                                            <motion.div
+                                                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                                                initial={false}
+                                                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                            />
+                                            {painPointKeys.map((key) => (
+                                            <Button
+                                                key={key}
+                                                variant="ghost"
+                                                className={cn(
+                                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
+                                                    "whitespace-normal leading-tight flex items-center text-center",
+                                                    activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                                                )}
+                                                onClick={() => setActivePainPoint(key)}
+                                            >
+                                                <span>{content[key].buttonText}</span>
+                                            </Button>
+                                            ))}
+                                        </div>
+                                    </div>
                                     <div className="pt-6">
-                                        <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        <h2 className="text-lg font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
+                                    </div>
+                                    <div className="pt-4">
+                                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                                            <Link href="/library">
+                                            Explore The SOP Library
+                                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                            </Link>
                                         </Button>
                                     </div>
                                 </div>
@@ -266,11 +298,42 @@ export default function TempDesignPreviewPage() {
                             {(content, activePainPoint, setActivePainPoint) => (
                             <BaseHeroSection overlayClass="bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent" containerClass="text-left md:justify-center">
                                 <div className="max-w-2xl">
-                                    <AnimatedText content={content[activePainPoint]} useTextShadow={false} />
-                                    <div className="mt-6 max-w-lg"><InteractivePill painPoints={content} activePainPoint={activePainPoint} setActivePainPoint={setActivePainPoint} /></div>
+                                    <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
+                                        <AnimatedText content={content[activePainPoint]} useTextShadow={false} />
+                                    </div>
+                                    <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 mt-6 max-w-lg">
+                                        <div className="flex w-full">
+                                            <motion.div
+                                                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                                                initial={false}
+                                                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                            />
+                                            {painPointKeys.map((key) => (
+                                            <Button
+                                                key={key}
+                                                variant="ghost"
+                                                className={cn(
+                                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
+                                                    "whitespace-normal leading-tight flex items-center text-center",
+                                                    activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                                                )}
+                                                onClick={() => setActivePainPoint(key)}
+                                            >
+                                                <span>{content[key].buttonText}</span>
+                                            </Button>
+                                            ))}
+                                        </div>
+                                    </div>
                                     <div className="pt-6">
-                                        <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg" variant="accent">
-                                            <Link href="/packs">Explore Packages<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                                        <h2 className="text-lg font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
+                                    </div>
+                                    <div className="pt-4">
+                                        <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                                            <Link href="/library">
+                                            Explore The SOP Library
+                                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                            </Link>
                                         </Button>
                                     </div>
                                 </div>
