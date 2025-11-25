@@ -224,9 +224,6 @@ const PhilosophySection = () => (
 
 
 const ChaosToControlSection = () => {
-  const chaosImage = PlaceHolderImages.find(img => img.id === 'chaos-desk');
-  const controlImage = PlaceHolderImages.find(img => img.id === 'control-desk');
-
   return (
     <section className="w-full py-16 md:py-24 bg-secondary/30">
       <div className="container px-4 md:px-6">
@@ -237,15 +234,13 @@ const ChaosToControlSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
           {/* Before */}
           <Card className="border-destructive/50 border-2 flex flex-col">
-            {chaosImage && (
-              <Image 
-                src={chaosImage.imageUrl} 
-                alt={chaosImage.description} 
-                width={600} 
-                height={400} 
-                className="rounded-t-lg object-cover w-full aspect-video"
-              />
-            )}
+            <Image 
+              src="https://i.postimg.cc/d10rGypZ/pexels-khwanchai-12885861.jpg" 
+              alt="Messy desk representing operational chaos" 
+              width={600} 
+              height={400} 
+              className="rounded-t-lg object-cover w-full aspect-video"
+            />
             <CardHeader>
               <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
               <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
@@ -259,15 +254,13 @@ const ChaosToControlSection = () => {
           </Card>
           {/* After */}
           <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
-            {controlImage && (
-              <Image 
-                src={controlImage.imageUrl} 
-                alt={controlImage.description} 
-                width={600} 
-                height={400} 
-                className="rounded-t-lg object-cover w-full aspect-video"
-              />
-            )}
+            <Image 
+              src="https://i.postimg.cc/4ydP4Msr/pexels-olly-3778966.jpg" 
+              alt="Organized desk representing operational control" 
+              width={600} 
+              height={400} 
+              className="rounded-t-lg object-cover w-full aspect-video"
+            />
             <CardHeader>
               <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
               <CardDescription>A system of record that ensures excellence every time.</CardDescription>
