@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -11,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 
@@ -225,17 +226,11 @@ const PhilosophySection = () => (
                     align: "start",
                     loop: true,
                   }}
-                  plugins={[
-                    Autoplay({
-                      delay: 5000,
-                      stopOnInteraction: true,
-                    }),
-                  ]}
-                  className="w-full"
+                  className="w-full max-w-xs sm:max-w-sm mx-auto"
                 >
                   <CarouselContent>
                     {philosophyCards.map((card, index) => (
-                      <CarouselItem key={index} className="basis-4/5">
+                      <CarouselItem key={index}>
                         <div className="p-1 h-full">
                            <ValueCard icon={card.icon} title={card.title}>
                                 {card.children}
@@ -244,6 +239,8 @@ const PhilosophySection = () => (
                       </CarouselItem>
                     ))}
                   </CarouselContent>
+                  <CarouselPrevious className="absolute left-[-12px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary" />
+                  <CarouselNext className="absolute right-[-12px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary" />
                 </Carousel>
              </div>
         </div>
@@ -451,3 +448,4 @@ export default function Home() {
     </div>
   );
 }
+
