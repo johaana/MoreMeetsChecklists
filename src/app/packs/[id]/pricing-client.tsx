@@ -25,6 +25,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
         e.preventDefault();
         setLoading(true);
 
+        // This action now correctly points to the correct function location.
         const result = await addContact({ email, packId: pack.id });
 
         if (result.success) {
@@ -250,3 +251,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+    
