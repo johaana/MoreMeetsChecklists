@@ -65,6 +65,8 @@ const RefinedHeroSection = () => {
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
             
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+
             <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
               
               {/* Desktop View */}
@@ -126,7 +128,6 @@ const RefinedHeroSection = () => {
 
               {/* Mobile View */}
               <div className="md:hidden text-left items-start flex flex-col relative z-10">
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-0" />
                  <div className="w-full max-w-xl space-y-6 relative z-10">
                     <div className="min-h-[14rem] flex items-end">
                        <AnimatePresence mode="wait">
@@ -234,13 +235,6 @@ const ChaosToControlSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
           {/* Before */}
           <Card className="border-destructive/50 border-2 flex flex-col">
-            <Image 
-              src="https://i.postimg.cc/d10rGypZ/pexels-khwanchai-12885861.jpg" 
-              alt="Messy desk representing operational chaos" 
-              width={600} 
-              height={400} 
-              className="rounded-t-lg object-cover w-full aspect-video"
-            />
             <CardHeader>
               <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
               <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
@@ -254,13 +248,6 @@ const ChaosToControlSection = () => {
           </Card>
           {/* After */}
           <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
-            <Image 
-              src="https://i.postimg.cc/4ydP4Msr/pexels-olly-3778966.jpg" 
-              alt="Organized desk representing operational control" 
-              width={600} 
-              height={400} 
-              className="rounded-t-lg object-cover w-full aspect-video"
-            />
             <CardHeader>
               <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
               <CardDescription>A system of record that ensures excellence every time.</CardDescription>
