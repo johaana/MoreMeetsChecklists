@@ -7,6 +7,8 @@ import { ArrowRight, CheckCircle, Frown, Smile, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { SiteHeader } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 
 
 const cardContent = {
