@@ -23,9 +23,9 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
       >
         {/* Front of Card */}
         <div className="absolute w-full h-full" style={{ backfaceVisibility: 'hidden' }}>
-          <Card className="border-destructive/70 border-2 flex flex-col h-full bg-slate-900 text-white shadow-lg shadow-destructive/20">
-            <CardHeader className="text-center">
-              <Frown className="w-12 h-12 text-destructive mx-auto mb-2"/>
+          <Card className="border-destructive/70 border-2 flex flex-col h-full bg-slate-900 text-white shadow-lg shadow-destructive/20 bg-[url('/noise.png')] bg-repeat">
+            <CardHeader className="text-center items-center">
+              <Frown className="w-12 h-12 text-destructive mb-2"/>
               <CardTitle className="text-destructive font-headline text-2xl">The Old Way: Chaos</CardTitle>
               <CardDescription className="text-slate-400">Relying on human memory, verbal instructions, and hope.</CardDescription>
             </CardHeader>
@@ -36,7 +36,7 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
             </CardContent>
              <div className="p-4 text-center">
                 <div className="flex items-center justify-center text-xs text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <RefreshCw className="w-3 h-3 mr-2 animate-spin"/> Click to flip
+                    <RefreshCw className="w-3 h-3 mr-2 transition-transform group-hover:rotate-180 duration-500"/> Click to Flip
                 </div>
             </div>
           </Card>
@@ -45,8 +45,8 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
         {/* Back of Card */}
         <div className="absolute w-full h-full" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
            <Card className="border-primary/70 border-2 bg-slate-50 shadow-lg shadow-primary/20 flex flex-col h-full">
-            <CardHeader className="text-center">
-                <Smile className="w-12 h-12 text-primary mx-auto mb-2"/>
+            <CardHeader className="text-center items-center">
+                <Smile className="w-12 h-12 text-primary mb-2"/>
               <CardTitle className="text-primary font-headline text-2xl">The New Way: Control</CardTitle>
               <CardDescription className="text-slate-600">A system of record that ensures excellence every time.</CardDescription>
             </CardHeader>
@@ -57,7 +57,7 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
             </CardContent>
              <div className="p-4 text-center">
                  <div className="flex items-center justify-center text-xs text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <RefreshCw className="w-3 h-3 mr-2 animate-spin"/> Click to flip back
+                    <RefreshCw className="w-3 h-3 mr-2 transition-transform group-hover:rotate-180 duration-500"/> Click to Flip Back
                 </div>
             </div>
           </Card>
