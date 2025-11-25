@@ -25,18 +25,18 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
         <div className="absolute w-full h-full" style={{ backfaceVisibility: 'hidden' }}>
           <Card className="border-destructive/70 border-2 flex flex-col h-full bg-slate-900 text-white shadow-lg shadow-destructive/20 bg-[url('/noise.png')] bg-repeat">
             <CardHeader className="text-center items-center">
-              <Frown className="w-12 h-12 text-destructive mb-2"/>
-              <CardTitle className="text-destructive font-headline text-2xl">The Old Way: Chaos</CardTitle>
+              <Frown className="w-12 h-12 text-red-500 mb-2"/>
+              <CardTitle className="text-red-500 font-headline text-2xl">The Old Way: Chaos</CardTitle>
               <CardDescription className="text-slate-400">Relying on human memory, verbal instructions, and hope.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 text-base text-slate-300 flex-1">
-              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
-              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
-              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-red-500 shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-red-500 shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+              <p className="flex items-start gap-3"><ArrowRight className="w-5 h-5 text-red-500 shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
             </CardContent>
              <div className="p-4 text-center">
-                <div className="flex items-center justify-center text-xs text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <RefreshCw className="w-3 h-3 mr-2 transition-transform group-hover:rotate-180 duration-500"/> Click to Flip
+                <div className="font-semibold text-sm text-slate-400 group-hover:text-white transition-colors">
+                    Click Card to Flip
                 </div>
             </div>
           </Card>
@@ -44,20 +44,20 @@ const FlipCard = ({ isFlipped, onFlip }: { isFlipped: boolean, onFlip: () => voi
 
         {/* Back of Card */}
         <div className="absolute w-full h-full" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-           <Card className="border-primary/70 border-2 bg-slate-50 shadow-lg shadow-primary/20 flex flex-col h-full">
+           <Card className="border-green-500/70 border-2 bg-slate-50 shadow-lg shadow-green-500/20 flex flex-col h-full">
             <CardHeader className="text-center items-center">
-                <Smile className="w-12 h-12 text-primary mb-2"/>
-              <CardTitle className="text-primary font-headline text-2xl">The New Way: Control</CardTitle>
+                <Smile className="w-12 h-12 text-green-600 mb-2"/>
+              <CardTitle className="text-green-600 font-headline text-2xl">The New Way: Control</CardTitle>
               <CardDescription className="text-slate-600">A system of record that ensures excellence every time.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 text-base text-slate-800 flex-1">
-               <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-              <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-              <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+               <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+              <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+              <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
             </CardContent>
              <div className="p-4 text-center">
-                 <div className="flex items-center justify-center text-xs text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <RefreshCw className="w-3 h-3 mr-2 transition-transform group-hover:rotate-180 duration-500"/> Click to Flip Back
+                 <div className="font-semibold text-sm text-slate-400 group-hover:text-slate-600 transition-colors">
+                    Click Card to Flip
                 </div>
             </div>
           </Card>
