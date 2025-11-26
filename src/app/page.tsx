@@ -383,7 +383,7 @@ const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-2">
-                        <AccordionTrigger>Why not just generate SOPs using AI?</AccordionTrigger>
+                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
                         <AccordionContent>
                            AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, safety codes, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
                         </AccordionContent>
@@ -397,13 +397,13 @@ const FaqSection = () => (
                     <AccordionItem value="item-4">
                         <AccordionTrigger>Will this system fit our unique workflows?</AccordionTrigger>
                         <AccordionContent>
-                           Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
+                            Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-5">
-                        <AccordionTrigger>What ROI can we expect?</AccordionTrigger>
+                    <AccordionItem value="item-5">
+                        <AccordionTrigger>What ROI can we expect from implementing this?</AccordionTrigger>
                         <AccordionContent>
-                           Clients report <strong>fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk.</strong> Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
+                           Clients report <strong>fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk</strong>. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-6">
