@@ -15,7 +15,6 @@ import { individualChecklists } from '@/lib/individual-checklists';
 import { PainPoint } from '@/components/ui/pain-point';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from '@/lib/utils';
 
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
@@ -166,12 +165,12 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                            <p className="text-4xl font-extrabold mb-4">
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
-                            <div className={cn(currency === 'INR' ? 'block' : 'hidden', 'w-full flex justify-center')}>
+                            <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
                                 {hasINR && checklist.paymentId && <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />}
                                 {currency === 'INR' && (!hasINR || !checklist.paymentId) && <p className='text-destructive text-sm'>INR payments not yet available.</p>}
                             </div>
 
-                            <div className={cn(currency === 'USD' ? 'block' : 'hidden', 'w-full flex justify-center')}>
+                            <div style={{ display: currency === 'USD' ? 'block' : 'none' }} className="w-full flex justify-center">
                                 {hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
