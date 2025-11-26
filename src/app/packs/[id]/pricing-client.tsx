@@ -107,7 +107,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ];
 
-    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${pack.paymentId}" async></script></form>`;
+    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${pack.paymentId}" async><\/script></form>`;
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
@@ -217,20 +217,21 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             />
 
                         </CardContent>
-                         <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
-                           {currency === 'INR' ? (
-                                (hasINR && pack.paymentId) ? (
-                                    <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />
-                                ) : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
-                            ) : (
-                                hasUSD ? (
+                         <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3 items-center">
+                           <div className={cn(currency === 'INR' ? 'block' : 'hidden', 'w-full flex justify-center')}>
+                                {hasINR && pack.paymentId && <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />}
+                                {currency === 'INR' && (!hasINR || !pack.paymentId) && <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
+                            </div>
+
+                            <div className={cn(currency === 'USD' ? 'block' : 'hidden', 'w-full flex justify-center')}>
+                                {hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                             Buy Now
                                         </Link>
                                     </Button>
-                                ) : <p className='text-destructive text-sm font-semibold'>USD payment option is currently unavailable.</p>
-                            )}
+                                ) : <p className='text-destructive text-sm font-semibold'>USD payment option is currently unavailable.</p>}
+                            </div>
                            <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
@@ -244,3 +245,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+

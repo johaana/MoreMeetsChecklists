@@ -15,6 +15,7 @@ import { individualChecklists } from '@/lib/individual-checklists';
 import { PainPoint } from '@/components/ui/pain-point';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from '@/lib/utils';
 
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
@@ -93,7 +94,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     }, []);
 
     const isSurgicalChecklist = checklist.id === 'surgical-safety';
-    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${checklist.paymentId}" async></script></form>`;
+    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${checklist.paymentId}" async><\/script></form>`;
 
   return (
     <>
@@ -165,19 +166,20 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                            <p className="text-4xl font-extrabold mb-4">
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
-                            {currency === 'INR' ? (
-                                (hasINR && checklist.paymentId) ? (
-                                    <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />
-                                ) : <p className='text-destructive text-sm'>INR payments not yet available.</p>
-                            ) : (
-                                hasUSD ? (
+                            <div className={cn(currency === 'INR' ? 'block' : 'hidden', 'w-full flex justify-center')}>
+                                {hasINR && checklist.paymentId && <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />}
+                                {currency === 'INR' && (!hasINR || !checklist.paymentId) && <p className='text-destructive text-sm'>INR payments not yet available.</p>}
+                            </div>
+
+                            <div className={cn(currency === 'USD' ? 'block' : 'hidden', 'w-full flex justify-center')}>
+                                {hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
                                             Buy Now
                                         </Link>
                                     </Button>
-                                ) : <p className='text-destructive text-sm'>USD payments not yet available.</p>
-                            )}
+                                ) : <p className='text-destructive text-sm'>USD payments not yet available.</p>}
+                            </div>
                         </CardContent>
                          <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
                             <ValueProposition
