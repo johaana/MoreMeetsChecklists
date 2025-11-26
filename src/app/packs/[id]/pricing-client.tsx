@@ -107,6 +107,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ];
 
+    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${pack.paymentId}" async></script></form>`;
+
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
              <section className="w-full py-12 md:py-16" id="pricing">
@@ -218,13 +220,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
                                 (hasINR && pack.paymentId) ? (
-                                    <form>
-                                        <script
-                                            src="https://checkout.razorpay.com/v1/payment-button.js"
-                                            data-payment_button_id={pack.paymentId}
-                                            async
-                                        ></script>
-                                    </form>
+                                    <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />
                                 ) : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
                             ) : (
                                 hasUSD ? (

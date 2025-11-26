@@ -93,6 +93,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     }, []);
 
     const isSurgicalChecklist = checklist.id === 'surgical-safety';
+    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${checklist.paymentId}" async></script></form>`;
 
   return (
     <>
@@ -166,13 +167,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                             </p>
                             {currency === 'INR' ? (
                                 (hasINR && checklist.paymentId) ? (
-                                    <form>
-                                        <script
-                                            src="https://checkout.razorpay.com/v1/payment-button.js"
-                                            data-payment_button_id={checklist.paymentId}
-                                            async
-                                        ></script>
-                                    </form>
+                                    <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />
                                 ) : <p className='text-destructive text-sm'>INR payments not yet available.</p>
                             ) : (
                                 hasUSD ? (
