@@ -25,7 +25,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
         e.preventDefault();
         setLoading(true);
 
-        // This action now correctly points to the correct function location.
         const result = await addContact({ email, packId: pack.id });
 
         if (result.success) {
@@ -219,15 +218,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3">
                            {currency === 'INR' ? (
                                 (hasINR && pack.paymentId) ? (
-                                    <div className="w-full flex justify-center">
-                                        <form action={`/thank-you?pack_id=${pack.id}&payment_method=razorpay`}>
-                                            <script
-                                                src="https://checkout.razorpay.com/v1/payment-button.js"
-                                                data-payment_button_id={pack.paymentId}
-                                                async
-                                            ></script>
-                                        </form>
-                                    </div>
+                                    <form>
+                                        <script
+                                            src="https://checkout.razorpay.com/v1/payment-button.js"
+                                            data-payment_button_id={pack.paymentId}
+                                            async
+                                        ></script>
+                                    </form>
                                 ) : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>
                             ) : (
                                 hasUSD ? (

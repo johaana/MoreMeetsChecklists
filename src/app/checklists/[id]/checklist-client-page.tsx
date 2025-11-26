@@ -166,15 +166,13 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                             </p>
                             {currency === 'INR' ? (
                                 (hasINR && checklist.paymentId) ? (
-                                    <div className="w-full flex justify-center">
-                                        <form action={`/thank-you?checklist_id=${checklist.id}&payment_method=razorpay`}>
-                                            <script
-                                                src="https://checkout.razorpay.com/v1/payment-button.js"
-                                                data-payment_button_id={checklist.paymentId}
-                                                async
-                                            ></script>
-                                        </form>
-                                    </div>
+                                    <form>
+                                        <script
+                                            src="https://checkout.razorpay.com/v1/payment-button.js"
+                                            data-payment_button_id={checklist.paymentId}
+                                            async
+                                        ></script>
+                                    </form>
                                 ) : <p className='text-destructive text-sm'>INR payments not yet available.</p>
                             ) : (
                                 hasUSD ? (
