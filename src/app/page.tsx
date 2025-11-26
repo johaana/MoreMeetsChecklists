@@ -379,7 +379,7 @@ const FaqSection = () => (
                     <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework.</strong> It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
+                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-2">
@@ -400,7 +400,7 @@ const FaqSection = () => (
                             Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-5">
+                     <AccordionItem value="item-5">
                         <AccordionTrigger>What ROI can we expect from implementing this?</AccordionTrigger>
                         <AccordionContent>
                            Clients report <strong>fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk</strong>. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
@@ -412,7 +412,7 @@ const FaqSection = () => (
                            Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-7">
+                    <AccordionItem value="item-7">
                         <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
                         <AccordionContent>
                             MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
