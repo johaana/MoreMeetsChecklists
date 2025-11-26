@@ -238,8 +238,8 @@ const PhilosophySection = () => (
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-8px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
-                  <CarouselNext className="absolute right-[-8px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
+                  <CarouselPrevious className="absolute left-[-12px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
+                  <CarouselNext className="absolute right-[-12px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
                 </Carousel>
              </div>
         </div>
@@ -407,7 +407,7 @@ const FaqSection = () => (
                            Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, <strong>preventing a single major safety or compliance failure</strong> can save more than the cost of our entire library.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-6">
+                     <AccordionItem value="item-6">
                         <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
                         <AccordionContent>
                            Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
