@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 
 const painPoints = {
@@ -254,8 +255,8 @@ const ChaosToControlSection = () => {
       <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
         <CardHeader className="text-center items-center p-0">
           <div className="text-red-400 group-hover:text-red-300 transition-colors"><Frown className="h-12 w-12 mb-2" /></div>
-          <CardTitle className="text-red-400 font-headline text-2xl group-hover:text-red-300 transition-colors">The Old Way: Chaos</CardTitle>
-          <CardDescription className="text-gray-400 text-sm mt-1">Relying on memory, verbal instructions, and hope.</CardDescription>
+          <CardTitle className="text-red-400 font-headline text-xl md:text-2xl group-hover:text-red-300 transition-colors">The Old Way: Chaos</CardTitle>
+          <CardDescription className="text-gray-400 text-xs md:text-sm mt-1 px-2">Relying on memory, verbal instructions, and hope.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-gray-300 flex-1 mt-4 p-0">
           <p className="flex items-start gap-3">→<span>Forgotten safety checks</span></p>
@@ -276,8 +277,8 @@ const ChaosToControlSection = () => {
       <div className="relative w-full h-full bg-slate-900/80 rounded-[15px] p-6 flex flex-col text-white backdrop-blur-lg">
         <CardHeader className="text-center items-center p-0">
           <div className="text-green-400 group-hover:text-green-300 transition-colors"><Smile className="h-12 w-12 mb-2" /></div>
-          <CardTitle className="text-green-400 font-headline text-2xl group-hover:text-green-300 transition-colors">The New Way: Control</CardTitle>
-          <CardDescription className="text-gray-300 text-sm mt-1">A system of record that ensures excellence.</CardDescription>
+          <CardTitle className="text-green-400 font-headline text-xl md:text-2xl group-hover:text-green-300 transition-colors">The New Way: Control</CardTitle>
+          <CardDescription className="text-gray-300 text-xs md:text-sm mt-1 px-2">A system of record that ensures excellence.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-gray-200 flex-1 mt-4 p-0">
           <p className="flex items-start gap-3"><CheckCircle className="w-4 h-4 text-green-500/80 shrink-0 mt-1" /><span>Verifiable safety logs</span></p>
@@ -376,14 +377,14 @@ const FaqSection = () => (
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1">
+                     <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
                            Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you already have.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
+                        <AccordionTrigger>Why not just generate SOPs using AI?</AccordionTrigger>
                         <AccordionContent>
                             AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, safety codes, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
                         </AccordionContent>
@@ -412,7 +413,7 @@ const FaqSection = () => (
                            Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-7">
+                     <AccordionItem value="item-7">
                         <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
                         <AccordionContent>
                            MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
@@ -446,6 +447,5 @@ export default function Home() {
     </div>
   );
 }
-
 
     
