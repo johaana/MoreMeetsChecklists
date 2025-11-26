@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -12,7 +11,12 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
     const formContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!paymentId) return;
+        if (!paymentId || !formContainerRef.current) return;
+
+        // Clear any previous form to avoid duplicates
+        if (formContainerRef.current) {
+            formContainerRef.current.innerHTML = '';
+        }
 
         const form = document.createElement('form');
         
@@ -22,13 +26,7 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         script.dataset.payment_button_id = paymentId;
 
         form.appendChild(script);
-
-        const container = formContainerRef.current;
-        if (container) {
-            // Clear previous content and append the new form
-            container.innerHTML = '';
-            container.appendChild(form);
-        }
+        formContainerRef.current.appendChild(form);
         
     }, [paymentId]);
     

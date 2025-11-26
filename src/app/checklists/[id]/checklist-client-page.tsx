@@ -166,19 +166,20 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
                            
-                           <div style={{ display: currency === 'INR' ? 'flex' : 'none' }} className="w-full justify-center">
-                               {hasINR && checklist.paymentId ? <RazorpayButton paymentId={checklist.paymentId} /> : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
-                           </div>
-
-                            <div style={{ display: currency === 'USD' ? 'flex' : 'none' }} className="w-full justify-center">
-                                {hasUSD ? (
+                           {hasINR && checklist.paymentId && (
+                                <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
+                                    <RazorpayButton paymentId={checklist.paymentId} />
+                                </div>
+                            )}
+                            {hasUSD && checklist.lemonSqueezyUrl && (
+                                <div style={{ display: currency === 'USD' ? 'block' : 'none' }} className="w-full flex justify-center">
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
                                             Buy Now
                                         </Link>
                                     </Button>
-                                ) : <p className='text-destructive text-sm font-semibold'>USD payment option is currently unavailable.</p>}
-                            </div>
+                                </div>
+                            )}
                         </CardContent>
                          <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
                             <ValueProposition
