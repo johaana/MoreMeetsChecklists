@@ -377,7 +377,7 @@ const FaqSection = () => (
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full">
-                     <AccordionItem value="item-1">
+                    <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
                            Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you already have.
@@ -447,5 +447,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
