@@ -244,63 +244,42 @@ const PhilosophySection = () => (
 );
 
 const ChaosToControlSection = () => (
-    <section className="w-full py-16 md:py-24 bg-secondary/30">
-        <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
-                <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
-            </div>
-            <div className="relative group max-w-4xl mx-auto [perspective:1000px]">
-                <div className="relative h-[32rem] md:h-96 w-full rounded-2xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                    {/* Front side */}
-                    <div className="absolute inset-0">
-                        <Card className="h-full w-full border-destructive/50 border-2 flex flex-col justify-between">
-                            <CardHeader>
-                                <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-                                <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-3 text-sm text-muted-foreground">
-                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
-                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
-                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-                                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
-                            </CardContent>
-                             <CardFooter>
-                                <div className="flex items-center text-xs text-muted-foreground">
-                                    <RefreshCw className="w-4 h-4 mr-2 animate-spin group-hover:hidden"/>
-                                    <span className="hidden group-hover:inline-block">Hover to see the solution</span>
-                                    <span className="group-hover:hidden">Hover to see the solution</span>
-                                </div>
-                            </CardFooter>
-                        </Card>
-                    </div>
-
-                    {/* Back side */}
-                    <div className="absolute inset-0 h-full w-full rounded-2xl bg-black text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                         <div className="absolute inset-0 w-full h-full bg-grid-white/[0.1] [mask-image:linear-gradient(to_bottom,white_10%,transparent_90%)]"></div>
-                         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
-                         <Card className="h-full w-full bg-transparent border-primary/50 border-2 flex flex-col justify-between">
-                            <CardHeader>
-                                <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
-                                <CardDescription className="text-white/80">A system of record that ensures excellence every time.</CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-3 text-sm text-white/90">
-                                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-                                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-                                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-                                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
-                            </CardContent>
-                            <CardFooter>
-                                <div className="text-xs text-white/60">
-                                    This is the power of a structured system.
-                                </div>
-                            </CardFooter>
-                        </Card>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section className="w-full py-16 md:py-24 bg-secondary/30">
+    <div className="container px-4 md:px-6">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+        {/* Before */}
+        <Card className="border-destructive/50 border-2">
+          <CardHeader>
+            <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-muted-foreground">
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
+          </CardContent>
+        </Card>
+        {/* After */}
+        <Card className="border-primary/50 border-2 bg-background shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
+            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-foreground">
+             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
 );
 
 
@@ -428,5 +407,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
