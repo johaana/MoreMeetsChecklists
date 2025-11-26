@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -380,11 +379,11 @@ const FaqSection = () => (
                     <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you already have.
+                           Most SOPs are outdated or inconsistent. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger>Why not just generate SOPs using AI?</AccordionTrigger>
+                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
                         <AccordionContent>
                             AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, safety codes, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
                         </AccordionContent>
@@ -392,7 +391,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-3">
                         <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
-                           Absolutely. Our packs reference ISO, OSHA, and other global standards. Each checklist includes specific <strong>audit controls, evidence fields, and documentation flows</strong> designed to meet the rigorous demands of both internal and external inspections.
+                           Absolutely. Our packs reference ISO, OSHA, FSSAI, and other global standards. Each checklist includes specific <strong>audit controls, evidence fields, and documentation flows</strong> designed to meet the rigorous demands of both internal and external inspections.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4">
@@ -404,7 +403,7 @@ const FaqSection = () => (
                      <AccordionItem value="item-5">
                         <AccordionTrigger>What ROI can we expect?</AccordionTrigger>
                         <AccordionContent>
-                           Clients report fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk. Ultimately, <strong>preventing a single major safety or compliance failure</strong> can save more than the cost of our entire library.
+                           Clients report <strong>fewer operational mistakes, faster onboarding, and improved audit scores</strong>. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-6">
@@ -413,10 +412,10 @@ const FaqSection = () => (
                            Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
                         </AccordionContent>
                     </AccordionItem>
-                     <AccordionItem value="item-7">
+                    <AccordionItem value="item-7">
                         <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
                         <AccordionContent>
-                           MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
+                            MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-8">
@@ -447,3 +446,4 @@ export default function Home() {
     </div>
   );
 }
+
