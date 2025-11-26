@@ -3,63 +3,34 @@
 
 import React, { useEffect, useRef } from 'react';
 
-declare global {
-    interface Window {
-        Razorpay: any;
-    }
-}
-
 interface RazorpayButtonProps {
     paymentId: string;
-    params?: Record<string, string | number>;
     className?: string;
 }
 
-export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, params, className }) => {
-    const formRef = useRef<HTMLFormElement>(null);
+export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, className }) => {
+    const formContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const scriptId = `razorpay-script-${paymentId.replace(/[^a-zA-Z0-9]/g, '')}`;
+        if (!paymentId) return;
 
-        // If script is already loaded, don't add it again.
-        if (document.getElementById(scriptId)) {
-            return;
-        }
-
+        const form = document.createElement('form');
+        
         const script = document.createElement('script');
-        script.id = scriptId;
         script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
         script.async = true;
         script.dataset.payment_button_id = paymentId;
-        
-        const form = document.createElement('form');
-        if (params) {
-            for (const key in params) {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = String(params[key]);
-                form.appendChild(input);
-            }
-        }
+
         form.appendChild(script);
 
-        if (formRef.current) {
-            formRef.current.innerHTML = ''; // Clear previous content
-            formRef.current.appendChild(form);
+        const container = formContainerRef.current;
+        if (container) {
+            // Clear previous content and append the new form
+            container.innerHTML = '';
+            container.appendChild(form);
         }
-
-        return () => {
-            // Cleanup script if component unmounts, though usually not necessary
-            const existingScript = document.getElementById(scriptId);
-            if (existingScript) {
-                existingScript.remove();
-            }
-        };
-
-    }, [paymentId, params]);
+        
+    }, [paymentId]);
     
-    const formClass = `razorpay-form ${className || ''}`.trim();
-
-    return <div ref={formRef} className={formClass} />;
+    return <div ref={formContainerRef} className={className} />;
 };

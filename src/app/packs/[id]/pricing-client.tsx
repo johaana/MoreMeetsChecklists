@@ -13,6 +13,7 @@ import { addContact } from '@/app/packs/actions';
 import { Input } from '@/components/ui/input';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -106,8 +107,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     ] : [
         { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ];
-
-    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${pack.paymentId}" async><\/script></form>`;
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
@@ -219,7 +218,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3 items-center">
                            <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
-                                {hasINR && pack.paymentId && <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />}
+                                {hasINR && pack.paymentId && <RazorpayButton paymentId={pack.paymentId} />}
                                 {currency === 'INR' && (!hasINR || !pack.paymentId) && <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
                             </div>
 
@@ -245,4 +244,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-

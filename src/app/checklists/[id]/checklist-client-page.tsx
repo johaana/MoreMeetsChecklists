@@ -15,6 +15,7 @@ import { individualChecklists } from '@/lib/individual-checklists';
 import { PainPoint } from '@/components/ui/pain-point';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RazorpayButton } from '@/components/ui/razorpay-button';
 
 const UpsellBanner = ({ packId }: { packId: string }) => {
     const pack = premiumPacks.find(p => p.id === packId);
@@ -93,8 +94,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
     }, []);
 
     const isSurgicalChecklist = checklist.id === 'surgical-safety';
-    const razorpayFormHtml = `<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="${checklist.paymentId}" async><\/script></form>`;
-
+    
   return (
     <>
     <div className="flex flex-col min-h-screen bg-background">
@@ -165,10 +165,11 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                            <p className="text-4xl font-extrabold mb-4">
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
-                            <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
-                                {hasINR && checklist.paymentId && <div dangerouslySetInnerHTML={{ __html: razorpayFormHtml }} />}
-                                {currency === 'INR' && (!hasINR || !checklist.paymentId) && <p className='text-destructive text-sm'>INR payments not yet available.</p>}
-                            </div>
+                           
+                           <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
+                               {hasINR && checklist.paymentId && <RazorpayButton paymentId={checklist.paymentId} />}
+                               {currency === 'INR' && (!hasINR || !checklist.paymentId) && <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
+                           </div>
 
                             <div style={{ display: currency === 'USD' ? 'block' : 'none' }} className="w-full flex justify-center">
                                 {hasUSD ? (
@@ -177,7 +178,7 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                                             Buy Now
                                         </Link>
                                     </Button>
-                                ) : <p className='text-destructive text-sm'>USD payments not yet available.</p>}
+                                ) : <p className='text-destructive text-sm font-semibold'>USD payment option is currently unavailable.</p>}
                             </div>
                         </CardContent>
                          <CardFooter className="flex-col gap-4 pt-4 p-6 items-center border-t bg-secondary/50">
