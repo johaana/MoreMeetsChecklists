@@ -217,12 +217,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-3 items-center">
-                           <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
-                                {hasINR && pack.paymentId && <RazorpayButton paymentId={pack.paymentId} />}
-                                {currency === 'INR' && (!hasINR || !pack.paymentId) && <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
+                           <div style={{ display: currency === 'INR' ? 'flex' : 'none' }} className="w-full justify-center">
+                                {hasINR && pack.paymentId ? <RazorpayButton paymentId={pack.paymentId} /> : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
                             </div>
 
-                            <div style={{ display: currency === 'USD' ? 'block' : 'none' }} className="w-full flex justify-center">
+                            <div style={{ display: currency === 'USD' ? 'flex' : 'none' }} className="w-full justify-center">
                                 {hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>

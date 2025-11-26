@@ -166,12 +166,11 @@ export default function ChecklistClientPage({ checklist }: { checklist: Individu
                                 {currency === 'INR' ? `₹${checklist.priceINR}` : `$${checklist.priceUSD}`}
                             </p>
                            
-                           <div style={{ display: currency === 'INR' ? 'block' : 'none' }} className="w-full flex justify-center">
-                               {hasINR && checklist.paymentId && <RazorpayButton paymentId={checklist.paymentId} />}
-                               {currency === 'INR' && (!hasINR || !checklist.paymentId) && <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
+                           <div style={{ display: currency === 'INR' ? 'flex' : 'none' }} className="w-full justify-center">
+                               {hasINR && checklist.paymentId ? <RazorpayButton paymentId={checklist.paymentId} /> : <p className='text-destructive text-sm font-semibold'>INR payment option is currently unavailable.</p>}
                            </div>
 
-                            <div style={{ display: currency === 'USD' ? 'block' : 'none' }} className="w-full flex justify-center">
+                            <div style={{ display: currency === 'USD' ? 'flex' : 'none' }} className="w-full justify-center">
                                 {hasUSD ? (
                                     <Button asChild size="lg" className="w-full max-w-xs">
                                         <Link href={`${checklist.lemonSqueezyUrl}?checkout[custom][checklist_id]=${checklist.id}`}>
