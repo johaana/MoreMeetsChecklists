@@ -99,51 +99,6 @@ const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) =>
     );
 };
 
-const IndividualChecklistsTeaser = ({ packId }: { packId: string }) => {
-    const relatedChecklists = individualChecklists.filter(ic => ic.relatedPackId === packId);
-
-    if (relatedChecklists.length === 0) {
-        return null;
-    }
-    
-    return (
-        <section className="w-full py-12 md:py-16">
-            <div className="container px-2 md:px-6">
-                <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl md:text-3xl font-bold font-headline text-primary">
-                        Just Need a Specific Solution?
-                    </h2>
-                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        This pack is the best value, but you can also start with one of our high-impact individual checklists.
-                    </p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto justify-center">
-                    {relatedChecklists.map((checklist) => (
-                        <Card key={checklist.id} className="flex flex-col text-center rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-                             <CardHeader>
-                                {React.cloneElement(checklist.icon, { className: "w-8 h-8 text-accent mx-auto mb-2" })}
-                                <CardTitle className="text-base font-headline leading-snug">{checklist.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1">
-                                <p className="text-sm text-muted-foreground">{checklist.description}</p>
-                            </CardContent>
-                             <CardFooter className="flex-col items-center gap-2 pt-4">
-                                <Button asChild variant="secondary" className="w-full font-bold flex-col h-auto py-2 text-base">
-                                    <Link href={`/checklists/${checklist.id}`}>
-                                        <span className="text-sm font-medium">Own It Forever</span>
-                                        <span className="text-2xl font-bold">₹{checklist.priceINR}</span>
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-
 export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPack, heroImageUrl: string }) {
   const pricingSectionRef = React.useRef<HTMLDivElement>(null);
   const [showStickyBar, setShowStickyBar] = React.useState(false);
@@ -252,9 +207,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
           </div>
 
           <GlobalStandardsSection pack={pack} />
-
-          <IndividualChecklistsTeaser packId={pack.id} />
-
 
         </main>
          <Footer />

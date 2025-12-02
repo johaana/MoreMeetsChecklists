@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
-const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR > 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD > 0) || p.priceINR === 0);
+const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
 const checklistsWithLinks = individualChecklists.filter(c => (c.paymentId && c.priceINR > 0) || (c.lemonSqueezyUrl && c.priceUSD && c.priceUSD > 0));
 
 const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause");
@@ -56,22 +56,6 @@ const SolutionsList = () => (
                 </ul>
             </div>
         ))}
-        </div>
-        
-        <Separator className="my-4"/>
-
-        <div>
-            <h4 className="font-bold text-sm text-primary/90 px-2 mb-2">Popular Individual Checklists</h4>
-            <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1">
-                {checklistsWithLinks.slice(0, 8).map(checklist => (
-                <li key={checklist.id}>
-                    <Link href={`/checklists/${checklist.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
-                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(checklist.icon, { className: "w-4 h-4" })}</span>
-                    <span className="flex-1 leading-snug">{checklist.title}</span>
-                    </Link>
-                </li>
-                ))}
-            </ul>
         </div>
     </div>
 );
@@ -227,26 +211,6 @@ export function SiteHeader() {
                                             </div>
                                         </AccordionContent>
                                     </AccordionItem>
-                                     <AccordionItem value="checklists" className="border-b-0">
-                                        <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
-                                            All Individual Checklists
-                                        </AccordionTrigger>
-                                        <AccordionContent className="pb-2">
-                                            {Object.entries(allChecklistsByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, checklists]) => (
-                                                <div key={category} className="ml-4 pl-4 border-l">
-                                                     <h5 className="font-semibold text-base text-primary/90 mt-2 mb-1">{category}</h5>
-                                                     <div className="flex flex-col gap-1">
-                                                        {checklists.map(checklist => (
-                                                             <Link key={checklist.id} href={`/checklists/${checklist.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                                 {React.cloneElement(checklist.icon, { className: "w-4 h-4 shrink-0" })}
-                                                                 <span>{checklist.title}</span>
-                                                            </Link>
-                                                        ))}
-                                                     </div>
-                                                </div>
-                                            ))}
-                                        </AccordionContent>
-                                    </AccordionItem>
                                     <div className="border-b">
                                         <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
                                             Blog
@@ -268,4 +232,3 @@ export function SiteHeader() {
     );
 }
 
-    
