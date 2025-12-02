@@ -221,5 +221,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
-    
