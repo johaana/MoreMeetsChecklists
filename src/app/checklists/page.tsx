@@ -1,4 +1,4 @@
-// This page is intentionally left blank to hide individual checklists.
+// This page has been deleted and is no longer in use.
 export default function AllIndividualChecklistsPage() {
     return null;
 }

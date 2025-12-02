@@ -1,2 +1,2 @@
-// This file is no longer in use as individual checklists are hidden from the UI.
+// This file has been deleted and is no longer in use.
 export const individualChecklists = [];
