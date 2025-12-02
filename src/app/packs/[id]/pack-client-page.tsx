@@ -11,7 +11,6 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { SiteHeader } from '@/components/layout/header';
-import { individualChecklists } from '@/lib/individual-checklists';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";

@@ -9,14 +9,11 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/co
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
-import { individualChecklists } from "@/lib/individual-checklists";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
-const checklistsWithLinks = individualChecklists.filter(c => (c.paymentId && c.priceINR > 0) || (c.lemonSqueezyUrl && c.priceUSD && c.priceUSD > 0));
 
 const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause");
 
@@ -27,14 +24,6 @@ const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     acc[pack.category].push(pack);
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
-
-const allChecklistsByCategory = checklistsWithLinks.reduce((acc, checklist) => {
-    if (!acc[checklist.category]) {
-        acc[checklist.category] = [];
-    }
-    acc[checklist.category].push(checklist);
-    return acc;
-}, {} as Record<string, typeof individualChecklists>);
 
 
 // Reusable component to render the list of solutions
@@ -231,4 +220,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
