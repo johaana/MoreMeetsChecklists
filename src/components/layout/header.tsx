@@ -11,6 +11,7 @@ import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Separator } from "../ui/separator";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
@@ -220,3 +221,5 @@ export function SiteHeader() {
         </header>
     );
 }
+
+    
