@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { FaqSection } from "@/components/layout/faq-section";
+import { TestimonialsSection } from "@/components/layout/testimonials-section";
 
 
 const painPoints = {
@@ -339,6 +340,7 @@ export default function Home() {
         <PhilosophySection />
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
+        <TestimonialsSection />
         <FaqSection />
       </main>
       <Footer />
