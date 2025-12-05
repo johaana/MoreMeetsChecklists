@@ -243,11 +243,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 )}
                                 {hasUSD && pack.lemonSqueezyUrl && (
                                      <div className={currency === 'USD' ? '' : 'hidden'}>
-                                        <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
-                                            <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                Buy Now
-                                            </Link>
-                                        </Button>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                    Buy Now
+                                                </Link>
+                                            </Button>
+                                        </div>
                                     </div>
                                 )}
                            </div>
