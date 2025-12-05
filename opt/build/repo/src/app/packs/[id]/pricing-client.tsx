@@ -221,8 +221,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                             <div className="flex items-center space-x-2">
-                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
-                                <Label htmlFor="terms" className="text-xs text-muted-foreground">
+                                <Checkbox id="terms-repo" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
+                                <Label htmlFor="terms-repo" className="text-xs text-muted-foreground">
                                     I have read and agree to the{" "}
                                     <Link href="/terms" target="_blank" className="underline hover:text-primary">
                                     Terms of Service
