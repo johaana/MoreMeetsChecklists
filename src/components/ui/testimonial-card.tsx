@@ -22,7 +22,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, t
             />
           ))}
         </div>
-        <p className="text-muted-foreground italic">"{quote}"</p>
+        <p className="font-quote text-lg text-muted-foreground">"{quote}"</p>
       </CardContent>
       <CardFooter className="p-0 mt-4">
         <div>
