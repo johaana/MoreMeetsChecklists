@@ -1,7 +1,11 @@
 
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
+    env: {
+    NEXT_PUBLIC_MASTER_ACCESS_PASSWORD: process.env.MASTER_ACCESS_PASSWORD,
+  },
   async redirects() {
     return [
       // --- Start of New Redirects ---
