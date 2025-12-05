@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import { blogPosts, BlogPost } from '@/lib/blog-posts';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -173,8 +174,45 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     day: 'numeric',
   });
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
+  const ogUrl = new URL(`${siteUrl}/api/og`);
+  ogUrl.searchParams.set('type', 'blog');
+  ogUrl.searchParams.set('slug', post.slug);
+  const imageUrl = ogUrl.toString();
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/blog/${post.slug}`,
+    },
+    headline: post.title,
+    description: post.description,
+    image: imageUrl,
+    author: {
+      '@type': 'Organization',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'MoreMeets',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.ico`,
+      },
+    },
+    datePublished: post.publishedDate,
+    dateModified: post.publishedDate,
+  };
+
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-20">
         <div className="container max-w-4xl mx-auto px-4 md:px-6">
@@ -256,3 +294,5 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
+
+    

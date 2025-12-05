@@ -389,3 +389,5 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+    
