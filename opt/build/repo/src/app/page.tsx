@@ -3,17 +3,17 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck } from "lucide-react";
+import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck, Frown, Smile, RefreshCw } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { FaqSection } from "@/components/layout/faq-section";
 
 
 const painPoints = {
@@ -70,6 +70,7 @@ const RefinedHeroSection = () => {
 
             <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
               
+              {/* Desktop View */}
               <div className="hidden md:block max-w-2xl">
                 <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
                     <AnimatePresence mode="wait">
@@ -80,10 +81,10 @@ const RefinedHeroSection = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                         >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
                             {content.title}
                         </h1>
-                        <p className="text-lg text-white/90 max-w-xl mt-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
+                        <p className="text-lg text-white/90 max-w-xl mt-4">
                             {content.description}
                         </p>
                         </motion.div>
@@ -126,11 +127,11 @@ const RefinedHeroSection = () => {
                 </div>
               </div>
 
-              
-              <div className="md:hidden text-center items-center flex flex-col relative z-20">
-                 <div className="max-w-md space-y-6">
-                    <div className="min-h-[14rem] flex items-center">
-                        <AnimatePresence mode="wait">
+              {/* Mobile View */}
+              <div className="md:hidden text-left items-start flex flex-col relative z-10">
+                 <div className="w-full max-w-xl space-y-6 relative z-10">
+                    <div className="min-h-[14rem] flex items-end">
+                       <AnimatePresence mode="wait">
                             <motion.div
                             key={activePainPoint}
                             initial={{ opacity: 0, y: 20 }}
@@ -173,7 +174,7 @@ const RefinedHeroSection = () => {
                         </div>
                     </div>
                     <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg" variant="accent">
+                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
                             <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
                         </Button>
                     </div>
@@ -185,7 +186,7 @@ const RefinedHeroSection = () => {
 };
 
 const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <Card className="flex flex-col text-center md:text-left">
+    <Card className="flex flex-col text-center md:text-left h-full">
         <CardHeader className="flex flex-col md:flex-row items-center gap-4">
             {icon}
             <CardTitle>{title}</CardTitle>
@@ -196,6 +197,13 @@ const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: st
     </Card>
 );
 
+const philosophyCards = [
+    { icon: <Zap className="w-8 h-8 text-accent"/>, title: "One-Time Purchase, Lifetime Value", children: "No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle." },
+    { icon: <BookOpen className="w-8 h-8 text-accent"/>, title: "Excel-Ready, Not SaaS-Locked", children: "We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software." },
+    { icon: <ShieldCheck className="w-8 h-8 text-accent"/>, title: "Globally Compliant, Locally Relevant", children: "Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground." },
+    { icon: <CheckCircle className="w-8 h-8 text-accent"/>, title: "More Than Templates, They're Systems", children: "Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools." }
+];
+
 const PhilosophySection = () => (
     <section className="w-full py-16 md:py-24">
         <div className="container px-4 md:px-6">
@@ -205,24 +213,36 @@ const PhilosophySection = () => (
                    We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
                 </p>
             </div>
-             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <ValueCard icon={<Zap className="w-8 h-8 text-accent"/>} title="One-Time Purchase, Lifetime Value">
-                    No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle.
-                </ValueCard>
-                 <ValueCard icon={<BookOpen className="w-8 h-8 text-accent"/>} title="Excel-Ready, Not SaaS-Locked">
-                    We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software.
-                </ValueCard>
-                 <ValueCard icon={<ShieldCheck className="w-8 h-8 text-accent"/>} title="Globally Compliant, Locally Relevant">
-                    Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground.
-                </ValueCard>
-                  <ValueCard icon={<CheckCircle className="w-8 h-8 text-accent"/>} title="More Than Templates, They're Systems">
-                    Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools.
-                </ValueCard>
+             <div className="hidden md:grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {philosophyCards.map((card, index) => (
+                    <ValueCard key={index} icon={card.icon} title={card.title}>
+                        {card.children}
+                    </ValueCard>
+                ))}
+             </div>
+             <div className="md:hidden">
+                 <Carousel
+                    plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+                    className="w-full max-w-xs sm:max-w-sm mx-auto"
+                >
+                  <CarouselContent>
+                    {philosophyCards.map((card, index) => (
+                      <CarouselItem key={index}>
+                        <div className="p-1 h-full">
+                           <ValueCard icon={card.icon} title={card.title}>
+                                {card.children}
+                           </ValueCard>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="absolute left-[-16px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
+                  <CarouselNext className="absolute right-[-16px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
+                </Carousel>
              </div>
         </div>
     </section>
 );
-
 
 const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
@@ -231,11 +251,11 @@ const ChaosToControlSection = () => (
         <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
         <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 items-center">
+      <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
         {/* Before */}
         <Card className="border-destructive/50 border-2">
           <CardHeader>
-            <CardTitle className="text-destructive flex items-center gap-2"><Zap className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
             <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
@@ -248,7 +268,7 @@ const ChaosToControlSection = () => (
         {/* After */}
         <Card className="border-primary/50 border-2 bg-background shadow-lg">
           <CardHeader>
-            <CardTitle className="text-primary flex items-center gap-2"><Shield className="w-5 h-5"/> The New Way: Control</CardTitle>
+            <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
             <CardDescription>A system of record that ensures excellence every time.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-foreground">
@@ -262,6 +282,7 @@ const ChaosToControlSection = () => (
     </div>
   </section>
 );
+
 
 const ExpertiseExtractorSection = () => (
   <section className="w-full py-16 md:py-24">
@@ -308,54 +329,6 @@ const ExpertiseExtractorSection = () => (
     </div>
   </section>
 );
-
-const FaqSection = () => (
-    <section id="faq" className="w-full py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Frequently Asked Questions</h2>
-                <p className="text-muted-foreground mt-2 text-base md:text-lg">
-                    Answering your key questions about how MoreMeets works.
-                </p>
-            </div>
-            <div className="max-w-3xl mx-auto">
-                <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1">
-                        <AccordionTrigger>What format are the checklists in?</AccordionTrigger>
-                        <AccordionContent>
-                            All our checklists are provided as fully editable Microsoft Excel (.xlsx) files. This allows you to easily customize them, add your company logo, and integrate them into your existing operational workflow without needing any special software.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger>Is this a one-time purchase or a subscription?</AccordionTrigger>
-                        <AccordionContent>
-                            It is a one-time purchase. You pay once and own the checklist pack forever, including access to all future updates for that specific pack at no extra cost. There are no recurring fees or subscriptions.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3">
-                        <AccordionTrigger>What is your refund policy?</AccordionTrigger>
-                        <AccordionContent>
-                            Due to the instant, digital nature of our products, all sales are final once the purchase is completed. We provide detailed descriptions and sample items on every pack page to help you make an informed decision. If you have any issues with your download, our support team is ready to assist immediately.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-4">
-                        <AccordionTrigger>Can I request a checklist or pack that isn't listed?</AccordionTrigger>
-                        <AccordionContent>
-                            Absolutely. We are constantly expanding our library based on customer needs. Please visit our Contact Us page to send your suggestion to our content team. We also offer custom SOP development services.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-5">
-                        <AccordionTrigger>What if I have trouble with my download?</AccordionTrigger>
-                        <AccordionContent>
-                            Your purchase confirmation email contains your download link. If you face any issues, please contact us immediately at `more@moremeets.com` or chat with us on WhatsApp for instant support. We'll make sure you get your files.
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
-            </div>
-        </div>
-    </section>
-);
-
 
 export default function Home() {
   return (
