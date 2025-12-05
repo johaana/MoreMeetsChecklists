@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { FaqSection } from "@/components/layout/faq-section";
+import { TestimonialsSection } from "@/components/layout/testimonials-section";
 
 
 const painPoints = {
@@ -236,8 +237,8 @@ const PhilosophySection = () => (
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-16px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
-                  <CarouselNext className="absolute right-[-16px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90" />
+                  <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
+                  <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
                 </Carousel>
              </div>
         </div>
@@ -247,7 +248,7 @@ const PhilosophySection = () => (
 const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
         <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
         <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
       </div>
@@ -339,6 +340,7 @@ export default function Home() {
         <PhilosophySection />
         <ChaosToControlSection />
         <ExpertiseExtractorSection />
+        <TestimonialsSection />
         <FaqSection />
       </main>
       <Footer />
