@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, BrainCircuit, Users, FileText, CheckCircle, BookOpen, ShieldCheck, Frown, Smile, RefreshCw } from "lucide-react";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { cn } from "@/lib/utils";
@@ -205,7 +205,9 @@ const philosophyCards = [
     { icon: <CheckCircle className="w-8 h-8 text-accent"/>, title: "More Than Templates, They're Systems", children: "Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools." }
 ];
 
-const PhilosophySection = () => (
+const PhilosophySection = () => {
+    const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
+    return (
     <section className="w-full py-16 md:py-24">
         <div className="container px-4 md:px-6">
             <div className="space-y-4 text-center max-w-3xl mx-auto mb-12">
@@ -223,7 +225,7 @@ const PhilosophySection = () => (
              </div>
              <div className="md:hidden">
                  <Carousel
-                    plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+                    plugins={[plugin.current]}
                     className="w-full max-w-xs sm:max-w-sm mx-auto"
                 >
                   <CarouselContent>
@@ -244,6 +246,7 @@ const PhilosophySection = () => (
         </div>
     </section>
 );
+}
 
 const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
@@ -347,3 +350,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

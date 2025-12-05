@@ -2,6 +2,7 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 type TestimonialCardProps = {
   quote: string;
@@ -18,7 +19,10 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, t
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
-              className={`w-5 h-5 ${i < stars ? 'text-accent fill-accent' : 'text-gray-300'}`}
+              className={cn(
+                'w-5 h-5',
+                i < stars ? 'text-accent fill-accent' : 'text-gray-300 dark:text-gray-600'
+              )}
             />
           ))}
         </div>
@@ -33,3 +37,5 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, t
     </Card>
   );
 };
+
+    
