@@ -38,7 +38,7 @@ const AnatomyOfFailure = () => (
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Vague & Incomplete:</strong> "Check equipment regularly." What equipment? How? What defines 'good'?</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> No clear owner, frequency, or proof of completion required. Tasks are easily missed.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> No clear owner, frequency, or proof of completion required. Tasks are forgotten.</span></p>
                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Not Audit-Ready:</strong> Lacks the structure and detail needed to satisfy a real compliance or safety auditor.</span></p>
                 </CardContent>
             </Card>
@@ -60,8 +60,8 @@ const AnatomyOfFailure = () => (
 // Option 2: The "What-If" Playbook (Variation)
 const WhatIfPlaybook = () => (
     <SectionWrapper 
-        title="Your Playbook for the Unexpected"
-        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets gives your team the right plan for the worst days."
+        title="Your Playbook for What-If"
+        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets gives your team a globally-compliant plan for the worst days."
     >
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="text-center p-6 border-2 border-dashed border-primary/20">
@@ -69,7 +69,7 @@ const WhatIfPlaybook = () => (
                     <h3 className="font-bold font-headline text-primary">What if your best manager quits?</h3>
                 </CardHeader>
                 <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our checklists retain their expert knowledge, turning their wisdom into a repeatable process your new hires can follow from day one. Your resilience is no longer tied to one person.</p>
+                    <p className="text-muted-foreground text-sm">Our checklists provide a globally compliant system, turning operational best practices into a repeatable process your new hires can follow and adapt from day one. Your resilience is no longer tied to one person.</p>
                 </CardContent>
             </Card>
             <Card className="text-center p-6 border-2 border-dashed border-primary/20">
@@ -163,7 +163,6 @@ const Blueprint = () => (
     </SectionWrapper>
 );
 
-
 // Option 5: The MoreMeets System
 const TheSystem = () => (
     <SectionWrapper 
@@ -220,6 +219,34 @@ const TheSystem = () => (
     </SectionWrapper>
 );
 
+// New Section for "Trainer's Notes"
+const ManagerAsCoachSection = () => (
+    <SectionWrapper 
+        title="Turn Every Manager into an Expert Coach"
+        description="Our checklists go beyond simple tasks. They include a 'Trainer's Notes' column that empowers your managers to turn every check into a powerful on-the-job training moment."
+    >
+        <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-secondary/30 shadow-lg border">
+            <div className="space-y-4">
+                <h2 className="text-2xl md:text-3xl font-bold font-headline text-primary">From 'What' to 'Why'</h2>
+                <p className="text-muted-foreground">The 'Trainer's Notes' provide your managers with talking points, real-world examples, and coaching questions for critical tasks. This transforms routine supervision into powerful, context-rich training that builds a smarter, more resilient team.</p>
+            </div>
+            <div className="rounded-lg bg-background p-4 border border-dashed">
+                <p className="text-sm font-semibold">Example: "Trainer's Notes" Column</p>
+                <div className="mt-2 space-y-2">
+                    <div className="bg-secondary/50 p-3 rounded-md">
+                        <p className="font-mono text-xs">**Task:** Check for allergen cross-contamination.</p>
+                        <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Show the new hire the separate color-coded boards. Explain the Pret a Manger case study to reinforce why a simple mistake here can be fatal and business-ending."</p>
+                    </div>
+                    <div className="bg-secondary/50 p-3 rounded-md">
+                        <p className="font-mono text-xs">**Task:** Verify LOTO on machine #3.</p>
+                        <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Ask the employee: 'What is the biggest risk if we forget this step?' Ensure they understand this prevents someone from being crushed."</p>
+                    </div>
+                </div>
+            </div>
+        </Card>
+    </SectionWrapper>
+);
+
 
 export default function TempDesignPreviewPage() {
   return (
@@ -227,12 +254,13 @@ export default function TempDesignPreviewPage() {
       <SiteHeader />
       <main className="flex-1">
         <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-            <p>⚠️ This is a temporary design preview page with 5 new options. ⚠️</p>
+            <p>⚠️ This is a temporary design preview page with new options. ⚠️</p>
         </div>
 
         <AnatomyOfFailure />
         <WhatIfPlaybook />
         <StopTheLeaks />
+        <ManagerAsCoachSection />
         <Blueprint />
         <TheSystem />
 
@@ -241,5 +269,3 @@ export default function TempDesignPreviewPage() {
     </div>
   );
 }
-
-    
