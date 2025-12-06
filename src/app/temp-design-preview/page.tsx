@@ -5,14 +5,15 @@ import * as React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Check, ArrowRight, TrendingUp, Target, Users, Bot, Zap, Rocket, Search, Edit, BarChart, FileText, Star, BrainCircuit, Shield, FileCheck, LifeBuoy, Frown, Smile, XCircle, CheckCircle, Package } from "lucide-react";
+import { Check, ArrowRight, Zap, BrainCircuit, Users, FileText, Shield, LifeBuoy, Frown, Smile, XCircle, CheckCircle } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const SectionWrapper = ({ title, description, children, bg = "bg-background" }: { title: string, description: string, children: React.ReactNode, bg?: string }) => (
-    <section className={cn("w-full py-16 md:py-24 border-t", bg)}>
+const SectionWrapper = ({ title, description, children, bg = "bg-background", id }: { id: string, title: string, description: string, children: React.ReactNode, bg?: string }) => (
+    <section id={id} className={cn("w-full py-16 md:py-24 border-t", bg)}>
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">{title}</h2>
@@ -23,17 +24,21 @@ const SectionWrapper = ({ title, description, children, bg = "bg-background" }: 
     </section>
 );
 
-/*
-HEADLINE OPTIONS - SECTION 1
 
-1. Value/Aspiration: "The Anatomy of Operational Excellence"
-2. Problem/Solution: "Why Most SOPs Fail (And Ours Don't)"
-3. Direct/Authoritative: "The Difference Between a Document and a System"
-4. Fear/Risk: "Is Your SOP Library a Liability in Disguise?"
-5. Metaphorical: "Stop Collecting Dust: Build a Living Operations Playbook"
+/*
+--- OPTION 1: The "Problem/Solution" Frame ---
+This section directly contrasts the common state of SOPs (chaotic, forgotten documents) with the MoreMeets solution (a living, actionable system). It's a classic marketing approach that clearly establishes the problem before presenting your product as the definitive solution.
+
+// --- HEADLINE OPTIONS FOR THIS SECTION ---
+// 1. (Problem/Solution Focus): Why Most SOPs Fail (And Ours Don't)
+// 2. (Value Focus): The Anatomy of Operational Excellence
+// 3. (Direct/Authoritative): The Difference Between a Document and a System
+// 4. (Fear/Risk Focus): Is Your SOP Library a Liability in Disguise?
+// 5. (Metaphorical Focus): Stop Collecting Dust: Build a Living Operations Playbook
 */
 const AnatomyOfFailure = () => (
     <SectionWrapper 
+        id="option-1"
         title="Why Most SOPs Fail (And Ours Don't)" 
         description="The problem isn't having SOPs; it's having SOPs that are incomplete, unactionable, and disconnected from daily execution. Here's the difference."
         bg="bg-secondary/30"
@@ -66,18 +71,21 @@ const AnatomyOfFailure = () => (
 );
 
 /*
-HEADLINE OPTIONS - SECTION 2
+--- OPTION 2: The "Fear/Risk" Frame (What-If Scenarios) ---
+This section is designed to create an emotional connection by tapping into the anxieties of a business owner or manager. It poses common "what-if" scenarios and presents MoreMeets as the answer, providing peace of mind.
 
-1. Fear/Risk: "What's Your Plan for the Inevitable?"
-2. Value/Aspiration: "Your Playbook for Operational Resilience"
-3. Problem/Solution: "From 'What if?' to 'What's Next?'"
-4. Direct/Authoritative: "The Three Scenarios That Sink Businesses"
-5. Metaphorical: "Your Insurance Policy Against Chaos"
+// --- HEADLINE OPTIONS FOR THIS SECTION ---
+// 1. (Fear/Risk Focus): What's Your Plan for the Inevitable?
+// 2. (Value Focus): Your Playbook for Operational Resilience
+// 3. (Problem/Solution Focus): From 'What if?' to 'What's Next?'
+// 4. (Direct/Authoritative Focus): The Three Scenarios That Sink Businesses
+// 5. (Metaphorical Focus): Your Insurance Policy Against Chaos
 */
 const WhatIfPlaybook = () => (
     <SectionWrapper 
+        id="option-2"
         title="Your Playbook for What-If"
-        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets provides a globally compliant, researched system that your team can adapt and follow from day one."
+        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets provides a researched, globally compliant system your team can adapt and follow from day one."
     >
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="text-center p-6 border-2 border-dashed border-primary/20">
@@ -85,7 +93,7 @@ const WhatIfPlaybook = () => (
                     <h3 className="font-bold font-headline text-primary">What if your best manager quits?</h3>
                 </CardHeader>
                 <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our checklists provide a globally compliant system, turning operational best practices into a repeatable process your new hires can follow and adapt. Your resilience is no longer tied to one person.</p>
+                    <p className="text-muted-foreground text-sm">Our checklists convert expert knowledge into a repeatable process. Your operational resilience is no longer tied to one person.</p>
                 </CardContent>
             </Card>
             <Card className="text-center p-6 border-2 border-dashed border-primary/20">
@@ -101,25 +109,27 @@ const WhatIfPlaybook = () => (
                     <h3 className="font-bold font-headline text-primary">What if a crisis hits at 2 AM?</h3>
                 </CardHeader>
                 <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our emergency protocols give your team the exact, step-by-step instructions to follow for fires, medical emergencies, or security incidents, ensuring a calm and correct response.</p>
+                    <p className="text-muted-foreground text-sm">Our emergency protocols give your team the exact, step-by-step instructions to follow, ensuring a calm and correct response even when you're not there.</p>
                 </CardContent>
             </Card>
         </div>
     </SectionWrapper>
 );
 
-
 /*
-HEADLINE OPTIONS - SECTION 3 (The "Coach" section)
+--- OPTION 3: The "Feature Spotlight" Frame (Manager as Coach) ---
+This section highlights a unique, tangible feature—the "Trainer's Notes" and "Consequence of Failure" columns. It's designed to showcase a specific product differentiator that competitors likely don't have.
 
-1. Value/Aspiration: "Turn Every Manager into an Expert Coach"
-2. Problem/Solution: "Stop Asking 'If'. Start Asking 'Why'."
-3. Direct/Authoritative: "The Feature That Builds a Culture of Ownership"
-4. Fear/Risk: "Your Team Follows the Checklist. But Do They Understand the Risk?"
-5. Metaphorical: "Beyond the Checkbox: Building Operational Intelligence"
+// --- HEADLINE OPTIONS FOR THIS SECTION ---
+// 1. (Value Focus): Turn Every Manager into an Expert Coach
+// 2. (Problem/Solution Focus): Stop Asking 'If'. Start Asking 'Why'.
+// 3. (Direct/Authoritative Focus): The Feature That Builds a Culture of Ownership
+// 4. (Fear/Risk Focus): Your Team Follows the Checklist. But Do They Understand the Risk?
+// 5. (Metaphorical Focus): Beyond the Checkbox: Building Operational Intelligence
 */
 const ManagerAsCoachSection = () => (
     <SectionWrapper 
+        id="option-3"
         title="Turn Every Manager into an Expert Coach"
         description="Our checklists go beyond simple tasks. They include a 'Trainer's Notes' column that explains the 'why' behind the 'what', empowering your managers to turn every check into a powerful on-the-job training moment."
         bg="bg-secondary/30"
@@ -171,18 +181,20 @@ const ManagerAsCoachSection = () => (
     </SectionWrapper>
 );
 
-
 /*
-HEADLINE OPTIONS - SECTION 4
+--- OPTION 4: The "Metaphor" Frame (Blueprint) ---
+This section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a successful and stable operation.
 
-1. Direct/Authoritative: "Build Your Operation on a Professional Blueprint"
-2. Value/Aspiration: "The Architecture of Operational Excellence"
-3. Problem/Solution: "Stop Guessing. Start Building with a Plan."
-4. Fear/Risk: "Are You Building on a Foundation of Sand?"
-5. Metaphorical: "Your Blueprint for a Resilient Business"
+// --- HEADLINE OPTIONS FOR THIS SECTION ---
+// 1. (Metaphorical Focus): Your Blueprint for a Resilient Business
+// 2. (Direct/Authoritative Focus): Build Your Operation on a Professional Framework
+// 3. (Value Focus): The Architecture of Operational Excellence
+// 4. (Problem/Solution Focus): Stop Guessing. Start Building with a Plan.
+// 5. (Fear/Risk Focus): Are You Building on a Foundation of Sand?
 */
 const Blueprint = () => (
     <SectionWrapper
+        id="option-4"
         title="Don't Wing It. Build on a Blueprint."
         description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
     >
@@ -196,7 +208,7 @@ const Blueprint = () => (
             </Card>
              <Card className="flex flex-col items-center p-6">
                 <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
-                    <TrendingUp className="w-10 h-10" />
+                    <Zap className="w-10 h-10" />
                 </div>
                 <h3 className="font-bold font-headline text-lg">Pillars: Efficiency</h3>
                 <p className="text-sm text-muted-foreground mt-2">Standardize tasks, eliminate rework, and onboard new staff faster with a clear, actionable playbook.</p>
@@ -212,17 +224,21 @@ const Blueprint = () => (
     </SectionWrapper>
 );
 
-/*
-HEADLINE OPTIONS - SECTION 5
 
-1. Direct/Authoritative: "The MoreMeets System: A Breakdown"
-2. Value/Aspiration: "Engineered for Execution"
-3. Problem/Solution: "From Vague Idea to Verifiable Action"
-4. Fear/Risk: "Is Your SOP Missing These Critical Components?"
-5. Metaphorical: "More Than a Checklist. It's a Control Panel."
+/*
+--- OPTION 5: The "System Breakdown" Frame ---
+This section is for the detail-oriented buyer. It breaks down the components of a MoreMeets checklist, explaining exactly *what* makes it a superior system compared to a simple list of tasks.
+
+// --- HEADLINE OPTIONS FOR THIS SECTION ---
+// 1. (Value Focus): Engineered for Execution
+// 2. (Direct/Authoritative Focus): The MoreMeets System: A Breakdown
+// 3. (Problem/Solution Focus): From Vague Idea to Verifiable Action
+// 4. (Fear/Risk Focus): Is Your SOP Missing These Critical Components?
+// 5. (Metaphorical Focus): More Than a Checklist. It's a Control Panel.
 */
 const TheSystem = () => (
     <SectionWrapper 
+        id="option-5"
         title="More Than a Template. It's a System."
         description="Generic templates are vague. A MoreMeets pack is a complete, interconnected system for operational control, built on four key components."
         bg="bg-secondary/30"
@@ -231,7 +247,7 @@ const TheSystem = () => (
             <Card className="p-6">
                 <CardHeader className="p-0">
                     <div className="flex items-center gap-3">
-                        <FileCheck className="w-8 h-8 text-accent shrink-0" />
+                        <FileText className="w-8 h-8 text-accent shrink-0" />
                         <CardTitle className="text-lg">Task-Level Detail</CardTitle>
                     </div>
                 </CardHeader>
@@ -253,7 +269,7 @@ const TheSystem = () => (
              <Card className="p-6">
                 <CardHeader className="p-0">
                     <div className="flex items-center gap-3">
-                        <Shield className="w-8 h-8 text-accent shrink-0" />
+                        <BrainCircuit className="w-8 h-8 text-accent shrink-0" />
                          <CardTitle className="text-lg">Risk Intelligence</CardTitle>
                     </div>
                 </CardHeader>
@@ -264,7 +280,7 @@ const TheSystem = () => (
              <Card className="p-6">
                 <CardHeader className="p-0">
                     <div className="flex items-center gap-3">
-                        <Star className="w-8 h-8 text-accent shrink-0" />
+                        <ShieldCheck className="w-8 h-8 text-accent shrink-0" />
                         <CardTitle className="text-lg">Audit-Ready Framework</CardTitle>
                     </div>
                 </CardHeader>
@@ -278,19 +294,32 @@ const TheSystem = () => (
 
 
 export default function TempDesignPreviewPage() {
+  const sections = [
+    { id: "option-1", title: "Option 1: The Problem/Solution", component: <AnatomyOfFailure /> },
+    { id: "option-2", title: "Option 2: The 'What-If' Playbook", component: <WhatIfPlaybook /> },
+    { id: "option-3", title: "Option 3: The 'Manager as Coach' Spotlight", component: <ManagerAsCoachSection /> },
+    { id: "option-4", title: "Option 4: The 'Blueprint' Metaphor", component: <Blueprint /> },
+    { id: "option-5", title: "Option 5: The 'System Breakdown'", component: <TheSystem /> },
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold">
-            <p>⚠️ This is a temporary design preview page with new options. ⚠️</p>
+        <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold sticky top-16 z-40 border-b border-yellow-400">
+            <p className='font-headline'>⚠️ Design Preview Page ⚠️</p>
+            <div className='flex justify-center gap-4 text-xs mt-1'>
+                {sections.map(section => (
+                    <a key={section.id} href={`#${section.id}`} className='underline hover:text-yellow-700'>{section.title}</a>
+                ))}
+            </div>
         </div>
 
-        <AnatomyOfFailure />
-        <WhatIfPlaybook />
-        <ManagerAsCoachSection />
-        <Blueprint />
-        <TheSystem />
+        {sections.map(section => (
+            <React.Fragment key={section.id}>
+                {section.component}
+            </React.Fragment>
+        ))}
 
       </main>
       <Footer />
