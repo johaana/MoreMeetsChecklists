@@ -27,30 +27,28 @@ const AiVsMoreMeetsOption1 = () => (
     <SectionWrapper
         id="ai-vs-moremeets-1"
         title="Why AI is a Great First Draft, But a Terrible Final Answer."
-        description={<p className="font-quote text-foreground/80">"ChatGPT can make mistakes. Check important info."</p>}
+        description={<p>For mission-critical operations, you need a system that's verified, not just generated.</p>}
         bg="bg-secondary/30"
     >
         <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
             <Card className="border-amber-500/30 bg-amber-500/5 h-full">
                 <CardHeader>
                     <CardTitle className="text-amber-600 flex items-center gap-2"><Zap className="w-6 h-6"/> The AI Gamble</CardTitle>
-                    <CardDescription>Relying on generic AI for mission-critical operations.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-amber-600 shrink-0 mt-1"/><span><strong>Invented Steps & Critical Omissions:</strong> AI can "hallucinate" and leave out critical safety or compliance steps.</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-amber-600 shrink-0 mt-1"/><span><strong>No Audit Trail or Accountability:</strong> An AI-generated document lacks the structure for audits, version control, or proof of execution.</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-amber-600 shrink-0 mt-1"/><span><strong>Legally & Contextually Generic:</strong> Fails to incorporate specific local regulations or your unique facility layout and equipment.</span></p>
+                   <div className="bg-amber-100/50 dark:bg-amber-900/30 p-4 rounded-lg border border-dashed border-amber-500/50">
+                        <p className="font-mono text-center text-sm md:text-base font-semibold text-amber-800 dark:text-amber-200">"ChatGPT can make mistakes. Check important info."</p>
+                   </div>
                 </CardContent>
             </Card>
             <Card className="border-primary/30 bg-background shadow-lg h-full">
                 <CardHeader>
                     <CardTitle className="text-primary flex items-center gap-2"><ShieldCheck className="w-6 h-6"/> The MoreMeets Standard</CardTitle>
-                    <CardDescription>A human-verified system built for reliability and compliance.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 text-foreground">
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Human-Verified & Researched:</strong> Built by industry experts on a foundation of global standards (ISO, OSHA, HACCP).</span></p>
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Audit-Ready by Design:</strong> Every checklist is a structured system with fields for owner, proof of completion, and version history.</span></p>
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Offline and Secure:</strong> Your proprietary operational data stays on your systems, not on a third-party AI server.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Human-Verified & Researched:</strong> Built by industry experts on a foundation of global standards (ISO, OSHA, HACCP), not generic web scrapes.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Audit-Ready by Design:</strong> Every checklist is a structured system with fields for owner, proof of completion, and version control that an auditor will accept.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Offline and Secure:</strong> Your proprietary operational data stays on your systems as an Excel file, not on a third-party AI server, eliminating data privacy risks.</span></p>
                 </CardContent>
             </Card>
         </div>
@@ -63,7 +61,7 @@ const AiVsMoreMeetsOption2 = () => (
     <SectionWrapper
         id="ai-vs-moremeets-2"
         title="Your Operations Deserve More Than a First Draft."
-        description={<p className="font-quote text-foreground/80">"ChatGPT can make mistakes. Check important info."</p>}
+        description={<p>AI is a useful tool, but for compliance, safety, and audits, you need a system built on reliability.</p>}
         bg="bg-background"
     >
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -161,5 +159,3 @@ export default function TempDesignPreviewPage() {
     </div>
   );
 }
-
-    
