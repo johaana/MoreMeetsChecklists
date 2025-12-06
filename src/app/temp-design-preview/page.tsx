@@ -10,7 +10,6 @@ import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const SectionWrapper = ({ title, description, children, bg = "bg-background", id }: { id: string, title: string, description: string, children: React.ReactNode, bg?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24 border-t", bg)}>
@@ -25,25 +24,19 @@ const SectionWrapper = ({ title, description, children, bg = "bg-background", id
 );
 
 
-/*
---- OPTION 1: The "Anatomy of Failure" Frame ---
-This section directly contrasts the common state of SOPs (chaotic, forgotten documents) with the MoreMeets solution (a living, actionable system). It's a classic marketing approach that clearly establishes the problem before presenting your product as the definitive solution.
-
---- HEADLINE OPTIONS FOR THIS SECTION ---
-// 1. (Problem/Solution Focus): Why Most SOPs Fail (And Ours Don't)
-// 2. (Value Focus): The Anatomy of Operational Excellence
-// 3. (Direct/Authoritative): The Difference Between a Document and a System
-// 4. (Fear/Risk Focus): Is Your SOP Library a Liability in Disguise?
-// 5. (Metaphorical Focus): Stop Collecting Dust: Build a Living Operations Playbook
+/* 
+--- OPTION 1 (Consolidated): The Anatomy of Operational Failure ---
+Merges the "Anatomy" and "System" sections into one cohesive story.
+It starts with the problem (the "before") and flows directly into the solution (the "after"), detailing *why* the MoreMeets standard is superior.
 */
 const AnatomyOfFailure = () => (
     <SectionWrapper 
         id="option-1"
-        title="Why Most SOPs Fail (And Ours Don't)" 
-        description="The problem isn't having SOPs; it's having SOPs that are incomplete, unactionable, and disconnected from daily execution. Here's the difference."
+        title="Why Most SOPs Are Just Documents. Ours Are Systems." 
+        description="The difference between an SOP that collects dust and one that drives excellence is in the details. Here’s a breakdown of the typical, broken approach versus the MoreMeets standard."
         bg="bg-secondary/30"
     >
-        <div className="grid md:grid-cols-2 gap-8 items-start max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
             <Card className="border-destructive/30 h-full">
                 <CardHeader>
                     <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-6 h-6"/> The Typical (Broken) SOP</CardTitle>
@@ -51,19 +44,20 @@ const AnatomyOfFailure = () => (
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Vague & Incomplete:</strong> "Check equipment regularly." What equipment? How? What defines 'good'?</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> Tasks are forgotten because there's no clear owner or proof of completion required.</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Not Audit-Ready:</strong> Lacks the structure needed to satisfy a real compliance or safety auditor.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> Tasks are forgotten because there's no clear owner or verifiable proof of completion.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Not Audit-Ready:</strong> Lacks the structure, evidence logs, and version control to satisfy a real compliance or safety auditor.</span></p>
+                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Training Value:</strong> It's a list of instructions with no context, offering zero value for onboarding or coaching.</span></p>
                 </CardContent>
             </Card>
             <Card className="border-primary/30 bg-background shadow-lg h-full">
                 <CardHeader>
-                    <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The MoreMeets Standard</CardTitle>
+                    <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-6 h-6"/> The MoreMeets System</CardTitle>
                     <CardDescription>A complete operational system designed for execution.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 text-foreground">
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Globally Compliant System:</strong> A researched, actionable framework that your team can adapt and follow from day one.</span></p>
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Built-in Accountability:</strong> Every task has a defined `Role`, `Frequency`, and `Proof of Completion`.</span></p>
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Audit-Ready Framework:</strong> Built on ISO, OSHA, and HACCP principles to be audit-ready from day one.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Globally Compliant Framework:</strong> A researched, actionable system built on ISO, OSHA, and HACCP principles that your team can adapt from day one.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Built-in Accountability:</strong> Every task has a defined `Role`, `Frequency`, `Proof of Completion`, and `Risk Level`.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Risk Intelligence Included:</strong> The "Consequence of Failure" column explains *why* a task is critical, turning your team from task-doers into risk managers.</span></p>
                 </CardContent>
             </Card>
         </div>
@@ -71,15 +65,8 @@ const AnatomyOfFailure = () => (
 );
 
 /*
---- OPTION 2: The "What-If" Playbook Frame ---
-This section is designed to create an emotional connection by tapping into the anxieties of a business owner or manager. It poses common "what-if" scenarios and presents MoreMeets as the answer, providing peace of mind.
-
---- HEADLINE OPTIONS FOR THIS SECTION ---
-// 1. (Fear/Risk Focus): What's Your Plan for the Inevitable?
-// 2. (Value Focus): Your Playbook for Operational Resilience
-// 3. (Problem/Solution Focus): From 'What if?' to 'What's Next?'
-// 4. (Direct/Authoritative Focus): The Three Scenarios That Sink Businesses
-// 5. (Metaphorical Focus): Your Insurance Policy Against Chaos
+--- OPTION 2: The "What-If" Playbook ---
+This section is designed to create an emotional connection by tapping into the anxieties of a business owner or manager. It poses common "what-if" scenarios and presents MoreMeets as the answer.
 */
 const WhatIfPlaybook = () => (
     <SectionWrapper 
@@ -117,15 +104,8 @@ const WhatIfPlaybook = () => (
 );
 
 /*
---- OPTION 3: The "Feature Spotlight" Frame (Manager as Coach) ---
-This section highlights a unique, tangible feature—the "Trainer's Notes" and "Consequence of Failure" columns. It's designed to showcase a specific product differentiator that competitors likely don't have.
-
---- HEADLINE OPTIONS FOR THIS SECTION ---
-// 1. (Value Focus): Turn Every Manager into an Expert Coach
-// 2. (Problem/Solution Focus): Stop Asking 'If'. Start Asking 'Why'.
-// 3. (Direct/Authoritative Focus): The Feature That Builds a Culture of Ownership
-// 4. (Fear/Risk Focus): Your Team Follows the Checklist. But Do They Understand the Risk?
-// 5. (Metaphorical Focus): Beyond the Checkbox: Building Operational Intelligence
+--- OPTION 3: The Feature Spotlight Frame (Manager as Coach) ---
+This section highlights the unique, tangible feature—the "Trainer's Notes" and "Consequence of Failure" columns. It's designed to showcase a specific product differentiator.
 */
 const ManagerAsCoachSection = () => (
     <SectionWrapper 
@@ -182,112 +162,58 @@ const ManagerAsCoachSection = () => (
 );
 
 /*
---- OPTION 4: The "Metaphor" Frame (Blueprint) ---
-This section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a successful and stable operation.
-
---- HEADLINE OPTIONS FOR THIS SECTION ---
-// 1. (Metaphorical Focus): Your Blueprint for a Resilient Business
-// 2. (Direct/Authoritative Focus): Build Your Operation on a Professional Framework
-// 3. (Value Focus): The Architecture of Operational Excellence
-// 4. (Problem/Solution Focus): Stop Guessing. Start Building with a Plan.
-// 5. (Fear/Risk Focus): Are You Building on a Foundation of Sand?
+--- OPTION 4: The "Blueprint" Metaphor ---
+This redesigned section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a stable operation.
 */
 const Blueprint = () => (
     <SectionWrapper
         id="option-4"
-        title="Don't Wing It. Build on a Blueprint."
+        title="Your Blueprint for a Resilient Business"
         description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
+        bg="bg-primary text-primary-foreground"
     >
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-             <Card className="flex flex-col items-center p-6">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
-                    <Shield className="w-10 h-10" />
+        <div className="max-w-4xl mx-auto p-4 md:p-8 rounded-lg border-2 border-primary-foreground/20">
+            <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-center">
+                <div className="space-y-6">
+                    <div className="p-4 border-l-4 border-accent">
+                        <h3 className="font-bold font-headline text-lg text-accent">FOUNDATION: Compliance</h3>
+                        <p className="text-sm text-primary-foreground/80 mt-1">Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from day one.</p>
+                    </div>
+                     <div className="p-4 border-l-4 border-accent">
+                        <h3 className="font-bold font-headline text-lg text-accent">PILLARS: Efficiency</h3>
+                        <p className="text-sm text-primary-foreground/80 mt-1">Standardize tasks, eliminate rework, and onboard new staff faster with a clear, actionable playbook.</p>
+                    </div>
+                     <div className="p-4 border-l-4 border-accent">
+                        <h3 className="font-bold font-headline text-lg text-accent">ROOF: Resilience</h3>
+                        <p className="text-sm text-primary-foreground/80 mt-1">Capture expert knowledge and build emergency protocols so your business runs smoothly, no matter what happens.</p>
+                    </div>
                 </div>
-                <h3 className="font-bold font-headline text-lg">Foundation: Compliance</h3>
-                <p className="text-sm text-muted-foreground mt-2">Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from day one.</p>
-            </Card>
-             <Card className="flex flex-col items-center p-6">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
-                    <Zap className="w-10 h-10" />
+                <div className="hidden md:block">
+                     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                        {/* <!-- Foundation --> */}
+                        <rect x="20" y="250" width="360" height="30" fill="hsla(var(--accent)/0.3)" />
+                        <text x="200" y="270" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="12" className="font-headline">FOUNDATION</text>
+
+                        {/* <!-- Pillars --> */}
+                        <rect x="70" y="100" width="40" height="150" fill="hsla(var(--accent)/0.3)" />
+                        <text x="90" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="12" className="font-headline" transform="rotate(-90 90 180)">PILLARS</text>
+                        <rect x="290" y="100" width="40" height="150" fill="hsla(var(--accent)/0.3)" />
+                        <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="12" className="font-headline" transform="rotate(-90 310 180)">PILLARS</text>
+                        
+                        {/* <!-- Roof --> */}
+                        <polygon points="10,100 200,30 390,100" fill="hsla(var(--accent)/0.3)" />
+                        <text x="200" y="80" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="12" className="font-headline">ROOF</text>
+
+                        {/* <!-- Dashed lines --> */}
+                        <line x1="150" y1="250" x2="150" y2="100" stroke="hsl(var(--accent))" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="250" y1="250" x2="250" y2="100" stroke="hsl(var(--accent))" strokeWidth="1" strokeDasharray="4 4" />
+
+                        {/* <!-- Labels --> */}
+                        <text x="200" y="190" textAnchor="middle" fill="hsl(var(--accent))" fontSize="14" className="font-bold font-headline">OPERATIONAL</text>
+                        <text x="200" y="210" textAnchor="middle" fill="hsl(var(--accent))" fontSize="14" className="font-bold font-headline">EXCELLENCE</text>
+                    </svg>
                 </div>
-                <h3 className="font-bold font-headline text-lg">Pillars: Efficiency</h3>
-                <p className="text-sm text-muted-foreground mt-2">Standardize tasks, eliminate rework, and onboard new staff faster with a clear, actionable playbook.</p>
-            </Card>
-             <Card className="flex flex-col items-center p-6">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
-                    <LifeBuoy className="w-10 h-10" />
-                </div>
-                <h3 className="font-bold font-headline text-lg">Roof: Resilience</h3>
-                <p className="text-sm text-muted-foreground mt-2">Capture expert knowledge and build emergency protocols so your business runs smoothly, no matter what.</p>
-            </Card>
-        </div>
-    </SectionWrapper>
-);
-
-
-/*
---- OPTION 5: The "System Breakdown" Frame ---
-This section is for the detail-oriented buyer. It breaks down the components of a MoreMeets checklist, explaining exactly *what* makes it a superior system compared to a simple list of tasks.
-
---- HEADLINE OPTIONS FOR THIS SECTION ---
-// 1. (Value Focus): Engineered for Execution
-// 2. (Direct/Authoritative Focus): The MoreMeets System: A Breakdown
-// 3. (Problem/Solution Focus): From Vague Idea to Verifiable Action
-// 4. (Fear/Risk Focus): Is Your SOP Missing These Critical Components?
-// 5. (Metaphorical Focus): More Than a Checklist. It's a Control Panel.
-*/
-const TheSystem = () => (
-    <SectionWrapper 
-        id="option-5"
-        title="More Than a Template. It's a System."
-        description="Generic templates are vague. A MoreMeets pack is a complete, interconnected system for operational control, built on four key components."
-        bg="bg-secondary/30"
-    >
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            <Card className="p-6">
-                <CardHeader className="p-0">
-                    <div className="flex items-center gap-3">
-                        <FileText className="w-8 h-8 text-accent shrink-0" />
-                        <CardTitle className="text-lg">Task-Level Detail</CardTitle>
-                    </div>
-                </CardHeader>
-                <CardContent className="p-0 mt-3">
-                    <p className="text-muted-foreground text-sm">Every high-level goal is broken down into specific, unambiguous tasks that leave no room for interpretation.</p>
-                </CardContent>
-            </Card>
-             <Card className="p-6">
-                <CardHeader className="p-0">
-                     <div className="flex items-center gap-3">
-                        <Users className="w-8 h-8 text-accent shrink-0" />
-                        <CardTitle className="text-lg">Built-in Accountability</CardTitle>
-                    </div>
-                </CardHeader>
-                <CardContent className="p-0 mt-3">
-                    <p className="text-muted-foreground text-sm">Includes columns for `Role`, `Frequency`, and `Proof of Completion` to ensure every task has a clear owner and a verifiable outcome.</p>
-                </CardContent>
-            </Card>
-             <Card className="p-6">
-                <CardHeader className="p-0">
-                    <div className="flex items-center gap-3">
-                        <BrainCircuit className="w-8 h-8 text-accent shrink-0" />
-                         <CardTitle className="text-lg">Risk Intelligence</CardTitle>
-                    </div>
-                </CardHeader>
-                <CardContent className="p-0 mt-3">
-                    <p className="text-muted-foreground text-sm">The "Consequence of Failure" column explains *why* a task is critical, turning your team from task-doers into risk managers.</p>
-                </CardContent>
-            </Card>
-             <Card className="p-6">
-                <CardHeader className="p-0">
-                    <div className="flex items-center gap-3">
-                        <ShieldCheck className="w-8 h-8 text-accent shrink-0" />
-                        <CardTitle className="text-lg">Audit-Ready Framework</CardTitle>
-                    </div>
-                </CardHeader>
-                <CardContent className="p-0 mt-3">
-                    <p className="text-muted-foreground text-sm">Designed from the ground up to meet the rigorous demands of internal teams and external compliance auditors.</p>
-                </CardContent>
-            </Card>
+            </div>
         </div>
     </SectionWrapper>
 );
@@ -295,11 +221,10 @@ const TheSystem = () => (
 
 export default function TempDesignPreviewPage() {
   const sections = [
-    { id: "option-1", title: "Option 1: Problem/Solution", component: <AnatomyOfFailure /> },
-    { id: "option-2", title: "Option 2: 'What-If' Playbook", component: <WhatIfPlaybook /> },
-    { id: "option-3", title: "Option 3: Feature Spotlight", component: <ManagerAsCoachSection /> },
-    { id: "option-4", title: "Option 4: 'Blueprint' Metaphor", component: <Blueprint /> },
-    { id: "option-5", title: "Option 5: System Breakdown", component: <TheSystem /> },
+    { id: "option-1", title: "Anatomy of Failure", component: <AnatomyOfFailure /> },
+    { id: "option-2", title: "The 'What-If' Playbook", component: <WhatIfPlaybook /> },
+    { id: "option-3", title: "Manager as Coach", component: <ManagerAsCoachSection /> },
+    { id: "option-4", title: "Blueprint Metaphor", component: <Blueprint /> },
   ];
 
   return (
@@ -326,4 +251,3 @@ export default function TempDesignPreviewPage() {
     </div>
   );
 }
-
