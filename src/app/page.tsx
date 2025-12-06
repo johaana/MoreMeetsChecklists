@@ -278,18 +278,9 @@ const SectionWrapper = ({
   </section>
 );
 
-// --- Section 1: Anatomy of Failure (Merged from Old Options 1 & 5) ---
 const AnatomyOfFailure = () => (
   <SectionWrapper
     id="why-sops-matter"
-    /*
-      --- HEADLINE OPTIONS ---
-      1. Why Most SOPs Are Just Documents. Ours Are Systems.
-      2. The Anatomy of a Weak SOP vs. The MoreMeets Standard
-      3. Your Checklists Are Broken. Here's the Fix.
-      4. From a Dust-Covered Document to a Living System
-      5. The Difference Between a Checklist and a System
-    */
     title="Why Most SOPs Are Just Documents. Ours Are Systems."
     description="The difference between an SOP that collects dust and one that drives excellence is in the details. Here’s a breakdown of the typical, broken approach versus the MoreMeets standard."
     bg="bg-secondary/30"
@@ -376,18 +367,9 @@ const AnatomyOfFailure = () => (
   </SectionWrapper>
 );
 
-// --- Section 2: The "Blueprint" for Excellence ---
 const Blueprint = () => (
   <SectionWrapper
     id="blueprint"
-    /*
-        --- HEADLINE OPTIONS ---
-        1. Your Blueprint for a Resilient Business
-        2. Building a Bulletproof Operation, Block by Block
-        3. The Architecture of Operational Excellence
-        4. Stop Improvising. Start Building.
-        5. The Three Pillars of a World-Class Operation
-      */
     title="Your Blueprint for Operational Excellence"
     description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
   >
@@ -396,7 +378,7 @@ const Blueprint = () => (
         <div className="space-y-6 order-2 md:order-1">
           <div className="p-4 border-l-4 border-accent">
             <h3 className="font-bold font-headline text-lg text-primary">
-              The Foundation: Compliance
+              Compliance
             </h3>
             <p className="text-sm text-muted-foreground mt-1">
               Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from
@@ -405,7 +387,7 @@ const Blueprint = () => (
           </div>
           <div className="p-4 border-l-4 border-accent">
             <h3 className="font-bold font-headline text-lg text-primary">
-              The Pillars: Efficiency & Training
+              Efficiency & Training
             </h3>
             <p className="text-sm text-muted-foreground mt-1">
               Standardize tasks to improve efficiency and use the checklists as a
@@ -414,7 +396,7 @@ const Blueprint = () => (
           </div>
           <div className="p-4 border-l-4 border-accent">
             <h3 className="font-bold font-headline text-lg text-primary">
-              The Roof: Resilience
+              Resilience
             </h3>
             <p className="text-sm text-muted-foreground mt-1">
               Capture expert knowledge and build emergency protocols so your
@@ -423,105 +405,100 @@ const Blueprint = () => (
           </div>
         </div>
         <div className="order-1 md:order-2 mt-8 md:mt-0 flex items-center justify-center">
-          <div className="relative w-full max-w-xs md:max-w-sm">
-            <svg
-              viewBox="0 0 400 300"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-auto"
-            >
-              {/* Foundation */}
-              <rect
-                x="20"
-                y="250"
-                width="360"
-                height="30"
-                fill="hsla(var(--primary)/0.6)"
-              />
-              <text
-                x="200"
-                y="270"
-                textAnchor="middle"
-                fill="hsl(var(--primary-foreground))"
-                fontSize="14"
-                className="font-headline"
-              >
-                Compliance
-              </text>
+            <div className="relative w-full max-w-xs md:max-w-sm">
+                <svg
+                    viewBox="0 0 400 300"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-full h-auto"
+                >
+                    {/* Foundation */}
+                    <rect
+                        x="20"
+                        y="250"
+                        width="360"
+                        height="30"
+                        fill="hsla(var(--primary)/0.6)"
+                    />
+                    <text
+                        x="200"
+                        y="270"
+                        textAnchor="middle"
+                        fill="hsl(var(--primary-foreground))"
+                        fontSize="14"
+                        className="font-headline"
+                    >
+                        Compliance
+                    </text>
 
-              {/* Pillars */}
-              <rect
-                x="70"
-                y="100"
-                width="40"
-                height="150"
-                fill="hsla(var(--primary)/0.6)"
-              />
-              <text
-                x="90"
-                y="180"
-                textAnchor="middle"
-                fill="hsl(var(--primary-foreground))"
-                fontSize="14"
-                className="font-headline"
-                transform="rotate(-90 90 180)"
-              >
-                Efficiency
-              </text>
+                    {/* Pillars */}
+                    <rect
+                        x="70"
+                        y="100"
+                        width="40"
+                        height="150"
+                        fill="hsla(var(--primary)/0.6)"
+                    />
+                    <text
+                        x="90"
+                        y="180"
+                        textAnchor="middle"
+                        fill="hsl(var(--primary-foreground))"
+                        fontSize="14"
+                        className="font-headline"
+                        transform="rotate(-90 90 180)"
+                    >
+                        Efficiency
+                    </text>
 
-              <rect
-                x="290"
-                y="100"
-                width="40"
-                height="150"
-                fill="hsla(var(--primary)/0.6)"
-              />
-              <text
-                x="310"
-                y="180"
-                textAnchor="middle"
-                fill="hsl(var(--primary-foreground))"
-                fontSize="14"
-                className="font-headline"
-                transform="rotate(-90 310 180)"
-              >
-                Training
-              </text>
-
-              {/* Roof */}
-              <polygon
-                points="10,100 200,30 390,100"
-                fill="hsla(var(--primary)/0.6)"
-              />
-              <text
-                x="200"
-                y="80"
-                textAnchor="middle"
-                fill="hsl(var(--primary-foreground))"
-                fontSize="14"
-                className="font-headline"
-              >
-                Resilience
-              </text>
-            </svg>
-          </div>
+                    <rect
+                        x="290"
+                        y="100"
+                        width="40"
+                        height="150"
+                        fill="hsla(var(--primary)/0.6)"
+                    />
+                    <text
+                        x="310"
+                        y="180"
+                        textAnchor="middle"
+                        fill="hsl(var(--primary-foreground))"
+                        fontSize="14"
+                        className="font-headline"
+                        transform="rotate(-90 310 180)"
+                    >
+                        Training
+                    </text>
+                    
+                    {/* Roof */}
+                    <polygon
+                        points="10,100 200,30 390,100"
+                        fill="hsla(var(--primary)/0.6)"
+                    />
+                    <text
+                        x="200"
+                        y="80"
+                        textAnchor="middle"
+                        fill="hsl(var(--primary-foreground))"
+                        fontSize="14"
+                        className="font-headline"
+                    >
+                        Resilience
+                    </text>
+                    
+                    {/* Center text */}
+                    <text x="200" y="180" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">OPERATIONAL</text>
+                    <text x="200" y="200" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">EXCELLENCE</text>
+                </svg>
+            </div>
         </div>
       </div>
     </div>
   </SectionWrapper>
 );
 
-// --- Section 3: Manager as Coach ---
 const ManagerAsCoachSection = () => (
   <SectionWrapper
     id="manager-as-coach"
-    /*
-        --- HEADLINE OPTIONS ---
-        1. Turn Every Manager into an Expert Coach
-        2. We Built Risk Intelligence Into Every Task
-        3. From 'What to Do' to 'Why It Matters'
-        4. The Difference Between a Task-Doer and a Risk Manager
-        5. More Than Checklists: A Built-in Training System
-      */
     title="Turn Every Manager into an Expert Coach"
     description="Our checklists go beyond simple tasks. They include context that explains the 'why' behind the 'what', empowering your managers to turn every check into a powerful on-the-job training moment."
     bg="bg-secondary/30"
