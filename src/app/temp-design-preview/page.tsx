@@ -11,7 +11,6 @@ import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 
-
 const SectionWrapper = ({ title, description, children, bg = "bg-background" }: { title: string, description: string, children: React.ReactNode, bg?: string }) => (
     <section className={cn("w-full py-16 md:py-24 border-t", bg)}>
         <div className="container px-4 md:px-6">
@@ -24,11 +23,19 @@ const SectionWrapper = ({ title, description, children, bg = "bg-background" }: 
     </section>
 );
 
-// Option 1: The Anatomy of Failure (Importance of SOPs)
+/*
+HEADLINE OPTIONS - SECTION 1
+
+1. Value/Aspiration: "The Anatomy of Operational Excellence"
+2. Problem/Solution: "Why Most SOPs Fail (And Ours Don't)"
+3. Direct/Authoritative: "The Difference Between a Document and a System"
+4. Fear/Risk: "Is Your SOP Library a Liability in Disguise?"
+5. Metaphorical: "Stop Collecting Dust: Build a Living Operations Playbook"
+*/
 const AnatomyOfFailure = () => (
     <SectionWrapper 
         title="Why Most SOPs Fail (And Ours Don't)" 
-        description="The problem isn't having SOPs; it's having SOPs that are incomplete, unactionable, and disconnected from your daily workflow. Here's the difference."
+        description="The problem isn't having SOPs; it's having SOPs that are incomplete, unactionable, and disconnected from daily execution. Here's the difference."
         bg="bg-secondary/30"
     >
         <div className="grid md:grid-cols-2 gap-8 items-start max-w-5xl mx-auto">
@@ -39,8 +46,8 @@ const AnatomyOfFailure = () => (
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Vague & Incomplete:</strong> "Check equipment regularly." What equipment? How? What defines 'good'?</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> Tasks are forgotten because there's no clear owner, frequency, or proof of completion required.</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Not Audit-Ready:</strong> Lacks the structure and detail needed to satisfy a real compliance or safety auditor.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> Tasks are forgotten because there's no clear owner or proof of completion required.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Not Audit-Ready:</strong> Lacks the structure needed to satisfy a real compliance or safety auditor.</span></p>
                 </CardContent>
             </Card>
             <Card className="border-primary/30 bg-background shadow-lg h-full">
@@ -58,11 +65,19 @@ const AnatomyOfFailure = () => (
     </SectionWrapper>
 );
 
-// Option 2: The "What-If" Playbook (Variation)
+/*
+HEADLINE OPTIONS - SECTION 2
+
+1. Fear/Risk: "What's Your Plan for the Inevitable?"
+2. Value/Aspiration: "Your Playbook for Operational Resilience"
+3. Problem/Solution: "From 'What if?' to 'What's Next?'"
+4. Direct/Authoritative: "The Three Scenarios That Sink Businesses"
+5. Metaphorical: "Your Insurance Policy Against Chaos"
+*/
 const WhatIfPlaybook = () => (
     <SectionWrapper 
         title="Your Playbook for What-If"
-        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets gives your team a globally-compliant plan for the worst days."
+        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets provides a globally compliant, researched system that your team can adapt and follow from day one."
     >
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="text-center p-6 border-2 border-dashed border-primary/20">
@@ -70,7 +85,7 @@ const WhatIfPlaybook = () => (
                     <h3 className="font-bold font-headline text-primary">What if your best manager quits?</h3>
                 </CardHeader>
                 <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our checklists provide a globally compliant system, turning operational best practices into a repeatable process your new hires can follow and adapt from day one. Your resilience is no longer tied to one person.</p>
+                    <p className="text-muted-foreground text-sm">Our checklists provide a globally compliant system, turning operational best practices into a repeatable process your new hires can follow and adapt. Your resilience is no longer tied to one person.</p>
                 </CardContent>
             </Card>
             <Card className="text-center p-6 border-2 border-dashed border-primary/20">
@@ -93,46 +108,79 @@ const WhatIfPlaybook = () => (
     </SectionWrapper>
 );
 
-// Option 3: Stop the Leaks (Dashboard Variation)
-const StopTheLeaks = () => (
-    <SectionWrapper
-        title="Your Business Is Leaking Value. We Plug the Holes."
-        description="Every un-systematized process is a leak in your profitability and reputation. MoreMeets turns these vulnerabilities into strengths."
+
+/*
+HEADLINE OPTIONS - SECTION 3 (The "Coach" section)
+
+1. Value/Aspiration: "Turn Every Manager into an Expert Coach"
+2. Problem/Solution: "Stop Asking 'If'. Start Asking 'Why'."
+3. Direct/Authoritative: "The Feature That Builds a Culture of Ownership"
+4. Fear/Risk: "Your Team Follows the Checklist. But Do They Understand the Risk?"
+5. Metaphorical: "Beyond the Checkbox: Building Operational Intelligence"
+*/
+const ManagerAsCoachSection = () => (
+    <SectionWrapper 
+        title="Turn Every Manager into an Expert Coach"
+        description="Our checklists go beyond simple tasks. They include a 'Trainer's Notes' column that explains the 'why' behind the 'what', empowering your managers to turn every check into a powerful on-the-job training moment."
         bg="bg-secondary/30"
     >
-        <div className="max-w-4xl mx-auto p-6 bg-background rounded-2xl shadow-lg border">
-            <h3 className="text-center font-bold font-headline text-lg mb-6">Operational Health Dashboard</h3>
-            <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
-                <div className="flex justify-between items-center p-3 rounded-md bg-destructive/10">
-                    <span className="font-medium text-destructive">Wasted Time (Rework)</span>
-                    <span className="text-destructive font-bold">HIGH</span>
-                </div>
-                 <div className="flex justify-between items-center p-3 rounded-md bg-green-600/10">
-                    <span className="font-medium text-green-700">✓ MoreMeets: Standardized Process</span>
-                    <span className="text-green-700 font-bold">OPTIMAL</span>
-                </div>
-                 <div className="flex justify-between items-center p-3 rounded-md bg-destructive/10">
-                    <span className="font-medium text-destructive">Compliance Fines</span>
-                    <span className="text-destructive font-bold">RISK</span>
-                </div>
-                 <div className="flex justify-between items-center p-3 rounded-md bg-green-600/10">
-                    <span className="font-medium text-green-700">✓ MoreMeets: Audit-Ready Logs</span>
-                    <span className="text-green-700 font-bold">MITIGATED</span>
-                </div>
-                 <div className="flex justify-between items-center p-3 rounded-md bg-destructive/10">
-                    <span className="font-medium text-destructive">Knowledge Loss</span>
-                    <span className="text-destructive font-bold">CRITICAL</span>
-                </div>
-                 <div className="flex justify-between items-center p-3 rounded-md bg-green-600/10">
-                    <span className="font-medium text-green-700">✓ MoreMeets: Systematized Expertise</span>
-                    <span className="text-green-700 font-bold">SECURE</span>
+        <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-background shadow-lg">
+            <div className="space-y-4">
+                <h2 className="text-2xl md:text-3xl font-bold font-headline text-primary">From 'What' to 'Why'</h2>
+                <p className="text-muted-foreground">The "Trainer's Notes" and "Consequence of Failure" columns provide your managers with talking points, real-world examples, and coaching questions. This transforms routine supervision into powerful, context-rich training that builds a smarter, more resilient team.</p>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button>Learn More About This Feature <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[625px]">
+                        <DialogHeader>
+                            <DialogTitle className="font-headline text-2xl">The Manager's Coaching Playbook</DialogTitle>
+                            <DialogDescription>
+                            Go beyond compliance. Build a culture of excellence.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="prose prose-sm max-w-none text-foreground dark:text-foreground">
+                            <p>Standard checklists ensure tasks are done. A MoreMeets pack ensures your team understands *why* they're doing them. This is a force multiplier for your leadership.</p>
+                            <h4>How it Works: The "Consequence of Failure" Column</h4>
+                            <p>For each critical task, we've added context that explains the real-world impact of a missed step. This column contains: </p>
+                            <ul>
+                            <li><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</li>
+                            <li><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</li>
+                            <li><strong>Risk Intelligence:</strong> It turns every employee into a risk manager by making them aware of the consequences.</li>
+                            </ul>
+                            <h4>The Result:</h4>
+                            <p>You're not just buying a checklist; you're investing in a scalable training system. You create more engaged employees and build a more resilient, intelligent operation.</p>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            </div>
+            <div className="rounded-lg bg-background p-4 border border-dashed">
+                <p className="text-sm font-semibold">Example: Excel Checklist Snippet</p>
+                <div className="mt-2 space-y-2">
+                    <div className="bg-secondary/50 p-3 rounded-md">
+                        <p className="font-mono text-xs">**Task:** Check for allergen cross-contamination.</p>
+                        <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Consequence of Failure:** "A simple mistake here can be fatal to a guest and business-ending for us (e.g., the Pret a Manger case study)."</p>
+                    </div>
+                    <div className="bg-secondary/50 p-3 rounded-md">
+                        <p className="font-mono text-xs">**Task:** Verify LOTO on machine #3.</p>
+                        <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Consequence of Failure:** "Prevents someone from being crushed. Non-negotiable safety step."</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Card>
     </SectionWrapper>
 );
 
-// Option 4: The Blueprint for Excellence
+
+/*
+HEADLINE OPTIONS - SECTION 4
+
+1. Direct/Authoritative: "Build Your Operation on a Professional Blueprint"
+2. Value/Aspiration: "The Architecture of Operational Excellence"
+3. Problem/Solution: "Stop Guessing. Start Building with a Plan."
+4. Fear/Risk: "Are You Building on a Foundation of Sand?"
+5. Metaphorical: "Your Blueprint for a Resilient Business"
+*/
 const Blueprint = () => (
     <SectionWrapper
         title="Don't Wing It. Build on a Blueprint."
@@ -164,7 +212,15 @@ const Blueprint = () => (
     </SectionWrapper>
 );
 
-// Option 5: The MoreMeets System
+/*
+HEADLINE OPTIONS - SECTION 5
+
+1. Direct/Authoritative: "The MoreMeets System: A Breakdown"
+2. Value/Aspiration: "Engineered for Execution"
+3. Problem/Solution: "From Vague Idea to Verifiable Action"
+4. Fear/Risk: "Is Your SOP Missing These Critical Components?"
+5. Metaphorical: "More Than a Checklist. It's a Control Panel."
+*/
 const TheSystem = () => (
     <SectionWrapper 
         title="More Than a Template. It's a System."
@@ -220,59 +276,6 @@ const TheSystem = () => (
     </SectionWrapper>
 );
 
-// New Section for "Trainer's Notes"
-const ManagerAsCoachSection = () => (
-    <SectionWrapper 
-        title="Turn Every Manager into an Expert Coach"
-        description="Our checklists go beyond simple tasks. They include a 'Trainer's Notes' column that empowers your managers to turn every check into a powerful on-the-job training moment."
-    >
-        <Card className="max-w-4xl mx-auto p-6 md:p-8 grid md:grid-cols-2 gap-8 items-center bg-secondary/30 shadow-lg border">
-            <div className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold font-headline text-primary">From 'What' to 'Why'</h2>
-                <p className="text-muted-foreground">The 'Trainer's Notes' provide your managers with talking points, real-world examples, and coaching questions for critical tasks. This transforms routine supervision into powerful, context-rich training that builds a smarter, more resilient team.</p>
-                <Dialog>
-                    <DialogTrigger asChild>
-                        <Button>Learn More About This Feature <ArrowRight className="w-4 h-4 ml-2" /></Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[625px]">
-                        <DialogHeader>
-                            <DialogTitle className="font-headline text-2xl">The Manager's Coaching Playbook</DialogTitle>
-                            <DialogDescription>
-                            Go beyond compliance. Build a culture of excellence.
-                            </DialogDescription>
-                        </DialogHeader>
-                        <div className="prose prose-sm max-w-none text-foreground dark:text-foreground">
-                            <p>The standard MoreMeets packs ensure tasks are done correctly. The optional **'Manager's Edition'** checklists ensure your team understands *why* they're doing them. This is a force multiplier for your leadership team.</p>
-                            <h4>How it Works: The "Trainer's Notes" Column</h4>
-                            <p>For each critical task, we've added a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
-                            <ul>
-                            <li><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</li>
-                            <li><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</li>
-                            <li><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</li>
-                            </ul>
-                            <h4>The Result:</h4>
-                            <p>You're not just buying a checklist; you're investing in a scalable training system. You turn every routine check into a micro-training session, create more engaged employees, and build a more resilient, intelligent operation.</p>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            </div>
-            <div className="rounded-lg bg-background p-4 border border-dashed">
-                <p className="text-sm font-semibold">Example: "Trainer's Notes"</p>
-                <div className="mt-2 space-y-2">
-                    <div className="bg-secondary/50 p-3 rounded-md">
-                        <p className="font-mono text-xs">**Task:** Check for allergen cross-contamination.</p>
-                        <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Show the new hire the separate color-coded boards. Explain the Pret a Manger case study to reinforce why a simple mistake here can be fatal and business-ending."</p>
-                    </div>
-                    <div className="bg-secondary/50 p-3 rounded-md">
-                        <p className="font-mono text-xs">**Task:** Verify LOTO on machine #3.</p>
-                        <p className="font-mono text-xs mt-1 text-accent-foreground bg-accent/20 p-2 rounded">**Trainer's Note:** "Ask the employee: 'What is the biggest risk if we forget this step?' Ensure they understand this prevents someone from being crushed."</p>
-                    </div>
-                </div>
-            </div>
-        </Card>
-    </SectionWrapper>
-);
-
 
 export default function TempDesignPreviewPage() {
   return (
@@ -285,7 +288,6 @@ export default function TempDesignPreviewPage() {
 
         <AnatomyOfFailure />
         <WhatIfPlaybook />
-        <StopTheLeaks />
         <ManagerAsCoachSection />
         <Blueprint />
         <TheSystem />
