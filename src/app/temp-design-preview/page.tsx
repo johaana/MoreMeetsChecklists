@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Check, ArrowRight, Zap, BrainCircuit, Users, FileText, Shield, LifeBuoy, Frown, Smile, XCircle, CheckCircle } from "lucide-react";
+import { Check, ArrowRight, Zap, BrainCircuit, Users, FileText, Shield, LifeBuoy, Frown, Smile, XCircle, CheckCircle, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
@@ -26,10 +26,10 @@ const SectionWrapper = ({ title, description, children, bg = "bg-background", id
 
 
 /*
---- OPTION 1: The "Problem/Solution" Frame ---
+--- OPTION 1: The "Anatomy of Failure" Frame ---
 This section directly contrasts the common state of SOPs (chaotic, forgotten documents) with the MoreMeets solution (a living, actionable system). It's a classic marketing approach that clearly establishes the problem before presenting your product as the definitive solution.
 
-// --- HEADLINE OPTIONS FOR THIS SECTION ---
+--- HEADLINE OPTIONS FOR THIS SECTION ---
 // 1. (Problem/Solution Focus): Why Most SOPs Fail (And Ours Don't)
 // 2. (Value Focus): The Anatomy of Operational Excellence
 // 3. (Direct/Authoritative): The Difference Between a Document and a System
@@ -71,10 +71,10 @@ const AnatomyOfFailure = () => (
 );
 
 /*
---- OPTION 2: The "Fear/Risk" Frame (What-If Scenarios) ---
+--- OPTION 2: The "What-If" Playbook Frame ---
 This section is designed to create an emotional connection by tapping into the anxieties of a business owner or manager. It poses common "what-if" scenarios and presents MoreMeets as the answer, providing peace of mind.
 
-// --- HEADLINE OPTIONS FOR THIS SECTION ---
+--- HEADLINE OPTIONS FOR THIS SECTION ---
 // 1. (Fear/Risk Focus): What's Your Plan for the Inevitable?
 // 2. (Value Focus): Your Playbook for Operational Resilience
 // 3. (Problem/Solution Focus): From 'What if?' to 'What's Next?'
@@ -120,7 +120,7 @@ const WhatIfPlaybook = () => (
 --- OPTION 3: The "Feature Spotlight" Frame (Manager as Coach) ---
 This section highlights a unique, tangible feature—the "Trainer's Notes" and "Consequence of Failure" columns. It's designed to showcase a specific product differentiator that competitors likely don't have.
 
-// --- HEADLINE OPTIONS FOR THIS SECTION ---
+--- HEADLINE OPTIONS FOR THIS SECTION ---
 // 1. (Value Focus): Turn Every Manager into an Expert Coach
 // 2. (Problem/Solution Focus): Stop Asking 'If'. Start Asking 'Why'.
 // 3. (Direct/Authoritative Focus): The Feature That Builds a Culture of Ownership
@@ -185,7 +185,7 @@ const ManagerAsCoachSection = () => (
 --- OPTION 4: The "Metaphor" Frame (Blueprint) ---
 This section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a successful and stable operation.
 
-// --- HEADLINE OPTIONS FOR THIS SECTION ---
+--- HEADLINE OPTIONS FOR THIS SECTION ---
 // 1. (Metaphorical Focus): Your Blueprint for a Resilient Business
 // 2. (Direct/Authoritative Focus): Build Your Operation on a Professional Framework
 // 3. (Value Focus): The Architecture of Operational Excellence
@@ -229,7 +229,7 @@ const Blueprint = () => (
 --- OPTION 5: The "System Breakdown" Frame ---
 This section is for the detail-oriented buyer. It breaks down the components of a MoreMeets checklist, explaining exactly *what* makes it a superior system compared to a simple list of tasks.
 
-// --- HEADLINE OPTIONS FOR THIS SECTION ---
+--- HEADLINE OPTIONS FOR THIS SECTION ---
 // 1. (Value Focus): Engineered for Execution
 // 2. (Direct/Authoritative Focus): The MoreMeets System: A Breakdown
 // 3. (Problem/Solution Focus): From Vague Idea to Verifiable Action
@@ -295,11 +295,11 @@ const TheSystem = () => (
 
 export default function TempDesignPreviewPage() {
   const sections = [
-    { id: "option-1", title: "Option 1: The Problem/Solution", component: <AnatomyOfFailure /> },
-    { id: "option-2", title: "Option 2: The 'What-If' Playbook", component: <WhatIfPlaybook /> },
-    { id: "option-3", title: "Option 3: The 'Manager as Coach' Spotlight", component: <ManagerAsCoachSection /> },
-    { id: "option-4", title: "Option 4: The 'Blueprint' Metaphor", component: <Blueprint /> },
-    { id: "option-5", title: "Option 5: The 'System Breakdown'", component: <TheSystem /> },
+    { id: "option-1", title: "Option 1: Problem/Solution", component: <AnatomyOfFailure /> },
+    { id: "option-2", title: "Option 2: 'What-If' Playbook", component: <WhatIfPlaybook /> },
+    { id: "option-3", title: "Option 3: Feature Spotlight", component: <ManagerAsCoachSection /> },
+    { id: "option-4", title: "Option 4: 'Blueprint' Metaphor", component: <Blueprint /> },
+    { id: "option-5", title: "Option 5: System Breakdown", component: <TheSystem /> },
   ];
 
   return (
@@ -326,3 +326,4 @@ export default function TempDesignPreviewPage() {
     </div>
   );
 }
+
