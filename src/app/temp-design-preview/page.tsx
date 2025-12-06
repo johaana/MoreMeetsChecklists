@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import * as React from 'react';
@@ -187,12 +185,14 @@ const RefinedHeroSection = () => {
 };
 
 
-const SectionWrapper = ({ title, description, children, bg = "bg-background", id }: { id: string, title: string | React.ReactNode, description: string, children: React.ReactNode, bg?: string }) => (
+const SectionWrapper = ({ title, description, children, bg = "bg-background", id }: { id: string, title: string | React.ReactNode, description: React.ReactNode, children: React.ReactNode, bg?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24 border-t", bg)}>
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">{title}</h2>
-                <p className="text-muted-foreground mt-2 text-base md:text-lg">{description}</p>
+                <div className="text-muted-foreground mt-4 text-base md:text-lg">
+                    {description}
+                </div>
             </div>
             {children}
         </div>
@@ -247,57 +247,50 @@ const AnatomyOfFailure = () => (
 const Blueprint = () => (
     <SectionWrapper
         id="blueprint"
-        // --- HEADLINE OPTIONS ---
-        // 1. Your Blueprint for a Resilient Business
-        // 2. Building a Bulletproof Operation, Block by Block
-        // 3. The Architecture of Operational Excellence
-        // 4. Stop Improvising. Start Building.
-        // 5. The Three Pillars of a World-Class Operation
         title="Your Blueprint for Operational Excellence"
         description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
     >
         <div className="max-w-4xl mx-auto p-4 md:p-8 rounded-lg border-2 border-primary/20 bg-secondary/30">
             <div className="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
-                <div className="space-y-6">
+                <div className="space-y-6 order-2 md:order-1">
                     <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-primary">The Foundation</h3>
+                        <h3 className="font-bold font-headline text-lg text-primary">Compliance</h3>
                         <p className="text-sm text-muted-foreground mt-1">Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from day one.</p>
                     </div>
                      <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-primary">The Pillars</h3>
+                        <h3 className="font-bold font-headline text-lg text-primary">Training & Efficiency</h3>
                         <p className="text-sm text-muted-foreground mt-1">Standardize tasks to improve efficiency and use the checklists as a day-one playbook for new hires.</p>
                     </div>
                      <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-primary">The Roof</h3>
+                        <h3 className="font-bold font-headline text-lg text-primary">Resilience</h3>
                         <p className="text-sm text-muted-foreground mt-1">Capture expert knowledge and build emergency protocols so your business is resilient, no matter what happens.</p>
                     </div>
                 </div>
-                <div className="mt-8 md:mt-0 flex items-center justify-center">
-                     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-sm">
-                        {/* <!-- Foundation --> */}
-                        <rect x="20" y="250" width="360" height="30" fill="hsla(var(--primary)/0.6)" />
-                        <text x="200" y="270" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Compliance</text>
-
-                        {/* <!-- Pillars --> */}
-                        <rect x="70" y="100" width="40" height="150" fill="hsla(var(--primary)/0.6)" />
-                         <text x="90" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 90 180)">Efficiency</text>
-
-                        <rect x="290" y="100" width="40" height="150" fill="hsla(var(--primary)/0.6)" />
-                        <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 310 180)">Training</text>
-                        
-                        {/* <!-- Roof --> */}
-                        <polygon points="10,100 200,30 390,100" fill="hsla(var(--primary)/0.6)" />
-                        <text x="200" y="80" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Resilience</text>
-
-                        {/* <!-- Center text --> */}
-                        <text x="200" y="180" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">OPERATIONAL</text>
-                        <text x="200" y="200" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">EXCELLENCE</text>
-                    </svg>
+                <div className="order-1 md:order-2 mt-8 md:mt-0 flex items-center justify-center">
+                    <div className="relative w-full max-w-xs md:max-w-sm">
+                       <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+                            <rect x="20" y="250" width="360" height="30" fill="hsla(var(--primary)/0.6)"></rect>
+                            <text x="200" y="270" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Compliance</text>
+                            
+                            <rect x="70" y="100" width="40" height="150" fill="hsla(var(--primary)/0.6)"></rect>
+                            <text x="90" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 90 180)">Training</text>
+                            
+                            <rect x="290" y="100" width="40" height="150" fill="hsla(var(--primary)/0.6)"></rect>
+                            <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 310 180)">Efficiency</text>
+                            
+                            <polygon points="10,100 200,30 390,100" fill="hsla(var(--primary)/0.6)"></polygon>
+                            <text x="200" y="80" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Resilience</text>
+                            
+                            <text x="200" y="180" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">OPERATIONAL</text>
+                            <text x="200" y="200" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">EXCELLENCE</text>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
     </SectionWrapper>
 );
+
 
 
 // --- Section 3: Manager as Coach ---
@@ -361,6 +354,44 @@ const ManagerAsCoachSection = () => (
     </SectionWrapper>
 );
 
+// --- NEW Section 4: AI Gamble vs. MoreMeets Guarantee ---
+const AiVsMoreMeetsSection = () => (
+    <SectionWrapper
+        id="ai-vs-moremeets"
+        title="Why AI is a Great First Draft, But a Terrible Final Answer."
+        description={<>&#8220;ChatGPT can make mistakes. Check important info.&#8221; &mdash; For safety, compliance, and legal audits, we provide the verified final answer.</>}
+    >
+        <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+            <Card className="border-amber-500/30 bg-amber-500/5 h-full">
+                <CardHeader>
+                    <CardTitle className="text-amber-600 flex items-center gap-2">
+                        <Zap className="w-6 h-6"/> The AI Gamble
+                    </CardTitle>
+                    <CardDescription>Relying on generic AI for mission-critical operations.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 text-muted-foreground">
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-amber-600 shrink-0 mt-1"/><span><strong>Risk of "Hallucination":</strong> AI can invent or omit critical steps, leading to real-world failures in safety or compliance.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-amber-600 shrink-0 mt-1"/><span><strong>No Accountability:</strong> An AI-generated document lacks the structure, version control, and clear ownership required for a legal audit.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-amber-600 shrink-0 mt-1"/><span><strong>Generic & Decontextualized:</strong> Fails to incorporate specific facility layouts, local regulations, or industry-specific best practices.</span></p>
+                </CardContent>
+            </Card>
+            <Card className="border-primary/30 bg-background shadow-lg h-full">
+                <CardHeader>
+                    <CardTitle className="text-primary flex items-center gap-2">
+                        <ShieldCheck className="w-6 h-6"/> The MoreMeets Standard
+                    </CardTitle>
+                    <CardDescription>A human-verified system built for reliability and compliance.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 text-foreground">
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Human-Verified & Researched:</strong> Built on a foundation of global standards (ISO, OSHA, HACCP) by industry experts.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Audit-Ready by Design:</strong> Every checklist is a structured system with fields for owner, proof of completion, and version history.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Offline and Secure:</strong> Your proprietary operational data stays on your systems, not on a third-party AI server.</span></p>
+                </CardContent>
+            </Card>
+        </div>
+    </SectionWrapper>
+);
+
 
 export default function TempDesignPreviewPage() {
   return (
@@ -371,6 +402,7 @@ export default function TempDesignPreviewPage() {
         <AnatomyOfFailure />
         <Blueprint />
         <ManagerAsCoachSection />
+        <AiVsMoreMeetsSection />
         <TestimonialsSection />
         <FaqSection />
       </main>
