@@ -1,15 +1,191 @@
 
+
 'use client';
 
 import * as React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Check, ArrowRight, Frown, Smile, XCircle, CheckCircle, LifeBuoy, BrainCircuit, FileText, Users } from "lucide-react";
+import { Check, ArrowRight, Frown, Smile, XCircle, CheckCircle, LifeBuoy, BrainCircuit, FileText, Users, Zap, Shield, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { motion, AnimatePresence } from "framer-motion";
+import { FaqSection } from '@/components/layout/faq-section';
+import { TestimonialsSection } from '@/components/layout/testimonials-section';
+
+
+// --- Section 0: The Hero (Copied from original homepage) ---
+const painPoints = {
+  error: {
+      title: `"World-class compliance used to cost a fortune. We fixed that."`,
+      description: "Achieve world-class compliance without the enterprise price tag. Our audit-ready, globally-compliant SOPs are available for instant download—no subscriptions, no hidden fees. We believe operational excellence is a right, not a luxury.",
+      buttonText: 'Global Compliance',
+      mobileButtonText: 'Compliance'
+  },
+  resilience: {
+      title: `"Stop losing knowledge every time someone quits."`,
+      description: 'Turn people-dependent processes into a permanent, scalable system.',
+      buttonText: 'Build Resilience',
+      mobileButtonText: 'Resilience'
+  },
+  onboarding: {
+      title: `"Training shouldn’t depend on who’s available that day."`,
+      description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
+      buttonText: 'Onboard Faster',
+      mobileButtonText: 'Train'
+  }
+};
+
+type PainPointKey = keyof typeof painPoints;
+const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
+
+const RefinedHeroSection = () => {
+    const [activePainPoint, setActivePainPoint] = React.useState<PainPointKey>('error');
+    const [isClient, setIsClient] = React.useState(false);
+    const content = painPoints[activePainPoint];
+
+     React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+      return <section className="w-full bg-background h-screen min-h-[700px]"></section>;
+    }
+
+    return (
+        <section className="relative w-full h-screen min-h-[700px] flex text-white overflow-hidden">
+            <video
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover z-0"
+            />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
+            
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
+
+            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
+              
+              {/* Desktop View */}
+              <div className="hidden md:block max-w-2xl">
+                <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                        key={activePainPoint}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        >
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
+                            {content.title}
+                        </h1>
+                        <p className="text-lg text-white/90 max-w-xl mt-4">
+                            {content.description}
+                        </p>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+                  <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 mt-6 max-w-lg">
+                    <div className="flex w-full">
+                          <motion.div
+                            className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                            initial={false}
+                            animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        />
+                        {painPointKeys.map((key) => (
+                        <Button
+                            key={key}
+                            variant="ghost"
+                            className={cn(
+                                "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
+                                "whitespace-normal leading-tight flex items-center text-center",
+                                activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                            )}
+                            onClick={() => setActivePainPoint(key)}
+                        >
+                            <span>{painPoints[key].buttonText}</span>
+                        </Button>
+                        ))}
+                    </div>
+                </div>
+                <div className="pt-6">
+                    <h2 className="text-lg font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
+                </div>
+                <div className="pt-4">
+                    <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                        <Link href="/library">
+                        Explore The SOP Library
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
+              </div>
+
+              {/* Mobile View */}
+              <div className="md:hidden text-left items-start flex flex-col relative z-10">
+                 <div className="w-full max-w-xl space-y-6 relative z-10">
+                    <div className="min-h-[14rem] flex items-end">
+                       <AnimatePresence mode="wait">
+                            <motion.div
+                            key={activePainPoint}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="w-full"
+                            >
+                                <h1 className="text-3xl font-extrabold font-headline tracking-tighter text-white">
+                                    {content.title}
+                                </h1>
+                                <p className="text-base text-white/90 max-w-xl mt-3">
+                                    {content.description}
+                                </p>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+                    <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full")}>
+                        <div className="flex w-full">
+                            <motion.div
+                                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
+                                initial={false}
+                                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                            />
+                            {painPointKeys.map((key) => (
+                            <Button
+                                key={key}
+                                variant="ghost"
+                                className={cn(
+                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12",
+                                    "whitespace-normal leading-tight flex items-center text-center",
+                                    activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
+                                )}
+                                onClick={() => setActivePainPoint(key)}
+                            >
+                                <span>{painPoints[key].mobileButtonText}</span>
+                            </Button>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="pt-2">
+                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
+                            <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
+                        </Button>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </section>
+    );
+};
+
 
 const SectionWrapper = ({ title, description, children, bg = "bg-background", id }: { id: string, title: string | React.ReactNode, description: string, children: React.ReactNode, bg?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24 border-t", bg)}>
@@ -24,13 +200,10 @@ const SectionWrapper = ({ title, description, children, bg = "bg-background", id
 );
 
 
-/*
---- OPTION 1: Anatomy of Failure ---
-This section merges the "Anatomy" and "System" concepts into one cohesive story. It starts with the problem (the "before") and flows directly into the solution (the "after"), detailing *why* the MoreMeets standard is superior.
-*/
+// --- Section 1: Anatomy of Failure ---
 const AnatomyOfFailure = () => (
     <SectionWrapper 
-        id="option-1"
+        id="why-sops-matter"
         // --- HEADLINE OPTIONS ---
         // 1. Why Most SOPs Fail (And Ours Don't)
         // 2. The Anatomy of a Weak SOP vs. The MoreMeets Standard
@@ -69,58 +242,68 @@ const AnatomyOfFailure = () => (
     </SectionWrapper>
 );
 
-/*
---- OPTION 2: The "What-If" Playbook ---
-This section is designed to create an emotional connection by tapping into the anxieties of a business owner or manager. It poses common "what-if" scenarios and presents MoreMeets as the answer.
-*/
-const WhatIfPlaybook = () => (
-    <SectionWrapper 
-        id="option-2"
+
+// --- Section 2: The "Blueprint" for Excellence ---
+const Blueprint = () => (
+    <SectionWrapper
+        id="blueprint"
         // --- HEADLINE OPTIONS ---
-        // 1. Your Playbook for 'What If?'
-        // 2. Are You Prepared for Operational Shocks?
-        // 3. The Questions That Keep Managers Awake at Night
-        // 4. Don't Bet Your Business on Hope. Have a Plan.
-        // 5. From 'What if?' to 'We're Ready.'
-        title="Your Playbook for 'What If?'"
-        description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets provides a researched, globally compliant system your team can adapt and follow from day one."
+        // 1. Your Blueprint for a Resilient Business
+        // 2. Building a Bulletproof Operation, Block by Block
+        // 3. The Architecture of Operational Excellence
+        // 4. Stop Improvising. Start Building.
+        // 5. The Three Pillars of a World-Class Operation
+        title="Your Blueprint for Operational Excellence"
+        description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
     >
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="text-center p-6 border-2 border-dashed border-primary/20 bg-background">
-                <CardHeader className="p-0">
-                    <h3 className="font-bold font-headline text-primary">What if your best manager quits?</h3>
-                </CardHeader>
-                <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our checklists retain globally compliant best practices and turn them into a repeatable process. Your operational resilience is no longer tied to one person.</p>
-                </CardContent>
-            </Card>
-            <Card className="text-center p-6 border-2 border-dashed border-primary/20 bg-background">
-                 <CardHeader className="p-0">
-                    <h3 className="font-bold font-headline text-primary">What if an auditor shows up?</h3>
-                </CardHeader>
-                <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our audit-ready SOPs provide a clear, timestamped, and verifiable record of your compliance activities. You're not just compliant; you can prove it instantly.</p>
-                </CardContent>
-            </Card>
-            <Card className="text-center p-6 border-2 border-dashed border-primary/20 bg-background">
-                 <CardHeader className="p-0">
-                    <h3 className="font-bold font-headline text-primary">What if a crisis hits at 2 AM?</h3>
-                </CardHeader>
-                <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our emergency protocols give your team the exact, step-by-step instructions to follow, ensuring a calm and correct response even when you're not there.</p>
-                </CardContent>
-            </Card>
+        <div className="max-w-4xl mx-auto p-4 md:p-8 rounded-lg border-2 border-primary/20 bg-secondary/30">
+            <div className="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
+                <div className="space-y-6">
+                    <div className="p-4 border-l-4 border-accent">
+                        <h3 className="font-bold font-headline text-lg text-primary">The Foundation</h3>
+                        <p className="text-sm text-muted-foreground mt-1">Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from day one.</p>
+                    </div>
+                     <div className="p-4 border-l-4 border-accent">
+                        <h3 className="font-bold font-headline text-lg text-primary">The Pillars</h3>
+                        <p className="text-sm text-muted-foreground mt-1">Standardize tasks to improve efficiency and use the checklists as a day-one playbook for new hires.</p>
+                    </div>
+                     <div className="p-4 border-l-4 border-accent">
+                        <h3 className="font-bold font-headline text-lg text-primary">The Roof</h3>
+                        <p className="text-sm text-muted-foreground mt-1">Capture expert knowledge and build emergency protocols so your business is resilient, no matter what happens.</p>
+                    </div>
+                </div>
+                <div className="mt-8 md:mt-0 flex items-center justify-center">
+                     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-sm">
+                        {/* <!-- Foundation --> */}
+                        <rect x="20" y="250" width="360" height="30" fill="hsla(var(--primary)/0.6)" />
+                        <text x="200" y="270" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Compliance</text>
+
+                        {/* <!-- Pillars --> */}
+                        <rect x="70" y="100" width="40" height="150" fill="hsla(var(--primary)/0.6)" />
+                         <text x="90" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 90 180)">Efficiency</text>
+
+                        <rect x="290" y="100" width="40" height="150" fill="hsla(var(--primary)/0.6)" />
+                        <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 310 180)">Training</text>
+                        
+                        {/* <!-- Roof --> */}
+                        <polygon points="10,100 200,30 390,100" fill="hsla(var(--primary)/0.6)" />
+                        <text x="200" y="80" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Resilience</text>
+
+                        {/* <!-- Center text --> */}
+                        <text x="200" y="180" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">OPERATIONAL</text>
+                        <text x="200" y="200" textAnchor="middle" fill="hsl(var(--primary))" fontSize="16" className="font-bold font-headline">EXCELLENCE</text>
+                    </svg>
+                </div>
+            </div>
         </div>
     </SectionWrapper>
 );
 
-/*
---- OPTION 3: The Feature Spotlight Frame (Manager as Coach) ---
-This section highlights the unique, tangible feature—the "Trainer's Notes" and "Consequence of Failure" columns. It's designed to showcase a specific product differentiator.
-*/
+
+// --- Section 3: Manager as Coach ---
 const ManagerAsCoachSection = () => (
     <SectionWrapper 
-        id="option-3"
+        id="manager-as-coach"
         // --- HEADLINE OPTIONS ---
         // 1. Turn Every Manager into an Expert Coach
         // 2. We Built Risk Intelligence Into Every Task
@@ -178,148 +361,20 @@ const ManagerAsCoachSection = () => (
     </SectionWrapper>
 );
 
-/*
---- OPTION 4: The "Blueprint" Metaphor ---
-This section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a stable operation.
-*/
-const Blueprint = () => (
-    <SectionWrapper
-        id="option-4"
-        // --- HEADLINE OPTIONS ---
-        // 1. Your Blueprint for a Resilient Business
-        // 2. Building a Bulletproof Operation, Block by Block
-        // 3. The Architecture of Operational Excellence
-        // 4. Stop Improvising. Start Building.
-        // 5. The Three Pillars of a World-Class Operation
-        title="Your Blueprint for Operational Excellence"
-        description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
-        bg="bg-primary text-primary-foreground"
-    >
-        <div className="max-w-4xl mx-auto p-4 md:p-8 rounded-lg border-2 border-primary-foreground/20">
-            <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-center text-center md:text-left">
-                <div className="space-y-6">
-                    <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-accent">The Foundation</h3>
-                        <p className="text-sm text-primary-foreground/80 mt-1">Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from day one.</p>
-                    </div>
-                     <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-accent">The Pillars</h3>
-                        <p className="text-sm text-primary-foreground/80 mt-1">Standardize tasks to improve efficiency and use the checklists as a day-one playbook for training new hires.</p>
-                    </div>
-                     <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-accent">The Roof</h3>
-                        <p className="text-sm text-primary-foreground/80 mt-1">Capture expert knowledge and build emergency protocols so your business is resilient, no matter what happens.</p>
-                    </div>
-                </div>
-                <div className="mt-8 md:mt-0">
-                     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                        {/* <!-- Foundation --> */}
-                        <rect x="20" y="250" width="360" height="30" fill="hsla(var(--accent)/0.3)" />
-                        <text x="200" y="270" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Compliance</text>
-
-                        {/* <!-- Pillars --> */}
-                        <rect x="70" y="100" width="40" height="150" fill="hsla(var(--accent)/0.3)" />
-                        <text x="90" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 90 180)">Efficiency</text>
-                        <rect x="290" y="100" width="40" height="150" fill="hsla(var(--accent)/0.3)" />
-                        <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 310 180)">Training</text>
-                        
-                        {/* <!-- Roof --> */}
-                        <polygon points="10,100 200,30 390,100" fill="hsla(var(--accent)/0.3)" />
-                        <text x="200" y="80" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline">Resilience</text>
-
-                        {/* <!-- Dashed lines and center text --> */}
-                        <line x1="150" y1="250" x2="150" y2="100" stroke="hsl(var(--accent))" strokeWidth="1" strokeDasharray="4 4" />
-                        <line x1="250" y1="250" x2="250" y2="100" stroke="hsl(var(--accent))" strokeWidth="1" strokeDasharray="4 4" />
-                        <text x="200" y="180" textAnchor="middle" fill="hsl(var(--accent))" fontSize="16" className="font-bold font-headline">OPERATIONAL</text>
-                        <text x="200" y="200" textAnchor="middle" fill="hsl(var(--accent))" fontSize="16" className="font-bold font-headline">EXCELLENCE</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </SectionWrapper>
-);
-
-
-const TheSystem = () => (
-    <SectionWrapper 
-        id="option-5"
-        // --- HEADLINE OPTIONS ---
-        // 1. The Complete System for Operational Control
-        // 2. The Five Pillars of a Resilient Operation
-        // 3. More Than a Checklist: An Entire Operational Framework
-        // 4. The DNA of a MoreMeets Checklist
-        // 5. The End of Operational Guesswork
-        title={<>More Than a Template. <br/> It’s an Operational System.</>}
-        description="We've engineered our checklists to be more than just lists. They are a comprehensive system designed to build accountability, intelligence, and resilience into your daily workflow."
-    >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <BrainCircuit className="w-10 h-10 mx-auto text-accent mb-4"/>
-                <h3 className="font-bold text-lg font-headline">Risk Intelligence</h3>
-                <p className="text-sm text-muted-foreground mt-2">Every task includes the "Consequence of Failure," turning your team from task-doers into proactive risk managers.</p>
-            </Card>
-             <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <CheckCircle className="w-10 h-10 mx-auto text-accent mb-4"/>
-                <h3 className="font-bold text-lg font-headline">Built-in Accountability</h3>
-                <p className="text-sm text-muted-foreground mt-2">Tasks are assigned to specific roles with clear frequencies and require verifiable proof of completion, creating an undeniable audit trail.</p>
-            </Card>
-             <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <Check className="w-10 h-10 mx-auto text-accent mb-4"/>
-                <h3 className="font-bold text-lg font-headline">Globally Compliant</h3>
-                <p className="text-sm text-muted-foreground mt-2">Our checklists are built on the foundations of global standards like ISO, HACCP, and OSHA, ensuring you're audit-ready from day one.</p>
-            </Card>
-             <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <FileText className="w-10 h-10 mx-auto text-accent mb-4"/>
-                <h3 className="font-bold text-lg font-headline">Actionable, Not Abstract</h3>
-                <p className="text-sm text-muted-foreground mt-2">We break down high-level goals into simple, specific, and actionable tasks that any team member can understand and execute.</p>
-            </Card>
-             <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <Users className="w-10 h-10 mx-auto text-accent mb-4"/>
-                <h3 className="font-bold text-lg font-headline">A Training Tool</h3>
-                <p className="text-sm text-muted-foreground mt-2">The detailed tasks and trainer's notes serve as a day-one playbook, accelerating onboarding and ensuring consistency.</p>
-            </Card>
-             <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <LifeBuoy className="w-10 h-10 mx-auto text-accent mb-4"/>
-                <h3 className="font-bold text-lg font-headline">Emergency Ready</h3>
-                <p className="text-sm text-muted-foreground mt-2">Our packs include specific protocols for emergencies, giving your team a clear, step-by-step guide to follow in a crisis.</p>
-            </Card>
-        </div>
-    </SectionWrapper>
-);
-
-
 
 export default function TempDesignPreviewPage() {
-  const sections = [
-    { id: "option-1", title: "Anatomy of Failure", component: <AnatomyOfFailure /> },
-    { id: "option-2", title: "The 'What-If' Playbook", component: <WhatIfPlaybook /> },
-    { id: "option-3", title: "Manager as Coach", component: <ManagerAsCoachSection /> },
-    { id: "option-4", title: "Blueprint Metaphor", component: <Blueprint /> },
-    { id: "option-5", title: "The System", component: <TheSystem /> },
-  ];
-
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <div className="text-center py-4 bg-yellow-200 text-yellow-900 font-bold sticky top-16 z-40 border-b border-yellow-400">
-            <p className='font-headline'>⚠️ Design Preview Page ⚠️</p>
-            <div className='flex justify-center gap-4 text-xs mt-1'>
-                {sections.map(section => (
-                    <a key={section.id} href={`#${section.id}`} className='underline hover:text-yellow-700'>{section.title}</a>
-                ))}
-            </div>
-        </div>
-
-        {sections.map(section => (
-            <React.Fragment key={section.id}>
-                {section.component}
-            </React.Fragment>
-        ))}
-
+        <RefinedHeroSection />
+        <AnatomyOfFailure />
+        <Blueprint />
+        <ManagerAsCoachSection />
+        <TestimonialsSection />
+        <FaqSection />
       </main>
       <Footer />
     </div>
   );
 }
-
