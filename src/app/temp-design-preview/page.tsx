@@ -9,6 +9,7 @@ import { Check, ArrowRight, TrendingUp, Target, Users, Bot, Zap, Rocket, Search,
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 
 
 const SectionWrapper = ({ title, description, children, bg = "bg-background" }: { title: string, description: string, children: React.ReactNode, bg?: string }) => (
@@ -38,7 +39,7 @@ const AnatomyOfFailure = () => (
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Vague & Incomplete:</strong> "Check equipment regularly." What equipment? How? What defines 'good'?</span></p>
-                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> No clear owner, frequency, or proof of completion required. Tasks are forgotten.</span></p>
+                    <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>No Accountability:</strong> Tasks are forgotten because there's no clear owner, frequency, or proof of completion required.</span></p>
                     <p className="flex items-start gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0 mt-1"/><span><strong>Not Audit-Ready:</strong> Lacks the structure and detail needed to satisfy a real compliance or safety auditor.</span></p>
                 </CardContent>
             </Card>
@@ -48,9 +49,9 @@ const AnatomyOfFailure = () => (
                     <CardDescription>A complete operational system designed for execution.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 text-foreground">
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Specific & Actionable:</strong> "Verify HVAC unit #3 pressure is between 40-50 PSI. Log reading."</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Globally Compliant System:</strong> A researched, actionable framework that your team can adapt and follow from day one.</span></p>
                     <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Built-in Accountability:</strong> Every task has a defined `Role`, `Frequency`, and `Proof of Completion`.</span></p>
-                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Globally Compliant:</strong> Built on ISO, OSHA, and HACCP frameworks to be audit-ready from day one.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Audit-Ready Framework:</strong> Built on ISO, OSHA, and HACCP principles to be audit-ready from day one.</span></p>
                 </CardContent>
             </Card>
         </div>
@@ -229,9 +230,34 @@ const ManagerAsCoachSection = () => (
             <div className="space-y-4">
                 <h2 className="text-2xl md:text-3xl font-bold font-headline text-primary">From 'What' to 'Why'</h2>
                 <p className="text-muted-foreground">The 'Trainer's Notes' provide your managers with talking points, real-world examples, and coaching questions for critical tasks. This transforms routine supervision into powerful, context-rich training that builds a smarter, more resilient team.</p>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button>Learn More About This Feature <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[625px]">
+                        <DialogHeader>
+                            <DialogTitle className="font-headline text-2xl">The Manager's Coaching Playbook</DialogTitle>
+                            <DialogDescription>
+                            Go beyond compliance. Build a culture of excellence.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="prose prose-sm max-w-none text-foreground dark:text-foreground">
+                            <p>The standard MoreMeets packs ensure tasks are done correctly. The optional **'Manager's Edition'** checklists ensure your team understands *why* they're doing them. This is a force multiplier for your leadership team.</p>
+                            <h4>How it Works: The "Trainer's Notes" Column</h4>
+                            <p>For each critical task, we've added a "Trainer's Notes" column visible only in the Manager's master file. This column contains: </p>
+                            <ul>
+                            <li><strong>Coaching Questions:</strong> Instead of asking "Did you do it?", your manager can ask "What's the biggest risk if we forget this step?" This promotes critical thinking.</li>
+                            <li><strong>Real-World Examples:</strong> We link tasks to real, costly business disasters. For a food safety check, the note might say: *"Explain the Chipotle E. coli outbreak to reinforce why this isn't just bureaucracy."*</li>
+                            <li><strong>Best Practice Demos:</strong> Notes on what "good" looks like, helping managers train for excellence, not just completion.</li>
+                            </ul>
+                            <h4>The Result:</h4>
+                            <p>You're not just buying a checklist; you're investing in a scalable training system. You turn every routine check into a micro-training session, create more engaged employees, and build a more resilient, intelligent operation.</p>
+                        </div>
+                    </DialogContent>
+                </Dialog>
             </div>
             <div className="rounded-lg bg-background p-4 border border-dashed">
-                <p className="text-sm font-semibold">Example: "Trainer's Notes" Column</p>
+                <p className="text-sm font-semibold">Example: "Trainer's Notes"</p>
                 <div className="mt-2 space-y-2">
                     <div className="bg-secondary/50 p-3 rounded-md">
                         <p className="font-mono text-xs">**Task:** Check for allergen cross-contamination.</p>
