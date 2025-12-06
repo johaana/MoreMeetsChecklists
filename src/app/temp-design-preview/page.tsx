@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Check, ArrowRight, Zap, BrainCircuit, Users, FileText, Shield, Frown, Smile, XCircle, CheckCircle, ShieldCheck, LifeBuoy } from "lucide-react";
+import { Check, ArrowRight, Frown, Smile, XCircle, CheckCircle, LifeBuoy, BrainCircuit, FileText, Users } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
@@ -25,14 +25,13 @@ const SectionWrapper = ({ title, description, children, bg = "bg-background", id
 
 
 /*
---- OPTION 1 (Consolidated): The Anatomy of Operational Failure ---
-Merges the "Anatomy" and "System" sections into one cohesive story.
-It starts with the problem (the "before") and flows directly into the solution (the "after"), detailing *why* the MoreMeets standard is superior.
+--- OPTION 1: Anatomy of Failure ---
+This section merges the "Anatomy" and "System" concepts into one cohesive story. It starts with the problem (the "before") and flows directly into the solution (the "after"), detailing *why* the MoreMeets standard is superior.
 */
 const AnatomyOfFailure = () => (
     <SectionWrapper 
         id="option-1"
-        // HEADLINE OPTIONS:
+        // --- HEADLINE OPTIONS ---
         // 1. Why Most SOPs Fail (And Ours Don't)
         // 2. The Anatomy of a Weak SOP vs. The MoreMeets Standard
         // 3. Your Checklists Are Broken. Here's the Fix.
@@ -77,13 +76,13 @@ This section is designed to create an emotional connection by tapping into the a
 const WhatIfPlaybook = () => (
     <SectionWrapper 
         id="option-2"
-         // HEADLINE OPTIONS:
+        // --- HEADLINE OPTIONS ---
         // 1. Your Playbook for 'What If?'
         // 2. Are You Prepared for Operational Shocks?
         // 3. The Questions That Keep Managers Awake at Night
         // 4. Don't Bet Your Business on Hope. Have a Plan.
         // 5. From 'What if?' to 'We're Ready.'
-        title="Your Playbook for What-If"
+        title="Your Playbook for 'What If?'"
         description="Operations don't fail on good days. They fail when something unexpected happens. MoreMeets provides a researched, globally compliant system your team can adapt and follow from day one."
     >
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -92,7 +91,7 @@ const WhatIfPlaybook = () => (
                     <h3 className="font-bold font-headline text-primary">What if your best manager quits?</h3>
                 </CardHeader>
                 <CardContent className="p-0 mt-2">
-                    <p className="text-muted-foreground text-sm">Our checklists retain expert knowledge and turn it into a repeatable process. Your operational resilience is no longer tied to one person.</p>
+                    <p className="text-muted-foreground text-sm">Our checklists retain globally compliant best practices and turn them into a repeatable process. Your operational resilience is no longer tied to one person.</p>
                 </CardContent>
             </Card>
             <Card className="text-center p-6 border-2 border-dashed border-primary/20 bg-background">
@@ -122,7 +121,7 @@ This section highlights the unique, tangible feature—the "Trainer's Notes" and
 const ManagerAsCoachSection = () => (
     <SectionWrapper 
         id="option-3"
-         // HEADLINE OPTIONS:
+        // --- HEADLINE OPTIONS ---
         // 1. Turn Every Manager into an Expert Coach
         // 2. We Built Risk Intelligence Into Every Task
         // 3. From 'What to Do' to 'Why It Matters'
@@ -181,38 +180,38 @@ const ManagerAsCoachSection = () => (
 
 /*
 --- OPTION 4: The "Blueprint" Metaphor ---
-This redesigned section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a stable operation.
+This section uses the powerful and easily understood metaphor of a "blueprint" to position your SOPs as the essential, foundational plan for building a stable operation.
 */
 const Blueprint = () => (
     <SectionWrapper
         id="option-4"
-        // HEADLINE OPTIONS:
+        // --- HEADLINE OPTIONS ---
         // 1. Your Blueprint for a Resilient Business
         // 2. Building a Bulletproof Operation, Block by Block
         // 3. The Architecture of Operational Excellence
         // 4. Stop Improvising. Start Building.
         // 5. The Three Pillars of a World-Class Operation
-        title="Your Blueprint for a Resilient Business"
+        title="Your Blueprint for Operational Excellence"
         description="You wouldn't build a skyscraper without architectural plans. Why build your operations on memory and guesswork? Our checklists are the professional blueprint for a world-class operation."
         bg="bg-primary text-primary-foreground"
     >
         <div className="max-w-4xl mx-auto p-4 md:p-8 rounded-lg border-2 border-primary-foreground/20">
-            <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-center">
+            <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-center text-center md:text-left">
                 <div className="space-y-6">
                     <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-accent">Compliance</h3>
+                        <h3 className="font-bold font-headline text-lg text-accent">The Foundation</h3>
                         <p className="text-sm text-primary-foreground/80 mt-1">Meet global standards (ISO, OSHA, HACCP) and stay audit-ready from day one.</p>
                     </div>
                      <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-accent">Efficiency</h3>
-                        <p className="text-sm text-primary-foreground/80 mt-1">Standardize tasks, eliminate rework, and onboard new staff faster with a clear, actionable playbook.</p>
+                        <h3 className="font-bold font-headline text-lg text-accent">The Pillars</h3>
+                        <p className="text-sm text-primary-foreground/80 mt-1">Standardize tasks to improve efficiency and use the checklists as a day-one playbook for training new hires.</p>
                     </div>
                      <div className="p-4 border-l-4 border-accent">
-                        <h3 className="font-bold font-headline text-lg text-accent">Resilience</h3>
-                        <p className="text-sm text-primary-foreground/80 mt-1">Capture expert knowledge and build emergency protocols so your business runs smoothly, no matter what happens.</p>
+                        <h3 className="font-bold font-headline text-lg text-accent">The Roof</h3>
+                        <p className="text-sm text-primary-foreground/80 mt-1">Capture expert knowledge and build emergency protocols so your business is resilient, no matter what happens.</p>
                     </div>
                 </div>
-                <div className="hidden md:block">
+                <div className="mt-8 md:mt-0">
                      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                         {/* <!-- Foundation --> */}
                         <rect x="20" y="250" width="360" height="30" fill="hsla(var(--accent)/0.3)" />
@@ -222,7 +221,7 @@ const Blueprint = () => (
                         <rect x="70" y="100" width="40" height="150" fill="hsla(var(--accent)/0.3)" />
                         <text x="90" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 90 180)">Efficiency</text>
                         <rect x="290" y="100" width="40" height="150" fill="hsla(var(--accent)/0.3)" />
-                        <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 310 180)">Efficiency</text>
+                        <text x="310" y="180" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" className="font-headline" transform="rotate(-90 310 180)">Training</text>
                         
                         {/* <!-- Roof --> */}
                         <polygon points="10,100 200,30 390,100" fill="hsla(var(--accent)/0.3)" />
@@ -241,16 +240,16 @@ const Blueprint = () => (
 );
 
 
-const AllInOneSection = () => (
+const TheSystem = () => (
     <SectionWrapper 
         id="option-5"
-        // HEADLINE OPTIONS:
+        // --- HEADLINE OPTIONS ---
         // 1. The Complete System for Operational Control
         // 2. The Five Pillars of a Resilient Operation
         // 3. More Than a Checklist: An Entire Operational Framework
         // 4. The DNA of a MoreMeets Checklist
         // 5. The End of Operational Guesswork
-        title={<>The Complete System <br/> for Operational Control</>}
+        title={<>More Than a Template. <br/> It’s an Operational System.</>}
         description="We've engineered our checklists to be more than just lists. They are a comprehensive system designed to build accountability, intelligence, and resilience into your daily workflow."
     >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -265,7 +264,7 @@ const AllInOneSection = () => (
                 <p className="text-sm text-muted-foreground mt-2">Tasks are assigned to specific roles with clear frequencies and require verifiable proof of completion, creating an undeniable audit trail.</p>
             </Card>
              <Card className="p-6 text-center border-border hover:border-primary/50 hover:shadow-lg transition-all">
-                <ShieldCheck className="w-10 h-10 mx-auto text-accent mb-4"/>
+                <Check className="w-10 h-10 mx-auto text-accent mb-4"/>
                 <h3 className="font-bold text-lg font-headline">Globally Compliant</h3>
                 <p className="text-sm text-muted-foreground mt-2">Our checklists are built on the foundations of global standards like ISO, HACCP, and OSHA, ensuring you're audit-ready from day one.</p>
             </Card>
@@ -296,7 +295,7 @@ export default function TempDesignPreviewPage() {
     { id: "option-2", title: "The 'What-If' Playbook", component: <WhatIfPlaybook /> },
     { id: "option-3", title: "Manager as Coach", component: <ManagerAsCoachSection /> },
     { id: "option-4", title: "Blueprint Metaphor", component: <Blueprint /> },
-    { id: "option-5", title: "All-in-One System", component: <AllInOneSection /> },
+    { id: "option-5", title: "The System", component: <TheSystem /> },
   ];
 
   return (
@@ -323,3 +322,4 @@ export default function TempDesignPreviewPage() {
     </div>
   );
 }
+
