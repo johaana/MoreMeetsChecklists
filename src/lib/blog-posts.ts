@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     {
       slug: 'goa-romeo-lane-birch-fire-safety-sop',
       title: "The Smoke Over Arpora: A Paradise Lost in Flames, and the SOPs That Could Have Saved It",
-      publishedDate: "2024-07-29",
+      publishedDate: "2025-12-07",
       author: "MoreMeets Team",
       tags: ["Fire Safety", "Event Safety", "Hospitality", "Restaurants", "Risk Management"],
       relatedPackId: "restaurants",
@@ -714,3 +714,4 @@ export const blogPosts: BlogPost[] = [
 
 
     
+
