@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
+  CardFooter
 } from '@/components/ui/card';
 import {
   Dialog,
@@ -38,6 +39,10 @@ import { Footer } from '@/components/layout/footer';
 import { cn } from '@/lib/utils';
 import { FaqSection } from '@/components/layout/faq-section';
 import { TestimonialsSection } from '@/components/layout/testimonials-section';
+import { blogPosts } from '@/lib/blog-posts';
+import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
+
 
 // --- Section 0: The Hero ---
 const painPoints = {
@@ -633,6 +638,64 @@ const AiVsMoreMeets = () => (
     </SectionWrapper>
 );
 
+const FromTheDebriefSection = () => {
+    const latestPosts = [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()).slice(0, 3);
+
+    return (
+        <SectionWrapper
+            id="from-the-debrief"
+            title="From The Debrief"
+            description="Deconstructing the world's most costly operational disasters to build more resilient organizations."
+            bg="bg-background"
+        >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {latestPosts.map((post) => (
+                    <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                        {post.imageUrl && (
+                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+                                <Image
+                                    src={post.imageUrl}
+                                    alt={post.title}
+                                    width={600}
+                                    height={340}
+                                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                                />
+                            </Link>
+                        )}
+                        <CardHeader>
+                            <div className="flex flex-wrap gap-2 mb-2">
+                                {post.tags.slice(0, 2).map(tag => (
+                                    <Badge key={tag} variant="secondary" className="cursor-default">{tag}</Badge>
+                                ))}
+                            </div>
+                            <CardTitle className="text-lg font-headline leading-snug">
+                                <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                                    {post.title}
+                                </Link>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex-1">
+                            <CardDescription className="text-sm">{post.description}</CardDescription>
+                        </CardContent>
+                        <CardFooter>
+                            <Button asChild variant="secondary" size="sm" className="w-full">
+                                <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                ))}
+            </div>
+            <div className="text-center mt-12">
+                <Button asChild size="lg">
+                    <Link href="/blog">
+                        View All Posts <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
+            </div>
+        </SectionWrapper>
+    );
+};
+
 
 export default function Home() {
   return (
@@ -644,6 +707,7 @@ export default function Home() {
         <Blueprint />
         <ManagerAsCoachSection />
         <AiVsMoreMeets />
+        <FromTheDebriefSection />
         <TestimonialsSection />
         <FaqSection />
       </main>
