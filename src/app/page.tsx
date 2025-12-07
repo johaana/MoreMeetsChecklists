@@ -539,8 +539,8 @@ export default function Home() {
         <RefinedHeroSection />
         <AnatomyOfFailure />
         <ManagerAsCoachSection />
-        <TestimonialsSection />
         <FromTheDebriefSection />
+        <TestimonialsSection />
         <FaqSection />
       </main>
       <Footer />
