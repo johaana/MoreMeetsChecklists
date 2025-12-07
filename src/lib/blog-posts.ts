@@ -18,6 +18,52 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
     {
+      slug: 'goa-romeo-lane-birch-fire-safety-sop',
+      title: "The Smoke Over Arpora: A Paradise Lost in Flames, and the SOPs That Could Have Saved It",
+      publishedDate: "2024-07-29",
+      author: "MoreMeets Team",
+      tags: ["Fire Safety", "Event Safety", "Hospitality", "Restaurants", "Risk Management"],
+      relatedPackId: "restaurants",
+      imageUrl: "https://i.postimg.cc/gjH9T235/arpora1.jpg",
+      description: "A devastating fire gutted the iconic Birch by Romeo Lane in Goa, turning a symbol of celebration into a scene of loss. This was not fate; it was a process failure. We explore the critical safety SOPs that are the only line of defense against such preventable tragedies.",
+      content: `
+        <p class="lead">In the early hours of the morning, as the vibrant nightlife of Goa was meant to be winding down, a different kind of light filled the sky over Arpora—the destructive, terrifying glow of a massive fire. Birch by Romeo Lane, a place synonymous with music, celebration, and the Goan spirit, was engulfed in flames. For those who have danced there, celebrated milestones, or simply enjoyed a beautiful evening, the images are nothing short of heartbreaking. A place of joy reduced to ash and ruin.</p>
+        <p>While we are immensely grateful that initial reports suggest no loss of life, a tragedy of this scale is never just an 'accident.' It is a catastrophic failure of process. It is the final, devastating result of a hundred small, missed checks. In the high-stakes environment of a crowded nightclub or restaurant, hope is not a strategy. Only a rigorous, verifiable system of safety can stand between a memorable night and a devastating headline.</p>
+        <img src="https://i.postimg.cc/vTtRNZ5W/arpora2-birch.webp" alt="Fire at Birch by Romeo Lane" class="my-8 rounded-lg shadow-lg" />
+
+        <div class="failure-analysis-section">
+          <h3>The Anatomy of a Hospitality Fire</h3>
+          <p>Fires in restaurants and nightclubs are tragically common, and they almost always stem from the same handful of operational blind spots. Let's deconstruct the likely points of failure.</p>
+        </div>
+
+        <div class="intervention-box">
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 1: The Electrical System</h4>
+          <p>Nightclubs are a perfect storm of electrical risk: high-powered sound systems, complex lighting rigs, and kitchen equipment all running for hours. A single overloaded circuit, a frayed wire behind a bar, or a poorly maintained generator can be the spark that ignites the inferno. A <strong>daily electrical safety walkthrough</strong> to check for overloaded sockets and a <strong>quarterly Preventive Maintenance audit</strong> of all electrical panels are non-negotiable.</p>
+        </div>
+
+        <div class="intervention-box">
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 2: The Untrained Team</h4>
+          <p>When a fire breaks out, the first 60 seconds are critical. Does your staff know the location of the nearest fire extinguisher? Do they know how to use it? Do they know how to trigger the main fire alarm? Do they know how to guide panicked guests to the nearest, safest exit? Without drilled, practiced training, staff can freeze or, worse, make the situation more dangerous. A <strong>quarterly fire evacuation drill</strong> is not a suggestion; it's the only way to build life-saving muscle memory.</p>
+        </div>
+
+        <div class="intervention-box">
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 3: The Blocked Exit</h4>
+          <p>The single most common factor in fire-related fatalities in public venues is a blocked or locked emergency exit. To add a few extra tables or store excess inventory, a critical escape route is often compromised. Our <strong>Restaurant Operations Pack</strong> includes a mandatory 'Fire Safety & Evacuation' checklist that requires a Duty Manager to physically open and verify every single emergency exit before the doors open to the public. It's a simple check that saves lives.</p>
+          <div class="embedded-cta">This life-saving protocol is a core component of our <strong><a href="/packs/restaurants">Restaurant Operations Pack</a></strong> and <strong><a href="/packs/hotels_and_resorts">Hotels & Resorts Operations Pack</a></strong>.</div>
+        </div>
+
+        <div class="intervention-box">
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 4: Flammable Materials & Poor Housekeeping</h4>
+          <p>Decorative fabrics, soundproofing foam, and even stacks of liquor boxes can turn a small fire into a raging blaze. A robust SOP includes audits for flammable materials and strict housekeeping rules to ensure combustible trash and materials are not allowed to accumulate, especially near heat sources or electrical panels.</p>
+        </div>
+        <img src="https://i.postimg.cc/gjH9T23T/India-Goa-Nightclub-Fire-arpora.webp" alt="Aftermath of the fire in Arpora, Goa" class="my-8 rounded-lg shadow-lg" />
+
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Conclusion: From Ashes to Action</h3>
+        <p>The fire at Birch is a painful reminder that the hospitality industry is, first and foremost, in the business of safety. The vibrant atmosphere, the music, the food—it all rests on a foundation of operational diligence. For every owner of a restaurant, club, or event space watching this unfold, the question must be: "Could this happen to me?" If you cannot produce a documented, verifiable log showing that your fire exits were checked today, that your staff were trained last quarter, and that your electrical systems were audited, the answer is a terrifying "yes."</p>
+        <p>Let this be a wake-up call. It's time to move beyond assuming safety and start proving it. Explore the frameworks in our <strong><a href="/packs/restaurants">Restaurant Operations Pack</a></strong> and build a system that ensures your place of celebration never becomes a scene of tragedy.</p>
+      `
+    },
+    {
       slug: 'sardar-2-stuntman-death-on-set-safety-sops',
       title: "Sardar 2 Tragedy: Why On-Set Stunt Deaths Are a Failure of Process, Not Just Fate",
       publishedDate: "2025-10-05",
@@ -665,3 +711,6 @@ export const blogPosts: BlogPost[] = [
     
 
 
+
+
+    
