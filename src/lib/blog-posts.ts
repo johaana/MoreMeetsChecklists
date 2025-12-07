@@ -1,5 +1,4 @@
 
-
 import { premiumPacks } from '@/lib/premium-packs';
 import { FileCheck2 } from 'lucide-react';
 
@@ -48,19 +47,19 @@ export const blogPosts: BlogPost[] = [
 
         <div class="intervention-box">
           <h4><FileCheck2 className="w-5 h-5"/> Failure Point 3: The Blocked Exit</h4>
-          <p>The single most common factor in fire-related fatalities in public venues is a blocked or locked emergency exit. To add a few extra tables or store excess inventory, a critical escape route is often compromised. Our <strong>Restaurant Operations Pack</strong> includes a mandatory 'Fire Safety & Evacuation' checklist that requires a Duty Manager to physically open and verify every single emergency exit before the doors open to the public. It's a simple check that saves lives.</p>
-          <div class="embedded-cta">This life-saving protocol is a core component of our <strong><a href="/packs/restaurants">Restaurant Operations Pack</a></strong> and <strong><a href="/packs/hotels_and_resorts">Hotels & Resorts Operations Pack</a></strong>.</div>
+          <p>The single most common factor in fire-related fatalities in public venues is a blocked or locked emergency exit. To add a few extra tables or store excess inventory, a critical escape route is often compromised. A system that mandates a Duty Manager physically open and verify every single emergency exit before doors open to the public is a simple check that saves lives.</p>
         </div>
 
         <div class="intervention-box">
           <h4><FileCheck2 className="w-5 h-5"/> Failure Point 4: Flammable Materials & Poor Housekeeping</h4>
-          <p>Decorative fabrics, soundproofing foam, and even stacks of liquor boxes can turn a small fire into a raging blaze. A robust SOP includes audits for flammable materials and strict housekeeping rules to ensure combustible trash and materials are not allowed to accumulate, especially near heat sources or electrical panels.</p>
+          <p>Decorative fabrics, soundproofing foam, and even stacks of liquor boxes can turn a small fire into a raging blaze. A robust safety protocol includes audits for flammable materials and strict housekeeping rules to ensure combustible trash and materials are not allowed to accumulate, especially near heat sources or electrical panels.</p>
+          <div class="embedded-cta">A culture of safety is built on verifiable, daily checks. The frameworks in the <strong><a href="/packs/restaurants">Restaurant</a></strong> and <strong><a href="/packs/hotels_and_resorts">Hospitality</a></strong> packs can help build this foundation.</div>
         </div>
         <img src="https://i.postimg.cc/gjH9T23T/India-Goa-Nightclub-Fire-arpora.webp" alt="Aftermath of the fire in Arpora, Goa" class="my-8 rounded-lg shadow-lg" />
 
         <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Conclusion: From Ashes to Action</h3>
         <p>The fire at Birch is a painful reminder that the hospitality industry is, first and foremost, in the business of safety. The vibrant atmosphere, the music, the food—it all rests on a foundation of operational diligence. For every owner of a restaurant, club, or event space watching this unfold, the question must be: "Could this happen to me?" If you cannot produce a documented, verifiable log showing that your fire exits were checked today, that your staff were trained last quarter, and that your electrical systems were audited, the answer is a terrifying "yes."</p>
-        <p>Let this be a wake-up call. It's time to move beyond assuming safety and start proving it. Explore the frameworks in our <strong><a href="/packs/restaurants">Restaurant Operations Pack</a></strong> and build a system that ensures your place of celebration never becomes a scene of tragedy.</p>
+        <p>Let this be a wake-up call. It's time to move beyond assuming safety and start proving it.</p>
       `
     },
     {
@@ -261,7 +260,7 @@ export const blogPosts: BlogPost[] = [
           <div class="embedded-cta">Our <strong>Film, TV & OTT Production Pack</strong> includes ready-to-use Excel templates for all these critical safety checklists. <a href="/packs/film_production_pack">Protect your production now &rarr;</a></div>
         </div>
 
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Real-World Benefits of SOPs</h4>
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Real-World Benefits of SOPs</h3>
         <p>Implementing these checklists isn't just about preventing a fire. It has direct financial benefits. Insurance providers often offer lower premiums for productions that can demonstrate a robust, documented safety program. More importantly, it ensures business continuity. The cost of a single day's shoot being cancelled due to a preventable incident far exceeds the cost of implementing these simple, effective procedures.</p>
       `
     },
@@ -709,9 +708,3 @@ export const blogPosts: BlogPost[] = [
 ];
 
     
-
-
-
-
-    
-
