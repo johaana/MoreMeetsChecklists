@@ -18,13 +18,13 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
     {
       slug: 'goa-romeo-lane-birch-fire-safety-sop',
-      title: "The Smoke Over Arpora: 25 Dead, and the Lessons We Cannot Ignore",
+      title: "The Smoke Over Arpora: A Paradise Lost, and the Lessons We Cannot Ignore",
       publishedDate: "2025-12-07",
       author: "MoreMeets Team",
       tags: ["Fire Safety", "Event Safety", "Hospitality", "Restaurants", "Risk Management"],
       relatedPackId: "restaurants",
       imageUrl: "https://i.postimg.cc/gjH9T235/arpora1.jpg",
-      description: "A devastating fire at Birch by Romeo Lane in Goa claimed 25 lives. This was not fate. This was a catastrophic, preventable failure. We have a moral obligation to deconstruct how this happened.",
+      description: "A devastating fire at Birch by Romeo Lane in Goa claimed 25 lives. This was not fate. It was a catastrophic, preventable failure. We have a moral obligation to deconstruct how this happened.",
       content: `
         <p class="lead">In the early hours of a December morning, the vibrant spirit of Goa was extinguished in the most horrifying way imaginable. A fire, fierce and swift, tore through Birch by Romeo Lane in Arpora, a place where memories were made and celebrations were held. But on this night, it became a tomb. Twenty-five people, who had come for music and joy, never went home. Their lives were cut short not by a random act of fate, but by a catastrophic series of failures that turned a beautiful venue into a death trap.</p>
         <p>To call this an 'accident' is to dishonor the memory of those who perished. It was a preventable tragedy. As a community, and as an industry, we have a solemn, non-negotiable obligation to understand how this happened. We must deconstruct the chain of failures with brutal honesty, not to place blame, but to ensure that no family ever again has to receive the call that came from Goa this morning.</p>
@@ -36,21 +36,21 @@ export const blogPosts: BlogPost[] = [
         </div>
 
         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 1: The Fuel - An Untreated Thatched Roof</h4>
+          <h4>Failure Point 1: The Fuel - An Untreated Thatched Roof</h4>
           <p>The fire's terrifying speed was fueled by a thatched roof made of palm leaves. While aesthetically pleasing, this material is incredibly flammable. Using untreated, combustible materials in a public assembly area is a catastrophic risk.</p>
-          <p><strong>Procedural Intervention:</strong> Any high-risk design element must be mitigated with documented, verifiable controls. This includes mandatory fire-retardant treatment for all flammable materials, with certificates on file for inspection. This should be coupled with a robust, regularly tested sprinkler system designed to suppress a fire in such specific, high-fuel-load areas.</p>
+          <p><strong>The Professional Standard:</strong> For every high-risk design choice, there must be a documented, verifiable control. The thatched roof should have been mandatorily treated with fire-retardant chemicals, with the certificate of treatment filed and available for inspection. This should have been backed by a specialized sprinkler system designed for high-fuel-load areas, with weekly logged tests to ensure functionality.</p>
         </div>
 
         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 2: The Funnel - A Single, Narrow Exit</h4>
+          <h4>Failure Point 2: The Funnel - A Single, Narrow Exit</h4>
           <p>Reports mention a "single, narrow exit" for a venue packed for a major DJ night. This is a staggering failure of basic crowd management. A venue's legal capacity is not determined by how many people can fit inside, but by how many can safely evacuate in under two minutes.</p>
-          <p><strong>Procedural Intervention:</strong> A mandatory, pre-opening 'Venue Safety Walk' must be logged by a Duty Manager. This is not a casual glance. It is a physical check where every single emergency exit is opened and verified as unobstructed, well-lit, and unlocked. The log creates an undeniable audit trail of due diligence.</p>
+          <p><strong>The Professional Standard:</strong> Before opening the doors, the manager on duty must physically walk to every single fire exit, open it, check that the path is clear, and sign a logbook confirming it. No exceptions. No excuses. This isn't just a policy; it's a non-negotiable, verifiable action that creates a legal record of diligence.</p>
         </div>
 
         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 3: The Chaos - No Practiced Emergency Response</h4>
+          <h4>Failure Point 3: The Chaos - No Practiced Emergency Response</h4>
           <p>In a dark, loud, and crowded space, panic is the real killer. Only a well-trained staff can create order from chaos. Eyewitnesses did not report any coordinated staff response, indicating a complete lack of emergency preparedness.</p>
-          <p><strong>Procedural Intervention:</strong> A venue must have a clear, drilled Emergency Action Plan. Staff must be assigned specific roles: who uses the fire extinguisher, who operates the PA system to make announcements, who has flashlights to guide guests to secondary exits. These are not things you figure out during a fire. They are skills built through mandatory, quarterly mock evacuation drills, with times and outcomes logged for continuous improvement.</p>
+          <p><strong>The Professional Standard:</strong> You don't figure out the plan during the fire. Your team practices it quarterly. A clear, drilled Emergency Action Plan assigns every staff member a role: who cuts the music and uses the PA system for announcements, who grabs the flashlights to guide people, who directs guests to secondary exits. Drills are timed, logged, and reviewed to ensure the team can perform automatically under extreme pressure.</p>
         </div>
         
         <img src="https://i.postimg.cc/gjH9T23T/India-Goa-Nightclub-Fire-arpora.webp" alt="Aftermath of the fire in Arpora, Goa" class="my-8 rounded-lg shadow-lg" />
