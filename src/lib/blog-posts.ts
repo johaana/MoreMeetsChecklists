@@ -18,43 +18,46 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
     {
       slug: 'goa-romeo-lane-birch-fire-safety-sop',
-      title: "The Smoke Over Arpora: A Paradise Lost, 25 Souls Taken, and the Hard Lessons We Must Not Ignore",
+      title: "The Smoke Over Arpora: 25 Dead, and the Lessons We Cannot Ignore",
       publishedDate: "2025-12-07",
       author: "MoreMeets Team",
       tags: ["Fire Safety", "Event Safety", "Hospitality", "Restaurants", "Risk Management"],
       relatedPackId: "restaurants",
       imageUrl: "https://i.postimg.cc/gjH9T235/arpora1.jpg",
-      description: "A devastating fire at Birch by Romeo Lane in Goa claimed 25 lives, turning a symbol of celebration into a national tragedy. This was not fate. This was a catastrophic, preventable failure. We have a moral obligation to deconstruct how this happened.",
+      description: "A devastating fire at Birch by Romeo Lane in Goa claimed 25 lives. This was not fate. This was a catastrophic, preventable failure. We have a moral obligation to deconstruct how this happened.",
       content: `
         <p class="lead">In the early hours of a December morning, the vibrant spirit of Goa was extinguished in the most horrifying way imaginable. A fire, fierce and swift, tore through Birch by Romeo Lane in Arpora, a place where memories were made and celebrations were held. But on this night, it became a tomb. Twenty-five people, who had come for music and joy, never went home. Their lives were cut short not by a random act of fate, but by a catastrophic series of failures that turned a beautiful venue into a death trap.</p>
         <p>To call this an 'accident' is to dishonor the memory of those who perished. It was a preventable tragedy. As a community, and as an industry, we have a solemn, non-negotiable obligation to understand how this happened. We must deconstruct the chain of failures with brutal honesty, not to place blame, but to ensure that no family ever again has to receive the call that came from Goa this morning.</p>
         <img src="https://i.postimg.cc/vTtRNZ5W/arpora2-birch.webp" alt="Fire at Birch by Romeo Lane" class="my-8 rounded-lg shadow-lg" />
 
         <div class="failure-analysis-section">
-          <h3>The Anatomy of a Catastrophe</h3>
+          <h3>Anatomy of a Catastrophe: A Chain of Predictable Failures</h3>
           <p>News reports and eyewitness accounts paint a horrifying picture—a confluence of known risks that created a perfect storm for disaster. These are not unknown unknowns; they are the cardinal sins of public venue safety.</p>
         </div>
 
         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 1: The Thatched Roof - A Catastrophic Fuel Source</h4>
-          <p>Eyewitnesses reported the fire spreading with terrifying speed across the thatched roof made of palm leaves. While aesthetically pleasing, such materials are incredibly flammable. In a public venue, using untreated, highly combustible materials for roofing is not a design choice; it is a declaration that aesthetics matter more than lives. A fundamental safety audit would have flagged this as a critical, unacceptable fire load. Any such design requires certified fire-retardant treatment and a robust sprinkler system. The question is not *if* it was treated, but if this was *verified* and documented.</p>
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 1: The Fuel - An Untreated Thatched Roof</h4>
+          <p>The fire's terrifying speed was fueled by a thatched roof made of palm leaves. While aesthetically pleasing, this material is incredibly flammable. Using untreated, combustible materials in a public assembly area is a catastrophic risk.</p>
+          <p><strong>Procedural Intervention:</strong> Any high-risk design element must be mitigated with documented, verifiable controls. This includes mandatory fire-retardant treatment for all flammable materials, with certificates on file for inspection. This should be coupled with a robust, regularly tested sprinkler system designed to suppress a fire in such specific, high-fuel-load areas.</p>
         </div>
 
         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 2: The Narrow Exit - A Fatal Funnel</h4>
-          <p>Reports mention a "single, narrow exit" for a venue packed for a major DJ night. This is a staggering failure of basic crowd management and fire safety. In a panic, a narrow exit becomes a fatal bottleneck where crushing and suffocation are inevitable. A venue's capacity is not determined by how many people you can fit inside, but by how many can safely evacuate in under two minutes. This requires clear, unlocked, and sufficient emergency exits—a simple, physical check that must be performed and logged before any event.</p>
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 2: The Funnel - A Single, Narrow Exit</h4>
+          <p>Reports mention a "single, narrow exit" for a venue packed for a major DJ night. This is a staggering failure of basic crowd management. A venue's legal capacity is not determined by how many people can fit inside, but by how many can safely evacuate in under two minutes.</p>
+          <p><strong>Procedural Intervention:</strong> A mandatory, pre-opening 'Venue Safety Walk' must be logged by a Duty Manager. This is not a casual glance. It is a physical check where every single emergency exit is opened and verified as unobstructed, well-lit, and unlocked. The log creates an undeniable audit trail of due diligence.</p>
         </div>
 
         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 3: The Lack of a Drilled Emergency Response</h4>
-          <p>When fire breaks out in a dark, loud, and crowded space, panic is the real killer. Only a well-trained staff can create order from chaos. Did the staff know how to use a fire extinguisher? Was there a working public address system to guide guests? Were they trained to direct people to all available exits, not just the main entrance? The seconds it takes to execute a practiced evacuation plan are the difference between life and death. This is not something learned in a handbook; it is learned through drills.</p>
+          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 3: The Chaos - No Practiced Emergency Response</h4>
+          <p>In a dark, loud, and crowded space, panic is the real killer. Only a well-trained staff can create order from chaos. Eyewitnesses did not report any coordinated staff response, indicating a complete lack of emergency preparedness.</p>
+          <p><strong>Procedural Intervention:</strong> A venue must have a clear, drilled Emergency Action Plan. Staff must be assigned specific roles: who uses the fire extinguisher, who operates the PA system to make announcements, who has flashlights to guide guests to secondary exits. These are not things you figure out during a fire. They are skills built through mandatory, quarterly mock evacuation drills, with times and outcomes logged for continuous improvement.</p>
         </div>
         
         <img src="https://i.postimg.cc/gjH9T23T/India-Goa-Nightclub-Fire-arpora.webp" alt="Aftermath of the fire in Arpora, Goa" class="my-8 rounded-lg shadow-lg" />
 
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Conclusion: We Must Do Better</h3>
-        <p>This is a moment of reckoning for the entire hospitality and events industry in India. The allure of a beautiful venue can never come at the cost of fundamental safety. A paper certificate from a fire department is not a safety system. A safety system is a living, breathing process: the duty manager who physically inspects every exit before opening; the maintenance log that shows the electrical audit was completed last month; the training record that proves every staff member participated in a fire drill.</p>
-        <p>Twenty-five lives were not 'lost'; they were taken by a system that failed them. We owe it to them, and to every guest who trusts us with their safety, to build systems that are not just compliant on paper, but are relentlessly verified in practice. We must do better.</p>
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Conclusion: A System of Verification is a Moral Obligation</h3>
+        <p>This is a moment of reckoning for the entire hospitality and events industry. A paper certificate from a fire department is not a safety system. A safety system is a living, breathing process: the duty manager who physically signs a log confirming all exits are clear; the maintenance record that proves the electrical audit was completed last month; the training sheet that proves every staff member participated in a fire drill.</p>
+        <p>Twenty-five lives were not 'lost'; they were failed by a system that lacked verifiable controls. Building a culture of safety is not a matter of intention, but of disciplined, documented, and repeatable action. It is the non-negotiable cost of entry for anyone who invites the public into their establishment. We owe it to the victims, and to every guest who trusts us with their safety, to do better.</p>
       `
     },
     {
@@ -701,3 +704,5 @@ export const blogPosts: BlogPost[] = [
       `
     }
 ];
+
+    
