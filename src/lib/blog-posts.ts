@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
           <div class="embedded-cta">Our <strong>Film, TV & OTT Production Pack</strong> includes ready-to-use Excel templates for all these critical safety checklists. <a href="/packs/film_production_pack">Protect your production now &rarr;</a></div>
         </div>
 
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Real-World Benefits of SOPs</h3>
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Real-World Benefits of SOPs</h4>
         <p>Implementing these checklists isn't just about preventing a fire. It has direct financial benefits. Insurance providers often offer lower premiums for productions that can demonstrate a robust, documented safety program. More importantly, it ensures business continuity. The cost of a single day's shoot being cancelled due to a preventable incident far exceeds the cost of implementing these simple, effective procedures.</p>
       `
     },
@@ -728,5 +728,3 @@ export const blogPosts: BlogPost[] = [
       `
     }
 ];
-
-    
