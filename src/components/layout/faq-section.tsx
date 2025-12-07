@@ -15,12 +15,6 @@ export const FaqSection = () => (
                            Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger>Why not just use AI to generate SOPs?</AccordionTrigger>
-                        <AccordionContent>
-                           AI can draft text, but it cannot deliver an audit-ready, compliance-verified system. Our packs are built by experts using <strong>global regulations, safety codes, ISO frameworks, and real-world operational learnings</strong>—not generic templates.
-                        </AccordionContent>
-                    </AccordionItem>
                      <AccordionItem value="item-3">
                         <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
