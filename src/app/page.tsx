@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from '@/components/ui/card';
 import {
   Dialog,
@@ -30,6 +30,7 @@ import {
   Users,
   Zap,
   ShieldCheck,
+  AlertTriangle,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SiteHeader } from '@/components/layout/header';
@@ -597,6 +598,42 @@ const ManagerAsCoachSection = () => (
   </SectionWrapper>
 );
 
+const AiVsMoreMeets = () => (
+    <SectionWrapper
+        id="ai-vs-moremeets"
+        title="Why AI is a Great First Draft, But a Terrible Final Answer"
+        description='"ChatGPT can make mistakes. Check important info." For safety, compliance, and legal audits, we provide the verified final answer.'
+    >
+        <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+            <Card className="border-amber-500/30 bg-amber-100/30 dark:bg-amber-900/10 h-full p-6">
+                <CardHeader className="p-0 mb-4">
+                    <CardTitle className="text-amber-600 dark:text-amber-400 flex items-center gap-2">
+                        <AlertTriangle className="w-6 h-6"/> The AI Gamble
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0 flex items-center justify-center h-full min-h-[180px]">
+                   <div className="bg-amber-100/50 dark:bg-amber-900/20 p-4 rounded-lg border border-dashed border-amber-500/50 w-full">
+                        <p className="font-mono text-center text-sm md:text-base font-semibold text-amber-800 dark:text-amber-200">"ChatGPT can make mistakes. Check important info."</p>
+                   </div>
+                </CardContent>
+            </Card>
+            <Card className="border-primary/30 bg-background shadow-lg h-full p-6">
+                <CardHeader className="p-0 mb-4">
+                    <CardTitle className="text-primary flex items-center gap-2">
+                        <ShieldCheck className="w-6 h-6"/> The MoreMeets Standard
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 text-foreground p-0">
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Human-Verified & Researched:</strong> Built by industry experts on a foundation of global standards (ISO, OSHA, HACCP), not generic web scrapes.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Audit-Ready by Design:</strong> Every checklist is a structured system with fields for owner, proof of completion, and version control that an auditor will accept.</span></p>
+                    <p className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-primary shrink-0 mt-1"/><span><strong>Offline and Secure:</strong> Your proprietary operational data stays on your systems as an Excel file, not on a third-party AI server, eliminating data privacy risks.</span></p>
+                </CardContent>
+            </Card>
+        </div>
+    </SectionWrapper>
+);
+
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -606,6 +643,7 @@ export default function Home() {
         <AnatomyOfFailure />
         <Blueprint />
         <ManagerAsCoachSection />
+        <AiVsMoreMeets />
         <TestimonialsSection />
         <FaqSection />
       </main>
