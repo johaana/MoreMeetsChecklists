@@ -5,12 +5,13 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // --- Start of New Redirects ---
       {
         source: '/about',
         destination: '/',
         permanent: true,
       },
-      // --- Start of New Redirects ---
+      // Redirect old pack URLs to the main packs page or their new equivalent
       {
         source: '/packs/automotive_workshop_pack/:path*',
         destination: '/packs',
