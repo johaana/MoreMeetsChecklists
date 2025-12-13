@@ -312,7 +312,7 @@ export default function BlogClientPage() {
                                             </CardDescription>
                                             <div className="flex justify-between items-center text-xs text-white/80">
                                                 <span>{new Date(currentFeaturedPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                                                <span className="font-semibold">{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
+                                                <span>{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
                                             <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
                                                 Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />

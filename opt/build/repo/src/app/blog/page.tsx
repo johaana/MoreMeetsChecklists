@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
 const title = 'Black Box Debrief | MoreMeets Blog';
 const description = 'Deconstructing the world\'s most costly operational disasters to build more resilient organizations. An insights hub by MoreMeets.';
-const ogImageUrl = `${siteUrl}/api/og?type=blog`;
+const ogImageUrl = `${siteUrl}/api/og?type=default&title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -236,8 +237,8 @@ const PhilosophySection = () => (
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
-                  <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
+                  <CarouselPrevious />
+                  <CarouselNext />
                 </Carousel>
              </div>
         </div>

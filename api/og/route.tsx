@@ -1,4 +1,5 @@
 
+
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -8,8 +9,8 @@ import * as Lucide from 'lucide-react';
 export const runtime = 'edge';
 
 // Dynamically load Inter fonts
-const interRegular = fetch(new URL('../../../../assets/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer());
-const interBold = fetch(new URL('../../../../assets/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer());
+const interRegular = fetch(new URL('../../../assets/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer());
+const interBold = fetch(new URL('../../../assets/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer());
 
 
 export async function GET(req: NextRequest) {
@@ -33,8 +34,6 @@ export async function GET(req: NextRequest) {
                 // @ts-ignore
                 IconComponent = item.icon?.type?.displayName ? Lucide[item.icon.type.displayName] : Lucide.Package;
             }
-        } else if (type === 'checklist' && id) {
-            // This part is deprecated as individualChecklists is removed
         } else if (type === 'blog' && slug) {
             const item = blogPosts.find(b => b.slug === slug);
             if (item) {
