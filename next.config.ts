@@ -2,11 +2,6 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  experimental: {
-    turbo: {
-      root: '.',
-    },
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -34,7 +29,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'i.postimg.cc',
         port: '',
-        pathname: '/**',
+pathname: '/**',
       }
     ],
   },
