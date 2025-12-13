@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -120,4 +121,10 @@ export default function Page({ params }: { params: { id: string } }) {
       <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
     </>
   );
+}
+
+export async function generateStaticParams() {
+  return premiumPacks.map((pack) => ({
+    id: pack.id,
+  }));
 }

@@ -33,5 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // The individual checklists page is being removed, so we don't need to add it to the sitemap.
+
   return [...staticRoutes, ...packRoutes, ...blogRoutes];
 }

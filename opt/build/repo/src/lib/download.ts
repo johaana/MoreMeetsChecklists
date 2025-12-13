@@ -61,7 +61,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     if (type === 'pack') {
         checklists = (item as PremiumPack).checklists;
-    } else {
+    } else if (type === 'individual') {
         const checklist = item as IndividualChecklist;
         checklists = [{
             title: checklist.title,
@@ -73,6 +73,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             icon: checklist.icon
         }];
     }
+
 
     // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
