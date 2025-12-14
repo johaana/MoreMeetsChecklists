@@ -1,9 +1,36 @@
-
-export type Status = 'pending' | 'in-progress' | 'completed';
-
-export type Task = {
-  text: string;
-  status: Status;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+        port: '',
+        pathname: '/**',
+      },
+       {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
+      }
+    ],
+  },
+   async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/checklists',
+        destination: '/library',
+        permanent: true,
+      },
+    ]
+  },
 };
 
-export type Visibility = 'free' | 'paid';
+export default nextConfig;
