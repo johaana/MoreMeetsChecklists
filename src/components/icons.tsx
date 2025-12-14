@@ -1,67 +1,267 @@
-import { CheckSquare } from 'lucide-react';
-import type { SVGProps } from 'react';
+'use client';
 
-export function Logo(props: SVGProps<SVGSVGElement>) {
-  return <CheckSquare {...props} />;
+import * as React from 'react';
+import type { PremiumPack } from '@/lib/premium-packs';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
+import { addContact } from '@/packs/actions';
+import { Input } from '@/components/ui/input';
+import { ValueProposition } from '@/components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+
+
+function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
+    const { toast } = useToast();
+    const [email, setEmail] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const result = await addContact({ email, packId: pack.id });
+
+        if (result.success) {
+            setSubmitted(true);
+            toast({
+                title: "Check Your Inbox!",
+                description: "Your free checklist pack has been sent to your email.",
+            });
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Something went wrong",
+                description: result.message || "Could not process your request.",
+            });
+        }
+
+        setLoading(false);
+    };
+
+    if (submitted) {
+        return (
+            <div className="text-center p-4 bg-green-100 text-green-800 rounded-md dark:bg-green-900/50 dark:text-green-200">
+                <p className="font-semibold">Thank you! Your pack is on its way.</p>
+                <p className="text-sm">Please check your email inbox (and spam folder).</p>
+            </div>
+        )
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+             <Input
+                type="email"
+                placeholder="Enter your email to download"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full"
+            />
+            <Button size="lg" type="submit" className="w-full" disabled={loading}>
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
+                Get Your Free Pack
+            </Button>
+        </form>
+    )
 }
 
-export function GoogleIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
-      width="24px"
-      height="24px"
-      {...props}
-    >
-      <path
-        fill="#FFC107"
-        d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-      />
-      <path
-        fill="#FF3D00"
-        d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-      />
-      <path
-        fill="#4CAF50"
-        d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.222,0-9.658-3.317-11.28-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-      />
-      <path
-        fill="#1976D2"
-        d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.574l6.19,5.238C39.999,35.938,44,30.417,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-      />
-    </svg>
-  );
-}
+const ComplianceIcon = ({ standard }: { standard: string }) => {
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <Landmark className="w-4 h-4 text-gray-500" />;
+};
 
-export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
-      width="24px"
-      height="24px"
-      {...props}
-    >
-      <path
-        fill="#fff"
-        d="M39.31,8.922C35.39,5.002,30.07,2.75,24,2.75c-9.63,0-17.5,7.87-17.5,17.5c0,3.12,0.82,6.09,2.37,8.65L6.5,38.5l9.89-2.58c2.45,1.42,5.2,2.18,8.08,2.18h0.03c9.63,0,17.5-7.87,17.5-17.5C41.97,17.142,40.92,12.832,39.31,8.922z"
-      />
-      <path
-        fill="#fff"
-        stroke="#4caf50"
-        strokeMiterlimit="10"
-        strokeWidth="2"
-        d="M39.31,8.922C35.39,5.002,30.07,2.75,24,2.75c-9.63,0-17.5,7.87-17.5,17.5c0,3.12,0.82,6.09,2.37,8.65L6.5,38.5l9.89-2.58c2.45,1.42,5.2,2.18,8.08,2.18h0.03c9.63,0,17.5-7.87,17.5-17.5C41.97,17.142,40.92,12.832,39.31,8.922z"
-      />
-      <path
-        fill="#4caf50"
-        d="M24,4.25c-9.07,0-16.5,7.43-16.5,16.5c0,3,0.78,5.86,2.23,8.36L7.5,39.5l9.64-2.52c2.43,1.38,5.1,2.12,7.86,2.12h0.03c9.07,0,16.5-7.43,16.5-16.5C41.5,11.682,34.07,4.25,24,4.25z"
-      />
-      <path
-        fill="#fff"
-        d="M34.69,26.46c-0.27-0.14-1.61-0.79-1.85-0.88c-0.25-0.09-0.43-0.14-0.61,0.14c-0.18,0.28-0.7,0.88-0.86,1.06c-0.16,0.18-0.32,0.2-0.59,0.07c-0.27-0.14-1.15-0.42-2.19-1.35c-0.81-0.72-1.35-1.61-1.51-1.88c-0.16-0.28-0.02-0.43,0.12-0.57c0.13-0.13,0.27-0.34,0.41-0.51c0.14-0.17,0.18-0.28,0.27-0.47c0.09-0.19,0.05-0.36-0.02-0.5c-0.07-0.14-0.61-1.47-0.84-2.01c-0.23-0.54-0.46-0.46-0.61-0.47c-0.14-0.01-0.32-0.01-0.49-0.01c-0.18,0-0.45,0.07-0.69,0.34c-0.24,0.28-0.92,0.9-0.92,2.2c0,1.3,0.94,2.55,1.07,2.73c0.13,0.18,1.85,2.83,4.49,3.97c0.63,0.27,1.13,0.44,1.52,0.56c0.61,0.19,1.16,0.16,1.6,0.1c0.48-0.07,1.61-0.66,1.83-1.28c0.23-0.62,0.23-1.15,0.16-1.28C35.12,26.6,34.96,26.59,34.69,26.46z"
-      />
-    </svg>
-  );
+export default function PricingClient({ pack }: { pack: PremiumPack }) {
+    
+    const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
+    const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
+    
+    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
+    const [agreedToTerms, setAgreedToTerms] = React.useState(false);
+    
+    const totalChecklists = pack.checklists.length;
+    const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    const features = totalChecklists > 0 ? [
+        { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
+        { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
+        { text: "<strong>Instant Download</strong> in fully editable Excel format."},
+        { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
+    ] : [
+        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
+    ];
+
+    if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
+        return (
+             <section className="w-full py-12 md:py-16" id="pricing">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-3xl mx-auto mb-10 text-center">
+                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Free Toolkit</h2>
+                        <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
+                    </div>
+                    <div className="flex justify-center">
+                        <Card className="flex flex-col max-w-md w-full">
+                            <CardHeader className="text-center">
+                                <Download className="w-10 h-10 text-primary mx-auto mb-4" />
+                                <CardTitle className="text-2xl font-headline">Instant Download</CardTitle>
+                                <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
+                                <p className="text-5xl font-extrabold pt-4">Free</p>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                    {totalChecklists > 0 && (
+                                    <>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    </>
+                                    )}
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2 p-6">
+                                <FreeDownloadForm pack={pack} />
+                                <p className="text-xs text-muted-foreground text-center">By downloading, you agree to receive occasional updates from MoreMeets.</p>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
+    return (
+        <section className="w-full py-12 md:py-16" id="pricing">
+            <div className="container px-2 md:px-6">
+                <div className="flex justify-center">
+                    <Card className="flex flex-col max-w-2xl w-full border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
+                        <CardHeader className="p-6 bg-secondary/30 text-center">
+                             <div className="flex justify-center items-center gap-4">
+                                <Banknote className="w-10 h-10 text-accent" />
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
+                                        Global Compliance Pack
+                                    </h3>
+                                    {pack.badgeText && (
+                                        <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
+                                    )}
+                                </div>
+                            </div>
+                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-1 flex flex-col gap-6">
+                             {hasINR && hasUSD && (
+                                <div className="flex justify-center">
+                                    <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
+                                      <TabsList className="grid w-full grid-cols-2">
+                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                      </TabsList>
+                                    </Tabs>
+                                </div>
+                             )}
+
+                            <div className="flex items-baseline justify-center gap-2">
+                                <p className="text-5xl font-extrabold">
+                                    {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                </p>
+                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
+                            </div>
+                            {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
+                           
+                            <div className='space-y-4'>
+                                <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
+                                <ul className="space-y-3 text-sm text-foreground/90">
+                                    {features.map((feature, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
+                                            <span dangerouslySetInnerHTML={{ __html: feature.text }} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                             {pack.globalStandards && (
+                                <div className="text-center">
+                                    <h4 className="font-semibold text-center text-sm mb-3 text-primary/90">ALIGNED WITH:</h4>
+                                    <div className="flex justify-center flex-wrap gap-x-4 gap-y-2">
+                                        {pack.globalStandards.standards.map(standard => (
+                                            <div key={standard.name} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                                                <ComplianceIcon standard={standard.name} />
+                                                <span>{standard.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                             <ValueProposition 
+                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
+                                competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
+                                valueStatement="For a comparable enterprise compliance toolkit."
+                            />
+
+                        </CardContent>
+                         <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
+                                <Label htmlFor="terms" className="text-xs text-muted-foreground">
+                                    I have read and agree to the{" "}
+                                    <Link href="/terms" target="_blank" className="underline hover:text-primary">
+                                    Terms of Service
+                                    </Link>{" "}
+                                    &{" "}
+                                    <Link href="/refund" target="_blank" className="underline hover:text-primary">
+                                    Refund Policy
+                                    </Link>.
+                                </Label>
+                            </div>
+                           <div className="w-full flex justify-center">
+                                {hasINR && pack.paymentId && (
+                                    <div className={currency === 'INR' ? '' : 'hidden'}>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <RazorpayButton paymentId={pack.paymentId} />
+                                        </div>
+                                    </div>
+                                )}
+                                {hasUSD && pack.lemonSqueezyUrl && (
+                                     <div className={currency === 'USD' ? '' : 'hidden'}>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                    Buy Now
+                                                </Link>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )}
+                           </div>
+                           <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+                           <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
+                                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                    Need this pack tailored to your brand's specific needs? Schedule a call.
+                                </Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
+            </div>
+        </section>
+    );
 }

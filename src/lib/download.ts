@@ -1,221 +1,267 @@
+'use client';
 
-import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
-import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
-import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
-
-export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
-    if (!item) {
-        alert("Could not find the item data. Please contact support.");
-        return;
-    }
-
-    const wb = utils.book_new();
-
-    const safeSheetName = (title: string) => {
-        const sanitized = title.replace(/[\s&/\\?*:[\]]/g, '_');
-        return sanitized.substring(0, 30);
-    }
-    
-    // --- STYLES ---
-    const titleStyle = { font: { sz: 16, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
-    const sectionHeaderStyle = { font: { sz: 14, bold: true, color: { rgb: "000000" } }, fill: { fgColor: { rgb: "F5A623" } }, alignment: { vertical: 'center', horizontal: 'center'} };
-    const instructionBodyStyle = { font: { sz: 11, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
-    const instructionTitleStyle = { font: { bold: true, sz: 12 }, alignment: { vertical: 'top' } };
-    const footerStyle = { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
-    const linkStyle = { font: { color: { rgb: "0000FF" }, underline: true } };
-    const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true, horizontal: 'center' } };
-    const dateStyle = { numFmt: 'dd-mm-yyyy' };
-    
-    // --- CONDITIONAL FORMATTING ---
-    const overdueFill = { fgColor: { rgb: "FFC7CE" } };
-    const overdueFont = { color: { rgb: "9C0006" } };
-    const overdueConditionalFmt = {
-        type: "expression",
-        formula: `ISNUMBER(SEARCH("ACTION REQUIRED - OVERDUE",INDIRECT("K"&ROW())))`,
-        style: { fill: overdueFill, font: overdueFont },
-    };
-
-    const completedFill = { fgColor: { rgb: "C6EFCE" } };
-    const completedFont = { color: { rgb: "006100" } };
-    const completedConditionalFmt = {
-        type: "expression",
-        formula: `ISNUMBER(SEARCH("Completed",INDIRECT("K"&ROW())))`,
-        style: { fill: completedFill, font: completedFont },
-    };
-    
-    // --- HELPER FUNCTIONS ---
-    const setColumnWidths = (ws: WorkSheet, widths: number[]) => {
-        ws['!cols'] = widths.map(wch => ({ wch }));
-    };
-    
-    const addFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
-        const merge = { s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } };
-        if (!ws['!merges']) ws['!merges'] = [];
-        ws['!merges'].push(merge);
-        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2025 MoreMeets - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
-        utils.sheet_add_aoa(ws, [[footerCell]], { origin: { r: lastRow + 2, c: 0 } });
-    };
-
-    let checklists: PackChecklist[] = [];
-    const packTitle = item.title;
-
-    if (type === 'pack') {
-        checklists = (item as PremiumPack).checklists;
-    } else {
-        const checklist = item as IndividualChecklist;
-        checklists = [{
-            title: checklist.title,
-            tasks: checklist.tasks,
-            department: checklist.category,
-            frequency: 'As Required',
-            role: 'User',
-            summary: checklist.longDescription,
-            icon: checklist.icon
-        }];
-    }
-
-    // --- INSTRUCTIONS & LEGEND SHEET ---
-    const instructionsData = [
-        [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
-        [],
-        [{ v: 'Quick Start Guide', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{ v: '1. Update ONLY ONE Column', t: 's', s: instructionTitleStyle }, { v: "Find your task. When it's done, enter the completion date in the 'Date Completed (dd-mm-yyyy)' column. This is the only column you ever need to edit.", t: 's', s: instructionBodyStyle }],
-        [{ v: '2. See The Live Status', t: 's', s: instructionTitleStyle }, { v: "The 'Status' and 'Next Due Date' columns will update automatically. Completed tasks turn GREEN. Overdue tasks turn RED.", t: 's', s: instructionBodyStyle }],
-        [{ v: '3. Add Context (If Needed)', t: 's', s: instructionTitleStyle }, { v: "Use the 'Notes' column for important context, like 'Delayed - Awaiting Parts' or 'Not Applicable this month'.", t: 's', s: instructionBodyStyle }],
-        [],
-        [{ v: 'Pro-Tips for Optimum Use', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{ v: 'Create Instant Reports with Filters', t: 's', s: instructionTitleStyle }, { v: "Go to the 'Data' tab in Excel and click the 'Filter' icon. Dropdown arrows will appear on each header. Now you can create instant reports. For example: Filter the 'Status' column to see only 'ACTION REQUIRED' tasks, or filter the 'Role' column to see a to-do list for a specific person.", t: 's', s: instructionBodyStyle }],
-        [{ v: 'Use the Audit Trail', t: 's', s: instructionTitleStyle }, { v: "Every task has a unique 'Task ID' and a required 'Proof / Evidence'. When discussing an issue, refer to the Task ID for perfect clarity. The 'Proof' column creates a clear, consistent audit trail for every action.", t: 's', s: instructionBodyStyle }],
-        [{ v: 'Train Your Team with Consequences', t: 's', s: instructionTitleStyle }, { v: "Use the 'Consequence of Failure' column as a training tool. In team meetings, discuss *why* a task is important. This builds a culture of ownership and safety, which is more effective than just giving orders.", t: 's', s: instructionBodyStyle }],
-        [],
-        [{ v: 'Legend', t: 's', s: sectionHeaderStyle }, null, null, null],
-        [{v: 'Status', s: instructionTitleStyle}, {v: 'Pending: The task is not yet completed.\nCompleted: The task was completed on time.\nACTION REQUIRED - OVERDUE: The task was not completed by its calculated due date and is now overdue.', s: instructionBodyStyle}],
-        [{v: 'Priority', s: instructionTitleStyle}, {v: 'High: Critical task. Failure has a major impact on operations, safety, or compliance.\nMedium: Important task. Failure has a moderate impact.\nLow: Routine task. Failure has a minor impact.', s: instructionBodyStyle}],
-        [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
-    ];
-    
-    const instructionsWs = utils.aoa_to_sheet(instructionsData);
-    instructionsWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, 
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }, 
-        { s: { r: 7, c: 0 }, e: { r: 7, c: 3 } }, 
-        { s: { r: 12, c: 0 }, e: { r: 12, c: 3 } },
-        { s: { r: 3, c: 1 }, e: { r: 3, c: 3 } }, { s: { r: 4, c: 1 }, e: { r: 4, c: 3 } }, { s: { r: 5, c: 1 }, e: { r: 5, c: 3 } },
-        { s: { r: 8, c: 1 }, e: { r: 8, c: 3 } }, { s: { r: 9, c: 1 }, e: { r: 9, c: 3 } }, { s: { r: 10, c: 1 }, e: { r: 10, c: 3 } },
-        { s: { r: 13, c: 1 }, e: { r: 13, c: 3 } }, { s: { r: 14, c: 1 }, e: { r: 14, c: 3 } }, { s: { r: 15, c: 1 }, e: { r: 15, c: 3 } }
-    ];
-    setColumnWidths(instructionsWs, [30, 30, 30, 30]);
-    instructionsWs['!rows'] = [ 
-        { hpt: 30 }, null, { hpt: 25 }, { hpt: 50 }, { hpt: 50 }, { hpt: 50 }, null, 
-        { hpt: 25 }, { hpt: 80 }, { hpt: 80 }, { hpt: 80 }, null,
-        { hpt: 25 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }
-    ];
-    instructionsData.forEach((row, r) => {
-        const cell = instructionsWs[utils.encode_cell({r:r, c:1})];
-        if (cell && typeof cell.v === 'string') {
-            cell.s = { ...cell.s, ...instructionBodyStyle };
-        }
-    });
-
-    addFooter(instructionsWs, 17, 4);
-    utils.book_append_sheet(wb, instructionsWs, "Instructions & Legend");
+import * as React from 'react';
+import type { PremiumPack } from '@/lib/premium-packs';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
+import { addContact } from '@/packs/actions';
+import { Input } from '@/components/ui/input';
+import { ValueProposition } from '@/components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 
-    // --- COVER PAGE ---
-    if (type === 'pack' && checklists.length > 1) {
-        const coverPageData: any[][] = [
-            [{ v: packTitle, s: titleStyle }, null, null, null],
-            [],
-            [{v:"Click any checklist title below to navigate directly to its sheet.", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } }}, null, null, null],
-            [],
-            [{v:"Checklist Title", s: headerStyle}, {v:"Department", s: headerStyle}, {v:"Frequency", s: headerStyle}, {v:"Primary Role", s: headerStyle}],
-        ];
-        checklists.forEach((checklist) => {
-            const sName = safeSheetName(checklist.title);
-            coverPageData.push([
-                { t: 's', v: checklist.title, l: { Target: `#'${sName}'!A1` }, s: linkStyle },
-                checklist.department, checklist.frequency, checklist.role
-            ]);
-        });
-        const coverWs = utils.aoa_to_sheet(coverPageData);
-        setColumnWidths(coverWs, [60, 25, 20, 25]);
-        coverWs['!rows'] = [{ hpt: 30 }];
-        coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }];
-        addFooter(coverWs, coverPageData.length, 4);
-        utils.book_append_sheet(wb, coverWs, "Cover Page");
-    }
+function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
+    const { toast } = useToast();
+    const [email, setEmail] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
 
-    // --- CHECKLIST SHEETS ---
-    checklists.forEach((checklist) => {
-        const headerEndCol = 'M';
-        const sName = safeSheetName(checklist.title);
-        const wsData: any[][] = [
-            [{v: checklist.title, s: titleStyle}], [],
-            ['Task ID', 'Task Description', 'Priority', 'Risk Level', 'Consequence of Failure', 'Proof / Evidence', 'Frequency', 'Department', 'Role', 'Date Completed (dd-mm-yyyy)', 'Status (Auto-updates)', 'Next Due Date (Auto-calculated)', 'Notes'],
-        ];
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
 
-        checklist.tasks.forEach((task, taskIndex) => {
-            const rowNum = 4 + taskIndex;
-            const dateCell = `J${rowNum}`;
-            const freqCell = `G${rowNum}`;
-            const nextDueDateCell = `L${rowNum}`;
+        const result = await addContact({ email, packId: pack.id });
 
-            const isEventDrivenFormula = `OR(ISNUMBER(SEARCH("required",LOWER(${freqCell}))),ISNUMBER(SEARCH("incident",LOWER(${freqCell}))),ISNUMBER(SEARCH("ongoing",LOWER(${freqCell}))),ISNUMBER(SEARCH("hire",LOWER(${freqCell}))),ISNUMBER(SEARCH("delivery",LOWER(${freqCell}))),ISNUMBER(SEARCH("order",LOWER(${freqCell}))),ISNUMBER(SEARCH("transaction",LOWER(${freqCell}))),ISNUMBER(SEARCH("franchisee",LOWER(${freqCell}))),ISNUMBER(SEARCH("campaign",LOWER(${freqCell}))),ISNUMBER(SEARCH("case",LOWER(${freqCell}))),ISNUMBER(SEARCH("visit",LOWER(${freqCell}))),ISNUMBER(SEARCH("item",LOWER(${freqCell}))),ISNUMBER(SEARCH("audit",LOWER(${freqCell}))),ISNUMBER(SEARCH("deviation",LOWER(${freqCell}))))`;
-            const daysToAddFormula = `IF(ISNUMBER(SEARCH("daily",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("weekly",LOWER(${freqCell}))),7,IF(ISNUMBER(SEARCH("fortnightly",LOWER(${freqCell}))),14,0)))`;
-            const monthsToAddFormula = `IF(ISNUMBER(SEARCH("monthly",LOWER(${freqCell}))),1,IF(ISNUMBER(SEARCH("quarterly",LOWER(${freqCell}))),3,IF(ISNUMBER(SEARCH("half-yearly",LOWER(${freqCell}))),6,IF(ISNUMBER(SEARCH("annually",LOWER(${freqCell}))),12,0))))`;
-
-            const nextDueDateFormula = `IF(ISBLANK(${dateCell}), "N/A", IF(${monthsToAddFormula}>0,EDATE(${dateCell},${monthsToAddFormula}),${dateCell}+${daysToAddFormula}))`;
-            const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}="N/A"),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED - OVERDUE","Completed")))`;
-            
-            wsData.push([
-                task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
-                task.frequency || checklist.frequency, task.department || checklist.department, task.role || checklist.role,
-                null, 
-                { t: 'f', f: statusFormula }, 
-                { t: 'f', f: nextDueDateFormula }, 
-                null,
-            ]);
-        });
-        
-        const ws = utils.aoa_to_sheet(wsData);
-        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
-        ws['!rows'] = [{ hpt: 30 }];
-        setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 25, 25, 25, 30]);
-        const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3', 'L3', 'M3'];
-        headerCells.forEach(cell => { if (ws[cell]) ws[cell].s = headerStyle; });
-        
-        const range = utils.decode_range(ws['!ref'] || 'A1');
-
-        for (let R = 3; R <= range.e.r; ++R) {
-            const dateCellJ = utils.encode_cell({c: 9, r: R});
-            if(!ws[dateCellJ]) ws[dateCellJ] = {t:'n', z: 'dd-mm-yyyy'};
-            else ws[dateCellJ].z = 'dd-mm-yyyy';
-
-            const dateCellL = utils.encode_cell({c: 11, r: R});
-            if(ws[dateCellL]) ws[dateCellL].s = dateStyle;
+        if (result.success) {
+            setSubmitted(true);
+            toast({
+                title: "Check Your Inbox!",
+                description: "Your free checklist pack has been sent to your email.",
+            });
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Something went wrong",
+                description: result.message || "Could not process your request.",
+            });
         }
 
-        ws['!conditional_formatting'] = ws['!conditional_formatting'] || [];
-        ws['!conditional_formatting'].push(
-            { ref: `A4:${headerEndCol}${range.e.r + 1}`, rules: [overdueConditionalFmt] },
-            { ref: `A4:${headerEndCol}${range.e.r + 1}`, rules: [completedConditionalFmt] }
-        );
-        
-        ws['!views'] = [{state: 'frozen', ySplit: 3}];
-        addFooter(ws, wsData.length, 13);
-        utils.book_append_sheet(wb, ws, sName);
-    });
-    
-    // Re-order sheets to ensure Instructions and Cover Page are first
-    const sheetNames = wb.SheetNames;
-    const sortedSheetNames = ["Instructions & Legend", "Cover Page"].filter(name => sheetNames.includes(name));
-    sheetNames.forEach(name => {
-        if (!sortedSheetNames.includes(name)) {
-            sortedSheetNames.push(name);
-        }
-    });
-    wb.SheetNames = sortedSheetNames;
+        setLoading(false);
+    };
 
-    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
-    writeFile(wb, fileName);
+    if (submitted) {
+        return (
+            <div className="text-center p-4 bg-green-100 text-green-800 rounded-md dark:bg-green-900/50 dark:text-green-200">
+                <p className="font-semibold">Thank you! Your pack is on its way.</p>
+                <p className="text-sm">Please check your email inbox (and spam folder).</p>
+            </div>
+        )
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+             <Input
+                type="email"
+                placeholder="Enter your email to download"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full"
+            />
+            <Button size="lg" type="submit" className="w-full" disabled={loading}>
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
+                Get Your Free Pack
+            </Button>
+        </form>
+    )
+}
+
+const ComplianceIcon = ({ standard }: { standard: string }) => {
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <Landmark className="w-4 h-4 text-gray-500" />;
+};
+
+export default function PricingClient({ pack }: { pack: PremiumPack }) {
+    
+    const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
+    const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
+    
+    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
+    const [agreedToTerms, setAgreedToTerms] = React.useState(false);
+    
+    const totalChecklists = pack.checklists.length;
+    const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    const features = totalChecklists > 0 ? [
+        { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
+        { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
+        { text: "<strong>Instant Download</strong> in fully editable Excel format."},
+        { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
+    ] : [
+        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
+    ];
+
+    if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
+        return (
+             <section className="w-full py-12 md:py-16" id="pricing">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-3xl mx-auto mb-10 text-center">
+                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Free Toolkit</h2>
+                        <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
+                    </div>
+                    <div className="flex justify-center">
+                        <Card className="flex flex-col max-w-md w-full">
+                            <CardHeader className="text-center">
+                                <Download className="w-10 h-10 text-primary mx-auto mb-4" />
+                                <CardTitle className="text-2xl font-headline">Instant Download</CardTitle>
+                                <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
+                                <p className="text-5xl font-extrabold pt-4">Free</p>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                    {totalChecklists > 0 && (
+                                    <>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    </>
+                                    )}
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2 p-6">
+                                <FreeDownloadForm pack={pack} />
+                                <p className="text-xs text-muted-foreground text-center">By downloading, you agree to receive occasional updates from MoreMeets.</p>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
+    return (
+        <section className="w-full py-12 md:py-16" id="pricing">
+            <div className="container px-2 md:px-6">
+                <div className="flex justify-center">
+                    <Card className="flex flex-col max-w-2xl w-full border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
+                        <CardHeader className="p-6 bg-secondary/30 text-center">
+                             <div className="flex justify-center items-center gap-4">
+                                <Banknote className="w-10 h-10 text-accent" />
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
+                                        Global Compliance Pack
+                                    </h3>
+                                    {pack.badgeText && (
+                                        <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
+                                    )}
+                                </div>
+                            </div>
+                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-1 flex flex-col gap-6">
+                             {hasINR && hasUSD && (
+                                <div className="flex justify-center">
+                                    <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
+                                      <TabsList className="grid w-full grid-cols-2">
+                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                      </TabsList>
+                                    </Tabs>
+                                </div>
+                             )}
+
+                            <div className="flex items-baseline justify-center gap-2">
+                                <p className="text-5xl font-extrabold">
+                                    {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                </p>
+                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
+                            </div>
+                            {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
+                           
+                            <div className='space-y-4'>
+                                <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
+                                <ul className="space-y-3 text-sm text-foreground/90">
+                                    {features.map((feature, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
+                                            <span dangerouslySetInnerHTML={{ __html: feature.text }} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                             {pack.globalStandards && (
+                                <div className="text-center">
+                                    <h4 className="font-semibold text-center text-sm mb-3 text-primary/90">ALIGNED WITH:</h4>
+                                    <div className="flex justify-center flex-wrap gap-x-4 gap-y-2">
+                                        {pack.globalStandards.standards.map(standard => (
+                                            <div key={standard.name} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                                                <ComplianceIcon standard={standard.name} />
+                                                <span>{standard.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                             <ValueProposition 
+                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
+                                competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
+                                valueStatement="For a comparable enterprise compliance toolkit."
+                            />
+
+                        </CardContent>
+                         <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
+                                <Label htmlFor="terms" className="text-xs text-muted-foreground">
+                                    I have read and agree to the{" "}
+                                    <Link href="/terms" target="_blank" className="underline hover:text-primary">
+                                    Terms of Service
+                                    </Link>{" "}
+                                    &{" "}
+                                    <Link href="/refund" target="_blank" className="underline hover:text-primary">
+                                    Refund Policy
+                                    </Link>.
+                                </Label>
+                            </div>
+                           <div className="w-full flex justify-center">
+                                {hasINR && pack.paymentId && (
+                                    <div className={currency === 'INR' ? '' : 'hidden'}>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <RazorpayButton paymentId={pack.paymentId} />
+                                        </div>
+                                    </div>
+                                )}
+                                {hasUSD && pack.lemonSqueezyUrl && (
+                                     <div className={currency === 'USD' ? '' : 'hidden'}>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                    Buy Now
+                                                </Link>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )}
+                           </div>
+                           <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+                           <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
+                                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                    Need this pack tailored to your brand's specific needs? Schedule a call.
+                                </Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
+            </div>
+        </section>
+    );
 }

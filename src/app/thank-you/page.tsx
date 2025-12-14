@@ -1,215 +1,267 @@
-
-
 'use client';
 
-import Link from "next/link";
 import * as React from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Button } from "@/components/ui/button";
-import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
-import { Footer } from "@/components/layout/footer";
-import { verifyRazorpayPayment } from '@/app/packs/actions';
-import { SiteHeader } from "@/components/layout/header";
-import { handleDownload } from '@/lib/download';
-import type { PremiumPack } from "@/lib/premium-packs";
-import type { IndividualChecklist } from "@/lib/individual-checklists";
-
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogFooter,
-} from '@/components/ui/alert-dialog';
+import type { PremiumPack } from '@/lib/premium-packs';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
+import { addContact } from '@/packs/actions';
+import { Input } from '@/components/ui/input';
+import { ValueProposition } from '@/components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 
-function ThankYouContent() {
-  const searchParams = useSearchParams();
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [error, setError] = React.useState<string | null>(null);
-  const [verifiedItem, setVerifiedItem] = React.useState<any | null>(null);
-  const [itemType, setItemType] = React.useState<'pack' | 'individual' | null>(null);
-  const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
-  const hasTriggeredDownload = React.useRef(false);
+function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
+    const { toast } = useToast();
+    const [email, setEmail] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
 
-  React.useEffect(() => {
-    const rzpPaymentId = searchParams.get('razorpay_payment_id');
-    const packId = searchParams.get('pack_id');
-    const checklistId = searchParams.get('checklist_id');
-    
-    // Check session storage first
-    if (typeof window !== 'undefined') {
-        const storedPurchase = sessionStorage.getItem('lastPurchase');
-        if (storedPurchase) {
-          try {
-            const { item, type } = JSON.parse(storedPurchase);
-            setVerifiedItem(item);
-            setItemType(type);
-            setIsLoading(false);
-            if (!hasTriggeredDownload.current) {
-                handleDownload(item as (PremiumPack | IndividualChecklist), type as 'pack' | 'individual');
-                setShowDownloadConfirm(true);
-                hasTriggeredDownload.current = true;
-            }
-            return;
-          } catch (e) {
-            sessionStorage.removeItem('lastPurchase');
-          }
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const result = await addContact({ email, packId: pack.id });
+
+        if (result.success) {
+            setSubmitted(true);
+            toast({
+                title: "Check Your Inbox!",
+                description: "Your free checklist pack has been sent to your email.",
+            });
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Something went wrong",
+                description: result.message || "Could not process your request.",
+            });
         }
-    }
 
-    if (!rzpPaymentId) {
-      setError("Payment ID not found. Please check your email from Razorpay or contact support.");
-      setIsLoading(false);
-      return;
-    }
-
-    const verify = async () => {
-      setIsLoading(true);
-      setError(null);
-      setVerifiedItem(null);
-
-      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId);
-      
-      if (result.success) {
-        setVerifiedItem(result.item);
-        setItemType(result.type);
-        if (typeof window !== 'undefined') {
-            sessionStorage.setItem('lastPurchase', JSON.stringify({ item: result.item, type: result.type }));
-        }
-        if (!hasTriggeredDownload.current) {
-            handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
-            setShowDownloadConfirm(true);
-            hasTriggeredDownload.current = true;
-        }
-      } else {
-        setError(result.error);
-      }
-      
-      setIsLoading(false);
+        setLoading(false);
     };
 
-    verify();
-  }, [searchParams]);
-
-  const renderContent = () => {
-    if (isLoading) {
-      return (
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <Loader2 className="h-16 w-16 text-primary animate-spin" />
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-            Verifying your payment...
-          </h1>
-          <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-            Please wait while we confirm your transaction.
-          </p>
-        </div>
-      );
-    }
-
-    if (error) {
-       return (
-         <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <AlertTriangle className="h-20 w-20 text-destructive" />
-            <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Verification Failed
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
-                    There was an issue verifying your payment:
-                </p>
-                <p className="font-semibold text-destructive">{error}</p>
-                <p className="text-muted-foreground text-sm pt-4">
-                    Please contact our support team with your Payment ID for assistance.
-                </p>
-                 <Button asChild className="mt-4">
-                    <Link href="/contact">Contact Support</Link>
-                </Button>
+    if (submitted) {
+        return (
+            <div className="text-center p-4 bg-green-100 text-green-800 rounded-md dark:bg-green-900/50 dark:text-green-200">
+                <p className="font-semibold">Thank you! Your pack is on its way.</p>
+                <p className="text-sm">Please check your email inbox (and spam folder).</p>
             </div>
-        </div>
-      );
+        )
     }
 
-    if (verifiedItem) {
-      return (
-         <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <CheckCircle className="h-20 w-20 text-green-500" />
-            <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Thank You! Your download has started.
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
-                    Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder. If the download doesn't start automatically, use the button below.
-                </p>
-                 <p className="text-sm text-muted-foreground pt-2">
-                    If you face any difficulty downloading your pack, please email us at <a href="mailto:more@moremeets.com" className="font-semibold text-primary underline">more@moremeets.com</a> for immediate assistance.
-                </p>
-            </div>
-            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={() => handleDownload(verifiedItem, itemType!)}>
-                <Download className="mr-2 h-5 w-5" />
-                Download Again
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+             <Input
+                type="email"
+                placeholder="Enter your email to download"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full"
+            />
+            <Button size="lg" type="submit" className="w-full" disabled={loading}>
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
+                Get Your Free Pack
             </Button>
-            <Button size="lg" asChild className="group mt-4" variant="outline">
-                <Link href="/library">
-                    Explore More Packages
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-            </Button>
-        </div>
-      );
-    }
-
-    return null; // Should not be reached
-  }
-
-  return (
-    <div className="flex flex-col min-h-screen bg-background">
-      <SiteHeader />
-
-      <main className="flex-1 flex items-center justify-center">
-         <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        Your checklist has started downloading. Please check your downloads folder.
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
-
-        <section className="w-full max-w-3xl mx-auto py-12 md:py-24 lg:py-32 px-2 md:px-6">
-          {renderContent()}
-        </section>
-      </main>
-
-      <Footer />
-    </div>
-  );
+        </form>
+    )
 }
 
-export default function ThankYouPage() {
-  return (
-    <React.Suspense fallback={
-        <div className="flex flex-col min-h-screen bg-background">
-          <SiteHeader />
-           <main className="flex-1 flex items-center justify-center">
-               <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <Loader2 className="h-16 w-16 text-primary animate-spin" />
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                    Loading...
-                </h1>
+const ComplianceIcon = ({ standard }: { standard: string }) => {
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <Landmark className="w-4 h-4 text-gray-500" />;
+};
+
+export default function PricingClient({ pack }: { pack: PremiumPack }) {
+    
+    const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
+    const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
+    
+    const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
+    const [agreedToTerms, setAgreedToTerms] = React.useState(false);
+    
+    const totalChecklists = pack.checklists.length;
+    const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    const features = totalChecklists > 0 ? [
+        { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
+        { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
+        { text: "<strong>Instant Download</strong> in fully editable Excel format."},
+        { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
+    ] : [
+        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
+    ];
+
+    if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
+        return (
+             <section className="w-full py-12 md:py-16" id="pricing">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-3xl mx-auto mb-10 text-center">
+                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Get Your Free Toolkit</h2>
+                        <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
+                    </div>
+                    <div className="flex justify-center">
+                        <Card className="flex flex-col max-w-md w-full">
+                            <CardHeader className="text-center">
+                                <Download className="w-10 h-10 text-primary mx-auto mb-4" />
+                                <CardTitle className="text-2xl font-headline">Instant Download</CardTitle>
+                                <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
+                                <p className="text-5xl font-extrabold pt-4">Free</p>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                                <ul className="space-y-3 text-muted-foreground text-sm">
+                                    {totalChecklists > 0 && (
+                                    <>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                        <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    </>
+                                    )}
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="mt-auto flex flex-col justify-center w-full gap-2 p-6">
+                                <FreeDownloadForm pack={pack} />
+                                <p className="text-xs text-muted-foreground text-center">By downloading, you agree to receive occasional updates from MoreMeets.</p>
+                            </CardFooter>
+                        </Card>
+                    </div>
                 </div>
-           </main>
-          <Footer />
-        </div>
-    }>
-      <ThankYouContent />
-    </React.Suspense>
-  );
+            </section>
+        )
+    }
+
+    return (
+        <section className="w-full py-12 md:py-16" id="pricing">
+            <div className="container px-2 md:px-6">
+                <div className="flex justify-center">
+                    <Card className="flex flex-col max-w-2xl w-full border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
+                        <CardHeader className="p-6 bg-secondary/30 text-center">
+                             <div className="flex justify-center items-center gap-4">
+                                <Banknote className="w-10 h-10 text-accent" />
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
+                                        Global Compliance Pack
+                                    </h3>
+                                    {pack.badgeText && (
+                                        <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
+                                    )}
+                                </div>
+                            </div>
+                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-1 flex flex-col gap-6">
+                             {hasINR && hasUSD && (
+                                <div className="flex justify-center">
+                                    <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
+                                      <TabsList className="grid w-full grid-cols-2">
+                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                      </TabsList>
+                                    </Tabs>
+                                </div>
+                             )}
+
+                            <div className="flex items-baseline justify-center gap-2">
+                                <p className="text-5xl font-extrabold">
+                                    {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                </p>
+                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
+                            </div>
+                            {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
+                           
+                            <div className='space-y-4'>
+                                <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
+                                <ul className="space-y-3 text-sm text-foreground/90">
+                                    {features.map((feature, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
+                                            <span dangerouslySetInnerHTML={{ __html: feature.text }} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                             {pack.globalStandards && (
+                                <div className="text-center">
+                                    <h4 className="font-semibold text-center text-sm mb-3 text-primary/90">ALIGNED WITH:</h4>
+                                    <div className="flex justify-center flex-wrap gap-x-4 gap-y-2">
+                                        {pack.globalStandards.standards.map(standard => (
+                                            <div key={standard.name} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                                                <ComplianceIcon standard={standard.name} />
+                                                <span>{standard.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                             <ValueProposition 
+                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
+                                competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
+                                valueStatement="For a comparable enterprise compliance toolkit."
+                            />
+
+                        </CardContent>
+                         <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
+                                <Label htmlFor="terms" className="text-xs text-muted-foreground">
+                                    I have read and agree to the{" "}
+                                    <Link href="/terms" target="_blank" className="underline hover:text-primary">
+                                    Terms of Service
+                                    </Link>{" "}
+                                    &{" "}
+                                    <Link href="/refund" target="_blank" className="underline hover:text-primary">
+                                    Refund Policy
+                                    </Link>.
+                                </Label>
+                            </div>
+                           <div className="w-full flex justify-center">
+                                {hasINR && pack.paymentId && (
+                                    <div className={currency === 'INR' ? '' : 'hidden'}>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <RazorpayButton paymentId={pack.paymentId} />
+                                        </div>
+                                    </div>
+                                )}
+                                {hasUSD && pack.lemonSqueezyUrl && (
+                                     <div className={currency === 'USD' ? '' : 'hidden'}>
+                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                            <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                    Buy Now
+                                                </Link>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )}
+                           </div>
+                           <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+                           <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
+                                <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                    Need this pack tailored to your brand's specific needs? Schedule a call.
+                                </Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
+            </div>
+        </section>
+    );
 }

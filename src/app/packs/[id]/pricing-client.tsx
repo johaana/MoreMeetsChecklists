@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -266,5 +265,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
-    
