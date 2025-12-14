@@ -1,8 +1,9 @@
+import path from "path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 🔧 REQUIRED for Firebase Studio + Turbopack
   turbopack: {
-    root: process.cwd()
+    root: path.resolve(__dirname),
   },
 };
 
