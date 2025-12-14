@@ -42,7 +42,7 @@ export const FaqSection = () => (
                     <AccordionItem value="item-7">
                         <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
                         <AccordionContent>
-                            MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
+                            MoreMeets captures expert knowledge into a structured system. This means new and existing staff can now perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-8">

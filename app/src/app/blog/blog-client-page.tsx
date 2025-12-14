@@ -113,7 +113,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
