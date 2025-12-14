@@ -35,7 +35,8 @@ export async function generateMetadata(
   const ogUrl = new URL(`${siteUrl}/api/og`);
   ogUrl.searchParams.set('type', 'blog');
   ogUrl.searchParams.set('slug', post.slug);
-  const imageUrl = ogUrl.toString();
+  const imageUrl = post.imageUrl || ogUrl.toString();
+
 
   return {
     metadataBase: new URL(siteUrl),
@@ -166,12 +167,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     month: 'long',
     day: 'numeric',
   });
-  
+
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const ogUrl = new URL(`${siteUrl}/api/og`);
   ogUrl.searchParams.set('type', 'blog');
   ogUrl.searchParams.set('slug', post.slug);
-  const imageUrl = ogUrl.toString();
+  const imageUrl = post.imageUrl || ogUrl.toString();
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -287,5 +288,3 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-
-    

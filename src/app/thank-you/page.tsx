@@ -40,22 +40,24 @@ function ThankYouContent() {
     const checklistId = searchParams.get('checklist_id');
     
     // Check session storage first
-    const storedPurchase = sessionStorage.getItem('lastPurchase');
-    if (storedPurchase) {
-      try {
-        const { item, type } = JSON.parse(storedPurchase);
-        setVerifiedItem(item);
-        setItemType(type);
-        setIsLoading(false);
-        if (!hasTriggeredDownload.current) {
-            handleDownload(item as (PremiumPack | IndividualChecklist), type as 'pack' | 'individual');
-            setShowDownloadConfirm(true);
-            hasTriggeredDownload.current = true;
+    if (typeof window !== 'undefined') {
+        const storedPurchase = sessionStorage.getItem('lastPurchase');
+        if (storedPurchase) {
+          try {
+            const { item, type } = JSON.parse(storedPurchase);
+            setVerifiedItem(item);
+            setItemType(type);
+            setIsLoading(false);
+            if (!hasTriggeredDownload.current) {
+                handleDownload(item as (PremiumPack | IndividualChecklist), type as 'pack' | 'individual');
+                setShowDownloadConfirm(true);
+                hasTriggeredDownload.current = true;
+            }
+            return;
+          } catch (e) {
+            sessionStorage.removeItem('lastPurchase');
+          }
         }
-        return;
-      } catch (e) {
-        sessionStorage.removeItem('lastPurchase');
-      }
     }
 
     if (!rzpPaymentId) {
@@ -74,7 +76,9 @@ function ThankYouContent() {
       if (result.success) {
         setVerifiedItem(result.item);
         setItemType(result.type);
-        sessionStorage.setItem('lastPurchase', JSON.stringify({ item: result.item, type: result.type }));
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem('lastPurchase', JSON.stringify({ item: result.item, type: result.type }));
+        }
         if (!hasTriggeredDownload.current) {
             handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
             setShowDownloadConfirm(true);

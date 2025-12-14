@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -108,7 +109,7 @@ const RefinedHeroSection = () => {
                                 "whitespace-normal leading-tight flex items-center text-center",
                                 activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                             )}
-                            onClick={() => setActivePainPoint(key)}
+                            onClick={() => setActivePainPoint(key as PainPointKey)}
                         >
                             <span>{painPoints[key].buttonText}</span>
                         </Button>
@@ -167,7 +168,7 @@ const RefinedHeroSection = () => {
                                     "whitespace-normal leading-tight flex items-center text-center",
                                     activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
                                 )}
-                                onClick={() => setActivePainPoint(key)}
+                                onClick={() => setActivePainPoint(key as PainPointKey)}
                             >
                                 <span>{painPoints[key].mobileButtonText}</span>
                             </Button>
@@ -237,8 +238,8 @@ const PhilosophySection = () => (
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
-                  <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
+                  <CarouselPrevious />
+                  <CarouselNext />
                 </Carousel>
              </div>
         </div>

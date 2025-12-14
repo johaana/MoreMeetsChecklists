@@ -17,7 +17,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { writeFile, utils } from 'xlsx-js-style';
+import { handleDownload } from '@/lib/download';
 import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-packs";
 import Image from 'next/image';
 import PricingClient from './pricing-client';

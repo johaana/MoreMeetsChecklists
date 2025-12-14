@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -35,8 +36,7 @@ const packImageMap: Record<string, string> = {
   'theme_park_ops_pack': 'https://i.postimg.cc/Wz6MTrcB/theme-park.jpg',
   'corporate_legal_compliance_starter_kit': 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg',
   'enterprise_risk_cybersecurity_pack': 'https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp',
-  'cloud_kitchen_food_delivery_pack': 'https://i.postimg.cc/Lsf0Gqfr/cloud-kitchen1.webp',
-  'co_working_space_management_pack': 'https://i.postimg.cc/9MhN2WY5/Co-working.webp'
+  'bakery_confectionery_pack': 'https://i.postimg.cc/pXGcVm5p/bakery.jpg'
 };
 
 
@@ -80,6 +80,11 @@ export async function generateMetadata(
   }
 }
 
+export function generateStaticParams() {
+  return premiumPacks.map((pack) => ({
+    id: pack.id,
+  }));
+}
 
 export default function Page({ params }: { params: { id: string } }) {
   const pack = premiumPacks.find((p) => p.id === params.id);

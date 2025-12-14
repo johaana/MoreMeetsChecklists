@@ -9,8 +9,8 @@ import * as Lucide from 'lucide-react';
 export const runtime = 'edge';
 
 // Dynamically load Inter fonts
-const interRegular = fetch(new URL('../../../assets/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer());
-const interBold = fetch(new URL('../../../assets/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer());
+const interRegular = fetch(new URL('../../../../assets/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer());
+const interBold = fetch(new URL('../../../../assets/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer());
 
 
 export async function GET(req: NextRequest) {
