@@ -1,0 +1,218 @@
+[
+  {
+    "id": "hero-wedding",
+    "description": "A beautiful destination wedding setup.",
+    "imageUrl": "https://i.postimg.cc/YCZ8rWNd/destination-wedding-planner-mumbai.jpg",
+    "imageHint": "destination wedding"
+  },
+  {
+    "id": "feature-ai",
+    "description": "A corporate product launch event with a focus on technology.",
+    "imageUrl": "https://i.postimg.cc/9QrJHp94/corporate-hospitality-1024x683-1.jpg",
+    "imageHint": "corporate event"
+  },
+  {
+    "id": "testimonial-elena",
+    "description": "Professional headshot of Elena Petrova.",
+    "imageUrl": "https://i.postimg.cc/HLsXNL42/headshot1.webp",
+    "imageHint": "woman ceo"
+  },
+  {
+    "id": "testimonial-marcus",
+    "description": "Professional headshot of Marcus Thorne.",
+    "imageUrl": "https://i.postimg.cc/Gp7Gn1qz/headshot2.webp",
+    "imageHint": "male professional"
+  },
+  {
+    "id": "testimonial-priya",
+    "description": "Professional headshot of Priya Singh.",
+    "imageUrl": "https://i.postimg.cc/7LY0RLMZ/headshot3.webp",
+    "imageHint": "female founder"
+  },
+  {
+    "id": "showcase-award-ceremony",
+    "description": "An elegant award ceremony event.",
+    "imageUrl": "https://i.postimg.cc/tTtzNvKc/award-ceremony-event-planner.png",
+    "imageHint": "award ceremony"
+  },
+  {
+    "id": "showcase-hotel-exterior",
+    "description": "The stunning exterior of a 7-star hotel.",
+    "imageUrl": "https://i.postimg.cc/x8f3xyY1/best-7-star-hotels-in-the-world.png",
+    "imageHint": "luxury hotel"
+  },
+  {
+    "id": "showcase-product-launch-samsung",
+    "description": "A Samsung product launch event.",
+    "imageUrl": "https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp",
+    "imageHint": "product launch"
+  },
+  {
+    "id": "showcase-product-launch-speaker",
+    "description": "A speaker at a Samsung product launch event.",
+    "imageUrl": "https://i.postimg.cc/MfjQBGBv/Best-Corporate-Photographer-India-Samsung-Product_Launch-Event-Photographer-Delhi-NCR-59-jpg.webp",
+    "imageHint": "corporate speaker"
+  },
+  {
+    "id": "showcase-corporate-hospitality",
+    "description": "A corporate hospitality setting.",
+    "imageUrl": "https://i.postimg.cc/9QrJHp94/corporate-hospitality-1024x683-1.jpg",
+    "imageHint": "corporate hospitality"
+  },
+  {
+    "id": "showcase-chauffeur",
+    "description": "A luxury chauffeur service.",
+    "imageUrl": "https://i.postimg.cc/8c4tNXwv/ece1655a-4b93-4c83-bf9e-48cf9402b991-burh-chauffers.jpg",
+    "imageHint": "luxury service"
+  },
+  {
+    "id": "showcase-emirates-palace",
+    "description": "The Emirates Palace in Abu Dhabi.",
+    "imageUrl": "https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg",
+    "imageHint": "luxury palace"
+  },
+  {
+    "id": "showcase-food",
+    "description": "A high-quality food platter.",
+    "imageUrl": "https://i.postimg.cc/9QRtnf3Z/food1.jpg",
+    "imageHint": "gourmet food"
+  },
+  {
+    "id": "showcase-fiji-resort",
+    "description": "Laucala Island resort in Fiji.",
+    "imageUrl": "https://i.postimg.cc/PrfS2hrQ/Laucala-Island-Fiji.jpg",
+    "imageHint": "island resort"
+  },
+  {
+    "id": "showcase-leela-palace",
+    "description": "The Leela Palace hotel.",
+    "imageUrl": "https://i.postimg.cc/FKkW3Zst/Leela-Place.jpg",
+    "imageHint": "palace hotel"
+  },
+  {
+    "id": "showcase-oberoi-amarvilas",
+    "description": "The Oberoi Amarvilas hotel.",
+    "imageUrl": "https://i.postimg.cc/FzNTtXbm/Oberoi-Amarvilas.jpg",
+    "imageHint": "luxury resort"
+  },
+  {
+    "id": "showcase-product-launch-event",
+    "description": "A product launch event management service.",
+    "imageUrl": "https://i.postimg.cc/zD7jLMSb/product-launch-events-management-service.png",
+    "imageHint": "launch event"
+  },
+  {
+    "id": "showcase-taj-lake",
+    "description": "The Taj Lake Palace hotel.",
+    "imageUrl": "https://i.postimg.cc/C1yvNqzR/Taj-Lake.jpg",
+    "imageHint": "lake palace"
+  },
+  {
+    "id": "showcase-taj-mahal-palace",
+    "description": "The Taj Mahal Palace hotel in Mumbai.",
+    "imageUrl": "https://i.postimg.cc/68CfSMyy/Taj-Mahal-Palace.jpg",
+    "imageHint": "iconic hotel"
+  },
+  {
+    "id": "showcase-oberoi-udaivilas",
+    "description": "The Oberoi Udaivilas Hotel in Udaipur.",
+    "imageUrl": "https://i.postimg.cc/DmmdFvSV/The-Oberoi-Udaivilas-Hotel-Udaipur.jpg",
+    "imageHint": "udaipur hotel"
+  },
+  {
+    "id": "showcase-umaid-bhawan",
+    "description": "The Umaid Bhawan Palace.",
+    "imageUrl": "https://i.postimg.cc/62pV8wzv/Umaid-Bhawan.jpg",
+    "imageHint": "royal palace"
+  },
+  {
+    "id": "showcase-wedding-ritual",
+    "description": "A traditional wedding ritual.",
+    "imageUrl": "https://i.postimg.cc/Nf0xR4pN/wedding-ritual1.jpg",
+    "imageHint": "wedding ritual"
+  },
+  {
+    "id": "showcase-wedding-event",
+    "description": "A grand wedding event.",
+    "imageUrl": "https://i.postimg.cc/FsnVpL6h/Wedding-Event.webp",
+    "imageHint": "wedding event"
+  },
+  {
+    "id": "for-event-planners",
+    "description": "An image of a grand wedding event.",
+    "imageUrl": "https://i.postimg.cc/Gp2zyKfP/event.webp",
+    "imageHint": "grand event"
+  },
+  {
+    "id": "for-hospitality",
+    "description": "An image of the luxurious Taj Lake Palace.",
+    "imageUrl": "https://i.postimg.cc/XvzLcFSZ/hotel-reception.webp",
+    "imageHint": "hotel reception"
+  },
+  {
+    "id": "for-startups",
+    "description": "A dynamic product launch event.",
+    "imageUrl": "https://i.postimg.cc/YS98WRVB/operational-excellence-colleagues-collaborating-at-laptop.webp",
+    "imageHint": "team collaboration"
+  },
+  {
+    "id": "for-sustainability",
+    "description": "A lush, green, sustainable resort in Fiji.",
+    "imageUrl": "https://i.postimg.cc/PrfS2hrQ/Laucala-Island-Fiji.jpg",
+    "imageHint": "sustainability eco-friendly"
+  },
+  {
+    "id": "break-reception",
+    "description": "A clean, modern hotel reception area.",
+    "imageUrl": "https://i.postimg.cc/XvzLcFSZ/hotel-reception.webp",
+    "imageHint": "hotel reception"
+  },
+  {
+    "id": "break-facility",
+    "description": "A modern facility management setting.",
+    "imageUrl": "https://i.postimg.cc/9fnbtT36/facility-management.webp",
+    "imageHint": "facility management"
+  },
+  {
+    "id": "break-chauffeur",
+    "description": "A luxury chauffeur opening a car door.",
+    "imageUrl": "https://i.postimg.cc/8c4tNXwv/ece1655a-4b93-4c83-bf9e-48cf9402b991-burh-chauffers.jpg",
+    "imageHint": "luxury chauffeur"
+  },
+  {
+    "id": "break-event",
+    "description": "A well-organized corporate event or conference.",
+    "imageUrl": "https://i.postimg.cc/Gp2zyKfP/event.webp",
+    "imageHint": "corporate event"
+  },
+  {
+    "id": "electronics1",
+    "description": "An electronics retail showroom.",
+    "imageUrl": "https://i.postimg.cc/TYQ4tm42/electronics1.jpg",
+    "imageHint": "electronics store"
+  },
+  {
+    "id": "mall-1",
+    "description": "The interior of a modern shopping mall.",
+    "imageUrl": "https://i.postimg.cc/NfbzdTz1/mall-1.jpg",
+    "imageHint": "shopping mall"
+  },
+  {
+    "id": "retail-electronic",
+    "description": "A retail display of electronic gadgets.",
+    "imageUrl": "https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg",
+    "imageHint": "retail electronics"
+  },
+  {
+    "id": "chaos-desk",
+    "description": "A messy desk representing operational chaos.",
+    "imageUrl": "https://i.postimg.cc/d10rGypZ/pexels-khwanchai-12885861.jpg",
+    "imageHint": "messy desk"
+  },
+  {
+    "id": "control-desk",
+    "description": "An organized desk representing operational control.",
+    "imageUrl": "https://i.postimg.cc/4ydP4Msr/pexels-olly-3778966.jpg",
+    "imageHint": "organized desk"
+  }
+]
