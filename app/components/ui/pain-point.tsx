@@ -4,14 +4,15 @@ import React from 'react';
 import * as LucideIcons from 'lucide-react';
 
 const IconComponent = ({ name, className }: { name: string, className?: string }) => {
+    // Convert kebab-case to PascalCase
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
     const Icon = (LucideIcons as any)[iconName];
     if (!Icon) {
+        // Return a default icon if the specified one isn't found
         return <LucideIcons.Package className={className} />;
     }
     return <Icon className={className} />;
 };
-
 
 export const PainPoint = ({ icon, title, description }: { icon: string, title: string, description: string }) => (
     <Card>
