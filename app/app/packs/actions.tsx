@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -7,14 +8,103 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/hooks/use-toast';
-import { addContact } from '@/packs/actions';
-import { Input } from '@/components/ui/input';
-import { ValueProposition } from '@/components/ui/value-proposition';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useToast } from '@/hooks/use-toast.tsx';
+import { addContact } from '@/app/packs/actions';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
+
+
+// --- FAST FIX PLACEHOLDERS ---
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+  <input
+    {...props}
+    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+  />
+);
+const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => {
+    // Basic Tabs implementation for FAST mode
+    const [activeTab, setActiveTab] = React.useState(defaultValue);
+
+    const handleTabClick = (value: string) => {
+        setActiveTab(value);
+        onValueChange(value);
+    };
+
+    return (
+        <div className={className}>
+            {React.Children.map(children, (child) => {
+                if (React.isValidElement(child) && child.type === TabsList) {
+                    return React.cloneElement(child, {
+                        // @ts-ignore
+                        activeTab,
+                        onTabClick: handleTabClick
+                    });
+                }
+                return child;
+            })}
+        </div>
+    );
+};
+
+const TabsList = ({ children, className, activeTab, onTabClick }: { children: React.ReactNode, className?:string, activeTab?: string, onTabClick?: (value: string) => void }) => (
+  <div className={`flex gap-1 rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
+      {React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type === TabsTrigger) {
+              return React.cloneElement(child, {
+                  // @ts-ignore
+                  isActive: child.props.value === activeTab,
+                  onClick: () => onTabClick?.(child.props.value)
+              });
+          }
+          return child;
+      })}
+  </div>
+);
+
+const TabsTrigger = ({ children, value, isActive, onClick, className }: { children: React.ReactNode, value: string, isActive?: boolean, onClick?: () => void, className?: string }) => (
+  <button 
+    value={value} 
+    onClick={onClick}
+    className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${isActive ? 'bg-background text-foreground shadow-sm' : ''} ${className}`}
+  >
+    {children}
+  </button>
+);
+
+const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string; competitorPrice: string; valueStatement: string }) => (
+  <div className="rounded-lg bg-secondary/50 p-4 text-center border-2 border-dashed border-primary/20">
+    <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
+    <div className="grid grid-cols-2 gap-4 items-center">
+        <div className="flex flex-col items-center p-2 rounded-md bg-background/50">
+            <p className="text-xs text-muted-foreground">Their Price</p>
+            <p className="text-lg font-bold text-destructive line-through">{competitorPrice}</p>
+        </div>
+        <div className="flex flex-col items-center p-2 rounded-md bg-green-100 dark:bg-green-900/50">
+             <p className="text-xs text-green-800 dark:text-green-200">Our Price</p>
+            <p className="text-lg font-bold text-green-700 dark:text-green-300">{ourPrice}</p>
+        </div>
+    </div>
+     <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
+  </div>
+);
+
+const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: string, onCheckedChange: (checked: boolean) => void }) => {
+  const { onCheckedChange, ...rest } = props;
+  return (
+    <input 
+      type="checkbox" 
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => onCheckedChange(e.target.checked)} 
+      {...rest} 
+      className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" 
+    />
+  );
+};
+
+const Label = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => (
+  <label {...props} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" />
+);
+
+// ===== END FAST UI PLACEHOLDERS =====
+
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -219,7 +309,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                             <div className="flex items-center space-x-2">
-                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(e: any) => setAgreedToTerms(e.target.checked)} />
+                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
                                 <Label htmlFor="terms" className="text-xs text-muted-foreground">
                                     I have read and agree to the{" "}
                                     <Link href="/terms" target="_blank" className="underline hover:text-primary">
@@ -264,4 +354,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+    
+
     

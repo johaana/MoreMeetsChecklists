@@ -7,14 +7,17 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
+import { RazorpayButton } from '@/components/ui/razorpay-button';
 
-// ===== FAST UI PLACEHOLDERS =====
+
+// --- FAST FIX PLACEHOLDERS ---
 const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
     {...props}
-    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
   />
 );
 const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => {
@@ -43,7 +46,7 @@ const Tabs = ({ children, defaultValue, onValueChange, className }: { children: 
 };
 
 const TabsList = ({ children, className, activeTab, onTabClick }: { children: React.ReactNode, className?:string, activeTab?: string, onTabClick?: (value: string) => void }) => (
-  <div className={`flex gap-1 rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
+  <div className={`inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
       {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === TabsTrigger) {
               return React.cloneElement(child, {
@@ -84,30 +87,24 @@ const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPr
   </div>
 );
 
-const RazorpayButton = ({ paymentId }: { paymentId?: string }) => (
-  <Button
-    onClick={() => alert(`This is a placeholder. In production, this would initiate payment for: ${paymentId}`)}
-    className="w-full max-w-xs"
-    size="lg"
-  >
-    Buy Now with Razorpay
-  </Button>
-);
-
-const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: string }) => (
-  <input type="checkbox" {...props} className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
-);
+const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: string, onCheckedChange: (checked: boolean) => void }) => {
+  const { onCheckedChange, ...rest } = props;
+  return (
+    <input 
+      type="checkbox" 
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => onCheckedChange(e.target.checked)} 
+      {...rest} 
+      className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+    />
+  );
+};
 
 const Label = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => (
   <label {...props} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" />
 );
 
-const Badge = ({ children, className, variant }: { children: React.ReactNode, className?:string, variant?: string }) => (
-  <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${variant === 'accent' ? 'border-transparent bg-accent text-accent-foreground' : 'border-transparent bg-primary text-primary-foreground'}`}>
-    {children}
-  </span>
-);
 // ===== END FAST UI PLACEHOLDERS =====
+
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -312,7 +309,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                             <div className="flex items-center space-x-2">
-                                <Checkbox id="terms" checked={agreedToTerms} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAgreedToTerms(e.target.checked)} />
+                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
                                 <Label htmlFor="terms" className="text-xs text-muted-foreground">
                                     I have read and agree to the{" "}
                                     <Link href="/terms" target="_blank" className="underline hover:text-primary">
@@ -358,5 +355,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 }
 
+    
 
-      
