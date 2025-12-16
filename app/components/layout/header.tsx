@@ -14,12 +14,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Separator } from "@/components/ui/separator";
 import * as LucideIcons from "lucide-react"
 
-const IconComponent = ({ name }: { name: string }) => {
+const IconComponent = ({ name, className }: { name: string, className?: string }) => {
     const Icon = (LucideIcons as any)[name];
     if (!Icon) {
-        return <LucideIcons.Package className="w-4 h-4" />;
+        return <LucideIcons.Package className={className} />;
     }
-    return <Icon className="w-4 h-4" />;
+    return <Icon className={className} />;
 };
 
 
@@ -51,7 +51,7 @@ const SolutionsList = () => (
                         <li key={pack.id}>
                             <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
                                 <span className="shrink-0 w-5 h-5 flex items-center justify-center">
-                                    <IconComponent name={pack.icon} />
+                                    <IconComponent name={pack.icon} className="w-4 h-4" />
                                 </span>
                                 <span className="flex-1 leading-snug">{pack.title}</span>
                             </Link>
@@ -197,7 +197,7 @@ export function SiteHeader() {
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                                <IconComponent name={pack.icon} />
+                                                                <IconComponent name={pack.icon} className="w-4 h-4 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
                                                         ))}
@@ -235,3 +235,4 @@ export function SiteHeader() {
         </header>
     );
 }
+

@@ -14,12 +14,12 @@ import { handleDownload } from '@/lib/download';
 import { SiteHeader } from '@/components/layout/header';
 import * as LucideIcons from 'lucide-react';
 
-const IconComponent = ({ name }: { name: string }) => {
+const IconComponent = ({ name, className }: { name: string, className?:string }) => {
     const Icon = (LucideIcons as any)[name];
     if (!Icon) {
-        return <LucideIcons.Package className="w-8 h-8 text-primary" />;
+        return <LucideIcons.Package className={className} />;
     }
-    return <Icon className="w-8 h-8 text-primary" />;
+    return <Icon className={className} />;
 };
 
 
@@ -102,7 +102,7 @@ export default function MasterAccessClientPage() {
                                 {premiumPacks.map((pack) => (
                                     <Card key={pack.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                            <IconComponent name={pack.icon} />
+                                            <IconComponent name={pack.icon} className="w-8 h-8 text-primary" />
                                             <div>
                                                 <h3 className="font-semibold">{pack.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{pack.category}</p>
@@ -123,7 +123,7 @@ export default function MasterAccessClientPage() {
                                 {individualChecklists.map((checklist) => (
                                     <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                            <IconComponent name={checklist.icon} />
+                                            <IconComponent name={checklist.icon} className="w-8 h-8 text-primary" />
                                             <div>
                                                 <h3 className="font-semibold">{checklist.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>

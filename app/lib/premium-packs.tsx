@@ -17,9 +17,6 @@ export type Checklist = {
         consequence: string;
         proof: string;
         location: string;
-        frequency?: string;
-        department?: string;
-        role?: string;
     }[];
 };
 
@@ -65,9 +62,7 @@ export const premiumPacks: PremiumPack[] = [
         id: 'animal_shelter_pack',
         title: "Animal Shelter Operations Pack",
         priceINR: 0,
-        priceUSD: 0,
         paymentId: '',
-        lemonSqueezyUrl: '',
         listId: 7,
         category: "Social Cause",
         description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
@@ -108,25 +103,6 @@ export const premiumPacks: PremiumPack[] = [
              { text: "Control site access and third-party risk with vendor and work permit SOPs.", icon: "HardHat" },
              { text: "Prevent costly downtime with a proactive preventive maintenance schedule for all critical assets.", icon: "Wrench" }
         ],
-        previewScenario: {
-            title: "Responding to a Guest Medical Emergency",
-            description: "A guest reports a medical emergency in their room. This scenario shows how checklists for Front Office, Security, and Management work together to ensure a swift, professional, and safe response.",
-            tasks: [
-                { id: 'FO-DO-010', description: "Immediately dispatch a security officer and a Duty Manager to the guest's room.", sourceChecklist: "Reception Daily Operations", priority: 'High' },
-                { id: 'SEC-CSM-001', description: "Alert local emergency medical services with the exact room number and patient condition.", sourceChecklist: "CCTV & Security Monitoring", priority: 'High' },
-                { id: 'BRAND-01', description: "Have a staff member meet paramedics at the entrance and escort them directly to the room.", sourceChecklist: "Brand Standards & Guest Experience", priority: 'High' },
-                { id: 'HR-PERF-008', description: "Log the entire incident with times and actions taken for legal and insurance purposes.", sourceChecklist: "Managerial Performance Review", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Global Hospitality Standards",
-            standards: [
-                { name: "NFPA 101", description: "Life Safety Code for fire and building safety." },
-                { name: "ISO 45001", description: "Occupational Health and Safety." },
-                { name: "ISO 22000", description: "Food Safety Management (for F&B)." },
-                { name: "OSHA", description: "General workplace safety standards." }
-            ]
-        },
         checklists: []
     },
     {
@@ -151,28 +127,8 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Build a professional team through verifiable staff hygiene and training protocols.", icon: "UserCheck" },
             { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: "PackageCheck" }
         ],
-        previewScenario: {
-            title: "Handling a Food Allergy Alert",
-            description: "This scenario shows how multiple checklists create a safety net to handle a guest's severe food allergy, preventing a life-threatening incident and protecting your restaurant's reputation.",
-            tasks: [
-                { id: 'FOH-O-010', description: "Server takes the order and flags the allergy prominently in the POS system.", sourceChecklist: "Front of House Opening Checklist", priority: 'High' },
-                { id: 'CK-KO-010', description: "The POS alert prompts the Head Chef to review the ticket and personally supervise the dish's preparation.", sourceChecklist: "Kitchen Opening Checklist", priority: 'High' },
-                { id: 'CK-HLC-005', description: "Chef uses designated sanitized utensils and a separate prep area to avoid cross-contamination.", sourceChecklist: "Daily HACCP & Line Check", priority: 'High' },
-                { id: 'REST-MEETING-05', description: "The Manager confirms with the chef and server that the allergy protocol was followed before the dish leaves the kitchen.", sourceChecklist: "Weekly Sales & Revenue Meeting", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Food Safety Standards",
-            standards: [
-                { name: "FSSAI", description: "Compliance with Food Safety and Standards Authority of India regulations." },
-                { name: "HACCP", description: "Follows Hazard Analysis and Critical Control Points principles." },
-                { name: "ISO 22000", description: "Adheres to international standards for food safety management." },
-                { name: "Codex Alimentarius", description: "International food standards from the WHO/FAO." }
-            ]
-        },
         checklists: []
     },
-    // --- Retail ---
     {
         id: 'fashion_and_apparel_retail',
         title: "Fashion & Apparel Retail Operations Pack",
@@ -195,24 +151,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Protect your assets through rigorous store safety and loss prevention audits.", icon: "Shield" },
             { text: "Ensure financial accuracy with daily cash handling and POS reconciliation procedures.", icon: "Banknote" }
         ],
-        previewScenario: {
-            title: "Preventing End-of-Season Stock Write-Offs",
-            description: "A fashion store is left with a massive amount of unsold winter wear at the end of the season, forcing a huge write-off. This scenario shows how checklists create a proactive process to manage seasonal inventory and maximize profit.",
-            tasks: [
-                { id: 'SIM-02', description: "The 'Seasonal Inventory Management' checklist schedules markdowns to start 6 weeks before the season ends, clearing stock progressively.", sourceChecklist: "Seasonal Inventory Management", priority: 'High' },
-                { id: 'VM-AUDIT-05', description: "The 'Visual Merchandising' SOP ensures that discounted items are moved to a high-traffic 'Sale' section to increase visibility and sell-through.", sourceChecklist: "VM & Display Audit", priority: 'High' },
-                { id: 'INV-RECON-05', description: "'Inventory Reconciliation' provides real-time data on what's selling, allowing for targeted promotions on slow-moving items before the season ends.", sourceChecklist: "Inventory Reconciliation SOP", priority: 'Medium' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Retail Best Practices",
-            standards: [
-                { name: "ISO 9001", description: "For quality management and customer satisfaction." },
-                { name: "Shops & Establishment Act", description: "Ensures compliance with local labor and operational laws." },
-                { name: "WRAP", description: "A leading standard for ethical manufacturing in the apparel industry." },
-                { name: "OSHA Retail Safety", description: "Guidelines for workplace safety in retail environments." }
-            ]
-        },
         checklists: []
     },
     {
@@ -238,23 +176,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure regulatory compliance with robust customer verification (KYC) processes.", icon: "UserCheck" },
             { text: "Build customer trust with a secure and transparent repair and service intake process.", icon: "Wrench" }
         ],
-        previewScenario: {
-            title: "Foiling a High-Value Swap Theft",
-            description: "A criminal posing as a wealthy customer attempts to swap a genuine luxury watch with a high-quality counterfeit during a viewing. This scenario shows how integrated checklists prevent this common high-value theft.",
-            tasks: [
-                { id: 'JLR-SALE-01', description: "The 'High-Value Transaction' SOP requires showing only one item at a time, preventing the sleight-of-hand needed for a swap.", sourceChecklist: "High-Value Transaction SOP", priority: 'High' },
-                { id: 'JLR-INV-05', description: "The 'Serialized Item Management' process mandates that the item's serial number is scanned and verified against the box and certificate before and after the viewing, making a swap impossible to hide.", sourceChecklist: "Serialized Item & Watch Management", priority: 'High' },
-                { id: 'JLR-SEC-04', description: "The 'Opening & Closing Security' SOP ensures high-resolution CCTV covers the viewing area, providing clear evidence of the attempt.", sourceChecklist: "Opening & Closing Security Protocol", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with High-Value Retail Security Standards",
-            standards: [
-                { name: "Jewelers' Security Alliance", description: "Best practices for crime prevention in the jewelry industry." },
-                { name: "PCI DSS", description: "Security standards for handling payment card information." },
-                { name: "ISO 28000", description: "For supply chain security management." }
-            ]
-        },
         checklists: []
     },
     {
@@ -277,24 +198,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Enhance customer trust through a standardized and professional demo and returns process.", icon: "UserCheck" },
             { text: "Optimize your back-of-house with safe and efficient stockroom organization checklists.", icon: "Package" }
         ],
-        previewScenario: {
-            title: "Preventing a Showroom Fire",
-            description: "An electrical fire breaks out overnight in a showroom, caused by a faulty demo laptop. This scenario demonstrates how checklists for electrical safety and closing procedures can prevent such a catastrophe.",
-            tasks: [
-                { id: 'DEMO-08', description: "The 'Demo Unit' checklist includes a daily check for overheating charging stations, which would have identified the faulty laptop charger before it could cause a fire.", sourceChecklist: "Demo Unit Pre-Opening Checklist", priority: 'High' },
-                { id: 'ELEC-01', description: "The 'Electrical Safety' SOP mandates periodic Portable Appliance Testing (PAT), which would have formally identified the faulty device and removed it from service.", sourceChecklist: "Electrical Safety & PAT Testing", priority: 'High' },
-                { id: 'POS-RECON-03', description: "The 'POS Reconciliation' checklist, which includes verifying that CCTV is operational, provides crucial evidence for any incident investigation.", sourceChecklist: "POS & Payment Reconciliation", priority: 'Medium' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Electronics & Safety Standards",
-            standards: [
-                { name: "Electrical Safety Standards", description: "Compliance with national and local electrical codes." },
-                { name: "Fire Safety Act", description: "Adherence to fire prevention and safety regulations." },
-                { name: "ISO 45001", description: "International standard for occupational health and safety." },
-                { name: "OSHA", description: "Guidelines for electrical safety in the workplace." }
-            ]
-        },
         checklists: []
     },
     {
@@ -319,27 +222,8 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: "PackageCheck" },
             { text: "Ensure compliance and fair trade with weighing scale calibration and Legal Metrology checks.", icon: "Scale" }
         ],
-        previewScenario: {
-            title: "Averting a Food Poisoning Outbreak",
-            description: "A batch of expired yogurt remains on the shelf, leading to a customer complaint of food poisoning. This scenario shows how checklists work together to prevent a brand-damaging outbreak.",
-            tasks: [
-                { id: 'SC-FIFO-01', description: "The 'FIFO & Expiry Sweep' SOP mandates a daily check of high-risk items like dairy, ensuring the yogurt would have been removed before it could be sold.", sourceChecklist: "FIFO & Expiry Sweep SOP", priority: 'High' },
-                { id: 'SC-COLD-01', description: "The 'Cold Chain Management' log would provide a verifiable record of the chiller's temperature, proving the product was stored correctly and the issue was expiry, not spoilage.", sourceChecklist: "Cold Chain & Perishables Management", priority: 'High' },
-                { id: 'SC-POS-02', description: "If a complaint is made, the 'POS Security' checklist, which includes CCTV monitoring at billing, can help trace the transaction and identify the exact product batch involved.", sourceChecklist: "POS Security & Reconciliation", priority: 'Medium' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Food & Retail Standards",
-            standards: [
-                { name: "FSSAI", description: "Compliance with Indian food safety regulations." },
-                { name: "Legal Metrology", description: "Ensures accurate weights and measures for packaged goods." },
-                { name: "ISO 22000 / HACCP", description: "International standard for food safety management." },
-                { name: "OSHA Retail Safety", description: "Guidelines for workplace safety in retail environments." }
-            ]
-        },
         checklists: []
     },
-    // --- Corporate & Tech ---
     {
         id: 'facility_management_blueprint',
         title: "Facility Management Blueprint (Enterprise Edition)",
@@ -362,25 +246,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Optimize costs and sustainability through a utilities, energy, and water management system.", icon: "Zap" },
             { text: "Guarantee business continuity with critical systems (UPS, HVAC) and redundancy testing.", icon: "Cog" }
         ],
-        previewScenario: {
-            title: "Averting a Data Center Catastrophe",
-            description: "A major IT campus in Hyderabad faced a multi-crore loss when an HVAC unit failed, threatening to overheat a critical data center. This scenario shows how our checklists prevent this.",
-            tasks: [
-                { id: 'ADMIN-MEP-01', description: "A weekly 'Preventive Maintenance' check identifies a potential fault in a primary HVAC chiller unit during a load test.", sourceChecklist: "MEP & Preventive Maintenance", priority: 'High' },
-                { id: 'TSC-01', description: "As the primary unit is taken offline for repair, the 'Redundancy System Testing' SOP ensures a seamless, automatic switch to the backup chiller with no temperature fluctuation.", sourceChecklist: "Critical Systems & Redundancy Testing", priority: 'High' },
-                { id: 'IOT-05', description: "Real-time 'IoT Monitoring' alerts confirm that temperatures in the data center remain stable throughout the switchover.", sourceChecklist: "Smart Building & IoT Management", priority: 'High' },
-                { id: 'INC-REP-01', description: "The entire event—from fault detection to resolution—is logged in the 'Facility Downtime Log', providing a clear audit trail for compliance and future planning.", sourceChecklist: "Incident Reporting & Management", priority: 'Medium' }
-            ]
-        },
-        globalStandards: {
-            title: "Built on Global & Indian Enterprise Standards",
-            standards: [
-                { name: "ISO 41001", description: "Global standard for strategic facility management." },
-                { name: "NBC / Fire Safety Act", description: "Compliance with National Building Code and fire safety laws." },
-                { name: "ISO 45001 / BOCW", description: "For occupational health, safety, and construction worker welfare." },
-                { name: "Contract Labour Act", description: "Compliance with Indian labor laws for vendors." }
-            ]
-        },
         checklists: []
     },
     {
@@ -403,24 +268,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Foster a safe and ethical workplace with a formal whistleblowing and investigation process.", icon: "Siren" },
             { text: "Improve corporate governance with a professional system for board meeting preparation and minute taking.", icon: "BriefcaseBusiness" }
         ],
-        previewScenario: {
-            title: "Surviving a Surprise Regulatory Audit",
-            description: "A regulatory body arrives for a surprise audit, requesting all compliance documents for the past year. Instead of panic, this scenario shows how checklists ensure you are always audit-ready.",
-            tasks: [
-                { id: 'CAL-08', description: "The 'Statutory Calendar' SOP ensures a central repository of all filed returns and acknowledgements is maintained and easily accessible.", sourceChecklist: "Statutory Calendar SOP", priority: 'High' },
-                { id: 'CON-03', description: "The 'Contract Intake & Approval' checklist means all key contracts are stored in a central register, ready for inspection.", sourceChecklist: "Contract Intake & Approval", priority: 'High' },
-                { id: 'POL-03', description: "The 'Policy Review & Acknowledgement' log provides digital proof that all employees have read and acknowledged critical policies, a key audit requirement.", sourceChecklist: "Policy Review & Acknowledgement", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Corporate Governance Principles",
-            standards: [
-                { name: "Companies Act", description: "For board meetings, statutory filings, and governance." },
-                { name: "Indian Labour Laws", description: "For HR processes like onboarding and disciplinary actions." },
-                { name: "ISO 37301", description: "International standard for compliance management systems." },
-                { name: "COSO Framework", description: "The global standard for designing and implementing internal controls." }
-            ]
-        },
         checklists: []
     },
     {
@@ -443,27 +290,8 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Prevent costly data leaks by continuously monitoring and correcting your cloud security posture (CSPM).", icon: "Cloud" },
             { text: "De-risk your supply chain with a formal security assessment process for all third-party vendors.", icon: "Handshake" }
         ],
-        previewScenario: {
-            title: "Surviving a Ransomware Attack",
-            description: "A ransomware attack encrypts critical company servers. Instead of paying the ransom, this scenario shows how a multi-layered checklist approach enables a swift recovery.",
-            tasks: [
-                { id: 'IR-02', description: "The 'Incident Response' checklist immediately triggers the isolation of affected servers, preventing the ransomware from spreading across the network.", sourceChecklist: "Incident Response Checklist", priority: 'High' },
-                { id: 'BCDR-03', description: "The 'BC/DR & Backup' SOP, which mandates quarterly test restores, ensures the company has a recent, clean backup ready to be deployed.", sourceChecklist: "BC/DR & Backup SOP", priority: 'High' },
-                { id: 'PMW-04', description: "After recovery, the 'Patch Management' workflow ensures the vulnerability that allowed the attack is immediately patched, preventing re-infection.", sourceChecklist: "Patch Management Workflow", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Global Cybersecurity Frameworks",
-            standards: [
-                { name: "ISO 27001", description: "The international standard for information security management." },
-                { name: "NIST CSF", description: "The U.S. National Institute of Standards and Technology Cybersecurity Framework." },
-                { name: "GDPR / DPDP Act 2023", description: "For data privacy compliance in Europe and India." },
-                { name: "SOC 2", description: "For ensuring security and availability for service providers." }
-            ]
-        },
         checklists: []
     },
-    // --- Healthcare ---
     {
         id: 'healthcare_and_hospital_operations',
         title: "Healthcare & Hospital Operations Pack",
@@ -487,27 +315,8 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: "Recycle" },
             { text: "Prepare for any crisis with emergency code management and mock drill scenarios.", icon: "Ambulance" }
         ],
-        previewScenario: {
-            title: "Preventing a 'Never Event': Wrong-Site Surgery",
-            description: "A surgeon is about to operate on the wrong knee due to a mix-up in the pre-op area. This scenario shows how our checklists prevent this.",
-            tasks: [
-                { id: 'H-SSC-01', description: "The 'Surgical Safety Checklist' mandates a final 'Time Out' where the entire team must verbally confirm the patient, site, and procedure. The nurse notices the discrepancy with the marked site and halts the procedure.", sourceChecklist: "Surgical Safety Checklist (WHO Aligned)", priority: 'High' },
-                { id: 'H-PID-02', description: "The 'Patient Identification Protocol' would have flagged the error earlier, as it requires matching the patient's ID band with the surgical consent form before entering the OT.", sourceChecklist: "Patient Identification Protocol", priority: 'High' },
-                { id: 'H-MED-01', description: "The 'High-Alert Medication' SOP, which requires dual checks, instills a culture of verification that makes staff more likely to question and catch errors in other areas.", sourceChecklist: "High-Alert Medication SOP", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Leading Healthcare Accreditations",
-            standards: [
-                { name: "NABH", description: "National Accreditation Board for Hospitals & Healthcare Providers (India)." },
-                { name: "JCI", description: "Joint Commission International standards for patient safety." },
-                { name: "WHO Guidelines", description: "Protocols from the World Health Organization." },
-                { name: "ISO 15189", description: "For quality and competence in medical laboratories." }
-            ]
-        },
         checklists: []
     },
-    // --- Education ---
     {
         id: 'school_operations_pack',
         title: "School Operations Pack",
@@ -529,24 +338,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure a smooth and fair admissions process with a standardized enrolment checklist.", icon: "UserPlus" },
             { text: "Safeguard academic integrity with a secure examination and report card generation process.", icon: "GraduationCap" },
         ],
-        previewScenario: {
-            title: "Preventing a Student Abduction Scare",
-            description: "A non-custodial parent attempts to pick up a child from school without authorization. This scenario shows how checklists prevent a potential kidnapping.",
-            tasks: [
-                { id: 'VIS-MG-03', description: "The 'Visitor Management' checklist requires security to verify the visitor's ID against a pre-approved pickup list for each child. The unauthorized parent is denied entry.", sourceChecklist: "Visitor Management & Security", priority: 'High' },
-                { id: 'TRAN-05', description: "The 'Student Transport' SOP mandates that the class teacher only hands over the child to a registered guardian, providing a second layer of verification.", sourceChecklist: "Student Transport & Safety", priority: 'High' },
-                { id: 'INC-HDLG-01', description: "The 'Incident Handling' protocol provides a clear protocol for the principal to follow, including immediately notifying the custodial parent and documenting the incident.", sourceChecklist: "Incident Handling Protocol", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with CBSE, ICSE, and International School Safety Norms",
-            standards: [
-                { name: "CBSE Guidelines", description: "Compliance with safety mandates from the Central Board of Secondary Education." },
-                { name: "POCSO Act", description: "Protocols for the Protection of Children from Sexual Offences." },
-                { name: "NDMA School Safety", description: "Guidelines from the National Disaster Management Authority." },
-                { name: "Fire Safety Act", description: "Adherence to local fire safety and evacuation norms." }
-            ]
-        },
         checklists: []
     },
     {
@@ -569,27 +360,8 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Mitigate foodborne illness risks in large messes with HACCP-aligned kitchen hygiene SOPs.", icon: "Utensils" },
             { text: "Protect against cyber threats with IT policies for network access, data privacy, and acceptable use.", icon: "Shield" }
         ],
-        previewScenario: {
-            title: "Handling a Hostel Medical Emergency",
-            description: "A student has a medical emergency in their hostel room late at night. This scenario shows how checklists ensure a swift and coordinated response.",
-            tasks: [
-                { id: 'HOSTEL-SEC-04', description: "The 'Hostel Security' SOP provides the warden with a clear protocol to assess the situation and immediately call the campus ambulance.", sourceChecklist: "Hostel Security & Entry Protocol", priority: 'High' },
-                { id: 'TRANSPORT-EMER-01', description: "The 'Emergency Transport' checklist ensures the on-campus ambulance is always ready, with a driver on call and equipment checked daily.", sourceChecklist: "Emergency Transport SOP", priority: 'High' },
-                { id: 'INC-HDLG-UNIV-02', description: "The 'Incident Handling' protocol mandates that the student's emergency contact is notified immediately and the entire incident is logged for official records.", sourceChecklist: "Campus Incident Handling", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with UGC, AICTE, and NAAC Safety & Compliance Norms",
-            standards: [
-                { name: "UGC Guidelines", description: "Compliance with University Grants Commission safety and anti-ragging mandates." },
-                { name: "AICTE Norms", description: "Adherence to standards for technical education infrastructure and safety." },
-                { name: "NAAC Criteria", description: "Meeting criteria for governance, leadership, and student support for accreditation." },
-                { name: "ISO 21001", description: "International standard for educational organizations management systems." }
-            ]
-        },
         checklists: []
     },
-    // --- Entertainment & Events ---
     {
         id: 'film_production_pack',
         title: "Film & OTT Production Pack",
@@ -610,24 +382,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Keep your budget on track with checklists for cost reporting, vendor payments, and cash flow management.", icon: "Banknote" },
             { text: "Create a seamless post-production workflow with SOPs for dailies, editing, VFX handovers, and final delivery.", icon: "Scissors" }
         ],
-        previewScenario: {
-            title: "Avoiding a Location Shutdown",
-            description: "A film shoot in a public space is shut down by the police because the production team failed to get the right permits, costing a full day of shooting and thousands of dollars. This scenario shows how checklists prevent this.",
-            tasks: [
-                { id: 'LOC-01', description: "The 'Location Scouting & Permitting' checklist requires the location manager to obtain and file all necessary permits (police, municipal, traffic) before the shoot is scheduled.", sourceChecklist: "Location Scouting & Permitting", priority: 'High' },
-                { id: 'PRE-PROD-05', description: "The 'Pre-Production Planning' SOP includes a mandatory gate where all key permits must be in place before the final shooting schedule is locked and released.", sourceChecklist: "Pre-Production Planning", priority: 'High' },
-                { id: 'CALL-03', description: "The daily 'Call Sheet Generation' process includes a check to ensure a copy of the day's location permit is attached for the on-set production manager.", sourceChecklist: "Call Sheet & Scheduling SOP", priority: 'Medium' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Industry Best Practices",
-            standards: [
-                { name: "Producers Guild of America (PGA)", description: "References best practices for production safety and management." },
-                { name: "Motion Picture Association (MPA)", description: "Guidelines for content, safety, and intellectual property." },
-                { name: "Indian Film & TV Producers Council (IFTPC)", description: "Compliance with local production guidelines." },
-                { name: "Safety for Stunts & Action (Intl.)", description: "Follows international standards for high-risk scene coordination." }
-            ]
-        },
         checklists: []
     },
     {
@@ -650,24 +404,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Stay compliant with a structured process for content rating, subtitling, and legal clearances.", icon: "FileCheck" },
             { text: "Improve user engagement with a data-driven process for personalization, recommendations, and analytics.", icon: "BrainCircuit" }
         ],
-        previewScenario: {
-            title: "Surviving a Live Sports Streaming Peak",
-            description: "A major cricket match is expected to draw record concurrent viewers. This scenario shows how checklists prevent a platform crash.",
-            tasks: [
-                { id: 'LIVE-01', description: "The 'Live Streaming Readiness' SOP mandates a full load test simulating 150% of the expected traffic, identifying and fixing bottlenecks a week before the event.", sourceChecklist: "Live Streaming Readiness", priority: 'High' },
-                { id: 'INFRA-04', description: "The 'Infrastructure & CDN' checklist ensures that auto-scaling policies are in place and the CDN is correctly configured to handle the massive load.", sourceChecklist: "Infrastructure & CDN Management", priority: 'High' },
-                { id: 'MONITOR-01', description: "The 'Platform Monitoring' checklist establishes a 'war room' protocol for the event, with key engineers monitoring real-time dashboards for any performance degradation.", sourceChecklist: "Platform Monitoring & Alerting", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Digital Broadcasting & Tech Standards",
-            standards: [
-                { name: "DVB/ATSC Standards", description: "References principles from digital video broadcasting standards." },
-                { name: "ISO 27001", description: "For information security management and data protection." },
-                { name: "SRE Principles (Google)", description: "Based on Site Reliability Engineering best practices for platform stability." },
-                { name: "NIST Cybersecurity Framework", description: "For managing cybersecurity risks." }
-            ]
-        },
         checklists: []
     },
     {
@@ -690,24 +426,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Protect members with robust hygiene protocols for pools, changing rooms, and F&B areas.", icon: "Sparkles" },
             { text: "Manage your team effectively with checklists for staff training, scheduling, and performance.", icon: "ClipboardList" }
         ],
-        previewScenario: {
-            title: "Handling a Medical Emergency During a Match",
-            description: "A spectator collapses in the stands during a crowded match. This scenario shows how checklists ensure a rapid, coordinated response.",
-            tasks: [
-                { id: 'CROWD-04', description: "The 'Crowd Management' SOP ensures stewards are trained to spot medical issues and use radios to immediately alert the central control room.", sourceChecklist: "Crowd Management & Safety", priority: 'High' },
-                { id: 'MED-EMER-01', description: "The 'Medical Emergency Plan' is activated, dispatching the on-site medical team to the exact location within minutes.", sourceChecklist: "Medical Emergency Response Plan", priority: 'High' },
-                { id: 'SEC-EMER-03', description: "The 'Security & Emergency' checklist ensures that security personnel clear a path for paramedics to access the patient and transport them to the ambulance, all without causing a panic.", sourceChecklist: "Security & Emergency Procedures", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with International Sports Safety Standards",
-            standards: [
-                { name: "FIFA Stadium Safety Regulations", description: "Guidelines for football stadium safety and security." },
-                { name: "ICC Venue Standards", description: "Standards for cricket grounds and facilities." },
-                { name: "Sports Ground Safety Authority (UK)", description: "Best practices for spectator safety at sports grounds." },
-                { name: "OSHA", description: "General guidelines for worker and public safety." }
-            ]
-        },
         checklists: []
     },
     {
@@ -730,24 +448,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Enhance the guest experience with protocols for auditorium cleaning, seat maintenance, and restroom hygiene.", icon: "Sparkles" },
             { text: "Manage your facility effectively with SOPs for housekeeping, security, and preventive maintenance.", icon: "Building" }
         ],
-        previewScenario: {
-            title: "Preventing a Fire Tragedy",
-            description: "Inspired by the Uphaar Cinema fire, this scenario shows how checklists prevent the chain of failures that lead to such a disaster.",
-            tasks: [
-                { id: 'FIRE-CIN-01', description: "The 'Fire Safety' checklist mandates a daily physical check to ensure all emergency exits are unlocked and completely unobstructed, preventing the main cause of the Uphaar tragedy.", sourceChecklist: "Fire Safety & Evacuation", priority: 'High' },
-                { id: 'PROJ-SOUND-04', description: "The 'Projection & Sound' checklist includes testing the Public Address (PA) system before the first show, ensuring emergency announcements can be made.", sourceChecklist: "Projection & Sound QC", priority: 'High' },
-                { id: 'STAFF-TRAIN-02', description: "The 'Staff Training' SOP requires quarterly evacuation drills, ensuring staff know how to guide patrons to safety instead of panicking.", sourceChecklist: "Staff Training & Grooming", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Cinema Safety & Operational Standards",
-            standards: [
-                { name: "National Cinema Regulations", description: "Compliance with local laws for public entertainment venues." },
-                { name: "Fire Safety Act", description: "Adherence to fire prevention and life safety codes." },
-                { name: "FSSAI (for F&B)", description: "Food safety standards for concession stands." },
-                { name: "THX/Dolby Standards", description: "References principles for audio-visual quality." }
-            ]
-        },
         checklists: []
     },
     {
@@ -770,24 +470,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Maintain a safe and beautiful park with checklists for park-wide landscaping, housekeeping, and infrastructure safety.", icon: "Recycle" },
             { text: "Guarantee food safety across all park outlets with FSSAI/HACCP-aligned hygiene and food handling checklists.", icon: "Utensils" }
         ],
-        previewScenario: {
-            title: "Responding to a Ride Stoppage",
-            description: "A roller coaster stops mid-ride due to a minor sensor malfunction, leaving guests stranded 50 feet in the air. This scenario shows how checklists ensure a safe and professional response.",
-            tasks: [
-                { id: 'RIDE-SAFETY-07', description: "The 'Ride Safety' SOP immediately triggers the pre-defined ride evacuation protocol. The ride operator makes a calm announcement to the stranded guests.", sourceChecklist: "Ride Safety & Maintenance", priority: 'High' },
-                { id: 'EMER-RESP-03', description: "The 'Emergency Response' team is dispatched. Since this is a trained-for scenario, they arrive with the necessary harnesses and equipment for a safe evacuation.", sourceChecklist: "Emergency Response & Evacuation", priority: 'High' },
-                { id: 'GUEST-SVC-05', description: "The 'Guest Services' checklist provides a clear protocol for handling the evacuated guests, including providing water, a place to rest, and complimentary park passes to turn a negative experience into a positive one.", sourceChecklist: "Guest Services & Complaint Handling", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Global Amusement Park Safety Standards",
-            standards: [
-                { name: "ASTM F24", description: "International standards for amusement rides and devices." },
-                { name: "IAAPA Standards", description: "Best practices from the International Association of Amusement Parks and Attractions." },
-                { name: "ISO 17842", description: "Safety requirements for amusement rides and devices." },
-                { name: "Local Safety Regulations", description: "Compliance with all national and local laws for public amusement venues." }
-            ]
-        },
         checklists: []
     },
     {
@@ -810,24 +492,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Protect your inventory with robust protocols for security, access control, and cycle counting.", icon: "Shield" },
             { text: "Build a resilient supply chain with SOPs for vendor management and contingency planning.", icon: "LinkIcon" }
         ],
-        previewScenario: {
-            title: "Preventing a Costly Mis-Shipment",
-            description: "A large B2B order is incorrectly picked and shipped, leading to a major customer complaint and expensive reverse logistics. This scenario shows how checklists prevent this.",
-            tasks: [
-                { id: 'PICK-PACK-01', description: "The 'Picking & Packing' SOP requires a two-stage verification: first the picker scans the item and location, then a separate packer re-scans the item before sealing the box.", sourceChecklist: "Picking, Packing & Dispatch", priority: 'High' },
-                { id: 'INV-MGMT-03', description: "The 'Inventory Management' checklist ensures that all bin locations are clearly labeled, reducing the chance of a picker going to the wrong location in the first place.", sourceChecklist: "Inventory & Stock Management", priority: 'High' },
-                { id: 'DISPATCH-02', description: "The 'Dispatch & Logistics' SOP includes a final weight check against the expected weight in the system, which would flag an order with a missing or extra item before it leaves the warehouse.", sourceChecklist: "Dispatch & Logistics Coordination", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Global Logistics & Safety Standards",
-            standards: [
-                { name: "ISO 9001", description: "For quality management systems and process control." },
-                { name: "ISO 45001", description: "International standard for occupational health and safety." },
-                { name: "C-TPAT", description: "Guidelines for supply chain security from the U.S. Customs and Border Protection." },
-                { name: "OSHA", description: "Standards for warehouse and MHE safety." }
-            ]
-        },
         checklists: []
     },
     {
@@ -853,24 +517,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: "Siren" },
             { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: "Leaf" }
         ],
-        previewScenario: {
-            title: "Preventing a Fatal Maintenance Accident",
-            description: "A maintenance worker is severely injured when a machine they are working on is accidentally started by another employee. This scenario shows how checklists prevent this.",
-            tasks: [
-                { id: 'LOTO-01', description: "The 'LOTO' procedure mandates that the worker must apply their personal lock and tag to the machine's power source before starting work, making an accidental startup impossible.", sourceChecklist: "Lock-Out Tag-Out (LOTO) SOP", priority: 'High' },
-                { id: 'PTW-01', description: "The 'Permit-to-Work' system requires a signed permit from a supervisor that verifies the machine is de-energized and isolated before any maintenance can begin.", sourceChecklist: "Permit-To-Work (PTW) System", priority: 'High' },
-                { id: 'SHIFT-H-01', description: "The 'Shift Handover' checklist includes a section to communicate all ongoing maintenance activities, ensuring the incoming shift is aware of the work and the LOTO in place.", sourceChecklist: "Shift Handover Protocol", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Key Industrial & Safety Standards",
-            standards: [
-                { name: "OSHA 29 CFR 1910", description: "The US standard for occupational safety, including LOTO and PTW." },
-                { name: "Factories Act, 1948", description: "Compliance with Indian laws for worker health and safety in factories." },
-                { name: "ISO 45001", description: "The international standard for occupational health and safety management." },
-                { name: "ISO 14001", description: "For environmental management and compliance." }
-            ]
-        },
         checklists: []
     },
     {
@@ -893,24 +539,55 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Improve patient counseling with checklists for providing clear instructions on medication usage and side effects.", icon: "UserCheck" },
             { text: "Run a clean and professional pharmacy with daily checklists for hygiene, organization, and stock arrangement.", icon: "Sparkles" }
         ],
-        previewScenario: {
-            title: "Preventing a Look-Alike, Sound-Alike (LASA) Drug Error",
-            description: "A pharmacist nearly dispenses a sound-alike drug with a similar name but a completely different use, a common and dangerous error. This scenario shows how checklists create a safety net.",
-            tasks: [
-                { id: 'DISP-ERR-02', description: "The 'Dispensing Error Prevention' SOP requires a mandatory barcode scan of the drug container, which would immediately flag the mismatch with the prescription in the system.", sourceChecklist: "Dispensing Error Prevention", priority: 'High' },
-                { id: 'LASA-01', description: "The 'LASA Drugs Management' checklist mandates that look-alike, sound-alike drugs are stored in separate, brightly-labeled bins, making a picking error less likely.", sourceChecklist: "LASA Drugs Management", priority: 'High' },
-                { id: 'PAT-COUNSEL-01', description: "The 'Patient Counseling' checklist requires the pharmacist to verbally confirm the name of the drug and its purpose with the patient, providing a final chance to catch the error.", sourceChecklist: "Patient Counseling Checklist", priority: 'High' }
-            ]
-        },
-        globalStandards: {
-            title: "Aligned with Pharmacy Council & Drug Safety Standards",
-            standards: [
-                { name: "Pharmacy Act & Drugs and Cosmetics Act", description: "Compliance with Indian pharmacy and drug laws." },
-                { name: "Good Pharmacy Practice (GPP)", description: "Guidelines from the FIP and WHO for quality pharmacy services." },
-                { name: "ISMP Guidelines", description: "Best practices for medication safety from the Institute for Safe Medication Practices." },
-                { name: "NABH Standards for Pharmacies", description: "Accreditation standards for hospital and retail pharmacies in India." }
-            ]
-        },
+        checklists: []
+    },
+    {
+        id: 'bakery_confectionery_pack',
+        title: "Bakery & Confectionery Operations Pack",
+        priceINR: 5999,
+        priceUSD: 79,
+        competitorPriceUSD: 599,
+        paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+        category: "Food & Beverage",
+        description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
+        icon: "CakeSlice",
+        badgeText: "Special Offer",
+        badgeVariant: "accent",
+        whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
+        sampleItems: [
+            { text: "Achieve perfect results every time with recipe scaling and dough management checklists.", icon: "ClipboardList" },
+            { text: "Ensure food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: "ShieldCheck" },
+            { text: "Maintain equipment precision with SOPs for oven calibration and mixer maintenance.", icon: "Wrench" },
+            { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: "Recycle" },
+            { text: "Guarantee compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: "FileCheck" },
+            { text: "Streamline your custom order process from client briefing to final delivery.", icon: "Package" }
+        ],
+        checklists: []
+    },
+    {
+        id: 'franchise_operations_pack',
+        title: "Franchise Operations Pack",
+        priceINR: 5999,
+        priceUSD: 79,
+        competitorPriceUSD: 599,
+        paymentId: 'pl_RaWEBHhFLQENxC',
+        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/5ace95d6-b828-4c17-8be8-52c09c011361',
+        category: "Franchise",
+        description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
+        icon: "Store",
+        badgeText: "New!",
+        badgeVariant: "accent",
+        whoIsItFor: ["Franchise Founders", "Franchise Operations Heads", "Franchise Business Coaches", "Multi-unit Franchisees"],
+        sampleItems: [
+            { text: "Enforce brand consistency with a visual identity and store operations audit.", icon: "Eye" },
+            { text: "Provide a legal framework for quality control and franchisee performance management.", icon: "FileCheck" },
+            { text: "Streamline franchisee onboarding from site selection to grand opening.", icon: "KeyRound" },
+            { text: "Standardize financials with SOPs for royalty reconciliation and supplier audits.", icon: "DollarSign" },
+            { text: "Empower franchisees with a clear guide for day-to-day operations.", icon: "BookOpen" },
+            { text: "Protect your brand with a system for local marketing compliance and approvals.", icon: "Megaphone" },
+        ],
         checklists: []
     }
 ];
+
