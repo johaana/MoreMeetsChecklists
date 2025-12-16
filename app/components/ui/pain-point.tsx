@@ -2,7 +2,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
 import type { LucideIcon } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
 
 interface IconComponentProps {
   icon: LucideIcon;
