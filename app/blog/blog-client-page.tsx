@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -18,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { subscribeToBlog } from '@/app/blog/actions';
+import { subscribeToBlog } from './actions';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -113,7 +112,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
@@ -391,3 +390,4 @@ export default function BlogClientPage() {
 }
 
     
+

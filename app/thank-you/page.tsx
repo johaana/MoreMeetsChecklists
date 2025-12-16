@@ -192,23 +192,24 @@ function ThankYouContent() {
   );
 }
 
+
 export default function ThankYouPageWrapper() {
-  return (
-    <React.Suspense fallback={
-        <div className="flex flex-col min-h-screen bg-background">
-          <SiteHeader />
-           <main className="flex-1 flex items-center justify-center">
-               <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <Loader2 className="h-16 w-16 text-primary animate-spin" />
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                    Loading...
-                </h1>
-                </div>
-           </main>
-          <Footer />
-        </div>
-    }>
-      <ThankYouContent />
-    </React.Suspense>
-  );
-}
+    return (
+      <React.Suspense fallback={
+          <div className="flex flex-col min-h-screen bg-background">
+            <SiteHeader />
+             <main className="flex-1 flex items-center justify-center">
+                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                  <Loader2 className="h-16 w-16 text-primary animate-spin" />
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                      Loading...
+                  </h1>
+                  </div>
+             </main>
+            <Footer />
+          </div>
+      }>
+        <ThankYouContent />
+      </React.Suspense>
+    );
+  }

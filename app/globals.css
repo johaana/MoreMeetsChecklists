@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 212 88% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 212 88% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 88% 13%;
+    --primary: 212 88% 13%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 35 92% 90%;
+    --secondary-foreground: 212 88% 13%;
+    --muted: 45 35% 91%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 35 92% 50%;
+    --accent-foreground: 212 88% 13%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 212 88% 13%;
+    --radius: 0.75rem;
+    --chart-1: 212 88% 13%;
+    --chart-2: 45 74% 50%;
+    --chart-3: 173 58% 39%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+  .dark {
+    --background: 212 40% 4%;
+    --foreground: 0 0% 98%;
+    --card: 212 40% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 212 40% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 212 88% 13%;
+    --secondary: 212 40% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 212 40% 10%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 38 92% 66%;
+    --accent-foreground: 212 88% 13%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 212 40% 15%;
+    --input: 212 40% 15%;
+    --ring: 45 74% 60%;
+    --chart-1: 0 0% 98%;
+    --chart-2: 45 74% 60%;
+    --chart-3: 173 60% 50%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  .sales-consultancy-page {
+    --background: 210 20% 98%;
+    --foreground: 194 65% 15%;
+    --primary: 194 65% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 194 20% 90%;
+    --accent: 14 83% 58%;
+    --accent-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --border: 194 20% 85%;
+    --muted-foreground: 194 30% 35%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { premiumPacks } from '@/lib/premium-packs';
+import { premiumPacks } from '@/lib/premium-packs.tsx';
 import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles, Siren, Bug, TrendingUp, Lock, FileLock, Users, Banknote, Bus, TestTube, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector, Award, HeartPulse, Star } from 'lucide-react';
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -18,7 +18,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { handleDownload } from '@/lib/download';
-import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-packs";
+import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-packs.tsx";
 import Image from 'next/image';
 import PricingClient from './pricing-client';
 

@@ -1,5 +1,4 @@
 
-
 import MasterAccessClientPage from './master-access-client';
 
 // This page now uses a client component to handle state and interactions.

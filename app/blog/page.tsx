@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import BlogClientPage from './blog-client-page';
 import type { Metadata } from 'next';

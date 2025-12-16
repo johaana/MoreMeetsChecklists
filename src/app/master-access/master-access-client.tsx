@@ -1,137 +1,81 @@
+import type { Metadata } from 'next';
+import { Toaster } from "@/components/ui/toaster";
+import "@/app/globals.css";
+import { cn } from '@/lib/utils';
+import { Inter, Poppins } from 'next/font/google';
+import { LayoutScript } from '@/components/layout/layout-script';
 
 
-'use client';
+const siteUrl = 'https://www.moremeets.com';
+const siteTitle = 'MoreMeets: Professional Operational Checklists & SOPs';
+const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
+const ogImageUrl = `${siteUrl}/api/og`;
 
-import * as React from 'react';
-import { premiumPacks } from '@/lib/premium-packs';
-import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
-import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Download, KeyRound, ShieldCheck } from 'lucide-react';
-import { handleDownload } from '@/lib/download';
-import { SiteHeader } from '@/components/layout/header';
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: siteTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: [ogImageUrl],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+};
+
+const mainFont = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-body'
+});
+
+const headlineFont = Poppins({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-headline'
+});
+
+const faviconSvg = `<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22currentColor%22><rect width=%2220%22 height=%2220%22 x=%222%22 y=%222%22 rx=%224%22 fill=%22url(%23grad)%22/><path d=%22M8 7l-1.41 1.41L8 9.83l4.59-4.58L11.17 4 8 7.17z%22 fill=%22%23fff%22/><path d=%22M8 13l-1.41 1.41L8 15.83l4.59-4.58L11.17 10 8 13.17z%22 fill=%22%23fff%22/><rect x=%2214%22 y=%226%22 width=%226%22 height=%222%22 fill=%22%23fff%22/><rect x=%2214%22 y=%2212%22 width=%226%22 height=%222%22 fill=%22%23fff%22/><defs><linearGradient id=%22grad%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:rgb(255,165,0);stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:rgb(220,20,60);stop-opacity:1%22 /></linearGradient></defs></svg>`;
 
 
-export default function MasterAccessClientPage() {
-    const [password, setPassword] = React.useState('');
-    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-    const [error, setError] = React.useState('');
-
-    const masterPassword = process.env.NEXT_PUBLIC_MASTER_ACCESS_PASSWORD || 'Johaana@2319';
-
-    const handleLogin = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (password === masterPassword) {
-            setIsAuthenticated(true);
-            setError('');
-        } else {
-            setError('Incorrect password. Please try again.');
-        }
-    };
-
-    if (!isAuthenticated) {
-        return (
-             <div className="flex flex-col min-h-screen bg-background">
-                <SiteHeader />
-                <main className="flex-1 flex items-center justify-center">
-                    <Card className="w-full max-w-sm mx-auto">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2">
-                                <KeyRound className="w-6 h-6" />
-                                Master Access Login
-                            </CardTitle>
-                            <CardDescription>
-                                This page is for internal use only.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <form onSubmit={handleLogin} className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="password">Password</Label>
-                                    <Input
-                                        id="password"
-                                        type="password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="Enter master password"
-                                        required
-                                    />
-                                </div>
-                                {error && <p className="text-sm text-destructive">{error}</p>}
-                                <Button type="submit" className="w-full">
-                                    Unlock Access
-                                </Button>
-                            </form>
-                        </CardContent>
-                    </Card>
-                </main>
-            </div>
-        );
-    }
-
-    return (
-         <div className="flex flex-col min-h-screen bg-background">
-            <SiteHeader />
-            <main className="flex-1 py-12">
-                <div className="container px-4 md:px-6">
-                     <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline flex items-center gap-3">
-                            <ShieldCheck className="w-8 h-8 text-green-500" />
-                            Internal Resource Portal
-                        </h1>
-                        <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                            Download any premium pack or individual checklist for demonstration or platform setup.
-                        </p>
-                    </div>
-
-                    <div className="max-w-5xl mx-auto space-y-12">
-                        <div>
-                            <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Premium Packs</h2>
-                            <div className="space-y-4">
-                                {premiumPacks.map((pack) => (
-                                    <Card key={pack.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
-                                        <div className='flex items-center gap-4'>
-                                            {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
-                                            <div>
-                                                <h3 className="font-semibold">{pack.title}</h3>
-                                                <p className="text-xs md:text-sm text-muted-foreground">{pack.category}</p>
-                                            </div>
-                                        </div>
-                                        <Button onClick={() => handleDownload(pack, 'pack')} className="w-full sm:w-auto">
-                                            <Download className="mr-2 h-4 w-4" />
-                                            Download Pack
-                                        </Button>
-                                    </Card>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div>
-                            <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Individual Checklists</h2>
-                            <div className="space-y-4">
-                                {individualChecklists.map((checklist) => (
-                                    <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
-                                        <div className='flex items-center gap-4'>
-                                             {React.cloneElement(checklist.icon, { className: "w-8 h-8 text-primary" })}
-                                            <div>
-                                                <h3 className="font-semibold">{checklist.title}</h3>
-                                                <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>
-                                            </div>
-                                        </div>
-                                        <Button onClick={() => handleDownload(checklist, 'individual')} className="w-full sm:w-auto">
-                                            <Download className="mr-2 h-4 w-4" />
-                                            Download Checklist
-                                        </Button>
-                                    </Card>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    );
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
+      <body className={cn(
+        "min-h-screen bg-background font-body antialiased",
+        mainFont.variable,
+        headlineFont.variable,
+      )}>
+        {children}
+        <Toaster />
+        <LayoutScript />
+      </body>
+    </html>
+  );
 }

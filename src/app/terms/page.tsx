@@ -1,109 +1,81 @@
-
-import Link from "next/link";
-import { Footer } from "@/components/layout/footer";
 import type { Metadata } from 'next';
-import { SiteHeader } from "@/components/layout/header";
+import { Toaster } from "@/components/ui/toaster";
+import "@/app/globals.css";
+import { cn } from '@/lib/utils';
+import { Inter, Poppins } from 'next/font/google';
+import { LayoutScript } from '@/components/layout/layout-script';
+
+
+const siteUrl = 'https://www.moremeets.com';
+const siteTitle = 'MoreMeets: Professional Operational Checklists & SOPs';
+const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
+const ogImageUrl = `${siteUrl}/api/og`;
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | MoreMeets',
-  description: 'Please read the MoreMeets Terms of Service. By using our site and purchasing our products, you agree to these terms.',
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: siteTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: [ogImageUrl],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
+const mainFont = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-body'
+});
 
-const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
-    <div className="space-y-4">
-        <h2 className="text-2xl font-bold font-headline text-primary">{title}</h2>
-        <div className="space-y-4 text-muted-foreground">
-            {children}
-        </div>
-    </div>
-);
+const headlineFont = Poppins({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-headline'
+});
 
-export default function TermsOfServicePage() {
+const faviconSvg = `<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22currentColor%22><rect width=%2220%22 height=%2220%22 x=%222%22 y=%222%22 rx=%224%22 fill=%22url(%23grad)%22/><path d=%22M8 7l-1.41 1.41L8 9.83l4.59-4.58L11.17 4 8 7.17z%22 fill=%22%23fff%22/><path d=%22M8 13l-1.41 1.41L8 15.83l4.59-4.58L11.17 10 8 13.17z%22 fill=%22%23fff%22/><rect x=%2214%22 y=%226%22 width=%226%22 height=%222%22 fill=%22%23fff%22/><rect x=%2214%22 y=%2212%22 width=%226%22 height=%222%22 fill=%22%23fff%22/><defs><linearGradient id=%22grad%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:rgb(255,165,0);stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:rgb(220,20,60);stop-opacity:1%22 /></linearGradient></defs></svg>`;
+
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
-       <SiteHeader />
-
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-            <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                        Terms of Service
-                    </h1>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed mx-auto">
-                        Last Updated: July 28, 2024
-                    </p>
-                </div>
-
-                <div className="max-w-3xl mx-auto space-y-8">
-                    <LegalSection title="1. Agreement to Terms">
-                        <p>
-                            By accessing or using our website, www.moremeets.com (the "Site"), and purchasing our digital products ("Products"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, then you do not have permission to access the Service.
-                        </p>
-                    </LegalSection>
-
-                    <LegalSection title="2. Intellectual Property Rights">
-                        <p>
-                            The Site and its original content, features, functionality, and all digital products (including but not limited to checklists, templates, and SOPs in Excel format) are and will remain the exclusive property of MoreMeets and its licensors. Our Products are protected by copyright, trademark, and other laws of both the India and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of MoreMeets. You are granted a limited, non-exclusive, non-transferable license to use the purchased Products for your internal business or personal use. You may not resell, redistribute, or share the Products in any form.
-                        </p>
-                    </LegalSection>
-
-                    <LegalSection title="3. Purchases and Payment">
-                        <p>
-                            We accept payments through our designated payment processors (e.g., Razorpay, Stripe). You agree to provide current, complete, and accurate purchase and account information for all purchases made via the Site. All payments shall be in the currency specified at the time of purchase. You agree to pay all charges at the prices then in effect for your purchases, and you authorize us to charge your chosen payment provider for any such amounts upon placing your order.
-                        </p>
-                    </LegalSection>
-                    
-                    <LegalSection title="4. Cancellation and Refund Policy">
-                        <p>
-                            Due to the digital nature of our Products, all sales are final. We do not offer refunds, returns, or exchanges once a purchase is made and the product has been delivered (i.e., the download link has been made available). Please review the product descriptions carefully before making a purchase. For more details, please see our full <Link href="/refund" className="text-primary underline">Cancellation and Refund Policy</Link>.
-                        </p>
-                    </LegalSection>
-
-                    <LegalSection title="5. Shipping and Delivery Policy">
-                        <p>
-                            Our Products are digital and delivered instantly. Upon successful completion of your payment, you will receive access to download the files immediately on the confirmation page and/or via an email sent to the address provided during checkout. There are no physical goods shipped. For more details, please see our <Link href="/shipping" className="text-primary underline">Shipping and Delivery Policy</Link>.
-                        </p>
-                    </LegalSection>
-
-                    <LegalSection title="6. Prohibited Activities">
-                       <p>You may not access or use the Site for any purpose other than that for which we make the Site available. As a user of the Site, you agree not to:</p>
-                        <ul className="list-disc pl-6 space-y-2">
-                            <li>Resell, sublicense, or redistribute our Products in any form, digital or physical.</li>
-                            <li>Use the Site or Products for any illegal or unauthorized purpose.</li>
-                            <li>Attempt to decompile or reverse engineer any software contained on the Site.</li>
-                            <li>Engage in any automated use of the system, such as using scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction tools.</li>
-                        </ul>
-                    </LegalSection>
-
-                    <LegalSection title="7. Disclaimer of Warranties">
-                        <p>The Site and our Products are provided on an "AS IS" and "AS AVAILABLE" basis. MoreMeets makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. The checklists are provided for guidance and are not a substitute for professional, legal, or safety advice.</p>
-                    </LegalSection>
-
-                    <LegalSection title="8. Limitation of Liability">
-                        <p>In no event shall MoreMeets, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory.</p>
-                    </LegalSection>
-                    
-                    <LegalSection title="9. Legal Disclaimer">
-                        <p><strong>This document was generated by an AI language model. It is intended for informational purposes only and does not constitute legal advice.</strong> The content is not guaranteed to be complete, accurate, or up-to-date. You should not act or refrain from acting based on this information without seeking professional legal counsel in your jurisdiction. Your use of this document does not create an attorney-client relationship. MoreMeets and its AI provider assume no liability for the use or interpretation of this information.</p>
-                    </LegalSection>
-
-                    <LegalSection title="10. Governing Law">
-                        <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions. Any legal action of whatever nature brought by either you or us shall be commenced or prosecuted in the state and federal courts located in Mumbai, India.</p>
-                    </LegalSection>
-
-                    <LegalSection title="11. Contact Us">
-                        <p>
-                            To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at: <a href="mailto:legal@moremeets.com" className="text-primary underline">legal@moremeets.com</a> or visit our <Link href="/contact" className="text-primary underline">Contact Us</Link> page.
-                        </p>
-                    </LegalSection>
-                </div>
-            </div>
-        </section>
-      </main>
-
-       <Footer />
-    </div>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
+      <body className={cn(
+        "min-h-screen bg-background font-body antialiased",
+        mainFont.variable,
+        headlineFont.variable,
+      )}>
+        {children}
+        <Toaster />
+        <LayoutScript />
+      </body>
+    </html>
   );
 }

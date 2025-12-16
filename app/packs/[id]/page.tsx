@@ -1,7 +1,7 @@
 
 
 import { notFound } from 'next/navigation';
-import { premiumPacks } from '@/lib/premium-packs';
+import { premiumPacks } from '@/lib/premium-packs.tsx';
 import type { Metadata, ResolvingMetadata } from 'next';
 import PackClientPage from '@/app/packs/[id]/pack-client-page';
 

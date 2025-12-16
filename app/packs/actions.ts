@@ -2,7 +2,7 @@
 'use server';
 
 import { z } from 'zod';
-import { premiumPacks, type PremiumPack } from '@/lib/premium-packs';
+import { premiumPacks, type PremiumPack } from '@/lib/premium-packs.tsx';
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 const ContactFormSchema = z.object({
