@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -9,7 +10,6 @@ import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardH
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
 
-
 // ===== FAST UI PLACEHOLDERS =====
 const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
@@ -17,9 +17,56 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
   />
 );
-const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => <div className={className}>{children}</div>;
-const TabsList = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={className}>{children}</div>;
-const TabsTrigger = ({ children, value, ...props }: { children: React.ReactNode, value:string }) => <button value={value} {...props}>{children}</button>;
+const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => {
+    // Basic Tabs implementation for FAST mode
+    const [activeTab, setActiveTab] = React.useState(defaultValue);
+
+    const handleTabClick = (value: string) => {
+        setActiveTab(value);
+        onValueChange(value);
+    };
+
+    return (
+        <div className={className}>
+            {React.Children.map(children, (child) => {
+                if (React.isValidElement(child) && child.type === TabsList) {
+                    return React.cloneElement(child, {
+                        // @ts-ignore
+                        activeTab,
+                        onTabClick: handleTabClick
+                    });
+                }
+                return child;
+            })}
+        </div>
+    );
+};
+
+const TabsList = ({ children, className, activeTab, onTabClick }: { children: React.ReactNode, className?:string, activeTab?: string, onTabClick?: (value: string) => void }) => (
+  <div className={`flex gap-1 rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
+      {React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type === TabsTrigger) {
+              return React.cloneElement(child, {
+                  // @ts-ignore
+                  isActive: child.props.value === activeTab,
+                  onClick: () => onTabClick?.(child.props.value)
+              });
+          }
+          return child;
+      })}
+  </div>
+);
+
+const TabsTrigger = ({ children, value, isActive, onClick, className }: { children: React.ReactNode, value: string, isActive?: boolean, onClick?: () => void, className?: string }) => (
+  <button 
+    value={value} 
+    onClick={onClick}
+    className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${isActive ? 'bg-background text-foreground shadow-sm' : ''} ${className}`}
+  >
+    {children}
+  </button>
+);
+
 const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string; competitorPrice: string; valueStatement: string }) => (
   <div className="rounded-lg bg-secondary/50 p-4 text-center border-2 border-dashed border-primary/20">
     <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
@@ -36,22 +83,27 @@ const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPr
      <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
   </div>
 );
+
 const RazorpayButton = ({ paymentId }: { paymentId?: string }) => (
   <Button
-    onClick={() => alert(`Initiating payment for: ${paymentId}`)}
-    className="w-full"
+    onClick={() => alert(`This is a placeholder. In production, this would initiate payment for: ${paymentId}`)}
+    className="w-full max-w-xs"
+    size="lg"
   >
-    Pay Now with Razorpay
+    Buy Now with Razorpay
   </Button>
 );
-const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { onCheckedChange: (checked: boolean) => void, id: string, checked: boolean }) => (
-  <input type="checkbox" {...props} onChange={(e) => props.onCheckedChange(e.target.checked)} className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
+
+const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: string }) => (
+  <input type="checkbox" {...props} className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
 );
+
 const Label = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => (
   <label {...props} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" />
 );
+
 const Badge = ({ children, className, variant }: { children: React.ReactNode, className?:string, variant?: string }) => (
-  <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${variant === 'accent' ? 'border-transparent bg-accent text-accent-foreground' : 'border-transparent bg-primary text-primary-foreground'}`}>
+  <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${variant === 'accent' ? 'border-transparent bg-accent text-accent-foreground' : 'border-transparent bg-primary text-primary-foreground'}`}>
     {children}
   </span>
 );
@@ -210,9 +262,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              {hasINR && hasUSD && (
                                 <div className="flex justify-center">
                                     <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
-                                      <TabsList className="grid w-full grid-cols-2 rounded-md bg-muted p-1 text-muted-foreground">
-                                        <TabsTrigger value="USD" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">Pay in USD ($)</TabsTrigger>
-                                        <TabsTrigger value="INR" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">Pay in INR (₹)</TabsTrigger>
+                                      <TabsList className="grid w-full grid-cols-2">
+                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
+                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                       </TabsList>
                                     </Tabs>
                                 </div>
@@ -260,7 +312,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                             <div className="flex items-center space-x-2">
-                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
+                                <Checkbox id="terms" checked={agreedToTerms} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAgreedToTerms(e.target.checked)} />
                                 <Label htmlFor="terms" className="text-xs text-muted-foreground">
                                     I have read and agree to the{" "}
                                     <Link href="/terms" target="_blank" className="underline hover:text-primary">
@@ -305,3 +357,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
+
+      
