@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
 import * as LucideIcons from 'lucide-react';
@@ -26,5 +27,3 @@ export const PainPoint = ({ icon, title, description }: { icon: string, title: s
         </CardContent>
     </Card>
 );
-
-    
