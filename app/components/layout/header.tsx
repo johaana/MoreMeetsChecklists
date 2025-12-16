@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
-import { premiumPacks } from "@/lib/premium-packs.tsx";
+import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
@@ -39,7 +39,7 @@ const SolutionsList = () => (
                     {packs.map(pack => (
                         <li key={pack.id}>
                             <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
-                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.createElement(pack.icon, { className: "w-4 h-4" })}</span>
+                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
                                 <span className="flex-1 leading-snug">{pack.title}</span>
                             </Link>
                         </li>
@@ -222,4 +222,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
