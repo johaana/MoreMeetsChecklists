@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
-import { premiumPacks } from "@/app/lib/premium-packs.tsx";
+import { premiumPacks } from "@/lib/premium-packs.tsx";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
@@ -25,7 +25,7 @@ const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     }
     acc[pack.category].push(pack);
     return acc;
-}, {} as Record<string, typeof packs>);
+}, {} as Record<string, typeof premiumPacks>);
 
 
 // Reusable component to render the list of solutions
@@ -184,7 +184,7 @@ export function SiteHeader() {
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                                {React.createElement(pack.icon, { className: "w-4 h-4 shrink-0" })}
+                                                                {React.cloneElement(pack.icon, { className: "w-4 h-4 shrink-0" })}
                                                                 <span>{pack.title}</span>
                                                             </Link>
                                                         ))}
@@ -222,3 +222,4 @@ export function SiteHeader() {
         </header>
     );
 }
+
