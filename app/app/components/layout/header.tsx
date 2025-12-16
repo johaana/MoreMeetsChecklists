@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -10,11 +9,11 @@ import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 
 // --- FAST FIX PLACEHOLDERS ---
-const Sheet = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+const Sheet = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => open ? <div className="fixed inset-0 bg-black/50 z-50" onClick={() => onOpenChange(false)}><div className="fixed right-0 top-0 h-full w-full max-w-sm bg-background p-0" onClick={e => e.stopPropagation()}>{children}</div></div> : null;
 const SheetContent = ({ children, ...props }: { children: React.ReactNode, side: string, className:string }) => <div {...props}>{children}</div>;
 const SheetHeader = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
 const SheetTitle = ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>;
-const SheetTrigger = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+const SheetTrigger = ({ children, onClick }: { children: React.ReactNode, onClick: () => void }) => <div onClick={onClick}>{children}</div>;
 const ScrollArea = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`overflow-auto ${className}`}>{children}</div>;
 const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "multiple", className?: string }) => <div {...props}>{children}</div>;
 const AccordionItem = ({ children, value }: { children: React.ReactNode, value: string }) => <div data-value={value}>{children}</div>;
@@ -165,8 +164,8 @@ export function SiteHeader() {
 
             {/* Mobile Navigation */}
             <div className="md:hidden ml-auto">
-                <Sheet>
-                    <SheetTrigger asChild>
+                <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+                    <SheetTrigger onClick={() => setIsSheetOpen(true)}>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>

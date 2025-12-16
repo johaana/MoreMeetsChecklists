@@ -1,12 +1,19 @@
-
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import React from 'react';
 import type { Metadata } from 'next';
+
+
+// --- FAST FIX PLACEHOLDERS ---
+const Badge = ({ children, className, variant }: { children: React.ReactNode, className?:string, variant?: string }) => (
+  <span className={`inline-block rounded bg-gray-100 px-2 py-1 text-xs font-medium ${className}`}>
+    {children}
+  </span>
+);
+// --- END FAST FIX PLACEHOLDERS ---
 
 export const metadata: Metadata = {
     title: 'SOP Checklist Library | MoreMeets',

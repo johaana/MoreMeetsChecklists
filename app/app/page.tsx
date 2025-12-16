@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -20,7 +19,7 @@ const AccordionItem = ({ children, value }: { children: React.ReactNode, value: 
 const AccordionTrigger = ({ children }: { children: React.ReactNode }) => <button>{children}</button>;
 const AccordionContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
 
-const Carousel = ({ children, plugins, className }: { children: React.ReactNode, plugins: any[], className?: string }) => <div className={className}>{children}</div>;
+const Carousel = ({ children, plugins, className }: { children: React.ReactNode, plugins?: any[], className?: string }) => <div className={className}>{children}</div>;
 const CarouselContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
 const CarouselItem = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
 const CarouselPrevious = (props: any) => <button {...props}>&lt;</button>;

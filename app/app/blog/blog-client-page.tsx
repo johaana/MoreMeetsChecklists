@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import Link from 'next/link';
@@ -8,17 +6,37 @@ import { blogPosts } from '@/lib/blog-posts';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { subscribeToBlog } from '@/app/blog/actions';
+
+
+// --- FAST FIX PLACEHOLDERS ---
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+  <input
+    {...props}
+    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+  />
+);
+const Badge = ({ children, className, ...props }: { children: React.ReactNode, className?:string, onClick?: (e: React.MouseEvent) => void }) => (
+  <span className={`inline-block rounded bg-gray-100 px-2 py-1 text-xs font-medium ${className}`} {...props}>
+    {children}
+  </span>
+);
+const Sheet = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => open ? <div className="fixed inset-0 bg-black/50 z-50" onClick={() => onOpenChange(false)}><div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4" onClick={e => e.stopPropagation()}>{children}</div></div> : null;
+const SheetContent = ({ children, side, className }: { children: React.ReactNode, side: string, className: string }) => <div>{children}</div>;
+const SheetHeader = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+const SheetTitle = ({ children }: { children: React.ReactNode }) => <h2 className="font-bold text-lg">{children}</h2>;
+const SheetTrigger = ({ children }: { children: React.ReactNode }) => children;
+const ScrollArea = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`overflow-auto ${className}`}>{children}</div>;
+const DropdownMenu = ({ children, modal }: { children: React.ReactNode, modal: boolean }) => <div className="relative inline-block text-left">{children}</div>;
+const DropdownMenuContent = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${className}`}>{children}</div>;
+const DropdownMenuItem = ({ children, onSelect }: { children: React.ReactNode, onSelect: () => void}) => <a href="#" onClick={(e) => { e.preventDefault(); onSelect(); }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{children}</a>;
+const DropdownMenuTrigger = ({ children }: { children: React.ReactNode }) => children;
+// --- END FAST FIX PLACEHOLDERS ---
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -151,7 +169,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                 )}
                  <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
+                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg" onClick={() => setSheetOpen(true)}>
                             <Filter className="w-6 h-6" />
                         </Button>
                     </SheetTrigger>
@@ -267,7 +285,7 @@ export default function BlogClientPage() {
                                     <div className="p-6 bg-card">
                                         <div className="flex flex-wrap gap-2 mb-2">
                                             {currentFeaturedPost.tags.map(tag => ( 
-                                                <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                <Badge key={tag} className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                                     {tag}
                                                 </Badge>
                                             ))}
@@ -352,7 +370,7 @@ export default function BlogClientPage() {
                             <CardHeader>
                                 <div className="flex flex-wrap gap-2 mb-2">
                                      {post.tags.map(tag => (
-                                         <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                         <Badge key={tag} className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                             {tag}
                                         </Badge>
                                     ))}
@@ -389,5 +407,3 @@ export default function BlogClientPage() {
     </div>
   );
 }
-
-    
