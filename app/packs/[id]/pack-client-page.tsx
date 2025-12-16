@@ -15,14 +15,13 @@ import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const Icon = ({ name, className }: { name: string, className?:string }) => {
+const IconComponent = ({ name, className }: { name: string, className?:string }) => {
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-    const LucideIcon = (LucideIcons as any)[iconName];
-    if (!LucideIcon) {
-        // Fallback icon
+    const Icon = (LucideIcons as any)[iconName];
+    if (!Icon) {
         return <LucideIcons.Package className={className} />;
     }
-    return <LucideIcon className={className} />;
+    return <Icon className={className} />;
 };
 
 
@@ -37,12 +36,6 @@ const CarouselItem = ({ children }: { children: React.ReactNode }) => <div>{chil
 const CarouselPrevious = (props: any) => <button {...props}>&lt;</button>;
 const CarouselNext = (props: any) => <button {...props}>&gt;</button>;
 
-const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
-  <input
-    {...props}
-    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
-  />
-);
 const Autoplay = (options: any) => ({});
 
 // --- END FAST FIX PLACEHOLDERS ---
@@ -62,7 +55,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={<Icon name={point.icon} className="w-6 h-6 text-accent" />} title={point.title} description={point.description} />
+                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
                     ))}
                 </div>
             </div>
@@ -213,7 +206,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                            return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <Icon name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <IconComponent name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
@@ -252,3 +245,5 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
+
+    
