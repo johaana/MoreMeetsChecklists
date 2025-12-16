@@ -15,7 +15,8 @@ import { Separator } from "@/components/ui/separator";
 import * as LucideIcons from "lucide-react"
 
 const IconComponent = ({ name, className }: { name: string, className?: string }) => {
-    const Icon = (LucideIcons as any)[name];
+    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+    const Icon = (LucideIcons as any)[iconName];
     if (!Icon) {
         return <LucideIcons.Package className={className} />;
     }
@@ -235,4 +236,3 @@ export function SiteHeader() {
         </header>
     );
 }
-

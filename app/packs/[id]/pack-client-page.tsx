@@ -16,8 +16,10 @@ import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Icon = ({ name, className }: { name: string, className?:string }) => {
-    const LucideIcon = (LucideIcons as any)[name];
+    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+    const LucideIcon = (LucideIcons as any)[iconName];
     if (!LucideIcon) {
+        // Fallback icon
         return <LucideIcons.Package className={className} />;
     }
     return <LucideIcon className={className} />;
