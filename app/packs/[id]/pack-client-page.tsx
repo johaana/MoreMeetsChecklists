@@ -17,6 +17,14 @@ import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-pack
 import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
 
+const Icon = ({ name, className }: { name: string, className?:string }) => {
+    const LucideIcon = (LucideIcons as any)[name];
+    if (!LucideIcon) {
+        return <LucideIcons.Package className={className} />;
+    }
+    return <LucideIcon className={className} />;
+};
+
 
 // --- FAST FIX PLACEHOLDERS ---
 const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "single", collapsible: boolean, className?: string }) => <div {...props}>{children}</div>;
@@ -43,14 +51,6 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
     if (!content) return null;
 
-    const IconComponent = ({ name }: { name: string }) => {
-      const Icon = (LucideIcons as any)[name];
-      if (!Icon) {
-          return <Check />;
-      }
-      return <Icon className="w-6 h-6 text-accent" />;
-    };
-
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
             <div className="container px-2 md:px-6">
@@ -62,7 +62,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={<IconComponent name={point.icon as string} />} title={point.title} description={point.description} />
+                        <PainPoint key={index} icon={<Icon name={point.icon} className="w-6 h-6 text-accent" />} title={point.title} description={point.description} />
                     ))}
                 </div>
             </div>
@@ -157,14 +157,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
   const isEmptyPack = totalChecklists === 0;
 
-  const IconComponent = ({ name }: { name: string }) => {
-    const Icon = (LucideIcons as any)[name];
-    if (!Icon) {
-        return <Check />;
-    }
-    return <Icon className="h-6 w-6 text-green-600 dark:text-green-400" />;
-  };
-
   return (
     <>
       <div className="flex flex-col min-h-screen bg-background">
@@ -221,7 +213,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                            return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <IconComponent name={item.icon} />
+                                    <Icon name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
