@@ -48,7 +48,7 @@ export const painPointsContent = {
         points: [
             { icon: "factory", title: "The Rana Plaza Factory Collapse (Bangladesh, 2013)", description: "A structural failure killed over 1,100 garment workers, exposing major brands like Primark and Mango to a global crisis over supply chain safety. Our 'Vendor Compliance Audits' ensure your partners meet ethical and safety standards, protecting your brand from association with such disasters." },
             { icon: "recycle", title: "The H&M 'Unsold Inventory' Scandal (Global, 2018)", description: "H&M was caught incinerating millions of dollars of unsold inventory, leading to a massive environmental backlash. Our 'Seasonal Inventory Management' SOP provides a structured markdown process to clear seasonal goods, preventing the financial and reputational damage of dead stock." },
-            { icon: "building", title: "The 'Shrinkage' Epidemic (Global, Ongoing)", description: "Retailers lose billions annually to theft and inventory errors. Our 'Loss Prevention' and 'Inventory Reconciliation' SOPs implement the cycle counts, security tagging, and POS checks needed to protect your bottom line." },
+            { icon: "building-2", title: "The 'Shrinkage' Epidemic (Global, Ongoing)", description: "Retailers lose billions annually to theft and inventory errors. Our 'Loss Prevention' and 'Inventory Reconciliation' SOPs implement the cycle counts, security tagging, and POS checks needed to protect your bottom line." },
             { icon: "zap", title: "Inconsistent Customer Experience (Multi-brand issue)", description: "A customer has a great experience in one store and a terrible one in another, damaging brand loyalty. Our 'Customer Service Standards Audit' ensures every store delivers the same high-quality experience." }
         ]
     },
@@ -99,7 +99,7 @@ export const painPointsContent = {
             { icon: "siren", title: "Jabalpur Gym Accident (India, 2023)", description: "A youth died after gym equipment snapped due to poor maintenance; the machine had not been serviced in 14 months. Prevented by: Our 'Monthly Equipment Inspection' and preventive maintenance SOP, which creates a mandatory, verifiable service log." },
             { icon: "stethoscope", title: "Anytime Fitness AED Failure (Delhi, 2022)", description: "A member suffered a heart attack, but the gym's AED was not functional. Our 'First Aid & AED Readiness' SOP includes weekly checks of emergency equipment, ensuring it works when needed most." },
             { icon: "bug", title: "California Gym Infection Outbreak (USA, 2020)", description: "A bacterial infection spread via unclean exercise mats. Our 'Hygiene & Disinfection Schedule' provides a verifiable log that all equipment is sanitized daily." },
-            { icon: "building", title: "Bangalore Gym Ceiling Fan Collapse (India, 2023)", description: "A member was injured by a falling ceiling fan due to poor facility maintenance. Our checklists include regular facility audits to spot and fix such hidden dangers." }
+            { icon: "building-2", title: "Bangalore Gym Ceiling Fan Collapse (India, 2023)", description: "A member was injured by a falling ceiling fan due to poor facility maintenance. Our checklists include regular facility audits to spot and fix such hidden dangers." }
         ]
     },
     facility_management_blueprint: {
@@ -108,7 +108,7 @@ export const painPointsContent = {
         points: [
             { icon: "siren", title: "Kamala Mills Fire (Mumbai, 2017)", description: "14 lives were lost in a rooftop fire due to faulty wiring and missing fire audit logs. Our fire audit and electrical compliance checklists prevent such negligence." },
             { icon: "zap", title: "AIIMS Delhi Fire (2023)", description: "A major fire broke out in a building block due to a short-circuit in an AC unit, highlighting gaps in preventive maintenance. Our checklists ensure all MEP systems are regularly inspected." },
-            { icon: "building", title: "Grenfell Tower Fire (London, 2017)", description: "72 people died from a fire fueled by non-compliant cladding and a lack of evacuation SOPs. Our vendor and material compliance checklists prevent the use of unsafe materials." },
+            { icon: "building-2", title: "Grenfell Tower Fire (London, 2017)", description: "72 people died from a fire fueled by non-compliant cladding and a lack of evacuation SOPs. Our vendor and material compliance checklists prevent the use of unsafe materials." },
             { icon: "factory", title: "LG Polymers Gas Leak (Vizag, 2020)", description: "A catastrophic gas leak from an unmonitored storage tank led to 12 deaths, a direct failure of maintenance and safety SOPs. Our checklists for critical systems make such lapses impossible." }
         ]
     },
@@ -137,7 +137,7 @@ export const painPointsContent = {
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
         points: [
             { icon: "siren", title: "The Sandy Hook Elementary Shooting (USA, 2012)", description: "A gunman gained entry to the school, leading to a tragic loss of life. Our 'Visitor Management' and 'Emergency Preparedness' checklists enforce a single point of entry, ID verification, and lockdown drills to harden the security posture." },
-            { icon: "building", title: "Our Lady of the Angels School Fire (USA, 1958)", description: "A fire at the base of a stairwell trapped students, killing 92 children. It exposed failures in fire alarms and evacuation routes. Our checklists mandate functional alarms and clear, drilled evacuation plans to prevent such a tragedy." },
+            { icon: "building-2", title: "Our Lady of the Angels School Fire (USA, 1958)", description: "A fire at the base of a stairwell trapped students, killing 92 children. It exposed failures in fire alarms and evacuation routes. Our checklists mandate functional alarms and clear, drilled evacuation plans to prevent such a tragedy." },
             { icon: "bug", title: "The Jack in the Box E. coli Outbreak (USA, 1993)", description: "Contaminated meat served at a fast-food chain led to the deaths of four children. Our 'Kitchen and Food Safety Audit', based on HACCP, prevents such incidents through rigorous temperature and hygiene checks for school canteens." },
             { icon: "bus", title: "Japanese Kindergarten Bus Fatality (Japan, 2022)", description: "A child died of heatstroke after being forgotten on a school bus. Our 'Student Transport' checklist mandates a physical, seat-by-seat check at the end of every trip to ensure this 'never event' doesn't happen." }
         ]
@@ -178,7 +178,7 @@ export const painPointsContent = {
         points: [
             { icon: "siren", title: "The Beirut Port Explosion (Lebanon, 2020)", description: "A catastrophic explosion of improperly stored ammonium nitrate killed over 200 people. This is the ultimate example of a storage and handling failure. Our checklists for 'Hazardous Materials' and 'Warehouse Safety' enforce the strict protocols that prevent such a disaster." },
             { icon: "truck", title: "The Ever Given Suez Canal Blockage (Global, 2021)", description: "This single incident halted $9.6 billion of trade per day, a symbol of supply chain fragility. Our SOPs ensure you have the internal resilience to withstand external shocks by optimizing stock levels and having pre-vetted alternative transport and supply options." },
-            { icon: "building", title: "ASOS Warehouse Fire (UK, 2014)", description: "A massive fire, believed to be arson, destroyed over $30 million of inventory. Our 'Security & Visitor Control' checklists harden your facility against unauthorized access, while 'Fire Safety' SOPs ensure rapid detection and response." },
+            { icon: "building-2", title: "ASOS Warehouse Fire (UK, 2014)", description: "A massive fire, believed to be arson, destroyed over $30 million of inventory. Our 'Security & Visitor Control' checklists harden your facility against unauthorized access, while 'Fire Safety' SOPs ensure rapid detection and response." },
             { icon: "wrench", title: "Amazon Warehouse Fatality (USA, 2021)", description: "A worker was killed after being caught in a conveyor belt. Our 'Material Handling Equipment (MHE)' safety checklists and maintenance logs ensure that all machinery is safe and operated correctly, preventing tragic accidents." }
         ]
     },
