@@ -1,9 +1,9 @@
 
 
 import { notFound } from 'next/navigation';
-import { premiumPacks } from '@/lib/premium-packs.tsx';
+import { premiumPacks } from '@/lib/premium-packs';
 import type { Metadata, ResolvingMetadata } from 'next';
-import PackClientPage from '@/app/packs/[id]/pack-client-page';
+import PackClientPage from '@/app/packs/pack-client-page';
 
 
 type Props = {
@@ -36,7 +36,8 @@ const packImageMap: Record<string, string> = {
   'theme_park_ops_pack': 'https://i.postimg.cc/Wz6MTrcB/theme-park.jpg',
   'corporate_legal_compliance_starter_kit': 'https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg',
   'enterprise_risk_cybersecurity_pack': 'https://i.postimg.cc/3wY7sR3Z/cybersecurity.webp',
-  'bakery_confectionery_pack': 'https://i.postimg.cc/pXGcVm5p/bakery.jpg'
+  'bakery_confectionery_pack': 'https://i.postimg.cc/pXGcVm5p/bakery.jpg',
+  'franchise_operations_pack': 'https://i.postimg.cc/5N18qf3p/franchise-business.webp'
 };
 
 

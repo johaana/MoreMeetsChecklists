@@ -125,7 +125,6 @@ export async function verifyRazorpayPayment(
             return { success: false, error: 'Could not find the purchased item associated with your order.' };
         }
         
-        // Skip amount check for free packs (priceINR is 0)
         if (foundItem.priceINR > 0 && payment.amount !== expectedAmount) {
              return { success: false, error: `Payment amount mismatch. Expected ₹${expectedAmount / 100} but paid ₹${payment.amount / 100}. Please contact support.` };
         }
