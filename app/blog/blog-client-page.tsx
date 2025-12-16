@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { subscribeToBlog } from '@/blog/actions';
+import { subscribeToBlog } from './actions';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -390,3 +390,4 @@ export default function BlogClientPage() {
 }
 
     
+

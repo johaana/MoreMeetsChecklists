@@ -52,3 +52,4 @@ export async function subscribeToBlog(data: SubscribeFormInputs) {
         return { success: false, message: 'An unexpected error occurred.' };
     }
 }
+
