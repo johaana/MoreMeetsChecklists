@@ -16,7 +16,6 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import { handleDownload } from '@/lib/download';
 import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-packs";
-import Image from 'next/image';
 import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
 
@@ -31,11 +30,26 @@ const CarouselContent = ({ children }: { children: React.ReactNode }) => <div>{c
 const CarouselItem = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
 const CarouselPrevious = (props: any) => <button {...props}>&lt;</button>;
 const CarouselNext = (props: any) => <button {...props}>&gt;</button>;
+
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+  <input
+    {...props}
+    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+  />
+);
 // --- END FAST FIX PLACEHOLDERS ---
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
     if (!content) return null;
+
+    const IconComponent = ({ name }: { name: string }) => {
+      const Icon = (LucideIcons as any)[name];
+      if (!Icon) {
+          return <Check />;
+      }
+      return <Icon className="w-6 h-6" />;
+    };
 
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
@@ -48,7 +62,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={(LucideIcons as any)[point.icon] || <Check />} title={point.title} description={point.description} />
+                        <PainPoint key={index} icon={<IconComponent name={point.icon} />} title={point.title} description={point.description} />
                     ))}
                 </div>
             </div>
@@ -143,6 +157,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
   const isEmptyPack = totalChecklists === 0;
 
+  const IconComponent = ({ name }: { name: string }) => {
+    const Icon = (LucideIcons as any)[name];
+    if (!Icon) {
+        return <Check />;
+    }
+    return <Icon className="h-6 w-6 text-green-600 dark:text-green-400" />;
+  };
+
   return (
     <>
       <div className="flex flex-col min-h-screen bg-background">
@@ -170,7 +192,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <Image
+                  <img
                     src={heroImageUrl}
                     alt={pack.title}
                     width={600}
@@ -197,18 +219,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
 
                     <div className="max-w-4xl mx-auto space-y-2">
-                        {pack.sampleItems.map((item, index) => {
-                            const Icon = (LucideIcons as any)[item.icon] || Check;
-                            return (
+                        {pack.sampleItems.map((item, index) => (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <Icon className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <IconComponent name={item.icon} />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
                                 </div>
                             </div>
-                        )})}
+                        ))}
                     </div>
                 </div>
             </section>
