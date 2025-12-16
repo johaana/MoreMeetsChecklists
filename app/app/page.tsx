@@ -9,24 +9,11 @@ import { SiteHeader } from "@/components/layout/header";
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { FaqSection } from "@/components/layout/faq-section";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
-
-
-// --- FAST FIX PLACEHOLDERS ---
-const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "single", collapsible: boolean, className?: string }) => <div {...props}>{children}</div>;
-const AccordionItem = ({ children, value }: { children: React.ReactNode, value: string }) => <div data-value={value}>{children}</div>;
-const AccordionTrigger = ({ children }: { children: React.ReactNode }) => <button>{children}</button>;
-const AccordionContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-
-const Carousel = ({ children, plugins, className }: { children: React.ReactNode, plugins?: any[], className?: string }) => <div className={className}>{children}</div>;
-const CarouselContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const CarouselItem = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const CarouselPrevious = (props: any) => <button {...props}>&lt;</button>;
-const CarouselNext = (props: any) => <button {...props}>&gt;</button>;
-
-const Autoplay = (options: any) => ({});
-// --- END FAST FIX PLACEHOLDERS ---
 
 
 const painPoints = {

@@ -11,16 +11,15 @@ import { SiteHeader } from "@/components/layout/header";
 import { handleDownload } from '@/lib/download';
 import type { PremiumPack } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
-
-// --- FAST FIX PLACEHOLDERS ---
-const AlertDialog = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => open ? <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center" onClick={() => onOpenChange(false)}>{children}</div> : null;
-const AlertDialogContent = ({ children, ...props }: { children: React.ReactNode}) => <div className="bg-white p-6 rounded-lg shadow-lg" {...props} onClick={e => e.stopPropagation()}>{children}</div>;
-const AlertDialogHeader = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const AlertDialogTitle = ({ children }: { children: React.ReactNode }) => <h2 className="text-lg font-bold">{children}</h2>;
-const AlertDialogDescription = ({ children }: { children: React.ReactNode }) => <p className="text-sm text-gray-500">{children}</p>;
-const AlertDialogFooter = ({ children }: { children: React.ReactNode }) => <div className="mt-4 flex justify-end">{children}</div>;
-const AlertDialogAction = ({ children, onClick }: { children: React.ReactNode, onClick: () => void }) => <Button onClick={onClick}>{children}</Button>;
-// --- END FAST FIX PLACEHOLDERS ---
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogFooter,
+} from '@/components/ui/alert-dialog';
 
 
 function ThankYouContent() {
@@ -170,7 +169,7 @@ function ThankYouContent() {
          <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle><div className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</div></AlertDialogTitle>
+                    <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
                     <AlertDialogDescription>
                         Your checklist has started downloading. Please check your downloads folder.
                     </AlertDialogDescription>

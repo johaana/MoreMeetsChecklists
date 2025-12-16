@@ -4,23 +4,24 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Separator } from "@/components/ui/separator";
+import * as LucideIcons from "lucide-react"
 
-// --- FAST FIX PLACEHOLDERS ---
-const Sheet = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => open ? <div className="fixed inset-0 bg-black/50 z-50" onClick={() => onOpenChange(false)}><div className="fixed right-0 top-0 h-full w-full max-w-sm bg-background p-0" onClick={e => e.stopPropagation()}>{children}</div></div> : null;
-const SheetContent = ({ children, ...props }: { children: React.ReactNode, side: string, className:string }) => <div {...props}>{children}</div>;
-const SheetHeader = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const SheetTitle = ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>;
-const SheetTrigger = ({ children, onClick }: { children: React.ReactNode, onClick: () => void }) => <div onClick={onClick}>{children}</div>;
-const ScrollArea = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`overflow-auto ${className}`}>{children}</div>;
-const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "multiple", className?: string }) => <div {...props}>{children}</div>;
-const AccordionItem = ({ children, value }: { children: React.ReactNode, value: string }) => <div data-value={value}>{children}</div>;
-const AccordionTrigger = ({ children, className }: { children: React.ReactNode, className?:string }) => <button className={className}>{children}</button>;
-const AccordionContent = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={className}>{children}</div>;
-const Separator = () => <hr />;
-// --- END FAST FIX PLACEHOLDERS ---
+const IconComponent = ({ name, className }: { name: string, className?: string }) => {
+    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+    const Icon = (LucideIcons as any)[iconName];
+    if (!Icon) {
+        return <LucideIcons.Package className={className} />;
+    }
+    return <Icon className={className} />;
+};
+
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
@@ -46,19 +47,16 @@ const SolutionsList = () => (
             <div key={category} className="flex flex-col mb-4 md:mb-0 break-inside-avoid">
                 <h5 className="font-bold text-sm text-primary/90 mb-2 px-2">{category}</h5>
                 <ul className="space-y-1">
-                    {packs.map(pack => {
-                        const Icon = pack.icon;
-                        return (
-                            <li key={pack.id}>
-                                <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
-                                    <span className="shrink-0 w-5 h-5 flex items-center justify-center">
-                                        <Icon className="w-4 h-4" />
-                                    </span>
-                                    <span className="flex-1 leading-snug">{pack.title}</span>
-                                </Link>
-                            </li>
-                        )
-                    })}
+                    {packs.map(pack => (
+                        <li key={pack.id}>
+                            <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
+                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">
+                                    <IconComponent name={pack.icon} className="w-4 h-4" />
+                                </span>
+                                <span className="flex-1 leading-snug">{pack.title}</span>
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </div>
         ))}
@@ -165,7 +163,7 @@ export function SiteHeader() {
             {/* Mobile Navigation */}
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-                    <SheetTrigger onClick={() => setIsSheetOpen(true)}>
+                    <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
@@ -188,7 +186,7 @@ export function SiteHeader() {
                                             SOP Library
                                         </Link>
                                     </div>
-                                    <AccordionItem value="packs">
+                                    <AccordionItem value="packs" className="border-b-0">
                                         <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
                                             All Premium Packs
                                         </AccordionTrigger>
@@ -197,15 +195,12 @@ export function SiteHeader() {
                                                 <div key={category} className="ml-4 pl-4 border-l">
                                                     <h5 className="font-semibold text-base text-primary/90 mt-2 mb-1">{category}</h5>
                                                     <div className="flex flex-col gap-1">
-                                                        {packs.map(pack => {
-                                                          const Icon = pack.icon;
-                                                          return (
+                                                        {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                                <Icon className="w-4 h-4 shrink-0" />
+                                                                <IconComponent name={pack.icon} className="w-4 h-4 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
-                                                          )
-                                                        })}
+                                                        ))}
                                                     </div>
                                                 </div>
                                             ))}

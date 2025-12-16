@@ -1,12 +1,5 @@
 import React from 'react';
-
-// --- FAST FIX PLACEHOLDERS ---
-const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "single", collapsible: boolean, className?: string }) => <div {...props}>{children}</div>;
-const AccordionItem = ({ children, value }: { children: React.ReactNode, value: string }) => <div data-value={value}>{children}</div>;
-const AccordionTrigger = ({ children }: { children: React.ReactNode }) => <button>{children}</button>;
-const AccordionContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-// --- END FAST FIX PLACEHOLDERS ---
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const FaqSection = () => (
     <section id="faq" className="w-full py-16 md:py-24">
