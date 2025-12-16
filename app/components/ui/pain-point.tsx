@@ -1,18 +1,20 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
-type IconProps = {
-  icon: React.ElementType;
+interface IconComponentProps {
+  icon: LucideIcon;
   className?: string;
-};
+}
 
-export function IconComponent({ icon: Icon, className }: IconProps) {
+export function IconComponent({ icon: Icon, className }: IconComponentProps) {
   if (!Icon) return null;
   return <Icon className={className ?? "h-6 w-6"} />;
 }
 
-export const PainPoint = ({ icon, title, description }: { icon: React.ElementType, title: string, description: string }) => (
+export const PainPoint = ({ icon, title, description }: { icon: LucideIcon, title: string, description: string }) => (
     <Card>
         <CardHeader className="flex flex-row items-center gap-4 space-y-0">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
@@ -25,5 +27,3 @@ export const PainPoint = ({ icon, title, description }: { icon: React.ElementTyp
         </CardContent>
     </Card>
 );
-
-    

@@ -20,6 +20,7 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
   />
 );
+
 const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => {
     // Basic Tabs implementation for FAST mode
     const [activeTab, setActiveTab] = React.useState(defaultValue);
@@ -46,7 +47,7 @@ const Tabs = ({ children, defaultValue, onValueChange, className }: { children: 
 };
 
 const TabsList = ({ children, className, activeTab, onTabClick }: { children: React.ReactNode, className?:string, activeTab?: string, onTabClick?: (value: string) => void }) => (
-  <div className={`inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
+  <div className={`flex gap-1 rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
       {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === TabsTrigger) {
               return React.cloneElement(child, {
@@ -94,7 +95,7 @@ const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: str
       type="checkbox" 
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => onCheckedChange(e.target.checked)} 
       {...rest} 
-      className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+      className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" 
     />
   );
 };
@@ -354,6 +355,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
     
 
+    
