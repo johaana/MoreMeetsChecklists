@@ -9,10 +9,10 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from 'lucide-react';
-import Image from 'next/image';
 import React from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { subscribeToBlog } from '@/app/blog/actions';
+
 
 // --- FAST FIX PLACEHOLDERS ---
 const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
@@ -26,16 +26,16 @@ const Badge = ({ children, className, ...props }: { children: React.ReactNode, c
     {children}
   </span>
 );
-const Sheet = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const SheetContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+const Sheet = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => open ? <div className="fixed inset-0 bg-black/50 z-50" onClick={() => onOpenChange(false)}><div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4" onClick={e => e.stopPropagation()}>{children}</div></div> : null;
+const SheetContent = ({ children, side, className }: { children: React.ReactNode, side: string, className: string }) => <div>{children}</div>;
 const SheetHeader = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const SheetTitle = ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>;
-const SheetTrigger = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const ScrollArea = ({ children }: { children: React.ReactNode }) => <div className="overflow-auto">{children}</div>;
-const DropdownMenu = ({ children }: { children: React.ReactNode }) => <div className="relative inline-block text-left">{children}</div>;
-const DropdownMenuContent = ({ children }: { children: React.ReactNode }) => <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">{children}</div>;
+const SheetTitle = ({ children }: { children: React.ReactNode }) => <h2 className="font-bold text-lg">{children}</h2>;
+const SheetTrigger = ({ children }: { children: React.ReactNode }) => children;
+const ScrollArea = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`overflow-auto ${className}`}>{children}</div>;
+const DropdownMenu = ({ children, modal }: { children: React.ReactNode, modal: boolean }) => <div className="relative inline-block text-left">{children}</div>;
+const DropdownMenuContent = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${className}`}>{children}</div>;
 const DropdownMenuItem = ({ children, onSelect }: { children: React.ReactNode, onSelect: () => void}) => <a href="#" onClick={(e) => { e.preventDefault(); onSelect(); }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{children}</a>;
-const DropdownMenuTrigger = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+const DropdownMenuTrigger = ({ children }: { children: React.ReactNode }) => children;
 // --- END FAST FIX PLACEHOLDERS ---
 
 
@@ -131,14 +131,14 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
-                <DropdownMenu>
-                    <DropdownMenuTrigger>
+                <DropdownMenu modal={false}>
+                    <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
                            <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className="max-h-[50vh] overflow-y-auto">
                         {secondaryTags.map(tag => (
                              <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)}>
                                 {tag}
@@ -167,14 +167,14 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         Clear
                     </Button>
                 )}
-                 <Sheet>
+                 <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
+                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg" onClick={() => setSheetOpen(true)}>
                             <Filter className="w-6 h-6" />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent>
-                        <SheetHeader>
+                    <SheetContent side="bottom" className="rounded-t-2xl">
+                        <SheetHeader className="mb-4">
                             <SheetTitle>Filter by Category</SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="h-[50vh]">
@@ -274,10 +274,9 @@ export default function BlogClientPage() {
                                 <div className="md:hidden">
                                     <div className="relative w-full h-auto aspect-[16/9]">
                                      {currentFeaturedPost.imageUrl && (
-                                        <Image
+                                        <img
                                             src={currentFeaturedPost.imageUrl}
                                             alt={currentFeaturedPost.title}
-                                            fill
                                             className="w-full h-full object-cover"
                                         />
                                     )}
@@ -304,11 +303,10 @@ export default function BlogClientPage() {
                                         <div className="absolute inset-0 z-0">
                                              {currentFeaturedPost.imageUrl && (
                                                 <>
-                                                    <Image
+                                                    <img
                                                         src={currentFeaturedPost.imageUrl}
                                                         alt={currentFeaturedPost.title}
-                                                        fill
-                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                                     />
                                                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
                                                 </>
@@ -317,7 +315,7 @@ export default function BlogClientPage() {
                                         <div className="relative z-10 p-10 space-y-4 text-white">
                                             <div className="flex flex-wrap gap-2">
                                                 {currentFeaturedPost.tags.map(tag => (
-                                                    <Badge key={tag} className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                                         {tag}
                                                     </Badge>
                                                 ))}
@@ -354,10 +352,9 @@ export default function BlogClientPage() {
                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
                             <div className="relative w-full h-auto aspect-[16/9]">
                             {post.imageUrl ? (
-                                    <Image
+                                    <img
                                         src={post.imageUrl}
                                         alt={post.title}
-                                        fill
                                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                                     />
                             ): (

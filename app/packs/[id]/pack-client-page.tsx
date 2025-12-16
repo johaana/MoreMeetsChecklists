@@ -10,7 +10,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { SiteHeader } from '@/components/layout/header';
-import { Button } from '@/components/ui/button';
 import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
@@ -62,7 +61,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={<IconComponent name={point.icon} />} title={point.title} description={point.description} />
+                        <PainPoint key={index} icon={<IconComponent name={point.icon as string} />} title={point.title} description={point.description} />
                     ))}
                 </div>
             </div>
@@ -195,9 +194,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   <img
                     src={heroImageUrl}
                     alt={pack.title}
-                    width={600}
-                    height={400}
-                    className="rounded-2xl shadow-2xl object-cover aspect-[3/2]"
+                    className="rounded-2xl shadow-2xl object-cover aspect-[3/2] w-full h-auto"
                   />
                 </div>
               </div>

@@ -1,4 +1,5 @@
 
+
 import { notFound } from 'next/navigation';
 import { blogPosts, BlogPost } from '@/lib/blog-posts';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -8,7 +9,6 @@ import { Footer } from '@/components/layout/footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
@@ -128,11 +128,9 @@ function YouMightAlsoLike({ currentSlug }: { currentSlug: string }) {
           <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
             {post.imageUrl && (
               <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
-                <Image
+                <img
                   src={post.imageUrl}
                   alt={post.title}
-                  width={600}
-                  height={340}
                   className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                 />
               </Link>
@@ -234,13 +232,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
             {post.imageUrl && (
                 <div className="my-8 md:my-12 rounded-2xl overflow-hidden shadow-lg">
-                    <Image
+                    <img
                         src={post.imageUrl}
                         alt={post.title}
-                        width={1200}
-                        height={675}
                         className="w-full object-cover"
-                        priority
                     />
                 </div>
             )}
