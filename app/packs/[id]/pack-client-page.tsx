@@ -10,7 +10,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { SiteHeader } from '@/components/layout/header';
-import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import { handleDownload } from '@/lib/download';
@@ -36,6 +35,8 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
   />
 );
+const Autoplay = (options: any) => ({});
+
 // --- END FAST FIX PLACEHOLDERS ---
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
@@ -47,7 +48,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
       if (!Icon) {
           return <Check />;
       }
-      return <Icon className="w-6 h-6" />;
+      return <Icon className="w-6 h-6 text-accent" />;
     };
 
     return (
@@ -216,7 +217,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
 
                     <div className="max-w-4xl mx-auto space-y-2">
-                        {pack.sampleItems.map((item, index) => (
+                        {pack.sampleItems.map((item, index) => {
+                           return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
                                     <IconComponent name={item.icon} />
@@ -225,7 +227,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
                                 </div>
                             </div>
-                        ))}
+                        )})}
                     </div>
                 </div>
             </section>
