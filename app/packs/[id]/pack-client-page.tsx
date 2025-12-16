@@ -14,6 +14,10 @@ import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { Accordion } from '@/components/ui/accordion';
+
 
 const IconComponent = ({ name, className }: { name: string, className?:string }) => {
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
@@ -24,21 +28,6 @@ const IconComponent = ({ name, className }: { name: string, className?:string })
     return <Icon className={className} />;
 };
 
-
-// --- FAST FIX PLACEHOLDERS ---
-const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "single", collapsible: boolean, className?: string }) => <div {...props}>{children}</div>;
-const AccordionItem = ({ children, value }: { children: React.ReactNode, value: string }) => <div data-value={value}>{children}</div>;
-const AccordionTrigger = ({ children }: { children: React.ReactNode }) => <button>{children}</button>;
-const AccordionContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const Carousel = ({ children, plugins, className }: { children: React.ReactNode, plugins?: any[], className?: string }) => <div className={className}>{children}</div>;
-const CarouselContent = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const CarouselItem = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const CarouselPrevious = (props: any) => <button {...props}>&lt;</button>;
-const CarouselNext = (props: any) => <button {...props}>&gt;</button>;
-
-const Autoplay = (options: any) => ({});
-
-// --- END FAST FIX PLACEHOLDERS ---
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -203,10 +192,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="max-w-4xl mx-auto space-y-2">
                         {pack.sampleItems.map((item, index) => {
+                           const Icon = item.icon as React.ElementType;
                            return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <IconComponent name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <Icon className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
@@ -245,7 +235,5 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    
 
     
