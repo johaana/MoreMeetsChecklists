@@ -1,6 +1,16 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
+import * as LucideIcons from 'lucide-react';
+
+const Icon = ({ name, className }: { name: string, className?: string }) => {
+    const LucideIcon = (LucideIcons as any)[name];
+    if (!LucideIcon) {
+        return <LucideIcons.Package className={className} />;
+    }
+    return <LucideIcon className={className} />;
+};
+
 
 export const PainPoint = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
     <Card>
