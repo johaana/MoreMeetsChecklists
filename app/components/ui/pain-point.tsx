@@ -10,7 +10,7 @@ interface IconComponentProps {
 
 export function IconComponent({ icon: Icon, className }: IconComponentProps) {
   if (!Icon) return null;
-  return <Icon className={className ?? "h-6 w-6"} />;
+  return <Icon className={className ?? "h-6 w-6 text-accent"} />;
 }
 
 export const PainPoint = ({ icon, title, description }: { icon: LucideIcon, title: string, description: string }) => (

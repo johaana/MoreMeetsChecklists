@@ -1,7 +1,5 @@
 
-import React from 'react';
 import { Bug, Siren, TrendingUp, KeyRound, Zap, Users, Shield, Factory, Recycle, Building, Wrench, FileLock, Stethoscope, Sparkles, Pill, UserCheck, Bus, Home, TestTube, Theater, Building2, Utensils, Film, Lock, Package, Truck, HardHat, FileCheck as FileCheckIcon, DollarSign, Megaphone, BarChart3, DatabaseZap, Cloud, Handshake, Fish, Scissors, Map, Banknote, Popcorn, Projector, Ticket, Dumbbell, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, LifeBuoy, PawPrint, Coins, ClipboardList, GalleryVertical, Computer, CakeSlice, Scale, HelpingHand, FerrisWheel, Car, BookOpen, ShieldCheck, Gem, Eye } from 'lucide-react';
-
 
 export const painPointsContent = {
     bakery_confectionery_pack: {
