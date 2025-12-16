@@ -2,7 +2,7 @@
 'use server';
 
 import { z } from 'zod';
-import { premiumPacks, type PremiumPack } from '@/lib/premium-packs.tsx';
+import { premiumPacks, type PremiumPack } from '@/lib/premium-packs';
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 const ContactFormSchema = z.object({
@@ -137,4 +137,3 @@ export async function verifyRazorpayPayment(
         return { success: false, error: 'An unexpected error occurred while verifying your payment.' };
     }
 }
-

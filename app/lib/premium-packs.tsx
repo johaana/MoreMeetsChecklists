@@ -8,7 +8,7 @@ export type Checklist = {
     frequency: string;
     role: string;
     summary: string;
-    icon: React.ReactElement;
+    icon: React.ElementType;
     tasks: {
         id: string;
         description: string;
