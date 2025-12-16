@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import { premiumPacks } from '@/lib/premium-packs';
-import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
+import type { PremiumPack } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,6 +12,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { handleDownload } from '@/lib/download';
 import { SiteHeader } from '@/components/layout/header';
+import * as LucideIcons from 'lucide-react';
+
+const IconComponent = ({ name }: { name: string }) => {
+    const Icon = (LucideIcons as any)[name];
+    if (!Icon) {
+        return <LucideIcons.Package className="w-8 h-8 text-primary" />;
+    }
+    return <Icon className="w-8 h-8 text-primary" />;
+};
 
 
 export default function MasterAccessClientPage() {
@@ -93,7 +102,7 @@ export default function MasterAccessClientPage() {
                                 {premiumPacks.map((pack) => (
                                     <Card key={pack.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                            {React.cloneElement(pack.icon, { className: "w-8 h-8 text-primary" })}
+                                            <IconComponent name={pack.icon} />
                                             <div>
                                                 <h3 className="font-semibold">{pack.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{pack.category}</p>
@@ -114,7 +123,7 @@ export default function MasterAccessClientPage() {
                                 {individualChecklists.map((checklist) => (
                                     <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                             {React.cloneElement(checklist.icon, { className: "w-8 h-8 text-primary" })}
+                                            <IconComponent name={checklist.icon} />
                                             <div>
                                                 <h3 className="font-semibold">{checklist.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>
