@@ -1,3 +1,5 @@
+
+
 'use client';
 
 import Link from 'next/link';
@@ -16,7 +18,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { subscribeToBlog } from './actions';
+import { subscribeToBlog } from '@/app/blog/actions';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -387,3 +389,5 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+    

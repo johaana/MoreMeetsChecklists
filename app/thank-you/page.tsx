@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -191,7 +192,7 @@ function ThankYouContent() {
   );
 }
 
-export default function ThankYouPage() {
+export default function ThankYouPageWrapper() {
   return (
     <React.Suspense fallback={
         <div className="flex flex-col min-h-screen bg-background">
