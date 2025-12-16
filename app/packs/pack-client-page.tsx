@@ -17,10 +17,9 @@ import { PainPoint } from '@/components/ui/pain-point';
 import { handleDownload } from '@/lib/download';
 import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-packs";
 import Image from 'next/image';
-import PricingClient from '../pricing-client';
+import PricingClient from './pricing-client';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
-import { Input } from '@/components/ui/input';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
@@ -28,6 +27,12 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 
 // --- FAST FIX PLACEHOLDERS ---
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+  <input
+    {...props}
+    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+  />
+);
 const Accordion = ({ children, ...props }: { children: React.ReactNode, type: "single", collapsible: boolean, className?: string }) => <div {...props}>{children}</div>;
 const AccordionItem = ({ children, value }: { children: React.ReactNode, value: string }) => <div data-value={value}>{children}</div>;
 const AccordionTrigger = ({ children }: { children: React.ReactNode }) => <button>{children}</button>;
@@ -251,3 +256,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
+
+    
+
+    
