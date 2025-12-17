@@ -1,7 +1,7 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
-import { LucideIcon } from 'lucide-react';
+import { type LucideIcon } from 'lucide-react';
 
 type IconComponentProps = {
   icon: LucideIcon;
