@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -5,16 +6,44 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Check, Download, Loader2, Banknote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
-import { Input } from '@/components/ui/input';
-import { ValueProposition } from '@/components/ui/value-proposition';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
+import * as LucideIcons from 'lucide-react';
+
+
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+    <input {...props} className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+);
+
+const Tabs = ({ children, ...props }: React.ComponentProps<'div'>) => <div {...props}>{children}</div>;
+const TabsList = ({ children, ...props }: React.ComponentProps<'div'>) => <div {...props}>{children}</div>;
+const TabsTrigger = ({ children, ...props }: React.ComponentProps<'button'>) => <button {...props}>{children}</button>;
+
+const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string; competitorPrice: string; valueStatement: string }) => (
+  <div className="rounded-lg bg-secondary/50 p-4 text-center border-2 border-dashed border-primary/20">
+    <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
+    <div className="grid grid-cols-2 gap-4 items-center">
+        <div className="flex flex-col items-center p-2 rounded-md bg-background/50">
+            <p className="text-xs text-muted-foreground">Their Price</p>
+            <p className="text-lg font-bold text-destructive line-through">{competitorPrice}</p>
+        </div>
+        <div className="flex flex-col items-center p-2 rounded-md bg-green-100 dark:bg-green-900/50">
+             <p className="text-xs text-green-800 dark:text-green-200">Our Price</p>
+            <p className="text-lg font-bold text-green-700 dark:text-green-300">{ourPrice}</p>
+        </div>
+    </div>
+     <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
+  </div>
+);
+const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { onCheckedChange?: (checked: boolean) => void }) => (
+    <input type="checkbox" onChange={(e) => props.onCheckedChange?.(e.target.checked)} {...props} />
+);
+
+const Label = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => <label {...props} />;
+
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -75,20 +104,20 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 
 const ComplianceIcon = ({ standard }: { standard: string }) => {
     const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <Landmark className="w-4 h-4 text-gray-500" />;
+    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
@@ -265,4 +294,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-    

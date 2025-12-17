@@ -16,7 +16,6 @@ import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { Accordion } from '@/components/ui/accordion';
 
 
 const IconComponent = ({ name, className }: { name: string, className?:string }) => {
@@ -234,4 +233,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-    
