@@ -12,87 +12,11 @@ import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from '
 import React from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { subscribeToBlog } from '@/app/blog/actions';
+import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { cn } from '@/lib/utils';
-
-
-// --- FAST FIX PLACEHOLDERS ---
-const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
-  <input
-    {...props}
-    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-  />
-);
-const Sheet = ({ children, open, onOpenChange, ...props }: { children: React.ReactNode, open?: boolean, onOpenChange?: (open: boolean) => void } & React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <>
-      {open && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40" 
-          onClick={() => onOpenChange?.(false)}
-        />
-      )}
-      <div 
-        className={cn(
-          "fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out",
-          open ? 'translate-y-0' : 'translate-y-full',
-          props.className
-        )} 
-        onClick={e => e.stopPropagation()}
-        {...props}
-      >
-        {children}
-      </div>
-    </>
-  );
-};
-const SheetTrigger = ({ children, ...props }: {children: React.ReactNode} & React.ButtonHTMLAttributes<HTMLButtonElement>) => <div {...props}>{children}</div>;
-const SheetContent = ({ children, side, className, ...props }: { children: React.ReactNode, side: 'bottom', className?: string }) => (
-    <div className={cn("bg-background p-4 rounded-t-2xl shadow-lg", className)} {...props}>
-        {children}
-    </div>
-);
-const SheetHeader = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={className}>{children}</div>;
-const SheetTitle = ({ children, className }: { children: React.ReactNode, className?:string }) => <h2 className={cn("text-lg font-semibold text-foreground", className)}>{children}</h2>;
-
-const DropdownMenu = ({ children, modal }: { children: React.ReactNode, modal?: boolean }) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const ref = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (ref.current && !ref.current.contains(event.target as Node)) {
-                setIsOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [ref]);
-
-    const childrenWithProps = React.Children.map(children, child => {
-        if (React.isValidElement(child)) {
-             // @ts-ignore
-            if (child.type === DropdownMenuTrigger) {
-                 return React.cloneElement(child, { onClick: () => setIsOpen(!isOpen) } as React.HTMLAttributes<HTMLElement>);
-            // @ts-ignore
-            } else if (child.type === DropdownMenuContent) {
-                return isOpen ? child : null;
-            }
-        }
-        return child;
-    });
-
-    return <div className="relative inline-block text-left" ref={ref}>{childrenWithProps}</div>;
-};
-
-const DropdownMenuTrigger = ({ children, onClick }: { children: React.ReactNode, onClick?: () => void }) => React.cloneElement(children as React.ReactElement, { onClick });
-const DropdownMenuContent = ({ children, className }: { children: React.ReactNode, className?: string }) => <div className={cn("origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-background ring-1 ring-black ring-opacity-5 focus:outline-none", className)}>{children}</div>;
-const DropdownMenuItem = ({ children, onSelect }: { children: React.ReactNode, onSelect?: () => void }) => <button onClick={onSelect} className="block w-full text-left px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground">{children}</button>;
-// --- END FAST FIX PLACEHOLDERS ---
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -187,7 +111,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
-                <DropdownMenu modal={false}>
+                <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
@@ -460,5 +384,3 @@ export default function BlogClientPage() {
     </div>
   );
 }
-
-    
