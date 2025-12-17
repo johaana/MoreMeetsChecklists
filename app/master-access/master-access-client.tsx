@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -6,13 +7,20 @@ import { premiumPacks } from '@/lib/premium-packs';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { handleDownload } from '@/lib/download';
 import { SiteHeader } from '@/components/layout/header';
 import * as LucideIcons from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+  <input
+    {...props}
+    className={cn("flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", props.className)}
+  />
+);
 
 const IconComponent = ({ name, className }: { name: string, className?:string }) => {
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
@@ -124,7 +132,7 @@ export default function MasterAccessClientPage() {
                                 {individualChecklists.map((checklist) => (
                                     <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                            <IconComponent name={checklist.icon} className="w-8 h-8 text-primary" />
+                                             <IconComponent name={checklist.icon} className="w-8 h-8 text-primary" />
                                             <div>
                                                 <h3 className="font-semibold">{checklist.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>
@@ -144,3 +152,5 @@ export default function MasterAccessClientPage() {
         </div>
     );
 }
+
+    

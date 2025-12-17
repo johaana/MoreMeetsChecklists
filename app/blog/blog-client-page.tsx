@@ -19,18 +19,28 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
     {...props}
-    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
   />
 );
-const Sheet = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => open ? <div className="fixed inset-0 bg-black/50 z-50" onClick={() => onOpenChange(false)}><div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4" onClick={e => e.stopPropagation()}>{children}</div></div> : null;
-const SheetContent = ({ children, side, className }: { children: React.ReactNode, side: string, className: string }) => <div>{children}</div>;
-const SheetHeader = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const SheetTitle = ({ children }: { children: React.ReactNode }) => <h2 className="font-bold text-lg">{children}</h2>;
-const SheetTrigger = ({ children }: { children: React.ReactNode }) => children;
-const DropdownMenu = ({ children, modal }: { children: React.ReactNode, modal: boolean }) => <div className="relative inline-block text-left">{children}</div>;
-const DropdownMenuContent = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${className}`}>{children}</div>;
-const DropdownMenuItem = ({ children, onSelect }: { children: React.ReactNode, onSelect: () => void}) => <a href="#" onClick={(e) => { e.preventDefault(); onSelect(); }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{children}</a>;
+const Sheet = ({ children, open, onOpenChange }: { children: React.ReactNode, open?: boolean, onOpenChange?: (open: boolean) => void }) => {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 bg-black/50 z-50" onClick={() => onOpenChange?.(false)}>
+      <div className="fixed bottom-0 left-0 right-0 bg-background p-4 rounded-t-2xl shadow-lg" onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>
+  );
+};
+const SheetTrigger = ({ children, ...props }: {children: React.ReactNode} & React.ButtonHTMLAttributes<HTMLButtonElement>) => <div {...props}>{children}</div>;
+const SheetContent = ({ children, ...props }: { children: React.ReactNode, side: 'bottom', className?: string }) => <div {...props}>{children}</div>;
+const SheetHeader = ({ children, className }: { children: React.ReactNode, className?:string }) => <div className={className}>{children}</div>;
+const SheetTitle = ({ children, className }: { children: React.ReactNode, className?:string }) => <h2 className={cn("text-lg font-semibold text-foreground", className)}>{children}</h2>;
+
+const DropdownMenu = ({ children }: { children: React.ReactNode }) => <div className="relative inline-block text-left">{children}</div>;
 const DropdownMenuTrigger = ({ children }: { children: React.ReactNode }) => children;
+const DropdownMenuContent = ({ children, className }: { children: React.ReactNode, className?: string }) => <div className={cn("origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-background ring-1 ring-black ring-opacity-5 focus:outline-none", className)}>{children}</div>;
+const DropdownMenuItem = ({ children, onSelect }: { children: React.ReactNode, onSelect?: () => void }) => <button onClick={onSelect} className="block w-full text-left px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground">{children}</button>;
 // --- END FAST FIX PLACEHOLDERS ---
 
 
@@ -126,7 +136,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         {tag}
                     </Button>
                 ))}
-                <DropdownMenu modal={false}>
+                <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "More Categories"}
@@ -164,7 +174,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                 )}
                  <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg" onClick={() => setSheetOpen(true)}>
+                        <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
                             <Filter className="w-6 h-6" />
                         </Button>
                     </SheetTrigger>
@@ -399,5 +409,7 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+    
 
     
