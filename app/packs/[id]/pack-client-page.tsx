@@ -230,5 +230,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    

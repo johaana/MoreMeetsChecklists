@@ -596,5 +596,3 @@ export const premiumPacks: PremiumPack[] = [
         checklists: []
     }
 ];
-
-    

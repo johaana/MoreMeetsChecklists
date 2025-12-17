@@ -1,23 +1,29 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
-import { type LucideIcon } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
-type IconComponentProps = {
-  icon: LucideIcon;
-  className?: string;
+type PainPointProps = { 
+    icon: string, 
+    title: string, 
+    description: string 
 };
 
-export function IconComponent({ icon: Icon, className }: IconComponentProps) {
-  if (!Icon) return null;
-  return <Icon className={className ?? "h-6 w-6 text-accent"} />;
-}
+const IconComponent = ({ name, className }: { name: string, className?: string }) => {
+    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+    const Icon = (LucideIcons as any)[iconName];
+    if (!Icon) {
+        return <LucideIcons.AlertTriangle className={className} />; // Default icon
+    }
+    return <Icon className={className} />;
+};
 
-export const PainPoint = ({ icon, title, description }: { icon: LucideIcon, title: string, description: string }) => (
+
+export const PainPoint = ({ icon, title, description }: PainPointProps) => (
     <Card>
         <CardHeader className="flex flex-row items-center gap-4 space-y-0">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                <IconComponent icon={icon} />
+                <IconComponent name={icon} className="h-6 w-6 text-accent"/>
             </div>
             <CardTitle>{title}</CardTitle>
         </CardHeader>
@@ -26,5 +32,3 @@ export const PainPoint = ({ icon, title, description }: { icon: LucideIcon, titl
         </CardContent>
     </Card>
 );
-
-    
