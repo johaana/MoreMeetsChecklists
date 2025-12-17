@@ -1,5 +1,4 @@
-
-import { Bug, Siren, TrendingUp, KeyRound, Zap, Users, Shield, Factory, Recycle, Building, Wrench, FileLock, Stethoscope, Sparkles, Pill, UserCheck, Bus, Home, TestTube, Theater, Building2, Utensils, Film, Lock, Package, Truck, HardHat, FileCheck as FileCheckIcon, DollarSign, Megaphone, BarChart3, DatabaseZap, Cloud, Handshake, Fish, Scissors, Map, Banknote, Popcorn, Projector, Ticket, Dumbbell, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, LifeBuoy, PawPrint, Coins, ClipboardList, GalleryVertical, Computer, CakeSlice, Scale, HelpingHand, FerrisWheel, Car, BookOpen, ShieldCheck, Gem, Eye } from 'lucide-react';
+import { Bug, Siren, TrendingUp, KeyRound, Zap, Users, Shield, Factory, Recycle, Building, Wrench, FileLock, Stethoscope, Sparkles, Pill, UserCheck, Bus, Home, TestTube, Theater, Building2, Utensils, Film, Lock, Package, Truck, HardHat, FileCheck, DollarSign, Megaphone, BarChart3, DatabaseZap, Cloud, Handshake, Fish, Scissors, Map, Banknote, Popcorn, Projector, Ticket, Dumbbell, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, LifeBuoy, PawPrint, Coins, ClipboardList, GalleryVertical, Computer, CakeSlice, Scale, HelpingHand, FerrisWheel, Car, BookOpen, ShieldCheck, Gem, Eye } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 type PainPoint = {
@@ -229,7 +228,7 @@ export const painPointsContent: Record<string, PainPointContent> = {
         title: "Anatomy of a Medical Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
         points: [
-            { icon: FileCheckIcon, title: "Wrong-Side Brain Surgery (Rhode Island Hospital, 2007)", description: "A veteran neurosurgeon operated on the wrong side of a patient's head. Our 'Surgical Safety Checklist,' aligned with WHO standards, prevents this 'never event' through a mandatory pre-incision 'Time Out'."},
+            { icon: FileCheck, title: "Wrong-Side Brain Surgery (Rhode Island Hospital, 2007)", description: "A veteran neurosurgeon operated on the wrong side of a patient's head. Our 'Surgical Safety Checklist,' aligned with WHO standards, prevents this 'never event' through a mandatory pre-incision 'Time Out'."},
             { icon: Sparkles, title: "JIPMER Sterilization Failure (India, 2019)", description: "An infection outbreak was traced back to improperly sterilized surgical tools. Our 'CSSD & Sterilization' checklist, including biological indicator tests, ensures equipment is sterile." },
             { icon: Pill, title: "Dana-Farber Chemo Overdose (USA, 1995)", description: "A patient died after receiving a four-fold overdose of chemotherapy due to a calculation error. Our 'High-Alert Medication' SOP mandates an independent double-check for exactly these scenarios." },
             { icon: UserCheck, title: "Patient ID Mix-up (Multiple Cases, Global)", description: "Countless errors occur from mixing up patients with similar names. Our 'Patient Identification Protocol' requires using two identifiers (e.g., name and MRN) before any procedure or medication." }
@@ -259,5 +258,3 @@ export const painPointsContent: Record<string, PainPointContent> = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
-
-    

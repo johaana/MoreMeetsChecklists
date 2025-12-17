@@ -3,10 +3,10 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React from 'react';
 import type { LucideIcon } from 'lucide-react';
 
-interface IconComponentProps {
+type IconComponentProps = {
   icon: LucideIcon;
   className?: string;
-}
+};
 
 export function IconComponent({ icon: Icon, className }: IconComponentProps) {
   if (!Icon) return null;
@@ -26,5 +26,3 @@ export const PainPoint = ({ icon, title, description }: { icon: LucideIcon, titl
         </CardContent>
     </Card>
 );
-
-    

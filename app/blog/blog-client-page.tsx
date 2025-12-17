@@ -400,5 +400,4 @@ export default function BlogClientPage() {
   );
 }
 
-
     
