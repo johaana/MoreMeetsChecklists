@@ -26,3 +26,5 @@ export const PainPoint = ({ icon, title, description }: { icon: LucideIcon, titl
         </CardContent>
     </Card>
 );
+
+    

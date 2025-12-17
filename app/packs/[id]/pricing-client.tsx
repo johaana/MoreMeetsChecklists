@@ -12,105 +12,11 @@ import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import * as LucideIcons from 'lucide-react';
-import { cn } from '@/lib/utils';
-
-
-// --- FAST FIX PLACEHOLDERS ---
-const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
-    <input
-      {...props}
-      className={cn(
-        "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-        props.className
-      )}
-    />
-  );
-  
-const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => {
-    // Basic Tabs implementation for FAST mode
-    const [activeTab, setActiveTab] = React.useState(defaultValue);
-
-    const handleTabClick = (value: string) => {
-        setActiveTab(value);
-        onValueChange(value);
-    };
-
-    return (
-        <div className={className}>
-            {React.Children.map(children, (child) => {
-                if (React.isValidElement(child) && child.type === TabsList) {
-                    return React.cloneElement(child, {
-                        // @ts-ignore
-                        activeTab,
-                        onTabClick: handleTabClick
-                    });
-                }
-                return child;
-            })}
-        </div>
-    );
-};
-
-const TabsList = ({ children, className, activeTab, onTabClick }: { children: React.ReactNode, className?:string, activeTab?: string, onTabClick?: (value: string) => void }) => (
-  <div className={cn('inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground', className)}>
-      {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === TabsTrigger) {
-              return React.cloneElement(child, {
-                  // @ts-ignore
-                  isActive: child.props.value === activeTab,
-                  onClick: () => onTabClick?.(child.props.value)
-              });
-          }
-          return child;
-      })}
-  </div>
-);
-
-const TabsTrigger = ({ children, value, isActive, onClick, className }: { children: React.ReactNode, value: string, isActive?: boolean, onClick?: () => void, className?: string }) => (
-  <button 
-    value={value} 
-    onClick={onClick}
-    className={cn('inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50', isActive ? 'bg-background text-foreground shadow-sm' : '', className)}
-  >
-    {children}
-  </button>
-);
-
-const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string; competitorPrice: string; valueStatement: string }) => (
-  <div className="rounded-lg bg-secondary/50 p-4 text-center border-2 border-dashed border-primary/20">
-    <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
-    <div className="grid grid-cols-2 gap-4 items-center">
-        <div className="flex flex-col items-center p-2 rounded-md bg-background/50">
-            <p className="text-xs text-muted-foreground">Their Price</p>
-            <p className="text-lg font-bold text-destructive line-through">{competitorPrice}</p>
-        </div>
-        <div className="flex flex-col items-center p-2 rounded-md bg-green-100 dark:bg-green-900/50">
-             <p className="text-xs text-green-800 dark:text-green-200">Our Price</p>
-            <p className="text-lg font-bold text-green-700 dark:text-green-300">{ourPrice}</p>
-        </div>
-    </div>
-     <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
-  </div>
-);
-
-const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: string, onCheckedChange: (checked: boolean) => void }) => {
-    const { id, onCheckedChange, ...rest } = props;
-    return (
-      <input 
-        type="checkbox" 
-        id={id}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => onCheckedChange(e.target.checked)} 
-        {...rest} 
-        className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground" 
-      />
-    );
-  };
-
-const Label = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => (
-  <label {...props} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" />
-);
-
-// ===== END FAST UI PLACEHOLDERS =====
+import { Input } from '@/components/ui/input';
+import { ValueProposition } from '@/components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -361,4 +267,5 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
     

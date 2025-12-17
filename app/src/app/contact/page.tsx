@@ -6,12 +6,12 @@ import Link from "next/link";
 import { WhatsAppIcon } from "@/components/icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, MapPin } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
+import { Input } from '@/components/ui/input';
 
 
 export default function ContactUsPage() {
@@ -106,3 +106,5 @@ export default function ContactUsPage() {
     </div>
   );
 }
+
+    

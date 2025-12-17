@@ -1,6 +1,5 @@
+
 import React from 'react';
-import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown } from 'lucide-react';
 
 interface ValuePropositionProps {
     ourPrice: string;
@@ -24,3 +23,5 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({ ourPrice, co
          <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
     </div>
 );
+
+    
