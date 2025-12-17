@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import * as React from 'react';
@@ -7,11 +6,12 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Check, Download, Loader2, Banknote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
+import * as LucideIcons from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 
@@ -171,20 +171,20 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 
 const ComplianceIcon = ({ standard }: { standard: string }) => {
     const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <Landmark className="w-4 h-4 text-gray-500" />;
+    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
@@ -361,10 +361,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-    
-
-    
-
-    
-
     
