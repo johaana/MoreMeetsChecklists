@@ -17,7 +17,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay";
 import { Accordion } from '@/components/ui/accordion';
 import { IconComponent } from '@/components/icons';
-import { LucideIcon } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 
 
