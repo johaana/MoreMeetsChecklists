@@ -14,6 +14,10 @@ import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { Accordion } from '@/components/ui/accordion';
+
 
 const IconComponent = ({ name, className }: { name: string, className?:string }) => {
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
@@ -231,4 +235,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   );
 }
 
-    
