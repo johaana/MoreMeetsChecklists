@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { Logo } from "@/components/icons";
+import { Logo, IconComponent } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
@@ -12,17 +12,6 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
-import * as LucideIcons from "lucide-react"
-
-const IconComponent = ({ name, className }: { name: string, className?: string }) => {
-    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-    const Icon = (LucideIcons as any)[iconName];
-    if (!Icon) {
-        return <LucideIcons.Package className={className} />;
-    }
-    return <Icon className={className} />;
-};
-
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];

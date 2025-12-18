@@ -565,30 +565,6 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Streamline your custom order process from client briefing to final delivery.", icon: "package" }
         ],
         checklists: []
-    },
-    {
-        id: 'franchise_operations_pack',
-        title: "Franchise Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/5ace95d6-b828-4c17-8be8-52c09c011361',
-        category: "Franchise",
-        description: "The foundational legal and operational toolkit to enforce brand standards, ensure quality control, and empower franchisee success.",
-        icon: "store",
-        badgeText: "New!",
-        badgeVariant: "accent",
-        whoIsItFor: ["Franchise Founders", "Franchise Operations Heads", "Franchise Business Coaches", "Multi-unit Franchisees"],
-        sampleItems: [
-            { text: "Enforce brand consistency with a visual identity and store operations audit.", icon: "eye" },
-            { text: "Provide a legal framework for quality control and franchisee performance management.", icon: "file-check" },
-            { text: "Streamline franchisee onboarding from site selection to grand opening.", icon: "key-round" },
-            { text: "Standardize financials with SOPs for royalty reconciliation and supplier audits.", icon: "dollar-sign" },
-            { text: "Empower franchisees with a clear guide for day-to-day operations.", icon: "book-open" },
-            { text: "Protect your brand with a system for local marketing compliance and approvals.", icon: "megaphone" },
-        ],
-        checklists: []
     }
 ];
 
