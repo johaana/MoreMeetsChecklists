@@ -1,6 +1,6 @@
 
-import { Bug, Siren, Wrench, Recycle, Eye, TrendingUp, KeyRound, Zap, Shield, Lock, FileLock, Users, Banknote, Bus, TestTube, Building2, Factory, FileCheck, Stethoscope, Sparkles, Home, ClipboardList, Syringe, Gem, CircleDollarSign, Watch, UserCheck, Popcorn, Projector, Ticket, Building, LifeBuoy, Utensils, HardHat, Pill, Barcode, CakeSlice, Thermometer, Package, Store, EyeIcon, DollarSign, BookOpen, Megaphone, Dumbbell, Sprout, Film, Map, Scissors, Video, Cloud, BrainCircuit, DatabaseZap, Handshake, HeartPulse, Star, Globe, Award, BriefcaseBusiness, FerrisWheel, Car } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import React from 'react';
+import { Bug, Siren, Wrench, Recycle, Eye, TrendingUp, KeyRound, Zap, Shield, Lock, FileLock, Users, Banknote, Bus, TestTube, Building2, Factory, FileCheck, Stethoscope, Sparkles, Home, ClipboardList, Syringe, Gem, CircleDollarSign, Watch, UserCheck, Popcorn, Projector, Ticket, Building, LifeBuoy, Utensils, HardHat, Pill, Barcode, CakeSlice, Thermometer, Package, Store, EyeIcon, DollarSign, BookOpen, Megaphone, Dumbbell, Sprout, Film, Map, Scissors, Video, Cloud, BrainCircuit, DatabaseZap, Handshake, HeartPulse, Star, Globe, Award, BriefcaseBusiness, FerrisWheel, Car, LucideIcon, Truck } from 'lucide-react';
 
 type PainPoint = {
     icon: LucideIcon;
