@@ -3,6 +3,7 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
+import { IconComponent } from "../icons";
 
 type PainPointProps = {
     icon: LucideIcon;

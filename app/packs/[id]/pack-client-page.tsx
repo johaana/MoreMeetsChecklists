@@ -12,21 +12,13 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
-import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Accordion } from '@/components/ui/accordion';
-
-
-const IconComponent = ({ name, className }: { name: string, className?:string }) => {
-    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-    const Icon = (LucideIcons as any)[iconName];
-    if (!Icon) {
-        return <LucideIcons.Package className={className} />;
-    }
-    return <Icon className={className} />;
-};
+import { IconComponent } from '@/components/icons';
+import { LucideIcon } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
@@ -43,9 +35,12 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                      <p className="mt-4 text-xs text-muted-foreground italic">{content.disclaimer}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
-                    {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
-                    ))}
+                    {content.points.map((point, index) => {
+                         const Icon = (LucideIcons as any)[point.icon as any] as LucideIcon;
+                        return (
+                            <PainPoint key={index} icon={Icon} title={point.title} description={point.description} />
+                        )
+                    })}
                 </div>
             </div>
         </section>

@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -11,18 +12,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { handleDownload } from '@/lib/download';
 import { SiteHeader } from '@/components/layout/header';
-import * as LucideIcons from 'lucide-react';
+import { IconComponent } from '@/components/icons';
 import { Input } from '@/components/ui/input';
-
-const IconComponent = ({ name, className }: { name: string, className?:string }) => {
-    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-    const Icon = (LucideIcons as any)[iconName];
-    if (!Icon) {
-        return <LucideIcons.Package className={className} />;
-    }
-    return <Icon className={className} />;
-};
-
 
 export default function MasterAccessClientPage() {
     const [password, setPassword] = React.useState('');
@@ -124,7 +115,7 @@ export default function MasterAccessClientPage() {
                                 {individualChecklists.map((checklist) => (
                                     <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                             <IconComponent name={checklist.icon} className="w-8 h-8 text-primary" />
+                                             <IconComponent name={checklist.icon as string} className="w-8 h-8 text-primary" />
                                             <div>
                                                 <h3 className="font-semibold">{checklist.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>

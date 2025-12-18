@@ -7,16 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import React from 'react';
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
-import * as LucideIcons from 'lucide-react';
-
-const IconComponent = ({ name, className }: { name: string, className?:string }) => {
-    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-    const Icon = (LucideIcons as any)[iconName];
-    if (!Icon) {
-        return <LucideIcons.Package className={className} />;
-    }
-    return <Icon className={className} />;
-};
+import { IconComponent } from '@/components/icons';
 
 
 export const metadata: Metadata = {
@@ -71,7 +62,8 @@ export default function LibraryPage() {
                                         {category}
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {packs.map((pack) => (
+                                        {packs.map((pack) => {
+                                            return (
                                             <Link href={`/packs/${pack.id}`} key={pack.id} className="group">
                                                 <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                                                     <CardHeader>
@@ -97,7 +89,7 @@ export default function LibraryPage() {
                                                     </CardContent>
                                                 </Card>
                                             </Link>
-                                        ))}
+                                        )})}
                                     </div>
                                 </div>
                             ))}
@@ -110,4 +102,3 @@ export default function LibraryPage() {
     );
 }
 
-    
