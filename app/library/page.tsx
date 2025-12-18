@@ -7,6 +7,17 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import React from 'react';
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
+import * as LucideIcons from 'lucide-react';
+
+const IconComponent = ({ name, className }: { name: string, className?:string }) => {
+    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+    const Icon = (LucideIcons as any)[iconName];
+    if (!Icon) {
+        return <LucideIcons.Package className={className} />;
+    }
+    return <Icon className={className} />;
+};
+
 
 export const metadata: Metadata = {
     title: 'SOP Checklist Library | MoreMeets',
@@ -60,15 +71,13 @@ export default function LibraryPage() {
                                         {category}
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {packs.map((pack) => {
-                                            const Icon = pack.icon as any;
-                                            return (
+                                        {packs.map((pack) => (
                                             <Link href={`/packs/${pack.id}`} key={pack.id} className="group">
                                                 <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                                                     <CardHeader>
                                                         <div className="flex items-start gap-4">
                                                             <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                                                                <Icon className="w-8 h-8 text-primary" />
+                                                                <IconComponent name={pack.icon} className="w-8 h-8 text-primary" />
                                                             </div>
                                                             <div>
                                                                 <CardTitle className="text-xl font-headline group-hover:text-primary transition-colors">{pack.title}</CardTitle>
@@ -88,7 +97,7 @@ export default function LibraryPage() {
                                                     </CardContent>
                                                 </Card>
                                             </Link>
-                                        )})}
+                                        ))}
                                     </div>
                                 </div>
                             ))}
@@ -101,3 +110,4 @@ export default function LibraryPage() {
     );
 }
 
+    
