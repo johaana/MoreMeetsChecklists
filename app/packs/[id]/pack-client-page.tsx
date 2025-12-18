@@ -15,6 +15,7 @@ import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+
 const IconComponent = ({ name, className }: { name: string, className?:string }) => {
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
     const Icon = (LucideIcons as any)[iconName];
