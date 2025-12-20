@@ -235,22 +235,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </Label>
                             </div>
                            <div className="w-full flex justify-center">
-                                {hasINR && pack.paymentId && (
-                                    <div className={currency === 'INR' ? '' : 'hidden'}>
-                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
-                                            <RazorpayButton paymentId={pack.paymentId} />
-                                        </div>
+                                {currency === 'INR' && hasINR && pack.paymentId && (
+                                    <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                        <RazorpayButton paymentId={pack.paymentId} />
                                     </div>
                                 )}
-                                {hasUSD && pack.lemonSqueezyUrl && (
-                                     <div className={currency === 'USD' ? '' : 'hidden'}>
-                                        <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
-                                            <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
-                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                    Buy Now
-                                                </Link>
-                                            </Button>
-                                        </div>
+                                {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
+                                     <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
+                                        <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
+                                            <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                Buy Now
+                                            </Link>
+                                        </Button>
                                     </div>
                                 )}
                            </div>
@@ -268,4 +264,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 }
 
-    
