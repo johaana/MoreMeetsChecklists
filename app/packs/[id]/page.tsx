@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import { premiumPacks } from '@/lib/premium-packs';
 import type { Metadata, ResolvingMetadata } from 'next';
-import PackClientPage from '../pack-client-page';
+import PackClientPage from './pack-client-page';
 
 
 type Props = {
@@ -129,5 +129,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </>
   );
 }
-
-    
