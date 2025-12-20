@@ -11,10 +11,15 @@ type IconComponentProps = {
 };
 
 export const IconComponent = ({ name, className }: IconComponentProps) => {
+  if (!name) {
+    return <LucideIcons.Package className={className} />;
+  }
+
   const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
   const Icon = (ICONS as any)[iconName] as LucideIcons.LucideIcon;
   
   if (!Icon) {
+    console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
     return <LucideIcons.Package className={className} />;
   }
 
