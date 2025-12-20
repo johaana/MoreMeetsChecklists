@@ -1,9 +1,8 @@
 
-import { notFound } from 'next/navigation';
+import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
+import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
-import PackClientPage from '@/app/packs/[id]/pack-client-page';
-
 
 type Props = {
   params: { id: string }
@@ -39,7 +38,6 @@ const packImageMap: Record<string, string> = {
   'franchise_operations_pack': 'https://i.postimg.cc/5N18qf3p/franchise-business.webp'
 };
 
-
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -55,8 +53,9 @@ export async function generateMetadata(
   }
   
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
+  const checklistsCount = pack.checklists ? pack.checklists.length : 0;
   const title = `${pack.title} - Excel SOP Templates | MoreMeets`;
-  const description = `Download the complete ${pack.title}. Includes ${pack.checklists.length} expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
+  const description = `Download the complete ${pack.title}. Includes ${checklistsCount} expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
   
   const ogUrl = new URL(`${siteUrl}/api/og`);
   ogUrl.searchParams.set('type', 'pack');
@@ -94,6 +93,7 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   
   const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
+  const checklistsCount = pack.checklists ? pack.checklists.length : 0;
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const ogUrl = new URL(`${siteUrl}/api/og`);
@@ -104,7 +104,7 @@ export default function Page({ params }: { params: { id: string } }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: pack.title,
-    description: `Download the complete ${pack.title} checklist pack. Includes ${pack.checklists.length} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`,
+    description: `Download the complete ${pack.title} checklist pack. Includes ${checklistsCount} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`,
     image: ogUrl.toString(),
     brand: {
       '@type': 'Brand',
