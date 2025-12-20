@@ -12,10 +12,28 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
-import * as LucideIcons from 'lucide-react';
+import { ICONS } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Accordion } from '@/components/ui/accordion';
-import { IconComponent } from '@/components/icons';
+
+
+const ComplianceIcon = ({ standard }: { standard: string }) => {
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <ICONS.Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <ICONS.Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <ICONS.HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <ICONS.Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <ICONS.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ICONS.ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <ICONS.Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ICONS.ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <ICONS.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <ICONS.Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <ICONS.Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <ICONS.FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <ICONS.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <ICONS.Landmark className="w-4 h-4 text-gray-500" />;
+};
 
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
@@ -32,33 +50,17 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                      <p className="mt-4 text-xs text-muted-foreground italic">{content.disclaimer}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
-                    {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
-                    ))}
+                    {content.points.map((point, index) => {
+                        const Icon = (ICONS as any)[point.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')] || ICONS.AlertTriangle;
+                        return (
+                            <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
+                        )
+                    })}
                 </div>
             </div>
         </section>
     );
 }
-
-const ComplianceIcon = ({ standard }: { standard: string }) => {
-    const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
-};
-
 
 const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) => {
     if (!pack.globalStandards || !pack.globalStandards.standards) {
@@ -127,6 +129,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const totalChecklists = pack.checklists.length;
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
   const isEmptyPack = totalChecklists === 0;
+  
+  const Icon = (ICONS as any)[pack.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')] || ICONS.Package;
 
   return (
     <>
@@ -181,11 +185,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="max-w-4xl mx-auto space-y-2">
                         {pack.sampleItems.map((item, index) => {
-                           const Icon = item.icon;
+                           const ItemIcon = (ICONS as any)[item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')] || ICONS.Package;
                            return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <Icon className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <ItemIcon className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />

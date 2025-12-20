@@ -1,17 +1,14 @@
 
+'use client';
+
 import Link from 'next/link';
 import { premiumPacks } from '@/lib/premium-packs';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import React from 'react';
-import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
-
-export const metadata: Metadata = {
-    title: 'SOP Checklist Library | MoreMeets',
-    description: 'Explore our complete library of professional SOP checklists and operational playbooks for various industries. Find the perfect toolkit to improve safety, compliance, and efficiency.',
-};
+import { IconComponent } from '@/components/icons';
 
 const categoryColors: { [key: string]: string } = {
     "Hospitality": "bg-blue-100 text-blue-800 border-blue-200",
@@ -60,15 +57,13 @@ export default function LibraryPage() {
                                         {category}
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {packs.map((pack) => {
-                                            const Icon = pack.icon;
-                                            return (
+                                        {packs.map((pack) => (
                                             <Link href={`/packs/${pack.id}`} key={pack.id} className="group">
                                                 <Card className="flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                                                     <CardHeader>
                                                         <div className="flex items-start gap-4">
                                                             <div className="p-3 bg-secondary rounded-full border border-primary/10 shrink-0">
-                                                                <Icon className="w-8 h-8 text-primary" />
+                                                                <IconComponent name={pack.icon} className="w-8 h-8 text-primary" />
                                                             </div>
                                                             <div>
                                                                 <CardTitle className="text-xl font-headline group-hover:text-primary transition-colors">{pack.title}</CardTitle>
@@ -88,7 +83,7 @@ export default function LibraryPage() {
                                                     </CardContent>
                                                 </Card>
                                             </Link>
-                                        )})}
+                                        ))}
                                     </div>
                                 </div>
                             ))}
@@ -100,3 +95,9 @@ export default function LibraryPage() {
         </div>
     );
 }
+
+// Metadata needs to be in a separate export
+export const metadata = {
+    title: 'SOP Checklist Library | MoreMeets',
+    description: 'Explore our complete library of professional SOP checklists and operational playbooks for various industries. Find the perfect toolkit to improve safety, compliance, and efficiency.',
+};

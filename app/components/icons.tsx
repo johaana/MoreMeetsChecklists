@@ -1,13 +1,29 @@
 
-import { CheckSquare, Package, type LucideIcon } from 'lucide-react';
-import type { SVGProps } from 'react';
+"use client";
+
 import * as LucideIcons from 'lucide-react';
 
-export function Logo(props: SVGProps<SVGSVGElement>) {
-  return <CheckSquare {...props} />;
-}
+export const ICONS = LucideIcons;
 
-export function GoogleIcon(props: SVGProps<SVGSVGElement>) {
+type IconComponentProps = {
+  name: string;
+  className?: string;
+};
+
+export const IconComponent = ({ name, className }: IconComponentProps) => {
+  const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+  const Icon = (ICONS as any)[iconName] as LucideIcons.LucideIcon;
+  
+  if (!Icon) {
+    return <LucideIcons.Package className={className} />;
+  }
+
+  return <Icon className={className} />;
+};
+
+export const { CheckSquare: Logo } = ICONS;
+
+export function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +52,7 @@ export function GoogleIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
+export function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
      <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -67,16 +83,3 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-export const IconComponent = ({ name, className }: { name: LucideIcon | string, className?: string }) => {
-    if (typeof name === 'string') {
-        const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-        const Icon = (LucideIcons as any)[iconName] as LucideIcon;
-        if (!Icon) {
-            return <Package className={className} />;
-        }
-        return <Icon className={className} />;
-    }
-    const Icon = name;
-    return <Icon className={className} />;
-};
