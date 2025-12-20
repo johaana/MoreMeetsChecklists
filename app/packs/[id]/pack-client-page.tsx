@@ -32,11 +32,9 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                      <p className="mt-4 text-xs text-muted-foreground italic">{content.disclaimer}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
-                    {content.points.map((point, index) => {
-                        return (
-                            <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
-                        )
-                    })}
+                    {content.points.map((point, index) => (
+                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
+                    ))}
                 </div>
             </div>
         </section>
@@ -183,10 +181,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="max-w-4xl mx-auto space-y-2">
                         {pack.sampleItems.map((item, index) => {
+                           const Icon = item.icon;
                            return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <IconComponent name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <Icon className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
