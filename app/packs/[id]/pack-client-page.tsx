@@ -33,9 +33,8 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => {
-                        const Icon = point.icon;
                         return (
-                            <PainPoint key={index} icon={Icon} title={point.title} description={point.description} />
+                            <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
                         )
                     })}
                 </div>
@@ -226,5 +225,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    
