@@ -68,11 +68,15 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export const IconComponent = ({ name, className }: { name: string, className?: string }) => {
-    const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-    const Icon = (LucideIcons as any)[iconName] as LucideIcon;
-    if (!Icon) {
-        return <Package className={className} />;
+export const IconComponent = ({ name, className }: { name: LucideIcon | string, className?: string }) => {
+    if (typeof name === 'string') {
+        const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+        const Icon = (LucideIcons as any)[iconName] as LucideIcon;
+        if (!Icon) {
+            return <Package className={className} />;
+        }
+        return <Icon className={className} />;
     }
+    const Icon = name;
     return <Icon className={className} />;
 };

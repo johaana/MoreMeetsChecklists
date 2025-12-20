@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { Logo, IconComponent } from "@/components/icons";
+import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
@@ -37,16 +37,18 @@ const SolutionsList = () => (
             <div key={category} className="flex flex-col mb-4 md:mb-0 break-inside-avoid">
                 <h5 className="font-bold text-sm text-primary/90 mb-2 px-2">{category}</h5>
                 <ul className="space-y-1">
-                    {packs.map(pack => (
+                    {packs.map(pack => {
+                        const Icon = pack.icon;
+                        return (
                         <li key={pack.id}>
                             <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
                                 <span className="shrink-0 w-5 h-5 flex items-center justify-center">
-                                    <IconComponent name={pack.icon} className="w-4 h-4" />
+                                    <Icon className="w-4 h-4" />
                                 </span>
                                 <span className="flex-1 leading-snug">{pack.title}</span>
                             </Link>
                         </li>
-                    ))}
+                    )})}
                 </ul>
             </div>
         ))}
@@ -185,12 +187,14 @@ export function SiteHeader() {
                                                 <div key={category} className="ml-4 pl-4 border-l">
                                                     <h5 className="font-semibold text-base text-primary/90 mt-2 mb-1">{category}</h5>
                                                     <div className="flex flex-col gap-1">
-                                                        {packs.map(pack => (
+                                                        {packs.map(pack => {
+                                                            const Icon = pack.icon;
+                                                            return (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                                <IconComponent name={pack.icon} className="w-4 h-4 shrink-0" />
+                                                                <Icon className="w-4 h-4 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
-                                                        ))}
+                                                        )})}
                                                     </div>
                                                 </div>
                                             ))}
@@ -225,5 +229,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
-    

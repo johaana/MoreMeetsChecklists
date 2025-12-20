@@ -11,7 +11,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Download, KeyRound, ShieldCheck } from 'lucide-react';
 import { handleDownload } from '@/lib/download';
 import { SiteHeader } from '@/components/layout/header';
-import { IconComponent } from '@/components/icons';
 import { Input } from '@/components/ui/input';
 
 export default function MasterAccessClientPage() {
@@ -90,10 +89,12 @@ export default function MasterAccessClientPage() {
                         <div>
                             <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Premium Packs</h2>
                             <div className="space-y-4">
-                                {premiumPacks.map((pack) => (
+                                {premiumPacks.map((pack) => {
+                                    const Icon = pack.icon;
+                                    return (
                                     <Card key={pack.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                            <IconComponent name={pack.icon} className="w-8 h-8 text-primary" />
+                                            <Icon className="w-8 h-8 text-primary" />
                                             <div>
                                                 <h3 className="font-semibold">{pack.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{pack.category}</p>
@@ -104,17 +105,19 @@ export default function MasterAccessClientPage() {
                                             Download Pack
                                         </Button>
                                     </Card>
-                                ))}
+                                )})}
                             </div>
                         </div>
 
                         <div>
                             <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Individual Checklists</h2>
                             <div className="space-y-4">
-                                {individualChecklists.map((checklist) => (
+                                {individualChecklists.map((checklist) => {
+                                    const Icon = checklist.icon;
+                                    return (
                                     <Card key={checklist.id} className="flex flex-wrap items-center justify-between p-4 gap-4">
                                         <div className='flex items-center gap-4'>
-                                             <IconComponent name={checklist.icon as string} className="w-8 h-8 text-primary" />
+                                             <Icon className="w-8 h-8 text-primary" />
                                             <div>
                                                 <h3 className="font-semibold">{checklist.title}</h3>
                                                 <p className="text-xs md:text-sm text-muted-foreground">{checklist.category}</p>
@@ -125,7 +128,7 @@ export default function MasterAccessClientPage() {
                                             Download Checklist
                                         </Button>
                                     </Card>
-                                ))}
+                                )})}
                             </div>
                         </div>
                     </div>
@@ -134,5 +137,3 @@ export default function MasterAccessClientPage() {
         </div>
     );
 }
-
-    
