@@ -310,7 +310,7 @@ export const premiumPacks: PremiumPack[] = [
         whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents"],
         sampleItems: [
             { text: "Prevent 'never events' with a WHO-aligned Surgical Safety Checklist.", icon: "stethoscope" },
-            { text: "Combat hospital-acquired infections (HAIs) with rigorous infection control and sterilization (CSSD) audits.", icon: "syringe-icon" },
+            { text: "Combat hospital-acquired infections (HAIs) with rigorous infection control and sterilization (CSSD) audits.", icon: "syringe" },
             { text: "Eliminate medication errors using SOPs for high-alert medication dispensing and administration.", icon: "pill" },
             { text: "Enhance patient safety with a robust protocol for patient identification at every touchpoint.", icon: "user-check" },
             { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: "recycle" },
@@ -491,7 +491,7 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Ensure order accuracy and speed with a structured picking, packing, and dispatch process.", icon: "truck" },
             { text: "Maintain a safe workplace with checklists for Material Handling Equipment (MHE) safety and operator training.", icon: "hard-hat" },
             { text: "Protect your inventory with robust protocols for security, access control, and cycle counting.", icon: "shield" },
-            { text: "Build a resilient supply chain with SOPs for vendor management and contingency planning.", icon: "link-icon" }
+            { text: "Build a resilient supply chain with SOPs for vendor management and contingency planning.", icon: "link" }
         ],
         checklists: []
     },
