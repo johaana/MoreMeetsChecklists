@@ -11,7 +11,7 @@ import { SiteHeader } from '@/components/layout/header';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import type { PremiumPack } from "@/lib/premium-packs";
-import PricingClient from './pricing-client';
+import PricingClient from '../pricing-client';
 import { IconComponent, ICONS } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Accordion } from '@/components/ui/accordion';
@@ -51,7 +51,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
-                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
+                        <PainPoint key={index} icon={point.icon as keyof typeof ICONS} title={point.title} description={point.description} />
                     ))}
                 </div>
             </div>
@@ -123,8 +123,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   }, [isMobile]);
 
   const audience = pack.whoIsItFor || ["Industry Professionals"];
-  const totalChecklists = pack.checklists.length;
-  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+  const totalChecklists = pack.checklists?.length || 0;
+  const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
   const isEmptyPack = totalChecklists === 0;
 
   return (
@@ -222,5 +222,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    
