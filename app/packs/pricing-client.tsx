@@ -6,105 +6,17 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, Trophy, Utensils, Film, FerrisWheel, BriefcaseBusiness, Package, Truck, Wrench, FileCheck, CircleDollarSign, Recycle, Library, MonitorPlay, Clapperboard, AnchorIcon, Ship, Pill, Store, Rabbit, Gamepad, Guitar, GalleryVertical, Computer, CakeSlice, Anchor, Sailboat, Aperture, Lamp, Ticket, Popcorn, Syringe, Bot, BrainCircuit, Link as LinkIcon, Wifi, ShoppingBasket, Sprout, School, GraduationCap, Factory, Gem, Shirt, Tv, Waves, ShoppingCart, Dumbbell, PersonStanding, PawPrint, Wind, Building2, KeyRound, UserCheck, HandPlatter, ScanFace, Code, UserRound as DramaIcon, Map, HelpingHand, ClipboardList, CalendarDays, Route, Cog, Drama, Watch, Barcode, UserCog2, Key, Router, Thermometer, DoorClosed, Ambulance, FileWarning, Microscope, Stethoscope, Megaphone, SprayCan, Drill, Car, BookOpen, Bus, Siren, Bug, Zap, Shield, Lock, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { Check, Download, Loader2, Banknote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
-
-
-// --- FAST FIX PLACEHOLDERS ---
-const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
-  <input
-    {...props}
-    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-  />
-);
-const Tabs = ({ children, defaultValue, onValueChange, className }: { children: React.ReactNode, defaultValue: string, onValueChange: (value: string) => void, className?:string }) => {
-    // Basic Tabs implementation for FAST mode
-    const [activeTab, setActiveTab] = React.useState(defaultValue);
-
-    const handleTabClick = (value: string) => {
-        setActiveTab(value);
-        onValueChange(value);
-    };
-
-    return (
-        <div className={className}>
-            {React.Children.map(children, (child) => {
-                if (React.isValidElement(child) && child.type === TabsList) {
-                    return React.cloneElement(child, {
-                        // @ts-ignore
-                        activeTab,
-                        onTabClick: handleTabClick
-                    });
-                }
-                return child;
-            })}
-        </div>
-    );
-};
-
-const TabsList = ({ children, className, activeTab, onTabClick }: { children: React.ReactNode, className?:string, activeTab?: string, onTabClick?: (value: string) => void }) => (
-  <div className={`inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${className}`}>
-      {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === TabsTrigger) {
-              return React.cloneElement(child, {
-                  // @ts-ignore
-                  isActive: child.props.value === activeTab,
-                  onClick: () => onTabClick?.(child.props.value)
-              });
-          }
-          return child;
-      })}
-  </div>
-);
-
-const TabsTrigger = ({ children, value, isActive, onClick, className }: { children: React.ReactNode, value: string, isActive?: boolean, onClick?: () => void, className?: string }) => (
-  <button 
-    value={value} 
-    onClick={onClick}
-    className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${isActive ? 'bg-background text-foreground shadow-sm' : ''} ${className}`}
-  >
-    {children}
-  </button>
-);
-
-const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string; competitorPrice: string; valueStatement: string }) => (
-  <div className="rounded-lg bg-secondary/50 p-4 text-center border-2 border-dashed border-primary/20">
-    <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
-    <div className="grid grid-cols-2 gap-4 items-center">
-        <div className="flex flex-col items-center p-2 rounded-md bg-background/50">
-            <p className="text-xs text-muted-foreground">Their Price</p>
-            <p className="text-lg font-bold text-destructive line-through">{competitorPrice}</p>
-        </div>
-        <div className="flex flex-col items-center p-2 rounded-md bg-green-100 dark:bg-green-900/50">
-             <p className="text-xs text-green-800 dark:text-green-200">Our Price</p>
-            <p className="text-lg font-bold text-green-700 dark:text-green-300">{ourPrice}</p>
-        </div>
-    </div>
-     <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
-  </div>
-);
-
-const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement> & { id: string, onCheckedChange: (checked: boolean) => void }) => {
-  const { id, onCheckedChange, ...rest } = props;
-  return (
-    <input 
-      type="checkbox"
-      id={id}
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => onCheckedChange(e.target.checked)} 
-      {...rest} 
-      className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground" 
-    />
-  );
-};
-
-const Label = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => (
-  <label {...props} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" />
-);
-
-// ===== END FAST UI PLACEHOLDERS =====
+import * as LucideIcons from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { ValueProposition } from '@/components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -165,20 +77,20 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 
 const ComplianceIcon = ({ standard }: { standard: string }) => {
     const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <Landmark className="w-4 h-4 text-gray-500" />;
+    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
