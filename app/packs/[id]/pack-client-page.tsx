@@ -12,7 +12,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
-import { ICONS } from '@/components/icons';
+import { IconComponent, ICONS } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Accordion } from '@/components/ui/accordion';
 
@@ -50,12 +50,9 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                      <p className="mt-4 text-xs text-muted-foreground italic">{content.disclaimer}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
-                    {content.points.map((point, index) => {
-                        const Icon = (ICONS as any)[point.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')] || ICONS.AlertTriangle;
-                        return (
-                            <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
-                        )
-                    })}
+                    {content.points.map((point, index) => (
+                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
+                    ))}
                 </div>
             </div>
         </section>
@@ -129,8 +126,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const totalChecklists = pack.checklists.length;
   const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
   const isEmptyPack = totalChecklists === 0;
-  
-  const Icon = (ICONS as any)[pack.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')] || ICONS.Package;
 
   return (
     <>
@@ -185,11 +180,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="max-w-4xl mx-auto space-y-2">
                         {pack.sampleItems.map((item, index) => {
-                           const ItemIcon = (ICONS as any)[item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')] || ICONS.Package;
                            return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <ItemIcon className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <IconComponent name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
@@ -228,3 +222,5 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
+
+    
