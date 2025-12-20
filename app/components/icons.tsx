@@ -79,3 +79,5 @@ export const IconComponent = ({ name, className }: { name: string, className?: s
     }
     return <Icon className={className} />;
 };
+
+    
