@@ -101,8 +101,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
     const [agreedToTerms, setAgreedToTerms] = React.useState(false);
     
-    const totalChecklists = pack.checklists.length;
-    const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    const checklists = pack.checklists || [];
+    const totalChecklists = checklists.length;
+    const totalTasks = checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+
     const features = totalChecklists > 0 ? [
         { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
         { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
@@ -263,4 +265,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
