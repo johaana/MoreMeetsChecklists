@@ -12,12 +12,12 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
 import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
+import * as LucideIcons from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Accordion } from '@/components/ui/accordion';
 import { IconComponent } from '@/components/icons';
-import * as LucideIcons from 'lucide-react';
 
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
@@ -227,5 +227,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    

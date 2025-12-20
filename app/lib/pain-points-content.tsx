@@ -258,5 +258,3 @@ export const painPointsContent: Record<string, PainPointContent> = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
-
-    

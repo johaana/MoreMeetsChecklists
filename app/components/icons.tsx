@@ -70,12 +70,12 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
 
 
 export const IconComponent = ({ name, className }: { name: string, className?: string }) => {
+    // Sanitize the name to match Lucide icon component names (e.g., 'file-lock' -> 'FileLock')
     const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
     const Icon = (LucideIcons as any)[iconName];
     if (!Icon) {
-        return <AlertTriangle className={className ?? "h-6 w-6 text-destructive"} />;
+        // Return a default icon or null if the icon is not found
+        return <LucideIcons.Package className={className} />;
     }
     return <Icon className={className} />;
 };
-
-    
