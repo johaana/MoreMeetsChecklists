@@ -1,9 +1,8 @@
-
 'use client';
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { Logo } from "@/components/icons";
+import { Logo, IconComponent } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
@@ -11,18 +10,20 @@ import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
-const packsWithLinks = premiumPacks.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
+const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
+const packsWithLinks = packs.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
 
 const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause");
 
 const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
-    if (!acc[pack.category]) {
-        acc[pack.category] = [];
+    const category = pack.category || "Uncategorized";
+    if (!acc[category]) {
+        acc[category] = [];
     }
-    acc[pack.category].push(pack);
+    acc[category].push(pack);
     return acc;
 }, {} as Record<string, typeof premiumPacks>);
 
@@ -38,7 +39,9 @@ const SolutionsList = () => (
                     {packs.map(pack => (
                         <li key={pack.id}>
                             <Link href={`/packs/${pack.id}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
-                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">{React.cloneElement(pack.icon, { className: "w-4 h-4" })}</span>
+                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">
+                                    <IconComponent name={pack.icon} className="w-4 h-4" />
+                                </span>
                                 <span className="flex-1 leading-snug">{pack.title}</span>
                             </Link>
                         </li>
@@ -183,7 +186,7 @@ export function SiteHeader() {
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                                {React.cloneElement(pack.icon, { className: "w-4 h-4 shrink-0" })}
+                                                                <IconComponent name={pack.icon} className="w-4 h-4 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
                                                         ))}
@@ -221,7 +224,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
-    
-
-    

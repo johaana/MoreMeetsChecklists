@@ -1,11 +1,34 @@
-import { CheckSquare } from 'lucide-react';
-import type { SVGProps } from 'react';
 
-export function Logo(props: SVGProps<SVGSVGElement>) {
-  return <CheckSquare {...props} />;
-}
+"use client";
 
-export function GoogleIcon(props: SVGProps<SVGSVGElement>) {
+import * as LucideIcons from 'lucide-react';
+
+export const ICONS = LucideIcons;
+
+type IconComponentProps = {
+  name: string;
+  className?: string;
+};
+
+export const IconComponent = ({ name, className }: IconComponentProps) => {
+  if (!name) {
+    return <LucideIcons.Package className={className} />;
+  }
+
+  const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+  const Icon = (ICONS as any)[iconName] as LucideIcons.LucideIcon;
+  
+  if (!Icon) {
+    console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
+    return <LucideIcons.Package className={className} />;
+  }
+
+  return <Icon className={className} />;
+};
+
+export const { CheckSquare: Logo } = ICONS;
+
+export function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +57,7 @@ export function GoogleIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
+export function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
      <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -65,3 +88,21 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export const ComplianceIcon = ({ standard }: { standard: string }) => {
+    const s = standard.toUpperCase();
+    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
+};

@@ -14,7 +14,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import Autoplay from "embla-carousel-autoplay";
 import { FaqSection } from "@/components/layout/faq-section";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
-import { philosophyCards } from "@/lib/homepage-content.tsx";
+import { philosophyCards } from "@/lib/homepage-content";
 
 
 const painPoints = {
