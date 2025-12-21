@@ -11,7 +11,9 @@ type IconComponentProps = {
 };
 
 export const IconComponent = ({ name, className }: IconComponentProps) => {
-  if (!name) {
+  // Defensive guard clause to ensure 'name' is a string.
+  if (typeof name !== 'string' || !name) {
+    // console.error("Invalid icon name provided. Must be a string. Received:", name);
     return <LucideIcons.Package className={className} />;
   }
 
@@ -106,3 +108,5 @@ export const ComplianceIcon = ({ standard }: { standard: string }) => {
     if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
     return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
+
+    
