@@ -17,6 +17,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { subscribeToBlog } from '@/app/blog/actions';
+import Image from 'next/image';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -254,10 +255,11 @@ export default function BlogClientPage() {
                                 <div className="md:hidden">
                                     <div className="relative w-full h-auto aspect-[16/9]">
                                      {currentFeaturedPost.imageUrl && (
-                                        <img
+                                        <Image
                                             src={currentFeaturedPost.imageUrl}
                                             alt={currentFeaturedPost.title}
-                                            className="w-full h-full object-cover"
+                                            fill
+                                            className="object-cover"
                                         />
                                     )}
                                     </div>
@@ -283,10 +285,11 @@ export default function BlogClientPage() {
                                         <div className="absolute inset-0 z-0">
                                              {currentFeaturedPost.imageUrl && (
                                                 <>
-                                                    <img
+                                                    <Image
                                                         src={currentFeaturedPost.imageUrl}
                                                         alt={currentFeaturedPost.title}
-                                                        className="object-cover transition-transform duration-500 group-hover:scale-105 w-full h-full"
+                                                        fill
+                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                                                     />
                                                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
                                                 </>
@@ -332,9 +335,10 @@ export default function BlogClientPage() {
                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
                             <div className="relative w-full h-auto aspect-[16/9]">
                             {post.imageUrl ? (
-                                    <img
+                                    <Image
                                         src={post.imageUrl}
                                         alt={post.title}
+                                        fill
                                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                                     />
                             ): (
@@ -384,3 +388,5 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+    
