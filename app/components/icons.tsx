@@ -13,7 +13,7 @@ type IconComponentProps = {
 export const IconComponent = ({ name, className }: IconComponentProps) => {
   // Defensive guard clause to ensure 'name' is a string.
   if (typeof name !== 'string' || !name) {
-    // console.error("Invalid icon name provided. Must be a string. Received:", name);
+    console.error("Invalid icon name provided. Must be a string. Received:", name);
     return <LucideIcons.Package className={className} />;
   }
 
