@@ -1,8 +1,8 @@
 
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
-import { premiumPacks } from '../../lib/premium-packs';
-import { blogPosts } from '../../lib/blog-posts';
+import { premiumPacks } from '@/lib/premium-packs';
+import { blogPosts } from '@/lib/blog-posts';
 import * as Lucide from 'lucide-react';
 
 export const runtime = 'edge';
@@ -30,8 +30,13 @@ export async function GET(req: NextRequest) {
             if (item) {
                 title = item.title;
                 description = item.description;
-                const Icon = (Lucide as any)[item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '')];
-                if (Icon) IconComponent = Icon;
+                const iconName = item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+                const Icon = (Lucide as any)[iconName];
+                if (Icon) {
+                    IconComponent = Icon;
+                } else {
+                    IconComponent = Lucide.Package;
+                }
             }
         } else if (type === 'blog' && slug) {
             const item = blogPosts.find(b => b.slug === slug);
