@@ -3,15 +3,15 @@
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { Logo, IconComponent } from "../icons";
-import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "../ui/sheet";
+import { Logo, IconComponent } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
-import { premiumPacks } from "../../lib/premium-packs";
-import { ScrollArea } from "../ui/scroll-area";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
-import { Separator } from "../ui/separator";
+import { premiumPacks } from "@/lib/premium-packs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Separator } from "@/components/ui/separator";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];

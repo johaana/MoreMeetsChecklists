@@ -3,6 +3,7 @@ import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
 import LibraryClientPage from './library-client-page';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'SOP & Checklist Library | MoreMeets',
@@ -17,6 +18,8 @@ export default function LibraryPage() {
     }
 
     return (
+      <Suspense fallback={<div>Loading...</div>}>
         <LibraryClientPage packs={packs} />
+      </Suspense>
     );
 }

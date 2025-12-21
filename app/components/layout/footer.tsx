@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import { Logo, WhatsAppIcon } from "../icons";
+import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail, Phone } from "lucide-react";
 
 export function Footer() {

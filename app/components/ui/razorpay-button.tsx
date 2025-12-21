@@ -25,13 +25,13 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
 
         return () => {
           if (currentFormRef) {
-            const scriptInForm = currentFormRef.querySelector('script');
-            if (scriptInForm) {
-                try {
-                    currentFormRef.removeChild(scriptInForm);
-                } catch (e) {
-                    // This can happen on fast navigations, it's safe to ignore.
-                }
+            // Check if the script is still a child before removing
+            if (currentFormRef.contains(script)) {
+              try {
+                  currentFormRef.removeChild(script);
+              } catch (e) {
+                  // This can happen on fast navigations, it's safe to ignore.
+              }
             }
           }
         };

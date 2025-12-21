@@ -1,10 +1,10 @@
 
 import type { Metadata } from 'next';
-import { Toaster } from "./components/ui/toaster";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
-import { cn } from './lib/utils';
+import { cn } from '@/lib/utils';
 import { Inter, Poppins } from 'next/font/google';
-import { LayoutScript } from './components/layout/layout-script';
+import { LayoutScript } from '@/components/layout/layout-script';
 
 
 const siteUrl = 'https://www.moremeets.com';
