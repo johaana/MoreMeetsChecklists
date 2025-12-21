@@ -92,6 +92,9 @@ export function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export const ComplianceIcon = ({ standard }: { standard: string }) => {
+    if (typeof standard !== 'string' || !standard) {
+        return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
+    }
     const s = standard.toUpperCase();
     if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
     if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
