@@ -21,6 +21,7 @@ import {
   AlertDialogTitle,
   AlertDialogFooter,
 } from '../components/ui/alert-dialog';
+import { Suspense } from "react";
 
 
 function ThankYouContent() {
@@ -194,7 +195,7 @@ function ThankYouContent() {
 
 export default function ThankYouPageWrapper() {
   return (
-    <React.Suspense fallback={
+    <Suspense fallback={
         <div className="flex flex-col min-h-screen bg-background">
           <SiteHeader />
            <main className="flex-1 flex items-center justify-center">
@@ -209,6 +210,6 @@ export default function ThankYouPageWrapper() {
         </div>
     }>
       <ThankYouContent />
-    </React.Suspense>
+    </Suspense>
   );
 }
