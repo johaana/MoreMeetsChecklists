@@ -1,4 +1,5 @@
 
+
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -30,10 +31,14 @@ export async function GET(req: NextRequest) {
             if (item) {
                 title = item.title;
                 description = item.description;
-                const iconName = item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-                const Icon = (Lucide as any)[iconName];
-                if (Icon) {
-                    IconComponent = Icon;
+                if (typeof item.icon === 'string') {
+                    const iconName = item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+                    const Icon = (Lucide as any)[iconName];
+                    if (Icon) {
+                        IconComponent = Icon;
+                    } else {
+                        IconComponent = Lucide.Package;
+                    }
                 } else {
                     IconComponent = Lucide.Package;
                 }
@@ -48,6 +53,7 @@ export async function GET(req: NextRequest) {
         }
     } catch (e) {
         console.error("Error finding item for OG image:", e);
+        IconComponent = Lucide.AlertCircle;
     }
     
     // Truncate long titles/descriptions
