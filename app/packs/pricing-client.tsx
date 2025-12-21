@@ -6,7 +6,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, Download, Loader2, Banknote, Landmark, Globe, Award, Star, HardHat, HeartPulse, ShieldCheck, Utensils, Film, FerrisWheel, BriefcaseBusiness } from 'lucide-react';
+import { Check, Download, Loader2, Banknote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { addContact } from '@/app/packs/actions';
@@ -16,7 +16,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-import { ICONS } from '@/components/icons';
+import { ComplianceIcon } from '@/components/icons';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -74,24 +74,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
         </form>
     )
 }
-
-const ComplianceIcon = ({ standard }: { standard: string }) => {
-    const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <ICONS.Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <ICONS.Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <ICONS.HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <ICONS.Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <ICONS.HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <ICONS.ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <ICONS.Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <ICONS.ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <ICONS.HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <ICONS.Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <ICONS.Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <ICONS.FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <ICONS.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <ICONS.Landmark className="w-4 h-4 text-gray-500" />;
-};
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     

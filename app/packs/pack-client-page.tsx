@@ -2,25 +2,23 @@
 'use client';
 
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { premiumPacks } from '@/lib/premium-packs';
-import { ArrowLeft, FileCheck2, CheckCircle, Landmark, Globe, Check, Download, Eye, Sparkles, Siren, Bug, TrendingUp, Lock, FileLock, Users, Banknote, Bus, TestTube, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link as LinkIcon, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector, Award, HeartPulse, Star } from 'lucide-react';
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import type { Metadata, ResolvingMetadata } from 'next';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { Footer } from '@/components/layout/footer';
 import { SiteHeader } from '@/components/layout/header';
-import { Button } from '@/components/ui/button';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { PainPoint } from '@/components/ui/pain-point';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { handleDownload } from '@/lib/download';
-import type { Checklist as PackChecklist, PremiumPack } from "@/lib/premium-packs";
-import Image from 'next/image';
+import type { PremiumPack } from "@/lib/premium-packs";
 import PricingClient from './pricing-client';
+import * as LucideIcons from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { Accordion } from '@/components/ui/accordion';
+import { IconComponent } from '@/components/icons';
+
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -47,20 +45,20 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
 
 const ComplianceIcon = ({ standard }: { standard: string }) => {
     const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <Landmark className="w-4 h-4 text-gray-500" />;
+    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
+    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
+    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
 
 
@@ -111,7 +109,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         // Show sticky bar when the pricing section is NOT visible
         setShowStickyBar(!entry.isIntersecting);
       },
-      // When the top of the pricing section is 100% off the top of the screen
+      // When the top of the pricing section is 100% off the screen
       { rootMargin: "0px 0px -100% 0px", threshold: 0 }
     );
   
@@ -159,12 +157,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <Image
+                  <img
                     src={heroImageUrl}
                     alt={pack.title}
-                    width={600}
-                    height={400}
-                    className="rounded-2xl shadow-2xl object-cover aspect-[3/2]"
+                    className="rounded-2xl shadow-2xl object-cover aspect-[3/2] w-full h-auto"
                   />
                 </div>
               </div>
@@ -186,16 +182,17 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
 
                     <div className="max-w-4xl mx-auto space-y-2">
-                        {pack.sampleItems.map((item, index) => (
+                        {pack.sampleItems.map((item, index) => {
+                           return (
                             <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-background/50 shadow-sm transition-all hover:shadow-md hover:border-primary/20">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 shrink-0">
-                                    <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <IconComponent name={item.icon} className="h-6 w-6 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-foreground/90" dangerouslySetInnerHTML={{ __html: item.text.replace(/NEW: /g, '<strong class="text-accent">NEW:</strong> ') }} />
                                 </div>
                             </div>
-                        ))}
+                        )})}
                     </div>
                 </div>
             </section>
