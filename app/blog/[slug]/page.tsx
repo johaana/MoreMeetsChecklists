@@ -1,13 +1,13 @@
 
-import { blogPosts } from '@/lib/blog-posts';
+import { blogPosts } from '@/app/lib/blog-posts';
 import { notFound } from 'next/navigation';
-import { SiteHeader } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
-import { Badge } from '@/components/ui/badge';
+import { SiteHeader } from '@/app/components/layout/header';
+import { Footer } from '@/app/components/layout/footer';
+import { Badge } from '@/app/components/ui/badge';
 import Link from 'next/link';
 import type { Metadata, ResolvingMetadata } from 'next';
-import { premiumPacks } from '@/lib/premium-packs';
-import { Button } from '@/components/ui/button';
+import { premiumPacks } from '@/app/lib/premium-packs';
+import { Button } from '@/app/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 

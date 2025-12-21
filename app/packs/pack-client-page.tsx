@@ -2,22 +2,22 @@
 'use client';
 
 import Link from 'next/link';
-import { premiumPacks } from '@/lib/premium-packs';
+import { premiumPacks } from '../lib/premium-packs';
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { painPointsContent } from '@/lib/pain-points-content';
-import { Footer } from '@/components/layout/footer';
-import { SiteHeader } from '@/components/layout/header';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { PainPoint } from '@/components/ui/pain-point';
-import type { PremiumPack } from "@/lib/premium-packs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { painPointsContent } from '../lib/pain-points-content';
+import { Footer } from '../components/layout/footer';
+import { SiteHeader } from '../components/layout/header';
+import { useIsMobile } from '../hooks/use-mobile';
+import { PainPoint } from '../components/ui/pain-point';
+import type { PremiumPack } from "../lib/premium-packs";
 import PricingClient from './pricing-client';
 import * as LucideIcons from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Button } from '../components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { Accordion } from '@/components/ui/accordion';
-import { IconComponent } from '@/components/icons';
+import { Accordion } from '../components/ui/accordion';
+import { IconComponent } from '../components/icons';
 
 
 const PainPointsSection = ({ packId }: { packId: string }) => {

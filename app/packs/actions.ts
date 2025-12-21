@@ -3,8 +3,8 @@
 
 import { z } from "zod";
 import crypto from 'crypto';
-import { premiumPacks } from "@/lib/premium-packs";
-import { individualChecklists } from "@/lib/individual-checklists";
+import { premiumPacks } from "../lib/premium-packs";
+import { individualChecklists } from "../lib/individual-checklists";
 
 const brevoApiKey = process.env.BREVO_API_KEY;
 const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;

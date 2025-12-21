@@ -2,21 +2,21 @@
 'use client';
 
 import * as React from 'react';
-import type { PremiumPack } from '@/lib/premium-packs';
+import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Check, Download, Loader2, Banknote } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/hooks/use-toast';
-import { addContact } from '@/app/packs/actions';
-import { Input } from '@/components/ui/input';
-import { ValueProposition } from '@/components/ui/value-proposition';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { RazorpayButton } from '@/components/ui/razorpay-button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
-import { ComplianceIcon } from '@/components/icons';
+import { Badge } from '../components/ui/badge';
+import { useToast } from '../hooks/use-toast';
+import { addContact } from './actions';
+import { Input } from '../components/ui/input';
+import { ValueProposition } from '../components/ui/value-proposition';
+import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { RazorpayButton } from '../components/ui/razorpay-button';
+import { Checkbox } from '../components/ui/checkbox';
+import { Label } from '../components/ui/label';
+import { ComplianceIcon } from '../components/icons';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {

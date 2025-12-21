@@ -2,19 +2,19 @@
 'use client';
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "./components/ui/button";
 import { ArrowRight, Zap, ShieldCheck, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users } from "lucide-react";
 import React, { useState, useEffect } from 'react';
-import { Footer } from "@/components/layout/footer";
-import { SiteHeader } from "@/components/layout/header";
-import { cn } from '@/lib/utils';
+import { Footer } from "./components/layout/footer";
+import { SiteHeader } from "./components/layout/header";
+import { cn } from './lib/utils';
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "./components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { FaqSection } from "@/components/layout/faq-section";
-import { TestimonialsSection } from "@/components/layout/testimonials-section";
-import { philosophyCards } from "@/lib/homepage-content";
+import { FaqSection } from "./components/layout/faq-section";
+import { TestimonialsSection } from "./components/layout/testimonials-section";
+import { philosophyCards } from "./lib/homepage-content";
 
 
 const painPoints = {

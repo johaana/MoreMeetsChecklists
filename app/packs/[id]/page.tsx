@@ -1,6 +1,6 @@
 
 import PackClientPage from "./pack-client-page";
-import { premiumPacks } from '@/lib/premium-packs';
+import { premiumPacks } from '../../lib/premium-packs';
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 

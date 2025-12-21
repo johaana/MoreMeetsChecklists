@@ -3,19 +3,19 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { blogPosts } from '@/lib/blog-posts';
-import { SiteHeader } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { blogPosts } from '@/app/lib/blog-posts';
+import { SiteHeader } from '@/app/components/layout/header';
+import { Footer } from '@/app/components/layout/footer';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/app/components/ui/card';
+import { Badge } from '@/app/components/ui/badge';
+import { Button } from '@/app/components/ui/button';
 import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X } from 'lucide-react';
 import React from 'react';
-import { useToast } from '@/hooks/use-toast';
-import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { useToast } from '@/app/hooks/use-toast';
+import { Input } from '@/app/components/ui/input';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/app/components/ui/sheet";
+import { ScrollArea } from '@/app/components/ui/scroll-area';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/app/components/ui/dropdown-menu";
 import { subscribeToBlog } from '@/app/blog/actions';
 
 

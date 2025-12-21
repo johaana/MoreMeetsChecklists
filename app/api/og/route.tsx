@@ -1,9 +1,8 @@
 
-
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
-import { premiumPacks } from '@/lib/premium-packs';
-import { blogPosts } from '@/lib/blog-posts';
+import { premiumPacks } from '../../lib/premium-packs';
+import { blogPosts } from '../../lib/blog-posts';
 import * as Lucide from 'lucide-react';
 
 export const runtime = 'edge';
@@ -124,4 +123,3 @@ export async function GET(req: NextRequest) {
         }
     );
 }
-
