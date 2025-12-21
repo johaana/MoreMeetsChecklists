@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -42,15 +43,24 @@ const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 const RefinedHeroSection = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const [isClient, setIsClient] = useState(false);
-    const content = painPoints[activePainPoint];
 
      useEffect(() => {
         setIsClient(true);
+        const interval = setInterval(() => {
+            setActivePainPoint(prev => {
+                const currentIndex = painPointKeys.indexOf(prev);
+                const nextIndex = (currentIndex + 1) % painPointKeys.length;
+                return painPointKeys[nextIndex];
+            });
+        }, 5000);
+        return () => clearInterval(interval);
     }, []);
 
     if (!isClient) {
       return <section className="w-full bg-background h-screen min-h-[700px]"></section>;
     }
+    
+    const content = painPoints[activePainPoint];
 
     return (
         <section className="relative w-full h-screen min-h-[700px] flex text-white overflow-hidden">
