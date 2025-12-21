@@ -12,10 +12,7 @@ import { useIsMobile } from '../hooks/use-mobile';
 import { PainPoint } from '../components/ui/pain-point';
 import type { PremiumPack } from "../lib/premium-packs";
 import PricingClient from './pricing-client';
-import * as LucideIcons from 'lucide-react';
 import { Button } from '../components/ui/button';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import { Accordion } from '../components/ui/accordion';
 import { IconComponent, ComplianceIcon } from '../components/icons';
 
@@ -108,7 +105,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists.length;
-  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + (checklist.tasks.length || 0), 0);
   const isEmptyPack = totalChecklists === 0;
 
   return (
@@ -206,5 +203,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    
