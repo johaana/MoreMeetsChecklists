@@ -6,7 +6,7 @@ import * as LucideIcons from 'lucide-react';
 export const ICONS = LucideIcons;
 
 type IconComponentProps = {
-  name: string;
+  name?: unknown;
   className?: string;
 };
 
