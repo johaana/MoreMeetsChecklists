@@ -13,15 +13,15 @@ type IconComponentProps = {
 export const IconComponent = ({ name, className }: IconComponentProps) => {
   // Defensive guard clause to ensure 'name' is a string.
   if (typeof name !== 'string' || !name) {
-    console.error("Invalid icon name provided. Must be a string. Received:", name);
+    // console.warn("Invalid icon name provided. Must be a string. Received:", name);
     return <LucideIcons.Package className={className} />;
   }
 
   const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-  const Icon = (ICONS as any)[iconName] as LucideIcons.LucideIcon;
+  const Icon = (ICONS as Record<string, LucideIcons.LucideIcon>)[iconName];
   
   if (!Icon) {
-    console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
+    // console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
     return <LucideIcons.Package className={className} />;
   }
 
@@ -111,5 +111,3 @@ export const ComplianceIcon = ({ standard }: { standard: string }) => {
     if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
     return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
-
-    
