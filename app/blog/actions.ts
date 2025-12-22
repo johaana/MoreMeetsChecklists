@@ -16,7 +16,7 @@ export async function subscribeToBlog(input: { email: string }): Promise<{ succe
         const email = validatedInput.email;
         
         if (!brevoApiKey) {
-            console.error("Brevo API key is not configured.");
+            console.warn("Brevo API key is not configured.");
             return { success: false, message: "Subscription service is currently unavailable." };
         }
 
@@ -38,11 +38,11 @@ export async function subscribeToBlog(input: { email: string }): Promise<{ succe
             return { success: true, message: "Successfully subscribed." };
         } else {
             const errorData = await response.json();
-            console.error("Brevo API Error:", errorData);
+            console.warn("Brevo API Error:", errorData);
             return { success: false, message: errorData.message || "Failed to subscribe." };
         }
     } catch (error) {
-        console.error("Subscription Error:", error);
+        console.warn("Subscription Error:", error);
         if (error instanceof z.ZodError) {
              return { success: false, message: "Invalid email address provided." };
         }

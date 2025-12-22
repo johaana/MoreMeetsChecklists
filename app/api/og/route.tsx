@@ -52,7 +52,7 @@ export async function GET(req: NextRequest) {
             }
         }
     } catch (e) {
-        console.error("Error finding item for OG image:", e);
+        console.warn("Error finding item for OG image:", e);
         IconComponent = Lucide.AlertCircle;
     }
     

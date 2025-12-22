@@ -11,9 +11,10 @@ type IconComponentProps = {
 };
 
 export const IconComponent = ({ name, className }: IconComponentProps) => {
-  // Defensive guard clause to ensure 'name' is a string.
   if (typeof name !== 'string' || !name) {
-    // console.warn("Invalid icon name provided. Must be a string. Received:", name);
+    if (process.env.NODE_ENV === "development") {
+        console.warn("Invalid icon name provided. Must be a string. Received:", name);
+    }
     return <LucideIcons.Package className={className} />;
   }
 
@@ -21,7 +22,9 @@ export const IconComponent = ({ name, className }: IconComponentProps) => {
   const Icon = (ICONS as Record<string, LucideIcons.LucideIcon>)[iconName];
   
   if (!Icon) {
-    // console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
+    if (process.env.NODE_ENV === "development") {
+        console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
+    }
     return <LucideIcons.Package className={className} />;
   }
 
