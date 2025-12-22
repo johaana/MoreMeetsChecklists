@@ -25,3 +25,5 @@ export const PainPoint = ({ icon, title, description }: PainPointProps) => {
         </Card>
     );
 };
+
+    
