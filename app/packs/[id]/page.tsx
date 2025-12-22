@@ -3,6 +3,8 @@ import PackClientPage from "../pack-client-page";
 import { premiumPacks } from '../../lib/premium-packs';
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
+import PricingClient from "../packs/pricing-client";
+import { FaqSection } from "@/components/layout/faq-section";
 
 type Props = {
   params: { id: string }
@@ -125,6 +127,8 @@ export default function Page({ params }: { params: { id: string } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
+      <PricingClient pack={pack} />
+      <FaqSection />
     </>
   );
 }

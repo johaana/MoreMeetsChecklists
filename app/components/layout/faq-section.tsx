@@ -56,3 +56,4 @@ export const FaqSection = () => (
         </div>
     </section>
 );
+

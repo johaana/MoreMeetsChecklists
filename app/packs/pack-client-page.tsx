@@ -2,18 +2,15 @@
 'use client';
 
 import Link from 'next/link';
-import { premiumPacks } from '../lib/premium-packs';
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { painPointsContent } from '../lib/pain-points-content';
 import { Footer } from '../components/layout/footer';
 import { SiteHeader } from '../components/layout/header';
 import { useIsMobile } from '../hooks/use-mobile';
 import { PainPoint } from '../components/ui/pain-point';
 import type { PremiumPack } from "../lib/premium-packs";
-import PricingClient from './pricing-client';
 import { Button } from '../components/ui/button';
-import { Accordion } from '../components/ui/accordion';
 import { IconComponent, ComplianceIcon } from '../components/icons';
 
 
@@ -40,7 +37,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
     );
 }
 
-const GlobalStandardsSection = ({ pack }: { pack: (typeof premiumPacks)[0] }) => {
+const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
     if (!pack.globalStandards || !pack.globalStandards.standards) {
         return null;
     }
@@ -82,24 +79,20 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   React.useEffect(() => {
     if (!isMobile) return;
     
+    const pricingEl = document.getElementById('pricing');
+    if (!pricingEl) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Show sticky bar when the pricing section is NOT visible
         setShowStickyBar(!entry.isIntersecting);
       },
-      // When the top of the pricing section is 100% off the screen
       { rootMargin: "0px 0px -100% 0px", threshold: 0 }
     );
   
-    const currentRef = pricingSectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    observer.observe(pricingEl);
   
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      observer.unobserve(pricingEl);
     };
   }, [isMobile]);
 
@@ -175,10 +168,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
           )}
-          
-          <div ref={pricingSectionRef}>
-            <PricingClient pack={pack} />
-          </div>
 
           <GlobalStandardsSection pack={pack} />
 
@@ -203,5 +192,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
-    
