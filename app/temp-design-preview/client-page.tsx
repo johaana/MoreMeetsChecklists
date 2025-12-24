@@ -89,7 +89,7 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">The Anatomy of a Broken Audit Trail</h2>
-                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks, the answers are scattered across unreliable systems.</p>
+                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks for proof, the answers are scattered across unreliable systems.</p>
                 </motion.div>
 
                 <motion.div 
@@ -124,7 +124,7 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                  >
                      <p className="text-xl font-semibold text-primary mt-6 border-t border-b border-dashed py-4 max-w-3xl mx-auto">
-                        Compliance doesn't fail because work isn’t done—it fails because it isn’t standardized into a single, provable system.
+                        This isn't an audit trail. It's a series of disconnected liabilities.
                     </p>
                 </motion.div>
             </div>
@@ -133,69 +133,40 @@ const ProblemSection = () => {
 };
 
 const ChaosVsStandardSection = () => {
-    const Bar = ({ label, isAfter = false, value }: { label: string; isAfter?: boolean; value: number }) => (
-      <div className="grid grid-cols-4 items-center gap-4">
-        <div className="col-span-1 text-sm font-medium text-muted-foreground">{label}</div>
-        <div className="col-span-3">
-          <div className="flex items-center gap-2">
-            <span className={`w-12 text-xs font-semibold ${isAfter ? 'text-green-600' : 'text-destructive'}`}>
-              {isAfter ? 'Low' : 'High'}
-            </span>
-            <div className="w-full bg-secondary rounded-full h-4 overflow-hidden border">
-              <motion.div
-                className={`${isAfter ? 'bg-green-500' : 'bg-destructive'} h-4 rounded-full`}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${value}%` }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                viewport={{ once: true, amount: 0.8 }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  
     return (
       <section className="w-full py-16 md:py-24 bg-secondary/30">
         <div className="container px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center max-w-5xl mx-auto">
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold font-headline text-primary">From High Risk to High Confidence</h2>
-              <p className="text-muted-foreground text-base md:text-lg">
-                MoreMeets Standards™ systematically reduce your operational risks by converting ambiguous processes into structured, verifiable tasks. The result is a dramatic decrease in dependency, failure risk, and training overhead.
-              </p>
-            </motion.div>
-            <motion.div
-              className="p-6 md:p-8 border rounded-xl bg-card shadow-lg"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6 }}
-            >
-              <CardContent className="p-0 space-y-6">
-                <div>
-                  <div className="mb-2 text-sm font-medium text-muted-foreground">People Dependency</div>
-                  <Bar label="Before" value={90} />
-                  <Bar label="After" isAfter value={15} />
-                </div>
-                <div>
-                  <div className="mb-2 text-sm font-medium text-muted-foreground">Audit Failure Risk</div>
-                  <Bar label="Before" value={75} />
-                  <Bar label="After" isAfter value={5} />
-                </div>
-                <div>
-                  <div className="mb-2 text-sm font-medium text-muted-foreground">Onboarding Time</div>
-                  <Bar label="Before" value={80} />
-                  <Bar label="After" isAfter value={20} />
-                </div>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
+            <p className="text-muted-foreground mt-2 text-base md:text-lg">MoreMeets Standards™ systematically reduce your operational risks by converting ambiguous processes into structured, verifiable tasks.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+            {/* Before */}
+            <Card className="border-destructive/50 border-2">
+              <CardHeader>
+                <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+                <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-muted-foreground">
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
               </CardContent>
-            </motion.div>
+            </Card>
+            {/* After */}
+            <Card className="border-primary/50 border-2 bg-background shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
+                <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-foreground">
+                 <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
