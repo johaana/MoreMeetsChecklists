@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -25,5 +24,3 @@ export const PainPoint = ({ icon, title, description }: PainPointProps) => {
         </Card>
     );
 };
-
-    
