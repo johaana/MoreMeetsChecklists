@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import PricingClient from "../pricing-client";
 import { FaqSection } from "@/components/layout/faq-section";
+import { Footer } from "@/components/layout/footer";
 
 type Props = {
   params: { id: string }
@@ -129,6 +130,7 @@ export default function Page({ params }: { params: { id: string } }) {
       <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
       <PricingClient pack={pack} />
       <FaqSection />
+      <Footer />
     </>
   );
 }

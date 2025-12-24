@@ -5,7 +5,6 @@ import Link from 'next/link';
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { painPointsContent } from '../lib/pain-points-content';
-import { Footer } from '../components/layout/footer';
 import { SiteHeader } from '../components/layout/header';
 import { useIsMobile } from '../hooks/use-mobile';
 import { PainPoint } from '../components/ui/pain-point';
@@ -172,7 +171,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
           <GlobalStandardsSection pack={pack} />
 
         </main>
-         <Footer />
       </div>
       {pack.priceINR > 0 && (
          <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
