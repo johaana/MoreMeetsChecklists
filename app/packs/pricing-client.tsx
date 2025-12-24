@@ -87,7 +87,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
     
     const features = [
-        { text: `<strong>10+ Expert-Built Checklists</strong> (120+ total tasks)`},
+        { text: `<strong>${totalChecklists}+ Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
         { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
         { text: "<strong>Instant Download</strong> in fully editable Excel format."},
         { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}

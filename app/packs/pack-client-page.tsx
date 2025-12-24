@@ -97,7 +97,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists.length;
-  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + (checklist.tasks.length || 0), 0);
+  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0);
   const isEmptyPack = totalChecklists === 0;
 
   return (
@@ -118,7 +118,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   </p>
                   {!isEmptyPack && (
                     <div className="text-sm text-muted-foreground font-semibold">
-                      Includes <span className="text-primary font-bold">10+ checklists</span> with over <span className="text-primary font-bold">120+ individual tasks</span>.
+                      Includes <span className="text-primary font-bold">{totalChecklists}+ checklists</span> with over <span className="text-primary font-bold">{totalTasks}+ individual tasks</span>.
                     </div>
                   )}
                   <div className="mt-4 bg-background/50 border p-4 rounded-lg">
@@ -147,7 +147,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             A Complete System for Operational Excellence
                         </h2>
                         <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                            This pack contains 10+ checklists and over 120+ individual tasks, giving you a comprehensive framework to:
+                            This pack contains {totalChecklists}+ checklists and over {totalTasks}+ individual tasks, giving you a comprehensive framework to:
                         </p>
                     </div>
 
@@ -190,4 +190,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     </>
   );
 }
-
