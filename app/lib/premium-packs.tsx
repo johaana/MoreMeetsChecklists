@@ -158,7 +158,7 @@ const hotels_and_resorts: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
     category: "Hospitality",
-    description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
+    description: "A complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
     icon: "building",
     badgeText: "Most Popular",
     badgeVariant: "default",
