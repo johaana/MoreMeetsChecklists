@@ -9,7 +9,7 @@ import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { FaqSection } from "@/components/layout/faq-section";
@@ -252,32 +252,34 @@ const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Chaotic Memory to Structured System</h2>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
         <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
         {/* Before */}
-        <Card className="border-destructive/50 border-2">
+        <Card className="border-destructive/50 border-2 flex flex-col">
           <CardHeader>
             <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm text-muted-foreground">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+          <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
             <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
           </CardContent>
         </Card>
         {/* After */}
-        <Card className="border-primary/50 border-2 bg-background shadow-lg">
+        <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
           <CardHeader>
             <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
+            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm text-foreground">
-             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
+          <CardContent className="space-y-3 text-sm text-foreground flex-1">
+             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
           </CardContent>
         </Card>
       </div>
@@ -348,5 +350,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
