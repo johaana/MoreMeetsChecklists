@@ -4,12 +4,9 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, AlertTriangle, ShieldCheck, Mail, MessageSquare, Brain, Search, Edit, BarChart, Star, FileIcon } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
-import { IconComponent } from '../components/icons';
-import { motion, AnimatePresence } from 'framer-motion';
-import { premiumPacks } from '../lib/premium-packs';
-
+import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, Mail, MessageSquare, Brain } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 
 const HeroSection = () => (
     <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
@@ -140,31 +137,31 @@ const ChaosVsStandardSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
             <p className="text-muted-foreground mt-2 text-base md:text-lg">MoreMeets Standards™ systematically reduce your operational risks by converting ambiguous processes into structured, verifiable tasks.</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
             {/* Before */}
-            <Card className="border-destructive/50 border-2">
+            <Card className="border-destructive/50 border-2 flex flex-col">
               <CardHeader>
                 <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
                 <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3 text-sm text-muted-foreground">
-                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?"</span></p>
-                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire makes a costly mistake on their first day.</span></p>
+              <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
                 <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>No audit trail to prove compliance during an inspection.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
               </CardContent>
             </Card>
             {/* After */}
-            <Card className="border-primary/50 border-2 bg-background shadow-lg">
+            <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
               <CardHeader>
                 <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
                 <CardDescription>A system of record that ensures excellence every time.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3 text-sm text-foreground">
-                 <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log."</span></p>
-                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>A timestamped, verifiable audit trail for every critical task.</span></p>
+              <CardContent className="space-y-3 text-sm text-foreground flex-1">
+                 <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are onboarded with a perfect, consistent playbook from day one.</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
               </CardContent>
             </Card>
           </div>
@@ -214,59 +211,44 @@ const SystemSection = () => (
 );
 
 
-const StandardsSection = () => (
-    <section className="w-full py-16 md:py-24 bg-secondary/30">
-        <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Choose Your Operational Standard</h2>
-                <p className="text-lg font-semibold text-muted-foreground mt-4">Select an industry-specific implementation of MoreMeets Standards™ to get started.</p>
+const StandardsSection = () => {
+    const packsToShow = premiumPacks.filter(p => ['manufacturing_operations_ehs_pack', 'hotels_and_resorts', 'jewelry_and_luxury_retail'].includes(p.id));
+    return (
+        <section className="w-full py-16 md:py-24 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Choose Your Operational Standard</h2>
+                    <p className="text-lg font-semibold text-muted-foreground mt-4">Select an industry-specific implementation of MoreMeets Standards™ to get started.</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    {packsToShow.map(pack => (
+                        <Card key={pack.id} className="flex flex-col border-2 border-primary/10 shadow-lg">
+                            <CardHeader>
+                                <div className="flex items-center gap-3">
+                                    <div className="p-2 bg-accent/10 rounded-md"><Zap className="w-6 h-6 text-accent" /></div>
+                                    <CardTitle className="font-headline">{pack.title}</CardTitle>
+                                </div>
+                                <CardDescription className="pt-2">{pack.description}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-1"></CardContent>
+                            <CardFooter className="mt-auto">
+                                <Button variant="default" className="w-full" asChild><Link href={`/packs/${pack.id}`}>View Standard</Link></Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+                <div className="text-center mt-12">
+                    <Button size="lg" asChild className="group" variant="link">
+                        <Link href="/library">
+                            Browse All Industry Standards
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </div>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                 <Card className="flex flex-col border-2 border-primary/50 shadow-lg">
-                    <CardHeader>
-                        <IconComponent name="factory" className="w-8 h-8 text-accent mb-2" />
-                        <CardTitle className="font-headline">Manufacturing & EHS Standard</CardTitle>
-                        <CardDescription>Safety, quality control, maintenance & EHS compliance.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-1"></CardContent>
-                    <CardFooter className="mt-auto">
-                         <Button variant="default" className="w-full" asChild><Link href="/packs/manufacturing_operations_ehs_pack">View Standard</Link></Button>
-                    </CardFooter>
-                </Card>
-                 <Card className="flex flex-col">
-                    <CardHeader>
-                        <IconComponent name="building" className="w-8 h-8 text-accent mb-2" />
-                        <CardTitle className="font-headline">Hotels & Resorts Standard</CardTitle>
-                        <CardDescription>Safety, housekeeping, audits, training & daily ops.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-1"></CardContent>
-                    <CardFooter className="mt-auto">
-                        <Button variant="secondary" className="w-full" asChild><Link href="/packs/hotels_and_resorts">View Standard</Link></Button>
-                    </CardFooter>
-                </Card>
-                 <Card className="flex flex-col">
-                    <CardHeader>
-                        <IconComponent name="gem" className="w-8 h-8 text-accent mb-2" />
-                        <CardTitle className="font-headline">Jewelry & Luxury Retail Standard</CardTitle>
-                        <CardDescription>Vault security, fraud prevention, and asset protection.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-1"></CardContent>
-                    <CardFooter className="mt-auto">
-                         <Button variant="secondary" className="w-full" asChild><Link href="/packs/jewelry_and_luxury_retail">View Standard</Link></Button>
-                    </CardFooter>
-                </Card>
-            </div>
-            <div className="text-center mt-12">
-                 <Button size="lg" asChild className="group" variant="link">
-                    <Link href="/library">
-                        Browse All Industry Standards
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
-            </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+}
 
 const TrustSection = () => (
   <section className="w-full py-16 md:py-24">
@@ -324,3 +306,5 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
+    
