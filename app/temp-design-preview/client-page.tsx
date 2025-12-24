@@ -40,11 +40,6 @@ const HeroSection = () => (
                             See the Standard
                         </Link>
                     </Button>
-                    <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10" variant="outline">
-                        <Link href="/library">
-                            Browse by Industry
-                        </Link>
-                    </Button>
                 </div>
             </div>
         </div>
@@ -280,4 +275,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
