@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as LucideIcons from 'lucide-react';
@@ -11,16 +12,13 @@ type IconComponentProps = {
 
 export const IconComponent = ({ name, className }: IconComponentProps) => {
   if (typeof name !== 'string' || !name) {
-    if (process.env.NODE_ENV === "development") {
-        console.warn("Invalid icon name provided. Must be a string. Received:", name);
-    }
     return <LucideIcons.Package className={className} />;
   }
 
   const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
   const Icon = (ICONS as Record<string, LucideIcons.LucideIcon>)[iconName];
   
-  if (!Icon) {
+  if (!Icon || typeof Icon !== 'function') {
     if (process.env.NODE_ENV === "development") {
         console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
     }
@@ -113,3 +111,5 @@ export const ComplianceIcon = ({ standard }: { standard: string }) => {
     if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
     return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
 };
+
+    

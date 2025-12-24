@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, ShieldCheck, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
@@ -348,3 +348,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
