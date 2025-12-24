@@ -137,7 +137,7 @@ const ChaosToControlSection = () => {
         <div className="container px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
-            <p className="text-muted-foreground mt-2 text-base md:text-lg">MoreMeets Standards™ systematically reduce your operational risks by converting ambiguous processes into structured, verifiable tasks.</p>
+            <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
             {/* Before */}
@@ -308,3 +308,5 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
+    
