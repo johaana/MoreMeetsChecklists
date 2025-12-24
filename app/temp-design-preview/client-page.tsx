@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, AlertTriangle, ShieldCheck, Mail, MessageSquare, Brain, Search, Edit, BarChart, Star, FileIcon } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { IconComponent } from '../components/icons';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { premiumPacks } from '../lib/premium-packs';
+
 
 const HeroSection = () => (
     <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
@@ -30,10 +31,10 @@ const HeroSection = () => (
                 transition={{ duration: 0.8, ease: "easeInOut" }}
             >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-lg">
-                    The Professional Standard for Audit-Ready Operations.
+                    The Standard for Verifiable Operations.
                 </h1>
                 <p className="text-lg text-white/90 max-w-2xl drop-shadow-md">
-                    MoreMeets Standards™ codify daily work into verifiable, people-independent operational systems. The first of its kind, globally.
+                    MoreMeets Standards™ is the world's first offline, audit-ready operational framework. It converts daily work into a verifiable system—independent of people, tools, or software.
                 </p>
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-white/80 pt-2">
                     <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> Global Compliance</span>
@@ -43,7 +44,7 @@ const HeroSection = () => (
                 <div className="pt-6">
                     <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" variant="accent">
                         <Link href="/library">
-                            Adopt the Standard
+                           Adopt the Standard
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
@@ -59,7 +60,8 @@ const ProblemSection = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2,
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
             },
         },
     };
@@ -75,7 +77,7 @@ const ProblemSection = () => {
             },
         },
     };
-
+    
     return (
         <section className="w-full py-16 md:py-24 bg-background">
             <div className="container px-4 md:px-6">
@@ -87,11 +89,10 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">Most Operations Aren’t Broken. They’re Unprovable.</h2>
-                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks, “Show me proof”—the answers live in scattered, untracked, and unreliable formats.</p>
                 </motion.div>
 
                 <motion.div 
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-12 max-w-5xl mx-auto"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -119,10 +120,10 @@ const ProblemSection = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.5, delay: 0.8 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
                  >
                      <p className="text-xl font-semibold text-primary mt-6 border-t border-b border-dashed py-4 max-w-2xl mx-auto">
-                        Compliance fails not because work isn’t done—but because it isn’t standardized.
+                        Compliance doesn't fail because work isn’t done—it fails because it isn’t standardized into a single, provable system.
                     </p>
                 </motion.div>
             </div>
@@ -130,22 +131,35 @@ const ProblemSection = () => {
     );
 };
 
-
 const ChaosVsStandardSection = () => {
-    const Bar = ({ label, value, color, isAfter = false }: { label: string, value: number, color: string, isAfter?: boolean }) => (
-        <div className="space-y-2">
-            <div className="flex justify-between items-center">
-                <span className="text-sm font-medium text-muted-foreground">{label}</span>
-                {isAfter && <span className="text-sm font-bold text-green-600">Reduced</span>}
-            </div>
-            <div className="w-full bg-secondary rounded-full h-4 overflow-hidden border">
-                <motion.div
-                    className={`${color} h-4 rounded-full`}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${value}%` }}
-                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                    viewport={{ once: true, amount: 0.8 }}
-                />
+    const Bar = ({ label, beforeValue, afterValue }: { label: string, beforeValue: number, afterValue: number }) => (
+        <div className="space-y-3">
+            <div className="text-sm font-medium text-muted-foreground">{label}</div>
+            <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                    <span className="w-12 text-xs font-semibold text-destructive">High</span>
+                    <div className="w-full bg-secondary rounded-full h-2.5 overflow-hidden border">
+                        <motion.div
+                            className="bg-destructive h-2.5 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${beforeValue}%` }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                            viewport={{ once: true, amount: 0.8 }}
+                        />
+                    </div>
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="w-12 text-xs font-semibold text-green-600">Low</span>
+                     <div className="w-full bg-secondary rounded-full h-2.5 overflow-hidden border">
+                        <motion.div
+                            className="bg-green-500 h-2.5 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${afterValue}%` }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                            viewport={{ once: true, amount: 0.8 }}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
@@ -153,37 +167,30 @@ const ChaosVsStandardSection = () => {
     return (
         <section className="w-full py-16 md:py-24 bg-secondary/30">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
-                    <motion.div 
-                        className="p-8 border-2 border-destructive/20 rounded-xl bg-card shadow-md"
-                        initial={{ opacity: 0, x: -50 }}
+                <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center max-w-5xl mx-auto">
+                     <motion.div 
+                        className="space-y-4"
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <CardHeader className="p-0 mb-4">
-                            <CardTitle className="text-destructive flex items-center gap-2 text-2xl font-headline"><AlertTriangle className="w-6 h-6"/> Without a Standard</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0 space-y-4">
-                            <Bar label="People Dependency" value={90} color="bg-destructive" />
-                            <Bar label="Audit Failure Risk" value={75} color="bg-destructive" />
-                            <Bar label="Onboarding Time" value={80} color="bg-destructive" />
-                        </CardContent>
+                        <h2 className="text-3xl font-bold font-headline text-primary">From High Risk to High Confidence</h2>
+                        <p className="text-muted-foreground text-base md:text-lg">
+                            MoreMeets Standards™ systematically reduce your operational risks by converting ambiguous processes into structured, verifiable tasks. The result is a dramatic decrease in dependency, failure risk, and training overhead.
+                        </p>
                     </motion.div>
-                    <motion.div 
-                        className="p-8 border-2 border-primary/20 rounded-xl bg-card shadow-lg"
-                        initial={{ opacity: 0, x: 50 }}
+                     <motion.div 
+                        className="p-6 md:p-8 border rounded-xl bg-card shadow-lg"
+                        initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <CardHeader className="p-0 mb-4">
-                            <CardTitle className="text-primary flex items-center gap-2 text-2xl font-headline"><ShieldCheck className="w-6 h-6"/> With MoreMeets Standards™</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0 space-y-4">
-                            <Bar label="People Dependency" value={15} color="bg-green-500" isAfter />
-                            <Bar label="Audit Failure Risk" value={5} color="bg-green-500" isAfter />
-                            <Bar label="Onboarding Time" value={20} color="bg-green-500" isAfter />
+                        <CardContent className="p-0 space-y-6">
+                            <Bar label="People Dependency" beforeValue={90} afterValue={15} />
+                            <Bar label="Audit Failure Risk" beforeValue={75} afterValue={5} />
+                            <Bar label="Onboarding Time" beforeValue={80} afterValue={20} />
                         </CardContent>
                     </motion.div>
                 </div>
@@ -342,5 +349,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
-    
