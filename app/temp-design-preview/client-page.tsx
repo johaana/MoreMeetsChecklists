@@ -8,6 +8,7 @@ import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smi
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { premiumPacks } from '@/lib/premium-packs';
+import { IconComponent } from '../components/icons';
 
 const HeroSection = () => (
     <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
@@ -226,7 +227,7 @@ const StandardsSection = () => {
                         <Card key={pack.id} className="flex flex-col border-2 border-primary/10 shadow-lg">
                             <CardHeader>
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 bg-accent/10 rounded-md"><Zap className="w-6 h-6 text-accent" /></div>
+                                    <div className="p-2 bg-accent/10 rounded-md"><IconComponent name={pack.icon} className="w-6 h-6 text-accent" /></div>
                                     <CardTitle className="font-headline">{pack.title}</CardTitle>
                                 </div>
                                 <CardDescription className="pt-2">{pack.description}</CardDescription>
