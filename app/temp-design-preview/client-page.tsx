@@ -8,7 +8,7 @@ import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users } 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from '@/lib/utils';
-
+import { Chart, Bar, BarChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "@/components/ui/chart";
 
 const painPoints = {
   error: {
@@ -34,7 +34,7 @@ const painPoints = {
 type PainPointKey = keyof typeof painPoints;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
-const HeroSection = () => {
+const RefinedHeroSection = () => {
     const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
     const [isClient, setIsClient] = useState(false);
 
@@ -277,11 +277,9 @@ const ExpertiseExtractorSection = () => (
 export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
-      <HeroSection />
+      <RefinedHeroSection />
       <ChaosToControlSection />
       <ExpertiseExtractorSection />
     </main>
   );
 }
-
-    
