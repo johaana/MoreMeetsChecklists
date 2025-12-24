@@ -1,0 +1,433 @@
+
+"use client"
+
+import * as React from "react"
+import * as RechartsPrimitive from "recharts"
+
+import { cn } from "@/lib/utils"
+
+// Format: { THEME_NAME: CSS_SELECTOR }
+const THEMES = {
+  light: "",
+  dark: ".dark",
+} as const
+
+export type ChartConfig = {
+  [k in string]: {
+    label?: React.ReactNode
+    icon?: React.ComponentType
+  } & (
+    | {
+        color?: string
+        theme?: never
+      }
+    | {
+        color?: never
+        theme: Record<keyof typeof THEMES, string>
+      }
+  )
+}
+
+type ChartContextProps = {
+  config: ChartConfig
+}
+
+const ChartContext = React.createContext<ChartContextProps | null>(null)
+
+function useChart() {
+  const context = React.useContext(ChartContext)
+
+  if (!context) {
+    throw new Error("useChart must be used within a <ChartContainer />")
+  }
+
+  return context
+}
+
+const ChartContainer = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div"> & {
+    config: ChartConfig
+    children: React.ComponentProps<
+      typeof RechartsPrimitive.ResponsiveContainer
+    >["children"]
+  }
+>(({ id, className, children, config, ...props }, ref) => {
+  const containerRef = React.useRef<HTMLDivElement>(null)
+  const [activeChart, setActiveChart] = React.useState<string | null>(null)
+
+  const chartConfig = React.useMemo(
+    () =>
+      Object.entries(config).reduce(
+        (prev, [key, value]) => {
+          const newTheme: Record<keyof typeof THEMES, string> =
+            value.theme ??
+            Object.fromEntries(
+              Object.entries(THEMES).map(([theme, prefix]) => [
+                theme,
+                `var(--color-${key})`,
+              ])
+            )
+
+          return {
+            ...prev,
+            [key]: {
+              ...value,
+              theme: newTheme,
+            },
+          }
+        },
+        {} as ChartConfig
+      ),
+    [config]
+  )
+
+  return (
+    <ChartContext.Provider value={{ config: chartConfig }}>
+      <div
+        data-chart
+        ref={containerRef}
+        className={cn(
+          "flex aspect-video justify-center gap-4 [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke-width='1']]:stroke-transparent [&_.recharts-layer:focus-visible]:outline-none [&_.recharts-polar-axis-tick_text]:fill-muted-foreground [&_.recharts-polar-grid-concentric-polygon]:stroke-border/50 [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-responsive-container]:-mx-2 [&_.recharts-sector[stroke-width='1']]:stroke-transparent [&_.recharts-surface]:outline-none [&_.recharts-tooltip-wrapper]:z-50 [&_.recharts-tooltip-wrapper]:rounded-lg [&_.recharts-tooltip-wrapper]:border [&_.recharts-tooltip-wrapper]:bg-background/95 [&_.recharts-tooltip-wrapper]:text-sm [&_.recharts-tooltip-wrapper]:shadow-lg [&_.recharts-tooltip-wrapper]:backdrop-blur-sm",
+          className
+        )}
+        {...props}
+      >
+        <RechartsPrimitive.ResponsiveContainer>
+          {children}
+        </RechartsPrimitive.ResponsiveContainer>
+      </div>
+    </ChartContext.Provider>
+  )
+})
+ChartContainer.displayName = "Chart"
+
+const ChartStyle = React.forwardRef<
+  HTMLStyleElement,
+  React.ComponentProps<"style"> & { config: ChartConfig }
+>(({ config }, ref) => {
+  const [isMounted, setIsMounted] = React.useState(false)
+  const { theme } = (
+    ChartContext.displayName ? useChart() : { theme: config }
+  ) as {
+    theme: ChartConfig
+  }
+
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  const css = React.useMemo(() => {
+    if (!theme) {
+      return ""
+    }
+    const styles = Object.entries(theme).map(([key, value]) => {
+      const color = value.color
+      const theme = value.theme
+
+      if (color) {
+        return `
+[data-chart] .color-${key} {
+--color-${key}: ${color};
+}
+`
+      }
+
+      if (theme) {
+        return Object.entries(theme)
+          .map(([name, color]) => {
+            const prefix = THEMES[name as keyof typeof THEMES]
+            return `
+${prefix} [data-chart] .color-${key} {
+--color-${key}: ${color};
+}
+`
+          })
+          .join("\n")
+      }
+    })
+
+    return styles.join("\n")
+  }, [theme])
+
+  if (!css || !isMounted) {
+    return null
+  }
+
+  return <style ref={ref} dangerouslySetInnerHTML={{ __html: css }} />
+})
+ChartStyle.displayName = "ChartStyle"
+
+const ChartLegend = React.forwardRef<
+  React.ComponentRef<typeof RechartsPrimitive.Legend>,
+  React.ComponentProps<typeof RechartsPrimitive.Legend> & {
+    hide?: boolean
+    onChartLegendItemEnter?: (payload: any) => void
+    onChartLegendItemLeave?: (payload: any) => void
+    onChartLegendItemClick?: (payload: any) => void
+  }
+>(
+  (
+    {
+      className,
+      hide,
+      onChartLegendItemEnter,
+      onChartLegendItemLeave,
+      onChartLegendItemClick,
+      ...props
+    },
+    ref
+  ) => {
+    const { config } = useChart()
+    const [_, setActiveChart] = React.useState(null)
+
+    if (hide) {
+      return null
+    }
+
+    return (
+      <RechartsPrimitive.Legend
+        ref={ref}
+        verticalAlign="bottom"
+        height={36}
+        content={
+          <ChartLegendContent
+            className={className}
+            onClick={onChartLegendItemClick}
+            onMouseEnter={onChartLegendItemEnter}
+            onMouseLeave={onChartLegendItemLeave}
+            {...props}
+          />
+        }
+        {...props}
+      />
+    )
+  }
+)
+ChartLegend.displayName = "ChartLegend"
+
+const ChartLegendContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div"> &
+    React.ComponentProps<typeof RechartsPrimitive.Legend> & {
+      // payload is not in the types
+      payload?: any[]
+    }
+>(
+  (
+    { className, formatter, payload = [], onMouseEnter, onMouseLeave, onClick },
+    ref
+  ) => {
+    const { config } = useChart()
+    const [_, setActiveChart] = React.useState(null)
+
+    if (!payload.length) {
+      return null
+    }
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "flex items-center justify-center gap-4 text-xs text-muted-foreground",
+          className
+        )}
+        onMouseLeave={() => onMouseLeave?.({} as any)}
+      >
+        {payload.map((item) => {
+          const key = item.dataKey as string
+          const entry = config[key]
+          const color = entry?.color ?? item.color
+          const label = entry?.label ?? item.value
+          const Icon = entry?.icon
+
+          return (
+            <div
+              key={item.value}
+              className="flex items-center gap-1.5"
+              onMouseEnter={() => onMouseEnter?.(item as any)}
+              onClick={() => onClick?.(item as any)}
+            >
+              {Icon ? (
+                <Icon
+                  className="mr-1 h-3 w-3"
+                  style={
+                    {
+                      color,
+                    } as React.CSSProperties
+                  }
+                />
+              ) : (
+                <div
+                  className="h-2 w-2 shrink-0 rounded-[2px]"
+                  style={{
+                    backgroundColor: color,
+                  }}
+                />
+              )}
+              {formatter ? formatter(label, [item]) : label}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+)
+ChartLegendContent.displayName = "ChartLegendContent"
+
+const ChartTooltip = RechartsPrimitive.Tooltip
+
+const ChartTooltipContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
+    React.ComponentProps<"div"> & {
+      // payload is not in the types
+      payload?: any[]
+      hideLabel?: boolean
+      hideIndicator?: boolean
+      indicator?: "line" | "dot" | "dashed"
+      nameKey?: string
+      labelKey?: string
+    }
+>(
+  (
+    {
+      active,
+      payload,
+      className,
+      indicator = "dot",
+      hideLabel = false,
+      hideIndicator = false,
+      label,
+      labelFormatter,
+      labelClassName,
+      formatter,
+      color,
+      nameKey,
+      labelKey,
+    },
+    ref
+  ) => {
+    const { config } = useChart()
+
+    const tooltipLabel = React.useMemo(() => {
+      if (hideLabel || !payload?.length) {
+        return null
+      }
+
+      const item = payload[0]
+      const key = `${labelKey || item.dataKey || ""}`
+      const itemConfig = config[key as keyof typeof config]
+      const value =
+        !labelKey && typeof item.payload === "object" && item.payload
+          ? item.payload[item.dataKey as keyof typeof item.payload]
+          : item.value
+      const name = label || item.name || value
+      const L = item.payload.label
+
+      if (labelFormatter) {
+        return (
+          <div className={cn("font-medium", labelClassName)}>
+            {labelFormatter(L, payload)}
+          </div>
+        )
+      }
+
+      if (!L) {
+        return null
+      }
+
+      return <div className={cn("font-medium", labelClassName)}>{L}</div>
+    }, [
+      label,
+      labelFormatter,
+      payload,
+      hideLabel,
+      labelClassName,
+      config,
+      labelKey,
+    ])
+
+    if (!active || !payload?.length) {
+      return null
+    }
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+          className
+        )}
+      >
+        {tooltipLabel}
+        <div className="grid gap-1.5">
+          {payload.map((item, index) => {
+            const key = `${nameKey || item.name || item.dataKey || ""}`
+            const itemConfig = config[key as keyof typeof config]
+            const indicatorColor = color || item.color || itemConfig?.color
+
+            return (
+              <div
+                key={item.dataKey}
+                className={cn(
+                  "flex w-full items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
+                  indicator === "dot" && "items-center"
+                )}
+              >
+                {formatter && item.value !== undefined && item.name ? (
+                  formatter(item.value, item.name, item, index, payload)
+                ) : (
+                  <>
+                    {!hideIndicator && (
+                      <div
+                        className={cn(
+                          "shrink-0",
+                          indicator === "dot" && "h-2.5 w-2.5 rounded-full",
+                          indicator === "line" && "h-full w-0.5",
+                          indicator === "dashed" && "my-0.5 h-full w-0.5 border-r border-dashed"
+                        )}
+                        style={{
+                          background: indicatorColor,
+                        }}
+                      />
+                    )}
+                    <div
+                      className={cn(
+                        "flex flex-1 justify-between leading-none",
+                        "items-center"
+                      )}
+                    >
+                      <div className="grid flex-1 gap-1">
+                        <span className="text-muted-foreground">
+                          {itemConfig?.label || item.name}
+                        </span>
+                      </div>
+                      {item.value && (
+                        <span className="font-mono font-medium tabular-nums text-foreground">
+                          {item.value.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
+)
+ChartTooltipContent.displayName = "ChartTooltipContent"
+
+export {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartStyle,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+}
+
