@@ -4,13 +4,13 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, Mail, MessageSquare, Brain, Search, Edit, BarChart as BarChartIcon, Star } from "lucide-react";
+import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, Mail, MessageSquare, Brain } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { premiumPacks } from '@/lib/premium-packs';
 import { IconComponent } from '../components/icons';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts"
-import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, type ChartConfig } from "@/components/ui/chart";
 
 const HeroSection = () => (
     <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
@@ -111,7 +111,7 @@ const ProblemSection = () => {
                             variants={itemVariants}
                             className="p-6 border rounded-lg bg-secondary/50 flex flex-col items-center justify-start text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
                         >
-                            <div className="text-destructive mb-3 p-3 bg-destructive/10 rounded-full">{item.icon}</div>
+                            <div className="text-accent mb-3 p-3 bg-accent/10 rounded-full">{item.icon}</div>
                             <p className="font-bold text-base text-foreground">{item.label}</p>
                             <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
                         </motion.div>
@@ -139,7 +139,7 @@ const ChaosToControlSection = () => {
         { area: "Resilience", "The Old Way": 30, "The New Way": 90 },
         { area: "Efficiency", "The Old Way": 40, "The New Way": 85 },
         { area: "Compliance", "The Old Way": 25, "The New Way": 98 },
-    ]
+    ];
 
     const chartConfig = {
         "The Old Way": {
@@ -150,24 +150,23 @@ const ChaosToControlSection = () => {
             label: "The New Way",
             color: "hsl(var(--primary))",
         },
-    } satisfies React.ComponentProps<typeof BarChart>["data"]
+    } satisfies ChartConfig;
 
     return (
         <section className="w-full py-16 md:py-24 bg-secondary/30">
             <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
-                <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
-            </div>
+                <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
+                    <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+                </div>
                 <Card>
                     <CardHeader>
                         <CardTitle>Operational Confidence Score</CardTitle>
                         <CardDescription>A comparison of key metrics before and after implementing MoreMeets Standards.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ChartContainer config={chartConfig} className="w-full h-80">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={chartData} margin={{ top: 20, right: 20, left: -10, bottom: 5 }} accessibilityLayer>
+                        <ChartContainer config={chartConfig} className="w-full h-[300px]">
+                            <BarChart data={chartData} accessibilityLayer>
                                 <CartesianGrid vertical={false} />
                                 <XAxis
                                     dataKey="area"
@@ -175,7 +174,7 @@ const ChaosToControlSection = () => {
                                     tickMargin={10}
                                     axisLine={false}
                                 />
-                                 <YAxis
+                                <YAxis
                                     tickLine={false}
                                     axisLine={false}
                                     tickMargin={10}
@@ -184,8 +183,7 @@ const ChaosToControlSection = () => {
                                 <ChartLegend content={<ChartLegendContent />} />
                                 <Bar dataKey="The Old Way" fill="var(--color-The Old Way)" radius={4} />
                                 <Bar dataKey="The New Way" fill="var(--color-The New Way)" radius={4} />
-                                </BarChart>
-                            </ResponsiveContainer>
+                            </BarChart>
                         </ChartContainer>
                     </CardContent>
                     <CardFooter className="flex-col items-start gap-2 text-sm">
@@ -196,7 +194,7 @@ const ChaosToControlSection = () => {
                 </Card>
             </div>
         </section>
-    )
+    );
 };
 
 
