@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, Mail, MessageSquare, Brain } from "lucide-react";
+import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, Mail, MessageSquare, Brain, Search, Edit, BarChart, Star } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -88,7 +88,7 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">The Anatomy of a Broken Audit Trail</h2>
-                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks, “Show me proof”—the answers are scattered across unreliable systems.</p>
+                    <p className="text-lg text-muted-foreground mt-4">Your team works hard, but their efforts are invisible. Important updates and approvals are scattered across unreliable systems.</p>
                 </motion.div>
 
                 <motion.div 
