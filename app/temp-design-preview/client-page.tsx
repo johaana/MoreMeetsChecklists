@@ -31,7 +31,7 @@ const HeroSection = () => (
                 transition={{ duration: 0.8, ease: "easeInOut" }}
             >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-lg">
-                    The Standard for Verifiable Operations.
+                    The Professional Standard for Audit-Ready Operations.
                 </h1>
                 <p className="text-lg text-white/90 max-w-2xl drop-shadow-md">
                     MoreMeets Standards™ is the world's first offline, audit-ready operational framework. It converts daily work into a verifiable system—independent of people, tools, or software.
@@ -88,7 +88,8 @@ const ProblemSection = () => {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">Most Operations Aren’t Broken. They’re Unprovable.</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">The Anatomy of a Broken Audit Trail</h2>
+                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks, “Show me proof”—the answers are scattered across unreliable systems.</p>
                 </motion.div>
 
                 <motion.div 
@@ -122,8 +123,8 @@ const ProblemSection = () => {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                  >
-                     <p className="text-xl font-semibold text-primary mt-6 border-t border-b border-dashed py-4 max-w-2xl mx-auto">
-                        Compliance doesn't fail because work isn’t done—it fails because it isn’t standardized into a single, provable system.
+                     <p className="text-xl font-semibold text-primary mt-6 border-t border-b border-dashed py-4 max-w-3xl mx-auto">
+                        This isn't an execution problem; it's a standardization problem. Without a unified system of record, compliance is based on hope, not proof.
                     </p>
                 </motion.div>
             </div>
