@@ -5,8 +5,9 @@ import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, BrainCircuit, FileText, Users, Zap, Frown, Smile, Mail, MessageSquare, Brain } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import { premiumPacks } from '@/lib/premium-packs';
 
 const HeroSection = () => (
     <section className="relative w-full h-screen min-h-[700px] flex items-center text-white overflow-hidden">
@@ -86,7 +87,7 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">The Anatomy of a Broken Audit Trail</h2>
-                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks for proof, the answers are scattered across unreliable systems.</p>
+                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks, “Show me proof”—the answers are scattered across unreliable systems.</p>
                 </motion.div>
 
                 <motion.div 
@@ -129,7 +130,7 @@ const ProblemSection = () => {
     );
 };
 
-const ChaosVsStandardSection = () => {
+const ChaosToControlSection = () => {
     return (
       <section className="w-full py-16 md:py-24 bg-secondary/30">
         <div className="container px-4 md:px-6">
@@ -145,9 +146,9 @@ const ChaosVsStandardSection = () => {
                 <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
-                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
                 <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
+                <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
                 <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
               </CardContent>
             </Card>
@@ -158,9 +159,9 @@ const ChaosVsStandardSection = () => {
                 <CardDescription>A system of record that ensures excellence every time.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-foreground flex-1">
-                 <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
-                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are onboarded with a perfect, consistent playbook from day one.</span></p>
-                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
+                 <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
+                <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
                 <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
               </CardContent>
             </Card>
@@ -298,7 +299,7 @@ export default function TempDesignClientPage() {
     <main className="flex-1">
       <HeroSection />
       <ProblemSection />
-      <ChaosVsStandardSection />
+      <ChaosToControlSection />
       <SystemSection />
       <StandardsSection />
       <TrustSection />
@@ -306,5 +307,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
-    
