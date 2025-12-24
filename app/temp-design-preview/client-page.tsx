@@ -89,7 +89,7 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary">The Anatomy of a Broken Audit Trail</h2>
-                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks for evidence, the answers are scattered across unreliable systems.</p>
+                    <p className="text-lg text-muted-foreground mt-4">Your team knows what to do. But when an auditor asks, the answers are scattered across unreliable systems.</p>
                 </motion.div>
 
                 <motion.div 
@@ -100,10 +100,10 @@ const ProblemSection = () => {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                     {[
-                        { icon: <MessageSquare className="w-8 h-8" />, label: "WhatsApp", description: "Unverifiable & undated." },
-                        { icon: <FileText className="w-8 h-8" />, label: "Spreadsheets", description: "Outdated & easy to manipulate." },
-                        { icon: <Brain className="w-8 h-8" />, label: "Memory", description: "Unreliable & leaves with people." },
-                        { icon: <Mail className="w-8 h-8" />, label: "Email", description: "Buried, untracked & unactionable." }
+                        { icon: <MessageSquare className="w-8 h-8" />, label: "WhatsApp & Verbal", description: "Critical updates are informal, untracked, and impossible to audit." },
+                        { icon: <FileText className="w-8 h-8" />, label: "Spreadsheets", description: "Data is outdated, prone to error, and locked in disparate, hard-to-find files." },
+                        { icon: <Brain className="w-8 h-8" />, label: "Institutional Memory", description: "Your best practices are unwritten, inconsistent, and walk out the door with your key people." },
+                        { icon: <Mail className="w-8 h-8" />, label: "Email Chains", description: "Important decisions and approvals are buried in endless threads, creating zero visibility." }
                     ].map((item, index) => (
                         <motion.div
                             key={index}
@@ -124,7 +124,7 @@ const ProblemSection = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                  >
                      <p className="text-xl font-semibold text-primary mt-6 border-t border-b border-dashed py-4 max-w-3xl mx-auto">
-                        This isn't an execution problem; it's a standardization problem. Without a unified system of record, compliance is based on hope, not proof.
+                        Compliance doesn't fail because work isn’t done—it fails because it isn’t standardized into a single, provable system.
                     </p>
                 </motion.div>
             </div>
