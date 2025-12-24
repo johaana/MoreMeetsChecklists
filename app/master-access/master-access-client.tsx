@@ -9,7 +9,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { Check, Download, Loader2, Banknote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { addContact } from '@/app/packs/actions';
+import { addContact } from '@/packs/actions';
 import { Input } from '@/components/ui/input';
 import { ValueProposition } from '@/components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -245,3 +245,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     );
 }
 
+    
