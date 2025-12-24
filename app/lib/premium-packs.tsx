@@ -17,6 +17,9 @@ export type Checklist = {
         consequence: string;
         proof: string;
         location?: string;
+        department?: string;
+        role?: string;
+        frequency?: string;
     }[];
 };
 
@@ -41,7 +44,7 @@ export type PremiumPack = {
     paymentId: string;
     lemonSqueezyUrl?: string;
     listId?: number; // Brevo List ID
-    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise";
+    category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise" | "Master Access";
     description: string;
     icon: string;
     badgeText?: string;
@@ -57,324 +60,214 @@ export type PremiumPack = {
     bestseller?: boolean;
 }
 
-export const premiumPacks: PremiumPack[] = [
-    {
-        id: 'franchise_operations_pack',
-        title: "Franchise Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/b0b53361-91a3-496a-a169-b5a0344d7328',
-        category: "Franchise",
-        description: "A complete toolkit for franchisors to ensure brand consistency, operational excellence, and franchisee success across all locations.",
-        icon: "store",
-        badgeText: "New!",
-        badgeVariant: "accent",
-        whoIsItFor: ["Franchise Owners", "Heads of Operations", "Franchise Development Managers", "Regional Managers"],
-        sampleItems: [
-            { text: "Ensure a flawless launch for every new outlet with a 100-point New Franchisee Onboarding checklist.", icon: "rocket" },
-            { text: "Protect your brand with rigorous Brand Standards and Marketing Compliance audits.", icon: "shield" },
-            { text: "Drive profitability with SOPs for supply chain management, inventory control, and financial reporting.", icon: "trending-up" },
-            { text: "Empower franchisee success with structured training programs and performance review templates.", icon: "users" },
-            { text: "Maintain quality across the network with checklists for customer service and product consistency.", icon: "star" },
-            { text: "Simplify legal and administrative tasks with templates for site selection and agreement management.", icon: "file-check" }
-        ],
-        checklists: [
-            {
-                title: "New Franchisee Onboarding",
-                department: "Operations",
-                frequency: "Per New Franchisee",
-                role: "Onboarding Manager",
-                summary: "A comprehensive checklist to guide a new franchisee from signing the agreement to grand opening, ensuring no steps are missed.",
-                icon: "user-plus",
-                tasks: [
-                    { id: "FO-01", description: "Legal & Financial: Franchise agreement signed and all fees paid.", priority: "High", riskLevel: "High", consequence: "Legal disputes, delayed opening.", proof: "Signed agreement copy, payment receipt.", location: "Head Office" },
-                    { id: "FO-02", description: "Site Selection: Final site approved based on demographic and feasibility reports.", priority: "High", riskLevel: "High", consequence: "Poor location leading to low sales.", proof: "Signed site approval form.", location: "Field" },
-                    { id: "FO-03", description: "Store Fit-Out: Interior design and layout approved and vendor assigned.", priority: "High", riskLevel: "Medium", consequence: "Brand inconsistency, construction delays.", proof: "Approved layout drawings.", location: "Head Office" },
-                    { id: "FO-04", description: "Initial Training: Franchisee and key staff complete mandatory head office training.", priority: "High", riskLevel: "High", consequence: "Operational errors, poor customer service.", proof: "Training completion certificates.", location: "Training Center" },
-                    { id: "FO-05", description: "Supply Chain Setup: Initial orders for all equipment, raw materials, and inventory placed.", priority: "High", riskLevel: "Medium", consequence: "Store cannot open on time.", proof: "Purchase order copies.", location: "Head Office" },
-                    { id: "FO-06", description: "Marketing: Pre-launch and grand opening marketing plan approved and budget allocated.", priority: "Medium", riskLevel: "Medium", consequence: "Low footfall during opening week.", proof: "Approved marketing plan.", location: "Marketing Dept." },
-                    { id: "FO-07", description: "Technology Setup: POS system, CCTV, and other required software installed and tested.", priority: "High", riskLevel: "High", consequence: "Inability to process sales, security gaps.", proof: "IT sign-off document.", location: "Franchise Location" },
-                    { id: "FO-08", description: "Pre-Opening Audit: Final walkthrough to ensure store is 100% brand compliant and ready for opening.", priority: "High", riskLevel: "High", consequence: "Negative first impression, operational failures.", proof: "Completed pre-opening audit form.", location: "Franchise Location" }
-                ]
-            },
-            {
-                title: "Quarterly Brand Standards Audit",
-                department: "Operations / Quality Assurance",
-                frequency: "Quarterly",
-                role: "Area Manager / Auditor",
-                summary: "Ensures the franchisee is adhering to all brand standards, from store cleanliness to staff uniform and product presentation.",
-                icon: "search",
-                tasks: [
-                    { id: "BSA-01", description: "Exterior & Signage: All external branding is clean, undamaged, and correctly illuminated.", priority: "High", riskLevel: "Medium", consequence: "Poor brand image, customer confusion.", proof: "Dated photo of storefront.", location: "Exterior" },
-                    { id: "BSA-02", description: "Interior & Ambiance: Store is clean, well-lit, and music/scent protocols are followed.", priority: "Medium", riskLevel: "Low", consequence: "Sub-par customer experience.", proof: "Audit checklist section sign-off.", location: "Interior" },
-                    { id: "BSA-03", description: "Product & Service: Product quality, portion sizes, and packaging meet brand standards.", priority: "High", riskLevel: "High", consequence: "Brand dilution, customer complaints.", proof: "Test purchase and product inspection notes.", location: "Point of Sale" },
-                    { id: "BSA-04", description: "Staff Presentation: All on-duty staff are in full, clean uniform with proper grooming.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessional appearance.", proof: "Visual inspection during audit.", location: "All Areas" },
-                    { id: "BSA-05", description: "Marketing Collateral: Only approved, current marketing materials are on display.", priority: "Low", riskLevel: "Low", consequence: "Outdated offers, brand inconsistency.", proof: "Photo of in-store displays.", location: "Interior" },
-                    { id: "BSA-06", description: "Hygiene & Cleanliness: Restrooms, kitchen (if any), and seating areas are spotless.", priority: "High", riskLevel: "High", consequence: "Health code violations, customer disgust.", proof: "Hygiene audit score.", location: "All Areas" }
-                ]
-            },
-            {
-                title: "Supply Chain & Inventory Audit",
-                department: "Supply Chain",
-                frequency: "Monthly",
-                role: "Franchisee / Store Manager",
-                summary: "Verifies that the franchisee is using only approved suppliers and managing inventory effectively to prevent stockouts or wastage.",
-                icon: "truck",
-                tasks: [
-                    { id: "SCI-01", description: "Verify all key raw materials are sourced from brand-approved suppliers.", priority: "High", riskLevel: "High", consequence: "Product inconsistency, potential safety issues, breach of contract.", proof: "Review of last 30 days of purchase invoices.", location: "Office" },
-                    { id: "SCI-02", description: "Check storage conditions (temperature, FIFO) for all perishable and dry goods.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage, wastage, health risks.", proof: "Temperature logs, visual inspection of storage.", location: "Stock Room/Kitchen" },
-                    { id: "SCI-03", description: "Conduct a physical count of top 10 SKUs and reconcile with POS system data.", priority: "Medium", riskLevel: "Medium", consequence: "Inventory shrinkage, inaccurate ordering.", proof: "Signed stock count sheet.", location: "Stock Room" },
-                    { id: "SCI-04", description: "Review wastage logs for patterns and identify areas for improvement.", priority: "Medium", riskLevel: "Low", consequence: "Lost profit.", proof: "Wastage log analysis.", location: "Office" }
-                ]
-            },
-            {
-                title: "Customer Service & Experience Audit",
-                department: "Operations",
-                frequency: "Monthly",
-                role: "Mystery Shopper / Area Manager",
-                summary: "Evaluates the customer experience against brand standards, from greeting to final transaction.",
-                icon: "smile",
-                tasks: [
-                    { id: "CSE-01", description: "Greeting: Was the customer greeted within 30 seconds of entering?", priority: "High", riskLevel: "Low", consequence: "Poor first impression.", proof: "Mystery shopper report timestamp.", location: "Entrance" },
-                    { id: "CSE-02", description: "Order Taking: Was the order taken accurately and efficiently, with upselling attempted?", priority: "Medium", riskLevel: "Low", consequence: "Lost revenue, customer frustration.", proof: "Mystery shopper report.", location: "Point of Sale" },
-                    { id: "CSE-03", description: "Complaint Handling: Was a test complaint handled politely and according to the brand's service recovery protocol?", priority: "High", riskLevel: "High", consequence: "A small issue escalating into a major online complaint.", proof: "Detailed notes in mystery shopper report.", location: "Point of Sale" },
-                    { id: "CSE-04", description: "Store Atmosphere: Was the environment clean, welcoming, and safe for customers?", priority: "High", riskLevel: "Medium", consequence: "Customers feel uncomfortable and won't return.", proof: "Mystery shopper rating.", location: "All Areas" },
-                    { id: "CSE-05", description: "Closing: Was the customer thanked and given a sincere farewell?", priority: "Medium", riskLevel: "Low", consequence: "Missed opportunity to build loyalty.", proof: "Mystery shopper report.", location: "Exit" }
-                ]
-            },
-        ]
-    },
-    {
-        id: 'animal_shelter_pack',
-        title: "Animal Shelter Operations Pack",
-        priceINR: 0,
-        priceUSD: 0,
-        paymentId: '',
-        lemonSqueezyUrl: '',
-        listId: 7,
-        category: "Social Cause",
-        description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
-        icon: "paw-print",
-        badgeText: "Free Download",
-        badgeVariant: "accent",
-        whoIsItFor: ["Animal Shelter Managers", "NGO Founders", "Veterinarians", "Volunteer Coordinators"],
-        sampleItems: [
-            { text: "Prevent disease outbreaks with rigorous cleaning, disinfection, and quarantine protocols.", icon: "sparkles" },
-            { text: "Ensure every animal's health with checklists for daily feeding, medication administration, and health monitoring.", icon: "stethoscope" },
-            { text: "Manage your population responsibly with SOPs for intake, vaccination, and spay/neuter programs.", icon: "syringe" },
-            { text: "Create a safe environment for animals and people with protocols for temperament testing and safe handling.", icon: "users" },
-            { text: "Increase adoptions with a structured process for counseling, home checks, and post-adoption follow-up.", icon: "home" },
-            { text: "Streamline your operations with checklists for volunteer management, inventory, and fundraising events.", icon: "clipboard-list" }
-        ],
-        checklists: [
-             {
-                title: "Daily Cleaning & Disinfection",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Shelter Staff",
-                summary: "Ensures a sanitary environment to prevent disease transmission among animals.",
-                icon: "spray-can",
-                tasks: [
-                    { id: "AC-DC-01", description: "Remove all feces, urine, and soiled bedding from every enclosure.", priority: "High", riskLevel: "High", consequence: "Disease outbreak (Parvo, etc.), unpleasant odors, regulatory action.", proof: "Supervisor sign-off on cleaning log.", location: "All Enclosures" },
-                    { id: "AC-DC-02", description: "Scrub all food and water bowls with veterinary-grade disinfectant.", priority: "High", riskLevel: "Medium", consequence: "Spread of oral infections, gastrointestinal illness.", proof: "Visual inspection by supervisor.", location: "Kitchen/Cleaning Area" },
-                    { id: "AC-DC-03", description: "Disinfect all enclosure surfaces (floors, walls, gates) with approved sanitizer.", priority: "High", riskLevel: "High", consequence: "High risk of communicable disease spread.", proof: "Completed cleaning checklist for each zone.", location: "All Enclosures" },
-                    { id: "AC-DC-04", description: "Clean and disinfect all common play areas and meet-and-greet rooms.", priority: "Medium", riskLevel: "Medium", consequence: "Disease transmission between animal groups.", proof: "Logbook entry for common areas.", location: "Play Areas" },
-                    { id: "AC-DC-05", description: "Empty and disinfect all waste bins.", priority: "Low", riskLevel: "Low", consequence: "Pest attraction, odor issues.", proof: "Visual confirmation.", location: "Waste Disposal Area" }
-                ]
-            },
-            {
-                title: "Animal Intake & Quarantine Protocol",
-                department: "Medical",
-                frequency: "Per new animal arrival",
-                role: "Intake Coordinator / Vet Tech",
-                summary: "Safely process new animals, assess their health, and prevent the introduction of diseases to the general population.",
-                icon: "shield-check",
-                tasks: [
-                    { id: "AI-IQ-01", description: "Photograph and log new animal's details (species, breed, age, color, markings).", priority: "High", riskLevel: "Low", consequence: "Inability to track animal, lost/found matching failure.", proof: "Entry in shelter management software with photo.", location: "Intake Room" },
-                    { id: "AI-IQ-02", description: "Scan for microchip and check against national databases.", priority: "High", riskLevel: "Low", consequence: "Failure to reunite a lost pet with its owner.", proof: "Microchip scan log.", location: "Intake Room" },
-                    { id: "AI-IQ-03", description: "Perform initial health screening (check for wounds, parasites, signs of illness).", priority: "High", riskLevel: "High", consequence: "Undiagnosed injury/illness could worsen or spread.", proof: "Completed intake health assessment form.", location: "Intake Room" },
-                    { id: "AI-IQ-04", description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: "High", riskLevel: "High", consequence: "Vulnerability to preventable diseases like distemper or rabies.", proof: "Medical record updated with administered treatments.", location: "Intake Room" },
-                    { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter software.", location: "Quarantine Zone" }
-                ]
-            },
-            {
-                title: "Daily Feeding & Health Monitoring",
-                department: "Animal Care",
-                frequency: "Daily (Twice)",
-                role: "Animal Care Attendant",
-                summary: "Ensures all animals receive proper nutrition and are monitored for early signs of illness or distress.",
-                icon: "heart-pulse",
-                tasks: [
-                    { id: "AH-DF-01", description: "Feed each animal the correct type and amount of food according to their specific dietary plan.", priority: "High", riskLevel: "Medium", consequence: "Malnutrition, obesity, allergic reactions, medical complications.", proof: "Feeding chart checked off for each animal.", location: "All Enclosures" },
-                    { id: "AH-DF-02", description: "Provide fresh, clean water to every animal.", priority: "High", riskLevel: "Medium", consequence: "Dehydration, which can quickly become a medical emergency.", proof: "Visual inspection during feeding rounds.", location: "All Enclosures" },
-                    { id: "AH-DF-03", description: "Observe each animal during feeding for changes in appetite, behavior, or stool quality.", priority: "High", riskLevel: "High", consequence: "Missed early signs of illness, leading to delayed treatment.", proof: "Daily observation log completed for each animal.", location: "All Enclosures" },
-                    { id: "AH-DF-04", description: "Report any abnormalities (lethargy, vomiting, coughing, etc.) to the vet team immediately.", priority: "High", riskLevel: "High", consequence: "A sick animal's condition could deteriorate rapidly without intervention.", proof: "Entry in medical communication log or direct report.", location: "All Enclosures" }
-                ]
-            },
-             {
-                title: "Medication Administration",
-                department: "Medical",
-                frequency: "As per prescription",
-                role: "Vet Tech / Trained Staff",
-                summary: "Ensures animals receive their prescribed medications correctly and on time.",
-                icon: "pill",
-                tasks: [
-                    { id: "AM-MA-01", description: "Verify patient identity, medication, dosage, and route before administration (The '5 Rights').", priority: "High", riskLevel: "High", consequence: "Overdose, underdose, or wrong medication can cause harm or death.", proof: "Medication Administration Record (MAR) initialed after each dose.", location: "Treatment Area / Enclosures" },
-                    { id: "AM-MA-02", description: "Document the time and date of every medication given in the animal's medical record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate medical history, risk of double-dosing.", proof: "Signed MAR sheet.", location: "Medical Records" },
-                    { id: "AM-MA-03", description: "Observe animal post-administration for any adverse reactions.", priority: "Medium", riskLevel: "High", consequence: "Untreated allergic reaction or side effect could be fatal.", proof: "Note in daily observation log.", location: "Enclosures" },
-                    { id: "AM-MA-04", description: "Securely store all medications, especially controlled substances, in a locked cabinet.", priority: "High", riskLevel: "High", consequence: "Theft, misuse, accidental ingestion, regulatory violations.", proof: "Weekly controlled substance inventory log.", location: "Pharmacy/Storage" }
-                ]
-            },
-            {
-                title: "Adoption Counseling & Process",
-                department: "Adoptions",
-                frequency: "Per adoption",
-                role: "Adoption Counselor",
-                summary: "Ensures responsible and sustainable adoptions by matching the right animal with the right family.",
-                icon: "home",
-                tasks: [
-                    { id: "AP-AC-01", description: "Conduct an adoption interview to understand the potential adopter's lifestyle, home environment, and expectations.", priority: "High", riskLevel: "Medium", consequence: "Mismatched adoption leading to high return rates.", proof: "Completed adoption application/interview form.", location: "Adoption Center" },
-                    { id: "AP-AC-02", description: "Provide full disclosure of the animal's history, medical needs, and known behavioral traits.", priority: "High", riskLevel: "Medium", consequence: "Adopter feels misled; animal may be returned due to unexpected issues.", proof: "Counselor's notes in adoption file.", location: "Adoption Center" },
-                    { id: "AP-AC-03", description: "Facilitate a supervised meet-and-greet between the animal and all family members (including other pets).", priority: "High", riskLevel: "Medium", consequence: "Conflicts between pets or family members after adoption.", proof: "Check-off on adoption process form.", location: "Meet-and-Greet Area" },
-                    { id: "AP-AC-04", description: "Verify adopter's identity and address (e.g., via ID and utility bill).", priority: "Medium", riskLevel: "Low", consequence: "Inability to follow up post-adoption; potential for fraudulent adoption.", proof: "Copies of ID/address proof in adoption file.", location: "Adoption Center" },
-                    { id: "AP-AC-05", description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: "High", riskLevel: "Low", consequence: "Legal ambiguity over ownership.", proof: "Signed adoption contract and microchip form.", location: "Adoption Center" }
-                ]
-            },
-            {
-                title: "Volunteer Management",
-                department: "Administration",
-                frequency: "Ongoing",
-                role: "Volunteer Coordinator",
-                summary: "Effectively onboard, train, and manage volunteers to support shelter operations.",
-                icon: "users",
-                tasks: [
-                    { id: "AV-VM-01", description: "Conduct orientation for all new volunteers covering shelter policies, safety procedures, and animal handling basics.", priority: "High", riskLevel: "Medium", consequence: "Volunteers may unknowingly violate safety rules or handle animals incorrectly.", proof: "Signed orientation completion form.", location: "Training Room" },
-                    { id: "AV-VM-02", description: "Maintain an up-to-date volunteer schedule to ensure all shifts are covered.", priority: "Medium", riskLevel: "Low", consequence: "Staffing shortages leading to compromised animal care.", proof: "Published weekly schedule.", location: "Office" },
-                    { id: "AV-VM-03", description: "Provide clear task lists for different volunteer roles (e.g., dog walking, cat socialization, cleaning).", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of volunteer time, confusion about duties.", proof: "Posted task lists in relevant areas.", location: "All Areas" },
-                    { id: "AV-VM-04", description: "Ensure all volunteers sign in and out for every shift.", priority: "Low", riskLevel: "Low", consequence: "Inaccurate tracking of volunteer hours, security risk.", proof: "Daily sign-in/out sheet.", location: "Reception" }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'hotels_and_resorts',
-        title: "Hotels & Resorts Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
-        category: "Hospitality",
-        description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
-        icon: "building",
-        badgeText: "Most Popular",
-        badgeVariant: "default",
-        bestseller: true,
-        whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "GMs", "VPs", "and their teams"],
-        sampleItems: [
-             { text: "Ensure flawless room presentation with daily readiness and housekeeping verification.", icon: "home" },
-             { text: "Uphold world-class food safety with kitchen hygiene (HACCP) and F&B service standards.", icon: "utensils" },
-             { text: "Mitigate water-related risks with pool & spa safety protocols and water quality logs.", icon: "life-buoy" },
-             { text: "Guarantee guest and staff safety through rigorous fire safety audits and evacuation drills.", icon: "siren" },
-             { text: "Control site access and third-party risk with vendor and work permit SOPs.", icon: "hard-hat" },
-             { text: "Prevent costly downtime with a proactive preventive maintenance schedule for all critical assets.", icon: "wrench" }
-        ],
-        checklists: [
-            {
-                title: "Daily Housekeeping & Room Readiness",
-                department: "Housekeeping",
-                frequency: "Daily",
-                role: "Housekeeping Supervisor",
-                summary: "Ensures every guest room meets the highest standards of cleanliness, functionality, and presentation before check-in and during the stay.",
-                icon: "bed-double",
-                tasks: [
-                    { id: "HK-DR-01", description: "Verify all vacant rooms are cleaned, sanitized, and inspected as per the 'Room Cleaning Checklist'.", priority: "High", riskLevel: "Medium", consequence: "Negative guest reviews, potential health risks.", proof: "Supervisor's inspection log (digital/physical).", location: "All Vacant Rooms" },
-                    { id: "HK-DR-02", description: "Check and restock housekeeping carts with all necessary linens, amenities, and cleaning supplies for the day's operations.", priority: "Medium", riskLevel: "Low", consequence: "Delayed room servicing, inconsistent amenity stocking.", proof: "Signed cart checklist.", location: "Housekeeping Pantry" },
-                    { id: "HK-DR-03", description: "Conduct a morning briefing with housekeeping staff to assign rooms, discuss VIP arrivals, and highlight any special guest requests.", priority: "Medium", riskLevel: "Low", consequence: "Poor team coordination, missed special requests.", proof: "Briefing log or attendance sheet.", location: "Housekeeping Office" },
-                    { id: "HK-DR-04", description: "Inspect a random sample of 5 'ready' rooms against the 5-star cleaning standard checklist.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent room quality, guest complaints.", proof: "Completed random inspection forms.", location: "Random Guest Rooms" },
-                    { id: "HK-DR-05", description: "Log all lost and found items with date, time, location, and description.", priority: "Medium", riskLevel: "Low", consequence: "Guest dissatisfaction, potential theft accusations.", proof: "Lost & Found Register.", location: "Housekeeping Office" },
-                    { id: "HK-DR-06", description: "Check and clear all housekeeping service corridors of trays and linen.", priority: "Low", riskLevel: "Low", consequence: "Fire hazard, untidy appearance.", proof: "Visual check during rounds.", location: "Service Corridors" }
-                ]
-            },
-            {
-                title: "Front Office - Shift Opening & Closing",
-                department: "Front Office",
-                frequency: "Per Shift",
-                role: "Front Office Executive",
-                summary: "Ensures a smooth transition between shifts, accurate cash handling, and readiness for guest arrivals/departures.",
-                icon: "user",
-                tasks: [
-                    { id: "FO-SC-01", description: "Verify cash float count at the beginning and end of the shift with supervisor signature.", priority: "High", riskLevel: "High", consequence: "Cash discrepancy, theft, financial loss.", proof: "Signed float count form.", location: "Front Desk" },
-                    { id: "FO-SC-02", description: "Review shift handover log for pending guest requests, complaints, or follow-ups.", priority: "High", riskLevel: "Medium", consequence: "Guest service failures, unresolved issues.", proof: "Initials in handover logbook.", location: "Front Desk" },
-                    { id: "FO-SC-03", description: "Check PMS for expected arrivals, departures, and VIPs for the upcoming shift.", priority: "High", riskLevel: "Low", consequence: "Unprepared for guest needs, poor first impression.", proof: "PMS review confirmation.", location: "Front Desk" },
-                    { id: "FO-SC-04", description: "Reconcile all credit card transactions and POS settlements from the shift.", priority: "High", riskLevel: "High", consequence: "Revenue leakage, accounting errors.", proof: "End-of-shift settlement report from PMS/EDC machine.", location: "Front Desk" },
-                    { id: "FO-SC-05", description: "Ensure all key cards are accounted for and programmed correctly.", priority: "Medium", riskLevel: "Medium", consequence: "Guest security risk, unauthorized access.", proof: "Key card inventory count.", location: "Front Desk" }
-                ]
-            },
-            {
-                title: "F&B - Kitchen Opening Hygiene Checklist (HACCP)",
-                department: "Food & Beverage",
-                frequency: "Daily",
-                role: "Sous Chef / Chef de Partie",
-                summary: "Based on HACCP principles, this ensures the kitchen is sanitary and safe before food preparation begins.",
-                icon: "utensils-crossed",
-                tasks: [
-                    { id: "FB-KO-01", description: "Check and record temperatures of all refrigerators and freezers. Report any deviations from critical limits.", priority: "High", riskLevel: "High", consequence: "Food spoilage, risk of foodborne illness (bacterial growth).", proof: "Temperature Logbook.", location: "All Kitchen Cold Storage" },
-                    { id: "FB-KO-02", description: "Verify all food contact surfaces (cutting boards, prep tables) are clean and sanitized.", priority: "High", riskLevel: "High", consequence: "Cross-contamination, food poisoning.", proof: "ATP swab test results (weekly) or visual inspection log (daily).", location: "Kitchen Prep Areas" },
-                    { id: "FB-KO-03", description: "Ensure staff hygiene: clean uniforms, hairnets, and proper handwashing facilities are stocked and accessible.", priority: "High", riskLevel: "Medium", consequence: "Spread of pathogens from staff to food.", proof: "Supervisor's daily staff inspection sign-off.", location: "Kitchen Entrance" },
-                    { id: "FB-KO-04", description: "Check for any signs of pests (droppings, gnaw marks) and report immediately.", priority: "High", riskLevel: "High", consequence: "Major health code violation, brand damage, closure by authorities.", proof: "Pest Control Logbook.", location: "Entire Kitchen" },
-                    { id: "FB-KO-05", description: "Confirm calibration of food thermometers using the ice-point or boiling-point method.", priority: "Medium", riskLevel: "High", consequence: "Inaccurate temperature readings leading to undercooked food.", proof: "Thermometer Calibration Log.", location: "Kitchen" }
-                ]
-            },
-             {
-                title: "Hotel Fire Safety & Evacuation Audit",
-                department: "Security / Engineering",
-                frequency: "Weekly",
-                role: "Safety Officer",
-                summary: "A weekly audit to ensure all fire safety equipment is functional and evacuation routes are clear.",
-                icon: "siren",
-                tasks: [
-                    { id: "SEC-FS-01", description: "Physically check that all fire exit doors are unlocked and unobstructed from both sides.", priority: "High", riskLevel: "High", consequence: "Guests and staff trapped during a fire, leading to injury or death.", proof: "Photo log of checked exits.", location: "All Fire Exits" },
-                    { id: "SEC-FS-02", description: "Inspect a random sample of fire extinguishers for correct pressure and accessibility.", priority: "High", riskLevel: "High", consequence: "Inability to fight a small fire before it spreads.", proof: "Extinguisher inspection checklist.", location: "Guest Corridors, BOH" },
-                    { id: "SEC-FS-03", description: "Test a different fire alarm call point each week to verify system functionality.", priority: "High", riskLevel: "High", consequence: "Delayed or failed alarm activation in an emergency.", proof: "Fire Alarm Test Log signed by Engineering.", location: "Varies weekly" },
-                    { id: "SEC-FS-04", description: "Ensure emergency lighting in stairwells and corridors is functional.", priority: "High", riskLevel: "Medium", consequence: "Panic and injury during evacuation in a power failure.", proof: "Emergency light test log.", location: "Evacuation Routes" },
-                    { id: "SEC-FS-05", description: "Verify that all fire evacuation plans are clearly posted and legible in guest rooms and common areas.", priority: "Medium", riskLevel: "Low", consequence: "Guest confusion during an evacuation.", proof: "Photo audit of posted plans.", location: "Guest Rooms, Lobbies" }
-                ]
-            },
-            {
-                title: "Preventive Maintenance - MEP Systems",
-                department: "Engineering",
-                frequency: "Monthly",
-                role: "Chief Engineer",
-                summary: "Scheduled maintenance for Mechanical, Electrical, and Plumbing systems to prevent failures and ensure guest comfort and safety.",
-                icon: "wrench",
-                tasks: [
-                    { id: "ENG-PM-01", description: "Inspect and clean HVAC filters for all major air handling units (AHUs).", priority: "Medium", riskLevel: "Low", consequence: "Poor air quality, increased energy consumption, system failure.", proof: "Maintenance log for each AHU.", location: "Plant Rooms" },
-                    { id: "ENG-PM-02", description: "Test the automatic transfer switch (ATS) for the backup generator.", priority: "High", riskLevel: "High", consequence: "Complete power loss during a utility outage, compromising all hotel systems.", proof: "Generator test run log.", location: "Generator Room" },
-                    { id: "ENG-PM-03", description: "Inspect and test sump pumps and drainage systems in basements and critical areas.", priority: "Medium", riskLevel: "High", consequence: "Flooding, water damage to critical equipment.", proof: "Pump test log.", location: "Basements, Pump Rooms" },
-                    { id: "ENG-PM-04", description: "Perform thermal imaging scan on main electrical panels to detect hotspots.", priority: "High", riskLevel: "High", consequence: "Electrical fire, catastrophic power failure.", proof: "Thermal imaging report.", location: "Electrical Rooms" },
-                    { id: "ENG-PM-05", description: "Check water pressure and test booster pumps.", priority: "Medium", riskLevel: "Low", consequence: "Poor water pressure in guest rooms, guest complaints.", proof: "Pump performance log.", location: "Pump Rooms" }
-                ]
-            },
-            {
-                title: "Swimming Pool & Spa Safety",
-                department: "Recreation / Engineering",
-                frequency: "Daily",
-                role: "Pool Attendant",
-                summary: "Ensures the pool and spa areas are safe, hygienic, and compliant with health regulations.",
-                icon: "life-buoy",
-                tasks: [
-                    { id: "REC-PS-01", description: "Test and record water quality (pH, chlorine/bromine levels) three times daily.", priority: "High", riskLevel: "High", consequence: "Skin/eye irritation, spread of waterborne illness, health dept. closure.", proof: "Water quality logbook.", location: "Poolside" },
-                    { id: "REC-PS-02", description: "Ensure all safety equipment (life rings, shepherd's crook) is present and accessible.", priority: "High", riskLevel: "High", consequence: "Inability to perform a rescue, leading to drowning.", proof: "Daily safety equipment checklist.", location: "Poolside" },
-                    { id: "REC-PS-03", description: "Verify all pool drain covers are intact and secure to prevent entrapment.", priority: "High", riskLevel: "High", consequence: "Severe injury or drowning due to suction entrapment.", proof: "Visual inspection log with photo.", location: "Pool Deck" },
-                    { id: "REC-PS-04", description: "Check that all depth markings and safety signage are clearly visible.", priority: "Medium", riskLevel: "Medium", consequence: "Guest misjudging depth, leading to diving accidents.", proof: "Daily visual check.", location: "Pool Area" },
-                    { id: "REC-PS-05", description: "Ensure pool deck is clean, free of slip hazards, and furniture is in good repair.", priority: "Medium", riskLevel: "Medium", consequence: "Slip and fall injuries, guest lawsuits.", proof: "Hourly attendant rounds log.", location: "Pool Deck" }
-                ]
-            }
-        ]
-    },
+const franchise_operations_pack: PremiumPack = {
+    id: 'franchise_operations_pack',
+    title: "Franchise Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC', // Placeholder
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/b0b53361-91a3-496a-a169-b5a0344d7328',
+    category: "Franchise",
+    description: "A complete toolkit for franchisors to ensure brand consistency, operational excellence, and franchisee success across all locations.",
+    icon: "store",
+    badgeText: "New!",
+    badgeVariant: "accent",
+    whoIsItFor: ["Franchise Owners", "Heads of Operations", "Franchise Development Managers", "Regional Managers"],
+    sampleItems: [
+        { text: "Ensure a flawless launch for every new outlet with a 100-point New Franchisee Onboarding checklist.", icon: "rocket" },
+        { text: "Protect your brand with rigorous Brand Standards and Marketing Compliance audits.", icon: "shield" },
+        { text: "Drive profitability with SOPs for supply chain management, inventory control, and financial reporting.", icon: "trending-up" },
+        { text: "Empower franchisee success with structured training programs and performance review templates.", icon: "users" },
+        { text: "Maintain quality across the network with checklists for customer service and product consistency.", icon: "star" },
+        { text: "Simplify legal and administrative tasks with templates for site selection and agreement management.", icon: "file-check" }
+    ],
+    checklists: [
+        {
+            title: "New Franchisee Onboarding",
+            department: "Operations",
+            frequency: "Per New Franchisee",
+            role: "Onboarding Manager",
+            summary: "A comprehensive checklist to guide a new franchisee from signing the agreement to grand opening, ensuring no steps are missed.",
+            icon: "user-plus",
+            tasks: [
+                { id: "FO-01", description: "Legal & Financial: Franchise agreement signed and all fees paid.", priority: "High", riskLevel: "High", consequence: "Legal disputes, delayed opening.", proof: "Signed agreement copy, payment receipt.", location: "Head Office" },
+                { id: "FO-02", description: "Site Selection: Final site approved based on demographic and feasibility reports.", priority: "High", riskLevel: "High", consequence: "Poor location leading to low sales.", proof: "Signed site approval form.", location: "Field" },
+                { id: "FO-03", description: "Store Fit-Out: Interior design and layout approved and vendor assigned.", priority: "High", riskLevel: "Medium", consequence: "Brand inconsistency, construction delays.", proof: "Approved layout drawings.", location: "Head Office" },
+                { id: "FO-04", description: "Initial Training: Franchisee and key staff complete mandatory head office training.", priority: "High", riskLevel: "High", consequence: "Operational errors, poor customer service.", proof: "Training completion certificates.", location: "Training Center" },
+                { id: "FO-05", description: "Supply Chain Setup: Initial orders for all equipment, raw materials, and inventory placed.", priority: "High", riskLevel: "Medium", consequence: "Store cannot open on time.", proof: "Purchase order copies.", location: "Head Office" },
+                { id: "FO-06", description: "Marketing: Pre-launch and grand opening marketing plan approved and budget allocated.", priority: "Medium", riskLevel: "Medium", consequence: "Low footfall during opening week.", proof: "Approved marketing plan.", location: "Marketing Dept." },
+                { id: "FO-07", description: "Technology Setup: POS system, CCTV, and other required software installed and tested.", priority: "High", riskLevel: "High", consequence: "Inability to process sales, security gaps.", proof: "IT sign-off document.", location: "Franchise Location" },
+                { id: "FO-08", description: "Pre-Opening Audit: Final walkthrough to ensure store is 100% brand compliant and ready for opening.", priority: "High", riskLevel: "High", consequence: "Negative first impression, operational failures.", proof: "Completed pre-opening audit form.", location: "Franchise Location" }
+            ]
+        },
+        {
+            title: "Quarterly Brand Standards Audit",
+            department: "Operations / Quality Assurance",
+            frequency: "Quarterly",
+            role: "Area Manager / Auditor",
+            summary: "Ensures the franchisee is adhering to all brand standards, from store cleanliness to staff uniform and product presentation.",
+            icon: "search",
+            tasks: [
+                { id: "BSA-01", description: "Exterior & Signage: All external branding is clean, undamaged, and correctly illuminated.", priority: "High", riskLevel: "Medium", consequence: "Poor brand image, customer confusion.", proof: "Dated photo of storefront.", location: "Exterior" },
+                { id: "BSA-02", description: "Interior & Ambiance: Store is clean, well-lit, and music/scent protocols are followed.", priority: "Medium", riskLevel: "Low", consequence: "Sub-par customer experience.", proof: "Audit checklist section sign-off.", location: "Interior" },
+                { id: "BSA-03", description: "Product & Service: Product quality, portion sizes, and packaging meet brand standards.", priority: "High", riskLevel: "High", consequence: "Brand dilution, customer complaints.", proof: "Test purchase and product inspection notes.", location: "Point of Sale" },
+                { id: "BSA-04", description: "Staff Presentation: All on-duty staff are in full, clean uniform with proper grooming.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessional appearance.", proof: "Visual inspection during audit.", location: "All Areas" },
+                { id: "BSA-05", description: "Marketing Collateral: Only approved, current marketing materials are on display.", priority: "Low", riskLevel: "Low", consequence: "Outdated offers, brand inconsistency.", proof: "Photo of in-store displays.", location: "Interior" },
+                { id: "BSA-06", description: "Hygiene & Cleanliness: Restrooms, kitchen (if any), and seating areas are spotless.", priority: "High", riskLevel: "High", consequence: "Health code violations, customer disgust.", proof: "Hygiene audit score.", location: "All Areas" }
+            ]
+        },
+        {
+            title: "Supply Chain & Inventory Audit",
+            department: "Supply Chain",
+            frequency: "Monthly",
+            role: "Franchisee / Store Manager",
+            summary: "Verifies that the franchisee is using only approved suppliers and managing inventory effectively to prevent stockouts or wastage.",
+            icon: "truck",
+            tasks: [
+                { id: "SCI-01", description: "Verify all key raw materials are sourced from brand-approved suppliers.", priority: "High", riskLevel: "High", consequence: "Product inconsistency, potential safety issues, breach of contract.", proof: "Review of last 30 days of purchase invoices.", location: "Office" },
+                { id: "SCI-02", description: "Check storage conditions (temperature, FIFO) for all perishable and dry goods.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage, wastage, health risks.", proof: "Temperature logs, visual inspection of storage.", location: "Stock Room/Kitchen" },
+                { id: "SCI-03", description: "Conduct a physical count of top 10 SKUs and reconcile with POS system data.", priority: "Medium", riskLevel: "Medium", consequence: "Inventory shrinkage, inaccurate ordering.", proof: "Signed stock count sheet.", location: "Stock Room" },
+                { id: "SCI-04", description: "Review wastage logs for patterns and identify areas for improvement.", priority: "Medium", riskLevel: "Low", consequence: "Lost profit.", proof: "Wastage log analysis.", location: "Office" }
+            ]
+        },
+        {
+            title: "Customer Service & Experience Audit",
+            department: "Operations",
+            frequency: "Monthly",
+            role: "Mystery Shopper / Area Manager",
+            summary: "Evaluates the customer experience against brand standards, from greeting to final transaction.",
+            icon: "smile",
+            tasks: [
+                { id: "CSE-01", description: "Greeting: Was the customer greeted within 30 seconds of entering?", priority: "High", riskLevel: "Low", consequence: "Poor first impression.", proof: "Mystery shopper report timestamp.", location: "Entrance" },
+                { id: "CSE-02", description: "Order Taking: Was the order taken accurately and efficiently, with upselling attempted?", priority: "Medium", riskLevel: "Low", consequence: "Lost revenue, customer frustration.", proof: "Mystery shopper report.", location: "Point of Sale" },
+                { id: "CSE-03", description: "Complaint Handling: Was a test complaint handled politely and according to the brand's service recovery protocol?", priority: "High", riskLevel: "High", consequence: "A small issue escalating into a major online complaint.", proof: "Detailed notes in mystery shopper report.", location: "Point of Sale" },
+                { id: "CSE-04", description: "Store Atmosphere: Was the environment clean, welcoming, and safe for customers?", priority: "High", riskLevel: "Medium", consequence: "Customers feel uncomfortable and won't return.", proof: "Mystery shopper rating.", location: "All Areas" },
+                { id: "CSE-05", description: "Closing: Was the customer thanked and given a sincere farewell?", priority: "Medium", riskLevel: "Low", consequence: "Missed opportunity to build loyalty.", proof: "Mystery shopper report.", location: "Exit" }
+            ]
+        },
+    ]
+};
+
+const hotels_and_resorts: PremiumPack = {
+    id: 'hotels_and_resorts',
+    title: "Hotels & Resorts Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
+    category: "Hospitality",
+    description: "The complete operational toolkit for General Managers and Department Heads to achieve 5-star excellence in every guest experience.",
+    icon: "building",
+    badgeText: "Most Popular",
+    badgeVariant: "default",
+    bestseller: true,
+    whoIsItFor: ["Hotel Owners", "General Managers", "COOs", "VPs of Operations", "Directors", "Heads of Departments", "GMs", "VPs", "and their teams"],
+    sampleItems: [
+            { text: "Ensure flawless room presentation with daily readiness and housekeeping verification.", icon: "home" },
+            { text: "Uphold world-class food safety with kitchen hygiene (HACCP) and F&B service standards.", icon: "utensils" },
+            { text: "Mitigate water-related risks with pool & spa safety protocols and water quality logs.", icon: "life-buoy" },
+            { text: "Guarantee guest and staff safety through rigorous fire safety audits and evacuation drills.", icon: "siren" },
+            { text: "Control site access and third-party risk with vendor and work permit SOPs.", icon: "hard-hat" },
+            { text: "Prevent costly downtime with a proactive preventive maintenance schedule for all critical assets.", icon: "wrench" }
+    ],
+    checklists: [
+        {
+            title: "Daily Housekeeping & Room Readiness",
+            department: "Housekeeping",
+            frequency: "Daily",
+            role: "Housekeeping Supervisor",
+            summary: "Ensures every guest room meets the highest standards of cleanliness, functionality, and presentation before check-in and during the stay.",
+            icon: "bed-double",
+            tasks: [
+                { id: "HK-DR-01", description: "Verify all vacant rooms are cleaned, sanitized, and inspected as per the 'Room Cleaning Checklist'.", priority: "High", riskLevel: "Medium", consequence: "Negative guest reviews, potential health risks.", proof: "Supervisor's inspection log (digital/physical).", location: "All Vacant Rooms" },
+                { id: "HK-DR-02", description: "Check and restock housekeeping carts with all necessary linens, amenities, and cleaning supplies for the day's operations.", priority: "Medium", riskLevel: "Low", consequence: "Delayed room servicing, inconsistent amenity stocking.", proof: "Signed cart checklist.", location: "Housekeeping Pantry" },
+                { id: "HK-DR-03", description: "Conduct a morning briefing with housekeeping staff to assign rooms, discuss VIP arrivals, and highlight any special guest requests.", priority: "Medium", riskLevel: "Low", consequence: "Poor team coordination, missed special requests.", proof: "Briefing log or attendance sheet.", location: "Housekeeping Office" },
+                { id: "HK-DR-04", description: "Inspect a random sample of 5 'ready' rooms against the 5-star cleaning standard checklist.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent room quality, guest complaints.", proof: "Completed random inspection forms.", location: "Random Guest Rooms" },
+                { id: "HK-DR-05", description: "Log all lost and found items with date, time, location, and description.", priority: "Medium", riskLevel: "Low", consequence: "Guest dissatisfaction, potential theft accusations.", proof: "Lost & Found Register.", location: "Housekeeping Office" },
+                { id: "HK-DR-06", description: "Check and clear all housekeeping service corridors of trays and linen.", priority: "Low", riskLevel: "Low", consequence: "Fire hazard, untidy appearance.", proof: "Visual check during rounds.", location: "Service Corridors" }
+            ]
+        },
+        {
+            title: "Front Office - Shift Opening & Closing",
+            department: "Front Office",
+            frequency: "Per Shift",
+            role: "Front Office Executive",
+            summary: "Ensures a smooth transition between shifts, accurate cash handling, and readiness for guest arrivals/departures.",
+            icon: "user",
+            tasks: [
+                { id: "FO-SC-01", description: "Verify cash float count at the beginning and end of the shift with supervisor signature.", priority: "High", riskLevel: "High", consequence: "Cash discrepancy, theft, financial loss.", proof: "Signed float count form.", location: "Front Desk" },
+                { id: "FO-SC-02", description: "Review shift handover log for pending guest requests, complaints, or follow-ups.", priority: "High", riskLevel: "Medium", consequence: "Guest service failures, unresolved issues.", proof: "Initials in handover logbook.", location: "Front Desk" },
+                { id: "FO-SC-03", description: "Check PMS for expected arrivals, departures, and VIPs for the upcoming shift.", priority: "High", riskLevel: "Low", consequence: "Unprepared for guest needs, poor first impression.", proof: "PMS review confirmation.", location: "Front Desk" },
+                { id: "FO-SC-04", description: "Reconcile all credit card transactions and POS settlements from the shift.", priority: "High", riskLevel: "High", consequence: "Revenue leakage, accounting errors.", proof: "End-of-shift settlement report from PMS/EDC machine.", location: "Front Desk" },
+                { id: "FO-SC-05", description: "Ensure all key cards are accounted for and programmed correctly.", priority: "Medium", riskLevel: "Medium", consequence: "Guest security risk, unauthorized access.", proof: "Key card inventory count.", location: "Front Desk" }
+            ]
+        },
+        {
+            title: "F&B - Kitchen Opening Hygiene Checklist (HACCP)",
+            department: "Food & Beverage",
+            frequency: "Daily",
+            role: "Sous Chef / Chef de Partie",
+            summary: "Based on HACCP principles, this ensures the kitchen is sanitary and safe before food preparation begins.",
+            icon: "utensils-crossed",
+            tasks: [
+                { id: "FB-KO-01", description: "Check and record temperatures of all refrigerators and freezers. Report any deviations from critical limits.", priority: "High", riskLevel: "High", consequence: "Food spoilage, risk of foodborne illness (bacterial growth).", proof: "Temperature Logbook.", location: "All Kitchen Cold Storage" },
+                { id: "FB-KO-02", description: "Verify all food contact surfaces (cutting boards, prep tables) are clean and sanitized.", priority: "High", riskLevel: "High", consequence: "Cross-contamination, food poisoning.", proof: "ATP swab test results (weekly) or visual inspection log (daily).", location: "Kitchen Prep Areas" },
+                { id: "FB-KO-03", description: "Ensure staff hygiene: clean uniforms, hairnets, and proper handwashing facilities are stocked and accessible.", priority: "High", riskLevel: "Medium", consequence: "Spread of pathogens from staff to food.", proof: "Supervisor's daily staff inspection sign-off.", location: "Kitchen Entrance" },
+                { id: "FB-KO-04", description: "Check for any signs of pests (droppings, gnaw marks) and report immediately.", priority: "High", riskLevel: "High", consequence: "Major health code violation, brand damage, closure by authorities.", proof: "Pest Control Logbook.", location: "Entire Kitchen" },
+                { id: "FB-KO-05", description: "Confirm calibration of food thermometers using the ice-point or boiling-point method.", priority: "Medium", riskLevel: "High", consequence: "Inaccurate temperature readings leading to undercooked food.", proof: "Thermometer Calibration Log.", location: "Kitchen" }
+            ]
+        },
+        {
+            title: "Hotel Fire Safety & Evacuation Audit",
+            department: "Security / Engineering",
+            frequency: "Weekly",
+            role: "Safety Officer",
+            summary: "A weekly audit to ensure all fire safety equipment is functional and evacuation routes are clear.",
+            icon: "siren",
+            tasks: [
+                { id: "SEC-FS-01", description: "Physically check that all fire exit doors are unlocked and unobstructed from both sides.", priority: "High", riskLevel: "High", consequence: "Guests and staff trapped during a fire, leading to injury or death.", proof: "Photo log of checked exits.", location: "All Fire Exits" },
+                { id: "SEC-FS-02", description: "Inspect a random sample of fire extinguishers for correct pressure and accessibility.", priority: "High", riskLevel: "High", consequence: "Inability to fight a small fire before it spreads.", proof: "Extinguisher inspection checklist.", location: "Guest Corridors, BOH" },
+                { id: "SEC-FS-03", description: "Test a different fire alarm call point each week to verify system functionality.", priority: "High", riskLevel: "High", consequence: "Delayed or failed alarm activation in an emergency.", proof: "Fire Alarm Test Log signed by Engineering.", location: "Varies weekly" },
+                { id: "SEC-FS-04", description: "Ensure emergency lighting in stairwells and corridors is functional.", priority: "High", riskLevel: "Medium", consequence: "Panic and injury during evacuation in a power failure.", proof: "Emergency light test log.", location: "Evacuation Routes" },
+                { id: "SEC-FS-05", description: "Verify that all fire evacuation plans are clearly posted and legible in guest rooms and common areas.", priority: "Medium", riskLevel: "Low", consequence: "Guest confusion during an evacuation.", proof: "Photo audit of posted plans.", location: "Guest Rooms, Lobbies" }
+            ]
+        },
+        {
+            title: "Preventive Maintenance - MEP Systems",
+            department: "Engineering",
+            frequency: "Monthly",
+            role: "Chief Engineer",
+            summary: "Scheduled maintenance for Mechanical, Electrical, and Plumbing systems to prevent failures and ensure guest comfort and safety.",
+            icon: "wrench",
+            tasks: [
+                { id: "ENG-PM-01", description: "Inspect and clean HVAC filters for all major air handling units (AHUs).", priority: "Medium", riskLevel: "Low", consequence: "Poor air quality, increased energy consumption, system failure.", proof: "Maintenance log for each AHU.", location: "Plant Rooms" },
+                { id: "ENG-PM-02", description: "Test the automatic transfer switch (ATS) for the backup generator.", priority: "High", riskLevel: "High", consequence: "Complete power loss during a utility outage, compromising all hotel systems.", proof: "Generator test run log.", location: "Generator Room" },
+                { id: "ENG-PM-03", description: "Inspect and test sump pumps and drainage systems in basements and critical areas.", priority: "Medium", riskLevel: "High", consequence: "Flooding, water damage to critical equipment.", proof: "Pump test log.", location: "Basements, Pump Rooms" },
+                { id: "ENG-PM-04", description: "Perform thermal imaging scan on main electrical panels to detect hotspots.", priority: "High", riskLevel: "High", consequence: "Electrical fire, catastrophic power failure.", proof: "Thermal imaging report.", location: "Electrical Rooms" },
+                { id: "ENG-PM-05", description: "Check water pressure and test booster pumps.", priority: "Medium", riskLevel: "Low", consequence: "Poor water pressure in guest rooms, guest complaints.", proof: "Pump performance log.", location: "Pump Rooms" }
+            ]
+        },
+        {
+            title: "Swimming Pool & Spa Safety",
+            department: "Recreation / Engineering",
+            frequency: "Daily",
+            role: "Pool Attendant",
+            summary: "Ensures the pool and spa areas are safe, hygienic, and compliant with health regulations.",
+            icon: "life-buoy",
+            tasks: [
+                { id: "REC-PS-01", description: "Test and record water quality (pH, chlorine/bromine levels) three times daily.", priority: "High", riskLevel: "High", consequence: "Skin/eye irritation, spread of waterborne illness, health dept. closure.", proof: "Water quality logbook.", location: "Poolside" },
+                { id: "REC-PS-02", description: "Ensure all safety equipment (life rings, shepherd's crook) is present and accessible.", priority: "High", riskLevel: "High", consequence: "Inability to perform a rescue, leading to drowning.", proof: "Daily safety equipment checklist.", location: "Poolside" },
+                { id: "REC-PS-03", description: "Verify all pool drain covers are intact and secure to prevent entrapment.", priority: "High", riskLevel: "High", consequence: "Severe injury or drowning due to suction entrapment.", proof: "Visual inspection log with photo.", location: "Pool Deck" },
+                { id: "REC-PS-04", description: "Check that all depth markings and safety signage are clearly visible.", priority: "Medium", riskLevel: "Medium", consequence: "Guest misjudging depth, leading to diving accidents.", proof: "Daily visual check.", location: "Pool Area" },
+                { id: "REC-PS-05", description: "Ensure pool deck is clean, free of slip hazards, and furniture is in good repair.", priority: "Medium", riskLevel: "Medium", consequence: "Slip and fall injuries, guest lawsuits.", proof: "Hourly attendant rounds log.", location: "Pool Deck" }
+            ]
+        }
+    ]
+};
+
+const otherPacks: PremiumPack[] = [
     {
         id: 'restaurants',
         title: "Restaurant Operations Pack",
@@ -834,5 +727,165 @@ export const premiumPacks: PremiumPack[] = [
             { text: "Streamline your custom order process from client briefing to final delivery.", icon: "package" }
         ],
         checklists: []
+    },
+    {
+        id: 'animal_shelter_pack',
+        title: "Animal Shelter Operations Pack",
+        priceINR: 0,
+        priceUSD: 0,
+        paymentId: '', // No payment ID for free packs
+        lemonSqueezyUrl: '', // No payment URL for free packs
+        listId: 7,
+        category: "Social Cause",
+        description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
+        icon: "paw-print",
+        badgeText: "Free Download",
+        badgeVariant: "accent",
+        whoIsItFor: ["Animal Shelter Managers", "NGO Founders", "Veterinarians", "Volunteer Coordinators"],
+        sampleItems: [
+            { text: "Prevent disease outbreaks with rigorous cleaning, disinfection, and quarantine protocols.", icon: "sparkles" },
+            { text: "Ensure every animal's health with checklists for daily feeding, medication administration, and health monitoring.", icon: "stethoscope" },
+            { text: "Manage your population responsibly with SOPs for intake, vaccination, and spay/neuter programs.", icon: "syringe" },
+            { text: "Create a safe environment for animals and people with protocols for temperament testing and safe handling.", icon: "users" },
+            { text: "Increase adoptions with a structured process for counseling, home checks, and post-adoption follow-up.", icon: "home" },
+            { text: "Streamline your operations with checklists for volunteer management, inventory, and fundraising events.", icon: "clipboard-list" }
+        ],
+        checklists: [
+             {
+                title: "Daily Cleaning & Disinfection",
+                department: "Operations",
+                frequency: "Daily",
+                role: "Shelter Staff",
+                summary: "Ensures a sanitary environment to prevent disease transmission among animals.",
+                icon: "spray-can",
+                tasks: [
+                    { id: "AC-DC-01", description: "Remove all feces, urine, and soiled bedding from every enclosure.", priority: "High", riskLevel: "High", consequence: "Disease outbreak (Parvo, etc.), unpleasant odors, regulatory action.", proof: "Supervisor sign-off on cleaning log.", location: "All Enclosures" },
+                    { id: "AC-DC-02", description: "Scrub all food and water bowls with veterinary-grade disinfectant.", priority: "High", riskLevel: "Medium", consequence: "Spread of oral infections, gastrointestinal illness.", proof: "Visual inspection by supervisor.", location: "Kitchen/Cleaning Area" },
+                    { id: "AC-DC-03", description: "Disinfect all enclosure surfaces (floors, walls, gates) with approved sanitizer.", priority: "High", riskLevel: "High", consequence: "High risk of communicable disease spread.", proof: "Completed cleaning checklist for each zone.", location: "All Enclosures" },
+                    { id: "AC-DC-04", description: "Clean and disinfect all common play areas and meet-and-greet rooms.", priority: "Medium", riskLevel: "Medium", consequence: "Disease transmission between animal groups.", proof: "Logbook entry for common areas.", location: "Play Areas" },
+                    { id: "AC-DC-05", description: "Empty and disinfect all waste bins.", priority: "Low", riskLevel: "Low", consequence: "Pest attraction, odor issues.", proof: "Visual confirmation.", location: "Waste Disposal Area" }
+                ]
+            },
+            {
+                title: "Animal Intake & Quarantine Protocol",
+                department: "Medical",
+                frequency: "Per new animal arrival",
+                role: "Intake Coordinator / Vet Tech",
+                summary: "Safely process new animals, assess their health, and prevent the introduction of diseases to the general population.",
+                icon: "shield-check",
+                tasks: [
+                    { id: "AI-IQ-01", description: "Photograph and log new animal's details (species, breed, age, color, markings).", priority: "High", riskLevel: "Low", consequence: "Inability to track animal, lost/found matching failure.", proof: "Entry in shelter management software with photo.", location: "Intake Room" },
+                    { id: "AI-IQ-02", description: "Scan for microchip and check against national databases.", priority: "High", riskLevel: "Low", consequence: "Failure to reunite a lost pet with its owner.", proof: "Microchip scan log.", location: "Intake Room" },
+                    { id: "AI-IQ-03", description: "Perform initial health screening (check for wounds, parasites, signs of illness).", priority: "High", riskLevel: "High", consequence: "Undiagnosed injury/illness could worsen or spread.", proof: "Completed intake health assessment form.", location: "Intake Room" },
+                    { id: "AI-IQ-04", description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: "High", riskLevel: "High", consequence: "Vulnerability to preventable diseases like distemper or rabies.", proof: "Medical record updated with administered treatments.", location: "Intake Room" },
+                    { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter software.", location: "Quarantine Zone" }
+                ]
+            },
+            {
+                title: "Daily Feeding & Health Monitoring",
+                department: "Animal Care",
+                frequency: "Daily (Twice)",
+                role: "Animal Care Attendant",
+                summary: "Ensures all animals receive proper nutrition and are monitored for early signs of illness or distress.",
+                icon: "heart-pulse",
+                tasks: [
+                    { id: "AH-DF-01", description: "Feed each animal the correct type and amount of food according to their specific dietary plan.", priority: "High", riskLevel: "Medium", consequence: "Malnutrition, obesity, allergic reactions, medical complications.", proof: "Feeding chart checked off for each animal.", location: "All Enclosures" },
+                    { id: "AH-DF-02", description: "Provide fresh, clean water to every animal.", priority: "High", riskLevel: "Medium", consequence: "Dehydration, which can quickly become a medical emergency.", proof: "Visual inspection during feeding rounds.", location: "All Enclosures" },
+                    { id: "AH-DF-03", description: "Observe each animal during feeding for changes in appetite, behavior, or stool quality.", priority: "High", riskLevel: "High", consequence: "Missed early signs of illness, leading to delayed treatment.", proof: "Daily observation log completed for each animal.", location: "All Enclosures" },
+                    { id: "AH-DF-04", description: "Report any abnormalities (lethargy, vomiting, coughing, etc.) to the vet team immediately.", priority: "High", riskLevel: "High", consequence: "A sick animal's condition could deteriorate rapidly without intervention.", proof: "Entry in medical communication log or direct report.", location: "All Enclosures" }
+                ]
+            },
+                {
+                title: "Medication Administration",
+                department: "Medical",
+                frequency: "As per prescription",
+                role: "Vet Tech / Trained Staff",
+                summary: "Ensures animals receive their prescribed medications correctly and on time.",
+                icon: "pill",
+                tasks: [
+                    { id: "AM-MA-01", description: "Verify patient identity, medication, dosage, and route before administration (The '5 Rights').", priority: "High", riskLevel: "High", consequence: "Overdose, underdose, or wrong medication can cause harm or death.", proof: "Medication Administration Record (MAR) initialed after each dose.", location: "Treatment Area / Enclosures" },
+                    { id: "AM-MA-02", description: "Document the time and date of every medication given in the animal's medical record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate medical history, risk of double-dosing.", proof: "Signed MAR sheet.", location: "Medical Records" },
+                    { id: "AM-MA-03", description: "Observe animal post-administration for any adverse reactions.", priority: "Medium", riskLevel: "High", consequence: "Untreated allergic reaction or side effect could be fatal.", proof: "Note in daily observation log.", location: "Enclosures" },
+                    { id: "AM-MA-04", description: "Securely store all medications, especially controlled substances, in a locked cabinet.", priority: "High", riskLevel: "High", consequence: "Theft, misuse, accidental ingestion, regulatory violations.", proof: "Weekly controlled substance inventory log.", location: "Pharmacy/Storage" }
+                ]
+            },
+            {
+                title: "Adoption Counseling & Process",
+                department: "Adoptions",
+                frequency: "Per adoption",
+                role: "Adoption Counselor",
+                summary: "Ensures responsible and sustainable adoptions by matching the right animal with the right family.",
+                icon: "home",
+                tasks: [
+                    { id: "AP-AC-01", description: "Conduct an adoption interview to understand the potential adopter's lifestyle, home environment, and expectations.", priority: "High", riskLevel: "Medium", consequence: "Mismatched adoption leading to high return rates.", proof: "Completed adoption application/interview form.", location: "Adoption Center" },
+                    { id: "AP-AC-02", description: "Provide full disclosure of the animal's history, medical needs, and known behavioral traits.", priority: "High", riskLevel: "Medium", consequence: "Adopter feels misled; animal may be returned due to unexpected issues.", proof: "Counselor's notes in adoption file.", location: "Adoption Center" },
+                    { id: "AP-AC-03", description: "Facilitate a supervised meet-and-greet between the animal and all family members (including other pets).", priority: "High", riskLevel: "Medium", consequence: "Conflicts between pets or family members after adoption.", proof: "Check-off on adoption process form.", location: "Meet-and-Greet Area" },
+                    { id: "AP-AC-04", description: "Verify adopter's identity and address (e.g., via ID and utility bill).", priority: "Medium", riskLevel: "Low", consequence: "Inability to follow up post-adoption; potential for fraudulent adoption.", proof: "Copies of ID/address proof in adoption file.", location: "Adoption Center" },
+                    { id: "AP-AC-05", description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: "High", riskLevel: "Low", consequence: "Legal ambiguity over ownership.", proof: "Signed adoption contract and microchip form.", location: "Adoption Center" }
+                ]
+            },
+            {
+                title: "Volunteer Management",
+                department: "Administration",
+                frequency: "Ongoing",
+                role: "Volunteer Coordinator",
+                summary: "Effectively onboard, train, and manage volunteers to support shelter operations.",
+                icon: "users",
+                tasks: [
+                    { id: "AV-VM-01", description: "Conduct orientation for all new volunteers covering shelter policies, safety procedures, and animal handling basics.", priority: "High", riskLevel: "Medium", consequence: "Volunteers may unknowingly violate safety rules or handle animals incorrectly.", proof: "Signed orientation completion form.", location: "Training Room" },
+                    { id: "AV-VM-02", description: "Maintain an up-to-date volunteer schedule to ensure all shifts are covered.", priority: "Medium", riskLevel: "Low", consequence: "Staffing shortages leading to compromised animal care.", proof: "Published weekly schedule.", location: "Office" },
+                    { id: "AV-VM-03", description: "Provide clear task lists for different volunteer roles (e.g., dog walking, cat socialization, cleaning).", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of volunteer time, confusion about duties.", proof: "Posted task lists in relevant areas.", location: "All Areas" },
+                    { id: "AV-VM-04", description: "Ensure all volunteers sign in and out for every shift.", priority: "Low", riskLevel: "Low", consequence: "Inaccurate tracking of volunteer hours, security risk.", proof: "Daily sign-in/out sheet.", location: "Reception" }
+                ]
+            }
+        ]
     }
 ];
+
+const allPacks: PremiumPack[] = [
+    franchise_operations_pack,
+    hotels_and_resorts,
+    ...otherPacks,
+];
+
+const master_access_pack: PremiumPack = {
+    id: 'master_access',
+    title: "Master Access: All-in-One Operations Toolkit",
+    priceINR: 29999,
+    priceUSD: 399,
+    competitorPriceUSD: 2999,
+    paymentId: 'pl_RaWPoGkH6vA8wS',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f528d9c2-5e6a-4d7a-b73a-4537b01d1c95',
+    category: "Master Access",
+    description: "Get lifetime access to every current and future checklist pack in the MoreMeets library. The ultimate toolkit for enterprise-level compliance and operational excellence.",
+    icon: "library",
+    badgeText: "Best Value",
+    badgeVariant: "accent",
+    whoIsItFor: ["COOs", "VPs of Operations", "Enterprise Leaders", "Consultants", "Serial Entrepreneurs"],
+    sampleItems: [
+        { text: "Gain access to all 20+ industry packs, covering hospitality, retail, manufacturing, healthcare, and more.", icon: "zap" },
+        { text: "Receive every future checklist pack we release, automatically and for free.", icon: "trending-up" },
+        { text: "Standardize operations across a diverse portfolio of businesses with a single, unified system.", icon: "briefcase-business" },
+        { text: "A one-time purchase for a lifetime of operational knowledge and compliance.", icon: "shield-check" }
+    ],
+    checklists: allPacks.flatMap(pack => {
+        if (pack.id === 'master_access' || pack.id === 'animal_shelter_pack') return [];
+        return pack.checklists.map(checklist => ({
+            ...checklist,
+            tasks: checklist.tasks.map(task => ({
+                ...task,
+                department: checklist.department,
+                role: checklist.role,
+                frequency: checklist.frequency
+            }))
+        }))
+    }),
+};
+
+
+export const premiumPacks: PremiumPack[] = [
+    ...allPacks,
+    master_access_pack,
+];
+
+    
