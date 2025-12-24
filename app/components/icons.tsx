@@ -2,8 +2,10 @@
 "use client";
 
 import * as LucideIcons from 'lucide-react';
+import { CheckSquare } from "lucide-react";
 
 export const ICONS = LucideIcons;
+export const Logo = CheckSquare;
 
 type IconComponentProps = {
   name?: unknown;
@@ -16,11 +18,12 @@ export const IconComponent = ({ name, className }: IconComponentProps) => {
   }
 
   const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-  const Icon = (ICONS as Record<string, LucideIcons.LucideIcon>)[iconName];
   
-  if (!Icon || typeof Icon !== 'function') {
+  const Icon = (ICONS as Record<string, any>)[iconName];
+  
+  if (typeof Icon !== 'function') {
     if (process.env.NODE_ENV === "development") {
-        console.warn(`Icon "${iconName}" not found. Falling back to Package icon.`);
+        console.warn(`Icon "${iconName}" not found in lucide-react. Falling back to Package icon.`);
     }
     return <LucideIcons.Package className={className} />;
   }
@@ -28,7 +31,6 @@ export const IconComponent = ({ name, className }: IconComponentProps) => {
   return <Icon className={className} />;
 };
 
-export const { CheckSquare: Logo } = ICONS;
 
 export function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
