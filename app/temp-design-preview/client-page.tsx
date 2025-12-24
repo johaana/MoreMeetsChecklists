@@ -4,9 +4,10 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, ShieldCheck, Zap } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { ArrowRight, CheckCircle, ShieldCheck, Zap, Frown, Smile, BrainCircuit, FileText, Users } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { IconComponent } from '../components/icons';
+
 
 const HeroSection = () => (
     <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center bg-background text-foreground overflow-hidden">
@@ -65,7 +66,7 @@ const ChaosVsStandardSection = () => (
             <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
                 <Card className="border-destructive/30 border-2 bg-destructive/5 dark:bg-destructive/10">
                     <CardHeader>
-                        <CardTitle className="text-destructive">Without Standards</CardTitle>
+                        <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> Without Standards</CardTitle>
                         <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3 text-sm text-muted-foreground">
@@ -77,7 +78,7 @@ const ChaosVsStandardSection = () => (
                 </Card>
                 <Card className="border-primary/30 border-2 bg-background shadow-lg">
                     <CardHeader>
-                        <CardTitle className="text-primary">With MoreMeets Standards™</CardTitle>
+                        <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> With MoreMeets Standards™</CardTitle>
                         <CardDescription>A system of record that ensures excellence every time.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3 text-sm text-foreground">
@@ -91,6 +92,7 @@ const ChaosVsStandardSection = () => (
         </div>
     </section>
 );
+
 
 const SystemSection = () => (
     <section className="w-full py-16 md:py-24 bg-secondary/30">
@@ -137,14 +139,13 @@ const SystemSection = () => (
     </section>
 );
 
-const PacksSection = () => (
+const StandardsSection = () => (
     <section className="w-full py-16 md:py-24">
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Choose Your Operational Standard</h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                {/* Example Pack 1 */}
                 <Card>
                     <CardHeader>
                         <IconComponent name="Building" className="w-8 h-8 text-accent mb-2" />
@@ -160,7 +161,6 @@ const PacksSection = () => (
                         <Button variant="secondary" className="w-full" asChild><Link href="/packs/hotels_and_resorts">View Standard</Link></Button>
                     </CardFooter>
                 </Card>
-                 {/* Example Pack 2 */}
                  <Card>
                     <CardHeader>
                         <IconComponent name="Factory" className="w-8 h-8 text-accent mb-2" />
@@ -176,7 +176,6 @@ const PacksSection = () => (
                          <Button variant="secondary" className="w-full" asChild><Link href="/packs/manufacturing_operations_ehs_pack">View Standard</Link></Button>
                     </CardFooter>
                 </Card>
-                 {/* Example Pack 3 */}
                  <Card>
                     <CardHeader>
                         <IconComponent name="Popcorn" className="w-8 h-8 text-accent mb-2" />
@@ -241,6 +240,7 @@ const FinalCtaSection = () => (
     </section>
 );
 
+
 export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
@@ -248,7 +248,7 @@ export default function TempDesignClientPage() {
       <RealProblemSection />
       <ChaosVsStandardSection />
       <SystemSection />
-      <PacksSection />
+      <StandardsSection />
       <TrustSection />
       <FinalCtaSection />
     </main>
