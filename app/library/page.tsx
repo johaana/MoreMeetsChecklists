@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function LibraryPage() {
-    const packs = premiumPacks.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
+    const packs = premiumPacks.filter(p => 
+        ((p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0)) &&
+        p.checklists && p.checklists.length > 0
+    );
 
     if (!packs) {
         notFound();

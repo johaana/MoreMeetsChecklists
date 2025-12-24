@@ -86,13 +86,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
     
-    const features = totalChecklists > 0 ? [
+    const features = [
         { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
         { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
         { text: "<strong>Instant Download</strong> in fully editable Excel format."},
         { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
-    ] : [
-        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ];
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
