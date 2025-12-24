@@ -1,11 +1,14 @@
-
 "use client";
 
-export default function GlobalError({ error }: { error: Error }) {
+export default function GlobalError({
+  error,
+}: {
+  error: Error & { digest?: string };
+}) {
   return (
     <html>
-      <body>
-        <h1>Global Error</h1>
+      <body style={{ padding: 20 }}>
+        <h1>Application Error</h1>
         <pre>{error.message}</pre>
         <pre>{error.stack}</pre>
       </body>
