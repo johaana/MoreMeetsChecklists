@@ -13,8 +13,8 @@ import { IconComponent } from "@/components/icons";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Switch } from "@/components/ui/switch";
 import ReactSlider from 'react-slider';
+import { Switch } from "@/components/ui/switch";
 
 
 const HeroSection = () => {
