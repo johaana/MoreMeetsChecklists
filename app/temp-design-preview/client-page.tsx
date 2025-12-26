@@ -81,7 +81,7 @@ const WhatItIsSection = () => (
             <div className="max-w-3xl mx-auto">
                 <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
                 <div className="mt-6 space-y-6 text-lg">
-                    <SectionBody>
+                     <SectionBody>
                         <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
                         <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
                     </SectionBody>
@@ -238,8 +238,10 @@ const ConsequencesSection = () => (
                 </div>
             </div>
              <SectionBody className="mt-12 text-lg">
-                <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
-                <p className="mt-4">MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
+                <div className="space-y-4">
+                    <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
+                    <p>MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
+                </div>
             </SectionBody>
         </div>
     </Section>
@@ -263,13 +265,15 @@ const OneTimePurchaseSection = () => (
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Buy once. Build forever.</SectionHeadline>
             <div className="text-lg">
-                <SectionBody className="space-y-4">
-                    <p>MoreMeets Standards™ is a one-time purchase.</p>
-                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
-                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
-                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
-                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
-                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
+                 <SectionBody>
+                    <div className="space-y-4">
+                        <p>MoreMeets Standards™ is a one-time purchase.</p>
+                        <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
+                            <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
+                            <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
+                            <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
+                            <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
+                        </div>
                     </div>
                 </SectionBody>
             </div>
@@ -289,9 +293,9 @@ const ComparisonSection = () => (
                             <CardTitle className="text-secondary-text flex items-center gap-2"><Handshake className="text-muted-text" /> Consultants</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Expensive, time-bound</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge leaves with them</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No daily execution system</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Expensive, time-bound</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge leaves with them</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No daily execution system</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -301,9 +305,9 @@ const ComparisonSection = () => (
                             <CardTitle className="text-secondary-text flex items-center gap-2"><CloudIcon className="text-muted-text" /> SaaS Platforms</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & dependencies</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & version drift</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -320,7 +324,7 @@ const ComparisonSection = () => (
                     </Card>
                 </motion.div>
             </div>
-            <p className="text-center font-semibold text-lg text-authority-green pt-8">Standards don’t expire. Tools do.</p>
+             <p className="text-center font-semibold text-lg text-authority-green pt-8">Standards don’t expire. Tools do.</p>
         </div>
     </Section>
 );
