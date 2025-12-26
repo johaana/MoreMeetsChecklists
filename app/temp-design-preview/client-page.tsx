@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Crown, File, Server, UserCheck, HardHat, Hospital } from "lucide-react";
+import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Frown, Smile } from "lucide-react";
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis, Legend } from 'recharts';
@@ -47,39 +47,67 @@ const radialChartData = [
   { name: 'Incident Rate', value: 60, fill: 'hsl(var(--destructive))' },
 ];
 
-const OperationalDragSection = () => (
-  <section className="w-full py-16 md:py-24">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">The Anatomy of Operational Drag</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">Unseen risks in your daily workflow are actively slowing you down and costing you money. Your operation is likely exposed to:</p>
-      </div>
-      <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
-        {radialChartData.map((item, index) => (
-          <Card key={index} className="text-center flex flex-col items-center justify-start p-4 border-2">
-             <ResponsiveContainer width="100%" height={140}>
-                <RadialBarChart 
-                    innerRadius="70%" 
-                    outerRadius="90%" 
-                    data={[item]} 
-                    startAngle={90} 
-                    endAngle={-270}
-                >
-                    <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
-                    <RadialBar background dataKey='value' cornerRadius={10} angleAxisId={0} className="fill-destructive/80" />
-                    <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">
-                        {item.value}%
-                    </text>
-                </RadialBarChart>
-            </ResponsiveContainer>
-            <h3 className="text-lg font-semibold mt-2">{item.name}</h3>
-            <p className="text-sm text-muted-foreground">High probability of errors & inconsistencies.</p>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+const OperationalDragSection = () => {
+    const [isClient, setIsClient] = React.useState(false);
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        return (
+             <section className="w-full py-16 md:py-24">
+                <div className="container px-4 md:px-6">
+                    <div className="text-center max-w-3xl mx-auto mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">The Anatomy of Operational Drag</h2>
+                        <p className="text-muted-foreground mt-2 text-base md:text-lg">Unseen risks in your daily workflow are actively slowing you down and costing you money. Your operation is likely exposed to:</p>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
+                        {[...Array(3)].map((_, index) => (
+                             <Card key={index} className="text-center flex flex-col items-center justify-start p-4 border-2 h-[250px]">
+                                <div className="w-full h-[140px] bg-secondary/50 animate-pulse rounded-md" />
+                                <div className="h-6 w-3/4 bg-secondary/50 animate-pulse rounded-md mt-4" />
+                                <div className="h-4 w-1/2 bg-secondary/50 animate-pulse rounded-md mt-2" />
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )
+    }
+    return (
+      <section className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">The Anatomy of Operational Drag</h2>
+            <p className="text-muted-foreground mt-2 text-base md:text-lg">Unseen risks in your daily workflow are actively slowing you down and costing you money. Your operation is likely exposed to:</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
+            {radialChartData.map((item, index) => (
+              <Card key={index} className="text-center flex flex-col items-center justify-start p-4 border-2">
+                 <ResponsiveContainer width="100%" height={140}>
+                    <RadialBarChart 
+                        innerRadius="70%" 
+                        outerRadius="90%" 
+                        data={[item]} 
+                        startAngle={90} 
+                        endAngle={-270}
+                    >
+                        <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
+                        <RadialBar background dataKey='value' cornerRadius={10} angleAxisId={0} className="fill-destructive/80" />
+                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">
+                            {item.value}%
+                        </text>
+                    </RadialBarChart>
+                </ResponsiveContainer>
+                <h3 className="text-lg font-semibold mt-2">{item.name}</h3>
+                <p className="text-sm text-muted-foreground">High probability of errors & inconsistencies.</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+};
 
 
 const barChartData = [
