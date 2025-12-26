@@ -14,7 +14,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import ReactSlider from 'react-slider';
-import { Switch } from "@/app/components/ui/switch";
+import { Switch } from "@/components/ui/switch";
 
 
 const HeroSection = () => {
@@ -466,7 +466,7 @@ const ChaosToControlTimeline = () => {
                                     <p className="text-muted-foreground text-sm">{item.text}</p>
                                 </motion.div>
                                 <motion.div initial={{scale:0}} whileInView={{scale:1}} viewport={{once: true, amount: 0.8}} className="w-12 h-12 rounded-full bg-background border-2 border-primary/20 shadow-md flex items-center justify-center z-10">
-                                   <IconComponent name="zap" className="w-6 h-6 text-accent"/>
+                                   <IconComponent name="Zap" className="w-6 h-6 text-accent"/>
                                 </motion.div>
                                 <motion.div initial={{opacity: 0, x: 20}} whileInView={{opacity: 1, x: 0}} viewport={{once: true, amount: 0.8}} transition={{delay: 0.2}}>
                                     <h4 className="font-bold text-primary">The New Way</h4>
@@ -549,3 +549,4 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
