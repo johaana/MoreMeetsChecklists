@@ -69,7 +69,7 @@ const HeroSection = () => (
                         <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates</p>
                     </div>
                     <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
-                        <Link href="#what-it-is">See how the system works →</Link>
+                        <Link href="#what-it-is">See what’s included →</Link>
                     </Button>
                 </div>
             </div>
