@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle } from "lucide-react";
+import { ArrowRight, Check, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle, BrainCircuit } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -212,7 +212,7 @@ const AuditProofSection = () => (
                 </Card>
             </div>
             <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
-                 <SectionBody className="space-y-4">
+                 <SectionBody>
                     <p>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work when followed using your existing processes.</p>
                 </SectionBody>
                 <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
@@ -240,7 +240,7 @@ const ConsequencesSection = () => (
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center mt-4 md:mt-0 col-span-full md:col-span-1 bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / shutdown</p></motion.div>
                 </div>
             </div>
-             <SectionBody className="mt-12">
+             <SectionBody>
                 <div className="space-y-4">
                     <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
                     <p>MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
@@ -254,9 +254,11 @@ const GlobalComplianceSection = () => (
     <Section>
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Built for global operations. Adaptable locally.</SectionHeadline>
-            <SectionBody className="space-y-4">
-                <p>Each standard is researched against global compliance expectations, aligned with industry best practices, and designed to be locally customisable.</p>
-                <p>Whether you operate in one location or many, the structure remains consistent, even if regulations differ.</p>
+            <SectionBody>
+                <div className="space-y-4">
+                    <p>Each standard is researched against global compliance expectations, aligned with industry best practices, and designed to be locally customisable.</p>
+                    <p>Whether you operate in one location or many, the structure remains consistent, even if regulations differ.</p>
+                </div>
             </SectionBody>
              <p className="font-semibold text-xl text-authority-green">One system. Many industries. Global thinking.</p>
         </div>
