@@ -222,7 +222,9 @@ const CompetitorComparisonSection = () => {
         { feature: "Lifetime Updates", generic: false, moremeets: true, enterprise: false },
         { feature: "Fully Customizable (Excel)", generic: true, moremeets: true, enterprise: false },
         { feature: "No Recurring Subscription", generic: true, moremeets: true, enterprise: false },
-        { feature: "Initial Cost", generic: true, moremeets: true, enterprise: false },
+        { feature: "Low Initial Cost", generic: true, moremeets: true, enterprise: false },
+        { feature: "Industry-Specific Expertise", generic: false, moremeets: true, enterprise: true },
+        { feature: "Global Compliance Mapping", generic: false, moremeets: true, enterprise: true },
     ];
     return (
         <section className="w-full py-16 md:py-24">
@@ -235,7 +237,7 @@ const CompetitorComparisonSection = () => {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-[40%] text-base">Feature</TableHead>
+                                <TableHead className="w-[34%] text-base">Feature</TableHead>
                                 <TableHead className="text-center text-base">Free Templates</TableHead>
                                 <TableHead className="text-center text-base bg-accent/10">MoreMeets</TableHead>
                                 <TableHead className="text-center text-base">Enterprise SaaS</TableHead>
