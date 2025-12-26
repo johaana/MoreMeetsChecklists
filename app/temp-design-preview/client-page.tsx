@@ -32,7 +32,7 @@ const HeroSection = () => (
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-[18%]"
+          className="absolute inset-0 h-full w-full object-cover z-0 opacity-[.18]"
           poster="https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg"
         >
           <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4" type="video/mp4" />
@@ -89,12 +89,10 @@ const WhatItIsSection = () => (
         <div className="container px-4 md:px-6 text-center space-y-12">
             <div className="max-w-3xl mx-auto">
                 <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
-                <div className="mt-6 space-y-6">
-                     <SectionBody>
-                        <div>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</div>
-                        <div>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</div>
-                    </SectionBody>
-                </div>
+                <SectionBody className="mt-6 space-y-6">
+                    <div>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</div>
+                    <div>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</div>
+                </SectionBody>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto text-left items-start">
                 <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
