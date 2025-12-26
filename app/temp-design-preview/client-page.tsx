@@ -30,7 +30,7 @@ const HeroSection = () => (
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4"
             autoPlay loop muted playsInline preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover z-0"
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-[0.18]"
         />
         <div 
             className="absolute inset-0 z-10"
@@ -51,20 +51,25 @@ const HeroSection = () => (
                 </div>
                  <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text" style={{lineHeight: 1.1}}>
                     Audit-Ready Operational Standards<br/>
-                    for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
+                    for Daily, Weekly & Monthly Work
                  </h1>
                  <h2 className="text-2xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</h2>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
-                   Industry-specific SOPs, checklists, and task frameworks that ensure teams never forget what to do — even during chaos, audits, or staff changes.
+                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
                 </p>
-                <div className="text-sm text-muted-text">
-                  Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
-                </div>
+                <p className="max-w-2xl text-lg text-muted-text !mt-4">
+                    Not software. Not consulting.
+                    A fixed operational system your team follows — even when people change.
+                </p>
+                
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
-                        <Link href="/library">Get the Standards</Link>
-                    </Button>
+                    <div>
+                        <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
+                            <Link href="/library">Get the Standards</Link>
+                        </Button>
+                        <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates</p>
+                    </div>
                     <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
                         <Link href="#what-it-is">See how the system works →</Link>
                     </Button>
@@ -80,7 +85,7 @@ const WhatItIsSection = () => (
         <div className="container px-4 md:px-6 text-center space-y-12">
             <div className="max-w-3xl mx-auto">
                 <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
-                <div className="mt-6 space-y-6 text-lg">
+                <div className="mt-6 space-y-6">
                      <SectionBody>
                         <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
                         <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
@@ -209,7 +214,7 @@ const AuditProofSection = () => (
                 </Card>
             </div>
             <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
-                 <SectionBody className="space-y-4 text-lg">
+                 <SectionBody className="space-y-4">
                     <p>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work when followed using your existing processes.</p>
                 </SectionBody>
                 <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
@@ -237,7 +242,7 @@ const ConsequencesSection = () => (
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center mt-4 md:mt-0 col-span-full md:col-span-1 bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / shutdown</p></motion.div>
                 </div>
             </div>
-             <SectionBody className="mt-12 text-lg">
+             <SectionBody className="mt-12">
                 <div className="space-y-4">
                     <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
                     <p>MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
@@ -251,7 +256,7 @@ const GlobalComplianceSection = () => (
     <Section>
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Built for global operations. Adaptable locally.</SectionHeadline>
-            <SectionBody className="space-y-4 text-lg">
+            <SectionBody className="space-y-4">
                 <p>Each standard is researched against global compliance expectations, aligned with industry best practices, and designed to be locally customisable.</p>
                 <p>Whether you operate in one location or many, the structure remains consistent, even if regulations differ.</p>
             </SectionBody>
@@ -264,19 +269,17 @@ const OneTimePurchaseSection = () => (
     <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Buy once. Build forever.</SectionHeadline>
-            <div className="text-lg">
-                 <SectionBody>
-                    <div className="space-y-4">
-                        <p>MoreMeets Standards™ is a one-time purchase.</p>
-                        <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
-                            <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
-                            <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
-                            <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
-                            <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
-                        </div>
+            <SectionBody>
+                <div className="space-y-4">
+                    <p>MoreMeets Standards™ is a one-time purchase.</p>
+                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
+                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
+                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
+                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
+                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
                     </div>
-                </SectionBody>
-            </div>
+                </div>
+            </SectionBody>
              <p className="text-lg text-secondary-text">As regulations evolve, your standards library evolves with you.</p>
         </div>
     </Section>
@@ -285,7 +288,7 @@ const OneTimePurchaseSection = () => (
 const ComparisonSection = () => (
     <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>Why standards outperform tools and consultants.</SectionHeadline>
+            <SectionHeadline>Why serious operations choose standards — not tools.</SectionHeadline>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                     <Card className="h-full bg-alternate-background border-border text-left p-6">
@@ -305,7 +308,7 @@ const ComparisonSection = () => (
                             <CardTitle className="text-secondary-text flex items-center gap-2"><CloudIcon className="text-muted-text" /> SaaS Platforms</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & version drift</span></p>
+                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & dependencies</span></p>
                             <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
                             <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
                         </CardContent>

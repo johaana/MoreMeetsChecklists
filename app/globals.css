@@ -68,11 +68,11 @@ html {
 .temp-design-page {
   --background: 221 21% 7%; /* #0B0F14 */
   --alternate-background: 220 23% 9%; /* #0F1620 */
-  --primary-text: 210 20% 96%; /* #E6EAF0 */
-  --secondary-text: 216 14% 71%; /* #A8B0C2 */
+  --primary-text: 210 20% 90%; /* #E6EAF0 */
+  --secondary-text: 216 14% 65%; /* #A8B0C2 */
   --muted-text: 218 11% 58%; /* #8A94A2 */
   --border: 220 16% 16%; /* #1E2633 */
-  --authority-green: 158 41% 57%; /* #6BC7A3 */
+  --authority-green: 158 35% 58%; /* #6BC7A3 slightly desaturated */
   --high-contrast-green: 155 57% 51%; /* #38D39F */
   --risk-accent: 0 76% 64%; /* #E16464 */
   --warning-accent: 42 75% 60%; /* #E3B341 */
@@ -80,3 +80,4 @@ html {
   background-color: hsl(var(--background));
   color: hsl(var(--primary-text));
 }
+
