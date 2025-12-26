@@ -1,8 +1,9 @@
+
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { cn } from '@/lib/utils';
-import { Inter, Poppins, Inter_Tight, Source_Sans_3, IBM_Plex_Mono } from 'next/font/google';
+import { Inter, Inter_Tight, Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import { LayoutScript } from '@/components/layout/layout-script';
 
 
@@ -41,22 +42,22 @@ export const metadata: Metadata = {
   },
 };
 
-const mainFont = Source_Sans_3({
+const mainFont = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body'
 });
 
-const headlineFont = Inter_Tight({
+const headlineFont = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
+  weight: ['700'],
   display: 'swap',
   variable: '--font-headline'
 });
 
 const monoFont = IBM_Plex_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500'],
   display: 'swap',
   variable: '--font-mono'
 });

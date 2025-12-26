@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss"
 
 const config = {
@@ -57,6 +58,9 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        'authority-green': 'hsl(var(--primary))',
+        'high-contrast-green': 'hsl(var(--accent))',
+        'risk-accent': 'hsl(var(--destructive))',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,8 +73,8 @@ const config = {
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
