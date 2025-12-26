@@ -1,18 +1,20 @@
 
-
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check, Zap, BookOpen } from "lucide-react";
-import React, { useState, useEffect } from 'react';
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store } from "lucide-react";
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { philosophyCards } from "@/lib/homepage-content";
 import { IconComponent } from "@/components/icons";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Switch } from "@/components/ui/switch";
+import ReactSlider from 'react-slider';
 
 
 const HeroSection = () => {
@@ -188,7 +190,6 @@ const BeforeAfterChartSection = () => (
           <BarChart data={barChartData} margin={{ top: 20, right: 0, left: -20, bottom: 5 }}>
             <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
             <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
-             <Legend wrapperStyle={{fontSize: "14px"}} />
             <Bar dataKey="The Old Way" fill="hsl(var(--destructive) / 0.6)" radius={[4, 4, 0, 0]}>
                  <LabelList dataKey="The Old Way" position="top" fill="hsl(var(--destructive))" fontSize={12} />
             </Bar>
@@ -350,44 +351,178 @@ const TrademarkSection = () => (
     </section>
   );
 
-const ChaosToControlSection = () => (
-    <section className="w-full py-16 md:py-24">
-      <div className="container px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
-          <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-          {/* Before */}
-          <Card className="border-destructive/50 border-2 flex flex-col">
-            <CardHeader>
-              <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-              <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
-            </CardContent>
-          </Card>
-          {/* After */}
-          <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
-            <CardHeader>
-              <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
-              <CardDescription>A system of record that ensures excellence every time.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-foreground flex-1">
-               <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
-              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
-              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-  );
+// --- Chaos to Control Section Implementations ---
+
+const oldWayPoints = [
+    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `"Did anyone check the fire exits?" is a question of memory, not a provable fact.` },
+    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `A new hire is trained by a B-player, creating another B-player.` },
+    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `Your best manager quits, taking critical knowledge with them.` },
+    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `An auditor asks for proof, and you spend days digging through emails.` },
+];
+
+const newWayPoints = [
+    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `"Fire exit check completed daily at 9:05 AM. See log #4A."` },
+    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `Your best performer's process is now the standard training for everyone.` },
+    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `Knowledge is retained in the system, making your operation resilient.` },
+    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `Produce a complete, verifiable audit trail for any task in seconds.` },
+];
+
+const ChaosToControlSlider = () => {
+    const [sliderValue, setSliderValue] = useState(50);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    return (
+        <section className="w-full py-16 md:py-24 bg-background">
+            <div className="container px-4 md:px-6">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Interactive Slider: From Chaos to Control</h2>
+                </div>
+                <div ref={containerRef} className="relative max-w-4xl mx-auto w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                    <AnimatePresence>
+                        <motion.div 
+                            className="absolute inset-0 z-10 p-8 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent"
+                            style={{ clipPath: `inset(0 ${100 - sliderValue}% 0 0)` }}
+                            initial={{opacity: 0}} animate={{opacity: 1}}
+                        >
+                            <h3 className="text-2xl font-bold text-white font-headline">Control</h3>
+                             <div className="mt-4 space-y-2 text-white/90">
+                                {newWayPoints.map((item, index) => (
+                                    <p key={index} className="flex items-start gap-2 text-sm">{React.cloneElement(item.icon, {className: "w-4 h-4 text-green-400 shrink-0 mt-1"})}<span>{item.text}</span></p>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 z-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 className="text-2xl font-bold text-white/70 font-headline">Chaos</h3>
+                        <div className="mt-4 space-y-2 text-white/60">
+                            {oldWayPoints.map((item, index) => (
+                                <p key={index} className="flex items-start gap-2 text-sm">{React.cloneElement(item.icon, {className: "w-4 h-4 text-red-400 shrink-0 mt-1"})}<span>{item.text}</span></p>
+                            ))}
+                        </div>
+                    </div>
+                    <motion.div
+                        className="absolute inset-0 z-10 w-full h-full"
+                        style={{
+                            backgroundImage: "url('https://i.postimg.cc/4ydP4Msr/pexels-olly-3778966.jpg')",
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            clipPath: `inset(0 ${100 - sliderValue}% 0 0)`
+                        }}
+                        initial={{opacity: 0}} animate={{opacity: 1}}
+                    />
+                    <div
+                        className="absolute inset-0 z-0 w-full h-full"
+                        style={{
+                            backgroundImage: "url('https://i.postimg.cc/d10rGypZ/pexels-khwanchai-12885861.jpg')",
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            filter: 'grayscale(80%)'
+                        }}
+                    />
+                    <div className="absolute inset-x-0 bottom-4 z-20 px-4">
+                         <ReactSlider
+                            className="h-8 w-full flex items-center cursor-grab"
+                            thumbClassName="h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center cursor-grab focus:outline-none"
+                            trackClassName="h-1 bg-white/30 rounded-full"
+                            value={sliderValue}
+                            onChange={(value) => setSliderValue(value)}
+                            renderThumb={(props, state) => <div {...props}><div className="w-3 h-3 rounded-full bg-primary/50" /></div>}
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const ChaosToControlTimeline = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: ref,
+      offset: ["start end", "end start"]
+    });
+    const pathLength = useTransform(scrollYProgress, [0.1, 0.8], [0, 1]);
+
+    return (
+        <section className="w-full py-16 md:py-24 bg-secondary/30" ref={ref}>
+            <div className="container px-4 md:px-6">
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Scrolling Timeline: Your Journey to Control</h2>
+                </div>
+                <div className="relative max-w-2xl mx-auto">
+                    <svg width="2" height="100%" className="absolute left-1/2 -translate-x-1/2 h-full" style={{ height: "100%" }}>
+                      <motion.path
+                        d="M 1 0 V 1000"
+                        stroke="hsl(var(--primary))"
+                        strokeWidth="2"
+                        style={{ pathLength }}
+                        />
+                    </svg>
+                    <div className="space-y-16">
+                       {oldWayPoints.map((item, index) => (
+                           <div key={index} className="grid grid-cols-[1fr_auto_1fr] items-center gap-8">
+                                <motion.div initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} viewport={{once: true, amount: 0.8}} transition={{delay: 0.2}} className="text-right">
+                                    <h4 className="font-bold text-destructive">The Old Way</h4>
+                                    <p className="text-muted-foreground text-sm">{item.text}</p>
+                                </motion.div>
+                                <motion.div initial={{scale:0}} whileInView={{scale:1}} viewport={{once: true, amount: 0.8}} className="w-12 h-12 rounded-full bg-background border-2 border-primary/20 shadow-md flex items-center justify-center z-10">
+                                   <IconComponent name="zap" className="w-6 h-6 text-accent"/>
+                                </motion.div>
+                                <motion.div initial={{opacity: 0, x: 20}} whileInView={{opacity: 1, x: 0}} viewport={{once: true, amount: 0.8}} transition={{delay: 0.2}}>
+                                    <h4 className="font-bold text-primary">The New Way</h4>
+                                    <p className="text-foreground text-sm">{newWayPoints[index].text}</p>
+                                </motion.div>
+                           </div>
+                       ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const ChaosToControlToggle = () => {
+    const [isControl, setIsControl] = useState(false);
+    const points = isControl ? newWayPoints : oldWayPoints;
+
+    return (
+        <section className="w-full py-16 md:py-24">
+            <div className="container px-4 md:px-6">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Toggle Switch: Choose Your State</h2>
+                </div>
+                <div className="max-w-md mx-auto">
+                    <Card>
+                        <CardHeader>
+                            <div className="flex items-center justify-between">
+                                <CardTitle className={isControl ? 'text-primary' : 'text-destructive'}>
+                                    {isControl ? "Controlled State" : "Chaos State"}
+                                </CardTitle>
+                                <Switch checked={isControl} onCheckedChange={setIsControl} aria-label="Toggle between Chaos and Control states"/>
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                             <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={isControl ? "control" : "chaos"}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="space-y-3 text-sm"
+                                >
+                                    {points.map((item, index) => (
+                                        <p key={index} className="flex items-start gap-2 text-muted-foreground">{item.icon}<span>{item.text}</span></p>
+                                    ))}
+                                </motion.div>
+                            </AnimatePresence>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
+    );
+};
 
 
 export default function TempDesignClientPage() {
@@ -395,7 +530,16 @@ export default function TempDesignClientPage() {
     <main className="flex-1">
       <HeroSection />
       <PhilosophySection />
-      <ChaosToControlSection />
+
+      {/* Design Option 1: Interactive Slider */}
+      <ChaosToControlSlider />
+
+      {/* Design Option 2: Scrolling Timeline */}
+      <ChaosToControlTimeline />
+
+      {/* Design Option 3: Toggle Switch */}
+      <ChaosToControlToggle />
+
       <OperationalDragSection />
       <BeforeAfterChartSection />
       <WhoIsThisForSection />
@@ -405,4 +549,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
