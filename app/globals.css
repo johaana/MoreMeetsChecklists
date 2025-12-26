@@ -63,3 +63,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+.temp-design-page {
+  --background: 212 40% 4%; /* #0E1113 */
+  --foreground: 0 0% 95%; /* Reduced brightness white */
+  --primary: 150 35% 55%; /* Desaturated green */
+  --accent: 210 80% 60%; /* Deep blue for accents */
+  --destructive: 0 70% 55%;
+  --border: 212 40% 15%;
+  --card: 212 40% 8%;
+  --secondary: 212 40% 10%;
+  --muted-foreground: 220 9% 55%;
+}

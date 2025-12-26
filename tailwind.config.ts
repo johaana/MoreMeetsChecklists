@@ -21,6 +21,7 @@ const config = {
       fontFamily: {
         'body': ['var(--font-body)'],
         'headline': ['var(--font-headline)'],
+        'mono': ['var(--font-mono)'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -68,8 +69,8 @@ const config = {
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
       },
       animation: {
