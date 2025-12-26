@@ -13,8 +13,6 @@ import { IconComponent } from "@/components/icons";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import ReactSlider from 'react-slider';
-import { Switch } from "@/components/ui/switch";
 
 const philosophyCards = rawPhilosophyCards.map(card => ({...card, icon: <IconComponent name={card.icon} className="w-8 h-8 text-accent" />}));
 
@@ -353,89 +351,19 @@ const TrademarkSection = () => (
     </section>
   );
 
-// --- Chaos to Control Section Implementations ---
-
 const oldWayPoints = [
-    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `"Did anyone check the fire exits?" is a question of memory, not a provable fact.` },
-    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `A new hire is trained by a B-player, creating another B-player.` },
-    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `Your best manager quits, taking critical knowledge with them.` },
-    { icon: <ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/>, text: `An auditor asks for proof, and you spend days digging through emails.` },
+    { text: `Key knowledge is "tribal knowledge," locked in the heads of a few senior people.` },
+    { text: `New employees are a liability, unsure of what to do and prone to costly mistakes.` },
+    { text: `Under pressure, even experienced staff forget steps, leading to inconsistent outcomes.` },
+    { text: `Managers lack visibility into daily execution and can't prove compliance.` },
 ];
 
 const newWayPoints = [
-    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `"Fire exit check completed daily at 9:05 AM. See log #4A."` },
-    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `Your best performer's process is now the standard training for everyone.` },
-    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `Knowledge is retained in the system, making your operation resilient.` },
-    { icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/>, text: `Produce a complete, verifiable audit trail for any task in seconds.` },
+    { text: `Expert knowledge is codified into a clear, distributable playbook for everyone.` },
+    { text: `New hires become productive faster, following a clear guide for daily, weekly, and monthly tasks.` },
+    { text: `The system is the expert. It provides the "what" and "how," ensuring consistency even in chaos.` },
+    { text: `Managers have a verifiable, timestamped audit trail to prove every critical task was done.` },
 ];
-
-const ChaosToControlSlider = () => {
-    const [sliderValue, setSliderValue] = useState(50);
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    return (
-        <section className="w-full py-16 md:py-24 bg-background">
-            <div className="container px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Interactive Slider: From Chaos to Control</h2>
-                </div>
-                <div ref={containerRef} className="relative max-w-4xl mx-auto w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                    <AnimatePresence>
-                        <motion.div 
-                            className="absolute inset-0 z-10 p-8 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent"
-                            style={{ clipPath: `inset(0 ${100 - sliderValue}% 0 0)` }}
-                            initial={{opacity: 0}} animate={{opacity: 1}}
-                        >
-                            <h3 className="text-2xl font-bold text-white font-headline">Control</h3>
-                             <div className="mt-4 space-y-2 text-white/90">
-                                {newWayPoints.map((item, index) => (
-                                    <p key={index} className="flex items-start gap-2 text-sm">{React.cloneElement(item.icon, {className: "w-4 h-4 text-green-400 shrink-0 mt-1"})}<span>{item.text}</span></p>
-                                ))}
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                    <div className="absolute inset-0 z-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 className="text-2xl font-bold text-white/70 font-headline">Chaos</h3>
-                        <div className="mt-4 space-y-2 text-white/60">
-                            {oldWayPoints.map((item, index) => (
-                                <p key={index} className="flex items-start gap-2 text-sm">{React.cloneElement(item.icon, {className: "w-4 h-4 text-red-400 shrink-0 mt-1"})}<span>{item.text}</span></p>
-                            ))}
-                        </div>
-                    </div>
-                    <motion.div
-                        className="absolute inset-0 z-10 w-full h-full"
-                        style={{
-                            backgroundImage: "url('https://i.postimg.cc/4ydP4Msr/pexels-olly-3778966.jpg')",
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            clipPath: `inset(0 ${100 - sliderValue}% 0 0)`
-                        }}
-                        initial={{opacity: 0}} animate={{opacity: 1}}
-                    />
-                    <div
-                        className="absolute inset-0 z-0 w-full h-full"
-                        style={{
-                            backgroundImage: "url('https://i.postimg.cc/d10rGypZ/pexels-khwanchai-12885861.jpg')",
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            filter: 'grayscale(80%)'
-                        }}
-                    />
-                    <div className="absolute inset-x-0 bottom-4 z-20 px-4">
-                         <ReactSlider
-                            className="h-8 w-full flex items-center cursor-grab"
-                            thumbClassName="h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center cursor-grab focus:outline-none"
-                            trackClassName="h-1 bg-white/30 rounded-full"
-                            value={sliderValue}
-                            onChange={(value) => setSliderValue(value)}
-                            renderThumb={(props, state) => <div {...props}><div className="w-3 h-3 rounded-full bg-primary/50" /></div>}
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-};
 
 const ChaosToControlTimeline = () => {
     const ref = useRef(null);
@@ -449,7 +377,7 @@ const ChaosToControlTimeline = () => {
         <section className="w-full py-16 md:py-24 bg-secondary/30" ref={ref}>
             <div className="container px-4 md:px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Scrolling Timeline: Your Journey to Control</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Journey From "Who Knows?" to "We Know."</h2>
                 </div>
                 <div className="relative max-w-2xl mx-auto">
                     <svg width="2" height="100%" className="absolute left-1/2 -translate-x-1/2 h-full" style={{ height: "100%" }}>
@@ -483,65 +411,12 @@ const ChaosToControlTimeline = () => {
     );
 };
 
-const ChaosToControlToggle = () => {
-    const [isControl, setIsControl] = useState(false);
-    const points = isControl ? newWayPoints : oldWayPoints;
-
-    return (
-        <section className="w-full py-16 md:py-24">
-            <div className="container px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Toggle Switch: Choose Your State</h2>
-                </div>
-                <div className="max-w-md mx-auto">
-                    <Card>
-                        <CardHeader>
-                            <div className="flex items-center justify-between">
-                                <CardTitle className={isControl ? 'text-primary' : 'text-destructive'}>
-                                    {isControl ? "Controlled State" : "Chaos State"}
-                                </CardTitle>
-                                <Switch checked={isControl} onCheckedChange={setIsControl} aria-label="Toggle between Chaos and Control states"/>
-                            </div>
-                        </CardHeader>
-                        <CardContent>
-                             <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={isControl ? "control" : "chaos"}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="space-y-3 text-sm"
-                                >
-                                    {points.map((item, index) => (
-                                        <p key={index} className="flex items-start gap-2 text-muted-foreground">{item.icon}<span>{item.text}</span></p>
-                                    ))}
-                                </motion.div>
-                            </AnimatePresence>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-        </section>
-    );
-};
-
-
 export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
       <HeroSection />
       <PhilosophySection />
-
-      {/* Design Option 1: Interactive Slider */}
-      <ChaosToControlSlider />
-
-      {/* Design Option 2: Scrolling Timeline */}
       <ChaosToControlTimeline />
-
-      {/* Design Option 3: Toggle Switch */}
-      <ChaosToControlToggle />
-
       <OperationalDragSection />
       <BeforeAfterChartSection />
       <WhoIsThisForSection />
@@ -551,4 +426,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
