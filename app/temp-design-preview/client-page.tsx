@@ -3,10 +3,11 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, Frown, Smile } from "lucide-react";
+import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Crown, File, Server } from "lucide-react";
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis, Legend } from 'recharts';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const HeroSection = () => {
     return (
@@ -55,7 +56,7 @@ const OperationalDragSection = () => (
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
         {radialChartData.map((item, index) => (
-          <Card key={index} className="text-center flex flex-col items-center justify-center p-4">
+          <Card key={index} className="text-center flex flex-col items-center justify-start p-4 border-2">
              <ResponsiveContainer width="100%" height={140}>
                 <RadialBarChart 
                     innerRadius="70%" 
@@ -65,7 +66,7 @@ const OperationalDragSection = () => (
                     endAngle={-270}
                 >
                     <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
-                    <RadialBar background dataKey='value' cornerRadius={10} angleAxisId={0} />
+                    <RadialBar background dataKey='value' cornerRadius={10} angleAxisId={0} className="fill-destructive/80" />
                     <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">
                         {item.value}%
                     </text>
@@ -97,14 +98,15 @@ const BeforeAfterChartSection = () => (
       </div>
       <div className="max-w-4xl mx-auto h-[400px]">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <XAxis dataKey="name" stroke="hsl(var(--foreground))" />
-            <YAxis stroke="hsl(var(--foreground))" />
-            <Bar dataKey="The Old Way" fill="hsl(var(--destructive) / 0.5)" radius={[4, 4, 0, 0]}>
-                 <LabelList dataKey="The Old Way" position="top" fill="hsl(var(--destructive))" />
+          <BarChart data={barChartData} margin={{ top: 20, right: 0, left: -20, bottom: 5 }}>
+            <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+             <Legend wrapperStyle={{fontSize: "14px"}} />
+            <Bar dataKey="The Old Way" fill="hsl(var(--destructive) / 0.6)" radius={[4, 4, 0, 0]}>
+                 <LabelList dataKey="The Old Way" position="top" fill="hsl(var(--destructive))" fontSize={12} />
             </Bar>
             <Bar dataKey="The New Way" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="The New Way" position="top" fill="hsl(var(--primary))" />
+                <LabelList dataKey="The New Way" position="top" fill="hsl(var(--primary))" fontSize={12} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
@@ -121,21 +123,21 @@ const ExpertiseExtractorSection = () => (
         <p className="text-muted-foreground mt-2 text-base md:text-lg">We provide a structured framework to capture, distribute, and enforce your best practices, turning tribal knowledge into a scalable asset.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
-        <Card className="text-center p-6">
+        <Card className="text-center p-6 border-2">
           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 mx-auto border-2 border-primary/20">
             <BrainCircuit className="w-10 h-10" />
           </div>
           <h3 className="font-bold font-headline text-lg">1. Codify Expertise</h3>
           <p className="text-sm text-muted-foreground mt-2">Capture the unwritten processes of your top performers in a structured, actionable format.</p>
         </Card>
-        <Card className="text-center p-6">
+        <Card className="text-center p-6 border-2 border-accent/80 shadow-lg">
           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 mx-auto border-2 border-accent/20">
             <FileText className="w-10 h-10" />
           </div>
           <h3 className="font-bold font-headline text-lg text-accent">2. Distribute the Playbook</h3>
           <p className="text-sm text-muted-foreground mt-2">This knowledge becomes a "MoreMeets Pack"—an interactive system available to everyone.</p>
         </Card>
-        <Card className="text-center p-6">
+        <Card className="text-center p-6 border-2">
           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 mx-auto border-2 border-green-500/20">
             <Users className="w-10 h-10" />
           </div>
@@ -146,6 +148,57 @@ const ExpertiseExtractorSection = () => (
     </div>
   </section>
 );
+
+const CompetitorComparisonSection = () => {
+    const comparisonData = [
+        { feature: "Instant Usability", generic: true, moremeets: true, enterprise: false },
+        { feature: "Audit-Ready & Compliant", generic: false, moremeets: true, enterprise: true },
+        { feature: "Lifetime Updates", generic: false, moremeets: true, enterprise: false },
+        { feature: "Fully Customizable (Excel)", generic: true, moremeets: true, enterprise: false },
+        { feature: "No Recurring Subscription", generic: true, moremeets: true, enterprise: false },
+        { feature: "Enterprise-Grade Security", generic: false, moremeets: false, enterprise: true },
+        { feature: "Initial Cost", generic: true, moremeets: true, enterprise: false },
+    ];
+    return (
+        <section className="w-full py-16 md:py-24">
+            <div className="container px-4 md:px-6">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">The Unfair Advantage</h2>
+                    <p className="text-muted-foreground mt-2 text-base md:text-lg">See how MoreMeets stacks up against your other options.</p>
+                </div>
+                <Card className="max-w-5xl mx-auto overflow-hidden">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[40%] text-base">Feature</TableHead>
+                                <TableHead className="text-center text-base">Free Templates</TableHead>
+                                <TableHead className="text-center text-base bg-accent/10">MoreMeets</TableHead>
+                                <TableHead className="text-center text-base">Enterprise SaaS</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {comparisonData.map((item) => (
+                                <TableRow key={item.feature}>
+                                    <TableCell className="font-medium">{item.feature}</TableCell>
+                                    <TableCell className="text-center">{item.generic ? <Check className="mx-auto w-5 h-5 text-green-500" /> : <X className="mx-auto w-5 h-5 text-destructive" />}</TableCell>
+                                    <TableCell className="text-center bg-accent/10">{item.moremeets ? <Check className="mx-auto w-5 h-5 text-green-500" /> : <X className="mx-auto w-5 h-5 text-destructive" />}</TableCell>
+                                    <TableCell className="text-center">{item.enterprise ? <Check className="mx-auto w-5 h-5 text-green-500" /> : <X className="mx-auto w-5 h-5 text-destructive" />}</TableCell>
+                                </TableRow>
+                            ))}
+                              <TableRow className="bg-secondary/50">
+                                    <TableCell className="font-bold">Best For</TableCell>
+                                    <TableCell className="text-center text-xs text-muted-foreground">Basic, non-critical tasks</TableCell>
+                                    <TableCell className="text-center font-bold text-primary bg-accent/10">Scaling businesses needing compliance & control without the cost</TableCell>
+                                    <TableCell className="text-center text-xs text-muted-foreground">Large corporations with dedicated budgets</TableCell>
+                                </TableRow>
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+        </section>
+    );
+};
+
 
 const TrademarkSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
@@ -178,10 +231,9 @@ export default function TempDesignClientPage() {
       <HeroSection />
       <OperationalDragSection />
       <BeforeAfterChartSection />
+      <CompetitorComparisonSection />
       <ExpertiseExtractorSection />
       <TrademarkSection />
     </main>
   );
 }
-
-    
