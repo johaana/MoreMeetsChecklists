@@ -44,6 +44,9 @@ export function Footer() {
                         <Link href="/privacy" className="text-secondary-text hover:text-primary-text" prefetch={false}>
                             Privacy Policy
                         </Link>
+                         <Link href="/sitemap.xml" className="text-secondary-text hover:text-primary-text" prefetch={false}>
+                            Sitemap
+                        </Link>
                     </div>
                 </div>
             </div>
