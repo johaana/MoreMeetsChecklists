@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
@@ -44,13 +43,14 @@ export const metadata: Metadata = {
 
 const mainFont = Inter({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  display: 'swap',
   variable: '--font-body'
 });
 
 const headlineFont = Poppins({
   subsets: ['latin'],
-  weight: ['700', '800'],
+  weight: ['600', '700', '800'],
+  display: 'swap',
   variable: '--font-headline'
 });
 
@@ -63,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="icon" href={`data:image/svg+xml,${faviconSvg}`} sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

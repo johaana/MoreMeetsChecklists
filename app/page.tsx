@@ -1,11 +1,10 @@
 
-
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users } from "lucide-react";
-import React, { useState, useEffect } from 'react';
+import { ArrowRight, Frown, Smile, CheckCircle } from "lucide-react";
+import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { cn } from '@/lib/utils';
@@ -44,11 +43,9 @@ type PainPointKey = keyof typeof painPoints;
 const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
 
 const RefinedHeroSection = () => {
-    const [activePainPoint, setActivePainPoint] = useState<PainPointKey>('error');
-    const [isClient, setIsClient] = useState(false);
-
-     useEffect(() => {
-        setIsClient(true);
+    const [activePainPoint, setActivePainPoint] = React.useState<PainPointKey>('error');
+    
+    React.useEffect(() => {
         const interval = setInterval(() => {
             setActivePainPoint(prev => {
                 const currentIndex = painPointKeys.indexOf(prev);
@@ -58,10 +55,6 @@ const RefinedHeroSection = () => {
         }, 5000);
         return () => clearInterval(interval);
     }, []);
-
-    if (!isClient) {
-      return <section className="w-full bg-background h-screen min-h-[700px]"></section>;
-    }
     
     const content = painPoints[activePainPoint];
 
@@ -288,53 +281,6 @@ const ChaosToControlSection = () => (
   </section>
 );
 
-
-const ExpertiseExtractorSection = () => (
-  <section className="w-full py-16 md:py-24">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">Democratize Your Expertise</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">Our system extracts the wisdom of your best people and distributes it across your entire team, creating a consistent standard of excellence.</p>
-      </div>
-      <div className="grid md:grid-cols-3 gap-4 items-center text-center max-w-4xl mx-auto">
-        {/* Step 1 */}
-        <div className="flex flex-col items-center p-4">
-          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 border-2 border-primary/20">
-            <BrainCircuit className="w-10 h-10" />
-          </div>
-          <h3 className="font-bold font-headline">1. Codify Expertise</h3>
-          <p className="text-sm text-muted-foreground">The unwritten knowledge of your best manager is captured in a structured, actionable format.</p>
-        </div>
-        {/* Arrow */}
-        <div className="flex justify-center">
-            <ArrowRight className="w-12 h-12 text-primary/50 hidden md:block" />
-             <ArrowRight className="w-12 h-12 text-primary/50 rotate-90 md:hidden" />
-        </div>
-        {/* Step 2 */}
-        <div className="flex flex-col items-center p-4">
-          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 border-2 border-accent/20">
-            <FileText className="w-10 h-10" />
-          </div>
-          <h3 className="font-bold font-headline text-accent">2. Distribute the Playbook</h3>
-          <p className="text-sm text-muted-foreground">This knowledge becomes a "MoreMeets Pack"—an interactive system that's instantly available to everyone.</p>
-        </div>
-      </div>
-        {/* Arrow Down */}
-        <div className="flex justify-center my-4">
-             <ArrowRight className="w-12 h-12 text-primary/50 rotate-90" />
-        </div>
-      {/* Step 3 */}
-      <div className="flex flex-col items-center p-4 text-center max-w-4xl mx-auto">
-          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 border-2 border-green-500/20">
-            <Users className="w-10 h-10" />
-          </div>
-          <h3 className="font-bold font-headline text-green-600">3. Empower the Entire Team</h3>
-          <p className="text-sm text-muted-foreground">New hires and existing staff can now perform critical tasks with the consistency and rigor of your best expert, reducing onboarding time and eliminating errors.</p>
-        </div>
-    </div>
-  </section>
-);
-
 export default function Home() {
   return (
      <div className="flex flex-col min-h-screen bg-background">
@@ -343,7 +289,6 @@ export default function Home() {
         <RefinedHeroSection />
         <PhilosophySection />
         <ChaosToControlSection />
-        <ExpertiseExtractorSection />
         <TestimonialsSection />
         <FaqSection />
       </main>

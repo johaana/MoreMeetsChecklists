@@ -3,426 +3,265 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check, Zap, BookOpen } from "lucide-react";
-import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, FileCheck, Users, Shield, Factory, Hospital, Building, CheckCircle } from "lucide-react";
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { philosophyCards as rawPhilosophyCards } from "@/lib/homepage-content";
-import { IconComponent } from "@/components/icons";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
-const philosophyCards = rawPhilosophyCards.map(card => ({...card, icon: <IconComponent name={card.icon} className="w-8 h-8 text-accent" />}));
-
-
-const HeroSection = () => {
-    return (
-        <section className="relative w-full h-screen min-h-[700px] flex items-center justify-center text-white text-center overflow-hidden">
-            <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover z-0"
-            />
-            <div className="absolute inset-0 bg-black/60 z-10" />
-            <div className="relative z-20 container px-4 md:px-6">
-                <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tighter text-white drop-shadow-2xl">
-                    Stop Running Your Operations on Hope.
-                </h1>
-                <p className="mt-4 text-lg md:text-xl text-white/90 max-w-3xl mx-auto drop-shadow-lg">
-                    Turn your manual, person-dependent processes into a standardized, audit-ready system that drives consistency and protects your brand.
-                </p>
-                <div className="mt-8">
-                    <Button size="lg" asChild className="group text-lg py-7 px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                        <Link href="/library">
-                            Explore The SOP Library
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <Card className="flex flex-col text-center md:text-left h-full">
-        <CardHeader className="flex flex-col md:flex-row items-center gap-4">
-            {icon}
-            <CardTitle>{title}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex-1">
-            <p className="text-muted-foreground">{children}</p>
-        </CardContent>
-    </Card>
+const Section = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <section className={`w-full py-20 md:py-28 lg:py-32 ${className}`} {...props} />
 );
 
-const PhilosophySection = () => (
-    <section className="w-full py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-            <div className="space-y-4 text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Unshakeable Philosophy</h2>
-                <p className="text-muted-foreground text-lg">
-                   We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
+const SectionHeadline = ({ children }: { children: React.ReactNode }) => (
+    <h2 className="text-3xl font-bold tracking-tighter font-headline sm:text-4xl md:text-5xl lg:text-6xl !leading-tight">
+        {children}
+    </h2>
+);
+
+const SectionBody = ({ children }: { children: React.ReactNode }) => (
+    <p className="max-w-3xl mx-auto text-muted-foreground text-base md:text-lg lg:text-xl">
+        {children}
+    </p>
+);
+
+const HeroSection = () => (
+    <section className="relative w-full h-screen min-h-[700px] flex items-center">
+        <video
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            autoPlay loop muted playsInline preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        <div className="absolute inset-0 bg-background/80 z-10" />
+        <div className="container px-4 md:px-6 relative z-20">
+            <div className="max-w-4xl space-y-6">
+                <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl md:text-7xl lg:text-8xl !leading-tight text-foreground">
+                    Operational Standards.
+                    <br />
+                    <span className="text-primary">Audit-Ready by Design.</span>
+                </h1>
+                <p className="max-w-2xl text-muted-foreground text-base md:text-lg lg:text-xl">
+                    MoreMeets Standards™ is the world’s first offline, audit-ready operational standard for businesses that cannot afford missed tasks, unclear ownership, or failed audits.
                 </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <Button size="lg" asChild className="text-base">
+                        <Link href="/library">Explore the Standard</Link>
+                    </Button>
+                    <Button size="lg" variant="ghost" asChild className="text-base">
+                        <Link href="#how-it-works">See how audit readiness actually works <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                    </Button>
+                </div>
+                <p className="text-xs text-muted-foreground">Used across safety-critical, regulated, and people-dependent operations.</p>
             </div>
-             <div className="hidden md:grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                {philosophyCards.map((card, index) => (
-                    <ValueCard key={index} icon={card.icon} title={card.title}>
-                        {card.children}
-                    </ValueCard>
-                ))}
-             </div>
-             <div className="md:hidden">
-                 <Carousel
-                    plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
-                    className="w-full max-w-xs sm:max-w-sm mx-auto"
-                >
-                  <CarouselContent>
-                    {philosophyCards.map((card, index) => (
-                      <CarouselItem key={index}>
-                        <div className="p-1 h-full">
-                           <ValueCard icon={card.icon} title={card.title}>
-                                {card.children}
-                           </ValueCard>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
-                  <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
-                </Carousel>
-             </div>
         </div>
     </section>
 );
 
+const ProblemSection = () => (
+    <Section className="bg-secondary text-center">
+        <div className="container px-4 md:px-6 space-y-6">
+            <SectionHeadline>Most businesses don’t fail audits.
+            <br/>They fail daily discipline.</SectionHeadline>
+            <SectionBody>
+                Compliance breakdowns rarely come from big mistakes. They come from small, daily tasks that were not clearly defined, not enforced by frequency, not trained consistently, and not verifiable later. Emails, WhatsApp messages, and shared folders do not create proof. Auditors don’t ask who remembers. They ask what evidence exists.
+            </SectionBody>
+        </div>
+    </Section>
+);
 
-const radialChartData = [
-  { name: 'Compliance Gaps', value: 85, fill: 'hsl(var(--destructive))' },
-  { name: 'Onboarding Time', value: 70, fill: 'hsl(var(--destructive))' },
-  { name: 'Incident Rate', value: 60, fill: 'hsl(var(--destructive))' },
-];
+const CategoryDeclarationSection = () => (
+    <Section className="text-center">
+        <div className="container px-4 md:px-6 space-y-6">
+            <SectionHeadline>This is not software.
+            <br/><span className="text-primary">This is a standard.</span></SectionHeadline>
+            <SectionBody>
+                MoreMeets Standards™ is a complete operational framework delivered offline, built to turn everyday work into structured, auditable proof. No subscriptions. No dashboards. No lock-in.
+                <br/>
+                Just disciplined execution, captured once, usable forever.
+            </SectionBody>
+            <div className="inline-block">
+                <div className="border rounded-full px-4 py-2 text-sm font-medium text-muted-foreground">
+                    World’s first offline, audit-ready operational standard
+                </div>
+            </div>
+        </div>
+    </Section>
+);
 
-const OperationalDragSection = () => {
-    const [isClient, setIsClient] = React.useState(false);
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
-
-    if (!isClient) {
-        return (
-             <section className="w-full py-16 md:py-24">
-                <div className="container px-4 md:px-6">
-                    <div className="text-center max-w-3xl mx-auto mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline">The Anatomy of Operational Drag</h2>
-                        <p className="text-muted-foreground mt-2 text-base md:text-lg">Unseen risks in your daily workflow are actively slowing you down and costing you money. Your operation is likely exposed to:</p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
-                        {[...Array(3)].map((_, index) => (
-                             <Card key={index} className="text-center flex flex-col items-center justify-start p-4 border-2 h-[250px]">
-                                <div className="w-full h-[140px] bg-secondary/50 animate-pulse rounded-md" />
-                                <div className="h-6 w-3/4 bg-secondary/50 animate-pulse rounded-md mt-4" />
-                                <div className="h-4 w-1/2 bg-secondary/50 animate-pulse rounded-md mt-2" />
-                            </Card>
-                        ))}
+const SystemSection = () => {
+    const annotations = [
+        { label: "Task Definition", description: "Clarity, no ambiguity." },
+        { label: "Frequency Enforced", description: "Daily, weekly, monthly discipline." },
+        { label: "Trainer Notes Embedded", description: "Knowledge travels, not people." },
+        { label: "Status Tracking", description: "Visibility without follow-ups." },
+        { label: "Last Completed + Next Due", description: "Proof and prevention." },
+        { label: "Audit Trail by Default", description: "No reconstruction later." },
+    ];
+    return (
+        <Section id="how-it-works" className="bg-secondary">
+            <div className="container px-4 md:px-6 space-y-12">
+                <div className="text-center">
+                    <SectionHeadline>What “audit-ready” actually looks like.</SectionHeadline>
+                </div>
+                <div className="max-w-6xl mx-auto bg-background p-4 rounded-lg shadow-lg border">
+                    <div className="overflow-x-auto">
+                        <div className="grid grid-cols-6 min-w-[1200px] text-xs font-mono">
+                            {annotations.map((item) => (
+                                <div key={item.label} className="p-2 border-r last:border-r-0">
+                                    <div className="font-bold text-muted-foreground">{item.label.toUpperCase()}</div>
+                                    <div className="mt-1 text-foreground bg-primary/10 p-2 rounded-md h-12 flex items-center">{item.description}</div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </section>
-        )
-    }
-    return (
-      <section className="w-full py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">The Anatomy of Operational Drag</h2>
-            <p className="text-muted-foreground mt-2 text-base md:text-lg">Unseen risks in your daily workflow are actively slowing you down and costing you money. Your operation is likely exposed to:</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
-            {radialChartData.map((item, index) => (
-              <Card key={index} className="text-center flex flex-col items-center justify-start p-4 border-2">
-                 <ResponsiveContainer width="100%" height={140}>
-                    <RadialBarChart 
-                        innerRadius="70%" 
-                        outerRadius="90%" 
-                        data={[item]} 
-                        startAngle={90} 
-                        endAngle={-270}
-                    >
-                        <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
-                        <RadialBar background dataKey='value' cornerRadius={10} angleAxisId={0} className="fill-destructive/80" />
-                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">
-                            {item.value}%
-                        </text>
-                    </RadialBarChart>
-                </ResponsiveContainer>
-                <h3 className="text-lg font-semibold mt-2">{item.name}</h3>
-                <p className="text-sm text-muted-foreground">High probability of errors & inconsistencies.</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+                <p className="text-center font-semibold text-lg text-primary">If it isn’t structured like this, it isn’t audit-ready.</p>
+            </div>
+        </Section>
     )
 };
 
-
-const barChartData = [
-  { name: 'Auditability', 'The Old Way': 20, 'The New Way': 95 },
-  { name: 'Resilience', 'The Old Way': 30, 'The New Way': 90 },
-  { name: 'Efficiency', 'The Old Way': 40, 'The New Way': 85 },
-  { name: 'Compliance', 'The Old Way': 25, 'The New Way': 98 },
-];
-
-const BeforeAfterChartSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Unstructured & Unauditable to Compliant & Controlled</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">Our system delivers a quantifiable leap in operational confidence and control across your most critical business functions.</p>
-      </div>
-      <div className="max-w-4xl mx-auto h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={barChartData} margin={{ top: 20, right: 0, left: -20, bottom: 5 }}>
-            <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
-            <Bar dataKey="The Old Way" fill="hsl(var(--destructive) / 0.6)" radius={[4, 4, 0, 0]}>
-                 <LabelList dataKey="The Old Way" position="top" fill="hsl(var(--destructive))" fontSize={12} />
-            </Bar>
-            <Bar dataKey="The New Way" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="The New Way" position="top" fill="hsl(var(--primary))" fontSize={12} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  </section>
-);
-
-const ExpertiseExtractorSection = () => (
-    <section className="w-full py-16 md:py-24">
-      <div className="container px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">From Checklist to Control System</h2>
-          <p className="text-muted-foreground mt-2 text-base md:text-lg">We help you create a new category of operational asset: a living, breathing system that turns tribal knowledge into a scalable, competitive advantage.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
-          <Card className="text-center p-6 border-2 h-full">
-            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 mx-auto border-2 border-primary/20">
-              <BrainCircuit className="w-10 h-10" />
-            </div>
-            <h3 className="font-bold font-headline text-lg">1. Codify Expertise</h3>
-            <p className="text-sm text-muted-foreground mt-2">We capture the unwritten, best-in-class processes of your top performers and structure them into an actionable, digital framework.</p>
-          </Card>
-          <Card className="text-center p-6 border-2 border-accent/80 shadow-lg h-full">
-            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 mx-auto border-2 border-accent/20">
-              <FileText className="w-10 h-10" />
-            </div>
-            <h3 className="font-bold font-headline text-lg text-accent">2. Distribute the Playbook</h3>
-            <p className="text-sm text-muted-foreground mt-2">This knowledge becomes a "MoreMeets Pack"—a verifiable system of record, instantly accessible to everyone in your organization.</p>
-          </Card>
-          <Card className="text-center p-6 border-2 h-full">
-            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 mx-auto border-2 border-green-500/20">
-              <Users className="w-10 h-10" />
-            </div>
-            <h3 className="font-bold font-headline text-lg text-green-600">3. Empower the Team</h3>
-            <p className="text-sm text-muted-foreground mt-2">Your entire team can now execute critical tasks with the consistency of your best expert, reducing onboarding time and eliminating costly errors.</p>
-          </Card>
-        </div>
-      </div>
-    </section>
-  );
-
-const WhoIsThisForSection = () => {
-    const personas = [
-        { name: "The COO / Head of Ops", icon: <Server className="w-8 h-8" />, description: "Seeking to standardize processes and gain a single source of truth across all business units." },
-        { name: "The Plant / Factory Head", icon: <HardHat className="w-8 h-8" />, description: "Focused on EHS compliance, production uptime, and shop floor safety." },
-        { name: "The Hotel General Manager", icon: <Building2 className="w-8 h-8" />, description: "Striving for 5-star guest experiences through flawless housekeeping, F&B, and security." },
-        { name: "The Hospital Administrator", icon: <Hospital className="w-8 h-8" />, description: "Responsible for patient safety, NABH/JCI compliance, and clinical quality." },
-        { name: "The Head of Retail", icon: <Store className="w-8 h-8" />, description: "Tasked with reducing shrinkage, ensuring brand consistency, and improving the customer journey." },
-        { name: "The Founder / CEO", icon: <UserCheck className="w-8 h-8" />, description: "Looking to build a scalable, resilient operation that doesn't depend on any single person." }
-    ]
-
-    return (
-        <section className="w-full py-16 md:py-24 bg-secondary/30">
-            <div className="container px-4 md:px-6">
-                 <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Built for Leaders Who Value Control</h2>
-                    <p className="text-muted-foreground mt-2 text-base md:text-lg">Our system is designed for decision-makers who understand that operational excellence is a competitive advantage.</p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {personas.map(persona => (
-                        <Card key={persona.name} className="p-4">
-                            <CardHeader className="flex flex-row items-center gap-4">
-                                <div className="p-3 rounded-full bg-primary/10 text-primary">
-                                    {persona.icon}
-                                </div>
-                                <CardTitle className="text-lg">{persona.name}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-sm text-muted-foreground">{persona.description}</p>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-
-const CompetitorComparisonSection = () => {
-    const comparisonData = [
-        { feature: "Instant Usability", generic: true, moremeets: true, enterprise: false },
-        { feature: "Audit-Ready & Compliant", generic: false, moremeets: true, enterprise: true },
-        { feature: "Lifetime Updates", generic: false, moremeets: true, enterprise: false },
-        { feature: "Fully Customizable (Excel)", generic: true, moremeets: true, enterprise: false },
-        { feature: "No Recurring Subscription", generic: true, moremeets: true, enterprise: false },
-        { feature: "Low Initial Cost", generic: true, moremeets: true, enterprise: false },
-        { feature: "Industry-Specific Expertise", generic: false, moremeets: true, enterprise: true },
-        { feature: "Global Compliance Mapping", generic: false, moremeets: true, enterprise: true },
-    ];
-    return (
-        <section className="w-full py-16 md:py-24">
-            <div className="container px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">The Unfair Advantage</h2>
-                    <p className="text-muted-foreground mt-2 text-base md:text-lg">See how MoreMeets stacks up against your other options.</p>
-                </div>
-                <Card className="max-w-5xl mx-auto overflow-hidden">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[34%] text-base">Feature</TableHead>
-                                <TableHead className="text-center text-base">Free Templates</TableHead>
-                                <TableHead className="text-center text-base bg-accent/10">MoreMeets</TableHead>
-                                <TableHead className="text-center text-base">Enterprise SaaS</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {comparisonData.map((item) => (
-                                <TableRow key={item.feature}>
-                                    <TableCell className="font-medium">{item.feature}</TableCell>
-                                    <TableCell className="text-center">{item.generic ? <Check className="mx-auto w-5 h-5 text-green-500" /> : <X className="mx-auto w-5 h-5 text-destructive" />}</TableCell>
-                                    <TableCell className="text-center bg-accent/10">{item.moremeets ? <Check className="mx-auto w-5 h-5 text-green-500" /> : <X className="mx-auto w-5 h-5 text-destructive" />}</TableCell>
-                                    <TableCell className="text-center">{item.enterprise ? <Check className="mx-auto w-5 h-5 text-green-500" /> : <X className="mx-auto w-5 h-5 text-destructive" />}</TableCell>
-                                </TableRow>
-                            ))}
-                              <TableRow className="bg-secondary/50">
-                                    <TableCell className="font-bold">Best For</TableCell>
-                                    <TableCell className="text-center text-xs text-muted-foreground">Basic, non-critical tasks</TableCell>
-                                    <TableCell className="text-center font-bold text-primary bg-accent/10">Scaling businesses needing compliance & control without the cost</TableCell>
-                                    <TableCell className="text-center text-xs text-muted-foreground">Large corporations with dedicated budgets</TableCell>
-                                </TableRow>
-                        </TableBody>
-                    </Table>
+const ComparisonSection = () => (
+    <Section>
+        <div className="container px-4 md:px-6 text-center space-y-12">
+            <SectionHeadline>Why serious operations choose standards over tools.</SectionHeadline>
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Consultants</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-muted-foreground">
+                        <p>High cost</p>
+                        <p>Knowledge leaves with people</p>
+                        <p>No living system</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>SaaS Platforms</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-muted-foreground">
+                        <p>Ongoing fees</p>
+                        <p>Internet & access dependency</p>
+                        <p>Data trapped</p>
+                    </CardContent>
+                </Card>
+                <Card className="border-2 border-primary bg-secondary">
+                    <CardHeader>
+                        <CardTitle className="text-primary">MoreMeets Standards™</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-foreground">
+                        <p>One-time ownership</p>
+                        <p>Offline & universal</p>
+                        <p>Training + tasks + proof in one place</p>
+                    </CardContent>
                 </Card>
             </div>
-        </section>
-    );
-};
+            <p className="text-center font-semibold text-lg text-primary">Standards don’t expire. Tools do.</p>
+        </div>
+    </Section>
+);
 
-
-const TrademarkSection = () => (
-    <section className="w-full py-16 md:py-24 bg-secondary/30">
-      <div className="container px-4 md:px-6">
-         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="space-y-4">
-               <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Brand is Your Most Valuable Asset. Protect It.</h2>
-                <p className="text-muted-foreground text-base md:text-lg">Inconsistent operations don't just cost money—they dilute your brand promise. Our system creates a verifiable framework to ensure your standards are met, every single day, at every single location.</p>
-                <ul className="space-y-3 mt-4">
-                    <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Brand Standard Audits</h4><p className="text-sm text-muted-foreground">Ensure visual merchandising, service quality, and brand voice are consistent.</p></div></li>
-                    <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Franchise Compliance</h4><p className="text-sm text-muted-foreground">Verify that all franchisees are upholding the core promises of your brand.</p></div></li>
-                    <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Intellectual Property Protection</h4><p className="text-sm text-muted-foreground">Create auditable trails for handling sensitive marketing materials and proprietary information.</p></div></li>
-                </ul>
-            </div>
-             <div className="grid grid-cols-2 gap-4">
-                <img src="https://i.postimg.cc/x8f3xyY1/best-7-star-hotels-in-the-world.png" alt="Luxury Hotel" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="luxury hotel" />
-                <img src="https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg" alt="Retail Store" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="retail store" />
-                <img src="https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp" alt="Corporate Event" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="corporate event" />
-                <img src="https://i.postimg.cc/kGhhCGDM/manufacturing.jpg" alt="Manufacturing Plant" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="manufacturing plant" />
-             </div>
-         </div>
-      </div>
-    </section>
-  );
-
-const oldWayPoints = [
-    { text: `Key knowledge is "tribal knowledge," locked in the heads of a few senior people.` },
-    { text: `New employees are a liability, unsure of what to do and prone to costly mistakes.` },
-    { text: `Under pressure, even experienced staff forget steps, leading to inconsistent outcomes.` },
-    { text: `Managers lack visibility into daily execution and can't prove compliance.` },
-];
-
-const newWayPoints = [
-    { text: `Expert knowledge is codified into a clear, distributable playbook for everyone.` },
-    { text: `New hires become productive faster, following a clear guide for daily, weekly, and monthly tasks.` },
-    { text: `The system is the expert. It provides the "what" and "how," ensuring consistency even in chaos.` },
-    { text: `Managers have a verifiable, timestamped audit trail to prove every critical task was done.` },
-];
-
-const ChaosToControlTimeline = () => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-      target: ref,
-      offset: ["start end", "end start"]
-    });
-    const pathLength = useTransform(scrollYProgress, [0.1, 0.8], [0, 1]);
-
-    return (
-        <section className="w-full py-16 md:py-24 bg-secondary/30" ref={ref}>
-            <div className="container px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Journey From "Who Knows?" to "We Know."</h2>
+const ComplianceSection = () => (
+    <Section className="bg-secondary">
+        <div className="container px-4 md:px-6 text-center space-y-6">
+            <SectionHeadline>Built for real-world compliance environments.</SectionHeadline>
+            <SectionBody>
+                MoreMeets Standards™ aligns with how global frameworks actually operate — through repeatable controls, documented execution, and verifiable records.
+            </SectionBody>
+            <div className="max-w-4xl mx-auto space-y-4">
+                <p className="font-semibold text-muted-foreground">USED ACROSS OPERATIONS INFLUENCED BY:</p>
+                <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 font-medium text-foreground">
+                    <span>ISO</span><span>OSHA</span><span>WHO</span><span>NABH</span><span>FSSAI</span><span>Local Regulators</span>
                 </div>
-                <div className="relative max-w-2xl mx-auto">
-                    <svg width="2" height="100%" className="absolute left-1/2 -translate-x-1/2 h-full" style={{ height: "100%" }}>
-                      <motion.path
-                        d="M 1 0 V 1000"
-                        stroke="hsl(var(--primary))"
-                        strokeWidth="2"
-                        style={{ pathLength }}
-                        />
-                    </svg>
-                    <div className="space-y-16">
-                       {oldWayPoints.map((item, index) => (
-                           <div key={index} className="grid grid-cols-[1fr_auto_1fr] items-center gap-8">
-                                <motion.div initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} viewport={{once: true, amount: 0.8}} transition={{delay: 0.2}} className="text-right">
-                                    <h4 className="font-bold text-destructive">The Old Way</h4>
-                                    <p className="text-muted-foreground text-sm">{item.text}</p>
-                                </motion.div>
-                                <motion.div initial={{scale:0}} whileInView={{scale:1}} viewport={{once: true, amount: 0.8}} className="w-12 h-12 rounded-full bg-background border-2 border-primary/20 shadow-md flex items-center justify-center z-10">
-                                   <IconComponent name="Zap" className="w-6 h-6 text-accent"/>
-                                </motion.div>
-                                <motion.div initial={{opacity: 0, x: 20}} whileInView={{opacity: 1, x: 0}} viewport={{once: true, amount: 0.8}} transition={{delay: 0.2}}>
-                                    <h4 className="font-bold text-primary">The New Way</h4>
-                                    <p className="text-foreground text-sm">{newWayPoints[index].text}</p>
-                                </motion.div>
-                           </div>
-                       ))}
-                    </div>
-                </div>
+                 <p className="text-sm font-semibold text-primary pt-4">Not a certification. A system that helps you meet them.</p>
             </div>
-        </section>
-    );
-};
+        </div>
+    </Section>
+);
+
+const TrainingSection = () => (
+    <Section>
+        <div className="container px-4 md:px-6 text-center space-y-6">
+            <SectionHeadline>Train once. Execute forever.</SectionHeadline>
+            <SectionBody>
+               Every task in the MoreMeets Standard™ includes context, instructions, trainer notes, and expected outcomes. New hires don’t “shadow.” They follow the standard. When people leave, the system stays.
+            </SectionBody>
+        </div>
+    </Section>
+);
+
+const ConsequenceSection = () => (
+    <Section className="bg-secondary">
+        <div className="container px-4 md:px-6 text-center space-y-8">
+            <SectionHeadline>One missed task is all it takes.</SectionHeadline>
+             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                 <p className="text-lg"><span className="font-bold text-destructive">A missed check</span> → failed audit</p>
+                 <p className="text-lg"><span className="font-bold text-destructive">A skipped frequency</span> → safety incident</p>
+                 <p className="text-lg"><span className="font-bold text-destructive">An undocumented action</span> → legal exposure</p>
+            </div>
+            <p className="text-center font-semibold text-lg text-primary">Standards exist to make sure nothing depends on memory.</p>
+        </div>
+    </Section>
+);
+
+const DeliverablesSection = () => (
+     <Section>
+        <div className="container px-4 md:px-6 text-center space-y-6">
+            <SectionHeadline>What you receive.</SectionHeadline>
+            <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 text-foreground">
+                <div className="font-semibold">Industry-specific operational standards</div>
+                <div className="font-semibold">Structured task frameworks</div>
+                <div className="font-semibold">Embedded training logic</div>
+                <div className="font-semibold">Audit-ready execution format</div>
+                <div className="font-semibold col-span-2 md:col-span-1">Lifetime access to updates</div>
+            </div>
+             <p className="text-center font-semibold text-lg text-primary pt-8">This is not content. This is operational infrastructure.</p>
+        </div>
+    </Section>
+);
+
+const PricingPositioningSection = () => (
+     <Section className="bg-secondary">
+        <div className="container px-4 md:px-6 text-center space-y-6">
+            <SectionHeadline>Priced for ownership, not dependency.</SectionHeadline>
+             <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6 font-semibold">
+                <p>One-time access.</p>
+                <p>No renewals.</p>
+                <p>No usage limits.</p>
+            </div>
+            <SectionBody>
+                Designed to replace consultant engagements, fragmented SOPs, and tool sprawl.
+            </SectionBody>
+        </div>
+    </Section>
+);
+
+const FinalCTASection = () => (
+     <Section>
+        <div className="container px-4 md:px-6 text-center space-y-6">
+            <SectionHeadline>Adopt the standard.
+            <br/>Run your operation with proof.</SectionHeadline>
+            <Button size="lg" asChild className="text-base mt-4">
+                <Link href="/library">View Available Standards <ArrowRight className="ml-2 w-4 h-4" /></Link>
+            </Button>
+        </div>
+    </Section>
+);
+
 
 export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
       <HeroSection />
-      <PhilosophySection />
-      <ChaosToControlTimeline />
-      <OperationalDragSection />
-      <BeforeAfterChartSection />
-      <WhoIsThisForSection />
-      <CompetitorComparisonSection />
-      <ExpertiseExtractorSection />
-      <TrademarkSection />
+      <ProblemSection />
+      <CategoryDeclarationSection />
+      <SystemSection />
+      <ComparisonSection />
+      <ComplianceSection />
+      <TrainingSection />
+      <ConsequenceSection />
+      <DeliverablesSection />
+      <PricingPositioningSection />
+      <FinalCTASection />
     </main>
   );
 }
