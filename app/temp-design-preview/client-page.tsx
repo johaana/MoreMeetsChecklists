@@ -50,18 +50,18 @@ const HeroSection = () => (
                     <br/>
                     <span className="text-authority-green">for Daily, Weekly & Monthly Work</span>
                 </h1>
-                <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-2xl">
-                   Industry-specific SOPs, checklists, and task frameworks that ensure teams never forget what to do — even during chaos, audits, or staff changes.
-                </p>
-                 <p className="text-sm text-muted-text !mt-4">
-                    Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
+                <h2 className="text-2xl text-secondary-text -mt-2">
+                    — Delivered as Ready-to-Use SOP Frameworks
+                </h2>
+                <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
+                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <Button size="lg" asChild className="text-base bg-high-contrast-green text-background hover:bg-high-contrast-green/90 h-12 px-8 rounded-xl">
-                        <Link href="/library">Get the Standards</Link>
+                        <Link href="/library">Get the Standard</Link>
                     </Button>
                     <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
-                        <Link href="#system">See how the system works →</Link>
+                        <Link href="#what-it-is">See what’s included →</Link>
                     </Button>
                 </div>
             </div>
@@ -71,15 +71,17 @@ const HeroSection = () => (
 
 
 const WhatItIsSection = () => (
-    <Section id="system">
+    <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>This is not a checklist pack.<br/>It’s an operational framework.</SectionHeadline>
-            <SectionBody className="space-y-6">
-                <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
-                <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
-            </SectionBody>
+            <div className="max-w-3xl mx-auto">
+                <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
+                <SectionBody className="mt-6 space-y-6">
+                    <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
+                    <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
+                </SectionBody>
+            </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto text-left items-start">
-                <div className="space-y-4 rounded-xl border border-border bg-alternate-background p-6">
+                <div className="space-y-4 rounded-xl border border-border bg-background p-6">
                     <h3 className="font-bold text-xl text-primary-text">What You Receive</h3>
                     <ul className="space-y-3">
                         {[
@@ -97,7 +99,7 @@ const WhatItIsSection = () => (
                         ))}
                     </ul>
                 </div>
-                <div className="space-y-4 rounded-xl border border-border bg-alternate-background p-6">
+                <div className="space-y-4 rounded-xl border border-border bg-background p-6">
                     <h3 className="font-bold text-xl text-primary-text">What It Solves</h3>
                      <ul className="space-y-3">
                         {[
@@ -119,7 +121,7 @@ const WhatItIsSection = () => (
 );
 
 const NotPeopleDependentSection = () => (
-     <Section className="bg-alternate-background">
+     <Section>
         <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                  <div className="space-y-4">
@@ -133,10 +135,10 @@ const NotPeopleDependentSection = () => (
                 </div>
                  <div className="flex flex-col items-center justify-center gap-4">
                      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-                        <Card className="flex items-center gap-4 p-4 w-full max-w-sm">
+                        <Card className="flex items-center gap-4 p-4 w-full max-w-sm bg-alternate-background border-border">
                             <Users className="w-8 h-8 text-secondary-text"/>
                             <div>
-                                <p className="font-bold">Expert Knowledge</p>
+                                <p className="font-bold text-primary-text">Expert Knowledge</p>
                                 <p className="text-sm text-muted-text">Trapped in one person's head.</p>
                             </div>
                         </Card>
@@ -160,7 +162,7 @@ const NotPeopleDependentSection = () => (
 );
 
 const DailyExecutionSection = () => (
-    <Section>
+    <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>So teams always know what to do — and when.</SectionHeadline>
             <SectionBody>
@@ -175,7 +177,7 @@ const DailyExecutionSection = () => (
                     "What happens if it’s missed"
                 ].map((item, index) => (
                     <motion.div key={item} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-                        <Card className="p-6 text-center h-full border-border/50 hover:bg-alternate-background transition-colors flex items-center justify-center">
+                        <Card className="p-6 text-center h-full border-border bg-background flex items-center justify-center">
                             <p className="font-bold text-secondary-text">{item}</p>
                         </Card>
                     </motion.div>
@@ -187,11 +189,11 @@ const DailyExecutionSection = () => (
 
 
 const AuditProofSection = () => (
-    <Section className="bg-alternate-background">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Audit-ready by structure — not surveillance.</SectionHeadline>
             <div className="max-w-3xl mx-auto">
-                <Card className="p-6 md:p-8 bg-background border-border shadow-lg">
+                <Card className="p-6 md:p-8 bg-alternate-background border-border shadow-lg">
                     <p className="font-bold text-lg text-authority-green mb-4">Important Clarification</p>
                     <div className="space-y-4 text-secondary-text text-base md:text-lg">
                         <p>MoreMeets does not track or monitor execution digitally.</p>
@@ -200,7 +202,9 @@ const AuditProofSection = () => (
                 </Card>
             </div>
             <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
-                <p className="text-secondary-text text-lg md:text-xl">When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work.</p>
+                 <SectionBody className="space-y-4">
+                    <p>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work when followed using your existing processes.</p>
+                </SectionBody>
                 <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
                     Auditors don’t ask “Which software did you use?”
                     <br/>
@@ -214,7 +218,7 @@ const AuditProofSection = () => (
 
 
 const ConsequencesSection = () => (
-    <Section>
+    <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Most failures start with one missed step.</SectionHeadline>
              <div className="max-w-4xl mx-auto">
@@ -226,7 +230,7 @@ const ConsequencesSection = () => (
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center mt-4 md:mt-0 col-span-full md:col-span-1 bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / shutdown</p></motion.div>
                 </div>
             </div>
-             <SectionBody>
+             <SectionBody className="mt-12">
                 Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical. MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.
             </SectionBody>
         </div>
@@ -234,7 +238,7 @@ const ConsequencesSection = () => (
 );
 
 const GlobalComplianceSection = () => (
-    <Section className="bg-alternate-background">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Built for global operations. Adaptable locally.</SectionHeadline>
             <SectionBody className="space-y-4">
@@ -247,7 +251,7 @@ const GlobalComplianceSection = () => (
 );
 
 const OneTimePurchaseSection = () => (
-    <Section>
+    <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Buy once. Build forever.</SectionHeadline>
             <SectionBody className="space-y-4">
@@ -265,31 +269,31 @@ const OneTimePurchaseSection = () => (
 );
 
 const ComparisonSection = () => (
-    <Section className="bg-alternate-background">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Why standards outperform tools and consultants.</SectionHeadline>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-                    <Card className="h-full bg-background border-border/50 text-left">
+                    <Card className="h-full bg-alternate-background border-border text-left">
                         <CardHeader>
                             <CardTitle className="text-secondary-text">Consultants</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text">
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Expensive, time-bound</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge leaves with them</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No daily execution system</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>High cost. Short-term fixes</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge walks out with people</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No living operational system</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
-                     <Card className="h-full bg-background border-border/50 text-left">
+                     <Card className="h-full bg-alternate-background border-border text-left">
                         <CardHeader>
                             <CardTitle className="text-secondary-text">SaaS Platforms</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text">
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & dependencies</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet dependency</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered, data trapped</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -299,9 +303,9 @@ const ComparisonSection = () => (
                             <CardTitle className="text-authority-green">MoreMeets Standards™</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-primary-text">
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, tasks & proof in one system</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership. Lifetime use.</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline, universal, fully customisable</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -320,12 +324,12 @@ const WhoIsThisForSection = () => {
         "Founder-led Growing Companies",
     ];
     return (
-        <Section>
+        <Section className="bg-alternate-background">
             <div className="container px-4 md:px-6 text-center space-y-12">
                 <SectionHeadline>Built for operations where mistakes are costly.</SectionHeadline>
                  <div className="flex flex-wrap justify-center gap-3">
                     {roles.map(role => (
-                        <div key={role} className="py-2 px-4 border border-border rounded-full bg-alternate-background text-secondary-text">
+                        <div key={role} className="py-2 px-4 border border-border rounded-full bg-background text-secondary-text">
                             <h3 className="font-semibold">{role}</h3>
                         </div>
                     ))}
@@ -337,14 +341,14 @@ const WhoIsThisForSection = () => {
 }
 
 const FinalCTASection = () => (
-     <Section className="bg-alternate-background">
+     <Section>
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                  <Button size="lg" asChild className="text-base bg-high-contrast-green text-background hover:bg-high-contrast-green/90 h-12 px-8 rounded-xl">
                     <Link href="/library">Get the Standards</Link>
                 </Button>
-                <Button size="lg" asChild variant="secondary" className="text-base h-12 px-8 rounded-xl bg-background/80 text-secondary-text border-border">
+                <Button size="lg" asChild variant="secondary" className="text-base h-12 px-8 rounded-xl bg-alternate-background text-secondary-text border-border">
                     <Link href="/library">Explore the SOP Library →</Link>
                 </Button>
             </div>
