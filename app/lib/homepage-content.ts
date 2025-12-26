@@ -6,4 +6,3 @@ export const philosophyCards = [
     { icon: "ShieldCheck", title: "Globally Compliant, Locally Relevant", children: "Every checklist is mapped to global standards like ISO, HACCP, and OSHA, but built with a practical understanding of the challenges real businesses face on the ground." },
     { icon: "CheckCircle", title: "More Than Templates, They're Systems", children: "Free templates are generic. Our packs are comprehensive operational systems, including Trainer's Notes for on-the-job coaching, turning checklists into powerful training tools." }
 ];
-
