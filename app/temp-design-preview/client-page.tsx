@@ -49,9 +49,8 @@ const HeroSection = () => (
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
                    A new category of audit-ready operational standards
                 </div>
-                 <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text" style={{lineHeight: 1.1}}>
-                    Audit-Ready Operational Standards<br/>
-                    for Daily, Weekly & Monthly Work
+                 <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text !leading-tight">
+                    Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
                  </h1>
                  <h2 className="text-2xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</h2>
 
@@ -59,13 +58,12 @@ const HeroSection = () => (
                    Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
                 </p>
                 <p className="max-w-2xl text-lg text-muted-text !mt-4">
-                    Not software. Not consulting.
-                    A fixed operational system your team follows — even when people change.
+                    Not software. Not consulting. A fixed operational system your team follows — even when people change.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <div>
-                        <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
+                        <Button size="lg" asChild className="text-base h-14 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
                             <Link href="/library">Get the Standards</Link>
                         </Button>
                         <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates</p>
@@ -288,7 +286,7 @@ const OneTimePurchaseSection = () => (
 const ComparisonSection = () => (
     <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>Why serious operations choose standards — not tools.</SectionHeadline>
+            <SectionHeadline>Why standards outperform tools and consultants.</SectionHeadline>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                     <Card className="h-full bg-alternate-background border-border text-left p-6">
