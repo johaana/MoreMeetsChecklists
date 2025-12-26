@@ -31,38 +31,36 @@ const HeroSection = () => (
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4"
             autoPlay loop muted playsInline preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover z-0"
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-20 blur-[2px]"
+            style={{ filter: 'grayscale(50%)' }}
         />
         <div 
             className="absolute inset-0 z-10"
             style={{
-                background: `linear-gradient(90deg, rgba(11,15,20,0.92) 0%, rgba(11,15,20,0.75) 50%, rgba(11,15,20,0.4) 100%)`
+                background: `radial-gradient(circle at left top, rgba(255,255,255,0.04), transparent 60%), linear-gradient(90deg, rgba(11,15,20,0.92) 0%, rgba(11,15,20,0.75) 50%, rgba(11,15,20,0.4) 100%)`
             }}
         />
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[640px] space-y-6">
+            <div className="max-w-[680px] space-y-6">
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
-                    MoreMeets Standards™
-                    <br />
-                    A new category of audit-ready operational standards
+                    A New Category of Audit-Ready Operational Standards
                 </div>
-                <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl md:text-7xl !leading-tight text-primary-text">
+                <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl md:text-7xl !leading-tight text-primary-text" style={{lineHeight: 1.1}}>
                     Audit-Ready Operational Standards
-                    <br />
                     for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
                 </h1>
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-2xl">
-                   Industry-specific SOPs, checklists, and task frameworks that ensure teams never forget what to do — even during chaos, audits, or staff changes.
+                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
                 </p>
                  <p className="text-sm text-muted-text !mt-4">
                     Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <Button size="lg" asChild className="text-base bg-high-contrast-green text-background hover:bg-high-contrast-green/90 h-12 px-8 rounded-xl">
-                        <Link href="/library">Get the Standard</Link>
+                        <Link href="/library">Get the Standards</Link>
                     </Button>
                     <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
-                        <Link href="#system">See how the system works <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                        <Link href="#system">See what’s included →</Link>
                     </Button>
                 </div>
             </div>
@@ -268,8 +266,8 @@ const ComparisonSection = () => (
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text">
                              <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet dependency</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered, data trapped</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet dependency & tool reliance</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered across systems</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -280,8 +278,8 @@ const ComparisonSection = () => (
                         </CardHeader>
                         <CardContent className="space-y-3 text-primary-text">
                             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership. Lifetime use.</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline, universal, fully customisable</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, tasks & proof — one system</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -350,5 +348,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
-    
