@@ -82,7 +82,7 @@ html {
   --secondary-text: 220 15% 75%; /* #AAB3C2 */
   --muted-text: 217 10% 54%; /* #7D8796 */
   --border: 220 16% 16%; /* #1E2633 */
-  --authority-green: 158 41% 57%; /* #6FD3B3 */
+  --authority-green: 158 41% 57%; /* #6FD3B3, desaturated and slightly bluer */
   --high-contrast-green: 158 41% 57%; /* #6FD3B3 */
   --accent-foreground: 167 78% 10%; /* #062E26 */
   --risk-accent: 0 76% 64%; /* #E16464 */

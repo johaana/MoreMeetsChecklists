@@ -26,13 +26,13 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 );
 
 const HeroSection = () => (
-    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[10vh] pb-[8vh]">
+    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover z-[1] opacity-40"
+          className="absolute inset-0 h-full w-full object-cover z-[1] opacity-[0.12]"
         >
           <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4" type="video/mp4" />
         </video>
@@ -51,7 +51,7 @@ const HeroSection = () => (
                  </h1>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl !leading-relaxed">
-                   Ready-to-use operational standards that tell your team exactly what to do — so nothing is missed, even during audits, chaos, or staff changes.
+                   Ready-to-use operational frameworks that tell your team exactly what to do — so nothing is missed, even during audits, chaos, or staff changes.
                 </p>
                 <p className="max-w-2xl text-lg text-muted-text !mt-4">
                     Not software. Not consulting.
@@ -64,7 +64,7 @@ const HeroSection = () => (
                         <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground hover:bg-high-contrast-green/90 font-semibold">
                             <Link href="/library">Get the Standards</Link>
                         </Button>
-                        <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates • Global best practices</p>
+                        <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates</p>
                     </div>
                     <Button size="lg" asChild variant="link" className="text-base text-secondary-text hover:text-primary-text">
                         <Link href="#what-it-is">See what’s included →</Link>
