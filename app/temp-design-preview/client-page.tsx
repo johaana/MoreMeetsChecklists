@@ -3,18 +3,20 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check, Zap, BookOpen } from "lucide-react";
 import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { philosophyCards } from "@/lib/homepage-content";
+import { philosophyCards as rawPhilosophyCards } from "@/lib/homepage-content";
 import { IconComponent } from "@/components/icons";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import ReactSlider from 'react-slider';
 import { Switch } from "@/components/ui/switch";
+
+const philosophyCards = rawPhilosophyCards.map(card => ({...card, icon: <IconComponent name={card.icon} className="w-8 h-8 text-accent" />}));
 
 
 const HeroSection = () => {
@@ -49,10 +51,10 @@ const HeroSection = () => {
     );
 };
 
-const ValueCard = ({ icon, title, children }: { icon: string, title: string, children: React.ReactNode }) => (
+const ValueCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
     <Card className="flex flex-col text-center md:text-left h-full">
         <CardHeader className="flex flex-col md:flex-row items-center gap-4">
-            <IconComponent name={icon} className="w-8 h-8 text-accent"/>
+            {icon}
             <CardTitle>{title}</CardTitle>
         </CardHeader>
         <CardContent className="flex-1">
