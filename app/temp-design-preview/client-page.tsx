@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, Frown, Smile } from "lucide-react";
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
@@ -56,7 +56,7 @@ const OperationalDragSection = () => (
       <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
         {radialChartData.map((item, index) => (
           <Card key={index} className="text-center flex flex-col items-center justify-center p-4">
-            <ResponsiveContainer width="100%" height={140}>
+             <ResponsiveContainer width="100%" height={140}>
                 <RadialBarChart 
                     innerRadius="70%" 
                     outerRadius="90%" 
@@ -160,8 +160,11 @@ const TrademarkSection = () => (
                   <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Intellectual Property Protection</h4><p className="text-sm text-muted-foreground">Create auditable trails for handling sensitive marketing materials and proprietary information.</p></div></li>
               </ul>
           </div>
-           <div className="flex justify-center">
-              <img src="https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg" alt="Brand Protection" className="rounded-2xl shadow-xl aspect-video object-cover" />
+           <div className="grid grid-cols-2 gap-4">
+              <img src="https://i.postimg.cc/x8f3xyY1/best-7-star-hotels-in-the-world.png" alt="Luxury Hotel" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="luxury hotel" />
+              <img src="https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg" alt="Retail Store" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="retail store" />
+              <img src="https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp" alt="Corporate Event" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="corporate event" />
+              <img src="https://i.postimg.cc/kGhhCGDM/manufacturing.jpg" alt="Manufacturing Plant" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="manufacturing plant" />
            </div>
        </div>
     </div>
@@ -180,3 +183,5 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
+    
