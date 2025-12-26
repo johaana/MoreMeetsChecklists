@@ -30,7 +30,7 @@ const HeroSection = () => (
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4"
             autoPlay loop muted playsInline preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-[0.18]"
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
         />
         <div 
             className="absolute inset-0 z-10"
@@ -49,10 +49,10 @@ const HeroSection = () => (
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
                    A new category of audit-ready operational standards
                 </div>
-                 <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text !leading-tight">
-                    Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
+                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline text-primary-text !leading-tight">
+                    Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly &amp; Monthly Work</span><br/>
+                    <span className="text-2xl sm:text-3xl md:text-4xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</span>
                  </h1>
-                 <h2 className="text-2xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</h2>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
                    Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
