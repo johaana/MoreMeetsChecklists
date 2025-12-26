@@ -187,6 +187,7 @@ const RefinedHeroSection = () => {
     );
 };
 
+
 const ChaosToControlSection = () => (
   <section className="w-full py-16 md:py-24 bg-secondary/30">
     <div className="container px-4 md:px-6">
@@ -272,6 +273,7 @@ const ExpertiseExtractorSection = () => (
     </div>
   </section>
 );
+
 
 export default function TempDesignClientPage() {
   return (
