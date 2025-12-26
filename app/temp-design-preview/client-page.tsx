@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Users, Siren, Shield, TrendingUp, X } from "lucide-react";
+import { ArrowRight, Check, Users, Siren, Shield, TrendingUp, X, CheckCircle, Frown, Smile, BrainCircuit, FileText } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -15,7 +15,7 @@ const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> 
 );
 
 const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text", className)}>
+    <h2 className={cn("text-3xl font-bold tracking-tighter font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text", className)}>
         {children}
     </h2>
 );
@@ -43,14 +43,15 @@ const HeroSection = () => (
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-6">
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
-                    A New Category of Audit-Ready Operational Standards
+                   A New Category of Audit-Ready Operational Standards
                 </div>
-                <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl md:text-7xl !leading-tight text-primary-text" style={{lineHeight: 1.1}}>
+                 <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl !leading-tight text-primary-text" style={{lineHeight: 1.1}}>
                     Audit-Ready Operational Standards
-                    for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
+                    <br/>
+                    <span className="text-authority-green">for Daily, Weekly & Monthly Work</span>
                 </h1>
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-2xl">
-                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
+                   Industry-specific SOPs, checklists, and task frameworks that ensure teams never forget what to do — even during chaos, audits, or staff changes.
                 </p>
                  <p className="text-sm text-muted-text !mt-4">
                     Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
@@ -60,7 +61,7 @@ const HeroSection = () => (
                         <Link href="/library">Get the Standards</Link>
                     </Button>
                     <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
-                        <Link href="#system">See what’s included →</Link>
+                        <Link href="#system">See how the system works →</Link>
                     </Button>
                 </div>
             </div>
@@ -68,11 +69,11 @@ const HeroSection = () => (
     </section>
 );
 
+
 const WhatItIsSection = () => (
     <Section id="system">
         <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>This is not a checklist pack.
-            <br/>It’s an operational framework.</SectionHeadline>
+            <SectionHeadline>This is not a checklist pack.<br/>It’s an operational framework.</SectionHeadline>
             <SectionBody className="space-y-6">
                 <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
                 <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
@@ -81,7 +82,14 @@ const WhatItIsSection = () => (
                 <div className="space-y-4 rounded-xl border border-border bg-alternate-background p-6">
                     <h3 className="font-bold text-xl text-primary-text">What You Receive</h3>
                     <ul className="space-y-3">
-                        {["Industry-specific SOP packs", "Role-based operational checklists", "Daily, weekly, monthly task structures", "Clearly defined responsibilities", "Built-in frequencies and escalation logic", "Trainer notes explaining why each step matters"].map(item => (
+                        {[
+                            "Industry-specific SOP packs",
+                            "Role-based operational checklists",
+                            "Daily, weekly, monthly task structures",
+                            "Clearly defined responsibilities",
+                            "Built-in frequencies and escalation logic",
+                            "Trainer notes explaining why each step matters"
+                        ].map(item => (
                              <li key={item} className="flex items-start gap-3">
                                 <Check className="w-5 h-5 text-authority-green shrink-0 mt-1" />
                                 <span className="text-secondary-text">{item}</span>
@@ -92,7 +100,12 @@ const WhatItIsSection = () => (
                 <div className="space-y-4 rounded-xl border border-border bg-alternate-background p-6">
                     <h3 className="font-bold text-xl text-primary-text">What It Solves</h3>
                      <ul className="space-y-3">
-                        {["People forgetting steps during busy periods", "New hires not knowing “how things are really done”", "Teams working inconsistently across locations", "Audits depending on memory or last-minute scrambling"].map(item => (
+                        {[
+                            "People forgetting steps during busy periods",
+                            "New hires not knowing “how things are really done”",
+                            "Teams working inconsistently across locations",
+                            "Audits depending on memory or last-minute scrambling"
+                        ].map(item => (
                              <li key={item} className="flex items-start gap-3">
                                 <X className="w-5 h-5 text-risk-accent shrink-0 mt-1" />
                                 <span className="text-secondary-text">{item}</span>
@@ -154,7 +167,13 @@ const DailyExecutionSection = () => (
                 Each standard clearly defines the core components of operational discipline. This removes hesitation, second-guessing, and dependency on supervisors.
             </SectionBody>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-                {["What needs to be done", "Who is responsible", "How often", "Why the task exists", "Consequence of failure"].map((item, index) => (
+                {[
+                    "What needs to be done", 
+                    "Who is responsible", 
+                    "How often (daily / weekly / monthly)", 
+                    "Why the task exists (trainer notes)", 
+                    "What happens if it’s missed"
+                ].map((item, index) => (
                     <motion.div key={item} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
                         <Card className="p-6 text-center h-full border-border/50 hover:bg-alternate-background transition-colors flex items-center justify-center">
                             <p className="font-bold text-secondary-text">{item}</p>
@@ -165,6 +184,7 @@ const DailyExecutionSection = () => (
         </div>
     </Section>
 );
+
 
 const AuditProofSection = () => (
     <Section className="bg-alternate-background">
@@ -180,10 +200,11 @@ const AuditProofSection = () => (
                 </Card>
             </div>
             <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
-                 <p className="text-secondary-text text-lg md:text-xl">When tasks are defined, scheduled, assigned, and documented... they naturally produce repeatable proof of work.</p>
-                <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">Auditors don’t ask “Which software did you use?”
-                <br/>
-                They ask “Show me how this work is controlled.”
+                <p className="text-secondary-text text-lg md:text-xl">When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work.</p>
+                <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
+                    Auditors don’t ask “Which software did you use?”
+                    <br/>
+                    They ask “Show me how this work is controlled.”
                 </p>
                 <p className="text-authority-green font-bold text-2xl">MoreMeets Standards™ answers that question.</p>
             </div>
@@ -191,17 +212,18 @@ const AuditProofSection = () => (
     </Section>
 );
 
+
 const ConsequencesSection = () => (
     <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Most failures start with one missed step.</SectionHeadline>
              <div className="max-w-4xl mx-auto">
-                <div className="grid md:grid-cols-5 gap-2 md:gap-4 items-center justify-center font-semibold text-lg text-muted-text">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 items-center justify-center font-semibold text-lg text-muted-text">
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.2}} className="text-center">Missed task</motion.div>
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.3}} className="text-center"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.4}} className="text-center">No evidence</motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}} className="text-center"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / Loss</p></motion.div>
+                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.4}} className="text-center col-span-2 md:col-span-1">No evidence</motion.div>
+                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}} className="text-center hidden md:block"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
+                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center mt-4 md:mt-0 col-span-full md:col-span-1 bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / shutdown</p></motion.div>
                 </div>
             </div>
              <SectionBody>
@@ -230,13 +252,13 @@ const OneTimePurchaseSection = () => (
             <SectionHeadline>Buy once. Build forever.</SectionHeadline>
             <SectionBody className="space-y-4">
                 <p>MoreMeets Standards™ is a one-time purchase.</p>
-                <p>You receive lifetime ownership and free future updates to the standards.</p>
+                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
+                    <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
+                    <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
+                    <p className="flex items-center gap-2"><X className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
+                    <p className="flex items-center gap-2"><X className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
+                </div>
             </SectionBody>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
-                <p>No subscriptions.</p>
-                <p>No vendor lock-in.</p>
-                <p>No recurring fees.</p>
-            </div>
              <p className="text-lg text-secondary-text">As regulations evolve, your standards library evolves with you.</p>
         </div>
     </Section>
@@ -253,9 +275,9 @@ const ComparisonSection = () => (
                             <CardTitle className="text-secondary-text">Consultants</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text">
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>High cost. Short-term fixes</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge walks out with people</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No living operational system</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Expensive, time-bound</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge leaves with them</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No daily execution system</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -265,9 +287,9 @@ const ComparisonSection = () => (
                             <CardTitle className="text-secondary-text">SaaS Platforms</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text">
-                             <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet dependency & tool reliance</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered across systems</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & dependencies</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
+                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -277,9 +299,9 @@ const ComparisonSection = () => (
                             <CardTitle className="text-authority-green">MoreMeets Standards™</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-primary-text">
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership. Lifetime use.</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership</span></p>
                             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, tasks & proof in one system</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -323,7 +345,7 @@ const FinalCTASection = () => (
                     <Link href="/library">Get the Standards</Link>
                 </Button>
                 <Button size="lg" asChild variant="secondary" className="text-base h-12 px-8 rounded-xl bg-background/80 text-secondary-text border-border">
-                    <Link href="/library">Explore the SOP Library</Link>
+                    <Link href="/library">Explore the SOP Library →</Link>
                 </Button>
             </div>
         </div>
