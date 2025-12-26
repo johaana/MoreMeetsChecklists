@@ -27,17 +27,12 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover z-0 opacity-40"
-        >
-          <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4" type="video/mp4" />
-        </video>
+        <div
+          className="absolute inset-0 h-full w-full object-cover z-0 opacity-20 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png')" }}
+        ></div>
         
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F14] via-[#0B0F14]/80 to-transparent z-10" />
         
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-4">
@@ -45,30 +40,22 @@ const HeroSection = () => (
                    A NEW CATEGORY OF AUDIT-READY OPERATIONAL STANDARDS
                 </div>
                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.1 }}>
-                    <span className="text-authority-green">Audit-Ready SOPs</span>
-                    <br />
-                    for <span className="text-authority-green">Daily, Weekly & Monthly</span> Operations
+                    When people forget,
+                    <br/>
+                    <span className="text-authority-green">operations fail.</span>
                  </h1>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
-                   Ready-to-use operational standards that tell your team exactly what to do — so nothing is missed, even during audits, chaos, or staff changes.
-                </p>
-                <p className="max-w-2xl text-lg text-muted-text !mt-4">
-                    Not software. Not consulting.
-                    <br/>
-                    A fixed operational system your team follows — forever.
+                   MoreMeets Standards™ is a fixed operational framework that defines what must be done, how often, and by whom — so nothing depends on memory, luck, or experience.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start sm:items-center">
                     <div>
                         <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground hover:bg-high-contrast-green/90 font-semibold">
-                            <Link href="/library">Get the Standards</Link>
+                            <Link href="/library">View the Standards</Link>
                         </Button>
-                        <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates</p>
+                        <p className="text-xs text-muted-text mt-2">One-time purchase • Offline • Built for real audits</p>
                     </div>
-                    <Button size="lg" asChild variant="link" className="text-base text-secondary-text hover:text-primary-text">
-                        <Link href="#what-it-is">See what’s included →</Link>
-                    </Button>
                 </div>
             </div>
         </div>
@@ -86,7 +73,7 @@ const WhatItIsSection = () => (
                     <div>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</div>
                 </SectionBody>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto text-left items-start">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto text-left items-center">
                 <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
                     <h3 className="font-bold text-xl text-primary-text">What You Receive</h3>
                     <ul className="space-y-3">
@@ -105,21 +92,12 @@ const WhatItIsSection = () => (
                         ))}
                     </ul>
                 </div>
-                <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
-                    <h3 className="font-bold text-xl text-primary-text">What It Solves</h3>
-                     <ul className="space-y-3">
-                        {[
-                            "People forgetting steps during busy periods",
-                            "New hires not knowing “how things are really done”",
-                            "Teams working inconsistently across locations",
-                            "Audits depending on memory or last-minute scrambling"
-                        ].map(item => (
-                             <li key={item} className="flex items-start gap-3">
-                                <ChevronsRight className="w-5 h-5 text-risk-accent shrink-0 mt-1" />
-                                <span className="text-secondary-text">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
+                <div className="rounded-xl border border-border bg-background p-1.5 shadow-2xl">
+                     <img
+                        src='https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png'
+                        alt="MoreMeets Excel Checklist System"
+                        className="rounded-lg object-cover w-full h-auto"
+                    />
                 </div>
             </div>
         </div>
@@ -260,6 +238,7 @@ const GlobalComplianceSection = () => (
         </div>
     </Section>
 );
+
 
 const OneTimePurchaseSection = () => (
     <Section className="bg-alternate-background">
