@@ -20,7 +20,7 @@ export function Footer() {
                     <h3 className="font-semibold mb-2 text-primary-text">Navigation</h3>
                     <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>SOP Library</Link>
                     <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>Industries</Link>
-                    <Link href="/#what-it-is" className="text-secondary-text hover:text-primary-text" prefetch={false}>How It Works</Link>
+                    <Link href="#what-it-is" className="text-secondary-text hover:text-primary-text" prefetch={false}>How It Works</Link>
                     <Link href="/blog" className="text-secondary-text hover:text-primary-text" prefetch={false}>Blog</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-start text-sm">

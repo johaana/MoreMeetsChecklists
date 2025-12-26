@@ -44,15 +44,14 @@ const HeroSection = () => (
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
                    A NEW CATEGORY OF AUDIT-READY OPERATIONAL STANDARDS
                 </div>
-                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline !leading-tight" style={{ lineHeight: 1.1 }}>
+                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.1 }}>
                     <span className="text-authority-green">Audit-Ready SOPs</span>
                     <br />
-                    for <span className="text-authority-green">Daily, Weekly & Monthly</span> Operations
+                    for <span className="text-authority-green">Daily, Weekly & Monthly</span> Work
                  </h1>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl !leading-relaxed">
-                   Ready-made operational standards that tell your team exactly what to do —
-                   so nothing is missed, even during audits, chaos, or staff changes.
+                   Ready-to-use operational standards that tell your team exactly what to do — so nothing is missed, even during audits, chaos, or staff changes.
                 </p>
                 <p className="max-w-2xl text-lg text-muted-text !mt-4">
                     Not software. Not consulting.

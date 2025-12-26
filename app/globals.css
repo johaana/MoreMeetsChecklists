@@ -26,15 +26,15 @@
     --ring: 155 57% 51%;
     --radius: 0.5rem;
     
-    /* Default theme values */
-    --alternate-background: 220 13% 94%;
-    --primary-text: 220 9% 10%;
-    --secondary-text: 220 9% 30%;
-    --muted-text: 220 9% 45%;
-    --authority-green: 158 41% 40%;
-    --high-contrast-green: 155 57% 45%;
-    --risk-accent: 6 78% 50%;
-    --warning-accent: 38 92% 50%;
+    /* Temp Design Colors */
+    --alternate-background: 212 40% 6%;
+    --primary-text: 0 0% 100%;
+    --secondary-text: 220 15% 75%;
+    --muted-text: 217 10% 54%;
+    --authority-green: 158 41% 57%;
+    --high-contrast-green: 158 41% 57%;
+    --risk-accent: 0 76% 64%;
+    --warning-accent: 42 75% 60%;
   }
 
   .dark {
