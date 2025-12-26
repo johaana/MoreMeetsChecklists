@@ -4,11 +4,16 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check, Zap, BookOpen } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis, Legend } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { philosophyCards } from "@/lib/homepage-content";
+import { IconComponent } from "@/components/icons";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
 
 const HeroSection = () => {
     return (
@@ -41,6 +46,59 @@ const HeroSection = () => {
         </section>
     );
 };
+
+const ValueCard = ({ icon, title, children }: { icon: string, title: string, children: React.ReactNode }) => (
+    <Card className="flex flex-col text-center md:text-left h-full">
+        <CardHeader className="flex flex-col md:flex-row items-center gap-4">
+            <IconComponent name={icon} className="w-8 h-8 text-accent"/>
+            <CardTitle>{title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1">
+            <p className="text-muted-foreground">{children}</p>
+        </CardContent>
+    </Card>
+);
+
+const PhilosophySection = () => (
+    <section className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="space-y-4 text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Unshakeable Philosophy</h2>
+                <p className="text-muted-foreground text-lg">
+                   We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
+                </p>
+            </div>
+             <div className="hidden md:grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {philosophyCards.map((card, index) => (
+                    <ValueCard key={index} icon={card.icon} title={card.title}>
+                        {card.children}
+                    </ValueCard>
+                ))}
+             </div>
+             <div className="md:hidden">
+                 <Carousel
+                    plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+                    className="w-full max-w-xs sm:max-w-sm mx-auto"
+                >
+                  <CarouselContent>
+                    {philosophyCards.map((card, index) => (
+                      <CarouselItem key={index}>
+                        <div className="p-1 h-full">
+                           <ValueCard icon={card.icon} title={card.title}>
+                                {card.children}
+                           </ValueCard>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
+                  <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
+                </Carousel>
+             </div>
+        </div>
+    </section>
+);
+
 
 const radialChartData = [
   { name: 'Compliance Gaps', value: 85, fill: 'hsl(var(--destructive))' },
@@ -336,6 +394,7 @@ export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
       <HeroSection />
+      <PhilosophySection />
       <ChaosToControlSection />
       <OperationalDragSection />
       <BeforeAfterChartSection />
@@ -347,4 +406,3 @@ export default function TempDesignClientPage() {
   );
 }
 
-    
