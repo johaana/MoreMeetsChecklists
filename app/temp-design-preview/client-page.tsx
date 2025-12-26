@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Users, FileText, User, ChevronsRight, ShieldAlert, FileX, Ban, Handshake } from "lucide-react";
+import { ArrowRight, Check, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon as Cloud, User, FileText } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -52,10 +52,11 @@ const HeroSection = () => (
                 </div>
                  <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text" style={{lineHeight: 1.1}}>
                     Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
-                    <span className="block text-2xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</span>
-                </h1>
+                 </h1>
+                 <h2 className="text-2xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</h2>
+
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
-                   Industry-specific SOPs, checklists, and task frameworks that ensure teams never forget what to do — even during chaos, audits, or staff changes.
+                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
                 </p>
                 <div className="text-sm text-muted-text">
                   Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
@@ -235,7 +236,10 @@ const ConsequencesSection = () => (
                 </div>
             </div>
              <SectionBody className="mt-12 text-lg">
-                <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical. MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
+                <div>
+                  <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
+                  <p className="mt-4">MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
+                </div>
             </SectionBody>
         </div>
     </Section>
@@ -297,7 +301,7 @@ const ComparisonSection = () => (
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
                             <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
                             <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered, data trapped</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -378,4 +382,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
