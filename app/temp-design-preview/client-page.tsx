@@ -96,7 +96,7 @@ const WhatItIsSection = () => (
                      <img
                         src='https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png'
                         alt="MoreMeets Excel Checklist System"
-                        className="rounded-lg object-cover w-full h-auto"
+                        className="rounded-lg object-cover w-full h-auto blur-sm"
                     />
                 </div>
             </div>
@@ -186,7 +186,7 @@ const GuidanceSection = () => (
                      <img
                         src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
                         alt="MoreMeets Trainer Notes for team guidance"
-                        className="rounded-lg object-cover w-full h-auto"
+                        className="rounded-lg object-cover w-full h-auto blur-sm"
                     />
                 </div>
             </div>
@@ -203,8 +203,8 @@ const AuditProofSection = () => (
                      <h3 className="font-bold text-lg text-authority-green mb-4">IMPORTANT CLARIFICATION</h3>
                     <div className="space-y-4 text-secondary-text text-base md:text-lg">
                         <p>MoreMeets does not track or monitor execution digitally. Our framework is **offline by design**.</p>
-                        <p className="font-semibold text-primary-text">We never have access to your operational data. It stays on your systems, completely private and secure, under your control.</p>
-                        <p>Instead, the system provides a standardised structure that makes evidence-gathering consistent and audit-acceptable using your own processes.</p>
+                        <p className="font-semibold text-primary-text">We never have access to your operational data. Your data is your property, completely private and secure, under your control.</p>
+                        <p>Instead, the system provides a standardised structure that makes evidence possible, consistent, and audit-acceptable.</p>
                     </div>
                 </Card>
             </div>
