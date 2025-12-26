@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Frown, Smile, CheckCircle, Users, ShieldCheck, Factory, Handshake } from "lucide-react";
+import { ArrowRight, Check, Frown, Smile, CheckCircle, Users, ShieldCheck, Factory, Handshake, X } from "lucide-react";
 import React from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -55,7 +55,6 @@ const HeroSection = () => (
     </section>
 );
 
-
 const ProblemSection = () => (
     <Section className="bg-secondary text-center">
         <div className="container px-4 md:px-6 space-y-6">
@@ -63,7 +62,7 @@ const ProblemSection = () => (
             <br/>They fail daily discipline.</SectionHeadline>
             <SectionBody>
                 Compliance doesn’t break because of one big mistake. It breaks because tasks weren’t defined clearly, enforced by frequency, trained consistently, or provable later.
-                <br/><br/>
+                 <br/><br/>
                 <span className="text-foreground font-semibold">Auditors don’t ask who remembers. They ask what evidence exists.</span>
             </SectionBody>
         </div>
@@ -76,9 +75,9 @@ const CategoryDeclarationSection = () => (
             <SectionHeadline>This is not software.
             <br/><span className="text-primary">This is a standard.</span></SectionHeadline>
             <SectionBody>
-                MoreMeets Standards™ is a complete operational framework delivered offline, built to turn everyday work into structured, auditable proof. No subscriptions. No dashboards. No lock-in. Just disciplined execution, captured once, usable forever.
+                MoreMeets Standards™ is a complete operational framework delivered offline, built to turn everyday work into structured, auditable proof. No subscriptions. No dashboards. No lock-in.
                 <br/><br/>
-                <span className="font-semibold text-foreground">Software tracks activity. Standards prevent failure.</span>
+                 <span className="font-semibold text-foreground">Software tracks activity. Standards prevent failure.</span>
             </SectionBody>
             <div className="inline-block">
                 <div className="border rounded-full px-4 py-2 text-sm font-medium text-muted-foreground">
@@ -91,11 +90,11 @@ const CategoryDeclarationSection = () => (
 
 const SystemSection = () => {
     const annotations = [
-        { label: "Control clarity", description: "Clear task definition" },
-        { label: "Preventive control", description: "Frequency enforced" },
-        { label: "Knowledge continuity", description: "Trainer notes embedded" },
-        { label: "Objective evidence", description: "Audit trail by default" },
-        { label: "Proof and prevention", description: "Last completed + next due" },
+        { label: "Control clarity", description: "Task Definition" },
+        { label: "Preventive control", description: "Frequency Enforced" },
+        { label: "Knowledge continuity", description: "Trainer Notes Embedded" },
+        { label: "Objective evidence", description: "Audit Trail by Default" },
+        { label: "Proof and prevention", description: "Last Completed + Next Due" },
     ];
     return (
         <Section id="audit-structure" className="bg-secondary">
@@ -103,7 +102,7 @@ const SystemSection = () => {
                 <div className="text-center">
                     <SectionHeadline>What “audit-ready” actually looks like.</SectionHeadline>
                 </div>
-                <div className="max-w-6xl mx-auto bg-background p-4 rounded-lg shadow-lg border">
+                 <div className="max-w-6xl mx-auto bg-background p-4 rounded-lg shadow-lg border overflow-hidden">
                     <div className="overflow-x-auto">
                         <div className="grid grid-cols-5 min-w-[1200px] font-mono">
                             {annotations.map((item) => (
@@ -125,49 +124,63 @@ const ComparisonSection = () => (
     <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Why serious operations choose standards over tools.</SectionHeadline>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <Card>
-                    <CardHeader><CardTitle>Consultants</CardTitle></CardHeader>
-                    <CardContent className="space-y-2 text-muted-foreground">
-                        <p>High cost</p>
-                        <p>Knowledge leaves with people</p>
-                        <p>No living system</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader><CardTitle>SaaS Platforms</CardTitle></CardHeader>
-                    <CardContent className="space-y-2 text-muted-foreground">
-                        <p>Ongoing fees & version drift</p>
-                        <p>Internet & feature churn</p>
-                        <p>Evidence scattered & data trapped</p>
-                    </CardContent>
-                </Card>
-                <Card className="border-2 border-primary bg-secondary">
-                    <CardHeader><CardTitle className="text-primary">MoreMeets Standards™</CardTitle></CardHeader>
-                    <CardContent className="space-y-2 text-foreground">
-                        <p>One-time ownership</p>
-                        <p>Offline & universal</p>
-                        <p>Training + tasks + proof in one place</p>
-                    </CardContent>
-                </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+                 {/* Problem Cards */}
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+                    <Card className="h-full bg-secondary/50 border-destructive/20">
+                        <CardHeader>
+                            <CardTitle className="text-destructive/80">Consultants</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3 text-left">
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>High cost & engagement friction</span></p>
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>Knowledge leaves with people</span></p>
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>No living, day-to-day system</span></p>
+                        </CardContent>
+                    </Card>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
+                    <Card className="h-full bg-secondary/50 border-destructive/20">
+                        <CardHeader>
+                            <CardTitle className="text-destructive/80">SaaS Platforms</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3 text-left">
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>Ongoing fees & version drift</span></p>
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>Internet dependency & feature churn</span></p>
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-destructive/80 shrink-0 mt-1"/><span>Evidence is scattered & data trapped</span></p>
+                        </CardContent>
+                    </Card>
+                </motion.div>
+                {/* Solution Card */}
+                <motion.div initial={{ scale: 0.95, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }} className="lg:col-span-1 md:col-span-2">
+                    <Card className="h-full border-2 border-primary bg-primary/5 shadow-2xl">
+                        <CardHeader>
+                            <CardTitle className="text-primary">MoreMeets Standards™</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3 text-left">
+                            <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>One-time ownership for life</span></p>
+                            <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Offline, universal & totally customizable</span></p>
+                            <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Training + tasks + proof in one place</span></p>
+                        </CardContent>
+                    </Card>
+                </motion.div>
             </div>
-            <p className="text-center font-semibold text-lg text-primary">Standards don’t expire. Tools do.</p>
+            <p className="text-center font-semibold text-lg text-primary pt-8">Standards don’t expire. Tools do.</p>
         </div>
     </Section>
 );
 
 const WhoIsThisForSection = () => {
     const roles = [
-        { icon: <Factory className="w-8 h-8"/>, title: "Safety-critical operations", description: "Manufacturing, Healthcare, Logistics" },
-        { icon: <Users className="w-8 h-8"/>, title: "Multi-location businesses", description: "Retail, Hospitality, Franchise Chains" },
-        { icon: <ShieldCheck className="w-8 h-8"/>, title: "Regulated industries", description: "Finance, Pharma, Education" },
-        { icon: <Handshake className="w-8 h-8"/>, title: "Founder-led companies", description: "Scaling beyond memory and individual heroes" },
+        { icon: <Factory className="w-8 h-8"/>, title: "Safety-Critical Operations", description: "Manufacturing, Healthcare, Logistics" },
+        { icon: <Users className="w-8 h-8"/>, title: "Multi-Location Businesses", description: "Retail, Hospitality, Franchise Chains" },
+        { icon: <ShieldCheck className="w-8 h-8"/>, title: "Regulated Industries", description: "Finance, Pharma, Education" },
+        { icon: <Handshake className="w-8 h-8"/>, title: "Founder-Led Companies", description: "Scaling beyond memory and individual heroes" },
     ];
     return (
-        <Section>
+        <Section className="bg-secondary">
             <div className="container px-4 md:px-6 text-center space-y-12">
                 <SectionHeadline>Who adopts MoreMeets Standards™?</SectionHeadline>
-                <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
                     {roles.map(role => (
                         <div key={role.title} className="flex flex-col items-center">
                             <div className="text-primary mb-4">{role.icon}</div>
@@ -182,23 +195,23 @@ const WhoIsThisForSection = () => {
 }
 
 const ReplacesSection = () => (
-    <Section className="bg-secondary">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>What This Replaces</SectionHeadline>
             <div className="max-w-2xl mx-auto space-y-4 text-lg text-muted-foreground">
-                <p className="line-through">SOP PDFs no one follows</p>
-                <p className="line-through">Excel trackers with no proof</p>
-                <p className="line-through">WhatsApp instructions</p>
-                <p className="line-through">Consultant documents that rot</p>
-                <p className="line-through">Re-training every time someone leaves</p>
+                <motion.p initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} transition={{delay: 0.1}} className="line-through">SOP PDFs no one follows</motion.p>
+                <motion.p initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} transition={{delay: 0.2}} className="line-through">Excel trackers with no proof</motion.p>
+                <motion.p initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} transition={{delay: 0.3}} className="line-through">WhatsApp instructions</motion.p>
+                <motion.p initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} transition={{delay: 0.4}} className="line-through">Consultant documents that rot</motion.p>
+                <motion.p initial={{opacity: 0, x: -20}} whileInView={{opacity: 1, x: 0}} transition={{delay: 0.5}} className="line-through">Re-training every time someone leaves</motion.p>
             </div>
-            <p className="text-center font-semibold text-lg text-primary">Priced lower than one failed audit. Owned for life.</p>
+            <p className="text-center font-semibold text-lg text-primary pt-8">Priced lower than one failed audit. Owned for life.</p>
         </div>
     </Section>
 );
 
 const ComplianceSection = () => (
-    <Section>
+    <Section className="bg-secondary">
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Built for real-world compliance environments.</SectionHeadline>
             <SectionBody>
@@ -216,7 +229,7 @@ const ComplianceSection = () => (
 );
 
 const TrainingSection = () => (
-    <Section className="bg-secondary">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Train once. Execute forever.</SectionHeadline>
             <SectionBody>
@@ -229,13 +242,13 @@ const TrainingSection = () => (
 );
 
 const ConsequenceSection = () => (
-    <Section>
+    <Section className="bg-secondary">
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>One missed task is all it takes.</SectionHeadline>
              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-lg">
-                 <motion.p initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{delay: 0.2}}><span className="font-bold text-destructive">A missed check</span> → failed audit</motion.p>
-                 <motion.p initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{delay: 0.4}}><span className="font-bold text-destructive">A skipped frequency</span> → safety incident</motion.p>
-                 <motion.p initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{delay: 0.6}}><span className="font-bold text-destructive">An undocumented action</span> → legal exposure</motion.p>
+                 <motion.p initial={{opacity: 0, y: 20}} whileInView={{opacity: 1, y: 0}} transition={{delay: 0.2}}><span className="font-bold text-destructive">A missed check</span> → failed audit</motion.p>
+                 <motion.p initial={{opacity: 0, y: 20}} whileInView={{opacity: 1, y: 0}} transition={{delay: 0.4}}><span className="font-bold text-destructive">A skipped frequency</span> → safety incident</motion.p>
+                 <motion.p initial={{opacity: 0, y: 20}} whileInView={{opacity: 1, y: 0}} transition={{delay: 0.6}}><span className="font-bold text-destructive">An undocumented action</span> → legal exposure</motion.p>
             </div>
             <p className="text-center font-semibold text-lg text-primary">Standards exist to make sure nothing depends on memory.</p>
         </div>
@@ -243,24 +256,23 @@ const ConsequenceSection = () => (
 );
 
 const DeliverablesSection = () => (
-     <Section className="bg-secondary">
+     <Section>
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>What you receive.</SectionHeadline>
-            <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 text-foreground">
-                <div className="font-semibold">Industry-specific operational standards</div>
-                <div className="font-semibold">Structured task frameworks</div>
-                <div className="font-semibold">Embedded training logic</div>
-                <div className="font-semibold">Audit-ready execution format</div>
-                <div className="font-semibold col-span-2 md:col-span-1">Lifetime access to updates</div>
+            <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 text-foreground font-semibold">
+                <div>Industry-specific operational standards</div>
+                <div>Structured task frameworks</div>
+                <div>Embedded training logic</div>
+                <div>Audit-ready execution format</div>
+                <div className="col-span-2 md:col-span-1">Lifetime access to updates</div>
             </div>
              <p className="text-center font-semibold text-lg text-primary pt-8">This is not content. This is how your operation runs when no one is watching.</p>
         </div>
     </Section>
 );
 
-
 const FinalCTASection = () => (
-     <Section>
+     <Section className="bg-secondary">
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Adopt the standard.
             <br/>Run your operation with proof.</SectionHeadline>
