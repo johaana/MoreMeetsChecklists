@@ -25,24 +25,34 @@
     --input: 220 13% 91%;
     --ring: 155 57% 51%;
     --radius: 0.5rem;
+    
+    /* New Temp Design Palette (Light Mode - Fallback) */
+    --alternate-background: 220 13% 94%;
+    --primary-text: 220 9% 10%;
+    --secondary-text: 220 9% 30%;
+    --muted-text: 220 9% 45%;
+    --authority-green: 158 41% 40%;
+    --high-contrast-green: 155 57% 45%;
+    --risk-accent: 6 78% 50%;
+    --warning-accent: 38 92% 50%;
   }
 
   .dark {
-    --background: 218 20% 6%; /* #0B0F14 */
-    --foreground: 215 25% 95%; /* #F5F7FA */
+    --background: 218 20% 6%;
+    --foreground: 215 25% 95%;
     --card: 218 20% 10%;
     --card-foreground: 215 25% 95%;
     --popover: 218 20% 6%;
     --popover-foreground: 215 25% 95%;
-    --primary: 158 41% 57%; /* Authority Green #6BC7A3 */
+    --primary: 158 41% 57%;
     --primary-foreground: 218 20% 6%;
-    --secondary: 218 20% 10%; /* #131820 */
+    --secondary: 218 20% 10%;
     --secondary-foreground: 215 25% 95%;
     --muted: 218 20% 15%;
-    --muted-foreground: 220 15% 65%; /* #9AA4B2 */
-    --accent: 155 57% 51%; /* High-Contrast Green #38D39F */
+    --muted-foreground: 220 15% 65%;
+    --accent: 155 57% 51%;
     --accent-foreground: 218 20% 6%;
-    --destructive: 6 78% 60%; /* Risk Red #E5533D */
+    --destructive: 6 78% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 218 20% 15%;
     --input: 218 20% 15%;
@@ -66,14 +76,15 @@ html {
 }
 
 .temp-design-page {
-  --background: 221 21% 7%; /* #0B0F14 */
-  --alternate-background: 220 23% 9%; /* #0F1620 */
-  --primary-text: 210 20% 90%; /* #E6EAF0 */
-  --secondary-text: 216 14% 65%; /* #A8B0C2 */
-  --muted-text: 218 11% 58%; /* #8A94A2 */
+  --background: 212 40% 4%; /* #0B0F14 */
+  --alternate-background: 212 40% 6%; /* #0E1620 */
+  --primary-text: 0 0% 100%; /* #FFFFFF */
+  --secondary-text: 220 15% 75%; /* #AAB3C2 */
+  --muted-text: 217 10% 54%; /* #7D8796 */
   --border: 220 16% 16%; /* #1E2633 */
-  --authority-green: 158 35% 58%; /* #6BC7A3 slightly desaturated */
-  --high-contrast-green: 155 57% 51%; /* #38D39F */
+  --authority-green: 158 41% 57%; /* #6FD3B3 */
+  --high-contrast-green: 158 41% 57%; /* #6FD3B3 */
+  --accent-foreground: 167 78% 10%; /* #062E26 */
   --risk-accent: 0 76% 64%; /* #E16464 */
   --warning-accent: 42 75% 60%; /* #E3B341 */
 

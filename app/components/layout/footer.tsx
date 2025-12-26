@@ -1,55 +1,54 @@
 
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="w-full border-t bg-secondary/50 mt-12">
-            <div className="container grid items-center justify-center gap-8 px-4 py-8 text-center md:py-12 md:grid-cols-3 md:text-left">
+        <footer className="w-full border-t border-border bg-alternate-background text-secondary-text">
+            <div className="container grid items-start justify-center gap-8 px-4 py-12 text-center md:py-16 md:grid-cols-3 md:text-left">
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-                        <Logo className="h-6 w-6 text-primary" />
-                        <span className="font-headline text-lg font-bold">MoreMeets</span>
+                        <Logo className="h-6 w-6 text-authority-green" />
+                        <span className="font-headline text-lg font-bold text-primary-text">MoreMeets</span>
                     </Link>
-                    <p className="text-xs md:text-sm text-muted-foreground max-w-xs">
-                        The Professional Standard for Compliance &amp; Operations Checklists.
+                    <p className="text-xs md:text-sm text-muted-text max-w-xs">
+                        Audit-Ready Operational Standards for modern teams.
                     </p>
-                     <div className="flex flex-col items-center md:items-start gap-2 mt-4 text-sm">
-                         <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                            <WhatsAppIcon className="w-4 h-4" />
-                            <span>Chat on WhatsApp</span>
+                </div>
+                <div className="flex flex-col gap-2 items-center text-sm md:items-start md:mx-auto">
+                    <h3 className="font-semibold mb-2 text-primary-text">Navigation</h3>
+                    <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>SOP Library</Link>
+                    <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>Industries</Link>
+                    <Link href="/#what-it-is" className="text-secondary-text hover:text-primary-text" prefetch={false}>How It Works</Link>
+                    <Link href="/blog" className="text-secondary-text hover:text-primary-text" prefetch={false}>Blog</Link>
+                </div>
+                <div className="flex flex-col gap-2 items-center md:items-start text-sm">
+                    <h3 className="font-semibold mb-2 text-primary-text">Contact & Legal</h3>
+                    <div className="flex items-center gap-2 text-secondary-text hover:text-primary-text">
+                        <WhatsAppIcon className="w-4 h-4" />
+                        <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer">
+                            Chat on WhatsApp
                         </a>
-                        <a href="mailto:more@moremeets.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                            <Mail className="w-4 h-4" />
+                    </div>
+                    <div className="flex items-center gap-2 text-secondary-text hover:text-primary-text">
+                        <Mail className="w-4 h-4" />
+                        <a href="mailto:more@moremeets.com">
                             more@moremeets.com
                         </a>
                     </div>
+                     <div className="mt-4 flex flex-col gap-2 items-center md:items-start">
+                        <Link href="/terms" className="text-secondary-text hover:text-primary-text" prefetch={false}>
+                            Terms of Service
+                        </Link>
+                        <Link href="/privacy" className="text-secondary-text hover:text-primary-text" prefetch={false}>
+                            Privacy Policy
+                        </Link>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-2 items-center text-xs md:text-sm">
-                    <h3 className="font-semibold">Quick Links</h3>
-                    <Link href="/library" className="text-muted-foreground hover:text-foreground" prefetch={false}>SOP Library</Link>
-                    <Link href="/checklists" className="text-muted-foreground hover:text-foreground" prefetch={false}>Bestselling Checklists</Link>
-                    <Link href="/blog" className="text-muted-foreground hover:text-foreground" prefetch={false}>Blog</Link>
-                    <Link href="/contact" className="text-muted-foreground hover:text-foreground" prefetch={false}>Contact Us</Link>
-                    <Link href="/packs/animal_shelter_pack" className="text-muted-foreground hover:text-foreground" prefetch={false}>Social Impact (Free Resources)</Link>
-                </div>
-                <div className="flex flex-col gap-2 items-center md:items-end text-xs md:text-sm">
-                    <h3 className="font-semibold">Legal</h3>
-                    <Link href="/terms" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Terms of Service
-                    </Link>
-                    <Link href="/privacy" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Privacy Policy
-                    </Link>
-                    <Link href="/refund" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Refund Policy
-                    </Link>
-                     <Link href="/sitemap.xml" className="text-muted-foreground hover:text-foreground" prefetch={false}>
-                        Sitemap
-                    </Link>
-                    <p className="text-xs text-muted-foreground mt-4">&copy; 2025 MoreMeets. All rights reserved.</p>
-                </div>
+            </div>
+             <div className="border-t border-border py-4">
+                <p className="text-xs text-muted-text text-center">&copy; 2025 MoreMeets. All rights reserved.</p>
             </div>
         </footer>
     );

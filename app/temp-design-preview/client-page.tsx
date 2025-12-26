@@ -26,18 +26,17 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 );
 
 const HeroSection = () => (
-    <section className="relative w-full h-screen min-h-[700px] flex items-center text-primary-text overflow-hidden">
+    <section className="relative w-full min-h-[100svh] max-h-[100svh] flex items-center text-white overflow-hidden pt-[10vh] pb-[8vh]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4"
-            autoPlay loop muted playsInline preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
-        />
-        <div 
-            className="absolute inset-0 z-10"
-            style={{
-                background: `linear-gradient(90deg, rgba(11,15,20,0.92) 0%, rgba(11,15,20,0.75) 50%, rgba(11,15,20,0.4) 100%)`
-            }}
-        />
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover opacity-[18%]"
+        >
+            <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 z-10" />
          <div 
             className="absolute inset-0 z-10"
             style={{
@@ -46,29 +45,31 @@ const HeroSection = () => (
         />
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-6">
-                <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
-                   A new category of audit-ready operational standards
+                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
+                   A NEW CATEGORY OF AUDIT-READY OPERATIONAL STANDARDS
                 </div>
-                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline text-primary-text !leading-tight">
-                    Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly &amp; Monthly Work</span><br/>
-                    <span className="text-2xl sm:text-3xl md:text-4xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</span>
+                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline !leading-tight">
+                    <span className="text-authority-green">Audit-Ready</span> SOPs
+                    <br />
+                    for <span className="text-authority-green">Daily, Weekly & Monthly</span> Work
                  </h1>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
-                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
+                   Ready-to-use operational frameworks that ensure
+                   nothing is missed — even during audits, chaos, or staff changes.
                 </p>
                 <p className="max-w-2xl text-lg text-muted-text !mt-4">
-                    Not software. Not consulting. A fixed operational system your team follows — even when people change.
+                    Not software. Not consulting. A fixed operational system your team follows — forever.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <div>
-                        <Button size="lg" asChild className="text-base h-14 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
+                        <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground hover:bg-high-contrast-green/90 font-semibold">
                             <Link href="/library">Get the Standards</Link>
                         </Button>
                         <p className="text-xs text-muted-text mt-2">One-time purchase • Lifetime updates</p>
                     </div>
-                    <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
+                    <Button size="lg" asChild variant="link" className="text-base text-secondary-text hover:text-primary-text">
                         <Link href="#what-it-is">See what’s included →</Link>
                     </Button>
                 </div>
@@ -85,8 +86,8 @@ const WhatItIsSection = () => (
                 <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
                 <div className="mt-6 space-y-6">
                      <SectionBody>
-                        <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
-                        <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
+                        <div>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</div>
+                        <div>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</div>
                     </SectionBody>
                 </div>
             </div>
@@ -176,7 +177,7 @@ const DailyExecutionSection = () => (
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>So teams always know what to do — and when.</SectionHeadline>
             <SectionBody>
-                <p>Each standard clearly defines the core components of operational discipline. This removes hesitation, second-guessing, and dependency on supervisors.</p>
+                <div>Each standard clearly defines the core components of operational discipline. This removes hesitation, second-guessing, and dependency on supervisors.</div>
             </SectionBody>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
                 {[
@@ -213,7 +214,7 @@ const AuditProofSection = () => (
             </div>
             <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
                  <SectionBody>
-                    <p>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work when followed using your existing processes.</p>
+                    <div>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work when followed using your existing processes.</div>
                 </SectionBody>
                 <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
                     Auditors don’t ask “Which software did you use?”
@@ -362,11 +363,11 @@ const FinalCTASection = () => (
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
+                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground font-semibold hover:bg-high-contrast-green/90">
                     <Link href="/library">Get the Standards</Link>
                 </Button>
                 <Button size="lg" asChild variant="link" className="text-base text-secondary-text hover:text-primary-text">
-                    <Link href="/library">Explore the SOP Library →</Link>
+                    <Link href="#what-it-is">See what’s included →</Link>
                 </Button>
             </div>
         </div>
