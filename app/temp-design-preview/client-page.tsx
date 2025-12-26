@@ -1,9 +1,10 @@
 
+
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check } from "lucide-react";
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis, Legend } from 'recharts';
@@ -144,38 +145,38 @@ const BeforeAfterChartSection = () => (
 );
 
 const ExpertiseExtractorSection = () => (
-  <section className="w-full py-16 md:py-24">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Checklist to Control System</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We help you create a new category of operational asset: a living, breathing system that turns tribal knowledge into a scalable, competitive advantage.</p>
+    <section className="w-full py-16 md:py-24">
+      <div className="container px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">From Checklist to Control System</h2>
+          <p className="text-muted-foreground mt-2 text-base md:text-lg">We help you create a new category of operational asset: a living, breathing system that turns tribal knowledge into a scalable, competitive advantage.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
+          <Card className="text-center p-6 border-2 h-full">
+            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 mx-auto border-2 border-primary/20">
+              <BrainCircuit className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold font-headline text-lg">1. Codify Expertise</h3>
+            <p className="text-sm text-muted-foreground mt-2">We capture the unwritten, best-in-class processes of your top performers and structure them into an actionable, digital framework.</p>
+          </Card>
+          <Card className="text-center p-6 border-2 border-accent/80 shadow-lg h-full">
+            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 mx-auto border-2 border-accent/20">
+              <FileText className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold font-headline text-lg text-accent">2. Distribute the Playbook</h3>
+            <p className="text-sm text-muted-foreground mt-2">This knowledge becomes a "MoreMeets Pack"—a verifiable system of record, instantly accessible to everyone in your organization.</p>
+          </Card>
+          <Card className="text-center p-6 border-2 h-full">
+            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 mx-auto border-2 border-green-500/20">
+              <Users className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold font-headline text-lg text-green-600">3. Empower the Team</h3>
+            <p className="text-sm text-muted-foreground mt-2">Your entire team can now execute critical tasks with the consistency of your best expert, reducing onboarding time and eliminating costly errors.</p>
+          </Card>
+        </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
-        <Card className="text-center p-6 border-2 h-full">
-          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 mx-auto border-2 border-primary/20">
-            <BrainCircuit className="w-10 h-10" />
-          </div>
-          <h3 className="font-bold font-headline text-lg">1. Codify Expertise</h3>
-          <p className="text-sm text-muted-foreground mt-2">We capture the unwritten, best-in-class processes of your top performers and structure them into an actionable, digital framework.</p>
-        </Card>
-        <Card className="text-center p-6 border-2 border-accent/80 shadow-lg h-full">
-          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 mx-auto border-2 border-accent/20">
-            <FileText className="w-10 h-10" />
-          </div>
-          <h3 className="font-bold font-headline text-lg text-accent">2. Distribute the Playbook</h3>
-          <p className="text-sm text-muted-foreground mt-2">This knowledge becomes a "MoreMeets Pack"—a verifiable system of record, instantly accessible to everyone in your organization.</p>
-        </Card>
-        <Card className="text-center p-6 border-2 h-full">
-          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 mx-auto border-2 border-green-500/20">
-            <Users className="w-10 h-10" />
-          </div>
-          <h3 className="font-bold font-headline text-lg text-green-600">3. Empower the Team</h3>
-          <p className="text-sm text-muted-foreground mt-2">Your entire team can now execute critical tasks with the consistency of your best expert, reducing onboarding time and eliminating costly errors.</p>
-        </Card>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 
 const WhoIsThisForSection = () => {
     const personas = [
@@ -268,67 +269,67 @@ const CompetitorComparisonSection = () => {
 
 
 const TrademarkSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
-    <div className="container px-4 md:px-6">
-       <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          <div className="space-y-4">
-             <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Brand is Your Most Valuable Asset. Protect It.</h2>
-              <p className="text-muted-foreground text-base md:text-lg">Inconsistent operations don't just cost money—they dilute your brand promise. Our system creates a verifiable framework to ensure your standards are met, every single day, at every single location.</p>
-              <ul className="space-y-3 mt-4">
-                  <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Brand Standard Audits</h4><p className="text-sm text-muted-foreground">Ensure visual merchandising, service quality, and brand voice are consistent.</p></div></li>
-                  <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Franchise Compliance</h4><p className="text-sm text-muted-foreground">Verify that all franchisees are upholding the core promises of your brand.</p></div></li>
-                  <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Intellectual Property Protection</h4><p className="text-sm text-muted-foreground">Create auditable trails for handling sensitive marketing materials and proprietary information.</p></div></li>
-              </ul>
-          </div>
-           <div className="grid grid-cols-2 gap-4">
-              <img src="https://i.postimg.cc/x8f3xyY1/best-7-star-hotels-in-the-world.png" alt="Luxury Hotel" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="luxury hotel" />
-              <img src="https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg" alt="Retail Store" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="retail store" />
-              <img src="https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp" alt="Corporate Event" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="corporate event" />
-              <img src="https://i.postimg.cc/kGhhCGDM/manufacturing.jpg" alt="Manufacturing Plant" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="manufacturing plant" />
-           </div>
-       </div>
-    </div>
-  </section>
-);
+    <section className="w-full py-16 md:py-24 bg-secondary/30">
+      <div className="container px-4 md:px-6">
+         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="space-y-4">
+               <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Brand is Your Most Valuable Asset. Protect It.</h2>
+                <p className="text-muted-foreground text-base md:text-lg">Inconsistent operations don't just cost money—they dilute your brand promise. Our system creates a verifiable framework to ensure your standards are met, every single day, at every single location.</p>
+                <ul className="space-y-3 mt-4">
+                    <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Brand Standard Audits</h4><p className="text-sm text-muted-foreground">Ensure visual merchandising, service quality, and brand voice are consistent.</p></div></li>
+                    <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Franchise Compliance</h4><p className="text-sm text-muted-foreground">Verify that all franchisees are upholding the core promises of your brand.</p></div></li>
+                    <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Intellectual Property Protection</h4><p className="text-sm text-muted-foreground">Create auditable trails for handling sensitive marketing materials and proprietary information.</p></div></li>
+                </ul>
+            </div>
+             <div className="grid grid-cols-2 gap-4">
+                <img src="https://i.postimg.cc/x8f3xyY1/best-7-star-hotels-in-the-world.png" alt="Luxury Hotel" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="luxury hotel" />
+                <img src="https://i.postimg.cc/X7xzsFzy/retail-electronic.jpg" alt="Retail Store" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="retail store" />
+                <img src="https://i.postimg.cc/gJPDRbTR/Best-Corporate-Photographer-India-Samsung-Product-Launch-Event-Photographer-Delhi-NCR-24-jpg.webp" alt="Corporate Event" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="corporate event" />
+                <img src="https://i.postimg.cc/kGhhCGDM/manufacturing.jpg" alt="Manufacturing Plant" className="rounded-lg object-cover w-full h-full aspect-square shadow-lg" data-ai-hint="manufacturing plant" />
+             </div>
+         </div>
+      </div>
+    </section>
+  );
 
 const ChaosToControlSection = () => (
-  <section className="w-full py-16 md:py-24">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+    <section className="w-full py-16 md:py-24">
+      <div className="container px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
+          <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+          {/* Before */}
+          <Card className="border-destructive/50 border-2 flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+              <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+              <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
+            </CardContent>
+          </Card>
+          {/* After */}
+          <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
+              <CardDescription>A system of record that ensures excellence every time.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm text-foreground flex-1">
+               <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
+              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
+              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-        {/* Before */}
-        <Card className="border-destructive/50 border-2 flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
-          </CardContent>
-        </Card>
-        {/* After */}
-        <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
-            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-foreground flex-1">
-             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 
 
 export default function TempDesignClientPage() {
