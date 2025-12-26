@@ -66,18 +66,19 @@ html {
 }
 
 .temp-design-page {
-  --background: 218 20% 6%; /* #0E1116 */
+  --background: 218 20% 6%; /* #0B0F14 */
   --foreground: 215 25% 95%; /* #F5F7FA */
   --muted-foreground: 220 15% 65%; /* #9AA4B2 */
   
-  --primary: 158 41% 57%; /* Authority Green #5FBF9B */
+  --primary: 158 41% 57%; /* Authority Green #6BC7A3 */
   --primary-foreground: 218 20% 6%;
 
-  --secondary: 218 20% 10%;
+  --secondary: 218 20% 10%; /* #131820 */
   --border: 218 20% 15%;
 
   --accent: 155 57% 51%; /* High-Contrast Green #38D39F */
   --accent-foreground: 218 20% 6%;
 
   --destructive: 6 78% 60%; /* Risk Red #E5533D */
+  --risk-accent: hsl(var(--destructive));
 }

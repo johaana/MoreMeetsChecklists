@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Frown, Smile, CheckCircle, Users, ShieldCheck, Factory, Handshake, X } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Section = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <section className={`w-full py-20 md:py-28 lg:py-32 ${className}`} {...props} />
@@ -30,7 +30,6 @@ const HeroSection = () => (
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
             autoPlay loop muted playsInline preload="metadata"
             className="absolute inset-0 w-full h-full object-cover z-0"
-            style={{ filter: 'brightness(0.7)' }}
         />
         <div 
             className="absolute inset-0 z-10"
@@ -46,22 +45,24 @@ const HeroSection = () => (
         />
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-6">
+                <div className="text-sm font-semibold tracking-wider uppercase text-authority-green">MoreMeets Standards™</div>
                 <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl md:text-7xl lg:text-8xl !leading-tight text-primary-foreground">
-                    Operational Standards.<br/>
+                    Operational Standards.
+                    <br/>
                     <span className="text-authority-green">Audit-Ready by Design.</span>
                 </h1>
                 <p className="max-w-2xl text-muted-foreground text-lg md:text-xl lg:text-2xl">
-                   A one-time operational system that turns daily work into permanent audit proof — without tools, subscriptions, or people dependency.
+                   A one-time operational system that turns daily work into permanent audit proof — without tools, subscriptions, or dependence on people.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                     <Button size="lg" asChild className="text-base bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
                         <Link href="/library">Get the Standard</Link>
                     </Button>
-                    <Button size="lg" variant="ghost" asChild className="text-base text-muted-foreground hover:text-primary-foreground">
+                    <Button size="lg" variant="link" asChild className="text-base text-muted-foreground hover:text-primary-foreground">
                         <Link href="#audit-structure">See the Audit Structure <ArrowRight className="ml-2 w-4 h-4" /></Link>
                     </Button>
                 </div>
-                <p className="text-xs text-muted-foreground/80">Used to run operations that must pass audits every time — globally.</p>
+                <p className="text-xs text-muted-foreground/80">Used across safety-critical, regulated, and people-dependent operations.</p>
             </div>
         </div>
     </section>
@@ -73,8 +74,8 @@ const ProblemSection = () => (
             <SectionHeadline>Most businesses don’t fail audits.
             <br/>They fail daily discipline.</SectionHeadline>
             <SectionBody>
-                Compliance breakdowns rarely come from big mistakes. They come from small tasks that were not clearly defined, enforced by frequency, trained consistently, or provable later.
-                 <br/><br/>
+                Compliance doesn’t break because of one big mistake. It breaks because tasks weren’t defined clearly, enforced by frequency, trained consistently, or provable later.
+                <br/><br/>
                 <span className="text-foreground font-semibold">Auditors don’t ask who remembers. They ask what evidence exists.</span>
             </SectionBody>
         </div>
@@ -158,7 +159,7 @@ const ComparisonSection = () => (
                         <CardContent className="space-y-3 text-left">
                             <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-risk-accent/80 shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
                             <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-risk-accent/80 shrink-0 mt-1"/><span>Internet dependency</span></p>
-                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-risk-accent/80 shrink-0 mt-1"/><span>Evidence scattered, data trapped</span></p>
+                            <p className="flex items-start gap-2 text-muted-foreground"><X className="w-4 h-4 text-risk-accent/80 shrink-0 mt-1"/><span>Evidence scattered</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -171,7 +172,7 @@ const ComparisonSection = () => (
                         <CardContent className="space-y-3 text-left">
                             <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership. Lifetime use.</span></p>
                             <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline, universal, fully customisable.</span></p>
-                            <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, tasks & proof — one system.</span></p>
+                            <p className="flex items-start gap-2 text-foreground"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, tasks & proof in one place.</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
@@ -246,7 +247,7 @@ const TrainingSection = () => (
             <SectionBody>
                Every task in the MoreMeets Standard™ includes context, instructions, trainer notes, and expected outcomes. New hires don’t “shadow.” They follow the standard.
                <br/><br/>
-               <span className="text-foreground font-semibold">When people leave, the system stays.</span>
+               <span className="text-foreground font-semibold">When people leave, risk doesn’t increase.</span>
             </SectionBody>
         </div>
     </Section>
@@ -265,37 +266,6 @@ const ConsequenceSection = () => (
         </div>
     </Section>
 );
-
-const DeliverablesSection = () => (
-     <Section className="bg-secondary">
-        <div className="container px-4 md:px-6 text-center space-y-6">
-            <SectionHeadline>What you actually get.</SectionHeadline>
-            <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 text-foreground font-semibold">
-                <div>Role-based SOPs</div>
-                <div>Daily / weekly / event-driven checklists</div>
-                <div>Embedded trainer notes</div>
-                <div>Frequency logic</div>
-                <div>Built-in audit trail</div>
-                <div>Proof capture</div>
-            </div>
-             <p className="text-center font-semibold text-lg text-authority-green pt-8">This is not content. This is how your operation runs when no one is watching.</p>
-        </div>
-    </Section>
-);
-
-const PricingPositioningSection = () => (
-     <Section>
-        <div className="container px-4 md:px-6 text-center space-y-6">
-            <SectionHeadline>Priced for ownership, not dependency.</SectionHeadline>
-             <div className="max-w-2xl mx-auto space-y-2 text-lg text-muted-foreground">
-                <p>One-time access.</p>
-                <p>No renewals.</p>
-                <p>No usage limits.</p>
-            </div>
-        </div>
-    </Section>
-);
-
 
 const FinalCTASection = () => (
      <Section className="bg-secondary">
@@ -324,8 +294,6 @@ export default function TempDesignClientPage() {
       <ComplianceSection />
       <TrainingSection />
       <ConsequenceSection />
-      <DeliverablesSection />
-      <PricingPositioningSection />
       <FinalCTASection />
     </main>
   );
