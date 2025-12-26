@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon as Cloud, User, FileText } from "lucide-react";
+import { ArrowRight, Check, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -30,8 +30,7 @@ const HeroSection = () => (
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4"
             autoPlay loop muted playsInline preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
-            style={{ filter: 'grayscale(50%) blur(3px)' }}
+            className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div 
             className="absolute inset-0 z-10"
@@ -51,12 +50,13 @@ const HeroSection = () => (
                    A new category of audit-ready operational standards
                 </div>
                  <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text" style={{lineHeight: 1.1}}>
-                    Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
+                    Audit-Ready Operational Standards<br/>
+                    for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
                  </h1>
                  <h2 className="text-2xl text-secondary-text mt-3 font-normal">— Delivered as Ready-to-Use SOP Frameworks</h2>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
-                   Industry-specific SOPs, checklists, and task frameworks that remove confusion, survive audits, and don’t depend on people remembering what to do.
+                   Industry-specific SOPs, checklists, and task frameworks that ensure teams never forget what to do — even during chaos, audits, or staff changes.
                 </p>
                 <div className="text-sm text-muted-text">
                   Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
@@ -80,10 +80,12 @@ const WhatItIsSection = () => (
         <div className="container px-4 md:px-6 text-center space-y-12">
             <div className="max-w-3xl mx-auto">
                 <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
-                <SectionBody className="mt-6 space-y-6 text-lg">
-                    <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
-                    <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
-                </SectionBody>
+                <div className="mt-6 space-y-6 text-lg">
+                    <SectionBody>
+                        <p>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</p>
+                        <p>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</p>
+                    </SectionBody>
+                </div>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto text-left items-start">
                 <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
@@ -236,10 +238,8 @@ const ConsequencesSection = () => (
                 </div>
             </div>
              <SectionBody className="mt-12 text-lg">
-                <div>
-                  <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
-                  <p className="mt-4">MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
-                </div>
+                <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
+                <p className="mt-4">MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
             </SectionBody>
         </div>
     </Section>
@@ -262,15 +262,17 @@ const OneTimePurchaseSection = () => (
     <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Buy once. Build forever.</SectionHeadline>
-            <SectionBody className="space-y-4 text-lg">
-                <p>MoreMeets Standards™ is a one-time purchase.</p>
-                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
-                    <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
-                    <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
-                    <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
-                    <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
-                </div>
-            </SectionBody>
+            <div className="text-lg">
+                <SectionBody className="space-y-4">
+                    <p>MoreMeets Standards™ is a one-time purchase.</p>
+                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
+                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
+                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
+                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
+                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
+                    </div>
+                </SectionBody>
+            </div>
              <p className="text-lg text-secondary-text">As regulations evolve, your standards library evolves with you.</p>
         </div>
     </Section>
@@ -287,19 +289,19 @@ const ComparisonSection = () => (
                             <CardTitle className="text-secondary-text flex items-center gap-2"><Handshake className="text-muted-text" /> Consultants</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>High cost. Short-term fixes</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge walks out with people</span></p>
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No living operational system</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Expensive, time-bound</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge leaves with them</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No daily execution system</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                      <Card className="h-full bg-alternate-background border-border text-left p-6">
                         <CardHeader className="p-0">
-                            <CardTitle className="text-secondary-text flex items-center gap-2"><Cloud className="text-muted-text" /> SaaS Platforms</CardTitle>
+                            <CardTitle className="text-secondary-text flex items-center gap-2"><CloudIcon className="text-muted-text" /> SaaS Platforms</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & dependencies</span></p>
                             <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
                             <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
                         </CardContent>
@@ -308,10 +310,10 @@ const ComparisonSection = () => (
                 <motion.div initial={{ scale: 0.95, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="lg:col-span-1 md:col-span-2">
                     <Card className="h-full border-2 border-authority-green/80 bg-authority-green/10 shadow-2xl text-left p-6">
                         <CardHeader className="p-0">
-                             <CardTitle className="text-authority-green flex items-center gap-2"><FileText className="text-high-contrast-green" /> MoreMeets Standards™</CardTitle>
+                             <CardTitle className="text-authority-green flex items-center gap-2"><CheckCircle className="text-high-contrast-green" /> MoreMeets Standards™</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-primary-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership. Lifetime use.</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership</span></p>
                             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
                             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
                         </CardContent>
