@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Server, UserCheck, HardHat, Hospital, Building2, Store, Check } from "lucide-react";
 import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
@@ -14,7 +14,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import ReactSlider from 'react-slider';
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/app/components/ui/switch";
 
 
 const HeroSection = () => {
