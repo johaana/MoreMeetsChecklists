@@ -28,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <div
-          className="absolute inset-0 h-full w-full object-cover z-0 opacity-20 bg-cover bg-center"
+          className="absolute inset-0 h-full w-full object-cover z-0 opacity-15 bg-cover bg-center"
           style={{ backgroundImage: "url('https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png')" }}
         ></div>
         
@@ -67,7 +67,7 @@ const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
             <div className="max-w-3xl mx-auto">
-                <SectionHeadline>This is not a checklist pack. It’s an operational framework.</SectionHeadline>
+                <SectionHeadline>This is not a checklist pack. It’s an operational system.</SectionHeadline>
                 <SectionBody className="mt-6 space-y-6">
                     <div>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</div>
                     <div>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</div>
@@ -171,23 +171,46 @@ const DailyExecutionSection = () => (
     </Section>
 );
 
+const GuidanceSection = () => (
+    <Section>
+        <div className="container px-4 md:px-6">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+                 <div className="space-y-6">
+                    <SectionHeadline className="text-left">With built-in guidance, so anyone can execute like an expert.</SectionHeadline>
+                    <div className="space-y-4 text-secondary-text text-lg max-w-xl">
+                        <p>Our standards include "Trainer Notes" that explain the *why* behind critical tasks. This turns a simple checklist into a powerful, on-the-job training tool.</p>
+                        <p className="font-semibold text-authority-green">Your team doesn't just follow instructions; they understand the consequences, building a culture of ownership and safety.</p>
+                    </div>
+                </div>
+                 <div className="rounded-xl border border-border bg-background p-1.5 shadow-2xl">
+                     <img
+                        src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
+                        alt="MoreMeets Trainer Notes for team guidance"
+                        className="rounded-lg object-cover w-full h-auto"
+                    />
+                </div>
+            </div>
+        </div>
+    </Section>
+);
 
 const AuditProofSection = () => (
-    <Section>
+    <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>Audit-ready by structure — not surveillance.</SectionHeadline>
+            <SectionHeadline>Your Data is Your Property. Period.</SectionHeadline>
             <div className="max-w-3xl mx-auto">
-                <Card className="p-6 md:p-8 bg-alternate-background border-border shadow-lg">
+                <Card className="p-6 md:p-8 bg-background border-border shadow-lg">
                      <h3 className="font-bold text-lg text-authority-green mb-4">IMPORTANT CLARIFICATION</h3>
                     <div className="space-y-4 text-secondary-text text-base md:text-lg">
-                        <p>MoreMeets does not track or monitor execution digitally.</p>
-                        <p>Instead, it provides a standardised structure that makes evidence possible, consistent, and audit-acceptable.</p>
+                        <p>MoreMeets does not track or monitor execution digitally. Our framework is **offline by design**.</p>
+                        <p className="font-semibold text-primary-text">We never have access to your operational data. It stays on your systems, completely private and secure, under your control.</p>
+                        <p>Instead, the system provides a standardised structure that makes evidence-gathering consistent and audit-acceptable using your own processes.</p>
                     </div>
                 </Card>
             </div>
             <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
                  <SectionBody>
-                    <div>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work when followed using your existing processes.</div>
+                    <div>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work.</div>
                 </SectionBody>
                 <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
                     Auditors don’t ask “Which software did you use?”
@@ -202,7 +225,7 @@ const AuditProofSection = () => (
 
 
 const ConsequencesSection = () => (
-    <Section className="bg-alternate-background">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Most failures start with one missed step.</SectionHeadline>
              <div className="max-w-4xl mx-auto">
@@ -225,7 +248,7 @@ const ConsequencesSection = () => (
 );
 
 const GlobalComplianceSection = () => (
-    <Section>
+    <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Built for global operations. Adaptable locally.</SectionHeadline>
             <SectionBody>
@@ -241,7 +264,7 @@ const GlobalComplianceSection = () => (
 
 
 const OneTimePurchaseSection = () => (
-    <Section className="bg-alternate-background">
+    <Section>
         <div className="container px-4 md:px-6 text-center space-y-8">
             <SectionHeadline>Buy once. Build forever.</SectionHeadline>
             <SectionBody>
@@ -261,12 +284,12 @@ const OneTimePurchaseSection = () => (
 );
 
 const ComparisonSection = () => (
-    <Section>
+    <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>Why standards outperform tools and consultants.</SectionHeadline>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-                    <Card className="h-full bg-alternate-background border-border text-left p-6">
+                    <Card className="h-full bg-background border-border text-left p-6">
                         <CardHeader className="p-0">
                             <CardTitle className="text-secondary-text flex items-center gap-2"><Handshake className="text-muted-text" /> Consultants</CardTitle>
                         </CardHeader>
@@ -278,7 +301,7 @@ const ComparisonSection = () => (
                     </Card>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
-                     <Card className="h-full bg-alternate-background border-border text-left p-6">
+                     <Card className="h-full bg-background border-border text-left p-6">
                         <CardHeader className="p-0">
                             <CardTitle className="text-secondary-text flex items-center gap-2"><CloudIcon className="text-muted-text" /> SaaS Platforms</CardTitle>
                         </CardHeader>
@@ -316,12 +339,12 @@ const WhoIsThisForSection = () => {
         "Founder-led Growing Companies",
     ];
     return (
-        <Section id="who-is-this-for" className="bg-alternate-background">
+        <Section id="who-is-this-for">
             <div className="container px-4 md:px-6 text-center space-y-12">
                 <SectionHeadline>Built for operations where mistakes are costly.</SectionHeadline>
                  <div className="flex flex-wrap justify-center gap-3">
                     {roles.map(role => (
-                        <div key={role} className="py-2 px-4 border border-border rounded-full bg-background text-secondary-text">
+                        <div key={role} className="py-2 px-4 border border-border rounded-full bg-alternate-background text-secondary-text">
                             <h3 className="font-semibold">{role}</h3>
                         </div>
                     ))}
@@ -333,7 +356,7 @@ const WhoIsThisForSection = () => {
 }
 
 const FinalCTASection = () => (
-     <Section>
+     <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -356,6 +379,7 @@ export default function TempDesignClientPage() {
       <WhatItIsSection />
       <NotPeopleDependentSection />
       <DailyExecutionSection />
+      <GuidanceSection />
       <AuditProofSection />
       <ConsequencesSection />
       <GlobalComplianceSection />
