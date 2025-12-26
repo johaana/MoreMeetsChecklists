@@ -33,36 +33,41 @@ const HeroSection = () => (
           muted
           playsInline
           className="absolute inset-0 h-full w-full object-cover opacity-[18%]"
+          poster="https://i.postimg.cc/3RjXwFvd/corporate-dfl-epitome.jpg"
         >
-            <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4" type="video/mp4" />
         </video>
+        
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 z-10" />
-         <div 
+        <div 
             className="absolute inset-0 z-10"
             style={{
                 background: `radial-gradient(circle at left top, rgba(255,255,255,0.04), transparent 60%)`
             }}
         />
+
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[680px] space-y-6">
-                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
+            <div className="max-w-[680px] space-y-4">
+                <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
                    A NEW CATEGORY OF AUDIT-READY OPERATIONAL STANDARDS
                 </div>
-                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline !leading-tight">
+                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline !leading-tight" style={{ lineHeight: 1.1 }}>
                     <span className="text-authority-green">Audit-Ready</span> SOPs
                     <br />
                     for <span className="text-authority-green">Daily, Weekly & Monthly</span> Work
                  </h1>
 
-                <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl">
+                <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl !leading-relaxed">
                    Ready-to-use operational frameworks that ensure
                    nothing is missed — even during audits, chaos, or staff changes.
                 </p>
                 <p className="max-w-2xl text-lg text-muted-text !mt-4">
-                    Not software. Not consulting. A fixed operational system your team follows — forever.
+                    Not software. Not consulting.
+                    <br/>
+                    A fixed operational system your team follows — forever.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start sm:items-center">
                     <div>
                         <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground hover:bg-high-contrast-green/90 font-semibold">
                             <Link href="/library">Get the Standards</Link>
