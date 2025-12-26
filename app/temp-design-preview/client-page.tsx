@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Crown, File, Server } from "lucide-react";
+import { ArrowRight, Check, CheckCircle, BrainCircuit, FileText, Users, ShieldCheck, X, Crown, File, Server, UserCheck, HardHat, Hospital } from "lucide-react";
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, RadialBarChart, RadialBar, PolarAngleAxis, Legend } from 'recharts';
@@ -119,35 +119,73 @@ const ExpertiseExtractorSection = () => (
   <section className="w-full py-16 md:py-24">
     <div className="container px-4 md:px-6">
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">Your New System of Record</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We provide a structured framework to capture, distribute, and enforce your best practices, turning tribal knowledge into a scalable asset.</p>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline">From Checklist to Control System</h2>
+        <p className="text-muted-foreground mt-2 text-base md:text-lg">We help you create a new category of operational asset: a living, breathing system that turns tribal knowledge into a scalable, competitive advantage.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
-        <Card className="text-center p-6 border-2">
+        <Card className="text-center p-6 border-2 h-full">
           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4 mx-auto border-2 border-primary/20">
             <BrainCircuit className="w-10 h-10" />
           </div>
           <h3 className="font-bold font-headline text-lg">1. Codify Expertise</h3>
-          <p className="text-sm text-muted-foreground mt-2">Capture the unwritten processes of your top performers in a structured, actionable format.</p>
+          <p className="text-sm text-muted-foreground mt-2">We capture the unwritten, best-in-class processes of your top performers and structure them into an actionable, digital framework.</p>
         </Card>
-        <Card className="text-center p-6 border-2 border-accent/80 shadow-lg">
+        <Card className="text-center p-6 border-2 border-accent/80 shadow-lg h-full">
           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-4 mx-auto border-2 border-accent/20">
             <FileText className="w-10 h-10" />
           </div>
           <h3 className="font-bold font-headline text-lg text-accent">2. Distribute the Playbook</h3>
-          <p className="text-sm text-muted-foreground mt-2">This knowledge becomes a "MoreMeets Pack"—an interactive system available to everyone.</p>
+          <p className="text-sm text-muted-foreground mt-2">This knowledge becomes a "MoreMeets Pack"—a verifiable system of record, instantly accessible to everyone in your organization.</p>
         </Card>
-        <Card className="text-center p-6 border-2">
+        <Card className="text-center p-6 border-2 h-full">
           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 text-green-600 mb-4 mx-auto border-2 border-green-500/20">
             <Users className="w-10 h-10" />
           </div>
           <h3 className="font-bold font-headline text-lg text-green-600">3. Empower the Team</h3>
-          <p className="text-sm text-muted-foreground mt-2">New and existing staff can now perform critical tasks with the rigor of your best expert.</p>
+          <p className="text-sm text-muted-foreground mt-2">Your entire team can now execute critical tasks with the consistency of your best expert, reducing onboarding time and eliminating costly errors.</p>
         </Card>
       </div>
     </div>
   </section>
 );
+
+const WhoIsThisForSection = () => {
+    const personas = [
+        { name: "The COO / Head of Ops", icon: <Server className="w-8 h-8" />, description: "Seeking to standardize processes and gain a single source of truth across all business units." },
+        { name: "The Plant / Factory Head", icon: <HardHat className="w-8 h-8" />, description: "Focused on EHS compliance, production uptime, and shop floor safety." },
+        { name: "The Hotel General Manager", icon: <Building2 className="w-8 h-8" />, description: "Striving for 5-star guest experiences through flawless housekeeping, F&B, and security." },
+        { name: "The Hospital Administrator", icon: <Hospital className="w-8 h-8" />, description: "Responsible for patient safety, NABH/JCI compliance, and clinical quality." },
+        { name: "The Head of Retail", icon: <Store className="w-8 h-8" />, description: "Tasked with reducing shrinkage, ensuring brand consistency, and improving the customer journey." },
+        { name: "The Founder / CEO", icon: <UserCheck className="w-8 h-8" />, description: "Looking to build a scalable, resilient operation that doesn't depend on any single person." }
+    ]
+
+    return (
+        <section className="w-full py-16 md:py-24 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                 <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Built for Leaders Who Value Control</h2>
+                    <p className="text-muted-foreground mt-2 text-base md:text-lg">Our system is designed for decision-makers who understand that operational excellence is a competitive advantage.</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    {personas.map(persona => (
+                        <Card key={persona.name} className="p-4">
+                            <CardHeader className="flex flex-row items-center gap-4">
+                                <div className="p-3 rounded-full bg-primary/10 text-primary">
+                                    {persona.icon}
+                                </div>
+                                <CardTitle className="text-lg">{persona.name}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm text-muted-foreground">{persona.description}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 
 const CompetitorComparisonSection = () => {
     const comparisonData = [
@@ -156,7 +194,6 @@ const CompetitorComparisonSection = () => {
         { feature: "Lifetime Updates", generic: false, moremeets: true, enterprise: false },
         { feature: "Fully Customizable (Excel)", generic: true, moremeets: true, enterprise: false },
         { feature: "No Recurring Subscription", generic: true, moremeets: true, enterprise: false },
-        { feature: "Enterprise-Grade Security", generic: false, moremeets: false, enterprise: true },
         { feature: "Initial Cost", generic: true, moremeets: true, enterprise: false },
     ];
     return (
@@ -205,8 +242,8 @@ const TrademarkSection = () => (
     <div className="container px-4 md:px-6">
        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           <div className="space-y-4">
-             <h2 className="text-3xl md:text-4xl font-bold font-headline">Protect Your Brand at Every Level</h2>
-              <p className="text-muted-foreground text-base md:text-lg">Inconsistent operations don't just cost money—they dilute your brand. Our system creates a verifiable framework to ensure your standards are met, every single day, at every single location.</p>
+             <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Brand is Your Most Valuable Asset. Protect It.</h2>
+              <p className="text-muted-foreground text-base md:text-lg">Inconsistent operations don't just cost money—they dilute your brand promise. Our system creates a verifiable framework to ensure your standards are met, every single day, at every single location.</p>
               <ul className="space-y-3 mt-4">
                   <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Brand Standard Audits</h4><p className="text-sm text-muted-foreground">Ensure visual merchandising, service quality, and brand voice are consistent.</p></div></li>
                   <li className="flex items-start gap-3"><ShieldCheck className="w-6 h-6 text-primary shrink-0 mt-1"/><div><h4 className="font-semibold">Franchise Compliance</h4><p className="text-sm text-muted-foreground">Verify that all franchisees are upholding the core promises of your brand.</p></div></li>
@@ -231,6 +268,7 @@ export default function TempDesignClientPage() {
       <HeroSection />
       <OperationalDragSection />
       <BeforeAfterChartSection />
+      <WhoIsThisForSection />
       <CompetitorComparisonSection />
       <ExpertiseExtractorSection />
       <TrademarkSection />
