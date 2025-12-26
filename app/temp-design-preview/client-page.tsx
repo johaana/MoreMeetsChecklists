@@ -32,14 +32,14 @@ const HeroSection = () => (
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover z-[1] opacity-[0.12]"
+          className="absolute inset-0 h-full w-full object-cover z-0 opacity-40"
         >
-          <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:eco,w_1920/v1762692289/production_id_4763866_1080p_qagzgh.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10" />
         
-        <div className="container px-4 md:px-6 relative z-[3]">
+        <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-4">
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
                    A NEW CATEGORY OF AUDIT-READY OPERATIONAL STANDARDS
@@ -47,11 +47,11 @@ const HeroSection = () => (
                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.1 }}>
                     <span className="text-authority-green">Audit-Ready SOPs</span>
                     <br />
-                    for <span className="text-authority-green">Daily, Weekly & Monthly</span> Work
+                    for <span className="text-authority-green">Daily, Weekly & Monthly</span> Operations
                  </h1>
 
-                <p className="max-w-2xl text-secondary-text text-lg md:text-xl lg:text-xl !leading-relaxed">
-                   Ready-to-use operational frameworks that tell your team exactly what to do — so nothing is missed, even during audits, chaos, or staff changes.
+                <p className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
+                   Ready-to-use operational standards that tell your team exactly what to do — so nothing is missed, even during audits, chaos, or staff changes.
                 </p>
                 <p className="max-w-2xl text-lg text-muted-text !mt-4">
                     Not software. Not consulting.
