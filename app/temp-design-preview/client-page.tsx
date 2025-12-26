@@ -1,14 +1,13 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Chart, Bar, BarChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "@/components/ui/chart";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const painPoints = {
   error: {
