@@ -3,12 +3,11 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Users, Siren, Shield, TrendingUp, X, CheckCircle, Frown, Smile, BrainCircuit, FileText, User } from "lucide-react";
+import { ArrowRight, Check, Users, FileText, User, ChevronsRight, ShieldAlert, FileX, Ban, Handshake } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { cn } from "@/lib/utils";
-
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-28 lg:py-32", className)} {...props} />
@@ -21,9 +20,9 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const SectionBody = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <p className={cn("max-w-3xl mx-auto text-secondary-text text-base md:text-lg lg:text-xl", className)}>
+    <div className={cn("max-w-3xl mx-auto text-secondary-text md:text-lg lg:text-xl", className)}>
         {children}
-    </p>
+    </div>
 );
 
 const HeroSection = () => (
@@ -49,7 +48,7 @@ const HeroSection = () => (
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-6">
                 <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
-                   A New Category of Audit-Ready Operational Standards
+                   A new category of audit-ready operational standards
                 </div>
                  <h1 className="text-5xl font-bold tracking-tighter font-headline sm:text-6xl text-primary-text" style={{lineHeight: 1.1}}>
                     Audit-Ready Operational Standards for <span className="text-authority-green">Daily, Weekly & Monthly Work</span>
@@ -62,7 +61,7 @@ const HeroSection = () => (
                   Built from global best practices and compliance expectations — designed to work without software, subscriptions, or people dependency.
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl" style={{ backgroundColor: 'hsl(var(--high-contrast-green))', color: 'hsl(var(--background))' }}>
+                    <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
                         <Link href="/library">Get the Standards</Link>
                     </Button>
                     <Button size="lg" variant="link" asChild className="text-base text-secondary-text hover:text-primary-text">
@@ -86,7 +85,7 @@ const WhatItIsSection = () => (
                 </SectionBody>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto text-left items-start">
-                <div className="space-y-4 rounded-xl border border-border bg-background p-6">
+                <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
                     <h3 className="font-bold text-xl text-primary-text">What You Receive</h3>
                     <ul className="space-y-3">
                         {[
@@ -104,7 +103,7 @@ const WhatItIsSection = () => (
                         ))}
                     </ul>
                 </div>
-                <div className="space-y-4 rounded-xl border border-border bg-background p-6">
+                <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
                     <h3 className="font-bold text-xl text-primary-text">What It Solves</h3>
                      <ul className="space-y-3">
                         {[
@@ -114,7 +113,7 @@ const WhatItIsSection = () => (
                             "Audits depending on memory or last-minute scrambling"
                         ].map(item => (
                              <li key={item} className="flex items-start gap-3">
-                                <X className="w-5 h-5 text-risk-accent shrink-0 mt-1" />
+                                <ChevronsRight className="w-5 h-5 text-risk-accent shrink-0 mt-1" />
                                 <span className="text-secondary-text">{item}</span>
                             </li>
                         ))}
@@ -171,7 +170,7 @@ const DailyExecutionSection = () => (
         <div className="container px-4 md:px-6 text-center space-y-12">
             <SectionHeadline>So teams always know what to do — and when.</SectionHeadline>
             <SectionBody>
-                Each standard clearly defines the core components of operational discipline. This removes hesitation, second-guessing, and dependency on supervisors.
+                <p>Each standard clearly defines the core components of operational discipline. This removes hesitation, second-guessing, and dependency on supervisors.</p>
             </SectionBody>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
                 {[
@@ -199,7 +198,7 @@ const AuditProofSection = () => (
             <SectionHeadline>Audit-ready by structure — not surveillance.</SectionHeadline>
             <div className="max-w-3xl mx-auto">
                 <Card className="p-6 md:p-8 bg-alternate-background border-border shadow-lg">
-                    <p className="font-bold text-lg text-authority-green mb-4">Important Clarification</p>
+                     <h3 className="font-bold text-lg text-authority-green mb-4">IMPORTANT CLARIFICATION</h3>
                     <div className="space-y-4 text-secondary-text text-base md:text-lg">
                         <p>MoreMeets does not track or monitor execution digitally.</p>
                         <p>Instead, it provides a standardised structure that makes evidence possible, consistent, and audit-acceptable.</p>
@@ -228,15 +227,15 @@ const ConsequencesSection = () => (
             <SectionHeadline>Most failures start with one missed step.</SectionHeadline>
              <div className="max-w-4xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 items-center justify-center font-semibold text-lg text-muted-text">
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.2}} className="text-center">Missed task</motion.div>
+                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.2}} className="text-center"><p>Missed task</p></motion.div>
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.3}} className="text-center"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.4}} className="text-center col-span-2 md:col-span-1">No evidence</motion.div>
+                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.4}} className="text-center col-span-2 md:col-span-1"><p>No evidence</p></motion.div>
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}} className="text-center hidden md:block"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center mt-4 md:mt-0 col-span-full md:col-span-1 bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / shutdown</p></motion.div>
                 </div>
             </div>
              <SectionBody className="mt-12 text-lg">
-                Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical. MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.
+                <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical. MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
             </SectionBody>
         </div>
     </Section>
@@ -264,8 +263,8 @@ const OneTimePurchaseSection = () => (
                  <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
                     <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
                     <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
-                    <p className="flex items-center gap-2"><X className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
-                    <p className="flex items-center gap-2"><X className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
+                    <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
+                    <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
                 </div>
             </SectionBody>
              <p className="text-lg text-secondary-text">As regulations evolve, your standards library evolves with you.</p>
@@ -281,35 +280,35 @@ const ComparisonSection = () => (
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                     <Card className="h-full bg-alternate-background border-border text-left p-6">
                         <CardHeader className="p-0">
-                            <CardTitle className="text-secondary-text">Consultants</CardTitle>
+                            <CardTitle className="text-secondary-text flex items-center gap-2"><Handshake className="text-muted-text" /> Consultants</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>High cost. Short-term fixes</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge walks out with people</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No living operational system</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>High cost. Short-term fixes</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge walks out with people</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No living operational system</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                      <Card className="h-full bg-alternate-background border-border text-left p-6">
                         <CardHeader className="p-0">
-                            <CardTitle className="text-secondary-text">SaaS Platforms</CardTitle>
+                            <CardTitle className="text-secondary-text flex items-center gap-2"><Cloud className="text-muted-text" /> SaaS Platforms</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
-                            <p className="flex items-start gap-2"><X className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered across systems</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscription lock-in & version drift</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
+                            <p className="flex items-start gap-2"><Ban className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered, data trapped</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
                 <motion.div initial={{ scale: 0.95, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="lg:col-span-1 md:col-span-2">
                     <Card className="h-full border-2 border-authority-green/80 bg-authority-green/10 shadow-2xl text-left p-6">
                         <CardHeader className="p-0">
-                            <CardTitle className="text-authority-green">MoreMeets Standards™</CardTitle>
+                             <CardTitle className="text-authority-green flex items-center gap-2"><FileText className="text-high-contrast-green" /> MoreMeets Standards™</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-primary-text mt-4 p-0">
                             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership. Lifetime use.</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline, universal, fully customisable</span></p>
+                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
                             <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
                         </CardContent>
                     </Card>
@@ -329,7 +328,7 @@ const WhoIsThisForSection = () => {
         "Founder-led Growing Companies",
     ];
     return (
-        <Section className="bg-alternate-background">
+        <Section id="who-is-this-for" className="bg-alternate-background">
             <div className="container px-4 md:px-6 text-center space-y-12">
                 <SectionHeadline>Built for operations where mistakes are costly.</SectionHeadline>
                  <div className="flex flex-wrap justify-center gap-3">
@@ -350,10 +349,10 @@ const FinalCTASection = () => (
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl" style={{ backgroundColor: 'hsl(var(--high-contrast-green))', color: 'hsl(var(--background))' }}>
+                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-xl bg-high-contrast-green text-background hover:bg-high-contrast-green/90">
                     <Link href="/library">Get the Standards</Link>
                 </Button>
-                <Button size="lg" asChild variant="secondary" className="text-base h-12 px-8 rounded-xl bg-alternate-background text-secondary-text border-border hover:border-border/50 hover:bg-background">
+                <Button size="lg" asChild variant="link" className="text-base text-secondary-text hover:text-primary-text">
                     <Link href="/library">Explore the SOP Library →</Link>
                 </Button>
             </div>
@@ -379,3 +378,4 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
