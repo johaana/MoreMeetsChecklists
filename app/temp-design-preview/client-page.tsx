@@ -28,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
             autoPlay
             loop
             muted
@@ -47,7 +47,10 @@ const HeroSection = () => (
                  </h1>
                  <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed space-y-4">
                     <p>When work lives in people’s heads, things get missed.</p>
-                     <p className="font-semibold text-primary-text">MoreMeets Standards™<br/> turn critical work into written, repeatable execution.</p>
+                     <div className="space-y-1">
+                        <p className="font-semibold text-primary-text">MoreMeets Standards™</p>
+                        <p>turn critical work into written, repeatable execution.</p>
+                    </div>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start sm:items-center">
