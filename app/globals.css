@@ -27,14 +27,14 @@
     --radius: 0.5rem;
     
     /* Temp Design Colors */
-    --alternate-background: 212 40% 6%;
-    --primary-text: 0 0% 100%;
-    --secondary-text: 220 15% 75%;
-    --muted-text: 217 10% 54%;
-    --authority-green: 158 41% 57%;
-    --high-contrast-green: 158 41% 57%;
-    --risk-accent: 0 76% 64%;
-    --warning-accent: 42 75% 60%;
+    --alternate-background: 212 40% 6%; /* #0E1620 */
+    --primary-text: 0 0% 100%; /* #FFFFFF */
+    --secondary-text: 220 15% 75%; /* #AAB3C2 */
+    --muted-text: 217 10% 54%; /* #7D8796 */
+    --authority-green: 158 41% 57%; /* #6FD3B3, desaturated and slightly bluer */
+    --high-contrast-green: 158 41% 57%; /* #6FD3B3 */
+    --risk-accent: 0 76% 64%; /* #E16464 */
+    --warning-accent: 42 75% 60%; /* #E3B341 */
   }
 
   .dark {
@@ -104,5 +104,5 @@ html {
 
 .slow-zoom-video {
   animation: slow-zoom 10s ease-in-out infinite alternate;
-  filter: blur(2px);
+  filter: blur(1px);
 }

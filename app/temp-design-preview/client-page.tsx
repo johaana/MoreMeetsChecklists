@@ -46,8 +46,7 @@ const HeroSection = () => (
                  </h1>
                  <div className="max-w-2xl !leading-relaxed space-y-4">
                     <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When work lives in people’s heads, critical tasks get missed — especially during pressure, audits, or staff changes.</p>
-                    <p className="text-secondary-text text-lg md:text-xl">MoreMeets Standards™ hard-code operations into a single written framework — so execution does not depend on memory, luck, or “who’s on shift.”</p>
-                    <div className="text-lg font-semibold text-primary-text space-y-1">
+                     <div className="text-lg font-semibold text-primary-text space-y-1 pt-2">
                         <p>Daily. Weekly. Monthly.</p>
                         <p>Who does what. How often.</p>
                         <p>What happens if they don’t.</p>
@@ -78,8 +77,11 @@ const HowOperationsFailSection = () => {
 
     return (
         <Section id="how-it-fails" className="bg-background">
-            <div className="container px-4 md:px-6 text-center space-y-12">
-                <SectionHeadline>This is how operations actually fail</SectionHeadline>
+            <div className="container px-4 md:px-6 space-y-12">
+                <div className="text-center">
+                    <p className="text-lg md:text-xl text-secondary-text mb-6">MoreMeets Standards™ hard-code operations into a single written framework — so execution does not depend on memory, luck, or “who’s on shift.”</p>
+                    <SectionHeadline>This is how operations actually fail</SectionHeadline>
+                </div>
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
                     {failurePoints.map((point, index) => (
                         <Card key={index} className="bg-alternate-background border-border">
