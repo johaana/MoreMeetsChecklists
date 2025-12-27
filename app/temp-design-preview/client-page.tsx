@@ -26,7 +26,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 
 
 const HeroSection = () => (
-    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
+    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] pt-12 pb-16 md:pt-20 md:pb-24">
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
             autoPlay
@@ -39,17 +39,17 @@ const HeroSection = () => (
         
         <div 
             className="absolute inset-0 z-10" 
-            style={{background: 'linear-gradient(90deg, rgba(11,20,17,0.85) 0%, rgba(11,20,17,0.75) 40%, rgba(11,20,17,0.4) 70%, rgba(11,20,17,0.1) 100%)'}}
+            style={{background: 'linear-gradient(90deg, rgba(14,20,18,0.85) 0%, rgba(14,20,18,0.75) 40%, rgba(14,20,18,0.4) 70%, rgba(14,20,18,0.1) 100%)'}}
         />
         
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[640px] space-y-6">
-                <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tighter font-headline text-white" style={{ lineHeight: 1.05 }}>
+            <div className="max-w-[640px] space-y-4">
+                <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tighter font-headline text-white" style={{ lineHeight: 1.05 }}>
                     People forget.
                     <br/>
                     Your business pays.
                  </h1>
-                 <div className="space-y-6">
+                 <div className="space-y-4">
                     <p className="font-normal text-lg text-[#D1D5DB]" style={{ lineHeight: 1.6 }}>
                       Memory is not a system. When work lives in people’s heads, steps get skipped, audits fail, and standards break — especially during growth, turnover, or inspections.
                     </p>
@@ -67,7 +67,6 @@ const HeroSection = () => (
                         </ul>
                          <p className="font-semibold text-base text-[#FACC15] pt-2">This is not human error. This is operational debt.</p>
                     </div>
-                     <p className="font-bold text-xl text-white pt-2">One system. One source of truth. Every task, every time.</p>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
@@ -75,7 +74,7 @@ const HeroSection = () => (
                         <Button size="lg" asChild className="group h-auto" style={{ backgroundColor: '#FACC15', color: '#0E1412', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                             <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
                         </Button>
-                         <p className="text-xs text-[#9CA3AF] mt-2">Built for regulated, audited, multi-location teams</p>
+                         <p className="text-xs text-[#9CA3AF] mt-2">Built for regulated, audited, multi-location operations</p>
                     </div>
                 </div>
             </div>
@@ -83,10 +82,11 @@ const HeroSection = () => (
     </section>
 );
 
+
 const ComplianceSignalSection = () => (
     <div className="bg-alternate-background py-3 border-y border-border">
         <div className="container px-4 md:px-6">
-            <p className="text-center text-sm md:text-base font-medium text-muted-text" style={{color: '#8FAEA3'}}>
+            <p className="text-center text-sm md:text-base font-medium" style={{color: '#8FAEA3'}}>
                 Designed for global compliance — adaptable to ISO, OSHA, HACCP, SOC, and internal audit standards.
             </p>
         </div>
@@ -107,6 +107,9 @@ const HowOperationsFailSection = () => {
             <div className="container px-4 md:px-6 space-y-12">
                 <div className="text-center">
                     <SectionHeadline>This is how operations actually fail</SectionHeadline>
+                     <p className="max-w-2xl mx-auto mt-4 text-secondary-text md:text-lg">
+                        These small, daily misses aren't 'people problems'. They are system failures waiting to become business-critical events.
+                    </p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
                     {failurePoints.map((point, index) => (
@@ -186,7 +189,19 @@ export default function TempDesignClientPage() {
     <main className="flex-1">
       <HeroSection />
       <ComplianceSignalSection />
-      <HowOperationsFailSection />
+        <section id="how-it-fails" className="w-full py-16 md:py-24 bg-background">
+            <div className="container px-4 md:px-6 space-y-12">
+                 <div className="text-center max-w-3xl mx-auto">
+                    <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text">
+                        This is how operations actually fail
+                    </h2>
+                     <p className="mt-4 text-secondary-text md:text-lg">
+                        These small, daily misses aren't 'people problems'. They are system failures waiting to become business-critical events.
+                    </p>
+                </div>
+                 <div className="absolute left-0 right-0 h-px bg-border -bottom-8"></div>
+            </div>
+        </section>
       <ChaosToControlSection />
       <FinalCTASection />
     </main>
