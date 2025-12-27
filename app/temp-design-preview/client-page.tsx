@@ -46,9 +46,10 @@ const HeroSection = () => (
                     <span className="text-authority-green">operations fail.</span>
                  </h1>
 
-                <p className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
-                    When work lives in people’s heads, things get missed. MoreMeets Standards™ turn critical work into written, repeatable execution.
-                </p>
+                <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
+                    <p>When work lives in people’s heads, things get missed.</p>
+                    <p className="font-semibold text-primary-text">MoreMeets Standards™ turn critical work into written, repeatable execution.</p>
+                </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start sm:items-center">
                     <div>
@@ -61,6 +62,7 @@ const HeroSection = () => (
         </div>
     </section>
 );
+
 
 const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
@@ -185,7 +187,7 @@ const GuidanceSection = () => (
                      <img
                         src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
                         alt="MoreMeets Trainer Notes for team guidance"
-                        className="rounded-lg object-cover w-full h-auto "
+                        className="rounded-lg object-cover w-full h-auto"
                     />
                 </div>
             </div>
@@ -221,7 +223,6 @@ const AuditProofSection = () => (
         </div>
     </Section>
 );
-
 
 const ConsequencesSection = () => (
     <Section>
