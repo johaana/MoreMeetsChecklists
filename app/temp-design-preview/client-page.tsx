@@ -28,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590204/8572189-uhd_4096_2160_25fps_1_c8o14s.mp4"
             autoPlay
             loop
             muted
@@ -40,9 +40,6 @@ const HeroSection = () => (
         
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-4">
-                <div className="text-sm font-semibold tracking-wider uppercase text-muted-text">
-                   A NEW CATEGORY OF AUDIT-READY OPERATIONAL STANDARDS
-                </div>
                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.1 }}>
                     When people forget,
                     <br/>
@@ -50,7 +47,7 @@ const HeroSection = () => (
                  </h1>
 
                 <p className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
-                   MoreMeets Standards™ is a fixed operational framework that defines what must be done, how often, and by whom — so nothing depends on memory, luck, or experience.
+                    When work lives in people’s heads, things get missed. MoreMeets Standards™ turn critical work into written, repeatable execution.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start sm:items-center">
@@ -58,7 +55,6 @@ const HeroSection = () => (
                         <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground hover:bg-high-contrast-green/90 font-semibold">
                             <Link href="/library">View the Standards</Link>
                         </Button>
-                        <p className="text-xs text-muted-text mt-2">One-time purchase • Offline • Built for real audits</p>
                     </div>
                 </div>
             </div>
@@ -95,7 +91,7 @@ const WhatItIsSection = () => (
                         ))}
                     </ul>
                 </div>
-                <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
+                 <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
                      <img
                         src='https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png'
                         alt="MoreMeets Excel Checklist System"
@@ -185,11 +181,11 @@ const GuidanceSection = () => (
                         <p className="font-semibold text-authority-green">Your team doesn't just follow instructions; they understand the consequences, building a culture of ownership and safety.</p>
                     </div>
                 </div>
-                 <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
+                <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
                      <img
                         src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
                         alt="MoreMeets Trainer Notes for team guidance"
-                        className="rounded-lg object-cover w-full h-auto"
+                        className="rounded-lg object-cover w-full h-auto "
                     />
                 </div>
             </div>
