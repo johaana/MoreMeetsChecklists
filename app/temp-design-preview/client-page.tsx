@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, X } from "lucide-react";
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from "@/lib/utils";
@@ -13,7 +13,7 @@ const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> 
 );
 
 const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <h2 className={cn("text-3xl font-bold tracking-tighter font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text", className)}>
+    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text", className)}>
         {children}
     </h2>
 );
@@ -33,32 +33,29 @@ const HeroSection = () => (
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0"
+            className="absolute inset-0 w-full h-full object-cover z-0 slow-zoom-video"
             style={{ objectPosition: 'top' }}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F14] via-[#0B0F14]/80 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/55 z-10" />
         
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[680px] space-y-4">
-                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.1 }}>
-                    When people forget,
-                    <br/>
-                    <span className="text-authority-green">operations fail.</span>
+            <div className="max-w-[680px] space-y-6">
+                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.15 }}>
+                    When people forget, operations fail.
                  </h1>
-                 <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed space-y-4">
-                    <p>When work lives in people’s heads, things get missed.</p>
-                     <div className="space-y-1">
-                        <p className="font-semibold text-primary-text">MoreMeets Standards™</p>
-                        <p>turn critical work into written, repeatable execution.</p>
-                    </div>
+                 <div className="max-w-2xl !leading-relaxed space-y-4">
+                    <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When work lives in people’s heads, critical tasks get skipped, delayed, or done wrong.</p>
+                    <p className="text-secondary-text text-lg md:text-xl">MoreMeets Standards™ hard-code operations into a single written framework — so nothing depends on memory, luck, or “experience.”</p>
+                    <p className="text-lg font-semibold text-primary-text">Daily. Weekly. Monthly. Who does what. How often. What happens if they don’t.</p>
                 </div>
                 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start sm:items-center">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
                     <div>
-                        <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground hover:bg-high-contrast-green/90 font-semibold">
-                            <Link href="/library">View the Standards</Link>
+                        <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-lg">
+                            <Link href="/library">See the Operational Standards</Link>
                         </Button>
+                         <p className="text-xs text-muted-text mt-2">One-time purchase • Offline • Lifetime updates</p>
                     </div>
                 </div>
             </div>
@@ -67,69 +64,36 @@ const HeroSection = () => (
 );
 
 
-const WhatItIsSection = () => (
-    <Section id="what-it-is" className="bg-alternate-background">
-        <div className="container px-4 md:px-6 text-center space-y-12">
-            <div className="max-w-3xl mx-auto">
-                <SectionHeadline>This is not a checklist pack. It’s an operational system.</SectionHeadline>
-                <SectionBody className="mt-6 space-y-6">
-                    <div>Most teams fail not because they don’t work hard — but because critical work lives in people’s heads.</div>
-                    <div>MoreMeets Standards™ converts expert knowledge into a clear, repeatable system so nothing important is missed, forgotten, or improvised.</div>
-                </SectionBody>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto text-left items-center">
-                <div className="space-y-4 rounded-xl border border-border bg-background/50 p-6">
-                    <h3 className="font-bold text-xl text-primary-text">What You Receive</h3>
-                    <ul className="space-y-3">
-                        {[
-                            "Industry-specific SOP packs",
-                            "Role-based operational checklists",
-                            "Daily, weekly, monthly task structures",
-                            "Clearly defined responsibilities",
-                            "Built-in frequencies and escalation logic",
-                            "Trainer notes explaining why each step matters"
-                        ].map(item => (
-                             <li key={item} className="flex items-start gap-3">
-                                <CheckCircle className="w-5 h-5 text-authority-green shrink-0 mt-1" />
-                                <span className="text-secondary-text">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                 <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
-                     <img
-                        src='https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png'
-                        alt="MoreMeets Excel Checklist System"
-                        className="rounded-lg object-cover w-full h-auto"
-                    />
-                </div>
-            </div>
-        </div>
-    </Section>
-);
+const HowOperationsFailSection = () => {
+    const failurePoints = [
+        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "A task no one knew was due", description: "A critical compliance check is missed for weeks because the one person who remembered it is on leave." },
+        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "A new hire doing it “their way”", description: "A new team member, lacking clear guidance, improvises a safety procedure, creating a massive liability." },
+        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "A critical step skipped during a rush", description: "Under pressure, a veteran employee skips a key quality control step they've done a thousand times. The result is a defective batch." },
+        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "“We’ve always done it this way”", description: "An outdated process remains in use because it's 'tribal knowledge', exposing the company to modern risks." }
+    ];
 
-const GuidanceSection = () => (
-    <Section>
-        <div className="container px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                 <div className="space-y-6">
-                    <SectionHeadline className="text-left">With built-in guidance, so anyone can execute like an expert.</SectionHeadline>
-                    <div className="space-y-4 text-secondary-text text-lg max-w-xl">
-                        <p>Our standards include "Trainer Notes" that explain the *why* behind critical tasks. This turns a simple checklist into a powerful, on-the-job training tool.</p>
-                        <p className="font-semibold text-authority-green">Your team doesn't just follow instructions; they understand the consequences, building a culture of ownership and safety.</p>
-                    </div>
-                </div>
-                <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
-                     <img
-                        src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
-                        alt="MoreMeets Trainer Notes for team guidance"
-                        className="rounded-lg object-cover w-full h-auto"
-                    />
+    return (
+        <Section id="how-it-fails" className="bg-background">
+            <div className="container px-4 md:px-6 text-center space-y-12">
+                <SectionHeadline>This is how operations actually fail</SectionHeadline>
+                <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+                    {failurePoints.map((point, index) => (
+                        <Card key={index} className="bg-alternate-background border-border">
+                            <CardHeader className="flex flex-row items-center gap-4 space-y-0">
+                                {point.icon}
+                                <CardTitle className="text-lg text-primary-text">{point.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-secondary-text mb-3">{point.description}</p>
+                                <p className="font-semibold text-authority-green text-sm">This is a systems problem. Not a people problem.</p>
+                            </CardContent>
+                        </Card>
+                    ))}
                 </div>
             </div>
-        </div>
-    </Section>
-);
+        </Section>
+    );
+};
 
 const ChaosToControlSection = () => (
   <Section className="w-full py-16 md:py-24 bg-alternate-background">
@@ -140,16 +104,16 @@ const ChaosToControlSection = () => (
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
         {/* Before */}
-        <Card className="border-destructive/50 border-2 flex flex-col bg-background/50">
+        <Card className="border-risk-accent/50 border-2 flex flex-col bg-background/50">
           <CardHeader>
-            <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardTitle className="text-risk-accent flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
             <CardDescription className="text-muted-text">Relying on human memory, verbal instructions, and hope.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-secondary-text flex-1">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
           </CardContent>
         </Card>
         {/* After */}
@@ -171,33 +135,13 @@ const ChaosToControlSection = () => (
 );
 
 
-const PrivacySection = () => (
-    <Section className="w-full py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center">
-                <Card className="p-6 md:p-8 bg-alternate-background border-border shadow-lg">
-                     <h3 className="font-bold text-lg text-authority-green mb-4">Your Data Is Your Property. Period.</h3>
-                    <div className="space-y-4 text-secondary-text text-base md:text-lg">
-                        <p>MoreMeets does not track or monitor execution digitally.</p>
-                        <p className="font-semibold text-primary-text">We never have access to your operational information.</p>
-                        <p>Our framework is offline by design, providing a standardised structure that makes evidence possible, consistent, and audit-acceptable—without compromising your privacy.</p>
-                    </div>
-                </Card>
-            </div>
-        </div>
-    </Section>
-);
-
 const FinalCTASection = () => (
      <Section className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-high-contrast-green text-accent-foreground font-semibold hover:bg-high-contrast-green/90">
-                    <Link href="/library">Get the Standards</Link>
-                </Button>
-                <Button size="lg" asChild variant="link" className="text-base text-secondary-text hover:text-primary-text">
-                    <Link href="#what-it-is">See what’s included →</Link>
+                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-accent/90">
+                    <Link href="/library">Get Control of Operations</Link>
                 </Button>
             </div>
         </div>
@@ -209,10 +153,8 @@ export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
       <HeroSection />
-      <WhatItIsSection />
-      <GuidanceSection />
+      <HowOperationsFailSection />
       <ChaosToControlSection />
-      <PrivacySection />
       <FinalCTASection />
     </main>
   );
