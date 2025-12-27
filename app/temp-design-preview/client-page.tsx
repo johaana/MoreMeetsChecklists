@@ -18,15 +18,8 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const SectionBody = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <div className={cn("max-w-3xl mx-auto text-secondary-text md:text-lg lg:text-xl", className)}>
-        {children}
-    </div>
-);
-
-
 const HeroSection = () => (
-    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] py-12 md:py-16">
+    <section className="relative w-full flex items-center text-white overflow-hidden min-h-screen">
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
             autoPlay
@@ -34,46 +27,71 @@ const HeroSection = () => (
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover z-0"
-            style={{ objectPosition: 'center top' }}
+            style={{ objectPosition: 'center top', filter: 'brightness(0.6)' }}
         />
         
         <div 
             className="absolute inset-0 z-10" 
-            style={{background: 'linear-gradient(90deg, rgba(14,20,18,0.85) 0%, rgba(14,20,18,0.75) 40%, rgba(14,20,18,0.4) 70%, rgba(14,20,18,0.1) 100%)'}}
+            style={{background: 'linear-gradient(90deg, rgba(11,20,17,0.85) 0%, rgba(11,20,17,0.75) 40%, rgba(11,20,17,0.4) 70%, rgba(11,20,17,0.1) 100%)'}}
         />
         
-        <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[640px] space-y-4">
-                 <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight font-headline text-white" style={{ lineHeight: 1.1 }}>
-                    People forget.
+        <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center min-h-screen py-16">
+            <div className="max-w-[640px] space-y-6">
+                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter font-headline text-white" style={{ lineHeight: 1.1 }}>
+                    People forget when it matters most.
                     <br/>
-                    Your business pays.
+                    Your business shouldn’t suffer for it.
                  </h1>
-                 <div className="space-y-4">
-                    <p className="font-normal text-lg text-[#D1D5DB]" style={{ lineHeight: 1.6 }}>
-                      Memory is not a system. When work lives in people’s heads, steps get skipped, audits fail, and standards break — especially during growth, turnover, or inspections.
+
+                 <div className="space-y-4 text-secondary-text text-lg leading-relaxed">
+                    <p>
+                        People forget <span className="fear-text">during handovers.</span>
+                        <br/>
+                        During <span className="fear-text">night shifts.</span>
+                        <br/>
+                        During <span className="fear-text">audits.</span>
+                        <br/>
+                        During <span className="fear-text">emergencies.</span>
+                        <br/>
+                        During <span className="fear-text">chaos.</span>
                     </p>
-                    <p className="font-medium text-[17px] text-[#E5E7EB]">
-                      MoreMeets turns tribal knowledge into enforceable operational standards — so execution does not depend on memory, luck, or “who’s on shift.”
+                    <p>
+                        That’s when mistakes happen — not because teams don’t care, but because memory is under pressure.
                     </p>
-                    
-                    <div className="space-y-2 pt-2">
-                        <ul className="space-y-1">
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Steps are skipped when no one is watching</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Training fades the moment shifts change</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>New hires guess instead of follow</span></li>
-                             <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Managers chase work instead of running the business</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Compliance exists in files — not in daily behavior</span></li>
-                        </ul>
-                         <p className="font-semibold text-base pt-2" style={{color: '#FACC15'}}>This is not human error. This is operational debt.</p>
-                    </div>
+                 </div>
+                 
+                <p className="font-medium text-lg text-primary-text">
+                    If work depends on memory, experience, or “someone knowing,”
+                    <br/>
+                    <span className="font-bold">you don’t have a system — you have risk.</span>
+                </p>
+
+                <p className="text-secondary-text text-lg">
+                    MoreMeets replaces memory with <strong className="text-primary-text">enforced operational standards.</strong>
+                    <br/>
+                    Every task is defined, scheduled, explained, and repeatable — so work gets done correctly, even when people change, panic, or leave.
+                </p>
+
+                <div className="space-y-2 pt-2 border-l-2 border-risk-accent pl-4">
+                    <h3 className="font-semibold text-primary-text">WHAT THIS ACTUALLY PREVENTS:</h3>
+                    <ul className="space-y-1 text-secondary-text">
+                        <li>Critical checks skipped on busy days</li>
+                        <li>New hires guessing instead of following</li>
+                        <li>Senior staff becoming single points of failure</li>
+                        <li>Audits failing because “no one documented it”</li>
+                        <li>Managers firefighting instead of running the business</li>
+                    </ul>
                 </div>
+
+                <p className="font-semibold text-lg text-authority-green !mt-8">This is how serious operations protect themselves.</p>
                 
-                <div className="pt-4">
+                <div className="pt-4 flex flex-col items-start gap-2">
                     <Button size="lg" asChild className="group h-auto" style={{ backgroundColor: '#FACC15', color: '#0E1412', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
-                        <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+                        <Link href="/library">
+                            See the operational standard <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
                     </Button>
-                    <p className="text-xs text-muted-text mt-2">Built for regulated, audited, multi-location operations</p>
+                    <p className="text-sm text-muted-text">One-time purchase • Offline • Lifetime updates</p>
                 </div>
             </div>
         </div>
@@ -84,7 +102,7 @@ const HeroSection = () => (
 const ComplianceSignalSection = () => (
     <div className="bg-alternate-background py-3 border-y border-border">
         <div className="container px-4 md:px-6">
-            <p className="text-center text-sm md:text-base font-medium" style={{color: '#8FAEA3'}}>
+            <p className="text-center text-sm md:text-base font-medium text-authority-green">
                 Designed for global compliance — adaptable to ISO, OSHA, HACCP, SOC, and internal audit standards.
             </p>
         </div>
@@ -127,59 +145,6 @@ const HowItBreaksSection = () => {
         </Section>
     );
 };
-
-const ChaosToControlSection = () => (
-  <Section className="w-full py-16 md:py-24 bg-alternate-background">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
-        <SectionHeadline>From High Risk to High Confidence</SectionHeadline>
-        <SectionBody className="mt-6">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</SectionBody>
-      </div>
-      <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-        {/* Before */}
-        <Card className="border-risk-accent/50 border-2 flex flex-col bg-background/5">
-          <CardHeader>
-            <CardTitle className="text-risk-accent flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-            <CardDescription className="text-muted-text">Relying on human memory, verbal instructions, and hope.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-secondary-text flex-1">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
-          </CardContent>
-        </Card>
-        {/* After */}
-        <Card className="border-authority-green/50 border-2 bg-background/10 shadow-lg flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-authority-green flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
-            <CardDescription className="text-muted-text">A system of record that ensures excellence every time.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-primary-text flex-1">
-             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  </Section>
-);
-
-
-const FinalCTASection = () => (
-     <Section className="bg-alternate-background">
-        <div className="container px-4 md:px-6 text-center space-y-6">
-            <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                 <Button size="lg" asChild className="group text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-accent/90">
-                    <Link href="/library">Get Control of Operations <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
-                </Button>
-            </div>
-        </div>
-    </Section>
-);
 
 
 export default function TempDesignClientPage() {
