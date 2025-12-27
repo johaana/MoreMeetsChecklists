@@ -1,9 +1,10 @@
 
+
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle, BrainCircuit } from "lucide-react";
+import { ArrowRight, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle, BrainCircuit } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -27,10 +28,14 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
-        <div
-          className="absolute inset-0 h-full w-full object-cover z-0 opacity-15 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png')" }}
-        ></div>
+        <video
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:good/v1722204938/8572189-uhd_4096_2160_25fps_lvu6c4.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+        />
         
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F14] via-[#0B0F14]/80 to-transparent z-10" />
         
@@ -86,7 +91,7 @@ const WhatItIsSection = () => (
                             "Trainer notes explaining why each step matters"
                         ].map(item => (
                              <li key={item} className="flex items-start gap-3">
-                                <Check className="w-5 h-5 text-authority-green shrink-0 mt-1" />
+                                <CheckCircle className="w-5 h-5 text-authority-green shrink-0 mt-1" />
                                 <span className="text-secondary-text">{item}</span>
                             </li>
                         ))}
@@ -271,8 +276,8 @@ const OneTimePurchaseSection = () => (
                 <div className="space-y-4">
                     <p>MoreMeets Standards™ is a one-time purchase.</p>
                     <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
-                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
-                        <p className="flex items-center gap-2"><Check className="w-5 h-5 text-authority-green"/>Free future updates</p>
+                        <p className="flex items-center gap-2"><CheckCircle className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
+                        <p className="flex items-center gap-2"><CheckCircle className="w-5 h-5 text-authority-green"/>Free future updates</p>
                         <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
                         <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
                     </div>
@@ -318,9 +323,9 @@ const ComparisonSection = () => (
                              <CardTitle className="text-authority-green flex items-center gap-2"><CheckCircle className="text-high-contrast-green" /> MoreMeets Standards™</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-primary-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
-                            <p className="flex items-start gap-2"><Check className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
+                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership</span></p>
+                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
+                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
                         </CardContent>
                     </Card>
                 </motion.div>
