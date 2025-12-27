@@ -24,11 +24,10 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
     </div>
 );
 
-
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1722363158/pexels-imad-clicks-9883507_1080p_r6qohs.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
             autoPlay
             loop
             muted
@@ -46,7 +45,7 @@ const HeroSection = () => (
                     <span className="text-authority-green">operations fail.</span>
                  </h1>
                  <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed space-y-4">
-                    <p>When work lives in people’s heads, things get missed.</p>
+                     <p>When work lives in people’s heads, things get missed.</p>
                     <p className="font-semibold text-primary-text">MoreMeets Standards™ turn critical work into written, repeatable execution.</p>
                 </div>
                 
@@ -172,10 +171,10 @@ const PrivacySection = () => (
         <div className="container px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
                 <Card className="p-6 md:p-8 bg-alternate-background border-border shadow-lg">
-                     <h3 className="font-bold text-lg text-authority-green mb-4">IMPORTANT CLARIFICATION</h3>
+                     <h3 className="font-bold text-lg text-authority-green mb-4">Your Data Is Your Property. Period.</h3>
                     <div className="space-y-4 text-secondary-text text-base md:text-lg">
                         <p>MoreMeets does not track or monitor execution digitally.</p>
-                        <p className="font-semibold text-primary-text">Your data is your property. We never have access to your operational information.</p>
+                        <p className="font-semibold text-primary-text">We never have access to your operational information.</p>
                         <p>Our framework is offline by design, providing a standardised structure that makes evidence possible, consistent, and audit-acceptable—without compromising your privacy.</p>
                     </div>
                 </Card>
@@ -213,4 +212,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
