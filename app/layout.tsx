@@ -45,7 +45,8 @@ export const metadata: Metadata = {
 const mainFont = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-body'
+  variable: '--font-body',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 const headlineFont = IBM_Plex_Sans({

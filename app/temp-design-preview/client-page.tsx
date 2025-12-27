@@ -26,44 +26,56 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 
 
 const HeroSection = () => (
-    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
+    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0 slow-zoom-video"
+            className="absolute inset-0 w-full h-full object-cover z-0"
             style={{ objectPosition: 'top' }}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(15,26,23,0.85)] via-[rgba(15,26,23,0.55)] to-[rgba(15,26,23,0.55)] z-10" />
+        <div 
+            className="absolute inset-0 z-10" 
+            style={{background: 'linear-gradient(to right, rgba(14, 20, 18, 0.85) 60%, rgba(14, 20, 18, 0.4))'}}
+        />
         
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[680px] space-y-6">
-                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.15 }}>
-                    People forget. Your business pays.
+            <div className="max-w-[640px] space-y-6">
+                <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tighter font-headline text-white" style={{ lineHeight: 1.05 }}>
+                    People forget.
+                    <br/>
+                    Your business pays.
                  </h1>
-                 <div className="max-w-2xl !leading-relaxed space-y-6">
-                    <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When operations live in people’s heads, tasks get missed, audits fail, and standards collapse — especially during growth, turnover, or inspections.</p>
-                    <p className="text-lg font-semibold text-primary-text/90">MoreMeets turns tribal knowledge into enforceable operational standards — so execution does not depend on memory, luck, or “who’s on shift.”</p>
+                 <div className="space-y-6">
+                    <p className="font-normal text-lg text-[#D1D5DB]" style={{ lineHeight: 1.6 }}>
+                      Memory is not a control system. When operations live in people’s heads, tasks get missed, audits fail, and standards collapse — especially during growth, turnover, or inspections.
+                    </p>
+                    <p className="font-medium text-[17px] text-[#E5E7EB]">
+                      MoreMeets turns tribal knowledge into enforceable operational standards — so execution does not depend on memory, luck, or “who’s on shift.”
+                    </p>
+                    
                     <div className="space-y-2 pt-2">
-                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Staff forget steps</span></div>
-                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Training doesn’t stick</span></div>
-                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>New hires improvise</span></div>
-                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Managers chase follow-ups</span></div>
-                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Compliance lives in files, not behavior</span></div>
-                        <p className="font-semibold text-primary-text/90 pt-2">All of this is operational debt.</p>
+                        <ul className="space-y-1.5">
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Staff forget steps</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Training doesn’t stick</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>New hires improvise</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Managers chase follow-ups</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Compliance lives in files, not behavior</span></li>
+                        </ul>
+                        <p className="font-semibold text-base text-[#FACC15] pt-2">All of this is operational debt.</p>
                     </div>
-                     <p className="font-bold text-xl md:text-2xl text-primary-text pt-2">One system. One source of truth. Every task, every time.</p>
+                     <p className="font-bold text-xl text-white pt-2">One system. One source of truth. Every task, every time.</p>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
                     <div>
-                        <Button size="lg" asChild className="group text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-lg">
-                            <Link href="/library">View the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+                        <Button size="lg" asChild className="group h-auto" style={{ backgroundColor: '#FACC15', color: '#0E1412', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                            <Link href="/library">View the Operational Standards</Link>
                         </Button>
-                         <p className="text-xs text-muted-text mt-2">Built for regulated, audited, multi-location operations</p>
+                         <p className="text-xs text-[#9CA3AF] mt-2">Built for regulated, audited, multi-location operations</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +106,7 @@ const HowOperationsFailSection = () => {
         <Section id="how-it-fails" className="bg-background">
             <div className="container px-4 md:px-6 space-y-12">
                 <div className="text-center">
-                    <p className="text-lg md:text-xl text-secondary-text mb-6">MoreMeets Standards™ hard-code operations into a single written framework — so execution does not depend on memory, luck, or “who’s on shift.”</p>
+                    <p className="font-semibold text-lg md:text-xl text-primary-text/90 mb-6">MoreMeets Standards™ hard-code operations into a single written framework — so execution does not depend on memory, luck, or “who’s on shift.”</p>
                     <SectionHeadline>This is how operations actually fail</SectionHeadline>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
@@ -125,7 +137,7 @@ const ChaosToControlSection = () => (
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
         {/* Before */}
-        <Card className="border-risk-accent/50 border-2 flex flex-col bg-background/50">
+        <Card className="border-risk-accent/50 border-2 flex flex-col bg-background/5">
           <CardHeader>
             <CardTitle className="text-risk-accent flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
             <CardDescription className="text-muted-text">Relying on human memory, verbal instructions, and hope.</CardDescription>
@@ -138,7 +150,7 @@ const ChaosToControlSection = () => (
           </CardContent>
         </Card>
         {/* After */}
-        <Card className="border-authority-green/50 border-2 bg-background/80 shadow-lg flex flex-col">
+        <Card className="border-authority-green/50 border-2 bg-background/10 shadow-lg flex flex-col">
           <CardHeader>
             <CardTitle className="text-authority-green flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
             <CardDescription className="text-muted-text">A system of record that ensures excellence every time.</CardDescription>
