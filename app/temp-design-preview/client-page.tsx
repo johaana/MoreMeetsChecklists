@@ -34,12 +34,12 @@ const HeroSection = () => (
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover z-0"
-            style={{ objectPosition: 'top' }}
+            style={{ objectPosition: 'center top' }}
         />
         
         <div 
             className="absolute inset-0 z-10" 
-            style={{background: 'linear-gradient(to right, rgba(14, 20, 18, 0.85) 60%, rgba(14, 20, 18, 0.4))'}}
+            style={{background: 'linear-gradient(90deg, rgba(11,20,17,0.85) 0%, rgba(11,20,17,0.75) 40%, rgba(11,20,17,0.4) 70%, rgba(11,20,17,0.1) 100%)'}}
         />
         
         <div className="container px-4 md:px-6 relative z-20">
@@ -51,7 +51,7 @@ const HeroSection = () => (
                  </h1>
                  <div className="space-y-6">
                     <p className="font-normal text-lg text-[#D1D5DB]" style={{ lineHeight: 1.6 }}>
-                      Memory is not a control system. When operations live in people’s heads, tasks get missed, audits fail, and standards collapse — especially during growth, turnover, or inspections.
+                      Memory is not a system. When work lives in people’s heads, steps get skipped, audits fail, and standards break — especially during growth, turnover, or inspections.
                     </p>
                     <p className="font-medium text-[17px] text-[#E5E7EB]">
                       MoreMeets turns tribal knowledge into enforceable operational standards — so execution does not depend on memory, luck, or “who’s on shift.”
@@ -59,13 +59,13 @@ const HeroSection = () => (
                     
                     <div className="space-y-2 pt-2">
                         <ul className="space-y-1.5">
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Staff forget steps</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Training doesn’t stick</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>New hires improvise</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Managers chase follow-ups</span></li>
-                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Compliance lives in files, not behavior</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Steps are skipped when no one is watching</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Training fades the moment shifts change</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>New hires guess instead of follow</span></li>
+                             <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Managers chase work instead of running the business</span></li>
+                            <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Compliance exists in files — not in daily behavior</span></li>
                         </ul>
-                        <p className="font-semibold text-base text-[#FACC15] pt-2">All of this is operational debt.</p>
+                         <p className="font-semibold text-base text-[#FACC15] pt-2">This is not human error. This is operational debt.</p>
                     </div>
                      <p className="font-bold text-xl text-white pt-2">One system. One source of truth. Every task, every time.</p>
                 </div>
@@ -73,9 +73,9 @@ const HeroSection = () => (
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
                     <div>
                         <Button size="lg" asChild className="group h-auto" style={{ backgroundColor: '#FACC15', color: '#0E1412', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
-                            <Link href="/library">View the Operational Standards</Link>
+                            <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
                         </Button>
-                         <p className="text-xs text-[#9CA3AF] mt-2">Built for regulated, audited, multi-location operations</p>
+                         <p className="text-xs text-[#9CA3AF] mt-2">Built for regulated, audited, multi-location teams</p>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@ const HeroSection = () => (
 const ComplianceSignalSection = () => (
     <div className="bg-alternate-background py-3 border-y border-border">
         <div className="container px-4 md:px-6">
-            <p className="text-center text-xs text-muted-text">
+            <p className="text-center text-sm md:text-base font-medium text-muted-text" style={{color: '#8FAEA3'}}>
                 Designed for global compliance — adaptable to ISO, OSHA, HACCP, SOC, and internal audit standards.
             </p>
         </div>
@@ -106,7 +106,6 @@ const HowOperationsFailSection = () => {
         <Section id="how-it-fails" className="bg-background">
             <div className="container px-4 md:px-6 space-y-12">
                 <div className="text-center">
-                    <p className="font-semibold text-lg md:text-xl text-primary-text/90 mb-6">MoreMeets Standards™ hard-code operations into a single written framework — so execution does not depend on memory, luck, or “who’s on shift.”</p>
                     <SectionHeadline>This is how operations actually fail</SectionHeadline>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
