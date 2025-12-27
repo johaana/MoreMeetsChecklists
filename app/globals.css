@@ -104,5 +104,4 @@ html {
 
 .slow-zoom-video {
   animation: slow-zoom 10s ease-in-out infinite alternate;
-  filter: blur(1px);
 }

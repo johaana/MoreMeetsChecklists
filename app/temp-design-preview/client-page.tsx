@@ -37,33 +37,48 @@ const HeroSection = () => (
             style={{ objectPosition: 'top' }}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.85)] via-[rgba(0,0,0,0.55)] to-[rgba(0,0,0,0.55)] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(15,26,23,0.85)] via-[rgba(15,26,23,0.55)] to-[rgba(15,26,23,0.55)] z-10" />
         
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-6">
                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter font-headline" style={{ lineHeight: 1.15 }}>
-                    When people forget, operations fail.
+                    People forget. Your business pays.
                  </h1>
-                 <div className="max-w-2xl !leading-relaxed space-y-4">
-                    <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When work lives in people’s heads, critical tasks get missed — especially during pressure, audits, or staff changes.</p>
-                     <div className="text-lg font-semibold text-primary-text space-y-1 pt-2">
-                        <p>Daily. Weekly. Monthly.</p>
-                        <p>Who does what. How often.</p>
-                        <p>What happens if they don’t.</p>
+                 <div className="max-w-2xl !leading-relaxed space-y-6">
+                    <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When operations live in people’s heads, tasks get missed, audits fail, and standards collapse — especially during growth, turnover, or inspections.</p>
+                    <p className="text-lg font-semibold text-primary-text/90">MoreMeets turns tribal knowledge into enforceable operational standards — so execution does not depend on memory, luck, or “who’s on shift.”</p>
+                    <div className="space-y-2 pt-2">
+                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Staff forget steps</span></div>
+                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Training doesn’t stick</span></div>
+                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>New hires improvise</span></div>
+                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Managers chase follow-ups</span></div>
+                        <div className="flex items-center gap-2 text-secondary-text"><X className="w-4 h-4 text-risk-accent shrink-0"/><span>Compliance lives in files, not behavior</span></div>
+                        <p className="font-semibold text-primary-text/90 pt-2">All of this is operational debt.</p>
                     </div>
+                     <p className="font-bold text-xl md:text-2xl text-primary-text pt-2">One system. One source of truth. Every task, every time.</p>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
                     <div>
                         <Button size="lg" asChild className="group text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-lg">
-                            <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+                            <Link href="/library">View the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
                         </Button>
-                         <p className="text-xs text-muted-text mt-2">One-time purchase • Offline • Lifetime updates</p>
+                         <p className="text-xs text-muted-text mt-2">Built for regulated, audited, multi-location operations</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+);
+
+const ComplianceSignalSection = () => (
+    <div className="bg-alternate-background py-3 border-y border-border">
+        <div className="container px-4 md:px-6">
+            <p className="text-center text-xs text-muted-text">
+                Designed for global compliance — adaptable to ISO, OSHA, HACCP, SOC, and internal audit standards.
+            </p>
+        </div>
+    </div>
 );
 
 
@@ -159,6 +174,7 @@ export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
       <HeroSection />
+      <ComplianceSignalSection />
       <HowOperationsFailSection />
       <ChaosToControlSection />
       <FinalCTASection />
