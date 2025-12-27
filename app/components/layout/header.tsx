@@ -11,7 +11,6 @@ import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 // --- DATA PREPARATION (Computed once at top-level) ---

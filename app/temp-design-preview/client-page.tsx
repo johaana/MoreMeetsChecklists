@@ -24,6 +24,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
     </div>
 );
 
+
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
