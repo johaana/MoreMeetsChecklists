@@ -3,13 +3,10 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Ban, Frown, Smile, FileText, Users, BarChart } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, FileText, Users, BarChart } from "lucide-react";
 import React from 'react';
-import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from "@/lib/utils";
-import { IconComponent } from "@/components/icons";
-
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-28 lg:py-32", className)} {...props} />
@@ -26,6 +23,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
         {children}
     </div>
 );
+
 
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
@@ -47,7 +45,7 @@ const HeroSection = () => (
                     <br/>
                     <span className="text-authority-green">operations fail.</span>
                  </h1>
-                 <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
+                 <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed space-y-4">
                     <p>When work lives in people’s heads, things get missed.</p>
                     <p className="font-semibold text-primary-text">MoreMeets Standards™ turn critical work into written, repeatable execution.</p>
                 </div>
@@ -165,7 +163,7 @@ const ChaosToControlSection = () => (
         </Card>
       </div>
     </div>
-  </section>
+  </Section>
 );
 
 
@@ -215,4 +213,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
