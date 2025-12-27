@@ -28,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1722328122/pexels-c-technical-6138612_4K_ic8zsl.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1722363158/pexels-imad-clicks-9883507_1080p_r6qohs.mp4"
             autoPlay
             loop
             muted
@@ -213,3 +213,4 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
