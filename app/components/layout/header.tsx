@@ -80,19 +80,18 @@ export function SiteHeader() {
     }, [isDropdownOpen]);
 
     React.useEffect(() => {
-        if (!isTempDesignPage) {
-            setIsScrolled(true); // Always "scrolled" on other pages
-            return;
-        }
-
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); 
-
-        return () => window.removeEventListener('scroll', handleScroll);
+        if (isTempDesignPage) {
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); 
+            return () => window.removeEventListener('scroll', handleScroll);
+        } else {
+            // For all other pages, the header is always "scrolled" (i.e., has a background)
+            setIsScrolled(true);
+        }
     }, [pathname, isTempDesignPage]);
 
 
@@ -111,11 +110,9 @@ export function SiteHeader() {
     return (
         <header className={cn(
             "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
-            isScrolled
-                ? isTempDesignPage 
-                    ? "bg-alternate-background border-b border-border" 
-                    : "bg-background/95 backdrop-blur-sm border-b"
-                : "bg-transparent border-b border-transparent"
+            isTempDesignPage
+                ? (isScrolled ? "bg-alternate-background border-b border-border" : "bg-transparent border-b border-transparent")
+                : "bg-background/95 backdrop-blur-sm border-b"
         )}>
             <div className="flex items-center">
                 <Link href="/" className="mr-6 hidden md:flex items-center gap-2" prefetch={false}>
