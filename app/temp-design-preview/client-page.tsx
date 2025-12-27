@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, FileText, Users, BarChart } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle } from "lucide-react";
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from "@/lib/utils";
@@ -24,10 +24,11 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
     </div>
 );
 
+
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762694171/pexels-c-technical-6334253_2160p_drvipl.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762770233/pexels-c-technical-8572189_2160p_hwnkmo.mp4"
             autoPlay
             loop
             muted
@@ -45,7 +46,7 @@ const HeroSection = () => (
                     <span className="text-authority-green">operations fail.</span>
                  </h1>
                  <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed space-y-4">
-                     <p>When work lives in people’s heads, things get missed.</p>
+                    <p>When work lives in people’s heads, things get missed.</p>
                     <p className="font-semibold text-primary-text">MoreMeets Standards™ turn critical work into written, repeatable execution.</p>
                 </div>
                 
