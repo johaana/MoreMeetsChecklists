@@ -91,12 +91,13 @@ html {
   --warning-accent: #FACC15;
   --fear-text: hsl(0, 50%, 70%);
 
-  background-color: hsl(var(--background));
-  color: hsl(var(--primary-text));
+  background-color: var(--alternate-background);
+  color: var(--primary-text);
 }
 
 .slow-zoom-video {
   filter: brightness(0.6);
+  /* Removed animation and blur */
 }
 
 .fear-text {
