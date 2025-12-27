@@ -132,7 +132,7 @@ export function SiteHeader() {
                             onMouseLeave={() => setIsDropdownOpen(false)}
                         >
                             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-                                Explore Solutions <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                                Industries <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
                             {isDropdownOpen && (
                                 <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
@@ -196,7 +196,7 @@ export function SiteHeader() {
                                     </div>
                                     <AccordionItem value="packs" className="border-b-0">
                                         <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
-                                            All Premium Packs
+                                            Industries
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-2">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (

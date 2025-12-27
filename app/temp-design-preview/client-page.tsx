@@ -37,7 +37,7 @@ const HeroSection = () => (
             style={{ objectPosition: 'top' }}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/55 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.85)] via-[rgba(0,0,0,0.55)] to-[rgba(0,0,0,0.55)] z-10" />
         
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[680px] space-y-6">
@@ -45,15 +45,19 @@ const HeroSection = () => (
                     When people forget, operations fail.
                  </h1>
                  <div className="max-w-2xl !leading-relaxed space-y-4">
-                    <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When work lives in people’s heads, critical tasks get skipped, delayed, or done wrong.</p>
-                    <p className="text-secondary-text text-lg md:text-xl">MoreMeets Standards™ hard-code operations into a single written framework — so nothing depends on memory, luck, or “experience.”</p>
-                    <p className="text-lg font-semibold text-primary-text">Daily. Weekly. Monthly. Who does what. How often. What happens if they don’t.</p>
+                    <p className="font-medium text-xl md:text-2xl text-primary-text">Memory is not a control system. When work lives in people’s heads, critical tasks get missed — especially during pressure, audits, or staff changes.</p>
+                    <p className="text-secondary-text text-lg md:text-xl">MoreMeets Standards™ hard-code operations into a single written framework — so execution does not depend on memory, luck, or “who’s on shift.”</p>
+                    <div className="text-lg font-semibold text-primary-text space-y-1">
+                        <p>Daily. Weekly. Monthly.</p>
+                        <p>Who does what. How often.</p>
+                        <p>What happens if they don’t.</p>
+                    </div>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
                     <div>
-                        <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-lg">
-                            <Link href="/library">See the Operational Standards</Link>
+                        <Button size="lg" asChild className="group text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-lg">
+                            <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
                         </Button>
                          <p className="text-xs text-muted-text mt-2">One-time purchase • Offline • Lifetime updates</p>
                     </div>
@@ -140,8 +144,8 @@ const FinalCTASection = () => (
         <div className="container px-4 md:px-6 text-center space-y-6">
             <SectionHeadline>Make audit-readiness the default.</SectionHeadline>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                 <Button size="lg" asChild className="text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-accent/90">
-                    <Link href="/library">Get Control of Operations</Link>
+                 <Button size="lg" asChild className="group text-base h-12 px-8 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-accent/90">
+                    <Link href="/library">Get Control of Operations <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
                 </Button>
             </div>
         </div>
