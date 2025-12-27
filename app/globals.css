@@ -35,7 +35,7 @@
     --high-contrast-green: hsl(158 41% 57%);
     --risk-accent: #EF4444; /* Red for markers */
     --warning-accent: #FACC15; /* Muted Yellow */
-    --fear-text: hsl(0, 50%, 60%); /* Muted Red for fear words */
+    --fear-text: hsl(0, 50%, 70%);
   }
 
   .dark {
@@ -85,8 +85,8 @@ html {
   --border: #262c2a;
   --authority-green: #8FAEA3;
   --high-contrast-green: hsl(158 41% 57%);
-  --accent: #FACC15;
-  --accent-foreground: #0E1412;
+  --accent: #F5C94A;
+  --accent-foreground: #111816;
   --risk-accent: #EF4444;
   --warning-accent: #FACC15;
   --fear-text: hsl(0, 50%, 70%);
