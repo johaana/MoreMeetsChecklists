@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -29,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto:good/v1722204938/8572189-uhd_4096_2160_25fps_lvu6c4.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
             autoPlay
             loop
             muted
@@ -101,7 +100,7 @@ const WhatItIsSection = () => (
                      <img
                         src='https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png'
                         alt="MoreMeets Excel Checklist System"
-                        className="rounded-lg object-cover w-full h-auto blur-sm"
+                        className="rounded-lg object-cover w-full h-auto"
                     />
                 </div>
             </div>
@@ -191,7 +190,7 @@ const GuidanceSection = () => (
                      <img
                         src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
                         alt="MoreMeets Trainer Notes for team guidance"
-                        className="rounded-lg object-cover w-full h-auto blur-sm"
+                        className="rounded-lg object-cover w-full h-auto"
                     />
                 </div>
             </div>
