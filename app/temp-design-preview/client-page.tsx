@@ -34,6 +34,7 @@ const HeroSection = () => (
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover z-0"
+            style={{ objectPosition: 'top' }}
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F14] via-[#0B0F14]/80 to-transparent z-10" />

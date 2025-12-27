@@ -12,6 +12,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 // --- DATA PREPARATION (Computed once at top-level) ---
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
@@ -58,6 +59,9 @@ export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const pathname = usePathname();
+    const [isScrolled, setIsScrolled] = React.useState(false);
+
+    const isTempDesignPage = pathname === '/temp-design-preview';
 
     React.useEffect(() => {
         setIsSheetOpen(false);
@@ -75,6 +79,22 @@ export function SiteHeader() {
         };
     }, [isDropdownOpen]);
 
+    React.useEffect(() => {
+        if (!isTempDesignPage) {
+            setIsScrolled(true); // Always "scrolled" on other pages
+            return;
+        }
+
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); 
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [pathname, isTempDesignPage]);
+
 
     const BrandLogo = () => (
          <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
@@ -89,7 +109,14 @@ export function SiteHeader() {
     const isSalesPage = pathname === '/sales-consultancy';
     
     return (
-        <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm sticky top-0 z-50 border-b">
+        <header className={cn(
+            "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
+            isScrolled
+                ? isTempDesignPage 
+                    ? "bg-alternate-background border-b border-border" 
+                    : "bg-background/95 backdrop-blur-sm border-b"
+                : "bg-transparent border-b border-transparent"
+        )}>
             <div className="flex items-center">
                 <Link href="/" className="mr-6 hidden md:flex items-center gap-2" prefetch={false}>
                     <Logo className="h-6 w-6 text-primary" />
