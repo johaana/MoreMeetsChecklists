@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle, BrainCircuit } from "lucide-react";
+import { ArrowRight, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle, BrainCircuit, Frown, Smile } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -28,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
             autoPlay
             loop
             muted
@@ -66,7 +66,6 @@ const HeroSection = () => (
     </section>
 );
 
-
 const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 text-center space-y-12">
@@ -96,7 +95,7 @@ const WhatItIsSection = () => (
                         ))}
                     </ul>
                 </div>
-                <div className="rounded-xl border border-border bg-background p-1.5 shadow-2xl">
+                <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
                      <img
                         src='https://i.postimg.cc/7LLnXzpt/Screenshot-2025-12-26-221106.png'
                         alt="MoreMeets Excel Checklist System"
@@ -186,7 +185,7 @@ const GuidanceSection = () => (
                         <p className="font-semibold text-authority-green">Your team doesn't just follow instructions; they understand the consequences, building a culture of ownership and safety.</p>
                     </div>
                 </div>
-                 <div className="rounded-xl border border-border bg-background p-1.5 shadow-2xl">
+                 <div className="rounded-xl border-4 border-border/10 bg-background/5 p-1.5 shadow-2xl backdrop-blur-sm">
                      <img
                         src='https://i.postimg.cc/43VBF0sT/Screenshot-2025-12-27-023236.png'
                         alt="MoreMeets Trainer Notes for team guidance"
