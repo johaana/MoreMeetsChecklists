@@ -28,7 +28,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1722328122/pexels-c-technical-6138612_4K_ic8zsl.mp4"
             autoPlay
             loop
             muted
