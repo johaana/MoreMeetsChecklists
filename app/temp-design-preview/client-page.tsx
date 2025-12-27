@@ -26,7 +26,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 
 
 const HeroSection = () => (
-    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] pt-12 pb-16 md:pt-20 md:pb-24">
+    <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] py-12 md:py-16">
         <video
             src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
             autoPlay
@@ -44,7 +44,7 @@ const HeroSection = () => (
         
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[640px] space-y-4">
-                <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tighter font-headline text-white" style={{ lineHeight: 1.05 }}>
+                 <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight font-headline text-white" style={{ lineHeight: 1.1 }}>
                     People forget.
                     <br/>
                     Your business pays.
@@ -58,24 +58,22 @@ const HeroSection = () => (
                     </p>
                     
                     <div className="space-y-2 pt-2">
-                        <ul className="space-y-1.5">
+                        <ul className="space-y-1">
                             <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Steps are skipped when no one is watching</span></li>
                             <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Training fades the moment shifts change</span></li>
                             <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>New hires guess instead of follow</span></li>
                              <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Managers chase work instead of running the business</span></li>
                             <li className="flex items-center gap-2 text-base font-normal text-[#E5E7EB]"><span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0"></span><span>Compliance exists in files — not in daily behavior</span></li>
                         </ul>
-                         <p className="font-semibold text-base text-[#FACC15] pt-2">This is not human error. This is operational debt.</p>
+                         <p className="font-semibold text-base pt-2" style={{color: '#FACC15'}}>This is not human error. This is operational debt.</p>
                     </div>
                 </div>
                 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4 items-start">
-                    <div>
-                        <Button size="lg" asChild className="group h-auto" style={{ backgroundColor: '#FACC15', color: '#0E1412', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
-                            <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
-                        </Button>
-                         <p className="text-xs text-[#9CA3AF] mt-2">Built for regulated, audited, multi-location operations</p>
-                    </div>
+                <div className="pt-4">
+                    <Button size="lg" asChild className="group h-auto" style={{ backgroundColor: '#FACC15', color: '#0E1412', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                        <Link href="/library">See the Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+                    </Button>
+                    <p className="text-xs text-muted-text mt-2">Built for regulated, audited, multi-location operations</p>
                 </div>
             </div>
         </div>
@@ -94,12 +92,12 @@ const ComplianceSignalSection = () => (
 );
 
 
-const HowOperationsFailSection = () => {
+const HowItBreaksSection = () => {
     const failurePoints = [
-        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "A task no one knew was due", description: "A critical compliance check is missed for weeks because the one person who remembered it is on leave." },
-        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "A new hire doing it “their way”", description: "A new team member, lacking clear guidance, improvises a safety procedure, creating a massive liability." },
-        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "A critical step skipped during a rush", description: "Under pressure, a veteran employee skips a key quality control step they've done a thousand times. The result is a defective batch." },
-        { icon: <X className="w-6 h-6 text-risk-accent" />, title: "“We’ve always done it this way”", description: "An outdated process remains in use because it's 'tribal knowledge', exposing the company to modern risks." }
+        { icon: <X className="w-5 h-5 text-risk-accent" />, title: "A task no one knew was due", description: "A critical compliance check is missed for weeks because the one person who remembered it is on leave." },
+        { icon: <X className="w-5 h-5 text-risk-accent" />, title: "A new hire doing it “their way”", description: "A new team member, lacking clear guidance, improvises a safety procedure, creating a massive liability." },
+        { icon: <X className="w-5 h-5 text-risk-accent" />, title: "A critical step skipped during a rush", description: "Under pressure, a veteran employee skips a key quality control step they've done a thousand times. The result is a defective batch." },
+        { icon: <X className="w-5 h-5 text-risk-accent" />, title: "“We’ve always done it this way”", description: "An outdated process remains in use because it's 'tribal knowledge', exposing the company to modern risks." }
     ];
 
     return (
@@ -114,12 +112,12 @@ const HowOperationsFailSection = () => {
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
                     {failurePoints.map((point, index) => (
                         <Card key={index} className="bg-alternate-background border-border">
-                            <CardHeader className="flex flex-row items-center gap-4 space-y-0">
+                            <CardHeader className="flex flex-row items-center gap-4 space-y-0 p-4">
                                 {point.icon}
-                                <CardTitle className="text-lg text-primary-text">{point.title}</CardTitle>
+                                <CardTitle className="text-base text-primary-text">{point.title}</CardTitle>
                             </CardHeader>
-                            <CardContent>
-                                <p className="text-secondary-text mb-3">{point.description}</p>
+                            <CardContent className="p-4 pt-0">
+                                <p className="text-secondary-text text-sm mb-3">{point.description}</p>
                                 <p className="font-semibold text-authority-green text-sm">This is a systems problem. Not a people problem.</p>
                             </CardContent>
                         </Card>
@@ -189,21 +187,7 @@ export default function TempDesignClientPage() {
     <main className="flex-1">
       <HeroSection />
       <ComplianceSignalSection />
-        <section id="how-it-fails" className="w-full py-16 md:py-24 bg-background">
-            <div className="container px-4 md:px-6 space-y-12">
-                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text">
-                        This is how operations actually fail
-                    </h2>
-                     <p className="mt-4 text-secondary-text md:text-lg">
-                        These small, daily misses aren't 'people problems'. They are system failures waiting to become business-critical events.
-                    </p>
-                </div>
-                 <div className="absolute left-0 right-0 h-px bg-border -bottom-8"></div>
-            </div>
-        </section>
-      <ChaosToControlSection />
-      <FinalCTASection />
+      <HowItBreaksSection />
     </main>
   );
 }
