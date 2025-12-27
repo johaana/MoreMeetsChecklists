@@ -3,11 +3,13 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronsRight, ShieldAlert, FileX, Ban, Handshake, CloudIcon, User, FileText, CheckCircle, BrainCircuit, Frown, Smile } from "lucide-react";
+import { ArrowRight, CheckCircle, Ban, Frown, Smile, FileText, Users, BarChart } from "lucide-react";
 import React from 'react';
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from "@/lib/utils";
+import { IconComponent } from "@/components/icons";
+
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-28 lg:py-32", className)} {...props} />
@@ -28,7 +30,7 @@ const SectionBody = ({ children, className }: { children: React.ReactNode, class
 const HeroSection = () => (
     <section className="relative w-full flex items-center text-white overflow-hidden min-h-[100svh] max-h-[100svh] pt-[clamp(96px,10vh,140px)] pb-[clamp(64px,8vh,120px)]">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590204/8572189-uhd_4096_2160_25fps_1_c8o14s.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
             autoPlay
             loop
             muted
@@ -45,8 +47,7 @@ const HeroSection = () => (
                     <br/>
                     <span className="text-authority-green">operations fail.</span>
                  </h1>
-
-                <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
+                 <div className="max-w-2xl text-secondary-text text-lg md:text-xl !leading-relaxed">
                     <p>When work lives in people’s heads, things get missed.</p>
                     <p className="font-semibold text-primary-text">MoreMeets Standards™ turn critical work into written, repeatable execution.</p>
                 </div>
@@ -105,73 +106,6 @@ const WhatItIsSection = () => (
     </Section>
 );
 
-const NotPeopleDependentSection = () => (
-     <Section>
-        <div className="container px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                 <div className="space-y-6">
-                    <SectionHeadline className="text-left">Designed to work even when people change.</SectionHeadline>
-                    <div className="space-y-4 text-secondary-text text-lg max-w-xl">
-                        <p>People resign. Teams rotate. Experience gets lost.</p>
-                        <p>MoreMeets Standards™ ensures operations do not collapse when individuals leave.</p>
-                        <p>Every task, frequency, responsibility, and expectation is documented and visible — not remembered.</p>
-                    </div>
-                    <p className="text-xl font-semibold text-authority-green !mt-8">Your operation becomes system-driven, not people-dependent.</p>
-                </div>
-                 <div className="flex flex-col items-center justify-center gap-4">
-                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-                        <Card className="flex items-center gap-4 p-4 w-full max-w-sm bg-alternate-background border-border">
-                            <User className="w-8 h-8 text-secondary-text"/>
-                            <div>
-                                <p className="font-bold text-primary-text">Expert Knowledge</p>
-                                <p className="text-sm text-muted-text">Trapped in one person's head.</p>
-                            </div>
-                        </Card>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
-                      <ArrowRight className="w-8 h-8 text-muted-text rotate-90 md:rotate-0" />
-                    </motion.div>
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5 }}>
-                        <Card className="flex items-center gap-4 p-4 w-full max-w-sm border-authority-green/50 bg-authority-green/10">
-                            <FileText className="w-8 h-8 text-authority-green"/>
-                             <div>
-                                <p className="font-bold text-authority-green">System Knowledge</p>
-                                <p className="text-sm text-muted-text">Embedded in the operation, accessible to all.</p>
-                            </div>
-                        </Card>
-                    </motion.div>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const DailyExecutionSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>So teams always know what to do — and when.</SectionHeadline>
-            <SectionBody>
-                <div>Each standard clearly defines the core components of operational discipline. This removes hesitation, second-guessing, and dependency on supervisors.</div>
-            </SectionBody>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-                {[
-                    "What needs to be done", 
-                    "Who is responsible", 
-                    "How often (daily / weekly / monthly)", 
-                    "Why the task exists (trainer notes)", 
-                    "What happens if it’s missed"
-                ].map((item, index) => (
-                    <motion.div key={item} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-                        <Card className="p-6 text-center h-full border-border bg-background flex items-center justify-center">
-                            <p className="font-bold text-secondary-text">{item}</p>
-                        </Card>
-                    </motion.div>
-                ))}
-            </div>
-        </div>
-    </Section>
-);
-
 const GuidanceSection = () => (
     <Section>
         <div className="container px-4 md:px-6">
@@ -195,165 +129,62 @@ const GuidanceSection = () => (
     </Section>
 );
 
-const AuditProofSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>Your Data is Your Property. Period.</SectionHeadline>
-            <div className="max-w-3xl mx-auto">
-                <Card className="p-6 md:p-8 bg-background border-border shadow-lg">
+const ChaosToControlSection = () => (
+  <Section className="w-full py-16 md:py-24 bg-alternate-background">
+    <div className="container px-4 md:px-6">
+      <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
+        <SectionHeadline>From High Risk to High Confidence</SectionHeadline>
+        <SectionBody className="mt-6">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</SectionBody>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+        {/* Before */}
+        <Card className="border-destructive/50 border-2 flex flex-col bg-background/50">
+          <CardHeader>
+            <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
+            <CardDescription className="text-muted-text">Relying on human memory, verbal instructions, and hope.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-secondary-text flex-1">
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
+            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
+          </CardContent>
+        </Card>
+        {/* After */}
+        <Card className="border-authority-green/50 border-2 bg-background/80 shadow-lg flex flex-col">
+          <CardHeader>
+            <CardTitle className="text-authority-green flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
+            <CardDescription className="text-muted-text">A system of record that ensures excellence every time.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-primary-text flex-1">
+             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+);
+
+
+const PrivacySection = () => (
+    <Section className="w-full py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+            <div className="max-w-3xl mx-auto text-center">
+                <Card className="p-6 md:p-8 bg-alternate-background border-border shadow-lg">
                      <h3 className="font-bold text-lg text-authority-green mb-4">IMPORTANT CLARIFICATION</h3>
                     <div className="space-y-4 text-secondary-text text-base md:text-lg">
-                        <p>MoreMeets does not track or monitor execution digitally. Our framework is **offline by design**.</p>
-                        <p className="font-semibold text-primary-text">We never have access to your operational data. Your data is your property, completely private and secure, under your control.</p>
-                        <p>Instead, the system provides a standardised structure that makes evidence possible, consistent, and audit-acceptable.</p>
+                        <p>MoreMeets does not track or monitor execution digitally.</p>
+                        <p className="font-semibold text-primary-text">Your data is your property. We never have access to your operational information.</p>
+                        <p>Our framework is offline by design, providing a standardised structure that makes evidence possible, consistent, and audit-acceptable—without compromising your privacy.</p>
                     </div>
                 </Card>
             </div>
-            <div className="max-w-4xl mx-auto text-center space-y-6 pt-8">
-                 <SectionBody>
-                    <div>When tasks are Defined, Scheduled, Assigned, and Documented... they naturally produce repeatable proof of work.</div>
-                </SectionBody>
-                <p className="text-primary-text font-semibold text-2xl md:text-3xl !leading-tight">
-                    Auditors don’t ask “Which software did you use?”
-                    <br/>
-                    They ask “Show me how this work is controlled.”
-                </p>
-                <p className="text-authority-green font-bold text-2xl">MoreMeets Standards™ answers that question.</p>
-            </div>
         </div>
     </Section>
 );
-
-const ConsequencesSection = () => (
-    <Section>
-        <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>Most failures start with one missed step.</SectionHeadline>
-             <div className="max-w-4xl mx-auto">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 items-center justify-center font-semibold text-lg text-muted-text">
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.2}} className="text-center"><p>Missed task</p></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.3}} className="text-center"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.4}} className="text-center col-span-2 md:col-span-1"><p>No evidence</p></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}} className="text-center hidden md:block"><ArrowRight className="w-8 h-8 mx-auto" /></motion.div>
-                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{delay: 0.6}} className="text-center mt-4 md:mt-0 col-span-full md:col-span-1 bg-risk-accent/10 text-risk-accent p-3 rounded-lg border border-risk-accent/20"><p>Penalty / shutdown</p></motion.div>
-                </div>
-            </div>
-             <SectionBody>
-                <div className="space-y-4">
-                    <p>Compliance failures rarely come from big negligence. They come from small tasks no one realised were critical.</p>
-                    <p>MoreMeets highlights which tasks are high-risk, which ones auditors care about, and which steps cannot be skipped — so teams understand consequences before mistakes happen.</p>
-                </div>
-            </SectionBody>
-        </div>
-    </Section>
-);
-
-const GlobalComplianceSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="container px-4 md:px-6 text-center space-y-8">
-            <SectionHeadline>Built for global operations. Adaptable locally.</SectionHeadline>
-            <SectionBody>
-                <div className="space-y-4">
-                    <p>Each standard is researched against global compliance expectations, aligned with industry best practices, and designed to be locally customisable.</p>
-                    <p>Whether you operate in one location or many, the structure remains consistent, even if regulations differ.</p>
-                </div>
-            </SectionBody>
-             <p className="font-semibold text-xl text-authority-green">One system. Many industries. Global thinking.</p>
-        </div>
-    </Section>
-);
-
-
-const OneTimePurchaseSection = () => (
-    <Section>
-        <div className="container px-4 md:px-6 text-center space-y-8">
-            <SectionHeadline>Buy once. Build forever.</SectionHeadline>
-            <SectionBody>
-                <div className="space-y-4">
-                    <p>MoreMeets Standards™ is a one-time purchase.</p>
-                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-primary-text font-semibold">
-                        <p className="flex items-center gap-2"><CheckCircle className="w-5 h-5 text-authority-green"/>Lifetime ownership</p>
-                        <p className="flex items-center gap-2"><CheckCircle className="w-5 h-5 text-authority-green"/>Free future updates</p>
-                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No subscriptions</p>
-                        <p className="flex items-center gap-2"><Ban className="w-5 h-5 text-risk-accent"/>No vendor lock-in</p>
-                    </div>
-                </div>
-            </SectionBody>
-             <p className="text-lg text-secondary-text">As regulations evolve, your standards library evolves with you.</p>
-        </div>
-    </Section>
-);
-
-const ComparisonSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="container px-4 md:px-6 text-center space-y-12">
-            <SectionHeadline>Why standards outperform tools and consultants.</SectionHeadline>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-                    <Card className="h-full bg-background border-border text-left p-6">
-                        <CardHeader className="p-0">
-                            <CardTitle className="text-secondary-text flex items-center gap-2"><Handshake className="text-muted-text" /> Consultants</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Expensive, time-bound</span></p>
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Knowledge leaves with them</span></p>
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>No daily execution system</span></p>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
-                     <Card className="h-full bg-background border-border text-left p-6">
-                        <CardHeader className="p-0">
-                            <CardTitle className="text-secondary-text flex items-center gap-2"><CloudIcon className="text-muted-text" /> SaaS Platforms</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3 text-muted-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Subscriptions & dependencies</span></p>
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Internet & tool reliance</span></p>
-                            <p className="flex items-start gap-2"><FileX className="w-4 h-4 text-risk-accent shrink-0 mt-1"/><span>Evidence scattered</span></p>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-                <motion.div initial={{ scale: 0.95, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="lg:col-span-1 md:col-span-2">
-                    <Card className="h-full border-2 border-authority-green/80 bg-authority-green/10 shadow-2xl text-left p-6">
-                        <CardHeader className="p-0">
-                             <CardTitle className="text-authority-green flex items-center gap-2"><CheckCircle className="text-high-contrast-green" /> MoreMeets Standards™</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3 text-primary-text mt-4 p-0">
-                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>One-time ownership</span></p>
-                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Offline & universal</span></p>
-                            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-authority-green shrink-0 mt-1"/><span>Training, execution & audit structure in one place</span></p>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-            </div>
-             <p className="text-center font-semibold text-lg text-authority-green pt-8">Standards don’t expire. Tools do.</p>
-        </div>
-    </Section>
-);
-
-const WhoIsThisForSection = () => {
-    const roles = [
-        "Operations Leaders",
-        "Compliance & Audit Teams",
-        "Multi-Location Businesses",
-        "Regulated Industries",
-        "Founder-led Growing Companies",
-    ];
-    return (
-        <Section id="who-is-this-for">
-            <div className="container px-4 md:px-6 text-center space-y-12">
-                <SectionHeadline>Built for operations where mistakes are costly.</SectionHeadline>
-                 <div className="flex flex-wrap justify-center gap-3">
-                    {roles.map(role => (
-                        <div key={role} className="py-2 px-4 border border-border rounded-full bg-alternate-background text-secondary-text">
-                            <h3 className="font-semibold">{role}</h3>
-                        </div>
-                    ))}
-                </div>
-                <p className="text-center font-semibold text-lg text-muted-text pt-8 max-w-3xl mx-auto">If failure creates risk, fines, or shutdowns — this system is for you.</p>
-            </div>
-        </Section>
-    )
-}
 
 const FinalCTASection = () => (
      <Section className="bg-alternate-background">
@@ -377,16 +208,11 @@ export default function TempDesignClientPage() {
     <main className="flex-1">
       <HeroSection />
       <WhatItIsSection />
-      <NotPeopleDependentSection />
-      <DailyExecutionSection />
       <GuidanceSection />
-      <AuditProofSection />
-      <ConsequencesSection />
-      <GlobalComplianceSection />
-      <OneTimePurchaseSection />
-      <ComparisonSection />
-      <WhoIsThisForSection />
+      <ChaosToControlSection />
+      <PrivacySection />
       <FinalCTASection />
     </main>
   );
 }
+
