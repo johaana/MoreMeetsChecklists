@@ -83,15 +83,10 @@ export function SiteHeader() {
             setIsScrolled(window.scrollY > 20);
         };
 
-        if (isTempDesignPage) {
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); 
-            return () => window.removeEventListener('scroll', handleScroll);
-        } else {
-            // For all other pages, the header is always "scrolled" (i.e., has a background)
-            setIsScrolled(true);
-        }
-    }, [pathname, isTempDesignPage]);
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); 
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
 
     const BrandLogo = () => (
@@ -110,7 +105,7 @@ export function SiteHeader() {
         <header className={cn(
             "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
             isTempDesignPage
-                ? (isScrolled ? "bg-alternate-background border-b border-border" : "bg-transparent border-b border-transparent")
+                ? (isScrolled ? "bg-alternate-background/80 backdrop-blur-sm border-b border-border" : "bg-transparent border-b border-transparent")
                 : "bg-background/95 backdrop-blur-sm border-b"
         )}>
             <div className="flex items-center">
