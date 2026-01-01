@@ -1,26 +1,25 @@
 "use client";
 
 import * as LucideIcons from 'lucide-react';
-import { CheckSquare } from "lucide-react";
 
 export const ICONS = LucideIcons;
-export const Logo = CheckSquare;
+export const Logo = LucideIcons.CheckSquare;
 
 type IconComponentProps = {
   name?: string;
   className?: string;
+  [key: string]: any; 
 };
 
-export const IconComponent = ({ name, className }: IconComponentProps) => {
+export const IconComponent = ({ name, className, ...props }: IconComponentProps) => {
   if (!name) {
-    return <LucideIcons.Package className={className} />;
+    return <LucideIcons.Package className={className} {...props} />;
   }
 
-  const Icon = (ICONS as any)[name];
-
-  return typeof Icon === "function"
-    ? <Icon className={className} />
-    : <LucideIcons.Package className={className} />;
+  const iconName = name.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
+  const Icon = (ICONS as any)[iconName];
+  
+  return Icon ? <Icon className={className} {...props} /> : <LucideIcons.Package className={className} {...props} />;
 };
 
 
@@ -85,23 +84,24 @@ export function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export const ComplianceIcon = ({ standard }: { standard: string }) => {
+export const ComplianceIcon = (props: React.ComponentProps<typeof IconComponent> & { standard: string }) => {
+    const { standard, ...rest } = props;
     if (typeof standard !== 'string' || !standard) {
-        return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
+        return <IconComponent name="Landmark" {...rest} />;
     }
     const s = standard.toUpperCase();
-    if (s.includes('NABH')) return <LucideIcons.Star className="w-4 h-4 text-green-600" />;
-    if (s.includes('JCI')) return <LucideIcons.Globe className="w-4 h-4 text-blue-600" />;
-    if (s.includes('WHO')) return <LucideIcons.HeartPulse className="w-4 h-4 text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <LucideIcons.Award className="w-4 h-4 text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('ISO 27001')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-purple-600" />;
-    if (s.includes('ISO 22000')) return <LucideIcons.Utensils className="w-4 h-4 text-blue-500" />;
-    if (s.includes('HACCP')) return <LucideIcons.ShieldCheck className="w-4 h-4 text-red-600" />;
-    if (s.includes('OSHA')) return <LucideIcons.HardHat className="w-4 h-4 text-orange-600" />;
-    if (s.includes('PGA')) return <LucideIcons.Film className="w-4 h-4 text-yellow-500" />;
-    if (s.includes('FIA')) return <LucideIcons.Award className="w-4 h-4 text-blue-500" />;
-    if (s.includes('IAAPA')) return <LucideIcons.FerrisWheel className="w-4 h-4 text-purple-500" />;
-    if (s.includes('NIST')) return <LucideIcons.BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
-    return <LucideIcons.Landmark className="w-4 h-4 text-gray-500" />;
+    if (s.includes('NABH')) return <IconComponent name="Star" {...rest} className="text-green-600" />;
+    if (s.includes('JCI')) return <IconComponent name="Globe" {...rest} className="text-blue-600" />;
+    if (s.includes('WHO')) return <IconComponent name="HeartPulse" {...rest} className="text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <IconComponent name="Award" {...rest} className="text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <IconComponent name="HardHat" {...rest} className="text-orange-600" />;
+    if (s.includes('ISO 27001')) return <IconComponent name="ShieldCheck" {...rest} className="text-purple-600" />;
+    if (s.includes('ISO 22000')) return <IconComponent name="Utensils" {...rest} className="text-blue-500" />;
+    if (s.includes('HACCP')) return <IconComponent name="ShieldCheck" {...rest} className="text-red-600" />;
+    if (s.includes('OSHA')) return <IconComponent name="HardHat" {...rest} className="text-orange-600" />;
+    if (s.includes('PGA')) return <IconComponent name="Film" {...rest} className="text-yellow-500" />;
+    if (s.includes('FIA')) return <IconComponent name="Award" {...rest} className="text-blue-500" />;
+    if (s.includes('IAAPA')) return <IconComponent name="FerrisWheel" {...rest} className="text-purple-500" />;
+    if (s.includes('NIST')) return <IconComponent name="BriefcaseBusiness" {...rest} className="text-gray-600" />;
+    return <IconComponent name="Landmark" {...rest} className="text-gray-500" />;
 };

@@ -10,19 +10,19 @@
     --card-foreground: 212 88% 13%;
     --popover: 0 0% 100%;
     --popover-foreground: 212 88% 13%;
-    --primary: 212 88% 13%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 145 58% 55%; /* Green */
+    --primary-foreground: 212 40% 4%;
     --secondary: 35 92% 90%;
     --secondary-foreground: 212 88% 13%;
-    --muted: 45 35% 91%;
+    --muted: 220 15% 65%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 38 92% 66%;
-    --accent-foreground: 212 88% 13%;
-    --destructive: 0 84.2% 60.2%;
+    --accent: 0 59% 54%; /* Red */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 59% 54%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214.3 31.8% 91.4%;
+    --border: 212 40% 15%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 212 88% 13%;
+    --ring: 145 58% 55%;
     --radius: 0.75rem;
 
     /* New theme variables from temp design */
@@ -51,19 +51,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 212 40% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 212 88% 13%;
+    --primary: 145 58% 55%; /* Green */
+    --primary-foreground: 212 40% 4%; /* Dark background for green button text */
     --secondary: 212 40% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 212 40% 10%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 38 92% 66%;
-    --accent-foreground: 212 88% 13%;
+    --accent: 0 59% 54%; /* Red */
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 212 40% 15%;
     --input: 212 40% 15%;
-    --ring: 45 74% 60%;
+    --ring: 145 58% 55%;
     
     /* New theme variables from temp design */
     --bg-primary: 212 40% 4%;
