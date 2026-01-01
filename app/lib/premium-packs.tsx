@@ -1858,7 +1858,100 @@ const theme_park_ops_pack: PremiumPack = {
         { text: "Maintain a safe and beautiful park with checklists for park-wide landscaping, housekeeping, and infrastructure safety.", icon: "recycle" },
         { text: "Guarantee food safety across all park outlets with FSSAI/HACCP-aligned hygiene and food handling checklists.", icon: "utensils" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Daily Ride Opening & Safety Checks",
+            department: "Ride Operations",
+            frequency: "Daily",
+            role: "Ride Operator / Supervisor",
+            summary: "Ensures every ride is safe for operation before the first guest boards.",
+            icon: "check-circle",
+            tasks: [
+                { id: "TP-RO-01", description: "Perform a full cycle of the ride with no passengers (empty run).", priority: "High", riskLevel: "High", consequence: "Failure to detect major mechanical or control system faults.", proof: "Ride logbook entry." },
+                { id: "TP-RO-02", description: "Physically check every restraint (lap bar, harness, seatbelt) for proper locking and release.", priority: "High", riskLevel: "High", consequence: "Catastrophic failure of restraint system, rider ejection.", proof: "Signed daily ride inspection sheet." },
+                { id: "TP-RO-03", description: "Test all ride operator controls, including emergency stop buttons.", priority: "High", riskLevel: "High", consequence: "Inability to stop ride in an emergency.", proof: "Control panel function test log." },
+                { id: "TP-RO-04", description: "Inspect the ride structure for any visible cracks, loose bolts, or damage.", priority: "High", riskLevel: "High", consequence: "Structural failure during operation.", proof: "Visual inspection checklist." },
+                { id: "TP-RO-05", description: "Check all ride sensors and proximity switches for correct operation.", priority: "High", riskLevel: "High", consequence: "Block system failure, train collision.", proof: "Sensor test log." },
+                { id: "TP-RO-06", description: "Ensure all ride signage (height restrictions, safety warnings) is in place and legible.", priority: "Medium", riskLevel: "Medium", consequence: "Guests ignoring safety rules, potential for injury.", proof: "Photo of signage at queue entrance." },
+                { id: "TP-RO-07", description: "Clean all ride vehicles and queue areas.", priority: "Low", riskLevel: "Low", consequence: "Poor guest experience.", proof: "Visual confirmation." },
+                { id: "TP-RO-08", description: "Verify communication systems between ride operator stations are working.", priority: "High", riskLevel: "Medium", consequence: "Poor coordination during normal or emergency operations.", proof: "Radio check log." },
+                { id: "TP-RO-09", description: "Review ride's maintenance log for any overnight work or outstanding issues.", priority: "High", riskLevel: "Medium", consequence: "Unaware of recent repairs or known faults.", proof: "Maintenance logbook sign-off." },
+                { id: "TP-RO-10", description: "Ensure the ride area is free of any foreign objects or debris.", priority: "Medium", riskLevel: "Low", consequence: "Debris could interfere with ride mechanism.", proof: "Visual sweep of ride envelope." }
+            ]
+        },
+        {
+            title: "Crowd & Queue Management",
+            department: "Park Operations",
+            frequency: "Ongoing",
+            role: "Area Supervisor",
+            summary: "Manages guest flow to ensure safety and a positive experience in queue lines.",
+            icon: "users",
+            tasks: [
+                { id: "TP-CQ-01", description: "Monitor queue lines to ensure they do not block emergency access routes.", priority: "High", riskLevel: "High", consequence: "Inability for emergency services to access an area.", proof: "Hourly patrol log." },
+                { id: "TP-CQ-02", description: "Deploy additional queue stanchions or staff if wait times exceed a set threshold.", priority: "Medium", riskLevel: "Low", consequence: "Guest dissatisfaction, queue jumping.", proof: "Operations log entry." },
+                { id: "TP-CQ-03", description: "Ensure posted wait times are accurate and updated regularly.", priority: "Medium", riskLevel: "Low", consequence: "Guest frustration and complaints.", proof: "Wait time update log." },
+                { id: "TP-CQ-04", description: "Have staff actively manage merge points and fast-pass lanes to prevent disputes.", priority: "Low", riskLevel: "Low", consequence: "Guest conflicts.", proof: "Direct observation." },
+                { id: "TP-CQ-05", description: "Ensure queue line entertainment or theming is operational.", priority: "Low", riskLevel: "Low", consequence: "Poor guest experience.", proof: "Daily check." },
+                { id: "TP-CQ-06", description: "Provide shade and water fountains in long, outdoor queues.", priority: "Medium", riskLevel: "Medium", consequence: "Heat exhaustion, guest complaints.", proof: "Facility check." },
+                { id: "TP-CQ-07", description: "Handle guests with accessibility needs according to park policy (e.g., alternative access).", priority: "High", riskLevel: "Medium", consequence: "Non-compliance with disability laws, poor guest experience.", proof: "Observation log." },
+                { id: "TP-CQ-08", description: "Communicate any ride delays or closures to guests in the queue.", priority: "High", riskLevel: "Low", consequence: "Guest frustration.", proof: "Log of announcements made." }
+            ]
+        },
+        {
+            title: "Emergency Response Protocol",
+            department: "Safety/Security",
+            frequency: "Per Incident / Monthly Drills",
+            role: "Incident Commander",
+            summary: "A plan for managing common park emergencies like ride stoppages or medical incidents.",
+            icon: "siren",
+            tasks: [
+                { id: "TP-ER-01", description: "Ride Stoppage: Operator to make immediate announcement to guests on ride.", priority: "High", riskLevel: "Medium", consequence: "Guest panic.", proof: "Incident report." },
+                { id: "TP-ER-02", description: "Ride Stoppage: Maintenance team dispatched to location within 3 minutes.", priority: "High", riskLevel: "High", consequence: "Delayed resolution, increased guest anxiety.", proof: "Dispatch log." },
+                { id: "TP-ER-03", description: "Ride Stoppage: If evacuation is needed, follow ride-specific evacuation procedure.", priority: "High", riskLevel: "High", consequence: "Unsafe evacuation, injury to guests or staff.", proof: "Evacuation drill report." },
+                { id: "TP-ER-04", description: "Medical Emergency: First aid team dispatched to location with AED.", priority: "High", riskLevel: "High", consequence: "Delayed medical care.", proof: "First aid dispatch log." },
+                { id: "TP-ER-05", description: "Medical Emergency: Secure the area to provide patient privacy and crowd control.", priority: "Medium", riskLevel: "Low", consequence: "Interference with medical team.", proof: "Security officer's report." },
+                { id: "TP-ER-06", description: "Lost Child: Immediately implement 'Code Adam' or park-specific lost child protocol.", priority: "High", riskLevel: "High", consequence: "Delayed search, potential for child to be harmed.", proof: "Incident report." },
+                { id: "TP-ER-07", description: "Power Failure: Verify backup generators have started for critical rides and lighting.", priority: "High", riskLevel: "High", consequence: "Stuck rides in unsafe positions, park-wide panic.", proof: "Generator log." },
+                { id: "TP-ER-08", description: "Conduct a drill for a different emergency scenario each month.", priority: "High", riskLevel: "Medium", consequence: "Team is unprepared for real events.", proof: "Monthly drill schedule and reports." }
+            ]
+        },
+        {
+            title: "Park Cleanliness & Landscaping",
+            department: "Housekeeping/Horticulture",
+            frequency: "Daily",
+            role: "Area Supervisor",
+            summary: "Maintains the aesthetic appeal and safety of the park's common areas.",
+            icon: "leaf",
+            tasks: [
+                { id: "TP-PC-01", description: "Empty all trash and recycling bins before they overflow.", priority: "High", riskLevel: "Low", consequence: "Negative guest perception, pest attraction.", proof: "Hourly rounds log." },
+                { id: "TP-PC-02", description: "Clean and sanitize all restrooms hourly.", priority: "High", riskLevel: "Medium", consequence: "Hygiene complaints, disease transmission.", proof: "Restroom cleaning log." },
+                { id: "TP-PC-03", description: "Sweep all main pathways and clear any debris or spills.", priority: "High", riskLevel: "Medium", consequence: "Slip and fall hazards.", proof: "Area cleaning log." },
+                { id: "TP-PC-04", description: "Inspect landscaping for any hazards (e.g., low-hanging branches, thorns).", priority: "Medium", riskLevel: "Low", consequence: "Minor guest injuries.", proof: "Horticulture daily report." },
+                { id: "TP-PC-05", description: "Check all water fountains are clean and functional.", priority: "Medium", riskLevel: "Low", consequence: "Guest complaints.", proof: "Daily check." },
+                { id: "TP-PC-06", description: "Wipe down all benches and tables in seating areas.", priority: "Low", riskLevel: "Low", consequence: "Dirty seating.", proof: "Cleaning log." },
+                { id: "TP-PC-07", description: "Check for and remove any graffiti or vandalism.", priority: "Medium", riskLevel: "Low", consequence: "Poor park appearance.", proof: "Incident report." },
+                { id: "TP-PC-08", description: "Ensure irrigation systems are not creating puddles or slip hazards on pathways.", priority: "Medium", riskLevel: "Medium", consequence: "Slip and fall risk.", proof: "Morning walkthrough check." }
+            ]
+        },
+        {
+            title: "F&B Outlet Food Safety (HACCP)",
+            department: "Food & Beverage",
+            frequency: "Daily",
+            role: "Outlet Manager",
+            summary: "Ensures all food outlets in the park comply with food safety standards.",
+            icon: "utensils-crossed",
+            tasks: [
+                { id: "TP-FB-01", description: "Check and log temperatures of all refrigerators, freezers, and hot-holding units.", priority: "High", riskLevel: "High", consequence: "Foodborne illness outbreak.", proof: "Temperature logs." },
+                { id: "TP-FB-02", description: "Ensure all food handlers are following handwashing and glove-use policies.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Manager observation." },
+                { id: "TP-FB-03", description: "Check for correct storage of raw and cooked foods.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Visual check of coolers." },
+                { id: "TP-FB-04", description: "Verify all food items are correctly labeled with 'use by' dates.", priority: "High", riskLevel: "Medium", consequence: "Serving expired food.", proof: "Date check audit." },
+                { id: "TP-FB-05", description: "Sanitize all food-contact surfaces.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Sanitization log." },
+                { id: "TP-FB-06", description: "Ensure pest control measures are in place and effective.", priority: "High", riskLevel: "High", consequence: "Pest infestation, health code violations.", proof: "Pest control logbook." },
+                { id: "TP-FB-07", description: "Check that staff with any illness are not handling food.", priority: "High", riskLevel: "High", consequence: "Spreading of infectious diseases like Norovirus.", proof: "Daily staff wellness check." },
+                { id: "TP-FB-08", description: "Ensure all F&B waste is disposed of correctly in covered bins.", priority: "Medium", riskLevel: "Low", consequence: "Pest attraction.", proof: "Visual check." }
+            ]
+        }
+    ]
 };
 
 const logistics_warehouse_pack: PremiumPack = {
@@ -1891,13 +1984,13 @@ const logistics_warehouse_pack: PremiumPack = {
             "icon": "clipboard-check",
             "tasks": [
                 { "id": "LW-IR-01", "description": "Schedule and confirm delivery appointment with carrier.", "priority": "Medium", "riskLevel": "Low", "consequence": "Dock congestion, delays.", "proof": "Appointment log." },
-                { "id": "LW-IR-02", description: "Inspect truck/container for signs of tampering or damage before unloading.", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting damaged goods, security risk.", "proof": "Inbound inspection form." },
-                { "id": "LW-IR-03", description: "Verify shipment against packing list and purchase order.", "priority": "High", "riskLevel": "High", "consequence": "Inventory discrepancies, paying for incorrect goods.", "proof": "Signed packing list with discrepancies noted." },
-                { "id": "LW-IR-04", description: "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting defective products into inventory.", "proof": "Inbound QC report." },
-                { "id": "LW-IR-05", description: "Record all received items into the Warehouse Management System (WMS).", "priority": "High", "riskLevel": "High", "consequence": "Phantom stock, inability to locate goods.", "proof": "WMS receiving entry." },
-                { "id": "LW-IR-06", description: "Label all pallets/items with internal tracking barcodes.", "priority": "High", "riskLevel": "Low", "consequence": "Inefficient putaway and picking.", "proof": "Photo of labeled pallet." },
-                { "id": "LW-IR-07", description: "Segregate and move goods to the appropriate staging or putaway area.", "priority": "Medium", "riskLevel": "Low", "consequence": "Delays in putaway, dock congestion.", "proof": "Visual confirmation." },
-                { "id": "LW-IR-08", description: "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Financial loss, holding unwanted stock.", "proof": "RTV documentation." }
+                { "id": "LW-IR-02", "description": "Inspect truck/container for signs of tampering or damage before unloading.", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting damaged goods, security risk.", "proof": "Inbound inspection form." },
+                { "id": "LW-IR-03", "description": "Verify shipment against packing list and purchase order.", "priority": "High", "riskLevel": "High", "consequence": "Inventory discrepancies, paying for incorrect goods.", "proof": "Signed packing list with discrepancies noted." },
+                { "id": "LW-IR-04", "description": "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting defective products into inventory.", "proof": "Inbound QC report." },
+                { "id": "LW-IR-05", "description": "Record all received items into the Warehouse Management System (WMS).", "priority": "High", "riskLevel": "High", "consequence": "Phantom stock, inability to locate goods.", "proof": "WMS receiving entry." },
+                { "id": "LW-IR-06", "description": "Label all pallets/items with internal tracking barcodes.", "priority": "High", "riskLevel": "Low", "consequence": "Inefficient putaway and picking.", "proof": "Photo of labeled pallet." },
+                { "id": "LW-IR-07", "description": "Segregate and move goods to the appropriate staging or putaway area.", "priority": "Medium", "riskLevel": "Low", "consequence": "Delays in putaway, dock congestion.", "proof": "Visual confirmation." },
+                { "id": "LW-IR-08", "description": "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Financial loss, holding unwanted stock.", "proof": "RTV documentation." }
             ]
         },
         {
@@ -2388,6 +2481,7 @@ export const premiumPacks: PremiumPack[] = [
 
 
     
+
 
 
 
