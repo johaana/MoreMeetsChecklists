@@ -71,10 +71,10 @@ html {
   --bg-secondary: 157 16% 9%; /* Deep Grey-Green #141A17 */
   --surface-card: 157 16% 9%;
   --text-primary: 140 10% 96%; /* Off-white #F4F6F5 */
-  --text-secondary: 150 7% 61%; /* Muted grey #9AA4A0 */
+  --text-secondary: 150 7% 75%; /* Muted grey #C7CFCC */
   --accent-authority: 145 58% 55%; /* Calm Green #2ECC71 */
-  --accent-urgency: 45 88% 60%; /* Urgency/Risk Amber/Yellow #F4C430 */
-  --accent-cta: 45 88% 60%; /* CTA #F4C430 */
+  --accent-urgency: 45 90% 57%; /* Urgency/Risk Amber/Yellow #F4C430 */
+  --accent-cta: 145 58% 55%; /* CTA Green #2ECC71 */
   --accent-risk: 0 59% 54%; /* Deep Red #C84848 */
   --border-color: 157 9% 15%; /* #222826 */
 

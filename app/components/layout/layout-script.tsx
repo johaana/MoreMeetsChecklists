@@ -8,7 +8,7 @@ export function LayoutScript() {
   const pathname = usePathname();
 
   // Do not load Brevo script on the blog page or temp design page
-  if (pathname === '/blog' || pathname === '/temp-design-preview') {
+  if (pathname === '/blog' || pathname.startsWith('/temp-design-preview')) {
     return null;
   }
 
