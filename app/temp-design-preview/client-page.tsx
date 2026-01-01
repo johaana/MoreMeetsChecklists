@@ -21,7 +21,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 const HeroSection = () => (
     <section className="relative w-full flex items-center justify-center text-white overflow-hidden min-h-screen">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1717666275/pexels-tima-miroshnichenko-5717019_1080p_r6t985.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
             autoPlay
             loop
             muted
@@ -39,7 +39,7 @@ const HeroSection = () => (
                     <br/>
                     Your business shouldn’t suffer for it.
                 </h1>
-                <div className="space-y-2 text-lg" style={{ color: 'var(--text-secondary)'}}>
+                <div className="space-y-2 text-lg" style={{color: 'var(--text-secondary)'}}>
                     <p>When work depends on memory, experience, or “who’s on shift,” processes break under pressure — during growth, audits, turnover, or emergencies.</p>
                     <p>MoreMeets gives teams a clear, structured way to do work right — every time.</p>
                 </div>
@@ -262,5 +262,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
-    
