@@ -26,28 +26,28 @@ export const HeroSection = () => (
         />
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[48%] min-w-[550px] space-y-4">
-                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05]" style={{ fontFamily: 'Inter Tight, sans-serif', color: 'hsl(var(--primary-text))', letterSpacing: '-0.02em' }}>
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05] text-primary-foreground" style={{ fontFamily: 'Inter Tight, sans-serif', letterSpacing: '-0.02em' }}>
                     People forget.
                     <br/>
                     Your business
                     <br/>
                     shouldn’t pay for it.
                 </h1>
-                <p className="text-lg max-w-[520px]" style={{color: 'hsl(var(--secondary-text))', lineHeight: 1.5}}>
+                <p className="text-lg max-w-[520px] text-secondary-text" style={{lineHeight: 1.5}}>
                     When work lives in people’s heads, execution breaks
                     during audits, shift changes, growth, and emergencies.
                 </p>
-                <p className="text-lg font-medium" style={{color: 'hsl(var(--accent-urgency))', letterSpacing: '0.01em'}}>
+                <p className="text-lg font-medium text-destructive" style={{ letterSpacing: '0.01em'}}>
                    Consistency can’t depend on memory.
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-6">
-                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button asChild variant="link" className="p-0 h-auto text-sm" style={{color: 'hsl(var(--secondary-text))'}}>
+                    <Button asChild variant="link" className="p-0 h-auto text-sm text-secondary-text">
                          <Link href="#how-it-works">See how it works &rarr;</Link>
                     </Button>
                 </div>
