@@ -35,6 +35,7 @@ export const HeroSection = () => (
                 </h1>
                 <p className="text-lg max-w-[520px] text-secondary-text" style={{lineHeight: 1.5}}>
                     Everyone knows the work — until memory and judgment take over.
+                    <br/>
                     That’s when execution breaks: audits, shift changes, growth, emergencies.
                 </p>
                 <p className="text-lg font-bold text-red-500" style={{ letterSpacing: '0.01em'}}>
