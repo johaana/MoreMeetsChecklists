@@ -1190,101 +1190,101 @@ const facility_management_blueprint: PremiumPack = {
     ],
     checklists: [
         {
-            "title": "Daily Facility Walkthrough",
-            "department": "Facilities",
-            "frequency": "Daily",
-            "role": "Facility Manager",
-            "summary": "A proactive daily patrol to identify and rectify issues before they become major problems.",
-            "icon": "clipboard-check",
-            "tasks": [
-                { "id": "FMB-DFW-01", "description": "Check all common areas (lobbies, receptions) for cleanliness and order.", "priority": "High", "riskLevel": "Low", "consequence": "Negative impression on visitors and employees.", "proof": "Walkthrough log." },
-                { "id": "FMB-DFW-02", "description": "Inspect all restrooms for cleanliness, functionality, and stock levels.", "priority": "High", "riskLevel": "Medium", "consequence": "Employee complaints, hygiene issues.", "proof": "Restroom inspection log." },
-                { "id": "FMB-DFW-03", "description": "Verify temperature and air quality in all zones are comfortable.", "priority": "Medium", "riskLevel": "Low", "consequence": "Reduced employee productivity and comfort.", "proof": "BMS (Building Management System) reading." },
-                { "id": "FMB-DFW-04", "description": "Check for any safety hazards (e.g., slip/trip hazards, blocked fire exits).", "priority": "High", "riskLevel": "High", "consequence": "Employee/visitor injury, legal liability.", "proof": "Hazard report log." },
-                { "id": "FMB-DFW-05", "description": "Inspect exterior of the building for cleanliness, damage, or security concerns.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor curb appeal, potential security breaches.", "proof": "Exterior inspection log." },
-                { "id": "FMB-DFW-06", "description": "Check functionality of a random sample of access control doors.", "priority": "High", "riskLevel": "Medium", "consequence": "Security system failure.", "proof": "Access control system event log." },
-                { "id": "FMB-DFW-07", "description": "Ensure all meeting rooms are tidy and equipment (projectors, phones) is functional.", "priority": "Medium", "riskLevel": "Low", "consequence": "Meeting disruptions, lost productivity.", "proof": "Meeting room checklist." },
-                { "id": "FMB-DFW-08", "description": "Check pantries/cafeterias for cleanliness and functioning appliances.", "priority": "Medium", "riskLevel": "Low", "consequence": "Employee dissatisfaction, hygiene risks.", "proof": "Pantry inspection log." },
-                { "id": "FMB-DFW-09", "description": "Raise work orders for all identified issues in the CMMS/ticketing system.", "priority": "High", "riskLevel": "Low", "consequence": "Issues are not tracked and resolved.", "proof": "Copies of new work orders." },
-                { "id": "FMB-DFW-10", "description": "Follow up on critical open work orders from the previous day.", "priority": "High", "riskLevel": "Medium", "consequence": "Critical failures are not resolved promptly.", "proof": "Updated notes in CMMS." }
+            title: "Daily Facility Walkthrough",
+            department: "Facilities",
+            frequency: "Daily",
+            role: "Facility Manager",
+            summary: "A proactive daily patrol to identify and rectify issues before they become major problems.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "FMB-DFW-01", description: "Check all common areas (lobbies, receptions) for cleanliness and order.", priority: "High", riskLevel: "Low", consequence: "Negative impression on visitors and employees.", proof: "Walkthrough log." },
+                { id: "FMB-DFW-02", description: "Inspect all restrooms for cleanliness, functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Employee complaints, hygiene issues.", proof: "Restroom inspection log." },
+                { id: "FMB-DFW-03", description: "Verify temperature and air quality in all zones are comfortable.", priority: "Medium", riskLevel: "Low", consequence: "Reduced employee productivity and comfort.", proof: "BMS (Building Management System) reading." },
+                { id: "FMB-DFW-04", description: "Check for any safety hazards (e.g., slip/trip hazards, blocked fire exits).", priority: "High", riskLevel: "High", consequence: "Employee/visitor injury, legal liability.", proof: "Hazard report log." },
+                { id: "FMB-DFW-05", description: "Inspect exterior of the building for cleanliness, damage, or security concerns.", priority: "Medium", riskLevel: "Medium", consequence: "Poor curb appeal, potential security breaches.", proof: "Exterior inspection log." },
+                { id: "FMB-DFW-06", description: "Check functionality of a random sample of access control doors.", priority: "High", riskLevel: "Medium", consequence: "Security system failure.", proof: "Access control system event log." },
+                { id: "FMB-DFW-07", description: "Ensure all meeting rooms are tidy and equipment (projectors, phones) is functional.", priority: "Medium", riskLevel: "Low", consequence: "Meeting disruptions, lost productivity.", proof: "Meeting room checklist." },
+                { id: "FMB-DFW-08", description: "Check pantries/cafeterias for cleanliness and functioning appliances.", priority: "Medium", riskLevel: "Low", consequence: "Employee dissatisfaction, hygiene risks.", proof: "Pantry inspection log." },
+                { id: "FMB-DFW-09", description: "Raise work orders for all identified issues in the CMMS/ticketing system.", priority: "High", riskLevel: "Low", consequence: "Issues are not tracked and resolved.", proof: "Copies of new work orders." },
+                { id: "FMB-DFW-10", description: "Follow up on critical open work orders from the previous day.", priority: "High", riskLevel: "Medium", consequence: "Critical failures are not resolved promptly.", proof: "Updated notes in CMMS." }
             ]
         },
         {
-            "title": "Preventive Maintenance (MEP)",
-            "department": "Engineering",
-            "frequency": "Weekly/Monthly",
-            "role": "Chief Engineer",
-            "summary": "A scheduled checklist for maintaining critical Mechanical, Electrical, and Plumbing systems.",
-            "icon": "wrench",
-            "tasks": [
-                { "id": "FMB-MEP-01", "description": "HVAC: Inspect and clean/replace filters on all Air Handling Units (AHUs).", "priority": "High", "riskLevel": "Medium", "consequence": "Poor air quality, increased energy costs, system failure.", "proof": "Signed maintenance log for each AHU." },
-                { "id": "FMB-MEP-02", "description": "Electrical: Test backup generator under load for at least 30 minutes.", "priority": "High", "riskLevel": "High", "consequence": "Business shutdown during a power outage.", "proof": "Generator test log with load readings." },
-                { "id": "FMB-MEP-03", "description": "Electrical: Test UPS systems and verify battery health.", "priority": "High", "riskLevel": "High", "consequence": "Data corruption/loss in data centers during power flicker.", "proof": "UPS test report." },
-                { "id": "FMB-MEP-04", "description": "Plumbing: Check and test all water pumps (booster, transfer, sump).", "priority": "Medium", "riskLevel": "Medium", "consequence": "No water supply, flooding.", "proof": "Pump test log." },
-                { "id": "FMB-MEP-05", "description": "Fire Safety: Test a sample of fire alarm call points, sprinklers (flow switch), and smoke detectors.", "priority": "High", "riskLevel": "High", "consequence": "Fire detection/suppression system failure.", "proof": "Fire alarm test report." },
-                { "id": "FMB-MEP-06", "description": "Lifts: Perform a monthly safety and performance check (leveling, doors, emergency phone).", "priority": "High", "riskLevel": "High", "consequence": "Entrapment, injury.", "proof": "Internal lift check log." },
-                { "id": "FMB-MEP-07", "description": "Water Treatment: Check WTP/STP operation and water quality reports.", "priority": "High", "riskLevel": "Medium", "consequence": "Environmental non-compliance, unsafe water.", "proof": "Water quality test reports." },
-                { "id": "FMB-MEP-08", "description": "Electrical: Conduct thermal imaging of main electrical panels to find hotspots (Quarterly).", "priority": "High", "riskLevel": "High", "consequence": "Electrical fire.", "proof": "Thermal imaging report." },
-                { "id": "FMB-MEP-09", "description": "Building Management System: Verify all critical system alarms are reporting correctly to the BMS.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Silent failures of critical equipment.", "proof": "BMS alarm test log." },
-                { "id": "FMB-MEP-10", "description": "Review and update the schedule of all OEM/vendor Annual Maintenance Contracts (AMCs).", "priority": "High", "riskLevel": "Low", "consequence": "Lapse in critical equipment servicing.", "proof": "AMC tracker spreadsheet." }
+            title: "Preventive Maintenance (MEP)",
+            department: "Engineering",
+            frequency: "Weekly/Monthly",
+            role: "Chief Engineer",
+            summary: "A scheduled checklist for maintaining critical Mechanical, Electrical, and Plumbing systems.",
+            icon: "wrench",
+            tasks: [
+                { id: "FMB-MEP-01", description: "HVAC: Inspect and clean/replace filters on all Air Handling Units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log for each AHU." },
+                { id: "FMB-MEP-02", description: "Electrical: Test backup generator under load for at least 30 minutes.", priority: "High", riskLevel: "High", consequence: "Business shutdown during a power outage.", proof: "Generator test log with load readings." },
+                { id: "FMB-MEP-03", description: "Electrical: Test UPS systems and verify battery health.", priority: "High", riskLevel: "High", consequence: "Data corruption/loss in data centers during power flicker.", proof: "UPS test report." },
+                { id: "FMB-MEP-04", description: "Plumbing: Check and test all water pumps (booster, transfer, sump).", priority: "Medium", riskLevel: "Medium", consequence: "No water supply, flooding.", proof: "Pump test log." },
+                { id: "FMB-MEP-05", description: "Fire Safety: Test a sample of fire alarm call points, sprinklers (flow switch), and smoke detectors.", priority: "High", riskLevel: "High", consequence: "Fire detection/suppression system failure.", proof: "Fire alarm test report." },
+                { id: "FMB-MEP-06", description: "Lifts: Perform a monthly safety and performance check (leveling, doors, emergency phone).", priority: "High", riskLevel: "High", consequence: "Entrapment, injury.", proof: "Internal lift check log." },
+                { id: "FMB-MEP-07", description: "Water Treatment: Check WTP/STP operation and water quality reports.", priority: "High", riskLevel: "Medium", consequence: "Environmental non-compliance, unsafe water.", proof: "Water quality test reports." },
+                { id: "FMB-MEP-08", description: "Electrical: Conduct thermal imaging of main electrical panels to find hotspots (Quarterly).", priority: "High", riskLevel: "High", consequence: "Electrical fire.", proof: "Thermal imaging report." },
+                { id: "FMB-MEP-09", description: "Building Management System: Verify all critical system alarms are reporting correctly to the BMS.", priority: "Medium", riskLevel: "Medium", consequence: "Silent failures of critical equipment.", proof: "BMS alarm test log." },
+                { id: "FMB-MEP-10", description: "Review and update the schedule of all OEM/vendor Annual Maintenance Contracts (AMCs).", priority: "High", riskLevel: "Low", consequence: "Lapse in critical equipment servicing.", proof: "AMC tracker spreadsheet." }
             ]
         },
         {
-            "title": "Housekeeping & Hygiene Audit",
-            "department": "Soft Services",
-            "frequency": "Weekly",
-            "role": "Housekeeping Manager",
-            "summary": "Ensures the highest standards of cleanliness and hygiene across the facility.",
-            "icon": "sparkles",
-            "tasks": [
-                { "id": "FMB-HHA-01", "description": "Restroom Audit: Check for cleanliness, odors, fixture functionality, and stock levels.", "priority": "High", "riskLevel": "Medium", "consequence": "Major source of employee complaints.", "proof": "Scored restroom audit form." },
-                { "id": "FMB-HHA-02", "description": "Workstation Area: Check for dust on surfaces, clean carpets/floors, and empty bins.", "priority": "Medium", "riskLevel": "Low", "consequence": "Untidy work environment.", "proof": "Zone inspection checklist." },
-                { "id": "FMB-HHA-03", "description": "Pantry/Cafeteria: Check for food debris, clean appliances (microwaves, etc.), and sanitized tables.", "priority": "High", "riskLevel": "Medium", "consequence": "Hygiene risk, pest attraction.", "proof": "Pantry audit form." },
-                { "id": "FMB-HHA-04", "description": "Glass & Facade: Check for clean windows and facade, especially in public-facing areas.", "priority": "Low", "riskLevel": "Low", "consequence": "Poor corporate image.", "proof": "Visual inspection." },
-                { "id": "FMB-HHA-05", "description": "Waste Management: Check for proper segregation and timely disposal of waste.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Environmental non-compliance, odors.", "proof": "Waste area inspection log." },
-                { "id": "FMB-HHA-06", "description": "Pest Control: Review pest control logbook and check bait stations.", "priority": "High", "riskLevel": "High", "consequence": "Infestation.", "proof": "Pest control vendor's service report." },
-                { "id": "FMB-HHA-07", "description": "Stock Check: Verify inventory of cleaning supplies and consumables.", "priority": "Medium", "riskLevel": "Low", "consequence": "Running out of essential supplies.", "proof": "Stock register." },
-                { "id": "FMB-HHA-08", "description": "Staff Uniform & PPE: Check that all housekeeping staff are in clean uniforms and using correct PPE.", "priority": "Medium", "riskLevel": "Low", "consequence": "Unprofessionalism, safety risk to staff.", "proof": "Staff inspection notes." },
-                { "id": "FMB-HHA-09", "description": "Review cleaning equipment for functionality and cleanliness.", "priority": "Medium", "riskLevel": "Low", "consequence": "Ineffective cleaning.", "proof": "Equipment check log." },
-                { "id": "FMB-HHA-10", "description": "Follow up on any housekeeping-related complaints from the previous week.", "priority": "High", "riskLevel": "Medium", "consequence": "Recurring service failures.", "proof": "Complaint tracker update." }
+            title: "Housekeeping & Hygiene Audit",
+            department: "Soft Services",
+            frequency: "Weekly",
+            role: "Housekeeping Manager",
+            summary: "Ensures the highest standards of cleanliness and hygiene across the facility.",
+            icon: "sparkles",
+            tasks: [
+                { id: "FMB-HHA-01", description: "Restroom Audit: Check for cleanliness, odors, fixture functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Major source of employee complaints.", proof: "Scored restroom audit form." },
+                { id: "FMB-HHA-02", description: "Workstation Area: Check for dust on surfaces, clean carpets/floors, and empty bins.", priority: "Medium", riskLevel: "Low", consequence: "Untidy work environment.", proof: "Zone inspection checklist." },
+                { id: "FMB-HHA-03", description: "Pantry/Cafeteria: Check for food debris, clean appliances (microwaves, etc.), and sanitized tables.", priority: "High", riskLevel: "Medium", consequence: "Hygiene risk, pest attraction.", proof: "Pantry audit form." },
+                { id: "FMB-HHA-04", description: "Glass & Facade: Check for clean windows and facade, especially in public-facing areas.", priority: "Low", riskLevel: "Low", consequence: "Poor corporate image.", proof: "Visual inspection." },
+                { id: "FMB-HHA-05", description: "Waste Management: Check for proper segregation and timely disposal of waste.", priority: "Medium", riskLevel: "Medium", consequence: "Environmental non-compliance, odors.", proof: "Waste area inspection log." },
+                { id: "FMB-HHA-06", description: "Pest Control: Review pest control logbook and check bait stations.", priority: "High", riskLevel: "High", consequence: "Infestation.", proof: "Pest control vendor's service report." },
+                { id: "FMB-HHA-07", description: "Stock Check: Verify inventory of cleaning supplies and consumables.", priority: "Medium", riskLevel: "Low", consequence: "Running out of essential supplies.", proof: "Stock register." },
+                { id: "FMB-HHA-08", description: "Staff Uniform & PPE: Check that all housekeeping staff are in clean uniforms and using correct PPE.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessionalism, safety risk to staff.", proof: "Staff inspection notes." },
+                { id: "FMB-HHA-09", description: "Review cleaning equipment for functionality and cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Ineffective cleaning.", proof: "Equipment check log." },
+                { id: "FMB-HHA-10", description: "Follow up on any housekeeping-related complaints from the previous week.", priority: "High", riskLevel: "Medium", consequence: "Recurring service failures.", proof: "Complaint tracker update." }
             ]
         },
         {
-            "title": "Physical Security & Access Control",
-            "department": "Security",
-            "frequency": "Weekly",
-            "role": "Security Manager",
-            "summary": "An audit to ensure the physical security of the facility is robust and uncompromised.",
-            "icon": "shield-check",
-            "tasks": [
-                { "id": "FMB-PSA-01", "description": "Perimeter Audit: Walk the entire facility perimeter to check for breaches in fences/walls.", "priority": "High", "riskLevel": "High", "consequence": "Unauthorized entry.", "proof": "Perimeter patrol log." },
-                { "id": "FMB-PSA-02", "description": "CCTV Audit: Verify all cameras are recording, have clear views, and have adequate storage.", "priority": "High", "riskLevel": "High", "consequence": "Inability to investigate incidents.", "proof": "CCTV health check report." },
-                { "id": "FMB-PSA-03", "description": "Access Control Audit: Review access logs for sensitive areas (e.g., server rooms) for unauthorized entries.", "priority": "High", "riskLevel": "High", "consequence": "Data theft, sabotage.", "proof": "Access control log audit report." },
-                { "id": "FMB-PSA-04", "description": "Visitor Management: Audit visitor logs to ensure all visitors were signed in, issued a badge, and escorted.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Unauthorized individuals on premises.", "proof": "Sample audit of visitor logs." },
-                { "id": "FMB-PSA-05", "description": "Key Management: Audit the key register to ensure all keys are accounted for.", "priority": "High", "riskLevel": "High", "consequence": "Lost keys can compromise entire facility.", "proof": "Key register audit sign-off." },
-                { "id": "FMB-PSA-06", "description": "Lighting Check: Conduct a nighttime audit of all exterior and parking lot lighting.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Dark spots provide cover for criminals.", "proof": "Night patrol report." },
-                { "id": "FMB-PSA-07", "description": "Alarm System Test: Test a sample of door alarms, motion detectors, and panic buttons.", "priority": "High", "riskLevel": "High", "consequence": "Alarm failure during a real incident.", "proof": "Alarm test log." },
-                { "id": "FMB-PSA-08", "description": "Guard Tour Verification: Check that guard patrol tours are being completed on schedule.", "priority": "High", "riskLevel": "Medium", "consequence": "Gaps in security coverage.", "proof": "Guard tour system report." },
-                { "id": "FMB-PSA-09", "description": "Review incident reports from the past week for any trends or required actions.", "priority": "Medium", "riskLevel": "Low", "consequence": "Failure to learn from security incidents.", "proof": "Incident report summary." },
-                { "id": "FMB-PSA-10", "description": "Check that security staff have up-to-date licenses and training certifications.", "priority": "High", "riskLevel": "Medium", "consequence": "Non-compliant or untrained security force.", "proof": "Review of HR training records." }
+            title: "Physical Security & Access Control",
+            department: "Security",
+            frequency: "Weekly",
+            role: "Security Manager",
+            summary: "An audit to ensure the physical security of the facility is robust and uncompromised.",
+            icon: "shield-check",
+            tasks: [
+                { id: "FMB-PSA-01", description: "Perimeter Audit: Walk the entire facility perimeter to check for breaches in fences/walls.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry.", proof: "Perimeter patrol log." },
+                { id: "FMB-PSA-02", description: "CCTV Audit: Verify all cameras are recording, have clear views, and have adequate storage.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report." },
+                { id: "FMB-PSA-03", description: "Access Control Audit: Review access logs for sensitive areas (e.g., server rooms) for unauthorized entries.", priority: "High", riskLevel: "High", consequence: "Data theft, sabotage.", proof: "Access control log audit report." },
+                { id: "FMB-PSA-04", description: "Visitor Management: Audit visitor logs to ensure all visitors were signed in, issued a badge, and escorted.", priority: "Medium", riskLevel: "Medium", consequence: "Unauthorized individuals on premises.", proof: "Sample audit of visitor logs." },
+                { id: "FMB-PSA-05", description: "Key Management: Audit the key register to ensure all keys are accounted for.", priority: "High", riskLevel: "High", consequence: "Lost keys can compromise entire facility.", proof: "Key register audit sign-off." },
+                { id: "FMB-PSA-06", description: "Lighting Check: Conduct a nighttime audit of all exterior and parking lot lighting.", priority: "Medium", riskLevel: "Medium", consequence: "Dark spots provide cover for criminals.", proof: "Night patrol report." },
+                { id: "FMB-PSA-07", description: "Alarm System Test: Test a sample of door alarms, motion detectors, and panic buttons.", priority: "High", riskLevel: "High", consequence: "Alarm failure during a real incident.", proof: "Alarm test log." },
+                { id: "FMB-PSA-08", description: "Guard Tour Verification: Check that guard patrol tours are being completed on schedule.", priority: "High", riskLevel: "Medium", consequence: "Gaps in security coverage.", proof: "Guard tour system report." },
+                { id: "FMB-PSA-09", description: "Review incident reports from the past week for any trends or required actions.", priority: "Medium", riskLevel: "Low", consequence: "Failure to learn from security incidents.", proof: "Incident report summary." },
+                { id: "FMB-PSA-10", description: "Check that security staff have up-to-date licenses and training certifications.", priority: "High", riskLevel: "Medium", consequence: "Non-compliant or untrained security force.", proof: "Review of HR training records." }
             ]
         },
         {
-            "title": "Vendor & Contract Management",
-            "department": "Administration",
-            "frequency": "Monthly",
-            "role": "Admin Manager",
-            "summary": "Ensures all vendors are meeting their SLAs and contracts are up-to-date.",
-            "icon": "handshake",
-            "tasks": [
-                { "id": "FMB-VCM-01", "description": "Review performance of critical vendors (e.g., housekeeping, security, M&E) against their SLAs.", "priority": "High", "riskLevel": "Medium", "consequence": "Paying for sub-par service.", "proof": "Monthly vendor performance scorecard." },
-                { "id": "FMB-VCM-02", "description": "Verify all vendor invoices against work orders or service reports before processing payment.", "priority": "High", "riskLevel": "High", "consequence": "Paying for work not done or over-billing.", "proof": "Signed-off invoices." },
-                { "id": "FMB-VCM-03", "description": "Ensure all vendors have submitted required compliance documents (e.g., insurance, licenses).", "priority": "High", "riskLevel": "High", "consequence": "Liability risk from non-compliant vendors.", "proof": "Vendor compliance file audit." },
-                { "id": "FMB-VCM-04", "description": "Track all contract renewal dates and start renewal process 90 days in advance.", "priority": "High", "riskLevel": "Medium", "consequence": "Lapse in critical services.", "proof": "Contract management tracker." },
-                { "id": "FMB-VCM-05", "description": "Conduct a monthly meeting with key vendor account managers.", "priority": "Medium", "riskLevel": "Low", "consequence": "Poor relationship, unresolved issues fester.", "proof": "Minutes of meeting." },
-                { "id": "FMB-VCM-06", "description": "Issue formal non-conformance reports for any SLA failures.", "priority": "Medium", "riskLevel": "Medium", "consequence": "SLA failures are not officially documented and penalized.", "proof": "Copies of non-conformance reports." },
-                { "id": "FMB-VCM-07", "description": "Onboard new vendors with a formal induction on site rules, safety, and procedures.", "priority": "High", "riskLevel": "Medium", "consequence": "Vendors creating safety or security risks.", "proof": "Signed vendor induction form." },
-                { "id": "FMB-VCM-08", "description": "Review and approve all vendor work permits before allowing work to start.", "priority": "High", "riskLevel": "High", "consequence": "Unsafe or disruptive work being carried out.", "proof": "Signed work permit." }
+            title: "Vendor & Contract Management",
+            department: "Administration",
+            frequency: "Monthly",
+            role: "Admin Manager",
+            summary: "Ensures all vendors are meeting their SLAs and contracts are up-to-date.",
+            icon: "handshake",
+            tasks: [
+                { id: "FMB-VCM-01", description: "Review performance of critical vendors (e.g., housekeeping, security, M&E) against their SLAs.", priority: "High", riskLevel: "Medium", consequence: "Paying for sub-par service.", proof: "Monthly vendor performance scorecard." },
+                { id: "FMB-VCM-02", description: "Verify all vendor invoices against work orders or service reports before processing payment.", priority: "High", riskLevel: "High", consequence: "Paying for work not done or over-billing.", proof: "Signed-off invoices." },
+                { id: "FMB-VCM-03", description: "Ensure all vendors have submitted required compliance documents (e.g., insurance, licenses).", priority: "High", riskLevel: "High", consequence: "Liability risk from non-compliant vendors.", proof: "Vendor compliance file audit." },
+                { id: "FMB-VCM-04", description: "Track all contract renewal dates and start renewal process 90 days in advance.", priority: "High", riskLevel: "Medium", consequence: "Lapse in critical services.", proof: "Contract management tracker." },
+                { id: "FMB-VCM-05", description: "Conduct a monthly meeting with key vendor account managers.", priority: "Medium", riskLevel: "Low", consequence: "Poor relationship, unresolved issues fester.", proof: "Minutes of meeting." },
+                { id: "FMB-VCM-06", description: "Issue formal non-conformance reports for any SLA failures.", priority: "Medium", riskLevel: "Medium", consequence: "SLA failures are not officially documented and penalized.", proof: "Copies of non-conformance reports." },
+                { id: "FMB-VCM-07", description: "Onboard new vendors with a formal induction on site rules, safety, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Vendors creating safety or security risks.", proof: "Signed vendor induction form." },
+                { id: "FMB-VCM-08", description: "Review and approve all vendor work permits before allowing work to start.", priority: "High", riskLevel: "High", consequence: "Unsafe or disruptive work being carried out.", proof: "Signed work permit." }
             ]
         }
     ]
@@ -1312,73 +1312,73 @@ const corporate_legal_compliance_starter_kit: PremiumPack = {
     ],
     checklists: [
         {
-            "title": "Statutory Filing Calendar",
-            "department": "Legal/Compliance",
-            "frequency": "Monthly",
-            "role": "Compliance Officer",
-            "summary": "Tracks all mandatory government filings to ensure deadlines are never missed.",
-            "icon": "calendar-days",
-            "tasks": [
-                { "id": "CLC-SFC-01", "description": "Update calendar with all ROC filing deadlines for the quarter.", "priority": "High", "riskLevel": "High", "consequence": "Penalties, company strike-off.", "proof": "Updated calendar file." },
-                { "id": "CLC-SFC-02", "description": "Update calendar with all Income Tax filing deadlines (TDS, Advance Tax, etc.).", "priority": "High", "riskLevel": "High", "consequence": "Interest and penalties.", "proof": "Updated calendar file." },
-                { "id": "CLC-SFC-03", "description": "Update calendar with all GST filing deadlines (GSTR-1, 3B, etc.).", "priority": "High", "riskLevel": "High", "consequence": "Penalties, loss of input tax credit.", "proof": "Updated calendar file." },
-                { "id": "CLC-SFC-04", "description": "Update calendar with all Labour Law filing deadlines (PF, ESI, PT).", "priority": "High", "riskLevel": "Medium", "consequence": "Penalties, employee disputes.", "proof": "Updated calendar file." },
-                { "id": "CLC-SFC-05", "description": "Assign responsibility for each filing to a specific person.", "priority": "High", "riskLevel": "Low", "consequence": "Lack of ownership, missed deadlines.", "proof": "Updated calendar file with owner names." },
-                { "id": "CLC-SFC-06", "description": "Send reminders 15 days and 3 days before each deadline.", "priority": "Medium", "riskLevel": "Low", "consequence": "Deadlines forgotten.", "proof": "Copies of reminder emails." },
-                { "id": "CLC-SFC-07", "description": "Track and confirm completion of each filing.", "priority": "High", "riskLevel": "Medium", "consequence": "Assuming a filing is done when it is not.", "proof": "Filing acknowledgement receipts." },
-                { "id": "CLC-SFC-08", "description": "Conduct a quarterly review of the calendar for any changes in laws or dates.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Using an outdated compliance calendar.", "proof": "Minutes of quarterly review meeting." }
+            title: "Statutory Filing Calendar",
+            department: "Legal/Compliance",
+            frequency: "Monthly",
+            role: "Compliance Officer",
+            summary: "Tracks all mandatory government filings to ensure deadlines are never missed.",
+            icon: "calendar-days",
+            tasks: [
+                { "id": "CLC-SFC-01", description: "Update calendar with all ROC filing deadlines for the quarter.", priority: "High", riskLevel: "High", consequence: "Penalties, company strike-off.", proof: "Updated calendar file." },
+                { "id": "CLC-SFC-02", description: "Update calendar with all Income Tax filing deadlines (TDS, Advance Tax, etc.).", priority: "High", riskLevel: "High", consequence: "Interest and penalties.", proof: "Updated calendar file." },
+                { "id": "CLC-SFC-03", description: "Update calendar with all GST filing deadlines (GSTR-1, 3B, etc.).", priority: "High", riskLevel: "High", consequence: "Penalties, loss of input tax credit.", proof: "Updated calendar file." },
+                { "id": "CLC-SFC-04", description: "Update calendar with all Labour Law filing deadlines (PF, ESI, PT).", priority: "High", riskLevel: "Medium", consequence: "Penalties, employee disputes.", proof: "Updated calendar file." },
+                { "id": "CLC-SFC-05", description: "Assign responsibility for each filing to a specific person.", priority: "High", riskLevel: "Low", consequence: "Lack of ownership, missed deadlines.", proof: "Updated calendar file with owner names." },
+                { "id": "CLC-SFC-06", description: "Send reminders 15 days and 3 days before each deadline.", priority: "Medium", riskLevel: "Low", consequence: "Deadlines forgotten.", proof: "Copies of reminder emails." },
+                { "id": "CLC-SFC-07", description: "Track and confirm completion of each filing.", priority: "High", riskLevel: "Medium", consequence: "Assuming a filing is done when it is not.", proof: "Filing acknowledgement receipts." },
+                { "id": "CLC-SFC-08", description: "Conduct a quarterly review of the calendar for any changes in laws or dates.", priority: "Medium", riskLevel: "Medium", consequence: "Using an outdated compliance calendar.", proof: "Minutes of quarterly review meeting." }
             ]
         },
         {
-            "title": "Policy Management Lifecycle",
-            "department": "HR/Compliance",
-            "frequency": "Per Policy",
-            "role": "HR Manager",
-            "summary": "A framework for drafting, approving, and rolling out company policies.",
-            "icon": "file-text",
-            "tasks": [
-                { "id": "CLC-PML-01", "description": "Draft new policy with clear objectives, scope, and procedures.", "priority": "High", "riskLevel": "Medium", "consequence": "Unclear policy causes confusion.", "proof": "Draft policy document." },
-                { "id": "CLC-PML-02", "description": "Review draft policy with legal and management for approval.", "priority": "High", "riskLevel": "High", "consequence": "Policy has legal flaws or is operationally unfeasible.", "proof": "Email approvals from department heads." },
-                { "id": "CLC-PML-03", "description": "Communicate the new/updated policy to all employees via email and company portal.", "priority": "High", "riskLevel": "Medium", "consequence": "Employees are unaware of new rules.", "proof": "Copy of announcement email." },
-                { "id": "CLC-PML-04", "description": "Obtain digital or physical acknowledgement from every employee.", "priority": "High", "riskLevel": "High", "consequence": "Inability to prove an employee was aware of the policy, legal risk.", "proof": "Signed acknowledgement forms or digital log." },
-                { "id": "CLC-PML-05", "description": "Conduct training sessions for significant policy changes.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Employees do not understand the nuances of the policy.", "proof": "Training attendance sheets." },
-                { "id": "CLC-PML-06", "description": "Schedule an annual review for every policy to ensure it is still relevant and compliant.", "priority": "High", "riskLevel": "Medium", "consequence": "Outdated policies expose the company to new risks.", "proof": "Policy review schedule." }
+            title: "Policy Management Lifecycle",
+            department: "HR/Compliance",
+            frequency: "Per Policy",
+            role: "HR Manager",
+            summary: "A framework for drafting, approving, and rolling out company policies.",
+            icon: "file-text",
+            tasks: [
+                { "id": "CLC-PML-01", description: "Draft new policy with clear objectives, scope, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Unclear policy causes confusion.", proof: "Draft policy document." },
+                { "id": "CLC-PML-02", description: "Review draft policy with legal and management for approval.", priority: "High", riskLevel: "High", consequence: "Policy has legal flaws or is operationally unfeasible.", proof: "Email approvals from department heads." },
+                { "id": "CLC-PML-03", description: "Communicate the new/updated policy to all employees via email and company portal.", priority: "High", riskLevel: "Medium", consequence: "Employees are unaware of new rules.", proof: "Copy of announcement email." },
+                { "id": "CLC-PML-04", description: "Obtain digital or physical acknowledgement from every employee.", priority: "High", riskLevel: "High", consequence: "Inability to prove an employee was aware of the policy, legal risk.", proof: "Signed acknowledgement forms or digital log." },
+                { "id": "CLC-PML-05", description: "Conduct training sessions for significant policy changes.", priority: "Medium", riskLevel: "Medium", consequence: "Employees do not understand the nuances of the policy.", proof: "Training attendance sheets." },
+                { "id": "CLC-PML-06", description: "Schedule an annual review for every policy to ensure it is still relevant and compliant.", priority: "High", riskLevel: "Medium", consequence: "Outdated policies expose the company to new risks.", proof: "Policy review schedule." }
             ]
         },
         {
-            "title": "Contract Lifecycle Management",
-            "department": "Legal",
-            "frequency": "Per Contract",
-            "role": "Legal Counsel",
-            "summary": "Manages a contract from drafting to renewal or termination, minimizing risk.",
-            "icon": "file-check",
-            "tasks": [
-                { "id": "CLC-CLM-01", "description": "Draft contract using approved company templates.", "priority": "High", "riskLevel": "High", "consequence": "Using unvetted clauses, legal exposure.", "proof": "Draft contract." },
-                { "id": "CLC-CLM-02", "description": "Review contract with business owner for commercial terms.", "priority": "High", "riskLevel": "Medium", "consequence": "Commercial terms do not match business needs.", "proof": "Email approval from business owner." },
-                { "id": "CLC-CLM-03", "description": "Negotiate terms with the other party, keeping a log of all changes.", "priority": "High", "riskLevel": "High", "consequence": "Unfavorable terms, future disputes.", "proof": "Version history of the contract document." },
-                { "id": "CLC-CLM-04", "description": "Obtain final approvals from all required internal stakeholders before signing.", "priority": "High", "riskLevel": "High", "consequence": "Unauthorized person agrees to a contract.", "proof": "Final approval email chain." },
-                { "id": "CLC-CLM-05", "description": "Execute the contract (signing by authorized signatories).", "priority": "High", "riskLevel": "Low", "consequence": "Contract is not legally binding.", "proof": "Scanned copy of the fully signed contract." },
-                { "id": "CLC-CLM-06", "description": "Store the executed contract in a central, secure repository.", "priority": "High", "riskLevel": "Medium", "consequence": "Inability to find contract when needed, lost documents.", "proof": "Entry in contract management system." },
-                { "id": "CLC-CLM-07", "description": "Abstract key dates (renewal, termination notice) and obligations into a tracking system.", "priority": "High", "riskLevel": "High", "consequence": "Accidental auto-renewal of an unwanted contract, missed obligations.", "proof": "Screenshot from tracking system." },
-                { "id": "CLC-CLM-08", "description": "Review contract performance before renewal.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Renewing a bad contract.", "proof": "Performance review notes." }
+            title: "Contract Lifecycle Management",
+            department: "Legal",
+            frequency: "Per Contract",
+            role: "Legal Counsel",
+            summary: "Manages a contract from drafting to renewal or termination, minimizing risk.",
+            icon: "file-check",
+            tasks: [
+                { "id": "CLC-CLM-01", description: "Draft contract using approved company templates.", priority: "High", riskLevel: "High", consequence: "Using unvetted clauses, legal exposure.", proof: "Draft contract." },
+                { "id": "CLC-CLM-02", description: "Review contract with business owner for commercial terms.", priority: "High", riskLevel: "Medium", consequence: "Commercial terms do not match business needs.", proof: "Email approval from business owner." },
+                { "id": "CLC-CLM-03", description: "Negotiate terms with the other party, keeping a log of all changes.", priority: "High", riskLevel: "High", consequence: "Unfavorable terms, future disputes.", proof: "Version history of the contract document." },
+                { "id": "CLC-CLM-04", description: "Obtain final approvals from all required internal stakeholders before signing.", priority: "High", riskLevel: "High", consequence: "Unauthorized person agrees to a contract.", proof: "Final approval email chain." },
+                { "id": "CLC-CLM-05", description: "Execute the contract (signing by authorized signatories).", priority: "High", riskLevel: "Low", consequence: "Contract is not legally binding.", proof: "Scanned copy of the fully signed contract." },
+                { "id": "CLC-CLM-06", description: "Store the executed contract in a central, secure repository.", priority: "High", riskLevel: "Medium", consequence: "Inability to find contract when needed, lost documents.", proof: "Entry in contract management system." },
+                { "id": "CLC-CLM-07", description: "Abstract key dates (renewal, termination notice) and obligations into a tracking system.", priority: "High", riskLevel: "High", consequence: "Accidental auto-renewal of an unwanted contract, missed obligations.", proof: "Screenshot from tracking system." },
+                { "id": "CLC-CLM-08", description: "Review contract performance before renewal.", priority: "Medium", riskLevel: "Medium", consequence: "Renewing a bad contract.", proof: "Performance review notes." }
             ]
         },
         {
-            "title": "Internal Audit & CAPA",
-            "department": "Quality/Compliance",
-            "frequency": "Quarterly",
-            "role": "Internal Auditor",
-            "summary": "A process to identify compliance gaps and ensure they are fixed (Corrective and Preventive Action).",
-            "icon": "bug",
-            "tasks": [
-                { "id": "CLC-CAPA-01", "description": "Plan the audit scope, objectives, and criteria for the quarter.", "priority": "High", "riskLevel": "Low", "consequence": "Aimless audit with no clear goal.", "proof": "Audit plan document." },
-                { "id": "CLC-CAPA-02", "description": "Conduct the audit by interviewing staff, reviewing records, and observing processes.", "priority": "High", "riskLevel": "Medium", "consequence": "Superficial audit that misses real issues.", "proof": "Auditor's working papers and notes." },
-                { "id": "CLC-CAPA-03", "description": "Document all findings (non-conformities) in a formal audit report.", "priority": "High", "riskLevel": "Medium", "consequence": "Findings are not clearly communicated.", "proof": "Draft audit report." },
-                { "id": "CLC-CAPA-04", "description": "Issue the report to department heads and management.", "priority": "High", "riskLevel": "Low", "consequence": "Management is unaware of the risks.", "proof": "Email sending the report." },
-                { "id": "CLC-CAPA-05", "description": "Require departments to submit a Corrective and Preventive Action (CAPA) plan for each finding.", "priority": "High", "riskLevel": "High", "consequence": "Problems are identified but never fixed.", "proof": "Completed CAPA forms from departments." },
-                { "id": "CLC-CAPA-06", "description": "Track the implementation of all CAPAs to ensure they are completed on time.", "priority": "High", "riskLevel": "Medium", "consequence": "Corrective actions are delayed or forgotten.", "proof": "CAPA tracking log." },
-                { "id": "CLC-CAPA-07", "description": "Verify the effectiveness of the corrective actions to ensure the problem is truly solved.", "priority": "High", "riskLevel": "High", "consequence": "Actions are completed but were ineffective, problem recurs.", "proof": "Effectiveness verification report." },
-                { "id": "CLC-CAPA-08", "description": "Close the audit finding once the action is verified as effective.", "priority": "Medium", "riskLevel": "Low", "consequence": "Open findings remain indefinitely.", "proof": "Final sign-off in the audit file." }
+            title: "Internal Audit & CAPA",
+            department: "Quality/Compliance",
+            frequency: "Quarterly",
+            role: "Internal Auditor",
+            summary: "A process to identify compliance gaps and ensure they are fixed (Corrective and Preventive Action).",
+            icon: "bug",
+            tasks: [
+                { "id": "CLC-CAPA-01", description: "Plan the audit scope, objectives, and criteria for the quarter.", priority: "High", riskLevel: "Low", consequence: "Aimless audit with no clear goal.", proof: "Audit plan document." },
+                { "id": "CLC-CAPA-02", description: "Conduct the audit by interviewing staff, reviewing records, and observing processes.", priority: "High", riskLevel: "Medium", consequence: "Superficial audit that misses real issues.", proof: "Auditor's working papers and notes." },
+                { "id": "CLC-CAPA-03", description: "Document all findings (non-conformities) in a formal audit report.", priority: "High", riskLevel: "Medium", consequence: "Findings are not clearly communicated.", proof: "Draft audit report." },
+                { "id": "CLC-CAPA-04", description: "Issue the report to department heads and management.", priority: "High", riskLevel: "Low", consequence: "Management is unaware of the risks.", proof: "Email sending the report." },
+                { "id": "CLC-CAPA-05", description: "Require departments to submit a Corrective and Preventive Action (CAPA) plan for each finding.", priority: "High", riskLevel: "High", consequence: "Problems are identified but never fixed.", proof: "Completed CAPA forms from departments." },
+                { "id": "CLC-CAPA-06", description: "Track the implementation of all CAPAs to ensure they are completed on time.", priority: "High", riskLevel: "Medium", consequence: "Corrective actions are delayed or forgotten.", proof: "CAPA tracking log." },
+                { "id": "CLC-CAPA-07", description: "Verify the effectiveness of the corrective actions to ensure the problem is truly solved.", priority: "High", riskLevel: "High", consequence: "Actions are completed but were ineffective, problem recurs.", proof: "Effectiveness verification report." },
+                { "id": "CLC-CAPA-08", description: "Close the audit finding once the action is verified as effective.", priority: "Medium", riskLevel: "Low", consequence: "Open findings remain indefinitely.", proof: "Final sign-off in the audit file." }
             ]
         }
     ]
@@ -1501,8 +1501,8 @@ const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "HCO-SSC-05", description: "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", priority: "High", riskLevel: "High", consequence: "Final opportunity to prevent a catastrophic error.", proof: "Verbal confirmation documented by circulating nurse." },
                 { id: "HCO-SSC-06", description: "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", priority: "High", riskLevel: "Medium", consequence: "Team unprepared for complications or known patient risks.", proof: "Surgeon and Anesthesiologist verbal briefing." },
                 { id: "HCO-SSC-07", description: "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", priority: "High", riskLevel: "High", consequence: "Retained surgical item, requiring re-operation.", proof: "Count sheet verified and signed by two nurses." },
-                { id: "HCO-SSC-08", description: "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", "priority": "High", "riskLevel": "High", "consequence": "Incorrect diagnosis, wrong post-op treatment.", "proof": "Visual confirmation of labeled specimen by surgeon and nurse." },
-                { id: "HCO-SSC-09", description: "SIGN OUT: Discuss key concerns for recovery and post-operative care.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor handover to recovery team, post-op complications.", "proof": "Surgeon/Anesthesiologist debrief documented." }
+                { id: "HCO-SSC-08", description: "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", priority: "High", riskLevel: "High", consequence: "Incorrect diagnosis, wrong post-op treatment.", proof: "Visual confirmation of labeled specimen by surgeon and nurse." },
+                { id: "HCO-SSC-09", description: "SIGN OUT: Discuss key concerns for recovery and post-operative care.", priority: "Medium", riskLevel: "Medium", consequence: "Poor handover to recovery team, post-op complications.", proof: "Surgeon/Anesthesiologist debrief documented." }
             ]
         },
         {
@@ -1690,8 +1690,8 @@ const film_production_pack: PremiumPack = {
                 { id: "FP-LM-03", description: "Location Agreement: Signed agreement with property owner, outlining terms, conditions, and fees.", priority: "High", riskLevel: "High", consequence: "Disputes with property owner, unexpected costs.", proof: "Signed location agreement." },
                 { id: "FP-LM-04", description: "Logistics Plan: Plan for parking, power, catering, and restrooms is in place.", priority: "Medium", riskLevel: "Medium", consequence: "On-set delays, crew dissatisfaction.", proof: "Location logistics plan." },
                 { id: "FP-LM-05", description: "Risk Assessment: Site-specific risk assessment conducted (e.g., trip hazards, public safety).", priority: "High", riskLevel: "High", consequence: "Accidents, injuries.", proof: "Signed risk assessment form." },
-                { id: "FP-LM-06", description: "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Complaints, disruption of filming.", "proof": "Copy of notification letter." },
-                { id: "FP-LM-07", description: "Post-Shoot Cleanup: Location is returned to its original condition after filming.", priority: "High", riskLevel: "Medium", consequence: "Disputes with property owner, loss of security deposit.", proof: "Post-shoot location photos signed off by owner." }
+                { "id": "FP-LM-06", "description": "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Complaints, disruption of filming.", "proof": "Copy of notification letter." },
+                { "id": "FP-LM-07", "description": "Post-Shoot Cleanup: Location is returned to its original condition after filming.", "priority": "High", "riskLevel": "Medium", "consequence": "Disputes with property owner, loss of security deposit.", "proof": "Post-shoot location photos signed off by owner." }
             ]
         },
         {
@@ -1891,13 +1891,13 @@ const logistics_warehouse_pack: PremiumPack = {
             "icon": "clipboard-check",
             "tasks": [
                 { "id": "LW-IR-01", "description": "Schedule and confirm delivery appointment with carrier.", "priority": "Medium", "riskLevel": "Low", "consequence": "Dock congestion, delays.", "proof": "Appointment log." },
-                { "id": "LW-IR-02", "description": "Inspect truck/container for signs of tampering or damage before unloading.", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting damaged goods, security risk.", "proof": "Inbound inspection form." },
-                { "id": "LW-IR-03", "description": "Verify shipment against packing list and purchase order.", "priority": "High", "riskLevel": "High", "consequence": "Inventory discrepancies, paying for incorrect goods.", "proof": "Signed packing list with discrepancies noted." },
-                { "id": "LW-IR-04", "description": "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting defective products into inventory.", "proof": "Inbound QC report." },
-                { "id": "LW-IR-05", "description": "Record all received items into the Warehouse Management System (WMS).", "priority": "High", "riskLevel": "High", "consequence": "Phantom stock, inability to locate goods.", "proof": "WMS receiving entry." },
-                { "id": "LW-IR-06", "description": "Label all pallets/items with internal tracking barcodes.", "priority": "High", "riskLevel": "Low", "consequence": "Inefficient putaway and picking.", "proof": "Photo of labeled pallet." },
-                { "id": "LW-IR-07", "description": "Segregate and move goods to the appropriate staging or putaway area.", "priority": "Medium", "riskLevel": "Low", "consequence": "Delays in putaway, dock congestion.", "proof": "Visual confirmation." },
-                { "id": "LW-IR-08", "description": "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Financial loss, holding unwanted stock.", "proof": "RTV documentation." }
+                { "id": "LW-IR-02", description: "Inspect truck/container for signs of tampering or damage before unloading.", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting damaged goods, security risk.", "proof": "Inbound inspection form." },
+                { "id": "LW-IR-03", description: "Verify shipment against packing list and purchase order.", "priority": "High", "riskLevel": "High", "consequence": "Inventory discrepancies, paying for incorrect goods.", "proof": "Signed packing list with discrepancies noted." },
+                { "id": "LW-IR-04", description: "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting defective products into inventory.", "proof": "Inbound QC report." },
+                { "id": "LW-IR-05", description: "Record all received items into the Warehouse Management System (WMS).", "priority": "High", "riskLevel": "High", "consequence": "Phantom stock, inability to locate goods.", "proof": "WMS receiving entry." },
+                { "id": "LW-IR-06", description: "Label all pallets/items with internal tracking barcodes.", "priority": "High", "riskLevel": "Low", "consequence": "Inefficient putaway and picking.", "proof": "Photo of labeled pallet." },
+                { "id": "LW-IR-07", description: "Segregate and move goods to the appropriate staging or putaway area.", "priority": "Medium", "riskLevel": "Low", "consequence": "Delays in putaway, dock congestion.", "proof": "Visual confirmation." },
+                { "id": "LW-IR-08", description: "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Financial loss, holding unwanted stock.", "proof": "RTV documentation." }
             ]
         },
         {
@@ -2388,6 +2388,7 @@ export const premiumPacks: PremiumPack[] = [
 
 
     
+
 
 
 
