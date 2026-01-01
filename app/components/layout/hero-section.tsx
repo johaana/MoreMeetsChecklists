@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -37,7 +36,7 @@ export const HeroSection = () => (
                     When work lives in people’s heads, execution breaks
                     during audits, shift changes, growth, and emergencies.
                 </p>
-                <p className="text-lg font-medium text-destructive" style={{ letterSpacing: '0.01em'}}>
+                <p className="text-lg font-bold text-red-500" style={{ letterSpacing: '0.01em'}}>
                    Consistency can’t depend on memory.
                 </p>
                 
