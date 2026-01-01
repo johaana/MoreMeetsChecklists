@@ -167,7 +167,7 @@ const franchise_operations_pack: PremiumPack = {
             tasks: [
                 { id: "FPR-01", description: "Royalty & Ad Fund: Verify royalty and marketing fund payments are accurate and paid on time.", priority: "High", riskLevel: "High", consequence: "Revenue loss for franchisor, breach of contract.", proof: "Bank statements and franchise agreement.", location: "Finance Dept." },
                 { id: "FPR-02", description: "Sales Reporting: Ensure daily/weekly sales reports have been submitted accurately.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate data for network-wide planning.", proof: "POS sales reports vs. submitted reports.", location: "Finance Dept." },
-                { id: "FPR-03", description: "P&L Statement Review: Review franchisee's monthly Profit & Loss statement for signs of financial distress.", priority: "High", riskLevel: "High", consequence: "Franchisee failure, loss of future royalties.", proof: "Franchisee-submitted P&L statement.", location: "Finance Dept." },
+                { id: "FPR-03", description: "P&L Statement Review: Review franchisee's monthly Profit &amp; Loss statement for signs of financial distress.", priority: "High", riskLevel: "High", consequence: "Franchisee failure, loss of future royalties.", proof: "Franchisee-submitted P&L statement.", location: "Finance Dept." },
                 { id: "FPR-04", description: "Cost of Goods Sold (COGS) Analysis: Compare COGS against brand benchmark to identify purchasing or wastage issues.", priority: "Medium", riskLevel: "Medium", consequence: "Reduced franchisee profitability.", proof: "P&L statement and supplier invoices.", location: "Finance Dept." },
                 { id: "FPR-05", description: "Labor Cost Analysis: Compare labor costs as a percentage of sales against benchmark.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient staffing, reduced profitability.", proof: "P&L statement and staff rosters.", location: "Finance Dept." },
                 { id: "FPR-06", description: "Local Marketing Spend: Verify franchisee is meeting local marketing spend requirements as per agreement.", priority: "Low", riskLevel: "Low", consequence: "Underperforming location due to lack of local awareness.", proof: "Marketing invoices and receipts.", location: "Marketing Dept." },
@@ -473,7 +473,7 @@ const restaurants: PremiumPack = {
                 { id: "RO-FR-03", description: "Verify delivery against purchase order for accuracy of items and quantities.", priority: "Medium", riskLevel: "Low", consequence: "Inventory discrepancies, paying for incorrect items.", proof: "Signed delivery note with discrepancies noted.", location: "Receiving Dock" },
                 { id: "RO-FR-04", description: "Check 'use by' or 'best by' dates on all perishable items.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage, serving expired product.", proof: "Receiving checklist.", location: "Receiving Dock" },
                 { id: "RO-FR-05", description: "Ensure all received items are from approved suppliers.", priority: "High", riskLevel: "High", consequence: "Food fraud, unknown allergen risks, poor quality.", proof: "Cross-reference with Approved Supplier List.", location: "Receiving Office" },
-                { id: "RO-FR-06", description: "Move all perishable items to correct temperature storage immediately.", priority: "High", riskLevel: "Medium", consequence: "Breaking the cold chain, bacterial growth.", proof: "CCTV footage of receiving process.", location: "Receiving to Storage" },
+                { id: "RO-FR-06", description: "Move all perishable items to correct temperature storage immediately.", priority: "High", riskLevel: "High", consequence: "Breaking the cold chain, bacterial growth.", proof: "CCTV footage of receiving process.", location: "Receiving to Storage" },
                 { id: "RO-FR-07", description: "Label all decanted products with name and date.", priority: "Medium", riskLevel: "Low", consequence: "Inability to track freshness, cross-contamination.", proof: "Visual check of stored items.", location: "Storage Areas" },
                 { id: "RO-FR-08", description: "Implement FIFO (First-In, First-Out) rotation for all new stock.", priority: "High", riskLevel: "Medium", consequence: "Increased wastage, using older stock last.", proof: "Visual check of storage shelves.", location: "Storage Areas" },
                 { id: "RO-FR-09", description: "Reject any delivery that does not meet standards and document the rejection.", priority: "High", riskLevel: "High", consequence: "Accepting unsafe food into the kitchen.", proof: "Signed and documented rejection note.", location: "Receiving Dock" },
@@ -575,9 +575,9 @@ const restaurants: PremiumPack = {
                 { id: "RO-CH-05", description: "Follow up with the guest after the solution has been provided to ensure satisfaction.", priority: "Medium", riskLevel: "Low", consequence: "Guest feels processed, not cared for.", proof: "Note in incident report.", location: "Dining Room" },
                 { id: "RO-CH-06", description: "Thank the guest for bringing the issue to your attention.", priority: "High", riskLevel: "Low", consequence: "Missed opportunity to end on a positive note.", proof: "Manager's incident report.", location: "Dining Room" },
                 { id: "RO-CH-07", description: "If the complaint is about food safety, secure the dish for investigation.", priority: "High", riskLevel: "High", consequence: "Inability to perform a root cause analysis, potential for more illnesses.", proof: "Photo of secured dish, incident report.", location: "Kitchen" },
-                { id: "RO-CH-08", "description": "Debrief the relevant staff member(s) privately and constructively.", priority: "Medium", "riskLevel": "Low", "consequence": "Staff do not learn from mistakes.", "proof": "Note in staff file.", "location": "Back Office" },
-                { id: "RO-CH-09", "description": "Review complaint logs weekly to identify patterns (e.g., a specific dish, a specific server).", priority: "Medium", riskLevel: "Medium", "consequence": "Systemic issues are never resolved.", "proof": "Weekly management meeting minutes.", "location": "Office" },
-                { id: "RO-CH-10", "description": "Empower staff with a service recovery budget (e.g., up to ₹500) to solve problems without needing manager approval.", priority: "High", riskLevel: "Low", "consequence": "Slow response times for minor issues.", "proof": "Service recovery policy document.", "location": "HR/Training" }
+                { id: "RO-CH-08", description: "Debrief the relevant staff member(s) privately and constructively.", priority: "Medium", riskLevel: "Low", consequence: "Staff do not learn from mistakes.", proof: "Note in staff file.", location: "Back Office" },
+                { id: "RO-CH-09", description: "Review complaint logs weekly to identify patterns (e.g., a specific dish, a specific server).", priority: "Medium", riskLevel: "Medium", consequence: "Systemic issues are never resolved.", proof: "Weekly management meeting minutes.", location: "Office" },
+                { id: "RO-CH-10", description: "Empower staff with a service recovery budget (e.g., up to ₹500) to solve problems without needing manager approval.", priority: "High", riskLevel: "Low", consequence: "Slow response times for minor issues.", proof: "Service recovery policy document.", location: "HR/Training" }
             ]
         },
         {
@@ -1243,7 +1243,7 @@ const healthcare_and_hospital_operations: PremiumPack = {
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
-    paymentId: 'pl_RaWEBHhFLQENxC',
+    paymentId: 'pl_OfhYpYqLzL0zZz',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
     category: "Healthcare",
     description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
@@ -1260,7 +1260,126 @@ const healthcare_and_hospital_operations: PremiumPack = {
         { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: "recycle" },
         { text: "Prepare for any crisis with emergency code management and mock drill scenarios.", icon: "ambulance" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: 'Patient Identification Protocol',
+            department: 'All Clinical Departments',
+            frequency: 'Per Patient Interaction',
+            role: 'All Clinical Staff',
+            summary: 'Ensures correct patient identification before any procedure, medication, or test to prevent errors.',
+            icon: 'user-check',
+            tasks: [
+              { id: 'HCO-PID-01', description: 'Use at least two patient identifiers (e.g., full name and MRN/hospital number).', priority: 'High', riskLevel: 'High', consequence: 'Wrong-patient procedure or medication error.', proof: 'Verbal confirmation documented in notes.', location: 'Bedside/Procedure Room' },
+              { id: 'HCO-PID-02', description: 'Ask the patient to state their full name and date of birth (if able).', priority: 'High', riskLevel: 'High', consequence: 'Treating the wrong patient.', proof: 'Patient verbal confirmation.', location: 'Bedside/Procedure Room' },
+              { id: 'HCO-PID-03', description: 'Cross-reference patient identifiers with the patient\'s wristband.', priority: 'High', riskLevel: 'High', consequence: 'Failure to catch an identification error.', proof: 'Visual check documented in chart.', location: 'Bedside' },
+              { id: 'HCO-PID-04', description: 'Verify patient ID before administering any medication.', priority: 'High', riskLevel: 'High', consequence: 'Medication error, adverse drug reaction.', proof: 'MAR (Medication Administration Record) sign-off.', location: 'Bedside' },
+              { id: 'HCO-PID-05', description: 'Verify patient ID before drawing blood or collecting specimens.', priority: 'High', riskLevel: 'High', consequence: 'Misdiagnosis, incorrect treatment.', proof: 'Specimen label cross-checked with wristband.', location: 'Bedside' },
+              { id: 'HCO-PID-06', description: 'Verify patient ID before any invasive procedure or surgery (part of "Time Out").', priority: 'High', riskLevel: 'High', consequence: 'Wrong-site or wrong-patient surgery.', proof: 'Surgical safety checklist sign-off.', location: 'Operating Room' },
+              { id: 'HCO-PID-07', description: 'Label all specimens in the presence of the patient.', priority: 'High', riskLevel: 'High', consequence: 'Specimen mix-up, incorrect lab results.', proof: 'Labeled specimen tube/container.', location: 'Bedside' },
+              { id: 'HCO-PID-08', description: 'Use barcode scanning for patient ID and medication where available.', priority: 'High', riskLevel: 'Medium', consequence: 'Reduces human error in identification.', proof: 'System log of barcode scan.', location: 'Bedside' },
+            ],
+          },
+          {
+            title: 'Surgical Safety Checklist (WHO Aligned)',
+            department: 'Surgery/Operating Room',
+            frequency: 'Per Surgical Procedure',
+            role: 'Entire Surgical Team',
+            summary: 'A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors.',
+            icon: 'file-check',
+            tasks: [
+              { id: 'HCO-SSC-01', description: 'SIGN IN (Before Induction): Confirm patient identity, procedure, site, and consent.', priority: 'High', riskLevel: 'High', consequence: 'Wrong-patient/wrong-site surgery.', proof: 'Signed checklist.', location: 'Pre-op/OR' },
+              { id: 'HCO-SSC-02', description: 'SIGN IN: Mark the surgical site.', priority: 'High', riskLevel: 'High', consequence: 'Wrong-site surgery.', proof: 'Visual confirmation of surgical mark.', location: 'Pre-op/OR' },
+              { id: 'HCO-SSC-03', description: 'SIGN IN: Anesthesia safety check completed.', priority: 'High', riskLevel: 'High', consequence: 'Anesthetic complications.', proof: 'Anesthesiologist confirmation.', location: 'OR' },
+              { id: 'HCO-SSC-04', description: 'TIME OUT (Before Incision): All team members introduce themselves by name and role.', priority: 'Medium', riskLevel: 'Low', consequence: 'Poor team communication.', proof: 'Verbal confirmation.', location: 'OR' },
+              { id: 'HCO-SSC-05', description: 'TIME OUT: Team verbally confirms patient name, procedure, and incision site.', priority: 'High', riskLevel: 'High', consequence: 'Catastrophic surgical error.', proof: 'Verbal confirmation documented by circulating nurse.', location: 'OR' },
+              { id: 'HCO-SSC-06', description: 'TIME OUT: Review critical events (anticipated blood loss, critical steps).', priority: 'High', riskLevel: 'Medium', consequence: 'Team unprepared for complications.', proof: 'Surgeon and Anesthesiologist verbal briefing.', location: 'OR' },
+              { id: 'HCO-SSC-07', description: 'SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts.', priority: 'High', riskLevel: 'High', consequence: 'Retained surgical item.', proof: 'Count sheet verified by two nurses.', location: 'OR' },
+              { id: 'HCO-SSC-08', description: 'SIGN OUT: Confirm specimen labeling (specimen name, patient name).', priority: "High", riskLevel: "High", consequence: "Incorrect diagnosis, wrong post-op treatment.", proof: "Visual confirmation of labeled specimen.", location: "OR" },
+              { id: 'HCO-SSC-09', description: 'SIGN OUT: Discuss key concerns for recovery and post-op care.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Poor handover to recovery team.', proof: 'Surgeon/Anesthesiologist debrief.', location: 'OR' },
+            ],
+          },
+          {
+            title: 'High-Alert Medication Protocol',
+            department: 'Pharmacy/Nursing',
+            frequency: 'Per Administration',
+            role: 'Pharmacist/Nurse',
+            summary: 'Prevents errors with medications that have a high risk of causing significant patient harm.',
+            icon: 'pill',
+            tasks: [
+              { id: 'HCO-HAM-01', description: 'Independent Double-Check: Two qualified staff members must separately check the medication, dose, and patient ID.', priority: 'High', riskLevel: 'High', consequence: 'Overdose, underdose, or wrong medication, potentially fatal.', proof: 'Dual signature on the MAR.', location: 'Medication Room/Bedside' },
+              { id: 'HCO-HAM-02', description: 'Use standardized concentrations for all high-alert infusions.', priority: 'High', riskLevel: 'High', consequence: 'Calculation errors leading to massive overdose.', proof: 'Pharmacy compounding log.', location: 'Pharmacy' },
+              { id: 'HCO-HAM-03', description: 'Separate/segregate high-alert medications from other drugs in storage.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Look-alike/sound-alike errors.', proof: 'Photo of segregated storage.', location: 'Medication Room' },
+              { id: 'HCO-HAM-04', description: 'Use "smart" infusion pumps with dose error reduction software (DERS).', priority: 'High', riskLevel: 'High', consequence: 'Programming errors leading to incorrect infusion rates.', proof: 'Pump programming log.', location: 'Bedside' },
+              { id: 'HCO-HAM-05', description: 'Provide enhanced patient education on their high-alert medication.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Patient non-compliance or failure to report side effects.', proof: 'Patient education documentation.', location: 'Bedside' },
+              { id: 'HCO-HAM-06', description: 'Clearly label all high-alert medication lines from pump to patient.', priority: 'High', riskLevel: 'High', consequence: 'Accidental bolus or mixing of incompatible drugs.', proof: 'Visual check of labeled IV lines.', location: 'Bedside' },
+            ],
+          },
+          {
+            title: 'Infection Control (Hand Hygiene Audit)',
+            department: 'Quality/Infection Control',
+            frequency: 'Weekly',
+            role: 'Infection Control Nurse',
+            summary: 'Monitors hand hygiene compliance among staff to reduce Hospital-Acquired Infections (HAIs).',
+            icon: 'hand',
+            tasks: [
+              { id: 'HCO-HC-01', description: 'Observe a sample of 20 staff members for hand hygiene compliance before patient contact.', priority: 'High', riskLevel: 'High', consequence: 'Transmission of pathogens to patients.', proof: 'Hand hygiene audit tool entries.', location: 'Various Wards' },
+              { id: 'HCO-HC-02', description: 'Observe compliance after contact with patient surroundings.', priority: 'High', riskLevel: 'High', consequence: 'Contamination of the healthcare environment.', proof: 'Hand hygiene audit tool entries.', location: 'Various Wards' },
+              { id: 'HCO-HC-03', description: 'Observe compliance before an aseptic task (e.g., IV insertion).', priority: 'High', riskLevel: 'High', consequence: 'Introduction of infection into a sterile site.', proof: 'Hand hygiene audit tool entries.', location: 'Various Wards' },
+              { id: 'HCO-HC-04', description: 'Check that alcohol-based hand rub dispensers are available and functional at point of care.', priority: 'High', riskLevel: 'Medium', consequence: 'Staff unable to perform hand hygiene easily.', proof: 'Audit checklist.', location: 'All Patient Rooms/Corridors' },
+              { id: 'HCO-HC-05', description: 'Ensure staff are "bare below the elbows" (no watches, rings with stones).', priority: 'Medium', riskLevel: 'Medium', consequence: 'Jewelry harbors microorganisms.', proof: 'Direct observation.', location: 'All Clinical Areas' },
+              { id: 'HCO-HC-06', description: 'Calculate and post hand hygiene compliance rates for each ward.', priority: 'Medium', riskLevel: 'Low', consequence: 'Lack of feedback and accountability.', proof: 'Posted compliance dashboard.', location: 'Ward Notice Boards' },
+            ],
+          },
+          {
+            title: 'Emergency Code Management (Code Blue)',
+            department: 'Emergency/All',
+            frequency: 'Per Event/Mock Drill',
+            role: 'Code Blue Team',
+            summary: 'Ensures a rapid, coordinated, and effective response to a cardiac or respiratory arrest.',
+            icon: 'heart-pulse',
+            tasks: [
+              { id: 'HCO-EC-01', description: 'Check crash cart daily: defibrillator charge, medication expiry, and equipment integrity.', priority: 'High', riskLevel: 'High', consequence: 'Life-saving equipment fails during an emergency.', proof: 'Daily crash cart checklist.', location: 'All Wards/ICU' },
+              { id: 'HCO-EC-02', description: 'Conduct monthly mock Code Blue drills in different hospital locations.', priority: 'High', riskLevel: 'High', consequence: 'Disorganized response, delayed CPR/defibrillation.', proof: 'Mock drill debriefing report.', location: 'Varies' },
+              { id: 'HCO-EC-03', description: 'Verify that all clinical staff are certified in Basic Life Support (BLS).', priority: 'High', riskLevel: 'High', consequence: 'Inability to initiate immediate CPR.', proof: 'Staff training records.', location: 'HR/Education Dept' },
+              { id: 'HCO-EC-04', description: 'Team leader clearly assigns roles at the start of the code (e.g., compressor, airway, recorder).', priority: 'High', riskLevel: 'Medium', consequence: 'Chaotic scene, missed interventions.', proof: 'Post-code debrief form.', location: 'Code Location' },
+              { id: 'HCO-EC-05', description: 'Document all events, medications, and vitals on the Code Blue record.', priority: 'High', riskLevel: 'Medium', consequence: 'Inaccurate record for clinical review and legal purposes.', proof: 'Completed Code Blue record sheet.', location: 'Code Location' },
+              { id: 'HCO-EC-06', description: 'Ensure crowd control and that the patient\'s family is managed compassionately.', priority: 'Medium', riskLevel: 'Low', consequence: 'Added distress to family, interference with team.', proof: 'Social worker/security notes.', location: 'Code Location' },
+            ],
+          },
+          {
+            title: 'Biomedical Waste Management',
+            department: 'Housekeeping/Infection Control',
+            frequency: 'Daily',
+            role: 'Housekeeping Supervisor',
+            summary: 'Ensures safe and compliant segregation, collection, and disposal of biomedical waste.',
+            icon: 'recycle',
+            tasks: [
+              { id: 'HCO-BMW-01', description: 'Verify waste is correctly segregated into color-coded bins at the point of generation.', priority: 'High', riskLevel: "High", consequence: "Injury to staff, environmental contamination, legal penalties.", proof: "Daily round checklist.", location: "All Wards/OT/Labs" },
+              { id: 'HCO-BMW-02', description: 'Ensure all waste bags are sealed when 3/4 full.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Spillage, exposure risk.', proof: 'Visual check.', location: 'All Wards' },
+              { id: 'HCO-BMW-03', description: 'Check that sharps containers are not overfilled and are properly sealed for disposal.', priority: 'High', riskLevel: 'High', consequence: 'Needlestick injuries.', proof: 'Daily round checklist.', location: 'All Wards' },
+              { id: 'HCO-BMW-04', description: 'Transport waste in dedicated, covered trolleys along designated routes.', priority: 'High', riskLevel: 'Medium', consequence: 'Contamination of public areas.', proof: 'CCTV review.', location: 'Hospital Corridors' },
+              { id: 'HCO-BMW-05', description: 'Weigh and log all waste bags before handing over to the disposal vendor.', priority: 'High', riskLevel: 'Medium', consequence: 'Inability to track waste generation, non-compliance.', proof: 'BMW disposal logbook.', location: 'Waste Collection Area' },
+              { id: 'HCO-BMW-06', description: 'Verify that the BMW storage area is secure, locked, and clean.', priority: 'High', riskLevel: 'High', consequence: 'Unauthorized access, pest infestation.', proof: 'Photo of secure storage area.', location: 'Waste Collection Area' },
+              { id: 'HCO-BMW-07', description: 'Ensure all staff handling waste wear appropriate Personal Protective Equipment (PPE).', priority: 'High', riskLevel: 'High', consequence: 'Occupational exposure to infectious agents.', proof: 'Direct observation during audit.', location: 'All Areas' },
+            ],
+          },
+          {
+            title: 'Central Sterile Supply Dept (CSSD) Audit',
+            department: 'CSSD/Infection Control',
+            frequency: 'Weekly',
+            role: 'CSSD Supervisor',
+            summary: 'Ensures surgical instruments are properly cleaned, sterilized, and stored to prevent infections.',
+            icon: 'microscope',
+            tasks: [
+              { id: 'HCO-CSSD-01', description: 'Verify washer-disinfector performance with daily cleaning efficacy tests.', priority: 'High', riskLevel: 'High', consequence: 'Instruments are not properly cleaned before sterilization.', proof: 'Test results log.', location: 'CSSD Decontamination Zone' },
+              { id: 'HCO-CSSD-02', description: 'Check autoclave performance using daily Bowie-Dick tests and biological indicators weekly.', priority: 'High', riskLevel: 'High', consequence: 'Sterilization failure, risk of surgical site infections.', proof: 'Autoclave logbook with test strips/results.', location: 'CSSD Sterilization Zone' },
+              { id: 'HCO-CSSD-03', description: 'Ensure sterile packs are correctly wrapped, labeled with expiry date, and stored in a clean, dry area.', priority: 'High', riskLevel: 'Medium', consequence: 'Compromised sterility, using expired packs.', proof: 'Audit of sterile storage shelves.', location: 'CSSD Sterile Storage' },
+              { id: 'HCO-CSSD-04', description: 'Maintain strict one-way workflow from dirty to clean to sterile zones.', priority: 'High', riskLevel: 'High', consequence: 'Cross-contamination of sterile instruments.', proof: 'Observation of staff movement.', location: 'CSSD' },
+              { id: "HCO-CSSD-05", "description": "Inspect instruments for cleanliness and damage before packing.", "priority": "High", "riskLevel": "Medium", "consequence": "Using damaged or dirty instruments in surgery.", "proof": "QC check log at packing station.", "location": "CSSD Assembly & Packing Zone" },
+              { id: "HCO-CSSD-06", "description": "Ensure staff wear appropriate PPE in decontamination area.", "priority": "High", "riskLevel": "High", "consequence": "Staff exposure to bloodborne pathogens.", "proof": "Direct observation.", "location": "CSSD Decontamination Zone" },
+            ],
+          }
+    ]
 };
 
 const school_operations_pack: PremiumPack = {
@@ -1760,3 +1879,5 @@ export const premiumPacks: PremiumPack[] = [
     }
     return pack;
 });
+
+    
