@@ -91,10 +91,10 @@ export function SiteHeader() {
 
     const BrandLogo = () => (
          <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-            <Logo className="h-6 w-6 text-primary" />
+            <Logo className={cn("h-6 w-6", isTempDesignPage ? "text-white" : "text-primary")} />
             <div className="flex flex-col">
-                <span className="font-headline text-lg font-bold leading-tight">MoreMeets</span>
-                <span className="text-xs text-muted-foreground leading-tight -mt-0.5">Less misses.</span>
+                <span className={cn("font-headline text-lg font-bold leading-tight", isTempDesignPage ? "text-white" : "text-foreground")}>MoreMeets</span>
+                <span className={cn("text-xs leading-tight -mt-0.5", isTempDesignPage ? "text-white/70" : "text-muted-foreground")}>Less misses.</span>
             </div>
         </Link>
     );
@@ -105,17 +105,13 @@ export function SiteHeader() {
         <header className={cn(
             "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
             isTempDesignPage
-                ? (isScrolled ? "bg-alternate-background/80 backdrop-blur-sm border-b border-border" : "bg-transparent border-b border-transparent")
+                ? (isScrolled ? "bg-black/30 backdrop-blur-sm border-b border-white/10" : "bg-transparent border-b border-transparent")
                 : "bg-background/95 backdrop-blur-sm border-b"
         )}>
             <div className="flex items-center">
-                <Link href="/" className="mr-6 hidden md:flex items-center gap-2" prefetch={false}>
-                    <Logo className="h-6 w-6 text-primary" />
-                    <div className="flex flex-col">
-                        <span className="font-headline text-lg font-bold leading-tight">MoreMeets</span>
-                        <span className="text-xs text-muted-foreground leading-tight -mt-0.5">Less misses.</span>
-                    </div>
-                </Link>
+                <div className="hidden md:flex">
+                  <BrandLogo />
+                </div>
             </div>
             
             <div className="md:hidden flex-1">
@@ -125,13 +121,13 @@ export function SiteHeader() {
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 {!isSalesPage && (
                     <>
-                        <Link href="/library" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>SOP Library</Link>
+                        <Link href="/library" className={cn("text-sm font-medium transition-colors", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>SOP Library</Link>
                         <div 
                             className="group relative"
                             onMouseEnter={() => setIsDropdownOpen(true)}
                             onMouseLeave={() => setIsDropdownOpen(false)}
                         >
-                            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                            <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
                                 Industries <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
                             {isDropdownOpen && (
@@ -154,8 +150,8 @@ export function SiteHeader() {
                                 </div>
                             )}
                         </div>
-                        <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>Blog</Link>
-                        <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>Contact</Link>
+                        <Link href="/blog" className={cn("text-sm font-medium transition-colors", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Blog</Link>
+                        <Link href="/contact" className={cn("text-sm font-medium transition-colors", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Contact</Link>
                     </>
                 )}
                  {isSalesPage && (
@@ -172,7 +168,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" className={cn(isTempDesignPage && "text-white/80 hover:text-white hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
