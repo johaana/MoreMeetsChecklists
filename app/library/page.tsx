@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 export default function LibraryPage() {
     const packs = premiumPacks.filter(p => 
+        p.id !== 'master_access' &&
         ((p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0)) &&
         p.checklists && p.checklists.length > 0
     );

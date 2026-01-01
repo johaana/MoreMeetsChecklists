@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
 const packsWithLinks = packs.filter(p => (p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0));
 
-const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause");
+const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause" && p.id !== 'master_access');
 
 const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     const category = pack.category || "Uncategorized";
