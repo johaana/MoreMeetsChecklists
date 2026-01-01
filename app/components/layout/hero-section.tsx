@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -26,7 +25,7 @@ export const HeroSection = () => (
         />
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[48%] min-w-[550px] space-y-4">
-                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05] text-primary-foreground" style={{ fontFamily: 'Inter Tight, sans-serif', letterSpacing: '-0.02em' }}>
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05] text-primary-text" style={{ fontFamily: 'Inter Tight, sans-serif', letterSpacing: '-0.02em' }}>
                     People forget.
                     <br/>
                     Your business

@@ -22,7 +22,7 @@ const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> 
 );
 
 const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight", className)}>
+    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight text-primary-text", className)}>
         {children}
     </h2>
 );
@@ -31,13 +31,13 @@ const CoreProblemSection = () => (
     <Section id="core-problem">
         <div className="container px-4 md:px-6 text-center max-w-3xl mx-auto space-y-10">
             <SectionHeadline>Memory fails. Systems don’t.</SectionHeadline>
-            <div className="space-y-4 text-lg text-muted-foreground">
+            <div className="space-y-4 text-lg text-secondary-text">
                 <p>People don’t fail because they don’t care.<br/>They fail because the business expects them to remember too much.</p>
                 <p>When processes are undocumented, inconsistently trained, explained verbally, or just “understood” but not written...</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 text-center text-sm font-medium">
                 {['Steps are skipped', 'Standards drift', 'Training fades', 'Audits are stressful', 'Managers chase'].map(item => (
-                    <div key={item} className="p-2 px-4 rounded-full border bg-card text-card-foreground">
+                    <div key={item} className="p-2 px-4 rounded-full border bg-card text-muted-text">
                         {item}
                     </div>
                 ))}
@@ -48,15 +48,15 @@ const CoreProblemSection = () => (
 );
 
 const WhatItIsSection = () => (
-    <Section id="what-it-is" className="bg-secondary">
+    <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
             <div className="text-center mb-12">
                 <SectionHeadline>MoreMeets is not software people need to “remember to use.”</SectionHeadline>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-foreground">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-primary-text">
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What it IS</h3>
-                    <ul className="space-y-3 pl-2 text-base text-secondary-text">
+                    <ul className="space-y-3 pl-2 text-base text-muted-text">
                         <li>A structured SOP framework</li>
                         <li>A library of best-practice operational standards</li>
                         <li>A way to turn experience into clear, repeatable steps</li>
@@ -67,7 +67,7 @@ const WhatItIsSection = () => (
                 </div>
                  <div className="space-y-4">
                     <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><Frown className="w-5 h-5"/>What it’s NOT</h3>
-                     <ul className="space-y-3 pl-2 text-base text-secondary-text">
+                     <ul className="space-y-3 pl-2 text-base text-muted-text">
                         <li>Not task enforcement</li>
                         <li>Not monitoring employees</li>
                         <li>Not reminders or notifications</li>
@@ -117,7 +117,7 @@ const HowTeamsUseItSection = () => {
 )};
 
 const ComplianceSection = () => (
-    <Section id="compliance" className="bg-secondary">
+    <Section id="compliance" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
             <SectionHeadline>Built for global compliance — without complexity</SectionHeadline>
             <p className="text-lg text-secondary-text">MoreMeets is designed to support regulated environments where consistency matters more than intent.</p>
@@ -178,86 +178,6 @@ const FinalCTASection = () => (
             </div>
         </div>
     </Section>
-);
-
-
-const PhilosophySection = () => (
-    <section className="w-full py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-            <div className="space-y-4 text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter font-headline text-primary">Our Unshakeable Philosophy</h2>
-                <p className="text-muted-foreground text-lg">
-                   We believe world-class safety and compliance standards shouldn't be reserved for corporations with five-figure software budgets. We exist to break that lock.
-                </p>
-            </div>
-             <div className="hidden md:grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                {philosophyCards.map((card, index) => (
-                    <ValueCard key={index} icon={card.icon} title={card.title}>
-                        {card.children}
-                    </ValueCard>
-                ))}
-             </div>
-             <div className="md:hidden">
-                 <Carousel
-                    plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
-                    className="w-full max-w-xs sm:max-w-sm mx-auto"
-                >
-                  <CarouselContent>
-                    {philosophyCards.map((card, index) => (
-                      <CarouselItem key={index}>
-                        <div className="p-1 h-full">
-                           <ValueCard icon={card.icon} title={card.title}>
-                                {card.children}
-                           </ValueCard>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
-                  <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 h-10 w-10 bg-primary/80 text-primary-foreground hover:bg-primary/90" />
-                </Carousel>
-             </div>
-        </div>
-    </section>
-);
-
-const ChaosToControlSection = () => (
-  <section className="w-full py-16 md:py-24 bg-secondary/30">
-    <div className="container px-4 md:px-6">
-      <div className="text-center max-w-3xl mx-auto mb-12 px-0 sm:px-4">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline">From High Risk to High Confidence</h2>
-        <p className="text-muted-foreground mt-2 text-base md:text-lg">We transform your operations from a fragile, person-dependent process into a reliable, verifiable system.</p>
-      </div>
-      <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-        {/* Before */}
-        <Card className="border-destructive/50 border-2 flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-destructive flex items-center gap-2"><Frown className="w-5 h-5"/> The Old Way: Chaos</CardTitle>
-            <CardDescription>Relying on human memory, verbal instructions, and hope.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-muted-foreground flex-1">
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>"Did anyone check the fire exits?" is a question of memory, not a provable fact.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>A new hire is trained by a B-player, creating another B-player.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>Your best manager quits, taking critical knowledge with them.</span></p>
-            <p className="flex items-start gap-2"><ArrowRight className="w-4 h-4 text-destructive shrink-0 mt-1"/><span>An auditor asks for proof, and you spend days digging through emails.</span></p>
-          </CardContent>
-        </Card>
-        {/* After */}
-        <Card className="border-primary/50 border-2 bg-background shadow-lg flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-primary flex items-center gap-2"><Smile className="w-5 h-5"/> The New Way: Control</CardTitle>
-            <CardDescription>A system of record that ensures excellence every time.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-foreground flex-1">
-             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
 );
 
 

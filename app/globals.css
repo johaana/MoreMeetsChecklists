@@ -4,28 +4,37 @@
 
 @layer base {
   :root {
-    --background: 220 13% 97%;
-    --foreground: 220 9% 10%;
+    --background: 0 0% 98%;
+    --foreground: 212 88% 13%;
     --card: 0 0% 100%;
-    --card-foreground: 220 9% 10%;
+    --card-foreground: 212 88% 13%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 9% 10%;
-    --primary: 158 41% 57%;
+    --popover-foreground: 212 88% 13%;
+    --primary: 212 88% 13%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 220 13% 91%;
-    --secondary-foreground: 220 9% 10%;
-    --muted: 220 9% 85%;
-    --muted-foreground: 220 9% 45%;
-    --accent: 45 74% 60%; /* Muted Amber/Yellow */
-    --accent-foreground: 218 20% 6%;
-    --destructive: 6 78% 60%;
+    --secondary: 35 92% 90%;
+    --secondary-foreground: 212 88% 13%;
+    --muted: 45 35% 91%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 35 92% 50%;
+    --accent-foreground: 212 88% 13%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 45 74% 60%; /* Muted Amber/Yellow */
-    --radius: 0.5rem;
-    
-    /* New dark theme variables */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 212 88% 13%;
+    --radius: 0.75rem;
+
+    /* New theme variables from temp design */
+    --bg-primary: 212 40% 4%;
+    --bg-secondary: 212 40% 10%;
+    --surface-card: 212 40% 8%;
+    --border-color: 212 40% 15%;
+    --text-primary: 0 0% 98%;
+    --text-secondary: 215.4 16.3% 70%;
+    --text-on-light: 215.4 16.3% 56.9%;
+    --accent-authority: 145 58% 55%;
+    --accent-urgency: 0 59% 54%;
     --alternate-background: 218 20% 6%;
     --primary-text: 215 25% 95%;
     --secondary-text: 220 15% 65%;
@@ -33,39 +42,39 @@
     --authority-green: 145 58% 55%;
     --high-contrast-green: 145 58% 55%;
     --risk-accent: 0 59% 54%;
-    --warning-accent: 45 90% 57%;
-    --accent-authority: hsl(var(--authority-green));
-    --accent-urgency: hsl(var(--risk-accent));
-    --bg-primary: hsl(var(--alternate-background));
-    --surface-card: hsl(var(--card));
-    --border-color: hsl(var(--border));
-    --text-primary: hsl(var(--primary-text));
-    --text-secondary: hsl(var(--secondary-text));
-    --text-on-light: hsl(var(--muted-text));
   }
 
   .dark {
-    --background: 218 20% 6%;
-    --foreground: 215 25% 95%;
-    --card: 218 20% 10%;
-    --card-foreground: 215 25% 95%;
-    --popover: 218 20% 6%;
-    --popover-foreground: 215 25% 95%;
-    --primary: 158 41% 57%;
-    --primary-foreground: 218 20% 6%;
-    --secondary: 218 20% 10%;
-    --secondary-foreground: 215 25% 95%;
-    --muted: 218 20% 15%;
-    --muted-foreground: 220 15% 65%;
+    --background: 212 40% 4%;
+    --foreground: 0 0% 98%;
+    --card: 212 40% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 212 40% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 212 88% 13%;
+    --secondary: 212 40% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 212 40% 10%;
+    --muted-foreground: 215.4 16.3% 56.9%;
     --accent: 38 92% 66%;
-    --accent-foreground: 218 20% 6%;
-    --destructive: 6 78% 60%;
+    --accent-foreground: 212 88% 13%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 218 20% 15%;
-    --input: 218 20% 15%;
-    --ring: 38 92% 66%;
-
-    /* New dark theme variables */
+    --border: 212 40% 15%;
+    --input: 212 40% 15%;
+    --ring: 45 74% 60%;
+    
+    /* New theme variables from temp design */
+    --bg-primary: 212 40% 4%;
+    --bg-secondary: 212 40% 10%;
+    --surface-card: 212 40% 8%;
+    --border-color: 212 40% 15%;
+    --text-primary: 0 0% 98%;
+    --text-secondary: 215.4 16.3% 70%;
+    --text-on-light: 215.4 16.3% 56.9%;
+    --accent-authority: 145 58% 55%;
+    --accent-urgency: 0 59% 54%;
     --alternate-background: 218 20% 6%;
     --primary-text: 215 25% 95%;
     --secondary-text: 220 15% 65%;
@@ -73,15 +82,6 @@
     --authority-green: 145 58% 55%;
     --high-contrast-green: 145 58% 55%;
     --risk-accent: 0 59% 54%;
-    --warning-accent: 45 90% 57%;
-    --accent-authority: hsl(var(--authority-green));
-    --accent-urgency: hsl(var(--risk-accent));
-    --bg-primary: hsl(var(--alternate-background));
-    --surface-card: hsl(var(--card));
-    --border-color: hsl(var(--border));
-    --text-primary: hsl(var(--primary-text));
-    --text-secondary: hsl(var(--secondary-text));
-    --text-on-light: hsl(var(--muted-text));
   }
 }
  
