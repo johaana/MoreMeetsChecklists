@@ -38,21 +38,21 @@ const HeroSection = () => (
         />
         <div className="container px-4 md:px-6 relative z-20">
             <div className="max-w-[48%] space-y-6">
-                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05]" style={{ fontFamily: 'Inter Tight, sans-serif', color: '#F4F6F5', letterSpacing: '-0.02em' }}>
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05]" style={{ fontFamily: 'Inter Tight, sans-serif', color: 'hsl(var(--text-primary))', letterSpacing: '-0.02em' }}>
                     People forget.
                     <br/>
                     Your business shouldn’t pay for it.
                 </h1>
-                <p className="text-lg max-w-[520px]" style={{color: '#C7CFCC', lineHeight: 1.5}}>
+                <p className="text-lg max-w-[520px]" style={{color: 'hsl(var(--text-secondary))', lineHeight: 1.5}}>
                     When work lives in people’s heads, execution breaks
                     during audits, shift changes, growth, and emergencies.
                 </p>
                 <p className="text-lg font-medium" style={{color: 'hsl(var(--accent-urgency))', letterSpacing: '0.01em'}}>
-                    Memory is not a control system.
+                   Consistency can’t depend on memory.
                 </p>
                 
                 <div className="flex flex-col items-start gap-3 pt-6">
-                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-cta))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
@@ -204,7 +204,7 @@ const FinalCTASection = () => (
             <SectionHeadline>If work lives in people’s heads, it will fail under pressure.</SectionHeadline>
             <p className="text-lg" style={{color: 'hsl(var(--text-secondary))'}}>MoreMeets gives your business a system, not another tool.</p>
             <div className="flex flex-col items-center gap-3 pt-4">
-                <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-cta))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                     <Link href="/library">
                         View the SOP Framework <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
@@ -234,3 +234,5 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
+    
