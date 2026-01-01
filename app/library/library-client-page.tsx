@@ -10,9 +10,10 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Input } from '@/components/ui/input';
-import { Search, ArrowRight, X } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 
 export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
@@ -57,7 +58,6 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const clearFilters = () => {
         router.push('/library', { scroll: false });
     };
-
 
     const filteredPacks = React.useMemo(() => {
         return packs.filter(pack => {
@@ -125,50 +125,45 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         </div>
                         
                         {/* Filters */}
-                        <div className="max-w-5xl mx-auto mb-12 p-4 rounded-lg border bg-background shadow-sm">
-                            <div className="grid md:grid-cols-[1fr,auto] gap-4 items-center">
+                        <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border bg-background/95 shadow-sm sticky top-20 z-40">
+                             <div className="grid md:grid-cols-[1fr_auto_auto] gap-4 items-center">
                                 <div className="relative">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                     <Input 
                                         type="search" 
-                                        placeholder="Search by title, industry, or keyword..." 
+                                        placeholder="Search by title or keyword..." 
                                         className="pl-10 w-full"
                                         value={searchTerm}
                                         onChange={handleSearchChange}
                                     />
                                 </div>
-                                <div className="flex gap-2 flex-wrap justify-center md:justify-start">
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="outline" className="w-full md:w-auto justify-between">
+                                            {activeCategory === 'All' ? 'Filter by Industry' : activeCategory}
+                                            <ChevronDown className="w-4 h-4 ml-2" />
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto">
+                                        <DropdownMenuItem onSelect={() => handleCategoryChange('All')}>All Industries</DropdownMenuItem>
+                                        {categories.map(category => (
+                                            <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)}>
+                                                {category}
+                                            </DropdownMenuItem>
+                                        ))}
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                                 {(searchTerm || activeCategory !== 'All') && (
                                     <Button
-                                        variant={activeCategory === 'All' ? 'default' : 'outline'}
+                                        variant="ghost"
                                         size="sm"
-                                        onClick={() => handleCategoryChange('All')}
-                                        className="rounded-full"
+                                        onClick={clearFilters}
+                                        className="w-full md:w-auto"
                                     >
-                                        All
+                                        <X className="h-4 w-4 mr-2" />
+                                        Clear
                                     </Button>
-                                    {categories.map(category => (
-                                        <Button
-                                            key={category}
-                                            size="sm"
-                                            variant={activeCategory === category ? 'default' : 'outline'}
-                                            onClick={() => handleCategoryChange(category)}
-                                            className="rounded-full"
-                                        >
-                                            {category}
-                                        </Button>
-                                    ))}
-                                    {(searchTerm || activeCategory !== 'All') && (
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            onClick={clearFilters}
-                                            className="rounded-full"
-                                            aria-label="Clear filters"
-                                        >
-                                            <X className="h-4 w-4" />
-                                        </Button>
-                                    )}
-                                </div>
+                                )}
                             </div>
                         </div>
 
@@ -181,6 +176,11 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         ) : (
                             <>
                                 {activeCategory === 'All' && searchTerm === '' && <Bestsellers packs={packs} />}
+                                
+                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary mb-8 text-center">
+                                    {activeCategory === 'All' ? 'All Packs' : activeCategory}
+                                </h2>
+                                
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
                                     {filteredPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
                                 </div>
