@@ -417,1243 +417,1281 @@ const hotels_and_resorts: PremiumPack = {
     ]
 };
 
-const otherPacks: PremiumPack[] = [
-    {
-        id: 'restaurants',
-        title: "Restaurant Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ee481c02-cd85-430b-bc21-7a574bfea0cb',
-        category: "Hospitality",
-        description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
-        icon: "utensils",
-        badgeText: "Essential for F&B",
-        badgeVariant: "accent",
-        whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "VPs", "GMs", "Directors"],
-        sampleItems: [
-            { text: "Prevent foodborne illness with kitchen opening & closing hygiene protocols (HACCP).", icon: "shield-check" },
-            { text: "Protect your inventory from spoilage with rigorous cold chain and temperature monitoring.", icon: "thermometer" },
-            { text: "Safeguard guests with a robust allergen management and menu labeling system.", icon: "file-warning" },
-            { text: "Maintain a spotless, pest-free environment with auditable waste segregation and pest control logs.", icon: "bug" },
-            { text: "Build a professional team through verifiable staff hygiene and training protocols.", icon: "user-check" },
-            { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: "package-check" }
-        ],
-        checklists: [
+const restaurants: PremiumPack = {
+    id: 'restaurants',
+    title: "Restaurant Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ee481c02-cd85-430b-bc21-7a574bfea0cb',
+    category: "Hospitality",
+    description: "An essential HACCP-based toolkit for restaurant owners focused on food safety, quality, and operational efficiency.",
+    icon: "utensils",
+    badgeText: "Essential for F&B",
+    badgeVariant: "accent",
+    whoIsItFor: ["Restaurant Owners", "Head Chefs", "Kitchen Managers", "F&B Directors", "VPs", "GMs", "Directors"],
+    sampleItems: [
+        { text: "Prevent foodborne illness with kitchen opening & closing hygiene protocols (HACCP).", icon: "shield-check" },
+        { text: "Protect your inventory from spoilage with rigorous cold chain and temperature monitoring.", icon: "thermometer" },
+        { text: "Safeguard guests with a robust allergen management and menu labeling system.", icon: "file-warning" },
+        { text: "Maintain a spotless, pest-free environment with auditable waste segregation and pest control logs.", icon: "bug" },
+        { text: "Build a professional team through verifiable staff hygiene and training protocols.", icon: "user-check" },
+        { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: "package-check" }
+    ],
+    checklists: [
+        {
+            title: "Kitchen Opening Checklist (HACCP)",
+            department: "Kitchen",
+            frequency: "Daily",
+            role: "Opening Chef",
+            summary: "Ensures the kitchen is safe, sanitary, and ready for service, complying with HACCP principles.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "RO-KO-01", description: "Record temperatures of all coolers and freezers.", priority: "High", riskLevel: "High", consequence: "Foodborne illness outbreak.", proof: "Temperature log sheet.", location: "Cold Storage" },
+                { id: "RO-KO-02", description: "Sanitize all food preparation surfaces, cutting boards, and slicers.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Sanitization log.", location: "Prep Stations" },
+                { id: "RO-KO-03", description: "Check dishwasher and 3-compartment sink for correct chemical levels and water temperature.", priority: "High", riskLevel: "Medium", consequence: "Ineffective cleaning, health code violations.", proof: "Test strip results log.", location: "Dishwashing Area" },
+                { id: "RO-KO-04", description: "Ensure handwashing stations are stocked with soap, paper towels, and hot water.", priority: "High", riskLevel: "Medium", consequence: "Spread of pathogens via hands.", proof: "Visual check.", location: "All Hand Sinks" },
+                { id: "RO-KO-05", description: "Calibrate all food thermometers.", priority: "High", riskLevel: "High", consequence: "Incorrect cooking temperatures, food safety risk.", proof: "Calibration log.", location: "Kitchen Office" },
+                { id: "RO-KO-06", description: "Check for signs of pests and log any findings.", priority: "High", riskLevel: "High", consequence: "Infestation, closure by health department.", proof: "Pest control logbook.", location: "All Kitchen Areas" },
+                { id: "RO-KO-07", description: "Verify proper storage of raw vs. ready-to-eat foods.", priority: "High", riskLevel: "High", consequence: "Cross-contamination (e.g., salmonella).", proof: "Photo of cooler storage.", location: "Walk-in Cooler" },
+                { id: "RO-KO-08", description: "Ensure waste bins are clean, lined, and covered.", priority: "Medium", riskLevel: "Low", consequence: "Pest attraction, odors.", proof: "Visual check.", location: "Waste Area" },
+                { id: "RO-KO-09", description: "Check that all cooking equipment is clean and functional.", priority: "Medium", riskLevel: "Medium", consequence: "Service delays, fire hazard.", proof: "Equipment check log.", location: "Cooking Line" },
+                { id: "RO-KO-10", description: "Review previous day's closing notes for any follow-up actions.", priority: "Medium", riskLevel: "Low", consequence: "Unresolved issues.", proof: "Manager's logbook.", location: "Kitchen Office" }
+            ]
+        },
+        {
+            title: "Food Receiving & Storage",
+            department: "Kitchen/Stores",
+            frequency: "Per Delivery",
+            role: "Receiving Clerk",
+            summary: "Ensures all incoming food is safe, from approved suppliers, and stored correctly.",
+            icon: "truck",
+            tasks: [
+                { id: "RO-FR-01", description: "Check temperature of refrigerated and frozen goods upon arrival.", priority: "High", riskLevel: "High", consequence: "Accepting temperature-abused food, foodborne illness.", proof: "Inbound temperature log.", location: "Receiving Dock" },
+                { id: "RO-FR-02", description: "Inspect packaging for damage, leaks, or signs of tampering.", priority: "High", riskLevel: "Medium", consequence: "Contaminated product enters inventory.", proof: "Receiving checklist.", location: "Receiving Dock" },
+                { id: "RO-FR-03", description: "Verify delivery against purchase order for accuracy of items and quantities.", priority: "Medium", riskLevel: "Low", consequence: "Inventory discrepancies, paying for incorrect items.", proof: "Signed delivery note with discrepancies noted.", location: "Receiving Dock" },
+                { id: "RO-FR-04", description: "Check 'use by' or 'best by' dates on all perishable items.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage, serving expired product.", proof: "Receiving checklist.", location: "Receiving Dock" },
+                { id: "RO-FR-05", description: "Ensure all received items are from approved suppliers.", priority: "High", riskLevel: "High", consequence: "Food fraud, unknown allergen risks, poor quality.", proof: "Cross-reference with Approved Supplier List.", location: "Receiving Office" },
+                { id: "RO-FR-06", description: "Move all perishable items to correct temperature storage immediately.", priority: "High", riskLevel: "Medium", consequence: "Breaking the cold chain, bacterial growth.", proof: "CCTV footage of receiving process.", location: "Receiving to Storage" },
+                { id: "RO-FR-07", description: "Label all decanted products with name and date.", priority: "Medium", riskLevel: "Low", consequence: "Inability to track freshness, cross-contamination.", proof: "Visual check of stored items.", location: "Storage Areas" },
+                { id: "RO-FR-08", description: "Implement FIFO (First-In, First-Out) rotation for all new stock.", priority: "High", riskLevel: "Medium", consequence: "Increased wastage, using older stock last.", proof: "Visual check of storage shelves.", location: "Storage Areas" },
+                { id: "RO-FR-09", description: "Reject any delivery that does not meet standards and document the rejection.", priority: "High", riskLevel: "High", consequence: "Accepting unsafe food into the kitchen.", proof: "Signed and documented rejection note.", location: "Receiving Dock" },
+                { id: "RO-FR-10", description: "Keep receiving area clean and free of pests.", priority: "Medium", riskLevel: "Low", consequence: "Pests entering the facility via deliveries.", proof: "Cleaning log for receiving area.", location: "Receiving Dock" }
+            ]
+        },
+        {
+            title: "Allergen Management Protocol",
+            department: "Kitchen/Service",
+            frequency: "Ongoing",
+            role: "All Staff",
+            summary: "A system to prevent cross-contamination and ensure accurate communication of allergens to guests.",
+            icon: "file-warning",
+            tasks: [
+                { id: "RO-AM-01", description: "Maintain an up-to-date allergen matrix for all menu items.", priority: "High", riskLevel: "High", consequence: "Fatal allergic reaction, lawsuits.", proof: "Posted allergen matrix.", location: "Kitchen/Service Station" },
+                { id: "RO-AM-02", description: "Use designated purple cutting boards and utensils for allergen-free orders.", priority: "High", riskLevel: "High", consequence: "Cross-contact causing allergic reaction.", proof: "Visual check of equipment.", location: "Prep Stations" },
+                { id: "RO-AM-03", description: "When a guest declares an allergy, a manager must oversee the order.", priority: "High", riskLevel: "High", consequence: "Miscommunication between server and kitchen.", proof: "Manager's signature on the allergen ticket.", location: "POS/Kitchen" },
+                { id: "RO-AM-04", description: "Change gloves and wash hands before preparing an allergen-free meal.", priority: "High", riskLevel: "High", consequence: "Cross-contact.", proof: "CCTV review or direct observation.", location: "Prep Stations" },
+                { id: "RO-AM-05", description: "Allergen-free meals must be clearly marked and delivered to the table separately.", priority: "High", riskLevel: "High", consequence: "Giving the wrong plate to the guest.", proof: "Use of 'Allergy' pick on the dish.", location: "Expo/Table" },
+                { id: "RO-AM-06", description: "Store allergenic ingredients separately from non-allergenic ingredients.", priority: "Medium", riskLevel: "Medium", consequence: "Accidental cross-contamination in storage.", proof: "Photo of storage shelves.", location: "Storage Areas" },
+                { id: "RO-AM-07", description: "Ensure all front-of-house staff complete mandatory allergen awareness training.", priority: "High", riskLevel: "High", consequence: "Staff giving incorrect information to guests.", proof: "Training records.", location: "HR/Training" },
+                { id: "RO-AM-08", description: "Review all new recipes for allergens before adding them to the menu.", priority: "High", riskLevel: "Medium", consequence: "Introducing an un-documented allergen.", proof: "Recipe sign-off sheet with allergen check.", location: "Kitchen Office" },
+                { id: "RO-AM-09", description: "In case of a reaction, immediately call emergency services and follow incident protocol.", priority: "High", riskLevel: "High", consequence: "Delayed medical response.", proof: "Incident report form.", location: "Restaurant Floor" },
+                { id: "RO-AM-10", description: "Regularly update staff on changes to menu items or ingredients.", priority: "Medium", riskLevel: "Low", consequence: "Outdated knowledge.", proof: "Pre-shift briefing notes.", location: "Team Briefing" }
+            ]
+        },
+        {
+            title: "Front of House Opening/Closing",
+            department: "Service",
+            frequency: "Daily",
+            role: "Restaurant Manager",
+            summary: "Ensures the dining area is perfectly set, staff are briefed, and all financial procedures are followed.",
+            icon: "users",
+            tasks: [
+                { id: "RO-FO-01", description: "Inspect all tables for correct setup, cleanliness, and stability.", priority: "High", riskLevel: "Low", consequence: "Poor guest first impression.", proof: "Manager's opening checklist.", location: "Dining Room" },
+                { id: "RO-FO-02", description: "Check cleanliness of restrooms and restock supplies.", priority: "High", riskLevel: "Medium", consequence: "Guest complaints, negative perception of hygiene.", proof: "Restroom cleaning log.", location: "Restrooms" },
+                { id: "RO-FO-03", description: "Conduct pre-shift briefing with staff covering specials, 86'd items, and service points.", priority: "High", riskLevel: "Low", consequence: "Poor communication, inconsistent service.", proof: "Briefing log.", location: "Staff Area" },
+                { id: "RO-FO-04", description: "Assign server sections and side-work duties.", priority: "Medium", riskLevel: "Low", consequence: "Unfair workload, missed tasks.", proof: "Posted section map and side-work chart.", location: "Staff Area" },
+                { id: "RO-FO-05", description: "Verify POS system is online and printers are working.", priority: "High", riskLevel: "Medium", consequence: "Inability to take orders or process payments.", proof: "Test transaction printout.", location: "POS Stations" },
+                { id: "RO-FO-06", description: "Check ambiance: lighting, music volume, and temperature are at correct levels.", priority: "Medium", riskLevel: "Low", consequence: "Uncomfortable guest environment.", proof: "Manager's opening checklist.", location: "Dining Room" },
+                { id: "RO-FO-07", description: "At closing, reconcile all cash, credit card, and digital payments.", priority: "High", riskLevel: "High", consequence: "Financial loss, theft.", proof: "End-of-day sales report signed by manager.", location: "Office" },
+                { id: "RO-FO-08", description: "Ensure all closing side-work is completed by staff before checkout.", priority: "Medium", riskLevel: "Low", consequence: "Dirty restaurant for the morning shift.", proof: "Closing checklist signed by each server.", location: "Dining Room" },
+                { id: "RO-FO-09", description: "Secure all cash and valuables in the safe.", priority: "High", riskLevel: "High", consequence: "Theft.", proof: "Safe logbook.", location: "Office" },
+                { id: "RO-FO-10", description: "Set alarm and secure all doors and windows at close.", priority: "High", riskLevel: "High", consequence: "Break-in.", proof: "Alarm system log.", location: "Entire Premises" }
+            ]
+        },
+        {
+            title: "Weekly Fire Safety Audit",
+            department: "Management/Compliance",
+            frequency: "Weekly",
+            role: "General Manager",
+            summary: "Ensures the restaurant is compliant with fire safety regulations and prepared for an emergency.",
+            icon: "siren",
+            tasks: [
+                { id: "RO-FS-01", description: "Check all fire exit pathways are completely clear of obstructions.", priority: "High", riskLevel: "High", consequence: "Blocked escape route, mass casualties.", proof: "Dated photos of all exit routes.", location: "All Areas" },
+                { id: "RO-FS-02", description: "Verify all fire extinguishers are in their designated places, charged, and not expired.", priority: "High", riskLevel: "High", consequence: "Inability to fight a small fire.", proof: "Extinguisher inspection log.", location: "All Areas" },
+                { id: "RO-FS-03", description: "Test fire alarm system (if permitted without full evacuation).", priority: "High", riskLevel: "High", consequence: "Alarm failure in an emergency.", proof: "Alarm test log.", location: "Control Panel" },
+                { id: "RO-FS-04", description: "Check kitchen fire suppression system (e.g., Ansul) for pressure and blockages.", priority: "High", riskLevel: "High", consequence: "Uncontrolled kitchen fire.", proof: "Inspection tag and gauge photo.", location: "Kitchen Hood" },
+                { id: "RO-FS-05", description: "Ensure emergency lighting is functional.", priority: "High", riskLevel: "Medium", consequence: "Panic in the dark during an evacuation.", proof: "Emergency light test log.", location: "All Areas" },
+                { id: "RO-FS-06", description: "Check that gas lines and shut-off valves are accessible and clearly marked.", priority: "High", riskLevel: "High", consequence: "Inability to stop gas flow in an emergency, explosion risk.", proof: "Photo of accessible gas valve.", location: "Kitchen/Utility Area" },
+                { id: "RO-FS-07", description: "Clean lint and grease buildup from kitchen exhaust hoods and ducts.", priority: "High", riskLevel: "High", consequence: "Grease fire, the most common type of restaurant fire.", proof: "Cleaning log with vendor signature.", location: "Kitchen Hood" },
+                { id: "RO-FS-08", description: "Review staff knowledge of evacuation plan with a quick quiz.", priority: "Medium", riskLevel: "Medium", consequence: "Staff confusion during an emergency.", proof: "Note in manager's log.", location: "Staff Briefing" },
+                { id: "RO-FS-09", description: "Verify 'No Smoking' signs are present and enforced.", priority: "Low", riskLevel: "Low", consequence: "Fire risk from discarded cigarettes.", proof: "Visual check.", location: "All Areas" },
+                { id: "RO-FS-10", description: "Check for any daisy-chained extension cords or overloaded electrical outlets.", priority: "Medium", riskLevel: "High", consequence: "Electrical fire.", proof: "Photo of any violations found.", location: "All Areas" }
+            ]
+        },
+        {
+            title: "Pest Control & Waste Management",
+            department: "Maintenance/Kitchen",
+            frequency: "Daily/Weekly",
+            role: "Maintenance Staff",
+            summary: "Maintains a clean environment to prevent pest infestations and comply with health codes.",
+            icon: "bug",
+            tasks: [
+                { id: "RO-PC-01", description: "Inspect all incoming goods for signs of pests before accepting.", priority: "High", riskLevel: "Medium", consequence: "Pests entering via suppliers.", proof: "Receiving log.", location: "Receiving Dock" },
+                { id: "RO-PC-02", description: "Ensure all exterior doors and windows are sealed to prevent pest entry.", priority: "Medium", riskLevel: "Medium", consequence: "Easy entry points for rodents and insects.", proof: "Weekly perimeter inspection log.", location: "Exterior" },
+                { id: "RO-PC-03", description: "Keep all food containers sealed and stored off the floor.", priority: "High", riskLevel: "High", consequence: "Pests accessing food sources.", proof: "Visual check of dry storage.", location: "Dry Storage" },
+                { id: "RO-PC-04", description: "Clean all floor drains daily.", priority: "Medium", riskLevel: "Low", consequence: "Breeding ground for flies and cockroaches.", proof: "Cleaning log.", location: "Kitchen Floor" },
+                { id: "RO-PC-05", description: "Empty all interior trash bins regularly and before they overflow.", priority: "Medium", riskLevel: "Low", consequence: "Attracts pests, odors.", proof: "Visual check.", location: "All Areas" },
+                { id: "RO-PC-06", description: "Keep exterior dumpster area clean, and lids closed.", priority: "High", riskLevel: "High", consequence: "Major attraction for rodents and other pests.", proof: "Daily inspection photo.", location: "Exterior Dumpster Area" },
+                { id: "RO-PC-07", description: "Check and log all pest traps (e.g., rodent traps, insect light traps).", priority: "Medium", riskLevel: "Medium", consequence: "Failure to detect an early infestation.", proof: "Pest control logbook.", location: "All Areas" },
+                { id: "RO-PC-08", description: "Schedule and document regular visits from a professional pest control operator.", priority: "High", riskLevel: "Medium", consequence: "Infestations become unmanageable.", proof: "Pest control service reports.", location: "Office" },
+                { id: "RO-PC-09", description: "Properly segregate and store waste (food vs. non-food) as per local regulations.", priority: "Medium", riskLevel: "Low", consequence: "Fines for improper waste disposal.", proof: "Visual check of waste bins.", location: "Waste Area" },
+                { id: "RO-PC-10", description: "Clean up any spills immediately.", priority: "High", riskLevel: "Low", consequence: "Attracts pests, slip hazard.", proof: "N/A - immediate action.", location: "All Areas" }
+            ]
+        },
+        {
+            title: "Customer Complaint Handling",
+            department: "Management/Service",
+            frequency: "Per Incident",
+            role: "Manager on Duty",
+            summary: "Turns negative experiences into positive ones using the L.A.S.T. method (Listen, Apologize, Solve, Thank).",
+            icon: "smile-plus",
+            tasks: [
+                { id: "RO-CH-01", description: "Listen patiently to the guest's entire complaint without interrupting.", priority: "High", riskLevel: "High", consequence: "Guest feels unheard and becomes more irate.", proof: "Manager's incident report.", location: "Dining Room" },
+                { id: "RO-CH-02", description: "Apologize genuinely for the lapse in service, even if it's not the restaurant's fault.", priority: "High", riskLevel: "Low", consequence: "Appearing defensive escalates the situation.", proof: "Manager's incident report.", location: "Dining Room" },
+                { id: "RO-CH-03", description: "Log the complaint in the daily logbook, noting the table, server, time, and issue.", priority: "High", riskLevel: "Medium", consequence: "Inability to track recurring problems.", proof: "Entry in daily logbook.", location: "Office" },
+                { id: "RO-CH-04", description: "Offer an immediate solution (e.g., recook the dish, offer a complimentary dessert).", priority: "High", riskLevel: "Medium", consequence: "Guest leaves unhappy and posts a negative review.", proof: "Manager's incident report detailing solution.", location: "Dining Room" },
+                { id: "RO-CH-05", description: "Follow up with the guest after the solution has been provided to ensure satisfaction.", priority: "Medium", riskLevel: "Low", consequence: "Guest feels processed, not cared for.", proof: "Note in incident report.", location: "Dining Room" },
+                { id: "RO-CH-06", description: "Thank the guest for bringing the issue to your attention.", priority: "High", riskLevel: "Low", consequence: "Missed opportunity to end on a positive note.", proof: "Manager's incident report.", location: "Dining Room" },
+                { id: "RO-CH-07", description: "If the complaint is about food safety, secure the dish for investigation.", priority: "High", riskLevel: "High", consequence: "Inability to perform a root cause analysis, potential for more illnesses.", proof: "Photo of secured dish, incident report.", location: "Kitchen" },
+                { id: "RO-CH-08", "description": "Debrief the relevant staff member(s) privately and constructively.", priority: "Medium", "riskLevel": "Low", "consequence": "Staff do not learn from mistakes.", "proof": "Note in staff file.", "location": "Back Office" },
+                { id: "RO-CH-09", "description": "Review complaint logs weekly to identify patterns (e.g., a specific dish, a specific server).", priority: "Medium", riskLevel: "Medium", "consequence": "Systemic issues are never resolved.", "proof": "Weekly management meeting minutes.", "location": "Office" },
+                { id: "RO-CH-10", "description": "Empower staff with a service recovery budget (e.g., up to ₹500) to solve problems without needing manager approval.", priority: "High", riskLevel: "Low", "consequence": "Slow response times for minor issues.", "proof": "Service recovery policy document.", "location": "HR/Training" }
+            ]
+        },
+        {
+            title: "End-of-Day Closing",
+            department: "Management",
+            frequency: "Daily",
+            role: "Closing Manager",
+            summary: "Secures the premises, reconciles financials, and prepares for the next day.",
+            icon: "lock",
+            tasks: [
+                { id: "RO-ED-01", description: "Reconcile all POS stations and cash drawers.", priority: "High", riskLevel: "High", consequence: "Theft, financial discrepancies.", proof: "Signed end-of-day sales report.", location: "Office" },
+                { id: "RO-ED-02", description: "Secure all cash and credit card slips in the safe.", priority: "High", riskLevel: "High", consequence: "Theft of days earnings.", proof: "Safe deposit log.", location: "Office" },
+                { id: "RO-ED-03", description: "Ensure all kitchen equipment is turned off (fryers, ovens, grills).", priority: "High", riskLevel: "High", consequence: "Fire hazard.", proof: "Closing chef's sign-off sheet.", location: "Kitchen" },
+                { id: "RO-ED-04", description: "Check that all coolers and freezers are closed and at the correct temperature.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage overnight.", proof: "Final temperature log entry.", location: "Kitchen" },
+                { id: "RO-ED-05", description: "Ensure all cleaning duties for both FOH and BOH are complete.", priority: "Medium", riskLevel: "Low", consequence: "Dirty restaurant for opening shift.", proof: "Signed cleaning checklists.", location: "All Areas" },
+                { id: "RO-ED-06", description: "Take out all trash to exterior dumpsters.", priority: "Medium", riskLevel: "Low", consequence: "Pest attraction overnight.", proof: "Visual confirmation.", location: "Waste Area" },
+                { id: "RO-ED-07", description: "Lock all doors, windows, and gates.", priority: "High", riskLevel: "High", consequence: "Break-in.", proof: "Physical check of all entry points.", location: "Perimeter" },
+                { id: "RO-ED-08", description: "Set the security alarm.", priority: "High", riskLevel: "High", consequence: "Unmonitored premises, break-in.", proof: "Alarm system log.", location: "Exit" },
+                { id: "RO-ED-09", description: "Write handover notes for the morning manager.", priority: "Medium", riskLevel: "Low", consequence: "Important information is not passed on.", proof: "Entry in manager's logbook.", location: "Office" },
+                { id: "RO-ED-10", description: "Turn off all lights except designated security lighting.", priority: "Low", riskLevel: "Low", consequence: "Wasted energy.", proof: "Visual check.", location: "All Areas" }
+            ]
+        }
+    ]
+};
+
+const fashion_and_apparel_retail: PremiumPack = {
+    id: 'fashion_and_apparel_retail',
+    title: "Fashion & Apparel Retail Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/35c743f7-333a-4fe6-9866-3334172e144b',
+    category: "Retail",
+    description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
+    icon: "shirt",
+    badgeText: "New!",
+    badgeVariant: "accent",
+    whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
+    sampleItems: [
+        { text: "Streamline inventory turnover with a seasonal stock & markdown management system.", icon: "recycle" },
+        { text: "Create stunning, brand-aligned stores with visual merchandising and display audits.", icon: "gallery-vertical" },
+        { text: "Reduce theft with secure fitting room operations and security protocols.", icon: "door-closed" },
+        { text: "Master modern retail with seamless omni-channel operations (Click-and-Collect, Returns).", icon: "link" },
+        { text: "Protect your assets through rigorous store safety and loss prevention audits.", icon: "shield" },
+        { text: "Ensure financial accuracy with daily cash handling and POS reconciliation procedures.", icon: "banknote" }
+    ],
+    checklists: [
+        {
+            title: "Daily Store Opening",
+            department: "Store Operations",
+            frequency: "Daily",
+            role: "Store Manager",
+            summary: "Ensures the store is perfectly presented, secure, and ready for customers.",
+            icon: "key-round",
+            tasks: [
+                { id: "FAR-SO-01", description: "Deactivate alarm and perform a security walk-through of the premises.", priority: "High", riskLevel: "High", consequence: "Failure to detect overnight break-in.", proof: "Alarm deactivation log, manager's sign-off.", location: "All Areas" },
+                { id: "FAR-SO-02", description: "Check all lighting, music, and digital displays are functional.", priority: "Medium", riskLevel: "Low", consequence: "Poor store ambiance, negative customer experience.", proof: "Opening checklist.", location: "Sales Floor" },
+                { id: "FAR-SO-03", description: "Ensure cash registers (POS) are online, and payment terminals are working.", priority: "High", riskLevel: "High", consequence: "Inability to process sales.", proof: "Test transaction receipt.", location: "Cash Desk" },
+                { id: "FAR-SO-04", description: "Verify cash float is correct.", priority: "High", riskLevel: "Medium", consequence: "Cash handling errors.", proof: "Signed float count form.", location: "Cash Desk" },
+                { id: "FAR-SO-05", description: "Quickly tidy and spot-clean floors, mirrors, and displays from the previous day.", priority: "High", riskLevel: "Low", consequence: "Unprofessional appearance.", proof: "Visual check by manager.", location: "Sales Floor" },
+                { id: "FAR-SO-06", description: "Review daily sales targets and staff briefing notes.", priority: "Medium", riskLevel: "Low", consequence: "Team is not aligned on goals.", proof: "Briefing sheet.", location: "Back Office" },
+                { id: "FAR-SO-07", description: "Check that fitting rooms are clean, empty, and secure.", priority: "Medium", riskLevel: "Medium", consequence: "Poor customer experience, theft risk.", proof: "Visual check.", location: "Fitting Rooms" },
+                { id: "FAR-SO-08", description: "Replenish any stock on the sales floor from the stockroom.", priority: "Medium", riskLevel: "Low", consequence: "Lost sales opportunities.", proof: "Visual check of key displays.", location: "Sales Floor" },
+                { id: "FAR-SO-09", description: "Ensure all new promotional signage is correctly displayed.", priority: "Medium", riskLevel: "Low", consequence: "Customer confusion, missed marketing opportunities.", proof: "Photo of main promotional display.", location: "Sales Floor" },
+                { id: "FAR-SO-10", description: "Conduct a team briefing to set the tone for the day.", priority: "High", riskLevel: "Low", consequence: "Unmotivated team, poor service.", proof: "Manager's briefing notes.", location: "Staff Area" }
+            ]
+        },
+        {
+            title: "Visual Merchandising Audit",
+            department: "Merchandising",
+            frequency: "Weekly",
+            role: "Visual Merchandiser",
+            summary: "Ensures the store's presentation aligns with brand guidelines and maximizes sales.",
+            icon: "gallery-vertical",
+            tasks: [
+                { id: "FAR-VM-01", description: "Verify window displays are clean, well-lit, and match the current campaign planogram.", priority: "High", riskLevel: "Medium", consequence: "Poor first impression, reduced footfall.", proof: "Photo of window display vs. planogram.", location: "Storefront" },
+                { id: "FAR-VM-02", description: "Check that all mannequins are dressed correctly, in good condition, and in the right positions.", priority: "Medium", riskLevel: "Low", consequence: "Sloppy brand image.", proof: "Photos of mannequin displays.", location: "Sales Floor" },
+                { id: "FAR-VM-03", description: "Ensure all in-store signage and promotional materials are current and in good condition.", priority: "Medium", riskLevel: "Medium", consequence: "Outdated information, confusing offers.", proof: "Visual check of all signage.", location: "Sales Floor" },
+                { id: "FAR-VM-04", description: "Verify that key product displays (e.g., front tables, feature walls) are styled as per guidelines.", priority: "High", riskLevel: "Low", consequence: "Reduced sales of key items.", proof: "Photo of feature displays.", location: "Sales Floor" },
+                { id: "FAR-VM-05", description: "Check for consistent and correct folding, hanging, and sizing standards across all products.", priority: "Medium", riskLevel: "Low", consequence: "Messy, unappealing displays.", proof: "Visual check of a sample of shelves and racks.", location: "Sales Floor" },
+                { id: "FAR-VM-06", description: "Ensure lighting is focused correctly on merchandise.", priority: "Medium", riskLevel: "Low", consequence: "Poor product presentation.", proof: "Visual check of lighting.", location: "Sales Floor" },
+                { id: "FAR-VM-07", description: "Assess overall store cleanliness and organization.", priority: "High", riskLevel: "Low", consequence: "Negative shopping experience.", proof: "Store cleanliness checklist.", location: "All Areas" },
+                { id: "FAR-VM-08", description: "Remove and replace any damaged or worn display props.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional look.", proof: "Log of replaced props.", location: "All Areas" },
+                { id: "FAR-VM-09", description: "Check that clearance and sale sections are clearly marked and organized.", priority: "Medium", riskLevel: "Low", consequence: "Lost sales, poor customer experience.", proof: "Visual check of sale section.", location: "Sale Area" },
+                { id: "FAR-VM-10", description: "Provide feedback and training to store staff on maintaining VM standards.", priority: "Medium", riskLevel: "Low", consequence: "Standards degrade over time.", proof: "VM training log.", location: "Staff Training" }
+            ]
+        },
+        {
+            title: "Inventory & Shrinkage Control",
+            department: "Loss Prevention/Operations",
+            frequency: "Weekly/Monthly",
+            role: "Store Manager",
+            summary: "Procedures to minimize inventory loss from theft, damage, or administrative errors.",
+            icon: "shield",
+            tasks: [
+                { id: "FAR-IS-01", description: "Conduct weekly cycle counts on high-value or high-theft product categories.", priority: "High", riskLevel: "High", consequence: "Inaccurate stock levels, inability to identify theft patterns.", proof: "Signed cycle count sheets.", location: "Stockroom/Sales Floor" },
+                { id: "FAR-IS-02", description: "Review CCTV footage of cash desk and high-risk areas daily.", priority: "Medium", riskLevel: "Medium", consequence: "Missed instances of internal or external theft.", proof: "CCTV review log.", location: "Office" },
+                { id: "FAR-IS-03", description: "Audit processed returns and exchanges for compliance with policy.", priority: "Medium", riskLevel: "High", consequence: "Fraudulent returns.", proof: "Sample of audited return forms vs. product.", location: "Office" },
+                { id: "FAR-IS-04", description: "Ensure security tags are correctly applied to all required merchandise.", priority: "High", riskLevel: "Medium", consequence: "Increased shoplifting.", proof: "Visual check of a sample of items.", location: "Sales Floor" },
+                { id: "FAR-IS-05", description: "Test Electronic Article Surveillance (EAS) gates at the entrance daily.", priority: "High", riskLevel: "High", consequence: "System failure, undetected theft.", proof: "EAS gate test log.", location: "Entrance" },
+                { id: "FAR-IS-06", description: "Manage fitting room access and monitor the number of items taken in.", priority: "High", riskLevel: "High", consequence: "High-risk area for theft.", proof: "Fitting room log/policy document.", location: "Fitting Rooms" },
+                { id: "FAR-IS-07", description: "Secure stockroom and back-of-house areas; access should be restricted.", priority: "High", riskLevel: "Medium", consequence: "Internal theft.", proof: "Check of door locks and access logs.", location: "Stockroom" },
+                { id: "FAR-IS-08", description: "Investigate and document all inventory discrepancies from cycle counts.", priority: "High", riskLevel: "Medium", consequence: "Unresolved shrinkage issues.", proof: "Discrepancy reports with manager notes.", location: "Office" },
+                { id: "FAR-IS-09", description: "Process all damaged or defective items according to policy.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate stock records.", proof: "Damage log.", location: "Stockroom" },
+                { id: "FAR-IS-10", description: "Train all staff on shrinkage awareness and loss prevention policies.", priority: "High", riskLevel: "Low", consequence: "Staff are not vigilant against theft.", proof: "Training records.", location: "HR/Training" }
+            ]
+        },
+        {
+            title: "Omni-Channel Operations",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Omni-Channel Lead",
+            summary: "Manages click-and-collect, online returns, and ship-from-store processes.",
+            icon: "link",
+            tasks: [
+                { id: "FAR-OC-01", description: "Process and pick all new 'Click & Collect' orders within the specified SLA (e.g., 2 hours).", priority: "High", riskLevel: "Medium", consequence: "Poor customer experience, canceled orders.", proof: "Order management system dashboard.", location: "Stockroom/Sales Floor" },
+                { id: "FAR-OC-02", description: "Communicate with customers when their 'Click & Collect' order is ready for pickup.", priority: "High", riskLevel: "Low", consequence: "Customer uncertainty, increased inbound queries.", proof: "Copy of notification email/SMS.", location: "Office" },
+                { id: "FAR-OC-03", description: "Process all in-store returns of online orders according to policy.", priority: "High", riskLevel: "Medium", consequence: "Inventory discrepancies, poor customer experience.", proof: "Return processing log.", location: "Cash Desk" },
+                { id: "FAR-OC-04", description: "Inspect, re-tag, and return items to the sales floor or designated returns area.", priority: "Medium", riskLevel: "Low", consequence: "Returned items are not made available for resale.", proof: "Visual check of returns processing area.", location: "Stockroom" },
+                { id: "FAR-OC-05", description: "Pack and dispatch all 'Ship from Store' orders daily.", priority: "High", riskLevel: "Medium", consequence: "Delayed delivery to online customers.", proof: "End-of-day courier manifest.", location: "Stockroom" },
+                { id: "FAR-OC-06", description: "Maintain accurate inventory levels between online and offline channels.", priority: "High", riskLevel: "High", consequence: "Selling items online that are out of stock in-store.", proof: "System inventory sync logs.", location: "Office" },
+                { id: "FAR-OC-07", description: "Keep the 'Click & Collect' pickup point clean and well-signposted.", priority: "Medium", riskLevel: "Low", consequence: "Poor customer experience.", proof: "Photo of pickup point.", location: "Sales Floor" },
+                { id: "FAR-OC-08", description: "Train staff on all omni-channel procedures.", priority: "High", riskLevel: "Low", consequence: "Inconsistent service.", proof: "Training records.", location: "HR/Training" },
+                { id: "FAR-OC-09", description: "Handle customer inquiries related to omni-channel orders.", priority: "Medium", riskLevel: "Low", consequence: "Poor customer service.", proof: "Customer service log.", location: "Office/Shop Floor" },
+                { id: "FAR-OC-10", description: "Audit a sample of packed 'Ship from Store' orders for accuracy and presentation.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect orders shipped, poor brand presentation.", proof: "Packing audit checklist.", location: "Stockroom" }
+            ]
+        },
+        {
+            title: "Store Safety & Security",
+            department: "Loss Prevention",
+            frequency: "Daily",
+            role: "Store Manager",
+            summary: "Ensures a safe and secure environment for both customers and staff.",
+            icon: "shield-check",
+            tasks: [
+                { id: "FAR-SS-01", description: "Test all EAS security gates at store opening.", priority: "High", riskLevel: "High", consequence: "Failure to detect theft.", proof: "Daily gate test log.", location: "Entrance" },
+                { id: "FAR-SS-02", description: "Check all CCTV cameras are online, recording, and have clear views.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV system status screen.", location: "Office" },
+                { id: "FAR-SS-03", description: "Ensure fitting room policies (e.g., item limits) are being enforced.", priority: "High", riskLevel: "Medium", consequence: "Theft from fitting rooms.", proof: "Direct observation.", location: "Fitting Rooms" },
+                { id: "FAR-SS-04", description: "Check that all high-value items are properly secured (e.g., in locked cabinets, with security tags).", priority: "High", riskLevel: "High", consequence: "High-value theft.", proof: "Visual audit of high-value displays.", location: "Sales Floor" },
+                { id: "FAR-SS-05", description: "Ensure backroom and stockroom doors are kept locked and secure.", priority: "High", riskLevel: "Medium", consequence: "Internal theft or unauthorized access.", proof: "Visual check during store walk.", location: "Back of House" },
+                { id: "FAR-SS-06", description: "Conduct bag checks for staff at the end of their shifts as per policy.", priority: "Medium", riskLevel: "Medium", consequence: "Internal theft.", proof: "Bag check log.", location: "Staff Exit" },
+                { id: "FAR-SS-07", description: "Verify that panic buttons or duress alarms are functional.", priority: "High", riskLevel: "High", consequence: "Inability for staff to call for help in an emergency.", proof: "Alarm test log.", location: "Cash Desk/Office" },
+                { id: "FAR-SS-08", description: "Keep floors clear of slip and trip hazards (e.g., boxes, hangers).", priority: "High", riskLevel: "Medium", consequence: "Customer or staff injuries, lawsuits.", proof: "Daily floor safety checklist.", location: "All Areas" },
+                { id: "FAR-SS-09", description: "Ensure fire exits are clear and unblocked.", priority: "High", riskLevel: "High", consequence: "Blocked escape route during a fire.", proof: "Dated photo of fire exits.", location: "All Areas" },
+                { id: "FAR-SS-10", description: "Review and report any suspicious activity or known shoplifters to the team.", priority: "Medium", riskLevel: "Low", consequence: "Team is not vigilant.", proof: "Daily briefing notes.", location: "Staff Briefing" }
+            ]
+        },
+        {
+            title: "Daily Closing & Financial Reconciliation",
+            department: "Store Operations",
+            frequency: "Daily",
+            role: "Closing Manager",
+            summary: "Secures the store and ensures all sales and cash are accounted for.",
+            icon: "banknote",
+            tasks: [
+                { id: "FAR-DC-01", description: "Reconcile sales for each POS terminal against cash, card, and digital payments.", priority: "High", riskLevel: "High", consequence: "Financial discrepancies, theft.", proof: "Signed end-of-day POS reports.", location: "Cash Desk" },
+                { id: "FAR-DC-02", description: "Count cash from each drawer and compare against the POS report.", priority: "High", riskLevel: "High", consequence: "Cash shortages or overages are not identified.", proof: "Signed cash count forms.", location: "Office" },
+                { id: "FAR-DC-03", description: "Prepare bank deposit and secure in the safe.", priority: "High", riskLevel: "High", consequence: "Theft of daily takings.", proof: "Deposit slip and safe log.", location: "Office" },
+                { id: "FAR-DC-04", description: "Process all end-of-day reports from the POS system.", priority: "Medium", riskLevel: "Low", consequence: "Incomplete data for head office reporting.", proof: "Printed or saved reports.", location: "Office" },
+                { id: "FAR-DC-05", description: "Clear and tidy the cash desk area.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessional appearance for opening shift.", proof: "Visual check.", location: "Cash Desk" },
+                { id: "FAR-DC-06", description: "Ensure all returned/damaged goods are processed and stored correctly.", priority: "Medium", riskLevel: "Low", consequence: "Inventory inaccuracies.", proof: "Check of returns area.", location: "Stockroom" },
+                { id: "FAR-DC-07", description: "Complete a final walk-through of the sales floor to tidy and recover merchandise.", priority: "Medium", riskLevel: "Low", consequence: "Store is not ready for morning opening.", proof: "Manager's closing checklist.", location: "Sales Floor" },
+                { id: "FAR-DC-08", description: "Lock all doors, gates, and cabinets.", priority: "High", riskLevel: "High", consequence: "Break-in.", proof: "Physical check.", location: "All Areas" },
+                { id: "FAR-DC-09", description: "Set the security alarm.", priority: "High", riskLevel: "High", consequence: "Theft, burglary.", proof: "Alarm system log.", location: "Exit" },
+                { id: "FAR-DC-10", description: "Log any issues or notes for the morning manager.", priority: "Medium", riskLevel: "Low", consequence: "Poor communication between shifts.", proof: "Manager's logbook entry.", location: "Office" }
+            ]
+        },
+        {
+            title: "Seasonal Inventory Management",
+            department: "Merchandising/Operations",
+            frequency: "Seasonally",
+            role: "Merchandising Manager",
+            summary: "Manages the transition between seasons, from stock intake to clearance.",
+            icon: "recycle",
+            tasks: [
+                { id: "FAR-SI-01", description: "Plan and execute the receiving of new seasonal stock.", priority: "High", riskLevel: "Medium", consequence: "Disorganized intake, delayed launch.", proof: "Receiving schedule and plan.", location: "Stockroom" },
+                { id: "FAR-SI-02", description: "Update all visual merchandising and floor layouts for the new season.", priority: "High", riskLevel: "Low", consequence: "Store looks dated, poor sales of new items.", proof: "New planogram documents.", location: "Sales Floor" },
+                { id: "FAR-SI-03", description: "Identify slow-moving items from the previous season to be marked down.", priority: "High", riskLevel: "Medium", consequence: "Dead stock, tied-up capital.", proof: "Slow-seller report from inventory system.", location: "Office" },
+                { id: "FAR-SI-04", description: "Implement markdown and promotional pricing for clearance items.", priority: "High", riskLevel: "Low", consequence: "Inability to clear old stock.", proof: "POS pricing update confirmation.", location: "Office" },
+                { id: "FAR-SI-05", description: "Consolidate all clearance items into a designated sale section.", priority: "Medium", riskLevel: "Low", consequence: "Poor customer experience, items get missed.", proof: "Photo of organized sale section.", location: "Sales Floor" },
+                { id: "FAR-SI-06", description: "Plan for and execute a full physical inventory count between seasons.", priority: "High", riskLevel: "High", consequence: "Inaccurate stock data for the new season.", proof: "Inventory count plan and final report.", location: "All Areas" },
+                { id: "FAR-SI-07", description: "Pack and transfer any remaining old stock to an outlet or for storage.", priority: "Medium", riskLevel: "Low", consequence: "Old stock cluttering the stockroom.", proof: "Transfer logs.", location: "Stockroom" },
+                { id: "FAR-SI-08", description: "Analyze sell-through rates of the past season to inform future buying decisions.", priority: "High", riskLevel: "Medium", consequence: "Repeating buying mistakes.", proof: "Seasonal sell-through report.", location: "Office" },
+                { id: "FAR-SI-09", description: "Train staff on new product features and selling points.", priority: "High", riskLevel: "Low", consequence: "Staff unable to sell new products effectively.", proof: "Training session attendance.", location: "Staff Training" },
+                { id: "FAR-SI-10", description: "Update online store with new season's products and remove old items.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent online vs. in-store offering.", proof: "Website content update log.", location: "E-commerce Dept." }
+            ]
+        },
+        {
+            title: "Staff Performance & Training",
+            department: "HR/Management",
+            frequency: "Monthly/Quarterly",
+            role: "Store Manager",
+            summary: "A framework for developing staff, improving performance, and building a strong team culture.",
+            icon: "user-check",
+            tasks: [
+                { id: "FAR-SP-01", description: "Conduct monthly one-on-one performance reviews with each team member.", priority: "High", riskLevel: "Low", consequence: "Lack of feedback, low morale, underperformance.", proof: "Signed performance review forms.", location: "Office" },
+                { id: "FAR-SP-02", description: "Set clear, measurable sales targets and KPIs for each employee.", priority: "High", riskLevel: "Low", consequence: "Team lacks direction and motivation.", proof: "Copy of individual target sheets.", location: "Office" },
+                { id: "FAR-SP-03", description: "Provide regular product knowledge training sessions.", priority: "High", riskLevel: "Medium", consequence: "Staff can't answer customer questions, lost sales.", proof: "Training calendar and attendance sheets.", location: "Staff Area" },
+                { id: "FAR-SP-04", description: "Conduct role-playing exercises on customer service and selling skills.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent service quality.", proof: "Training observation notes.", location: "Staff Area" },
+                { id: "FAR-SP-05", description: "Recognize and reward top-performing employees publicly.", priority: "Medium", riskLevel: "Low", consequence: "Good performance goes unnoticed, poor motivation.", proof: "'Employee of the Month' announcement/photo.", location: "Staff Area" },
+                { id: "FAR-SP-06", description: "Implement a Performance Improvement Plan (PIP) for underperforming staff.", priority: "High", riskLevel: "Medium", consequence: "Chronic underperformance is not addressed, affecting the team.", proof: "Signed PIP document.", location: "HR/Office" },
+                { id: "FAR-SP-07", description: "Ensure all staff complete mandatory compliance training (e.g., safety, data privacy).", priority: "High", riskLevel: "High", consequence: "Compliance breaches, legal risks.", proof: "Training completion certificates.", location: "HR" },
+                { id: "FAR-SP-08", description: "Maintain an up-to-date training matrix for all employees.", priority: "Medium", riskLevel: "Low", consequence: "Lack of visibility on skill gaps.", proof: "Training matrix spreadsheet.", location: "HR/Office" },
+                { id: "FAR-SP-09", description: "Conduct exit interviews to gather feedback from departing employees.", priority: "Medium", riskLevel: "Low", consequence: "Missed opportunity to identify and fix systemic issues.", proof: "Exit interview forms.", location: "HR" },
+                { id: "FAR-SP-10", description: "Hold regular team meetings to share business updates and foster teamwork.", priority: "High", riskLevel: "Low", consequence: "Poor communication and team cohesion.", proof: "Meeting minutes.", location: "Staff Area" }
+            ]
+        }
+    ]
+};
+
+const jewelry_and_luxury_retail: PremiumPack = {
+    id: 'jewelry_and_luxury_retail',
+    title: "Jewelry & Luxury Retail Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/bf8a35c9-991d-4471-95f6-e0c7ce285981',
+    category: "Retail",
+    description: "A specialized toolkit for high-value retail, focusing on vault security, inventory control, and preventing sophisticated fraud.",
+    icon: "gem",
+    badgeText: "High Value",
+    badgeVariant: "accent",
+    bestseller: true,
+    whoIsItFor: ["Jewelry Store Owners", "Luxury Brand Managers", "Asset Protection Directors", "Heads of Retail"],
+    sampleItems: [
+        { text: "Enforce Fort-Knox level security with vault access control and dual verification SOPs.", icon: "lock" },
+        { text: "Protect your most valuable assets with display case and overnight security protocols.", icon: "shield" },
+        { text: "Prevent fraud in high-value transactions with rigorous payment verification steps.", icon: "circle-dollar-sign" },
+        { text: "Eliminate swap theft and inventory loss with serialized item and watch management.", icon: "watch" },
+        { text: "Ensure regulatory compliance with robust customer verification (KYC) processes.", icon: "user-check" },
+        { text: "Build customer trust with a secure and transparent repair and service intake process.", icon: "wrench" }
+    ],
+    checklists: [
+        {
+            title: "Opening & Closing Security",
+            department: "Security/Operations",
+            frequency: "Daily",
+            role: "Store Manager",
+            summary: "Ensures the highest level of security during the most vulnerable times of the day.",
+            icon: "lock",
+            tasks: [
+                { id: "JLR-OC-01", description: "Vault Opening: Two authorized persons present for time-lock vault opening.", priority: "High", riskLevel: "High", consequence: "Breach of vault security protocol, increased risk of internal theft.", proof: "Dual-signature log in vault register.", location: "Vault" },
+                { id: "JLR-OC-02", description: "System Check: Deactivate alarm and verify all CCTV cameras and panic buttons are operational.", priority: "High", riskLevel: "High", consequence: "System failure during an incident.", proof: "System health check log.", location: "Security Office" },
+                { id: "JLR-OC-03", description: "Display Setup: Move items from vault to display cases, with counts verified by two staff members.", priority: "High", riskLevel: "High", consequence: "Inventory discrepancy, potential for swap theft during setup.", proof: "Signed display transfer sheet.", location: "Sales Floor" },
+                { id: "JLR-OC-04", description: "Closing Display Clear: All high-value items removed from display cases and returned to vault.", priority: "High", riskLevel: "High", consequence: "Items left vulnerable to smash-and-grab robbery overnight.", proof: "Dual-signature display clearance log.", location: "Sales Floor" },
+                { id: "JLR-OC-05", description: "Vault Closing: Two authorized persons present to lock vault and set time-lock.", priority: "High", riskLevel: "High", consequence: "Vault left unsecured.", proof: "Dual-signature log in vault register.", location: "Vault" },
+                { id: "JLR-OC-06", description: "Final Security Sweep: Physical check of all doors, windows, and secondary access points.", priority: "High", riskLevel: "High", consequence: "Unsecured entry point.", proof: "Manager's closing checklist.", location: "Perimeter" },
+                { id: "JLR-OC-07", description: "Activate all alarm systems (motion, glass break, etc.).", priority: "High", riskLevel: "High", consequence: "Unprotected premises.", proof: "Alarm system log showing activation.", location: "Security Office" },
+                { id: "JLR-OC-08", description: "Test a different silent alarm/panic button each day.", priority: "High", riskLevel: "Medium", consequence: "Failure of a critical life-safety device.", proof: "Daily alarm test log.", location: "Sales Floor" },
+                { id: "JLR-OC-09", description: "Ensure showcase keys are securely stored and accounted for at all times.", priority: "High", riskLevel: "High", consequence: "Unauthorized access to display cases.", proof: "Key control log.", location: "Security Office" },
+                { id: "JLR-OC-10", description: "Review any suspicious activity from the previous day's logs or CCTV.", priority: "Medium", riskLevel: "Medium", consequence: "Failure to identify patterns or pre-attack surveillance.", proof: "Shift handover log.", location: "Security Office" }
+            ]
+        },
+        {
+            title: "High-Value Transaction Protocol",
+            department: "Sales/Security",
+            frequency: "Per Transaction",
+            role: "Senior Sales Associate",
+            summary: "A step-by-step process to prevent swap-theft, fraud, and other risks during a high-value sale.",
+            icon: "gem",
+            tasks: [
+                { id: "JLR-HVT-01", description: "Show only one high-value item (or one tray) at a time.", priority: "High", riskLevel: "High", consequence: "Opportunity for distraction and swap theft.", proof: "CCTV footage of the transaction.", location: "Viewing Area" },
+                { id: "JLR-HVT-02", description: "Never leave high-value items unattended with a customer.", priority: "High", riskLevel: "High", consequence: "Grab-and-run theft.", proof: "CCTV footage.", location: "Viewing Area" },
+                { id: "JLR-HVT-03", description: "A second staff member must be present or actively observing any transaction over a set value.", priority: "High", riskLevel: "High", consequence: "Lack of witness, increased risk of coercion or theft.", proof: "'Buddy system' log.", location: "Viewing Area" },
+                { id: "JLR-HVT-04", description: "Verify serial numbers and inspect items with a loupe both before and after showing to a customer.", priority: "High", riskLevel: "High", consequence: "Swap theft is not detected.", proof: "Log sheet initialed before and after viewing.", location: "Viewing Area" },
+                { id: "JLR-HVT-05", description: "For large cash payments, verify authenticity of notes using a currency counting machine/UV light.", priority: "High", riskLevel: "High", consequence: "Accepting counterfeit currency.", proof: "Transaction log noting verification.", location: "Cash Desk" },
+                { id: "JLR-HVT-06", description: "For card payments, verify the customer's ID matches the name on the card.", priority: "High", riskLevel: "High", consequence: "Credit card fraud.", proof: "Transaction log noting ID verification.", location: "Cash Desk" },
+                { id: "JLR-HVT-07", description: "For bank transfers, do not release the item until funds are confirmed as cleared in the company account.", priority: "High", riskLevel: "High", consequence: "Fraudulent proof of payment, total loss of item.", proof: "Bank statement confirmation.", location: "Office" },
+                { id: "JLR-HVT-08", description: "Document the sale, including customer details and serial number of the item, in the sales register.", priority: "High", riskLevel: "Medium", consequence: "No audit trail for the transaction.", proof: "Completed sales invoice.", location: "Office" },
+                { id: "JLR-HVT-09", description: "Escort the customer with the packaged item to the door.", priority: "Medium", riskLevel: "Low", consequence: "Provides a final positive service impression.", proof: "CCTV footage.", location: "Sales Floor to Exit" },
+                { id: "JLR-HVT-10", description: "Log any unusual or suspicious requests or behavior in the security logbook.", priority: "Medium", riskLevel: "High", consequence: "Failure to share intelligence on potential criminal activity.", proof: "Security logbook entry.", location: "Security Office" }
+            ]
+        },
+        {
+            title: "Serialized Item & Watch Management",
+            department: "Inventory",
+            frequency: "Ongoing",
+            role: "Inventory Manager",
+            summary: "Tracks every serialized item (like luxury watches) from receiving to sale to prevent loss.",
+            icon: "barcode",
+            tasks: [
+                { id: "JLR-W-01", description: "Upon receiving, verify serial number of each watch against the shipping manifest.", priority: "High", riskLevel: "High", consequence: "Accepting incorrect or fraudulent stock.", proof: "Signed receiving document with serial numbers listed.", location: "Receiving Area" },
+                { id: "JLR-W-02", description: "Log each serial number into the master inventory system.", priority: "High", riskLevel: "Medium", consequence: "Inability to track individual items.", proof: "Inventory system screenshot.", location: "Office" },
+                { id: "JLR-W-03", description: "Conduct weekly random audits of 10 serialized items, comparing physical item to system record.", priority: "High", riskLevel: "High", consequence: "Undetected theft or swaps.", proof: "Weekly audit report.", location: "Vault/Sales Floor" },
+                { id: "JLR-W-04", description: "When an item is moved from vault to display, log the movement with two signatures.", priority: "High", riskLevel: "Medium", consequence: "Item goes missing between secure areas.", proof: "Movement logbook.", location: "Vault/Sales Floor" },
+                { id: "JLR-W-05", description: "Before showing a watch to a customer, log the serial number out.", priority: "High", riskLevel: "High", consequence: "No record of which specific item was shown.", proof: "Viewing log.", location: "Sales Floor" },
+                { id: "JLR-W-06", description: "After showing a watch, verify the serial number again before logging it back in.", priority: "High", riskLevel: "High", consequence: "Swap theft is not caught immediately.", proof: "Viewing log with post-viewing signature.", location: "Sales Floor" },
+                { id: "JLR-W-07", description: "At the point of sale, scan the serial number to record the specific item being sold.", priority: "High", riskLevel: "Medium", consequence: "Incorrect item recorded on sales receipt, inventory errors.", proof: "Sales receipt with serial number.", location: "Cash Desk" },
+                { id: "JLR-W-08", description: "For repairs, log the serial number and create a separate job bag for the item.", priority: "High", riskLevel: "High", consequence: "Item gets lost or swapped in repair process.", proof: "Repair intake form.", location: "Service Desk" },
+                { id: "JLR-W-09", description: "Conduct a full physical inventory of all serialized items quarterly.", priority: "High", riskLevel: "High", consequence: "Accumulation of discrepancies, masking ongoing theft.", proof: "Quarterly inventory reconciliation report.", location: "All Areas" },
+                { id: "JLR-W-10", description: "Investigate every single serial number discrepancy within 24 hours.", priority: "High", riskLevel: "High", consequence: "Theft goes uninvestigated, evidence is lost.", proof: "Incident report for each discrepancy.", location: "Security Office" }
+            ]
+        },
+        {
+            title: "Repair & Service Intake",
+            department: "After-Sales Service",
+            frequency: "Per Item",
+            role: "Service Advisor",
+            summary: "A secure process for accepting customer items for repair, preventing liability and loss.",
+            icon: "wrench",
+            tasks: [
+                { id: "JLR-R-01", description: "Photograph the item from multiple angles upon receipt, documenting its condition (scratches, etc.).", priority: "High", riskLevel: "High", consequence: "Disputes with customers over pre-existing damage.", proof: "Dated photos attached to job card.", location: "Service Desk" },
+                { id: "JLR-R-02", description: "Record the item's brand, model, and serial number on the intake form.", priority: "High", riskLevel: "High", consequence: "Inability to track the specific item.", proof: "Completed intake form.", location: "Service Desk" },
+                { id: "JLR-R-03", description: "Provide the customer with a detailed receipt that includes the item's details and photos.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes about what was left.", proof: "Copy of customer receipt.", location: "Service Desk" },
+                { id: "JLR-R-04", description: "Place the item in a sealed, tamper-evident job bag with the job card attached.", priority: "High", riskLevel: "High", consequence: "Item gets lost, stones fall out, or is tampered with.", proof: "Visual check.", location: "Service Desk" },
+                { id: "JLR-R-05", description: "Log the job bag into the repair tracking system.", priority: "High", riskLevel: "Medium", consequence: "No digital record of the item's location.", proof: "Entry in tracking system.", location: "Service Desk" },
+                { id: "JLR-R-06", description: "Store the job bag in a dedicated, access-controlled safe or locker.", priority: "High", riskLevel: "High", consequence: "Theft of customer property.", proof: "Safe log.", location: "Secure Storage" },
+                { id: "JLR-R-07", description: "When handing over to the workshop, get a signature from the craftsman.", priority: "High", riskLevel: "Medium", consequence: "Chain of custody is broken.", proof: "Handover log.", location: "Workshop" },
+                { id: "JLR-R-08", description: "Upon return from workshop, verify item against intake photos and notes before notifying customer.", priority: "High", riskLevel: "High", consequence: "Returning an item with new damage.", proof: "QC check sign-off.", location: "Service Desk" },
+                { id: "JLR-R-09", description: "At pickup, have the customer sign a release form confirming they have received their item in satisfactory condition.", priority: "High", riskLevel: "High", consequence: "Future disputes about the repair or condition.", proof: "Signed release form.", location: "Service Desk" },
+                { id: "JLR-R-10", description: "Verify customer ID at pickup for high-value items.", priority: "High", riskLevel: "High", consequence: "Handing over a valuable item to the wrong person.", proof: "Note on release form.", location: "Service Desk" }
+            ]
+        },
+        {
+            title: "KYC & AML Compliance",
+            department: "Compliance",
+            frequency: "Per High-Value Transaction",
+            role: "Compliance Officer/Manager",
+            summary: "Ensures compliance with anti-money laundering regulations for large transactions.",
+            icon: "user-check",
+            tasks: [
+                { id: "JLR-K-01", description: "For transactions above the legal threshold, collect customer's official photo ID and proof of address.", priority: "High", riskLevel: "High", consequence: "Severe legal and financial penalties for AML non-compliance.", proof: "Scanned copies of KYC documents.", location: "Office" },
+                { id: "JLR-K-02", description: "Verify the customer's identity against the provided documents.", priority: "High", riskLevel: "Medium", consequence: "Identity fraud.", proof: "Verification checklist.", location: "Office" },
+                { id: "JLR-K-03", description: "Check customer name against relevant government and international sanctions lists.", priority: "High", riskLevel: "High", consequence: "Doing business with sanctioned individuals.", proof: "Screenshot of sanctions list search result.", location: "Office" },
+                { id: "JLR-K-04", description: "For large cash transactions, file a Suspicious Transaction Report (STR) if applicable.", priority: "High", riskLevel: "High", consequence: "Failure to report suspicious activity to authorities.", proof: "Copy of filed STR.", location: "Office" },
+                { id: "JLR-K-05", description: "Document the source of funds for unusually large transactions.", priority: "Medium", riskLevel: "High", consequence: "Facilitating money laundering.", proof: "Source of funds declaration form.", location: "Office" },
+                { id: "JLR-K-06", description: "Maintain all KYC and transaction records for the legally required period.", priority: "High", riskLevel: "Medium", consequence: "Failure to produce records during an audit.", proof: "Secure digital or physical archive.", location: "Office" },
+                { id: "JLR-K-07", description: "Train all sales staff to identify red flags for money laundering (e.g., complex payment structures, third-party payments).", priority: "High", riskLevel: "Medium", consequence: "Staff unknowingly facilitate illicit transactions.", proof: "AML training records.", location: "HR/Training" },
+                { id: "JLR-K-08", description: "Appoint a designated compliance officer responsible for the AML program.", priority: "High", riskLevel: "High", consequence: "Lack of accountability for compliance.", proof: "Official appointment letter.", location: "HR/Management" },
+                { id: "JLR-K-09", description: "Conduct an independent annual audit of the AML program.", priority: "High", riskLevel: "Medium", consequence: "Program becomes outdated or ineffective.", proof: "Annual audit report.", location: "Office" },
+                { id: "JLR-K-10", description: "Report any identified suspicious activity to the financial intelligence unit (FIU) promptly.", priority: "High", riskLevel: "High", consequence: "Legal penalties for non-reporting.", proof: "FIU acknowledgement receipt.", location: "Compliance Office" }
+            ]
+        },
+        {
+            title: "Store Security & Loss Prevention Audit",
+            department: "Security",
+            frequency: "Quarterly",
+            role: "Area Loss Prevention Manager",
+            summary: "A comprehensive audit of all physical and procedural security measures in the store.",
+            icon: "building-2",
+            tasks: [
+                { id: "JLR-A-01", description: "Audit vault access logs and compare against authorised personnel list.", priority: "High", riskLevel: "High", consequence: "Unauthorized vault access.", proof: "Audit report.", location: "Security Office" },
+                { id: "JLR-A-02", description: "Test all alarm systems, including vault, showcases, and perimeter alarms.", priority: "High", riskLevel: "High", consequence: "Alarm system failure.", proof: "Alarm test log from vendor.", location: "Security Office" },
+                { id: "JLR-A-03", description: "Review CCTV footage storage duration and clarity of images.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to provide evidence for old incidents.", proof: "CCTV system settings screenshot.", location: "CCTV Room" },
+                { id: "JLR-A-04", description: "Inspect physical security of display cases (locks, glass type, anchoring).", priority: "High", riskLevel: "High", consequence: "Vulnerable to smash-and-grab.", proof: "Physical inspection checklist.", location: "Sales Floor" },
+                { id: "JLR-A-05", description: "Conduct a surprise cash count and float reconciliation.", priority: "Medium", riskLevel: "Medium", consequence: "Identifies cash handling irregularities.", proof: "Surprise audit report.", location: "Cash Desk" },
+                { id: "JLR-A-06", description: "Review staff training records for security and emergency procedures.", priority: "High", riskLevel: "Medium", consequence: "Untrained staff are a liability.", proof: "Training matrix.", location: "HR" },
+                { id: "JLR-A-07", description: "Audit the key control policy and logs.", priority: "High", riskLevel: "High", consequence: "Lost or unaccounted for keys.", proof: "Key log audit report.", location: "Security Office" },
+                { id: "JLR-A-08", description: "Review recent incident reports for patterns and check if corrective actions were taken.", priority: "High", riskLevel: "Medium", consequence: "Failure to learn from past incidents.", proof: "Incident report analysis.", location: "Security Office" },
+                { id: "JLR-A-09", description: "Check background verification process for all new hires.", priority: "High", riskLevel: "High", consequence: "Hiring internal threats.", proof: "Review of HR files for background check reports.", location: "HR" },
+                { id: "JLR-A-10", description: "Assess the store's opening and closing procedures through direct observation.", priority: "High", riskLevel: "High", consequence: "Procedures not being followed correctly.", proof: "Observation report.", location: "All Areas" }
+            ]
+        },
+    ]
+};
+
+const electronics_showroom_pack: PremiumPack = {
+    id: 'electronics_showroom_pack',
+    title: "Electronics Showroom Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a05cb9ef-51b3-454a-a389-609b314b8338',
+    category: "Retail",
+    description: "A comprehensive operational pack for electronics retailers to ensure safety, asset security, and a superior customer experience.",
+    icon: "tv",
+    whoIsItFor: ["Electronics Store Owners", "Showroom Managers", "Heads of Retail Operations", "Asset Protection Managers"],
+    sampleItems: [
+        { text: "Prevent fires and damage with meticulous demo unit safety and electrical load audits.", icon: "zap" },
+        { text: "Secure high-value assets with serialized tagging, warranty management, and inventory control.", icon: "barcode" },
+        { text: "Ensure environmental compliance with a formal e-waste handling and disposal process.", icon: "recycle" },
+        { text: "Protect customer data and prevent fraud with PCI-DSS compliant payment security.", icon: "shield-check" },
+        { text: "Enhance customer trust through a standardized and professional demo and returns process.", icon: "user-check" },
+        { text: "Optimize your back-of-house with safe and efficient stockroom organization checklists.", icon: "package" }
+    ],
+    checklists: [
+         {
+            title: "Daily Store Opening & Presentation",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Store Manager",
+            summary: "Ensures the showroom is safe, secure, and visually appealing before opening.",
+            icon: "key-round",
+            tasks: [
+                { id: "ES-SO-01", description: "Deactivate store alarm and perform a full security sweep of the premises.", priority: "High", riskLevel: "High", consequence: "Failure to detect an overnight breach or safety hazard.", proof: "Alarm system log and manager's opening checklist.", location: "Entire Store" },
+                { id: "ES-SO-02", description: "Power on all demo units, digital displays, and ensure they are running correct content.", priority: "High", riskLevel: "Low", consequence: "Poor customer experience, missed marketing.", proof: "Photo of main display wall.", location: "Sales Floor" },
+                { id: "ES-SO-03", description: "Verify all POS terminals are online and payment devices are functional.", priority: "High", riskLevel: "High", consequence: "Inability to transact sales, customer frustration.", proof: "Test transaction receipt from each POS.", location: "Cash/Checkout Area" },
+                { id: "ES-SO-04", description: "Check store cleanliness, including screens, surfaces, and floors.", priority: "Medium", riskLevel: "Low", consequence: "Negative perception of brand quality.", proof: "Manager's visual inspection sign-off.", location: "Sales Floor" },
+                { id: "ES-SO-05", description: "Ensure all price tags and promotional offers are accurate and up-to-date.", priority: "High", riskLevel: "Medium", consequence: "Pricing disputes with customers, legal non-compliance.", proof: "Spot check of 10 random items against master price list.", location: "Sales Floor" },
+                { id: "ES-SO-06", description: "Conduct a team briefing on daily targets, promotions, and new products.", priority: "High", riskLevel: "Low", consequence: "Misaligned team, poor sales performance.", proof: "Briefing attendance sheet and notes.", location: "Staff Area" },
+                { id: "ES-SO-07", description: "Check that all security tethers and locks on high-value demo units are secure.", priority: "High", riskLevel: "High", consequence: "High risk of theft for expensive demo items.", proof: "Physical check of 10 high-value items.", location: "Sales Floor" },
+                { id: "ES-SO-08", description: "Restock any depleted accessory displays (e.g., chargers, cases).", priority: "Low", riskLevel: "Low", consequence: "Missed incremental sales.", proof: "Visual check.", location: "Accessory Section" },
+                { id: "ES-SO-09", description: "Ensure service desk is ready for customer inquiries and repairs.", priority: "Medium", riskLevel: "Low", consequence: "Poor after-sales service experience.", proof: "Service desk readiness checklist.", location: "Service Desk" },
+                { id: "ES-SO-10", description: "Verify float cash at each register.", priority: "High", riskLevel: "Medium", consequence: "Cash handling errors.", proof: "Signed float verification forms.", location: "Cash/Checkout Area" }
+            ]
+        },
+        {
+            title: "Serialized Inventory & Asset Protection",
+            department: "Loss Prevention",
+            frequency: "Weekly",
+            role: "Asset Protection Lead",
+            summary: "Manages high-value serialized inventory to prevent theft and fraud.",
+            icon: "barcode",
+            tasks: [
+                { id: "ES-AP-01", description: "Conduct a blind cycle count of a specific high-value category (e.g., flagship phones, laptops).", priority: "High", riskLevel: "High", consequence: "Unidentified stock discrepancies, masking potential theft.", proof: "Signed count sheet reconciled against system data.", location: "Stockroom/Sales Floor" },
+                { id: "ES-AP-02", description: "Audit all new product receipts to ensure serial numbers are correctly logged in the inventory system.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate stock records from the point of entry.", proof: "Sample audit of delivery notes vs. system entries.", location: "Receiving Area" },
+                { id: "ES-AP-03", description: "Review CCTV footage for any suspicious behavior near high-value displays or the stockroom.", priority: "Medium", riskLevel: "Medium", consequence: "Missed indicators of organized retail crime or internal collusion.", proof: "CCTV review log with timestamps.", location: "Security Office" },
+                { id: "ES-AP-04", description: "Test functionality of all display item security alarms and tethers.", priority: "High", riskLevel: "High", consequence: "Theft of expensive display models.", proof: "Log of tested alarms.", location: "Sales Floor" },
+                { id: "ES-AP-05", description: "Audit the returns process for potential fraud (e.g., returning a different, older item).", priority: "High", riskLevel: "High", consequence: "Loss through fraudulent returns.", proof: "Cross-verification of returned item serial number against original sales record.", location: "Service Desk" },
+                { id: "ES-AP-06", description: "Ensure stockroom access is strictly controlled and logged.", priority: "High", riskLevel: "Medium", consequence: "Unauthorized access leading to internal theft.", proof: "Review of stockroom access logs.", location: "Stockroom" },
+                { id: "ES-AP-07", description: "Verify that empty boxes for high-value items are flattened and disposed of securely.", priority: "Medium", riskLevel: "High", consequence: "Thieves using empty boxes to carry out stolen goods (box stuffing).", proof: "CCTV footage of disposal area.", location: "Waste Disposal Area" },
+                { id: "ES-AP-08", description: "Check that high-value items in the stockroom are stored in a secure, caged area.", priority: "High", riskLevel: "High", consequence: "Easy access for internal theft.", proof: "Photo of secured cage.", location: "Stockroom" },
+                { id: "ES-AP-09", description: "Investigate all significant inventory discrepancies immediately.", priority: "High", riskLevel: "High", consequence: "Theft goes unaddressed, leading to further losses.", proof: "Incident report for each discrepancy.", location: "Security Office" },
+                { id: "ES-AP-10", description: "Perform random staff bag checks as per company policy.", priority: "Medium", riskLevel: "Medium", consequence: "Deterrent against internal theft.", proof: "Bag check log.", location: "Staff Exit" }
+            ]
+        },
+        {
+            title: "Customer Service & Repair Workflow",
+            department: "Service",
+            frequency: "Per Interaction",
+            role: "Service Technician/Advisor",
+            summary: "Ensures a secure and trustworthy process for handling customer devices for repair.",
+            icon: "wrench",
+            tasks: [
+                { id: "ES-CS-01", description: "Log customer and device details (Model, Serial, IMEI) into the service system.", priority: "High", riskLevel: "High", consequence: "Inability to track customer device, potential for loss or swap.", proof: "Service job card/system entry.", location: "Service Desk" },
+                { id: "ES-CS-02", description: "Photograph the device's physical condition at intake, noting all existing scratches or damage.", priority: "High", riskLevel: "High", consequence: "Disputes with customer over pre-existing damage.", proof: "Dated photos linked to the job card.", location: "Service Desk" },
+                { id: "ES-CS-03", description: "Have the customer sign the intake form, acknowledging the device's condition and the repair terms.", priority: "High", riskLevel: "Medium", consequence: "Legal disputes over repair scope or liability.", proof: "Signed customer intake form.", location: "Service Desk" },
+                { id: "ES-CS-04", description: "Backup customer data where possible and with explicit written consent.", priority: "High", riskLevel: "High", consequence: "Data loss, severe customer dissatisfaction, data privacy breach.", proof: "Signed data backup consent form.", location: "Service Desk" },
+                { id: "ES-CS-05", description: "Place the device in a sealed, labeled, and tamper-evident bag.", priority: "High", riskLevel: "Medium", consequence: "Device loss or mix-up within the workshop.", proof: "Visual check.", location: "Service Desk" },
+                { id: "ES-CS-06", description: "Upon repair completion, perform a full Quality Control check of all functions.", priority: "High", riskLevel: "Medium", consequence: "Returning a device that is still faulty, repeat repairs.", proof: "Signed QC checklist for the device.", location: "Workshop" },
+                { id: "ES-CS-07", description: "Wipe any stored customer data from service machines after repair is complete.", priority: "High", riskLevel: "High", consequence: "Major data privacy breach.", proof: "Data wipe confirmation log.", location: "Workshop" },
+                { id: "ES-CS-08", description: "At pickup, verify the customer's identity against the intake record.", priority: "High", riskLevel: "High", consequence: "Handing over a device to the wrong person.", proof: "ID verification note on job card.", location: "Service Desk" },
+                { id: "ES-CS-09", description: "Have the customer test the device and sign a satisfaction and release form.", priority: "High", riskLevel: "Medium", consequence: "Future disputes about the quality of the repair.", proof: "Signed release form.", location: "Service Desk" },
+                { id: "ES-CS-10", description: "Securely store all unclaimed devices and follow up with customers.", priority: "Medium", riskLevel: "Low", consequence: "Buildup of unclaimed property, liability.", proof: "Unclaimed device log.", location: "Secure Storage" }
+            ]
+        },
+        {
+            title: "E-Waste & Environmental Compliance",
+            department: "Compliance/Operations",
+            frequency: "Monthly",
+            role: "Compliance Manager",
+            summary: "Ensures all electronic waste is handled and disposed of according to environmental regulations.",
+            icon: "recycle",
+            tasks: [
+                { id: "ES-EW-01", description: "Ensure all e-waste (e.g., dead batteries, broken devices) is stored in designated, labeled containers.", priority: "High", riskLevel: "Medium", consequence: "Environmental fines, safety hazards.", proof: "Photo of designated e-waste bins.", location: "Stockroom/Waste Area" },
+                { id: "ES-EW-02", description: "Arrange for e-waste collection only with government-authorized recycling partners.", priority: "High", riskLevel: "High", consequence: "Illegal dumping, severe legal penalties.", proof: "Valid contract with authorized recycler.", location: "Office" },
+                { id: "ES-EW-03", description: "Maintain a log of all e-waste collected, including date, type, weight, and vendor.", priority: "High", riskLevel: "Medium", consequence: "Inability to prove compliant disposal during an audit.", proof: "E-waste disposal manifest/logbook.", location: "Office" },
+                { id: "ES-EW-04", description: "Obtain and file certificates of destruction/recycling from the vendor for every pickup.", priority: "High", riskLevel: "High", consequence: "Lack of legal proof of proper disposal.", proof: "File of recycling certificates.", location: "Office" },
+                { id: "ES-EW-05", description: "Train staff on identifying and segregating e-waste from general waste.", priority: "Medium", riskLevel: "Low", consequence: "E-waste ending up in landfills.", proof: "Training attendance log.", location: "Staff Training" },
+                { id: "ES-EW-06", description: "Inspect battery disposal bins to ensure no leaking or damaged batteries are creating a fire hazard.", priority: "High", riskLevel: "High", consequence: "Fire from lithium-ion batteries.", proof: "Weekly inspection log.", location: "Waste Area" },
+                { id: "ES-EW-07", description: "Ensure any customer data on devices destined for e-waste is securely wiped or the device is destroyed.", priority: "High", riskLevel: "High", consequence: "Massive data breach from discarded hardware.", proof: "Data destruction certificates or logs.", location: "Service/IT Dept" },
+                { id: "ES-EW-08", description: "Keep up-to-date with any changes in e-waste management rules and regulations.", priority: "Medium", riskLevel: "Medium", consequence: "Falling out of compliance with new laws.", proof: "Record of regulatory update reviews.", location: "Compliance Office" },
+                { id: "ES-EW-09", description: "Clearly label e-waste collection points for customers (e.g., battery drop-off).", priority: "Low", riskLevel: "Low", consequence: "Poor customer participation in take-back schemes.", proof: "Photo of customer-facing bins.", location: "Sales Floor" },
+                { id: "ES-EW-10", description: "Review recycler's compliance documents and licenses annually.", priority: "High", riskLevel: "Medium", consequence: "Partnering with a non-compliant vendor.", proof: "Annual vendor review file.", location: "Compliance Office" }
+            ]
+        }
+    ]
+};
+
+const supermarket_grocery_retail_pack: PremiumPack = {
+    id: 'supermarket_grocery_retail_pack',
+    title: "Supermarket & Grocery Retail Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
+    category: "Retail",
+    description: "An all-in-one operations and compliance pack for supermarkets, hypermarkets, and grocery retail chains, ensuring food safety, quality, and operational efficiency across outlets.",
+    icon: "shopping-basket",
+    badgeText: "New!",
+    badgeVariant: "accent",
+    whoIsItFor: ["Supermarket Owners", "Grocery Store Proprietors", "Heads of Retail Operations", "Store Directors", "Department Heads (Fresh Food, Dairy)", "3PL Partners"],
+    sampleItems: [
+        { text: "Prevent spoilage and foodborne illness with robust cold chain and perishables temperature management.", icon: "thermometer" },
+        { text: "Minimize waste and ensure freshness with a daily FIFO rotation and expiry date sweep process.", icon: "recycle" },
+        { text: "Maintain a safe and inviting store with checklists for hygiene, cleaning, and rapid spill response.", icon: "spray-can" },
+        { text: "Protect your revenue through rigorous point-of-sale security and cash reconciliation.", icon: "dollar-sign" },
+        { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: "package-check" },
+        { text: "Ensure compliance and fair trade with weighing scale calibration and Legal Metrology checks.", icon: "scale" }
+    ],
+    checklists: [
+        {
+            title: "Fresh Produce Quality Control",
+            department: "Fresh Produce",
+            frequency: "Daily",
+            role: "Department Manager",
+            summary: "Ensures freshness, quality, and safety of fruits and vegetables.",
+            icon: "sprout",
+            tasks: [
+                { id: "SGR-FP-01", description: "Check temperature of produce display cases and back coolers.", priority: "High", riskLevel: "High", consequence: "Rapid spoilage, microbial growth.", proof: "Temperature log.", location: "Display/Coolers" },
+                { id: "SGR-FP-02", description: "Cull and log any spoiled, bruised, or wilted produce from displays.", priority: "High", riskLevel: "Medium", consequence: "Poor customer perception, spreads spoilage.", proof: "Wastage log.", location: "Sales Floor" },
+                { id: "SGR-FP-03", description: "Rotate stock on display using FIFO (First-In, First-Out).", priority: "High", riskLevel: "Medium", consequence: "Increased wastage.", proof: "Visual check.", location: "Sales Floor" },
+                { id: "SGR-FP-04", description: "Ensure misting systems (if any) are functional and timed correctly.", priority: "Medium", riskLevel: "Low", consequence: "Dehydration of leafy greens.", proof: "System check log.", location: "Sales Floor" },
+                { id: "SGR-FP-05", description: "Check country of origin and organic labeling for accuracy.", priority: "Medium", riskLevel: "Medium", consequence: "Misleading customers, regulatory non-compliance.", proof: "Label audit.", location: "Sales Floor" },
+                { id: "SGR-FP-06", description: "Clean and sanitize all produce prep areas and cutting boards.", priority: "High", riskLevel: "High", consequence: "Cross-contamination, foodborne illness.", proof: "Sanitization log.", location: "Prep Area" },
+                { id: "SGR-FP-07", description: "Verify that 'ready-to-eat' cut fruits are within their 'use by' date.", priority: "High", riskLevel: "High", consequence: "Food safety risk.", proof: "Date check log.", location: "Grab-and-Go Section" },
+                { id: "SGR-FP-08", description: "Ensure weighing scales are calibrated and certified.", priority: "High", riskLevel: "High", consequence: "Incorrect pricing, legal metrology violations.", proof: "Calibration sticker/certificate.", location: "Produce Section" },
+                { id: "SGR-FP-09", description: "Inspect incoming produce deliveries for quality, temperature, and pests.", priority: "High", riskLevel: "High", consequence: "Accepting poor quality or unsafe produce.", proof: "Inbound QC log.", location: "Receiving Dock" },
+                { id: "SGR-FP-10", description: "Manage stock levels to prevent overstocking and stockouts of key items.", priority: "Medium", riskLevel: "Medium", consequence: "Lost sales or high wastage.", proof: "Inventory system review.", location: "Office" }
+            ]
+        },
+        {
+            title: "Meat & Poultry Counter (HACCP)",
+            department: "Butchery/Meat",
+            frequency: "Daily",
+            role: "Butcher/Dept. Manager",
+            summary: "Strict HACCP-based controls for handling high-risk meat and poultry products.",
+            icon: "drumstick",
+            tasks: [
+                { id: "SGR-MP-01", description: "Record temperatures of all meat display cases, walk-in coolers, and freezers.", priority: "High", riskLevel: "High", consequence: "Catastrophic food safety failure, E. coli/Salmonella risk.", proof: "Temperature log.", location: "All Cold Storage" },
+                { id: "SGR-MP-02", description: "Sanitize all grinders, slicers, knives, and cutting boards before and after use.", priority: "High", riskLevel: "High", consequence: "Cross-contamination between different meats.", proof: "Sanitization log.", location: "Prep Area" },
+                { id: "SGR-MP-03", description: "Ensure strict separation between raw poultry, red meat, and cooked meats.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Photo of cooler storage.", location: "Coolers/Display" },
+                { id: "SGR-MP-04", description: "Check 'use by' dates on all pre-packaged and in-house packaged meats.", priority: "High", riskLevel: "High", consequence: "Selling expired, unsafe product.", proof: "Date check log.", location: "Display Cases" },
+                { id: "SGR-MP-05", description: "Verify cleanliness and sanitation of the entire department, including floors and drains.", priority: "High", riskLevel: "Medium", consequence: "Health code violations, pest attraction.", proof: "Cleaning schedule sign-off.", location: "Entire Department" },
+                { id: "SGR-MP-06", description: "Ensure staff are wearing clean uniforms, gloves, and hair restraints.", priority: "High", riskLevel: "Medium", consequence: "Contamination of product.", proof: "Manager's visual check.", location: "Department" },
+                { id: "SGR-MP-07", description: "Log all incoming meat deliveries, checking for temperature, quality, and documentation.", priority: "High", riskLevel: "High", consequence: "Accepting unsafe meat.", proof: "Receiving log.", location: "Receiving Dock" },
+                { id: "SGR-MP-08", description: "Calibrate meat thermometers weekly.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate safety checks.", proof: "Calibration log.", location: "Department" },
+                { id: "SGR-MP-09", description: "Ensure proper labeling of all in-house ground or cut meats with date and time.", priority: "High", riskLevel: "Medium", consequence: "Inability to track freshness.", proof: "Visual audit of labels.", location: "Display Cases" },
+                { id: "SGR-MP-10", description: "Dispose of all meat scraps and waste in designated, sealed bins.", priority: "Medium", riskLevel: "Low", consequence: "Pest and odor issues.", proof: "Visual check.", location: "Waste Area" }
+            ]
+        },
+        {
+            title: "Dairy & Cold Chain Management",
+            department: "Dairy/Chilled Goods",
+            frequency: "Daily",
+            role: "Department Staff",
+            summary: "Ensures dairy and other chilled products are kept at safe temperatures from receiving to sale.",
+            icon: "milk",
+            tasks: [
+                { id: "SGR-DC-01", description: "Check and log temperatures of all dairy display cases and walk-in coolers twice daily.", priority: "High", riskLevel: "High", consequence: "Product spoilage, foodborne illness.", proof: "Temperature log.", location: "Sales Floor/Coolers" },
+                { id: "SGR-DC-02", description: "Inspect incoming dairy deliveries for correct temperature (below 5°C/41°F).", priority: "High", riskLevel: "High", consequence: "Accepting compromised product.", proof: "Receiving temperature log.", location: "Receiving Dock" },
+                { id: "SGR-DC-03", description: "Move dairy deliveries to cold storage immediately upon receipt.", priority: "High", riskLevel: "High", consequence: "Breaking the cold chain.", proof: "CCTV review of receiving.", location: "Receiving Dock" },
+                { id: "SGR-DC-04", description: "Rotate all products (milk, yogurt, cheese) using FIFO principles.", priority: "High", riskLevel: "Medium", consequence: "Increased wastage from expired stock.", proof: "Date check during restocking.", location: "Display Cases" },
+                { id: "SGR-DC-05", description: "Perform a daily check for and remove any expired or damaged products.", priority: "High", riskLevel: "High", consequence: "Selling unsafe or poor-quality items.", proof: "Wastage and expired stock log.", location: "Display Cases" },
+                { id: "SGR-DC-06", description: "Clean shelves and display cases of any spills or leaks.", priority: "Medium", riskLevel: "Low", consequence: "Unsanitary appearance, pest attraction.", proof: "Cleaning log.", location: "Sales Floor" },
+                { id: "SGR-DC-07", description: "Ensure cooler doors are closing properly and seals are intact.", priority: "Medium", riskLevel: "Medium", consequence: "Temperature fluctuations, high energy costs.", proof: "Weekly maintenance check.", location: "Sales Floor/Coolers" },
+                { id: "SGR-DC-08", description: "Check for any items left by customers outside of refrigerated areas and dispose of them.", priority: "Medium", riskLevel: "High", consequence: "Unsafe product being restocked.", proof: "Log of discarded items.", location: "Throughout Store" },
+                { id: "SGR-DC-09", description: "Verify that thermometers inside coolers are clearly visible and functional.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to monitor temperatures.", proof: "Visual check.", location: "Display Cases/Coolers" },
+                { id: "SGR-DC-10", description: "Ensure backup power is functional for all cold storage units.", priority: "High", riskLevel: "High", consequence: "Total loss of inventory during a power outage.", proof: "Generator test log.", location: "Engineering" }
+            ]
+        },
+        {
+            title: "Store Hygiene & Sanitation",
+            department: "Operations/Maintenance",
+            frequency: "Daily",
+            role: "Cleaning Crew Supervisor",
+            summary: "Maintains a clean and safe shopping environment for customers and staff.",
+            icon: "sparkles",
+            tasks: [
+                { id: "SGR-HS-01", description: "Sweep and mop all floors before opening.", priority: "High", riskLevel: "Low", consequence: "Dirty store, poor impression.", proof: "Cleaning log.", location: "All Floor Areas" },
+                { id: "SGR-HS-02", description: "Clean and sanitize all shopping cart and basket handles.", priority: "High", riskLevel: "Medium", consequence: "Spread of germs.", proof: "Sanitization log.", location: "Entrance" },
+                { id: "SGR-HS-03", description: "Clean and sanitize all customer restrooms hourly.", priority: "High", riskLevel: "High", consequence: "Customer complaints, major hygiene risk.", proof: "Restroom cleaning checklist.", location: "Restrooms" },
+                { id: "SGR-HS-04", description: "Perform 'spill patrols' every hour to check for and clean up any spills.", priority: "High", riskLevel: "High", consequence: "Slip and fall accidents, lawsuits.", proof: "Spill patrol log.", location: "All Aisles" },
+                { id: "SGR-HS-05", description: "Wipe down checkout counters and payment terminals regularly.", priority: "Medium", riskLevel: "Low", consequence: "Spread of germs.", proof: "Cleaning log.", location: "Checkout Area" },
+                { id: "SGR-HS-06", description: "Empty all trash bins throughout the store when they are 3/4 full.", priority: "Medium", riskLevel: "Low", consequence: "Overflowing trash, poor appearance.", proof: "Visual check.", location: "All Areas" },
+                { id: "SGR-HS-07", description: "Clean all glass doors and windows at entrance.", priority: "Medium", riskLevel: "Low", consequence: "Dirty, unprofessional appearance.", proof: "Cleaning log.", location: "Entrance" },
+                { id: "SGR-HS-08", description: "Check for and report any pest activity.", priority: "High", riskLevel: "High", consequence: "Infestation.", proof: "Pest sighting log.", location: "All Areas" },
+                { id: "SGR-HS-09", description: "Ensure cleaning supplies are correctly stored and labeled.", priority: "High", riskLevel: "Medium", consequence: "Chemical hazards.", proof: "Photo of janitor's closet.", location: "Janitor Closet" },
+                { id: "SGR-HS-10", description: "Perform a deep clean of one store section each week as per schedule.", priority: "Medium", riskLevel: "Low", consequence: "Gradual decline in overall store cleanliness.", proof: "Deep cleaning schedule sign-off.", location: "Varies Weekly" }
+            ]
+        },
+        {
+            title: "Checkout & Cash Management",
+            department: "Front End",
+            frequency: "Per Shift",
+            role: "Head Cashier/Supervisor",
+            summary: "Ensures accuracy, security, and efficiency at the point of sale.",
+            icon: "dollar-sign",
+            tasks: [
+                { id: "SGR-CM-01", description: "Verify cash float for each register at the start of the shift.", priority: "High", riskLevel: "High", consequence: "Cash discrepancies.", proof: "Signed float verification slip.", location: "Cash Office" },
+                { id: "SGR-CM-02", description: "Reconcile cash, card, and digital payments for each register at end of shift.", priority: "High", riskLevel: "High", consequence: "Unidentified cash loss.", proof: "End-of-shift report signed by cashier and supervisor.", location: "Cash Office" },
+                { id: "SGR-CM-03", description: "Perform random cash drawer audits during the day.", priority: "Medium", riskLevel: "Medium", consequence: "Deters internal theft.", proof: "Surprise audit log.", location: "Checkout Area" },
+                { id: "SGR-CM-04", description: "Securely transport excess cash from registers to the cash office ('cash lifts').", priority: "High", riskLevel: "High", consequence: "Robbery risk.", proof: "Cash lift log.", location: "Checkout/Cash Office" },
+                { id: "SGR-CM-05", description: "Check functionality of UV lamps for counterfeit detection.", priority: "High", riskLevel: "Medium", consequence: "Accepting counterfeit notes.", proof: "Daily check log.", location: "Cash Office" },
+                { id: "SGR-CM-06", description: "Ensure cashiers are following protocols for age-restricted sales (e.g., tobacco).", priority: "High", riskLevel: "High", consequence: "Legal violations, fines.", proof: "CCTV audit or manager observation.", location: "Checkout Area" },
+                { id: "SGR-CM-07", description: "Review 'voids' and 'no sale' reports daily for suspicious activity.", priority: "High", riskLevel: "High", consequence: "Common methods for internal theft.", proof: "Daily POS exception report with manager's signature.", location: "Cash Office" },
+                { id: "SGR-CM-08", description: "Keep checkout areas clean and organized.", priority: "Low", riskLevel: "Low", consequence: "Slows down transactions, poor impression.", proof: "Visual check.", location: "Checkout Area" },
+                { id: "SGR-CM-09", description: "Restock bags, receipt paper, and other supplies at each register.", priority: "Medium", riskLevel: "Low", consequence: "Transaction delays.", proof: "Visual check at shift change.", location: "Checkout Area" },
+                { id: "SGR-CM-10", description: "Securely store and log all coupons and vouchers collected.", priority: "Medium", riskLevel: "Medium", consequence: "Coupon fraud.", proof: "Coupon reconciliation log.", location: "Cash Office" }
+            ]
+        }
+    ]
+};
+
+const facility_management_blueprint: PremiumPack = {
+    id: 'facility_management_blueprint',
+    title: "Facility Management Blueprint (Enterprise Edition)",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ab64c7a0-4341-40a8-bb54-871074a22d10',
+    category: "Corporate & Tech",
+    description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
+    icon: "building-2",
+    badgeText: "Enterprise Grade",
+    bestseller: true,
+    whoIsItFor: ["COOs", "Heads of Corporate Real Estate", "Directors of Facilities", "VPs of Administration", "Data Center Managers"],
+    sampleItems: [
+        { text: "Implement a daily facility walkthrough for proactive issue identification.", icon: "user-check" },
+        { text: "Master vendor performance with preventive maintenance planning and SLA tracking.", icon: "wrench" },
+        { text: "Ensure a pristine and safe environment with housekeeping, hygiene, and pest control audits.", icon: "sparkles" },
+        { text: "Secure your premises with robust visitor management and access control protocols.", icon: "key-round" },
+        { text: "Optimize costs and sustainability through a utilities, energy, and water management system.", icon: "zap" },
+        { text: "Guarantee business continuity with critical systems (UPS, HVAC) and redundancy testing.", icon: "cog" }
+    ],
+    checklists: []
+};
+
+const corporate_legal_compliance_starter_kit: PremiumPack = {
+    id: 'corporate_legal_compliance_starter_kit',
+    title: "Corporate Legal & Compliance Starter Kit",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/721ef593-433a-4d89-b72b-7d4aac27363f',
+    category: "Corporate & Tech",
+    description: "An essential toolkit for founders and managers to embed basic legal and compliance checks into core business operations, reducing risk without needing a law degree.",
+    icon: "file-lock",
+    whoIsItFor: ["Founders & CEOs", "HR Managers", "Operations Heads", "Non-lawyer Managers", "Directors"],
+    sampleItems: [
+        { text: "Never miss a deadline with a master statutory filing calendar and automated reminders.", icon: "calendar-days" },
+        { text: "Ensure company policies are consistently enforced with a robust management and employee acknowledgement system.", icon: "user-check" },
+        { text: "Minimize legal risk with a structured contract lifecycle management process and clause checklist.", icon: "file-check" },
+        { text: "Proactively identify and fix compliance gaps with an internal audit and remediation (CAPA) workflow.", icon: "bug" },
+        { text: "Foster a safe and ethical workplace with a formal whistleblowing and investigation process.", icon: "siren" },
+        { text: "Improve corporate governance with a professional system for board meeting preparation and minute taking.", icon: "briefcase-business" }
+    ],
+    checklists: []
+};
+
+const enterprise_risk_cybersecurity_pack: PremiumPack = {
+    id: 'enterprise_risk_cybersecurity_pack',
+    title: "Enterprise Risk & Cybersecurity Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/6418c3d7-2101-4433-a337-2d4314c4059a',
+    category: "Corporate & Tech",
+    description: "An advanced toolkit for CISOs and compliance officers to manage modern enterprise risks, from AI governance and data privacy to cloud security and incident response.",
+    icon: "shield-check",
+    whoIsItFor: ["CISOs", "CTOs", "Data Protection Officers (DPOs)", "Heads of Risk & Compliance", "IT Directors"],
+    sampleItems: [
+        { text: "Enforce the principle of least privilege with quarterly user access reviews.", icon: "key-round" },
+        { text: "Stay ahead of threats with a structured workflow for vulnerability scanning and patch management.", icon: "bug" },
+        { text: "Build resilience with proven playbooks for Business Continuity and Disaster Recovery (BC/DR) drills.", icon: "database-zap" },
+        { text: "Master crisis management with step-by-step incident response and digital forensics playbooks.", icon: "siren" },
+        { text: "Prevent costly data leaks by continuously monitoring and correcting your cloud security posture (CSPM).", icon: "cloud" },
+        { text: "De-risk your supply chain with a formal security assessment process for all third-party vendors.", icon: "handshake" }
+    ],
+    checklists: []
+};
+
+const healthcare_and_hospital_operations: PremiumPack = {
+    id: 'healthcare_and_hospital_operations',
+    title: "Healthcare & Hospital Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
+    category: "Healthcare",
+    description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
+    icon: "hospital",
+    badgeText: "Clinical Grade",
+    badgeVariant: "destructive",
+    bestseller: true,
+    whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents"],
+    sampleItems: [
+        { text: "Prevent 'never events' with a WHO-aligned Surgical Safety Checklist.", icon: "stethoscope" },
+        { text: "Combat hospital-acquired infections (HAIs) with rigorous infection control and sterilization (CSSD) audits.", icon: "syringe" },
+        { text: "Eliminate medication errors using SOPs for high-alert medication dispensing and administration.", icon: "pill" },
+        { text: "Enhance patient safety with a robust protocol for patient identification at every touchpoint.", icon: "user-check" },
+        { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: "recycle" },
+        { text: "Prepare for any crisis with emergency code management and mock drill scenarios.", icon: "ambulance" }
+    ],
+    checklists: []
+};
+
+const school_operations_pack: PremiumPack = {
+    id: 'school_operations_pack',
+    title: "School Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/e74bd8ac-23cb-4993-bdeb-bac9dbe9cd67',
+    category: "Education",
+    description: "A comprehensive safety and compliance toolkit for school principals and administrators to ensure a secure and well-managed learning environment.",
+    icon: "school",
+    whoIsItFor: ["School Principals", "Vice-Principals", "Heads of Administration", "School Trustees", "Operations Managers"],
+    sampleItems: [
+        { text: "Ensure student safety with robust bus transport, drop-off, and pickup SOPs.", icon: "bus" },
+        { text: "Prevent unauthorized access with a strict visitor management and gate security protocol.", icon: "key-round" },
+        { text: "Maintain a safe campus with daily playground, classroom, and facility safety audits.", icon: "shield" },
+        { text: "Prepare for emergencies with comprehensive fire safety drills and first-aid response plans.", icon: "siren" },
+        { text: "Protect students with a legally compliant staff background verification and hiring process.", icon: "user-check" },
+        { text: "Ensure a smooth and fair admissions process with a standardized enrolment checklist.", icon: "user-plus" },
+        { text: "Safeguard academic integrity with a secure examination and report card generation process.", icon: "graduation-cap" },
+    ],
+    checklists: []
+};
+
+const university_college_ops: PremiumPack = {
+    id: 'university_college_ops',
+    title: "University & College Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/14108350-9e78-4fbc-87cf-a41b9e4ae207',
+    category: "Education",
+    description: "A comprehensive compliance and safety pack for managing large educational campuses, from hostels and labs to transport and events.",
+    icon: "graduation-cap",
+    whoIsItFor: ["Deans & Directors", "Registrars", "Heads of Administration", "Chief Wardens", "Campus Security Heads"],
+    sampleItems: [
+        { text: "Ensure student safety with hostel entry/exit protocols and room inspections.", icon: "home" },
+        { text: "Prevent accidents and misuse with rigorous lab safety, chemical handling, and equipment audits.", icon: "test-tube" },
+        { text: "Safeguard campus events with protocols for crowd management, permissions, and emergency response.", icon: "theater" },
+        { text: "Maintain a compliant campus with audits for fire safety, accessibility (Divyangjan), and infrastructure.", icon: "building-2" },
+        { text: "Mitigate foodborne illness risks in large messes with HACCP-aligned kitchen hygiene SOPs.", icon: "utensils" },
+        { text: "Protect against cyber threats with IT policies for network access, data privacy, and acceptable use.", icon: "shield" }
+    ],
+    checklists: []
+};
+
+const film_production_pack: PremiumPack = {
+    id: 'film_production_pack',
+    title: "Film & OTT Production Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a17569cb-01d1-4dda-b2e4-c4669fe90d94',
+    category: "Entertainment & Events",
+    description: "An end-to-end production toolkit for film and OTT producers to manage everything from legal clearances and location permits to on-set safety and post-production workflows.",
+    icon: "film",
+    whoIsItFor: ["Film Producers", "Line Producers", "Production Managers", "Heads of Production (OTT)"],
+    sampleItems: [
+        { text: "Secure your project legally with pre-production checklists for script clearance, life rights, and chain-of-title.", icon: "file-lock" },
+        { text: "Streamline location management with SOPs for scouting, permits, and on-location logistics.", icon: "map" },
+        { text: "Manage your cast and crew effectively with standardized contracts, call sheets, and travel coordination.", icon: "users" },
+        { text: "Ensure a safe set with protocols for stunt coordination, equipment safety, and incident reporting.", icon: "siren" },
+        { text: "Keep your budget on track with checklists for cost reporting, vendor payments, and cash flow management.", icon: "banknote" },
+        { text: "Create a seamless post-production workflow with SOPs for dailies, editing, VFX handovers, and final delivery.", icon: "scissors" }
+    ],
+    checklists: []
+};
+
+const ott_platform_pack: PremiumPack = {
+    id: 'ott_platform_pack',
+    title: "OTT Streaming Platform Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a5c556c2-51d9-4d6f-812f-359a795fd971',
+    category: "Entertainment & Events",
+    description: "A comprehensive toolkit for OTT platform operations, covering content ingestion, quality control, live streaming, and infrastructure management.",
+    icon: "monitor-play",
+    whoIsItFor: ["OTT Platform Owners", "Heads of Content Operations", "Chief Technology Officers (CTOs)", "SRE & DevOps Leads"],
+    sampleItems: [
+        { text: "Ensure a flawless user experience with a robust content ingestion, transcoding, and QC workflow.", icon: "video" },
+        { text: "Guarantee uptime during major events with a live streaming readiness and disaster recovery playbook.", icon: "zap" },
+        { text: "Protect your platform with cybersecurity SOPs for DRM, access control, and vulnerability management.", icon: "shield" },
+        { text: "Optimize performance with checklists for CDN configuration, cache management, and infrastructure monitoring.", icon: "cloud" },
+        { text: "Stay compliant with a structured process for content rating, subtitling, and legal clearances.", icon: "file-check" },
+        { text: "Improve user engagement with a data-driven process for personalization, recommendations, and analytics.", icon: "brain-circuit" }
+    ],
+    checklists: []
+};
+
+const sports_clubs_stadium_operations_pack: PremiumPack = {
+    id: 'sports_clubs_stadium_operations_pack',
+    title: "Sports Clubs & Stadium Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f290d8a5-d913-485e-9905-59b922a01490',
+    category: "Entertainment & Events",
+    description: "A comprehensive operational toolkit for sports clubs, gyms, and stadium managers to ensure safety, compliance, and an excellent member experience.",
+    icon: "trophy",
+    whoIsItFor: ["Sports Club GMs", "Stadium Managers", "Heads of Operations", "Gym Owners"],
+    sampleItems: [
+        { text: "Ensure venue safety with crowd management, ticketing, and emergency evacuation SOPs.", icon: "users" },
+        { text: "Maintain world-class turf and pitches with a structured ground maintenance schedule.", icon: "sprout" },
+        { text: "Prevent accidents and liability with daily inspections of gym and sports equipment.", icon: "dumbbell" },
+        { text: "Guarantee a safe environment with fire safety audits and medical emergency response plans.", icon: "siren" },
+        { text: "Protect members with robust hygiene protocols for pools, changing rooms, and F&B areas.", icon: "sparkles" },
+        { text: "Manage your team effectively with checklists for staff training, scheduling, and performance.", icon: "clipboard-list" }
+    ],
+    checklists: []
+};
+
+const cinema_operations_pack: PremiumPack = {
+    id: 'cinema_operations_pack',
+    title: "Cinema & Multiplex Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0acf829c-e492-4f66-ae74-0231bfe0bc82',
+    category: "Entertainment & Events",
+    description: "A complete operational pack for cinema managers to ensure a safe, clean, and high-quality movie-going experience.",
+    icon: "popcorn",
+    whoIsItFor: ["Cinema Owners", "Multiplex Managers", "Heads of Operations", "F&B Managers (Cinema)"],
+    sampleItems: [
+        { text: "Guarantee a perfect show with pre-screening checklists for projection, sound, and lighting.", icon: "projector" },
+        { text: "Prevent fire tragedies with rigorous audits for emergency exits, fire alarms, and staff evacuation training.", icon: "siren" },
+        { text: "Serve safe and quality food with F&B concession stand hygiene and inventory management SOPs.", icon: "utensils" },
+        { text: "Improve profitability with checklists for ticketing, cash handling, and daily sales reconciliation.", icon: "ticket" },
+        { text: "Enhance the guest experience with protocols for auditorium cleaning, seat maintenance, and restroom hygiene.", icon: "sparkles" },
+        { text: "Manage your facility effectively with SOPs for housekeeping, security, and preventive maintenance.", icon: "building" }
+    ],
+    checklists: []
+};
+
+const theme_park_ops_pack: PremiumPack = {
+    id: 'theme_park_ops_pack',
+    title: "Theme Park Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a',
+    category: "Entertainment & Events",
+    description: "A safety-critical toolkit for theme park and amusement park operators, covering ride safety, crowd management, and emergency response.",
+    icon: "ferris-wheel",
+    whoIsItFor: ["Theme Park GMs", "Heads of Operations", "Ride Safety Managers", "Security Directors"],
+    sampleItems: [
+        { text: "Prevent ride-related accidents with daily, weekly, and monthly ride inspection checklists based on manufacturer guidelines.", icon: "wrench" },
+        { text: "Ensure guest safety with comprehensive crowd management, queuing, and access control SOPs.", icon: "users" },
+        { text: "Be prepared for any crisis with emergency response plans for medical incidents, power failures, and ride stoppages.", icon: "siren" },
+        { text: "Protect children with a robust Lost Child Protocol and designated safe zones.", icon: "helping-hand" },
+        { text: "Maintain a safe and beautiful park with checklists for park-wide landscaping, housekeeping, and infrastructure safety.", icon: "recycle" },
+        { text: "Guarantee food safety across all park outlets with FSSAI/HACCP-aligned hygiene and food handling checklists.", icon: "utensils" }
+    ],
+    checklists: []
+};
+
+const logistics_warehouse_pack: PremiumPack = {
+    id: 'logistics_warehouse_pack',
+    title: "Logistics & Warehouse Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f48201fb-a708-43ac-a508-7381c32f55c5',
+    category: "Industrial & Transport",
+    description: "A complete toolkit for warehouse managers and logistics heads to optimize inventory, ensure safety, and improve supply chain resilience.",
+    icon: "warehouse",
+    whoIsItFor: ["Warehouse Managers", "Logistics Heads", "Supply Chain Directors", "3PL Providers"],
+    sampleItems: [
+        { text: "Streamline your receiving process with checklists for inbound quality control and documentation.", icon: "clipboard-check" },
+        { text: "Maximize space and efficiency with SOPs for stock-keeping, bin location management, and putaway.", icon: "package" },
+        { text: "Ensure order accuracy and speed with a structured picking, packing, and dispatch process.", icon: "truck" },
+        { text: "Maintain a safe workplace with checklists for Material Handling Equipment (MHE) safety and operator training.", icon: "hard-hat" },
+        { text: "Protect your inventory with robust protocols for security, access control, and cycle counting.", icon: "shield" },
+        { text: "Build a resilient supply chain with SOPs for vendor management and contingency planning.", icon: "link" }
+    ],
+    checklists: []
+};
+
+const manufacturing_operations_ehs_pack: PremiumPack = {
+    id: 'manufacturing_operations_ehs_pack',
+    title: "Manufacturing Operations & EHS Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/62ae53f1-6966-4746-bf80-69ffb4b0d7dc',
+    category: "Industrial & Transport",
+    description: "A comprehensive EHS and operational toolkit for plant heads and safety officers to ensure a safe, compliant, and efficient manufacturing environment.",
+    icon: "factory",
+    badgeText: "Safety Critical",
+    badgeVariant: "destructive",
+    bestseller: true,
+    whoIsItFor: ["Plant Heads", "EHS Officers", "Production Managers", "Maintenance Heads", "Quality Control Managers"],
+    sampleItems: [
+        { text: "Prevent fatal accidents with a legally compliant Lock-Out Tag-Out (LOTO) procedure for machine maintenance.", icon: "lock" },
+        { text: "Ensure worker safety with a permit-to-work system for high-risk jobs like hot work and confined space entry.", icon: "file-check" },
+        { text: "Boost productivity by tracking Overall Equipment Effectiveness (OEE) to minimize downtime.", icon: "trending-up" },
+        { text: "Reduce defects and waste with an In-Process Quality Control (IPQC) system.", icon: "clipboard-check" },
+        { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: "siren" },
+        { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: "leaf" }
+    ],
+    checklists: []
+};
+
+const pharmacy_ops_pack: PremiumPack = {
+    id: 'pharmacy_ops_pack',
+    title: "Pharmacy Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0ef5fea7-71de-457c-984b-5ba1787351ce',
+    category: "Healthcare",
+    description: "A compliance and safety toolkit for pharmacies to manage inventory, prevent dispensing errors, and adhere to regulatory standards.",
+    icon: "pill",
+    whoIsItFor: ["Pharmacists", "Pharmacy Owners", "Hospital Pharmacy Managers", "Retail Pharmacy Chains"],
+    sampleItems: [
+        { text: "Prevent dispensing errors with a robust prescription verification and double-check system.", icon: "file-check" },
+        { text: "Ensure drug efficacy and safety with stringent cold chain management and temperature logging for vaccines and biologics.", icon: "thermometer" },
+        { text: "Manage narcotics and high-risk drugs with a legally compliant inventory, storage, and dispensing log.", icon: "lock" },
+        { text: "Maintain regulatory compliance with SOPs for drug procurement, batch tracking, and recall management.", icon: "barcode" },
+        { text: "Improve patient counseling with checklists for providing clear instructions on medication usage and side effects.", icon: "user-check" },
+        { text: "Run a clean and professional pharmacy with daily checklists for hygiene, organization, and stock arrangement.", icon: "sparkles" }
+    ],
+    checklists: []
+};
+
+const bakery_confectionery_pack: PremiumPack = {
+    id: 'bakery_confectionery_pack',
+    title: "Bakery & Confectionery Operations Pack",
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+    category: "Food & Beverage",
+    description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
+    icon: "cake-slice",
+    badgeText: "Special Offer",
+    badgeVariant: "accent",
+    whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
+    sampleItems: [
+        { text: "Achieve perfect results every time with recipe scaling and dough management checklists.", icon: "clipboard-list" },
+        { text: "Ensure food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: "shield-check" },
+        { text: "Maintain equipment precision with SOPs for oven calibration and mixer maintenance.", icon: "wrench" },
+        { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: "recycle" },
+        { text: "Guarantee compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: "file-check" },
+        { text: "Streamline your custom order process from client briefing to final delivery.", icon: "package" }
+    ],
+    checklists: []
+};
+
+const animal_shelter_pack: PremiumPack = {
+    id: 'animal_shelter_pack',
+    title: "Animal Shelter Operations Pack",
+    priceINR: 0,
+    priceUSD: 0,
+    paymentId: '', // No payment ID for free packs
+    lemonSqueezyUrl: '', // No payment URL for free packs
+    listId: 7,
+    category: "Social Cause",
+    description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
+    icon: "paw-print",
+    badgeText: "Free Download",
+    badgeVariant: "accent",
+    whoIsItFor: ["Animal Shelter Managers", "NGO Founders", "Veterinarians", "Volunteer Coordinators"],
+    sampleItems: [
+        { text: "Prevent disease outbreaks with rigorous cleaning, disinfection, and quarantine protocols.", icon: "sparkles" },
+        { text: "Ensure every animal's health with checklists for daily feeding, medication administration, and health monitoring.", icon: "stethoscope" },
+        { text: "Manage your population responsibly with SOPs for intake, vaccination, and spay/neuter programs.", icon: "syringe" },
+        { text: "Create a safe environment for animals and people with protocols for temperament testing and safe handling.", icon: "users" },
+        { text: "Increase adoptions with a structured process for counseling, home checks, and post-adoption follow-up.", icon: "home" },
+        { text: "Streamline your operations with checklists for volunteer management, inventory, and fundraising events.", icon: "clipboard-list" }
+    ],
+    checklists: [
+         {
+            title: "Daily Cleaning & Disinfection",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Shelter Staff",
+            summary: "Ensures a sanitary environment to prevent disease transmission among animals.",
+            icon: "spray-can",
+            tasks: [
+                { id: "AC-DC-01", description: "Remove all feces, urine, and soiled bedding from every enclosure.", priority: "High", riskLevel: "High", consequence: "Disease outbreak (Parvo, etc.), unpleasant odors, regulatory action.", proof: "Supervisor sign-off on cleaning log.", location: "All Enclosures" },
+                { id: "AC-DC-02", description: "Scrub all food and water bowls with veterinary-grade disinfectant.", priority: "High", riskLevel: "Medium", consequence: "Spread of oral infections, gastrointestinal illness.", proof: "Visual inspection by supervisor.", location: "Kitchen/Cleaning Area" },
+                { id: "AC-DC-03", description: "Disinfect all enclosure surfaces (floors, walls, gates) with approved sanitizer.", priority: "High", riskLevel: "High", consequence: "High risk of communicable disease spread.", proof: "Completed cleaning checklist for each zone.", location: "All Enclosures" },
+                { id: "AC-DC-04", description: "Clean and disinfect all common play areas and meet-and-greet rooms.", priority: "Medium", riskLevel: "Medium", consequence: "Disease transmission between animal groups.", proof: "Logbook entry for common areas.", location: "Play Areas" },
+                { id: "AC-DC-05", description: "Empty and disinfect all waste bins.", priority: "Low", riskLevel: "Low", consequence: "Pest attraction, odor issues.", proof: "Visual confirmation.", location: "Waste Disposal Area" },
+                { id: "AC-DC-06", "description": "Launder all used bedding and towels with a sanitizing cycle.", "priority": "High", "riskLevel": "Medium", "consequence": "Spread of mites, ringworm, and other contagions.", "proof": "Laundry operations log.", "location": "Laundry Area" },
+                { id: "AC-DC-07", "description": "Ensure proper ventilation in all animal housing areas.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Buildup of airborne pathogens, respiratory illnesses.", "proof": "Daily check of ventilation systems.", "location": "All Enclosures" },
+                { id: "AC-DC-08", "description": "Maintain separate cleaning equipment for quarantine/isolation areas.", "priority": "High", "riskLevel": "High", "consequence": "Cross-contamination from sick animals to general population.", "proof": "Color-coded equipment and storage.", "location": "Quarantine/Isolation" },
+                { id: "AC-DC-09", "description": "Dispose of biomedical waste (needles, etc.) in designated sharps containers.", "priority": "High", "riskLevel": "High", "consequence": "Injury to staff, improper waste disposal fines.", "proof": "Sharps container check log.", "location": "Medical Room" },
+                { id: "AC-DC-10", "description": "Check and refill all hand sanitizer stations and handwashing sinks.", "priority": "High", "riskLevel": "Low", "consequence": "Poor biosecurity, spread of disease among staff/volunteers.", "proof": "Daily facility walkthrough log.", "location": "All Areas" }
+            ]
+        },
+        {
+            title: "Animal Intake & Quarantine Protocol",
+            department: "Medical",
+            frequency: "Per new animal arrival",
+            role: "Intake Coordinator / Vet Tech",
+            summary: "Safely process new animals, assess their health, and prevent the introduction of diseases to the general population.",
+            icon: "shield-check",
+            tasks: [
+                { id: "AI-IQ-01", description: "Photograph and log new animal's details (species, breed, age, color, markings).", priority: "High", riskLevel: "Low", consequence: "Inability to track animal, lost/found matching failure.", proof: "Entry in shelter management software with photo.", location: "Intake Room" },
+                { id: "AI-IQ-02", description: "Scan for microchip and check against national databases.", priority: "High", riskLevel: "Low", consequence: "Failure to reunite a lost pet with its owner.", proof: "Microchip scan log.", location: "Intake Room" },
+                { id: "AI-IQ-03", description: "Perform initial health screening (check for wounds, parasites, signs of illness).", priority: "High", riskLevel: "High", consequence: "Undiagnosed injury/illness could worsen or spread.", proof: "Completed intake health assessment form.", location: "Intake Room" },
+                { id: "AI-IQ-04", description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: "High", riskLevel: "High", consequence: "Vulnerability to preventable diseases like distemper or rabies.", proof: "Medical record updated with administered treatments.", location: "Intake Room" },
+                { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter software.", location: "Quarantine Zone" },
+                { id: "AI-IQ-06", "description": "Perform a basic temperament test to assess aggression, fear, and sociability.", "priority": "High", "riskLevel": "Medium", "consequence": "Safety risk to staff and other animals.", "proof": "Temperament test score sheet.", "location": "Intake/Assessment Room" },
+                { id: "AI-IQ-07", "description": "Create a unique identification collar and record for the animal.", "priority": "High", "riskLevel": "Low", "consequence": "Animal mix-ups.", "proof": "ID collar and record in software.", "location": "Intake Room" },
+                { id: "AI-IQ-08", "description": "Provide food, clean water, and comfortable bedding upon arrival.", "priority": "High", "riskLevel": "Low", "consequence": "Animal distress and dehydration.", "proof": "Intake checklist sign-off.", "location": "Quarantine Enclosure" },
+                { id: "AI-IQ-09", "description": "Schedule a full veterinary examination within 24 hours of intake.", "priority": "High", "riskLevel": "High", "consequence": "Delayed treatment of serious conditions.", "proof": "Vet schedule/appointment log.", "location": "Intake Room" },
+                { id: "AI-IQ-10", "description": "Log all information from the finder/previous owner, if available.", "priority": "Medium", "riskLevel": "Low", "consequence": "Loss of valuable behavioral or medical history.", "proof": "Intake form with owner surrender section.", "location": "Intake Room" }
+            ]
+        },
+        {
+            title: "Daily Feeding & Health Monitoring",
+            department: "Animal Care",
+            frequency: "Daily (Twice)",
+            role: "Animal Care Attendant",
+            summary: "Ensures all animals receive proper nutrition and are monitored for early signs of illness or distress.",
+            icon: "heart-pulse",
+            tasks: [
+                { id: "AH-DF-01", description: "Feed each animal the correct type and amount of food according to their specific dietary plan.", priority: "High", riskLevel: "Medium", consequence: "Malnutrition, obesity, allergic reactions, medical complications.", proof: "Feeding chart checked off for each animal.", location: "All Enclosures" },
+                { id: "AH-DF-02", description: "Provide fresh, clean water to every animal.", priority: "High", riskLevel: "Medium", consequence: "Dehydration, which can quickly become a medical emergency.", proof: "Visual inspection during feeding rounds.", location: "All Enclosures" },
+                { id: "AH-DF-03", description: "Observe each animal during feeding for changes in appetite, behavior, or stool quality.", priority: "High", riskLevel: "High", consequence: "Missed early signs of illness, leading to delayed treatment.", proof: "Daily observation log completed for each animal.", location: "All Enclosures" },
+                { id: "AH-DF-04", description: "Report any abnormalities (lethargy, vomiting, coughing, etc.) to the vet team immediately.", priority: "High", riskLevel: "High", consequence: "A sick animal's condition could deteriorate rapidly without intervention.", proof: "Entry in medical communication log or direct report.", location: "All Enclosures" },
+                { id: "AH-DF-05", "description": "Ensure animals with special feeding needs (e.g., puppies, seniors) are fed separately.", "priority": "High", "riskLevel": "Medium", "consequence": "Competition for food, incorrect diet consumption.", "proof": "Feeding log.", "location": "Special Needs Area" },
+                { id: "AH-DF-06", "description": "Check for and clean up any uneaten food after a set period to prevent pests.", "priority": "Medium", "riskLevel": "Low", "consequence": "Pest infestation.", "proof": "Visual check.", "location": "All Enclosures" },
+                { id: "AH-DF-07", "description": "Update the whiteboards or kennel cards with any relevant observations for the next shift.", "priority": "High", "riskLevel": "Low", "consequence": "Loss of critical information between shifts.", "proof": "Photo of updated kennel card.", "location": "Enclosure fronts" },
+                { id: "AH-DF-08", "description": "Monitor animals in quarantine/isolation areas last to prevent cross-contamination.", "priority": "High", "riskLevel": "High", "consequence": "Spreading disease to the general population.", "proof": "Workflow observation.", "location": "Quarantine/Isolation" },
+                { id: "AH-DF-09", "description": "Ensure enrichment items (e.g., toys) are clean and safe.", "priority": "Low", "riskLevel": "Low", "consequence": "Boredom, stress, potential for swallowing foreign objects.", "proof": "Visual check.", "location": "All Enclosures" },
+                { id: "AH-DF-10", "description": "Top up water bowls during afternoon checks.", "priority": "High", "riskLevel": "Medium", "consequence": "Dehydration.", "proof": "Visual check.", "location": "All Enclosures" }
+            ]
+        },
             {
-                title: "Kitchen Opening Checklist (HACCP)",
-                department: "Kitchen",
-                frequency: "Daily",
-                role: "Opening Chef",
-                summary: "Ensures the kitchen is safe, sanitary, and ready for service, complying with HACCP principles.",
-                icon: "clipboard-check",
-                tasks: [
-                    { id: "RO-KO-01", description: "Record temperatures of all coolers and freezers.", priority: "High", riskLevel: "High", consequence: "Foodborne illness outbreak.", proof: "Temperature log sheet.", location: "Cold Storage" },
-                    { id: "RO-KO-02", description: "Sanitize all food preparation surfaces, cutting boards, and slicers.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Sanitization log.", location: "Prep Stations" },
-                    { id: "RO-KO-03", description: "Check dishwasher and 3-compartment sink for correct chemical levels and water temperature.", priority: "High", riskLevel: "Medium", consequence: "Ineffective cleaning, health code violations.", proof: "Test strip results log.", location: "Dishwashing Area" },
-                    { id: "RO-KO-04", description: "Ensure handwashing stations are stocked with soap, paper towels, and hot water.", priority: "High", riskLevel: "Medium", consequence: "Spread of pathogens via hands.", proof: "Visual check.", location: "All Hand Sinks" },
-                    { id: "RO-KO-05", description: "Calibrate all food thermometers.", priority: "High", riskLevel: "High", consequence: "Incorrect cooking temperatures, food safety risk.", proof: "Calibration log.", location: "Kitchen Office" },
-                    { id: "RO-KO-06", description: "Check for signs of pests and log any findings.", priority: "High", riskLevel: "High", consequence: "Infestation, closure by health department.", proof: "Pest control logbook.", location: "All Kitchen Areas" },
-                    { id: "RO-KO-07", description: "Verify proper storage of raw vs. ready-to-eat foods.", priority: "High", riskLevel: "High", consequence: "Cross-contamination (e.g., salmonella).", proof: "Photo of cooler storage.", location: "Walk-in Cooler" },
-                    { id: "RO-KO-08", description: "Ensure waste bins are clean, lined, and covered.", priority: "Medium", riskLevel: "Low", consequence: "Pest attraction, odors.", proof: "Visual check.", location: "Waste Area" },
-                    { id: "RO-KO-09", description: "Check that all cooking equipment is clean and functional.", priority: "Medium", riskLevel: "Medium", consequence: "Service delays, fire hazard.", proof: "Equipment check log.", location: "Cooking Line" },
-                    { id: "RO-KO-10", description: "Review previous day's closing notes for any follow-up actions.", priority: "Medium", riskLevel: "Low", consequence: "Unresolved issues.", proof: "Manager's logbook.", location: "Kitchen Office" }
-                ]
-            },
-            {
-                title: "Food Receiving & Storage",
-                department: "Kitchen/Stores",
-                frequency: "Per Delivery",
-                role: "Receiving Clerk",
-                summary: "Ensures all incoming food is safe, from approved suppliers, and stored correctly.",
-                icon: "truck",
-                tasks: [
-                    { id: "RO-FR-01", description: "Check temperature of refrigerated and frozen goods upon arrival.", priority: "High", riskLevel: "High", consequence: "Accepting temperature-abused food, foodborne illness.", proof: "Inbound temperature log.", location: "Receiving Dock" },
-                    { id: "RO-FR-02", description: "Inspect packaging for damage, leaks, or signs of tampering.", priority: "High", riskLevel: "Medium", consequence: "Contaminated product enters inventory.", proof: "Receiving checklist.", location: "Receiving Dock" },
-                    { id: "RO-FR-03", description: "Verify delivery against purchase order for accuracy of items and quantities.", priority: "Medium", riskLevel: "Low", consequence: "Inventory discrepancies, paying for incorrect items.", proof: "Signed delivery note with discrepancies noted.", location: "Receiving Dock" },
-                    { id: "RO-FR-04", description: "Check 'use by' or 'best by' dates on all perishable items.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage, serving expired product.", proof: "Receiving checklist.", location: "Receiving Dock" },
-                    { id: "RO-FR-05", description: "Ensure all received items are from approved suppliers.", priority: "High", riskLevel: "High", consequence: "Food fraud, unknown allergen risks, poor quality.", proof: "Cross-reference with Approved Supplier List.", location: "Receiving Office" },
-                    { id: "RO-FR-06", description: "Move all perishable items to correct temperature storage immediately.", priority: "High", riskLevel: "Medium", consequence: "Breaking the cold chain, bacterial growth.", proof: "CCTV footage of receiving process.", location: "Receiving to Storage" },
-                    { id: "RO-FR-07", description: "Label all decanted products with name and date.", priority: "Medium", riskLevel: "Low", consequence: "Inability to track freshness, cross-contamination.", proof: "Visual check of stored items.", location: "Storage Areas" },
-                    { id: "RO-FR-08", description: "Implement FIFO (First-In, First-Out) rotation for all new stock.", priority: "High", riskLevel: "Medium", consequence: "Increased wastage, using older stock last.", proof: "Visual check of storage shelves.", location: "Storage Areas" },
-                    { id: "RO-FR-09", description: "Reject any delivery that does not meet standards and document the rejection.", priority: "High", riskLevel: "High", consequence: "Accepting unsafe food into the kitchen.", proof: "Signed and documented rejection note.", location: "Receiving Dock" },
-                    { id: "RO-FR-10", description: "Keep receiving area clean and free of pests.", priority: "Medium", riskLevel: "Low", consequence: "Pests entering the facility via deliveries.", proof: "Cleaning log for receiving area.", location: "Receiving Dock" }
-                ]
-            },
-            {
-                title: "Allergen Management Protocol",
-                department: "Kitchen/Service",
-                frequency: "Ongoing",
-                role: "All Staff",
-                summary: "A system to prevent cross-contamination and ensure accurate communication of allergens to guests.",
-                icon: "file-warning",
-                tasks: [
-                    { id: "RO-AM-01", description: "Maintain an up-to-date allergen matrix for all menu items.", priority: "High", riskLevel: "High", consequence: "Fatal allergic reaction, lawsuits.", proof: "Posted allergen matrix.", location: "Kitchen/Service Station" },
-                    { id: "RO-AM-02", description: "Use designated purple cutting boards and utensils for allergen-free orders.", priority: "High", riskLevel: "High", consequence: "Cross-contact causing allergic reaction.", proof: "Visual check of equipment.", location: "Prep Stations" },
-                    { id: "RO-AM-03", description: "When a guest declares an allergy, a manager must oversee the order.", priority: "High", riskLevel: "High", consequence: "Miscommunication between server and kitchen.", proof: "Manager's signature on the allergen ticket.", location: "POS/Kitchen" },
-                    { id: "RO-AM-04", description: "Change gloves and wash hands before preparing an allergen-free meal.", priority: "High", riskLevel: "High", consequence: "Cross-contact.", proof: "CCTV review or direct observation.", location: "Prep Stations" },
-                    { id: "RO-AM-05", description: "Allergen-free meals must be clearly marked and delivered to the table separately.", priority: "High", riskLevel: "High", consequence: "Giving the wrong plate to the guest.", proof: "Use of 'Allergy' pick on the dish.", location: "Expo/Table" },
-                    { id: "RO-AM-06", description: "Store allergenic ingredients separately from non-allergenic ingredients.", priority: "Medium", riskLevel: "Medium", consequence: "Accidental cross-contamination in storage.", proof: "Photo of storage shelves.", location: "Storage Areas" },
-                    { id: "RO-AM-07", description: "Ensure all front-of-house staff complete mandatory allergen awareness training.", priority: "High", riskLevel: "High", consequence: "Staff giving incorrect information to guests.", proof: "Training records.", location: "HR/Training" },
-                    { id: "RO-AM-08", description: "Review all new recipes for allergens before adding them to the menu.", priority: "High", riskLevel: "Medium", consequence: "Introducing an un-documented allergen.", proof: "Recipe sign-off sheet with allergen check.", location: "Kitchen Office" },
-                    { id: "RO-AM-09", description: "In case of a reaction, immediately call emergency services and follow incident protocol.", priority: "High", riskLevel: "High", consequence: "Delayed medical response.", proof: "Incident report form.", location: "Restaurant Floor" },
-                    { id: "RO-AM-10", description: "Regularly update staff on changes to menu items or ingredients.", priority: "Medium", riskLevel: "Low", consequence: "Outdated knowledge.", proof: "Pre-shift briefing notes.", location: "Team Briefing" }
-                ]
-            },
-            {
-                title: "Front of House Opening/Closing",
-                department: "Service",
-                frequency: "Daily",
-                role: "Restaurant Manager",
-                summary: "Ensures the dining area is perfectly set, staff are briefed, and all financial procedures are followed.",
-                icon: "users",
-                tasks: [
-                    { id: "RO-FO-01", description: "Inspect all tables for correct setup, cleanliness, and stability.", priority: "High", riskLevel: "Low", consequence: "Poor guest first impression.", proof: "Manager's opening checklist.", location: "Dining Room" },
-                    { id: "RO-FO-02", description: "Check cleanliness of restrooms and restock supplies.", priority: "High", riskLevel: "Medium", consequence: "Guest complaints, negative perception of hygiene.", proof: "Restroom cleaning log.", location: "Restrooms" },
-                    { id: "RO-FO-03", description: "Conduct pre-shift briefing with staff covering specials, 86'd items, and service points.", priority: "High", riskLevel: "Low", consequence: "Poor communication, inconsistent service.", proof: "Briefing log.", location: "Staff Area" },
-                    { id: "RO-FO-04", description: "Assign server sections and side-work duties.", priority: "Medium", riskLevel: "Low", consequence: "Unfair workload, missed tasks.", proof: "Posted section map and side-work chart.", location: "Staff Area" },
-                    { id: "RO-FO-05", description: "Verify POS system is online and printers are working.", priority: "High", riskLevel: "Medium", consequence: "Inability to take orders or process payments.", proof: "Test transaction printout.", location: "POS Stations" },
-                    { id: "RO-FO-06", description: "Check ambiance: lighting, music volume, and temperature are at correct levels.", priority: "Medium", riskLevel: "Low", consequence: "Uncomfortable guest environment.", proof: "Manager's opening checklist.", location: "Dining Room" },
-                    { id: "RO-FO-07", description: "At closing, reconcile all cash, credit card, and digital payments.", priority: "High", riskLevel: "High", consequence: "Financial loss, theft.", proof: "End-of-day sales report signed by manager.", location: "Office" },
-                    { id: "RO-FO-08", description: "Ensure all closing side-work is completed by staff before checkout.", priority: "Medium", riskLevel: "Low", consequence: "Dirty restaurant for the morning shift.", proof: "Closing checklist signed by each server.", location: "Dining Room" },
-                    { id: "RO-FO-09", description: "Secure all cash and valuables in the safe.", priority: "High", riskLevel: "High", consequence: "Theft.", proof: "Safe logbook.", location: "Office" },
-                    { id: "RO-FO-10", description: "Set alarm and secure all doors and windows at close.", priority: "High", riskLevel: "High", consequence: "Break-in.", proof: "Alarm system log.", location: "Entire Premises" }
-                ]
-            },
-            {
-                title: "Weekly Fire Safety Audit",
-                department: "Management/Compliance",
-                frequency: "Weekly",
-                role: "General Manager",
-                summary: "Ensures the restaurant is compliant with fire safety regulations and prepared for an emergency.",
-                icon: "siren",
-                tasks: [
-                    { id: "RO-FS-01", description: "Check all fire exit pathways are completely clear of obstructions.", priority: "High", riskLevel: "High", consequence: "Blocked escape route, mass casualties.", proof: "Dated photos of all exit routes.", location: "All Areas" },
-                    { id: "RO-FS-02", description: "Verify all fire extinguishers are in their designated places, charged, and not expired.", priority: "High", riskLevel: "High", consequence: "Inability to fight a small fire.", proof: "Extinguisher inspection log.", location: "All Areas" },
-                    { id: "RO-FS-03", description: "Test fire alarm system (if permitted without full evacuation).", priority: "High", riskLevel: "High", consequence: "Alarm failure in an emergency.", proof: "Alarm test log.", location: "Control Panel" },
-                    { id: "RO-FS-04", description: "Check kitchen fire suppression system (e.g., Ansul) for pressure and blockages.", priority: "High", riskLevel: "High", consequence: "Uncontrolled kitchen fire.", proof: "Inspection tag and gauge photo.", location: "Kitchen Hood" },
-                    { id: "RO-FS-05", description: "Ensure emergency lighting is functional.", priority: "High", riskLevel: "Medium", consequence: "Panic in the dark during an evacuation.", proof: "Emergency light test log.", location: "All Areas" },
-                    { id: "RO-FS-06", description: "Check that gas lines and shut-off valves are accessible and clearly marked.", priority: "High", riskLevel: "High", consequence: "Inability to stop gas flow in an emergency, explosion risk.", proof: "Photo of accessible gas valve.", location: "Kitchen/Utility Area" },
-                    { id: "RO-FS-07", description: "Clean lint and grease buildup from kitchen exhaust hoods and ducts.", priority: "High", riskLevel: "High", consequence: "Grease fire, the most common type of restaurant fire.", proof: "Cleaning log with vendor signature.", location: "Kitchen Hood" },
-                    { id: "RO-FS-08", description: "Review staff knowledge of evacuation plan with a quick quiz.", priority: "Medium", riskLevel: "Medium", consequence: "Staff confusion during an emergency.", proof: "Note in manager's log.", location: "Staff Briefing" },
-                    { id: "RO-FS-09", description: "Verify 'No Smoking' signs are present and enforced.", priority: "Low", riskLevel: "Low", consequence: "Fire risk from discarded cigarettes.", proof: "Visual check.", location: "All Areas" },
-                    { id: "RO-FS-10", description: "Check for any daisy-chained extension cords or overloaded electrical outlets.", priority: "Medium", riskLevel: "High", consequence: "Electrical fire.", proof: "Photo of any violations found.", location: "All Areas" }
-                ]
-            },
-            {
-                title: "Pest Control & Waste Management",
-                department: "Maintenance/Kitchen",
-                frequency: "Daily/Weekly",
-                role: "Maintenance Staff",
-                summary: "Maintains a clean environment to prevent pest infestations and comply with health codes.",
-                icon: "bug",
-                tasks: [
-                    { id: "RO-PC-01", description: "Inspect all incoming goods for signs of pests before accepting.", priority: "High", riskLevel: "Medium", consequence: "Pests entering via suppliers.", proof: "Receiving log.", location: "Receiving Dock" },
-                    { id: "RO-PC-02", description: "Ensure all exterior doors and windows are sealed to prevent pest entry.", priority: "Medium", riskLevel: "Medium", consequence: "Easy entry points for rodents and insects.", proof: "Weekly perimeter inspection log.", location: "Exterior" },
-                    { id: "RO-PC-03", description: "Keep all food containers sealed and stored off the floor.", priority: "High", riskLevel: "High", consequence: "Pests accessing food sources.", proof: "Visual check of dry storage.", location: "Dry Storage" },
-                    { id: "RO-PC-04", description: "Clean all floor drains daily.", priority: "Medium", riskLevel: "Low", consequence: "Breeding ground for flies and cockroaches.", proof: "Cleaning log.", location: "Kitchen Floor" },
-                    { id: "RO-PC-05", description: "Empty all interior trash bins regularly and before they overflow.", priority: "Medium", riskLevel: "Low", consequence: "Attracts pests, odors.", proof: "Visual check.", location: "All Areas" },
-                    { id: "RO-PC-06", description: "Keep exterior dumpster area clean, and lids closed.", priority: "High", riskLevel: "High", consequence: "Major attraction for rodents and other pests.", proof: "Daily inspection photo.", location: "Exterior Dumpster Area" },
-                    { id: "RO-PC-07", description: "Check and log all pest traps (e.g., rodent traps, insect light traps).", priority: "Medium", riskLevel: "Medium", consequence: "Failure to detect an early infestation.", proof: "Pest control logbook.", location: "All Areas" },
-                    { id: "RO-PC-08", description: "Schedule and document regular visits from a professional pest control operator.", priority: "High", riskLevel: "Medium", consequence: "Infestations become unmanageable.", proof: "Pest control service reports.", location: "Office" },
-                    { id: "RO-PC-09", description: "Properly segregate and store waste (food vs. non-food) as per local regulations.", priority: "Medium", riskLevel: "Low", consequence: "Fines for improper waste disposal.", proof: "Visual check of waste bins.", location: "Waste Area" },
-                    { id: "RO-PC-10", description: "Clean up any spills immediately.", priority: "High", riskLevel: "Low", consequence: "Attracts pests, slip hazard.", proof: "N/A - immediate action.", location: "All Areas" }
-                ]
-            },
-            {
-                title: "Customer Complaint Handling",
-                department: "Management/Service",
-                frequency: "Per Incident",
-                role: "Manager on Duty",
-                summary: "Turns negative experiences into positive ones using the L.A.S.T. method (Listen, Apologize, Solve, Thank).",
-                icon: "smile-plus",
-                tasks: [
-                    { id: "RO-CH-01", description: "Listen patiently to the guest's entire complaint without interrupting.", priority: "High", riskLevel: "High", consequence: "Guest feels unheard and becomes more irate.", proof: "Manager's incident report.", location: "Dining Room" },
-                    { id: "RO-CH-02", description: "Apologize genuinely for the lapse in service, even if it's not the restaurant's fault.", priority: "High", riskLevel: "Low", consequence: "Appearing defensive escalates the situation.", proof: "Manager's incident report.", location: "Dining Room" },
-                    { id: "RO-CH-03", description: "Log the complaint in the daily logbook, noting the table, server, time, and issue.", priority: "High", riskLevel: "Medium", consequence: "Inability to track recurring problems.", proof: "Entry in daily logbook.", location: "Office" },
-                    { id: "RO-CH-04", description: "Offer an immediate solution (e.g., recook the dish, offer a complimentary dessert).", priority: "High", riskLevel: "Medium", consequence: "Guest leaves unhappy and posts a negative review.", proof: "Manager's incident report detailing solution.", location: "Dining Room" },
-                    { id: "RO-CH-05", description: "Follow up with the guest after the solution has been provided to ensure satisfaction.", priority: "Medium", riskLevel: "Low", consequence: "Guest feels processed, not cared for.", proof: "Note in incident report.", location: "Dining Room" },
-                    { id: "RO-CH-06", description: "Thank the guest for bringing the issue to your attention.", priority: "High", riskLevel: "Low", consequence: "Missed opportunity to end on a positive note.", proof: "Manager's incident report.", location: "Dining Room" },
-                    { id: "RO-CH-07", description: "If the complaint is about food safety, secure the dish for investigation.", priority: "High", riskLevel: "High", consequence: "Inability to perform a root cause analysis, potential for more illnesses.", proof: "Photo of secured dish, incident report.", location: "Kitchen" },
-                    { id: "RO-CH-08", "description": "Debrief the relevant staff member(s) privately and constructively.", priority: "Medium", riskLevel: "Low", "consequence": "Staff do not learn from mistakes.", "proof": "Note in staff file.", "location": "Back Office" },
-                    { id: "RO-CH-09", "description": "Review complaint logs weekly to identify patterns (e.g., a specific dish, a specific server).", priority: "Medium", riskLevel: "Medium", "consequence": "Systemic issues are never resolved.", "proof": "Weekly management meeting minutes.", "location": "Office" },
-                    { id: "RO-CH-10", "description": "Empower staff with a service recovery budget (e.g., up to ₹500) to solve problems without needing manager approval.", priority: "High", riskLevel: "Low", "consequence": "Slow response times for minor issues.", "proof": "Service recovery policy document.", "location": "HR/Training" }
-                ]
-            },
-            {
-                title: "End-of-Day Closing",
-                department: "Management",
-                frequency: "Daily",
-                role: "Closing Manager",
-                summary: "Secures the premises, reconciles financials, and prepares for the next day.",
-                icon: "lock",
-                tasks: [
-                    { id: "RO-ED-01", description: "Reconcile all POS stations and cash drawers.", priority: "High", riskLevel: "High", consequence: "Theft, financial discrepancies.", proof: "Signed end-of-day sales report.", location: "Office" },
-                    { id: "RO-ED-02", description: "Secure all cash and credit card slips in the safe.", priority: "High", riskLevel: "High", consequence: "Theft of days earnings.", proof: "Safe deposit log.", location: "Office" },
-                    { id: "RO-ED-03", description: "Ensure all kitchen equipment is turned off (fryers, ovens, grills).", priority: "High", riskLevel: "High", consequence: "Fire hazard.", proof: "Closing chef's sign-off sheet.", location: "Kitchen" },
-                    { id: "RO-ED-04", description: "Check that all coolers and freezers are closed and at the correct temperature.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage overnight.", proof: "Final temperature log entry.", location: "Kitchen" },
-                    { id: "RO-ED-05", description: "Ensure all cleaning duties for both FOH and BOH are complete.", priority: "Medium", riskLevel: "Low", consequence: "Dirty restaurant for opening shift.", proof: "Signed cleaning checklists.", location: "All Areas" },
-                    { id: "RO-ED-06", description: "Take out all trash to exterior dumpsters.", priority: "Medium", riskLevel: "Low", consequence: "Pest attraction overnight.", proof: "Visual confirmation.", location: "Waste Area" },
-                    { id: "RO-ED-07", description: "Lock all doors, windows, and gates.", priority: "High", riskLevel: "High", consequence: "Break-in.", proof: "Physical check of all entry points.", location: "Perimeter" },
-                    { id: "RO-ED-08", description: "Set the security alarm.", priority: "High", riskLevel: "High", consequence: "Unmonitored premises, break-in.", proof: "Alarm system log.", location: "Exit" },
-                    { id: "RO-ED-09", description: "Write handover notes for the morning manager.", priority: "Medium", riskLevel: "Low", consequence: "Important information is not passed on.", proof: "Entry in manager's logbook.", location: "Office" },
-                    { id: "RO-ED-10", description: "Turn off all lights except designated security lighting.", priority: "Low", riskLevel: "Low", consequence: "Wasted energy.", proof: "Visual check.", location: "All Areas" }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'fashion_and_apparel_retail',
-        title: "Fashion & Apparel Retail Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/35c743f7-333a-4fe6-9866-3334172e144b',
-        category: "Retail",
-        description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
-        icon: "shirt",
-        badgeText: "New!",
-        badgeVariant: "accent",
-        whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
-        sampleItems: [
-            { text: "Streamline inventory turnover with a seasonal stock & markdown management system.", icon: "recycle" },
-            { text: "Create stunning, brand-aligned stores with visual merchandising and display audits.", icon: "gallery-vertical" },
-            { text: "Reduce theft with secure fitting room operations and security protocols.", icon: "door-closed" },
-            { text: "Master modern retail with seamless omni-channel operations (Click-and-Collect, Returns).", icon: "link" },
-            { text: "Protect your assets through rigorous store safety and loss prevention audits.", icon: "shield" },
-            { text: "Ensure financial accuracy with daily cash handling and POS reconciliation procedures.", icon: "banknote" }
-        ],
-        checklists: [
-            {
-                title: "Daily Store Opening",
-                department: "Store Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensures the store is perfectly presented, secure, and ready for customers.",
-                icon: "key-round",
-                tasks: [
-                    { id: "FAR-SO-01", description: "Deactivate alarm and perform a security walk-through of the premises.", priority: "High", riskLevel: "High", consequence: "Failure to detect overnight break-in.", proof: "Alarm deactivation log, manager's sign-off.", location: "All Areas" },
-                    { id: "FAR-SO-02", description: "Check all lighting, music, and digital displays are functional.", priority: "Medium", riskLevel: "Low", consequence: "Poor store ambiance, negative customer experience.", proof: "Opening checklist.", location: "Sales Floor" },
-                    { id: "FAR-SO-03", description: "Ensure cash registers (POS) are online, and payment terminals are working.", priority: "High", riskLevel: "High", consequence: "Inability to process sales.", proof: "Test transaction receipt.", location: "Cash Desk" },
-                    { id: "FAR-SO-04", description: "Verify cash float is correct.", priority: "High", riskLevel: "Medium", consequence: "Cash handling errors.", proof: "Signed float count form.", location: "Cash Desk" },
-                    { id: "FAR-SO-05", description: "Quickly tidy and spot-clean floors, mirrors, and displays from the previous day.", priority: "High", riskLevel: "Low", consequence: "Unprofessional appearance.", proof: "Visual check by manager.", location: "Sales Floor" },
-                    { id: "FAR-SO-06", description: "Review daily sales targets and staff briefing notes.", priority: "Medium", riskLevel: "Low", consequence: "Team is not aligned on goals.", proof: "Briefing sheet.", location: "Back Office" },
-                    { id: "FAR-SO-07", description: "Check that fitting rooms are clean, empty, and secure.", priority: "Medium", riskLevel: "Medium", consequence: "Poor customer experience, theft risk.", proof: "Visual check.", location: "Fitting Rooms" },
-                    { id: "FAR-SO-08", description: "Replenish any stock on the sales floor from the stockroom.", priority: "Medium", riskLevel: "Low", consequence: "Lost sales opportunities.", proof: "Visual check of key displays.", location: "Sales Floor" },
-                    { id: "FAR-SO-09", description: "Ensure all new promotional signage is correctly displayed.", priority: "Medium", riskLevel: "Low", consequence: "Customer confusion, missed marketing opportunities.", proof: "Photo of main promotional display.", location: "Sales Floor" },
-                    { id: "FAR-SO-10", description: "Conduct a team briefing to set the tone for the day.", priority: "High", riskLevel: "Low", consequence: "Unmotivated team, poor service.", proof: "Manager's briefing notes.", location: "Staff Area" }
-                ]
-            },
-            {
-                title: "Visual Merchandising Audit",
-                department: "Merchandising",
-                frequency: "Weekly",
-                role: "Visual Merchandiser",
-                summary: "Ensures the store's presentation aligns with brand guidelines and maximizes sales.",
-                icon: "gallery-vertical",
-                tasks: [
-                    { id: "FAR-VM-01", description: "Verify window displays are clean, well-lit, and match the current campaign planogram.", priority: "High", riskLevel: "Medium", consequence: "Poor first impression, reduced footfall.", proof: "Photo of window display vs. planogram.", location: "Storefront" },
-                    { id: "FAR-VM-02", description: "Check that all mannequins are dressed correctly, in good condition, and in the right positions.", priority: "Medium", riskLevel: "Low", consequence: "Sloppy brand image.", proof: "Photos of mannequin displays.", location: "Sales Floor" },
-                    { id: "FAR-VM-03", description: "Ensure all in-store signage and promotional materials are current and in good condition.", priority: "Medium", riskLevel: "Medium", consequence: "Outdated information, confusing offers.", proof: "Visual check of all signage.", location: "Sales Floor" },
-                    { id: "FAR-VM-04", description: "Verify that key product displays (e.g., front tables, feature walls) are styled as per guidelines.", priority: "High", riskLevel: "Low", consequence: "Reduced sales of key items.", proof: "Photo of feature displays.", location: "Sales Floor" },
-                    { id: "FAR-VM-05", description: "Check for consistent and correct folding, hanging, and sizing standards across all products.", priority: "Medium", riskLevel: "Low", consequence: "Messy, unappealing displays.", proof: "Visual check of a sample of shelves and racks.", location: "Sales Floor" },
-                    { id: "FAR-VM-06", description: "Ensure lighting is focused correctly on merchandise.", priority: "Medium", riskLevel: "Low", consequence: "Poor product presentation.", proof: "Visual check of lighting.", location: "Sales Floor" },
-                    { id: "FAR-VM-07", description: "Assess overall store cleanliness and organization.", priority: "High", riskLevel: "Low", consequence: "Negative shopping experience.", proof: "Store cleanliness checklist.", location: "All Areas" },
-                    { id: "FAR-VM-08", description: "Remove and replace any damaged or worn display props.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional look.", proof: "Log of replaced props.", location: "All Areas" },
-                    { id: "FAR-VM-09", description: "Check that clearance and sale sections are clearly marked and organized.", priority: "Medium", riskLevel: "Low", consequence: "Lost sales, poor customer experience.", proof: "Visual check of sale section.", location: "Sale Area" },
-                    { id: "FAR-VM-10", description: "Provide feedback and training to store staff on maintaining VM standards.", priority: "Medium", riskLevel: "Low", consequence: "Standards degrade over time.", proof: "VM training log.", location: "Staff Training" }
-                ]
-            },
-            {
-                title: "Inventory & Shrinkage Control",
-                department: "Loss Prevention/Operations",
-                frequency: "Weekly/Monthly",
-                role: "Store Manager",
-                summary: "Procedures to minimize inventory loss from theft, damage, or administrative errors.",
-                icon: "shield",
-                tasks: [
-                    { id: "FAR-IS-01", description: "Conduct weekly cycle counts on high-value or high-theft product categories.", priority: "High", riskLevel: "High", consequence: "Inaccurate stock levels, inability to identify theft patterns.", proof: "Signed cycle count sheets.", location: "Stockroom/Sales Floor" },
-                    { id: "FAR-IS-02", description: "Review CCTV footage of cash desk and high-risk areas daily.", priority: "Medium", riskLevel: "Medium", consequence: "Missed instances of internal or external theft.", proof: "CCTV review log.", location: "Office" },
-                    { id: "FAR-IS-03", description: "Audit processed returns and exchanges for compliance with policy.", priority: "Medium", riskLevel: "High", consequence: "Fraudulent returns.", proof: "Sample of audited return forms vs. product.", location: "Office" },
-                    { id: "FAR-IS-04", description: "Ensure security tags are correctly applied to all required merchandise.", priority: "High", riskLevel: "Medium", consequence: "Increased shoplifting.", proof: "Visual check of a sample of items.", location: "Sales Floor" },
-                    { id: "FAR-IS-05", description: "Test Electronic Article Surveillance (EAS) gates at the entrance daily.", priority: "High", riskLevel: "High", consequence: "System failure, undetected theft.", proof: "EAS gate test log.", location: "Entrance" },
-                    { id: "FAR-IS-06", description: "Manage fitting room access and monitor the number of items taken in.", priority: "High", riskLevel: "High", consequence: "High-risk area for theft.", proof: "Fitting room log/policy document.", location: "Fitting Rooms" },
-                    { id: "FAR-IS-07", description: "Secure stockroom and back-of-house areas; access should be restricted.", priority: "High", riskLevel: "Medium", consequence: "Internal theft.", proof: "Check of door locks and access logs.", location: "Stockroom" },
-                    { id: "FAR-IS-08", description: "Investigate and document all inventory discrepancies from cycle counts.", priority: "High", riskLevel: "Medium", consequence: "Unresolved shrinkage issues.", proof: "Discrepancy reports with manager notes.", location: "Office" },
-                    { id: "FAR-IS-09", description: "Process all damaged or defective items according to policy.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate stock records.", proof: "Damage log.", location: "Stockroom" },
-                    { id: "FAR-IS-10", description: "Train all staff on shrinkage awareness and loss prevention policies.", priority: "High", riskLevel: "Low", consequence: "Staff are not vigilant against theft.", proof: "Training records.", location: "HR/Training" }
-                ]
-            },
-            {
-                title: "Omni-Channel Operations",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Omni-Channel Lead",
-                summary: "Manages click-and-collect, online returns, and ship-from-store processes.",
-                icon: "link",
-                tasks: [
-                    { id: "FAR-OC-01", description: "Process and pick all new 'Click & Collect' orders within the specified SLA (e.g., 2 hours).", priority: "High", riskLevel: "Medium", consequence: "Poor customer experience, canceled orders.", proof: "Order management system dashboard.", location: "Stockroom/Sales Floor" },
-                    { id: "FAR-OC-02", description: "Communicate with customers when their 'Click & Collect' order is ready for pickup.", priority: "High", riskLevel: "Low", consequence: "Customer uncertainty, increased inbound queries.", proof: "Copy of notification email/SMS.", location: "Office" },
-                    { id: "FAR-OC-03", description: "Process all in-store returns of online orders according to policy.", priority: "High", riskLevel: "Medium", consequence: "Inventory discrepancies, poor customer experience.", proof: "Return processing log.", location: "Cash Desk" },
-                    { id: "FAR-OC-04", description: "Inspect, re-tag, and return items to the sales floor or designated returns area.", priority: "Medium", riskLevel: "Low", consequence: "Returned items are not made available for resale.", proof: "Visual check of returns processing area.", location: "Stockroom" },
-                    { id: "FAR-OC-05", description: "Pack and dispatch all 'Ship from Store' orders daily.", priority: "High", riskLevel: "Medium", consequence: "Delayed delivery to online customers.", proof: "End-of-day courier manifest.", location: "Stockroom" },
-                    { id: "FAR-OC-06", description: "Maintain accurate inventory levels between online and offline channels.", priority: "High", riskLevel: "High", consequence: "Selling items online that are out of stock in-store.", proof: "System inventory sync logs.", location: "Office" },
-                    { id: "FAR-OC-07", description: "Keep the 'Click & Collect' pickup point clean and well-signposted.", priority: "Medium", riskLevel: "Low", consequence: "Poor customer experience.", proof: "Photo of pickup point.", location: "Sales Floor" },
-                    { id: "FAR-OC-08", description: "Train staff on all omni-channel procedures.", priority: "High", riskLevel: "Low", consequence: "Inconsistent service.", proof: "Training records.", location: "HR/Training" },
-                    { id: "FAR-OC-09", description: "Handle customer inquiries related to omni-channel orders.", priority: "Medium", riskLevel: "Low", consequence: "Poor customer service.", proof: "Customer service log.", location: "Office/Shop Floor" },
-                    { id: "FAR-OC-10", description: "Audit a sample of packed 'Ship from Store' orders for accuracy and presentation.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect orders shipped, poor brand presentation.", proof: "Packing audit checklist.", location: "Stockroom" }
-                ]
-            },
-            {
-                title: "Store Safety & Security",
-                department: "Loss Prevention",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensures a safe and secure environment for both customers and staff.",
-                icon: "shield-check",
-                tasks: [
-                    { id: "FAR-SS-01", description: "Test all EAS security gates at store opening.", priority: "High", riskLevel: "High", consequence: "Failure to detect theft.", proof: "Daily gate test log.", location: "Entrance" },
-                    { id: "FAR-SS-02", description: "Check all CCTV cameras are online, recording, and have clear views.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV system status screen.", location: "Office" },
-                    { id: "FAR-SS-03", description: "Ensure fitting room policies (e.g., item limits) are being enforced.", priority: "High", riskLevel: "Medium", consequence: "Theft from fitting rooms.", proof: "Direct observation.", location: "Fitting Rooms" },
-                    { id: "FAR-SS-04", description: "Check that all high-value items are properly secured (e.g., in locked cabinets, with security tags).", priority: "High", riskLevel: "High", consequence: "High-value theft.", proof: "Visual audit of high-value displays.", location: "Sales Floor" },
-                    { id: "FAR-SS-05", description: "Ensure backroom and stockroom doors are kept locked and secure.", priority: "High", riskLevel: "Medium", consequence: "Internal theft or unauthorized access.", proof: "Visual check during store walk.", location: "Back of House" },
-                    { id: "FAR-SS-06", description: "Conduct bag checks for staff at the end of their shifts as per policy.", priority: "Medium", riskLevel: "Medium", consequence: "Internal theft.", proof: "Bag check log.", location: "Staff Exit" },
-                    { id: "FAR-SS-07", description: "Verify that panic buttons or duress alarms are functional.", priority: "High", riskLevel: "High", consequence: "Inability for staff to call for help in an emergency.", proof: "Alarm test log.", location: "Cash Desk/Office" },
-                    { id: "FAR-SS-08", description: "Keep floors clear of slip and trip hazards (e.g., boxes, hangers).", priority: "High", riskLevel: "Medium", consequence: "Customer or staff injuries, lawsuits.", proof: "Daily floor safety checklist.", location: "All Areas" },
-                    { id: "FAR-SS-09", description: "Ensure fire exits are clear and unblocked.", priority: "High", riskLevel: "High", consequence: "Blocked escape route during a fire.", proof: "Dated photo of fire exits.", location: "All Areas" },
-                    { id: "FAR-SS-10", description: "Review and report any suspicious activity or known shoplifters to the team.", priority: "Medium", riskLevel: "Low", consequence: "Team is not vigilant.", proof: "Daily briefing notes.", location: "Staff Briefing" }
-                ]
-            },
-            {
-                title: "Daily Closing & Financial Reconciliation",
-                department: "Store Operations",
-                frequency: "Daily",
-                role: "Closing Manager",
-                summary: "Secures the store and ensures all sales and cash are accounted for.",
-                icon: "banknote",
-                tasks: [
-                    { id: "FAR-DC-01", description: "Reconcile sales for each POS terminal against cash, card, and digital payments.", priority: "High", riskLevel: "High", consequence: "Financial discrepancies, theft.", proof: "Signed end-of-day POS reports.", location: "Cash Desk" },
-                    { id: "FAR-DC-02", description: "Count cash from each drawer and compare against the POS report.", priority: "High", riskLevel: "High", consequence: "Cash shortages or overages are not identified.", proof: "Signed cash count forms.", location: "Office" },
-                    { id: "FAR-DC-03", description: "Prepare bank deposit and secure in the safe.", priority: "High", riskLevel: "High", consequence: "Theft of daily takings.", proof: "Deposit slip and safe log.", location: "Office" },
-                    { id: "FAR-DC-04", description: "Process all end-of-day reports from the POS system.", priority: "Medium", riskLevel: "Low", consequence: "Incomplete data for head office reporting.", proof: "Printed or saved reports.", location: "Office" },
-                    { id: "FAR-DC-05", description: "Clear and tidy the cash desk area.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessional appearance for opening shift.", proof: "Visual check.", location: "Cash Desk" },
-                    { id: "FAR-DC-06", description: "Ensure all returned/damaged goods are processed and stored correctly.", priority: "Medium", riskLevel: "Low", consequence: "Inventory inaccuracies.", proof: "Check of returns area.", location: "Stockroom" },
-                    { id: "FAR-DC-07", description: "Complete a final walk-through of the sales floor to tidy and recover merchandise.", priority: "Medium", riskLevel: "Low", consequence: "Store is not ready for morning opening.", proof: "Manager's closing checklist.", location: "Sales Floor" },
-                    { id: "FAR-DC-08", description: "Lock all doors, gates, and cabinets.", priority: "High", riskLevel: "High", consequence: "Break-in.", proof: "Physical check.", location: "All Areas" },
-                    { id: "FAR-DC-09", description: "Set the security alarm.", priority: "High", riskLevel: "High", consequence: "Theft, burglary.", proof: "Alarm system log.", location: "Exit" },
-                    { id: "FAR-DC-10", description: "Log any issues or notes for the morning manager.", priority: "Medium", riskLevel: "Low", consequence: "Poor communication between shifts.", proof: "Manager's logbook entry.", location: "Office" }
-                ]
-            },
-            {
-                title: "Seasonal Inventory Management",
-                department: "Merchandising/Operations",
-                frequency: "Seasonally",
-                role: "Merchandising Manager",
-                summary: "Manages the transition between seasons, from stock intake to clearance.",
-                icon: "recycle",
-                tasks: [
-                    { id: "FAR-SI-01", description: "Plan and execute the receiving of new seasonal stock.", priority: "High", riskLevel: "Medium", consequence: "Disorganized intake, delayed launch.", proof: "Receiving schedule and plan.", location: "Stockroom" },
-                    { id: "FAR-SI-02", description: "Update all visual merchandising and floor layouts for the new season.", priority: "High", riskLevel: "Low", consequence: "Store looks dated, poor sales of new items.", proof: "New planogram documents.", location: "Sales Floor" },
-                    { id: "FAR-SI-03", description: "Identify slow-moving items from the previous season to be marked down.", priority: "High", riskLevel: "Medium", consequence: "Dead stock, tied-up capital.", proof: "Slow-seller report from inventory system.", location: "Office" },
-                    { id: "FAR-SI-04", description: "Implement markdown and promotional pricing for clearance items.", priority: "High", riskLevel: "Low", consequence: "Inability to clear old stock.", proof: "POS pricing update confirmation.", location: "Office" },
-                    { id: "FAR-SI-05", description: "Consolidate all clearance items into a designated sale section.", priority: "Medium", riskLevel: "Low", consequence: "Poor customer experience, items get missed.", proof: "Photo of organized sale section.", location: "Sales Floor" },
-                    { id: "FAR-SI-06", description: "Plan for and execute a full physical inventory count between seasons.", priority: "High", riskLevel: "High", consequence: "Inaccurate stock data for the new season.", proof: "Inventory count plan and final report.", location: "All Areas" },
-                    { id: "FAR-SI-07", description: "Pack and transfer any remaining old stock to an outlet or for storage.", priority: "Medium", riskLevel: "Low", consequence: "Old stock cluttering the stockroom.", proof: "Transfer logs.", location: "Stockroom" },
-                    { id: "FAR-SI-08", description: "Analyze sell-through rates of the past season to inform future buying decisions.", priority: "High", riskLevel: "Medium", consequence: "Repeating buying mistakes.", proof: "Seasonal sell-through report.", location: "Office" },
-                    { id: "FAR-SI-09", description: "Train staff on new product features and selling points.", priority: "High", riskLevel: "Low", consequence: "Staff unable to sell new products effectively.", proof: "Training session attendance.", location: "Staff Training" },
-                    { id: "FAR-SI-10", description: "Update online store with new season's products and remove old items.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent online vs. in-store offering.", proof: "Website content update log.", location: "E-commerce Dept." }
-                ]
-            },
-            {
-                title: "Staff Performance & Training",
-                department: "HR/Management",
-                frequency: "Monthly/Quarterly",
-                role: "Store Manager",
-                summary: "A framework for developing staff, improving performance, and building a strong team culture.",
-                icon: "user-check",
-                tasks: [
-                    { id: "FAR-SP-01", description: "Conduct monthly one-on-one performance reviews with each team member.", priority: "High", riskLevel: "Low", consequence: "Lack of feedback, low morale, underperformance.", proof: "Signed performance review forms.", location: "Office" },
-                    { id: "FAR-SP-02", description: "Set clear, measurable sales targets and KPIs for each employee.", priority: "High", riskLevel: "Low", consequence: "Team lacks direction and motivation.", proof: "Copy of individual target sheets.", location: "Office" },
-                    { id: "FAR-SP-03", description: "Provide regular product knowledge training sessions.", priority: "High", riskLevel: "Medium", consequence: "Staff can't answer customer questions, lost sales.", proof: "Training calendar and attendance sheets.", location: "Staff Area" },
-                    { id: "FAR-SP-04", description: "Conduct role-playing exercises on customer service and selling skills.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent service quality.", proof: "Training observation notes.", location: "Staff Area" },
-                    { id: "FAR-SP-05", description: "Recognize and reward top-performing employees publicly.", priority: "Medium", riskLevel: "Low", consequence: "Good performance goes unnoticed, poor motivation.", proof: "'Employee of the Month' announcement/photo.", location: "Staff Area" },
-                    { id: "FAR-SP-06", description: "Implement a Performance Improvement Plan (PIP) for underperforming staff.", priority: "High", riskLevel: "Medium", consequence: "Chronic underperformance is not addressed, affecting the team.", proof: "Signed PIP document.", location: "HR/Office" },
-                    { id: "FAR-SP-07", description: "Ensure all staff complete mandatory compliance training (e.g., safety, data privacy).", priority: "High", riskLevel: "High", consequence: "Compliance breaches, legal risks.", proof: "Training completion certificates.", location: "HR" },
-                    { id: "FAR-SP-08", description: "Maintain an up-to-date training matrix for all employees.", priority: "Medium", riskLevel: "Low", consequence: "Lack of visibility on skill gaps.", proof: "Training matrix spreadsheet.", location: "HR/Office" },
-                    { id: "FAR-SP-09", description: "Conduct exit interviews to gather feedback from departing employees.", priority: "Medium", riskLevel: "Low", consequence: "Missed opportunity to identify and fix systemic issues.", proof: "Exit interview forms.", location: "HR" },
-                    { id: "FAR-SP-10", description: "Hold regular team meetings to share business updates and foster teamwork.", priority: "High", riskLevel: "Low", consequence: "Poor communication and team cohesion.", proof: "Meeting minutes.", location: "Staff Area" }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'jewelry_and_luxury_retail',
-        title: "Jewelry & Luxury Retail Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/bf8a35c9-991d-4471-95f6-e0c7ce285981',
-        category: "Retail",
-        description: "A specialized toolkit for high-value retail, focusing on vault security, inventory control, and preventing sophisticated fraud.",
-        icon: "gem",
-        badgeText: "High Value",
-        badgeVariant: "accent",
-        bestseller: true,
-        whoIsItFor: ["Jewelry Store Owners", "Luxury Brand Managers", "Asset Protection Directors", "Heads of Retail"],
-        sampleItems: [
-            { text: "Enforce Fort-Knox level security with vault access control and dual verification SOPs.", icon: "lock" },
-            { text: "Protect your most valuable assets with display case and overnight security protocols.", icon: "shield" },
-            { text: "Prevent fraud in high-value transactions with rigorous payment verification steps.", icon: "circle-dollar-sign" },
-            { text: "Eliminate swap theft and inventory loss with serialized item and watch management.", icon: "watch" },
-            { text: "Ensure regulatory compliance with robust customer verification (KYC) processes.", icon: "user-check" },
-            { text: "Build customer trust with a secure and transparent repair and service intake process.", icon: "wrench" }
-        ],
-        checklists: [
-            {
-                title: "Opening & Closing Security",
-                department: "Security/Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensures the highest level of security during the most vulnerable times of the day.",
-                icon: "lock",
-                tasks: [
-                    { id: "JLR-OC-01", description: "Vault Opening: Two authorized persons present for time-lock vault opening.", priority: "High", riskLevel: "High", consequence: "Breach of vault security protocol, increased risk of internal theft.", proof: "Dual-signature log in vault register.", location: "Vault" },
-                    { id: "JLR-OC-02", description: "System Check: Deactivate alarm and verify all CCTV cameras and panic buttons are operational.", priority: "High", riskLevel: "High", consequence: "System failure during an incident.", proof: "System health check log.", location: "Security Office" },
-                    { id: "JLR-OC-03", description: "Display Setup: Move items from vault to display cases, with counts verified by two staff members.", priority: "High", riskLevel: "High", consequence: "Inventory discrepancy, potential for swap theft during setup.", proof: "Signed display transfer sheet.", location: "Sales Floor" },
-                    { id: "JLR-OC-04", description: "Closing Display Clear: All high-value items removed from display cases and returned to vault.", priority: "High", riskLevel: "High", consequence: "Items left vulnerable to smash-and-grab robbery overnight.", proof: "Dual-signature display clearance log.", location: "Sales Floor" },
-                    { id: "JLR-OC-05", description: "Vault Closing: Two authorized persons present to lock vault and set time-lock.", priority: "High", riskLevel: "High", consequence: "Vault left unsecured.", proof: "Dual-signature log in vault register.", location: "Vault" },
-                    { id: "JLR-OC-06", description: "Final Security Sweep: Physical check of all doors, windows, and secondary access points.", priority: "High", riskLevel: "High", consequence: "Unsecured entry point.", proof: "Manager's closing checklist.", location: "Perimeter" },
-                    { id: "JLR-OC-07", description: "Activate all alarm systems (motion, glass break, etc.).", priority: "High", riskLevel: "High", consequence: "Unprotected premises.", proof: "Alarm system log showing activation.", location: "Security Office" },
-                    { id: "JLR-OC-08", description: "Test a different silent alarm/panic button each day.", priority: "High", riskLevel: "Medium", consequence: "Failure of a critical life-safety device.", proof: "Daily alarm test log.", location: "Sales Floor" },
-                    { id: "JLR-OC-09", description: "Ensure showcase keys are securely stored and accounted for at all times.", priority: "High", riskLevel: "High", consequence: "Unauthorized access to display cases.", proof: "Key control log.", location: "Security Office" },
-                    { id: "JLR-OC-10", description: "Review any suspicious activity from the previous day's logs or CCTV.", priority: "Medium", riskLevel: "Medium", consequence: "Failure to identify patterns or pre-attack surveillance.", proof: "Shift handover log.", location: "Security Office" }
-                ]
-            },
-            {
-                title: "High-Value Transaction Protocol",
-                department: "Sales/Security",
-                frequency: "Per Transaction",
-                role: "Senior Sales Associate",
-                summary: "A step-by-step process to prevent swap-theft, fraud, and other risks during a high-value sale.",
-                icon: "gem",
-                tasks: [
-                    { id: "JLR-HVT-01", description: "Show only one high-value item (or one tray) at a time.", priority: "High", riskLevel: "High", consequence: "Opportunity for distraction and swap theft.", proof: "CCTV footage of the transaction.", location: "Viewing Area" },
-                    { id: "JLR-HVT-02", description: "Never leave high-value items unattended with a customer.", priority: "High", riskLevel: "High", consequence: "Grab-and-run theft.", proof: "CCTV footage.", location: "Viewing Area" },
-                    { id: "JLR-HVT-03", description: "A second staff member must be present or actively observing any transaction over a set value.", priority: "High", riskLevel: "High", consequence: "Lack of witness, increased risk of coercion or theft.", proof: "'Buddy system' log.", location: "Viewing Area" },
-                    { id: "JLR-HVT-04", description: "Verify serial numbers and inspect items with a loupe both before and after showing to a customer.", priority: "High", riskLevel: "High", consequence: "Swap theft is not detected.", proof: "Log sheet initialed before and after viewing.", location: "Viewing Area" },
-                    { id: "JLR-HVT-05", description: "For large cash payments, verify authenticity of notes using a currency counting machine/UV light.", priority: "High", riskLevel: "High", consequence: "Accepting counterfeit currency.", proof: "Transaction log noting verification.", location: "Cash Desk" },
-                    { id: "JLR-HVT-06", description: "For card payments, verify the customer's ID matches the name on the card.", priority: "High", riskLevel: "High", consequence: "Credit card fraud.", proof: "Transaction log noting ID verification.", location: "Cash Desk" },
-                    { id: "JLR-HVT-07", description: "For bank transfers, do not release the item until funds are confirmed as cleared in the company account.", priority: "High", riskLevel: "High", consequence: "Fraudulent proof of payment, total loss of item.", proof: "Bank statement confirmation.", location: "Office" },
-                    { id: "JLR-HVT-08", description: "Document the sale, including customer details and serial number of the item, in the sales register.", priority: "High", riskLevel: "Medium", consequence: "No audit trail for the transaction.", proof: "Completed sales invoice.", location: "Office" },
-                    { id: "JLR-HVT-09", description: "Escort the customer with the packaged item to the door.", priority: "Medium", riskLevel: "Low", consequence: "Provides a final positive service impression.", proof: "CCTV footage.", location: "Sales Floor to Exit" },
-                    { id: "JLR-HVT-10", description: "Log any unusual or suspicious requests or behavior in the security logbook.", priority: "Medium", riskLevel: "High", consequence: "Failure to share intelligence on potential criminal activity.", proof: "Security logbook entry.", location: "Security Office" }
-                ]
-            },
-            {
-                title: "Serialized Item & Watch Management",
-                department: "Inventory",
-                frequency: "Ongoing",
-                role: "Inventory Manager",
-                summary: "Tracks every serialized item (like luxury watches) from receiving to sale to prevent loss.",
-                icon: "barcode",
-                tasks: [
-                    { id: "JLR-W-01", description: "Upon receiving, verify serial number of each watch against the shipping manifest.", priority: "High", riskLevel: "High", consequence: "Accepting incorrect or fraudulent stock.", proof: "Signed receiving document with serial numbers listed.", location: "Receiving Area" },
-                    { id: "JLR-W-02", description: "Log each serial number into the master inventory system.", priority: "High", riskLevel: "Medium", consequence: "Inability to track individual items.", proof: "Inventory system screenshot.", location: "Office" },
-                    { id: "JLR-W-03", description: "Conduct weekly random audits of 10 serialized items, comparing physical item to system record.", priority: "High", riskLevel: "High", consequence: "Undetected theft or swaps.", proof: "Weekly audit report.", location: "Vault/Sales Floor" },
-                    { id: "JLR-W-04", description: "When an item is moved from vault to display, log the movement with two signatures.", priority: "High", riskLevel: "Medium", consequence: "Item goes missing between secure areas.", proof: "Movement logbook.", location: "Vault/Sales Floor" },
-                    { id: "JLR-W-05", description: "Before showing a watch to a customer, log the serial number out.", priority: "High", riskLevel: "High", consequence: "No record of which specific item was shown.", proof: "Viewing log.", location: "Sales Floor" },
-                    { id: "JLR-W-06", description: "After showing a watch, verify the serial number again before logging it back in.", priority: "High", riskLevel: "High", consequence: "Swap theft is not caught immediately.", proof: "Viewing log with post-viewing signature.", location: "Sales Floor" },
-                    { id: "JLR-W-07", description: "At the point of sale, scan the serial number to record the specific item being sold.", priority: "High", riskLevel: "Medium", consequence: "Incorrect item recorded on sales receipt, inventory errors.", proof: "Sales receipt with serial number.", location: "Cash Desk" },
-                    { id: "JLR-W-08", description: "For repairs, log the serial number and create a separate job bag for the item.", priority: "High", riskLevel: "High", consequence: "Item gets lost or swapped in repair process.", proof: "Repair intake form.", location: "Service Desk" },
-                    { id: "JLR-W-09", description: "Conduct a full physical inventory of all serialized items quarterly.", priority: "High", riskLevel: "High", consequence: "Accumulation of discrepancies, masking ongoing theft.", proof: "Quarterly inventory reconciliation report.", location: "All Areas" },
-                    { id: "JLR-W-10", description: "Investigate every single serial number discrepancy within 24 hours.", priority: "High", riskLevel: "High", consequence: "Theft goes uninvestigated, evidence is lost.", proof: "Incident report for each discrepancy.", location: "Security Office" }
-                ]
-            },
-            {
-                title: "Repair & Service Intake",
-                department: "After-Sales Service",
-                frequency: "Per Item",
-                role: "Service Advisor",
-                summary: "A secure process for accepting customer items for repair, preventing liability and loss.",
-                icon: "wrench",
-                tasks: [
-                    { id: "JLR-R-01", description: "Photograph the item from multiple angles upon receipt, documenting its condition (scratches, etc.).", priority: "High", riskLevel: "High", consequence: "Disputes with customers over pre-existing damage.", proof: "Dated photos attached to job card.", location: "Service Desk" },
-                    { id: "JLR-R-02", description: "Record the item's brand, model, and serial number on the intake form.", priority: "High", riskLevel: "High", consequence: "Inability to track the specific item.", proof: "Completed intake form.", location: "Service Desk" },
-                    { id: "JLR-R-03", description: "Provide the customer with a detailed receipt that includes the item's details and photos.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes about what was left.", proof: "Copy of customer receipt.", location: "Service Desk" },
-                    { id: "JLR-R-04", description: "Place the item in a sealed, tamper-evident job bag with the job card attached.", priority: "High", riskLevel: "High", consequence: "Item gets lost, stones fall out, or is tampered with.", proof: "Visual check.", location: "Service Desk" },
-                    { id: "JLR-R-05", description: "Log the job bag into the repair tracking system.", priority: "High", riskLevel: "Medium", consequence: "No digital record of the item's location.", proof: "Entry in tracking system.", location: "Service Desk" },
-                    { id: "JLR-R-06", description: "Store the job bag in a dedicated, access-controlled safe or locker.", priority: "High", riskLevel: "High", consequence: "Theft of customer property.", proof: "Safe log.", location: "Secure Storage" },
-                    { id: "JLR-R-07", description: "When handing over to the workshop, get a signature from the craftsman.", priority: "High", riskLevel: "Medium", consequence: "Chain of custody is broken.", proof: "Handover log.", location: "Workshop" },
-                    { id: "JLR-R-08", description: "Upon return from workshop, verify item against intake photos and notes before notifying customer.", priority: "High", riskLevel: "High", consequence: "Returning an item with new damage.", proof: "QC check sign-off.", location: "Service Desk" },
-                    { id: "JLR-R-09", description: "At pickup, have the customer sign a release form confirming they have received their item in satisfactory condition.", priority: "High", riskLevel: "High", consequence: "Future disputes about the repair or condition.", proof: "Signed release form.", location: "Service Desk" },
-                    { id: "JLR-R-10", description: "Verify customer ID at pickup for high-value items.", priority: "High", riskLevel: "High", consequence: "Handing over a valuable item to the wrong person.", proof: "Note on release form.", location: "Service Desk" }
-                ]
-            },
-            {
-                title: "KYC & AML Compliance",
-                department: "Compliance",
-                frequency: "Per High-Value Transaction",
-                role: "Compliance Officer/Manager",
-                summary: "Ensures compliance with anti-money laundering regulations for large transactions.",
-                icon: "user-check",
-                tasks: [
-                    { id: "JLR-K-01", description: "For transactions above the legal threshold, collect customer's official photo ID and proof of address.", priority: "High", riskLevel: "High", consequence: "Severe legal and financial penalties for AML non-compliance.", proof: "Scanned copies of KYC documents.", location: "Office" },
-                    { id: "JLR-K-02", description: "Verify the customer's identity against the provided documents.", priority: "High", riskLevel: "Medium", consequence: "Identity fraud.", proof: "Verification checklist.", location: "Office" },
-                    { id: "JLR-K-03", description: "Check customer name against relevant government and international sanctions lists.", priority: "High", riskLevel: "High", consequence: "Doing business with sanctioned individuals.", proof: "Screenshot of sanctions list search result.", location: "Office" },
-                    { id: "JLR-K-04", description: "For large cash transactions, file a Suspicious Transaction Report (STR) if applicable.", priority: "High", riskLevel: "High", consequence: "Failure to report suspicious activity to authorities.", proof: "Copy of filed STR.", location: "Office" },
-                    { id: "JLR-K-05", description: "Document the source of funds for unusually large transactions.", priority: "Medium", riskLevel: "High", consequence: "Facilitating money laundering.", proof: "Source of funds declaration form.", location: "Office" },
-                    { id: "JLR-K-06", description: "Maintain all KYC and transaction records for the legally required period.", priority: "High", riskLevel: "Medium", consequence: "Failure to produce records during an audit.", proof: "Secure digital or physical archive.", location: "Office" },
-                    { id: "JLR-K-07", description: "Train all sales staff to identify red flags for money laundering (e.g., complex payment structures, third-party payments).", priority: "High", riskLevel: "Medium", consequence: "Staff unknowingly facilitate illicit transactions.", proof: "AML training records.", location: "HR/Training" },
-                    { id: "JLR-K-08", description: "Appoint a designated compliance officer responsible for the AML program.", priority: "High", riskLevel: "High", consequence: "Lack of accountability for compliance.", proof: "Official appointment letter.", location: "HR/Management" },
-                    { id: "JLR-K-09", description: "Conduct an independent annual audit of the AML program.", priority: "High", riskLevel: "Medium", consequence: "Program becomes outdated or ineffective.", proof: "Annual audit report.", location: "Office" },
-                    { id: "JLR-K-10", description: "Report any identified suspicious activity to the financial intelligence unit (FIU) promptly.", priority: "High", riskLevel: "High", consequence: "Legal penalties for non-reporting.", proof: "FIU acknowledgement receipt.", location: "Compliance Office" }
-                ]
-            },
-            {
-                title: "Store Security & Loss Prevention Audit",
-                department: "Security",
-                frequency: "Quarterly",
-                role: "Area Loss Prevention Manager",
-                summary: "A comprehensive audit of all physical and procedural security measures in the store.",
-                icon: "building-2",
-                tasks: [
-                    { id: "JLR-A-01", description: "Audit vault access logs and compare against authorised personnel list.", priority: "High", riskLevel: "High", consequence: "Unauthorized vault access.", proof: "Audit report.", location: "Security Office" },
-                    { id: "JLR-A-02", description: "Test all alarm systems, including vault, showcases, and perimeter alarms.", priority: "High", riskLevel: "High", consequence: "Alarm system failure.", proof: "Alarm test log from vendor.", location: "Security Office" },
-                    { id: "JLR-A-03", description: "Review CCTV footage storage duration and clarity of images.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to provide evidence for old incidents.", proof: "CCTV system settings screenshot.", location: "CCTV Room" },
-                    { id: "JLR-A-04", description: "Inspect physical security of display cases (locks, glass type, anchoring).", priority: "High", riskLevel: "High", consequence: "Vulnerable to smash-and-grab.", proof: "Physical inspection checklist.", location: "Sales Floor" },
-                    { id: "JLR-A-05", description: "Conduct a surprise cash count and float reconciliation.", priority: "Medium", riskLevel: "Medium", consequence: "Identifies cash handling irregularities.", proof: "Surprise audit report.", location: "Cash Desk" },
-                    { id: "JLR-A-06", description: "Review staff training records for security and emergency procedures.", priority: "High", riskLevel: "Medium", consequence: "Untrained staff are a liability.", proof: "Training matrix.", location: "HR" },
-                    { id: "JLR-A-07", description: "Audit the key control policy and logs.", priority: "High", riskLevel: "High", consequence: "Lost or unaccounted for keys.", proof: "Key log audit report.", location: "Security Office" },
-                    { id: "JLR-A-08", description: "Review recent incident reports for patterns and check if corrective actions were taken.", priority: "High", riskLevel: "Medium", consequence: "Failure to learn from past incidents.", proof: "Incident report analysis.", location: "Security Office" },
-                    { id: "JLR-A-09", description: "Check background verification process for all new hires.", priority: "High", riskLevel: "High", consequence: "Hiring internal threats.", proof: "Review of HR files for background check reports.", location: "HR" },
-                    { id: "JLR-A-10", description: "Assess the store's opening and closing procedures through direct observation.", priority: "High", riskLevel: "High", consequence: "Procedures not being followed correctly.", proof: "Observation report.", location: "All Areas" }
-                ]
-            },
-        ]
-    },
-    {
-        id: 'electronics_showroom_pack',
-        title: "Electronics Showroom Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a05cb9ef-51b3-454a-a389-609b314b8338',
-        category: "Retail",
-        description: "A comprehensive operational pack for electronics retailers to ensure safety, asset security, and a superior customer experience.",
-        icon: "tv",
-        whoIsItFor: ["Electronics Store Owners", "Showroom Managers", "Heads of Retail Operations", "Asset Protection Managers"],
-        sampleItems: [
-            { text: "Prevent fires and damage with meticulous demo unit safety and electrical load audits.", icon: "zap" },
-            { text: "Secure high-value assets with serialized tagging, warranty management, and inventory control.", icon: "barcode" },
-            { text: "Ensure environmental compliance with a formal e-waste handling and disposal process.", icon: "recycle" },
-            { text: "Protect customer data and prevent fraud with PCI-DSS compliant payment security.", icon: "shield-check" },
-            { text: "Enhance customer trust through a standardized and professional demo and returns process.", icon: "user-check" },
-            { text: "Optimize your back-of-house with safe and efficient stockroom organization checklists.", icon: "package" }
-        ],
-        checklists: [
-             {
-                title: "Daily Store Opening & Presentation",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Store Manager",
-                summary: "Ensures the showroom is safe, secure, and visually appealing before opening.",
-                icon: "key-round",
-                tasks: [
-                    { id: "ES-SO-01", description: "Deactivate store alarm and perform a full security sweep of the premises.", priority: "High", riskLevel: "High", consequence: "Failure to detect an overnight breach or safety hazard.", proof: "Alarm system log and manager's opening checklist.", location: "Entire Store" },
-                    { id: "ES-SO-02", description: "Power on all demo units, digital displays, and ensure they are running correct content.", priority: "High", riskLevel: "Low", consequence: "Poor customer experience, missed marketing.", proof: "Photo of main display wall.", location: "Sales Floor" },
-                    { id: "ES-SO-03", description: "Verify all POS terminals are online and payment devices are functional.", priority: "High", riskLevel: "High", consequence: "Inability to transact sales, customer frustration.", proof: "Test transaction receipt from each POS.", location: "Cash/Checkout Area" },
-                    { id: "ES-SO-04", description: "Check store cleanliness, including screens, surfaces, and floors.", priority: "Medium", riskLevel: "Low", consequence: "Negative perception of brand quality.", proof: "Manager's visual inspection sign-off.", location: "Sales Floor" },
-                    { id: "ES-SO-05", description: "Ensure all price tags and promotional offers are accurate and up-to-date.", priority: "High", riskLevel: "Medium", consequence: "Pricing disputes with customers, legal non-compliance.", proof: "Spot check of 10 random items against master price list.", location: "Sales Floor" },
-                    { id: "ES-SO-06", description: "Conduct a team briefing on daily targets, promotions, and new products.", priority: "High", riskLevel: "Low", consequence: "Misaligned team, poor sales performance.", proof: "Briefing attendance sheet and notes.", location: "Staff Area" },
-                    { id: "ES-SO-07", description: "Check that all security tethers and locks on high-value demo units are secure.", priority: "High", riskLevel: "High", consequence: "High risk of theft for expensive demo items.", proof: "Physical check of 10 high-value items.", location: "Sales Floor" },
-                    { id: "ES-SO-08", description: "Restock any depleted accessory displays (e.g., chargers, cases).", priority: "Low", riskLevel: "Low", consequence: "Missed incremental sales.", proof: "Visual check.", location: "Accessory Section" },
-                    { id: "ES-SO-09", description: "Ensure service desk is ready for customer inquiries and repairs.", priority: "Medium", riskLevel: "Low", consequence: "Poor after-sales service experience.", proof: "Service desk readiness checklist.", location: "Service Desk" },
-                    { id: "ES-SO-10", description: "Verify float cash at each register.", priority: "High", riskLevel: "Medium", consequence: "Cash handling errors.", proof: "Signed float verification forms.", location: "Cash/Checkout Area" }
-                ]
-            },
-            {
-                title: "Serialized Inventory & Asset Protection",
-                department: "Loss Prevention",
-                frequency: "Weekly",
-                role: "Asset Protection Lead",
-                summary: "Manages high-value serialized inventory to prevent theft and fraud.",
-                icon: "barcode",
-                tasks: [
-                    { id: "ES-AP-01", description: "Conduct a blind cycle count of a specific high-value category (e.g., flagship phones, laptops).", priority: "High", riskLevel: "High", consequence: "Unidentified stock discrepancies, masking potential theft.", proof: "Signed count sheet reconciled against system data.", location: "Stockroom/Sales Floor" },
-                    { id: "ES-AP-02", description: "Audit all new product receipts to ensure serial numbers are correctly logged in the inventory system.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate stock records from the point of entry.", proof: "Sample audit of delivery notes vs. system entries.", location: "Receiving Area" },
-                    { id: "ES-AP-03", description: "Review CCTV footage for any suspicious behavior near high-value displays or the stockroom.", priority: "Medium", riskLevel: "Medium", consequence: "Missed indicators of organized retail crime or internal collusion.", proof: "CCTV review log with timestamps.", location: "Security Office" },
-                    { id: "ES-AP-04", description: "Test functionality of all display item security alarms and tethers.", priority: "High", riskLevel: "High", consequence: "Theft of expensive display models.", proof: "Log of tested alarms.", location: "Sales Floor" },
-                    { id: "ES-AP-05", description: "Audit the returns process for potential fraud (e.g., returning a different, older item).", priority: "High", riskLevel: "High", consequence: "Loss through fraudulent returns.", proof: "Cross-verification of returned item serial number against original sales record.", location: "Service Desk" },
-                    { id: "ES-AP-06", description: "Ensure stockroom access is strictly controlled and logged.", priority: "High", riskLevel: "Medium", consequence: "Unauthorized access leading to internal theft.", proof: "Review of stockroom access logs.", location: "Stockroom" },
-                    { id: "ES-AP-07", description: "Verify that empty boxes for high-value items are flattened and disposed of securely.", priority: "Medium", riskLevel: "High", consequence: "Thieves using empty boxes to carry out stolen goods (box stuffing).", proof: "CCTV footage of disposal area.", location: "Waste Disposal Area" },
-                    { id: "ES-AP-08", description: "Check that high-value items in the stockroom are stored in a secure, caged area.", priority: "High", riskLevel: "High", consequence: "Easy access for internal theft.", proof: "Photo of secured cage.", location: "Stockroom" },
-                    { id: "ES-AP-09", description: "Investigate all significant inventory discrepancies immediately.", priority: "High", riskLevel: "High", consequence: "Theft goes unaddressed, leading to further losses.", proof: "Incident report for each discrepancy.", location: "Security Office" },
-                    { id: "ES-AP-10", description: "Perform random staff bag checks as per company policy.", priority: "Medium", riskLevel: "Medium", consequence: "Deterrent against internal theft.", proof: "Bag check log.", location: "Staff Exit" }
-                ]
-            },
-            {
-                title: "Customer Service & Repair Workflow",
-                department: "Service",
-                frequency: "Per Interaction",
-                role: "Service Technician/Advisor",
-                summary: "Ensures a secure and trustworthy process for handling customer devices for repair.",
-                icon: "wrench",
-                tasks: [
-                    { id: "ES-CS-01", description: "Log customer and device details (Model, Serial, IMEI) into the service system.", priority: "High", riskLevel: "High", consequence: "Inability to track customer device, potential for loss or swap.", proof: "Service job card/system entry.", location: "Service Desk" },
-                    { id: "ES-CS-02", description: "Photograph the device's physical condition at intake, noting all existing scratches or damage.", priority: "High", riskLevel: "High", consequence: "Disputes with customer over pre-existing damage.", proof: "Dated photos linked to the job card.", location: "Service Desk" },
-                    { id: "ES-CS-03", description: "Have the customer sign the intake form, acknowledging the device's condition and the repair terms.", priority: "High", riskLevel: "Medium", consequence: "Legal disputes over repair scope or liability.", proof: "Signed customer intake form.", location: "Service Desk" },
-                    { id: "ES-CS-04", description: "Backup customer data where possible and with explicit written consent.", priority: "High", riskLevel: "High", consequence: "Data loss, severe customer dissatisfaction, data privacy breach.", proof: "Signed data backup consent form.", location: "Service Desk" },
-                    { id: "ES-CS-05", description: "Place the device in a sealed, labeled, and tamper-evident bag.", priority: "High", riskLevel: "Medium", consequence: "Device loss or mix-up within the workshop.", proof: "Visual check.", location: "Service Desk" },
-                    { id: "ES-CS-06", description: "Upon repair completion, perform a full Quality Control check of all functions.", priority: "High", riskLevel: "Medium", consequence: "Returning a device that is still faulty, repeat repairs.", proof: "Signed QC checklist for the device.", location: "Workshop" },
-                    { id: "ES-CS-07", description: "Wipe any stored customer data from service machines after repair is complete.", priority: "High", riskLevel: "High", consequence: "Major data privacy breach.", proof: "Data wipe confirmation log.", location: "Workshop" },
-                    { id: "ES-CS-08", description: "At pickup, verify the customer's identity against the intake record.", priority: "High", riskLevel: "High", consequence: "Handing over a device to the wrong person.", proof: "ID verification note on job card.", location: "Service Desk" },
-                    { id: "ES-CS-09", description: "Have the customer test the device and sign a satisfaction and release form.", priority: "High", riskLevel: "Medium", consequence: "Future disputes about the quality of the repair.", proof: "Signed release form.", location: "Service Desk" },
-                    { id: "ES-CS-10", description: "Securely store all unclaimed devices and follow up with customers.", priority: "Medium", riskLevel: "Low", consequence: "Buildup of unclaimed property, liability.", proof: "Unclaimed device log.", location: "Secure Storage" }
-                ]
-            },
-            {
-                title: "E-Waste & Environmental Compliance",
-                department: "Compliance/Operations",
-                frequency: "Monthly",
-                role: "Compliance Manager",
-                summary: "Ensures all electronic waste is handled and disposed of according to environmental regulations.",
-                icon: "recycle",
-                tasks: [
-                    { id: "ES-EW-01", description: "Ensure all e-waste (e.g., dead batteries, broken devices) is stored in designated, labeled containers.", priority: "High", riskLevel: "Medium", consequence: "Environmental fines, safety hazards.", proof: "Photo of designated e-waste bins.", location: "Stockroom/Waste Area" },
-                    { id: "ES-EW-02", description: "Arrange for e-waste collection only with government-authorized recycling partners.", priority: "High", riskLevel: "High", consequence: "Illegal dumping, severe legal penalties.", proof: "Valid contract with authorized recycler.", location: "Office" },
-                    { id: "ES-EW-03", description: "Maintain a log of all e-waste collected, including date, type, weight, and vendor.", priority: "High", riskLevel: "Medium", consequence: "Inability to prove compliant disposal during an audit.", proof: "E-waste disposal manifest/logbook.", location: "Office" },
-                    { id: "ES-EW-04", description: "Obtain and file certificates of destruction/recycling from the vendor for every pickup.", priority: "High", riskLevel: "High", consequence: "Lack of legal proof of proper disposal.", proof: "File of recycling certificates.", location: "Office" },
-                    { id: "ES-EW-05", description: "Train staff on identifying and segregating e-waste from general waste.", priority: "Medium", riskLevel: "Low", consequence: "E-waste ending up in landfills.", proof: "Training attendance log.", location: "Staff Training" },
-                    { id: "ES-EW-06", description: "Inspect battery disposal bins to ensure no leaking or damaged batteries are creating a fire hazard.", priority: "High", riskLevel: "High", consequence: "Fire from lithium-ion batteries.", proof: "Weekly inspection log.", location: "Waste Area" },
-                    { id: "ES-EW-07", description: "Ensure any customer data on devices destined for e-waste is securely wiped or the device is destroyed.", priority: "High", riskLevel: "High", consequence: "Massive data breach from discarded hardware.", proof: "Data destruction certificates or logs.", location: "Service/IT Dept" },
-                    { id: "ES-EW-08", description: "Keep up-to-date with any changes in e-waste management rules and regulations.", priority: "Medium", riskLevel: "Medium", consequence: "Falling out of compliance with new laws.", proof: "Record of regulatory update reviews.", location: "Compliance Office" },
-                    { id: "ES-EW-09", description: "Clearly label e-waste collection points for customers (e.g., battery drop-off).", priority: "Low", riskLevel: "Low", consequence: "Poor customer participation in take-back schemes.", proof: "Photo of customer-facing bins.", location: "Sales Floor" },
-                    { id: "ES-EW-10", description: "Review recycler's compliance documents and licenses annually.", priority: "High", riskLevel: "Medium", consequence: "Partnering with a non-compliant vendor.", proof: "Annual vendor review file.", location: "Compliance Office" }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'supermarket_grocery_retail_pack',
-        title: "Supermarket & Grocery Retail Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
-        category: "Retail",
-        description: "An all-in-one operations and compliance pack for supermarkets, hypermarkets, and grocery retail chains, ensuring food safety, quality, and operational efficiency across outlets.",
-        icon: "shopping-basket",
-        badgeText: "New!",
-        badgeVariant: "accent",
-        whoIsItFor: ["Supermarket Owners", "Grocery Store Proprietors", "Heads of Retail Operations", "Store Directors", "Department Heads (Fresh Food, Dairy)", "3PL Partners"],
-        sampleItems: [
-            { text: "Prevent spoilage and foodborne illness with robust cold chain and perishables temperature management.", icon: "thermometer" },
-            { text: "Minimize waste and ensure freshness with a daily FIFO rotation and expiry date sweep process.", icon: "recycle" },
-            { text: "Maintain a safe and inviting store with checklists for hygiene, cleaning, and rapid spill response.", icon: "spray-can" },
-            { text: "Protect your revenue through rigorous point-of-sale security and cash reconciliation.", icon: "dollar-sign" },
-            { text: "Guarantee food quality from the source with a stringent raw material receiving and QC process.", icon: "package-check" },
-            { text: "Ensure compliance and fair trade with weighing scale calibration and Legal Metrology checks.", icon: "scale" }
-        ],
-        checklists: [
-            {
-                title: "Fresh Produce Quality Control",
-                department: "Fresh Produce",
-                frequency: "Daily",
-                role: "Department Manager",
-                summary: "Ensures freshness, quality, and safety of fruits and vegetables.",
-                icon: "sprout",
-                tasks: [
-                    { id: "SGR-FP-01", description: "Check temperature of produce display cases and back coolers.", priority: "High", riskLevel: "High", consequence: "Rapid spoilage, microbial growth.", proof: "Temperature log.", location: "Display/Coolers" },
-                    { id: "SGR-FP-02", description: "Cull and log any spoiled, bruised, or wilted produce from displays.", priority: "High", riskLevel: "Medium", consequence: "Poor customer perception, spreads spoilage.", proof: "Wastage log.", location: "Sales Floor" },
-                    { id: "SGR-FP-03", description: "Rotate stock on display using FIFO (First-In, First-Out).", priority: "High", riskLevel: "Medium", consequence: "Increased wastage.", proof: "Visual check.", location: "Sales Floor" },
-                    { id: "SGR-FP-04", description: "Ensure misting systems (if any) are functional and timed correctly.", priority: "Medium", riskLevel: "Low", consequence: "Dehydration of leafy greens.", proof: "System check log.", location: "Sales Floor" },
-                    { id: "SGR-FP-05", description: "Check country of origin and organic labeling for accuracy.", priority: "Medium", riskLevel: "Medium", consequence: "Misleading customers, regulatory non-compliance.", proof: "Label audit.", location: "Sales Floor" },
-                    { id: "SGR-FP-06", description: "Clean and sanitize all produce prep areas and cutting boards.", priority: "High", riskLevel: "High", consequence: "Cross-contamination, foodborne illness.", proof: "Sanitization log.", location: "Prep Area" },
-                    { id: "SGR-FP-07", description: "Verify that 'ready-to-eat' cut fruits are within their 'use by' date.", priority: "High", riskLevel: "High", consequence: "Food safety risk.", proof: "Date check log.", location: "Grab-and-Go Section" },
-                    { id: "SGR-FP-08", description: "Ensure weighing scales are calibrated and certified.", priority: "High", riskLevel: "High", consequence: "Incorrect pricing, legal metrology violations.", proof: "Calibration sticker/certificate.", location: "Produce Section" },
-                    { id: "SGR-FP-09", description: "Inspect incoming produce deliveries for quality, temperature, and pests.", priority: "High", riskLevel: "High", consequence: "Accepting poor quality or unsafe produce.", proof: "Inbound QC log.", location: "Receiving Dock" },
-                    { id: "SGR-FP-10", description: "Manage stock levels to prevent overstocking and stockouts of key items.", priority: "Medium", riskLevel: "Medium", consequence: "Lost sales or high wastage.", proof: "Inventory system review.", location: "Office" }
-                ]
-            },
-            {
-                title: "Meat & Poultry Counter (HACCP)",
-                department: "Butchery/Meat",
-                frequency: "Daily",
-                role: "Butcher/Dept. Manager",
-                summary: "Strict HACCP-based controls for handling high-risk meat and poultry products.",
-                icon: "drumstick",
-                tasks: [
-                    { id: "SGR-MP-01", description: "Record temperatures of all meat display cases, walk-in coolers, and freezers.", priority: "High", riskLevel: "High", consequence: "Catastrophic food safety failure, E. coli/Salmonella risk.", proof: "Temperature log.", location: "All Cold Storage" },
-                    { id: "SGR-MP-02", description: "Sanitize all grinders, slicers, knives, and cutting boards before and after use.", priority: "High", riskLevel: "High", consequence: "Cross-contamination between different meats.", proof: "Sanitization log.", location: "Prep Area" },
-                    { id: "SGR-MP-03", description: "Ensure strict separation between raw poultry, red meat, and cooked meats.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Photo of cooler storage.", location: "Coolers/Display" },
-                    { id: "SGR-MP-04", description: "Check 'use by' dates on all pre-packaged and in-house packaged meats.", priority: "High", riskLevel: "High", consequence: "Selling expired, unsafe product.", proof: "Date check log.", location: "Display Cases" },
-                    { id: "SGR-MP-05", description: "Verify cleanliness and sanitation of the entire department, including floors and drains.", priority: "High", riskLevel: "Medium", consequence: "Health code violations, pest attraction.", proof: "Cleaning schedule sign-off.", location: "Entire Department" },
-                    { id: "SGR-MP-06", description: "Ensure staff are wearing clean uniforms, gloves, and hair restraints.", priority: "High", riskLevel: "Medium", consequence: "Contamination of product.", proof: "Manager's visual check.", location: "Department" },
-                    { id: "SGR-MP-07", description: "Log all incoming meat deliveries, checking for temperature, quality, and documentation.", priority: "High", riskLevel: "High", consequence: "Accepting unsafe meat.", proof: "Receiving log.", location: "Receiving Dock" },
-                    { id: "SGR-MP-08", description: "Calibrate meat thermometers weekly.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate safety checks.", proof: "Calibration log.", location: "Department" },
-                    { id: "SGR-MP-09", description: "Ensure proper labeling of all in-house ground or cut meats with date and time.", priority: "High", riskLevel: "Medium", consequence: "Inability to track freshness.", proof: "Visual audit of labels.", location: "Display Cases" },
-                    { id: "SGR-MP-10", description: "Dispose of all meat scraps and waste in designated, sealed bins.", priority: "Medium", riskLevel: "Low", consequence: "Pest and odor issues.", proof: "Visual check.", location: "Waste Area" }
-                ]
-            },
-            {
-                title: "Dairy & Cold Chain Management",
-                department: "Dairy/Chilled Goods",
-                frequency: "Daily",
-                role: "Department Staff",
-                summary: "Ensures dairy and other chilled products are kept at safe temperatures from receiving to sale.",
-                icon: "milk",
-                tasks: [
-                    { id: "SGR-DC-01", description: "Check and log temperatures of all dairy display cases and walk-in coolers twice daily.", priority: "High", riskLevel: "High", consequence: "Product spoilage, foodborne illness.", proof: "Temperature log.", location: "Sales Floor/Coolers" },
-                    { id: "SGR-DC-02", description: "Inspect incoming dairy deliveries for correct temperature (below 5°C/41°F).", priority: "High", riskLevel: "High", consequence: "Accepting compromised product.", proof: "Receiving temperature log.", location: "Receiving Dock" },
-                    { id: "SGR-DC-03", description: "Move dairy deliveries to cold storage immediately upon receipt.", priority: "High", riskLevel: "High", consequence: "Breaking the cold chain.", proof: "CCTV review of receiving.", location: "Receiving Dock" },
-                    { id: "SGR-DC-04", description: "Rotate all products (milk, yogurt, cheese) using FIFO principles.", priority: "High", riskLevel: "Medium", consequence: "Increased wastage from expired stock.", proof: "Date check during restocking.", location: "Display Cases" },
-                    { id: "SGR-DC-05", description: "Perform a daily check for and remove any expired or damaged products.", priority: "High", riskLevel: "High", consequence: "Selling unsafe or poor-quality items.", proof: "Wastage and expired stock log.", location: "Display Cases" },
-                    { id: "SGR-DC-06", description: "Clean shelves and display cases of any spills or leaks.", priority: "Medium", riskLevel: "Low", consequence: "Unsanitary appearance, pest attraction.", proof: "Cleaning log.", location: "Sales Floor" },
-                    { id: "SGR-DC-07", description: "Ensure cooler doors are closing properly and seals are intact.", priority: "Medium", riskLevel: "Medium", consequence: "Temperature fluctuations, high energy costs.", proof: "Weekly maintenance check.", location: "Sales Floor/Coolers" },
-                    { id: "SGR-DC-08", description: "Check for any items left by customers outside of refrigerated areas and dispose of them.", priority: "Medium", riskLevel: "High", consequence: "Unsafe product being restocked.", proof: "Log of discarded items.", location: "Throughout Store" },
-                    { id: "SGR-DC-09", description: "Verify that thermometers inside coolers are clearly visible and functional.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to monitor temperatures.", proof: "Visual check.", location: "Display Cases/Coolers" },
-                    { id: "SGR-DC-10", description: "Ensure backup power is functional for all cold storage units.", priority: "High", riskLevel: "High", consequence: "Total loss of inventory during a power outage.", proof: "Generator test log.", location: "Engineering" }
-                ]
-            },
-            {
-                title: "Store Hygiene & Sanitation",
-                department: "Operations/Maintenance",
-                frequency: "Daily",
-                role: "Cleaning Crew Supervisor",
-                summary: "Maintains a clean and safe shopping environment for customers and staff.",
-                icon: "sparkles",
-                tasks: [
-                    { id: "SGR-HS-01", description: "Sweep and mop all floors before opening.", priority: "High", riskLevel: "Low", consequence: "Dirty store, poor impression.", proof: "Cleaning log.", location: "All Floor Areas" },
-                    { id: "SGR-HS-02", description: "Clean and sanitize all shopping cart and basket handles.", priority: "High", riskLevel: "Medium", consequence: "Spread of germs.", proof: "Sanitization log.", location: "Entrance" },
-                    { id: "SGR-HS-03", description: "Clean and sanitize all customer restrooms hourly.", priority: "High", riskLevel: "High", consequence: "Customer complaints, major hygiene risk.", proof: "Restroom cleaning checklist.", location: "Restrooms" },
-                    { id: "SGR-HS-04", description: "Perform 'spill patrols' every hour to check for and clean up any spills.", priority: "High", riskLevel: "High", consequence: "Slip and fall accidents, lawsuits.", proof: "Spill patrol log.", location: "All Aisles" },
-                    { id: "SGR-HS-05", description: "Wipe down checkout counters and payment terminals regularly.", priority: "Medium", riskLevel: "Low", consequence: "Spread of germs.", proof: "Cleaning log.", location: "Checkout Area" },
-                    { id: "SGR-HS-06", description: "Empty all trash bins throughout the store when they are 3/4 full.", priority: "Medium", riskLevel: "Low", consequence: "Overflowing trash, poor appearance.", proof: "Visual check.", location: "All Areas" },
-                    { id: "SGR-HS-07", description: "Clean all glass doors and windows at entrance.", priority: "Medium", riskLevel: "Low", consequence: "Dirty, unprofessional appearance.", proof: "Cleaning log.", location: "Entrance" },
-                    { id: "SGR-HS-08", description: "Check for and report any pest activity.", priority: "High", riskLevel: "High", consequence: "Infestation.", proof: "Pest sighting log.", location: "All Areas" },
-                    { id: "SGR-HS-09", description: "Ensure cleaning supplies are correctly stored and labeled.", priority: "High", riskLevel: "Medium", consequence: "Chemical hazards.", proof: "Photo of janitor's closet.", location: "Janitor Closet" },
-                    { id: "SGR-HS-10", description: "Perform a deep clean of one store section each week as per schedule.", priority: "Medium", riskLevel: "Low", consequence: "Gradual decline in overall store cleanliness.", proof: "Deep cleaning schedule sign-off.", location: "Varies Weekly" }
-                ]
-            },
-            {
-                title: "Checkout & Cash Management",
-                department: "Front End",
-                frequency: "Per Shift",
-                role: "Head Cashier/Supervisor",
-                summary: "Ensures accuracy, security, and efficiency at the point of sale.",
-                icon: "dollar-sign",
-                tasks: [
-                    { id: "SGR-CM-01", description: "Verify cash float for each register at the start of the shift.", priority: "High", riskLevel: "High", consequence: "Cash discrepancies.", proof: "Signed float verification slip.", location: "Cash Office" },
-                    { id: "SGR-CM-02", description: "Reconcile cash, card, and digital payments for each register at end of shift.", priority: "High", riskLevel: "High", consequence: "Unidentified cash loss.", proof: "End-of-shift report signed by cashier and supervisor.", location: "Cash Office" },
-                    { id: "SGR-CM-03", description: "Perform random cash drawer audits during the day.", priority: "Medium", riskLevel: "Medium", consequence: "Deters internal theft.", proof: "Surprise audit log.", location: "Checkout Area" },
-                    { id: "SGR-CM-04", description: "Securely transport excess cash from registers to the cash office ('cash lifts').", priority: "High", riskLevel: "High", consequence: "Robbery risk.", proof: "Cash lift log.", location: "Checkout/Cash Office" },
-                    { id: "SGR-CM-05", description: "Check functionality of UV lamps for counterfeit detection.", priority: "High", riskLevel: "Medium", consequence: "Accepting counterfeit notes.", proof: "Daily check log.", location: "Cash Office" },
-                    { id: "SGR-CM-06", description: "Ensure cashiers are following protocols for age-restricted sales (e.g., tobacco).", priority: "High", riskLevel: "High", consequence: "Legal violations, fines.", proof: "CCTV audit or manager observation.", location: "Checkout Area" },
-                    { id: "SGR-CM-07", description: "Review 'voids' and 'no sale' reports daily for suspicious activity.", priority: "High", riskLevel: "High", consequence: "Common methods for internal theft.", proof: "Daily POS exception report with manager's signature.", location: "Cash Office" },
-                    { id: "SGR-CM-08", description: "Keep checkout areas clean and organized.", priority: "Low", riskLevel: "Low", consequence: "Slows down transactions, poor impression.", proof: "Visual check.", location: "Checkout Area" },
-                    { id: "SGR-CM-09", description: "Restock bags, receipt paper, and other supplies at each register.", priority: "Medium", riskLevel: "Low", consequence: "Transaction delays.", proof: "Visual check at shift change.", location: "Checkout Area" },
-                    { id: "SGR-CM-10", description: "Securely store and log all coupons and vouchers collected.", priority: "Medium", riskLevel: "Medium", consequence: "Coupon fraud.", proof: "Coupon reconciliation log.", location: "Cash Office" }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'facility_management_blueprint',
-        title: "Facility Management Blueprint (Enterprise Edition)",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/ab64c7a0-4341-40a8-bb54-871074a22d10',
-        category: "Corporate & Tech",
-        description: "An enterprise-grade toolkit for COOs and Heads of Corporate Real Estate to manage large-scale facilities like IT campuses, business parks, and corporate offices.",
-        icon: "building-2",
-        badgeText: "Enterprise Grade",
-        bestseller: true,
-        whoIsItFor: ["COOs", "Heads of Corporate Real Estate", "Directors of Facilities", "VPs of Administration", "Data Center Managers"],
-        sampleItems: [
-            { text: "Implement a daily facility walkthrough for proactive issue identification.", icon: "user-check" },
-            { text: "Master vendor performance with preventive maintenance planning and SLA tracking.", icon: "wrench" },
-            { text: "Ensure a pristine and safe environment with housekeeping, hygiene, and pest control audits.", icon: "sparkles" },
-            { text: "Secure your premises with robust visitor management and access control protocols.", icon: "key-round" },
-            { text: "Optimize costs and sustainability through a utilities, energy, and water management system.", icon: "zap" },
-            { text: "Guarantee business continuity with critical systems (UPS, HVAC) and redundancy testing.", icon: "cog" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'corporate_legal_compliance_starter_kit',
-        title: "Corporate Legal & Compliance Starter Kit",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/721ef593-433a-4d89-b72b-7d4aac27363f',
-        category: "Corporate & Tech",
-        description: "An essential toolkit for founders and managers to embed basic legal and compliance checks into core business operations, reducing risk without needing a law degree.",
-        icon: "file-lock",
-        whoIsItFor: ["Founders & CEOs", "HR Managers", "Operations Heads", "Non-lawyer Managers", "Directors"],
-        sampleItems: [
-            { text: "Never miss a deadline with a master statutory filing calendar and automated reminders.", icon: "calendar-days" },
-            { text: "Ensure company policies are consistently enforced with a robust management and employee acknowledgement system.", icon: "user-check" },
-            { text: "Minimize legal risk with a structured contract lifecycle management process and clause checklist.", icon: "file-check" },
-            { text: "Proactively identify and fix compliance gaps with an internal audit and remediation (CAPA) workflow.", icon: "bug" },
-            { text: "Foster a safe and ethical workplace with a formal whistleblowing and investigation process.", icon: "siren" },
-            { text: "Improve corporate governance with a professional system for board meeting preparation and minute taking.", icon: "briefcase-business" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'enterprise_risk_cybersecurity_pack',
-        title: "Enterprise Risk & Cybersecurity Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/6418c3d7-2101-4433-a337-2d4314c4059a',
-        category: "Corporate & Tech",
-        description: "An advanced toolkit for CISOs and compliance officers to manage modern enterprise risks, from AI governance and data privacy to cloud security and incident response.",
-        icon: "shield-check",
-        whoIsItFor: ["CISOs", "CTOs", "Data Protection Officers (DPOs)", "Heads of Risk & Compliance", "IT Directors"],
-        sampleItems: [
-            { text: "Enforce the principle of least privilege with quarterly user access reviews.", icon: "key-round" },
-            { text: "Stay ahead of threats with a structured workflow for vulnerability scanning and patch management.", icon: "bug" },
-            { text: "Build resilience with proven playbooks for Business Continuity and Disaster Recovery (BC/DR) drills.", icon: "database-zap" },
-            { text: "Master crisis management with step-by-step incident response and digital forensics playbooks.", icon: "siren" },
-            { text: "Prevent costly data leaks by continuously monitoring and correcting your cloud security posture (CSPM).", icon: "cloud" },
-            { text: "De-risk your supply chain with a formal security assessment process for all third-party vendors.", icon: "handshake" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'healthcare_and_hospital_operations',
-        title: "Healthcare & Hospital Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
-        category: "Healthcare",
-        description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
-        icon: "hospital",
-        badgeText: "Clinical Grade",
-        badgeVariant: "destructive",
-        bestseller: true,
-        whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents"],
-        sampleItems: [
-            { text: "Prevent 'never events' with a WHO-aligned Surgical Safety Checklist.", icon: "stethoscope" },
-            { text: "Combat hospital-acquired infections (HAIs) with rigorous infection control and sterilization (CSSD) audits.", icon: "syringe" },
-            { text: "Eliminate medication errors using SOPs for high-alert medication dispensing and administration.", icon: "pill" },
-            { text: "Enhance patient safety with a robust protocol for patient identification at every touchpoint.", icon: "user-check" },
-            { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: "recycle" },
-            { text: "Prepare for any crisis with emergency code management and mock drill scenarios.", icon: "ambulance" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'school_operations_pack',
-        title: "School Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/e74bd8ac-23cb-4993-bdeb-bac9dbe9cd67',
-        category: "Education",
-        description: "A comprehensive safety and compliance toolkit for school principals and administrators to ensure a secure and well-managed learning environment.",
-        icon: "school",
-        whoIsItFor: ["School Principals", "Vice-Principals", "Heads of Administration", "School Trustees", "Operations Managers"],
-        sampleItems: [
-            { text: "Ensure student safety with robust bus transport, drop-off, and pickup SOPs.", icon: "bus" },
-            { text: "Prevent unauthorized access with a strict visitor management and gate security protocol.", icon: "key-round" },
-            { text: "Maintain a safe campus with daily playground, classroom, and facility safety audits.", icon: "shield" },
-            { text: "Prepare for emergencies with comprehensive fire safety drills and first-aid response plans.", icon: "siren" },
-            { text: "Protect students with a legally compliant staff background verification and hiring process.", icon: "user-check" },
-            { text: "Ensure a smooth and fair admissions process with a standardized enrolment checklist.", icon: "user-plus" },
-            { text: "Safeguard academic integrity with a secure examination and report card generation process.", icon: "graduation-cap" },
-        ],
-        checklists: []
-    },
-    {
-        id: 'university_college_ops',
-        title: "University & College Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/14108350-9e78-4fbc-87cf-a41b9e4ae207',
-        category: "Education",
-        description: "A comprehensive compliance and safety pack for managing large educational campuses, from hostels and labs to transport and events.",
-        icon: "graduation-cap",
-        whoIsItFor: ["Deans & Directors", "Registrars", "Heads of Administration", "Chief Wardens", "Campus Security Heads"],
-        sampleItems: [
-            { text: "Ensure student safety with hostel entry/exit protocols and room inspections.", icon: "home" },
-            { text: "Prevent accidents and misuse with rigorous lab safety, chemical handling, and equipment audits.", icon: "test-tube" },
-            { text: "Safeguard campus events with protocols for crowd management, permissions, and emergency response.", icon: "theater" },
-            { text: "Maintain a compliant campus with audits for fire safety, accessibility (Divyangjan), and infrastructure.", icon: "building-2" },
-            { text: "Mitigate foodborne illness risks in large messes with HACCP-aligned kitchen hygiene SOPs.", icon: "utensils" },
-            { text: "Protect against cyber threats with IT policies for network access, data privacy, and acceptable use.", icon: "shield" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'film_production_pack',
-        title: "Film & OTT Production Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a17569cb-01d1-4dda-b2e4-c4669fe90d94',
-        category: "Entertainment & Events",
-        description: "An end-to-end production toolkit for film and OTT producers to manage everything from legal clearances and location permits to on-set safety and post-production workflows.",
-        icon: "film",
-        whoIsItFor: ["Film Producers", "Line Producers", "Production Managers", "Heads of Production (OTT)"],
-        sampleItems: [
-            { text: "Secure your project legally with pre-production checklists for script clearance, life rights, and chain-of-title.", icon: "file-lock" },
-            { text: "Streamline location management with SOPs for scouting, permits, and on-location logistics.", icon: "map" },
-            { text: "Manage your cast and crew effectively with standardized contracts, call sheets, and travel coordination.", icon: "users" },
-            { text: "Ensure a safe set with protocols for stunt coordination, equipment safety, and incident reporting.", icon: "siren" },
-            { text: "Keep your budget on track with checklists for cost reporting, vendor payments, and cash flow management.", icon: "banknote" },
-            { text: "Create a seamless post-production workflow with SOPs for dailies, editing, VFX handovers, and final delivery.", icon: "scissors" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'ott_platform_pack',
-        title: "OTT Streaming Platform Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a5c556c2-51d9-4d6f-812f-359a795fd971',
-        category: "Entertainment & Events",
-        description: "A comprehensive toolkit for OTT platform operations, covering content ingestion, quality control, live streaming, and infrastructure management.",
-        icon: "monitor-play",
-        whoIsItFor: ["OTT Platform Owners", "Heads of Content Operations", "Chief Technology Officers (CTOs)", "SRE & DevOps Leads"],
-        sampleItems: [
-            { text: "Ensure a flawless user experience with a robust content ingestion, transcoding, and QC workflow.", icon: "video" },
-            { text: "Guarantee uptime during major events with a live streaming readiness and disaster recovery playbook.", icon: "zap" },
-            { text: "Protect your platform with cybersecurity SOPs for DRM, access control, and vulnerability management.", icon: "shield" },
-            { text: "Optimize performance with checklists for CDN configuration, cache management, and infrastructure monitoring.", icon: "cloud" },
-            { text: "Stay compliant with a structured process for content rating, subtitling, and legal clearances.", icon: "file-check" },
-            { text: "Improve user engagement with a data-driven process for personalization, recommendations, and analytics.", icon: "brain-circuit" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'sports_clubs_stadium_operations_pack',
-        title: "Sports Clubs & Stadium Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f290d8a5-d913-485e-9905-59b922a01490',
-        category: "Entertainment & Events",
-        description: "A comprehensive operational toolkit for sports clubs, gyms, and stadium managers to ensure safety, compliance, and an excellent member experience.",
-        icon: "trophy",
-        whoIsItFor: ["Sports Club GMs", "Stadium Managers", "Heads of Operations", "Gym Owners"],
-        sampleItems: [
-            { text: "Ensure venue safety with crowd management, ticketing, and emergency evacuation SOPs.", icon: "users" },
-            { text: "Maintain world-class turf and pitches with a structured ground maintenance schedule.", icon: "sprout" },
-            { text: "Prevent accidents and liability with daily inspections of gym and sports equipment.", icon: "dumbbell" },
-            { text: "Guarantee a safe environment with fire safety audits and medical emergency response plans.", icon: "siren" },
-            { text: "Protect members with robust hygiene protocols for pools, changing rooms, and F&B areas.", icon: "sparkles" },
-            { text: "Manage your team effectively with checklists for staff training, scheduling, and performance.", icon: "clipboard-list" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'cinema_operations_pack',
-        title: "Cinema & Multiplex Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0acf829c-e492-4f66-ae74-0231bfe0bc82',
-        category: "Entertainment & Events",
-        description: "A complete operational pack for cinema managers to ensure a safe, clean, and high-quality movie-going experience.",
-        icon: "popcorn",
-        whoIsItFor: ["Cinema Owners", "Multiplex Managers", "Heads of Operations", "F&B Managers (Cinema)"],
-        sampleItems: [
-            { text: "Guarantee a perfect show with pre-screening checklists for projection, sound, and lighting.", icon: "projector" },
-            { text: "Prevent fire tragedies with rigorous audits for emergency exits, fire alarms, and staff evacuation training.", icon: "siren" },
-            { text: "Serve safe and quality food with F&B concession stand hygiene and inventory management SOPs.", icon: "utensils" },
-            { text: "Improve profitability with checklists for ticketing, cash handling, and daily sales reconciliation.", icon: "ticket" },
-            { text: "Enhance the guest experience with protocols for auditorium cleaning, seat maintenance, and restroom hygiene.", icon: "sparkles" },
-            { text: "Manage your facility effectively with SOPs for housekeeping, security, and preventive maintenance.", icon: "building" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'theme_park_ops_pack',
-        title: "Theme Park Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f2873138-038c-4592-8025-5463f87b328a',
-        category: "Entertainment & Events",
-        description: "A safety-critical toolkit for theme park and amusement park operators, covering ride safety, crowd management, and emergency response.",
-        icon: "ferris-wheel",
-        whoIsItFor: ["Theme Park GMs", "Heads of Operations", "Ride Safety Managers", "Security Directors"],
-        sampleItems: [
-            { text: "Prevent ride-related accidents with daily, weekly, and monthly ride inspection checklists based on manufacturer guidelines.", icon: "wrench" },
-            { text: "Ensure guest safety with comprehensive crowd management, queuing, and access control SOPs.", icon: "users" },
-            { text: "Be prepared for any crisis with emergency response plans for medical incidents, power failures, and ride stoppages.", icon: "siren" },
-            { text: "Protect children with a robust Lost Child Protocol and designated safe zones.", icon: "helping-hand" },
-            { text: "Maintain a safe and beautiful park with checklists for park-wide landscaping, housekeeping, and infrastructure safety.", icon: "recycle" },
-            { text: "Guarantee food safety across all park outlets with FSSAI/HACCP-aligned hygiene and food handling checklists.", icon: "utensils" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'logistics_warehouse_pack',
-        title: "Logistics & Warehouse Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f48201fb-a708-43ac-a508-7381c32f55c5',
-        category: "Industrial & Transport",
-        description: "A complete toolkit for warehouse managers and logistics heads to optimize inventory, ensure safety, and improve supply chain resilience.",
-        icon: "warehouse",
-        whoIsItFor: ["Warehouse Managers", "Logistics Heads", "Supply Chain Directors", "3PL Providers"],
-        sampleItems: [
-            { text: "Streamline your receiving process with checklists for inbound quality control and documentation.", icon: "clipboard-check" },
-            { text: "Maximize space and efficiency with SOPs for stock-keeping, bin location management, and putaway.", icon: "package" },
-            { text: "Ensure order accuracy and speed with a structured picking, packing, and dispatch process.", icon: "truck" },
-            { text: "Maintain a safe workplace with checklists for Material Handling Equipment (MHE) safety and operator training.", icon: "hard-hat" },
-            { text: "Protect your inventory with robust protocols for security, access control, and cycle counting.", icon: "shield" },
-            { text: "Build a resilient supply chain with SOPs for vendor management and contingency planning.", icon: "link" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'manufacturing_operations_ehs_pack',
-        title: "Manufacturing Operations & EHS Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/62ae53f1-6966-4746-bf80-69ffb4b0d7dc',
-        category: "Industrial & Transport",
-        description: "A comprehensive EHS and operational toolkit for plant heads and safety officers to ensure a safe, compliant, and efficient manufacturing environment.",
-        icon: "factory",
-        badgeText: "Safety Critical",
-        badgeVariant: "destructive",
-        bestseller: true,
-        whoIsItFor: ["Plant Heads", "EHS Officers", "Production Managers", "Maintenance Heads", "Quality Control Managers"],
-        sampleItems: [
-            { text: "Prevent fatal accidents with a legally compliant Lock-Out Tag-Out (LOTO) procedure for machine maintenance.", icon: "lock" },
-            { text: "Ensure worker safety with a permit-to-work system for high-risk jobs like hot work and confined space entry.", icon: "file-check" },
-            { text: "Boost productivity by tracking Overall Equipment Effectiveness (OEE) to minimize downtime.", icon: "trending-up" },
-            { text: "Reduce defects and waste with an In-Process Quality Control (IPQC) system.", icon: "clipboard-check" },
-            { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: "siren" },
-            { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: "leaf" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'pharmacy_ops_pack',
-        title: "Pharmacy Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0ef5fea7-71de-457c-984b-5ba1787351ce',
-        category: "Healthcare",
-        description: "A compliance and safety toolkit for pharmacies to manage inventory, prevent dispensing errors, and adhere to regulatory standards.",
-        icon: "pill",
-        whoIsItFor: ["Pharmacists", "Pharmacy Owners", "Hospital Pharmacy Managers", "Retail Pharmacy Chains"],
-        sampleItems: [
-            { text: "Prevent dispensing errors with a robust prescription verification and double-check system.", icon: "file-check" },
-            { text: "Ensure drug efficacy and safety with stringent cold chain management and temperature logging for vaccines and biologics.", icon: "thermometer" },
-            { text: "Manage narcotics and high-risk drugs with a legally compliant inventory, storage, and dispensing log.", icon: "lock" },
-            { text: "Maintain regulatory compliance with SOPs for drug procurement, batch tracking, and recall management.", icon: "barcode" },
-            { text: "Improve patient counseling with checklists for providing clear instructions on medication usage and side effects.", icon: "user-check" },
-            { text: "Run a clean and professional pharmacy with daily checklists for hygiene, organization, and stock arrangement.", icon: "sparkles" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'bakery_confectionery_pack',
-        title: "Bakery & Confectionery Operations Pack",
-        priceINR: 5999,
-        priceUSD: 79,
-        competitorPriceUSD: 599,
-        paymentId: 'pl_RaWEBHhFLQENxC',
-        lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
-        category: "Food & Beverage",
-        description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
-        icon: "cake-slice",
-        badgeText: "Special Offer",
-        badgeVariant: "accent",
-        whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
-        sampleItems: [
-            { text: "Achieve perfect results every time with recipe scaling and dough management checklists.", icon: "clipboard-list" },
-            { text: "Ensure food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: "shield-check" },
-            { text: "Maintain equipment precision with SOPs for oven calibration and mixer maintenance.", icon: "wrench" },
-            { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: "recycle" },
-            { text: "Guarantee compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: "file-check" },
-            { text: "Streamline your custom order process from client briefing to final delivery.", icon: "package" }
-        ],
-        checklists: []
-    },
-    {
-        id: 'animal_shelter_pack',
-        title: "Animal Shelter Operations Pack",
-        priceINR: 0,
-        priceUSD: 0,
-        paymentId: '', // No payment ID for free packs
-        lemonSqueezyUrl: '', // No payment URL for free packs
-        listId: 7,
-        category: "Social Cause",
-        description: "A comprehensive toolkit for animal shelters and NGOs to ensure animal welfare, disease prevention, and operational efficiency.",
-        icon: "paw-print",
-        badgeText: "Free Download",
-        badgeVariant: "accent",
-        whoIsItFor: ["Animal Shelter Managers", "NGO Founders", "Veterinarians", "Volunteer Coordinators"],
-        sampleItems: [
-            { text: "Prevent disease outbreaks with rigorous cleaning, disinfection, and quarantine protocols.", icon: "sparkles" },
-            { text: "Ensure every animal's health with checklists for daily feeding, medication administration, and health monitoring.", icon: "stethoscope" },
-            { text: "Manage your population responsibly with SOPs for intake, vaccination, and spay/neuter programs.", icon: "syringe" },
-            { text: "Create a safe environment for animals and people with protocols for temperament testing and safe handling.", icon: "users" },
-            { text: "Increase adoptions with a structured process for counseling, home checks, and post-adoption follow-up.", icon: "home" },
-            { text: "Streamline your operations with checklists for volunteer management, inventory, and fundraising events.", icon: "clipboard-list" }
-        ],
-        checklists: [
-             {
-                title: "Daily Cleaning & Disinfection",
-                department: "Operations",
-                frequency: "Daily",
-                role: "Shelter Staff",
-                summary: "Ensures a sanitary environment to prevent disease transmission among animals.",
-                icon: "spray-can",
-                tasks: [
-                    { id: "AC-DC-01", description: "Remove all feces, urine, and soiled bedding from every enclosure.", priority: "High", riskLevel: "High", consequence: "Disease outbreak (Parvo, etc.), unpleasant odors, regulatory action.", proof: "Supervisor sign-off on cleaning log.", location: "All Enclosures" },
-                    { id: "AC-DC-02", description: "Scrub all food and water bowls with veterinary-grade disinfectant.", priority: "High", riskLevel: "Medium", consequence: "Spread of oral infections, gastrointestinal illness.", proof: "Visual inspection by supervisor.", location: "Kitchen/Cleaning Area" },
-                    { id: "AC-DC-03", description: "Disinfect all enclosure surfaces (floors, walls, gates) with approved sanitizer.", priority: "High", riskLevel: "High", consequence: "High risk of communicable disease spread.", proof: "Completed cleaning checklist for each zone.", location: "All Enclosures" },
-                    { id: "AC-DC-04", description: "Clean and disinfect all common play areas and meet-and-greet rooms.", priority: "Medium", riskLevel: "Medium", consequence: "Disease transmission between animal groups.", proof: "Logbook entry for common areas.", location: "Play Areas" },
-                    { id: "AC-DC-05", description: "Empty and disinfect all waste bins.", priority: "Low", riskLevel: "Low", consequence: "Pest attraction, odor issues.", proof: "Visual confirmation.", location: "Waste Disposal Area" },
-                    { id: "AC-DC-06", "description": "Launder all used bedding and towels with a sanitizing cycle.", "priority": "High", "riskLevel": "Medium", "consequence": "Spread of mites, ringworm, and other contagions.", "proof": "Laundry operations log.", "location": "Laundry Area" },
-                    { id: "AC-DC-07", "description": "Ensure proper ventilation in all animal housing areas.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Buildup of airborne pathogens, respiratory illnesses.", "proof": "Daily check of ventilation systems.", "location": "All Enclosures" },
-                    { id: "AC-DC-08", "description": "Maintain separate cleaning equipment for quarantine/isolation areas.", "priority": "High", "riskLevel": "High", "consequence": "Cross-contamination from sick animals to general population.", "proof": "Color-coded equipment and storage.", "location": "Quarantine/Isolation" },
-                    { id: "AC-DC-09", "description": "Dispose of biomedical waste (needles, etc.) in designated sharps containers.", "priority": "High", "riskLevel": "High", "consequence": "Injury to staff, improper waste disposal fines.", "proof": "Sharps container check log.", "location": "Medical Room" },
-                    { id: "AC-DC-10", "description": "Check and refill all hand sanitizer stations and handwashing sinks.", "priority": "High", "riskLevel": "Low", "consequence": "Poor biosecurity, spread of disease among staff/volunteers.", "proof": "Daily facility walkthrough log.", "location": "All Areas" }
-                ]
-            },
-            {
-                title: "Animal Intake & Quarantine Protocol",
-                department: "Medical",
-                frequency: "Per new animal arrival",
-                role: "Intake Coordinator / Vet Tech",
-                summary: "Safely process new animals, assess their health, and prevent the introduction of diseases to the general population.",
-                icon: "shield-check",
-                tasks: [
-                    { id: "AI-IQ-01", description: "Photograph and log new animal's details (species, breed, age, color, markings).", priority: "High", riskLevel: "Low", consequence: "Inability to track animal, lost/found matching failure.", proof: "Entry in shelter management software with photo.", location: "Intake Room" },
-                    { id: "AI-IQ-02", description: "Scan for microchip and check against national databases.", priority: "High", riskLevel: "Low", consequence: "Failure to reunite a lost pet with its owner.", proof: "Microchip scan log.", location: "Intake Room" },
-                    { id: "AI-IQ-03", description: "Perform initial health screening (check for wounds, parasites, signs of illness).", priority: "High", riskLevel: "High", consequence: "Undiagnosed injury/illness could worsen or spread.", proof: "Completed intake health assessment form.", location: "Intake Room" },
-                    { id: "AI-IQ-04", description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: "High", riskLevel: "High", consequence: "Vulnerability to preventable diseases like distemper or rabies.", proof: "Medical record updated with administered treatments.", location: "Intake Room" },
-                    { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter software.", location: "Quarantine Zone" },
-                    { id: "AI-IQ-06", "description": "Perform a basic temperament test to assess aggression, fear, and sociability.", "priority": "High", "riskLevel": "Medium", "consequence": "Safety risk to staff and other animals.", "proof": "Temperament test score sheet.", "location": "Intake/Assessment Room" },
-                    { id: "AI-IQ-07", "description": "Create a unique identification collar and record for the animal.", "priority": "High", "riskLevel": "Low", "consequence": "Animal mix-ups.", "proof": "ID collar and record in software.", "location": "Intake Room" },
-                    { id: "AI-IQ-08", "description": "Provide food, clean water, and comfortable bedding upon arrival.", "priority": "High", "riskLevel": "Low", "consequence": "Animal distress and dehydration.", "proof": "Intake checklist sign-off.", "location": "Quarantine Enclosure" },
-                    { id: "AI-IQ-09", "description": "Schedule a full veterinary examination within 24 hours of intake.", "priority": "High", "riskLevel": "High", "consequence": "Delayed treatment of serious conditions.", "proof": "Vet schedule/appointment log.", "location": "Intake Room" },
-                    { id: "AI-IQ-10", "description": "Log all information from the finder/previous owner, if available.", "priority": "Medium", "riskLevel": "Low", "consequence": "Loss of valuable behavioral or medical history.", "proof": "Intake form with owner surrender section.", "location": "Intake Room" }
-                ]
-            },
-            {
-                title: "Daily Feeding & Health Monitoring",
-                department: "Animal Care",
-                frequency: "Daily (Twice)",
-                role: "Animal Care Attendant",
-                summary: "Ensures all animals receive proper nutrition and are monitored for early signs of illness or distress.",
-                icon: "heart-pulse",
-                tasks: [
-                    { id: "AH-DF-01", description: "Feed each animal the correct type and amount of food according to their specific dietary plan.", priority: "High", riskLevel: "Medium", consequence: "Malnutrition, obesity, allergic reactions, medical complications.", proof: "Feeding chart checked off for each animal.", location: "All Enclosures" },
-                    { id: "AH-DF-02", description: "Provide fresh, clean water to every animal.", priority: "High", riskLevel: "Medium", consequence: "Dehydration, which can quickly become a medical emergency.", proof: "Visual inspection during feeding rounds.", location: "All Enclosures" },
-                    { id: "AH-DF-03", description: "Observe each animal during feeding for changes in appetite, behavior, or stool quality.", priority: "High", riskLevel: "High", consequence: "Missed early signs of illness, leading to delayed treatment.", proof: "Daily observation log completed for each animal.", location: "All Enclosures" },
-                    { id: "AH-DF-04", description: "Report any abnormalities (lethargy, vomiting, coughing, etc.) to the vet team immediately.", priority: "High", riskLevel: "High", consequence: "A sick animal's condition could deteriorate rapidly without intervention.", proof: "Entry in medical communication log or direct report.", location: "All Enclosures" },
-                    { id: "AH-DF-05", "description": "Ensure animals with special feeding needs (e.g., puppies, seniors) are fed separately.", "priority": "High", "riskLevel": "Medium", "consequence": "Competition for food, incorrect diet consumption.", "proof": "Feeding log.", "location": "Special Needs Area" },
-                    { id: "AH-DF-06", "description": "Check for and clean up any uneaten food after a set period to prevent pests.", "priority": "Medium", "riskLevel": "Low", "consequence": "Pest infestation.", "proof": "Visual check.", "location": "All Enclosures" },
-                    { id: "AH-DF-07", "description": "Update the whiteboards or kennel cards with any relevant observations for the next shift.", "priority": "High", "riskLevel": "Low", "consequence": "Loss of critical information between shifts.", "proof": "Photo of updated kennel card.", "location": "Enclosure fronts" },
-                    { id: "AH-DF-08", "description": "Monitor animals in quarantine/isolation areas last to prevent cross-contamination.", "priority": "High", "riskLevel": "High", "consequence": "Spreading disease to the general population.", "proof": "Workflow observation.", "location": "Quarantine/Isolation" },
-                    { id: "AH-DF-09", "description": "Ensure enrichment items (e.g., toys) are clean and safe.", "priority": "Low", "riskLevel": "Low", "consequence": "Boredom, stress, potential for swallowing foreign objects.", "proof": "Visual check.", "location": "All Enclosures" },
-                    { id: "AH-DF-10", "description": "Top up water bowls during afternoon checks.", "priority": "High", "riskLevel": "Medium", "consequence": "Dehydration.", "proof": "Visual check.", "location": "All Enclosures" }
-                ]
-            },
-                {
-                title: "Medication Administration",
-                department: "Medical",
-                frequency: "As per prescription",
-                role: "Vet Tech / Trained Staff",
-                summary: "Ensures animals receive their prescribed medications correctly and on time.",
-                icon: "pill",
-                tasks: [
-                    { id: "AM-MA-01", description: "Verify patient identity, medication, dosage, and route before administration (The '5 Rights').", priority: "High", riskLevel: "High", consequence: "Overdose, underdose, or wrong medication can cause harm or death.", proof: "Medication Administration Record (MAR) initialed after each dose.", location: "Treatment Area / Enclosures" },
-                    { id: "AM-MA-02", description: "Document the time and date of every medication given in the animal's medical record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate medical history, risk of double-dosing.", proof: "Signed MAR sheet.", location: "Medical Records" },
-                    { id: "AM-MA-03", description: "Observe animal post-administration for any adverse reactions.", priority: "Medium", riskLevel: "High", consequence: "Untreated allergic reaction or side effect could be fatal.", proof: "Note in daily observation log.", location: "Enclosures" },
-                    { id: "AM-MA-04", description: "Securely store all medications, especially controlled substances, in a locked cabinet.", priority: "High", riskLevel: "High", consequence: "Theft, misuse, accidental ingestion, regulatory violations.", proof: "Weekly controlled substance inventory log.", location: "Pharmacy/Storage" },
-                    { id: "AM-MA-05", "description": "Never leave medication unattended or in an animal's food bowl if consumption is not observed.", "priority": "High", "riskLevel": "High", "consequence": "Animal may not receive medication; other animals might eat it.", "proof": "Direct observation of administration.", "location": "Enclosures" },
-                    { id: "AM-MA-06", "description": "Dispose of used needles and syringes in a designated sharps container.", "priority": "High", "riskLevel": "High", "consequence": "Needlestick injuries to staff.", "proof": "Visual check of sharps container.", "location": "Medical Room" },
-                    { id: "AM-MA-07", "description": "Check medication inventory and report any drugs running low.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Running out of essential medication.", "proof": "Inventory sheet.", "location": "Pharmacy/Storage" },
-                    { id: "AM-MA-08", "description": "Use a pill-giver or disguise medication in a treat as approved by the vet.", "priority": "Low", "riskLevel": "Low", "consequence": "Animal refuses to take medication.", "proof": "N/A", "location": "Enclosures" },
-                    { id: "AM-MA-09", "description": "Verify with a second trained staff member for all controlled drug administrations.", "priority": "High", "riskLevel": "High", "consequence": "Dosing errors or drug diversion.", "proof": "Dual signature on MAR.", "location": "Treatment Area" },
-                    { id: "AM-MA-10", "description": "Clean any spills of liquid medication immediately.", "priority": "Medium", "riskLevel": "Low", "consequence": "Incorrect dosing, skin absorption by staff.", "proof": "Visual check.", "location": "Treatment Area" }
-                ]
-            },
-            {
-                title: "Adoption Counseling & Process",
-                department: "Adoptions",
-                frequency: "Per adoption",
-                role: "Adoption Counselor",
-                summary: "Ensures responsible and sustainable adoptions by matching the right animal with the right family.",
-                icon: "home",
-                tasks: [
-                    { id: "AP-AC-01", description: "Conduct an adoption interview to understand the potential adopter's lifestyle, home environment, and expectations.", priority: "High", riskLevel: "Medium", consequence: "Mismatched adoption leading to high return rates.", proof: "Completed adoption application/interview form.", location: "Adoption Center" },
-                    { id: "AP-AC-02", description: "Provide full disclosure of the animal's history, medical needs, and known behavioral traits.", priority: "High", riskLevel: "Medium", consequence: "Adopter feels misled; animal may be returned due to unexpected issues.", proof: "Counselor's notes in adoption file.", location: "Adoption Center" },
-                    { id: "AP-AC-03", description: "Facilitate a supervised meet-and-greet between the animal and all family members (including other pets).", priority: "High", riskLevel: "Medium", consequence: "Conflicts between pets or family members after adoption.", proof: "Check-off on adoption process form.", location: "Meet-and-Greet Area" },
-                    { id: "AP-AC-04", description: "Verify adopter's identity and address (e.g., via ID and utility bill).", priority: "Medium", riskLevel: "Low", consequence: "Inability to follow up post-adoption; potential for fraudulent adoption.", proof: "Copies of ID/address proof in adoption file.", location: "Adoption Center" },
-                    { id: "AP-AC-05", description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: "High", riskLevel: "Low", consequence: "Legal ambiguity over ownership.", proof: "Signed adoption contract and microchip form.", location: "Adoption Center" },
-                    { id: "AP-AC-06", "description": "Provide post-adoption support information (e.g., vet recommendations, trainer contacts).", "priority": "Medium", "riskLevel": "Low", "consequence": "Adopter feels abandoned, small issues become big problems.", "proof": "Copy of adoption packet.", "location": "Adoption Center" },
-                    { id: "AP-AC-07", "description": "Explain the shelter's return policy.", "priority": "High", "riskLevel": "Low", "consequence": "Misunderstanding about what to do if the adoption doesn't work out.", "proof": "Signed adoption contract.", "location": "Adoption Center" },
-                    { id: "AP-AC-08", "description": "Ensure adoption fees are collected and processed correctly.", "priority": "High", "riskLevel": "Low", "consequence": "Financial loss.", "proof": "Payment receipt.", "location": "Adoption Center" },
-                    { id: "AP-AC-09", "description": "Schedule a post-adoption follow-up call or email (e.g., at 3 days, 3 weeks).", "priority": "Medium", "riskLevel": "Low", "consequence": "Missed opportunity to solve early problems.", "proof": "Entry in shelter management software.", "location": "Adoption Center" },
-                    { id: "AP-AC-10", "description": "Update the animal's record to 'Adopted' and move them out of the 'Available' list.", "priority": "High", "riskLevel": "Low", "consequence": "Animal still shows as available, causing confusion.", "proof": "Shelter management software log.", "location": "Adoption Center" }
-                ]
-            },
-            {
-                title: "Volunteer Management",
-                department: "Administration",
-                frequency: "Ongoing",
-                role: "Volunteer Coordinator",
-                summary: "Effectively onboard, train, and manage volunteers to support shelter operations.",
-                icon: "users",
-                tasks: [
-                    { id: "AV-VM-01", description: "Conduct orientation for all new volunteers covering shelter policies, safety procedures, and animal handling basics.", priority: "High", riskLevel: "Medium", consequence: "Volunteers may unknowingly violate safety rules or handle animals incorrectly.", proof: "Signed orientation completion form.", location: "Training Room" },
-                    { id: "AV-VM-02", description: "Maintain an up-to-date volunteer schedule to ensure all shifts are covered.", priority: "Medium", riskLevel: "Low", consequence: "Staffing shortages leading to compromised animal care.", proof: "Published weekly schedule.", location: "Office" },
-                    { id: "AV-VM-03", description: "Provide clear task lists for different volunteer roles (e.g., dog walking, cat socialization, cleaning).", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of volunteer time, confusion about duties.", proof: "Posted task lists in relevant areas.", location: "All Areas" },
-                    { id: "AV-VM-04", description: "Ensure all volunteers sign in and out for every shift.", priority: "Low", riskLevel: "Low", consequence: "Inaccurate tracking of volunteer hours, security risk.", proof: "Daily sign-in/out sheet.", location: "Reception" },
-                    { id: "AV-VM-05", "description": "Provide specific training for handling fearful or reactive animals.", "priority": "High", "riskLevel": "High", "consequence": "Bite risk to volunteers, increased stress for animals.", "proof": "Advanced handling training log.", "location": "Training Area" },
-                    { id: "AV-VM-06", "description": "Regularly communicate shelter news, needs, and successes to volunteers.", "priority": "Low", "riskLevel": "Low", "consequence": "Volunteers feel unappreciated and disconnected.", "proof": "Copy of volunteer newsletter or email.", "location": "Office" },
-                    { id: "AV-VM-07", "description": "Ensure all volunteers working with animals have signed a liability waiver.", "priority": "High", "riskLevel": "Medium", "consequence": "Legal risk to the shelter in case of injury.", "proof": "File of signed waivers.", "location": "Office" },
-                    { id: "AV-VM-08", "description": "Recognize outstanding volunteers (e.g., 'Volunteer of the Month').", "priority": "Low", "riskLevel": "Low", "consequence": "Poor volunteer retention.", "proof": "Photo or announcement.", "location": "Common Area/Social Media" },
-                    { id: "AV-VM-09", "description": "Supervise volunteers and provide constructive feedback.", "priority": "Medium", "riskLevel": "Low", "consequence": "Tasks performed incorrectly.", "proof": "Supervisor observation notes.", "location": "All Areas" },
-                    { id: "AV-VM-10", "description": "Gather feedback from volunteers on their experience and suggestions.", "priority": "Low", "riskLevel": "Low", "consequence": "Missed opportunities for process improvement.", "proof": "Volunteer suggestion box or survey results.", "location": "Office" }
-                ]
-            }
-        ]
-    }
-];
+            title: "Medication Administration",
+            department: "Medical",
+            frequency: "As per prescription",
+            role: "Vet Tech / Trained Staff",
+            summary: "Ensures animals receive their prescribed medications correctly and on time.",
+            icon: "pill",
+            tasks: [
+                { id: "AM-MA-01", description: "Verify patient identity, medication, dosage, and route before administration (The '5 Rights').", priority: "High", riskLevel: "High", consequence: "Overdose, underdose, or wrong medication can cause harm or death.", proof: "Medication Administration Record (MAR) initialed after each dose.", location: "Treatment Area / Enclosures" },
+                { id: "AM-MA-02", description: "Document the time and date of every medication given in the animal's medical record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate medical history, risk of double-dosing.", proof: "Signed MAR sheet.", location: "Medical Records" },
+                { id: "AM-MA-03", description: "Observe animal post-administration for any adverse reactions.", priority: "Medium", riskLevel: "High", consequence: "Untreated allergic reaction or side effect could be fatal.", proof: "Note in daily observation log.", location: "Enclosures" },
+                { id: "AM-MA-04", description: "Securely store all medications, especially controlled substances, in a locked cabinet.", priority: "High", riskLevel: "High", consequence: "Theft, misuse, accidental ingestion, regulatory violations.", proof: "Weekly controlled substance inventory log.", location: "Pharmacy/Storage" },
+                { id: "AM-MA-05", "description": "Never leave medication unattended or in an animal's food bowl if consumption is not observed.", "priority": "High", "riskLevel": "High", "consequence": "Animal may not receive medication; other animals might eat it.", "proof": "Direct observation of administration.", "location": "Enclosures" },
+                { id: "AM-MA-06", "description": "Dispose of used needles and syringes in a designated sharps container.", "priority": "High", "riskLevel": "High", "consequence": "Needlestick injuries to staff.", "proof": "Visual check of sharps container.", "location": "Medical Room" },
+                { id: "AM-MA-07", "description": "Check medication inventory and report any drugs running low.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Running out of essential medication.", "proof": "Inventory sheet.", "location": "Pharmacy/Storage" },
+                { id: "AM-MA-08", "description": "Use a pill-giver or disguise medication in a treat as approved by the vet.", "priority": "Low", "riskLevel": "Low", "consequence": "Animal refuses to take medication.", "proof": "N/A", "location": "Enclosures" },
+                { id: "AM-MA-09", "description": "Verify with a second trained staff member for all controlled drug administrations.", "priority": "High", "riskLevel": "High", "consequence": "Dosing errors or drug diversion.", "proof": "Dual signature on MAR.", "location": "Treatment Area" },
+                { id: "AM-MA-10", "description": "Clean any spills of liquid medication immediately.", "priority": "Medium", "riskLevel": "Low", "consequence": "Incorrect dosing, skin absorption by staff.", "proof": "Visual check.", "location": "Treatment Area" }
+            ]
+        },
+        {
+            title: "Adoption Counseling & Process",
+            department: "Adoptions",
+            frequency: "Per adoption",
+            role: "Adoption Counselor",
+            summary: "Ensures responsible and sustainable adoptions by matching the right animal with the right family.",
+            icon: "home",
+            tasks: [
+                { id: "AP-AC-01", description: "Conduct an adoption interview to understand the potential adopter's lifestyle, home environment, and expectations.", priority: "High", riskLevel: "Medium", consequence: "Mismatched adoption leading to high return rates.", proof: "Completed adoption application/interview form.", location: "Adoption Center" },
+                { id: "AP-AC-02", description: "Provide full disclosure of the animal's history, medical needs, and known behavioral traits.", priority: "High", riskLevel: "Medium", consequence: "Adopter feels misled; animal may be returned due to unexpected issues.", proof: "Counselor's notes in adoption file.", location: "Adoption Center" },
+                { id: "AP-AC-03", description: "Facilitate a supervised meet-and-greet between the animal and all family members (including other pets).", priority: "High", riskLevel: "Medium", consequence: "Conflicts between pets or family members after adoption.", proof: "Check-off on adoption process form.", location: "Meet-and-Greet Area" },
+                { id: "AP-AC-04", description: "Verify adopter's identity and address (e.g., via ID and utility bill).", priority: "Medium", riskLevel: "Low", consequence: "Inability to follow up post-adoption; potential for fraudulent adoption.", proof: "Copies of ID/address proof in adoption file.", location: "Adoption Center" },
+                { id: "AP-AC-05", description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: "High", riskLevel: "Low", consequence: "Legal ambiguity over ownership.", proof: "Signed adoption contract and microchip form.", location: "Adoption Center" },
+                { id: "AP-AC-06", "description": "Provide post-adoption support information (e.g., vet recommendations, trainer contacts).", "priority": "Medium", "riskLevel": "Low", "consequence": "Adopter feels abandoned, small issues become big problems.", "proof": "Copy of adoption packet.", "location": "Adoption Center" },
+                { id: "AP-AC-07", "description": "Explain the shelter's return policy.", "priority": "High", "riskLevel": "Low", "consequence": "Misunderstanding about what to do if the adoption doesn't work out.", "proof": "Signed adoption contract.", "location": "Adoption Center" },
+                { id: "AP-AC-08", "description": "Ensure adoption fees are collected and processed correctly.", "priority": "High", "riskLevel": "Low", "consequence": "Financial loss.", "proof": "Payment receipt.", "location": "Adoption Center" },
+                { id: "AP-AC-09", "description": "Schedule a post-adoption follow-up call or email (e.g., at 3 days, 3 weeks).", "priority": "Medium", "riskLevel": "Low", "consequence": "Missed opportunity to solve early problems.", "proof": "Entry in shelter management software.", "location": "Adoption Center" },
+                { id: "AP-AC-10", "description": "Update the animal's record to 'Adopted' and move them out of the 'Available' list.", "priority": "High", "riskLevel": "Low", "consequence": "Animal still shows as available, causing confusion.", "proof": "Shelter management software log.", "location": "Adoption Center" }
+            ]
+        },
+        {
+            title: "Volunteer Management",
+            department: "Administration",
+            frequency: "Ongoing",
+            role: "Volunteer Coordinator",
+            summary: "Effectively onboard, train, and manage volunteers to support shelter operations.",
+            icon: "users",
+            tasks: [
+                { id: "AV-VM-01", description: "Conduct orientation for all new volunteers covering shelter policies, safety procedures, and animal handling basics.", priority: "High", riskLevel: "Medium", consequence: "Volunteers may unknowingly violate safety rules or handle animals incorrectly.", proof: "Signed orientation completion form.", location: "Training Room" },
+                { id: "AV-VM-02", description: "Maintain an up-to-date volunteer schedule to ensure all shifts are covered.", priority: "Medium", riskLevel: "Low", consequence: "Staffing shortages leading to compromised animal care.", proof: "Published weekly schedule.", location: "Office" },
+                { id: "AV-VM-03", description: "Provide clear task lists for different volunteer roles (e.g., dog walking, cat socialization, cleaning).", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of volunteer time, confusion about duties.", proof: "Posted task lists in relevant areas.", location: "All Areas" },
+                { id: "AV-VM-04", description: "Ensure all volunteers sign in and out for every shift.", priority: "Low", riskLevel: "Low", consequence: "Inaccurate tracking of volunteer hours, security risk.", proof: "Daily sign-in/out sheet.", location: "Reception" },
+                { id: "AV-VM-05", "description": "Provide specific training for handling fearful or reactive animals.", "priority": "High", "riskLevel": "High", "consequence": "Bite risk to volunteers, increased stress for animals.", "proof": "Advanced handling training log.", "location": "Training Area" },
+                { id: "AV-VM-06", "description": "Regularly communicate shelter news, needs, and successes to volunteers.", "priority": "Low", "riskLevel": "Low", "consequence": "Volunteers feel unappreciated and disconnected.", "proof": "Copy of volunteer newsletter or email.", "location": "Office" },
+                { id: "AV-VM-07", "description": "Ensure all volunteers working with animals have signed a liability waiver.", "priority": "High", "riskLevel": "Medium", "consequence": "Legal risk to the shelter in case of injury.", "proof": "File of signed waivers.", "location": "Office" },
+                { id: "AV-VM-08", "description": "Recognize outstanding volunteers (e.g., 'Volunteer of the Month').", "priority": "Low", "riskLevel": "Low", "consequence": "Poor volunteer retention.", "proof": "Photo or announcement.", "location": "Common Area/Social Media" },
+                { id: "AV-VM-09", "description": "Supervise volunteers and provide constructive feedback.", "priority": "Medium", "riskLevel": "Low", "consequence": "Tasks performed incorrectly.", "proof": "Supervisor observation notes.", "location": "All Areas" },
+                { id: "AV-VM-10", "description": "Gather feedback from volunteers on their experience and suggestions.", "priority": "Low", "riskLevel": "Low", "consequence": "Missed opportunities for process improvement.", "proof": "Volunteer suggestion box or survey results.", "location": "Office" }
+            ]
+        }
+    ]
+};
 
 const allPacks: PremiumPack[] = [
     franchise_operations_pack,
     hotels_and_resorts,
-    ...otherPacks,
+    restaurants,
+    fashion_and_apparel_retail,
+    jewelry_and_luxury_retail,
+    electronics_showroom_pack,
+    supermarket_grocery_retail_pack,
+    facility_management_blueprint,
+    corporate_legal_compliance_starter_kit,
+    enterprise_risk_cybersecurity_pack,
+    healthcare_and_hospital_operations,
+    school_operations_pack,
+    university_college_ops,
+    film_production_pack,
+    ott_platform_pack,
+    sports_clubs_stadium_operations_pack,
+    cinema_operations_pack,
+    theme_park_ops_pack,
+    logistics_warehouse_pack,
+    manufacturing_operations_ehs_pack,
+    pharmacy_ops_pack,
+    bakery_confectionery_pack,
+    animal_shelter_pack,
 ];
 
 const master_access_pack: PremiumPack = {
@@ -1690,14 +1728,13 @@ const master_access_pack: PremiumPack = {
     }),
 };
 
-
 export const premiumPacks: PremiumPack[] = [
     ...allPacks,
     master_access_pack,
 ].map(pack => {
     // If a pack (other than master access) is still empty, populate it with some placeholder data
     // to avoid breaking the UI. This should be replaced with real data.
-    if (pack.checklists.length === 0 && pack.id !== 'master_access' && pack.id !== 'animal_shelter_pack' && pack.id !== 'franchise_operations_pack' && pack.id !== 'hotels_and_resorts' && pack.id !== 'restaurants' && pack.id !== 'fashion_and_apparel_retail' && pack.id !== 'jewelry_and_luxury_retail' && pack.id !== 'electronics_showroom_pack' && pack.id !== 'supermarket_grocery_retail_pack') {
+    if (pack.checklists.length === 0 && pack.id !== 'master_access') {
         pack.checklists = [
             {
                 title: `General Operations for ${pack.title}`,
