@@ -1,5 +1,4 @@
 
-
 export const philosophyCards = [
     { icon: "Zap", title: "One-Time Purchase, Lifetime Value", children: "No subscriptions. No recurring fees. You buy a pack once and own it forever, including all future updates. We believe in empowering you, not trapping you in a billing cycle." },
     { icon: "BookOpen", title: "Excel-Ready, Not SaaS-Locked", children: "We deliver our toolkits in universally accessible, fully editable Excel files. You have complete control to adapt them to your needs without being locked into proprietary software." },

@@ -25,17 +25,6 @@
     --input: 220 13% 91%;
     --ring: 45 74% 60%; /* Muted Amber/Yellow */
     --radius: 0.5rem;
-    
-    /* Temp Design Colors */
-    --alternate-background: #0E1412; /* Dark Charcoal/Grey-Green */
-    --primary-text: #F2F4F3; /* Off-white */
-    --secondary-text: #D1D5DB; /* Soft Grey */
-    --muted-text: #9CA3AF;
-    --authority-green: #8FAEA3; /* Muted Sage Green */
-    --high-contrast-green: hsl(158 41% 57%);
-    --risk-accent: #EF4444; /* Red for markers */
-    --warning-accent: #FACC15; /* Muted Yellow */
-    --fear-text: hsl(0, 50%, 70%);
   }
 
   .dark {
@@ -51,13 +40,13 @@
     --secondary-foreground: 215 25% 95%;
     --muted: 218 20% 15%;
     --muted-foreground: 220 15% 65%;
-    --accent: 45 74% 60%; /* Muted Amber/Yellow */
+    --accent: 38 92% 66%;
     --accent-foreground: 218 20% 6%;
     --destructive: 6 78% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 218 20% 15%;
     --input: 218 20% 15%;
-    --ring: 45 74% 60%; /* Muted Amber/Yellow */
+    --ring: 38 92% 66%;
   }
 }
  
@@ -77,20 +66,20 @@ html {
 }
 
 .temp-design-page {
-  --bg-primary: #0F1311;
-  --bg-secondary: #141A17;
-  --bg-light-contrast: #F4F6F5;
+  --bg-primary: 218 20% 6%;
+  --bg-secondary: 218 20% 10%;
+  --bg-light-contrast: 218 20% 15%;
 
-  --accent-cta: #F2C94C;
-  --accent-risk: #C84848;
-  --accent-stable: #3FA97A;
+  --accent-cta: 38 92% 66%;
+  --accent-risk: 6 78% 60%;
+  --accent-stable: 158 41% 57%;
   
-  --text-primary: #F4F6F5;
-  --text-secondary: #D1D5DB; /* Soft Grey for body */
-  --text-dark: #0F1311; /* For use on light backgrounds */
+  --text-primary: 215 25% 95%;
+  --text-secondary: 220 15% 75%;
+  --text-dark: 215 25% 95%;
   
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: hsl(var(--bg-primary));
+  color: hsl(var(--text-primary));
 }
 
 .slow-zoom-video {
@@ -98,5 +87,5 @@ html {
 }
 
 .fear-text {
-    color: hsl(var(--fear-text));
+    color: hsl(var(--accent-risk));
 }

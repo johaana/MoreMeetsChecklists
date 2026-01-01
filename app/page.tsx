@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from "next/link";
@@ -67,7 +66,7 @@ const RefinedHeroSection = () => {
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover z-0"
+                className="absolute inset-0 w-full h-full object-cover z-0 slow-zoom-video"
             />
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
