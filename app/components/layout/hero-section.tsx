@@ -41,7 +41,7 @@ export const HeroSection = () => (
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-6">
-                    <Button size="lg" asChild className="group" variant="accent" style={{ color: 'hsl(var(--accent-foreground))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                    <Button size="lg" asChild className="group" variant="primary">
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
