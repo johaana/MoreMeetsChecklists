@@ -4,14 +4,14 @@
 import Link from "next/link";
 import * as React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Button } from "../components/ui/button";
+import { Button } from "@/components/ui/button";
 import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
-import { Footer } from "../components/layout/footer";
+import { Footer } from "@/components/layout/footer";
 import { verifyRazorpayPayment } from '../packs/actions';
-import { SiteHeader } from "../components/layout/header";
-import { handleDownload } from '../lib/download';
-import type { PremiumPack } from "../lib/premium-packs";
-import type { IndividualChecklist } from "../lib/individual-checklists";
+import { SiteHeader } from "@/components/layout/header";
+import { handleDownload } from '@/lib/download';
+import type { PremiumPack } from "@/lib/premium-packs";
+import type { IndividualChecklist } from "@/lib/individual-checklists";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,7 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogFooter,
-} from '../components/ui/alert-dialog';
+} from '@/components/ui/alert-dialog';
 import { Suspense } from "react";
 
 

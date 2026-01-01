@@ -3,204 +3,183 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check } from "lucide-react";
 import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
-import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { HeroSection } from "@/components/layout/hero-section";
+import { TestimonialsSection } from "@/components/layout/testimonials-section";
+import { FaqSection } from "@/components/layout/faq-section";
+import { philosophyCards } from "@/lib/homepage-content";
+import { ValueCard } from "@/components/ui/value-card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { FaqSection } from "@/components/layout/faq-section";
-import { TestimonialsSection } from "@/components/layout/testimonials-section";
-import { philosophyCards } from "@/lib/homepage-content";
-import { IconComponent } from "@/components/icons";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { cn } from "@/lib/utils";
 
-
-const painPoints = {
-  error: {
-      title: `"World-class compliance used to cost a fortune. We fixed that."`,
-      description: "Achieve world-class compliance without the enterprise price tag. Our audit-ready, globally-compliant SOPs are available for instant download—no subscriptions, no hidden fees. We believe operational excellence is a right, not a luxury.",
-      buttonText: 'Global Compliance',
-      mobileButtonText: 'Compliance'
-  },
-  resilience: {
-      title: `"Stop losing knowledge every time someone quits."`,
-      description: 'Turn people-dependent processes into a permanent, scalable system.',
-      buttonText: 'Build Resilience',
-      mobileButtonText: 'Resilience'
-  },
-  onboarding: {
-      title: `"Training shouldn’t depend on who’s available that day."`,
-      description: 'Our digital playbooks onboard new hires faster — no babysitting required.',
-      buttonText: 'Onboard Faster',
-      mobileButtonText: 'Train'
-  }
-};
-
-type PainPointKey = keyof typeof painPoints;
-const painPointKeys: PainPointKey[] = ['error', 'resilience', 'onboarding'];
-
-const RefinedHeroSection = () => {
-    const [activePainPoint, setActivePainPoint] = React.useState<PainPointKey>('error');
-    
-    React.useEffect(() => {
-        const interval = setInterval(() => {
-            setActivePainPoint(prev => {
-                const currentIndex = painPointKeys.indexOf(prev);
-                const nextIndex = (currentIndex + 1) % painPointKeys.length;
-                return painPointKeys[nextIndex];
-            });
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
-    
-    const content = painPoints[activePainPoint];
-
-    return (
-        <section className="relative w-full h-screen min-h-[700px] flex text-white overflow-hidden">
-            <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover z-0 slow-zoom-video"
-            />
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:via-black/60 md:to-transparent z-10" />
-            
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10 md:hidden" />
-
-            <div className={cn("container px-4 md:px-6 relative z-20 w-full h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0")}>
-              
-              {/* Desktop View */}
-              <div className="hidden md:block max-w-2xl">
-                <div className="space-y-4 min-h-[20rem] flex flex-col justify-center">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                        key={activePainPoint}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter text-white">
-                            {content.title}
-                        </h1>
-                        <p className="text-lg text-white/90 max-w-xl mt-4">
-                            {content.description}
-                        </p>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-                  <div className="relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 mt-6 max-w-lg">
-                    <div className="flex w-full">
-                          <motion.div
-                            className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
-                            initial={false}
-                            animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                        />
-                        {painPointKeys.map((key) => (
-                        <Button
-                            key={key}
-                            variant="ghost"
-                            className={cn(
-                                "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-14",
-                                "whitespace-normal leading-tight flex items-center text-center",
-                                activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
-                            )}
-                            onClick={() => setActivePainPoint(key as PainPointKey)}
-                        >
-                            <span>{painPoints[key as PainPointKey].buttonText}</span>
-                        </Button>
-                        ))}
-                    </div>
-                </div>
-                <div className="pt-6">
-                    <h2 className="text-lg font-semibold text-accent">MoreMeets: Your Playbook for Operational Excellence.</h2>
-                </div>
-                <div className="pt-4">
-                    <Button size="lg" asChild className="group text-lg py-7 px-8 md:px-10 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
-                        <Link href="/library">
-                        Explore The SOP Library
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
-                </div>
-              </div>
-
-              {/* Mobile View */}
-              <div className="md:hidden text-left items-start flex flex-col relative z-10">
-                 <div className="w-full max-w-xl space-y-6 relative z-10">
-                    <div className="min-h-[14rem] flex items-end">
-                       <AnimatePresence mode="wait">
-                            <motion.div
-                            key={activePainPoint}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="w-full"
-                            >
-                                <h1 className="text-3xl font-extrabold font-headline tracking-tighter text-white">
-                                    {content.title}
-                                </h1>
-                                <p className="text-base text-white/90 max-w-xl mt-3">
-                                    {content.description}
-                                </p>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-                    <div className={cn("relative flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg overflow-hidden p-1.5 w-full")}>
-                        <div className="flex w-full">
-                            <motion.div
-                                className="absolute top-1.5 left-1.5 bottom-1.5 w-1/3 bg-white/90 rounded-lg shadow-sm"
-                                initial={false}
-                                animate={{ x: `calc(${painPointKeys.indexOf(activePainPoint) * 100}% + ${painPointKeys.indexOf(activePainPoint) * 2}px)` }}
-                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            />
-                            {painPointKeys.map((key) => (
-                            <Button
-                                key={key}
-                                variant="ghost"
-                                className={cn(
-                                    "relative z-10 flex-1 justify-center text-sm py-3 transition-colors duration-300 hover:bg-transparent px-2 h-12",
-                                    "whitespace-normal leading-tight flex items-center text-center",
-                                    activePainPoint === key ? 'text-primary font-semibold' : 'text-white/80 hover:text-white'
-                                )}
-                                onClick={() => setActivePainPoint(key as PainPointKey)}
-                            >
-                                <span>{painPoints[key as PainPointKey].mobileButtonText}</span>
-                            </Button>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="pt-2">
-                        <Button size="lg" asChild className="group text-lg py-6 px-8 shadow-lg w-full" variant="accent">
-                            <Link href="/library">Explore The SOP Library<ArrowRight className="ml-2 h-5 w-5" /></Link>
-                        </Button>
-                    </div>
-                </div>
-              </div>
-            </div>
-        </section>
-    );
-};
-
-const ValueCard = ({ icon, title, children }: { icon: string, title: string, children: React.ReactNode }) => (
-    <Card className="flex flex-col text-center md:text-left h-full">
-        <CardHeader className="flex flex-col md:flex-row items-center gap-4">
-            <IconComponent name={icon} className="w-8 h-8 text-accent"/>
-            <CardTitle>{title}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex-1">
-            <p className="text-muted-foreground">{children}</p>
-        </CardContent>
-    </Card>
+const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
+    <section id={id} className={cn("w-full py-20 md:py-28 lg:py-32", className)} {...props} />
 );
+
+const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
+    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight", className)}>
+        {children}
+    </h2>
+);
+
+const CoreProblemSection = () => (
+    <Section id="core-problem">
+        <div className="container px-4 md:px-6 text-center max-w-3xl mx-auto space-y-10">
+            <SectionHeadline>Memory fails. Systems don’t.</SectionHeadline>
+            <div className="space-y-4 text-lg text-muted-foreground">
+                <p>People don’t fail because they don’t care.<br/>They fail because the business expects them to remember too much.</p>
+                <p>When processes are undocumented, inconsistently trained, explained verbally, or just “understood” but not written...</p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 text-center text-sm font-medium">
+                {['Steps are skipped', 'Standards drift', 'Training fades', 'Audits are stressful', 'Managers chase'].map(item => (
+                    <div key={item} className="p-2 px-4 rounded-full border bg-card text-card-foreground">
+                        {item}
+                    </div>
+                ))}
+            </div>
+             <p className="text-xl font-medium pt-4 text-accent">If your process isn’t written clearly, it will be rewritten differently by every person.</p>
+        </div>
+    </Section>
+);
+
+const WhatItIsSection = () => (
+    <Section id="what-it-is" className="bg-secondary">
+        <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+                <SectionHeadline>MoreMeets is not software people need to “remember to use.”</SectionHeadline>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-foreground">
+                <div className="space-y-4">
+                    <h3 className="text-xl font-bold flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What it IS</h3>
+                    <ul className="space-y-3 pl-2 text-base text-secondary-text">
+                        <li>A structured SOP framework</li>
+                        <li>A library of best-practice operational standards</li>
+                        <li>A way to turn experience into clear, repeatable steps</li>
+                        <li>Designed to work offline, in Excel, or on paper</li>
+                        <li>Easy to update as operations change</li>
+                        <li>Built for real work, not dashboards</li>
+                    </ul>
+                </div>
+                 <div className="space-y-4">
+                    <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><Frown className="w-5 h-5"/>What it’s NOT</h3>
+                     <ul className="space-y-3 pl-2 text-base text-secondary-text">
+                        <li>Not task enforcement</li>
+                        <li>Not monitoring employees</li>
+                        <li>Not reminders or notifications</li>
+                        <li>Not another tool to “manage people”</li>
+                    </ul>
+                </div>
+            </div>
+            <p className="text-center text-lg font-medium mt-12 text-primary-text">MoreMeets doesn’t control people. It removes ambiguity from work.</p>
+        </div>
+    </Section>
+);
+
+const HowTeamsUseItSection = () => {
+    const cards = [
+        { title: "SOP Creation", content: ["Clear steps", "Clear ownership", "Clear frequency", "Clear outcomes"], closing: "No long documents. Only what matters.", subClosing: "Everyone knows what to do, how to do it, and when." },
+        { title: "Training & Onboarding", content: ["Faster", "Consistent", "Less dependent on people"], closing: "Training that doesn’t fade.", subClosing: "New hires don’t guess. They follow the same standards as experienced staff." },
+        { title: "Daily Operations", content: ["What needs to be done", "How it should be done", "What “right” looks like"], closing: "Execution without follow-ups.", subClosing: "Managers stop chasing. Work runs the same on every shift." },
+        { title: "Continuous Improvement", content: ["SOPs are updated", "Mistakes are removed once — permanently", "Best practices are locked in"], closing: "Your system gets smarter over time.", subClosing: "Experience becomes process. Not tribal knowledge." }
+    ];
+    return(
+    <Section id="how-it-works">
+        <div className="container px-4 md:px-6">
+            <div className="text-center mb-12 max-w-2xl mx-auto">
+                <SectionHeadline>How MoreMeets fits into real operations</SectionHeadline>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                {cards.map(card => (
+                    <Card key={card.title} className="flex flex-col bg-card border-border">
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2 text-authority-green">
+                                <span className="text-2xl">🟩</span>
+                                <span>{card.title}</span>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-sm flex-1 space-y-4 text-secondary-text">
+                             <ul className="space-y-1">
+                                {card.content.map(item => <li key={item} className="flex items-start"><span className="mr-2 mt-1">∙</span><span>{item}</span></li>)}
+                            </ul>
+                            <p className="font-semibold pt-2 text-primary-text">{card.closing}</p>
+                            <p>{card.subClosing}</p>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
+        </div>
+    </Section>
+)};
+
+const ComplianceSection = () => (
+    <Section id="compliance" className="bg-secondary">
+        <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
+            <SectionHeadline>Built for global compliance — without complexity</SectionHeadline>
+            <p className="text-lg text-secondary-text">MoreMeets is designed to support regulated environments where consistency matters more than intent.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left text-sm pt-4 text-primary-text">
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>ISO standards</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>OSHA & safety frameworks</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>HACCP</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>SOC & internal audits</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>Multi-location consistency</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>Role-based SOPs</p>
+            </div>
+             <p className="text-xl font-medium pt-4 text-primary-text">You don’t “prepare” for audits. You operate in a way that naturally passes them.</p>
+        </div>
+    </Section>
+);
+
+const WhoIsItForSection = () => (
+    <Section id="who-is-it-for">
+        <div className="container px-4 md:px-6 max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+                <SectionHeadline>Built for operators who are tired of firefighting</SectionHeadline>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8 text-center text-primary-text">
+                <div className="space-y-2">
+                    <h3 className="text-xl font-bold">Founders & COOs</h3>
+                    <p className="text-sm text-secondary-text">Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
+                </div>
+                <div className="space-y-2">
+                    <h3 className="text-xl font-bold">Operations & Quality Heads</h3>
+                    <p className="text-sm text-secondary-text">Clear standards. Easier audits. Less follow-up.</p>
+                </div>
+                <div className="space-y-2">
+                    <h3 className="text-xl font-bold">Multi-location Teams</h3>
+                    <p className="text-sm text-secondary-text">Same standards everywhere. Faster onboarding. Fewer surprises.</p>
+                </div>
+            </div>
+        </div>
+    </Section>
+);
+
+const FinalCTASection = () => (
+    <Section id="final-cta" className="bg-card">
+        <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
+            <SectionHeadline>If work lives in people’s heads, it will fail under pressure.</SectionHeadline>
+            <p className="text-lg text-secondary-text">MoreMeets gives your business a system, not another tool.</p>
+            <div className="flex flex-col items-center gap-3 pt-4">
+                <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                    <Link href="/library">
+                        View the SOP Framework <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
+                <Button variant="link" asChild className="text-xs text-secondary-text">
+                    <Link href="/library">Explore industry examples</Link>
+                </Button>
+                 <div className="pt-4 text-xs text-secondary-text opacity-70">
+                    Offline • Excel-based • One-time purchase • Lifetime updates
+                </div>
+            </div>
+        </div>
+    </Section>
+);
+
 
 const PhilosophySection = () => (
     <section className="w-full py-16 md:py-24">
@@ -271,7 +250,7 @@ const ChaosToControlSection = () => (
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-foreground flex-1">
              <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>"Fire exit check completed daily at 9:05 AM. See log #4A."</span></p>
-            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Your best performer's process is now the standard training for everyone.</span></p>
+            <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>New hires are productive and compliant from day one.</span></p>
             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Knowledge is retained in the system, making your operation resilient.</span></p>
             <p className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-1"/><span>Produce a complete, verifiable audit trail for any task in seconds.</span></p>
           </CardContent>
@@ -281,16 +260,21 @@ const ChaosToControlSection = () => (
   </section>
 );
 
+
 export default function Home() {
   return (
      <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <RefinedHeroSection />
-        <PhilosophySection />
-        <ChaosToControlSection />
+        <HeroSection />
+        <CoreProblemSection />
+        <WhatItIsSection />
+        <HowTeamsUseItSection />
+        <ComplianceSection />
+        <WhoIsItForSection />
         <TestimonialsSection />
         <FaqSection />
+        <FinalCTASection />
       </main>
       <Footer />
     </div>

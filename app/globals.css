@@ -25,6 +25,16 @@
     --input: 220 13% 91%;
     --ring: 45 74% 60%; /* Muted Amber/Yellow */
     --radius: 0.5rem;
+    
+    /* New dark theme variables */
+    --alternate-background: 218 20% 6%;
+    --primary-text: 215 25% 95%;
+    --secondary-text: 220 15% 65%;
+    --muted-text: 220 15% 65%;
+    --authority-green: 145 58% 55%;
+    --high-contrast-green: 145 58% 55%;
+    --risk-accent: 0 59% 54%;
+    --warning-accent: 45 90% 57%;
   }
 
   .dark {
@@ -47,6 +57,16 @@
     --border: 218 20% 15%;
     --input: 218 20% 15%;
     --ring: 38 92% 66%;
+
+    /* New dark theme variables */
+    --alternate-background: 218 20% 6%;
+    --primary-text: 215 25% 95%;
+    --secondary-text: 220 15% 65%;
+    --muted-text: 220 15% 65%;
+    --authority-green: 145 58% 55%;
+    --high-contrast-green: 145 58% 55%;
+    --risk-accent: 0 59% 54%;
+    --warning-accent: 45 90% 57%;
   }
 }
  
@@ -65,36 +85,15 @@ html {
   scroll-behavior: smooth;
 }
 
-/* V1 Homepage Design System */
-.temp-design-page {
-  --bg-primary: 157 12% 7%; /* #0E1411 */
-  --bg-secondary: 157 16% 9%; /* #141A17 */
-  --surface-card: 157 16% 9%; /* #141A17 */
-  --surface-light-contrast: 157 16% 9%; /* #141A17 - Changed from light to dark */
-  --text-primary: 140 10% 96%; /* #F4F6F5 */
-  --text-secondary: 150 7% 63%; /* #9AA4A0 */
-  --text-on-light: 140 10% 96%; /* #F4F6F5 - Changed for dark bg */
-  --accent-authority: 145 58% 55%; /* #2ECC71 */
-  --accent-urgency: 45 90% 57%; /* #F4C430 */
-  --accent-risk: 0 59% 54%; /* #C84848 */
-  --border-color: 157 9% 15%; /* #222826 */
-
-  background-color: hsl(var(--bg-primary));
-  color: hsl(var(--text-primary));
-}
-
-.slow-zoom-video {
-  animation: slow-zoom 40s infinite alternate;
-}
-
 @keyframes slow-zoom {
   from {
     transform: scale(1);
   }
   to {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
-
-    
+.slow-zoom-video {
+  animation: slow-zoom 30s ease-in-out infinite alternate;
+}

@@ -60,7 +60,7 @@ export function SiteHeader() {
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = React.useState(false);
 
-    const isTempDesignPage = pathname === '/temp-design-preview';
+    const isHomepage = pathname === '/';
 
     React.useEffect(() => {
         setIsSheetOpen(false);
@@ -91,10 +91,10 @@ export function SiteHeader() {
 
     const BrandLogo = () => (
          <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-            <Logo className={cn("h-6 w-6", isTempDesignPage ? "text-white" : "text-primary")} />
+            <Logo className={cn("h-6 w-6", isHomepage ? "text-white" : "text-primary")} />
             <div className="flex flex-col">
-                <span className={cn("font-headline text-lg font-bold leading-tight", isTempDesignPage ? "text-white" : "text-foreground")}>MoreMeets</span>
-                <span className={cn("text-xs leading-tight -mt-0.5", isTempDesignPage ? "text-white/70" : "text-muted-foreground")}>Less misses.</span>
+                <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage ? "text-white" : "text-foreground")}>MoreMeets</span>
+                <span className={cn("text-xs leading-tight -mt-0.5", isHomepage ? "text-white/70" : "text-muted-foreground")}>Less misses.</span>
             </div>
         </Link>
     );
@@ -104,8 +104,8 @@ export function SiteHeader() {
     return (
         <header className={cn(
             "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
-            isTempDesignPage
-                ? (isScrolled ? "bg-black/30 backdrop-blur-sm border-b border-white/10" : "bg-transparent border-b border-transparent")
+            isHomepage
+                ? (isScrolled ? "bg-background/30 backdrop-blur-sm border-b border-white/10" : "bg-transparent border-b border-transparent")
                 : "bg-background/95 backdrop-blur-sm border-b"
         )}>
             <div className="flex items-center">
@@ -121,13 +121,13 @@ export function SiteHeader() {
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 {!isSalesPage && (
                     <>
-                        <Link href="/library" className={cn("text-sm font-medium transition-colors", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>SOP Library</Link>
+                        <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>SOP Library</Link>
                         <div 
                             className="group relative"
                             onMouseEnter={() => setIsDropdownOpen(true)}
                             onMouseLeave={() => setIsDropdownOpen(false)}
                         >
-                            <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
+                            <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isHomepage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
                                 Industries <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                             </button>
                             {isDropdownOpen && (
@@ -150,8 +150,8 @@ export function SiteHeader() {
                                 </div>
                             )}
                         </div>
-                        <Link href="/blog" className={cn("text-sm font-medium transition-colors", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Blog</Link>
-                        <Link href="/contact" className={cn("text-sm font-medium transition-colors", isTempDesignPage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Contact</Link>
+                        <Link href="/blog" className={cn("text-sm font-medium transition-colors", isHomepage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Blog</Link>
+                        <Link href="/contact" className={cn("text-sm font-medium transition-colors", isHomepage ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Contact</Link>
                     </>
                 )}
                  {isSalesPage && (
@@ -168,7 +168,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn(isTempDesignPage && "text-white/80 hover:text-white hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn(isHomepage && "text-white/80 hover:text-white hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>

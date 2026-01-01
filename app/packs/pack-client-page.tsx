@@ -3,14 +3,14 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { painPointsContent } from '../lib/pain-points-content';
-import { SiteHeader } from '../components/layout/header';
-import { useIsMobile } from '../hooks/use-mobile';
-import { PainPoint } from '../components/ui/pain-point';
-import type { PremiumPack } from "../lib/premium-packs";
-import { Button } from '../components/ui/button';
-import { IconComponent, ComplianceIcon } from '../components/icons';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { painPointsContent } from '@/lib/pain-points-content';
+import { SiteHeader } from '@/components/layout/header';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { PainPoint } from '@/components/ui/pain-point';
+import type { PremiumPack } from "@/lib/premium-packs";
+import { Button } from '@/components/ui/button';
+import { IconComponent, ComplianceIcon } from '@/components/icons';
 
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
