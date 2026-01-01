@@ -84,7 +84,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const [agreedToTerms, setAgreedToTerms] = React.useState(false);
     
     const totalChecklists = pack.checklists?.length || 0;
-    const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
     
     const features = [
         { text: `<strong>${totalChecklists}+ Expert-Built Checklists</strong> across all current and future packs.`},

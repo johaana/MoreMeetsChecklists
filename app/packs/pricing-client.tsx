@@ -144,13 +144,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <Banknote className="w-10 h-10 text-accent" />
                                 <div>
                                     <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
-                                        {pack.title}
+                                        Global Compliance Pack
                                     </h3>
                                     {pack.badgeText && (
                                         <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
                                     )}
                                 </div>
                             </div>
+                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
                              {hasINR && hasUSD && (
