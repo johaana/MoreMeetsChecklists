@@ -1,9 +1,11 @@
 
+
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
 import { blogPosts } from '@/lib/blog-posts';
 import * as Lucide from 'lucide-react';
+import { IconComponent } from '@/components/icons';
 
 export const runtime = 'edge';
 
@@ -22,7 +24,7 @@ export async function GET(req: NextRequest) {
     const id = searchParams.get('id');
     const slug = searchParams.get('slug');
 
-    let IconComponent: React.ComponentType<{ className?: string, color?: string, size?: number }> | null = Lucide.CheckSquare;
+    let iconName: string | undefined;
 
     try {
         if (type === 'pack' && id) {
@@ -30,29 +32,18 @@ export async function GET(req: NextRequest) {
             if (item) {
                 title = item.title;
                 description = item.description;
-                if (typeof item.icon === 'string') {
-                    const iconName = item.icon.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, '');
-                    const Icon = (Lucide as any)[iconName];
-                    if (Icon) {
-                        IconComponent = Icon;
-                    } else {
-                        IconComponent = Lucide.Package;
-                    }
-                } else {
-                    IconComponent = Lucide.Package;
-                }
+                iconName = item.icon;
             }
         } else if (type === 'blog' && slug) {
             const item = blogPosts.find(b => b.slug === slug);
             if (item) {
                 title = item.title;
                 description = item.description;
-                IconComponent = Lucide.BookOpen;
+                iconName = 'BookOpen';
             }
         }
     } catch (e) {
-        console.warn("Error finding item for OG image:", e);
-        IconComponent = Lucide.AlertCircle;
+        console.error("Error finding item for OG image:", e);
     }
     
     // Truncate long titles/descriptions
@@ -99,7 +90,7 @@ export async function GET(req: NextRequest) {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    {IconComponent && <IconComponent color="hsl(38, 92%, 66%)" size={64} />}
+                    {iconName && <IconComponent name={iconName} style={{color: 'hsl(38, 92%, 66%)'}} size={64} />}
                     <h1 style={{ fontSize: 60, fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', maxWidth: '90%' }}>
                         {title}
                     </h1>
@@ -133,3 +124,4 @@ export async function GET(req: NextRequest) {
         }
     );
 }
+

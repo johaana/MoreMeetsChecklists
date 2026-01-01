@@ -15,11 +15,11 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 
 
-const categories = Array.from(new Set(premiumPacks.map(p => p.category))).sort();
-
 export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const searchParams = useSearchParams();
     const router = useRouter();
+
+    const categories = Array.from(new Set(packs.map(p => p.category))).sort();
     
     const initialSearch = searchParams.get('q') || '';
     const initialCategory = searchParams.get('category') || 'All';

@@ -220,7 +220,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     
     const writeOptions: WritingOptions = {};
-    if (item.id === 'master_access') {
+    if (type === 'pack' && (item as PremiumPack).id === 'master_access') {
         writeOptions.bookpassword = "Johaana@2319";
     }
 
