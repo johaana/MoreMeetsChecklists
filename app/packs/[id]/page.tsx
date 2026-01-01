@@ -58,7 +58,7 @@ export async function generateMetadata(
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const checklistsCount = pack.checklists ? pack.checklists.length : 0;
   const title = `${pack.title} - Excel SOP Templates | MoreMeets`;
-  const description = `Download the complete ${pack.title}. Includes ${checklistsCount} expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
+  const description = `Download the complete ${pack.title}. Includes ${checklistsCount}+ expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
   
   const ogUrl = new URL(`${siteUrl}/api/og`);
   ogUrl.searchParams.set('type', 'pack');
@@ -97,6 +97,7 @@ export default function Page({ params }: { params: { id: string } }) {
   
   const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
   const checklistsCount = pack.checklists ? pack.checklists.length : 0;
+  const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const ogUrl = new URL(`${siteUrl}/api/og`);
@@ -107,7 +108,7 @@ export default function Page({ params }: { params: { id: string } }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: pack.title,
-    description: `Download the complete ${pack.title} checklist pack. Includes ${checklistsCount} expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`,
+    description: `Download the complete ${pack.title} checklist pack. Includes ${checklistsCount}+ expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`,
     image: ogUrl.toString(),
     brand: {
       '@type': 'Brand',
