@@ -1319,14 +1319,14 @@ const corporate_legal_compliance_starter_kit: PremiumPack = {
             summary: "Tracks all mandatory government filings to ensure deadlines are never missed.",
             icon: "calendar-days",
             tasks: [
-                { "id": "CLC-SFC-01", description: "Update calendar with all ROC filing deadlines for the quarter.", priority: "High", riskLevel: "High", consequence: "Penalties, company strike-off.", proof: "Updated calendar file." },
-                { "id": "CLC-SFC-02", description: "Update calendar with all Income Tax filing deadlines (TDS, Advance Tax, etc.).", priority: "High", riskLevel: "High", consequence: "Interest and penalties.", proof: "Updated calendar file." },
-                { "id": "CLC-SFC-03", description: "Update calendar with all GST filing deadlines (GSTR-1, 3B, etc.).", priority: "High", riskLevel: "High", consequence: "Penalties, loss of input tax credit.", proof: "Updated calendar file." },
-                { "id": "CLC-SFC-04", description: "Update calendar with all Labour Law filing deadlines (PF, ESI, PT).", priority: "High", riskLevel: "Medium", consequence: "Penalties, employee disputes.", proof: "Updated calendar file." },
-                { "id": "CLC-SFC-05", description: "Assign responsibility for each filing to a specific person.", priority: "High", riskLevel: "Low", consequence: "Lack of ownership, missed deadlines.", proof: "Updated calendar file with owner names." },
-                { "id": "CLC-SFC-06", description: "Send reminders 15 days and 3 days before each deadline.", priority: "Medium", riskLevel: "Low", consequence: "Deadlines forgotten.", proof: "Copies of reminder emails." },
-                { "id": "CLC-SFC-07", description: "Track and confirm completion of each filing.", priority: "High", riskLevel: "Medium", consequence: "Assuming a filing is done when it is not.", proof: "Filing acknowledgement receipts." },
-                { "id": "CLC-SFC-08", description: "Conduct a quarterly review of the calendar for any changes in laws or dates.", priority: "Medium", riskLevel: "Medium", consequence: "Using an outdated compliance calendar.", proof: "Minutes of quarterly review meeting." }
+                { id: "CLC-SFC-01", description: "Update calendar with all ROC filing deadlines for the quarter.", priority: "High", riskLevel: "High", consequence: "Penalties, company strike-off.", proof: "Updated calendar file." },
+                { id: "CLC-SFC-02", description: "Update calendar with all Income Tax filing deadlines (TDS, Advance Tax, etc.).", priority: "High", riskLevel: "High", consequence: "Interest and penalties.", proof: "Updated calendar file." },
+                { id: "CLC-SFC-03", description: "Update calendar with all GST filing deadlines (GSTR-1, 3B, etc.).", priority: "High", riskLevel: "High", consequence: "Penalties, loss of input tax credit.", proof: "Updated calendar file." },
+                { id: "CLC-SFC-04", description: "Update calendar with all Labour Law filing deadlines (PF, ESI, PT).", priority: "High", riskLevel: "Medium", consequence: "Penalties, employee disputes.", proof: "Updated calendar file." },
+                { id: "CLC-SFC-05", description: "Assign responsibility for each filing to a specific person.", priority: "High", riskLevel: "Low", consequence: "Lack of ownership, missed deadlines.", proof: "Updated calendar file with owner names." },
+                { id: "CLC-SFC-06", description: "Send reminders 15 days and 3 days before each deadline.", priority: "Medium", riskLevel: "Low", consequence: "Deadlines forgotten.", proof: "Copies of reminder emails." },
+                { id: "CLC-SFC-07", description: "Track and confirm completion of each filing.", priority: "High", riskLevel: "Medium", consequence: "Assuming a filing is done when it is not.", proof: "Filing acknowledgement receipts." },
+                { id: "CLC-SFC-08", description: "Conduct a quarterly review of the calendar for any changes in laws or dates.", priority: "Medium", riskLevel: "Medium", consequence: "Using an outdated compliance calendar.", proof: "Minutes of quarterly review meeting." }
             ]
         },
         {
@@ -1337,12 +1337,12 @@ const corporate_legal_compliance_starter_kit: PremiumPack = {
             summary: "A framework for drafting, approving, and rolling out company policies.",
             icon: "file-text",
             tasks: [
-                { "id": "CLC-PML-01", description: "Draft new policy with clear objectives, scope, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Unclear policy causes confusion.", proof: "Draft policy document." },
-                { "id": "CLC-PML-02", description: "Review draft policy with legal and management for approval.", priority: "High", riskLevel: "High", consequence: "Policy has legal flaws or is operationally unfeasible.", proof: "Email approvals from department heads." },
-                { "id": "CLC-PML-03", description: "Communicate the new/updated policy to all employees via email and company portal.", priority: "High", riskLevel: "Medium", consequence: "Employees are unaware of new rules.", proof: "Copy of announcement email." },
-                { "id": "CLC-PML-04", description: "Obtain digital or physical acknowledgement from every employee.", priority: "High", riskLevel: "High", consequence: "Inability to prove an employee was aware of the policy, legal risk.", proof: "Signed acknowledgement forms or digital log." },
-                { "id": "CLC-PML-05", description: "Conduct training sessions for significant policy changes.", priority: "Medium", riskLevel: "Medium", consequence: "Employees do not understand the nuances of the policy.", proof: "Training attendance sheets." },
-                { "id": "CLC-PML-06", description: "Schedule an annual review for every policy to ensure it is still relevant and compliant.", priority: "High", riskLevel: "Medium", consequence: "Outdated policies expose the company to new risks.", proof: "Policy review schedule." }
+                { id: "CLC-PML-01", description: "Draft new policy with clear objectives, scope, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Unclear policy causes confusion.", proof: "Draft policy document." },
+                { id: "CLC-PML-02", description: "Review draft policy with legal and management for approval.", priority: "High", riskLevel: "High", consequence: "Policy has legal flaws or is operationally unfeasible.", proof: "Email approvals from department heads." },
+                { id: "CLC-PML-03", description: "Communicate the new/updated policy to all employees via email and company portal.", priority: "High", riskLevel: "Medium", consequence: "Employees are unaware of new rules.", proof: "Copy of announcement email." },
+                { id: "CLC-PML-04", description: "Obtain digital or physical acknowledgement from every employee.", priority: "High", riskLevel: "High", consequence: "Inability to prove an employee was aware of the policy, legal risk.", proof: "Signed acknowledgement forms or digital log." },
+                { id: "CLC-PML-05", description: "Conduct training sessions for significant policy changes.", priority: "Medium", riskLevel: "Medium", consequence: "Employees do not understand the nuances of the policy.", proof: "Training attendance sheets." },
+                { id: "CLC-PML-06", description: "Schedule an annual review for every policy to ensure it is still relevant and compliant.", priority: "High", riskLevel: "Medium", consequence: "Outdated policies expose the company to new risks.", proof: "Policy review schedule." }
             ]
         },
         {
@@ -1353,14 +1353,14 @@ const corporate_legal_compliance_starter_kit: PremiumPack = {
             summary: "Manages a contract from drafting to renewal or termination, minimizing risk.",
             icon: "file-check",
             tasks: [
-                { "id": "CLC-CLM-01", description: "Draft contract using approved company templates.", priority: "High", riskLevel: "High", consequence: "Using unvetted clauses, legal exposure.", proof: "Draft contract." },
-                { "id": "CLC-CLM-02", description: "Review contract with business owner for commercial terms.", priority: "High", riskLevel: "Medium", consequence: "Commercial terms do not match business needs.", proof: "Email approval from business owner." },
-                { "id": "CLC-CLM-03", description: "Negotiate terms with the other party, keeping a log of all changes.", priority: "High", riskLevel: "High", consequence: "Unfavorable terms, future disputes.", proof: "Version history of the contract document." },
-                { "id": "CLC-CLM-04", description: "Obtain final approvals from all required internal stakeholders before signing.", priority: "High", riskLevel: "High", consequence: "Unauthorized person agrees to a contract.", proof: "Final approval email chain." },
-                { "id": "CLC-CLM-05", description: "Execute the contract (signing by authorized signatories).", priority: "High", riskLevel: "Low", consequence: "Contract is not legally binding.", proof: "Scanned copy of the fully signed contract." },
-                { "id": "CLC-CLM-06", description: "Store the executed contract in a central, secure repository.", priority: "High", riskLevel: "Medium", consequence: "Inability to find contract when needed, lost documents.", proof: "Entry in contract management system." },
-                { "id": "CLC-CLM-07", description: "Abstract key dates (renewal, termination notice) and obligations into a tracking system.", priority: "High", riskLevel: "High", consequence: "Accidental auto-renewal of an unwanted contract, missed obligations.", proof: "Screenshot from tracking system." },
-                { "id": "CLC-CLM-08", description: "Review contract performance before renewal.", priority: "Medium", riskLevel: "Medium", consequence: "Renewing a bad contract.", proof: "Performance review notes." }
+                { id: "CLC-CLM-01", description: "Draft contract using approved company templates.", priority: "High", riskLevel: "High", consequence: "Using unvetted clauses, legal exposure.", proof: "Draft contract." },
+                { id: "CLC-CLM-02", description: "Review contract with business owner for commercial terms.", priority: "High", riskLevel: "Medium", consequence: "Commercial terms do not match business needs.", proof: "Email approval from business owner." },
+                { id: "CLC-CLM-03", description: "Negotiate terms with the other party, keeping a log of all changes.", priority: "High", riskLevel: "High", consequence: "Unfavorable terms, future disputes.", proof: "Version history of the contract document." },
+                { id: "CLC-CLM-04", description: "Obtain final approvals from all required internal stakeholders before signing.", priority: "High", riskLevel: "High", consequence: "Unauthorized person agrees to a contract.", proof: "Final approval email chain." },
+                { id: "CLC-CLM-05", description: "Execute the contract (signing by authorized signatories).", priority: "High", riskLevel: "Low", consequence: "Contract is not legally binding.", proof: "Scanned copy of the fully signed contract." },
+                { id: "CLC-CLM-06", description: "Store the executed contract in a central, secure repository.", priority: "High", riskLevel: "Medium", consequence: "Inability to find contract when needed, lost documents.", proof: "Entry in contract management system." },
+                { id: "CLC-CLM-07", description: "Abstract key dates (renewal, termination notice) and obligations into a tracking system.", priority: "High", riskLevel: "High", consequence: "Accidental auto-renewal of an unwanted contract, missed obligations.", proof: "Screenshot from tracking system." },
+                { id: "CLC-CLM-08", description: "Review contract performance before renewal.", priority: "Medium", riskLevel: "Medium", consequence: "Renewing a bad contract.", proof: "Performance review notes." }
             ]
         },
         {
@@ -1371,14 +1371,14 @@ const corporate_legal_compliance_starter_kit: PremiumPack = {
             summary: "A process to identify compliance gaps and ensure they are fixed (Corrective and Preventive Action).",
             icon: "bug",
             tasks: [
-                { "id": "CLC-CAPA-01", description: "Plan the audit scope, objectives, and criteria for the quarter.", priority: "High", riskLevel: "Low", consequence: "Aimless audit with no clear goal.", proof: "Audit plan document." },
-                { "id": "CLC-CAPA-02", description: "Conduct the audit by interviewing staff, reviewing records, and observing processes.", priority: "High", riskLevel: "Medium", consequence: "Superficial audit that misses real issues.", proof: "Auditor's working papers and notes." },
-                { "id": "CLC-CAPA-03", description: "Document all findings (non-conformities) in a formal audit report.", priority: "High", riskLevel: "Medium", consequence: "Findings are not clearly communicated.", proof: "Draft audit report." },
-                { "id": "CLC-CAPA-04", description: "Issue the report to department heads and management.", priority: "High", riskLevel: "Low", consequence: "Management is unaware of the risks.", proof: "Email sending the report." },
-                { "id": "CLC-CAPA-05", description: "Require departments to submit a Corrective and Preventive Action (CAPA) plan for each finding.", priority: "High", riskLevel: "High", consequence: "Problems are identified but never fixed.", proof: "Completed CAPA forms from departments." },
-                { "id": "CLC-CAPA-06", description: "Track the implementation of all CAPAs to ensure they are completed on time.", priority: "High", riskLevel: "Medium", consequence: "Corrective actions are delayed or forgotten.", proof: "CAPA tracking log." },
-                { "id": "CLC-CAPA-07", description: "Verify the effectiveness of the corrective actions to ensure the problem is truly solved.", priority: "High", riskLevel: "High", consequence: "Actions are completed but were ineffective, problem recurs.", proof: "Effectiveness verification report." },
-                { "id": "CLC-CAPA-08", description: "Close the audit finding once the action is verified as effective.", priority: "Medium", riskLevel: "Low", consequence: "Open findings remain indefinitely.", proof: "Final sign-off in the audit file." }
+                { id: "CLC-CAPA-01", description: "Plan the audit scope, objectives, and criteria for the quarter.", priority: "High", riskLevel: "Low", consequence: "Aimless audit with no clear goal.", proof: "Audit plan document." },
+                { id: "CLC-CAPA-02", description: "Conduct the audit by interviewing staff, reviewing records, and observing processes.", priority: "High", riskLevel: "Medium", consequence: "Superficial audit that misses real issues.", proof: "Auditor's working papers and notes." },
+                { id: "CLC-CAPA-03", description: "Document all findings (non-conformities) in a formal audit report.", priority: "High", riskLevel: "Medium", consequence: "Findings are not clearly communicated.", proof: "Draft audit report." },
+                { id: "CLC-CAPA-04", description: "Issue the report to department heads and management.", priority: "High", riskLevel: "Low", consequence: "Management is unaware of the risks.", proof: "Email sending the report." },
+                { id: "CLC-CAPA-05", description: "Require departments to submit a Corrective and Preventive Action (CAPA) plan for each finding.", priority: "High", riskLevel: "High", consequence: "Problems are identified but never fixed.", proof: "Completed CAPA forms from departments." },
+                { id: "CLC-CAPA-06", description: "Track the implementation of all CAPAs to ensure they are completed on time.", priority: "High", riskLevel: "Medium", consequence: "Corrective actions are delayed or forgotten.", proof: "CAPA tracking log." },
+                { id: "CLC-CAPA-07", description: "Verify the effectiveness of the corrective actions to ensure the problem is truly solved.", priority: "High", riskLevel: "High", consequence: "Actions are completed but were ineffective, problem recurs.", proof: "Effectiveness verification report." },
+                { id: "CLC-CAPA-08", description: "Close the audit finding once the action is verified as effective.", priority: "Medium", riskLevel: "Low", consequence: "Open findings remain indefinitely.", proof: "Final sign-off in the audit file." }
             ]
         }
     ]
@@ -1690,8 +1690,8 @@ const film_production_pack: PremiumPack = {
                 { id: "FP-LM-03", description: "Location Agreement: Signed agreement with property owner, outlining terms, conditions, and fees.", priority: "High", riskLevel: "High", consequence: "Disputes with property owner, unexpected costs.", proof: "Signed location agreement." },
                 { id: "FP-LM-04", description: "Logistics Plan: Plan for parking, power, catering, and restrooms is in place.", priority: "Medium", riskLevel: "Medium", consequence: "On-set delays, crew dissatisfaction.", proof: "Location logistics plan." },
                 { id: "FP-LM-05", description: "Risk Assessment: Site-specific risk assessment conducted (e.g., trip hazards, public safety).", priority: "High", riskLevel: "High", consequence: "Accidents, injuries.", proof: "Signed risk assessment form." },
-                { "id": "FP-LM-06", "description": "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Complaints, disruption of filming.", "proof": "Copy of notification letter." },
-                { "id": "FP-LM-07", "description": "Post-Shoot Cleanup: Location is returned to its original condition after filming.", "priority": "High", "riskLevel": "Medium", "consequence": "Disputes with property owner, loss of security deposit.", "proof": "Post-shoot location photos signed off by owner." }
+                { id: "FP-LM-06", description: "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", priority: "Medium", riskLevel: "Medium", consequence: "Complaints, disruption of filming.", proof: "Copy of notification letter." },
+                { id: "FP-LM-07", description: "Post-Shoot Cleanup: Location is returned to its original condition after filming.", priority: "High", riskLevel: "Medium", consequence: "Disputes with property owner, loss of security deposit.", proof: "Post-shoot location photos signed off by owner." }
             ]
         },
         {
@@ -1976,75 +1976,75 @@ const logistics_warehouse_pack: PremiumPack = {
     ],
     checklists: [
         {
-            "title": "Inbound & Receiving",
-            "department": "Receiving",
-            "frequency": "Per Delivery",
-            "role": "Receiving Clerk",
-            "summary": "Ensures all incoming goods are accurately received, inspected, and documented.",
-            "icon": "clipboard-check",
-            "tasks": [
-                { "id": "LW-IR-01", "description": "Schedule and confirm delivery appointment with carrier.", "priority": "Medium", "riskLevel": "Low", "consequence": "Dock congestion, delays.", "proof": "Appointment log." },
-                { "id": "LW-IR-02", "description": "Inspect truck/container for signs of tampering or damage before unloading.", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting damaged goods, security risk.", "proof": "Inbound inspection form." },
-                { "id": "LW-IR-03", "description": "Verify shipment against packing list and purchase order.", "priority": "High", "riskLevel": "High", "consequence": "Inventory discrepancies, paying for incorrect goods.", "proof": "Signed packing list with discrepancies noted." },
-                { "id": "LW-IR-04", "description": "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", "priority": "High", "riskLevel": "Medium", "consequence": "Accepting defective products into inventory.", "proof": "Inbound QC report." },
-                { "id": "LW-IR-05", "description": "Record all received items into the Warehouse Management System (WMS).", "priority": "High", "riskLevel": "High", "consequence": "Phantom stock, inability to locate goods.", "proof": "WMS receiving entry." },
-                { "id": "LW-IR-06", "description": "Label all pallets/items with internal tracking barcodes.", "priority": "High", "riskLevel": "Low", "consequence": "Inefficient putaway and picking.", "proof": "Photo of labeled pallet." },
-                { "id": "LW-IR-07", "description": "Segregate and move goods to the appropriate staging or putaway area.", "priority": "Medium", "riskLevel": "Low", "consequence": "Delays in putaway, dock congestion.", "proof": "Visual confirmation." },
-                { "id": "LW-IR-08", "description": "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Financial loss, holding unwanted stock.", "proof": "RTV documentation." }
+            title: "Inbound & Receiving",
+            department: "Receiving",
+            frequency: "Per Delivery",
+            role: "Receiving Clerk",
+            summary: "Ensures all incoming goods are accurately received, inspected, and documented.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "LW-IR-01", description: "Schedule and confirm delivery appointment with carrier.", priority: "Medium", riskLevel: "Low", consequence: "Dock congestion, delays.", proof: "Appointment log." },
+                { id: "LW-IR-02", description: "Inspect truck/container for signs of tampering or damage before unloading.", priority: "High", riskLevel: "Medium", consequence: "Accepting damaged goods, security risk.", proof: "Inbound inspection form." },
+                { id: "LW-IR-03", description: "Verify shipment against packing list and purchase order.", priority: "High", riskLevel: "High", consequence: "Inventory discrepancies, paying for incorrect goods.", proof: "Signed packing list with discrepancies noted." },
+                { id: "LW-IR-04", description: "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", priority: "High", riskLevel: "Medium", consequence: "Accepting defective products into inventory.", proof: "Inbound QC report." },
+                { id: "LW-IR-05", description: "Record all received items into the Warehouse Management System (WMS).", priority: "High", riskLevel: "High", consequence: "Phantom stock, inability to locate goods.", proof: "WMS receiving entry." },
+                { id: "LW-IR-06", description: "Label all pallets/items with internal tracking barcodes.", priority: "High", riskLevel: "Low", consequence: "Inefficient putaway and picking.", proof: "Photo of labeled pallet." },
+                { id: "LW-IR-07", description: "Segregate and move goods to the appropriate staging or putaway area.", priority: "Medium", riskLevel: "Low", consequence: "Delays in putaway, dock congestion.", proof: "Visual confirmation." },
+                { id: "LW-IR-08", description: "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", priority: "Medium", riskLevel: "Medium", consequence: "Financial loss, holding unwanted stock.", proof: "RTV documentation." }
             ]
         },
         {
-            "title": "Putaway & Storage",
-            "department": "Inventory Control",
-            "frequency": "Daily",
-            "role": "Forklift Operator/Stocker",
-            "summary": "Ensures goods are stored correctly, safely, and efficiently.",
-            "icon": "package",
-            "tasks": [
-                { "id": "LW-PS-01", "description": "Put away all goods from the receiving staging area within the set time frame (e.g., 24 hours).", "priority": "High", "riskLevel": "Medium", "consequence": "Staging area congestion, risk of damage or loss.", "proof": "WMS putaway timestamp." },
-                { "id": "LW-PS-02", "description": "Store goods in their assigned bin locations as directed by the WMS.", "priority": "High", "riskLevel": "High", "consequence": "Lost inventory, picking errors.", "proof": "Scan confirmation in WMS." },
-                { "id": "LW-PS-03", "description": "Ensure pallets are stored securely and do not overhang racks.", "priority": "High", "riskLevel": "High", "consequence": "Falling items, rack collapse, injury.", "proof": "Photo of properly stored pallet." },
-                { "id": "LW-PS-04", "description": "Follow storage guidelines for hazardous materials (HAZMAT).", "priority": "High", "riskLevel": "High", "consequence": "Fire, chemical spills, injury, fines.", "proof": "HAZMAT storage area inspection log." },
-                { "id": "LW-PS-05", "description": "Consolidate stock to optimize storage space.", "priority": "Medium", "riskLevel": "Low", "consequence": "Inefficient use of warehouse space.", "proof": "WMS consolidation report." },
-                { "id": "LW-PS-06", "description": "Perform daily checks of storage racks for any signs of damage.", "priority": "High", "riskLevel": "High", "consequence": "Catastrophic rack failure.", "proof": "Rack inspection log." },
-                { "id": "LW-PS-07", "description": "Keep aisles clear of any obstructions.", "priority": "High", "riskLevel": "Medium", "consequence": "MHE accidents, delays.", "proof": "Daily walkthrough checklist." },
-                { "id": "LW-PS-08", "description": "Ensure FIFO/FEFO principles are followed in storage arrangement.", "priority": "High", "riskLevel": "Medium", "consequence": "Product expiry, wastage.", "proof": "Audit of stock dates in a sample of bins." }
+            title: "Putaway & Storage",
+            department: "Inventory Control",
+            frequency: "Daily",
+            role: "Forklift Operator/Stocker",
+            summary: "Ensures goods are stored correctly, safely, and efficiently.",
+            icon: "package",
+            tasks: [
+                { id: "LW-PS-01", description: "Put away all goods from the receiving staging area within the set time frame (e.g., 24 hours).", priority: "High", riskLevel: "Medium", consequence: "Staging area congestion, risk of damage or loss.", proof: "WMS putaway timestamp." },
+                { id: "LW-PS-02", description: "Store goods in their assigned bin locations as directed by the WMS.", priority: "High", riskLevel: "High", consequence: "Lost inventory, picking errors.", proof: "Scan confirmation in WMS." },
+                { id: "LW-PS-03", description: "Ensure pallets are stored securely and do not overhang racks.", priority: "High", riskLevel: "High", consequence: "Falling items, rack collapse, injury.", proof: "Photo of properly stored pallet." },
+                { id: "LW-PS-04", description: "Follow storage guidelines for hazardous materials (HAZMAT).", priority: "High", riskLevel: "High", consequence: "Fire, chemical spills, injury, fines.", proof: "HAZMAT storage area inspection log." },
+                { id: "LW-PS-05", description: "Consolidate stock to optimize storage space.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of warehouse space.", proof: "WMS consolidation report." },
+                { id: "LW-PS-06", description: "Perform daily checks of storage racks for any signs of damage.", priority: "High", riskLevel: "High", consequence: "Catastrophic rack failure.", proof: "Rack inspection log." },
+                { id: "LW-PS-07", description: "Keep aisles clear of any obstructions.", priority: "High", riskLevel: "Medium", consequence: "MHE accidents, delays.", proof: "Daily walkthrough checklist." },
+                { id: "LW-PS-08", description: "Ensure FIFO/FEFO principles are followed in storage arrangement.", priority: "High", riskLevel: "Medium", consequence: "Product expiry, wastage.", proof: "Audit of stock dates in a sample of bins." }
             ]
         },
         {
-            "title": "Order Picking, Packing & Dispatch",
-            "department": "Outbound",
-            "frequency": "Per Order",
-            "role": "Picker/Packer",
-            "summary": "Ensures customer orders are fulfilled accurately and efficiently.",
-            "icon": "truck",
-            "tasks": [
-                { "id": "LW-OPD-01", "description": "Generate and assign pick lists to pickers.", "priority": "High", "riskLevel": "Low", "consequence": "Disorganized picking process.", "proof": "Batch of printed pick lists." },
-                { "id": "LW-OPD-02", "description": "Pick correct items and quantities as per the pick list, using barcode scanners for verification.", "priority": "High", "riskLevel": "High", "consequence": "Incorrect items sent to customer, returns, dissatisfaction.", "proof": "WMS pick confirmation." },
-                { "id": "LW-OPD-03", "description": "Transport picked goods to the packing station.", "priority": "Medium", "riskLevel": "Low", "consequence": "Delays.", "proof": "Visual confirmation." },
-                { "id": "LW-OPD-04", "description": "Pack orders securely with appropriate dunnage to prevent damage in transit.", "priority": "High", "riskLevel": "Medium", "consequence": "Goods damaged during shipping, customer claims.", "proof": "Packing station QC check." },
-                { "id": "LW-OPD-05", "description": "Apply correct shipping label and packing slip to each order.", "priority": "High", "riskLevel": "High", "consequence": "Order sent to wrong address, lost shipment.", "proof": "Label verification scan." },
-                { "id": "LW-OPD-06", "description": "Weigh and record final parcel dimensions and weight.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Incorrect shipping charges.", "proof": "Shipping system data entry." },
-                { "id": "LW-OPD-07", "description": "Stage packed orders in the correct lane for courier pickup.", "priority": "High", "riskLevel": "Low", "consequence": "Missed courier pickups, delays.", "proof": "Photo of staged orders." },
-                { "id": "LW-OPD-08", "description": "Generate and hand over the shipping manifest to the courier.", "priority": "High", "riskLevel": "Medium", "consequence": "Disputes with courier over number of parcels collected.", "proof": "Signed courier manifest." }
+            title: "Order Picking, Packing & Dispatch",
+            department: "Outbound",
+            frequency: "Per Order",
+            role: "Picker/Packer",
+            summary: "Ensures customer orders are fulfilled accurately and efficiently.",
+            icon: "truck",
+            tasks: [
+                { id: "LW-OPD-01", description: "Generate and assign pick lists to pickers.", priority: "High", riskLevel: "Low", consequence: "Disorganized picking process.", proof: "Batch of printed pick lists." },
+                { id: "LW-OPD-02", description: "Pick correct items and quantities as per the pick list, using barcode scanners for verification.", priority: "High", riskLevel: "High", consequence: "Incorrect items sent to customer, returns, dissatisfaction.", proof: "WMS pick confirmation." },
+                { id: "LW-OPD-03", description: "Transport picked goods to the packing station.", priority: "Medium", riskLevel: "Low", consequence: "Delays.", proof: "Visual confirmation." },
+                { id: "LW-OPD-04", description: "Pack orders securely with appropriate dunnage to prevent damage in transit.", priority: "High", riskLevel: "Medium", consequence: "Goods damaged during shipping, customer claims.", proof: "Packing station QC check." },
+                { id: "LW-OPD-05", description: "Apply correct shipping label and packing slip to each order.", priority: "High", riskLevel: "High", consequence: "Order sent to wrong address, lost shipment.", proof: "Label verification scan." },
+                { id: "LW-OPD-06", description: "Weigh and record final parcel dimensions and weight.", priority: "Medium", riskLevel: "Medium", consequence: "Incorrect shipping charges.", proof: "Shipping system data entry." },
+                { id: "LW-OPD-07", description: "Stage packed orders in the correct lane for courier pickup.", priority: "High", riskLevel: "Low", consequence: "Missed courier pickups, delays.", proof: "Photo of staged orders." },
+                { id: "LW-OPD-08", description: "Generate and hand over the shipping manifest to the courier.", priority: "High", riskLevel: "Medium", consequence: "Disputes with courier over number of parcels collected.", proof: "Signed courier manifest." }
             ]
         },
         {
-            "title": "Warehouse Safety & EHS",
-            "department": "EHS",
-            "frequency": "Weekly",
-            "role": "Safety Officer",
-            "summary": "A weekly audit to ensure a safe working environment and compliance with EHS regulations.",
-            "icon": "hard-hat",
-            "tasks": [
-                { "id": "LW-EHS-01", "description": "Check all fire extinguishers, hoses, and alarms are accessible and inspected.", "priority": "High", "riskLevel": "High", "consequence": "Inability to respond to a fire.", "proof": "Fire equipment inspection log." },
-                { "id": "LW-EHS-02", "description": "Ensure all emergency exits and evacuation routes are clear and well-lit.", "priority": "High", "riskLevel": "High", "consequence": "Blocked escape route during an emergency.", "proof": "Dated photo of clear routes." },
-                { "id": "LW-EHS-03", "description": "Verify that first-aid stations and eyewash stations are stocked and accessible.", "priority": "High", "riskLevel": "Medium", "consequence": "Delayed response to injury.", "proof": "First-aid kit checklist." },
-                { "id": "LW-EHS-04", "description": "Inspect Material Handling Equipment (MHE) for daily pre-use check completion.", "priority": "High", "riskLevel": "High", "consequence": "MHE accident due to faulty equipment.", "proof": "Review of operator pre-use checklists." },
-                { "id": "LW-EHS-05", "description": "Check that all staff in designated areas are using required PPE.", "priority": "High", "riskLevel": "Medium", "consequence": "Personal injuries.", "proof": "Safety observation report." },
-                { "id": "LW-EHS-06", "description": "Verify battery charging stations for forklifts are safe, ventilated, and have spill kits.", "priority": "High", "riskLevel": "High", "consequence": "Battery explosion, acid spills.", "proof": "Charging station inspection log." },
-                { "id": "LW-EHS-07", "description": "Audit chemical storage area for proper labeling, segregation, and SDS availability.", "priority": "High", "riskLevel": "High", "consequence": "Chemical spill, fire, employee exposure.", "proof": "Chemical storage audit form." },
-                { "id": "LW-EHS-08", "description": "Review recent incident/near-miss reports and check status of corrective actions.", "priority": "High", "riskLevel": "Medium", "consequence": "Failure to learn from incidents, leading to recurrence.", "proof": "Review of incident log and CAPA tracker." }
+            title: "Warehouse Safety & EHS",
+            department: "EHS",
+            frequency: "Weekly",
+            role: "Safety Officer",
+            summary: "A weekly audit to ensure a safe working environment and compliance with EHS regulations.",
+            icon: "hard-hat",
+            tasks: [
+                { id: "LW-EHS-01", description: "Check all fire extinguishers, hoses, and alarms are accessible and inspected.", priority: "High", riskLevel: "High", consequence: "Inability to respond to a fire.", proof: "Fire equipment inspection log." },
+                { id: "LW-EHS-02", description: "Ensure all emergency exits and evacuation routes are clear and well-lit.", priority: "High", riskLevel: "High", consequence: "Blocked escape route during an emergency.", proof: "Dated photo of clear routes." },
+                { id: "LW-EHS-03", description: "Verify that first-aid stations and eyewash stations are stocked and accessible.", priority: "High", riskLevel: "Medium", consequence: "Delayed response to injury.", proof: "First-aid kit checklist." },
+                { id: "LW-EHS-04", description: "Inspect Material Handling Equipment (MHE) for daily pre-use check completion.", priority: "High", riskLevel: "High", consequence: "MHE accident due to faulty equipment.", proof: "Review of operator pre-use checklists." },
+                { id: "LW-EHS-05", description: "Check that all staff in designated areas are using required PPE.", priority: "High", riskLevel: "Medium", consequence: "Personal injuries.", proof: "Safety observation report." },
+                { id: "LW-EHS-06", description: "Verify battery charging stations for forklifts are safe, ventilated, and have spill kits.", priority: "High", riskLevel: "High", consequence: "Battery explosion, acid spills.", proof: "Charging station inspection log." },
+                { id: "LW-EHS-07", description: "Audit chemical storage area for proper labeling, segregation, and SDS availability.", priority: "High", riskLevel: "High", consequence: "Chemical spill, fire, employee exposure.", proof: "Chemical storage audit form." },
+                { id: "LW-EHS-08", description: "Review recent incident/near-miss reports and check status of corrective actions.", priority: "High", riskLevel: "Medium", consequence: "Failure to learn from incidents, leading to recurrence.", proof: "Review of incident log and CAPA tracker." }
             ]
         },
         {
@@ -2093,94 +2093,94 @@ const manufacturing_operations_ehs_pack: PremiumPack = {
     ],
     checklists: [
         {
-            "title": "Daily Production Kick-off",
-            "department": "Production",
-            "frequency": "Daily",
-            "role": "Shift Supervisor",
-            "summary": "Ensures the production line is ready, safe, and aligned with the day's targets before starting operations.",
-            "icon": "clipboard-check",
-            "tasks": [
-                { "id": "MFG-DPK-01", "description": "Review shift handover log from the previous shift for any issues or pending actions.", "priority": "High", "riskLevel": "Medium", "consequence": "Recurring issues are not resolved, leading to repeated downtime or quality deviations.", "proof": "Signed handover logbook." },
-                { "id": "MFG-DPK-02", "description": "Conduct a toolbox talk covering the day's production targets, safety focus, and quality alerts.", "priority": "High", "riskLevel": "Low", "consequence": "Team is misaligned on priorities, increased risk of accidents or quality errors.", "proof": "Toolbox talk attendance sheet and topic notes." },
-                { "id": "MFG-DPK-03", "description": "Verify that raw material availability for the first 4 hours of production is confirmed.", "priority": "High", "riskLevel": "High", "consequence": "Line stoppage due to material shortage, impacting entire day's output.", "proof": "Material staging confirmation from stores." },
-                { "id": "MFG-DPK-04", "description": "Check that all machine safety guards are in place and emergency stops are functional.", "priority": "High", "riskLevel": "High", "consequence": "Catastrophic injury or fatality.", "proof": "Pre-startup safety checklist signed by operator and supervisor." },
-                { "id": "MFG-DPK-05", "description": "Ensure all operators are at their assigned stations and wearing the correct Personal Protective Equipment (PPE).", "priority": "High", "riskLevel": "Medium", "consequence": "Workplace injuries, non-compliance with safety regulations.", "proof": "Supervisor's visual inspection." },
-                { "id": "MFG-DPK-06", "description": "Review the day's production schedule and ensure the first job's parameters are correctly set on the machines.", "priority": "High", "riskLevel": "Medium", "consequence": "Production of non-conforming product, significant rework or scrap.", "proof": "First-off inspection report." },
-                { "id": "MFG-DPK-07", "description": "Confirm that the quality control station is ready with the required gauges, checklists, and sample containers.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Inability to perform in-process quality checks, leading to defect production.", "proof": "QC station readiness checklist." },
-                { "id": "MFG-DPK-08", "description": "Check that the area is clean, well-lit, and free from slip, trip, or fall hazards.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Workplace accidents, reduced efficiency.", "proof": "5S audit checklist for the area." }
+            title: "Daily Production Kick-off",
+            department: "Production",
+            frequency: "Daily",
+            role: "Shift Supervisor",
+            summary: "Ensures the production line is ready, safe, and aligned with the day's targets before starting operations.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "MFG-DPK-01", description: "Review shift handover log from the previous shift for any issues or pending actions.", priority: "High", riskLevel: "Medium", consequence: "Recurring issues are not resolved, leading to repeated downtime or quality deviations.", proof: "Signed handover logbook." },
+                { id: "MFG-DPK-02", description: "Conduct a toolbox talk covering the day's production targets, safety focus, and quality alerts.", priority: "High", riskLevel: "Low", consequence: "Team is misaligned on priorities, increased risk of accidents or quality errors.", proof: "Toolbox talk attendance sheet and topic notes." },
+                { id: "MFG-DPK-03", description: "Verify that raw material availability for the first 4 hours of production is confirmed.", priority: "High", riskLevel: "High", consequence: "Line stoppage due to material shortage, impacting entire day's output.", proof: "Material staging confirmation from stores." },
+                { id: "MFG-DPK-04", description: "Check that all machine safety guards are in place and emergency stops are functional.", priority: "High", riskLevel: "High", consequence: "Catastrophic injury or fatality.", proof: "Pre-startup safety checklist signed by operator and supervisor." },
+                { id: "MFG-DPK-05", description: "Ensure all operators are at their assigned stations and wearing the correct Personal Protective Equipment (PPE).", priority: "High", riskLevel: "Medium", consequence: "Workplace injuries, non-compliance with safety regulations.", proof: "Supervisor's visual inspection." },
+                { id: "MFG-DPK-06", description: "Review the day's production schedule and ensure the first job's parameters are correctly set on the machines.", priority: "High", riskLevel: "Medium", consequence: "Production of non-conforming product, significant rework or scrap.", proof: "First-off inspection report." },
+                { id: "MFG-DPK-07", description: "Confirm that the quality control station is ready with the required gauges, checklists, and sample containers.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to perform in-process quality checks, leading to defect production.", proof: "QC station readiness checklist." },
+                { id: "MFG-DPK-08", description: "Check that the area is clean, well-lit, and free from slip, trip, or fall hazards.", priority: "Medium", riskLevel: "Medium", consequence: "Workplace accidents, reduced efficiency.", proof: "5S audit checklist for the area." }
             ]
         },
         {
-            "title": "Lock-Out Tag-Out (LOTO)",
-            "department": "Maintenance/EHS",
-            "frequency": "Per Maintenance Task",
-            "role": "Maintenance Technician",
-            "summary": "A safety procedure to ensure dangerous machines are properly shut off and not started up again prior to the completion of maintenance or servicing work.",
-            "icon": "lock",
-            "tasks": [
-                { "id": "MFG-LOTO-01", "description": "Notify all affected employees of the impending shutdown and the LOTO procedure.", "priority": "High", "riskLevel": "High", "consequence": "Unexpected shutdown causes process issues; employees unaware of maintenance work.", "proof": "Log of communication." },
-                { "id": "MFG-LOTO-02", "description": "Shut down the machine or equipment using the normal stopping procedure.", "priority": "High", "riskLevel": "High", "consequence": "Unsafe shutdown could damage equipment or leave it in a hazardous state.", "proof": "Operator confirmation." },
-                { "id": "MFG-LOTO-03", "description": "Isolate all energy sources (electrical, hydraulic, pneumatic, etc.) as per the machine-specific LOTO chart.", "priority": "High", "riskLevel": "High", "consequence": "Stored energy can cause unexpected movement, leading to fatal injury.", "proof": "LOTO checklist with each energy source ticked off." },
-                { "id": "MFG-LOTO-04", "description": "Apply assigned, individual locks and tags to each energy isolating device.", "priority": "High", "riskLevel": "High", "consequence": "Another worker could accidentally re-energize the machine.", "proof": "Photo of the applied locks and tags." },
-                { "id": "MFG-LOTO-05", "description": "Release or restrain all stored energy (e.g., bleed pneumatic lines, block elevated parts).", "priority": "High", "riskLevel": "High", "consequence": "Injury from unexpected release of residual energy.", "proof": "LOTO checklist verification." },
-                { "id": "MFG-LOTO-06", "description": "VERIFY isolation by attempting to start the machine using the normal start button. This is the most critical step.", "priority": "High", "riskLevel": "High", "consequence": "Assuming the machine is de-energized when it is not, leading to fatality.", "proof": "Signature on the LOTO permit confirming verification." },
-                { "id": "MFG-LOTO-07", "description": "Upon work completion, inspect the area and remove all tools.", "priority": "High", "riskLevel": "Medium", "consequence": "Tools left in machine can cause damage on startup.", "proof": "Work area clearance check." },
-                { "id": "MFG-LOTO-08", "description": "Notify all affected employees that LOTO is being removed and the machine will be re-energized.", "priority": "High", "riskLevel": "Medium", "consequence": "Unexpected startup injures someone not directly involved in maintenance.", "proof": "Log of communication." },
-                { "id": "MFG-LOTO-09", "description": "Remove LOTO devices. Each worker must remove their own lock.", "priority": "High", "riskLevel": "High", "consequence": "A lock removed by someone else could lead to startup while a worker is still inside.", "proof": "LOTO permit close-out signatures." }
+            title: "Lock-Out Tag-Out (LOTO)",
+            department: "Maintenance/EHS",
+            frequency: "Per Maintenance Task",
+            role: "Maintenance Technician",
+            summary: "A safety procedure to ensure dangerous machines are properly shut off and not started up again prior to the completion of maintenance or servicing work.",
+            icon: "lock",
+            tasks: [
+                { id: "MFG-LOTO-01", description: "Notify all affected employees of the impending shutdown and the LOTO procedure.", priority: "High", riskLevel: "High", consequence: "Unexpected shutdown causes process issues; employees unaware of maintenance work.", proof: "Log of communication." },
+                { id: "MFG-LOTO-02", description: "Shut down the machine or equipment using the normal stopping procedure.", priority: "High", riskLevel: "High", consequence: "Unsafe shutdown could damage equipment or leave it in a hazardous state.", proof: "Operator confirmation." },
+                { id: "MFG-LOTO-03", description: "Isolate all energy sources (electrical, hydraulic, pneumatic, etc.) as per the machine-specific LOTO chart.", priority: "High", riskLevel: "High", consequence: "Stored energy can cause unexpected movement, leading to fatal injury.", proof: "LOTO checklist with each energy source ticked off." },
+                { id: "MFG-LOTO-04", description: "Apply assigned, individual locks and tags to each energy isolating device.", priority: "High", riskLevel: "High", consequence: "Another worker could accidentally re-energize the machine.", proof: "Photo of the applied locks and tags." },
+                { id: "MFG-LOTO-05", description: "Release or restrain all stored energy (e.g., bleed pneumatic lines, block elevated parts).", priority: "High", riskLevel: "High", consequence: "Injury from unexpected release of residual energy.", proof: "LOTO checklist verification." },
+                { id: "MFG-LOTO-06", description: "VERIFY isolation by attempting to start the machine using the normal start button. This is the most critical step.", priority: "High", riskLevel: "High", consequence: "Assuming the machine is de-energized when it is not, leading to fatality.", proof: "Signature on the LOTO permit confirming verification." },
+                { id: "MFG-LOTO-07", description: "Upon work completion, inspect the area and remove all tools.", priority: "High", riskLevel: "Medium", consequence: "Tools left in machine can cause damage on startup.", proof: "Work area clearance check." },
+                { id: "MFG-LOTO-08", description: "Notify all affected employees that LOTO is being removed and the machine will be re-energized.", priority: "High", riskLevel: "Medium", consequence: "Unexpected startup injures someone not directly involved in maintenance.", proof: "Log of communication." },
+                { id: "MFG-LOTO-09", description: "Remove LOTO devices. Each worker must remove their own lock.", priority: "High", riskLevel: "High", consequence: "A lock removed by someone else could lead to startup while a worker is still inside.", proof: "LOTO permit close-out signatures." }
             ]
         },
         {
-            "title": "Permit to Work (PTW) - Hot Work",
-            "department": "EHS/Maintenance",
-            "frequency": "Per Hot Work Task",
-            "role": "Area In-charge/Safety Officer",
-            "summary": "A formal documented process to control high-risk activities like welding, grinding, or cutting in non-designated areas.",
-            "icon": "file-check",
-            "tasks": [
-                { "id": "MFG-PTW-01", "description": "Identify all combustible materials within a 35-foot (11-meter) radius of the hot work.", "priority": "High", "riskLevel": "High", "consequence": "Fire and explosion.", "proof": "Signed PTW form." },
-                { "id": "MFG-PTW-02", "description": "Move combustibles to a safe distance or cover them with fire-retardant blankets.", "priority": "High", "riskLevel": "High", "consequence": "Sparks igniting nearby materials.", "proof": "Photo of the prepared work area." },
-                { "id": "MFG-PTW-03", "description": "Ensure a trained fire watch is assigned and present for the duration of the work and for 30 minutes after.", "priority": "High", "riskLevel": "High", "consequence": "Inability to extinguish a small fire before it spreads.", "proof": "Fire watch named on the PTW." },
-                { "id": "MFG-PTW-04", "description": "Ensure a fully charged fire extinguisher of the correct type is immediately available.", "priority": "High", "riskLevel": "High", "consequence": "Fire cannot be controlled at inception.", "proof": "Visual check documented on PTW." },
-                { "id": "MFG-PTW-05", "description": "Seal all floor and wall openings to prevent sparks from traveling to other areas.", "priority": "High", "riskLevel": "Medium", "consequence": "Fire starting in an unseen area.", "proof": "Photo of sealed openings." },
-                { "id": "MFG-PTW-06", "description": "Verify that any sprinkler systems in the area are operational.", "priority": "High", "riskLevel": "High", "consequence": "Primary fire suppression system is not ready.", "proof": "Check with engineering department." },
-                { "id": "MFG-PTW-07", "description": "Authorize and issue the permit for a specific time frame only.", "priority": "High", "riskLevel": "Low", "consequence": "Work continues without re-assessment of changing conditions.", "proof": "Signed and dated PTW with start/end times." },
-                { "id": "MFG-PTW-08", "description": "Upon completion, the fire watch and permit issuer must inspect the area for smoldering fires before closing the permit.", "priority": "High", "riskLevel": "High", "consequence": "A fire starting after the work crew has left.", "proof": "Final sign-off on the PTW." }
+            title: "Permit to Work (PTW) - Hot Work",
+            department: "EHS/Maintenance",
+            frequency: "Per Hot Work Task",
+            role: "Area In-charge/Safety Officer",
+            summary: "A formal documented process to control high-risk activities like welding, grinding, or cutting in non-designated areas.",
+            icon: "file-check",
+            tasks: [
+                { id: "MFG-PTW-01", description: "Identify all combustible materials within a 35-foot (11-meter) radius of the hot work.", priority: "High", riskLevel: "High", consequence: "Fire and explosion.", proof: "Signed PTW form." },
+                { id: "MFG-PTW-02", description: "Move combustibles to a safe distance or cover them with fire-retardant blankets.", priority: "High", riskLevel: "High", consequence: "Sparks igniting nearby materials.", proof: "Photo of the prepared work area." },
+                { id: "MFG-PTW-03", description: "Ensure a trained fire watch is assigned and present for the duration of the work and for 30 minutes after.", priority: "High", riskLevel: "High", consequence: "Inability to extinguish a small fire before it spreads.", proof: "Fire watch named on the PTW." },
+                { id: "MFG-PTW-04", description: "Ensure a fully charged fire extinguisher of the correct type is immediately available.", priority: "High", riskLevel: "High", consequence: "Fire cannot be controlled at inception.", proof: "Visual check documented on PTW." },
+                { id: "MFG-PTW-05", description: "Seal all floor and wall openings to prevent sparks from traveling to other areas.", priority: "High", riskLevel: "Medium", consequence: "Fire starting in an unseen area.", proof: "Photo of sealed openings." },
+                { id: "MFG-PTW-06", description: "Verify that any sprinkler systems in the area are operational.", priority: "High", riskLevel: "High", consequence: "Primary fire suppression system is not ready.", proof: "Check with engineering department." },
+                { id: "MFG-PTW-07", description: "Authorize and issue the permit for a specific time frame only.", priority: "High", riskLevel: "Low", consequence: "Work continues without re-assessment of changing conditions.", proof: "Signed and dated PTW with start/end times." },
+                { id: "MFG-PTW-08", description: "Upon completion, the fire watch and permit issuer must inspect the area for smoldering fires before closing the permit.", priority: "High", riskLevel: "High", consequence: "A fire starting after the work crew has left.", proof: "Final sign-off on the PTW." }
             ]
         },
         {
-            "title": "In-Process Quality Control (IPQC)",
-            "department": "Quality",
-            "frequency": "Hourly/Per Batch",
-            "role": "QC Inspector",
-            "summary": "Verifies that products meet quality standards at various stages of the production process to prevent large-scale defects.",
-            "icon": "clipboard-check",
-            "tasks": [
-                { "id": "MFG-QC-01", "description": "First-Off Approval: Inspect the first part produced after any new setup against all drawing specifications.", "priority": "High", "riskLevel": "High", "consequence": "Entire batch produced with a defect from the start.", "proof": "Signed First-Off Inspection Report." },
-                { "id": "MFG-QC-02", "description": "Random Sampling: Collect and inspect a random sample of products from the line at a set frequency (e.g., 5 pieces per hour).", "priority": "High", "riskLevel": "Medium", "consequence": "Process deviations go undetected, leading to large amounts of scrap.", "proof": "IPQC log sheet with measurements." },
-                { "id": "MFG-QC-03", "description": "Verify machine parameters (e.g., temperature, pressure, speed) match the approved process sheet.", "priority": "High", "riskLevel": "Medium", "consequence": "Product produced outside of validated process window.", "proof": "Parameter check log." },
-                { "id": "MFG-QC-04", "description": "Check calibration status of all measuring instruments and gauges being used.", "priority": "High", "riskLevel": "High", "consequence": "Making decisions based on faulty measurements.", "proof": "Valid calibration stickers on all instruments." },
-                { "id": "MFG-QC-05", "description": "If a non-conformance is found, immediately hold the batch and escalate to the Production Supervisor.", "priority": "High", "riskLevel": "High", "consequence": "Defective products are mixed with good products or shipped to customer.", "proof": "Hold tag on the material and entry in the NC log." },
-                { "id": "MFG-QC-06", "description": "Document all inspection results, including measurements and pass/fail status.", "priority": "High", "riskLevel": "Medium", "consequence": "No data for traceability, root cause analysis, or process improvement.", "proof": "Completed IPQC records." },
-                { "id": "MFG-QC-07", "description": "Verify that operators are following the standard operating procedures (SOPs) for their process.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Process variations due to operator error.", "proof": "Operator audit checklist." },
-                { "id": "MFG-QC-08", "description": "Ensure all non-conforming material is clearly identified and moved to a designated quarantine area.", "priority": "High", "riskLevel": "High", "consequence": "Accidental use of defective parts.", "proof": "Photo of quarantined material with hold tag." }
+            title: "In-Process Quality Control (IPQC)",
+            department: "Quality",
+            frequency: "Hourly/Per Batch",
+            role: "QC Inspector",
+            summary: "Verifies that products meet quality standards at various stages of the production process to prevent large-scale defects.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "MFG-QC-01", description: "First-Off Approval: Inspect the first part produced after any new setup against all drawing specifications.", priority: "High", riskLevel: "High", consequence: "Entire batch produced with a defect from the start.", proof: "Signed First-Off Inspection Report." },
+                { id: "MFG-QC-02", description: "Random Sampling: Collect and inspect a random sample of products from the line at a set frequency (e.g., 5 pieces per hour).", priority: "High", riskLevel: "Medium", consequence: "Process deviations go undetected, leading to large amounts of scrap.", proof: "IPQC log sheet with measurements." },
+                { id: "MFG-QC-03", description: "Verify machine parameters (e.g., temperature, pressure, speed) match the approved process sheet.", priority: "High", riskLevel: "Medium", consequence: "Product produced outside of validated process window.", proof: "Parameter check log." },
+                { id: "MFG-QC-04", description: "Check calibration status of all measuring instruments and gauges being used.", priority: "High", riskLevel: "High", consequence: "Making decisions based on faulty measurements.", proof: "Valid calibration stickers on all instruments." },
+                { id: "MFG-QC-05", description: "If a non-conformance is found, immediately hold the batch and escalate to the Production Supervisor.", priority: "High", riskLevel: "High", consequence: "Defective products are mixed with good products or shipped to customer.", proof: "Hold tag on the material and entry in the NC log." },
+                { id: "MFG-QC-06", description: "Document all inspection results, including measurements and pass/fail status.", priority: "High", riskLevel: "Medium", consequence: "No data for traceability, root cause analysis, or process improvement.", proof: "Completed IPQC records." },
+                { id: "MFG-QC-07", description: "Verify that operators are following the standard operating procedures (SOPs) for their process.", priority: "Medium", riskLevel: "Medium", consequence: "Process variations due to operator error.", proof: "Operator audit checklist." },
+                { id: "MFG-QC-08", description: "Ensure all non-conforming material is clearly identified and moved to a designated quarantine area.", priority: "High", riskLevel: "High", consequence: "Accidental use of defective parts.", proof: "Photo of quarantined material with hold tag." }
             ]
         },
         {
-            "title": "Chemical Handling & Storage",
-            "department": "EHS",
-            "frequency": "Weekly",
-            "role": "EHS Officer",
-            "summary": "Ensures safe handling and storage of hazardous chemicals to prevent spills, fires, and employee exposure.",
-            "icon": "test-tube",
-            "tasks": [
-                { "id": "MFG-CHS-01", "description": "Verify all chemical containers are correctly labeled with name, hazard symbols, and PPE requirements.", "priority": "High", "riskLevel": "High", "consequence": "Misidentification of chemical leading to incorrect use or dangerous reaction.", "proof": "Photo audit of chemical storage area." },
-                { "id": "MFG-CHS-02", "description": "Ensure Safety Data Sheets (SDS/MSDS) are readily available for all chemicals on site.", "priority": "High", "riskLevel": "High", "consequence": "Inability to respond correctly to a spill or exposure incident.", "proof": "Index of available SDS files." },
-                { "id": "MFG-CHS-03", "description": "Check that incompatible chemicals (e.g., acids and bases) are stored in separate, designated areas.", "priority": "High", "riskLevel": "High", "consequence": "Violent chemical reaction, fire, or toxic gas release.", "proof": "Inspection of chemical storage cabinets/rooms." },
-                { "id": "MFG-CHS-04", "description": "Inspect chemical storage areas for leaks, spills, and proper ventilation.", "priority": "High", "riskLevel": "Medium", "consequence": "Employee exposure to fumes, slip hazards, environmental contamination.", "proof": "Weekly storage area inspection log." },
-                { "id": "MFG-CHS-05", "description": "Verify that appropriate spill kits are available, fully stocked, and accessible.", "priority": "High", "riskLevel": "High", "consequence": "A small spill becomes a major incident.", "proof": "Spill kit inventory checklist." },
-                { "id": "MFG-CHS-06", "description": "Ensure that emergency eyewash stations and safety showers are unobstructed and tested weekly.", "priority": "High", "riskLevel": "High", "consequence": "Inability to decontaminate after a chemical splash, leading to severe injury.", "proof": "Weekly test log for eyewash/showers." },
-                { "id": "MFG-CHS-07", "description": "Confirm all employees handling chemicals have received specific training and are using correct PPE.", "priority": "High", "riskLevel": "High", "consequence": "Chemical burns, respiratory damage, long-term health effects.", "proof": "Review of training records and direct observation." },
-                { "id": "MFG-CHS-08", "description": "Ensure all chemical waste is accumulated in properly labeled, closed containers for disposal by an authorized vendor.", "priority": "High", "riskLevel": "High", "consequence": "Environmental violations, fines, danger to waste handlers.", "proof": "Inspection of hazardous waste accumulation point." }
+            title: "Chemical Handling & Storage",
+            department: "EHS",
+            frequency: "Weekly",
+            role: "EHS Officer",
+            summary: "Ensures safe handling and storage of hazardous chemicals to prevent spills, fires, and employee exposure.",
+            icon: "test-tube",
+            tasks: [
+                { id: "MFG-CHS-01", description: "Verify all chemical containers are correctly labeled with name, hazard symbols, and PPE requirements.", priority: "High", riskLevel: "High", consequence: "Misidentification of chemical leading to incorrect use or dangerous reaction.", proof: "Photo audit of chemical storage area." },
+                { id: "MFG-CHS-02", description: "Ensure Safety Data Sheets (SDS/MSDS) are readily available for all chemicals on site.", priority: "High", riskLevel: "High", consequence: "Inability to respond correctly to a spill or exposure incident.", proof: "Index of available SDS files." },
+                { id: "MFG-CHS-03", description: "Check that incompatible chemicals (e.g., acids and bases) are stored in separate, designated areas.", priority: "High", riskLevel: "High", consequence: "Violent chemical reaction, fire, or toxic gas release.", proof: "Inspection of chemical storage cabinets/rooms." },
+                { id: "MFG-CHS-04", description: "Inspect chemical storage areas for leaks, spills, and proper ventilation.", priority: "High", riskLevel: "Medium", consequence: "Employee exposure to fumes, slip hazards, environmental contamination.", proof: "Weekly storage area inspection log." },
+                { id: "MFG-CHS-05", description: "Verify that appropriate spill kits are available, fully stocked, and accessible.", priority: "High", riskLevel: "High", consequence: "A small spill becomes a major incident.", proof: "Spill kit inventory checklist." },
+                { id: "MFG-CHS-06", description: "Ensure that emergency eyewash stations and safety showers are unobstructed and tested weekly.", priority: "High", riskLevel: "High", consequence: "Inability to decontaminate after a chemical splash, leading to severe injury.", proof: "Weekly test log for eyewash/showers." },
+                { id: "MFG-CHS-07", description: "Confirm all employees handling chemicals have received specific training and are using correct PPE.", priority: "High", riskLevel: "High", consequence: "Chemical burns, respiratory damage, long-term health effects.", proof: "Review of training records and direct observation." },
+                { id: "MFG-CHS-08", description: "Ensure all chemical waste is accumulated in properly labeled, closed containers for disposal by an authorized vendor.", priority: "High", riskLevel: "High", consequence: "Environmental violations, fines, danger to waste handlers.", proof: "Inspection of hazardous waste accumulation point." }
             ]
         }
     ]
@@ -2206,7 +2206,82 @@ const pharmacy_ops_pack: PremiumPack = {
         { text: "Improve patient counseling with checklists for providing clear instructions on medication usage and side effects.", icon: "user-check" },
         { text: "Run a clean and professional pharmacy with daily checklists for hygiene, organization, and stock arrangement.", icon: "sparkles" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Prescription Dispensing & Verification",
+            department: "Pharmacy",
+            frequency: "Per Prescription",
+            role: "Pharmacist",
+            summary: "A critical checklist to prevent medication errors during the dispensing process.",
+            icon: "file-check",
+            tasks: [
+                { id: "POP-DV-01", description: "Verify patient identity using two identifiers (e.g., name and phone number).", priority: "High", riskLevel: "High", consequence: "Dispensing medication to the wrong patient.", proof: "Patient confirmation." },
+                { id: "POP-DV-02", description: "Check prescription for completeness and legality (Doctor's name, registration, date).", priority: "High", riskLevel: "High", consequence: "Dispensing against an invalid prescription.", proof: "Pharmacist's initial on prescription." },
+                { id: "POP-DV-03", description: "Review patient's medication history for potential allergies or interactions.", priority: "High", riskLevel: "High", consequence: "Adverse drug reaction.", proof: "Note in patient's profile in the pharmacy software." },
+                { id: "POP-DV-04", description: "Select the correct drug from the shelf, verifying the name and strength against the prescription (first check).", priority: "High", riskLevel: "High", consequence: "Wrong drug or strength dispensed.", proof: "Pharmacist's workflow." },
+                { id: "POP-DV-05", description: "Count/measure the correct quantity of the medication.", priority: "High", riskLevel: "Medium", consequence: "Incorrect dose dispensed.", proof: "Pharmacist's workflow." },
+                { id: "POP-DV-06", description: "A second pharmacist or qualified technician must independently double-check the dispensed drug, strength, and quantity against the original prescription (second check).", priority: "High", riskLevel: "High", consequence: "Failure to catch a primary dispensing error.", proof: "Dual initials on the prescription label." },
+                { id: "POP-DV-07", description: "Label the medication container accurately with patient name, drug name, strength, dosage instructions, and expiry date.", priority: "High", riskLevel: "High", consequence: "Patient takes medication incorrectly.", proof: "Printed label." },
+                { id: "POP-DV-08", description: "Provide verbal counseling to the patient on how to take the medication, common side effects, and storage instructions.", priority: "High", riskLevel: "Medium", consequence: "Poor patient compliance, adverse effects.", proof: "Pharmacist's note in system." },
+                { id: "POP-DV-09", description: "Offer to answer any questions the patient may have.", priority: "Medium", riskLevel: "Low", consequence: "Patient leaves with unanswered questions, leading to non-compliance.", proof: "Pharmacist's interaction." },
+                { id: "POP-DV-10", description: "File the original prescription for record-keeping as required by law.", priority: "High", riskLevel: "Medium", consequence: "Non-compliance with regulatory requirements.", proof: "Filed prescription." }
+            ]
+        },
+        {
+            title: "Cold Chain & Temperature Management",
+            department: "Inventory/Pharmacy",
+            frequency: "Daily",
+            role: "Pharmacy Technician",
+            summary: "Ensures that temperature-sensitive medications like vaccines and insulin are stored correctly to maintain efficacy.",
+            icon: "thermometer",
+            tasks: [
+                { id: "POP-CC-01", description: "Record the temperature of the medication refrigerator and freezer twice daily (morning and evening).", priority: "High", riskLevel: "High", consequence: "Vaccines and other biologics become ineffective, major financial loss.", proof: "Temperature logbook." },
+                { id: "POP-CC-02", description: "Ensure the temperature is within the critical range (2°C to 8°C for refrigerators).", priority: "High", riskLevel: "High", consequence: "Potentially administering denatured and ineffective medication.", proof: "Temperature logbook." },
+                { id: "POP-CC-03", description: "Check that the refrigerator/freezer doors are properly sealed and not left open.", priority: "Medium", riskLevel: "Medium", consequence: "Temperature fluctuations.", proof: "Visual inspection." },
+                { id: "POP-CC-04", description: "Do not store food or drink in the medication refrigerator.", priority: "High", riskLevel: "Medium", consequence: "Contamination, temperature instability.", proof: "Visual inspection." },
+                { id: "POP-CC-05", description: "Check and log temperature of incoming cold chain shipments before accepting them.", priority: "High", riskLevel: "High", consequence: "Accepting a compromised shipment into inventory.", proof: "Inbound temperature log." },
+                { id: "POP-CC-06", description: "Immediately transfer incoming cold chain items to the refrigerator.", priority: "High", riskLevel: "High", consequence: "Breaking the cold chain.", proof: "Receiving workflow." },
+                { id: "POP-CC-07", description: "Ensure the refrigerator has a calibrated thermometer and a temperature alarm.", priority: "High", riskLevel: "High", consequence: "Inability to detect a temperature excursion.", proof: "Annual calibration certificate for thermometer." },
+                { id: "POP-CC-08", description: "Have a documented action plan in case of a power failure or temperature excursion.", priority: "High", riskLevel: "High", consequence: "Chaos and potential loss of entire inventory during an emergency.", proof: "Posted emergency action plan." }
+            ]
+        },
+        {
+            title: "Narcotic & Controlled Substance Management",
+            department: "Pharmacy/Compliance",
+            frequency: "Daily/Weekly",
+            role: "Pharmacist-in-Charge",
+            summary: "Ensures strict compliance with laws governing the storage, dispensing, and documentation of controlled substances.",
+            icon: "lock",
+            tasks: [
+                { id: "POP-CS-01", description: "Store all narcotic and psychotropic drugs in a double-locked, securely fixed safe or cabinet.", priority: "High", riskLevel: "High", consequence: "Drug diversion, theft, severe legal penalties.", proof: "Photo of the secure storage." },
+                { id: "POP-CS-02", description: "Maintain a perpetual inventory log for all controlled substances.", priority: "High", riskLevel: "High", consequence: "Inability to track inventory, masking potential theft.", proof: "Controlled substance register." },
+                { id: "POP-CS-03", description: "Conduct a physical inventory count of all controlled substances at every shift change, with two pharmacists signing off.", priority: "High", riskLevel: "High", consequence: "Discrepancies go undetected for long periods.", proof: "Signed shift change count sheet." },
+                { id: "POP-CS-04", description: "Verify that all prescriptions for controlled substances are original, valid, and non-tampered.", priority: "High", riskLevel: "High", consequence: "Dispensing against fraudulent prescriptions.", proof: "Prescription verification checklist." },
+                { id: "POP-CS-05", description: "Document every dispensing of a controlled substance in the register, including patient, doctor, and prescription details.", priority: "High", riskLevel: "High", consequence: "Failure to maintain audit trail required by law.", proof: "Register entry for each transaction." },
+                { id: "POP-CS-06", description: "Report any loss or theft of controlled substances to the regulatory authorities within 24 hours.", priority: "High", riskLevel: "High", consequence: "Legal penalties for non-reporting.", proof: "Copy of the incident report filed." },
+                { id: "POP-CS-07", description: "Segregate and securely store expired or damaged controlled substances for destruction.", priority: "High", riskLevel: "High", consequence: "Risk of diversion.", proof: "Expired narcotics log." },
+                { id: "POP-CS-08", description: "Ensure access to the controlled substance safe is restricted to a minimum number of authorized pharmacists.", priority: "High", riskLevel: "High", consequence: "Increased opportunity for diversion.", proof: "Access log for the safe." }
+            ]
+        },
+        {
+            title: "Inventory & Expiry Management",
+            department: "Inventory",
+            frequency: "Monthly",
+            role: "Inventory Manager",
+            summary: "A system to minimize waste, prevent stockouts, and ensure no expired medication reaches a patient.",
+            icon: "calendar-clock",
+            tasks: [
+                { id: "POP-EM-01", description: "Conduct monthly checks for short-dated stock (expiring within 3-6 months).", priority: "High", riskLevel: "Medium", consequence: "Financial loss due to expired stock.", proof: "Short-dated stock list." },
+                { id: "POP-EM-02", description: "Implement a First-Expiry, First-Out (FEFO) system for stock rotation.", priority: "High", riskLevel: "Medium", consequence: "Selling newer stock first, leading to increased expiries.", proof: "Visual audit of shelf arrangement." },
+                { id: "POP-EM-03", description: "Remove any expired medication from shelves immediately and place in a designated quarantine area.", priority: "High", riskLevel: "High", consequence: "Accidentally dispensing expired medication, which is illegal and unsafe.", proof: "Quarantine bin log." },
+                { id: "POP-EM-04", description: "Perform weekly cycle counts on fast-moving items to ensure inventory accuracy.", priority: "Medium", riskLevel: "Medium", consequence: "Stockouts of common medications.", proof: "Cycle count records." },
+                { id: "POP-EM-05", description: "Follow a documented process for returning near-expiry drugs to suppliers where possible.", priority: "Medium", riskLevel: "Low", consequence: "Financial loss.", proof: "Supplier credit notes." },
+                { id: "POP-EM-06", description: "Ensure look-alike, sound-alike (LASA) medications are stored in separate, clearly marked locations.", priority: "High", riskLevel: "High", consequence: "High risk of dispensing the wrong medication with a similar name.", proof: "Photo of LASA drug storage." },
+                { id: "POP-EM-07", description: "Review and adjust reorder levels based on sales data to prevent overstocking.", priority: "Medium", riskLevel: "Low", consequence: "Capital tied up in slow-moving inventory.", proof: "Inventory system reorder level report." },
+                { id: "POP-EM-08", description: "Properly document and dispose of expired medications as per regulatory guidelines.", priority: "High", riskLevel: "High", consequence: "Environmental contamination, legal penalties.", proof: "Destruction certificate from disposal vendor." }
+            ]
+        },
+    ]
 };
 
 const bakery_confectionery_pack: PremiumPack = {
@@ -2374,7 +2449,7 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AV-VM-07", description: "Ensure all volunteers working with animals have signed a liability waiver.", priority: "High", riskLevel: "Medium", consequence: "Legal risk to the shelter in case of injury.", proof: "File of signed waivers.", location: "Office" },
                 { id: "AV-VM-08", description: "Recognize outstanding volunteers (e.g., 'Volunteer of the Month').", priority: "Low", riskLevel: "Low", consequence: "Poor volunteer retention.", proof: "Photo or announcement.", location: "Common Area/Social Media" },
                 { id: "AV-VM-09", description: "Supervise volunteers and provide constructive feedback.", priority: "Medium", riskLevel: "Low", consequence: "Tasks performed incorrectly.", proof: "Supervisor observation notes.", location: "All Areas" },
-                { id: "AV-VM-10", description: "Gather feedback from volunteers on their experience and suggestions.", priority: "Low", riskLevel: "Low", consequence: "Missed opportunities for process improvement.", "proof": "Volunteer suggestion box or survey results.", location: "Office" }
+                { id: "AV-VM-10", description: "Gather feedback from volunteers on their experience and suggestions.", priority: "Low", riskLevel: "Low", consequence: "Missed opportunities for process improvement.", proof: "Volunteer suggestion box or survey results.", location: "Office" }
             ]
         }
     ]
@@ -2481,6 +2556,7 @@ export const premiumPacks: PremiumPack[] = [
 
 
     
+
 
 
 
