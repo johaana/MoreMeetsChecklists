@@ -41,7 +41,9 @@ const HeroSection = () => (
                 <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05]" style={{ fontFamily: 'Inter Tight, sans-serif', color: 'hsl(var(--text-primary))', letterSpacing: '-0.02em' }}>
                     People forget.
                     <br/>
-                    Your business shouldn’t pay for it.
+                    Your business
+                    <br/>
+                    shouldn’t pay for it.
                 </h1>
                 <p className="text-lg max-w-[520px]" style={{color: 'hsl(var(--text-secondary))', lineHeight: 1.5}}>
                     When work lives in people’s heads, execution breaks
@@ -88,15 +90,15 @@ const CoreProblemSection = () => (
 );
 
 const WhatItIsSection = () => (
-    <Section id="what-it-is" style={{backgroundColor: 'hsl(var(--bg-secondary))'}}>
+    <Section id="what-it-is" style={{backgroundColor: 'hsl(var(--surface-light-contrast))'}}>
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--text-primary))'}}>MoreMeets is not software people need to “remember to use.”</h2>
+                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--bg-primary))'}}>MoreMeets is not software people need to “remember to use.”</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12" style={{color: 'hsl(var(--text-primary))'}}>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12" style={{color: 'hsl(var(--bg-primary))'}}>
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold flex items-center gap-2" style={{color: 'hsl(var(--accent-authority))'}}><Check className="w-5 h-5"/>What it IS</h3>
-                    <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-secondary))'}}>
+                    <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-on-light))'}}>
                         <li>A structured SOP framework</li>
                         <li>A library of best-practice operational standards</li>
                         <li>A way to turn experience into clear, repeatable steps</li>
@@ -107,7 +109,7 @@ const WhatItIsSection = () => (
                 </div>
                  <div className="space-y-4">
                     <h3 className="text-xl font-bold flex items-center gap-2" style={{color: 'hsl(var(--accent-risk))'}}><X className="w-5 h-5"/>What it’s NOT</h3>
-                     <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-secondary))'}}>
+                     <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-on-light))'}}>
                         <li>Not task enforcement</li>
                         <li>Not monitoring employees</li>
                         <li>Not reminders or notifications</li>
@@ -115,7 +117,7 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
             </div>
-            <p className="text-center text-lg font-medium mt-12" style={{color: 'hsl(var(--text-primary))'}}>MoreMeets doesn’t control people. It removes ambiguity from work.</p>
+            <p className="text-center text-lg font-medium mt-12" style={{color: 'hsl(var(--bg-primary))'}}>MoreMeets doesn’t control people. It removes ambiguity from work.</p>
         </div>
     </Section>
 );
@@ -175,23 +177,23 @@ const ComplianceSection = () => (
 );
 
 const WhoIsItForSection = () => (
-    <Section id="who-is-it-for" style={{backgroundColor: 'hsl(var(--bg-primary))'}}>
+    <Section id="who-is-it-for" style={{backgroundColor: 'hsl(var(--surface-light-contrast))'}}>
         <div className="container px-4 md:px-6 max-w-5xl mx-auto">
             <div className="text-center mb-12">
-                <SectionHeadline>Built for operators who are tired of firefighting</SectionHeadline>
+                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--bg-primary))'}}>Built for operators who are tired of firefighting</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="grid md:grid-cols-3 gap-8 text-center" style={{color: 'hsl(var(--bg-primary))'}}>
                 <div className="space-y-2">
-                    <h3 className="text-xl font-bold" style={{color: 'hsl(var(--text-primary))'}}>Founders & COOs</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
+                    <h3 className="text-xl font-bold">Founders & COOs</h3>
+                    <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-xl font-bold" style={{color: 'hsl(var(--text-primary))'}}>Operations & Quality Heads</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Clear standards. Easier audits. Less follow-up.</p>
+                    <h3 className="text-xl font-bold">Operations & Quality Heads</h3>
+                    <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Clear standards. Easier audits. Less follow-up.</p>
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-xl font-bold" style={{color: 'hsl(var(--text-primary))'}}>Multi-location Teams</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Same standards everywhere. Faster onboarding. Fewer surprises.</p>
+                    <h3 className="text-xl font-bold">Multi-location Teams</h3>
+                    <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Same standards everywhere. Faster onboarding. Fewer surprises.</p>
                 </div>
             </div>
         </div>
