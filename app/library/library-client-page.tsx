@@ -125,8 +125,8 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         </div>
                         
                         {/* Filters */}
-                        <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border shadow-sm bg-background">
-                            <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="max-w-5xl mx-auto mb-12 p-4 rounded-lg border bg-background shadow-sm">
+                            <div className="grid md:grid-cols-[1fr,auto] gap-4 items-center">
                                 <div className="relative">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                     <Input 
@@ -137,20 +137,22 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         onChange={handleSearchChange}
                                     />
                                 </div>
-                                <div className="flex gap-2 flex-wrap justify-center">
+                                <div className="flex gap-2 flex-wrap justify-center md:justify-start">
                                     <Button
                                         variant={activeCategory === 'All' ? 'default' : 'outline'}
+                                        size="sm"
                                         onClick={() => handleCategoryChange('All')}
-                                        className="rounded-full flex-shrink-0"
+                                        className="rounded-full"
                                     >
                                         All
                                     </Button>
                                     {categories.map(category => (
                                         <Button
                                             key={category}
+                                            size="sm"
                                             variant={activeCategory === category ? 'default' : 'outline'}
                                             onClick={() => handleCategoryChange(category)}
-                                            className="rounded-full flex-shrink-0"
+                                            className="rounded-full"
                                         >
                                             {category}
                                         </Button>
@@ -160,7 +162,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                             variant="ghost"
                                             size="icon"
                                             onClick={clearFilters}
-                                            className="rounded-full flex-shrink-0"
+                                            className="rounded-full"
                                             aria-label="Clear filters"
                                         >
                                             <X className="h-4 w-4" />
