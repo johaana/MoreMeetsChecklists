@@ -85,13 +85,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
-    
-    const features = [
-        { text: `<strong>${totalChecklists}+ Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
+    const isEmptyPack = totalChecklists === 0 || (totalChecklists === 1 && pack.checklists[0].title.includes("Placeholder"));
+
+    const features = isEmptyPack ? [
+        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
+    ] : [
+        { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
         { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
         { text: "<strong>Instant Download</strong> in fully editable Excel format."},
         { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
     ];
+
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
@@ -111,7 +115,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="flex-1">
                                 <ul className="space-y-3 text-muted-foreground text-sm">
-                                    {totalChecklists > 0 && (
+                                    {!isEmptyPack && (
                                     <>
                                         <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
                                         <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
@@ -140,14 +144,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <Banknote className="w-10 h-10 text-accent" />
                                 <div>
                                     <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
-                                        Global Compliance Pack
+                                        {pack.title}
                                     </h3>
                                     {pack.badgeText && (
                                         <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
                                     )}
                                 </div>
                             </div>
-                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-6">
                              {hasINR && hasUSD && (

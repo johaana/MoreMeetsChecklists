@@ -118,7 +118,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   </p>
                   {!isEmptyPack && (
                     <div className="text-sm text-muted-foreground font-semibold">
-                      Includes <span className="text-primary font-bold">{totalChecklists}+ checklists</span> with over <span className="text-primary font-bold">{totalTasks}+ individual tasks</span>.
+                      Includes <span className="text-primary font-bold">{totalChecklists} checklists</span> with over <span className="text-primary font-bold">{totalTasks} individual tasks</span>.
                     </div>
                   )}
                   <div className="mt-4 bg-background/50 border p-4 rounded-lg">
