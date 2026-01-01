@@ -10,7 +10,7 @@ export const HeroSection = () => (
     <section className="relative w-full h-screen min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute top-0 left-0 h-full w-full z-0">
             <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+                src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
                 loop
                 muted
@@ -25,29 +25,29 @@ export const HeroSection = () => (
             }}
         />
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-2xl space-y-4 text-white">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tighter">
+            <div className="max-w-[48%] min-w-[550px] space-y-4">
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05]" style={{ fontFamily: 'Inter Tight, sans-serif', color: 'hsl(var(--primary-text))', letterSpacing: '-0.02em' }}>
                     People forget.
                     <br/>
                     Your business
                     <br/>
                     shouldn’t pay for it.
                 </h1>
-                <p className="text-lg max-w-xl text-white/90">
+                <p className="text-lg max-w-[520px]" style={{color: 'hsl(var(--secondary-text))', lineHeight: 1.5}}>
                     When work lives in people’s heads, execution breaks
                     during audits, shift changes, growth, and emergencies.
                 </p>
-                <p className="text-lg font-medium text-accent">
+                <p className="text-lg font-medium" style={{color: 'hsl(var(--accent-urgency))', letterSpacing: '0.01em'}}>
                    Consistency can’t depend on memory.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-6">
-                    <Button size="lg" asChild className="group text-lg py-7 px-8 shadow-lg hover:shadow-xl transition-shadow" variant="accent">
+                <div className="flex flex-col items-start gap-4 pt-6">
+                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                         <Link href="/library">
-                           View SOP Library <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                           View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button asChild variant="link" className="text-white/80 hover:text-white">
+                    <Button asChild variant="link" className="p-0 h-auto text-sm" style={{color: 'hsl(var(--secondary-text))'}}>
                          <Link href="#how-it-works">See how it works &rarr;</Link>
                     </Button>
                 </div>
