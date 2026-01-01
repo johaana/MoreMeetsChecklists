@@ -20,7 +20,7 @@ export const HeroSection = () => (
         <div 
             className="absolute inset-0 z-10" 
             style={{
-                background: 'linear-gradient(90deg, rgba(14,20,17,0.85) 0%, rgba(14,20,17,0.65) 40%, rgba(14,20,17,0.25) 70%, rgba(14,20,17,0.05) 100%)'
+                background: 'linear-gradient(90deg, rgba(10, 15, 25, 0.95) 0%, rgba(10, 15, 25, 0.8) 40%, rgba(10, 15, 25, 0.3) 70%, rgba(10, 15, 25, 0.05) 100%)'
             }}
         />
         <div className="container px-4 md:px-6 relative z-20">
@@ -41,12 +41,12 @@ export const HeroSection = () => (
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-6">
-                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button asChild variant="link" className="p-0 h-auto text-sm text-secondary-text">
+                    <Button asChild variant="link" className="p-0 h-auto text-sm text-accent">
                          <Link href="#how-it-works">See how it works &rarr;</Link>
                     </Button>
                 </div>
