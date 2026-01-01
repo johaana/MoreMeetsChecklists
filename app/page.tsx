@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check, X } from "lucide-react";
 import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
@@ -66,7 +66,7 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><Frown className="w-5 h-5"/>What it’s NOT</h3>
+                    <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><X className="w-5 h-5"/>What it’s NOT</h3>
                      <ul className="space-y-3 pl-2 text-base text-muted-text">
                         <li>Not task enforcement</li>
                         <li>Not monitoring employees</li>
