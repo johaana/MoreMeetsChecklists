@@ -10,23 +10,39 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Input } from '@/components/ui/input';
-import { Search, ArrowRight, X, ChevronDown } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown, Filter } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+const allPacksByCategory = (packs: PremiumPack[]) => {
+    return packs.reduce((acc, pack) => {
+        const category = pack.category || "Uncategorized";
+        if (!acc[category]) {
+            acc[category] = [];
+        }
+        acc[category].push(pack);
+        return acc;
+    }, {} as Record<string, typeof packs>);
+};
 
 
 export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    const categories = Array.from(new Set(packs.map(p => p.category))).sort();
-    
+    const packsByCategory = React.useMemo(() => allPacksByCategory(packs), [packs]);
+    const categories = Object.keys(packsByCategory).sort();
+
     const initialSearch = searchParams.get('q') || '';
     const initialCategory = searchParams.get('category') || 'All';
     
     const [searchTerm, setSearchTerm] = React.useState(initialSearch);
     const [activeCategory, setActiveCategory] = React.useState(initialCategory);
+    const [isSheetOpen, setSheetOpen] = React.useState(false);
+
 
     React.useEffect(() => {
       setSearchTerm(searchParams.get('q') || '');
@@ -41,6 +57,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
             params.set('category', category);
         }
         router.push(`/library?${params.toString()}`, { scroll: false });
+        setSheetOpen(false);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,9 +142,9 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         </div>
                         
                         {/* Filters */}
-                        <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border bg-background/95 shadow-sm sticky top-20 z-40">
-                             <div className="grid md:grid-cols-[1fr_auto_auto] gap-4 items-center">
-                                <div className="relative">
+                         <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border bg-background/95 shadow-sm">
+                             <div className="flex flex-col md:flex-row gap-4 items-center">
+                                <div className="relative w-full md:flex-1">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                     <Input 
                                         type="search" 
@@ -137,23 +154,25 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         onChange={handleSearchChange}
                                     />
                                 </div>
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button variant="outline" className="w-full md:w-auto justify-between">
-                                            {activeCategory === 'All' ? 'Filter by Industry' : activeCategory}
-                                            <ChevronDown className="w-4 h-4 ml-2" />
-                                        </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto">
-                                        <DropdownMenuItem onSelect={() => handleCategoryChange('All')}>All Industries</DropdownMenuItem>
-                                        {categories.map(category => (
-                                            <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)}>
-                                                {category}
-                                            </DropdownMenuItem>
-                                        ))}
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                                 {(searchTerm || activeCategory !== 'All') && (
+                                <div className="hidden md:block">
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger asChild>
+                                            <Button variant="outline" className="w-full md:w-[240px] justify-between">
+                                                {activeCategory === 'All' ? 'Filter by Industry' : activeCategory}
+                                                <ChevronDown className="w-4 h-4 ml-2" />
+                                            </Button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto">
+                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')}>All Industries</DropdownMenuItem>
+                                            {categories.map(category => (
+                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)}>
+                                                    {category}
+                                                </DropdownMenuItem>
+                                            ))}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                </div>
+                                {(searchTerm || activeCategory !== 'All') && (
                                     <Button
                                         variant="ghost"
                                         size="sm"
@@ -166,6 +185,44 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 )}
                             </div>
                         </div>
+
+                        {/* Mobile Filter Button */}
+                        <div className="md:hidden fixed bottom-4 right-4 z-40">
+                             <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
+                                <SheetTrigger asChild>
+                                    <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
+                                        <Filter className="w-6 h-6" />
+                                    </Button>
+                                </SheetTrigger>
+                                <SheetContent side="bottom" className="rounded-t-2xl">
+                                    <SheetHeader className="mb-4">
+                                        <SheetTitle>Filter by Industry</SheetTitle>
+                                    </SheetHeader>
+                                    <ScrollArea className="h-[60vh]">
+                                        <div className="flex flex-col gap-2 pr-4">
+                                             <Button
+                                                variant={activeCategory === 'All' ? 'default' : 'ghost'}
+                                                onClick={() => handleCategoryChange('All')}
+                                                className="justify-start text-lg"
+                                            >
+                                                All Industries
+                                            </Button>
+                                            {categories.map(tag => (
+                                                 <Button
+                                                    key={tag}
+                                                    variant={activeCategory === tag ? 'default' : 'ghost'}
+                                                    onClick={() => handleCategoryChange(tag)}
+                                                    className="justify-start text-lg"
+                                                >
+                                                    {tag}
+                                                </Button>
+                                            ))}
+                                        </div>
+                                    </ScrollArea>
+                                </SheetContent>
+                            </Sheet>
+                        </div>
+
 
                         {filteredPacks.length === 0 ? (
                             <div className="text-center py-16">
@@ -193,3 +250,4 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
         </div>
     );
 }
+
