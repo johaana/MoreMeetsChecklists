@@ -1404,7 +1404,44 @@ const enterprise_risk_cybersecurity_pack: PremiumPack = {
         { text: "Prevent costly data leaks by continuously monitoring and correcting your cloud security posture (CSPM).", icon: "cloud" },
         { text: "De-risk your supply chain with a formal security assessment process for all third-party vendors.", icon: "handshake" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: 'User Access Review',
+            department: 'IT Security',
+            frequency: 'Quarterly',
+            role: 'IT Security Manager',
+            summary: 'A quarterly review to enforce the principle of least privilege and remove unnecessary access rights.',
+            icon: 'users',
+            tasks: [
+                {id: 'ERC-UAR-01', description: 'Generate a list of all active users with access to critical systems.', priority: 'High', riskLevel: 'High', consequence: 'Unauthorized access goes undetected.', proof: 'User access report from Active Directory/Okta.'},
+                {id: 'ERC-UAR-02', description: 'Send access lists to respective department managers for review and approval.', priority: 'High', riskLevel: 'Medium', consequence: 'Managers are unaware of their team\'s access levels.', proof: 'Email sent to managers with access lists.'},
+                {id: 'ERC-UAR-03', description: 'Verify that all user access is justified by current job role.', priority: 'High', riskLevel: 'High', consequence: 'Ex-employees or transferred staff retain sensitive access.', proof: 'Manager-signed access review forms.'},
+                {id: 'ERC-UAR-04', description: 'Review and validate all privileged/administrator accounts.', priority: 'High', riskLevel: 'High', consequence: 'Compromise of an admin account can be catastrophic.', proof: 'Privileged access review report.'},
+                {id: 'ERC-UAR-05', description: 'Revoke all unnecessary or unapproved access within 48 hours.', priority: 'High', riskLevel: 'High', consequence: 'Known unnecessary access is not removed promptly.', proof: 'Service desk tickets showing access revocation.'},
+                {id: 'ERC-UAR-06', description: 'Audit third-party vendor access to internal systems.', priority: 'High', riskLevel: 'High', consequence: 'A vendor breach becomes an internal breach.', proof: 'Vendor access review checklist.'},
+                {id: 'ERC-UAR-07', description: 'Ensure all terminated employee accounts were disabled on their last day of employment.', priority: 'High', riskLevel: 'High', consequence: 'Disgruntled ex-employees retain access.', proof: 'Cross-reference termination list with HR.'},
+                {id: 'ERC-UAR-08', description: 'Document the completion of the access review cycle.', priority: 'Medium', riskLevel: 'Low', consequence: 'No audit trail for compliance.', proof: 'Signed summary report of the access review.'}
+            ]
+        },
+        {
+            title: 'Vulnerability & Patch Management',
+            department: 'IT Operations',
+            frequency: 'Weekly',
+            role: 'System Administrator',
+            summary: 'A structured workflow to identify, prioritize, and remediate security vulnerabilities in systems and software.',
+            icon: 'bug',
+            tasks: [
+                {id: 'ERC-VPM-01', description: 'Run authenticated vulnerability scans on all servers and workstations.', priority: 'High', riskLevel: 'High', consequence: 'Unknown vulnerabilities leave systems exposed to attack.', proof: 'Vulnerability scan report (e.g., Nessus, Qualys).'},
+                {id: 'ERC-VPM-02', description: 'Review and prioritize all new "Critical" and "High" severity vulnerabilities.', priority: 'High', riskLevel: 'High', consequence: 'Focusing on low-risk issues while critical ones remain open.', proof: 'Prioritized vulnerability list.'},
+                {id: 'ERC-VPM-03', description: 'Create change requests/tickets for patching all critical vulnerabilities.', priority: 'High', riskLevel: 'Medium', consequence: 'No formal tracking of remediation work.', proof: 'Service desk tickets for patching.'},
+                {id: 'ERC-VPM-04', description: 'Test patches in a non-production environment before deploying to production.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Patches breaking critical applications.', proof: 'Patch test results document.'},
+                {id: 'ERC-VPM-05', description: 'Deploy patches for critical vulnerabilities within the defined SLA (e.g., 14 days).', priority: 'High', riskLevel: 'High', consequence: 'Leaving a known critical entry point open for too long.', proof: 'Patch deployment logs.'},
+                {id: 'ERC-VPM-06', description: 'Run a follow-up scan to verify that patches were successfully applied.', priority: 'High', riskLevel: 'Medium', consequence: 'Assuming a patch was successful when it failed.', proof: 'Post-patch verification scan report.'},
+                {id: 'ERC-VPM-07', description: 'Document any exceptions where a patch cannot be applied and implement mitigating controls.', priority: 'High', riskLevel: 'High', consequence: 'Unpatched legacy systems without any other protection.', proof: 'Risk acceptance form signed by CISO.'},
+                {id: 'ERC-VPM-08', description: 'Report on patching status and vulnerability trends to management.', priority: 'Medium', riskLevel: 'Low', consequence: 'Lack of visibility into the security posture.', proof: 'Monthly patch compliance report.'}
+            ]
+        }
+    ]
 };
 
 const healthcare_and_hospital_operations: PremiumPack = {
@@ -1439,14 +1476,14 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Ensures correct patient identification before any procedure, medication, or test to prevent 'never events'. Aligned with JCI & NABH standards.",
             icon: "user-check",
             tasks: [
-                { "id": "HCO-PID-01", "description": "Use at least two patient identifiers (e.g., full name and MRN/hospital number). Do not use room number.", "priority": "High", "riskLevel": "High", "consequence": "Wrong-patient procedure or medication error.", "proof": "Verbal confirmation documented in notes." },
-                { "id": "HCO-PID-02", "description": "Ask the patient to state their full name and date of birth (if able). Do not ask leading questions like 'Are you Mr. Smith?'", "priority": "High", "riskLevel": "High", "consequence": "Treating the wrong patient due to patient confirmation bias.", "proof": "Patient verbal confirmation noted in chart." },
-                { "id": "HCO-PID-03", "description": "Cross-reference patient identifiers with the patient's wristband before any intervention.", "priority": "High", "riskLevel": "High", "consequence": "Failure to catch an identification error at the last moment.", "proof": "Visual check documented in chart (e.g., 'Wristband verified')." },
-                { "id": "HCO-PID-04", "description": "Verify patient ID before administering any medication, including IV fluids.", "priority": "High", "riskLevel": "High", "consequence": "Medication error, adverse drug reaction, potential fatality.", "proof": "MAR (Medication Administration Record) sign-off with witness for high-alert meds." },
-                { "id": "HCO-PID-05", "description": "Verify patient ID before drawing blood or collecting any other laboratory specimen.", "priority": "High", "riskLevel": "High", "consequence": "Misdiagnosis, incorrect treatment based on wrong lab results.", "proof": "Specimen label cross-checked and signed/initialed by phlebotomist." },
-                { "id": "HCO-PID-06", "description": "Verify patient ID before any diagnostic procedure (e.g., X-ray, CT scan, endoscopy).", "priority": "High", "riskLevel": "High", "consequence": "Performing a procedure on the wrong patient.", "proof": "Technician's log with patient verification check." },
-                { "id": "HCO-PID-07", "description": "Label all specimens in the presence of the patient, before leaving the bedside.", "priority": "High", "riskLevel": "High", "consequence": "Specimen mix-up, incorrect lab results, potentially catastrophic treatment decisions.", "proof": "Labeled specimen tube/container verified against wristband." },
-                { "id": "HCO-PID-08", "description": "Use barcode scanning for patient ID, medication, and specimen administration where available.", "priority": "High", "riskLevel": "Medium", "consequence": "Reduces human error in identification, but does not replace verbal checks.", "proof": "System log of barcode scan." }
+                { id: "HCO-PID-01", description: "Use at least two patient identifiers (e.g., full name and MRN/hospital number). Do not use room number.", priority: "High", riskLevel: "High", consequence: "Wrong-patient procedure or medication error.", proof: "Verbal confirmation documented in notes." },
+                { id: "HCO-PID-02", description: "Ask the patient to state their full name and date of birth (if able). Do not ask leading questions like 'Are you Mr. Smith?'", priority: "High", riskLevel: "High", consequence: "Treating the wrong patient due to patient confirmation bias.", proof: "Patient verbal confirmation noted in chart." },
+                { id: "HCO-PID-03", description: "Cross-reference patient identifiers with the patient's wristband before any intervention.", priority: "High", riskLevel: "High", consequence: "Failure to catch an identification error at the last moment.", proof: "Visual check documented in chart (e.g., 'Wristband verified')." },
+                { id: "HCO-PID-04", description: "Verify patient ID before administering any medication, including IV fluids.", priority: "High", riskLevel: "High", consequence: "Medication error, adverse drug reaction, potential fatality.", proof: "MAR (Medication Administration Record) sign-off with witness for high-alert meds." },
+                { id: "HCO-PID-05", description: "Verify patient ID before drawing blood or collecting any other laboratory specimen.", priority: "High", riskLevel: "High", consequence: "Misdiagnosis, incorrect treatment based on wrong lab results.", proof: "Specimen label cross-checked and signed/initialed by phlebotomist." },
+                { id: "HCO-PID-06", description: "Verify patient ID before any diagnostic procedure (e.g., X-ray, CT scan, endoscopy).", priority: "High", riskLevel: "High", consequence: "Performing a procedure on the wrong patient.", proof: "Technician's log with patient verification check." },
+                { id: "HCO-PID-07", description: "Label all specimens in the presence of the patient, before leaving the bedside.", priority: "High", riskLevel: "High", consequence: "Specimen mix-up, incorrect lab results, potentially catastrophic treatment decisions.", proof: "Labeled specimen tube/container verified against wristband." },
+                { id: "HCO-PID-08", description: "Use barcode scanning for patient ID, medication, and specimen administration where available.", priority: "High", riskLevel: "Medium", consequence: "Reduces human error in identification, but does not replace verbal checks.", proof: "System log of barcode scan." }
             ]
         },
         {
@@ -1464,8 +1501,8 @@ const healthcare_and_hospital_operations: PremiumPack = {
                 { "id": "HCO-SSC-05", "description": "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", "priority": "High", "riskLevel": "High", "consequence": "Final opportunity to prevent a catastrophic error.", "proof": "Verbal confirmation documented by circulating nurse." },
                 { "id": "HCO-SSC-06", "description": "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", "priority": "High", "riskLevel": "Medium", "consequence": "Team unprepared for complications or known patient risks.", "proof": "Surgeon and Anesthesiologist verbal briefing." },
                 { "id": "HCO-SSC-07", "description": "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", "priority": "High", "riskLevel": "High", "consequence": "Retained surgical item, requiring re-operation.", "proof": "Count sheet verified and signed by two nurses." },
-                { "id": "HCO-SSC-08", description: "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", "priority": "High", "riskLevel": "High", "consequence": "Incorrect diagnosis, wrong post-op treatment.", "proof": "Visual confirmation of labeled specimen by surgeon and nurse." },
-                { "id": "HCO-SSC-09", description: "SIGN OUT: Discuss key concerns for recovery and post-operative care.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor handover to recovery team, post-op complications.", "proof": "Surgeon/Anesthesiologist debrief documented." }
+                { "id": "HCO-SSC-08", "description": "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", "priority": "High", "riskLevel": "High", "consequence": "Incorrect diagnosis, wrong post-op treatment.", "proof": "Visual confirmation of labeled specimen by surgeon and nurse." },
+                { "id": "HCO-SSC-09", "description": "SIGN OUT: Discuss key concerns for recovery and post-operative care.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor handover to recovery team, post-op complications.", "proof": "Surgeon/Anesthesiologist debrief documented." }
             ]
         },
         {
@@ -1621,7 +1658,78 @@ const film_production_pack: PremiumPack = {
         { text: "Keep your budget on track with checklists for cost reporting, vendor payments, and cash flow management.", icon: "banknote" },
         { text: "Create a seamless post-production workflow with SOPs for dailies, editing, VFX handovers, and final delivery.", icon: "scissors" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Pre-Production & Legal Clearance",
+            department: "Legal/Production",
+            frequency: "Per Project",
+            role: "Line Producer",
+            summary: "Ensures all legal and creative rights are secured before principal photography begins.",
+            icon: "file-lock",
+            tasks: [
+                { id: "FP-PPL-01", description: "Script Clearance: Final script reviewed for potential defamation, privacy, or copyright issues.", priority: "High", riskLevel: "High", consequence: "Lawsuits, injunctions halting production.", proof: "Script clearance report from legal counsel." },
+                { id: "FP-PPL-02", description: "Chain of Title: Verify and document complete ownership history of the underlying work (book, script).", priority: "High", riskLevel: "High", consequence: "Inability to secure distribution, ownership disputes.", proof: "Chain of Title summary document." },
+                { id: "FP-PPL-03", description: "Life Rights: Secure signed agreements if the story is based on a living person.", priority: "High", riskLevel: "High", consequence: "Lawsuits for misappropriation of likeness.", proof: "Signed life rights agreement." },
+                { id: "FP-PPL-04", description: "Cast & Crew Contracts: All key cast and crew have signed contracts.", priority: "High", riskLevel: "High", consequence: "Key personnel leaving mid-project, disputes over pay/credit.", proof: "Executed contracts." },
+                { id: "FP-PPL-05", description: "E&O Insurance: Errors & Omissions insurance policy is in place.", priority: "High", riskLevel: "High", consequence: "Uncovered legal costs from copyright/defamation claims.", proof: "Certificate of Insurance." },
+                { id: "FP-PPL-06", description: "Music Rights: Plan for music clearance (pre-records, score) is established.", priority: "Medium", riskLevel: "Medium", consequence: "Costly post-production music replacement.", proof: "Music budget and clearance plan." },
+                { id: "FP-PPL-07", description: "Child Actor Permits: All necessary permits and tutoring plans are in place for minor actors.", priority: "High", riskLevel: "High", consequence: "Violation of labor laws, fines, production shutdown.", proof: "Copies of permits." },
+                { id: "FP-PPL-08", description: "Final Budget & Schedule: Final shooting budget and schedule approved by all stakeholders.", priority: "High", riskLevel: "Medium", consequence: "Financial overruns, production chaos.", proof: "Signed budget and schedule documents." }
+            ]
+        },
+        {
+            title: "Location Management",
+            department: "Production",
+            frequency: "Per Location",
+            role: "Location Manager",
+            summary: "Manages the scouting, permitting, and logistics of all filming locations.",
+            icon: "map",
+            tasks: [
+                { id: "FP-LM-01", description: "Scouting: Potential locations scouted, photographed, and presented to director.", priority: "High", riskLevel: "Low", consequence: "Creative vision not met.", proof: "Location scouting reports." },
+                { id: "FP-LM-02", description: "Permits: All required filming permits from local authorities (police, municipal, etc.) are secured.", priority: "High", riskLevel: "High", consequence: "Production shut down by authorities, fines.", proof: "Copies of all permits." },
+                { id: "FP-LM-03", description: "Location Agreement: Signed agreement with property owner, outlining terms, conditions, and fees.", priority: "High", riskLevel: "High", consequence: "Disputes with property owner, unexpected costs.", proof: "Signed location agreement." },
+                { id: "FP-LM-04", description: "Logistics Plan: Plan for parking, power, catering, and restrooms is in place.", priority: "Medium", riskLevel: "Medium", consequence: "On-set delays, crew dissatisfaction.", proof: "Location logistics plan." },
+                { id: "FP-LM-05", description: "Risk Assessment: Site-specific risk assessment conducted (e.g., trip hazards, public safety).", priority: "High", riskLevel: "High", consequence: "Accidents, injuries.", proof: "Signed risk assessment form." },
+                { id: "FP-LM-06", "description": "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Complaints, disruption of filming.", "proof": "Copy of notification letter." },
+                { id: "FP-LM-07", description: "Post-Shoot Cleanup: Location is returned to its original condition after filming.", priority: "High", riskLevel: "Medium", consequence: "Disputes with property owner, loss of security deposit.", proof: "Post-shoot location photos signed off by owner." }
+            ]
+        },
+        {
+            title: "On-Set Safety (EHS)",
+            department: "Production/Safety",
+            frequency: "Daily",
+            role: "Safety Officer/1st AD",
+            summary: "Ensures a safe working environment for all cast and crew during filming.",
+            icon: "siren",
+            tasks: [
+                { id: "FP-SS-01", description: "Conduct a daily safety briefing (toolbox talk) before start of shooting.", priority: "High", riskLevel: "Medium", consequence: "Crew unaware of daily risks.", proof: "Safety briefing attendance sheet." },
+                { id: "FP-SS-02", description: "Ensure first aid station is stocked and a certified medic is present on set.", priority: "High", riskLevel: "High", consequence: "Delayed medical response to injuries.", proof: "Medic's sign-in sheet." },
+                { id: "FP-SS-03", description: "Check that all fire extinguishers are accessible and inspected.", priority: "High", riskLevel: "High", consequence: "Inability to control a small fire.", proof: "Fire extinguisher inspection log." },
+                { id: "FP-SS-04", description: "Verify all electrical wiring and distribution boxes are safe and not overloaded.", priority: "High", riskLevel: "High", consequence: "Electrical shock, fire.", proof: "Gaffer's daily sign-off." },
+                { id: "FP-SS-05", description: "Ensure all walkways and emergency exits are clear of equipment and cables.", priority: "High", riskLevel: "High", consequence: "Trip hazards, blocked evacuation routes.", proof: "Dated photo of clear walkways." },
+                { id: "FP-SS-06", description: "Stunt Safety: Review stunt plan and risk assessment with stunt coordinator before the scene.", priority: "High", riskLevel: "High", consequence: "Stunt-related injury or fatality.", proof: "Signed stunt safety briefing." },
+                { id: "FP-SS-07", description: "Weapons Handling: All prop weapons are controlled, logged, and handled by the designated armorer.", priority: "High", riskLevel: "High", consequence: "Accidental discharge, serious injury or death.", proof: "Armorer's log." },
+                { id: "FP-SS-08", description: "Log and investigate all on-set injuries and near-misses.", priority: "High", riskLevel: "Medium", consequence: "Failure to learn from incidents, repeating unsafe practices.", proof: "Incident report forms." }
+            ]
+        },
+        {
+            title: "Post-Production Workflow",
+            department: "Post-Production",
+            frequency: "Daily/Weekly",
+            role: "Post-Production Supervisor",
+            summary: "Manages the flow of data and creative work from set to final delivery.",
+            icon: "scissors",
+            tasks: [
+                { id: "FP-PP-01", description: "Dailies/Rushes: All footage from the previous day is ingested, backed up, and transcoded for editorial.", priority: "High", riskLevel: "High", consequence: "Loss of original camera footage, editorial delays.", proof: "Dailies report." },
+                { id: "FP-PP-02", description: "Data Backup: A minimum of two copies of all original camera files (OCF) exist on separate physical media.", priority: "High", riskLevel: "High", consequence: "Catastrophic data loss.", proof: "Backup verification log." },
+                { id: "FP-PP-03", description: "Editorial: Editor's cut of scenes are reviewed by the director on schedule.", priority: "High", riskLevel: "Low", consequence: "Creative process falls behind schedule.", proof: "Editorial review schedule." },
+                { id: "FP-PP-04", description: "VFX Turnover: Shots for VFX are identified, logged, and turned over to the VFX vendor with all necessary data.", priority: "High", riskLevel: "Medium", consequence: "VFX delays, incorrect work.", proof: "VFX turnover sheet." },
+                { id: "FP-PP-05", description: "Sound Design & Mix: Audio is synced, edited, and prepared for sound design and mixing.", priority: "Medium", riskLevel: "Low", consequence: "Post-production sound delays.", proof: "Audio turnover to sound department." },
+                { id: "FP-PP-06", description: "Color Grading: Picture lock is achieved and files are prepared for color grading.", priority: "High", riskLevel: "Low", consequence: "Color grading cannot start on time.", proof: "Picture lock sign-off." },
+                { id: "FP-PP-07", description: "QC & Delivery: Final master file undergoes a full technical Quality Control check before delivery.", priority: "High", riskLevel: "High", consequence: "Delivery rejected by broadcaster/distributor.", proof: "Final QC report." }
+            ]
+        }
+    ]
 };
 
 const ott_platform_pack: PremiumPack = {
@@ -1817,14 +1925,14 @@ const logistics_warehouse_pack: PremiumPack = {
             summary: "Maintains inventory accuracy to prevent stockouts and financial discrepancies.",
             icon: "shield",
             tasks: [
-                { "id": "LW-IC-01", "description": "Generate and perform daily cycle counts for a set number of SKUs or locations.", "priority": "High", "riskLevel": "Medium", "consequence": "Inventory records become inaccurate over time.", "proof": "Completed cycle count sheets." },
-                { "id": "LW-IC-02", "description": "Investigate all significant discrepancies found during cycle counts within 24 hours.", "priority": "High", "riskLevel": "High", "consequence": "Theft or process errors go undetected.", "proof": "Discrepancy investigation report." },
-                { "id": "LW-IC-03", "description": "Process inventory adjustments in WMS with proper authorization.", "priority": "High", "riskLevel": "High", "consequence": "Unauthorized adjustments can conceal theft.", "proof": "Signed adjustment form." },
-                { "id": "LW-IC-04", "description": "Monitor and manage stock in the quarantine/hold area.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Defective stock is not processed, taking up space.", "proof": "Quarantine stock report." },
-                { "id": "LW-IC-05", "description": "Analyze slow-moving or non-moving inventory and recommend actions (e.g., discount, scrap).", "priority": "Medium", "riskLevel": "Low", "consequence": "Capital tied up in dead stock.", "proof": "Slow-moving inventory report." },
-                { "id": "LW-IC-06", "description": "Track and report on key inventory KPIs (Accuracy, Turns, Stock Age).", "priority": "High", "riskLevel": "Low", "consequence": "Lack of visibility into inventory performance.", "proof": "Monthly KPI dashboard." },
-                { "id": "LW-IC-07", "description": "Reconcile system inventory with financial records monthly.", "priority": "High", "riskLevel": "High", "consequence": "Financial statements are inaccurate.", "proof": "Reconciliation report signed by Finance." },
-                { "id": "LW-IC-08", "description": "Plan and coordinate the annual full physical inventory count.", "priority": "High", "riskLevel": "Medium", "consequence": "Chaotic and inaccurate annual count.", "proof": "Physical Inventory plan document." }
+                { id: "LW-IC-01", description: "Generate and perform daily cycle counts for a set number of SKUs or locations.", priority: "High", riskLevel: "Medium", consequence: "Inventory records become inaccurate over time.", proof: "Completed cycle count sheets." },
+                { id: "LW-IC-02", description: "Investigate all significant discrepancies found during cycle counts within 24 hours.", priority: "High", riskLevel: "High", consequence: "Theft or process errors go undetected.", proof: "Discrepancy investigation report." },
+                { id: "LW-IC-03", description: "Process inventory adjustments in WMS with proper authorization.", priority: "High", riskLevel: "High", consequence: "Unauthorized adjustments can conceal theft.", proof: "Signed adjustment form." },
+                { id: "LW-IC-04", description: "Monitor and manage stock in the quarantine/hold area.", priority: "Medium", riskLevel: "Medium", consequence: "Defective stock is not processed, taking up space.", proof: "Quarantine stock report." },
+                { id: "LW-IC-05", description: "Analyze slow-moving or non-moving inventory and recommend actions (e.g., discount, scrap).", priority: "Medium", riskLevel: "Low", consequence: "Capital tied up in dead stock.", proof: "Slow-moving inventory report." },
+                { id: "LW-IC-06", description: "Track and report on key inventory KPIs (Accuracy, Turns, Stock Age).", priority: "High", riskLevel: "Low", consequence: "Lack of visibility into inventory performance.", proof: "Monthly KPI dashboard." },
+                { id: "LW-IC-07", description: "Reconcile system inventory with financial records monthly.", priority: "High", riskLevel: "High", consequence: "Financial statements are inaccurate.", proof: "Reconciliation report signed by Finance." },
+                { id: "LW-IC-08", description: "Plan and coordinate the annual full physical inventory count.", priority: "High", riskLevel: "Medium", consequence: "Chaotic and inaccurate annual count.", proof: "Physical Inventory plan document." }
             ]
         }
     ]
@@ -2243,5 +2351,6 @@ export const premiumPacks: PremiumPack[] = [
 
 
     
+
 
 
