@@ -1494,15 +1494,15 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors and improve teamwork.",
             icon: "file-check",
             tasks: [
-                { "id": "HCO-SSC-01", "description": "SIGN IN (Before Induction): Confirm patient identity, procedure, site, and consent form.", "priority": "High", "riskLevel": "High", "consequence": "Wrong-patient or wrong-site surgery.", "proof": "Signed checklist." },
-                { "id": "HCO-SSC-02", "description": "SIGN IN: Mark the surgical site (must be done by the operating surgeon).", "priority": "High", "riskLevel": "High", "consequence": "Wrong-site surgery.", "proof": "Visual confirmation of surgical mark on patient." },
-                { "id": "HCO-SSC-03", "description": "SIGN IN: Anesthesia safety check (machine, medications, airway equipment) completed.", "priority": "High", "riskLevel": "High", "consequence": "Anesthetic complications, patient harm.", "proof": "Anesthesiologist confirmation on checklist." },
-                { "id": "HCO-SSC-04", "description": "TIME OUT (Before Incision): All team members introduce themselves by name and role.", "priority": "Medium", "riskLevel": "Low", "consequence": "Poor team communication and situational awareness.", "proof": "Verbal confirmation." },
-                { "id": "HCO-SSC-05", "description": "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", "priority": "High", "riskLevel": "High", "consequence": "Final opportunity to prevent a catastrophic error.", "proof": "Verbal confirmation documented by circulating nurse." },
-                { "id": "HCO-SSC-06", "description": "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", "priority": "High", "riskLevel": "Medium", "consequence": "Team unprepared for complications or known patient risks.", "proof": "Surgeon and Anesthesiologist verbal briefing." },
-                { "id": "HCO-SSC-07", "description": "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", "priority": "High", "riskLevel": "High", "consequence": "Retained surgical item, requiring re-operation.", "proof": "Count sheet verified and signed by two nurses." },
-                { "id": "HCO-SSC-08", "description": "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", "priority": "High", "riskLevel": "High", "consequence": "Incorrect diagnosis, wrong post-op treatment.", "proof": "Visual confirmation of labeled specimen by surgeon and nurse." },
-                { "id": "HCO-SSC-09", "description": "SIGN OUT: Discuss key concerns for recovery and post-operative care.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor handover to recovery team, post-op complications.", "proof": "Surgeon/Anesthesiologist debrief documented." }
+                { id: "HCO-SSC-01", description: "SIGN IN (Before Induction): Confirm patient identity, procedure, site, and consent form.", priority: "High", riskLevel: "High", consequence: "Wrong-patient or wrong-site surgery.", proof: "Signed checklist." },
+                { id: "HCO-SSC-02", description: "SIGN IN: Mark the surgical site (must be done by the operating surgeon).", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery.", proof: "Visual confirmation of surgical mark on patient." },
+                { id: "HCO-SSC-03", description: "SIGN IN: Anesthesia safety check (machine, medications, airway equipment) completed.", priority: "High", riskLevel: "High", consequence: "Anesthetic complications, patient harm.", proof: "Anesthesiologist confirmation on checklist." },
+                { id: "HCO-SSC-04", description: "TIME OUT (Before Incision): All team members introduce themselves by name and role.", priority: "Medium", riskLevel: "Low", consequence: "Poor team communication and situational awareness.", proof: "Verbal confirmation." },
+                { id: "HCO-SSC-05", description: "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", priority: "High", riskLevel: "High", consequence: "Final opportunity to prevent a catastrophic error.", proof: "Verbal confirmation documented by circulating nurse." },
+                { id: "HCO-SSC-06", description: "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", priority: "High", riskLevel: "Medium", consequence: "Team unprepared for complications or known patient risks.", proof: "Surgeon and Anesthesiologist verbal briefing." },
+                { id: "HCO-SSC-07", description: "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", priority: "High", riskLevel: "High", consequence: "Retained surgical item, requiring re-operation.", proof: "Count sheet verified and signed by two nurses." },
+                { id: "HCO-SSC-08", description: "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", "priority": "High", "riskLevel": "High", "consequence": "Incorrect diagnosis, wrong post-op treatment.", "proof": "Visual confirmation of labeled specimen by surgeon and nurse." },
+                { id: "HCO-SSC-09", description: "SIGN OUT: Discuss key concerns for recovery and post-operative care.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor handover to recovery team, post-op complications.", "proof": "Surgeon/Anesthesiologist debrief documented." }
             ]
         },
         {
@@ -1513,12 +1513,12 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Prevents errors with medications that have a high risk of causing significant patient harm if misused (e.g., Insulin, Heparin, Chemotherapy).",
             icon: "pill",
             tasks: [
-                { "id": "HCO-HAM-01", "description": "Independent Double-Check: Two qualified staff members must separately check the medication, dose, and patient ID before administration.", "priority": "High", "riskLevel": "High", "consequence": "Potentially fatal medication error.", "proof": "Dual signature on the MAR." },
-                { "id": "HCO-HAM-02", "description": "Use standardized concentrations and labeling for all high-alert infusions.", "priority": "High", "riskLevel": "High", "consequence": "Calculation errors leading to massive overdose.", "proof": "Pharmacy compounding log and final product label." },
-                { "id": "HCO-HAM-03", "description": "Separate/segregate high-alert medications from other drugs in storage (e.g., dedicated shelf, 'High-Alert' sticker).", "priority": "Medium", "riskLevel": "Medium", "consequence": "Look-alike/sound-alike errors during drug retrieval.", "proof": "Photo of segregated storage." },
-                { "id": "HCO-HAM-04", "description": "Use 'smart' infusion pumps with dose error reduction software (DERS) and hard limits enabled.", "priority": "High", "riskLevel": "High", "consequence": "Programming errors leading to incorrect infusion rates.", "proof": "Pump programming log/screenshot." },
-                { "id": "HCO-HAM-05", "description": "Provide enhanced patient and family education on their high-alert medication, including side effects to watch for.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Patient non-compliance or failure to report side effects.", "proof": "Signed patient education form." },
-                { "id": "HCO-HAM-06", "description": "Clearly label all high-alert medication lines from pump to patient to avoid misconnections.", "priority": "High", "riskLevel": "High", "consequence": "Accidental bolus or mixing of incompatible drugs via IV lines.", "proof": "Visual check of labeled IV lines by two nurses." }
+                { id: "HCO-HAM-01", description: "Independent Double-Check: Two qualified staff members must separately check the medication, dose, and patient ID before administration.", priority: "High", riskLevel: "High", consequence: "Potentially fatal medication error.", proof: "Dual signature on the MAR." },
+                { id: "HCO-HAM-02", description: "Use standardized concentrations and labeling for all high-alert infusions.", priority: "High", riskLevel: "High", consequence: "Calculation errors leading to massive overdose.", proof: "Pharmacy compounding log and final product label." },
+                { id: "HCO-HAM-03", description: "Separate/segregate high-alert medications from other drugs in storage (e.g., dedicated shelf, 'High-Alert' sticker).", priority: "Medium", riskLevel: "Medium", consequence: "Look-alike/sound-alike errors during drug retrieval.", proof: "Photo of segregated storage." },
+                { id: "HCO-HAM-04", description: "Use 'smart' infusion pumps with dose error reduction software (DERS) and hard limits enabled.", priority: "High", riskLevel: "High", consequence: "Programming errors leading to incorrect infusion rates.", proof: "Pump programming log/screenshot." },
+                { id: "HCO-HAM-05", description: "Provide enhanced patient and family education on their high-alert medication, including side effects to watch for.", priority: "Medium", riskLevel: "Medium", consequence: "Patient non-compliance or failure to report side effects.", proof: "Signed patient education form." },
+                { id: "HCO-HAM-06", description: "Clearly label all high-alert medication lines from pump to patient to avoid misconnections.", priority: "High", riskLevel: "High", consequence: "Accidental bolus or mixing of incompatible drugs via IV lines.", proof: "Visual check of labeled IV lines by two nurses." }
             ]
         },
         {
@@ -1529,14 +1529,14 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Monitors and improves hand hygiene compliance among staff to reduce Hospital-Acquired Infections (HAIs), following WHO's '5 Moments'.",
             icon: "hand",
             tasks: [
-                { "id": "HCO-HC-01", "description": "Observe a sample of 20 staff members for hand hygiene compliance before touching a patient.", "priority": "High", "riskLevel": "High", "consequence": "Transmission of environmental pathogens to patients.", "proof": "Hand hygiene audit tool entries." },
-                { "id": "HCO-HC-02", "description": "Observe compliance before a clean/aseptic procedure (e.g., IV insertion, wound dressing).", "priority": "High", "riskLevel": "High", "consequence": "Introduction of infection into a sterile site.", "proof": "Hand hygiene audit tool entries." },
-                { "id": "HCO-HC-03", "description": "Observe compliance after body fluid exposure risk.", "priority": "High", "riskLevel": "High", "consequence": "Self-contamination of healthcare worker.", "proof": "Hand hygiene audit tool entries." },
-                { "id": "HCO-HC-04", "description": "Observe compliance after touching a patient.", "priority": "High", "riskLevel": "High", "consequence": "Spread of patient's flora to the environment.", "proof": "Hand hygiene audit tool entries." },
-                { "id": "HCO-HC-05", "description": "Observe compliance after touching patient surroundings.", "priority": "High", "riskLevel": "High", "consequence": "Contamination of the healthcare environment and other patients.", "proof": "Hand hygiene audit tool entries." },
-                { "id": "HCO-HC-06", "description": "Check that alcohol-based hand rub dispensers are available, functional, and not expired at all points of care.", "priority": "High", "riskLevel": "Medium", "consequence": "Staff unable to perform hand hygiene easily, leading to non-compliance.", "proof": "Audit checklist of dispenser locations." },
-                { "id": "HCO-HC-07", "description": "Ensure staff are 'bare below the elbows' (no watches, rings with stones) in all clinical areas.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Jewelry harbors microorganisms and impedes effective hand hygiene.", "proof": "Direct observation during audit." },
-                { "id": "HCO-HC-08", "description": "Calculate and post hand hygiene compliance rates for each ward to provide feedback.", "priority": "Medium", "riskLevel": "Low", "consequence": "Lack of feedback and accountability for wards.", "proof": "Posted compliance dashboard/report." }
+                { id: "HCO-HC-01", description: "Observe a sample of 20 staff members for hand hygiene compliance before touching a patient.", priority: "High", riskLevel: "High", consequence: "Transmission of environmental pathogens to patients.", proof: "Hand hygiene audit tool entries." },
+                { id: "HCO-HC-02", description: "Observe compliance before a clean/aseptic procedure (e.g., IV insertion, wound dressing).", priority: "High", riskLevel: "High", consequence: "Introduction of infection into a sterile site.", proof: "Hand hygiene audit tool entries." },
+                { id: "HCO-HC-03", description: "Observe compliance after body fluid exposure risk.", priority: "High", riskLevel: "High", consequence: "Self-contamination of healthcare worker.", proof: "Hand hygiene audit tool entries." },
+                { id: "HCO-HC-04", description: "Observe compliance after touching a patient.", priority: "High", riskLevel: "High", consequence: "Spread of patient's flora to the environment.", proof: "Hand hygiene audit tool entries." },
+                { id: "HCO-HC-05", description: "Observe compliance after touching patient surroundings.", priority: "High", riskLevel: "High", consequence: "Contamination of the healthcare environment and other patients.", proof: "Hand hygiene audit tool entries." },
+                { id: "HCO-HC-06", description: "Check that alcohol-based hand rub dispensers are available, functional, and not expired at all points of care.", priority: "High", riskLevel: "Medium", consequence: "Staff unable to perform hand hygiene easily, leading to non-compliance.", proof: "Audit checklist of dispenser locations." },
+                { id: "HCO-HC-07", description: "Ensure staff are 'bare below the elbows' (no watches, rings with stones) in all clinical areas.", priority: "Medium", riskLevel: "Medium", consequence: "Jewelry harbors microorganisms and impedes effective hand hygiene.", proof: "Direct observation during audit." },
+                { id: "HCO-HC-08", description: "Calculate and post hand hygiene compliance rates for each ward to provide feedback.", priority: "Medium", riskLevel: "Low", consequence: "Lack of feedback and accountability for wards.", proof: "Posted compliance dashboard/report." }
             ]
         },
         {
@@ -1547,12 +1547,12 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Ensures a rapid, coordinated, and effective response to a cardiac or respiratory arrest.",
             icon: "heart-pulse",
             tasks: [
-                { "id": "HCO-EC-01", "description": "Check crash cart daily: defibrillator charge, medication expiry, and integrity of all equipment.", "priority": "High", "riskLevel": "High", "consequence": "Life-saving equipment fails during an emergency, leading to patient death.", "proof": "Daily crash cart checklist signed by nurse." },
-                { "id": "HCO-EC-02", "description": "Conduct monthly mock Code Blue drills in different hospital locations (e.g., ward, cafeteria, lobby).", "priority": "High", "riskLevel": "High", "consequence": "Disorganized response, delayed CPR/defibrillation in a real event.", "proof": "Mock drill debriefing report with timings and corrective actions." },
-                { "id": "HCO-EC-03", "description": "Verify that all clinical staff hold a valid Basic Life Support (BLS) and/or Advanced Cardiac Life Support (ACLS) certification.", "priority": "High", "riskLevel": "High", "consequence": "Inability to initiate immediate and effective CPR.", "proof": "Review of staff training records in HR." },
-                { "id": "HCO-EC-04", "description": "During a code, team leader clearly assigns roles (e.g., compressor, airway manager, recorder, medication nurse).", "priority": "High", "riskLevel": "Medium", "consequence": "Chaotic scene, missed interventions, poor team dynamics.", "proof": "Post-code debrief form." },
-                { "id": "HCO-EC-05", "description": "Document all events, medications, timings, and vital signs on the official Code Blue record.", "priority": "High", "riskLevel": "Medium", "consequence": "Inaccurate record for clinical review and medico-legal purposes.", "proof": "Completed Code Blue record sheet." },
-                { "id": "HCO-EC-06", "description": "Ensure crowd control is implemented and the patient's family is managed compassionately by a designated person.", "priority": "Medium", "riskLevel": "Low", "consequence": "Added distress to family, interference with medical team.", "proof": "Notes from social worker/security in the patient file." }
+                { id: "HCO-EC-01", description: "Check crash cart daily: defibrillator charge, medication expiry, and integrity of all equipment.", priority: "High", riskLevel: "High", consequence: "Life-saving equipment fails during an emergency, leading to patient death.", proof: "Daily crash cart checklist signed by nurse." },
+                { id: "HCO-EC-02", description: "Conduct monthly mock Code Blue drills in different hospital locations (e.g., ward, cafeteria, lobby).", priority: "High", riskLevel: "High", consequence: "Disorganized response, delayed CPR/defibrillation in a real event.", proof: "Mock drill debriefing report with timings and corrective actions." },
+                { id: "HCO-EC-03", description: "Verify that all clinical staff hold a valid Basic Life Support (BLS) and/or Advanced Cardiac Life Support (ACLS) certification.", priority: "High", riskLevel: "High", consequence: "Inability to initiate immediate and effective CPR.", proof: "Review of staff training records in HR." },
+                { id: "HCO-EC-04", description: "During a code, team leader clearly assigns roles (e.g., compressor, airway manager, recorder, medication nurse).", priority: "High", riskLevel: "Medium", consequence: "Chaotic scene, missed interventions, poor team dynamics.", proof: "Post-code debrief form." },
+                { id: "HCO-EC-05", description: "Document all events, medications, timings, and vital signs on the official Code Blue record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate record for clinical review and medico-legal purposes.", proof: "Completed Code Blue record sheet." },
+                { id: "HCO-EC-06", description: "Ensure crowd control is implemented and the patient's family is managed compassionately by a designated person.", priority: "Medium", riskLevel: "Low", consequence: "Added distress to family, interference with medical team.", proof: "Notes from social worker/security in the patient file." }
             ]
         },
         {
@@ -1563,13 +1563,13 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Ensures safe and compliant segregation, collection, and disposal of biomedical waste as per national and international guidelines.",
             icon: "recycle",
             tasks: [
-                { "id": "HCO-BMW-01", "description": "Verify waste is correctly segregated into color-coded bins (Yellow, Red, Blue, White) at the point of generation.", "priority": "High", "riskLevel": "High", "consequence": "Needlestick injury, environmental contamination, severe legal penalties.", "proof": "Daily round checklist with photos of bins." },
-                { "id": "HCO-BMW-02", "description": "Ensure all waste bags are sealed securely (e.g., with a zip-tie) when 3/4 full.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Spillage during transport, exposure risk to staff.", "proof": "Visual check during collection rounds." },
-                { "id": "HCO-BMW-03", "description": "Check that sharps containers are not overfilled (below the marked line) and are properly sealed for disposal.", "priority": "High", "riskLevel": "High", "consequence": "High risk of needlestick injuries to housekeeping staff.", "proof": "Daily round checklist." },
-                { "id": "HCO-BMW-04", "description": "Transport waste in dedicated, covered trolleys along designated routes and service elevators.", "priority": "High", "riskLevel": "Medium", "consequence": "Contamination of public areas and elevators.", "proof": "CCTV review of waste transport." },
-                { "id": "HCO-BMW-05", "description": "Weigh and log all waste bags by category before handing over to the disposal vendor.", "priority": "High", "riskLevel": "Medium", "consequence": "Inability to track waste generation, non-compliance with regulatory reporting.", "proof": "BMW disposal logbook signed by vendor." },
-                { "id": "HCO-BMW-06", "description": "Verify that the central BMW storage area is secure, locked, clean, and accessible only to authorized personnel.", "priority": "High", "riskLevel": "High", "consequence": "Unauthorized access, pest infestation, public health risk.", "proof": "Photo of secure storage area." },
-                { "id": "HCO-BMW-07", "description": "Ensure all staff handling waste wear appropriate Personal Protective Equipment (PPE), including heavy-duty gloves, masks, and boots.", "priority": "High", "riskLevel": "High", "consequence": "Occupational exposure to infectious agents and injuries.", "proof": "Direct observation during audit." }
+                { id: "HCO-BMW-01", description: "Verify waste is correctly segregated into color-coded bins (Yellow, Red, Blue, White) at the point of generation.", priority: "High", riskLevel: "High", consequence: "Needlestick injury, environmental contamination, severe legal penalties.", proof: "Daily round checklist with photos of bins." },
+                { id: "HCO-BMW-02", description: "Ensure all waste bags are sealed securely (e.g., with a zip-tie) when 3/4 full.", priority: "Medium", riskLevel: "Medium", consequence: "Spillage during transport, exposure risk to staff.", proof: "Visual check during collection rounds." },
+                { id: "HCO-BMW-03", description: "Check that sharps containers are not overfilled (below the marked line) and are properly sealed for disposal.", priority: "High", riskLevel: "High", consequence: "High risk of needlestick injuries to housekeeping staff.", proof: "Daily round checklist." },
+                { id: "HCO-BMW-04", description: "Transport waste in dedicated, covered trolleys along designated routes and service elevators.", priority: "High", riskLevel: "Medium", consequence: "Contamination of public areas and elevators.", proof: "CCTV review of waste transport." },
+                { id: "HCO-BMW-05", description: "Weigh and log all waste bags by category before handing over to the disposal vendor.", priority: "High", riskLevel: "Medium", consequence: "Inability to track waste generation, non-compliance with regulatory reporting.", proof: "BMW disposal logbook signed by vendor." },
+                { id: "HCO-BMW-06", description: "Verify that the central BMW storage area is secure, locked, clean, and accessible only to authorized personnel.", priority: "High", riskLevel: "High", consequence: "Unauthorized access, pest infestation, public health risk.", proof: "Photo of secure storage area." },
+                { id: "HCO-BMW-07", description: "Ensure all staff handling waste wear appropriate Personal Protective Equipment (PPE), including heavy-duty gloves, masks, and boots.", priority: "High", riskLevel: "High", consequence: "Occupational exposure to infectious agents and injuries.", proof: "Direct observation during audit." }
             ]
         },
         {
@@ -1580,12 +1580,12 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Ensures surgical instruments are properly cleaned, disinfected, sterilized, and stored to prevent Surgical Site Infections (SSIs).",
             icon: "microscope",
             tasks: [
-                { "id": "HCO-CSSD-01", "description": "Verify washer-disinfector performance with daily cleaning efficacy tests (e.g., TOSI strips).", "priority": "High", "riskLevel": "High", "consequence": "Bioburden remains on instruments, sterilization failure.", "proof": "Test results logbook." },
-                { "id": "HCO-CSSD-02", "description": "Check autoclave performance using daily Bowie-Dick tests (for pre-vacuum sterilizers) and weekly biological indicators.", "priority": "High", "riskLevel": "High", "consequence": "Catastrophic sterilization failure, high risk of SSIs.", "proof": "Autoclave logbook with attached test strips/results." },
-                { "id": "HCO-CSSD-03", "description": "Ensure sterile packs are correctly wrapped, sealed, and labeled with sterilizer number, cycle number, and expiry date.", "priority": "High", "riskLevel": "Medium", "consequence": "Compromised sterility, inability to trace a faulty batch.", "proof": "Audit of sterile packs in storage." },
-                { "id": "HCO-CSSD-04", "description": "Maintain strict one-way workflow from dirty (decontamination) to clean (assembly) to sterile (storage) zones.", "priority": "High", "riskLevel": "High", "consequence": "Cross-contamination of sterile instruments.", "proof": "Observation of staff movement and workflow." },
-                { "id": "HCO-CSSD-05", "description": "Inspect instruments under magnification for cleanliness and damage before packing.", "priority": "High", "riskLevel": "Medium", "consequence": "Using damaged or dirty instruments in surgery.", "proof": "QC check log at packing station." },
-                { "id": "HCO-CSSD-06", "description": "Ensure staff in decontamination area wear full PPE (fluid-resistant gown, gloves, face shield).", "priority": "High", "riskLevel": "High", "consequence": "Staff exposure to bloodborne pathogens.", "proof": "Direct observation during audit." }
+                { id: "HCO-CSSD-01", description: "Verify washer-disinfector performance with daily cleaning efficacy tests (e.g., TOSI strips).", priority: "High", riskLevel: "High", consequence: "Bioburden remains on instruments, sterilization failure.", proof: "Test results logbook." },
+                { id: "HCO-CSSD-02", description: "Check autoclave performance using daily Bowie-Dick tests (for pre-vacuum sterilizers) and weekly biological indicators.", priority: "High", riskLevel: "High", consequence: "Catastrophic sterilization failure, high risk of SSIs.", proof: "Autoclave logbook with attached test strips/results." },
+                { id: "HCO-CSSD-03", description: "Ensure sterile packs are correctly wrapped, sealed, and labeled with sterilizer number, cycle number, and expiry date.", priority: "High", riskLevel: "Medium", consequence: "Compromised sterility, inability to trace a faulty batch.", proof: "Audit of sterile packs in storage." },
+                { id: "HCO-CSSD-04", description: "Maintain strict one-way workflow from dirty (decontamination) to clean (assembly) to sterile (storage) zones.", priority: "High", riskLevel: "High", consequence: "Cross-contamination of sterile instruments.", proof: "Observation of staff movement and workflow." },
+                { id: "HCO-CSSD-05", description: "Inspect instruments under magnification for cleanliness and damage before packing.", priority: "High", riskLevel: "Medium", consequence: "Using damaged or dirty instruments in surgery.", proof: "QC check log at packing station." },
+                { id: "HCO-CSSD-06", description: "Ensure staff in decontamination area wear full PPE (fluid-resistant gown, gloves, face shield).", priority: "High", riskLevel: "High", consequence: "Staff exposure to bloodborne pathogens.", proof: "Direct observation during audit." }
             ]
         }
     ]
@@ -1690,7 +1690,7 @@ const film_production_pack: PremiumPack = {
                 { id: "FP-LM-03", description: "Location Agreement: Signed agreement with property owner, outlining terms, conditions, and fees.", priority: "High", riskLevel: "High", consequence: "Disputes with property owner, unexpected costs.", proof: "Signed location agreement." },
                 { id: "FP-LM-04", description: "Logistics Plan: Plan for parking, power, catering, and restrooms is in place.", priority: "Medium", riskLevel: "Medium", consequence: "On-set delays, crew dissatisfaction.", proof: "Location logistics plan." },
                 { id: "FP-LM-05", description: "Risk Assessment: Site-specific risk assessment conducted (e.g., trip hazards, public safety).", priority: "High", riskLevel: "High", consequence: "Accidents, injuries.", proof: "Signed risk assessment form." },
-                { id: "FP-LM-06", "description": "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Complaints, disruption of filming.", "proof": "Copy of notification letter." },
+                { id: "FP-LM-06", description: "Resident Notification: Notify all nearby residents/businesses of filming schedule and potential disruption.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Complaints, disruption of filming.", "proof": "Copy of notification letter." },
                 { id: "FP-LM-07", description: "Post-Shoot Cleanup: Location is returned to its original condition after filming.", priority: "High", riskLevel: "Medium", consequence: "Disputes with property owner, loss of security deposit.", proof: "Post-shoot location photos signed off by owner." }
             ]
         },
@@ -1752,7 +1752,44 @@ const ott_platform_pack: PremiumPack = {
         { text: "Stay compliant with a structured process for content rating, subtitling, and legal clearances.", icon: "file-check" },
         { text: "Improve user engagement with a data-driven process for personalization, recommendations, and analytics.", icon: "brain-circuit" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Content Ingestion & QC",
+            department: "Content Operations",
+            frequency: "Per Title",
+            role: "Content Manager",
+            summary: "Ensures all video assets meet technical and quality standards before going live.",
+            icon: "video",
+            tasks: [
+                { id: "OTT-CI-01", description: "Receive master file from content provider and verify it matches technical specifications.", priority: "High", riskLevel: "High", consequence: "Platform cannot process the file, leading to delays.", proof: "Technical spec sheet sign-off." },
+                { id: "OTT-CI-02", description: "Perform automated and manual Quality Control (QC) for video/audio errors (e.g., artifacts, sync issues).", priority: "High", riskLevel: "High", consequence: "Poor user experience, subscriber complaints.", proof: "QC report." },
+                { id: "OTT-CI-03", description: "Verify all required assets are present (subtitles, multiple audio tracks, artwork, metadata).", priority: "High", riskLevel: "Medium", consequence: "Incomplete title launch, poor user experience.", proof: "Asset checklist sign-off." },
+                { id: "OTT-CI-04", description: "Transcode master file into multiple bitrates and formats for adaptive streaming.", priority: "High", riskLevel: "Medium", consequence: "Users on slow connections cannot stream the content.", proof: "Transcoding job log." },
+                { id: "OTT-CI-05", description: "Apply Digital Rights Management (DRM) encryption.", priority: "High", riskLevel: "High", consequence: "Content piracy, breach of contract with rights holders.", proof: "DRM application log." },
+                { id: "OTT-CI-06", description: "Ingest all assets and metadata into the Content Management System (CMS).", priority: "High", riskLevel: "Low", consequence: "Title cannot be published.", proof: "CMS entry screenshot." },
+                { id: "OTT-CI-07", description: "Perform a final 'spot check' of the title on multiple devices (web, mobile, TV) before publishing.", priority: "High", riskLevel: "Medium", consequence: "Device-specific playback issues.", proof: "Cross-device testing report." },
+                { id: "OTT-CI-08", description: "Schedule the title for publication or publish immediately.", priority: "Medium", riskLevel: "Low", consequence: "Missing a marketing deadline.", proof: "Publishing schedule." }
+            ]
+        },
+        {
+            title: "Live Streaming Event Readiness",
+            department: "Broadcast Operations",
+            frequency: "Per Live Event",
+            role: "Live Ops Engineer",
+            summary: "A checklist to ensure maximum uptime and a smooth experience for major live events.",
+            icon: "zap",
+            tasks: [
+                { id: "OTT-LS-01", description: "Conduct a full load test of the streaming infrastructure at least 24 hours before the event.", priority: "High", riskLevel: "High", consequence: "Platform crashes during peak viewership.", proof: "Load test report." },
+                { id: "OTT-LS-02", description: "Verify primary and backup encoder and stream paths are functional.", priority: "High", riskLevel: "High", consequence: "Total stream failure if primary path fails.", proof: "Encoder test stream logs." },
+                { id: "OTT-LS-03", description: "Confirm CDN configurations, including geo-blocking and token authentication, are correct.", priority: "High", riskLevel: "High", consequence: "Stream available in unauthorized regions, security breaches.", proof: "CDN configuration review sign-off." },
+                { id: "OTT-LS-04", description: "Establish a 'war room' communication channel (e.g., Slack, Teams) for the event.", priority: "High", riskLevel: "Medium", consequence: "Disorganized response to issues during the event.", proof: "War room channel created and key personnel added." },
+                { id: "OTT-LS-05", description: "Brief the customer support team on the event and potential user issues.", priority: "Medium", riskLevel: "Low", consequence: "Support team unprepared for user complaints.", proof: "Support briefing notes." },
+                { id: "OTT-LS-06", description: "Monitor stream health (bitrate, buffering, errors) in real-time throughout the event.", priority: "High", riskLevel: "High", consequence: "Slow response to degrading stream quality.", proof: "Real-time monitoring dashboard screenshot." },
+                { id: "OTT-LS-07", description: "Have a disaster recovery plan in place, including a pre-recorded 'experiencing technical difficulties' slate.", priority: "High", riskLevel: "Medium", consequence: "Dead air and user confusion during an outage.", proof: "Disaster recovery plan document." },
+                { id: "OTT-LS-08", description: "Conduct a post-event debrief to analyze performance and any incidents.", priority: "Medium", riskLevel: "Low", consequence: "Failure to learn from event performance.", proof: "Post-event report." }
+            ]
+        },
+    ]
 };
 
 const sports_clubs_stadium_operations_pack: PremiumPack = {
@@ -2351,6 +2388,7 @@ export const premiumPacks: PremiumPack[] = [
 
 
     
+
 
 
 
