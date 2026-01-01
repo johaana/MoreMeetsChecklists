@@ -77,27 +77,24 @@ html {
 }
 
 .temp-design-page {
-  --background: #0E1412; 
-  --alternate-background: #0E1412;
-  --primary-text: #F2F4F3;
-  --secondary-text: #D1D5DB;
-  --muted-text: #9CA3AF;
-  --border: #262c2a;
-  --authority-green: #8FAEA3;
-  --high-contrast-green: hsl(158 41% 57%);
-  --accent: #F5C94A;
-  --accent-foreground: #111816;
-  --risk-accent: #EF4444;
-  --warning-accent: #FACC15;
-  --fear-text: hsl(0, 50%, 70%);
+  --bg-primary: #0F1311;
+  --bg-secondary: #141A17;
+  --bg-light-contrast: #F4F6F5;
 
-  background-color: var(--alternate-background);
-  color: var(--primary-text);
+  --accent-cta: #F2C94C;
+  --accent-risk: #C84848;
+  --accent-stable: #3FA97A;
+  
+  --text-primary: #F4F6F5;
+  --text-secondary: #D1D5DB; /* Soft Grey for body */
+  --text-dark: #0F1311; /* For use on light backgrounds */
+  
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .slow-zoom-video {
   filter: brightness(0.6);
-  /* Removed animation and blur */
 }
 
 .fear-text {
