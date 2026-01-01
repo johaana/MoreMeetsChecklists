@@ -65,27 +65,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* V1 Homepage Design System */
 .temp-design-page {
-  --bg-primary: 218 20% 6%;
-  --bg-secondary: 218 20% 10%;
-  --bg-light-contrast: 218 20% 15%;
+  --bg-primary: 158 12% 7%; /* #101815 */
+  --surface-card: 157 16% 9%; /* #151E1A */
+  --text-primary: 140 10% 96%; /* #F4F6F5 */
+  --text-secondary: 150 7% 61%; /* #9AA4A0 */
+  --accent-authority: 145 63% 49%; /* #2ECC71 */
+  --accent-urgency: 45 90% 57%; /* #F4C430 */
+  --accent-risk: 0 59% 54%; /* #C84848 */
+  --border-color: 157 9% 15%; /* #222826 */
 
-  --accent-cta: 38 92% 66%;
-  --accent-risk: 6 78% 60%;
-  --accent-stable: 158 41% 57%;
-  
-  --text-primary: 215 25% 95%;
-  --text-secondary: 220 15% 75%;
-  --text-dark: 215 25% 95%;
-  
   background-color: hsl(var(--bg-primary));
   color: hsl(var(--text-primary));
-}
-
-.slow-zoom-video {
-  filter: brightness(0.6);
-}
-
-.fear-text {
-    color: hsl(var(--accent-risk));
 }
