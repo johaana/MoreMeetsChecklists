@@ -20,7 +20,7 @@ export const HeroSection = () => (
         <div 
             className="absolute inset-0 z-10" 
             style={{
-                background: 'linear-gradient(90deg, rgba(10, 15, 25, 0.95) 0%, rgba(10, 15, 25, 0.8) 40%, rgba(10, 15, 25, 0.3) 70%, rgba(10, 15, 25, 0.05) 100%)'
+                background: 'linear-gradient(90deg, rgba(10, 15, 25, 1.0) 0%, rgba(10, 15, 25, 0.8) 40%, rgba(10, 15, 25, 0.3) 70%, rgba(10, 15, 25, 0.05) 100%)'
             }}
         />
         <div className="container px-4 md:px-6 relative z-20">
