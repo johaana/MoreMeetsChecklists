@@ -96,9 +96,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   }, [isMobile]);
 
   const audience = pack.whoIsItFor || ["Industry Professionals"];
-  const totalChecklists = pack.checklists.length;
-  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0);
-  const isEmptyPack = totalChecklists === 0;
+  const totalChecklists = pack.checklists?.length || 0;
+  const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
+  const isEmptyPack = totalChecklists === 0 || (totalChecklists === 1 && pack.checklists[0].title.includes("Placeholder"));
 
   return (
     <>
