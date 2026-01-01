@@ -13,7 +13,7 @@ const Section = ({ className, id, style, ...props }: React.HTMLAttributes<HTMLEl
 );
 
 const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-5xl !leading-tight text-primary-text", className)} style={{ color: 'var(--text-primary)'}}>
+    <h2 className={cn("text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-5xl !leading-tight", className)} style={{ color: 'var(--text-primary)'}}>
         {children}
     </h2>
 );
@@ -21,7 +21,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 const HeroSection = () => (
     <section className="relative w-full flex items-center justify-center text-white overflow-hidden min-h-screen">
         <video
-            src="https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,w_1920/v1762590213/3253079-uhd_3840_2160_25fps_ezflkd.mp4"
+            src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1717666275/pexels-tima-miroshnichenko-5717019_1080p_r6t985.mp4"
             autoPlay
             loop
             muted
@@ -71,17 +71,17 @@ const HeroSection = () => (
 const CoreProblemSection = () => (
     <Section id="core-problem" style={{ backgroundColor: 'var(--bg-secondary)'}}>
         <div className="container px-4 md:px-6 text-center max-w-3xl mx-auto space-y-8">
-            <SectionHeadline>Memory is not a control system</SectionHeadline>
+            <SectionHeadline className="text-primary-text">Memory is not a control system</SectionHeadline>
             <div className="space-y-4 text-lg" style={{color: 'var(--text-secondary)'}}>
                 <p>People don’t fail because they don’t care. They fail because work lives in their heads.</p>
                 <p>When that happens:</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center text-sm font-medium" style={{color: 'var(--text-secondary)'}}>
-                <div className="p-3 rounded-md bg-black/20">steps are skipped</div>
-                <div className="p-3 rounded-md bg-black/20">standards drift</div>
-                <div className="p-3 rounded-md bg-black/20">training fades</div>
-                <div className="p-3 rounded-md bg-black/20">audits become stressful</div>
-                <div className="p-3 rounded-md bg-black/20 col-span-2 md:col-span-1">managers chase</div>
+                <div className="p-3 rounded-md" style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>steps are skipped</div>
+                <div className="p-3 rounded-md" style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>standards drift</div>
+                <div className="p-3 rounded-md" style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>training fades</div>
+                <div className="p-3 rounded-md" style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>audits become stressful</div>
+                <div className="p-3 rounded-md md:col-span-1 col-span-2" style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>managers chase</div>
             </div>
              <p className="text-lg" style={{color: 'var(--text-secondary)'}}>This isn’t human error. It’s operational fragility.</p>
              <hr className="border-t-2 border-dashed w-24 mx-auto" style={{borderColor: 'var(--accent-stable)'}} />
@@ -99,7 +99,7 @@ const WhatItIsSection = () => (
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold" style={{color: 'var(--text-dark)'}}>What it is</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <ul className="space-y-2" style={{color: 'var(--muted-text)'}}>
                         <li>A structured SOP framework</li>
                         <li>A library of best-practice operational standards</li>
                         <li>A way to turn experience into clear, repeatable processes</li>
@@ -109,7 +109,7 @@ const WhatItIsSection = () => (
                 </div>
                  <div className="space-y-4">
                     <h3 className="text-xl font-bold" style={{color: 'var(--text-dark)'}}>What it’s not</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <ul className="space-y-2" style={{color: 'var(--muted-text)'}}>
                         <li className="flex items-center gap-2"><X className="w-4 h-4" style={{color: 'var(--accent-risk)'}}/>Not task enforcement</li>
                         <li className="flex items-center gap-2"><X className="w-4 h-4" style={{color: 'var(--accent-risk)'}}/>Not monitoring employees</li>
                         <li className="flex items-center gap-2"><X className="w-4 h-4" style={{color: 'var(--accent-risk)'}}/>Not reminders or notifications</li>
@@ -133,7 +133,7 @@ const HowTeamsUseItSection = () => {
     <Section id="how-it-works" style={{backgroundColor: 'var(--bg-primary)'}}>
         <div className="container px-4 md:px-6">
             <div className="text-center mb-12">
-                <SectionHeadline>How MoreMeets fits into real operations</SectionHeadline>
+                <SectionHeadline className="text-primary-text">How MoreMeets fits into real operations</SectionHeadline>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {cards.map(card => (
@@ -155,9 +155,9 @@ const HowTeamsUseItSection = () => {
 )};
 
 const ComplianceSection = () => (
-    <Section id="compliance" style={{ backgroundColor: 'var(--bg-secondary)'}}>
+    <Section id="compliance" style={{backgroundColor: 'var(--bg-secondary)'}}>
         <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
-            <SectionHeadline>Compliance works only when it’s part of daily work</SectionHeadline>
+            <SectionHeadline className="text-primary-text">Compliance works only when it’s part of daily work</SectionHeadline>
             <p className="text-lg" style={{color: 'var(--text-secondary)'}}>Compliance fails when it lives in binders, policies, or one-time training. MoreMeets embeds compliance into how work is designed — not how it’s inspected later.</p>
             <div className="grid grid-cols-2 gap-4 text-left text-sm pt-4" style={{color: 'var(--text-primary)'}}>
                 <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'var(--accent-stable)'}}/>ISO & internal standards</p>
@@ -179,15 +179,15 @@ const WhyItWorksSection = () => (
             <div className="grid md:grid-cols-3 gap-8">
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold">1️⃣ Simple</h3>
-                    <p className="text-muted-foreground">No apps to learn. No logins. No friction.</p>
+                    <p style={{color: 'var(--muted-text)'}}>No apps to learn. No logins. No friction.</p>
                 </div>
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold">2️⃣ Clear</h3>
-                    <p className="text-muted-foreground">No interpretation. No “I thought.” No assumptions.</p>
+                    <p style={{color: 'var(--muted-text)'}}>No interpretation. No “I thought.” No assumptions.</p>
                 </div>
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold">3️⃣ Repeatable</h3>
-                    <p className="text-muted-foreground">Same work. Same standard. Every location.</p>
+                    <p style={{color: 'var(--muted-text)'}}>Same work. Same standard. Every location.</p>
                 </div>
             </div>
             <p className="text-xl font-bold mt-12" style={{ color: 'var(--text-dark)'}}>When expectations are clear, performance becomes predictable.</p>
@@ -199,7 +199,7 @@ const WhoIsItForSection = () => (
     <Section id="who-is-it-for" style={{backgroundColor: 'var(--bg-primary)'}}>
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
             <div className="text-center mb-12">
-                <SectionHeadline>Built for operations that can’t afford misses</SectionHeadline>
+                <SectionHeadline className="text-primary-text">Built for operations that can’t afford misses</SectionHeadline>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4">
@@ -228,7 +228,7 @@ const WhoIsItForSection = () => (
 const FinalCTASection = () => (
     <Section id="final-cta" style={{backgroundColor: '#000'}}>
         <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
-            <SectionHeadline>Standardize how work gets done — before growth breaks it</SectionHeadline>
+            <SectionHeadline className="text-primary-text">Standardize how work gets done — before growth breaks it</SectionHeadline>
             <p className="text-lg" style={{color: 'var(--text-secondary)'}}>MoreMeets helps you design operations that don’t depend on memory, luck, or specific people.</p>
             <div className="flex flex-col items-center gap-3 pt-4">
                 <Button size="lg" asChild className="group" style={{ backgroundColor: 'var(--accent-cta)', color: 'var(--bg-primary)', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
@@ -262,3 +262,5 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+
+    
