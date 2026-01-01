@@ -37,7 +37,7 @@ const HeroSection = () => (
             }}
         />
         <div className="container px-4 md:px-6 relative z-20">
-            <div className="max-w-[48%] space-y-6">
+            <div className="max-w-[48%] min-w-[550px] space-y-4">
                 <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter !leading-[1.05]" style={{ fontFamily: 'Inter Tight, sans-serif', color: 'hsl(var(--text-primary))', letterSpacing: '-0.02em' }}>
                     People forget.
                     <br/>
@@ -53,7 +53,7 @@ const HeroSection = () => (
                    Consistency can’t depend on memory.
                 </p>
                 
-                <div className="flex flex-col items-start gap-3 pt-6">
+                <div className="flex flex-col items-start gap-4 pt-6">
                     <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -90,12 +90,12 @@ const CoreProblemSection = () => (
 );
 
 const WhatItIsSection = () => (
-    <Section id="what-it-is" style={{backgroundColor: 'hsl(var(--surface-light-contrast))'}}>
+    <Section id="what-it-is" style={{backgroundColor: 'hsl(var(--bg-secondary))'}}>
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--bg-primary))'}}>MoreMeets is not software people need to “remember to use.”</h2>
+                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--text-primary))'}}>MoreMeets is not software people need to “remember to use.”</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12" style={{color: 'hsl(var(--bg-primary))'}}>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12" style={{color: 'hsl(var(--text-primary))'}}>
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold flex items-center gap-2" style={{color: 'hsl(var(--accent-authority))'}}><Check className="w-5 h-5"/>What it IS</h3>
                     <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-on-light))'}}>
@@ -117,7 +117,7 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
             </div>
-            <p className="text-center text-lg font-medium mt-12" style={{color: 'hsl(var(--bg-primary))'}}>MoreMeets doesn’t control people. It removes ambiguity from work.</p>
+            <p className="text-center text-lg font-medium mt-12" style={{color: 'hsl(var(--text-primary))'}}>MoreMeets doesn’t control people. It removes ambiguity from work.</p>
         </div>
     </Section>
 );
@@ -177,23 +177,23 @@ const ComplianceSection = () => (
 );
 
 const WhoIsItForSection = () => (
-    <Section id="who-is-it-for" style={{backgroundColor: 'hsl(var(--surface-light-contrast))'}}>
+    <Section id="who-is-it-for" style={{backgroundColor: 'hsl(var(--bg-primary))'}}>
         <div className="container px-4 md:px-6 max-w-5xl mx-auto">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--bg-primary))'}}>Built for operators who are tired of firefighting</h2>
+                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--text-primary))'}}>Built for operators who are tired of firefighting</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-8 text-center" style={{color: 'hsl(var(--bg-primary))'}}>
+            <div className="grid md:grid-cols-3 gap-8 text-center" style={{color: 'hsl(var(--text-primary))'}}>
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold">Founders & COOs</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
+                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
                 </div>
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold">Operations & Quality Heads</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Clear standards. Easier audits. Less follow-up.</p>
+                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Clear standards. Easier audits. Less follow-up.</p>
                 </div>
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold">Multi-location Teams</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Same standards everywhere. Faster onboarding. Fewer surprises.</p>
+                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Same standards everywhere. Faster onboarding. Fewer surprises.</p>
                 </div>
             </div>
         </div>
@@ -236,5 +236,4 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
     

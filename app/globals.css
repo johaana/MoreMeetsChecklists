@@ -70,10 +70,10 @@ html {
   --bg-primary: 157 12% 7%; /* #0E1411 */
   --bg-secondary: 157 16% 9%; /* #141A17 */
   --surface-card: 157 16% 9%; /* #141A17 */
-  --surface-light-contrast: 140 10% 96%; /* #F4F6F5 */
+  --surface-light-contrast: 157 16% 9%; /* #141A17 - Changed from light to dark */
   --text-primary: 140 10% 96%; /* #F4F6F5 */
   --text-secondary: 150 7% 63%; /* #9AA4A0 */
-  --text-on-light: 157 12% 7%; /* for use on light backgrounds */
+  --text-on-light: 140 10% 96%; /* #F4F6F5 - Changed for dark bg */
   --accent-authority: 145 58% 55%; /* #2ECC71 */
   --accent-urgency: 45 90% 57%; /* #F4C430 */
   --accent-risk: 0 59% 54%; /* #C84848 */
