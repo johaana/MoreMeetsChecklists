@@ -167,7 +167,7 @@ const franchise_operations_pack: PremiumPack = {
             tasks: [
                 { id: "FPR-01", description: "Royalty & Ad Fund: Verify royalty and marketing fund payments are accurate and paid on time.", priority: "High", riskLevel: "High", consequence: "Revenue loss for franchisor, breach of contract.", proof: "Bank statements and franchise agreement.", location: "Finance Dept." },
                 { id: "FPR-02", description: "Sales Reporting: Ensure daily/weekly sales reports have been submitted accurately.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate data for network-wide planning.", proof: "POS sales reports vs. submitted reports.", location: "Finance Dept." },
-                { id: "FPR-03", description: "P&L Statement Review: Review franchisee's monthly Profit &amp; Loss statement for signs of financial distress.", priority: "High", riskLevel: "High", consequence: "Franchisee failure, loss of future royalties.", proof: "Franchisee-submitted P&L statement.", location: "Finance Dept." },
+                { id: "FPR-03", description: "P&L Statement Review: Review franchisee's monthly Profit & Loss statement for signs of financial distress.", priority: "High", riskLevel: "High", consequence: "Franchisee failure, loss of future royalties.", proof: "Franchisee-submitted P&L statement.", location: "Finance Dept." },
                 { id: "FPR-04", description: "Cost of Goods Sold (COGS) Analysis: Compare COGS against brand benchmark to identify purchasing or wastage issues.", priority: "Medium", riskLevel: "Medium", consequence: "Reduced franchisee profitability.", proof: "P&L statement and supplier invoices.", location: "Finance Dept." },
                 { id: "FPR-05", description: "Labor Cost Analysis: Compare labor costs as a percentage of sales against benchmark.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient staffing, reduced profitability.", proof: "P&L statement and staff rosters.", location: "Finance Dept." },
                 { id: "FPR-06", description: "Local Marketing Spend: Verify franchisee is meeting local marketing spend requirements as per agreement.", priority: "Low", riskLevel: "Low", consequence: "Underperforming location due to lack of local awareness.", proof: "Marketing invoices and receipts.", location: "Marketing Dept." },
@@ -723,7 +723,7 @@ const fashion_and_apparel_retail: PremiumPack = {
                 { id: "FAR-SS-07", description: "Verify that panic buttons or duress alarms are functional.", priority: "High", riskLevel: "High", consequence: "Inability for staff to call for help in an emergency.", proof: "Alarm test log.", location: "Cash Desk/Office" },
                 { id: "FAR-SS-08", description: "Keep floors clear of slip and trip hazards (e.g., boxes, hangers).", priority: "High", riskLevel: "Medium", consequence: "Customer or staff injuries, lawsuits.", proof: "Daily floor safety checklist.", location: "All Areas" },
                 { id: "FAR-SS-09", description: "Ensure fire exits are clear and unblocked.", priority: "High", riskLevel: "High", consequence: "Blocked escape route during a fire.", proof: "Dated photo of fire exits.", location: "All Areas" },
-                { id: "FAR-SS-10", description: "Review and report any suspicious activity or known shoplifters to the team.", priority: "Medium", riskLevel: "Low", consequence: "Team is not vigilant.", proof: "Daily briefing notes.", location: "Staff Briefing" }
+                { id: "FAR-SS-10", description: "Review any suspicious activity or known shoplifters to the team.", priority: "Medium", riskLevel: "Low", consequence: "Team is not vigilant.", proof: "Daily briefing notes.", location: "Staff Briefing" }
             ]
         },
         {
@@ -1188,7 +1188,106 @@ const facility_management_blueprint: PremiumPack = {
         { text: "Optimize costs and sustainability through a utilities, energy, and water management system.", icon: "zap" },
         { text: "Guarantee business continuity with critical systems (UPS, HVAC) and redundancy testing.", icon: "cog" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Daily Facility Walkthrough",
+            department: "Facilities",
+            frequency: "Daily",
+            role: "Facility Manager",
+            summary: "A proactive daily patrol to identify and rectify issues before they become major problems.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "FMB-DFW-01", description: "Check all common areas (lobbies, receptions) for cleanliness and order.", priority: "High", riskLevel: "Low", consequence: "Negative impression on visitors and employees.", proof: "Walkthrough log.", location: "Common Areas" },
+                { id: "FMB-DFW-02", description: "Inspect all restrooms for cleanliness, functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Employee complaints, hygiene issues.", proof: "Restroom inspection log.", location: "Restrooms" },
+                { id: "FMB-DFW-03", description: "Verify temperature and air quality in all zones are comfortable.", priority: "Medium", riskLevel: "Low", consequence: "Reduced employee productivity and comfort.", proof: "BMS (Building Management System) reading.", location: "All Office Zones" },
+                { id: "FMB-DFW-04", description: "Check for any safety hazards (e.g., slip/trip hazards, blocked fire exits).", priority: "High", riskLevel: "High", consequence: "Employee/visitor injury, legal liability.", proof: "Hazard report log.", location: "All Areas" },
+                { id: "FMB-DFW-05", description: "Inspect exterior of the building for cleanliness, damage, or security concerns.", priority: "Medium", riskLevel: "Medium", consequence: "Poor curb appeal, potential security breaches.", proof: "Exterior inspection log.", location: "Building Perimeter" },
+                { id: "FMB-DFW-06", description: "Check functionality of a random sample of access control doors.", priority: "High", riskLevel: "Medium", consequence: "Security system failure.", proof: "Access control system event log.", location: "Various Doors" },
+                { id: "FMB-DFW-07", description: "Ensure all meeting rooms are tidy and equipment (projectors, phones) is functional.", priority: "Medium", riskLevel: "Low", consequence: "Meeting disruptions, lost productivity.", proof: "Meeting room checklist.", location: "Meeting Rooms" },
+                { id: "FMB-DFW-08", description: "Check pantries/cafeterias for cleanliness and functioning appliances.", priority: "Medium", riskLevel: "Low", consequence: "Employee dissatisfaction, hygiene risks.", proof: "Pantry inspection log.", location: "Pantry/Cafeteria" },
+                { id: "FMB-DFW-09", description: "Raise work orders for all identified issues in the CMMS/ticketing system.", priority: "High", riskLevel: "Low", consequence: "Issues are not tracked and resolved.", proof: "Copies of new work orders.", location: "Office" },
+                { id: "FMB-DFW-10", description: "Follow up on critical open work orders from the previous day.", priority: "High", riskLevel: "Medium", consequence: "Critical failures are not resolved promptly.", proof: "Updated notes in CMMS.", location: "Office" }
+            ]
+        },
+        {
+            title: "Preventive Maintenance (MEP)",
+            department: "Engineering",
+            frequency: "Weekly/Monthly",
+            role: "Chief Engineer",
+            summary: "A scheduled checklist for maintaining critical Mechanical, Electrical, and Plumbing systems.",
+            icon: "wrench",
+            tasks: [
+                { id: "FMB-MEP-01", description: "HVAC: Inspect and clean/replace filters on all Air Handling Units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log for each AHU.", location: "AHU Rooms" },
+                { id: "FMB-MEP-02", description: "Electrical: Test backup generator under load for at least 30 minutes.", priority: "High", riskLevel: "High", consequence: "Business shutdown during a power outage.", proof: "Generator test log with load readings.", location: "Generator Yard" },
+                { id: "FMB-MEP-03", description: "Electrical: Test UPS systems and verify battery health.", priority: "High", riskLevel: "High", consequence: "Data corruption/loss in data centers during power flicker.", proof: "UPS test report.", location: "UPS/Server Rooms" },
+                { id: "FMB-MEP-04", description: "Plumbing: Check and test all water pumps (booster, transfer, sump).", priority: "Medium", riskLevel: "Medium", consequence: "No water supply, flooding.", proof: "Pump test log.", location: "Pump Rooms" },
+                { id: "FMB-MEP-05", description: "Fire Safety: Test a sample of fire alarm call points, sprinklers (flow switch), and smoke detectors.", priority: "High", riskLevel: "High", consequence: "Fire detection/suppression system failure.", proof: "Fire alarm test report.", location: "Various Locations" },
+                { id: "FMB-MEP-06", description: "Lifts: Perform a monthly safety and performance check (leveling, doors, emergency phone).", priority: "High", riskLevel: "High", consequence: "Entrapment, injury.", proof: "Internal lift check log.", location: "All Lifts" },
+                { id: "FMB-MEP-07", description: "Water Treatment: Check WTP/STP operation and water quality reports.", priority: "High", riskLevel: "Medium", consequence: "Environmental non-compliance, unsafe water.", proof: "Water quality test reports.", location: "WTP/STP" },
+                { id: "FMB-MEP-08", description: "Electrical: Conduct thermal imaging of main electrical panels to find hotspots (Quarterly).", priority: "High", riskLevel: "High", consequence: "Electrical fire.", proof: "Thermal imaging report.", location: "Electrical Panels" },
+                { id: "FMB-MEP-09", description: "Building Management System: Verify all critical system alarms are reporting correctly to the BMS.", priority: "Medium", riskLevel: "Medium", consequence: "Silent failures of critical equipment.", proof: "BMS alarm test log.", location: "Control Room" },
+                { id: "FMB-MEP-10", description: "Review and update the schedule of all OEM/vendor Annual Maintenance Contracts (AMCs).", priority: "High", riskLevel: "Low", consequence: "Lapse in critical equipment servicing.", proof: "AMC tracker spreadsheet.", location: "Office" }
+            ]
+        },
+        {
+            title: "Housekeeping & Hygiene Audit",
+            department: "Soft Services",
+            frequency: "Weekly",
+            role: "Housekeeping Manager",
+            summary: "Ensures the highest standards of cleanliness and hygiene across the facility.",
+            icon: "sparkles",
+            tasks: [
+                { id: "FMB-HHA-01", description: "Restroom Audit: Check for cleanliness, odors, fixture functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Major source of employee complaints.", proof: "Scored restroom audit form.", location: "All Restrooms" },
+                { id: "FMB-HHA-02", description: "Workstation Area: Check for dust on surfaces, clean carpets/floors, and empty bins.", priority: "Medium", riskLevel: "Low", consequence: "Untidy work environment.", proof: "Zone inspection checklist.", location: "Office Floors" },
+                { id: "FMB-HHA-03", description: "Pantry/Cafeteria: Check for food debris, clean appliances (microwaves, etc.), and sanitized tables.", priority: "High", riskLevel: "Medium", consequence: "Hygiene risk, pest attraction.", proof: "Pantry audit form.", location: "Pantry/Cafeteria" },
+                { id: "FMB-HHA-04", description: "Glass & Facade: Check for clean windows and facade, especially in public-facing areas.", priority: "Low", riskLevel: "Low", consequence: "Poor corporate image.", proof: "Visual inspection.", location: "Lobby/Exterior" },
+                { id: "FMB-HHA-05", description: "Waste Management: Check for proper segregation and timely disposal of waste.", priority: "Medium", riskLevel: "Medium", consequence: "Environmental non-compliance, odors.", proof: "Waste area inspection log.", location: "Waste Yard" },
+                { id: "FMB-HHA-06", description: "Pest Control: Review pest control logbook and check bait stations.", priority: "High", riskLevel: "High", consequence: "Infestation.", proof: "Pest control vendor's service report.", location: "All Areas" },
+                { id: "FMB-HHA-07", description: "Stock Check: Verify inventory of cleaning supplies and consumables.", priority: "Medium", riskLevel: "Low", consequence: "Running out of essential supplies.", proof: "Stock register.", location: "Janitor Stores" },
+                { id: "FMB-HHA-08", description: "Staff Uniform & PPE: Check that all housekeeping staff are in clean uniforms and using correct PPE.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessionalism, safety risk to staff.", proof: "Staff inspection notes.", location: "Housekeeping Office" },
+                { id: "FMB-HHA-09", description: "Review cleaning equipment for functionality and cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Ineffective cleaning.", proof: "Equipment check log.", location: "Janitor Stores" },
+                { id: "FMB-HHA-10", description: "Follow up on any housekeeping-related complaints from the previous week.", priority: "High", riskLevel: "Medium", consequence: "Recurring service failures.", proof: "Complaint tracker update.", location: "Office" }
+            ]
+        },
+        {
+            title: "Physical Security & Access Control",
+            department: "Security",
+            frequency: "Weekly",
+            role: "Security Manager",
+            summary: "An audit to ensure the physical security of the facility is robust and uncompromised.",
+            icon: "shield-check",
+            tasks: [
+                { id: "FMB-PSA-01", description: "Perimeter Audit: Walk the entire facility perimeter to check for breaches in fences/walls.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry.", proof: "Perimeter patrol log.", location: "Perimeter" },
+                { id: "FMB-PSA-02", description: "CCTV Audit: Verify all cameras are recording, have clear views, and have adequate storage.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report.", location: "CCTV Control Room" },
+                { id: "FMB-PSA-03", description: "Access Control Audit: Review access logs for sensitive areas (e.g., server rooms) for unauthorized entries.", priority: "High", riskLevel: "High", consequence: "Data theft, sabotage.", proof: "Access control log audit report.", location: "Security Office" },
+                { id: "FMB-PSA-04", description: "Visitor Management: Audit visitor logs to ensure all visitors were signed in, issued a badge, and escorted.", priority: "Medium", riskLevel: "Medium", consequence: "Unauthorized individuals on premises.", proof: "Sample audit of visitor logs.", location: "Reception" },
+                { id: "FMB-PSA-05", description: "Key Management: Audit the key register to ensure all keys are accounted for.", priority: "High", riskLevel: "High", consequence: "Lost keys can compromise entire facility.", proof: "Key register audit sign-off.", location: "Security Office" },
+                { id: "FMB-PSA-06", description: "Lighting Check: Conduct a nighttime audit of all exterior and parking lot lighting.", priority: "Medium", riskLevel: "Medium", consequence: "Dark spots provide cover for criminals.", proof: "Night patrol report.", location: "Exterior" },
+                { id: "FMB-PSA-07", description: "Alarm System Test: Test a sample of door alarms, motion detectors, and panic buttons.", priority: "High", riskLevel: "High", consequence: "Alarm failure during a real incident.", proof: "Alarm test log.", location: "Various Locations" },
+                { id: "FMB-PSA-08", description: "Guard Tour Verification: Check that guard patrol tours are being completed on schedule.", priority: "High", riskLevel: "Medium", consequence: "Gaps in security coverage.", proof: "Guard tour system report.", location: "Security Office" },
+                { id: "FMB-PSA-09", description: "Review incident reports from the past week for any trends or required actions.", priority: "Medium", riskLevel: "Low", consequence: "Failure to learn from security incidents.", proof: "Incident report summary.", location: "Security Office" },
+                { id: "FMB-PSA-10", description: "Check that security staff have up-to-date licenses and training certifications.", priority: "High", riskLevel: "Medium", consequence: "Non-compliant or untrained security force.", proof: "Review of HR training records.", location: "HR Office" }
+            ]
+        },
+        {
+            title: "Vendor & Contract Management",
+            department: "Administration",
+            frequency: "Monthly",
+            role: "Admin Manager",
+            summary: "Ensures all vendors are meeting their SLAs and contracts are up-to-date.",
+            icon: "handshake",
+            tasks: [
+                { id: "FMB-VCM-01", description: "Review performance of critical vendors (e.g., housekeeping, security, M&E) against their SLAs.", priority: "High", riskLevel: "Medium", consequence: "Paying for sub-par service.", proof: "Monthly vendor performance scorecard.", location: "Office" },
+                { id: "FMB-VCM-02", description: "Verify all vendor invoices against work orders or service reports before processing payment.", priority: "High", riskLevel: "High", consequence: "Paying for work not done or over-billing.", proof: "Signed-off invoices.", location: "Finance/Admin" },
+                { id: "FMB-VCM-03", description: "Ensure all vendors have submitted required compliance documents (e.g., insurance, licenses).", priority: "High", riskLevel: "High", consequence: "Liability risk from non-compliant vendors.", proof: "Vendor compliance file audit.", location: "Office" },
+                { id: "FMB-VCM-04", description: "Track all contract renewal dates and start renewal process 90 days in advance.", priority: "High", riskLevel: "Medium", consequence: "Lapse in critical services.", proof: "Contract management tracker.", location: "Office" },
+                { id: "FMB-VCM-05", description: "Conduct a monthly meeting with key vendor account managers.", priority: "Medium", riskLevel: "Low", consequence: "Poor relationship, unresolved issues fester.", proof: "Minutes of meeting.", location: "Office" },
+                { id: "FMB-VCM-06", description: "Issue formal non-conformance reports for any SLA failures.", priority: "Medium", riskLevel: "Medium", consequence: "SLA failures are not officially documented and penalized.", proof: "Copies of non-conformance reports.", location: "Office" },
+                { id: "FMB-VCM-07", description: "Onboard new vendors with a formal induction on site rules, safety, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Vendors creating safety or security risks.", proof: "Signed vendor induction form.", location: "Office" },
+                { id: "FMB-VCM-08", description: "Review and approve all vendor work permits before allowing work to start.", priority: "High", riskLevel: "High", consequence: "Unsafe or disruptive work being carried out.", proof: "Signed work permit.", location: "Security/Facilities" }
+            ]
+        },
+    ]
 };
 
 const corporate_legal_compliance_starter_kit: PremiumPack = {
